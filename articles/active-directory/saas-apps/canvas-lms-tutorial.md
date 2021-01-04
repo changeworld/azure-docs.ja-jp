@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 0725896c1357700cc0e05abfdaaa8acfa588f729
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5a4b2af8626f69b6947950f87b99ed5a60692d8b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456569"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673122"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>チュートリアル:Azure Active Directory と Canvas の統合
 
@@ -41,7 +41,7 @@ Azure AD と Canvas の統合を構成するには、次の項目が必要です
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Canvas では、 **SP** によって開始される SSO がサポートされます
+* Canvas では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-canvas-from-the-gallery"></a>ギャラリーからの Canvas の追加
 
@@ -61,13 +61,13 @@ Canvas の Azure AD への統合を構成するには、Canvas をギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Canvas** 」と入力し、結果ウィンドウで **Canvas** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Canvas**」と入力し、結果ウィンドウで **Canvas** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Canvas](common/search-new-app.png)
+    ![結果一覧の Canvas](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** という名前のテスト ユーザーに基づいて、Canvas で Azure AD のシングル サインオンを構成およびテストします。
+このセクションでは、**Britta Simon** という名前のテスト ユーザーに基づいて、Canvas で Azure AD のシングル サインオンを構成およびテストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Canvas 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Canvas で Azure AD のシングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
@@ -174,9 +174,9 @@ Canvas で Azure AD のシングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -233,11 +233,11 @@ Azure AD ユーザーが Canvas にログインできるようにするには、
 
    ![ユーザーの追加](./media/canvas-lms-tutorial/ic775997.png "ユーザーの追加")
 
-   a. **[Full Name] \(フルネーム)** テキスト ボックスに、ユーザーの名前 ( **BrittaSimon** など) を入力します。
+   a. **[Full Name] \(フルネーム)** テキスト ボックスに、ユーザーの名前 (**BrittaSimon** など) を入力します。
 
-   b. **[Email]\(電子メール\)** テキスト ボックスに、ユーザーのメール アドレス ( **brittasimon\@contoso.com** など) を入力します。
+   b. **[Email]\(電子メール\)** テキスト ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
 
-   c. **[Login]\(ログイン\)** テキスト ボックスに、ユーザーの Azure AD 電子メール アドレス ( **brittasimon\@contoso.com** など) を入力します。
+   c. **[Login]\(ログイン\)** テキスト ボックスに、ユーザーの Azure AD 電子メール アドレス (**brittasimon\@contoso.com** など) を入力します。
 
    d. **[このアカウント作成についてユーザーに電子メールを送信]** を選択します。
 

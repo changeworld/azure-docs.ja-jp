@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 9dacee2d864bcd40a2070a6f4d730a71caab16d3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 00b6f116ef6f4c6c21578ef05595ed1903777948
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457625"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673758"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asset-bank"></a>チュートリアル: Azure Active Directory と Asset Bank の統合
 
@@ -41,8 +41,8 @@ Asset Bank と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Asset Bank では、 **SP** Initiated SSO がサポートされます
-* Asset Bank では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Asset Bank では、**SP** Initiated SSO がサポートされます
+* Asset Bank では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-asset-bank-from-the-gallery"></a>ギャラリーから Asset Bank を追加する
 
@@ -62,13 +62,13 @@ Azure AD への Asset Bank の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Asset Bank** 」と入力し、結果パネルで **[Asset Bank]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Asset Bank**」と入力し、結果パネルで **[Asset Bank]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Asset Bank](common/search-new-app.png)
+    ![結果一覧の Asset Bank](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** という名前のテスト ユーザーに基づいて、Asset Bank で Azure AD のシングル サインオンを構成およびテストします。
+このセクションでは、**Britta Simon** という名前のテスト ユーザーに基づいて、Asset Bank で Azure AD のシングル サインオンを構成およびテストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Asset Bank 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Asset Bank で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -143,9 +143,9 @@ Asset Bank で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

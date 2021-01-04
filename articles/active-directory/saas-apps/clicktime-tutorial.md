@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: c184d4758d6435659d737c11904357711f4f0a36
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3337d66934c1fe317296cffaa9a663e212cce12d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455874"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673175"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>チュートリアル: Azure Active Directory と ClickTime の統合
 
@@ -41,7 +41,7 @@ ClickTime と Azure AD の統合を構成するには、次のものが必要で
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* ClickTime では、 **IDP** によって開始される SSO がサポートされます
+* ClickTime では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-clicktime-from-the-gallery"></a>ギャラリーからの ClickTime の追加
 
@@ -61,13 +61,13 @@ Azure AD への ClickTime の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **ClickTime** 」と入力し、結果パネルで **ClickTime** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ClickTime**」と入力し、結果パネルで **ClickTime** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果リストの ClickTime](common/search-new-app.png)
+    ![結果リストの ClickTime](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、ClickTime で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、ClickTime で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと ClickTime 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 ClickTime で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -104,7 +104,7 @@ ClickTime で Azure AD シングル サインオンを構成するには、次�
     a. **[識別子]** テキスト ボックスに、`https://app.clicktime.com/sp/` という URL を入力します。
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
-    
+
     ```http
     https://app.clicktime.com/Login/
     https://app.clicktime.com/App/Login/Consume.aspx
@@ -131,15 +131,15 @@ ClickTime で Azure AD シングル サインオンを構成するには、次�
 1. 上部にあるツールバーで **[Preferences]** 、 **[Security Settings]** の順にクリックします。
 
 1. **[Single Sign-On Preferences]** 構成セクションで、次の手順を実行します。
-   
+
     ![Security Settings](./media/clicktime-tutorial/tic777280.png "セキュリティ設定")
-   
+
     a.  **[Azure AD]** を指定し、シングル サインオン (SSO) を使用したサインインの **[Allow (許可)]** を選択します。
-   
+
     b. **[Identity Provider Endpoint]\(ID プロバイダー エンドポイント\)** ボックスに、Azure portal からコピーした **ログイン URL** を貼り付けます。
-   
+
     c.  Azure Portal からダウンロードされた **Base-64 でエンコードされた証明書** を **メモ帳** で開き、その内容をコピーしてから、それを **[X.509 証明書]** ボックスに貼り付けます。
-   
+
     d.  **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
@@ -158,9 +158,9 @@ ClickTime で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -206,24 +206,24 @@ ClickTime の場合、プロビジョニングは手動で行います。
 1. **ClickTime** テナントにログインします。
 
 1. 上部のツールバーで、 **[Company]** をクリックし、 **[People]** をクリックします。
-   
+
     ![スクリーンショットは、[Company]\(会社\) と [People]\(ユーザー\) が選択されている ClickTime テナントを示しています。](./media/clicktime-tutorial/tic777282.png "ユーザー")
 
 1. **[Add Person]** をクリックします。
-   
+
     ![Add Person](./media/clicktime-tutorial/tic777283.png "[Add Person]")
 
 1. [New Person] セクションで、次の手順を実行します。
-   
+
     ![スクリーンショットは、この手順の情報を追加できる [Add Person]\(ユーザーの追加\) セクションを示しています。](./media/clicktime-tutorial/tic777284.png "ユーザー")
-   
-    a.  **[フル ネーム]** ボックスに、ユーザーの氏名 ( **Britta Simon** など) を入力します。 
-  
-    b.  **[電子メール アドレス]** ボックスに、ユーザーのメール アドレス ( **brittasimon\@contoso.com** など) を入力します。
-       
+
+    a.  **[フル ネーム]** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。 
+
+    b.  **[電子メール アドレス]** ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
+
     > [!NOTE]
     > 必要に応じて、新しいユーザー オブジェクトの追加プロパティを設定できます。
-   
+
     c.  **[保存]** をクリックします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 

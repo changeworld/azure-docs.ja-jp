@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 003b577d09e9b1d72077cbda4fde53b457d80e8b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 77ccc361e93758feb91867ffe6954f34c1e9d01f
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455257"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673762"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-convercent"></a>チュートリアル: Azure Active Directory と Convercent の統合
 
@@ -41,7 +41,7 @@ Convercent と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Convercent では、 **SP** と **IDP** によって開始される SSO がサポートされます
+* Convercent では、**SP** と **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-convercent-from-the-gallery"></a>ギャラリーからの Convercent の追加
 
@@ -61,13 +61,13 @@ Azure AD への Convercent の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Convercent** 」と入力し、結果パネルで **Convercent** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Convercent**」と入力し、結果パネルで **Convercent** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Convercent](common/search-new-app.png)
+    ![結果一覧の Convercent](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Convercent で Azure AD の SSO を構成し、テストします。シングル サインオンを機能させるには、Azure AD ユーザーと Convercent 内の関連ユーザー間にリンク関係が確立されている必要があります。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Convercent で Azure AD の SSO を構成し、テストします。シングル サインオンを機能させるには、Azure AD ユーザーと Convercent 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Convercent で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
@@ -147,9 +147,9 @@ Convercent で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

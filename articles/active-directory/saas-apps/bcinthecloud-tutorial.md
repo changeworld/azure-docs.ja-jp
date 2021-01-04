@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: adac6993c0fc40fa81328655903850c1da85ccf3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5b8d9cedcc2ca3085f342db0bbf5fe3704ac7242
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457369"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674117"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bc-in-the-cloud"></a>チュートリアル: Azure Active Directory と BC in the Cloud の統合
 
@@ -41,7 +41,7 @@ BC in the Cloud と Azure AD の統合を構成するには、次のものが必
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* BC in the Cloud では、 **SP** Initiated SSO がサポートされます
+* BC in the Cloud では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-bc-in-the-cloud-from-the-gallery"></a>ギャラリーからの BC in the Cloud の追加
 
@@ -61,13 +61,13 @@ BC in the Cloud の Azure AD への統合を構成するには、ギャラリー
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **BC in the Cloud** 」と入力し、結果パネルで **[BC in the Cloud]** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**BC in the Cloud**」と入力し、結果パネルで **[BC in the Cloud]** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
-     ![結果一覧の BC in the Cloud](common/search-new-app.png)
+    ![結果一覧の BC in the Cloud](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、BC in the Cloud で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、BC in the Cloud で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと BC in the Cloud の関連ユーザー間にリンク関係が確立されている必要があります。
 
 BC in the Cloud での Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -142,9 +142,9 @@ BC in the Cloud との Azure AD シングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

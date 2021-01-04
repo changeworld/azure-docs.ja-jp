@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 74fa6924675d15ae42fac8568bee2ed11c2029c2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 403d04039deef7890bdd5dba1ef337a4b26e86ac
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457386"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671779"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>チュートリアル: Azure Active Directory と Bambu by Sprout Social の統合
 
@@ -41,8 +41,8 @@ Azure AD と Bambu by Sprout Social の統合を構成するには、次のも�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Bambu by Sprout Social では、 **IDP** によって開始される SSO がサポートされます
-* Bambu by Sprout Social では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Bambu by Sprout Social では、**IDP** によって開始される SSO がサポートされます
+* Bambu by Sprout Social では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-bambu-by-sprout-social-from-the-gallery"></a>ギャラリーからの Bambu by Sprout Social の追加
 
@@ -62,13 +62,13 @@ Azure AD への Bambu by Sprout Social の統合を構成するには、ギャ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 結果ボックスに「 **Bambu by Sprout Social** 」と入力し、結果パネルから **[Bambu by Sprout Social]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 結果ボックスに「**Bambu by Sprout Social**」と入力し、結果パネルから **[Bambu by Sprout Social]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果リストの Bambu by Sprout Social](common/search-new-app.png)
+    ![結果リストの Bambu by Sprout Social](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Bambu by Sprout Social で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Bambu by Sprout Social で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンが機能するには、Azure AD ユーザーと Bambu by Sprout Social の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 Bambu by Sprout Social で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
@@ -136,9 +136,9 @@ Bambu by Sprout Social で Azure AD シングル サインオンを構成する�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

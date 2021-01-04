@@ -1,18 +1,18 @@
 ---
 title: チュートリアル:Azure Purview ホーム ページを閲覧して資産を検索する
 description: このチュートリアルでは、Azure Purview ホーム ページの機能を使用し、カタログ内で検索を行う方法について説明します。
-author: hophanms
-ms.author: hophan
+author: djpmsft
+ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 46c2ee284c33cc8ffb7b0bd3bc536905cf4e2052
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: f778a55c206e012884b44c1fea0a63e2de6b481a
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399878"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693341"
 ---
 # <a name="tutorial-navigate-the-azure-purview-preview-home-page-and-search-for-an-asset"></a>チュートリアル:Azure Purview (プレビュー) ホーム ページを閲覧して資産を検索する
 

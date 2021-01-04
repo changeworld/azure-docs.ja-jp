@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 89f59bba856d662aea0c3ed249d5a1462297ec60
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 63bbec6de8f122178289cc313e5d938e3b926af2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309048"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673242"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>チュートリアル: Azure Active Directory と Adobe Captivate Prime
 
@@ -63,7 +63,7 @@ Azure AD への Adobe Captivate Prime の統合を構成するには、ギャラ
 
 4. 検索ボックスに「**Adobe Captivate Prime**」と入力し、結果パネルで **Adobe Captivate Prime** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Adobe Captivate Prime](common/search-new-app.png)
+    ![結果一覧の Adobe Captivate Prime](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -105,7 +105,7 @@ Adobe Captivate Prime との Azure AD シングル サインオンを構成す�
 
     b. **[応答 URL]** ボックスに、`https://captivateprime.adobe.com/saml/SSO` という URL を入力します。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -125,7 +125,7 @@ Adobe Captivate Prime との Azure AD シングル サインオンを構成す�
 
 ### <a name="configure-adobe-captivate-prime-single-sign-on"></a>Adobe Captivate Prime のシングル サインオンの構成
 
-**Adobe Captivate Prime** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML**、コピーした**ユーザー アクセス URL**、および Azure portal からコピーした適切な URL を、[Adobe Captivate Prime サポート チーム](mailto:captivateprimesupport@adobe.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Adobe Captivate Prime** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML**、コピーした **ユーザー アクセス URL**、および Azure portal からコピーした適切な URL を、[Adobe Captivate Prime サポート チーム](mailto:captivateprimesupport@adobe.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -144,7 +144,7 @@ Adobe Captivate Prime との Azure AD シングル サインオンを構成す�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -180,7 +180,7 @@ Adobe Captivate Prime との Azure AD シングル サインオンを構成す�
 
 ### <a name="create-adobe-captivate-prime-test-user"></a>Adobe Captivate Prime のテスト ユーザーの作成
 
-このセクションでは、Adobe Captivate Prime で Britta Simon というユーザーを作成します。  [Adobe Captivate Prime サポート チーム](mailto:captivateprimesupport@adobe.com)と協力して、Adobe Captivate Prime プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Adobe Captivate Prime で Britta Simon というユーザーを作成します。 [Adobe Captivate Prime サポート チーム](mailto:captivateprimesupport@adobe.com)と協力して、Adobe Captivate Prime プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

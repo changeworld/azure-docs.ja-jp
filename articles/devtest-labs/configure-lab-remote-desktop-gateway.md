@@ -3,12 +3,12 @@ title: Azure DevTest Labs でリモート デスクトップ ゲートウェイ�
 description: RDP ポートを公開せずにラボ VM に安全にアクセスできるようにするために、リモート デスクトップ ゲートウェイを使用して Azure DevTest Labs でラボを構成する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b48a0709deb21ca0f8a27d1cf953c7d8d4ba2cc8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: dcf5191dea64c3d7bf28b9ce1c616d3d2defb73e
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144709"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695695"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>リモート デスクトップ ゲートウェイを使用するように Azure DevTest Labs でラボを構成します
 Azure DevTest Labs では、RDP ポートを公開することなくラボ仮想マシン (VM) に安全にアクセスできるようにするために、ラボ用のリモート デスクトップ ゲートウェイを構成できます。 ラボは、ラボ ユーザーがアクセスできるすべての仮想マシンを表示および接続するための中央の場所を提供します。 **[仮想マシン]** ページの **[接続]** ボタンにより、そのマシンに接続するために開くことができるマシン固有の RDP ファイルが作成されます。 ラボをリモート デスクトップ ゲートウェイに接続することで、RDP 接続をさらにカスタマイズして保護できます。 
@@ -24,7 +24,7 @@ Azure DevTest Labs では、RDP ポートを公開することなくラボ仮想
     1. `{gateway-hostname}` は、Azure portal のラボ用の **[ラボの設定]** ページに指定されているゲートウェイ ホスト名です。 
     1. `{lab-machine-name}` は、接続しようとしているマシンの名前です。
     1. `{port-number}` は、接続を確立する必要があるポートです。 通常、このポートは 3389 です。 ラボ VM が DevTest Labs の[共有 IP](devtest-lab-shared-ip.md) 機能を使用している場合、ポートは異なります。
-1. リモート デスクトップ ゲートウェイは、認証トークンを生成するために、`https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` からの Azure 関数への呼び出しを延期します。 DevTest Labs サービスは、要求ヘッダーに関数キーを自動的に含めます。 関数キーは、ラボのキー コンテナーに保存されます。 そのシークレットの名前が、ラボの **[ラボの設定]** ページに**ゲートウェイ トークン シークレット**として表示されます。
+1. リモート デスクトップ ゲートウェイは、認証トークンを生成するために、`https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` からの Azure 関数への呼び出しを延期します。 DevTest Labs サービスは、要求ヘッダーに関数キーを自動的に含めます。 関数キーは、ラボのキー コンテナーに保存されます。 そのシークレットの名前が、ラボの **[ラボの設定]** ページに **ゲートウェイ トークン シークレット** として表示されます。
 1. Azure 関数は、ゲートウェイ マシンに対する証明書ベースのトークン認証用のトークンを返すと想定されます。  
 1. 続いて、[RDP ファイル コンテンツの取得] アクションは、認証情報を含む完全な RDP ファイルを返します。
 1. 任意の RDP 接続プログラムを使用して RDP ファイルを開きます。 すべての RDP 接続プログラムがトークン認証をサポートしているわけではないことに注意してください。 認証トークンには、関数アプリによって設定された有効期限があります。 トークンの有効期限が切れる前にラボ VM への接続を作成してください。
@@ -67,7 +67,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
-1. ラボの一覧で、目的の**ラボ**を選択します。
+1. ラボの一覧で、目的の **ラボ** を選択します。
 1. ラボのページで、 **[構成とポリシー]** を選択します。
 1. 左側のメニューの **[設定]** セクションで、 **[ラボの設定]** を選択します。
 1. **[リモート デスクトップ]** セクションで、 **[ゲートウェイ ホスト名]** フィールドに、リモート デスクトップ サービスのゲートウェイ マシンまたはファームの完全修飾ドメイン名 (FQDN) または IP アドレスを入力します。 この値は、ゲートウェイ マシンで使用されている TLS/SSL 証明書の FQDN と一致する必要があります。
@@ -76,13 +76,13 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 1. **[リモート デスクトップ]** セクションの **[Gateway token secret]\(ゲートウェイ トークン シークレット\)**  に、先ほど作成したシークレットの名前を入力します。 この値は関数キー自体ではなく、関数キーを保持するラボのキー コンテナー内のシークレットの名前です。
 
     ![ラボ設定のゲートウェイ トークン シークレット](./media/configure-lab-remote-desktop-gateway/gateway-token-secret.png)
-1. 変更を**保存**します。
+1. 変更を **保存** します。
 
     > [!NOTE] 
     > **[保存]** をクリックして、[リモート デスクトップ ゲートウェイのライセンス条項](https://www.microsoft.com/licensing/product-licensing/products)に同意します。 リモート ゲートウェイの詳細については、「[リモート デスクトップ サービスへようこそ](/windows-server/remote/remote-desktop-services/Welcome-to-rds)」と「[リモート デスクトップ環境を展開する](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)」を参照してください。
 
 
-自動化によってラボを構成したい場合は、**ゲートウェイ ホスト名**と**ゲートウェイ トークン シークレット**を設定するための PowerShell のサンプル スクリプトとして「[Set-DevTestLabGateway.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1)」を参照してください。 [Azure DevTest Labs GitHub リポジトリ](https://github.com/Azure/azure-devtestlab)にも、**ゲートウェイ ホスト名**と**ゲートウェイ トークン シークレット**の設定を使用してラボを作成または更新するための Azure Resource Manager テンプレートが用意されています。
+自動化によってラボを構成したい場合は、**ゲートウェイ ホスト名** と **ゲートウェイ トークン シークレット** を設定するための PowerShell のサンプル スクリプトとして「[Set-DevTestLabGateway.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1)」を参照してください。 [Azure DevTest Labs GitHub リポジトリ](https://github.com/Azure/azure-devtestlab)にも、**ゲートウェイ ホスト名** と **ゲートウェイ トークン シークレット** の設定を使用してラボを作成または更新するための Azure Resource Manager テンプレートが用意されています。
 
 ## <a name="configure-network-security-group"></a>ネットワーク セキュリティ グループを構成する
 ラボをさらに保護するために、ラボ仮想マシンが使用する仮想ネットワークにネットワーク セキュリティ グループ (NSG) を追加できます。 NSG を設定する方法については、「[ネットワーク セキュリティ グループの作成、変更、削除](../virtual-network/manage-network-security-group.md)」を参照してください。
@@ -135,7 +135,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
     このテンプレートは、Azure CLI で次のコマンドを使用してデプロイできます。
 
     ```azurecli
-    az group deployment create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation="{storage-account-endpoint}/{container-name}" -–parameters _artifactsLocationSasToken = "?{sas-token}"
+    az deployment group create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation="{storage-account-endpoint}/{container-name}" -–parameters _artifactsLocationSasToken = "?{sas-token}"
     ```
 
     以下に、パラメーターの説明を示します。
@@ -150,7 +150,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
     テンプレートのデプロイ出力から gatewayFQDN と gatewayIP の値を記録します。 新しく作成された関数 ([[Function App の設定]](../azure-functions/functions-how-to-use-azure-function-app-settings.md) タブにあります) の関数キーの値を保存する必要もあります。
 5. TLS/SSL 証明書の FQDN が前のステップの gatewayIP の IP アドレスを指すように DNS を構成します。
 
-    リモート デスクトップ ゲートウェイ ファームが作成され、DNS が適切に更新されたら、DevTest Labs のラボで使用できるようになります。 デプロイしたゲートウェイ マシンを使用するように、**ゲートウェイ ホスト名**と**ゲートウェイ トークン シークレット**の設定を構成する必要があります。 
+    リモート デスクトップ ゲートウェイ ファームが作成され、DNS が適切に更新されたら、DevTest Labs のラボで使用できるようになります。 デプロイしたゲートウェイ マシンを使用するように、**ゲートウェイ ホスト名** と **ゲートウェイ トークン シークレット** の設定を構成する必要があります。 
 
     > [!NOTE]
     > ラボ マシンでプライベート IP を使用する場合は、同じ仮想ネットワークを共有するか、ピアリングされた仮想ネットワークを使用することによって、ゲートウェイ マシンからラボ マシンへのネットワーク パスを設定する必要があります。

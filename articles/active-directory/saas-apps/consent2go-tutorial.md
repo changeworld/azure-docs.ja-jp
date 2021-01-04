@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: ff5c3d09adaba34672a4c934411a6e12b7b65be2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ac77203d395a76079fcf2a44b2081193d0e7fd72
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455359"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671456"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-consent2go"></a>チュートリアル: Azure Active Directory と Consent2Go の統合
 
@@ -41,7 +41,7 @@ Consent2Go と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Consent2Go では、 **SP** Initiated SSO がサポートされます
+* Consent2Go では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-consent2go-from-the-gallery"></a>ギャラリーからの Consent2Go の追加
 
@@ -61,13 +61,13 @@ Azure AD への Consent2Go の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Consent2Go** 」と入力し、結果パネルで **[Consent2Go]** を選び、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Consent2Go**」と入力し、結果パネルで **[Consent2Go]** を選び、 **[追加]** をクリックしてアプリケーションを追加します。
 
-     ![結果一覧の Consent2Go](common/search-new-app.png)
+    ![結果一覧の Consent2Go](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Consent2Go で Azure AD シングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Consent2Go で Azure AD シングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Consent2Go 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Consent2Go で Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -109,7 +109,7 @@ Consent2Go で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="configure-consent2go-single-sign-on"></a>Consent2Go のシングル サインオンの構成
 
-**Consent2Go** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Consent2Go サポート チーム](mailto:support@consent2go.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Consent2Go** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Consent2Go サポート チーム](mailto:support@consent2go.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -127,9 +127,9 @@ Consent2Go で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

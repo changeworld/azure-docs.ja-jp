@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: e17c4e768d02226c1c50baea05b9231acb78cba6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b1c4ab22db3bb9cadc783357bd9963c5de3b6f98
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455410"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672697"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confirmit-horizons"></a>チュートリアル:Azure Active Directory と Confirmit Horizons の統合
 
@@ -41,9 +41,9 @@ Confirmit Horizons と Azure AD の統合を構成するには、次のものが
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Confirmit Horizons では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Confirmit Horizons では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
-* Confirmit Horizons では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Confirmit Horizons では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-confirmit-horizons-from-the-gallery"></a>ギャラリーからの Confirmit Horizons の追加
 
@@ -63,13 +63,13 @@ Azure AD への Confirmit Horizons の統合を構成するには、マネージ
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Confirmit Horizons** 」と入力して、結果パネルで **[Confirmit Horizons]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Confirmit Horizons**」と入力して、結果パネルで **[Confirmit Horizons]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Confirmit Horizons](common/search-new-app.png)
+    ![結果一覧の Confirmit Horizons](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Confirmit Horizons で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Confirmit Horizons で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Confirmit Horizons 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Confirmit Horizons で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -146,7 +146,7 @@ Confirmit Horizons で Azure AD シングル サインオンを構成するに�
 
 ### <a name="configure-confirmit-horizons-single-sign-on"></a>Confirmit Horizons のシングル サインオンの構成
 
-**Confirmit Horizons** 側でシングル サインオンを構成するには、 **アプリケーション フェデレーション メタデータ URL** を [Confirmit Horizons サポート チーム](mailto:support@confirmit.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Confirmit Horizons** 側でシングル サインオンを構成するには、**アプリケーション フェデレーション メタデータ URL** を [Confirmit Horizons サポート チーム](mailto:support@confirmit.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -164,8 +164,8 @@ Confirmit Horizons で Azure AD シングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
     b. **[ユーザー名]** フィールドに「 **brittasimon@yourcompanydomain.extension** 」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 

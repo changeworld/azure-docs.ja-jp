@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: apimpm
-ms.openlocfilehash: e6afa26c65f097683a5b471dc34621cca38c01e6
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 4a107b4cc0dbf0b0845211ca64691fb0e792a47c
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377396"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679088"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>チュートリアル:API の複数のバージョンを発行する 
 
@@ -60,7 +60,7 @@ Azure API Management では、"*バージョン管理スキーム*" (**パス、
 
 
 
-|設定   |[値]  |説明  |
+|設定   |値  |説明  |
 |---------|---------|---------|
 |**名前**     |  *demo-conference-api-v1*       |  API Management インスタンスでの一意の名前。<br/><br/>バージョンは、実際には API の[リビジョン](api-management-get-started-revise-api.md)に基づく新しい API であるため、この設定は新しい API の名前になります。   |
 |**バージョン管理スキーム**     |  **パス**       |  呼び出し元が API バージョンを指定する方法。     |
@@ -111,4 +111,4 @@ Azure API Management では、"*バージョン管理スキーム*" (**パス、
 次のチュートリアルに進みます。
 
 > [!div class="nextstepaction"]
-> [開発者ポータルのページのスタイルをカスタマイズする](api-management-customize-styles.md)
+> [開発者ポータルのページのスタイルをカスタマイズする](api-management-howto-developer-portal-customize.md)

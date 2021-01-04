@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 31b0a4fd8d97371eb4e127a2a473893a0487f220
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 3d90d35e113b5f9757faf59681bb2532b66f2b09
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319086"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673870"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>チュートリアル: Azure Active Directory と Absorb LMS の統合
 
@@ -66,7 +66,7 @@ Azure AD への Absorb LMS の統合を構成するには、ギャラリーか�
 
 4. 検索ボックスに「**Absorb LMS**」と入力し、結果ウィンドウで **[Absorb LMS]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果リストの Absorb LMS](common/search-new-app.png)
+    ![結果リストの Absorb LMS](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -123,7 +123,7 @@ Absorb LMS で Azure AD シングル サインオンを構成するには、次�
 
     ![image](common/edit-attribute.png)
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -169,7 +169,7 @@ Absorb LMS で Azure AD シングル サインオンを構成するには、次�
 
     f. **[Signature Type]\(署名の種類\)** として **[Sha256]** を選択します。
 
-    g. **[ログイン URL]** ボックスに、Azure Portal のアプリケーションの **[プロパティ]** ページにある**ユーザーのアクセス URL** を貼り付けます。
+    g. **[ログイン URL]** ボックスに、Azure Portal のアプリケーションの **[プロパティ]** ページにある **ユーザーのアクセス URL** を貼り付けます。
 
     h. **[ログアウト URL]** に、Azure Portal の **[サインオンの構成]** ウィンドウからコピーした **[サインアウト URL]** 値を貼り付けます。
 
@@ -196,7 +196,7 @@ Absorb LMS で Azure AD シングル サインオンを構成するには、次�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[ユーザー名]** フィールドに「`brittasimon\@yourcompanydomain.extension`」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 

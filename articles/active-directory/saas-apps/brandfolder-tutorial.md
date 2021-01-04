@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 56d2a3355fac565fac65ac1ba3c7d0c4c2fd8429
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5004b433189700bc2fbaf5efe65e4556d40521cb
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456808"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671996"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brandfolder"></a>チュートリアル:Azure Active Directory と Brandfolder の統合
 
@@ -41,9 +41,9 @@ Brandfolder と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Brandfolder では、 **IDP** Initiated SSO がサポートされます
+* Brandfolder では、**IDP** Initiated SSO がサポートされます
 
-* Brandfolder では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Brandfolder では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-brandfolder-from-the-gallery"></a>ギャラリーからの Brandfolder の追加
 
@@ -63,13 +63,13 @@ Azure AD への Brandfolder の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Brandfolder** 」と入力して結果パネルで **[Brandfolder]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Brandfolder**」と入力して結果パネルで **[Brandfolder]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
 
-     ![結果一覧の Brandfolder](common/search-new-app.png)
+    ![結果一覧の Brandfolder](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Brandfolder で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Brandfolder で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Brandfolder 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Brandfolder で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -116,7 +116,7 @@ Brandfolder で Azure AD シングル サインオンを構成するには、次
 
 ### <a name="configure-brandfolder-single-sign-on"></a>Brandfolder のシングル サインオンの構成
 
-**Brandfolder** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Brandfolder サポート チーム](mailto:support@brandfolder.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Brandfolder** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Brandfolder サポート チーム](mailto:support@brandfolder.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -134,9 +134,9 @@ Brandfolder で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[ユーザー名]** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -171,7 +171,7 @@ Brandfolder で Azure AD シングル サインオンを構成するには、次
 
 ### <a name="create-brandfolder-test-user"></a>Brandfolder のテスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを Brandfolder に作成します。 Brandfolder では、 **Just-In-Time ユーザー プロビジョニング** がサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Brandfolder にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
+このセクションでは、Britta Simon というユーザーを Brandfolder に作成します。 Brandfolder では、**Just-In-Time ユーザー プロビジョニング** がサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Brandfolder にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

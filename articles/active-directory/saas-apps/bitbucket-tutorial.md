@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: ffd93016a2cbde3aa2a5844cfdb72e4c0cc8b623
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5e0b1d8d2cb80886131a88c01a6c24102ad7c77c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457114"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673543"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Bitbucket by resolution GmbH の統合
 
@@ -41,8 +41,8 @@ Azure AD と SAML SSO for Bitbucket by resolution GmbH の統合を構成する�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SAML SSO for Bitbucket by resolution GmbH では、 **SP と IDP** によって開始される SSO がサポートされます
-* SAML SSO for Bitbucket by resolution GmbH では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* SAML SSO for Bitbucket by resolution GmbH では、**SP と IDP** によって開始される SSO がサポートされます
+* SAML SSO for Bitbucket by resolution GmbH では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 
 ## <a name="adding-saml-sso-for-bitbucket-by-resolution-gmbh-from-the-gallery"></a>ギャラリーからの SAML SSO for Bitbucket by resolution GmbH の追加
@@ -63,13 +63,13 @@ Azure AD への SAML SSO for Bitbucket by resolution GmbH の統合を構成す�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. [検索] ボックスに「 **SAML SSO for Bitbucket by resolution GmbH** 」と入力し、結果パネルで **[SAML SSO for Bitbucket by resolution GmbH]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. [検索] ボックスに「**SAML SSO for Bitbucket by resolution GmbH**」と入力し、結果パネルで **[SAML SSO for Bitbucket by resolution GmbH]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の SAML SSO for Bitbucket by resolution GmbH](common/search-new-app.png)
+    ![結果一覧の SAML SSO for Bitbucket by resolution GmbH](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、SAML SSO for Bitbucket by resolution GmbH で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SAML SSO for Bitbucket by resolution GmbH で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと SAML SSO for Bitbucket by resolution GmbH 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 SAML SSO for Bitbucket by resolution GmbH で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -99,7 +99,7 @@ SAML SSO for Bitbucket by resolution GmbH で Azure AD シングル サインオ
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、 **IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+4. **[基本的な SAML 構成]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
     ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
@@ -153,7 +153,7 @@ SAML SSO for Bitbucket by resolution GmbH で Azure AD シングル サインオ
 7.  **[Import SAML IdP Metadata]\(SAML IDP メタデータのインポート\)** ページで、 **[ファイルの読み込み]** をクリックして、Azure Portal からダウンロードした **メタデータ XML** ファイルをアップロードします。
 
     ![IDP メタデータ](./media/bitbucket-tutorial/tutorial_bitbucket_idpmetadata.png)
-    
+
 8. **[次へ]** をクリックします。
 
 9. **[Save settings]\(設定の保存\)** をクリックします。
@@ -176,9 +176,9 @@ SAML SSO for Bitbucket by resolution GmbH で Azure AD シングル サインオ
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -193,7 +193,7 @@ SAML SSO for Bitbucket by resolution GmbH で Azure AD シングル サインオ
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、「 **SAML SSO for Bitbucket by resolution GmbH** 」と入力し、選択します。
+2. アプリケーションの一覧で、「**SAML SSO for Bitbucket by resolution GmbH**」と入力し、選択します。
 
     ![アプリケーションの一覧の SAML SSO for Bitbucket by resolution GmbH のリンク](common/all-applications.png)
 

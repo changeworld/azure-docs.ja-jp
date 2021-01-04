@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 9c27139e2dca37c1ff8d963e1e8cdb5de682d39d
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 86c2d9585abd546acb3efb22256d3f3b70bfb972
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302942"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674397"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>チュートリアル: Azure Active Directory と Carlson Wagonlit Travel の統合
 
@@ -63,7 +63,7 @@ Azure AD への Carlson Wagonlit Travel の統合を構成するには、ギャ�
 
 4. 検索ボックスに「**Carlson Wagonlit Travel**」と入力し、結果ウィンドウで **Carlson Wagonlit Travel** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Carlson Wagonlit Travel](common/search-new-app.png)
+    ![結果一覧の Carlson Wagonlit Travel](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -138,7 +138,7 @@ Carlson Wagonlit Travel で Azure AD シングル サインオンを構成する
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 

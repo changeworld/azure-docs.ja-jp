@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 29163bf30807b6deac397217475d76e29695f1eb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b73131285c7436e2108a64a136f241724a29b5c6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456904"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672442"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>チュートリアル: Azure Active Directory と BorrowBox の統合
 
@@ -41,8 +41,8 @@ BorrowBox と Azure AD の統合を構成するには、次のものが必要で
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* BorrowBox では、 **SP と IDP** によって開始される SSO がサポートされます
-* BorrowBox では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* BorrowBox では、**SP と IDP** によって開始される SSO がサポートされます
+* BorrowBox では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-borrowbox-from-the-gallery"></a>ギャラリーからの BorrowBox の追加
 
@@ -62,13 +62,13 @@ Azure AD への BorrowBox の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **BorrowBox** 」と入力し、結果パネルで **[BorrowBox]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**BorrowBox**」と入力し、結果パネルで **[BorrowBox]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧内の BorrowBox](common/search-new-app.png)
+    ![結果一覧内の BorrowBox](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、BorrowBox を利用した Azure AD のシングル サインオンを構成してテストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、BorrowBox を利用した Azure AD のシングル サインオンを構成してテストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと BorrowBox 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 BorrowBox で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -111,7 +111,7 @@ BorrowBox を利用して Azure AD シングル サインオンを構成する�
     > [!NOTE]
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 値を取得するには、[BorrowBox クライアント サポート チーム](mailto:borrowbox@bolinda.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. BorrowBox アプリケーションでは、特定の形式の SAML アサーションを想定するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 BorrowBox アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+6. BorrowBox アプリケーションでは、特定の形式の SAML アサーションを想定するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 BorrowBox アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -149,9 +149,9 @@ BorrowBox を利用して Azure AD シングル サインオンを構成する�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

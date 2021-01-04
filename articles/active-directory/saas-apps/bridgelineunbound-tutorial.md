@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: aab51f4607e81a36c8bd553ea5a118abcf92411d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 34f72f0aa0b112cb12ebdd0b8c4afed2b49db47c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456757"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673207"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridgeline-unbound"></a>チュートリアル: Azure Active Directory と Bridgeline Unbound の統合
 
@@ -41,8 +41,8 @@ Bridgeline Unbound と Azure AD の統合を構成するには、次のものが
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Bridgeline では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Bridgeline Unbound では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Bridgeline では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Bridgeline Unbound では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-bridgeline-unbound-from-the-gallery"></a>ギャラリーからの Bridgeline Unbound の追加
 
@@ -62,13 +62,13 @@ Azure AD への Bridgeline Unbound の統合を構成するには、ギャラリ
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Bridgeline Unbound** 」と入力し、結果パネルで **Bridgeline Unbound** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Bridgeline Unbound**」と入力し、結果パネルで **Bridgeline Unbound** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Bridgeline Unbound](common/search-new-app.png)
+    ![結果一覧の Bridgeline Unbound](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Bridgeline Unbound で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Bridgeline Unbound で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Bridgeline Unbound 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Bridgeline Unbound で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -149,9 +149,9 @@ Bridgeline Unbound との Azure AD シングル サインオンを構成する�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[ユーザー名]** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

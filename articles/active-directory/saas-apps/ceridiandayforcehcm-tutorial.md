@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bd7213f31eb737bedd64d627141c2576fdadb79a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b2241ff6841a5b3f536419336dc4f4fd888663d9
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456383"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673071"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>チュートリアル: Azure Active Directory と Ceridian Dayforce HCM の統合
 
@@ -41,7 +41,7 @@ Ceridian Dayforce HCM と Azure AD の統合を構成するには、次のもの
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Ceridian Dayforce HCM では、 **SP** によって開始される SSO がサポートされます
+* Ceridian Dayforce HCM では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-ceridian-dayforce-hcm-from-the-gallery"></a>ギャラリーからの Ceridian Dayforce HCM の追加
 
@@ -61,13 +61,13 @@ Azure AD への Ceridian Dayforce HCM の統合を構成するには、ギャラ
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Ceridian Dayforce HCM** 」と入力して、結果パネルから **[Ceridian Dayforce HCM]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Ceridian Dayforce HCM**」と入力して、結果パネルから **[Ceridian Dayforce HCM]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
-     ![結果一覧の Ceridian Dayforce HCM](common/search-new-app.png)
+    ![結果一覧の Ceridian Dayforce HCM](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** という名前のテスト ユーザーに基づいて、Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成、テストします。
+このセクションでは、**Britta Simon** という名前のテスト ユーザーに基づいて、Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Ceridian Dayforce HCM 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -130,7 +130,7 @@ Ceridian Dayforce HCM で Azure AD シングル サインオンを構成する�
     ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes]\(ユーザー属性\) を示しています。](common/edit-attribute.png)
 
 6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
-    
+
     | Name | ソース属性|
     | ---------| --------- |
     | name  | user.extensionattribute2 |
@@ -187,9 +187,9 @@ Ceridian Dayforce HCM で Azure AD シングル サインオンを構成する�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

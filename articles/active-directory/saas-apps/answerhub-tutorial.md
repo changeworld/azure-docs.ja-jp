@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ef09ef7d2ca6dd68def732831f9341dcd3aa6d62
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 284ec65955de60f41d7bb0f97bf608faba3d4b79
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458083"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672595"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>チュートリアル: Azure Active Directory と AnswerHub の統合
 
@@ -61,9 +61,9 @@ AnswerHub の Azure AD への統合を設定するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **AnswerHub** 」と入力します。 結果リストで **[AnswerHub]** を選択し、 **[追加]** を選択します。
+4. 検索ボックスに「**AnswerHub**」と入力します。 結果リストで **[AnswerHub]** を選択し、 **[追加]** を選択します。
 
-     ![結果一覧の AnswerHub](common/search-new-app.png)
+    ![結果一覧の AnswerHub](common/search-new-app.png)
 
 ## <a name="set-up-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの設定とテスト
 
@@ -141,13 +141,13 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
 4. **[IDP Config]\(IDP 構成\)** タブで、以下の手順を実行します。
 
     ![このスクリーンショットは、[User and Groups]\(ユーザーとグループ\) タブが選択された状態の AnswerHub ページを示しています。](./media/answerhub-tutorial/ic785172.png "[SAML 設定]")  
-  
+
     a. **[IDP Login URL]\(IDP ログイン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** を貼り付けます。
-  
+
     b. **[IDP Logout URL]\(IDP ログアウト URL\)** ボックスに、Azure portal からコピーした **[ログアウト URL]** を貼り付けます。
 
     c. **[IDP Name Identifier Format]\(IDP 名前識別子形式\)** ボックスに、Azure portal の **[ユーザー属性]** セクションで選択した **識別子** の値を入力します。
-  
+
     d. **[Keys and Certificates]\(キーと証明書\)** を選択します。
 
 5. **[Keys and Certificates]\(キーと証明書\)** セクションで、以下の手順を実行します。
@@ -155,7 +155,7 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
     ![[Keys and Certificates] (キーと証明書)](./media/answerhub-tutorial/ic785173.png "Keys and Certificates")  
 
     a. Azure portal からダウンロードした Base64 でエンコードされた証明書をメモ帳で開き、その内容をコピーしてから、 **[IDP Public Key (x509 Format)]\(IDP 公開キー (x509 形式)\)** ボックスに貼り付けます。
-  
+
     b. **[保存]** を選択します。
 
 6. **[IDP Config]\(IDP 構成\)** タブで、もう一度 **[Save]\(保存\)** を選択します。
@@ -178,9 +178,9 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
 
     ![ユーザー プロパティ](common/user-properties.png)
 
-    a. **[名前]** ボックスに「 **BrittaSimon** 」と入力します。
-  
-    b. **[ユーザー名]** ボックスに、「 **brittasimon\@<yourcompanydomain.extension>** 」と入力します。  
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+
+    b. **[ユーザー名]** ボックスに、「**brittasimon\@<yourcompanydomain.extension>** 」と入力します。  
     たとえば、「 BrittaSimon@contoso.com 」のように入力します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
@@ -231,9 +231,9 @@ Azure AD ユーザーが AnswerHub にサインインできるようにするに
 
 4. 左側のウィンドウの **[Manage Users]\(ユーザーの管理\)** セクションで、 **[Create or import users]\(ユーザーの作成またはインポート\)** を選択し、 **[Users & Groups]\(ユーザーとグループ\)** を選択します。
 
-   ![このスクリーンショットは、[User and Groups]\(ユーザーとグループ\) タブが選択され、[Create or import users]\(ユーザーの作成またはインポート\) リンクがコールアウトされた状態の AnswerHub ページを示しています。](./media/answerhub-tutorial/ic785175.png "ユーザーとグループ")
+    ![このスクリーンショットは、[User and Groups]\(ユーザーとグループ\) タブが選択され、[Create or import users]\(ユーザーの作成またはインポート\) リンクがコールアウトされた状態の AnswerHub ページを示しています。](./media/answerhub-tutorial/ic785175.png "ユーザーとグループ")
 
-5. 追加したい有効な Azure AD アカウントの **メール アドレス** 、 **ユーザー名** 、 **パスワード** を適切なボックスに入力してから、 **[Save]\(保存\)** を選択します。
+5. 追加したい有効な Azure AD アカウントの **メール アドレス**、**ユーザー名**、**パスワード** を適切なボックスに入力してから、 **[Save]\(保存\)** を選択します。
 
 > [!NOTE]
 > AnswerHub から提供されている他のユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントを設定できます。

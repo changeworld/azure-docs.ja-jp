@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: d82fa5b44d4797d4254a91b4caa72b7c6b5e02ab
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9a98a77b9cc89b7a1a05e676048775aa38c83733
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309236"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672068"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>チュートリアル: Azure Active Directory と Adobe Experience Manager の統合
 
@@ -65,7 +65,7 @@ Azure AD と Adobe Experience Manager の統合を構成するには、ギャラ
 
 4. 検索ボックスに「**Adobe Experience Manager**」と入力し、結果ウィンドウで **[Adobe Experience Manager]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
-     ![結果一覧の Adobe Experience Manager](common/search-new-app.png)
+    ![結果一覧の Adobe Experience Manager](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -116,7 +116,7 @@ Azure AD と Adobe Experience Manager の統合を構成するには、ギャラ
 
     **[サインオン URL]** ボックスに、Adobe Experience Manager サーバーの URL を入力します。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -180,9 +180,9 @@ Azure AD と Adobe Experience Manager の統合を構成するには、ギャラ
 
     a. **[パス]** ボックスに、「 **/** 」と入力します。
 
-    b. **[IDP URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を入力します。
+    b. **[IDP URL]** ボックスに、Azure portal からコピーした **ログイン URL** の値を入力します。
 
-    c. **[IDP Certificate Alias]\(IDP 証明書の別名\)** ボックスに、トラストストアに追加した**証明書の別名**の値を入力します。
+    c. **[IDP Certificate Alias]\(IDP 証明書の別名\)** ボックスに、トラストストアに追加した **証明書の別名** の値を入力します。
 
     d. **[Security Provided Entity ID]\(セキュリティ指定されたエンティティ ID\)** ボックスに、Azure portal で構成した **[Azure AD 識別子]** の一意の値を入力します。
 
@@ -194,7 +194,7 @@ Azure AD と Adobe Experience Manager の統合を構成するには、ギャラ
 
     h. **[Autocreate CRX Users]\(CRX ユーザーの自動作成\)** を選択します。
 
-    i. **[Logout URL]\(ログアウト URL\)** ボックスに、Azure portal から取得した一意の**ログアウト URL** の値を入力します。
+    i. **[Logout URL]\(ログアウト URL\)** ボックスに、Azure portal から取得した一意の **ログアウト URL** の値を入力します。
 
     j. **[保存]** を選択します。
 
@@ -215,7 +215,7 @@ Azure AD と Adobe Experience Manager の統合を構成するには、ギャラ
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -253,7 +253,7 @@ Azure AD と Adobe Experience Manager の統合を構成するには、ギャラ
 
 このセクションでは、Adobe Experience Manager で Britta Simon というユーザーを作成します。 **[Autocreate CRX Users]\(CRX ユーザーの自動作成\)** オプションを選択した場合、認証成功後にユーザーが自動的に作成されます。
 
-ユーザーを手動で作成する場合は、[Adobe Experience Manager サポート チーム](https://helpx.adobe.com/support/experience-manager.html) に連絡して、Adobe Experience Manager プラットフォームにユーザーを追加してください。
+ユーザーを手動で作成する場合は、[Adobe Experience Manager サポート チーム](https://helpx.adobe.com/support/experience-manager.html)に連絡して、Adobe Experience Manager プラットフォームにユーザーを追加してください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

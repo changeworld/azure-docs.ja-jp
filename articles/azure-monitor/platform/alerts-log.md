@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 61aba3e5792d1cc20da16686d052de91744dab76
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a8dbadd3af9dc21ced54af151e4de705f854e011
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186781"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696063"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する
 
@@ -71,7 +71,7 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
     > [bin()](/azure/kusto/query/binfunction) では不均一な期間が返される可能性があるため、実行時、アラート サービスでは適切な時間を使用して [bin()](/azure/kusto/query/binfunction) 関数が [bin_at()](/azure/kusto/query/binatfunction) に変換され、固定小数点を持つ結果が得られるようにします。
 
     > [!NOTE]
-    > アラート ディメンションによる分割は、現在の scheduledQueryRules API でのみ使用できます。 従来の [Log Analytics Alert API](api-alerts.md) を使用する場合は、切り替える必要があります。 [切り替えの詳細について参照してください](./alerts-log-api-switch.md)。 大規模なリソース中心のアラートは、`2020-05-01-preview` 以上の API バージョンでのみサポートされています。
+    > アラート ディメンションによる分割は、現在の scheduledQueryRules API でのみ使用できます。 従来の [Log Analytics Alert API](api-alerts.md) を使用する場合は、切り替える必要があります。 [切り替えの詳細について参照してください。](./alerts-log-api-switch.md) 大規模なリソース中心のアラートは、`2020-05-01-preview` 以上の API バージョンでのみサポートされています。
 
     ![[集計] オプション](media/alerts-log/aggregate-on.png)
 
@@ -312,7 +312,7 @@ New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceG
 ```azurecli
 az login
 
-az group deployment create \
+az deployment group create \
     --name AlertDeployment \
     --resource-group ResourceGroupofTargetResource \
     --template-file mylogalerttemplate.json \

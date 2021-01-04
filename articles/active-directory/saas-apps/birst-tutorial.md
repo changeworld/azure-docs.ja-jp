@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 07cdb6c3c4a0eb97b4b98b5854c481c4cee16a20
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 124485819bf7fab02e2d62bec46ad50468589773
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457182"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674346"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-birst-agile-business-analytics"></a>チュートリアル: Azure Active Directory と Birst Agile Business Analytics の統合
 
@@ -41,7 +41,7 @@ Azure AD と Birst Agile Business Analytics の統合を構成するには、次
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Birst Agile Business Analytics では、 **SP** Initiated SSO がサポートされます
+* Birst Agile Business Analytics では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-birst-agile-business-analytics-from-the-gallery"></a>ギャラリーから Birst Agile Business Analytics を追加する
 
@@ -61,13 +61,13 @@ Azure AD への Birst Agile Business Analytics の統合を構成するには、
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Birst Agile Business Analytics** 」と入力し、結果パネルで **[Birst Agile Business Analytics]** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Birst Agile Business Analytics**」と入力し、結果パネルで **[Birst Agile Business Analytics]** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Birst Agile Business Analytics](common/search-new-app.png)
+    ![結果一覧の Birst Agile Business Analytics](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** という名前のテスト ユーザーに基づいて、Birst Agile Business Analytics で Azure AD のシングル サインオンを構成およびテストします。
+このセクションでは、**Britta Simon** という名前のテスト ユーザーに基づいて、Birst Agile Business Analytics で Azure AD のシングル サインオンを構成およびテストします。
 シングル サインオンが機能するためには、Azure AD ユーザーと Birst Agile Business Analytics の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 Birst Agile Business Analytics で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -131,7 +131,7 @@ Birst Agile Business Analytics で Azure AD シングル サインオンを構�
 **Birst Agile Business Analytics** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Birst Agile Business Analytics サポート チーム](mailto:info@birst.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!NOTE]
-> Birst チームが適切なサーバー ( **app2101** など) 上で SSO を設定できるように、この統合には SHA256 アルゴリズムが必要なことをチームに伝えてください (SHA1 はサポートされません)。
+> Birst チームが適切なサーバー (**app2101** など) 上で SSO を設定できるように、この統合には SHA256 アルゴリズムが必要なことをチームに伝えてください (SHA1 はサポートされません)。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -149,9 +149,9 @@ Birst Agile Business Analytics で Azure AD シングル サインオンを構�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

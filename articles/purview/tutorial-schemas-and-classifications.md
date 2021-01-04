@@ -1,18 +1,18 @@
 ---
 title: チュートリアル:Azure Purview (プレビュー) でリソース セット、詳細、スキーマ、分類を考察する
 description: このチュートリアルでは、リソース セット、資産の詳細、スキーマ、分類を使用する方法について説明します。
-author: viseshag
-ms.author: viseshag
+author: animukherjee
+ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: c39ed746630c646b0ce305a9535ae6d610f5161c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c74324ebeeefeed361c0557c45a280a411effa22
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549762"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693328"
 ---
 # <a name="tutorial-explore-resource-sets-details-schemas-and-classifications-in-azure-purview-preview"></a>チュートリアル:Azure Purview (プレビュー) でリソース セット、詳細、スキーマ、分類を考察する
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 3e760ffa0dfc3bf080852da2fc401abd83fe4101
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7cd8faece0d737e97f1c5809f27840f1d9192548
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457743"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673408"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ares-for-enterprise"></a>チュートリアル:Azure Active Directory と ARES for Enterprise の統合
 
@@ -41,9 +41,9 @@ ARES for Enterprise と Azure AD の統合を構成するには、次のもの�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* ARES for Enterprise では、 **SP** によって開始される SSO がサポートされます
+* ARES for Enterprise では、**SP** によって開始される SSO がサポートされます
 
-* ARES for Enterprise では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* ARES for Enterprise では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-ares-for-enterprise-from-the-gallery"></a>ギャラリーからの ARES for Enterprise の追加
 
@@ -63,13 +63,13 @@ Azure AD への ARES for Enterprise の統合を構成するには、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **ARES for Enterprise** 」と入力し、結果パネルで **ARES for Enterprise** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ARES for Enterprise**」と入力し、結果パネルで **ARES for Enterprise** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の ARES for Enterprise](common/search-new-app.png)
+    ![結果一覧の ARES for Enterprise](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、ARES for Enterprise で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、ARES for Enterprise で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと ARES for Enterprise 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 ARES for Enterprise で Azure AD のシングル サインオンを構成し、テストするには、次の構成要素を完了する必要があります。
@@ -111,7 +111,7 @@ ARES for Enterprise で Azure AD シングル サインオンを構成するに�
 
 ### <a name="configure-ares-for-enterprise-single-sign-on"></a>ARES for Enterprise シングル サインオンの構成
 
-**ARES for Enterprise** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [ARES for Enterprise サポート チーム](mailto:support@graebert.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**ARES for Enterprise** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [ARES for Enterprise サポート チーム](mailto:support@graebert.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -129,9 +129,9 @@ ARES for Enterprise で Azure AD シングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -166,7 +166,7 @@ ARES for Enterprise で Azure AD シングル サインオンを構成するに�
 
 ### <a name="create-ares-for-enterprise-test-user"></a>ARES for Enterprise のテスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを ARES for Enterprise に作成します。 ARES for Enterprise では、 **Just-In-Time ユーザー プロビジョニング** がサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ ARES for Enterprise に存在しない場合は、ARES for Enterprise にアクセスしようとしたときに新しいユーザーが作成されます。
+このセクションでは、Britta Simon というユーザーを ARES for Enterprise に作成します。 ARES for Enterprise では、**Just-In-Time ユーザー プロビジョニング** がサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ ARES for Enterprise に存在しない場合は、ARES for Enterprise にアクセスしようとしたときに新しいユーザーが作成されます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

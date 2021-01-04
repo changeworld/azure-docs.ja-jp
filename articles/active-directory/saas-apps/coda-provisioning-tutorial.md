@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: Zhchia
-ms.openlocfilehash: ea2f25d6b03f002448079b16bd261729807d8a03
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8df1588a78829252d55f82349d6889c754c989e6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179703"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673229"
 ---
 # <a name="tutorial-configure-coda-for-automatic-user-provisioning"></a>チュートリアル:Coda を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -93,7 +93,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 5. **[管理者資格情報]** セクションで、前の手順 2 で取得した Coda テナント URL とシークレット トークンを入力します。 **[テスト接続]** をクリックして、Azure AD から Coda への接続を確認します。 接続できない場合は、使用中の Coda アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
-    ![テナント URL とシークレット トークンを入力できる場所である [管理者資格情報] ダイアログ ボックスを示すスクリーンショット。](./media/coda-provisioning-tutorial/provisioning.png)
+     ![テナント URL とシークレット トークンを入力できる場所である [管理者資格情報] ダイアログ ボックスを示すスクリーンショット。](./media/coda-provisioning-tutorial/provisioning.png)
 
 6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 

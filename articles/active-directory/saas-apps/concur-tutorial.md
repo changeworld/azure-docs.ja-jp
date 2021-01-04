@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 8a23cff3f7bfe6d88e6a818117e62762abb6d226
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f5db7efffa685291584bd402e9898d365f615773
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455373"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672615"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Concur の統合
 
@@ -82,7 +82,7 @@ Concur で Azure AD SSO を構成してテストするには、次の構成要�
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://www.concursolutions.com/UI/SSO/<OrganizationId>`
 
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<customer-domain>.concursolutions.com`
-    
+
     c. **[応答 URL]** に、次の URL パターンのいずれかを入力します。
 
     | [応答 URL]|
@@ -91,7 +91,7 @@ Concur で Azure AD SSO を構成してテストするには、次の構成要�
     | `https://<customer-domain>.concursolutions.com/<OrganizationId>` |
     | `https://<customer-domain>.concur.com` |
     | `https://<customer-domain>.concursolutions.com` | 
-    
+
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Concur クライアント サポート チーム](https://www.concur.co.in/contact)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
@@ -154,7 +154,7 @@ Concur で Azure AD SSO を構成してテストするには、次の構成要�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
 - [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 

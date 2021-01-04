@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 91d48e42dc1c92e05e963b4c8b53e44daa403378
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f999818ab791cabac6b0877b7735fa730dab89e2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456699"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673397"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>チュートリアル: Azure Active Directory と Brightspace by Desire2Learn の統合
 
@@ -44,7 +44,7 @@ Azure AD と Brightspace by Desire2Learn の統合を構成するには、次の
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Brightspace by Desire2Learn では、 **IDP** Initiated SSO がサポートされます
+* Brightspace by Desire2Learn では、**IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-brightspace-by-desire2learn-from-the-gallery"></a>ギャラリーからの Brightspace by Desire2Learn の追加
 
@@ -64,13 +64,13 @@ Brightspace by Desire2Learn の Azure AD への統合を構成するには、Bri
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Brightspace by Desire2Learn** 」と入力し、結果パネルで **Brightspace by Desire2Learn** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Brightspace by Desire2Learn**」と入力し、結果パネルで **Brightspace by Desire2Learn** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Brightspace by Desire2Learn](common/search-new-app.png)
+    ![結果一覧の Brightspace by Desire2Learn](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** という名前のテスト ユーザーに基づいて、Brightspace by Desire2Learn で Azure AD のシングル サインオンを構成およびテストします。
+このセクションでは、**Britta Simon** という名前のテスト ユーザーに基づいて、Brightspace by Desire2Learn で Azure AD のシングル サインオンを構成およびテストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Brightspace by Desire2Learn 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Brightspace by Desire2Learn で Azure AD のシングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
@@ -105,7 +105,7 @@ Brightspace by Desire2Learn で Azure AD のシングル サインオンを構�
     ![[Brightspace by Desire2Learn のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
-    
+
     ```http
     https://<companyname>.tenants.brightspace.com/samlLogin
     https://<companyname>.desire2learn.com/shibboleth-sp
@@ -150,9 +150,9 @@ Brightspace by Desire2Learn で Azure AD のシングル サインオンを構�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

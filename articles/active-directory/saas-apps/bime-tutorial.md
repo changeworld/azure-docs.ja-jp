@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: d2a94b1503a6c7cd4a5790cc3ba4693103e70bfb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3bbd18bc7851d4ccffca4f721f6e2aef45ff3c3d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457199"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673723"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>チュートリアル: Azure Active Directory と Bime の統合
 
@@ -41,7 +41,7 @@ Bime と Azure AD の統合を構成するには、次のものが必要です�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Bime では、 **SP** によって開始される SSO がサポートされます
+* Bime では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-bime-from-the-gallery"></a>ギャラリーからの Bime の追加
 
@@ -61,13 +61,13 @@ Azure AD への Bime の統合を構成するには、ギャラリーから管�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Bime** 」と入力し、結果パネルで **Bime** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Bime**」と入力し、結果パネルで **Bime** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Bime](common/search-new-app.png)
+    ![結果一覧の Bime](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Bime で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Bime で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Bime 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Bime で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -131,11 +131,11 @@ Bime で Azure AD シングル サインオンを構成するには、次の手�
 1. 別の Web ブラウザー ウィンドウで、Bime 企業サイトに管理者としてログインします。
 
 2. ツールバーで、 **[管理者]** 、 **[アカウント]** の順にクリックします。
-  
+
     ![スクリーンショットは、[管理者] および [アカウント] が選択されていることを示しています。](./media/bime-tutorial/ic775558.png "[Admin]")
 
 3. アカウント構成ページで、次の手順に従います。
-  
+
     ![シングル サインオンの構成](./media/bime-tutorial/ic775559.png "Configure single sign-on")
 
     a. **[SAML 認証を有効にする]** を選択します。
@@ -162,9 +162,9 @@ Bime で Azure AD シングル サインオンを構成するには、次の手�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -217,11 +217,11 @@ Azure AD ユーザーが Bime にログインできるようにするには、�
 
     ![ユーザーの詳細](./media/bime-tutorial/ic775563.png "[ユーザーの詳細]")
 
-    a. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta** )。
+    a. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
 
-    b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon** )。
+    b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
-    c. **[Email]\(電子メール\)** テキスト ボックスに、ユーザーのメール アドレス ( **brittasimon\@contoso.com** など) を入力します。
+    c. **[Email]\(電子メール\)** テキスト ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
 
     d. **[保存]** をクリックします。
 

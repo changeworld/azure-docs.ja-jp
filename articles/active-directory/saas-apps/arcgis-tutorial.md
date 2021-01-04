@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 08644c8b3c7967a2ba604cbddb58df2b29c6fc3e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b004394d3f0cc1c4d285c9eba9952a43e8cf65f2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457777"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674033"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>チュートリアル: Azure Active Directory と ArcGIS Online の統合
 
@@ -44,7 +44,7 @@ Azure AD と ArcGIS Online の統合を構成するには、次の項目が必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* ArcGIS Online では、 **SP** によって開始される SSO がサポートされます
+* ArcGIS Online では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-arcgis-online-from-the-gallery"></a>ギャラリーからの ArcGIS Online の追加
 
@@ -64,13 +64,13 @@ ArcGIS Online の Azure AD への統合を構成するには、ArcGIS Online を
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **ArcGIS Online** 」と入力し、結果パネルで **[ArcGIS Online]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ArcGIS Online**」と入力し、結果パネルで **[ArcGIS Online]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の ArcGIS Online](common/search-new-app.png)
+    ![結果一覧の ArcGIS Online](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、ArcGIS Online で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、ArcGIS Online で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと ArcGIS Online 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 ArcGIS Online で Azure AD のシングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
@@ -119,7 +119,7 @@ ArcGIS Online で Azure AD のシングル サインオンを構成するには�
 
     ![image](./media/arcgis-tutorial/install_extension.png)
 
-7. ブラウザーに拡張機能を追加した後、 **[setup ArcGIS Online]\(ArcGIS Online のセットアップ)** をクリックすると、ArcGIS Online アプリケーションに移動します。 そこから、管理者資格情報を提供して ArcGIS Online にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、「 **ArcGIS Online シングル サインオンの構成** 」セクションの手順が自動化されます。
+7. ブラウザーに拡張機能を追加した後、 **[setup ArcGIS Online]\(ArcGIS Online のセットアップ)** をクリックすると、ArcGIS Online アプリケーションに移動します。 そこから、管理者資格情報を提供して ArcGIS Online にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、「**ArcGIS Online シングル サインオンの構成**」セクションの手順が自動化されます。
 
 ### <a name="configure-arcgis-online-single-sign-on"></a>ArcGIS Online シングル サインオンの構成
 
@@ -165,9 +165,9 @@ ArcGIS Online で Azure AD のシングル サインオンを構成するには�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -182,7 +182,7 @@ ArcGIS Online で Azure AD のシングル サインオンを構成するには�
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で「 **ArcGIS Online** 」と入力して選択します。
+2. アプリケーションの一覧で「**ArcGIS Online**」と入力して選択します。
 
     ![アプリケーションの一覧の ArcGIS Online のリンク](common/all-applications.png)
 
@@ -210,24 +210,24 @@ ArcGIS Online の場合、プロビジョニングは手動のタスクです。
 1. **ArcGIS** テナントにログインします。
 
 2. **[INVITE MEMBERS] \(メンバーの招待)** をクリックします。
-   
+
     ![メンバーの招待](./media/arcgis-tutorial/ic784747.png "[Invite Members]")
 
 3. **[Add members automatically without sending an email] \(電子メールを送信せずにメンバーを自動的に追加する)** を選択し、 **[NEXT] \(次へ)** をクリックします。
-   
+
     ![メンバーを自動的に追加する](./media/arcgis-tutorial/ic784748.png "Add Members Automatically")
 
 4. **[Members]** ダイアログ ページで、次の手順に従います。
-   
-     ![追加とレビュー](./media/arcgis-tutorial/ic784749.png "[Add And Review]")
-    
-     a. プロビジョニングする有効な Azure AD アカウントの **メール** 、 **名** 、 **姓** を入力します。
-  
+
+    ![追加とレビュー](./media/arcgis-tutorial/ic784749.png "[Add And Review]")
+
+     a. プロビジョニングする有効な Azure AD アカウントの **メール**、**名**、**姓** を入力します。
+
      b. **[ADD AND REVIEW] \(追加とレビュー)** をクリックします。
 5. 入力したデータを確認してから、 **[ADD MEMBERS] \(メンバーの追加)** をクリックします。
-   
+
     ![メンバーの追加](./media/arcgis-tutorial/ic784750.png "Add member")
-        
+
     > [!NOTE]
     > Azure Active Directory アカウント所有者がメールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。
 

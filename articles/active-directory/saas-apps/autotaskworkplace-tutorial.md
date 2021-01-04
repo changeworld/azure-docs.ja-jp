@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 36d6d40b471edb20f2e4294a4ba29323fac2ebc6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8010bf25cc62d2de1b8b6ff9c0ecdc140c02c6a3
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457488"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674032"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>チュートリアル: Azure Active Directory と Autotask Workplace の統合
 
@@ -67,7 +67,7 @@ Azure AD への Autotask Workplace の統合を構成するには、ギャラリ
 
 4. 検索ボックスに「**Autotask Workplace**」と入力し、結果ウィンドウで **[Autotask Workplace]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Autotask Workplace](common/search-new-app.png)
+    ![結果一覧の Autotask Workplace](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -173,7 +173,7 @@ Autotask Workplace で Azure AD シングル サインオンを構成するに�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 835ee5f1c9da081618ed314c694f578a6e9f4aee
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8181718d6524c78e036f6953ebff73217acab890
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455393"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672748"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-condeco"></a>チュートリアル: Azure Active Directory と Condeco の統合
 
@@ -41,9 +41,9 @@ Condeco と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Condeco では、 **SP** Initiated SSO がサポートされます
+* Condeco では、**SP** Initiated SSO がサポートされます
 
-* Condeco では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Condeco では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-condeco-from-the-gallery"></a>ギャラリーからの Condeco の追加
 
@@ -63,13 +63,13 @@ Azure AD への Condeco の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Condeco** 」と入力し、結果ウィンドウで **Condeco** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Condeco**」と入力し、結果ウィンドウで **Condeco** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Condeco](common/search-new-app.png)
+    ![結果一覧の Condeco](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Condeco で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Condeco で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Condeco 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Condeco で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -142,9 +142,9 @@ Condeco で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -179,7 +179,7 @@ Condeco で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="create-condeco-test-user"></a>Condeco のテスト ユーザーの作成
 
-このセクションの目的は、Condeco で Britta Simon というユーザーを作成することです。 Condeco では、 **Just-In-Time プロビジョニング** がサポートされています。この設定は、既定で有効になっています。
+このセクションの目的は、Condeco で Britta Simon というユーザーを作成することです。 Condeco では、**Just-In-Time プロビジョニング** がサポートされています。この設定は、既定で有効になっています。
 
 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Condeco ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 

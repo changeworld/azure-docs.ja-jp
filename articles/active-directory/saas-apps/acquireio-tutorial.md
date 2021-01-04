@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 78f473a7c4b10475c6c206764ce526c70fa056fe
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5fe070bc1abe0592b3082c597c1812781335448a
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313345"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673188"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-acquireio"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と AcquireIO の統合
 
@@ -73,7 +73,7 @@ AcquireIO に対する Azure AD SSO を構成してテストするには、次�
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
-   ![基本的な SAML 構成を編集する](common/edit-urls.png)
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
@@ -110,7 +110,7 @@ AcquireIO に対する Azure AD SSO を構成してテストするには、次�
 1. アプリケーションの一覧で **[AcquireIO]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
@@ -122,7 +122,7 @@ AcquireIO に対する Azure AD SSO を構成してテストするには、次�
 
 ## <a name="configure-acquireio-sso"></a>AcquireIO SSO の構成
 
-1. AcquireIO 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. AcquireIO 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -134,7 +134,7 @@ AcquireIO に対する Azure AD SSO を構成してテストするには、次�
 
 1. メニューの左側から **[App Store]\(アプリ ストア\)** をクリックします。
 
-     ![[App Store]\(アプリ ストア\) が強調表示されているスクリーンショット。](./media/acquireio-tutorial/config01.png)
+    ![[App Store]\(アプリ ストア\) が強調表示されているスクリーンショット。](./media/acquireio-tutorial/config01.png)
 
 1. **[Active Directory]** まで下にスクロールして、 **[インストール]** をクリックします。
 
@@ -146,7 +146,7 @@ AcquireIO に対する Azure AD SSO を構成してテストするには、次�
 
     a. **[コピー]** をクリックして、インスタンスの応答 URL をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けます。
 
-    b. **[ログイン URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[ログイン URL]** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     c. Base64 でエンコードされた証明書をメモ帳で開き、その内容をコピーして **[X.509 証明書]** ボックスに貼り付けます。
 
@@ -162,7 +162,7 @@ Azure AD ユーザーが AcquireIO にサインインできるようにするに
 
 1. メニューの左側で **[プロファイル]** をクリックして、 **[プロファイルの追加]** をクリックします。
 
-     ![画面の左側にあるメニューの [プロファイル] と [プロファイルの追加] オプションが強調表示されているスクリーンショット。](./media/acquireio-tutorial/config04.png)
+    ![画面の左側にあるメニューの [プロファイル] と [プロファイルの追加] オプションが強調表示されているスクリーンショット。](./media/acquireio-tutorial/config04.png)
 
 1. **[顧客の追加]** ポップアップで、次の手順に従います。
 
@@ -184,7 +184,7 @@ Azure AD ユーザーが AcquireIO にサインインできるようにするに
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
 - [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 

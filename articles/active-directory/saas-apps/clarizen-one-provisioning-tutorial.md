@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1658e6adf0c9de0cbd7412b963fb9a134f633430
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3754a56d1520118937a9d4aad406ae657b4dd23b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179700"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673666"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>チュートリアル:Clarizen One を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -78,19 +78,19 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
 
-    ![[エンタープライズ アプリケーション] ペインのスクリーンショット。](common/enterprise-applications.png)
+      ![[エンタープライズ アプリケーション] ペインのスクリーンショット。](common/enterprise-applications.png)
 
 1. アプリケーションのリストで **[Clarizen One]** を選択します。
 
-    ![アプリケーションの一覧に表示される Clarizen One のリンクを示すスクリーンショット。](common/all-applications.png)
+      ![アプリケーションの一覧に表示される Clarizen One のリンクを示すスクリーンショット。](common/all-applications.png)
 
 1. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブを示すスクリーンショット。](common/provisioning.png)
+      ![[プロビジョニング] タブを示すスクリーンショット。](common/provisioning.png)
 
 1. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブの [自動] オプションを示すスクリーンショット。](common/provisioning-automatic.png)
+      ![[プロビジョニング] タブの [自動] オプションを示すスクリーンショット。](common/provisioning-automatic.png)
 
 1. **[管理者資格情報]** セクションで、Clarizen One の **テナント URL** と **シークレット トークン** を入力します。 **[テスト接続]** を選択して、Azure AD から Clarizen One に接続できることを確認します。 接続できない場合は、使用中の Clarizen One アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
@@ -162,15 +162,15 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 1. Clarizen One に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
-    ![[プロビジョニングの状態] が [オン] に設定された画面のスクリーンショット。](common/provisioning-toggle-on.png)
+      ![[プロビジョニングの状態] が [オン] に設定された画面のスクリーンショット。](common/provisioning-toggle-on.png)
 
 1. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Clarizen One にプロビジョニングするユーザーまたはグループを定義します。
 
-    ![プロビジョニングのスコープを示すスクリーンショット。](common/provisioning-scope.png)
+      ![プロビジョニングのスコープを示すスクリーンショット。](common/provisioning-scope.png)
 
 1. プロビジョニングの準備ができたら、 **[保存]** を選択します。
 
-    ![プロビジョニングの構成の保存を示すスクリーンショット。](common/provisioning-configuration-save.png)
+      ![プロビジョニングの構成の保存を示すスクリーンショット。](common/provisioning-configuration-save.png)
 
 この操作により、 **[設定]** セクションの **[スコープ]** で定義したすべてのユーザーとグループの初期同期サイクルが開始されます。 初期サイクルは後続の同期よりも実行に時間がかかります。後続のサイクルは、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。
 

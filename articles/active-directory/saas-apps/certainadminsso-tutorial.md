@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 7ac237c7dd2e11d9acc5230608283aa2ba432a68
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 03a216f24013413fd03de9ae71eb599fd1334998
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456349"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672951"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certain-admin-sso"></a>チュートリアル: Azure Active Directory と Certain Admin SSO の統合
 
@@ -41,7 +41,7 @@ Azure AD と Certain Admin SSO の統合を構成するには、次のものが�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Certain Admin SSO では、 **SP** Initiated SSO がサポートされます
+* Certain Admin SSO では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-certain-admin-sso-from-the-gallery"></a>ギャラリーからの Certain Admin SSO の追加
 
@@ -61,13 +61,13 @@ Azure AD への Certain Admin SSO の統合を構成するには、ギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Certain Admin SSO** 」と入力し、結果パネルで **[Certain Admin SSO]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Certain Admin SSO**」と入力し、結果パネルで **[Certain Admin SSO]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Certain Admin SSO](common/search-new-app.png)
+    ![結果一覧の Certain Admin SSO](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーを基に、Certain Admin SSO で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーを基に、Certain Admin SSO で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Certain Admin SSO 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Certain Admin SSO で Azure AD のシングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
@@ -142,9 +142,9 @@ Certain Admin SSO で Azure AD シングル サインオンを構成するには
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

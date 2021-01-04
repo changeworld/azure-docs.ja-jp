@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: f762f4d81a71296d306e181f7b30a2b93b9ab52c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f564032873be6e4c70426d48c4576371862ea35d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457153"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673615"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>チュートリアル: Azure Active Directory と BitaBIZ の統合
 
@@ -41,7 +41,7 @@ BitaBIZ と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* BitaBIZ では、 **SP と IDP** によって開始される SSO がサポートされます
+* BitaBIZ では、**SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-bitabiz-from-the-gallery"></a>ギャラリーからの BitaBIZ の追加
 
@@ -61,13 +61,13 @@ Azure AD への BitaBIZ の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **BitaBIZ** 」と入力し、結果パネルで **[BitaBIZ]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**BitaBIZ**」と入力し、結果パネルで **[BitaBIZ]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果リストの BitaBIZ](common/search-new-app.png)
+    ![結果リストの BitaBIZ](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、BitaBIZ で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、BitaBIZ で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと BitaBIZ 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 BitaBIZ で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -172,9 +172,9 @@ BitaBIZ で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

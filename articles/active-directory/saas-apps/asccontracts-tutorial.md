@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: b0e0703105094507a9f6a16bf30775354f67b950
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d1f45244d09ce55b61b04d88ce2eb4a16289b1ab
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457700"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673003"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>チュートリアル:Azure Active Directory と ASC Contracts の統合
 
@@ -41,7 +41,7 @@ ASC Contracts と Azure AD の統合を構成するには、次のものが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* ASC Contracts では、 **IDP** Initiated SSO がサポートされます
+* ASC Contracts では、**IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-asc-contracts-from-the-gallery"></a>ギャラリーからの ASC Contracts の追加
 
@@ -61,13 +61,13 @@ Azure AD への ASC Contracts の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **ASC Contracts** 」と入力し、結果ウィンドウで **[ASC Contracts]** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ASC Contracts**」と入力し、結果ウィンドウで **[ASC Contracts]** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
-     ![結果一覧の ASC Contracts](common/search-new-app.png)
+    ![結果一覧の ASC Contracts](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、ASC Contracts と Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、ASC Contracts と Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと ASC Contracts 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 ASC Contracts で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -106,7 +106,7 @@ ASC Contracts で Azure AD シングル サインオンを構成するには、�
     b. **[応答 URL]** ボックスに、`https://<subdomain>.asccontracts.com/shibboleth.sso/login` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、ASC Networks Inc. (ASC) チーム ( **613.599.6178** ) にお問い合わせください。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、ASC Networks Inc. (ASC) チーム (**613.599.6178**) にお問い合わせください。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -124,7 +124,7 @@ ASC Contracts で Azure AD シングル サインオンを構成するには、�
 
 ### <a name="configure-asc-contracts-single-sign-on"></a>ASC Contracts でシングル サインオンを構成する
 
-**ASC Contracts** 側のシングル サインオンを構成するには、ASC Networks Inc. (ASC) のサポートに電話して ( **613.599.6178** )、ダウンロードした **フェデレーション メタデータ XML** を提供します。 両方の側で SAML SSO 接続を正しく設定するために、サポート チームがこのアプリケーションをセットアップします。
+**ASC Contracts** 側のシングル サインオンを構成するには、ASC Networks Inc. (ASC) のサポートに電話して (**613.599.6178**)、ダウンロードした **フェデレーション メタデータ XML** を提供します。 両方の側で SAML SSO 接続を正しく設定するために、サポート チームがこのアプリケーションをセットアップします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -142,9 +142,9 @@ ASC Contracts で Azure AD シングル サインオンを構成するには、�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -179,7 +179,7 @@ ASC Contracts で Azure AD シングル サインオンを構成するには、�
 
 ### <a name="create-asc-contracts-test-user"></a>ASC Contracts のテスト ユーザーの作成
 
-ASC Networks Inc. (ASC) のサポート チーム ( **613.599.6178** ) と協力して、ASC Contracts プラットフォームに追加されたユーザーを取得します。
+ASC Networks Inc. (ASC) のサポート チーム (**613.599.6178**) と協力して、ASC Contracts プラットフォームに追加されたユーザーを取得します。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

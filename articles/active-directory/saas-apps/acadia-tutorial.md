@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.openlocfilehash: b6bf0736c2887ee19551e2719ec2418bbacdbd1d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: bf1b46a42b0b8b68e1ab95a3345bb3b5435a576b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313681"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673821"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>チュートリアル:Azure Active Directory と Acadia の統合
 
@@ -64,7 +64,7 @@ Azure AD への Acadia の統合を構成するには、ギャラリーからマ
 
 4. 検索ボックスに「**Acadia**」と入力し、結果パネルで **Acadia** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Acadia](common/search-new-app.png)
+    ![結果一覧の Acadia](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -115,7 +115,7 @@ Acadia で Azure AD シングル サインオンを構成するには、次の�
     > [!NOTE]
     > 手順 4 と 5 の値は、Acadia チームによってメタデータ ファイル内に提供されます。このファイルは、 **[基本的な SAML 構成]** セクションで **[メタデータ ファイルのアップロード]** をクリックすることでインポートできます。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照して、メタデータ値が正しいことを確認することもできます。 提供されている値が正しくない場合は、[Acadia クライアント サポート チーム](mailto:support@systemsalliance.com)にお問い合わせください。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -131,7 +131,7 @@ Acadia で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="configure-acadia-single-sign-on"></a>Acadia でのシングル サインオンの構成
 
-**Acadia** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML**、**アプリのフェデレーション メタデータの URL**、および Azure portal からコピーした適切な URL を [Acadia サポート チーム](mailto:support@systemsalliance.com)に送信する必要があります。 この設定が構成され、SAML SSO 接続が両側で正しく行われます。
+**Acadia** 側でシングル サインオンを構成するには、ダウンロードした **メタデータ XML**、**アプリのフェデレーション メタデータの URL**、および Azure portal からコピーした適切な URL を [Acadia サポート チーム](mailto:support@systemsalliance.com)に送信する必要があります。 この設定が構成され、SAML SSO 接続が両側で正しく行われます。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -150,7 +150,7 @@ Acadia で Azure AD シングル サインオンを構成するには、次の�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 

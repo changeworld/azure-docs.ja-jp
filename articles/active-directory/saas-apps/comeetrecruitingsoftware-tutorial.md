@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 7f992969cf50bb03df7091e0015c936a794946a6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d458d94a4bee4fce523819af2fd3e555db6e70df
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455587"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672115"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>チュートリアル: Azure Active Directory と Comeet Recruiting Software の統合
 
@@ -41,7 +41,7 @@ Comeet Recruiting Software と Azure AD の統合を構成するには、次の�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Comeet Recruiting Software では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Comeet Recruiting Software では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-comeet-recruiting-software-from-the-gallery"></a>ギャラリーからの Comeet Recruiting Software の追加
 
@@ -61,13 +61,13 @@ Azure AD への Comeet Recruiting Software の統合を構成するには、ギ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Comeet Recruiting Software** 」と入力し、結果ウィンドウで **Comeet Recruiting Software** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Comeet Recruiting Software**」と入力し、結果ウィンドウで **Comeet Recruiting Software** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Comeet Recruiting Software](common/search-new-app.png)
+    ![結果一覧の Comeet Recruiting Software](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Comeet Recruiting Software で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Comeet Recruiting Software で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンが機能するためには、Azure AD ユーザーと Comeet Recruiting Software の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 Comeet Recruiting Software で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -118,7 +118,7 @@ Comeet Recruiting Software で Azure AD シングル サインオンを構成す
 
     ![[編集] ボタンが選択されている [ユーザー属性] セクションを示すスクリーンショット。](common/edit-attribute.png)
 
-6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、 **編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
+6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
 
     | Name |  ソース属性|
     | ---------------| --------------- |
@@ -177,9 +177,9 @@ Comeet Recruiting Software で Azure AD シングル サインオンを構成す
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
