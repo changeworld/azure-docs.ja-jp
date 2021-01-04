@@ -1,16 +1,16 @@
 ---
-title: .NET API を使用して並列ワークロードを実行する
+title: チュートリアル - .NET API を使用して並列ワークロードを実行する
 description: チュートリアル - Batch .NET クライアント ライブラリを使用して、Azure Batch で ffmpeg を使用してメディア ファイルをトランスコードします。
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 396d0f6a2ef9a8c24fc92b641c889ef9e1a7df49
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: a990a5480a8a6462bb6ef9f84070b78768628fd0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578299"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106548"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>チュートリアル:.NET API を使用して Azure Batch で並列ワークロードを実行する
 
@@ -317,7 +317,7 @@ batchClient.JobOperations.TerminateJob(jobId);
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、次の作業を行う方法を学びました。
 
 > [!div class="checklist"]
 > * アプリケーション パッケージを Batch アカウントに追加する
@@ -332,6 +332,3 @@ batchClient.JobOperations.TerminateJob(jobId);
 
 > [!div class="nextstepaction"]
 > [Batch C# のサンプル](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
-
-
-インスタンス変数 LowPriorityNodeCount=0 と DedicatedNodeCount=5 を設定することによって問題が解決され、ジョブが実行できるようになりました。

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: c8a4b6998d1471a79dd789ed6528e22b07f2015c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 95a4d00a27a0da363561f469b4c5e9e2ad16463c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540977"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510500"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>強制トンネリングを使用した App Service Environment の構成
 
@@ -103,7 +103,7 @@ ASE から外に出て行く送信トラフィックを、Azure Storage に向�
 
    一番上にある **[PUT]** を選択します。 このオプションは、App Service Environment 上のスケール操作をトリガーし、ファイアウォールを調整します。
 
-_エグレス アドレスを持つ ASE を作成するには_ : [テンプレートを使用した App Service 環境の作成][template]に関するページの説明に従い、適切なテンプレートを入手してください。  azuredeploy.json ファイルの ("properties" ブロックではなく) "resources" セクションを編集します。実際の値に合わせて、 **userWhitelistedIpRanges** の行を追加してください。
+_エグレス アドレスを持つ ASE を作成するには_:[テンプレートを使用した App Service 環境の作成][template]に関するページの説明に従い、適切なテンプレートを入手してください。  azuredeploy.json ファイルの ("properties" ブロックではなく) "resources" セクションを編集します。実際の値に合わせて、**userWhitelistedIpRanges** の行を追加してください。
 
 ```json
 "resources": [
@@ -131,7 +131,7 @@ _エグレス アドレスを持つ ASE を作成するには_ : [テンプレ�
 
 このように変更することで、Azure Storage には ASE から直接トラフィックが送信され、また、Azure SQL には、ASE の VIP とは異なるアドレスからアクセスできるようになります。
 
-   ![SQL ホワイトリストを使った強制トンネリング][3]
+   ![SQL 許可リストを使った強制トンネリング][3]
 
 ## <a name="preventing-issues"></a>問題の回避 ##
 

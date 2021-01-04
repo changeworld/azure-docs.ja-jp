@@ -1,20 +1,20 @@
 ---
-title: クイック スタート:Azure CLI で Azure Static Web Apps を使用して静的 Web アプリを初めてビルドする
-description: Azure CLI を使用して Azure Static Web Apps インスタンスをビルドする方法について学習します。
+title: 'クイックスタート: CLI を使用して Azure Static Web Apps で最初の静的サイトを構築する'
+description: Azure CLI を使用して、静的サイトを Azure Static Web Apps にデプロイする方法について説明します。
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: ed49892284b53844c5c578b752a598cdbdd9b946
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ca05194c0d8e63290a9cab8d9f7903daa192069b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320344"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030350"
 ---
-# <a name="quickstart-building-your-first-static-web-app-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して静的 Web アプリを初めてビルドする
+# <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>クイックスタート: Azure CLI を使用して最初の静的サイトを構築する
 
 Azure Static Web Apps では、GitHub リポジトリからアプリをビルドすることによって、運用環境に Web サイトが発行されます。 このクイックスタートでは、Azure CLI を使用して、Web アプリケーションを Azure Static Web Apps にデプロイします。
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cfcaec38a939291090da7d2229c4a95f984bf28
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 5151f97386ebb6b06be2320505771dc8f47d59a0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360442"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107534"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする 
 
@@ -36,7 +36,7 @@ ms.locfileid: "93360442"
  
 ## <a name="prerequisites"></a>前提条件
 
-- マネージド ID の知識。 Azure リソースのマネージド ID 機能に慣れていない場合は、こちらの[概要](overview.md)を参照してください。 
+- マネージド ID の基礎知識。 Azure リソースのマネージド ID 機能に慣れていない場合は、こちらの[概要](overview.md)を参照してください。 
 - Azure アカウント。[無料アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 - 必要なリソース作成とロール管理の手順を実行するための、適切なスコープ (サブスクリプションまたはリソース グループ) の "所有者" アクセス許可。 ロールの割り当てに関するサポートが必要な場合は、「[ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 - システム割り当てマネージド ID が有効になっている Linux 仮想マシンも必要です。
@@ -62,6 +62,20 @@ ms.locfileid: "93360442"
 1. **[確認および作成]** を選択します。
 1. **[作成]**
 
+### <a name="create-a-secret"></a>シークレットの作成
+
+次に、Key Vault にシークレットを追加し、VM で実行されているコードを使用して後で取得できるようにします。 このチュートリアルでは、PowerShell を使用していますが、この仮想マシンで実行されるすべてのコードに同じ概念が適用されます。
+
+1. 新しく作成した Key Vault に移動します。
+1. **[シークレット]** を選択し、**[追加]** をクリックします。
+1. **[生成/インポート]** を選択します。
+1. **[シークレットの作成]** 画面の **[アップロード オプション]** で、 **[手動]** を選択したままにします。
+1. シークレットの名前と値を指定します。  値は任意のものを指定できます。 
+1. アクティブ化した日付と有効期限の日付をクリアのままにし、**[有効]** を **[はい]** のままにします。 
+1. **[作成]** をクリックしてシークレットを作成します。
+
+   ![シークレットの作成](./media/tutorial-linux-vm-access-nonaad/create-secret.png)
+
 ## <a name="grant-access"></a>アクセス権の付与
 
 仮想マシンで使用されるマネージド ID には、Key Vault に格納するシークレットを読み取るためのアクセス権を付与する必要があります。
@@ -77,20 +91,6 @@ ms.locfileid: "93360442"
 1. **[追加]** を選択します。
 1. **[保存]** を選択します。
 
-## <a name="create-a-secret"></a>シークレットの作成
-
-次に、Key Vault にシークレットを追加し、VM で実行されているコードを使用して後で取得できるようにします。 このチュートリアルでは、PowerShell を使用していますが、この仮想マシンで実行されるすべてのコードに同じ概念が適用されます。
-
-1. 新しく作成した Key Vault に移動します。
-1. **[シークレット]** を選択し、**[追加]** をクリックします。
-1. **[生成/インポート]** を選択します。
-1. **[シークレットの作成]** 画面の **[アップロード オプション]** で、 **[手動]** を選択したままにします。
-1. シークレットの名前と値を指定します。  値は任意のものを指定できます。 
-1. アクティブ化した日付と有効期限の日付をクリアのままにし、**[有効]** を **[はい]** のままにします。 
-1. **[作成]** をクリックしてシークレットを作成します。
-
-   ![シークレットの作成](./media/tutorial-linux-vm-access-nonaad/create-secret.png)
- 
 ## <a name="access-data"></a>データにアクセスする
 
 これらの手順を完了するには、SSH クライアントが必要です。  Windows を使用している場合は、[Windows Subsystem for Linux](/windows/wsl/about) で SSH クライアントを使用することができます。 SSH クライアント キーの構成について支援が必要な場合は、「[Azure 上の Windows で SSH キーを使用する方法](../../virtual-machines/linux/ssh-from-windows.md)」または「[Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法](../../virtual-machines/linux/mac-create-ssh-keys.md)」をご覧ください。
@@ -121,7 +121,7 @@ ms.locfileid: "93360442"
     このアクセス トークンを使用して Azure Key Vault に認証することができます。  次の CURL 要求は、CURL と Key Vault REST API を使用して Key Vault からシークレットを読み取る方法を示しています。  Key Vault の [**概要**] ページの [**要点**] セクションにある Key Vault の URL が必要です。  前の呼び出しで取得したアクセス トークンも必要になります。 
         
     ```bash
-    curl https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
+    curl 'https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
     ```
     
     応答は次のようになります。 

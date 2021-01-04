@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 031ee9a6d945d923279fd3025c32212c3ead98ed
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: c1d448fe9da72654ac1600009e66c88c5e7b93b4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95406601"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509429"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>チュートリアル:Microsoft ID プラットフォームを使用したマルチテナント デーモンを作成する
 
@@ -65,7 +65,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 このサンプルには 1 つのプロジェクトがあります。 アプリケーションを Azure AD テナントに登録するには:
 
-- [Azure Active Directory テナントにサンプルを登録する](#register-your-application)手順と [Azure AD テナントを使用するようサンプルを構成する](#choose-the-azure-ad-tenant)手順に従う。
+- [Azure Active Directory テナントにサンプルを登録する](#register-the-client-app-dotnet-web-daemon-v2)手順と [Azure AD テナントを使用するようサンプルを構成する](#choose-the-azure-ad-tenant)手順に従う。
 - 以下を実行する PowerShell スクリプトを使用する。
   - Azure AD アプリケーションとその関連オブジェクト (パスワード、アクセス許可、依存関係) を "*自動的*" に作成します。
   - Visual Studio プロジェクトの構成ファイルに変更を加えます。
@@ -93,40 +93,34 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 ### <a name="choose-the-azure-ad-tenant"></a>Azure AD テナントを選択する
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
-1. ご利用のアカウントが複数の Azure AD テナントに存在する場合は、ページ上部のメニューにあるプロファイルを選択し、 **[ディレクトリの切り替え]** を選択します。
-1. ポータル セッションを目的の Azure AD テナントに変更します。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+
 
 ### <a name="register-the-client-app-dotnet-web-daemon-v2"></a>クライアント アプリを登録する (dotnet-web-daemon-v2)
 
-1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
-1. **[新規登録]** を選択します。
-1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
-   - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します。 たとえば、「**dotnet-web-daemon-v2**」と入力します。
-   - **[サポートされているアカウントの種類]** セクションで、 **[任意の組織のディレクトリ内のアカウント]** を選択します。
-   - **[リダイレクト URI (省略可能)]** セクションで、コンボ ボックスの **[Web]** を選択し、次のリダイレクト URI を入力します。
-       - **https://localhost:44316/**
-       - **https://localhost:44316/Account/GrantPermissions**
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+1. アプリケーションの **名前** を入力します (例: `dotnet-web-daemon-v2`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
+1. **[サポートされているアカウントの種類]** セクションで、 **[任意の組織のディレクトリ内のアカウント]** を選択します。
+1. **[リダイレクト URI (省略可能)]** セクションで、コンボ ボックスの **[Web]** を選択し、リダイレクト URI として `https://localhost:44316/` と `https://localhost:44316/Account/GrantPermissions` を入力します。
 
-     リダイレクト URI が 3 つ以上ある場合は、アプリが正常に作成された後、 **[認証]** タブから URI を追加する必要があります。
+    リダイレクト URI が 3 つ以上ある場合は、アプリが正常に作成された後、 **[認証]** タブから URI を追加する必要があります。
 1. **[登録]** を選択して、アプリケーションを作成します。
-1. アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を見つけ、後で使用するために記録します。 これは、このプロジェクトの Visual Studio 構成ファイルを構成するために必要になります。
-1. アプリのページの一覧から **[認証]** を選択します。 その後、以下を実行します。
-   - **[詳細設定]** セクションの **[ログアウト URL]** を「 **https://localhost:44316/Account/EndSession** 」に設定します
-   - **[詳細設定]**  >  **[暗黙的な許可]** セクションで **[アクセス トークン]** と **[ID トークン]** を選択します。 このサンプルでは、ユーザーのサインインと API の呼び出しのために、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。
+1. アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を見つけ、後で使用するために記録しておきます。 これは、このプロジェクトの Visual Studio 構成ファイルを構成するために必要になります。
+1. **[管理]** で、 **[認証]** を選択します。
+1. **[ログアウト URL]** を `https://localhost:44316/Account/EndSession` に設定します。
+1. **[暗黙的な許可]** セクションで、 **[アクセス トークン]** と **[ID トークン]** を選択します。 このサンプルでは、ユーザーのサインインと API の呼び出しのために、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。
 1. **[保存]** を選択します。
-1. **[証明書とシークレット]** ページの **[クライアント シークレット]** セクションで、 **[新しいクライアント シークレット]** を選択します。 その後、以下を実行します。
-
-   1. キーの説明 (たとえば **アプリのシークレット**) を入力します。
-   1. キーの有効期間として **[1 年]** 、 **[2 年]** 、または **[有効期限なし]** を選択します。
-   1. **[追加]** ボタンを選びます。
-   1. キーの値が表示されたら、コピーして安全な場所に保存します。 このキーは、後から Visual Studio でプロジェクトを構成するために必要となります。 これは二度と表示されず、他の手段で取得することもできません。
-1. アプリのページの一覧から **[API のアクセス許可]** を選択します。 その後、以下を実行します。
-   1. **[アクセス許可の追加]** ボタンを選択します。
-   1. **[Microsoft API]** タブが選択されていることを確認します。
-   1. **[よく使用される Microsoft API]** セクションで、 **[Microsoft Graph]** を選択します。
-   1. **[アプリケーションのアクセス許可]** セクションで、適切なアクセス許可 (**User.Read.All**) が選択されていることを確認します。
-   1. **[アクセス許可の追加]** ボタンを選択します
+1. **[管理]** で、 **[証明書とシークレット]** を選択します。
+1. **[クライアント シークレット]** セクションで、 **[新しいクライアント シークレット]** を選択します。 
+1. キーの説明 (例: **アプリのシークレット**) を入力します。
+1. キーの有効期間として **[1 年]** 、 **[2 年]** 、または **[有効期限なし]** を選択します。
+1. **[追加]** を選択します。 キー値を安全な場所に記録します。 このキーは、後から Visual Studio でプロジェクトを構成するために必要となります。
+1. **[管理]** で、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。
+1. **[よく使用される Microsoft API]** セクションで、 **[Microsoft Graph]** を選択します。
+1. **[アプリケーションのアクセス許可]** セクションで、適切なアクセス許可 (**User.Read.All**) が選択されていることを確認します。
+1. **[アクセス許可の追加]** を選択します.
 
 ## <a name="configure-the-sample-to-use-your-azure-ad-tenant"></a>Azure AD テナントを使用するようサンプルを構成する
 

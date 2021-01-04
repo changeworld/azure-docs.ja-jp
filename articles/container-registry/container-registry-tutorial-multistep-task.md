@@ -4,12 +4,12 @@ description: このチュートリアルでは、ソース コードを Git リ�
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: fac409e9acc14048068c0f46ffb2b64cc69582ef
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: c8d1179f1c31642b350ab8757a8d4abf71583bfc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029994"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562890"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>チュートリアル:ソース コードをコミットしたらクラウドでマルチステップ コンテナー ワークフローを実行する
 
@@ -83,7 +83,7 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-このタスクは、`--context` によって指定されたリポジトリ内の *master* ブランチにコードがコミットされたらいつでも、ACR タスクがそのブランチのコードからマルチステップ タスクを実行することを指定しています。 リポジトリ ルートからの `--file` で指定された YAML ファイルにこれらのステップが定義されています。 
+このタスクでは、`--context` で指定されているリポジトリの *main* ブランチにコードがコミットされたら常に、ACR タスクがそのブランチのコードからマルチステップ タスクを実行することが指定されています。 リポジトリ ルートからの `--file` で指定された YAML ファイルにこれらのステップが定義されています。 
 
 [az acr task create][az-acr-task-create] コマンドが成功した場合、出力は次のようになります。
 
@@ -126,7 +126,7 @@ az acr task create \
       {
         "name": "defaultSourceTriggerName",
         "sourceRepository": {
-          "branch": "master",
+          "branch": "main",
           "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node.git",
           "sourceControlAuthProperties": null,
           "sourceControlType": "Github"
@@ -220,7 +220,7 @@ cd acr-build-helloworld-node
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"
-git push origin master
+git push origin main
 ```
 
 `git push` コマンドを実行するときに、GitHub の資格情報の入力を求められることがあります。 GitHub のユーザー名を指定し、前にパスワードに対して作成した個人用アクセス トークン (PAT) を入力します。
@@ -321,7 +321,7 @@ az acr task create \
 
 `regDate` の値で識別されるレジストリにイメージをプッシュするには、[az acr task credential add][az-acr-task-credential-add] コマンドを使用して、そのレジストリのログイン資格情報をタスクに追加します。
 
-この例では、*AcrPush* ロールにスコープ指定されたレジストリへのアクセスを許可された[サービス プリンシパル](container-registry-auth-service-principal.md)を作成することをお勧めします。そのようにすると、イメージをプッシュするアクセス許可がサービス プリンシパルに付与されます。 サービス プリンシパルを作成するには、この [Azure CLI スクリプト](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh)を参照してください。
+この例では、*AcrPush* ロールにスコープ指定されたレジストリへのアクセスを許可された [サービス プリンシパル](container-registry-auth-service-principal.md)を作成することをお勧めします。そのようにすると、イメージをプッシュするアクセス許可がサービス プリンシパルに付与されます。 サービス プリンシパルを作成するには、この [Azure CLI スクリプト](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh)を参照してください。
 
 サービス プリンシパルのアプリケーション ID とパスワードを次の `az acr task credential add` コマンドで渡します。 ログイン サーバー名 *mycontainerregistrydate* は、2 番目のレジストリの名前に更新してください。
 

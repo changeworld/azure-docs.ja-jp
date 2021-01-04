@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: 8594250d72754e6b7d2a6d8c27d3d5bcd0e9c8e4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 16b924f486215d972477e93c4e199e7076a0a531
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920867"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508885"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Azure portal で Azure Data Factory を使用して複数のテーブルを一括コピーする
 
@@ -25,7 +25,7 @@ ms.locfileid: "96920867"
 このチュートリアルでは、**Azure SQL Database から Azure Synapse Analytics に多数のテーブルをコピーする方法** について説明します。 同じパターンは他のコピー シナリオでも適用できます。 たとえば、SQL Server や Oracle から Azure SQL Database、Azure Synapse Analytics、Azure BLOB にテーブルをコピーしたり、BLOB から Azure SQL Database テーブルにさまざまなパスをコピーしたりする作業が該当します。
 
 > [!NOTE]
-> - Azure Data Factory を初めて使用する場合は、「[Azure Data Factory の概要](introduction.md)」を参照してください。
+> Azure Data Factory を初めて使用する場合は、「[Azure Data Factory の概要](introduction.md)」を参照してください。
 
 このチュートリアルは大まかに次の手順で構成されます。
 
@@ -99,9 +99,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
 1. 作成後、 **[リソースに移動]** を選択して、 **[Data factory]** ページに移動します。 
    
 1. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Data Factory UI アプリケーションを起動します。
-1. **[Let's get started]\(はじめに\)** ページで、次の図に示すように、左パネルの **[作成者]** タブに切り替えます。
 
-     ![開始ページ](./media/doc-common-process/get-started-page-author-button.png)
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 データ ストアやコンピューティングをデータ ファクトリにリンクするには、リンクされたサービスを作成します。 リンクされたサービスは、Data Factory サービスが実行時にデータ ストアに接続するために使用する接続情報を持っています。 
@@ -177,7 +175,9 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
 
 ### <a name="create-a-dataset-for-source-sql-database"></a>ソース SQL Database のデータセットを作成する
 
-1. 左ウィンドウで **[+] (プラス記号)** をクリックし、 **[データセット]** をクリックします。 
+1. 左側のペインにある **[作成者]** タブを選択します。
+
+1. 左側のペインにある **[+]** (プラス) を選択し、 **[データセット]** を選択します。 
 
     ![New dataset menu](./media/tutorial-bulk-copy-portal/new-dataset-menu.png)
 1. **[新しいデータセット]** ウィンドウで **[Azure SQL Database]** を選択し、 **[続行]** を選択します。 
@@ -277,7 +277,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
     1. **[Enable Staging]** \(ステージングを有効にする\) のチェック ボックスをオンにします。
     1. **[Store Account Linked Service]\(ストア アカウントのリンクされたサービス\)** で **[AzureStorageLinkedService]** を選択します。
 
-1. パイプライン設定を検証するには、上部のパイプライン ツール バーにある **[検証]** をクリックします。 検証エラーがないことを確認します。 **[>>]** をクリックして、 **[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。
+1. パイプライン設定を検証するには、上部のパイプライン ツール バーにある **[検証]** をクリックします。 検証エラーがないことを確認します。 **[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じるには、 **[>>]** (二重山かっこ) をクリックします。
 
 ### <a name="create-the-pipeline-gettablelistandtriggercopydata"></a>パイプライン GetTableListAndTriggerCopyData を作成する
 
@@ -285,6 +285,8 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
 
 * Azure SQL Database システム テーブルを検索してコピーするテーブルの一覧を取得します。
 * パイプライン "IterateAndCopySQLTables" をトリガーして実際にデータのコピーを実行します。
+
+パイプラインを作成する手順を次に示します。
 
 1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、 **[パイプライン]** をクリックします。
 1. **[プロパティ]** の下の [全般] パネルで、パイプラインの名前を「**GetTableListAndTriggerCopyData**」に変更します。 

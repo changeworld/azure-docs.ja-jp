@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: ad62b59587f5ef7823e601cd8b6b526b75b8fd03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f968bfd0c3d2884c123b82ccf132d77b117ac9a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854615"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589034"
 ---
 # <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>Azure DevOps Starter を使用して Go 用の CI/CD パイプラインを作成する
 
@@ -60,9 +60,9 @@ DevOps Starter によって、Azure Pipelines に CI/CD パイプラインが作
 
 DevOps Starter によって、Azure Repos または GitHub に Git リポジトリが作成されます。 リポジトリを表示し、アプリにコード変更を加えるには、次の手順に従います。
 
-1. DevOps Starter の左側で、マスター分岐のリンクを選択します。 このリンクによって、新しく作成された Git リポジトリのビューが開かれます。
+1. DevOps Starter の左側で、メイン ブランチのリンクを選択します。 このリンクによって、新しく作成された Git リポジトリのビューが開かれます。
 
-1. リポジトリのクローン URL を表示するには、右上の **[複製]** を選択します。 お気に入りの IDE で Git リポジトリを複製できます。 次のいくつかの手順では、Web ブラウザーを使用してマスター ブランチに直接コード変更を行い、コミットできます。
+1. リポジトリのクローン URL を表示するには、右上の **[複製]** を選択します。 お気に入りの IDE で Git リポジトリを複製できます。 次のいくつかの手順では、Web ブラウザーを使用してメイン ブランチに直接コード変更を行い、コミットできます。
 
 1. 左側で *views/index.html* ファイルに移動し、 **[編集]** を選択します。
 
@@ -98,7 +98,7 @@ DevOps Starter によって、Azure Repos に完全な CI/CD パイプライン�
 
 1. **[ビルドとリリース]** を選択し、 **[リリース]** を選択します。  DevOps Starter により、Azure へのデプロイを管理するリリース パイプラインが作成されます。
 
-1. リリース パイプラインの横にある省略記号 (...) を選択し、 **[編集]** を選択します。 リリース パイプラインには、リリース プロセスを定義する*パイプライン*が含まれています。
+1. リリース パイプラインの横にある省略記号 (...) を選択し、 **[編集]** を選択します。 リリース パイプラインには、リリース プロセスを定義する *パイプライン* が含まれています。
 
 1. **[成果物]** で、 **[ドロップ]** を選択します。 前に調べたビルド パイプラインでは、成果物に使用される出力が生成されます。 
 
@@ -116,7 +116,7 @@ DevOps Starter によって、Azure Repos に完全な CI/CD パイプライン�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このクイック スタートで作成した Azure App Service インスタンスと関連リソースが必要なくなったら、削除してかまいません。 そうするには、DevOps Starter ダッシュボードで**削除**機能を使用します。
+このクイック スタートで作成した Azure App Service インスタンスと関連リソースが必要なくなったら、削除してかまいません。 そうするには、DevOps Starter ダッシュボードで **削除** 機能を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

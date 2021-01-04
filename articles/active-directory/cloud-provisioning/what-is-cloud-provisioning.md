@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9433945ffe1181b62ee193baf1c2dd0b89ec14c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0acef468aa53e456cd6fb416fe45558aee064699
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856808"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355819"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングとは
 Azure AD Connect クラウド プロビジョニングは、ユーザー、グループ、および連絡先を Azure AD に同期するためのハイブリッド ID の 目標を満たすために設計された新しい Microsoft エージェントです。  これは Azure AD Connect sync と共に使用することができ、次のような利点があります。
@@ -32,7 +32,7 @@ Azure AD Connect クラウド プロビジョニングは、ユーザー、グ�
 Azure AD Connect クラウドプロビジョニングでは、Microsoft Online Services で AD から Azure AD へのプロビジョニングが調整されます。 組織は、オンプレミスと IaaS ホスト環境で、Azure AD と AD の間のブリッジとして機能する軽量のエージェントをデプロイするだけです。 プロビジョニングの構成は Azure AD に格納され、サービスの一部として管理されます。
 
 ## <a name="azure-ad-connect-cloud-provisioning-video"></a>Azure AD Connect クラウド プロビジョニングのビデオ
-次の短いビデオでは、Azure AD Connect クラウド プロビジョニングの内容が適切にまとめられています。
+次の短いビデオでは、Azure AD Connect クラウド プロビジョニングの概要をわかりやすく説明しています。
 
 > [!VIDEO https://youtube.com/embed/mOT3ID02_YQ]
 
@@ -72,6 +72,7 @@ Azure AD Connect クラウドプロビジョニングでは、Microsoft Online S
 | Azure AD Domain Services のサポート|● | |
 | [Exchange ハイブリッドの書き戻し](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
 | AD ドメインあたり 5 万を超えるオブジェクトのサポート |● | |
+| クロス ドメイン参照|● | |
 
 ## <a name="next-steps"></a>次のステップ 
 

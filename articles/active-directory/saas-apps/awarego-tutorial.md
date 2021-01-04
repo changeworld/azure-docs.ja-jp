@@ -11,20 +11,20 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: f213ae3aeb482cd9c7cbb708fdc2457d9e55b1a3
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 6599abd6282d0d1eb7cb81002c34ddd5158dab6b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907355"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511061"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-awarego"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と AwareGo の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-integration-with-awarego"></a>チュートリアル:Azure Active Directory シングル サインオンと AwareGo の統合
 
 このチュートリアルでは、AwareGo と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と AwareGo を統合すると、次のことができます。
 
 * AwareGo にアクセスできるユーザーを Azure AD で制御する。
-* ユーザーが自分の Azure AD アカウントを使用して AwareGo に自動的にサインインできるように設定する。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
+* ユーザーが自分の Azure AD アカウントを使用して AwareGo に自動的にサインインできるようにする。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,21 +35,19 @@ ms.locfileid: "96907355"
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
-
-* AwareGo では、**SP** Initiated SSO がサポートされます
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 AwareGo では、SP (Service Provider) Initiated SSO がサポートされます。
 
 
 ## <a name="adding-awarego-from-the-gallery"></a>ギャラリーからの AwareGo の追加
 
-Azure AD への AwareGo の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に AwareGo を追加する必要があります。
+Azure AD への AwareGo の統合を構成するには、ギャラリーからマネージド SaaS (サービスとしてのソフトウェア) アプリの一覧に AwareGo を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
-1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
-1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 職場アカウント、学校アカウント、または個人の Microsoft アカウントを使用して、Azure portal にサインインします。
+1. 左側のペインで、 **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**AwareGo**」と入力します。
-1. 結果のパネルから **[AwareGo]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. 結果ペインで **[AwareGo]** を選択し、アプリを追加します。 数秒で、お使いのテナントにアプリが追加されます。
 
 
 ## <a name="configure-and-test-azure-ad-sso-for-awarego"></a>AwareGo の Azure AD SSO の構成とテスト
@@ -58,91 +56,94 @@ Azure AD への AwareGo の統合を構成するには、ギャラリーから�
 
 AwareGo に対して Azure AD SSO を構成してテストするには、次の手順を実行します。
 
-1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。  
+
+    a. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - ユーザー B.Simon で Azure AD のシングル サインオンをテストします。  
+    b. **[Azure AD のテスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - ユーザー B.Simon が Azure AD シングル サインオンを使用できるようにします。  
+
 1. **[AwareGo の SSO の構成](#configure-awarego-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[AwareGo のテスト ユーザーの作成](#create-awarego-test-user)** - AwareGo で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
-1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
+
+    a. **[AwareGo のテスト ユーザーの作成](#create-an-awarego-test-user)** - AwareGo で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。  
+    b. **[SSO をテスト](#test-sso)** して、構成が正しく機能することを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
+Azure portal で Azure AD SSO を有効にするには、以下を実行します。
 
-1. Azure portal の **AwareGo** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **AwareGo** アプリケーション統合ページで、 **[管理]** の下にある **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. 設定を編集するには、 **[SAML によるシングル サインオンのセットアップ]** ペインで **[編集]** ボタンを選択します。
 
-   ![基本的な SAML 構成を編集する](common/edit-urls.png)
+   ![[基本的な SAML 構成] の編集ボタンのスクリーンショット。](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** の編集ペインで、次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、次のいずれかの URL を入力します。
+    a. **[サインオン URL]** ボックスに、次の URL のいずれかを入力します。
 
-    | サインオン URL |
-    |-------------|
-    | `https://lms.awarego.com/auth/signin/` |
-    | `https://my.awarego.com/auth/signin/` |
+    * `https://lms.awarego.com/auth/signin/` 
+    * `https://my.awarego.com/auth/signin/`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.awarego.com`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次の形式で URL を入力します: `https://<SUBDOMAIN>.awarego.com`
 
-    c. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.awarego.com/auth/sso/callback` のパターンを使用して URL を入力します
+    c. **[応答 URL]** ボックスに、次の形式で URL を入力します: `https://<SUBDOMAIN>.awarego.com/auth/sso/callback`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 この値を取得するには、[AwareGo クライアント サポート チーム](mailto:support@awarego.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > 上記の値は、実際の値ではありません。 これらの値は実際の識別子と応答 URL で更新してください。 値を取得するには、[AwareGo クライアント サポート チーム](mailto:support@awarego.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションの例を参照することもできます。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** の横にある **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/certificatebase64.png)
+    ![[SAML 署名証明書] ペインの証明書の "ダウンロード" リンクのスクリーンショット。](common/certificatebase64.png)
 
-1. **[AwareGo のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
+1. **[AwareGo のセットアップ]** セクションで、要件に基づいて 1 つまたは複数の URL をコピーします。
 
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
+    ![構成 URL をコピーするための [AwareGo の設定] ペインのスクリーンショット。](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のペインで **[Azure Active Directory]** を選択し、 **[ユーザー]**  >  **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
-1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
-   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
-   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-   1. **Create** をクリックしてください。
+1. **[ユーザー]** プロパティ ペインで、次の手順を実行します。
+
+   a. **[名前]** ボックスに「**B.Simon**」と入力します。  
+   b. **[ユーザー名]** ボックスに、`<username>@<companydomain>.<extension>` 形式でユーザー名を入力します (例: B.Simon@contoso.com)。  
+   c. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を、後で使用できるように書き留めます。  
+   d. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、B.Simon に AwareGo へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、ユーザー B.Simon に AwareGo へのアクセスを許可することで、このユーザーが Azure SSO を使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で **[AwareGo]** を選択します。
-1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
-1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+1. Azure portal で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
+1. **[アプリケーション]** の一覧で **[AwareGo]** を選択します。
+1. アプリの概要ページの **[管理]** セクションで、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ペインで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ペインの **[ユーザー]** の一覧で **[B.Simon]** を選択し、 **[選択]** ボタンを選択します。
+1. ユーザーにロールを割り当てる必要がある場合は、 **[ロールの選択]** ボックスの一覧で選択できます。 このアプリに対してロールが設定されていない場合は、 *[既定のアクセス]* ロールが選択されます。
+1. **[割り当ての追加]** ペインで、 **[割り当て]** を選択します。
 
 ## <a name="configure-awarego-sso"></a>AwareGo の SSO の構成
 
-**AwareGo** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [AwareGo サポート チーム](mailto:support@awarego.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**AwareGo** 側でシングルサインオンを構成するには、前に Azure portal からダウンロードした **証明書 (Base64)** 証明書と、コピーした URL を [AwareGo サポート チーム](mailto:support@awarego.com)に送信します。 サポート チームはこの設定を作成して、両方の側で SAML SSO 接続を正しく確立します。
 
-### <a name="create-awarego-test-user"></a>AwareGo のテスト ユーザーの作成
+### <a name="create-an-awarego-test-user"></a>AwareGo のテスト ユーザーの作成
 
-このセクションでは、AwareGo で Britta Simon というユーザーを作成します。 [AwareGo サポート チーム](mailto:support@awarego.com)と連携して、AwareGo プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、AwareGo で Britta Simon というユーザーを作成します。 [AwareGo サポート チーム](mailto:support@awarego.com)と協力して、AwareGo プラットフォームにユーザーを追加します。 シングル サインオンを使用できるようにするには、ユーザーを作成してアクティブにする必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
+このセクションでは、次のいずれかを実行することにより、Azure AD のシングル サインオン構成をテストできます。 
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる AwareGo のサインオン URL にリダイレクトされます。 
+* Azure portal で、 **[このアプリケーションをテストします]** を選択します。 これによってリダイレクトされる AwareGo のサインインページで、サインイン フローを開始できます。 
 
-* AwareGo のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* AwareGo のサインイン ページに直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [AwareGo] タイルをクリックすると、AwareGo サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリに移動します。 マイ アプリで **[AwareGo]** タイルを選択すると、AwareGo サインイン ページにリダイレクトされます。 詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-AwareGo を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+AwareGo を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、アプリの条件付きアクセス制御を拡張したものです。 詳細については、[Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)に関するページを参照してください。
 
 

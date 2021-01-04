@@ -2,13 +2,13 @@
 title: Azure Arc 対応サーバーにハイブリッド マシンを接続する
 description: Azure Arc 対応サーバーにハイブリッド マシンを接続して登録する方法について説明します。
 ms.topic: quickstart
-ms.date: 11/12/2020
-ms.openlocfilehash: 3779d95ac138e83b1d953f744e07ae553890a5d7
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 12/15/2020
+ms.openlocfilehash: 68869854cbfcf6d7297137e6239b2229a20c04a1
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576840"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516783"
 ---
 # <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>クイックスタート: Azure Arc 対応サーバーにハイブリッド マシンを接続する
 
@@ -29,6 +29,9 @@ ms.locfileid: "94576840"
     * インターネット経由で通信するためにマシンがファイアウォールやプロキシ サーバーを介して接続する場合、[一覧](../agent-overview.md#networking-configuration)に記載されている URL がブロックされていないこと。
 
     * Azure Arc 対応サーバーがサポートされるのは、[こちら](../overview.md#supported-regions)に記載されたリージョンのみです。
+
+> [!WARNING]
+> Linux ホスト名または Windows コンピューター名には、予約語や商標を使用できません。使用した場合、接続されているマシンを Azure に登録しようとすると失敗します。 予約語の一覧については、「[予約されたリソース名のエラーを解決する](../../../azure-resource-manager/templates/error-reserved-resource-name.md)」を参照してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 11/11/2020
+ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: ef9ac29735289d5c7a60ff0fca3b9e9f360f6e08
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 34eb34a86948a2b4c043d5d9b58b50958855e449
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005131"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508716"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Blob Storage から Azure SQL Database のデータベースにデータをコピーする
 
@@ -26,7 +26,7 @@ ms.locfileid: "96005131"
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用してデータ ファクトリを作成します。 このデータ ファクトリのパイプラインでは、Azure Blob Storage から Azure SQL Database のデータベースにデータをコピーします。 このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する表を参照してください。
 
 > [!NOTE]
-> - Data Factory を初めて使用する場合は、「[Azure Data Factory の概要](introduction.md)」を参照してください。
+> Data Factory を初めて使用する場合は、「[Azure Data Factory の概要](introduction.md)」を参照してください。
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -82,24 +82,26 @@ ms.locfileid: "96005131"
 
 1. **Microsoft Edge** または **Google Chrome** を開きます。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 2. 左側のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** を選択します。
-3. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。
+3. **[Create Data Factory]\(データ ファクトリの作成\)** ページの **[基本]** タブで、データ ファクトリを作成する Azure **サブスクリプション** を選択します。
+4. **[リソース グループ]** で、次の手順のいずれかを行います。
+
+    a. ドロップダウン リストから既存のリソース グループを選択します。
+
+    b. **[新規作成]** を選択し、新しいリソース グループの名前を入力します。
+    
+    リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。 
+5. **[リージョン]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他のリージョンに存在していてもかまいません。
+6. **[名前]** で、「**ADFTutorialDataFactory**」と入力します。
 
    Azure データ ファクトリの名前は *グローバルに一意* にする必要があります。 データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 (yournameADFTutorialDataFactory など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関するページを参照してください。
 
      ![新しいデータ ファクトリ](./media/doc-common-process/name-not-available-error.png)
-4. データ ファクトリを作成する Azure **サブスクリプション** を選択します。
-5. **[リソース グループ]** で、次の手順のいずれかを行います。
 
-    a. **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
-
-    b. **[新規作成]** を選択し、リソース グループの名前を入力します。 
-         
-    リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。 
-6. **[バージョン]** で、 **[V2]** を選択します。
-7. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他のリージョンに存在していてもかまいません。
-8. **［作成］** を選択します
-9. 作成が完了すると、その旨が通知センターに表示されます。 **[リソースに移動]** を選択して、Data factory ページに移動します。
-10. **[Author & Monitor]\(作成と監視\)** を選択して、別のタブで Data Factory (UI) を起動します。
+7. **[バージョン]** で、 **[V2]** を選択します。
+8. 上部にある **[Git configuration]\(Git 構成\)** タブを選択し、 **[Configure Git later]\(後で Git を構成する\)** チェック ボックスをオンにします。
+9. **[確認と作成]** を選択し、検証に成功したら **[作成]** を選択します。
+10. 作成が完了すると、その旨が通知センターに表示されます。 **[リソースに移動]** を選択して、Data factory ページに移動します。
+11. **[Author & Monitor]\(作成と監視\)** を選択して、別のタブで Azure Data Factory (UI) を起動します。
 
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
@@ -115,7 +117,7 @@ ms.locfileid: "96005131"
 
    ![パイプラインの作成](./media/doc-common-process/get-started-page.png)
 
-1. 1. [全般] パネルの **[プロパティ]** の下で、 **[名前]** に **CopyPipeline** を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。
+1. [全般] パネルの **[プロパティ]** の下で、 **[名前]** に **CopyPipeline** を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。
 
 1. **[アクティビティ]** ツール ボックスで **[Move and Transform]\(移動と変換\)** カテゴリを展開し、ツール ボックスからパイプライン デザイナー画面に **[データのコピー]** アクティビティをドラッグ アンド ドロップします。 **[名前]** に「**CopyFromBlobToSql**」と指定します。
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 6845923d65b5fbe5a9f010474330ce2bbed948e1
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 25d084b8af148707685b2cbb4368394a12d99db2
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780095"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005309"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>チュートリアル:登録グループを使って複数の X.509 デバイスをプロビジョニングする
 
@@ -195,7 +195,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 3. 次のコマンドを実行し、新しいデバイス証明書も含めた証明書チェーン全体の .pem ファイルを作成します。
 
     ```Bash
-    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-full-chain.cert.pem
+    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-full-chain.cert.pem && cd ..
     ```
 
     テキスト エディターを使用して、証明書チェーン ファイル *./certs/new-device-full-chain.cert.pem* を開きます。 証明書チェーンのテキストには、証明書を 3 つすべて使った完全なチェーンが記載されています。 このチュートリアルでは、後ほど HSM コードと共に、このテキストを証明書チェーンとして使用します。
@@ -241,48 +241,85 @@ HSM ハードウェアは必須ではありませんが、証明書の秘密キ�
     static const char* const COMMON_NAME = "custom-hsm-device-01";
     ```
 
-4. 同じファイル内で、証明書が生成された後に *./certs/new-device-full-chain.cert.pem* に保存した証明書チェーンのテキストを使用して `CERTIFICATE` 定数文字列の文字列値を更新します。
+4. 同じファイル内で、証明書の生成後に *./certs/new-device-full-chain.cert.pem* に保存した証明書チェーンのテキストを使用して、`CERTIFICATE` 定数文字列の文字列値を更新する必要があります。
 
-    > [!IMPORTANT]
-    > Visual Studio にテキストをコピーする際に、テキストの解析が実行され、コードにスペースなどが追加されることがあります。そのような場合には、**Ctrl + Z** を 1 回押して、このようなスペースや解析を削除する必要があります。
-
-    以下のパターンに従って証明書のテキストを更新します。Visual Studio により余分なスペースが挿入されたり、解析が実行されたりしないようにしてください。
+    証明書のテキストの構文は、次のパターンに従う必要があります。Visual Studio によって余分なスペースが追加されたり、解析が実行されたりしないようにしてください。
 
     ```c
     // <Device/leaf cert>
     // <intermediates>
     // <root>
     static const char* const CERTIFICATE = "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
         ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB"
-    "\n-----END CERTIFICATE-----\n"
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----\n"
     "-----BEGIN CERTIFICATE-----\n"
-    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy"
+    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy\n"
         ...
-    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh"
-    "\n-----END CERTIFICATE-----\n"
+    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh\n"
+    "-----END CERTIFICATE-----\n"
     "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
         ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB"
-    "\n-----END CERTIFICATE-----";        
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----";        
     ```
 
-5. 同じファイルで、`PRIVATE_KEY` 定数文字列の文字列値を、デバイス証明書の秘密キーに更新します。
+    この手順でこの文字列値を正しく更新するのは非常に面倒であり、エラーが発生する可能性があります。 Git Bash プロンプトで適切な構文を生成するには、次の Bash シェル コマンドをコピーして Git Bash コマンド プロンプトに貼り付け、**Enter** キーを押します。 これらのコマンドにより、`CERTIFICATE` 文字列定数値の構文が生成されます。
 
-    > [!IMPORTANT]
-    > Visual Studio にテキストをコピーする際に、テキストの解析が実行され、コードにスペースなどが追加されることがあります。そのような場合には、**Ctrl + Z** を 1 回押して、このようなスペースや解析を削除する必要があります。
+    ```Bash
+    input="./certs/new-device-full-chain.cert.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
 
-    以下のパターンに従って秘密キーのテキストを更新します。Visual Studio により余分なスペースが挿入されたり、解析が実行されたりしないようにしてください。
+    新しい定数値の証明書の出力テキストをコピーして貼り付けます。 
+
+
+5. 同じファイルで、`PRIVATE_KEY` 定数の文字列値も、デバイス証明書の秘密キーで更新する必要があります。
+
+    秘密キーのテキストの構文は、次のパターンに従う必要があります。Visual Studio によって余分なスペースが追加されたり、解析が実行されたりしないようにしてください。
 
     ```c
     static const char* const PRIVATE_KEY = "-----BEGIN RSA PRIVATE KEY-----\n"
-    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U"
+    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U\n"
         ...
-    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij"
-    "\n-----END RSA PRIVATE KEY-----";
+    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij\n"
+    "-----END RSA PRIVATE KEY-----";
     ```
+
+    この手順でも、この文字列値を正しく更新するのは非常に面倒であり、エラーが発生する可能性があります。 Git Bash プロンプトで適切な構文を生成するには、次の Bash シェル コマンドをコピーして貼り付け、**Enter** キーを押します。 これらのコマンドにより、`PRIVATE_KEY` 文字列定数値の構文が生成されます。
+
+    ```Bash
+    input="./private/new-device.key.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
+
+    新しい定数値のプライベート キーの出力テキストをコピーして貼り付けます。 
 
 6. *custom_hsm_example.c* を保存します。
 

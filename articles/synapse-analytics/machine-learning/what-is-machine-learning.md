@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 20f095a058434c36373c30ed2a633db12643814d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 906d3d28aabf8f6ecd6e04c38b4519937fa95c2b
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448285"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092161"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Azure Synapse Analytics の機械学習機能
 
@@ -62,9 +62,9 @@ Azure Synapse では、PySpark/Python、Scala、.NET などのツールを使用
 
 MLlib に加えて、[Scikit Learn](https://scikit-learn.org/stable/) などの一般的なライブラリを使用してモデルを開発することもできます。 Synapse Spark プールにライブラリをインストールする方法の詳細については、「[Azure Synapse Analytics で Apache Spark 用のライブラリを管理する](../spark/apache-spark-azure-portal-add-libraries.md)」を参照してください。
 
-#### <a name="train-models-with-azure-machine-learning-automl"></a>Azure Machine Learning AutoML を使用してモデルをトレーニングする
+#### <a name="train-models-with-azure-machine-learning-automated-ml"></a>Azure Machine Learning の自動 ML を使用してモデルをトレーニングする
 
-機械学習についてあまり理解していなくても利用できる、もう 1 つの機械学習モデルのトレーニング方法は、AutoML を使用する方法です。 [AutoML](/azure/machine-learning/concept-automated-ml) は、一連の機械学習モデルを自動的にトレーニングし、ユーザーが特定のメトリックに基づいて最適なモデルを選択できるようにする機能です。 Azure Synapse Notebooks から Azure Machine Learning とシームレスに統合できるおかげで、ユーザーはパススルー Azure Active Directory 認証を使用して Synapse で AutoML を簡単に利用できます。  つまり、Azure Machine Learning ワークスペースをポイントするだけでよく、資格情報を入力する必要はありません。 Synapse Spark プールで Azure Machine Learning AutoML を使用してモデルをトレーニングする方法について説明する [AutoML のチュートリアル](../spark/apache-spark-azure-machine-learning-tutorial.md)があります。
+機械学習の知識をあまり必要としない、機械学習モデルのもう 1 つのトレーニング方法は、自動 ML を使用することです。 [自動 ML](/azure/machine-learning/concept-automated-ml) は、一連の機械学習モデルを自動的にトレーニングし、ユーザーが特定のメトリックに基づいて最適なモデルを選択できるようにする機能です。 Azure Synapse Notebooks から Azure Machine Learning とシームレスに統合できるため、ユーザーは Azure Active Directory パススルー認証を使用して Synapse で自動 ML を簡単に利用できます。  つまり、Azure Machine Learning ワークスペースをポイントするだけでよく、資格情報を入力する必要はありません。 Synapse Spark プールで Azure Machine Learning の自動 ML を使用してモデルをトレーニングする方法については、[自動 ML のチュートリアル](../spark/apache-spark-azure-machine-learning-tutorial.md)をご覧ください。
 
 ### <a name="model-deployment-and-scoring"></a>モデルのデプロイとスコアリング
 

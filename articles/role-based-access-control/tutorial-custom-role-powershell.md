@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 8aedc59fc34278bf84983d78bf0e9a31fe38ee93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b1815e7598410cd709572d93082d5dee5e0b0fb
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82735591"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369244"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure カスタム ロールを作成する
 
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 カスタム ロールを作成するには、組み込みのロールから始めて、そのロールを編集して新しいロールを作成するのが最も簡単です。
 
-1. PowerShell で、[Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) コマンドを使用して、Microsoft.Support リソース プロバイダーの操作の一覧を取得します。 アクセス許可の作成に使用できる操作を知るための参考にしてください。 「[Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md#microsoftsupport)」でも、すべての操作の一覧をご覧いただけます。
+1. PowerShell で、[Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) コマンドを使用して、Microsoft.Support リソース プロバイダーの操作の一覧を取得します。 アクセス許可の作成に使用できる操作を知るための参考にしてください。 「[Azure リソース プロバイダー操作](resource-provider-operations.md#microsoftsupport)」でも、すべての操作の一覧をご覧いただけます。
 
     ```azurepowershell
     Get-AzProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize

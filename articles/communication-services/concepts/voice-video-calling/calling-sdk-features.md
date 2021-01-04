@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f621d11553101c2c0bcfce804b26c218ae58670c
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: f47ee36c0e7806afc10f8f0907825378c2d24410
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576470"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505547"
 ---
 # <a name="calling-client-library-overview"></a>通話クライアント ライブラリの概要
 
@@ -69,7 +69,7 @@ ms.locfileid: "96576470"
 
 \* 前の 2 つのリリースに加えて Chrome の最新バージョンがサポートされていることに注意してください。<br/>
 
-** Safari バージョン 13.1 以降がサポートされていることに注意してください。 Safari macOS の発信ビデオはまだサポートされていませんが、iOS ではサポートされています。 発信画面の共有は、デスクトップ iOS でのみサポートされています。
+** Safari バージョン 13.1 以降がサポートされていることに注意してください。 Safari macOS の発信ビデオはまだサポートされていませんが、iOS ではサポートされています。 発信画面の共有は、デスクトップ iOS でのみサポートされています。 現在、Safari では 1 対 1 およびグループの通話は利用できません。
 
 ## <a name="calling-client---browser-security-model"></a>通話クライアント - ブラウザーのセキュリティ モデル
 
@@ -90,6 +90,15 @@ iframe を使用して別のドメインからアプリの一部をホストす�
 ```html
 <iframe allow="camera *; microphone *">
 ```
+
+## <a name="calling-client-library-streaming-support"></a>通話クライアント ライブラリでのストリーミングのサポート
+Communication Services の通話クライアント ライブラリでは、次のストリーミング構成をサポートしています。
+
+|           |Web | Android、iOS|
+|-----------|----|------------|
+|同時に送信できる発信ストリームの数 |1 つのビデオと 1 つの画面の共有 | 1 つのビデオと 1 つの画面の共有|
+|同時に表示できる着信ストリームの数 |1 つのビデオと 1 つの画面の共有| 6 つのビデオと 1 つの画面の共有 |
+
 
 ## <a name="next-steps"></a>次の手順
 

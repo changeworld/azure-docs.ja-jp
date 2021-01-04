@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 013f82c33b149d754e059bbc4c9933f917a2555a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5a4a6e896d0cee22424274d845ccc24463833cc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85248631"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608767"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>チュートリアル:コピー アクティビティがあるパイプラインを Visual Studio で作成する
 > [!div class="op_single_selector"]
@@ -56,33 +56,41 @@ ms.locfileid: "85248631"
    * Visual Studio 用の最新の Azure Data Factory プラグイン ([VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) または [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)) をダウンロードします。 次の手順を実行して、プラグインを更新することもできます。メニューで **[ツール]**  ->  **[拡張機能と更新プログラム]**  ->  **[オンライン]**  ->  **[Visual Studio ギャラリー]**  ->  **[Microsoft Azure Data Factory Tools for Visual Studio]**  ->  **[更新]** の順にクリックします。
 
 ## <a name="steps"></a>手順
+
 このチュートリアルの一部として実行する手順を次に示します。
 
-1. **リンクされたサービス**をデータ ファクトリに作成します。 この手順では、2 つのリンクされたサービスを作成します (タイプ: Azure Storage、Azure SQL Database)。 
-    
+1. **リンクされたサービス** をデータ ファクトリに作成します。 この手順では、2 つのリンクされたサービスを作成します (タイプ: Azure Storage、Azure SQL Database)。 
+
     AzureStorageLinkedService は、Azure ストレージ アカウントをデータ ファクトリにリンクします。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、コンテナーを作成し、データをこのストレージ アカウントにアップロードしました。   
 
     AzureSqlLinkedService は、Azure SQL Database をデータ ファクトリにリンクします。 Blob Storage からコピーされたデータは、このデータベースに格納されます。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、このデータベースに SQL テーブルを作成しました。     
-2. 入力および出力**データセット**をデータ ファクトリに作成します。  
-    
+
+2. 入力および出力 **データセット** をデータ ファクトリに作成します。  
+
     Azure Storage のリンクされたサービスは、Data Factory サービスが実行時に Azure ストレージ アカウントへの接続に使用する接続文字列を指定します。 また、入力 BLOB データセットは、コンテナーと、入力データが含まれているフォルダーを指定します。  
 
     同様に、Azure SQL Database のリンクされたサービスは、Data Factory サービスが実行時に Azure SQL Database への接続に使用する接続文字列を指定します。 出力 SQL テーブル データセットは、BLOB ストレージのデータのコピー先となるデータベース内のテーブルを指定します。
-3. データ ファクトリに**パイプライン**を作成します。 この手順では、コピー アクティビティのあるパイプラインを作成します。   
-    
-    コピー アクティビティでは、Azure Blob Storage の BLOB から Azure SQL Database のテーブルにデータをコピーします。 パイプラインでコピー アクティビティを使用して、任意のサポートされているソースから任意のサポートされているターゲットにデータをコピーできます。 サポートされているデータ ストアの一覧については、[データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関する記事を参照してください。 
-4. Data Factory のエンティティ (リンクされたサービス、データセット、テーブル、およびパイプライン) をデプロイするときに Azure **データ ファクトリ**を作成します。 
+
+3. データ ファクトリに **パイプライン** を作成します。 この手順では、コピー アクティビティのあるパイプラインを作成します。   
+
+    コピー アクティビティでは、Azure Blob Storage の BLOB から Azure SQL Database のテーブルにデータをコピーします。 パイプラインでコピー アクティビティを使用して、任意のサポートされているソースから任意のサポートされているターゲットにデータをコピーできます。 サポートされているデータ ストアの一覧については、[データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関する記事を参照してください。
+
+4. Data Factory のエンティティ (リンクされたサービス、データセット、テーブル、およびパイプライン) をデプロイするときに Azure **データ ファクトリ** を作成します。 
 
 ## <a name="create-visual-studio-project"></a>Visual Studio プロジェクトの作成
+
 1. **Visual Studio 2015** を起動します。 **[ファイル]** をクリックし、 **[新規作成]** をポイントして、 **[プロジェクト]** をクリックします。 **[新しいプロジェクト]** ダイアログ ボックスが表示されます。  
+
 2. **[新しいプロジェクト]** ダイアログ ボックスで、 **[DataFactory]** テンプレートを選択し、 **[Empty Data Factory Project (空の Data Factory プロジェクト)]** をクリックします。  
-   
+
     ![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-copy-activity-tutorial-using-visual-studio/new-project-dialog.png)
+
 3. プロジェクトの名前、ソリューションの場所、およびソリューションの名前を指定し、 **[OK]** をクリックします。
-   
+
     ![ソリューション エクスプローラー](./media/data-factory-copy-activity-tutorial-using-visual-studio/solution-explorer.png)    
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
+
 データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このチュートリアルでは、Azure HDInsight、Azure Data Lake Analytics などのコンピューティング サービスを使用しません。 ここでは、Azure Storage (ソース) と Azure SQL Database (ターゲット) の 2 種類のデータ ストアを使用します。 
 
 したがって、2 つのリンクされたサービスを作成します (タイプ: AzureStorage、AzureSqlDatabase)。  
@@ -94,27 +102,32 @@ Azure SQL のリンクされたサービスは、Azure SQL Database をデータ
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。 コピー アクティビティでサポートされているすべてのソースとシンクについては、 [サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に関する記事を参照してください。 Data Factory でサポートされているコンピューティング サービスの一覧については、「 [コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md) 」を参照してください。 このチュートリアルでは、コンピューティング サービスは使用しません。 
 
 ### <a name="create-the-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成します。
-1. **ソリューション エクスプローラー**の **[リンクされたサービス]** を右クリックして、 **[追加]** をポイントし、 **[新しい項目]** をクリックします。      
+
+1. **ソリューション エクスプローラー** の **[リンクされたサービス]** を右クリックして、 **[追加]** をポイントし、 **[新しい項目]** をクリックします。      
+
 2. **[新しい項目の追加]** ダイアログ ボックスで、一覧から **[Azure Storage Linked Service (Azure Storage のリンクされたサービス)]** を選択し、 **[追加]** をクリックします。 
-   
+
     ![新規のリンクされたサービス](./media/data-factory-copy-activity-tutorial-using-visual-studio/new-linked-service-dialog.png)
+
 3. `<accountname>` と `<accountkey>`* を Azure ストレージ アカウントの名前とキーで置き換えます。 
-   
+
     ![Azure Storage のリンクされたサービス](./media/data-factory-copy-activity-tutorial-using-visual-studio/azure-storage-linked-service.png)
+
 4. **AzureStorageLinkedService1.json** ファイルを保存します。
 
     リンクされたサービスの定義の中の JSON プロパティの詳細については、[Azure Blob Storage コネクタ](data-factory-azure-blob-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ### <a name="create-the-azure-sql-linked-service"></a>Azure SQL のリンクされたサービスを作成します。
-1. **ソリューション エクスプローラー**で **[リンクされたサービス]** ノードをもう一度右クリックして **[追加]** をポイントし、 **[新しい項目]** をクリックします。 
+
+1. **ソリューション エクスプローラー** で **[リンクされたサービス]** ノードをもう一度右クリックして **[追加]** をポイントし、 **[新しい項目]** をクリックします。 
 2. このとき、 **[Azure SQL Linked Service (Azure SQL のリンクされたサービス)]** を選択し、 **[追加]** をクリックします。 
 3. **AzureSqlLinkedService1.json** ファイルで、`<servername>`、`<databasename>`、`<username@servername>`、`<password>` をサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。    
 4. **AzureSqlLinkedService1.json** ファイルを保存します。 
-    
+
     これらの JSON プロパティの詳細については、[Azure SQL Database コネクタ](data-factory-azure-sql-connector.md#linked-service-properties)に関する記事を参照してください。
 
-
 ## <a name="create-datasets"></a>データセットを作成する
+
 前の手順では、Azure ストレージ アカウントと Azure SQL Database をデータ ファクトリにリンクするためのリンクされたサービスを作成しました。 この手順では、InputDataset と OutputDataset という名前の 2 つのデータセットを定義します。これらはそれぞれ、AzureStorageLinkedService1 と AzureSqlLinkedService1 が参照するデータ ストアに格納されている入力データと出力データを表します。
 
 Azure Storage のリンクされたサービスは、Data Factory サービスが実行時に Azure ストレージ アカウントへの接続に使用する接続文字列を指定します。 また、入力 BLOB データセット (InputDataset) は、コンテナーと、入力データが含まれているフォルダーを指定します。  
@@ -122,11 +135,12 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 同様に、Azure SQL Database のリンクされたサービスは、Data Factory サービスが実行時に Azure SQL Database への接続に使用する接続文字列を指定します。 出力 SQL テーブル データセット (OututDataset) は、BLOB ストレージのデータのコピー先となるデータベース内のテーブルを指定します。 
 
 ### <a name="create-input-dataset"></a>入力データセットの作成
+
 この手順では、BLOB ファイル (emp.txt) をポイントする InputDataset という名前のデータセットを作成します。このファイルは、リンクされたサービス AzureStorageLinkedService1 が表す Azure Storage 内の BLOB コンテナー (adftutorial) のルート フォルダーにあります。 fileName の値を指定しなかった場合やこれをスキップした場合、入力フォルダー内のすべての BLOB のデータがターゲットにコピーされます。 このチュートリアルでは、fileName の値を指定します。 
 
 ここでは、用語として "データセット" ではなく "テーブル" を使用します。 テーブルは四角形のデータセットであり、現時点でサポートされている唯一の種類のデータセットです。 
 
-1. **ソリューション エクスプローラー**の **[テーブル]** を右クリックして **[追加]** をポイントし、 **[新しい項目]** をクリックします。
+1. **ソリューション エクスプローラー** の **[テーブル]** を右クリックして **[追加]** をポイントし、 **[新しい項目]** をクリックします。
 2. **[新しい項目の追加]** ダイアログ ボックスで、 **[Azure BLOB]** をクリックし、 **[追加]** をクリックします。   
 3. JSON テキストを次のテキストで置き換え、 **AzureBlobLocation1.json** ファイルを保存します。 
 
@@ -165,115 +179,118 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 
     | プロパティ | 説明 |
     |:--- |:--- |
-    | type | データは Azure Blob Storage に存在するため、type プロパティを **AzureBlob** に設定しています。 |
+    | type | データは Azure BLOB ストレージに存在するため、type プロパティを **AzureBlob** に設定しています。 |
     | linkedServiceName | 前に作成した **AzureStorageLinkedService** を参照します。 |
-    | folderPath | BLOB **コンテナー**と、入力 BLOB を格納する**フォルダー**を指定します。 このチュートリアルでは、adftutorial は BLOB コンテナーで、フォルダーはルート フォルダーです。 | 
+    | folderPath | BLOB **コンテナー** と、入力 BLOB を格納する **フォルダー** を指定します。 このチュートリアルでは、adftutorial は BLOB コンテナーで、フォルダーはルート フォルダーです。 | 
     | fileName | このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは fileName に **emp.txt** が指定されているため、このファイルのみが処理のために取得されます。 |
     | format -> type |入力ファイルはテキスト形式のため、**TextFormat** を使用します。 |
-    | columnDelimiter | 入力ファイル内の列は**コンマ (`,`)** で区切られています。 |
-    | frequency/interval | frequency を **Hour** に設定し、interval を **1** に設定しています。つまり、**1 時間ごと**に入力スライスが取得されます。 言い換えると、Data Factory サービスは、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。 パイプラインの開始時刻の前または終了時刻の後ではなく、開始時刻と終了時刻の間のデータが検索されます。  |
+    | columnDelimiter | 入力ファイル内の列は **コンマ (`,`)** で区切られています。 |
+    | frequency/interval | frequency を **Hour** に設定し、interval を **1** に設定しています。つまり、**1 時間ごと** に入力スライスが取得されます。 言い換えると、Data Factory サービスは、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。 パイプラインの開始時刻の前または終了時刻の後ではなく、開始時刻と終了時刻の間のデータが検索されます。  |
     | external | このパイプラインによってデータが生成されない場合は、このプロパティを **true** に設定します。 このチュートリアルの入力データは emp.txt ファイルに存在し、このパイプラインで生成されるわけではないため、このプロパティを true に設定します。 |
 
     これらの JSON プロパティの詳細については、[Azure BLOB コネクタ](data-factory-azure-blob-connector.md#dataset-properties)に関する記事を参照してください。   
 
 ### <a name="create-output-dataset"></a>出力データセットの作成
-この手順では、 **OutputDataset**という名前の出力データセットを作成します。 このデータセットは、**AzureSqlLinkedService1** で表される Azure SQL Database 内の SQL テーブルをポイントします。 
 
-1. **ソリューション エクスプローラー**の **[テーブル]** をもう一度右クリックし、 **[追加]** をポイントし、 **[新しい項目]** をクリックします。
+この手順では、 **OutputDataset** という名前の出力データセットを作成します。 このデータセットは、**AzureSqlLinkedService1** で表される Azure SQL Database 内の SQL テーブルをポイントします。 
+
+1. **ソリューション エクスプローラー** の **[テーブル]** をもう一度右クリックし、 **[追加]** をポイントし、 **[新しい項目]** をクリックします。
 2. **[新しい項目の追加]** ダイアログ ボックスで、 **[Azure SQL]** を選択し、 **[追加]** をクリックします。 
 3. JSON テキストを次の JSON テキストで置き換え、 **AzureSqlTableLocation1.json** ファイルを保存します。
 
-   ```json
+    ```json
     {
-     "name": "OutputDataset",
-     "properties": {
-       "structure": [
-         {
-           "name": "FirstName",
-           "type": "String"
-         },
-         {
-           "name": "LastName",
-           "type": "String"
-         }
-       ],
-       "type": "AzureSqlTable",
-       "linkedServiceName": "AzureSqlLinkedService1",
-       "typeProperties": {
-         "tableName": "emp"
-       },
-       "availability": {
-         "frequency": "Hour",
-         "interval": 1
-       }
-     }
+        "name": "OutputDataset",
+        "properties": {
+            "structure": [
+                {
+                    "name": "FirstName",
+                    "type": "String"
+                },
+                {
+                    "name": "LastName",
+                    "type": "String"
+                }
+            ],
+            "type": "AzureSqlTable",
+            "linkedServiceName": "AzureSqlLinkedService1",
+            "typeProperties": {
+              "tableName": "emp"
+            },
+            "availability": {
+              "frequency": "Hour",
+              "interval": 1
+            }
+        }
     }
     ```
+
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
     | プロパティ | 説明 |
     |:--- |:--- |
     | type | type プロパティを **AzureSqlTable** に設定します。これは、データを Azure SQL Database のテーブルにコピーするためです。 |
     | linkedServiceName | 前に作成した **AzureSqlLinkedService** を参照します。 |
-    | tableName | データのコピー先となる**テーブル**を指定します。 | 
-    | frequency/interval | frequency は **Hour**、interval は **1** に、それぞれ設定されています。これは、出力スライスがパイプラインの開始時刻から終了時刻までの間 **1 時間ごと**に生成されることを表します (出力スライスは、開始時刻の前および終了時刻の後には生成されません)。  |
+    | tableName | データのコピー先となる **テーブル** を指定します。 | 
+    | frequency/interval | frequency は **Hour**、interval は **1** に、それぞれ設定されています。これは、出力スライスがパイプラインの開始時刻から終了時刻までの間 **1 時間ごと** に生成されることを表します (出力スライスは、開始時刻の前および終了時刻の後には生成されません)。  |
 
     データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の 3 つの列があります。 ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
 
     これらの JSON プロパティの詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#dataset-properties)に関する記事を参照してください。
 
 ## <a name="create-pipeline"></a>パイプラインの作成
-この手順では、**InputDataset** を入力、**OutputDataset** を出力として使用する**コピー アクティビティ**を備えたパイプラインを作成します。
+
+この手順では、**InputDataset** を入力、**OutputDataset** を出力として使用する **コピー アクティビティ** を備えたパイプラインを作成します。
 
 現在、スケジュールは出力データセットによって開始されます。 このチュートリアルでは、1 時間ごとにスライスを生成するように出力データセットを構成します。 パイプラインの開始時刻と終了時刻の差は 1 日 (24 時間) です。 したがって、24 個の出力データセットのスライスがパイプラインによって生成されます。 
 
-1. **ソリューション エクスプローラー**の **[パイプライン]** を右クリックして **[追加]** をポイントし、 **[新しい項目]** をクリックします。  
+1. **ソリューション エクスプローラー** の **[パイプライン]** を右クリックして **[追加]** をポイントし、 **[新しい項目]** をクリックします。  
 2. **[新しい項目の追加]** ダイアログ ボックスで **[データ パイプラインのコピー]** を選択し、 **[追加]** をクリックします。 
 3. JSON テキストを次の JSON テキストで置き換え、 **CopyActivity1.json** ファイルを保存します。
 
-   ```json   
-    {
-     "name": "ADFTutorialPipeline",
-     "properties": {
-       "description": "Copy data from a blob to Azure SQL table",
-       "activities": [
-         {
-           "name": "CopyFromBlobToSQL",
-           "type": "Copy",
-           "inputs": [
-             {
-               "name": "InputDataset"
-             }
-           ],
-           "outputs": [
-             {
-               "name": "OutputDataset"
-             }
-           ],
-           "typeProperties": {
-             "source": {
-               "type": "BlobSource"
-             },
-             "sink": {
-               "type": "SqlSink",
-               "writeBatchSize": 10000,
-               "writeBatchTimeout": "60:00:00"
-             }
-           },
-           "Policy": {
-             "concurrency": 1,
-             "executionPriorityOrder": "NewestFirst",
-             "style": "StartOfInterval",
-             "retry": 0,
-             "timeout": "01:00:00"
+   ```json
+  {
+   "name": "ADFTutorialPipeline",
+   "properties": {
+     "description": "Copy data from a blob to Azure SQL table",
+     "activities": [
+       {
+         "name": "CopyFromBlobToSQL",
+         "type": "Copy",
+         "inputs": [
+           {
+             "name": "InputDataset"
            }
+         ],
+         "outputs": [
+           {
+             "name": "OutputDataset"
+           }
+         ],
+         "typeProperties": {
+           "source": {
+             "type": "BlobSource"
+           },
+           "sink": {
+             "type": "SqlSink",
+             "writeBatchSize": 10000,
+             "writeBatchTimeout": "60:00:00"
+           }
+         },
+         "Policy": {
+           "concurrency": 1,
+           "executionPriorityOrder": "NewestFirst",
+           "style": "StartOfInterval",
+           "retry": 0,
+           "timeout": "01:00:00"
          }
-       ],
-       "start": "2017-05-11T00:00:00Z",
-       "end": "2017-05-12T00:00:00Z",
-       "isPaused": false
-     }
-    }
+       }
+     ],
+     "start": "2017-05-11T00:00:00Z",
+     "end": "2017-05-12T00:00:00Z",
+     "isPaused": false
+   }
+  }
     ```   
    - activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。 コピー アクティビティの詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。 Data Factory ソリューションでは、[データ変換アクティビティ](data-factory-data-transformation-activities.md)を使用することもできます。
    - アクティビティの入力を **InputDataset** に設定し、出力を **OutputDataset** に設定します。 
@@ -333,13 +350,13 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
   
   * Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。 
 
-    ```powershell    
-    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
+  ```powershell    
+  Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
-    Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。 
+  Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。 
     
-    ```powershell
-    Get-AzResourceProvider
+  ```powershell
+  Get-AzResourceProvider
     ```
   * Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com) にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。 この操作によって、プロバイダーが自動的に登録されます。
 * データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
@@ -353,24 +370,24 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 1. [Azure Portal](https://portal.azure.com) にログインします。
 2. 左側のメニューの **[その他のサービス]** をクリックし、 **[データ ファクトリ]** をクリックします。
 
-    ![Browse data factories](media/data-factory-copy-activity-tutorial-using-visual-studio/browse-data-factories.png)
+  ![Browse data factories](media/data-factory-copy-activity-tutorial-using-visual-studio/browse-data-factories.png)
 3. データ ファクトリの名前の入力を開始します。
 
-    ![データ ファクトリの名前](media/data-factory-copy-activity-tutorial-using-visual-studio/enter-data-factory-name.png) 
+  ![データ ファクトリの名前](media/data-factory-copy-activity-tutorial-using-visual-studio/enter-data-factory-name.png) 
 4. 結果の一覧で目的のデータ ファクトリをクリックし、データ ファクトリのホーム ページを表示します。
 
-    ![データ ファクトリのホーム ページ](media/data-factory-copy-activity-tutorial-using-visual-studio/data-factory-home-page.png)
+  ![データ ファクトリのホーム ページ](media/data-factory-copy-activity-tutorial-using-visual-studio/data-factory-home-page.png)
 5. [データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md)に関するセクションの手順に従って、このチュートリアルで作成したパイプラインとデータセットを監視します。 現時点では、Visual Studio は Data Factory パイプラインの監視をサポートしていません。 
 
 ## <a name="summary"></a>まとめ
 このチュートリアルでは、Azure Data Factory を作成し、Azure BLOB から Azure SQL Database にデータをコピーしました。 また、Visual Studio を使用して、データ ファクトリ、リンクされたサービス、データセット、パイプラインを作成しました。 以下は、このチュートリアルで実行した手順の概要です。  
 
-1. Azure **データ ファクトリ**を作成しました。
-2. 次の **リンクされたサービス**を作成しました。
+1. Azure **データ ファクトリ** を作成しました。
+2. 次の **リンクされたサービス** を作成しました。
    1. 入力データを保持する Azure ストレージ アカウントをリンクするための、 **Azure Storage** のリンクされたサービス。     
    2. 出力データを保持するデータベースをリンクするための、**Azure SQL** のリンクされたサービス。 
-3. パイプラインの入力データと出力データを記述する **データセット**を作成しました。
-4. ソースとして **BlobSource**、シンクとして **SqlSink** を持つ**コピー アクティビティ**がある**パイプライン**を作成しました。 
+3. パイプラインの入力データと出力データを記述する **データセット** を作成しました。
+4. ソースとして **BlobSource**、シンクとして **SqlSink** を持つ **コピー アクティビティ** がある **パイプライン** を作成しました。 
 
 HDInsight Hive アクティビティを使用して Azure HDInsight クラスターを使用してデータを変換する方法については、[Hadoop クラスターを使用してデータを変換する初めてのパイプラインを作成する方法のチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
 
@@ -380,7 +397,7 @@ HDInsight Hive アクティビティを使用して Azure HDInsight クラスタ
 このセクションでは、Visual Studio のサーバー エクスプローラーを使用して、Azure サブスクリプション内のすべてのデータ ファクトリを表示し、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成する方法について説明します。 
 
 1. **Visual Studio** のメニューで **[ビュー]** をクリックし、 **[サーバー エクスプローラー]** をクリックします。
-2. [サーバー エクスプローラー] ウィンドウで、 **[Azure]** 、 **[Data Factory]** の順に展開します。 **[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている**アカウント**を入力し、 **[続行]** をクリックします。 **パスワード**を入力し、 **[サインイン]** をクリックします。 Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。 **[Data Factory Task List (Data Factory タスク リスト)]** ウィンドウで、この操作のステータスを確認します。
+2. [サーバー エクスプローラー] ウィンドウで、 **[Azure]** 、 **[Data Factory]** の順に展開します。 **[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている **アカウント** を入力し、 **[続行]** をクリックします。 **パスワード** を入力し、 **[サインイン]** をクリックします。 Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。 **[Data Factory Task List (Data Factory タスク リスト)]** ウィンドウで、この操作のステータスを確認します。
 
     ![[サーバー エクスプローラー]](./media/data-factory-copy-activity-tutorial-using-visual-studio/server-explorer.png)
 
@@ -388,7 +405,7 @@ HDInsight Hive アクティビティを使用して Azure HDInsight クラスタ
 
 - サーバー エクスプローラーでデータ ファクトリを右クリックし、 **[Export Data Factory to New Project]\(データ ファクトリを新しいプロジェクトにエクスポートする\)** を選択して、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成します。
 
-    ![Data Factory の Visual Studio プロジェクトへのエクスポート](./media/data-factory-copy-activity-tutorial-using-visual-studio/export-data-factory-menu.png)  
+  ![Data Factory の Visual Studio プロジェクトへのエクスポート](./media/data-factory-copy-activity-tutorial-using-visual-studio/export-data-factory-menu.png)  
 
 ## <a name="update-data-factory-tools-for-visual-studio"></a>Visual Studio の Data Factory ツールを更新する
 Visual Studio の Azure Data Factory ツールを更新するには、次の手順に従います。
@@ -419,34 +436,34 @@ Azure Storage のリンクされたサービスに関して次のような JSON 
 環境ごとに次の手順を実行して構成ファイルを追加します。   
 
 1. Visual Studio ソリューションで Data Factory プロジェクトを右クリックし、 **[追加]** をポイントして、 **[新しい項目]** をクリックします。
-2. 左側にあるインストールされたテンプレートの一覧で **[構成]** を選択し、 **[構成ファイル]** を選択して、構成ファイルの**名前**を入力し、 **[追加]** をクリックします。
+2. 左側にあるインストールされたテンプレートの一覧で **[構成]** を選択し、 **[構成ファイル]** を選択して、構成ファイルの **名前** を入力し、 **[追加]** をクリックします。
 
     ![Add configuration file](./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png)
 3. 次の形式で構成パラメーターとその値を追加します。
 
-    ```json
-    {
-        "$schema": "http://datafactories.schema.management.azure.com/vsschemas/V1/Microsoft.DataFactory.Config.json",
-        "AzureStorageLinkedService1": [
-            {
-                "name": "$.properties.typeProperties.connectionString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-            }
-        ],
-        "AzureSqlLinkedService1": [
-            {
-                "name": "$.properties.typeProperties.connectionString",
-                "value":  "Server=tcp:<logical SQL server name>.database.windows.net,1433;Database=<Azure SQL datbase>;User ID=<Username>;Password=<Password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-            }
-        ]
-    }
+  ```json
+  {
+      "$schema": "http://datafactories.schema.management.azure.com/vsschemas/V1/Microsoft.DataFactory.Config.json",
+      "AzureStorageLinkedService1": [
+          {
+              "name": "$.properties.typeProperties.connectionString",
+              "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+          }
+      ],
+      "AzureSqlLinkedService1": [
+          {
+              "name": "$.properties.typeProperties.connectionString",
+              "value":  "Server=tcp:<logical SQL server name>.database.windows.net,1433;Database=<Azure SQL datbase>;User ID=<Username>;Password=<Password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+          }
+      ]
+  }
     ```
 
     この例で構成しているのは、Azure Storage のリンクされたサービスと Azure SQL のリンクされたサービスの connectionString プロパティです。 名前を指定するための構文が [JsonPath](https://goessner.net/articles/JsonPath/)であることに注目してください。   
 
     ここで、JSON のプロパティが、次のコードのように値の配列になっているとします。  
 
-    ```json
+  ```json
     "structure": [
           {
               "name": "FirstName",
@@ -461,7 +478,7 @@ Azure Storage のリンクされたサービスに関して次のような JSON 
 
     次の構成ファイルのように、プロパティを構成します (0 から始まるインデックスを使用)。
 
-    ```json
+  ```json
     {
         "name": "$.properties.structure[0].name",
         "value": "FirstName"
@@ -500,7 +517,7 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 3. **[Publish Items (項目の発行)]** ページのドロップダウン リストに、 **[Select Deployment Config (デプロイ構成の選択)]** フィールドで使用できる構成が表示されます。
 
     ![Select config file](./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png)
-4. 使用する**構成ファイル**を選択し、 **[次へ]** をクリックします。
+4. 使用する **構成ファイル** を選択し、 **[次へ]** をクリックします。
 5. JSON ファイルの名前が **[概要]** ページに表示されていることを確認し、 **[次へ]** をクリックします。
 6. デプロイ操作が終了したら、 **[完了]** をクリックします。
 

@@ -1,15 +1,15 @@
 ---
-title: クラウドでのシーンのレンダリング
+title: チュートリアル - クラウドでシーンをレンダリングする
 description: チュートリアル - Batch Rendering サービスと Azure コマンド ライン インターフェイスを使用して Arnold で Autodesk 3DS Max シーンをレンダリングする方法
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 579a5446cb199bb73f98e2e1cbb0948f062470a8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e0858e838ba73862ef7f15040915c5f5cd3c751b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542390"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106344"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>チュートリアル:Azure Batch を使用したシーンのレンダリング 
 
@@ -346,7 +346,7 @@ az group delete --name myResourceGroup
 > * プールをスケーリングしてマルチフレーム シーンをレンダリングする
 > * レンダリングされる出力をダウンロードする
 
-クラウド規模のレンダリングの詳細については、Batch Rendering サービスのオプションを確認してください。 
+クラウド規模のレンダリングの詳細については、Batch Rendering のドキュメントをご覧ください。
 
 > [!div class="nextstepaction"]
 > [Batch Rendering サービス](batch-rendering-service.md)

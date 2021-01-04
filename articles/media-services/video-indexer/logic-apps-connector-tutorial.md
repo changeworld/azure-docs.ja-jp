@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: f557794265f3bbf48fae97fc04e5e9b068b54f63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c545fa7d58d925dfcb9fa98b301c3bb0a20833e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540406"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358573"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>チュートリアル: Logic Apps および Power Automate と共に Video Indexer コネクタを使用する
 
@@ -56,7 +56,7 @@ Video Indexer コネクタの使用をすぐに開始できるように、設定
 > [!TIP]
 > 以前に Azure Storage アカウントまたは Video Indexer アカウントをロジック アプリに接続している場合は、接続の詳細が保存されて、自動的に接続されます。 <br/>接続を編集するには、Azure Storage の下部にある **[接続の変更]** (ストレージのウィンドウ) をクリックするか、[Video Indexer] (プレーヤーのウィンドウ) アクションをクリックします。
 
-ご使用の Azure Storage アカウントと Video Indexer アカウントに接続できたら、**Logic Apps デザイナー**で [BLOB が追加または変更されたとき] トリガーを探して選択します。
+ご使用の Azure Storage アカウントと Video Indexer アカウントに接続できたら、**Logic Apps デザイナー** で [BLOB が追加または変更されたとき] トリガーを探して選択します。
 
 ビデオ ファイルの格納場所となるコンテナーを選択します。 
 
@@ -136,3 +136,5 @@ Azure BLOB コンテナーにビデオを追加して、新しく作成した Lo
 
 > [!div class="nextstepaction"]
 > [Video Indexer API の使用](video-indexer-use-apis.md)
+
+その他のリソースについては、[Video Indexer に関するドキュメント](https://docs.microsoft.com/connectors/videoindexer-v2/)を参照してください。

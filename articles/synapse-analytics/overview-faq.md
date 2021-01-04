@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: a427c77ec23bb933f96d8aec54ca33169aee84d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 671ca73cfa898be532521599d1211d2a8081eb4b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576028"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563264"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure Synapse Analytics についてよく寄せられる質問
 
@@ -59,7 +59,7 @@ A:Azure Synapse では、出発点として、Azure サブスクリプション 
 
 A:Synapse ワークスペースでは、ユーザー定義のフォルダーがサポートされています。
 
-### <a name="q-can-i-link-more-than-one-power-bi-workspaces-to-a-single-azure-synapse-workspace"></a>Q:複数の Power BI ワークスペースを 1 つの Azure Synapse ワークスペースにリンクすることはできますか。
+### <a name="q-can-i-link-more-than-one-power-bi-workspace-to-a-single-azure-synapse-workspace"></a>Q:複数の Power BI ワークスペースを 1 つの Azure Synapse ワークスペースにリンクすることはできますか。
     
 A:現在、1 つの Azure Synapse ワークスペースにリンクできる Power BI ワークスペースは 1 つのみです。 
 
@@ -69,7 +69,7 @@ A:Apache Spark の Synapse Link が一般提供されています。 サーバ�
 
 ### <a name="q-does-azure-synapse-workspace-support-cicd"></a>Q:Azure Synapse ワークスペースでは CI/CD がサポートされていますか。 
 
-A:はい。 すべてのパイプライン成果物、ノートブック、SQL スクリプト、および Spark ジョブの定義が、Git に存在します。 プール定義はすべて、ARM テンプレートとして Git に格納されます。 専用 SQL プールのオブジェクト (スキーマ、テーブル、ビューなど) は、CI/CD がサポートされたデータベース プロジェクトで管理されます。
+A:はい。 すべてのパイプライン成果物、ノートブック、SQL スクリプト、および Spark ジョブ定義が、Git に存在します。 プール定義はすべて、ARM テンプレートとして Git に格納されます。 専用 SQL プールのオブジェクト (スキーマ、テーブル、ビューなど) は、CI/CD がサポートされたデータベース プロジェクトで管理されます。
 
 ## <a name="pipelines"></a>パイプライン
 
@@ -91,11 +91,11 @@ A:現時点では、元のパイプラインから JSON をエクスポートし
 
 A:Synapse 用 Apache Spark は、Apache Spark に、他のサービス (AAD、Azure ML など) との統合サポート、追加のライブラリ (mssparktuils、Hummingbird)、および事前調整されたパフォーマンス構成が追加されたものです。
 
-現在 Apache Spark 上で実行されているワークロードはすべて、変更することなく MSFT Spark 上で実行できます。 
+現在 Apache Spark 上で実行されているワークロードはすべて、変更することなく Azure Synapse Apache Spark 上で実行できます。 
 
 ### <a name="q-what-versions-of-spark-are-available"></a>Q:Spark のどのバージョンを使用できますか。
 
-A:Azure Synapse Apache Spark では、Spark 2.4 が完全にサポートされています。 コア コンポーネントの完全な一覧と現在サポートされているバージョンについては、[Apache Spark でサポートされるバージョン](./spark/apache-spark-version-support.md)に関するページを参照してください。
+A:Azure Synapse Apache Spark では、Spark 2.4 が完全にサポートされています。 コア コンポーネントと現在サポートされているバージョンの完全な一覧については、[Apache Spark でサポートされるバージョン](./spark/apache-spark-version-support.md)に関するページを参照してください。
 
 ### <a name="q-is-there-an-equivalent-of-dbutils-in-azure-synapse-spark"></a>Q:Azure Synapse Spark には、DButils に相当するものがありますか。
 
@@ -121,7 +121,7 @@ A:Azure Synapse には、特定のユースケースに対応した専用のエ�
  
 このシナリオを満たすには、少数の Spark リソースを使用するように設定されたサーバーレス Spark プールを各開発者に提供する必要があります。 サーバーレス Spark プールはコストがかからないため、積極的に使用しない限り、複数の開発者がいる場合のコストを最小限に抑えることができます。 容易に相互連携できるように、プールではメタデータ (Spark テーブル) を共有します。
 
-### <a name="q-how-do-i-include-manage-and-install-libraries"></a>Q:ライブラリを追加、管理、インストールする方法を教えてください 
+### <a name="q-how-do-i-include-manage-and-install-libraries"></a>Q:ライブラリを追加、管理、インストールする方法を教えてください。
 
 A:外部パッケージは、Spark プールの作成時に requirements.txt ファイルを介してインストールできるほか、Synapse ワークスペースまたは Azure portal からインストールできます。 「[Azure Synapse Analytics で Apache Spark 用のライブラリを管理する](./spark/apache-spark-azure-portal-add-libraries.md)」を参照してください。
 
@@ -140,7 +140,7 @@ A:"移動" や "移行" は不要です。 既存のプールで新しいワー�
 A:既定では、すべての新しい専用 SQL プールがワークスペースにデプロイされます。ただし、必要に応じて、スタンドアロンのフォーム ファクターで専用 SQL プール (以前の SQL DW) を作成することもできます。 
 
 
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pool"></a>Q:専用 SQL プールとサーバーレス SQL プールの機能にはどのような違いがありますか。 
+### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pools"></a>Q:専用 SQL プールとサーバーレス SQL プールの機能にはどのような違いがありますか。
 
 A:違いの完全な一覧については、[Synapse SQL での T-SQL 機能の違い](./sql/overview-features.md)に関するページをご確認ください。
 

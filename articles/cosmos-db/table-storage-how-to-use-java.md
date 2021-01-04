@@ -5,24 +5,28 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: Java
 ms.topic: sample
-ms.date: 07/23/2020
-author: sakash279
-ms.author: akshanka
+ms.date: 12/10/2020
+author: ThomasWeiss
+ms.author: thweiss
 ms.custom: devx-track-java
-ms.openlocfilehash: 1f3f5a35beeac6c683aeb6db16a417b897755666
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a5da5e1717f897d2236fd73f0fff525e157f7a0e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079769"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093691"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Java から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
+
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-この記事では、テーブルの作成、データの格納、データに対する CRUD 操作の実行を行う方法について説明します。 Azure Table service または Azure Cosmos DB Table API のいずれかを選択してください。 サンプルは Java で記述され、 [Azure Storage SDK for Java][Azure Storage SDK for Java]を利用しています。 テーブルの **作成** 、 **一覧表示** 、および **削除** と、テーブル内のエンティティの **挿入** 、 **照会** 、 **変更** 、および **削除** の各シナリオについて説明します。 テーブルの詳細については、「 [次のステップ](#next-steps) 」のセクションを参照してください。
+この記事では、テーブルの作成、データの格納、データに対する CRUD 操作の実行を行う方法について説明します。 Azure Table service または Azure Cosmos DB Table API のいずれかを選択してください。 サンプルは Java で記述され、[Azure Storage SDK v8 for Java][Azure Storage SDK for Java] を使用しています。 テーブルの **作成**、**一覧表示**、および **削除** と、テーブル内のエンティティの **挿入**、**照会**、**変更**、および **削除** の各シナリオについて説明します。 テーブルの詳細については、「 [次のステップ](#next-steps) 」のセクションを参照してください。
+
+> [!IMPORTANT]
+> Table Storage をサポートする Azure Storage SDK の最新バージョンは [ v8][Azure Storage SDK for Java] です。 Table Storage SDK for Java の新しいバージョンが近日公開される予定です。
 
 > [!NOTE]
 > SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。 詳細については、 [Azure Storage SDK for Android に関するページ][Azure Storage SDK for Android]を参照してください。
@@ -63,7 +67,7 @@ Azure ストレージ アカウントまたは Azure Cosmos DB Table API アカ�
 
 ### <a name="add-an-azure-storage-connection-string"></a>Azure Storage 接続文字列の追加
 
-Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。 クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。 **AccountName** と **AccountKey** の値には、 [Azure ポータル](https://portal.azure.com)に表示されるストレージ アカウントの名前とプライマリ アクセス キーを使用します。 
+Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。 クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。**AccountName** と **AccountKey** の値には、[Azure ポータル](https://portal.azure.com)に表示されるストレージ アカウントの名前とプライマリ アクセス キーを使用します。 
 
 この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
@@ -77,7 +81,7 @@ public static final String storageConnectionString =
 
 ### <a name="add-an-azure-cosmos-db-table-api-connection-string"></a>Azure Cosmos DB Table API 接続文字列の追加
 
-Azure Cosmos DB アカウントは、接続文字列を使用して、テーブルのエンドポイントと資格情報を格納します。 クライアント アプリケーションの実行時、Azure Cosmos DB 接続文字列を次の形式で指定する必要があります。 **AccountName** と **AccountKey** の値には、 [Azure Portal](https://portal.azure.com) に表示される Azure Cosmos DB アカウントの名前とプライマリ アクセス キーを使用します。 
+Azure Cosmos DB アカウントは、接続文字列を使用して、テーブルのエンドポイントと資格情報を格納します。 クライアント アプリケーションの実行時、Azure Cosmos DB 接続文字列を次の形式で指定する必要があります。**AccountName** と **AccountKey** の値には、[Azure Portal](https://portal.azure.com) に表示される Azure Cosmos DB アカウントの名前とプライマリ アクセス キーを使用します。 
 
 この例では、Azure Cosmos DB 接続文字列を保持する静的フィールドを宣言する方法が示されています。
 
@@ -89,7 +93,7 @@ public static final String storageConnectionString =
     "TableEndpoint=https://your_endpoint;" ;
 ```
 
-Azure 上のロール内で実行されるアプリケーションでは、この文字列をサービス構成ファイルである *ServiceConfiguration.cscfg* に格納でき、 **RoleEnvironment.getConfigurationSettings** メソッドの呼び出しを使用してアクセスできます。 次の例では、サービス構成ファイル内の **StorageConnectionString** という名前の *Setting* 要素から接続文字列を取得しています。
+Azure 上のロール内で実行されるアプリケーションでは、この文字列をサービス構成ファイルである *ServiceConfiguration.cscfg* に格納でき、**RoleEnvironment.getConfigurationSettings** メソッドの呼び出しを使用してアクセスできます。 次の例では、サービス構成ファイル内の **StorageConnectionString** という名前の *Setting* 要素から接続文字列を取得しています。
 
 ```java
 // Retrieve storage account from connection-string.
@@ -519,7 +523,7 @@ catch (Exception e)
 
 ## <a name="insert-or-replace-an-entity"></a>エンティティの挿入または置換を行う
 
-エントリをテーブルに追加するときは、多くの場合、そのエントリがテーブル内に既に存在しているかどうかを把握していません。 挿入または置換操作を使用すると、エンティティが存在しない場合は挿入し、存在する場合は既存のものを置き換えることを 1 つの要求で処理できます。 これまでの例に対して、次のコードは "Walter Harp" のエンティティを挿入または置換します。 新しいエンティティを作成すると、このコードは **TableOperation.insertOrReplace** メソッドを呼び出します。 その後、 **CloudTable** オブジェクトの **execute** を呼び出し、テーブルと、テーブルの挿入または置換操作をパラメーターとして渡します。 エンティティの一部のみ更新するには、 **TableOperation.insertOrMerge** メソッドを代わりに使えます。 挿入または置換はローカル ストレージ エミュレーターではサポートされていないため、このコードはテーブル サービスのアカウントを使用している場合にのみ実行されます。 挿入または置換、および挿入またはマージの詳細については、この [Azure テーブル: アップサートおよびクエリ プロジェクションの概要][Azure Tables: Introducing Upsert and Query Projection] に関するページを参照してください。
+エントリをテーブルに追加するときは、多くの場合、そのエントリがテーブル内に既に存在しているかどうかを把握していません。 挿入または置換操作を使用すると、エンティティが存在しない場合は挿入し、存在する場合は既存のものを置き換えることを 1 つの要求で処理できます。 これまでの例に対して、次のコードは "Walter Harp" のエンティティを挿入または置換します。 新しいエンティティを作成すると、このコードは **TableOperation.insertOrReplace** メソッドを呼び出します。 その後、**CloudTable** オブジェクトの **execute** を呼び出し、テーブルと、テーブルの挿入または置換操作をパラメーターとして渡します。 エンティティの一部のみ更新するには、**TableOperation.insertOrMerge** メソッドを代わりに使えます。 挿入または置換はローカル ストレージ エミュレーターではサポートされていないため、このコードはテーブル サービスのアカウントを使用している場合にのみ実行されます。 挿入または置換、および挿入またはマージの詳細については、この [Azure テーブル: アップサートおよびクエリ プロジェクションの概要][Azure Tables: Introducing Upsert and Query Projection] に関するページを参照してください。
 
 ```java
 try
@@ -628,7 +632,7 @@ catch (Exception e)
 詳細については、「[Azure for Java developers (Java 開発者向けの Azure)](/java/azure)」を参照してください。
 
 [Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671
-[Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
+[Azure Storage SDK for Java]: https://github.com/Azure/azure-storage-java/tree/v8.6.5
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
 [Azure ストレージ クライアント SDK リファレンス]: https://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: /rest/api/storageservices/

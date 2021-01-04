@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 775075765c8c8eaa94541c0f094c1f7743fe59d9
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 88ad060c1ba28285051a91bd928a2a7116dff1ce
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886789"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937544"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure Communication Services でのトラブルシューティング
 
@@ -165,6 +165,25 @@ Android Studio で、シミュレーターとデバイスの両方から [View]\
    
 
 ---
+
+
+## <a name="calling-client-library-error-codes"></a>通話クライアント ライブラリのエラー コード
+
+Azure Communication Services の通話クライアント ライブラリでは、通話の問題のトラブルシューティングに役立つ次のエラー コードを使用します。 これらのエラー コードは、通話の終了後に `call.callEndReason` プロパティを通じて公開されます。
+
+| エラー コード | 説明 | 実行するアクション |
+| -------- | ---------------| ---------------|
+| 403 | 禁止または認証エラー。 | Communication Services トークンが有効であり、有効期限が切れていないことを確認します。 |
+| 404 | 通話が見つかりません。 | 通話先の番号 (または参加している通話) が存在することを確認します。 |
+| 408 | 通話コントローラーがタイムアウトしました。 | ユーザー エンドポイントからのプロトコル メッセージの待機中に通話コントローラーがタイムアウトしました。 クライアントが接続され、使用可能であることを確認します。 |
+| 410 | ローカル メディア スタックまたはメディア インフラストラクチャ エラー。 | サポートされている環境で最新のクライアント ライブラリを使用していることを確認します。 |
+| 430 | クライアント アプリケーションにメッセージを配信できません。 | クライアント アプリケーションが実行されていて使用可能であることを確認します。 |
+| 480 | リモート クライアント エンドポイントが登録されていません。 | リモート エンドポイントが使用可能であることを確認します。 |
+| 481 | 着信通話の処理に失敗しました。 | Azure portal からサポート リクエストを提出します。 |
+| 487 | エンドポイントの不一致の問題が原因で通話がキャンセルされたか、ローカルで拒否されたか、終了しました。または、メディア プランの生成に失敗しました。 | 想定されている動作です。 |
+| 490、491、496、487、498 | ローカル エンドポイント ネットワークの問題。 | ネットワークを確認します。 |
+| 500、503、504 | Communication Services インフラストラクチャ エラー。 | Azure portal からサポート リクエストを提出します。 |
+| 603 | Communication Services のリモート参加者によって、通話がグローバルに拒否されました。 | 想定されている動作です。 |
 
 
 ## <a name="related-information"></a>関連情報

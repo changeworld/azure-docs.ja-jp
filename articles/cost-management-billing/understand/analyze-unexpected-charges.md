@@ -8,13 +8,13 @@ ms.subservice: cost-management
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: b2340e5b220936c1333cf842251b669b3e034042
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: f6df8c6ff0db74798b71d57feae91e5245f2a6c2
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151206"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028720"
 ---
 # <a name="analyze-unexpected-charges"></a>想定外の料金を分析する
 
@@ -49,7 +49,7 @@ Azure portal で請求書の詳細を表示するには、分析する請求書�
 
 ## <a name="identify-spikes-in-cost-over-time"></a>一定期間におけるコストの急増を特定する
 
-最近発生したどのコストによって請求料金に変化が生じたのかが、明らかでない場合もあります。 どのような変化が起こったのかは、コスト分析を使用して、[日単位または月単位の経時的なコスト内訳を確認](../costs/cost-analysis-common-uses.md#view-costs-per-day-or-by-month)することで把握できます。 ビューの作成後、 **[サービス]** または **[リソース]** で料金をグループして変化を特定します。 データを見やすくするために、ビューを**折れ線**グラフに変更することもできます。
+最近発生したどのコストによって請求料金に変化が生じたのかが、明らかでない場合もあります。 どのような変化が起こったのかは、コスト分析を使用して、[日単位または月単位の経時的なコスト内訳を確認](../costs/cost-analysis-common-uses.md#view-costs-per-day-or-by-month)することで把握できます。 ビューの作成後、 **[サービス]** または **[リソース]** で料金をグループして変化を特定します。 データを見やすくするために、ビューを **折れ線** グラフに変更することもできます。
 
 ![コスト分析でコストの経時変化を示している例](./media/analyze-unexpected-charges/costs-over-time.png)
 
@@ -80,7 +80,7 @@ VM が作成されると、各メーターが使用状況レコードの出力�
 
 ### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>リソースの親スコープに対するユーザーのアクセス許可を分析する
 
-通常、サブスクリプションまたはリソース グループへの書き込みアクセス権限を持つ人物は、作成されたリソースについての情報を把握しています。 その人物ならリソースの目的を説明したり、事情を知っている担当者を紹介したりできるはずです。 サブスクリプション スコープのアクセス許可を持つ人物を特定する方法については、「[ロールの割り当てを表示する](../../role-based-access-control/check-access.md#view-role-assignments)」を参照してください。 リソース グループについても同じようなプロセスを使用できます。
+通常、サブスクリプションまたはリソース グループへの書き込みアクセス権限を持つ人物は、作成されたリソースについての情報を把握しています。 その人物ならリソースの目的を説明したり、事情を知っている担当者を紹介したりできるはずです。 サブスクリプション スコープのアクセス許可を持つユーザーを特定する方法については、[Azure リソースに対するユーザーのアクセス権の確認](../../role-based-access-control/check-access.md)に関する記事をご覧ください。 リソース グループについても同じようなプロセスを使用できます。
 
 ## <a name="get-help-to-identify-charges"></a>料金を特定するためにサポートを要請する
 

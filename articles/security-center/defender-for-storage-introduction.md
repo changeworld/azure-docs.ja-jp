@@ -7,18 +7,19 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 9b2855f82927b6f1707fd748f097dd357818ac4b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 8979e315f188a5c21cce206c24f195f72096d438
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341976"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516513"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Azure Defender for Storage の概要
 
-**Azure Defender for Storage** では、Azure Storage アカウント上の潜在的に有害なアクティビティが検出されます。 BLOB コンテナー、ファイル共有、またはデータ レイクのいずれに格納されているデータでも保護できます。
 
-この保護層により、セキュリティの専門家で "*なくても*" 脅威に対処し、セキュリティ監視システムを管理できます。
+**Azure Defender for Storage** は、ストレージ アカウントに対する通常とは異なる潜在的に有害なアクセスの試行、すなわちストレージ アカウントの悪用を検出する、Azure ネイティブのセキュリティ インテリジェンス レイヤーです。 セキュリティ AI の高度な機能と [Microsoft の脅威インテリジェンス](https://go.microsoft.com/fwlink/?linkid=2128684)を利用して、コンテキストに応じたセキュリティ アラートと推奨事項を提供します。
+
+セキュリティ アラートは、アクティビティで異常が発生したときにトリガーされます。 これらのアラートは Azure Security Center と統合されます。また、アラートは不審なアクティビティの詳細や、脅威の調査および修復方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。
 
 
 ## <a name="availability"></a>可用性
@@ -36,14 +37,14 @@ ms.locfileid: "92341976"
 
 セキュリティ アラートは、次のような場合にトリガーされます。
 
-- **疑わしいアクティビティ** - たとえば、ストレージ アカウントが Tor のアクティブな出口ノードとして知られている IP アドレスから正常にアクセスされました
-- **異常な動作** - たとえば、ストレージ アカウントへのアクセス パターンの変化
-- **マルウェアがアップロードされた可能性** - ハッシュ評価分析で、アップロードされたファイルにマルウェアが含まれていることが示されています
+- **疑わしいアクセス パターン** - Tor 出口ノードからの成功したアクセスや、Microsoft の脅威インテリジェンスによって不審と判断された IP からの成功したアクセスなど
+- **不審なアクティビティ** - 変則的なデータ抽出や、通常と異なるアクセス許可の変更など
+- **悪意のあるコンテンツのアップロード** (ハッシュ評価分析に基づく) 潜在的マルウェア ファイルやフィッシング コンテンツのホスティングなど
 
-アラートには、それらをトリガーするインシデントの詳細と、脅威の調査や修復方法に関する推奨事項が含まれています。
+アラートには、それらをトリガーするインシデントの詳細と、脅威の調査や修復方法に関する推奨事項が含まれています。 アラートは、Azure Sentinel、他のサードパーティ製 SIEM、またはその他の外部ツールにエクスポートできます。
 
 > [!TIP]
-> [こちらのブログ記事](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)の手順に従って、ストレージのアラートをシミュレートできます。
+> サブスクリプション レベルで [Azure Defender for Storage を構成する](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-security-center)ことをお勧めしますが、[個別のストレージ アカウントで構成する](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-portal)こともできます。
 
 
 ## <a name="what-is-hash-reputation-analysis-for-malware"></a>マルウェアのハッシュ評価分析とは

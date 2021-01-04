@@ -7,16 +7,19 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: f9bbf6e9d1d932f7225807613b789821c1462932
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 78b42a8ad3685d07b61c4faca384c7ee8f5a5f94
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441853"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616390"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Key Vault のアクセス ポリシーの問題のトラブルシューティング
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+### <a name="i-am-not-able-to-list-or-get-secretskeyscertificate-i-am-seeing-something-went-wrong-error"></a>シークレット、キー、または証明書を一覧表示または取得できません。 "問題が発生しました.." と表示されています。エラーが発生します。
+シークレットの表示、取得、作成、またはアクセスに関して問題が発生した場合は、その操作を実行するためのアクセス ポリシーが定義されていることを確認してください。[キー コンテナー アクセス ポリシー](https://docs.microsoft.com/azure/key-vault/general/group-permissions-for-apps)
 
 ### <a name="how-can-i-identify-how-and-when-key-vaults-are-accessed"></a>キー コンテナーが、いつ、どのようにアクセスされているのかを確認するにはどうすればよいですか?
 

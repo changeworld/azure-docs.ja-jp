@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 75eb977559573b72883de3ddbc27391c7e299a6f
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: ae2361d12dfe18cadd80dd3b84405b2b17751e59
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929318"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584087"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する
 
@@ -43,6 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```console
     openssl rand -base64 32
     ```
+
     生成されたパスワードが、VM のパスワード要件を満たしていることを確認します。 各 Azure サービスには、特定のパスワード要件があります。 VM のパスワード要件については、[VM を作成するときのパスワードの要件とは何か](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)に関するページを参照してください。
 
 ## <a name="prepare-a-key-vault"></a>キー コンテナーを準備する
@@ -53,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * キー コンテナーにシークレットを追加します。 シークレットは、VM の管理者パスワードを格納します。
 
 > [!NOTE]
-> 仮想マシンのテンプレートをデプロイするユーザーが、キー コンテナーの所有者または共同作成者でない場合、所有者または共同作成者は、キー コンテナーの *Microsoft.KeyVault/vaults/deploy/action* アクセス許可へのアクセス権をユーザーに付与する必要があります。 詳細については、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](./key-vault-parameter.md)」を参照してください。
+> 仮想マシンのテンプレートをデプロイするユーザーが、キー コンテナーの所有者または共同作成者でない場合、所有者または共同作成者は、キー コンテナーの `Microsoft.KeyVault/vaults/deploy/action` アクセス許可へのアクセス権をユーザーに付与する必要があります。 詳細については、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](./key-vault-parameter.md)」を参照してください。
 
 次の Azure PowerShell スクリプトを実行するには、 **[使ってみる]** を選択して、Azure Cloud Shell を開きます。 スクリプトを貼り付けるには、シェル ウィンドウを右クリックし、 **[貼り付け]** を選択します。
 
@@ -79,7 +80,7 @@ Write-Host "Press [ENTER] to continue ..."
 > * シークレットの既定の名前は **vmAdminPassword** です。 これは、テンプレート内でハードコードされています。
 > * テンプレートによってシークレットを取得できるようにするには、キー コンテナーに対する **[テンプレートの展開に対して Azure Resource Manager へのアクセスを有効にする]** アクセス ポリシーを有効にする必要があります。 このポリシーは、テンプレートで有効にします。 アクセス ポリシーの詳細については、「[キー コンテナーとシークレットをデプロイする](./key-vault-parameter.md#deploy-key-vaults-and-secrets)」を参照してください。
 
-テンプレートには、*keyVaultId* という 1 つの出力値があります。 後でこのチュートリアルの中でシークレット値を取得する際、シークレット名と共にこの ID を使用することになります。 リソース ID の形式は、次のとおりです。
+テンプレートには、`keyVaultId` という 1 つの出力値があります。 後でこのチュートリアルの中でシークレット値を取得する際、シークレット名と共にこの ID を使用することになります。 リソース ID の形式は、次のとおりです。
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -87,7 +88,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ID をコピーして貼り付けると、ID が複数の行に分かれてしまう場合があります。 行をマージして、余分なスペースを削除してください。
 
-デプロイを検証するには、同じシェル ウィンドウで次の PowerShell コマンドを実行して、シークレットをクリア テキストで取得します。 このコマンドは、前述の PowerShell スクリプトで定義された *$keyVaultName* 変数を使用しているため、同じシェル セッションでのみ機能します。
+デプロイを検証するには、同じシェル ウィンドウで次の PowerShell コマンドを実行して、シークレットをクリア テキストで取得します。 このコマンドは、前述の PowerShell スクリプトで定義された `$keyVaultName` 変数を使用しているため、同じシェル セッションでのみ機能します。
 
 ```azurepowershell
 (Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
@@ -146,14 +147,14 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
     ```
 
     > [!IMPORTANT]
-    > **id** の値を、前の手順で作成したキー コンテナーのリソース ID に置き換えます。 secretName は **vmAdminPassword** としてハードコーディングされます。  「[キー コンテナーを準備する](#prepare-a-key-vault)」を参照してください。
+    > `id` の値を、前の手順で作成したキー コンテナーのリソース ID に置き換えます。 `secretName` は **vmAdminPassword** としてハードコーディングされます。  「[キー コンテナーを準備する](#prepare-a-key-vault)」を参照してください。
 
     ![キー コンテナーと Resource Manager テンプレートの仮想マシンのデプロイ パラメーター ファイルを統合する](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
 1. 次の値を更新します。
 
-    * **adminUsername**: 仮想マシンの管理者アカウントの名前。
-    * **dnsLabelPrefix**: dnsLabelPrefix 値の名前。
+    * `adminUsername`:仮想マシンの管理者アカウントの名前。
+    * `dnsLabelPrefix`:`dnsLabelPrefix` の値に名前を指定します。
 
     名前の例については、前の画像を参照してください。
 
@@ -167,7 +168,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
     ![Azure portal の Cloud Shell のファイルのアップロード](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。 *azuredeploy.json* と *azuredeploy.parameters.json* の両方を Cloud Shell にアップロードします。 ファイルをアップロードした後、**ls** コマンドと **cat** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
+1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。 *azuredeploy.json* と *azuredeploy.parameters.json* の両方を Cloud Shell にアップロードします。 ファイルをアップロードした後、`ls` コマンドと `cat` コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
 
 1. 次の PowerShell スクリプトを実行してテンプレートをデプロイします。
 

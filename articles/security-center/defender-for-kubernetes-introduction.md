@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a815295c4f2ab78cbd3aff82949d7c28197afd82
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a0dd00709dbe8a1b0e037fe22750adea7e071162
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791921"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97372004"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Azure Defender for Kubernetes の概要
 
@@ -20,7 +20,7 @@ Azure Kubernetes Service (AKS) は、コンテナー化されたアプリケー�
 
 Azure Security Center と AKS を組み合わせることで、最高レベルのクラウドネイティブな Kubernetes セキュリティ オファリングが形成され、以下で概説するように、環境のセキュリティ強化、ワークロード保護、実行時保護が実現されます。
 
-Kubernetes クラスターの脅威を検出するには、 **Azure Defender for Kubernetes** を有効にします。
+Kubernetes クラスターの脅威を検出するには、**Azure Defender for Kubernetes** を有効にします。
 
 [Azure Defender for server](defender-for-servers-introduction.md) を有効にすると、Linux AKS ノードのホスト レベルの脅威検出を使用できます。
 
@@ -29,9 +29,9 @@ Kubernetes クラスターの脅威を検出するには、 **Azure Defender for
 |側面|詳細|
 |----|:----|
 |リリース状態:|一般提供 (GA)|
-|価格:|**Azure Defender for Kubernetes** の課金については、 [価格に関するページ](security-center-pricing.md)をご覧ください。|
+|価格:|**Azure Defender for Kubernetes** の課金については、[価格に関するページ](security-center-pricing.md)をご覧ください。|
 |必要なロールとアクセス許可:|**セキュリティ管理者** はアラートを無視できます。<br>**セキュリティ閲覧者** は、結果を表示できます。|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) China Gov<br>![いいえ](./media/icons/no-icon.png) US Gov、その他の Gov|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Azure Defender for Kubernetes の利点
@@ -72,7 +72,7 @@ Security Center が受信して分析する項目には、以下が含まれて�
 - API サーバーからの監査ログ
 - Log Analytics エージェントからの生のセキュリティ イベント
 - AKS クラスターからのクラスター構成情報
-- Azure Policy からのワークロード構成 ( **Kubernetes 用 の Azure Policy アドオン** を使用) [Kubernetes 受付制御を使用したワークロード保護のベスト プラクティスの詳細をご覧ください](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)。
+- Azure Policy からのワークロード構成 (**Kubernetes 用 の Azure Policy アドオン** を使用) [Kubernetes 受付制御を使用したワークロード保護のベスト プラクティスの詳細をご覧ください](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)。
 
 :::image type="content" source="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png" alt-text="Azure Security Center、Azure Kubernetes Service、Azure Policy 間の相互作用のアーキテクチャ概要" lightbox="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png":::
 
@@ -83,7 +83,7 @@ Security Center が受信して分析する項目には、以下が含まれて�
 
 ### <a name="can-i-still-get-aks-protections-without-the-log-analytics-agent"></a>Log Analytics エージェントを使用しなくても AKS 保護を利用できますか。
 
-前述のように、オプションの **Azure Defender for Kubernetes** プランではクラスター レベルで保護を提供し、 **Azure Defender for servers** の Log Analytics エージェントはノードを保護します。 
+前述のように、オプションの **Azure Defender for Kubernetes** プランではクラスター レベルで保護を提供し、**Azure Defender for servers** の Log Analytics エージェントはノードを保護します。 
 
 可能なかぎり最も完全な保護を実現するためには、両方をデプロイすることをお勧めします。
 

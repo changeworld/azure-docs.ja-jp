@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2020
+ms.date: 12/15/2020
 ms.author: memildin
-ms.openlocfilehash: 3272212a857f24916acce7da5a4ee31561ec0c5a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 484a8c7c230863f230719ddaf4e98a6248512bcc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922927"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560255"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -39,6 +39,7 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 - [Azure Synapse Analytics の専用 SQL プールに対する Azure Defender for SQL のサポートの一般提供開始](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
 - [グローバル管理者が自分にテナントレベルのアクセス許可を付与できるようになりました](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
 - [2 つの新しい Azure Defender プラン: Azure Defender for DNS と Azure Defender for Resource Manager (プレビュー段階)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
+- [Azure portal の新しいセキュリティ アラート ページ (プレビュー)](#new-security-alerts-page-in-the-azure-portal-preview)
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>マシン上の SQL サーバー向け Azure Defender の一般提供開始
 
@@ -95,6 +96,24 @@ Azure 環境向けに、2 つの新しいクラウドネイティブ範囲の脅
     - [Azure Defender for DNS アラートに対応する](defender-for-dns-usage.md)
     - [Azure Defender for DNS で提供されるアラートの一覧](alerts-reference.md#alerts-dns)
 
+
+### <a name="new-security-alerts-page-in-the-azure-portal-preview"></a>Azure portal の新しいセキュリティ アラート ページ (プレビュー)
+
+Azure Security Center のセキュリティ アラート ページは、次の機能を提供できるように再設計されました。
+
+- **アラートのトリアージ エクスペリエンスの向上** - アラートに対応する労力を減らし、最も関連性の高い脅威に焦点を絞りやすくするために、一覧にはカスタマイズ可能なフィルターとグループ化のオプションが追加されました
+- **アラート一覧への情報の追加** - MITRE ATT & ACK の戦術など
+- **サンプル アラートを作成するためのボタン** - Azure Defender の機能を評価し、アラートの構成 (SIEM 統合、メール通知、ワークフローの自動化) をテストします。すべての Azure Defender プランでサンプル アラートを作成できます
+- **Azure Sentinel のインシデント エクスペリエンスとの連携** - 両方の製品を使用するお客様は、より簡単に 2 つを切り替えることによって、どちらの製品からも、もう一方の製品が提供する情報を取得しやすくなりました
+- 長大なアラート一覧の **パフォーマンス向上**
+- アラート一覧の **キーボードによるナビゲーション**
+- **Azure Resource Graph のアラート** - Azure Resource Graph (すべてのリソースを対象とする、Kusto に似た API) のアラートにクエリを実行できます。 これは、独自のアラート ダッシュボードを作成している場合にも役立ちます。 [Azure Resource Graph の詳細についてさらに学習します](../governance/resource-graph/index.yml)。
+
+新しいエクスペリエンスにアクセスするには、セキュリティ アラート ページの上部にあるバナーの "今すぐ試す" リンクを使用します。
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="新しいアラート エクスペリエンス (プレビュー) へのリンクが表示されたバナー":::
+
+新しいアラート エクスペリエンスでサンプル アラートを作成するには、「[Azure Defender のサンプル アラートを生成する](security-center-alert-validation.md#generate-sample-azure-defender-alerts)」を参照してください。
 
 ## <a name="november-2020"></a>2020 年 11 月
 

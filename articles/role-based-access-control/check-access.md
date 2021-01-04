@@ -1,57 +1,83 @@
 ---
-title: クイックスタート - Azure リソースに対するユーザーのアクセス権を表示する - Azure RBAC
-description: このクイックスタートでは、ユーザーまたは他のセキュリティ プリンシパルが Azure リソースに対して持っているアクセス権を、Azure portal と Azure ロールベースのアクセス制御 (Azure RBAC) を使用して表示する方法について説明します。
+title: クイックスタート - Azure リソースに対するユーザーのアクセス権を確認する - Azure RBAC
+description: このクイックスタートでは、Azure portal と Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure リソースに対する自分または別のユーザーのアクセス権を確認する方法について説明します。
 services: role-based-access-control
-documentationCenter: ''
 author: rolyon
 manager: mtillman
-editor: ''
 ms.service: role-based-access-control
-ms.devlang: ''
 ms.topic: quickstart
-ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 12/09/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 9be53aa964e75bab0b90495640537fe927a5af0e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 7cf4020ad38224b25ea8bb7dc7f0fdea7dd6f3b1
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82734163"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97034005"
 ---
-# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>クイック スタート:Azure リソースに対するユーザーのアクセス権を表示する
+# <a name="quickstart-check-access-for-a-user-to-azure-resources"></a>クイックスタート: Azure リソースに対するユーザーのアクセス権を確認する
 
-[Azure ロールベースのアクセス制御 (Azure RBAC)](overview.md) の **[アクセス制御 (IAM)]** ブレードを使用して、ユーザーまたは別のセキュリティ プリンシパルが Azure リソースに対して持っているアクセス権を表示できます。 ただし、1 人のユーザーまたは別のセキュリティ プリンシパルのアクセス権をすばやく表示することだけが必要な場合があります。 これを行う最も簡単な方法は、Azure portal の **[アクセスの確認]** 機能を使うことです。
+一連の Azure リソースに対するユーザーのアクセス権を確認することが必要な場合があります。 アクセス権を確認するには、割り当ての一覧を表示します。 1 人のユーザーのアクセス権を簡単に確認する方法として、 **[アクセス制御 (IAM)]** ページの **[アクセスの確認]** 機能を使用します。
 
-## <a name="view-role-assignments"></a>ロールの割り当てを表示する
+## <a name="step-1-open-the-azure-resources"></a>手順 1:Azure リソースを開く
 
- ユーザーのアクセス権を表示する方法は、ユーザーのロールの割り当てを一覧表示することです。 サブスクリプションのスコープで単独のユーザー、グループ、サービス プリンシパル、またはマネージド ID のロールの割り当てを表示するには、次の手順のようにします。
+ユーザーのアクセス権を確認するには、まず、アクセス権を確認する Azure リソースを開く必要があります。 Azure リソースは、通常 "*スコープ*" と呼ばれるレベルに整理されています。 Azure では、範囲の広いものから順に、管理グループ、サブスクリプション、リソース グループ、リソースの 4 つのレベルでスコープを指定できます。
 
-1. Azure portal で、 **[すべてのサービス]** 、 **[サブスクリプション]**  の順にクリックします。
+![Azure RBAC のスコープ レベル](../../includes/role-based-access-control/media/scope-levels.png)
 
-1. お使いのサブスクリプションをクリックします。
+次の手順に従って、アクセス権を確認する Azure リソースのセットを開きます。
+
+1. [Azure Portal](https://portal.azure.com)を開きます。
+
+1. **管理グループ**、**サブスクリプション**、**リソース グループ**、特定のリソースなど、Azure リソースのセットを開きます。
+
+1. そのスコープの特定のリソースをクリックします。
+
+    リソース グループの例を次に示します。
+
+    ![リソース グループの概要](./media/check-access/rg-overview.png)
+
+## <a name="step-2-check-access-for-a-user"></a>手順 2:ユーザーのアクセスを確認
+
+次の手順に従って、前に選択した Azure リソースに対する単一のユーザー、グループ、サービス プリンシパル、またはマネージド ID のアクセス権を確認します。
 
 1. **[アクセス制御 (IAM)]** をクリックします。
 
-1. **[アクセスの確認]** タブをクリックします。
+    リソース グループの [アクセス制御 (IAM)] ページの例を次に示します。
 
-    ![アクセス制御 - [アクセスの確認] タブ](./media/check-access/access-control-check-access.png)
+    ![リソース グループのアクセス制御 - [アクセスの確認] タブ](./media/check-access/rg-access-control.png)
 
-1. **[検索]** 一覧で、アクセス権を確認するセキュリティ プリンシパルの種類を選択します。
+1. **[アクセスの確認]** タブの **[検索]** の一覧で、アクセス権を確認するユーザー、グループ、サービス プリンシパル、またはマネージド ID を選択します。
 
 1. 検索ボックスに、表示名、メール アドレス、またはオブジェクト識別子のディレクトリを検索するための文字列を入力します。
 
-    ![[アクセスの確認] の選択リスト](./media/check-access/check-access-select.png)
+    ![[アクセスの確認] の選択リスト](./media/shared/rg-check-access-select.png)
 
 1. セキュリティ プリンシパルをクリックして **[割り当て]** ウィンドウを開きます。
 
-    ![[割り当て] ウィンドウ](./media/check-access/check-access-assignments.png)
+    このペインでは、このスコープで選択されたセキュリティ プリンシパルと、このスコープに継承されたセキュリティ プリンシパルのアクセス権を確認できます。 子スコープでの割り当ては表示されません。 次の割り当てが表示されます。
 
-    このウィンドウでは、選択したセキュリティ プリンシパルに割り当てられているロールとスコープを確認できます。 このスコープに拒否割り当てがある場合、またはこのスコープに継承されている場合は、それが表示されます。
+    - Azure RBAC で追加されたロールの割り当て。
+    - Azure Blueprints または Azure マネージド アプリを使用して追加された拒否の割り当て。
+    - クラシック デプロイの従来のサービス管理者または共同管理者の割り当て。 
+
+    ![ユーザーのロールと拒否の割り当てペイン](./media/shared/rg-check-access-assignments-user.png)
+
+## <a name="step-3-check-your-access"></a>手順 3:自分のアクセス権を確認する
+
+次の手順に従って、前に選択した Azure リソースに対する自分のアクセス権を確認します。
+
+1. **[アクセス制御 (IAM)]** をクリックします。
+
+1. **[アクセスの確認]** タブで、 **[View my access]\(自分のアクセスの表示\)** ボタンをクリックします。
+
+    割り当てペインが表示され、このスコープでのアクセス権とこのスコープに継承されたアクセス権が一覧表示されます。 子スコープでの割り当ては表示されません。
+
+    ![ロールと拒否の割り当てペイン](./media/check-access/rg-check-access-assignments.png)
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](quickstart-assign-role-user-portal.md)
+> [Azure portal を使用して Azure でのロールの割り当てを一覧表示する](role-assignments-list-portal.md)

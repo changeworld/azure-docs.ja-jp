@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d8afa769c90c5cf9450343cda1a65809062468fb
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c4c9808813de80beea55e083c5bd80667ae2861f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888693"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033121"
 ---
 # <a name="communication-services-logs"></a>Communication Services のログ
 
@@ -39,6 +39,7 @@ Communication Services には、有効にできるログが 3 種類用意され
 * **利用状況ログ** - 課金の対象となる各サービス内容に関連付けられた利用状況データを提供します。
 * **チャット操作ログ** - チャット サービスに関連した基本的な情報を提供します。
 * **SMS 操作ログ** - SMS サービスに関連した基本的な情報を提供します。
+* **認証操作ログ** - 認証サービスに関連した基本的な情報を提供します。
 
 ### <a name="usage-logs-schema"></a>利用状況ログのスキーマ
 
@@ -100,3 +101,23 @@ Communication Services には、有効にできるログが 3 種類用意され
 | SdkType | 要求で使用された SDK の種類。 |
 | PlatformType | 要求で使用されたプラットフォームの種類。 |
 | メソッド | 要求で使用されたメソッド。 |
+
+### <a name="authentication-operational-logs"></a>認証操作ログ
+
+| プロパティ | 説明 |
+| -------- | ---------------|
+| TimeGenerated | ログが生成された時刻のタイムスタンプ (UTC)。 |
+| OperationName | ログ レコードに関連付けられている操作。 |
+| CorrelationID | 相関性があるイベントの ID。 複数のテーブル間で相関性のあるイベントを特定する際に使用できます。 |
+| OperationVersion | API を使用して `operationName` が実行された場合は、その操作に関連付けられている `api-version`。 この操作に対応する API がない場合、バージョンは、操作に関連付けられているプロパティが今後、変更された場合、その操作のバージョンを表します。 |
+| カテゴリ | イベントのログ カテゴリ。 カテゴリは細分化されており、これを使用して、特定のリソースのログを有効または無効にすることができます。 イベントのプロパティ BLOB 内に表示されるプロパティは、特定のログ カテゴリとリソースの種類内のものと同じです。 |
+| ResultType | 操作のステータス。 |
+| ResultSignature | 操作のサブステータス。 この操作が REST API 呼び出しに対応している場合、このフィールドは、対応する REST 呼び出しの HTTP 状態コードです。 |
+| DurationMs | 操作時間 (ミリ秒)。 |
+| CallerIpAddress | 操作が、一般的に利用できる IP アドレスを持つエンティティからの API 呼び出しに対応している場合は、呼び出し元 IP アドレス。 |
+| Level | イベントの重大度レベル。 |
+| URI | 要求の URI。 |
+| SdkType | 要求で使用された SDK の種類。 |
+| PlatformType | 要求で使用されたプラットフォームの種類。 |
+| ID | 操作に関連する Communication Services ID。 |
+| スコープ | アクセス トークンに含まれる Communication Services のスコープ。 |

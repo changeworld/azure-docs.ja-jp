@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 73f5968f02e0f348c82d83b5b82d67748b4c3586
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b0cdfd76ed5e7ae20800b52e6074809de12a8b5f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455342"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031472"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Confluence SAML SSO by Microsoft の統合
 
@@ -63,7 +63,7 @@ Confluence SAML SSO by Microsoft と Azure AD の統合を構成するには、�
 
 - Confluence: 5.0 から 5.10
 - Confluence: 6.0.1 から 6.15.9
-- Confluence: 7.0.1 から 7.7.2
+- Confluence: 7.0.1 から 7.9.3
 
 > [!NOTE]
 > Confluence プラグインは、Ubuntu Version 16.04 でも動作することに注意してください
@@ -72,7 +72,7 @@ Confluence SAML SSO by Microsoft と Azure AD の統合を構成するには、�
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Confluence SAML SSO by Microsoft では、 **SP** によって開始される SSO がサポートされます
+* Confluence SAML SSO by Microsoft では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-confluence-saml-sso-by-microsoft-from-the-gallery"></a>ギャラリーからの Confluence SAML SSO by Microsoft の追加
 
@@ -82,7 +82,7 @@ Azure AD への Confluence SAML SSO by Microsoft の統合を構成するには�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Confluence SAML SSO by Microsoft** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Confluence SAML SSO by Microsoft**」と入力します。
 1. 結果のパネルから **[Confluence SAML SSO by Microsoft]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-confluence-saml-sso-by-microsoft"></a>Confluence SAML SSO by Microsoft の Azure AD シングル サインオンの構成とテスト

@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: cd7d4d3653dc775a949da229e4005d297f7810aa
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 2eff30333362d461f196972fbaedbeac8f2ae7c9
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96126101"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033859"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,7 +27,7 @@ ms.locfileid: "96126101"
 
 `main` 関数は、次のことを行います。
 
-* DPS を使用してデバイスをプロビジョニングします。 プロビジョニング情報には、モデル ID が含まれます。
+* DPS を使用してデバイスをプロビジョニングします。 プロビジョニング情報には、モデル ID が含まれます。 IoT Central では、モデル ID を使用して、このデバイスのデバイス テンプレートを識別または生成します。 詳細については、「[デバイス テンプレートへのデバイスの関連付け](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template)」をご覧ください。
 * `Device_client` オブジェクトを作成し、接続が開かれる前に `dtmi:com:example:Thermostat;1` モデル ID を設定します。
 * `maxTempSinceLastReboot` プロパティを IoT Central に送信します。
 * `getMaxMinReport` コマンドのリスナーを作成します。
@@ -113,7 +113,7 @@ async def main():
     # ...
 ```
 
-`provision_device` 関数は、DPS を使用してデバイスをプロビジョニングし、IoT Central に登録します。 デバイスのモデル ID は、この関数によってプロビジョニング ペイロードに追加されます。
+`provision_device` 関数は、DPS を使用してデバイスをプロビジョニングし、IoT Central に登録します。 この関数により、デバイスのモデル ID ([デバイスをデバイス テンプレートに関連付ける](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template)ために IoT Central が使用) がプロビジョニング ペイロードに追加されます。
 
 ```python
 async def provision_device(provisioning_host, id_scope, registration_id, symmetric_key, model_id):

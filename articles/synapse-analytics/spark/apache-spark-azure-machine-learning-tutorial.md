@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Automated ML を使用した実験の実行
-description: Apache Spark と Azure Automated ML を使用して機械学習実験を実行する方法に関するチュートリアル
+title: チュートリアル:自動 ML で Python のモデルをトレーニングする
+description: Apache Spark と自動 ML を使用して、Azure Synapse で Python の機械学習モデルをトレーニングする方法に関するチュートリアル。
 services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: b2fbc74304cdb71d9cb3e1ea476af8c92eb99b7e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: abb7266d90171abc628739aa8f50f1760a32f68d
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458842"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093334"
 ---
-# <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>チュートリアル:Azure Automated ML と Apache Spark を使用した実験の実行
+# <a name="tutorial-train-a-machine-learning-model-in-python-in-azure-synapse-with-apache-spark-and-automated-ml"></a>チュートリアル:Apache Spark と自動 ML を使用して Azure Synapse で Python の機械学習モデルをトレーニングする
 
 Azure Machine Learning は、機械学習モデルのトレーニング、デプロイ、自動化、管理、追跡を可能にするクラウドベースの環境です。 
 
@@ -155,11 +155,11 @@ ws = Workspace(workspace_name = workspace_name,
 import pandas 
 from azureml.core import Dataset
 
-# Get the AML Default Datastore
+# Get the Azure Machine Learning Default Datastore
 datastore = ws.get_default_datastore()
 training_pd = training_data.toPandas().to_csv('training_pd.csv', index=False)
 
-# Convert into AML Tabular Dataset
+# Convert into Azure Machine Learning Tabular Dataset
 datastore.upload_files(files = ['training_pd.csv'],
                        target_path = 'train-dataset/tabular/',
                        overwrite = True,
@@ -168,7 +168,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 ```
 ![アップロードされたデータセットの画像。](./media/azure-machine-learning-spark-notebook/upload-dataset.png)
 
-## <a name="submit-an-automl-experiment"></a>AutoML 実験を送信する
+## <a name="submit-an-automated-ml-experiment"></a>自動 ML 実験を送信する
 
 #### <a name="define-training-settings"></a>トレーニングの設定を定義する
 1. 実験を送信するには、トレーニング用の実験パラメーターとモデルの設定を定義する必要があります。 すべての設定の一覧については、[こちら](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)を参照してください。
@@ -221,7 +221,7 @@ run_details = local_run.get_details()
 ![モデル出力のスクリーンショット](./media/azure-machine-learning-spark-notebook/model-output.png)
 
 > [!NOTE]
-> 送信された AutoML 実験は、さまざまなイテレーションとモデルの種類を実行します。 通常、この実行には 1 ～ 1.5 時間かかります。 
+> 送信された自動 ML 実験では、さまざまなイテレーションとモデルの種類を実行します。 通常、この実行には 1 ～ 1.5 時間かかります。 
 
 #### <a name="retrieve-the-best-model"></a>最高のモデルを取得する
 イテレーションから最適なモデルを選択するために、```get_output``` 関数を使用して、最適な実行と近似モデルを返します。 次のコードでは、ログ記録された任意のメトリックや特定のイテレーションに対する最適な実行と近似モデルを取得します。
@@ -325,7 +325,7 @@ plt.show()
 最適なモデルを検証したら、モデルを Azure Machine Learning に登録できます。 モデルの登録後は、その登録済みモデルをダウンロードするかデプロイし、登録されたすべてのファイルを受信できます。
 
 ```python
-description = 'My AutoML Model'
+description = 'My automated ML model'
 model_path='outputs/model.pkl'
 model = best_run.register_model(model_name = 'NYCGreenTaxiModel', model_path = model_path, description = description)
 print(model.name, model.version)
@@ -336,7 +336,7 @@ NYCGreenTaxiModel 1
 ## <a name="view-results-in-azure-machine-learning"></a>Azure Machine Learning で結果を表示する
 最後に、Azure Machine Learning ワークスペースで実験に移動して、イテレーションの結果にアクセスすることもできます。 ここでは、実行のステータス、試行したモデル、その他のモデル メトリックの詳細を掘り下げることができます。 
 
-![AML ワークスペースのスクリーンショット。](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
+![Azure Machine Learning ワークスペースのスクリーンショット。](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

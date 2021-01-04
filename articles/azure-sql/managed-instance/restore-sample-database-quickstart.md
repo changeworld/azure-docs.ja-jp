@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 413786cf8946c1ffbb76bd0e18eae7c7ba16a9c1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b2333e38415a2c0ad50ce36c213ead711c70ab4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790748"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928802"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>クイック スタート:SSMS を使用して Azure SQL Managed Instance にデータベースを復元する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -51,6 +51,9 @@ SQL Server Management Studio で、次の手順に従って、Wide World Importe
 1. SSMS を開き、お使いのマネージド インスタンスに接続します。
 2. **オブジェクト エクスプローラー** で、マネージド インスタンスを右クリックし、 **[新しいクエリ]** を選択して新しいクエリ ウィンドウを開きます。
 3. 次の SQL スクリプトを実行します。このスクリプトでは、事前構成済みのストレージ アカウントと SAS キーを使用して、マネージド インスタンスに[資格情報を作成](/sql/t-sql/statements/create-credential-transact-sql)します。
+ 
+   > [!IMPORTANT]
+   > `CREDENTIAL` はコンテナーのパスと一致し、`https` で始まる必要があり、末尾にスラッシュを含めることはできません。 `IDENTITY` は、`SHARED ACCESS SIGNATURE` である必要があります。 `SECRET` は Shared Access Signature トークンである必要があり、先頭に `?` を含めることはできません。
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]

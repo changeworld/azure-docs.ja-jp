@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 08ee000d8f801559fcf572b8ab489161fd090b77
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 7ba15e66cca7baefdf8cca5cabd5e5d5b1e2c7f7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95996204"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507814"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>チュートリアル:Android アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す
 
@@ -75,24 +75,28 @@ Android アプリケーションがまだない場合は、次の手順に従っ
 
 ### <a name="register-your-application"></a>アプリケーションの登録
 
-1. [Azure ポータル](https://aka.ms/MobileAppReg)にアクセスします。
-2. [[アプリの登録] ブレード](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)を開き、 **[+ 新しい登録]** をクリックします。
-3. アプリの **[名前]** を入力した後、リダイレクト URI を **設定しない** で、**[登録]** をクリックします。
-4. 表示されたウィンドウの **[管理]** セクションで、**[認証]** > **[+ プラットフォームの追加]** > **[Android]** を選択します。 (このセクションを表示するには、ブレードの上部付近にある [Switch to the new experience]\(新しいエクスペリエンスに切り替える\) を選択することが必要な場合があります)
-5. プロジェクトのパッケージ名を入力します。 コードをダウンロードした場合、この値は `com.azuresamples.msalandroidapp` です。
-6. **[Android アプリの構成]** ページの **[署名ハッシュ]** セクションで、**[Generating a development Signature Hash]\(開発用署名ハッシュの生成\)** をクリックします。 そして、お使いのプラットフォームに使用する KeyTool コマンドをコピーします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+1. アプリケーションの **[名前]** を入力します。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
+1. **[登録]** を選択します。
+1. **[管理]** で、 **[認証]**  >  **[プラットフォームの追加]**  >  **[Android]** の順に選択します。
+1. プロジェクトのパッケージ名を入力します。 コードをダウンロードした場合、この値は `com.azuresamples.msalandroidapp` です。
+1. **[Android アプリの構成]** ページの **[署名ハッシュ]** セクションで、 **[Generating a development Signature Hash]\(開発用署名ハッシュの生成\)** を選択します。 そして、お使いのプラットフォームに使用する KeyTool コマンドをコピーします。
 
    > [!Note]
    > KeyTool.exe は、Java Development Kit (JDK) の一部としてインストールされます。 KeyTool コマンドを実行するには、OpenSSL ツールもインストールする必要があります。 詳細については、[キーの生成に関する Android のドキュメント](https://developer.android.com/studio/publish/app-signing#generate-key)を参照してください。
 
-7. KeyTool によって生成された **署名ハッシュ** を入力します。
-8. [`Configure`] をクリックし、後でアプリを構成するときに入力できるように、**[Android の構成]** ページに表示される **[MSAL 構成]** を保存しておきます。  **[Done]** をクリックします。
+1. KeyTool によって生成された **署名ハッシュ** を入力します。
+1. **[構成]** をクリックし、後でアプリを構成するときに入力できるように、 **[Android の構成]** ページに表示される **[MSAL 構成]** を保存しておきます。  
+1. **[完了]** を選択します。
 
 ### <a name="configure-your-application"></a>アプリケーションの作成
 
 1. Android Studio のプロジェクト ウィンドウで、**app\src\main\res** に移動します。
-2. **res** を右クリックして、**[New]\(新規\)** > **[Directory]\(ディレクトリ\)** を選択します。 新しいディレクトリの名前に「`raw`」と入力し、**[OK]** をクリックします。
-3. **app** > **src** > **main** > **res** > **raw** で、`auth_config_single_account.json` という名前の新しい JSON ファイルを作成し、先ほど保存した MSAL 構成を貼り付けます。
+1. **res** を右クリックして、**[New]\(新規\)** > **[Directory]\(ディレクトリ\)** を選択します。 新しいディレクトリの名前に「`raw`」と入力し、**[OK]** をクリックします。
+1. **app** > **src** > **main** > **res** > **raw** で、`auth_config_single_account.json` という名前の新しい JSON ファイルを作成し、先ほど保存した MSAL 構成を貼り付けます。
 
     リダイレクト URI の下に、以下を貼り付けます。
     ```json

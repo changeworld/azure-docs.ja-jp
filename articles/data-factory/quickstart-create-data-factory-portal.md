@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 11/09/2020
+ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 9d3c3dc3b9a83973e41bf5d7dd204316508c2cb4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 76a490ed28f940620db7835c4cec145740f48503
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96013396"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509021"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>クイック スタート:Azure Data Factory UI を使用してデータ ファクトリを作成する 
 
@@ -45,42 +45,42 @@ ms.locfileid: "96013396"
 1. **[統合]** を選択し、 **[Data Factory]** を選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
-1. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。 
+1. **[Create Data Factory]\(データ ファクトリの作成\)** ページの **[基本]** タブで、データ ファクトリを作成する Azure **サブスクリプション** を選択します。
+1. **[リソース グループ]** で、次の手順のいずれかを行います。
+
+    a. ドロップダウン リストから既存のリソース グループを選択します。
+
+    b. **[新規作成]** を選択し、新しいリソース グループの名前を入力します。
+    
+    リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。 
+
+1. **[リージョン]** で、データ ファクトリの場所を選択します。
+
+   この一覧に表示されるのは、Data Factory でサポートされ、かつ Azure Data Factory のメタ データが格納される場所のみです。 Data Factory で使用する関連データ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他のリージョンで実行できます。
  
+1. **[名前]** に「**ADFTutorialDataFactory**」と入力します。
    Azure データ ファクトリの名前は *グローバルに一意* にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更して ( **&lt;yourname&gt;ADFTutorialDataFactory** など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
   
    ![名前が使用できないときのエラー](./media/doc-common-process/name-not-available-error.png)
-1. **[サブスクリプション]** で、データ ファクトリを作成する Azure サブスクリプションを選択します。 
-1. **[リソース グループ]** で、次の手順のいずれかを行います。
-     
-   - **[既存のものを使用]** を選択し、一覧から既存のリソース グループを選択します。 
-   - **[新規作成]** を選択し、リソース グループの名前を入力します。   
-         
-   リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
+
 1. **[バージョン]** で、 **[V2]** を選択します。
-1. **[場所]** で、データ ファクトリの場所を選択します。
 
-   この一覧に表示されるのは、Data Factory でサポートされ、かつ Azure Data Factory のメタ データが格納される場所のみです。 Data Factory で使用する関連データ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他のリージョンで実行できます。
+1. **Next:Git configuration\(次へ: Git の構成\)** を選択し、**Configure Git later\(後で Git を構成する\)** チェック ボックスをオンにします。
 
-1. **Next:Git configuration\(次へ: Git の構成\)** を選択し、**Configure Git later\(後で Git を構成する\)** を選択します。
+1. **[確認と作成]** を選択し、検証に成功したら **[作成]** を選択します。 作成後、 **[リソースに移動]** を選択して、 **[Data factory]** ページに移動します。 
 
-1. **［作成］** を選択します 作成後、 **[リソースに移動]** を選択して、 **[Data Factory]** ページに移動します。 
-
-1. **[作成と監視]** タイルを選択して、別のタブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。
+1. **[作成と監視]** タイルを選択して、別のブラウザー タブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。
    
    ![[作成と監視] タイルが表示された、データ ファクトリのホーム ページ](./media/doc-common-process/data-factory-home-page.png)
    
    > [!NOTE]
    > Web ブラウザーが "承認中" でスタックしていることがわかったら、 **[サードバーティの Cookie とサイト データをブロックする]** チェック ボックスをオフにします。 または、オンにしたまま、**login.microsoftonline.com** の例外を作成してから、アプリを再度開いてみてください。
    
-1. **[始めましょう]** ページの左側のパネルで **[作成者]** タブに切り替えます。 
-
-    ![[Let's get started]\(始めましょう\) ページ](./media/doc-common-process/get-started-page-author-button.png)
 
 ## <a name="create-a-linked-service"></a>リンクされたサービスを作成する
 この手順では、Azure Storage アカウントをデータ ファクトリにリンクするためのリンクされたサービスを作成します。 リンクされたサービスは、Data Factory サービスが実行時に接続するために使用する接続情報を持っています。
 
-1. 左ペインから [[管理] タブ](./author-management-hub.md)を開きます。
+1. Azure Data Factory UI ページで、左側のペインにある [ **[管理]** ](./author-management-hub.md) タブを開きます。
 
 1. [リンクされたサービス] ページの **[+ 新規]** を選択して、リンクされたサービスを新規作成します。
 
@@ -109,10 +109,13 @@ ms.locfileid: "96013396"
 出力データセットは、ターゲットにコピーされるデータを表します。 出力データセットの定義では、データのコピー先の BLOB コンテナー (**adftutorial**)、フォルダー (**output**)、およびファイルを指定します。 パイプラインの各実行には、一意の ID が関連付けられます。 この ID には、システム変数 **RunId** を使用してアクセスできます。 出力ファイルの名前は、パイプラインの実行 ID に基づいて動的に評価されます。   
 
 リンクされたサービスの設定では、ソース データを含む Azure Storage アカウントを指定しました。 ソース データセットの設定では、ソース データがどこにあるかを正確に指定します (BLOB コンテナー、フォルダー、およびファイル)。 シンク データセットの設定では、データがどこにコピーされるかを指定します (BLOB コンテナー、フォルダー、およびファイル)。 
- 
+
+1. 左側のペインにある **[作成者]** タブを選択します。
+
 1. **+** (正符号) ボタンを選択し、 **[データセット]** を選択します。
 
    ![データセットを作成するためのメニュー](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
+
 1. **[新しいデータ セット]** ページで **[Azure Blob Storage]** を選択し、 **[続行]** を選択します。 
 
 1. **[形式の選択]** ページで、データの形式の種類を選択して、 **[続行]** を選択します。 この場合、コンテンツを解析せずに、ファイルをそのままコピーする場合は **[バイナリ]** を選択します。
@@ -163,7 +166,7 @@ ms.locfileid: "96013396"
 
 1. コピー アクティビティの設定で **[シンク]** タブに切り替えて、 **[Sink Dataset]\(シンク データセット\)** で **[OutputDataset]** を選択します。
 
-1. キャンバスの上にあるパイプライン ツール バーの **[検証]** をクリックして、パイプライン設定を検証します。 パイプラインが正常に検証されたことを確認します。 検証出力を閉じるには、 **>>** (右矢印) ボタンを選択します。 
+1. キャンバスの上にあるパイプライン ツール バーの **[検証]** をクリックして、パイプライン設定を検証します。 パイプラインが正常に検証されたことを確認します。 検証の出力を閉じるには、右上隅にある [検証] ボタンを選択します。 
 
    ![パイプラインを検証する](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
 
@@ -185,7 +188,7 @@ ms.locfileid: "96013396"
 
     ![すべて発行](./media/quickstart-create-data-factory-portal/publish-all.png)
 
-1. パイプラインを手動でトリガーするには、パイプライン ツール バーの **[トリガーの追加]** を選択し、 **[Trigger Now]\(今すぐトリガー\)** を選択します。 **[Pipeline Run]\(パイプラインの実行\)** ページで **[完了]** を選択します。
+1. パイプラインを手動でトリガーするには、パイプライン ツール バーの **[トリガーの追加]** を選択し、 **[Trigger Now]\(今すぐトリガー\)** を選択します。 **[Pipeline Run]\(パイプラインの実行\)** ページで **[OK]** を選択します。
 
 ## <a name="monitor-the-pipeline"></a>パイプラインの監視
 

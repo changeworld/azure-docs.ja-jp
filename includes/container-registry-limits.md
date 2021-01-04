@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 3f68ca0fc577e6cf3f896ede0418f11f59756701
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4d8f8783e9f6eece4de8dc1c35740fa7aaf03f8
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86512617"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97531828"
 ---
 | リソース | Basic | Standard | Premium |
 |---|---|---|---|
@@ -22,8 +22,8 @@ ms.locfileid: "86512617"
 | イメージ レイヤーの最大サイズ (GiB) | 200 | 200 | 200 |
 | 1 分あたりの ReadOps<sup>2、3</sup> | 1,000 | 3,000 | 10,000 |
 | 1 分あたりの WriteOps<sup>2、4</sup> | 100 | 500 | 2,000 |
-| ダウンロード帯域幅 MBps<sup>2</sup> | 30 | 60 | 100 |
-| アップロード帯域幅 MBps<sup>2</sup> | 10 | 20 | 50 |
+| ダウンロード帯域幅 Mbps<sup>2</sup> | 30 | 60 | 100 |
+| アップロード帯域幅 Mbps<sup>2</sup> | 10 | 20 | 50 |
 | Webhooks | 2 | 10 | 500 |
 | geo レプリケーション | 該当なし | 該当なし | [サポートされています][geo-replication] |
 | コンテンツの信頼 | 該当なし | 該当なし | [サポートされています][content-trust] |

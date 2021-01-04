@@ -3,20 +3,20 @@ title: Azure Notebooks プレビューの概要
 description: 無料の Azure Notebooks プレビューサービスを使用して、クラウド上で Jupyter Notebook を実行します。セットアップも構成も不要です。
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: d59faaf85a1fdbad776e954e974bafa300f93d85
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 7e622bdef785085384395bb0c8ac3efba2b2053a
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845137"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400271"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks プレビューの概要
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Azure Notebooks は、インストールせずにクラウド上で Jupyter ノートブックを作成、実行するための無料でホストされているサービスです。 [Jupyter](https://jupyter.org/) (旧称 IPython) は、マークダウン テキスト、実行可能コード、永続データ、グラフィックス、およびグラフを組み合わせて "*ノートブック*" (画像提供: jupyter.org) と呼ばれる 1 つの共有可能なキャンバスを簡単に作成できるオープン ソース プロジェクトです。
+Azure Notebooks は、インストールせずにクラウド上で Jupyter Notebook を作成、実行するための無料でホストされているサービスです。 [Jupyter](https://jupyter.org/) (旧称 IPython) は、マークダウン テキスト、実行可能コード、永続データ、グラフィックス、およびグラフを組み合わせて "*ノートブック*" (画像提供: jupyter.org) と呼ばれる 1 つの共有可能なキャンバスを簡単に作成できるオープン ソース プロジェクトです。
 
-[![Jupyter Notebooks の例](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![Jupyter Notebook の例](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 コード、グラフィックス、および説明テキストのこの強力な組み合わせにより、Jupyter は、データ サイエンス教育、データのクリーニングと変換、数値シミュレーション、統計モデリング、機械学習モデルの開発などを行う多数のユーザーの間で一般に使用されるようになっています。
 
@@ -49,7 +49,7 @@ Azure Notebooks はコードを作成、実行、および共有するための�
 
 Azure Notebooks は無料のサービスですが、乱用を防ぐために各プロジェクトのメモリは 4 GB、データは 1 GB に制限されています。 これらの制限を超える正当なユーザーは、CAPTCHA チャレンジをクリアしてノートブックの実行を継続してください。
 
-すべての制限を解除するには、Azure Active Directory を使用したアカウント (会社のアカウントなど) で Azure Notebooks にサインインします。 そのアカウントが Azure サブスクリプションに関連付けられている場合は、そのサブスクリプション内の任意の Azure Data Science Virtual Machine インスタンスに接続できます。 詳細については、「プロジェクトの管理と構成」の「[Compute tier (コンピューティング レベル)](configure-manage-azure-notebooks-projects.md#compute-tier)」を参照してください。
+すべての制限を解除するには、Azure Active Directory を使用したアカウント (会社のアカウントなど) で Azure Notebooks にサインインします。 そのアカウントが Azure サブスクリプションに関連付けられている場合は、そのサブスクリプション内の任意の Azure Data Science Virtual Machine インスタンスに接続できます。 
 
 Notebook サーバーは、最大で 8 時間存在することが保証されます。 ほとんどの場合、コンテナーはこの制限を受けず、この期間を超えて実行を続けます。ただし、システムの安定性のために、有効期間の長いセッションがシャットダウンされることがあります。
 
@@ -65,7 +65,7 @@ Notebook サーバーは、最大で 8 時間存在することが保証され�
 
 Azure Notebooks には、基本ディストリビューションの他に、追加のパッケージも含まれています。 たとえば、Python カーネルには、numpy、pandas、scikit-learn、matplotlib、および bokeh ライブラリが含まれています。
 
-プロジェクトをカスタマイズして、そのプロジェクトに含まれるすべてのノートブック用の環境を作成することもできます。 詳細については、「[クイック スタート: カスタム環境でのプロジェクトの作成](quickstart-create-jupyter-notebook-project-environment.md)」を参照してください。
+プロジェクトをカスタマイズして、そのプロジェクトに含まれるすべてのノートブック用の環境を作成することもできます。
 
 基本ディストリビューションに加え、Azure Notebooks には、データ サイエンティストにとって有用な多くのパッケージが事前インストールされています。 各言語の一般的なプロセスを使用して、ご自分のパッケージをインストールすることもできます。
 
@@ -73,7 +73,7 @@ Azure Notebooks には、基本ディストリビューションの他に、追�
 
 Azure Notebooks では、次の Jupyter の拡張機能が事前に構成されています。
 
-- [RISE](https://github.com/damianavila/RISE): Jupyter のスライド ショー拡張機能 (live_reveal とも呼ばれます)。 詳細については、「[Run a notebook slideshow](present-jupyter-notebooks-slideshow.md)」(ノートブックのスライドショーを実行する) を参照してください。
+- [RISE](https://github.com/damianavila/RISE): Jupyter のスライド ショー拡張機能 (live_reveal とも呼ばれます)。
 - [JupyterLab](https://github.com/jupyterlab/jupyterlab): Jupyter Notebook を操作するための完全なコンピューティング環境。
 - [Altair](https://github.com/ellisonbg/altair): Python 用の宣言型統計可視化ライブラリです。
 - [BQPlot](https://github.com/bloomberg/bqplot): Jupyter Notebook 用の対話型プロット フレームワーク。
@@ -89,26 +89,7 @@ Azure Notebooks に関する質疑応答を行うには、[GitHub リポジト�
 
 ## <a name="next-steps"></a>次のステップ  
 
-- [サンプル ノートブックの調査](azure-notebooks-samples.md)
-
 - クイック スタート:
 
-  - [ノートブックの作成と共有](quickstart-create-share-jupyter-notebook.md)
-  - [ノートブックの複製](quickstart-clone-jupyter-notebook.md)
-  - [ローカルの Jupyter ノートブックの移行](quickstart-migrate-local-jupyter-notebook.md)
-  - [カスタム環境の使用](quickstart-create-jupyter-notebook-project-environment.md)
   - [サインインとユーザー ID の設定](quickstart-sign-in-azure-notebooks.md)
-
-- チュートリアル:
-
-  - [ノートブックの作成と実行](tutorial-create-run-jupyter-notebook.md  )
-
-- ハウツー記事:
-  
-  - [プロジェクトの作成と複製](create-clone-jupyter-notebooks.md)
-  - [デバイスの構成と管理](configure-manage-azure-notebooks-projects.md)
-  - [ノートブック内からのパッケージのインストール](install-packages-jupyter-notebook.md)
-  - [スライド ショーの表示](present-jupyter-notebooks-slideshow.md)
-  - [データ ファイルの操作](work-with-project-data-files.md)
-  - [データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)
-  - [Azure Machine Learning の使用](../machine-learning/samples-notebooks.md)
+  - [Jupyter Notebook をエクスポートする](quickstart-export-jupyter-notebook-project.md)

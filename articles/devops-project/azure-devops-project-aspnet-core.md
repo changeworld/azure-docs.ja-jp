@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 99be6dc42a9b644166054d61e88a1e0ac329d2ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63d3ac356e4f2c1d17e1511227f5089b7ff4266f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854725"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589160"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Azure DevOps Starter を使用して .NET 用 CI/CD パイプラインを作成する
 
@@ -50,13 +50,13 @@ DevOps Starter によって、Azure DevOps に CI/CD パイプラインが作成
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps と Azure サブスクリプションを構成する 
 
-1. **プロジェクト名**を入力します。
+1. **プロジェクト名** を入力します。
 
-2. 新しい無料の **Azure DevOps 組織**を作成するか、ドロップダウンから既存の組織を選択します。
+2. 新しい無料の **Azure DevOps 組織** を作成するか、ドロップダウンから既存の組織を選択します。
 
-3. 自分の **Azure サブスクリプション**を選択し、**Web アプリ**の名前を入力するか既定のままにしてから、 **[完了]** を選択します。 数分後、DevOps Starter のデプロイの概要が Azure portal に表示されます。 
+3. 自分の **Azure サブスクリプション** を選択し、**Web アプリ** の名前を入力するか既定のままにしてから、 **[完了]** を選択します。 数分後、DevOps Starter のデプロイの概要が Azure portal に表示されます。 
 
-4. **[リソースに移動]** を選択して、DevOps Starter ダッシュボードを表示します。 すばやくアクセスできるように、右上隅で、**プロジェクト**をダッシュ​​ボードにピン留めします。 サンプル アプリが **Azure DevOps 組織**のリポジトリに設定されます。 ビルドが実行され、アプリが Azure にデプロイされます。
+4. **[リソースに移動]** を選択して、DevOps Starter ダッシュボードを表示します。 すばやくアクセスできるように、右上隅で、**プロジェクト** をダッシュ​​ボードにピン留めします。 サンプル アプリが **Azure DevOps 組織** のリポジトリに設定されます。 ビルドが実行され、アプリが Azure にデプロイされます。
 
 5. ダッシュボードでは、コード リポジトリ、CI/CD パイプライン、および Azure のアプリが可視化されます。 右側の Azure リソースの下の **[参照]** を選択すると、実行中のアプリが表示されます。
 
@@ -66,9 +66,9 @@ DevOps Starter によって、Azure DevOps に CI/CD パイプラインが作成
 
 DevOps Starter によって、Azure Repos または GitHub に Git リポジトリが作成されます。 リポジトリを表示し、アプリケーションにコード変更を加えるには、次の手順に従います。
 
-1. DevOps Starter ダッシュボードの左側にある**マスター**分岐のリンクを選択します。 このリンクは、新しく作成された Git リポジトリのビューを開きます。
+1. DevOps Starter ダッシュボードの左側にある **メイン** ブランチのリンクを選択します。 このリンクは、新しく作成された Git リポジトリのビューを開きます。
 
-2. 次のいくつかの手順では、Web ブラウザーを使用して**マスター** ブランチに直接コード変更を行い、コミットできます。 リポジトリ ページの右上の **[Clone]\(複製\)** を選択して、Git リポジトリをお気に入りの IDE に複製することもできます。 
+2. 次のいくつかの手順では、Web ブラウザーを使用して **メイン** ブランチに直接コード変更を行い、コミットできます。 リポジトリ ページの右上の **[Clone]\(複製\)** を選択して、Git リポジトリをお気に入りの IDE に複製することもできます。 
 
 3. 左側で、アプリケーション ファイル構造の中の **Application/aspnet-core-dotnet-core/Pages/Index.cshtml** に移動します。
 
@@ -126,7 +126,7 @@ DevOps Starter により、Azure へのデプロイを管理するリリース �
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-作成した Azure App Service とその他の関連リソースが必要なくなったら、削除してかまいません。 DevOps Starter ダッシュボードで**削除**機能を使用します。
+作成した Azure App Service とその他の関連リソースが必要なくなったら、削除してかまいません。 DevOps Starter ダッシュボードで **削除** 機能を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

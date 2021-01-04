@@ -8,19 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/04/2020
+ms.date: 12/10/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 5d0b2df551c73e8c9b24d80280bbc993d9b361b7
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: bcb484d62b7c4add7e1ab5562c19417a90cfb7e1
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928469"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587555"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する
 
 Azure Active Directory (Azure AD) のアプリケーション プロキシ サービスを使用すると、ユーザーは Azure AD アカウントでサインインして、オンプレミスのアプリケーションにアクセスできます。 このチュートリアルでは、アプリケーション プロキシで使用できるように環境を準備します。 環境の準備ができたら、Azure portal を使用して Azure AD テナントにオンプレミス アプリケーションを追加します。
+
+コネクタはアプリケーション プロキシの重要な一部です。 コネクタの詳細については、「[Azure AD アプリケーション プロキシ コネクタを理解する](application-proxy-connectors.md)」を参照してください。
 
 このチュートリアルの内容:
 
@@ -74,7 +77,7 @@ Azure Active Directory (Azure AD) のアプリケーション プロキシ サ�
 TLS 1.2 を有効にするには、次の手順に従います。
 
 1. 次のレジストリ キーを設定します。
-    
+
    ```
    Windows Registry Editor Version 5.00
 
@@ -191,7 +194,7 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
 1. [Azure Portal](https://portal.azure.com/) に管理者としてサインインします。
 2. 左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
 3. **[エンタープライズ アプリケーション]** を選択し、 **[新しいアプリケーション]** を選択します。
-4. **[独自のアプリケーションの作成]** セクションで、 **[オンプレミスのアプリケーションへのセキュリティで保護されたリモート アクセス用のアプリケーション プロキシを作成します]** を選択します。
+4. **[オンプレミスのアプリケーションの追加]** ボタンを選択します。このボタンは、ページの上から半分のあたりにある **[オンプレミスのアプリケーション]** セクションに表示されます。 または、ページの上部にある **[独自のアプリケーションの作成]** を選択し、 **[オンプレミスのアプリケーションへのセキュリティで保護されたリモート アクセス用のアプリケーション プロキシを作成します]** を選択することもできます。
 5. **[独自のオンプレミスのアプリケーションの追加]** セクションで、自分のアプリケーションについて次の情報を指定します。
 
     | フィールド | 説明 |

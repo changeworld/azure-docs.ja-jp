@@ -1,6 +1,6 @@
 ---
-title: 'クイックスタート: Azure portal を使用して専用 SQL プール (以前の SQL DW) のコンピューティングを一時停止、再開する'
-description: Azure portal を使用して、SQL プールのコンピューティングを一時停止してコストを節約します。 データ ウェアハウスを使用する準備ができたら、コンピューティングを再開します。
+title: 'クイックスタート: Azure portal を使用して専用 SQL プールのコンピューティングを一時停止および再開する'
+description: Azure portal を使用して、専用 SQL プールのコンピューティングを一時停止してコストを節約します。 データ ウェアハウスを使用する準備ができたら、コンピューティングを再開します。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 88f6782a0f81b94977b37bd8f87bf26a0d4c8a72
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7d258243dae06461d21e9b5f0346e419f034eea9
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457681"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109699"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-formerly-sql-dw-via-the-azure-portal"></a>クイックスタート: Azure portal を使用して専用 SQL プール (以前の SQL DW) のコンピューティングを一時停止、再開する
+# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>クイックスタート: Azure portal を使用して専用 SQL プールのコンピューティングを一時停止および再開する
 
-Azure portal を使用して、専用 SQL プール (以前の SQL DW) のコンピューティング リソースを一時停止および再開できます。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+Azure portal を使用して、専用 SQL プールのコンピューティング リソースを一時停止および再開できます。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -40,9 +40,8 @@ Azure portal を使用して、専用 SQL プール (以前の SQL DW) のコン
 専用 SQL プールを一時停止するには、次の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. Azure portal の左側のナビゲーション ページで **[専用 SQL プール (以前の SQL DW)]** をクリックします。
-2. **[専用 SQL プール (以前の SQL DW)]** ページから **[mySampleDataWarehouse]** を選択して SQL プールを開きます。 
-3. **[mySampleDataWarehouse]** ページで **[状態]** が **[オンライン]** になっていることがわかります。
+2. **[Dedicated SQL pool]\(専用 SQL プール\)** ページに移動して SQL プールを開きます。 
+3. **[状態]** が **[オンライン]** であることを確認します。
 
     ![コンピューティングがオンライン](././media/pause-and-resume-compute-portal/compute-online.png)
 
@@ -62,8 +61,7 @@ Azure portal を使用して、専用 SQL プール (以前の SQL DW) のコン
 
 専用 SQL プールを再開するには、次の手順を実行します。
 
-1. Azure portal の左側のページで **[専用 SQL プール (以前の SQL DW)]** をクリックします。
-2. **[専用 SQL プール (以前の SQL DW)]** ページから **[mySampleDataWarehouse]** を選択して SQL プール ページを開きます。 
+1. **[Dedicated SQL pool]\(専用 SQL プール\)** ページに移動して SQL プールを開きます。
 3. **[mySampleDataWarehouse]** ページで **[状態]** が **[一時停止]** になっていることがわかります。
 
     ![コンピューティングがオフライン](././media/pause-and-resume-compute-portal/compute-offline.png)

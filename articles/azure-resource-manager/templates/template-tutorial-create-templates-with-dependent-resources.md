@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a43fa12e72484e97b828648cd7d610f5cf15ea4e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d1e5848e568f42fb8a77c65c775962f27a5a03df
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931590"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588038"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>チュートリアル:依存リソースを含む ARM テンプレートを作成する
 
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」(単純な Windows VM をデプロイする) と呼ばれます。
 
-1. Visual Studio Code から、 **[ファイル]** > **[ファイルを開く]** を選択します。
+1. Visual Studio Code から、 **[ファイル]**  >  **[ファイルを開く]** を選択します。
 2. **[ファイル名]** に以下の URL を貼り付けます。
 
     ```url
@@ -54,18 +54,18 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
     ```
 
 3. **[開く]** を選択して、ファイルを開きます。
-4. **[ファイル]** > **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
+4. **[ファイル]**  >  **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを _azuredeploy.json_ という名前でローカル コンピューターに保存します。
 
 ## <a name="explore-the-template"></a>テンプレートを調べる
 
 このセクションでテンプレートを調べるときは、次の質問に回答するようにしてください。
 
 * このテンプレートに定義されている Azure リソースの数はいくつか。
-* リソースの 1 つは、Azure Storage アカウントです。  定義は前回のチュートリアルで使用されたものと同じか。
+* リソースの 1 つは、Azure Storage アカウントです。 定義は前回のチュートリアルで使用されたものと同じか。
 * このテンプレートに定義されているリソースのテンプレート 参照を見つけることができるか。
 * リソースの依存関係を見つけることができるか。
 
-1. Visual Studio Code で、**resources** 内の最初のレベルの要素と 2 番目のレベルの要素のみが表示されるまで要素を折り畳みます。
+1. Visual Studio Code で、`resources` 内の最初のレベルの要素と 2 番目のレベルの要素のみが表示されるまで要素を折り畳みます。
 
     ![Visual Studio Code ARM テンプレート](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
@@ -96,7 +96,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
     ![Visual Studio Code ARM テンプレートの仮想ネットワークの dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
 
-    dependsOn 要素を使用すると、1 つのリソースが 1 つ以上のリソースに依存していることを定義できます。 このリソースは、もう 1 つのリソースに依存しています。
+    `dependsOn` 要素を使用すると、1 つのリソースが 1 つ以上のリソースに依存していることを定義できます。 このリソースは、もう 1 つのリソースに依存しています。
 
     * `Microsoft.Network/networkSecurityGroups`
 
@@ -124,7 +124,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
     ![Azure portal の Cloud Shell のファイルのアップロード](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。 先のスクリーンショットをご覧ください。 前に保存したファイルを選択します。 ファイルをアップロードした後、**ls** コマンドと **cat** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
+1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。 先のスクリーンショットをご覧ください。 前に保存したファイルを選択します。 ファイルをアップロードした後、`ls` コマンドと `cat` コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
 
 1. 次の PowerShell スクリプトを実行してテンプレートをデプロイします。
 

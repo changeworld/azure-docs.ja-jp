@@ -7,12 +7,12 @@ author: vladvino
 ms.author: apimpm
 ms.topic: quickstart
 ms.date: 09/14/2020
-ms.openlocfilehash: 19080679291b88b693c95bd71f8ddc0e59286356
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: fdf7e842959e09a8ec35017031f745cb16d13c6d
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057351"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400405"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-visual-studio-code"></a>クイック スタート」を参照してください。Visual Studio Code を使用して新しい Azure API Management サービス インスタンスを作成する
 
@@ -55,7 +55,7 @@ Microsoft アカウントにサインインすると、 *[Azure: API Management]
 >
 > "*従量課金*" SKU の場合はプロビジョニングに 1 分かかりませんが、その他の SKU の場合は作成に 30 から 40 分かかります。
 
-これで、最初の API をインポートして発行する準備ができました。 この操作を実行し、さらに Visual Studio Code 用の拡張機能内で共通の API Management 操作を実行することもできます。 詳しくは、[Visual Studio Code 用の Azure API Management 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview)に関するドキュメントを参照してください。
+これで、最初の API をインポートして発行する準備ができました。 この操作を実行し、さらに Visual Studio Code 用の拡張機能内で共通の API Management 操作を実行することもできます。 詳細については、[チュートリアル](visual-studio-code-tutorial.md)を参照してください。
 
 ![VS Code API Management 拡張機能ペイン内の新しく作成された API Management インスタンス](./media/vscode-create-service-instance/vscode-apim-instance.png)
 
@@ -70,4 +70,4 @@ API Management インスタンスが必要なくなった場合にこれを削�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [最初の API をインポートして発行する](import-and-publish.md)
+> [API Management 拡張機能を使用して API をインポートおよび管理する](visual-studio-code-tutorial.md)

@@ -1,16 +1,16 @@
 ---
-title: Azure Batch と Batch Explorer を使って Blender のシーンをレンダリングする
+title: チュートリアル - Azure Batch と Batch Explorer を使って Blender のシーンをレンダリングする
 description: チュートリアル - Azure Batch と Batch Explorer のクライアント アプリケーションを使って Blender のシーンから複数のフレームをレンダリングする方法
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 65baff827417cebe2289cc821df94acd38a1ae61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c015e4e83b0505a45690e92c1d732f74b6f6b0e
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964806"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106463"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>チュートリアル: Batch Explorer を使って Blender のシーンをレンダリングする
 
@@ -93,6 +93,7 @@ Blender アプリケーションを含んだレンダリング用 Azure Marketpl
 ## <a name="create-a-rendering-job"></a>レンダリング ジョブを作成する
 
 作成したプールを使っていくつかのフレームをレンダリングするためにレンダリング ジョブを作成します。
+
 * 左側にあるメイン メニューから [ギャラリー] メニュー項目を選択します。
 * アプリケーション項目一覧の [Blender] 項目を選択します。
 * Windows Server 上でフレームのレンダリングに使用する項目を選択します。
@@ -137,6 +138,18 @@ Blender アプリケーションを含んだレンダリング用 Azure Marketpl
 * 右クリックして [削除] を選択するか、プールの上に表示されるごみ箱アイコンを選択します。
 
 ## <a name="next-steps"></a>次のステップ
-* Batch Explorer で利用できるレンダリング アプリケーションを [ギャラリー] セクションで探します。
-* アプリケーションごとにいくつかのテンプレートが用意され、今後も拡充されていく予定です。  たとえば Blender については、単一の画像を複数のタイルに分割することで 1 つの画像を構成する各部分を並列にレンダリングできるテンプレートが存在します。
-* レンダリング機能の包括的な説明については、[こちら](./batch-rendering-service.md)にある一連の記事を参照してください。
+
+このチュートリアルでは、次の作業を行う方法を学びました。
+
+> [!div class="checklist"]
+> * Azure Storage に Blender のシーンをアップロードする
+> * レンダリングを実行するための複数のノードを含んだ Batch プールを作成する
+> * 複数のフレームをレンダリングする
+> * レンダリングされたフレーム ファイルを確認してダウンロードする
+
+Batch Explorer で利用できるレンダリング アプリケーションを **[ギャラリー]** セクションで探して次に進みます。 アプリケーションごとにいくつかのテンプレートが用意され、今後も拡充されていく予定です。 たとえば Blender については、単一の画像を複数のタイルに分割することで 1 つの画像を構成する各部分を並列にレンダリングできるテンプレートが存在します。
+
+クラウド規模のレンダリングの詳細については、Batch Rendering サービスのオプションを確認してください。
+
+> [!div class="nextstepaction"]
+> [Batch Rendering サービス](batch-rendering-service.md)

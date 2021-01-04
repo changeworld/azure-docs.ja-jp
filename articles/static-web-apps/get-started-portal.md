@@ -1,20 +1,20 @@
 ---
 title: クイック スタート:Azure portal で Azure Static Web Apps を使用して静的 Web アプリを初めてビルドする
-description: Azure portal を使用して Azure Static Web Apps インスタンスをビルドする方法について学習します。
+description: Azure portal を使用して、静的サイトを Azure Static Web Apps にデプロイする方法について説明します。
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: b009b34be69e48ae6205cd9ab88d1583ca9c6561
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aab99721b61ababe218e509ab1078198b5f4152b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280566"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030367"
 ---
-# <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>クイック スタート:Azure portal で静的 Web アプリを初めてビルドする
+# <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>クイックスタート: Azure portal で最初の静的サイトを構築する
 
 Azure Static Web Apps では、GitHub リポジトリからアプリをビルドすることによって、運用環境に Web サイトが発行されます。 このクイックスタートでは、Azure portal を使用して Web アプリケーションを Azure Static Web Apps にデプロイします。
 
@@ -39,25 +39,21 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
 _[基本]_ セクションで、新しいアプリを構成し、それを GitHub リポジトリにリンクすることから始めます。
 
-:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="[基本] セクション&quot;:::
+:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="[基本] セクション":::
 
-1. お使いの &quot;_Azure サブスクリプション_&quot; を選択します
-1. &quot;_リソース グループ_&quot; を選択するか、新しく作成します
+1. お使いの "_Azure サブスクリプション_" を選択します
+1. "_リソース グループ_" を選択するか、新しく作成します
 1. アプリに **my-first-static-web-app** という名前を設定します。
       1. 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `-`です。
-1. 最も近い &quot;_リージョン_" を選択します
+1. 最も近い "_リージョン_" を選択します
 1. **[Free]** _SKU_ を選択します
 1. **[GitHub アカウントでサインイン]** ボタンを選択し、GitHub で認証します
 
 GitHub にサインインした後、リポジトリ情報を入力します。
 
-:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="[基本] セクション&quot;:::
+:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="リポジトリの詳細":::
 
-1. お使いの &quot;_Azure サブスクリプション_&quot; を選択します
-1. &quot;_リソース グループ_&quot; を選択するか、新しく作成します
-1. アプリに **my-first-static-web-app** という名前を設定します。
-      1. 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `-`です。
-1. 最も近い &quot;_リージョン_" を選択します
+1. 希望する "_組織_" を選択します
 1. _[リポジトリ]_ ドロップダウンから **my-first-web-static-app** を選択します
 1. _[ブランチ]_ ドロップダウンから **[master]** を選択します
 
@@ -98,36 +94,18 @@ GitHub にサインインした後、リポジトリ情報を入力します。
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 
-    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="[基本] セクション&quot;:::
-
-1. お使いの &quot;_Azure サブスクリプション_&quot; を選択します
-1. &quot;_リソース グループ_&quot; を選択するか、新しく作成します
-1. アプリに **my-first-static-web-app** という名前を設定します。
-      1. 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `-`です。
-1. 最も近い &quot;_リージョン_":::
+    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="[確認および作成] ボタン":::
 
     > [!NOTE]
     > アプリを作成した後にこれらの値を変更するには、[ワークフロー ファイル](github-actions-workflow.md)を編集します。
 
 1. **［作成］** を選択します
 
-    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="[基本] セクション&quot;:::
-
-1. お使いの &quot;_Azure サブスクリプション_&quot; を選択します
-1. &quot;_リソース グループ_&quot; を選択するか、新しく作成します
-1. アプリに **my-first-static-web-app** という名前を設定します。
-      1. 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `-`です。
-1. 最も近い &quot;_リージョン_":::
+    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="[作成] ボタン":::
 
 1. **[リソースに移動]** を選択します。
 
-    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="[基本] セクション&quot;:::
-
-1. お使いの &quot;_Azure サブスクリプション_&quot; を選択します
-1. &quot;_リソース グループ_&quot; を選択するか、新しく作成します
-1. アプリに **my-first-static-web-app** という名前を設定します。
-      1. 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `-`です。
-1. 最も近い &quot;_リージョン_":::
+    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="[リソース グループ] ボタン":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 

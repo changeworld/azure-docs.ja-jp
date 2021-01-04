@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b798e5ceb72ece3989fb81014555f2bc0fea5926
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 2d50903f464c03157ee393787af6ddfdad975aed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931403"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588048"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>チュートリアル:ARM テンプレートを使用して SQL BACPAC ファイルをインポートする
 
-Azure SQL Database 拡張機能を使用して Azure Resource Manager テンプレート (ARM テンプレート) テンプレートで BACPAC ファイルをインポートする方法について説明します。 デプロイの成果物は、デプロイを完了するために必要なメイン テンプレート ファイルに加えたすべてのファイルです。 この BACPAC ファイルが成果物です。
+Azure SQL Database 拡張機能を使用して Azure Resource Manager テンプレート (ARM テンプレート) テンプレートで [BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) ファイルをインポートする方法について説明します。 デプロイの成果物は、デプロイを完了するために必要なメイン テンプレート ファイルに加えたすべてのファイルです。 この BACPAC ファイルが成果物です。
 
 このチュートリアルでは、テンプレートを作成して[論理 SQL サーバー](../../azure-sql/database/logical-servers.md)と単一データベースをデプロイし、BACPAC ファイルをインポートします。 ARM テンプレートを使用して Azure 仮想マシン拡張機能をデプロイする方法については、「[チュートリアル: ARM テンプレートを使用して仮想マシン拡張機能をデプロイする](./template-tutorial-deploy-vm-extensions.md)」を参照してください。
 
@@ -55,7 +55,7 @@ BACPAC ファイルは、ARM テンプレートを使用してインポートす
 * BACPAC ファイルをコンテナーにアップロードします。
 * ストレージ アカウント キーと BLOB の URL を表示します。
 
-1. **[使ってみる]** を選択すると、クラウド シェルが開きます。 次の PowerShell スクリプトをシェル ウィンドウに貼り付けます。
+1. **[使ってみる]** を選択すると、シェルが開きます。 次の PowerShell スクリプトをシェル ウィンドウに貼り付けます。
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -120,7 +120,7 @@ BACPAC ファイルは、ARM テンプレートを使用してインポートす
 
 ## <a name="edit-the-template"></a>テンプレートの編集
 
-1. **parameters** セクションの末尾にさらに 2 つのパラメーターを追加して、ストレージ アカウント キーと BACPAC URL を設定します。
+1. `parameters` セクションの末尾にさらに 2 つのパラメーターを追加して、ストレージ アカウント キーと BACPAC URL を設定します。
 
     ```json
         "storageAccountKey": {
@@ -137,7 +137,7 @@ BACPAC ファイルは、ARM テンプレートを使用してインポートす
         }
     ```
 
-    **adminPassword** の後にコンマを追加します。 Visual Studio Code から JSON ファイルの書式を設定するには、Shift + Alt + F キーを押します。
+    `adminPassword` プロパティの閉じ中かっこ (`}`) の後に、コンマを追加します。 Visual Studio Code から JSON ファイルの書式を設定するには、Shift + Alt + F キーを押します。
 
     この 2 つの値を取得するには、「[BACPAC ファイルを準備する](#prepare-a-bacpac-file)」を参照してください。
 
@@ -196,11 +196,11 @@ BACPAC ファイルは、ARM テンプレートを使用してインポートす
 
         リソース定義を理解するには、[SQL Database 拡張機能のリファレンス](/azure/templates/microsoft.sql/servers/databases/extensions)に関するページを参照してください。 以下にいくつかの重要な要素を示します。
 
-        * **dependsOn**:拡張機能リソースは、データベースが作成された後に作成される必要があります。
-        * **storageKeyType**:使用するストレージ キーの種類を指定します。 値は `StorageAccessKey` と `SharedAccessKey` のいずれかにできます。 このチュートリアルでは `StorageAccessKey` を使用します。
-        * **storageKey**:BACPAC ファイルが格納されているストレージ アカウントのキーを指定します。 ストレージ キーの種類が `SharedAccessKey` の場合、その前に "?" を付ける必要があります。
-        * **storageUri**:ストレージ アカウントに格納されている BACPAC ファイルの URL を指定します。
-        * **administratorLoginPassword**:SQL 管理者のパスワード。 生成されたパスワードを使用します。 「[前提条件](#prerequisites)」を参照してください。
+        * `dependsOn`:拡張機能リソースは、データベースが作成された後に作成される必要があります。
+        * `storageKeyType`:使用するストレージ キーの種類を指定します。 値は `StorageAccessKey` と `SharedAccessKey` のいずれかにできます。 このチュートリアルでは `StorageAccessKey` を使用します。
+        * `storageKey`:BACPAC ファイルが格納されているストレージ アカウントのキーを指定します。 ストレージ キーの種類が `SharedAccessKey` の場合、その前に "?" を付ける必要があります。
+        * `storageUri`:ストレージ アカウントに格納されている BACPAC ファイルの URL を指定します。
+        * `administratorLoginPassword`:SQL 管理者のパスワード。 生成されたパスワードを使用します。 「[前提条件](#prerequisites)」を参照してください。
 
 完成したテンプレートは、次のようになります。
 

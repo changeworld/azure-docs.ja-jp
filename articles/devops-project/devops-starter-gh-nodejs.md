@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 08/24/2020
 ms.author: ninallam
-ms.openlocfilehash: 92fa445cee75b2311cbadf96e24c31a1dbd579b8
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e3c72ce6a15f90f0dbe08bbff10db0ca5f6b5c8f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332702"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588813"
 ---
 # <a name="set-up-cicd-for-a-nodejs-app-with-devops-starter-using-github-actions"></a>DevOps Starter を使用して、GitHub Actions を利用する Node.js アプリ用の CI/CD を設定する
 
@@ -33,7 +33,7 @@ DevOps Starter によって、GitHub Actions を使用する CI/CD ワークフ�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-1. 検索ボックスに「 **DevOps Starter** 」と入力して選択します。 新しく作成するには、 **[追加]** をクリックします。
+1. 検索ボックスに「**DevOps Starter**」と入力して選択します。 新しく作成するには、 **[追加]** をクリックします。
 
     ![DevOps Starter ダッシュボード](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -49,9 +49,9 @@ DevOps Starter によって、GitHub Actions を使用する CI/CD ワークフ�
 
 1. **Node.js** サンプル アプリケーションを選択します。 Node.js のサンプルでは、複数のアプリケーション フレームワークから選択できます。
 
-1. 既定のサンプル フレームワークは **Express.js** です。 既定の設定のままにして、 **[次へ]** を選択します。   
+1. 既定のサンプル フレームワークは **Express.js** です。 既定の設定のままにして、**[次へ]** を選択します。   
 
-2. Windows Web アプリが既定のデプロイ ターゲットです。 前に選択したアプリケーション フレームワークによって、ここで使用可能な Azure サービスのデプロイ ターゲットの種類が決まります。 既定のサービスのままにして、 **[次へ]** を選択します。
+2. Windows Web アプリが既定のデプロイ ターゲットです。 前に選択したアプリケーション フレームワークによって、ここで使用可能な Azure サービスのデプロイ ターゲットの種類が決まります。 既定のサービスのままにして、**[次へ]** を選択します。
  
 ## <a name="configure-github-account-and-an-azure-subscription"></a>GitHub アカウントと Azure サブスクリプションを構成する 
 
@@ -65,7 +65,7 @@ DevOps Starter によって、GitHub Actions を使用する CI/CD ワークフ�
    
    1. ご自身の GitHub リポジトリの名前を選択します。 
    
-   1. Azure サブスクリプションと場所を選択し、アプリケーションの名前を選択して、 **[完了]** を選択します。
+   1. Azure サブスクリプションと場所を選択し、アプリケーションの名前を選択して、**[完了]** を選択します。
     
        ![Enter_GH_details](_img/azure-devops-project-nodejs/gh-details.png)
 
@@ -74,7 +74,7 @@ DevOps Starter によって、GitHub Actions を使用する CI/CD ワークフ�
    
 3. **[参照]** を選択すると、実行中のアプリケーションが表示されます。
     
-    ダッシュボードには、GitHub ワークフローと Azure リソースの詳細が含まれています。 最新の実行、コミット、ジョブの状態など、GitHub ワークフローの詳細を表示するには、 **GitHub に対して承認する** 必要があります。
+    ダッシュボードには、GitHub ワークフローと Azure リソースの詳細が含まれています。 最新の実行、コミット、ジョブの状態など、GitHub ワークフローの詳細を表示するには、**GitHub に対して承認する** 必要があります。
    
    ![Authorize_dashboard](_img/azure-devops-project-nodejs/authenticate-dashboard.png)
 
@@ -86,9 +86,9 @@ DevOps Starter によって、GitHub アクションを使用するビルドと�
 
 DevOps Starter によって、GitHub のリポジトリが作成されます。 リポジトリを表示し、アプリケーションにコード変更を加えるには、次の手順に従います。
 
-1. DevOps Starter ダッシュボードの左側にあるマスター分岐のリンクを選択します。 このリンクによって、新しく作成された GitHub リポジトリのビューが開きます。
+1. DevOps Starter ダッシュボードの左側にあるメイン ブランチのリンクを選択します。 このリンクによって、新しく作成された GitHub リポジトリのビューが開きます。
 
-1. リポジトリのクローン URL を表示するには、ブラウザーの右上の **[複製]** を選択します。 お気に入りの IDE で Git リポジトリを複製できます。 次のいくつかの手順では、Web ブラウザーを使用してマスター ブランチに直接コード変更を行い、コミットできます。
+1. リポジトリのクローン URL を表示するには、ブラウザーの右上の **[複製]** を選択します。 お気に入りの IDE で Git リポジトリを複製できます。 次のいくつかの手順では、Web ブラウザーを使用してメイン ブランチに直接コード変更を行い、コミットできます。
 
 1. ブラウザーの左側で、 **/Application/views/index.pug** ファイルに移動します。
 

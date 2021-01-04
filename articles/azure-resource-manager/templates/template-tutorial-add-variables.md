@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: d259510d880cbfc60e9ae80b533af6792cc95536
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 46ed1fc55a108bf80089d249abc58bc5d1a6479a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930730"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106956"
 ---
 # <a name="tutorial-add-variables-to-your-arm-template"></a>チュートリアル:ARM テンプレートに変数を追加する
 
@@ -37,17 +37,17 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
-**uniqueStorageName** という名前の変数があることに注目してください。 この変数には、文字列値を構築するための関数が 4 つ使用されています。
+`uniqueStorageName` という名前の変数があることに注目してください。 この変数には、文字列値を構築するための関数が 4 つ使用されています。
 
 [parameters](template-functions-deployment.md#parameters) 関数については見覚えがあるかと思いますので、ここでは説明しません。
 
-また、[resourceGroup](template-functions-resource.md#resourcegroup) 関数もよくご存じでしょう。 このケースでは、**location** プロパティ (前のチュートリアルを参照) の代わりに **id** プロパティを取得します。 **id** プロパティは、サブスクリプション ID とリソース グループ名を含む、リソース グループの完全な識別子を返します。
+また、[resourceGroup](template-functions-resource.md#resourcegroup) 関数もよくご存じでしょう。 このケースでは、`location` プロパティ (前のチュートリアルを参照) の代わりに `id` プロパティを取得します。 `id` プロパティは、サブスクリプション ID とリソース グループ名を含む、リソース グループの完全な識別子を返します。
 
 [uniqueString](template-functions-string.md#uniquestring) は、13 文字のハッシュ値を作成する関数です。 返される値は、指定したパラメーターによって決まります。 このチュートリアルでは、ハッシュ値の入力としてリソース グループ ID を使用します。 つまり、このテンプレートを異なるリソース グループにデプロイすれば、異なる一意の文字列値が得られることになります。 一方、同じリソース グループにデプロイした場合には同じ値が返されます。
 
-[concat](template-functions-string.md#concat) は、値を受け取ってそれらを結合する関数です。 この変数用に、パラメーターからの文字列と uniqueString 関数からの文字列を受け取り、それらを結合して 1 つの文字列にします。
+[concat](template-functions-string.md#concat) は、値を受け取ってそれらを結合する関数です。 この変数用に、パラメーターからの文字列と `uniqueString` 関数からの文字列を受け取り、それらを結合して 1 つの文字列にします。
 
-ストレージ アカウントを識別しやすくするためのプレフィックスを **storagePrefix** パラメーターで渡すことができます。 デプロイ後に、多数のリソースからストレージ アカウントが識別しやすくなるような独自の名前付け規則を作成できます。
+ストレージ アカウントを識別しやすくするためのプレフィックスを `storagePrefix` パラメーターで渡すことができます。 デプロイ後に、多数のリソースからストレージ アカウントが識別しやすくなるような独自の名前付け規則を作成できます。
 
 最後に、ストレージ名がパラメーターではなく変数に設定されている点に注目してください。
 
@@ -55,7 +55,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 では、テンプレートをデプロイしましょう。 このテンプレートは、ストレージ名のプレフィックスを指定するだけで済むため、前のテンプレートよりもデプロイが容易です。
 
-まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、**templateFile** 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
+まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、`templateFile` 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -83,7 +83,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> デプロイに失敗した場合は、**verbose** スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、**debug** スイッチを使用してください。
+> デプロイに失敗した場合は、`verbose` スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、`debug` スイッチを使用してください。
 
 ## <a name="verify-deployment"></a>デプロイの確認
 

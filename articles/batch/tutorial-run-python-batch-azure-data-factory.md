@@ -7,16 +7,16 @@ ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: peshultz
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 7752bc3f768aec7a3e98fb1813c4194f81fb9dfb
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 6cc6e6a9739b8b06ab3c48dd3fd75f19de8d0787
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917632"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106276"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>チュートリアル:Azure Batch を使用して Azure Data Factory から Python スクリプトを実行する
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Batch アカウントおよびストレージ アカウントで認証する
@@ -148,12 +148,23 @@ python main.py
 1. 終了コードがエラーとなったタスクをクリックします。
 1. `stdout.txt` および `stderr.txt` を見て、問題を調査、診断します。
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+ジョブとタスク自体は課金対象ではありませんが、コンピューティング ノードは課金対象です。 そのため、必要な場合にのみプールを割り当てることをお勧めします。 プールを削除すると、ノード上のタスク出力はすべて削除されます。 ただし、入力ファイルと出力ファイルはストレージ アカウントに残ります。 Batch アカウントとストレージ アカウントも、不要になったら削除できます。
+
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Batch を使用して Azure Data Factory のパイプラインから Python スクリプトを実行する例を詳しく見てきました。
+このチュートリアルでは、次の作業を行う方法を学びました。
+
+> [!div class="checklist"]
+> * Batch アカウントおよびストレージ アカウントで認証する
+> * Python スクリプトを開発して実行する
+> * アプリケーションを実行するコンピューティング ノードのプールを作成する
+> * Python ワークロードをスケジュールする
+> * 分析パイプラインを監視する
+> * ログファイルにアクセスする
 
 Azure Data Factory についてさらに学習するには、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
 > [Azure Data Factory の概要](../data-factory/introduction.md)
-

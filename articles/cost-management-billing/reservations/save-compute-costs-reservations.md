@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 11/18/2020
+ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: 0ef3f833d1bac4f26f49ace2b366cdfcf5ef3e35
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b79bde204d82b069b3314855a45a680b863c3f69
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352985"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560493"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
@@ -58,13 +58,14 @@ Azure Databricks を除くすべての予約は、1 時間単位で適用され�
 
 予約は、サブスクリプションに関連付けられている支払い方法に対して課金されます。 予約コストは年額コミットメントの残高から差し引かれます (可能な場合)。 年額コミットメントの残高で予約のコストを賄えない場合は、超過分が課金されます。 従量課金制の個人プランのサブスクリプションをご利用の場合、前払い購入では、アカウントに登録されているクレジット カードに直接課金されます。 月支払いの場合は請求書に表示され、クレジット カードに毎月請求されます。 請求書による課金の場合、次回の請求書に料金が表示されます。 
 
-## <a name="permissions-to-view-and-manage-reservations"></a>予約を表示、管理するためのアクセス許可 
+## <a name="who-can-manage-a-reservation-by-default"></a>既定で予約を管理できるユーザー
 
-予約を購入するユーザーと予約の請求に使用されるサブスクリプションのアカウント管理者には、予約注文と予約とに対する所有者ロールが割り当てられます。
+既定では、次のユーザーが予約を表示および管理できます。
 
-予約注文または予約でのロールにユーザーを追加することで、予約管理を委任することができます。 ロールの割り当ては Azure portal で行うか、API と PowerShell を使用して行います。 
+- 予約を購入した担当者と、予約の購入に使用した課金サブスクリプションのアカウント管理者が、予約注文に追加されます。
+- マイクロソフト エンタープライズ契約および Microsoft 顧客契約の課金管理者。
 
-詳細については、「 [予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)」を参照してください。 
+他のユーザーが予約を管理できるようにする方法については、「[Azure リソースに対する予約を管理する](manage-reserved-vm-instance.md)」を参照してください。
 
 ## <a name="get-reservation-details-and-utilization-after-purchase"></a>予約の詳細と購入後の使用状況の入手
 

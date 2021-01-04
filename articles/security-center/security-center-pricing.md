@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2020
+ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: d92047a5b24f04ee7e0d08454867ec9e1a52a8b1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: d3492685efbf70b69e5bafba919d38a4f06fb666
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754379"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387472"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Security Center の価格
 Azure Security Center は、Azure、オンプレミス、他のクラウドで実行されているワークロードの統合セキュリティ管理と高度な脅威保護を実現します。 ハイブリッド クラウド ワークロードの可視化と制御、脅威にさらされる機会を減らす積極的防御、急速に進化するサイバー リスクへの対応に役立つインテリジェント検出などの機能が提供されます。
@@ -68,12 +68,24 @@ Azure Defender を有効にするには、次の手順に従います。
 
 ## <a name="faq---pricing-and-billing"></a>FAQ - 価格と課金 
 
-### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-azure-security-center"></a>Azure Security Center で組織内のどのユーザーが Azure Defender の変更を有効にしたかを追跡する方法
+- [Azure Security Center で組織内のどのユーザーが Azure Defender の変更を有効にしたかは、どのようにして追跡できますか?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
+- [Security Center ではどのようなプランが提供されていますか?](#what-are-the-plans-offered-by-security-center)
+- [サブスクリプションで Azure Defender を有効にするにはどうすればよいですか?](#how-do-i-enable-azure-defender-for-my-subscription)
+- [サブスクリプションのサーバーのサブセットで、サーバーに対して Azure Defender を有効にすることはできますか?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
+- [私のサブスクリプションでは Azure Defender for servers が有効になっています。実行していないサーバーは課金されますか?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
+- [Log Analytics エージェントがインストールされていないマシンは課金されますか?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
+- [Log Analytics エージェントが複数のワークスペースにレポートする場合、二重に課金されるのですか?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
+- [Log Analytics エージェントが複数のワークスペースにレポートする場合、それらすべてで 500 MB 無料のデータ インジェストが利用できるのですか?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
+- [500 MB 無料のデータ インジェストの計算対象は、ワークスペース全体ですか、それとも厳密にマシン単位ですか?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+
+### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Security Center で組織内のどのユーザーが Azure Defender の変更を有効にしたかは、どのようにして追跡できますか?
 Azure サブスクリプションには、価格設定を変更する許可が与えられた管理者が複数設定されていることがあります。 変更を行ったユーザーを見つけるには、Azure アクティビティ ログを使用します。
 
-**[イベント開始者]** 列の一覧にユーザーの情報が表示されない場合は、イベントから適切な情報を探してください。
+:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="価格変更イベントを示す Azure アクティビティ ログ":::
 
-:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="価格変更イベントを示す Azure イベント ログ":::
+**[イベント開始者]** 列の一覧にユーザーの情報が表示されない場合は、イベントの JSON から適切な情報を探してください。
+
+:::image type="content" source="media/security-center-pricing/tracking-pricing-changes-in-activity-log.png" alt-text="Azure アクティビティ ログの JSON エクスプローラー":::
 
 
 ### <a name="what-are-the-plans-offered-by-security-center"></a>Security Center ではどのようなプランが提供されていますか? 
@@ -85,7 +97,7 @@ Security Center には 2 つのプランがあります。
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>サブスクリプションで Azure Defender を有効にするにはどうすればよいですか? 
 以下に示すどの方法でも、ご利用のサブスクリプションに対して Azure Defender を有効にすることができます。 
 
-|Method  |手順  |
+|Method  |Instructions  |
 |---------|---------|
 |Azure portal の Azure Security Center ページ|[Azure Defender を有効にする](#enable-azure-defender)|
 |REST API|[Pricings API](/rest/api/securitycenter/pricings)|
@@ -115,6 +127,10 @@ Security Center には 2 つのプランがあります。
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them"></a>Log Analytics エージェントが複数のワークスペースにレポートする場合、それらすべてで 500 MB 無料のデータ インジェストが利用できるのですか?
 はい。 2 つ以上の異なる Log Analytics ワークスペース (マルチホーム) にデータを送信するように Log Analytics エージェントを構成した場合、500 MB 分のデータ インジェストが無料になります。 これはノード単位、レポート先ワークスペース単位、日単位で計算され、"セキュリティ" または "マルウェア対策" ソリューションがインストールされているどのワークスペースでも利用できます。 500 MB を超えて取り込まれたデータについては課金の対象となります。
 
+### <a name="is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine"></a>500 MB 無料のデータ インジェストの計算対象は、ワークスペース全体ですか、それとも厳密にマシン単位ですか?
+ワークスペースに接続されている各マシンについて、1 日あたり 500 MB のデータ インジェストが無料で提供されます。 具体的には、Azure Security Center によって直接収集されたセキュリティ データのタイプが対象となります。
+
+このデータは、1 日あたりのレートを全ノードにわたって平均したものです。 したがって 100 MB を送信するマシンの他に 800 MB を送信するマシンがあったとしても、その合計が、無料の上限である **[マシンの台数] x 500 MB** を超えなければ、余分に課金されることはありません。
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、Security Center の価格オプションについて説明しました。 関連資料については、以下を参照してください。

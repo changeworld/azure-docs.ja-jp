@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: 5ad69fb6743676189de409df16c046d5361a5a91
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: ad305202daf09258bbd439e824fc07f1eed1c5af
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96126086"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033843"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,7 +28,7 @@ ms.locfileid: "96126086"
 
 `main` メソッド:
 
-* `initializeAndProvisionDevice` を呼び出して `dtmi:com:example:Thermostat;1` モデル ID を設定し、DPS を使用してデバイスをプロビジョニング、登録します。さらに、**DeviceClient** インスタンスを作成して、IoT Central アプリケーションに接続します。
+* `initializeAndProvisionDevice` を呼び出して `dtmi:com:example:Thermostat;1` モデル ID を設定し、DPS を使用してデバイスをプロビジョニング、登録します。さらに、**DeviceClient** インスタンスを作成して、IoT Central アプリケーションに接続します。 IoT Central では、モデル ID を使用して、このデバイスのデバイス テンプレートを識別または生成します。 詳細については、「[デバイス テンプレートへのデバイスの関連付け](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template)」をご覧ください。
 * `getMaxMinReport` コマンドのハンドラーを作成します。
 * 書き込み可能な `targetTemperature` プロパティの更新ハンドラーを作成します。
 * スレッドを開始して温度テレメトリを送信し、`maxTempSinceLastReboot` プロパティを 5 秒ごとに更新します。
@@ -90,7 +90,7 @@ public static void main(String[] args) throws URISyntaxException, IOException, P
 }
 ```
 
-`initializeAndProvisionDevice` メソッドは、このデバイスが DPS を使用して IoT Central に登録、接続する方法を示しています。 ペイロードにはモデル ID が含まれています。
+`initializeAndProvisionDevice` メソッドは、このデバイスが DPS を使用して IoT Central に登録、接続する方法を示しています。 ペイロードには、[デバイスをデバイス テンプレートに関連付ける](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template)ために IoT Central が使用するモデル ID が含まれています。
 
 ```java
 private static void initializeAndProvisionDevice() throws ProvisioningDeviceClientException, IOException, URISyntaxException, InterruptedException {

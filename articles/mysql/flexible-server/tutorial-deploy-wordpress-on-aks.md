@@ -7,16 +7,17 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 31ad9450c775e5e4e7ae543241b48f8c372ad9ee
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 7713b7596b21e02e941a19f64d3658ab0f5f51f5
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749210"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359015"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>チュートリアル:Azure Database for MySQL - フレキシブル サーバーを使用して WordPress アプリを AKS にデプロイする
 
-このクイックスタートでは、Azure CLI を使用して、Azure Database for MySQL - フレキシブル サーバー (プレビュー) で Azure Kubernetes Service (AKS) クラスターに WordPress アプリケーションをデプロイします。 [AKS](../../aks/intro-kubernetes.md) は、クラスターをすばやくデプロイして管理できるマネージド Kubernetes サービスです。 [Azure Database for MySQL - フレキシブル サーバー (プレビュー)](overview.md) は、データベース管理機能と構成設定のよりきめ細かな制御と柔軟性を提供するように設計されたフル マネージド データベース サービスです。 フレキシブル サーバーは、現在プレビュー段階にあります。
+このクイックスタートでは、Azure CLI を使用して、Azure Database for MySQL - フレキシブル サーバー (プレビュー) で Azure Kubernetes Service (AKS) クラスターに WordPress アプリケーションをデプロイします。 
+**[AKS](../../aks/intro-kubernetes.md)** は、クラスターをすばやくデプロイして管理できるマネージド Kubernetes サービスです。 **[Azure Database for MySQL - フレキシブル サーバー (プレビュー)](overview.md)** は、データベース管理機能と構成設定のよりきめ細かな制御と柔軟性を提供するように設計されたフル マネージド データベース サービスです。 フレキシブル サーバーは、現在プレビュー段階にあります。
 
 > [!NOTE]
 > - Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります
@@ -115,7 +116,7 @@ az mysql flexible-server create --public-access <YOUR-IP-ADDRESS>
 - このコマンドはローカル コンテキストを使用しているため、```eastus``` リージョンの ```wordpress-project``` リソース グループにサーバーが作成されます。
 
 
-## <a name="build-your-wordpress-docker-image"></a>WordPress Docker イメージを作成する
+### <a name="build-your-wordpress-docker-image"></a>WordPress Docker イメージを作成する
 
 [最新の WordPress](https://wordpress.org/download/) バージョンをダウンロードします。 プロジェクトの新しいディレクトリ ```my-wordpress-app``` を作成し、次の単純なフォルダー構造を使用します。
 
@@ -173,6 +174,7 @@ define('DB_COLLATE', '');
 define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 ```
 
+### <a name="create-a-dockerfile"></a>Dockerfile を作成する
 新しい Dockerfile を作成し、次のコード スニペットをコピーします。 この Dockerfile では、PHP を使用して Apache Web サーバーをセットアップし、mysqli 拡張機能を有効にします。
 
 ```docker
@@ -182,12 +184,12 @@ RUN docker-php-ext-install mysqli
 RUN docker-php-ext-enable mysqli
 ```
 
-## <a name="build-your-docker-image"></a>Docker イメージをビルドする
-```cd``` コマンドを使用して、ターミナルの ```my-wordpress-app``` ディレクトリにいることを確認します。 次のコマンドを実行して、掲示板イメージをビルドします。
+### <a name="build-your-docker-image"></a>Docker イメージをビルドする
+```cd``` コマンドを使用して、ターミナルの ```my-wordpress-app``` ディレクトリにいることを確認します。 次のコマンドを実行して、イメージをビルドします。
 
 ``` bash
 
-docker build --tag myblog:latest . 
+docker build --tag myblog:latest .
 
 ```
 
@@ -272,8 +274,6 @@ kubectl apply -f mywordpress.yaml
 
 ```output
 deployment "wordpress-blog" created
-service "php-svc" created
-deployment "azure-vote-front" created
 service "php-svc" created
 ```
 

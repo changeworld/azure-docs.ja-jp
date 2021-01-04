@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 570281e31c70b2f5f85a858f9dd424f93ee86029
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 75f06ae11d308028431202c22338ff4a589acf28
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460061"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592298"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault を Azure Private Link と統合する
 
@@ -53,7 +53,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 1. [ネットワーク] タブで [プライベート エンドポイント] を選択します。
 1. [+ 追加] ボタンをクリックしてプライベート エンドポイントを追加します。
 
-    ![Image](../media/private-link-service-1.png)
+    ![[キー コンテナーの作成] ページの [ネットワーク] タブを示すスクリーンショット。](../media/private-link-service-1.png)
  
 1. [プライベート エンドポイントの作成] ブレードの [場所] フィールドで、自分の仮想ネットワークが配置されているリージョンを選択します。 
 1. [名前] フィールドに、このプライベート エンドポイントを識別できるわかりやすい名前を作成します。 
@@ -61,7 +61,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 1. [プライベート DNS ゾーンと統合する] オプションはそのままにします。  
 1. [OK] を選択します。
 
-    ![Image](../media/private-link-service-8.png)
+    ![設定が選択されている [プライベート エンドポイントの作成] ページを示すスクリーンショット。](../media/private-link-service-8.png)
  
 これで、構成されたプライベート エンドポイントが表示されるようになります。 このプライベート エンドポイントを削除および編集するオプションが表示されるようになりました。 [レビュー + 作成] ボタンを選択してキー コンテナーを作成します。 デプロイが完了するまでに 5 から 10 分かかります。 
 
@@ -76,12 +76,13 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 1. ページの上部にある [プライベート エンドポイント接続] タブを選択します。
 1. ページの上部にある [+ プライベート エンドポイント] ボタンを選択します。
 
-    ![画像](../media/private-link-service-3.png) ![画像](../media/private-link-service-4.png)
+    ![[ネットワーク] ページの [+ プライベート エンドポイント] ボタンを示すスクリーンショット。](../media/private-link-service-3.png)
+    ![[プライベート エンドポイントの作成 (プレビュー)] ページの [基本] タブを示すスクリーンショット。](../media/private-link-service-4.png)
 
 このブレードを使用することで、任意の Azure リソース用のプライベート エンドポイントを作成できます。 ドロップダウン メニューを使用してリソースの種類を選択し、自分のディレクトリ内のリソースを選択することも、リソース ID を使用して任意の Azure リソースに接続することもできます。 [プライベート DNS ゾーンと統合する] オプションはそのままにします。  
 
-![画像](../media/private-link-service-3.png)
-![画像](../media/private-link-service-4.png)
+![現在のブレードを使用したプライベート エンドポイントの追加を示すスクリーンショット。](../media/private-link-service-3.png)
+![[プライベート エンドポイントの作成 (プレビュー)] ページの例を示すスクリーンショット。](../media/private-link-service-4.png)
 
 プライベート エンドポイントを作成する際は、接続を承認する必要があります。 作成しているプライベート エンドポイントの接続先となるリソースが自分のディレクトリ内にある場合は、十分なアクセス許可を持っていれば、自分で接続要求を承認することができます。別のディレクトリ内にある Azure リソースに接続する場合は、そのリソースの所有者が接続要求を承認するまで待つ必要があります。
 

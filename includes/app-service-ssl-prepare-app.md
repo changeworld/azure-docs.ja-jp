@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: dd73ac372a21a32eac0c742a7f0f525db2d1a4fe
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 8b3c1992a1cff18390f9d1332103e0650af418e2
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92169078"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347729"
 ---
 ## <a name="prepare-your-web-app"></a>Web アプリの準備
 
-カスタム セキュリティ バインディングを作成するか、お使いの App Service アプリのクライアント証明書を有効にするには、[App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が **Basic**、**Standard**、**Premium**、または **Isolated** のいずれかのレベルである必要があります。 この手順では、Web アプリが、サポートされている価格レベルであることを確認します。
+カスタム TLS/SSL バインディングを作成したり、App Service アプリのクライアント証明書を有効にしたりするには、[App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が **Basic**、**Standard**、**Premium**、または **Isolated** のいずれかのレベルである必要があります。 この手順では、Web アプリが、サポートされている価格レベルであることを確認します。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -49,7 +49,7 @@ Web アプリが **F1** レベルまたは **D1** レベルに含まれていな
 
 ### <a name="scale-up-your-app-service-plan"></a>App Service プランのスケール アップ
 
-非 Free レベルのいずれかを選びます (**B1**、**B2**、**B3**、または**運用**カテゴリのいずれかのレベル)。 その他のオプションについては、 **[See additional options]\(その他のオプションを参照する\)** をクリックします。
+非 Free レベルのいずれかを選びます (**B1**、**B2**、**B3**、または **運用** カテゴリのいずれかのレベル)。 その他のオプションについては、 **[See additional options]\(その他のオプションを参照する\)** をクリックします。
 
 **[Apply]** をクリックします。
 

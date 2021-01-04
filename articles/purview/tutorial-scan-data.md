@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 802b7d2ca5d96bf385c4b8f0ee0cdaa3db181a1c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: feda969a5818402f4a5f2dadc80c70c324ad7492
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922577"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559966"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>チュートリアル:Azure Purview (プレビュー) でデータをスキャンする
 
@@ -146,10 +146,11 @@ Azure Purview アカウントをご自身で作成した場合は、アクセス
 
    このコマンドを実行すると、Azure Active Directory の資格情報を使用してサインインするためのポップアップ ウィンドウが表示されることがあります。
 
-1. 次のコマンドを使用してスタート キットを実行します。 `CatalogName`、`TenantID`、`SubscriptionID`、`newresourcegroupname`、`CatalogResourceGroupName` の各プレースホルダーを置き換えてください。 `newresourcegroupname` には、データ資産の追加先となるリソース グループの一意の名前を使用します。
 
-> [!IMPORTANT]
-> **newresourcegroupname** には、数字と小文字のみを使用できます。また、文字数は 17 文字未満にする必要があります。 **大文字のアルファベットや特殊文字は使用できません。** この制約は、ストレージ アカウントの名前付けルールによるものです。
+1. 次のコマンドを使用してスタート キットを実行します。 `CatalogName`、`TenantID`、`SubscriptionID`、`NewResourceGroupName`、`CatalogResourceGroupName` の各プレースホルダーを置き換えてください。 `NewResourceGroupName` には、データ資産の追加先となるリソース グループの一意の名前 (小文字の英数字のみ) を使用します。
+
+   > [!IMPORTANT]
+   > **newresourcegroupname** には、数字と小文字のみを使用できます。また、文字数は 17 文字未満にする必要があります。 **大文字のアルファベットや特殊文字は使用できません。** この制約は、ストレージ アカウントの名前付けルールによるものです。
 
    ```powershell
    .\RunStarterKit.ps1 -CatalogName <CatalogName> -TenantId <TenantID>`

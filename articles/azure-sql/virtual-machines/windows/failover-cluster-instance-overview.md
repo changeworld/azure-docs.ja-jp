@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: d5bd2fc150ee1d35127eeb9dbf3dc1eeffdc9659
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 33be57832d9364b859042cd38349c2437bcfcb18
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685938"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358148"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server を使用したフェールオーバー クラスター インスタンス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,7 +51,7 @@ Azure VM 上の SQL Server には、SQL Server フェールオーバー クラ�
 |---------|---------|---------|---------|
 |**OS の最小バージョン**| All |Windows Server 2012|Windows Server 2016|
 |**SQL Server の最小バージョン**|All|SQL Server 2012|SQL Server 2016|
-|**サポートされる VM の可用性** |近接配置グループを含む可用性セット |可用性セットと可用性ゾーン|可用性セット |
+|**サポートされる VM の可用性** |近接配置グループを含む可用性セット (Premium SSD の場合) </br> 同じ可用性ゾーン (Ultra SSD の場合) |可用性セットと可用性ゾーン|可用性セット |
 |**FileStream のサポート**|はい|いいえ|はい |
 |**Azure BLOB キャッシュ**|いいえ|いいえ|はい|
 
@@ -69,12 +70,16 @@ Azure VM 上の SQL Server には、SQL Server フェールオーバー クラ�
 - 共有された Azure Premium SSD と Azure Ultra Disk storage がサポートされます。
 - 1 つの共有ディスクを使用することも、複数の共有ディスクをストライプして共有記憶域プールを作成することもできます。 
 - FileStream がサポートされます。
+- Premium SSD では、可用性セットがサポートされています。 
 
 
 **制限事項**: 
-- 仮想マシンは、同じ可用性セットおよび同じ近接配置グループに配置する必要があります。
-- 可用性ゾーンはサポートされていません。
+- 仮想マシンは、同じ可用性セットおよび同じ近接配置グループに配置することをお勧めします。
+- Ultra Disks では、可用性セットはサポートされていません。 
+- 可用性ゾーンは Ultra Disks でサポートされていますが、VM が同じ可用性ゾーンに存在する必要があるため、仮想マシンの可用性が低下します。 
+- 選択したハードウェア可用性ソリューションに関係なく、Azure 共有ディスクの使用時には、フェールオーバー クラスターの可用性は常に 99.9% になります。 
 - Premium SSD ディスクのキャッシュはサポートされていません。
+
  
 開始するには、[Azure 共有ディスクを使用した SQL Server フェールオーバー クラスター インスタンス](failover-cluster-instance-azure-shared-disks-manually-configure.md)に関する記事をご覧ください。 
 

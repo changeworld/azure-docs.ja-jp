@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 8f74d2b5ab2cc85edbc8b1ea9f7d230f0215f35d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 077730d63d388566bd842a4ba185bd5fd6637043
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854598"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589000"
 ---
 # <a name="set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-starter"></a>Azure DevOps Starter を使用して Java アプリ用の CI/CD パイプラインを設定する
 
@@ -66,9 +66,9 @@ DevOps Starter によって、CI ビルドおよびリリース トリガーが�
 
 DevOps Starter によって、Azure Repos または GitHub に Git リポジトリが作成されます。 リポジトリを表示し、アプリケーションにコード変更を加えるには、次の手順に従います。
 
-1. DevOps Starter ダッシュボードの左側にあるマスター分岐のリンクを選択します。 このリンクは、新しく作成された Git リポジトリのビューを開きます。
+1. DevOps Starter ダッシュボードの左側にあるメイン ブランチのリンクを選択します。 このリンクは、新しく作成された Git リポジトリのビューを開きます。
 
-1. リポジトリのクローン URL を表示するには、ブラウザーの右上の **[複製]** を選択します。 お気に入りの IDE で Git リポジトリを複製できます。 次のいくつかの手順では、Web ブラウザーを使用してマスター ブランチに直接コード変更を行い、コミットできます。
+1. リポジトリのクローン URL を表示するには、ブラウザーの右上の **[複製]** を選択します。 お気に入りの IDE で Git リポジトリを複製できます。 次のいくつかの手順では、Web ブラウザーを使用してメイン ブランチに直接コード変更を行い、コミットできます。
 
 1. ブラウザーの左側で、**src/main/webapp/index.html** ファイルに移動します。
 
@@ -124,7 +124,7 @@ DevOps Starter によって、Azure Repos または GitHub に Git リポジト�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Azure App Service とその他の関連リソースが必要なくなったら、削除してかまいません。 DevOps Starter ダッシュボードで**削除**機能を使用します。
+Azure App Service とその他の関連リソースが必要なくなったら、削除してかまいません。 DevOps Starter ダッシュボードで **削除** 機能を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

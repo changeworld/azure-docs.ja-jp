@@ -5,16 +5,16 @@ ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: a90bb90c90206ffe00f8b4f2d035c0ea844b5c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81a8b6cd5044b31ee80f50448d6610ba6a57281e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611675"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585651"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>チュートリアル:リンク済みテンプレートをデプロイする
 
-[前のチュートリアル](./deployment-tutorial-local-template.md)では、ローカル コンピューターに保存されたテンプレートをデプロイする方法について説明しました。 複雑なソリューションをデプロイするする場合は、テンプレートを複数に分割し、メイン テンプレートを使用してそれらをデプロイすることができます。 このチュートリアルでは、リンク済みテンプレートへの参照を含んだメイン テンプレートをデプロイする方法について説明します。 メイン テンプレートがデプロイされると、そこからリンク済みテンプレートのデプロイがトリガーされます。 リンク済みテンプレートを保存し、SAS トークンを使用してそのセキュリティを確保する方法についても説明します。 所要時間は約 **12 分**です。
+[前のチュートリアル](./deployment-tutorial-local-template.md)では、ローカル コンピューターに保存されたテンプレートをデプロイする方法について説明しました。 複雑なソリューションをデプロイするする場合は、テンプレートを複数に分割し、メイン テンプレートを使用してそれらをデプロイすることができます。 このチュートリアルでは、リンク済みテンプレートへの参照を含んだメイン テンプレートをデプロイする方法について説明します。 メイン テンプレートがデプロイされると、そこからリンク済みテンプレートのデプロイがトリガーされます。 リンク済みテンプレートを保存し、SAS トークンを使用してそのセキュリティを確保する方法についても説明します。 所要時間は約 **12 分** です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,11 +32,11 @@ ms.locfileid: "91611675"
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/linkedStorageAccount.json":::
 
-次のテンプレートがメイン テンプレートです。  強調表示された **Microsoft.Resources/deployments** オブジェクトは、リンク済みテンプレートの呼び出し方法を示しています。 リンク済みテンプレートはローカル ファイルに保存できず、また、ローカル ネットワーク上でしか利用できないファイルに保存することもできません。 *http* または *https* のいずれかを含む URI 値のみを指定できます。 Resource Manager は、テンプレートにアクセスできる必要があります。 1 つと選択肢として、ストレージ アカウントにリンク済みテンプレートを配置し、その項目の URI を使用できます。 URI は、パラメーターを使用してテンプレートに渡されます。 強調表示されたパラメーターの定義を参照してください。
+次のテンプレートがメイン テンプレートです。 強調表示された `Microsoft.Resources/deployments` オブジェクトは、リンク済みテンプレートの呼び出し方法を示しています。 リンク済みテンプレートはローカル ファイルに保存できず、また、ローカル ネットワーク上でしか利用できないファイルに保存することもできません。 HTTP または HTTPS を含む URI 値のみを指定できます。 Resource Manager は、テンプレートにアクセスできる必要があります。 1 つと選択肢として、ストレージ アカウントにリンク済みテンプレートを配置し、その項目の URI を使用できます。 URI は、パラメーターを使用してテンプレートに渡されます。 強調表示されたパラメーターの定義を参照してください。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
 
-メイン テンプレートのコピーに .json という拡張子を付けてローカル コンピューターに保存します (例: azuredeploy.json)。 リンク済みテンプレートのコピーを保存する必要はありません。  リンク済みテンプレートは GitHub リポジトリからストレージ アカウントにコピーされます。
+メイン テンプレートのコピーに _.json_ という拡張子を付けてローカル コンピューターに保存します (例: _azuredeploy.json_)。 リンク済みテンプレートのコピーを保存する必要はありません。 リンク済みテンプレートは GitHub リポジトリからストレージ アカウントにコピーされます。
 
 ## <a name="store-the-linked-template"></a>リンク済みテンプレートを保存する
 
@@ -45,7 +45,7 @@ ms.locfileid: "91611675"
 **[使ってみる]** を選択して Cloud Shell を開き、 **[コピー]** を選択して PowerShell スクリプトをコピーしたら、シェル ペインを右クリックしてスクリプトを貼り付けます。
 
 > [!IMPORTANT]
-> ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用する必要があります。 名前は一意である必要があります。 このテンプレートでは、プロジェクト名に "store" を追加した文字列がストレージ アカウント名になります。プロジェクト名は 3 文字を超え、11 文字未満であることが必要です。 そのためプロジェクト名は、ストレージ アカウント名の要件を満たしていること、また 11 文字未満であることが必要となります。
+> ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用する必要があります。 名前は一意である必要があります。 このテンプレートでは、プロジェクト名に **store** を追加したものがストレージ アカウント名になります。プロジェクト名は 3 文字を超え、11 文字未満であることが必要です。 そのためプロジェクト名は、ストレージ アカウント名の要件を満たしていること、また 11 文字未満であることが必要となります。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name:"   # This name is used to generate names for Azure resources, such as storage account name.
@@ -93,7 +93,7 @@ Write-Host "Press [ENTER] to continue ..."
 まだリソース グループを作成していない場合は、「[リソース グループの作成](./deployment-tutorial-local-template.md#create-resource-group)」を参照してください。
 
 > [!NOTE]
-> 下記の Azure CLI コードでは、日付パラメーター -d は macOS の無効な引数です。 そのため、macOS のユーザーは、macOS のターミナルで現在の時刻に 2 時間を追加するために、-v+2H を使用する必要があります。
+> 下記の Azure CLI コードで、`date` パラメーターの `-d` は、macOS では無効な引数です。 そのため、macOS ユーザーは、macOS のターミナルで現在の時刻に 2 時間を追加するために、`-v+2H` を使用する必要があります。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -176,7 +176,7 @@ az deployment group create \
 
 ## <a name="next-steps"></a>次のステップ
 
-リンク済みテンプレートをデプロイする方法について説明しました。 次のチュートリアルでは、テンプレートをデプロイするための DevOp パイプラインを作成する方法について説明します。
+リンク済みテンプレートをデプロイする方法について説明しました。 次のチュートリアルでは、テンプレートをデプロイするための DevOps パイプラインを作成する方法について説明します。
 
 > [!div class="nextstepaction"]
 > [パイプラインを作成する。](./deployment-tutorial-pipeline.md)

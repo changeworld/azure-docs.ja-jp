@@ -3,12 +3,12 @@ title: クラウドへのイベントベースのビデオ記録とクラウド�
 description: このチュートリアルでは、Azure Live Video Analytics on Azure IoT Edge を使用して、イベントベースのビデオ録画をクラウドに記録し、これをクラウドから再生する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 84f6ef813fb1b2cc425e096212010717d0561aef
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8f3ecdf7e4260d700f31663852abbb39474cd474
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498304"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401673"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>チュートリアル:クラウドへのイベントベースのビデオ記録とクラウドからの再生
 
@@ -68,13 +68,13 @@ ms.locfileid: "96498304"
 図は、目的のシナリオを実現する[メディア グラフ](media-graph-concept.md)と追加のモジュールを視覚的に表現したものです。 次の 4 つの IoT Edge モジュールが関与します。
 
 * IoT Edge モジュール上の Live Video Analytics。
-* HTTP エンドポイントの背後で AI モデルを実行する Edge モジュール。 この AI モジュールでは、さまざまな種類のオブジェクトを検出できる [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) モデルを使用します。
+* HTTP エンドポイントの背後で AI モデルを実行する Edge モジュール。 この AI モジュールでは、さまざまな種類のオブジェクトを検出できる [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) モデルを使用します。
 * オブジェクトをカウントおよびフィルター処理するためのカスタム モジュール (図では、Object Counter (オブジェクト カウンター) となっています)。 このチュートリアルでは、オブジェクト カウンターを作成してデプロイします。
 * RTSP カメラをシミュレートする[RTSP シミュレーター モジュール](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)。
     
 図に示すように、メディア グラフ内の [RTSP ソース](media-graph-concept.md#rtsp-source) ノードを使用して、シミュレートされた (高速道路のトラフィックの) ライブ ビデオをキャプチャし、そのビデオを次の 2 つのパスに送信します。
 
-* 最初のパスは、指定された (低減された) フレーム レートでビデオ フレームを出力する[フレーム レート フィルター プロセッサ](media-graph-concept.md#frame-rate-filter-processor) ノードです。 これらのビデオ フレームは、HTTP 拡張ノードに送信されます。 次に、このノードは、フレームを画像として AI モジュール YOLO v3 (オブジェクト検出器) にリレーします。 ノードは結果 (モデルによって検出されたオブジェクト、つまりトラフィック内の車両) を受信します。 次に、HTTP 拡張ノードは、IoT Hub メッセージ シンク ノードを介して IoT Edge ハブに結果を発行します。
+* 1 つ目は、HTTP 拡張ノードへのパスです。 このノードは、`samplingOptions` フィールドを使用して設定された値にビデオ フレームをサンプリングした後、フレームを画像として AI モジュール YOLO v3 (オブジェクト検出器) にリレーします。 ノードは結果 (モデルによって検出されたオブジェクト、つまりトラフィック内の車両) を受信します。 次に、HTTP 拡張ノードは、IoT Hub メッセージ シンク ノードを介して IoT Edge ハブに結果を発行します。
 * objectCounter モジュールは、IoT Edge ハブからメッセージを受信するように設定されています。このメッセージには、オブジェクト検出の結果 (トラフィック内の車両) が含まれています。 モジュールではこれらのメッセージを確認して、(設定を介して構成された) 特定の種類のオブジェクトを探します。 そのようなオブジェクトが見つかると、このモジュールから IoT Edge ハブにメッセージが送信されます。 "物体が見つかった" というこれらのメッセージは、メディア グラフの IoT Hub ソース ノードにルーティングされます。 このようなメッセージを受信すると、メディア グラフの IoT Hub ソース ノードによって[シグナル ゲート プロセッサ](media-graph-concept.md#signal-gate-processor) ノードがトリガーされます。 すると、構成された時間だけシグナル ゲート プロセッサ ノードが開きます。 その間、ビデオがゲートを通じて資産シンク ノードに流れます。 ライブ ストリームのその部分は、[資産シンク](media-graph-concept.md#asset-sink) ノードを介して、ご自分の Azure Media Services アカウント内の[資産](terminology.md#asset)に記録されます。
 
 ## <a name="set-up-your-development-environment"></a>開発環境を設定する

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2d4c8675d8f03d19a63b7564b05e2de1a809e763
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 621bbac6bc9ff3cb147110942060c8268fd86989
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459477"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511180"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と JIRA SAML SSO by Microsoft の統合
 
@@ -37,7 +37,7 @@ Microsoft Azure Active Directory アカウントと Atlassian JIRA サーバー�
 JIRA SAML SSO by Microsoft と Azure AD の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-- JIRA Core と Software 6.4 から 8.11.0、または JIRA Service Desk 3.0 から 4.11.1 が、Windows 64 ビット版にインストールおよび構成されている必要があります
+- JIRA Core と Software 6.4 から 8.14.0、または JIRA Service Desk 3.0 から 4.11.1 が、Windows 64 ビット版にインストールおよび構成されている必要があります
 - JIRA サーバーの HTTPS が有効になっていること
 - JIRA プラグインがサポートされているバージョンであること (下記のセクションをご覧ください)
 - JIRA サーバーが認証のためにインターネット、特に Azure AD ログイン ページにアクセスでき、Azure AD からトークンを受け取れること
@@ -58,7 +58,7 @@ JIRA SAML SSO by Microsoft と Azure AD の統合を構成するには、次の�
 
 ## <a name="supported-versions-of-jira"></a>サポートされている JIRA のバージョン
 
-* JIRA Core と Software:6.4 から 8.11.0
+* JIRA Core と Software:6.4 から 8.14.0
 * JIRA Service Desk 3.0.0 から 4.11.1
 * JIRA は 5.2 もサポートします。 詳細については、[Microsoft Azure Active Directory single sign-on for JIRA 5.2](jira52microsoft-tutorial.md) に関する記事を参照してください。
 
@@ -69,7 +69,7 @@ JIRA SAML SSO by Microsoft と Azure AD の統合を構成するには、次の�
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* JIRA SAML SSO by Microsoft では、 **SP** によって開始される SSO がサポートされます
+* JIRA SAML SSO by Microsoft では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-jira-saml-sso-by-microsoft-from-the-gallery"></a>ギャラリーからの JIRA SAML SSO by Microsoft の追加
 
@@ -79,7 +79,7 @@ Azure AD への JIRA SAML SSO by Microsoft の統合を構成するには、ギ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **JIRA SAML SSO by Microsoft** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**JIRA SAML SSO by Microsoft**」と入力します。
 1. 結果のパネルから **[JIRA SAML SSO by Microsoft]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-jira-saml-sso-by-microsoft"></a>JIRA SAML SSO by Microsoft の Azure AD シングル サインオンの構成とテスト
@@ -232,7 +232,7 @@ JIRA SAML SSO by Microsoft で Azure AD SSO を構成してテストするには
 
     ![[Settings]\(設定\) メニューの [User management]\(ユーザー管理\) が選択されているスクリーンショット。](./media/jiramicrosoft-tutorial/user1.png)
 
-3. [Administrator Access]\(管理者アクセス\) のページにリダイレクトされるので、 **パスワード** を入力し、 **[Confirm]\(確認\)** ボタンをクリックします。
+3. [Administrator Access]\(管理者アクセス\) のページにリダイレクトされるので、**パスワード** を入力し、 **[Confirm]\(確認\)** ボタンをクリックします。
 
     ![資格情報を入力する [Administrator Access]\(管理者アクセス\) ページを示すスクリーンショット。](./media/jiramicrosoft-tutorial/user2.png)
 

@@ -1,18 +1,18 @@
 ---
 title: JavaScript を使用して Azure Event Hubs との間でイベントを送受信する (最新)
-description: この記事では、最新の azure/event-hubs バージョン 5 パッケージを使用して、Azure Event Hubs との間でイベントを送受信する JavaScript アプリケーションを作成する方法について説明します。
+description: この記事では、最新の azure/event-hubs パッケージを使用して、Azure Event Hubs との間でイベントを送受信する JavaScript アプリケーションを作成する方法について説明します。
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 01516f29e727b5be2a81d3d8dd473808b6ea60f7
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 2e5f297d5edb9a271843db060f948209dd076074
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728949"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106089"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>JavaScript を使用して Event Hubs との間でイベントを送受信する (azure/event-hubs バージョン 5)
-このクイックスタートでは、**azure/event-hubs バージョン 5** JavaScript パッケージを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。 
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs"></a>JavaScript (azure/event-hubs) を使用して Event Hubs との間でイベントを送受信する
+このクイックスタートでは、**azure/event-hubs** JavaScript パッケージを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。 
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -29,7 +29,7 @@ Azure Event Hubs を初めて使用する場合は、このクイックスター
    1. 名前空間とイベント ハブを作成するには、「[クイック スタート: Azure portal を使用したイベント ハブの作成](event-hubs-create.md)」の手順に従います。
    1. 続けてこのクイックスタートの手順に従います。 
    1. イベント ハブの名前空間の接続文字列を取得するために、[接続文字列の取得](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)に関するセクションの手順に従います。 接続文字列は記録しておいてください。後でこのクイックスタートの中で使用します。
-- **Event Hubs 名前空間とイベント ハブを作成する**。 最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 その後、次の記事の手順に従って、**Event Hubs 名前空間用の接続文字列**を取得します: [接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 この接続文字列は、このクイックスタートの後の手順で必要になります。
+- **Event Hubs 名前空間とイベント ハブを作成する**。 最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 その後、次の記事の手順に従って、**Event Hubs 名前空間用の接続文字列** を取得します: [接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 この接続文字列は、このクイックスタートの後の手順で必要になります。
 
 ### <a name="install-the-npm-package"></a>npm パッケージのインストール
 [Event Hubs 用の Node Package Manager (npm) パッケージ](https://www.npmjs.com/package/@azure/event-hubs)をインストールするには、パスに *npm* を設定してコマンド プロンプトを開き、サンプルを格納するフォルダーにディレクトリを変更してから、このコマンドを実行します。

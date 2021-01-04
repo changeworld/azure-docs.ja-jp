@@ -6,16 +6,21 @@ ms.date: 11/10/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: 7eebbe5605c0b4d70ea15c1605cff5416965e535
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+adobe-target-activity: DocsExp–377467–A/B– Quickstarts/Python App–12.11
+adobe-target-experience: Experience B
+adobe-target-content: ./quickstart-python-1
+ms.openlocfilehash: 29c2e9e892b2c5f51907cc63d9b2bf1a6f2e7979
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780775"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561530"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Python アプリを作成する
 
 このクイック スタートでは、Azure のスケーラビリティに優れた自己適用型の Web ホスティング サービスである [App Service on Linux](overview.md#app-service-on-linux) に、Python Web アプリをデプロイします。 Mac、Linux、または Windows コンピューター上でローカル [Azure コマンドライン インターフェイス (CLI)](/cli/azure/install-azure-cli) を使用して、Flask または Django のいずれかのフレームワークを使用したサンプルをデプロイします。 構成する Web アプリでは、App Service の Free レベルを使用するため、この記事の中で料金が発生することはありません。
+
+**一般的な用語の定義** については、「[Azure 用語の概略](/azure/developer/python/cloud-azure-terminology?toc=/azure/app-service/toc.json)」を参照してください。
 
 > [!TIP]
 > Visual Studio Code の使用を希望する場合は、 **[Visual Studio Code App Service のクイックスタート](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** に従ってください。
@@ -64,7 +69,7 @@ az login
 
 サインイン後は、Azure CLI を使用して Azure コマンドを実行して、サブスクリプション内のリソースを操作することができます。
 
-問題がある場合は、 [お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
+問題がありますか。 [お知らせください。](https://aka.ms/FlaskCLIQuickstartHelp)
 
 ## <a name="clone-the-sample"></a>サンプルを複製する
 

@@ -7,13 +7,13 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
-ms.date: 06/16/2020
-ms.openlocfilehash: 092e07ed01fb870cdcd9a3fd63d46d30cef96007
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.date: 12/15/2020
+ms.openlocfilehash: 085ac8c2ca7cfafcf0e40152458acf68dd847937
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780843"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605532"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics での JavaScript ユーザー定義関数
  
@@ -215,6 +215,14 @@ FROM
 Samstag, 28. Dezember 2019
 ```
 
+## <a name="user-logging"></a>ユーザーのログ記録
+ログ記録メカニズムを使用すると、ジョブの実行中にカスタム情報をキャプチャできます。 ログ データを使用して、カスタム コードの正確性をリアルタイムでデバッグまたは評価することができます。 このメカニズムは、Console.Log() メソッドを通じて使用できます。
+
+```javascript
+console.log('my error message');
+```
+
+ログ メッセージにアクセスするには、[診断ログ](data-errors.md)を使用します。
 ## <a name="next-steps"></a>次のステップ
 
 * [Machine Learning UDF](./machine-learning-udf.md)

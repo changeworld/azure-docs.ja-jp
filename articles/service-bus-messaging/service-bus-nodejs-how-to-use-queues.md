@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: spelluru
 ms.custom: devx-track-js
-ms.openlocfilehash: 3f37fcc6d58eb1c206aef6db15c7826cfdcda274
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 009b060cc479c520dde8c4f595b24be7dcb4c6a6
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489430"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347763"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>Azure Service Bus キューとの間でメッセージを送受信する (JavaScript)
 このチュートリアルでは、JavaScript プログラムの [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) パッケージを使用して、Service Bus キューとの間でメッセージを送受信する方法について説明します。
@@ -205,6 +205,6 @@ Azure portal の Service Bus 名前空間の **[概要]** ページで、**受�
 ## <a name="next-steps"></a>次のステップ
 次のドキュメントおよびサンプルを参照してください。 
 
-- [Python 用の Azure Service Bus クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
+- [JS 用の Azure Service Bus クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
 - [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples)。 JavaScript のサンプルは **javascript** フォルダーに、TypeScript のサンプルは **typescript** フォルダーに格納されています。 
 - [azure-servicebus のリファレンス ドキュメント](/javascript/api/overview/azure/service-bus)

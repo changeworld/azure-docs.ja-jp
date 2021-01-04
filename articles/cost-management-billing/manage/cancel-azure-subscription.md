@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 12/14/2020
 ms.author: banders
-ms.openlocfilehash: 3182da0d04d61d5bad4ce3e41f213ecc3be7ecaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 662e1bf721c93ee1d59946d2fd603551f3f88ad3
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444451"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503796"
 ---
 # <a name="cancel-your-azure-subscription"></a>Azure サブスクリプションの取り消し
 
@@ -30,6 +30,17 @@ ms.locfileid: "96444451"
 
 有料の Azure サポート プランを取り消しても、サブスクリプション期間の残りの期間について請求されます。 詳細については、「[Azure のサポート プラン](https://azure.microsoft.com/support/plans/)」を参照してください。
 
+## <a name="who-can-cancel-a-subscription"></a>サブスクリプションを取り消すことができるユーザー
+
+次の表では、サブスクリプションを取り消すために必要なアクセス許可について説明します。
+
+|サブスクリプションの種類     |取り消すことができるユーザー  |
+|---------|---------|
+|Azure Web サイトで Azure にサインアップするときに作成されたサブスクリプション。 たとえば、[Azure 無料アカウント](https://azure.microsoft.com/offers/ms-azr-0044p/)または[従量課金制料金のアカウント](https://azure.microsoft.com/offers/ms-azr-0003p/)にサインアップした場合や、[Visual Studio サブスクライバー](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)としてサインアップした場合です。 |  サブスクリプションの所有者とアカウント管理者  |
+|[Microsoft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) と [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  サブスクリプションの所有者とアカウント所有者       |
+|[Azure プラン](https://azure.microsoft.com/offers/ms-azr-0017g/)と [DevTest 用 Azure プラン](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  サブスクリプションの所有者      |
+
+
 ## <a name="cancel-subscription-in-the-azure-portal"></a>Azure portal でサブスクリプションを取り消す
 
 1. [Azure portal の [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で、自分のサブスクリプションを選択します。
@@ -41,15 +52,13 @@ ms.locfileid: "96444451"
 > [!NOTE]
 > パートナーは、顧客から要求された場合、または未払いや不正行為があった場合に、サブスクリプションを中断または取り消すことができます。 詳細については、「[サブスクリプションを中断または取り消す](/partner-center/create-a-new-subscription#suspend-or-cancel-a-subscription)」セクションを参照してください。
 
-## <a name="who-can-cancel-a-subscription"></a>サブスクリプションを取り消すことができるユーザー
+## <a name="cancel-a-support-plan"></a>サポート プランを取り消す
 
-次の表では、サブスクリプションを取り消すために必要なアクセス許可について説明します。
+Azure Web サイトか Azure portal からサポート プランを購入した場合、または Microsoft 顧客契約の下でサポート プランをご利用の場合、サポート プランを取り消すことができます。 Microsoft の代理店またはパートナーからサポート プランを購入した場合は、代理店またはパートナーにお問い合わせください。 
 
-|サブスクリプションの種類     |取り消すことができるユーザー  |
-|---------|---------|
-|Azure Web サイトで Azure にサインアップするときに作成されたサブスクリプション。 たとえば、[Azure 無料アカウント](https://azure.microsoft.com/offers/ms-azr-0044p/)または[従量課金制料金のアカウント](https://azure.microsoft.com/offers/ms-azr-0003p/)にサインアップした場合や、[Visual Studio サブスクライバー](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)としてサインアップした場合です。 |  サブスクリプションの所有者とアカウント管理者  |
-|[Microsoft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) と [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  サブスクリプションの所有者とアカウント所有者       |
-|[Azure プラン](https://azure.microsoft.com/offers/ms-azr-0017g/)と [DevTest 用 Azure プラン](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  サブスクリプションの所有者      |
+1. Azure portal で **[コストの管理と請求]** に移動します。
+1. **[課金]** の **[当月サービス利用料金]** を選択します。
+1. サポート プラン明細項目の右側にある省略記号 ( **...** ) を選択し、 **[Turn off auto-renewal]\(自動更新をオフにします\)** を選択します。
 
 ## <a name="what-happens-after-subscription-cancellation"></a>サブスクリプションの取り消し後は、どうなりますか?
 

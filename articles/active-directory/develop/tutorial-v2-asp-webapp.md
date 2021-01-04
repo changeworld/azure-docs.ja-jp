@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 0dad7add63102d462a2111f1ecf12ae43dae123c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4dca1fa0e823b482044d35f98412187af2fa72ed
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996187"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507763"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>チュートリアル:ASP.NET Web アプリに Microsoft へのサインインを追加する
 
@@ -373,15 +373,16 @@ Visual Studio で、Web ページでユーザー要求を表示するための�
    1. ソリューション エクスプローラーで、プロジェクトを選択してプロパティ ウィンドウを確認します (プロパティ ウィンドウが表示されない場合は F4 キーを押します)。
    1. [SSL 有効] を `True` に変更します。
    1. Visual Studio でプロジェクトを右クリックし、 **[プロパティ]** を選択してから **[Web]** タブを選択します。 **[サーバー]** セクションで、 **[プロジェクト URL]** の設定を **SSL URL** に変更します。
-   1. SSL URL をコピーします。 この後の手順で、登録ポータルのリダイレクト URL の一覧に、この URL を追加します。<br/><br/>![プロジェクトのプロパティ](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-1. 職場または学校アカウントを使用するか、個人用 Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
-1. 自分のアカウントで複数のテナントにアクセスできる場合は、右上隅で自分のアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
-1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
-1. **[新規登録]** を選択します。
-1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
-   1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: **ASPNET-Tutorial**)。
-   1. 手順 1. で Visual Studio からコピーした SSL URL (たとえば `https://localhost:44368/`) を **[応答 URL]** に追加し、 **[登録]** を選択します。
-1. **[認証]** メニューを選択し、 **[暗黙の付与]** の **[ID トークン]** を選択して、 **[保存]** を選択します。
+   1. SSL URL をコピーします。 この後の手順で、登録ポータルのリダイレクト URI の一覧に、この URL を追加します。<br/><br/>![プロジェクトのプロパティ](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+1. アプリケーションの **名前** を入力します (例: `ASPNET-Tutorial`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
+1. 手順 1. で Visual Studio からコピーした SSL URL (たとえば `https://localhost:44368/`) を **[応答 URI]** に追加します。
+1. **[登録]** を選択します。
+1. **[管理]** で、 **[認証]** を選択します。
+1. **[暗黙的な許可]** セクションで、 **[ID トークン]** を選択し、 **[保存]** を選択します。
 1. `configuration\appSettings` セクションのルート フォルダーにある web.config ファイルに、次のコードを追加します。
 
     ```xml

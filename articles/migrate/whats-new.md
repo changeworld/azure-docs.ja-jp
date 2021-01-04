@@ -1,22 +1,25 @@
 ---
 title: Azure Migrate の新着情報
 description: Azure Migrate サービスの最新の情報や最近行われた更新について説明します。
-author: bsiva
-ms.author: bsiva
-ms.manager: abhemraj
 ms.topic: overview
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: e39b8f7ee7b76a1955e02a7140524f812be086b5
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 7ff9d9c6624016d4b1ea94072d52de1c42d73913
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752449"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400473"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
 [Azure Migrate](migrate-services-overview.md) を使用すると、オンプレミスのサーバー、アプリ、データを検出して評価し、Microsoft Azure クラウドに移行するのに役立ちます。 この記事では、Azure Migrate の新しいリリースと機能について概要を説明します。
+## <a name="update-december-2020"></a>更新 (2020 年 12 月)
+- Azure Migrate で、エージェントレスの移行手法を使用して VMware VM を Azure に移行する間、VMware VM に Azure VM エージェントが自動的にインストールされるようになりました。
+- サーバー側暗号化 (SSE) とカスタマー マネージド キー (CMK) によってディスクが暗号化された Azure 仮想マシンに対し、Azure Migrate Server Migration (エージェントレス レプリケーション) を使用して VMware VM を移行する方法が Azure portal から利用できるようになりました。
 
 ## <a name="update-september-2020"></a>更新 (2020 年 9 月)
 - サーバーを Availability Zones に移行できるようになりました。
@@ -25,7 +28,7 @@ ms.locfileid: "96752449"
 - 1000 台の VM で同時に依存関係の分析 (エージェントレス) を実行できるようになりました。
 - PowerShell スクリプトを使用して、大規模な依存関係の分析 (エージェントレス) を有効または無効にすることができるようになりました。 [詳細情報。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
 - 依存関係の分析 (エージェントレス) によって収集されたデータを使用して、Power BI でネットワーク接続を視覚化できます。[詳細情報。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
-- データ ディスクのサイズが最大 32 TB の VMware VM の移行は、Azure Migrate:Server Migration のエージェントレス VMware 移行方式を使用してサポートされるようになりました。 
+- データ ディスクのサイズが最大 32 TB の VMware VM の移行は、Azure Migrate:Server Migration のエージェントレス VMware 移行方式を使用してサポートされるようになりました。
 
 ## <a name="update-august-2020"></a>更新 (2020 年 8 月)
 

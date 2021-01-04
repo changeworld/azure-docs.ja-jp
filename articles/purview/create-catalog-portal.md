@@ -1,18 +1,18 @@
 ---
 title: 'クイックスタート: Azure portal で Azure Purview アカウントを作成する (プレビュー)'
 description: このクイックスタートでは、Azure Purview アカウントを作成し、アクセス許可を構成して、その使用を開始する方法について説明します。
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: c9e0b155a4cf34373bb6d851241dc62ddd661045
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3119152e4a7d0dc799dfe273722101c95c11c0c9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602380"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400388"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>クイックスタート: Azure portal で Azure Purview アカウントを作成する
 
@@ -30,6 +30,10 @@ ms.locfileid: "96602380"
 * ご使用のアカウントには、サブスクリプションにリソースを作成するためのアクセス許可が必要です。
 
 * **ストレージ アカウント** および **EventHub 名前空間** の作成をすべてのアプリケーションに禁止する **Azure Policy** がある場合、タグを使用してポリシーの例外を作成する必要があります。これは、Purview アカウントを作成する過程で入力できます。 その主な理由は、作成した各 Purview アカウントでマネージド リソース グループを作成し、また、そのリソース グループ内にストレージ アカウントと EventHub 名前空間を作成する必要があるためです。
+
+    > [!important]
+    > Azure Policy をお持ちでない場合や、Azure Policy はあるものの、**ストレージ アカウント** と **EventHub 名前空間** の作成が禁止されていない場合、この手順を実行する必要はありません。
+
     1. Azure portal に移動し、 **[ポリシー]** を検索します。
     1. [カスタム ポリシー定義の作成](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition)に関するチュートリアルに従うか、`not` 演算子と `resourceBypass` タグを使用して既存のポリシーに 2 つの例外を追加します。
 
@@ -139,7 +143,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 Azure Purview アカウントの **Purview データ キュレーター** データ プレーン ロールにセキュリティ プリンシパルを追加するには:
 
-1. Azure portal の [ **[Purview アカウント]** ](https://aka.ms/purviewportal) ページに移動します。
+1. Azure portal の [ **[Purview アカウント]**](https://aka.ms/purviewportal) ページに移動します。
 
 1. 変更する Azure Purview アカウントを選択します。
 
@@ -151,7 +155,7 @@ Azure Purview アカウントの **Purview データ キュレーター** デー
 
 1. **[ロールの割り当ての追加]** を選択します。
 
-1. [ロール] には、サービス プリンシパルの使用目的に応じて「**Purview データ キュレーター ロール**」または「**Purview データ ソース管理者ロール**」と入力します (詳細については、[カタログのアクセス許可](catalog-permissions.md)に関するページを参照してください)。
+1. [ロール] には、セキュリティ プリンシパルの使用目的に応じて「**Purview データ キュレーター ロール**」または「**Purview データ ソース管理者ロール**」と入力します (詳細については、「[カタログのアクセス許可](catalog-permissions.md)」および「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)」を参照してください)。
 
 1. **[アクセスの割り当て先]** は、既定値の **[User, group, or service principal]\(ユーザー、グループ、またはサービス プリンシパル\)** のままにします。
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: bf7a35e8cedbe62aafb29aa6d9dc8fcb42e90b2e
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6ddfe581bb3f2f584fdec0229981321297c9a77f
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693768"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399199"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer のコンポーネント
 
@@ -44,7 +44,7 @@ IP アドレスの特質によって、作成されるロード バランサー�
 
 ![階層化されたロード バランサーの例](./media/load-balancer-overview/load-balancer.png)
 
-Load Balancer は、複数のフロントエンド IP を持つことができます。 [複数のフロントエンド](load-balancer-multivip-overview.md)の詳細については、こちらをご覧ください。
+ロード バランサーには、複数のフロントエンド IP を割り当てることができます。 [複数のフロントエンド](load-balancer-multivip-overview.md)の詳細については、こちらをご覧ください。
 
 ## <a name="backend-pool"></a>バックエンド プール
 
@@ -58,25 +58,23 @@ Load Balancer は、複数のフロントエンド IP を持つことができ�
 
 正常性プローブは、バックエンド プール内のインスタンスの正常性状態を判断するために使用されます。 ロード バランサーの作成中に、ロード バランサーで使用する正常性プローブを構成します。  この正常性プローブによって、インスタンスが正常で、トラフィックを受信できるかどうかが判断されます。
 
-正常性プローブには、異常しきい値を定義できます。 プローブが応答できない場合、Load Balancer によって、異常なインスタンスへの新しい接続の送信が停止されます。 プローブの失敗は、既存の接続には影響しません。 接続は、アプリケーションが以下を実行するまで続行されます。
+正常性プローブには、異常しきい値を定義できます。 プローブで応答できない場合、ロード バランサーは異常なインスタンスへの新しい接続の送信を停止します。 プローブの失敗は、既存の接続には影響しません。 接続は、アプリケーションが以下を実行するまで続行されます。
 
 - フローを終了する
 - アイドル タイムアウトが発生する
 - VM がシャットダウンする
 
-Load Balancer は、エンドポイントにさまざまな種類の正常性プローブを提供します。TCP、HTTP、HTTPS です。 [Load Balancer の正常性プローブの詳細については、こちらをご覧ください](load-balancer-custom-probe-overview.md)。
+ロード バランサーは、エンドポイントにさまざまな種類の正常性プローブを提供します。TCP、HTTP、HTTPS です。 [Load Balancer の正常性プローブの詳細については、こちらをご覧ください](load-balancer-custom-probe-overview.md)。
 
-Basic Load Balancer では、HTTPS プローブはサポートされていません。 Basic Load Balancer によって、すべての TCP 接続 (確立済み接続を含む) が終了されます。
+Basic Load Balancer では、HTTPS プローブはサポートされていません。 Basic Load Balancer は、すべての TCP 接続 (確立済み接続を含む) を終了します。
 
 ## <a name="load-balancing-rules"></a>負荷分散規則
 
-負荷分散規則は、バックエンド プール内の **すべて** のインスタンスに受信トラフィックを分散する方法を定義するために使用されます。 負荷分散規則は、フロントエンドの特定の IP 構成およびポートをバックエンドの複数の IP アドレスおよびポートにマッピングします。
+負荷分散規則は、バックエンド プール内の **すべて** のインスタンスに受信トラフィックを分散する方法を定義するために使用されます。 負荷分散規則により、フロントエンドの特定の IP 構成およびポートがバックエンドの複数の IP アドレスおよびポートにマップされます。
 
 たとえば、フロントエンド IP からバックエンド インスタンスのポート 80 にトラフィックを送信する負荷分散規則をポート 80 に使用します。
 
-<p align="center">
-  <img src="./media/load-balancer-components/lbrules.svg" alt= "Figure depicts how Azure Load Balancer directs frontend port 80 to three instances of backend port 80." width="512" title="負荷分散規則">
-</p>
+:::image type="content" source="./media/load-balancer-components/lbrules.png" alt-text="負荷分散規則の参照図" border="false":::
 
 *図:負荷分散規則*
 
@@ -108,11 +106,7 @@ HA ポートの詳細については[こちら](load-balancer-ha-ports-overview.
 
 インバウンド NAT 規則によって、フロントエンド IP アドレスとポートの組み合わせに送信された受信トラフィックが転送されます。 トラフィックは、バックエンド プール内の **特定** の仮想マシンまたはインスタンスに送信されます。 ポート フォワーディングも、負荷分散と同じハッシュベースの分散によって実行されます。
 
-たとえば、バックエンド プール内の個々の VM インスタンスにリモート デスクトップ プロトコル (RDP) セッションや SSH (Secure Shell) セッションを使用する場合です。 複数の内部エンドポイントを、同じフロントエンド IP アドレスのポートにマッピングできます。 フロントエンド IP アドレスを使用すると、ジャンプ ボックスを追加しなくても VM をリモート管理できます。
-
-<p align="center">
-  <img src="./media/load-balancer-components/inboundnatrules.svg" alt="Figure depicts how Azure Load Balancer directs frontend ports 3389, 443, and 80 to backend ports with the same values on separate servers." width="512" title="受信 NAT のルール">
-</p>
+:::image type="content" source="./media/load-balancer-components/inboundnatrules.png" alt-text="インバウンド NAT 規則の参照図" border="false":::
 
 *図:インバウンド NAT 規則*
 
@@ -124,11 +118,15 @@ Virtual Machine Scale Sets のコンテキストでの受信 NAT 規則は、受
 
 [送信接続と規則](load-balancer-outbound-connections.md)の詳細については、こちらをご覧ください。
 
-Basic Load Balancer では、アウトバウンド規則がサポートされていません。
+Basic ロード バランサーでは、アウトバウンド規則がサポートされていません。
+
+:::image type="content" source="./media/load-balancer-components/outbound-rules.png" alt-text="アウトバウンド規則の参照図" border="false":::
+
+*図:アウトバウンド規則*
 
 ## <a name="limitations"></a>制限事項
 
-- Load Balancer の[制限](../azure-resource-manager/management/azure-subscription-service-limits.md)を確認してください 
+- ロード バランサーの[制限](../azure-resource-manager/management/azure-subscription-service-limits.md)を確認してください 
 - ロード バランサーは特定の TCP または UDP プロトコルに対する負荷分散とポート フォワーディングを行います。 負荷分散規則と受信 NAT 規則は TCP および UDP をサポートしますが、ICMP を含む他の IP プロトコルはサポートしていません。
 - 内部 Load Balancer のフロントエンドへのバックエンド VM からのアウトバウンド フローは失敗します。
 - ロード バランサーの規則は、2 つの仮想ネットワークにまたがることはできません。  フロントエンドとそのバックエンド インスタンスは、同じ仮想ネットワークに配置されている必要があります。  
@@ -136,14 +134,14 @@ Basic Load Balancer では、アウトバウンド規則がサポートされて
 
 ## <a name="next-steps"></a>次のステップ
 
-- Load Balancer の使用を開始するには、[パブリック Standard Load Balancer の作成](quickstart-load-balancer-standard-public-portal.md)に関するページを参照してください。
+- ロード バランサーの使用を開始するには、[パブリックな Standard ロード バランサーの作成](quickstart-load-balancer-standard-public-portal.md)に関する記事を参照してください。
 - [Azure Load Balancer](load-balancer-overview.md) についてさらに詳しく学習する。
 - [パブリック IP アドレス](../virtual-network/virtual-network-public-ip-address.md)について学習する。
 - [プライベート IP アドレス](../virtual-network/private-ip-addresses.md)について学習する。
-- [Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)の使用について学習する。
-- [Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)について学習する。
+- [Standard ロード バランサーと可用性ゾーン](load-balancer-standard-availability-zones.md)の使用について学習する。
+- [Standard ロード バランサーの診断](load-balancer-standard-diagnostics.md)について学習する。
 - [アイドル時の TCP リセット](load-balancer-tcp-reset.md)について学習する。
-- [HA ポート負荷分散ルールでの Standard Load Balancer](load-balancer-ha-ports-overview.md) について学習する。
+- [HA ポート負荷分散ルールでの Standard ロード バランサー](load-balancer-ha-ports-overview.md)について学習する。
 - [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)の詳細を確認する。
 - [ロード バランサーの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)について詳細を確認する。
 - [ポート フォワーディング](./tutorial-load-balancer-port-forwarding-portal.md)の使用について学習する。

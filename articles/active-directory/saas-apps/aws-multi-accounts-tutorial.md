@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 246eba24f42baacf264c1c6d39ea63a51c62c51f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7e71058e1899cf83e712025b534e51a1be1f6bdb
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457437"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591782"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>チュートリアル:Azure Active Directory と アマゾン ウェブ サービス (AWS) の統合 (従来のチュートリアル)
 
@@ -62,7 +62,7 @@ Amazon Web Services (AWS) と Azure AD の統合を構成するには、次の�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* アマゾン ウェブ サービス (AWS) では、 **SP と IDP** によって開始される SSO がサポートされます
+* アマゾン ウェブ サービス (AWS) では、**SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>ギャラリーからの Amazon Web Services (AWS) の追加
 
@@ -72,10 +72,10 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **アマゾン ウェブ サービス (AWS)** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**アマゾン ウェブ サービス (AWS)** 」と入力します。
 1. 結果パネルから **[アマゾン ウェブ サービス (AWS)]** を選択してそのアプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-1. アプリケーションが追加されたら、 **[プロパティ]** ページに移動して、 **オブジェクト ID** をコピーします
+1. アプリケーションが追加されたら、 **[プロパティ]** ページに移動して、**オブジェクト ID** をコピーします
 
     ![Object ID](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-properties.png)
 
@@ -122,14 +122,14 @@ Amazon Web Services (AWS) で、Azure AD の **[ユーザー名]** の値を **[
     | 名前  | ソース属性  | 名前空間 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | `https://aws.amazon.com/SAML/Attributes` |
-    | Role            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
-    | SessionDuration             | 「900 秒 (15 分) から43200 秒 (12 時間) の値を指定してください」 |  `https://aws.amazon.com/SAML/Attributes` |
+    | Role | user.assignedroles | `https://aws.amazon.com/SAML/Attributes`|
+    | SessionDuration | 「900 秒 (15 分) から43200 秒 (12 時間) の値を指定してください」 |  `https://aws.amazon.com/SAML/Attributes` |
 
-    a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
+    1. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![[新しい要求の追加] と [保存] が強調表示された [ユーザー要求] のスクリーンショット。](common/new-save-attribute.png)
+        ![[新しい要求の追加] と [保存] が強調表示された [ユーザー要求] のスクリーンショット。](common/new-save-attribute.png)
 
-    ![スクリーンショットは、この手順で説明した値を入力できる [ユーザー要求の管理] を示しています。](common/new-attribute-details.png)
+        ![スクリーンショットは、この手順で説明した値を入力できる [ユーザー要求の管理] を示しています。](common/new-attribute-details.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -169,7 +169,7 @@ Amazon Web Services (AWS) で、Azure AD の **[ユーザー名]** の値を **[
 
     a. **[Provider Type]** として **[SAML]** を選択します。
 
-    b. **[Provider Name]\(プロバイダー名\)** ボックスにプロバイダー名を入力します (例: *WAAD* )。
+    b. **[Provider Name]\(プロバイダー名\)** ボックスにプロバイダー名を入力します (例: *WAAD*)。
 
     c. Azure Portal からダウンロードした **メタデータ ファイル** をアップロードするには、 **[ファイルの選択]** をクリックします。
 
@@ -192,13 +192,13 @@ Amazon Web Services (AWS) で、Azure AD の **[ユーザー名]** の値を **[
 
     a. **[Select type of trusted entity]** の **[SAML 2.0 federation]** を選択します。
 
-    b. **[Choose a SAML 2.0 Provider]\(SAML 2.0 プロバイダーの選択\)** セクションで、先ほど作成した **SAML プロバイダー** を選択します (例: *WAAD* )
+    b. **[Choose a SAML 2.0 Provider]\(SAML 2.0 プロバイダーの選択\)** セクションで、先ほど作成した **SAML プロバイダー** を選択します (例: *WAAD*)
 
     c. **[Allow programmatic and AWS Management Console access]** を選択します。
-  
+
     d. **[次へ: Permissions]\(次へ: アクセス許可\)** をクリックします。
 
-1. 検索バーで「 **Administrator Access** 」を検索し、 **AdministratorAccess** チェックボックスをオンにして、 **次へ:タグ** を選択します。
+1. 検索バーで「**Administrator Access**」を検索し、**AdministratorAccess** チェックボックスをオンにして、**次へ:タグ** を選択します。
 
     ![ポリシー名として選択された AdministratorAccess を示すスクリーンショット。](./media/aws-multi-accounts-tutorial/administrator-access.png)
 
@@ -249,43 +249,39 @@ Amazon Web Services (AWS) で、Azure AD の **[ユーザー名]** の値を **[
 
     ![ロールのセットアップ 2](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-role-summary.png)
 
-1. すべてのアカウントのすべてのロールに対して上記の手順を実行し、 **ロール ARN,信頼済みエンティティ** の形式でメモ帳に記録します。
+1. すべてのアカウントのすべてのロールに対して上記の手順を実行し、**ロール ARN,信頼済みエンティティ** の形式でメモ帳に記録します。
 
 1. 別のウィンドウで [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を開きます。
 
-    a. テナントのグローバル管理者/共同管理者の資格情報を使用して、Microsoft Graph Explorer サイトにサインインします。
+    1. テナントのグローバル管理者/共同管理者の資格情報を使用して、Microsoft Graph Explorer サイトにサインインします。
 
-    b. ロールを作成するための十分なアクセス許可が必要です。 **[アクセス許可の変更]** をクリックして、必要なアクセス許可を取得します。
+    1. ロールを作成するための十分なアクセス許可が必要です。 **[アクセス許可の変更]** をクリックして、必要なアクセス許可を取得します。
 
-    ![Microsoft Graph Explorer のダイアログ ボックス 1](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
+        ![Microsoft Graph Explorer のダイアログ ボックス 1](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
 
-    c. 一覧から次のアクセス許可を選択して (まだない場合)、[アクセス許可の変更] をクリックします。 
+    1. 一覧から次のアクセス許可を選択して (まだない場合)、[アクセス許可の変更] をクリックします。 
 
-    ![Microsoft Graph Explorer のダイアログ ボックス 2](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
+        ![Microsoft Graph Explorer のダイアログ ボックス 2](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
 
-    d. ここで、再度ログインし、同意を受け入れるよう求められます。 同意を受け入れると、Microsoft Graph Explorer に再度ログインされます。
+    1. ここで、再度ログインし、同意を受け入れるよう求められます。 同意を受け入れると、Microsoft Graph Explorer に再度ログインされます。
 
-    e. バージョン ドロップダウンを **ベータ** に変更します。 テナントからすべてのサービス プリンシパルを取得するには、次のクエリを使用します。
+    1. バージョン ドロップダウンを **ベータ** に変更します。 テナントからすべてのサービス プリンシパルを取得するには、`https://graph.microsoft.com/beta/servicePrincipals` のクエリを使用します。 複数のディレクトリを使用している場合は、プライマリ ドメインが含まれている、`https://graph.microsoft.com/beta/contoso.com/servicePrincipals` のパターンを使用できます。
 
-    `https://graph.microsoft.com/beta/servicePrincipals`
+        ![Microsoft Graph Explorer のダイアログ ボックス 3](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
-    複数のディレクトリを使用している場合、次のパターンを使用できます。プライマリ ドメインは `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` にあります。
+    1. 取得したサービス プリンシパルの一覧から、変更する必要があるものを取得します。 Ctrl キーを押しながら F キーを押して、一覧に示されたすべての ServicePrincipals からアプリケーションを検索することもできます。 Azure AD プロパティ ページからコピーした **サービス プリンシパル オブジェクト ID** を使用して、次のクエリを使用し、対応するサービス プリンシパルを取得することができます。
 
-    ![Microsoft Graph Explorer のダイアログ ボックス 3](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
-  
-    f. 取得したサービス プリンシパルの一覧から、変更する必要があるものを取得します。 Ctrl キーを押しながら F キーを押して、一覧に示されたすべての ServicePrincipals からアプリケーションを検索することもできます。 Azure AD プロパティ ページからコピーした **サービス プリンシパル オブジェクト ID** を使用して、次のクエリを使用し、対応するサービス プリンシパルを取得することができます。
+        `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
+        ![Microsoft Graph Explorer のダイアログ ボックス 4](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
-    ![Microsoft Graph Explorer のダイアログ ボックス 4](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
+    1. サービス プリンシパル オブジェクトから appRoles プロパティを抽出します。
 
-    g. サービス プリンシパル オブジェクトから appRoles プロパティを抽出します。
+        ![Microsoft Graph Explorer のダイアログ ボックス 5](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 
-    ![Microsoft Graph Explorer のダイアログ ボックス 5](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
+    1. ここで、アプリケーションの新しいロールを生成する必要があります。 
 
-    h. ここで、アプリケーションの新しいロールを生成する必要があります。 
-
-    i. 以下の JSON は、appRoles オブジェクトの例です。 同様のオブジェクトを作成して、アプリケーションに必要なロールを追加します。
+    1. 以下の JSON は、appRoles オブジェクトの例です。 同様のオブジェクトを作成して、アプリケーションに必要なロールを追加します。
 
     ```
     {
@@ -327,11 +323,11 @@ Amazon Web Services (AWS) で、Azure AD の **[ユーザー名]** の値を **[
     ```
 
     > [!Note]
-    > パッチ操作では、 **msiam_access** の後にのみ、新しいロールを追加できます。 また、組織のニーズごとに必要な数のロールを追加することができます。 Azure AD では、SAML 応答の要求値として、これらのロールの **値** を送信します。
+    > パッチ操作では、**msiam_access** の後にのみ、新しいロールを追加できます。 また、組織のニーズごとに必要な数のロールを追加することができます。 Azure AD では、SAML 応答の要求値として、これらのロールの **値** を送信します。
 
-    j. Microsoft Graph Explorer に戻り、メソッドを **GET** から **PATCH** に変更します。 上の例に示されているように appRoles プロパティを更新して、必要なロールを持つようにサービス プリンシパル オブジェクトを修正します。 **[クエリの実行]** をクリックして、パッチ操作を実行します。 成功のメッセージで、Amazon Web Services アプリケーションのロールの作成を確認します。
+    1. Microsoft Graph Explorer に戻り、メソッドを **GET** から **PATCH** に変更します。 上の例に示されているように appRoles プロパティを更新して、必要なロールを持つようにサービス プリンシパル オブジェクトを修正します。 **[クエリの実行]** をクリックして、パッチ操作を実行します。 成功のメッセージで、Amazon Web Services アプリケーションのロールの作成を確認します。
 
-    ![Microsoft Graph Explorer のダイアログ ボックス 6](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+        ![Microsoft Graph Explorer のダイアログ ボックス 6](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
 1. より多くのロールでサービス プリンシパルを修正したら、対応するロールにユーザー/グループを割り当てることができます。 これは、ポータルに移動し、Amazon Web Services アプリケーションに移動することで実行できます。 上部の **[ユーザーとグループ]** タブをクリックします。
 

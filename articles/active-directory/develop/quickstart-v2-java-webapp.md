@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: e93c0c6bb689980cab1b41e529c491cdf3920260
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: e188c00840a4d043e94f94f9db565e2d4e06aaba
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591718"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031064"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する
 
@@ -47,25 +47,22 @@ ms.locfileid: "94591718"
 >
 > アプリケーションを登録し、そのアプリの登録情報をアプリケーションに手動で追加するには、次の手順を実行します。
 >
-> 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
-> 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
->
-> 1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
-> 1. **[新規登録]** を選択します。
-> 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
->    - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `java-webapp`)。
->    - **[登録]** を選択します。
-> 1. **[概要]** ページで、アプリケーションの **[アプリケーション (クライアント) ID]** と **[ディレクトリ (テナント) ID]** の値を見つけます。 後のためにこれらの値をコピーします。
-> 1. メニューから **[認証]** を選択し、次の情報を追加します。
->    - **Web** プラットフォーム構成を追加します。  これらの `https://localhost:8443/msal4jsample/secure/aad` と `https://localhost:8443/msal4jsample/graph/me` を **リダイレクト URI** として追加します。
->    - **[保存]** を選択します。
-> 1. メニューから **[証明書とシークレット]** を選択し、 **[クライアント シークレット]** セクションで **[新しいクライアント シークレット]** をクリックします。
->
->    - キーの説明 (インスタンス アプリ シークレットの) を入力します。
->    - キーの有効期間として **[1 年]** を選択します。
->    - キーの値は、 **[追加]** を選択すると表示されます。
->    - 後のためにキーの値をコピーします。 このキー値は、再度表示することも、その他の方法で取得することもできないため、Azure portal から参照できるようになったらすぐに記録してください。
->
+> 1. [Azure portal](https://portal.azure.com) にサインインします。
+> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+> 1. **Azure Active Directory** を検索して選択します。
+> 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+> 1. アプリケーションの **名前** を入力します (例: `java-webapp`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
+> 1. **[登録]** を選択します。
+> 1. 後で使用するために、 **[概要]** ページの **アプリケーション (クライアント) ID** と **ディレクトリ (テナント) ID** を書き留めておきます。
+> 1. **[管理]** で、 **[認証]** を選択します。
+> 1. **[プラットフォームの追加]**  >  **[Web]** の順に選択します。
+> 1. **[リダイレクト URI]** セクションで、`https://localhost:8443/msal4jsample/secure/aad` を追加します。
+> 1. **[構成]** をクリックします。
+> 1. **[Web]** セクションで、2 つ目の **リダイレクト URI** として `https://localhost:8443/msal4jsample/graph/me` を追加します。
+> 1. **[管理]** で、 **[証明書とシークレット]** を選択します。 **[クライアント シークレット]** セクションで、 **[新しいクライアント シークレット]** を選択します。
+> 1. キーの説明 (アプリのシークレットなど) を入力し、既定の有効期限のままにして、 **[追加]** を選択します。
+> 1. 後で使用するために、 **[クライアント シークレット]** の **値** を書き留めます。
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
 >
@@ -150,7 +147,7 @@ ms.locfileid: "94591718"
 
 ##### <a name="running-from-ide"></a>IDE からの実行
 
-IDE から Web アプリケーションを実行している場合は、[実行] をクリックし、プロジェクトのホーム ページに移動します。 このサンプルでは、標準のホームページ URL は https://localhost:8443 です
+IDE から Web アプリケーションを実行している場合は、[実行] を選択し、プロジェクトのホーム ページに移動します。 このサンプルでは、標準のホームページ URL は https://localhost:8443 です。
 
 1. 前面のページで、 **[ログイン]** ボタンを選択して Azure Active Directory にリダイレクトし、ユーザーに資格情報の入力を求めます。
 

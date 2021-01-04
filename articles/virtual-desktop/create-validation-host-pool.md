@@ -3,15 +3,15 @@ title: Windows Virtual Desktop ホスト プール サービスの更新プロ�
 description: 運用環境に更新プログラムを展開する前にサービスの更新プログラムを監視する検証ホスト プールを作成する方法。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 03/13/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b8eb8378480b8784939e3ab63327e73e3705c74a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ead4c0aa7d8d71642fd8a4635edbabcafee5b6c2
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526512"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563247"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>チュートリアル:サービスの更新プログラムを検証するためのホスト プールを作成する
 
@@ -66,6 +66,20 @@ Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | 
     LoadBalancerType    : BreadthFirst
     ValidationEnvironment : True
 ```
+
+## <a name="enable-your-validation-environment-with-the-azure-portal"></a>Azure portal を使用して検証環境を有効にする
+
+また、Azure portal を使用して、検証環境を有効にすることもできます。
+
+Azure portal を使用して検証ホスト プールを構成するには、次のようにします。
+
+1. Azure Portal ( <https://portal.azure.com> ) にサインインします。
+2. **[Windows Virtual Desktop]** を検索して選択します。
+3. Windows Virtual Desktop のページで、 **[ホスト プール]** を選択します。
+4. 編集するホスト プールの名前を選択します。
+5. **[プロパティ]** を選択します。
+6. 検証環境を有効にするには、検証環境フィールドで **[はい]** を選択します。
+7. **[保存]** を選択します。 これにより、新しい設定が適用されます。
 
 ## <a name="update-schedule"></a>更新スケジュール
 

@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: aff89d49dec9bafedb3c9a5a76abdeb803740a12
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: f04a8aa96b51ac9330e4302c3afcc48f7d305b39
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95746729"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507712"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>チュートリアル:iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph を呼び出す
 
@@ -71,16 +71,17 @@ ms.locfileid: "95746729"
 
 ## <a name="register-your-application"></a>アプリケーションの登録
 
-1. [Azure portal](https://aka.ms/MobileAppReg) に移動します
-2. [アプリの登録] ブレードを開き、 **[+ 新しい登録]** を選択します。
-3. アプリの **[名前]** を入力します。リダイレクト URI は設定しません。
-4. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と、個人用の Microsoft アカウント (Skype、Xbox など)\)** を選択します。
-5. **[登録]** を選択します
-6. 表示されたウィンドウの **[管理]** セクションで、 **[認証]** を選択します。
-
-7. 画面の上部付近にある **[新しいエクスペリエンスを試す]** を選択して新しいアプリの登録エクスペリエンスを開き、 **[+ 新規登録]**  >  **[+ プラットフォームを追加]**  >  **[iOS/macOS]** の順に選択します。
-    - プロジェクトのバンドル ID を入力します。 コードをダウンロードした場合は `com.microsoft.identitysample.MSALiOS` です。 独自のプロジェクトを作成している場合は、Xcode でそのプロジェクトを選択し、 **[全般]** タブを開きます。 **[ID]** セクションにバンドル ID が表示されます。
-8. [`Configure`] を選択し、後でアプリを構成するときに入力できるように、 **[MSAL 構成]** ページに表示される **MSAL の構成** を保存しておきます。 **[Done]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+1. アプリケーションの **[名前]** を入力します。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
+1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)]\(任意の組織ディレクトリ (任意の Azure AD ディレクトリ - マルチテナント) 内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox など)\)** を選択します。
+1. **[登録]** を選択します。
+1. **[管理]** で、 **[認証]**  >  **[プラットフォームの追加]**  >  **[iOS/macOS]** の順に選択します。
+1. プロジェクトのバンドル ID を入力します。 コードをダウンロードした場合は `com.microsoft.identitysample.MSALiOS` です。 独自のプロジェクトを作成している場合は、Xcode でそのプロジェクトを選択し、 **[全般]** タブを開きます。 **[ID]** セクションにバンドル ID が表示されます。
+1. **[構成]** をクリックし、後でアプリを構成するときに入力できるように、 **[MSAL の構成]** ページに表示される **[MSAL 構成]** を保存しておきます。 
+1. **[Done]** を選択します。
 
 ## <a name="add-msal"></a>MSAL の追加
 
@@ -520,7 +521,7 @@ MSAL では、トークンを取得するための主要なメソッドとして
 
 1. スコープを指定して `MSALInteractiveTokenParameters` を作成する。
 2. 作成されたパラメーターを使用して `acquireToken()` を呼び出す。
-3. エラーを処理する。 詳細については、[iOS および macOS 用の MSAL のエラー処理に関するガイド](msal-handling-exceptions.md)を参照してください。
+3. エラーを処理する。 詳細については、[iOS および macOS 用の MSAL のエラー処理に関するガイド](msal-error-handling-ios.md)を参照してください。
 4. 正常なケースを処理する。
 
 次のコードを `ViewController` クラスに追加します。

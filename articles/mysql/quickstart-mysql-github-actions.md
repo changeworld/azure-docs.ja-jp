@@ -7,16 +7,19 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 57e740e6c47d9518c12a49473e103d0abe772618
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1fb5396fae4676d85f67e98bb333cd58324d5a4e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337015"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357571"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>クイックスタート: GitHub Actions を使用して Azure MySQL に接続する
 
-[Azure Database for MySQL](https://azure.microsoft.com/services/mysql/) にデータベースの更新をデプロイするワークフローを使用することによって、[GitHub Actions](https://docs.github.com/en/actions) の使用を開始します。 
+**適用対象**::::image type="icon" source="./media/applies-to/yes.png" border="false":::Azure Database for PostgreSQL - シングル サーバー :::image type="icon" source="./media/applies-to/yes.png" border="false":::Azure Database for PostgreSQL - フレキシブル サーバー
+
+[Azure Database for MySQL](https://azure.microsoft.com/services/mysql/) にデータベースの更新をデプロイするワークフローを使用することによって、[GitHub Actions](https://docs.github.com/en/actions) の使用を開始します。
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -67,6 +70,11 @@ GitHub Actions ワークフローは、お使いのリポジトリの `/.github/
 ## <a name="copy-the-mysql-connection-string"></a>MySQL 接続文字列をコピーする 
 
 Azure portal でご自分の Azure Database for MySQL サーバーにアクセスし、 **[設定]**  >  **[接続文字列]** を開きます。 **ADO.NET** の接続文字列をコピーします。 プレースホルダー `your_database` および `your_password` の値を置き換えます。 接続文字列は、次のようになります。 
+
+> [!IMPORTANT]
+> - シングル サーバーの場合、**Uid=adminusername@servername** を使用します。 **@servername** は必須です。
+> - フレキシブル サーバーの場合、**Uid= adminusername** を使用します。@servername は不要です。 MySQL フレキシブル サーバーはプレビュー段階であることに注意してください。 
+
 
 ```output
    Server=my-mysql-server.mysql.database.azure.com; Port=3306; Database={your_database}; Uid=adminname@my-mysql-server; Pwd={your_password}; SslMode=Preferred;

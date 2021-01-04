@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 5f19b55a955b8e3e1500cf14fa221b46808ac857
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 8827171788bd83a202b3607537204c71c34f29e0
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698293"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511843"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して、VM の負荷分散を行うパブリック ロード バランサーを作成する
 
@@ -40,6 +40,10 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。  SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/resources-diagram.png" alt-text="クイックスタートで作成される標準的なロード バランサー リソース。" border="false":::
+
+*図:クイックスタートで作成されるリソース。*
 
 このセクションでは、仮想マシンの負荷分散を行うロード バランサーを作成します。 
 
@@ -213,7 +217,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
    
 2. **[仮想マシンの作成]** の **[Basic]** タブに、値を入力するか選択します。
 
-    | 設定 | [値]                                          |
+    | 設定 | 値                                          |
     |-----------------------|----------------------------------|
     | **プロジェクトの詳細** |  |
     | サブスクリプション | Azure サブスクリプションを選択します。 |
@@ -237,7 +241,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
   
 4. [ネットワーク] タブで、次を選択または入力します。
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     |-|-|
     | **ネットワーク インターフェイス** |  |
     | 仮想ネットワーク | **myVNet** |
@@ -256,7 +260,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 6. **[管理]** タブで、次を選択または入力します。
     
-    | 設定 | [値] |
+    | 設定 | 値 |
     |-|-|
     | **Monitoring** |  |
     | ブート診断 | **[オフ]** を選択します |
@@ -286,7 +290,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 3. アウトバウンド規則の構成には、以下の値を使用します。
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     | ------- | ----- |
     | 名前 | 「**myOutboundRule**」と入力します。 |
     | フロントエンド IP アドレス | **[新規作成]** を選択します。 </br> **[名前]** に、「**LoadBalancerFrontEndOutbound**」と入力します。 </br> **[IP アドレス]** または **[IP プレフィックス]** を選択します。 </br> **[パブリック IP アドレス]** または **[パブリック IP プレフィックス]** で **[新規作成]** を選択します。 </br> [名前] に、「**myPublicIPOutbound**」または「**myPublicIPPrefixOutbound**」と入力します。 </br> **[追加]** を選択します。|
@@ -322,6 +326,10 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。  SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
 
+:::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/resources-diagram-basic.png" alt-text="クイックスタートで作成される基本的なロード バランサー リソース。" border="false":::
+
+*図:クイックスタートで作成されるリソース。*
+
 このセクションでは、仮想マシンの負荷分散を行うロード バランサーを作成します。 
 
 パブリック ロード バランサーを作成するときは、ロード バランサーのフロントエンド (既定では **LoadBalancerFrontend** という名前) として構成される新しいパブリック IP アドレスを作成します。
@@ -330,7 +338,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力または選択します。 
 
-    | 設定                 | [値]                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択し、テキスト ボックスに「**CreatePubLBQS-rg**」と入力します。|
@@ -420,7 +428,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 3. **[バックエンド プールの追加]** ページで、次を入力または選択します。
     
-    | 設定 | [値] |
+    | 設定 | 値 |
     | ------- | ----- |
     | 名前 | 「**myBackendPool**」と入力します。 |
     | 仮想ネットワーク | **[myVNet]** を選択します。 |
@@ -438,7 +446,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 2. **[設定]** で、 **[正常性プローブ]** 、 **[追加]** の順に選択します。
     
-    | 設定 | [値] |
+    | 設定 | 値 |
     | ------- | ----- |
     | 名前 | 「**myHealthProbe**」と入力します。 |
     | Protocol | **[HTTP]** を選択します。 |
@@ -466,7 +474,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 3. 負荷分散規則の構成には、以下の値を使用します。
     
-    | 設定 | [値] |
+    | 設定 | 値 |
     | ------- | ----- |
     | 名前 | 「**myHTTPRule**」と入力します。 |
     | IP バージョン | **[IPv4]** を選択します |
@@ -500,7 +508,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
    
 2. **[仮想マシンの作成]** の **[Basic]** タブに、値を入力するか選択します。
 
-    | 設定 | [値]                                          |
+    | 設定 | 値                                          |
     |-----------------------|----------------------------------|
     | **プロジェクトの詳細** |  |
     | サブスクリプション | Azure サブスクリプションを選択します。 |
@@ -522,7 +530,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
   
 4. [ネットワーク] タブで、次を選択または入力します。
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     |-|-|
     | **ネットワーク インターフェイス** |  |
     | 仮想ネットワーク | **[myVNet]** を選択します |
@@ -537,7 +545,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 6. **[管理]** タブで、次を選択または入力します。
     
-    | 設定 | [値] |
+    | 設定 | 値 |
     |---|---|
     | **Monitoring** | |
     | ブート診断 | **[オフ]** を選択します |
@@ -576,7 +584,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 ## <a name="install-iis"></a>IIS のインストール
 
-1. 左側のメニューで **[すべてのサービス]** 、 **[すべてのリソース]** の順に選択し、リソースの一覧で **[CreateStdLBQS-rg]** リソース グループにある **[myVM1]** を選択します。
+1. 左側のメニューで **[すべてのサービス]** 、 **[すべてのリソース]** の順に選択し、リソースの一覧で **[CreatePubLBQS-rg]** リソース グループにある **[myVM1]** を選択します。
 
 2. **[概要]** ページで **[接続]** 、 **[要塞]** の順に選択します。
 

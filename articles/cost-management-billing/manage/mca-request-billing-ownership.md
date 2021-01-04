@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.author: banders
-ms.openlocfilehash: 8c3ab3f4f9bc56e9651a98e5c011cad65f21fd9d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ca55773b2deb74ea0647ed33df4040065762f94a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348988"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938479"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>他のアカウントから Azure サブスクリプションの課金所有権を取得する
 
@@ -22,6 +22,14 @@ ms.locfileid: "96348988"
 この記事では、Microsoft 顧客契約の課金アカウントについて説明します。 [Microsoft 顧客契約にアクセスできるかどうかを確認してください](#check-for-access)。
 
 課金所有権を要求するには、**請求書セクション所有者** または **請求書セクション共同作成者** であることが必要です。 詳細については、[請求書セクションのロールとタスク](understand-mca-roles.md#invoice-section-roles-and-tasks)に関するページを参照してください。
+
+課金所有権を要求するユーザーには、次のいずれかのロールが必要です。
+
+- エンタープライズ Microsoft 顧客契約の場合、ユーザーは課金所有者である必要があります。
+- マイクロソフト エンタープライズ契約の場合、ユーザーはアカウント オーナーである必要があります。
+- Microsoft オンライン サービス プログラムの課金アカウントの場合、ユーザーはアカウント管理者である必要があります。
+
+詳細については、[Azure portal での請求先アカウントの表示](view-all-accounts.md)に関するページを参照してください。
 
 ## <a name="request-billing-ownership"></a>課金所有権を要求する
 
@@ -42,7 +50,7 @@ ms.locfileid: "96348988"
 1. 一覧から [請求書セクション] を選択します。 サブスクリプションの所有権を引き継ぐと、その使用は、課金プロファイルの請求書のこのセクションに割り当てられます。
 1. 左下で **[譲渡要求]** を選択し、 **[新しい要求を追加]** を選択します。  
     [![移転リクエストの選択を示すスクリーンショット](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests.png#lightbox)
-1. 要求している課金所有権を持つユーザーの電子メール アドレスを入力します。 ユーザーは、Microsoft オンライン サービス プログラムの課金アカウントのアカウント管理者またはエンタープライズ契約のアカウント所有者である必要があります。 詳細については、[Azure portal での請求先アカウントの表示](view-all-accounts.md)に関するページを参照してください。 **[譲渡要求を送信します]** を選択します。  
+1. 要求している課金所有権を持つユーザーの電子メール アドレスを入力します。 **[譲渡要求を送信します]** を選択します。  
     [![移転リクエストの送信を示すスクリーンショット](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)](./media/mca-request-billing-ownership/mca-send-transfer-requests.png#lightbox)
 1. ユーザーは、譲渡要求を確認する手順を示す電子メールを受信します。  
     ![譲渡要求電子メールのレビューを示すスクリーンショット](./media/mca-request-billing-ownership/mca-review-transfer-request-email.png)
@@ -68,6 +76,7 @@ ms.locfileid: "96348988"
 1. 譲渡要求が送信された [請求書セクション] を一覧から選択します。
 1. 左下から **[Transfer requests]** (譲渡要求) を選択します。 譲渡要求ページには、次の情報が表示されます。  
     [![移転リクエストの一覧を示すスクリーンショット](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png#lightbox)
+
    |列|定義|
    |---------|---------|
    |要求日|譲渡要求が送信された日付|

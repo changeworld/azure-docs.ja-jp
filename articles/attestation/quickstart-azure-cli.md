@@ -7,20 +7,30 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dee9e7596c0a30301d9e0453ef22a6dfe9541522
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: fb8b0f12844ce1057bd3cfc4716a32ee64ec5586
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96020944"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937221"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>クイックスタート: Azure CLI を使用して Azure Attestation を設定する
 
 Azure CLI を使用して Azure Attestation を導入し、構成証明を設定します。
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
-
 ## <a name="get-started"></a>はじめに
+
+1. 次の CLI コマンドを使用して、この拡張機能をインストールします。
+
+   ```azurecli
+   az extension add --name attestation
+   ```
+   
+1. バージョンをチェックする
+
+   ```azurecli
+   az extension show --name attestation --query version
+   ```
 
 1. 次のコマンドを使用して、Azure にサインインします。
 
@@ -55,19 +65,16 @@ Azure CLI を使用して Azure Attestation を導入し、構成証明を設定
 
 構成証明プロバイダーの作成と管理に使用できるコマンドは以下のとおりです。
 
-1. [az attestation create](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_create) コマンドを実行して構成証明プロバイダーを作成します。
+1. [az attestation create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) コマンドを実行して構成証明プロバイダーを作成します。
 
    ```azurecli
-   az attestation create --resource-group attestationrg --name attestationProvider --location uksouth \
-      --attestation-policy SgxDisableDebugMode --certs-input-path C:\test\policySignersCertificates.pem
+   az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
    ```
-
-   **--certs-input-path** パラメーターは、信頼済みの一連の署名キーを指定します。 このパラメーターにファイル名を指定した場合、構成証明プロバイダーの構成には必ず、署名された JWT 形式のポリシーを使用する必要があります。 それ以外の場合は、テキストまたは署名されていない JWT 形式でポリシーを構成することができます。 JWT については、「[基本的な概念](basic-concepts.md)」を参照してください。 証明書のサンプルについては、「[構成証明ポリシー署名者証明書の例](policy-signer-examples.md)」を参照してください。
-
-1. [az attestation show](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_show) コマンドを実行して、構成証明プロバイダーのプロパティ (状態や AttestURI など) を取得します。
+   
+1. [az attestation show](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_show) コマンドを実行して、構成証明プロバイダーのプロパティ (状態や AttestURI など) を取得します。
 
    ```azurecli
-   az attestation show --resource-group attestationrg --name attestationProvider
+   az attestation show --name "myattestationprovider" --resource-group "MyResourceGroup"
    ```
 
    このコマンドを実行すると、次の出力に示したような値が表示されます。
@@ -84,34 +91,20 @@ Azure CLI を使用して Azure Attestation を導入し、構成証明を設定
    TagsTable:
    ```
 
-構成証明プロバイダーは、[az attestation delete](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_delete) コマンドを使用して削除できます。
+構成証明プロバイダーは、[az attestation delete](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_delete) コマンドを使用して削除できます。
 
 ```azurecli
-az attestation delete --resource-group attestationrg --name attestationProvider
+az attestation delete --name "myattestationprovider" --resource-group "sample-resource-group"
 ```
 
 ## <a name="policy-management"></a>ポリシー管理
 
-ポリシーを管理するには、Azure AD ユーザーに次の `Actions` のアクセス許可が必要になります。
+構成証明プロバイダー用のポリシーを管理するには、ここで説明するコマンドを使用します (一度に 1 つの構成証明の種類)。
 
-- `Microsoft.Attestation/attestationProviders/attestation/read`
-- `Microsoft.Attestation/attestationProviders/attestation/write`
-- `Microsoft.Attestation/attestationProviders/attestation/delete`
-
-これらのアクセス許可は、`Owner` (ワイルドカードのアクセス許可)、`Contributor` (ワイルドカードのアクセス許可)、`Attestation Contributor` (Azure Attestation 専用のアクセス許可) などのロールを経由して AD ユーザーに割り当てることができます。  
-
-ポリシーを読み取るには、Azure AD ユーザーに次の `Actions` のアクセス許可が必要になります。
-
-- `Microsoft.Attestation/attestationProviders/attestation/read`
-
-これらのアクセス許可は、`Reader` (ワイルドカードのアクセス許可) または `Attestation Reader` (Azure Attestation 専用のアクセス許可) などのロールを経由して AD ユーザーに割り当てることができます。
-
-構成証明プロバイダー用のポリシーの管理は、ここで説明するコマンドを使用して行います (一度に 1 TEE)。
-
-[az attestation policy show](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_show) コマンドからは、指定の TEE の現行ポリシーが返されます。
+[az attestation policy show](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_show) コマンドからは、指定の TEE の現行ポリシーが返されます。
 
 ```azurecli
-az attestation policy show --resource-group attestationrg --name attestationProvider --tee SgxEnclave
+az attestation policy show --name "myattestationprovider" --resource-group "MyResourceGroup" --attestation-type SGX-IntelSDK
 ```
 
 > [!NOTE]
@@ -119,48 +112,24 @@ az attestation policy show --resource-group attestationrg --name attestationProv
 
 サポートされる TEE タイプは次のとおりです。
 
-- `CyResComponent`
-- `OpenEnclave`
-- `SgxEnclave`
-- `VSMEnclave`
+- `SGX-IntelSDK`
+- `SGX-OpenEnclaveSDK`
+- `TPM`
 
-指定した TEE に使用する新しいポリシーを設定するには、[az attestation policy set](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_set) コマンドを使用します。
+指定した構成証明の種類の新しいポリシーを設定するには、[az attestation policy set](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_set) コマンドを使用します。
 
-```azurecli
-az attestation policy set --resource-group attestationrg --name attestationProvider --tee SgxEnclave \
-   --new-attestation-policy newAttestationPolicyname
-```
-
-JWT 形式の構成証明ポリシーには、`AttestationPolicy` という名前の要求が含まれている必要があります。 署名済みのポリシーは、既存のポリシー署名者証明書のいずれかに対応するキーで署名する必要があります。
-
-ポリシーのサンプルについては、「[構成証明ポリシーの例](policy-examples.md)」を参照してください。
-
-指定した TEE に使用する新しいポリシーを [az attestation policy reset](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_reset) コマンドで設定します。
+ファイル パスを使用して、特定の構成証明の種類のポリシーをテキスト形式で設定するには、次のように指定します。
 
 ```azurecli
-az attestation policy reset --resource-group attestationrg --name attestationProvider --tee SgxEnclave \
-   --policy-jws "eyJhbGciOiJub25lIn0.."
+az attestation policy set --name testatt1 --resource-group testrg --attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}"
 ```
 
-## <a name="policy-signer-certificates-management"></a>ポリシー署名者証明書の管理
-
-構成証明プロバイダーのポリシー署名者証明書を管理するには、次のコマンドを使用します。
+ファイル パスを使用して、特定の構成証明の種類のポリシーを JWT 形式で設定するには、次のように指定します。
 
 ```azurecli
-az attestation signer list --resource-group attestationrg --name attestationProvider
-
-az attestation signer add --resource-group attestationrg --name attestationProvider \
-   --signer "eyAiYWxnIjoiUlMyNTYiLCAie..."
-
-az attestation signer remove --resource-group attestationrg --name attestationProvider \
-   --signer "eyAiYWxnIjoiUlMyNTYiLCAie..."
+az attestation policy set --name "myattestationprovider" --resource-group "MyResourceGroup" \
+--attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}" --policy-format JWT
 ```
-
-ポリシー署名者証明書は、`maa-policyCertificate` という名前の要求を含んだ署名済みの JWT です。 要求の値は、追加する信頼済み署名キーを含んだ JWK です。 この JWT は、既存のポリシー署名者証明書のいずれかに対応する秘密キーで署名する必要があります。 JWT と JWK については、「[基本的な概念](basic-concepts.md)」を参照してください。
-
-ポリシー署名者証明書のセマンティック操作はすべて、Azure CLI の外で実行しなければならないことに注意してください。 Azure CLI からは、単純な文字列と見なされます。
-
-証明書のサンプルについては、「[構成証明ポリシー署名者証明書の例](policy-signer-examples.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

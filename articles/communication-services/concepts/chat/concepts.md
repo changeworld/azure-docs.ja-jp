@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f0e69e3f62d3b9e4debb5761d877dcdfdd246f60
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 077500e0188d1cc20864d436a2e2fd711b180702
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886024"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560238"
 ---
 # <a name="chat-concepts"></a>チャットに関する概念
 
@@ -46,7 +46,8 @@ Azure Communication Services の Chat クライアント ライブラリを使�
 
 Communication Services のチャットでは、ユーザーが生成したメッセージだけでなく、**スレッド アクティビティ** と呼ばれるシステム生成メッセージも共有されます。 スレッド アクティビティは、チャット スレッドが更新されたときに生成されます。 チャット スレッドで `List Messages` または `Get Messages` を呼び出すと、結果には、ユーザーが生成したテキスト メッセージとシステム メッセージが時系列順に含まれます。 これは、メンバーが追加または削除された日時や、チャット スレッドのトピックが更新された日時を特定するのに役立ちます。 サポートされているメッセージの種類は次のとおりです。  
 
- - `Text`:チャット会話の一部としてユーザーが作成して送信する実際のメッセージ。 
+ - `Text`:チャット会話の一部としてユーザーが作成して送信するプレーンテキスト メッセージ。 
+ - `RichText/HTML`:書式設定されたテキスト メッセージ。 Communication Services ユーザーは現在、RichText メッセージを送信できないことに注意してください。 このメッセージ型は、Teams の相互運用シナリオで、Teams ユーザーから Communication Services ユーザーに送信されるメッセージでサポートされています。
  - `ThreadActivity/AddMember`:1 人以上のメンバーがチャット スレッドに追加されたことを示すシステム メッセージ。 次に例を示します。
 
 ```xml
@@ -92,6 +93,30 @@ Communication Services のチャットでは、ユーザーが生成したメッ
 
 ```
 
+- `ThreadActivity/MemberJoined`:ゲスト ユーザーが Teams の会議チャットに参加したときに生成されるシステム メッセージ。 Communication Services ユーザーは、Teams の会議チャットのゲストとして参加できます。 次に例を示します。  
+```xml
+{ 
+  "id": "1606351443605", 
+  "type": "ThreadActivity/MemberJoined", 
+  "version": "1606347753409", 
+  "priority": "normal", 
+  "content": "{\"eventtime\":1606351443080,\"initiator\":\"8:orgid:8a53fd2b5ef150bau8442ad732a6ac6b_0e8deebe7527544aa2e7bdf3ce1b8733\",\"members\":[{\"id\":\"8:acs:9b665d83-8164-4923-ad5d-5e983b07d2d7_00000006-7ef9-3bbe-b274-5a3a0d0002b1\",\"friendlyname\":\"\"}]}", 
+  "senderId": " 19:meeting_curGQFTQ8tifs3EK9aTusiszGpkZULzNTTy2dbfI4dCJEaik@thread.v2", 
+  "createdOn": "2020-11-29T00:44:03.6950000Z" 
+} 
+```
+- `ThreadActivity/MemberLeft`:ゲスト ユーザーが Teams の会議チャットから退出したときに生成されるシステム メッセージ。 Communication Services ユーザーは、Teams の会議チャットのゲストとして参加できます。 次に例を示します。 
+```xml
+{ 
+  "id": "1606347703429", 
+  "type": "ThreadActivity/MemberLeft", 
+  "version": "1606340753429", 
+  "priority": "normal", 
+  "content": "{\"eventtime\":1606340755385,\"initiator\":\"8:orgid:8a53fd2b5u8150ba81442ad732a6ac6b_0e8deebe7527544aa2e7bdf3ce1b8733\",\"members\":[{\"id\":\"8:acs:9b665753-8164-4923-ad5d-5e983b07d2d7_00000006-7ef9-3bbe-b274-5a3a0d0002b1\",\"friendlyname\":\"\"}]}", 
+  "senderId": "19:meeting_9u7hBcYiADudn41Djm0n9DTVyAHuMZuh7p0bDsx1rLVGpnMk@thread.v2", 
+  "createdOn": "2020-11-29T23:42:33.4290000Z" 
+} 
+```
 - `ThreadActivity/TopicUpdate`:トピックが更新されたことを示すシステム メッセージ。 次に例を示します。
 
 ```xml

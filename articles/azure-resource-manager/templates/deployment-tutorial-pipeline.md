@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレート (ARM テンプレート) 
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d7688a4e4838cb591bcd3ac0045a5ed22180c063
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 8e9f047497f493752947d8115084dcfe86f5e040
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906354"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588133"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用した ARM テンプレートの継続的インテグレーション
 
@@ -19,7 +19,7 @@ Azure DevOps は、チームによる作業の計画、コード開発での共�
 
 > [!NOTE]
 > プロジェクト名を選択します。 チュートリアルを実行する場合は、それぞれの **AzureRmPipeline** をプロジェクト名で置き換えます。
-> このプロジェクト名は、リソース名を生成するために使用されます。  リソースの 1 つはストレージ アカウントです。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用する必要があります。 名前は一意である必要があります。 このテンプレートでは、プロジェクト名に "store" を追加した文字列がストレージ アカウント名になります。プロジェクト名は 3 文字を超え、11 文字未満であることが必要です。 そのためプロジェクト名は、ストレージ アカウント名の要件を満たしていること、また 11 文字未満であることが必要となります。
+> このプロジェクト名は、リソース名を生成するために使用されます。  リソースの 1 つはストレージ アカウントです。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用する必要があります。 名前は一意である必要があります。 このテンプレートでは、プロジェクト名に **store** を追加したものがストレージ アカウント名になります。プロジェクト名は 3 文字を超え、11 文字未満であることが必要です。 そのためプロジェクト名は、ストレージ アカウント名の要件を満たしていること、また 11 文字未満であることが必要となります。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 この記事を完了するには、以下が必要です。
 
 * テンプレートのリポジトリの作成に使用する **GitHub アカウント**。 持っていない場合は、[無料で作成](https://github.com)できます。 GitHub リポジトリの使用に関する詳細については、[GitHub リポジトリの構築](/azure/devops/pipelines/repos/github)に関するページを参照してください。
-* **Git をインストールします**。 このチュートリアルの手順では、*Git Bash* または *Git Shell* を使用します。 手順については、[Git のインストールに関するページ]( https://www.atlassian.com/git/tutorials/install-git)を参照してください。
+* **Git をインストールします**。 このチュートリアルの手順では、*Git Bash* または *Git Shell* を使用します。 手順については、[Git のインストールに関するページ](https://www.atlassian.com/git/tutorials/install-git)を参照してください。
 * **Azure DevOps 組織**。 ない場合は、無料で作成できます。 [組織またはプロジェクト コレクションの作成](/azure/devops/organizations/accounts/create-organization?view=azure-devops)に関するページを参照してください。
 * (省略可能) **Visual Studio Code と Resource Manager ツール拡張機能**。 「[クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
@@ -57,13 +57,13 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
 
 1. 緑色の **[New]** ボタンを選択します。
 1. **[Repository name]** にリポジトリ名を入力します。  たとえば、**AzureRmPipeline-repo** とします。 忘れずにそれぞれの **AzureRmPipeline** をプロジェクト名で置き換えてください。 このチュートリアルを **[Public]** または **[Private]** のどちらにするかを選択できます。 続いて、 **[Create repository]** を選択します。
-1. URL を書き留めます。 リポジトリの URL は、 **`https://github.com/[YourAccountName]/[YourRepositoryName]`** 形式です。
+1. URL を書き留めます。 リポジトリの URL は、 `https://github.com/[YourAccountName]/[YourRepositoryName]` 形式です。
 
-このリポジトリは、*リモート リポジトリ* と呼ばれます。 同じプロジェクトの開発者は、自分の *ローカル リポジトリ* を複製して変更をリモート リポジトリにマージできます。
+このリポジトリは、*リモート リポジトリ* と呼ばれます。 同じプロジェクトの開発者は、各自の "*ローカル リポジトリ*" を複製し、変更をリモート リポジトリにマージできます。
 
 ### <a name="clone-the-remote-repository"></a>リモート リポジトリを複製する
 
-1. Git Shell または Git Bash を開きます。  「[前提条件](#prerequisites)」を参照してください。
+1. Git Shell または Git Bash を開きます。 「[前提条件](#prerequisites)」を参照してください。
 1. 現在のフォルダーが **GitHub** であることを確認します。
 1. 次のコマンドを実行します。
 
@@ -75,45 +75,46 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
     pwd
     ```
 
-    **[YourAccountName]** は GitHub のアカウント名で、 **[YourGitHubRepositoryName]** は前の手順で作成したリポジトリ名で置換します。
+    `[YourAccountName]` は GitHub のアカウント名で、 `[YourGitHubRepositoryName]` は前の手順で作成したリポジトリ名で置換します。
 
-**CreateWebApp** フォルダーは、テンプレートが格納されているフォルダーです。 **pwd** コマンドを実行すると、フォルダー パスが表示されます。 次の手順に従い、このパスにテンプレートを保存します。
+_CreateWebApp_ フォルダーは、テンプレートが格納されているフォルダーです。 `pwd` コマンドを実行すると、フォルダー パスが表示されます。 次の手順に従い、このパスにテンプレートを保存します。
 
 ### <a name="download-a-quickstart-template"></a>クイックスタート テンプレートをダウンロードする
 
-テンプレートを作成する代わりに、テンプレートをダウンロードして **CreateWebApp** フォルダーに保存してもかまいません。
+テンプレートを作成する代わりに、テンプレートをダウンロードして _CreateWebApp_ フォルダーに保存してもかまいません。
 
 * メイン テンプレート: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
 * リンク済みテンプレート: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
 
-パイプラインでは、フォルダー名とファイル名の両方をそのまま使用します。  これらの名前を変更する場合は、パイプラインで使用する名前を更新する必要があります。
+パイプラインでは、フォルダー名とファイル名の両方をそのまま使用します。 これらの名前を変更する場合は、パイプラインで使用する名前を更新する必要があります。
 
 ### <a name="push-the-template-to-the-remote-repository"></a>テンプレートをリモート リポジトリにプッシュする
 
-ローカル リポジトリに azuredeploy.json が追加されます。 次に、テンプレートをリモート リポジトリにアップロードします。
+ローカル リポジトリに _azuredeploy.json_ が追加されました。 次に、テンプレートをリモート リポジトリにアップロードします。
 
 1. *Git Shell* または *Git Bash* を開いていない場合は開きます。
-1. ローカル リポジトリで CreateWebApp フォルダーにディレクトリを変更します。
-1. フォルダー内に **azuredeploy.json** ファイルがあることを確認します。
+1. ローカル リポジトリでディレクトリを _CreateWebApp_ フォルダーに変更します。
+1. フォルダー内に _azuredeploy.json_ ファイルがあることを確認します。
 1. 次のコマンドを実行します。
 
     ```bash
     git add .
     git commit -m "Add web app templates."
-    git push origin master
+    git push origin main
     ```
 
-    LF に関する警告が表示されることがあります。 この警告は無視できます。 **master** は master ブランチです。  通常は、更新ごとにブランチを作成します。 簡略化のため、このチュートリアルでは直接 master ブランチを使用します。
-1. ブラウザーから GitHub リポジトリに移動します。  URL は **`https://github.com/[YourAccountName]/[YourGitHubRepository]`** です。 **CreateWebApp** フォルダーがあって、その中に 3 つのファイルが格納されているはずです。
-1. **linkedStorageAccount.json** を選択してテンプレートを開きます。
-1. **[Raw]\(未加工\)** ボタンを選択します。 URL は **raw.githubusercontent.com** で始まります。
-1. URL のコピーを作成します。  後でこのチュートリアルの中でパイプラインを構成する際に、この値を指定する必要があります。
+    LF に関する警告が表示されることがあります。 この警告は無視できます。 **main** はメイン ブランチです。  通常は、更新ごとにブランチを作成します。 チュートリアルを簡単にするために、メイン ブランチを直接使用します。
+
+1. ブラウザーから GitHub リポジトリに移動します。 URL は `https://github.com/[YourAccountName]/[YourGitHubRepository]` です。 _CreateWebApp_ フォルダーがあって、その中に 3 つのファイルが格納されているはずです。
+1. _linkedStorageAccount.json_ を選択してテンプレートを開きます。
+1. **[Raw]\(未加工\)** ボタンを選択します。 URL は `https://raw.githubusercontent.com` で始まります。
+1. URL のコピーを作成します。 後でこのチュートリアルの中でパイプラインを構成する際に、この値を指定する必要があります。
 
 ここまでで、GitHub リポジトリを作成して、リポジトリにテンプレートをアップロードできました。
 
 ## <a name="create-a-devops-project"></a>DevOps プロジェクトを作成する
 
-次の手順に進むには、DevOps 組織が必要です。  ない場合は、[前提条件](#prerequisites)を参照してください。
+次の手順に進むには、DevOps 組織が必要です。 ない場合は、[前提条件](#prerequisites)を参照してください。
 
 1. [Azure DevOps](https://dev.azure.com) にサインインします。
 1. 左から DevOps 組織を選択します。
@@ -148,7 +149,7 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
 
 ここまでで、以下のタスクが完了しました。  GitHub と DevOps を使い慣れており、前のセクションをスキップした場合は、続行する前に以下のタスクを完了する必要があります。
 
-* GitHub リポジトリを作成し、リポジトリの **CreateWebApp** フォルダーにこのテンプレートを保存する。
+* GitHub リポジトリを作成し、リポジトリの _CreateWebApp_ フォルダーにこのテンプレートを保存する。
 * DevOps プロジェクトを作成し、Azure Resource Manager サービス接続を作成する。
 
 テンプレートをデプロイする手順を含むパイプラインを作成するには、以下の手順を実行します。
@@ -159,9 +160,9 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines リポジトリのみ選択](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-only-select-repositories.png)
 
-1. **[選択]** タブで、リポジトリを選択します。  既定の名前は、 **[YourAccountName]/[YourGitHubRepositoryName]** です。
-1. **[構成]** タブで **[Starter pipeline] (スターター パイプライン)** を選択します。 2 つのスクリプト手順が記述された **azure-pipelines.yml** パイプライン ファイルが表示されます。
-1. yml ファイルから 2 つのスクリプト ステップを削除します。
+1. **[選択]** タブで、リポジトリを選択します。 既定の名前は `[YourAccountName]/[YourGitHubRepositoryName]` です。
+1. **[構成]** タブで **[Starter pipeline] (スターター パイプライン)** を選択します。 2 つのスクリプト手順が記述された _azure-pipelines.yml_ パイプライン ファイルが表示されます。
+1. _yml_ ファイルから 2 つのスクリプト ステップを削除します。
 1. **steps:** の後の行にカーソルを移動します。
 1. 画面の右側にある **[アシスタントを表示する]** を選択して **[タスク]** ペインを開きます。
 1. **[ARM template deployment]\(ARM テンプレートのデプロイ\)** を選択します。
@@ -174,9 +175,9 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
     * **[リソース グループ]** :新しいリソース グループの名前を入力します。 たとえば、**AzureRmPipeline-rg** です。
     * **[場所]** :リソース グループの場所を選択します (**米国中部** など)。
     * **テンプレートの場所**: **[Linked artifact]\(リンクされた成果物\)** を選択します。この場合、タスクは接続されているリポジトリから直接テンプレート ファイルを探します。
-    * **テンプレート**:「**CreateWebApp/azuredeploy.json**」と入力します。 フォルダー名とファイル名を変更した場合は、この値を変更する必要があります。
+    * **テンプレート**:「_CreateWebApp/azuredeploy.json_」と入力します。 フォルダー名とファイル名を変更した場合は、この値を変更する必要があります。
     * **テンプレート パラメーター**: このフィールドは空のままにします。 **[テンプレート パラメーターのオーバーライド]** にパラメーターの値を指定します。
-    * **[テンプレート パラメーターのオーバーライド]** : 「 **-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]** 」と入力します。 プロジェクト名とリンク済みテンプレートの URL は、実際の値に置き換えてください。 リンク済みテンプレートの URL は、「[GitHub リポジトリを作成する](#create-a-github-repository)」の最後に書き留めた値です。 これは **https://raw.githubusercontent.com** で始まります。
+    * **[テンプレート パラメーターのオーバーライド]** : 「 `-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]` 」と入力します。 プロジェクト名とリンク済みテンプレートの URL を置き換えます。 リンク済みテンプレートの URL は、「[GitHub リポジトリを作成する](#create-a-github-repository)」の最後に書き留めた値です。 これは `https://raw.githubusercontent.com` で始まります。
     * **デプロイ モード**: **[増分]** を選択します。
     * **デプロイ名**: 「**DeployPipelineTemplate**」と入力します。 **[デプロイ名]** は、 **[Advanced]\(詳細\)** を選択すると表示されます。
 
@@ -186,9 +187,9 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
 
     このタスクの詳細については、「[Azure リソース グループの配置タスク](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)」と [Azure Resource Manager テンプレートのデプロイ タスク](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)に関するページを参照してください。
 
-    yml ファイルの例を次に示します。
+    _yml_ ファイルは次のようになります。
 
-    ![スクリーンショットは、「パイプライン YAML をレビューする」というタイトルの新しいパイプラインが表示された [レビュー] ページを示しています。](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
+    !["Review your pipeline YAML" (パイプライン YAML のレビュー) というタイトルの新しいパイプラインが表示された [レビュー] ページを示すスクリーンショット。](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
 
 1. **[保存および実行]** を選択します。
 1. **[保存および実行]** ペインから、もう一度 **[保存および実行]** を選択します。 YAML ファイルのコピーが接続されているリポジトリに保存されます。 リポジトリを参照すると、YAML ファイルを確認できます。
@@ -199,7 +200,7 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
 ## <a name="verify-the-deployment"></a>デプロイを検証する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. リソース グループを開きます。 この名前は、パイプラインの YAML ファイルで指定したものです。  作成した 1 つのストレージ アカウントが表示されます。  ストレージ アカウント名は、**store** で始まります。
+1. リソース グループを開きます。 この名前は、パイプラインの YAML ファイルで指定したものです。 作成した 1 つのストレージ アカウントが表示されます。 ストレージ アカウント名は、**store** で始まります。
 1. ストレージ アカウント名を選択して開きます。
 1. **[プロパティ]** を選択します。 **[レプリケーション]** が **[ローカル冗長ストレージ (LRS)]** になっていることに注意してください。
 
@@ -207,7 +208,7 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
 
 テンプレートを更新してリモート リポジトリに変更をプッシュすると、パイプラインは自動的にリソースを更新します。今回の場合は、ストレージ アカウントが更新されます。
 
-1. Visual Studio Code または任意のテキスト エディターで、ローカル リポジトリの **linkedStorageAccount.json** を開きます。
+1. Visual Studio Code または任意のテキスト エディターで、ローカル リポジトリの _linkedStorageAccount.json_ を開きます。
 1. **storageAccountType** の **defaultValue** を **Standard_GRS** に更新します。 次のスクリーンショットをご覧ください。
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines yaml 更新](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-update-yml.png)
@@ -216,17 +217,17 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
 1. Git Bash/Shell から次のコマンドを実行して、リモート リポジトリに変更をプッシュします。
 
     ```bash
-    git pull origin master
+    git pull origin main
     git add .
     git commit -m "Update the storage account type."
-    git push origin master
+    git push origin main
     ```
 
-    最初のコマンド (pull) は、ローカル リポジトリをリモート リポジトリと同期します。 リモート リポジトリに追加されたのは、パイプラインの YAML ファイルのみです。 pull コマンドを実行すると、YAML ファイルのコピーがローカル ブランチにダウンロードされます。
+    最初のコマンド (`pull`) は、ローカル リポジトリをリモート リポジトリと同期します。 リモート リポジトリに追加されたのは、パイプラインの YAML ファイルのみです。 `pull` コマンドを実行すると、YAML ファイルのコピーがローカル ブランチにダウンロードされます。
 
-    4 つ目のコマンド (push) で、修正後の linkedStorageAccount.json ファイルがリモート リポジトリにアップロードされます。 リモート リポジトリの master ブランチが更新されたので、パイプラインが再度実行されます。
+    4 つ目のコマンド (`push`) によって、修正後の _linkedStorageAccount.json_ ファイルがリモート リポジトリにアップロードされます。 リモート リポジトリのメイン ブランチが更新されたので、パイプラインが再度実行されます。
 
-変更内容を確認するには、ストレージ アカウントのレプリケーション プロパティを確認できます。  「[デプロイを検証する](#verify-the-deployment)」を参照してください。
+変更内容を確認するには、ストレージ アカウントのレプリケーション プロパティを確認できます。 「[デプロイを検証する](#verify-the-deployment)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

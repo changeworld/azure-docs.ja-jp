@@ -1,20 +1,20 @@
 ---
-title: クイック スタート:Azure Static Web Apps を使用して静的 Web アプリを初めてビルドする
-description: Azure Static Web Apps Web サイトをビルドする方法について学習します。
+title: 'クイックスタート: Azure Static Web Apps を使用して静的サイトを初めて構築する'
+description: Azure Static Web Apps に静的サイトをデプロイする方法について説明します。
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: a78f74b4aadd26af141ed84ca99a092693f56af5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: eb2356451c349f894c9ca74b1359f6a02d0e002a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369564"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562516"
 ---
-# <a name="quickstart-building-your-first-static-web-app"></a>クイック スタート:静的 Web アプリを初めてビルドする
+# <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>クイックスタート: Azure Static Web Apps を使用して静的サイトを初めて構築する
 
 Azure Static Web Apps では、GitHub リポジトリからアプリをビルドすることによって、運用環境に Web サイトが発行されます。 このクイックスタートでは、Visual Studio Code 拡張機能を使用して、Web アプリケーションを Azure Static Web Apps にデプロイします。
 
@@ -52,7 +52,7 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
     :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="静的 Web アプリを作成する":::
 
-1. **master** ブランチを選択し、**Enter** キーを押します。
+1. **main** ブランチを選択して **Enter** キーを押します。
 
     :::image type="content" source="media/getting-started/extension-branch.png" alt-text="ブランチ名":::
 

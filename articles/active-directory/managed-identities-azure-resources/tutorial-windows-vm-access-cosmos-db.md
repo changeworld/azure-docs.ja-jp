@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/29/2020
+ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cd1fb7f33c56aefe76bc55181ae92ca3d149754
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cc3417284137cdbc9f93ac02f825820bfe744843
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006970"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107500"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスする
 
@@ -36,25 +36,18 @@ ms.locfileid: "96006970"
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
-
+- Azure リソースのマネージド ID 機能に慣れていない場合は、こちらの[概要](overview.md)を参照してください。 
+- Azure アカウントをお持ちでない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
+- 必要なリソース作成およびロール管理を実行するために、お使いのアカウントには、適切な範囲 (サブスクリプションまたはリソース グループ) を対象とする "所有者" アクセス許可が必要となります。 ロールの割り当てに関するサポートが必要な場合は、「[ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 - 最新バージョンの [Azure PowerShell](/powershell/azure/install-az-ps) をインストールします
+- システム割り当てマネージド ID が有効になっている Windows 仮想マシンも必要です。
+  - このチュートリアル用に仮想マシンを作成する必要がある場合は、[システム割り当てマネージド ID を有効にした仮想マシンの作成](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity)に関する記事に従ってください。
 
-
-## <a name="enable"></a>有効化
-
-[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
-
-
-
-## <a name="grant-access"></a>アクセス権の付与
-
-
-### <a name="create-a-cosmos-db-account"></a>Cosmos DB アカウントを作成する 
+## <a name="create-a-cosmos-db-account"></a>Cosmos DB アカウントを作成する 
 
 Cosmos DB アカウントがまだない場合は作成します。 この手順をスキップし、既存の Cosmos DB アカウントを使用することもできます。 
 
-1. Azure Portal の左上隅にある **[+/新しいサービスの作成]** ボタンをクリックします。
+1. Azure Portal の左上隅にある **[+ リソースの作成]** ボタンをクリックします。
 2. **[データベース]** 、 **[Azure Cosmos DB]** の順にクリックします。[新しいアカウント] パネルが表示されます。
 3. Cosmos DB アカウントの **[ID]** を入力します。この ID は後で使用されます。  
 4. **[API]** は「SQL」に設定します。 このチュートリアルで説明されている方法は、他の利用可能な API の種類と併用できますが、このチュートリアルの手順は SQL API 向けです。
@@ -70,11 +63,17 @@ Cosmos DB アカウントがまだない場合は作成します。 この手順
 3. コレクションにデータベース ID、コレクション ID を指定し、ストレージ容量を選択し、パーティション キーを入力し、スループット値を入力し、 **[OK]** をクリックします。  このチュートリアルでは、データベース ID とコレクション ID として "Test" を使用し、固定ストレージ容量と最低スループット (400 RU/s) を選択する設定で十分です。  
 
 
-### <a name="grant-access-to-the-cosmos-db-account-access-keys"></a>アクセス権を Cosmos DB アカウントのアクセス キーに付与する
+## <a name="grant-access"></a>アクセス権の付与
 
 このセクションでは、Windows VM のシステム割り当てマネージド ID に Cosmos DB アカウントのアクセス キーへのアクセス権を付与する方法を説明します。 Cosmos DB は、ネイティブでは Azure AD 認証をサポートしていません。 ただし、システム割り当てマネージド ID を使用して Resource Manager から Cosmos DB のアクセス キーを取得し、そのキーを使用して Cosmos DB にアクセスできます。 この手順では、Windows VM のシステム割り当てマネージド ID に Cosmos DB アカウントのキーへのアクセス権を付与します。
 
-Azure Resource Manager で PowerShell を使用して Windows VM のシステム割り当てマネージド ID に Cosmos DB アカウントへのアクセス権を付与するには、`<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`、`<COSMOS DB ACCOUNT NAME>` の値を環境に合わせて更新します。 Cosmos DB は、アクセス キーを使用する場合、アカウントへの読み取り/書き込みアクセス権と、アカウントへの読み取り専用アクセス権という 2 レベルの粒度をサポートしています。  アカウントの読み取り/書き込みキーを取得する場合は `DocumentDB Account Contributor` ロールを割り当て、アカウントの読み取り専用キーを取得する場合は `Cosmos DB Account Reader Role` ロールを割り当てます。  このチュートリアルでは、`Cosmos DB Account Reader Role` を割り当てます。
+Azure Resource Manager で PowerShell を使用して、Windows VM のシステム割り当てマネージド ID に Cosmos DB アカウントへのアクセス権を付与するには、次の値を更新します。
+
+- `<SUBSCRIPTION ID>`
+- `<RESOURCE GROUP>`
+- `<COSMOS DB ACCOUNT NAME>`
+
+Cosmos DB は、アクセス キーを使用する場合、アカウントへの読み取り/書き込みアクセス権と、アカウントへの読み取り専用アクセス権という 2 レベルの粒度をサポートしています。  アカウントの読み取り/書き込みキーを取得する場合は `DocumentDB Account Contributor` ロールを割り当て、アカウントの読み取り専用キーを取得する場合は `Cosmos DB Account Reader Role` ロールを割り当てます。  このチュートリアルでは、`Cosmos DB Account Reader Role` を割り当てます。
 
 ```azurepowershell
 $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
@@ -89,8 +88,6 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 このセクションでは、Windows VM のシステム割り当てマネージド ID のアクセス トークンを使用して、Azure Resource Manager を呼び出す方法を説明します。 チュートリアルの残りの部分では、以前に作成した VM から作業を行います。 
 
 最新バージョンの [Azure CLI](/cli/azure/install-azure-cli) を Windows VM にインストールする必要があります。
-
-
 
 ### <a name="get-an-access-token"></a>アクセス トークンを取得する
 
@@ -119,12 +116,20 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 
 ### <a name="get-access-keys"></a>アクセス キーを取得する 
 
-このセクションでは、Cosmos DB 呼び出しを行うために Azure Resource Manager からアクセス キーを取得する方法を説明します。 ここで、PowerShell を使用して、前のセクションで取得したアクセス トークンで Resource Manager を呼び出し、Cosmos DB アカウント アクセス キーを取得します。 アクセス キーを取得したら、Cosmos DB に対してクエリを実行できます。 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`、および `<COSMOS DB ACCOUNT NAME>` の各パラメーターの値は、必ず実際の値に置き換えてください。 `<ACCESS TOKEN>` の値は、以前に取得したアクセス トークンに置き換えます。  読み取り/書き込みキーを取得する場合は、キー操作の種類 `listKeys` を使用します。  読み取り専用キーを取得する場合は、キー操作の種類 `readonlykeys` を使用します。
+このセクションでは、Cosmos DB 呼び出しを行うために Azure Resource Manager からアクセス キーを取得する方法を説明します。 PowerShell を使用して、以前に取得したアクセス トークンで Resource Manager を呼び出し、Cosmos DB アカウントのアクセス キーを取得します。 アクセス キーを取得したら、Cosmos DB に対してクエリを実行できます。 次のエントリを実際の値に置き換えてください。
+
+- `<SUBSCRIPTION ID>`
+- `<RESOURCE GROUP>`
+- `<COSMOS DB ACCOUNT NAME>` 
+- `<ACCESS TOKEN>` の値は、以前に取得したアクセス トークンに置き換えます。 
+
+>[!NOTE]
+>読み取り/書き込みキーを取得する場合は、キー操作の種類 `listKeys` を使用します。  読み取り専用キーを取得する場合は、キー操作の種類 `readonlykeys` を使用します。 "listkeys" を使用できない場合は、マネージド ID に[適切なロール](../../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)が割り当てられていることを確認してください。
 
 ```powershell
-Invoke-WebRequest -Uri 'https://management.azure.com/subscriptions/<SUBSCRIPTION-ID>/resourceGroups/<RESOURCE-GROUP>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>/listKeys/?api-version=2016-03-31' -Method POST -Headers @{Authorization="Bearer $ARMToken"}
+Invoke-WebRequest -Uri 'https://management.azure.com/subscriptions/<SUBSCRIPTION-ID>/resourceGroups/<RESOURCE-GROUP>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>/readonlykeys/?api-version=2016-03-31' -Method POST -Headers @{Authorization="Bearer $ARMToken"}
 ```
-応答では、キーのリストが返されます。  たとえば、読み取り専用キーを取得する場合は次のようになります。
+応答ではキーのリストが返されます。  たとえば、読み取り専用キーを取得する場合は次のようになります。
 
 ```powershell
 {"primaryReadonlyMasterKey":"bWpDxS...dzQ==",

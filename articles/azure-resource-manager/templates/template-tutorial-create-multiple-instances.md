@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 94509ba209e95eb9199ddd760529d47eb48bda10
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: fc1401959adb97f8c4caf6d413a212d9f3b62801
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930800"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588116"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>チュートリアル:ARM テンプレートを使用した複数のリソース インスタンスの作成
 
@@ -38,15 +38,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)は、ARM テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このクイック スタートで使用されるテンプレートは、[Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) と呼ばれます。 テンプレートにより、Azure ストレージ アカウント リソースが定義されます。
 
-1. Visual Studio Code から、 **[ファイル]** > **[ファイルを開く]** を選択します。
-2. **[ファイル名]** に以下の URL を貼り付けます。
+1. Visual Studio Code から、 **[ファイル]**  >  **[ファイルを開く]** を選択します。
+1. **[ファイル名]** に以下の URL を貼り付けます。
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
-3. **[開く]** を選択して、ファイルを開きます。
-4. テンプレートで "Microsoft.Storage/storageAccounts" リソースが定義されています。 テンプレートを[テンプレート リファレンス](/azure/templates/Microsoft.Storage/storageAccounts)と比較します。 カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
-5. **[ファイル]** > **[名前を付けて保存]** を選択し、ファイルを **azuredeploy.json** としてご自身のローカル コンピューターに保存します。
+
+1. **[開く]** を選択して、ファイルを開きます。
+1. テンプレートに、`Microsoft.Storage/storageAccounts` リソースが定義されています。 テンプレートを[テンプレート リファレンス](/azure/templates/Microsoft.Storage/storageAccounts)と比較します。 カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
+1. **[ファイル]**  >  **[名前を付けて保存]** を選択し、ファイルを _azuredeploy.json_ としてご自身のローカル コンピューターに保存します。
 
 ## <a name="edit-the-template"></a>テンプレートの編集
 
@@ -56,10 +57,10 @@ Visual Studio Code で、次の 4 つの変更を行います。
 
 ![Azure Resource Manager で複数のインスタンスを作成する](./media/template-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances.png)
 
-1. ストレージ アカウントのリソース定義に `copy` 要素を追加します。 copy 要素には、そのループの反復回数と変数を指定します。 数値は正の整数で、800 を超えることはできません。
-2. `copyIndex()` 関数は、ループ内の現在の繰り返しを返します。 インデックスを名前のプレフィックスとして使用します。 `copyIndex()` は 0 から始まります。 インデックス値をオフセットするには、copyIndex() 関数に値を渡します。 たとえば、 *copyindex (1)* のように指定します。
-3. **variables** 要素を削除します。これ以上使われないためです。
-4. **outputs** 要素を削除します。 これは不要になりました。
+1. ストレージ アカウントのリソース定義に `copy` 要素を追加します。 `copy` 要素には、このループの反復回数と変数を指定します。 数値は正の整数で、800 を超えることはできません。
+2. `copyIndex()` 関数は、ループ内の現在の繰り返しを返します。 インデックスを名前のプレフィックスとして使用します。 `copyIndex()` は 0 から始まります。 インデックス値をオフセットするには、`copyIndex()` 関数に値を渡します。 たとえば、「 `copyIndex(1)` 」のように入力します。
+3. `variables` 要素を削除します。以降では使用しないためです。
+4. `outputs` 要素を削除します。 これは不要になりました。
 
 完成したテンプレートは、次のようになります。
 
@@ -109,17 +110,17 @@ Visual Studio Code で、次の 4 つの変更を行います。
 }
 ```
 
-複数のインスタンスの作成の詳細については、[ARM テンプレートでリソースまたはプロパティの複数のインスタンスをデプロイする方法](./copy-resources.md)に関するページを参照してください。
+複数のインスタンスの作成の詳細については、「[ARM テンプレートでのリソースの反復処理](./copy-resources.md)」を参照してください
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 1. [Azure Cloud Shell](https://shell.azure.com) にサインインします。
 
-1. 左上の **[PowerShell]** または **[Bash]** (CLI の場合) を選択して、希望の環境を選択します。  切り替えた場合は、シェルを再起動する必要があります。
+1. 左上の **[PowerShell]** または **[Bash]** (CLI の場合) を選択して、希望の環境を選択します。 切り替えた場合は、シェルを再起動する必要があります。
 
     ![Azure portal の Cloud Shell のファイルのアップロード](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。 先のスクリーンショットをご覧ください。 前のセクションで保存したファイルを選択します。 ファイルをアップロードした後、**ls** コマンドと **cat** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
+1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。 先のスクリーンショットをご覧ください。 前のセクションで保存したファイルを選択します。 ファイルをアップロードした後、`ls` コマンドと `cat` コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
 
 1. Cloud Shell で次のコマンドを実行します。 PowerShell コードまたは CLI コードを表示するタブを選択します。
 
@@ -148,9 +149,9 @@ Visual Studio Code で、次の 4 つの変更を行います。
 
     ---
 
-3 つのストレージ アカウントをすべて一覧表示するには、--name パラメータを省略します。
+テンプレートのデプロイが正常に完了したら、指定したリソース グループに作成された 3 つのストレージ アカウントを表示できます。 テンプレートの名前定義とストレージ アカウント名を比較します。
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="cli"></a>[CLI](#tab/azure-cli)
 
 ```azurecli
 echo "Enter a project name that is used to generate resource group name:" &&
@@ -172,8 +173,6 @@ Write-Host "Press [ENTER] to continue ..."
 
 ---
 
-テンプレートの名前定義とストレージ アカウント名を比較します。
-
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Azure リソースが不要になったら、リソース グループを削除して、デプロイしたリソースをクリーンアップします。
@@ -185,7 +184,7 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、複数のストレージ アカウント インスタンスを作成する方法について説明しました。  次のチュートリアルでは、複数のリソースと複数のリソース タイプを含むテンプレートを作成します。 一部のリソースには依存リソースがあります。
+このチュートリアルでは、複数のストレージ アカウント インスタンスを作成する方法について説明しました。 次のチュートリアルでは、複数のリソースと複数のリソース タイプを含むテンプレートを作成します。 一部のリソースには依存リソースがあります。
 
 > [!div class="nextstepaction"]
 > [依存リソースの作成](./template-tutorial-create-templates-with-dependent-resources.md)

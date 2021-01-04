@@ -5,17 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 12/14/2020
+ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60bfac3b80e772e7b359b1e926d5fb84e447a8fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: d6d5ab13c8997dffee42a053ba498376ccbcb6d8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89270796"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585260"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フローに条件付きアクセスを追加する
 
@@ -35,6 +37,22 @@ ms.locfileid: "89270796"
 
 Azure AD B2C における [Identity Protection と条件付きアクセス](conditional-access-identity-protection-overview.md)の詳細を確認するか、その[設定方法](conditional-access-identity-protection-setup.md)を確認してください。
 
+## <a name="prerequisites"></a>前提条件
+
+- 危険なサインインのポリシーを作成するには、Azure AD B2C Premium 2 が必要です。 Premium P1 テナントでは、場所、アプリ、またはグループベースのポリシーを作成できます。
+- テスト目的では、`https://jwt.ms` [テスト用 Web アプリケーションを登録](tutorial-register-applications.md)できます。これは、トークンのデコードされたコンテンツを表示する、Microsoft が所有する Web アプリケーションです (トークンのコンテンツがお使いのブラウザー外に出ることはありません)。 
+- 危険なサインインをシミュレートするには、Tor Browser をダウンロードし、ユーザー フロー エンドポイントへのサインインを試みます。
+- 次の設定を使用して、[条件付きアクセス ポリシーを作成](conditional-access-identity-protection-setup.md)します。
+   
+  - **[ユーザーとグループ]** で、テスト ユーザーを選択します ( **[すべてのユーザー]** を選択しないでください。選択すると、自分がサインインできなくなる可能性があります)。
+  - **[クラウド アプリまたは操作]** で、 **[アプリの選択]** を選択し、次に証明書利用者アプリケーションを選択します。
+  - [条件] で、 **[サインイン リスク]** を選択し、 **[高]** 、 **[中]** 、 **[低]** のリスク レベルを選択します。
+  - **[付与]** で、 **[アクセスをブロックする]** を選択します。
+
+      ![リスク検出](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
+
+::: zone pivot="b2c-user-flow"
+
 ## <a name="add-conditional-access-to-a-new-user-flow"></a>新しいユーザー フローに条件付きアクセスを追加する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
@@ -48,7 +66,7 @@ Azure AD B2C における [Identity Protection と条件付きアクセス](cond
 
 1. ユーザー フローの **[名前]** を入力します。 たとえば、「*signupsignin1*」と入力します。
 1. **[ID プロバイダー]** セクションで、このユーザー フローに対して許可する ID プロバイダーを選択します。
-2. **[多要素認証]** セクションで、目的の **MFA メソッド**を選択し、 **[MFA enforcement]\(MFA の適用\)** で **[Conditional (Recommended)]\(条件付き (推奨)\)** を選択します。
+2. **[多要素認証]** セクションで、目的の **MFA メソッド** を選択し、 **[MFA enforcement]\(MFA の適用\)** で **[Conditional (Recommended)]\(条件付き (推奨)\)** を選択します。
  
    ![多要素認証を構成する](media/conditional-access-user-flow/configure-mfa.png)
 
@@ -79,7 +97,7 @@ Azure AD B2C における [Identity Protection と条件付きアクセス](cond
  
    ![[プロパティ] で MFA と条件付きアクセスを構成する](media/conditional-access-user-flow/add-conditional-access.png)
 
-1. **[多要素認証]** セクションで、目的の **MFA メソッド**を選択し、 **[MFA enforcement]\(MFA の適用\)** で **[Conditional (Recommended)]\(条件付き (推奨)\)** を選択します。
+1. **[多要素認証]** セクションで、目的の **MFA メソッド** を選択し、 **[MFA enforcement]\(MFA の適用\)** で **[Conditional (Recommended)]\(条件付き (推奨)\)** を選択します。
  
 1. **[条件付きアクセス]** セクションで、 **[Enforce conditional access policies]\(条件付きアクセス ポリシーを適用する\)** チェック ボックスをオンにします。
 
@@ -89,19 +107,6 @@ Azure AD B2C における [Identity Protection と条件付きアクセス](cond
 
 対象のユーザー フローでの条件付きアクセスをテストするには、[条件付きアクセス ポリシーを作成](conditional-access-identity-protection-setup.md)し、前述のようにユーザー フローで条件付きアクセスを有効にします。 
 
-### <a name="prerequisites"></a>前提条件
-
-- 危険なサインインのポリシーを作成するには、Azure AD B2C Premium 2 が必要です。 Premium P1 テナントでは、場所、アプリ、またはグループベースのポリシーを作成できます。
-- テスト目的では、`https://jwt.ms` [テスト用 Web アプリケーションを登録](tutorial-register-applications.md)できます。これは、トークンのデコードされたコンテンツを表示する、Microsoft が所有する Web アプリケーションです (トークンのコンテンツがお使いのブラウザー外に出ることはありません)。 
-- 危険なサインインをシミュレートするには、Tor Browser をダウンロードし、ユーザー フロー エンドポイントへのサインインを試みます。
-- 次の設定を使用して、[条件付きアクセス ポリシーを作成](conditional-access-identity-protection-setup.md)します。
-   
-   - **[ユーザーとグループ]** で、テスト ユーザーを選択します ( **[すべてのユーザー]** を選択しないでください。選択すると、自分がサインインできなくなる可能性があります)。
-   - **[クラウド アプリまたは操作]** で、 **[アプリの選択]** を選択し、次に証明書利用者アプリケーションを選択します。
-   - [条件] で、 **[サインイン リスク]** を選択し、 **[高]** 、 **[中]** 、 **[低]** のリスク レベルを選択します。
-   - **[付与]** で、 **[アクセスをブロックする]** を選択します。
-
-      ![リスク検出](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
 
 ### <a name="run-the-user-flow"></a>ユーザー フローを実行する
 
@@ -117,6 +122,16 @@ Azure AD B2C における [Identity Protection と条件付きアクセス](cond
 
    ![ブロックされたサインインをテストする](media/conditional-access-identity-protection-setup/test-blocked-sign-in.png)
 
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+## <a name="add-conditional-access-to-your-policy"></a>ポリシーに条件付きアクセスを追加する
+
+条件付きアクセスポリシーの例については、[GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access) を参照してください。
+
+::: zone-end
+
 ## <a name="next-steps"></a>次のステップ
 
-[Azure AD B2C ユーザー フローのユーザー インターフェイスをカスタマイズする](customize-ui-overview.md)
+[Azure AD B2C ユーザー フローのユーザー インターフェイスをカスタマイズする](customize-ui-with-html.md)

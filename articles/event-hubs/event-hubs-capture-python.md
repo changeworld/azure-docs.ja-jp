@@ -3,14 +3,14 @@ title: Python アプリから Azure Event Hubs でキャプチャされたデー
 description: この記事では、イベント ハブに送信されたデータをキャプチャし、キャプチャされたイベント データを Azure Storage アカウントから読み取る Python コードを記述する方法について説明します。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: cb7165565516136a8425c4c77748c2e13715edb7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f513b35e300141f16ee4c4880bc54aaf37945d65
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88927869"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109914"
 ---
-# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Event Hubs データを Azure Storage にキャプチャし、Python を使用してそれを読み取る (azure-eventhub バージョン 5)
+# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub"></a>Event Hubs データを Azure Storage にキャプチャし、Python (azure-eventhub) を使用してそれを読み取る
 
 イベント ハブに送信されたデータが Azure ストレージ アカウントあるいは Azure Data Lake Storage Gen 1 または Gen 2 にキャプチャされるようにイベント ハブを構成できます。 この記事では、イベントをイベント ハブに送信し、キャプチャされたデータを **Azure Blob Storage** から読み取る Python コードを記述する方法を示します。 この機能の詳細については、[Event Hubs Capture 機能の概要](event-hubs-capture-overview.md)に関するページを参照してください。
 
@@ -43,7 +43,7 @@ ms.locfileid: "88927869"
 このセクションでは、イベント ハブに 200 のイベント (10 デバイス * 20 イベント) を送信する Python スクリプトを作成します。 これらのイベントは、JSON 形式で送信されたサンプルの環境測定値です。 
 
 1. [Visual Studio Code][Visual Studio Code]など、お使いの Python エディターを開きます。
-2. *sender.py*という名前のスクリプトを作成します。 
+2. *sender.py* という名前のスクリプトを作成します。 
 3. 次のコードを "*sender.py*" に貼り付けます。 
    
     ```python

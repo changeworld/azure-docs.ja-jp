@@ -3,25 +3,25 @@ title: クイック スタート:.NET 用 Azure Storage v11 を使用してキ�
 description: このクイック スタートでは、.NET 用 Azure Storage クライアント ライブラリを使用して、キューを作成し、そこにメッセージを追加する方法について説明します。 次に、キューからメッセージを読み取って処理する方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 07/24/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
-ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f7368025993c91490d808ef0ae5f5f66233fe666
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 23703dc507aa909aea4711289a4d7d5c5e6a170e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345620"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588201"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>クイック スタート:.NET 用 Azure Storage SDK v11 を使用してキューを管理する
 
-このクイックスタートでは、.NET 用 Azure Storage クライアント ライブラリ バージョン 11 を使用して、キューを作成し、そこにメッセージを追加する方法について説明します。 次に、キューからメッセージを読み取って処理する方法について説明します。
+このクイックスタートでは、.NET 用 Azure Storage クライアント ライブラリ v11 を使用して、キューを作成し、そこにメッセージを追加する方法について説明します。 次に、キューからメッセージを読み取って処理する方法について説明します。
 
 > [!NOTE]
-> このクイックスタートでは、Azure Queue storage クライアント ライブラリのレガシ バージョンを使用します。 最新バージョンで始めるには、「[クイックスタート: .NET 用 Azure Queue storage クライアント ライブラリ v12](storage-quickstart-queues-dotnet.md)」を参照してください。
+> このクイックスタートでは、Azure Queue Storage クライアント ライブラリのレガシ バージョンを使用します。 最新バージョンで始めるには、「[クイックスタート: .NET 用 Azure Queue Storage クライアント ライブラリ v12](storage-quickstart-queues-dotnet.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -50,13 +50,13 @@ ms.locfileid: "93345620"
 
 このクイックスタートで使うサンプル アプリケーションは、基本的なコンソール アプリケーションです。 [GitHub](https://github.com/Azure-Samples/storage-queues-dotnet-quickstart) でサンプル アプリケーションを調べることができます。
 
-アプリケーションのコピーを開発環境にダウンロードするには、[git](https://git-scm.com/) を使います。
+アプリケーションのコピーを開発環境にダウンロードするには、[Git](https://git-scm.com/) を使います。
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 ```
 
-このコマンドは、ローカルの git フォルダーにリポジトリを複製します。 Visual Studio ソリューションを開くには、 *storage-queues-dotnet-quickstart* フォルダーを開き、 *storage-queues-dotnet-quickstart.sln* をダブルクリックします。
+このコマンドは、ローカルの Git フォルダーにリポジトリを複製します。 Visual Studio ソリューションを開くには、`storage-queues-dotnet-quickstart` フォルダーを開き、`storage-queues-dotnet-quickstart.sln` をダブルクリックします。
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -98,7 +98,7 @@ export STORAGE_CONNECTION_STRING=<yourconnectionstring>
 
 ### <a name="windows"></a>Windows
 
-Visual Studio をエディターとして使用している場合は、 **F5** キーを押して実行することができます。
+Visual Studio をエディターとして使用している場合は、`F5` キーを押して実行することができます。
 
 それ以外の場合は、お使いのアプリケーションのディレクトリに移動し、`dotnet run` コマンドを使ってアプリケーションを実行します。
 
@@ -148,7 +148,7 @@ Press any key to delete the sample queue.
 
 ### <a name="try-parsing-the-connection-string"></a>接続文字列を解析してみる
 
-サンプルでは最初に、ストレージ アカウントを指す [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) オブジェクトを作成するために解析できる接続文字列が環境変数に含まれていることを確認します。 接続文字列が有効であることを確認するため、サンプルでは [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) メソッドが使用されます。 **TryParse** が成功すると、 *storageAccount* 変数が初期化され、 **true** が返されます。
+サンプルでは最初に、ストレージ アカウントを指す [`CloudStorageAccount`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) オブジェクトを作成するために解析できる接続文字列が環境変数に含まれていることを確認します。 接続文字列が有効であることを確認するため、サンプルでは [`TryParse`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) メソッドが使用されます。 `TryParse` が成功すると、`storageAccount` 変数が初期化され、`true` が返されます。
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored
@@ -204,7 +204,7 @@ Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToStrin
 Console.WriteLine();
 ```
 
-有効期限のないメッセージを追加するには、[AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) への呼び出しで `Timespan.FromSeconds(-1)` を使用します。
+有効期限のないメッセージを追加するには、[`AddMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) への呼び出しで `Timespan.FromSeconds(-1)` を使用します。
 
 ```csharp
 await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
@@ -262,18 +262,18 @@ if (queue != null)
 
 ## <a name="resources-for-developing-net-applications-with-queues"></a>キューを使用する .NET アプリケーションを開発するためのリソース
 
-Azure キューを使用する .NET 開発については、以下の追加リソースを参照してください。
+Azure Queue Storage を使用する .NET 開発については、以下の追加リソースを参照してください。
 
 ### <a name="binaries-and-source-code"></a>バイナリとソース コード
 
 - [.NET 用 Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage)の最新バージョン用の NuGet パッケージをダウンロードします
-  - [共通](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+  - [共通](https://www.nuget.org/packages/microsoft.azure.storage.common/)
   - [キュー](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - GitHub で [.NET クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-net)を確認します。
 
-### <a name="client-library-reference-and-samples"></a>クライアント ライブラリ リファレンスとサンプル
+### <a name="azure-storage-client-library-reference-and-samples"></a>Azure Storage クライアント ライブラリのリファレンスとサンプル
 
-- .NET クライアント ライブラリの詳細については、[.NET API リファレンス](/dotnet/api/overview/azure/storage)を参照してください。
+- .NET クライアント ライブラリの詳細については、[.NET 用 Azure Storage クライアント ライブラリのリファレンス](/dotnet/api/overview/azure/storage)を参照してください。
 - .NET クライアント ライブラリを使用して記述された [Queue Storage のサンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues)を確認します。
 
 ## <a name="next-steps"></a>次のステップ

@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/25/2020
-ms.openlocfilehash: 3668d4e5164ad731058f944feaef66029c2ed2a9
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: f4536beae18a50d3e1d42fc1593cf826c94418f8
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96126093"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033854"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,7 +27,7 @@ ms.locfileid: "96126093"
 
 *Program.cs* の `main` メソッドは、`SetupDeviceClientAsync` を呼び出して次のことを行います。
 
-* DPS でデバイスをプロビジョニングする際に、モデル ID `dtmi:com:example:Thermostat;1` を使用します。
+* DPS でデバイスをプロビジョニングする際に、モデル ID `dtmi:com:example:Thermostat;1` を使用します。 IoT Central では、モデル ID を使用して、このデバイスのデバイス テンプレートを識別または生成します。 詳細については、「[デバイス テンプレートへのデバイスの関連付け](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template)」をご覧ください。
 * IoT Central に接続するための **DeviceClient** インスタンスを作成します。
 
 ```csharp

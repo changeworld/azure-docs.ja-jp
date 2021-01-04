@@ -5,22 +5,22 @@ description: このクイックスタートでは、Azure Resource Manager テ�
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
+manager: KumudD
 Customer intent: I want to create a load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2020
+ms.date: 12/09/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 66d702846bac5825239e891ce47f8cca5bb857f0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 378ab88f4dee0c725e89f77cc6b2ffe049ff877a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90984424"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008437"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して VM の負荷を分散するパブリック ロード バランサーを作成する
 
@@ -51,12 +51,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 テンプレートでは、複数の Azure リソースが定義されています。
 
 - [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
-- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses): ロード バランサー用。3 つの仮想マシンそれぞれに使用されます。
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses): ロード バランサー、bastion ホスト、3 つの各仮想マシン用。
+- [**Microsoft.Network/bastionHosts**](/azure/templates/microsoft.network/bastionhosts)
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (そのうちの 3 つ)。
-- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (そのうちの 3 つ)。
-- [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (そのうちの 3 つ): Internet Information Server (IIS) および Web ページの構成に使用。
+- [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (3)。
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (3)。
+- [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (3): Internet Information Server (IIS) と Web ページの構成に使用。
 
 Azure Load Balancer に関連するテンプレートをさらに探すには、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular)」を参照してください。
 
@@ -83,7 +84,7 @@ Azure Load Balancer に関連するテンプレートをさらに探すには、
 
 1. 前のコード ブロックから **[コピー]** を選択して、PowerShell スクリプトをコピーします。
 
-1. シェル コンソール ウィンドウを右クリックし、 **[貼り付け]** を選択します。
+1. シェル コンソール ウィンドウを右クリックし、**[貼り付け]** を選択します。
 
 1. 値を入力します。
 
@@ -131,6 +132,8 @@ Azure portal に移動し、ロード バランサーを含むリソース グ�
 
 このクイック スタートでは次の作業を行います。
 
+* ロード バランサーと仮想マシン用の仮想ネットワークを作成しました。
+* 管理用の Azure Bastion ホストを作成しました。
 * 標準のロード バランサーを作成し、それに VM をアタッチしました。
 * ロード バランサーのトラフィック規則と正常性プローブを構成しました。
 * ロード バランサーをテストしました。

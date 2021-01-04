@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/20/2020
+ms.date: 12/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 4acc4c0cec530b8f83648042cd7a417992257543
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: f6f56958fb63e73e254a45e7cf8ad457be8269ef
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602021"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607645"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Software AG Cloud の統合
 
@@ -77,12 +77,16 @@ Software AG Cloud に対して Azure AD SSO を構成してテストするには
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://*.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
+    1. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://*.softwareag.cloud/auth/realms/TENANT-NAME`
+        `https://*.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
 
-    > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Software AG Cloud クライアント サポート チーム](mailto:support@softwareag.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    1. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
+
+        `https://*.softwareag.cloud/auth/realms/TENANT-NAME`
+
+        > [!NOTE]
+        > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Software AG Cloud クライアント サポート チーム](mailto:support@softwareag.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -137,7 +141,7 @@ Software AG Cloud に対して Azure AD SSO を構成してテストするには
 
     c. **[Identity provider configuration]\(ID プロバイダー構成\)** で **フェデレーション メタデータ XML** ファイルをインポートし、 **[Next]\(次へ\)** をクリックします。
 
-    d. **[Conﬁguration]\(構成\)** ページに移動し、必要に応じてフィールドに入力します。
+    d. **[Configuration]\(構成\)** ページに移動し、必要に応じてフィールドに入力します。
 
 ### <a name="create-software-ag-cloud-test-user"></a>Software AG Cloud のテスト ユーザーの作成
 
@@ -147,13 +151,10 @@ Software AG Cloud に対して Azure AD SSO を構成してテストするには
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-* Software AG Cloud で Microsoft Azure がプロバイダーとして構成されていることを前提として、`www.softwareag.cloud` に移動し、[Login]\(ログイン\) ボタンをクリックして、環境名を入力します。 次の画面で、[Log in with <IDP NAME>]\(<IDP 名> でログイン\) リンクをクリックし、資格情報を入力します。 認証されると、ログインされ、Software AG Cloud のホーム ページが表示されます。
-
-* Software AG Cloud のサインオン URL に直接移動し、そこからログイン フローを開始します。
-
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Software AG Cloud] タイルをクリックすると、Software AG Cloud サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
-
+Software AG Cloud で Microsoft Azure がプロバイダーとして構成されていることを前提として、`www.softwareag.cloud` に移動し、[Login]\(ログイン\) ボタンをクリックして、環境名を入力します。 次の画面で、[Log in with <IDP NAME>]\(<IDP 名> でログイン\) リンクをクリックし、資格情報を入力します。 認証されると、ログインされ、Software AG Cloud のホーム ページが表示されます。
 
 ## <a name="next-steps"></a>次の手順
 
-Software AG Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Software AG Cloud を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+
+

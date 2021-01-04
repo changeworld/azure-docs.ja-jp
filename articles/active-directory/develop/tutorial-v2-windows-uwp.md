@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 774c17af88e45e25cf1e8edc0df60ab55fe53e0e
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: dce2cd0d77ff0a98d4d68e1c99edb472e61ce8a5
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95974334"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509463"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>チュートリアル:ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
@@ -347,21 +347,23 @@ private async Task DisplayMessageAsync(string message)
 ここで、アプリケーションを登録する必要があります。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. **[Azure Active Directory]**  >  **[アプリの登録]** の順に選択します。
-1. **[新規登録]** を選択します。 アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: *UWP-App-calling-MSGraph*)。
-1. **[サポートされているアカウントの種類]** で、 **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox など)]** を選択します。 次に、 **[登録]** を選択して続行します。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+1. アプリケーションの **名前** を入力します (例: `UWP-App-calling-MSGraph`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
+1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と、個人用の Microsoft アカウント (Skype、Xbox など)\)** を選択します。 
+1. **[登録]** を選択します。
 1. 概要ページで、 **[アプリケーション (クライアント) ID]** の値を見つけてコピーします。 Visual Studio に戻って *MainPage.xaml.cs* を開き、`ClientId` の値を、この値に置き換えます。
 
 アプリケーションの認証を構成します。
 
-1. [Azure portal](https://portal.azure.com) に戻り、 **[管理]** の下にある **[認証]** を選択します。
-1. **[リダイレクト URI]**  |  **[パブリック クライアント (モバイル、デスクトップ) に推奨されるリダイレクト URI]** セクションで、 https://login.microsoftonline.com/common/oauth2/nativeclient を確認します。
-1. **[保存]** を選択します。
+1. [Azure portal](https://portal.azure.com) に戻り、 **[管理]** で **[認証]**  >  **[プラットフォームを追加]** の順に選択し、 **[モバイル アプリケーションとデスクトップ アプリケーション]** を選択します。
+1. **[リダイレクト URI]** セクションで、 **https://login.microsoftonline.com/common/oauth2/nativeclient** を確認します。
+1. **[構成]** をクリックします。
 
 アプリケーション用に API アクセス許可を構成します。
 
-1. **[管理]** の下にある **[API のアクセス許可]** を選択します。
-1. **[アクセス許可の追加]** を選択したら、 **[Microsoft API]** が選択されていることを確認します。
+1. **[管理]** で、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。
 1. **[Microsoft Graph]** を選択します。
 1. **[委任されたアクセス許可]** を選択し、*User.Read* を探して、 **[User.Read]** が選択されていることを確認します。
 1. 変更を行った場合は、 **[アクセス許可の追加]** を選択して保存します。

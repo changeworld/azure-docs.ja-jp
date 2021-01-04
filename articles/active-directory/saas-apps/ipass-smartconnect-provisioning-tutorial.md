@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: fa9723b466045ebe7b932f837e0fa7c45c898b6b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 405a7bc3b653ca7bca026d3318763a4922244e88
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353886"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093708"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>チュートリアル:iPass SmartConnect を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -82,7 +82,7 @@ Azure AD で自動ユーザー プロビジョニング用に iPass SmartConnect
 このセクションでは、Azure AD プロビジョニング サービスを構成し、Azure AD でのユーザーやグループの割り当てに基づいて iPass SmartConnect のユーザーやグループを作成、更新、無効化する手順について説明します。
 
 > [!TIP]
->  BitaBIZ では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[iPass SmartConnect シングル サインオンのチュートリアル](ipasssmartconnect-tutorial.md)に関するページで説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+>  iPass SmartConnect では、SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[iPass SmartConnect シングル サインオンのチュートリアル](ipasssmartconnect-tutorial.md)に記載されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-ipass-smartconnect-in-azure-ad"></a>Azure AD で iPass SmartConnect の自動ユーザー プロビジョニングを構成するには:
 

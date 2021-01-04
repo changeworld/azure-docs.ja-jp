@@ -1,16 +1,16 @@
 ---
-title: Python API を使用して並列ワークロードを実行する
+title: チュートリアル - Python API を使用して並列ワークロードを実行する
 description: チュートリアル - Batch Python クライアント ライブラリを使用して、Azure Batch で ffmpeg を使ってメディア ファイルを並列処理します。
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 34cea5e0b60c0a7ee8c3d31dd02a6f7e975de738
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7013ef1e9b6dda4554b665fa8199edb86a8a9adb
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87853332"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106514"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>チュートリアル:Python API を使用して Azure Batch で並列ワークロードを実行する
 
@@ -108,7 +108,7 @@ Elapsed time: 00:09:14.3418742
 
 ![プールのヒート マップ](./media/tutorial-parallel-python/pool.png)
 
-既定の構成でアプリケーションを実行する場合、通常の実行時間は約 **5 分間**です。 プールの作成に最も時間がかかります。 
+既定の構成でアプリケーションを実行する場合、通常の実行時間は約 **5 分間** です。 プールの作成に最も時間がかかります。 
 
 [!INCLUDE [batch-common-tutorial-download](../../includes/batch-common-tutorial-download.md)]
 
@@ -268,7 +268,7 @@ while datetime.datetime.now() < timeout_expiration:
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、次の作業を行う方法を学びました。
 
 > [!div class="checklist"]
 > * Batch アカウントおよびストレージ アカウントで認証する

@@ -1,25 +1,25 @@
 ---
 title: チュートリアル - テンプレートの作成とデプロイ
-description: 初めての Azure Resource Manager テンプレートを作成します。 このチュートリアルでは、テンプレート ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
+description: 初めての Azure Resource Manager テンプレート (ARM テンプレート) を作成します。 このチュートリアルでは、テンプレート ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
 author: mumian
 ms.date: 09/28/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 25ddcc2c3a890b407b2116f64ebab577e30c9457
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 191eacbc9cc66ccfb9b378cb5e8a90b4e0fb20e6
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613188"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107025"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>チュートリアル:初めての ARM テンプレートを作成してデプロイする
 
-このチュートリアルでは、Azure Resource Manager テンプレート (ARM テンプレート) について取り上げます。 スターター テンプレートを作成して Azure にデプロイする方法を紹介します。 テンプレートの構造のほか、テンプレートを扱う際に必要なツールについても説明します。 このチュートリアルの所要時間は約 **12 分**ですが、実際の時間は、インストールする必要のあるツールの数によって変化します。
+このチュートリアルでは、Azure Resource Manager テンプレート (ARM テンプレート) について取り上げます。 スターター テンプレートを作成して Azure にデプロイする方法を紹介します。 テンプレートの構造のほか、テンプレートを扱う際に必要なツールについても説明します。 このチュートリアルの所要時間は約 **12 分** ですが、実際の時間は、インストールする必要のあるツールの数によって変化します。
 
 これは、シリーズの最初のチュートリアルです。 シリーズを進めながら、ARM テンプレートの核となる部分がすべてわかるまで、開始時のテンプレートを段階的に変更していきます。 それらの要素は、はるかに複雑なテンプレートの構成要素となります。 シリーズの最後には、独自のテンプレートを作成したり、テンプレートを使ってデプロイを自動化したりする自信が持てるようになればさいわいです。
 
-テンプレートを使用する利点と、テンプレートを使用してデプロイを自動化すべき理由について知りたい場合は、「[Azure Resource Manager のテンプレート](overview.md)」を参照してください。
+テンプレートを使用する利点と、テンプレートを使用してデプロイを自動化すべき理由については、[ARM テンプレートの概要](overview.md)に関する記事をご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="editor"></a>エディター
 
-テンプレートは JSON ファイルです。 テンプレートを作成するには、適切な JSON エディターが必要です。 Visual Studio Code と Resource Manager Tools 拡張機能をお勧めします。 これらのツールをインストールする必要がある場合は、「[クイックスタート: Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
+テンプレートは JSON ファイルです。 テンプレートを作成するには、適切な JSON エディターが必要です。 Visual Studio Code と Resource Manager Tools 拡張機能をお勧めします。 これらのツールをインストールする必要がある場合は、「[クイックスタート: Visual Studio Code を使用して ARM テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
 ### <a name="command-line-deployment"></a>コマンド ライン デプロイ
 
@@ -52,7 +52,7 @@ Azure PowerShell または Azure CLI をインストールした後で、初回�
 1. Resource Manager Tools 拡張機能がインストールされた Visual Studio Code を開きます。
 1. **[ファイル]** メニューから **[新しいファイル]** を選択して新しいファイルを作成します。
 1. **[ファイル]** メニューから **[名前を付けて保存]** を選択します。
-1. ファイルに **azuredeploy** という名前を付けて **JSON** ファイル拡張子を選択します。 ファイル名全体は **azuredeploy.json** となります。
+1. ファイルに _azuredeploy_ という名前を付け、_json_ ファイル拡張子を選択します。 完全なファイル名は _azuredeploy.json_ になります。
 1. ご利用のワークステーションにファイルを保存します。 後でテンプレートをデプロイするときにパスを指定するため、覚えやすいパスを選択してください。
 1. 次の JSON をコピーして、ファイルに貼り付けます。
 
@@ -64,17 +64,17 @@ Azure PowerShell または Azure CLI をインストールした後で、初回�
     }
     ```
 
-    VS Code 環境の見た目は次のとおりです。
+    Visual Studio Code 環境は次のようになります。
 
-    ![Resource Manager テンプレート、Visual Studio Code、初めてのテンプレート](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
+    ![ARM テンプレート、Visual Studio Code、初めてのテンプレート](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
 
     このテンプレートではリソースをデプロイしません。 間違いが生じる可能性をできるだけ抑えつつ、テンプレートをデプロイする手順に慣れることができるよう、最初は空のテンプレートを扱います。
 
     JSON ファイルには、次の要素が含まれています。
 
-    - **$schema**: JSON スキーマ ファイルの場所を指定します。 スキーマ ファイルには、テンプレート内で使用できるプロパティが記述されます。 たとえば、このスキーマでは、テンプレートの有効なプロパティの 1 つとして **resources** が定義されています。 スキーマの日付が 2019-04-01 になっていますが気にしないでください。 このスキーマ バージョンは最新であり、最新の機能がすべて含まれています。 スキーマの導入以来、破壊的変更が生じていないため、スキーマの日付は変更されていません。
-    - **contentVersion**: テンプレートのバージョンを指定します (1.0.0.0 など)。 この要素には任意の値を指定できます。 この値を使用し、テンプレートの大きな変更を記述します。 テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。
-    - **resources**: デプロイまたは更新するリソースが格納されます。 現在は空ですが、後からリソースを追加していくことになります。
+    - `$schema`: JSON スキーマ ファイルの場所を指定します。 スキーマ ファイルには、テンプレート内で使用できるプロパティが記述されます。 たとえば、このスキーマでは、テンプレートの有効なプロパティの 1 つとして `resources` が定義されています。 スキーマの日付が 2019-04-01 になっていますが気にしないでください。 このスキーマ バージョンは最新であり、最新の機能がすべて含まれています。 スキーマの導入以来、破壊的変更が生じていないため、スキーマの日付は変更されていません。
+    - `contentVersion`: テンプレートのバージョンを指定します (1.0.0.0 など)。 この要素には任意の値を指定できます。 この値を使用し、テンプレートの大きな変更を記述します。 テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。
+    - `resources`: デプロイまたは更新するリソースが格納されます。 現在は空ですが、後からリソースを追加していくことになります。
 
 1. ファイルを保存します。
 
@@ -83,6 +83,8 @@ Azure PowerShell または Azure CLI をインストールした後で、初回�
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure PowerShell または Azure CLI を使用して作業を開始するには、自分の Azure の資格情報を使用してサインインします。
+
+以下のコード セクションでは、Azure PowerShell と Azure CLI のどちらかのタブを選択してください。 この記事の CLI の例は、Bash シェルを対象として記述されています。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -98,7 +100,7 @@ az login
 
 ---
 
-複数の Azure サブスクリプションがある場合は、使用するサブスクリプションを選択します。
+複数の Azure サブスクリプションがある場合は、使用するサブスクリプションを選択します。 `[SubscriptionID/SubscriptionName]` と角かっこ `[]` を実際のサブスクリプション情報に置き換えます。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -114,10 +116,9 @@ az account set --subscription [SubscriptionID/SubscriptionName]
 
 ---
 
-
 ## <a name="create-resource-group"></a>リソース グループの作成
 
-テンプレートをデプロイするときは、リソースを格納するリソース グループを指定します。 デプロイ コマンドを実行する前に、Azure CLI または Azure PowerShell を使用してリソース グループを作成します。 次のコード セクションのタブを選択し、Azure PowerShell または Azure CLI を選択してください。 この記事の CLI の例は、Bash シェルを対象として記述されています。
+テンプレートをデプロイするときは、リソースを格納するリソース グループを指定します。 デプロイ コマンドを実行する前に、Azure CLI または Azure PowerShell を使用してリソース グループを作成します。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -139,7 +140,7 @@ az group create \
 
 ## <a name="deploy-template"></a>テンプレートのデプロイ
 
-テンプレートをデプロイするには、Azure CLI または Azure PowerShell を使用します。 作成済みのリソース グループを使用します。 デプロイ履歴で識別しやすいよう、デプロイには名前を付けてください。 また、便宜上、テンプレート ファイルのパスを格納する変数も作成します。 この変数を使用すれば、デプロイするたびにパスを再入力しなくても済むため、デプロイ コマンドが実行しやすくなります。
+テンプレートをデプロイするには、Azure CLI または Azure PowerShell を使用します。 作成済みのリソース グループを使用します。 デプロイ履歴で識別しやすいよう、デプロイには名前を付けてください。 また、便宜上、テンプレート ファイルのパスを格納する変数も作成します。 この変数を使用すれば、デプロイするたびにパスを再入力しなくても済むため、デプロイ コマンドが実行しやすくなります。 `{provide-the-path-to-the-template-file}` と中かっこ `{}` をテンプレート ファイルのパスに置き換えます。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -178,7 +179,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> デプロイに失敗した場合は、**verbose** スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、**debug** スイッチを使用してください。
+> デプロイに失敗した場合は、`verbose` スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、`debug` スイッチを使用してください。
 
 ## <a name="verify-deployment"></a>デプロイの確認
 

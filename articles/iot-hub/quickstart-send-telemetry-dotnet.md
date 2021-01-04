@@ -14,18 +14,18 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/01/2020
-ms.openlocfilehash: 21410f7137a76b43f57ca7a1e037908410eae365
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e4c87d8579b06cdfb37c1635a25db5ce67aa3545
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844524"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094796"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (.NET)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-service-application-net"></a>クイックスタート: デバイスから IoT ハブにテレメトリを送信してサービス アプリケーションで読み取る (.NET)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT Hub は、保管や処理のために IoT デバイスから大量のテレメトリをクラウドに取り込むことを可能にする Azure サービスです。 このクイック スタートでは、シミュレートされたデバイス アプリケーションから、IoT Hub を経由して、処理のためのバックエンド アプリケーションに、テレメトリを送信します。
+IoT Hub は、保管や処理のために IoT デバイスから大量のテレメトリをクラウドに取り込むことを可能にする Azure サービスです。 このクイックスタートでは、シミュレートされたデバイス アプリケーションから、IoT Hub を経由して、処理のためにサービス アプリケーションにテレメトリを送信します。
 
 このクイック スタートでは、あらかじめ作成されている 2 つの C# アプリケーションを使います。1 つは利用統計情報を送信し、もう 1 つはハブから利用統計情報を読み取ります。 これら 2 つのアプリケーションを実行する前に、IoT Hub を作成し、デバイスを Hub に登録します。
 
@@ -33,7 +33,7 @@ IoT Hub は、保管や処理のために IoT デバイスから大量のテレ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* このクイック スタートで実行する 2 つのサンプル アプリケーションは、C# を使って書かれています。 開発用マシン上に .NET Core SDK 3.0 以降が必要です。
+* このクイック スタートで実行する 2 つのサンプル アプリケーションは、C# を使って書かれています。 開発用マシン上に .NET Core SDK 3.1 以上が必要です。
 
     複数のプラットフォームに対応する .NET Core SDK を [.NET](https://www.microsoft.com/net/download/all) からダウンロードできます。
 
@@ -44,7 +44,7 @@ IoT Hub は、保管や処理のために IoT デバイスから大量のテレ�
     ```
 
     > [!NOTE]
-    > このクイックスタートでテレメトリの読み取りに使用する Event Hubs サービス コードをコンパイルするには、.NET Core SDK 3.0 以上をお勧めします。 「[Hub からテレメトリを読み取る](#read-the-telemetry-from-your-hub)」セクションの説明に従って、サービス コードの言語バージョンを preview に設定した場合は、.NET Core SDK 2.1 を使用できます。
+    > このクイックスタートでテレメトリの読み取りに使用する Event Hubs サービス コードをコンパイルするには、.NET Core SDK 3.1 以上をお勧めします。
 
 
 * [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) から Azure IoT C# サンプルをダウンロードし、ZIP アーカイブを展開します。
@@ -87,7 +87,7 @@ IoT Hub は、保管や処理のために IoT デバイスから大量のテレ�
 
     この値は、このクイックスタートの後の方で使用します。
 
-3. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、IoT ハブの "_Event Hubs 互換エンドポイント_"、"_Event Hubs 互換パス_"、および "_サービス主キー_" も必要です。 次のコマンドは、お使いの IoT ハブに対するこれらの値を取得します。
+3. また、サービス アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、IoT ハブの "_Event Hubs 互換エンドポイント_"、"_Event Hubs 互換パス_"、"_サービス主キー_" も必要です。 次のコマンドは、お使いの IoT ハブに対するこれらの値を取得します。
 
    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
@@ -105,22 +105,18 @@ IoT Hub は、保管や処理のために IoT デバイスから大量のテレ�
 
 シミュレートされたデバイス アプリケーションは、IoT Hub 上のデバイスに固有のエンドポイントに接続し、シミュレートされた温度と湿度のテレメトリを送信します。
 
-1. ローカル ターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\simulated-device** フォルダーに移動します。
+1. ローカル ターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\SimulatedDevice** フォルダーに移動します。
 
-2. 適当なテキスト エディターで **SimulatedDevice.cs** ファイルを開きます。
-
-    `s_connectionString` 変数の値を、前にメモしたデバイス接続文字列に置き換えます。 その後、変更を **SimulatedDevice.cs** に保存します。
-
-3. ローカル ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションに必要なパッケージをインストールします。
+2. ローカル ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションに必要なパッケージをインストールします。
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. ローカル ターミナル ウィンドウで次のコマンドを実行し、シミュレートされたデバイス アプリケーションをビルドして実行します。
+3. ローカル ターミナル ウィンドウで、前に書き留めておいたデバイス接続文字列を指定して次のコマンドを実行し、シミュレートされたデバイス アプリケーションをビルドして実行します。
 
     ```cmd/sh
-    dotnet run
+    dotnet run -- {DeviceConnectionString}
     ```
 
     次のスクリーンショットは、シミュレートされたデバイス アプリケーションが IoT Hub にテレメトリを送信したときの出力を示しています。
@@ -129,36 +125,37 @@ IoT Hub は、保管や処理のために IoT デバイスから大量のテレ�
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Hub からテレメトリを読み取る
 
-バックエンド アプリケーションは、IoT ハブ上のサービス側 **Events** エンドポイントに接続します。 このアプリケーションは、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub のバックエンド アプリケーションはクラウド内で実行され、デバイスとクラウドの間のメッセージを受信して処理します。
+サービス アプリケーションは、IoT ハブ上のサービス側 **Events** エンドポイントに接続します。 このアプリケーションは、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub サービス アプリケーションはクラウドで実行され、device-to-cloud メッセージを受信して処理します。
 
-1. 別のローカル ターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\read-d2c-messages** フォルダーに移動します。
+1. 別のローカル ターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\ReadD2cMessages** フォルダーに移動します。
 
-2. 適当なテキスト エディターで **ReadDeviceToCloudMessages.cs** ファイルを開きます。 次の変数を更新し、ご自身の変更をファイルに保存します。
-
-    | 変数 | 値 |
-    | -------- | ----------- |
-    | `EventHubsCompatibleEndpoint` | 変数の値を、前にメモした Event Hubs 互換エンドポイントに置き換えます。 |
-    | `EventHubName`                | 変数の値を、前にメモした Event Hubs 互換パスに置き換えます。 |
-    | `IotHubSasKey`                | 変数の値を、前にメモしたサービス主キーに置き換えます。 |
-
-    > [!NOTE]
-    > .NET Core SDK 2.1 を使用している場合、コードをコンパイルするには、言語バージョンを preview に設定する必要があります。 これを行うには、**read-d2c-messages.csproj** ファイルを開き、`<LangVersion>` 要素の値を `preview` に設定します。
-
-3. ローカル ターミナル ウィンドウで次のコマンドを実行して、バックエンド アプリケーションに必要なライブラリをインストールします。
+2. ローカル ターミナル ウィンドウで次のコマンドを実行して、アプリケーションに必要なライブラリをインストールします。
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. ローカル ターミナル ウィンドウで次のコマンドを実行し、バックエンド アプリケーションをビルドして実行します。
+3. ローカル ターミナル ウィンドウで次のコマンドを実行して、パラメーター オプションを表示します。
 
     ```cmd/sh
     dotnet run
     ```
 
-    次のスクリーンショットは、シミュレートされたデバイスがハブに送信した利用統計情報をバックエンド アプリケーションが受信したときの出力を示しています。
+4. ローカル ターミナル ウィンドウで次のいずれかのコマンドを実行し、アプリケーションをビルドして実行します。
 
-    ![バックエンド アプリケーションを実行する](media/quickstart-send-telemetry-dotnet/read-device-to-cloud.png)
+    ```cmd/sh
+    dotnet run -- -c {EventHubConnectionString}
+    ```
+
+    or
+
+    ```cmd/sh
+    dotnet run -- -e {EventHubCompatibleEndpoint} -n {EventHubName} -s {SharedAccessKey}
+    ```
+
+    次のスクリーンショットは、シミュレートされたデバイスからハブに送信されたテレメトリをサービス アプリケーションが受信したときの出力を示しています。
+
+    ![サービス アプリケーションの実行](media/quickstart-send-telemetry-dotnet/read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -166,9 +163,9 @@ IoT Hub は、保管や処理のために IoT デバイスから大量のテレ�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、IoT ハブを設定し、デバイスを登録し、C# アプリケーションを使ってシミュレートされた利用統計情報をハブに送信し、簡単なバックエンド アプリケーションを使ってハブから利用統計情報を読み取りました。
+このクイックスタートでは、IoT ハブを設定し、デバイスを登録しました。C# アプリケーションを使用してシミュレートされたテレメトリをハブに送信し、単純なサービス アプリケーションを使用してハブからテレメトリを読み取りました。
 
-バックエンド アプリケーションからシミュレートされたデバイスを制御する方法を学習するには、次のクイック スタートに進んでください。
+サービス アプリケーションからシミュレートされたデバイスを制御する方法については、次のクイックスタートに進んでください。
 
 > [!div class="nextstepaction"]
 > [クイック スタート: IoT ハブに接続されたデバイスを制御する](quickstart-control-device-dotnet.md)

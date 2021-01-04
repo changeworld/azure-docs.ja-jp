@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse とは
 description: サービス プロバイダーは Azure Lighthouse を通じて、自動化と効率を大規模に高めたマネージド サービスを顧客に提供することができます。
-ms.date: 11/12/2020
+ms.date: 12/10/2020
 ms.topic: overview
-ms.openlocfilehash: a8fd796218804a79c82a5723c0e5851af359cdea
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bef6107878f36e02a896b3c38b8913ebb50169a7
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528824"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356363"
 ---
 # <a name="what-is-azure-lighthouse"></a>Azure Lighthouse とは
 
@@ -45,3 +45,4 @@ Azure Lighthouse には、エンゲージメントと管理を効率化するさ
 - [Azure の委任されたリソース管理](concepts/azure-delegated-resource-management.md)について学習してください。
 - [テナント間の管理エクスペリエンス](concepts/cross-tenant-management-experience.md)について調査します。
 - [エンタープライズ内で Azure Lighthouse を使用する](concepts/enterprise.md)方法を確認します。
+- Azure Lighthouse の[提供状況](https://azure.microsoft.com/global-infrastructure/services/?products=azure-lighthouse&regions=all)と [FedRAMP および DoD CC SRG 監査スコープ](../azure-government/compliance/azure-services-in-fedramp-auditscope.md)の詳細を確認します。

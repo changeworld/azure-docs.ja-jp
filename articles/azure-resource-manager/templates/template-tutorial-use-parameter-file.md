@@ -1,21 +1,21 @@
 ---
 title: チュートリアル - パラメーター ファイルを使用してテンプレートをデプロイする
-description: Azure Resource Manager テンプレートのデプロイに使用する値を含んだパラメーター ファイルを使用します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) のデプロイに使用する値を含んだパラメーター ファイルを使用します。
 author: mumian
 ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: de72f9f32a3b08ad1742ee2055efce5b93cab899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6257161017afc9dab692c43fcc64e5d961a90ba
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069511"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368428"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>チュートリアル:パラメーター ファイルを使用して ARM テンプレートをデプロイする
 
-このチュートリアルでは、デプロイ時に渡す値を[パラメーター ファイル](parameter-files.md)を使用して格納する方法について説明します。 先行する各チュートリアルでは、デプロイ コマンドでインライン パラメーターを使用しました。 このアプローチは、Azure Resource Manager テンプレート (ARM テンプレート) をテストする用途には役立ちますが、デプロイを自動化する場合には、ご利用の環境に使用する値をまとめて渡した方が簡単です。 パラメーター ファイルには、特定の環境に使用するパラメーターの値をまとめやすくする効果があります。 このチュートリアルでは、開発環境用と運用環境用のパラメーター ファイルを作成します。 所要時間は約 **12 分**です。
+このチュートリアルでは、デプロイ時に渡す値を[パラメーター ファイル](parameter-files.md)を使用して格納する方法について説明します。 先行する各チュートリアルでは、デプロイ コマンドでインライン パラメーターを使用しました。 このアプローチは、Azure Resource Manager テンプレート (ARM テンプレート) をテストする用途には役立ちますが、デプロイを自動化する場合には、ご利用の環境に使用する値をまとめて渡した方が簡単です。 パラメーター ファイルには、特定の環境に使用するパラメーターの値をまとめやすくする効果があります。 このチュートリアルでは、開発環境用と運用環境用のパラメーター ファイルを作成します。 所要時間は約 **12 分** です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,23 +41,25 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 テンプレート内のパラメーター名と一致しないパラメーター名をパラメーター ファイルに指定することはできません。 不明なパラメーターが指定されていると、エラーが発生します。
 
-VS Code で、次の内容を含む新しいファイルを作成します。 このファイルに **azuredeploy.parameters.dev.json** という名前を付けて保存します。
+Visual Studio Code で、次の内容を含む新しいファイルを作成します。 このファイルに _azuredeploy.parameters.dev.json_ という名前を付けて保存します。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
-このファイルは、開発環境用のパラメーター ファイルです。 ストレージ アカウントに Standard_LRS が使用され、リソースに **dev** で始まる名前が付き、さらに **Environment** タグが **Dev** に設定されていることがわかります。
+このファイルは、開発環境用のパラメーター ファイルです。 ストレージ アカウントに **Standard_LRS** が使用され、リソースに **dev** で始まる名前が付き、さらに `Environment` タグが **Dev** に設定されていることがわかります。
 
-もう一度、次の内容を含んだ新しいファイルを作成します。 このファイルには **azuredeploy.parameters.prod.json** という名前を付けて保存します。
+もう一度、次の内容を含んだ新しいファイルを作成します。 このファイルには _azuredeploy.parameters.prod.json_ という名前を付けて保存します。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
-このファイルは、運用環境用のパラメーター ファイルです。 ストレージ アカウントに Standard_GRS が使用され、リソースに **contoso** で始まる名前が付き、さらに **Environment** タグが **Production** に設定されていることがわかります。 実際の運用環境では、無料以外の SKU の App Service を使用したい場合もあるかもしれませんが、このチュートリアルでは引き続きこの SKU を使用します。
+このファイルは、運用環境用のパラメーター ファイルです。 ストレージ アカウントに **Standard_GRS** が使用され、リソースに **contoso** で始まる名前が付き、さらに `Environment` タグが **Production** に設定されていることがわかります。 実際の運用環境では、無料以外の SKU の App Service を使用したい場合もあるかもしれませんが、このチュートリアルでは引き続きこの SKU を使用します。
 
 ## <a name="deploy-template"></a>テンプレートのデプロイ
 
 テンプレートをデプロイするには、Azure CLI または Azure PowerShell を使用します。
 
 テンプレートの最終テストとして、新しいリソース グループを 2 つ作成しましょう。 1 つは開発環境用で、もう 1 つは運用環境用です。
+
+テンプレート変数とパラメーター変数については、`{path-to-the-template-file}`、`{path-to-azuredeploy.parameters.dev.json}`、`{path-to-azuredeploy.parameters.prod.json}` (中かっこ `{}` を含む) を、実際のテンプレート ファイルとパラメーター ファイルのパスに置き換えてください。
 
 まず開発環境にデプロイします。
 
@@ -128,7 +130,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> デプロイに失敗した場合は、**verbose** スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、**debug** スイッチを使用してください。
+> デプロイに失敗した場合は、`verbose` スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、`debug` スイッチを使用してください。
 
 ## <a name="verify-deployment"></a>デプロイの確認
 
@@ -142,7 +144,7 @@ Azure portal からリソース グループを探すことでデプロイを確
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 1. Azure portal で、左側のメニューから **[リソース グループ]** を選択します。
-2. **[名前でフィルター]** フィールドに、リソース グループ名を入力します。 このシリーズをすべて実施した場合、削除するリソース グループは myResourceGroup、myResourceGroupDev、myResourceGroupProd の 3 つです。
+2. **[名前でフィルター]** フィールドに、リソース グループ名を入力します。 このシリーズをすべて実施した場合、削除するリソース グループは **myResourceGroup**、**myResourceGroupDev**、**myResourceGroupProd** の 3 つです。
 3. リソース グループ名を選択します。
 4. トップ メニューから **[リソース グループの削除]** を選択します。
 
