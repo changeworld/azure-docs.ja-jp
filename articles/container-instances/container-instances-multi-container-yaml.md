@@ -3,12 +3,12 @@ title: チュートリアル - 複数コンテナー グループをデプロイ
 description: このチュートリアルでは、複数のコンテナーを含むコンテナー グループを YAML ファイルと Azure CLI を使用して Azure Container Instances にデプロイする方法を説明します。
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 8f1f13d4fa7e32b76988cdf356d5d1bb0528f824
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6f9dda7735587dfee1dde86c85375efcf057daa7
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091295"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605163"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>チュートリアル:YAML ファイルを使用して複数コンテナー グループをデプロイする
 
@@ -178,7 +178,6 @@ Connection: keep-alive
 [Resource Manager テンプレート](container-instances-multi-container-group.md)を使用して、マルチコンテナー グループを指定することもできます。 Resource Manager テンプレートは、追加の Azure サービス リソースをコンテナー グループを使用してデプロイする必要があるシナリオに簡単に適応できます。
 
 <!-- LINKS - External -->
-
 
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md

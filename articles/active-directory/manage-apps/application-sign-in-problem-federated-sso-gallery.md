@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e6d3674aaa4c89f42c2e7b87a6be6cdc8ecabf64
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 596af29fe72a41b5a86a09e4e6d5072d63b6ac71
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028276"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586348"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>SAML ベースのシングル サインオンで構成されたアプリへのサインインに関する問題
 以下のサインインに関する問題を解決する場合は、より優れた診断、および解決手順の自動化に向けて、次を行うことをお勧めします。
@@ -33,7 +33,9 @@ My Apps Secure Browser Extension を使用して、Azure portal で[テスト体
 1.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 1.  Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** を選択します。
 1.  **[すべてのアプリケーション]** を選択して、すべてのアプリケーションの一覧を表示します。
+
     ここに表示したいアプリケーションが表示されない場合は、 **[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、 **[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+
 1.  シングル サインオンを構成するアプリケーションを選択します。
 1. アプリケーションが読み込まれたら、アプリケーションの左側にあるナビゲーション メニューで **[シングル サインオン]** をクリックします。
 1. [SAML ベースの SSO] を選択します。
@@ -63,7 +65,7 @@ SAML 要求の `AssertionConsumerServiceURL` 値が、応答 URL 値または Az
 SAML 要求の `AssertionConsumerServiceURL` 値が、Azure AD で構成されている応答 URL 値と一致していることを確認してください。 
 
 [応答 URL] テキスト ボックスの値が SAML 要求内の `AssertionConsumerServiceURL` 値と一致していることを確認するか、一致するように値を更新します。   
-    
+
 Azure AD で応答 URL の値を更新し、その URL 値が、アプリケーションが SAML 要求に含めて送信する値に一致していれば、アプリケーションにサインインできます。
 
 ## <a name="user-not-assigned-a-role"></a>ユーザーにロールが割り当てられていない

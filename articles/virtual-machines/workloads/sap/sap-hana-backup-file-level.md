@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 13bdf4b10ec586bf83a70434f003cc1573aca469
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 70b0f8178a94735a6ef37a225044984508cc2233
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950263"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617138"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>ファイル レベルの SAP HANA Azure バックアップ
 
@@ -28,7 +28,7 @@ ms.locfileid: "94950263"
 
 Azure の別の VM タイプでは、異なる数の VHD の接続が許可されます。 正確な詳細については、「[Azure の Linux 仮想マシンのサイズ](../../sizes.md)」を参照してください。 このドキュメントで参照されているテストのために、64 個の接続されたデータ ディスクが許可される GS5 Azure VM を使用しました。 大規模な SAP HANA システムでは、データ ファイルとログ ファイルに多数のディスクが既に使用されていることがあります。場合によっては、ディスク IO スループットを最適化するためにソフトウェア ストライピングが併用されています。 Azure VM での SAP HANA デプロイ向けに推奨されるディスク構成の詳細については、記事「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」を参照してください。 推奨事項には、ローカルのバックアップのディスク領域の推奨事項も含まれています。
 
-ファイル レベルでバックアップ/復元を管理する標準的な方法としては、SAP HANA Studio または SAP HANA SQL ステートメントを使用したファイルベースのバックアップがあります。 詳細については、記事「[SAP HANA SQL とシステム ビューのリファレンス](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf)」を参照してください。
+ファイル レベルでバックアップ/復元を管理する標準的な方法としては、SAP HANA Studio または SAP HANA SQL ステートメントを使用したファイルベースのバックアップがあります。 詳細については、記事「[SAP HANA SQL とシステム ビューのリファレンス](https://help.sap.com/viewer/4fe29514fd584807ac9f2a04f6754767/2.0.05/en-US/3859e48180bb4cf8a207e15cf25a7e57.html)」を参照してください。
 
 ![この図は、SAP HANA Studio のバックアップ メニュー項目のダイアログを示しています](media/sap-hana-backup-file-level/backup-menue-dialog.png)
 

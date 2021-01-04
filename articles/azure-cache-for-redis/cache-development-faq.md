@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: be2e4a002d1daf4da7d042f1fd7d5bf0e9a01377
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bafd8a9752d2587ec52fe586e442e3bfc86d7537
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544513"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585770"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Azure Cache for Redis 開発に関してよくあるご質問
 
@@ -55,7 +55,7 @@ StackExchange.Redis には多くのオプションが用意されています。
 
 * **再試行**
   * 一般的に ConnectRetry と ConnectTimeout に関しては、フェイル ファストして再試行することをお勧めします。 これは、ワークロードと、クライアントが Redis コマンドを発行してから応答を受け取るまでに要する時間の平均に基づいたガイダンスです。
-  * 自分で接続の状態を確認して再接続するのではなく、StackExchange.Redis が自動的に再接続するように設定します。 **ConnectionMultiplexer.IsConnected プロパティは使用しません** 。
+  * 自分で接続の状態を確認して再接続するのではなく、StackExchange.Redis が自動的に再接続するように設定します。 **ConnectionMultiplexer.IsConnected プロパティは使用しません**。
   * 問題の肥大化 - ある問題が発生し、再試行によって問題が肥大化して、解決しないことがあります。 問題の肥大化が発生した場合は、Microsoft Patterns & Practices グループ発行の「[再試行に関する一般的なガイダンス](/azure/architecture/best-practices/transient-faults)」に説明されている指数バックオフ再試行アルゴリズムの使用を検討する必要があります。
   
 * **タイムアウト値**
@@ -64,12 +64,12 @@ StackExchange.Redis には多くのオプションが用意されています。
   * アプリケーションに対して ConnectionMultiplexer インスタンスを 1 つ使用します。 「 [ConnectionMultiplexer クラスを使用してキャッシュに接続する](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)」に示されているように、LazyConnection を使用して、Connection プロパティから返される単一のインスタンスを作成できます。
   * 診断用には、 `ConnectionMultiplexer.ClientName` プロパティを、アプリ インスタンスの一意な名前に設定します。
   * カスタム ワークロードに対しては複数の `ConnectionMultiplexer` インスタンスを使用します。
-      * アプリケーションの負荷が変化する場合は、このモデルに従うことができます。 次に例を示します。
-      * 1 つのマルチプレクサーを使用して、サイズの大きなキーを処理できます。
-      * 1 つのマルチプレクサーを使用して、サイズの小さなキーを処理できます。
-      * 使用する ConnectionMultiplexer ごとに、異なる接続タイムアウト値と再試行ロジックを設定できます。
-      * 診断を容易にするために、各マルチプレクサーで `ClientName` プロパティを設定します。
-      * このガイダンスにより、`ConnectionMultiplexer` あたりの待機時間が合理化される場合があります。
+    * アプリケーションの負荷が変化する場合は、このモデルに従うことができます。 次に例を示します。
+    * 1 つのマルチプレクサーを使用して、サイズの大きなキーを処理できます。
+    * 1 つのマルチプレクサーを使用して、サイズの小さなキーを処理できます。
+    * 使用する ConnectionMultiplexer ごとに、異なる接続タイムアウト値と再試行ロジックを設定できます。
+    * 診断を容易にするために、各マルチプレクサーで `ClientName` プロパティを設定します。
+    * このガイダンスにより、`ConnectionMultiplexer` あたりの待機時間が合理化される場合があります。
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>使用可能な Azure Cache for Redis クライアントについて
 Redis のメリットの 1 つが、クライアントが多数存在しており、さまざまな開発言語を多数サポートしている点です。 現在のクライアントの一覧については、 [Radis クライアント](https://redis.io/clients)に関するページをご覧ください。 さまざまな言語とクライアントのチュートリアルについては、[Azure Cache for Redis の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)に関するページとその関連記事を目次から見つけて参照してください。

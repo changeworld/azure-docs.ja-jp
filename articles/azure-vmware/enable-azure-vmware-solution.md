@@ -3,12 +3,12 @@ title: Azure VMware Solution リソースを有効にする方法
 description: サポート リクエストを送信して Azure VMware Solution リソースを有効にする方法について説明します。 また、Azure VMware Solution のプライベート クラウドにさらに多くのホストを要求することもできます。
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 8bcb61c07a3f0310754cd50931f4576e836deffb
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 6d614dffc4ab3127e1e6740b1a8773e5fd7c23ff
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346539"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630889"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Azure VMware Solution リソースを有効にする方法
 サポート リクエストを送信して [Azure VMware Solution](introduction.md) リソースを有効にする方法について説明します。 また、Azure VMware Solution のプライベート クラウドにさらに多くのホストを要求することもできます。
@@ -61,7 +61,7 @@ Azure VMware Solution リソースを作成する前に、サポート チケッ
 
 ## <a name="enable-azure-vmware-solution-for-csp-customers"></a>CSP のお客様のために Azure VMware Solution を有効にする 
 
-CSP は [Microsoft パートナー センター](https://partner.microsoft.com)を使用して、自社の顧客のために Azure VMware Solution を有効にする必要があります。 この記事では、[CSP Azure プラン](/partner-center/azure-plan-lp.md)を例として使用して、パートナー向けの購入手順を示します。
+CSP は [Microsoft パートナー センター](https://partner.microsoft.com)を使用して、自社の顧客のために Azure VMware Solution を有効にする必要があります。 この記事では、[CSP Azure プラン](/partner-center/azure-plan-lp)を例として使用して、パートナー向けの購入手順を示します。
 
    >[!IMPORTANT] 
    >Azure VMware Solution サービスでは、必要なマルチテナントに対応していません。 これを必要とするホスティング パートナーはサポートされていません。 
@@ -76,9 +76,9 @@ CSP は [Microsoft パートナー センター](https://partner.microsoft.com)�
 
 1. **[Azure プラン]** を選択し、 **[カートに追加]** を選択します。 
 
-1. 顧客の Azure プラン サブスクリプションの全般的な設定を確認し、終了します。 詳細については、[Microsoft パートナー センターに関するドキュメント](/partner-center/azure-plan-manage.md)を参照してください。
+1. 顧客の Azure プラン サブスクリプションの全般的な設定を確認し、終了します。 詳細については、[Microsoft パートナー センターに関するドキュメント](/partner-center/azure-plan-manage)を参照してください。
 
-Azure プランを構成し、必要な [Azure RBAC アクセス許可](/partner-center/azure-plan-manage.md)をサブスクリプションに対して設定したら、Azure プラン サブスクリプションのクォータを有効にするよう Microsoft に依頼します。 **代理管理者** (AOBO) の手順を使用して、[Microsoft パートナー センター](https://partner.microsoft.com)から Azure portal にアクセスします。
+Azure プランを構成し、必要な [Azure RBAC アクセス許可](/partner-center/azure-plan-manage)をサブスクリプションに対して設定したら、Azure プラン サブスクリプションのクォータを有効にするよう Microsoft に依頼します。 **代理管理者** (AOBO) の手順を使用して、[Microsoft パートナー センター](https://partner.microsoft.com)から Azure portal にアクセスします。
 
 1. [パートナー センター](https://partner.microsoft.com)にサインインします。
 

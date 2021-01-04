@@ -6,14 +6,14 @@ services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: conceptual
-ms.date: 11/27/2019
+ms.date: 12/15/2020
 ms.author: prmitiki
-ms.openlocfilehash: 20f25e0add5d05bb2dcf7f3ebdc86ccd5ae889d0
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: bee41bb8e5beb4df3086ab50499cb185a83e4efe
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510789"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592332"
 ---
 # <a name="peering-policy"></a>ピアリング ポリシー
 Microsoft は、業界標準とベスト プラクティスに裏打ちされた、可能な限り最高のカスタマー エクスペリエンスを確保するように設計された、厳選されたピアリング ポリシーを維持し、ピアリングの将来的な需要と戦略的配置に合わせてスケーリングしています。 そのため、Microsoft は、必要に応じてポリシーに例外を設ける権利を留保します。 以下のセクションでは、お使いのネットワークからの Microsoft の一般的な要件について説明します。 これらは、Direct ピアリングと Exchange ピアリング要求の両方に適用されます。 

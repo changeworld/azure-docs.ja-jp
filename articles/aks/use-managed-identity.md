@@ -3,13 +3,13 @@ title: Azure Kubernetes Service でマネージド ID を使用する
 description: Azure Kubernetes Service (AKS) でマネージド ID を使用する方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 12/06/2020
-ms.openlocfilehash: 68d8111da5ec10f23d14b375a18229bca075da84
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.date: 12/16/2020
+ms.openlocfilehash: 948a189e1c6e03efca046b6d43dddcaf3d141957
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97026831"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607288"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service でマネージド ID を使用する
 
@@ -36,7 +36,7 @@ AKS では、組み込みのサービスとアドオンに対して複数のマ�
 
 | ID                       | 名前    | 使用事例 | 既定のアクセス許可 | 独自の ID を使用する
 |----------------------------|-----------|----------|
-| コントロール プレーン | 非表示 | イングレス ロード バランサーと AKS マネージド パブリック IP、Cluster Autoscaler 操作など、クラスター リソースを管理する目的で AKS コントロール プレーン コンポーネントによって使用されます | ノード リソース グループの共同作成者ロール | プレビュー
+| コントロール プレーン | 非表示 | イングレス ロード バランサーと AKS マネージド パブリック IP、Cluster Autoscaler 操作など、クラスター リソースを管理する目的で AKS コントロール プレーン コンポーネントによって使用されます | ノード リソース グループの共同作成者ロール | サポート対象
 | kubelet | AKS クラスター名 - agentpool | Azure Container Registry (ACR) を使用した認証 | NA (kubernetes v1.15+ 用) | 現在、サポートされていません
 | アドオン | AzureNPM | ID は必要ありません | NA | いいえ
 | アドオン | AzureCNI ネットワーク監視 | ID は必要ありません | NA | いいえ

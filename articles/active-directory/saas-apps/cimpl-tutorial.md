@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 6fc222d5721d486a0a0472077e754560e8d5ecda
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 2ce7ed1efad6f0d71c6e082c50b4783fb96b822c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456243"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670586"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cimpl"></a>チュートリアル: Azure Active Directory と Cimpl の統合
 
@@ -41,7 +41,7 @@ Cimpl と Azure AD の統合を構成するには、次のものが必要です�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Cimpl では、 **SP** Initiated SSO がサポートされます
+* Cimpl では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-cimpl-from-the-gallery"></a>ギャラリーから Cimpl を追加する
 
@@ -61,13 +61,13 @@ Azure AD への Cimpl の統合を構成するには、ギャラリーから管�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Cimpl** 」と入力し、結果パネルで **Cimpl** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Cimpl**」と入力し、結果パネルで **Cimpl** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Cimpl](common/search-new-app.png)
+    ![結果一覧の Cimpl](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Cimpl で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Cimpl で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Cimpl 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Cimpl で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -106,7 +106,7 @@ Cimpl で Azure AD シングル サインオンを構成するには、次の手
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://sso.etelesolv.com/<TENANTNAME>`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、Cimpl チーム ( **+1 866-982-8250** ) に問い合わせてください。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、Cimpl チーム ( **+1 866-982-8250**) に問い合わせてください。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -124,7 +124,7 @@ Cimpl で Azure AD シングル サインオンを構成するには、次の手
 
 ### <a name="configure-cimpl-single-sign-on"></a>Cimpl のシングル サインオンの構成
 
-**Cimpl** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を Cimpl サポート ( **+1 866-982-8250** ) に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Cimpl** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を Cimpl サポート ( **+1 866-982-8250**) に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -142,9 +142,9 @@ Cimpl で Azure AD シングル サインオンを構成するには、次の手
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -179,7 +179,7 @@ Cimpl で Azure AD シングル サインオンを構成するには、次の手
 
 ### <a name="create-cimpl-test-user"></a>Cimpl のテスト ユーザーの作成
 
-このセクションの目的は、Cimpl で Britta Simon というユーザーを作成することです。 Cimpl のサポート ( **+1 866-982-8250** ) と連携し、Cimpl アカウントにユーザーを追加してください。
+このセクションの目的は、Cimpl で Britta Simon というユーザーを作成することです。 Cimpl のサポート ( **+1 866-982-8250**) と連携し、Cimpl アカウントにユーザーを追加してください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

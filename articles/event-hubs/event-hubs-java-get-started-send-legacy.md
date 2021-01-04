@@ -4,12 +4,12 @@ description: この記事では、以前の azure-eventhubs パッケージを�
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e77ff762de11a9c8a723b162993db11efe715b66
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e86ca76f3eb661e1407a02b58e60b62b391f5702
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591550"
+ms.locfileid: "97607985"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Java を使用して Azure Event Hubs との間でイベントを送受信する (azure-eventhubs)
 
@@ -17,7 +17,6 @@ ms.locfileid: "97591550"
 
 > [!WARNING]
 > このクイックスタートでは、以前の **azure-eventhubs** パッケージと **azure-eventhubs-eph** パッケージを使用します。 最新の **azure-messaging-eventhubs** パッケージを使用するクイックスタートについては、[azure-messaging-eventhubs を使用したイベントの送受信](event-hubs-java-get-started-send.md)に関するページを参照してください。 古いパッケージではなく新しいパッケージを使用するようにアプリケーションを移行するには、[azure-eventhubs から azure-messaging-eventhubs への移行ガイド](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)に関するページを参照してください。 
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -75,7 +74,6 @@ public class SimpleSend {
     public static void main(String[] args)
             throws EventHubException, ExecutionException, InterruptedException, IOException {
 
-
     }
  }
 ```
@@ -109,7 +107,6 @@ ConnectionStringBuilder クラスを使用して、Event Hubs クライアント
         // Each EventHubClient instance spins up a new TCP/TLS connection, which is expensive.
         // It is always a best practice to reuse these instances. The following sample shows this.
         final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
-
 
         try {
             for (int i = 0; i < 10; i++) {
@@ -418,7 +415,6 @@ eventHubClient.sendSync(sendEvent, partitionKey);
 環境内で利用できるどのデータストアでも使用できます。
 
 com.microsoft.azure.eventprocessorhost.EventProcessorHost クラスには、EventProcessorHost のチェックポイント マネージャーをオーバーライドする際に使用できる 2 つのコンストラクターがあります。
-
 
 ## <a name="next-steps"></a>次のステップ
 次の記事を参照してください。 

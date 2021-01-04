@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 869cf5a47831844b04e0461a95fb7d16aa4d1569
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 520b2eff91faf2e333ab0a5df7bcc85e6a47c80a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111048"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585192"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする
 
@@ -29,9 +29,7 @@ Azure Active Directory B2C (Azure AD B2C) に表示されるユーザー イン�
 > [!TIP]
 > ユーザー フロー ページのバナー ロゴ、背景画像、背景色のみを変更する場合は、[会社のブランド](company-branding.md)機能を試します。
 
-
 ## <a name="custom-html-and-css-overview"></a>カスタム HTML および CSS の概要
-
 
 Azure AD B2C では、[クロス オリジン リソース共有 (CORS)](https://www.w3.org/TR/cors/) を使用して、顧客のブラウザーでコードが実行されます。 実行時に、コンテンツは、ユーザー フローまたはカスタム ポリシーで指定された URL から読み込まれます。 ユーザー エクスペリエンスの各ページでは、そのページに指定した URL からコンテンツが読み込まれます。 URL から読み込まれたコンテンツが Azure AD B2C によって挿入された HTML フラグメントに統合され、ページが顧客に表示されます。
 
@@ -121,7 +119,6 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
-
 
 ### <a name="1-create-your-html-content"></a>1.HTML コンテンツを作成する
 
@@ -235,7 +232,6 @@ Blob ストレージ内にパブリック コンテナーを作成するには�
 1. **[要求の送信]** を選択します。
     結果は `XHR status: 200` となるはずです。 
     エラーが発生した場合は、CORS の設定が正しいことを確認します。 場合によっては、ブラウザーのキャッシュをクリアするか、Ctrl + Shift + P キーを押してプライベート ブラウズ セッションを開く必要もあります。
-
 
 ::: zone pivot="b2c-user-flow"
 
@@ -391,10 +387,7 @@ git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
 1. ここで、前述のように、HTML ファイルを指すようにポリシーを変更します。
 1. 欠落しているフォント、イメージ、または CSS がある場合は、拡張ポリシーおよび \*.html ファイルでお使いの参照を確認してください。
 
-
 ## <a name="next-steps"></a>次のステップ
 
 [クライアント側の JavaScript コード](javascript-and-page-layout.md)を有効にする方法を確認します。
-
-
 

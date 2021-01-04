@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: dbc9e48987f527c9579decc3db84091a432a17e5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601018"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607900"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Java SDK 用 Application Insights のトラブルシューティングおよび Q&A
 
@@ -63,7 +63,6 @@ ms.locfileid: "96601018"
 または、使用するクライアントが[電話やその他のデバイス][platforms]内のアプリの場合、そのアプリからテレメトリを送信できます。
 
 クライアントおよびサーバー テレメトリの両方の設定に、同じインストルメンテーション キーを使用します。 データは同じ Application Insights リソース内に表示され、クライアントとサーバーのイベントを関連付けることができるようになります。
-
 
 ## <a name="disabling-telemetry"></a>テレメトリの無効化
 **テレメトリの収集を無効にする方法を教えてください。**
@@ -183,7 +182,6 @@ Application Insights では `org.apache.http` が使用されます。 これは
 
 >[!NOTE]
 >アプリですべての名前空間についてデバッグ レベルのログ記録を有効にすると、名前が `com.microsoft.applicationinsights.core.dependencies.http` に変更された `org.apache.http` を含むすべての実行中のモジュールによってこれが適用されます。 ログ呼び出しは Apache のライブラリによって行われるため、Application Insights では、これらの呼び出しにフィルタリングを適用できません。 デバッグ レベルのログ記録では多量のログ データが生成されるため、実稼働インスタンスにはお勧めしません。
-
 
 ## <a name="next-steps"></a>次のステップ
 **Java サーバー アプリ用に Application Insights を設定しました。他には何ができるか教えてください。**

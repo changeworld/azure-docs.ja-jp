@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: ae3ffb9dc387129153b684a849ba4e58274ad80c
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0018b7bafa8ff2ecd328a150df752082c85484e2
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563281"
+ms.locfileid: "97608512"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub Actions を使用した継続的デリバリー
 
 [GitHub Actions](https://github.com/features/actions) を使用して、コードを自動的にビルドして Azure Functions アプリにデプロイするワークフローを定義します。 
 
-GitHub Actions の[ワークフロー](https://help.github.com/articles/about-github-actions#workflow)とは、お使いの GitHub リポジトリに定義する自動化されたプロセスです。 このプロセスによって、GitHub 上にお使いの関数アプリ プロジェクトをビルドしてデプロイする方法が GitHub に対して指示されます。 
+GitHub Actions の[ワークフロー](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions)とは、お使いの GitHub リポジトリに定義する自動化されたプロセスです。 このプロセスによって、GitHub 上にお使いの関数アプリ プロジェクトをビルドしてデプロイする方法が GitHub に対して指示されます。 
 
 ワークフローは、お使いのリポジトリの `/.github/workflows/` パスの YAML (.yml) ファイルに定義されます。 この定義には、ワークフローを構成するさまざまな手順とパラメーターが含まれます。 
 
@@ -40,7 +40,7 @@ Azure Functions のワークフロー ファイルには、次の 3 つのセク
 
 GitHub Actions 用の Azure Functions での認証で推奨される方法は、発行プロファイルを使用する方法です。 サービス プリンシパルを使用して認証することもできます。 詳細については、[この GitHub Actions リポジトリ](https://github.com/Azure/functions-action)を参照してください。 
 
-発行プロファイルの資格情報を [GitHub シークレット](https://docs.github.com/en/actions/reference/encrypted-secrets)として保存した後、このシークレットをワークフロー内で使用して Azure で認証します。 
+発行プロファイルの資格情報を [GitHub シークレット](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets)として保存した後、このシークレットをワークフロー内で使用して Azure で認証します。 
 
 #### <a name="download-your-publish-profile"></a>発行プロファイルのダウンロード
 

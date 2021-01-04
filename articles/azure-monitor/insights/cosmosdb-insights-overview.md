@@ -5,12 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: dcd64cf779b931dbf3b4f743844071835e0b8c91
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5e40f91945f83af7880f272f1578370f2ee1ec42
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932058"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608495"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Monitor for Azure Cosmos DB の探索
 
@@ -67,11 +67,11 @@ Azure Monitor for Azure Cosmos DB を使用すると、すべての Azure Cosmos
 
 ### <a name="failures"></a>エラー
 
-ページの上部にある **[エラー]** を選択すると、ブック テンプレートの**エラー**部分が表示されます。 要求数の合計が、それらの要求を構成する応答の配分と共に表示されます。
+ページの上部にある **[エラー]** を選択すると、ブック テンプレートの **エラー** 部分が表示されます。 要求数の合計が、それらの要求を構成する応答の配分と共に表示されます。
 
 ![HTTP 要求タイプごとの内訳を含むエラーのスクリーンショット](./media/cosmosdb-insights-overview/failures.png)
 
-| コード      |  説明       | 
+| コード |  説明       | 
 |-----------|:--------------------|
 | `200 OK`  | 次のいずれかの REST 操作が成功しました。 </br>- リソースに対する GET。 </br> - リソースに対する PUT。 </br> - リソースに対する POST。 </br> - ストアド プロシージャ リソースに対する POST でのストアド プロシージャの実行。|
 | `201 Created` | リソースを作成するための POST 操作が成功しました。 |
@@ -81,7 +81,7 @@ Azure Monitor for Azure Cosmos DB を使用すると、すべての Azure Cosmos
 
 ### <a name="capacity"></a>容量
 
-ページの上部にある **[容量]** を選択すると、ブック テンプレートの**容量**部分が表示されます。 保有するドキュメント数、時間の経過に伴うドキュメントの増加、データ使用状況、利用可能な残りストレージ容量の合計が表示されます。  これは、ストレージとデータ使用率の潜在的な問題を特定する目的で役立てることができます。
+ページの上部にある **[容量]** を選択すると、ブック テンプレートの **容量** 部分が表示されます。 保有するドキュメント数、時間の経過に伴うドキュメントの増加、データ使用状況、利用可能な残りストレージ容量の合計が表示されます。  これは、ストレージとデータ使用率の潜在的な問題を特定する目的で役立てることができます。
 
 ![[容量] ブック](./media/cosmosdb-insights-overview/capacity.png) 
 
@@ -89,7 +89,7 @@ Azure Monitor for Azure Cosmos DB を使用すると、すべての Azure Cosmos
 
 ### <a name="operations"></a>操作 
 
-ページの上部にある **[操作]** を選択すると、ブック テンプレートの**操作**部分が表示されます。 送信された要求の種類ごとに要求の内訳を確認できます。 
+ページの上部にある **[操作]** を選択すると、ブック テンプレートの **操作** 部分が表示されます。 送信された要求の種類ごとに要求の内訳を確認できます。 
 
 以下の例を見ると、`eastus-billingint` は、読み取り要求の大部分を受け取っていますが、upsert 要求と作成要求はごくわずかであることがわかります。 `westeurope-billingint` は、要求の観点から言えば読み取りのみですが、現在このブックがパラメーターでスコープ設定されている時間範囲は、少なくとも過去 4 時間となります。
 

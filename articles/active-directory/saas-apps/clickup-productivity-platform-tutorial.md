@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 99ee85c569340d8f1d3cff27112436465238c05f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 753256adddf8b28518bac45011d582bc7a079629
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455886"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670404"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>チュートリアル:Azure Active Directory と ClickUp Productivity Platform の統合
 
@@ -41,7 +41,7 @@ ClickUp Productivity Platform と Azure AD の統合を構成するには、次�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* ClickUp Productivity Platform では、 **SP** Initiated SSO がサポートされます
+* ClickUp Productivity Platform では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-clickup-productivity-platform-from-the-gallery"></a>ギャラリーからの ClickUp Productivity Platform の追加
 
@@ -61,13 +61,13 @@ Azure AD への ClickUp Productivity Platform の統合を構成するには、�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **ClickUp Productivity Platform** 」と入力し、結果パネルで **ClickUp Productivity Platform** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ClickUp Productivity Platform**」と入力し、結果パネルで **ClickUp Productivity Platform** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の ClickUp Productivity Platform](common/search-new-app.png)
+    ![結果一覧の ClickUp Productivity Platform](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、ClickUp Productivity Platform で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、ClickUp Productivity Platform で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと ClickUp Productivity Platform 内の関連ユーザーの間にリンク関係が確立されている必要があります。
 
 ClickUp Productivity Platform で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -131,7 +131,7 @@ ClickUp Productivity Platform で Azure AD シングル サインオンを構成
     ![スクリーンショットは、[Configure Microsoft Single Sign On]\(Microsoft のシングル サインオンの構成\) ページを示します。ここで、[Entity I D]\(エンティティ I D\) をコピーし、[Azure Federation Metadata U R L]\(Azure フェデレーション メタデータ U R L\) を保存できます。](./media/clickup-productivity-platform-tutorial/configure3.png)
 
     a. **[Copy]\(コピー\)** をクリックして [Entity ID]\(エンティティ ID\) の値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子 (エンティティ ID)]** ボックスに貼り付けます。
-    
+
     b. **[Azure Federation Metadata Url]\(Azure のフェデレーション メタデータ URL\)** ボックスに、Azure portal からコピーした [アプリのフェデレーション メタデータ URL] の値を貼り付けて、 **[Save]\(保存\)** をクリックします。
 
 5. この設定を完了するには、 **[Authenticate With Microsoft to complete setup]\(Microsoft で認証してセットアップを完了する\)** をクリックして、Microsoft アカウントで認証します。
@@ -154,9 +154,9 @@ ClickUp Productivity Platform で Azure AD シングル サインオンを構成
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -194,7 +194,7 @@ ClickUp Productivity Platform で Azure AD シングル サインオンを構成
 1. 別の Web ブラウザーのウィンドウで、管理者として ClickUp Productivity Platform テナントにサインオンします。
 
 2. **[User profile]\(ユーザー プロファイル\)** をクリックし、 **[People]\(ユーザー\)** を選択します。
-   
+
     ![スクリーンショットは、ClickUp Productivity テナントを示します。](./media/clickup-productivity-platform-tutorial/configure0.png)
 
     ![スクリーンショットは、[People]\(ユーザー\) リンクが選択されていることを示します。](./media/clickup-productivity-platform-tutorial/user1.png)

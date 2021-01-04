@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 39c1972eba84f4f1990c87112c5801c386849640
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: aada418b4f74c38a2a35c793deb85b94b703fb89
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545960"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629359"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure ページ BLOB の概要
 
@@ -57,7 +57,7 @@ Azure Site Recovery、Azure Backup のようなファースト パーティの M
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-最初に、コンテナーへの参照を取得します。 ページ BLOB を作成するには、[GetPageBlobClient](/dotnet/api/azure.storage.blobs.specialized.specializedblobextensions.getpageblobclient) メソッドを呼び出してから、[PageBlobClient.Create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create) メソッドを呼び出します。 作成する BLOB の最大サイズを渡します。 サイズは 512 バイトの倍数にする必要があります。
+最初に、コンテナーへの参照を取得します。 ページ BLOB を作成するには、GetPageBlobClient メソッドを呼び出してから、[PageBlobClient.Create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create) メソッドを呼び出します。 作成する BLOB の最大サイズを渡します。 サイズは 512 バイトの倍数にする必要があります。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_CreatePageBlob":::
 

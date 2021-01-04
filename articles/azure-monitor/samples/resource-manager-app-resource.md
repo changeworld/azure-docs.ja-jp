@@ -6,12 +6,12 @@ ms.topic: sample
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/08/2020
-ms.openlocfilehash: d7a8a7b7fa75d7d9bb4dc45a3432370bac4cb4d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5818f1ffac9c89e24c1a12cf92fc5fbf1ddf2386
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498646"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657228"
 ---
 # <a name="resource-manager-template-samples-for-creating-application-insights-resources"></a>Application Insights リソースを作成するための Resource Manager テンプレートのサンプル
 
@@ -107,7 +107,7 @@ ms.locfileid: "86498646"
 
 ## <a name="workspace-based-application-insights-resource"></a>ワークスペース ベースの Application Insights リソース 
 
-次の例では、[ワークスペースベースの Application Insights リソース](../app/create-workspace-resource.md)を作成します。 ワークスペースベースの Application Insights は、現在**プレビュー**段階にあります。 
+次の例では、[ワークスペースベースの Application Insights リソース](../app/create-workspace-resource.md)を作成します。 ワークスペースベースの Application Insights は、現在 **プレビュー** 段階にあります。 
 
 
 ### <a name="template-file"></a>テンプレート ファイル

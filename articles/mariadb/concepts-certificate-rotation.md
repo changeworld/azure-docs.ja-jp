@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 29a693ac8ff0b170abf59c9671d4b411b456b540
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 02c0ecfc24b65afd46d75464b5411cfd5cf61857
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346980"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591533"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Azure Database for MariaDB のルート CA の変更について
 
@@ -39,13 +39,13 @@ SSL/TLS を使用し、ルート証明書を検証しているすべてのアプ
 接続文字列が抽象化されるクライアントを使用している場合、証明書が検証されているかどうかを確認するには、クライアントのドキュメントを参照してください。
 Azure Database for MariaDB の sslmode については、[SSL モードの説明](concepts-ssl-connection-security.md#default-settings)に関する記事をご確認ください。
 
-証明書の予期しない取り消しによってアプリケーションの可用性が中断されないようにするには、または取り消された証明書を更新するには、「 [**接続を維持するために必要な作業**](concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)」セクションを参照してください。
+証明書の予期しない取り消しによってアプリケーションの可用性が中断されないようにするには、または取り消された証明書を更新するには、「[**接続を維持するために必要な作業**](concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)」セクションを参照してください。
 
 ## <a name="what-do-i-need-to-do-to-maintain-connectivity"></a>接続を維持するために必要な作業
 
 証明書の予期しない取り消しによってアプリケーションの可用性が中断されないようにするため、または取り消された証明書を更新するため、以下の手順に従います。 考え方は、現在の証明書と新しい証明書を組み合わせた新しい *.pem* ファイルを作成し、SSL 証明書の検証の間に、許可された値の 1 つを使用する、というものです。 次の手順を参照してください。
 
-*   以下のリンクから、 **BaltimoreCyberTrustRoot** と **DigiCertGlobalRootG2** の CA をダウンロードします。
+*   以下のリンクから、**BaltimoreCyberTrustRoot** と **DigiCertGlobalRootG2** の CA をダウンロードします。
     *   https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem
     *   https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem
 
@@ -63,11 +63,11 @@ Azure Database for MariaDB の sslmode については、[SSL モードの説明
           次に、元のキーストア ファイルを、新しく生成されたものに置き換えます。
         *   System.setProperty("javax.net.ssl.trustStore","path_to_truststore_file"); 
         *   System.setProperty("javax.net.ssl.trustStorePassword","password");
-    *   .NET (MariaDB Connector/NET、MariaDBConnector) ユーザーの場合は、 **BaltimoreCyberTrustRoot** と **DigiCertGlobalRootG2** の両方が Windows 証明書ストアの信頼されたルート証明機関に存在することを確認します。 いずれかの証明書が存在しない場合は、不足している証明書をインポートします。
+    *   .NET (MariaDB Connector/NET、MariaDBConnector) ユーザーの場合は、**BaltimoreCyberTrustRoot** と **DigiCertGlobalRootG2** の両方が Windows 証明書ストアの信頼されたルート証明機関に存在することを確認します。 いずれかの証明書が存在しない場合は、不足している証明書をインポートします。
 
         ![Azure Database for MariaDB .net 証明書](media/overview/netconnecter-cert.png)
 
-    *   SSL_CERT_DIR を使用する Linux 上の .NET ユーザーの場合は、 **BaltimoreCyberTrustRoot** と **DigiCertGlobalRootG2** の両方が SSL_CERT_DIR によって示されるディレクトリに存在することを確認します。 いずれかの証明書が存在しない場合は、不足している証明書ファイルを作成します。
+    *   SSL_CERT_DIR を使用する Linux 上の .NET ユーザーの場合は、**BaltimoreCyberTrustRoot** と **DigiCertGlobalRootG2** の両方が SSL_CERT_DIR によって示されるディレクトリに存在することを確認します。 いずれかの証明書が存在しない場合は、不足している証明書ファイルを作成します。
 
     *   その他の (MariaDB Client、MariaDB Workbench、C、C++、Go、Python、Ruby、PHP、NodeJS、Perl、Swift) ユーザーの場合は、次の形式のような 2 つの CA 証明書ファイルをマージできます</b>
 
@@ -87,7 +87,7 @@ Azure Database for MariaDB の sslmode については、[SSL モードの説明
 *    接続がタイムアウトしました
 
 > [!NOTE]
-> 証明書の変更が行われるまで、 **Baltimore 証明書** を破棄または変更しないでください。 変更が完了すると、Microsoft からメッセージが送信されます。その後、Baltimore 証明書を安全に削除できます。 
+> 証明書の変更が行われるまで、**Baltimore 証明書** を破棄または変更しないでください。 変更が完了すると、Microsoft からメッセージが送信されます。その後、Baltimore 証明書を安全に削除できます。 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -129,8 +129,12 @@ Azure Database for MariaDB によって使用されるこれらの証明書は�
 この更新はクライアント側の変更であるため、レプリカ サーバーからデータを読み取るためにクライアントを使用している場合は、それらのクライアントにも変更を適用する必要があります。
 
 ###    <a name="12-if-i-am-using-data-in-replication-do-i-need-to-perform-any-action"></a>12.データイン レプリケーションを使用している場合は、何かアクションを実行する必要がありますか?
+
 [データイン レプリケーション](concepts-data-in-replication.md)を使用して Azure Database for MySQL に接続している場合は、次の 2 つの点を考慮する必要があります。
-*   仮想マシン (オンプレミスまたは Azure 仮想マシン) から Azure Database for MySQL へのデータ レプリケーションの場合は、レプリカを作成するために SSL が使用されているかどうかを確認する必要があります。 **SHOW SLAVE STATUS** を実行し、次の設定を確認します。  
+
+> [!NOTE]
+>  この記事には、Microsoft が使用しなくなった "スレーブ" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+*   仮想マシン (オンプレミスまたは Azure 仮想マシン) から Azure Database for MySQL へのデータ レプリケーションの場合は、レプリカを作成するために SSL が使用されているかどうかを確認する必要があります。 **SHOW SLAVE STATUS** を実行し、次の設定を確認します。 
 
     ```azurecli-interactive
     Master_SSL_Allowed            : Yes
@@ -143,7 +147,7 @@ Azure Database for MariaDB によって使用されるこれらの証明書は�
 
     CA_file、SSL_Cert、SSL_Key に対して証明書が提供されていることがわかった場合は、[新しい証明書](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)を追加してファイルを更新する必要があります。
 
-*   2 つの Azure Database for MySQL 間のデータ レプリケーションの場合は、 **CALL mysql.az_replication_change_master** を実行し、最後のパラメーター [master_ssl_ca](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication) として新しいデュアル ルート証明書を指定することによってレプリカをリセットする必要があります。
+*   2 つの Azure Database for MySQL 間のデータ レプリケーションの場合は、**CALL mysql.az_replication_change_master** を実行し、最後のパラメーター [master_ssl_ca](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication) として新しいデュアル ルート証明書を指定することによってレプリカをリセットする必要があります。
 
 ### <a name="13-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>13.SSL が使用されているかどうかを確認するためのサーバー側クエリはありますか?
 サーバーへの接続に SSL 接続を使用しているかどうかを確認するには、[SSL の検証](howto-configure-ssl.md#verify-the-ssl-connection)に関する記事を参照してください。

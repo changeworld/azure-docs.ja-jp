@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 7a206d61124b2524feae0cf155083c1939696e18
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 20e9ed7e83ff3359651acebc11a939a998f2889d
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853324"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607917"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -79,7 +79,6 @@ Application Insights では、相関付け HTTP プロトコル用の[拡張機�
 | `Operation_Id`                         | [trace-id](https://w3c.github.io/trace-context/#trace-id)                                           |
 | `Operation_ParentId`                   | この範囲の親範囲の [parent-id](https://w3c.github.io/trace-context/#parent-id)。 これがルート範囲の場合は、このフィールドを空にする必要があります。     |
 
-
 詳細については、「[Application Insights Telemetry のデータ モデル](../../azure-monitor/app/data-model.md)」をご覧ください。
 
 ### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>.NET アプリの W3C 分散トレース サポートを有効にする
@@ -103,7 +102,7 @@ W3C TraceContext ベースの分散トレースは、最近のすべての .NET 
        <Param name ="enableW3CBackCompat" value = "true" />
     </Add>
     ```
-    
+
   - Spring Boot アプリの場合は、次のプロパティを追加します。
 
     - `azure.application-insights.web.enable-W3C=true`
@@ -139,7 +138,7 @@ W3C TraceContext ベースの分散トレースは、最近のすべての .NET 
   ```JavaScript
     distributedTracingMode: DistributedTracingModes.W3C
   ```
-  
+
 - **[スニペット ベースのセットアップ](./javascript.md#snippet-based-setup)**
 
 次の構成を追加します。

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4b0be672c0768b4facb6518c777d4fe56eb28aa9
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: c816fbad05831c83c891c70849986b38cb7fdbeb
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515678"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589544"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>セキュリティ フレーム:入力の検証 | 軽減策 
 | 製品/サービス | [アーティクル] |
@@ -73,7 +73,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [IE8 のセキュリティ パート V: 包括的な保護](/archive/blogs/ie/ie8-security-part-v-comprehensive-protection)  |
-| **手順** | <p>ユーザーが制御可能なコンテンツが含まれている可能性のある各ページで、`X-Content-Type-Options:nosniff` HTTP ヘッダーを使用する必要があります。 この要件に従うときは、ユーザーが制御可能なコンテンツが含まれている可能性のあるページだけを対象に、この必須のヘッダーをページごとに設定することも、アプリケーションのすべてのページにグローバルに設定することもできます。</p><p>Web サーバーから提供されるファイルの各種類には、コンテンツの性質 (画像、テキスト、アプリケーションなど) を示す [MIME の種類](https://en.wikipedia.org/wiki/Mime_type) (" *コンテンツ タイプ* " とも呼ばれます) が関連付けられています。</p><p>X-Content-Type-Options ヘッダーは、コンテンツを MIME スニッフィングしないことを開発者が指定できる HTTP ヘッダーです。 このヘッダーは、MIME スニッフィング攻撃を軽減することを目的としています。 このヘッダーのサポートは、Internet Explorer 8 (IE8) で追加されました。</p><p>Internet Explorer 8 (IE8) のユーザーだけが、X-Content-Type-Options のメリットを享受できます。 現在、以前のバージョンの Internet Explorer では、X-Content-Type-Options ヘッダーは考慮されません。</p><p>Internet Explorer 8 (以降) は、MIME スニッフィングのオプトアウト機能を実装する唯一の主要ブラウザーです。 他の主要ブラウザー (Firefox、Safari、Chrome) が同様の機能を実装したら、この推奨事項を更新して、それらのブラウザー用の構文も含める予定です。</p>|
+| **手順** | <p>ユーザーが制御可能なコンテンツが含まれている可能性のある各ページで、`X-Content-Type-Options:nosniff` HTTP ヘッダーを使用する必要があります。 この要件に従うときは、ユーザーが制御可能なコンテンツが含まれている可能性のあるページだけを対象に、この必須のヘッダーをページごとに設定することも、アプリケーションのすべてのページにグローバルに設定することもできます。</p><p>Web サーバーから提供されるファイルの各種類には、コンテンツの性質 (画像、テキスト、アプリケーションなど) を示す [MIME の種類](https://en.wikipedia.org/wiki/Mime_type) ("*コンテンツ タイプ*" とも呼ばれます) が関連付けられています。</p><p>X-Content-Type-Options ヘッダーは、コンテンツを MIME スニッフィングしないことを開発者が指定できる HTTP ヘッダーです。 このヘッダーは、MIME スニッフィング攻撃を軽減することを目的としています。 このヘッダーのサポートは、Internet Explorer 8 (IE8) で追加されました。</p><p>Internet Explorer 8 (IE8) のユーザーだけが、X-Content-Type-Options のメリットを享受できます。 現在、以前のバージョンの Internet Explorer では、X-Content-Type-Options ヘッダーは考慮されません。</p><p>Internet Explorer 8 (以降) は、MIME スニッフィングのオプトアウト機能を実装する唯一の主要ブラウザーです。 他の主要ブラウザー (Firefox、Safari、Chrome) が同様の機能を実装したら、この推奨事項を更新して、それらのブラウザー用の構文も含める予定です。</p>|
 
 ### <a name="example"></a>例
 この必須のヘッダーをアプリケーションのすべてのページでグローバルに有効にするには、次のいずれかを実行します。 

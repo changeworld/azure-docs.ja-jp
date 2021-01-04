@@ -11,12 +11,12 @@ ms.date: 09/22/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e272c402cac803d10d9998298ce6d3370d0e000
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7fabad618233e8866c545e1c5ccbcc8cb7508ebf
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348805"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652099"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-attribute-mapping"></a>Azure AD Connect クラウド プロビジョニング属性マッピング
 
@@ -52,45 +52,51 @@ Azure AD Connect クラウド プロビジョニングには新しい機能が�
 > このドキュメントでは、Azure portal を使用して属性をマップする方法について説明します。  Graph の使用方法については、「[変換](how-to-transformation.md)」を参照してください。
 
 ## <a name="using-attribute-mapping"></a>属性マッピングの使用
+
 新しい機能を使用するには、次の手順に従ってください。
-
- 1.  Azure Portal で、 **[Azure Active Directory]** を選びます。
- 2.  **[Azure AD Connect]** を選びます。
- 3.  **[プロビジョニングの管理]** を選択します。
-
-   ![プロビジョニングを管理する](media/how-to-configure/manage1.png)
- 
- 4. **[構成]** の下で、自分の構成を選択します。
- 5. **[クリックしてマッピングを編集]** を選択します。  これにより [属性マッピング] 画面が開きます。
-
- ![属性の追加](media/how-to-attribute-mapping/mapping6.png)
- 6.  **[属性の追加]** をクリックします。
-
- ![マッピングの種類](media/how-to-attribute-mapping/mapping1.png)
- 
- 7. **[マッピングの種類]** を選択します。  この例では、式を使用します。
- 8.  ボックスに式を入力します。  この例では、`Replace([mail], "@contoso.com", , ,"", ,).` を使用しています。
- 9.  ターゲット属性を入力します。  この例では、ExtensionAttribute15 を使用します。
- 10. これを適用するタイミングを選択して、 **[適用]** をクリックします。
-   
-   ![[マッピングの編集]](media/how-to-attribute-mapping/mapping2a.png)
- 11. [属性マッピング] 画面に戻ると、新しい属性マッピングが表示されます。  
- 12. **[スキーマの保存]** をクリックします。
-
- ![スキーマの保存](media/how-to-attribute-mapping/mapping3.png)
-
-## <a name="test-your-attribute-mapping"></a>属性マッピングをテストする
-属性マッピングをテストするには、[オンデマンドのプロビジョニング](how-to-on-demand-provision.md)を使用できます。  から 
 
 1.  Azure Portal で、 **[Azure Active Directory]** を選びます。
 2.  **[Azure AD Connect]** を選びます。
 3.  **[プロビジョニングの管理]** を選択します。
+
+    ![プロビジョニングを管理する](media/how-to-configure/manage1.png)
+
+4. **[構成]** の下で、自分の構成を選択します。
+5. **[クリックしてマッピングを編集]** を選択します。  これにより [属性マッピング] 画面が開きます。
+
+    ![属性の追加](media/how-to-attribute-mapping/mapping6.png)
+
+6.  **[属性の追加]** をクリックします。
+
+    ![マッピングの種類](media/how-to-attribute-mapping/mapping1.png)
+
+7. **[マッピングの種類]** を選択します。  この例では、式を使用します。
+8.  ボックスに式を入力します。  この例では、`Replace([mail], "@contoso.com", , ,"", ,).` を使用しています。
+9.  ターゲット属性を入力します。  この例では、ExtensionAttribute15 を使用します。
+10. これを適用するタイミングを選択して、 **[適用]** をクリックします。
+
+    ![[マッピングの編集]](media/how-to-attribute-mapping/mapping2a.png)
+
+11. [属性マッピング] 画面に戻ると、新しい属性マッピングが表示されます。  
+12. **[スキーマの保存]** をクリックします。
+
+    ![スキーマの保存](media/how-to-attribute-mapping/mapping3.png)
+
+## <a name="test-your-attribute-mapping"></a>属性マッピングをテストする
+
+属性マッピングをテストするには、[オンデマンドのプロビジョニング](how-to-on-demand-provision.md)を使用できます。  から 
+
+1. Azure Portal で、 **[Azure Active Directory]** を選びます。
+2. **[Azure AD Connect]** を選びます。
+3. **[プロビジョニングの管理]** を選択します。
 4. **[構成]** の下で、自分の構成を選択します。
 5. **[検証]** で、 **[ユーザーのプロビジョニング]** ボタンをクリックします。 
 6. [オンデマンド プロビジョニング] 画面上で。  ユーザーまたはグループの **識別名** を入力し、 **[プロビジョニング]** ボタンをクリックします。  
 7. 完了すると、成功の画面と、正常にプロビジョニングされたことを示す 4 つの緑色のチェック ボックスが表示されます。  
-  ![プロビジョニングの成功](media/how-to-attribute-mapping/mapping4.png)
-1. **[アクションの実行]** で **[詳細の表示]** をクリックします。  右側を見ると、新しい属性が同期され、式が適用されていることがわかります。
+
+    ![プロビジョニングの成功](media/how-to-attribute-mapping/mapping4.png)
+
+8. **[アクションの実行]** で **[詳細の表示]** をクリックします。  右側を見ると、新しい属性が同期され、式が適用されていることがわかります。
 
   ![実行するアクション](media/how-to-attribute-mapping/mapping5.png)
 

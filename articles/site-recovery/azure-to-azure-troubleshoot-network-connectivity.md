@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 674ce347f929dd70e32537e9bde3139c5fafc7ea
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 24ffce1528aa5c82fec9666fa0cb7b8717107f54
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92368011"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652264"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure 間の VM ネットワーク接続の問題のトラブルシューティング
 
@@ -20,7 +20,7 @@ Site Recovery レプリケーションを動作させるには、VM から特定
 
 | **名前**                  | **商用**                               | **政府**                                 | **説明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| ストレージ                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | VM からソース リージョンのキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。 VM のすべてのキャッシュ ストレージ アカウントを把握している場合は、特定のストレージ アカウント URL に対して許可リストを使用できます。 たとえば、`*.blob.core.windows.net` ではなく、`cache1.blob.core.windows.net` や `cache2.blob.core.windows.net` などです。 |
+| ストレージ                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | VM からソース リージョンのキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。 VM のすべてのキャッシュ ストレージ アカウントを把握している場合は、特定のストレージ アカウント URL に対して許可リストを使用できます。 たとえば、`*.blob.core.windows.net` ではなく、`cache1.blob.core.windows.net` や `cache2.blob.core.windows.net` などです。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Site Recovery サービス URL に対する承認と認証に必要です。 |
 | レプリケーション               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | VM から Site Recovery サービス通信を実行できるようにするために必要です。 ファイアウォール プロキシによって IP がサポートされている場合は、該当する _Site Recovery IP_ を使用できます。 |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | VM から Site Recovery の監視および診断データを書き込むことができるようにするために必要です。 ファイアウォール プロキシによって IP がサポートされている場合は、該当する _Site Recovery Monitoring IP_ を使用できます。 |
@@ -51,7 +51,7 @@ VM がカスタム DNS 設定を使用するかどうかを確認するには、
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>問題 2:Site Recovery の構成に失敗しました (151196)
 
 > [!NOTE]
-> VM が **Standard** 内部ロード バランサーの背後にある場合、既定では、`login.microsoftonline.com` などの Microsoft 365 IP にアクセスすることはできません。 記事「 [Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration)」の説明に従って、内部ロード バランサーの種類を **Basic** に変更するか、発信アクセスを作成します。
+> VM が **Standard** 内部ロード バランサーの背後にある場合、既定では、`login.microsoftonline.com` などの Microsoft 365 IP にアクセスすることはできません。 記事「[Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration)」の説明に従って、内部ロード バランサーの種類を **Basic** に変更するか、発信アクセスを作成します。
 
 #### <a name="possible-cause"></a>考えられる原因
 
@@ -67,18 +67,21 @@ Microsoft 365 認証と ID IP4 エンドポイントへの接続を確立でき�
 
 この例は、レプリケートする VM に対して NSG ルールを構成する方法を示しています。
 
-- NSG ルールを使用して送信接続を制御している場合は、必要なすべての IP アドレス範囲のポート 443 に対して、" **HTTPS 送信を許可** " ルールを使用します。
+- NSG ルールを使用して送信接続を制御している場合は、必要なすべての IP アドレス範囲のポート 443 に対して、"**HTTPS 送信を許可**" ルールを使用します。
 - この例では、VM ソースの場所は **米国東部** で、ターゲットの場所は **米国中部** であると仮定します。
 
 #### <a name="nsg-rules---east-us"></a>NSG ルール - 米国東部
 
-1. 次のスクリーンショットで示すように、NSG の HTTPS 送信セキュリティ ルールを作成します。 この例では、次の **[宛先サービス タグ]** を使用します。 _Storage.EastUS_ および **[宛先ポート範囲]** : _443_ 。
+1. 次のスクリーンショットで示すように、NSG の HTTPS 送信セキュリティ ルールを作成します。 この例では、次の **[宛先サービス タグ]** を使用します。_Storage.EastUS_ および **[宛先ポート範囲]** : _443_。
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="com-error":::
+     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="Storage.EastUS のセキュリティ規則の [送信セキュリティ規則の追加] ウィンドウを示すスクリーンショット。":::
 
-1. 次のスクリーンショットで示すように、NSG の HTTPS 送信セキュリティ ルールを作成します。 この例では、次の **[宛先サービス タグ]** を使用します。 _AzureActiveDirectory_ および **[宛先ポート範囲]** : _443_ 。
+1. 次のスクリーンショットで示すように、NSG の HTTPS 送信セキュリティ ルールを作成します。 この例では、次の **[宛先サービス タグ]** を使用します。_AzureActiveDirectory_ および **[宛先ポート範囲]** : _443_。
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="com-error" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。 これにより、任意のリージョンの Site Recovery Service にアクセスできます。
+     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="Azure Active Directory のセキュリティ規則の [送信セキュリティ規則の追加] ウィンドウを示すスクリーンショット。":::
+
+1. 上記のセキュリティ規則と同様に、ターゲットの場所に対応する NSG 上の "EventHub.CentralUS" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。 これにより、Site Recovery 監視にアクセスできるようになります。
+1. NSG 上の "AzureSiteRecovery" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。 これにより、任意のリージョンの Site Recovery Service にアクセスできます。
 
 #### <a name="nsg-rules---central-us"></a>NSG ルール - 米国中部
 
@@ -118,8 +121,8 @@ Azure Site Recovery サービスのエンドポイントに対する接続を確
 1. モビリティ サービス エージェントは、Windows では IE から、Linux では `/etc/environment` からプロキシ設定を検出します。
 1. プロキシを Azure Site Recovery Mobility Service にのみ設定する場合は、次の場所にある _ProxyInfo.conf_ 内にプロキシの詳細を指定できます。
 
-   - **Linux** : `/usr/local/InMage/config/`
-   - **Windows** : `C:\ProgramData\Microsoft Azure Site Recovery\Config`
+   - **Linux**: `/usr/local/InMage/config/`
+   - **Windows**: `C:\ProgramData\Microsoft Azure Site Recovery\Config`
 
 1. _ProxyInfo.conf_ 内のプロキシ設定は、次の _INI_ 形式になっている必要があります。
 
@@ -130,7 +133,7 @@ Azure Site Recovery サービスのエンドポイントに対する接続を確
    ```
 
 > [!NOTE]
-> Azure Site Recovery Mobility Service エージェントでは、 **認証されていないプロキシ** のみがサポートされます
+> Azure Site Recovery Mobility Service エージェントでは、**認証されていないプロキシ** のみがサポートされます
 
 ### <a name="fix-the-problem"></a>問題の解決
 

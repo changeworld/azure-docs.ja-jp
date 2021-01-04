@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 356c1eea170b712e5cf7034e0c2652857e8bad3f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: de558c73f1ca1721dfa3380e296617661ff4e859
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456287"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670112"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certify"></a>チュートリアル: Azure Active Directory と Certify の統合
 
@@ -41,8 +41,8 @@ Certify と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Certify では、 **IDP** Initiated SSO がサポートされます
-* Certify では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Certify では、**IDP** Initiated SSO がサポートされます
+* Certify では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-certify-from-the-gallery"></a>ギャラリーからの Certify の追加
 
@@ -62,13 +62,13 @@ Azure AD への Certify の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Certify** 」と入力し、結果パネルで **Certify** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Certify**」と入力し、結果パネルで **Certify** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Certify](common/search-new-app.png)
+    ![結果一覧の Certify](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Certify で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Certify で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Certify 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Certify で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -138,9 +138,9 @@ Certify で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

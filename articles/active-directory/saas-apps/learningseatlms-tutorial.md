@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: a9357f81c3b22f70af2a4a05de2de10e19acfbd9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: edf9df1777c4ab1d204cfc8058ec22c2d4e3f663
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458661"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631756"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>チュートリアル:Azure Active Directory と Learning Seat LMS の統合
 
@@ -41,7 +41,7 @@ Learning Seat LMS と Azure AD の統合を構成するには、次のものが�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Learning Seat LMS では、 **SP と IDP** によって開始される SSO がサポートされます
+* Learning Seat LMS では、**SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-learning-seat-lms-from-the-gallery"></a>ギャラリーからの Learning Seat LMS の追加
 
@@ -61,13 +61,13 @@ Azure AD への Learning Seat LMS の統合を構成するには、ギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Learning Seat LMS** 」と入力し、結果パネル上の **[Learning Seat LMS]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Learning Seat LMS**」と入力し、結果パネル上の **[Learning Seat LMS]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果リストの Learning Seat LMS](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Learning Seat LMS で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Learning Seat LMS で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Learning Seat LMS 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Learning Seat LMS で Azure AD のシングル サインオンを構成してテストするには、次の一連の作業を完了させる必要があります。
@@ -112,7 +112,7 @@ Learning Seat LMS で Azure AD シングル サインオンを構成するには
     **[サインオン URL]** ボックスに、`https://<subdomain>.learningseatlms.com` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Learning Seat LMS クライアント サポート チーム](http://help.learningseatlms.com/help)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Learning Seat LMS クライアント サポート チーム](https://azuremarketplace.microsoft.com/marketplace/apps/aad.learnconnect?tab=Overview)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -130,7 +130,7 @@ Learning Seat LMS で Azure AD シングル サインオンを構成するには
 
 ### <a name="configure-learning-seat-lms-single-sign-on"></a>Learning Seat LMS のシングル サインオンの構成
 
-**Learning Seat LMS** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Learning Seat LMS サポート チーム](http://help.learningseatlms.com/help)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Learning Seat LMS** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Learning Seat LMS サポート チーム](https://azuremarketplace.microsoft.com/marketplace/apps/aad.learnconnect?tab=Overview)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -148,9 +148,9 @@ Learning Seat LMS で Azure AD シングル サインオンを構成するには
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -185,7 +185,7 @@ Learning Seat LMS で Azure AD シングル サインオンを構成するには
 
 ### <a name="create-learning-seat-lms-test-user"></a>Learning Seat LMS のテスト ユーザーの作成
 
-このセクションでは、Learning Seat LMS で Britta Simon というユーザーを作成します。 [Learning Seat LMS サポート チーム](http://help.learningseatlms.com/help)と連携して、Learning Seat LMS プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Learning Seat LMS で Britta Simon というユーザーを作成します。 [Learning Seat LMS サポート チーム](https://azuremarketplace.microsoft.com/marketplace/apps/aad.learnconnect?tab=Overview)と連携して、Learning Seat LMS プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

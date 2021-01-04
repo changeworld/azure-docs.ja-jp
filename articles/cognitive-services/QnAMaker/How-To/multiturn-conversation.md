@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 26fc976983fc08857e7771d58f15d0abcd9a1d3c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cef2e2ca9c7ad4640014d9b5a9a7da42d308ef7c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353223"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605146"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>フォローアップ プロンプトを使用して、複数のターンを含む会話を作成します。
 
@@ -38,7 +38,6 @@ ms.locfileid: "96353223"
 上の画像では、ユーザーが「**My account**」と入力して会話を開始しました。 ナレッジ ベースには、3 つのリンクされた質問と応答のペアがあります。 答えを絞り込むために、ユーザーはナレッジ ベース内の 3 つの選択肢のうちの 1 つを選択します。 質問 (#1) には 3 つのフォローアップ プロンプトがあり、チャット ボットで 3 つのオプション (#2) として提示されます。
 
 ユーザーがオプション (#3) を選ぶと、調整のための次のオプション (#4) が表示されます。 このシーケンスは、正しい最終応答 (#6) をユーザーが決定するまで続きます (#5)。
-
 
 ### <a name="use-multi-turn-in-a-bot"></a>ボットで複数ターンを使用する
 
@@ -79,7 +78,6 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
 > [!Caution]
 > 新規または空のナレッジ ベースのデータ ソースとしてエクスポートされた TSV または XLS の複数ターンのナレッジ ベース ファイルを使用することは、サポートされていません。 エクスポートされた複数ターン プロンプトをナレッジ ベースに追加するには、QnA Maker ポータルの **[設定]** ページから、そのファイルの種類を **インポート** する必要があります。
 
-
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>作成 API を使用して複数ターンのプロンプトを持つナレッジ ベースを作成する
 
 [QnA Maker 作成 API](/rest/api/cognitiveservices/qnamaker/knowledgebase/create) を使用して、複数ターンのプロンプトを持つナレッジ ケースを作成できます。 プロンプトは `context` プロパティの `prompts` 配列に追加されます。
@@ -116,7 +114,6 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
     |Context-only (コンテキストのみ)| このチェック ボックスをオンにします。 応答は、質問がコンテキストを指定する場合にのみ返されます。|
     |Link to answer (応答へのリンク)|「**Use the sign-in screen**」(サインイン画面を使用する) と入力して、既存の質問と応答のペアを検索します。|
 
-
 1.  1 つの一致が返されます。 この応答をフォローアップとして選択し、 **[保存]** を選択します。
 
     ![[Follow-up prompt (PREVIEW)] (フォローアップ プロンプト (プレビュー)) ページ](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
@@ -137,7 +134,6 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
 1. 表示テキストの編集が完了したら、 **[保存]** を選択します。
 1. 上部のナビゲーション バーで、 **[Save and train]\(保存してトレーニング\)** を選択します。
 
-
 ## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>新しい質問と応答のペアをフォローアップ プロンプトとして追加する
 
 新しい質問と応答のペアをナレッジ ベースに追加すると、各ペアがフォローアップ プロンプトとして既存の質問にリンクされるはずです。
@@ -155,7 +151,6 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
     |||
 
     ![新しいプロンプトの質問と応答を作成する](../media/conversational-context/create-child-prompt-from-parent.png)
-
 
 1. **[新規作成]** を選択してから、 **[保存]** を選択します。
 
@@ -227,7 +222,7 @@ KB を公開した後、 **[Create Bot]\(ボットの作成\)** ボタンを選�
             "questions": [
                 "Sign out"
             ],
-            "answer": "**Sign out**\n\nHere's how to sign out: \n\n Go to Start, and right-click your name. Then select Sign out. ",
+            "answer": "**Sign out**\n\nHere's how to sign out: \n\n  Go to Start, and right-click your name. Then select Sign out. ",
             "score": 38.01,
             "id": 18,
             "source": "product-manual.pdf",
@@ -353,7 +348,6 @@ QnA Maker _GenerateAnswer_ JSON 応答は、`answers`オブジェクトの最初
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>QnA Maker ID でナレッジ ベースをクエリする
 
 複数ターン機能を使用してカスタム アプリケーションをビルドする場合。 最初の質問の応答で、フォローアップ プロンプトとそれに関連付けられた `qnaId` が返されます。 ID が付与されたので、フォローアップ プロンプトの要求本文でこれを渡すことができます。 要求本文に `qnaId` とコンテキスト オブジェクト (これには以前の QnA Maker プロパティが含まれます) が含まれる場合、GenerateAnswer は、ランキング アルゴリズムを使用して質問テキストによる応答を見つけるのではなく、ID により正確な質問を返します。
-
 
 ## <a name="display-order-is-supported-in-the-update-api"></a>更新 API では表示の順序がサポートされている
 

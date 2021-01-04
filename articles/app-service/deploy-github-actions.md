@@ -7,16 +7,16 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: b94e35f504a4c4d6e934ec01b06105f749031e35
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 0c10cc683d8c8c2496ca8fdbd00f0e5065e2db35
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007383"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97604925"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのデプロイ
 
-[GitHub Actions](https://help.github.com/en/articles/about-github-actions) を使用して、GitHub からワークフローの自動化と [Azure App Service](overview.md) へのデプロイを実行します。 
+[GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions) を使用して、GitHub からワークフローの自動化と [Azure App Service](overview.md) へのデプロイを実行します。 
 
 ## <a name="prerequisites"></a>前提条件 
 
@@ -63,7 +63,7 @@ App Service デプロイ センターを使用して、GitHub Actions の使用�
 
 GitHub Actions 用の Azure App Services での認証で推奨される方法は、発行プロファイルを使用することです。 サービス プリンシパルを使用して認証することもできますが、そのプロセスにはさらに多くの手順が必要です。 
 
-発行プロファイル資格情報またはサービス プリンシパルを [GitHub シークレット](https://docs.github.com/en/actions/reference/encrypted-secrets)として保存して、Azure で認証します。 ワークフロー内のシークレットにアクセスします。 
+発行プロファイル資格情報またはサービス プリンシパルを [GitHub シークレット](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets)として保存して、Azure で認証します。 ワークフロー内のシークレットにアクセスします。 
 
 # <a name="publish-profile"></a>[発行プロファイル](#tab/applevel)
 
@@ -192,7 +192,7 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
     - name: Use Node.js ${{ env.NODE_VERSION }}
       uses: actions/setup-node@v1
       with:
@@ -305,7 +305,7 @@ jobs:
 
     steps:
       # Checkout the repo
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
       
       # Setup .NET Core SDK
       - name: Setup .NET Core
@@ -349,7 +349,7 @@ jobs:
     runs-on: windows-latest
     steps:
 
-    - uses: actions/checkout@master  
+    - uses: actions/checkout@main  
     
     - name: Install Nuget
       uses: nuget/setup-nuget@v1
@@ -435,7 +435,7 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
     - name: Use Node.js ${{ env.NODE_VERSION }}
       uses: actions/setup-node@v1
       with:
@@ -516,7 +516,7 @@ jobs:
 
     steps:
       # Checkout the repo
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
@@ -567,7 +567,7 @@ jobs:
     steps:
 
     # checkout the repo
-    - uses: actions/checkout@master  
+    - uses: actions/checkout@main
     
     - uses: azure/login@v1
       with:
@@ -657,7 +657,7 @@ jobs:
     steps:
     # checkout the repo
     - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
+      uses: actions/checkout@main
    
     - uses: azure/login@v1
       with:
@@ -746,7 +746,7 @@ GitHub には、一連のアクションが別々のリポジトリにありま�
 
 - [Docker でのログイン/ログアウト](https://github.com/Azure/docker-login)
 
-- [ワークフローをトリガーするイベント](https://help.github.com/en/articles/events-that-trigger-workflows)
+- [ワークフローをトリガーするイベント](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
 - [K8s のデプロイ](https://github.com/Azure/k8s-deploy)
 

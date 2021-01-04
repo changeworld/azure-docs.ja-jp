@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.openlocfilehash: 29f0f0c3fd48920990519aecfe5ae58c32b43db9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 410b33b5c6078d096fa4b2acaa7b49bc14c95e31
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253838"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608274"
 ---
 # <a name="list-entity"></a>リスト エンティティ
 
@@ -85,7 +85,6 @@ ms.locfileid: "91253838"
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
-
 これは、クエリ文字列で `verbose=false` が設定されている場合の JSON です。
 
 ```json
@@ -130,7 +129,6 @@ ms.locfileid: "91253838"
 |データ オブジェクト|エンティティ名|値|
 |--|--|--|
 |リスト エンティティ|`Cities`|`paris`|
-
 
 ## <a name="next-steps"></a>次のステップ
 

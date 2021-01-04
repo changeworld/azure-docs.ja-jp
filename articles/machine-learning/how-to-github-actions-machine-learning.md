@@ -10,16 +10,16 @@ ms.author: jukullam
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.custom: github-actions-azure
-ms.openlocfilehash: 4336827dc7f8cb45f04e4cef94d79d1e6409d5c0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e7f6066cb7ed5c166d3e2bdc3f895073b05b92b9
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795013"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605027"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>Azure Machine Learning で GitHub Actions を使用する
 
-Azure Machine Learning でモデルをトレーニングするために [GitHub Actions](https://help.github.com/en/articles/about-github-actions) を使ってみましょう。 
+Azure Machine Learning でモデルをトレーニングするために [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) を使ってみましょう。 
 
 > [!NOTE]
 > Azure Machine Learning 向けの GitHub Actions は現状のまま提供されており、Microsoft によって完全にはサポートされていません。 特定のアクションで問題が発生した場合は、アクションのリポジトリでイシューを開いてください。 たとえば、aml-deploy アクションで問題が発生した場合は、[https://github.com/Azure/aml-deploy]( https://github.com/Azure/aml-deploy) リポジトリで問題を報告してください。
