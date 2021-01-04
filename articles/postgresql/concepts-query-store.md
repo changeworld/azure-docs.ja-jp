@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 7b6c8faafac34ada664ddfadebf8d71a16c73fa7
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 5dff78989eef17f95d8b8dd108baafc53a3f761a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710534"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657024"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>クエリ ストアによるパフォーマンスの監視
 
@@ -29,11 +29,11 @@ Azure Database for PostgreSQL のクエリ ストア機能では、一定期間�
 1. Azure portal にサインインし、ご利用の Azure Database for PostgreSQL サーバーを選択します。
 2. メニューの **[設定]** セクションで、 **[サーバー パラメーター]** を選択します。
 3. `pg_qs.query_capture_mode` パラメーターを検索します。
-4. 値を `TOP` に設定して**保存**します。
+4. 値を `TOP` に設定して **保存** します。
 
 クエリ ストアでの待機統計を有効にするには、次の手順に従います。 
 1. `pgms_wait_sampling.query_capture_mode` パラメーターを検索します。
-1. 値を `ALL` に設定して**保存**します。
+1. 値を `ALL` に設定して **保存** します。
 
 
 または Azure CLI を使用して、これらのパラメーターを設定することもできます。
@@ -149,25 +149,25 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
 このビューでは、クエリ ストア内のクエリ テキスト データが返されます。 個別の query_text ごとに 1 つの行があります。
 
-|**名前**|  **Type**|   **説明**|
-|---|---|---|
-|query_text_id  |bigint     |query_texts テーブルの ID|
-|query_sql_text |Varchar(10000)     |代表的なステートメントのテキスト。 同じ構造を持つ複数の異なるクエリがまとめてクラスター化されます。このテキストは、クラスター内の最初のクエリのテキストです。|
+| **名前** | **Type** | **説明** |
+|--|--|--|
+| query_text_id | bigint | query_texts テーブルの ID |
+| query_sql_text | Varchar(10000) | 代表的なステートメントのテキスト。 同じ構造を持つ複数の異なるクエリがまとめてクラスター化されます。このテキストは、クラスター内の最初のクエリのテキストです。 |
 
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 このビューでは、クエリ ストア内の待機イベント データが返されます。 個別のデータベース ID、ユーザー ID、クエリ ID、イベントごとに 1 つの行があります。
 
-|**名前**|  **Type**|   **参照**| **説明**|
-|---|---|---|---|
-|user_id    |oid    |pg_authid.oid  |ステートメントを実行したユーザーの OID|
-|db_id  |oid    |pg_database.oid    |ステートメントが実行されたデータベースの OID|
-|query_id   |bigint     ||ステートメントの解析ツリーから計算される内部ハッシュ コード|
-|event_type |text       ||バックエンドによって待機されているイベントの種類|
-|イベント  |text       ||バックエンドによって現在待機されている場合に、待機イベントの名前|
-|calls  |Integer        ||同じイベントがキャプチャされた回数|
-
+| **名前** | **Type** | **参照** | **説明** |
+|--|--|--|--|
+| user_id | oid | pg_authid.oid | ステートメントを実行したユーザーの OID |
+| db_id | oid | pg_database.oid | ステートメントが実行されたデータベースの OID |
+| query_id | bigint |  | ステートメントの解析ツリーから計算される内部ハッシュ コード |
+| event_type | text |  | バックエンドによって待機されているイベントの種類 |
+| イベント | text |  | バックエンドによって現在待機されている場合に、待機イベントの名前 |
+| calls | Integer |  | 同じイベントがキャプチャされた回数 |
 
 ### <a name="functions"></a>関数
+
 Query_store.qs_reset() returns void
 
 `qs_reset` では、クエリ ストアによってこれまでに収集されたすべての統計が破棄されます。 この関数は、サーバー管理者ロールによってのみ実行できます。

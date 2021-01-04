@@ -4,20 +4,20 @@ description: Azure Key Vault での論理的な削除では、削除されたキ
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-author: msmbaldwin
-ms.author: mbaldwin
-ms.date: 09/30/2020
-ms.openlocfilehash: 184003e42a14e786cc52c4f585c6781f7b9fe0e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+author: ShaneBala-keyvault
+ms.author: sudbalas
+ms.date: 12/15/2020
+ms.openlocfilehash: 0f428954ac6ef74253e6e6e430977a85a3943f99
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452183"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589986"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault の論理的な削除の概要
 
 > [!IMPORTANT]
-> 直ちに、キー コンテナーで論理的な削除を有効にする必要があります。 論理的な削除をオプトアウトする機能は、本年の終わりまでに非推奨になり、すべてのキー コンテナーに対して論理的な削除の保護が自動的に有効になります。  詳細については、[こちら](soft-delete-change.md)を参照してください
+> 直ちに、キー コンテナーで論理的な削除を有効にする必要があります。 論理的な削除をオプトアウトする機能は、間もなく非推奨になります。 詳細については、[こちら](soft-delete-change.md)を参照してください
 
 Key Vault の論理的な削除機能を使用すると、削除されたコンテナーと削除されたキー コンテナー オブジェクト (キー、シークレット、証明書など) を回復できます (論理的な削除として知られています)。 具体的には、以下のシナリオを扱います。この保護機能では、次の保護が提供されます。
 

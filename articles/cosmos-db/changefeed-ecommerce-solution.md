@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: d0eef49ea82afe50c5e178de9ad5e82bcb0db0eb
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e7b75c71d64054e38630677ecd38f8e3e2483c12
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342166"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606336"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,14 +35,14 @@ Azure Cosmos DB 変更フィードは、Azure Cosmos コンテナーのレコー
  
 1. **データの生成:** データ シミュレーターは、ユーザーが商品を閲覧する、カートに商品を追加する、商品を購入するなどのイベントを表す小売データを生成するために使用します。 データ ジェネレーターを使用して、大規模なサンプル データのセットを生成できます。 生成されたサンプル データには、次の形式のドキュメントが含まれています。
    
-   ```json
-   {      
-     "CartID": 2486,
-     "Action": "Viewed",
-     "Item": "Women's Denim Jacket",
-     "Price": 31.99
-   }
-   ```
+    ```json
+    {
+      "CartID": 2486,
+      "Action": "Viewed",
+      "Item": "Women's Denim Jacket",
+      "Price": 31.99
+    }
+    ```
 
 2. **Cosmos DB:** 生成されたデータは、Azure Cosmos コンテナーに格納されます。  
 
@@ -50,7 +50,7 @@ Azure Cosmos DB 変更フィードは、Azure Cosmos コンテナーのレコー
 
 4. **Azure 関数:** Azure 関数が新しいデータを処理して [Azure イベント ハブ](../event-hubs/event-hubs-about.md)に送信します。  
 
-5. **イベント ハブ:** Azure イベント ハブがそれらのイベントを格納し、 [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) に送信してさらに分析します。  
+5. **イベント ハブ:** Azure イベント ハブがそれらのイベントを格納し、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) に送信してさらに分析します。  
 
 6. **Azure Stream Analytics:** Azure Stream Analytics がイベントを処理し、リアルタイムでデータ分析を実行するクエリを定義します。 その後、このデータは [Microsoft Power BI](/power-bi/desktop-what-is-desktop) に送信されます。  
 
@@ -74,23 +74,23 @@ Azure Cosmos DB 変更フィードは、Azure Cosmos コンテナーのレコー
 
 ソリューションで必要とされる Azure のリソース (Azure Cosmos DB、ストレージ アカウント、イベント ハブ、Stream Analytics) を作成します。 これらのリソースは、Azure Resource Manager テンプレートを通じてデプロイします。 次の手順を使用して、これらのリソースをデプロイします。 
 
-1. Windows PowerShell の実行ポリシーを **[無制限]** に設定します。 これを行うには、 **管理者として Windows PowerShell** を開き、次のコマンドを実行します。
+1. Windows PowerShell の実行ポリシーを **[無制限]** に設定します。 これを行うには、**管理者として Windows PowerShell** を開き、次のコマンドを実行します。
 
    ```powershell
    Get-ExecutionPolicy
    Set-ExecutionPolicy Unrestricted 
    ```
 
-2. 前の手順でダウンロードした GitHub リポジトリから、 **Azure Resource Manager** フォルダーに移動し、 **parameters.json** というファイルを開きます。  
+2. 前の手順でダウンロードした GitHub リポジトリから、**Azure Resource Manager** フォルダーに移動し、**parameters.json** というファイルを開きます。  
 
 3. **parameters.json** ファイルで示す cosmosdbaccount_name、eventhubnamespace_name、storageaccount_name の値、パラメーターを指定します。 後で各リソースに指定する名前を使用する必要があります。  
 
-4. **Windows PowerShell** で、 **Azure Resource Manager** フォルダーに移動して次のコマンドを実行します。
+4. **Windows PowerShell** で、**Azure Resource Manager** フォルダーに移動して次のコマンドを実行します。
 
    ```powershell
    .\deploy.ps1
    ```
-5. プロンプトが表示されたら、Azure **サブスクリプション ID** 、リソース グループ名に「 **changefeedlab** 」、デプロイ名に「 **run1** 」を入力します。 リソースがデプロイを開始すると、完了までに最大で 10 分かかる場合があります。
+5. プロンプトが表示されたら、Azure **サブスクリプション ID**、リソース グループ名に「**changefeedlab**」、デプロイ名に「**run1**」を入力します。 リソースがデプロイを開始すると、完了までに最大で 10 分かかる場合があります。
 
 ## <a name="create-a-database-and-the-collection"></a>データベースとコレクションを作成する
 
@@ -100,18 +100,18 @@ Azure Cosmos DB 変更フィードは、Azure Cosmos コンテナーのレコー
 
 2. **[データ エクスプローラー]** ペインで、 **[新しいコレクション]** を選択し、次の詳細でフォームに入力します。  
 
-   * **[データベース ID]** フィールドで、 **[新規作成]** を選択し、「 **changefeedlabdatabase** 」と入力します。 **[Provision database throughput]\(データベース スループットをプロビジョニングする\)** ボックスはオフにします。  
-   * **[コレクション ID]** フィールドに、「 **changefeedlabcollection** 」と入力します。  
-   * **[パーティション キー]** フィールドに、「 **/Item** 」と入力します。 これは大文字と小文字が区別されるため、正確に入力してください。  
-   * **[スループット]** フィールドに、「 **10000** 」と入力します。  
+   * **[データベース ID]** フィールドで、 **[新規作成]** を選択し、「**changefeedlabdatabase**」と入力します。 **[Provision database throughput]\(データベース スループットをプロビジョニングする\)** ボックスはオフにします。  
+   * **[コレクション ID]** フィールドに、「**changefeedlabcollection**」と入力します。  
+   * **[パーティション キー]** フィールドに、「 **/Item**」と入力します。 これは大文字と小文字が区別されるため、正確に入力してください。  
+   * **[スループット]** フィールドに、「**10000**」と入力します。  
    * **[OK]**  ボタンを選択します。  
 
-3. 次に、変更フィードを処理する「 **leases** 」という名前の別のコレクションを作成します。 リース コレクションは、複数の worker 間で変更フィードの処理を調整します。 個別のコレクションを使用して、リース (パーティションごとに 1 リース) が保存されます。  
+3. 次に、変更フィードを処理する「**leases**」という名前の別のコレクションを作成します。 リース コレクションは、複数の worker 間で変更フィードの処理を調整します。 個別のコレクションを使用して、リース (パーティションごとに 1 リース) が保存されます。  
 
 4. **[データ エクスプローラー]** ペインに戻り、 **[新しいコレクション]** を選択し、次の詳細でフォームに入力します。
 
-   * **[データベース ID]** フィールドで、 **[既存のものを使用]** を選択し、「 **changefeedlabdatabase** 」と入力します。  
-   * **[コレクション ID]** フィールドに、「 **leases** 」と入力します。  
+   * **[データベース ID]** フィールドで、 **[既存のものを使用]** を選択し、「**changefeedlabdatabase**」と入力します。  
+   * **[コレクション ID]** フィールドに、「**leases**」と入力します。  
    * **[ストレージ容量]** には **[固定]** を選択します。  
    * **[スループット]** フィールドは既定値のままにします。  
    * **[OK]**  ボタンを選択します。
@@ -132,7 +132,7 @@ Azure Storage のアカウントではユーザーがデータを格納できま
 
 2. 左側のメニューで、 **[アクセス キー]** を選択します。  
 
-3. **[key 1]** の下の値をノートパッドやラボを通じてアクセスできる別のドキュメントにコピーします。 **キー** は **ストレージ キー** 、 **接続文字列** は **ストレージ接続文字列** としてラベル付けしてください。 後でこれらの文字列をコードにコピーする必要があるため、保存する場所をメモして覚えておきます。  
+3. **[key 1]** の下の値をノートパッドやラボを通じてアクセスできる別のドキュメントにコピーします。 **キー** は **ストレージ キー**、**接続文字列** は **ストレージ接続文字列** としてラベル付けしてください。 後でこれらの文字列をコードにコピーする必要があるため、保存する場所をメモして覚えておきます。  
 
 ### <a name="get-the-event-hub-namespace-connection-string"></a>イベント ハブの名前空間の接続文字列を取得する
 
@@ -180,7 +180,7 @@ Cosmos コンテナーで新しいドキュメントが作成されるか、ま�
  
 6. プログラムが実行されるのを待ちます。 星はデータを受信していることを意味します。 プログラムを引き続き実行します。大量のデータを収集することが重要です。  
 
-7. [Azure portal](https://portal.azure.com/)、リソース グループ内の Cosmos DB アカウント、 **データ エクスプローラー** の順に移動すると、 **changefeedlabcollection** にランダム化されたデータがインポートされたことが確認できます。
+7. [Azure portal](https://portal.azure.com/)、リソース グループ内の Cosmos DB アカウント、**データ エクスプローラー** の順に移動すると、**changefeedlabcollection** にランダム化されたデータがインポートされたことが確認できます。
  
    :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="ポータルで生成されたデータ":::
 
@@ -188,7 +188,7 @@ Cosmos コンテナーで新しいドキュメントが作成されるか、ま�
 
 Azure Stream Analytics は、ストリーミング データをリアルタイムで分析するフル マネージドのクラウド サービスです。 このラボでは、Stream Analytics を使用して、イベント ハブからの新しいイベント (商品が閲覧されたとき、カートに追加されたとき、購入されたときなど) を処理し、それらのイベントをリアルタイムのデータ分析に組み込み、Power BI に送信して視覚化します。
 
-1. [Azure portal](https://portal.azure.com/) で、リソース グループ、 **streamjob1** (プレラボで作成した Stream Analytics のジョブ) の順に移動します。  
+1. [Azure portal](https://portal.azure.com/) で、リソース グループ、**streamjob1** (プレラボで作成した Stream Analytics のジョブ) の順に移動します。  
 
 2. 以下に示すように、 **[入力]** を選択します。  
 
@@ -198,7 +198,7 @@ Azure Stream Analytics は、ストリーミング データをリアルタイ�
 
 4. 新しい入力フォームに、次の詳細を入力します。
 
-   * **[入力のエイリアス]** フィールドに、「 **input** 」と入力します。  
+   * **[入力のエイリアス]** フィールドに、「**input**」と入力します。  
    * **[サブスクリプションからイベント ハブを選択する]** のオプションを選択します。  
    * **[サブスクリプション]** フィールドを自身のサブスクリプションに設定します。  
    * **[イベント ハブの名前空間]** フィールドに、プレラボ中に作成したイベント ハブの名前空間の名前を入力します。  
@@ -215,14 +215,14 @@ Azure Stream Analytics は、ストリーミング データをリアルタイ�
 
 7. Power BI の新しい出力を作成して平均価格を視覚化するには、次のアクションを実行します。
 
-   * **[出力のエイリアス]** フィールドに、「 **averagePriceOutput** 」と入力します。  
+   * **[出力のエイリアス]** フィールドに、「**averagePriceOutput**」と入力します。  
    * **[グループ ワークスペース]** フィールドは、 **[接続でのワークスペースの読み込みを承認する]** のままにします。  
-   * **[データセット名]** フィールドに、「 **averagePrice** 」と入力します。  
-   * **[テーブル名]** フィールドに、「 **averagePrice** 」と入力します。  
+   * **[データセット名]** フィールドに、「**averagePrice**」と入力します。  
+   * **[テーブル名]** フィールドに、「**averagePrice**」と入力します。  
    * **[承認]** ボタンを選択し、指示に従って Power BI への接続を承認します。  
    * **[保存]** を選択します。  
 
-8. その後、 **streamjob1** に戻り、 **[クエリの編集]** を選択します。
+8. その後、**streamjob1** に戻り、 **[クエリの編集]** を選択します。
 
    :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="クエリを編集する":::
  
@@ -255,7 +255,7 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 
 6. **[視覚化タイプ]** フィールドで、ドロップダウン メニューから **[集合横棒グラフ]** を選択します。 **[軸]** で、アクションを追加します。 **[凡例]** は、何も追加せずにスキップします。 その後、次の **[値]** セクションで、 **[avg]** を追加します。 **[次へ]** を選択し、グラフにタイトルを付け、 **[適用]** を選択します。 これでダッシュボードに新しいグラフが表示されます。  
 
-7. ここで、複数のメトリックを視覚化する場合は、 **streamjob1** に戻り、次のフィールドを持つ出力をあと 3 つ作成します。
+7. ここで、複数のメトリックを視覚化する場合は、**streamjob1** に戻り、次のフィールドを持つ出力をあと 3 つ作成します。
 
    a. **出力のエイリアス:** incomingRevenueOutput、データセット名: incomingRevenue、テーブル名: incomingRevenue  
    b. **出力のエイリアス:** top5Output、データセット名: top5、テーブル名: top5  
@@ -323,7 +323,7 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 
 ここでは、実際の e コマース サイトで新しいデータ分析ツールをどのように使用できるかについて観察します。 eコマース サイトをビルドするには、Azure Cosmos データベースを使用して商品カテゴリ (女性、男性、ユニセックス) のリスト、商品カタログ、最も人気のある商品のリストを格納します。
 
-1. [Azure portal](https://portal.azure.com/) に戻り、 **Cosmos DB アカウント** 、 **データ エクスプローラー** と移動します。  
+1. [Azure portal](https://portal.azure.com/) に戻り、**Cosmos DB アカウント**、**データ エクスプローラー** と移動します。  
 
    **changefeedlabdatabase** - **products** と **categories** の下に、2 つのコレクションを、[固定] のストレージ容量で追加します。
 
@@ -333,7 +333,7 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 
    :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Time to Live":::
 
-3. **topItems** コレクションに最も頻繁に購入された商品のデータを入力するには、 **streamjob1** に戻り、新しい **出力** を追加します。 **[Cosmos DB]** を選択します。
+3. **topItems** コレクションに最も頻繁に購入された商品のデータを入力するには、**streamjob1** に戻り、新しい **出力** を追加します。 **[Cosmos DB]** を選択します。
 
 4. 以下の図に示すように、必須フィールドに入力します。
 
@@ -377,15 +377,15 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
    FROM arrayselect
    ```
 
-6. **EcommerceWebApp.sln** を開き、 **ソリューション エクスプローラー** の **Web.config** ファイルに移動します。  
+6. **EcommerceWebApp.sln** を開き、**ソリューション エクスプローラー** の **Web.config** ファイルに移動します。  
 
-7. `<appSettings>` ブロック内に、 **your URI here** と **your primary key here** と書かれている位置に、前に保存した **URI** と **主キー** を追加します。 その後、 **データベース名** と **コレクション名** を示されているとおりに追加します (別の名前にすることを選択していない限り、これらの名前は **changefeedlabdatabase** と **changefeedlabcollection** にしてください)。
+7. `<appSettings>` ブロック内に、**your URI here** と **your primary key here** と書かれている位置に、前に保存した **URI** と **主キー** を追加します。 その後、**データベース名** と **コレクション名** を示されているとおりに追加します (別の名前にすることを選択していない限り、これらの名前は **changefeedlabdatabase** と **changefeedlabcollection** にしてください)。
 
-   **製品のコレクション名** 、 **カテゴリのコレクション名** 、 **人気の商品のコレクション名** を示されているとおりに入力します (別の名前にすることを選択していない限り、これらの名前は **products、categories、および topItems** にしてください)。  
+   **製品のコレクション名**、**カテゴリのコレクション名**、**人気の商品のコレクション名** を示されているとおりに入力します (別の名前にすることを選択していない限り、これらの名前は **products、categories、および topItems** にしてください)。  
 
 8. **EcommerceWebApp.sln** 内の **[チェックアウト フォルダー]** に移動して開きます。 その後、そのフォルダー内の **Web.config** ファイルを開きます。  
 
-9. `<appSettings>` ブロック内で、以前に保存した **URI** と **主キー** を示されている位置に追加します。 その後、 **データベース名** と **コレクション名** を示されているとおりに追加します (別の名前にすることを選択していない限り、これらの名前は **changefeedlabdatabase** と **changefeedlabcollection** にしてください)。  
+9. `<appSettings>` ブロック内で、以前に保存した **URI** と **主キー** を示されている位置に追加します。 その後、**データベース名** と **コレクション名** を示されているとおりに追加します (別の名前にすることを選択していない限り、これらの名前は **changefeedlabdatabase** と **changefeedlabcollection** にしてください)。  
 
 10. ページ上部の **[開始]** を押してプログラムを実行します。  
 
@@ -393,7 +393,7 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 
 ## <a name="delete-the-resources"></a>リソースの削除
 
-このラボの間に作成したリソースを削除するには、 [Azure portal](https://portal.azure.com/) のリソース グループに移動し、ページ上部のメニューで **[リソース グループの削除]** を選択して、表示される手順に従います。
+このラボの間に作成したリソースを削除するには、[Azure portal](https://portal.azure.com/) のリソース グループに移動し、ページ上部のメニューで **[リソース グループの削除]** を選択して、表示される手順に従います。
 
 ## <a name="next-steps"></a>次のステップ 
   

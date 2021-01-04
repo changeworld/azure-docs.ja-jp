@@ -3,12 +3,12 @@ title: 数が 800 に制限されないリソース
 description: リソース グループ内に 800 より多くのインスタンスを作成できる Azure リソースの種類の一覧を示します。
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: cec7ea87bbe81d3bfcca37f3133ac650e66f849f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: c2d5797a7ec354f41d510ec6e884968bf9dbdbcd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913502"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672366"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>リソース グループあたり 800 インスタンスに制限されないリソース
 
@@ -81,7 +81,7 @@ ms.locfileid: "92913502"
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
-* labs/virtualMachines - 既定では、800 インスタンスに制限されています。 この制限を増やすには、サポートにご連絡ください。
+* labs/virtualMachines - 既定では、800 インスタンスに制限されています。 
 * schedules
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph

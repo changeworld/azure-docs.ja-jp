@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: f43f516b0999c4d5b775fc9b78dea9b05e228f0d
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 6670d6dc676ebefa149815253d5ce65c8a9b1abe
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346250"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680942"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して HDFS サーバーからデータをコピーする
 
@@ -284,7 +284,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 1. webhdfs の HTTP プリンシパルと keytab を作成します。
 
     > [!IMPORTANT]
-    > HTTP Kerberos プリンシパルは、Kerberos HTTP SPNEGO 仕様に従って、**HTTP/** で始まる必要があります。
+    > HTTP Kerberos プリンシパルは、Kerberos HTTP SPNEGO 仕様に従って、**HTTP/** で始まる必要があります。 詳細については、[こちら](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#HDFS_Configuration_Options)を参照してください。
 
     ```bash
     Kadmin> addprinc -randkey HTTP/<namenode hostname>@<REALM.COM>

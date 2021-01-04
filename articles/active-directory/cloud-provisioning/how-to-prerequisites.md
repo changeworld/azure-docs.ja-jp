@@ -11,12 +11,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a89a456b5d9ee36909d5d742a7880d72e5ed86fd
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 1f0c94ba6fb9ee5ab019458043095271123e325e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355861"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671014"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングの前提条件
 この記事では、ID ソリューションとして Azure Active Directory (Azure AD) クラウド プロビジョニングを選択して使用する方法に関するガイダンスを示します。
@@ -51,58 +51,53 @@ gMSA アカウントを使用するように既存のエージェントをアッ
 
 ### <a name="in-your-on-premises-environment"></a>オンプレミスの環境の場合
 
- 1. 4 GB 以上の RAM と .NET 4.7.1 以降のランタイムを搭載した、Windows Server 2012 R2 以降が実行されているドメイン参加済みホスト サーバーを特定します。
+1. 4 GB 以上の RAM と .NET 4.7.1 以降のランタイムを搭載した、Windows Server 2012 R2 以降が実行されているドメイン参加済みホスト サーバーを特定します。
 
- >[!NOTE]
- > スコープ フィルターを定義すると、ホスト サーバーのメモリ コストが発生することに注意してください。  スコープ フィルターが使用されていない場合は、追加のメモリ コストは発生しません。 4 GB 以上では、スコープ フィルターで定義された最大 12 個の組織単位の同期がサポートされます。 追加の OＵ を同期する必要がある場合は、最小メモリ量を増やす必要があります。 次の表をガイドとして使用します。
- >
- >  
- >  | スコープ フィルター内の OＵ の数| 最低限必要なメモリ|
- >  | --- | --- |
- >  | 12| 4 GB|
- >  | 18|5.5 GB|
- >  | 28|10 GB 以上|
- >
- > 
+    >[!NOTE]
+    > スコープ フィルターを定義すると、ホスト サーバーのメモリ コストが発生することに注意してください。  スコープ フィルターが使用されていない場合は、追加のメモリ コストは発生しません。 4 GB 以上では、スコープ フィルターで定義された最大 12 個の組織単位の同期がサポートされます。 追加の OＵ を同期する必要がある場合は、最小メモリ量を増やす必要があります。 次の表をガイドとして使用します。
+    >
+    >
+    > | スコープ フィルター内の OＵ の数| 最低限必要なメモリ|
+    > | --- | --- |
+    > | 12 | 4 GB |
+    > | 18 | 5.5 GB|
+    > | 28 | 10 GB 以上|
 
- 2. ローカル サーバーの PowerShell 実行ポリシーを、Undefined または RemoteSigned に設定する必要があります。
+2. ローカル サーバーの PowerShell 実行ポリシーを、Undefined または RemoteSigned に設定する必要があります。
 
- 3. サーバーと Azure AD の間にファイアウォールがある場合は、次の項目を構成します。
-   - エージェントが次のポートを介して Azure AD に "*送信*" 要求を発行できるようにします。
+3. サーバーと Azure AD の間にファイアウォールがある場合は、次の項目を構成します。
+    - エージェントが次のポートを介して Azure AD に "*送信*" 要求を発行できるようにします。
 
-        | ポート番号 | 用途 |
-        | --- | --- |
-        | **80** | TLS/SSL 証明書を検証する際に、証明書失効リスト (CRL) をダウンロードします。  |
-        | **443** | サービスを使用したすべての送信方向の通信を処理します。 |
-        |**8082**|インストール、および HIS 管理 API を構成する場合に必要です。  このポートは、エージェントのインストール後、および API の使用を計画していない場合は削除できます。   |
-        | **8080** (省略可能) | ポート 443 が使用できない場合、エージェントは、ポート 8080 経由で 10 分おきにその状態をレポートします。 この状態は Azure AD ポータルに表示されます。 |
-   
-     
-   - ご利用のファイアウォールが送信元ユーザーに応じて規則を適用している場合は、ネットワーク サービスとして実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。
-   - ファイアウォールまたはプロキシで安全なサフィックスの指定が許可されている場合は、\*.msappproxy.net および \*.servicebus.windows.net への接続を追加します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。
-   - エージェントは、初期登録のために login.windows.net と login.microsoftonline.com にアクセスする必要があります。 これらの URL にもファイアウォールを開きます。
-   - 証明書の検証のために、URL mscrl.microsoft.com:80、crl.microsoft.com:80、ocsp.msocsp.com:80、www\.microsoft.com:80 のブロックを解除します。 他の Microsoft 製品でもこれらの URL を証明書の検証に使用しているので、URL のブロックを既に解除している可能性もあります。
+      | ポート番号 | 用途 |
+      | --- | --- |
+      | **80** | TLS/SSL 証明書を検証する際に、証明書失効リスト (CRL) をダウンロードします。  |
+      | **443** | サービスを使用したすべての送信方向の通信を処理します。 |
+      |**8082**|インストール、および HIS 管理 API を構成する場合に必要です。  このポートは、エージェントのインストール後、および API の使用を計画していない場合は削除できます。   |
+      | **8080** (省略可能) | ポート 443 が使用できない場合、エージェントは、ポート 8080 経由で 10 分おきにその状態をレポートします。 この状態は Azure AD ポータルに表示されます。 |
 
->[!NOTE]
-> Windows Server Core へのクラウド プロビジョニング エージェントのインストールはサポートされていません。
+    - ご利用のファイアウォールが送信元ユーザーに応じて規則を適用している場合は、ネットワーク サービスとして実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。
+    - ファイアウォールまたはプロキシで安全なサフィックスの指定が許可されている場合は、\*.msappproxy.net および \*.servicebus.windows.net への接続を追加します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。
+    - エージェントは、初期登録のために login.windows.net と login.microsoftonline.com にアクセスする必要があります。 これらの URL にもファイアウォールを開きます。
+    - 証明書の検証のために、URL mscrl.microsoft.com:80、crl.microsoft.com:80、ocsp.msocsp.com:80、www\.microsoft.com:80 のブロックを解除します。 他の Microsoft 製品でもこれらの URL を証明書の検証に使用しているので、URL のブロックを既に解除している可能性もあります。
 
-
-
+    >[!NOTE]
+    > Windows Server Core へのクラウド プロビジョニング エージェントのインストールはサポートされていません。
 
 ### <a name="additional-requirements"></a>その他の要件
+
 - [Microsoft .NET Framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56116) 
 
 #### <a name="tls-requirements"></a>TLS の要件
 
->[!NOTE]
->トランスポート層セキュリティ (TLS) は、セキュリティで保護された通信を規定するプロトコルです。 TLS 設定を変更すると、フォレスト全体に影響します。 詳細については、「[Windows の WinHTTP における既定の安全なプロトコルとして TLS 1.1 および TLS 1.2 を有効化する更新プログラム](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi)」を参照してください。
+> [!NOTE]
+> トランスポート層セキュリティ (TLS) は、セキュリティで保護された通信を規定するプロトコルです。 TLS 設定を変更すると、フォレスト全体に影響します。 詳細については、「[Windows の WinHTTP における既定の安全なプロトコルとして TLS 1.1 および TLS 1.2 を有効化する更新プログラム](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi)」を参照してください。
 
 Azure AD Connect クラウド プロビジョニング エージェントをホストする Windows サーバーでは、インストールする前に TLS 1.2 を有効にする必要があります。
 
 TLS 1.2 を有効にするには、次の手順に従います。
 
 1. 次のレジストリ キーを設定します。
-    
+
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
@@ -113,6 +108,7 @@ TLS 1.2 を有効にするには、次の手順に従います。
 1. サーバーを再起動します。
 
 ## <a name="known-limitations"></a>既知の制限事項
+
 既知の制限事項には、次のようなものがあります。
 
 ### <a name="delta-synchronization"></a>差分同期

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10976c91e781763264d73adcc54ba88ec8d07f54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68cd107b2606643d712c4de94b6d1a82e8ee614a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256533"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657262"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Media Services v2 でフェールオーバー ストリーミングを実装する
 
@@ -51,7 +51,7 @@ ms.locfileid: "89256533"
 
 * Media Services SDK の現在のバージョンでは、資産ファイルを資産に関連付ける IAssetFile 情報をプログラムで生成することはできません。 この情報をプログラムで生成するには、Media Services REST API の CreateFileInfos を使用してください。 
 * (双方の Media Services アカウントの暗号化キーは別のものになるため) ストレージ暗号化資産 (AssetCreationOptions.StorageEncrypted) のレプリケーションはサポートされていません。 
-* ダイナミック パッケージを利用する場合は、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。
+* ダイナミック パッケージを利用する場合は、コンテンツのストリーミング元のストリーミング エンドポイントが **実行中** 状態であることを確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -66,7 +66,7 @@ ms.locfileid: "89256533"
 
 1. Visual Studio を使用すると、C# コンソール アプリケーション プロジェクトを含む新しいソリューションを作成できます。 名前に「**HandleRedundancyForOnDemandStreaming**」と入力し、 **[OK]** をクリックします。
 2. **HandleRedundancyForOnDemandStreaming.csproj** プロジェクト ファイルと同じレベルに **SupportFiles** フォルダーを作成します。 **SupportFiles** フォルダーの下に **OutputFiles** と **MP4Files** フォルダーを作成します。 .mp4 ファイルを **MP4Files** フォルダーにコピーします (この例では、**ignite.mp4** ファイルを使用します)。 
-3. **NuGet** を使用して Media Services 関連の DLL への参照を追加します。 **Visual Studio のメイン メニュー**で、 **[ツール]** 、 **[NuGet パッケージ マネージャー]** 、 **[パッケージ マネージャー コンソール]** の順に選択します。 コンソール ウィンドウで「**Install-Package windowsazure.mediaservices**」と入力し、Enter キーを押します。
+3. **NuGet** を使用して Media Services 関連の DLL への参照を追加します。 **Visual Studio のメイン メニュー** で、 **[ツール]** 、 **[NuGet パッケージ マネージャー]** 、 **[パッケージ マネージャー コンソール]** の順に選択します。 コンソール ウィンドウで「**Install-Package windowsazure.mediaservices**」と入力し、Enter キーを押します。
 4. このプロジェクト (System.Configuration、System.Runtime.Serialization および System.Web) (System.Runtime.Serialization および System.Web) に必要なその他の参照を追加します。
 5. **Programs.cs** ファイルに既定で追加された **using** ステートメントを次の内容に置き換えます。
 

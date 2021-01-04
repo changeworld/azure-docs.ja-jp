@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 11/14/2020
 ms.author: apimpm
-ms.openlocfilehash: db1a8238cf9ddae57d73438d43daa54294ce6860
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 8ec0f8cf090b3ae85a8602fb39cb07f03a417133
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686227"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605600"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Azure API Management でマネージド ID を使用する
 
@@ -38,7 +38,6 @@ Azure portal でマネージド ID を設定するには、まず API Management
 3. **[システム割り当て済み]** タブで、 **[状態]** を **[オン]** に切り替えます。 **[保存]** を選択します。
 
     :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="システム割り当てマネージド ID を有効化するための選択項目" border="true":::
-
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -118,7 +117,6 @@ ID を持った API Management インスタンスは、リソース定義に次�
 ```
 
 `tenantId` プロパティは、ID が属している Azure AD テナントを識別します。 `principalId` プロパティは、インスタンスの新しい ID の一意識別子です。 Azure AD 内では、サービス プリンシパルの名前は、お使いの API Management インスタンスに指定したものと同じになります。
-
 
 > [!NOTE]
 > API Management インスタンスには、システム割り当て ID とユーザー割り当て ID の両方を同時に設定することができます。 この場合、`type` プロパティは `SystemAssigned,UserAssigned` になります。
@@ -266,7 +264,6 @@ API Management インスタンスのシステム割り当て ID を使用して�
 
 システム割り当て ID を使用して、[authentication-managed-identity](api-management-authentication-policies.md#ManagedIdentity) ポリシーを通じて、バックエンドに対する認証を行うことができます。
 
-
 ## <a name="create-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を作成する
 
 > [!NOTE]
@@ -361,7 +358,7 @@ ID を持った API Management インスタンスは、リソース定義に次�
                 "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]": {}
              }
         },
-        "dependsOn": [       
+         "dependsOn": [       
           "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
         ]
     }]
@@ -415,7 +412,6 @@ ID を持った API Management インスタンスは、リソース定義に次�
 ### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>ユーザー割り当て ID を使用してバックエンドに対する認証を行う
 
 ユーザー割り当て ID を使用して、[authentication-managed-identity](api-management-authentication-policies.md#ManagedIdentity) ポリシーを通じて、バックエンドに対する認証を行うことができます。
-
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>ID を削除する
 

@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: e64df21b31d686b72b210d2c62956745350891f5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cd64c80acceb1542c080fc45efbce59f287d448a
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895394"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680695"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Azure Maps の空間 IO モジュールの使用方法
 
-Azure Maps Web SDK には、JavaScript または TypeScript を使用して、空間データを Azure Maps Web SDK に統合する、 **空間 IO モジュール** が用意されています。 開発者は、このモジュールの堅牢な機能により、次のことを行うことができます。
+Azure Maps Web SDK には、JavaScript または TypeScript を使用して、空間データを Azure Maps Web SDK に統合する、**空間 IO モジュール** が用意されています。 開発者は、このモジュールの堅牢な機能により、次のことを行うことができます。
 
 - [一般的な空間データ ファイルに対する読み取りと書き込み](spatial-io-read-write-spatial-data.md)。 サポートされているファイル形式は以下の通りです｡空間情報を含む列がある、KML、KMZ、GPX、GeoRSS、GML、CSV ファイル。 また、Well-Known Text (WKT) もサポートされています。
 - [Open Geospatial Consortium (OGC) サービスに接続し、Azure Maps Web SDK と統合する。Web Map Service (WMS) と Web Map Tile Service (WMTS) をマップにレイヤーとしてオーバーレイする。](spatial-io-add-ogc-map-layer.md)
@@ -30,10 +30,9 @@ Azure Maps Web SDK には、JavaScript または TypeScript を使用して、�
 
 この動画では、Azure Maps Web SDK での空間 IO モジュールの概要を示します。
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0" title="空間データを Azure Maps に簡単に統合する - Microsoft Channel 9 の動画"></iframe>
-
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player?format=ny]
 
 > [!WARNING]
 > 特に別のドメインから参照する場合は、信頼できるソースからのデータとサービスのみを使用します。 空間 IO モジュールではリスクを最小限に抑えるための手順を行いますが、最初にアプリケーションに危険なデータを許可しないことが最も安全な方法です。 

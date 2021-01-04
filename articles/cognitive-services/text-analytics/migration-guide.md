@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/19/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 56464268b95181af0379a1895d392cc3cc26624c
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 6a71bcbfb8341098711e330cebf8545e1fd2751c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980900"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656956"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Text Analytics API のバージョン 3.x への移行
-
-[!INCLUDE [v3 region availability](includes/v3-region-availability.md)]
 
 Text Analytics API のバージョン 2.1 を使用している場合、この記事は、アプリケーションをアップグレードしてバージョン 3.x を使用する際に役立ちます。 バージョン3.0 は一般提供されており、拡張された[固有表現認識 (NER)](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-features-and-versions) や[モデルのバージョン管理](concepts/model-versioning.md)などの新機能が導入されています。 v3.1 のプレビュー バージョン (v3.1-preview.x) も利用可能です。これには、[意見マイニング](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)などの機能が追加されています。 v2 で使用されていたモデルは、今後の更新を受け取りません。 
 

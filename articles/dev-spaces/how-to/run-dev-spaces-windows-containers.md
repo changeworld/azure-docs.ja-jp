@@ -5,12 +5,12 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Windows コンテナーを持つ既存のクラスターでの Azure Dev Spaces の実行方法について説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Windows コンテナー
-ms.openlocfilehash: e6c4279717ef0a7bed0a66a9b0dba1d78e418835
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: a9aa24ae70afe062246e1b295cdc7e0724639596
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900162"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606761"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Azure Dev Spaces を使用した Windows コンテナーの操作
 
@@ -85,7 +85,7 @@ myapi-4b9667d123-1a2b3   1/1     Running             0          98s
 
 ## <a name="enable-azure-dev-spaces"></a>Azure Dev Spaces の有効化
 
-Windows サービスの実行に使用した名前空間と同じ名前空間で Dev Spaces を有効にします。 次のコマンドを実行すると、 *dev* 名前空間で Dev Spaces が有効になります。
+Windows サービスの実行に使用した名前空間と同じ名前空間で Dev Spaces を有効にします。 次のコマンドを実行すると、*dev* 名前空間で Dev Spaces が有効になります。
 
 ```console
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster --space dev --yes
@@ -118,8 +118,8 @@ spec:
 
 ```cmd
 $ helm list --namespace dev
-NAME              REVISION  UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
-windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
+NAME             REVISION   UPDATED                    STATUS    CHART            APP VERSION    NAMESPACE
+windows-service    1        Wed Jul 24 15:45:59 2019   DEPLOYED  mywebapi-0.1.0   1.0            dev
 ```
 
 上の例では、デプロイの名前が *windows-service* となっています。 `helm upgrade` を使用して Windows サービスを新しい構成で更新します。
@@ -163,7 +163,7 @@ Service 'webfrontend' port 'http' is available at http://dev.webfrontend.abcdef0
 Service 'webfrontend' port 80 (http) is available via port forwarding at http://localhost:57648
 ```
 
-azds up コマンドの出力に示されているパブリック URL を開くと、サービスが実行されていることを確認できます。 この例のパブリック URL は `http://dev.webfrontend.abcdef0123.eus.azds.io/` です。 ブラウザーでサービスに移動し、上部の *[バージョン情報]* をクリックします。 コンテナーが使用している Windows のバージョンが記載されたメッセージが、 *mywebapi* サービスから表示されることを確認します。
+azds up コマンドの出力に示されているパブリック URL を開くと、サービスが実行されていることを確認できます。 この例のパブリック URL は `http://dev.webfrontend.abcdef0123.eus.azds.io/` です。 ブラウザーでサービスに移動し、上部の *[バージョン情報]* をクリックします。 コンテナーが使用している Windows のバージョンが記載されたメッセージが、*mywebapi* サービスから表示されることを確認します。
 
 ![mywebapi から Windows のバージョンを通知するサンプル アプリ](../media/run-dev-spaces-windows-containers/sample-app.png)
 

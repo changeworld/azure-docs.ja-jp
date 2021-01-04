@@ -3,12 +3,12 @@ title: リソースでのタグのサポート
 description: タグをサポートしている Azure リソースの種類を示します。 すべての Azure サービスの詳細を提供します。
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: fb81ed303cf27add3a033021f017c03f4b9e9750
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 12a57577241e3b2206aab9c3badb29502e7b0301
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005726"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656973"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](tag-resources.md)をサポートしているかどうかについて説明します。 「**タグのサポート**」というラベルが付けられた列は、リソースの種類にタグのプロパティがあるかどうかを示します。 「**コスト レポートのタグ**」というラベルが付けられた列は、リソースの種類がタグをコスト レポートに渡すかどうかを示します。 [Cost Management のコスト分析](../../cost-management-billing/costs/group-filter.md)および [Azure の請求書と毎日の使用データ](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)で、タグ別にコストを表示できます。
@@ -845,7 +845,7 @@ ms.locfileid: "96005726"
 > | ReservationRecommendations | いいえ | いいえ |
 > | ReservationSummaries | いいえ | いいえ |
 > | ReservationTransactions | いいえ | いいえ |
-> | タグ | いいえ | いいえ |
+> | Tags | いいえ | いいえ |
 > | tenants | いいえ | いいえ |
 > | 用語 | いいえ | いいえ |
 > | UsageDetails | いいえ | いいえ |
@@ -2253,7 +2253,7 @@ ms.locfileid: "96005726"
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | managedInstances | はい | はい |
-> | managedInstances / databases | はい ([下記の「注」](#sqlnote)を参照) | はい |
+> | managedInstances / databases | いいえ | いいえ |
 > | managedInstances / databases / backupShortTermRetentionPolicies | いいえ | いいえ |
 > | managedInstances / databases / schemas / tables / columns / sensitivityLabels | いいえ | いいえ |
 > | managedInstances / databases / vulnerabilityAssessments | いいえ | いいえ |

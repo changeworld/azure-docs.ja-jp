@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3677d67f55cfccdc80245b2ec870ffa76b0a1940
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff7d5a4e1181dccedc3584d958038a1d695c57ca
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088667"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657126"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>Windows ブート マネージャー エラーのトラブルシューティング - 0xC0000225 "状態が見つかりません"
  
@@ -67,7 +67,7 @@ ms.locfileid: "87088667"
 
 ### <a name="bcd-corruption-or-improper-vhd-migration"></a>BCD の破損または不適切な VHD の移行
 
-この場合、**ブート構成データ (BCD)** が破損しているか、オンプレミスから移行された**仮想ハード ドライブ (VHD)** が適切に準備されていません。 その結果 **OSDEVICE** 変数がない状態になっているため、追加する必要があります。
+この場合、**ブート構成データ (BCD)** が破損しているか、オンプレミスから移行された **仮想ハード ドライブ (VHD)** が適切に準備されていません。 その結果 **OSDEVICE** 変数がない状態になっているため、追加する必要があります。
 
 ### <a name="registry-hive-corruption"></a>レジストリ ハイブの破損
 
@@ -126,7 +126,7 @@ ms.locfileid: "87088667"
       `dir <BINARY WITH ".SYS" EXTENSION>  /s`
 
       このコマンドを実行すると、マシンにあるこのファイルのバージョンがすべて一覧表示され、そのコンポーネントのパス履歴が示されます。
-      
+
       たとえば、**dir cng.sys** の名前が **dir cng.sys /s** に変更されているなどです。
 
    1. この一覧でファイルの最新バージョン (または任意のもの) を選択し、前のパスと次のコマンドを使用して、**windows\system32** フォルダーにファイルをコピーします。
@@ -170,7 +170,7 @@ ms.locfileid: "87088667"
    ![修復 VM に接続されているディスク番号として Disk 2 が示されています。 また、Disk 2 の EFI システム パーティションも示されています。これは 100 MB で、文字が割り当てられていません。](./media/troubleshoot-boot-error-status-not-found/8.png)
 
    1. 管理者として管理者特権でのコマンド プロンプトを開き、次のコマンドを入力します。
-      1. コマンド `diskpart` を使用して **DISKPART ツール**を開きます。
+      1. コマンド `diskpart` を使用して **DISKPART ツール** を開きます。
       1. すべてのディスクを一覧表示し、前の手順で特定した接続ディスクを選択します。
       
          ```
@@ -251,7 +251,7 @@ ms.locfileid: "87088667"
 
 ### <a name="contact-support"></a>サポートに問い合わせる
 
-**レジストリ ファイル** エラーには解決策がありますが、さらにサポートを受けるには[サポート チケットを作成](https://azure.microsoft.com/support/create-ticket/)する必要があります。
+**レジストリ ファイル** エラーには解決策がありますが、さらにサポートを受けるには [サポート チケットを作成](https://azure.microsoft.com/support/create-ticket/)する必要があります。
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>シリアル コンソールとメモリ ダンプの収集を有効にする
 

@@ -14,12 +14,12 @@ ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 752e7dae9040059c662a93d9a9d668bac0e8e2d8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: bf9b3a154e19fab08c46f9838f555e223f10e8a0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074670"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672289"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Android 用の ADAL から MSAL への移行に関するガイド
 
@@ -89,7 +89,7 @@ ADAL と Azure AD v1 エンドポイントでは、ユーザーが所有して�
 > [!CAUTION]
 > スコープとリソース ID の両方を設定することはできません。両方を設定しようとすると、`IllegalArgumentException` になります。
 
- これにより、これまでと同じ v1 の動作となります。 アプリの登録で要求されるすべてのアクセス許可は、最初のやり取り時にユーザーから要求されます。
+これにより、これまでと同じ v1 の動作となります。 アプリの登録で要求されるすべてのアクセス許可は、最初のやり取り時にユーザーから要求されます。
 
 ### <a name="authenticate-and-request-permissions-only-as-needed"></a>必要に応じてのみ、アクセス許可を認証して要求する
 
@@ -131,13 +131,13 @@ Microsoft では知られておらず、構成に含まれていない機関を�
 ### <a name="logging"></a>ログ記録
 次のように、宣言によってログ記録を構成の一部として構成できるようになりました。
 
- ```
- "logging": {
-    "pii_enabled": false,
-    "log_level": "WARNING",
-    "logcat_enabled": true
-  }
-  ```
+```json
+"logging": {
+  "pii_enabled": false,
+  "log_level": "WARNING",
+  "logcat_enabled": true
+}
+```
 
 ## <a name="migrate-from-userinfo-to-account"></a>UserInfo から Account に移行する
 
@@ -278,30 +278,30 @@ MSAL には、例外の階層があり、それぞれに関連する特定のエ
 // New interface
   StringBuilder logs = new StringBuilder();
   Logger.getInstance().setExternalLogger(new ILoggerCallback() {
-            @Override
-            public void log(String tag, Logger.LogLevel logLevel, String message, boolean containsPII) {
-                logs.append(message).append('\n');
-            }
-        });
+      @Override
+      public void log(String tag, Logger.LogLevel logLevel, String message, boolean containsPII) {
+          logs.append(message).append('\n');
+      }
+  });
 
 // New Log Levels:
 public enum LogLevel
 {
-        /**
-         * Error level logging.
-         */
-        ERROR,
-        /**
-         * Warning level logging.
-         */
-        WARNING,
-        /**
-         * Info level logging.
-         */
-        INFO,
-        /**
-         * Verbose level logging.
-         */
-        VERBOSE
+    /**
+     * Error level logging.
+     */
+    ERROR,
+    /**
+     * Warning level logging.
+     */
+    WARNING,
+    /**
+     * Info level logging.
+     */
+    INFO,
+    /**
+     * Verbose level logging.
+     */
+    VERBOSE
 }
 ```

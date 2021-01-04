@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: b3391727b19e9e8e88646f72667545f1df7fe5a7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0ef6c97f7924c890bb6665100259970372f1cd26
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012869"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606948"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Azure Data Factory バージョン 1 パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -98,8 +98,10 @@ public IDictionary<string, string> Execute(
 メソッドから、今後、カスタム アクティビティの連結に使用できるディクショナリが返されます。 この機能はまだ実装されていないので、メソッドから空のディクショナリが返されます。
 
 ### <a name="procedure"></a>手順
+
 1. **.NET クラス ライブラリ** プロジェクトを作成します。
-   <ol type="a">
+   
+    <ol type="a">
      <li>Visual Studio を起動します。</li>
      <li><b>[ファイル]</b> をクリックし、<b>[新規作成]</b> をポイントして、<b>[プロジェクト]</b> をクリックします。</li>
      <li><b>[テンプレート]</b> を展開し、<b>[Visual C#]</b> を選択します。 このチュートリアルでは C# を使用しますが、カスタム アクティビティの開発には、どの .NET 言語でも使用できます。</li>
@@ -116,6 +118,7 @@ public IDictionary<string, string> Execute(
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactories
     ```
+
 4. **Azure Storage** NuGet パッケージをプロジェクトにインポートします。
 
     ```powershell
@@ -149,16 +152,19 @@ public IDictionary<string, string> Execute(
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
+
 6. **名前空間** の名前を **MyDotNetActivityNS** に変更します。
 
     ```csharp
     namespace MyDotNetActivityNS
     ```
+
 7. 次のコード スニペットに示すように、クラス名を **MyDotNetActivity** に変更し、**IDotNetActivity** インターフェイスから派生させます。
 
     ```csharp
     public class MyDotNetActivity : IDotNetActivity
     ```
+
 8. **IDotNetActivity** インターフェイスの **Execute** メソッドを **MyDotNetActivity** クラスに実装 (追加) し、次のサンプル コードをメソッドにコピーします。
 
     次のサンプルでは、データ スライスに関連付けられている各 BLOB で検索語句 ("Microsoft") の出現回数をカウントします。
@@ -279,6 +285,7 @@ public IDictionary<string, string> Execute(
         return new Dictionary<string, string>();
     }
     ```
+
 9. 以下のヘルパー メソッドを追加します。
 
     ```csharp
@@ -367,25 +374,30 @@ public IDictionary<string, string> Execute(
     ```
 
     Calculate メソッドは、入力ファイル (フォルダー内の BLOB) 内のキーワード Microsoft のインスタンス数を計算します。 検索語句 ("Microsoft") は、コードにハード コーディングされています。
+
 10. プロジェクトをコンパイルします。 メニューの **[ビルド]** をクリックし、 **[ソリューションのビルド]** をクリックします。
 
     > [!IMPORTANT]
     > プロジェクトのターゲット フレームワークとして .NET Framework バージョン 4.5.2 を設定してください。プロジェクトを右クリックし、 **[プロパティ]** をクリックしてターゲット フレームワークを設定します。 Data Factory では、4.5.2 より後の .NET Framework のバージョンに対してコンパイルされたカスタム アクティビティはサポートされません。
 
 11. **Windows エクスプローラー** を起動し、ビルドの種類に応じて、**bin\debug** フォルダーまたは **bin\release** フォルダーに移動します。
+
 12. \<project folder\>\bin\Debug フォルダー内のすべてのバイナリを含む zip ファイル、**MyDotNetActivity.zip** を作成します。 エラー発生時の問題の原因となったソース コードの行番号など、追加情報を取得するために、**MyDotNetActivity.pdb** ファイルを含めます。
 
     > [!IMPORTANT]
     > カスタム アクティビティの zip ファイル内のファイルは、いずれもサブフォルダーがない **最上位レベル** に置く必要があります。
 
     ![バイナリ出力ファイル](./media/data-factory-use-custom-activities/Binaries.png)
-14. **customactivitycontainer** という名前の BLOB コンテナーがまだ存在していない場合は、作成します。
-15. AzureStorageLinkedService によって参照される **汎用** Azure Blob ストレージ (ホット/クール BLOB ストレージではない) の customactivitycontainer に MyDotNetActivity.zip を BLOB としてアップロードします。
+
+13. **customactivitycontainer** という名前の BLOB コンテナーがまだ存在していない場合は、作成します。
+
+14. AzureStorageLinkedService によって参照される **汎用** Azure Blob ストレージ (ホット/クール BLOB ストレージではない) の customactivitycontainer に MyDotNetActivity.zip を BLOB としてアップロードします。
 
 > [!IMPORTANT]
 > この .NET アクティビティ プロジェクトを Visual Studio で Data Factory プロジェクトを含むソリューションに追加し、Data Factory アプリケーション プロジェクトから .NET アクティビティ プロジェクトへの参照を追加する場合は、最後の 2 つの手順 (手動での zip ファイルの作成と汎用 Azure Blob Storage へのアップロード) を実行する必要はありません。 Data Factory エンティティを Visual Studio を使用して発行すると、これらの手順は発行プロセスによって自動的に実行されます。 詳しくは、[Visual Studio での Data Factory プロジェクト](#data-factory-project-in-visual-studio)に関するセクションをご覧ください。
 
 ## <a name="create-a-pipeline-with-custom-activity"></a>カスタム アクティビティを使用したパイプラインの作成
+
 カスタム アクティビティを作成し、バイナリと zip ファイルを **汎用** の Azure ストレージ アカウントの BLOB コンテナーにアップロードしました。 ここでは、カスタム アクティビティを使用したパイプラインで Azure Data Factory を作成します。
 
 カスタム アクティビティの入力データセットは、Blob Storage の adftutorial コンテナーの customactivityinput フォルダー内にある BLOB (ファイル) を表します。 カスタム アクティビティの出力データセットは、Blob Storage の adftutorial コンテナーの customactivityoutput フォルダー内にある出力 BLOB を表します。
