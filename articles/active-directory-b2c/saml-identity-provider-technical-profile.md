@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3f8ba563345f5aa4f35bcf07546abdad05c3b6ed
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: db99fbdea38dd30401a8aeedb7ebc23c71c5236c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509786"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655188"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML ID プロバイダー技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) では、SAML 2.0 ID プロバイダーのサポートを提供しています。 この記事では、この標準化されたプロトコルをサポートするクレーム プロバイダーとやりとりするための、技術プロファイルの詳細について説明します。 SAML 技術プロファイルを使用すると、[ADFS](identity-provider-adfs2016-custom.md) や [Salesforce](identity-provider-salesforce.md) などの SAML ベースの ID プロバイダーとフェデレーションできます。 このフェデレーションにより、ユーザーは、既存のソーシャル ID またはエンタープライズ ID でサインインできます。
+Azure Active Directory B2C (Azure AD B2C) では、SAML 2.0 ID プロバイダーのサポートを提供しています。 この記事では、この標準化されたプロトコルをサポートするクレーム プロバイダーとやりとりするための、技術プロファイルの詳細について説明します。 SAML 技術プロファイルを使用すると、[ADFS](identity-provider-adfs2016-custom.md) や [Salesforce](identity-provider-salesforce-saml.md) などの SAML ベースの ID プロバイダーとフェデレーションできます。 このフェデレーションにより、ユーザーは、既存のソーシャル ID またはエンタープライズ ID でサインインできます。
 
 ## <a name="metadata-exchange"></a>メタデータ交換
 
@@ -110,8 +110,8 @@ SAML アサーション:
 ```xml
 <saml:Subject>
   <saml:NameID SPNameQualifier="http://your-idp.com/unique-identifier" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">david@contoso.com</saml:NameID>
-    <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
-      <SubjectConfirmationData InResponseTo="_cd37c3f2-6875-4308-a9db-ce2cf187f4d1" NotOnOrAfter="2020-02-15T16:23:23.137Z" Recipient="https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer" />
+  <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+    <SubjectConfirmationData InResponseTo="_cd37c3f2-6875-4308-a9db-ce2cf187f4d1" NotOnOrAfter="2020-02-15T16:23:23.137Z" Recipient="https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer" />
     </SubjectConfirmation>
   </saml:SubjectConfirmation>
 </saml:Subject>
@@ -217,4 +217,4 @@ SAML アサーションに `SPNameQualifier` または `NameQualifier` の両方
 Azure AD B2C での SAML ID プロバイダーの使用例については、次の記事を参照してください。
 
 - [カスタム ポリシーを使って ADFS を SAML ID プロバイダーとして追加する](identity-provider-adfs.md)
-- [SAML を利用した、Salesforce アカウントでのサインイン](identity-provider-salesforce.md)
+- [SAML を利用した、Salesforce アカウントでのサインイン](identity-provider-salesforce-saml.md)

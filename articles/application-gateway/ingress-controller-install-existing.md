@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2f585dd80219afac7c67eebabd72cb41dce0b673
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2d64766c754c0ea104ae83fde799a514e9da6d68
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018700"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693733"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>既存の Application Gateway を使用して Application Gateway イングレス コントローラー (AGIC) をインストールする
 
@@ -323,7 +323,7 @@ AGIC のアクセス許可を拡大します:
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>既存の AGIC インストールに対して有効にする
-AKS、Application Gateway、構成済みの AGIC が既にクラスター内で動作しているとしましょう。 `prod.contosor.com` のイングレスがあり、AKS からそれのトラフィックを正常にサービスしています。 既存の Application Gateway に `staging.contoso.com` を追加しますが、[VM](https://azure.microsoft.com/services/virtual-machines/) でホストする必要があります。 既存の Application Gateway を再利用し、`staging.contoso.com` のリスナーとバックエンド プールを手動で構成します。 しかし、Application Gateway 構成を ([ポータル](https://portal.azure.com)、[ARM API](/rest/api/resources/) または [Terraform](https://www.terraform.io/) から) 手動で調整すると、AGIC が完全な所有権を仮定した場合と競合します。 変更を適用するとすぐに、AGIC によって上書きまたは削除されます。
+AKS、Application Gateway、構成済みの AGIC が既にクラスター内で動作しているとしましょう。 `prod.contoso.com` のイングレスがあり、AKS からそれのトラフィックを正常にサービスしています。 既存の Application Gateway に `staging.contoso.com` を追加しますが、[VM](https://azure.microsoft.com/services/virtual-machines/) でホストする必要があります。 既存の Application Gateway を再利用し、`staging.contoso.com` のリスナーとバックエンド プールを手動で構成します。 しかし、Application Gateway 構成を ([ポータル](https://portal.azure.com)、[ARM API](/rest/api/resources/) または [Terraform](https://www.terraform.io/) から) 手動で調整すると、AGIC が完全な所有権を仮定した場合と競合します。 変更を適用するとすぐに、AGIC によって上書きまたは削除されます。
 
 AGIC が構成のサブセットに変更を加えることを禁止できます。
 

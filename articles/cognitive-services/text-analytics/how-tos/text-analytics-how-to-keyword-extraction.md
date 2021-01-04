@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/15/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: e5d25e71e4700f3f327319e4f444d2060c7ab5f6
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 91e10c25d2c3bef9c1ca20e3e5737a326d45997c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561887"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654780"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>例:Text Analytics を使用してキー フレーズを抽出する方法
 
@@ -30,8 +30,6 @@ ms.locfileid: "97561887"
 > * また、`/analyze` エンドポイントを使用して、この機能を[非同期に](text-analytics-how-to-call-api.md)使用することもできます。
 
 ## <a name="preparation"></a>準備
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 キー フレーズ抽出は、扱うテキストの量が多いほど効果を発揮します。 感情分析では逆で、テキストの量が少ないほどパフォーマンスが向上します。 両方の操作から最善の結果を得るには、両方の操作に応じて入力を再構成することを検討してください。
 

@@ -1,18 +1,18 @@
 ---
 title: '方法: Data Catalog を参照する'
 description: この記事では、資産の種類に基づいて Azure Purview Data Catalog を参照する方法の概要を示します。
-author: hrasheed-msft
-ms.author: hrasheed
+author: chanuengg
+ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: b8cdbbc29472ae10920c347dde308c352bf0b68a
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: dd2fd4fbc9d8aecd9821d668dd02bd4b68659cf6
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550645"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695051"
 ---
 # <a name="browse-the-azure-purview-data-catalog"></a>Azure Purview Data Catalog の参照
 

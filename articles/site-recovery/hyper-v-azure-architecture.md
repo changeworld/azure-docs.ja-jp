@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: af387b063a3c07d8b6b6c544814565e2a5ebdd46
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c5025b83619b505728bfdf5c4e1ccc81d3bb225e
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993773"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654763"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -68,7 +68,7 @@ Site Recovery を期待どおりに動作させるためには、環境でレプ
 
 | **名前**                  | **商用**                               | **政府**                                 | **説明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| ストレージ                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | ソース リージョンのキャッシュ ストレージ アカウントに、VM からデータが書き込まれるよう許可します。 |
+| ストレージ                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | ソース リージョンのキャッシュ ストレージ アカウントに、VM からデータが書き込まれるよう許可します。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Site Recovery サービス URL に対する承認と認証を提供します。 |
 | レプリケーション               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | VM と Site Recovery サービスの通信を許可します。 |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | VM による Site Recovery の監視および診断データの書き込みを許可します。 |

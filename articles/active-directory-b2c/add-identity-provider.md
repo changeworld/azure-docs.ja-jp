@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 7d694ec97f6dac93b7bc20908e0a7c29f7f23661
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a5e8914b170f972304098bf9b4d0022164d30777
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96939021"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669093"
 ---
 # <a name="add-an-identity-provider-to-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C テナントへの ID プロバイダーの追加
 
@@ -40,6 +40,7 @@ Azure portal を使用して、Azure Active Directory B2C (Azure AD B2C) によ�
 * [Facebook](identity-provider-facebook.md)
 * [汎用の ID プロバイダー](identity-provider-generic-openid-connect.md)
 * [GitHub](identity-provider-github.md)
+* [ID.me](identity-provider-id-me.md)
 * [Google](identity-provider-google.md)
 * [LinkedIn](identity-provider-linkedin.md)
 * [Microsoft アカウント](identity-provider-microsoft-account.md)

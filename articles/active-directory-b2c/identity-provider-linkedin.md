@@ -8,16 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 12/17/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1abc0f075098768d3823b6ce916d7c44711c0567
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: bde7c1adefea88ed5b5d86e2c0e17f475be1bc71
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516182"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654372"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して LinkedIn アカウントでのサインアップおよびサインインを設定する
 
@@ -31,19 +32,7 @@ ms.locfileid: "97516182"
 
 ## <a name="prerequisites"></a>前提条件
 
-::: zone pivot="b2c-user-flow"
-
-* [ユーザー フローを作成](tutorial-create-user-flows.md)して、ユーザーがアプリケーションにサインアップおよびサインインできるようにします。
-* まだそうしていない場合は、[Azure Active Directory B2C テナントに Web API アプリケーションを追加](add-web-api-application.md)します。
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-* 「[Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」にある手順を完了する。
-* まだそうしていない場合は、[Azure Active Directory B2C テナントに Web API アプリケーションを追加](add-web-api-application.md)します。
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-linkedin-application"></a>LinkedIn アプリケーションを作成する
 

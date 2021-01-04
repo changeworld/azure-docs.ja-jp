@@ -8,16 +8,16 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4889ecd02be1b8f59c30550b7813ed5e5935f20f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0953d750ee8b59e9889512bb64cfd276a0bbeb53
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924696"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654866"
 ---
 #   <a name="text-translation-cognitive-skill"></a>テキスト翻訳コグニティブ スキル
 
-**テキスト翻訳**スキルでは、テキストが評価され、レコードごとに、指定した対象言語に翻訳されたテキストが返されます。 このスキルでは、Cognitive Services で使用可能な [Translator Text API v3.0](../cognitive-services/translator/reference/v3-0-translate.md) が使用されます。
+**テキスト翻訳** スキルでは、テキストが評価され、レコードごとに、指定した対象言語に翻訳されたテキストが返されます。 このスキルでは、Cognitive Services で使用可能な [Translator Text API v3.0](../cognitive-services/translator/reference/v3-0-translate.md) が使用されます。
 
 この機能は、ドキュメント全体が 1 つの言語ではないことが予想される場合に役に立ち、そのような場合、翻訳して検索用のインデックスを作成する前に、テキストを 1 つの言語に正規化することができます。  また、同じテキストのコピーを複数の言語で使用できるようにしたいローカライズのユース ケースにも役立ちます。
 
@@ -38,7 +38,7 @@ Microsoft.Skills.Text.TranslationSkill
 
 パラメーターの大文字と小文字は区別されます。
 
-| 入力                | 説明 |
+| 入力 | 説明 |
 |---------------------|-------------|
 | defaultToLanguageCode | (必須) 翻訳後の言語が明示的に指定されていないドキュメントに対する翻訳後の言語のコード。 <br/> [サポートされる言語の完全な一覧](../cognitive-services/translator/language-support.md)を参照してください。 |
 | defaultFromLanguageCode | (省略可能) 翻訳前の言語が明示的に指定されていないドキュメントに対する翻訳前の言語のコード。  defaultFromLanguageCode が指定されていない場合は、Translator Text API によって提供される自動言語検出を使用して、翻訳前の言語が決定されます。 <br/> [サポートされる言語の完全な一覧](../cognitive-services/translator/language-support.md)を参照してください。 |

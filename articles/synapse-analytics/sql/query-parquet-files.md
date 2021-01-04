@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 20bfbaeea48711a680877e4d5d8f618e84eb12d7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: cce4c6aff986c2e8c3d879d962714e13f6b2e7ae
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462580"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694684"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使用して Parquet ファイルのクエリを実行する
 
@@ -38,9 +38,9 @@ from openrowset(
 このファイルにアクセスできることを確認します。 ファイルが SAS キーまたはカスタム Azure ID で保護されている場合は、[SQL ログインのためのサーバーレベルの資格情報](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)を設定する必要があります。
 
 > [!IMPORTANT]
-> PARQUET ファイル内の文字列値が UTF-8 エンコードを使用してエンコードされているため、UTF-8 データベース照合順序 (`Latin1_General_100_CI_AS_SC_UTF8` など) を使用するようにしてください。
+> PARQUET ファイル内の文字列値が UTF-8 エンコードを使用してエンコードされているため、UTF-8 データベース照合順序 (`Latin1_General_100_BIN2_UTF8` など) を使用するようにしてください。
 > PARQUET ファイル内のテキスト エンコードと照合順序が一致しないと、予期しない変換エラーが発生する可能性があります。
-> 現在のデータベースの既定の照合順序は、`alter database current collate Latin1_General_100_CI_AI_SC_UTF8` という T-SQL ステートメントを使用して簡単変更できます。
+> 現在のデータベースの既定の照合順序は、`alter database current collate Latin1_General_100_BIN2_UTF8` という T-SQL ステートメントを使用して簡単変更できます。
 
 ### <a name="data-source-usage"></a>データ ソースの使用状況
 
@@ -74,10 +74,10 @@ from openrowset(
 ```
 
 > [!IMPORTANT]
-> 必ず `WITH` 句の文字列の列すべてに対して何らかの UTF-8 照合順序 (`Latin1_General_100_CI_AS_SC_UTF8` など) を明示的に指定するようにしてください。または、データベース レベルで何らかの UTF-8 照合順序を設定してください。
+> 必ず `WITH` 句の文字列の列すべてに対して何らかの UTF-8 照合順序 (`Latin1_General_100_BIN2_UTF8` など) を明示的に指定するようにしてください。または、データベース レベルで何らかの UTF-8 照合順序を設定してください。
 > ファイル内のテキスト エンコードと文字列の列の照合順序が一致しないと、予期しない変換エラーが発生する可能性があります。
-> 現在のデータベースの既定の照合順序は、`alter database current collate Latin1_General_100_CI_AI_SC_UTF8` という T-SQL ステートメントを使用して簡単変更できます。
-> `geo_id varchar(6) collate Latin1_General_100_CI_AI_SC_UTF8` という定義を使用して、列の型に照合順序を簡単に設定できます。
+> 現在のデータベースの既定の照合順序は、`alter database current collate Latin1_General_100_BIN2_UTF8` という T-SQL ステートメントを使用して簡単変更できます。
+> `geo_id varchar(6) collate Latin1_General_100_BIN2_UTF8` という定義を使用して、列の型に照合順序を簡単に設定できます。
 
 次のセクションでは、さまざまな種類の PARQUET ファイルに対してクエリを実行する方法について説明します。
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: 99c60cf541b3997f2aeca2ccef5a5af6b9c88e08
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: bff20468e8185073f5c192c1e115bc405dd089eb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131498"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693620"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI アプリ オファーを作成する
 
@@ -39,7 +39,7 @@ ms.locfileid: "93131498"
 **[オファー ID]** を入力します。 これは、ご自分のアカウント内の各オファーに対する一意の識別子です。
 
 - この ID は、マーケットプレース オファーの Web アドレスと Azure Resource Manager テンプレート (該当する場合) で顧客に表示されます。
-- 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、ここに「 **test-offer-1** 」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
+- 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、ここに「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
 - **[作成]** を選択した後で、オファー ID を変更することはできません。
 
 **[オファーのエイリアス]** を入力します。 これは、パートナー センター内でオファーに使用される名前です。
@@ -109,9 +109,7 @@ ms.locfileid: "93131498"
 
 #### <a name="terms-and-conditions"></a>使用条件
 
-独自のカスタム使用条件を指定するには、 **[使用条件]** ボックスに最大 10,000 文字を入力します。 使用条件により長い説明が必要な場合は、その場所への Web リンクを 1 つ入力します。 これはアクティブなリンクとして顧客に表示されます。
-
-顧客は、オファーを試す前にこれらの条件に同意する必要があります。
+独自のカスタム使用条件を指定するには、 **[使用条件]** ボックスに最大 10,000 文字を入力します。 顧客は、オファーを試す前にこれらの条件に同意する必要があります。
 
 **[下書きの保存]** を選択してから、次のセクション「オファーのリスト登録」に進みます。
 
@@ -130,7 +128,7 @@ ms.locfileid: "93131498"
 
 Microsoft AppSource でのオファー情報の表示例を次に示します (表示されている価格は例示のみを目的としており、実際のコストを反映することを意図していません)。
 
-:::image type="content" source="media/example-power-bi-app.png" alt-text="Microsoft AppSource でこのオファーが どのように表示されるかを示しています。":::
+:::image type="content" source="media/example-power-bi-app.png" alt-text="Microsoft AppSource でこのオファーがどのように表示されるかを示しています。":::
 
 #### <a name="call-out-descriptions"></a>コールアウトの説明
 
@@ -209,7 +207,7 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-**大** サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、 **小** サイズのロゴを作成します。 これは、必要に応じて、後で別の画像に置き換えることができます。
+**大** サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小** サイズのロゴを作成します。 これは、必要に応じて、後で別の画像に置き換えることができます。
 
 - **大** (216 x 216 から 350 x 350 px、必須)
 - **小** (48 x 48 px、省略可能)

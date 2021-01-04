@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 5e3473a9afefe73fe7b07d3efda1f53675264fc8
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 9f69f89f565b2d98e408b06e300ff781c13680ef
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874629"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693670"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>新しい Application Gateway を使用して Application Gateway イングレス コントローラー (AGIC) をインストールする方法
 
@@ -92,7 +92,7 @@ ms.locfileid: "94874629"
     az group create -n $resourceGroupName -l $location
 
     # modify the template as needed
-    az group deployment create \
+    az deployment group create \
             -g $resourceGroupName \
             -n $deploymentName \
             --template-file template.json \
@@ -101,7 +101,7 @@ ms.locfileid: "94874629"
 
 1. デプロイが完了したら、`deployment-outputs.json` という名前のファイルにデプロイ出力をダウンロードします。
     ```azurecli
-    az group deployment show -g $resourceGroupName -n $deploymentName --query "properties.outputs" -o json > deployment-outputs.json
+    az deployment group show -g $resourceGroupName -n $deploymentName --query "properties.outputs" -o json > deployment-outputs.json
     ```
 
 ## <a name="set-up-application-gateway-ingress-controller"></a>Azure Application Gateway イングレス コントローラーを設定する
@@ -148,7 +148,7 @@ AAD ポッド ID をクラスターにインストールするには、次のよ
 
 1. [Helm](../aks/kubernetes-helm.md) をインストールし、以下を実行して `application-gateway-kubernetes-ingress` Helm パッケージを追加します。
 
-    - *Kubernetes RBAC が有効* の AKS クラスター
+    - "*Kubernetes RBAC が有効*" の AKS クラスター
 
         ```bash
         kubectl create serviceaccount --namespace kube-system tiller-sa
@@ -156,7 +156,7 @@ AAD ポッド ID をクラスターにインストールするには、次のよ
         helm init --tiller-namespace kube-system --service-account tiller-sa
         ```
 
-    - *Kubernetes RBAC が無効* の AKS クラスター
+    - "*Kubernetes RBAC が無効*" の AKS クラスター
 
         ```bash
         helm init

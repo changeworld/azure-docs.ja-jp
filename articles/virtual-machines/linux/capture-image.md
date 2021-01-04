@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
-ms.openlocfilehash: 376d9d76633060f504454f85841b9c15bafc6685
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eacd1426b856de11a18b0da6c509d281b3bca94c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503040"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655171"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のマネージド イメージを作成する方法
 
@@ -54,14 +54,14 @@ ms.locfileid: "87503040"
 4. コマンドが完了したら、**exit** を入力して SSH クライアントを閉じます。  この時点で、VM はまだ実行されています。
 
 ## <a name="step-2-create-vm-image"></a>手順 2:VM イメージを作成する
-Azure CLI を使用し、一般化されたものとして VM を設定し、イメージをキャプチャします。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myVnet*、*myVM*といったパラメーター名にします。
+Azure CLI を使用し、一般化されたものとして VM を設定し、イメージをキャプチャします。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myVnet*、*myVM* といったパラメーター名にします。
 
 1. [az vm deallocate](/cli/azure/vm) で、プロビジョニングを解除した VM の割り当てを解除します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM の割り当てを解除します。  
    
     ```azurecli
     az vm deallocate \
-      --resource-group myResourceGroup \
-      --name myVM
+        --resource-group myResourceGroup \
+        --name myVM
     ```
     
     先に進む前に、VM の割り当てが完全に解除されるまで待ちます。 これは完了するまでに数分かかる場合があります。  VM は、割り当て解除中にシャットダウンされます。
@@ -70,8 +70,8 @@ Azure CLI を使用し、一般化されたものとして VM を設定し、イ
    
     ```azurecli
     az vm generalize \
-      --resource-group myResourceGroup \
-      --name myVM
+        --resource-group myResourceGroup \
+        --name myVM
     ```
 
     一般化された VM は再起動できなくなります。
@@ -80,8 +80,8 @@ Azure CLI を使用し、一般化されたものとして VM を設定し、イ
    
     ```azurecli
     az image create \
-      --resource-group myResourceGroup \
-      --name myImage --source myVM
+        --resource-group myResourceGroup \
+        --name myImage --source myVM
     ```
    
    > [!NOTE]

@@ -3,12 +3,12 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: 1f07cda0afa7213ca9c803754950c86a3f246469
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bae0887ca540dd553cc80849d9e134516089d016
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021346"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582714"
 ---
 このガイドでは、Go 用の Custom Vision クライアント ライブラリを使用して物体検出モデルを構築する際の足がかりとして役立つ手順とサンプル コードを紹介します。 プロジェクトを作成し、タグを追加し、プロジェクトをトレーニングして、プロジェクトの予測エンドポイント URL を使用してプログラムでテストします。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
 
@@ -274,6 +274,8 @@ go run sample.go
 ```
 
 コンソールにアプリケーションの出力が表示されると思います。 **samples/vision/images/Test** 内のテスト画像にタグが適切に付けられていること、また検出の領域が正しいことを確認してください。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 

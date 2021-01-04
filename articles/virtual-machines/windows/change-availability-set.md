@@ -6,12 +6,12 @@ author: cynthn
 ms.topic: how-to
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: f774056a8faf40e3796b06718e90cd7da988241c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c0694bd1dc2fefed644dc91a0d649dd1a480428
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284627"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654542"
 ---
 # <a name="change-the-availability-set-for-a-vm"></a>VM の可用性セットを変更する
 以下の手順では、Azure PowerShell を使用して VM の可用性セットを変更する方法について説明します。 VM を可用性セットに追加できるのは、VM の作成時のみです。 可用性セットを変更するには、仮想マシンを削除してから作成し直す必要があります。 
@@ -83,18 +83,18 @@ ms.locfileid: "87284627"
 # Add NIC(s) and keep the same NIC as primary
     foreach ($nic in $originalVM.NetworkProfile.NetworkInterfaces) {    
     if ($nic.Primary -eq "True")
-        {
+    {
             Add-AzVMNetworkInterface `
-            -VM $newVM `
-            -Id $nic.Id -Primary
-            }
-        else
-            {
-              Add-AzVMNetworkInterface `
-              -VM $newVM `
-              -Id $nic.Id 
+               -VM $newVM `
+               -Id $nic.Id -Primary
+               }
+           else
+               {
+                 Add-AzVMNetworkInterface `
+                -VM $newVM `
+                 -Id $nic.Id 
                 }
-    }
+      }
 
 # Recreate the VM
     New-AzVM `

@@ -65,6 +65,8 @@
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
+        - name: セキュリティの運用方法
+          href: security-best-practices.md
     - name: Batch サービスのワークフローとリソース
       displayName: developer features
       href: batch-service-workflow-features.md

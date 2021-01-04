@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ad7fe062d30f6858296ad4a2638b62c190862365
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 80e6dbdc02b68c279452127933532106b0f78ab8
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936439"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654661"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -39,7 +39,7 @@ SAML を使用した非排他的な 2 つの主要なシナリオの概要:
 | シナリオ | Azure AD B2C のロール | 操作方法 |
 | -------- | ----------------- | ------- |
 | 私のアプリケーションで、SAML アサーションが認証を完了することが想定されている。 | **Azure AD B2C は、ID プロバイダー (IdP) として機能する**<br />Azure AD B2C は、アプリケーションに対する SAML IdP として機能します。 | この記事 |
-| 私のユーザーは、ADFS、Salesforce、Shibboleth など、SAML 準拠の ID プロバイダーでシングル サイン オンを行う必要がある。  | **Azure AD B2C は、サービス プロバイダー (SP) として機能する**<br />Azure AD B2C は、SAML ID プロバイダーに接続するときにサービス プロバイダーとして機能します。 アプリケーションと SAML ID プロバイダーの間のフェデレーション プロキシです。  | <ul><li>[カスタム ポリシーを使用して SAML IdP としての ADFS によるサインインを設定する](identity-provider-adfs.md)</li><li>[カスタム ポリシーを使用して Salesforce SAML プロバイダーによるサインインを設定する](identity-provider-salesforce.md)</li></ul> |
+| 私のユーザーは、ADFS、Salesforce、Shibboleth など、SAML 準拠の ID プロバイダーでシングル サイン オンを行う必要がある。  | **Azure AD B2C は、サービス プロバイダー (SP) として機能する**<br />Azure AD B2C は、SAML ID プロバイダーに接続するときにサービス プロバイダーとして機能します。 アプリケーションと SAML ID プロバイダーの間のフェデレーション プロキシです。  | <ul><li>[カスタム ポリシーを使用して SAML IdP としての ADFS によるサインインを設定する](identity-provider-adfs.md)</li><li>[カスタム ポリシーを使用して Salesforce SAML プロバイダーによるサインインを設定する](identity-provider-salesforce-saml.md)</li></ul> |
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -393,7 +393,7 @@ Azure AD B2C が暗号化されたアサーションを送信できるように�
 
 ## <a name="enable-identity-provider-initiated-flow-optional"></a>ID プロバイダー開始フローを有効にする (省略可能)
 
-ID プロバイダー開始フローでは、サインイン プロセスは ID プロバイダー (Azure AD B2C) によって開始され、このプロバイダーによって、要請されていない SAML 応答がサービス プロバイダー (証明書利用者アプリケーション) に送信されます。 現在、開始側の ID プロバイダーが外部 ID プロバイダー (たとえば [AD-FS](identity-provider-adfs.md) や [Salesforce](identity-provider-salesforce.md)) であるシナリオはサポートされていません。
+ID プロバイダー開始フローでは、サインイン プロセスは ID プロバイダー (Azure AD B2C) によって開始され、このプロバイダーによって、要請されていない SAML 応答がサービス プロバイダー (証明書利用者アプリケーション) に送信されます。 現在、開始側の ID プロバイダーが外部 ID プロバイダー (たとえば [AD-FS](identity-provider-adfs.md) や [Salesforce](identity-provider-salesforce-saml.md)) であるシナリオはサポートされていません。
 
 ID プロバイダー (Azure AD B2C) 開始フローを有効にするには、[証明書利用者の技術プロファイル](relyingparty.md#technicalprofile)で、**IdpInitiatedProfileEnabled** メタデータ項目を `true` に設定します。
 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: da583a1c884ddcae0815849c43dc0eb335005e53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 038c1d4c0f0b5ffd7b9aabea2de32e3a44e3b221
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832741"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654134"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack でデータ形式間の XML 変換マップを作成する
 
@@ -44,7 +44,7 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas)を�
 4. 検索ボックスに「*transform*」と入力し、すべてのアクションから使用するアクションだけをフィルター処理します  
    ![Request トリガーに追加できるよう、"Microsoft のマネージド API を表示" で XML 変換アクションを検索する方法を示すスクリーンショット。](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
 5. **[XML の変換]** アクションを選択します。   
-6. 変換する XML **コンテンツ** を追加します。 HTTP 要求で受信する XML データは、すべて **コンテンツ**として使用することができます。 この例では、ロジック アプリをトリガーした HTTP 要求の本文を選択します。
+6. 変換する XML **コンテンツ** を追加します。 HTTP 要求で受信する XML データは、すべて **コンテンツ** として使用することができます。 この例では、ロジック アプリをトリガーした HTTP 要求の本文を選択します。
 
    > [!NOTE]
    > **[XML の変換]** のコンテンツが XML で記述されていることを確認してください。 コンテンツが XML で記述されていない、または base64 でエンコードされている場合は、コンテンツを処理する式を指定する必要があります。 たとえば、デコードされたコンテンツには ```@base64ToBinary```、XML として処理するコンテンツには ```@xml``` などの[関数](logic-apps-workflow-definition-language.md#functions)を使用できます。
@@ -95,17 +95,17 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas)を�
     <![CDATA[public double circumference(int radius){ XsltHelper helper = new XsltHelper(); return helper.circumference(radius); }]]>
   </msxsl:script>
   <xsl:template match="data">
-     <circles>
-        <xsl:for-each select="circle">
-            <circle>
-                <xsl:copy-of select="node()"/>
-                    <circumference>
-                        <xsl:value-of select="user:circumference(radius)"/>
-                    </circumference>
-            </circle>
-        </xsl:for-each>
-     </circles>
-    </xsl:template>
+   <circles>
+    <xsl:for-each select="circle">
+      <circle>
+        <xsl:copy-of select="node()"/>
+          <circumference>
+            <xsl:value-of select="user:circumference(radius)"/>
+          </circumference>
+      </circle>
+    </xsl:for-each>
+   </circles>
+  </xsl:template>
     </xsl:stylesheet>
   ```
 

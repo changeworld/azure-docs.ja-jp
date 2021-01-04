@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aadb75d7257470cf4288c6123263f3d2dfe14d21
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2ff43408cfa6d95dbd5a235a950269c47d57a416
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781721"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654032"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -178,7 +178,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 #### <a name="enumeration"></a>Enumeration
 
-**Enumeration** 要素は、ユーザーが要求についてユーザー インターフェイスで選択可能なオプション (`CheckboxMultiSelect`、`DropdownSingleSelect`、または `RadioSingleSelect` の値など) を定義します。 または、[LocalizedCollections](localization.md#localizedcollections) 要素を使用して、使用可能なオプションを定義してローカライズすることもできます。 要求 **Enumeration** コレクションから項目を検索するには、 [GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection) 要求変換を使用します。
+**Enumeration** 要素は、ユーザーが要求についてユーザー インターフェイスで選択可能なオプション (`CheckboxMultiSelect`、`DropdownSingleSelect`、または `RadioSingleSelect` の値など) を定義します。 または、[LocalizedCollections](localization.md#localizedcollections) 要素を使用して、使用可能なオプションを定義してローカライズすることもできます。 要求 **Enumeration** コレクションから項目を検索するには、[GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection) 要求変換を使用します。
 
 **列挙型** 要素には、次の属性が含まれています。
 
@@ -188,7 +188,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 |Value | はい | このオプションの選択に関連付けられている要求の値。 |
 | SelectByDefault | いいえ | このオプションが既定で UI で選択するかどうかを示します。 指定できる値True または False。 |
 
-次の例では、 **市区町村** ドロップダウン リストの要求を設定し、既定値を`New York`に設定します。
+次の例では、**市区町村** ドロップダウン リストの要求を設定し、既定値を`New York`に設定します。
 
 ```xml
 <ClaimType Id="city">
@@ -216,21 +216,21 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 | RegularExpression | はい | この種類の要求が有効になるのに一致する必要がある正規表現。 |
 | HelpText | いいえ | 正規表現のチェックが失敗した場合にユーザーに表示されるエラー メッセージ。 |
 
-次の例では、 **電子メール** 要求を正規表現入力検証とヘルプ テキストとともに設定します。
+次の例では、**電子メール** 要求を正規表現入力検証とヘルプ テキストとともに設定します。
 
 ```xml
 <ClaimType Id="email">
   <DisplayName>Email Address</DisplayName>
   <DataType>string</DataType>
   <DefaultPartnerClaimTypes>
-    <Protocol Name="OpenIdConnect" PartnerClaimType="email" />
+  <Protocol Name="OpenIdConnect" PartnerClaimType="email" />
   </DefaultPartnerClaimTypes>
   <UserHelpText>Email address that can be used to contact you.</UserHelpText>
   <UserInputType>TextBox</UserInputType>
   <Restriction>
     <Pattern RegularExpression="^[a-zA-Z0-9.+!#$%&amp;'^_`{}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" HelpText="Please enter a valid email address." />
-    </Restriction>
- </ClaimType>
+  </Restriction>
+</ClaimType>
 ```
 
 Identity Experience Framework は、電子メールの入力検証の形式を表示します。
@@ -306,7 +306,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 #### <a name="datetimedropdown"></a>DateTimeDropdown
 
-**DateTimeDropdown** ユーザー入力の種類は、日、月、および年を選択するドロップダウン リストのセットを提供するために使用します。 述語および PredicateValidations 要素を使用すると、日付の最小値と最大値を制御できます。 詳細については、 [述語および PredicateValidations](predicates.md)の **日付範囲を構成する** セクションを参照してください。
+**DateTimeDropdown** ユーザー入力の種類は、日、月、および年を選択するドロップダウン リストのセットを提供するために使用します。 述語および PredicateValidations 要素を使用すると、日付の最小値と最大値を制御できます。 詳細については、[述語および PredicateValidations](predicates.md)の **日付範囲を構成する** セクションを参照してください。
 
 ![datetimedropdown を使用する要求の種類](./media/claimsschema/datetimedropdown.png)
 
