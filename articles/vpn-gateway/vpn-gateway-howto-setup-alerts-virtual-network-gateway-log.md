@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: alzam
-ms.openlocfilehash: 1f10799ab32b6cb26a8b3b5b343f65b960d71357
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 70cac6ef566ef52409cd9667708c2fc297e046f7
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007003"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656616"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>VPN Gateway からのリソース ログ イベントにアラートを設定する
 
@@ -21,7 +21,7 @@ ms.locfileid: "96007003"
 Azure では、次のリソース ログを使用できます。
 
 |"***名前** | _*_説明_*_ |
-|---        | ---               |
+|--- | --- |
 |GatewayDiagnosticLog | ゲートウェイ構成イベント、主要な変更、メンテナンス イベントのリソース ログが含まれています |
 |TunnelDiagnosticLog | トンネルの状態変更イベントが含まれています。 トンネルの接続/切断イベントには、状態変更の理由の概要があります (該当する場合) |
 |RouteDiagnosticLog | ゲートウェイで発生する静的ルートへの変更および BGP イベントがログに記録されます |

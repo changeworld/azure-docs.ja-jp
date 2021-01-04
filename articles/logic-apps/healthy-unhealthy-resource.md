@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 9c22e7cbc71c2b29c4b3e50319c6b6d256856bb3
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 7d43c128f0f587a32cc4b8673727579043f268eb
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855558"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629597"
 ---
 # <a name="set-up-logging-to-monitor-logic-apps-in-azure-security-center"></a>Azure Security Center でロジック アプリを監視するためのログを設定する
 
@@ -24,7 +24,7 @@ ms.locfileid: "96855558"
 
 * Azure サブスクリプション。 サブスクリプションをお持ちでない場合は、始める前に[無料の Azure アカウントを作成](https://azure.microsoft.com/free/)してください。
 * [診断ログが有効になっている](#enable-diagnostic-logging)既存のロジック アプリ。
-* Log Analytics ワークスペース。ロジック アプリのログを有効にするために必要です。 ワークスペースがない場合は、まず[ワークスペースを作成](/learn/quick-create-workspace.md)します。
+* Log Analytics ワークスペース。ロジック アプリのログを有効にするために必要です。 ワークスペースがない場合は、まず[ワークスペースを作成](/azure/azure-monitor/learn/quick-create-workspace)します。
 
 ## <a name="enable-diagnostic-logging"></a>診断ログの有効化
 

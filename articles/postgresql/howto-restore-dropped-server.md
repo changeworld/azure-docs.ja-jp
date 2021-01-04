@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 81764294cc29ad74d5a77f2055f10498d69b59e5
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 591f01004cfba247112f702625ab05ddc0aaede3
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342868"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652927"
 ---
 # <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>ドロップした Azure Database for PostgreSQL サーバーを復元する
 
@@ -39,23 +39,26 @@ ms.locfileid: "93342868"
 
  4. PostgreSQL の [[Create Server REST API]\(サーバー REST API の作成\) ページ](/rest/api/PostgreSQL/servers/create)を参照し、緑色で強調表示されている **[試してみる]** タブを選択します。 Azure のアカウントを使用してサインインします。
 
- 5. 前の手順 3 でキャプチャした resourceId 属性の JSON 値に基づいて、 **resourceGroupName** 、 **serverName** (削除されたサーバー名)、 **subscriptionId** の各プロパティを指定します。 次の図に示すように、api-version プロパティはあらかじめ設定されており、そのまま残すことができます。
+ 5. 前の手順 3 でキャプチャした resourceId 属性の JSON 値に基づいて、**resourceGroupName**、**serverName** (削除されたサーバー名)、**subscriptionId** の各プロパティを指定します。 次の図に示すように、api-version プロパティはあらかじめ設定されており、そのまま残すことができます。
 
     ![REST API を使用したサーバーの作成](./media/howto-restore-dropped-server/create-server-from-rest-api-azure.png)
   
  6. [要求本文] セクションまで下にスクロールし、以下を貼り付けて、削除されたサーバーの場所、submissionTimestamp、resourceId を置き換えます。 restorePointInTime については、コマンドがエラーにならないように、submissionTimestamp の値から **15 分** だけ引いた値を指定します。
+    
     ```json
-        {
-          "location": "Dropped Server Location",  
-          "properties": 
-              {
-                  "restorePointInTime": "submissionTimestamp - 15 minutes",
-                  "createMode": "PointInTimeRestore",
-                  "sourceServerId": "resourceId"
-            }
-        }
+    {
+      "location": "Dropped Server Location",  
+      "properties": 
+      {
+        "restorePointInTime": "submissionTimestamp - 15 minutes",
+        "createMode": "PointInTimeRestore",
+        "sourceServerId": "resourceId"
+      }
+    }
     ```
+
     たとえば、現在の時刻が 2020-11-02T23:59:59.0000000Z の場合は、過去の復元ポイントの 15 分以上前の時刻の 2020-11-02T23:44:59.0000000Z を指定することをお勧めします。
+
     > [!Important]
     > サーバーがドロップされてから 5 日間の時間制限があります。 5 日が経過すると、バックアップ ファイルが見つからないため、エラーが発生します。
     

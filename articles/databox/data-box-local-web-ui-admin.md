@@ -6,22 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/07/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 859eb6abd138f0660407618bba4550daf9158ab9
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: e84f39fa5b9245d1874e60d651156e99c0885040
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855007"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678927"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>ローカル Web UI を使用して Data Box および Data Box Heavy を管理する
 
 この記事では、Data Box および Data Box Heavy デバイスで実行される一部の構成と管理タスクについて説明します。 Data Box および Data Box Heavy デバイスの管理は、Azure portal UI およびデバイスのローカル Web UI を介して行えます。 この記事では、ローカル Web UI を使用して実行されるタスクについて説明します。
 
 Data Box および Data Box Heavy のローカル Web UI は、デバイスの初期構成に使用されます。 また、ローカル Web UI を使用して、デバイスのシャットダウンまたは再起動、診断テストの実行、ソフトウェアの更新、コピー ログの表示、デバイスからのローカル データの消去、および Microsoft サポートのログ パッケージの生成を行うこともできます。 2 つの独立したノードを備えた Data Box Heavy デバイスでは、デバイスの各ノードに対応する 2 つの別個のローカル Web UI にアクセスできます。
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>サポート パッケージの生成
 

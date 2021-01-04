@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 7c250f1351d83d213c5c7af5b00d7a648c5d8bc6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 56654f09d3a92eec5b86d8c8e4cd76fec0639394
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499664"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653046"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer のリリース ノート
 
@@ -567,7 +567,7 @@ ms.locfileid: "96499664"
   * 新しいフォルダーの作成
   * ファイルおよびフォルダーのアップロード、ダウンロード、名前変更、削除
   * ファイルおよびフォルダーのプロパティとアクセス許可の管理 (右側)
-    
+
     論理的な削除やスナップショットなど、その他の一般的な BLOB 機能は現在使用できません。 アクセス許可の管理は、サインインしている場合にのみ使用できます。 さらに、ADLS Gen2 ストレージ アカウントで作業している場合、Storage Explorer では、すべてのアップロードおよびダウンロードに AzCopy が使用されます。また、既定ですべての操作に名前とキー資格情報が使用されます (使用可能な場合)。
 * 多数のユーザー フィードバックを受け、リースの解約をもう一度使用して、一度に複数の BLOB でリースを解約できるようになっています。
 

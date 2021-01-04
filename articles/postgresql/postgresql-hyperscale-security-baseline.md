@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 324a2acbf069e8e23246b99a7d79a3195f737a56
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 836cf4600e353da61673ec8ee5df8f30fb4b9562
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492303"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629852"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL の Azure セキュリティ ベースライン - Hyperscale (Citus)
 
@@ -582,7 +582,7 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 **ガイダンス**: 現在、Azure Database for PostgreSQL - Hyperscale (Citus) では、マネージド ID は直接はサポートされていません。 Azure Database for PostgreSQL サーバーを作成するときに、管理者ユーザーの資格情報を指定する必要があります。 Azure portal インターフェイスで追加のユーザー ロールを作成できます。
 
-- [Azure Database for PostgreSQL - Hyperscale (Citus) を作成する](./quickstart-create-hyperscale-portal.md#create-an-azure-database-for-postgresql---hyperscale-citus)
+- [Azure Database for PostgreSQL - Hyperscale (Citus) を作成する](./quickstart-create-hyperscale-portal.md#create-a-hyperscale-citus-server-group)
 
 - [追加のユーザー ロールを作成する](./howto-hyperscale-create-users.md#how-to-create-additional-user-roles)
 

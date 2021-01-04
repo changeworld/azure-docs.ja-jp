@@ -12,15 +12,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/20/2020
+ms.date: 12/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2732f9fc4b1b9251391180874a055e8ffd8d9e7a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 886cd57b59bd4103ced9d496021e54ab0bdc99ad
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985078"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723288"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>HANA Large Instances で利用できる SKU
 
@@ -64,24 +64,24 @@ ms.locfileid: "94985078"
 | YES <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1983)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2268) | SAP HANA on Azure S384<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  4.0 TB | 4.0 TB | --- | 16 TB | 利用可能 |
 | YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2080) | SAP HANA on Azure S384m<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  6.0 TB | 6.0 TB | --- | 18 TB |  使用可能  |
 | YES <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1984)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2267) | SAP HANA on Azure S384xm<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  8.0 TB | 8.0 TB | --- | 22 TB | 利用可能 |
-| YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2378) | SAP HANA on Azure S448<br /> \- 8 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 224 CPU コアと 448 CPU スレッド | 6.0 TB |  6.0 TB |  --- | 10.5 TB | 利用可能 (リビジョン 4 のみ) |
-| YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2377) | SAP HANA on Azure S448m<br /> \- 8 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 224 CPU コアと 448 CPU スレッド | 12.0 TB |  12.0 TB |  --- | 18.9 TB | 利用可能 (リビジョン 4 のみ) |
+| YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2411)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2378) | SAP HANA on Azure S448<br /> \- 8 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 224 CPU コアと 448 CPU スレッド | 6.0 TB |  6.0 TB |  --- | 10.5 TB | 利用可能 (リビジョン 4 のみ) |
+| YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2410)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2377) | SAP HANA on Azure S448m<br /> \- 8 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 224 CPU コアと 448 CPU スレッド | 12.0 TB |  12.0 TB |  --- | 18.9 TB | 利用可能 (リビジョン 4 のみ) |
 | NO | SAP HANA on Azure S448oo<br /> \- 8 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 224 CPU コアと 448 CPU スレッド | 9.0 TB |  3.0 TB |  6.0 TB | 14.8 TB  | 利用可能 (リビジョン 4 のみ) |
 | NO | SAP HANA on Azure S448om<br /> \- 8 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 224 CPU コアと 448 CPU スレッド | 12.0 TB |  6.0 TB |  6.0 TB | 18.9 TB  | 利用可能 (リビジョン 4 のみ) |
 | NO | SAP HANA on Azure S448ooo<br /> \- 8 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 224 CPU コアと 448 CPU スレッド | 15.0 TB |  3.0 TB |  12.0 TB | 23.2 TB  | 利用可能 (リビジョン 4 のみ) |
 | NO | SAP HANA on Azure S448oom<br /> \- 8 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 224 CPU コアと 448 CPU スレッド | 18.0 TB |  6.0 TB |  12.0 TB | 27.4 TB  | 利用可能 (リビジョン 4 のみ) |
-| YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2049) | SAP HANA on Azure S576m<br /> – 12 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 288 CPU コアと 576 CPU スレッド |  12.0 TB | 12.0 TB | --- | 28 TB | 利用可能 (リビジョン 4 のみ) |
+| YES <br /> [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2049) | SAP HANA on Azure S576m<br /> – 12 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 288 CPU コアと 576 CPU スレッド |  12.0 TB | 12.0 TB | --- | 28 TB | 利用可能 (リビジョン 4 のみ) |
 | NO | SAP HANA on Azure S576xm<br /> – 12 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 288 CPU コアと 576 CPU スレッド |  18.0 TB | 18.0 | --- |  41 TB | 利用可能 |
-| YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2380) | SAP HANA on Azure S672<br /> \- 12 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 336 CPU コアと 672 CPU スレッド | 9.0 TB |  9.0 TB |  --- | 14.7 TB | 利用可能 (リビジョン 4 のみ) |
-| YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2379) | SAP HANA on Azure S672m<br /> \- 12 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 336 CPU コアと 672 CPU スレッド | 18.0 TB |  18.0 TB |  --- | 27.4 TB | 利用可能 (リビジョン 4 のみ) |
+| YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2409)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2380) | SAP HANA on Azure S672<br /> \- 12 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 336 CPU コアと 672 CPU スレッド | 9.0 TB |  9.0 TB |  --- | 14.7 TB | 利用可能 (リビジョン 4 のみ) |
+| YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2408)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2379) | SAP HANA on Azure S672m<br /> \- 12 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 336 CPU コアと 672 CPU スレッド | 18.0 TB |  18.0 TB |  --- | 27.4 TB | 利用可能 (リビジョン 4 のみ) |
 | NO | SAP HANA on Azure S672oo<br /> \- 12 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 336 CPU コアと 672 CPU スレッド | 13.5 TB |  4.5 TB |  9.0 TB | 21.1 TB  | 利用可能 (リビジョン 4 のみ) |
 | NO | SAP HANA on Azure S672om<br /> \- 12 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 336 CPU コアと 672 CPU スレッド | 18.0 TB |  9.0 TB |  9.0 TB | 27.4 TB  | 利用可能 (リビジョン 4 のみ) |
 | NO | SAP HANA on Azure S672ooo<br /> \- 12 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 336 CPU コアと 672 CPU スレッド | 22.5 TB |  4.5 TB |  18.0 TB | 33.7 TB  | 利用可能 (リビジョン 4 のみ) |
 | NO | SAP HANA on Azure S672oom<br /> \- 12 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 336 CPU コアと 672 CPU スレッド | 27.0 TB |  9.0 TB |  18.0 TB | 40.0 TB  | 利用可能 (リビジョン 4 のみ) |
 | YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1985) | SAP HANA on Azure S768m<br /> – 16 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 384 CPU コアと 768 CPU スレッド |  16.0 TB | 16.0 TB | -- | 36 TB | 使用可能 |
 | NO | SAP HANA on Azure S768xm<br /> – 16 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 384 CPU コアと 768 CPU スレッド |  24.0 TB | 24.0 TB | --- | 56 TB | 利用可能 |
-|  YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2376)  | SAP HANA on Azure S896<br /> \- 16 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 448 CPU コアと 896 CPU スレッド | 12.0 TB |  12.0 TB |  --- | 18.9 TB | 利用可能 (リビジョン 4 のみ) |
-| YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2328) | SAP HANA on Azure S896m<br /> \- 16 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 448 CPU コアと 896 CPU スレッド | 24.0 TB | 24.0 TB | -- | 35.8 TB | 使用可能 |
+|  YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2407)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2376)  | SAP HANA on Azure S896<br /> \- 16 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 448 CPU コアと 896 CPU スレッド | 12.0 TB |  12.0 TB |  --- | 18.9 TB | 利用可能 (リビジョン 4 のみ) |
+| YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2406)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2328) | SAP HANA on Azure S896m<br /> \- 16 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 448 CPU コアと 896 CPU スレッド | 24.0 TB | 24.0 TB | -- | 35.8 TB | 使用可能 |
 | NO | SAP HANA on Azure S896oo<br /> \- 16 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 448 CPU コアと 896 CPU スレッド | 18.0 TB |  6.0 TB |  12.0 TB | 27.4 TB  | 利用可能 (リビジョン 4 のみ) |
 | NO | SAP HANA on Azure S896om<br /> \- 16 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 448 CPU コアと 896 CPU スレッド | 24.0 TB |  12.0 TB |  12.0 TB | 35.8 TB  | 利用可能 (リビジョン 4 のみ) |
 | NO | SAP HANA on Azure S896ooo<br /> \- 16 x Intel® Xeon® プラチナ 8276 プロセッサ <br /> 448 CPU コアと 896 CPU スレッド | 30.0 TB |  6.0 TB |  24.0 TB | 44.3 TB  | 利用可能 (リビジョン 4 のみ) |

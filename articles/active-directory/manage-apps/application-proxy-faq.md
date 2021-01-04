@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: c40a0cb362f8c43541194cd1ca0c57abbf8fa974
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 49388ee75fa3e5570a906998fdeaa579208fd636
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033104"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588592"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 
@@ -80,10 +80,12 @@ Azure AD アプリケーション プロキシを使用するには、Azure AD P
 コネクタは、同じサブネット上に存在している必要はありません。 ただし、リソースへの名前解決 (DNS、ホスト ファイル) と必要なネットワーク接続 (リソースへのルーティング、リソースのポート開放など) が必要です。 推薦事項に関しては、「[Azure Active Directory アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項](application-proxy-network-topology.md)」を参照してください。
 
 ### <a name="what-versions-of-windows-server-can-i-install-a-connector-on"></a>コネクタをインストールできる Windows Server のバージョンを教えてください。
+
 アプリケーション プロキシには、Windows Server 2012 R2 以降が必要です。 現時点、Windows Server 2019 では HTTP2 に対して制限があります。 Windows Server 2019 でコネクタを正常に使用するには、次のレジストリ キーを追加し、サーバーを再起動する必要があります。
-    ```
-    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
-    ```
+
+```
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+```
 
 ## <a name="application-configuration"></a>アプリケーションの構成
 

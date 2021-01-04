@@ -4,12 +4,12 @@ description: このクイック スタートでは、ご自身のコンテナー
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 6058fceb873e2b26da2d30dadba456e2a625f3f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2d13dd0ec5e50086e674b215d93917d6173d5af9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074218"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694396"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>クイック スタート:プライベート コンテナー レジストリから Event Grid にイベントを送信する
 
@@ -23,11 +23,11 @@ Azure Event Grid は、パブリッシュ/サブスクライブ モデルを使�
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- この記事の Azure CLI コマンドは、 **Bash** シェル用にフォーマットされています。 PowerShell、コマンド プロンプトなど、別のシェルを使用している場合は、必要に応じて、行連結文字または変数代入行を適切に調整する必要があります。 この記事では変数を使用して、必要なコマンド編集を最小限に抑えています。
+- この記事の Azure CLI コマンドは、**Bash** シェル用にフォーマットされています。 PowerShell、コマンド プロンプトなど、別のシェルを使用している場合は、必要に応じて、行連結文字または変数代入行を適切に調整する必要があります。 この記事では変数を使用して、必要なコマンド編集を最小限に抑えています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の [az group create][az-group-create] コマンドでは、 *myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。 ご自身のリソース グループに別の名前を使用する場合は、`RESOURCE_GROUP_NAME` を別の値に設定してください。
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の [az group create][az-group-create] コマンドでは、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。 ご自身のリソース グループに別の名前を使用する場合は、`RESOURCE_GROUP_NAME` を別の値に設定してください。
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -78,7 +78,7 @@ az acr create --resource-group $RESOURCE_GROUP_NAME --name $ACR_NAME --sku Basic
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
 
-az group deployment create \
+az deployment group create \
     --resource-group $RESOURCE_GROUP_NAME \
     --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
@@ -96,7 +96,7 @@ az group deployment create \
 
 ## <a name="subscribe-to-registry-events"></a>レジストリ イベントのサブスクライブ
 
-Event Grid では、" *トピック* " をサブスクライブすることで、どのイベントを追跡し、どこにイベントを送信するかをその Event Grid に伝えます。 次の [az eventgrid event-subscription create][az-eventgrid-event-subscription-create] コマンドでは、作成したコンテナー レジストリをサブスクライブして、ご自身の Web アプリの URL を、イベントの送信先エンドポイントとして指定します。 前のセクションで設定した環境変数はここで再利用されます。したがって、編集は不要です。
+Event Grid では、"*トピック*" をサブスクライブすることで、どのイベントを追跡し、どこにイベントを送信するかをその Event Grid に伝えます。 次の [az eventgrid event-subscription create][az-eventgrid-event-subscription-create] コマンドでは、作成したコンテナー レジストリをサブスクライブして、ご自身の Web アプリの URL を、イベントの送信先エンドポイントとして指定します。 前のセクションで設定した環境変数はここで再利用されます。したがって、編集は不要です。
 
 ```azurecli-interactive
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
@@ -206,7 +206,7 @@ Are you sure you want to continue? (y/n):
 
 このクイック スタートで作成したリソースの処理が完了したら、次の Azure CLI コマンドを使用してすべてのリソースを削除できます。 リソース グループを削除すると、そこに含まれているリソースはすべて、完全に削除されます。
 
-**警告** : この操作は元に戻すことができません。 コマンドを実行する前に、グループ内のすべてのリソースが不要であることを必ず確認してください。
+**警告**: この操作は元に戻すことができません。 コマンドを実行する前に、グループ内のすべてのリソースが不要であることを必ず確認してください。
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME

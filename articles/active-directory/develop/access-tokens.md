@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 909c8910a86734b0a34787f75c233975cd3503c3
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: ceb5acbee2e572b1859a5577b58dd586fc924b3b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518245"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653284"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft ID プラットフォーム アクセス トークン
 
@@ -140,8 +140,8 @@ JWT (JSON Web トークン) は 3 つの部分に分かれています。
        }
      }
   ...
- }
- ```
+}
+```
 
 超過のシナリオは、[App Creation Scripts](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-2-Groups/AppCreationScripts) フォルダーにある `BulkCreateGroups.ps1` を使用してテストできます。
 
@@ -186,7 +186,7 @@ Microsoft ID は、アプリケーションに関連している可能性のあ�
 
 上記のシナリオのいずれにも当てはまらない場合、アプリケーションはトークンの検証からメリットを受けることはなく、トークンの有効性に基づいて判断が行われた場合、セキュリティと信頼性のリスクが発生する可能性があります。  ネイティブ アプリや SPA のようなパブリック クライアントはトークンの検証からメリットを受けることはありません。このアプリは IDP と直接通信するため、SSL 保護によってトークンが有効であることが保証されます。
 
- API と Web アプリは、アプリケーションに一致する `aud` 要求を含むトークンのみを検証する必要があります。その他のリソースには、カスタム トークン検証規則がある場合があります。 たとえば、Microsoft Graph のトークンは、専用の形式であるため、これらの規則に従って検証することはできません。 別のリソースを対象とするトークンを検証して受け入れることは、[混乱した使節 (Confused Deputy)](https://cwe.mitre.org/data/definitions/441.html) の問題にたとえることができます。
+API と Web アプリは、アプリケーションに一致する `aud` 要求を含むトークンのみを検証する必要があります。その他のリソースには、カスタム トークン検証規則がある場合があります。 たとえば、Microsoft Graph のトークンは、専用の形式であるため、これらの規則に従って検証することはできません。 別のリソースを対象とするトークンを検証して受け入れることは、[混乱した使節 (Confused Deputy)](https://cwe.mitre.org/data/definitions/441.html) の問題にたとえることができます。
 
 アプリケーションで上記に従って id_token または access_token を検証する必要がある場合は、アプリで最初に OpenID 探索ドキュメントの値と突き合わせてトークンの署名と発行者を検証する必要があります。 たとえば、テナントに依存しないバージョンのドキュメントは [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration) にあります。
 

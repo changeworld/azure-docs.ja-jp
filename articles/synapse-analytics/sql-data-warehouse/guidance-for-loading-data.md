@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: a96d49a029eb83e24c1fb86954406693aa9c33a3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 60a995f78b9b696197d9bd45e04becb19e4129f0
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093963"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653063"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールを使用したデータの読み込みのベスト プラクティス
 
@@ -60,7 +60,7 @@ ORC ファイル形式でデータをエクスポートすると、大きなテ�
    
    CREATE WORKLOAD GROUP DataLoads
    WITH ( 
-      MIN_PERCENTAGE_RESOURCE = 100
+       MIN_PERCENTAGE_RESOURCE = 100
        ,CAP_PERCENTAGE_RESOURCE = 100
        ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 100
     );

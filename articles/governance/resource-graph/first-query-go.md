@@ -3,12 +3,12 @@ title: クイック スタート:初めての Go クエリ
 description: このクイックスタートでは、手順に従って、Go 用の Resource Graph パッケージを有効にし、初めてのクエリを実行します。
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 748f6bfa673a2e9fabdcba0c91dc314931df268a
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: e09bbb63b56fd30eb3aa9e7e527acdd8691d3ee6
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057452"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655800"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-go"></a>クイック スタート:Go を使用して初めての Resource Graph クエリを実行する
 
@@ -49,7 +49,7 @@ Go で Azure Resource Graph のクエリを実行できるようにするには�
 
 ## <a name="run-your-first-resource-graph-query"></a>最初の Resource Graph クエリを実行する
 
-選択した環境に Go パッケージが追加されたので、簡単な Resource Graph クエリを試してみましょう。 このクエリでは、各リソースの**名前**と**リソースの種類**を使用して、最初の 5 つの Azure リソースが返されます。
+選択した環境に Go パッケージが追加されたので、簡単な Resource Graph クエリを試してみましょう。 このクエリでは、各リソースの **名前** と **リソースの種類** を使用して、最初の 5 つの Azure リソースが返されます。
 
 1. Go アプリケーションを作成し、次のソースを `argQuery.go` として保存します。
 
@@ -57,48 +57,48 @@ Go で Azure Resource Graph のクエリを実行できるようにするには�
    package main
    
    import (
-       "fmt"
-       "os"
-       "context"
-       "strconv"
-       arg "github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph"
-       "github.com/Azure/go-autorest/autorest/azure/auth"
+      "fmt"
+      "os"
+      "context"
+      "strconv"
+      arg "github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph"
+      "github.com/Azure/go-autorest/autorest/azure/auth"
    )
    
    func main() {
-      // Get variables from command line arguments
-      var query = os.Args[1]
-      var subList = os.Args[2:]
+       // Get variables from command line arguments
+       var query = os.Args[1]
+       var subList = os.Args[2:]
    
-      // Create and authorize a ResourceGraph client
-      argClient := arg.New()
-      authorizer, err := auth.NewAuthorizerFromCLI()
-      if err == nil {
-          argClient.Authorizer = authorizer
-      } else {
-          fmt.Printf(err.Error())
-      }
-   
-      // Set options
-      RequestOptions := arg.QueryRequestOptions {
-          ResultFormat: "objectArray",
-      }
-   
-      // Create the query request
-      Request := arg.QueryRequest {
-          Subscriptions: &subList,
-          Query: &query,
-          Options: &RequestOptions,
-      }
-   
-      // Run the query and get the results
-      var results, queryErr = argClient.Resources(context.Background(), Request)
-      if queryErr == nil {
-          fmt.Printf("Resources found: " + strconv.FormatInt(*results.TotalRecords, 10) + "\n")
-          fmt.Printf("Results: " + fmt.Sprint(results.Data) + "\n")
-      } else {
-          fmt.Printf(queryErr.Error())
-      }
+       // Create and authorize a ResourceGraph client
+       argClient := arg.New()
+       authorizer, err := auth.NewAuthorizerFromCLI()
+       if err == nil {
+           argClient.Authorizer = authorizer
+       } else {
+           fmt.Printf(err.Error())
+       }
+     
+       // Set options
+       RequestOptions := arg.QueryRequestOptions {
+           ResultFormat: "objectArray",
+       }
+     
+       // Create the query request
+       Request := arg.QueryRequest {
+           Subscriptions: &subList,
+           Query: &query,
+           Options: &RequestOptions,
+       }
+     
+       // Run the query and get the results
+       var results, queryErr = argClient.Resources(context.Background(), Request)
+       if queryErr == nil {
+           fmt.Printf("Resources found: " + strconv.FormatInt(*results.TotalRecords, 10) + "\n")
+           fmt.Printf("Results: " + fmt.Sprint(results.Data) + "\n")
+       } else {
+           fmt.Printf(queryErr.Error())
+       }
    }
    ```
 

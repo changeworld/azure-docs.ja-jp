@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 057599cc92e27e423d25d528d5d84b978ff4a911
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4c695466fbd50435a85c63842ceb50ce80765760
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919107"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630294"
 ---
 # <a name="resilient-end-user-experience"></a>回復性があるエンドユーザー エクスペリエンス
 
@@ -58,7 +58,7 @@ Facebook などの[外部 ID プロバイダー](https://docs.microsoft.com/azur
 
  2. ユーザーがサインインした後に[他の ID を自分のアカウントにリンク](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/account-linking)することを許可するように、プロファイル ポリシーを構成します。
 
- 3. 障害発生時にはユーザーに通知し、[代替の IDP に切り替える](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#configure-dynamic-custom-page-content-uri)ことができるようにします。
+ 3. 障害発生時にはユーザーに通知し、[代替の IDP に切り替える](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#configure-dynamic-custom-page-content-uri)ことができるようにします。
 
 ## <a name="availability-of-multi-factor-authentication"></a>多要素認証の可用性
 
@@ -101,6 +101,6 @@ Azure AD B2C サービスでは、組み込みの電話ベースの MFA プロ�
   
   - [回復性がある外部プロセスとのインターフェイス](resilient-external-processes.md)
   - [開発者のベスト プラクティスによる回復性](resilience-b2c-developer-best-practices.md)
-  - [監視と分析によって回復性を実現する](resilience-with-monitoring-alerting.md)
+  - [監視と分析による回復性](resilience-with-monitoring-alerting.md)
 - [認証インフラストラクチャで回復性を強化する](resilience-in-infrastructure.md)
 - [アプリケーションで認証と認可の回復性を向上させる](resilience-app-development-overview.md)

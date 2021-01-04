@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 134148fa3ea73212d85393cc433d60f7ddeecd17
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ef2c9d7e2388d2da7a807fbf6b579360115a8323
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837126"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629801"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure 内の Windows 仮想マシンにサインインする
 
@@ -157,6 +157,9 @@ VM のロールの割り当てを構成するには、次のような複数の�
 - Azure AD ポータルのエクスペリエンスを使用する
 - Azure Cloud Shell のエクスペリエンスを使用する
 
+> [!NOTE]
+> 仮想マシンの管理者ログインと仮想マシンのユーザー ログインのロールは、dataActions を使用しているため、管理グループのスコープで割り当てることはできません。 現時点では、これらのロールは、サブスクリプション、リソース グループまたはリソース スコープでのみ割り当てることができます。
+
 ### <a name="using-azure-ad-portal-experience"></a>Azure AD ポータルのエクスペリエンスを使用する
 
 Azure AD を有効にした Windows Server 2019 Datacenter VM のロールの割り当てを構成するには、次の操作を行います。
@@ -177,8 +180,8 @@ Azure AD を有効にした Windows Server 2019 Datacenter VM のロールの割
 次の例では、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用し、現在の Azure ユーザーに対して、VM に対する仮想マシンの管理者ログイン ロールを割り当てます。 アクティブな Azure アカウントのユーザー名は [az account show](/cli/azure/account#az-account-show) で取得され、スコープは、[az vm show](/cli/azure/vm#az-vm-show) により、前の手順で作成された VM に設定されます。 スコープは、リソース グループまたはサブスクリプション レベルで割り当てることもでき、Azure RBAC における通常の継承アクセス許可が適用されます。 詳細については、[Azure Active Directory 認証を使用した Azure の Linux 仮想マシンへのログイ](../../virtual-machines/linux/login-using-aad.md)に関するページを参照してください。
 
 ```   AzureCLI
-username=$(az account show --query user.name --output tsv)
-vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
+$username=$(az account show --query user.name --output tsv)
+$vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
 
 az role assignment create \
     --role "Virtual Machine Administrator Login" \
@@ -330,6 +333,9 @@ VM へのリモート デスクトップ接続を開始したときに次のエ�
 ![このデバイスを使用できないようにアカウントが構成されています。](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
 VM に対して、仮想マシンの管理者ログインまたは仮想マシンのユーザー ログインのどちらかのロールをユーザーに付与する [Azure RBAC ポリシーが構成されている](../../virtual-machines/linux/login-using-aad.md)ことを確認してください。
+
+> [!NOTE]
+> Azure のロールの割り当てに関する問題が発生した場合は、「[Azure RBAC のトラブルシューティング](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit)」を参照してください。
  
 #### <a name="unauthorized-client"></a>承認されていないクライアント
 

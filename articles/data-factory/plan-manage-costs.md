@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: e2f61085d3dab6d4489aa190204be4169ea5c2fb
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6271b83749c078b64c168a27f887ed7055e37d96
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638008"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678909"
 ---
 # <a name="plan-and-manage-costs-for-azure-data-factory"></a>Azure Data Factory のコストを計画および管理する
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory は、クラウド規模用に構築されたサーバーレスのエラスティック データ統合サービスです。  これは、ピーク時の負荷に対して計画する必要がある固定サイズのコンピューティングがないことを意味します。代わりに、必要に応じて操作ごとに割り当てるリソースの量を指定します。これにより、非常にスケーラブルに ETL プロセスを設計できます。 さらに、ADF は使用量ベースのプランに対して課金されます。これは、使用した分だけを支払うことを意味します。
 
@@ -73,7 +73,7 @@ Azure Data Factory の使用を開始すると、Azure portal の [[コスト分
 
 パイプラインに含まれているアクティビティの種類、移動および変換しているデータの量、変換の複雑さに応じて、パイプラインを実行すると Azure Data Factory でのさまざまな課金メーターが動作します。
 
-個々のパイプラインの実行に関するさまざまなメーターの使用量は、Azure Data Factory のユーザー エクスペリエンスで確認できます。 監視エクスペリエンスを開くには、 [Azure portal](https://portal.azure.com/) の [データ ファクトリ] ブレードで **[監視と管理]** タイルを選択します。 ADF UX を既に使用している場合は、左側のサイドバーにある **[監視]** アイコンをクリックします。 既定の監視ビューはパイプラインの実行の一覧です。
+個々のパイプラインの実行に関するさまざまなメーターの使用量は、Azure Data Factory のユーザー エクスペリエンスで確認できます。 監視エクスペリエンスを開くには、[Azure portal](https://portal.azure.com/) の [データ ファクトリ] ブレードで **[監視と管理]** タイルを選択します。 ADF UX を既に使用している場合は、左側のサイドバーにある **[監視]** アイコンをクリックします。 既定の監視ビューはパイプラインの実行の一覧です。
 
 パイプライン名の横にある **[消費]** ボタンをクリックすると、パイプライン内のすべてのアクティビティに対して集計されたパイプライン実行の使用量を示すポップアップ ウィンドウが表示されます。
 
@@ -86,7 +86,7 @@ Azure Data Factory の使用を開始すると、Azure portal の [[コスト分
 ## <a name="monitor-consumption-at-activity-run-level"></a>アクティビティ実行レベルでの使用量を監視する
 パイプライン実行レベルでの集計された使用量を把握した後、シナリオによっては、さらにドリルダウンして、パイプライン内で最もコストのかかるアクティビティを特定する必要があります。
 
-アクティビティ実行レベルでの使用量を表示するには、データ ファクトリの **[作成と監視]** UI に移動します。 パイプライン実行の一覧が表示される **[監視]** タブから、 **パイプライン名** のリンクをクリックして、パイプライン実行でのアクティビティの実行の一覧にアクセスします。  アクティビティ名の横にある **[出力]** ボタンをクリックし、JSON 出力で **billableDuration** プロパティを探します。
+アクティビティ実行レベルでの使用量を表示するには、データ ファクトリの **[作成と監視]** UI に移動します。 パイプライン実行の一覧が表示される **[監視]** タブから、**パイプライン名** のリンクをクリックして、パイプライン実行でのアクティビティの実行の一覧にアクセスします。  アクティビティ名の横にある **[出力]** ボタンをクリックし、JSON 出力で **billableDuration** プロパティを探します。
 
 コピー アクティビティの実行のサンプルを次に示します。
 

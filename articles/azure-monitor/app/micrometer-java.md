@@ -6,12 +6,12 @@ author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
 ms.date: 11/01/2018
-ms.openlocfilehash: a80684fbaa34f8906d321f56d3819039d3798ecb
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: bb5caafea944d21547a904b99f9043aef63a6ffa
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600984"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656468"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>Azure Application Insights Java SDK で Micrometer を使用する方法 (非推奨)
 
@@ -92,17 +92,17 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 *    Tomcat、JVM、Logback メトリック、Log4J メトリック、アップタイム メトリック、プロセッサ メトリック、FileDescriptorMetrics 用に自動構成されるメトリック。
 *    たとえば、Netflix Hystrix がクラス パス上に存在する場合は、それらのメトリックも取得されます。 
 *    それぞれの Bean を追加することで、次のメトリックを使用できます。 
-        - CacheMetrics (CaffeineCache、EhCache2、GuavaCache、HazelcastCache、JCache)     
+        - CacheMetrics (CaffeineCache、EhCache2、GuavaCache、HazelcastCache、JCache)
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 
         - OkHttp3 メトリック 
         - Kafka メトリック 
 
- 
+
 
 自動メトリック収集をオフにする方法: 
- 
+
 - JVM メトリック: 
     - management.metrics.binders.jvm.enabled=false 
 - Logback メトリック: 
@@ -139,7 +139,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
             <artifactId>micrometer-registry-azure-monitor</artifactId>
             <version>1.1.0</version>
         </dependency>
-        
+
         <dependency>
             <groupId>com.microsoft.azure</groupId>
             <artifactId>applicationinsights-web-auto</artifactId>
@@ -152,17 +152,17 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
     <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
-    
+
        <!-- The key from the portal: -->
        <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
-    
+
        <!-- HTTP request component (not required for bare API) -->
        <TelemetryModules>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
        </TelemetryModules>
-    
+
        <!-- Events correlation (not required for bare API) -->
        <!-- These initializers add context data to each event -->
        <TelemetryInitializers>
@@ -172,7 +172,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
           <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
        </TelemetryInitializers>
-    
+
     </ApplicationInsights>
     ```
 
@@ -181,17 +181,17 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
     ```Java
         @WebServlet("/hello")
         public class TimedDemo extends HttpServlet {
-    
+
           private static final long serialVersionUID = -4751096228274971485L;
-    
+
           @Override
           @Timed(value = "hello.world")
           protected void doGet(HttpServletRequest request, HttpServletResponse response)
               throws ServletException, IOException {
-    
+
             response.getWriter().println("Hello World!");
             MeterRegistry registry = (MeterRegistry) getServletContext().getAttribute("AzureMonitorMeterRegistry");
-    
+
         //create new Timer metric
             Timer sampleTimer = registry.timer("timer");
             Stream<Integer> infiniteStream = Stream.iterate(0, i -> i+1);
@@ -210,9 +210,9 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
           public void destroy() {
             System.out.println("Servlet " + this.getServletName() + " has stopped");
           }
-    
+
         }
-    
+
     ```
 
 4. 構成クラスのサンプル:
@@ -220,10 +220,10 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
     ```Java
          @WebListener
          public class MeterRegistryConfiguration implements ServletContextListener {
-     
+
            @Override
            public void contextInitialized(ServletContextEvent servletContextEvent) {
-     
+
          // Create AzureMonitorMeterRegistry
            private final AzureMonitorConfig config = new AzureMonitorConfig() {
              @Override
@@ -233,23 +233,23 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
             @Override
                public Duration step() {
                  return Duration.ofSeconds(60);}
-     
+
              @Override
              public boolean enabled() {
                  return false;
              }
          };
-     
+
       MeterRegistry azureMeterRegistry = AzureMonitorMeterRegistry.builder(config);
-     
+
              //set the config to be used elsewhere
              servletContextEvent.getServletContext().setAttribute("AzureMonitorMeterRegistry", azureMeterRegistry);
-     
+
            }
-     
+
            @Override
            public void contextDestroyed(ServletContextEvent servletContextEvent) {
-     
+
            }
          }
     ```

@@ -57,6 +57,9 @@
           href: container-registry-image-tag-version.md
         - name: geo レプリケーション
           href: container-registry-geo-replication.md
+        - name: ゾーン冗長性
+          displayName: availability zone
+          href: zone-redundancy.md
         - name: レジストリのベスト プラクティス
           href: container-registry-best-practices.md
         - name: パブリック イメージの管理
