@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure Service Fabric クラス�
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 89c49ae530b7a4716bc6e8bf0ea6ccb011847eb8
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c2e2b2883bfa01d3a36de5d58425449f6f973010
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738906"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702159"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure の Service Fabric クラスターに Java アプリケーションをデプロイする
 
@@ -114,10 +114,10 @@ ms.locfileid: "92738906"
 10. 以下のコマンドを使用して Event Hubs のリソースを作成します。 プロンプトに従って、namespaceName、eventHubName、consumerGroupName、sendAuthorizationRule、receiveAuthorizationRule の詳細を入力してください。
 
     ```azurecli
-    az group deployment create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
+    az deployment group create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
 
     Example:
-    az group deployment create -g testeventhubsrg --template-file eventhubsdeploy.json
+    az deployment group create -g testeventhubsrg --template-file eventhubsdeploy.json
     Please provide string value for 'namespaceName' (? for help): testeventhubnamespace
     Please provide string value for 'eventHubName' (? for help): testeventhub
     Please provide string value for 'consumerGroupName' (? for help): testeventhubconsumergroup
@@ -177,7 +177,7 @@ ms.locfileid: "92738906"
     ```
 
 13. **sfdeploy.parameters.json** を開きます。 次のパラメーターを変更し、ファイルを保存します。
-    - **clusterName** 。 使用できるのは小文字と数字だけです。
+    - **clusterName**。 使用できるのは小文字と数字だけです。
     - **adminUserName** (空白以外の値)
     - **adminPassword** (空白以外の値)
 
@@ -189,7 +189,7 @@ ms.locfileid: "92738906"
 
 ## <a name="deploy-your-application-to-the-cluster"></a>アプリケーションをクラスターにデプロイする
 
-1. アプリケーションをデプロイする前に、 *Voting/VotingApplication/ApplicationManifest.xml* ファイルに以下のスニペットを追加しておく必要があります。 **X509FindValue** フィールドは、「 **Azure に Service Fabric クラスターを作成する** 」セクションの手順 4. で返された拇印です。 **ApplicationManifest** フィールド (ルート フィールド) 下に、入れ子となるようにこのスニペットを追加してください。
+1. アプリケーションをデプロイする前に、*Voting/VotingApplication/ApplicationManifest.xml* ファイルに以下のスニペットを追加しておく必要があります。 **X509FindValue** フィールドは、「**Azure に Service Fabric クラスターを作成する**」セクションの手順 4. で返された拇印です。 **ApplicationManifest** フィールド (ルート フィールド) 下に、入れ子となるようにこのスニペットを追加してください。
 
     ```xml
     <Certificates>
@@ -209,13 +209,13 @@ ms.locfileid: "92738906"
     sfctl cluster select --endpoint https://<clustername>.<region>.cloudapp.azure.com:19080 --pem sfctlconnection.pem --no-verify
     ```
 
-4. アプリケーションをデプロイするには、 *Voting/Scripts* フォルダーに移動して、 **install.sh** スクリプトを実行します。
+4. アプリケーションをデプロイするには、*Voting/Scripts* フォルダーに移動して、**install.sh** スクリプトを実行します。
 
     ```bash
     ./install.sh
     ```
 
-5. Service Fabric Explorer にアクセスするには、任意のブラウザーを開いて「 `https://testlinuxcluster.westus.cloudapp.azure.com:19080` 」と入力します。 証明書ストアから、このエンドポイントに接続する際に使用する証明書を選択します。 Linux マシンを使用している場合、Service Fabric Explorer を表示するには、 *new-service-fabric-cluster-certificate.sh* スクリプトによって生成された証明書を Chrome にインポートする必要があります。 Mac を使用する場合、キーチェーンに PFX ファイルをインストールする必要があります。 目的のアプリケーションがクラスターにインストールされていることがわかります。
+5. Service Fabric Explorer にアクセスするには、任意のブラウザーを開いて「 `https://testlinuxcluster.westus.cloudapp.azure.com:19080` 」と入力します。 証明書ストアから、このエンドポイントに接続する際に使用する証明書を選択します。 Linux マシンを使用している場合、Service Fabric Explorer を表示するには、*new-service-fabric-cluster-certificate.sh* スクリプトによって生成された証明書を Chrome にインポートする必要があります。 Mac を使用する場合、キーチェーンに PFX ファイルをインストールする必要があります。 目的のアプリケーションがクラスターにインストールされていることがわかります。
 
     ![SFX Java Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 
@@ -223,7 +223,7 @@ ms.locfileid: "92738906"
 
     ![Java Azure の投票アプリケーション](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 
-7. アプリケーションをクラスターからアンインストールするには、 **Scripts** フォルダーの *uninstall.sh* スクリプトを実行します。
+7. アプリケーションをクラスターからアンインストールするには、**Scripts** フォルダーの *uninstall.sh* スクリプトを実行します。
 
     ```bash
     ./uninstall.sh

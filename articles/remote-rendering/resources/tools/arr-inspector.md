@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
-ms.openlocfilehash: 5ee9d39db130c76f683ca1f4d1ff64f9ed86d97e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 300e0ff26d643ae0263d21e604cb26da37a18841
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204743"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723827"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>ArrInspector 検査ツール
 
@@ -108,17 +108,3 @@ Azure Remote Rendering チームは、デバッグ情報を使用することで
 ![一時停止モード](./media/pause-mode.png)
 
 ライブ更新を再度有効にすると、すべてのパネルがリセットされます。
-
-## <a name="host-configuration"></a>ホストの構成
-
-既定では、このツールは、ArrInspector を提供しているのと同じホスト上で実行されている ARR サーバーに接続されます。 ただし、別のサーバーでも、ARR インスタンスが実行されていてツールのポートが開かれていれば、検査対象として構成できます。
-
-そのためには、ヘッダー バーの左側にあるメイン メニューにアクセスし、 *[Host configuration]\(ホストの構成\)* を選択します。 **[Add new host]\(新しいホストの追加\)** をクリックして、名前とホスト名を入力します。 "*ホスト名*" については、末尾が `.mixedreality.azure.com` のホスト名のみを使用し、`http://` またはポートを含めないでください。
-
-![ホストの構成](./media/host-configuration.png)
-
-あるホストから別のホストにすばやく切り替えるには、右上にあるドロップダウンを使用します。
-
-![ホスト コンボ](./media/host-switch-combo.png)
-
-ホストの一覧がブラウザーのローカル ストレージに格納されるので、同じブラウザーを再び開いたときに維持されます。

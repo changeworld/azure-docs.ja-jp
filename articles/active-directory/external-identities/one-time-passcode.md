@@ -5,21 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 12/18/2020
 ms.author: mimart
 author: msmimart
-manager: celestedg
+manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9bc7d94cff46b54b81615cf064ed63927b3ec60
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: b1aebfaa176992b7e20824518bc214a6688ae493
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929295"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703587"
 ---
-# <a name="email-one-time-passcode-authentication-preview"></a>電子メール ワンタイム パスコード認証 (プレビュー)
+# <a name="email-one-time-passcode-authentication"></a>電子メール ワンタイム パスコード認証
 
 この記事では、B2B ゲスト ユーザーの電子メール ワンタイム パスコード認証を有効にする方法について説明します。 電子メール ワンタイム パスコード機能では、B2B ゲスト ユーザーが Azure AD、Microsoft アカウント (MSA)、Google フェデレーションなどの他の手段を使用して認証できないときに、ユーザーの認証が行われます。 ワンタイム パスコード認証では、Microsoft アカウントを作成する必要はありません。 ゲスト ユーザーは、招待に応じるか、共有リソースにアクセスするときに、自分のメール アドレスに送信される一時的なコードを要求することができます。 その後は、このコードを入力してサインインを続けます。
 

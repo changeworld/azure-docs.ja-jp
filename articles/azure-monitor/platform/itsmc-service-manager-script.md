@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: fefa16a39545c0c4094db8dbd18b46fb94ef5025
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: d620df0b55b024cd5d7c25ea17d9b09c5c5da8ff
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504034"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722880"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>自動スクリプトを使用した Service Manager Web アプリの作成
 
-次のスクリプトを使用して、Service Manager インスタンスの Web アプリを作成します。 Service Manager 接続の詳細については、[Service Manager Web アプリ](./itsmc-connections.md#create-and-deploy-service-manager-web-app-service)に関する記事をご覧ください
+次のスクリプトを使用して、Service Manager インスタンスの Web アプリを作成します。 Service Manager 接続の詳細については、[Service Manager Web アプリ](./itsmc-connections-scsm.md)に関する記事をご覧ください
 
 次の必要な情報を提供することにより、スクリプトを実行します。
 
@@ -29,9 +29,6 @@ ms.locfileid: "97504034"
 スクリプトによって、指定した名前で (一意の名前にするために文字列をいくつか追加して) Web アプリが作成されます。 また、スクリプトによって、**Web アプリの URL**、**クライアント ID**、**クライアント シークレット** が生成されます。
 
 これらの値を保存してください。IT Service Management Connector への接続を作成するときに必要になります。
-
-> [!NOTE]
-> この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -141,14 +138,14 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     {
         Write-Host "Failed to Register Microsoft.Web Resource Provider. Please register it in Azure Portal."
         exit
-    }   
+    }
 }
 do
 {
     $rand = Get-Random -Maximum 32000
 
     $siteName = $siteNamePrefix + $rand
-    
+
     $resource = Get-AzResource -Name $siteName -ResourceType Microsoft.Web/sites
 
 }while($resource)
@@ -279,7 +276,7 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     catch
     {
         Write-Host "Failed to Register Microsoft.Relay Resource Provider. Please register it in Azure Portal."
-    }   
+    }
 }
 
 $resource = Get-AzResource -Name $serviceName -ResourceType Microsoft.Relay/namespaces
@@ -321,5 +318,5 @@ if(!$err)
 ```
 
 ## <a name="next-steps"></a>次のステップ
-[ハイブリッド接続の構成](./itsmc-connections.md#configure-the-hybrid-connection)。
+[ハイブリッド接続の構成](./itsmc-connections-scsm.md#configure-the-hybrid-connection)。
 

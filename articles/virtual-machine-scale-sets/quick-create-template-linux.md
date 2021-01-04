@@ -9,12 +9,12 @@ ms.subservice: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: d040215968b0ebb433edba03e4839ffe7add0e5c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 52e0e50d3c0c68b57181645c3eb695308fdac65a
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745861"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703825"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Linux 仮想マシン スケール セットを作成する
 
@@ -77,7 +77,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 テンプレートでは、カスタム スクリプト拡張機能を使用して、[Bottle](https://bottlepy.org/docs/dev/)、Python Web フレームワーク、および単純な HTTP サーバーをインストールします。
 
-**fileUris** には 2 つのスクリプト  - *installserver.sh* と *workserver.py* が定義されます。 これらのファイルが GitHub からダウンロードされた後、 *commandToExecute* によって、アプリをインストールして構成する `bash installserver.sh` が実行されます。
+**fileUris** には 2 つのスクリプト  - *installserver.sh* と *workserver.py* が定義されます。 これらのファイルが GitHub からダウンロードされた後、*commandToExecute* によって、アプリをインストールして構成する `bash installserver.sh` が実行されます。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
@@ -92,7 +92,7 @@ Resource Manager テンプレートは、Azure CLI を使用してデプロイ�
 az group create --name myResourceGroup --location EastUS
 
 # Deploy template into resource group
-az group deployment create \
+az deployment group create \
     --resource-group myResourceGroup \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/azuredeploy.json
 ```

@@ -3,12 +3,12 @@ title: 基本イメージの更新 - タスク
 description: アプリケーション コンテナー イメージの基本イメージと、基本イメージの更新で Azure Container Registry タスクをトリガーする方法について説明します。
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: 74e5fb81e3ef6f75b5ee2872ee44b99aae096fd8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df33096830cd7b34a288c38c105aff3610315337
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009825"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707488"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>ACR タスクの基本イメージの更新について
 
@@ -57,7 +57,7 @@ Dockerfile からのイメージ ビルドでは、ACR タスクによって、�
 * **既定で有効** - [az acr task create][az-acr-task-create] コマンドを使用して ACR タスクを作成すると、既定では、そのタスクでは基本イメージの更新によるトリガーが *有効* になっています。 つまり、`base-image-trigger-enabled` プロパティは True に設定されています。 タスクでこの動作を無効にする場合は、このプロパティを False に更新します。 たとえば、次の [az acr task update][az-acr-task-update] コマンドを実行します。
 
   ```azurecli
-  az acr task update --myregistry --name mytask --base-image-trigger-enabled False
+  az acr task update --registry myregistry --name mytask --base-image-trigger-enabled False
   ```
 
 * **依存関係追跡のトリガー** - ACR タスクでコンテナー イメージの依存関係 (基本イメージがどこに含まれるか) を特定して追跡できるようにするため、最初に **少なくとも 1 回**、タスクをトリガーしてイメージをビルドする必要があります。 たとえば、[az acr task run][az-acr-task-run] コマンドを使用してタスクを手動でトリガーします。

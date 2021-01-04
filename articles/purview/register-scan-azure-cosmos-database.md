@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos (SQL API) データベースをスキャンする方法
 description: このハウツーガイドでは、Azure Cosmos Database (SQL API) をスキャンする方法の詳細について説明します。
-author: viseshag
-ms.author: viseshag
+author: djpmsft
+ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/9/2020
-ms.openlocfilehash: e1d2035b787380d9b93943b92fbe81c09fc6a527
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1aaeed1973ebd15af312b722ab61938aa4271947
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550936"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696254"
 ---
 # <a name="register-and-scan-azure-cosmos-database-sql-api"></a>Azure Cosmos Database (SQL API) の登録とスキャン
 

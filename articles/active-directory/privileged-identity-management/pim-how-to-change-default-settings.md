@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fadcf3f5aefa76ab03d6313643fc18df71f6c3b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 06eb7e8d1be2e58fd6cf87167a585a2ffeee0d7f
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004655"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708485"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの設定を構成する
 
@@ -43,7 +43,7 @@ Azure AD ロールに対する要求を承認または拒否するには、こ�
 次の手順を実行して、Azure AD ロールの設定を開きます。
 
 1. [特権ロール管理者](../roles/permissions-reference.md#privileged-role-administrator)ロールのユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
-gt
+
 1. **[Azure AD Privileged Identity Management]** &gt; **[Azure AD ロール]** &gt; **[ロールの設定]** を開きます。
 
     ![Azure AD ロールを一覧表示する [ロールの設定] ページ](./media/pim-how-to-change-default-settings/role-settings.png)

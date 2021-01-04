@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: b41677d1e4f3ba3889472a3fb9bd6c6a9db4c0a8
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 326af3bc38ce70cc7cb205384bb4302c5ff73d28
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123372"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704182"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Azure Stream Analytics でのクエリの並列処理の活用
 この記事では、Azure Stream Analytics で並列処理を活用する方法を示します。 入力パーティションの構成と分析クエリ定義のチューニングによって Stream Analytics ジョブをスケールする方法について説明します。
@@ -58,7 +58,7 @@ Power BI では、パーティション分割がサポートされていませ�
 
 2. 次の手順は、クエリをパーティション分割することです。 互換性レベル 1.2 以上 (推奨) のジョブの場合、入力設定でカスタム列をパーティション キーとして指定でき、ジョブは PARTITION BY 句がなくても自動的に並列化されます。 互換性レベル 1.0 または 1.1 のジョブでは、クエリのあらゆる手順で **PartitionId 別のパーティション** を使用する必要があります。 複数のステップが許可されますが、すべてのステップが同じキーでパーティション分割されている必要があります。 
 
-3. Stream Analytics でサポートされている出力のほとんどでは、パーティション分割が活用されます。 パーティション分割をサポートしていない種類の出力を使用する場合、ジョブは " *驚異的並列* " になりません。 イベント ハブの出力については、 **パーティション キー列** がクエリで使用されているパーティション キーと同じに設定されていることを確認してください。 詳しくは、「[出力](#outputs)」セクションをご覧ください。
+3. Stream Analytics でサポートされている出力のほとんどでは、パーティション分割が活用されます。 パーティション分割をサポートしていない種類の出力を使用する場合、ジョブは "*驚異的並列*" になりません。 イベント ハブの出力については、**パーティション キー列** がクエリで使用されているパーティション キーと同じに設定されていることを確認してください。 詳しくは、「[出力](#outputs)」セクションをご覧ください。
 
 4. 入力パーティションの数が出力パーティションの数と同じである必要があります。 Blob Storage 出力では、パーティションをサポートでき、アップストリーム クエリのパーティション構成を継承します。 Blob Storage のパーティション キーを指定すると、データが入力パーティションごとにパーティション分割されるため、結果も完全に並列になります。 完全な並列ジョブを可能にするパーティション値の例を次に示します。
 
@@ -89,7 +89,7 @@ Power BI では、パーティション分割がサポートされていませ�
     WHERE TollBoothId > 100
 ```
 
-このクエリは単純なフィルターです。 そのため、イベント ハブに送信される入力のパーティション分割を気にする必要はありません。 互換性レベルが 1.2 より前のジョブには、上記の要件 2 を満たすために、 **PARTITION BY PartitionId** 句を含める必要があることに注意してください。 出力については、パーティション キーが **PartitionId** に設定されたイベント ハブ出力をジョブで構成する必要があります。 最後に、入力パーティションと出力パーティションの数が同じであることを確認します。
+このクエリは単純なフィルターです。 そのため、イベント ハブに送信される入力のパーティション分割を気にする必要はありません。 互換性レベルが 1.2 より前のジョブには、上記の要件 2 を満たすために、**PARTITION BY PartitionId** 句を含める必要があることに注意してください。 出力については、パーティション キーが **PartitionId** に設定されたイベント ハブ出力をジョブで構成する必要があります。 最後に、入力パーティションと出力パーティションの数が同じであることを確認します。
 
 ### <a name="query-with-a-grouping-key"></a>グループ化キーが含まれたクエリ
 
@@ -110,9 +110,9 @@ Power BI では、パーティション分割がサポートされていませ�
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 ```
 
-このクエリにはグループ化キーが含まれています。 そのため、グループ化されたイベントは、同じイベント ハブ パーティションに送信される必要があります。 この例では TollBoothID でグループ化するので、イベントがイベント ハブに送信されるときに、パーティション キーとして TollBoothID が使用されることを確認する必要があります。 その後 ASA で、 **PARTITION BY PartitionId** を使用して、このパーティション構成から継承し、完全な並列処理を有効にすることができます。 出力は Blob Storage であるため、要件 4. に記載されているように、パーティション キー値の構成を気にする必要はありません。
+このクエリにはグループ化キーが含まれています。 そのため、グループ化されたイベントは、同じイベント ハブ パーティションに送信される必要があります。 この例では TollBoothID でグループ化するので、イベントがイベント ハブに送信されるときに、パーティション キーとして TollBoothID が使用されることを確認する必要があります。 その後 ASA で、**PARTITION BY PartitionId** を使用して、このパーティション構成から継承し、完全な並列処理を有効にすることができます。 出力は Blob Storage であるため、要件 4. に記載されているように、パーティション キー値の構成を気にする必要はありません。
 
-## <a name="example-of-scenarios-that-are-not-embarrassingly-parallel"></a>驚異的並列では " *ない* " シナリオの例
+## <a name="example-of-scenarios-that-are-not-embarrassingly-parallel"></a>驚異的並列では "*ない*" シナリオの例
 
 前のセクションでは、驚異的並列のシナリオをいくつか紹介しました。 このセクションでは、驚異的並列のすべての要件を満たしているわけではないシナリオについて説明します。 
 
@@ -174,7 +174,7 @@ Power BI では、パーティション分割がサポートされていませ�
 Stream Analytics ジョブで使用できるストリーミング ユニットの合計数は、ジョブに定義されたクエリのステップ数と各ステップのパーティション数によって異なります。
 
 ### <a name="steps-in-a-query"></a>クエリでのステップ
-1 つのクエリに 1 つ以上のステップを含めることができます。 各ステップは、 **WITH** キーワードで定義されたサブクエリです。 次のクエリの **SELECT** ステートメントのように、 **WITH** キーワードの外にあるクエリ (1 つのクエリのみ) もステップとしてカウントされます。
+1 つのクエリに 1 つ以上のステップを含めることができます。 各ステップは、**WITH** キーワードで定義されたサブクエリです。 次のクエリの **SELECT** ステートメントのように、**WITH** キーワードの外にあるクエリ (1 つのクエリのみ) もステップとしてカウントされます。
 
 クエリ:
 
@@ -270,7 +270,7 @@ Stream Analytics ジョブで使用できるストリーミング ユニット�
 | 5,000     |    6    |  6 TU   |
 | 10,000    |    12   |  10 TU  |
 
-[Event Hub](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-eventhubs) ソリューションは、ストリーミング ユニット (SU) とスループットの観点から直線的にスケールするため、Stream Analytics からのデータを分析およびストリーム配信するための最も効率的かつパフォーマンスの高い方法となります。 ジョブは最大 192 SU までスケールアップでき、これは概算して最大 200 MB/秒、あるいは 1 日あたり 19 兆個のイベントの処理に換算されます。
+[Event Hub](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-eventhubs) ソリューションは、ストリーミング ユニット (SU) とスループットの観点から直線的にスケールするため、Stream Analytics からのデータを分析およびストリーム配信するための最も効率的かつパフォーマンスの高い方法となります。 ジョブは最大 192 SU までスケールアップでき、これは概算して最大 200 MB/秒、あるいは 1 日あたり 19 兆個のイベントの処理に換算されます。
 
 #### <a name="azure-sql"></a>Azure SQL
 |取り込み率 (1 秒あたりのイベント数) | ストリーミング ユニット数 | 出力リソース  |
@@ -279,7 +279,7 @@ Stream Analytics ジョブで使用できるストリーミング ユニット�
 |    5,000   |   18 |  P4   |
 |    10,000  |   36 |  P6   |
 
-[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) では、パーティション分割の継承と呼ばれる並列書き込みがサポートされていますが、既定では有効になっていません。 ただし、パーティション分割の継承と完全な並列クエリを一緒に有効にしても、高いスループットを実現するには十分でない場合があります。 SQL 書き込みスループットは、データベース構成およびテーブル スキーマに大きく依存します。 [SQL 出力パフォーマンス](./stream-analytics-sql-output-perf.md)に関する記事に、書き込みスループットを最大限に高めることができるパラメーターの詳細が記載されています。 [Azure SQL Database への Azure Stream Analytics 出力](./stream-analytics-sql-output-perf.md#azure-stream-analytics)に関する記事に記載されているように、このソリューションは 8 個のパーティションを超える完全な並列パイプラインとして直線的にスケールせず、SQL 出力の前に再分割が必要な場合があります ([INTO](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) に関する記事を参照してください)。 高い IO 率と、数分おきに発生するログ バックアップからのオーバーヘッドを維持するために、Premium SKU が必要です。
+[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-azuresql) では、パーティション分割の継承と呼ばれる並列書き込みがサポートされていますが、既定では有効になっていません。 ただし、パーティション分割の継承と完全な並列クエリを一緒に有効にしても、高いスループットを実現するには十分でない場合があります。 SQL 書き込みスループットは、データベース構成およびテーブル スキーマに大きく依存します。 [SQL 出力パフォーマンス](./stream-analytics-sql-output-perf.md)に関する記事に、書き込みスループットを最大限に高めることができるパラメーターの詳細が記載されています。 [Azure SQL Database への Azure Stream Analytics 出力](./stream-analytics-sql-output-perf.md#azure-stream-analytics)に関する記事に記載されているように、このソリューションは 8 個のパーティションを超える完全な並列パイプラインとして直線的にスケールせず、SQL 出力の前に再分割が必要な場合があります ([INTO](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) に関する記事を参照してください)。 高い IO 率と、数分おきに発生するログ バックアップからのオーバーヘッドを維持するために、Premium SKU が必要です。
 
 #### <a name="cosmos-db"></a>Cosmos DB
 |取り込み率 (1 秒あたりのイベント数) | ストリーミング ユニット数 | 出力リソース  |
@@ -288,7 +288,7 @@ Stream Analytics ジョブで使用できるストリーミング ユニット�
 |  5,000   |  24   | 60,000 RU  |
 |  10,000  |  48   | 120,000 RU |
 
-Stream Analytics から出力される [Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) は、[互換性レベル 1.2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12) のネイティブ統合を使用するように更新されました。 互換性レベル 1.2 は、新しいジョブの既定の互換性レベルである 1.1 に比べてスループットが著しく高く、RU 消費量が低下しています。 ソリューションは /deviceId 上にパーティション分割された CosmosDB コンテナーを使用し、ソリューションの残りの部分は同じように構成されています。
+Stream Analytics から出力される [Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-cosmosdb) は、[互換性レベル 1.2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12) のネイティブ統合を使用するように更新されました。 互換性レベル 1.2 は、新しいジョブの既定の互換性レベルである 1.1 に比べてスループットが著しく高く、RU 消費量が低下しています。 ソリューションは /deviceId 上にパーティション分割された CosmosDB コンテナーを使用し、ソリューションの残りの部分は同じように構成されています。
 
 [Azure の大規模なストリーミングのサンプル](https://github.com/Azure-Samples/streaming-at-scale)はどれも、負荷をシミュレートするテスト クライアントによってデータが取り込まれるイベント ハブを入力として使用します。 各入力イベントは 1KB の JSON ドキュメントであるため、構成された取り込み率からスループット レートに簡単に換算できます (1MB/秒、5MB/秒、および10MB/秒)。 イベントは、最大 1,000 台のデバイス向けに以下の JSON データ (短縮された形式) を送信する IoT デバイスをシミュレートします。
 

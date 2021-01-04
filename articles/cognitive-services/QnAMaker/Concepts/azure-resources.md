@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e2c71e028225c22ab0355ff4cda77dacadf94095
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: b5f7f494c9d0969fbf9431d0b552dafa21a5eace
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512047"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705406"
 ---
 # <a name="azure-resources-for-qna-maker"></a>QnA Maker 用の Azure リソース
 
@@ -268,8 +268,10 @@ Azure portal の作成ウィンドウを使用すると、QnA Maker マネージ
 
 > [!div class="mx-imgBorder"]
 > ![Azure portal の QnA Maker マネージド (プレビュー) リソース一覧のスクリーンショット](../media/qnamaker-how-to-setup-service/resources-created-v2.png)
+
 > [!TIP]
 > QnA Maker リソースを作成するときに新しいリソース グループを作成します。 これで、リソース グループで検索するときに、QnA Maker マネージド (プレビュー) リソースに関連付けられているすべてのリソースを表示できるようになります。
+
 > [!TIP]
 > 名前付け規則を使用して、リソースまたはリソース グループの名前内の価格レベルを示します。 新しいナレッジ ベースの作成または新しいドキュメントの追加でエラーが発生する場合、Cognitive Search の価格レベルの制限が一般的な問題です。
 

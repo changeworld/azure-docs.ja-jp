@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 09/18/2020
-ms.openlocfilehash: eac7999db61bd883dd1148e8b866b811a4f3c851
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 88dd82ee7e004a3613d6d9892b0e853406f4caf4
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221880"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696140"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Update Management を有効にする
 
@@ -316,7 +316,7 @@ Azure Automation と Azure Monitor を初めて使用する場合は、次の構
     **Azure CLI**
 
     ```cli
-    az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deployUMSolutiontemplate.json
+    az deployment group create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deployUMSolutiontemplate.json
     ```
 
     デプロイが完了するまでに数分かかる場合があります。 完了すると、次のような結果を含むメッセージが表示されます。
@@ -343,7 +343,7 @@ Azure Automation と Azure Monitor を初めて使用する場合は、次の構
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-必要がなくなったら、Log Analytics ワークスペースから**更新**ソリューションを削除し、ワークスペースから Automation アカウントのリンクを解除し、Automation アカウントとワークスペースを削除します。
+必要がなくなったら、Log Analytics ワークスペースから **更新** ソリューションを削除し、ワークスペースから Automation アカウントのリンクを解除し、Automation アカウントとワークスペースを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

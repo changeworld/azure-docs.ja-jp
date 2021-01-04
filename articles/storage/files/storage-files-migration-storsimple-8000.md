@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: daa7c657a47414b01197bed3644caefeda98af1c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 1e45c39a8f562ca6264ab631dfadc84315b58030
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512173"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723980"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 および 8600 から Azure File Sync への移行
 
@@ -160,7 +160,7 @@ Azure ファイル共有には、Premium Storage (SSD) または Standard Storag
 
 まだ決められない場合は、次のようにしてください。
 
-* [Premium Azure ファイル共有のパフォーマンス](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)を必要とする場合は、Premium Storage を選択します。
+* [Premium Azure ファイル共有のパフォーマンス](understanding-billing.md#provisioned-billing)を必要とする場合は、Premium Storage を選択します。
 * ホット データやアーカイブ データなど、汎用的なファイル サーバーのワークロードには、Standard Storage を選択します。 また、クラウド内の共有上のワークロードが Azure File Sync だけである場合も、Standard Storage を選択します。
 
 #### <a name="account-kind"></a>アカウントの種類

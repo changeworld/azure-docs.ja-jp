@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: dd667202a329148e498d0e25ee15110de5d7448a
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 6aea427848afd39b9b9ca166856470a2f9b88694
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573410"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705100"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する (プレビュー)
 
@@ -100,7 +100,7 @@ Azure Resource Manager を使用すると、Stream Analytics ジョブのデプ�
     次の Azure CLI コマンドを使用して、上記のジョブをリソース グループ **ExampleGroup** にデプロイします。
 
     ```azurecli
-    az group deployment create --resource-group ExampleGroup -template-file StreamingJob.json
+    az deployment group create --resource-group ExampleGroup -template-file StreamingJob.json
     ```
 
 2. ジョブが作成された後、Azure Resource Manager を使用して、そのジョブの完全な定義を取得します。

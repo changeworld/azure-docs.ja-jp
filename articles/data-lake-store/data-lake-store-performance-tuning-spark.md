@@ -1,17 +1,17 @@
 ---
 title: パフォーマンス チューニング - Spark と Azure Data Lake Storage Gen1
 description: Azure HDInsight での Spark と Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイドラインについて説明します。
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: stewu
-ms.openlocfilehash: 799a2d20513f331890bec0882fec852c462c5840
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.author: twooley
+ms.openlocfilehash: 8a39e14b70827947687b7613b9ff86f18017ddfe
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108271"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722506"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight の Spark と Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス
 
@@ -35,7 +35,7 @@ Spark ジョブを実行するときは、以下が Data Lake Storage Gen1 の�
 
 * **Executor-cores** - 各 Executor に割り当てられるコアの数。
 
-**Num-executors**Num-executors では並列で実行できるタスクの最大数を設定します。 並列で実行できるタスクの実際の数は、メモリと、クラスターで利用できる CPU リソースによって制限されます。
+**Num-executors** Num-executors では並列で実行できるタスクの最大数を設定します。 並列で実行できるタスクの実際の数は、メモリと、クラスターで利用できる CPU リソースによって制限されます。
 
 **Executor-memory** 各 Executor に割り当てられるメモリの量です。 各 Executor に必要なメモリは、ジョブによって異なります。 複雑な操作では、多くのメモリが必要です。 読み取りと書き込みのような単純な操作では、必要なメモリは少なくなります。 Ambari で各 Executor のメモリの量を表示できます。 Ambari で Spark に移動し、 **[Configs]\(構成)** タブを表示します。
 
