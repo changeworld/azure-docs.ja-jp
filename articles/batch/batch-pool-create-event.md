@@ -3,12 +3,12 @@ title: Azure Batch プール作成イベント
 description: プールが作成されると生成される Batch プール作成イベントのリファレンスです。 ログの内容はプールに関する一般的な情報です。
 ms.topic: reference
 ms.date: 10/08/2020
-ms.openlocfilehash: 03c656ea2698ee0e61c1ddb903fcc10df9d3044b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f8b020401443b2a9e80837599d6fd4b2a3001d27
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352390"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609005"
 ---
 # <a name="pool-create-event"></a>プール作成イベント
 

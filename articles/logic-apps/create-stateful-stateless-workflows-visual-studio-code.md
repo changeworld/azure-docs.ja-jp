@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: cf8b6670817132c8c0c0a09194b9aca4bbc8073c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a74244cc45e1a3d2116f98ac73290d184f4affc0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96923145"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632062"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (プレビュー) 拡張機能を使用して Visual Studio Code でステートフルおよびステートレスのワークフローを作成する
 
@@ -506,7 +506,7 @@ Visual Studio Code で Webhook ベースのトリガーとアクションをロ�
 
 ## <a name="manage-breakpoints-for-debugging"></a>デバッグ用のブレークポイントを管理する
 
-デバッグ セッションを開始してロジック アプリのワークフローを実行およびテストする前に、各ワークフローの **workflow.json** ファイル内に[ブレークポイント](https://code.visualstudio.com/docs/editor/debugging#_breakpoints)を設定できます。 他の設定は必要ありません。 
+デバッグ セッションを開始してロジック アプリのワークフローを実行およびテストする前に、各ワークフローの **workflow.json** ファイル内に [ブレークポイント](https://code.visualstudio.com/docs/editor/debugging#_breakpoints)を設定できます。 他の設定は必要ありません。 
 
 現時点では、ブレークポイントはアクションについてのみサポートされており、トリガーではサポートされていません。 各アクション定義には、次のブレークポイントの場所があります。
 
@@ -769,7 +769,7 @@ Visual Studio Code からは、プロジェクトを Azure に直接発行する
 
       1. 既存の Application Insights リソースを選択するか、**新しい Application Insights リソースを作成** します。
 
-      1. [Azure portal](htpps://portal.azure.com) で、お使いの Application Insights リソースに移動します。
+      1. [Azure portal](https://portal.azure.com) で、お使いの Application Insights リソースに移動します。
 
       1. リソース メニューで **[概要]** を選択します。 **[インストルメンテーション キー]** の値を見つけてコピーします。
 

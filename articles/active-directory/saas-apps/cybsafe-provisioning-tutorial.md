@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2020
 ms.author: Zhchia
-ms.openlocfilehash: 92329a3fa04d3cc685ba5068e9e5ae9932d1eb4d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 932a94c348c38902c68a6cf8108d8246cdc434ac
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96178944"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673379"
 ---
 # <a name="tutorial-configure-cybsafe-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために CybSafe を構成する
 
@@ -135,15 +135,15 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 13. CybSafe に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
-    ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
+      ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 
 14. **[設定]** セクションの **[スコープ]** で目的の値を選択することで、CybSafe にプロビジョニングするユーザーまたはグループ、あるいはその両方を定義します。
 
-    ![プロビジョニングのスコープ](common/provisioning-scope.png)
+      ![プロビジョニングのスコープ](common/provisioning-scope.png)
 
 15. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
 
-    ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
+      ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
 
 この操作により、 **[設定]** セクションの **[スコープ]** で定義したすべてのユーザーとグループの初期同期サイクルが開始されます。 初期サイクルは後続の同期よりも実行に時間がかかります。後続のサイクルは、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 
 

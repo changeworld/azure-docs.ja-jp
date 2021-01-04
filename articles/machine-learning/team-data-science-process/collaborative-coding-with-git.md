@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca24a781f4f3ad5c210813dabbb896de35056ed6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090214"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588711"
 ---
 # <a name="collaborative-coding-with-git"></a>Git を使用した共同コーディング
 
-この記事では、データ サイエンス プロジェクトの共同コード開発フレームワークとして Git を使用する方法について説明します。 Azure Repos のコードを Azure Boards の[アジャイル開発](agile-development.md)作業項目にリンクする方法、コード レビューを実行する方法、および変更の pull request を作成およびマージする方法について取り上げます。
+この記事では、データ サイエンス プロジェクトの共同コード開発フレームワークとして Git を使用する方法について説明します。 Azure Repos のコードを Azure Boards の[アジャイル開発](agile-development.md)作業項目にリンクする方法、コード レビューを実行する方法、および変更のプル要求を作成およびマージする方法について取り上げます。
 
 ## <a name="link-a-work-item-to-an-azure-repos-branch"></a><a name='Linkaworkitemwithagitbranch-1'></a>Azure Repos ブランチに作業項目をリンクする 
 
@@ -39,7 +39,7 @@ Windows または Linux で次の Git bash コマンドを使用して新しい�
 git checkout -b <new branch name> <base branch name>
 
 ```
-\<base branch name> を指定しない場合、新しいブランチは、`master` に基づきます。 
+\<base branch name> を指定しない場合、新しいブランチは、`main` に基づきます。 
 
 作業ブランチに切り替えるには、次のコマンドを実行します。 
 
@@ -47,7 +47,7 @@ git checkout -b <new branch name> <base branch name>
 git checkout <working branch name>
 ```
 
-作業ブランチに切り替えた後に、その作業項目を完成するために、コードやドキュメント アーティファクトの開発を開始できます。 `git checkout master` を実行すると、`master` ブランチに戻ります。
+作業ブランチに切り替えた後に、その作業項目を完成するために、コードやドキュメント アーティファクトの開発を開始できます。 `git checkout main` を実行すると、`main` ブランチに戻ります。
 
 ユーザー ストーリー作業項目ごとに Git ブランチを作成することをお勧めします。 次に、タスク作業項目ごとに、ユーザー ストーリー ブランチに基づいてブランチを作成できます。 複数の担当者が同じプロジェクトの異なるユーザー ストーリーや、同じユーザー ストーリーの異なるタスクで作業している場合は、そのユーザー ストーリーとタスクの関係に対応する階層にブランチを編成します。 ブランチを共有する場合は、各チーム メンバーが異なるブランチや異なるコード、または他のアーティファクトに取り組むようにすることで、競合を最小限に抑えることができます。 
 
@@ -72,25 +72,25 @@ git push origin script
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## <a name="create-a-pull-request"></a><a name='CreateapullrequestonVSTS-3'></a>Pull request を作成する
+## <a name="create-a-pull-request"></a><a name='CreateapullrequestonVSTS-3'></a>プル要求を作成する
 
-1 回以上のコミットおよびプッシュの実行後に、現在の作業ブランチをそのベース ブランチにマージする準備ができたら、Azure Repos で *pull request* を作成して送信できます。 
+1 回以上のコミットおよびプッシュの実行後に、現在の作業ブランチをそのベース ブランチにマージする準備ができたら、Azure Repos で *プル要求* を作成して送信できます。 
 
-Azure DevOps プロジェクトのメイン ページから、左のナビゲーションで **[Repos]**  >  **[Pull request]** をポイントします。 次に、 **[新しい pull request]** ボタンまたは **[pull requestの作成]** リンクのいずれかを選択します。
+Azure DevOps プロジェクトのメイン ページから、左のナビゲーションで **[Repos]**  >  **[プル要求]** をポイントします。 次に、 **[新しいプル要求]** ボタンまたは **[プル要求の作成]** リンクのいずれかを選択します。
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-必要に応じて、 **[新しい pull request]** 画面で、変更をマージする Git リポジトリとブランチに移動します。 必要な情報を追加または変更します。 **[レビュー担当者]** で、レビュー担当者の名前を追加し、 **[作成]** を選択します。 
+必要に応じて、 **[新しいプル要求]** 画面で、変更をマージする Git リポジトリとブランチに移動します。 必要な情報を追加または変更します。 **[レビュー担当者]** で、レビュー担当者の名前を追加し、 **[作成]** を選択します。 
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
 ## <a name="review-and-merge"></a><a name='ReviewandMerge-4'></a>レビューとマージ
 
-Pull request が作成されると、レビュー担当者は、pull request のレビューを求める電子メール通知を受け取ります。 レビュー担当者は、変更が機能するかどうかをテストし、可能であれば要求者と一緒に変更を確認します。 レビュー担当者は、評価に基づいて、コメントの作成、変更の要求、pull request の承認または拒否を行います。 
+プル要求が作成されると、レビュー担当者は、プル要求のレビューを求める電子メール通知を受け取ります。 レビュー担当者は、変更が機能するかどうかをテストし、可能であれば要求者と一緒に変更を確認します。 レビュー担当者は、評価に基づいて、コメントの作成、変更の要求、プル要求の承認または拒否を行います。 
 
 ![8](./media/collaborative-coding-with-git/8-add_comments.png)
 
-レビュー担当者が変更を承認すると、マージ権限を持つ担当者が作業ブランチをそのベース ブランチにマージできます。 **[完了]** を選択し、 **[Pull request の完了]** ダイアログで **[マージの完了]** を選択します。 マージ後に、作業しているブランチを削除することを選択できます。 
+レビュー担当者が変更を承認すると、マージ権限を持つ担当者が作業ブランチをそのベース ブランチにマージできます。 **[完了]** を選択し、 **[プル要求の完了]** ダイアログで **[マージの完了]** を選択します。 マージ後に、作業しているブランチを削除することを選択できます。 
 
 ![10](./media/collaborative-coding-with-git/10-spring-complete-pullrequest.png)
 
@@ -105,7 +105,7 @@ Pull request が作成されると、レビュー担当者は、pull request の
 次の Git bash コマンドを使用して、`script` 作業ブランチをそのベース ブランチにマージし、マージ後に作業ブランチを削除することもできます。
 
 ```bash
-git checkout master
+git checkout main
 git merge script
 git branch -d script
 ```

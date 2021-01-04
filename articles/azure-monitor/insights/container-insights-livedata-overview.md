@@ -2,23 +2,20 @@
 title: コンテナーに対する Azure Monitor を使用してライブ データ (プレビュー) を表示する | Microsoft Docs
 description: この記事では、コンテナー用 Azure Monitor による kubectl を使用せずに、Kubernetes ログ、イベント、およびポッド メトリックをリアルタイム ビューで表示する方法について説明します。
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 12/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3bfc9aa0f0238d99d9336abe592fa721459f4220
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 3655ff8e5879aa4113753b5529c1e484fb079401
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346833"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672870"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Kubernetes ログ、イベント、ポッド メトリックをリアルタイムで表示する方法
 
 コンテナーの Azure Monitor には、ライブ データ (プレビュー) 機能が含まれています。これは、Azure Kubernetes Service (AKS) コンテナー ログ (stdout/stderror)、イベント、ポッド メトリックに直接アクセスできるようにする高度な診断機能です。 `kubectl logs -c`、`kubectl get` イベント、および `kubectl top pods` への直接アクセスを公開します。 コンソール ウィンドウには、コンテナー エンジンによって生成されたログ、イベント、およびメトリックが表示され、リアルタイムでの問題のトラブルシューティングに一層役立てることができます。
 
 この記事では、この機能の使用方法について詳しく説明します。
-
->[!NOTE]
->[プライベート クラスター](https://azure.microsoft.com/updates/aks-private-cluster/)として有効にされた AKS クラスターは、この機能でサポートされていません。 この機能では、ブラウザーからプロキシ サーバーを介した Kubernetes API への直接アクセスを利用します。 このプロキシから Kubernetes API をブロックするようにネットワーク セキュリティを有効にすると、このトラフィックはブロックされます。
 
 ライブ データ (プレビュー) 機能の設定またはトラブルシューティングについては、[セットアップ ガイド](container-insights-livedata-setup.md)を参照してください。 この機能は、Kubernetes API に直接アクセスします。認証モデルの詳細については、[こちら](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)を参照してください。
 

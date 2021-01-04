@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: e8a28415bf9448133102e92a658e7d200ac2772c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ef16a4c0b6ea40fb4934307916f1fe79ccea72f9
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316967"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609141"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>Azure Arc 対応データ サービス (プレビュー) とは
 
@@ -33,7 +33,7 @@ Azure Arc 対応 SQL Managed Instance や Azure Arc 対応 PostgreSQL Hyperscale
 
 ## <a name="elastic-scale"></a>エラスティック スケール
 
-クラウドに似た柔軟性をオンプレミスで利用することで、インフラストラクチャの利用可能容量に基づいて、Azure 内とほぼ同じ方法でデータベースを動的にスケールアップまたはスケールダウンできます。 この機能により、リアルタイム、任意のスケール、1 秒未満の応答時間でのデータの取り込みやクエリを必要とするシナリオなど、揮発性のニーズを持つバースト シナリオに対応することができます。 さらに、Azure Database for PostgreSQL Hyperscale の固有のハイパー スケール デプロイ オプションを使用して、データベース インスタンスをスケールアウトすることもできます。 この機能により、データ ワークロードの容量の最適化が向上します。これには、一意のスケール " *アウト* " 読み取りと書き込みが使用されます。
+クラウドに似た柔軟性をオンプレミスで利用することで、インフラストラクチャの利用可能容量に基づいて、Azure 内とほぼ同じ方法でデータベースを動的にスケールアップまたはスケールダウンできます。 この機能により、リアルタイム、任意のスケール、1 秒未満の応答時間でのデータの取り込みやクエリを必要とするシナリオなど、揮発性のニーズを持つバースト シナリオに対応することができます。 さらに、Azure Database for PostgreSQL Hyperscale の固有のハイパー スケール デプロイ オプションを使用して、データベース インスタンスをスケールアウトすることもできます。 この機能により、データ ワークロードの容量の最適化が向上します。これには、一意のスケール "*アウト*" 読み取りと書き込みが使用されます。
 
 ## <a name="self-service-provisioning"></a>セルフサービス プロビジョニング
 
@@ -50,7 +50,7 @@ Azure portal、Azure Data Studio、[!INCLUDE [azure-data-cli-azdata](../../../in
 ## <a name="next-steps"></a>次のステップ
 
 > **試してみたい場合**  
-> Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE)、または Azure VM 上で [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) をすぐに開始できます。
+> Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE)、または Azure VM 上で [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) をすぐに開始できます。
 
 [クライアント ツールをインストールする](install-client-tools.md)
 

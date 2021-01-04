@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: f2d7c9e39cb3eb14a2c2c6a7b13e37f3a526184b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 556e265cc0d1aae33823185ec98d23f191ed1694
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889801"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680023"
 ---
 # <a name="change-the-style-of-the-map"></a>マップのスタイルを変更する
 
@@ -29,9 +29,9 @@ ms.locfileid: "92889801"
 var map = new atlas.Map('map', {
     renderWorldCopies: false,
     showBuildingModels: false,
-    showLogo = true,
-    showFeedbackLink = true,
-    style='road'
+    showLogo: true,
+    showFeedbackLink: true,
+    style: 'road'
 
     //Additional map options.
 };
@@ -40,8 +40,8 @@ var map = new atlas.Map('map', {
 map.setStyle({
     renderWorldCopies: true,
     showBuildingModels: true,
-    showLogo = false,
-    showFeedbackLink = false
+    showLogo: false,
+    showFeedbackLink: false
 });
 ```
 
@@ -101,7 +101,7 @@ map.setStyle({ style: 'satellite' });
 
 次の画像は、`list` レイアウトで表示されるスタイル ピッカー コントロールを示しています。
 
-:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="スタイル選択機能アイコンのレイアウト":::
+:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="スタイル選択機能の一覧のレイアウト":::
 
 > [!IMPORTANT]
 > 既定では、スタイル ピッカー コントロールには Azure Maps の S0 価格レベルで利用できるすべてのスタイルが一覧表示されます。 この一覧に表示されるスタイルの数を減らすには、一覧に表示するスタイルの配列をスタイルの選択ツールの `mapStyle` オプションに渡します。 S1 を使用していて、使用できるすべてのスタイルを表示する場合は、スタイル選択ツールの `mapStyles` オプションを `"all"` に設定します。
@@ -129,10 +129,13 @@ map.setStyle({ style: 'satellite' });
 > [!div class="nextstepaction"]
 > [StyleControlOptions](/javascript/api/azure-maps-control/atlas.stylecontroloptions)
 
-マップにコントロールを追加する場合は、以下を参照してください。
+マップに追加できる他のコード サンプルについては、次の記事をご覧ください。
 
 > [!div class="nextstepaction"]
 > [マップ コントロールを追加する](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [ピンを追加する](map-add-pin.md)
+> [シンボル レイヤーを追加する](map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [バブル レイヤーを追加する](map-add-bubble-layer.md)

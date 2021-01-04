@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 4d420bf45cd705f518df0d52929a331d23537184
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 97189fd7a232c2467981b23dc20da51ebef08252
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395174"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656344"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Azure SQL Edge でデータ ストリーミング ジョブを作成する 
 
@@ -154,7 +154,7 @@ T-SQL ストリーミングでは、SQL Server の外部データ ソース機�
         DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' 
     )
    ```
-    
+
 3. 外部ストリーム オブジェクトを作成します。 次の例では、Kafka トピック `*TemperatureMeasurement*` を指す外部ストリーム オブジェクトを作成します。
 
     ```sql
@@ -163,7 +163,7 @@ T-SQL ストリーミングでは、SQL Server の外部データ ソース機�
     (  
         DATA_SOURCE = KafkaInput, 
         FILE_FORMAT = JsonGzipped,
-        LOCATION = 'TemperatureMeasurement',     
+        LOCATION = 'TemperatureMeasurement',
         INPUT_OPTIONS = 'PARTITIONS: 10' 
     ); 
     ```

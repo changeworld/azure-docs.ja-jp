@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 649abf6d07a95c7f20f6416f7d3155f8d115782b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d2fb2ac40dfbe6e48fef5c98e21896575b298a94
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127571"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683462"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics に入力としてデータをストリーム配信する
 
@@ -31,7 +31,7 @@ Stream Analytics では、すべてのデータ ストリーム入力ソース�
 
 ## <a name="create-edit-or-test-inputs"></a>入力の作成、編集、またはテスト
 
-[Azure portal](stream-analytics-quick-create-portal.md)、[Visual Studio](stream-analytics-quick-create-vs.md)、および [Visual Studio Code](quick-create-visual-studio-code.md) を使用して、ストリーミング ジョブに既存の入力を追加、表示、または編集できます。 また、Azure portal、[Visual Studio](stream-analytics-vs-tools-local-run.md)、および [Visual Studio Code](visual-studio-code-local-run.md) のサンプル データから、入力接続をテストして、[クエリをテストする](stream-analytics-manage-job.md#test-your-query)ことができます。 クエリを記述する場合は、FROM 句に入力の一覧を指定します。 ポータルの **[クエリ]** ページで、使用できる入力の一覧を取得できます。 複数の入力を使用する場合は、それらを `JOIN` するか、複数の `SELECT` クエリを記述します。
+[Azure portal](stream-analytics-quick-create-portal.md)、[Visual Studio](stream-analytics-quick-create-vs.md)、および [Visual Studio Code](quick-create-visual-studio-code.md) を使用して、ストリーミング ジョブに既存の入力を追加、表示、または編集できます。 また、Azure portal、Visual Studio、および [Visual Studio Code](visual-studio-code-local-run.md) のサンプル データから、入力接続をテストして、[クエリをテストする](stream-analytics-vs-tools-local-run.md)ことができます。 クエリを記述する場合は、FROM 句に入力の一覧を指定します。 ポータルの **[クエリ]** ページで、使用できる入力の一覧を取得できます。 複数の入力を使用する場合は、それらを `JOIN` するか、複数の `SELECT` クエリを記述します。
 
 
 ## <a name="stream-data-from-event-hubs"></a>Event Hubs からのデータのストリーム配信
@@ -135,7 +135,7 @@ Blob Storage の既定のタイムスタンプまたは Stream Analytics の ADL
 
 13:00 に BLOB がストレージ アカウント コンテナーにアップロードされ、13:00 またはそれ以前に *[Custom Time]\(ユーザー設定時刻\)* を使用して Azure Stream Analytics ジョブが開始された場合、変更された時間がジョブの実行期間内であるため、BLOB は選択されます。
 
-13:00 に *[Now]\(今すぐ\)* を使用して Azure Stream Analytics ジョブが開始され、13:01 に BLOB がストレージ アカウント コンテナーにアップロードされた場合、Azure Stream Analytics は BLOB を選択します。 各 BLOB に割り当てられたタイムスタンプは `BlobLastModifiedTime` のみに基づいています。 BLOB が含まれているフォルダーは、割り当てられたタイムスタンプとは関係がありません。 たとえば、 *2019/10-01/00/b1.txt* という BLOB の `BlobLastModifiedTime` が 2019-11-11 である場合、この BLOB に割り当てられるタイムスタンプは 2019-11-11 です。
+13:00 に *[Now]\(今すぐ\)* を使用して Azure Stream Analytics ジョブが開始され、13:01 に BLOB がストレージ アカウント コンテナーにアップロードされた場合、Azure Stream Analytics は BLOB を選択します。 各 BLOB に割り当てられたタイムスタンプは `BlobLastModifiedTime` のみに基づいています。 BLOB が含まれているフォルダーは、割り当てられたタイムスタンプとは関係がありません。 たとえば、*2019/10-01/00/b1.txt* という BLOB の `BlobLastModifiedTime` が 2019-11-11 である場合、この BLOB に割り当てられるタイムスタンプは 2019-11-11 です。
 
 イベント ペイロードのタイムスタンプを利用してデータをストリームとして処理するには、[TIMESTAMP BY](/stream-analytics-query/stream-analytics-query-language-reference) キーワードを使用する必要があります。 Stream Analytics ジョブは、BLOB ファイルが使用可能な場合に、毎秒 Azure Blob Storage または ADLS Gen2 入力からデータをプルします。 BLOB ファイルが使用不可能な場合は、最大で 90 秒の時間遅延がある指数関数的バックオフがあります。
 

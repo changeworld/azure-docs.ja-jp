@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 - パフォーマンス チューニング
 description: 最高のパフォーマンスを得るには、読み取りと書き込みをできるだけ並列実行し、Azure Data Lake Storage Gen1 で利用できるスループットをすべて利用することが重要です。そのしくみについて説明します。
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.author: stewu
-ms.openlocfilehash: e9a589b43490613834a810a68636c426e45c2656
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.author: twooley
+ms.openlocfilehash: c7f16dd9ea450185893164e10928c7022d6ab5a6
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332520"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724682"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Azure Data Lake Storage Gen1 のパフォーマンス チューニング
 
@@ -65,11 +65,11 @@ Data Lake Storage Gen1 は、あらゆる分析シナリオで必要とされる
 
 Hive および ADLA のワークロードでは、時系列データのパーティションを削除すると、一部のクエリがデータのサブセットのみを読み取るようにできるため、パフォーマンスを向上させることができます。
 
-時系列データを取り込むこれらのパイプラインでは、多くの場合、ファイルに構造化されたファイル名やフォルダー名が付けられます。 次に示すのは、日付によって構成されたデータの一般的な例です: *\DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv* 。
+時系列データを取り込むこれらのパイプラインでは、多くの場合、ファイルに構造化されたファイル名やフォルダー名が付けられます。 次に示すのは、日付によって構成されたデータの一般的な例です: *\DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv*。
 
 フォルダーとファイル名の両方に、日時の情報が示されていることに注意してください。
 
-日付と時刻については、次に示すのが一般的なパターンです: *\DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv* 。
+日付と時刻については、次に示すのが一般的なパターンです: *\DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv*。
 
 繰り返しになりますが、フォルダーとファイルの整理については、より大きなファイルサイズに最適化され、各フォルダーに妥当な数のファイルが配置されるような選択を行ってください。
 

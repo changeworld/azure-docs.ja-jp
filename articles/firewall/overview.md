@@ -9,12 +9,12 @@ ms.custom: mvc, contperf-fy21q1
 ms.date: 12/03/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 3bfc8704919fc26db692701eaca526dd5c333b6f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 04ba20bd5607bc309735e509ac37b15c33445c52
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033495"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672735"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -68,7 +68,6 @@ TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク �
 |構成の更新に平均 5 分かかる|Azure Firewall 構成の更新は平均で 3 から 5 分かかる場合があり、並列更新はサポートされていません。|解決策を調査中です。|
 |Azure Firewall では、HTTPS トラフィックと MSSQL トラフィックのフィルター処理に SNI TLS ヘッダーが使用される|ブラウザーまたはサーバー ソフトウェアが Server Name Indicator (SNI) 拡張機能をサポートしていない場合は、Azure Firewall 経由で接続することがはできません。|ブラウザーまたはサーバー ソフトウェアが SNI をサポートしていない場合は、アプリケーション ルールではなくネットワーク ルールを使用して接続を制御できます。 SNI をサポートするソフトウェアについては、「[Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)」を参照してください。|
 |カスタム DNS が強制トンネリングで正しく機能しない|強制トンネリングが有効になっている場合、カスタム DNS は正しく機能しません。|解決策を調査中です。|
-|複数の Availability Zones に対する新しいパブリック IP アドレス サポート|2 つの可用性ゾーン (1 と 2、2 と 3、1 と 3 のいずれか) があるファイアウォールをデプロイするときは新しいパブリック IP アドレスを追加できません。|これはパブリック IP アドレス リソースの制限です。|
 |強制トンネリング モードで構成されたファイアウォールで開始と停止が機能しない|強制トンネリング モードで構成された Azure ファイアウォールで、開始と停止が機能しません。 強制トンネリングが構成された Azure Firewall を起動しようとすると、次のエラーが発生します。<br><br>*Set-AzFirewall: AzureFirewall FW-xx management IP configuration cannot be added to an existing firewall. Redeploy with a management IP configuration if you want to use forced tunneling support. (Set-AzFirewall: AzureFirewall FW-xx の管理 IP 構成を既存のファイアウォールに追加できません。強制トンネリング機能を使用したい場合は、管理 IP 構成で再デプロイしてください。)<br>StatusCode: 400<br>ReasonPhrase: Bad Request (無効な要求)*|調査中。<br><br>この問題は、既存のファイアウォールを削除してから、同じパラメーターで新しいファイアウォールを作成することで回避できます。|
 |ポータルを使用してファイアウォール ポリシー タグを追加できない|Azure Firewall ポリシーにはパッチ サポートの制限があり、Azure portal を使用してタグを追加することはできません。 次のエラーが発生します: "*リソースのタグを保存できませんでした*"。|解決策を調査中です。 代わりに、Azure PowerShell のコマンドレット `Set-AzFirewallPolicy` を使用してタグを更新することができます。|
 |IPv6 はまだサポートされていません|IPv6 アドレスをルールに追加した場合、ファイアウォールのエラーが発生します。|IPv4 アドレスのみを使用してください。 IPv6 のサポートは調査中です|

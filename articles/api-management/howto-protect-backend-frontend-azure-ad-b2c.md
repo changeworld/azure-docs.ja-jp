@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new, devx-track-js
-ms.openlocfilehash: aa3bce73d2a91538dff0fdeb9e0eb814d878459a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: b157200b03bdc89e00bfa5c8264d78baf24875c1
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676031"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609124"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>OAuth 2.0、Azure Active Directory B2C、および Azure API Management を使用して SPA バックエンドを保護する
 
@@ -53,7 +53,7 @@ EasyAuth を使用して Azure Functions バックエンドをセキュリティ
 1. 新しい Azure AD B2C クライアント ID とキーで EasyAuth を有効にし、APIM VIP にロックダウンするように関数 API を構成します 
 1. API Management で API 定義を構築します
 1. API Management API 構成に合わせて Oauth2 を設定します
-1. **CORS** ポリシーを設定し、 **validate-jwt** ポリシーを追加して、すべての受信要求の OAuth トークンを検証します
+1. **CORS** ポリシーを設定し、**validate-jwt** ポリシーを追加して、すべての受信要求の OAuth トークンを検証します
 1. API を使用する呼び出し元のアプリケーションを構築します
 1. JS SPA サンプルをアップロードします
 1. 新しい Azure AD B2C クライアント ID とキーを使用してサンプル JS クライアント アプリを構成します 
@@ -180,7 +180,7 @@ IP 制限パネルに CIDR 形式のアドレス ブロックを追加する必�
    > これで、関数 API は、API 管理または自分のアドレス以外の場所から呼び出すことができなくなります。
    
 ## <a name="import-the-function-app-definition"></a>関数アプリの定義をインポートする
-1. " *API Management ブレード* " を開き、次に " *インスタンス* " を開きます。
+1. "*API Management ブレード*" を開き、次に "*インスタンス*" を開きます。
 1. インスタンスの [API Management] セクションから [API] ブレードを選択します。
 1. [Add a New API]\(新しい API の追加\) ペインから [関数アプリ] を選択し、ポップアップの上部から [完全] を選択します。
 1. [参照] をクリックして、内部で API をホストしている関数アプリを選択し、[選択] をクリックします。
@@ -194,7 +194,7 @@ IP 制限パネルに CIDR 形式のアドレス ブロックを追加する必�
 1. [クライアント登録ページの URL] の値は使用されないため、任意の値を入力できます。
 1. *[Implicit Auth]\(暗黙的な認証\)* の付与の種類をオンにし、[承認コード] の付与の種類をオンのままにします。
 1. *[承認]* および *[トークン]* エンドポイント フィールドに移動し、以前に既知の構成 XML ドキュメントからキャプチャした値を入力します。
-1. 下にスクロールし、"resource" という " *追加の本文パラメーター* " に、Azure AD B2C アプリ登録からのバックエンド関数の API クライアント ID を設定します
+1. 下にスクロールし、"resource" という "*追加の本文パラメーター*" に、Azure AD B2C アプリ登録からのバックエンド関数の API クライアント ID を設定します
 1. [クライアントの資格情報] を選択し、クライアント ID を開発者コンソール アプリのアプリ ID に設定します。従量課金 API Management モデルを使用している場合は、この手順をスキップします。
 1. [クライアント シークレット] を以前の手順でメモしたキーに設定します。従量課金 API Management モデルを使用している場合は、この手順をスキップします。
 1. 最後に、後で使用できるように API Management からの認証コード付与の redirect_uri をメモします。
@@ -396,7 +396,8 @@ IP 制限パネルに CIDR 形式のアドレス ブロックを追加する必�
                     // Make the api call here
                 $.ajax({
                     type: "get",
-                    headers: {'Authorization': 'Bearer ' + token, 'Ocp-Apim-Subscription-Key': applicationConfig.subKey},                   url: applicationConfig.webApi
+                    headers: {'Authorization': 'Bearer ' + token, 'Ocp-Apim-Subscription-Key': applicationConfig.subKey},
+                    url: applicationConfig.webApi
                 }
                 ).done(function (body) {
                     document.getElementById("message").innerHTML = "The API Said " + body;

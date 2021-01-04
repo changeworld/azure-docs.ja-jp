@@ -1,7 +1,7 @@
 ---
 title: Windows 用 Azure パフォーマンス診断 VM 拡張機能 | Microsoft Docs
 description: Windows 用の Azure パフォーマンス診断 VM 拡張機能について説明します。
-services: virtual-machines-windows'
+services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
 manager: dcscontentpm
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 16af8b8c1258ef7945e88a7af42e86a7bba2003b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9edba575b35613abb8bc3081964a37b838bb358b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963263"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656597"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows 用 Azure パフォーマンス診断 VM 拡張機能
 
@@ -54,16 +54,16 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
-            "performanceScenario": "[parameters('performanceScenario')]",
-            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-            "perfCounterTrace": "[parameters('perfCounterTrace')]",
-            "networkTrace": "[parameters('networkTrace')]",
-            "xperfTrace": "[parameters('xperfTrace')]",
-            "storPortTrace": "[parameters('storPortTrace')]",
-            "srNumber": "[parameters('srNumber')]",
-            "requestTimeUtc":  "[parameters('requestTimeUtc')]",
-            "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
+          "storageAccountName": "[parameters('storageAccountName')]",
+          "performanceScenario": "[parameters('performanceScenario')]",
+          "traceDurationInSeconds": "[parameter('traceDurationInSeconds')]",
+          "perfCounterTrace": "[parameters('perfCounterTrace')]",
+          "networkTrace": "[parameters('networkTrace')]",
+          "xperfTrace": "[parameters('xperfTrace')]",
+          "storPortTrace": "[parameters('storPortTrace')]",
+          "srNumber": "[parameters('srNumber')]",
+          "requestTimeUtc":  "[parameters('requestTimeUtc')]",
+          "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
         },
         "protectedSettings": {
             "storageAccountKey": "[parameters('storageAccountKey')]"        
@@ -74,23 +74,23 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 
 ### <a name="property-values"></a>プロパティ値
 
-|   **名前**   |**値/例**|       **説明**      |
-|--------------|-------------------|----------------------------|
-|apiVersion|2015-06-15|API のバージョン。
-|publisher|Microsoft.Azure.Performance.Diagnostics|拡張機能の発行元名前空間。
-|type|AzurePerformanceDiagnostics|VM 拡張機能の種類。
-|typeHandlerVersion|1.0|拡張機能ハンドラーのバージョン。
-|performanceScenario|basic|データをキャプチャするパフォーマンス シナリオ。 有効な値: **basic**、**vmslow**、**azurefiles**、**custom**。
-|traceDurationInSeconds|300|いずれかのトレース オプションを選択した場合、トレースの期間。
-|perfCounterTrace|p|パフォーマンス カウンターのトレースを有効にするオプション。 有効な値: **p**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
-|networkTrace|n|ネットワーク トレースを有効にするオプション。 有効な値は、**n** または空の値です。 このトレースをキャプチャしない場合は、値を空のままにします。
-|xperfTrace|x|XPerf のトレースを有効にするオプション。 有効な値: **x**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
-|storPortTrace|s|StorPort のトレースを有効にするオプション。 有効な値は、**s** または空の値です。 このトレースをキャプチャしない場合は、値を空のままにします。
-|srNumber|123452016365929|サポート チケット番号 (ある場合)。 ない場合は、値を空のままにします。
-|requestTimeUtc|2017-09-28T22:08:53.736Z|現在の日時 (UTC)。 ポータルを使ってこの拡張機能をインストールしている場合は、この値を指定する必要はありません。
-|resourceId|/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}|VM の一意の識別子。
-|storageAccountName|mystorageaccount|診断ログと結果を格納するストレージ アカウントの名前。
-|storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|ストレージ アカウントのキー。
+| 名前 | 値/例 | [説明] |
+|--|--|--|
+| apiVersion | 2015-06-15 | API のバージョン。 |
+| publisher | Microsoft.Azure.Performance.Diagnostics | 拡張機能の発行元名前空間。 |
+| type | AzurePerformanceDiagnostics | VM 拡張機能の種類。 |
+| typeHandlerVersion | 1.0 | 拡張機能ハンドラーのバージョン。 |
+| performanceScenario | basic | データをキャプチャするパフォーマンス シナリオ。 有効な値: **basic**、**vmslow**、**azurefiles**、**custom**。 |
+| traceDurationInSeconds | 300 | いずれかのトレース オプションを選択した場合、トレースの期間。 |
+| perfCounterTrace | p | パフォーマンス カウンターのトレースを有効にするオプション。 有効な値: **p**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。 |
+| networkTrace | n | ネットワーク トレースを有効にするオプション。 有効な値は、**n** または空の値です。 このトレースをキャプチャしない場合は、値を空のままにします。 |
+| xperfTrace | x | XPerf のトレースを有効にするオプション。 有効な値: **x**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。 |
+| storPortTrace | s | StorPort のトレースを有効にするオプション。 有効な値は、**s** または空の値です。 このトレースをキャプチャしない場合は、値を空のままにします。 |
+| srNumber | 123452016365929 | サポート チケット番号 (ある場合)。 ない場合は、値を空のままにします。 |
+| requestTimeUtc | 2017-09-28T22:08:53.736Z | 現在の日時 (UTC)。 ポータルを使ってこの拡張機能をインストールしている場合は、この値を指定する必要はありません。 |
+| resourceId | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} | VM の一意の識別子。 |
+| storageAccountName | mystorageaccount | 診断ログと結果を格納するストレージ アカウントの名前。 |
+| storageAccountKey | lDuVvxuZB28NNP…hAiRF3voADxLBTcc== | ストレージ アカウントのキー。 |
 
 ## <a name="install-the-extension"></a>拡張機能をインストールする
 
@@ -117,6 +117,7 @@ Windows 仮想マシンにこの拡張機能をインストールするには、
     > プロビジョニングが成功すると、拡張機能が実行されます。 基本的なシナリオの場合、2 分以内で完了します。 他のシナリオの場合は、インストール中に指定した期間だけ実行されます。
 
 ## <a name="remove-the-extension"></a>拡張機能を削除する
+
 仮想マシンから拡張機能を削除するには、以下の手順のようにします。
 
 1. [Azure Portal](https://portal.azure.com) にサインインし、この拡張機能を削除する仮想マシンを選択し、 **[拡張機能]** ブレードを選択します。 
@@ -128,9 +129,10 @@ Windows 仮想マシンにこの拡張機能をインストールするには、
     > 拡張機能のエントリを選び、 **[アンインストール]** オプションを選んでもかまいません。
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
+
 Azure 仮想マシン拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用できます。 その場合、Azure Resource Manager テンプレートのデプロイ時に Azure パフォーマンス診断 VM 拡張機能が実行されます。 サンプル テンプレートを次に示します。
 
-```
+```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -144,11 +146,11 @@ Azure 仮想マシン拡張機能は、Azure Resource Manager テンプレート
       "defaultValue": "southcentralus"
     },
     "storageAccountName": {
-      "type": "securestring"
+      "type": "securestring",
       "defaultValue": "yourStorageAccount"
     },
     "storageAccountKey": {
-      "type": "securestring"
+      "type": "securestring",
       "defaultValue": "yourStorageAccountKey"
     },
     "performanceScenario": {
@@ -159,10 +161,10 @@ Azure 仮想マシン拡張機能は、Azure Resource Manager テンプレート
       "type": "string",
       "defaultValue": ""
     },
-    "traceDurationInSeconds": {
-      "type": "int",
+  "traceDurationInSeconds": {
+    "type": "int",
     "defaultValue": 300
-    },
+  },
     "perfCounterTrace": {
       "type": "string",
       "defaultValue": "p"
@@ -196,16 +198,16 @@ Azure 仮想マシン拡張機能は、Azure Resource Manager テンプレート
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
-            "performanceScenario": "[parameters('performanceScenario')]",
-            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-            "perfCounterTrace": "[parameters('perfCounterTrace')]",
-            "networkTrace": "[parameters('networkTrace')]",
-            "xperfTrace": "[parameters('xperfTrace')]",
-            "storPortTrace": "[parameters('storPortTrace')]",
-            "srNumber": "[parameters('srNumber')]",
-            "requestTimeUtc":  "[parameters('requestTimeUtc')]",
-            "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
+          "storageAccountName": "[parameters('storageAccountName')]",
+          "performanceScenario": "[parameters('performanceScenario')]",
+          "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
+          "perfCounterTrace": "[parameters('perfCounterTrace')]",
+          "networkTrace": "[parameters('networkTrace')]",
+          "xperfTrace": "[parameters('xperfTrace')]",
+          "storPortTrace": "[parameters('storPortTrace')]",
+          "srNumber": "[parameters('srNumber')]",
+          "requestTimeUtc":  "[parameters('requestTimeUtc')]",
+          "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
         },
         "protectedSettings": {
             "storageAccountKey": "[parameters('storageAccountKey')]"
@@ -217,6 +219,7 @@ Azure 仮想マシン拡張機能は、Azure Resource Manager テンプレート
 ```
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
+
 `Set-AzVMExtension` コマンドを使って、Azure パフォーマンス診断 VM 拡張機能を既存の仮想マシンにデプロイすることができます。
 
 PowerShell
@@ -241,7 +244,7 @@ PerfInsights ツールは、選んだシナリオに応じて、さまざまな�
 
 ## <a name="view-and-share-the-results"></a>結果を表示および共有する
 
-拡張機能の出力は、インストール時に指定したストレージ アカウントにアップロードした zip ファイルに含まれます。このファイルは [Shared Access Signatures (SAS)](../../storage/common/storage-sas-overview.md) を使用して 30 日間共有されます。 この zip ファイルには、診断ログと、結果と推奨事項に関するレポートが含まれています。 出力 zip ファイルへの SAS リンクは、**C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\\\<version>** フォルダー以下の *zipfilename*_saslink.txt というテキスト ファイル内で確認できます。 このリンクがあれば、誰でも zip ファイルをダウンロードできます。
+拡張機能の出力は、インストール時に指定したストレージ アカウントにアップロードした zip ファイルに含まれます。このファイルは [Shared Access Signatures (SAS)](../../storage/common/storage-sas-overview.md) を使用して 30 日間共有されます。 この zip ファイルには、診断ログと、結果と推奨事項に関するレポートが含まれています。 出力 zip ファイルへの SAS リンクは、**C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\\\<version>** フォルダー以下の *zipfilename* _saslink.txt というテキスト ファイル内で確認できます。 このリンクがあれば、誰でも zip ファイルをダウンロードできます。
 
 サポート チケットの作業を行うサポート エンジニアを支援するために、Microsoft がこの SAS リンクを使って診断データをダウンロードする場合があります。
 

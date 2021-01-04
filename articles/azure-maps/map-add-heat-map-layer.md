@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 51df9683152d97b899150e240dee98896f8c40ee
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: b15ee7091a68f7fcc79c71877c4af28b511b84de
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896380"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680144"
 ---
 # <a name="add-a-heat-map-layer"></a>ヒート マップ レイヤーを追加する
 
@@ -24,16 +24,16 @@ ms.locfileid: "92896380"
 
 ヒート マップは、次のようなさまざまなシナリオで使用できます。
 
-- **気温データ** : 2 つのデータ ポイント間の気温の近似値が提供されます。
-- **ノイズ センサーのデータ** : センサーがある場所のノイズの強度が示されるだけでなく、離れた場所での散逸に対する分析情報も提供できます。 個々の場所のノイズ レベルは高くないかもしれません。 複数のセンサーのノイズ感知領域が重なる場合は、この重なる領域においてノイズ レベルがより高くなる可能性があります。 そのため、ヒート マップ上では重なった領域が可視化されます。
-- **GPS トレース** : 速度を、重み付けされたハイト マップとして含めます。ここで、各データ ポイントの強度は速度に基づいています。 たとえば、この機能により、車両のスピードが速められた場所を確認する方法が提供されます。
+- **気温データ**: 2 つのデータ ポイント間の気温の近似値が提供されます。
+- **ノイズ センサーのデータ**: センサーがある場所のノイズの強度が示されるだけでなく、離れた場所での散逸に対する分析情報も提供できます。 個々の場所のノイズ レベルは高くないかもしれません。 複数のセンサーのノイズ感知領域が重なる場合は、この重なる領域においてノイズ レベルがより高くなる可能性があります。 そのため、ヒート マップ上では重なった領域が可視化されます。
+- **GPS トレース**: 速度を、重み付けされたハイト マップとして含めます。ここで、各データ ポイントの強度は速度に基づいています。 たとえば、この機能により、車両のスピードが速められた場所を確認する方法が提供されます。
 
 > [!TIP]
 > ヒート マップ レイヤーでは、既定ではデータ ソース内のすべてのジオメトリの座標がレンダリングされます。 ポイント ジオメトリ フィーチャーのみがレンダリングされるようにレイヤーを制限するには、レイヤーの `filter` プロパティを `['==', ['geometry-type'], 'Point']` に設定します。 MultiPoint フィーチャーも含める場合は、レイヤーの `filter` プロパティを `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` に設定します。
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Heat-Maps-and-Image-Overlays-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Heat-Maps-and-Image-Overlays-in-Azure-Maps/player?format=ny]
 
 ## <a name="add-a-heat-map-layer"></a>ヒート マップ レイヤーを追加する
 

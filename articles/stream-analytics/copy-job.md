@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/11/2019
-ms.openlocfilehash: ba63358347cf9722d2cafa35598b9b3b37f49dc3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 67e28e8c5092f2b52a3a34053f81d8a00afb24ed
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129458"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683233"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブをコピーまたはバックアップする
 
-Visual Studio Code または Visual Studio を使用して、デプロイされた Azure Stream Analytics ジョブをコピーまたはバックアップできます。 別のリージョンにジョブをコピーしても、最後の出力時刻はコピーされません。 そのため、コピーされたジョブを開始するときに、 [**最終停止時刻**](./start-job.md#start-options)を使用することはできません。
+Visual Studio Code または Visual Studio を使用して、デプロイされた Azure Stream Analytics ジョブをコピーまたはバックアップできます。 別のリージョンにジョブをコピーしても、最後の出力時刻はコピーされません。 そのため、コピーされたジョブを開始するときに、[**最終停止時刻**](./start-job.md#start-options)を使用することはできません。
 
 ## <a name="before-you-begin"></a>開始する前に
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
@@ -27,7 +27,7 @@ Visual Studio Code または Visual Studio を使用して、デプロイされ�
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
-1. Visual Studio Code のアクティビティ バーの **[Azure]** アイコンをクリックし、 **Stream Analytics ノード** を展開します。 ジョブは、サブスクリプションの下に表示されます。
+1. Visual Studio Code のアクティビティ バーの **[Azure]** アイコンをクリックし、**Stream Analytics ノード** を展開します。 ジョブは、サブスクリプションの下に表示されます。
 
    ![Stream Analytics Explorer を開く](./media/vscode-explore-jobs/open-explorer.png)
 
@@ -36,8 +36,6 @@ Visual Studio Code または Visual Studio を使用して、デプロイされ�
     ![Visual Studio Code での ASA ジョブの特定](./media/vscode-explore-jobs/export-job.png)
 
     プロジェクトは選択したフォルダーにエクスポートされ、現在のワークスペースに追加されます。
-
-    ![Visual Studio Code での ASA ジョブのエクスポート](./media/stream-analytics-manage-job/copy-backup-stream-analytics-jobs.png)
 
 3. ジョブを別のリージョンに発行するか、または別の名前を使用してバックアップするには、クエリエディター (\*.asaql) で **[Select from your subscriptions to publish]\(発行先をサブスクリプションから選択\)** を選択し、指示に従います。
 
@@ -53,4 +51,3 @@ Visual Studio Code または Visual Studio を使用して、デプロイされ�
 
 * [クイック スタート: Visual Studio Code を使用して Stream Analytics ジョブを作成する](quick-create-visual-studio-code.md)
 * [クイック スタート: Visual Studio を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
-* [Azure Pipelines を使用して CI/CD で Azure Stream Analytics ジョブをデプロイする](stream-analytics-tools-visual-studio-cicd-vsts.md)

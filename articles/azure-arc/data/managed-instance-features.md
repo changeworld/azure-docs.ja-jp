@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 810a08d2f72359b385d2a7567b796aa222c6ab14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c42acb69e13cc1eb0fbba3fcafaec1451bc4d77
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90932602"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589221"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance の機能
 
@@ -59,78 +59,78 @@ Azure Arc 対応 SQL Managed Instance では、SQL Server の最新の安定し�
 
 ###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS Scalability and Performance  
 
-|機能|Azure Arc 対応 SQL Managed Instance|
-|-------------|----------------|
-|列ストア|   はい|
-|クラスター化列ストア インデックス内のラージ オブジェクト バイナリ|    はい|
-|オンライン非クラスター化列ストア インデックスの再構築| はい|
-|インメモリ OLTP|    はい|
-|恒久的なメイン メモリ|    はい|
-|テーブルとインデックスのパーティション分割|  はい
-|データ圧縮|  はい|
-|[リソース ガバナー]| はい|
-|パーティション テーブルの並列処理| はい|
-|NUMA 対応のラージ ページ メモリとバッファー配列の割り当て|  はい|
-|IO リソース管理|    はい|
-|遅延持続性|    はい|
-|自動調整|  はい|
-|バッチ モードの適応型結合| はい|
-|バッチ モード メモリ許可フィードバック|  はい|
-|複数ステートメントのテーブル値関数のインターリーブ実行|  はい|
-|一括挿入の機能強化   |はい|
+| 機能 | Azure Arc 対応 SQL Managed Instance |
+|--|--|
+| 列ストア | はい |
+| クラスター化列ストア インデックス内のラージ オブジェクト バイナリ | はい |
+| オンライン非クラスター化列ストア インデックスの再構築 | はい |
+| インメモリ OLTP | はい |
+| 恒久的なメイン メモリ | はい |
+| テーブルとインデックスのパーティション分割 | はい |
+| データ圧縮 | はい |
+| [リソース ガバナー] | はい |
+| パーティション テーブルの並列処理 | はい |
+| NUMA 対応のラージ ページ メモリとバッファー配列の割り当て | はい |
+| IO リソース管理 | はい |
+| 遅延持続性 | はい |
+| 自動調整 | はい |
+| バッチ モードの適応型結合 | はい |
+| バッチ モード メモリ許可フィードバック | はい |
+| 複数ステートメントのテーブル値関数のインターリーブ実行 | はい |
+| 一括挿入の機能強化 | はい |
 
-###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS Security  
-|機能|Azure Arc 対応 SQL Managed Instance|
-|-------------|----------------|
-|行レベルのセキュリティ|    はい|
-|Always Encrypted|  はい|
-|セキュリティで保護されたエンクレーブが設定された Always Encrypted| いいえ|
-|動的データ マスク|  はい|
-|基本的な監査|    はい|
-|詳細な監査| はい|
-|透過的なデータベースの暗号化|   はい|
-|ユーザー定義ロール|    はい|
-|包含データベース|   はい|
-|バックアップの暗号化|    はい|
+###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS Security
+
+| 機能 | Azure Arc 対応 SQL Managed Instance |
+|--|--|
+| 行レベルのセキュリティ | はい |
+| Always Encrypted | はい |
+| セキュリティで保護されたエンクレーブが設定された Always Encrypted | いいえ |
+| 動的データ マスク | はい |
+| 基本的な監査 | はい |
+| 詳細な監査 | はい |
+| 透過的なデータベースの暗号化 | はい |
+| ユーザー定義ロール | はい |
+| 包含データベース | はい |
+| バックアップの暗号化 | はい |
 
 ###  <a name="rdbms-manageability"></a><a name="RDBMSM"></a> RDBMS Manageability  
 
-|機能|Azure Arc 対応 SQL Managed Instance|
-|-------------|----------------|
-|専用管理者接続|    はい|
-|PowerShell スクリプティングのサポート|  はい|
-|データ層アプリケーション コンポーネントの操作のサポート - 抽出、配置、アップグレード、削除| はい
-|ポリシー オートメーション (変更時とスケジュールに基づいて確認)   |はい|
-|パフォーマンス データ コレクター|    はい|
-|標準的なパフォーマンス レポート   |はい|
-|プラン ガイドおよびプラン ガイドの固定計画| はい|
-|NOEXPAND ヒントを使用したインデックス付きビューの直接クエリ|   はい|
-|インデックス付きビューの自動メンテナンス    |はい|
-|分散パーティション ビュー| はい|
-|並列インデックス操作    |はい|
-|クエリ オプティマイザーによる自動的なインデックス付きのビュー使用|  はい|
-|並列整合性チェック |はい|
-
+| 機能 | Azure Arc 対応 SQL Managed Instance |
+|--|--|
+| 専用管理者接続 | はい |
+| PowerShell スクリプティングのサポート | はい |
+| データ層アプリケーション コンポーネントの操作のサポート - 抽出、配置、アップグレード、削除 | はい |
+| ポリシー オートメーション (変更時とスケジュールに基づいて確認) | はい |
+| パフォーマンス データ コレクター | はい |
+| 標準的なパフォーマンス レポート | はい |
+| プラン ガイドおよびプラン ガイドの固定計画 | はい |
+| NOEXPAND ヒントを使用したインデックス付きビューの直接クエリ | はい |
+| インデックス付きビューの自動メンテナンス | はい |
+| 分散パーティション ビュー | はい |
+| 並列インデックス操作 | はい |
+| クエリ オプティマイザーによる自動的なインデックス付きのビュー使用 | はい |
+| 並列整合性チェック | はい |
 
 ### <a name="programmability"></a><a name="Programmability"></a> Programmability  
 
-|機能|Azure Arc 対応 SQL Managed Instance|
-|-------------|----------------|
-|JSON|  はい |       |
-|クエリ ストア    |はい    |       
-|テンポラル|  はい |       
-|ネイティブ XML サポート|    はい |       
-|XML インデックスの作成   |はい    |       
-|MERGE と UPSERT の機能|   はい |       
-|日付および時刻データ型    |はい    |       
-|国際化サポート|  はい |       
-|フルテキストおよびセマンティック検索 |    いいえ      |
-|クエリ内の言語指定 |はい        |   
-|Service Broker (メッセージング)|    はい     |   
-|Transact-SQL エンドポイント|    はい |       
-|グラフ| はい |   
-|Machine Learning サービス| いいえ  |   
-|PolyBase| いいえ   |
+| 機能 | Azure Arc 対応 SQL Managed Instance |
+|--|--|
+| JSON | はい |
+| クエリ ストア | はい |  |
+| テンポラル | はい |  |
+| ネイティブ XML サポート | はい |  |
+| XML インデックスの作成 | はい |  |
+| MERGE と UPSERT の機能 | はい |  |
+| 日付および時刻データ型 | はい |  |
+| 国際化サポート | はい |  |
+| フルテキストおよびセマンティック検索 | いいえ |
+| クエリ内の言語指定 | はい |  |
+| Service Broker (メッセージング) | はい |  |
+| Transact-SQL エンドポイント | はい |  |
+| グラフ | はい |  |
+| Machine Learning サービス | いいえ |  |
+| PolyBase | いいえ |
 
 
 ### <a name="tools"></a>ツール

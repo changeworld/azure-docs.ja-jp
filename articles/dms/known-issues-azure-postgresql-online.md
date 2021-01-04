@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: db2f6e95153610e0a1b79cf5d30cea3c917333d3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8c3c1d28a7fbb3e3c9c449feb03a75d48178b718
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962571"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609039"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>PostgreSQL から Azure DB for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -38,8 +38,8 @@ PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に�
   2. 次に示すように、pg_hba.conf ファイルに IP アドレスを追加します。
 
       ```
-          host  all     172.16.136.18/10    md5
-          host  replication postgres    172.16.136.18/10    md5
+          host    all    172.16.136.18/10    md5
+          host    replication postgres    172.16.136.18/10     md5
       ```
 
 - ユーザーは、ソース データベースをホストするサーバー上でレプリケーション ロールを持っている必要があります。
@@ -47,7 +47,7 @@ PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に�
 - ターゲット Azure Database for PostgreSQL-Single Server のスキーマに外部キーを含めることはできません。 外部キーを削除するには、次のクエリを使用します。
 
     ```
-                                SELECT Queries.tablename
+                  SELECT Queries.tablename
            ,concat('alter table ', Queries.tablename, ' ', STRING_AGG(concat('DROP CONSTRAINT ', Queries.foreignkey), ',')) as DropQuery
                 ,concat('alter table ', Queries.tablename, ' ', 
                                                 STRING_AGG(concat('ADD CONSTRAINT ', Queries.foreignkey, ' FOREIGN KEY (', column_name, ')', 'REFERENCES ', foreign_table_name, '(', foreign_column_name, ')' ), ',')) as AddQuery

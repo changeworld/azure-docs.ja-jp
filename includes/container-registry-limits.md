@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: f4d8f8783e9f6eece4de8dc1c35740fa7aaf03f8
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 3fe1b966b56142fd312850ac5d77839b7d9db434
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97531828"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97706205"
 ---
 | リソース | Basic | Standard | Premium |
 |---|---|---|---|
@@ -26,6 +26,7 @@ ms.locfileid: "97531828"
 | アップロード帯域幅 Mbps<sup>2</sup> | 10 | 20 | 50 |
 | Webhooks | 2 | 10 | 500 |
 | geo レプリケーション | 該当なし | 該当なし | [サポートされています][geo-replication] |
+| 可用性ゾーン | 該当なし | 該当なし | [プレビュー][zones] |
 | コンテンツの信頼 | 該当なし | 該当なし | [サポートされています][content-trust] |
 | プライベート エンドポイントがあるプライベート リンク | 該当なし | 該当なし | [サポートされています][plink] |
 | &bull; プライベート エンドポイント | 該当なし | 該当なし | 10 |
@@ -55,3 +56,4 @@ ms.locfileid: "97531828"
 [plink]: ../articles/container-registry/container-registry-private-link.md
 [cmk]: ../articles/container-registry/container-registry-customer-managed-keys.md
 [token]: ../articles/container-registry/container-registry-repository-scoped-permissions.md
+[zones]: ../articles/container-registry/zone-redundancy.md

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a5ae262d2882bd76e31666f058fa9a7a703a9e1e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: fe1b337fe3e1dcf499f9a7428f66543108d0c050
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906014"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680408"
 ---
 # <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services-preview"></a>Azure Maps Weather Service (プレビュー) を使用して、リアルタイムと予測の気象データを要求する 
 
@@ -34,9 +34,9 @@ Azure Maps [Weather Service](/rest/api/maps/weather) は、開発者が高度に
 
 このビデオでは、Azure Maps Weather Service の REST 呼び出しを行う例を示します。
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps-Weather-services-for-developers/player" width="960" height="540" allowFullScreen frameBorder="0" title="開発者向けの Azure Maps Weather Service - Microsoft Channel 9 ビデオ"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps-Weather-services-for-developers/player?format=ny]
 
 ## <a name="prerequisites"></a>前提条件
 

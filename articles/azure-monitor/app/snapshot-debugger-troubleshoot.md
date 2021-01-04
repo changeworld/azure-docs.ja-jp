@@ -3,14 +3,15 @@ title: Azure Application Insights スナップショット デバッガーのト
 description: この記事では、開発者が Application Insights スナップショット デバッガーを有効にして使用するのに役立つトラブルシューティングの手順と情報を示します。
 ms.topic: conceptual
 author: cweining
+ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5dd1f799634fac223670db5c38effbe7fc29cf6f
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 3e45b5a48f9a7fb66d7539e83f385203ae371ad7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560901"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673554"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング
 アプリケーションで Application Insights スナップショット デバッガーを有効にしても、例外のスナップショットが表示されない場合は、こちらの手順を使用してトラブルシューティングを行うことができます。

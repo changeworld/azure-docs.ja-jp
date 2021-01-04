@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 1b1ff2649f54005eff139b1ed1d4d0b4ea152b1f
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 75df985377e6ed1764985f8d0b6b44323f249b8a
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855024"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632011"
 ---
 # <a name="monitoring-azure-cosmos-db-data-reference"></a>Azure Cosmos DB データの監視のリファレンス
 
@@ -104,7 +104,7 @@ Azure Cosmos DB に対応するすべてのメトリックは、**Cosmos DB 標�
 
 ## <a name="azure-monitor-logs-tables"></a>Azure Monitor ログ テーブル
 
-Azure Cosmos DB は、Azure Monitor ログの Kusto テーブルを使用します。 これらのテーブルに対して Log Analytics を使用してクエリを実行できます。 Kusto bales が使用する一覧については、[Azure Monitor ログのテーブル参照](/azure-monitor/reference/tables/tables-resourcetype#azure-cosmos-db)に関する記事を参照してください。
+Azure Cosmos DB は、Azure Monitor ログの Kusto テーブルを使用します。 これらのテーブルに対して Log Analytics を使用してクエリを実行できます。 Kusto bales が使用する一覧については、[Azure Monitor ログのテーブル参照](/azure/azure-monitor/reference/tables/tables-resourcetype#azure-cosmos-db)に関する記事を参照してください。
 
 ## <a name="see-also"></a>参照
 

@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 8be41f3fcf4d32ee81d1290c6a50a27f2cd45ee7
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 15f65da83f14f43a7892d52c6a2ed4e08580d367
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860968"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614916"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>MSAL.NET を使用してソーシャル ID でユーザーをサインインさせる
 
@@ -134,7 +134,7 @@ ROPC フローでユーザー名とパスワードを使用すると、次のよ
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>Azure AD B2C で ROPC フローを構成する
 
-お使いの Azure AD B2C テナントで、新しいユーザー フローを作成し、 **[ROPC を使用してサインイン]** を選択して、ユーザー フローで ROPC を有効にします。 詳しくは、[リソース所有者のパスワード資格情報フローの構成](../../active-directory-b2c/configure-ropc.md)に関する記事をご覧ください。
+お使いの Azure AD B2C テナントで、新しいユーザー フローを作成し、 **[ROPC を使用してサインイン]** を選択して、ユーザー フローで ROPC を有効にします。 詳しくは、[リソース所有者のパスワード資格情報フローの構成](../../active-directory-b2c/add-ropc-policy.md)に関する記事をご覧ください。
 
 `IPublicClientApplication` には `AcquireTokenByUsernamePassword` メソッドが含まれています。
 

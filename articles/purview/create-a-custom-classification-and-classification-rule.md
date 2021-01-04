@@ -1,18 +1,18 @@
 ---
 title: カスタム分類と分類ルールの作成 (プレビュー)
 description: この記事では、組織に固有のデータ資産のデータの種類を定義する、カスタム分類を作成する方法について説明します。 また、データ資産全体で特定のデータを検索できるようにする、カスタム分類ルールの作成についても説明します。
-author: chandrakavya
-ms.author: kchandra
+author: animukherjee
+ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/1/2020
-ms.openlocfilehash: 16a714cff506117c5d6f7fd4921fbd5346bfda39
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 53c71eec4c913c606669b7d36ca9a71ac8f3e2f1
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550720"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693462"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Azure Purview でのカスタム分類 
 

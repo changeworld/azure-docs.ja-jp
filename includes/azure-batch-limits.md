@@ -5,15 +5,15 @@ services: batch
 author: JnHs
 ms.service: batch
 ms.topic: include
-ms.date: 06/03/2020
+ms.date: 12/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 54a789aba793d9a6b44d5fe9a1e0f42023002b5a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0a94b122f1cdd598eeac553c8cc784d2a0a5369f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025710"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614517"
 ---
 | **リソース** | **既定の制限** | **上限** |
 | --- | --- | --- |
@@ -24,9 +24,6 @@ ms.locfileid: "96025710"
 | Batch アカウントあたりのプール数 | 20 から 100 | 500<sup>1</sup> |
 
 <sup>1</sup>この制限を超えた引き上げを要求する場合は、Azure サポートにお問い合わせください。
-
-> [!IMPORTANT]
-> 専用クォータをリクエストおよび管理する方法を変更しています。  合計専用 vCPU が現在適用されている値ですが、間もなく VM シリーズごとの専用クォータを適用します。 優先度の低いクォータは、合計の制限に基づいて引き続き適用されます。VM シリーズ別に適用されることはありません。
 
 > [!NOTE]
 > 既定の制限は、Batch アカウントの作成に使用するサブスクリプションの種類によって異なります。 表示されるコア クォータは、Batch サービス モードの Batch アカウント用です。 [Batch アカウントのクォータを確認してください](../articles/batch/batch-quota-limit.md#view-batch-quotas)。

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: 95abf403dfd4abd4c0533b6e8b4a2f83b33fa18b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43b145f5a37ea4209947e54cb276e16ff55c1da1
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045554"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97682822"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Visual Studio を使用して Azure Stream Analytics ジョブを表示する
 
@@ -32,7 +32,7 @@ Visual Studio の Azure Stream Analytics ツールのインストール方法に
 
 ### <a name="open-the-job-view"></a>ジョブ ビューを開く
 
-1. **サーバー エクスプローラー**で **[Stream Analytics ジョブ]** を選択し、 **[更新]** を選択します。 **[Stream Analytics ジョブ]** の下にジョブが表示されます。
+1. **サーバー エクスプローラー** で **[Stream Analytics ジョブ]** を選択し、 **[更新]** を選択します。 **[Stream Analytics ジョブ]** の下にジョブが表示されます。
 
     ![Stream Analytics のサーバー エクスプローラーの一覧](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
@@ -48,7 +48,7 @@ Azure Stream Analytics ジョブは、Visual Studio のジョブ ビューから
 
 ## <a name="check-job-results"></a>ジョブ結果の確認
 
-Visual Studio の Stream Analytics ツールは現在、Azure Data Lake Storage と BLOB ストレージの出力のプレビューをサポートしています。 結果を表示するには、**ジョブ ビュー**でジョブ ダイアグラムの出力ノードをダブルクリックして、適切な資格情報を入力するだけです。
+Visual Studio の Stream Analytics ツールは現在、Azure Data Lake Storage と BLOB ストレージの出力のプレビューをサポートしています。 結果を表示するには、**ジョブ ビュー** でジョブ ダイアグラムの出力ノードをダブルクリックして、適切な資格情報を入力するだけです。
 
    ![Stream Analytics ジョブの BLOB 出力](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
 
@@ -56,11 +56,11 @@ Visual Studio の Stream Analytics ツールは現在、Azure Data Lake Storage 
 
 既存のジョブをプロジェクトにエクスポートする方法は 2 つあります。
 
-1. **サーバー エクスプローラー**の [Stream Analytics ジョブ] ノードでジョブ ノードを右クリックします。 **[新しい Stream Analytics プロジェクトにエクスポート]** を選択します。
+1. **サーバー エクスプローラー** の [Stream Analytics ジョブ] ノードでジョブ ノードを右クリックします。 **[新しい Stream Analytics プロジェクトにエクスポート]** を選択します。
     
    ![プロジェクトへのジョブのエクスポート](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-01.png)
     
-    生成されたプロジェクトが、**ソリューション エクスプローラー**に表示されます。
+    生成されたプロジェクトが、**ソリューション エクスプローラー** に表示されます。
     
    ![ソリューション エクスプローラー](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-02.png)
 
@@ -70,11 +70,11 @@ Visual Studio の Stream Analytics ツールは現在、Azure Data Lake Storage 
 
 ## <a name="test-connections"></a>テスト接続
 
-入力と出力の接続をテストするには、**ジョブ ビュー**で **[テスト接続]** ドロップダウンからオプションを選択します。
+入力と出力の接続をテストするには、**ジョブ ビュー** で **[テスト接続]** ドロップダウンからオプションを選択します。
 
    ![[テスト接続] ドロップダウン](./media/stream-analytics-vs-tools/stream-analytics-test-connection-dropdown.png)
 
-**テスト接続**の結果が **[出力]** ウィンドウに表示されます。
+**テスト接続** の結果が **[出力]** ウィンドウに表示されます。
 
    ![テスト接続の結果](./media/stream-analytics-vs-tools/stream-analytics-test-connection-results.png)
 
@@ -82,5 +82,4 @@ Visual Studio の Stream Analytics ツールは現在、Azure Data Lake Storage 
 
 * [Visual Studio を使用して Azure Stream Analytics ジョブを監視および管理する](stream-analytics-monitor-jobs-use-vs.md)
 * [クイック スタート: Visual Studio を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
-* [チュートリアル:Azure Pipelines を使用して CI/CD で Azure Stream Analytics ジョブをデプロイする](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Stream Analytics ツールで継続的に統合および開発する](stream-analytics-tools-for-visual-studio-cicd.md)

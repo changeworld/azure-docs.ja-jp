@@ -77,7 +77,7 @@ DELIMITER ;
 
 Azure Database for MySQL サーバーが作成されると、サーバー管理者ログインは、サーバーの作成時にエンド ユーザーによって提供されます。 サーバー管理者のログインを使用すると、新しいデータベースの作成、新しいユーザーの追加、アクセス許可の付与を行うことができます。 サーバー管理者ログインが削除された場合、そのアクセス許可が取り消された場合、またはパスワードが変更された場合、接続中にアプリケーションで接続エラーが表示され始める可能性があります。 一般的なエラーの一部を次に示します
 
-#### <a name="error-1045-28000-access-denied-for-user-usernameip-address-using-password-yes"></a>ERROR 1045 (28000) (エラー 1045 (28000)): Access denied for user "username"@"IP address" (using password: YES) (次のユーザーのアクセスが拒否されました: "username"@"IP address" (使用したパスワード: Yes))はい)
+#### <a name="error-1045-28000-access-denied-for-user-usernameip-address-using-password-yes"></a>ERROR 1045 (28000) (エラー 1045 (28000)): Access denied for user "username"@"IP address" (using password: YES) (次のユーザーのアクセスが拒否されました: "username"@"IP address" (使用したパスワード:Yes))
 
 上記のエラーは、次の場合に発生します。
 

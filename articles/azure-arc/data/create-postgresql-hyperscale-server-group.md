@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d2eef20b4c5648b1b11f16d8e46b956fc1497181
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d432f29e91097491fc4719ec59a11cb96948f431
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364424"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609056"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを作成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "92364424"
 - [ストレージの構成と Kubernetes ストレージの概念](storage-configuration.md)
 - [Kubernetes リソース モデル](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
 
-お客様自身で完全な環境をプロビジョニングせずに使ってみたい場合は、Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE)、または Azure VM 上で [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) をすぐに開始できます。
+お客様自身で完全な環境をプロビジョニングせずに使ってみたい場合は、Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE)、または Azure VM 上で [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) をすぐに開始できます。
 
 
 ## <a name="login-to-the-azure-arc-data-controller"></a>Azure Arc データ コントローラーにログインする
@@ -80,7 +80,7 @@ azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2>
 
 > [!NOTE]
 > - **他のコマンドライン パラメーターも使用できます。`azdata arc postgres server create --help` を実行して、オプションの完全なリストを確認してください。**
-> - バックアップに使用するストレージ クラス ( _--storage-class-backups -scb_ ) は、データ コントローラーのデータ ストレージ クラスに既定で設定されます (設定されていない場合)。
+> - バックアップに使用するストレージ クラス ( _--storage-class-backups -scb_) は、データ コントローラーのデータ ストレージ クラスに既定で設定されます (設定されていない場合)。
 > - --volume-size-* パラメーターで使用できる単位は、Kubernetes リソースの数量 (後に SI サフィックス (T、G、M、K、M) または 2 のべき乗の同等物 (Ti、Gi、Mi、Ki) のいずれかが続く整数) です。
 > - 名前は、12 文字以下の長さで入力し、DNS 名前付け規則に準拠している必要があります。
 > - _postgres_ という標準管理ユーザーのパスワードを入力するように求められます。  create コマンドを実行する前に、`AZDATA_PASSWORD` セッション環境変数を設定すると、対話型プロンプトをスキップできます。
@@ -152,7 +152,7 @@ az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o 
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
-NSG の名前を取得したら、次のコマンドを使用してファイアウォール規則を追加できます。 この例の値は、ポート 30655 に対する NSG 規則を作成し、 **任意の** ソース IP アドレスからの接続を許可します。  これは、セキュリティ上、ベスト プラクティスとはいえません。  クライアントの IP アドレスや、チームまたは組織の IP アドレスが含まれる IP アドレス範囲に固有の -source-address-prefixes 値を指定すると、適切にロック ダウンできます。
+NSG の名前を取得したら、次のコマンドを使用してファイアウォール規則を追加できます。 この例の値は、ポート 30655 に対する NSG 規則を作成し、**任意の** ソース IP アドレスからの接続を許可します。  これは、セキュリティ上、ベスト プラクティスとはいえません。  クライアントの IP アドレスや、チームまたは組織の IP アドレスが含まれる IP アドレス範囲に固有の -source-address-prefixes 値を指定すると、適切にロック ダウンできます。
 
 以下の --destination-port-ranges パラメーターの値は、上記の 'azdata arc postgres server list' コマンドで取得されたポート番号に置き換えてください。
 
@@ -194,7 +194,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
     * [マルチテナント データベースを設計する](../../postgresql/tutorial-design-database-hyperscale-multi-tenant.md)*
     * [リアルタイム分析ダッシュボードを設計する](../../postgresql/tutorial-design-database-hyperscale-realtime.md)*
 
-    > \*上記のドキュメントの「 **Azure portal にサインインする** 」と「 **Azure Database for PostgreSQL - Hyperscale (Citus) を作成する** 」セクションはスキップしてください。 Azure Arc デプロイの残りの手順を実装します。 これらのセクションは Azure クラウドで PaaS サービスとして提供される Azure Database for PostgreSQL Hyperscale (Citus) に固有のものですが、ドキュメントの他の部分は Azure Arc 対応 PostgreSQL Hyperscale に直接適用できます。
+    > \*上記のドキュメントの「**Azure portal にサインインする**」と「**Azure Database for PostgreSQL - Hyperscale (Citus) を作成する**」セクションはスキップしてください。 Azure Arc デプロイの残りの手順を実装します。 これらのセクションは Azure クラウドで PaaS サービスとして提供される Azure Database for PostgreSQL Hyperscale (Citus) に固有のものですが、ドキュメントの他の部分は Azure Arc 対応 PostgreSQL Hyperscale に直接適用できます。
 
 - [Azure Database for PostgreSQL Hyperscale サーバー グループのスケールアウト](scale-out-postgresql-hyperscale-server-group.md)
 - [ストレージの構成と Kubernetes ストレージの概念](storage-configuration.md)
