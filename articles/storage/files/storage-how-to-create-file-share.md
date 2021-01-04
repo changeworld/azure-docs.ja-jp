@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 4df4c3d91c30dfd63de9073d8435f6f96c6ecd95
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 705910a9e2f4ebc80a63ab22ac4edecc5ae03cd0
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94626828"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724801"
 ---
 # <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
 Azure ファイル共有を作成するには、その使用方法について 3 つの質問に答える必要があります。
@@ -172,7 +172,7 @@ Standard ファイル共有は、Standard の層であるトランザクショ�
 
 - Standard ファイル共有の場合、それはエンド ユーザーがアクセスできない Azure ファイル共有の上限です。 Standard ファイル共有のクォータの主な目的は、予算です。つまり、"このファイル共有は、この点を超えて拡張させない" ということです。 クォータが指定されていない場合、Standard ファイル共有は最大 100 TiB (ストレージ アカウントに対して大きいファイルの共有プロパティが設定されていない場合は 5 TiB) にまたがることができます。
 
-- Premium ファイル共有の場合、クォータは **プロビジョニング済みのサイズ** を意味するようにオーバーロードされます。 実際の使用量に関係なく、プロビジョニング済みのサイズが課金される容量です。 Premium ファイル共有をプロビジョニングする場合は、次の 2 つの要素を考慮する必要があります。1) 領域使用率の観点から共有の将来の成長、および 2) ワークロードに必要な IOPS。 プロビジョニング済みの GiB ごとに、追加の予約済み IOPS とバースト IOPS が付与されます。 Premium ファイル共有を計画する方法の詳細については、[Premium ファイル共有のプロビジョニング](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)に関するセクションを参照してください。
+- Premium ファイル共有の場合、クォータは **プロビジョニング済みのサイズ** を意味するようにオーバーロードされます。 実際の使用量に関係なく、プロビジョニング済みのサイズが課金される容量です。 Premium ファイル共有をプロビジョニングする場合は、次の 2 つの要素を考慮する必要があります。1) 領域使用率の観点から共有の将来の成長、および 2) ワークロードに必要な IOPS。 プロビジョニング済みの GiB ごとに、追加の予約済み IOPS とバースト IOPS が付与されます。 Premium ファイル共有を計画する方法の詳細については、[Premium ファイル共有のプロビジョニング](understanding-billing.md#provisioned-billing)に関するセクションを参照してください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 ストレージ アカウントを作成したばかりの場合は、[デプロイ] 画面から **[リソースに移動]** を選択して移動できます。 ストレージ アカウントを既に作成してある場合は、それを含むリソース グループを介して移動できます。 ストレージ アカウントで、 **[ファイル共有]** というラベルの付いたタイルを選択します (ストレージ アカウントの目次を介して **ファイル共有** に移動することもできます)。

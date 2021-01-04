@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3d26a0ef86ab96940f3d5bb96d87340b77f1faca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: eca2009ee0470dec9c9ce60d8754f8f7a71619d3
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016838"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740540"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2 環境の診断とトラブルシューティングの方法
 
@@ -124,14 +124,6 @@ ms.locfileid: "95016838"
 この問題は、環境でタイム シリーズ モデルの階層が定義されていない場合に発生する可能性があります。 詳細については、[タイム シリーズ モデルの使用](./time-series-insights-overview.md)に関する記事を参照してください。
 
   [![親のないインスタンスによって、警告が表示されます。](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
-
-## <a name="problem-power-bi-connector-shows-unable-to-connect"></a>問題: Power BI コネクタに "接続できません" と表示される
-
-この問題は、Power BI Desktop で最新バージョンの Power BI コネクタを使用していない場合に発生する可能性があります。
-
-[![[接続できません] ダイアログ ボックスを示すスクリーンショット。](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
-
-- Power BI Desktop のバージョンをチェックし、2020 年 7 月バージョンを使用していることを確認します。 それ以外の場合は、Power BI Desktop を更新し、コネクタを再実行します。
 
 ## <a name="next-steps"></a>次のステップ
 

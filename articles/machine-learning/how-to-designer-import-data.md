@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 5569b625b8f0c4ba890c0cd5b1700ca6fe83d968
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: a2cc0840b7ba4b26cf9f5b1219fc189230870774
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591990"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739860"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーにデータをインポートする
 
@@ -47,8 +47,7 @@ Microsoft では、[データセット](concept-data.md#datasets) 使用して�
  - **ファイル データセット** は、モジュールの出力フォルダーをファイル データセットとして登録します。 出力フォルダーには、デザイナーが内部で使用するデータ ファイルとメタファイルが含まれています。 登録されたデータセットをデザイナーで引き続き使用する場合は、このオプションを選択します。 
 
  - **表形式データセット** は、モジュールの出力データ ファイルのみを表形式のデータセットとして登録します。 この形式は、Automated Machine Learning や Python SDK など、他のツールで簡単に使用できます。 登録されたデータセットをデザイナーの外部で使用する場合は、このオプションを選択します。  
-
-
+ 
 
 ### <a name="use-a-dataset"></a>データセットを使用する
 
@@ -62,6 +61,14 @@ Microsoft では、[データセット](concept-data.md#datasets) 使用して�
 > [!NOTE]
 > デザイナーでは、[データセットのバージョン管理](how-to-version-track-datasets.md)がサポートされています。 データセット モジュールの [プロパティ] パネルで、データセットのバージョンを指定します。
 
+### <a name="limitations"></a>制限事項 
+
+- 現時点では、デザイナーでは表形式のデータセットのみを視覚化できます。 デザイナーの外部でファイル データセットを登録した場合、デザイナー キャンバスでそのデータセットを視覚化することはできません。
+- データセットは仮想ネットワーク (VNet) に格納されます。 視覚化する場合は、データストアのワークスペース マネージド ID を有効にする必要があります。
+    1. 関連するデータストアにアクセスし、 **[資格情報の更新]** をクリックします。
+    :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="資格情報の更新":::
+    1. **[はい]** を選択して、ワークスペース マネージド ID を有効にします。
+    :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="ワークスペース マネージド ID を有効にする":::
 
 ## <a name="import-data-using-the-import-data-module"></a>データのインポート モジュールを使用してデータをインポートする
 

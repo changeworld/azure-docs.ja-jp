@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 1b50fbfa0ec4116f7d0b5988e5be70d0db086732
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 74f9ed5913ca089e12d5958fe96eeb1552c9137a
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95097719"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97745729"
 ---
 [リファレンスのドキュメント](/dotnet/api/overview/azure/cognitiveservices/management?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.CognitiveServices/) | [サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices/tests)
 
-## <a name="prerequisites"></a>前提条件
+## <a name="c-prerequisites"></a>C# の前提条件
 
 * 有効な Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)。
 * 最新バージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
@@ -86,6 +86,10 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 
 ## <a name="create-a-cognitive-services-resource"></a>Cognitive Services リソースの作成
 
+新しい Cognitive Services リソースを作成してサブスクライブするには、**Create** メソッドを使用します。 このメソッドで、渡したリソース グループに新しい課金対象リソースが追加されます。 新しいリソースを作成するときには、使用するサービスの "種類"、その価格レベル (つまり SKU)、および Azure の場所を把握している必要があります。 次のメソッドは、これらのすべてを引数として受け取り、リソースを作成します。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/azure_management_service/create_delete_resource.cs?name=snippet_create)]
+
 ### <a name="choose-a-service-and-pricing-tier"></a>サービスと価格レベルを選択する
 
 新しいリソースを作成するときには、使用するサービスの "種類" と、必要な[価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/) (つまり SKU) を把握する必要があります。 リソースを作成するときに、この情報と他の情報をパラメーターとして使用します。 使用できる Cognitive Service の "種類" の一覧を確認するには、スクリプトで次のメソッドを呼び出します。
@@ -95,12 +99,6 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 [!INCLUDE [cognitive-services-subscription-types](../../../../includes/cognitive-services-subscription-types.md)]
 
 [!INCLUDE [SKUs and pricing](./sku-pricing.md)]
-
-## <a name="create-a-cognitive-services-resource"></a>Cognitive Services リソースの作成
-
-新しい Cognitive Services リソースを作成してサブスクライブするには、**Create** メソッドを使用します。 このメソッドで、渡したリソース グループに新しい課金対象リソースが追加されます。 新しいリソースを作成するときには、使用するサービスの "種類"、その価格レベル (つまり SKU)、および Azure の場所を把握している必要があります。 次のメソッドは、これらのすべてを引数として受け取り、リソースを作成します。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/azure_management_service/create_delete_resource.cs?name=snippet_create)]
 
 ## <a name="view-your-resources"></a>リソースを表示する
 
