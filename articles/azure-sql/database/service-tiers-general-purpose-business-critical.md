@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 01/30/2020
-ms.openlocfilehash: 33c63ffc4220da6d98c462039897067e4ba69491
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 12/14/2020
+ms.openlocfilehash: 9ee7440b10bc348d3ba87a4779208791a7b0e9ac
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793162"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512030"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL Database と Azure SQL Managed Instance のサービス レベル
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,7 +54,7 @@ Azure SQL Database には追加のサービス レベルがあります。
 | **ログ書き込みスループット** | SQL Database | [仮想コアあたり 1875 MB/秒 (最大 30 MB/秒)](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) | 100 MB/秒 | [仮想コアあたり 6 MB/秒 (最大 96 MB/秒)](resource-limits-vcore-single-databases.md#business-critical---provisioned-compute---gen4) |
 | | SQL Managed Instance | [仮想コアあたり 3 MB/秒 (最大 22 MB/秒)](../managed-instance/resource-limits.md#service-tier-characteristics) | 該当なし | [仮想コアあたり 4 MB/秒 (最大 48 MB/秒)](../managed-instance/resource-limits.md#service-tier-characteristics) |
 |**可用性**|All| 99.99% |  [セカンダリ レプリカが 1 つで 99.95%、それ以上のレプリカで 99.99%](service-tier-hyperscale-frequently-asked-questions-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [ゾーン冗長単一データベースで 99.995%](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
-|**バックアップ**|All|RA-GRS、7 ～ 35 日 (既定では 7 日)| RA-GRS、7 日、一定時間で特定の時点に復旧 (PITR) | RA-GRS、7 ～ 35 日 (既定では 7 日) |
+|**バックアップ**|All|RA-GRS、7 - 35 日 (既定では 7 日)。 Basic レベルの最大保有期間は 7 日。 | RA-GRS、7 日、一定時間で特定の時点に復旧 (PITR) | RA-GRS、7 ～ 35 日 (既定では 7 日) |
 |**インメモリ OLTP** | | 該当なし | 該当なし | 利用可能 |
 |**読み取り専用レプリカ**| | 0 組み込み <br> 0 - 4 [geo レプリケーション](active-geo-replication-overview.md)を使用 | 0 - 4 組み込み | 1 組み込み、価格に含まれます <br> 0 - 4 [geo レプリケーション](active-geo-replication-overview.md)を使用 |
 |**価格/課金** | SQL Database | [仮想コア、予約ストレージ、バックアップ ストレージ](https://azure.microsoft.com/pricing/details/sql-database/single/)に対して請求されます。 <br/>IOPS に対しては請求されません。 | [レプリカごとの仮想コアと使用されたストレージ](https://azure.microsoft.com/pricing/details/sql-database/single/)に対して請求されます。 <br/>IOPS に対してはまだ請求されません。 | [仮想コア、予約ストレージ、バックアップ ストレージ](https://azure.microsoft.com/pricing/details/sql-database/single/)に対して請求されます。 <br/>IOPS に対しては請求されません。 |
@@ -93,8 +93,8 @@ MDF および LDF ファイルの現在の合計サイズを監視するには�
 
 データベース バックアップ用のストレージは、SQL Database と SQL Managed Instance のポイントインタイム リストア (PITR) および[長期リテンション期間 (LTR)](long-term-retention-overview.md) 機能をサポートするために割り当てられます。 このストレージはデータベースごとに別個に割り当てられ、データベース料金ごとに 2 つが個々に課金されます。
 
-- **PITR** :個々のデータベース バックアップは、 [読み取りアクセス geo 冗長ストレージ (RA-GRS) ストレージ](../../storage/common/geo-redundant-design.md)に自動的にコピーされます。 ストレージ サイズは、新しいバックアップが作成されるにつれて、動的に増大します。 ストレージは、毎週の完全バックアップ、毎日の差分バックアップ、5 分ごとにコピーされるトランザクション ログ バックアップによって使用されます。 ストレージの使用量は、データベースの変化率とバックアップのリテンション期間に応じて異なります。 リテンション期間は、データベースごとに 7 ～ 35 日の範囲内で別々に構成できます。 データベース サイズの 100% (1 倍) に等しい最小ストレージ量は、追加料金なしで提供されます。 ほとんどのデータベースでは、この容量で十分に 7 日間のバックアップを格納できます。
-- **LTR** :また、最大 10 年間の完全バックアップの長期保有を構成することもできます (この機能は、 [SQL Managed Instance の限定パブリック プレビュー](long-term-retention-overview.md#sql-managed-instance-support)です。 LTR ポリシーを設定した場合、これらのバックアップは、RA-GRS ストレージに自動的に格納されますが、バックアップがコピーされる頻度は制御できます。 さまざまなコンプライアンス要件を満たすために、毎週、毎月、毎年のバックアップに対して異なるリテンション期間を選択することができます。 選択した構成によって、LTR バックアップに使用されるストレージ容量が決まります。 LTR ストレージのコストを見積もるには、LTR 料金計算ツールを使用できます。 詳細については、[SQL Database の長期保存](long-term-retention-overview.md)に関するページをご覧ください。
+- **PITR**:個々のデータベース バックアップは、[読み取りアクセス geo 冗長ストレージ (RA-GRS) ストレージ](../../storage/common/geo-redundant-design.md)に自動的にコピーされます。 ストレージ サイズは、新しいバックアップが作成されるにつれて、動的に増大します。 ストレージは、毎週の完全バックアップ、毎日の差分バックアップ、5 分ごとにコピーされるトランザクション ログ バックアップによって使用されます。 ストレージの使用量は、データベースの変化率とバックアップのリテンション期間に応じて異なります。 リテンション期間は、データベースごとに 7 ～ 35 日の範囲内で別々に構成できます。 データベース サイズの 100% (1 倍) に等しい最小ストレージ量は、追加料金なしで提供されます。 ほとんどのデータベースでは、この容量で十分に 7 日間のバックアップを格納できます。
+- **LTR**:また、最大 10 年間の完全バックアップの長期保有を構成することもできます (この機能は、[SQL Managed Instance の限定パブリック プレビュー](long-term-retention-overview.md#sql-managed-instance-support)です。 LTR ポリシーを設定した場合、これらのバックアップは、RA-GRS ストレージに自動的に格納されますが、バックアップがコピーされる頻度は制御できます。 さまざまなコンプライアンス要件を満たすために、毎週、毎月、毎年のバックアップに対して異なるリテンション期間を選択することができます。 選択した構成によって、LTR バックアップに使用されるストレージ容量が決まります。 LTR ストレージのコストを見積もるには、LTR 料金計算ツールを使用できます。 詳細については、[SQL Database の長期保存](long-term-retention-overview.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

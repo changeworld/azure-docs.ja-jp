@@ -1,14 +1,14 @@
 ---
 title: 管理テナントでの委任変更を監視する
 description: 顧客テナントから管理テナントへの委任アクティビティを監視する方法について説明します。
-ms.date: 09/08/2020
+ms.date: 12/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 15e96939d4115bd93260687f637143cc798a4331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d254c90881d23255dda5c38a868eb61e51b4f08
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336600"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356414"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>管理テナントでの委任変更を監視する
 
@@ -181,3 +181,4 @@ else {
 
 - [Azure Lighthouse](../concepts/azure-delegated-resource-management.md) への顧客のオンボード方法について説明します。
 - [Azure Monitor](../../azure-monitor/index.yml) と [Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)について説明します。
+- [ドメイン別のアクティビティ ログ](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) サンプル ブックを確認し、ドメイン名でサブスクリプションをフィルター処理するオプションを指定して、サブスクリプションをまたがって Azure アクティビティ ログを表示する方法を把握します。

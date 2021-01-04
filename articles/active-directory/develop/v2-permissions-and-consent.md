@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
-ms.custom: aaddev, fasttrack-edit, contperfq1, identityplatformtop40
-ms.openlocfilehash: 1b8b7b16a354fba482fcefe8f306f949f9a952ea
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
+ms.openlocfilehash: 14b6d6ecc6523199102fd3ef9370fe901c4ff51d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902648"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355700"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
 
@@ -89,7 +89,7 @@ OIDC スコープとトークンを要求すると、[UserInfo エンドポイ�
 [`offline_access`スコープ](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess)を使用すると、アプリはユーザーの代わりに、長期間にわたってリソースにアクセスできます。 同意ページで、このスコープは、"アクセス権を与えたデータへのアクセスを管理する" アクセス許可として表示されます。 ユーザーが `offline_access` スコープを承認すると、アプリは Microsoft ID プラットフォーム トークン エンドポイントから更新トークンを取得できます。 更新トークンの有効期間は長期です。 アプリは、古いアクセス トークンの有効期限が切れると、新しいアクセス トークンを取得できます。
 
 > [!NOTE]
-> このアクセス許可は、更新トークンを提供しないフロー ([暗黙的フロー](v2-oauth2-implicit-grant-flow.md)) も含め、現在のすべての同意画面に表示されます。  これは、クライアントが暗黙的フロー内で開始した後、更新トークンが予測されるコード フローに移行することが可能なシナリオも対象にするためです。
+> このアクセス許可は、更新トークンを提供しないフロー ([暗黙的フロー](v2-oauth2-implicit-grant-flow.md)) も含め、現在のすべての同意画面に表示されます。 これは、クライアントが暗黙的フロー内で開始した後、更新トークンが予測されるコード フローに移行することが可能なシナリオも対象にするためです。
 
 Microsoft ID プラットフォーム (要求は v2.0 エンドポイントに対して行われます) では、更新トークンを受信するには、アプリが `offline_access` スコープを明示的に要求する必要があります。 つまり、[OAuth 2.0 承認コード フロー](active-directory-v2-protocols.md)の承認コードを使用すると、`/token` エンドポイントからアクセス トークンだけが取得されます。 アクセス トークンの有効期間は短期です。 アクセス トークンは、通常、1 時間以内に期限切れとなります。 その時点で、アプリはユーザーを `/authorize` エンドポイントにリダイレクトして、新しい承認コードを取得する必要があります。 このリダイレクト中に、アプリの種類によっては、ユーザーが資格情報を再入力したり、アクセス許可に再同意したりする必要がある場合もあります。
 

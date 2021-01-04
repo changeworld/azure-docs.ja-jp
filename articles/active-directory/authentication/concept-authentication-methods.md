@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 12/14/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: c5b2003a290152533a0a8c0f88fe8eb1a410ccf9
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 24b29cfb1f58a61193f67ba924e583d4264dfc51
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744331"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562125"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory で使用できる認証方法と検証方法
 
@@ -26,9 +26,11 @@ Azure Active Directory (Azure AD) のアカウントのサインイン エクス
 
 Windows Hello、FIDO2 セキュリティ キー、Microsoft Authenticator アプリなどのパスワードレス認証方法は、最も安全なサインイン イベントを提供します。
 
-Azure AD Multi-Factor Authentication は、ユーザーがサインイン時にパスワードのみを使用している場合に比べて、追加のセキュリティを提供します。 ユーザーに対して、プッシュ通知に応答する、ソフトウェアまたはハードウェア トークンのコードを入力する、または SMS や電話に応答するなど、追加の形式での認証を要求することができます。
+Azure AD Multi-Factor Authentication (MFA) を使用すると、ユーザーがサインイン時にパスワードのみを使用する場合と比べて、セキュリティが強化されます。 ユーザーに対して、プッシュ通知に応答する、ソフトウェアまたはハードウェア トークンのコードを入力する、または SMS や電話に応答するなど、追加の形式での認証を要求することができます。
 
-ユーザーのオンボード エクスペリエンスを単純化し、MFA と SSPR の両方に登録するには、[統合されたセキュリティ情報の登録を有効にする](howto-registration-mfa-sspr-combined.md)ことをお勧めします。 回復性を確保するために、ユーザーに複数の認証方法の登録を求めることをお勧めします。 サインインや SSPR の間にユーザーがある方法を使用できない場合、そのユーザーは別の方法で認証することを選択できます。 詳細については、[Azure AD で回復性があるアクセス制御管理戦略を作成する](concept-resilient-controls.md)方法に関するページを参照してください。
+ユーザーのオンボード エクスペリエンスを単純化し、MFA とセルフサービス パスワード リセット (SSPR) の両方に登録するには、[統合されたセキュリティ情報の登録を有効にする](howto-registration-mfa-sspr-combined.md)ことをお勧めします。 回復性を確保するために、ユーザーに複数の認証方法の登録を求めることをお勧めします。 サインインや SSPR の間にユーザーがある方法を使用できない場合、そのユーザーは別の方法で認証することを選択できます。 詳細については、[Azure AD で回復性があるアクセス制御管理戦略を作成する](concept-resilient-controls.md)方法に関するページを参照してください。
+
+ここでは、組織の安全を確保するために最適な認証方法を選択する際に役立つ[ビデオ](https://www.youtube.com/watch?v=LB2yj4HSptc&feature=youtu.be)をご紹介します。
 
 ## <a name="authentication-method-strength-and-security"></a>認証方法の強度とセキュリティ
 
@@ -47,7 +49,10 @@ Azure AD Multi-Factor Authentication は、ユーザーがサインイン時に�
 | 音声                          | Medium   | Medium    | Medium       |
 | Password                       | 低      | 高      | 高         |
 
-セキュリティの詳細については、[認証の脆弱性と攻撃ベクトル](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)に関するページを参照してください。
+セキュリティに関する最新情報については、次のブログ記事をご覧ください。
+
+- [認証のための電話転送から脱却する時が来ました](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)
+- [認証の脆弱性と攻撃ベクトル](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)
 
 > [!TIP]
 > 柔軟性と使いやすさを実現するために、Microsoft Authenticator アプリを使用することをお勧めします。 この認証方法は、パスワードレス、MFA のプッシュ通知、OATH コードなど、最適なユーザー エクスペリエンスと複数のモードを提供します。

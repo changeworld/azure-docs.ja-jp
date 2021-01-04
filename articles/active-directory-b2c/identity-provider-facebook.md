@@ -8,18 +8,31 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/26/2019
+ms.date: 12/07/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 62956000e143f5504d32dae26953bcf877ce96a6
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: 37fc33ae8084a2b4e99e7b5dc417eac70060eef5
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628577"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516191"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Facebook アカウントでのサインアップおよびサインインを設定する
+
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+::: zone pivot="b2c-custom-policy"
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
+::: zone-end
+
+## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-facebook-application"></a>Facebook アプリケーションを作成する
 
@@ -45,13 +58,63 @@ Azure Active Directory B2C (Azure AD B2C) で [ID プロバイダー](authorizat
 1. **[有効な OAuth リダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」を入力します。 `your-tenant-name` をテナントの名前に置き換えます。 ページの下部にある **[Save Changes]\(変更の保存\)** を選択します。
 1. Facebook アプリケーションを Azure AD B2C で使用できるようにするには、ページの右上にある状態セレクターを選択し、 **[オン]** に設定してアプリケーションを公開し、 **[スイッチ モード]** を選択します。  この時点で、状態は **開発** から **ライブ** に変更されます。
 
+::: zone pivot="b2c-user-flow"
+
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>ID プロバイダーとして Facebook アカウントを構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
 1. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[ID プロバイダー]** を選択してから、 **[Facebook]** を選択します。
-1. **[名前]** を入力します。 たとえば、「 *Facebook* 」とします。
+1. **[名前]** を入力します。 たとえば、「*Facebook*」とします。
 1. **[クライアント ID]** には、前に作成した Facebook アプリケーションのアプリ ID を入力します。
 1. **[クライアント シークレット]** には、記録したアプリ シークレットを入力します。
 1. **[保存]** を選択します。
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+## <a name="add-facebook-as-an-identity-provider"></a>Facebook を ID プロバイダーとして追加する
+
+1. `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** ファイルで、`client_id` の値を Facebook アプリケーション ID に置き換えます。
+
+   ```xml
+   <TechnicalProfile Id="Facebook-OAUTH">
+     <Metadata>
+     <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
+       <Item Key="client_id">00000000000000</Item>
+   ```
+
+::: zone-end
+
+::: zone pivot="b2c-user-flow"
+
+## <a name="add-facebook-identity-provider-to-a-user-flow"></a>ユーザー フローに Facebook ID プロバイダーを追加する 
+
+1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
+1. Facebook ID プロバイダーを追加するユーザー フローをクリックします。
+1. **[ソーシャル ID プロバイダー]** から、 **[Facebook]** を選択します。
+1. **[保存]** を選択します。
+1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
+1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[ユーザー フローを実行します]** をクリックします
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+## <a name="upload-and-test-the-policy"></a>ポリシーをアップロードしてテストします。
+
+作成したユーザー体験を開始する証明書利用者 (RP) ファイルを更新します。
+
+1. *TrustFrameworkExtensions.xml* ファイルをテナントにアップロードします。
+1. **[カスタム ポリシー]** ページで、**B2C_1A_signup_signin** を選択します。
+1. **[アプリケーションの選択]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[今すぐ実行]** を選択し、Facebook でサインインする Facebook を選択し、カスタム ポリシーをテストします。
+
+::: zone-end
+
+## <a name="next-steps"></a>次のステップ
+
+[Facebook トークンをアプリケーションに渡す](idp-pass-through-user-flow.md)方法について説明します。

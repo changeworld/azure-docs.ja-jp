@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: b685f716688cfbe732fa7d3566e1af97cc81272a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 390d2c8488fd2b35c775eabe43677b9349b547a1
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652112"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401646"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>チュートリアル:脅威を検出するためのカスタム分析規則を作成する
 
@@ -145,7 +145,13 @@ Azure Sentinel に[データ ソースを接続](quickstart-onboard.md)したら
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-### <a name="a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>スケジュールされたルールの実行に失敗するか、名前に「自動無効化」が追加される
+### <a name="issue-no-events-appear-in-query-results"></a>問題点:クエリ結果にイベントが表示されない
+
+**[イベント グループ化]** が **[各イベントに対するアラートをトリガーする]** に設定されている場合、一部のシナリオでは、後でクエリ結果を表示するときに (インシデントからアラートに戻るときなど)、クエリ結果が表示されない可能性があります。 これは、イベントのアラートへの接続が、特定のイベントの情報のハッシュ化と、クエリにそのハッシュを含めることによって行われるためです。 アラートが生成された後にクエリ結果が変わった場合、ハッシュは無効になり、結果は表示されません。 
+
+イベントを表示するには、ルールのクエリからハッシュを含む行を手動で削除し、クエリを実行します。
+
+### <a name="issue-a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>問題点:スケジュールされたルールの実行に失敗するか、名前に「自動無効化」が追加される
 
 スケジュールされたクエリ ルールの実行が失敗することはめったにありませんが、発生する可能性があります。 Azure Sentinel は、具体的な障害の種類とそれを引き起こした状況に基づいて、障害を一時的または永続的として事前に分類します。
 

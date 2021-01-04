@@ -4,21 +4,21 @@ description: Azure CLI を使用して VM とスケール セット インスタ
 author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/25/2020
+ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: d99f8c380b486ed818aff64782ca817dab41c916
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ef0c8d53d885f11acdcf578db155de3d7848887e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975283"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360069"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLI を使用して専用ホストにデプロイする
  
 
 この記事では、仮想マシン (VM) をホストするための Azure [専用ホスト](../dedicated-hosts.md)を作成する方法について説明します。 
 
-Azure CLI バージョン2.0.70 以降がインストールされていること、および `az login` を使用して Azure アカウントにサインインしていることを確認します。 
+Azure CLI バージョン 2.16.0 以降がインストールされていること、および `az login` を使用して Azure アカウントにサインインしていることを確認します。 
 
 
 ## <a name="limitations"></a>制限事項
@@ -44,7 +44,7 @@ az vm list-skus -l eastus2  -r hostGroups/hosts  -o table
  
 ## <a name="create-a-host-group"></a>ホスト グループを作成する 
 
-**ホスト グループ**は、専用ホストのコレクションを表すリソースです。 リージョンと可用性ゾーンにホスト グループを作成し、それにホストを追加します。 高可用性を計画する場合は、追加のオプションがあります。 専用ホストでは、次のいずれかまたは両方のオプションを使用できます。 
+**ホスト グループ** は、専用ホストのコレクションを表すリソースです。 リージョンと可用性ゾーンにホスト グループを作成し、それにホストを追加します。 高可用性を計画する場合は、追加のオプションがあります。 専用ホストでは、次のいずれかまたは両方のオプションを使用できます。 
 - 複数の可用性ゾーンにまたがります。 この場合は、使用する各ゾーンにホスト グループを用意する必要があります。
 - 物理ラックにマップされる複数の障害ドメインにまたがります。 
  
@@ -65,14 +65,6 @@ az vm host group create \
 
 `--automatic-placement true` パラメーターを追加すると、VM とスケール セット インスタンスがホスト グループ内のホストに自動的に配置されるようになります。 詳しくは、[手動による配置と自動配置](../dedicated-hosts.md#manual-vs-automatic-placement)に関するページをご覧ください。
 
-> [!IMPORTANT]
-> 自動配置は現在、パブリック プレビュー段階にあります。
->
-> プレビューに参加するには、[https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) でプレビューのオンボードに関するアンケートにお答えください。
->
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
->
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ### <a name="other-examples"></a>その他の例
 
@@ -133,16 +125,7 @@ az vm create \
 > [!WARNING]
 > 十分なリソースがないホストに仮想マシンを作成すると、仮想マシンは FAILED 状態で作成されます。 
 
-## <a name="create-a-scale-set-preview"></a>スケール セットを作成する (プレビュー)
-
-> [!IMPORTANT]
-> 専用ホストでの Virtual Machine Scale Sets は現在、パブリック プレビュー段階にあります。
->
-> プレビューに参加するには、[https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) でプレビューのオンボードに関するアンケートにお答えください。
->
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
->
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+## <a name="create-a-scale-set"></a>スケール セットを作成する 
 
 スケール セットをデプロイするときは、ホスト グループを指定します。
 

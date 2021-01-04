@@ -1,5 +1,5 @@
 ---
-title: SQL Server から SQL Managed Instance へ - 移行ガイド
+title: SQL Server から SQL Managed Instance:移行ガイド
 description: このガイドに従って、SQL Server データベースを Azure SQL Managed Instance に移行します。
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 5d5404537ad107a54bd32110727e5a7d0f74ebea
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ac8b0e0c2cdbd46626677f4be0f78800d839ad28
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326898"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358896"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>移行ガイド:SQL Server から SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "96326898"
 - Compute Engine (Google Cloud Platform - GCP)  
 - Cloud SQL for SQL Server (Google Cloud Platform – GCP) 
 
-移行の詳細については、「[移行の概要](sql-server-to-managed-instance-overview.md)」を参照してください。 その他のシナリオについては、「[データベース移行ガイド](https://datamigration.microsoft.com/)」を参照してください。
+移行の詳細については、[移行の概要](sql-server-to-managed-instance-overview.md)に関するページを参照してください。 その他のシナリオについては、[データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。
 
 :::image type="content" source="media/sql-server-to-managed-instance-overview/migration-process-flow-small.png" alt-text="移行プロセス フロー":::
 
@@ -52,7 +52,7 @@ SQL Server を Azure SQL Managed Instance に移行する場合、次の前提�
 
 [Azure Migrate](../../../migrate/migrate-services-overview.md) を使用して、オンプレミス サーバーの移行の適合性を評価し、パフォーマンスに基づくサイズ変更を行い、Azure でそれらのサーバーを実行するためのコストを見積もります。 
 
-または、 [Microsoft Assessment and Planning Toolkit ("MAP Toolkit")](https://www.microsoft.com/download/details.aspx?id=7826) を使用して、現在の IT インフラストラクチャを評価します。 このツールキットには、移行計画のプロセスを簡略化するための強力なインベントリ、評価、レポート ツールが用意されています。 
+または、 [Microsoft Assessment and Planning Toolkit ("MAP Toolkit")](https://www.microsoft.com/download/details.aspx?id=7826) を使用して、現在の IT インフラストラクチャを評価します。 ツールキットには、移行計画のプロセスを簡略化するための強力なインベントリ、評価、およびレポート ツールが用意されています。 
 
 検出フェーズで使用できるツールの詳細については、「[データ移行のシナリオで利用できるサービスとツール](../../../dms/dms-tools-matrix.md)」を参照してください。 
 
@@ -70,9 +70,9 @@ Database Migration Assessment を使用して環境を評価するには、次�
 1. [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) を開きます。 
 1. **[ファイル]** を選択し、 **[新しい評価]** を選択します。 
 1. プロジェクト名を指定し、[ソース サーバーの種類] として [SQL Server] を選択し、[ターゲット サーバーの種類] として [Azure SQL Managed Instance] を選択します。 
-1. 生成する評価レポートの種類を選択します。 たとえば、データベースの互換性、機能パリティなどがあります。 評価の種類によっては、ソース SQL Server で必要となるアクセス許可が異なる場合があります。  この評価を実行する前に、選択したアドバイザーに必要なアクセス許可が強調表示されます。
-    - **[feature parity]\(機能パリティ\)** カテゴリで、総合的な推奨事項、Azure で使用可能な代替手段、および移行プロジェクトの計画に役立つ緩和手順を確認できます。 (sysadmin 権限が必要)
-    - **[compatibility issues]\(互換性の問題\)** カテゴリでは、移行を阻害する可能性のある、部分的にサポートされている、またはサポートされていない機能の互換性の問題を確認できます。さらに、それらに対処するための推奨事項を確認できます (`CONNECT SQL`、`VIEW SERVER STATE`、および `VIEW ANY DEFINITION` の権限が必要)。
+1. 生成する評価レポートの種類を選択します。 たとえば、データベースの互換性、機能パリティなどがあります。 評価の種類によっては、ソース SQL Server で必要となるアクセス許可が異なる場合があります。  この評価を実行する前に、選択したアドバイザーに必要なアクセス許可が DMA によって強調表示されます。
+    - **[機能パリティ]** カテゴリで、包括的な一連の推奨事項、Azure で使用可能な代替手段、および移行プロジェクトの計画に役立つ軽減手順を確認できます。 (sysadmin 権限が必要)
+    - **[互換性の問題]** カテゴリでは、移行を阻害する可能性のある、部分的にサポートされている機能またはサポートされていない機能の互換性の問題を確認でき、さらにそれらに対処するための推奨事項を確認できます (`CONNECT SQL`、`VIEW SERVER STATE`、および `VIEW ANY DEFINITION` 権限が必要)。
 1. SQL Server のソース接続の詳細を指定し、ソース データベースに接続します。
 1. **[評価の開始]** を選択します。 
 1. プロセスが完了したら、移行の阻害要素と機能パリティの問題に関する評価レポートを選択し、確認します。 評価レポートはファイルにエクスポートすることもできます。このファイルを、組織内の他のチームや担当者と共有できます。 
@@ -169,19 +169,19 @@ DMS を使用して移行を実行するには、次の手順に従います。
 
 ## <a name="data-sync-and-cutover"></a>データの同期と切り替え
 
-データの変更をソースからターゲットに継続的にレプリケート/同期する移行オプションを使用すると、ソース データとスキーマが変更され、ターゲットからずれる可能性があります。 データの同期中にソースのすべての変更がキャプチャされ、移行プロセス中にターゲットに適用されるようにしてください。 
+データの変更をソースからターゲットに継続的にレプリケートおよび同期する移行オプションを使用している場合、ソースのデータとスキーマが変更され、ターゲットと食い違う可能性があります。 データの同期中にソースのすべての変更がキャプチャされ、移行プロセス中にターゲットに適用されるようにしてください。 
 
 ソースとターゲットの両方でデータが同じであることを確認した後、ソース環境からターゲット環境に切り替えることができます。 切り替え中の最小限の中断によってビジネス継続性に影響が出ないようにするために、ビジネス チーム/アプリケーション チームと共に切り替えプロセスを計画することが重要です。 
 
 > [!IMPORTANT]
-> DMS を使用した移行の一環として切り替えを実行する際の関連する具体的な手順について詳しくは、「[移行カットオーバーの実行](../../../dms/tutorial-sql-server-managed-instance-online.md#performing-migration-cutover)」を参照してください。
+> DMS を使用した移行の一環として切り替えを実行する場合、それに関連する特定の手順について詳しくは、[移行カットオーバーの実行](../../../dms/tutorial-sql-server-managed-instance-online.md#performing-migration-cutover)に関するページを参照してください。
 
 
 ## <a name="post-migration"></a>移行後
 
 移行ステージが正常に完了した後、移行後の一連のタスクを実行し、すべてが円滑かつ効率的に機能することを確認します。 
 
-移行後フェーズは、データの精度の問題の調整、完全性の確認、およびワークロードのパフォーマンスの問題への対処のために非常に重要です。 
+移行後フェーズは、データの精度の問題を調整するため、完全性を確認するため、およびワークロードのパフォーマンスの問題に対処するために非常に重要です。 
 
 ### <a name="remediate-applications"></a>アプリケーションを修復する 
 
@@ -212,7 +212,7 @@ SQL Server の一部の機能は、[データベース互換レベル](/sql/rela
 
 ## <a name="next-steps"></a>次のステップ
 
-- さまざまなデータベースとデータの移行シナリオ、および特殊なタスクを支援するために使用できる Microsoft とサードパーティのサービスとツールの一覧については、[データ移行のサービスとツール](../../../dms/dms-tools-matrix.md)に関するページを参照してください。
+- さまざまなデータベースとデータの移行シナリオ、および特殊なタスクを支援するために使用できる Microsoft とサードパーティのサービスとツールのマトリックスについては、[データ移行のサービスとツール](../../../dms/dms-tools-matrix.md)に関するページを参照してください。
 
 - Azure SQL Managed Instance の詳細については、次を参照してください。
    - [Azure SQL Managed Instance のサービス レベル](../../managed-instance/sql-managed-instance-paas-overview.md#service-tiers)
@@ -220,9 +220,9 @@ SQL Server の一部の機能は、[データベース互換レベル](/sql/rela
    - [Azure 総保有コスト計算ツール](https://azure.microsoft.com/pricing/tco/calculator/) 
 
 
-- クラウド移行のためのフレームワークと導入サイクルの詳細については、次を参照してください。
+- クラウド移行のためのフレームワークと導入サイクルの詳細については、以下を参照してください
    -  [Azure 向けのクラウド導入フレームワーク](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Azure に移行するワークロードの料金計算とサイズ設定のベスト プラクティス](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 
 - アプリケーション アクセス層を評価するには、「[Data Access Migration Toolkit (プレビュー)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)」を参照してください。
-- データ アクセス層の A/B テストの実行方法について詳しくは、「[Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview)」を参照してください。
+- データ アクセス レイヤーの A/B テストの実行方法について詳しくは、[Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) についてのページを参照してください。

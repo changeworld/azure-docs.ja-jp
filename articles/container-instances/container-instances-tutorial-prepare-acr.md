@@ -83,7 +83,7 @@ mycontainerregistry082.azurecr.io/aci-tutorial-app    v1        5c745774dfa9    
 
 ## <a name="push-image-to-azure-container-registry"></a>Azure Container Registry へのイメージのプッシュ
 
-プライベート レジストリの完全なログイン サーバー名で *aci-tutorial-app* イメージにタグ付けしたので、 [docker push][docker-push] コマンドを使ってレジストリにイメージをプッシュできます。 `<acrLoginServer>` は、先行する手順で取得したログイン サーバーのフル ネームに置き換えてください。
+プライベート レジストリの完全なログイン サーバー名で *aci-tutorial-app* イメージにタグ付けしたので、[docker push][docker-push] コマンドを使ってレジストリにイメージをプッシュできます。 `<acrLoginServer>` は、先行する手順で取得したログイン サーバーのフル ネームに置き換えてください。
 
 ```bash
 docker push <acrLoginServer>/aci-tutorial-app:v1
@@ -123,7 +123,7 @@ Result
 aci-tutorial-app
 ```
 
-特定のイメージの " *タグ* " を表示するには、 [az acr repository show-tags][az-acr-repository-show-tags] コマンドを使用します。
+特定のイメージの "*タグ*" を表示するには、[az acr repository show-tags][az-acr-repository-show-tags] コマンドを使用します。
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository aci-tutorial-app --output table
@@ -138,7 +138,7 @@ Result
 v1
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Container Registry を Azure Container Instances で使用できるように準備し、コンテナー イメージをレジストリにプッシュしました。 次の手順を完了しました。
 

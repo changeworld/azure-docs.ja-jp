@@ -6,18 +6,16 @@ documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2020
+ms.date: 12/11/2020
 ms.author: rolyon
-ms.openlocfilehash: 9ab6561b1dc0e8b977fc69d259c5f26366f355ce
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ecda0edcd34999e8cbb6c7ab9039953d17c119e5
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481331"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369228"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Azure portal を使用して Azure カスタム ロールを作成または更新する
 
@@ -31,14 +29,12 @@ ms.locfileid: "92481331"
 
 ## <a name="step-1-determine-the-permissions-you-need"></a>手順 1:必要なアクセス許可を決定する
 
-Azure には、カスタム ロールに含めることができる何千ものアクセス許可があります。 カスタム ロールに追加するアクセス許可を決定するには、次の 4 つの方法があります。
+Azure には、カスタム ロールに含めることができる何千ものアクセス許可があります。 カスタム ロールに追加するアクセス許可を決定するのに役立ついくつかの方法を示します。
 
-| Method | 説明 |
-| --- | --- |
-| 既存のロールを調べる | 既存のロールを調べて、どのアクセス許可が使用されているかを確認できます。 詳細については、[Azure の組み込みロール](built-in-roles.md)に関するページを参照してください。 |
-| キーワードを使用してアクセス許可を検索する | Azure portal を使用してカスタム ロールを作成する場合は、キーワードを使用してアクセス許可を検索できます。 たとえば、" *仮想マシン* " や " *請求* " のアクセス許可を検索できます。 この検索機能については、後ほど次で詳しく説明します。「[手順 4 :Permissions\(次へ: アクセス許可\)](#step-4-permissions) をクリックします。 |
-| すべてのアクセス許可をダウンロードする | Azure portal を使用してカスタム ロールを作成する場合は、すべてのアクセス許可を CSV ファイルとしてダウンロードし、このファイルを検索することができます。 **[アクセス許可の追加]** ペインで、 **[すべてのアクセス許可をダウンロードする]** ボタンをクリックして、すべてのアクセス許可をダウンロードします。 [アクセス許可の追加] ペインの詳細については、次を参照してください。「[手順 4:Permissions\(次へ: アクセス許可\)](#step-4-permissions) をクリックします。 |
-| ドキュメントのアクセス許可を確認する | 使用可能なアクセス許可は、「[Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)」で確認できます。 |
+- 既存の[組み込みロール](built-in-roles.md)を確認します。
+- アクセス権を付与する Azure サービスを一覧表示します。
+- [Azure サービスにマップされるリソース プロバイダー](../azure-resource-manager/management/azure-services-resource-providers.md)を決定します。 検索方法については、次を参照してください: [ステップ 4: Permissions\(次へ: アクセス許可\)](#step-4-permissions) をクリックします。
+- [使用可能なアクセス許可](resource-provider-operations.md)を検索して、含めるアクセス許可を見つけます。 検索方法については、次を参照してください: [ステップ 4: Permissions\(次へ: アクセス許可\)](#step-4-permissions) をクリックします。
 
 ## <a name="step-2-choose-how-to-start"></a>手順 2:開始方法を選択する
 
@@ -174,9 +170,9 @@ Azure には、カスタム ロールに含めることができる何千もの�
 
 1. アクセス許可を追加するには **[アクセス許可の追加]** をクリックして、[アクセス許可の追加] ペインを開きます。
 
-    このペインには、使用可能なすべてのアクセス許可がカード形式のさまざまなカテゴリにグループ化されて表示されます。 各カテゴリは、Azure リソースを提供するサービスである " *リソース プロバイダー* " を表します。
+    このペインには、使用可能なすべてのアクセス許可がカード形式のさまざまなカテゴリにグループ化されて表示されます。 各カテゴリは、Azure リソースを提供するサービスである "*リソース プロバイダー*" を表します。
 
-1. **[Search for a permission]\(アクセス許可の検索\)** ボックスに、アクセス許可を検索する文字列を入力します。 たとえば、請求書に関連するアクセス許可を検索するには、「 *請求書* 」を検索します。
+1. **[Search for a permission]\(アクセス許可の検索\)** ボックスに、アクセス許可を検索する文字列を入力します。 たとえば、請求書に関連するアクセス許可を検索するには、「*請求書*」を検索します。
 
     検索文字列に基づいて、リソース プロバイダー カードの一覧が表示されます。 リソース プロバイダーが Azure サービスにどのようにマップされるかを示す一覧については、「[Azure サービスのリソース プロバイダー ](../azure-resource-manager/management/azure-services-resource-providers.md)」を参照してください。
 
@@ -210,7 +206,7 @@ Azure には、カスタム ロールに含めることができる何千もの�
 Microsoft.CostManagement/exports/*
 ```
 
-新しいワイルドカード アクセス許可を追加する場合、 **[アクセス許可の追加]** ペインを使用して追加することはできません。 ワイルドカード アクセス許可を追加するには、 **[JSON]** タブを使用して手動で追加する必要があります。詳細については、「 [手順 6:JSON](#step-6-json)」を参照してください。
+新しいワイルドカード アクセス許可を追加する場合、 **[アクセス許可の追加]** ペインを使用して追加することはできません。 ワイルドカード アクセス許可を追加するには、 **[JSON]** タブを使用して手動で追加する必要があります。詳細については、「[手順 6:JSON](#step-6-json)」を参照してください。
 
 ### <a name="exclude-permissions"></a>アクセス許可を除外する
 
@@ -339,4 +335,4 @@ Microsoft.CostManagement/exports/delete
 
 - [チュートリアル:Azure PowerShell を使用して Azure カスタム ロールを作成する](tutorial-custom-role-powershell.md)
 - [Azure カスタム ロール](custom-roles.md)
-- [Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)
+- [Azure リソース プロバイダーの操作](resource-provider-operations.md)

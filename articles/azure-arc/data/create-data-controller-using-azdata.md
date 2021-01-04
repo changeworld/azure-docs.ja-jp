@@ -1,6 +1,6 @@
 ---
-title: '[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] を使用したデータ コントローラーの作成'
-description: '[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] を使用して既に作成されている一般的なマルチノード Kubernetes クラスターに Azure Arc データ コントローラーを作成します。'
+title: Azure Data CLI (azdata) を使用してデータ コントローラーを作成する
+description: Azure Data CLI (azdata) を使用して、既に作成されている一般的なマルチノード Kubernetes クラスターに Azure Arc データ コントローラーを作成します。
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 94f347cc24c675c69c69dad6a7d7a796b395c1a6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0b4cf72622df78e13add723853d935fc97649b4a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493614"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358998"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] を使用した Azure Arc データ コントローラーの作成
 
@@ -54,32 +54,147 @@ Azure Arc データ コントローラーの作成を開始する前に、Kubern
 
 ```console
 kubectl get namespace
-
 kubectl config current-context
 ```
+
+### <a name="connectivity-modes"></a>接続モード
+
+「[接続モードと要件](https://docs.microsoft.com/azure/azure-arc/data/connectivity)」で説明されているように、Azure Arc データ コントローラーは `direct` または `indirect` の接続モードのいずれかを使用してデプロイできます。 `direct` 接続モードを使用すると、使用状況データは自動的にかつ継続的に Azure に送信されます。 この記事の例では、次のように `direct` 接続モードを指定します。
+
+   ```console
+   --connectivity-mode direct
+   ```
+
+   `indirect` 接続モードでコントローラーを作成するには、次に示すように例のスクリプトを更新します。
+
+   ```console
+   --connectivity-mode indirect
+   ```
+
+#### <a name="create-service-principal"></a>サービス プリンシパルの作成
+
+`direct` 接続モードで Azure Arc データ コントローラーをデプロイする場合、Azure 接続にはサービス プリンシパルの資格情報が必要です。 使用状況とメトリックのデータをアップロードするには、サービス プリンシパルが使用されます。 
+
+次のコマンドを実行して、メトリック アップロードのサービス プリンシパルを作成します。
+
+> [!NOTE]
+> サービス プリンシパルを作成するには、[Azure で一定のアクセス許可](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)を持っている必要があります。
+
+サービス プリンシパルを作成するには、次の例を更新します。 `<ServicePrincipalName>` をサービス プリンシパルの名前に置き換えて、コマンドを実行します。
+
+```azurecli
+az ad sp create-for-rbac --name <ServicePrincipalName>
+``` 
+
+以前にサービス プリンシパルを作成しており、単に最新の資格情報の取得が必要な場合は、次のコマンドを実行して資格情報をリセットします。
+
+```azurecli
+az ad sp credential reset --name <ServicePrincipalName>
+```
+
+たとえば、`azure-arc-metrics` という名前のサービス プリンシパルを作成するには、次のコマンドを実行します。
+
+```console
+az ad sp create-for-rbac --name azure-arc-metrics
+```
+
+出力例:
+
+```output
+"appId": "2e72adbf-de57-4c25-b90d-2f73f126e123",
+"displayName": "azure-arc-metrics",
+"name": "http://azure-arc-metrics",
+"password": "5039d676-23f9-416c-9534-3bd6afc78123",
+"tenant": "72f988bf-85f1-41af-91ab-2d7cd01ad1234"
+```
+
+後で使用するために、`appId`、`password`、`tenant` の値を環境変数に保存します。 
+
+#### <a name="save-environment-variables-in-windows"></a>Windows で環境変数を保存する
+
+```console
+SET SPN_CLIENT_ID=<appId>
+SET SPN_CLIENT_SECRET=<password>
+SET SPN_TENANT_ID=<tenant>
+SET SPN_AUTHORITY=https://login.microsoftonline.com
+```
+
+#### <a name="save-environment-variables-in-linux-or-macos"></a>Linux または macOS で環境変数を保存する
+
+```console
+export SPN_CLIENT_ID='<appId>'
+export SPN_CLIENT_SECRET='<password>'
+export SPN_TENANT_ID='<tenant>'
+export SPN_AUTHORITY='https://login.microsoftonline.com'
+```
+
+#### <a name="save-environment-variables-in-powershell"></a>PowerShell で環境変数を保存する
+
+```console
+$Env:SPN_CLIENT_ID="<appId>"
+$Env:SPN_CLIENT_SECRET="<password>"
+$Env:SPN_TENANT_ID="<tenant>"
+$Env:SPN_AUTHORITY="https://login.microsoftonline.com"
+```
+
+サービス プリンシパルを作成した後、サービス プリンシパルを適切なロールに割り当てます。 
+
+### <a name="assign-roles-to-the-service-principal"></a>サービス プリンシパルにロールを割り当てる
+
+こちらのコマンドを実行して、サービス プリンシパルを、データベース インスタンスのリソースが配置されているサブスクリプションの `Monitoring Metrics Publisher` ロールに割り当てます。
+
+#### <a name="run-the-command-on-windows"></a>Windows でコマンドを実行する
+
+> [!NOTE]
+> Windows 環境から実行する場合は、ロール名に二重引用符を使用する必要があります。
+
+```azurecli
+az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role "Contributor" --scope subscriptions/<Subscription ID>
+```
+
+#### <a name="run-the-command-on-linux-or-macos"></a>Linux または macOS でコマンドを実行する
+
+```azurecli
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
+```
+
+#### <a name="run-the-command-in-powershell"></a>PowerShell でコマンドを実行する
+
+```powershell
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
+```
+
+```output
+{
+  "canDelegate": null,
+  "id": "/subscriptions/<Subscription ID>/providers/Microsoft.Authorization/roleAssignments/f82b7dc6-17bd-4e78-93a1-3fb733b912d",
+  "name": "f82b7dc6-17bd-4e78-93a1-3fb733b9d123",
+  "principalId": "5901025f-0353-4e33-aeb1-d814dbc5d123",
+  "principalType": "ServicePrincipal",
+  "roleDefinitionId": "/subscriptions/<Subscription ID>/providers/Microsoft.Authorization/roleDefinitions/3913510d-42f4-4e42-8a64-420c39005123",
+  "scope": "/subscriptions/<Subscription ID>",
+  "type": "Microsoft.Authorization/roleAssignments"
+}
+```
+
+サービス プリンシパルが適切なロールに割り当てられ、環境変数が設定されたら、データ コントローラーの作成に進むことができます 
 
 ## <a name="create-the-azure-arc-data-controller"></a>Azure Arc データ コントローラーを作成する
 
 > [!NOTE]
 > 以下の例では azdata arc dc create コマンドの `--namespace` パラメーターに別の値を使用できますが、必ず、以下で示す他のすべてのコマンドで `--namespace parameter` にその名前空間名を使用してください。
 
-作成を構成するターゲット プラットフォームに応じて、以下の該当するセクションに従います。
-
-[Azure Kubernetes Service (AKS) に作成する](#create-on-azure-kubernetes-service-aks)
-
-[Azure Stack Hub の AKS エンジンに作成する](#create-on-aks-engine-on-azure-stack-hub)
-
-[Azure Stack HCI の AKS に作成する](#create-on-aks-on-azure-stack-hci)
-
-[Azure Red Hat OpenShift (ARO) に作成する](#create-on-azure-red-hat-openshift-aro)
-
-[Red Hat OpenShift Container Platform (OCP) に作成する](#create-on-red-hat-openshift-container-platform-ocp)
-
-[オープンソースのアップストリーム Kubernetes (kubeadm) に作成する](#create-on-open-source-upstream-kubernetes-kubeadm)
-
-[AWS Elastic Kubernetes Service (EKS) に作成する](#create-on-aws-elastic-kubernetes-service-eks)
-
-[Google Cloud Kubernetes Engine Service (GKE) に作成する](#create-on-google-cloud-kubernetes-engine-service-gke)
+- [Azure Kubernetes Service (AKS) に作成する](#create-on-azure-kubernetes-service-aks)
+- [Azure Stack Hub の AKS エンジンに作成する](#create-on-aks-engine-on-azure-stack-hub)
+- [Azure Stack HCI の AKS に作成する](#create-on-aks-on-azure-stack-hci)
+- [Azure Red Hat OpenShift (ARO) に作成する](#create-on-azure-red-hat-openshift-aro)
+- [Red Hat OpenShift Container Platform (OCP) に作成する](#create-on-red-hat-openshift-container-platform-ocp)
+- [オープンソースのアップストリーム Kubernetes (kubeadm) に作成する](#create-on-open-source-upstream-kubernetes-kubeadm)
+- [AWS Elastic Kubernetes Service (EKS) に作成する](#create-on-aws-elastic-kubernetes-service-eks)
+- [Google Cloud Kubernetes Engine Service (GKE) に作成する](#create-on-google-cloud-kubernetes-engine-service-gke)
 
 ### <a name="create-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) に作成する
 
@@ -88,10 +203,10 @@ kubectl config current-context
 ストレージ クラスとして `managed-premium` を使用する場合は、次のコマンドを実行してデータ コントローラーをデプロイできます。 コマンドのプレースホルダーを、リソース グループ名、サブスクリプション ID、Azure の場所に置き換えます。
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 どのストレージ クラスを使用するかわからない場合は、使用している VM の種類に関係なくサポートされる `default` ストレージ クラスを使用してください。 最速のパフォーマンスが得られなくなるだけです。
@@ -99,10 +214,10 @@ azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace ar
 `default` ストレージ クラスを使用する場合は、次のコマンドを実行できます。
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 コマンドを実行したら、「[作成状態の監視](#monitoring-the-creation-status)」に進みます。
@@ -114,10 +229,10 @@ azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace ar
 次のコマンドを実行すると、managed-premium ストレージ クラスを使用してデータ コントローラーを作成できます。
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 どのストレージ クラスを使用するかわからない場合は、使用している VM の種類に関係なくサポートされる `default` ストレージ クラスを使用してください。 Azure Stack Hub では、Premium ディスクと Standard ディスクは同じストレージ インフラストラクチャによって支えられています。 したがって、それらは全般的には同等のパフォーマンスを提供することが期待されますが、IOPS の制限が異なっています。
@@ -125,10 +240,10 @@ azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace ar
 `default` ストレージ クラスを使用する場合は、次のコマンドを実行できます。
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 コマンドを実行したら、「[作成状態の監視](#monitoring-the-creation-status)」に進みます。
@@ -140,10 +255,10 @@ azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace ar
 次のコマンドを実行すると、`default` ストレージ クラスとサービス タイプ `LoadBalancer` を使用してデータ コントローラーを作成できます。
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 コマンドを実行したら、「[作成状態の監視](#monitoring-the-creation-status)」に進みます。
@@ -151,38 +266,93 @@ azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc
 
 ### <a name="create-on-azure-red-hat-openshift-aro"></a>Azure Red Hat OpenShift (ARO) に作成する
 
-Azure Red Hat OpenShift にデータ コントローラーを作成するには、クラスターに対して次のコマンドを実行して、セキュリティの制約を緩和する必要があります。 これは一時的な要件であり、将来は削除される予定です。
-> [!NOTE]
->   ここで使用するものと同じ名前空間を、次の `azdata arc dc create` コマンドでも使用します。 たとえば `arc` とします。
+#### <a name="apply-the-scc"></a>SCC を適用する
 
-まず、[GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml) からカスタムのセキュリティ コンテキスト制約 (SCC) をダウンロードして、クラスターに適用します。
+Azure Red Hat OpenShift でデータ コントローラーを作成する前に、特定のセキュリティ コンテキスト制約 (SCC) を適用する必要があります。 プレビュー リリースでは、これらによってセキュリティ制約が緩和されます。 今後のリリースで、更新された SCC が提供されます。
 
-次のコマンドを実行して、データ コントローラーを作成します。
-> [!NOTE]
->   ここで使用する名前空間は、前の `oc adm policy add-scc-to-user` コマンドで使用したものと同じです。 たとえば `arc` とします。
+1. カスタム セキュリティ コンテキスト制約 (SCC) をダウンロードします。 次のいずれかを使用します: 
+   - [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
+   - ([未加工](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml))
+   - `curl` 次のコマンドを実行すると、arc-data-scc.yaml がダウンロードされます。
+
+      ```console
+      curl https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
+      ```
+
+1. SCC を作成します。
+
+   ```console
+   oc create -f arc-data-scc.yaml
+   ```
+
+1. SCC をサービス アカウントに適用します。
+
+   > [!NOTE]
+   > ここで使用するものと同じ名前空間を、次の `azdata arc dc create` コマンドでも使用します。 たとえば `arc` とします。
+
+   ```console
+   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
+   ```
+
+
+#### <a name="create-custom-deployment-profile"></a>カスタム デプロイ プロファイルを作成する
+
+Azure RedHat Open Shift には、プロファイル `azure-arc-azure-openshift` を使用します。
 
 ```console
-azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc config init --source azure-arc-azure-openshift --path ./custom
+```
+
+#### <a name="create-data-controller"></a>データ コントローラーの作成
+
+次のコマンドを実行して、データ コントローラーを作成します。
+
+> [!NOTE]
+> ここで使用する名前空間は、前の `oc adm policy add-scc-to-user` コマンドで使用したものと同じです。 たとえば `arc` とします。
+
+```console
+azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example
-#azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 コマンドを実行したら、「[作成状態の監視](#monitoring-the-creation-status)」に進みます。
 
 ### <a name="create-on-red-hat-openshift-container-platform-ocp"></a>Red Hat OpenShift Container Platform (OCP) に作成する
 
-
 > [!NOTE]
 > Azure で Red Hat OpenShift Container Platform を使用している場合は、利用できる中で最新のバージョンを使用することをお勧めします。
 
-Red Hat OpenShift Container Platform にデータ コントローラーを作成するには、クラスターに対して次のコマンドを実行して、セキュリティの制約を緩和する必要があります。 これは一時的な要件であり、将来は削除される予定です。
-> [!NOTE]
->   ここで使用するものと同じ名前空間を、次の `azdata arc dc create` コマンドでも使用します。 たとえば `arc` とします。
+#### <a name="apply-the-scc"></a>SCC を適用する
 
-```console
-oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
-```
+Red Hat OCP でデータ コントローラーを作成する前に、特定のセキュリティ コンテキスト制約 (SCC) を適用する必要があります。 プレビュー リリースでは、これらによってセキュリティ制約が緩和されます。 今後のリリースで、更新された SCC が提供されます。
+
+1. カスタム セキュリティ コンテキスト制約 (SCC) をダウンロードします。 次のいずれかを使用します: 
+   - [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
+   - ([未加工](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml))
+   - `curl` 次のコマンドを実行すると、arc-data-scc.yaml がダウンロードされます。
+
+      ```console
+      curl https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
+      ```
+
+1. SCC を作成します。
+
+   ```console
+   oc create -f arc-data-scc.yaml
+   ```
+
+1. SCC をサービス アカウントに適用します。
+
+   > [!NOTE]
+   > ここで使用するものと同じ名前空間を、次の `azdata arc dc create` コマンドでも使用します。 たとえば `arc` とします。
+
+   ```console
+   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
+   ```
+
+#### <a name="determine-storage-class"></a>ストレージ クラスを定義する
 
 次のコマンドを実行して、使用するストレージ クラスを決定する必要もあります。
 
@@ -190,18 +360,17 @@ oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace 
 kubectl get storageclass
 ```
 
-まず、次のコマンドを実行して、azure-arc-openshift デプロイ プロファイルに基づいて新しいカスタムのデプロイ プロファイル ファイルを作成します。 このコマンドでは、`custom` というディレクトリが現在の作業ディレクトリに作成され、カスタムのデプロイ プロファイル ファイル `control.json` がそのディレクトリに作成されます。
+#### <a name="create-custom-deployment-profile"></a>カスタム デプロイ プロファイルを作成する
+
+次のコマンドを実行して、`azure-arc-openshift` デプロイ プロファイルに基づいて新しいカスタムのデプロイ プロファイル ファイルを作成します。 このコマンドでは、`custom` というディレクトリが現在の作業ディレクトリに作成され、カスタムのデプロイ プロファイル ファイル `control.json` がそのディレクトリに作成されます。
 
 OpenShift Container Platform には、プロファイル `azure-arc-openshift` を使用します。
 
 ```console
 azdata arc dc config init --source azure-arc-openshift --path ./custom
 ```
-Azure RedHat Open Shift には、プロファイル `azure-arc-azure-openshift` を使用します。
 
-```console
-azdata arc dc config init --source azure-arc-azure-openshift --path ./custom
-```
+#### <a name="set-storage-class"></a>ストレージ クラスを設定する 
 
 次に、下記のコマンドの `<storageclassname>` を、(上記の `kubectl get storageclass` コマンドを実行して決定された) 使用するストレージ クラスの名前に置き換えることによって、目的のストレージ クラスを設定します。
 
@@ -214,11 +383,15 @@ azdata arc dc config replace --path ./custom/control.json --json-values "spec.st
 #azdata arc dc config replace --path ./custom/control.json --json-values "spec.storage.logs.className=mystorageclass"
 ```
 
-既定では、azure-arc-openshift デプロイ プロファイルでは `NodePort` がサービス タイプとして使用されます。 ロード バランサーと統合された OpenShift クラスターを使用している場合は、次のコマンドを使用して、LoadBalancer サービス タイプを使用するように構成を変更できます。
+#### <a name="set-loadbalancer-optional"></a>LoadBalancer を設定する (省略可能)
+
+既定では、`azure-arc-openshift` デプロイ プロファイルでは `NodePort` がサービス タイプとして使用されます。 ロード バランサーと統合された OpenShift クラスターを使用している場合は、次のコマンドを使用して、`LoadBalancer` サービス タイプを使用するように構成を変更できます。
 
 ```console
 azdata arc dc config replace --path ./custom/control.json --json-values "$.spec.services[*].serviceType=LoadBalancer"
 ```
+
+#### <a name="verify-security-policies"></a>セキュリティ ポリシーを確認する
 
 OpenShift を使用するときは、OpenShift の既定のセキュリティ ポリシーを使用して実行するか、通常よりも全般的に環境をロックダウンすることが必要な場合があります。 デプロイ時および実行時に必要なアクセス許可を最小限にするために、必要に応じて、次のコマンドを実行して一部の機能を無効にすることができます。
 
@@ -239,7 +412,10 @@ azdata arc dc config replace --path ./custom/control.json --json-values spec.sec
 azdata arc dc config replace --path ./custom/control.json --json-values spec.security.allowDumps=false
 ```
 
+#### <a name="create-data-controller"></a>データ コントローラーの作成
+
 これで、次のコマンドを使用してデータ コントローラーを作成する準備ができました。
+
 > [!NOTE]
 >   ここで使用する名前空間は、前の `oc adm policy add-scc-to-user` コマンドで使用したものと同じです。 たとえば `arc` とします。
 
@@ -248,10 +424,10 @@ azdata arc dc config replace --path ./custom/control.json --json-values spec.sec
 
 
 ```console
-azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 コマンドを実行したら、「[作成状態の監視](#monitoring-the-creation-status)」に進みます。
@@ -292,10 +468,10 @@ azdata arc dc config replace --path ./custom/control.json --json-values "$.spec.
 これで、次のコマンドを使用してデータ コントローラーを作成する準備ができました。
 
 ```console
-azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 コマンドを実行したら、「[作成状態の監視](#monitoring-the-creation-status)」に進みます。
@@ -307,10 +483,10 @@ azdata arc dc create --path ./custom --namespace arc --name arc --subscription <
 次のコマンドを実行し、提供されている EKS デプロイ プロファイルを使用してデータ コントローラーを作成します。
 
 ```console
-azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 コマンドを実行したら、「[作成状態の監視](#monitoring-the-creation-status)」に進みます。
@@ -322,10 +498,10 @@ azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --s
 次のコマンドを実行し、提供されている GKE デプロイ プロファイルを使用してデータ コントローラーを作成します。
 
 ```console
-azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
+azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
+#azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
 ```
 
 コマンドを実行したら、「[作成状態の監視](#monitoring-the-creation-status)」に進みます。

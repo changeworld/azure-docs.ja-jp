@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8e12a74ee689ba7b013b1c4a6881deac78680be0
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 687c344aefc70729c85fb37d615ec0a272ff4fde
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701050"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368870"
 ---
 # <a name="security-control-v2-data-protection"></a>セキュリティ コントロール V2:データ保護
 
@@ -20,7 +20,7 @@ ms.locfileid: "94701050"
 
 ## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1:機密データを検出、分類、ラベル付けする
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | DP-1 | 13.1、14.5、14.7 | SC-28 |
 
@@ -46,7 +46,7 @@ Azure SQL Database に格納されている情報の分類とラベル付けに�
 
 ## <a name="dp-2-protect-sensitive-data"></a>DP-2:機密データを保護する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | DP-2 | 13.2、2.10 | SC-7、AC-4 |
 
@@ -72,7 +72,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ## <a name="dp-3-monitor-for-unauthorized-transfer-of-sensitive-data"></a>DP-3:機密データの不正転送を監視する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | DP-3 | 13.3 | AC-4、SI-4 |
 
@@ -100,7 +100,7 @@ Azure Information Protection (AIP) には、分類およびラベル付けされ
 
 ## <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4:転送中の機密情報を暗号化する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | DP-4 | 14.4 | SC-8 |
 
@@ -130,7 +130,7 @@ Azure Information Protection (AIP) には、分類およびラベル付けされ
 
 ## <a name="dp-5-encrypt-sensitive-data-at-rest"></a>DP-5:保存データを暗号化する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | DP-5 | 14.8 | SC-28、SC-12 |
 

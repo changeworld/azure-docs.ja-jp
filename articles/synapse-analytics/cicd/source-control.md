@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: b6cadbf5c3a33c1a954a47f37b33ad8703f40b69
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f1fe7c25327e8ecab9b450cab167391d8949b0a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350740"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008166"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio でのソース管理
 
@@ -138,6 +138,24 @@ GitHub 組織に接続するには、組織が Synapse Studio にアクセス許
 
 これらの手順に従うと、ワークスペースは組織内のパブリックとプライベートの両方のリポジトリに接続できるようになります。 接続できない場合は、ブラウザーのキャッシュをクリアして再試行してください。
 
+#### <a name="already-connected-to-github-using-a-personal-account"></a>個人アカウントを使用して既に GitHub に接続している
+
+既に GitHub に接続していて、個人アカウントへのアクセス許可のみが付与されている場合は、以下の手順に従って、組織にアクセス許可を付与します。
+
+1. GitHub に移動して **[設定]** を開きます。
+
+    ![GitHub の設定を開く](media/github-settings.png)
+
+1. **[アプリケーション]** を選択します。 **[Authorized OAuth Apps]\(認可済み OAuth アプリ\)** タブに *Azure Synapse* が表示されます。
+
+    ![OAuth アプリを承認する](media/authorize-app.png)
+
+1. *Azure Synapse* を選択し、自分の組織へのアクセス権を付与します。
+
+    ![組織へのアクセス許可を付与する](media/grant-organization-permission.png)
+
+これらの手順を完了すると、ワークスペースは組織内のパブリックとプライベートの両方のリポジトリに接続できるようになります。
+
 ## <a name="version-control"></a>バージョン コントロール
 
 開発者は、バージョン管理システム (別名、_ソース管理_) を使用して、コードに対して共同作業を行うことや、変更を追跡することができます。ソース管理は、複数の開発者で行うプロジェクトに不可欠なツールです。
@@ -163,6 +181,7 @@ Synapse Studio に関連付けられた各 Git リポジトリには、コラボ
 ```
 
 Azure Synapse Studio では、一度に 1 つの発行ブランチのみ使用できます。 新しい発行ブランチを指定しても、以前の発行ブランチは削除されません｡ 以前の発行ブランチを削除する場合は、それを手動で削除します。
+
 
 ### <a name="publish-code-changes"></a>コード変更の発行
 

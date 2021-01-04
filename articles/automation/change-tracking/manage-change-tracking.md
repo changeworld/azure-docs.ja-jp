@@ -3,14 +3,14 @@ title: Azure Automation で Change Tracking と Inventory を管理する
 description: この記事では、Change Tracking と Inventory を使用して、お使いの環境内でソフトウェアと Microsoft サービスの変更を追跡する方法について説明します。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 11/02/2020
+ms.date: 12/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 99cdc4191320efb37b37e4ec38e808f3961a1207
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 636dbf95567f761aee19bd567b0835173ce36ccc
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288742"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093623"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Change Tracking と Inventory の管理
 
@@ -37,7 +37,7 @@ Change Tracking とインベントリを使用して、ファイルとフォル�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「 **Automation** 」と入力します。 入力を始めると、入力内容に基づいて一覧から候補が絞り込まれます。 **[Automation アカウント]** を選択します。
+2. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**Automation**」と入力します。 入力を始めると、入力内容に基づいて一覧から候補が絞り込まれます。 **[Automation アカウント]** を選択します。
 
 3. Automation アカウントの一覧で、変更履歴とインベントリを有効にしたときに選択したアカウントを選択します。
 
@@ -54,7 +54,7 @@ Change Tracking とインベントリを使用して、ファイルとフォル�
     |Enabled     | 設定が適用される場合は True、それ以外の場合は False。        |
     |Item Name     | 追跡するファイルのフレンドリ名。        |
     |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
-    |パスの入力     | ファイルを確認するパス (例: **c:\temp\\\*.txt** )。 `%winDir%\System32\\\*.*` などの環境変数も使用できます。       |
+    |パスの入力     | ファイルを確認するパス (例: **c:\temp\\\*.txt**)。 `%winDir%\System32\\\*.*` などの環境変数も使用できます。       |
     |パスの種類     | パスの種類。 指定できる値は [ファイル] と [フォルダー] です。        |    
     |再帰     | 追跡する項目を検索するときに、再帰を使用する場合は True、そうでない場合は False。        |    
     |ファイル コンテンツのアップロード | 追跡された変更についてのファイル内容をアップロードする場合は True、それ以外の場合は False。|
@@ -62,9 +62,9 @@ Change Tracking とインベントリを使用して、ファイルとフォル�
     ワイルドカードを使用してファイルとフォルダーの監視を構成する場合は、次の点を考慮してください。
 
     - 複数のファイルを追跡するにはワイルドカードが必要です。
-    - ワイルドカードは、パスの最後のセグメントでのみ使用できます ( *C:\folder\file* または */etc/* .conf* など)。
+    - ワイルドカードは、パスの最後のセグメントでのみ使用できます (*C:\folder\file* または */etc/* .conf* など)。
     - 環境変数に有効でないパスが含まれている場合、検証は成功しますが、インベントリの実行時にそのパスはエラーになります。
-    - パスを設定するときは、漠然としたパス ( *c:* .** など) は避けてください。走査の対象になるフォルダーが膨大な数になります。
+    - パスを設定するときは、漠然としたパス (*c:* .** など) は避けてください。走査の対象になるフォルダーが膨大な数になります。
 
 8. **[ファイル コンテンツのアップロード]** には、必ず True を指定してください。 この設定は、示されたファイル パスに対してファイル コンテンツの追跡を有効にします。
 
@@ -83,7 +83,7 @@ Change Tracking とインベントリを使用して、ファイルとフォル�
     |Enabled     | 設定が適用される場合は True、それ以外の場合は False。        |
     |Item Name     | 追跡するファイルのフレンドリ名。        |
     |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
-    |パスの入力     | ファイル確認のためのパス (例: **/etc/*.conf** )。       |
+    |パスの入力     | ファイル確認のためのパス (例: **/etc/*.conf**)。       |
     |パスの種類     | パスの種類。 指定できる値は [ファイル] と [ディレクトリ] です。        |
     |再帰     | 追跡する項目を検索するときに、再帰を使用する場合は True、そうでない場合は False。        |
     |sudo の使用     | 項目を確認するときに sudo を使用する場合は True、そうでない場合は False。         |
@@ -99,6 +99,7 @@ Change Tracking とインベントリを使用して、ファイルとフォル�
 ファイル コンテンツの追跡により、追跡された変更の前後のファイルのコンテンツを表示できます。 この機能では、変更が発生するたびにファイル コンテンツを[ストレージ アカウント](../../storage/common/storage-account-overview.md)に保存します。 ファイル コンテンツを追跡するためのいくつかの規則を次に示します。
 
 * ファイル コンテンツの格納には、Resource Manager デプロイ モデルを使用している Standard ストレージ アカウントが必要です。
+* 既定では、ストレージ アカウントは、任意のネットワーク上のクライアントからの接続を受け入れます。 特定のトラフィックのみを許可するようにストレージ アカウントをセキュリティで保護している場合は、Automation アカウントがそれに接続できるように構成規則を変更する必要があります。 「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](../../storage/common/storage-network-security.md)」を参照してください。
 * Premium およびクラシック デプロイ モデルのストレージ アカウントは使用しないでください。 [Azure Storage アカウントの概要](../../storage/common/storage-account-create.md)に関する記事をご覧ください。
 * ストレージ アカウントを接続できるのは、1 つの Automation アカウントだけです。
 * ご自分の Automation アカウントで Change Tracking とインベントリを有効にする必要があります。

@@ -3,12 +3,12 @@ title: Azure サービス別のリソース プロバイダー
 description: Azure Resource Manager のすべてのリソース プロバイダー名前空間を一覧表示し、その名前空間の Azure サービスを示します。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: faea6badc24d0152e94fc507cafdb15932d1ea3e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5e89b2b7cf7c27a501d93f63c74d81d8fb40883c
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452631"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033546"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure サービスのリソース プロバイダー
 
@@ -35,6 +35,7 @@ ms.locfileid: "96452631"
 | Microsoft.AutonomousSystems | [Autonomous Systems](https://www.microsoft.com/ai/autonomous-systems) |
 | Microsoft.AVS | [Azure VMware Solution](../../azure-vmware/index.yml) |
 | Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
+| Microsoft.AzureArcData | Azure Arc 対応データ サービスのレジストリ |
 | Microsoft.AzureData | SQL Server レジストリ |
 | Microsoft.AzureStack | core |
 | Microsoft.AzureStackHCI | [Azure Stack HCI](/azure-stack/hci/overview) |

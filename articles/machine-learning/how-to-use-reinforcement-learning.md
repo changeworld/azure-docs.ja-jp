@@ -9,13 +9,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a7fdb370847e72657829d53df019203b0a5b211b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.custom: how-to, devx-track-python, contperf-fy21q2
+ms.openlocfilehash: 7144d576694b6694f426533451717cef58c2da87
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302579"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562448"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning での強化学習 (プレビュー)
 
@@ -24,9 +24,9 @@ ms.locfileid: "96302579"
 > [!NOTE]
 > Azure Machine Learning の強化学習は、現在はプレビュー機能です。 現時点では、Ray および RLlib フレームワークのみがサポートされています。
 
-この記事では、ビデオ ゲームの Pong をプレイするように強化学習 (RL) エージェントをトレーニングする方法について説明します。 オープンソースの Python ライブラリ [Ray RLlib](https://ray.readthedocs.io/en/master/rllib.html) と Azure Machine Learning を使用して、分散 RL ジョブの複雑さを管理します。
+この記事では、ビデオ ゲームの Pong をプレイするように強化学習 (RL) エージェントをトレーニングする方法について説明します。 オープンソースの Python ライブラリ [Ray RLlib](https://ray.readthedocs.io/en/master/rllib.html) と Azure Machine Learning を使用して、分散 RL の複雑さを管理します。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 > [!div class="checklist"]
 > * 実験を設定する
 > * ヘッド ノードとワーカー ノードを定義する
@@ -38,7 +38,7 @@ ms.locfileid: "96302579"
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードは、次のいずれかの環境で実行します。 最も高速な起動エクスペリエンスのため、Azure Machine Learning コンピューティング インスタンスを試すことをお勧めします。 強化サンプルのノートブックを使用すると、Azure Machine Learning コンピューティング インスタンスをすばやく複製して実行できます。
+このコードは、これらの環境のいずれかで実行してください。 最も高速な起動エクスペリエンスのため、Azure Machine Learning コンピューティング インスタンスを試すことをお勧めします。 Azure Machine Learning コンピューティング インスタンスで強化サンプルのノートブックをすばやく複製して実行できます。
 
  - Azure Machine Learning コンピューティング インスタンス
 
@@ -61,9 +61,7 @@ ms.locfileid: "96302579"
 
 このトレーニング エージェントは、**シミュレートされた環境** で Pong のプレイを学習します。 トレーニング エージェントは、パドルの上移動、下移動、または静止を、ゲームのすべてのフレームで決定します。 エージェントは、ゲームの状態 (画面の RGB 画像) を調べて決定を行います。
 
-RL は、**報酬** を使用して、決定が成功したかどうかをエージェントに伝えます。 この環境では、エージェントは、ポイントを獲得すると正の報酬を受け取り、相手にポイントが入ると負の報酬を受け取ります。 多くの回数繰り返すと、トレーニング エージェントは、現在の状態に基づいて、予想される将来の報酬の合計が最適になるアクションを選択することを学習します。
-
-RL でこの最適化を実行するには、**ディープ ニューラル ネットワーク** (DNN) モデルを使用するのが一般的です。 最初、学習エージェントのプレイは下手ですが、ゲームのたびに、モデルをさらに改善する追加サンプルが生成されます。
+RL は、**報酬** を使用して、決定が成功したかどうかをエージェントに伝えます。 この例では、エージェントは、ポイントを獲得するとプラスの報酬を受け取り、相手にポイントが入るとマイナスの報酬を受け取ります。 多くの回数繰り返すと、トレーニング エージェントは、現在の状態に基づいて、予想される将来の報酬の合計が最適になるアクションを選択することを学習します。 RL でこの最適化を実行するには、**ディープ ニューラル ネットワーク** (DNN) を使用するのが一般的です。 
 
 トレーニングは、エージェントがトレーニング エポックで平均報酬スコア 18 に達すると終了します。 これは、エージェントが、最大 21 回の対戦において平均 18 ポイント以上で対戦相手に勝ったことを意味します。
 
@@ -73,7 +71,11 @@ Azure Machine Learning には、これらの複雑さを管理して RL ワー�
 
 ## <a name="set-up-the-environment"></a>環境をセットアップする
 
-必要な Python パッケージを読み込み、ワークスペースを初期化し、実験を作成し、構成済みの仮想ネットワークを指定することによって、ローカル RL 環境を設定します。
+次を実行して、ローカル RL 環境を設定します。
+1. 必要な Python パッケージを読み込む
+1. ワークスペースを初期化する
+1. 実験の作成
+1. 構成済みの仮想ネットワークを指定する。
 
 ### <a name="import-libraries"></a>ライブラリのインポート
 
@@ -97,9 +99,7 @@ from azureml.contrib.train.rl import WorkerConfiguration
 
 ### <a name="initialize-a-workspace"></a>ワークスペースを初期化する
 
-[Azure Machine Learning ワークスペース](concept-workspace.md)は、Azure Machine Learning の最上位レベルのリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。
-
-[前提条件のセクション](#prerequisites)で作成した `config.json` ファイルからワークスペース オブジェクトを初期化します。 このコードを Azure Machine Learning コンピューティング インスタンスで実行している場合、構成ファイルは既に作成されています。
+[前提条件セクション](#prerequisites)で作成した `config.json` ファイルから[ワークスペース](concept-workspace.md) オブジェクトを初期化します。 このコードを Azure Machine Learning コンピューティング インスタンスで実行している場合、構成ファイルは既に作成されています。
 
 ```Python
 ws = Workspace.from_config()
@@ -117,7 +117,9 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="specify-a-virtual-network"></a>仮想ネットワークを指定する
 
-複数のコンピューティング先を使用する RL ジョブの場合、ワーカー ノードとヘッド ノードが相互に通信できるようにポートが開かれている仮想ネットワークを指定する必要があります。 仮想ネットワークはどのリソース グループに作成してもかまいませんが、ワークスペースと同じリージョンに存在する必要があります。 仮想ネットワークの設定の詳細については、前提条件セクションで示されているワークスペース セットアップ ノートブックを参照してください。 ここでは、リソース グループ内で仮想ネットワークの名前を指定します。
+複数のコンピューティング先を使用する RL ジョブの場合、ワーカー ノードとヘッド ノードが相互に通信できるようにポートが開かれている仮想ネットワークを指定する必要があります。
+
+仮想ネットワークはどのリソース グループに作成してもかまいませんが、ワークスペースと同じリージョンに存在する必要があります。 仮想ネットワークの設定の詳細については、前提条件セクションで示されているワークスペース セットアップ ノートブックを参照してください。 ここでは、リソース グループ内で仮想ネットワークの名前を指定します。
 
 ```python
 vnet = 'your_vnet'
@@ -125,13 +127,13 @@ vnet = 'your_vnet'
 
 ## <a name="define-head-and-worker-compute-targets"></a>ヘッドとワーカーのコンピューティング先を定義する
 
-この例では、Ray のヘッド ノードとワーカー ノードに対して個別のコンピューティング先を使用します。 このように設定すると、予測されるワークロードに応じて、コンピューティング リソースをスケールアップおよびスケールダウンできます。 実験のニーズに応じて、ノードの数と各ノードのサイズを設定します。
+この例では、Ray のヘッド ノードとワーカー ノードに対して個別のコンピューティング先を使用します。 これらの設定を使用すると、自分のワークロードに応じて、コンピューティング リソースをスケールアップおよびスケールダウンできます。 ニーズに応じて、ノードの数と各ノードのサイズを設定します。
 
 ### <a name="head-computing-target"></a>ヘッド コンピューティング先
 
-この例では、GPU が搭載されたヘッド クラスターを使用して、ディープ ラーニングのパフォーマンスを最適化します。 ヘッド ノードでは、エージェントが決定を行うために使用するニューラル ネットワークがトレーニングされます。 また、ヘッド ノードでは、ワーカー ノードからデータ ポイントが収集されて、ニューラル ネットワークがさらにトレーニングされます。
+GPU が搭載されたヘッド クラスターを使用して、ディープ ラーニングのパフォーマンスを向上させることができます。 ヘッド ノードでは、エージェントが決定を行うために使用するニューラル ネットワークがトレーニングされます。 また、ヘッド ノードでは、ワーカー ノードからデータ ポイントが収集されて、ニューラル ネットワークがトレーニングされます。
 
-ヘッド コンピューティングでは、1 つの [`STANDARD_NC6` 仮想マシン](../virtual-machines/nc-series.md) (VM) が使用されます。 6 つの仮想 CPU があるため、6 つの作業 CPU に作業を分散させることができます。
+ヘッド コンピューティングでは、1 つの [`STANDARD_NC6` 仮想マシン](../virtual-machines/nc-series.md) (VM) が使用されます。 これには、作業を分散させるために 6 つの仮想 CPU があります。
 
 
 ```python
@@ -173,7 +175,7 @@ else:
 
 ### <a name="worker-computing-cluster"></a>ワーカー コンピューティング クラスター
 
-この例では、ワーカー コンピューティング先に 4 つの [`STANDARD_D2_V2` VM](../virtual-machines/nc-series.md) を使用します。 各ワーカー ノードでは 2 つの CPU を使用でき、全部で 8 つの CPU を作業の並列化に使用できます。
+この例では、ワーカー コンピューティング先に 4 つの [`STANDARD_D2_V2` VM](../virtual-machines/nc-series.md) を使用します。 各ワーカー ノードでは 2 つの CPU を使用でき、全部で 8 つの CPU を使用できます。
 
 ワーカー ノードではディープ ラーニングは実行されないため、GPU は必要ありません。 ワーカーでは、ゲームのシミュレーションが実行されて、データが収集されます。
 
@@ -212,10 +214,9 @@ else:
 ```
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>強化学習の推定器を作成する
+[ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) を使用して、Azure Machine Learning にトレーニング ジョブを送信します。
 
-このセクションでは、[ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) を使用して、Azure Machine Learning にトレーニング ジョブを送信する方法について説明します。
-
-Azure Machine Learning では、推定器クラスを使用して、実行の構成情報がカプセル化されます。 これにより、スクリプトの実行の構成方法を簡単に指定できます。 
+Azure Machine Learning では、推定器クラスを使用して、実行の構成情報がカプセル化されます。 これにより、スクリプトの実行の構成方法を指定できます。 
 
 ### <a name="define-a-worker-configuration"></a>ワーカーの構成を定義する
 
@@ -246,9 +247,11 @@ worker_conf = WorkerConfiguration(
 
 エントリ スクリプト `pong_rllib.py` は、トレーニング ジョブの実行方法を定義するパラメーターのリストを受け取ります。 これらのパラメーターをカプセル化のレイヤーとしての推定器を通して渡すことで、スクリプトのパラメーターと実行の構成を相互に独立して簡単に変更できます。
 
-適切な `num_workers` を指定すると、並列処理を最大限に活用できます。 ワーカーの数を、使用可能な CPU の数と同じに設定します。 この例では、次のように計算できます。
+適切な `num_workers` を指定すると、並列処理を最大限に活用できます。 ワーカーの数を、使用可能な CPU の数と同じに設定します。 この例では、次の計算を使用できます。
 
-ヘッド ノードは、6 つの仮想 CPUを備えた [Standard_NC6](../virtual-machines/nc-series.md) です。 ワーカー クラスターは、それぞれが 2 つの CPU を備える 4 つの [Standard_D2_V2 VM](../cloud-services/cloud-services-sizes-specs.md#dv2-series) であり、CPU は合計で 8 つです。 ただし、1 つの CPU はヘッド ノード ロール専用にする必要があるため、ワーカーの CPU 数から 1 つ減らす必要があります。 6 CPU + 8 CPU - 1 ヘッド CPU = 13 同時ワーカー。 Azure Machine Learning では、ヘッド クラスターとワーカー クラスターを使用して、コンピューティング リソースが区別されます。 ただし、Ray ではヘッドとワーカーは区別されず、すべての CPU はワーカー スレッドの実行に使用できる CPU です。
+ヘッド ノードは、6 つの仮想 CPUを備えた [Standard_NC6](../virtual-machines/nc-series.md) です。 ワーカー クラスターは、それぞれが 2 つの CPU を備える 4 つの [Standard_D2_V2 VM](../cloud-services/cloud-services-sizes-specs.md#dv2-series) であり、CPU は合計で 8 つです。 ただし、1 つの CPU はヘッド ノード ロール専用にする必要があるため、ワーカーの CPU 数から 1 つ減らす必要があります。
+
+6 CPU + 8 CPU - 1 ヘッド CPU = 13 同時ワーカー。 Azure Machine Learning では、ヘッド クラスターとワーカー クラスターを使用して、コンピューティング リソースが区別されます。 ただし、Ray ではヘッドとワーカーは区別されず、すべての CPU はワーカー スレッドとして使用できます。
 
 
 ```python
@@ -409,7 +412,7 @@ run = exp.submit(config=rl_estimator)
 
 ## <a name="monitor-and-view-results"></a>結果を監視および表示する
 
-Azure Machine Learning の Jupyter ウィジェットを使用して、実行の状態をリアルタイムで確認します。 この例のウィジェットには、2 つの子実行が表示されます。1 つはヘッドのもので、もう 1 つはワーカーのものです。 
+Azure Machine Learning の Jupyter ウィジェットを使用して、実行の状態をリアルタイムで確認します。 このウィジェットには、2 つの子実行が表示されます。1 つはヘッドのもので、もう 1 つはワーカーのものです。 
 
 ```python
 from azureml.widgets import RunDetails
@@ -421,7 +424,7 @@ run.wait_for_completion()
 1. ウィジェットが読み込まれるまで待ちます。
 1. 実行の一覧でヘッドの実行を選択します。
 
-スタジオで実行の追加情報を表示するには、 **[Click here to see the run in Azure Machine Learning studio]\(Azure Machine Learning スタジオで実行を表示するには、ここをクリックしてください\)** を選択します。 この情報には、実行の進行中、または完了後にアクセスできます。
+スタジオで実行の追加情報を表示するには、 **[Click here to see the run in Azure Machine Learning studio]\(Azure Machine Learning スタジオで実行を表示するには、ここをクリックしてください\)** を選択します。 この情報には、実行の進行中または完了後にアクセスできます。
 
 ![実行の詳細を示す折れ線グラフのウィジェット](./media/how-to-use-reinforcement-learning/pong-run-details-widget.png)
 
@@ -429,7 +432,7 @@ run.wait_for_completion()
 
 子実行のログを参照すると、評価結果が driver_log.txt ファイルに記録されていることがわかります。 [実行] ページでこれらのメトリックが利用可能になるまで、数分待つことが必要な場合があります。
 
-これで、複数のコンピューティング リソースを構成し、Pong を非常にうまくプレイするように強化学習エージェントをトレーニングする方法を学習しました。
+これで、複数のコンピューティング リソースを構成し、コンピューターの対戦相手に対して Pong を非常にうまくプレイするように強化学習エージェントをトレーニングする方法を学習しました。
 
 ## <a name="next-steps"></a>次のステップ
 

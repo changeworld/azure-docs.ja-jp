@@ -1,5 +1,5 @@
 ---
-title: 移行ガイド:DB2 から SQL Managed Instance
+title: 'DB2 から SQL Managed Instance: 移行ガイド'
 description: このガイドに従って、DB2 データベースを Azure SQL Managed Instance に移行します。
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: c31187e87f18f0ec84cd5b80ccab997d0ba381c3
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 3902661553bbb390e6e999e0f67cd043eee8df09
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324756"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359185"
 ---
 # <a name="migration-guide-db2-to-sql-managed-instance"></a>移行ガイド:DB2 から SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -177,9 +177,9 @@ SQL Server Migration Assistant (SSMA) を使用して評価を作成します。
    - [Azure 総保有コスト計算ツール](https://azure.microsoft.com/pricing/tco/calculator/) 
 
 
-- クラウド移行のためのフレームワークと導入サイクルの詳細については、以下を参照してください。
+- クラウド移行のためのフレームワークと導入サイクルの詳細については、以下を参照してください
    -  [Azure 向けのクラウド導入フレームワーク](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Azure に移行するワークロードの料金計算とサイズ設定のベスト プラクティス](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 
-- アプリケーション アクセス層を評価するには、「[Data Access Migration Toolkit (プレビュー)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)」を参照してください
-- データ アクセス層の A/B テストの実行方法について詳しくは、[Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) に関するページを参照してください。
+- アプリケーション アクセス層を評価するには、「[Data Access Migration Toolkit (プレビュー)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)」を参照してください。
+- データ アクセス レイヤーの A/B テストの実行方法について詳しくは、[Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) についてのページを参照してください。

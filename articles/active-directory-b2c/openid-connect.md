@@ -11,12 +11,12 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dbfeefc14059785ba82cbf245a60e5e72759db76
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 48c60878a6a58b2f4629768b81af894a741dab1c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840408"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509803"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OpenID Connect による Web サインイン
 
@@ -262,7 +262,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 ## <a name="send-a-sign-out-request"></a>サインアウト要求を送信する
 
-ユーザーをアプリケーションからサインアウトさせるときは、アプリケーションの Cookie を消去する、あるいはユーザーとのセッションを終了するだけでは十分ではありません。 サインアウトさせるには、ユーザーを Azure AD B2C にリダイレクトします。そうしない場合、ユーザーは資格情報を再入力しなくてもアプリケーションに対して再認証できることがあります。 詳しくは、「[Azure AD B2C のセッション](session-overview.md)」をご覧ください。
+ユーザーをアプリケーションからサインアウトさせるときは、アプリケーションの Cookie を消去する、あるいはユーザーとのセッションを終了するだけでは十分ではありません。 サインアウトさせるには、ユーザーを Azure AD B2C にリダイレクトします。そうしない場合、ユーザーは資格情報を再入力しなくてもアプリケーションに対して再認証できることがあります。 詳しくは、「[Azure AD B2C のセッション](session-behavior.md)」をご覧ください。
 
 ユーザーをサインアウトするには、前述した OpenID Connect メタデータ ドキュメントに示されている `end_session` エンドポイントにユーザーをリダイレクトします。
 
@@ -283,8 +283,8 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 
 ログアウト後、ユーザーは、アプリケーションに対して指定されている応答 URL に関係なく、`post_logout_redirect_uri` パラメーターに指定された URI にリダイレクトされます。 ただし、有効な `id_token_hint` が渡され、 **[ログアウト要求に ID トークンが必要]** が有効になっている場合、Azure AD B2C では、リダイレクトの実行前に、`post_logout_redirect_uri` の値がいずれかのアプリケーションの構成済みのリダイレクト URL と一致するかどうかが検証されます。 一致する応答 URL がアプリケーションで構成されていない場合は、エラー メッセージが表示され、ユーザーはリダイレクトされません。
 
-ログアウト要求で必須の ID トークンを設定する方法については、「[Azure Active Directory B2C でカスタム ポリシーを使用してセッションの動作を構成する](session-behavior-custom-policy.md#secure-your-logout-redirect)」および「[Azure Active Directory B2C でカスタム ポリシーを使用してセッションの動作を構成する](session-behavior-custom-policy.md#secure-your-logout-redirect)」を参照してください。
+ログアウト要求に必要な ID トークンを設定するには、「[Azure Active Directory B2C でセッションの動作を構成する](session-behavior.md#secure-your-logout-redirect)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD B2C セッション](session-overview.md)の詳細について学習します。
+- [Azure AD B2C セッション](session-behavior.md)の詳細について学習します。

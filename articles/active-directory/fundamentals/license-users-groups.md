@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/06/2018
+ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50e0fe1cf3bb628c40e774423e45ea88d6ab78a5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b6900647acf7182529f34c8cc065dbb039de38be
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359715"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504408"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでのライセンスの割り当てと削除
 
@@ -47,13 +47,20 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
 1. Azure AD 組織のライセンス管理者アカウントを使用して [Azure portal](https://portal.azure.com/) にサインインします。
 
-1. **[Azure Active Directory]** を選択し、 **[ライセンス]** を選択します。
+1. **[Azure Active Directory]** を選択し、**[ライセンス]** を選択します。
 
-    ![購入したサービス数と割り当てられたライセンスを示す [ライセンス] ページ](media/license-users-groups/license-details-blade.png)
+    :::image type="content" source="media/license-users-groups/license-details-blade.png" alt-text="購入したサービス数と割り当てられたライセンスを示す [ライセンス] ページ":::
 
-1. **[購入済み]** のリンクを選択して **[製品]** ページを表示し、ライセンス プランの **[割り当て済み]** 、 **[利用可能]** 、 **[まもなく有効期限切れ]** の数を確認します。
+1. **[すべての製品]** を選択して [すべての製品] ページを表示し、ライセンス プランの **[合計]** 、 **[割り当て済み]** 、 **[利用可能]** 、 **[まもなく有効期限切れ]** の数を確認します。
 
-    ![サービス ライセンス プランと関連付けられているライセンス情報を示すサービス ページ](media/license-users-groups/license-products-blade-with-products.png)
+    :::image type="content" source="media/license-users-groups/license-products-blade-with-products.png" alt-text="サービス ライセンス プランおよび関連付けられているライセンス情報が含まれたサービス ページ":::
+
+    > [!NOTE]
+    > 数値は次のように定義されます。 
+    > - 合計: 購入済みライセンスの合計数
+    > - 割り当て済み: ユーザーに割り当てられたライセンスの数。
+    > - 使用可能:間もなく有効期限切れを含む、割り当てに使用できるライセンスの数
+    > - まもなく有効期限切れ: 間もなく有効期限切れになるライセンスの数
 
 1. プラン名を選択して、そのライセンスされているユーザーとグループを確認します。
 
@@ -67,7 +74,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
     ![サービス ライセンス プランが強調表示されたサービス ページ](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-1. ライセンス プランの概要ページで、 **[割り当て]** を選択します。
+1. ライセンス プランの概要ページで、**[割り当て]** を選択します。
 
     ![[割り当て] オプションが強調表示されているサービス ページ](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
@@ -75,7 +82,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
     ![検索と [選択] オプションが強調表示されている [ライセンスの割り当て] ページ](media/license-users-groups/assign-license-blade-with-highlight.png)
 
-1. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、 **[OK]** を選択します。
+1. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、**[OK]** を選択します。
 
     ![ライセンス プランで利用可能なすべてのオプションを示している [ライセンス オプション] ページ](media/license-users-groups/license-option-blade-assignments.png)
 
@@ -96,7 +103,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
     ![製品ライセンス プランが強調表示されている [製品] ブレード](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-1. **[Azure Active Directory Premium プラン 2]** ページで、 **[割り当て]** を選択します。
+1. **[Azure Active Directory Premium プラン 2]** ページで、**[割り当て]** を選択します。
 
     ![[割り当て] オプションが強調表示されている [製品] ページ](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
@@ -104,7 +111,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
     ![検索と [選択] オプションが強調表示されている [ライセンスの割り当て] ページ 2](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
-1. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、 **[OK]** を選択します。
+1. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、**[OK]** を選択します。
 
     ![ライセンス プランで利用可能なすべてのオプションを示している [ライセンス オプション] ページ 2](media/license-users-groups/license-option-blade-group-assignments.png)
 
@@ -120,7 +127,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
 ### <a name="to-remove-a-license-from-a-user"></a>ユーザーからライセンスを削除するには
 
-1. サービス プランの **[ライセンスされているユーザー]** ページで、ライセンスが必要なくなったユーザーを選択します。 たとえば、 _Alain Charon_ を選びます。
+1. サービス プランの **[ライセンスされているユーザー]** ページで、ライセンスが必要なくなったユーザーを選択します。 たとえば、_Alain Charon_ を選びます。
 
 1. **[ライセンスを削除する]** を選択します。
 
@@ -138,7 +145,7 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
     ![[ライセンスを削除する] オプションが強調表示されている [ライセンスされているグループ] ページ 2](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
     
     > [!NOTE]
-    > Azure AD と同期しているオンプレミスのユーザー アカウントが同期の対象外になった場合、または同期が削除された場合、ユーザーは Azure AD で論理的に削除されます。 この場合、ユーザーに直接、またはグループ ベースのライセンスを介して割り当てられたライセンスは、 **削除済み** ではなく **保留中** としてマークされます。
+    > Azure AD と同期しているオンプレミスのユーザー アカウントが同期の対象外になった場合、または同期が削除された場合、ユーザーは Azure AD で論理的に削除されます。 この場合、ユーザーに直接、またはグループ ベースのライセンスを介して割り当てられたライセンスは、**削除済み** ではなく **保留中** としてマークされます。
 
 ## <a name="next-steps"></a>次のステップ
 

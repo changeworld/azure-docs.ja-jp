@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/28/2020
+ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1cdf983dc8fed64c7d283ac216eb803746add95
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 6299f9ad660252ae39903401672d493b1c1ad52c
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029372"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347491"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理で接続されている組織を追加する
 
@@ -29,7 +29,13 @@ Azure Active Directory (Azure AD) のエンタイトルメント管理を利用�
 
 ## <a name="what-is-a-connected-organization"></a>接続されている組織とは
 
-接続されている組織とは、ご自身と関係のある外部 Azure AD ディレクトリまたはドメインです。
+接続された組織とは、自分と関係のある別の組織のことです。  その組織内のユーザーが、お使いの SharePoint Online サイトやアプリなどのリソースにアクセスできるようにするには、そのディレクトリ内にその組織のユーザーを表したものが必要になります。  ほとんどの場合、その組織のユーザーは現在の Azure AD ディレクトリにはまだ存在しないため、必要に応じてエンタイトルメント管理を使用して、Azure AD ディレクトリに参加させることができます。  
+
+エンタイトルメント管理では、接続された組織を構成するユーザーを指定する方法が 3 つあります。  それは次のようなものです。
+
+* 別の Azure AD ディレクトリのユーザー、
+* 直接フェデレーション用に構成されている、別の非 Azure AD ディレクトリのユーザー、または
+* メール アドレスがすべて同じドメイン名を共有している、別の非 Azure AD ディレクトリのユーザー。
 
 たとえば、あなたは Woodgrove Bank で働いていて、2 つの外部組織と共同作業を行う必要があるとします。 この2つの組織の構成は異なります。
 

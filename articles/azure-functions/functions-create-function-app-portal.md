@@ -4,12 +4,12 @@ description: ポータルから Azure の新しい関数アプリを作成しま
 ms.topic: how-to
 ms.date: 08/29/2019
 ms.custom: mvc
-ms.openlocfilehash: 001b4e4f0ea7fbacd232b2a87abfe353f34919bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d19a269903de309bf219c2546fa70c3abe7be10
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80985016"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093591"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Azure Portal から Function App を作成する
 
@@ -31,10 +31,12 @@ Azure Functions には、次の 3 つの異なるサービス プランが用意
 
 ## <a name="storage-account-requirements"></a>ストレージ アカウントの要件
 
-関数アプリを作成するときは、BLOB、キュー、テーブル ストレージをサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 内部的には、Functions はトリガーの管理や関数実行のログなどの操作に Storage を使用します。 BLOB 専用のストレージ アカウント、Azure Premium Storage、ZRS レプリケーションを使用する汎用ストレージ アカウントなど、一部のストレージ アカウントでは、キューとテーブルがサポートされません。 こうしたアカウントは、Function App の作成時に [ストレージ アカウント] ブレードから除外されます。
+関数アプリを作成するときは、BLOB、キュー、テーブル ストレージをサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 内部的には、Functions はトリガーの管理や関数実行のログなどの操作に Storage を使用します。 BLOB 専用のストレージ アカウント、Azure Premium Storage、ZRS レプリケーションを使用する汎用ストレージ アカウントなど、一部のストレージ アカウントでは、キューとテーブルがサポートされません。 
+
+サポートされていない種類のアカウントは、Azure portal で関数アプリを作成するときにフィルターで除外されます。 また、ポータルでは、作成している関数アプリと同じリージョンにそのアカウントが存在する場合にのみ、既存のストレージ アカウントを使用できます。 何らかの理由で、関数アプリで使用されるストレージ アカウントが同じリージョンにあるというパフォーマンスのベスト プラクティスに反する必要がある場合は、ポータルの外部で関数アプリを作成する必要があります。 
 
 >[!NOTE]
->従量課金ホスティング プランを使用する場合、関数コード ファイルおよびバインディング構成ファイルは、メイン ストレージ アカウントの Azure File Storage に保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツは削除され、復元できません。
+>従量課金ホスティング プランを使用する場合、関数コード ファイルおよびバインディング構成ファイルは、メイン ストレージ アカウントの Azure File Storage に保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツは削除され、復元できません。 
 
 ストレージ アカウントの種類の詳細については、「[Azure Storage サービスの概要](../storage/common/storage-introduction.md#core-storage-services)」を参照してください。 
 

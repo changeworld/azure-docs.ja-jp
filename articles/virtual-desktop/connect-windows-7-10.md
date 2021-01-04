@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c9da2acac0957d7fe06d0249775fbed73b5f458d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 59379dd9c3a41729466de269b52dfd3fb206eea9
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287340"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368717"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Windows デスクトップ クライアントを使用して接続する
 
@@ -32,7 +32,7 @@ Windows デスクトップ クライアントを使用して、Windows 10、Wind
 
 現在のユーザー用にのクライアントをインストールできます。この場合、管理者権限は必要ありません。または、管理者がクライアントをインストールして構成し、デバイス上のすべてのユーザーがアクセスできるようにすることができます。
 
-インストールが完了すると、クライアントはスタート メニューから**リモート デスクトップ**を検索することにより起動できます。
+インストールが完了すると、クライアントはスタート メニューから **リモート デスクトップ** を検索することにより起動できます。
 
 > [!IMPORTANT]
 > Windows Virtual Desktop では、RemoteApp とデスクトップ接続 (RADC) クライアントおよびリモート デスクトップ接続 (MSTSC) クライアントはサポートされていません。
@@ -69,3 +69,5 @@ Windows デスクトップ クライアントを使用して、Windows 10、Wind
 ## <a name="next-steps"></a>次のステップ
 
 Windows デスクトップ クライアントの使用方法の詳細については、「[Windows デスクトップ クライアントの概要](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/)」を参照してください。
+
+管理者の方で、Windows デスクトップの使用方法についてより詳細な情報を知りたい場合は、「[管理者のための Windows デスクトップ クライアント](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin)」を参照してください。

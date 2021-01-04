@@ -11,16 +11,19 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d121e6280b83265a742736f9b8dd3aee96a8b32e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f34ca47d5ff6c809eef40f89ee0049285cfd7d42
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351761"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355395"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>API コネクタをユーザー フローに追加する
 
 [API コネクタ](api-connectors-overview.md)を使用するには、まず API コネクタを作成してから、ユーザー フローで有効にします。
+
+> [!IMPORTANT]
+>**2021 年 1 月 4 日以降**、Google は [WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 Gmail で Google フェデレーションまたはセルフサービス サインアップを使用している場合は、[基幹業務ネイティブ アプリケーションの互換性をテストする](google-federation.md#deprecation-of-webview-sign-in-support)必要があります。
 
 ## <a name="create-an-api-connector"></a>API コネクタを作成する
 

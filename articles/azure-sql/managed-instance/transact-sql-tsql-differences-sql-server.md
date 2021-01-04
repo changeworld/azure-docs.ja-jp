@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 610ab649d64351b0897ef7358cdaf9280fe3ba55
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: c18ee43eefe9c6cf9cba7f4e8f6c3fd3f55bba5a
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684921"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368700"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -396,9 +396,9 @@ In-Database R および Python 外部ライブラリは、限られたパブリ�
 
 SQL Managed Instance のリンク サーバーがサポートするターゲットの数は限られています。
 
-- サポートされているターゲットは、SQL Managed Instance、SQL Database、Azure Synapse SQL、SQL Server インスタンスです。 
+- サポートされているターゲットは、SQL Managed Instance、SQL Database、Azure Synapse SQL の[サーバーレス](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)と専用プール、および SQL Server インスタンスです。 
 - リンク サーバーは、分散型の書き込み可能なトランザクション (MS DTC) をサポートしていません。
-- サポートされていないターゲットは、ファイル、Analysis Services、他の RDBMS です。 ファイルのインポートの代わりに、`BULK INSERT` または `OPENROWSET` を使用して、Azure Blob Storage からネイティブ CSV インポートを使用してください。
+- サポートされていないターゲットは、ファイル、Analysis Services、他の RDBMS です。 ファイル インポートの代わりに `BULK INSERT` または `OPENROWSET` を使用して Azure Blob Storage からネイティブ CSV インポートを使用するか、[Azure Synapse Analytics 内のサーバーレス SQL プール](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)を使用してファイルの読み込みを試行します。
 
 操作: 
 
@@ -406,11 +406,12 @@ SQL Managed Instance のリンク サーバーがサポートするターゲッ�
 - リンク サーバーの削除で `sp_dropserver` がサポートされています。 [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql) に関する記事をご覧ください。
 - SQL Server インスタンスでのみ、`OPENROWSET` 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
 - SQL Server インスタンスでのみ、`OPENDATASOURCE` 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 プロバイダーとしてサポートされる値は、`SQLNCLI`、`SQLNCLI11`、`SQLOLEDB` だけです。 たとえば `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee` です。 [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql) に関する記事をご覧ください。
-- リンク サーバーを使用してネットワーク共有からファイル (Excel、CSV) を読み取ることはできません。 Azure Blob Storage から CSV ファイルを読み取る [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) または [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) を使用してください。 この要求は、[SQL Managed Instance フィードバック項目](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|で追跡します
+- リンク サーバーを使用してネットワーク共有からファイル (Excel、CSV) を読み取ることはできません。 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file)、[OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) (Azure Blob Storage から CSV ファイルを読み取る)、または [Synapse Analytics 内のサーバーレス SQL プールを参照するリンク サーバー](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)の使用を試行します。 この要求は、[SQL Managed Instance フィードバック項目](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|で追跡します
 
 ### <a name="polybase"></a>PolyBase
 
-サポートされている外部ソースの種類は、RDBMS のみで、Azure SQL Database とその他の Azure SQL Managed Instance です。 PolyBase については、[PolyBase](/sql/relational-databases/polybase/polybase-guide) に関する記事をご覧ください。
+Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse プールに対して唯一使用可能な外部ソースの種類は RDBMS (パブリック プレビュー段階) です。 Azure Storage から直接読み取る Polybase 外部テーブルの回避策として、[Synapse Analytics 内のサーバーレス SQL プールを参照する外部テーブル](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)を使用できます。 Azure SQL Managed Instance では、[Synapse Analytics 内のサーバーレス SQL プール](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)や SQL Server へのリンク サーバーを使用して、Azure Storage のデータを読み取ることができます。
+PolyBase については、[PolyBase](/sql/relational-databases/polybase/polybase-guide) に関する記事をご覧ください。
 
 ### <a name="replication"></a>レプリケーション
 

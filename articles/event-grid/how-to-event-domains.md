@@ -4,12 +4,12 @@ description: イベント ドメインを使用して、Azure Event Grid で大�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 277db97211b196c9853470c2d12cc2246a4005b2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e6861e89def10eec391bf302b1ddc726b38bb98c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330079"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109897"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>イベント ドメインを使用してトピックを管理し、イベントを発行する
 
@@ -22,12 +22,6 @@ ms.locfileid: "92330079"
 
 イベント ドメインについて学習するには、「[Event Grid トピックを管理するためのイベント ドメインについて](event-domains.md)」をご覧ください。
 
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
-
-## <a name="install-preview-feature"></a>プレビュー機能のインストール
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
-
 ## <a name="create-an-event-domain"></a>イベント ドメインを作成する
 
 大規模なトピック セットを管理するには、イベント ドメインを作成します。
@@ -35,10 +29,6 @@ ms.locfileid: "92330079"
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli-interactive
-# If you haven't already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid domain create \
   -g <my-resource-group> \
   --name <my-domain-name> \
@@ -47,11 +37,7 @@ az eventgrid domain create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
-New-AzureRmEventGridDomain `
+New-AzEventGridDomain `
   -ResourceGroupName <my-resource-group> `
   -Name <my-domain-name> `
   -Location <location>
@@ -97,7 +83,7 @@ az role assignment create \
 次の PowerShell コマンドでは、`alice@contoso.com` によるイベント サブスクリプションの作成と削除を、トピック `demotopic1` のみに制限します。
 
 ```azurepowershell-interactive
-New-AzureRmRoleAssignment `
+New-AzRoleAssignment `
   -SignInName alice@contoso.com `
   -RoleDefinitionName "EventGrid EventSubscription Contributor (Preview)" `
   -Scope /subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1
@@ -126,7 +112,7 @@ az eventgrid event-subscription create \
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```azurepowershell-interactive
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId "/subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1" `
   -EventSubscriptionName <event-subscription> `
   -Endpoint https://contoso.azurewebsites.net/api/updates
@@ -138,7 +124,7 @@ New-AzureRmEventGridSubscription `
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
 
-トピックに設定されているアクセス許可は Azure Active Directory で格納され、明示的に削除する必要があります。 ユーザーにトピックへの書き込みアクセス権限がある場合、イベント サブスクリプションを削除しても、イベント サブスクリプションを作成するためのアクセスは取り消されません。
+トピックに設定されているアクセス許可は Azure Active Directory で格納され、明示的に削除する必要があります。 ユーザーにトピックへの書き込みアクセス権がある場合、イベント サブスクリプションを削除しても、イベント サブスクリプションを作成するためのアクセス権は取り消されません。
 
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>Event Grid ドメインにイベントを発行する
@@ -193,7 +179,7 @@ az eventgrid domain key list \
 PowerShell を使用してドメイン エンドポイントを取得するには、以下を使用します。
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridDomain `
+Get-AzEventGridDomain `
   -ResourceGroupName <my-resource-group> `
   -Name <my-domain>
 ```
@@ -201,13 +187,27 @@ Get-AzureRmEventGridDomain `
 ドメインのキーを取得するには、以下を使用します。
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridDomainKey `
+Get-AzEventGridDomainKey `
   -ResourceGroupName <my-resource-group> `
   -Name <my-domain>
 ```
 ---
 
 次に、HTTP POST を実行するための任意のメソッドを使用して、Event Grid ドメインにイベントを発行します。
+
+## <a name="search-lists-of-topics-or-subscriptions"></a>トピックまたはサブスクリプションの検索一覧
+
+多数のトピックまたはサブスクリプションの検索および管理を行うために、Event Grid の API では一覧表示と改ページがサポートされています。
+
+### <a name="using-cli"></a>CLI の使用
+たとえば、次のコマンドを実行すると、`mytopic` を含む名前を持つすべてのトピックが一覧表示されます。 
+
+```azurecli-interactive
+az eventgrid topic list --odata-query "contains(name, 'mytopic')"
+```
+
+このコマンドの詳細については、「[`az eventgrid topic list`](/cli/azure/eventgrid/topic?#az_eventgrid_topic_list)」を参照してください。 
+
 
 ## <a name="next-steps"></a>次のステップ
 

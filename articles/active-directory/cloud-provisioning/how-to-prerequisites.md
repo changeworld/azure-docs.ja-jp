@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eb8de2424012d12f216f154eb077028a8f82d76
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a89a456b5d9ee36909d5d742a7880d72e5ed86fd
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173704"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355861"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングの前提条件
 この記事では、ID ソリューションとして Azure Active Directory (Azure AD) クラウド プロビジョニングを選択して使用する方法に関するガイダンスを示します。
@@ -51,11 +51,23 @@ gMSA アカウントを使用するように既存のエージェントをアッ
 
 ### <a name="in-your-on-premises-environment"></a>オンプレミスの環境の場合
 
-1. 4 GB 以上の RAM と .NET 4.7.1 以降のランタイムを搭載した、Windows Server 2012 R2 以降が実行されているドメイン参加済みホスト サーバーを特定します。
+ 1. 4 GB 以上の RAM と .NET 4.7.1 以降のランタイムを搭載した、Windows Server 2012 R2 以降が実行されているドメイン参加済みホスト サーバーを特定します。
 
-1. ローカル サーバーの PowerShell 実行ポリシーを、Undefined または RemoteSigned に設定する必要があります。
+ >[!NOTE]
+ > スコープ フィルターを定義すると、ホスト サーバーのメモリ コストが発生することに注意してください。  スコープ フィルターが使用されていない場合は、追加のメモリ コストは発生しません。 4 GB 以上では、スコープ フィルターで定義された最大 12 個の組織単位の同期がサポートされます。 追加の OＵ を同期する必要がある場合は、最小メモリ量を増やす必要があります。 次の表をガイドとして使用します。
+ >
+ >  
+ >  | スコープ フィルター内の OＵ の数| 最低限必要なメモリ|
+ >  | --- | --- |
+ >  | 12| 4 GB|
+ >  | 18|5.5 GB|
+ >  | 28|10 GB 以上|
+ >
+ > 
 
-1. サーバーと Azure AD の間にファイアウォールがある場合は、次の項目を構成します。
+ 2. ローカル サーバーの PowerShell 実行ポリシーを、Undefined または RemoteSigned に設定する必要があります。
+
+ 3. サーバーと Azure AD の間にファイアウォールがある場合は、次の項目を構成します。
    - エージェントが次のポートを介して Azure AD に "*送信*" 要求を発行できるようにします。
 
         | ポート番号 | 用途 |
@@ -100,7 +112,20 @@ TLS 1.2 を有効にするには、次の手順に従います。
 
 1. サーバーを再起動します。
 
+## <a name="known-limitations"></a>既知の制限事項
+既知の制限事項には、次のようなものがあります。
 
+### <a name="delta-synchronization"></a>差分同期
+
+- 差分同期のグループ スコープ フィルターでは、1,500 人を超えるメンバーはサポートされません。
+- グループ スコープ フィルターの一部として使用されているグループを削除すると、そのグループのメンバーであるユーザーが削除されません。 
+- スコープ内の OU またはグループの名前を変更すると、差分同期を実行してもユーザーが削除されません。
+
+### <a name="provisioning-logs"></a>プロビジョニング ログ
+- プロビジョニング ログを使用すると、作成操作と更新操作が明確に区別されません。  更新時に作成操作、および作成時に更新操作が表示される場合があります。
+
+### <a name="group-re-naming-or-ou-re-naming"></a>グループ名の変更または OU 名の変更
+- 特定の構成のスコープ内にある AD でグループまたは OU の名前を変更すると、クラウド プロビジョニング ジョブによって AD での名前の変更が認識されなくなります。 ジョブは検疫されず、正常な状態のままになります。
 
 
 ## <a name="next-steps"></a>次のステップ 

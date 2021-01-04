@@ -3,14 +3,14 @@ title: Azure Automation Update Management の概要
 description: この記事では、Windows および Linux マシンの更新プログラムを実装する Update Management 機能について概要を説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 37ab05ce7e963ab7fdc4d2b02e254adaa205446c
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 4b557c9772e76b6b61cdf01799ee30ba6bc11807
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327493"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928428"
 ---
 # <a name="update-management-overview"></a>Update Management の概要
 
@@ -224,7 +224,7 @@ Hybrid Runbook Worker で必要なポートの詳細については、「[Hybrid
 >
 > Linux の更新プログラムの分類はなく、 **[他の更新プログラム]** カテゴリの下でレポートされます。 Update Management では、サポートされているディストリビューションによって発行されたデータが使用されます。具体的には、リリースされた [OVAL](https://oval.mitre.org/) (Open Vulnerability and Assessment Language) ファイルです。 インターネット アクセスはこれらの国内クラウドから制限されているため、Update Management はこれらのファイルにアクセスして使用することはできません。
 
-Linux の場合、クラウドでのデータ エンリッチメントにより、Update Management は、評価データを表示しながら、クラウド内で重要な更新プログラムとセキュリティ更新プログラムを識別できます。 修正プログラムの場合、Update Management はマシン上にある分類データを使用します。 他のディストリビューションとは異なり、RTM バージョンの CentOS ではこの情報は使用できません。 CentOS マシンで、次のコマンドに対してセキュリティ データを返すように構成されている場合、Update Management は分類に基づいて修正プログラムを適用できます。
+Linux の場合、クラウドでのデータ エンリッチメントにより、Update Management は、評価データを表示しながら、 **[セキュリティ]** と **[その他]** の分類の下、クラウド内で重要な更新プログラムとセキュリティ更新プログラムを識別できます。 修正プログラムの場合、Update Management はマシン上にある分類データを使用します。 他のディストリビューションとは異なり、RTM バージョンの CentOS ではこの情報は使用できません。 CentOS マシンで、次のコマンドに対してセキュリティ データを返すように構成されている場合、Update Management は分類に基づいて修正プログラムを適用できます。
 
 ```bash
 sudo yum -q --security check-update
@@ -233,6 +233,10 @@ sudo yum -q --security check-update
 CentOS 上でネイティブ分類データを使用できるようにするためのサポートされている方法は現在ありません。 現時点では、お客様がこの機能をご自身で使用可能にした場合、与えられるサポートに限度があります。
 
 Red Hat Enterprise バージョン 6 の更新プログラムを分類するには、yum-security プラグインをインストールする必要があります。 Red Hat Enterprise Linux 7 では、プラグインは既に yum 自体の一部であるため、何もインストールする必要はありません。 詳細については、次の Red Hat の[ナレッジ記事](https://access.redhat.com/solutions/10021)を参照してください。
+
+(たとえば、 **[セキュリティ]** 分類に一致する更新プログラムのみをインストールするように構成されている) Linux マシンで更新プログラムを実行するようにスケジュールした場合、インストールされる更新プログラムはこの分類に一致する更新プログラムと異なる可能性があり、そうでなければそれらのサブセットです。 お使いの Linux マシンに対して保留になっている OS 更新プログラムの評価が実行されると、Linux ディストリビューション ベンダーが提供する [Open Vulnerability and Assessment Language](https://oval.mitre.org/) (OVAL) ファイルが分類のために Update Management によって使用されます。
+
+セキュリティの問題または脆弱性に対処する更新プログラムを含む OVAL ファイルに基づき、Linux 更新プログラムが **[セキュリティ]** か **[その他]** として分類されます。 ただし、更新スケジュールは、実行時、YUM、APT、ZYPPER などの適切なパッケージ マネージャーを使用して Linux マシンで実行され、更新プログラムがインストールされます。 Linux ディストリビューションのパッケージ マネージャーには、更新プログラムを分類する別のメカニズムが備わっていることがあり、その場合の結果は、Update Management によって OVAL ファイルから取得されるものと異なる可能性があります。 マシンを手動で確認し、パッケージ マネージャーによってセキュリティ関連の更新プログラムを把握するには、[Linux 更新プログラムのデプロイのトラブルシューティング](../troubleshoot/update-management.md#updates-linux-installed-different)に関する記事を参照してください。
 
 ## <a name="integrate-update-management-with-configuration-manager"></a>Configuration Manager と Azure Update Management を統合する
 

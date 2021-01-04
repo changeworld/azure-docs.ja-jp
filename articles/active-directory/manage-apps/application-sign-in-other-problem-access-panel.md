@@ -11,13 +11,13 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperfq2
-ms.openlocfilehash: 8cbc683f06b809ec4d9c63a61d73a0c731a92cd7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 59d733bfe5580e64d531eeac1db443982a308517
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651620"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033631"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Azure AD マイ アプリからのアプリケーションへのサインインに関する問題のトラブルシューティング
 
@@ -61,6 +61,7 @@ Web ベースのポータルであるマイ アプリを使用すると、Azure 
 -   [ユーザーの多要素認証の状態を確認する](#check-a-users-multi-factor-authentication-status)
 -   [ユーザーの認証の連絡先情報を確認する](#check-a-users-authentication-contact-info)
 -   [ユーザーのグループ メンバーシップを確認する](#check-a-users-group-memberships)
+-   [ユーザーに 999 個を超えるアプリ ロールの割り当てがあるかどうかを確認する](#check-if-a-user-has-more-than-999-app-role-assignments)
 -   [ユーザーに割り当てられているライセンスを確認する](#check-a-users-assigned-licenses)
 -   [ユーザーにライセンスを割り当てる](#assign-a-user-a-license)
 
@@ -138,6 +139,16 @@ Web ベースのポータルであるマイ アプリを使用すると、Azure 
 5.  **[すべてのユーザー]** を選択します。
 6.  対象のユーザーを **検索** し、**行を選択** することでユーザーを選択します。
 7.  **[グループ]** を選択すると、ユーザーがメンバーになっているグループが表示されます。
+
+### <a name="check-if-a-user-has-more-than-999-app-role-assignments"></a>ユーザーに 999 個を超えるアプリ ロールの割り当てがあるかどうかを確認する
+ユーザーに割り当てられているアプリ ロールの割り当てが 999 個を超える場合、マイ アプリで自分のアプリの一部が表示されないことがあります。
+
+これは、ユーザーが割り当てられているアプリを特定するために、マイ アプリでは現在、最大 999 個のアプリ ロールの割り当てが読み取られるためです。 ユーザーが 999 個を超えるアプリに割り当てられている場合、マイ アプリ ポータルに表示されるアプリを制御することはできません。
+
+ユーザーに付与されているアプリ ロールの割り当ての数を確認するには、次の手順に従います。
+1. [**Microsoft.Graph**](https://github.com/microsoftgraph/msgraph-sdk-powershell) PowerShell モジュールをインストールします。
+2. `Connect-MgGraph -Scopes "Directory.Read.All"` を実行し、**全体管理者** として認証します。
+3. `$m = Get-MgUserAppRoleAssignment -UserId "<userId>" | Measure; $m.Count` を実行して、ユーザーが現在付与されているアプリ ロールの割り当て数を確認します。
 
 ### <a name="check-a-users-assigned-licenses"></a>ユーザーに割り当てられているライセンスを確認する
 ユーザーに割り当てられているライセンスを確認するには、次の手順に従います。

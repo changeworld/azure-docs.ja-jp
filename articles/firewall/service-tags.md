@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 47377817b62d33e8af79e4a0d2dceb68ba9dbdc5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 83e9a96573bbc72e0afff61cc0f151f95b081e30
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658649"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031581"
 ---
 # <a name="azure-firewall-service-tags"></a>Azure Firewall サービス タグ
 
@@ -22,7 +22,7 @@ Azure Firewall サービス タグは、ネットワーク ルールの宛先フ
 
 ## <a name="supported-service-tags"></a>サポートされるサービス タグ
 
-Azure ファイアウォール ネットワーク ルール内で使用できるサービス タグの一覧については、「[セキュリティ グループ](../virtual-network/network-security-groups-overview.md#service-tags)」を参照してください。
+Azure ファイアウォール ネットワーク ルール内で使用できるサービス タグの一覧については、「[仮想ネットワーク サービス タグ](../virtual-network/service-tags-overview.md#available-service-tags)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

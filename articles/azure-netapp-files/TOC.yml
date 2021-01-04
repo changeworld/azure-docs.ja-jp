@@ -59,6 +59,8 @@
               href: solutions-windows-virtual-desktop.md
     - name: Azure NetApp Files についての FAQ
       href: azure-netapp-files-faqs.md
+    - name: Azure アプリケーション整合性スナップショット ツールとは
+      href: azacsnap-introduction.md
 - name: 操作方法ガイド
   items:
     - name: Azure NetApp Files に登録する
@@ -131,6 +133,32 @@
       href: /rest/api/netapp/
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.netapp/allversions
+    - name: Azure アプリケーション整合性スナップショット ツール (AzAcSnap)
+      items:
+        - name: AzAcSnap を使ってみる
+          href: azacsnap-get-started.md
+        - name: AzAcSnap のインストール
+          href: azacsnap-installation.md
+        - name: AzAcSnap を使用したディザスター リカバリー
+          href: azacsnap-disaster-recovery.md
+        - name: AzAcSnap を使用するためのヒントとテクニック
+          href: azacsnap-tips.md
+        - name: AzAcSnap のトラブルシューティング
+          href: azacsnap-troubleshoot.md
+        - name: AzAcSnap コマンド リファレンス
+          items:
+            - name: AzAcSnap の構成
+              href: azacsnap-cmd-ref-configure.md
+            - name: AzAcSnap のテスト
+              href: azacsnap-cmd-ref-test.md
+            - name: AzAcSnap を使用したバックアップ
+              href: azacsnap-cmd-ref-backup.md
+            - name: AzAcSnap を使用して詳細を取得する
+              href: azacsnap-cmd-ref-details.md
+            - name: AzAcSnap を使用した削除
+              href: azacsnap-cmd-ref-delete.md
+            - name: AzAcSnap を使用した復元
+              href: azacsnap-cmd-ref-restore.md
 - name: リソース
   items:
     - name: 価格

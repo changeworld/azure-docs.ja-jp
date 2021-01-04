@@ -57,8 +57,6 @@
   items:
     - name: IoT エクスプローラーをインストールして使用する
       href: howto-use-iot-explorer.md
-    - name: IoT プラグ アンド プレイ ブリッジをインストールして使用する
-      href: howto-use-iot-pnp-bridge.md
     - name: DTDL 作成ツールをインストールして使用する
       href: howto-use-dtdl-authoring-tools.md
     - name: 埋め込み C を使用する
@@ -67,6 +65,10 @@
       href: howto-manage-digital-twin.md
     - name: デバイスを認定する
       href: howto-certify-device.md
+    - name: IoT プラグ アンド プレイ ブリッジをインストールして使用する
+      href: howto-use-iot-pnp-bridge.md
+    - name: IoT プラグ アンド プレイ ブリッジを構築、デプロイ、拡張する
+      href: howto-build-deploy-extend-pnp-bridge.md
 - name: リファレンス
   items:
     - name: ライブラリと SDK

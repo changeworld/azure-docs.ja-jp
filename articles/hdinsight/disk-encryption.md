@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4e895cdba1bfc16eac0450bd05271f0e41985b7b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005658"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359761"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Azure HDInsight の保存データの二重暗号化
 
@@ -119,15 +119,24 @@ HDInsight では、Azure Key Vault にのみ対応しています。 自分の�
 
 これで新しい HDInsight クラスターを作成する準備が整いました。 カスタマー マネージド キーは、クラスター作成時に新しいクラスターにのみ適用できます。 カスタマー マネージド キー クラスターからは暗号化を削除することはできず、カスタマー マネージド キーは既存のクラスターには追加できません。
 
+[2020 年 11 月のリリース](hdinsight-release-notes.md#release-date-11182020)以降、HDInsight では、バージョン管理されているものとバージョンレスの両方のキー URI を使用したクラスター作成がサポートされています。 バージョンレスのキー URI でクラスターを作成すると、HDInsight クラスターでは、Azure Key Vault でキーが更新されたときにキーの自動ローテーションが試行されます。 バージョン管理されたキー URI でクラスターを作成する場合は、「[暗号キーを入れ替える](#rotating-the-encryption-key)」で説明されているように、手動でキー ローテーションを実行する必要があります。
+
+2020 年 11 月のリリースより前に作成されたクラスターでは、バージョン管理されたキー URI を使用して手動でキー ローテーションを実行する必要があります。
+
 #### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
-クラスター作成時、キーのバージョンも含む、完全 **キー識別子** を指定します。 たとえば、「 `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 」のように入力します。 また、クラスターにマネージド ID を割り当て、キー URI を指定する必要があります。
+クラスターの作成時、次の方法でバージョン管理されたキー、またはバージョンレス キーを使用できます。
+
+- **バージョン管理されている** - クラスター作成時、キーのバージョンを含む完全な **キー識別子** を指定します。 たとえば、「 `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 」のように入力します。
+- **バージョンレス** - クラスターの作成時、**キー識別子** だけを指定します。 たとえば、「 `https://contoso-kv.vault.azure.net/keys/myClusterKey` 」のように入力します。
+
+また、クラスターにマネージド ID を割り当てる必要もあります。
 
 ![新しいクラスターを作成する](./media/disk-encryption/create-cluster-portal.png)
 
 #### <a name="using-azure-cli"></a>Azure CLI の使用
 
-次の例では、Azure CLI を使用して、ディスク暗号化が有効になった新しい Apache Spark クラスターを作成する方法を示します。 詳細については、「 [Azure CLI az hdinsight の作成](/cli/azure/hdinsight#az-hdinsight-create)」をご参照ください。
+次の例では、Azure CLI を使用して、ディスク暗号化が有効になった新しい Apache Spark クラスターを作成する方法を示します。 詳細については、「 [Azure CLI az hdinsight の作成](/cli/azure/hdinsight#az-hdinsight-create)」をご参照ください。 パラメーター `encryption-key-version` は省略可能です。
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -141,7 +150,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 
 #### <a name="using-azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレートを作成する
 
-次の例では、Azure Resource Manager テンプレートを使用して、ディスク暗号化が有効になっている新しい Apache Spark クラスターを作成する方法を示します。 詳細については、「[ARM テンプレートとは](../azure-resource-manager/templates/overview.md)」を参照してください。
+次の例では、Azure Resource Manager テンプレートを使用して、ディスク暗号化が有効になっている新しい Apache Spark クラスターを作成する方法を示します。 詳細については、「[ARM テンプレートとは](../azure-resource-manager/templates/overview.md)」を参照してください。 リソース マネージャー テンプレート プロパティ `diskEncryptionKeyVersion` は省略可能です。
 
 この例では、PowerShell を使用してテンプレートを呼び出します。
 
@@ -355,7 +364,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="rotating-the-encryption-key"></a>暗号化キーを入れ替える
 
-HDInsight クラスターで使用される暗号化キーを、作成後に変更する必要が生じる場合があります。 これはポータルを使用して簡単に行うことができます。 この操作を行うには、クラスターが現在のキーと目的の新しいキーの両方にアクセスできる必要があり、そうでないとキーの交換操作は失敗します。
+Azure portal または Azure CLI を使用して、実行中のクラスターで使用されている暗号化キーを変更できます。 この操作を行うには、クラスターが現在のキーと目的の新しいキーの両方にアクセスできる必要があり、そうでないとキーの交換操作は失敗します。 2020 年 11 月のリリースより後に作成されたクラスターの場合は、新しいキーにバージョンを含めるかどうかを選択できます。 2020 年 11 月のリリースより前に作成されたクラスターの場合は、暗号化キーをローテーションするときに、バージョン管理されたキーを使用する必要があります。
 
 #### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 

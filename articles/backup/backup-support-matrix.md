@@ -4,12 +4,12 @@ description: Azure Backup サービスのサポート設定と制限事項の概
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 70a81b42ad2fb417902a627afb1651d572844648
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: be0c576da6e38233423a79f562f767de806d7640
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548513"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008369"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -67,7 +67,7 @@ Azure VM をバックアップしたい場合に何がサポートされるか�
 
 **マシン** | **バックアップされる項目** | **場所** | **機能**
 --- | --- | --- | ---
-**VM 拡張機能を使用した Azure VM のバックアップ** | VM 全体 | コンテナーへのバックアップ。 | VM のバックアップを有効にするときにインストールされる拡張機能。<br/><br/> 1 日 1 回のバックアップ。<br/><br/> Windows VM の場合はアプリ対応バックアップ、Linux VM の場合はファイル整合性バックアップ。 Linux マシンでは、カスタム スクリプトを使用して、アプリ整合性を構成できます。<br/><br/> VM またはディスクの復元。<br/><br/> Azure VM は、オンプレミスの場所へはバックアップできません。
+**VM 拡張機能を使用した Azure VM のバックアップ** | VM 全体 | コンテナーへのバックアップ。 | VM のバックアップを有効にするときにインストールされる拡張機能。<br/><br/> 1 日 1 回のバックアップ。<br/><br/> Windows VM の場合はアプリ対応バックアップ、Linux VM の場合はファイル整合性バックアップ。 Linux マシンでは、カスタム スクリプトを使用して、アプリ整合性を構成できます。<br/><br/> VM またはディスクの復元。<br/><br/>[Active Directory ドメイン コントローラーのバックアップおよび復元](active-directory-backup-restore.md)がサポートされています。<br><br> Azure VM は、オンプレミスの場所へはバックアップできません。
 **MARS エージェントを使用する Azure VM のバックアップ** | ファイル、フォルダー、システム状態 | コンテナーへのバックアップ。 | 1 日に 3 回のバックアップ。<br/><br/> VM 全体ではなく特定のファイルまたはフォルダーをバックアップしたい場合は、MARS エージェントを VM 拡張機能と共に実行できます。
 **Azure VM (DPM あり)** | ファイル、フォルダー、ボリューム、システム状態、アプリ データ | DPM が実行されている Azure VM のローカル ストレージへのバックアップ。 DPM はその後、コンテナーにバックアップされます。 | アプリ対応のスナップショット。<br/><br/> バックアップと回復の完全な細分性。<br/><br/> VM (Hyper-V または VMware) で Linux がサポートされています。<br/><br/> Oracle はサポートされていません。
 **Azure VM (MABS あり)** | ファイル、フォルダー、ボリューム、システム状態、アプリ データ | MABS が実行されている Azure VM のローカル ストレージへのバックアップ。 MABS はその後、コンテナーにバックアップされます。 | アプリ対応のスナップショット。<br/><br/> バックアップと回復の完全な細分性。<br/><br/> VM (Hyper-V または VMware) で Linux がサポートされています。<br/><br/> Oracle はサポートされていません。

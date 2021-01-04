@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1ba7391b3b524f7532101083a444aab6059e8a10
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 043e365bfe27db516a42386a91bc0433e27e2068
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408757"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368836"
 ---
 # <a name="security-control-v2-incident-response"></a>セキュリティ コントロール V2: インシデント対応
 
@@ -20,7 +20,7 @@ ms.locfileid: "94408757"
 
 ## <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: 準備 – インシデント対応プロセスを Azure 用に更新する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IR-1 | 19 | IR-4、IR-8 |
 
@@ -30,9 +30,9 @@ ms.locfileid: "94408757"
 
 - [インシデント対応のリファレンス ガイド](/microsoft-365/downloads/IR-Reference-Guide.pdf)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -42,7 +42,7 @@ ms.locfileid: "94408757"
 
 ## <a name="ir-2-preparation--setup-incident-notification"></a>IR-2: 準備 – インシデント通知をセットアップする
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IR-2 | 19.5 | IR-4、IR-5、IR-6、IR-8 |
 
@@ -50,9 +50,9 @@ Azure Security Center でセキュリティ インシデントの連絡先情報
 
 - [Azure Security Center のセキュリティ連絡先を設定する方法](../../security-center/security-center-provide-security-contact-details.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -60,7 +60,7 @@ Azure Security Center でセキュリティ インシデントの連絡先情報
 
 ## <a name="ir-3-detection-and-analysis--create-incidents-based-on-high-quality-alerts"></a>IR-3: 検出と分析 – 高品質のアラートに基づいてインシデントを作成する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IR-3 | 19.6 | IR-4、IR-5 |
 
@@ -76,9 +76,9 @@ Azure Security Center では、多数の Azure 資産について高品質のア
 
 - [Azure Sentinel にアラートをストリーミングする方法](../../sentinel/connect-azure-security-center.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -88,7 +88,7 @@ Azure Security Center では、多数の Azure 資産について高品質のア
 
 ## <a name="ir-4-detection-and-analysis--investigate-an-incident"></a>IR-4: 検出と分析 – インシデントを調査する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IR-4 | 19 | IR-4 |
 
@@ -116,9 +116,9 @@ Azure Sentinel により、事実上すべてのログソースに対して広�
 
 - [Azure Sentinel でインシデントを調査します](../../sentinel/tutorial-investigate-cases.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -128,7 +128,7 @@ Azure Sentinel により、事実上すべてのログソースに対して広�
 
 ## <a name="ir-5-detection-and-analysis--prioritize-incidents"></a>IR-5: 検出と分析 – インシデントの優先順位を付ける
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IR-5 | 19.8 | CA-2、IR-4 |
 
@@ -142,9 +142,9 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 - [タグを使用した Azure リソースの整理](../../azure-resource-manager/management/tag-resources.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -154,7 +154,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 ## <a name="ir-6-containment-eradication-and-recovery--automate-the-incident-handling"></a>IR-6: 包含、根絶、復旧 – インシデントの処理を自動化する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NIST SP 800-53 r4 ID |
 |--|--|--|--|
 | IR-6 | 19 | IR-4、IR-5、IR-6 |
 
@@ -166,9 +166,9 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 - [Azure Sentinel で脅威への自動対応を設定します](../../sentinel/tutorial-respond-threats-playbook.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 

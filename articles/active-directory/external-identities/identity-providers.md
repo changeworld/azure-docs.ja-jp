@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a61eca3340985886ef782b28a59a1283c5f473ce
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ead05598c6ca4d096e1a68c8d640938ecd771c2
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265716"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355513"
 ---
 # <a name="identity-providers-for-external-identities"></a>外部 ID に対する ID プロバイダー
 
@@ -25,6 +25,9 @@ ms.locfileid: "91265716"
 ただし、ユーザーがさまざまな ID プロバイダーを使用してサインインできるようにすることができます。
 
 - **Google**: Google フェデレーションでは、外部ユーザーが自分の Gmail アカウントでアプリにサインインすることにより、あなたからの招待を利用することができます。 Google フェデレーションは、セルフサービスのサインアップ ユーザー フローでも使用できます。
+   > [!IMPORTANT]
+   > **2021 年 1 月 4 日以降**、Google は [WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 Gmail で Google フェデレーションまたはセルフサービス サインアップを使用している場合は、[基幹業務ネイティブ アプリケーションの互換性をテストする](google-federation.md#deprecation-of-webview-sign-in-support)必要があります。
+
    > [!NOTE]
    > 現在のセルフサービス サインアップ プレビューでは、ユーザー フローがアプリに関連付けられていて、そのアプリへの招待をユーザーに送信した場合、そのユーザーは Gmail アカウントを使用してその招待を利用することができません。 回避策として、ユーザーはセルフサービスのサインアップ プロセスを実行できます。 または、別のアプリにアクセスするか、 https://myapps.microsoft.com でマイ アプリ ポータルを使用して、招待を利用することができます。
 

@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 11/13/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: ced78955c71f37a5a6f5231f61e5327428834f00
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ca55186a53b228aa97cc82d33a09aa3ffe455eee
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919100"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092008"
 ---
 # <a name="machine-learning-with-apache-spark"></a>Apache Spark による機械学習
 
@@ -43,17 +43,17 @@ Azure Synapse Analytics で Azure Spark を使用して機械学習モデルを�
 ### <a name="sparkml-and-mllib"></a>SparkML と MLlib
 Spark のメモリ内の分散計算機能により、Machine Learning とグラフ計算に使用される反復的なアルゴリズムに対して、Spark は適切な選択肢となります。 ```spark.ml``` は、ユーザーが機械学習パイプラインを作成して調整できるようにするための、一貫した高レベルの API のセットを提供します。 ```spark.ml``` の詳細については、「[Apache Spark ML プログラミング ガイド](https://spark.apache.org/docs/1.2.2/ml-guide.html)」を参照してください。
 
-### <a name="azure-machine-learning-automl"></a>Azure Machine Learning AutoML
-[Azure Machine Learning AutoML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) (自動機械学習) は、機械学習モデルを開発するプロセスの自動化に役立ちます。 これにより、データ サイエンティスト、アナリスト、開発は、モデルの品質を維持しながら、高いスケール、効率性、生産性で ML モデルを構築することができます。 Azure Machine Learning AutoML SDK を実行するためのコンポーネントは、Synapse ランタイムに直接組み込まれています。
+### <a name="azure-machine-learning-automated-ml"></a>Azure Machine Learning の自動 ML
+[Azure Machine Learning の自動 ML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) (自動機械学習) は、機械学習モデルを開発するプロセスの自動化に役立ちます。 これにより、データ サイエンティスト、アナリスト、開発は、モデルの品質を維持しながら、高いスケール、効率性、生産性で ML モデルを構築することができます。 Azure Machine Learning 自動 ML SDK を実行するためのコンポーネントは、Synapse ランタイムに直接組み込まれています。
 
 ### <a name="open-source-libraries"></a>オープンソース ライブラリ
 Azure Synapse Analytics のすべての Apache Spark プールには、事前に読み込まれる人気の高い機械学習ライブラリのセットが付属しています。  既定で含まれている関連する機械学習ライブラリには、次のようなものがあります。
 
-- [Scikit-learn](https://scikit-learn.org/stable/index.html) は、従来の ML アルゴリズム用の最も人気のある単一ノード機械学習ライブラリの 1 つです。 Scikit-learn は、教師ありおよび教師なしの学習アルゴリズムのほとんどをサポートしており、データ マイニングとデータ分析にも使用できます。
+- [Scikit-learn](https://scikit-learn.org/stable/index.html) は、従来の ML アルゴリズム用のとても人気のある単一ノード機械学習ライブラリの 1 つです。 Scikit-learn は、教師ありおよび教師なしの学習アルゴリズムのほとんどをサポートしており、データ マイニングとデータ分析にも使用できます。
   
 - [XGBoost](https://xgboost.readthedocs.io/en/latest/) は、デシジョン ツリーとランダム フォレストのトレーニング向けに最適化されたアルゴリズムを含む、人気の高い機械学習ライブラリです。 
   
-- [PyTorch](https://pytorch.org/) & [Tensorflow](https://www.tensorflow.org/) は、強力な Python ディープ ラーニング ライブラリです。 Azure Synapse Analytics の Apache Spark プール内で、これらのライブラリを使用して、プール上の Executor の数をゼロに設定することで、単一マシンのモデルを構築できます。 この構成では Apache Spark が機能しませんが、単一マシンのモデルを作成するためのシンプルでコスト効率の高い方法です。
+- [PyTorch](https://pytorch.org/) と [Tensorflow](https://www.tensorflow.org/) は、強力な Python ディープ ラーニング ライブラリです。 Azure Synapse Analytics の Apache Spark プール内で、これらのライブラリを使用して、プール上の Executor の数をゼロに設定することで、単一マシンのモデルを構築できます。 この構成では Apache Spark が機能しませんが、単一マシンのモデルを作成するためのシンプルでコスト効率の高い方法です。
 
 ## <a name="track-model-development"></a>モデル開発の追跡
 [MLFlow](https://www.mlflow.org/) は、機械学習の実験のライフ サイクルを管理するためのオープンソース ライブラリです。 MLflow Tracking は、トレーニング実行のメトリックとモデル成果物のログ記録と追跡を行う、MLflow のコンポーネントです。 Azure Synapse Analytics と Azure Machine Learning を介して MLFlow 追跡を使用する方法の詳細については、[MLFlow の使用方法](https://docs.microsoft.com/azure/machine-learning/how-to-use-mlflow)に関するこのチュートリアルを参照してください。
@@ -68,7 +68,7 @@ Azure Synapse Analytics のすべての Apache Spark プールには、事前に
 Azure Synapse Analytics による機械学習を開始するには、次のチュートリアルを必ずご確認ください。
 - [Azure Synapse Notebook でデータを分析する](../spark/apache-spark-data-visualization-tutorial.md)
 
-- [AutoML で機械学習モデルをトレーニングする](../spark/apache-spark-azure-machine-learning-tutorial.md)
+- [自動 ML を使用して機械学習モデルをトレーニングする](../spark/apache-spark-azure-machine-learning-tutorial.md)
 
 - [Apache Spark MLlib で機械学習モデルをトレーニングする](../spark/apache-spark-machine-learning-mllib-notebook.md)
   

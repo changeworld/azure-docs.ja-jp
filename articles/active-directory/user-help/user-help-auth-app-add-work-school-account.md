@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: e003c45aa1e7d75b709b7fbf99532fb1302fcbb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04c9bc429d9663f7ac36b6ba8f40abf225eb71c6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797651"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359117"
 ---
 # <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリに職場または学校アカウントを追加する
 
@@ -27,30 +27,49 @@ ms.locfileid: "88797651"
 
 ## <a name="add-your-work-or-school-account"></a>職場または学校のアカウントを追加する
 
-1. お使いのコンピューターで、[[追加のセキュリティ確認]](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) ページに移動します。
+Microsoft Authenticator アプリに職場または学校アカウントを追加するには、次のいずれかを行います。
 
-    >[!Note]
-    >**[追加のセキュリティ確認]** ページが表示されない場合は、管理者がセキュリティ情報 (プレビュー) エクスペリエンスをオンにしている可能性があります。 その場合は、[[認証アプリを使用するようにセキュリティ情報を設定する]](security-info-setup-auth-app.md) セクションの指示に従います。 そうでない場合は、組織のヘルプ デスクに問い合わせる必要があります。 セキュリティ情報の詳細については、「[セキュリティ情報 (プレビュー) の概要](./security-info-setup-signin.md)」を参照してください。
+- 職場または学校アカウントの資格情報を使用してサインインする (プレビュー)
+- QR コードをスキャンする
 
-2. **[Authenticator アプリ]** の横のチェック ボックスをオンにし、 **[構成]** を選択します。
+### <a name="sign-in-with-your-credentials"></a>資格情報を使用してサインイン
 
-    **[モバイル アプリケーションの構成]** ページが表示されます。
+>[!Note]
+>この機能を使用できるのは、管理者が Authenticator アプリを使用して電話によるサインインを有効にしているユーザーのみです。
 
-    ![QR コードを提供する画面](./media/user-help-auth-app-download-install/auth-app-barcode.png)
+アカウントを追加するには、自分の資格情報を使用して職場または学校アカウントにサインインします。
 
-3. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、 **[職場または学校アカウント]** を選択します。
+1. Microsoft Authenticator アプリを開き、 **[+]** ボタンを選択し、 **[Add work or school account]\(職場または学校アカウントの追加\)** をタップします。 **[サインイン]** を選択します。
 
-    >[!Note]
-    >初めて Microsoft Authenticator アプリを設定する場合は、アプリによるカメラへのアクセスを許可するか (iOS)、またはアプリによる画像の撮影とビデオの録画を許可するか (Android) を確認するメッセージが表示されることがあります。 認証アプリがカメラにアクセスして、次の手順で QR コードを撮影できるようにするには、 **[許可]** を選択する必要があります。 カメラを許可しない場合でも、認証アプリを設定できますが、手動でコード情報を追加する必要があります。 コードを手動で追加する方法の詳細については、「[アプリにアカウントを手動で追加する](user-help-auth-app-add-account-manual.md)」を参照してください。
+1. 職場または学校アカウントの資格情報を入力します。 一時アクセス パス (TAP) がある場合は、それを使用してサインインできます。 この時点で、次のいずれかの条件によって処理がブロックされる可能性があります。
 
-4. お使いのデバイスのカメラを使用して、コンピューターの **[モバイル アプリケーションの構成]** 画面から QR コードをスキャンして、 **[完了]** を選択します。
+   - 強力な認証トークンを取得するのに十分な認証方法がアカウントにない場合は、アカウントの追加に進むことはできません。
 
-    >[!Note]
-    >カメラで QR コードをキャプチャできない場合は、2 要素検証のために Microsoft Authenticator アプリにご自分のアカウント情報を手動で追加できます。 これを行う方法と詳細については、[手動でのアカウントの追加](user-help-auth-app-add-account-manual.md)に関するページを参照してください。
+   - 「`You might be signing in from a location that is restricted by your admin`」というメッセージが表示された場合は、ブロックされているため、管理者に [[セキュリティ情報]](https://mysignins.microsoft.com/security-info) でブロックを解除してもらう必要があります。
 
-5. デバイスに表示されたアプリの **[アカウント]** 画面を調べ、ご自分のアカウントが正しいことと 6 桁の確認コードが関連付けられていることを確認します。 セキュリティ強化のため、他のユーザーによってコードが複数回使用されないように、確認コードは 30 秒ごとに変更されます。
+   - 管理者によって Authenticator アプリを使用した電話によるサインインがブロックされていない場合は、デバイスの登録を通じて、電話によるパスワードレス サインインと Azure Multi-Factor Authentication (MFA) の設定を行うことができます。
 
-    ![[アカウント] 画面](./media/user-help-auth-app-download-install/auth-app-accounts.png)
+1. この時点で、組織から提供された QR コードをスキャンして、アプリでオンプレミスの多要素認証アカウントを設定するように求められる場合があります。 この操作を行う必要があるのは、組織がオンプレミスの MFA Server を使用している場合のみです。
+
+1. デバイスでアカウントをタップし、全画面表示でご自分のアカウントが正しいことと、関連付けられている 6 桁の確認コードがあることを確認します。 セキュリティ強化のため、他のユーザーによってコードが複数回使用されないように、確認コードは 30 秒ごとに変更されます。
+
+## <a name="sign-in-with-a-qr-code"></a>QR コードを使用してサインインする
+
+QR コードをスキャンしてアカウントを追加するには、以下を実行します。
+
+1. お使いのコンピューターで、**[追加のセキュリティ確認]** ページに移動します。
+
+   >[!Note]
+   >**[追加のセキュリティ確認]** ページが表示されない場合は、管理者がセキュリティ情報 (プレビュー) エクスペリエンスをオンにしている可能性があります。 その場合は、[[認証アプリを使用するようにセキュリティ情報を設定する]](security-info-setup-auth-app.md) セクションの指示に従います。 そうでない場合は、組織のヘルプ デスクに問い合わせる必要があります。 セキュリティ情報の詳細については、「[サインイン プロンプトから自分のセキュリティ情報を設定する](security-info-setup-signin.md)」を参照してください。
+
+1. Authenticator アプリの横にあるチェック ボックスをオンにし、 **[構成]** を選択します。 **[モバイル アプリケーションの構成]** ページが表示されます。
+
+   ![QR コードを提供する画面](./media/user-help-auth-app-add-work-school-account/auth-app-barcode.png)
+
+1. Microsoft Authenticator アプリを開き、プラス アイコン ![iOS または Android のデバイスでプラス アイコンを選択する](media/user-help-auth-app-add-work-school-account/plus-icon.png) を選択して、 **[アカウントの追加]** を選択し、 **[職場または学校アカウント]** 、その後に  **[QR コードをスキャンします]** を選択します。
+   Authenticator アプリにアカウントが設定されていない場合は、 **[アカウントの追加]** という大きな青いボタンが表示されます。
+
+QR コードのスキャンにカメラを使用することについて確認を求められない場合は、携帯電話の設定で Authenticator アプリが電話のカメラにアクセスできることを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

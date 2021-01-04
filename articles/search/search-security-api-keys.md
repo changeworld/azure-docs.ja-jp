@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 0e209e8114d8f1791a00e87894fa12206edcf34e
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 29a314553584843ed6241b9311e9d72b42ec8705
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700224"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516414"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Cognitive Search サービスの管理者 API キーを作成する
 
@@ -88,6 +88,7 @@ API キーは、ランダムに生成された数字と文字から成る文字�
 ポータルまたは管理レイヤーを介して新しいキーを作成した後に、新しいキーを入手し、要求に応じてそのキーを提供すると、アクセスがコンテンツ (インデックス、インデクサー、データ ソース、シノニム マップ) に復元されます。
 
 ## <a name="secure-api-keys"></a>API キーをセキュリティ保護する
+
 キーのセキュリティは、ポータルまたはリソース マネージャーのインターフェイス (PowerShell またはコマンドライン インターフェイス) でアクセスを制限することによって確保されます。 前述のように、サブスクリプションの管理者はすべての API キーを表示および再生成できます。 用心のために、ロールの割り当てを調べて、管理キーへのアクセス権を持つユーザーを確認してください。
 
 + サービス ダッシュボードで、 **[アクセス制御 (IAM)]** をクリックし、次に **[ロールの割り当て]** タブをクリックして、サービスのロールの割り当てを表示します。

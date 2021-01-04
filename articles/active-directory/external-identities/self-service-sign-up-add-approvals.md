@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82f0408b7e46493f6c3ec62d48a992e87f196f78
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 3165bc28e6d6283bf8578d9c10b11f7b19981002
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860611"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355241"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>カスタム承認ワークフローをセルフサービス サインアップに追加する
 
@@ -26,6 +26,9 @@ ms.locfileid: "96860611"
 
 - ユーザーを自動的に承認し、Azure AD にユーザー アカウントの作成を許可します。
 - 手動レビューをトリガーします。 要求が承認された場合、承認システムは Microsoft Graph を使用してユーザー アカウントをプロビジョニングします。 承認システムは、アカウントが作成されたことをユーザーに通知することもできます。
+
+> [!IMPORTANT]
+>**2021 年 1 月 4 日以降**、Google は [WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 Gmail で Google フェデレーションまたはセルフサービス サインアップを使用している場合は、[基幹業務ネイティブ アプリケーションの互換性をテストする](google-federation.md#deprecation-of-webview-sign-in-support)必要があります。
 
 ## <a name="register-an-application-for-your-approval-system"></a>承認システム用のアプリケーションを登録する
 

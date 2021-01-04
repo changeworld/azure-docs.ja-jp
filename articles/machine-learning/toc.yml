@@ -165,6 +165,8 @@
       href: concept-model-management-and-deployment.md
     - name: モデルの移植性 (ONNX)
       href: concept-onnx.md
+    - name: オープンソースの統合
+      href: concept-open-source.md
     - name: ML パイプライン
       href: concept-ml-pipelines.md
     - name: Security
@@ -370,6 +372,8 @@
           href: how-to-train-pytorch.md
         - name: カスタム Docker イメージを使用したトレーニング
           href: how-to-train-with-custom-image.md
+        - name: Estimator から ScriptRunConfig への移行
+          href: how-to-migrate-from-estimators-to-scriptrunconfig.md
         - name: トレーニングの追跡と監視
           items:
             - name: 実行の開始、監視、または取り消し
@@ -513,8 +517,6 @@
           href: how-to-move-data-in-out-of-pipelines.md
         - name: ML パイプラインをデプロイする (Python)
           href: how-to-deploy-pipelines.md
-        - name: パイプラインのスケジュールを設定する (Python)
-          href: how-to-schedule-pipelines.md
         - name: パイプラインをトリガーする
           href: how-to-trigger-published-pipeline.md
         - name: デザイナー (ドラッグアンドドロップ)

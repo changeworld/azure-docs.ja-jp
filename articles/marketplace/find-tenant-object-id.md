@@ -6,12 +6,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 10/09/2020
-ms.openlocfilehash: db09943085cb7934bca5d7f2dc24ba692613ee19
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2b1ba0779649c4955987c7dae9802cefaba89b79
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426899"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109345"
 ---
 # <a name="find-tenant-id-object-id-and-partner-association-details"></a>テナント ID、オブジェクト ID、パートナーの関連付けの詳細を検索する
 
@@ -29,7 +29,7 @@ ms.locfileid: "92426899"
 
     :::image type="content" source="media/tenant-and-object-id/icon-azure-ad.png" alt-text="Azure portal の [Azure Active Directory] アイコン。":::
 
-3. **[グループ]** を選びます。 テナント ID は、 **[テナント情報]** ボックスにあります。
+3. **[概要]** を選択します。 テナント ID が **[基本情報]** の下に表示されるはずです。
 
     :::image type="content" source="media/tenant-and-object-id/select-groups-1.png" alt-text="Azure portal で [グループ] を選択します。":::
 
@@ -62,7 +62,7 @@ ms.locfileid: "92426899"
 
     :::image type="content" source="media/tenant-and-object-id/azure-ad-admin-center.png" alt-text="Azure Active Directory 管理センター。":::
 
-6. 左側のメニューの **[アクセス制御 (IAM)]** を選択してから、 **[ロールの割り当て]** を選択することで、 **ロールの割り当て** を検索します。
+6. 左側のメニューの **[アクセス制御 (IAM)]** を選択してから、 **[ロールの割り当て]** を選択することで、**ロールの割り当て** を検索します。
 
     :::image type="content" source="https://docs.microsoft.com/azure/role-based-access-control/media/role-assignments-portal/role-assignments.png" alt-text="Azure リソースに対するロールの割り当て。":::
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: d9805c45b7c0af0cfe6410defaab7ea7725691d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17fc2db8c51c06601852037c38b9cfc2096c811f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907206"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109757"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの BLOB ストレージと Azure Data Lake Gen2 出力
 
@@ -30,7 +30,7 @@ Azure Blob Storage を使用すると、大量の非構造化データをクラ�
 | ストレージ アカウント     | ご自分の出力を送信するストレージ アカウントの名前です。               |
 | ストレージ アカウント キー | ストレージ アカウントに関連付けられている秘密キー。                              |
 | ストレージ コンテナー   | Azure Blob service に格納される BLOB の論理グループです。 BLOB を Blob service にアップロードするとき、その BLOB のコンテナーを指定する必要があります。 |
-| パスのパターン | 省略可能。 指定したコンテナー内のご自分の BLOB を書き込むために使用されるファイル パス パターンです。 <br /><br /> パス パターン内では、BLOB が書き込まれる頻度を指定するために、日付と時刻の変数のインスタンスを 1 つまたは複数使用できます。 <br /> {date}、{time} <br /><br />カスタム BLOB パーティション分割を使用して、イベント データの 1 つのカスタム {field} 名を指定することで、BLOB をパーティション分割できます。 このフィールド名は英数字であり、スペース、ハイフン、およびアンダースコアを含めることができます。 カスタム フィールドには次の制限事項が含まれます。 <ul><li>フィールド名は大文字小文字が区別されません。 たとえば、このサービスでは列 "ID" と列 "id" を区別できません。</li><li>入れ子になったフィールドは使用できません。 代わりに、ジョブ クエリ内で別名を使用して、フィールドを "フラット化" します。</li><li>式はフィールド名として使用できません。</li></ul> <br />この機能により、パスでカスタム日付/時刻書式指定子の構成を使用できるようになります。 カスタム日時書式は、一度に 1 つを {datetime:\<specifier>} キーワードで囲んで指定する必要があります。 \<specifier> の使用可能な入力は、yyyy、MM、M、dd、d、HH、H、mm、m、ss、または s です。 カスタムの日付/時刻の構成を形成するために、パス内で {datetime:\<specifier>} キーワードを複数回使用できます。 <br /><br />例 : <ul><li>例 1: cluster1/logs/{date}/{time}</li><li>例 2: cluster1/logs/{date}</li><li>例 3: cluster1/{client_id}/{date}/{time}</li><li>例 4: cluster1/{datetime:ss}/{myField}。この場合、クエリは次のようになります。SELECT data.myField AS myField FROM Input;</li><li>例 5: cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br />作成されたフォルダー構造のタイム スタンプは、ローカル時間ではなく、UTC に従います。<br /><br />ファイルの名前付けでは、次の規則を使用します。 <br /><br />{Path Prefix Pattern}/schemaHashcode_Guid_Number.extension<br /><br />出力ファイル例:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />この機能の詳細については、「[Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割](stream-analytics-custom-path-patterns-blob-storage-output.md)」を参照してください。 |
+| パスのパターン | 省略可能。 指定したコンテナー内のご自分の BLOB を書き込むために使用されるファイル パス パターンです。 <br /><br /> パス パターン内では、BLOB が書き込まれる頻度を指定するために、日付と時刻の変数のインスタンスを 1 つまたは複数使用できます。 <br /> {date}、{time} <br /><br />カスタム BLOB パーティション分割を使用して、イベント データの 1 つのカスタム {field} 名を指定することで、BLOB をパーティション分割できます。 このフィールド名は英数字であり、スペース、ハイフン、およびアンダースコアを含めることができます。 カスタム フィールドには次の制限事項が含まれます。 <ul><li>フィールド名は大文字小文字が区別されません。 たとえば、このサービスでは列 "ID" と列 "id" を区別できません。</li><li>入れ子になったフィールドは使用できません。 代わりに、ジョブ クエリ内で別名を使用して、フィールドを "フラット化" します。</li><li>式はフィールド名として使用できません。</li></ul> <br />この機能により、パスでカスタム日付/時刻書式指定子の構成を使用できるようになります。 カスタム日時書式は、一度に 1 つを {datetime:\<specifier>} キーワードで囲んで指定する必要があります。 \<specifier> の使用可能な入力は、yyyy、MM、M、dd、d、HH、H、mm、m、ss、または s です。 カスタムの日付/時刻の構成を形成するために、パス内で {datetime:\<specifier>} キーワードを複数回使用できます。 <br /><br />例 : <ul><li>例 1: cluster1/logs/{date}/{time}</li><li>例 2: cluster1/logs/{date}</li><li>例 3: cluster1/{client_id}/{date}/{time}</li><li>例 4: cluster1/{datetime:ss}/{myField}。この場合、クエリは次のようになります。SELECT data.myField AS myField FROM Input;</li><li>例 5: cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br />作成されたフォルダー構造のタイム スタンプは、ローカル時間ではなく、UTC に従います。 [System.Timestamp](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-time-handling#choose-the-best-starting-time) は、時間ベースのパーティション分割すべてに使用される時間です。<br /><br />ファイルの名前付けでは、次の規則を使用します。 <br /><br />{Path Prefix Pattern}/schemaHashcode_Guid_Number.extension<br /><br /> ここで、GUID は、BLOB ファイルに書き込むために作成された内部ライターに割り当てられた一意識別子を表します。 この数値は、BLOB ブロックのインデックスを表します。 <br /><br /> 出力ファイル例:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />この機能の詳細については、「[Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割](stream-analytics-custom-path-patterns-blob-storage-output.md)」を参照してください。 |
 | 日付の形式 | 省略可能。 日付トークンがプレフィックス パスで使用されている場合、ファイルを編成する日付形式を選択できます。 例:YYYY/MM/DD |
 | 時刻の形式 | 省略可能。 時刻トークンがプレフィックス パスで使用されている場合、ファイルを編成する時刻形式を指定します。 現在唯一サポートされている値は HH です。 |
 | イベントのシリアル化の形式 | 出力データのシリアル化形式。 JSON、CSV、Avro、Parquet がサポートされています。 |

@@ -11,28 +11,28 @@ ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 9483fe972cf1a4dce4fb285ced3cb390d0bda725
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 41dd1ae62e67fe7a23ad62927e1a67989d684bdb
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516785"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516480"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>独自に開発したアプリケーションのトークン有効期間の既定値を変更する方法
 
-この記事では、Azure AD PowerShell を使用して、トークンの有効期間ポリシーを設定する方法を示します。 Azure AD Premium では、非機密クライアントに対して発行されたトークンの有効期間をアプリ開発者とテナント管理者が構成できます。 トークンの有効期間ポリシーは、テナント全体またはアクセスされるリソースに対して設定されます。
+この記事では、Azure AD PowerShell を使用して、アクセス トークンの有効期間ポリシーを設定する方法を示します。 Azure AD Premium では、非機密クライアントに対して発行されたトークンの有効期間をアプリ開発者とテナント管理者が構成できます。 トークンの有効期間ポリシーは、テナント全体またはアクセスされるリソースに対して設定されます。
 
 > [!IMPORTANT]
-> 2021 年 1 月 30 日以降、テナントでは更新およびセッション トークンの有効期間を構成できなくなり、Azure Active Directory では、その日以降、ポリシー内の既存の更新およびセッション トークンの構成が考慮されなくなります。 非推奨となった後も、アクセス トークンの有効期間を構成することはできます。 詳細については、[Azure AD の構成可能なトークン有効期間](./active-directory-configurable-token-lifetimes.md)に関する記事を参照してください。
+> 2020 年 5 月以降、テナントで更新とセッション トークンの有効期間を構成できなくなります。  2021 年 1 月 30 日以降は、Azure Active Directory でポリシー内の既存の更新とセッション トークンの構成が考慮されなくなります。 非推奨となった後も、アクセス トークンの有効期間を構成することはできます。 詳細については、[Azure AD の構成可能なトークン有効期間](./active-directory-configurable-token-lifetimes.md)に関する記事を参照してください。
 > Azure AD の条件付きアクセスに [認証セッションの管理機能](../conditional-access/howto-conditional-access-session-lifetime.md) を実装しました。 この新機能を使用し、サインインの頻度を設定して更新トークンの有効期間を構成できます。  
 
-トークンの有効期間ポリシーを設定するには、[Azure AD PowerShell モジュール](https://www.powershellgallery.com/packages/AzureADPreview)をダウンロードする必要があります。
+アクセス トークンの有効期間ポリシーを設定するには、[Azure AD PowerShell モジュール](https://www.powershellgallery.com/packages/AzureADPreview)をダウンロードする必要があります。
 **Connect-AzureAD -Confirm** コマンドを実行します。
 
-ここでは、ユーザーが、Web アプリで頻繁に認証を必要とするポリシーの例を示します。 このポリシーは、アクセス トークンと ID トークンの有効期間と、多要素セッション トークンの最長有効期間を Web アプリのサービス プリンシパルに設定します。 ポリシーを作成し、これをサービス プリンシパルに割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。
+ここでは、ユーザーが、Web アプリで頻繁に認証を必要とするポリシーの例を示します。 このポリシーにより、Web アプリのサービス プリンシパルへのアクセスの有効期間が設定されます。 ポリシーを作成し、これをサービス プリンシパルに割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。
 
 ```powershell
-$policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
+$policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
 
 $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
 

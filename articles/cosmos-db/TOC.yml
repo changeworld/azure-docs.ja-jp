@@ -1002,6 +1002,8 @@
               href: cassandra-spark-aggregation-ops.md
             - name: テーブル データをコピーする
               href: cassandra-spark-table-copy-ops.md
+        - name: Cassandra と Kafka
+          href: cassandra-kafka-connect.md
         - name: Resource Manager テンプレートを使用して管理する
           href: templates-samples-cassandra.md
           displayName: ARM

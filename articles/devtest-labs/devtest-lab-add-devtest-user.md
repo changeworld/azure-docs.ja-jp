@@ -3,19 +3,19 @@ title: Azure DevTest Labs での所有者とユーザーの追加 | Microsoft Do
 description: Azure Portal または PowerShell を使用した Azure DevTest Labs での所有者とユーザーの追加
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6d6af68cd663e88af90d690375a4d45c538aad1d
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 2ca6a1ffa66ab294e34a1b4866953a393aba4d6d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330191"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511979"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Azure DevTest Labs での所有者とユーザーの追加
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
 > 
 > 
 
-Azure DevTest Labs でのアクセスは、[Azure のロール ベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) で制御します。 Azure RBAC を使用すると、チーム内で職務を " *ロール* " に分離し、各自の職務を実行するために必要な量のアクセスのみをユーザーに付与します。 これらの Azure ロールのうちの 3 つは、" *所有者* "、" *DevTest Labs ユーザー* "、" *共同作成者* " です。 この記事では、これら 3 つの主な Azure ロールそれぞれで実行できるアクションについて説明します。 ポータルを経由して、および PowerShell スクリプトを使用してラボにユーザーを追加する方法、およびサブスクリプション レベルでユーザーを追加する方法について説明します。
+Azure DevTest Labs でのアクセスは、[Azure のロール ベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) で制御します。 Azure RBAC を使用すると、チーム内で職務を "*ロール*" に分離し、各自の職務を実行するために必要な量のアクセスのみをユーザーに付与します。 これらの Azure ロールのうちの 3 つは、"*所有者*"、"*DevTest Labs ユーザー*"、"*共同作成者*" です。 この記事では、これら 3 つの主な Azure ロールそれぞれで実行できるアクションについて説明します。 ポータルを経由して、および PowerShell スクリプトを使用してラボにユーザーを追加する方法、およびサブスクリプション レベルでユーザーを追加する方法について説明します。
 
 ## <a name="actions-that-can-be-performed-in-each-role"></a>各ロールで実行できるアクション
 次の 3 つの主なロールをユーザーを割り当てることができます。
@@ -34,7 +34,7 @@ Azure DevTest Labs でのアクセスは、[Azure のロール ベースのア�
 | **VM ベースのタスク** | | | |
 | カスタム イメージの追加と削除 |いいえ |はい |はい |
 | 数式の追加、更新、および削除 |はい |はい |はい |
-| Azure Marketplace のイメージのホワイトリスト |いいえ |はい |はい |
+| Azure Marketplace イメージの有効化 |いいえ |はい |はい |
 | **VM タスク** | | | |
 | VM の作成 |はい |はい |はい |
 | VM の開始、停止、および削除 |ユーザーによって作成された VM のみ |はい |はい |
@@ -69,7 +69,7 @@ Azure DevTest Labs でのアクセスは、[Azure のロール ベースのア�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Azure Portal にユーザーを追加するだけでなく、PowerShell スクリプトを使用して、ラボに外部ユーザーを追加することもできます。 次の例で、 **Values to change** コメントの下のパラメーター値を変更してください。
+Azure Portal にユーザーを追加するだけでなく、PowerShell スクリプトを使用して、ラボに外部ユーザーを追加することもできます。 次の例で、**Values to change** コメントの下のパラメーター値を変更してください。
 `subscriptionId`、`labResourceGroup`、および `labName` の値は、Azure Portal のラボのブレードから取得することができます。
 
 > [!NOTE]

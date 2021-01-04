@@ -3,12 +3,12 @@ title: イベント配信、マネージド サービス ID、およびプライ
 description: この記事では、Azure イベント グリッド トピックに対してマネージド サービス ID を有効にする方法を説明します。 これを使用して、サポートされている配信先にイベントを転送します。
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: d16310ac61121af0cc9d76664bfeeeb14e1bc243
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: edb3e5ac8257a29ecd3835e1dfd4c116c3cc7164
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491717"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368615"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>マネージド ID を使用したイベント配信
 この記事では、Azure イベント グリッド トピックまたはドメインに対して、[マネージド サービス ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にする方法を説明します。 これを使用して、Service Bus のキューとトピック、イベント ハブ、ストレージ アカウントなどの、サポートされている配信先にイベントを転送します。
@@ -285,7 +285,7 @@ az eventgrid event-subscription create
 ## <a name="private-endpoints"></a>プライベート エンドポイント
 現時点では、[プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用してイベントを配信することはできません。 つまり、配信されたイベント トラフィックがプライベート IP 空間から外に出てはならないという、ネットワークの分離の厳格な要件がある場合はサポートされません。 
 
-ただし、暗号化されたチャネルと、パブリック IP 空間を使用するセンダー (この場合は Event Grid) の既知の ID を使用してイベントを送信する安全な方法が要件で必要とされる場合は、この記事で示したように、システム マネージド ID が構成された Azure イベント グリッド トピックまたはドメインを使用して、Event Hubs、Service Bus、または Azure Storage サービスにイベントを配信できます。 その後、Azure Functions で構成されたプライベート リンクまたは仮想ネットワークにデプロイされた Webhook を使用して、イベントをプルできます。 次のサンプルを参照してください:「[Azure Functions を使用してプライベート エンドポイントに接続する](/samples/azure-samples/azure-functions-private-endpoints/connect-to-private-endpoints-with-azure-functions/)」。
+ただし、暗号化されたチャネルと、パブリック IP 空間を使用する送信者 (この場合は Event Grid) の既知の ID を使用してイベントを送信する安全な方法が要件で必要とされる場合は、この記事で示したように、システム マネージド ID が構成された Azure イベント グリッド トピックまたはドメインを使用して、Event Hubs、Service Bus、または Azure Storage サービスにイベントを配信できます。 その後、Azure Functions で構成されたプライベート リンクまたは仮想ネットワークにデプロイされた Webhook を使用して、イベントをプルできます。 次のサンプルを参照してください:「[Azure Functions を使用してプライベート エンドポイントに接続する](/samples/azure-samples/azure-functions-private-endpoints/connect-to-private-endpoints-with-azure-functions/)」。
 
 この構成では、トラフィックはパブリック IP/インターネット経由で Event Grid から Event Hubs、Service Bus、または Azure Storage に送られますが、チャネルを暗号化でき、Event Grid のマネージド ID が使用されます。 Azure Functions、または仮想ネットワークにデプロイされた Webhook を、プライベート リンク経由で Event Hubs、Service Bus、または Azure Storage を使用するように構成すると、トラフィックのそのセクションは確実に Azure 内に留まります。
 

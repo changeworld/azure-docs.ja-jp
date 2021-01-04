@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/11/2020
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2d00942331b7e6c881803af366d1c08e173462b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c50bd71f4e2e5bbe12518f5a5d1cd486af9723a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90023790"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509753"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -23,7 +23,7 @@ ms.locfileid: "90023790"
 
 **RelyingParty** 要素は、現在の要求を Azure Active Directory B2C (Azure AD B2C) に対して適用するユーザー体験を指定します。 また、証明書利用者 (RP) アプリケーションが発行されたトークンの一部として必要とするクレームの一覧を指定します。 Web、モバイル、デスクトップ アプリケーションなどの RP アプリケーションは RP ポリシー ファイルを呼び出します。 RP ポリシー ファイルは、サインイン、パスワードのリセット、プロファイルの編集などの特定のタスクを実行します。 複数のアプリケーションが同じ RP ポリシーを使用でき、1 つのアプリケーションが複数のポリシーを使用できます。 すべての RP アプリケーションがクレームで同じトークンを受信し、ユーザーが同じユーザー体験を受けます。
 
-次の例は、*B2C_1A_signup_signin* ポリシー ファイル内の **RelyingParty**要素を示しています。
+次の例は、*B2C_1A_signup_signin* ポリシー ファイル内の **RelyingParty** 要素を示しています。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -72,19 +72,46 @@ ms.locfileid: "90023790"
   ...
 ```
 
-省略可能な **RelyingParty**要素には、次の要素が含まれています。
+省略可能な **RelyingParty** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | RP アプリケーションの既定のユーザー体験。 |
+| エンドポイント | 0:1 | エンドポイントの一覧。 詳細については、「[UserInfo エンドポイント](userinfo-endpoint.md)」を参照してください。 |
 | UserJourneyBehaviors | 0:1 | ユーザー体験の動作の範囲です。 |
 | TechnicalProfile | 1:1 | RP アプリケーションでサポートされている技術プロファイル。 技術プロファイルでは、Azure AD B2C に問い合わせるための RP アプリケーションの問い合わせ先が提供されます。 |
+
+## <a name="endpoints"></a>エンドポイント
+
+**Endpoints** 要素には、次の要素が含まれています。
+
+| 要素 | 発生回数 | Description |
+| ------- | ----------- | ----------- |
+| エンドポイント | 1:1 | エンドポイントの参照。|
+
+**Endpoint** 要素には、次の属性が含まれています。
+
+| 属性 | 必須 | 説明 |
+| --------- | -------- | ----------- |
+| Id | はい | エンドポイントの一意識別子。|
+| UserJourneyReferenceId | はい | ポリシーのユーザー体験の識別子です。 詳細については、「[ユーザー体験](userjourneys.md)」を参照してください。  | 
+
+次の例は、[UserInfo エンドポイント](userinfo-endpoint.md)を持つ証明書利用者を示しています。
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <Endpoints>
+    <Endpoint Id="UserInfo" UserJourneyReferenceId="UserInfoJourney" />
+  </Endpoints>
+  ...
+```
 
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
 `DefaultUserJourney`要素は、通常はベースまたは拡張機能ポリシーで定義されているユーザー体験の ID への参照を指定します。 次の例は、**RelyingParty** 要素で指定されるサインアップまたはサインイン ユーザー体験を示しています。
 
-*B2C_1A_signup_signin*ポリシー:
+*B2C_1A_signup_signin* ポリシー:
 
 ```xml
 <RelyingParty>
@@ -102,7 +129,7 @@ ms.locfileid: "90023790"
 
 **DefaultUserJourney** 要素には、次の属性が含まれています。
 
-| 属性 | Required | Description |
+| 属性 | 必須 | Description |
 | --------- | -------- | ----------- |
 | ReferenceId | はい | ポリシーのユーザー体験の識別子です。 詳細については、「[ユーザー体験](userjourneys.md)」を参照してください。 |
 
@@ -117,16 +144,16 @@ ms.locfileid: "90023790"
 | SessionExpiryInSeconds | 0:1 | 認証の成功時にユーザーのブラウザーで保存される整数として指定された、Azure AD B2C のセッション Cookie の有効期間です。 |
 | JourneyInsights | 0:1 | 使用される Azure Application Insights のインストルメンテーション キー。 |
 | ContentDefinitionParameters | 0:1 | コンテンツ定義読み込み URI に追加するキー値ペアのリスト。 |
-|ScriptExecution| 0:1| サポートされている [JavaScript](javascript-samples.md) 実行モード。 指定できる値: `Allow` または `Disallow`(既定値)。
+|ScriptExecution| 0:1| サポートされている [JavaScript](javascript-and-page-layout.md) 実行モード。 指定できる値: `Allow` または `Disallow`(既定値)。
 
 ### <a name="singlesignon"></a>SingleSignOn
 
 **SingleSignOn** 要素には、次の属性が含まれています。
 
-| 属性 | Required | Description |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Scope | はい | シングル サインオン動作の範囲です。 指定できる値: `Suppressed`、`Tenant`、`Application`、または `Policy`。 `Suppressed` 値は動作が抑制されていることを示し、ユーザーは常に ID プロバイダーを選択することを求められます。  `Tenant` 値では、テナントのすべてのポリシーに動作が適用されることを示します。 たとえば、テナントの 2 つのポリシー体験間を移動するユーザーは ID プロバイダーの選択を求められません。 `Application` 値では、要求を行うアプリケーションのすべてのポリシーに動作が適用されることを示します。 たとえば、アプリケーションの 2 つのポリシー体験間を移動するユーザーは ID プロバイダーの選択を求められません。 `Policy` の値は、動作がポリシーに適用されるだけであることを示します。 たとえば、信頼フレームワークの 2 つのポリシー体験間を移動するユーザーは、ポリシー間を切り替える場合に ID プロバイダーの選択を求められます。 |
-| KeepAliveInDays | はい | ユーザーのサインイン状態の継続期間を制御します。 値を 0 に設定すると、KMSI 機能がオフになります。 詳細については、[サインインしたままにする](custom-policy-keep-me-signed-in.md)方法に関するページを参照してください。 |
+| KeepAliveInDays | はい | ユーザーのサインイン状態の継続期間を制御します。 値を 0 に設定すると、KMSI 機能がオフになります。 詳細については、[サインインしたままにする](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi)方法に関するページを参照してください。 |
 |EnforceIdTokenHintOnLogout| いいえ|  クライアントでのエンド ユーザーの現在の認証済みセッションに関するヒントとして、事前に発行された ID トークンをログアウト エンドポイントに強制的に渡します。 指定できる値は `false`(既定値) または`true`です。 詳細については、[OpenID Connect による Web サインイン](openid-connect.md)に関する記事を参照してください。  |
 
 
@@ -134,7 +161,7 @@ ms.locfileid: "90023790"
 
 **JourneyInsights** 要素には、次の属性が含まれています。
 
-| 属性 | Required | Description |
+| 属性 | 必須 | Description |
 | --------- | -------- | ----------- |
 | TelemetryEngine | はい | 値は `ApplicationInsights` である必要があります。 |
 | InstrumentationKey | はい | Application Insights 要素のインストルメンテーション キーを含む文字列。 |
@@ -165,7 +192,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 | --------- | -------- | ----------- |
 | 名前 | はい | キーと値のペアの名前。 |
 
-詳しくは、[カスタム ポリシーを使用して動的コンテンツを含む UI を構成する](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)を参照してください
+詳しくは、[カスタム ポリシーを使用して動的コンテンツを含む UI を構成する](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri)を参照してください
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 
@@ -182,7 +209,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 | DisplayName | 1:1 | 技術プロファイルの名前を含む文字列。 |
 | 説明 | 0:1 | 技術プロファイルの説明を含む文字列。 |
 | Protocol | 1:1 | フェデレーションに使用されるプロトコル。 |
-| Metadata | 0:1 | プロトコルによって使用されるキーと値のペアの*項目*のコレクション。これによってトランザクション中に証明書利用者と他のコミュニティ参加者との間の対話を構成するようにエンドポイントとやりとりされます。 |
+| Metadata | 0:1 | プロトコルによって使用されるキーと値のペアの *項目* のコレクション。これによってトランザクション中に証明書利用者と他のコミュニティ参加者との間の対話を構成するようにエンドポイントとやりとりされます。 |
 | OutputClaims | 1:1 | 技術プロファイルの出力として実行される要求の種類の一覧。 これらの各要素には、**ClaimsSchema** セクションに、またはポリシー ファイルが継承したポリシー内に既に定義されている **ClaimType** への参照が含まれています。 |
 | SubjectNamingInfo | 1:1 | トークンで使用されているサブジェクト名。 |
 
@@ -231,8 +258,8 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 | 属性 | 必須 | Description |
 | --------- | -------- | ----------- |
-| ClaimType | はい | 出力要求の **PartnerClaimType** への参照。 証明書利用者ポリシー **OutputClaims**コレクションに出力要求を定義する必要があります。 |
-| Format | いいえ | SAML アサーションで返される **NameId の形式**を設定する SAML 証明書利用者のために使用されます。 |
+| ClaimType | はい | 出力要求の **PartnerClaimType** への参照。 証明書利用者ポリシー **OutputClaims** コレクションに出力要求を定義する必要があります。 |
+| Format | いいえ | SAML アサーションで返される **NameId の形式** を設定する SAML 証明書利用者のために使用されます。 |
 
 次の例では、OpenID Connect の証明書利用者を定義する方法を示します。 サブジェクト名情報は、`objectId` として構成されます。
 

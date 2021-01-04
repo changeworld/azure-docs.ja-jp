@@ -1,14 +1,14 @@
 ---
 title: サービス プロバイダーのアクティビティを表示する
 description: お客様は、ログに記録されたアクティビティを表示して、Azure の委任されたリソース管理を通じてサービス プロバイダーによって実行されるアクションを確認できます。
-ms.date: 10/12/2020
+ms.date: 12/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 56c8b88274909aa55e19a4b364aaa3ace2a0c26d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: dcf177cc41dac846d096607445ff4c3d433620ca
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371088"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356380"
 ---
 # <a name="view-service-provider-activity"></a>サービス プロバイダーのアクティビティを表示する
 
@@ -42,6 +42,12 @@ ms.locfileid: "92371088"
 クエリを作成すると、ログに記録されたアクティビティを分析したり、特定のアイテムに焦点を当てたりすることができます。 たとえば、監査で、サブスクリプションに対して実行されるすべての管理レベルのアクションに関するレポートを作成することが必要になる場合があります。 これらのアクションのみをフィルター処理するクエリを作成し、結果をユーザー、日付、または別の値で並べ替えることができます。
 
 詳細については、「[Azure Monitor のログ クエリの概要](../../azure-monitor/log-query/log-query-overview.md)」を参照してください。
+
+## <a name="view-user-activity-across-domains"></a>複数ドメインにわたってユーザー アクティビティを表示する
+
+[ドメイン別のアクティビティ ログ](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) サンプル ブックを使用すると、複数のドメインにわたって個々のユーザーのアクティビティを表示できます。
+
+結果はドメイン名でフィルター処理できます。 カテゴリ、レベル、リソース グループなどの追加のフィルターを適用することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

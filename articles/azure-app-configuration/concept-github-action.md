@@ -1,17 +1,17 @@
 ---
 title: GitHub リポジトリを App Configuration と同期する
 description: GitHub リポジトリを更新するときに、GitHub Actions を使用して App Configuration インスタンスを自動的に更新します。
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/20/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 66d0e32e7dfdd5ab2abee5108ac8ce54c5222747
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b2b5f4bcbcc5af07a763ee4dff2d42413750fb7
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371823"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930281"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>GitHub リポジトリを App Configuration と同期する
 
@@ -35,7 +35,7 @@ GitHub の[ドキュメント](https://help.github.com/actions/automating-your-w
 ## <a name="sync-configuration-files-after-a-push"></a>プッシュ後に構成ファイルを同期する
 このアクションは、変更が `appsettings.json` にプッシュされたときに Azure App Configuration ファイルを同期します。 開発者が `appsettings.json` に対する変更をプッシュすると、Azure App Configuration Sync アクションにより、App Configuration インスタンスが新しい値で更新されます。
 
-このワークフローの最初のセクションは、`appsettings.json` を含む "*プッシュ*" が "*マスター*" ブランチに対して "*行われたとき*" にアクションがトリガーされることを指定しています。 2 番目のセクションは、アクションがトリガーされると実行されるジョブを一覧で示しています。 このアクションは、リポジトリにシークレットとして格納されている接続文字列を使用して、関連するファイルをチェックアウトし、App Configuration インスタンスを更新します。  GitHub でのシークレットの使用の詳細については、暗号化されたシークレットの作成と使用に関する [GitHub の記事](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)を参照してください。
+このワークフローの最初のセクションは、`appsettings.json` を含む "*プッシュ*" が *main* ブランチに対して "*行われたとき*" にアクションがトリガーされることを指定しています。 2 番目のセクションは、アクションがトリガーされると実行されるジョブを一覧で示しています。 このアクションは、リポジトリにシークレットとして格納されている接続文字列を使用して、関連するファイルをチェックアウトし、App Configuration インスタンスを更新します。  GitHub でのシークレットの使用の詳細については、暗号化されたシークレットの作成と使用に関する [GitHub の記事](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)を参照してください。
 
 ```json
 on: 
@@ -177,7 +177,7 @@ jobs:
 ## <a name="use-a-dynamic-label-on-sync"></a>同期時に動的ラベルを使用する
 次のアクションでは、同期のたびに動的ラベルが挿入されます。これにより、各同期を一意に識別でき、コードの変更を構成の変更にマップできるようになります。
 
-このワークフローの最初のセクションは、`appsettings.json` を含む "*プッシュ*" が "*マスター*" ブランチに対して "*行われたとき*" にアクションがトリガーされることを指定しています。 2 番目のセクションでは、コミット ハッシュに基づいて構成更新用の一意のラベルを作成するジョブを実行します。 その後ジョブは、新しい値とこの更新用の一意のラベルを使用して、App Configuration インスタンスを更新します。
+このワークフローの最初のセクションは、`appsettings.json` を含む "*プッシュ*" が *main* ブランチに対して "*行われたとき*" にアクションがトリガーされることを指定しています。 2 番目のセクションでは、コミット ハッシュに基づいて構成更新用の一意のラベルを作成するジョブを実行します。 その後ジョブは、新しい値とこの更新用の一意のラベルを使用して、App Configuration インスタンスを更新します。
 
 ```json
 on: 

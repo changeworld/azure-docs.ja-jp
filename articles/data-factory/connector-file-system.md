@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: jingwang
-ms.openlocfilehash: 333a1de5977857697af87cf9d8df6750936ff932
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4741053acdefe27eadc380d9144c548af4b5143c
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023191"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346114"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Azure Data Factory を使用してファイル システムをコピー先またはコピー元としてデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -59,8 +59,8 @@ ms.locfileid: "96023191"
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**FileServer**. | はい |
 | host | コピーするフォルダーのルート パスを指定します。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「 [サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions) 」ご覧ください。 | はい |
-| userid | サーバーにアクセスするユーザーの ID を指定します。 | はい |
-| password | ユーザー (userid) のパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| userId | サーバーにアクセスするユーザーの ID を指定します。 | はい |
+| password | ユーザー (userId) のパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>サンプルのリンクされたサービスとデータセットの定義
@@ -82,7 +82,7 @@ ms.locfileid: "96023191"
         "type": "FileServer",
         "typeProperties": {
             "host": "<host>",
-            "userid": "<domain>\\<user>",
+            "userId": "<domain>\\<user>",
             "password": {
                 "type": "SecureString",
                 "value": "<password>"
@@ -153,7 +153,7 @@ ms.locfileid: "96023191"
 | オプション 1: 静的パス<br> | データセットに指定されている所定のフォルダーまたはファイル パスからコピーします。 フォルダーからすべてのファイルをコピーする場合は、さらに `_` として `wildcardFileName` を指定します。 |  |
 | オプション 2: サーバー側のフィルター<br>- fileFilter  | オプション 3 のワイルドカード フィルターより優れたパフォーマンスを提供する、ファイル サーバー側のネイティブ フィルター。 0 個以上の文字に一致させるには `*` を使用し、0 または 1 文字に一致させるには `?` を使用します。 詳細および注については､[このセクション](/dotnet/api/system.io.directory.getfiles?view=netframework-4.7.2#System_IO_Directory_GetFiles_System_String_System_String_System_IO_SearchOption_)の下部の「**解説**」を参照してください。 | いいえ                                                          |
 | オプション 3: クライアント側のフィルター<br>- wildcardFolderPath | ソース フォルダーをフィルター処理するための、ワイルドカード文字を含むフォルダー パス。 このようなフィルターは ADF 側で行われます。ADF が指定したパス下のフォルダーまたはファイルを列挙し、ワイルドカード フィルターを適用します。<br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | いいえ                                            |
-| オプション 3: クライアント側のフィルター<br>- wildcardFileName | ソース ファイルをフィルター処理するための、特定の folderPath/wildcardFolderPath の下のワイルドカード文字を含むファイル名。 このようなフィルターは ADF 側で行われます。ADF が指定したパス下のファイルを列挙し、ワイルドカード フィルターを適用します。<br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。<br>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | はい |
+| オプション 3: クライアント側のフィルター<br>- wildcardFileName | ソース ファイルをフィルター処理するための、特定の folderPath/wildcardFolderPath の下のワイルドカード文字を含むファイル名。 このようなフィルターは ADF 側で行われます。ADF が指定したパス下のファイルを列挙し、ワイルドカード フィルターを適用します。<br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。<br>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | はい |
 | オプション 3: ファイルの一覧<br>- fileListPath | 指定されたファイル セットをコピーすることを示します。 コピーするファイルの一覧を含むテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスであるファイルを 1 行につき 1 つずつ指定します。<br/>このオプションを使用する場合は、データ セットにファイル名を指定しないでください。 その他の例については、[ファイル リストの例](#file-list-examples)を参照してください。 |いいえ |
 | ***追加の設定:** _ |  | |
 | recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。 <br>指定できる値は _ *true** (既定値) と **false** です。<br>`fileListPath` を構成する場合、このプロパティは適用されません。 |いいえ |

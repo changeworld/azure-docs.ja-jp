@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 12/15/2020
 ms.author: b-juche
-ms.openlocfilehash: 44553d7b88d6b911769c7449d71d71418aaeba6e
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 2b567eba43cfec9af05ebea262b3f6bd61b00259
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434891"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562550"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files を使用したソリューション アーキテクチャ
 この記事では、Azure NetApp Files を使用するためのソリューション アーキテクチャを理解するうえで役立つベスト プラクティスへの参照を提供します。  
@@ -38,6 +38,9 @@ ms.locfileid: "96434891"
 * [Azure NetApp Files を使用した Azure への Oracle デプロイのベスト プラクティス ガイド](https://www.netapp.com/us/media/tr-4780.pdf)
 * [Microsoft Azure での Oracle VM イメージとそのデプロイ:共有ストレージの構成オプション](../virtual-machines/workloads/oracle/oracle-vm-solutions.md#shared-storage-configuration-options)
 * [Oracle Database での Azure NetApp Files 利用のメリット](solutions-benefits-azure-netapp-files-oracle-database.md)
+
+### <a name="machine-learning"></a>Machine Learning
+*   [Cloudera Machine Learning](https://docs.cloudera.com/machine-learning/cloud/requirements-azure/topics/ml-requirements-azure.html)
 
 ## <a name="windows-apps-and-sql-server-solutions"></a>Windows アプリと SQL Server ソリューション
 
@@ -120,7 +123,7 @@ ms.locfileid: "96434891"
 
 ### <a name="analytics"></a>Analytics
 
-* [Azure NetApp Files: Microsoft Azure 上の SAS グリッドで使用する新しい共有ファイル システム](https://communities.sas.com/t5/Architecture/Azure-NetApp-Files-A-new-shared-file-system-to-use-with-SAS-Grid/m-p/606978)
+* [Azure NetApp Files: Microsoft Azure 上の SAS グリッドで使用する共有ファイル システム](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/705192)
 * [Microsoft Azure と SAS® を併用するためのベスト プラクティス](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)
 
 ## <a name="azure-platform-services-solutions"></a>Azure プラットフォーム サービス ソリューション

@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 2fd7a3e512b79651fdcf6a6ac0c14822361fc263
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b8f9759d19089f74d62def41b205d862ce9a7d43
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350196"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359729"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 の概要
 
@@ -38,7 +38,12 @@ Hive では、動的な具体化されたビュー、つまり関連するサマ
 
 ### <a name="hive-transactional-tables"></a>Hive トランザクション テーブル
 
-HDI 4.0 には Apache Hive 3 が含まれています。 Hive 3 では、Hive ウェアハウス内に存在するトランザクション テーブルに対して、原子性、一貫性、分離性、持続性への対応が要求されます。 ACID に準拠しているテーブルおよびテーブルのデータは、Hive によってアクセスされて管理されます。 作成、取得、更新、削除 (CRUD) テーブル内のデータは Optimized Row Column (ORC) ファイル形式である必要があります。 挿入のみのテーブルでは、すべてのファイル形式がサポートされます。
+HDI 4.0 には Apache Hive 3 が含まれています。 Hive 3 では、Hive ウェアハウス内に存在するトランザクション テーブルに対して、原子性、一貫性、分離性、持続性への対応が要求されます。 ACID に準拠しているテーブルおよびテーブルのデータは、Hive によってアクセスされて管理されます。 作成、取得、更新、削除 (CRUD) テーブル内のデータは Optimized Row Column (ORC) ファイル形式である必要があります。 挿入のみのテーブルでは、すべてのファイル形式がサポートされます。 
+
+> [!Note]
+> ACID またはトランザクション サポートは、マネージド テーブルに対してのみ機能し、外部テーブルでは機能しません。 Hive 外部テーブルは、Hive によって基になるデータの変更が行われなくても外部パーティがテーブル データを読み書きできるように設計されています。 ACID テーブルの場合は、Hive によって基になるデータが圧縮とトランザクションを使用して変更される可能性があります。
+
+ACID テーブルには次のような利点があります。
 
 * ACID v2 では、ストレージ形式と実行エンジンの両方でパフォーマンスが向上しています
 

@@ -1,20 +1,20 @@
 ---
 title: Azure Arc 対応サーバーを使用した VM 拡張機能の管理
 description: Azure Arc 対応サーバーを使用すると、Azure 以外の VM でのデプロイ後構成と自動化タスクを提供する仮想マシン拡張機能のデプロイを管理できます。
-ms.date: 11/06/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7682f6c8631bbaf2310d501d7cee6aecb2311226
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 55e21f9c6bcd2dfe5f995093034773f2a87d9b03
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358033"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504510"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーを使用した仮想マシン拡張機能の管理
 
-仮想マシン (VM) 拡張機能は、Azure VM でのデプロイ後の構成と自動タスクを提供する複数の小さなアプリケーションです。 たとえば、仮想マシンでソフトウェアのインストールやウイルス対策保護が必要な場合、あるいは、仮想マシン内でスクリプトを実行するために、VM 拡張機能を使用できます。
+仮想マシン (VM) 拡張機能は、Azure VM でのデプロイ後の構成と自動タスクを提供する複数の小さなアプリケーションです。 たとえば、仮想マシンでソフトウェアのインストールやウイルス対策保護が必要な場合や、そこでスクリプトを実行するために、VM 拡張機能を使用できます。
 
-Azure Arc 対応サーバーを使用すると、Azure VM 拡張機能を Azure 以外の Windows VM と Linux VM にデプロイし、オンプレミス、エッジ、その他のクラウド環境のハイブリッド マシンのライフサイクルを通した管理を簡素化できます。 VM 拡張機能は、ハイブリッド コンピューターまたは Arc 対応サーバーで管理されているサーバーで、次の方法を使用して管理できます。
+Azure Arc 対応サーバーを使用すると、Azure VM 拡張機能を Azure 以外の Windows や Linux の VM にデプロイして、ハイブリッド マシンのライフサイクルを通じた管理を簡素化できます。 VM 拡張機能は、ハイブリッド コンピューターまたは Arc 対応サーバーで管理されているサーバーで、次の方法を使用して管理できます。
 
 - [Azure Portal](manage-vm-extensions-portal.md)
 - [Azure CLI](manage-vm-extensions-cli.md)
@@ -27,7 +27,7 @@ Azure Arc 対応サーバーによる VM 拡張機能のサポートには、次
 
 - [Azure Automation State Configuration](../../automation/automation-dsc-overview.md) を使用して、構成を一元的に保存し、DSC VM 拡張機能によって有効にされているハイブリッド接続マシンの望ましい状態を維持します。
 
-- Log Analytics エージェント VM 拡張機能によって有効にされる [Azure Monitor のログ](../../azure-monitor/platform/data-platform-logs.md)を使用して、分析用のログ データを収集します。 これは、さまざまなソースからのデータについて複雑な分析を実行するときに便利です。
+- Log Analytics エージェント VM 拡張機能によって有効にされる [Azure Monitor のログ](../../azure-monitor/platform/data-platform-logs.md)を使用して、分析用のログ データを収集します。 これは、さまざまな種類のソースのデータに対して複雑な分析を行うときに便利です。
 
 - [Azure Monitor for VMs](../../azure-monitor/insights/vminsights-overview.md) を使用して、Windows VM および Linux VM のパフォーマンスを分析し、それらのプロセスや、他のリソースおよび外部プロセスへの依存関係を監視します。 これは、Log Analytics エージェントと Dependency Agent の両方の VM 拡張機能を有効にすることで実現されます。
 
@@ -65,15 +65,17 @@ Azure Connected Machine エージェント パッケージと拡張機能エー�
 - **Microsoft.HybridCompute**
 - **Microsoft.GuestConfiguration**
 
-まだ登録されていない場合は、「[Azure リソースプロバイダーを登録する](agent-overview.md#register-azure-resource-providers)」の手順に従ってください。
+まだ登録されていない場合は、「[Azure リソース プロバイダーを登録する](agent-overview.md#register-azure-resource-providers)」の手順に従ってください。
+
+ネットワークまたはシステム要件があるかどうかを把握するために、前の表で参照されている各 VM 拡張機能のドキュメントを確認してください。 これにより、その VM 拡張機能に依存する Azure サービスまたは機能で接続の問題が発生しないようにすることができます。
 
 ### <a name="log-analytics-vm-extension"></a>Log Analytics VM 拡張機能
 
-Linux 用の Log Analytics エージェント VM 拡張機能を使用するには、ターゲット マシンに Python 2.x がインストールされている必要があります。
+Linux 用の Log Analytics エージェント VM 拡張機能を使用するには、ターゲット マシンに Python 2.x がインストールされている必要があります。 
 
 ### <a name="azure-key-vault-vm-extension-preview"></a>Azure Key Vault VM 拡張機能 (プレビュー)
 
-Key Vault VM 拡張機能 (プレビュー) では、次の Linux オペレーティング システムはサポートされません。
+Key Vault VM 拡張機能 (プレビュー) では、次の Linux オペレーティング システムはサポートされていません。
 
 - CentOS Linux 7 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64)

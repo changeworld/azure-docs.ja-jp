@@ -5,14 +5,14 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/04/2020
+ms.date: 12/11/2020
 ms.custom: seo-nov-2020
-ms.openlocfilehash: aaedca5acf7861db05f0ec724e05449316379829
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: ba0dd347c4ee2cb41b34c2fc34f1848a7295dc3a
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337544"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368666"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>自動スケーリングのスループットを使用して Azure Cosmos コンテナーとデータベースを作成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -59,7 +59,7 @@ Azure Cosmos DB では、データベースとコンテナーに対して標準 
 
 ## <a name="enable-autoscale-on-existing-resources"></a>既存のリソースに対して自動スケーリングを有効にする
 
-[Azure portal ](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container)を使用して、既存のデータベースまたはコンテナーに対して自動スケーリングを有効にします。 自動スケーリングと標準 (手動) のプロビジョニング スループット間の切り替えは、いつでも行うことができます。 詳細については、こちらの[ドキュメント](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work)を参照してください。 現在、すべての API において、既存のリソースで自動スケールを有効にするには、Azure portal のみを使用できます。
+[Azure portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container)、[Azure Resource Manager テンプレート](how-to-provision-autoscale-throughput.md#azure-resource-manager)、[CLI](how-to-provision-autoscale-throughput.md#azure-cli)、または [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell) を使用して、既存のデータベースまたはコンテナーで自動スケーリングを有効にします。 自動スケーリングと標準 (手動) のプロビジョニング スループット間の切り替えは、いつでも行うことができます。 詳細については、こちらの[ドキュメント](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work)を参照してください。
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> 自動スケーリングのスループットとストレージ制限
 

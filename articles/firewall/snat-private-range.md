@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: victorh
-ms.openlocfilehash: 858343b6c5081b52d9e93909f9d52eaccd88a584
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c5613dda7adbbc47f989bc2a772777e716620b3c
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660272"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348035"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Firewall の SNAT プライベート IP アドレス範囲
 
@@ -35,9 +35,22 @@ Azure PowerShell を使用して、ファイアウォールのプライベート
 
 ### <a name="new-firewall"></a>新しいファイアウォール
 
-新しいファイアウォールの場合、Azure PowerShell のコマンドは次のようになります。
+新しいファイアウォールの場合、Azure PowerShell コマンドレットは次のようになります。
 
-`New-AzFirewall -Name $GatewayName -ResourceGroupName $RG -Location $Location -VirtualNetworkName $vnet.Name -PublicIpName $LBPip.Name -PrivateRange @("IANAPrivateRanges","IPRange1", "IPRange2")`
+```azurepowershell
+$azFw = @{
+    Name               = '<fw-name>'
+    ResourceGroupName  = '<resourcegroup-name>'
+    Location           = '<location>'
+    VirtualNetworkName = '<vnet-name>'
+    PublicIpName       = '<public-ip-name>'
+    PrivateRange       = @("IANAPrivateRanges", "192.168.1.0/24", "192.168.1.10")
+}
+
+New-AzFirewall @azFw
+```
+> [!NOTE]
+> `New-AzFirewall` を使用して Azure Firewall をデプロイするには、既存の VNet とパブリック IP アドレスが必要です。 デプロイの詳細なガイドについては、「[Azure PowerShell を使用して Azure Firewall のデプロイと構成を行う](deploy-ps.md)」を参照してください。
 
 > [!NOTE]
 > IANAPrivateRanges は Azure Firewall の現在の既定値に拡張されますが、他の範囲は追加されます。 プライベート範囲の指定で IANAPrivateRanges の既定値を維持するには、次の例に示すように、`PrivateRange` の指定に残す必要があります。
@@ -46,22 +59,54 @@ Azure PowerShell を使用して、ファイアウォールのプライベート
 
 ### <a name="existing-firewall"></a>既存のファイアウォール
 
-既存のファイアウォールを構成するには、次の Azure PowerShell コマンドを使います。
+既存のファイアウォールを構成するには、次の Azure PowerShell コマンドレットを使用します。
 
 ```azurepowershell
-$azfw = Get-AzFirewall -ResourceGroupName "Firewall Resource Group name"
-$azfw.PrivateRange = @("IANAPrivateRanges","IPRange1", "IPRange2")
+$azfw = Get-AzFirewall -Name '<fw-name>' -ResourceGroupName '<resourcegroup-name>'
+$azfw.PrivateRange = @("IANAPrivateRanges","192.168.1.0/24", "192.168.1.10")
 Set-AzFirewall -AzureFirewall $azfw
 ```
 
-### <a name="templates"></a>テンプレート
+## <a name="configure-snat-private-ip-address-ranges---azure-cli"></a>SNAT のプライベート IP アドレス範囲を構成する - Azure CLI
 
-`additionalProperties` セクションに以下を追加できます。
+Azure CLI を使用して、ファイアウォールのプライベート IP アドレス範囲を指定できます。
 
+### <a name="new-firewall"></a>新しいファイアウォール
+
+新しいファイアウォールの場合、Azure CLI コマンドは次のようになります。
+
+```azurecli-interactive
+az network firewall create \
+-n <fw-name> \
+-g <resourcegroup-name> \
+--private-ranges 192.168.1.0/24 192.168.1.10 IANAPrivateRanges
 ```
+
+> [!NOTE]
+> Azure CLI コマンド `az network firewall create` を使用して Azure Firewall をデプロイするには、パブリック IP アドレスと IP 構成を作成するための追加の構成手順が必要です。 デプロイの詳細なガイドについては、「[Azure CLI を使用して Azure Firewall のデプロイと構成を行う](deploy-cli.md)」を参照してください。
+
+> [!NOTE]
+> IANAPrivateRanges は Azure Firewall の現在の既定値に拡張されますが、他の範囲は追加されます。 プライベート範囲の指定で IANAPrivateRanges の既定値を維持するには、次の例に示すように、`PrivateRange` の指定に残す必要があります。
+
+### <a name="existing-firewall"></a>既存のファイアウォール
+
+既存のファイアウォールを構成するには、Azure CLI コマンドは次のようになります。
+
+```azurecli-interactive
+az network firewall update \
+-n <fw-name> \
+-g <resourcegroup-name> \
+--private-ranges 192.168.1.0/24 192.168.1.10 IANAPrivateRanges
+```
+
+## <a name="configure-snat-private-ip-address-ranges---arm-template"></a>SNAT のプライベート IP アドレス範囲を構成する - ARM テンプレート
+
+ARM テンプレートのデプロイ中に SNAT を構成するには、`additionalProperties` プロパティに次を追加します。
+
+```json
 "additionalProperties": {
-                    "Network.SNAT.PrivateRanges": "IANAPrivateRanges , IPRange1, IPRange2"
-                },
+   "Network.SNAT.PrivateRanges": "IANAPrivateRanges , IPRange1, IPRange2"
+},
 ```
 
 ## <a name="configure-snat-private-ip-address-ranges---azure-portal"></a>SNAT のプライベート IP アドレス範囲を構成する - Azure portal

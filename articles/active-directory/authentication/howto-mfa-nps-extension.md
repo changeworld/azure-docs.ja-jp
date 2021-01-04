@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8340712e10721374bb2f0a35ac2e2e9a6abf181c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: deb05083ca45c24a58cabf9e923b706575ef093b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743039"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562142"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication と既存のネットワーク ポリシー サーバー (NPS) インフラストラクチャの統合
 
@@ -224,6 +224,10 @@ NPS 拡張機能をダウンロードしてインストールするには、次�
    ```
 
 1. インストーラーによって作成された PowerShell スクリプトを実行します。
+
+   PowerShell を正常に接続してパッケージをダウンロードできるようにするには、まず TLS 1.2 を有効にする必要がある可能性があります。
+   
+   `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12`
 
    > [!IMPORTANT]
    > Azure Government クラウドまたは Azure China 21Vianet クラウドを使用しているお客様の場合は、最初に *AzureMfaNpsExtnConfigSetup.ps1* スクリプトで `Connect-MsolService` コマンドレットを編集して、必要なクラウドの *AzureEnvironment* パラメーターを含めます。 たとえば、 *-AzureEnvironment USGovernment* または *--AzureEnvironment AzureChinaCloud* を指定します。

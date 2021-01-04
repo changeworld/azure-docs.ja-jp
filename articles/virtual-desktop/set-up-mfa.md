@@ -3,15 +3,15 @@ title: Windows Virtual Desktop 向け Azure 多要素認証の設定 - Azure
 description: Windows Virtual Desktop でセキュリティを強化するために Azure 多要素認証を設定する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 12/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 35af8191cfe237175cbd6669797d1744ac3ecd49
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 00aba5d169a05eab25dcc63ca813955e71d09598
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312650"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092382"
 ---
 # <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>Windows Virtual Desktop 向け Azure 多要素認証の有効化
 
@@ -44,7 +44,7 @@ Windows Virtual Desktop 用の Windows クライアントは、Windows Virtual D
 3. **[新しいポリシー]** を選択します。
 4. ポリシーに名前を付けます。 ポリシーの名前に対する意味のある標準を組織で作成することをお勧めします。
 5. **[割り当て]** で、 **[ユーザーとグループ]** を選択します。
-6. **[Include]\(含める\)** で **[ユーザーとグループの選択]**  >  **[ユーザーとグループ]** を選択し、 [事前準備](#prerequisites)の段階で作成したグループを選択します。
+6. **[Include]\(含める\)** で **[ユーザーとグループの選択]**  >  **[ユーザーとグループ]** を選択し、[事前準備](#prerequisites)の段階で作成したグループを選択します。
 7. **[Done]** を選択します。
 8. **[クラウド アプリまたはアクション]**  >  **[Include]\(含める\)** で、 **[アプリを選択]** を選択します。
 9. 使用している Windows Virtual Desktop のバージョンに基づいて、次のいずれかのアプリを選択します。
@@ -88,6 +88,9 @@ Windows Virtual Desktop 用の Windows クライアントは、Windows Virtual D
 13. **[アクセス制御]**  >  **[セッション]** で、 **[サインインの頻度]** を選択し、プロンプトの間隔として設定する時間の値を設定してから **[選択]** を選択します。 たとえば、値を **1** に設定し、単位を **[時間]** に設定した場合、最終接続の 1 時間後に接続が起動された場合に多要素認証が必要になります。
 14. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
 15. **[作成]** を選択して、ポリシーを有効化します。
+
+>[!NOTE]
+>Web クライアントを使用してブラウザーから Windows Virtual Desktop にサインインすると、ログにクライアント アプリ ID が a85cf173-4192-42f8-81fa-777a763e6e2c (Windows Virtual Desktop クライアント) として表示されます。 これは、クライアント アプリが、条件付きアクセス ポリシーが設定されたサーバー アプリ ID に内部的にリンクされているためです。 
 
 ## <a name="next-steps"></a>次のステップ
 

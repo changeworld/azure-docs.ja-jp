@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 96603de7014419b142cc35714b891f9e4b15ec99
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: f43f516b0999c4d5b775fc9b78dea9b05e228f0d
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405087"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346250"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して HDFS サーバーからデータをコピーする
 
@@ -63,7 +63,7 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 |:--- |:--- |:--- |
 | type | *type* プロパティは *Hdfs* に設定する必要があります。 | はい |
 | url |HDFS への URL |はい |
-| authenticationType | 使用可能な値: *Anonymous* または*Windows*。 <br><br> オンプレミス環境を設定するには、「[HDFS コネクタでの Kerberos 認証の使用](#use-kerberos-authentication-for-the-hdfs-connector)」セクションを参照してください。 |はい |
+| authenticationType | 使用可能な値: *Anonymous* または *Windows*。 <br><br> オンプレミス環境を設定するには、「[HDFS コネクタでの Kerberos 認証の使用](#use-kerberos-authentication-for-the-hdfs-connector)」セクションを参照してください。 |はい |
 | userName |Windows 認証のユーザー名。 Kerberos 認証の場合は **\<username>@\<domain>.com** を指定します。 |はい (Windows 認証用) |
 | password |Windows 認証のパスワード。 このフィールドを SecureString としてマークしてデータ ファクトリに安全に保存するか、[Azure キー コンテナーに格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |あり (Windows 認証用) |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 統合ランタイムが指定されていない場合は、サービスでは既定の Azure Integration Runtime が使用されます。 |いいえ |
@@ -165,26 +165,26 @@ HDFS では、形式ベースのコピー ソースの `storeSettings` 設定に
 | プロパティ                 | 説明                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` の *type* プロパティは **HdfsReadSettings** に設定する必要があります。 | はい                                           |
-| "***コピーするファイルを特定する***" |  |  |
-| オプション 1: 静的パス<br> | データセットに指定されているフォルダーまたはファイル パスからコピーします。 フォルダーからすべてのファイルをコピーする場合は、さらに `*` として `wildcardFileName` を指定します。 |  |
+| "**_コピーするファイルを特定する_* _" |  |  |
+| オプション 1: 静的パス<br> | データセットに指定されているフォルダーまたはファイル パスからコピーします。 フォルダーからすべてのファイルをコピーする場合は、さらに `_` として `wildcardFileName` を指定します。 |  |
 | オプション 2: ワイルドカード<br>- wildcardFolderPath | ソース フォルダーをフィルター処理するための、ワイルドカード文字を含むフォルダー パス。 <br>使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。 実際のフォルダー名にワイルドカードまたは `^` が含まれている場合は、このエスケープ文字を使用してエスケープします。 <br>他の例については、「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」を参照してください。 | いいえ                                            |
-| オプション 2: ワイルドカード<br>- wildcardFileName | ソース ファイルをフィルター処理するための、指定された folderPath または wildcardFolderPath の下のワイルドカード文字を含むファイル名。 <br>使用できるワイルドカードは、`*` (0 個以上の文字に一致) と `?` (0 個または 1 個の文字に一致) です。実際のフォルダー名にワイルドカードまたは `^` が含まれている場合は、このエスケープ文字を使用してエスケープします。  他の例については、「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」を参照してください。 | はい |
+| オプション 2: ワイルドカード<br>- wildcardFileName | ソース ファイルをフィルター処理するための、指定された folderPath または wildcardFolderPath の下のワイルドカード文字を含むファイル名。 <br>使用できるワイルドカードは、`*` (0 個以上の文字に一致) と `?` (0 個または 1 個の文字に一致) です。実際のファイル名にワイルドカードまたは `^` が含まれている場合は、このエスケープ文字を使用してエスケープします。  他の例については、「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」を参照してください。 | はい |
 | オプション 3: ファイルの一覧<br>- fileListPath | 指定されたファイル セットをコピーすることを示します。 コピーするファイルの一覧を含むテキスト ファイルをポイントします (データセットで構成されているパスへの相対パスを使用して、ファイルを 1 行につき 1 つずつ指定します)。<br/>このオプションを使用する場合は、データセットにファイル名を指定しないでください。 その他の例については、「[ファイル リストの例](#file-list-examples)」を参照してください。 |いいえ |
-| ***追加設定*** |  | |
-| recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 `recursive` が *true* に設定されていて、シンクがファイル ベースのストアである場合、シンクでは空のフォルダーまたはサブフォルダーがコピーも作成もされません。 <br>使用可能な値: *true* (既定値) および *false*。<br>`fileListPath` を構成する場合、このプロパティは適用されません。 |いいえ |
+| "***追加の設定** _" |  | |
+| recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 `recursive` が _true* に設定されていて、シンクがファイル ベースのストアである場合、シンクでは空のフォルダーとサブフォルダーがコピーも作成もされません。 <br>使用可能な値: *true* (既定値) および *false*。<br>`fileListPath` を構成する場合、このプロパティは適用されません。 |いいえ |
 | deleteFilesAfterCompletion | 宛先ストアに正常に移動した後、バイナリ ファイルをソース ストアから削除するかどうかを示します。 ファイルの削除はファイルごとに行われるので、コピー操作が失敗した場合、一部のファイルが既に宛先にコピーされソースからは削除されているが、他のファイルはまだソース ストアに残っていることがわかります。 <br/>このプロパティは、バイナリ ファイルのコピー シナリオでのみ有効です。 既定値: false。 |いいえ |
-| modifiedDatetimeStart    | ファイルは、*最終変更日時*の属性に基づいてフィルター処理されます。 <br>最終変更日時が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の範囲内にあるファイルが選択されます。 時刻は *2018-12-01T05:00:00Z* の形式で UTC タイム ゾーンに適用されます。 <br> 各プロパティには NULL を指定できます。これは、ファイル属性フィルターをデータセットに適用しないことを意味します。  `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が NULL の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。  `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が NULL の場合は、最終変更日時属性が datetime 値以下であるファイルが選択されます。<br/>`fileListPath` を構成する場合、このプロパティは適用されません。 | いいえ                                            |
+| modifiedDatetimeStart    | ファイルは、*最終変更日時* の属性に基づいてフィルター処理されます。 <br>最終変更日時が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の範囲内にあるファイルが選択されます。 時刻は *2018-12-01T05:00:00Z* の形式で UTC タイム ゾーンに適用されます。 <br> 各プロパティには NULL を指定できます。これは、ファイル属性フィルターをデータセットに適用しないことを意味します。  `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が NULL の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。  `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が NULL の場合は、最終変更日時属性が datetime 値以下であるファイルが選択されます。<br/>`fileListPath` を構成する場合、このプロパティは適用されません。 | いいえ                                            |
 | modifiedDatetimeEnd      | 上記と同じです。  
-| enablePartitionDiscovery | パーティション分割されているファイルの場合、ファイル パスからのパーティションを解析し、追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
-| partitionRootPath | パーティション検出が有効になっている場合、パーティション分割されているフォルダーをデータ列として読み取る目的で絶対ルート パスを指定します。<br/><br/>指定されない場合、既定では、<br/>- ソースでファイルのデータセットまたはリストにあるファイル パスを使用するとき、パーティション ルート パスはデータセットに構成されているパスになります。<br/>- ワイルドカード フォルダー フィルターを使用する場合、パーティションのルート パスは最初のワイルドカードの前のサブパスです。<br/><br/>たとえば、データセット内のパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティション ルート パスを "root/folder/year=2020" として指定する場合、コピー アクティビティによって、ファイル内の列に加え、さらに 2 つの列、`month` と `day` がそれぞれ値 "08" と "27" で生成されます。<br/>- パーティション ルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
+| enablePartitionDiscovery | パーティション分割されているファイルの場合は、ファイル パスのパーティションを解析し、それを追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
+| partitionRootPath | パーティション検出が有効になっている場合は、パーティション分割されたフォルダーをデータ列として読み取るための絶対ルート パスを指定します。<br/><br/>これが指定されていない場合は、既定で次のようになります。<br/>- ソース上のデータセットまたはファイルの一覧内のファイル パスを使用する場合、パーティションのルート パスはそのデータセットで構成されているパスです。<br/>- ワイルドカード フォルダー フィルターを使用する場合、パーティションのルート パスは最初のワイルドカードの前のサブパスです。<br/><br/>たとえば、データセット内のパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティションのルート パスを "root/folder/year=2020" として指定した場合は、コピー アクティビティによって、ファイル内の列とは別に、それぞれ "08" と "27" の値を持つ `month` と `day` という 2 つの追加の列が生成されます。<br/>- パーティションのルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
 | maxConcurrentConnections | ストレージ ストアに同時に接続できる接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ値を指定します。 | いいえ                                            |
-| "***DistCp 設定***" |  | |
+| "**_DistCp 設定_* _" |  | |
 | distcpSettings | HDFS DistCp を使用する場合に使用するプロパティ グループ。 | いいえ |
 | resourceManagerEndpoint | YARN (Yet Another Resource Negotiator) エンドポイント | はい (DistCp を使用する場合) |
 | tempScriptPath | 一時 DistCp コマンド スクリプトを格納するために使用するフォルダー パス。 このスクリプト ファイルは Data Factory によって生成され、コピー ジョブ完了後に削除されます。 | はい (DistCp を使用する場合) |
 | distcpOptions | DistCp コマンドに指定する追加オプション。 | いいえ |
 
-**例:**
+_ *例:* *
 
 ```json
 "activities":[
@@ -232,7 +232,7 @@ HDFS では、形式ベースのコピー ソースの `storeSettings` 設定に
 
 このセクションでは、ワイルドカード フィルターをフォルダー パスとファイル名とともに使用する場合の結果の動作について説明します。
 
-| folderPath | fileName             | recursive | ソースのフォルダー構造とフィルターの結果 (**太字**のファイルが取得されます) |
+| folderPath | fileName             | recursive | ソースのフォルダー構造とフィルターの結果 (**太字** のファイルが取得されます) |
 | :--------- | :------------------- | :-------- | :----------------------------------------------------------- |
 | `Folder*`  | (空、既定値を使用) | false     | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*`  | (空、既定値を使用) | true      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
@@ -259,7 +259,7 @@ DistCp を使用して HDFS から Azure BLOB ストレージ (ステージン�
 
 * MapReduce と YARN サービスが有効であること。  
 * YARN のバージョンが 2.5 以降であること。  
-* HDFS サーバーが、次の対象のデータ ストアと統合されていること。**Azure BLOB ストレージ**または **Azure Data Lake Store (ADLS Gen1)** : 
+* HDFS サーバーが、次の対象のデータ ストアと統合されていること。**Azure BLOB ストレージ** または **Azure Data Lake Store (ADLS Gen1)** : 
 
     - Azure Blob ファイル システムは、Hadoop 2.7 以降、ネイティブにサポートされています。 Hadoop 環境構成で JAR のパスを指定するだけで十分です。
     - Azure Data Lake Store ファイル システムは、Hadoop 3.0.0-alpha1 からパッケージ化されます。 ご使用の Hadoop クラスターのバージョンがそのバージョンよりも前のものである場合、Azure Data Lake Store 関連の JAR パッケージ (azure-datalake-store.jar) を、[こちら](https://hadoop.apache.org/releases.html)からクラスターに手動でインポートし、Hadoop 環境構成で JAR ファイル パスを指定する必要があります。
@@ -490,8 +490,8 @@ Delete アクティビティのプロパティの詳細については、「[Azu
 | type | データセットの *type* プロパティは *FileShare* に設定する必要があります |はい |
 | folderPath | フォルダーへのパス。 ワイルドカード フィルターがサポートされています。 使用できるワイルドカードは、`*` (0 個以上の文字に一致) と `?` (0 個または 1 個の文字に一致) です。実際のファイル名にワイルドカードまたは `^` が含まれている場合は、このエスケープ文字を使用してエスケープします。 <br/><br/>例: ルートフォルダー/サブフォルダー。「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の例を参照してください。 |はい |
 | fileName |  指定された "folderPath" にあるファイルの名前またはワイルドカード フィルター。 このプロパティの値を指定しない場合、データセットはフォルダー内のすべてのファイルをポイントします。 <br/><br/>フィルターに使用できるワイルドカードは、`*` (0 個以上の文字に一致) と `?` (0 個または 1 個の文字に一致) です。<br/>- 例 1: `"fileName": "*.csv"`<br/>- 例 2: `"fileName": "???20180427.txt"`<br/>実際のフォルダー名にワイルドカードまたは `^` が含まれている場合は、このエスケープ文字を使用してエスケープします。 |いいえ |
-| modifiedDatetimeStart | ファイルは、*最終変更日時*の属性に基づいてフィルター処理されます。 最終変更日時が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の範囲内にあるファイルが選択されます。 時刻は *2018-12-01T05:00:00Z* の形式で UTC タイム ゾーンに適用されます。 <br/><br/> 多数のファイルにファイル フィルターを適用する場合は、この設定を有効にすることで、データ移動の全体的なパフォーマンスが影響を受けることに注意してください。 <br/><br/> 各プロパティには NULL を指定できます。これは、ファイル属性フィルターをデータセットに適用しないことを意味します。  `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が NULL の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。  `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が NULL の場合は、最終変更日時属性が datetime 値以下であるファイルが選択されます。| いいえ |
-| modifiedDatetimeEnd | ファイルは、*最終変更日時*の属性に基づいてフィルター処理されます。 最終変更日時が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の範囲内にあるファイルが選択されます。 時刻は *2018-12-01T05:00:00Z* の形式で UTC タイム ゾーンに適用されます。 <br/><br/> 多数のファイルにファイル フィルターを適用する場合は、この設定を有効にすることで、データ移動の全体的なパフォーマンスが影響を受けることに注意してください。 <br/><br/> 各プロパティには NULL を指定できます。これは、ファイル属性フィルターをデータセットに適用しないことを意味します。  `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が NULL の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。  `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が NULL の場合は、最終変更日時属性が datetime 値以下であるファイルが選択されます。| いいえ |
+| modifiedDatetimeStart | ファイルは、*最終変更日時* の属性に基づいてフィルター処理されます。 最終変更日時が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の範囲内にあるファイルが選択されます。 時刻は *2018-12-01T05:00:00Z* の形式で UTC タイム ゾーンに適用されます。 <br/><br/> 多数のファイルにファイル フィルターを適用する場合は、この設定を有効にすることで、データ移動の全体的なパフォーマンスが影響を受けることに注意してください。 <br/><br/> 各プロパティには NULL を指定できます。これは、ファイル属性フィルターをデータセットに適用しないことを意味します。  `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が NULL の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。  `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が NULL の場合は、最終変更日時属性が datetime 値以下であるファイルが選択されます。| いいえ |
+| modifiedDatetimeEnd | ファイルは、*最終変更日時* の属性に基づいてフィルター処理されます。 最終変更日時が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の範囲内にあるファイルが選択されます。 時刻は *2018-12-01T05:00:00Z* の形式で UTC タイム ゾーンに適用されます。 <br/><br/> 多数のファイルにファイル フィルターを適用する場合は、この設定を有効にすることで、データ移動の全体的なパフォーマンスが影響を受けることに注意してください。 <br/><br/> 各プロパティには NULL を指定できます。これは、ファイル属性フィルターをデータセットに適用しないことを意味します。  `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が NULL の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。  `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が NULL の場合は、最終変更日時属性が datetime 値以下であるファイルが選択されます。| いいえ |
 | format | ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>特定の形式のファイルを解析する場合にサポートされるファイル形式の種類は、*TextFormat*、*JsonFormat*、*AvroFormat*、*OrcFormat*、*ParquetFormat* です。 形式の *type* プロパティをいずれかの値に設定します。 詳細については、「[テキスト形式](supported-file-formats-and-compression-codecs-legacy.md#text-format)」、「[JSON 形式](supported-file-formats-and-compression-codecs-legacy.md#json-format)」、「[AVRO 形式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)」、「[ORC 形式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)」、[Parquet 形式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)」の各セクションをご覧ください。 |いいえ (バイナリ コピー シナリオのみ) |
 | compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs-legacy.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、*Gzip*、*Deflate*、*Bzip2*、*ZipDeflate* です。<br/>サポートされるレベルは、*Optimal* と *Fastest* です。 |いいえ |
 

@@ -12,12 +12,12 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 358a551908a7263f3258f47dfe1cceeffe2307b1
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: b255f64547c3bae56d31415dc94a751989ca1f45
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860492"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504901"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Azure Active Directory でグループ所有者を追加または削除する
 Azure Active Directory (Azure AD) グループを所有および管理するのはグループ所有者です。 グループ所有者には、ユーザーまたはサービス プリンシパルがなることができ、メンバーシップを含むグループを管理できます。 既存のグループ所有者またはグループを管理する管理者のみがグループ所有者を割り当てることができます。 グループ所有者は、グループのメンバーである必要はありません。

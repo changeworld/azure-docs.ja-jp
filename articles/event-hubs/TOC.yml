@@ -89,6 +89,22 @@
       href: event-hubs-availability-and-consistency.md
     - name: スケーラビリティ
       href: event-hubs-scalability.md
+    - name: フェデレーション
+      items:
+        - name: マルチサイトとマルチリージョンのフェデレーション
+          href: event-hubs-federation-overview.md
+        - name: イベント レプリケーションのタスクとアプリケーション
+          href: event-hubs-federation-replicator-functions.md
+        - name: イベント レプリケーション タスクのパターン
+          href: event-hubs-federation-patterns.md
+        - name: 構成されたレプリケーション タスク
+          href: event-hubs-federation-configuration.md
+        - name: Event Hubs 間でイベントをレプリケートする
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy'
+        - name: Azure Service Bus にイベントを送信する
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
+        - name: Azure Service Bus からイベントを取得する
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
     - name: geo ディザスター リカバリー
       items:
         - name: geo ディザスター リカバリーと geo レプリケーション

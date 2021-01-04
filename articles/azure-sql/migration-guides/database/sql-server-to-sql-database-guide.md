@@ -1,5 +1,5 @@
 ---
-title: SQL Server から SQL Database - 移行ガイド
+title: SQL Server から SQL Database へ:移行ガイド
 description: SQL Server データベースを Azure SQL Database に移行するには、このガイドのようにします。
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: ee4abaf3c9f6aa70ba14920711c8917994254649
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: f4f54aa02fb56ba5bf5ae9fcec2dae07c7dc0a27
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326983"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358981"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>移行ガイド:SQL Server から SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -192,9 +192,9 @@ DMS を使用して SQL Server から Azure SQL Database にデータベース�
    - [Azure 総保有コスト計算ツール](https://azure.microsoft.com/pricing/tco/calculator/) 
 
 
-- クラウド移行のためのフレームワークと導入サイクルの詳細については、以下を参照してください。
+- クラウド移行のためのフレームワークと導入サイクルの詳細については、以下を参照してください
    -  [Azure 向けのクラウド導入フレームワーク](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Azure に移行するワークロードの料金計算とサイズ設定のベスト プラクティス](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 
-- アプリケーション アクセス層を評価するには、「[Data Access Migration Toolkit (プレビュー)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)」を参照してください
-- データ アクセス層の A/B テストの実行方法について詳しくは、[Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) に関するページを参照してください。
+- アプリケーション アクセス層を評価するには、「[Data Access Migration Toolkit (プレビュー)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)」を参照してください。
+- データ アクセス レイヤーの A/B テストの実行方法について詳しくは、[Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) についてのページを参照してください。

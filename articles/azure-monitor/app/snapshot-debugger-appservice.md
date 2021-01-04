@@ -6,27 +6,32 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6d111379cbeb0ea4eeac9ea0868b6d263a0a540c
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 35653840c5ddd6f5ae2d5dc078513f0fa35ab34a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435724"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560935"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Azure App Service で .NET アプリでスナップショット デバッガーを有効にする
 
 スナップショット デバッガーは、現在、Windows サービス プランの Azure App Service で実行されている ASP.NET アプリと ASP.NET Core アプリで機能します。 スナップショット デバッガーを使用する場合は、Basic サービス レベル以上でアプリケーションを実行することをお勧めします。 ほとんどのアプリケーションの場合、Free および Shared サービス レベルでは、スナップショットを保存するための十分なメモリがありません。
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> スナップショット デバッガーを有効にする
-アプリでスナップショット デバッガーを有効にするには、次の手順に従います。 別の種類の Azure サービスを実行している場合、他のサポート対象プラットフォームでスナップショット デバッガーを有効にする手順については以下を参照してください。
+アプリでスナップショット デバッガーを有効にするには、次の手順に従います。
+
+別の種類の Azure サービスを実行している場合、他のサポート対象プラットフォームでスナップショット デバッガーを有効にする手順については次を参照してください。
 * [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric サービス](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines と仮想マシン スケール セット](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [オンプレミスの仮想マシンまたは物理マシン](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
-プレビュー版の .NET Core を使用している場合は、最初に[他の環境用のスナップショット デバッガーを有効にする](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)ための手順に従って、[Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリケーションに含めた後、次の手順の残りの部分を完了します。 
+> [!NOTE]
+> プレビュー版の .NET Core を使用している場合、またはアプリケーションで、依存アセンブリを介して直接または間接的に Application Insights SDK が参照されている場合は、最初に[他の環境用のスナップショット デバッガーを有効にする](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)ための手順に従って、[Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリケーションに含めた後、下の手順の残りの部分を完了します。 
 
-Application Insights スナップショット デバッガーは App Services ランタイムの一部としてプレインストールされますが、App Service アプリのスナップショットを取得するには、スナップショット デバッガーを有効にする必要があります。 App Insights SDK をソース コードに組み込んでいる場合でも、アプリをデプロイしたら以下の手順に従ってスナップショット デバッガーを有効にしてください。
+スナップショット デバッガーは App Services ランタイムの一部としてプレインストールされますが、App Service アプリのスナップショットを取得するには、スナップショット デバッガーを有効にする必要があります。
+
+アプリをデプロイしたら、下の手順に従ってスナップショット デバッガーを有効にします。
 
 1. App Service の Azure コントロール パネルに移動します。
 2. **[設定]、[Application Insights]** ページの順に移動します。
@@ -44,11 +49,12 @@ Application Insights スナップショット デバッガーは App Services �
 ## <a name="disable-snapshot-debugger"></a>スナップショット デバッガーを無効にする
 
 「**スナップショット デバッガーを有効にする**」と同じ手順に従ってください。ただし、スナップショット デバッガーの両方のスイッチを **オフ** にします。
+
 アプリケーション例外の診断を容易にするために、すべてのアプリでスナップショット デバッガーを有効にすることをお勧めします。
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 
-Azure App Service の場合、Azure Resource Manager テンプレートでアプリ設定を指定して、スナップショット デバッガーと Profiler を有効にできます。 アプリ設定を含む構成リソースを、Web サイトの子リソースとして追加します。
+Azure App Service の場合、Azure Resource Manager テンプレート内でアプリ設定を指定して、スナップショット デバッガーと Profiler を有効にできます。次のテンプレート スニペットを参照してください。
 
 ```json
 {

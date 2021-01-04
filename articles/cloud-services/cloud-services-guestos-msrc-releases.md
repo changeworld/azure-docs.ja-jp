@@ -10,22 +10,78 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/20/2020
+ms.date: 12/15/2020
 ms.author: yohaddad
-ms.openlocfilehash: 9cc86167b9d92289aa2edb605d8037a1bf6a9dcb
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: adaea28d105b72152e1af28cc9d79da19c548c2c
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338726"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561411"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
 
+## <a name="december-2020-guest-os"></a>2020 年 12 月のゲスト OS
+>[!NOTE] 
+
+>12 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされているところです。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 12 月のゲスト OS には、以下の修正プログラムが含まれています。 この一覧は変更されることがあります。 
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-12 |  [4592440]  |  最新の累積的な更新プログラム | 6.26 | 2020 年 12 月 8 日 |
+|  Rel 20-12 |  [4580325]  |  Flash の更新プログラム | 3.92、4.85、5.50、6.26 | 2020 年 10 月 13 日 |
+|  Rel 20-12 |  [4586768]  |  IE の累積的な更新プログラム | 2.105、3.92、4.85 | 2020 年 11 月 10 日 |
+|  Rel 20-12 |  [4593226]  |  最新の累積的な更新プログラム | 5.50 | 2020 年 12 月 8 日 |
+|  Rel 20-12 |  [4052623]  |  Defender | 5.50、6.26 | 2020 年 12 月 13 日 |
+|  Rel 20-12 |  [4578952]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | 2.105 | 2020 年 11 月 10 日 |
+|  Rel 20-12 |  [4578955]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | 2.105 | 2020 年 11 月 10 日 |
+|  Rel 20-12 |  [4578953]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | 4.85 | 2020 年 11 月 10 日 |
+|  Rel 20-12 |  [4578956]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | 4.85 | 2020 年 11 月 10 日 |
+|  Rel 20-12 |  [4578950]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | 3.92 | 2020 年 11 月 10 日 |
+|  Rel 20-12 |  [4578954]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | 3.92 | 2020 年 11 月 10 日 |
+|  Rel 20-12 |  [4578966]  |  .NET Framework 3.5 と 4.7.2 の累積的な更新プログラム | 6.26 | 2020 年 10 月 13 日 |
+|  Rel 20-12 |  [4592471]  |  マンスリー ロールアップ | 2.105 | 2020 年 12 月 8 日 |
+|  Rel 20-12 |  [4592468]  |  マンスリー ロールアップ | 3.92 | 2020 年 12 月 8 日 |
+|  Rel 20-12 |  [4592484]  |  マンスリー ロールアップ | 4.85 | 2020 年 12 月 8 日 |
+|  Rel 20-12 |  [4566426]  |  サービス スタック更新プログラム | 3.92 | 2020 年 7 月 14 日 |
+|  Rel 20-12 |  [4566425]  |  サービス スタック更新プログラム | 4.85 | 2020 年 7 月 14 日 |
+|  Rel 20-12 OOB |  [4578013]  |  スタンドアロンのセキュリティ更新プログラム | 4.85 | 2020 年 8 月 19 日 |
+|  Rel 20-12 |  [4576750]  |  サービス スタック更新プログラム | 5.50 | 2020 年 9 月 8 日 |
+|  Rel 20-12 |  [4592510]  |  サービス スタック更新プログラム | 2.105 | 2020 年 12 月 8 日 |
+|  Rel 20-12 |  [4587735]  |  サービス スタック更新プログラム | 6.26 | 2020 年 11 月 10 日 |
+|  Rel 20-12 |  [4494175]  |  マイクロコード | 5.50 | 2020 年 9 月 1 日 |
+|  Rel 20-12 |  [4494174]  |  マイクロコード | 6.26 | 2020 年 9 月 3 日 |
+
+[4592440]: https://support.microsoft.com/kb/4592440
+[4580325]: https://support.microsoft.com/kb/4580325
+[4586768]: https://support.microsoft.com/kb/4586768
+[4593226]: https://support.microsoft.com/kb/4593226
+[4052623]: https://support.microsoft.com/kb/4052623
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4578966]: https://support.microsoft.com/kb/4578966
+[4592471]: https://support.microsoft.com/kb/4592471
+[4592468]: https://support.microsoft.com/kb/4592468
+[4592484]: https://support.microsoft.com/kb/4592484
+[4566426]: https://support.microsoft.com/kb/4566426
+[4566425]: https://support.microsoft.com/kb/4566425
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4592510]: https://support.microsoft.com/kb/4592510
+[4587735]: https://support.microsoft.com/kb/4587735
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+
+
 ## <a name="november-2020-guest-os"></a>2020 年 11 月のゲスト OS
 >[!NOTE] 
 
->11 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされているところです。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 10 月のゲスト OS には、以下の修正プログラムが含まれています。 この一覧は変更されることがあります。 
+>11 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされているところです。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 11 月のゲスト OS には、以下の修正プログラムが含まれています。 この一覧は変更されることがあります。 
 
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
 | --- | --- | --- | --- | --- |

@@ -1,19 +1,19 @@
 ---
 title: 'Azure ExpressRoute: ARP テーブル - トラブルシューティング'
-description: このページでは、ExpressRoute 回線の ARP テーブルを取得する手順について説明します。
+description: このページでは、ExpressRoute 回線のアドレス解決プロトコル (ARP) テーブルを取得する手順について説明します。
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: troubleshooting
-ms.date: 01/30/2017
+ms.date: 12/15/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 9272bb8bac2054d7a02a7eac8c214395a86ceebf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d8ae2c58979c66ebbbab366d172179bdeee4253
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394858"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561581"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Resource Manager デプロイ モデルでの ARP テーブルの取得
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "89394858"
 ## <a name="address-resolution-protocol-arp-and-arp-tables"></a>アドレス解決プロトコル (ARP) と ARP テーブル
 アドレス解決プロトコル (ARP) は、 [RFC 826](https://tools.ietf.org/html/rfc826)で定義されたレイヤー 2 のプロトコルです。 Ethernet アドレス (MAC アドレス) と IP アドレスとを対応付けるために、ARP が使用されます。
 
-ARP テーブルから、特定のピアリングに関する ipv4 アドレスと MAC アドレスのマッピングを得ることができます。 ExpressRoute 回線のピアリングで使用される ARP テーブルは、プライマリ インターフェイスとセカンダリ インターフェイスのそれぞれに関して次の情報を提供します。
+ARP テーブルでは、ピアリングの種類ごとにプライマリとセカンダリ インターフェイスの両方について次の情報が提供されます。
 
 1. オンプレミス ルーター インターフェイスの IP アドレスから MAC アドレスへのマッピング
 2. ExpressRoute ルーター インターフェイスの IP アドレスから MAC アドレスへのマッピング
@@ -55,10 +55,10 @@ Age InterfaceProperty IpAddress  MacAddress
 次のセクションでは、ExpressRoute のエッジ ルーターによって参照される ARP テーブルの表示方法について説明します。 
 
 ## <a name="prerequisites-for-learning-arp-tables"></a>ARP テーブルを取得するための前提条件
-以降の作業を行うには、あらかじめ次の要件が満たされている必要があります。
+下の情報が正しいことを確認してから、先に進んでください。
 
-* 少なくとも 1 つのピアリングが構成された有効な ExpressRoute 回線。 この回線は、接続プロバイダーによって確実に構成されている必要があります。 この回線に対し、貴社または貴社の接続プロバイダーが少なくとも 1 つのピアリング (Azure プライベート、Azure パブリック、Microsoft) を構成済みであることが必要となります。
-* ピアリング (Azure プライベート、Azure パブリック、Microsoft) の構成に使用する IP アドレス範囲。 貴社側インターフェイスと ExpressRoute 側インターフェイスに対する IP アドレスのマッピングについては、 [ExpressRoute のルーティングの要件](expressroute-routing.md) に関するページに記載された IP アドレス割り当ての例をご覧ください。 ピアリングの構成については、 [ExpressRoute のピアリングの構成](expressroute-howto-routing-arm.md)に関するページを参照してください。
+* 少なくとも 1 つのピアリングが構成された有効な ExpressRoute 回線。 この回線は、接続プロバイダーによって確実に構成されている必要があります。 この回線に対し、貴社または貴社の接続プロバイダーによって、少なくとも Azure プライベート、Azure パブリック、または Microsoft ピアリングが構成されている必要があります。
+* ピアリングを構成するために使用される IP アドレス範囲。 どのように IP アドレスがインターフェイスにマップされるかについては、「[ExpressRoute のルーティングの要件](expressroute-routing.md)」ページにある IP アドレス割り当ての例をご覧ください。 ピアリングの構成については、 [ExpressRoute のピアリングの構成](expressroute-howto-routing-arm.md)に関するページを参照してください。
 * 各 IP アドレスで使用するインターフェイスの MAC アドレスに関する情報 (ネットワーク チーム/接続プロバイダーから支給してもらう)。
 * Azure 用の最新の PowerShell モジュール (バージョン 1.50 以降)。
 
@@ -151,10 +151,10 @@ Age InterfaceProperty IpAddress  MacAddress
 ピアリングの ARP テーブルは、レイヤー 2 の構成と接続性の検証に使用できます。 このセクションでは、各種の状況下における ARP テーブルの見え方について簡単に説明します。
 
 ### <a name="arp-table-when-a-circuit-is-in-operational-state-expected-state"></a>回線が運用状態 (正常な状態) にあるときの ARP テーブル
-* ARP テーブルには、オンプレミス側とマイクロソフト側とについて、有効な IP アドレスと MAC アドレスから成るエントリがそれぞれ存在します。 
+* ARP テーブルには、有効な IP アドレスと MAC アドレスが含まれたオンプレミス側のエントリがあります。 Microsoft 側についても同様です。 
 * オンプレミス側 IP アドレスの最終オクテットは常に奇数です。
 * マイクロソフト側 IP アドレスの最終オクテットは常に偶数です。
-* 3 つのピアリング (プライマリ/セカンダリ) のいずれについても、マイクロソフト側では同じ MAC アドレスが表示されます。 
+* Microsoft 側では、3 つのすべてのピアリング (プライマリとセカンダリ) に対して同じ MAC アドレスが表示されます。 
 
 ```output
 Age InterfaceProperty IpAddress  MacAddress    
@@ -164,23 +164,21 @@ Age InterfaceProperty IpAddress  MacAddress
 ```
 
 ### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>オンプレミス側または接続プロバイダー側に問題がある場合の ARP テーブル
-オンプレミスまたは接続プロバイダーに問題がある場合は、ARP テーブルにエントリが 1 つだけ表示されるか、オンプレミス MAC アドレスが Incomplete と表示されます。 この場合マイクロソフト側で使用されている MAC アドレスと IP アドレスとのマッピングが表示されます。 
+オンプレミスまたは接続プロバイダーで問題が発生した場合、ARP テーブルには 2 つのうちいずれかが表示されます。 オンプレミスの MAC アドレスに Incomplete と表示されるか、Microsoft エントリのみが ARP テーブルに表示されます。
   
-```output
-Age InterfaceProperty IpAddress  MacAddress    
---- ----------------- ---------  ----------    
-  0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
-```
-
-or
-       
 ```output
 Age InterfaceProperty IpAddress  MacAddress    
 --- ----------------- ---------  ----------   
   0 On-Prem           65.0.0.1   Incomplete
   0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 ```
-
+or
+   
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+  0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+```  
 
 > [!NOTE]
 > このような問題の解決については、ご利用の接続プロバイダーにサポート要求を申請してください。 ARP テーブルでインターフェイスの IP アドレスが MAC アドレスにマップされていない場合は、次の情報を確認してください。
@@ -190,13 +188,13 @@ Age InterfaceProperty IpAddress  MacAddress
 > 
 
 ### <a name="arp-table-when-microsoft-side-has-problems"></a>マイクロソフト側に問題がある場合の ARP テーブル
-* マイクロソフト側に問題がある場合は、ピアリングの ARP テーブルが表示されません。 
+* Microsoft 側に問題がある場合は、ピアリングの ARP テーブルが表示されません。 
 * [Microsoft サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にサポート チケットを申請します。 レイヤー 2 の接続に問題がある旨をはっきりと伝えてください。 
 
 ## <a name="next-steps"></a>次の手順
-* ExpressRoute 回線のレイヤー 3 の構成を検証する
-  * ルートのサマリーを取得して BGP セッションの状態を調べる 
-  * ExpressRoute でアドバタイズされるプレフィックスをルート テーブルを取得して調べる
-* バイトの入出力を参照してデータ転送を検証する
-* 問題が解消しない場合は [Microsoft サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) にサポート チケットを申請する
+* ExpressRoute 回線のレイヤー 3 の構成を検証します。
+  * ルート サマリーを取得して、BGP セッションの状態を確認します。
+  * ルート テーブルを取得して、ExpressRoute でどのプレフィックスがアドバタイズされているかを確認します。
+* バイトの入出力を確認してデータ転送を検証します。
+* それでも問題が解決されない場合は、[Microsoft サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)でサポート チケットを開いてください。
 

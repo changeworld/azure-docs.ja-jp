@@ -1,22 +1,25 @@
 ---
-title: Common Data Service に接続する
-description: Azure Logic Apps を使用して Common Data Service のレコードを作成および管理する
+title: Common Data Service (Microsoft Dataverse) に接続する
+description: Azure Logic Apps を使用して Common Data Service (Microsoft Dataverse) のレコードを作成および管理する
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 12/11/2020
 tags: connectors
-ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b17c3d54b7065a18e015363a0362766f844e4e10
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334584"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355122"
 ---
-# <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Common Data Service のレコードを作成および管理する
+# <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Common Data Service (Microsoft Dataverse) のレコードを作成および管理する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Common Data Service コネクタ](/connectors/commondataservice/)を使用すると、[Common Data Service](/powerapps/maker/common-data-service/data-platform-intro) データベース内のレコードを管理する自動化されたワークフローをビルドすることができます。 これらのワークフローでは、レコードの作成、レコードの更新、その他の操作を行うことができます。 また、Common Data Service データベースから情報を取得して、その出力を、ロジック アプリで使用される他のアクションで使用できるようにします。 たとえば、Common Data Service データベースでレコードが更新された場合、Office 365 Outlook コネクタを使用してメールを送信できます。
+> [!NOTE]
+> 2020 年 11 月に Common Data Service は Microsoft Dataverse に名前が変更されました。
+
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Common Data Service コネクタ](/connectors/commondataservice/)を使用すると、[Common Data Service (現 Microsoft Dataverse)](/powerapps/maker/common-data-service/data-platform-intro) データベース内のレコードを管理する自動化されたワークフローを作成できます。 これらのワークフローでは、レコードの作成、レコードの更新、その他の操作を行うことができます。 また、Common Data Service データベースから情報を取得して、その出力を、ロジック アプリで使用される他のアクションで使用できるようにします。 たとえば、Common Data Service データベースでレコードが更新された場合、Office 365 Outlook コネクタを使用してメールを送信できます。
 
 この記事では、新しい潜在顧客レコードが作成されるたびにタスク レコードを作成するロジック アプリをビルドする方法について説明します。
 

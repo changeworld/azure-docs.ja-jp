@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 39625914f179dfc8d5511b9a3d386cc8332b7efa
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a96d49a029eb83e24c1fb86954406693aa9c33a3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456310"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093963"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールを使用したデータの読み込みのベスト プラクティス
 
@@ -71,6 +71,9 @@ ORC ファイル形式でデータをエクスポートすると、大きなテ�
        ,MEMBERNAME = 'loader'
    );
 ```
+<br><br>
+>[!IMPORTANT] 
+>これは、SQL プールの 100% のリソースを単一の読み込みに割り当てる極端な例です。 これにより、最大コンカレンシーが 1 になります。 これを使用する必要があるのは、ワークロード間でリソースのバランスをとるために独自の構成で追加のワークロード グループを作成する必要がある初期読み込みに対してのみであることに注意してください。 
 
 読み込みワークロード グループのリソースを使用して読み込みを実行するには、loader としてサインインし、読み込みを実行します。
 
