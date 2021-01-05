@@ -4,12 +4,12 @@ description: Service Bus のクライアント診断とエンドツーエンド 
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b46f85e16370d15e3a8def98cdcdf8b3878208d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc7dab21fc01b624e8ab122fe883be89ea8633f6
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021631"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832694"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus メッセージングを介した分散トレースおよび相関付け
 
@@ -76,7 +76,7 @@ async Task ProcessAsync(Message message)
 
 メッセージ処理中にサポートされる外部コンポーネントへの呼び出しを行った場合は、それらの呼び出しも自動的に追跡されて相関付けられます。 手動での追跡と相関付けについて詳しくは、「[Application Insights .NET SDK でカスタム操作を追跡する](../azure-monitor/app/custom-operations-tracking.md)」をご覧ください。
 
-Application Insights SDK に加えて外部コードを実行している場合は、Application Insights ログを表示するときの**期間**が長くなります。 
+Application Insights SDK に加えて外部コードを実行している場合は、Application Insights ログを表示するときの **期間** が長くなります。 
 
 ![Application Insights ログの期間が長くなる](./media/service-bus-end-to-end-tracing/longer-duration.png)
 
@@ -193,7 +193,7 @@ TaskStatus status = (TaskStatus)evnt.Value.GetProperty("Status");
 var tagsList = new StringBuilder();
 foreach (var tags in currentActivity.Tags)
 {
-    tagsList.Append($", "{tags.Key}={tags.Value}");
+    tagsList.Append($", {tags.Key}={tags.Value}");
 }
 
 serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, Duration={currentActivity.Duration}, Status={status}, Id={currentActivity.Id}, StartTime={currentActivity.StartTimeUtc}{tagsList}");
