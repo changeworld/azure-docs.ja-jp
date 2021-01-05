@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 3ba0788b150f39c43471fd9d5e69b14a36ddbb78
-  ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+  ms.openlocfilehash: a94e30beb495d3ead38a14ef86c050dfc1afd0fd
+  ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/23/2020
-  ms.locfileid: "95493606"
+  ms.lasthandoff: 01/01/2021
+  ms.locfileid: "97845272"
 landingContent:
 - title: Form Recognizer について
   linkLists:
@@ -45,7 +45,7 @@ landingContent:
     - text: JavaScript SDK の使用
       url: quickstarts/client-library.md?pivots=programming-language-javascript
     - text: REST API の使用する (cURL)
-      url: quickstarts/curl-train-extract.md
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
 - title: トレーニング データ セットの作成
   linkLists:
   - linkListType: how-to-guide
@@ -62,8 +62,6 @@ landingContent:
     links:
     - text: サンプル ラベル付けツールを使用したトレーニング
       url: quickstarts/label-tool.md
-    - text: REST API と Python を使用したラベルのトレーニング
-      url: quickstarts/python-labeled-data.md
 - title: 配信確認メッセージからデータを抽出する
   linkLists:
   - linkListType: quickstart
@@ -77,9 +75,7 @@ landingContent:
     - text: JavaScript SDK の使用
       url: quickstarts/client-library.md?pivots=programming-language-javascript
     - text: REST API の使用する (cURL)
-      url: quickstarts/curl-train-extract.md
-    - text: REST API の使用する (cURL)
-      url: quickstarts/curl-receipts.md
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
   - linkListType: concept
     links:
     - text: レシートの概念
@@ -88,8 +84,16 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: REST API の使用
-      url: quickstarts/python-business-cards.md?
+    - text: .NET SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-csharp
+    - text: Python SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-python
+    - text: Java SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-java
+    - text: JavaScript SDK の使用
+      url: quickstarts/client-library.md?pivots=programming-language-javascript
+    - text: REST API の使用する (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
   - linkListType: concept
     links:
     - text: 名刺の概念
@@ -111,9 +115,7 @@ landingContent:
     - text: JavaScript SDK の使用
       url: quickstarts/client-library.md?pivots=programming-language-javascript
     - text: REST API の使用する (cURL)
-      url: quickstarts/curl-train-extract.md
-    - text: REST API の使用する (Python)
-      url: quickstarts/python-layout.md
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
 - title: コンテナーの使用
   linkLists:
   - linkListType: get-started

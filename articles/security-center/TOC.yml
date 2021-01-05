@@ -3,14 +3,14 @@
 - name: 概要
   expanded: true
   items:
-    - name: Security Center について
+    - name: Azure Security Center とは
+      href: security-center-introduction.md
+    - name: 可用性
       items:
-        - name: Azure Security Center とは
-          href: security-center-introduction.md
         - name: サポートされているプラットフォーム
           displayName: coverage
           href: security-center-os-coverage.md
-        - name: VM を対象とする機能
+        - name: OS、マシンの種類、クラウド別のカバレッジ
           href: security-center-services.md
         - name: Azure PaaS リソースを対象とする機能
           href: features-paas.md
@@ -110,6 +110,8 @@
       href: tutorial-security-incident.md
     - name: 規制に対するコンプライアンスの向上
       href: security-center-compliance-dashboard.md
+    - name: セキュリティ ポリシーの管理
+      href: tutorial-security-policy.md
 - name: 概念
   items:
     - name: クラウドのセキュリティ体制の管理
@@ -120,11 +122,6 @@
           href: secure-score-security-controls.md
         - name: セキュリティ レコメンデーションの概要
           href: security-center-recommendations.md
-        - name: セキュリティ ポリシーの概要
-          href: tutorial-security-policy.md
-        - name: 組み込みのセキュリティ ポリシー
-          displayName: 'samples, policy'
-          href: ./policy-reference.md
         - name: 推奨事項を使用してセキュリティを強化する
           href: security-center-using-recommendations.md
         - name: セキュリティ ベースライン
@@ -224,14 +221,9 @@
         - name: Docker ホストのセキュリティを強化する
           displayName: containers
           href: harden-docker-hosts.md
-    - name: Azure Defender for SQL を使用する
-      items:
-        - name: Azure VM 上の Azure Defender for SQL を構成する
+        - name: Azure Defender for SQL を使用する
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc'
-        - name: SQL 情報の保護ポリシーをカスタマイズする
-          displayName: 'sql, database, data discovery'
-          href: security-center-info-protection-policy.md
     - name: コンテナー レジストリ用 Azure Defender を使用する
       items:
         - name: レジストリ イメージの脆弱性をスキャンする
@@ -281,6 +273,9 @@
       href: security-center-investigation-user-data.md
     - name: テナント全体の可視性の確保
       href: security-center-management-groups.md
+    - name: SQL 情報の保護ポリシーをカスタマイズする
+      displayName: 'sql, database, data discovery'
+      href: security-center-info-protection-policy.md
 - name: リファレンス
   items:
     - name: REST API
@@ -297,6 +292,9 @@
           href: faq-vms.md
         - name: Azure Log Analytics の既存のユーザー
           href: faq-azure-monitor-logs.md
+    - name: 組み込みのセキュリティ ポリシー
+      displayName: 'samples, policy'
+      href: policy-reference.md
     - name: Azure ロードマップのブログ
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: エンドポイント保護の評価および推奨事項
