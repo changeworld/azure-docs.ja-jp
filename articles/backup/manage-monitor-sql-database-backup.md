@@ -3,12 +3,12 @@ title: Azure VM で SQL Server DB を管理および監視する
 description: この記事では、Azure VM 上で実行されている SQL Server データベースを管理し、監視する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: b0df22002521c8148cac1200e79aeb0ae5a60546
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e37e6fc211b34b7e427b66db374a705faafd25f9
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021505"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858740"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>バックアップされる SQL Server データベースを管理および監視する
 
@@ -20,7 +20,7 @@ SQL Server データベースにバックアップをまだ構成していない
 
 Azure Backup では、頻繁に実行される可能性があるスケジュールされたログのバックアップを除き、ポータルの **[バックアップ ジョブ]** にすべてのスケジュールされた操作とオンデマンドの操作が表示されます。 このポータルに表示されるジョブには、データベースの検出と登録、バックアップの構成、およびバックアップと復元の操作などがあります。
 
-![[バックアップ ジョブ] ポータル](./media/backup-azure-sql-database/jobs-list.png)
+![[バックアップ ジョブ] ポータル](./media/backup-azure-sql-database/sql-backup-jobs-list.png)
 
 監視シナリオの詳細については、[Arure portal における監視](backup-azure-monitoring-built-in-monitor.md)に関するページと [Azure Monitor を利用した監視](backup-azure-monitoring-use-azuremonitor.md)に関するページにお進みください。  
 
@@ -36,13 +36,9 @@ Azure Backup では、頻繁に実行される可能性があるスケジュー�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. コンテナー ダッシュボードで、 **[アラートとイベント]** を選択します。
+2. コンテナー ダッシュボードで、 **[バックアップ アラート]** を選択します。
 
-   ![[アラートとイベント] を選択する](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
-
-3. **[アラートとイベント]** で、 **[バックアップ アラート]** を選択します。
-
-   ![[バックアップ アラート] を選択する](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
+   ![[バックアップ アラート] を選択する](./media/backup-azure-sql-database/sql-backup-alerts-list.png)
 
 ## <a name="stop-protection-for-a-sql-server-database"></a>SQL Server データベースの保護を停止する
 

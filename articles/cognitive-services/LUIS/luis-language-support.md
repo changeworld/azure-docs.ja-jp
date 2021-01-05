@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: 1da43d0ef208d61ced6c8ca8dbc7603e0ef51155
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9363a2dacd91d3868e69e47381eea528e358935c
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96021573"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845460"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -30,12 +30,12 @@ LUIS が理解する発話の言語を次に示します。
 
 | Language |Locale  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](../text-analytics/language-support.md)<br>(センチメントと<br>キーワード)|
 |--|--|:--:|:--:|:--:|:--:|
-| 英語 (米国) |`en-US` | ✔ | ✔  |✔|✔|
 | アラビア語 (プレビュー - 現代標準アラビア語) |`ar-AR`|-|-|-|-|
 | *[中国語](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | オランダ語 |`nl-NL` |✔|-|-|✔|
-| フランス語 (フランス) |`fr-FR` |✔| ✔ |✔ |✔|
+| 英語 (米国) |`en-US` | ✔ | ✔  |✔|✔|
 | フランス語 (カナダ) |`fr-CA` |-|-|-|✔|
+| フランス語 (フランス) |`fr-FR` |✔| ✔ |✔ |✔|
 | ドイツ語 |`de-DE` |✔| ✔ |✔ |✔|
 | グジャラート語 | `gu-IN`|-|-|-|-|
 | ヒンディー語 | `hi-IN`|-|✔|-|-|
@@ -44,8 +44,8 @@ LUIS が理解する発話の言語を次に示します。
 | 韓国語 |`ko-KR` |✔|-|-|キー フレーズのみ|
 | マラーティー語 | `mr-IN`|-|-|-|-|
 | ポルトガル語 (ブラジル) |`pt-BR` |✔| ✔ |✔ |一部のサブカルチャのみ|
-| スペイン語 (スペイン) |`es-ES` |✔| ✔ |✔|✔|
 | スペイン語 (メキシコ)|`es-MX` |-|-|✔|✔|
+| スペイン語 (スペイン) |`es-ES` |✔| ✔ |✔|✔|
 | タミル語 | `ta-IN`|-|-|-|-|
 | テルグ語 | `te-IN`|-|-|-|-|
 | トルコ語 | `tr-TR` |✔|✔|-|センチメントのみ|

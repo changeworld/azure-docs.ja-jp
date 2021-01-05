@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 1cd8041f801a418f67d26461c5f4e9ebff7e5c30
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ee56d65452cb8535c5197e1b3524bd4e9c9ab9ea
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507304"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857411"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>セキュア エクスポートを使用して Azure を ITSM ツールに接続する
 
@@ -52,123 +52,6 @@ ITSMC では、ユーザー名とパスワードの資格情報が使用され�
 * **認証の強化**:Azure AD は、ITSMC で一般的に発生するタイムアウトを発生させることなく、より安全な認証を提供します。
 * **アラートが ITSM ツールで解決される**:メトリック アラートは、"発生" と "解決済み" の状態を実装しています。 条件が満たされると、アラートの状態は "発生" になります。 条件が満たされなくなると、アラートの状態は "解決済み" になります。 ITSMC では、アラートを自動的に解決することはできません。 セキュア エクスポートでは、解決された状態が ITSM ツールに送られるため、自動的に更新されます。
 * **[共通アラート スキーマ](./alerts-common-schema.md)** :ITSMC では、アラートのペイロードのスキーマは、アラートの種類によって異なります。 セキュア エクスポートでは、すべてのアラートの種類に共通のスキーマがあります。 この共通スキーマには、すべてのアラートの種類の CI が含まれています。 すべてのアラートの種類で、その CI を CMDB にバインドすることができます。
-
-ITSM Connector ツールの使用を開始するには、次の手順を実行します。
-
-1. アプリを Azure AD に登録する。
-2. セキュア Webhook アクション グループを作成します。
-3. パートナー環境を構成します。 
-
-セキュア エクスポートは、次の ITSM ツールとの接続をサポートしています。
-* [ServiceNow](#connect-servicenow-to-azure-monitor)
-* [BMC Helix](#connect-bmc-helix-to-azure-monitor)
-
-## <a name="register-with-azure-active-directory"></a>Azure Active Directory に登録する
-
-アプリケーションを Azure AD に登録するには、次の手順に従います。
-
-1. 「[Microsoft ID プラットフォームにアプリケーションを登録する](../../active-directory/develop/quickstart-register-app.md)」の手順に従います。
-2. Azure AD で、 **[アプリケーションの公開]** を選択します。
-3. **[アプリケーション ID の URI]** に **[設定]** を選択します。
-
-   [![[アプリケーション ID の URI] を設定するためのオプションのスクリーンショット。](media/it-service-management-connector-secure-webhook-connections/azure-ad.png)](media/it-service-management-connector-secure-webhook-connections/azure-ad-expand.png#lightbox)
-4. **[保存]** を選択します。
-
-## <a name="create-a-secure-webhook-action-group"></a>セキュア Webhook アクション グループを作成する
-
-アプリケーションが Azure AD に登録された後、アクション グループでセキュア Webhook アクションを使用することによって、Azure アラートに基づいて ITSM ツールで作業項目を作成できます。
-
-アクション グループでは、Azure アラートのアクションをトリガーする再利用可能なモジュール化された方法が提供されます。 Azure Portal で、アクション グループと、メトリック アラート、アクティビティ ログ アラート、および Azure Log Analytics アラートを使用できます。
-アクション グループの詳細については、「[Azure Portal でのアクション グループの作成および管理](./action-groups.md)」を参照してください。
-
-アクションに Webhook を追加するには、セキュア Webhook の手順に従います。
-
-1. [Azure portal](https://portal.azure.com/) で、 **[モニター]** を検索して選択します。 **[モニター]** ウィンドウでは、すべての監視設定とデータが 1 つのビューにまとめられています。
-2. **[アラート]**  >  **[アクションの管理]** を選択します。
-3. [[アクション グループの追加]](./action-groups.md#create-an-action-group-by-using-the-azure-portal) を選択し、フィールドに入力します。
-4. **[アクション グループ名]** ボックスおよび **[短い名前]** ボックスに名前を入力します。 短い名前は、通知がこのグループを使用して送信されるときに長い名前の代わりに使用されます。
-5. **[セキュア Webhook]** を選択します。
-6. 次の詳細を選択します。
-   1. 登録した Azure Active Directory インスタンスのオブジェクト ID を選択します。
-   2. URI に、[ITSM ツール環境](#configure-the-itsm-tool-environment)からコピーした Webhook URL を貼り付けます。
-   3. **[共通アラート スキーマを有効にする]** に **[はい]** を設定します。 
-
-   次の図は、セキュア Webhook アクションの構成の例を示しています。
-
-   ![セキュア Webhook アクションを示すスクリーンショット。](media/it-service-management-connector-secure-webhook-connections/secure-webhook.png)
-
-## <a name="configure-the-itsm-tool-environment"></a>ITSM ツール環境を構成する
-
-構成には次の 2 つのステップが含まれます。
-1. セキュア エクスポート定義の URI を取得します。
-2. ITSM ツールのフローに従った定義。
-
-
-### <a name="connect-servicenow-to-azure-monitor"></a>ServiceNow を Azure Monitor に接続する
-
-以降のセクションでは、ServiceNow 製品と Azure のセキュア エクスポートを接続する方法について詳しく説明します。
-
-### <a name="prerequisites"></a>前提条件
-
-次の前提条件が満たされていることを確認します。
-
-* Azure AD が登録されている。
-* サポートされているバージョンの ServiceNow Event Management - ITOM (バージョン Orlando 以降) がある。
-
-### <a name="configure-the-servicenow-connection"></a>ServiceNow 接続の構成
-
-1. リンク https://(instance name).service-now.com/api/sn_em_connector/em/inbound_event?source=azuremonitor を使用します。これは、セキュリティで保護された定義の URI です。
-
-2. バージョンに応じた手順に従ってください。
-   * [パリ](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/task/azure-events-authentication.html)
-   * [Orlando](https://docs.servicenow.com/bundle/orlando-it-operations-management/page/product/event-management/task/azure-events-authentication.html)
-   * [ニューヨーク](https://docs.servicenow.com/bundle/newyork-it-operations-management/page/product/event-management/task/azure-events-authentication.html)
-
-### <a name="connect-bmc-helix-to-azure-monitor"></a>BMC Helix を Azure Monitor に接続する
-
-以降のセクションでは、BMC Helix 製品と Azure のセキュア エクスポートを接続する方法について詳細に説明します。
-
-### <a name="prerequisites"></a>前提条件
-
-次の前提条件が満たされていることを確認します。
-
-* Azure AD が登録されている。
-* サポートされているバージョンの BMC Helix Multi-Cloud Service Management (バージョン 19.08 以降) がある。
-
-### <a name="configure-the-bmc-helix-connection"></a>BMC Helix の接続を構成する
-
-1. セキュア エクスポートの URI を取得するために、BMC Helix 環境で次の手順を使用します。
-
-   1. Integration Studio にログインします。
-   2. **[Create Incident from Azure Alerts]** フローを探します。
-   3. Webhook URL をコピーします。
-   
-   ![Integration Studio の Webhook URL のスクリーンショット。](media/it-service-management-connector-secure-webhook-connections/bmc-url.png)
-   
-2. バージョンに応じた手順に従ってください。
-   * [Azure Monitor バージョン 20.02 との事前構築済み統合の有効化](https://docs.bmc.com/docs/multicloud/enabling-prebuilt-integration-with-azure-monitor-879728195.html)。
-   * [Azure Monitor バージョン 19.11 との事前構築済み統合の有効化](https://docs.bmc.com/docs/multicloudprevious/enabling-prebuilt-integration-with-azure-monitor-904157623.html)。
-
-3. BMC Helix での接続の構成の一部として、統合 BMC インスタンスにアクセスし、次の手順に従います。
-
-   1. **[カタログ]** を選択します。
-   2. **[Azure アラート]** を選択します。
-   3. **[コネクタ]** を選択します。
-   4. **[構成]** を選択します。
-   5. **[新しい接続を追加]** 構成を選択します。
-   6. 構成セクションの情報を入力します。
-      - **Name**:名前を指定します。
-      - **承認の種類**:**NONE**
-      - **説明**:名前を指定します。
-      - **サイト**:**Cloud**
-      - **インスタンスの数**:**2** (既定値)。
-      - **チェック**:既定では、使用が有効になるように選択されています。
-      - Azure テナント ID と Azure アプリケーション ID は、前に定義したアプリケーションから取得されます。
-
-![BMC の構成を示すスクリーンショット。](media/it-service-management-connector-secure-webhook-connections/bmc-configuration.png)
-
-
-
 
 ## <a name="next-steps"></a>次のステップ
 

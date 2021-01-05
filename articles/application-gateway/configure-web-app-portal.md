@@ -6,18 +6,18 @@ services: application-gateway
 author: surajmb
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 01/02/2021
 ms.author: victorh
-ms.openlocfilehash: a72f0106088d26eb2ff53456840c598c3d9619a7
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: aadd4904ff218613c0dd24daff784ad5b8b90fbb
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397554"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854912"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Application Gateway を使用した App Service の構成
 
-App Service は専用のデプロイではなくマルチテナント サービスであるため、受信要求のホスト ヘッダーを使って、要求に対する適切な App Service エンドポイントが解決されます。 通常、アプリケーションの DNS 名 (App Service に面したアプリケーション ゲートウェイに関連付けられた DNS 名になります) は、バックエンド App Service のドメイン名とは異なります。 したがって、アプリケーション ゲートウェイで受信された元の要求内のホスト ヘッダーは、バックエンド サービスのホスト名と同じではありません。 このため、アプリケーション ゲートウェイからバックエンドへの要求内のホスト ヘッダーが、バックエンド サービスのホスト名に変更されない場合、マルチテナント バックエンドでは、要求を正しいエンドポイントに解決できません。
+App Service は専用のデプロイではなくマルチテナント サービスであるため、受信した要求のホスト ヘッダーを使って、要求に対する適切な App Service エンドポイントが解決されます。 通常、アプリケーションの DNS 名 (App Service に面したアプリケーション ゲートウェイに関連付けられた DNS 名になります) は、バックエンド App Service のドメイン名とは異なります。 したがって、アプリケーション ゲートウェイで受信された元の要求内のホスト ヘッダーは、バックエンド サービスのホスト名と同じではありません。 このため、アプリケーション ゲートウェイからバックエンドへの要求内のホスト ヘッダーが、バックエンド サービスのホスト名に変更されない場合、マルチテナント バックエンドでは、要求を正しいエンドポイントに解決できません。
 
 Application Gateway には、Application Gateway からバックエンドに要求がルーティングされる際に、要求内のホスト ヘッダーをバックエンドのホスト名でオーバーライドする `Pick host name from backend target` というスイッチがあります。 この機能により、Azure App Service や API Management などのマルチテナント バックエンドがサポートされます。 
 
