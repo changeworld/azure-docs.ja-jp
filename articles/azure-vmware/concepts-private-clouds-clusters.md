@@ -3,12 +3,12 @@ title: 概念 - プライベート クラウドとクラスター
 description: Azure VMware Solution ソフトウェアによるデータ センターと vSphere クラスターの主な機能について説明します。
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: af34bb0d83d9571ae91dce90cab198a61cfe82a1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7f8508abed3446c58a683454bc49ec7dbb49d051
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967382"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825068"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware Solution のプライベート クラウドとクラスターの概念
 
@@ -48,18 +48,8 @@ Azure VMware Solution プライベート クラウドのクラスターでは、
 
 ## <a name="vmware-software-versions"></a>VMware ソフトウェアのバージョン
 
-Azure VMware Solution プライベート クラウドのクラスターで使用されている VMware ソフトウェアの最新のソフトウェア バージョンは次のとおりです。
+[!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
 
-| ソフトウェア              |    Version   |
-| :---                  |     :---:    |
-| VCSA/vSphere/ESXi |    6.7 U3    | 
-| ESXi                  |    6.7 U3    | 
-| vSAN                  |    6.7 U3    |
-| NSX-T                 |      2.5     |
-
-プライベート クラウド内の新しいクラスターの場合、ソフトウェア バージョンは、現在実行されているものと一致します。 サブスクリプション内の新しいプライベート クラウドの場合、ソフトウェア スタックの最新バージョンがインストールされます。
-
-Azure VMware Solution プラットフォーム ソフトウェアの一般的なアップグレード ポリシーおよびプロセスについては、[プライベート クラウドの更新とアップグレード](concepts-upgrades.md)に関する記事に記載されています。
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>ホストのメンテナンスとライフサイクル管理
 

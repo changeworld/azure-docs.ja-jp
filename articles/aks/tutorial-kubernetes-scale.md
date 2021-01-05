@@ -4,13 +4,13 @@ description: この Azure Kubernetes Service (AKS) チュートリアルでは�
 services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e700934a965f836456458cb33dc46125bef4ab72
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: mvc
+ms.openlocfilehash: 7f16ba3ffe6b6f96f17df540eb67e9cec0bfea8c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747000"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825693"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング
 
@@ -45,7 +45,7 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-*azure-vote-front* のデプロイに含まれるポッドの数を手動で変更するには、 [kubectl scale][kubectl-scale] コマンドを使います。 次の例では、フロントエンド ポッドの数を *5* に増やしています。
+*azure-vote-front* のデプロイに含まれるポッドの数を手動で変更するには、[kubectl scale][kubectl-scale] コマンドを使います。 次の例では、フロントエンド ポッドの数を *5* に増やしています。
 
 ```console
 kubectl scale --replicas=5 deployment/azure-vote-front
@@ -91,7 +91,7 @@ resources:
      cpu: 500m
 ```
 
-次の例では、 [kubectl autoscale][kubectl-autoscale] コマンドを使って、 *azure-vote-front* のデプロイのポッド数を自動スケーリングします。 すべてのポッドの平均 CPU 使用率が、要求された使用率の 50% を超えると、自動スケーラーはポッドを最大 *10* インスタンスまで増やします。 その後、少なくとも *3* インスタンスがデプロイ用に定義されます。
+次の例では、[kubectl autoscale][kubectl-autoscale] コマンドを使って、*azure-vote-front* のデプロイのポッド数を自動スケーリングします。 すべてのポッドの平均 CPU 使用率が、要求された使用率の 50% を超えると、自動スケーラーはポッドを最大 *10* インスタンスまで増やします。 その後、少なくとも *3* インスタンスがデプロイ用に定義されます。
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
@@ -150,7 +150,7 @@ Azure Vote アプリの負荷が最低になって数分が経過すると、ポ
 
 前のチュートリアルでコマンドを使って Kubernetes クラスターを作成した場合、そのクラスターには 2 つのノードがあります。 クラスターのコンテナー ワークロードを増減する場合は、ノードの数を手動で調整できます。
 
-次の例では、 *myAKSCluster* という名前の Kubernetes クラスターのノードの数を 3 に増やしています。 コマンドが完了するまでに数分かかります。
+次の例では、*myAKSCluster* という名前の Kubernetes クラスターのノードの数を 3 に増やしています。 コマンドが完了するまでに数分かかります。
 
 ```azurecli
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3

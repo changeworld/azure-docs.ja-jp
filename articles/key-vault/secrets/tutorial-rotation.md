@@ -10,13 +10,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 0da0a56a64aa9b4500d36da2f6c86fc4c07f4c0f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5e61510965693e123c724d7b40d2fa6071fdd94c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786056"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824814"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>1 セットの認証資格情報を使用したリソースを対象にシークレットのローテーションを自動化する
 
@@ -24,7 +24,8 @@ Azure サービスに対する認証を行う最善の方法は[マネージド 
 
 このチュートリアルでは、1 セットの認証資格情報を使用するデータベースとサービスを対象に、シークレットの定期的なローテーションを自動化する方法について説明します。 具体的には、このチュートリアルでは Azure Event Grid の通知によってトリガーされる関数を使用して、Azure Key Vault に格納されている SQL Server のパスワードをローテーションします。
 
-![ローテーション ソリューションの図](../media/rotate-1.png)
+
+:::image type="content" source="../media/rotate-1.png" alt-text="ローテーション ソリューションの図":::
 
 1. シークレットの有効期限が切れる 30 日前に、Key Vault から "有効期限が近づいている" ことを示すイベントが Event Grid に発行されます。
 1. Event Grid がイベント サブスクリプションを確認し、HTTP POST を使用して、このイベントをサブスクライブしている関数アプリ エンドポイントを呼び出します。
@@ -42,19 +43,19 @@ Azure サービスに対する認証を行う最善の方法は[マネージド 
 
 まだ Key Vault と SQL Server をお持ちでない場合は、以下のデプロイ リンクを使用してください。
 
-[![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
+[![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmain%2FARM-Templates%2FInitial-Setup%2Fazuredeploy.json)
 
 1. **[リソース グループ]** で、 **[新規作成]** を選択します。 このグループに **akvrotation** という名前を付けます。
 1. **[SQL の管理者ログイン]** で、SQL 管理者のログイン名を入力します。 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 1. **[作成]**
 
-    ![リソース グループを作成する](../media/rotate-2.png)
+:::image type="content" source="../media/rotate-2.png" alt-text="リソース グループの作成":::
 
 これで、キー コンテナーと SQL Server インスタンスが完成しました。 このセットアップは、Azure CLI から次のコマンドを実行して検証できます。
 
 ```azurecli
-az resource list -o table
+az resource list -o table -g akvrotation
 ```
 
 次のような出力結果が得られます。
@@ -62,9 +63,11 @@ az resource list -o table
 ```console
 Name                     ResourceGroup         Location    Type                               Status
 -----------------------  --------------------  ----------  ---------------------------------  --------
-akvrotation-kv          akvrotation      eastus      Microsoft.KeyVault/vaults
-akvrotation-sql         akvrotation      eastus      Microsoft.Sql/servers
-akvrotation-sql/master  akvrotation      eastus      Microsoft.Sql/servers/databases
+akvrotation-kv           akvrotation      eastus      Microsoft.KeyVault/vaults
+akvrotation-sql          akvrotation      eastus      Microsoft.Sql/servers
+akvrotation-sql/master   akvrotation      eastus      Microsoft.Sql/servers/databases
+akvrotation-sql2         akvrotation      eastus      Microsoft.Sql/servers
+akvrotation-sql2/master  akvrotation      eastus      Microsoft.Sql/servers/databases
 ```
 
 ## <a name="create-and-deploy-sql-server-password-rotation-function"></a>SQL Server のパスワード ローテーション関数を作成してデプロイする
@@ -82,23 +85,24 @@ akvrotation-sql/master  akvrotation      eastus      Microsoft.Sql/servers/datab
 
 1. Azure テンプレートのデプロイのリンクを選択します。 
 
-   [![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
+   [![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmain%2FARM-Templates%2FFunction%2Fazuredeploy.json)
 
 1. **[リソース グループ]** 一覧から **[akvrotation]** を選択します。
 1. **[SQL Server 名]** に、SQL Server の名前とローテーションするパスワードを入力します。
 1. **[Key Vault 名]** に、Key Vault の名前を入力します。
 1. **[関数アプリ名]** に関数アプリの名前を入力します。
 1. **[シークレット名]** に、パスワードが格納されるシークレットの名前を入力します。
-1. **[Repo Url]\(リポジトリの URL\)** に、関数コードがある GitHub の場所 ( **https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp.git** ) を入力します。
+1. **[Repo Url]\(リポジトリの URL\)** に、関数コードがある GitHub の場所 ( **https://github.com/Azure-Samples/KeyVault-Rotation-SQLPassword-Csharp.git** ) を入力します。
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 1. **［作成］** を選択します
 
-   ![[確認および作成] を選択します。](../media/rotate-3.png)
+:::image type="content" source="../media/rotate-3.png" alt-text="[確認および作成] を選択します。":::
+  
 
 上記の手順を完了すると、ストレージ アカウント、サーバー ファーム、関数アプリを使用できるようになります。 このセットアップは、Azure CLI から次のコマンドを実行して検証できます。
 
 ```azurecli
-az resource list -o table
+az resource list -o table -g akvrotation
 ```
 
 次のような出力結果が得られます。
@@ -187,7 +191,7 @@ public static class SimpleRotationEventHandler
         }
 }
 ```
-[GitHub](https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp) に完全なサンプル コードがあります。
+[GitHub](https://github.com/Azure-Samples/KeyVault-Rotation-SQLPassword-Csharp) に完全なサンプル コードがあります。
 
 ## <a name="add-the-secret-to-key-vault"></a>Key Vault にシークレットを追加する
 *シークレットの管理* 権限をユーザーに付与するようにアクセス ポリシーを設定します。
@@ -209,11 +213,11 @@ az keyvault secret set --name sqlPassword --vault-name akvrotation-kv --value "S
 
 シークレットのローテーションが完了したことを確認するために、 **[Key Vault]**  >  **[シークレット]** に移動します。
 
-![[シークレット] に移動する](../media/rotate-8.png)
+:::image type="content" source="../media/rotate-8.png" alt-text="[シークレット] に移動する":::
 
 **sqlPassword** シークレットを開き、元のバージョンとローテーション後のバージョンを確認します。
 
-![sqluser シークレットを開く](../media/rotate-9.png)
+:::image type="content" source="../media/rotate-9.png" alt-text="[シークレット] に移動する":::
 
 ### <a name="create-a-web-app"></a>Web アプリを作成する
 
@@ -225,13 +229,13 @@ Web アプリには次のコンポーネントが必要です。
 
 1. Azure テンプレートのデプロイのリンクを選択します。 
 
-   [![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp-WebApp%2Fmaster%2Farm-templates%2FWeb-App%2Fazuredeploy.json)
+   [![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-SQLPassword-Csharp-WebApp%2Fmain%2FARM-Templates%2FWeb-App%2Fazuredeploy.json)
 
 1. **akvrotation** リソース グループを選択します。
 1. **[SQL Server 名]** に、SQL Server の名前とローテーションするパスワードを入力します。
 1. **[Key Vault 名]** に、Key Vault の名前を入力します。
 1. **[シークレット名]** に、パスワードが格納されるシークレットの名前を入力します。
-1. **[Repo Url]\(リポジトリの URL\)** に、Web アプリのコードがある GitHub の場所 ( **https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp-WebApp.git** ) を入力します。
+1. **[Repo Url]\(リポジトリの URL\)** に、Web アプリのコードがある GitHub の場所 ( **https://github.com/Azure-Samples/KeyVault-Rotation-SQLPassword-Csharp-WebApp.git** ) を入力します。
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
 1. **［作成］** を選択します
 
@@ -242,7 +246,7 @@ Web アプリには次のコンポーネントが必要です。
  
 https://akvrotation-app.azurewebsites.net/
 
-アプリケーションをブラウザーで開いている場合、 **生成されたシークレット値** が表示され、 **データベース接続済み** の値が *true* と表示されます。
+アプリケーションをブラウザーで開いている場合、**生成されたシークレット値** が表示され、**データベース接続済み** の値が *true* と表示されます。
 
 ## <a name="learn-more"></a>詳細情報
 

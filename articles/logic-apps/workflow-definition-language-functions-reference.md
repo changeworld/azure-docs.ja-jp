@@ -3,15 +3,15 @@ title: 式関数のリァレンス ガイド
 description: Azure Logic Apps および Power Automate の式に含まれる関数のリファレンス ガイド
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: a4646263eeb93a33a03e32107b46bb6dc104ce06
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 5c03d9b64f957f6ef8450197477f185dc8d15b2d
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326303"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825860"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps および Power Automate の式で関数を使用するためのリファレンス ガイド
 
@@ -1678,7 +1678,7 @@ decodeUriComponent('<value>')
 この例は、次の文字列内のエスケープ文字をデコード バージョンに置き換えます。
 
 ```
-decodeUriComponent('http%3A%2F%2Fcontoso.com')
+decodeUriComponent('https%3A%2F%2Fcontoso.com')
 ```
 
 返される結果: `"https://contoso.com"`
@@ -1753,7 +1753,7 @@ encodeUriComponent('<value>')
 encodeUriComponent('https://contoso.com')
 ```
 
-返される結果: `"http%3A%2F%2Fcontoso.com"`
+返される結果: `"https%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
@@ -4174,7 +4174,7 @@ triggerFormDataMultiValues('<key>')
 triggerFormDataMultiValues('feedUrl')
 ```
 
-例の結果として返される配列: `["http://feeds.reuters.com/reuters/topNews"]`
+例の結果として返される配列: `["https://feeds.a.dj.com/rss/RSSMarketsMain.xml"]`
 
 <a name="triggerFormDataValue"></a>
 
@@ -4205,7 +4205,7 @@ triggerFormDataValue('<key>')
 triggerFormDataValue('feedUrl')
 ```
 
-例の結果として返される文字列: `"http://feeds.reuters.com/reuters/topNews"`
+例の結果として返される文字列: `"https://feeds.a.dj.com/rss/RSSMarketsMain.xml"`
 
 <a name="triggerMultipartBody"></a>
 
@@ -4336,7 +4336,7 @@ uriComponent('<value>')
 uriComponent('https://contoso.com')
 ```
 
-返される結果: `"http%3A%2F%2Fcontoso.com"`
+返される結果: `"https%3A%2F%2Fcontoso.com"`
 
 <a name="uriComponentToBinary"></a>
 
@@ -4363,7 +4363,7 @@ uriComponentToBinary('<value>')
 この例は、次の URI エンコード文字列のバイナリ バージョンを作成します。
 
 ```
-uriComponentToBinary('http%3A%2F%2Fcontoso.com')
+uriComponentToBinary('https%3A%2F%2Fcontoso.com')
 ```
 
 返される結果:
@@ -4398,7 +4398,7 @@ uriComponentToString('<value>')
 この例は、次の URI エンコード文字列のデコードされた文字列バージョンを作成します。
 
 ```
-uriComponentToString('http%3A%2F%2Fcontoso.com')
+uriComponentToString('https%3A%2F%2Fcontoso.com')
 ```
 
 返される結果: `"https://contoso.com"`
@@ -4458,7 +4458,7 @@ uriPath('<uri>')
 この例は、次の URI の `path` 値を検索します。
 
 ```
-uriPath('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriPath('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 返される結果: `"/catalog/shownew.htm"`
@@ -4488,7 +4488,7 @@ uriPathAndQuery('<uri>')
 この例は、次の URI の `path` と `query` の値を検索します。
 
 ```
-uriPathAndQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriPathAndQuery('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 返される結果: `"/catalog/shownew.htm?date=today"`
@@ -4518,7 +4518,7 @@ uriPort('<uri>')
 この例は、次の URI の `port` 値を返します。
 
 ```
-uriPort('http://www.localhost:8080')
+uriPort('https://www.localhost:8080')
 ```
 
 返される結果: `8080`
@@ -4548,7 +4548,7 @@ uriQuery('<uri>')
 この例は、次の URI の `query` 値を返します。
 
 ```
-uriQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriQuery('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 返される結果: `"?date=today"`
@@ -4578,7 +4578,7 @@ uriScheme('<uri>')
 この例は、次の URI の `scheme` 値を返します。
 
 ```
-uriScheme('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriScheme('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 返される結果: `"http"`
@@ -4918,16 +4918,16 @@ xpath('<xml>', '<xpath>')
 
 *例 8*
 
-この例では、次の XML 文字列があるとします。これには、XML ドキュメントの名前空間 `xmlns="http://contoso.com"` が含まれています。
+この例では、次の XML 文字列があるとします。これには、XML ドキュメントの名前空間 `xmlns="https://contoso.com"` が含まれています。
 
 ```xml
-<?xml version="1.0"?><file xmlns="http://contoso.com"><location>Paris</location></file>
+<?xml version="1.0"?><file xmlns="https://contoso.com"><location>Paris</location></file>
 ```
 
-これらの式では、XPath 式 `/*[name()="file"]/*[name()="location"]` または `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]` を使用して、`<location></location>` ノードに一致するノードを検索します。 これらの例は、Logic App デザイナーまたは式エディターで使用する構文を示しています。
+これらの式では、XPath 式 `/*[name()="file"]/*[name()="location"]` または `/*[local-name()="file" and namespace-uri()="https://contoso.com"]/*[local-name()="location"]` を使用して、`<location></location>` ノードに一致するノードを検索します。 これらの例は、Logic App デザイナーまたは式エディターで使用する構文を示しています。
 
 * `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
-* `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]')`
+* `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="https://contoso.com"]/*[local-name()="location"]')`
 
 `<location></location>` ノードと一致する結果のノード: 
 

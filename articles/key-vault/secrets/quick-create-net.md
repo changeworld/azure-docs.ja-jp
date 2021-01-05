@@ -7,13 +7,13 @@ ms.date: 09/23/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: dcf7c8db955b2e85ad7d1c047c714eb2c5968455
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7dd5725e55800034fc3d142ef47c61275dc165d1
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780809"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824612"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>クイックスタート: .NET 用 Azure Key Vault シークレット クライアント ライブラリ (SDK v4)
 
@@ -159,7 +159,7 @@ var secret = await client.GetSecretAsync(secretName);
 
 ### <a name="delete-a-secret"></a>シークレットを削除します
 
-最後に、[StartDeleteSecretAsync](/dotnet/api/azure.security.keyvault.secrets.secretclient.startdeletesecretasync) メソッドと [PurgeDeletedSecretAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.purgedeletedsecretasync) メソッドを使用して、キー コンテナーからシークレットを削除してみましょう。
+最後に、[StartDeleteSecretAsync](/dotnet/api/azure.security.keyvault.secrets.secretclient.startdeletesecretasync) メソッドと [PurgeDeletedSecretAsync](/dotnet/api/azure.security.keyvault.keys.keyclient) メソッドを使用して、キー コンテナーからシークレットを削除してみましょう。
 
 ```csharp
 var operation = await client.StartDeleteSecretAsync("mySecret");

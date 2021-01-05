@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive, devx-track-azurecli
+ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: 66b14e435b777595e23fcf5a98d4820f36d21a1a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0722119b35ecebf3ed1e7a377707de02a6c127bf
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742036"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825187"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>HDInsight 上の Apache Kafka を Azure IoT Hub と共に使用する
 
@@ -21,7 +21,7 @@ ms.locfileid: "92742036"
 
 Kafka Connect API では、Kafka へのデータのプルまたは Kafka から別のシステムへのデータのプッシュを継続的に行うコネクタを実装できます。 [Apache Kafka Connect Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) は、Azure IoT Hub から Kafka にデータをプルするコネクタです。 Kafka から IoT Hub にデータをプッシュすることもことできます。
 
-IoT Hub からプルする場合は、 __ソース__ コネクタを使用します。 IoT Hub にプッシュする場合は、 __シンク__ コネクタを使用します。 IoT Hub コネクタでは、ソース コネクタとシンク コネクタの両方が提供されます。
+IoT Hub からプルする場合は、__ソース__ コネクタを使用します。 IoT Hub にプッシュする場合は、__シンク__ コネクタを使用します。 IoT Hub コネクタでは、ソース コネクタとシンク コネクタの両方が提供されます。
 
 次の図は、コネクタを使用するときの Azure IoT Hub と HDInsight 上の Kafka の間のデータ フローを示しています。
 
@@ -125,7 +125,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
     |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|上記と同じです。|
     |該当なし|`consumer.max.poll.records=10`|ファイルの末尾に追加します。 この変更により、一度に 10 個のレコードに限定することによって、シンク コネクタでのタイムアウトを防ぎます。 詳細については、[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) を参照してください。|
 
-1. ファイルを保存するには、 __Ctrl + X__ キー、 __Y__ キー、 __Enter__ キーの順に押します。
+1. ファイルを保存するには、__Ctrl + X__ キー、__Y__ キー、__Enter__ キーの順に押します。
 
 1. コネクタで使用されるトピックを作成するには、次のコマンドを使用します。
 
@@ -149,7 +149,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
 1. IoT ハブのイベント ハブ互換エンドポイントとイベント ハブ互換エンドポイント名を取得します。 この情報を取得するには、次のいずれかの方法を使用します。
 
-   * __[Azure Portal](https://portal.azure.com/) で__ 、次の手順に従います。
+   * __[Azure Portal](https://portal.azure.com/) で__、次の手順に従います。
 
      1. IoT ハブに移動し、 __[エンドポイント]__ を選択します。
      2. __[組み込みのエンドポイント]__ から、 __[イベント]__ を選択します。
@@ -162,7 +162,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
         > [!IMPORTANT]  
         > ポータルからのエンドポイント値には、この例では必要のない余分なテキストが含まれていることがあります。 このパターン `sb://<randomnamespace>.servicebus.windows.net/` に一致するテキストを抽出します。
 
-   * __[Azure CLI](/cli/azure/get-started-with-azure-cli) で__ 、次のコマンドを使用します。
+   * __[Azure CLI](/cli/azure/get-started-with-azure-cli) で__、次のコマンドを使用します。
 
        ```azurecli
        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
@@ -176,15 +176,15 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
        "Partitions": 2
        ```
 
-2. __共有アクセス ポリシー__ と __キー__ を取得します。 たとえば、 __サービス__ キーを使用します。 この情報を取得するには、次のいずれかの方法を使用します。
+2. __共有アクセス ポリシー__ と __キー__ を取得します。 たとえば、__サービス__ キーを使用します。 この情報を取得するには、次のいずれかの方法を使用します。
 
-    * __[Azure Portal](https://portal.azure.com/) で__ 、次の手順に従います。
+    * __[Azure Portal](https://portal.azure.com/) で__、次の手順に従います。
 
         1. __[共有アクセス ポリシー]__ を選択してから、 __[サービス]__ を選択します。
         2. __[主キー]__ の値をコピーします。
         3. __[接続文字列 -- 主キー]__ の値をコピーします。
 
-    * __[Azure CLI](/cli/azure/get-started-with-azure-cli) で__ 、次のコマンドを使用します。
+    * __[Azure CLI](/cli/azure/get-started-with-azure-cli) で__、次のコマンドを使用します。
 
         1. 主キーの値を取得するには、次のコマンドを使用します。
 
@@ -233,7 +233,7 @@ IoT ハブを使用するようにソースを構成するには、エッジ ノ
 
     構成例については、「[Kafka Connect Source Connector for Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md)」を参照してください。
 
-1. 変更を保存するには、 __Ctrl + X__ キー、 __Y__ キー、 __Enter__ キーの順に押します。
+1. 変更を保存するには、__Ctrl + X__ キー、__Y__ キー、__Enter__ キーの順に押します。
 
 コネクタ ソースの構成について詳しくは、[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md) をご覧ください。
 
@@ -262,7 +262,7 @@ IoT ハブを使用するようにシンク接続を構成するには、エッ�
 
     構成例については、「[Kafka Connect Source Connector for Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)」を参照してください。
 
-1. 変更を保存するには、 __Ctrl + X__ キー、 __Y__ キー、 __Enter__ キーの順に押します。
+1. 変更を保存するには、__Ctrl + X__ キー、__Y__ キー、__Enter__ キーの順に押します。
 
 コネクタ シンクの構成について詳しくは、[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) をご覧ください。
 

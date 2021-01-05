@@ -8,12 +8,12 @@ author: grantomation
 ms.author: b-grodel
 keywords: aro、openshift、az aro、red hat、cli、azure file
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: db87e61166da87300a5e1fb8433a42f3f47cf832
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fe80698b71ae0ba808991d79b423d49abfacdf7c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493826"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825914"
 ---
 # <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 で Azure Files StorageClass を作成する
 
@@ -52,14 +52,14 @@ az storage account create \
 ## <a name="set-permissions"></a>アクセス許可を設定する
 ### <a name="set-resource-group-permissions"></a>リソース グループのアクセス許可を設定する
 
-ARO サービス プリンシパルには、新しい Azure ストレージ アカウントのリソース グループに対する 'listKeys' アクセス許可が必要です。 これを実現するには、'共同作成者' ロールを割り当てます。 
+ARO サービス プリンシパルには、新しい Azure ストレージ アカウントのリソース グループに対する 'listKeys' アクセス許可が必要です。 これを実現するには、'共同作成者' ロールを割り当てます。
 
 ```bash
 ARO_RESOURCE_GROUP=aro-rg
 CLUSTER=cluster
-ARO_SERVICE_PRINCIPAL_ID=$(az aro show -g $ARO_RESOURCE_GROUP -n $CLUSTER –-query servicePrincipalProfile.clientId -o tsv)
+ARO_SERVICE_PRINCIPAL_ID=$(az aro show -g $ARO_RESOURCE_GROUP -n $CLUSTER --query servicePrincipalProfile.clientId -o tsv)
 
-az role assignment create –-role Contributor -–assignee $ARO_SERVICE_PRINCIPAL_ID -g $AZURE_FILES_RESOURCE_GROUP
+az role assignment create --role Contributor -–assignee $ARO_SERVICE_PRINCIPAL_ID -g $AZURE_FILES_RESOURCE_GROUP
 ```
 
 ### <a name="set-aro-cluster-permissions"></a>ARO クラスターのアクセス許可を設定する
@@ -90,7 +90,7 @@ metadata:
 provisioner: kubernetes.io/azure-file
 parameters:
   location: $LOCATION
-  skuName: Standard_LRS 
+  skuName: Standard_LRS
   storageAccount: $AZURE_STORAGE_ACCOUNT_NAME
   resourceGroup: $AZURE_FILES_RESOURCE_GROUP
 reclaimPolicy: Delete
@@ -131,7 +131,7 @@ oc exec $POD -- bash -c "echo 'azure file storage' >> /data/test.txt"
 oc exec $POD -- bash -c "cat /data/test.txt"
 azure file storage
 ```
-test.txt ファイルは、Azure portal の Storage Explorer でも表示されます。 
+test.txt ファイルは、Azure portal の Storage Explorer でも表示されます。
 
 ## <a name="next-steps"></a>次のステップ
 
