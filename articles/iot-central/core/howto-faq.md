@@ -3,16 +3,16 @@ title: Azure IoT Central についてよく寄せられる質問 | Microsoft Doc
 description: Azure IoT Central についてよく寄せられる質問 (FAQ) と回答
 author: dominicbetts
 ms.author: dobett
-ms.date: 09/23/2020
+ms.date: 12/20/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: cbe0dbe55f903c25556698a5d510bf9e67b408be
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: acabaf843f8acfe7bc0b5e9456dee09bde74bef7
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126722"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796042"
 ---
 # <a name="frequently-asked-questions-for-iot-central"></a>IoT Central についてよく寄せられる質問
 
@@ -38,11 +38,11 @@ ms.locfileid: "92126722"
 
 **[デバイス]** ページのデバイスの状態が **[承認を待っています]** の場合は、 **[自動承認]** オプションが無効になっていることを意味します。
 
-:::image type="content" source="media/howto-faq/auto-approve.png" alt-text="ブロックされたデバイスを示すスクリーンショット":::
+:::image type="content" source="media/howto-faq/auto-approve.png" alt-text="自動承認オプションが無効になっているアプリケーションを示すスクリーンショット。":::
 
 デバイスがデータの送信を開始する前に、オペレーターが明示的にデバイスを承認する必要があります。 **[Devices]\(デバイス\)** ページで手動で登録されていないが、有効な資格情報を使って接続されているデバイスの場合、デバイスの状態が **[Waiting for Approval]\(承認待ち\)** になります。 オペレーターは、 **[デバイス]** ページから **[承認]** ボタンを使用してこれらのデバイスを承認できます。
 
-:::image type="content" source="media/howto-faq/approve-device.png" alt-text="ブロックされたデバイスを示すスクリーンショット":::
+:::image type="content" source="media/howto-faq/approve-device.png" alt-text="デバイスを承認する方法を示すスクリーンショット":::
 
 **デバイスをデバイス テンプレートに関連付けるにはどうすればよいですか?**
 

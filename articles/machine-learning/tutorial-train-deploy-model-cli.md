@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 119f1eaa838b404a3dbdc22f692f559816810dde
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 55221fa529688fbae1698a094ea31f6a3f765100
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578690"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796246"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>チュートリアル:CLI からのモデルのトレーニングとデプロイ
 
@@ -307,10 +307,10 @@ runconfig ファイルには、トレーニングの実行で使用される環�
 `cpu-cluster` コンピューティング先でトレーニングの実行を開始するには、次のコマンドを使用します。
 
 ```azurecli-interactive
-az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t runoutput.json
+az ml run submit-script -c mnist -e tutorial-cli --source-directory scripts -t runoutput.json
 ```
 
-このコマンドでは、実験の名前 (`myexperiment`) が指定されます。 実験では、この実行に関する情報がワークスペースに格納されます。
+このコマンドでは、実験の名前 (`tutorial-cli`) が指定されます。 実験では、この実行に関する情報がワークスペースに格納されます。
 
 `-c mnist` パラメーターでは、`.azureml/mnist.runconfig` ファイルを指定します。
 
@@ -327,7 +327,7 @@ Accuracy is 0.9185
 
 トレーニング スクリプトを調べると、トレーニング済みのモデルを `outputs/sklearn_mnist_model.pkl` に保存するときにアルファ値も使用されていることがわかります。
 
-モデルは、トレーニングされたコンピューティング先にある `./outputs` ディレクトリに保存されました。 この例では、Azure クラウド内の Azure Machine Learning コンピューティング インスタンスです。 トレーニング プロセスでは、トレーニングが発生したコンピューティング先から Azure Machine Learning ワークスペースに `./outputs` ディレクトリの内容が自動的にアップロードされます。 これは、実験 (この例では `myexperiment`) の一部として保存されます。
+モデルは、トレーニングされたコンピューティング先にある `./outputs` ディレクトリに保存されました。 この例では、Azure クラウド内の Azure Machine Learning コンピューティング インスタンスです。 トレーニング プロセスでは、トレーニングが発生したコンピューティング先から Azure Machine Learning ワークスペースに `./outputs` ディレクトリの内容が自動的にアップロードされます。 これは、実験 (この例では `tutorial-cli`) の一部として保存されます。
 
 ## <a name="register-the-model"></a>モデルを登録する
 
@@ -345,13 +345,13 @@ az ml model register -n mymodel -f runoutput.json --asset-path "outputs/sklearn_
 {
   "createdTime": "2019-09-19T15:25:32.411572+00:00",
   "description": "",
-  "experimentName": "myexperiment",
+  "experimentName": "tutorial-cli",
   "framework": "Custom",
   "frameworkVersion": null,
   "id": "mymodel:1",
   "name": "mymodel",
   "properties": "",
-  "runId": "myexperiment_1568906070_5874522d",
+  "runId": "tutorial-cli_1568906070_5874522d",
   "tags": "",
   "version": 1
 }

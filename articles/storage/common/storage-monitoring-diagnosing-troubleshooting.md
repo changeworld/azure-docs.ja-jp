@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: f8b555c4022fcf2532a7350839d2357c96562f4c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 18d36e37554a5d2b37488b7a1525f8290dc03da0
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791853"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763270"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -120,11 +120,10 @@ Azure Portal では、ストレージ アカウントの可用性、要求の総
 
 [Azure Portal](https://portal.azure.com) には、さまざまな Azure サービスに影響を与えるアクシデントについての通知も表示されます。
 注:この情報は、以前は [Azure サービス ダッシュボード](https://status.azure.com)上で履歴データと共に入手できました。
-
-[Azure Portal](https://portal.azure.com) によって Azure データセンター内部から正常性情報が収集 (内部からの監視) されますが、Azure でホストする Web アプリケーションに定期的に複数の場所からアクセスする疑似トランザクションを生成して外部から監視する方法を採ることを検討しても良いでしょう。 このような方法の例としては、[Dynatrace](https://www.dynatrace.com/en/synthetic-monitoring) や Application Insights for Azure DevOps が提供しているサービスがあります。 Application Insights for Azure DevOps の詳細については、付録「[付録 5: Application Insights for Azure DevOps を使用した監視](#appendix-5)」を参照してください。
+Application Insights for Azure DevOps の詳細については、付録「[付録 5: Application Insights for Azure DevOps を使用した監視](#appendix-5)」を参照してください。
 
 ### <a name="monitoring-capacity"></a><a name="monitoring-capacity"></a>容量監視
-ストレージ メトリックは、一般に保管データの大部分を BLOB が占めるため、BLOB サービスの容量メトリックのみを保管します (現時点では、ストレージ メトリックを使用してテーブルおよびキューの容量を監視することはできません)。 このデータは、Blob service の監視を有効にした場合に **$MetricsCapacityBlob** テーブルに格納されます。 ストレージ メトリックはこのデータを 1 日に 1 回記録します。 **RowKey** の値を使用すれば、行に含まれているエンティティがユーザー データに関するものか (値 **data** )、それとも分析データに関するものか (値 **analytics** ) 調べることができます。 格納された各エンティティには、ストレージの使用量 ( **Capacity** : バイト単位)、現在のコンテナー数 ( **ContainerCount** )、およびストレージ アカウントで使用されている BLOB の数 ( **ObjectCount** ) に関する情報が入っています。 **$MetricsCapacityBlob** テーブルに格納される容量メトリックの詳細については、「 [Storage Analytics Metrics のテーブルのスキーマ](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)」をご覧ください。
+ストレージ メトリックは、一般に保管データの大部分を BLOB が占めるため、BLOB サービスの容量メトリックのみを保管します (現時点では、ストレージ メトリックを使用してテーブルおよびキューの容量を監視することはできません)。 このデータは、Blob service の監視を有効にした場合に **$MetricsCapacityBlob** テーブルに格納されます。 ストレージ メトリックはこのデータを 1 日に 1 回記録します。**RowKey** の値を使用すれば、行に含まれているエンティティがユーザー データに関するものか (値 **data**)、それとも分析データに関するものか (値 **analytics**) 調べることができます。 格納された各エンティティには、ストレージの使用量 (**Capacity**: バイト単位)、現在のコンテナー数 (**ContainerCount**)、およびストレージ アカウントで使用されている BLOB の数 (**ObjectCount**) に関する情報が入っています。 **$MetricsCapacityBlob** テーブルに格納される容量メトリックの詳細については、「[Storage Analytics Metrics のテーブルのスキーマ](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)」をご覧ください。
 
 > [!NOTE]
 > ストレージ アカウントの容量制限に近づいていることを示す早期警告として、これらの値を監視する必要があります。 Azure Portal で、ストレージの合計使用量が指定のしきい値を超えた場合または下回った場合に通知するアラート ルールを追加できます。
@@ -134,9 +133,9 @@ Azure Portal では、ストレージ アカウントの可用性、要求の総
 BLOB などのさまざまなストレージ オブジェクトのサイズを推定する方法については、ブログ記事「 [Understanding Azure Storage Billing – Bandwidth, Transactions, and Capacity (Azure Storage の課金について - 帯域幅、トランザクション、および容量)](/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)」を参照してください。
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>可用性監視
-時間単位メトリックまたは分単位メトリックのテーブルの **Availability** 列の値を監視して、ストレージ アカウントの Storage サービスの可用性を監視する必要があります。これらのテーブルは、 **$MetricsHourPrimaryTransactionsBlob** 、 **$MetricsHourPrimaryTransactionsTable** 、 **$MetricsHourPrimaryTransactionsQueue** 、 **$MetricsMinutePrimaryTransactionsBlob** 、 **$MetricsMinutePrimaryTransactionsTable** 、 **$MetricsMinutePrimaryTransactionsQueue** 、 **$MetricsCapacityBlob** です。 **Availability** 列には、その行が表しているサービスまたは API 操作の可用性を示すパーセント値が入っています ( **RowKey** から、行に含まれているのがサービス全体のメトリックなのか、それとも特定の API 操作のメトリックなのかがわかります)。
+時間単位メトリックまたは分単位メトリックのテーブルの **Availability** 列の値を監視して、ストレージ アカウントの Storage サービスの可用性を監視する必要があります。これらのテーブルは、 **$MetricsHourPrimaryTransactionsBlob**、 **$MetricsHourPrimaryTransactionsTable**、 **$MetricsHourPrimaryTransactionsQueue**、 **$MetricsMinutePrimaryTransactionsBlob**、 **$MetricsMinutePrimaryTransactionsTable**、 **$MetricsMinutePrimaryTransactionsQueue**、 **$MetricsCapacityBlob** です。 **Availability** 列には、その行が表しているサービスまたは API 操作の可用性を示すパーセント値が入っています (**RowKey** から、行に含まれているのがサービス全体のメトリックなのか、それとも特定の API 操作のメトリックなのかがわかります)。
 
-100% より低い値は、一部のストレージ要求が失敗したことを示します。 失敗した理由は、エラーの種類別に要求数を示すメトリック データの他の列 ( **ServerTimeoutError** など) を参照して調べることができます。 要求の負荷分散を向上させるためにサービスがパーティションを移動しているときの一時的なサーバー タイムアウトなどの理由で、 **Availability** が一時的に 100% を切ることを予期しておく必要があります。また、このような偶発的な状況は、クライアント アプリケーションの再試行ロジックで対処する必要があります。 ストレージ メトリックが **Availability** の計算に含めるトランザクションの種類の一覧については、「 [Storage Analytics によって記録される操作やステータス メッセージ](/rest/api/storageservices/Storage-Analytics-Logged-Operations-and-Status-Messages)」をご覧ください。
+100% より低い値は、一部のストレージ要求が失敗したことを示します。 失敗した理由は、エラーの種類別に要求数を示すメトリック データの他の列 (**ServerTimeoutError** など) を参照して調べることができます。 要求の負荷分散を向上させるためにサービスがパーティションを移動しているときの一時的なサーバー タイムアウトなどの理由で、**Availability** が一時的に 100% を切ることを予期しておく必要があります。また、このような偶発的な状況は、クライアント アプリケーションの再試行ロジックで対処する必要があります。 ストレージ メトリックが **Availability** の計算に含めるトランザクションの種類の一覧については、「[Storage Analytics によって記録される操作やステータス メッセージ](/rest/api/storageservices/Storage-Analytics-Logged-Operations-and-Status-Messages)」をご覧ください。
 
 [Azure Portal](https://portal.azure.com) で、サービスの **Availability** が指定のしきい値を超えた場合または下回った場合に通知するアラート ルールを追加できます。
 
@@ -145,7 +144,7 @@ BLOB などのさまざまなストレージ オブジェクトのサイズを�
 ### <a name="monitoring-performance"></a><a name="monitoring-performance"></a>パフォーマンス監視
 Storage サービスのパフォーマンスを監視するには、時間単位および分単位のメトリック テーブルにある次のメトリックを使用します。
 
-* **AverageE2ELatency** 列と **AverageServerLatency** 列の値は、ストレージ サービスまたは API 操作タイプが要求の処理に要した時間の平均を示します。 **AverageE2ELatency** は、要求の処理にかかった時間に加えて要求の読み取りと応答の送信にかかった時間を含む、エンドツーエンドの待機時間の測定値です (そのため、要求が Storage サービスに達した後のネットワーク待機時間も含まれます)。一方、 **AverageServerLatency** は、処理時間のみの測定値であるため、クライアントとの通信に関するネットワーク待機時間は含まれません。 これらの 2 つの値が大きく異なる場合がありますが、その理由については、このガイド中の後のセクション「[メトリックが示す AverageE2ELatency が高く、AverageServerLatency が低い]」をご覧ください。
+* **AverageE2ELatency** 列と **AverageServerLatency** 列の値は、ストレージ サービスまたは API 操作タイプが要求の処理に要した時間の平均を示します。 **AverageE2ELatency** は、要求の処理にかかった時間に加えて要求の読み取りと応答の送信にかかった時間を含む、エンドツーエンドの待機時間の測定値です (そのため、要求が Storage サービスに達した後のネットワーク待機時間も含まれます)。一方、**AverageServerLatency** は、処理時間のみの測定値であるため、クライアントとの通信に関するネットワーク待機時間は含まれません。 これらの 2 つの値が大きく異なる場合がありますが、その理由については、このガイド中の後のセクション「[メトリックが示す AverageE2ELatency が高く、AverageServerLatency が低い]」をご覧ください。
 * **TotalIngress** と **TotalEgress** 列の値は、Storage サービスまたは特定の API 操作タイプの送受信データの総量 (バイト単位) を示します。
 * **TotalRequests** 列の値は、API 操作の Storage サービスが受信した要求の総数を示します。 **TotalRequests** は、Storage サービスが受信した要求の総数です。
 
@@ -183,7 +182,7 @@ Storage サービスのパフォーマンスを監視するには、時間単位
 後でこのガイドのセクション「[トラブルシューティング ガイダンス]」で、発生する可能性のある一般的なパフォーマンス関連の問題について詳しく説明します。
 
 ### <a name="diagnosing-errors"></a><a name="diagnosing-errors"></a>エラーの診断
-アプリケーションのユーザーから、クライアント アプリケーションの報告したエラーについて通知されることがあります。 ストレージ メトリックにも、Storage サービスのさまざまな種類のエラーの数が記録されます。たとえば、 **NetworkError** 、 **ClientTimeoutError** 、 **AuthorizationError** などがあります。 ストレージ メトリックにはエラーの種類ごとの数しか記録されませんが、サーバー側のログ、クライアント側のログ、およびネットワーク ログを調べれば個々の要求に関する詳細を取得できます。 一般に、要求が失敗した理由は、Storage サービスから返される HTTP 状態コードに示されます。
+アプリケーションのユーザーから、クライアント アプリケーションの報告したエラーについて通知されることがあります。 ストレージ メトリックにも、Storage サービスのさまざまな種類のエラーの数が記録されます。たとえば、**NetworkError**、**ClientTimeoutError**、**AuthorizationError** などがあります。 ストレージ メトリックにはエラーの種類ごとの数しか記録されませんが、サーバー側のログ、クライアント側のログ、およびネットワーク ログを調べれば個々の要求に関する詳細を取得できます。 一般に、要求が失敗した理由は、Storage サービスから返される HTTP 状態コードに示されます。
 
 > [!NOTE]
 > たとえば、一時的なネットワークの状態によるエラーやアプリケーション エラーなど、断続的なエラーが表示される場合があります。
@@ -218,7 +217,7 @@ Storage Client Library for .NET では、アプリケーションで実行され
 
 * [Fiddler](https://www.telerik.com/fiddler) は、無料の Web デバッグ プロキシです。HTTP および HTTPS の要求および応答メッセージのヘッダーおよびペイロード データを調べることができます。 詳細については、「[付録 1: Fiddler を使用した HTTP および HTTPS トラフィックのキャプチャ](#appendix-1)」を参照してください。
 * [Microsoft Network Monitor (Netmon)](https://download.cnet.com/s/network-monitor/) および [Wireshark](https://www.wireshark.org/) は、無料のネットワーク プロトコル アナライザーです。さまざまな種類のネットワーク プロトコルの詳細なパケット情報を表示できます。 Wireshark の詳細については、「[付録 2: Wireshark を使用したネットワーク トラフィックのキャプチャ](#appendix-2)」を参照してください。
-* クライアント マシンが Azure Storage サービスにネットワーク経由で接続できることを確認するための基本的な接続テストを実行する目的で、クライアント側で標準的な **ping** ツールを使用することはできません。 ただし、 [**tcping** ツール](https://www.elifulkerson.com/projects/tcping.php)を使って接続を確認することはできます。
+* クライアント マシンが Azure Storage サービスにネットワーク経由で接続できることを確認するための基本的な接続テストを実行する目的で、クライアント側で標準的な **ping** ツールを使用することはできません。 ただし、[**tcping** ツール](https://www.elifulkerson.com/projects/tcping.php)を使って接続を確認することはできます。
 
 多くの場合、問題の診断には ストレージ ログおよび ストレージ クライアント ライブラリのログ データで十分ですが、状況によっては、これらのネットワーク ログ ツールを使用して取得できる詳細な情報が必要になります。 たとえば、Fiddler を使用して HTTP および HTTPS メッセージを表示し、Storage サービスとの間で送受信されたヘッダーおよびペイロード データを確認して、クライアント アプリケーションがどのようにストレージ操作を再試行したのかを調べることができます。 Wireshark などのパケット レベルで動作するプロトコル アナライザーを使用して TCP データを表示し、失われたパケットや接続問題をトラブルシューティングすることができます。 
 
@@ -260,9 +259,9 @@ Storage サービスにより、サーバー要求 ID が自動生成されま�
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-ストレージ クライアント ライブラリがクライアントで **StorageException** をスローする場合、 **RequestInformation** プロパティには、 **ServiceRequestID** プロパティが含まれる **RequestResult** オブジェクトが入ります。 また、 **RequestResult** オブジェクトには **OperationContext** インスタンスからもアクセスできます。
+ストレージ クライアント ライブラリがクライアントで **StorageException** をスローする場合、**RequestInformation** プロパティには、**ServiceRequestID** プロパティが含まれる **RequestResult** オブジェクトが入ります。 また、**RequestResult** オブジェクトには **OperationContext** インスタンスからもアクセスできます。
 
-以下のコード サンプルは、カスタムの **ClientRequestId** 値を設定する方法を示しています。この場合、 **OperationContext** オブジェクトを、Storage サービスに対する要求に接続します。 また、応答メッセージから **ServerRequestId** 値を取得する方法も示しています。
+以下のコード サンプルは、カスタムの **ClientRequestId** 値を設定する方法を示しています。この場合、**OperationContext** オブジェクトを、Storage サービスに対する要求に接続します。 また、応答メッセージから **ServerRequestId** 値を取得する方法も示しています。
 
 ```csharp
 //Parse the connection string for the storage account.
@@ -348,21 +347,21 @@ catch (StorageException storageException)
 
 ---
 ### <a name="metrics-show-high-averagee2elatency-and-low-averageserverlatency"></a><a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>メトリックが示す AverageE2ELatency が高く、AverageServerLatency が低い
-[Azure Portal](https://portal.azure.com) 監視ツールに基づいて示されている以下の例の場合、 **AverageE2ELatency** が **AverageServerLatency** よりもかなり高くなっています。
+[Azure Portal](https://portal.azure.com) 監視ツールに基づいて示されている以下の例の場合、**AverageE2ELatency** が **AverageServerLatency** よりもかなり高くなっています。
 
 ![AverageE2ELatency が AverageServerLatency よりもかなり高くなっている例を示す Azure portal からの図。][4]
 
-Storage サービスは、正常な要求に対するメトリック **AverageE2ELatency** のみを計算します。 **AverageServerLatency** と違い、クライアントでデータを送信し、Storage サービスから確認応答を受け取るまでにかかる時間が含まれます。 そのため、 **AverageE2ELatency** と **AverageServerLatency** の差は、クライアント アプリケーションの応答速度が遅いこと、あるいはネットワークの状態に起因している可能性があります。
+Storage サービスは、正常な要求に対するメトリック **AverageE2ELatency** のみを計算します。**AverageServerLatency** と違い、クライアントでデータを送信し、Storage サービスから確認応答を受け取るまでにかかる時間が含まれます。 そのため、**AverageE2ELatency** と **AverageServerLatency** の差は、クライアント アプリケーションの応答速度が遅いこと、あるいはネットワークの状態に起因している可能性があります。
 
 > [!NOTE]
-> Storage Logging ログ データの個々のストレージ操作に関して、 **E2ELatency** と **ServerLatency** を表示することもできます。
+> Storage Logging ログ データの個々のストレージ操作に関して、**E2ELatency** と **ServerLatency** を表示することもできます。
 >
 >
 
 #### <a name="investigating-client-performance-issues"></a>クライアントのパフォーマンス上の問題に関する調査
 クライアントの応答が低下する理由として、使用可能な接続またはスレッドの数が制限されていること、または CPU、メモリ、ネットワーク帯域幅などのリソースが不足していることが考えられます。 この問題は、クライアント コードをより効率的に変更する (たとえば、Storage サービスに対する非同期呼び出しを使用する)、または (コアおよびメモリを増加させた) より大きな仮想マシンを使用するように変更すると、解決できる場合があります。
 
-Table サービスおよび Queue サービスの場合、Nagle アルゴリズムも **AverageE2ELatency** が **AverageServerLatency** と比較して高くなる原因となる可能性があります。詳しくは、「 [Nagle's Algorithm is Not Friendly towards Small Requests](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)」(小さな要求に不親切な Nagle アルゴリズム) の投稿をご覧ください。 Nagle アルゴリズムは、 **System.Net** 名前空間で **ServicePointManager** クラスを使用するとコード内で無効にすることができます。 この操作は、既に開かれている接続に対しては影響を及ぼさないため、アプリケーションの中で Table サービスまたは Queue サービスを呼び出す前に実行する必要があります。 以下の例は、worker ロールの **Application_Start** メソッドに関係する部分です。
+Table サービスおよび Queue サービスの場合、Nagle アルゴリズムも **AverageE2ELatency** が **AverageServerLatency** と比較して高くなる原因となる可能性があります。詳しくは、「[Nagle's Algorithm is Not Friendly towards Small Requests](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)」(小さな要求に不親切な Nagle アルゴリズム) の投稿をご覧ください。 Nagle アルゴリズムは、**System.Net** 名前空間で **ServicePointManager** クラスを使用するとコード内で無効にすることができます。 この操作は、既に開かれている接続に対しては影響を及ぼさないため、アプリケーションの中で Table サービスまたは Queue サービスを呼び出す前に実行する必要があります。 以下の例は、worker ロールの **Application_Start** メソッドに関係する部分です。
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
@@ -417,7 +416,7 @@ BLOB ダウンロード要求の **AverageServerLatency** が高い場合、Stor
 
 * アプリケーションにより、メッセージがキューに正常に追加されていることを確認します。 正常に完了する前にアプリケーションが **AddMessage** メソッドを再試行していないことを確かめてください。 ストレージ クライアント ライブラリ ログには、ストレージ操作の再試行の反復が表示されます。
 * キューにメッセージを追加した worker ロールと、処理に遅延があるかどうかを表示するキューからのメッセージを読み取る worker ロール間でクロック スキューがないことを検証します。
-* キューからのメッセージを読み取る worker ロールに障害がないことを確かめます。 キュー クライアントが **GetMessage** メソッドを呼び出した後、受信確認で応答できないと、メッセージは、 **invisibilityTimeout** 期間の有効期限が切れるまで、キューで非表示のままになります。 有効期限が切れた時点で、メッセージは再び処理可能になります。
+* キューからのメッセージを読み取る worker ロールに障害がないことを確かめます。 キュー クライアントが **GetMessage** メソッドを呼び出した後、受信確認で応答できないと、メッセージは、**invisibilityTimeout** 期間の有効期限が切れるまで、キューで非表示のままになります。 有効期限が切れた時点で、メッセージは再び処理可能になります。
 * キューの長さが時間の経過とともに大きくなっているかどうかを確認してください。 他のワーカーがキューに配置したすべてのメッセージを処理するのに十分な数のワーカーを使用できない場合に、大きくなる可能性があります。 また、要求の削除が失敗したかどうかを示すメトリック、およびメッセージのデキュー カウントを示すメトリックを調べてください。こうしたメトリックは、メッセージを削除する試行が何度も繰り返して失敗したことを示す場合があります。
 * 通常よりも長期間に渡り、予想された **E2ELatency** 値および **ServerLatency** 値よりも高くなっているキュー操作がないかどうか、Storage Logging ログを調べます。
 
@@ -435,7 +434,7 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 アプリケーションにおいてアクティビティ量が多い時期と一致して **PercentThrottlingError** 値が急増している場合は、クライアントの再試行に備えて、指数 (非線形) バックオフ戦略を実装します。 バックオフの再試行により、パーティションにおける即座の負荷が減少し、アプリケーションがトラフィックの急増を平滑化しやすくなります。 ストレージ クライアント ライブラリを使って再試行ポリシーを実装する方法の詳細については、「[Microsoft.Azure.Storage.RetryPolicies 名前空間](/dotnet/api/microsoft.azure.storage.retrypolicies)」を参照してください。
 
 > [!NOTE]
-> アプリケーションのアクティビティ量が多い時期と一致せずに、 **PercentThrottlingError** 値が急増することもあります。この原因として可能性が高いのは、Storage サービスが負荷分散を改善するためにパーティションを移動している場合です。
+> アプリケーションのアクティビティ量が多い時期と一致せずに、**PercentThrottlingError** 値が急増することもあります。この原因として可能性が高いのは、Storage サービスが負荷分散を改善するためにパーティションを移動している場合です。
 >
 >
 
@@ -459,14 +458,14 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 >
 >
 
-**PercentTimeoutError** メトリックは、 **ClientTimeoutError** 、 **AnonymousClientTimeoutError** 、 **SASClientTimeoutError** 、 **ServerTimeoutError** 、 **AnonymousServerTimeoutError** 、 **SASServerTimeoutError** の各メトリックを統合したメトリックです。
+**PercentTimeoutError** メトリックは、**ClientTimeoutError**、**AnonymousClientTimeoutError**、**SASClientTimeoutError**、**ServerTimeoutError**、**AnonymousServerTimeoutError**、**SASServerTimeoutError** の各メトリックを統合したメトリックです。
 
-サーバー タイムアウトは、サーバー上のエラーが原因で生じます。 クライアント タイムアウトは、サーバー上の操作がクライアントによって指定されたタイムアウトを超えたことが原因です。たとえば、ストレージ クライアント ライブラリを使用するクライアントは、 **QueueRequestOptions** クラスの **ServerTimeout** プロパティを使用して操作のタイムアウトを設定できます。
+サーバー タイムアウトは、サーバー上のエラーが原因で生じます。 クライアント タイムアウトは、サーバー上の操作がクライアントによって指定されたタイムアウトを超えたことが原因です。たとえば、ストレージ クライアント ライブラリを使用するクライアントは、**QueueRequestOptions** クラスの **ServerTimeout** プロパティを使用して操作のタイムアウトを設定できます。
 
 サーバー タイムアウトは、Storage サービスに問題があることを示します。この場合、さらに調査が必要です。 サービスのスケーラビリティ限界に達したかどうか示すメトリック、および問題の原因となる可能性があるトラフィックの急増を示すメトリックを使用できます。 問題が断続的な場合、サービスにおける負荷分散アクティビティが原因となっている可能性があります。 問題が永続的で、サービスのスケーラビリティ限界にアプリケーションが達したことが原因ではない場合には、サポートに問題を知らせてください。 クライアントのタイムアウトの場合、クライアントでタイムアウト値が適切に設定されているかどうかを判断し、クライアントで設定されているタイムアウト値を変更するか、Storage サービスにおける操作のパフォーマンスを改善する方法を調べてください。改善策としては、たとえば、テーブル クエリを最適化したり、メッセージのサイズを減らしたりできます。
 
 ### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>メトリックが PercentNetworkError の増加を示す
-メトリックが、いずれかの Storage サービスの **PercentNetworkError** が増加していることを示しています。 **PercentNetworkError** メトリックは、 **NetworkError** 、 **AnonymousNetworkError** 、 **SASNetworkError** の各メトリックの集計です。 このエラーは、クライアントがストレージ要求を出す際に Storage サービスによりネットワーク エラーが検出されると生じます。
+メトリックが、いずれかの Storage サービスの **PercentNetworkError** が増加していることを示しています。 **PercentNetworkError** メトリックは、**NetworkError**、**AnonymousNetworkError**、**SASNetworkError** の各メトリックの集計です。 このエラーは、クライアントがストレージ要求を出す際に Storage サービスによりネットワーク エラーが検出されると生じます。
 
 多くの場合、このエラーの原因は、Storage サービスでタイムアウト期間が切れる前にクライアントが切断することです。 クライアントのコードを調べて、Storage サービスからクライアントが切断した理由とタイミングを把握してください。 また、Wireshark または Tcping を使用して、クライアントからネットワーク接続の問題を調査できます。 こうしたツールについては、 [付録]で取り上げられています。
 
@@ -489,7 +488,7 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 
 * 一般に、クライアントがすぐに使用できるように SAS を作成する場合には開始時刻は設定しないでください。 現行時間を使用して SAS を生成するホストと、Storage サービスのクロックに小さな差異が存在すると、有効になっていない SAS を Storage サービスが受け取る可能性があります。
 * SAS に非常に短い有効期限は設定しないでください。 やはり、SAS を生成するホストと Storage サービス間のクロックに小さい差異があると、予想されていたよりも明らかに早く SAS の有効期限が切れる恐れがあります。
-* SAS キーのバージョン パラメーター (例: **sv=2015-04-05** ) が、使用しているストレージ クライアント ライブラリのバージョンと一致するようにします。 常に最新バージョンの [ストレージ クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)を使用することをお勧めします。
+* SAS キーのバージョン パラメーター (例: **sv=2015-04-05**) が、使用しているストレージ クライアント ライブラリのバージョンと一致するようにします。 常に最新バージョンの [ストレージ クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)を使用することをお勧めします。
 * ストレージ アクセス キーを再生成すると、既存の SAS トークンが無効になる可能性があります。 この状況は、SAS トークンを生成する際にクライアント アプリケーションがキャッシュする有効期限を長く設定していると、問題が生じることがあります。
 
 SAS トークンを生成するためのストレージ クライアント ライブラリを使用すると、有効なトークンの作成が容易です。 ただし、Storage REST API を使用し、手動で SAS トークンを構成している場合は、 [Shared Access Signature によるアクセスの委任](/rest/api/storageservices/delegate-access-with-shared-access-signature)に関するトピックをご覧ください。
@@ -638,7 +637,7 @@ client.SetServiceProperties(sp);
 この問題が頻繁に発生する場合は、クライアントが Table サービスからの受信確認の受け取りに失敗している原因を調べてください。 問題が断続的に発生する場合は、クライアントで "HTTP (404) 未検出" エラーをトラップしてログに記録する一方でクライアントの実行を継続できるようにする必要があります。
 
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>クライアントが HTTP 409 (競合) のメッセージを受け取る
-以下の表に、 **DeleteIfExists** と、その直後の同じ BLOB コンテナー名を使用する **CreateIfNotExists** の 2 つのクライアント操作に関する、サーバー側のログから抜粋した内容を示します。 どちらのクライアント操作でも、2 つの要求がサーバーに送信されます (1 つ目がコンテナーの存在をチェックする **GetContainerProperties** 要求で、その次が **DeleteContainer** 要求または **CreateContainer** 要求です)。
+以下の表に、**DeleteIfExists** と、その直後の同じ BLOB コンテナー名を使用する **CreateIfNotExists** の 2 つのクライアント操作に関する、サーバー側のログから抜粋した内容を示します。 どちらのクライアント操作でも、2 つの要求がサーバーに送信されます (1 つ目がコンテナーの存在をチェックする **GetContainerProperties** 要求で、その次が **DeleteContainer** 要求または **CreateContainer** 要求です)。
 
 | Timestamp | 操作 | 結果 | コンテナー名 | クライアント要求 ID |
 | --- | --- | --- | --- | --- |
@@ -647,12 +646,12 @@ client.SetServiceProperties(sp);
 | 05:10:13.8987407 |GetContainerProperties |404 |mmcont |bc881924-… |
 | 05:10:14.2147723 |CreateContainer |409 |mmcont |bc881924-… |
 
-クライアント アプリケーションのコードは同じ名前を使用して BLOB コンテナーを削除し、またすぐに作成します。 **CreateIfNotExists** メソッド (クライアント要求 ID bc881924-…) は最終的に HTTP 409 (競合) エラーで失敗します。 クライアントが BLOB コンテナー、テーブル、またはキューを削除した後、その名前が再び使用できるようになるまでに少し時間がかかります。
+クライアント アプリケーションのコードは同じ名前を使用して BLOB コンテナーを削除し、またすぐに作成します。**CreateIfNotExists** メソッド (クライアント要求 ID bc881924-…) は最終的に HTTP 409 (競合) エラーで失敗します。 クライアントが BLOB コンテナー、テーブル、またはキューを削除した後、その名前が再び使用できるようになるまでに少し時間がかかります。
 
 削除/再作成のパターンをよく使用する場合、クライアント アプリケーションは、新規コンテナーの作成時に必ず一意のコンテナー名を使用する必要があります。
 
 ### <a name="metrics-show-low-percentsuccess-or-analytics-log-entries-have-operations-with-transaction-status-of-clientothererrors"></a><a name="metrics-show-low-percent-success"></a>メトリックの示す PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある
-**PercentSuccess** メトリックは、操作の HTTP 状態コードに基づいて、成功した操作の割合をキャプチャします。 2XX の状態コードを持つ操作は、成功としてカウントされます。一方、3XX、4XX、5XX の範囲の状態コードを持つ操作は失敗としてカウントされ、 **PercentSucess** メトリック値を下げます。 サーバー側のストレージ ログ ファイルには、これらの操作が **ClientOtherErrors** のトランザクション状態で記録されます。
+**PercentSuccess** メトリックは、操作の HTTP 状態コードに基づいて、成功した操作の割合をキャプチャします。 2XX の状態コードを持つ操作は、成功としてカウントされます。一方、3XX、4XX、5XX の範囲の状態コードを持つ操作は失敗としてカウントされ、**PercentSucess** メトリック値を下げます。 サーバー側のストレージ ログ ファイルには、これらの操作が **ClientOtherErrors** のトランザクション状態で記録されます。
 
 これらの操作は正常に実行されているため、可用性などの他のメトリックに影響することはないことに留意してください。 正常に実行されても失敗の HTTP 状態コードを返される可能性のある操作の例を以下に示します。
 
@@ -747,7 +746,7 @@ Fiddler がキャプチャするトラフィックの量を制限するために
 1. ローカル マシンで Wireshark を起動します。
 2. **[Start]** セクションで、インターネットに接続されているローカル ネットワーク インターフェイスを選択します。
 3. **[Capture Options]** をクリックします。
-4. フィルターを **[Capture Filter]** テキストボックスに追加します。 たとえば、 **host contosoemaildist.table.core.windows.net** では、 **contosoemaildist** ストレージ アカウントの Table service エンドポイントとの間で送受信されるパケットのみをキャプチャするように Wireshark を構成します。 [キャプチャ フィルターの完全な一覧](https://wiki.wireshark.org/CaptureFilters)を確認してください。
+4. フィルターを **[Capture Filter]** テキストボックスに追加します。 たとえば、**host contosoemaildist.table.core.windows.net** では、**contosoemaildist** ストレージ アカウントの Table service エンドポイントとの間で送受信されるパケットのみをキャプチャするように Wireshark を構成します。 [キャプチャ フィルターの完全な一覧](https://wiki.wireshark.org/CaptureFilters)を確認してください。
 
    ![[Capture Filter] ボックスにフィルターを追加する方法を示すスクリーンショット。][6]
 5. **[開始]** をクリックします。 これで、Wireshark は、ローカル マシンでクライアント アプリケーションを使用しているときに Table サービス エンドポイントとの間で送受信されるすべてのパケットをキャプチャします。

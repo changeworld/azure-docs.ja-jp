@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 89ef196cb5a124b8b1100871c408400f3fceef5c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 04ba9777fe9e8470e6f02c83f3996d098023e05e
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465586"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763457"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Azure portal を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
@@ -123,7 +123,7 @@ VM イメージを作成した後に VM を作成するには、次の手順に�
     |---------|---------|
     |仮想マシン名     |         |
     |Image     | デバイスで使用可能な VM イメージから選択します。        |
-    |サイズ     | [サポートされる VM のサイズ](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#supported-vm-sizes)から選択します。        |
+    |サイズ     | [サポートされる VM のサイズ](azure-stack-edge-gpu-virtual-machine-sizes.md)から選択します。        |
     |ユーザー名     | 既定のユーザー名 *azureuser* を使用します。        |
     |認証の種類    | SSH 公開キーまたはユーザー定義のパスワードから選択します。       |
     |パスワード     | 仮想マシンにサインインするパスワードを入力します。 パスワードは 12 文字以上で、定義された[複雑さの要件](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。        |

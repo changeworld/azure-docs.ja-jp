@@ -3,17 +3,17 @@ title: Azure IoT Central アプリケーション設定を変更する | Microso
 description: 管理者としてアプリケーション名や URL を変更し、Azure IoT Central アプリケーションを管理する方法、イメージをアップロードする方法、アプリケーションを削除する方法について説明します。
 author: viv-liu
 ms.author: viviali
-ms.date: 11/27/2019
+ms.date: 12/19/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 2ed2756bc11a159bf860c5001af1ecaa942e7e1c
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ece77c2091e7c7c2aa09516bd4d3022bb6fcdfcc
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122638"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796960"
 ---
 # <a name="change-iot-central-application-settings"></a>IoT Central アプリケーションの設定を変更する
 
@@ -21,7 +21,7 @@ ms.locfileid: "92122638"
 
 この記事では、Azure IoT Central アプリケーションで、管理者としてアプリケーションの名前や URL を変更してアプリケーションを管理する方法、イメージをアップロードする方法、アプリケーションを削除する方法について説明します。
 
-**[Administration] (管理)** セクションにアクセスして使用するには、Azure IoT Central アプリケーションの**管理者**ロールが必要です。 Azure IoT Central アプリケーションを作成したユーザーは、自動的にそのアプリケーションの**管理者**ロールに割り当てられます。
+**[Administration] (管理)** セクションにアクセスして使用するには、Azure IoT Central アプリケーションの **管理者** ロールが必要です。 Azure IoT Central アプリケーションを作成したユーザーは、自動的にそのアプリケーションの **管理者** ロールに割り当てられます。
 
 ## <a name="change-application-name-and-url"></a>アプリケーションの名前と URL を変更する
 
@@ -29,7 +29,7 @@ ms.locfileid: "92122638"
 
 ![[Application Settings] (アプリケーション設定) ページ](media/howto-administer/image0-a.png)
 
-管理者がアプリケーション用のカスタム テーマを作成した場合、このページには UI で**アプリケーション名**を非表示にするオプションが含まれています。 このオプションは、カスタム テーマ内のアプリケーション ロゴにアプリケーション名が含まれている場合に便利です。 詳細については、「[Customize the Azure IoT Central UI (Azure IoT Central の UI をカスタマイズする)](./howto-customize-ui.md)」を参照してください。
+管理者がアプリケーション用のカスタム テーマを作成した場合、このページには UI で **アプリケーション名** を非表示にするオプションが含まれています。 このオプションは、カスタム テーマ内のアプリケーション ロゴにアプリケーション名が含まれている場合に便利です。 詳細については、「[Customize the Azure IoT Central UI (Azure IoT Central の UI をカスタマイズする)](./howto-customize-ui.md)」を参照してください。
 
 > [!Note]
 > URL を変更した場合は、Azure IoT Central の別の顧客が古い URL を取得できます。 その場合、その URL は使用できなくなります。 URL を変更すると、古い URL は機能しなくなるため、使用する新しい URL をユーザーに通知する必要があります。
