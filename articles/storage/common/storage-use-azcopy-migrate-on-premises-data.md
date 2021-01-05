@@ -141,7 +141,7 @@ azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycont
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
-Linux 上で cron ジョブを作成するには、端末で次のコマンドを入力します。
+Linux 上で cron ジョブを作成するには、ターミナルで次のコマンドを入力します。
 
 ```bash
 crontab -e
