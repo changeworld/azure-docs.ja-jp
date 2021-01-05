@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 49fa0c849a6b2eab0647922a711c50b4fe762584
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 69f9b5a74566879ecf8f15f23e689ebb731da45a
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095664"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814144"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-powershell"></a>クイックスタート: Azure PowerShell を使用した Azure DDoS Protection Standard の作成と構成
 
@@ -39,13 +39,13 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
 
 Azure で、関連するリソースをリソース グループに割り当てます。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。
 
-リソース グループを作成するには、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用します。 この例では、リソース グループに _MyResourceGroup_ という名前を付け、" _米国東部_ " の場所を使用します。
+リソース グループを作成するには、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用します。 この例では、リソース グループに _MyResourceGroup_ という名前を付け、"_米国東部_" の場所を使用します。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name MyResourceGroup -Location "East US"
 ```
 
-次に、 _MyDdosProtectionPlan_ という名前の DDoS 保護プランを作成します。
+次に、_MyDdosProtectionPlan_ という名前の DDoS 保護プランを作成します。
 
 ```azurepowershell-interactive
 New-AzDdosProtectionPlan -ResourceGroupName MyResourceGroup -Name MyDdosProtectionPlan -Location "East US"
@@ -91,7 +91,7 @@ Get-AzDdosProtectionPlan -ResourceGroupName MyResourceGroup -Name MyDdosProtecti
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-次のチュートリアルのためにリソースを保持しておくことができます。 不要になったら、 _MyResourceGroup_ リソース グループを削除します。 リソース グループを削除する際に、DDoS 保護プランとその関連リソースもすべて削除します。 
+次のチュートリアルのためにリソースを保持しておくことができます。 不要になったら、_MyResourceGroup_ リソース グループを削除します。 リソース グループを削除する際に、DDoS 保護プランとその関連リソースもすべて削除します。 
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup
@@ -114,4 +114,4 @@ DDoS 保護プランを削除する場合は、最初にそのプランからす
 DDoS 保護プラン用にテレメトリを表示および構成する方法を学習するには、チュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [DDoS 保護テレメトリの表示と構成](telemetry-monitoring-alerting.md)
+> [DDoS 保護テレメトリの表示と構成](telemetry.md)

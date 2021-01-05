@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: dec2c845780b62e9a595c73504037142c511c0e6
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 08ab78171376f702aecb1f49571dda583eae5d82
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989413"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813872"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>DDoS Protection プランの管理: アクセス許可と制限
 
@@ -48,7 +48,7 @@ DDoS 保護プランに関する作業を行うには、使用するアカウン
 
 ## <a name="next-steps"></a>次のステップ
 
-DDoS Protection プラン用にテレメトリを表示および構成する方法を学習するには、チュートリアルに進んでください。
+DDoS 保護プラン用にテレメトリを表示および構成する方法を学習するには、チュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [DDoS 保護テレメトリの表示と構成](telemetry-monitoring-alerting.md)
+> [DDoS 保護テレメトリの表示と構成](telemetry.md)

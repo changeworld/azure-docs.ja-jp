@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: e2f5528fde977520dc0aa0215a480a40ef8f1e7d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 6c628d93c112a770c85a10d0eff958614a7cf4cb
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989617"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814161"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>クイックスタート: Azure CLI を使用した Azure DDoS Protection Standard の作成と構成
 
@@ -24,7 +24,7 @@ Azure CLI を使用して Azure DDoS Protection Standard の使用を開始し�
 
 DDoS Protection プランでは、サブスクリプションの境界を越えて、DDoS Protection Standard が有効になった仮想ネットワークのセットを定義します。 組織で 1 つの DDoS Protection プランを構成し、複数のサブスクリプションから同じプランに仮想ネットワークをリンクできます。 
 
-このクイックスタートでは、DDoS Protection プランを作成し、それを仮想ネットワークにリンクします。 
+このクイックスタートでは、DDoS 保護プランを作成し、それを仮想ネットワークにリンクします。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -97,7 +97,7 @@ az network vnet update \
 
 ## <a name="validate-and-test"></a>検証とテスト
 
-まず、DDoS Protection プランの詳細を確認します。
+まず、DDoS 保護プランの詳細を確認します。
 
 ```azurecli-interactive
 az network ddos-protection show \
@@ -105,7 +105,7 @@ az network ddos-protection show \
     --name MyDdosProtectionPlan
 ```
 
-コマンドで DDoS Protection プランの正しい詳細が返されることを確認します。
+コマンドで DDoS 保護プランの正しい詳細が返されることを確認します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -134,4 +134,4 @@ DDoS Protection プランを削除する場合は、最初にそのプランか�
 DDoS 保護プラン用にテレメトリを表示および構成する方法を学習するには、チュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [DDoS 保護テレメトリの表示と構成](telemetry-monitoring-alerting.md)
+> [DDoS 保護テレメトリの表示と構成](telemetry.md)

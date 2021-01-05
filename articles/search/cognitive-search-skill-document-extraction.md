@@ -8,19 +8,19 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
-ms.openlocfilehash: f209be383e445e3b0c011e0bfb4266a191a8d931
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5098d897d84ff6af31d430c0ddd2e26d8d6b08a7
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85080868"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814297"
 ---
 # <a name="document-extraction-cognitive-skill"></a>ドキュメント抽出の認知技術
 
 > [!IMPORTANT] 
 > このスキルは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 現時点では、ポータルと .NET SDK によるサポートはありません。
 
-**ドキュメント抽出**スキルでは、エンリッチメント パイプライン内のファイルからコンテンツが抽出されます。 これにより、通常であれば他のスキルによって生成される可能性のあるファイルでのスキルセット実行の前に発生する、ドキュメント抽出ステップを利用できます。
+**ドキュメント抽出** スキルでは、エンリッチメント パイプライン内のファイルからコンテンツが抽出されます。 これにより、通常であれば他のスキルによって生成される可能性のあるファイルでのスキルセット実行の前に発生する、ドキュメント抽出ステップを利用できます。
 
 > [!NOTE]
 > 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、およびインデックス作成のドキュメント解析ステージの一部としての画像抽出に対しては、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
@@ -34,7 +34,7 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 
 パラメーターの大文字と小文字は区別されます。
 
-| 入力            | 使用できる値 | 説明 |
+| 入力 | 使用できる値 | 説明 |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | テキストだけ、または JSON だけではないファイルからドキュメントを抽出する場合は、`default` に設定します。 プレーン テキスト ファイルでパフォーマンスを向上させるには、`text` に設定します。 JSON ファイルから構造化コンテンツを抽出するには、`json` に設定します。 `parsingMode` が明示的に定義されていない場合は、`default` に設定されます。 |
 | `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | 各ファイルからすべてのメタデータとテキスト コンテンツを抽出するには、`contentAndMetadata` に設定します。 [コンテンツの種類に固有のメタデータ](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata)のみを抽出するには、`allMetadata` に設定します (たとえば、.png ファイルだけに固有のメタデータ)。 `dataToExtract` が明示的に定義されていない場合は、`contentAndMetadata` に設定されます。 |
@@ -100,11 +100,11 @@ Microsoft.Skills.Util.DocumentExtractionSkill
     "outputs": [
       {
         "name": "content",
-        "targetName": "content"
+        "targetName": "extracted_content"
       },
       {
         "name": "normalized_images",
-        "targetName": "normalized_images"
+        "targetName": "extracted_normalized_images"
       }
     ]
   }

@@ -36,8 +36,6 @@
       items:
         - name: 不明な予測を修正する
           href: luis-tutorial-review-endpoint-utterances.md
-        - name: バッチ テスト用のデータセット
-          href: luis-tutorial-batch-testing.md
         - name: 予測を向上させるためにパターンを追加する
           href: luis-tutorial-pattern.md
     - name: ボットで使用する
@@ -93,8 +91,6 @@
       items:
         - name: 対話型テスト
           href: luis-concept-test.md
-        - name: バッチ テスト
-          href: luis-concept-batch-test.md
     - name: データ管理
       items:
         - name: データの変更
@@ -229,7 +225,7 @@
         - name: コンテナーを構成する
           href: luis-container-configuration.md
         - name: Container Instances の使用
-          href: deploy-luis-on-container-instances.md
+          href: ../containers/azure-container-instance-recipe.md
         - name: コンテナーの制限
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'

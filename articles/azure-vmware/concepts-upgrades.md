@@ -3,16 +3,14 @@ title: 概念 - プライベート クラウドの更新とアップグレード
 description: Azure VMware Solution の主要なアップグレード プロセスと機能について説明します。
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 380e97eae559145a9ef5ed7b6e7bf14f18039eed
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6fb65a0e192fbf1f054857223b3fdaf58fc6a903
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316802"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809651"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware Solution のプライベート クラウドの更新とアップグレード
-
-## <a name="overview"></a>概要
 
 Azure VMware Solution のプライベート クラウドの主な利点の 1 つは、管理者に代わってプラットフォームのメンテナンスが行われることです。 プラットフォームのメンテナンスには、VMware によって検証されたソフトウェア バンドルに対する自動更新が含まれており、検証済みの Azure VMware Solution プライベート クラウド ソフトウェアの最新バージョンを使用していることを確認するのに役立ちます。
 

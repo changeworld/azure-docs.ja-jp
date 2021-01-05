@@ -9,16 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 168dcf994d00ba1cb2070665ada5a55cf86cfa4a
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 747ceb0106f437f9e2442c2b8c68c0b73a9107a6
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359814"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808259"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>ご使用の Form Recognizer モデルのバックアップと復旧
 
-Azure portal 内で Form Recognizer リソースを作成するときに、リージョンを指定します。 それ以降、ご使用のリソースとそのすべての操作はその特定の Azure サーバー リージョンに関連付けられたままになります。 リージョン全体に影響が及ぶネットワークの問題が発生することはまれですが、まったくないわけではありません。 ご自分のソリューションを常に使用できるようにする必要がある場合は、別のリージョンにフェールオーバーするか、複数のリージョン間でワークロードを分割するように設計する必要があります。 どちらの方法でも、リージョンごとに少なくとも 2 つの Form Recognizer リソースと、リージョン間で[カスタム モデル](./quickstarts/curl-train-extract.md)を同期する機能が必要です。
+Azure portal 内で Form Recognizer リソースを作成するときに、リージョンを指定します。 それ以降、ご使用のリソースとそのすべての操作はその特定の Azure サーバー リージョンに関連付けられたままになります。 リージョン全体に影響が及ぶネットワークの問題が発生することはまれですが、まったくないわけではありません。 ご自分のソリューションを常に使用できるようにする必要がある場合は、別のリージョンにフェールオーバーするか、複数のリージョン間でワークロードを分割するように設計する必要があります。 どちらの方法でも、リージョンごとに少なくとも 2 つの Form Recognizer リソースと、リージョン間でカスタム モデルを同期する機能が必要です。
 
 コピー API を使用して、1 つの Form Recognizer アカウントから、またはサポートされている任意の地理的リージョン内に存在できる別のアカウントに、カスタム モデルをコピーできるようにすることで、このシナリオを実現できます。 このガイドでは、cURL と共にコピー REST API を使用する方法について説明します。 Postman のような HTTP 要求サービスを使用して、要求を発行することもできます。
 

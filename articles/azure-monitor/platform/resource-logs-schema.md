@@ -4,12 +4,12 @@ description: Azure リソース ログでサポートされているサービス
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: 6a76d642863a0baac8021a3da196ad5a2db48126
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f5ea6d3f28fe85cf1453f3cf2b9eb0132bda0013
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931165"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808302"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure リソース ログの共通およびサービス固有のスキーマ
 
@@ -77,7 +77,7 @@ ms.locfileid: "96931165"
 | Load Balancer |[Azure Load Balancer のログ分析](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B カスタム追跡スキーマ](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | ネットワーク セキュリティ グループ |[ネットワーク セキュリティ グループ (NSG) のためのログ分析](../../virtual-network/virtual-network-nsg-manage-log.md) |
-| DDOS Protection | [Azure DDoS Protection Standard を管理する](../../ddos-protection/manage-ddos-protection.md) |
+| DDOS Protection | [Azure DDoS Protection Standard を管理する](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Power BI 専用 | [Azure の Power BI Embedded のログ記録](/power-bi/developer/azure-pbie-diag-logs) |
 | 復旧サービス | [Azure Backup のデータ モデル](../../backup/backup-azure-reports-data-model.md)|
 | 検索 |[検索トラフィックの分析の有効化と使用](../../search/search-traffic-analytics.md) |
