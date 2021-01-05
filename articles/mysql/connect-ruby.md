@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 20e51100eba595f9261be24e0e3675aa565479cd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 4eba3fabee50e0011d5a63297c726a9647dd84c0
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535556"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831535"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Ruby を使用して Azure Database for MySQL に接続してデータを照会する
 
@@ -72,7 +72,7 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
 ## <a name="connect-and-create-a-table"></a>接続とテーブルの作成
 接続し、**CREATE TABLE** SQL ステートメントでテーブルを作成してから、**INSERT INTO** SQL ステートメントでそのテーブルに行を追加するには、次のコードを使用します。
 
-このコードでは、MySQL サーバーへの接続に [mysql2::client](https://www.rubydoc.info/gems/mysql2) クラスが使用されます。 次に、```query()``` メソッドを呼び出して、DROP、CREATE TABLE、INSERT INTO の各コマンドを実行します。 最後に、```close()``` を呼び出して、終了する前に接続を閉じます。
+このコードでは、MySQL サーバーへの接続に mysql2::client クラスが使用されます。 次に、```query()``` メソッドを呼び出して、DROP、CREATE TABLE、INSERT INTO の各コマンドを実行します。 最後に、```close()``` を呼び出して、終了する前に接続を閉じます。
 
 `host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。
 ```ruby
@@ -117,7 +117,7 @@ end
 ## <a name="read-data"></a>データの読み取り
 接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。
 
-このコードでは、Azure Database for MySQL への接続に [mysql2::client](https://www.rubydoc.info/gems/mysql2) クラスの ```new()``` メソッドが使用されます。 次に、```query()``` メソッドを呼び出して SELECT コマンドを実行します。 その後、```close()``` メソッドを呼び出して、終了する前に接続を閉じます。
+このコードでは、Azure Database for MySQL への接続に mysql2::client クラスの ```new()``` メソッドが使用されます。 次に、```query()``` メソッドを呼び出して SELECT コマンドを実行します。 その後、```close()``` メソッドを呼び出して、終了する前に接続を閉じます。
 
 `host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。
 
@@ -156,7 +156,7 @@ end
 ## <a name="update-data"></a>データの更新
 接続し、**UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。
 
-このコードは、[mysql2::client](https://www.rubydoc.info/gems/mysql2) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、```query()``` メソッドを呼び出して UPDATE コマンドが実行されます。 その後、```close()``` メソッドを呼び出して、終了する前に接続を閉じます。
+このコードは、[mysql2::client](https://rubygems.org/gems/mysql2-client-general_log) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、```query()``` メソッドを呼び出して UPDATE コマンドが実行されます。 その後、```close()``` メソッドを呼び出して、終了する前に接続を閉じます。
 
 `host`、`database`、`username`、`password` の各文字列は、実際の値に置き換えてください。
 
@@ -241,5 +241,5 @@ az group delete \
 > [エクスポートとインポートを使用したデータベースの移行](./concepts-migrate-import-export.md) <br/>
 
 > [!div class="nextstepaction"]
-> [MySQL2 クライアントの詳細](https://www.rubydoc.info/gems/mysql2) <br/>
+> [MySQL2 クライアントの詳細](https://rubygems.org/gems/mysql2-client-general_log) <br/>
 

@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) を使用するときに発生する
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: d157dd6b3347c8fbfd8712fa20d52cedb425f47f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 02ff1581bafe62a092be87d16df51c7ca8c020b4
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751480"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830940"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -439,7 +439,7 @@ Kubernetes の **1.15.0 より古いバージョン** では、**WaitForAttach �
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>kubernetes.io プレフィックスでノード ラベルを使用すると、Kubernetes 1.16 へのアップグレードが失敗するのはなぜですか
 
-Kubernetes [1.16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) では、kubelet でノードに適用できるのは、[kubernetes.io プレフィックスで定義されているラベルのサブセットのみ](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/0000-20170814-bounding-self-labeling-kubelets.md#proposal)です。 AKS では、影響を受けるワークロードにダウンタイムが発生する可能性があるため、ユーザーの同意なしにアクティブなラベルを自動的に削除することはできません。
+Kubernetes [1.16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) では、kubelet でノードに適用できるのは、[kubernetes.io プレフィックスで定義されているラベルのサブセットのみ](https://v1-18.docs.kubernetes.io/docs/concepts/overview/working-with-objects/labels/)です。 AKS では、影響を受けるワークロードにダウンタイムが発生する可能性があるため、ユーザーの同意なしにアクティブなラベルを自動的に削除することはできません。
 
 そのため、次のようにしてこの問題を回避できます。
 

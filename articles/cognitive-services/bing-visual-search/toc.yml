@@ -54,7 +54,7 @@
     - name: Visual Search API 用の分析
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-- name: 攻略ガイド
+- name: 操作方法ガイド
   items:
     - name: トークンを使用した分析情報の取得
       href: use-insights-token.md
@@ -68,7 +68,7 @@
     - name: SDK
       items:
         - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet
+          href: /dotnet/api/overview/azure/cognitiveservices/bing-visual-search-readme?view=azure-dotnet
         - name: Java
           href: /java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable
         - name: Python

@@ -4,21 +4,21 @@ description: Defender for IoT に関連付けられているコストとそれ�
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/04/2020
-ms.author: mlottner
-ms.openlocfilehash: 24ae6c4014948639aa737a0d2d88ec15f98a7cb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/08/2020
+ms.author: shhazam
+ms.openlocfilehash: a97bcbf5ba47289a2e68b0eaa587ea39d7fb705a
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931462"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832354"
 ---
 # <a name="pricing-and-associated-costs"></a>価格と関連コスト
 

@@ -6,13 +6,13 @@ ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.custom: seodec18, fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: c7900341cfcda52dafcb269b833f5ad8dd0f55b7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: seodec18, fasttrack-edit
+ms.openlocfilehash: 16f6a0660fa9aa20f636ee412f3f337bd5dea9b5
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739759"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825968"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Services からのハイブリッド接続
 
@@ -197,7 +197,7 @@ Commands:
 
 基になる Azure Service Bus Relay に対する十分なアクセス許可を持つユーザーは、既存のハイブリッド接続を他の App Service Web Apps に追加できます。 これは、他のユーザーが同じハイブリッド接続を再利用できないようにする必要がある場合 (たとえば、ターゲット リソースが、未承認のアクセスを防ぐための追加のセキュリティ対策が取られていないサービスである場合)、Azure Service Bus Relay へのアクセスをロックダウンする必要があることを意味します。
 
-Relay への `Reader` アクセス権限を持つユーザーは誰でも、Azure portal でハイブリッド接続を自分の Web アプリに追加しようとするときにそれを " _表示_ " することはできますが、リレー接続の確立に使用される接続文字列を取得するためのアクセス許可がないため、" _追加_ " することはできません。 ハイブリッド接続を正常に追加するには、`listKeys` アクセス許可 (`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`) が必要です。 Relay に対するこのアクセス許可を含む `Contributor` ロールまたはその他のロールにより、ユーザーはハイブリッド接続を使用し、独自の Web Apps にそれを追加することが許可されます。
+Relay への `Reader` アクセス権限を持つユーザーは誰でも、Azure portal でハイブリッド接続を自分の Web アプリに追加しようとするときにそれを "_表示_" することはできますが、リレー接続の確立に使用される接続文字列を取得するためのアクセス許可がないため、"_追加_" することはできません。 ハイブリッド接続を正常に追加するには、`listKeys` アクセス許可 (`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`) が必要です。 Relay に対するこのアクセス許可を含む `Contributor` ロールまたはその他のロールにより、ユーザーはハイブリッド接続を使用し、独自の Web Apps にそれを追加することが許可されます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング ##
 

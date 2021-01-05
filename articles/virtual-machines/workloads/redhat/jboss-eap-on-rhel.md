@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.date: 10/30/2020
-ms.openlocfilehash: bab84b12c871c621b5a317ba8b47f9b18c91bff3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bd6ff46807c22309679ba7e8518685bb05cc77e2
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500191"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830719"
 ---
 # <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上の JBoss EAP を使用してエンタープライズ Java アプリケーションを Azure にデプロイする
 
@@ -152,7 +152,7 @@ PAYG VM の価格の詳細については、[Red Hat Enterprise Linux の価格]
 RHEL OS に BYOS を使用するには、Azure で RHEL OS を使用するためのエンタイトルメントが付与された有効な Red Hat サブスクリプションを所有している必要があります。 BYOS モデルで RHEL OS をデプロイする前に、次の前提条件を満たしてください。
 
 1. Red Hat サブスクリプションに RHEL OS と JBoss EAP のエンタイトルメントが付与されていることを確認します。
-2. ご利用の Azure サブスクリプション ID で RHEL BYOS イメージを使用することを承認します。 [Red Hat Subscription Management のドキュメント](https://access.redhat.com/documentation/en/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs)に従って、以下の手順が含まれているプロセスを実行します。
+2. ご利用の Azure サブスクリプション ID で RHEL BYOS イメージを使用することを承認します。 [Red Hat Subscription Management のドキュメント](https://access.redhat.com/documentation/red_hat_subscription_management/1/)に従って、以下の手順が含まれているプロセスを実行します。
 
    1. Red Hat Cloud Access ダッシュボードで、Microsoft Azure をプロバイダーとして有効にします。
 
@@ -160,7 +160,7 @@ RHEL OS に BYOS を使用するには、Azure で RHEL OS を使用するため
 
    1. Microsoft Azure で新しい製品の Cloud Access を有効にします。
     
-   1. Azure サブスクリプションの Red Hat Gold Image をアクティブにします。 詳細については、「[Microsoft Azure での Red Hat Gold Image](https://access.redhat.com/documentation/en/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure)」を参照してください。
+   1. Azure サブスクリプションの Red Hat Gold Image をアクティブにします。 詳細については、「[Microsoft Azure での Red Hat Gold Image](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access)」を参照してください。
 
    1. Azure サブスクリプションで Red Hat Gold Image が使用できる状態になるまで待ちます。 通常これらのイメージは、申請から 3 時間以内に利用できるようになります。
     
@@ -212,7 +212,7 @@ Azure では、JBoss EAP が BYOS モデルでのみ提供されます。 この
   ```
 
   ```
-  az group deployment create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
+  az deployment group create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
   ```
 
   Azure CLI のインストールと構成の詳細については、[CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。

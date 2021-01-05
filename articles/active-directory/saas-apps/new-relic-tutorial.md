@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 3e93b5c4fd2a169da5cdcc42aaabdd29a2c22bb7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 2a7d191af78da417d0ee2ade12b1576912643b6c
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522466"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827463"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と New Relic by Account の統合
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* New Relic by Account では、 **SP** Initiated SSO がサポートされます
+* New Relic by Account では、**SP** Initiated SSO がサポートされます
 
 * New Relic by Account を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
@@ -51,7 +51,7 @@ Azure AD への New Relic by Account の統合を構成するには、ギャラ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **New Relic by Account** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**New Relic by Account**」と入力します。
 1. 結果パネルから **[New Relic by Account]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-new-relic-by-account"></a>New Relic by Account の Azure AD シングル サインオンの構成とテスト
@@ -80,7 +80,7 @@ New Relic by Account で Azure AD SSO を構成してテストするには、次
 
     a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
 
-    `https://rpm.newrelic.com/accounts/{acc_id}/sso/saml/login` - 必ず `acc_id` を New Relic by Account の自分のアカウント ID に置き換えてください。
+    `https://rpm.newrelic.com:443/accounts/{acc_id}/sso/saml/finalize` - 必ず `acc_id` を New Relic by Account の自分のアカウント ID に置き換えてください。
 
     b. **[識別子 (エンティティ ID)]** ボックスに、`rpm.newrelic.com` という URL を入力します。
 
