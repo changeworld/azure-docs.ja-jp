@@ -172,12 +172,12 @@
           href: how-to-migrate.md
         - name: マシンの移行の準備
           href: prepare-for-migration.md
+        - name: Windows 2003 サーバーの移行を準備する
+          href: prepare-windows-server-2003-migration.md
         - name: VMware VM を移行する
           items:
             - name: VMware VM を暗号化された Azure VM に移行する
               href: how-to-migrate-vmware-vms-with-cmk-disks.md
-            - name: Windows 2003 サーバーの移行を準備する
-              href: prepare-windows-server-2003-migration.md
         - name: 移行をスケーリングする
           items:
             - name: 多数の VM の移行の自動化
