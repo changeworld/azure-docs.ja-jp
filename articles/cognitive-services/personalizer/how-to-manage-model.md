@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: f82adad5273f1c5559cbeb1924f59e57c863f6b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48e954eab9da5dfc638f93a7c4e55c675c4f2ac9
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303456"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797249"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>モデルと学習設定を管理する方法
 
@@ -55,4 +55,4 @@ ms.locfileid: "91303456"
 
 ## <a name="next-steps"></a>次の手順
 
-[学習ポリシーの管理方法を確認する](how-to-manage-model.md)
+[オフライン評価で学習ループを分析する](how-to-offline-evaluation.md)

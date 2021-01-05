@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7a1b178450a1aa06db07d7b1ef525f7f781db9ef
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: e116c590e07ffcdb1b7c8ae2e30b2e76bb909bff
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602820"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802713"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -62,7 +62,7 @@ Automai の ScenarioBuilder ツールと GUI ベースのワークフロー エ�
 Automai を利用すると、パフォーマンス テスト、機能テスト、パフォーマンス監視、さらにはロボット プロセスの自動化を、すべて 1 つのプラットフォーム上で、同じスクリプトを使用して実行できます。
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B76N)
-- [パートナーの Web サイトにアクセスする。](https://www.automai.com/wvd-testing-monitoring?hs_preview=EyZXkOWu-30742040580)
+- [パートナーの Web サイトにアクセスする。](https://www.automai.com/windows-virtual-desktop-performance-testing/)
 
 ## <a name="cloudhouse"></a>Cloudhouse
 

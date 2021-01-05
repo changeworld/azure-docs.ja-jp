@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 1a106874277f64a006584f9deb98fb9729263b1b
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 048635a33c3d84416dae00b731b386572aa3f89d
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040720"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802577"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics での顔編集チュートリアル
 
@@ -30,7 +30,7 @@ ms.locfileid: "93040720"
 
 **Azure Media Redactor** は、クラウドでスケーラブルな顔編集を提供する [Azure Media Analytics](./legacy-components.md) メディア プロセッサ (MP) です。 顔編集では、ビデオを編集して選択した個人の顔をぼかすことができます。 顔編集サービスは、公共の安全やニュース媒体などに使用していただけます。 複数人の顔を含んでいる映像の場合、顔編集を手作業で行うと数分の映像でも数時間かかりますが、このサービスを使えば数ステップの簡単な手順で完了します。 詳細については、[こちらの投稿](https://azure.microsoft.com/blog/azure-media-redactor/)を参照してください。
 
-**Azure Media Redactor** の詳細については、 [顔編集の概要](media-services-face-redaction.md)に関するトピックを参照してください。
+**Azure Media Redactor** の詳細については、[顔編集の概要](media-services-face-redaction.md)に関するトピックを参照してください。
 
 このトピックでは、Azure Media Services Explorer (AMSE) と Azure Media Redactor Visualizer (オープン ソース ツール) を使用して編集ワークフロー全体を実行する方法について詳しく説明します。
 
@@ -38,7 +38,7 @@ ms.locfileid: "93040720"
 
 ## <a name="azure-media-services-explorer-workflow"></a>Azure Media Services Explorer のワークフロー
 
-Redactor の使用を開始する最も簡単な方法は、GitHub のオープン ソース AMSE ツールを使用することです。 注釈 json または顔の jpg イメージにアクセスする必要がない場合は、 **結合** モードによる簡略化されたワークフローを実行できます。
+Redactor の使用を開始する最も簡単な方法は、GitHub のオープン ソース AMSE ツールを使用することです。 注釈 json または顔の jpg イメージにアクセスする必要がない場合は、**結合** モードによる簡略化されたワークフローを実行できます。
 
 ### <a name="download-and-setup"></a>ダウンロードとセットアップ
 
@@ -74,7 +74,7 @@ Redactor の使用を開始する最も簡単な方法は、GitHub のオープ�
     ![スクリーンショットは、テキスト ファイルをアップロードするオプションが示されています。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
 3. (省略可能) annotations.json ファイルを編集します (境界ボックスの境界を広げるなど)。 
-4. 最初のパスからの出力資産を右クリックし、[Redactor] を選択し、 **修正** モードで実行します。 
+4. 最初のパスからの出力資産を右クリックし、[Redactor] を選択し、**修正** モードで実行します。 
 
     ![スクリーンショットに Azure Media Redactor が示され、2 番目のパスに編集モードが選択されています。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
 
@@ -133,6 +133,6 @@ JSON 注釈データを解析しようとしている開発者は、Models.MetaD
 ## <a name="related-links"></a>関連リンク
 [Azure Media Services Analytics の概要](./legacy-components.md)
 
-[Azure Media Analytics デモ](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics デモ](http://amslabs.azurewebsites.net/demos/Analytics.html)
 
 [Azure Media Analytics の顔編集の発表](https://azure.microsoft.com/blog/azure-media-redactor/)

@@ -9,12 +9,12 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: f559c87a5c3285bf966f9389d623b2262e93cbca
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: bf357dcc9c4790632a1131278edc41c13ac810b1
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425815"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802611"
 ---
 # <a name="client-application-registration"></a>クライアント アプリケーションの登録
 前のチュートリアルでは、Azure API for FHIR をデプロイしてセットアップしました。 これで、Azure API for FHIR のセットアップが完了したので、パブリック クライアント アプリケーションを登録します。 詳細またはトラブルシューティングについては、[パブリック クライアント アプリの登録](register-public-azure-ad-client-app.md)に関する完全な攻略ガイドで読むことができますが、主な手順については、このチュートリアルの以下の部分で紹介しています。
@@ -22,7 +22,7 @@ ms.locfileid: "94425815"
 1. Azure Active Directory に移動します
 1. **[アプリの登録]**  -->  **[新しい登録]** の順に選択します
 1. アプリケーションの名前を指定します
-1. **[パブリック クライアント / ネイティブ (モバイルとデスクトップ)]** を選択し、リダイレクト URI を https://www.getpostman.com/oauth2/callback に設定します。
+1. **[パブリック クライアント / ネイティブ (モバイルとデスクトップ)]** を選択し、リダイレクト URI を `https://www.getpostman.com/oauth2/callback` に設定します。
 
    :::image type="content" source="media/tutorial-web-app/register-public-app.png" alt-text="[アプリケーションの登録] ペインのスクリーンショット。アプリケーション名とリダイレクト URL の例が表示されています。":::
 

@@ -10,12 +10,12 @@ ms.date: 02/14/2019
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: b21b161a03be7a37fe1d3e872e10d4de437670db
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 52da3c28faa375f8b308e3fe78329fec4f996af9
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145863"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97804056"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi の Azure IoT Hub への接続 (C)
 
@@ -99,7 +99,7 @@ microSD カードに Raspbian イメージをインストールするための�
 
 1. Raspbian をダウンロードします。
 
-   1. [Raspbian Stretch with Desktop をダウンロード](https://www.raspberrypi.org/downloads/raspbian/)します (.ZIP ファイル)。
+   1. [Raspbian Stretch with Desktop をダウンロード](https://www.raspberrypi.org/software/)します (.ZIP ファイル)。
 
    2. コンピューター上のフォルダーに Raspbian イメージを抽出します。
 
@@ -203,7 +203,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
    ```
 
    > [!NOTE] 
-   > **BME280 が物理的にない**場合は、コマンド ライン パラメーターとして "--simulated-data" を使用して、温度と湿度のデータをシミュレートできます。 `sudo ./setup.sh --simulated-data`
+   > **BME280 が物理的にない** 場合は、コマンド ライン パラメーターとして "--simulated-data" を使用して、温度と湿度のデータをシミュレートできます。 `sudo ./setup.sh --simulated-data`
    >
 
 ### <a name="build-and-run-the-sample-application"></a>サンプル アプリケーションをビルドして実行する

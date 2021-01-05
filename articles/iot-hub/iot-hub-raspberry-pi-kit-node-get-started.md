@@ -13,12 +13,12 @@ ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-js
-ms.openlocfilehash: 1d6a51e2e9c052be0c59435b287c5fdde459f55d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96f674b64401250d45542d0f59f13654cf37caa
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334193"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802526"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi の Azure IoT Hub への接続 (Node.js)
 
@@ -97,7 +97,7 @@ microSD カードに Raspbian イメージをインストールするための�
 
 1. Raspbian をダウンロードします。
 
-   a. [Raspbian Buster with desktop](https://www.raspberrypi.org/downloads/raspbian/) (.zip ファイル)。
+   a. [Raspbian Buster with desktop](https://www.raspberrypi.org/software/) (.zip ファイル)。
 
    b. コンピューター上のフォルダーに Raspbian イメージを抽出します。
 
@@ -230,7 +230,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 
    このファイルには、構成可能な 2 つの項目があります。 1 つは `interval` で、クラウドに送信するメッセージ間の時間間隔 (ミリ秒) を定義します。 もう 1 つは `simulatedData` で、シミュレートされたセンサー データを使用するかどうかを表すブール値です。
 
-   **センサーがない**場合は、`simulatedData` 値を `true` に設定し、シミュレートされたセンサー データをサンプル アプリケーションで作成して使用します。
+   **センサーがない** 場合は、`simulatedData` 値を `true` に設定し、シミュレートされたセンサー データをサンプル アプリケーションで作成して使用します。
 
    *注意事項: このチュートリアルで使用する i2c アドレスは、既定では 0x77 です。構成によっては、0x76 になることもあります。 i2c エラーが発生した場合は、値を 118 に変更し、その動作が適切かどうかを確認してください。センサーによって使用されているアドレスを確認するには、raspberry pi 上のシェルで `sudo i2cdetect -y 1` を実行します*
 

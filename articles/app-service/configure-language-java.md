@@ -10,12 +10,13 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: aa3329c3d9e241fb8224ecc69199779d53027474
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+adobe-target: true
+ms.openlocfilehash: 0334e259f75440cae25f1e165c0621c85f7c7705
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183143"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97804005"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service 向けの Java アプリを構成する
 
@@ -25,7 +26,7 @@ Java 開発者は、Azure App Service を使用することで、フル マネ�
 
 ## <a name="deploying-your-app"></a>アプリのデプロイ
 
-[Maven 用 Azure Web アプリ プラグイン](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)を使用して、.war ファイルまたは .jar ファイルをデプロイできます。 一般的な IDE を使用したデプロイは、[Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/) または [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse) でもサポートされています。
+[Maven 用 Azure Web アプリ プラグイン](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)を使用して、.war ファイルまたは .jar ファイルをデプロイできます。 一般的な IDE を使用したデプロイは、[Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/) または [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse) でもサポートされています。
 
 それ以外の場合、デプロイの方法はアーカイブの種類によって異なります。
 

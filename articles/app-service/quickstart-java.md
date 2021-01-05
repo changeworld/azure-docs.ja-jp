@@ -10,12 +10,13 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 3c5a04bd14bdcbf250908db78c622b963f191d91
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+adobe-target: true
+ms.openlocfilehash: b54df350e3f59720a92d7c1e74e28d9fcafddf94
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333088"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802492"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>クイック スタート:Azure App Service で Java アプリを作成する
 
@@ -217,7 +218,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 `<subscriptionId>` | false | サブスクリプション ID を指定します。 | 0.1.0 以降
 `<resourceGroup>` | true | Web アプリの Azure リソース グループ。 | 0.1.0 以降
 `<appName>` | true | Web アプリの名前。 | 0.1.0 以降
-`<region>` | true | Web アプリがホストされるリージョンを指定します。既定値は **westeurope** です。 すべての有効なリージョンについては、「[サポートされているリージョン](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)」を参照してください。 | 0.1.0 以降
+`<region>` | true | Web アプリがホストされるリージョンを指定します。既定値は **westeurope** です。 すべての有効なリージョンについては、「[サポートされているリージョン](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)」を参照してください。 | 0.1.0 以降
 `<pricingTier>` | false | Web アプリの価格レベル。 運用ワークロードの場合の既定値は **P1V2** ですが、Java Dev/Test の場合は **B2** が推奨される最小構成です。 [詳細情報](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0 以降
 `<runtime>` | true | ランタイム環境の構成の詳細については、[こちら](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)を参照してください。 | 0.1.0 以降
 `<deployment>` | true | デプロイ構成の詳細については、[こちら](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)を参照してください。 | 0.1.0 以降

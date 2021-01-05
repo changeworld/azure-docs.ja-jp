@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0b91869e59109550910712b9386056c23843cecd
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 235d54d36965ac5d8d173354b2223247806a1fff
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559593"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803665"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>ML のトレーニングの実行でログ記録を有効にする
 
@@ -92,7 +92,7 @@ Azure Machine Learning デザイナーにおけるメトリックのログ記録
 * [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
 * [how-to-use-azureml/track-and-monitor-experiments/logging-api](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 
-[!INCLUDE aml-clone-in-azure-notebook](/includes/aml-clone-for-examples.md)
+[!INCLUDE aml-clone-in-azure-notebook](https://github.com/MicrosoftDocs/azure-docs-pr/blob/live/includes/aml-clone-for-examples.md)
 
 ## <a name="next-steps"></a>次のステップ
 
