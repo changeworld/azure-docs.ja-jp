@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: c12935a4b0b9cbbf088ba7b9c5ea804be0ce85a1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8ea0c27fdd64bae1e6fe9443df76c86e0eb89a75
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447353"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762922"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Azure CLI と Python を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
@@ -27,7 +27,7 @@ ms.locfileid: "96447353"
 
 次の図はデプロイのワークフローを示したものです。
 
-![VM デプロイのワークフロー](media/azure-stack-edge-j-series-deploy-virtual-machine-powershell/vm-workflow_r.svg)
+![VM デプロイのワークフロー](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
 
 デプロイの大まかなワークフローは次のとおりです。
 
@@ -43,7 +43,7 @@ ms.locfileid: "96447353"
 10. VNet を作成する
 11. VNet のサブネット ID を使用して VNIC を作成する
 
-ワークフロー図の詳しい説明については、[Azure PowerShell を使用して Azure Stack Edge Pro デバイスに VM をデプロイする方法](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md)に関するページを参照してください。 Azure Resource Manager に接続する方法については、[Azure PowerShell を使用して Azure Resource Manager に接続する方法](azure-stack-edge-j-series-connect-resource-manager.md)に関するページを参照してください。
+ワークフロー図の詳しい説明については、[Azure PowerShell を使用して Azure Stack Edge Pro デバイスに VM をデプロイする方法](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)に関するページを参照してください。 Azure Resource Manager に接続する方法については、[Azure PowerShell を使用して Azure Resource Manager に接続する方法](azure-stack-edge-j-series-connect-resource-manager.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

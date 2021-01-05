@@ -9,18 +9,16 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 4998469fa353fef9e8a91d078349150d9f739ac2
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: b11b0b46e57247d09e576795079e20c679e519d5
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779415"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760114"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の [**メインの SDK for Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) のリファレンス ページを参照してください。
-
-バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
 
 ## <a name="2020-12-07"></a>2020-12-07
 

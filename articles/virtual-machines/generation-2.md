@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: 56a360f461c89d7c60e973bf2d6258d63113ab47
-ms.sourcegitcommit: 6b16e7cc62b29968ad9f3a58f1ea5f0baa568f02
+ms.openlocfilehash: 61897a790da8a5f52b1b8f8e208629e7755690fa
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2020
-ms.locfileid: "96303768"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97759740"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -36,7 +36,9 @@ ms.locfileid: "96303768"
 * [Dasv4 シリーズ](dav4-dasv4-series.md)
 * [Ddsv4 シリーズ](ddv4-ddsv4-series.md)
 * [Esv3 シリーズ](ev3-esv3-series.md)
+* [Esv4 シリーズ](ev4-esv4-series.md)
 * [Easv4 シリーズ](eav4-easv4-series.md)
+* [Edsv4 シリーズ](edv4-edsv4-series.md)
 * [Fsv2 シリーズ](fsv2-series.md)
 * [GS シリーズ](sizes-previous-gen.md#gs-series)
 * [HB シリーズ](hb-series.md)

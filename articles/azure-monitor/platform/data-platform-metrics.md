@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: f64a91e3b285c265296c361366a10443eda18201
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: b7af6b489aeb919fd1db0e45ddba58a21b1c3633
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489425"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760141"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Azure Monitor メトリックの概要
 Azure Monitor メトリックは、[監視対象のリソース](../monitor-reference.md)から時系列データベースに数値データを収集する Azure Monitor の機能です。 メトリックは、一定の間隔で収集される数値であり、特定の時刻におけるシステムの何らかの特性を表しています。 Azure Monitor のログは軽量であり、ほぼリアルタイムのシナリオをサポートできるため、アラートと問題の迅速な検出に特に役立ちます。 メトリック エクスプローラーを使用すると、対話形式で分析することができます。値がしきい値を超えるときにアラートで事前に通知したり、ブックやダッシュボードで視覚化したりすることができます。
@@ -56,7 +56,7 @@ Azure Monitor によって収集されるメトリックのソースには、基
 ## <a name="metrics-explorer"></a>メトリックス エクスプローラー
 [メトリックス エクスプ ローラー](metrics-charts.md)を使用して、メトリック データベース内のデータを対話的に分析し、一定期間にわたる複数のメトリックの値をグラフにします。 グラフをダッシュボードにピン留めして、他の視覚化と一緒に表示できます。 [Azure monitoring REST API](rest-api-walkthrough.md) を使用してメトリックを取得することもできます。
 
-![メトリックス エクスプローラー](media/data-platform/metrics-explorer.png)
+![メトリックス エクスプローラー](media/data-platform-metrics/metrics-explorer.png)
 
 - メトリックス エクスプローラーの使用を開始するには、「[Azure Monitor メトリックス エクスプローラーの概要](metrics-getting-started.md)」を参照してください。
 

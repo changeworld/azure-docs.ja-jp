@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e72784dbdcf08d672a8498609ca3a5bbd11e632d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 72079cc399eea249bce4d285e2c3c4fbf9304708
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319035"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760607"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>MLflow と Azure Machine Learning を使用した Azure Databricks ML 実験の追跡 (プレビュー)
 
@@ -156,7 +156,7 @@ mlflow.log_metric('epoch_loss', loss.item())
 
 バックエンド追跡サーバーは、既定では Azure Databricks ワークスペースです。ただし、[Azure Machine Learning ワークスペースでのみ追跡するように MLflow Tracking を設定](#set-mlflow-tracking-to-only-track-in-your-azure-machine-learning-workspace)することを選択した場合は除外されます。その場合、バックエンド追跡サーバーは Azure Machine Learning ワークスペースになります。   
 
-* **名前付きの登録済みモデルが存在しない場合** 、メソッドにより新しいモデルが登録され、バージョン 1 が作成され、MLflow オブジェクト ModelVersion が返されます。 
+* **名前付きの登録済みモデルが存在しない場合**、メソッドにより新しいモデルが登録され、バージョン 1 が作成され、MLflow オブジェクト ModelVersion が返されます。 
 
 * **名前付きの登録済みモデルが既にある場合** は、メソッドにより新しいモデル バージョンが作成され、バージョン オブジェクトが返されます。 
 
@@ -180,8 +180,8 @@ ML モデルのエンドポイントを作成する準備ができたら、 以�
 [mlflow.azureml.deploy](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) API を利用して、Azure Machine Learning ワークスペースにモデルをデプロイできます。 「[MLflow にモデルを登録する](#register-models-with-mlflow)」セクションで説明したように、モデルを Azure Databricks ワークスペースだけに登録した場合は、`model_name` パラメーターを指定してモデルを Azure Machine Learning ワークスペースに登録します。 
 
 Azure Databricks の実行は、以下のエンドポイントにデプロイできます。 
-* [Azure Container Instance](how-to-use-mlflow.md#deploy-to-aci)
-* [Azure Kubernetes Service](how-to-use-mlflow.md#deploy-to-aks)
+* [Azure Container Instance](how-to-deploy-models-with-mlflow.md#deploy-to-aci)
+* [Azure Kubernetes Service](how-to-deploy-models-with-mlflow.md#deploy-to-aks)
 
 ### <a name="deploy-models-to-adb-endpoints-for-batch-scoring"></a>バッチ スコアリングのためにモデルを ADB エンドポイントにデプロイする 
 
