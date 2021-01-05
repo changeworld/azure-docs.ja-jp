@@ -509,7 +509,7 @@ productDirectory:
     - compute
     - databases
     url: ./azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-  - title: Static Web Apps (プレビュー)
+  - title: Static Web Apps (Preview)
     summary: ソース コードからグローバルな高可用性まで、合理化されたフルスタック開発を実現する最新の Web アプリ サービス
     imageSrc: ./media/index/static-apps.svg
     azureCategories:

@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: ea8300447b9aa596e8678038982771263a4c76f6
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 382adb36712fbf4bee83044c8b2d096223eb6269
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358777"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630039"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy v10 を使用して Azure BLOB ストレージから BLOB をダウンロードする
 
@@ -26,7 +26,7 @@ AzCopy v10 コマンド ライン ユーティリティを使用して、BLOB �
 AzCopy のダウンロード方法と、ストレージ サービスに認証資格情報を与える方法については、[AzCopy の作業開始](storage-use-azcopy-v10.md)に関するページをご覧ください。
 
 > [!NOTE] 
-> この記事の例では、Azure Active Directory (Azure AD) を使用して認証資格情報を指定していることを前提としています。
+> この記事の例は、Azure Active Directory (Azure AD) を使用して認証資格情報を指定していることを前提にしています。
 >
 > SAS トークンを使用して BLOB データへのアクセスを承認する場合、各 AzCopy コマンドのリソース URL の先頭にそのトークンを追加できます。 (例: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`)。
 
@@ -143,7 +143,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 #### <a name="download-a-blob-snapshot"></a>BLOB のスナップショットをダウンロードする
 
-BLOB スナップショットの **DateTime** 値を参照することによって、[BLOB スナップショット](/azure/storage/blobs/snapshots-overview.md)をダウンロードできます。 
+BLOB スナップショットの **DateTime** 値を参照することによって、[BLOB スナップショット](/azure/storage/blobs/snapshots-overview)をダウンロードできます。 
 
 |    |     |
 |--------|-----------|
@@ -168,7 +168,7 @@ BLOB スナップショットの **DateTime** 値を参照することによっ�
 
 ## <a name="next-steps"></a>次のステップ
 
-以下の記事にサンプルがあります。
+他の例については、次の記事を参照してください。
 
 - [例:アップロード](storage-use-azcopy-blobs-upload.md)
 - [例:アカウント間でのコピー](storage-use-azcopy-blobs-copy.md)

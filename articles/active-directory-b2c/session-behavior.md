@@ -8,15 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/14/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: de0f4824cb23a37f37d3834dce67eb0b7edf0b15
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: ad9bd8dec94660d94cf3a106d31dafdad06f47a8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503237"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584512"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でセッションの動作を構成する
 
@@ -28,7 +29,7 @@ ms.locfileid: "97503237"
 
 ユーザーが初めてアプリケーションにサインインしたときに、Azure AD B2C によって Cookie ベースのセッションが保持されます。 それ以降の認証要求では、Azure AD B2C によって Cookie ベースのセッションが読み取られて検証され、アクセス トークンが発行されます。ユーザーにサインインを求めるメッセージが再び表示されることはありません。 Cookie ベースのセッションが有効期限切れまたは無効になった場合、ユーザーはもう一度サインインするように求められます。  
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>[前提条件]
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 

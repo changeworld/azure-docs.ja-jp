@@ -4,12 +4,12 @@ description: ページ ビューとセッション数、Web クライアント�
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0588a3eac4ced6cec1e7aea431c6555bbe8bff0a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 6678c662c4646a8181b1617ccddf9b8718c957bf
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559881"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858554"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -107,7 +107,7 @@ SDK の読み込みに失敗する原因となるだけでなく、エラーの�
 
 使用できる構成オプションは次のとおりです。
 
-| 名前 | 種類 | 説明
+| 名前 | Type | 説明
 |------|------|----------------
 | src | string **[必須]** | SDK の読み込み元の完全な URL。 この値は、動的に追加される &lt;script /&gt; タグの "src" 属性に使用されます。 パブリック CDN の場所を使用することも、プライベートにホストされている独自の場所を使用することもできます。
 | name | string *[省略可能]* | 初期化された SDK のグローバル名。既定値は `appInsights` です。 ```window.appInsights``` は、初期化されたインスタンスへの参照になります。 注: name 値を指定した場合や、(グローバル名 appInsightsSDK によって) 以前のインスタンスが割り当てられているように見える場合は、この name 値もグローバル名前空間で ```window.appInsightsSDK=<name value>``` として定義されます。これは、スニペットの正しいスケルトン メソッドとプロキシ メソッドを確実に初期化および更新できるように、SDK の初期化コードで必要となります。
@@ -339,7 +339,7 @@ SDK V2 バージョンでの破壊的変更:
 - API 署名の向上のため、trackPageView や trackException などの一部の API 呼び出しが更新されています。 Internet Explorer 8 以前のバージョンのブラウザーでの実行はサポートされません。
 - データ スキーマの更新により、テレメトリ エンベロープのフィールド名と構造が変更されています。
 - `context.operation` が `context.telemetryTrace` に移動されました。 一部のフィールドも変更されました (`operation.id` --> `telemetryTrace.traceID`)。
-  - (たとえば、SPA アプリで) 現在のページビュー ID を手動で更新するには、`appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()` を使用します。
+  - (たとえば、SPA アプリで) 現在のページビュー ID を手動で更新するには、`appInsights.properties.context.telemetryTrace.traceID = Microsoft.ApplicationInsights.Telemetry.Util.generateW3CId()` を使用します。
     > [!NOTE]
     > トレース ID を一意に保つには、以前に `Util.newId()` を使用した場所で今度は `Util.generateW3CId()` を使用します。 両方とも、最終的には操作 ID になります。
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: thvankra
-ms.openlocfilehash: f5f2cb5ac8c354df38310cdcb47b98e1da5b6cfa
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: c969e4fac3ae30088cfe47a7b0edff22c578cb8b
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97517702"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802373"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API の一般的な問題のトラブルシューティング
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -28,7 +28,7 @@ Azure Cosmos DB の Cassandra API は互換性レイヤーであり、広く普�
 | OverloadedException (Java) | 使用される要求ユニットの合計数は、キースペースまたはテーブルでプロビジョニングされた要求ユニットよりも多くなります。 そのため、要求は調整されます。 | Azure portal からキースペースまたはテーブルに割り当てられたスループットのスケーリング (Cassandra API でのスケーリング操作については、[こちら](manage-scale-cassandra.md)をご覧ください) を検討するか、または再試行ポリシーを実装することもできます。 Java の場合は、[v3.x ドライバー](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample)と [v4.x ドライバー](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample-v4)の再試行サンプルをご覧ください。 「[Azure Cosmos Cassandra Extensions for Java](https://github.com/Azure/azure-cosmos-cassandra-extensions)」もご覧ください |
 | OverloadedException (Java) でも十分なスループットを確保 | 要求の量と消費された要求ユニット コストに対して十分なスループットがプロビジョニングされているにもかかわらず、システムは要求を調整しているように思われます  | Cassandra API は、スキーマレベルの操作 (CREATE TABLE、ALTER TABLE、DROP TABLE) に対してシステム スループット予算を実装します。 実稼働システムでのスキーマ操作には、この予算で十分です。 ただし、スキーマレベルの操作の数が多い場合は、この制限を超えている可能性があります。 この予算はユーザーによって制御されないため、実行するスキーマ操作の数を減らすことを検討する必要があります。 このアクションを実行しても問題が解決されない場合、またはワークロードに対して採算が合わない場合は、[Azure サポート要求を作成](../azure-portal/supportability/how-to-create-azure-support-request.md)してください。|
 | ClosedConnectionException (Java) | 接続が成功してからアイドル時間が経過すると、アプリケーションが接続できなくなります| このエラーは、Azure LoadBalancers のアイドル タイムアウト (4 分) が原因で発生する可能性があります。 ドライバーのキープアライブ設定を行い (下記参照)、オペレーティング システムのキープアライブ設定を増やすか、または [Azure Load Balancer でアイドル タイムアウトを調整](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal)します。 |
-| 他の断続的な接続エラー (Java) | 接続が予想外に切断したりタイムアウトしたりします | Java 用 Apache Cassandra ドライバーには、`ExponentialReconnectionPolicy` と `ConstantReconnectionPolicy` の 2 つのネイティブ再接続ポリシーが用意されています。 既定値は、`ExponentialReconnectionPolicy` です。 ただし、Azure Cosmos DB の Cassandra API の場合は、2 秒の遅延で `ConstantReconnectionPolicy` を実行することをお勧めします。 Java v4.x のドライバーについては、[ドライバーのドキュメント](https://docs.datastax.com/developer/java-driver/4.9/manual/core/reconnection/)を、Java 3.x のガイダンスについては、[こちら](https://docs.datastax.com/developer/java-driver/3.7/manual/reconnection/)をご覧ください (以下の例もご覧ください)。|
+| 他の断続的な接続エラー (Java) | 接続が予想外に切断したりタイムアウトしたりします | Java 用 Apache Cassandra ドライバーには、`ExponentialReconnectionPolicy` と `ConstantReconnectionPolicy` の 2 つのネイティブ再接続ポリシーが用意されています。 既定では、 `ExponentialReconnectionPolicy`です。 ただし、Azure Cosmos DB の Cassandra API の場合は、2 秒の遅延で `ConstantReconnectionPolicy` を実行することをお勧めします。 Java v4.x のドライバーについては、[ドライバーのドキュメント](https://docs.datastax.com/en/developer/java-driver/4.9/manual/core/reconnection/)を、Java 3.x のガイダンスについては、[こちら](https://docs.datastax.com/en/developer/java-driver/3.7/manual/reconnection/)をご覧ください (以下の例もご覧ください)。|
 
 エラーが上記に記載されておらず、[Cassandra API でサポートされる操作](cassandra-support.md)を実行するときにエラーが発生するが、*ネイティブの Apache Cassandra の使用時にはエラーが存在しない場合は*、[Azure サポート要求を作成します](../azure-portal/supportability/how-to-create-azure-support-request.md)
 
@@ -93,7 +93,7 @@ datastax-java-driver {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Cosmos DB の Cassandra API で[サポートされている機能](cassandra-support.md)について確認します。
 - [Apache Cassandra から Azure Cosmos DB の Cassandra API にデータを移行する](cassandra-migrate-cosmos-db-databricks.md)方法について確認します

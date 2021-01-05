@@ -13,7 +13,7 @@
       items:
         - name: Web ポータルの使用
           href: getting-started-build-a-classifier.md
-        - name: Custom Vision SDK の使用
+        - name: Custom Vision SDK または REST API の使用
           href: quickstarts/image-classification.md
     - name: オブジェクト検出器の構築
       items:
