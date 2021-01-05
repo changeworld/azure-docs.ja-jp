@@ -9,6 +9,8 @@
   items:
     - name: Web アプリを作成する
       href: quick-demo-map-app.md
+    - name: Android アプリの作成
+      href: quick-android-map.md
 - name: チュートリアル
   items:
     - name: Web SDK のチュートリアル
@@ -21,6 +23,10 @@
           href: tutorial-prioritized-routes.md
         - name: ストア ロケーターを作成する
           href: tutorial-create-store-locator.md
+    - name: Android SDK のチュートリアル
+      items:
+        - name: GeoJSON データをマップに読み込む
+          href: tutorial-load-geojson-file-android.md
     - name: REST API のチュートリアル
       items:
         - name: 屋内マップの作成
@@ -238,16 +244,28 @@
           href: how-to-use-android-map-control-library.md
         - name: マップのスタイルを変更する
           href: set-android-map-styles.md
+        - name: データ ソースを作成する
+          href: create-data-source-android-sdk.md
         - name: シンボル レイヤーを追加する
           href: how-to-add-symbol-to-android-map.md
+        - name: バブル レイヤーを追加する
+          href: map-add-bubble-layer-android.md
         - name: 図形を追加する
           href: how-to-add-shapes-to-android-map.md
+        - name: ヒート マップ レイヤーを追加する
+          href: map-add-heat-map-layer-android.md
+        - name: 線レイヤーを追加する
+          href: android-map-add-line-layer.md
         - name: 機能情報を表示する
           href: display-feature-information-android.md
         - name: タイル レイヤーを追加する
           href: how-to-add-tile-layer-android-map.md
         - name: トラフィック データを表示する
           href: how-to-show-traffic-android.md
+        - name: データドリブンの式を使用する
+          href: data-driven-style-expressions-android-sdk.md
+        - name: イベントへの反応
+          href: android-map-events.md
     - name: Power BI で Azure Maps を使用する
       items:
         - name: 作業の開始

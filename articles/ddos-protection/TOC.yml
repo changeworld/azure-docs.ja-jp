@@ -15,9 +15,11 @@
 - name: チュートリアル
   items:
     - name: DDoS 保護テレメトリの表示と構成
-      href: telemetry-monitoring-alerting.md
-    - name: DDoS 攻撃の軽減策レポートとフロー ログを構成する
-      href: reports-and-flow-logs.md
+      href: telemetry.md
+    - name: DDoS 診断ログの表示と構成
+      href: diagnostic-logging.md
+    - name: DDoS 保護アラートの表示と構成
+      href: alerts.md
 - name: 概念
   items:
     - name: 攻撃の種類

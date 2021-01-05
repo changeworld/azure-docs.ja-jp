@@ -157,7 +157,7 @@
         - name: Azure 仮想マシンの監視
           href: insights/monitor-vm-azure.md
           displayname: VM
-    - name: 配置
+    - name: デプロイ
       items:
         - name: Azure Monitor をデプロイする
           href: deploy.md
@@ -544,18 +544,40 @@
           href: platform/alerts-resource-move.md
         - name: IT Service Management
           items:
-            - name: IT Service Management Connector
+            - name: ITSM Connector の概要
               href: platform/itsmc-overview.md
-            - name: IT Service Management 接続
-              href: platform/itsmc-connections.md
-            - name: IT Service Management Connector の定義
+            - name: ITSM Connector パートナーのセットアップ
+              items:
+                - name: 概要
+                  href: platform/itsmc-connections.md
+                - name: ServiceNow
+                  href: platform/itsmc-connections-servicenow.md
+                - name: System Center Service Manager
+                  items:
+                    - name: セットアップ
+                      href: platform/itsmc-connections-scsm.md
+                    - name: Service Manager Web アプリを作成する
+                      href: platform/itsmc-service-manager-script.md
+                - name: Cherwell
+                  href: platform/itsmc-connections-cherwell.md
+                - name: Provance
+                  href: platform/itsmc-connections-provance.md
+            - name: ITSM Connector の Azure 構成
               href: platform/itsmc-definition.md
-            - name: Service Manager Web アプリを作成する
-              href: platform/itsmc-service-manager-script.md
+            - name: お使いの ITSM 製品から同期されるデータ
+              href: platform/itsmc-synced-data.md
             - name: ITSM Connector での問題のトラブルシューティング
               href: platform/itsmc-resync-servicenow.md
             - name: Secure Export との統合
-              href: platform/it-service-management-connector-secure-webhook-connections.md
+              items:
+                - name: 概要
+                  href: platform/it-service-management-connector-secure-webhook-connections.md
+                - name: Azure 構成のセキュリティで保護されたエクスポート
+                  href: platform/itsm-connector-secure-webhook-connections-azure-configuration.md
+                - name: BMC
+                  href: platform/itsmc-secure-webhook-connections-bmc.md
+                - name: ServiceNow
+                  href: platform/itsmc-secure-webhook-connections-servicenow.md
         - name: クラシック アラート ルールを移行する
           items:
             - name: クラシック アラートについて
@@ -790,6 +812,8 @@
               href: app/snapshot-debugger.md
             - name: アプリ サービス用にスナップショット デバッガーを有効にする
               href: app/snapshot-debugger-appservice.md
+            - name: 関数アプリに対してスナップショット デバッガーを有効にする
+              href: app/snapshot-debugger-function-app.md
             - name: その他の環境用にスナップショット デバッガーを有効にする
               href: app/snapshot-debugger-vm.md
             - name: スナップショット デバッガーのアップグレード

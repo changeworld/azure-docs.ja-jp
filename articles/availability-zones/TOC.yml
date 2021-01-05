@@ -12,7 +12,7 @@
       href: az-overview.md
     - name: 可用性ゾーンのドキュメント
       items:
-        - name: 可用性ゾーンをサポートしているリージョン
+        - name: Availability Zones をサポートする Azure サービス
           href: az-region.md
         - name: 仮想マシン
           items:
