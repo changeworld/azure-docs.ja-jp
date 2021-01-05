@@ -308,7 +308,7 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
 統合ターミナルで、デプロイが正常に作成されていることをデプロイ ID によって確認できます。
 
-端末で `docker ps` コマンドを実行して、コンテナーの状態を確認できます。 Visual Studio Code と IoT Edge ランタイムが同じマシン上で実行されている場合は、Visual Studio Code の Docker ビューでも状態を確認することができます。
+ターミナルで `docker ps` コマンドを実行して、コンテナーの状態を確認できます。 Visual Studio Code と IoT Edge ランタイムが同じマシン上で実行されている場合は、Visual Studio Code の Docker ビューでも状態を確認することができます。
 
 ### <a name="expose-the-ip-and-port-of-the-module-for-the-debugger"></a>モジュールの IP とポートをデバッガー用に公開する
 
