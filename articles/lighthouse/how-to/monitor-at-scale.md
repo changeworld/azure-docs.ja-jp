@@ -1,14 +1,14 @@
 ---
 title: 委任されたリソースを大規模に監視する
 description: 管理下にある顧客テナント全体を対象に、スケーラブルな方法で効率よく Azure Monitor ログを使用する方法について説明します。
-ms.date: 10/26/2020
+ms.date: 12/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 96ca05faf2b3da8f214c14ae57eb186c7b71e1b3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6c1cbde696ccf9131797a05db33553b8505216a4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461528"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509276"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>委任されたリソースを大規模に監視する
 
@@ -40,7 +40,25 @@ Log Analytics ワークスペースを作成したら、診断データが各テ
 
 ## <a name="analyze-the-gathered-data"></a>生成されたデータを分析する
 
-ポリシーをデプロイすると、各顧客テナントに作成した Log Analytics ワークスペースにデータがログされます。 管理下にある全顧客の分析情報を入手したければ、[Azure Monitor Workbooks](../../azure-monitor/platform/workbooks-overview.md) などのツールを使用して、複数のデータ ソースから情報を収集し、分析してください。 
+ポリシーをデプロイすると、各顧客テナントに作成した Log Analytics ワークスペースにデータがログされます。 管理下にある全顧客の分析情報を入手したければ、[Azure Monitor Workbooks](../../azure-monitor/platform/workbooks-overview.md) などのツールを使用して、複数のデータ ソースから情報を収集し、分析してください。
+
+## <a name="view-alerts-across-customers"></a>顧客間のアラートを表示する
+
+管理対象の顧客テナントの委任されたサブスクリプションの[アラート](../../azure-monitor/platform/alerts-overview.md)を表示できます。
+
+複数の顧客にわたってアラートを自動的に更新するには、[Azure Resource Graph](../../governance/resource-graph/overview.md) クエリを使用して、アラートをフィルター処理します。 クエリをダッシュボードにピン留めし、すべての適切な顧客とサブスクリプションを選択することができます。
+
+次のクエリの例では、重大度が 0 および 1 のアラートが表示され、60 分ごとに更新されます。
+
+```kusto
+alertsmanagementresources
+| where type == "microsoft.alertsmanagement/alerts"
+| where properties.essentials.severity =~ "Sev0" or properties.essentials.severity =~ "Sev1"
+| where properties.essentials.monitorCondition == "Fired"
+| where properties.essentials.startDateTime > ago(60m)
+| project StartTime=properties.essentials.startDateTime,name,Description=properties.essentials.description, Severity=properties.essentials.severity, subscriptionId
+| sort by tostring(StartTime)
+```
 
 ## <a name="next-steps"></a>次のステップ
 

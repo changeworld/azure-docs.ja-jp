@@ -8,21 +8,21 @@ ms.subservice: core
 ms.author: minxia
 author: mx-iao
 ms.reviewer: peterlu
-ms.date: 09/28/2020
+ms.date: 12/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: b03395b9c615466a4d64d8760db8ac23a040d832
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ed368615395614bc0d3e9a6f06727da8c64d8486
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360940"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559643"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して PyTorch モデルを大規模にトレーニングする
 
 この記事では、Azure Machine Learning を使用して、[PyTorch](https://pytorch.org/) トレーニング スクリプトをエンタープライズ規模で実行する方法について説明します。
 
-この記事のサンプル スクリプトは、PyTorch の転移学習[チュートリアル](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)に基づいてニワトリと七面鳥の画像を分類し、ディープ ラーニング ニューラル ネットワーク (DNN) を構築するために使用されます。 
+この記事のサンプル スクリプトは、PyTorch の転移学習[チュートリアル](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)に基づいてニワトリと七面鳥の画像を分類し、ディープ ラーニング ニューラル ネットワーク (DNN) を構築するために使用されます。 転移学習は、ある問題を解決することで得られた知識を、異なるが関連している問題に適用する手法です。 これは、最初からトレーニングするよりも必要なデータ、時間、コンピューティング リソースが少なくなるので、トレーニング プロセスを短縮します。
 
 PyTorch のディープ ラーニング モデルを一からトレーニングする場合でも、既存のモデルをクラウドに持ち込む場合でも、Azure Machine Learning のエラスティック クラウド コンピューティング リソースを使用して、オープンソースのトレーニング ジョブをスケールアウトできます。 Azure Machine Learning を使用して、運用レベルのモデルをビルド、デプロイ、バージョン管理、および監視することができます。 
 
@@ -33,7 +33,7 @@ PyTorch のディープ ラーニング モデルを一からトレーニング�
 - Azure Machine Learning コンピューティング インスタンス - ダウンロードやインストールは必要なし
 
     - 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
-    - ノートブック サーバー上のディープ ラーニングの samples フォルダーで、 **how-to-use-azureml > ml-frameworks > pytorch > train-hyperparameter-tune-deploy-with-pytorch** とディレクトリを移動して、完成した展開済みノートブックを見つけます。 
+    - ノートブック サーバー上のディープ ラーニングの samples フォルダーで、**how-to-use-azureml > ml-frameworks > pytorch > train-hyperparameter-tune-deploy-with-pytorch** とディレクトリを移動して、完成した展開済みノートブックを見つけます。 
  
  - 独自の Jupyter Notebook サーバー
     - [Azure Machine Learning SDK (1.15.0 以上) をインストールします](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
@@ -213,13 +213,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>実行実施中の動作
 実行は、以下の段階を経て実施されます。
 
-- **準備** :Docker イメージは、定義されている環境に従って作成されます。 イメージはワークスペースのコンテナー レジストリにアップロードされ、後で実行するためにキャッシュされます。 ログは実行履歴にもストリーミングされ、進行状況を監視するために表示することができます。 代わりに、キュレーションされた環境が指定されている場合は、そのキュレーションされた環境を補足するキャッシュ済みのイメージが使用されます。
+- **準備**:Docker イメージは、定義されている環境に従って作成されます。 イメージはワークスペースのコンテナー レジストリにアップロードされ、後で実行するためにキャッシュされます。 ログは実行履歴にもストリーミングされ、進行状況を監視するために表示することができます。 代わりに、キュレーションされた環境が指定されている場合は、そのキュレーションされた環境を補足するキャッシュ済みのイメージが使用されます。
 
-- **拡大縮小** :Batch AI クラスターでの実行に現在使用可能な数より多くのノードが必要な場合、クラスターはスケールアップを試みます。
+- **拡大縮小**:Batch AI クラスターでの実行に現在使用可能な数より多くのノードが必要な場合、クラスターはスケールアップを試みます。
 
 - **[実行中]** : スクリプト フォルダー内のすべてのスクリプトがコンピューティング先にアップロードされ、データ ストアがマウントまたはコピーされて、`script` が実行されます。 stdout からの出力と **./logs** フォルダーが実行履歴にストリーミングされるので、実行の監視のために使用できます。
 
-- **後処理** :実行の **./outputs** フォルダーが実行履歴にコピーされます。
+- **後処理**:実行の **./outputs** フォルダーが実行履歴にコピーされます。
 
 ## <a name="register-or-download-a-model"></a>モデルを登録またはダウンロードする
 

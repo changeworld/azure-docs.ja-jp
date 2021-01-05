@@ -95,6 +95,10 @@
           href: diagnostic-services.md
         - name: リアルタイムでのログのストリーミング
           href: spring-cloud-howto-log-streaming.md
+        - name: Java インプロセス エージェントを使用した Application Insights
+          href: spring-cloud-howto-application-insights.md
+        - name: Resilience4J サーキット ブレーカー メトリック
+          href: spring-cloud-howto-circuit-breaker-metrics.md
     - name: セキュリティで保護
       items:
         - name: システム割り当てマネージド ID を有効化する

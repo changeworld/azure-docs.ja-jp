@@ -9,7 +9,7 @@
           href: azure-stack-edge-gpu-overview.md
     - name: クイックスタート
       items:
-        - name: 作業開始
+        - name: はじめに
           href: azure-stack-edge-gpu-quickstart.md
     - name: チュートリアル
       items:
@@ -213,14 +213,20 @@
               href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
             - name: VM をデプロイする - テンプレート
               href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
+            - name: VM をデプロイする - GPU
+              href: azure-stack-edge-gpu-deploy-gpu-virtual-machine.md
             - name: VM をデプロイする - Azure PowerShell コマンドレット
-              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell.md
+              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell.md
             - name: VM をデプロイする - Azure PowerShell スクリプト
-              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell-script.md
+              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell-script.md
             - name: VM をデプロイする - Azure CLI/Python
               href: azure-stack-edge-j-series-deploy-virtual-machine-cli-python.md
+            - name: VM にカスタム スクリプト拡張機能をデプロイする
+              href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
             - name: VM イメージを作成する
-              href: azure-stack-edge-j-series-create-virtual-machine-image.md
+              href: azure-stack-edge-gpu-create-virtual-machine-image.md
+            - name: サポートされる VM のサイズ、種類
+              href: azure-stack-edge-gpu-virtual-machine-sizes.md
         - name: 証明書の管理
           items:
             - name: 要件
@@ -293,8 +299,6 @@
           href: azure-stack-edge-gpu-2008-release-notes.md
     - name: 共有参照
       items:
-        - name: API、SDK、PowerShell を介した IoT Edge ロール
-          href: azure-stack-edge-gpu-iot-edge-api-update.md
         - name: Azure PowerShell
           href: /powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge
         - name: REST API
@@ -389,6 +393,10 @@
           href: /rest/api/databoxedgegateway
         - name: .NET SDK
           href: /dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet
+- name: セキュリティ
+  items:
+    - name: セキュリティ ベースライン
+      href: security-baseline.md
 - name: リソース
   items:
     - name: Azure Stack Edge Pro C# モジュールのサンプル (.NET)

@@ -86,7 +86,7 @@
       href: overview-vnet-service-endpoints.md
 - name: 操作方法ガイド
   items:
-    - name: 認証
+    - name: 認証と承認
       items:
         - name: Key Vault に対する認証
           href: authentication.md
@@ -104,10 +104,6 @@
           href: rbac-migration.md
         - name: アクセスに関する問題のトラブルシューティング
           href: troubleshooting-access-issues.md
-    - name: 論理的な削除と消去保護を有効にする
-      href: key-vault-recovery.md
-    - name: ログの有効化
-      href: howto-logging.md
     - name: 開発
       items:
         - name: Azure Key Vault 開発者ガイド
@@ -118,21 +114,31 @@
           href: vs-key-vault-add-connected-service.md
     - name: 監視とガバナンス
       items:
-        - name: Azure Key Vault 用に監視とアラートを構成する
+        - name: Event Grid の通知
+          items:
+            - name: Logic Apps を使用した通知の受信
+              href: event-grid-logicapps.md
+            - name: Azure Automation を使用した通知の受信
+              href: event-grid-tutorial.md
+        - name: ログの有効化
+          href: howto-logging.md
+        - name: Azure Monitor を使用して Azure Key Vault の監視とアラートを構成する
           href: alert.md
+        - name: 論理的な削除と消去保護を使用した回復の管理
+          href: key-vault-recovery.md
         - name: Azure Key Vault と Azure Policy を統合する
           href: azure-policy.md
-        - name: Azure Event Grid と Logic Apps を使用した通知の受信
-          href: event-grid-logicapps.md
-        - name: Azure Event Grid と Azure Automation を使用した通知の受信
-          href: event-grid-tutorial.md
         - name: 個々の Key Vault オブジェクトのバックアップ
           href: backup.md
     - name: セキュリティで保護
       items:
-        - name: Azure Private Link サービスと統合する
-          href: private-link-service.md
-        - name: ファイアウォールの向こう側にある Key Vault へのアクセス - Azure Key Vault
+        - name: Azure Private Link
+          items:
+            - name: Azure Private Link サービスと統合する
+              href: private-link-service.md
+            - name: プライベート リンクの構成の問題を診断する
+              href: private-link-diagnostics.md
+        - name: ファイアウォールの内側にある Key Vault にアクセスする
           href: access-behind-firewall.md
     - name: キー コンテナーを移動する
       items:
@@ -142,10 +148,6 @@
           href: move-subscription.md
         - name: キー コンテナーを別のリージョンに移動する
           href: move-region.md
-    - name: ネットワーク
-      items:
-        - name: プライベート リンクの構成の問題を診断する
-          href: private-link-diagnostics.md
 - name: リファレンス
   items:
     - name: 新機能

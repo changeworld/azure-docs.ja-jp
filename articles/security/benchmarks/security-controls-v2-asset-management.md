@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8602450ef7df7f728fc5bdcda4f46ae30058fc94
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f0c2fe78c32357798e1f9acb43f5867df9148b38
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487798"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368904"
 ---
 # <a name="security-control-v2-asset-management"></a>セキュリティ コントロール V2: アセット管理
 
@@ -20,7 +20,7 @@ ms.locfileid: "96487798"
 
 ## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1:セキュリティ チームが資産のリスクを確実に可視化できるようにする
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | AM-1 | 1.1、1.2 | CM-8、PM-5 |
 
@@ -46,7 +46,7 @@ ms.locfileid: "96487798"
 
 ## <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2:セキュリティ チームが資産インベントリとメタデータに確実にアクセスできるようにする
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | AM-2 | 1.1、1.2、1.4、1.5、9.1、12.1 | CM-8、PM-5 |
 
@@ -72,7 +72,7 @@ Azure Security Center インベントリ機能と Azure Resource Graph を使用
 
 ## <a name="am-3-use-only-approved-azure-services"></a>AM-3:承認された Azure サービスのみを使用する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | AM-3 | 2.3、2.4 | CM-7、CM-8 |
 
@@ -94,7 +94,7 @@ Azure Policy を使用して、環境内でユーザーがプロビジョニン�
 
 ## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4:アセット ライフサイクル管理のセキュリティを確保する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | AM-4 | 2.3、2.4、2.5 | CM-7、CM-8、CM-10、CM-11 |
 
@@ -116,7 +116,7 @@ Azure Policy を使用して、環境内でユーザーがプロビジョニン�
 
 ## <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>AM-5:Azure Resource Manager を操作するユーザーの機能を制限する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | AM-5 | 2.9 | AC-3 |
 
@@ -134,7 +134,7 @@ Azure Policy を使用して、環境内でユーザーがプロビジョニン�
 
 ## <a name="am-6-use-only-approved-applications-in-compute-resources"></a>AM-6:コンピューティング リソースで承認済みのアプリケーションのみを使用する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | AM-6 | 2.6、2.7 | AC-3、CM-7、CM-8、CM-10、CM-11 |
 

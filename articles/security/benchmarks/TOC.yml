@@ -153,6 +153,8 @@
       href: ../../azure-signalr/security-baseline.md
     - name: Azure SQL Database のセキュリティ ベースライン
       href: ../../azure-sql/database/security-baseline.md
+    - name: Azure Stack Edge のセキュリティ ベースライン
+      href: ../../databox-online/security-baseline.md
     - name: Azure Storage のセキュリティ ベースライン
       href: ../../storage/common/security-baseline.md
     - name: Azure Web Application Firewall のセキュリティ ベースライン

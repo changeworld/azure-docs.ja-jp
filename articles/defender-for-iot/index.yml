@@ -11,48 +11,58 @@ metadata:
   author: mlottner
   ms.author: mlottner
   ms.date: 09/07/2020
-  ms.openlocfilehash: 18f3f2f14d4e04c523a355f699eaf24b8c93bb81
-  ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+  ms.openlocfilehash: 00cef8a146a84c4261dde46785f2ea9bb1c03173
+  ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/15/2020
-  ms.locfileid: "92090014"
+  ms.lasthandoff: 12/31/2020
+  ms.locfileid: "97832337"
 landingContent:
-- title: Azure Defender for IoT について
+- title: Azure Defender for IoT を使用した作業の開始
   linkLists:
   - linkListType: overview
     links:
     - text: Azure Defender for IoT とは
       url: overview.md
-    - text: Azure RTOS 用のセキュリティ モジュール
-      url: iot-security-azure-rtos.md
-    - text: ソリューションの計画
-      url: service-prerequisites.md
-  - linkListType: architecture
-    links:
-    - text: Azure Defender for IoT アーキテクチャの把握
+    - text: ソリューションのアーキテクチャ
       url: architecture.md
-    - text: Azure Defender for IoT のエージェント
-      url: security-agent-architecture.md
+    - text: セットアップの概要
+      url: getting-started.md
+- title: セットアップとオンボード - エージェントレス ソリューション
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ネットワークをセットアップする
+      url: how-to-set-up-your-network.md
+    - text: 必要なアプライアンスを特定する
+      url: how-to-identify-required-appliances.md
+    - text: ソフトウェアをインストールする
+      url: how-to-install-software.md
+- title: ネットワークを監視する - エージェントレス ソリューション
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 接続されたデバイスの表示
+      url: how-to-work-with-the-sensor-device-map.md
+    - text: デバイスのインベントリを表示する
+      url: how-to-investigate-sensor-detections-in-a-device-inventory.md
+    - text: アラートの調査
+      url: how-to-work-with-alerts-on-your-sensor.md
+    - text: レポートの生成
+      url: how-to-generate-reports.md
+    - text: 検出するトラフィックを制御する
+      url: how-to-control-what-traffic-is-monitored.md
+    - text: Azure Sentinel に接続する
+      url: how-to-configure-with-sentinel.md
+- title: Azure Defender for IoT - エージェントベースのソリューション
+  linkLists:
+  - linkListType: overview
+    links:
     - text: Edge のセキュリティ モジュール
       url: security-edge-architecture.md
-- title: IoT Hub への Azure Defender for IoT のオンボード
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: Azure Defender for IoT を使用した作業の開始
-      url: getting-started.md
-    - text: IoT Hub
-      url: iot-hub-integration.md
-    - text: Azure RTOS 用のセキュリティ モジュールを使用した作業の開始
-      url: concept-rtos-security-module.md
-    - text: セキュリティ エージェント
-      url: security-agents.md
-- title: ソリューションを構成する
-  linkLists:
   - linkListType: quickstart
     links:
-    - text: IoT Hub で Azure Defender for IoT を有効にする
+    - text: IoT Hub を有効にする - エージェントベースのソリューション
       url: quickstart-onboard-iot-hub.md
     - text: IoT セキュリティ ソリューションを構成する
       url: quickstart-configure-your-solution.md
@@ -64,40 +74,6 @@ landingContent:
       url: quickstart-create-custom-alerts.md
     - text: セキュリティ アラートについて調査する
       url: quickstart-investigate-security-alerts.md
-- title: ソリューションをカスタマイズする
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Azure RTOS 用のセキュリティ モジュールをカスタマイズする
-      url: how-to-azure-rtos-security-module.md
-    - text: エージェントを選択する
-      url: how-to-deploy-agent.md
-    - text: Windows 用の C# ベースの Azure Defender for IoT セキュリティ エージェントをデプロイする
-      url: how-to-deploy-windows-cs.md
-    - text: Linux 用の C# ベースの Azure Defender for IoT セキュリティ エージェントをデプロイする
-      url: how-to-deploy-linux-cs.md
-    - text: Linux 用の C ベースの Azure Defender for IoT セキュリティ エージェントをデプロイする
-      url: how-to-deploy-linux-c.md
-    - text: Edge のセキュリティ モジュールをデプロイする
-      url: how-to-deploy-edge.md
-    - text: セキュリティ エージェントを構成する
-      url: how-to-agent-configuration.md
-    - text: 独自のセキュリティ メッセージを送信する
-      url: how-to-send-security-messages.md
-    - text: 未加工のセキュリティ データにアクセスする
-      url: how-to-security-data-access.md
-    - text: デバイスを調査する
-      url: how-to-investigate-device.md
-- title: セキュリティ エージェントのトラブルシューティングを行う
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: セキュリティ エージェントのトラブルシューティング ガイド (Linux)
-      url: troubleshoot-agent.md
-    - text: LocalConfiguration.json ファイルについて - C エージェント
-      url: azure-iot-security-local-configuration-c.md
-    - text: ローカル構成ファイルについて - C# エージェント
-      url: azure-iot-security-local-configuration-csharp.md
 - title: Azure Defender for IoT ソリューションのリソース
   linkLists:
   - linkListType: video

@@ -42,8 +42,14 @@
       href: hpc-cache-mount.md
     - name: キャッシュを管理する
       href: hpc-cache-manage.md
-    - name: オプション設定を構成する
-      href: configuration.md
+    - name: オプション設定を使用する
+      items:
+        - name: オプション設定を構成する
+          href: configuration.md
+        - name: アクセス ポリシーをカスタマイズする
+          href: access-policies.md
+        - name: ディレクトリ サービスのセットアップ
+          href: directory-services.md
 - name: リファレンス
   items:
     - name: Azure CLI

@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
-ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: a90b98e8be976da9ee2669ab3b5fed4a890f0fb2
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.custom: contperf-fy20q4, tracking-python
+ms.openlocfilehash: 3f128b7ee7fa8f690c2097a5d27e274ec1eb2a8a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576624"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559541"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure 仮想ネットワークで Azure Machine Learning Studio を使用する
 
@@ -71,7 +71,7 @@ ms.locfileid: "96576624"
 
 ### <a name="configure-datastores-to-use-workspace-managed-identity"></a>ワークスペースのマネージド ID を使用するようにデータストアを構成する
 
-[サービス エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)または[プライベート エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)が設定されている仮想ネットワークに Azure ストレージ アカウントを追加した後、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) 認証を使用するようにデータストアを構成する必要があります。 これにより、Studio でストレージ アカウント内のデータにアクセスできるようになります。
+[サービス エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)または[プライベート エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)のいずれかが設定されている仮想ネットワークに Azure ストレージ アカウントを追加した後、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) 認証を使用するようにデータストアを構成する必要があります。 これにより、Studio でストレージ アカウント内のデータにアクセスできるようになります。
 
 Azure Machine Learning では、[データストア](concept-data.md#datastores)を使用してストレージ アカウントに接続します。 マネージド ID を使用するようにデータストアを構成するには、次の手順に従います。
 
@@ -89,7 +89,9 @@ Azure Machine Learning では、[データストア](concept-data.md#datastores)
 
 ### <a name="enable-managed-identity-authentication-for-default-storage-accounts"></a>既定のストレージ アカウントでマネージド ID 認証を有効にする
 
-各 Azure Machine Learning ワークスペースには、ワークスペースの作成時に定義される 2 つの既定のストレージ アカウントが付属しています。 Studio では、既定のストレージ アカウントを使用して実験とモデルの成果物を格納します。これらは、Studio の特定の機能にとって重要です。
+各 Azure Machine Learning ワークスペースには、既定の BLOB ストレージ アカウントと既定のファイル ストア アカウントの 2 つの既定のストレージ アカウントがあり、これらはワークスペースの作成時に定義されます。 **データストア** 管理ページで新しい既定値を設定することもできます。
+
+![既定のデータストアがある場所を示すスクリーンショット](./media/how-to-enable-studio-virtual-network/default-datastores.png)
 
 次の表では、ワークスペースの既定のストレージ アカウントでマネージド ID 認証を有効にする必要がある理由について説明します。
 
@@ -98,8 +100,12 @@ Azure Machine Learning では、[データストア](concept-data.md#datastores)
 |ワークスペースの既定の BLOB ストレージ| デザイナーからのモデル アセットが格納されます。 デザイナーでモデルをデプロイするには、このストレージ アカウントでマネージド ID 認証を有効にする必要があります。 <br> <br> マネージド ID を使用するように構成されている既定以外のデータストアを使用するデザイナー パイプラインは、視覚化して実行できます。 ただし、既定のデータストアでマネージド ID を有効にせずにトレーニング済みのモデルをデプロイしようとすると、他のデータストアの使用に関係なく、デプロイは失敗します。|
 |ワークスペースの既定のファイル ストア| AutoML 実験アセットが格納されます。 AutoML 実験を送信するには、このストレージ アカウントでマネージド ID 認証を有効にする必要があります。 |
 
-
-![既定のデータストアがある場所を示すスクリーンショット](./media/how-to-enable-studio-virtual-network/default-datastores.png)
+> [!WARNING]
+> 既定のファイル ストアでは、AutoML 実験を送信するために必要な `azureml-filestore` フォルダーが自動的に作成されないという既知の問題があります。 このエラーは、ワークスペースの作成時に、ユーザーが既存のファイルストアを既定のファイルストアとして設定した場合に発生します。
+> 
+> この問題を回避するには、次の 2 とおりの方法があります。1) ワークスペースの作成時に自動的に作成される既定のファイルストアを使用します。 2) 独自のファイルストアを使用するには、ワークスペースの作成時にそのファイルストアが VNet の外部にあることを確認します。 ワークスペースが作成されたら、仮想ネットワークにストレージ アカウントを追加します。
+>
+> この問題を解決するには、仮想ネットワークから ファイルストア アカウントを削除してから、仮想ネットワークに追加し直します。
 
 
 ### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>ストレージ プライベート リンクにワークスペースのマネージド ID __閲覧者__ アクセス権を付与する

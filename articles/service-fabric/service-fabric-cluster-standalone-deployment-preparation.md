@@ -3,12 +3,12 @@ title: スタンドアロン クラスターのデプロイの準備
 description: 運用ワークロードを処理するためのクラスターのデプロイ前に検討する必要がある、環境の準備およびクラスター構成の作成に関連するドキュメント。
 ms.topic: conceptual
 ms.date: 9/11/2018
-ms.openlocfilehash: 9e5ad37d803b2042fd57b0a325570e69d7b73038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 277c7e047815b3b4171f7cced203ecbe5b68b155
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842956"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509174"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Service Fabric スタンドアロン クラスターのデプロイの計画と準備
 
@@ -60,7 +60,7 @@ Service Fabric クラスター内のマシンに対して推奨される仕様�
 * [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
 * [RemoteRegistry サービス](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754820(v=ws.11))がすべてのマシンで実行されている必要があります。
 * **Service Fabric のインストール ドライブは、NTFS ファイル システムである必要があります**
-* **Windows サービスの "*パフォーマンス ログとアラート*" と "*Windows イベント ログ*" が[有効である](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))必要があります**。
+* **Windows サービスの "*パフォーマンス ログとアラート*" と "*Windows イベント ログ*" が [有効である](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))必要があります**。
 
 > [!IMPORTANT]
 > クラスターのデプロイと構成を行うクラスター管理者には、個々のマシンに対する [管理者特権](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) が必要です。 ドメイン コントローラーに Service Fabric をインストールすることはできません。
@@ -103,7 +103,7 @@ Service Fabric クラスター内のマシンに対して推奨される仕様�
 5. クラスター マシンにインターネットでアクセスできない場合は、クラスター構成で次を設定します。
    * テレメトリを無効にする: *properties* で *"enableTelemetry": false* と設定します
    * Fabric バージョンの自動ダウンロードおよび現在のクラスター バージョンのサポート終了が近づいていることの通知を無効にする: *properties* で *"fabricClusterAutoupgradeEnabled": true* と設定します
-   * また、ネットワークのインターネット アクセスがホワイト リスト ドメインに制限されている場合、自動アップグレードには go.microsoft.com download.microsoft.com というドメインが必要になります
+   * また、ネットワークのインターネット アクセスが許可リストに含まれるドメインに制限されている場合、自動アップグレードには go.microsoft.com download.microsoft.com というドメインが必要になります
 
 6. Service Fabric のウイルス対策の対象外項目を適切に設定します。
 

@@ -297,6 +297,9 @@
         - name: Git 統合
           displayName: github gitlab
           href: concept-train-model-git-integration.md
+        - name: 環境のトラブルシューティングの方法
+          displayName: 'troubleshoot, envrionment, debug, image'
+          href: how-to-troubleshoot-environments.md
     - name: データの処理
       items:
         - name: データへのラベル付け
@@ -354,14 +357,6 @@
         - name: ハイパーパラメーターを調整する
           displayName: 'parameter, hyperparameter, hyperdrive'
           href: how-to-tune-hyperparameters.md
-        - name: MLflow を操作する
-          items:
-            - name: MLflow を使用して実験を追跡する
-              displayName: 'log, monitor, deploy, metrics,  model registry, register'
-              href: how-to-use-mlflow.md
-            - name: MLflow を使用して Azure Databricks 実行を追跡する
-              displayName: 'log, monitor, deploy, metrics, databricks'
-              href: how-to-use-mlflow-azure-databricks.md
         - name: Scikit-learn
           href: how-to-train-scikit-learn.md
         - name: TensorFlow
@@ -404,6 +399,17 @@
           href: how-to-use-secrets-in-runs.md
         - name: 強化学習
           href: how-to-use-reinforcement-learning.md
+    - name: MLflow を操作する
+      items:
+        - name: MLflow を使用して実験を追跡する
+          displayName: 'log, monitor, metrics, model registry, register'
+          href: how-to-use-mlflow.md
+        - name: MLflow を使用して Azure Databricks 実行を追跡する
+          displayName: 'log, monitor, deploy, metrics, databricks'
+          href: how-to-use-mlflow-azure-databricks.md
+        - name: MLflow モデルのデプロイ
+          displayName: 'log, monitor, deploy, metrics, databricks'
+          href: how-to-deploy-models-with-mlflow.md
     - name: 自動化された機械学習
       displayName: 'automl, auto ml'
       items:
@@ -468,9 +474,9 @@
               href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
             - name: FPGA 推論
               href: how-to-deploy-fpga-web-service.md
-        - name: トラブルシューティングとデバッグ
+        - name: 展開のトラブルシューティング
           href: how-to-troubleshoot-deployment.md
-        - name: トラブルシューティングとデバッグ (ローカル)
+        - name: デプロイのトラブルシューティング (ローカル)
           href: how-to-troubleshoot-deployment-local.md
         - name: Web サービスを使用する
           displayName: create client consume request response synchronous
@@ -536,12 +542,12 @@
             - name: Python コードを実行する
               displayName: 'feature extraction, feature engineering'
               href: how-to-designer-python.md
-        - name: パイプラインのデバッグとトラブルシューティングを行う
+        - name: パイプラインのトラブルシューティング
           displayName: designer
           href: how-to-debug-pipelines.md
         - name: パイプライン データを Application Insights にログする
           href: how-to-log-pipelines-application-insights.md
-        - name: 並列実行ステップのデバッグとトラブルシューティング
+        - name: ParallelRunStep のトラブルシューティング
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
     - name: CI/CD 用の Azure Pipelines
@@ -601,11 +607,10 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
+    - name: サービスの制限
+      href: resource-limits-quotas-capacity.md
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 既知の問題
-      displayName: 'bugs, errors, troubleshoot'
-      href: resource-known-issues.md
     - name: ユーザー フォーラム
       href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
     - name: Stack Overflow

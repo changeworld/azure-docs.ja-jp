@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 11/19/2020
+ms.date: 12/14/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: e0a77e1e4757c8951756c3e41479628c293dfd8f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 78e9d7355b8c96295456f8aa9cb80b1d3bdd2fab
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174834"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509548"
 ---
 # <a name="known-issues-application-provisioning"></a>既知の問題:アプリケーションのプロビジョニング
 アプリのプロビジョニングを使用するときに注意する必要がある既知の問題。 UserVoice のアプリケーション プロビジョニング サービスに関するフィードバックを提供することができます。[Azure AD のアプリケーションのプロビジョニングの UserVoice](https://aka.ms/appprovisioningfeaturerequest) ページを参照してください。 Microsoft では、サービスを改善するために UserVoice を注意深く確認しています。 
@@ -57,6 +57,10 @@ UI のソース属性ドロップダウンにスキーマの拡張機能が表�
 
 属性マッピング式には、最大 10,000 文字を使用できます。 
 
+**サポートされていないスコープ フィルター**
+
+ディレクトリ拡張機能、appRoleAssignments、userType、および accountExpires は、スコープ フィルターとしてはサポートされていません。
+
 
 ## <a name="service-issues"></a>サービスに関する問題 
 
@@ -64,7 +68,8 @@ UI のソース属性ドロップダウンにスキーマの拡張機能が表�
 
 - パスワードのプロビジョニングはサポートされていません。 
 - 入れ子になったグループのプロビジョニングはサポートされていません。 
-- テナントのサイズにより、B2C テナントへのプロビジョニングはサポートされていません。 
+- テナントのサイズにより、B2C テナントへのプロビジョニングはサポートされていません。
+- すべてのクラウドですべてのプロビジョニング アプリが使用できるわけではありません。 たとえば、Atlassian は、政府機関向けクラウドではまだ利用できません。 アプリ開発者と連携して、アプリをすべてのクラウドにオンボードしています。
 
 **OIDC ベースのアプリケーションで自動プロビジョニングを使用できない**
 

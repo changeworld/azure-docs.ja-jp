@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a0ad14481673f0061fb0170e60869109c87a6829
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b4e268d35a2e31db0ce92ff61e66fd23bce68e38
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379788"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516359"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のトークンの概要
 
@@ -97,7 +97,7 @@ ID トークン内の要求は特定の順序では返されません。 新し�
 
 ## <a name="pass-through"></a>パススルー
 
-ユーザー体験が開始されると、Azure AD B2C は ID プロバイダーからアクセス トークンを受け取ります。 Azure AD B2C はそのトークンを使用して、そのユーザーに関する情報を取得します。 [ユーザー フローで要求を有効にする](idp-pass-through-user-flow.md)か、[カスタム ポリシーで要求を定義](idp-pass-through-custom.md)して、Azure AD B2C に登録するアプリケーションにそのトークンを渡します。 トークンを要求として渡すことを活用するには、アプリケーションで[推奨されるユーザー フロー](user-flow-versions.md)を使用している必要があります。
+ユーザー体験が開始されると、Azure AD B2C は ID プロバイダーからアクセス トークンを受け取ります。 Azure AD B2C はそのトークンを使用して、そのユーザーに関する情報を取得します。 ユーザー フローで要求を有効にして、Azure AD B2C に登録するアプリケーションに[そのトークンを渡します](idp-pass-through-user-flow.md)。 トークンを要求として渡すことを活用するには、アプリケーションで[推奨されるユーザー フロー](user-flow-versions.md)を使用している必要があります。
 
 Azure AD B2C は現在、Facebook や Google などの OAuth 2.0 ID プロバイダーのアクセス トークンのみを渡すことができます。 その他すべての ID プロバイダーについては、要求が空で返されます。
 

@@ -4,16 +4,16 @@ description: この記事には、Azure BLOB ストレージにファイルを�
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 11d40805cda2ea2e3693c6c93034ae19f1f0fcc0
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ec88a3c740ceda7ccf352f8f32f94e2cd52d0988
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907416"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358760"
 ---
 # <a name="upload-files-to-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy v10 を使用して Azure BLOB ストレージにファイルをアップロードする
 
@@ -26,7 +26,7 @@ BLOB のダウンロード、BLOB ストレージとの同期、アカウント�
 AzCopy のダウンロード方法と、ストレージ サービスに認証資格情報を与える方法については、[AzCopy の作業開始](storage-use-azcopy-v10.md)に関するページをご覧ください。
 
 > [!NOTE] 
-> この記事の例は、Azure Active Directory (Azure AD) を使用して認証資格情報を指定していることを前提にしています。
+> この記事の例では、Azure Active Directory (Azure AD) を使用して認証資格情報を指定していることを前提としています。
 >
 > SAS トークンを使用して BLOB データへのアクセスを承認する場合、各 AzCopy コマンドのリソース URL の先頭にそのトークンを追加できます。 (例: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`)。
 
@@ -135,9 +135,11 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 `--include-pattern` オプションと `--exclude-pattern` オプションは、パスではなくファイル名にのみ適用されます。  ディレクトリ ツリーに存在するテキスト ファイルをすべてコピーする場合は、`–recursive` オプションを使用してディレクトリ ツリー全体を取得し、次に `–include-pattern` を使用して `*.txt` を指定し、すべてのテキスト ファイルを取得します。
 
-### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>ある日時の後に変更されたファイルをアップロードする 
+### <a name="upload-files-that-were-modified-before-or-after-a-date-and-time"></a>ある日時の前後に変更されたファイルをアップロードする 
 
-[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-after` オプションと共に使用します。 日付と時刻を ISO-8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。 
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-before` または `--include-after` オプションと共に使用します。 日付と時刻を ISO-8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。 
+
+次の例では、指定した日付以降に変更されたファイルをアップロードします。
 
 |    |     |
 |--------|-----------|
@@ -151,9 +153,9 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 ファイルをアップロードし、[BLOB インデックス タグ (プレビュー)](../blobs/storage-manage-find-blobs.md) をターゲット BLOB に追加することができます。  
 
-Azure AD 認可を使用している場合は、セキュリティ プリンシパルに[[ストレージ BLOB データ所有者]](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) ロールが割り当てられているか、またはカスタム Azure ロール経由で `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Azure リソース プロバイダーの操作](../../role-based-access-control/resource-provider-operations.md#microsoftstorage)に対するアクセス許可が付与されている必要があります。 Shared Access Signature (SAS) トークンを使用している場合、そのトークンは、`t` SAS アクセス許可を使用して BLOB のタグへのアクセスを提供する必要があります。
+Azure AD 承認を使用している場合は、セキュリティ プリンシパルに[ストレージ Blob データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)ロールが割り当てられているか、カスタム Azure ロールを使用して `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Azure リソース プロバイダーの操作](../../role-based-access-control/resource-provider-operations.md#microsoftstorage)に対するアクセス許可が付与されている必要があります。 Shared Access Signature (SAS) トークンを使用している場合、そのトークンは、`t` SAS アクセス許可を使用して BLOB のタグへのアクセスを提供する必要があります。
 
-タグを追加するには、URL でエンコードされたキーと値のペアと共に `--blob-tags` オプションを使用します。 たとえば、キー `my tag` と値 `my tag value` を追加するには、宛先パラメーターに `--blob-tags='my%20tag=my%20tag%20value'` を追加します。 
+タグを追加するには、URL エンコードされたキーと値のペアと共に、`--blob-tags` オプションを使用します。 たとえば、キー `my tag` と値 `my tag value` を追加するには、宛先パラメーターに `--blob-tags='my%20tag=my%20tag%20value'` を追加します。 
 
 複数のインデックス タグを区切るには、アンパサンド (`&`) を使用します。  たとえば、キー `my second tag` と値 `my second tag value` を追加する場合、完全なオプション文字列は `--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` になります。
 
@@ -180,14 +182,14 @@ Azure AD 認可を使用している場合は、セキュリティ プリンシ�
 |追加 BLOB またはページ BLOB としてファイルをアップロードします。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
 |特定のアクセス層 (アーカイブ層など) にアップロードします。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
 
-完全な一覧については、「[オプション](storage-ref-azcopy-copy.md#options)」を参照してください。
+完全な一覧については、[オプション](storage-ref-azcopy-copy.md#options)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-他の例については、次の記事を参照してください。
+以下の記事にサンプルがあります。
 
 - [例:ダウンロード](storage-use-azcopy-blobs-download.md)」をご覧ください
-- [例:アカウント間でのコピー](storage-use-azcopy-blobs-copy.md)
+- [例:アカウント間のコピー](storage-use-azcopy-blobs-copy.md)
 - [例:同期](storage-use-azcopy-blobs-synchronize.md)
 - [例:Amazon S3 バケット](storage-use-azcopy-s3.md)
 - [例:Azure Files](storage-use-azcopy-files.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e74994847608b7fb59a1bf507691f02cf02b714a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 937d0b379c4f669e5b57e5053d5e3bffeb091e78
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408891"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368955"
 ---
 # <a name="security-control-v2-endpoint-security"></a>セキュリティ コントロール V2:エンドポイント セキュリティ
 
@@ -20,7 +20,7 @@ ms.locfileid: "94408891"
 
 ## <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1:エンドポイントでの検出と対応 (EDR) を使用する
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | ES-1 | 8.1 | SI-2、SI-3、SC-3 |
 
@@ -34,9 +34,9 @@ Microsoft Defender Advanced Threat Protection では、高度な脅威を防御�
 
 - [Windows 以外のサーバー向けの Microsoft Defender ATP サービス](/windows/security/threat-protection/microsoft-defender-atp/configure-endpoints-non-windows)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -48,7 +48,7 @@ Microsoft Defender Advanced Threat Protection では、高度な脅威を防御�
 
 ## <a name="es-2-use-centrally-managed-modern-anti-malware-software"></a>ES-2:一元管理された最新のマルウェア対策ソフトウェアを使用する
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | ES-2 | 8.1 | SI-2、SI-3、SC-3 |
 
@@ -62,9 +62,9 @@ Azure Cloud Services 向けの Microsoft Antimalware は、Windows 仮想マシ�
 
 - [サポートされているエンドポイント保護ソリューション](../../security-center/security-center-services.md?tabs=features-windows#supported-endpoint-protection-solutions-)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -76,7 +76,7 @@ Azure Cloud Services 向けの Microsoft Antimalware は、Windows 仮想マシ�
 
 ## <a name="es-3-ensure-anti-malware-software-and-signatures-are-updated"></a>ES-3:マルウェア対策ソフトウェアと署名が確実に更新されるようにする
 
-| Azure ID | CIS Controls v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS Controls v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | ES-3 | 8.2 | SI-2、SI-3 |
 
@@ -86,9 +86,9 @@ Azure Security Center の"計算とアプリ" の推奨事項に従って、す�
 
 - [Azure Cloud Services および Virtual Machines 向けの Microsoft Antimalware をデプロイする方法](../fundamentals/antimalware.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security)
 

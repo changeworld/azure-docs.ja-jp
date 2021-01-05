@@ -5,22 +5,43 @@ description: Microsoft ID プラットフォームの新規および更新され
 services: active-directory
 author: mmacy
 manager: CelesteDG
-ms.date: 12/01/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 108cd5f74b7b560534baf8f55f7d07ebb6557e7f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4813a71a0bdd14e747aa4cfe51ab5a4191df62a4
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457150"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563043"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft ID プラットフォームに関するドキュメント:新機能
 
 Microsoft ID プラットフォームに関するドキュメントの新着情報へようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。
+
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [クイック スタート: ユーザーのサインインを処理しその代理で Microsoft Graph を呼び出す ASP.NET Core Web アプリ](quickstart-v2-aspnet-core-webapp-calls-graph.md)
+- [MSAL.NET におけるエラーと例外の処理](msal-error-handling-dotnet.md)
+- [iOS および macOS 用の MSAL におけるエラーと例外の処理](msal-error-handling-ios.md)
+- [Java 用の MSAL におけるエラーと例外の処理](msal-error-handling-java.md)
+- [MSAL.js におけるエラーと例外の処理](msal-error-handling-js.md)
+- [Python 用の MSAL におけるエラーと例外の処理](msal-error-handling-python.md)
+- [SAML と OIDC または OAuth を使用した Microsoft ID プラットフォーム のトークン交換のシナリオ](scenario-token-exchange-saml-oauth.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [チュートリアル:Microsoft ID プラットフォームを使用したマルチテナント デーモンを作成する](tutorial-v2-aspnet-daemon-web-app.md)
+- [ユーザーをサインインさせる Web アプリ:アプリの登録](scenario-web-app-sign-user-app-registration.md)
+- [Microsoft ID プラットフォームと暗黙的な許可のフロー](v2-oauth2-implicit-grant-flow.md)
+- [Microsoft ID プラットフォーム アクセス トークン](access-tokens.md)
+- [Web API を呼び出す Web API:アプリのトークンの取得](scenario-web-api-call-api-acquire-token.md)
+
 
 ## <a name="november-2020"></a>2020 年 11 月
 

@@ -54,6 +54,22 @@
           href: ../azure-functions/functions-bindings-signalr-service.md
         - name: アップストリームの設定
           href: concept-upstream.md
+    - name: 可用性
+      items:
+        - name: アプリ サーバーを適切にシャットダウンします。
+          href: server-graceful-shutdown.md
+    - name: Security
+      items:
+        - name: 承認
+          items:
+            - name: Azure Active Directory を使用したアクセスを承認する
+              href: authorize-access-azure-active-directory.md
+        - name: 認証
+          items:
+            - name: アプリケーションからの認証
+              href: authenticate-application.md
+            - name: マネージド ID による認証
+              href: authenticate-managed-identity.md
     - name: 高可用性
       items:
         - name: 回復性とディザスター リカバリー

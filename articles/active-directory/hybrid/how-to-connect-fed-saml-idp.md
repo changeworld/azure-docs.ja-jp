@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20088ccc79abe978eb5b3f1c98e958f6c26bcb86
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: cfe3d995cef888d2f0e973a6a6b2a06e0dd6cb54
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861801"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563213"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する
 
@@ -273,7 +273,7 @@ Windows PowerShell は、新しいユーザーの Azure AD への追加を自動
 "New-MsolUser" チェックアウトの詳細については、[/previous-versions/azure/dn194096(v=azure.100)](/previous-versions/azure/dn194096(v=azure.100)) をご覧ください
 
 >[!NOTE]
->"UserPrinciplName" 値は SAML 2.0 要求で送信する "IDPEmail" の値と一致し、"ImmutableID" 値は "NameID" アサーションで送信される値と一致する必要があります。
+>"UserPrincipalName" 値は SAML 2.0 要求で送信する "IDPEmail" の値と一致し、"ImmutableID" 値は "NameID" アサーションで送信される値と一致する必要があります。
 
 ## <a name="verify-single-sign-on-with-your-saml-20-idp"></a>SAML 2.0 IDP を使用したシングル サインオンを検証する
 管理者としてシングル サインオン (ID フェデレーションとも呼ばれます) を検証して管理する前に、情報をレビューし、次の記事の手順を実行して、SAML 2.0 SP-Lite ベースの ID プロバイダーでのシングル サインオンを設定します。

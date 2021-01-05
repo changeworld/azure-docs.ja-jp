@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 7df04bd75f3fd11b1caa702655cbd204fc2b4fda
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: c304354f378708c43c25ef8b92b7b80b37ac03af
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854884"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563111"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor の Azure ネットワーク監視ソリューション
 
@@ -107,19 +107,33 @@ Application Insights には、Application Gateway リソース内の [Insights]\
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>Azure Gateway 分析ソリューションから Azure Monitor ブックへの移行
 
 > [!NOTE]
-> Azure Application Gateway 分析ソリューションは古くなっており、分析を使用するための推奨方法は、Application Gateway リソースに対して Azure Monitor Network insights を通じて公開されているブックを使用することです。
+> Azure Monitor Network Insights ブックは、Application Gateway リソースのメトリックおよびログ分析にアクセスするための推奨されたソリューションです。
 
-* 診断設定で、Log Analytics ワークスペースへのログの格納が既に有効になっている場合、Azure Monitor Network Insights ブックでは同じ場所にあるデータを使用できます。 新しい構成は必要ありません。
+1. Log Analytics ワークスペースにログを格納するために[診断設定が有効になっていること](#enable-azure-application-gateway-diagnostics-in-the-portal)を確認します。 既に構成されている場合、Azure Monitor Network Insights ブックは同じ場所からデータを消費することができ、追加の変更は不要です。
 
-* 以前のすべてのデータは、診断設定が有効になった時点からブック内で既に使用可能です。 データ転送は必要ありません。
+> [!NOTE]
+> 以前のすべてのデータは、診断設定が最初に有効になった時点からブック内で既に使用可能です。 データ転送は必要ありません。
 
-* ブックに切り替えるためにアクティブな切り替えは必要ありません。 分析ソリューションと Network Insights の両方のブックを並行して動作させることができます。
+2. Application Gateway リソースの [既定の分析情報ブック](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights)にアクセスします。 Application Gateway 分析ソリューションでサポートされている既存のすべての分析情報が、ブックに既に存在しています。 メトリックおよびログ データに基づいて、カスタムの [視覚化](../platform/workbooks-overview.md#visualizations)を追加することでこれを拡張できます。
 
-* Azure Monitor ブックに関連する追加コストはありません。 Log Analytics ワークスペースは、引き続き使用量に従って課金されます。
-
-* ワークスペースから Azure Gateway 分析ソリューションをクリーンアップするために、ソリューションのリソース ページからソリューションを削除できます。
+3. すべてのメトリックおよびログ分析情報を確認できるようになると、ワークスペースから Azure Gateway 分析ソリューションをクリーンアップするために、ソリューションのリソース ページからソリューションを削除できます。
 
 [ ![Azure Application Gateway 分析ソリューションの削除オプションのスクリーンショット。](media/azure-networking-analytics/azure-appgw-analytics-delete.png)](media/azure-networking-analytics/application-gateway-analytics-delete.png#lightbox)
+
+### <a name="new-capabilities-with-azure-monitor-network-insights-workbook"></a>Azure Monitor Network Insights ブックを使用した新機能
+
+> [!NOTE]
+> Azure Monitor Insights ブックに関連する追加コストはありません。 Log Analytics ワークスペースは、引き続き使用量に従って課金されます。
+
+Network Insights ブックを使用すると、次のような、Azure Monitor および Log Analytics の最新の機能を活用できます。
+
+* [メトリック](../insights/network-insights-overview.md#resource-health-and-metrics) とログ データの両方を使用して監視およびトラブルシューティングを行うための一元化されたコンソール。
+
+* カスタムの豊富な[視覚化](../platform/workbooks-overview.md#visualizations)の作成をサポートする柔軟なキャンバス。
+
+* [ブック テンプレートを消費し、より広範なコミュニティと共有](../platform/workbooks-overview.md#workbooks-versus-workbook-templates)する機能。
+
+新しいブック ソリューションの機能の詳細については、「[ブックの概要](../platform/workbooks-overview.md)」を確認してください
 
 ## <a name="azure-network-security-group-analytics-solution-in-azure-monitor"></a>Azure Monitor の Azure ネットワーク セキュリティ グループ分析ソリューション
 

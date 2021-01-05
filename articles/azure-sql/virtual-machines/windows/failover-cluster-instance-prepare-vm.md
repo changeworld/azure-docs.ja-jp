@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a9289fad6f7ae1030628bedcf1a62cacc0b1e23a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 52d6bc97245423a4add392ab05634d21bcf83a0d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564482"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358012"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>FCI 用に仮想マシンを準備する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,19 +48,22 @@ ms.locfileid: "94564482"
 
 目的のクラスター構成に適した VM 可用性オプションを慎重に選択します。 
 
- - **Azure 共有ディスク**: 障害ドメインが構成され、更新ドメインが 1 に設定され、[近接配置グループ](../../../virtual-machines/windows/proximity-placement-groups-portal.md)の内部に配置された [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
- - **Premium ファイル共有**: [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)または [可用性ゾーン](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)。 VM の可用性構成として可用性ゾーンを選択した場合は、Premium ファイル共有が唯一の共有ストレージ オプションです。 
- - **記憶域スペース ダイレクト**: [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
+- **Azure 共有ディスク**: Premium SSD または UltraDisk を使用している場合、使用可能なオプションは異なります。
+   - Premium SSD:[近接配置グループ](../../../virtual-machines/windows/proximity-placement-groups-portal.md)内に配置された Premium SSD のさまざまな異なる障害/更新ドメインにある[可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
+   - Ultra Disk:[可用性ゾーン](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)ですが、VM を同じ可用性ゾーンに配置する必要があり、これによりクラスターの可用性が 99.9% に低下します。 
+- **Premium ファイル共有**: [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)または [可用性ゾーン](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)。
+- **記憶域スペース ダイレクト**: [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
 
->[!IMPORTANT]
->仮想マシンを作成した後に可用性セットを設定または変更することはできません。
+> [!IMPORTANT]
+> 仮想マシンを作成した後に可用性セットを設定または変更することはできません。
 
 ## <a name="create-the-virtual-machines"></a>仮想マシンの作成
 
 VM の可用性の構成が済むと、仮想マシンを作成する準備が整います。 SQL Server が既にインストールされている、またはインストールされていない、Azure Marketplace のイメージを使用できます。 ただし、Azure VM に SQL Server が付属するイメージを選択する場合は、フェールオーバー クラスター インスタンスを構成する前に、仮想マシンから SQL Server をアンインストールする必要があります。 
 
 ### <a name="considerations"></a>考慮事項
-Azure IaaS VM ゲスト フェールオーバー クラスターでは、サーバー (クラスター ノード) ごとに 1 つの NIC、および 1 つのサブネットを推奨しています。 Azure ネットワークは物理的な冗長性を備えているので、Azure IaaS VM ゲスト クラスターで NIC とサブネットを追加する必要はありません。 クラスター検証レポートでは、1 つのネットワークでしかノードに到達できないという警告が出ますが、Azure IaaS VM ゲスト フェールオーバー クラスターではこの警告を無視しても安全です。
+
+Azure VM ゲスト フェールオーバー クラスターでは、サーバー (クラスター ノード) ごとに 1 つの NIC、および 1 つのサブネットを推奨しています。 Azure ネットワークは物理的な冗長性を備えているので、Azure IaaS VM ゲスト クラスターで NIC とサブネットを追加する必要はありません。 クラスター検証レポートでは、1 つのネットワークでしかノードに到達できないという警告が出ますが、Azure IaaS VM ゲスト フェールオーバー クラスターではこの警告を無視しても安全です。
 
 両方の仮想マシンを配置します。
 

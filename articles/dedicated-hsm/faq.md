@@ -2,7 +2,7 @@
 title: よく寄せられる質問 - Azure 専用 HSM | Microsoft Docs
 description: 基本情報、相互運用性、高可用性、サポートなど、Azure 専用ハードウェア セキュリティ モジュールについてよく寄せられる質問の答えが見つかります。
 services: dedicated-hsm
-author: johncdawson
+author: keithp
 manager: rkarlin
 tags: azure-resource-manager
 ms.custom: mvc, seodec18
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.author: mbaldwin
-ms.openlocfilehash: 0d3309283279c887c00a475ccedfe1edaf311ae5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/10/2020
+ms.author: keithp
+ms.openlocfilehash: 1f349931fb479be3b3ba936b3d0a665427357f29
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88189871"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369040"
 ---
 # <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 
@@ -32,11 +32,11 @@ Microsoft Azure 専用 HSM についてよく寄せられる質問への回答�
 
 ### <a name="q-what-is-the-azure-dedicated-hsm-offering"></a>Q:Azure 専用 HSM オファリングとは何ですか。
 
-Azure 専用 HSMはクラウドベースのサービスであり、お客様の仮想ネットワークに直接接続された Azure データセンター内でホストされる HSM を提供します。 これらの HSM は、専用のネットワーク アプライアンス (Gemalto の SafeNet ネットワーク HSM 7 モデル A790) です。 お客様のプライベート IP アドレス空間に直接展開され、Microsoft には HSM の暗号化機能へのアクセス権はありません。 お客様のみが、これらのデバイスの完全な管理と暗号化の制御を行います。 お客様がデバイスの管理を担当して、ご自身のデバイスから直接、完全なアクティビティ ログを取得することが可能です。 専用 HSM は、お客様が FIPS 140-2 レベル 3、HIPAA、PCI-DSS、eIDAS、およびその他多くのコンプライアンスや規制要件を満たすのに役立ちます。
+Azure 専用 HSMはクラウドベースのサービスであり、お客様の仮想ネットワークに直接接続された Azure データセンター内でホストされる HSM を提供します。 これらの HSM は専用ネットワーク アプライアンス (Thales Network Luna HSM 7) です。 お客様のプライベート IP アドレス空間に直接展開され、Microsoft には HSM の暗号化機能へのアクセス権はありません。 お客様のみが、これらのデバイスの完全な管理と暗号化の制御を行います。 お客様がデバイスの管理を担当して、ご自身のデバイスから直接、完全なアクティビティ ログを取得することが可能です。 専用 HSM は、お客様が FIPS 140-2 レベル 3、HIPAA、PCI-DSS、eIDAS、およびその他多くのコンプライアンスや規制要件を満たすのに役立ちます。
 
 ### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>Q:専用 HSM には、どのようなハードウェアが使用されますか?
 
-Microsoft は Azure 専用 HSM サービスを提供するために Gemalto と提携しています。 使用される特定のデバイスは、[SafeNet Luna ネットワーク HSM 7 モデル A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) です。 このデバイスでは、FIPS 140-2 レベル 3 の検証済みファームウェアを提供しているだけでなく、10 個のパーティションを使って低待機時間、高パフォーマンス、および高容量も実現しています。 
+Microsoft は Azure Dedicated HSM サービスを提供するために Thales と提携しています。 使用される具体的なデバイスは、[Thales Network Luna HSM 7](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) です。 このデバイスでは、FIPS 140-2 レベル 3 の検証済みファームウェアを提供しているだけでなく、10 個のパーティションを使って低待機時間、高パフォーマンス、および高容量も実現しています。 
 
 ### <a name="q-what-is-an-hsm-used-for"></a>Q:HSM は何に使用されますか。
 
@@ -44,11 +44,18 @@ HSM を使用する目的は、TLS (トランスポート層セキュリティ)�
 
 ### <a name="q-how-does-dedicated-hsm-work"></a>Q:専用 HSM はどのように動作しますか。
 
-お客様は、PowerShell またはコマンド ライン インターフェイスを使用して、特定のリージョンに HSM をプロビジョニングできます。 お客様は、どの仮想ネットワークに HSM を接続するかを指定し、プロビジョニングされた HSM は、お客様のプライベート IP アドレス空間内の割り当てられた IP アドレスにおいて、指定されたサブネット内で利用可能になります。 次に、お客様はアプライアンス管理用の SSH を使用して HSM に接続し、HSM クライアント接続の設定、HSM の初期化、パーティションの作成、ロール (パーティション担当者、暗号化担当者、暗号化ユーザーなど) の定義と割り当てを行うことができます。 その後、お客様は、Gemalto が提供する HSM クライアント ツール/SDK/ソフトウェアを使用して、アプリケーションから暗号操作を実行します。
+お客様は、PowerShell またはコマンド ライン インターフェイスを使用して、特定のリージョンに HSM をプロビジョニングできます。 お客様は、どの仮想ネットワークに HSM を接続するかを指定し、プロビジョニングされた HSM は、お客様のプライベート IP アドレス空間内の割り当てられた IP アドレスにおいて、指定されたサブネット内で利用可能になります。 次に、お客様はアプライアンス管理用の SSH を使用して HSM に接続し、HSM クライアント接続の設定、HSM の初期化、パーティションの作成、ロール (パーティション担当者、暗号化担当者、暗号化ユーザーなど) の定義と割り当てを行うことができます。 その後、お客様は、Thales が提供する HSM クライアント ツール/SDK/ソフトウェアを使用して、アプリケーションから暗号操作を実行します。
 
 ### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>Q:専用 HSM サービスでは、どのようなソフトウェアが提供されますか。
 
-Microsoft によってプロビジョニングされると、Gemalto から HSM デバイスのすべてのソフトウェアが提供されます。 ソフトウェアは、[Gemalto Customer Support Portal](https://supportportal.gemalto.com/csm/) で入手できます。 専用 HSM サービスを使用しているお客様は、Gemalto サポートへの登録が求められ、関連するソフトウェアへのアクセスとダウンロードが可能な顧客 ID を保有します。 サポートされるクライアント ソフトウェアはバージョン 7.2 であり、FIPS 140-2 レベル 3 の検証済みファームウェア バージョン 7.0.3 と互換性があります。 
+Microsoft によってプロビジョニングされると、Thales から HSM デバイスのすべてのソフトウェアが提供されます。 ソフトウェアは、[Thales Customer Support Portal](https://supportportal.gemalto.com/csm/) で入手できます。 専用 HSM サービスを使用しているお客様は、Thales サポートへの登録が求められ、関連するソフトウェアへのアクセスとダウンロードが可能な顧客 ID を保有します。 サポートされるクライアント ソフトウェアはバージョン 7.2 であり、FIPS 140-2 レベル 3 の検証済みファームウェア バージョン 7.0.3 と互換性があります。 
+
+### <a name="q-what-extra-costs-may-be-incurred-with-dedicated-hsm-service"></a>Q:専用 HSM サービスで追加コストが発生する可能性がありますか。
+
+専用 HSM サービスを使用したときに、次の項目で追加コストが発生します。 
+* 専用のオンプレミスのバックアップ デバイスは、専用 HSM サービスで使用できますが、これには追加コストが発生するため、Thales から直接供給を受ける必要があります。
+* 専用 HSM には 10 個のパーティション ライセンスが用意されています。 お客様がさらに多くのパーティションを必要とする場合、Thales から直接供給される追加ライセンスに対して追加料金が発生します。
+* 専用 HSM には、ネットワーク インフラストラクチャ (VNET、VPN Gateway など) と、デバイス構成用の仮想マシンなどのリソースが必要です。 これらの追加リソースには追加コストが発生し、専用 HSM サービスの価格には含まれません。
 
 ### <a name="q-does-azure-dedicated-hsm-offer-password-based-and-ped-based-authentication"></a>Q:Azure 専用 HSM は、パスワード ベースの認証と PED ベースの認証を提供していますか。
 
@@ -56,11 +63,11 @@ Microsoft によってプロビジョニングされると、Gemalto から HSM 
 
 ### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>Q:Azure 専用 HSM はユーザーの HSM をホストしますか。
 
-Microsoft は、専用 HSM サービス経由で Gemalto SafeNet Luna Network HSM のみを提供しており、ユーザーが提供するデバイスをホストすることはできません。
+Microsoft は、専用 HSM サービス経由で Thales Network Luna HSM 7 のみを提供しており、ユーザーが提供するデバイスをホストすることはできません。
 
 ### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>Q:Azure Dedicated HSM は、支払い (PIN/EFT) 機能をサポートしますか。
 
-Azure 専用 HSM サービスは、SafeNet Luna Network HSM 7 (モデル A790) デバイスを使用します。 これらのデバイスは、支払い HSM 固有の機能 (PIN や EFT など) または認定をサポートしていません。 Azure 専用 HSM サービスでの今後の支払い HSM のサポートを希望する場合は、Microsoft アカウント担当者までその旨をお知らせください。
+Azure Dedicated HSM サービスでは、Thales Network Luna HSM 7 デバイスが使用されます。 これらのデバイスは、支払い HSM 固有の機能 (PIN や EFT など) または認定をサポートしていません。 Azure 専用 HSM サービスでの今後の支払い HSM のサポートを希望する場合は、Microsoft アカウント担当者までその旨をお知らせください。
 
 ### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>Q:どの Azure リージョンで Dedicated HSM を使用できますか。
 
@@ -94,7 +101,7 @@ Azure 専用 HSM サービスは、SafeNet Luna Network HSM 7 (モデル A790) �
 
 ### <a name="q-how-does-my-application-connect-to-a-dedicated-hsm"></a>Q:自分のアプリケーションで専用 HSM に接続するにはどのようにしたらよいですか。
 
-お客様は、Gemalto が提供する HSM クライアント ツール/SDK/ソフトウェアを使用して、お使いのアプリケーションから暗号操作を実行します。 ソフトウェアは、[Gemalto Customer Support Portal](https://supportportal.gemalto.com/csm/) で入手できます。 専用 HSM サービスを使用しているお客様は、Gemalto サポートへの登録が求められ、関連するソフトウェアへのアクセスとダウンロードが可能な顧客 ID を保有します。
+お客様は、Thales が提供する HSM クライアント ツール/SDK/ソフトウェアを使用して、お使いのアプリケーションから暗号操作を実行します。 ソフトウェアは、[Thales Customer Support Portal](https://supportportal.gemalto.com/csm/) で入手できます。 専用 HSM サービスを使用しているお客様は、Thales サポートへの登録が求められ、関連するソフトウェアへのアクセスとダウンロードが可能な顧客 ID を保有します。
 
 ### <a name="q-can-an-application-connect-to-dedicated-hsm-from-a-different-vnet-in-or-across-regions"></a>Q:アプリケーションはリージョン内の、またはリージョンにまたがる異なる VNET から専用 HSM に接続できますか。
 
@@ -110,7 +117,7 @@ Azure 専用 HSM サービスは、SafeNet Luna Network HSM 7 (モデル A790) �
 
 ### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>Q:既存のオンプレミスの HSM から専用 HSM にキーをインポートできますか。
 
-はい。オンプレミス Gemalto SafeNet HSM をお持ちの場合は可能です。 複数の方法があります。 Gemalto HSM のドキュメントを参照してください。
+はい (オンプレミスの Thales Network Luna HSM 7 HSM がある場合)。 複数の方法があります。 [Thales HSM のドキュメント](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm)をご覧ください。
 
 ### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>Q:専用 HSM クライアント ソフトウェアでは、どのようなオペレーティング システムがサポートされますか。
 
@@ -119,7 +126,7 @@ Azure 専用 HSM サービスは、SafeNet Luna Network HSM 7 (モデル A790) �
 
 ### <a name="q-how-do-i-configure-my-client-application-to-create-a-high-availability-configuration-with-multiple-partitions-from-multiple-hsms"></a>Q:複数の HSM の複数のパーティションで高可用性構成を作成するようにクライアント アプリケーションを構成するにはどのようにしたらよいですか。
 
-高可用性を得るには、各 HSM からのパーティションを使用するように、HSM クライアント アプリケーションの構成を設定する必要があります。 Gemalto の HSM クライアント ソフトウェアに関するドキュメントを参照してください。
+高可用性を得るには、各 HSM からのパーティションを使用するように、HSM クライアント アプリケーションの構成を設定する必要があります。 Thales の HSM クライアント ソフトウェアに関するドキュメントをご覧ください。
 
 ### <a name="q-what-authentication-mechanisms-are-supported-by-dedicated-hsm"></a>Q:専用 HSM では、どのような認証メカニズムがサポートされますか。
 
@@ -131,7 +138,7 @@ PKCS#11、Java (JCA/JCE)、Microsoft CAPI、CNG、OpenSSL
 
 ### <a name="q-can-i-importmigrate-keys-from-luna-56-hsms-to-azure-dedicated-hsms"></a>Q:キーを Luna 5/6 HSM から Azure 専用 HSM にインポートまたは移行できますか。
 
-はい。 Gemalto の移行ガイドを参照してください。 
+はい。 適切な Thales の移行ガイドについては、Thales の担当者にお問い合わせください。 
 
 ## <a name="using-your-hsm"></a>ご自身の HSM を使用する
 
@@ -156,7 +163,7 @@ Azure 専用 HSM は、移行のシナリオに最適です。 つまり、既�
 
 ## <a name="administration-access-and-control"></a>管理、アクセス、および制御
 
-### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-hsms"></a>Q:ユーザーは、専用 HSM を使用して HSM を完全に排他的に制御できますか。
+### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-"></a>Q:ユーザーは、専用 HSM を使用して HSM を完全に排他的に制御できますか。
 
 はい。 各 HSM アプライアンスは完全に単一のお客様専用であり、一度プロビジョニングされて管理者パスワードが変更されると、他のユーザーには管理制御権がありません。
 
@@ -164,9 +171,9 @@ Azure 専用 HSM は、移行のシナリオに最適です。 つまり、既�
 
 Microsoft は HSM に対して、管理制御または暗号制御を行うことはできません。 Microsoft では、温度やコンポーネントの正常性などの基本のテレメトリを取得するために、シリアル ポート接続経由で監視レベルのアクセス権を保持しています。 これにより、Microsoft では、正常性の問題に関する事前通知を提供しています。 必要に応じて、お客様はこのアカウントを無効にできます。
 
-### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>Q:Microsoft で使われている "tenantadmin" アカウントとは何ですか。SafeNet HSM で管理者ユーザーは "admin" であるのに慣れています。
+### <a name="q-what-is-the-tenant-admin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-thales-luna-hsms"></a>Q:Microsoft で使われている "tenant admin" アカウントとは何ですか。Thales Luna HSM で管理者ユーザーは "admin" であるのに慣れています。
 
-HSM デバイスには、既定の管理者ユーザーと通常の既定のパスワードが付属しています。 Microsoft は、デバイスがプール内でお客様によるプロビジョニングを待っている間、既定のパスワードが使用されるのを望みませんでした。 これは、弊社の厳密なセキュリティ要件を満たしません。 このため、プロビジョニング時に破棄される強力なパスワードが設定されています。 また、プロビジョニング時には、"tenantadmin" という名前の管理者ロールで、新しいユーザーが作成されます。 このユーザーには既定のパスワードが設定されており、お客様は、新しくプロビジョニングされたデバイスに初めてログインするときに、最初のアクションとしてこれを変更します。 このプロセスにより、高度なセキュリティが確保され、お客様に対する唯一の管理制御という約束が維持されます。 お客様がそのアカウントの使用を希望される場合、"tenantadmin" ユーザーを使って管理者ユーザーのパスワードをリセットできることに注意する必要があります。 
+HSM デバイスには、既定の管理者ユーザーと通常の既定のパスワードが付属しています。 Microsoft は、デバイスがプール内でお客様によるプロビジョニングを待っている間、既定のパスワードが使用されるのを望みませんでした。 これは、弊社の厳密なセキュリティ要件を満たしません。 このため、プロビジョニング時に破棄される強力なパスワードが設定されています。 また、プロビジョニング時には、"tenant admin" という名前の管理者ロールで、新しいユーザーが作成されます。 このユーザーには既定のパスワードが設定されており、お客様は、新しくプロビジョニングされたデバイスに初めてログインするときに、最初のアクションとしてこれを変更します。 このプロセスにより、高度なセキュリティが確保され、お客様に対する唯一の管理制御という約束が維持されます。 お客様がそのアカウントの使用を希望される場合、"tenant admin" ユーザーを使って管理者ユーザーのパスワードをリセットできることに注意する必要があります。 
 
 ### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>Q:Microsoft または Microsoft の担当者は、ユーザーの専用 HSM 内のキーにアクセスできますか。
 
@@ -174,7 +181,7 @@ HSM デバイスには、既定の管理者ユーザーと通常の既定のパ�
 
 ### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>Q:自分に割り当てられた HSM 上のソフトウェア/ファームウェアをアップグレードできますか。
 
-最善のサポートを受けるために、HSM 上のソフトウェア/ファームウェアをアップグレードしないことを、Microsoft では強くお勧めしています。 ただし、別のファームウェア バージョンの特定の機能が必要な場合、お客様には、ソフトウェア/ファームウェアのアップグレードを含めた完全な管理制御権があります。 変更を加える前に、これにより FIPS 検証済みステータスが影響を受ける可能性があることなど、影響範囲を理解しておく必要があります。 
+別のファームウェア バージョンの特定の機能が必要な場合、お客様には、ソフトウェア/ファームウェアのアップグレードを含めた完全な管理制御権があります。 変更を加える前に、HSMRequest@microsoft.com に連絡して、アップグレードについて Microsoft にお問い合わせください  
 
 ### <a name="q-how-do-i-manage-dedicated-hsm"></a>Q:専用 HSM はどのように管理したらよいですか。
 
@@ -182,7 +189,7 @@ SSH を使ってアクセスすることで、専用 HSM を管理できます�
 
 ### <a name="q-how-do-i-manage-partitions-on-the-dedicated-hsm"></a>Q:専用 HSM 上のパーティションはどのように管理したらよいですか。
 
-HSM およびパーティションの管理には、Gemalto のHSM クライアント ソフトウェアが使用されます。
+HSM およびパーティションの管理には、Thales の HSM クライアント ソフトウェアが使用されます。
 
 ### <a name="q-how-do-i-monitor-my-hsm"></a>Q:自分の HSM を監視するにはどのようにしたらよいですか。
 
@@ -196,7 +203,7 @@ HSM およびパーティションの管理には、Gemalto のHSM クライア�
 
 ### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>Q:同じリージョン内で、または複数のリージョンにまたがって高可用性を構成できますか。
 
-はい。 高可用性の構成とセットアップは、Gemalto が提供する HSM クライアント ソフトウェアで実行されます。 同一リージョン内またはリージョン間での同じ VNET または別の VNET からの HSM や、サイト対サイトまたはポイント ツー ポイントの VPN を使用して VNET に接続されているオンプレミス HSM は、同じ高可用性の構成に追加できます。 これによってキー マテリアルのみが同期し、ロールなど特定の構成項目は同期されないことに注意する必要があります。
+はい。 高可用性の構成とセットアップは、Thales が提供する HSM クライアント ソフトウェアで実行されます。 同一リージョン内またはリージョン間での同じ VNET または別の VNET からの HSM や、サイト対サイトまたはポイント ツー ポイントの VPN を使用して VNET に接続されているオンプレミス HSM は、同じ高可用性の構成に追加できます。 これによってキー マテリアルのみが同期し、ロールなど特定の構成項目は同期されないことに注意する必要があります。
 
 ### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Q:自分のオンプレミス ネットワークから Azure 専用 HSM を使った高可用性グループに、HSM を追加することはできますか。
 
@@ -222,7 +229,7 @@ Azure データセンターにおいて、物理上および手続き上のセ�
 
 ### <a name="q-what-happens-if-there-is-a-security-breach-or-hardware-tampering-event"></a>Q:セキュリティ違反やハードウェアの改ざんが発生した場合はどうなりますか。
 
-専用 HSM サービスでは、SafeNet ネットワーク HSM 7 アプライアンスを使用しています。 これらのアプライアンスでは、物理的および論理的な改ざんの検出をサポートしています。 改ざんが行われた場合、HSM は自動的にゼロ埋めされます。
+専用 HSM サービスでは、Thales Network Luna HSM 7 アプライアンスが使用されます。 これらのアプライアンスでは、物理的および論理的な改ざんの検出をサポートしています。 改ざんが行われた場合、HSM は自動的にゼロ埋めされます。
 
 ### <a name="q-how-do-i-ensure-that-keys-in-my-dedicated-hsms-are-not-lost-due-to-error-or-a-malicious-insider-attack"></a>Q:自分の専用 HSM 内のキーがエラーや悪意のある内部関係者の攻撃のために失われていないことを確認するにはどのようにしたらよいですか。
 
@@ -230,13 +237,13 @@ Azure データセンターにおいて、物理上および手続き上のセ�
 
 ### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>Q:専用 HSM のサポートを受けるにはどのようにしたらよいですか。
 
-サポートはマイクロソフトと Gemalto の両方で提供されます。  ハードウェアまたはネットワーク アクセスの問題がある場合は、Microsoft にサポート リクエストを出してください。HSM 構成、ソフトウェア、およびアプリケーション開発の問題がある場合は、Gemalto にサポート リクエストを出してください。 問題が不明な場合は、マイクロソフトにサポート リクエストを出してください。その後、必要に応じて Gemalto が対応できます。 
+サポートはマイクロソフトと Thales の両方で提供されます。  ハードウェアまたはネットワーク アクセスの問題がある場合は、Microsoft にサポート リクエストを出してください。HSM 構成、ソフトウェア、およびアプリケーション開発の問題がある場合は、Thales にサポート要求を出してください。 問題が不明な場合は、マイクロソフトにサポート要求を出してください。その後、必要に応じて Thales が対応できます。 
 
-### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>Q:SafeNet Luna 7 HSM のクライアント ソフトウェア、ドキュメント、統合ガイダンスへのアクセスを取得するにはどうすればよいですか。
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-thales-network-luna-hsm-7"></a>Q:Thales Network Luna HSM 7 のクライアント ソフトウェア、ドキュメント、統合ガイダンスへのアクセスを取得するにはどうすればよいですか。
 
-サービスに登録すると、Gemalto カスタマー サポート ポータルに登録するための Gemalto カスタマー ID が提供されます。 これによって、すべてのソフトウェアとドキュメントにアクセスできるようになり、Gemalto に直接サポート リクエストを出せるようになります。
+サービスに登録すると、Thales カスタマー サポート ポータルに登録するための Thales カスタマー ID が提供されます。 これによって、すべてのソフトウェアとドキュメントにアクセスできるようになり、Thales に直接サポート リクエストを出せるようになります。
 
-### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>Q:セキュリティの脆弱性が検出され、Gemalto によって修正プログラムがリリースされた場合は、誰が OS/ファームウェアのアップグレードまたはプログラム修正に責任を負いますか。
+### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-thales-who-is-responsible-for-upgradingpatching-osfirmware"></a>Q:セキュリティの脆弱性が検出され、Thales によって修正プログラムがリリースされた場合は、だれが OS/ファームウェアのアップグレードまたはプログラム修正に責任を負いますか。
 
 Microsoft では、お客様に割り当てられている HSM に接続することはできません。 お客様が HSM をアップグレードして、修正プログラムを適用する必要があります。
 
@@ -248,11 +255,11 @@ HSM にはコマンド ラインの再起動オプションがありますが、
 
 ### <a name="q-is-it-safe-to-store-encryption-keys-for-my-most-important-data-in-dedicated-hsm"></a>Q:最も重要なデータの暗号化キーを専用 HSM に格納することは安全ですか。
 
-はい。専用 HSM では、FIPS 140-2 レベル 3 の検証済み HSM を使用する SafeNet ネットワーク HSM 7 アプライアンスをプロビジョニングします。 
+はい。専用 HSM では、FIPS 140-2 レベル 3 の検証済み HSM を使用する Thales Network Luna HSM 7 アプライアンスをプロビジョニングします。 
 
 ### <a name="q-what-cryptographic-keys-and-algorithms-are-supported-by-dedicated-hsm"></a>Q:専用 HSM では、どのような暗号化キーとアルゴリズムがサポートされていますか。
 
-専用 HSM サービスでは、SafeNet ネットワーク HSM 7 アプライアンスをプロビジョニングします。 これにより、次に示すような幅広い暗号化キーの種類とアルゴリズムがサポートされます。フル スイート B のサポート
+専用 HSM サービスでは、Thales Network Luna HSM 7 アプライアンスがプロビジョニングされます。 これにより、次に示すような幅広い暗号化キーの種類とアルゴリズムがサポートされます。フル スイート B のサポート
 
 * 非対称:
   * RSA
@@ -270,27 +277,27 @@ HSM にはコマンド ラインの再起動オプションがありますが、
   * RC5
   * CAST
   * ハッシュ/Message Digest/HMAC: SHA-1、SHA-2、SM3
-  * キー派生: SP800-108 カウンター モード
-  * キー ラッピング: SP800-38F
+  * キー派生: SP 800-108 カウンター モード
+  * キー ラッピング: SP 800-38F
   * 乱数生成: FIPS 140-2 承認済み DRBG (SP 800-90 CTR モード)、BSI DRG.4 に準拠
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>Q:専用 HSM は FIPS 140-2 レベル 3 が検証されていますか。
 
-はい。 専用 HSM サービスでは、FIPS 140-2 レベル 3 の検証済み HSM を使用する SafeNet ネットワーク HSM 7 アプライアンスをプロビジョニングします。
+はい。 専用 HSM サービスでは、FIPS 140-2 レベル 3 の検証済み HSM を使用する Thales Network Luna HSM 7 アプライアンスをプロビジョニングします。
 
 ### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>Q:FIPS 140-2 レベル 3 の検証済みモードで専用 HSM を稼働させていることを確認するには何を行う必要がありますか。
 
-専用 HSM サービスでは、SafeNet Luna ネットワーク HSM 7 アプライアンスをプロビジョニングします。 これらのアプライアンスでは、FIPS 140-2 レベル 3 の検証済み HSM を使用します。 また、展開されている既定の構成、オペレーティング システム、およびファームウェアも、FIPS 検証済みになっています。 FIPS 140-2 レベル 3 に準拠するために、何らかの操作を行う必要はありません。
+専用 HSM サービスでは、Thales Network Luna HSM 7 アプライアンスがプロビジョニングされます。 これらのアプライアンスでは、FIPS 140-2 レベル 3 の検証済み HSM を使用します。 また、展開されている既定の構成、オペレーティング システム、およびファームウェアも、FIPS 検証済みになっています。 FIPS 140-2 レベル 3 に準拠するために、何らかの操作を行う必要はありません。
 
 ### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>Q:HSM のプロビジョニングが解除されたときに、すべてのキー マテリアルが消去されていることをユーザーが確認するには、どうしたらよいですか?
 
-プロビジョニング解除を要求する前に、Gemalto が提供する HSM クライアント ツールを使用して、お客様が HSM をゼロ埋めしておく必要があります。
+プロビジョニング解除を要求する前に、Thales が提供する HSM クライアント ツールを使用して、お客様が HSM をゼロ埋めしておく必要があります。
 
 ## <a name="performance-and-scale"></a>パフォーマンスとスケール
 
 ### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>Q:専用 HSM では、1 秒あたり何回の暗号化操作がサポートされていますか。
 
-専用 HSM では、SafeNet ネットワーク HSM 7 アプライアンス (モデル A790) をプロビジョニングします。 一部の操作の最大パフォーマンスの概要を以下に示します。 
+専用 HSM では、Thales Network Luna HSM 7 HSM がプロビジョニングされます。 一部の操作の最大パフォーマンスの概要を以下に示します。 
 
 * RSA-2048: 1 秒あたり 10,000 トランザクション
 * ECC P256: 1 秒あたり 20,000 トランザクション

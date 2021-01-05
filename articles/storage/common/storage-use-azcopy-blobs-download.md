@@ -4,16 +4,16 @@ description: この記事には、Azure BLOB ストレージから BLOB をダ�
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f09e30d6bf68cfb11d9bf808838f6cc029ed942a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ea8300447b9aa596e8678038982771263a4c76f6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907440"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358777"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy v10 を使用して Azure BLOB ストレージから BLOB をダウンロードする
 
@@ -26,7 +26,7 @@ AzCopy v10 コマンド ライン ユーティリティを使用して、BLOB �
 AzCopy のダウンロード方法と、ストレージ サービスに認証資格情報を与える方法については、[AzCopy の作業開始](storage-use-azcopy-v10.md)に関するページをご覧ください。
 
 > [!NOTE] 
-> この記事の例は、Azure Active Directory (Azure AD) を使用して認証資格情報を指定していることを前提にしています。
+> この記事の例では、Azure Active Directory (Azure AD) を使用して認証資格情報を指定していることを前提としています。
 >
 > SAS トークンを使用して BLOB データへのアクセスを承認する場合、各 AzCopy コマンドのリソース URL の先頭にそのトークンを追加できます。 (例: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`)。
 
@@ -113,9 +113,11 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 `--include-pattern` および `--exclude-pattern` オプションは BLOB 名にのみ適用され、パスには適用されません。  ディレクトリ ツリー内に存在するすべてのテキスト ファイル (BLOB) をコピーする場合は、`–recursive` オプションを使用してディレクトリ ツリー全体を取得した後、`–include-pattern` を使用し、`*.txt` を指定してすべてのテキスト ファイルを取得します。
 
-#### <a name="download-blobs-that-were-modified-after-a-date-and-time"></a>ある日付と時刻の後に変更された BLOB をダウンロードする 
+#### <a name="download-blobs-that-were-modified-before-or-after-a-date-and-time"></a>ある日付と時刻の前後に変更された BLOB をダウンロードする 
 
-[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-after` オプションと共に使用します。 日付と時刻を ISO-8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。 
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-before` または `--include-after` オプションと共に使用します。 日付と時刻を ISO-8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。 
+
+次の例では、指定した日付以降に変更されたファイルをダウンロードします。
 
 |    |     |
 |--------|-----------|
@@ -139,13 +141,18 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 次に、[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--list-of-versions` オプションと共に使用します。 バージョンの一覧を含むテキスト ファイルの場所を指定します (例: `D:\\list-of-versions.txt`)。  
 
+#### <a name="download-a-blob-snapshot"></a>BLOB のスナップショットをダウンロードする
+
+BLOB スナップショットの **DateTime** 値を参照することによって、[BLOB スナップショット](/azure/storage/blobs/snapshots-overview.md)をダウンロードできます。 
+
 |    |     |
 |--------|-----------|
-| **構文** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-directory-path>' --list-of-versions '<list-of-versions-file>'`|
-| **例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt' --list-of-versions 'D:\\list-of-versions.txt'` |
-| **例** (階層型名前空間) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt' --list-of-versions 'D:\\list-of-versions.txt'` |
+| **構文** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>?sharesnapshot=<DateTime-of-snapshot>' '<local-file-path>'` |
+| **例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |
+| **例** (階層型名前空間) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt?sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |
 
-ダウンロードしたファイルの名前はそれぞれ、バージョン ID から始まり、それに BLOB の名前が続きます。 
+> [!NOTE]
+> SAS トークンを使用して BLOB データへのアクセスを認可している場合は、SAS トークンの後にスナップショット **DateTime** を追加します。 (例: `'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z'`)。
 
 ## <a name="download-with-optional-flags"></a>オプションのフラグを使用してダウンロードする
 
@@ -161,7 +168,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 ## <a name="next-steps"></a>次のステップ
 
-他の例については、次の記事を参照してください。
+以下の記事にサンプルがあります。
 
 - [例:アップロード](storage-use-azcopy-blobs-upload.md)
 - [例:アカウント間でのコピー](storage-use-azcopy-blobs-copy.md)

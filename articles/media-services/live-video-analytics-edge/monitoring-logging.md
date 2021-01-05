@@ -3,12 +3,12 @@ title: 監視とログ記録 - Azure
 description: この記事では、Live Video Analytics on IoT Edge の監視とログ記録の概要について説明します。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: ef00517fc61ac532bdd99c1e887dfd93d56a8c4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ae455a4157cd649f610620e486323ac2c0a5744
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89567556"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401051"
 ---
 # <a name="monitoring-and-logging"></a>監視およびログ記録
 
@@ -21,7 +21,7 @@ ms.locfileid: "89567556"
 Live Video Analytics on IoT Edge では、次の分類に従ってイベントまたはテレメトリ データが出力されます。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="イベントの分類&quot;:::
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="イベントの分類":::
 
 * 操作: ユーザーによって実行されるアクションの一部として、または[メディア グラフ](media-graph-concept.md)の実行中に生成されるイベント。
    
@@ -32,16 +32,16 @@ Live Video Analytics on IoT Edge では、次の分類に従ってイベント�
       
       ```
       {
-        &quot;body&quot;: {
-          &quot;outputType&quot;: &quot;assetName&quot;,
-          &quot;outputLocation&quot;: &quot;sampleAssetFromEVR-LVAEdge-20200512T233309Z&quot;
+        "body": {
+          "outputType": "assetName",
+          "outputLocation": "sampleAssetFromEVR-LVAEdge-20200512T233309Z"
         },
-        &quot;applicationProperties&quot;: {
-          &quot;topic&quot;: &quot;/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>&quot;,
-          &quot;subject&quot;: &quot;/graphInstances/Sample-Graph-2/sinks/assetSink&quot;,
-          &quot;eventType&quot;: &quot;Microsoft.Media.Graph.Operational.RecordingStarted&quot;,
-          &quot;eventTime&quot;: &quot;2020-05-12T23:33:10.392Z&quot;,
-          &quot;dataVersion&quot;: &quot;1.0"
+        "applicationProperties": {
+          "topic": "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>",
+          "subject": "/graphInstances/Sample-Graph-2/sinks/assetSink",
+          "eventType": "Microsoft.Media.Graph.Operational.RecordingStarted",
+          "eventTime": "2020-05-12T23:33:10.392Z",
+          "dataVersion": "1.0"
         }
       }
       ```
@@ -223,6 +223,85 @@ subject プロパティを使用すると、汎用イベントをそれを生成
 
 イベント時間は ISO8601 文字列で記述され、イベントが発生した時刻です。
 
+### <a name="azure-monitor-collection-using-telegraf"></a>Telegraf を使用した Azure Monitor Collection
+
+これらのメトリックは Live Video Analytics on IoT Edge モジュールによって報告されます。  
+
+|メトリックの名前|Type|Label|説明|
+|-----------|----|-----|-----------|
+|lva_active_graph_instances|ゲージ|iothub、edge_device、module_name、graph_topology|トポロジあたりのアクティブなグラフの合計数。|
+|lva_received_bytes_total|カウンタ|iothub、edge_device、module_name、graph_topology、graph_instance、graph_node|ノードが受信した合計バイト数。 RTSP ソースでのみサポートされます|
+|lva_data_dropped_total|カウンタ|iothub、edge_device、module_name、graph_topology、graph_instance、graph_node、data_kind|ドロップされたデータ (イベント、メディアなど) のカウンター|
+
+> [!NOTE]
+> [Prometheus エンドポイント](https://prometheus.io/docs/practices/naming/)は、コンテナーのポート **9600** で公開されています。 IoT Edge モジュール "lvaEdge" で Live Video Analytics に名前を付けた場合、 http://lvaEdge:9600/metrics に GET 要求を送信することでメトリックにアクセスできるようになります。   
+
+IoT Edge モジュールでの Live Video Analytics からメトリックを収集できるようにするには、次の手順に従います。
+
+1. 開発用コンピューターにフォルダーを作成し、そのフォルダーに移動します
+
+1. そのフォルダーで、次の内容を持つ `telegraf.toml` ファイルを作成します
+    ```
+    [agent]
+        interval = "30s"
+        omit_hostname = true
+
+    [[inputs.prometheus]]
+      metric_version = 2
+      urls = ["http://edgeHub:9600/metrics", "http://edgeAgent:9600/metrics", "http://{LVA_EDGE_MODULE_NAME}:9600/metrics"]
+
+    [[outputs.azure_monitor]]
+      namespace_prefix = ""
+      region = "westus"
+      resource_id = "/subscriptions/{SUBSCRIPTON_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Devices/IotHubs/{IOT_HUB_NAME}"
+    ```
+    > [!IMPORTANT]
+    > 必ずコンテンツ ファイルで変数 (`{ }` でマーク) を置き換えてください
+
+1. そのフォルダーで、次の内容を持つ `.dockerfile` を作成します
+    ```
+        FROM telegraf:1.15.3-alpine
+        COPY telegraf.toml /etc/telegraf/telegraf.conf
+    ```
+
+1. 次に、docker CLI コマンドを使用して、**docker ファイルをビルド** し、イメージを Azure Container Registry に発行します。
+    1. [Docker イメージをプッシュおよびプル (Azure Container Registry)](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli) する方法を確認します。  Azure Container Registry (ACR) の詳細については、[こちら](https://docs.microsoft.com/azure/container-registry/)で確認できます。
+
+
+1. ACR へのプッシュが完了したら、配置マニフェスト ファイルに次のノードを追加します。
+    ```
+    "telegraf": 
+    {
+      "settings": 
+        {
+            "image": "{ACR_LINK_TO_YOUR_TELEGRAF_IMAGE}"
+        },
+      "type": "docker",
+      "version": "1.0",
+      "status": "running",
+      "restartPolicy": "always",
+      "env": 
+        {
+            "AZURE_TENANT_ID": { "value": "{YOUR_TENANT_ID}" },
+            "AZURE_CLIENT_ID": { "value": "{YOUR CLIENT_ID}" },
+            "AZURE_CLIENT_SECRET": { "value": "{YOUR_CLIENT_SECRET}" }
+        }
+    ``` 
+    > [!IMPORTANT]
+    > 必ずコンテンツ ファイルで変数 (`{ }` でマーク) を置き換えてください
+
+
+1. **認証**
+    1. Azure Monitor は、[サービス プリンシパルで認証](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication)できます。
+        1. Azure Monitor Telegraf プラグインは、[複数の認証方法](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication)を公開します。 サービス プリンシパル認証を使用するには、次の環境変数が設定されている必要があります。  
+            •   AZURE_TENANT_ID:認証するテナントを指定します。  
+            •   AZURE_CLIENT_ID:使用するアプリ クライアント ID を指定します。  
+            •   AZURE_CLIENT_SECRET:使用するアプリ シークレットを指定します。  
+    >[!TIP]
+    > サービス プリンシパルには、"**監視メトリック パブリッシャー**" ロールを指定できます。
+
+1. モジュールがデプロイされると、メトリックは Azure Monitor で、Prometheus によって出力された名前空間と一致するメトリック名を持つ 1 つの名前空間の下に表示されます。 
+    1. この場合、Azure portal で IoT Hub に移動し、左側のナビゲーション ウィンドウの **[メトリック]** リンクをクリックします。 ここでメトリックが表示されます。
 ## <a name="logging"></a>ログ記録
 
 他の IoT Edge モジュールと同様に、Edge デバイスで[コンテナーのログを調べる](../../iot-edge/troubleshoot.md#check-container-logs-for-issues)こともできます。 ログに書き込まれる情報は、[次のモジュール ツイン](module-twin-configuration-schema.md) プロパティによって制御できます。

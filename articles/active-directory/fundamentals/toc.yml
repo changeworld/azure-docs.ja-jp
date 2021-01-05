@@ -23,11 +23,33 @@
 - name: 概念
   expanded: true
   items:
-    - name: Security
+    - name: セキュリティ
       items:
+        - name: リソースへの外部アクセスをセキュリティで保護する
+          items:
+            - name: セキュリティで保護された外部アクセスの概要
+              href: secure-external-access-resources.md
+            - name: 1 セキュリティ体制を判別する
+              href: 1-secure-access-posture.md
+            - name: 2 現在の状態を確認する
+              href: 2-secure-access-current-state.md
+            - name: 3 セキュリティ プランを作成する
+              href: 3-secure-access-plan.md
+            - name: 4 グループを使用してアクセスをセキュリティで保護する
+              href: 4-secure-access-groups.md
+            - name: 5 B2B コラボレーションを使用してアクセスをセキュリティで保護する
+              href: 5-secure-access-b2b.md
+            - name: 6 エンタイトルメント管理を使用してアクセスをセキュリティで保護する
+              href: 6-secure-access-entitlement-managment.md
+            - name: 7 条件付きアクセスを使用してアクセスをセキュリティで保護する
+              href: 7-secure-access-conditional-access.md
+            - name: 8 秘密度ラベルを使用してアクセスをセキュリティで保護する
+              href: 8-secure-access-sensitivity-labels.md
+            - name: 9 Teams、SharePoint、OneDrive へのアクセスをセキュリティで保護する
+              href: 9-secure-access-teams-sharepoint.md
         - name: MFA の有効化
           href: concept-fundamentals-mfa-get-started.md
-        - name: セキュリティの既定値
+        - name: セキュリティの既定値群
           href: concept-fundamentals-security-defaults.md
         - name: レガシ認証をブロックする
           href: concept-fundamentals-block-legacy-authentication.md

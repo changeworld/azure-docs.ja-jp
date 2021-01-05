@@ -94,6 +94,8 @@
       href: backup-architecture.md
     - name: ガイダンスとベスト プラクティス
       href: guidance-best-practices.md
+    - name: 用語集
+      href: azure-backup-glossary.md
 - name: ハウツー ガイド
   items:
     - name: コンテナー
@@ -164,6 +166,8 @@
               href: backup-azure-manage-vms.md
             - name: 復旧ポイントの管理
               href: manage-recovery-points.md
+            - name: Azure CLI を使用したバックアップ ポリシーの変更
+              href: modify-vm-policy-cli.md
     - name: Azure VM 上の SQL Server データベースのバックアップ
       items:
         - name: 概要

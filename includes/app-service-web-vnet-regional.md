@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 963f0698b921caa413c61059ad69284c41b4f265
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 57b2955f8cec059cd20d353eba31dc39ad992d50
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999445"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506339"
 ---
 リージョン VNet 統合を使用すると、アプリは次のものにアクセスできるようになります。
 
@@ -96,7 +96,17 @@ VNet 統合は、専用サブネットの使用に依存します。  サブネ�
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS Private Zones 
 
-アプリでは、VNet に統合された後、VNet が構成されているのと同じ DNS サーバーが使用されます。 アプリの設定 WEBSITE_DNS_SERVER を目的の DNS サーバーのアドレスで構成することで、アプリのこの動作をオーバーライドできます。 VNet に構成されたカスタム DNS サーバーがあるが、アプリで Azure DNS プライベート ゾーンを使用する場合は、WEBSITE_DNS_SERVER に値 168.63.129.16 を設定する必要があります。 
+アプリでは、VNet に統合された後、VNet が構成されているのと同じ DNS サーバーが使用されます。 既定では、アプリは Azure DNS Private Zones で動作しません。 Azure DNS Private Zones で動作させるには、次のアプリ設定を追加する必要があります。
+
+
+1. 値が 168.63.129.16 の WEBSITE_DNS_SERVER
+1. 値が 1 の WEBSITE_VNET_ROUTE_ALL
+
+
+これらの設定では、アプリで Azure DNS Private Zones を使用できるようにするだけでなく、アプリからのすべての送信呼び出しを VNet に送信します。   これらの設定は、アプリから VNet へのすべての送信呼び出しを送信します。 さらに、ワーカー レベルでプライベート DNS ゾーンをクエリすることによって、アプリが Azure DNS を使用できるようにします。 この機能は、実行中のアプリがプライベート DNS ゾーンにアクセスしているときに使用されます。
+
+> [!NOTE]
+>プライベート DNS ゾーンを使用して Web アプリにカスタム ドメインを追加しようとしても、VNET 統合では実行できません。 カスタム ドメインの検証は、ワーカー レベルではなく、コントローラー レベルで実行されます。これにより、DNS レコードが表示されなくなります。 プライベート DNS ゾーンからカスタム ドメインを使用するには、Application Gateway または ILB App Service Environment を使用して検証をバイパスする必要があります。
 
 ### <a name="private-endpoints"></a>プライベート エンドポイント
 

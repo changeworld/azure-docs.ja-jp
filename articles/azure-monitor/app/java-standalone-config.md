@@ -1,19 +1,19 @@
 ---
-title: 構成オプション - Azure Monitor Application Insights Java
-description: Azure Monitor Application Insights Java の構成オプション
+title: 構成オプション - Azure Monitor Application Insights for Java
+description: Azure Monitor Application Insights for Java を構成する方法
 ms.topic: conceptual
 ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: e9240253b385a0b53868c5a8a79c751c2f7c09c0
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 73e3d8834fcb41f863fe2e3d686b812bb6174e70
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601086"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507661"
 ---
-# <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Azure Monitor Application Insights Java の構成オプション
+# <a name="configuration-options---azure-monitor-application-insights-for-java"></a>構成オプション - Azure Monitor Application Insights for Java
 
 > [!WARNING]
 > **3.0 Preview からアップグレードする場合**
@@ -184,9 +184,9 @@ Application Insights Java 3.0 は、既定では構成ファイルが `applicati
 
 Log4j、Logback、java.util.logging は自動的にインストルメント化され、これらのログ記録フレームワークを介して実行されるログは自動収集されます。
 
-既定では、`INFO` レベル以上でログ記録が実行された場合にのみ、ログが収集されます。
+ログ記録は、最初にログ記録フレームワークの構成されたしきい値を満たし、次に Application Insights の構成されたしきい値も満たす場合にのみキャプチャされます。
 
-この収集レベルを変更する場合は、次のようにします。
+既定の Application Insights のしきい値は `INFO` です。 このレベルを変更する場合:
 
 ```json
 {

@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bdfb1ca21860f1dc338f85a82caf643f9f7be6d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 31bdfc7e3eca2a2678b75b80973a1680448737d1
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973203"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507678"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory パススルー認証:クイック スタート
 
@@ -72,7 +72,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
      | **8080** (省略可能) | ポート 443 が使用できない場合、認証エージェントは、ポート 8080 経由で 10 分ごとにその状態を報告します。 この状態は Azure AD ポータルに表示されます。 ポート 8080 は、ユーザー サインインには _使用されません_。 |
      
      ご利用のファイアウォールが送信元ユーザーに応じて規則を適用している場合は、ネットワーク サービスとして実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。
-   - ファイアウォールまたはプロキシで DNS ホワイトリストが許可されている場合は、 **\*.msappproxy.net** と **\*.servicebus.windows.net** への接続を追加します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。
+   - ファイアウォールまたはプロキシで DNS エントリを許可リストに追加できる場合は、 **\*.msappproxy.net** および **\*.servicebus.windows.net** への接続を追加します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。
    - 認証エージェントは初回の登録のために **login.windows.net** と **login.microsoftonline.com** にアクセスする必要があるため、 これらの URL にもファイアウォールを開きます。
     - 証明書の検証の場合は、URL (**crl3.digicert.com:80**、**crl4.digicert.com:80**、**ocsp.digicert.com:80**、**www\.d-trust.net:80**、**root-c3-ca2-2009.ocsp.d-trust.net:80**、**crl.microsoft.com:80**、**oneocsp.microsoft.com:80**、**ocsp.msocsp.com:80**) のブロックが解除されます。 他の Microsoft 製品でもこれらの URL を証明書の検証に使用しているので、URL のブロックを既に解除している可能性もあります。
 

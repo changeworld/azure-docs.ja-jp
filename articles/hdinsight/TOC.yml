@@ -437,7 +437,7 @@
                   href: ./spark/apache-spark-run-machine-learning-automl.md
         - name: トラブルシューティング
           items:
-            - name: Jupyter ノートブックを作成できない
+            - name: Jupyter Notebook を作成できない
               href: ./spark/troubleshoot-jupyter-notebook-convert.md
             - name: OutOfMemoryError 例外
               href: ./spark/apache-spark-troubleshoot-outofmemory.md

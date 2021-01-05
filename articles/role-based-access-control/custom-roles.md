@@ -2,25 +2,19 @@
 title: Azure カスタム ロール - Azure RBAC
 description: Azure リソースの詳細なアクセス管理を行うために、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して Azure カスタム ロールを作成する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: e4206ea9-52c3-47ee-af29-f6eef7566fa5
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2020
+ms.date: 12/11/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd737a22a37d6edc47c2769a470af00537d720eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eddbd9cb695f3ff7eabd9f2549d0a868d8826eb9
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87124155"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369125"
 ---
 # <a name="azure-custom-roles"></a>Azure カスタム ロール
 
@@ -32,6 +26,52 @@ ms.locfileid: "87124155"
 [Azure の組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 組み込みロールと同様に、カスタム ロールは、ユーザー、グループ、サービス プリンシパルに対して、管理グループ、サブスクリプション、およびリソース グループのスコープで割り当てることができます。
 
 カスタム ロールは、同じ Azure AD ディレクトリを信頼するサブスクリプション間で共有できます。 カスタム ロールの数は、ディレクトリあたり **5,000** 個という制限があります (Azure Germany と Azure China 21Vianet の場合、制限は 2,000 カスタム ロールです)。カスタム ロールは、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用して作成できます。
+
+## <a name="steps-to-create-a-custom-role"></a>カスタム ロールの作成手順
+
+カスタム ロールを作成する基本的な手順について説明します。
+
+1. 必要なアクセス許可を決定する。
+
+    カスタム ロールを作成する場合、アクセス許可を定義するために使用可能な操作を把握しておく必要があります。 通常は、まず、既存の組み込みロールを使用し、必要に応じてそれを変更します。 操作を[ロール定義](role-definitions.md)の `Actions` または `NotActions` プロパティに追加します。 データ操作をする場合は、それらを `DataActions` または `NotDataActions` プロパティに追加します。
+
+    詳細については、次のセクション「[必要なアクセス許可を特定する方法](#how-to-determine-the-permissions-you-need)」をご覧ください。
+
+1. カスタム ロールを作成する方法を決定する。
+
+    カスタム ロールは、[Azure portal](custom-roles-portal.md)、[Azure PowerShell](custom-roles-powershell.md)、[Azure CLI](custom-roles-cli.md)、または [REST API](custom-roles-rest.md) を使用して作成できます。
+
+1. カスタム ロールを作成する。
+
+    最も簡単な方法は、Azure portal を使用することです。 Azure portal を使用してカスタム ロールを作成する手順については、「[Azure portal を使用して Azure カスタム ロールを作成または更新する](custom-roles-portal.md)」を参照してください。
+
+1. カスタム ロールをテストする。
+
+    カスタム ロールを作成したら、それをテストして期待どおりに動作することを確認する必要があります。 後で調整する必要がある場合は、カスタム ロールを更新できます。
+
+## <a name="how-to-determine-the-permissions-you-need"></a>必要なアクセス許可を特定する方法
+
+Azure には、カスタム ロールに含めることができる何千ものアクセス許可があります。 カスタム ロールに追加するアクセス許可を決定するのに役立ついくつかの方法を示します。
+
+- 既存の[組み込みロール](built-in-roles.md)を確認します。
+
+    既存のロールを変更したり、複数のロールで使用されるアクセス許可を結合したりすることができます。
+
+- アクセス権を付与する Azure サービスを一覧表示します。
+
+- [Azure サービスにマップされるリソース プロバイダー](../azure-resource-manager/management/azure-services-resource-providers.md)を決定します。
+
+    Azure サービスでは、[リソース プロバイダー](../azure-resource-manager/management/overview.md)によって機能とアクセス許可が公開されます。 たとえば、Microsoft.Compute リソース プロバイダーは、仮想マシンのリソースを提供し、Microsoft.Billing リソース プロバイダーはサブスクリプションと課金のリソースを提供します。 リソース プロバイダーを把握することで、カスタム ロールに必要なアクセス許可を絞り込み特定できます。
+
+    Azure portal を使用してカスタム ロールを作成する場合は、キーワードを検索してリソース プロバイダーを特定することもできます。 この検索機能については、「[Azure portal を使用して Azure カスタム ロールを作成または更新する](custom-roles-portal.md#step-4-permissions)」で説明しています。
+
+    ![リソース プロバイダーが含まれた [アクセス許可の追加] ペイン](./media/custom-roles-portal/add-permissions-provider.png)
+
+- [使用可能なアクセス許可](resource-provider-operations.md)を検索して、含めるアクセス許可を見つけます。
+
+    Azure portal を使用してカスタム ロールを作成する場合は、キーワードを使用してアクセス許可を検索できます。 たとえば、"*仮想マシン*" や "*請求*" のアクセス許可を検索できます。 すべてのアクセス許可を CSV ファイルとしてダウンロードし、このファイルを検索することもできます。 この検索機能については、「[Azure portal を使用して Azure カスタム ロールを作成または更新する](custom-roles-portal.md#step-4-permissions)」で説明しています。
+
+    ![[アクセス許可の追加] の一覧](./media/custom-roles-portal/add-permissions-list.png)
 
 ## <a name="custom-role-example"></a>カスタム ロールの例
 
@@ -150,26 +190,6 @@ Microsoft.CostManagement/exports/*
 ```
 Microsoft.CostManagement/*/query/*
 ```
-
-## <a name="steps-to-create-a-custom-role"></a>カスタム ロールの作成手順
-
-カスタム ロールを作成するには、次の基本的な手順に従う必要があります。
-
-1. カスタム ロールを作成する方法を決定する。
-
-    カスタム ロールは、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用して作成できます。
-
-1. 必要なアクセス許可を決定する。
-
-    カスタム ロールを作成する場合、アクセス許可を定義するために使用可能な操作を把握しておく必要があります。 操作の一覧を確認するには、「[Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)」を参照してください。 操作を[ロール定義](role-definitions.md)の `Actions` または `NotActions` プロパティに追加します。 データ操作をする場合は、それらを `DataActions` または `NotDataActions` プロパティに追加します。
-
-1. カスタム ロールを作成する。
-
-    通常は、まず、既存の組み込みロールを使用し、必要に応じてそれを変更します。 最も簡単な方法は、Azure portal を使用することです。 Azure portal を使用してカスタム ロールを作成する手順については、「[Azure portal を使用して Azure カスタム ロールを作成または更新する](custom-roles-portal.md)」を参照してください。
-
-1. カスタム ロールをテストする。
-
-    カスタム ロールを作成したら、それをテストして期待どおりに動作することを確認する必要があります。 後で調整する必要がある場合は、カスタム ロールを更新できます。
 
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>カスタム ロールを作成、削除、更新、または表示できるユーザー
 

@@ -11,52 +11,61 @@ ms.topic: how-to
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/15/2020
+ms.date: 12/15/2020
 ms.author: memildin
-ms.openlocfilehash: 75ca0438336825bf8d4bbdc6e08eca109f430fde
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3f319c35631f8c85cab4613df0f1c14f98356caa
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785920"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563349"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Azure Security Center でのセキュリティ アラートの管理と対応
 
-このトピックでは、リソースを保護するために、受信したアラートを表示および処理する方法について説明します。 
+> [!TIP]
+> このページの情報は、セキュリティ アラート ページの上部にあるバナーから使用できる新しいアラート エクスペリエンス (プレビュー) について説明します。 
+>
+> :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="新しいアラート エクスペリエンス (プレビュー) へのリンクが表示されたバナー":::
 
-* さまざまな種類のアラートについては、「[セキュリティ アラートの種類](alerts-reference.md)」をご覧ください。
-* Security Center によってアラートが生成される方法の概要については、「[Azure Security Center での脅威の検出と対応](security-center-alerts-overview.md)」をご覧ください。
+このトピックでは、Security Center のアラートを表示および処理し、リソースを保護する方法について説明します。
 
-> [!NOTE]
-> 高度な検出を有効にするには、Azure Defender を有効にします。 無料試用版が提供されています。 アップグレードするには、 [[セキュリティ ポリシー]](tutorial-security-policy.md)の [価格レベル] を選択してください。 詳細については、「[Azure Security Center pricing (Azure Security Center の料金)](security-center-pricing.md)」を参照してください。
+セキュリティ アラートをトリガーする高度な検出は、Azure Defender でのみ使用できます。 無料試用版が提供されています。 アップグレードするには、「[Azure Defender を有効にする](security-center-pricing.md#enable-azure-defender)」をご覧ください。
 
 ## <a name="what-are-security-alerts"></a>セキュリティの警告とは何か
 Security Center は、真の脅威を検出し、偽陽性を減らすために、Azure のリソースやネットワークのほか、接続されているパートナー ソリューション (ファイアウォールやエンドポイント保護ソリューションなど) から、自動的にログ データを収集、分析、統合します。 Security Center には、優先順位の付いたセキュリティの警告の一覧が表示されます。また、すぐに問題を調査する必要がある情報や、攻撃を受けたものを修復する方法についての推奨事項も表示されます。
 
-> [!NOTE]
-> Security Center 検出機能の動作について詳しくは、「[Azure Security Center での脅威の検出と対応](security-center-alerts-overview.md#detect-threats)」をご覧ください。
+さまざまな種類のアラートについては、「[セキュリティ アラート - リファレンス ガイド](alerts-reference.md)」をご覧ください。
+
+Security Center によってアラートが生成される方法の概要については、「[Azure Security Center での脅威の検出と対応](security-center-alerts-overview.md)」をご覧ください。
+
 
 ## <a name="manage-your-security-alerts"></a>セキュリティ アラートの管理
 
-1. Security Center ダッシュボードの **[脅威の防止]** タイルを参照して、アラートの概要を確認します。
+1. Security Center の概要ページの上部にある **[セキュリティ アラート]** タイルまたはサイドバーのリンクを選択します。
 
-    ![Security alerts tile in Security Center](./media/security-center-managing-and-responding-alerts/security-center-dashboard-alert.png)
+    :::image type="content" source="media/security-center-managing-and-responding-alerts/overview-page-alerts-links.png" alt-text="Azure Security Center の概要ページからの [セキュリティ アラート] ページの表示":::
 
-1. アラートの詳細を表示するには、タイルをクリックします。
+    [セキュリティ アラート] ページが開きます。
 
-   ![Security Center のセキュリティ アラート](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
+    :::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure Security Center のセキュリティ アラートの一覧":::
 
-1. 表示されるアラートをフィルター処理するには、 **[フィルター]** をクリックし、開いた **[フィルター]** ブレードから、適用するフィルター オプションを選択します。 選択したフィルターに従って一覧が更新されます。 フィルター処理はとても有益な機能です。 たとえば、システム内の潜在的な違反を調査するために、過去 24 時間以内に発生したセキュリティの警告を確認することができます。
+1. アラートの一覧をフィルター処理するには、関連するフィルターを選択します。 必要に応じて、 **[フィルターの追加]** オプションを使用して、さらにフィルターを追加することもできます。
 
-    ![Filtering alerts in Security Center](./media/security-center-managing-and-responding-alerts/security-center-filter-alerts.png)
+    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-small.png" alt-text="アラート ビューへのフィルターの追加" lightbox="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-large.png":::
+
+    この一覧は、選択したフィルター オプションに応じて更新されます。 フィルター処理はとても有益な機能です。 たとえば、システム内の潜在的な違反を調査するために、過去 24 時間以内に発生したセキュリティの警告を確認することができます。
+
 
 ## <a name="respond-to-security-alerts"></a>セキュリティの警告への対応
 
-1. **[セキュリティのアラート]** の一覧で、セキュリティのアラートをクリックします。 関連するリソースと、攻撃を修復するために実行する必要のある手順が表示されます。
+1. **[セキュリティ アラート]** リストから、アラートを選択します。 作業ウィンドウが開き、アラートとその影響を受けたすべてのリソースの説明が表示されます。 
 
-    ![セキュリティの警告への対応](./media/security-center-managing-and-responding-alerts/security-center-alert.png)
+    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-details-pane.png" alt-text="セキュリティ アラートのミニ詳細ビュー":::
 
-1. この情報を確認した後、攻撃を受けたリソースをクリックします。
+    > [!TIP]
+    > この作業ウィンドウを開いた状態で、キーボードの上矢印と下矢印を使用して、アラートの一覧をすばやく確認できます。
+
+1. 詳細については、 **[すべての詳細を表示]** を選択します。
 
     セキュリティ アラート ページの左側のウィンドウには、セキュリティ アラートに関する概要情報 (タイトル、重要度、状態、アクティビティ時間、疑わしいアクティビティの説明、影響を受けるリソース) が表示されます。 影響を受けるリソースと共に、リソースに関連する Azure タグがあります。 これらを使用して、アラートを調査するときにリソースの組織コンテキストを推測します。
 
@@ -81,3 +90,4 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 
 - [アラートの抑制ルールを構成する](alerts-suppression-rules.md)
 - [Security Center のトリガーへの応答を自動化する](workflow-automation.md)
+- [セキュリティ アラート - リファレンス ガイド](alerts-reference.md)

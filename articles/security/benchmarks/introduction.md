@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f3b492534bedde50d2413b88fa38cd6325ed5df7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 32aa64a9343a8e3c62af4322b3320b28ce805064
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328260"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369193"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Azure セキュリティ ベンチマークの概要
 
 Azure では新しいサービスや機能が毎日リリースされており、開発者はこれらのサービス上に構築される新しいクラウド アプリケーションを迅速に公開しており、攻撃者は常に、構成に誤りのあるリソースを悪用する新しい方法を探しています。 クラウドは急速に進展し、開発者は迅速に動き、攻撃者は常に活動しています。 どのようにして遅れずについていき、クラウド デプロイがセキュリティで保護されていることを確認すればよいでしょう。 クラウド システムのセキュリティ プラクティスは、オンプレミス システムの場合とどのように異なっているでしょう。 多数の独立した開発チーム間の整合性をどのようにして監視すればよいでしょう。
 
-Microsoft では、*セキュリティ ベンチマーク*の使用がクラウド デプロイの迅速なセキュリティ保護に役立つことがわかっています。 クラウド サービス プロバイダーからのベンチマークの推奨事項は、環境内で特定のセキュリティ構成設定を選択するための開始点となり、組織のリスクの迅速な軽減に役立ちます。
+Microsoft では、*セキュリティ ベンチマーク* の使用がクラウド デプロイの迅速なセキュリティ保護に役立つことがわかっています。 クラウド サービス プロバイダーからのベンチマークの推奨事項は、環境内で特定のセキュリティ構成設定を選択するための開始点となり、組織のリスクの迅速な軽減に役立ちます。
 
 Azure セキュリティ ベンチマークには、Azure で使用するサービスをセキュリティで保護するために使用できる、影響力の高いセキュリティに関する推奨事項のコレクションが含まれています。
 
@@ -27,9 +27,9 @@ Azure セキュリティ ベンチマークには、Azure で使用するサー�
 - **サービス ベースライン**: これらは、個々の Azure サービスにコントロールを適用し、そのサービスのセキュリティ構成に関する推奨事項を提供します。
 
 ## <a name="implement-the-azure-security-benchmark"></a>Azure セキュリティ ベンチマークを実装する
-- 企業のコントロールおよびサービス固有のベースラインに関する[ドキュメント](overview.md)を参照して、コントロール フレームワークと、それを CIS (Controls v7.1) や NIST (SP800-53) フレームワークなどのガイダンスにマップする方法を計画することにより、Azure セキュリティ ベンチマークの実装を**計画します**。
-- Azure Security Center の[規制へのコンプライアンス ダッシュボード](../../security-center/security-center-compliance-dashboard.md)を使用して Azure セキュリティ ベンチマークの状態 (および他のコントロール セット) とのコンプライアンスを**監視します**。
-- Azure Blueprints と Azure Policy を使用して、セキュリティ保護された構成を自動化し、Azure セキュリティ ベンチマーク (および組織での他の要件) とのコンプライアンスを強制するための**ガードレールを確立します**。
+- 企業のコントロールおよびサービス固有のベースラインに関する [ドキュメント](overview.md)を参照して、コントロール フレームワークと、それを CIS (Controls v7.1) や NIST (SP 800-53) フレームワークなどのガイダンスにマップする方法を計画することにより、Azure セキュリティ ベンチマークの実装を **計画します**。
+- Azure Security Center の [規制へのコンプライアンス ダッシュボード](../../security-center/security-center-compliance-dashboard.md)を使用して Azure セキュリティ ベンチマークの状態 (および他のコントロール セット) とのコンプライアンスを **監視します**。
+- Azure Blueprints と Azure Policy を使用して、セキュリティ保護された構成を自動化し、Azure セキュリティ ベンチマーク (および組織での他の要件) とのコンプライアンスを強制するための **ガードレールを確立します**。
  
 Azure セキュリティ ベンチマーク v2 は [Microsoft セキュリティのベスト プラクティス](/security/compass/microsoft-security-compass-introduction) (旧称 Azure Security Compass) に従っており、Azure セキュリティ ベンチマークには、Microsoft の Azure のセキュリティに関する推奨事項を表示する単一の統合ビューが備わっています。
 

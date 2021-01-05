@@ -1,200 +1,33 @@
 ---
-title: Windows Virtual Desktop の MSIX アプリのアタッチ - Azure
-description: Windows Virtual Desktop の MSIX アプリのアタッチを設定する方法。
+title: Windows Virtual Desktop の MSIX アプリのアタッチ PowerShell スクリプトを構成する - Azure
+description: Windows Virtual Desktop の MSIX アプリのアタッチ用の PowerShell スクリプトを作成する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3b02be8f35ff33f758aebe03c89287c51c9ffef7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: f625b7dd68d4b5a5e1af68aeb53dac453ff8cbfd
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816323"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400830"
 ---
-# <a name="set-up-msix-app-attach"></a>MSIX アプリのアタッチを設定する
+# <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>MSIX アプリのアタッチ用の PowerShell スクリプトを作成する (プレビュー)
 
 > [!IMPORTANT]
 > 現在、MSIX アプリのアタッチはパブリック プレビュー段階にあります。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-このトピックでは、Windows Virtual Desktop 環境で MSIX アプリのアタッチを設定する方法について説明します。
+このトピックでは、MSIX アプリのアタッチ用の PowerShell スクリプトを設定する方法について説明します。
 
-## <a name="requirements"></a>必要条件
-
-開始する前に、MSIX アプリのアタッチを構成するために必要な項目を示します。
-
-- Windows Insider ポータルにアクセスして、MSIX アプリのアタッチ API をサポートする Windows 10 のバージョンを取得する。
-- 機能する Windows Virtual Desktop のデプロイ。 Windows Virtual Desktop (classic) のデプロイ方法については、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。 Azure Resource Manager の統合を使用して Windows Virtual Desktop をデプロイする方法については、「[Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
-- MSIX パッケージ化ツール。
-- MSIX パッケージが格納される Windows Virtual Desktop デプロイ内のネットワーク共有。
-
-## <a name="get-the-os-image"></a>OS ディスク名を取得する
-
-まず、OS イメージを取得する必要があります。 OS イメージは、Azure portal から取得できます。 ただし、Windows Insider プログラムのメンバーである場合は、代わりに Windows Insider ポータルを使用するオプションがあります。
-
-### <a name="get-the-os-image-from-the-azure-portal"></a>Azure portal から OS イメージを取得する
-
-Azure portal から OS イメージを取得するには、次のようにします。
-
-1. [Azure portal](https://portal.azure.com) を開き、サインインします。
-
-2. **[仮想マシンの作成]** に移動します。
-
-3. **[基本]** タブで、 **[Windows 10 enterprise multi-session, version 2004]** を選択します。
-
-4. 残りの手順に従って、仮想マシンの作成を完了します。
-
-     >[!NOTE]
-     >この VM を使用して、MSIX アプリのアタッチを直接テストできます。 詳細については、「[MSIX 用の VHD または VHDX パッケージを生成する](#generate-a-vhd-or-vhdx-package-for-msix)」に進んでください。 それ以外の場合は、このセクションを読み続けてください。
-
-### <a name="get-the-os-image-from-the-windows-insider-portal"></a>Windows Insider ポータルから OS イメージを取得する
-
-Windows Insider ポータルから OS イメージを取得するには、次のようにします。
-
-1. [Windows Insider ポータル](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0)を開き、サインインします。
-
-     >[!NOTE]
-     >Windows Insider ポータルにアクセスするには、Windows Insider Program のメンバーである必要があります。 Windows Insider Program の詳細については、[Windows Insider のドキュメント](/windows-insider/at-home/)を参照してください。
-
-2. **[エディションの選択]** セクションまで下にスクロールし、 **[Windows 10 Insider Preview Enterprise (FAST) – ビルド 19041]** 以降のビルドを選択します。
-
-3. **[確認]** を選択し、使用する言語を選択してから、 **[確認]** をもう一度選択します。
-
-     >[!NOTE]
-     >現時点では、この機能でテストされた言語は英語のみです。 他の言語は、選択はできますが、意図したとおりに表示されない場合があります。
-
-4. ダウンロード リンクが生成されたら、 **[64 ビットのダウンロード]** を選択し、ローカル ハード ディスクに保存します。
-
-## <a name="prepare-the-vhd-image-for-azure"></a>Azure の VHD イメージを準備する
-
-次に、マスター VHD イメージを作成する必要があります。 マスター VHD イメージをまだ作成していない場合は、「[マスター VHD イメージを準備してカスタマイズする](set-up-customize-master-image.md)」に進んで、記載されている手順に従ってください。
-
-マスター VHD イメージを作成した後は、MSIX アプリのアタッチ アプリケーションの自動更新を無効にする必要があります。 自動更新を無効にするには、管理者特権でのコマンド プロンプトで次のコマンドを実行する必要があります。
-
-```cmd
-rem Disable Store auto update:
-
-reg add HKLM\Software\Policies\Microsoft\WindowsStore /v AutoDownload /t REG_DWORD /d 0 /f
-Schtasks /Change /Tn "\Microsoft\Windows\WindowsUpdate\Automatic app update" /Disable
-Schtasks /Change /Tn "\Microsoft\Windows\WindowsUpdate\Scheduled Start" /Disable
-
-rem Disable Content Delivery auto download apps that they want to promote to users:
-
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v PreInstalledAppsEnabled /t REG_DWORD /d 0 /f
-
-reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Debug /v ContentDeliveryAllowedOverride /t REG_DWORD /d 0x2 /f
-
-rem Disable Windows Update:
-
-sc config wuauserv start=disabled
-```
-
-自動更新を無効にしたら、後で Mount-VHD コマンドを使用したステージングや Dismount-VHD を使用したステージング解除を行うため、Hyper-V を有効にする必要があります。
-
-```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-```
->[!NOTE]
->この変更には、仮想マシンの再起動が必要です。
-
-次に、Azure 用の VM VHD を準備し、結果の VHD ディスクを Azure にアップロードします。 詳細については、「[マスター VHD イメージを準備してカスタマイズする](set-up-customize-master-image.md)」を参照してください。
-
-VHD を Azure にアップロードしたら、チュートリアル「[Azure Marketplace を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」の手順に従って、この新しいイメージに基づくホスト プールを作成します。
-
-## <a name="prepare-the-application-for-msix-app-attach"></a>MSIX アプリのアタッチ用のアプリケーションを準備する
-
-既に MSIX パッケージがある場合は、「[Windows Virtual Desktop インフラストラクチャの構成](#configure-windows-virtual-desktop-infrastructure)」に進んでください。 レガシ アプリケーションをテストする場合は、「[VM 上でデスクトップ インストーラーからの MSIX パッケージを作成する](/windows/msix/packaging-tool/create-app-package-msi-vm/)」の手順に従って、レガシ アプリケーションを MSIX パッケージに変換します。
-
-## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>MSIX 用の VHD または VHDX パッケージを生成する
-
-パッケージは、パフォーマンスを最適化するために VHD または VHDX 形式です。 MSIX が正常に機能するには、VHD または VHDX パッケージが必要です。
-
-MSIX 用の VHD または VHDX パッケージを生成するには、次の手順に従います。
-
-1. [msixmgr ツール](https://aka.ms/msixmgr)をダウンロードし、.zip フォルダーをセッション ホスト VM 内のフォルダーに保存します。
-
-2. msixmgr ツールの .zip フォルダーを解凍します。
-
-3. msixmgr ツールを解凍したフォルダーに、ソース MSIX パッケージを配置します。
-
-4. PowerShell で次のコマンドレットを実行して、VHD を作成します。
-
-    ```powershell
-    New-VHD -SizeBytes <size>MB -Path c:\temp\<name>.vhd -Dynamic -Confirm:$false
-    ```
-
-    >[!NOTE]
-    >VHD のサイズが展開された MSIX.* を保持するのに十分な大きさであることを確認します。
-
-5. 次のコマンドレットを実行して、新しく作成した VHD をマウントします。
-
-    ```powershell
-    $vhdObject = Mount-VHD c:\temp\<name>.vhd -Passthru
-    ```
-
-6. 次のコマンドレットを実行して、VHD を初期化します。
-
-    ```powershell
-    $disk = Initialize-Disk -Passthru -Number $vhdObject.Number
-    ```
-
-7. 次のコマンドレットを実行して、新しいパーティションを作成します。
-
-    ```powershell
-    $partition = New-Partition -AssignDriveLetter -UseMaximumSize -DiskNumber $disk.Number
-    ```
-
-8. 次のコマンドレットを実行して、パーティションをフォーマットします。
-
-    ```powershell
-    Format-Volume -FileSystem NTFS -Confirm:$false -DriveLetter $partition.DriveLetter -Force
-    ```
-
-9. マウントされた VHD に親フォルダーを作成します。 MSIX アプリのアタッチには親フォルダーが必要であるため、この手順は必須です。 親フォルダーには好きな名前を付けることができます。
-
-### <a name="expand-msix"></a>MSIX を展開する
-
-その後、MSIX イメージをアンパックして "展開" する必要があります。 MSIX イメージをアンパックするには、次のようにします。
-
-1. 管理者としてコマンドプロンプトを開き、msixmgr ツールをダウンロードして解凍したフォルダーに移動します。
-
-2. 次のコマンドレットを実行して、前のセクションで作成およびマウントした VHD に MSIX をアンパックします。
-
-    ```powershell
-    msixmgr.exe -Unpack -packagePath <package>.msix -destination "f:\<name of folder you created earlier>" -applyacls
-    ```
-
-    アンパックが完了すると、次のメッセージが表示されます。
-
-    `Successfully unpacked and applied ACLs for package: <package name>.msix`
-
-    >[!NOTE]
-    > ネットワーク内、またはインターネットに接続されていないデバイス上のビジネス向け (または教育機関向け) Microsoft Store のパッケージを使用する場合、アプリを正常に実行するには、Store からパッケージ ライセンスを取得してインストールする必要があります。 「[パッケージをオフラインで使用する](#use-packages-offline)」を参照してください。
-
-3. マウントされている VHD に移動し、アプリ フォルダーを開いて、パッケージ コンテンツが存在することを確認します。
-
-4. VHD のマウントを解除します。
-
-## <a name="configure-windows-virtual-desktop-infrastructure"></a>Windows Virtual Desktop インフラストラクチャの構成
-
-仕様により、VHD は読み取り専用モードでアタッチされているため、1 つの MSIX 展開パッケージ (前のセクションで作成した VHD) を複数のセッション ホスト VM 間で共有できます。
-
-開始する前に、ネットワーク共有が次の要件を満たしていることを確認してください。
-
-- 共有は SMB と互換性があります。
-- セッション ホスト プールの一部である VM には、共有に対する NTFS アクセス許可があります。
-
-### <a name="set-up-an-msix-app-attach-share"></a>MSIX アプリのアタッチの共有を設定する
-
-Windows Virtual Desktop 環境で、ネットワーク共有を作成し、パッケージをそこに移動します。
-
->[!NOTE]
-> MSIX ネットワーク共有を作成する場合のベスト プラクティスは、NTFS 読み取り専用アクセス許可を使用してネットワーク共有を設定することです。
+>[!IMPORTANT]
+>作業を開始する前に、必ず[こちらのフォーム](https://aka.ms/enablemsixappattach)に記入して送信し、サブスクリプションで MSIX アプリのアタッチを有効にしてください。 承認された要求がない場合、MSIX アプリのアタッチは機能しません。 要求の承認には、営業日に最大で 24 時間かかる可能性があります。 要求が受諾されて完了すると、電子メールが届きます。
 
 ## <a name="install-certificates"></a>証明書をインストールする
+
+MSIX アプリのアタッチ パッケージからのアプリをホストするホスト プールのすべてのセッション ホストに証明書をインストールする必要があります。
 
 アプリが、公的に信頼されていない証明書、または自己署名された証明書を使用している場合は、次のようにインストールします。
 
@@ -243,7 +76,7 @@ PowerShell スクリプトを更新する前に、VHD にボリュームのボ�
     Possible values for VolumeName along with current mount points are:
 
     \\?\Volume{a12b3456-0000-0000-0000-10000000000}\
-    *** NO MOUNT POINTS ***
+    **_ NO MOUNT POINTS _*_
 
     \\?\Volume{c78d9012-0000-0000-0000-20000000000}\
         E:\
@@ -254,7 +87,7 @@ PowerShell スクリプトを更新する前に、VHD にボリュームのボ�
     ```
 
 
-6.  **$volumeGuid** 変数を、今コピーしたボリューム GUID に更新します。
+6.  *$volumeGuid* 変数を、今コピーしたボリューム GUID に更新します。
 
 7. 管理者の PowerShell プロンプトを開き、環境に適用される変数を使用して、次の PowerShell スクリプトを更新します。
 

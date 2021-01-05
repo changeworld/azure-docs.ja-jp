@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: af9a86613b3aa29cc01b5ef0daa1f3854940deaf
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 935a6b41152ff914889e299b6455fbb30b2f0447
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96534065"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369057"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>セキュリティ コントロール V2:ガバナンスと戦略
 
@@ -20,7 +20,7 @@ ms.locfileid: "96534065"
 
 ## <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1: 資産の管理とデータ保護の戦略を定義する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-1 | 2、13 | SC、AC |
 
@@ -63,7 +63,7 @@ ms.locfileid: "96534065"
 
 ## <a name="gs-2-define-enterprise-segmentation-strategy"></a>GS-2: 企業のセグメント化戦略を定義する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-2 | 4、9、16 | AC、CA、SC |
 
@@ -87,7 +87,7 @@ ID、ネットワーク、アプリケーション、サブスクリプション
 
 ## <a name="gs-3-define-security-posture-management-strategy"></a>GS-3: セキュリティ態勢管理の戦略を定義する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-3 | 20、3、5 | RA、CM、SC |
 
@@ -103,7 +103,7 @@ ID、ネットワーク、アプリケーション、サブスクリプション
 
 ## <a name="gs-4-align-organization-roles-responsibilities-and-accountabilities"></a>GS-4: 組織の役割、責任、責務を整合させる
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-4 | N/A | PL、PM |
 
@@ -123,7 +123,7 @@ ID、ネットワーク、アプリケーション、サブスクリプション
 
 ## <a name="gs-5-define-network-security-strategy"></a>GS-5: ネットワーク セキュリティ戦略を定義する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-5 | 9 | CA、SC |
 
@@ -161,7 +161,7 @@ ID、ネットワーク、アプリケーション、サブスクリプション
 
 ## <a name="gs-6-define-identity-and-privileged-access-strategy"></a>GS-6: ID と特権アクセス戦略を定義する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-6 | 16、4 | AC、AU、SC |
 
@@ -197,7 +197,7 @@ ID、ネットワーク、アプリケーション、サブスクリプション
 
 ## <a name="gs-7-define-logging-and-threat-response-strategy"></a>GS-7: ログ記録と脅威対応戦略を定義する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-7 | 19 | IR、AU、RA、SC |
 
@@ -238,7 +238,7 @@ ID、ネットワーク、アプリケーション、サブスクリプション
 
 ## <a name="gs-8-define-backup-and-recovery-strategy"></a>GS-8:バックアップと復旧の戦略を定義する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | GS-8 | 10 | CP |
 

@@ -3,12 +3,12 @@ title: ベスト プラクティス
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6aaed76ad398b5278850dd66ce1da6d5bd33807f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 0f19fceca0212bd0a05d7caa311403b173c19de5
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95254665"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563179"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
@@ -140,6 +140,10 @@ Batch ノードでタスクをスケジュールするとき、それをタス�
 ### <a name="idempotent-start-tasks"></a>べき等な開始タスク
 
 他のタスクと同様に、ノードの[開始タスク](jobs-and-tasks.md#start-task)はノードが起動するたびに再実行されるため、べき等である必要があります。 べき等タスクとは、複数回実行したときに一貫した結果が得られる単純なタスクのことです。
+
+### <a name="isolated-nodes"></a>分離ノード
+
+コンプライアンスまたは規制要件があるワークロードには、分離された VM サイズの使用を検討してください。 仮想マシン構成モードでサポートされている分離サイズには、`Standard_E80ids_v4`、`Standard_M128ms`、`Standard_F72s_v2`、`Standard_G5`、`Standard_GS5`、`Standard_E64i_v3` があります。 分離された VM サイズの詳細については、「[Azure における仮想マシンの分離性](https://docs.microsoft.com/azure/virtual-machines/isolation)」をご覧ください。
 
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>オペレーティング システム サービスのインターフェイスを使用して、実行時間の長いサービスを管理する
 

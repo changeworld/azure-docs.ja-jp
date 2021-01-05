@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6c9e5b6466d3da675975dbf2c532602561e820c9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 417306e09a9424b302bb226aea5dd2c1debe96f5
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495074"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508426"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
 
@@ -118,13 +118,13 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 1. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 JSON エディターで、次の手順を実行します。
 
-    a. HDInsight Spark クラスターの URI を指定します。 (例: `https://<sparkclustername>.azurehdinsight.net/`)。
+    1. HDInsight Spark クラスターの URI を指定します。 (例: `https://<sparkclustername>.azurehdinsight.net/`)。
 
-    b. Spark クラスターにアクセスするユーザーの名前を指定します。
+    1. Spark クラスターにアクセスするユーザーの名前を指定します。
 
-    c. ユーザーのパスワードを指定します。
+    1. ユーザーのパスワードを指定します。
 
-    d. HDInsight Spark クラスターに関連付けられている Storage のリンクされたサービスを指定します。 この例では、AzureStorageLinkedService です。
+    1. HDInsight Spark クラスターに関連付けられている Storage のリンクされたサービスを指定します。 この例では、AzureStorageLinkedService です。
 
     ```json
     {
@@ -213,20 +213,21 @@ Spark アクティビティで Data Factory パイプラインを作成する一
         }
     }
     ```
+
     以下の点に注意してください。
 
-    a. **type** プロパティは **HDInsightSpark** に設定されます。
+    1. **type** プロパティは **HDInsightSpark** に設定されます。
 
-    b. **rootPath** プロパティは **adfspark\\pyFiles** に設定されます。ここで、adfspark は BLOB コンテナー、pyFiles はそのコンテナーのファイル フォルダーです。 この例では、Blob Storage は、Spark クラスターに関連付けられています。 ファイルは、別のストレージ アカウントにアップロードできます。 これを行う場合は、ストレージ アカウントをデータ ファクトリにリンクする Storage のリンクされたサービスを作成します。 次に、リンクされたサービスの名前を、**sparkJobLinkedService** プロパティの値として指定します。 このプロパティと、Spark アクティビティでサポートされている他のプロパティの詳細については、「[Spark アクティビティのプロパティ](#spark-activity-properties)」を参照してください。
+    1. **rootPath** プロパティは **adfspark\\pyFiles** に設定されます。ここで、adfspark は BLOB コンテナー、pyFiles はそのコンテナーのファイル フォルダーです。 この例では、Blob Storage は、Spark クラスターに関連付けられています。 ファイルは、別のストレージ アカウントにアップロードできます。 これを行う場合は、ストレージ アカウントをデータ ファクトリにリンクする Storage のリンクされたサービスを作成します。 次に、リンクされたサービスの名前を、**sparkJobLinkedService** プロパティの値として指定します。 このプロパティと、Spark アクティビティでサポートされている他のプロパティの詳細については、「[Spark アクティビティのプロパティ](#spark-activity-properties)」を参照してください。
 
-    c. **entryFilePath** プロパティは、Python ファイルである **test.py** に設定されます。
+    1. **entryFilePath** プロパティは、Python ファイルである **test.py** に設定されます。
 
-    d. **getDebugInfo** プロパティは **Always** に設定されます。つまり、ログ ファイルが常に生成されます (成功または失敗)。
+    1. **getDebugInfo** プロパティは **Always** に設定されます。つまり、ログ ファイルが常に生成されます (成功または失敗)。
 
-    > [!IMPORTANT]
-    > 問題のトラブルシューティングを行う場合を除き、運用環境ではこのプロパティを `Always` に設定しないことをお勧めします。
+       > [!IMPORTANT]
+       > 問題のトラブルシューティングを行う場合を除き、運用環境ではこのプロパティを `Always` に設定しないことをお勧めします。
 
-    e. **outputs** セクションには、1 つの出力データセットがあります。 出力データセットは、Spark プログラムによって出力が生成されない場合でも指定する必要があります。 この出力データセットは、パイプラインのスケジュール (1 時間に 1 回、毎日) を開始します。
+    1. **outputs** セクションには、1 つの出力データセットがあります。 出力データセットは、Spark プログラムによって出力が生成されない場合でも指定する必要があります。 この出力データセットは、パイプラインのスケジュール (1 時間に 1 回、毎日) を開始します。
 
     Spark アクティビティでサポートされているプロパティの詳細については、「[Spark アクティビティのプロパティ](#spark-activity-properties)」を参照してください。
 
@@ -346,7 +347,7 @@ HDInsight のリンクされたサービスによって参照される Blob Stor
 
 | Path | 説明 | 必須 | Type |
 | ---- | ----------- | -------- | ---- |
-| 。 | ストレージのリンクされたサービスにおける Spark ジョブのルート パス。 | はい | Folder |
+| . | ストレージのリンクされたサービスにおける Spark ジョブのルート パス。 | はい | Folder |
 | &lt;user defined &gt; | Spark ジョブの入力ファイルを指定するパス。 | はい | ファイル |
 | ./jars | このフォルダーのすべてのファイルがアップロードされ、クラスターの Java classpath に配置されます。 | いいえ | Folder |
 | ./pyFiles | このフォルダーのすべてのファイルがアップロードされ、クラスターの PYTHONPATH に配置されます。 | いいえ | Folder |

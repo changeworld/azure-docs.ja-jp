@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 7577c8510746d1140c1f8b70081f600d992ae512
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c255a3d68b1a24e25c1c0e308faa3fd364a15861
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016677"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358743"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを変更する
 
@@ -350,12 +350,12 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 
 - **singlePlacementGroup** - singlePlacementGroup が true の場合は、false に変更できます。 ただし、singlePlacementGroup が false の場合は、true に変更 **できません**。
 - **サブネット** - 元のサブネットと新しいサブネットが同じ仮想ネットワークにある限り、スケール セットのサブネットは変更できます。
+- **imageReferenceSku** - イメージ参照 SKU は、動作保証済み [Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)、Windows サーバー/クライアント イメージ、[プラン情報](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage#view-plan-properties)のないイメージ向けに更新できます。 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>変更するために割り当て解除が必要なプロパティ
 一部のプロパティは、スケール セット内の VM の割り当てが解除されている場合に、特定の値にのみ変更できます。 これには次のようなプロパティがあります。
 
-- **SKU 名** - スケール セットが現在存在するハードウェアで新しい VM SKU がサポートされていない場合は、SKU 名を変更する前にスケール セット内の VM の割り当てを解除する必要があります。 詳細については、[Azure VM のサイズを変更する方法](../virtual-machines/windows/resize-vm.md)に関するページを参照してください。
-
+- **SKU 名** - スケール セットが現在存在するハードウェアで新しい VM SKU がサポートされていない場合は、SKU 名を変更する前にスケール セット内の VM の割り当てを解除する必要があります。 詳細については、[Azure VM のサイズを変更する方法](../virtual-machines/windows/resize-vm.md)に関するページを参照してください。 
 
 ## <a name="vm-specific-updates"></a>VM 固有の更新
 特定の変更は、グローバル スケール セットのプロパティではなく特定の VM に適用できます。 現在サポートされている唯一の VM 固有の更新は、スケール セット内の VM との間でのデータ ディスクのアタッチ/デタッチです。 この機能はプレビュー段階にあります。 詳しくは、[プレビュー ドキュメント](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk)をご覧ください。

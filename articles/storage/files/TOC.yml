@@ -71,6 +71,8 @@
           href: storage-files-smb-multichannel-performance.md
         - name: スケーラビリティとパフォーマンスのターゲット
           href: storage-files-scale-targets.md
+    - name: 課金について
+      href: understanding-billing.md
     - name: データの誤削除の防止
       href: storage-files-prevent-file-share-deletion.md
     - name: ファイル共有をバックアップする
@@ -85,20 +87,16 @@
       href: storage-files-faq.md
 - name: 操作方法ガイド
   items:
-    - name: 作成
+    - name: 配置
       items:
         - name: SMB ファイル共有を作成する」を参照してください。
           href: storage-how-to-create-file-share.md
+        - name: Azure File Sync のデプロイ
+          href: storage-sync-files-deployment-guide.md
         - name: Premium ファイル共有を作成する
           href: storage-how-to-create-premium-fileshare.md
         - name: NFS 共有を作成する
           href: storage-files-how-to-create-nfs-shares.md
-    - name: 配置
-      items:
-        - name: Azure Files のデプロイ
-          href: storage-files-deployment-guide.md
-        - name: Azure File Sync のデプロイ
-          href: storage-sync-files-deployment-guide.md
         - name: Premium ファイル共有を使用した SQL Server FCI
           href: ../../azure-sql/virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: マウントする

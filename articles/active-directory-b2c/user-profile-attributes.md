@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85030285810433dc77d1f466d160c50d1f89770e
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 31926653950594b986aca19e2db2877cd655ca24
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750409"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509599"
 ---
 # <a name="user-profile-attributes"></a>ユーザー プロファイルの属性
 
@@ -62,15 +62,15 @@ Azure Active Directory (Azure AD) B2C ディレクトリのユーザー プロ�
 |objectId        |String|ユーザーの一意識別子であるグローバル一意識別子 (GUID)。 例:12345678-9abc-def0-1234-56789abcde。 読み取り専用で、変更できません。|読み取り専用|はい|Input、Persisted、Output|
 |otherMails      |文字列コレクション|ユーザーのその他の電子メール アドレスの一覧。 例: ["bob@contoso.com", "Robert@fabrikam.com"]。|はい (連絡用電子メール アドレス)|いいえ|Persisted、Output|
 |password        |String|ユーザー作成時のローカル アカウントのパスワード。|いいえ|いいえ|Persisted|
-|passwordPolicies     |String|パスワードのポリシー。 コンマで区切られた複数のポリシー名で構成される文字列です。 例: "DisablePasswordExpiration, DisableStrongPassword"。|いいえ|いいえ|Persisted、Output|
+|passwordPolicies     |String|パスワードのポリシー。 コンマで区切られた複数のポリシー名で構成される文字列です。 たとえば、"DisablePasswordExpiration, DisableStrongPassword"。|いいえ|いいえ|Persisted、Output|
 |physicalDeliveryOfficeName (officeLocation)|String|ユーザーの勤務先のオフィス所在地。 最大長 128。|はい|いいえ|Persisted、Output|
 |postalCode      |String|ユーザーの住所の郵便番号。 郵便番号は、ユーザーの国/地域に固有です。 米国では、この属性に ZIP コードが含まれます。 最大長 40。|はい|いいえ|Persisted、Output|
 |preferredLanguage    |String|ユーザーの優先言語。 ISO 639-1 コードに従う必要があります。 例: "en-US"。|いいえ|いいえ|Persisted、Output|
 |refreshTokensValidFromDateTime|DateTime|この日時より前に発行された更新トークンは無効です。無効な更新トークンを使用して新しいアクセス トークンを取得すると、アプリケーションでエラーが発生します。 この場合、アプリケーションは、承認エンドポイントに対して要求を行うことによって、新しい更新トークンを取得する必要があります。 読み取り専用です。|いいえ|いいえ|出力|
-|signInNames ([Identities](manage-user-accounts-graph-api.md#identities-property)) |String|ディレクトリ内の任意の種類のローカル アカウント ユーザーの一意のサインイン名。 ローカル アカウントの種類を指定せずにサインイン値でユーザーを取得するには、これを使用します。|いいえ|いいえ|入力|
-|signInNames.userName ([Identities](manage-user-accounts-graph-api.md#identities-property)) |String|ディレクトリ内のローカル アカウント ユーザーの一意のユーザー名。 特定のサインイン ユーザー名でユーザーを作成または取得するには、これを使用します。 パッチ操作中に PersistedClaims 単独でこれを指定すると、他の種類の signInNames は削除されます。 新しい種類の signInNames を追加する場合は、既存の signInNames も保持する必要があります。|いいえ|いいえ|Input、Persisted、Output|
-|signInNames.phoneNumber ([Identities](manage-user-accounts-graph-api.md#identities-property)) |String|ディレクトリ内のローカル アカウント ユーザーの一意の電話番号。 特定のサインイン電話番号でユーザーを作成または取得するには、これを使用します。 パッチ操作中に PersistedClaims 単独でこれを指定すると、他の種類の signInNames は削除されます。 新しい種類の signInNames を追加する場合は、既存の signInNames も保持する必要があります。|いいえ|いいえ|Input、Persisted、Output|
-|signInNames.emailAddress ([Identities](manage-user-accounts-graph-api.md#identities-property))|String|ディレクトリ内のローカル アカウント ユーザーの一意のメール アドレス。 特定のサインイン電子メール アドレスでユーザーを作成または取得するには、これを使用します。 パッチ操作中に PersistedClaims 単独でこれを指定すると、他の種類の signInNames は削除されます。 新しい種類の signInNames を追加する場合は、既存の signInNames も保持する必要があります。|いいえ|いいえ|Input、Persisted、Output|
+|signInNames ([Identities](manage-user-accounts-graph-api.md#identities-property)) |String|ディレクトリ内の任意の種類のローカル アカウント ユーザーの一意のサインイン名。 ローカル アカウントの種類を指定せずにサインイン値でユーザーを取得するには、この属性を使用します。|いいえ|いいえ|入力|
+|signInNames.userName ([Identities](manage-user-accounts-graph-api.md#identities-property)) |String|ディレクトリ内のローカル アカウント ユーザーの一意のユーザー名。 特定のサインイン ユーザー名でユーザーを作成または取得するには、この属性を使用します。 パッチ操作中に PersistedClaims 単独でこれを指定すると、他の種類の signInNames は削除されます。 新しい種類の signInNames を追加する場合は、既存の signInNames も保持する必要があります。|いいえ|いいえ|Input、Persisted、Output|
+|signInNames.phoneNumber ([Identities](manage-user-accounts-graph-api.md#identities-property)) |String|ディレクトリ内のローカル アカウント ユーザーの一意の電話番号。 特定のサインイン電話番号でユーザーを作成または取得するには、この属性を使用します。 パッチ操作中に PersistedClaims 単独でこの属性を指定すると、他の種類の signInNames は削除されます。 新しい種類の signInNames を追加する場合は、既存の signInNames も保持する必要があります。|いいえ|いいえ|Input、Persisted、Output|
+|signInNames.emailAddress ([Identities](manage-user-accounts-graph-api.md#identities-property))|String|ディレクトリ内のローカル アカウント ユーザーの一意のメール アドレス。 特定のサインイン電子メール アドレスでユーザーを作成または取得するには、これを使用します。 パッチ操作中に PersistedClaims 単独でこの属性を指定すると、他の種類の signInNames は削除されます。 新しい種類の signInNames を追加する場合は、既存の signInNames も保持する必要があります。|いいえ|いいえ|Input、Persisted、Output|
 |state           |String|ユーザーの住所の都道府県。 最大長 128。|はい|はい|Persisted、Output|
 |streetAddress   |String|ユーザーの勤務地の番地。 最大長 1024。|はい|はい|Persisted、Output|
 |strongAuthentication AlternativePhoneNumber<sup>1</sup>|String|多要素認証に使用される、ユーザーの 2 次電話番号。|はい|いいえ|Persisted、Output|
@@ -120,5 +120,4 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 ## <a name="next-steps"></a>次のステップ
 拡張属性に関する詳細情報:
 - [スキーマの拡張機能](/graph/extensibility-overview#schema-extensions)
-- [ユーザー フローでカスタム属性を定義する](user-flow-custom-attributes.md)
-- [カスタム ポリシーでカスタム属性を定義する](custom-policy-custom-attributes.md)
+- [カスタム属性を定義する](user-flow-custom-attributes.md)

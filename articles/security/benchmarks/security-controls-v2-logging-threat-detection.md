@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 99e7a8fcb34c963cfab366f1913508a7ff3f4a51
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c5a855ffe06a17d8ec1bfe249dbe7bc41d1166af
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408704"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369074"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>セキュリティ コントロール V2:ログと脅威検出
 
@@ -20,7 +20,7 @@ ms.locfileid: "94408704"
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1:Azure リソースの脅威検出を有効にする
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-1 | 6.7 | AU-3、AU-6、AU-12、SI-4 |
 
@@ -38,9 +38,9 @@ Azure Security Center の組み込みの脅威検出機能を使用します。�
 
 - [Azure Sentinel を使用したサイバー脅威インテリジェンス](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -54,7 +54,7 @@ Azure Security Center の組み込みの脅威検出機能を使用します。�
 
 ## <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2:Azure ID とアクセスの管理のために脅威検出を有効にする
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-2 | 6.8 | AU-3、AU-6、AU-12、SI-4 |
 
@@ -75,9 +75,9 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 - [Azure Security Center での脅威の防止](../../security-center/azure-defender.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -91,7 +91,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 ## <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3:Azure ネットワーク アクティビティのログ記録を有効にする
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-3 | 9.3、12.2、12.5、12.8 | AU-3、AU-6、AU-12、SI-4 |
 
@@ -109,9 +109,9 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 - [DNS Analytics ソリューションを使用して DNS インフラストラクチャに関する分析情報を収集する](../../azure-monitor/insights/dns-analytics.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -125,7 +125,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 ## <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4:Azure リソースのログ記録を有効にする
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-4 | 6.2、6.3、8.8 | AU-3、AU-12 |
 
@@ -137,9 +137,9 @@ Azure Security Center と Azure Policy を使用すると、監査ログ、セ�
 
 - [Azure Security Center のデータ収集について](../../security-center/security-center-enable-data-collection.md)
 
-**責任** : 共有
+**責任**: 共有
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティ運用](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -151,7 +151,7 @@ Azure Security Center と Azure Policy を使用すると、監査ログ、セ�
 
 ## <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5:セキュリティ ログの管理と分析を一元化する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-5 | 6.5、6.6 | AU-3、SI-4 |
 
@@ -167,9 +167,9 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 
 - [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -179,7 +179,7 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 
 ## <a name="lt-6-configure-log-storage-retention"></a>LT-6:ログの保持期間を構成する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-6 | 6.4 | AU-3、AU-11 |
 
@@ -193,9 +193,9 @@ Azure Monitor で、組織のコンプライアンス規則に従って Log Anal
 
 - [Azure Security Center のアラートと推奨事項のエクスポート](../../security-center/continuous-export.md)
 
-**責任** : Customer
+**責任**: Customer
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [セキュリティのアーキテクチャ](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -207,7 +207,7 @@ Azure Monitor で、組織のコンプライアンス規則に従って Log Anal
 
 ## <a name="lt-7-use-approved-time-synchronization-sources"></a>LT-7:承認された時刻同期ソースを使用する
 
-| Azure ID | CIS コントロール v7.1 ID | NIST SP800-53 r4 ID |
+| Azure ID | CIS コントロール v7.1 ID | NNIST SP 800-53 r4 ID |
 |--|--|--|--|
 | LT-7 | 6.1 | AU-8 |
 
@@ -221,9 +221,9 @@ Azure 内のリソースによって生成されるすべてのログでは、�
 
 - [Azure サービスの受信 UDP を無効にする方法](https://support.microsoft.com/help/4558520/how-to-disable-inbound-udp-for-azure-services)
 
-**責任** : 共有
+**責任**: 共有
 
-**顧客のセキュリティ上の利害関係者** ( [詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [ポリシーと標準](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 

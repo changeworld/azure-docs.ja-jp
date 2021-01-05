@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory Business-to-Customer (B2C) の新機能
 description: Azure Active Directory Business-to-Customer (B2C) の新規および更新されたドキュメント。
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,29 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 4c204ec33604ff5edd1551f9728c28e3dcab9a61
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 8805caad990cd472b3199bda27130d8d63be3071
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571081"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559729"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C:新機能
 
 Azure Active Directory B2C のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 B2C サービスの新機能については、「[Azure Active Directory の新着情報](../active-directory/fundamentals/whats-new.md)」を参照してください。
+
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [Azure Active Directory B2C のユーザー フローを作成する](create-user-flow.md)
+- [ユーザー フローの電話でのサインアップとサインインを設定する (プレビュー)](phone-authentication-user-flows.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [チュートリアル: Azure Active Directory B2C テナントを作成する](tutorial-create-tenant.md)
+- [Azure Active Directory B2C のサンプル コード](code-samples.md)
+- [ページ レイアウト バージョン](page-layout.md)
 
 ## <a name="november-2020"></a>2020 年 11 月
 

@@ -24,12 +24,15 @@
     - name: Azure Marketplace のマネージド サービス オファー
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
-    - name: Cloud Solution Provider プログラムの考慮事項
+    - name: クラウド ソリューション プロバイダー プログラム
       displayName: 'csp, aobo, partner'
       href: ./concepts/cloud-solution-provider.md
-    - name: エンタープライズ シナリオにおける Azure Lighthouse
+    - name: エンタープライズ シナリオ
       displayName: 'corporation, IT, consolidate'
       href: ./concepts/enterprise.md
+    - name: ISV のシナリオ
+      displayName: 'independent, software, vendor, saas'
+      href: ./concepts/isv-scenarios.md
     - name: Azure Lighthouse と Azure マネージド アプリケーション
       displayName: 'managed apps, ama'
       href: ./concepts/managed-applications.md

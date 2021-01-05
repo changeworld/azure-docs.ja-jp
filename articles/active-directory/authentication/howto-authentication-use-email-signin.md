@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: ff6ae6ea6812397e737deb4b97bf1cd15e022c03
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 0ca5f6a853852acbb4ef97adfce2364592bae270
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743175"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559842"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>代替ログイン ID としてメールを使用して Azure Active Directory にサインインする (プレビュー)
 
@@ -36,6 +36,9 @@ ms.locfileid: "96743175"
 
 > [!NOTE]
 > この機能は、クラウドで認証された Azure AD ユーザーのみを対象としています。
+
+> [!NOTE]
+> 現在、クラウド認証を使用したテナントの Azure AD 参加済みの Windows 10 デバイスでは、この機能はサポートされていません。 この機能は、Hybrid Azure AD 参加済みデバイスには適用できません。
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Azure AD サインイン方法の概要
 

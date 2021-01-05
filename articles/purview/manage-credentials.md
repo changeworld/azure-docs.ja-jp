@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: c991559d550b351ce70bcc5834f96f313f856a82
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 30004306d9ff44df04a26640a2bd7a09256fce25
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550592"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516686"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Azure Purview でのソース認証用の資格情報
 
@@ -20,7 +20,7 @@ ms.locfileid: "96550592"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure キー コンテナー。 まだお持ちでない場合は、その作成方法について、こちら (キー コンテナーの作成に関する記事へのリンクを挿入する) をご覧ください。
+* Azure Key Vault。 作成方法については、「[クイック スタート: Azure portal を使用してキー コンテナーを作成する](../key-vault/general/quick-create-portal.md)」を参照してください。
 
 ## <a name="introduction"></a>はじめに
 資格情報は、Azure Purview で、登録済みのデータ ソースに対する認証に使用できる認証情報です。 資格情報オブジェクトは、さまざまな種類の認証シナリオ (ユーザー名とパスワードを必要とする基本認証など) のために作成でき、選択した認証方法の種類に基づいて必要な特定の情報がキャプチャされます。 資格情報の作成プロセス中は、機密性の高い認証情報を取得するために Azure Key Vault の既存のシークレットが使用されます。

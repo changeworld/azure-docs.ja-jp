@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 12/15/2020
 ms.author: yohaddad
-ms.openlocfilehash: adaea28d105b72152e1af28cc9d79da19c548c2c
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 2fb1ae2bbda55a04f4e76505a55b28372af00f33
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561411"
+ms.locfileid: "97606676"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
@@ -1171,8 +1171,8 @@ ms.locfileid: "97561411"
 | Rel 18-12 | [4470199] | Internet Explorer  | 2.81、3.68、4.61 | 2018 年 12 月 11 日 |
 | 該当なし | [4468323] | タイムゾーンの更新    | 2.81、3.68、4.61 | 2018 年 12 月 13 日 |
 | 該当なし | [4467107] | 11 月のセキュリティ以外のロールアップ   | 2.81 | 2018 年 11 月 13 日 |
-| 該当なし | [4467701] | 11 月のセキュリティ以外のロールアップ     | 3.68 | 2018 年 11 月 13 日 |
-| 該当なし | [4467697] | 11 月のセキュリティ以外のロールアップ     | 4.61 | 2018 年 11 月 13 日 |
+| 該当なし | [4467701] | 11 月のセキュリティ以外のロールアップ | 3.68 | 2018 年 11 月 13 日 |
+| 該当なし | [4467697] | 11 月のセキュリティ以外のロールアップ | 4.61 | 2018 年 11 月 13 日 |
 
 [4471321]: https://support.microsoft.com/kb/4471321
 [4471328]: https://support.microsoft.com/kb/4471328

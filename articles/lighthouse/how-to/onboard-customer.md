@@ -1,18 +1,18 @@
 ---
 title: Azure Lighthouse への顧客のオンボード
 description: Azure Lighthouse に顧客をオンボードする方法について説明します。これにより、Azure の委任されたリソース管理を使用して自分のテナントからそれらのリソースにアクセスして管理できるようになります。
-ms.date: 12/04/2020
+ms.date: 12/15/2020
 ms.topic: how-to
-ms.openlocfilehash: b353a8194b9f5dd48b315340435669531359e8d5
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 023b44a77cb38a14df8aa6a885ff137c02942061
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608471"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516130"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Azure Lighthouse への顧客のオンボード
 
-この記事では、サービス プロバイダーが顧客を Azure Lighthouse にオンボードする方法について説明します。 これを行うとき、[Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)を使用すると、顧客の委任されたリソース (サブスクリプションやリソース グループ) に自分の Azure Active Directory (Azure AD) テナントからアクセスして管理できます。
+この記事では、サービス プロバイダーが顧客を Azure Lighthouse にオンボードする方法について説明します。 これを行うとき、[Azure の委任されたリソース管理](../concepts/azure-delegated-resource-management.md)を使用することにより、顧客の Azure Active Directory (Azure AD) テナントにおいて委任されたリソース (サブスクリプションやリソース グループ) を、顧客自身のテナントを通じて管理できます。
 
 > [!TIP]
 > このトピックではサービス プロバイダーと顧客に言及しますが、[複数のテナントを管理している企業](../concepts/enterprise.md)では、同じプロセスを使用して Azure Lighthouse を設定し、自社の管理エクスペリエンスを強化することができます。
@@ -22,7 +22,7 @@ ms.locfileid: "96608471"
 顧客エンゲージメント全体におけるご自身の影響を追跡して評価を受けるには、オンボードされた各サブスクリプションにアクセスできる少なくとも 1 つのユーザー アカウントに Microsoft Partner Network (MPN) ID を関連付けます。 サービス プロバイダー テナントでこの関連付けを実行する必要があります。 MPN ID に関連付けられているテナントにサービス プリンシパル アカウントを作成し、顧客をオンボードするときに毎回そのサービス プリンシパルを含めることをお勧めします。 詳細については、[パートナー ID をリンクして、委任されたリソースでパートナー獲得クレジットを有効にする](partner-earned-credit.md)に関する記事をご覧ください。
 
 > [!NOTE]
-> また、[Azure Marketplace に公開](publish-managed-services-offers.md)したマネージド サービス オファー (パブリックまたはプライベート) を顧客が購入したときに、顧客を Azure Lighthouse にオンボードすることもできます。 また、ここで説明されているオンボード プロセスは、Azure Marketplace に公開されているオファーと共に使用できます。
+> または、[Azure Marketplace に公開](publish-managed-services-offers.md)したマネージド サービス オファー (パブリックまたはプライベート) を顧客が購入したときに、顧客を Azure Lighthouse にオンボードすることもできます。 また、ここで説明されているオンボード プロセスは、Azure Marketplace に公開されているオファーと共に使用できます。
 
 オンボード プロセスでは、サービス プロバイダーのテナントと顧客のテナント両方の中からアクションを実行する必要があります。 これらの手順はすべて、この記事で説明します。
 
@@ -303,7 +303,19 @@ az account list
 
 顧客がオンボードされた後に変更を加える必要がある場合は、[委任を更新](update-delegation.md)できます。 完全に[委任へのアクセスを削除する](remove-delegation.md)こともできます。
 
+## <a name="troubleshooting"></a>トラブルシューティング
+
+顧客を正常にオンボードできない場合、またはユーザーが委任されたリソースにアクセスするときに問題が生じた場合、次のヒントと要件を確認して、もう一度試みてください。
+
+- `managedbyTenantId` 値は、オンボードされているサブスクリプションのテナント ID と同じにすることはできません。
+- 同じスコープの同じ `mspOfferName` を持つ複数の割り当てを行うことはできません。 
+- 委任されたサブスクリプションに対して、**Microsoft.ManagedServices** リソース プロバイダーを登録する必要があります。 これはデプロイ中に自動的に行われますが、行われない場合は、[手動で登録](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)できます。
+- 認可には、"[所有者](../../role-based-access-control/built-in-roles.md#owner)" 組み込みロール、または "[DataActions](../../role-based-access-control/role-definitions.md#dataactions)" を持つ組み込みロールが割り当てられたユーザーを含めることはできません。
+- グループは、[**グループの種類**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types)を **Microsoft 365** ではなく **Security** に設定して作成する必要があります。
+- Azure portal にリソースを表示する必要のあるユーザーは[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロール (または閲覧者アクセス権を含む別の組み込みロール) を割り当てられている必要があります。
+
 ## <a name="next-steps"></a>次のステップ
 
 - [テナント間の管理エクスペリエンス](../concepts/cross-tenant-management-experience.md)について学習します。
 - Azure portal の **[マイ カスタマー]** に移動して、[顧客を表示および管理](view-manage-customers.md)します。
+- 委任を[更新](update-delegation.md)または[削除](remove-delegation.md)する方法について説明します。

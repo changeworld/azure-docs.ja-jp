@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/03/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 683f0e070ad77add62ed76eabd70b42ba15f012e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 558f4792a055fc491f15600ecc5502c3a114a94b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498134"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360222"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>ストレージ アカウントへの要求に必要な最小バージョンのトランスポート層セキュリティ (TLS) を適用する
 
@@ -86,6 +86,9 @@ StorageBlobLogs
 ## <a name="remediate-security-risks-with-a-minimum-version-of-tls"></a>最小バージョンの TLS を使用してセキュリティ リスクを修復する
 
 古いバージョンの TLS を使用しているクライアントからのトラフィックが最小限であること、または古いバージョンの TLS で行われた要求を失敗させても構わないことが確実である場合は、ストレージ アカウントで最小 TLS バージョンの適用を開始できます。 最小バージョンの TLS を使用してストレージ アカウントに対する要求を行うようクライアントに要求することは、データに対するセキュリティ リスクを最小限に抑えるための戦略の一部です。
+
+> [!IMPORTANT]
+> Azure Storage に接続するサービスを使用している場合は、ストレージ アカウントに必要な最低バージョンを設定する前に、そのサービスが適切なバージョンの TLS を使用して Azure Storage に要求を送信していることを確認してください。
 
 ### <a name="configure-the-minimum-tls-version-for-a-storage-account"></a>ストレージ アカウントの最小 TLS バージョンを構成する
 
@@ -339,6 +342,23 @@ Deny 効果を持つポリシーを作成し、これをスコープに割り当
 次の図では、Deny 効果を持つポリシーで、最小 TLS バージョンを TLS 1.2 に設定することが要求されているときに、最小 TLS バージョンを TLS 1.0 に設定して (新しいアカウントの既定) ストレージ アカウントを作成しようとした場合に発生するエラーが示されています。
 
 :::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="ポリシーに違反するストレージ アカウントを作成したときに発生したエラーを示すスクリーンショット":::
+
+## <a name="permissions-necessary-to-require-a-minimum-version-of-tls"></a>最低バージョンの TLS を要求するために必要なアクセス許可
+
+ストレージ アカウントの **MinimumTlsVersion** プロパティを設定するには、ストレージ アカウントを作成および管理するためのアクセス許可が必要です。 これらのアクセス許可を提供する Azure ロールベースのアクセス制御 (Azure RBAC) ロールには、**Microsoft.Storage/storageAccounts/write** または *Microsoft.Storage/storageAccounts/\** アクションが含まれます。 このアクションの組み込みロールには、次のようなロールがあります。
+
+- Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロール
+- Azure Resource Manager の[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロール
+- [Storage Account の共同作成者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)ロール
+
+これらのロールでは、Azure Active Directory (Azure AD) を使用してストレージ アカウントのデータにアクセスすることはできません。 ただし、アカウント アクセス キーへのアクセスを許可する Microsoft.Storage/storageAccounts/listkeys/action が含まれています。 このアクセス許可では、ユーザーがアカウント アクセス キーを使用して、ストレージ アカウント内のすべてのデータにアクセスできます。
+
+ユーザーがストレージ アカウントに対する最低バージョンの TLS を要求できるようにするには、ロール割り当てのスコープをストレージ アカウント以上のレベルにする必要があります。 ロール スコープの詳細については、「[Azure RBAC のスコープについて](../../role-based-access-control/scope-overview.md)」をご覧ください。
+
+これらのロールを割り当てる際には、ストレージ アカウントを作成したり、そのプロパティを更新したりする機能を必要とするユーザーにのみ割り当てるように、注意してください。 最小限の特権の原則を使用して、ユーザーに、それぞれのタスクを実行するのに必要な最小限のアクセス許可を割り当てるようにします。 Azure RBAC でアクセスを管理する方法の詳細については、「[Azure RBAC のベスト プラクティス](../../role-based-access-control/best-practices.md)」を参照してください。
+
+> [!NOTE]
+> 従来のサブスクリプション管理者ロールであるサービス管理者と共同管理者には、Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールと同等のものが含まれています。 **所有者** ロールにはすべてのアクションが含まれているため、これらの管理者ロールのいずれかを持つユーザーも、ストレージ アカウントを作成および管理できます。 詳細については、[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)に関する記事を参照してください。
 
 ## <a name="network-considerations"></a>ネットワークに関する考慮事項
 

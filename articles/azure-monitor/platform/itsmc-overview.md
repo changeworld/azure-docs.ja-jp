@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: b4e35296a999070a6f536f4a52cfb7c3a1d4f42a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3d4e5ad0b24b7163072d7e3110a523dad9608923
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186492"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507373"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -30,7 +30,7 @@ ITSMC は、次の ITSM ツールとの接続をサポートしています。
 -   Cherwell
 
    >[!NOTE]
-> 2020 年 10 月 1 日以降、新規のお客様が Cherwell と Provance ITSM を Azure Alert と統合することはできなくなります。 新しい ITSM 接続はサポートされません。 既存の ITSM 接続はサポートされます。
+> Cherwell や Provance のお客様には、統合の別の方法として、[Webhook アクション](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook)を使用して Cherwell と Provance のエンドポイントに接続することを提案しています。
 
 ITSMC を使用すると、次のことができます。
 
@@ -42,9 +42,12 @@ ITSMC を使用すると、次のことができます。
 次の手順を完了すれば、ITSMC の使用を開始できます。
 
 1.  [ITSMC を追加します。](#add-it-service-management-connector)
-2.  [ITSM 接続を作成します。](#create-an-itsm-connection)
-3.  [接続を使用します。](#use-itsmc)
-
+2. [ITSM 製品/サービスを IT Service Management Connector に追加する](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections)
+3.  [ITSM 接続を作成します。](#create-an-itsm-connection)
+4.  [接続を使用します。](#use-itsmc)
+   
+   >[!NOTE]
+> この順序で手順に従う必要があります。そうしないと、エラーが発生します。
 
 ##  <a name="add-it-service-management-connector"></a>IT Service Management Connector を追加する
 
@@ -149,12 +152,12 @@ ITSM 接続を作成したら、ITSM ツールで、Azure アラートに基づ�
 
 9. **[各構成項目に個々の作業項目を作成する]** を選択すると、すべての構成項目に独自の作業項目が含められます。 構成項目ごとに 1 つの作業項目が存在することになります。 これは、作成されるアラートに従って更新されます。
 
-   * 作業項目ドロップダウン "インシデント" または "アラート" で選択した場合: **[各構成項目に個々の作業項目を作成する]** チェック ボックスをオフにすると、すべてのアラートに新しい作業項目が作成されます。 構成項目ごとに、複数のアラートが存在する場合があります。
+    * 作業項目ドロップダウン "インシデント" または "アラート" で選択した場合: **[各構成項目に個々の作業項目を作成する]** チェック ボックスをオフにすると、すべてのアラートに新しい作業項目が作成されます。 構成項目ごとに、複数のアラートが存在する場合があります。
 
-   ![[ITSM チケット] ウィンドウを示すスクリーンショット。](media/itsmc-overview/itsm-action-configuration.png)
-   
-   * 作業項目ドロップダウン "イベント" で選択した場合:ラジオ ボタン選択で **[各ログ エントリに対して、個々の作業項目を作成します]** を選択した場合、アラートのたびに新しい作業項目が作成されます。 ラジオ ボタン選択で **[各構成項目に個々の作業項目を作成する]** を選択すると、すべての構成項目に独自の作業項目が含められます。
-   ![[ITSM チケット] ウィンドウを示すスクリーンショット。](media/itsmc-overview/itsm-action-configuration-event.png)
+       ![[ITSM インシデント] ウィンドウを示すスクリーンショット。](media/itsmc-overview/itsm-action-configuration.png)
+
+    * 作業項目ドロップダウン "イベント" で選択した場合:ラジオ ボタン選択で **[各ログ エントリに対して、個々の作業項目を作成します]** を選択した場合、アラートのたびに新しい作業項目が作成されます。 ラジオ ボタン選択で **[各構成項目に個々の作業項目を作成する]** を選択すると、すべての構成項目に独自の作業項目が含められます。
+   ![[ITSM イベント] ウィンドウを示すスクリーンショット。](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. **[OK]** を選択します。
 
@@ -166,26 +169,6 @@ Azure アラートのルールを作成または編集するときには、ITSM 
 >
 >
 >- アラート ルール定義の短い説明のフィールドは、ITSM アクションを使用して送信する場合は 40 文字に制限されます。
-
-
-## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>インシデントと変更要求データを視覚化および分析する
-
-ITSMC では、接続を設定したときの構成に応じて、最大 120 日分のインシデントと変更要求データを同期できます。 このデータのログ レコードのスキーマについては、この記事の[次のセクション](#additional-information)を参照してください。
-
-インシデントと変更要求データは、ITSMC ダッシュボードを使用して視覚化できます。
-
-![ITSMC ダッシュボードを示すスクリーンショット。](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
-
-ダッシュボードでは、コネクタの状態に関する情報も提供されます。これは、接続の問題を分析する際の開始点として利用できます。
-
-Service Map で、影響を受けたコンピューターに対して同期されたインシデントを視覚化することもできます。
-
-サービス マップは、Windows と Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すると、重要なサービスを提供する相互接続されたシステムとしてサーバーを表示できます。 Service Map には、TCP 接続の任意のアーキテクチャ全体にわたるサーバー、プロセス、ポートの間の接続が表示されます。 エージェントのインストール以外に構成は必要ありません。 詳細については、[Service Map の使用](../insights/service-map.md)に関するページを参照してください。
-
-Service Map を使用している場合は、次に示すように、ITSM ソリューションで作成されたサービス デスク項目を表示できます。
-
-![Log Analytics の画面を示すスクリーンショット。](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
-
 
 ## <a name="additional-information"></a>関連情報
 
@@ -296,32 +279,12 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Impact_s| 影響|
 | RequestedDate_t  | Requested by date\(要求日\) |
 | ClosedDate_t | 終了日 |
-| PlannedStartDate_t  |     開始予定日 |
-| PlannedEndDate_t  |   終了予定日 |
+| PlannedStartDate_t  | 開始予定日 |
+| PlannedEndDate_t  | 終了予定日 |
 | WorkStartDate_t  | 実際の開始日 |
 | WorkEndDate_t | 実際の終了日|
 | Description_s | 説明 |
 | Computer  | 構成項目 |
-
-
-## <a name="troubleshoot-itsm-connections"></a>ITSM 接続のトラブルシューティング
-- 接続対象ソースの UI からの接続が失敗し、"**接続の保存中にエラーが発生しました**" というメッセージが表示される場合は、次の手順を実行してください。
-   - ServiceNow、Cherwell、Provance の接続の場合:  
-     - 各接続のユーザー名、パスワード、クライアント ID、クライアント シークレットが正しく入力されていることを確認します。  
-     - 対応する ITSM 製品で、接続を作成するための十分な特権を持っていることを確認します。  
-   - Service Manager 接続の場合:  
-     - Web アプリが正常にデプロイされていること、およびハイブリッド接続が作成されていることを確認します。 オンプレミスの Service Manager コンピューターとの接続が正常に確立されていることを確認するには、[ハイブリッド接続](./itsmc-connections.md#configure-the-hybrid-connection)の作成に関するドキュメントで説明しているように Web アプリの URL に移動します。  
-
-- ServiceNow のデータが Log Analytics に同期されていない場合は、ServiceNow インスタンスがスリープ状態になっていことを確認します。 ServiceNow dev インスタンスは、長時間アイドル状態になっているとスリープ状態に移行することがあります。 それが起きているのでなければ、問題を報告してください。
-- Log Analytics アラートが発生しても ITSM 製品内に作業項目が作成されない場合、構成項目が作成されなかったり作業項目にリンクされなかったりする場合、その他の情報が必要な場合は、以下のリソースを参照してください。
-   -  ITSMC: このソリューションには、接続、作業項目、コンピューターなどの概要が表示されます。 **[コネクタの状態]** というラベルのタイルを選択します。 そうすると、適切なクエリを使用して **ログ検索** が行われます。 詳細については、`LogType_S` が `ERROR` になっているログ レコードを参照してください。
-   - **[ログ検索]** ページ:クエリ `*ServiceDeskLog_CL*` を使用して、エラーと関連情報を直接表示します。
-
-## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager Web アプリのデプロイのトラブルシューティング
--   Web アプリのデプロイに関する問題がある場合は、サブスクリプションでリソースを作成/デプロイするためのアクセス許可があることを確認します。
--   [スクリプト](itsmc-service-manager-script.md)の実行時に "**オブジェクト参照がオブジェクトのインスタンスに設定されていません**" というエラーが発生する場合は、 **[ユーザー構成]** セクションに有効な値を入力したことを確認します。
--   Service Bus Relay 名前空間を作成できない場合は、必要なリソース プロバイダーがサブスクリプションに登録されていることを確認します。 登録されていない場合は、Azure portal で、Service Bus Relay 名前空間を手動で作成します。 これは、Azure portal で[ハイブリッド接続を作成する](./itsmc-connections.md#configure-the-hybrid-connection)ときに作成することもできます。
-
 
 ## <a name="contact-us"></a>お問い合わせ
 

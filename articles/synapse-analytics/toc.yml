@@ -502,7 +502,7 @@
               items:
                 - name: Azure Stream Analytics ジョブの追加
                   href: ./sql-data-warehouse/sql-data-warehouse-integrate-azure-stream-analytics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Synapse ワークスペースに接続するためのツール
+        - name: ツールやアプリと接続する
           items:
             - name: 概要
               href: sql/connect-overview.md
@@ -510,14 +510,20 @@
               href: sql/get-started-azure-data-studio.md
             - name: Connection strings
               href: sql/connection-strings.md
-            - name: sqlcmd を使用したクエリ
-              href: sql/get-started-connect-sqlcmd.md
             - name: SSMS を使用したクエリ
               href: sql/get-started-ssms.md
-            - name: Visual Studio を使用したクエリ
-              href: sql/get-started-visual-studio.md
             - name: Power BI Desktop への接続
               href: sql/get-started-power-bi-professional.md
+            - name: Visual Studio SSDT を使用したクエリ
+              href: sql/get-started-visual-studio.md
+            - name: .NET Core を使用したクエリ
+              href: ../azure-sql/database/connect-query-dotnet-core.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Visual Studio .NET を使用したクエリ
+              href: ../azure-sql/database/connect-query-dotnet-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Python を使用したクエリ
+              href: ../azure-sql/database/connect-query-python.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: sqlcmd を使用したクエリ
+              href: sql/get-started-connect-sqlcmd.md
 - name: Apache Spark
   items:
     - name: 概要
@@ -1107,6 +1113,10 @@
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
         - name: Azure Synapse 向けの Cognitive Services を構成する
           href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
+- name: 操作方法
+  items:
+    - name: コストの計画と管理
+      href: plan-manage-costs.md
 - name: リファレンス
   items:
     - name: Azure CLI

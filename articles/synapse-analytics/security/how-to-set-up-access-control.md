@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7243d24204c8e15ae4246718cafb24d31f804d02
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 62c30356017b5ea5d93351e6f22b8b7b0c22718c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519180"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109268"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Synapse ワークスペースのアクセス制御を設定する方法 
 
@@ -54,7 +54,7 @@ Synapse ワークスペースをセキュリティで保護するには、次の
 ## <a name="step-1-set-up-security-groups"></a>手順 1: セキュリティ グループを設定する
 
 >[!Note] 
->プレビュー期間中は、Synapse の "**Synapse SQL 管理者**" および "**Synapse Apache Spark 管理者**" ロールにマップされるセキュリティ グループを作成することをお勧めします。  きめ細かな Synapse RBAC ロールとスコープが新たに導入されたため、これらの新しい機能を使用してワークスペースへのアクセスを制御することをお勧めします。  これらの新しいロールとスコープでは、構成の柔軟性が向上するほか、開発者が分析アプリケーションを作成する際に多くの場合は SQL と Spark を組み合わせて使用し、ワークスペース内の特定のリソースへのアクセスを必要とすることが認識されています。 [詳細については、こちらを参照してください](./synapse-workspace-synapse-rbac.md)。
+>プレビュー期間中は、Synapse の "**Synapse SQL 管理者**" および "**Synapse Apache Spark 管理者**" ロールにマップされるセキュリティ グループを作成することをお勧めします。  きめ細かな Synapse RBAC ロールとスコープが新たに導入されたため、これらの新しい機能を使用してワークスペースへのアクセスを制御することをお勧めします。  これらの新しいロールとスコープでは、構成の柔軟性が向上するほか、開発者が分析アプリケーションを作成する際に多くの場合は SQL と Spark を組み合わせて使用し、ワークスペース全体ではなく特定のリソースへのアクセスを必要とすることが認識されています。 [Synapse RBAC](./synapse-workspace-synapse-rbac.md) の詳細を確認してください。
 
 ワークスペースに以下のセキュリティ グループを作成します。
 
@@ -66,9 +66,9 @@ Synapse ワークスペースをセキュリティで保護するには、次の
 これらのグループには、この後すぐにワークスペース スコープの Synapse ロールを割り当てます。  
 
 また、次のセキュリティ グループも作成します。 
-- **`workspace1_SQLAdministrators`** 。ワークスペースの SQL プール内の Active Directory 管理権限を必要とするユーザー向けのグループです。 
+- **`workspace1_SQLAdmins`** 。ワークスペースの SQL プール内の SQL Active Directory 管理権限を必要とするユーザー向けのグループです。 
 
-`workspace1_SynapseSQLAdministrators` グループは、SQL プールの作成時に SQL のアクセス許可を構成するときに使用されます。 
+`workspace1_SQLAdmins` グループは、SQL プールの作成時に SQL のアクセス許可を構成するときに使用されます。 
 
 基本的なセットアップには、これらの 5 つのグループで十分です。 後でセキュリティ グループを追加して、より特殊化されたアクセスを必要とするユーザーを処理したり、特定のリソースへのアクセスのみをユーザーに許可したりすることができます。
 
@@ -84,6 +84,7 @@ Synapse ワークスペースをセキュリティで保護するには、次の
 Synapse ワークスペースでは、既定のストレージ コンテナーを次のことに使用します。
   - Spark テーブル用のバッキング データ ファイルの格納
   - Spark ジョブの実行ログ
+  - インストールすることにしたライブラリの管理
 
 ストレージに関する次の情報を特定します。
 
@@ -94,7 +95,7 @@ Synapse ワークスペースでは、既定のストレージ コンテナー�
 
   - "**ストレージ BLOB データ共同作成者**" ロールを `workspace1_SynapseAdmins` に割り当てます 
   - "**ストレージ BLOB データ共同作成者**" ロールを `workspace1_SynapseContributors` に割り当てます
-  - "**ストレージ BLOB データ共同作成者**"  ロールを `workspace1_SynapseComputeOperators` に割り当てます **<< VALIDATE**
+  - "**ストレージ BLOB データ共同作成者**" ロールを `workspace1_SynapseComputeOperators` に割り当てます
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>手順 3:Synapse ワークスペースを作成して構成する
 
@@ -106,10 +107,10 @@ Azure portal で、Synapse ワークスペースを作成します。
 - ストレージ アカウントとして `storage1` を選択します
 - "Filesystem" として使用されているコンテナーに `container1` を選択します。
 - Synapse Studio で WS1 を開きます
-- **[管理]**  >  **[アクセス制御]** に移動して、セキュリティ グループに次の Synapse ロールを *ワークスペース スコープ* で割り当てます。
+- **[管理]**  >  **[アクセス制御]** に移動して、次のようにセキュリティ グループに Synapse ロールを *ワークスペース スコープ* で割り当てます。
   - "**Synapse 管理者**" ロールを `workspace1_SynapseAdministrators` に割り当てます 
   - "**Synapse 共同作成者**" ロールを `workspace1_SynapseContributors` に割り当てます 
-  - "**Synapse SQL コンピューティング オペレーター**" ロールを `workspace1_SynapseComputeOperators` に割り当てます
+  - "**Synapse コンピューティング オペレーター**" ロールを `workspace1_SynapseComputeOperators` に割り当てます
 
 ## <a name="step-4-grant-the-workspace-msi-access-to-the-default-storage-container"></a>手順 4:既定のストレージ コンテナーに対するワークスペース MSI アクセスを許可する
 
@@ -121,7 +122,7 @@ Synapse では、パイプラインを実行してシステム タスクを実�
   - 割り当てられていない場合は、割り当てます。
   - MSI には、ワークスペースと同じ名前が付けられます。 この記事では、`workspace1` です。
 
-## <a name="step-5-grant-the-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>手順 5:ワークスペースの "Azure 共同作成者" ロールを Synapse 管理者に付与する 
+## <a name="step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>手順 5:ワークスペースの "Azure 共同作成者" ロールを Synapse 管理者に付与する 
 
 SQL プール、Apache Spark プールと統合ランタイムを作成するには、ユーザーはワークスペースに対して少なくとも "Azure 共同作成者" アクセス権を持っている必要があります。 共同作成者ロールでは、一時停止やスケーリングなど、リソースの管理もユーザーに許可されます。
 
@@ -131,44 +132,44 @@ SQL プール、Apache Spark プールと統合ランタイムを作成するに
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>手順 6:"SQL Active Directory 管理者" ロールを割り当てる
 
-ワークステーションの作成者は、ワークスペースの Active Directory 管理者として自動的に設定されます。  このロールは、1 人のユーザーまたは 1 つのグループにのみ付与できます。 この手順では、ワークスペースの Active Directory 管理者を `workspace1_SynapseSQLAdministrators` セキュリティ グループに割り当てます。  このロールを割り当てると、このグループには、すべての SQL プールに対する高い特権を持つ管理者アクセス権が付与されます。   
+ワークステーションの作成者は、ワークスペースの SQL Active Directory 管理者として自動的に設定されます。  このロールは、1 人のユーザーまたは 1 つのグループにのみ付与できます。 この手順では、ワークスペースの SQL Active Directory 管理者を `workspace1_SQLAdmins` セキュリティ グループに割り当てます。  このロールを割り当てると、このグループには、ワークスペース内のすべての SQL プールとデータベースに対する高い特権を持つ管理者アクセス権が付与されます。   
 
 - Azure ポータルを開きます
 - `workspace1` に移動します
 - **[設定]** で、 **[SQL Active Directory 管理者]** を選択します
-- **[管理者の設定]** を選択し、 **`workspace1_SynapseSQLAdministrators`** を選択します
+- **[管理者の設定]** を選択し、 **`workspace1_SQLAdmins`** を選択します
 
 >[!Note]
->この手順は省略可能です。  SQL 管理者グループに、より低い特権のロールを付与することもできます。 `db_owner` またはその他の SQL ロールを割り当てるには、各 SQL データベースでスクリプトを実行する必要があります。 
+>手順 6 は省略可能です。  `workspace1_SQLAdmins` グループに権限の低いロールを付与することもできます。 `db_owner` またはその他の SQL ロールを割り当てるには、各 SQL データベースでスクリプトを実行する必要があります。 
 
 ## <a name="step-7-grant-access-to-sql-pools"></a>手順 7:SQL プールへのアクセス権を付与する
 
-既定では、"Synapse 管理者" ロールが割り当てられているすべてのユーザーには、サーバーレス SQL プール (組み込み) に対する SQL `db_owner` ロールも割り当てられます。
+既定では、"Synapse 管理者" ロールが割り当てられているすべてのユーザーには、サーバーレス SQL プール (組み込み) およびそのすべてのデータベースに対する SQL `db_owner` ロールも割り当てられます。
 
-他のユーザーおよびワークスペース MSI については、SQL プールへのアクセスは SQL アクセス許可を使用して制御されます。  SQL アクセス許可を割り当てるには、作成後に各 SQL プールで SQL スクリプトを実行する必要があります。  これらのスクリプトを実行する必要があるケースは 3 つあります。
-1. サーバーレス SQL プール (組み込み) へのアクセス権を他のユーザーに付与する
-2. 専用プールへのアクセス権を任意のユーザーに付与する
-3. 正常な実行に SQL プールへのアクセスを必要とするパイプラインを有効にするために、SQL プールへのアクセス権をワークスペース MSI に付与する。
+他のユーザーおよびワークスペース MSI については、SQL プールへのアクセスは SQL アクセス許可を使用して制御されます。  SQL アクセス許可を割り当てるには、作成後に各 SQL データベースで SQL スクリプトを実行する必要があります。  これらのスクリプトを実行する必要があるケースは 3 つあります。
+1. サーバーレス SQL プール (組み込み) およびそのデータベースへのアクセス権を他のユーザーに付与する
+2. 専用プール データベースへのアクセス権を任意のユーザーに付与する
+3. 正常な実行に SQL プールへのアクセスを必要とするパイプラインを有効にするために、SQL プール データベースへのアクセス権をワークスペース MSI に付与する。
 
 SQL スクリプトの例を以下に示します。
 
-専用 SQL プールへのアクセス権を付与するには、ワークスペースの作成者または `workspace1_SynapseSQL Administrators` グループの任意のメンバーがスクリプトを実行できます。  
+専用 SQL プール データベースへのアクセス権を付与するには、ワークスペースの作成者または `workspace1_SQLAdmins` グループの任意のメンバーがスクリプトを実行できます。  
 
-サーバーレス SQL プール (組み込み) へのアクセス権を付与するには、 `workspace1_SynapseAdministrators` グループの任意のメンバーがさらにスクリプトを実行できます。 
+サーバーレス SQL プール (組み込み) へのアクセス権を付与するには、 `workspace1_SQLAdmins` グループまたは `workspace1_SynapseAdministrators` グループの任意のメンバーがスクリプトを実行できます。 
 
 > [!TIP]
-> 以下の手順は、すべての SQL データベースへのユーザー アクセスを付与するために、SQL プール **ごと** に実行する必要があります。ただし、ユーザーに sysadmin ロールを割り当てることができる「[ワークスペース スコープのアクセス許可](#workspace-scoped-permission)」セクションは除きます。
+> 以下の手順は、すべての SQL データベースへのユーザー アクセスを付与するために、SQL プール **ごと** に実行する必要があります。ただし、ワークスペース レベルでユーザーに sysadmin ロールを割り当てることができる「[ワークスペース スコープのアクセス許可](#workspace-scoped-permission)」セクションは除きます。
 
-### <a name="step-71-serverless-sql-pools"></a>手順 7.1:サーバーレス SQL プール
+### <a name="step-71-serverless-sql-pool-built-in"></a>手順 7.1:サーバーレス SQL プール (組み込み)
 
-このセクションでは、特定のデータベースへのアクセス許可、またはサーバーのフル アクセス許可をユーザーに付与する方法に関する例を示します。
+このセクションでは、サーバーレス SQL プール (組み込み) 内の特定のデータベースまたはすべてのデータベースへのアクセス権をユーザーに付与する方法を示したスクリプト例が記されています。
 
 > [!NOTE]
 > スクリプトの例で、 *alias* はアクセス権を付与するユーザーまたはグループのエイリアスに置き換え、*domain* は使用している会社のドメインに置き換えてください。
 
-#### <a name="pool-scoped-permission"></a>プール スコープのアクセス許可
+#### <a name="database-scoped-permission"></a>データベース スコープのアクセス許可
 
-ユーザーに **単一の** サーバーレス SQL プールへのアクセス権を付与するには、次の例の手順に従います。
+ユーザーに **単一の** サーバーレス SQL データベースへのアクセスを許可するには、次の例の手順に従います。
 
 1. ログインを作成します
 
@@ -182,7 +183,7 @@ SQL スクリプトの例を以下に示します。
 2. ユーザーを作成します
 
     ```sql
-    use yourdb -- Use your DB name
+    use yourdb -- Use your database name
     go
     CREATE USER alias FROM LOGIN [alias@domain.com];
     ```
@@ -190,7 +191,7 @@ SQL スクリプトの例を以下に示します。
 3. 指定したロールのメンバーにユーザーを追加します
 
     ```sql
-    use yourdb -- Use your DB name
+    use yourdb -- Use your database name
     go
     alter role db_owner Add member alias -- Type USER name from step 2
     ```
@@ -200,25 +201,27 @@ SQL スクリプトの例を以下に示します。
 ワークスペース内の **すべての** サーバーレス SQL プールに対するフル アクセス権を付与するには、次の例のスクリプトを使用します。
 
 ```sql
+use master
+go
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
-ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
+ALTER SERVER ROLE sysadmin ADD MEMBER [alias@domain.com];
 ```
 
 ### <a name="step-72-dedicated-sql-pools"></a>手順 7.2:専用 SQL プール
 
-**単一の** 専用 SQL プールへのアクセス権を付与するには、Synapse SQL スクリプト エディターで次の手順を実行します。
+**単一の** 専用 SQL プール データベースへのアクセス権を付与するには、Synapse SQL スクリプト エディターで次の手順を実行します。
 
 1. *[接続先]* ドロップダウンを使用して選択したターゲット データベースで次のコマンドを実行して、データベースにユーザーを作成します。
 
     ```sql
-    --Create user in SQL DB
+    --Create user in the database
     CREATE USER [<alias@domain.com>] FROM EXTERNAL PROVIDER;
     ```
 
 2. データベースにアクセスするためのロールをユーザーに付与します。
 
     ```sql
-    --Create user in SQL DB
+    --Grant role to the user in the database
     EXEC sp_addrolemember 'db_owner', '<alias@domain.com>';
     ```
 
@@ -226,32 +229,35 @@ ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 > *db_owner* アクセス許可を付与することが望ましくない場合は、*db_datareader* および *db_datawriter* を読み取りまたは書き込みアクセス許可のために使用することができます。
 > Spark ユーザーが Spark と SQL プールとの間で直接読み取りまたは書き込みを行うには、*db_owner* アクセス許可が必要です。
 
-ユーザーを作成した後、サーバーレス SQL プールでストレージ アカウントにクエリを実行できることを検証します。
+ユーザーを作成した後、クエリを実行して、サーバーレス SQL プールでストレージ アカウントにクエリを実行できることを検証します。
 
-### <a name="step-73-sl-access-control-for-workspace-pipeline-runs"></a>手順 7.3:ワークスペースのパイプラインの実行に対する SL アクセス制御
+### <a name="step-73-sql-access-control-for-synapse-pipeline-runs"></a>手順 7.3:Synapse のパイプラインの実行に対する SQL アクセス制御
 
 ### <a name="workspace-managed-identity"></a>ワークスペースのマネージド ID
 
 > [!IMPORTANT]
 > SQL プールを参照するデータセットまたはアクティビティを含むパイプラインを正常に実行するには、ワークスペース ID に SQL プールへのアクセス権が付与されている必要があります。
 
-各 SQL プールで次のコマンドを実行して、ワークスペース マネージド ID が SQL プール データベースでパイプラインを実行できるようにします。
+各 SQL プールで次のコマンドを実行して、ワークスペース マネージド システム ID が SQL プール データベースでパイプラインを実行できるようにします。  
+
+>[!note]
+>次のスクリプトでは、専用の SQL プール データベースの場合、databasename はプール名と同じです。  サーバーレス SQL プール (組み込み) 内のデータベースの場合、databasename はデータベースの名前です。
 
 ```sql
---Create user in DB
+--Create a SQL user for the workspace MSI in database
 CREATE USER [<workspacename>] FROM EXTERNAL PROVIDER;
 
 --Granting permission to the identity
-GRANT CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
+GRANT CONTROL ON DATABASE::<databasename> TO <workspacename>;
 ```
 
 このアクセス許可を削除するには、同じ SQL プールで次のスクリプトを実行します。
 
 ```sql
---Revoking permission to the identity
-REVOKE CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
+--Revoke permission granted to the workspace MSI
+REVOKE CONTROL ON DATABASE::<databasename> TO <workspacename>;
 
---Deleting the user in the DB
+--Delete the workspace MSI user in the database
 DROP USER [<workspacename>];
 ```
 
@@ -283,6 +289,6 @@ CI/CD を含む高度な開発シナリオのためにワークスペースの *
 
 **オペレーターによるコード成果物へのアクセスを制限する**。  Synapse コンピューティング リソースの動作状態を監視し、ログを表示する必要はあっても、コードにアクセスしたりサービスに更新を発行したりする必要はないオペレーター向けに、セキュリティ グループを作成してください。 これらのグループに、特定の Spark プールと統合ランタイムをスコープとする "コンピューティング オペレーター" ロールを割り当てます。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Synapse RBAC ロールの割り当てを管理する方法](./how-to-manage-synapse-rbac-role-assignments.md)方法を学習する。[Synapse ワークスペース](../quickstart-create-workspace.md)を作成する

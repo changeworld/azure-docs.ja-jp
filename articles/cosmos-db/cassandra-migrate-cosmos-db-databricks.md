@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 827abcdb9eb2eb8b7328eb3e3a78f49d51e87e6b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 74088d749279ab72851e714a50b558dc2adbc0d7
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349182"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516554"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Azure Databricks を使用して Cassandra から Azure Cosmos DB Cassandra API アカウントにデータを移行する
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -42,7 +42,7 @@ Azure Cosmos DB の Cassandra API は、次のようなさまざまな理由に�
 
 ## <a name="provision-an-azure-databricks-cluster"></a>Azure Databricks クラスターのプロビジョニング
 
-手順に従って、[Azure Databricks クラスターをプロビジョニング](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)できます。 ただし、現時点では、Apache Cassandra コネクタに対して Apache Spark 3. x がサポートされていないことに注意してください。 サポートされている Apache Spark v2.x バージョンを使用して、Databricks ランタイムをプロビジョニングする必要があります。 Databricks ランタイムのバージョン 6.6 をお勧めします。
+手順に従って、[Azure Databricks クラスターをプロビジョニング](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)できます。 ただし、現時点では、Apache Cassandra コネクタに対して Apache Spark 3. x がサポートされていないことに注意してください。 サポートされている Apache Spark v2.x バージョンを使用して、Databricks ランタイムをプロビジョニングする必要があります。 最新バージョンの Spark 2.x をサポートしており、Scala バージョンが 2.11 以内の Databricks ランタイム バージョンを選択することをお勧めします。
 
 :::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="Databricks ランタイム":::
 

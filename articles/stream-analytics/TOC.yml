@@ -30,16 +30,17 @@
           href: create-cluster.md
 - name: チュートリアル
   items:
-    - name: 1 - ジョブの作成/管理
-      href: stream-analytics-manage-job.md
-    - name: 2 - Azure Functions の実行
+    - name: Power BI で不正な呼び出しを視覚化する
+      href: stream-analytics-real-time-fraud-detection.md
+    - name: Azure Functions の実行
       href: stream-analytics-with-azure-functions.md
-    - name: 3 - Azure Pipelines での CI/CD によるデプロイ
-      href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: 4 - C# UDF の実行
+    - name: C# UDF の実行
       href: stream-analytics-edge-csharp-udf.md
-    - name: 5 - カスタム .NET 逆シリアライザーの作成
+    - name: カスタム .NET 逆シリアライザーの作成
       href: custom-deserializer.md
+    - name: IoT Edge ジョブを作成する
+      href: /azure/iot-edge/tutorial-deploy-stream-analytics?view=iotedge-2018-06
+      maintainContext: true
 - name: サンプル
   items:
     - name: コード サンプル
@@ -56,6 +57,8 @@
       href: develop-locally.md
     - name: セキュリティ
       items:
+        - name: Azure Virtual Network (VNet) にジョブを接続する
+          href: connect-job-to-vnet.md
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -92,7 +95,7 @@
           href: event-hubs-output.md
         - name: Power BI
           href: power-bi-output.md
-        - name: Table ストレージ
+        - name: テーブル ストレージ
           href: table-storage-output.md
         - name: Service Bus キュー
           href: service-bus-queues-output.md
@@ -129,6 +132,8 @@
           href: repartition.md
         - name: ジョブのスループットを高くする
           href: stream-analytics-scale-jobs.md
+    - name: IoT Edge
+      href: stream-analytics-edge.md
     - name: ジョブの状態
       href: job-states.md
     - name: ウィンドウ関数
@@ -181,35 +186,31 @@
           href: stream-analytics-job-reliability.md
         - name: SQL リファレンス データを使用する
           href: sql-reference-data.md
-        - name: マネージド ID による認証
-          items:
-            - name: ADLS Gen 1
-              href: stream-analytics-managed-identities-adls.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: BLOB ストレージ
-              href: blob-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Event Hubs
-              href: event-hubs-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Power BI
-              href: powerbi-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Azure SQL と Azure Synapse
-              href: sql-database-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
         - name: データを暗号化する
           href: data-protection.md
         - name: geo 冗長
           href: geo-redundancy.md
+    - name: マネージド ID による認証
+      items:
+        - name: ADLS Gen 1
+          href: stream-analytics-managed-identities-adls.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: BLOB ストレージ
+          href: blob-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Event Hubs
+          href: event-hubs-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Power BI
+          href: powerbi-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Azure SQL と Azure Synapse
+          href: sql-database-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
     - name: ソリューションを構築する
       items:
         - name: Twitter センチメントの分析
           href: stream-analytics-twitter-sentiment-analysis-trends.md
-        - name: リアルタイムでの不正検出
-          href: stream-analytics-real-time-fraud-detection.md
-        - name: IoT Edge でのジョブの実行
-          href: stream-analytics-edge.md
         - name: Azure Stack でのジョブの実行
           href: on-azure-stack.md
         - name: 料金所のセンサー データの分析
@@ -287,6 +288,8 @@
           href: debug-locally-using-job-diagram-vs-code.md
         - name: ジョブの探索
           href: visual-studio-code-explore-jobs.md
+        - name: .NET カスタム逆シリアライザーを作成およびデバッグする
+          href: visual-studio-code-custom-deserializer.md
         - name: JobConfig.json のフィールド
           href: job-config-json.md
     - name: トラブルシューティング
