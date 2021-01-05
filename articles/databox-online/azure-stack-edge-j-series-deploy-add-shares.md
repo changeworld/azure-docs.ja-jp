@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 12/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 68cac756a3c84d0360d475a4bf88a392e3961f1d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 845eef6e119823af789c9a263bfb750845d55bc0
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447572"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740914"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>チュートリアル:Azure Stack Edge Pro GPU を使用して共有経由でデータを転送する
 
@@ -72,8 +72,7 @@ ms.locfileid: "96447572"
    
     f. お客様が SMB 共有と NFS 共有のどちらを作成したかに応じて、次の手順のいずれかを実行します。 
      
-    - **SMB 共有**: **[All privilege local user]\(すべての権限を持つローカル ユーザー\)** で、 **[新規作成]** または **[既存のものを使用]** を選択します。 新しいローカル ユーザーを作成する場合は、ユーザー名とパスワードを入力し、パスワードを確認入力します。 この操作を行うと、ローカル ユーザーにアクセス許可が割り当てられます。 ここで割り当てたアクセス許可は、エクスプローラーを使用して変更できます。
-    この共有データに対して **[読み取り操作のみを許可する]** チェック ボックスをオンにすると、読み取り専用ユーザーを指定することができます。
+    - **SMB 共有**: **[All privilege local user]\(すべての権限を持つローカル ユーザー\)** で、 **[新規作成]** または **[既存のものを使用]** を選択します。 新しいローカル ユーザーを作成する場合は、ユーザー名とパスワードを入力し、パスワードを確認入力します。 この操作を行うと、ローカル ユーザーにアクセス許可が割り当てられます。 共有レベルのアクセス許可の変更は現在サポートされていません。 この共有データに対して **[読み取り操作のみを許可する]** チェック ボックスをオンにすると、読み取り専用ユーザーを指定することができます。
     
         ![SMB 共有を追加する](./media/azure-stack-edge-j-series-deploy-add-shares/add-share-smb-1.png)
    

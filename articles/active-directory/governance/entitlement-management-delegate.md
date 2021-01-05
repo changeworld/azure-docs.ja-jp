@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75965fc9719c9ba16ee7fe24a23dfd4693f8afe0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2cf3784cc5f6014b04b4668517faf3f319ce55d5
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362554"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746679"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理の委任とロール
 
@@ -120,7 +120,7 @@ IT 管理者の Hana には、各部署に連絡先担当者がいます。マ�
 
 グローバル管理者は、カタログ内の任意のグループ (クラウドが作成したセキュリティ グループまたはクラウドが作成した Microsoft 365 グループ)、アプリケーション、または SharePoint Online サイトを追加または削除することができます。 ユーザー管理者は、ディレクトリ ロールに割り当て可能であるように構成されたグループを除き、カタログ内の任意のグループまたはアプリケーションを追加または削除することができます。
 
-グローバル管理者でもユーザー管理者でもないユーザーがカタログにグループ、アプリケーション、または SharePoint Online サイトを追加する場合、そのユーザーは、必要な Azure AD ディレクトリ ロールとカタログ所有者のエンタイトルメント管理ロールの " *両方* " を持っている必要があります。 次の表は、カタログにリソースを追加するために必要なロールの組み合わせを示します。 カタログからリソースを削除するには、同じロールが必要です。
+グローバル管理者でもユーザー管理者でもないユーザーがカタログにグループ、アプリケーション、または SharePoint Online サイトを追加する場合、そのユーザーは、必要な Azure AD ディレクトリ ロールとカタログ所有者のエンタイトルメント管理ロールの "*両方*" を持っている必要があります。 次の表は、カタログにリソースを追加するために必要なロールの組み合わせを示します。 カタログからリソースを削除するには、同じロールが必要です。
 
 | Azure AD ディレクトリ ロール | エンタイトルメント管理ロール | セキュリティ グループの追加 | Microsoft 365 グループの追加 | アプリの追加 | SharePoint Online サイトの追加 |
 | --- | :---: | :---: | :---: | :---: | :---: |

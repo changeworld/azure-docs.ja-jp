@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4ff270977449bb80f97073342dc0c726a3f2316
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb84eae2db01180865db54250598f45c7b2ddca0
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80128518"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746237"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理における要求プロセスと電子メール通知
 
@@ -40,7 +40,7 @@ ms.locfileid: "80128518"
 | 有効期限切れ | 承認要求タイムアウト期間内に要求を承認する承認者がいなかった場合、要求は期限切れになります。 再試行するには、ユーザーはその要求を再送信する必要があります。 |
 | 拒否 | 承認者は、要求を拒否します。 |
 | Approved | 承認者は、要求を承認します。 |
-| 配信 | ユーザーには、アクセス パッケージ内のすべてのリソースへのアクセスが割り当てられて**いません**。 これが外部ユーザーの場合、ユーザーはまだリソース ディレクトリにアクセスしていない可能性があります。 また、同意プロンプトを受け入れていない場合があります。 |
+| 配信 | ユーザーには、アクセス パッケージ内のすべてのリソースへのアクセスが割り当てられて **いません**。 これが外部ユーザーの場合、ユーザーはまだリソース ディレクトリにアクセスしていない可能性があります。 また、同意プロンプトを受け入れていない場合があります。 |
 | 配信済み | ユーザーには、アクセス パッケージ内のすべてのリソースへのアクセスが割り当てられています。 |
 | 拡張アクセス | ポリシーで拡張が許可されている場合、ユーザーは割り当てを拡張しています。 |
 | アクセス有効期限切れ | ユーザーのアクセス パッケージへのアクセスの有効期限が切れています。 アクセスを取得するには、ユーザーはもう一度要求を送信する必要があります。 |

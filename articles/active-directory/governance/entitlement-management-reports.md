@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86f2d5202a9b5439fcacca549659e4e181ffeca4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6eb44c1efd683b6febe9a355ef72c80cc6f2e40d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85078124"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746628"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でレポートとログを表示する
 
@@ -89,7 +89,7 @@ Azure AD エンタイトルメント管理レポートと Azure AD 監査ログ�
 
 1. ログをダウンロードするには、 **[ダウンロード]** をクリックします。
 
-Azure AD で新しい要求を受け取ると、監査レコードを書き込みます。このとき**カテゴリ**は`EntitlementManagement`であり**アクティビティ**は通常`User requests access package assignment`です。  Azure portal で直接割り当てを作成した場合、監査レコードの **[アクティビティ]** フィールドは`Administrator directly assigns user to access package`であり、割り当てを実行するユーザーが **ActorUserPrincipalName** で識別されます。
+Azure AD で新しい要求を受け取ると、監査レコードを書き込みます。このとき **カテゴリ** は`EntitlementManagement`であり **アクティビティ** は通常`User requests access package assignment`です。  Azure portal で直接割り当てを作成した場合、監査レコードの **[アクティビティ]** フィールドは`Administrator directly assigns user to access package`であり、割り当てを実行するユーザーが **ActorUserPrincipalName** で識別されます。
 
 Azure AD は、要求の進行中は、以下を含め追加の監査レコードを書き込みます。
 
@@ -103,9 +103,9 @@ Azure AD は、要求の進行中は、以下を含め追加の監査レコー�
 
 ユーザーにアクセスが割り当てられると、**アクティビティ** `Fulfill access package assignment` の `EntitlementManagement` カテゴリの監査レコードが Azure AD によって書き込まれます。  アクセス権を受け取ったユーザーは **[ActorUserPrincipalName]** フィールドで識別されます。
 
-アクセスが割り当てられていない場合、Azure AD では`EntitlementManagement`カテゴリの監査レコードを書き込みます。このとき**アクティビティ**は、要求が承認者により拒否されると`Deny access package assignment request`、承認者が承認する前に要求がタイムアウトすると`Access package assignment request timed out (no approver action taken)`になります。
+アクセスが割り当てられていない場合、Azure AD では`EntitlementManagement`カテゴリの監査レコードを書き込みます。このとき **アクティビティ** は、要求が承認者により拒否されると`Deny access package assignment request`、承認者が承認する前に要求がタイムアウトすると`Access package assignment request timed out (no approver action taken)`になります。
 
-ユーザーのアクセス パッケージの割り当てが期限切れになる、ユーザーがキャンセルする、または管理者が削除すると、`EntitlementManagement`カテゴリの監査レコードが書き込まれ、`Remove access package assignment`の**アクティビティ**になります。
+ユーザーのアクセス パッケージの割り当てが期限切れになる、ユーザーがキャンセルする、または管理者が削除すると、`EntitlementManagement`カテゴリの監査レコードが書き込まれ、`Remove access package assignment`の **アクティビティ** になります。
 
 ## <a name="next-steps"></a>次のステップ
 

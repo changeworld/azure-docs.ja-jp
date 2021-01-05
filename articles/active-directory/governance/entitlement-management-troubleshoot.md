@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ba90724f75635ea9fd5f72f75de6a46d7b6d288
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bca78195d4fb7bb265c4a7fd8d78ea49a35335b6
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447007"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746713"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理のトラブルシューティング
 
@@ -55,7 +55,7 @@ ms.locfileid: "91447007"
 
 ## <a name="external-users"></a>外部ユーザー
 
-* 外部ユーザーがアクセス パッケージへのアクセスを要求する必要がある場合は、アクセス パッケージの**マイ アクセス ポータル リンク**をユーザーが使用していることを確認します。 詳細については、[アクセス パッケージを要求するためのリンクの共有](entitlement-management-access-package-settings.md)に関する記事を参照してください。 外部ユーザーが単に **myaccess.microsoft.com** にアクセスしているだけで、完全なマイ アクセス ポータル リンクを使用していない場合、表示されるのは、そのユーザーの組織内で使用可能なアクセス パッケージであり、貴社組織内で使用可能なアクセス パッケージは表示されません。
+* 外部ユーザーがアクセス パッケージへのアクセスを要求する必要がある場合は、アクセス パッケージの **マイ アクセス ポータル リンク** をユーザーが使用していることを確認します。 詳細については、[アクセス パッケージを要求するためのリンクの共有](entitlement-management-access-package-settings.md)に関する記事を参照してください。 外部ユーザーが単に **myaccess.microsoft.com** にアクセスしているだけで、完全なマイ アクセス ポータル リンクを使用していない場合、表示されるのは、そのユーザーの組織内で使用可能なアクセス パッケージであり、貴社組織内で使用可能なアクセス パッケージは表示されません。
 
 * 外部ユーザーがアクセス パッケージへのアクセスを要求できない場合や、リソースにアクセスできない場合は、[外部ユーザーの設定](entitlement-management-external-users.md#settings-for-external-users)を確認してください。
 
@@ -63,7 +63,7 @@ ms.locfileid: "91447007"
 
 ## <a name="requests"></a>Requests
 
-* ユーザーがアクセス パッケージへのアクセスを要求する必要がある場合は、アクセス パッケージの**マイ アクセス ポータル リンク**をユーザーが使用していることを確認します。 詳細については、[アクセス パッケージを要求するためのリンクの共有](entitlement-management-access-package-settings.md)に関する記事を参照してください。
+* ユーザーがアクセス パッケージへのアクセスを要求する必要がある場合は、アクセス パッケージの **マイ アクセス ポータル リンク** をユーザーが使用していることを確認します。 詳細については、[アクセス パッケージを要求するためのリンクの共有](entitlement-management-access-package-settings.md)に関する記事を参照してください。
 
 * プライベート モードやシークレット モードに設定されたブラウザーを使用してマイ アクセス ポータルを開くと、サインインの動作に支障が生じる場合があります。 マイ アクセス ポータルにアクセスする際は、ブラウザーのプライベート モードやシークレット モードは使用しないようお勧めします。
 
@@ -95,7 +95,7 @@ ms.locfileid: "91447007"
 
 アクセス パッケージの再処理要求をトリガーした後にエラーが発生した場合は、システムで要求が再処理されるまで待つ必要があります。 システムでは数時間にわたって再処理が複数回試行されるため、この間に再処理を強制することはできません。 
 
-再処理できるのは、状態が **[Delivery failed]\(配信失敗)** または **[Partially delivered]\(一部配信済み)** であり、完了日が 1 週間以内の要求のみです。 それ以外の場合、**再処理**ボタンは淡色表示されます。
+再処理できるのは、状態が **[Delivery failed]\(配信失敗)** または **[Partially delivered]\(一部配信済み)** であり、完了日が 1 週間以内の要求のみです。 それ以外の場合、**再処理** ボタンは淡色表示されます。
 
 ![淡色表示された再処理ボタン](./media/entitlement-management-troubleshoot/cancel-reprocess-grayedout.png)
 
