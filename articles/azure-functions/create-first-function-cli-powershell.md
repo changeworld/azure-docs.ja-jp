@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-powershell
 - devx-track-azurecli
-ms.openlocfilehash: 45745419932a40a34abe65f54c61c87ab245f487
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: abbe3b9ed4d9a8c9bf30c6be3e6980228d319090
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424909"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937231"
 ---
 # <a name="quickstart-create-a-powershell-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に PowerShell 関数を作成する
 
@@ -133,7 +133,7 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
     
     前の例では、`<STORAGE_NAME>` を前の手順で使用したアカウントの名前に、`<APP_NAME>` を適宜グローバルに一意の名前に置き換えてください。 `<APP_NAME>` は、関数アプリの既定の DNS ドメインでもあります。 
     
-    このコマンドでは、[Azure Functions 従量課金プラン](functions-scale.md#consumption-plan) (ここで発生する使用量に関しては無料) で、指定された言語ランタイムで実行される関数アプリを作成します。 また、このコマンドを実行すると、関連する Azure Application Insights インスタンスが同じリソース グループにプロビジョニングされます。このインスタンスを使用することで、関数アプリを監視したりログを確認したりすることができます。 詳しくは、「[Azure Functions を監視する](functions-monitoring.md)」をご覧ください。 このインスタンスは、アクティブにするまでコストが発生しません。
+    このコマンドでは、[Azure Functions 従量課金プラン](consumption-plan.md) (ここで発生する使用量に関しては無料) で、指定された言語ランタイムで実行される関数アプリを作成します。 また、このコマンドを実行すると、関連する Azure Application Insights インスタンスが同じリソース グループにプロビジョニングされます。このインスタンスを使用することで、関数アプリを監視したりログを確認したりすることができます。 詳しくは、「[Azure Functions を監視する](functions-monitoring.md)」をご覧ください。 このインスタンスは、アクティブにするまでコストが発生しません。
 
 [!INCLUDE [functions-publish-project-cli](../../includes/functions-publish-project-cli.md)]
 

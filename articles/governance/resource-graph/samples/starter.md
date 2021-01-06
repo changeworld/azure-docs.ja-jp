@@ -269,7 +269,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ## <a name="show-resources-that-contain-storage"></a><a name="show-storage"></a>ストレージを含むリソースの表示
 
-一致する種類を明示的に定義する代わりに、このクエリの例により`contains`単語**ストレージ**する任意の Azure リソースが見つかります。
+一致する種類を明示的に定義する代わりに、このクエリの例により`contains`単語 **ストレージ** する任意の Azure リソースが見つかります。
 
 ```kusto
 Resources

@@ -7,16 +7,16 @@ ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: acb4290a90532b38f44a957e33c69f7d2b3f11f8
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 167e7c447fe43851255677a44043c508cbdc4239
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104820"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934834"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>クイック スタート:Kotlin と Maven を使用して初めての関数を作成する
 
-この記事では、Maven コマンド ライン ツールを使用して Kotlin 関数プロジェクトを作成し、Azure Functions に発行する方法を説明します。 完了すると、関数コードは Azure の[従量課金プラン](functions-scale.md#consumption-plan)で実行され、HTTP 要求を使用してトリガーできるようになります。
+この記事では、Maven コマンド ライン ツールを使用して Kotlin 関数プロジェクトを作成し、Azure Functions に発行する方法を説明します。 完了すると、関数コードは Azure の[従量課金プラン](consumption-plan.md)で実行され、HTTP 要求を使用してトリガーできるようになります。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -186,7 +186,7 @@ mvn azure-functions:deploy
 `cURL` を使用して、Azure で実行している関数アプリをテストします。 前の手順でデプロイされた独自の関数アプリの URL と一致するように、下のサンプルの URL を変更する必要があります。
 
 > [!NOTE]
-> **アクセス権**を `Anonymous` に設定していることを確認します。 `Function` の既定のレベルを選択した場合、関数エンドポイントにアクセスする要求で、[関数キー](functions-bindings-http-webhook-trigger.md#authorization-keys)を提示する必要があります。
+> **アクセス権** を `Anonymous` に設定していることを確認します。 `Function` の既定のレベルを選択した場合、関数エンドポイントにアクセスする要求で、[関数キー](functions-bindings-http-webhook-trigger.md#authorization-keys)を提示する必要があります。
 
 ```
 curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/HttpTrigger-Java -d AzureFunctions

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2020
+ms.date: 01/05/2021
 ms.author: memildin
-ms.openlocfilehash: 052758079d8d413f7b0fead2a5abf3b47b9a691e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0656000a1d6449306e8afe538f846c55c79a31a2
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511333"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915288"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Security Center に対する今後の重要な変更
 
@@ -44,7 +44,7 @@ Azure Policy への影響は 1 つだけで、準拠しているリソースの�
 
 ### <a name="35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure セキュリティ ベンチマークのカバレッジを広げるために追加される、35 個のプレビュー推奨事項
 
-**変更予定日:** 2020 年 12 月
+**変更予定日:** 2021 年 1 月
 
 Azure セキュリティ ベンチマークは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインのセットです。 [Azure セキュリティ ベンチマークの詳細を確認してください](../security/benchmarks/introduction.md)。
 

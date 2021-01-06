@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 5f8bf6fb6f464bcb74d34e2d99fac16c24b12615
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5e2d21a5f9f764f260695f17c93d5a615fc62efa
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175714"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937214"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Python 関数を作成する
 
@@ -256,7 +256,7 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
     
     前の例では、`<STORAGE_NAME>` を前の手順で使用したアカウントの名前に、`<APP_NAME>` を適宜グローバルに一意の名前に置き換えてください。  `<APP_NAME>` は、関数アプリの既定の DNS ドメインでもあります。 
     
-    このコマンドでは、[Azure Functions 従量課金プラン](functions-scale.md#consumption-plan) (ここで発生する使用量に関しては無料) で、指定された言語ランタイムで実行される関数アプリを作成します。 また、このコマンドを実行すると、関連する Azure Application Insights インスタンスが同じリソース グループにプロビジョニングされます。このインスタンスを使用することで、関数アプリを監視したりログを確認したりすることができます。 詳しくは、「[Azure Functions を監視する](functions-monitoring.md)」をご覧ください。 このインスタンスは、アクティブにするまでコストが発生しません。
+    このコマンドでは、[Azure Functions 従量課金プラン](consumption-plan.md) (ここで発生する使用量に関しては無料) で、指定された言語ランタイムで実行される関数アプリを作成します。 また、このコマンドを実行すると、関連する Azure Application Insights インスタンスが同じリソース グループにプロビジョニングされます。このインスタンスを使用することで、関数アプリを監視したりログを確認したりすることができます。 詳しくは、「[Azure Functions を監視する](functions-monitoring.md)」をご覧ください。 このインスタンスは、アクティブにするまでコストが発生しません。
 
 [!INCLUDE [functions-publish-project-cli](../../includes/functions-publish-project-cli.md)]
 

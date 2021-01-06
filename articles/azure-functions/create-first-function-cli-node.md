@@ -4,12 +4,12 @@ description: コマンド ラインから JavaScript 関数を作成し、ロー
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4a178cb0e69a6e2b666247bcb8e76ab2c7e272e1
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 3b14b7d9f97be12a73ffcb2416a00cd4a51bca5f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635672"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937248"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に JavaScript 関数を作成する
 
@@ -132,7 +132,7 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
     
     前の例では、`<STORAGE_NAME>` を前の手順で使用したアカウントの名前に、`<APP_NAME>` を適宜グローバルに一意の名前に置き換えてください。 `<APP_NAME>` は、関数アプリの既定の DNS ドメインでもあります。 
     
-    このコマンドでは、[Azure Functions 従量課金プラン](functions-scale.md#consumption-plan) (ここで発生する使用量に関しては無料) で、指定された言語ランタイムで実行される関数アプリを作成します。 また、このコマンドを実行すると、関連する Azure Application Insights インスタンスが同じリソース グループにプロビジョニングされます。このインスタンスを使用することで、関数アプリを監視したりログを確認したりすることができます。 詳しくは、「[Azure Functions を監視する](functions-monitoring.md)」をご覧ください。 このインスタンスは、アクティブにするまでコストが発生しません。
+    このコマンドでは、[Azure Functions 従量課金プラン](consumption-plan.md) (ここで発生する使用量に関しては無料) で、指定された言語ランタイムで実行される関数アプリを作成します。 また、このコマンドを実行すると、関連する Azure Application Insights インスタンスが同じリソース グループにプロビジョニングされます。このインスタンスを使用することで、関数アプリを監視したりログを確認したりすることができます。 詳しくは、「[Azure Functions を監視する](functions-monitoring.md)」をご覧ください。 このインスタンスは、アクティブにするまでコストが発生しません。
 
 [!INCLUDE [functions-publish-project-cli](../../includes/functions-publish-project-cli.md)]
 

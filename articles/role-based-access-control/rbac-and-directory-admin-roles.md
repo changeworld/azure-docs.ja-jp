@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/07/2020
+ms.date: 01/04/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: cc4f775c3cf4c016173c485d57f203b4665c6393
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3c320b8faf5ccb0b1aec521909b152dff171cbd7
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370646"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862597"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD ロール
 
@@ -44,7 +44,7 @@ Azure のロールをよりよく理解するには、歴史の一部を知る�
 
 | 従来のサブスクリプション管理者 | 制限 | アクセス許可 | Notes |
 | --- | --- | --- | --- |
-| アカウント管理者 | 1 Azure アカウントに 1 人 | <ul><li>[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) で課金を管理する</li><li>アカウントのすべてのサブスクリプションを管理する</li><li>新しいサブスクリプションを作成する</li><li>サブスクリプションを取り消す</li><li>サブスクリプションの課金を変更する</li><li>サービス管理者を変更する</li></ul> | 概念的には、サブスクリプションの課金の所有者です。<br>アカウント管理者には、Azure portal へのアクセス権が与えられません。 |
+| アカウント管理者 | 1 Azure アカウントに 1 人 | <ul><li>[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) で課金を管理する</li><li>アカウントのすべてのサブスクリプションを管理する</li><li>新しいサブスクリプションを作成する</li><li>サブスクリプションを取り消す</li><li>サブスクリプションの課金を変更する</li><li>サービス管理者を変更する</li></ul> | 概念的には、サブスクリプションの課金の所有者です。 |
 | サービス管理者 | 1 Azure サブスクリプションに 1 人 | <ul><li>[Azure portal](https://portal.azure.com) でサービスを管理する</li><li>サブスクリプションを取り消す</li><li>共同管理者ロールにユーザーを割り当てる</li></ul> | 既定で、新しいサブスクリプションのアカウント管理者はサービス管理者でもあります。<br>サービス管理者は、サブスクリプション スコープで所有者ロールを割り当てられているユーザーと同等のアクセス権を持ちます。<br>サービス管理者には、Azure portal へのフル アクセス権が与えられます。 |
 | 共同管理者 | サブスクリプションあたり 200 人 | <ul><li>サービス管理者と同じアクセス権を持っているものの、サブスクリプションと Azure ディレクトリとの関連付けを変更することはできない</li><li>共同管理者ロールにユーザーを割り当てる。ただし、サービス管理者を変更することはできない</li></ul> | 共同管理者は、サブスクリプション スコープで所有者ロールを割り当てられているユーザーと同等のアクセス権を持ちます。 |
 
