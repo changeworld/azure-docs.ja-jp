@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 903c36bc228faaac4cbf13fd00ca1b398e2f8add
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 87007d3df3fe44ab04a330b09b8e495ec4b47e54
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704861"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97865964"
 ---
 ## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>Azure CLI から Azure コンテナー インスタンス リソースを作成する
 
@@ -80,6 +80,6 @@ az container create -g <resource-group> -f my-aci.yaml
 [azure-container-create]: /cli/azure/container#az-container-create
 [template-format]: /azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups#template-format
 [aci-yaml-ref]: ../../../container-instances/container-instances-reference-yaml.md
-[repositories-and-images]: ../../cognitive-services-container-support.md#container-repositories-and-images
+[repositories-and-images]: ../container-image-tags.md
 [location-to-resource]: ../../../container-instances/container-instances-region-availability.md
 [secure-values]: ../../../container-instances/container-instances-environment-variables.md#secure-values

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: c7e859b05450b95cf9c75421599dd9c54a639cdc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 6163f059581c2699d0b2780545c3ad5ec80f2907
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606846"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882417"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>テキストおよび音声翻訳の言語と地域のサポート
 
@@ -165,7 +165,7 @@ ms.locfileid: "97606846"
 | パシュトウ語 | `ps` |
 | ペルシャ語 | `fa` |
 | ポーランド語 | `pl` |
-| ポルトガル語 | `pt` |
+| Portuguese | `pt` |
 | ルーマニア語 | `ro` |
 | ロシア語 | `ru` |
 | セルビア語 (キリル) | `sr-Cyrl` |
@@ -256,7 +256,7 @@ ms.locfileid: "97606846"
 | ノルウェー語      | `nb`          |
 | ペルシャ語      | `fa`          |
 | ポーランド語      | `pl`          |
-| ポルトガル語 (ブラジル)     | `pt-br`          |
+| ポルトガル語 (ブラジル)     | `pt`          |
 | ルーマニア語      | `ro`          |
 | ロシア語      | `ru`          |
 | セルビア語 (ラテン)      | `sr-Latn`          |

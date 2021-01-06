@@ -75,7 +75,7 @@
         - name: FAQ - Recovery Services コンテナー
           href: backup-azure-backup-faq.md
         - name: FAQ - バックアップ センター
-          href: backup-center-faq.md
+          href: backup-center-faq.yml
         - name: FAQ - Azure VM のバックアップ
           href: backup-azure-vm-backup-faq.md
         - name: FAQ - MARS エージェント
@@ -392,7 +392,7 @@
               href: backup-azure-arm-userestapi-managejobs.md
         - name: Resource Manager テンプレート
           href: backup-rm-template-samples.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: 概要
           href: security-overview.md

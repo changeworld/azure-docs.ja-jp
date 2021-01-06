@@ -157,7 +157,7 @@
         - name: Azure 仮想マシンの監視
           href: insights/monitor-vm-azure.md
           displayname: VM
-    - name: デプロイ
+    - name: 配置
       items:
         - name: Azure Monitor をデプロイする
           href: deploy.md
@@ -1090,6 +1090,8 @@
           href: insights/redis-cache-insights-overview.md
         - name: Azure Cosmos DB
           href: insights/cosmosdb-insights-overview.md
+        - name: Azure Data Explorer (プレビュー)
+          href: insights/data-explorer.md
         - name: ネットワーク
           href: insights/network-insights-overview.md
         - name: Key Vault

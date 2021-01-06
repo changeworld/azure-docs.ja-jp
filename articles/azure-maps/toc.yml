@@ -306,6 +306,8 @@
       items:
         - name: データ サービス
           href: /rest/api/maps/data
+        - name: 標高サービス
+          href: /rest/api/maps/elevation
         - name: 位置情報サービス
           href: /rest/api/maps/geolocation
         - name: モビリティ サービス

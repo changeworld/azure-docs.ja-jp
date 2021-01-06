@@ -12,12 +12,12 @@ ms.date: 09/28/2020
 ms.author: mbullwin
 ms.custom: cog-serv-seo-aug-2020
 keywords: オンプレミス, Docker, コンテナー, ストリーミング, アルゴリズム
-ms.openlocfilehash: 911eb993ea5bb3dcce63057efc2d56d91d5a136b
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 70e5950f6577ce2cca2f28be070f3ba372d46a7e
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364380"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862311"
 ---
 # <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>Anomaly Detector API 向けの Docker コンテナーをインストールし、実行する 
 
@@ -43,7 +43,7 @@ Anomaly Detector コンテナーを使用する前に、次の前提条件を満
 
 |必須|目的|
 |--|--|
-|Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では** 、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
+|Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。|
 |Anomaly Detector リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている API キーとエンドポイント URI を取得するための Azure _Anomaly Detector_ リソース。 どちらの値も、Azure portal の **Anomaly Detector** の概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページに提示されているエンドポイント|
 
@@ -174,10 +174,6 @@ Anomaly Detector コンテナーは、Azure アカウントの _Anomaly Detector
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 これらのオプションの詳細については、「[コンテナーの構成](anomaly-detector-container-configuration.md)」を参照してください。
-
-<!--blogs/samples/video coures -->
-
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>まとめ
 

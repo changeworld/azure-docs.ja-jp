@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: オンプレミス、OCR、Docker、コンテナー
-ms.openlocfilehash: b89d02107365872471f1dd5a7df07902b08f2031
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: a9eae2e547b347c88f8e745742ed34194c37a3b2
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006910"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862486"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Read OCR Docker コンテナー (プレビュー) をインストールする 
 
@@ -389,10 +389,6 @@ Cognitive Services コンテナーでは、Azure アカウントの対応する�
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 これらのオプションの詳細については、「[コンテナーの構成](./computer-vision-resource-container-config.md)」を参照してください。
-
-<!--blogs/samples/video course -->
-
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>まとめ
 
