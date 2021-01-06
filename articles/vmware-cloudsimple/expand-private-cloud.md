@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple プライベート クラウドの拡張
 description: 既存または新規のクラスターに容量を追加するために、既存の CloudSimple プライベート クラウドを拡張する方法について説明します
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 06/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a82ba1b433e62ed1c4b72b8e942d4ade29f26c4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c469ea3f104e71eb80010d4a5cd421eab6184fcf
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025301"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895859"
 ---
 # <a name="expand-a-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドの拡張
 
@@ -21,7 +21,7 @@ CloudSimple は、プライベート クラウドを動的に拡張する柔軟�
 
 プライベート クラウドは、1 つ以上の vSphere クラスターで構成されます。 各クラスターには、3 から 16 個のノードを含めることができます。  プライベート クラウドを拡張するときは、既存のクラスターにノードを追加するか、新しいクラスターを作成します。 既存のクラスターを拡張するには、追加するノードが既存のノードと同じ種類 (SKU) である必要があります。 新しいクラスターを作成する場合は、ノードの種類が違っていても構いません。 プライベート クラウドの制限の詳細については、「[CloudSimple プライベート クラウドの概要](cloudsimple-private-cloud.md)」の制限に関する節を参照してください。
 
-プライベート クラウドは、vCenter 上の既定の**データセンター**を使用して作成されます。  各データセンターは、最上位レベルの管理エンティティとして機能します。  新しいクラスターの場合、CloudSimple は、既存のデータセンターに追加するか、新しいデータセンターを作成するかの選択肢を提供します。
+プライベート クラウドは、vCenter 上の既定の **データセンター** を使用して作成されます。  各データセンターは、最上位レベルの管理エンティティとして機能します。  新しいクラスターの場合、CloudSimple は、既存のデータセンターに追加するか、新しいデータセンターを作成するかの選択肢を提供します。
 
 新規クラスター構成の一環として、CloudSimple は VMware インフラストラクチャを構成します。  設定には、vSAN ディスク グループ用のストレージ設定、VMware High Availability、および Distributed Resource Scheduler (DRS) が含まれます。
 

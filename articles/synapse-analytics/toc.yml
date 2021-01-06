@@ -1113,6 +1113,16 @@
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
         - name: Azure Synapse 向けの Cognitive Services を構成する
           href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
+- name: Data Catalog とガバナンス
+  items:
+    - name: クイックスタート
+      items:
+        - name: Azure Purview アカウントの接続
+          href: ./catalog-and-governance/quickstart-connect-azure-purview.md
+    - name: 操作方法ガイド
+      items:
+        - name: Azure Purview を使用した Synapse でのデータの検出、接続、調査
+          href: ./catalog-and-governance/how-to-discover-connect-analyze-azure-purview.md
 - name: 操作方法
   items:
     - name: コストの計画と管理

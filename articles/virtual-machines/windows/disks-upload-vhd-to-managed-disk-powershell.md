@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 25d8c36cc42c3f1d1cc2a8477a7361ba45bec706
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 17b99a9d3fa6b2934705d913170f2f617c856998
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977920"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915761"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - Azure PowerShell
 
@@ -44,7 +44,7 @@ GUI を使用してディスクをアップロードする場合は、Azure Stor
 
 アップロード用に空の標準 HDD を作成するには、アップロードする vhd のファイル サイズ (バイト単位) が必要です。 このコード例ではこのサイズを自動で取得できますが、この操作を自分で行うには、`$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length` を使用します。 この値は、 **-UploadSizeInBytes** パラメーターを指定するときに使用します。
 
-次に、ご利用のローカル シェル上に、アップロード用の空の標準 HDD を作成するには、[New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) コマンドレットにおいて、 **-CreateOption** パラメーターに **Upload** 設定を指定すると共に、 **-UploadSizeInBytes** パラメーターを指定します。 次に、[New-AzDisk](/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) を呼び出してディスクを作成します。
+次に、ご利用のローカル シェル上に、アップロード用の空の標準 HDD を作成するには、[New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0&preserve-view=true) コマンドレットにおいて、 **-CreateOption** パラメーターに **Upload** 設定を指定すると共に、 **-UploadSizeInBytes** パラメーターを指定します。 次に、[New-AzDisk](/powershell/module/az.compute/new-azdisk?view=azps-1.8.0&preserve-view=true) を呼び出してディスクを作成します。
 
 `<yourdiskname>`、`<yourresourcegroupname>`、`<yourregion>` を置き換え、次のコマンドを実行します。
 

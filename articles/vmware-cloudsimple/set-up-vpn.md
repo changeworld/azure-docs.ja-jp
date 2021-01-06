@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - オンプレミスとプライベート クラウド間の VPN を構成する
 description: オンプレミス ネットワークと CloudSimple プライベート クラウド間でサイト対サイトまたはポイント対サイト VPN 接続を構成する方法について説明します
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5cd08ce938a25e3311358892c9afa9eefd6c6dbf
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b7a119b538ee07b961011bfa98d748f92cc76f0e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424675"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899220"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドへの VPN 接続を構成する
 
@@ -22,7 +22,7 @@ VPN ゲートウェイを使用すると、オンプレミス ネットワーク
 ## <a name="vpn-gateway-types"></a>VPN ゲートウェイの種類
 
 * **ポイント対サイト VPN** 接続は、お使いのコンピューターから自分のプライベート クラウドに接続する最も簡単な方法です。 プライベート クラウドにリモートで接続するには、ポイント対サイト VPN 接続を使用します。
-* **サイト対サイト VPN** 接続を使用すると、オンプレミスのサービスにアクセスするようにプライベート クラウドのワークロードを設定できます。 プライベート クラウドの vCenter に対して認証を行うための ID ソースとして、オンプレミスの Active Directory を使用することもできます。  現時点では、 **ポリシーベースの VPN** の種類がサポートされています。
+* **サイト対サイト VPN** 接続を使用すると、オンプレミスのサービスにアクセスするようにプライベート クラウドのワークロードを設定できます。 プライベート クラウドの vCenter に対して認証を行うための ID ソースとして、オンプレミスの Active Directory を使用することもできます。  現時点では、**ポリシーベースの VPN** の種類がサポートされています。
 
 リージョンでは、1 つのサイト対サイト VPN ゲートウェイと 1 つのポイント対サイト VPN ゲートウェイを作成できます。
 
@@ -49,7 +49,7 @@ VPN ゲートウェイを使用すると、オンプレミス ネットワーク
 
 7. CloudSimple VPN ゲートウェイに接続します。
 
-次の例で、 **Viscosity クライアント** を使用した接続のインポートを示します。
+次の例で、**Viscosity クライアント** を使用した接続のインポートを示します。
 
 #### <a name="import-connection-on-viscosity-client"></a>Viscosity クライアントの接続をインポートする
 

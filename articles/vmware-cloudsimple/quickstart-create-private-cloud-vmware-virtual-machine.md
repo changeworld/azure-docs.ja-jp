@@ -1,19 +1,19 @@
 ---
 title: クイック スタート - プライベート クラウドに Azure VMware VM を作成する - Azure VMware Solution by CloudSimple
 description: CloudSimple プライベート クラウドに VMware 仮想マシンを作成する方法について説明します。 CloudSimple ポータルには Azure portal からアクセスします。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fd67a5a7f1bf665333e06c66f73c7f18727a3e12
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c741f01ccc3e34ec991aa77fc850fd9f60c4d8aa
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427768"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899288"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>プライベート クラウドに VMware 仮想マシンを作成する
 
@@ -28,7 +28,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 1. **[すべてのサービス]** を選択します。
 2. **CloudSimple Services** を検索します。
 3. プライベート クラウドを作成する CloudSimple サービスを選択します。
-4. **[概要]** ページから、 **[Go to the CloudSimple portal]\(CloudSimple ポータルに移動する\)** をクリックして CloudSimple ポータルの新しいブラウザー タブを開きます。  メッセージが表示されたら、Azure サインインの資格情報でサインインします。  
+4. **[概要]** ページから、**[Go to the CloudSimple portal]\(CloudSimple ポータルに移動する\)** をクリックして CloudSimple ポータルの新しいブラウザー タブを開きます。  メッセージが表示されたら、Azure サインインの資格情報でサインインします。  
 
     ![CloudSimple ポータルを起動する](media/launch-cloudsimple-portal.png)
 
@@ -46,30 +46,30 @@ vCenter にアクセスするには、CloudSimple ポータルから始めます
   > ISO のアップロードには、vSphere HTML5 クライアントを使用します。  Flash クライアントを使用するとエラーになる場合があります。
 
 1. VM を作成し、それをローカル システムで使用できるようにするための、vCenter にアップロードする ISO または vSphere テンプレートを取得します。
-2. vCenter で、 **[Disk]\(ディスク\)** アイコンをクリックして、 **[vsanDatastore]** を選択します。 **[Files]\(ファイル\)** をクリックし、 **[New Folder]\(新しいフォルダー\)** をクリックします。
+2. vCenter で、**[Disk]\(ディスク\)** アイコンをクリックして、**[vsanDatastore]** を選択します。 **[Files]\(ファイル\)** をクリックし、**[New Folder]\(新しいフォルダー\)** をクリックします。
     ![vCenter ISO](media/vciso00.png)
 
 3. 'ISOs and Templates' という名前のフォルダーを作成します。
 
-4. ISOs and Templates 内の ISOs フォルダーに移動し、 **[ファイルのアップロード]** をクリックします。 画面上の指示に従って、ISO をアップロードします。
+4. ISOs and Templates 内の ISOs フォルダーに移動し、**[ファイルのアップロード]** をクリックします。 画面上の指示に従って、ISO をアップロードします。
 
 ## <a name="create-a-virtual-machine-in-vcenter"></a>vCenter で仮想マシンを作成する
 
 1. vCenter で、 **[Hosts and Clusters]\(ホストおよびクラスター\)** アイコンをクリックします。
 
-2. **[Workload]\(ワークロード\)** を右クリックし、 **[New Virtual Machine]\(新しい仮想マシン\)** を選択します。
+2. **[Workload]\(ワークロード\)** を右クリックし、**[New Virtual Machine]\(新しい仮想マシン\)** を選択します。
     ![[新しい仮想マシン] メニュー オプションが強調表示されているスクリーンショット。](media/vcvm01.png)
 
 3. **[Create new virtual machine]\(新しい仮想マシンの作成\)** を選択し、 **[Next]\(次へ\)** をクリックします。
     ![[新しい仮想マシンの作成] オプションが強調表示されているスクリーンショット。](media/vcvm02.png)
 
-4. マシンに名前を付け、 **[Workload VM's] (ワークロード VM)** の場所を選択して **[次へ]** をクリックします。
+4. マシンに名前を付け、**[Workload VM's] (ワークロード VM)** の場所を選択して **[次へ]** をクリックします。
     ![[ワークロード VM] オプションが強調表示されているスクリーンショット。](media/vcvm03.png)
 
-5. **[Workload]\(ワークロード\)** コンピューティング リソースを選択し、 **[Next]\(次へ\)** をクリックします。
+5. **[Workload]\(ワークロード\)** コンピューティング リソースを選択し、**[Next]\(次へ\)** をクリックします。
     ![[ワークロード] コンピューティング リソースが強調表示されているスクリーンショット。](media/vcvm04.png)
 
-6. **[vsanDatastore]** を選択して、 **[Next]\(次へ\)** をクリックします。
+6. **[vsanDatastore]** を選択して、**[Next]\(次へ\)** をクリックします。
     ![[vsanDatastore] オプションが強調表示されているスクリーンショット。](media/vcvm05.png)
 
 7. 既定の ESXi 6.5 互換性を選択したままにして、 **[Next]\(次へ\)** をクリックします。
@@ -78,13 +78,13 @@ vCenter にアクセスするには、CloudSimple ポータルから始めます
 8. 作成している VM の ISO のゲスト OS を選択し、 **[次へ]** をクリックします。
     ![VM の ISO の ゲスト OS を選択する方法を示しているスクリーンショット。](media/vcvm07.png)
 
-9. ハード ディスクとネットワークのオプションを選択します。 [New CD/DVD Drive]\(新しい CD または DVD ドライブ\) で、 **[Datastore ISO file]\(データストアの ISO ファイル\)** を選択します。  パブリック IP アドレスからこの VM へのトラフィックを許可する場合は、ネットワークを **[vm-1]** として選択します。
+9. ハード ディスクとネットワークのオプションを選択します。 [New CD/DVD Drive]\(新しい CD または DVD ドライブ\) で、**[Datastore ISO file]\(データストアの ISO ファイル\)** を選択します。  パブリック IP アドレスからこの VM へのトラフィックを許可する場合は、ネットワークを **[vm-1]** として選択します。
     ![Datastore ISO ファイルを選択する場所が強調表示されているスクリーンショット。](media/vcvm08.png)
 
 10. 選択ウィンドウが開きます。 ISOs and Templates フォルダーに以前アップロードしたファイルを選択し、 **[OK]** をクリックします。
     ![新しい VM](media/vcvm10.png)
 
-11. 設定を確認し、 **[OK]** をクリックして VM を作成します。
+11. 設定を確認し、**[OK]** をクリックして VM を作成します。
     ![設定の確認場所を示しているスクリーンショット。](media/vcvm11.png)
 
 これで VM が Workload コンピューティング リソースに追加され、使用する準備ができました。 
@@ -132,7 +132,7 @@ CloudSimple ポータルの [ネットワーク] ページを使用すると、V
 
 ### <a name="allocate-public-ips"></a>パブリック IP を割り当てる
 
-1. CloudSimple ポータルで、 **[Network]\(ネットワーク\) > [Public IP]\(パブリック IP\)** に移動します。
+1. CloudSimple ポータルで、**[Network]\(ネットワーク\) > [Public IP]\(パブリック IP\)** に移動します。
 2. **[Allocate Public IP]\(パブリック IP を割り当てる\)** をクリックします。
 3. IP アドレス エントリを識別する名前を入力します。
 4. 既定の場所はそのままにします。

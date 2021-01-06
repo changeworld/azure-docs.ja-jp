@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: 814158ad68e63760c1f2a1bce3eeff812de3c13e
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a25d6d0d1990682287b5962a7bd93a0c525db133
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938734"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882366"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>ネットワーク分離のために Azure サービスと仮想ネットワークを統合する
 
 Azure サービスの Virtual Network (VNet) 統合を使用すると、サービスへのアクセスを、仮想ネットワーク インフラストラクチャのみに制限できます。 VNet インフラストラクチャには、ピアリングされた仮想ネットワークとオンプレミス ネットワークも含まれています。
 
 VNet 統合は、Azure サービスにネットワーク分離の利点を提供します。これは、次の 1 つ以上の方法で実現できます。
-- [サービスの専用インスタンスを仮想ネットワークにデプロイする](virtual-network-service-endpoints-overview.md)。 サービスは、仮想ネットワーク内で、また、オンプレミス ネットワークからプライベート アクセスできます。
+- [サービスの専用インスタンスを仮想ネットワークにデプロイする](virtual-network-for-azure-services.md)。 サービスは、仮想ネットワーク内で、また、オンプレミス ネットワークからプライベート アクセスできます。
 - [Azure Private Link](../private-link/private-link-overview.md) を使用するサービスにプライベートかつ安全に接続する[プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用する。 プライベート エンドポイントでは、自分の VNet からのプライベート IP アドレスを使用して、サービスを効果的に仮想ネットワークに取り込みます。
 - [サービス エンドポイント](virtual-network-service-endpoints-overview.md)を介して仮想ネットワークをサービスに拡張することによって、パブリック エンドポイントを使用してサービスにアクセスする。 サービス エンドポイントを使用することで、仮想ネットワークに対してサービス リソースをセキュリティで保護することができます。
 - [サービス タグ](service-tags-overview.md)を使用して、パブリック IP エンドポイントとの間で Azure リソースへのトラフィックを許可または拒否する。

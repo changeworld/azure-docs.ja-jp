@@ -28,7 +28,7 @@
       href: delete-application-portal.md
 - name: チュートリアル
   items:
-    - name: 事前構成済みのアプリの一覧
+    - name: アプリの統合に関するチュートリアル リスト
       href: /azure/active-directory/saas-apps/
     - name: アプリケーション プロキシを使用してオンプレミス アプリを追加する
       href: application-proxy-add-on-premises-application.md
@@ -111,7 +111,7 @@
           href: application-proxy-connectors.md
         - name: コネクタ グループ
           href: application-proxy-connector-groups.md
-        - name: セキュリティ
+        - name: Security
           href: application-proxy-security.md
         - name: ネットワーク トポロジ
           href: application-proxy-network-topology.md

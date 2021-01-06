@@ -1,25 +1,25 @@
 ---
 title: Azure VMware Solution by CloudSimple - プライベート クラウドで vCenter の ID ソースを設定する
 description: vCenter にアクセスする VMware 管理者を Active Directory で認証するようにプライベート クラウドの vCenter を設定する方法について説明します
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 60090dec56a177fac6ddad946d97142b484355af
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a76fecb942c5c6da926e37149245e82dcbc4661b
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425740"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899152"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Active Directory を使用するための vCenter ID ソースの設定
 
 ## <a name="about-vmware-vcenter-identity-sources"></a>VMware vCenter の ID ソースについて
 
-VMware vCenter は、vCenter にアクセスするユーザーを認証するためのさまざまな ID ソースをサポートしています。  vCenter にアクセスする VMware 管理者を Active Directory で認証するように、CloudSimple プライベート クラウドの vCenter を設定することができます。 設定が完了したら、 **cloudowner** ユーザーは ID ソースから vCenter にユーザーを追加できます。  
+VMware vCenter は、vCenter にアクセスするユーザーを認証するためのさまざまな ID ソースをサポートしています。  vCenter にアクセスする VMware 管理者を Active Directory で認証するように、CloudSimple プライベート クラウドの vCenter を設定することができます。 設定が完了したら、**cloudowner** ユーザーは ID ソースから vCenter にユーザーを追加できます。  
 
 Active Directory ドメインとドメイン コントローラーは、次のいずれかの方法で設定できます。
 
@@ -33,7 +33,7 @@ Active Directory ドメインとドメイン コントローラーは、次の�
 [ID ソースを追加](#add-an-identity-source-on-vcenter)する前に、一時的に [vCenter 特権をエスカレート](escalate-private-cloud-privileges.md)します。
 
 > [!CAUTION]
-> 新しいユーザーは、 *Cloud-Owner-Group* 、 *Cloud-Global-Cluster-Admin-Group* 、 *Cloud-Global-Storage-Admin-Group* 、 *Cloud-Global-Network-Admin-Group* 、または *Cloud-Global-VM-Admin-Group* にのみ追加する必要があります。  *Administrators* グループに追加されたユーザーは自動的に削除されます。  *[管理者]* グループに追加する必要があるのはサービス アカウントだけです。また、サービス アカウントを使用して vSphere Web UI にサインインすることはできません。   
+> 新しいユーザーは、*Cloud-Owner-Group*、*Cloud-Global-Cluster-Admin-Group*、*Cloud-Global-Storage-Admin-Group*、*Cloud-Global-Network-Admin-Group*、または *Cloud-Global-VM-Admin-Group* にのみ追加する必要があります。  *Administrators* グループに追加されたユーザーは自動的に削除されます。  *[管理者]* グループに追加する必要があるのはサービス アカウントだけです。また、サービス アカウントを使用して vSphere Web UI にサインインすることはできません。   
 
 
 ## <a name="identity-source-options"></a>ID ソースのオプション
@@ -121,7 +121,7 @@ Azure で実行される Active Directory は、オンプレミスで実行さ�
 
     ![シングル サインオン](media/OnPremAD02.png)
 
-5. **[Identity Sources]\(ID ソース\)** タブを開き、 **+** をクリックして新しい ID ソースを追加します。
+5. **[Identity Sources]\(ID ソース\)** タブを開き、**+** をクリックして新しい ID ソースを追加します。
 
     ![ID ソース](media/OnPremAD03.png)
 

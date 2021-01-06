@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5917de03468b86b67520c0b4f04dfd732377a021
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 57826fcff03e79d5617c7eb69aac7d535d3c86f7
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366294"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915710"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>条件付きアクセス:管理者に対して MFA を必須にする
 
@@ -31,6 +31,7 @@ Microsoft では、少なくとも以下のロールに対して MFA を必須�
 * 全体管理者
 * ヘルプデスク管理者
 * パスワード管理者
+* 特権ロール管理者
 * セキュリティ管理者
 * SharePoint 管理者
 * ユーザー管理者

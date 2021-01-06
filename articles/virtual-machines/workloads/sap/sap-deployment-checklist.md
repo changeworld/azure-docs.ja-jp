@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06d20dd47ceb71b51e226d662892eab06b072685
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 601f268f81c222ada5a4f99b05ae8ffcdfc13a23
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500939"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916288"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト
 
@@ -66,7 +66,7 @@ ms.locfileid: "96500939"
     - 高可用性とディザスター リカバリーのアーキテクチャ。
         - RTO と RPO に基づいて、必要な高可用性とディザスター リカバリー アーキテクチャの概要を定義します。
         - 1 つのゾーン内での高可用性の場合は、Azure で目的の DBMS が提供する必要のあるものを確認します。 ほとんどの DBMS パッケージでは同期ホット スタンバイの同期メソッドが提供されており、運用システム用に推奨されます。 「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](./dbms_guide_general.md)」と関連ドキュメントから始めて、さまざまなデータベースについての SAP 関連ドキュメントもチェックしてください。
-           たとえば、[こちら](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017)で SQL Server について説明されているように、DBMS レイヤーの共有ディスク構成で Windows Server フェールオーバー クラスタリングを使用することは、サポートされていません。 代わりに次のようなソリューションを使用してください。
+           たとえば、[こちら](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017&preserve-view=true)で SQL Server について説明されているように、DBMS レイヤーの共有ディスク構成で Windows Server フェールオーバー クラスタリングを使用することは、サポートされていません。 代わりに次のようなソリューションを使用してください。
            - [SQL Server AlwaysOn](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle データの保護](../oracle/configure-oracle-dataguard.md)
            - [HANA システム レプリケーション](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
@@ -299,7 +299,7 @@ ms.locfileid: "96500939"
 3. システムをシャットダウンできる時間を最適化します。  
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の記事を参照してください。
 
 - [SAP NetWeaver のための Azure Virtual Machines の計画と実装](./planning-guide.md)

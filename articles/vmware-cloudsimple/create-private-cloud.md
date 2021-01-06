@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - CloudSimple プライベート クラウドの作成
 description: CloudSimple プライベート クラウドを作成し、VMware のワークロードを運用上の柔軟性と継続性とともにクラウドに拡張する方法について説明します。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f4af4a36e719cbf15b3f0af77db81a32f2f2e42
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77024791"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896279"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドを作成する
 
@@ -55,8 +55,8 @@ ms.locfileid: "77024791"
     ![Azure からプライベート クラウドを作成する](media/create-private-cloud-from-azure.png)
 
 5. CloudSimple ポータルで、プライベート クラウドの名前を指定します。
-6. プライベート クラウドの**場所**を選択します。
-7. Azure 上にプロビジョンしたものと一貫性のある**ノードの種類**を選択します。
+6. プライベート クラウドの **場所** を選択します。
+7. Azure 上にプロビジョンしたものと一貫性のある **ノードの種類** を選択します。
 8. **[ノード数]** を指定します。  プライベート クラウドを作成するには、少なくとも 3 つのノードが必要です。
 
     ![プライベート クラウドを作成する - 基本情報](media/create-private-cloud-basic-info.png)

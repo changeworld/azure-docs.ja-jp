@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - ワークロード VM をプライベート クラウドに移行する
 description: オンプレミスの vCenter から CloudSimple プライベートクラウドの vCenter に仮想マシンを移行する方法について説明します
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 87b8a112a319519dbde977ee30136a884137212d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 851305775d14ed371440434b2fbe9334ec0a21b9
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77019997"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899322"
 ---
 # <a name="migrate-workload-vms-from-on-premises-vcenter-to-private-cloud-vcenter-environment"></a>オンプレミスの vCenter からプライベートクラウドの vCenter 環境にワークロード VM を移行する
 

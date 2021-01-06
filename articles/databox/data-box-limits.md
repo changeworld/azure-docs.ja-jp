@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 11/16/2020
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 00ba711661d69bbaf53ff51fb2cb833d9b1c1ae2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 97d8da86565db73aa9a3866f39f793aaf0905470
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660425"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900163"
 ---
 # <a name="azure-data-box-limits"></a>Azure Data Box の制限
 
@@ -43,7 +43,7 @@ Microsoft Azure Data Box をデプロイおよび運用する際には、以下�
 
 [!INCLUDE [data-box-data-upload-caveats](../../includes/data-box-data-upload-caveats.md)]
 
-## <a name="for-export-order"></a>エクスポート注文の場合
+### <a name="for-export-order"></a>エクスポート注文の場合
 
 エクスポート注文に関する Data Box の注意事項は次のとおりです。
 

@@ -3,14 +3,14 @@ title: Azure Automation Runbook からメールを送信する
 description: この記事では、Runbook 内からメールを送信する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 07/15/2019
+ms.date: 01/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: a81ae680a5f04eca0a6cc01ee24b474cc5daabea
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 65fa226b368baa3b1d4f376600e610a518c48c02
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005207"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900323"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Runbook からメールを送信する
 
@@ -67,7 +67,7 @@ Azure Key Vault を作成してシークレットを格納するその他の方�
 
 Runbook 内で Azure Key Vault を使用するには、次のモジュールを Automation アカウントにインポートする必要があります。
 
-* [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
+* [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts)
 * [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
 
 手順については、「[Az モジュールのインポート](shared-resources/modules.md#import-az-modules)」を参照してください。
@@ -142,7 +142,7 @@ Runbook が正常に実行されることを確認するには、「[Runbook を
 
 1. この Runbook が不要になったら、Runbook の一覧で選択し、 **[削除]** をクリックします。
 
-2. キー コンテナーを削除するには、[Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0) コマンドレットを使用します。
+2. キー コンテナーを削除するには、[Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault) コマンドレットを使用します。
 
 ```azurepowershell-interactive
 $VaultName = "<your KeyVault name>"

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 3518935991409d87917582558a34ad7c54841e23
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5e6188ca2e8e0972e86bed578144a29a96570876
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173665"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901200"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューの GitHub Actions ワークフロー
 
@@ -63,7 +63,7 @@ jobs:
         ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
         app_location: '/' # App source code path
         api_location: 'api' # Api source code path - optional
-        app_artifact_location: 'dist' # Built app content directory - optional
+        output_location: 'dist' # Built app content directory - optional
         ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
@@ -94,9 +94,9 @@ on:
     - master
 ```
 
-`on` プロパティに関連付けられている設定を使用して、ジョブをトリガーするブランチを定義し、さまざまな pull request の状態に対してトリガーを起動するように設定できます。
+`on` プロパティに関連付けられている設定を使用して、ジョブをトリガーするブランチを定義し、さまざまなプル要求の状態に対してトリガーを起動するように設定できます。
 
-この例では、 _master_ ブランチが変更されるとワークフローが開始されます。 ワークフローを開始する変更としては、選択したブランチに対するコミットのプッシュと pull request のオープンがあります。
+この例では、_master_ ブランチが変更されるとワークフローが開始されます。 ワークフローを開始する変更としては、選択したブランチに対するコミットのプッシュとプル要求のオープンがあります。
 
 ## <a name="jobs"></a>ジョブ
 
@@ -106,8 +106,8 @@ Static Web Apps ワークフロー ファイルには、2 つの使用可能な�
 
 | 名前  | 説明 |
 |---------|---------|
-|`build_and_deploy_job` | `on` プロパティに一覧表示されているブランチに対してコミットをプッシュするか pull request を開くと実行されます。 |
-|`close_pull_request_job` | pull request を閉じたときにのみ実行され、これにより、pull request から作成されたステージング環境が削除されます。 |
+|`build_and_deploy_job` | `on` プロパティに一覧表示されているブランチに対してコミットをプッシュするかプル要求を開くと実行されます。 |
+|`close_pull_request_job` | プル要求を閉じたときにのみ実行され、これにより、プル要求から作成されたステージング環境が削除されます。 |
 
 ## <a name="steps"></a>手順
 
@@ -118,7 +118,7 @@ Static Web Apps ワークフロー ファイルには、2 つの使用可能な�
 | ジョブ  | 手順  |
 |---------|---------|
 | `build_and_deploy_job` |<ol><li>Action の環境のリポジトリをチェックアウトします。<li>リポジトリをビルドして Azure Static Web Apps にデプロイします。</ol>|
-| `close_pull_request_job` | <ol><li>Pull request が終了したことを Azure Static Web Apps に通知します。</ol>|
+| `close_pull_request_job` | <ol><li>プル要求が終了したことを Azure Static Web Apps に通知します。</ol>|
 
 ## <a name="build-and-deploy"></a>ビルドとデプロイ
 
@@ -132,7 +132,7 @@ with:
     ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
     app_location: '/' # App source code path
     api_location: 'api' # Api source code path - optional
-    app_artifact_location: 'dist' # Built app content directory - optional
+    output_location: 'dist' # Built app content directory - optional
     ###### End of Repository/Build Configurations ######
 ```
 
@@ -140,7 +140,7 @@ with:
 |---|---|---|
 | `app_location` | アプリケーション コードの場所です。<br><br>たとえば、アプリケーションのソース コードがリポジトリのルートにある場合は `/` を入力し、アプリケーション コードが `app` という名前のディレクトリにある場合は `/app` を入力します。 | はい |
 | `api_location` | Azure Functions コードの場所です。<br><br>たとえば、アプリ コードが `api` という名前のフォルダーにある場合は、`/api` を入力します。 フォルダー内で Azure Functions アプリが検出されない場合、ビルドは失敗せず、API が必要とされていないことがワークフローで想定されます。 | いいえ |
-| `app_artifact_location` | `app_location` を基準としたビルド出力ディレクトリの場所です。<br><br>たとえば、アプリケーションのソース コードが `/app` にあり、ビルド スクリプトによってファイルが `/app/build` フォルダーに出力される場合、`build` を値 `app_artifact_location` として設定します。 | いいえ |
+| `output_location` | `app_location` を基準としたビルド出力ディレクトリの場所です。<br><br>たとえば、アプリケーションのソース コードが `/app` にあり、ビルド スクリプトによってファイルが `/app/build` フォルダーに出力される場合、`build` を値 `output_location` として設定します。 | いいえ |
 
 `repo_token`、`action`、`azure_static_web_apps_api_token` の値は Azure Web Apps Static によって設定されます。手動で変更しないでください。
 
@@ -163,7 +163,7 @@ with:
 |---------------------|-------------|
 | `routes_location` | _routes.json_ ファイルが存在するディレクトリの場所を定義します。 この場所は、リポジトリのルートを基準としています。 |
 
- _routes.json_ ファイルの場所を明確にすることは、フロントエンド フレームワークのビルド手順で、既定でこのファイルが `app_artifact_location` に移動されない場合に特に重要です。
+ _routes.json_ ファイルの場所を明確にすることは、フロントエンド フレームワークのビルド手順で、既定でこのファイルが `output_location` に移動されない場合に特に重要です。
 
 ## <a name="environment-variables"></a>環境変数
 
@@ -189,7 +189,7 @@ jobs:
           ###### Repository/Build Configurations
           app_location: "/"
           api_location: "api"
-          app_artifact_location: "public"
+          output_location: "public"
           ###### End of Repository/Build Configurations ######
         env: # Add environment variables here
           HUGO_VERSION: 0.58.0

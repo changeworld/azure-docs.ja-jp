@@ -59,7 +59,7 @@
       items:
         - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: Visual Studio
+        - name: "Visual\_Studio"
           href: functions-add-output-binding-storage-queue-vs.md
         - name: コマンド ライン
           href: functions-add-output-binding-storage-queue-cli.md
@@ -417,6 +417,8 @@
           href: functions-recover-storage-account.md
         - name: Python 関数のトラブルシューティング
           href: recover-python-functions.md
+        - name: Python 関数のスケールとパフォーマンス
+          href: python-scale-performance-reference.md
 - name: リファレンス
   items:
     - name: API リファレンス

@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - Private Cloud 上で ID ソースとして Azure AD を使用する
 description: CloudSimple Private Cloud 上で ID プロバイダーとして Azure AD を追加し、Azure から CloudSimple にアクセスするユーザーを認証する方法について説明します。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 93922986dfe0b2b4e8ba0923931df601cc12428b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f55a0f52f5e028f9cbf7a9fabbb3c24ad43c3800
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532530"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898608"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>CloudSimple Private Cloud 上で vCenter の ID プロバイダーとして Azure AD を使用する
 
@@ -90,9 +90,9 @@ vCenter で ID ソースとして Azure AD を使用するには、Azure AD と 
     | **ドメイン名** | ドメインの FQDN (例: example.com)。 このテキスト ボックスには IP アドレスを指定しないでください。 |
     | **Domain alias** (ドメイン エイリアス) | *(省略可能)* ドメインの NetBIOS 名。 SSPI 認証を使用している場合は、Active Directory ドメインの NetBIOS 名を ID ソースのエイリアスとして追加します。 |
     | **Base DN for groups** (グループのベース DN) | グループのベース識別名。 Azure AD の場合、次のように使用します。`OU=AADDC Users,DC=<domain>,DC=<domain suffix>`  例: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
-    | **Primary Server URL** (プライマリ サーバーの URL) | ドメインのプライマリ ドメイン コントローラー LDAP サーバー。<br><br> `ldaps://hostname:port` の形式を使用します。 LDAPS 接続の場合、通常、このポートは 636 です。 <br><br>プライマリまたはセカンダリの LDAP URL で  `ldaps://`  を使用するときは、Active Directory サーバーの LDAPS エンドポイントに対して信頼を確立する証明書が必要です。 |
+    | **Primary Server URL** (プライマリ サーバーの URL) | ドメインのプライマリ ドメイン コントローラー LDAP サーバー。<br><br>「`ldaps://hostname:port`」の形式を使用します。 LDAPS 接続の場合、通常、このポートは 636 です。 <br><br>プライマリまたはセカンダリの LDAP URL で `ldaps://` を使用するときは、Active Directory サーバーの LDAPS エンドポイントに対して信頼を確立する証明書が必要です。 |
     | **Secondary server URL** (セカンダリ サーバーの URL) | フェールオーバーに使用するセカンダリ ドメイン コントローラー LDAP サーバーのアドレス。 |
-    | **Choose certificate** (証明書の選択) | Active Directory LDAP サーバーまたは OpenLDAP サーバーの ID ソースで LDAPS を使用する場合は、URL テキスト ボックスに「 `ldaps://` 」と入力した後に [証明書の選択] ボタンが表示されます。 セカンダリの URL は必須ではありません。 |
+    | **Choose certificate** (証明書の選択) | Active Directory LDAP サーバーまたは OpenLDAP サーバーの ID ソースで LDAPS を使用する場合は、URL テキスト ボックスに「`ldaps://`」と入力すると、[証明書の選択] ボタンが表示されます。 セカンダリの URL は必須ではありません。 |
     | **ユーザー名** | ユーザーおよびグループのベース DN への最小限の読み取り専用アクセス権を持つドメイン内のユーザーの ID。 |
     | **パスワード** | [ユーザー名] で指定したユーザーのパスワード。 |
 

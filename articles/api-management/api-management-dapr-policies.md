@@ -6,12 +6,12 @@ ms.author: vlvinogr
 ms.date: 10/23/2020
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: 16788e3f547c5848893ba3867da4291c45b04408
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 9d1ba226e3ca1276658f7e72e9094918f0379a77
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335487"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653539"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API Management の Dapr 統合ポリシー
 
@@ -159,7 +159,7 @@ Dapr ランタイムがターゲット トピックを見つけられないな�
 
 | 属性        | 説明                     | 必須 | Default |
 |------------------|---------------------------------|----------|---------|
-| pubsub-name      | ターゲット PubSub コンポーネントの名前。 Dapr の [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) パラメーターにマップされます。 存在しない場合、 __topic__ 属性値は `pubsub-name/topic-name` の形式である必要があります。    | いいえ       | なし    |
+| pubsub-name      | ターゲット PubSub コンポーネントの名前。 Dapr の [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) パラメーターにマップされます。 存在しない場合、__topic__ 属性値は `pubsub-name/topic-name` の形式である必要があります。    | いいえ       | なし    |
 | topic            | トピックの名前。 Dapr の [topic](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) パラメーターにマップされます。               | はい      | 該当なし     |
 | ignore-error     | `true` に設定すると、Dapr ランタイムからエラーを受信したときに ["on-error"](api-management-error-handling-policies.md) セクションをトリガーしないようにポリシーに指示します | いいえ | `false` |
 | response-variable-name | Dapr ランタイムからの応答を格納するために使用する [Variables](api-management-policy-expressions.md#ContextVariables) コレクションのエントリの名前 | いいえ | なし |

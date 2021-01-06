@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - CloudSimple サービスの作成
 description: Azure portal で CloudSimple サービスを作成する方法について説明します。 開始する前に、必要な構成を確認してください。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2a196e717dd6e02570e4bdf830a24ce342b47ece
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53f2d0fc9f73985bd70792c8c3b7607eb4c560fa
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88140549"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896296"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>Azure VMware Solution by CloudSimple サービスの作成
 
@@ -32,7 +32,7 @@ Azure VMware Solution by CloudSimple を開始するには、Azure portal で Az
 1. **[すべてのサービス]** を選択します。
 2. **CloudSimple Services** を検索します。
     ![CloudSimple サービスを検索する](media/create-cloudsimple-service-search.png)
-3. **CloudSimple サービス**を選択します。
+3. **CloudSimple サービス** を選択します。
 4. 新しいサービスを作成するには、**Add** (追加) をクリックします。
     ![CloudSimple サービスを追加する](media/create-cloudsimple-service-add.png)
 5. CloudSimple サービスを作成するサブスクリプションを選択します。

@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - VPN ゲートウェイを設定する
 description: ポイント対サイト VPN ゲートウェイとサイト間 VPN ゲートウェイを設定し、オンプレミス ネットワークと CloudSimple プライベート クラウドの間に接続を作成する方法について説明します
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78f78bfbf885cbae7708a75cb54ce2d41e7b526c
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91872002"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899101"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>CloudSimple ネットワーク上の VPN ゲートウェイを設定する
 
@@ -66,11 +66,11 @@ VPN ゲートウェイに VLAN/サブネットを追加するためのポリシ�
 
     ![サイト間 VPN ゲートウェイ接続の作成](media/create-vpn-gateway-s2s-connection.png)
 
-6. オンプレミス ネットワークからアクセスされるプライベート クラウド ネットワーク上の VLAN/サブネットを有効にして、 **[次へ]** をクリックします。
+6. オンプレミス ネットワークからアクセスされるプライベート クラウド ネットワーク上の VLAN/サブネットを有効にして、**[次へ]** をクリックします。
 
-    * 管理 VLAN/サブネットを追加するには、 **[Add management VLANs/Subnets of Private Clouds]\(プライベート クラウドの管理 VLAN/サブネットを追加する\)** を有効にします。  管理サブネットは VMotion および vSAN サブネットに必要です。
-    * vMotion サブネットを追加するには、 **[Add vMotion network of Private Clouds]\(プライベート クラウドの vMotion ネットワークを追加する\)** を有効にします。
-    * vSAN サブネットを追加するには、 **[Add vMotion network of Private Clouds]\(プライベート クラウドの vSAN サブネットを追加する\)** を有効にします。
+    * 管理 VLAN/サブネットを追加するには、**[Add management VLANs/Subnets of Private Clouds]\(プライベート クラウドの管理 VLAN/サブネットを追加する\)** を有効にします。  管理サブネットは VMotion および vSAN サブネットに必要です。
+    * vMotion サブネットを追加するには、**[Add vMotion network of Private Clouds]\(プライベート クラウドの vMotion ネットワークを追加する\)** を有効にします。
+    * vSAN サブネットを追加するには、**[Add vMotion network of Private Clouds]\(プライベート クラウドの vSAN サブネットを追加する\)** を有効にします。
     * 特定の VLAN を選択または選択解除します。
 
     ![接続を作成する](media/create-vpn-gateway-s2s-connection-vlans.png)
@@ -96,7 +96,7 @@ VPN ゲートウェイに VLAN/サブネットを追加するためのポリシ�
 
 5. **[Connection/User]\(接続/ユーザー\)** で次の設定を指定して、 **[次へ]** をクリックします。
 
-    * 現在および将来のすべてのユーザーがポイント対サイト ゲートウェイ経由でプライベート クラウドにアクセスするのを自動的に許可するには、 **[Automatically add all users]\(すべてのユーザーを自動的に追加する\)** を選択します。 このオプションを選択すると、ユーザーの一覧のすべてのユーザーが自動的に選択されます。 一覧で個々のユーザーの選択を解除して、自動オプションをオーバーライドできます。
+    * 現在および将来のすべてのユーザーがポイント対サイト ゲートウェイ経由でプライベート クラウドにアクセスするのを自動的に許可するには、**[Automatically add all users]\(すべてのユーザーを自動的に追加する\)** を選択します。 このオプションを選択すると、ユーザーの一覧のすべてのユーザーが自動的に選択されます。 一覧で個々のユーザーの選択を解除して、自動オプションをオーバーライドできます。
     * 個々のユーザーを選択するには、ユーザーの一覧でチェック ボックスをオンにします。
 
 6. [VLANs/Subnets]\(VLAN/サブネット\) セクションでは、ゲートウェイと接続に対する管理およびユーザーの VLAN/サブネットを指定できます。

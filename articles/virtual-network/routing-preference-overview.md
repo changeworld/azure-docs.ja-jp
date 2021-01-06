@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: c1c2c5f27143be7fc10269c948bee9d5465d565a
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 656f8a0e0530a20807fc8fddd4cd96d1d955c8ac
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530444"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912701"
 ---
 # <a name="what-is-routing-preference-preview"></a>ルーティング優先設定とは (プレビュー)
 
@@ -72,11 +72,6 @@ Azure のルーティング優先設定を使用すると、Azure とインタ�
 ## <a name="pricing"></a>価格
 両方のオプションの価格差は、インターネット エグレス データ転送の価格に反映されます。 **Microsoft グローバル ネットワーク** 経由のルーティングのデータ転送料金は、現在のインターネット エグレス料金と同じです。 最新の価格の情報については、[Azure 帯域幅の価格に関するページ](https://azure.microsoft.com/pricing/details/bandwidth/)を参照してください。 
 
-## <a name="availability"></a>可用性
-
-ルーティング優先設定のサポートは、インターネット エグレスにパブリック IP アドレスを使用する仮想マシンやインターネットに接続するロード バランサーなどのサービスについて、次のリージョンで利用できます: 北ヨーロッパ、西ヨーロッパ、フランス南部、英国南部、米国東部、米国中北部、米国中南部、米国西部、米国中西部、東南アジア、ドイツ中西部、スイス西部、東日本、西日本。
-
-ストレージ アカウントに対するルーティング優先設定がサポートされている Azure リージョンは、米国中北部、米国中西部、米国中南部、米国東部、米国西部、北ヨーロッパ、フランス南部、ドイツ中西部、スイス西部、東南アジア、東日本、および西日本です。
 ## <a name="limitations"></a>制限事項
 
 * ルーティング優先設定は、パブリック IP アドレスの Standard SKU とのみ互換性があります。 パブリック IP アドレスの Basic SKU はサポートされていません。

@@ -205,8 +205,16 @@
           href: partner-center-portal/create-iot-edge-module-asset.md
     - name: 管理サービス オファー
       items:
+        - name: 管理サービス オファーの計画
+          href: plan-managed-service-offer.md
         - name: 管理サービス オファーの作成
-          href: partner-center-portal/create-new-managed-service-offer.md
+          href: create-managed-service-offer.md
+        - name: 管理サービスの構成の一覧
+          href: create-managed-service-offer-listing.md
+        - name: プレビュー対象ユーザーの追加
+          href: create-managed-service-offer-preview.md
+        - name: プランを作成する
+          href: create-managed-service-offer-plans.md
     - name: Power BI アプリ オファー
       items:
         - name: Power BI アプリ オファーの計画
