@@ -688,6 +688,10 @@
       items:
         - name: HDInsight での Apache HBase の使用
           href: ./hbase/apache-hbase-tutorial-get-started-linux.md
+    - name: 概念
+      items:
+        - name: Advisor の推奨事項に合わせて最適化する
+          href: ./hbase/apache-hbase-advisor.md
     - name: 操作方法ガイド
       items:
         - name: 開発

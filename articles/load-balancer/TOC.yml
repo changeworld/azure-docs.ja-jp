@@ -93,6 +93,8 @@
       href: manage.md
     - name: 仮想マシン スケール セット
       items:
+        - name: 仮想マシン スケール セットで使用される既存の Azure Load Balancer を更新または削除する
+          href: update-load-balancer-with-vm-scale-set.md
         - name: 既存の Azure Load Balancer での使用 - ポータル
           href: configure-vm-scale-set-portal.md
         - name: 既存の Azure Load Balancer での使用 - PowerShell

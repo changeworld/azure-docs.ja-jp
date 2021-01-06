@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Defender for IoT のドキュメント
-summary: Azure Defender for IoT は、包括的な IoT デバイス脅威保護を提供する Azure ベースのクラウド セキュリティ サービスです。
+summary: Azure Defender for IoT は、IoT/OT 環境に対する包括的な脅威検出機能を備えており、完全なオンプレミス、クラウド接続、ハイブリッドなどの複数のデプロイ オプションが用意されています。
 metadata:
   title: Azure Defender for IoT のドキュメント
   description: Azure ベースのクラウド セキュリティ サービス、Azure Defender for IoT が包括的な IoT デバイス脅威保護を提供するしくみについて説明します。
@@ -11,12 +11,12 @@ metadata:
   author: mlottner
   ms.author: mlottner
   ms.date: 09/07/2020
-  ms.openlocfilehash: 00cef8a146a84c4261dde46785f2ea9bb1c03173
-  ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+  ms.openlocfilehash: 65bdc8c54e8cee2ee1b63d21a172ba870162d070
+  ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/31/2020
-  ms.locfileid: "97832337"
+  ms.lasthandoff: 01/04/2021
+  ms.locfileid: "97860827"
 landingContent:
 - title: Azure Defender for IoT を使用した作業の開始
   linkLists:
