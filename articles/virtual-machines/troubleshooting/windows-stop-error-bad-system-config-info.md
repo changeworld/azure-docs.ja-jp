@@ -30,7 +30,7 @@ ms.locfileid: "91977033"
 [ブート診断](./boot-diagnostics.md)を使用して VM のスクリーンショットを表示すると、Windows の STOP コード **#0x00000074** または **BAD_SYSTEM_CONFIG_INFO** が表示される。
 
 "*問題が発生したため、PC を再起動する必要があります。再起動してください。* 
-*この問題と、考えられる修正プログラムの詳細については、http://windows.com/stopcode をご覧ください。* 
+*この問題と、考えられる修正プログラムの詳細については、 http://windows.com/stopcode をご覧ください。* 
 *サポート担当者に連絡する場合は、次の情報をお伝えください。* 
 *STOP コード: BAD_SYSTEM_CONFIG_INFO*"
 
