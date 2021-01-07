@@ -1,6 +1,6 @@
 ---
 title: Azure Databricks による変換
-description: Azure Data Factory で Databricks ノートブックを使用することにより、ソリューション テンプレートを使用してデータを変換する方法について説明します。
+description: Azure Data Factory で Databricks Notebook を使用することにより、ソリューション テンプレートを使用してデータを変換する方法について説明します。
 services: data-factory
 ms.author: abnarain
 author: nabhishek
@@ -26,9 +26,9 @@ ms.locfileid: "82857645"
 
 - **検証**は、コピーおよび分析ジョブをトリガーする前に、ソース データセットがダウンストリームで使用できる状態にします。
 
-- **データ コピー**は、ソース データセットを Azure Databricks ノートブックに DBFS としてマウントされているシンク ストレージにコピーします。 このようにして、データセットを Spark で直接使用することができます。
+- **データ コピー**は、ソース データセットを Azure Databricks Notebook に DBFS としてマウントされているシンク ストレージにコピーします。 このようにして、データセットを Spark で直接使用することができます。
 
-- **ノートブック**によって、データセットを変換する Databricks ノートブックがトリガーされます。 また、処理されたフォルダーまたは Azure SQL Data Warehouse にデータセットを追加します。
+- **ノートブック**によって、データセットを変換する Databricks Notebook がトリガーされます。 また、処理されたフォルダーまたは Azure SQL Data Warehouse にデータセットを追加します。
 
 わかりやすくするために、このチュートリアルのテンプレートではスケジュールされたトリガーを作成しません。 必要に応じて、1 つを追加できます。
 
@@ -146,7 +146,7 @@ ms.locfileid: "82857645"
 
        ![ノートブック パス](media/solution-template-Databricks-notebook/notebook-settings.png)
 
-    1. **[基本パラメーター]** セレクターを展開し、パラメーターが次のスクリーンショットに示されている内容と一致していることを確認します。 これらのパラメーターは Data Factory から Databricks ノートブックに渡されます。
+    1. **[基本パラメーター]** セレクターを展開し、パラメーターが次のスクリーンショットに示されている内容と一致していることを確認します。 これらのパラメーターは Data Factory から Databricks Notebook に渡されます。
 
        ![基本パラメーター](media/solution-template-Databricks-notebook/base-parameters.png)
 
