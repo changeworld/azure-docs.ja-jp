@@ -3,6 +3,8 @@
 - name: 概要
   href: overview.md
   items:
+    - name: 新機能
+      href: release-notes.md
     - name: ソリューションのアーキテクチャ
       href: architecture.md
 - name: クイックスタート

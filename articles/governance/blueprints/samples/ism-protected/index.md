@@ -3,16 +3,16 @@ title: Australian Government ISM PROTECTED ブループリント サンプルの
 description: Australian Government ISM PROTECTED ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定の ISM PROTECTED コントロールを評価するのに役立ちます。
 ms.date: 09/11/2020
 ms.topic: sample
-ms.openlocfilehash: 4e6b1db0d2f4ecff13068c8e673f2237740ffec2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69f18c7a34bdf39ebbc2031b187d033c999165a9
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90038696"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955571"
 ---
 # <a name="overview-of-the-australian-government-ism-protected-blueprint-sample"></a>Australian Government ISM PROTECTED ブループリント サンプルの概要
 
-ISM Governance ブループリント サンプルには、ISM PROTECTED 構成証明 (2020 年 2 月バージョン) に役立つ、[Azure Policy](../../../policy/overview.md) を使用した一連のガバナンスのガードレールが用意されています。 ブループリントは、ISM フレームワークによる認定やそれへの準拠が必要とされる、Azure でデプロイされたアーキテクチャのために、一連の主要なポリシーをデプロイするのに役立ちます。 コントロール マッピングのセクションでは、このイニシアチブ内に含まれるポリシーについてと、それらのポリシーが、ISM フレームワークによって定義されたさまざまなコントロールに対応するうえでどのように役立つかについて詳しく説明します。 リソースはアーキテクチャに割り当てられると、割り当て済みのポリシーに違反していないかどうかを Azure Policy によって評価されます。
+ISM Governance ブループリント サンプルには、ISM PROTECTED 構成証明 (2020 年 2 月バージョン) に役立つ、[Azure Policy](../../../policy/overview.md) を使用した一連のガバナンスのガードレールが用意されています。 ブループリントは、ISM フレームワークによる認定やそれへの準拠が必要とされる、Azure でデプロイされたアーキテクチャのために、一連の主要なポリシーをデプロイするのに役立ちます。 
 
 ## <a name="control-mapping"></a>コントロール マッピング
 
