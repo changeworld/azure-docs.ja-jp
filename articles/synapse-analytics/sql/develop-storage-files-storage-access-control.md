@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6eff662ac0140e7a64cc3bab28856178708cb9b2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: edb1d419900147b586ba1ff257d4307b237be537
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400677"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746730"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールのストレージ アカウント アクセスを制御する
 
@@ -89,9 +89,67 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 
 \* ファイアウォールで保護されていないストレージには、SAS トークンと Azure AD ID を使用してアクセスできます。
 
-> [!IMPORTANT]
-> ファイアウォールで保護されているストレージにアクセスする場合に使用できるのは、マネージド ID のみです。 [信頼された Microsoft サービスを許可](../../storage/common/storage-network-security.md#trusted-microsoft-services)する設定を行い、そのリソース インスタンスの[システムによって割り当てられたマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に明示的に [Azure ロール](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)を割り当てる必要があります。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた Azure ロールに対応します。
->
+
+### <a name="querying-firewall-protected-storage"></a>ファイアウォールで保護されたストレージのクエリ
+
+ファイアウォールで保護されているストレージにアクセスする場合に、**ユーザー ID** または **マネージド ID** を使用できます。
+
+#### <a name="user-identity"></a>ユーザー ID
+
+ファイアウォールで保護されているストレージにユーザー ID を使用してアクセスするには、PowerShell モジュール Az.Storage を使用します。
+#### <a name="configuration-via-powershell"></a>PowerShell を使用した構成
+
+ストレージ アカウントのファイアウォールを構成し、Synapse ワークスペースの例外を追加するには、次の手順に従います。
+
+1. Powershell を開くか [PowerShell をインストール](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1&preserve-view=true )します
+2. 更新された Az. Storage モジュールをインストールします 
+    ```powershell
+    Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    ```
+    > [!IMPORTANT]
+    > バージョン 3.0.1 以降を使用していることを確認してください。 次のコマンドを実行して、Az.Storage のバージョンを確認できます。  
+    > ```powershell 
+    > Get-Module -ListAvailable -Name  Az.Storage | select Version
+    > ```
+    > 
+
+3. Azure テナントに接続します 
+    ```powershell
+    Connect-AzAccount
+    ```
+4. PowerShell で変数を定義します 
+    - リソース グループ名 - これは、Azure portal の Synapse ワークスペースの概要で確認できます。
+    - アカウント名 - ファイアウォール規則によって保護されているストレージ アカウントの名前。
+    - テナント ID - Azure portal で Azure Active Directory のテナント情報できます。
+    - リソース ID - これは、Azure portal の Synapse ワークスペースの概要で確認できます。
+
+    ```powershell
+        $resourceGroupName = "<resource group name>"
+        $accountName = "<storage account name>"
+        $tenantId = "<tenant id>"
+        $resourceId = "<Synapse workspace resource id>"
+    ```
+    > [!IMPORTANT]
+    > リソース ID がこのテンプレートと一致していることを確認してください。
+    >
+    > **resourcegroups** を小文字で記述することが重要です。
+    > 1 つのリソース ID の例: 
+    > ```
+    > /subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Synapse/workspaces/{name-of-workspace}
+    > ```
+    > 
+5. ストレージ ネットワーク規則を追加します 
+    ```powershell
+        Add-AzStorageAccountNetworkRule -ResourceGroupName $resourceGroupName -Name $accountName -TenantId $tenantId -ResourceId $resourceId
+    ```
+6. ストレージ アカウントに規則が適用されていることを確認します 
+    ```powershell
+        $rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
+        $rule.ResourceAccessRules
+    ```
+
+#### <a name="managed-identity"></a>マネージド ID
+[信頼された Microsoft サービスを許可](../../storage/common/storage-network-security.md#trusted-microsoft-services)する設定を行い、そのリソース インスタンスの[システムによって割り当てられたマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に明示的に [Azure ロール](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)を割り当てる必要があります。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた Azure ロールに対応します。
 
 ## <a name="credentials"></a>資格情報
 

@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: f270f74f97a9b9306d7b23dacec12c38f418dbd1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fb85920b04e3cd457dc36d1ba1fd0f18dcd7abb6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921819"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937061"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>カスタム コンテナーを使用して Linux で関数を作成する
 
@@ -20,7 +20,7 @@ ms.locfileid: "96921819"
 Azure Functions では、[カスタム ハンドラー](functions-custom-handlers.md)を使用するすべての言語またはランタイムがサポートされています。 このチュートリアルで使用する R プログラミング言語など、一部の言語では、カスタム コンテナーの使用を必要とする依存関係として、ランタイムまたは追加のライブラリをインストールする必要があります。
 ::: zone-end
 
-関数コードをカスタム Linux コンテナーにデプロイするには、[Premium プラン](functions-premium-plan.md#features)または[専用 (App Service) プラン](functions-scale.md#app-service-plan)のホスティングが必要です。 このチュートリアルを完了すると、お使いの Azure アカウントで数ドルのコストが発生します。これは、完了時に[リソースをクリーンアップする](#clean-up-resources)ことによって最小限に抑えることができます。
+関数コードをカスタム Linux コンテナーにデプロイするには、[Premium プラン](functions-premium-plan.md)または[専用 (App Service) プラン](dedicated-plan.md)のホスティングが必要です。 このチュートリアルを完了すると、お使いの Azure アカウントで数ドルのコストが発生します。これは、完了時に[リソースをクリーンアップする](#clean-up-resources)ことによって最小限に抑えることができます。
 
 [Linux でホストされる初めての関数の作成](./create-first-function-cli-csharp.md?pivots=programming-language-python)に関するページで説明されている既定の Azure App Service コンテナーを使用することもできます。 Azure Functions でサポートされている基本イメージについては、[Azure Functions 基本イメージ リポジトリ](https://hub.docker.com/_/microsoft-azure-functions-base)を参照してください。
 

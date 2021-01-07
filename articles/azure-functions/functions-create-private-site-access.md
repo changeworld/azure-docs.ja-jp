@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 75e3886e31592b0672487bacd5ff2266e07e39cd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 766ad12daeb6d2763f7ed5fe026cd4a0021eaf33
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182507"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937044"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>チュートリアル:Azure Functions のプライベート サイト アクセスを設定する
 
@@ -130,7 +130,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="create-an-azure-functions-app"></a>Azure Functions アプリを作成する
 
-次の手順では、[従量課金プラン](functions-scale.md#consumption-plan)を使用して Azure に関数アプリを作成します。 後からこのチュートリアルの中で、このリソースに自分の関数コードをデプロイします。
+次の手順では、[従量課金プラン](consumption-plan.md)を使用して Azure に関数アプリを作成します。 後からこのチュートリアルの中で、このリソースに自分の関数コードをデプロイします。
 
 1. ポータルで、リソース グループ ビューの上部にある **[追加]** を選択します。
 1. **[Compute] > [Function App]** の順に選択します。
@@ -149,7 +149,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
     | 設定      | 推奨値  | 説明      |
     | ------------ | ---------------- | ---------------- |
-    | _ストレージ アカウント_ | グローバルに一意の名前 | Function App で使用されるストレージ アカウントを作成します。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを使用することもできますが、[ストレージ アカウントの要件](./functions-scale.md#storage-account-requirements)を満たしている必要があります。 |
+    | _ストレージ アカウント_ | グローバルに一意の名前 | Function App で使用されるストレージ アカウントを作成します。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを使用することもできますが、[ストレージ アカウントの要件](storage-considerations.md#storage-account-requirements)を満たしている必要があります。 |
     | _オペレーティング システム_ | 優先オペレーティング システム | オペレーティング システムは、ランタイム スタックの選択に基づいてあらかじめ選択されますが、必要に応じて設定を変更できます。 |
     | _プラン_ | 従量課金 | [ホスティング プラン](./functions-scale.md)は、関数アプリのスケーリング方法と各インスタンスが利用できるリソースを規定するものです。 |
 1. **[確認および作成]** を選択して、アプリ構成の選択内容を確認します。

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7fe1c01542df2fcc38982fe2a30f9e94c712eacb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2617308d342be19f74e1f3145a1137fadb04d073
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87065247"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914690"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して高可用性仮想マシンを作成してデプロイする
 
@@ -45,7 +45,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ## <a name="create-an-availability-set"></a>可用性セットの作成
 
-1 つの場所にあるハードウェアは、複数の更新ドメインと障害ドメインに分割されます。 **更新ドメイン**は、VM と、同時に再起動できる基になる物理ハードウェアのグループです。 同じ**障害ドメイン**内の VM は、共通の電源とネットワーク スイッチだけでなく、共通のストレージも共有します。  
+1 つの場所にあるハードウェアは、複数の更新ドメインと障害ドメインに分割されます。 **更新ドメイン** は、VM と、同時に再起動できる基になる物理ハードウェアのグループです。 同じ **障害ドメイン** 内の VM は、共通の電源とネットワーク スイッチだけでなく、共通のストレージも共有します。  
 
 可用性セットは、[New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) を使用して作成します。 この例では、更新ドメインと障害ドメインの数はどちらも *2* であり、可用性セットの名前は *myAvailabilitySet* です。
 
@@ -75,7 +75,7 @@ VM がハードウェア全体に適切に分散されるようにするには�
 
 [New-AzVM](/powershell/module/az.compute/new-azvm) を使用して VM を作成するときに、`-AvailabilitySetName` パラメーターを使用して可用性セットの名前を指定します。
 
-まず、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) を使用して、VM の管理者のユーザー名とパスワードを設定します。
+まず、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) を使用して、VM の管理者のユーザー名とパスワードを設定します。
 
 ```azurepowershell-interactive
 $cred = Get-Credential

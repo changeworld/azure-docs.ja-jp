@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 5f511a898b3b2964f954ba150b05f02486456dcf
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e49a84f5ac507ac80481313c103701a88934083a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171498"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900775"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>チュートリアル:Hugo サイトを Azure Static Web Apps プレビューに発行する
 
@@ -103,11 +103,11 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 1. **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします
 1. **[作成]** をクリックします。
 
-   :::image type="content" source="./media/publish-hugo/create-in-portal.png" alt-text="ポータルで Azure Static Web Apps リソースを作成する&quot;:::
+   :::image type="content" source="./media/publish-hugo/create-in-portal.png" alt-text="ポータルで Azure Static Web Apps リソースを作成する":::
 
 1. **[サブスクリプション]** で、リストされているサブスクリプションを受け入れるか、ドロップダウン リストから新しいサブスクリプションを選択します。
 
-1. _[リソース グループ]_ で、 **[新規]** を選択します。 &quot; _新しいリソース グループ名_ " として「 **hugo-static-app** 」と入力し、 **[OK]** を選択します。
+1. _[リソース グループ]_ で、 **[新規]** を選択します。 "_新しいリソース グループ名_" として「**hugo-static-app**」と入力し、 **[OK]** を選択します。
 
 1. 次に、 **[名前]** ボックスに対象のアプリの名前を入力します。 有効な文字には、`a-z`、`A-Z`、`0-9`、および `-` があります。
 
@@ -115,11 +115,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. _[SKU]_ で、 **[Free]** を選択します。
 
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="ポータルで Azure Static Web Apps リソースを作成する&quot;:::
-
-1. **[サブスクリプション]** で、リストされているサブスクリプションを受け入れるか、ドロップダウン リストから新しいサブスクリプションを選択します。
-
-1. _[リソース グループ]_ で、 **[新規]** を選択します。 &quot; _新しいリソース グループ名_ ":::
+   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="詳細情報の入力":::
 
 1. **[GitHub でサインイン]** ボタンをクリックします。
 
@@ -127,13 +123,9 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. _[リポジトリ]_ として **hugo-static-app** を選択します。
 
-1. _[ブランチ]_ では、 **master** を選択します。
+1. _[ブランチ]_ では、**master** を選択します。
 
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="ポータルで Azure Static Web Apps リソースを作成する&quot;:::
-
-1. **[サブスクリプション]** で、リストされているサブスクリプションを受け入れるか、ドロップダウン リストから新しいサブスクリプションを選択します。
-
-1. _[リソース グループ]_ で、 **[新規]** を選択します。 &quot; _新しいリソース グループ名_ ":::
+   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="入力済みの GitHub 情報":::
 
 ### <a name="build"></a>Build
 
@@ -143,7 +135,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. _[App location]\(アプリの場所\)_ を「 **/** 」に設定します。
 
-1. _[App artifact location]\(アプリ成果物の場所\)_ を「 **public** 」に設定します。
+1. _[App artifact location]\(アプリ成果物の場所\)_ を「**public**」に設定します。
 
    この時点では API をデプロイしていないため _[API location]\(アプリの場所\)_ の値は必要ありません。
 
@@ -157,11 +149,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. Azure portal で新しく作成された Azure Static Web Apps リソースの _[概要]_ ウィンドウに移動し、 _[URL]_ リンクをクリックして、デプロイしたアプリケーションを開きます。
 
-   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="ポータルで Azure Static Web Apps リソースを作成する&quot;:::
-
-1. **[サブスクリプション]** で、リストされているサブスクリプションを受け入れるか、ドロップダウン リストから新しいサブスクリプションを選択します。
-
-1. _[リソース グループ]_ で、 **[新規]** を選択します。 &quot; _新しいリソース グループ名_ ":::
+   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="デプロイされたアプリケーション":::
 
 #### <a name="custom-hugo-version"></a>カスタム Hugo バージョン
 
@@ -188,7 +176,7 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/" # App source code path
           api_location: "api" # Api source code path - optional
-          app_artifact_location: "public" # Built app content directory - optional
+          output_location: "public" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env:
           HUGO_VERSION: 0.58.0
