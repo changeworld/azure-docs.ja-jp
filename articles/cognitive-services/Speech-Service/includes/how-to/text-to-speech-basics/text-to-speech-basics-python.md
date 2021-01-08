@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
-ms.openlocfilehash: adc40f8c949c50570533a19d46f4b5dafa79325c
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: a306cca2d10052d36ae04950deb87fa56d0fd5e1
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425517"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97731917"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 
@@ -129,6 +129,9 @@ stream = AudioDataStream(result)
 
 要件に応じて、ファイルの種類ごとにさまざまなオプションがあります。 定義上、`Raw24Khz16BitMonoPcm` のような未加工の形式にはオーディオ ヘッダーが含まれないことに注意してください。 未加工の形式は、ダウンストリームの実装で未加工のビットストリームをデコードできることがわかっている場合か、ビット深度、サンプル レート、チャネル数などに基づいてヘッダーを手動で作成する場合にのみ使用してください。
 
+> [!NOTE]
+> **en-US-AriaRUS** および **en-US-GuyRUS** の音声は、`Riff24Khz16BitMonoPcm` サンプル レートでエンコードされたサンプルから作成されます。
+
 この例では、`SpeechConfig` オブジェクトに `SpeechSynthesisOutputFormat` を設定することにより、高忠実度の RIFF 形式 `Riff24Khz16BitMonoPcm` を指定します。 前のセクションの例と同様に、[`AudioDataStream`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audiodatastream?preserve-view=true&view=azure-python) を使用して結果のインメモリ ストリームを取得し、それをファイルに書き込みます。
 
 
@@ -148,7 +151,7 @@ stream.save_to_wav_file("path/to/write/file.wav")
 音声合成マークアップ言語 (SSML) を使用すると、XML スキーマから要求を送信して、テキスト読み上げ出力のピッチ、発音、読み上げ速度、ボリュームなどを微調整することができます。 このセクションでは実用的な使用例をいくつか紹介しますが、詳細なガイドについては、[SSML の操作方法に関する記事](../../../speech-synthesis-markup.md)を参照してください。
 
 SSML を使用したカスタマイズを開始するには、音声を切り替える単純な変更を加えます。
-まず、ルート プロジェクト ディレクトリに SSML 構成用の新しい XML ファイルを作成します (この例では `ssml.xml`)。 ルート要素は常に `<speak>` であり、テキストを `<voice>` 要素でラップすることで、`name` パラメーターを使用して音声を変更できます。 この例では、音声を男性の英語 (英国) の音声に変更します。 この音声が **標準** 音声であることに注意してください。これは、 **ニューラル** 音声とは価格や可用性が異なります。 サポートされている **標準** 音声の [全一覧](../../../language-support.md#standard-voices)を参照してください。
+まず、ルート プロジェクト ディレクトリに SSML 構成用の新しい XML ファイルを作成します (この例では `ssml.xml`)。 ルート要素は常に `<speak>` であり、テキストを `<voice>` 要素でラップすることで、`name` パラメーターを使用して音声を変更できます。 この例では、音声を男性の英語 (英国) の音声に変更します。 この音声が **標準** 音声であることに注意してください。これは、**ニューラル** 音声とは価格や可用性が異なります。 サポートされている **標準** 音声の [全一覧](../../../language-support.md#standard-voices)を参照してください。
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -192,7 +195,7 @@ stream.save_to_wav_file("path/to/write/file.wav")
 ニューラル音声に切り替えるには、`name` を[ニューラル音声オプション](../../../language-support.md#neural-voices)のいずれかに変更します。 次に、`mstts` の XML 名前空間を追加し、テキストを `<mstts:express-as>` タグ内にラップします。 読み上げスタイルをカスタマイズするには、`style` パラメーターを使用します。 この例では `cheerful` を使用していますが、`customerservice` または `chat` に設定して、読み上げスタイルの違いを確認してみてください。
 
 > [!IMPORTANT]
-> ニューラル音声は、" *米国東部* "、" *東南アジア* "、" *西ヨーロッパ* " のリージョンで作成された音声リソースで **のみ** サポートされています。
+> ニューラル音声は、"*米国東部*"、"*東南アジア*"、"*西ヨーロッパ*" のリージョンで作成された音声リソースで **のみ** サポートされています。
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">

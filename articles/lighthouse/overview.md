@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse とは
 description: サービス プロバイダーは Azure Lighthouse を通じて、自動化と効率を大規模に高めたマネージド サービスを顧客に提供することができます。
-ms.date: 12/10/2020
+ms.date: 12/16/2020
 ms.topic: overview
-ms.openlocfilehash: bef6107878f36e02a896b3c38b8913ebb50169a7
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: b9215f42e3ad3b7517d14fdaee710a31680ce453
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356363"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617155"
 ---
 # <a name="what-is-azure-lighthouse"></a>Azure Lighthouse とは
 

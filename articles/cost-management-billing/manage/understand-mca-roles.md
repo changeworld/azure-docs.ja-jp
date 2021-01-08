@@ -5,14 +5,14 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 12/17/2020
 ms.author: banders
-ms.openlocfilehash: f0ace05d6a4df65282bd56cca8e7895b0dc24edf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 511c0ecdef45a882bcc3a427d5ec602b3ebabc66
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686549"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673833"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Azure での Microsoft 顧客契約の管理ロールを理解する
 
@@ -32,7 +32,7 @@ Microsoft 顧客契約の請求先アカウントを管理するには、以下�
 |課金プロファイル所有者|課金プロファイルに関するすべてを管理します|
 |課金プロファイル共同作成者|課金プロファイルのアクセス許可以外のすべてを管理します|
 |課金プロファイル閲覧者|課金プロファイルに関するすべての読み取り専用ビュー|
-|請求書マネージャー|課金プロファイルの請求書を表示および支払います|
+|請求書マネージャー|課金プロファイルの請求書を表示します|
 |請求書セクション所有者|請求書セクションのすべてを管理します|
 |請求書セクション共同作成者|請求書セクションのアクセス許可以外のすべてを管理します|
 |請求書セクション閲覧者|請求書セクションに関するすべての読み取り専用ビュー|

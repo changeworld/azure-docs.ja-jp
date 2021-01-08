@@ -37,16 +37,12 @@
     - name: アプリケーション プロキシの Azure PowerShell サンプル
       href: application-proxy-powershell-samples.md
 - name: 概念
-  expanded: false
+  expanded: true
   items:
     - name: アプリ管理のベスト プラクティス
       href: application-management-fundamentals.md
     - name: 一般的なアプリ管理シナリオ
       href: common-scenarios.md
-    - name: テナントでのアプリの表示
-      href: application-types.md
-    - name: アプリへのユーザーの割り当て
-      href: ways-users-get-assigned-to-applications.md
     - name: クラウド アプリの統合の計画
       items:
         - name: アプリ統合の概要
@@ -286,6 +282,10 @@
       href: application-proxy-faq.md
     - name: アプリケーション プロキシのバージョン履歴
       href: application-proxy-release-version-history.md
+    - name: エンタープライズ アプリケーションでアプリが表示される理由
+      href: application-types.md
+    - name: ユーザーがアプリに割り当てられる理由
+      href: ways-users-get-assigned-to-applications.md
 - name: リソース
   items:
     - name: 開発者向けのサポート オプションとヘルプ オプション

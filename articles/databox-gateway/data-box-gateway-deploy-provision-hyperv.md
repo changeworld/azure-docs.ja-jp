@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: ffbfd3214242d8df5fe33faf465bc1da3eb9986d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 9d1d22d57464266239aea96f427020351eb749d5
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96580518"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740659"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>チュートリアル:Hyper-V で Azure Data Box Gateway をプロビジョニングする
 
@@ -92,10 +92,11 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
 ハイパーバイザーでデバイスをプロビジョニングするには、次の手順を実行します。
 
 1. Windows Server ホストで、仮想デバイスのイメージをローカル ドライブにコピーします。 この VHDX イメージは、Azure portal からダウンロードしました。 このイメージは後で使用するため、コピー先はメモしておいてください。
+
 2. **サーバー マネージャー** を開きます。 右上隅の **[ツール]** をクリックし、 **[Hyper-V マネージャー]** を選択します。
 
-    ![サーバー マネージャーで Hyper-V マネージャーを選択する](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
-  
+    ![サーバー マネージャーで Hyper-V マネージャーを選択する](./media/data-box-gateway-deploy-provision-hyperv/image1.png)
+
 3. **Hyper-V マネージャー** のスコープ ウィンドウで、システム ノードを右クリックしてコンテキスト メニューを開き、 **[新規]**  >  **[仮想マシン]** の順にクリックします。
 
    ![Hyper-V マネージャーで新しい仮想マシンを作成する](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
@@ -118,13 +119,13 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
 10. **[概要]** を確認し、 **[完了]** をクリックして仮想マシンを作成します。
 
     ![[仮想マシンの新規作成ウィザードの完了] ページ](./media/data-box-gateway-deploy-provision-hyperv/image8.png)
-11. 最小要件を満たすには、4 個の仮想プロセッサが必要です。 4 つの仮想プロセッサを追加するには、 **[Hyper-V マネージャー]** ウィンドウでホスト システムを選択します。 右側のウィンドウの **[仮想マシン]** の一覧で、先ほど作成した仮想マシンを見つけます。 マシン名を選択して右クリックし、 **[設定]** を選択します。
+11. 最小要件を満たすには、4 個の仮想プロセッサが必要です。 4 個の仮想プロセッサを追加するには、 **[Hyper-V マネージャー]** ウィンドウで対象のホスト システムを選択します。 右側のウィンドウの **[仮想マシン]** の一覧で、先ほど作成した仮想マシンを見つけます。 マシン名を選択して右クリックし、 **[設定]** を選択します。
 
     ![仮想マシンの設定](./media/data-box-gateway-deploy-provision-hyperv/image9.png)
 12. **[設定]** ページの左側のウィンドウで **[プロセッサ]** をクリックします。 右側のウィンドウで、 **[仮想プロセッサの数]** を 4 (またはそれ以上) に設定します。 **[Apply]** をクリックします。
 
     ![[設定] ページで仮想プロセッサ数を設定する](./media/data-box-gateway-deploy-provision-hyperv/image10.png)
-13. 最小要件を満たすには、2 TB の仮想データ ディスクを追加する必要もあります。 **[設定]** ページで次の操作を行います。
+13. 最小要件を満たすには、2 TB の仮想データ ディスクも追加する必要があります。 **[設定]** ページで次の操作を行います。
 
     1. 左側のウィンドウで **[SCSI コントローラー]** を選択します。
     2. 右側のウィンドウで **[ハード ドライブ]** を選択し、 **[追加]** をクリックします。
@@ -141,7 +142,7 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
 18. **[名前と場所の指定]** ページで、データ ディスクの **名前** と **場所** を入力します (場所は参照することもできます)。 **[次へ]** をクリックします。
 
     ![[名前と場所の指定] ページ](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
-19. **[ディスクの構成]** ページで、 **[新しい空の仮想ハード ディスクを作成する]** を選択し、サイズを **2 TB** (またはそれ以上) に指定します。
+19. **[ディスクの構成]** ページで、 **[新しい空の仮想ハード ディスクを作成する]** オプションを選択し、サイズを **2 TB** (またはそれ以上) に指定します。
 
     2 TB は最小要件ですが、より容量の大きいディスクを常にプロビジョニングできます。 一度ディスクをプロビジョニングすると、圧縮できなくなることに注意してください。 ディスクを縮小しようとすると、デバイスのローカル データすべてが失われます。 データ ディスクの拡張はサポートされていません。 **[次へ]** をクリックします。
 
@@ -152,6 +153,11 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
 21. **[設定]** ページに戻ります。 **[OK]** をクリックして **[設定]** ページを閉じ、[Hyper-V マネージャー] ウィンドウに戻ります。
 
     ![[設定] ページ](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
+
+これで、仮想マシンが完全に構成されました。
+
+> [!NOTE]
+> 構成した VHD をコピーして新しい Data Box Gateway をプロビジョニングすることはできません。 新しい Data Box Gateway 仮想デバイスは、Azure portal からダウンロードした Hyper-V の仮想デバイス イメージからそれぞれプロビジョニングする必要があります。
 
 ## <a name="start-the-virtual-device-and-get-the-ip"></a>仮想デバイスを起動して IP アドレスを取得する
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 12/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 52f0bcbb332b5d5e47440accff9d9895dcef7056
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 830e0a8733d3f5a49cede09b331dc0298ee1ce4d
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449368"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734728"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro を設置する
 
@@ -159,14 +159,14 @@ ms.locfileid: "96449368"
 
 ケーブルを配備し、デバイスを接続します。 以降の手順では、Azure Stack Edge Pro デバイスの電源およびネットワーク用ケーブルを接続する方法を説明します。
 
-デバイスのケーブル接続を開始する前に、次の前提条件を満たす必要があります。
+デバイスのケーブル接続を開始する前に、次のものが必要です。
 
 - 開梱してラックに取り付けた状態の Azure Stack Edge Pro 物理デバイス。
 - 電源コード 2 本。
 - 管理インターフェイスに接続するための 1-GbE RJ-45 ネットワーク ケーブルを 1 本以上。 デバイスには、管理用とデータ用に 1 つずつ、2 つの 1-GbE ネットワーク インターフェイスがあります。
 - 構成するデータ ネットワーク インターフェイスのそれぞれに対して、25-GbE SFP+ 銅線ケーブル 1 本。 少なくとも 1 つのデータ ネットワーク インターフェイス (ポート 2、ポート 3、ポート 4、ポート 5、またはポート 6) がインターネットに接続されている必要があります (Azure への接続が可能なもの)。  
 - 2 つの配電ユニットへのアクセス (推奨)。
-- データ用に 1 GbE ネットワーク インターフェイスをインターネットに接続するための少なくとも 1 つの 1 GbE ネットワーク スイッチ。 接続されたスイッチが 1 GbE 以上でない場合、ローカル Web UI にアクセスできません。 データ用に 25/10 GbE インターフェイスを使用する場合は、25 GbE または 10 GbE スイッチが必要です。 
+- データ用に 1 GbE ネットワーク インターフェイスをインターネットに接続するための少なくとも 1 つの 1 GbE ネットワーク スイッチ。 接続されたスイッチが 1 GbE 以上でない場合、ローカル Web UI にアクセスできません。 データ用に 25 または 10 GbE インターフェイスを使用する場合は、25 GbE または 10 GbE スイッチが必要です。
 
 > [!NOTE]
 > - データ ネットワーク インターフェイスを 1 つだけ接続する場合は、Azure へのデータ送信には、ポート 3、ポート 4、ポート 5、ポート 6 などの 25/10 GbE ネットワーク インターフェイスを使用することをお勧めします。 
@@ -188,12 +188,12 @@ Azure Stack Edge Pro デバイスとは:
 
 - バック プレーンには、これらの 6 つのポートに対応する次の 2 つのネットワーク カードがあります。
 
-    - **カスタム Microsoft Qlogic Cavium 25G NDC アダプター** - ポート 1 からポート 4。
+    - **カスタム Microsoft `Qlogic` Cavium 25G NDC アダプター** - ポート 1 からポート 4。
     - **Mellanox デュアル ポート 25G ConnectX-4 チャネル ネットワーク アダプター** - ポート 5 とポート 6。
 
 これらのネットワーク カードでサポートされているケーブル、スイッチ、およびトランシーバーの完全な一覧については、以下を参照してください。
 
-- [Qlogic Cavium 25G NDC アダプターの相互運用性マトリックス](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)。
+- [`Qlogic` Cavium 25G NDC アダプターの相互運用性マトリックス](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)。
 - [Mellanox デュアル ポート 25G ConnectX-4 チャネル ネットワーク アダプター互換製品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)。  
 
  

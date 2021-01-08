@@ -8,15 +8,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/14/2020
+ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ec7b951581efd0a25b44d298b1f1bfb997167d88
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7eda805a5fdf24a7a55b9296a0f0a1c9a5bfc576
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589102"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683495"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>チュートリアル:デプロイ スクリプトを使用して自己署名証明書を作成する
 
@@ -34,13 +34,15 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
 > * 失敗したスクリプトをデバッグする
 > * リソースをクリーンアップする
 
+デプロイ スクリプトについて取り上げた Microsoft Learn モジュールについては、「[デプロイ スクリプトを使用して ARM テンプレートを拡張する](/learn/modules/extend-resource-manager-template-deployment-scripts/)」を参照してください。
+
 ## <a name="prerequisites"></a>前提条件
 
 この記事を完了するには、以下が必要です。
 
 * **Resource Manager ツール拡張機能を持つ [Visual Studio Code](https://code.visualstudio.com/)** 。 「[クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する](./quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
-* **サブスクリプション レベルで共同作成者のロールが付与された、ユーザー割り当て済みマネージド ID**。 この ID は、デプロイ スクリプトを実行するために使用されます。 作成するには、「[ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)」を参照してください。 この識別 ID は、テンプレートをデプロイするときに必要です。 ID の形式は次のとおりです。
+* **ユーザー割り当てマネージド ID**。 スクリプトからこの ID を使用して、Azure 固有のアクションを実行します。 作成するには、「[ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)」を参照してください。 この識別 ID は、テンプレートをデプロイするときに必要です。 ID の形式は次のとおりです。
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
@@ -253,7 +255,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
 
     `deploymentScripts` リソースは、キー コンテナー リソースとロールの割り当てリソースに依存します。 これには、次のプロパティがあります。
 
-    * `identity`: デプロイ スクリプトでは、ユーザー割り当てのマネージド ID を使用してスクリプトが実行されます。
+    * `identity`:デプロイ スクリプトでは、ユーザー割り当てのマネージド ID を使用してスクリプトの操作が実行されます。
     * `kind`: スクリプトの種類を指定します。 現時点では、PowerShell スクリプトだけがサポートされています。
     * `forceUpdateTag`:スクリプト ソースが変更されていない場合でもデプロイ スクリプトを実行するかどうかを決定します。 現在のタイム スタンプまたは GUID を指定できます。 詳細については、「[スクリプトを複数回実行する](./deployment-script-template.md#run-script-more-than-once)」を参照してください。
     * `azPowerShellVersion`: 使用する Azure PowerShell モジュールのバージョンを指定します。 現在、デプロイ スクリプトでは、バージョン 2.7.0、2.8.0、3.0.0 がサポートされています。

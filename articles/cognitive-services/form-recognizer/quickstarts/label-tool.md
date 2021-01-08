@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: ドキュメントの処理
-ms.openlocfilehash: 7671d8d58ffbd0fca444eefe53c46c99a4e76d37
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: a1cf919e17e22cb6280dce27faceb7cd034a6962
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96009332"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845537"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング
 
@@ -106,7 +106,7 @@ Form Recognizer サービスを試すには、Azure サブスクリプション 
    このコマンドを実行すると、Web ブラウザーからサンプル ラベル付けツールを使用できるようになります。 `http://localhost:3000` にアクセスします。
 
 > [!NOTE]
-> Form Recognizer REST API を使用して、ドキュメントにラベルを付けたり、モデルをトレーニングしたりすることもできます。 REST API を使用してトレーニングおよび分析を行うには、[REST API と Python によるラベルを使用したトレーニング](./python-labeled-data.md)に関するページを参照してください。
+> Form Recognizer REST API を使用して、ドキュメントにラベルを付けたり、モデルをトレーニングしたりすることもできます。 REST API を使用してトレーニングおよび分析を行うには、[REST API と Python によるラベルを使用したトレーニング](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)に関するページを参照してください。
 
 ## <a name="set-up-input-data"></a>入力データを設定する
 
@@ -137,7 +137,9 @@ Form Recognizer サービスを試すには、Azure サブスクリプション 
 
 * **[表示名]** - 接続の表示名。
 * **[説明]** - プロジェクトの説明。
-* **[SAS URL]** - Azure Blob Storage コンテナーの Shared Access Signature (SAS) URL。 SAS URL を取得するには、Microsoft Azure Storage Explorer を開き、ご利用のコンテナーを右クリックし、 **[共有アクセス署名の取得]** を選択します。 有効期限を、サービスの使用を終了する時刻を設定します。 アクセス許可の **[読み取り]** 、 **[書き込み]** 、 **[削除]** 、および **[表示]** チェック ボックスがオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
+* **[SAS URL]** - Azure Blob Storage コンテナーの Shared Access Signature (SAS) URL。 [!INCLUDE [get SAS URL](../includes/sas-instructions.md)]
+
+   :::image type="content" source="../media/quickstarts/get-sas-url.png" alt-text="SAS URL の取得":::
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="サンプル ラベル付けツールの接続設定。":::
 
@@ -223,7 +225,7 @@ Form Recognizer サービスを試すには、Azure サブスクリプション 
 
 ### <a name="specify-tag-value-types"></a>タグの値の型を指定する
 
-必要に応じて、それぞれのタグにしかるべきデータ型を設定できます。 タグの右側にあるコンテキスト メニューを開いて型を選択します。 この機能により、検出アルゴリズムは、テキスト検出精度の向上につながる一定の仮説を立てることができます。 また、最終的な JSON 出力では、検出された値が確実に標準化された形式で返されます。 
+必要に応じて、それぞれのタグにしかるべきデータ型を設定できます。 タグの右側にあるコンテキスト メニューを開いて型を選択します。 この機能により、検出アルゴリズムは、テキスト検出精度の向上につながる一定の仮説を立てることができます。 また、最終的な JSON 出力では、検出された値が確実に標準化された形式で返されます。 値の型に関する情報は、ラベル ファイルと同じパスにある *fields.json* ファイルに保存されます。
 
 > [!div class="mx-imgBorder"]
 > ![サンプル ラベル付けツールでの値の型の選択](../media/whats-new/formre-value-type.png)
@@ -266,7 +268,7 @@ Form Recognizer サービスを試すには、Azure サブスクリプション 
 
 左側のペインでトレーニング アイコンをクリックして、[トレーニング] ページを開きます。 次に、 **[Train]** ボタンをクリックして、モデルのトレーニングを開始します。 トレーニング プロセスが完了すると、次の情報が表示されます。
 
-* **[Model ID]** - 作成およびトレーニングされたモデルの ID。 トレーニングの呼び出しごとに、独自の ID を持つ新しいモデルが作成されます。 この文字列を安全な場所にコピーしてください。[REST API](./curl-train-extract.md) または[クライアント ライブラリ](./client-library.md)を使用して予測呼び出しを行う場合に必要になります。
+* **[Model ID]** - 作成およびトレーニングされたモデルの ID。 トレーニングの呼び出しごとに、独自の ID を持つ新しいモデルが作成されます。 この文字列を安全な場所にコピーしてください。[REST API](./client-library.md?pivots=programming-language-rest-api) または[クライアント ライブラリ](./client-library.md)を使用して予測呼び出しを行う場合に必要になります。
 * **[Average Accuracy]\(平均精度\)** - モデルの平均精度。 追加のフォームにラベルを付け、再度トレーニングを行って新しいモデルを作成することにより、モデルの精度を向上させることができます。 最初は 5 つのフォームにラベルを付け、必要に応じてフォームの数を増やすことをお勧めします。
 * タグの一覧と、タグごとの予測精度。
 
@@ -276,7 +278,7 @@ Form Recognizer サービスを試すには、Azure サブスクリプション 
 トレーニングが完了したら、 **[Average Accuracy]\(平均精度\)** の値を確認します。 低い場合は、入力ドキュメントをさらに追加して、上記の手順を繰り返す必要があります。 既にラベルを付けたドキュメントは、プロジェクトのインデックスに残ります。
 
 > [!TIP]
-> REST API 呼び出しを使用してトレーニング プロセスを実行することもできます。 これを行う方法については、[Python によるラベルを使用したトレーニング](./python-labeled-data.md)に関するページを参照してください。
+> REST API 呼び出しを使用してトレーニング プロセスを実行することもできます。 これを行う方法については、[Python によるラベルを使用したトレーニング](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)に関するページを参照してください。
 
 ## <a name="compose-trained-models"></a>トレーニング済みのモデルを作成する
 
@@ -299,7 +301,7 @@ Form Recognizer サービスを試すには、Azure サブスクリプション 
 左側の予測 (電球) アイコンをクリックして、モデルをテストします。 トレーニング プロセスで使用しなかったフォーム ドキュメントをアップロードします。 次に、右側にある **[予測]** ボタンをクリックして、フォームのキーと値の予測を取得します。 このツールでは、境界ボックスにタグが適用され、各タグの信頼度がレポートされます。
 
 > [!TIP]
-> REST 呼び出しを使用して Analyze API を実行することもできます。 これを行う方法については、[Python によるラベルを使用したトレーニング](./python-labeled-data.md)に関するページを参照してください。
+> REST 呼び出しを使用して Analyze API を実行することもできます。 これを行う方法については、[Python によるラベルを使用したトレーニング](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)に関するページを参照してください。
 
 ## <a name="improve-results"></a>結果を改善する
 
@@ -326,7 +328,7 @@ Form Recognizer サービスを試すには、Azure サブスクリプション 
 このクイックスタートでは、Form Recognizer のサンプル ラベル付けツールを使用し、手動でラベル付けされたデータを使ってモデルをトレーニングする方法について説明しました。 トレーニング データにラベルを付ける独自のユーティリティを作成したい場合は、ラベル付けされたデータのトレーニングを扱う REST API を使用してください。
 
 > [!div class="nextstepaction"]
-> [Python でラベルを使用してトレーニングする](./python-labeled-data.md)
+> [Python でラベルを使用してトレーニングする](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
 
 * [Form Recognizer とは](../overview.md)
-* [Form Recognizer クライアント ライブラリのクイックスタート](client-library.md)
+* [Form Recognizer のクイックスタート](client-library.md)

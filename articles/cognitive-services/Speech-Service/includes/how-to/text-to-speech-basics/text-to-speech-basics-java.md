@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 2da56514870f279da342976ac074697be5196021
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c84c45605911b74fd2c03a0987341257cae3623e
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027008"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97731915"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 
@@ -155,6 +155,9 @@ public static void main(String[] args) {
 オーディオ形式を変更するには、`SpeechConfig` オブジェクトで `setSpeechSynthesisOutputFormat()` 関数を使用します。 この関数には、[`SpeechSynthesisOutputFormat`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat) 型の `enum` が必要です。これは、出力形式を選択するために使用します。 使用できる[オーディオ形式の一覧](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?preserve-view=true&view=azure-dotnet)については、リファレンス ドキュメントを参照してください。
 
 要件に応じて、ファイルの種類ごとにさまざまなオプションがあります。 定義上、`Raw24Khz16BitMonoPcm` のような未加工の形式にはオーディオ ヘッダーが含まれないことに注意してください。 未加工の形式は、ダウンストリームの実装で未加工のビットストリームをデコードできることがわかっている場合か、ビット深度、サンプル レート、チャネル数などに基づいてヘッダーを手動で作成する場合にのみ使用してください。
+
+> [!NOTE]
+> **en-US-AriaRUS** および **en-US-GuyRUS** の音声は、`Riff24Khz16BitMonoPcm` サンプル レートでエンコードされたサンプルから作成されます。
 
 この例では、`SpeechConfig` オブジェクトに `SpeechSynthesisOutputFormat` を設定することにより、高忠実度の RIFF 形式 `Riff24Khz16BitMonoPcm` を指定します。 前のセクションの例と同様に、[`AudioDataStream`](/java/api/com.microsoft.cognitiveservices.speech.audiodatastream) を使用して結果のインメモリ ストリームを取得し、それをファイルに書き込みます。
 

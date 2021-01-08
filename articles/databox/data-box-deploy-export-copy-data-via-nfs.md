@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/01/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: bd8e6d4175c57bd31c3fd83bf6f9669d2b65ffb2
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.openlocfilehash: 64bb5e94c4b18626d1f85d7e61252aae74202eb9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91660847"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680614"
 ---
-# <a name="tutorial-copy-data-from-azure-data-box-via-nfs-preview"></a>チュートリアル:Azure Data Box から NFS 経由でデータをコピーする (プレビュー)
+# <a name="tutorial-copy-data-from-azure-data-box-via-nfs"></a>チュートリアル:Azure Data Box から NFS 経由でデータをコピーする
 
 このチュートリアルでは、Data Box のローカル Web UI から NFS 経由でオンプレミスのデータ サーバーにデータをコピーする方法について説明します。 Data Box のデータは、Azure Storage アカウントからエクスポートされます。
 
@@ -26,8 +26,6 @@ ms.locfileid: "91660847"
 > * 前提条件
 > * Data Box に接続する
 > * Data Box からデータをコピーする
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -79,11 +77,11 @@ Data Box 共有に接続したら、次にデータをコピーします。
 
 [!INCLUDE [data-box-export-review-logs](../../includes/data-box-export-review-logs.md)]
 
- これで、データのコピーを開始できます。 Linux ホスト コンピューターを使用している場合は、Robocopy のようなコピー ユーティリティを使用します。 Linux で使用できる代替手段は、[rsync](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[Unison](https://www.cis.upenn.edu/~bcpierce/unison/)、[Ultracopier](https://ultracopier.first-world.info/) などです。  
+ これで、データのコピーを開始できます。 Linux ホスト コンピューターを使用している場合は、Robocopy のようなコピー ユーティリティを使用します。 Linux で使用できる代替手段は、[`rsync`](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[Unison](https://www.cis.upenn.edu/~bcpierce/unison/)、[Ultracopier](https://ultracopier.first-world.info/) などです。  
 
 `cp` コマンドは、ディレクトリをコピーするのに最適なオプションの 1 つです。 使用方法について詳しくは、[cp の man ページ](http://man7.org/linux/man-pages/man1/cp.1.html)をご覧ください。
 
-マルチスレッドのコピーに rsync オプションを使用する場合は、以下のガイドラインに従ってください。
+マルチスレッドのコピーに `rsync` オプションを使用する場合は、以下のガイドラインに従ってください。
 
 * Linux クライアントで使用されているファイル システムに応じて、**CIFS Utils** または **NFS Utils** パッケージをインストールします。
 
@@ -91,7 +89,7 @@ Data Box 共有に接続したら、次にデータをコピーします。
 
     `sudo apt-get install nfs-utils`
 
-* **Rsync** および **Parallel** をインストールします (Linux ディストリビューションのバージョンによって異なります)。
+* `rsync` および **Parallel** をインストールします (Linux ディストリビューションのバージョンによって異なります)。
 
     `sudo apt-get install rsync`
    
@@ -118,9 +116,9 @@ Data Box 共有に接続したら、次にデータをコピーします。
      16 並列コピーから始めて、使用可能なリソースに応じてスレッドの数を増やすことをお勧めします。
 
 > [!IMPORTANT]
-> Linux ファイルの種類のうち、シンボリック リンク、文字ファイル、ブロック ファイル、ソケット、パイプはサポートされていません。 これらのファイルの種類を使用すると、**発送準備**手順でエラーが発生します。
+> Linux ファイルの種類のうち、シンボリック リンク、文字ファイル、ブロック ファイル、ソケット、パイプはサポートされていません。 これらのファイルの種類を使用すると、**発送準備** 手順でエラーが発生します。
 
-コピーが完了したら、**ダッシュボード**に移動し、デバイスの使用済み領域と空き領域を確認します。
+コピーが完了したら、**ダッシュボード** に移動し、デバイスの使用済み領域と空き領域を確認します。
 
 これで、Microsoft への Data Box の発送に進むことができます。
 

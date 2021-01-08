@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 4dee8de8f42b78ecdab9d9e15bb277d58fa8ba70
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: fcb8090427530271600a6699fafa5c488c426784
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905062"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680877"
 ---
-# <a name="tutorial---migrate-a-web-app-from-google-maps"></a>チュートリアル - Google Maps から Web アプリを移行する
+# <a name="tutorial-migrate-a-web-app-from-google-maps"></a>チュートリアル:Google Maps から Web アプリを移行する
 
 Google マップを使用するほとんどの Web アプリでは、Google Maps V3 JavaScript SDK が使用されています。 Azure Maps Web SDK は、移行に適した Azure ベースの SDK です。 Azure Maps Web SDK では、独自のコンテンツや映像を使用して、インタラクティブ マップをカスタマイズすることができます。 Web アプリケーションとモバイル アプリケーションの両方でアプリを実行することができます。 このコントロールには、WebGL が利用されているため、大きなデータ セットを高いパフォーマンスでレンダリングすることができます。 JavaScript または TypeScript を使用して、この SDK での開発を行います。 このチュートリアルでは、次の内容を学習します。
 
@@ -31,27 +31,27 @@ Google マップを使用するほとんどの Web アプリでは、Google Maps
 > * トラフィック データを表示する
 > * グラウンド オーバーレイを追加する
 
-また、次についても学習します。 
+また、次についても学習します。
 
 > [!div class="checklist"]
-> * Azure Maps Web SDK を使用して一般的なマッピング タスクを実行する方法
-> * パフォーマンスとユーザー エクスペリエンスを向上させるためのベスト プラクティス
-> * Azure Maps で利用可能なより高度な機能を使用したアプリケーションの作成方法に関するヒント
+> * Azure Maps Web SDK を使用して一般的なマッピング タスクを実行する方法。
+> * パフォーマンスとユーザー エクスペリエンスを向上させるためのベスト プラクティス。
+> * Azure Maps で利用可能なより高度な機能を使用したアプリケーションの作成方法に関するヒント。
 
 既存の Web アプリケーションを移行する場合は、オープンソースのマップ コントロール ライブラリが使用されているかどうかを確認します。 オープンソースのマップ コントロール ライブラリの例としては、Cesium、Leaflet、OpenLayers があります。 オープンソースのマップ コントロール ライブラリがご自分のアプリケーションで使用されていて、Azure Maps Web SDK を使用したくない場合でも、移行することはできます。 その場合は、ご自分のアプリケーションを Azure Maps タイル サービス ([道路タイル](/rest/api/maps/render/getmaptile) \| [衛星タイル](/rest/api/maps/render/getmapimagerytile)) に接続してください。 一般的に使用されるいくつかのオープンソースのマップ コントロール ライブラリで Azure Maps を使用する方法の詳細を以下に示します。
 
-- Cesium - Web 用の 3D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [ドキュメント](https://cesiumjs.org/)
-- Leaflet – Web 用の軽量な 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [ドキュメント](https://leafletjs.com/)
-- OpenLayers - プロジェクションをサポートする Web 用の 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [ドキュメント](https://openlayers.org/)
+* Cesium - Web 用の 3D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [ドキュメント](https://cesiumjs.org/)
+* Leaflet – Web 用の軽量な 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [ドキュメント](https://leafletjs.com/)
+* OpenLayers - プロジェクションをサポートする Web 用の 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [ドキュメント](https://openlayers.org/)
 
 JavaScript フレームワークを開発に使用している場合は、次のいずれかのオープンソース プロジェクトを利用できる可能性があります。
 
-- [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps) - Azure Maps の Angular 10 ラッパー。
-- [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure Maps Blazor コンポーネント。
-- [Azure Maps React Component](https://github.com/WiredSolutions/react-azure-maps) - Azure Maps コントロール用の React ラッパー。
-- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) - Vue アプリケーション用の Azure Maps コンポーネント。
+* [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps) - Azure Maps の Angular 10 ラッパー。
+* [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure Maps Blazor コンポーネント。
+* [Azure Maps React Component](https://github.com/WiredSolutions/react-azure-maps) - Azure Maps コントロール用の React ラッパー。
+* [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) - Vue アプリケーション用の Azure Maps コンポーネント。
 
-## <a name="prerequisites"></a>前提条件 
+## <a name="prerequisites"></a>前提条件
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 2. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
@@ -97,40 +97,40 @@ JavaScript フレームワークを開発に使用している場合は、次の
 
 **トピック**
 
-- [マップを読み込む](#load-a-map)
-- [マップのローカライズ](#localizing-the-map)
-- [マップ ビューの設定](#setting-the-map-view)
-- [マーカーの追加](#adding-a-marker)
-- [カスタム マーカーの追加](#adding-a-custom-marker)
-- [ポリラインの追加](#adding-a-polyline)
-- [多角形の追加](#adding-a-polygon)
-- [情報ウィンドウを表示する](#display-an-info-window)
-- [GeoJSON ファイルをインポートする](#import-a-geojson-file)- 
-- [マーカー クラスタリング](#marker-clustering)
-- [ヒート マップを追加する](#add-a-heat-map)
-- [タイル レイヤーをオーバーレイする](#overlay-a-tile-layer)
-- [トラフィック データを表示する](#show-traffic-data)
-- [グラウンド オーバーレイを追加する](#add-a-ground-overlay)
-- [マップに KML データを追加する](#add-kml-data-to-the-map)
+* [マップを読み込む](#load-a-map)
+* [マップのローカライズ](#localizing-the-map)
+* [マップ ビューの設定](#setting-the-map-view)
+* [マーカーの追加](#adding-a-marker)
+* [カスタム マーカーの追加](#adding-a-custom-marker)
+* [ポリラインの追加](#adding-a-polyline)
+* [多角形の追加](#adding-a-polygon)
+* [情報ウィンドウを表示する](#display-an-info-window)
+* [GeoJSON ファイルをインポートする](#import-a-geojson-file)* 
+* [マーカー クラスタリング](#marker-clustering)
+* [ヒート マップを追加する](#add-a-heat-map)
+* [タイル レイヤーをオーバーレイする](#overlay-a-tile-layer)
+* [トラフィック データを表示する](#show-traffic-data)
+* [グラウンド オーバーレイを追加する](#add-a-ground-overlay)
+* [マップに KML データを追加する](#add-kml-data-to-the-map)
 
 ### <a name="load-a-map"></a>マップを読み込む
 
 どちらの SDK も、マップを読み込む手順は同じです。
 
-- Map SDK への参照を追加します。
-- マップのプレースホルダーとして機能する `div` タグをページの本文に追加します。
-- ページが読み込まれたときに呼び出される JavaScript 関数を作成します。
-- それぞれのマップ クラスのインスタンスを作成します。
+* Map SDK への参照を追加します。
+* マップのプレースホルダーとして機能する `div` タグをページの本文に追加します。
+* ページが読み込まれたときに呼び出される JavaScript 関数を作成します。
+* それぞれのマップ クラスのインスタンスを作成します。
 
 **いくつかの主な相違点**
 
-- Google Maps では、API のスクリプト参照でアカウント キーを指定する必要があります。 Azure Maps の認証資格情報は、マップ クラスのオプションとして指定されます。 この資格情報には、サブスクリプション キーまたは Azure Active Directory 情報を指定できます。
-- Google マップでは、API のスクリプト参照でコールバック関数を受け取ります。これは、マップを読み込むために初期化関数を呼び出すために使用されます。 Azure Maps では、ページの onload イベントを使用する必要があります。
-- マップがレンダリングされる `div` 要素を参照する場合、Azure Maps の `Map` クラスには `id` 値のみが必要ですが、Google Maps では `HTMLElement` オブジェクトが必要です。
-- Azure Maps の座標は、`[longitude, latitude]` 形式のシンプルな数値配列として指定できる、位置オブジェクトとして定義されます。
-- Azure Maps のズーム レベルは、Google Maps のズーム レベルよりも 1 つ下のレベルとなります。 この違いは、この 2 つのプラットフォームのタイル システムのサイズが異なることが原因です。
-- Azure Maps では、ナビゲーション コントロールがマップ キャンバスに追加されません。 そのため、既定ではマップにズーム ボタンやマップ スタイル ボタンがありません。 しかし、マップ スタイル ピッカー、ズーム ボタン、コンパスまたは回転コントロール、およびピッチ コントロールを追加するためのコントロール オプションがあります。
-- イベント ハンドラーは、マップ インスタンスの `ready` イベントを監視するために Azure Maps に追加されます。 このイベントは、マップで WebGL コンテキストと必要なすべてのリソースの読み込みが完了したときに発生します。 マップの読み込みが完了した後に実行したいコードがあれば、このイベント ハンドラーに追加してください。
+* Google Maps では、API のスクリプト参照でアカウント キーを指定する必要があります。 Azure Maps の認証資格情報は、マップ クラスのオプションとして指定されます。 この資格情報には、サブスクリプション キーまたは Azure Active Directory 情報を指定できます。
+* Google マップでは、API のスクリプト参照でコールバック関数を受け取ります。これは、マップを読み込むために初期化関数を呼び出すために使用されます。 Azure Maps では、ページの onload イベントを使用する必要があります。
+* マップがレンダリングされる `div` 要素を参照する場合、Azure Maps の `Map` クラスには `id` 値のみが必要ですが、Google Maps では `HTMLElement` オブジェクトが必要です。
+* Azure Maps の座標は、`[longitude, latitude]` 形式のシンプルな数値配列として指定できる、位置オブジェクトとして定義されます。
+* Azure Maps のズーム レベルは、Google Maps のズーム レベルよりも 1 つ下のレベルとなります。 この違いは、この 2 つのプラットフォームのタイル システムのサイズが異なることが原因です。
+* Azure Maps では、ナビゲーション コントロールがマップ キャンバスに追加されません。 そのため、既定ではマップにズーム ボタンやマップ スタイル ボタンがありません。 しかし、マップ スタイル ピッカー、ズーム ボタン、コンパスまたは回転コントロール、およびピッチ コントロールを追加するためのコントロール オプションがあります。
+* イベント ハンドラーは、マップ インスタンスの `ready` イベントを監視するために Azure Maps に追加されます。 このイベントは、マップで WebGL コンテキストと必要なすべてのリソースの読み込みが完了したときに発生します。 マップの読み込みが完了した後に実行したいコードがあれば、このイベント ハンドラーに追加してください。
 
 以下の基本的な例では、Google マップを使用して、ニューヨークが座標の中心に来るようにマップを読み込みます。 経度は -73.985、緯度は 40.747、マップのズーム レベルは 12 です。
 
@@ -235,7 +235,7 @@ Web アプリで Azure Maps マップ コントロールを設定して使用す
 
 **その他のリソース:**
 
-- Azure Maps では、マップ ビューの回転とピッチを行うためのナビゲーション コントロールも提供されます ([こちら](map-add-controls.md)を参照してください)。
+* Azure Maps では、マップ ビューの回転とピッチを行うためのナビゲーション コントロールも提供されます ([こちら](map-add-controls.md)を参照してください)。
 
 ### <a name="localizing-the-map"></a>マップのローカライズ
 
@@ -277,7 +277,7 @@ map = new atlas.Map('myMap', {
 ```
 
 > [!NOTE]
-> Azure Maps を使用すると、言語と地域の設定が異なる複数のマップ インスタンスを同じページに読み込むことができます。 また、マップでは読み込み後に、これらの設定を更新することもできます。 
+> Azure Maps を使用すると、言語と地域の設定が異なる複数のマップ インスタンスを同じページに読み込むことができます。 また、マップでは読み込み後に、これらの設定を更新することもできます。
 
 Azure Maps で[サポートされている言語](supported-languages.md)の詳細な一覧をご覧ください。
 
@@ -325,16 +325,16 @@ map.setStyle({
 
 **その他のリソース:**
 
-- [マップ スタイルを選択する](choose-map-style.md)
-- [サポートされているマップ スタイル](supported-map-styles.md)
+* [マップ スタイルを選択する](choose-map-style.md)
+* [サポートされているマップ スタイル](supported-map-styles.md)
 
 ### <a name="adding-a-marker"></a>マーカーの追加
 
 Azure Maps には、ポイント データをマップ上にレンダリングできる方法が複数あります。
 
-- **HTML マーカー** – 従来の DOM 要素を使用してポイントをレンダリングします。 HTML マーカーではドラッグがサポートされます。
-- **シンボル レイヤー** – WebGL コンテキスト内でアイコンやテキストを使用してポイントをレンダリングします。
-- **バブル レイヤー** - ポイントをマップ上で円としてレンダリングします。 円の半径は、データのプロパティに基づいてスケーリングできます。
+* **HTML マーカー** – 従来の DOM 要素を使用してポイントをレンダリングします。 HTML マーカーではドラッグがサポートされます。
+* **シンボル レイヤー** – WebGL コンテキスト内でアイコンやテキストを使用してポイントをレンダリングします。
+* **バブル レイヤー** - ポイントをマップ上で円としてレンダリングします。 円の半径は、データのプロパティに基づいてスケーリングできます。
 
 シンボル レイヤーとバブル レイヤーは、WebGL コンテキスト内でレンダリングします。 どちらのレイヤーも、マップ上で大きなポイント セットをレンダリングすることができます。 これらのレイヤーでは、データをデータ ソースに格納する必要があります。 `ready` イベントが発生した後、データ ソースとレンダリング レイヤーをマップに追加する必要があります。 HTML マーカーは、ページ内に DOM 要素としてレンダリングされ、データ ソースは使用されません。 ページに含まれる DOM 要素が多いほど、そのページの速度は遅くなります。 マップ上で数百を超えるポイントをレンダリングする場合は、代わりにレンダリング レイヤーのいずれかを使用することをお勧めします。
 
@@ -455,7 +455,6 @@ map.markers.add(new atlas.HtmlMarker({
 ![黄色の画鋲のイメージ](media/migrate-google-maps-web-app/yellow-pushpin.png)<br/>
 yellow-pushpin.png</center>
 
-
 #### <a name="before-google-maps"></a>前: Google Maps
 
 カスタム マーカーは、画像の `url` を含んだ `Icon` オブジェクトを指定することによって作成します。 `anchor` ポイントを指定して、画鋲の画像のポイントをマップ上の座標に合わせます。 Google Maps のアンカー値は、イメージの左上隅を基準としています。
@@ -470,7 +469,6 @@ var marker = new google.maps.Marker({
     map: map
 });
 ```
-
 
 ![Google Maps のカスタム マーカー](media/migrate-google-maps-web-app/google-maps-custom-marker.png)
 
@@ -639,6 +637,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
     strokeDashArray: [3, 3]
 }));
 ```
+
 ![Azure Maps のポリライン](media/migrate-google-maps-web-app/azure-maps-polyline.png)
 
 **その他のリソース:**
@@ -709,6 +708,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
     strokeWidth: 2
 }));
 ```
+
 ![Azure Maps の多角形](media/migrate-google-maps-web-app/azure-maps-polygon.png)
 
 **その他のリソース:**
@@ -744,6 +744,7 @@ marker.addListener('click', function () {
     infowindow.open(map, marker);
 });
 ```
+
 ![Google Maps のポップアップ](media/migrate-google-maps-web-app/google-maps-popup.png)
 
 #### <a name="after-azure-maps"></a>後: Azure Maps
@@ -772,6 +773,7 @@ map.events.add('click', marker, function () {
     popup.open(map);
 });
 ```
+
 ![Azure Maps のポップアップ](media/migrate-google-maps-web-app/azure-maps-popup.png)
 
 > [!NOTE]
@@ -940,16 +942,14 @@ GeoJSON は、Azure Maps の基本データ型です。 `datasource.importFromUr
 </html>
 ```
 
-
-
 ![Azure Maps の GeoJSON](media/migrate-google-maps-web-app/azure-maps-geojson.png)
 
 **その他のリソース:**
 
-- [シンボル レイヤーを追加する](map-add-pin.md)
-- [バブル レイヤーを追加する](map-add-bubble-layer.md)
-- [ポイント データをクラスタリングする](clustering-point-data-web-sdk.md)
-- [データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)
+* [シンボル レイヤーを追加する](map-add-pin.md)
+* [バブル レイヤーを追加する](map-add-bubble-layer.md)
+* [ポイント データをクラスタリングする](clustering-point-data-web-sdk.md)
+* [データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)
 
 ### <a name="marker-clustering"></a>マーカー クラスタリング
 
@@ -1017,18 +1017,16 @@ GeoJSON は、Azure Maps の基本データ型です。 `datasource.importFromUr
 </html>
 ```
 
-
-
 ![Google Maps のクラスタリング](media/migrate-google-maps-web-app/google-maps-clustering.png)
 
 #### <a name="after-azure-maps"></a>後: Azure Maps
 
 データは、データ ソースに追加して管理します。 データ ソースとレイヤーを接続したうえで、データをレンダリングします。 Azure Maps の `DataSource` クラスでは、いくつかのクラスタリング オプションが提供されます。
 
-- `cluster` – データ ソースにポイント データをクラスタリングするように指示します。
-- `clusterRadius` -ポイントをまとめてクラスタリングする場合の半径 (ピクセル単位)。
-- `clusterMaxZoom` - クラスタリングが行われる最大ズーム レベル。 このレベルを超えてズームインすると、すべてのポイントがシンボルとしてレンダリングされます。
-- `clusterProperties` - 各クラスター内のすべてのポイントに対して式を使用して計算され、各クラスター ポイントのプロパティに追加されるカスタム プロパティを定義します。
+* `cluster` – データ ソースにポイント データをクラスタリングするように指示します。
+* `clusterRadius` -ポイントをまとめてクラスタリングする場合の半径 (ピクセル単位)。
+* `clusterMaxZoom` - クラスタリングが行われる最大ズーム レベル。 このレベルを超えてズームインすると、すべてのポイントがシンボルとしてレンダリングされます。
+* `clusterProperties` - 各クラスター内のすべてのポイントに対して式を使用して計算され、各クラスター ポイントのプロパティに追加されるカスタム プロパティを定義します。
 
 クラスタリングが有効になっている場合、データ ソースでは、クラスタリングおよびクラスタリング解除されたデータ ポイントをレンダリングするためにレイヤーに送信します。 データ ソースでは、数十万のデータ ポイントをクラスタリングすることができます。 クラスタリングされたデータ ポイントには、次のプロパティがあります。
 
@@ -1145,16 +1143,14 @@ GeoJSON データは、`DataSource` クラスの `importDataFromUrl` 関数を�
 </html>
 ```
 
-
-
 ![Azure Maps のクラスタリング](media/migrate-google-maps-web-app/azure-maps-clustering.png)
 
 **その他のリソース:**
 
-- [シンボル レイヤーを追加する](map-add-pin.md)
-- [バブル レイヤーを追加する](map-add-bubble-layer.md)
-- [ポイント データをクラスタリングする](clustering-point-data-web-sdk.md)
-- [データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)
+* [シンボル レイヤーを追加する](map-add-pin.md)
+* [バブル レイヤーを追加する](map-add-bubble-layer.md)
+* [ポイント データをクラスタリングする](clustering-point-data-web-sdk.md)
+* [データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)
 
 ### <a name="add-a-heat-map"></a>ヒート マップを追加する
 
@@ -1227,8 +1223,6 @@ GeoJSON データは、`DataSource` クラスの `importDataFromUrl` 関数を�
 </html>
 ```
 
-
-
 ![Google Maps のヒートマップ](media/migrate-google-maps-web-app/google-maps-heatmap.png)
 
 #### <a name="after-azure-maps"></a>後: Azure Maps
@@ -1293,8 +1287,6 @@ GeoJSON データをデータ ソースに読み込み、そのデータ ソー�
 </html>
 ```
 
-
-
 ![Azure Maps のヒートマップ](media/migrate-google-maps-web-app/azure-maps-heatmap.png)
 
 **その他のリソース:**
@@ -1324,8 +1316,6 @@ map.overlayMapTypes.insertAt(0, new google.maps.ImageMapType({
 }));
 ```
 
-
-
 ![Google Maps のタイル レイヤー](media/migrate-google-maps-web-app/google-maps-tile-layer.png)
 
 #### <a name="after-azure-maps"></a>後: Azure Maps
@@ -1343,8 +1333,6 @@ map.layers.add(new atlas.layer.TileLayer({
     tileSize: 256
 }), 'labels');
 ```
-
-
 
 ![Azure Maps のタイル レイヤー](media/migrate-google-maps-web-app/azure-maps-tile-layer.png)
 
@@ -1370,8 +1358,6 @@ var trafficLayer = new google.maps.TrafficLayer();
 trafficLayer.setMap(map);
 ```
 
-
-
 ![Google Maps の交通情報](media/migrate-google-maps-web-app/google-maps-traffic.png)
 
 #### <a name="after-azure-maps"></a>後: Azure Maps
@@ -1387,20 +1373,16 @@ map.setTraffic({
 });
 ```
 
-
-
 ![Azure Maps の交通情報](media/migrate-google-maps-web-app/azure-maps-traffic.png)
 
 Azure Maps の交通アイコンのいずれかをクリックすると、ポップアップに追加情報が表示されます。
-
-
 
 ![Azure Maps の交通事故](media/migrate-google-maps-web-app/azure-maps-traffic-incident.png)
 
 **その他のリソース:**
 
-- [マップ上にトラフィックを表示する](map-show-traffic.md)
-- [交通情報オーバーレイのオプション](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
+* [マップ上にトラフィックを表示する](map-show-traffic.md)
+* [交通情報オーバーレイのオプション](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
 
 ### <a name="add-a-ground-overlay"></a>グラウンド オーバーレイを追加する
 
@@ -1514,8 +1496,6 @@ Azure と Google のどちらのマップも、ジオリファレンスされた
 </html>
 ```
 
-
-
 ![Azure Maps のイメージ オーバーレイ](media/migrate-google-maps-web-app/azure-maps-image-overlay.png)
 
 **その他のリソース:**
@@ -1528,7 +1508,6 @@ Azure と Google のどちらのマップも、ジオリファレンスされた
 Azure と Google のどちらのマップも、KML、KMZ、GeoRSS のデータをインポートしてマップ上にレンダリングすることができます。 Azure Maps ではさらに、GPX、GML、空間 CSV ファイル、GeoJSON、Well Known Text (WKT)、Web Mapping Services (WMS)、Web Mapping Tile Services (WMTS)、Web Feature Services (WFS) がサポートされます。 Azure Maps は、ファイルをローカルのメモリに読み取るので、ほとんどの場合、Azure Maps の方が、はるかに大きな KML ファイルを扱うことができます。 
 
 #### <a name="before-google-maps"></a>前: Google Maps
-
 
 ```javascript
 <!DOCTYPE html>
@@ -1661,9 +1640,7 @@ Azure Maps では、GeoJSON が Web SDK で使用される主なデータ形式�
 </html>
 ```
 
-
 ![Azure Maps の KML](media/migrate-google-maps-web-app/azure-maps-kml.png)</center>
-
 
 **その他のリソース:**
 
@@ -1675,18 +1652,18 @@ Azure Maps では、GeoJSON が Web SDK で使用される主なデータ形式�
 
 Google Maps の移行に関連するその他のコード サンプルを以下にいくつか示します。
 
-- [描画ツール](map-add-drawing-toolbar.md)
-- [マップを 2 本指でパンするように制限する](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Limit%20Map%20to%20Two%20Finger%20Panning)
-- [スクロール ホイールのズームを制限する](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Limit%20Scroll%20Wheel%20Zoom)
-- [全画面表示コントロールを作成する](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Create%20a%20Fullscreen%20Control)
+* [描画ツール](map-add-drawing-toolbar.md)
+* [マップを 2 本指でパンするように制限する](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Limit%20Map%20to%20Two%20Finger%20Panning)
+* [スクロール ホイールのズームを制限する](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Limit%20Scroll%20Wheel%20Zoom)
+* [全画面表示コントロールを作成する](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Create%20a%20Fullscreen%20Control)
 
 **サービス**
 
-- [Azure Maps サービス モジュールの使用](how-to-use-services-module.md)
-- [観光名所の検索](map-search-location.md)
-- [座標から情報を取得する (逆ジオコード)](map-get-information-from-coordinate.md)
-- [A から B までのルートを表示する ](map-route.md)
-- [JQuery UI を使用する自動提案検索](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Search%20Autosuggest%20and%20JQuery%20UI)
+* [Azure Maps サービス モジュールの使用](how-to-use-services-module.md)
+* [観光名所の検索](map-search-location.md)
+* [座標から情報を取得する (逆ジオコード)](map-get-information-from-coordinate.md)
+* [A から B までのルートを表示する ](map-route.md)
+* [JQuery UI を使用する自動提案検索](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Search%20Autosuggest%20and%20JQuery%20UI)
 
 ## <a name="google-maps-v3-to-azure-maps-web-sdk-class-mapping"></a>Google Maps V3 から Azure Maps Web SDK へのクラスのマッピング
 
@@ -1741,18 +1718,13 @@ Azure Maps Web SDK には、個別に読み込むことができるサービス 
 | ジオメトリ ライブラリ      | [atlas.math](/javascript/api/azure-maps-control/atlas.math)   |
 | 視覚エフェクト ライブラリ | [ヒート マップ レイヤー](map-add-heat-map-layer.md) |
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+クリーンアップすべきリソースはありません。
+
 ## <a name="next-steps"></a>次のステップ
 
-Azure Maps Web SDK の詳細について学習します。
+Azure Maps への移行について理解を深めます。
 
 > [!div class="nextstepaction"]
-> [マップ コントロールの使用方法](how-to-use-map-control.md)
-
-> [!div class="nextstepaction"]
-> [描画ツール モジュールの使用方法](set-drawing-options.md)
-
-> [!div class="nextstepaction"]
-> [サービス モジュールの使用方法](how-to-use-services-module.md)
-
-> [!div class="nextstepaction"]
-> [空間 IO モジュールの使用方法](how-to-use-spatial-io-module.md)
+> [Web サービスを移行する](migrate-from-google-maps-web-services.md)

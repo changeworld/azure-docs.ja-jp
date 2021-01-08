@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 018a0e3a244d1f0e36ce638d646ab05861c10e38
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: f59ed16f98a22f77b2e67ec2bf829f58dccef611
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565910"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740506"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning スタジオとは
 
@@ -25,6 +25,11 @@ ms.locfileid: "94565910"
 > - スタジオで[アセットとリソースを管理する](#manage-assets-and-resources)方法。
 > - [Azure Machine Learning スタジオと ML Studio (classic)](#ml-studio-classic-vs-azure-machine-learning-studio) の違い。
 
+オペレーティング システムと互換性のある最新ブラウザーを使うことをお勧めします。 次のブラウザーがサポートされています。
+  * Microsoft Edge (新しい Microsoft Edge の最新バージョンです。 Microsoft Edge レガシではありません)。
+  * Safari (最新バージョン、Mac のみ)
+  * Chrome (最新バージョン)
+  * Firefox (最新バージョン)
 
 ## <a name="author-machine-learning-projects"></a>機械学習プロジェクトを作成する
 
@@ -33,6 +38,8 @@ ms.locfileid: "94565910"
 + **Notebook**
 
   スタジオに直接統合されているマネージド [Jupyter Notebook サーバー](how-to-run-jupyter-notebooks.md)で独自のコードを記述して実行します。 
+
+:::image type="content" source="media/overview-what-is-azure-ml-studio/notebooks.gif" alt-text="スクリーンショット: ノートブックでコードを記述して実行する":::
 
 + **Azure Machine Learning デザイナー**
 
@@ -94,6 +101,9 @@ ms.locfileid: "94565910"
 | データ ドリフト検出 | サポートされていません | [サポートされています](how-to-monitor-datasets.md) |
 | プロジェクトのラベル付けデータ | サポートされていません | [サポートされています](how-to-create-labeling-projects.md) |
 
+## <a name="troubleshooting"></a>トラブルシューティング
+
+* **スタジオにユーザー インターフェイス項目が見つからない**: Azure のロールベースのアクセス制御を使用すると、Azure Machine Learning で実行できるアクションを制限できます。 これらの制限によって、Azure Machine Learning スタジオにユーザー インターフェイス項目を表示しないようにすることができます。 たとえば、コンピューティング インスタンスを作成できないロールがユーザーに割り当てられている場合、コンピューティング インスタンスを作成するオプションは、スタジオには表示されません。 詳細については、「[ユーザーとロールを管理する](how-to-assign-roles.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

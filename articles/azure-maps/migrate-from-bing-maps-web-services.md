@@ -9,16 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d257c66de8fb62fb57c573d91966f3e7d8d1b123
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 6024aae68183fbe02125ef4207e9fbce8abd6a2b
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904960"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679071"
 ---
-# <a name="tutorial---migrate-web-service-from-bing-maps"></a>チュートリアル - Bing 地図から Web サービスを移行する
+# <a name="tutorial-migrate-web-service-from-bing-maps"></a>チュートリアル:Bing 地図から Web サービスを移行する
 
-Azure Maps と Bing 地図では、どちらの場合も REST Web サービスを介して空間 API にアクセスすることができます。 これらのプラットフォームの API インターフェイスは同様の機能を実行しますが、使用される名前付け規則と応答オブジェクトが異なります。
+Azure Maps と Bing 地図では、どちらの場合も REST Web サービスを介して空間 API にアクセスすることができます。 これらのプラットフォームの API インターフェイスは同様の機能を実行しますが、使用される名前付け規則と応答オブジェクトが異なります。 このチュートリアルでは、次の内容を学習します。
+
+> * フォワード ジオコーディングと逆ジオコーディング
+> * 目的地を検索する
+> * ルートと道順を計算する
+> * マップ イメージを取得する
+> * 距離行列を計算する
+> * タイム ゾーンの詳細を取得する
 
 次の表に、記載されている Bing 地図サービス API と同様の機能を提供する Azure Maps サービス API を示します。
 
@@ -59,6 +66,12 @@ Azure Maps には、必要になる可能性のある追加の REST Web サー�
 -   [検索のベスト プラクティス](./how-to-use-best-practices-for-search.md)
 -   [ルート指定のベスト プラクティス](./how-to-use-best-practices-for-routing.md)
 
+## <a name="prerequisites"></a>前提条件
+
+1. [Azure portal](https://portal.azure.com) にサインインします。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+2. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
+
 ## <a name="geocoding-addresses"></a>住所のジオコーディング
 
 ジオコーディングは、住所 (たとえば、`"1 Microsoft way, Redmond, WA"`) を座標 (たとえば、経度: -122.1298、緯度: 47.64005) に変換するプロセスです。 多くの場合、この後、座標を使用して、マップにプッシュピンを配置したり、座標の場所をマップの中央に表示したりします。
@@ -91,9 +104,9 @@ Azure Maps では、住所のジオコーディング方法が複数提供され
 
 Azure Maps では、以下もサポートされます。
 
--   `countrySecondarySubdivision` - 郡、行政区
--   `countryTertiarySubdivision` - 特定の区域 (自治区、小郡、コミューン)
--   `ofs` - `maxResults` パラメーターと組み合わせることで結果をページングします。
+* `countrySecondarySubdivision` - 郡、行政区
+* `countryTertiarySubdivision` - 特定の区域 (自治区、小郡、コミューン)
+* `ofs` - `maxResults` パラメーターと組み合わせることで結果をページングします。
 
 **クエリ指定の場所 (自由形式文字列の住所)**
 
@@ -109,10 +122,10 @@ Azure Maps では、以下もサポートされます。
 
 Azure Maps では、以下もサポートされます。
 
--   `typeahead` - クエリを部分的な入力として解釈し、検索を予測モード (自動提案または自動補完) にするかどうかを指定します。
--   `countrySet` - 検索対象を制限する ISO2 国コードのコンマ区切りリスト。
--   `lat`/`lon`、`topLeft`/`btmRight`、`radius` - ユーザーの位置情報とエリアを指定して、指定場所との関連性が高い結果を得ます。
--   `ofs` - `maxResults` パラメーターと組み合わせることで結果をページングします。
+* `typeahead` - クエリを部分的な入力として解釈し、検索を予測モード (自動提案または自動補完) にするかどうかを指定します。
+* `countrySet` - 検索対象を制限する ISO2 国コードのコンマ区切りリスト。
+* `lat`/`lon`、`topLeft`/`btmRight`、`radius` - ユーザーの位置情報とエリアを指定して、指定場所との関連性が高い結果を得ます。
+* `ofs` - `maxResults` パラメーターと組み合わせることで結果をページングします。
 
 検索サービスの使用方法の例については、[こちら](./how-to-search-for-address.md)を参照してください。 [検索のベスト プラクティス](./how-to-use-best-practices-for-search.md)に関するドキュメントを、必ずご覧ください。
 
@@ -142,9 +155,9 @@ Azure Maps では、逆ジオコーディング方法が複数の提供されて
 
 Azure Maps の逆ジオコーディング API には、Bing 地図では利用できない追加機能がいくつかあります。これらは、アプリを移行する際に統合するのに役立つ場合があります。
 
--   速度制限のデータの取得。
--   道路使用情報の取得 (地方の道路、幹線道路、自動車専用道路、ランプなど)。
--   座標が位置する通りの側。
+* 速度制限のデータの取得。
+* 道路使用情報の取得 (地方の道路、幹線道路、自動車専用道路、ランプなど)。
+* 座標が位置する通りの側。
 
 **エンティティ型対応表**
 
@@ -174,10 +187,10 @@ Azure Maps の逆ジオコーディング API には、Bing 地図では利用�
 
 Azure Maps を使用してルートと道順を計算することができます。 Azure Maps には、Bing 地図のルート指定サービスと同じ機能が数多く用意されています。たとえば、次のようなものがあります。
 
--   到着および出発の時刻
--   リアルタイムおよび予測ベースの交通路
--   さまざまな移動手段 (乗用車、徒歩、トラック)
--   ウェイポイントの順序の最適化 (巡回セールスマン)
+* 到着および出発の時刻
+* リアルタイムおよび予測ベースの交通路
+* さまざまな移動手段 (乗用車、徒歩、トラック)
+* ウェイポイントの順序の最適化 (巡回セールスマン)
 
 > [!NOTE]
 > Azure Maps では、すべてのウェイポイントを座標にする必要があります。 住所は、最初にジオコーディングする必要があります。
@@ -237,21 +250,21 @@ Azure Maps のルート指定 API では、同一 API 内でのトラックの�
 
 Azure Maps のルート指定 API には、Bing 地図では利用できない追加機能が多数用意されています。これらは、アプリを移行する際に統合するのに役立つ場合があります。
 
--   ルートの種類のサポート: 最短、最速、スリリング、最も燃費が良い。
--   追加の移動モードのサポート: 自転車、バス、バイク、タクシー、トラック、ライトバン。
--   150 個のウェイポイントのサポート。
--   1 つの要求で複数の移動時間を計算: 過去の交通量、現在の交通量、交通量なし。
--   追加の道路の種類を回避: 自動車の相乗り用車線、未舗装道路、既に使用したことがある道路。
--   エンジン仕様に基づくルート指定。 燃料または充電の残量とエンジン仕様に基づいて内燃自動車または電気自動車のルートを計算。
--   車両の最大速度を指定。
+* ルートの種類のサポート: 最短、最速、スリリング、最も燃費が良い。
+* 追加の移動モードのサポート: 自転車、バス、バイク、タクシー、トラック、ライトバン。
+* 150 個のウェイポイントのサポート。
+* 1 つの要求で複数の移動時間を計算: 過去の交通量、現在の交通量、交通量なし。
+* 追加の道路の種類を回避: 自動車の相乗り用車線、未舗装道路、既に使用したことがある道路。
+* エンジン仕様に基づくルート指定。 燃料または充電の残量とエンジン仕様に基づいて内燃自動車または電気自動車のルートを計算。
+* 車両の最大速度を指定。
 
 ## <a name="snap-coordinates-to-road"></a>座標を道路にスナップする
 
 Azure Maps には、道路に座標をスナップする方法がいくつかあります。
 
--   道路ネットワークに沿った論理ルートに座標をスナップするには、ルートの道順 API を使用します。
--   ベクター タイルに含まれる最も近い道路に個々の座標をスナップするには、Azure Maps Web SDK を使用します。
--   座標を個別にスナップするには、Azure Maps のベクター タイルを直接使用します。
+* 道路ネットワークに沿った論理ルートに座標をスナップするには、ルートの道順 API を使用します。
+* ベクター タイルに含まれる最も近い道路に個々の座標をスナップするには、Azure Maps Web SDK を使用します。
+* 座標を個別にスナップするには、Azure Maps のベクター タイルを直接使用します。
 
 **ルートの道順 API を使用して座標をスナップする**
 
@@ -259,8 +272,8 @@ Azure Maps では、[ルートの道順](/rest/api/maps/route/postroutedirection
 
 ルートの道順 API を使用して道路に座標をスナップする方法は 2 種類あります。
 
--   座標が 150 個以下の場合は、GET Route Directions API でウェイポイントとして渡します。 この方法では、スナップされた 2 種類のデータを取得することができます。ルート指示には個々のスナップされたウェイポイントが含まれるのに対し、ルート経路には座標間の経路全体を埋める一連の補完座標が含まれます。
--   座標が 150 個を超える場合は、POST Route Directions API を使用します。 クエリ パラメーターに始点座標と終点座標を渡す必要がありますが、POST 要求の本文ですべての座標を `supportingPoints` パラメーターに渡し、GeoJSON ジオメトリ形式のポイントのコレクションをフォーマットできます。 この方法で利用できるスナップされたデータは、座標間の経路全体を埋める一連の補完座標で構成されたルート経路のみです。 [こちらの例](https://azuremapscodesamples.azurewebsites.net/?sample=Snap%20points%20to%20logical%20route%20path)では、Azure Maps Web SDK のサービス モジュールを使用した場合の実行方法を紹介しています。
+* 座標が 150 個以下の場合は、GET Route Directions API でウェイポイントとして渡します。 この方法では、スナップされた 2 種類のデータを取得することができます。ルート指示には個々のスナップされたウェイポイントが含まれるのに対し、ルート経路には座標間の経路全体を埋める一連の補完座標が含まれます。
+* 座標が 150 個を超える場合は、POST Route Directions API を使用します。 クエリ パラメーターに始点座標と終点座標を渡す必要がありますが、POST 要求の本文ですべての座標を `supportingPoints` パラメーターに渡し、GeoJSON ジオメトリ形式のポイントのコレクションをフォーマットできます。 この方法で利用できるスナップされたデータは、座標間の経路全体を埋める一連の補完座標で構成されたルート経路のみです。 [こちらの例](https://azuremapscodesamples.azurewebsites.net/?sample=Snap%20points%20to%20logical%20route%20path)では、Azure Maps Web SDK のサービス モジュールを使用した場合の実行方法を紹介しています。
 
 次の表では、Bing 地図 API パラメーターと、それに相当する Azure Maps 内の API パラメーターを相互参照で示しています。
 
@@ -268,8 +281,8 @@ Azure Maps では、[ルートの道順](/rest/api/maps/route/postroutedirection
 |----------------------------|---------------------------------------------------------------------|
 | `points`                   | `supportingPoints` - Post 要求の本文にこれらのポイントを渡します  |
 | `interpolate`              | N/A                                                                 |
-| `includeSpeedLimit`        | N/A                                                                 |
-| `includeTruckSpeedLimit`   | N/A                                                                 |
+| `includeSpeedLimit`        | 該当なし                                                                 |
+| `includeTruckSpeedLimit`   | 該当なし                                                                 |
 | `speedUnit`                | N/A                                                                 |
 | `travelMode`               | `travelMode`                                                        |
 | `key`                      | `subscription-key` - ドキュメント「[Azure Maps による認証](./azure-maps-authentication.md)」も参照してください。 |
@@ -330,7 +343,7 @@ Azure Maps には、静的マップ イメージにデータを重ねてレン�
 | `mapLayer` (`ml`)        | N/A                                            |
 | `mapSize` (`ms`)         | `width` および `height` - 最大 8192 x 8192 のサイズを指定できます。 |
 | `declutterPins` (`dcl`)  | N/A                                            |
-| `dpi`                    | N/A                                            |
+| `dpi`                    | 該当なし                                            |
 | `drawCurve`              | `path`                                         |
 | `mapMetadata`            | N/A                                            |
 | `pitch`                  | 該当なし - ストリート ビューはサポートされていません。                |
@@ -368,9 +381,7 @@ Bing 地図では、URL で `pushpin` パラメーターを使用することに
 
 > `&pushpin=45,-110;7;AB`
 
-<center>
-
-![Bing 地図の静的マップのピン](media/migrate-bing-maps-web-service/bing-maps-static-map-pin.jpg)</center>
+![Bing 地図の静的マップのピン](media/migrate-bing-maps-web-service/bing-maps-static-map-pin.jpg)
 
 **後: Azure Maps**
 
@@ -384,21 +395,21 @@ Azure Maps では、URL で `pins` パラメーターを指定することによ
 
 `iconType` 値は、作成するピンの種類を指定します。次の値を指定することができます。
 
--   `default` - 既定のピン アイコン。
--   `none` - アイコンは表示されず、ラベルのみがレンダリングされます。
--   `custom` - カスタム アイコンを使用することを指定します。 アイコン イメージを指す URL は、ピンの位置情報の後、`pins` パラメーターの末尾に追加できます。
--   `{udid}` - Azure Maps データ ストレージ プラットフォームに格納されるアイコンの固有データ ID (UDID)。
+* `default` - 既定のピン アイコン。
+* `none` - アイコンは表示されず、ラベルのみがレンダリングされます。
+* `custom` - カスタム アイコンを使用することを指定します。 アイコン イメージを指す URL は、ピンの位置情報の後、`pins` パラメーターの末尾に追加できます。
+* `{udid}` - Azure Maps データ ストレージ プラットフォームに格納されるアイコンの固有データ ID (UDID)。
 
 Azure Maps でピンのスタイルを追加するには、形式 `optionNameValue` を使用します。複数のスタイルを指定する場合は、`iconType|optionName1Value1|optionName2Value2` のようにパイプ (`|`) 文字で区切ります。 オプションの名前と値は区切らないことに注意してください。 Azure Maps でプッシュピンのスタイルを設定するには、次のスタイル オプション名を使用します。
 
--   `al` - プッシュピンの不透明度 (アルファ) を指定します。 0 から 1 までの範囲の数値を指定できます。
--   `an` - ピンのアンカーを指定します。 x と y のピクセル値を `x y` 形式で指定します。
--   `co` - ピンの色。 24 ビットの 16 進カラー値 (`000000` から `FFFFFF`) を指定する必要があります。
--   `la` - ラベルのアンカーを指定します。 x と y のピクセル値を `x y` 形式で指定します。
--   `lc` - ラベルの色。 24 ビットの 16 進カラー値 (`000000` から `FFFFFF`) を指定する必要があります。
--   `ls` - ラベルのサイズ (ピクセル単位)。 0 より大きい数値を指定できます。
--   `ro` - アイコンを回転させる角度の値。 -360 から 360 までの範囲の数値を指定できます。
--   `sc` - ピン アイコンのスケール値。 0 より大きい数値を指定できます。
+* `al` - プッシュピンの不透明度 (アルファ) を指定します。 0 から 1 までの範囲の数値を指定できます。
+* `an` - ピンのアンカーを指定します。 x と y のピクセル値を `x y` 形式で指定します。
+* `co` - ピンの色。 24 ビットの 16 進カラー値 (`000000` から `FFFFFF`) を指定する必要があります。
+* `la` - ラベルのアンカーを指定します。 x と y のピクセル値を `x y` 形式で指定します。
+* `lc` - ラベルの色。 24 ビットの 16 進カラー値 (`000000` から `FFFFFF`) を指定する必要があります。
+* `ls` - ラベルのサイズ (ピクセル単位)。 0 より大きい数値を指定できます。
+* `ro` - アイコンを回転させる角度の値。 -360 から 360 までの範囲の数値を指定できます。
+* `sc` - ピン アイコンのスケール値。 0 より大きい数値を指定できます。
 
 場所の一覧内にあるすべてのプッシュピンに単一のラベル値を適用するのではなく、ピンの位置ごとにラベル値を指定します。 ラベル値には、複数の文字で構成される文字列を指定することができます。また、スタイルや場所の値として誤って解釈されないようにするため、一重引用符で囲むこともできます。
 
@@ -406,17 +417,13 @@ Azure Maps でピンのスタイルを追加するには、形式 `optionNameVal
 
 > `&pins=default|coFF0000|la15 50||'Space Needle'-122.349300 47.620180`
 
-<center>
-
-![Azure Maps の静的マップ上にあるピン](media/migrate-bing-maps-web-service/azure-maps-static-map-pin.jpg)</center>
+![Azure Maps の静的マップ上にあるピン](media/migrate-bing-maps-web-service/azure-maps-static-map-pin.jpg)
 
 次の例では、ラベル値が 1'、'2'、'3' の 3 つのピンを追加します。
 
 > `&pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12`
 
-<center>
-
-![Azure Maps の静的マップ上にある複数のピン](media/migrate-bing-maps-web-service/azure-maps-static-map-multiple-pins.jpg)</center>
+![Azure Maps の静的マップ上にある複数のピン](media/migrate-bing-maps-web-service/azure-maps-static-map-multiple-pins.jpg)
 
 ### <a name="draw-curve-url-parameter-format-comparison"></a>曲線描画 URL パラメーターの形式の比較
 
@@ -436,9 +443,7 @@ Bing 地図のシェイプの種類には、線、ポリゴン、円、曲線が
 
 `&drawCurve=l,FF000088,4;45,-110_50,-100`
 
-<center>
-
-![Bing 地図の静的マップの線](media/migrate-bing-maps-web-service/bing-maps-static-map-line.jpg)</center>
+![Bing 地図の静的マップの線](media/migrate-bing-maps-web-service/bing-maps-static-map-line.jpg)
 
 **後: Azure Maps**
 
@@ -450,20 +455,18 @@ Azure Maps では、URL で *path* パラメーターを指定することによ
 
 Azure Maps で経路のスタイルを追加するには、形式 `optionNameValue` を使用します。複数のスタイルを指定する場合は、`optionName1Value1|optionName2Value2` のようにパイプ (`|`) 文字で区切ります。 オプションの名前と値は区切らないことに注意してください。 Azure Maps で経路のスタイルを設定するには、次のスタイル オプション名を使用します。
 
--   `fa` - ポリゴンのレンダリングに使用する塗りつぶしの色の不透明度 (アルファ)。 0 から 1 までの範囲の数値を指定できます。
--   `fc` - ポリゴンの領域のレンダリングに使用する塗りつぶしの色。
--   `la` - 線およびポリゴンの枠線をレンダリングする際に使用される線の色の不透明度 (アルファ)。 0 から 1 までの範囲の数値を指定できます。
--   `lc` - 線およびポリゴンの枠線をレンダリングするために使用される線の色。
--   `lw` - 線の幅 (ピクセル単位)。
--   `ra` - 円の半径をメートル単位で指定します。
+* `fa` - ポリゴンのレンダリングに使用する塗りつぶしの色の不透明度 (アルファ)。 0 から 1 までの範囲の数値を指定できます。
+* `fc` - ポリゴンの領域のレンダリングに使用する塗りつぶしの色。
+* `la` - 線およびポリゴンの枠線をレンダリングする際に使用される線の色の不透明度 (アルファ)。 0 から 1 までの範囲の数値を指定できます。
+* `lc` - 線およびポリゴンの枠線をレンダリングするために使用される線の色。
+* `lw` - 線の幅 (ピクセル単位)。
+* `ra` - 円の半径をメートル単位で指定します。
 
 たとえば、Azure Maps で、不透明度が 50%、太さが 4 ピクセルの青色の線をマップの座標 (経度: -110、緯度: 45) と座標 (経度: -100、緯度: 50) の間に追加するには、次の URL を使用します。
 
 > `&path=lc0000FF|la.5|lw4||-110 45|-100 50`
 
-<center>
-
-![Azure Maps の静的マップの線](media/migrate-bing-maps-web-service/azure-maps-static-map-line.jpg)</center>
+![Azure Maps の静的マップの線](media/migrate-bing-maps-web-service/azure-maps-static-map-line.jpg)
 
 ## <a name="calculate-a-distance-matrix"></a>距離行列を計算する
 
@@ -547,8 +550,8 @@ Azure Maps には、目的地を検索するための複数の検索 API が用�
 
 Azure Maps では、トラフィック データを取得するための API が複数提供されます。 使用できるトラフィック データには、次の 2 種類があります。
 
--   **フロー データ** - 道路区間のトラフィックのフローに関するメトリックを提供します。 これは一般に、道路を色分けするために使用します。 データは 2 分ごとに更新されます。
--   **インシデント データ** - 工事、通行止め、事故、およびトラフィックに影響する可能性があるその他のインシデントについてのデータを提供します。 データは 1 分ごとに更新されます。
+* **フロー データ** - 道路区間のトラフィックのフローに関するメトリックを提供します。 これは一般に、道路を色分けするために使用します。 データは 2 分ごとに更新されます。
+* **インシデント データ** - 工事、通行止め、事故、およびトラフィックに影響する可能性があるその他のインシデントについてのデータを提供します。 データは 1 分ごとに更新されます。
 
 Bing 地図では、対話型のマップ コントロールでトラフィック フローとインシデントのデータが提供されるほか、インシデント データはサービスとしても公開されています。
 
@@ -602,9 +605,9 @@ Azure Maps プラットフォームでは、この API に加えて、タイム 
 
 Bing 地図の Spatial Data Services では、3 つの主要な機能が提供されます。
 
--   バッチ ジオコーディング - 1 つの要求で複数の住所ジオコードが含まれる大規模バッチを処理します。
--   行政境界データの取得 - 座標を使用して、指定されたエンティティの種類について区分けの境界を取得します。
--   空間ビジネス データのホストおよび照会 – 単純な 2 次元のデータ テーブルをアップロードして、いくつかのシンプルな空間クエリによりテーブルにアクセスします。
+* バッチ ジオコーディング - 1 つの要求で複数の住所ジオコードが含まれる大規模バッチを処理します。
+* 行政境界データの取得 - 座標を使用して、指定されたエンティティの種類について区分けの境界を取得します。
+* 空間ビジネス データのホストおよび照会 – 単純な 2 次元のデータ テーブルをアップロードして、いくつかのシンプルな空間クエリによりテーブルにアクセスします。
 
 ### <a name="batch-geocode-data"></a>データのバッチ ジオコーディング
 
@@ -660,7 +663,11 @@ Azure Maps には、次のプログラミング言語用のクライアント �
 
 その他のプログラミング言語用のオープンソース クライアント ライブラリには、次のものがあります。
 
--   .NET Standard 2.0 - [GitHub プロジェクト](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet パッケージ](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+* .NET Standard 2.0 - [GitHub プロジェクト](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet パッケージ](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+クリーンアップすべきリソースはありません。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -668,15 +675,3 @@ Azure Maps REST サービスの詳細について学習します。
 
 > [!div class="nextstepaction"]
 > [検索サービスを使用するためのベスト プラクティス](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [ルート指定サービスを使用するためのベスト プラクティス](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [サービス モジュール (Web SDK) の使用方法](how-to-use-best-practices-for-routing.md)
-
-> [!div class="nextstepaction"]
-> [Azure Maps REST サービス API のリファレンス ドキュメント](/rest/api/maps/)
-
-> [!div class="nextstepaction"]
-> [コード サンプル](/samples/browse/?products=azure-maps)

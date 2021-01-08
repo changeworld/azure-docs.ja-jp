@@ -6,19 +6,19 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.date: 05/06/2019
-ms.openlocfilehash: 1fffeec1434cb066487bf383589554edec2e6a86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/17/2020
+ms.openlocfilehash: 2353d15707fe215bfcab7912f2a9c598c4af7e49
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75443687"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822014"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>チュートリアル:Azure Stream Analytics 用のカスタム .NET 逆シリアライザー
 
 Azure Stream Analytics では、[3 つのデータ形式が組み込みでサポートされています](stream-analytics-parsing-json.md)。JSON、CSV、Avro です。 カスタム .NET 逆シリアライザーを使用すると、クラウド ジョブとエッジ ジョブの両方について、その他の形式 ([プロトコル バッファー](https://developers.google.com/protocol-buffers/)、[Bond](https://github.com/Microsoft/bond)、およびその他のユーザー定義形式など) からデータを読み取ることができます。
 
-このチュートリアルでは、Visual Studio を使用して Azure Stream Analytics クラウド ジョブ用のカスタム .NET 逆シリアライザーを作成する方法について説明します。 
+このチュートリアルでは、Visual Studio を使用して Azure Stream Analytics クラウド ジョブ用のカスタム .NET 逆シリアライザーを作成する方法について説明します。 Visual Studio Code で .NET 逆シリアライザーを作成する方法については、[Visual Studio Code での Azure Stream Analytics ジョブに対応した .NET 逆シリアライザーの作成](visual-studio-code-custom-deserializer.md)に関する記事をご覧ください。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -26,17 +26,16 @@ Azure Stream Analytics では、[3 つのデータ形式が組み込みでサポ
 > * プロトコル バッファー用のカスタム逆シリアライザーを作成する。
 > * Visual Studio で Azure Stream Analytics ジョブを作成する。
 > * カスタム逆シリアライザーを使用するように Stream Analytics ジョブを構成する。
-> * Stream Analytics ジョブをローカルで実行して、カスタム逆シリアライザーをテストする。
+> * Stream Analytics ジョブをローカルで実行して、カスタム逆シリアライザーをテストおよびデバッグする。
+
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) または [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/) をインストールします。 Enterprise (Ultimate/Premium)、Professional、Community の各エディションがサポートされています。 Express エディションはサポートされていません。
+* [Visual Studio 2019 (推奨)](https://www.visualstudio.com/downloads/) または [Visual Studio 2017](https://www.visualstudio.com/vs/older-downloads/) をインストールします。 Enterprise (Ultimate/Premium)、Professional、Community の各エディションがサポートされています。 Express エディションはサポートされていません。 
 
-* [Visual Studio 用の Stream Analytics ツールをインストール](stream-analytics-tools-for-visual-studio-install.md)するか、最新バージョンに更新します。 次のバージョンの Visual Studio がサポートされています。
-   * Visual Studio 2015
-   * Visual Studio 2017
+* [Visual Studio 用の Stream Analytics ツールをインストール](stream-analytics-tools-for-visual-studio-install.md)するか、最新バージョンに更新します。 
 
 * Visual Studio で **Cloud Explorer** を開き、Azure サブスクリプションにサインインします。
 
@@ -45,7 +44,7 @@ Azure Stream Analytics では、[3 つのデータ形式が組み込みでサポ
 
 ## <a name="create-a-custom-deserializer"></a>カスタム逆シリアライザーを作成する
 
-1. Visual Studio を開き、 **[ファイル] > [新規作成] > [プロジェクト]** の順に選択します。 **Stream Analytics** を検索し、 **[Azure Stream Analytics Custom Deserializer Project (.NET)]\(Azure Stream Analytics カスタム逆シリアライザー プロジェクト (.NET)\)** を選択します。 プロジェクトに、**Protobuf Deserializer** のような名前を付けます。
+1. Visual Studio を開き、 **[ファイル] > [新規作成] > [プロジェクト]** の順に選択します。 **Stream Analytics** を検索し、**[Azure Stream Analytics Custom Deserializer Project (.NET)]\(Azure Stream Analytics カスタム逆シリアライザー プロジェクト (.NET)\)** を選択します。 プロジェクトに、**Protobuf Deserializer** のような名前を付けます。
 
    ![Visual Studio .NET Standard クラス ライブラリ プロジェクトを作成する](./media/custom-deserializer/create-dotnet-library-project.png)
 
@@ -57,9 +56,9 @@ Azure Stream Analytics では、[3 つのデータ形式が組み込みでサポ
 
 ## <a name="add-an-azure-stream-analytics-project"></a>Azure Stream Analytics プロジェクトを追加する
 
-1. ソリューション エクスプローラーで **Protobuf Deserializer** ソリューションを右クリックし、 **[追加] > [新しいプロジェクト]** の順に選択します。 **[Azure Stream Analytics] > [Stream Analytics]** で、 **[Azure Stream Analytics アプリケーション]** を選択します。 **ProtobufCloudDeserializer** という名前を付け、 **[OK]** を選択します。 
+1. ソリューション エクスプローラーで **Protobuf Deserializer** ソリューションを右クリックし、**[追加] > [新しいプロジェクト]** の順に選択します。 **[Azure Stream Analytics] > [Stream Analytics]** で、**[Azure Stream Analytics アプリケーション]** を選択します。 **ProtobufCloudDeserializer** という名前を付け、**[OK]** を選択します。 
 
-2. **ProtobufCloudDeserializer** Azure Stream Analytics プロジェクトで、 **[参照]** を右クリックします。 **[プロジェクト]** の下に、**Protobuf Deserializer** を追加します。 自動的に設定されます。
+2. **ProtobufCloudDeserializer** Azure Stream Analytics プロジェクトで、**[参照]** を右クリックします。 **[プロジェクト]** の下に、**Protobuf Deserializer** を追加します。 自動的に設定されます。
 
 ## <a name="configure-a-stream-analytics-job"></a>Stream Analytics ジョブを構成する
 
@@ -74,7 +73,7 @@ Azure Stream Analytics では、[3 つのデータ形式が組み込みでサポ
    |カスタム コード ストレージ設定のストレージ アカウント|<お客様のストレージ アカウント>|
    |カスタム コード ストレージ設定のコンテナー|<お客様のストレージ コンテナー>|
 
-2. **[入力]** の下で、 **[Input.json]** をダブルクリックします。 次の設定を除き、既定の構成を使用します。
+2. **[入力]** の下で、**[Input.json]** をダブルクリックします。 次の設定を除き、既定の構成を使用します。
 
    |設定|推奨値|
    |-------|---------------|
@@ -95,7 +94,7 @@ Azure Stream Analytics では、[3 つのデータ形式が組み込みでサポ
    SELECT * FROM Input
    ```
 
-4. [サンプルの protobuf 入力ファイル](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/SimulatedTemperatureEvents.protobuf)をダウンロードします。 **[入力]** フォルダーで **[Input.json]** を右クリックし、 **[ローカル入力の追加]** を選択します。 次に、 **[local_Input.json]** をダブルクリックし、次の設定を構成します。
+4. [サンプルの protobuf 入力ファイル](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/SimulatedTemperatureEvents.protobuf)をダウンロードします。 **[入力]** フォルダーで **[Input.json]** を右クリックし、**[ローカル入力の追加]** を選択します。 次に、**[local_Input.json]** をダブルクリックし、次の設定を構成します。
 
    |設定|推奨値|
    |-------|---------------|
@@ -108,7 +107,7 @@ Azure Stream Analytics では、[3 つのデータ形式が組み込みでサポ
 
 ## <a name="execute-the-stream-analytics-job"></a>Stream Analytics ジョブを実行する
 
-1. **Script.asaql** を開き、 **[ローカルで実行]** を選択します。
+1. **Script.asaql** を開き、**[ローカルで実行]** を選択します。
 
 2. **[Stream Analytics ローカル実行の結果]** で結果を確認します。
 
@@ -116,11 +115,13 @@ Stream Analytics ジョブのカスタム逆シリアライザーが正常に実
 
 ## <a name="debug-your-deserializer"></a>逆シリアライザーをデバッグする
 
-標準の.NET コードをデバッグするのと同じ方法で、.NET 逆シリアライザーをローカルでデバッグできます。 
+標準の.NET コードをデバッグするのと同じ方法で、.NET 逆シリアライザーをローカルでデバッグできます。
 
-1. 関数にブレークポイントを追加します。
+1. **ProtobufCloudDeserializer** プロジェクト名を右クリックし、[スタートアップ プロジェクト] として設定します。
 
-2. **F5** キーを押してデバッグを開始します。 期待どおりに、プログラムはブレークポイントで停止します。
+2. 関数にブレークポイントを追加します。
+
+3. **F5** キーを押してデバッグを開始します。 期待どおりに、プログラムはブレークポイントで停止します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

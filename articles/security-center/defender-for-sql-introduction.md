@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: e9a2259f1e15a94ad1f2a9eabf7d3a2f3ed419f1
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 16f903e34c64214d54fc01fa621f561f1786de08
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387804"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755992"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Azure Defender for SQL の概要
 
@@ -53,7 +53,9 @@ Azure Defender for SQL には、Azure Security Center の[データ セキュリ
 
 - [脆弱性評価](../azure-sql/database/sql-vulnerability-assessment.md) - データベースの潜在的な脆弱性を検出、追跡し、修復を支援するスキャン サービス。 評価スキャンでは、SQL マシンのセキュリティ状態の概要と、セキュリティ調査結果の詳細が示されます。
 
-- [Advanced Threat Protection](../azure-sql/database/threat-detection-overview.md) - SQL インジェクション、ブルートフォース攻撃、特権の悪用などの脅威について、SQL サーバーを継続的に監視する検出サービス。 このサービスでは、不審なアクティビティの詳細、脅威を軽減する方法に関するガイダンス、Azure Sentinel で調査を続行するためのオプションについて、Azure Security Center のアクション指向のセキュリティ アラートが提供されます。
+- [Advanced Threat Protection](../azure-sql/database/threat-detection-overview.md) - SQL インジェクション、ブルートフォース攻撃、特権の悪用などの脅威について、SQL サーバーを継続的に監視する検出サービス。 このサービスでは、不審なアクティビティの詳細、脅威を軽減する方法に関するガイダンス、Azure Sentinel で調査を続行するためのオプションについて、Azure Security Center のアクション指向のセキュリティ アラートが提供されます。 
+    > [!TIP]
+    > SQL サーバーのセキュリティ アラートの一覧については、[アラートのリファレンス ページ](alerts-reference.md#alerts-sql-db-and-warehouse)を参照してください。
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-sql-provide"></a>Azure Defender for SQL で提供されるアラートの種類
@@ -74,8 +76,3 @@ Azure Defender for SQL には、Azure Security Center の[データ セキュリ
 
 > [!div class="nextstepaction"]
 > [Azure Defender で SQL サーバーの脆弱性をスキャンする](defender-for-sql-usage.md)
-
-関連資料については、次の記事をご覧ください。 
-
-- [Azure Defender for SQL database servers を有効にする方法](../azure-sql/database/azure-defender-for-sql.md)
-- [SQL サーバーのセキュリティ アラート一覧](alerts-reference.md#alerts-sql-db-and-warehouse)

@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 7b691dc408c65b2152c60276dbea826042ecb0d8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: eddee6bc0fdcd636b7b9ffb81b121052499251b2
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95095884"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97745727"
 ---
 [リファレンスのドキュメント](/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices) | [パッケージ (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices) | [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
-## <a name="prerequisites"></a>前提条件
+## <a name="javascript-prerequisites"></a>JavaScript の前提条件
 
 * 有効な Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)。
 * 最新バージョンの [Node.js](https://nodejs.org/)
@@ -76,6 +76,10 @@ _index.js_ スクリプトを開き、以下のライブラリをインポート
 
 ## <a name="create-a-cognitive-services-resource"></a>Cognitive Services リソースの作成
 
+新しい Cognitive Services リソースを作成してサブスクライブするには、**Create** 関数を使用します。 この関数で、渡したリソース グループに新しい課金対象リソースが追加されます。 新しいリソースを作成するときには、使用するサービスの "種類"、その価格レベル (つまり SKU)、および Azure の場所を把握している必要があります。 次の関数は、これらのすべての引数を受け取り、リソースを作成します。
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/azure_management_service/create_delete_resource.js?name=snippet_create)]
+
 ### <a name="choose-a-service-and-pricing-tier"></a>サービスと価格レベルを選択する
 
 新しいリソースを作成するときには、使用するサービスの "種類" と、必要な[価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/) (つまり SKU) を把握する必要があります。 リソースを作成するときに、この情報と他の情報をパラメーターとして使用します。 次の関数は、利用可能な Cognitive Service の "種類" を一覧表示します。
@@ -85,12 +89,6 @@ _index.js_ スクリプトを開き、以下のライブラリをインポート
 [!INCLUDE [cognitive-services-subscription-types](../../../../includes/cognitive-services-subscription-types.md)]
 
 [!INCLUDE [SKUs and pricing](./sku-pricing.md)]
-
-## <a name="create-a-cognitive-services-resource"></a>Cognitive Services リソースの作成
-
-新しい Cognitive Services リソースを作成してサブスクライブするには、**Create** 関数を使用します。 この関数で、渡したリソース グループに新しい課金対象リソースが追加されます。 新しいリソースを作成するときには、使用するサービスの "種類"、その価格レベル (つまり SKU)、および Azure の場所を把握している必要があります。 次の関数は、これらのすべての引数を受け取り、リソースを作成します。
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/azure_management_service/create_delete_resource.js?name=snippet_create)]
 
 ## <a name="view-your-resources"></a>リソースを表示する
 

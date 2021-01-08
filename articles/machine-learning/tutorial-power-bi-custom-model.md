@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:ノートブックを使用して予測モデルを作成する (パート 1/2)
 titleSuffix: Azure Machine Learning
-description: Microsoft Power BI で機械学習モデルを使用して結果を予測できるように、Jupyter Notebook でコードを使用して機械学習モデルを作成、デプロイする方法について説明します。
+description: Jupyter Notebook でコードを使用して、機械学習モデルを構築およびデプロイする方法を学習します。 Microsoft Power BI でそのモデルを使用して結果を予測できます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,69 +10,70 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: f8209c0d26cf8c572d10666696231b0468cfcbc6
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 1dfee56f90011d3c532767e136b383e4eb95c234
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97370840"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814773"
 ---
-# <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-notebook-part-1-of-2"></a>チュートリアル:Power BI 統合 - ノートブックを使用して予測モデルを作成する (パート 1/2)
+# <a name="tutorial-power-bi-integration---create-the-predictive-model-by-using-a-jupyter-notebook-part-1-of-2"></a>チュートリアル:Power BI 統合 - Jupyter Notebook を使用して予測モデルを作成する (パート 1/2)
 
-このチュートリアルのパート 1 では、Jupyter Notebook でコードを使用して予測機械学習モデルをトレーニング、デプロイします。 パート 2 では、Microsoft Power BI でそのモデルを使用して結果を予測します。
+このチュートリアルのパート 1 では、Jupyter Notebook でコードを使用して予測機械学習モデルをトレーニングおよびデプロイします。 パート 2 では、Microsoft Power BI でそのモデルを使用して結果を予測します。
 
 このチュートリアルでは、次の作業を行いました。
 
 > [!div class="checklist"]
-> * Jupyter Notebook の作成
-> * Azure Machine Learning コンピューティング インスタンスを作成する
-> * scikit-learn を使用して回帰モデルをトレーニングする
-> * リアルタイム スコアリング エンドポイントにモデルをデプロイする
+> * Jupyter Notebook を作成する
+> * Azure Machine Learning コンピューティング インスタンスを作成する。
+> * Scikit-learn を使用して回帰モデルをトレーニングする。
+> * リアルタイム スコアリング エンドポイントにモデルをデプロイする。
 
-Power BI で使用するモデルは、3 とおりの方法で作成、デプロイすることができます。  この記事では、オプション A (Notebook を使用してモデルをトレーニング、デプロイする) を取り上げます。  このオプションで紹介するのは、Azure Machine Learning スタジオにホストされた Jupyter ノートブックを使用した、コード優先の作成エクスペリエンスです。 
+Power BI で使用するモデルは、3 とおりの方法で作成してデプロイすることができます。  この記事では、"オプション A: ノートブックを使用してモデルをトレーニングおよびデプロイする" について説明します。  このオプションは、コード優先の作成エクスペリエンスです。 Azure Machine Learning スタジオでホストされている Jupyter Notebook を使用します。 
 
-その他、次の方法を使用できます。
+ただし、代わりに、その他のオプションのいずれかを使用することもできます。
 
-* [オプション B: デザイナーを使用してモデルをトレーニング、デプロイする](tutorial-power-bi-designer-model.md) - デザイナーを使用してわずかなコードを記述するだけの作成エクスペリエンス (ドラッグ アンド ドロップ ユーザー インターフェイス)。
-* [オプション C: 自動 ML を使用してモデルをトレーニング、デプロイする](tutorial-power-bi-automated-model.md) - データ準備とモデルのトレーニングを完全に自動化する、コーディング不要の作成エクスペリエンス。
+* [オプション B: Azure Machine Learning デザイナーを使用してモデルをトレーニングおよびデプロイする](tutorial-power-bi-designer-model.md)。 わずかなコードを記述するだけのこの作成エクスペリエンスでは、ドラッグ アンド ドロップ ユーザー インターフェイスを使用します。
+* [オプション C: 自動機械学習を使用してモデルをトレーニングおよびデプロイする](tutorial-power-bi-automated-model.md)。 コーディング不要のこの作成エクスペリエンスでは、データ準備とモデルのトレーニングが完全に自動化されます。
 
 
-## <a name="prerequisites"></a>[前提条件]
+## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション ([無料試用版を利用できます](https://aka.ms/AMLFree))。 
-- Azure Machine Learning ワークスペース。 まだワークスペースをお持ちでない場合は、[Azure Machine Learning ワークスペースの作成方法](./how-to-manage-workspace.md#create-a-workspace)に関する手順に従ってください。
+- Azure サブスクリプション。 まだサブスクリプションをお持ちでない場合は、[無料試用版](https://aka.ms/AMLFree)を使用できます。 
+- Azure Machine Learning ワークスペース。 ワークスペースがまだない場合は、「[Azure Machine Learning ワークスペースを作成して管理する](./how-to-manage-workspace.md#create-a-workspace)」を参照してください。
 - Python 言語と機械学習ワークフローの基礎知識。
 
 ## <a name="create-a-notebook-and-compute"></a>ノートブックを作成してコンピューティングを実行する
 
-[Azure Machine Learning スタジオ](https://ml.azure.com)のホームページで **[新規作成]** を選択し、 **[ノートブック]** を選択します。
+[**Azure Machine Learning スタジオ**](https://ml.azure.com)のホーム ページで **[新規作成]**  >  **[ノートブック]** の順に選択します。
 
-:::image type="content" source="media/tutorial-power-bi/create-new-notebook.png" alt-text="ノートブックの作成方法を示すスクリーンショット":::
+:::image type="content" source="media/tutorial-power-bi/create-new-notebook.png" alt-text="ノートブックの作成方法を示すスクリーンショット。":::
  
-**新しいファイルを作成する** ためのダイアログ ボックスが表示されたら、次の情報を入力します。
+**[新しいファイルの作成]** ページで次の作業を行います。
 
-1. ノートブックのファイル名 (例: `my_model_notebook`)
-1. **[ファイルの種類]** を **[ノートブック]** に変更します
+1. ノートブックに名前を付けます (例: *my_model_notebook*)。
+1. **[ファイルの種類]** を **[ノートブック]** に変更します。
+1. **［作成］** を選択します 
+ 
+次に、コード セルを実行するために、コンピューティング インスタンスを作成してご自分のノートブックにアタッチします。 まず、ノートブックの上部にあるプラス アイコンを選択します。
 
-**［作成］** を選択します 次に、コード セルを実行するために、コンピューティングを作成してノートブックにアタッチする必要があります。 そのために、ノートブックの上部にあるプラス アイコンを選択してください。
+:::image type="content" source="media/tutorial-power-bi/create-compute.png" alt-text="コンピューティング インスタンスの作成方法を示すスクリーンショット。":::
 
-:::image type="content" source="media/tutorial-power-bi/create-compute.png" alt-text="コンピューティング インスタンスの作成方法を示すスクリーンショット":::
+**[Create compute instance]\(コンピューティング インスタンスの作成\)** ページで次の作業を行います。
 
-次に、 **[Create compute instance]\(コンピューティング インスタンスの作成\)** ページで次の作業を行います。
-
-1. 仮想マシンの CPU サイズを選択します。このチュートリアルの用途であれば、**Standard_D11_v2** (2 コア、14 GB RAM) をお勧めします。
+1. CPU 仮想マシンのサイズを選択します。 このチュートリアルでは、2 コアと 14 GB の RAM を備えた **Standard_D11_v2** を選択できます。
 1. **[次へ]** を選択します。 
-1. **[Configure Settings]\(構成の設定\)** ページで、有効な **コンピューティング名** を入力します (有効な文字は大文字、小文字、数字、ハイフンです)。
+1. **[設定の構成]** ページで、有効な **コンピューティング名** を指定します。 有効な文字は、大文字、小文字、数字、ハイフン (-) です。
 1. **［作成］** を選択します
 
-ノートブックを見ると、 **[コンピューティング]** の横にある円がシアンに変化し、コンピューティング インスタンスが作成中であることがわかります。
+ノートブックで、 **[コンピューティング]** の横にある円がシアンに変化していることに気付くかもしれません。 この色の変化は、コンピューティング インスタンスが作成中であることを示します。
 
-:::image type="content" source="media/tutorial-power-bi/creating.png" alt-text="コンピューティングが作成中であることを示すスクリーンショット":::
+:::image type="content" source="media/tutorial-power-bi/creating.png" alt-text="コンピューティングが作成中であることを示すスクリーンショット。":::
 
 > [!NOTE]
-> コンピューティングがプロビジョニングされるまでに 2 分から 4 分ほどかかる場合があります。
+> コンピューティング インスタンスがプロビジョニングされるまでに 2 分から 4 分かかる場合があります。
 
-コンピューティングのプロビジョニングが完了したら、ノートブックを使用してコード セルを実行できます。 たとえば、セルに次のように入力します。
+コンピューティングのプロビジョニングが完了したら、ノートブックを使用してコード セルを実行できます。 たとえば、セルに以下のコードを入力できます。
 
 ```python
 import numpy as np
@@ -80,20 +81,20 @@ import numpy as np
 np.sin(3)
 ```
 
-続けて **Shift + Enter** キーを押します (または **Control + Enter** キーを押すか、セルの横にある再生ボタンを選択します)。 次の出力が表示されます。
+続けて Shift + Enter キーを押します (または Control + Enter キーを押すか、セルの横にある **[再生]** ボタンを選択します)。 次の出力が表示されます。
 
-:::image type="content" source="media/tutorial-power-bi/simple-sin.png" alt-text="セルの実行を示すスクリーンショット":::
+:::image type="content" source="media/tutorial-power-bi/simple-sin.png" alt-text="セルの出力を示すスクリーンショット。":::
 
-以上で、機械学習モデルを作成する準備は完了です。
+以上で、機械学習モデルを構築する準備は完了です。
 
-## <a name="build-a-model-using-scikit-learn"></a>scikit-learn を使用してモデルを作成する
+## <a name="build-a-model-by-using-scikit-learn"></a>Scikit-learn を使用してモデルを構築する
 
-このチュートリアルでは、[Diabetes (糖尿病) データセット](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html)を使用します。これは [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/) から入手できます。 
+このチュートリアルでは、[Diabetes データセット](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html)を使用します。 このデータセットは [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/) から入手できます。
 
 
 ### <a name="import-data"></a>データのインポート
 
-データをインポートするために、次のコードをコピーしてノートブックの新しい **コード セル** に貼り付けます。
+データをインポートするために、次のコードをコピーしてご自分のノートブックの新しい "*コード セル*" に貼り付けます。
 
 ```python
 from azureml.opendatasets import Diabetes
@@ -106,11 +107,11 @@ y_df = y.to_pandas_dataframe()
 X_df.info()
 ```
 
-Pandas データ フレーム `X_df` には、10 個のベースライン入力変数が含まれています (年齢、性、肥満度指数、平均血圧、および血清に関する 6 つの測定値)。 Pandas データ フレーム `y_df` はターゲット変数で、調査開始から 1 年経過時の疾患の進行を表す定量的測定値を保持します。 レコード数は合計 442 件です。
+Pandas データ フレーム `X_df` には、10 個のベースライン入力変数が含まれています。 これらの変数には、年齢、性、肥満度指数、平均血圧、血清に関する 6 つの測定値などが含まれます。 Pandas データ フレーム `y_df` はターゲット変数です。 調査開始から 1 年経過時の疾患の進行を表す定量的測定値を保持します。 このデータ フレームには、442 件のレコードが含まれています。
 
-### <a name="train-model"></a>モデルのトレーニング
+### <a name="train-the-model"></a>モデルをトレーニングする
 
-ノートブックに新しい **コード セル** を作成し、次のコード スニペットをコピーして貼り付けます。リッジ回帰モデルを構築し、Python の Pickle 形式を使用してモデルをシリアル化するものです。
+ご自分のノートブックに新しい "*コード セル*" を作成します。 次に、以下のコードをコピーし、そのセルに貼り付けます。 このコード スニペットは、ねじ山回帰モデルを構築し、Python の Pickle 形式を使用してモデルをシリアル化します。
 
 ```python
 import joblib
@@ -122,9 +123,11 @@ joblib.dump(model, 'sklearn_regression_model.pkl')
 
 ### <a name="register-the-model"></a>モデルを登録する
 
-登録したモデルには、モデル ファイルそのものの内容に加えて、モデルのメタデータ (モデルの説明、タグ、フレームワーク情報) も格納されます。ワークスペースのモデルを管理したりデプロイしたりする際に、これらのメタデータが役立ちます。 たとえばワークスペース内のモデルを一覧表示するときであれば、タグを使用してモデルを分類し、フィルターを適用することができます。 また、このモデルを scikit-learn フレームワークでマークすれば、後で説明するように、Web サービスとして容易にデプロイすることができます。
+登録済みのモデルには、モデル ファイル自体のコンテンツに加えて、メタデータが格納されます。 メタデータには、モデルの説明、タグ、およびフレームワーク情報が含まれます。 
 
-次のコードをコピーして、ノートブックの新しい **コード セル** に貼り付けてください。
+メタデータは、ご自分のワークスペースでモデルを管理およびデプロイする際に便利です。 たとえばご自分のワークスペース内のモデルを一覧表示するときであれば、タグを使用してモデルを分類し、フィルターを適用することができます。 また、このモデルを Scikit-learn フレームワークでマークすれば、Web サービスとして容易にデプロイすることができます。
+
+次のコードをコピーしてご自分のノートブックの新しい "*コード セル*" に貼り付けます。
 
 ```python
 import sklearn
@@ -150,21 +153,21 @@ print('Name:', model.name)
 print('Version:', model.version)
 ```
 
-Azure Machine Learning スタジオで、左側のメニューにある **[エンドポイント]** に移動してモデルを表示することもできます。
+Azure Machine Learning スタジオでモデルを表示することもできます。 左側のメニューで **[モデル]** を選択します。
 
-:::image type="content" source="media/tutorial-power-bi/model.png" alt-text="モデルを示すスクリーンショット":::
+:::image type="content" source="media/tutorial-power-bi/model.png" alt-text="モデルの表示方法を示すスクリーンショット。":::
 
 ### <a name="define-the-scoring-script"></a>スコアリング スクリプトを定義する
 
-モデルをデプロイして Microsoft Power BI に統合する際は、Python の "*スコアリング スクリプト*" とカスタム環境を定義する必要があります。 スコアリング スクリプトには、次の 2 つの関数が含まれます。
+Power BI に統合するモデルをデプロイする際は、Python の "*スコアリング スクリプト*" とカスタム環境を定義する必要があります。 スコアリング スクリプトには、次の 2 つの関数が含まれます。
 
-- `init()` - サービスが開始されると、この関数が実行されます。 モデルは、この関数によって読み込まれ (モデルは自動的にモデル レジストリからダウンロードされることに注意してください)、逆シリアル化されます。
-- `run(data)` - スコアリングを必要とする入力データを使用してサービスを呼び出すと、この関数が実行されます。 
+- `init()` 関数は、サービスの開始時に実行されます。 これによって、モデルが (自動的にモデル レジストリからダウンロードされて) 読み込まれ、逆シリアル化されます。
+- `run(data)` 関数は、スコア付けが必要な入力データがサービスの呼び出しに含まれている場合に実行されます。 
 
 >[!NOTE]
-> ここでは、Python デコレーターを使用して入力データと出力データのスキーマを定義します。Microsoft Power BI 統合が正しく機能するためには、これが重要となります。
+> この記事では、Python デコレーターを使用して、入力と出力のデータのスキーマを定義します。 このセットアップは、Power BI 統合にとって重要です。
 
-次のコードをコピーして、ノートブックの新しい **コード セル** に貼り付けてください。 次のコード スニペットには、score.py という名前のファイルにコードを書き込むセル マジックが記述されています。
+次のコードをコピーしてご自分のノートブックの新しい "*コード セル*" に貼り付けます。 次のコード スニペットには、*score.py* という名前のファイルにコードを書き込むセル マジックが記述されています。
 
 ```python
 %%writefile score.py
@@ -219,7 +222,7 @@ def run(data):
         result = model.predict(data)
         print("result.....")
         print(result)
-    # You can return any data type, as long as it is JSON serializable.
+    # You can return any data type, as long as it can be serialized by JSON.
         return result.tolist()
     except Exception as e:
         error = str(e)
@@ -228,9 +231,9 @@ def run(data):
 
 ### <a name="define-the-custom-environment"></a>カスタム環境を定義する
 
-次に、モデルをスコアリングするための環境を定義する必要があります。先ほど定義したスコアリング スクリプト (score.py) に必要な Python パッケージ (pandas、scikit-learn など) をこの環境に定義する必要があります。
+次に、モデルにスコアを付けるための環境を定義します。 この環境で、スコアリング スクリプト (*score.py*) に必要な Python パッケージ (Pandas、Scikit-learn など) を定義します。
 
-環境を定義するために、次のコードをコピーしてノートブックの新しい **コード セル** に貼り付けます。
+環境を定義するために、次のコードをコピーしてご自分のノートブックの新しい "*コード セル*" に貼り付けます。
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -252,7 +255,7 @@ inference_config = InferenceConfig(entry_script='./score.py',environment=environ
 
 ### <a name="deploy-the-model"></a>モデルをデプロイする
 
-モデルをデプロイするために、次のコードをコピーしてノートブックの新しい **コード セル** に貼り付けます。
+モデルをデプロイするために、次のコードをコピーしてご自分のノートブックの新しい "*コード セル*" に貼り付けます。
 
 ```python
 service_name = 'my-diabetes-model'
@@ -262,9 +265,9 @@ service.wait_for_deployment(show_output=True)
 ```
 
 >[!NOTE]
-> サービスのデプロイには 2 分から 4 分かかることがあります。
+> サービスのデプロイには、2 分から 4 分かかることがあります。
 
-正常にデプロイされたサービスの次の出力が表示されます。
+サービスが正常にデプロイされると、次の出力が表示されます。
 
 ```txt
 Tips: You can try get_logs(): https://aka.ms/debugimage#dockerlog or local deployment: https://aka.ms/debugimage#debug-locally to debug if deployment takes longer than 10 minutes.
@@ -273,11 +276,11 @@ Succeeded
 ACI service creation operation finished, operation "Succeeded"
 ```
 
-Azure Machine Learning スタジオで、左側のメニューにある **[エンドポイント]** に移動してサービスを表示することもできます。
+Azure Machine Learning スタジオでサービスを表示することもできます。 左側のメニューで **[エンドポイント]** を選択します。
 
-:::image type="content" source="media/tutorial-power-bi/endpoint.png" alt-text="エンドポイントを示すスクリーンショット":::
+:::image type="content" source="media/tutorial-power-bi/endpoint.png" alt-text="サービスの表示方法を示すスクリーンショット。":::
 
-Web サービスが想定どおりに機能することを確認するために、テストを行うようお勧めします。 Azure Machine Learning スタジオの左側のメニューにある **[Notebooks]** を選択してノートブックに戻りましょう。 サービスをテストするために、次のコードをコピーしてノートブックの新しい **コード セル** に貼り付けます。
+Web サービスが想定どおりに機能することを確認するために、テストを行うようお勧めします。 ご自分のノートブックに戻るために、Azure Machine Learning スタジオの左側のメニューにある **[Notebooks]** を選択します。 その後、次のコードをコピーしてご自分のノートブックの新しい "*コード セル*" に貼り付けて、サービスをテストします。
 
 ```python
 import json
@@ -297,7 +300,7 @@ print(output)
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Microsoft Power BI で利用できるような形でモデルを作成、デプロイする方法を見てきました。 次のパートでは、このモデルを Power BI レポートから利用する方法について説明します。
+このチュートリアルでは、Power BI で利用できるようにモデルを構築およびデプロイする方法を見てきました。 次のパートでは、このモデルを Power BI レポートで利用する方法について説明します。
 
 > [!div class="nextstepaction"]
 > [チュートリアル: Power BI でモデルを利用する](/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)

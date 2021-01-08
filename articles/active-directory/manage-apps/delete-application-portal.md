@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/01/2020
+ms.date: 12/28/2020
 ms.author: kenwith
-ms.openlocfilehash: 677c9c0123c174fdf2cf8e94f9c8110656d21306
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e2b8bd47f7d124562a38413d36b849d1f7efacee
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649400"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802764"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>クイック スタート:Azure Active Directory (Azure AD) テナントからアプリケーションを削除する
 
@@ -53,6 +53,6 @@ Azure AD テナントからアプリケーションを削除するには:
 
 ## <a name="next-steps"></a>次のステップ
 
-クイックスタート シリーズを完了しました。 次のステップとしては、アプリ管理でのベスト プラクティスについてお読みください。
+クイックスタート シリーズを完了しました。 次に、シングル サインオン (SSO) について学習しましょう。[SSO の概要](what-is-single-sign-on.md)に関するページを参照してください または、アプリ管理でのベスト プラクティスについてお読みください。
 > [!div class="nextstepaction"]
 > [アプリケーション管理のベスト プラクティス](application-management-fundamentals.md)

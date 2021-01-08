@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/16/2020
-ms.openlocfilehash: bc93c3643e329879e5118d1cfb61a356442df808
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 7d93002af866aa653972182a13ea37d37e912ce8
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618425"
+ms.locfileid: "97630311"
 ---
 # <a name="tutorial-shard-data-on-worker-nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>チュートリアル:Azure Database for PostgreSQL - Hyperscale (Citus) におけるワーカー ノード上のシャード データ
 
@@ -171,8 +171,8 @@ limit 5;
 
 分散列 `email` が次のような状態であるため、例として挙げている `users` の行は均等に分散されています。
 
-1. メール アドレスの数がシャードの数以上である
-2. メール アドレスあたりの行数が近似している (ここではメール アドレスをキーとして宣言したため、アドレスごとに 1 行のみ)
+1. メール アドレスの数がシャードの数以上である。
+2. メール アドレスあたりの行数が近似している (ここではメール アドレスをキーとして宣言したため、アドレスごとに 1 行のみ)。
 
 どちらかの状態に当てはまらないテーブルや分散列を選択すると、ワーカー上のデータ サイズが不均等になり、"*データ スキュー*" となります。
 

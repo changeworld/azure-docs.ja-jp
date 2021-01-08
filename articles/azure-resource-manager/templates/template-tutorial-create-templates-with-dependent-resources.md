@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d1e5848e568f42fb8a77c65c775962f27a5a03df
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a77f64e51a26e1f916f9f96704c55412a870a509
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588038"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673938"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>チュートリアル:依存リソースを含む ARM テンプレートを作成する
 
@@ -28,6 +28,8 @@ Azure Resource Manager テンプレート (ARM テンプレート) を作成し�
 > * テンプレートのデプロイ
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+
+リソースの依存関係について取り上げた Microsoft Learn モジュールについては、「[高度な ARM テンプレート機能を使用して複雑なクラウド デプロイを管理する](/learn/modules/manage-deployments-advanced-arm-template-features/)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 11/24/2020
+ms.date: 12/17/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 01f61eac31c388cd0bf8a857beb7a10944187c6b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1814555f738f37523c5b23ae729bf20bff62e1f9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027902"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679531"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Cognitive Search とは
 
@@ -25,8 +25,8 @@ Cognitive Search サービスを作成すると、次の機能が利用できま
 + インデックス作成とクエリの実行を担う検索エンジン
 + 自分で作成、管理する検索インデックスの永続的ストレージ
 + 単純なものから複雑なものまでさまざまなクエリを作成するための照会言語
-+ 画像、生のテキスト、アプリケーション ファイルから検索可能なコンテンツを作成する、AI による分析
-+ データのインポートと更新を自動化する、検索インデクサーを使用した Azure データとの統合
++ [AI 駆動型のエンリッチメント](cognitive-search-concept-intro.md) (画像、生のテキスト、アプリケーション ファイルから検索可能なコンテンツを作成する)
++ データ、機械学習 (AI)、セキュリティを目的とした他の Azure サービスとの統合
 
 アーキテクチャ上、検索サービスは、インデックスが設定されていないデータを含む外部データ ストアと、検索インデックスにクエリ要求を送信して応答を処理するクライアント アプリとの間に配置されます。
 
@@ -89,11 +89,11 @@ Azure Cognitive Search は、次のアプリケーション シナリオに適�
 以下のような大きな強みがあります。
 
 + インデックス層での Azure データ統合 (クローラー)
-+ 中央管理のための Azure Portal
-+ Azure のスケール、信頼性、世界クラスの可用性
-+ 画像からのテキストや非構造化コンテンツ内でのパターンの検索など、より検索しやすくするための生データの AI 処理。
++ Azure Private Link との統合によって、インターネットを回避するというセキュリティ要件をサポート
++ AI 処理との統合によって、検索不可能な各種コンテンツがテキスト検索可能に。
 + 56 の言語での堅実なフルテキスト検索を実現するアナライザーによる言語分析とカスタム分析
-+ [検索中心のアプリに共通のコア機能](search-features-list.md): スコアリング、ファセット、検索候補、シノニム、地理空間検索など。
++ [重要な機能](search-features-list.md): 豊富な照会言語、関連性チューニング、ファセット、オートコンプリート、同意語、地理空間検索、結果の構成。
++ Azure のスケール、信頼性、世界クラスの可用性
 
 Microsoft のお客様は、オンライン カタログ、基幹業務プログラム、およびドキュメント検索アプリケーションを含む、Azure Cognitive Search の機能を最大限利用できます。
 

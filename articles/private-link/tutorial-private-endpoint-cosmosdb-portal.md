@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: c9866ac2c14e4deb29326ffdd1a93a7d8eae1ea3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 477856bd5772cdc0a9ec00d81adf9c50847afdd0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484806"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631951"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>チュートリアル:Azure プライベート エンドポイントを使用して Azure Cosmos アカウントに接続する
 
@@ -208,13 +208,9 @@ bastion ホストは、プライベート エンドポイントをテストす�
 
 5. **[OK]** を選択します。
 
-10. CosmosDB アカウントの **[設定]** セクションで、 **[キー]** を選択します。
+6. CosmosDB アカウントの **[設定]** セクションで、 **[キー]** を選択します。
 
-11. **[myResourceGroup]** を選択します。
-
-12. 前の手順で作成したストレージ アカウントを選択します。
-
-14. **PRIMARY CONNECTION STRING** でコピーを選択します。
+7. **PRIMARY CONNECTION STRING** でコピーを選択します。
 
 ## <a name="test-connectivity-to-private-endpoint"></a>プライベート エンドポイントへの接続のテスト
 
@@ -234,7 +230,7 @@ bastion ホストは、プライベート エンドポイントをテストす�
 
 7. 接続後にサーバーで Windows PowerShell を開きます。
 
-8. 「`nslookup <storage-account-name>.documents.azure.com`」と入力します。 **\<storage-account-name>** は、前の手順で作成したストレージ アカウントの名前で置き換えます。 
+8. 「`nslookup <cosmosdb-account-name>.documents.azure.com`」と入力します。 **\<cosmosdb-account-name>** は、前の手順で作成した Cosmos DB アカウントの名前で置き換えます。 
 
     ```powershell
     Server:  UnKnown

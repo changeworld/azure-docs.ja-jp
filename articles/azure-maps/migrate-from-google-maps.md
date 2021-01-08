@@ -9,24 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 61b6f4a530ab1861c67b0bd4983167546e268957
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: decf289614179718d5c3424f6d4482a5ce2c43e1
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896329"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680722"
 ---
-# <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>チュートリアル - Google Maps から Azure Maps に移行する
+# <a name="tutorial-migrate-from-google-maps-to-azure-maps"></a>チュートリアル:Google マップから Azure Maps に移行する
 
 この記事では、Web アプリケーション、モバイル アプリケーション、サーバーベース アプリケーションを Google Maps から Microsoft Azure Maps プラットフォームに移行する方法についての分析情報を提供します。 このチュートリアルには、Azure Maps に移行するための比較コード サンプル、移行に関する提案、ベスト プラクティスが含まれています。 このチュートリアルでは、次の事項について説明します。
 
 > [!div class="checklist"]
-> * Azure Maps で使用できる機能と同等の Google Maps の機能との大まかな比較
-> * 考慮すべきライセンスの相違点
-> * 移行を計画する方法
+> * Azure Maps で使用できる機能と同等の Google Maps の機能との大まかな比較。
+> * 考慮すべきライセンスの相違点。
+> * 移行を計画する方法。
 > * テクニカル リソースとサポートの場所
 
-## <a name="prerequisites"></a>前提条件 
+## <a name="prerequisites"></a>前提条件
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 2. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
@@ -70,16 +70,16 @@ Google Maps では、基本的なキーベースの認証が提供されます�
 
 Google マップから Azure Maps に移行する際は、ライセンスに関して次の点を考慮してください。
 
-- Azure Maps では、対話型マップの使用量に対して料金が請求され、その使用量は、読み込まれたマップ タイルの数が基準となります。 一方、Google マップでは、マップ コントロールの読み込みに対して料金が請求されます。 対話型 Azure Maps SDK では、開発コストを削減するために、マップ タイルが自動的にキャッシュされます。 マップ タイルが 15 個読み込まれるごとに、1 個の Azure Maps トランザクションが生成されます。 対話型 Azure Maps SDK では、512 ピクセルのタイルが使用され、平均でページ ビューあたり 1 個またはそれより少ないトランザクションが生成されます。
-- 多くの場合、Google Maps Web サービスの静的マップ画像を Azure Maps Web SDK に置き換えるとよりコスト効果が高くなります。 Azure Maps Web SDK ではマップ タイルが使用されます。 ユーザーがマップをパンしたりズームしたりしない限り、多くの場合、マップの読み込みごとにトランザクションのごく一部のみが生成されます。 Azure Maps Web SDK には、必要に応じてパンとズームを無効にするオプションがあります。 また、Azure Maps Web SDK には、静的なマップ Web サービスよりも非常に多くの視覚化オプションが用意されています。
-- Azure Maps を使用すると、データをそのプラットフォームから Azure に格納できます。 また、[利用規約](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46)に従って、最大 6 か月間データをキャッシュすることもできます。
+* Azure Maps では、対話型マップの使用量に対して料金が請求され、その使用量は、読み込まれたマップ タイルの数が基準となります。 一方、Google マップでは、マップ コントロールの読み込みに対して料金が請求されます。 対話型 Azure Maps SDK では、開発コストを削減するために、マップ タイルが自動的にキャッシュされます。 マップ タイルが 15 個読み込まれるごとに、1 個の Azure Maps トランザクションが生成されます。 対話型 Azure Maps SDK では、512 ピクセルのタイルが使用され、平均でページ ビューあたり 1 個またはそれより少ないトランザクションが生成されます。
+* 多くの場合、Google Maps Web サービスの静的マップ画像を Azure Maps Web SDK に置き換えるとよりコスト効果が高くなります。 Azure Maps Web SDK ではマップ タイルが使用されます。 ユーザーがマップをパンしたりズームしたりしない限り、多くの場合、マップの読み込みごとにトランザクションのごく一部のみが生成されます。 Azure Maps Web SDK には、必要に応じてパンとズームを無効にするオプションがあります。 また、Azure Maps Web SDK には、静的なマップ Web サービスよりも非常に多くの視覚化オプションが用意されています。
+* Azure Maps を使用すると、データをそのプラットフォームから Azure に格納できます。 また、[利用規約](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46)に従って、最大 6 か月間データをキャッシュすることもできます。
 
 Azure Maps のいくつかの関連リソースを次に示します。
 
-- [Azure Maps の価格のページ](https://azure.microsoft.com/pricing/details/azure-maps/)
-- [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
-- [Azure Maps 使用条件](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46) (Microsoft オンライン サービスの使用条件に含まれています)
-- [Azure Maps での適切な価格レベルの選択](./choose-pricing-tier.md)
+* [Azure Maps の価格のページ](https://azure.microsoft.com/pricing/details/azure-maps/)
+* [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
+* [Azure Maps 使用条件](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46) (Microsoft オンライン サービスの使用条件に含まれています)
+* [Azure Maps での適切な価格レベルの選択](./choose-pricing-tier.md)
 
 ## <a name="suggested-migration-plan"></a>おすすめの移行プラン
 
@@ -119,15 +119,13 @@ Azure Maps に関する役に立つ技術リソースの一覧を次に示しま
 
 開発者は、[フォーラム](/answers/topics/azure-maps.html) または多くの Azure サポート オプション ([https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)) のいずれかを使用して、移行サポートを探すことができます。
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+クリーンアップすべきリソースはありません。
+
 ## <a name="next-steps"></a>次のステップ
 
 Google マップ アプリケーションを移行する詳しい方法について次の記事でご確認ください。
 
 > [!div class="nextstepaction"]
 > [Web アプリを移行する](migrate-from-google-maps-web-app.md)
-
-> [!div class="nextstepaction"]
-> [Web サービスを移行する](migrate-from-google-maps-web-services.md) 
-
-> [!div class="nextstepaction"]
-> [Android アプリを移行する](migrate-from-google-maps-android-app.md) 

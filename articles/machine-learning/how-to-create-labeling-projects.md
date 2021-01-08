@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 5abb222a6211e2f3f92c002a49987ac54edc78e2
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: cd35cea28e23e88ba97bb7a27dc252d6bebd65e4
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346658"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739656"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>データのラベル付けプロジェクトを作成してラベルをエクスポートする 
 
@@ -256,6 +256,17 @@ ML によるラベル付けを開始するために必要とされるラベル�
 COCO ファイルは、Azure Machine Learning ワークスペースの既定の BLOB ストアにある *export/coco* 内のフォルダーに作成されます。 エクスポートした Azure Machine Learning データセットには、Machine Learning の **[データセット]** セクションでアクセスできます。 また、データセットの詳細ページには、Python からラベルにアクセスするためのサンプル コードも表示されます。
 
 ![エクスポートされたデータセット](./media/how-to-create-labeling-projects/exported-dataset.png)
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+これらの問題が発生した場合は、次のヒントを参考にしてください。
+
+|問題  |解決方法  |
+|---------|---------|
+|BLOB データストアに作成されたデータセットしか使用できない。     |  これは、現在のリリースの既知の制限です。       |
+|作成後、プロジェクトで "Initializing (初期化しています)" と長時間にわたり表示される。     | ページを手動で最新の情報に更新してください。 初期化の進行速度は、1 秒あたり約 20 データポイントです。 自動更新が実行されない問題が確認されています。         |
+|画像をレビューする際に、新しくラベル付けされた画像が表示されない。     |   ラベル付けされたすべての画像を読み込むには、 **[First]\(1 番目\)** ボタンを選択します。 **[First]\(1 番目\)** ボタンを選択すると、リストの先頭に戻りますが、ラベル付けされたデータはすべて読み込まれます。      |
+|オブジェクト検出のラベル付け中に Esc キーを押すと、左上隅にゼロ サイズのラベルが作成されます。 この状態でラベルを送信することはできません。     |   ラベルの横にある交差マークをクリックして、ラベルを削除してください。  |
 
 ## <a name="next-steps"></a>次のステップ
 

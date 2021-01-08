@@ -12,18 +12,32 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 11/05/2020
+ms.date: 12/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 3f13d997f73e9737b8770eec7e0742d50bf1abb8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: bba3dce2a2a18888cb88f4cf8b33cd48d6a4cd69
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421704"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631161"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files の新機能
 
 Azure NetApp Files は定期的に更新されています。 この記事では、最新の新機能と機能強化の概要について説明します。 
+
+## <a name="december-2020"></a>2020 年 12 月
+
+* [Azure アプリケーション整合性スナップショット ツール](azacsnap-introduction.md) (パブリック プレビュー)    
+
+    Azure アプリケーション整合性スナップショット ツール (AzAcSnap) は、Linux 環境 (SUSE、RHEL など) におけるサードパーティ データベース (SAP HANA) のデータ保護を省力化するコマンドライン ツールです。   
+
+    AzAcSnap では、Azure NetApp Files と Azure Large Instance のボリューム スナップショット機能およびレプリケーション機能が活用されます。 これには、次のようなメリットがあります。
+
+    * アプリケーション整合性のデータ保護 
+    * データベース カタログ管理 
+    * "*アドホック*" ボリューム保護 
+    * 記憶域ボリュームの複製 
+    * ディザスター リカバリーのサポート 
 
 ## <a name="november-2020"></a>2020 年 11 月
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/29/2020
+ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: a960bb3590138ca5efa5146988240db1707a3cf0
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c26224f388c09ec758373c877004f5485bb420df
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182123"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725084"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-terraform-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Terraform Cloud の統合
 
@@ -76,7 +76,7 @@ Terraform Cloud に対して Azure AD SSO を構成してテストするには�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
     **[識別子]** ボックスに、`https://app.terraform.io/sso/saml/samlconf-<ID>/metadata` の形式で URL を入力します。
 
@@ -116,7 +116,15 @@ Terraform Cloud に対して Azure AD SSO を構成してテストするには�
 
 ## <a name="configure-terraform-cloud-sso"></a>Terraform Cloud の SSO の構成
 
-1. 別の Web ブラウザー ウィンドウで、管理者として Terraform Cloud Web サイトにサインインします。
+1. Terraform Cloud 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後、 **[Terraform Cloud のセットアップ]** をクリックすると、Terraform Cloud アプリケーションに移動します。 そこから、管理者の資格情報を入力して Terraform Cloud にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 5 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+3. Terraform Cloud を手動でセットアップする場合は、別の Web ブラウザー ウィンドウで、Terraform Cloud 企業サイトに管理者としてサインインします。
 
 2. **[Settings]\(設定\) > [SSO] > [Edit Settings]\(設定の編集\)** に移動します
 

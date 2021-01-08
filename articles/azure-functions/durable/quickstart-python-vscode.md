@@ -3,14 +3,14 @@ title: Python を使用して Azure で最初の永続関数を作成する
 description: Visual Studio Code を使用して Python で Azure Durable Functions を作成して発行します。
 author: anthonychu
 ms.topic: quickstart
-ms.date: 04/04/2020
+ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 5d624027259212d804ced26a6daaffb853984a98
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0cc321563de645aeb1d204b67b0ab72053d79c7e
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012631"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763559"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Python で最初の永続関数を作成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "96012631"
 
 このセクションでは、Visual Studio Code を使用して、ローカル Azure Functions プロジェクトを作成します。 
 
-1. Visual Studio Code で、F1 (または Ctrl/Cmd + Shift + P) キーを押してコマンド パレットを開きます。 コマンド パレットで、`Azure Functions: Create New Project...` を検索して選択します。
+1. Visual Studio Code で、F1 (または <kbd>Ctrl または Cmd + Shift + P</kbd>) キーを押して、コマンド パレットを開きます。 コマンド パレットで、`Azure Functions: Create New Project...` を検索して選択します。
 
     ![関数の作成](media/quickstart-python-vscode/functions-create-project.png)
 
@@ -60,18 +60,33 @@ Azure Functions Core Tools は、必要に応じて Visual Studio Code により
 
 また、ルート フォルダーには、requirements.txt ファイルが作成されます。 関数アプリを実行するために必要な Python パッケージを指定します。
 
+## <a name="update-azure-functions-extension-bundles-version"></a>Azure Functions 拡張機能バンドルのバージョンを更新する
+
+Python Azure Functions を使用するには、[Azure Functions 拡張機能バンドル](../functions-bindings-register.md#access-extensions-in-non-net-languages)のバージョン 2.x が必要です。 拡張機能バンドルは、*host.json* 内で構成します。
+
+1. プロジェクトの *host.json* を開きます。 拡張機能バンドル `version` を `[2.*, 3.0.0)` に更新します。 これにより、2.0 以上かつ 3.0 未満のバージョン範囲が指定されます。
+
+    ```json
+    "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[2.*, 3.0.0)"
+    }
+    ```
+
+1. 更新された拡張機能バンドルのバージョンを反映するには、VS Code を再度読み込む必要があります。 コマンド パレットで、*Developer: Reload Window* コマンドを検索して実行します。
+
 ## <a name="install-azure-functions-durable-from-pypi"></a>PyPI からの azure-functions-durable のインストール
 
 プロジェクトを作成すると、Azure Functions VS Code 拡張機能によって、選択した Python バージョンの仮想環境が自動的に作成されます。 ターミナルで仮想環境をアクティブ化し、Azure Functions と Durable Functions に必要ないくつかの依存関係をインストールします。
 
-1. エディターで `requirements.txt` を開き、内容を次のように変更します。
+1. エディターで *requirements.txt* を開き、内容を次のように変更します。
 
     ```
     azure-functions
-    azure-functions-durable>=1.0.0b6
+    azure-functions-durable>=1.0.0b12
     ```
 
-1. 現在のフォルダー (`` Ctrl-Shift-` ``) で、エディターの統合ターミナルを開きます。
+1. 現在のフォルダーで、エディターの統合ターミナルを開きます (<kbd>Ctrl + Shift + `</kbd> キー)。
 
 1. 統合ターミナルで、現在のフォルダーの仮想環境をアクティブにします。
 
@@ -203,7 +218,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
     }
     ```
 
-1. デバッグを停止するには、VS Code で **Shift キーを押しながら F5 キー** を押します。
+1. デバッグを停止するには、VS Code で <kbd>Shift キーを押しながら F5 キー</kbd>を押します。
 
 関数がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 1f3de29e5f046da56638876a35ca983792a4ce6c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d2e7935de23dcbdccfa6f4efa602dbab42931075
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319138"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673851"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-360-online"></a>チュートリアル: Azure Active Directory と 360 Online の統合
 
@@ -63,7 +63,7 @@ Azure AD への 360 Online の統合を構成するには、ギャラリーか�
 
 4. 検索ボックスに「**360 Online**」と入力し、結果パネルで **[360 Online]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の 360 Online](common/search-new-app.png)
+    ![結果一覧の 360 Online](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -106,7 +106,7 @@ Azure AD への 360 Online の統合を構成するには、ギャラリーか�
     > [!NOTE]
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[360 Online クライアント サポート チーム](mailto:360online@software-innovation.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -122,7 +122,7 @@ Azure AD への 360 Online の統合を構成するには、ギャラリーか�
 
 ### <a name="configure-360-online-single-sign-on"></a>360 Online のシングル サインオンの構成
 
-**360 Online** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** と Azure portal からコピーした適切な URL を [360 Online サポート チーム](mailto:360online@software-innovation.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**360 Online** 側でシングル サインオンを構成するには、ダウンロードした **メタデータ XML** と Azure portal からコピーした適切な URL を [360 Online サポート チーム](mailto:360online@software-innovation.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -141,7 +141,7 @@ Azure AD への 360 Online の統合を構成するには、ギャラリーか�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -177,7 +177,7 @@ Azure AD への 360 Online の統合を構成するには、ギャラリーか�
 
 ### <a name="create-360-online-test-user"></a>360 Online のテスト ユーザーの作成
 
-このセクションでは、360 Online で Britta Simon というユーザーを作成します。  [360 Online サポート チーム](mailto:360online@software-innovation.com)と連携し、360 Online プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、360 Online で Britta Simon というユーザーを作成します。 [360 Online サポート チーム](mailto:360online@software-innovation.com)と連携して、360 Online プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

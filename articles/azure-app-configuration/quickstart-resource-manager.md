@@ -8,12 +8,12 @@ ms.date: 10/16/2020
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: feabac62564729338e41bf30eaf8d9f5a6317126
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 56505c95e65911cafbaaa403cd09332695439d97
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148999"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825662"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure App Configuration ストアを作成する
 
@@ -46,10 +46,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 テンプレートでは、次の 2 つの Azure リソースが定義されています。
 
-- [Microsoft.AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2020-06-01/configurationstores): App Configuration ストアを作成します。
-- Microsoft.AppConfiguration/configurationStores/keyValues: App Configuration ストア内にキー値を作成します。
+- [Microsoft.AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores): App Configuration ストアを作成します。
+- [Microsoft.AppConfiguration/configurationStores/keyValues](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores/keyvalues): App Configuration ストア内にキー値を作成します。
 
-> [!NOTE]
+> [!TIP]
 > `keyValues` リソースの名前は、キーとラベルの組み合わせです。 キーとラベルが、`$` という区切り記号で結合されます。 ラベルは省略可能です。 上の例では、`myKey` という名前の `keyValues` リソースによって、ラベルなしのキー値が作成されます。
 >
 > ARM テンプレートのリソース名に許可されていない文字については、パーセント エンコード (URL エンコード) を使用することでキーまたはラベルに含めることができます。 `%` は、許可された文字ではないため、`~` で代用されます。 名前を正しくエンコードするには、次の手順に従います。
@@ -59,6 +59,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > 3. `%` を `~` に置き換えます。
 >
 > たとえば、キー名が `AppName:DbEndpoint` で、ラベル名が `Test` であるキーと値のペアを作成するには、リソース名を `AppName~3ADbEndpoint$Test` とする必要があります。
+
+> [!NOTE]
+> App Configuration を使用すると、仮想ネットワークから[プライベート リンク](concept-private-endpoint.md)経由でキー値データにアクセスできます。 この機能が有効になっている場合、既定では、パブリック ネットワーク上の App Configuration データに対するすべての要求が拒否されます。 ARM テンプレートは仮想ネットワークの外部で実行されるため、ARM テンプレートからのデータ アクセスは許可されません。 プライベート リンクの使用中に ARM テンプレートからのデータ アクセスを許可するには、次の Azure CLI コマンドを使用して、パブリック ネットワーク アクセスを有効にすることができます。 このシナリオでは、パブリック ネットワーク アクセスを有効にすることによるセキュリティへの影響を考慮する必要があります。
+>
+> ```azurecli-interactive
+> az appconfig update -g MyResourceGroup -n MyAppConfiguration --enable-public-network true
+> ```
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
@@ -84,7 +91,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. Azure portal の検索ボックスに「 **App Configuration** 」と入力します。 一覧から **[App Configuration]** を選択します。
+1. Azure portal の検索ボックスに「**App Configuration**」と入力します。 一覧から **[App Configuration]** を選択します。
 1. 新しく作成した App Configuration リソースを選択します。
 1. **[Operations]\(操作\)** の **[構成エクスプローラー]** をクリックします。
 1. 2 つのキー値が存在することを確認します。

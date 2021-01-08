@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 7e727d06670c9d07ec1aa18b92504433f6c519d6
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 88cec878ca5d3ccab3a232888ff3a3c0b0faa1db
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518296"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705253"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>チュートリアル:Azure テンプレートを使用して仮想マシン スケール セットを自動的にスケーリングする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。 このチュートリアルで学習する内容は次のとおりです。
@@ -143,10 +143,10 @@ Azure テンプレート内で自動スケール プロファイルを定義す�
 az group create --name myResourceGroup --location eastus
 ```
 
-ここでは、[az group deployment create](/cli/azure/group/deployment) を使用して仮想マシン スケール セットを作成します。 メッセージが表示されたら、*azureuser* などの独自のユーザー名と、各 VM インスタンスの資格情報として使用するパスワードを入力します。
+ここでは、[az deployment group create](/cli/azure/deployment/group) を使用して仮想マシン スケール セットを作成します。 メッセージが表示されたら、*azureuser* などの独自のユーザー名と、各 VM インスタンスの資格情報として使用するパスワードを入力します。
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json
 ```

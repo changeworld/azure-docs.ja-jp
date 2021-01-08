@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 74bad563de60abc0c1eb7623a81c83fea03f5ee6
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 6258365ab00ab538f3f3502682078d29a391578c
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207225"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724936"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>クイック スタート:Unity によるモデルのレンダリング
 
@@ -33,7 +33,7 @@ Azure Remote Rendering サービスにアクセスするには、まず[アカ�
 
 * Windows SDK 10.0.18362.0 [(ダウンロード)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * 最新バージョンの Visual Studio 2019 [(ダウンロード)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* [Visual Studio tools for Mixed Reality](/windows/mixed-reality/install-the-tools)。 特に、次の*ワークロード*のインストールは必須です。
+* [Visual Studio tools for Mixed Reality](/windows/mixed-reality/install-the-tools)。 特に、次の *ワークロード* のインストールは必須です。
   * **C++ によるデスクトップ開発**
   * **ユニバーサル Windows プラットフォーム (UWP) の開発**
 * Git ([ダウンロード](https://git-scm.com/downloads))
@@ -69,15 +69,15 @@ Unity Hub を開き、*ARR\azure-remote-rendering\Unity\Quickstart* フォルダ
 
 1. Unity アセット ブラウザーで、 *[Scenes]\(シーン\)* フォルダーに移動し、 **[Quickstart]\(クイックスタート\)** シーンを開きます。
 1. *[Hierarchy]\(階層\)* で、**RemoteRendering** ゲーム オブジェクトを選択します。
-1. *[Inspector]\(インスペクター\)* に、自分の[アカウント資格情報](../how-tos/create-an-account.md)を入力します。 アカウントをお持ちでない場合は、[1 つ作成します](../how-tos/create-an-account.md)。
+1. *[Inspector]\(インスペクター\)* に、自分の [アカウント資格情報](../how-tos/create-an-account.md)を入力します。 アカウントをお持ちでない場合は、[1 つ作成します](../how-tos/create-an-account.md)。
 
 ![ARR アカウント情報](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> Azure portal では、お使いのアカウントのドメインは単に *mixedreality.azure.com* と表示されます。 これは、正常に接続するには不十分です。
-> **AccountDomain** を `<region>.mixedreality.azure.com` に設定します。ここで、`<region>` は、[お近くの利用可能なリージョンのいずれか](../reference/regions.md)です。
+> **AccountDomain** を `<region>.mixedreality.azure.com` に設定します。`<region>` は、[お近くの利用可能なリージョンのいずれか](../reference/regions.md)です。
+> **AccountAuthenticationDomain** を、Azure portal に表示される[アカウント ドメイン](../how-tos/create-an-account.md#retrieve-the-account-information)に設定します。
 
-後でこのプロジェクトを HoloLens にデプロイし、そのデバイスから Remote Rendering サービスに接続します。 デバイスに資格情報を入力する簡単な方法がないため、クイックスタート サンプルでは **Unity シーンに資格情報を保存**します。
+後でこのプロジェクトを HoloLens にデプロイし、そのデバイスから Remote Rendering サービスに接続します。 デバイスに資格情報を入力する簡単な方法がないため、クイックスタート サンプルでは **Unity シーンに資格情報を保存** します。
 
 > [!WARNING]
 > 保存した資格情報を含むプロジェクトは、秘密のログイン情報が漏えいする可能性のあるリポジトリにチェックインしないようにしてください。
@@ -92,9 +92,7 @@ Unity の **[Play]\(再生\)** ボタンを押してセッションを開始し�
 
 ## <a name="inspecting-the-scene"></a>シーンの検査
 
-リモート レンダリング接続が実行されると、[Inspector]\(インスペクター\) パネルが更新され、追加のステータス情報が表示されます。
-
-![Unity のサンプルの再生](./media/arr-sample-configure-session-running.png)
+リモート レンダリング接続が実行されると、[Inspector]\(インスペクター\) パネルが更新され、追加のステータス情報が表示されます。![Unity のサンプルの再生](./media/arr-sample-configure-session-running.png)
 
 この段階で、新しいノードを選択し、インスペクターで **[Show children]\(子を表示\)** をクリックして、シーン グラフを探索できます。
 

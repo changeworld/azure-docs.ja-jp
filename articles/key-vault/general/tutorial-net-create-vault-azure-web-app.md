@@ -10,22 +10,27 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 6bb1aafd942046faa77072d99af043ebd43b4a8a
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 2504efcbd79ab0e43f958b86564709b6ac6295a6
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589969"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733058"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>チュートリアル:マネージド ID を使用して Key Vault を .NET の Azure Web アプリに接続する
 
 [Azure Key Vault](./overview.md) は、資格情報やその他のシークレットをより安全に格納する方法を提供します。 ただし、それらを取得するためには、コードから Key Vault に対する認証を行う必要があります。 [Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用し、Azure Active Directory (Azure AD) 内で自動的に管理される ID を Azure サービスに付与することで、この問題を解決することができます。 この ID を使用して、コードに資格情報が表示されていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
 
-このチュートリアルでは、マネージド ID を使用して、Azure Key Vault に対する Azure Web アプリの認証を行います。 ここでは、[.NET 用 Azure Key Vault シークレット クライアント ライブラリ](/dotnet/api/overview/azure/key-vault)と [Azure CLI](/cli/azure/get-started-with-azure-cli) を使用します。 各種の開発言語や Azure PowerShell、Azure portal を使用する場合でも、基本的な原則は同じです。
+このチュートリアルでは、Azure Web アプリケーションを作成して [Azure App Service](https://docs.microsoft.com/azure/app-service/overview) にデプロイします。 [.NET 用 Azure Key Vault シークレット クライアント ライブラリ](/dotnet/api/overview/azure/key-vault)と [Azure CLI](/cli/azure/get-started-with-azure-cli) を使用して、マネージド ID を使用した Azure Key Vault に対する Azure Web アプリの認証を行います。 各種の開発言語や Azure PowerShell、Azure portal を使用する場合でも、基本的な原則は同じです。
 
-## <a name="prerequisites"></a>前提条件
+このチュートリアルで紹介する Azure App Service Web アプリケーションとデプロイの詳細については、以下を参照してください。
+- [App Service の概要](https://docs.microsoft.com/azure/app-service/overview)
+- [Azure App Service での ASP.NET Core Web アプリの作成](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore)
+- [Azure App Service へのローカル Git デプロイ](https://docs.microsoft.com/azure/app-service/deploy-local-git)
 
-このクイック スタートを完了するには、次のものが必要です。
+## <a name="prerequisites"></a>[前提条件]
+
+このチュートリアルを完了するには、次のものが必要です。
 
 * Azure サブスクリプション。 [無料で作成できます。](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [.NET Core 3.1 SDK (以降)](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
@@ -33,6 +38,8 @@ ms.locfileid: "97589969"
 * [Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/)。
 * [Azure Key Vault](./overview.md)。 キー コンテナーは、[Azure portal](quick-create-portal.md)、[Azure CLI](quick-create-cli.md)、または [Azure PowerShell](quick-create-powershell.md) を使用して作成できます。
 * Key Vault [シークレット](../secrets/about-secrets.md)。 シークレットは、[Azure portal](../secrets/quick-create-portal.md)、[PowerShell](../secrets/quick-create-powershell.md)、または [Azure CLI](../secrets/quick-create-cli.md) を使用して作成できます。
+
+既に Web アプリケーションを Azure App Service にデプロイしている場合は、[キー コンテナーへの Web アプリ アクセスの構成](#create-and-assign-a-managed-identity)に関するセクションおよび [Web アプリケーション コードの変更](#modify-the-app-to-access-your-key-vault)に関するセクションにスキップできます。
 
 ## <a name="create-a-net-core-app"></a>.NET Core アプリを作成する
 この手順では、ローカル .NET Core プロジェクトを設定します。
@@ -59,6 +66,8 @@ dotnet run
 Web ブラウザーでアプリ (`http://localhost:5000`) に移動します。
 
 正常にデプロイしたアプリ  というメッセージがサンプル アプリによってページに表示されます。
+
+Azure 用に Web アプリケーションを作成する方法の詳細については、[Azure App Service での ASP.NET Core Web アプリの作成](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore)に関するページを参照してください。
 
 ## <a name="deploy-the-app-to-azure"></a>Azure にアプリケーションをデプロイする
 
@@ -218,6 +227,8 @@ http://<your-webapp-name>.azurewebsites.net
 ```
 
 正常にデプロイしたアプリ  先ほど `http://localhost:5000` にアクセスしたときに表示されたメッセージが表示されます。
+
+Git を使用した Web アプリケーションのデプロイの詳細については、「[Azure App Service へのローカル Git デプロイ](https://docs.microsoft.com/azure/app-service/deploy-local-git)」を参照してください
  
 ## <a name="configure-the-web-app-to-connect-to-key-vault"></a>Key Vault に接続するように Web アプリを構成する
 

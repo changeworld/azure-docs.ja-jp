@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b096b24acd5cf65f6ad3e9eabb1d536b3aae0168
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f4b0642ce54b862b4d4c7b9663cf10e74b206281
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187070"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680492"
 ---
-# <a name="tutorial---migrate-an-android-app-from-google-maps"></a>チュートリアル - Google Maps から Android アプリを移行する
+# <a name="tutorial-migrate-an-android-app-from-google-maps"></a>チュートリアル:Google Maps から Android アプリを移行する
 
 Azure Maps Android SDK の API インターフェイスは、Web SDK と似ています。 これらの SDK のいずれかを使用して開発した場合、同じ概念、ベスト プラクティス、アーキテクチャの多くが適用されます。 このチュートリアルでは、次の内容を学習します。
 
@@ -33,9 +33,9 @@ Azure Maps Android SDK でサポートされている Android の最小バージ
 
 Azure Maps による Android SDK を使用した開発の詳細については、[Azure Maps Android SDK のハウツー ガイド](how-to-use-android-map-control-library.md)のページを参照してください。
 
-## <a name="prerequisites"></a>前提条件 
+## <a name="prerequisites"></a>前提条件
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+1. [Azure portal](https://portal.azure.com) にサインインして Azure Maps アカウントを作成します。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 2. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
@@ -46,14 +46,14 @@ Google マップを使用する場合も、Azure Maps を使用する場合も�
 * いずれかのプラットフォームにアクセスするための API キーまたはサブスクリプション キーを取得します。
 * アクティビティに XML を追加して、マップのレンダリング先とレイアウト方法を指定します。
 * マップ ビューを含むアクティビティから、マップ クラスの対応するメソッドに、すべてのライフサイクル メソッドをオーバーライドします。 特に、次のメソッドをオーバーライドする必要があります。
-    * `onCreate(Bundle)`
-    * `onStart()`
-    * `onResume()`
-    * `onPause()`
-    * `onStop()`
-    * `onDestroy()`
-    * `onSaveInstanceState(Bundle)`
-    * `onLowMemory()`
+  * `onCreate(Bundle)`
+  * `onStart()`
+  * `onResume()`
+  * `onPause()`
+  * `onStop()`
+  * `onDestroy()`
+  * `onSaveInstanceState(Bundle)`
+  * `onLowMemory()`
 * マップの準備ができるまで待ってから、アクセスとプログラムを試みます。
 
 ### <a name="before-google-maps"></a>前: Google Maps
@@ -165,9 +165,9 @@ Azure Maps SDK for Android を使用してマップを表示するには、次�
 
 1. 最上位の **build.gradle** ファイルを開き、次のコードを **すべてのプロジェクト** のブロック セクションに追加します。
 
-    ```JAVA
+    ```java
     maven {
-            url "https://atlas.microsoft.com/sdk/android"
+        url "https://atlas.microsoft.com/sdk/android"
     }
     ```
 
@@ -186,12 +186,12 @@ Azure Maps SDK for Android を使用してマップを表示するには、次�
 
     3. 依存関係ブロックを更新します。 最新の Azure Maps Android SDK の新しい実装の依存関係の行を追加します。
 
-        ```java
-        implementation "com.microsoft.azure.maps:mapcontrol:0.2"
+        ```Java
+        implementation "com.microsoft.azure.maps:mapcontrol:0.6"
         ```
 
         > [!Note]
-        > Azure Maps Android SDK は定期的にアップグレードされ、強化されています。 最新の Azure Maps のバージョン番号は、「[Android マップ コントロールの概要](how-to-use-android-map-control-library.md)」で確認できます。 また、バージョン番号を "0.2" から "0+" に設定して、コードが常に最新バージョンを指すようにすることができます。
+        > バージョン番号を "0+" に設定して、コードが常に最新バージョンを指すようにすることができます。
 
     4. ツール バーの **[ファイル]** に移動し、 **[Sync Project with Gradle Files]\(プロジェクトを Gradle ファイルと同期\)** をクリックします。
 
@@ -224,98 +224,99 @@ Azure Maps SDK for Android を使用してマップを表示するには、次�
 
     マップ コントロールには、Android の OpenGL ライフサイクルを管理するための独自のライフサイクル メソッドが含まれています。 これらのメソッドは、それが含まれているアクティビティから直接呼び出す必要があります。 マップ コントロールのライフサイクル メソッドを正しく呼び出すためには、マップ コントロールを含むアクティビティで次のライフサイクル メソッドをオーバーライドする必要があります。 それぞれのマップ コントロール メソッドを呼び出してください。
 
-    * `onCreate(Bundle)` 
-    * `onStart()` 
-    * `onResume()` 
-    * `onPause()` 
-    * `onStop()` 
-    * `onDestroy()` 
-    * `onSaveInstanceState(Bundle)` 
+    * `onCreate(Bundle)`
+    * `onStart()`
+    * `onResume()`
+    * `onPause()`
+    * `onStop()`
+    * `onDestroy()`
+    * `onSaveInstanceState(Bundle)`
     * `onLowMemory()`
 
     **MainActivity.java** ファイルを次のように編集します。
 
-    ```java
+    ```Java
     package com.example.myapplication;
-
-    import android.support.v7.app.AppCompatActivity;
-    import android.os.Bundle;
+    
+    //For older versions use: import android.support.v7.app.AppCompatActivity; 
+    import androidx.appcompat.app.AppCompatActivity;
     import com.microsoft.azure.maps.mapcontrol.AzureMaps;
     import com.microsoft.azure.maps.mapcontrol.MapControl;
     import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
     import com.microsoft.azure.maps.mapcontrol.options.MapStyle;
     import com.microsoft.azure.maps.mapcontrol.source.DataSource;
-
+    
     public class MainActivity extends AppCompatActivity {
-     
-        static {
-            AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
-        }
-
-        MapControl mapControl;
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-
-            mapControl = findViewById(R.id.mapcontrol);
-
-            mapControl.onCreate(savedInstanceState);
     
-            //Wait until the map resources are ready.
-            mapControl.onReady(map -> {
-                //Add your post map load code here.
-    
-            });
-        }
+    static {
+        AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
 
-        @Override
-        public void onResume() {
-            super.onResume();
-            mapControl.onResume();
-        }
-
-        @Override
-        protected void onStart(){
-            super.onStart();
-            mapControl.onStart();
-        }
-
-        @Override
-        public void onPause() {
-            super.onPause();
-            mapControl.onPause();
-        }
-
-        @Override
-        public void onStop() {
-            super.onStop();
-            mapControl.onStop();
-        }
-
-        @Override
-        public void onLowMemory() {
-            super.onLowMemory();
-            mapControl.onLowMemory();
-        }
-
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            mapControl.onDestroy();
-        }
-
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            super.onSaveInstanceState(outState);
-            mapControl.onSaveInstanceState(outState);
-        }
+        //Alternatively use Azure Active Directory authenticate.
+        //AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
     }
+
+    MapControl mapControl;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mapControl = findViewById(R.id.mapcontrol);
+
+        mapControl.onCreate(savedInstanceState);
+
+        //Wait until the map resources are ready.
+        mapControl.onReady(map -> {
+            //Add your post map load code here.
+
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mapControl.onResume();
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        mapControl.onStart();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mapControl.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mapControl.onStop();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapControl.onLowMemory();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapControl.onDestroy();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mapControl.onSaveInstanceState(outState);
+    }}
     ```
 
 アプリケーションを実行すると、マップ コントロールが次の画像のように読み込まれます。
-
 
 ![シンプルな Azure Maps](media/migrate-google-maps-android-app/simple-azure-maps.png)
 
@@ -359,7 +360,7 @@ static {
     AzureMaps.setLanguage("fr-FR");
 
     //Set the regional view to be used by Azure Maps.
-    AzureMaps.setView("auto");
+    AzureMaps.setView("Auto");
 }
 ```
 
@@ -371,7 +372,7 @@ static {
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:mapcontrol_language="fr-FR"
-    app:mapcontrol_view="auto"
+    app:mapcontrol_view="Auto"
     />
 ```
 
@@ -379,8 +380,10 @@ static {
 
 ```java
 mapControl.onReady(map -> {
-    map.setStyle(StyleOptions.language("fr-FR"));
-    map.setStyle(StyleOptions.view("auto"));
+    map.setStyle(
+        language("fr-FR"),
+        view("Auto")
+    );
 });
 ```
 
@@ -436,7 +439,7 @@ public void onMapReady(GoogleMap googleMap) {
 ```java
 mapControl.onReady(map -> {
     //Set the camera of the map.
-    map.setCamera(center(35.0272, -111.0225), zoom(14));
+    map.setCamera(center(Point.fromLngLat(-111.0225, 35.0272)), zoom(14));
 
     //Set the style of the map.
     map.setStyle(style(MapStyle.SATELLITE));
@@ -492,10 +495,8 @@ mapControl.onReady(map -> {
 
 カスタム イメージを使用すると、マップ上のポイントを表すことができます。 以下の例のマップでは、カスタム画像を使用してマップ上のポイントを表示します。 ポイントの緯度は 51.5 で、経度は -0.2 です。 アンカーは、マーカーの位置をオフセットして、画鋲アイコンのポイントがマップ上の正しい位置に揃うようにします。
 
-<center>
-
 ![黄色の画鋲のイメージ](media/migrate-google-maps-web-app/yellow-pushpin.png)<br/>
-yellow-pushpin.png</center>
+yellow-pushpin.png
 
 どちらの例でも、上のイメージはアプリ リソースの drawable フォルダーに追加されます。
 
@@ -666,6 +667,7 @@ mapControl.onReady(map -> {
         strokeWidth(2f)));
 });
 ```
+
 ![Azure Maps の多角形](media/migrate-google-maps-android-app/azure-maps-polygon.png)
 
 ## <a name="overlay-a-tile-layer"></a>タイル レイヤーをオーバーレイする
@@ -758,18 +760,13 @@ mapControl.onReady(map -> {
 
 ![Azure Maps の交通情報](media/migrate-google-maps-android-app/azure-maps-traffic.png)
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+クリーンアップすべきリソースはありません。
+
 ## <a name="next-steps"></a>次のステップ
 
-Azure Maps Android SDK の詳細について学習します。
+Azure Maps の移行について理解を深めます。
 
 > [!div class="nextstepaction"]
-> [Android マップ コントロールの使用方法](how-to-use-android-map-control-library.md)
-
-> [!div class="nextstepaction"]
-> [Android マップへのシンボル レイヤーの追加](how-to-add-symbol-to-android-map.md)
-
-> [!div class="nextstepaction"]
-> [Android マップへの図形の追加](./how-to-add-shapes-to-android-map.md)
-
-> [!div class="nextstepaction"]
-> [Android マップでのマップ スタイルの変更](./set-android-map-styles.md)
+> [Android アプリを移行する](migrate-from-google-maps-android-app.md)

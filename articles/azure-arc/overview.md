@@ -3,12 +3,12 @@ title: Azure Arc の概要
 description: Azure Arc とは何か、そしてお客様が Azure の他のサービスや機能を使用してハイブリッド リソースの管理とガバナンスを実現するうえでどのように役立つかについて説明します。
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: 8e48378e5032768b3f56a5d99c1189e282ff37f8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8f39dff16037b5f52a050b7d07193b0ad7cab93d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714152"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672688"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc の概要
 
@@ -50,7 +50,7 @@ Azure Arc の主な機能は次のとおりです。
 
 ### <a name="arc-enabled-servers"></a>Arc 対応サーバー
 
-Azure Arc コントロール プレーンの機能は、追加コストなしで提供されます。これには次のものが含まれます
+Azure Arc コントロール プレーンの機能は、追加コストなしで提供されます。 これには次のものが含まれます
 
 * Azure 管理グループと Azure タグを使用したリソース組織。
 
@@ -60,7 +60,7 @@ Azure Arc コントロール プレーンの機能は、追加コストなしで
 
 * テンプレートと拡張機能を使用した環境と自動化。
 
-* 更新の管理。
+* 更新管理
 
 Arc 対応サーバーで使用されるすべての Azure サービス (Azure Security Center、Azure Monitor など) は、そのサービスの価格で請求されます。 詳細については、[Azure の価格のページ](https://azure.microsoft.com/pricing/)を参照してください。
 
@@ -79,3 +79,5 @@ Arc 対応サーバーで使用されるすべての Azure サービス (Azure S
 * Arc 対応 Kubernetes の詳細については、次の[概要](./kubernetes/overview.md)を参照してください
 
 * Arc 対応データ サービスの詳細については、次の[概要](https://azure.microsoft.com/services/azure-arc/hybrid-data-services/)を参照してください
+
+* [概念実証のジャンプスタート](https://azurearcjumpstart.io/azure_arc_jumpstart/)に関するページから Arc 対応サービスを体験します

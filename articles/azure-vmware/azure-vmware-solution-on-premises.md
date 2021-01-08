@@ -2,13 +2,13 @@
 title: Azure VMware Solution をオンプレミス環境に接続する
 description: Azure VMware Solution をオンプレミス環境に接続する方法について説明します。
 ms.topic: tutorial
-ms.date: 10/02/2020
-ms.openlocfilehash: 2a0cb641df00f3e580e87e38aff382d8e8101fc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/28/2020
+ms.openlocfilehash: 753835b0206d8bbabe42b057fa40a2d6c4c8c414
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578912"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809685"
 ---
 # <a name="connect-azure-vmware-solution-to-your-on-premises-environment"></a>Azure VMware Solution をオンプレミス環境に接続する
 
@@ -20,24 +20,20 @@ ms.locfileid: "91578912"
 - ExpressRoute Global Reach ピアリングのための重複していない /29 ネットワーク アドレス ブロック。これは、[計画フェーズ](production-ready-deployment-steps.md)の一環として定義したものです。
 
 >[!NOTE]
-> VPN による接続は可能ですが、このクイック スタート ドキュメントの範囲外です。
+> VPN 経由での接続は可能ですが、このクイック スタート ドキュメントの範囲外です。
 
 ## <a name="establish-an-expressroute-global-reach-connection"></a>ExpressRoute Global Reach 接続を確立する
 
 ExpressRoute Global Reach を使用して Azure VMware Solution プライベート クラウドへのオンプレミス接続を確立するには、「[ピアオンプレミス環境をプライベート クラウドにピアリングする](tutorial-expressroute-global-reach-private-cloud.md)」というチュートリアルに従ってください。
 
-
-
 ## <a name="verify-on-premises-network-connectivity"></a>オンプレミス ネットワークの接続性を検証する
 
-この時点で、NSX-T ネットワーク セグメントと Azure VMware Solution 管理セグメントが、ExpressRoute によってどこに接続されているか、**オンプレミスのエッジ ルーター**に表示されるはずです。
+この時点で、NSX-T ネットワーク セグメントと Azure VMware Solution 管理セグメントが、ExpressRoute によってどこに接続されているか、**オンプレミスのエッジ ルーター** に表示されるはずです。
 
->[!NOTE]
+>[!IMPORTANT]
 >すべてのユーザーが異なる環境を使用しており、一部では、これらのルートをオンプレミス ネットワークに再び伝達できるようにする必要があります。  
 
-一部の環境には、ExpressRoute 回線を保護するファイアウォールが設けられます。  ファイアウォールやルートの排除が発生していない場合は、オンプレミス環境から、Azure VMware Solution の vCenter サーバーや NSX-T セグメント上の [VM](deploy-azure-vmware-solution.md#add-a-vm-on-the-nsx-t-network-segment) に対して ping を実行できます。
-
-さらに、NSX-T セグメントの VM からは、オンプレミス環境のリソースに到達できます。
+一部の環境では、ExpressRoute 回線を保護するファイアウォールが配置されています。  ファイアウォールがなく、ルートの排除も行われない場合は、オンプレミス環境から、Azure VMware Solution の vCenter サーバーや [NSX-T セグメント上の VM](deploy-azure-vmware-solution.md#add-a-vm-on-the-nsx-t-network-segment) に対して ping を実行します。 さらに、NSX-T セグメントの VM からは、オンプレミス環境のリソースに到達できます。
 
 ## <a name="next-steps"></a>次の手順
 

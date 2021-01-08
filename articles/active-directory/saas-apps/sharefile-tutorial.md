@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/04/2020
+ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: e0cabcbaaf8e84ac1bdfd13c0ef4ab14f326fcf7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d7cafdcbbf44f3f501d54c13d1b4549c446ed8c8
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182288"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723968"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>チュートリアル: Azure Active Directory と Citrix ShareFile の統合
 
@@ -51,7 +51,7 @@ Azure AD への Citrix ShareFile の統合を構成するには、ギャラリ�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Citrix ShareFile**」と入力します。
 1. 結果のパネルから **[Citrix ShareFile]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-citrix-sharefile"></a>Citrix ShareFile の Azure AD SSO の構成とテスト
 
 このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Citrix ShareFile で Azure AD シングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Citrix ShareFile 内の関連ユーザー間にリンク関係が確立されている必要があります。
@@ -60,10 +60,10 @@ Citrix ShareFile で Azure AD シングル サインオンを構成し、テス�
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     
-    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 2. **[Citrix ShareFile の SSO の構成](#configure-citrix-sharefile-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    * **[Citrix ShareFile テスト ユーザーの作成](#create-citrix-sharefile-test-user)** - Citrix ShareFile で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+    1. **[Citrix ShareFile テスト ユーザーの作成](#create-citrix-sharefile-test-user)** - Citrix ShareFile で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 3. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -131,7 +131,15 @@ Citrix ShareFile で Azure AD シングル サインオンを構成し、テス�
 
 ## <a name="configure-citrix-sharefile-sso"></a>Citrix ShareFile の SSO の構成
 
-1. 別の Web ブラウザーのウィンドウで、管理者として **Citrix ShareFile** の会社サイトにログインします。
+1. **Citrix ShareFile** 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後、 **[Citrix ShareFile のセットアップ]** をクリックすると、Citrix ShareFile アプリケーションに移動します。 そこから、管理者の資格情報を入力して Citrix ShareFile にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 7 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+3. Citrix ShareFile を手動でセットアップする場合は、別の Web ブラウザー ウィンドウで、Citrix ShareFile 企業サイトに管理者としてサインインします。
 
 1. **[Dashboard]\(ダッシュボード\)** で **[Settings]\(設定\)** をクリックし、 **[Admin Settings]\(管理者設定\)** を選択します。
 
@@ -184,13 +192,13 @@ Citrix ShareFile で Azure AD シングル サインオンを構成し、テス�
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Citrix ShareFile のサインオン URL にリダイレクトされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Citrix ShareFile のサインオン URL にリダイレクトされます。
 
-2. Citrix ShareFile のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Citrix ShareFile のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Citrix ShareFile] タイルをクリックすると、Citrix ShareFile サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Citrix ShareFile] タイルをクリックすると、Citrix ShareFile のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

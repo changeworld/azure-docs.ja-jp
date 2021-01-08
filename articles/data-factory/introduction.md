@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: d8b6a852ff0aeb287b12d63bfa689a38a56d418f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 00ae812536e73f432b9bddb93fc1b4a958b379f5
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485057"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97812870"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。
 
@@ -56,8 +56,7 @@ Data Factory を使用すれば、データ パイプラインの[コピー ア�
 変換を手動でコーディングしたい場合でも、ADF は、HDInsight Hadoop、Spark、Data Lake Analytics、Machine Learning などのコンピューティング サービス上で目的の変換を実行するための外部アクティビティをサポートしています。
 
 ### <a name="cicd-and-publish"></a>CI/CD と公開
-Data Factory では、Azure DevOps と GitHub を使用したデータ パイプラインの CI/CD が完全にサポートされています。 ETL プロセスの開発とデリバリを段階的に進めたうえで、完成した製品を公開することが可能です。 生データが変換されてビジネスに即応して利用できる形態になったら、このデータを、ビジネス ユーザーがビジネス インテリジェンス ツールから参照できる Azure Data Warehouse、Azure SQL Database、Azure CosmosDB、またはその他の分析エンジンに読み込みます。
-
+Data Factory では、Azure DevOps と GitHub を使用して、データ パイプラインの [CI/CD の完全なサポートを提供](continuous-integration-deployment.md)します。 ETL プロセスの開発とデリバリを段階的に進めたうえで、完成した製品を公開することが可能です。 生データが変換されてビジネスに即応して利用できる形態になったら、このデータを、ビジネス ユーザーがビジネス インテリジェンス ツールから参照できる Azure Data Warehouse、Azure SQL Database、Azure CosmosDB、またはその他の分析エンジンに読み込みます。
 ### <a name="monitor"></a>モニター
 データ統合パイプラインを正常に構築してデプロイし、変換したデータからビジネス価値を生み出せるようになったなら、スケジュール化したアクティビティとパイプラインを監視して、成功率と失敗率を確認することができます。 Azure Data Factory には、Azure Monitor、API、PowerShell、Azure Monitor ログ、Azure portal の正常性パネルを利用してパイプラインを監視する、ビルトイン サポートが用意されています。
 

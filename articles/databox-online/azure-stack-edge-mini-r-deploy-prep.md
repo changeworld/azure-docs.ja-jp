@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/22/2020
+ms.date: 12/16/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 54ac683dcc2b124c4a6410b2e8449fa7e969ce8c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6d41c186a5d239ad7228c37902f5691085e43dbf
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96464909"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631246"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>チュートリアル:Azure Stack Edge Mini R の配置を準備する
 
@@ -40,7 +40,7 @@ Azure Stack Edge Mini R デバイスを配置するには、次の順序どお�
 |  | |
 |**配置のチュートリアル** |これらのチュートリアルは、ご利用の Azure Stack Edge Mini R デバイスを運用環境に配置するために必要です。 |
 |**[1. デバイスのために Azure portal を準備する](azure-stack-edge-mini-r-deploy-prep.md)** |物理デバイスを設置する前に、ご利用の Azure Stack Edge リソースを作成して構成します。 |
-|**[2.デバイスを設置する](azure-stack-edge-mini-r-deploy-install.md)**|ご利用の物理デバイスの開梱、ラックへの取り付け、ケーブル接続を行います。  |
+|**[2.デバイスを設置する](azure-stack-edge-mini-r-deploy-install.md)**|物理デバイスの検査とケーブル接続を行います。  |
 |**[3. デバイスに接続する](azure-stack-edge-mini-r-deploy-connect.md)** |デバイスを設置したら、デバイスのローカル Web UI に接続します。  |
 |**[4.ネットワーク設定を構成する](azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy.md)** |デバイスに対するコンピューティング ネットワークや Web プロキシの設定など、ネットワークを構成します。   |
 |**[5.デバイス設定を構成する](azure-stack-edge-mini-r-deploy-set-up-device-update-time.md)** |デバイス名と DNS ドメインを割り当てて、更新サーバーとデバイスの時刻を構成します。 |

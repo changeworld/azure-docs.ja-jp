@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 97d95f9993f85a51ac7baa69ebb331f6c8588c18
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: acc1660be99b3b7cc9a3c7414c47f9f6e159b559
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318715"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674110"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>チュートリアル: Azure Active Directory と &frankly の統合
 
@@ -63,7 +63,7 @@ Azure AD への &frankly の統合を構成するには、ギャラリーから�
 
 4. 検索ボックスに「 **&frankly**」と入力し、結果パネルで **[&frankly]** を選び、 **[追加]** ボタン をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の &frankly](common/search-new-app.png)
+    ![結果一覧の &frankly](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -114,7 +114,7 @@ Azure AD への &frankly の統合を構成するには、ギャラリーから�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[&frankly クライアント サポート チーム](mailto:help@andfrankly.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -125,7 +125,7 @@ Azure AD への &frankly の統合を構成するには、ギャラリーから�
 
 1. &frankly にログインします。 **[Account]\(アカウント\)**  >  **[User Management]\(ユーザー管理\)** に移動します。
 1. 既定の認証メカニズムを **[Enterprise Sign-on (SAML)]\(エンタープライズ サインオン (SAML)\)** に変更します。
-1. 前のセクションの手順 6. でダウンロードした**フェデレーション メタデータ XML** をアップロードします。
+1. 前のセクションの手順 6. でダウンロードした **フェデレーション メタデータ XML** をアップロードします。
 1. **[保存]** を選択します。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -145,7 +145,7 @@ Azure AD への &frankly の統合を構成するには、ギャラリーから�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -181,7 +181,7 @@ Azure AD への &frankly の統合を構成するには、ギャラリーから�
 
 ### <a name="create-frankly-test-user"></a>&frankly のテスト ユーザーの作成
 
-このセクションでは、&frankly で Britta Simon というユーザーを作成します。  [&frankly サポート チーム](mailto:help@andfrankly.com)と協力して、&frankly プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、&frankly で Britta Simon というユーザーを作成します。 [&frankly サポート チーム](mailto:help@andfrankly.com)と連携して、&frankly プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

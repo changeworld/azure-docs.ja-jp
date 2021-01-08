@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/16/2018
+ms.date: 12/17/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8c82e3d2c978a7980d02bc686346acdcb21dd591
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b283add6cff1400cc3141f4fba3f0f3939ee34aa
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "66425753"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97665173"
 ---
 |  | **ポイント対サイト** | **サイト間** | **ExpressRoute** |
 | --- | --- | --- | --- |
@@ -22,7 +22,7 @@ ms.locfileid: "66425753"
 | **サポート対象プロトコル** |Secure Sockets Tunneling Protocol (SSTP)、OpenVPN、IPsec |IPsec |VLAN、NSP の VPN テクノロジー (MPLS、VPLS など) 経由の直接接続 |
 | **ルーティング** |RouteBased (動的) |ポリシー ベース (静的ルーティング) およびルート ベース (動的ルーティング VPN) がサポートされます。 |BGP |
 | **接続の弾力性** |アクティブ/パッシブ |アクティブ/パッシブまたはアクティブ/アクティブ |アクティブ/アクティブ |
-| **一般的な使用例** |プロトタイプの作成、クラウド サービスおよび仮想マシンの開発/テスト/ラボ シナリオ |クラウド サービスおよび仮想マシンの開発/テスト/ラボ シナリオおよび小規模実稼動ワークロード |すべての Azure サービス (検証済み一覧)、エンタープライズクラスおよびミッション クリティカルなワークロード、バックアップ、ビッグ データ、DR サイトとしての Azure へのアクセス |
+| **一般的な使用例** |リモート ユーザーのための Azure 仮想ネットワークへの安全なアクセス |クラウド サービスおよび仮想マシンの開発、テスト、ラボ シナリオおよび小規模から中規模の実稼動ワークロード |すべての Azure サービス (検証済み一覧)、エンタープライズクラスおよびミッション クリティカルなワークロード、バックアップ、ビッグ データ、DR サイトとしての Azure へのアクセス |
 | **SLA** |[SLA](https://azure.microsoft.com/support/legal/sla/) |[SLA](https://azure.microsoft.com/support/legal/sla/) |[SLA](https://azure.microsoft.com/support/legal/sla/) |
 | **料金** |[料金](https://azure.microsoft.com/pricing/details/vpn-gateway/) |[料金](https://azure.microsoft.com/pricing/details/vpn-gateway/) |[料金](https://azure.microsoft.com/pricing/details/expressroute/) |
 | **テクニカル ドキュメント** |[VPN Gateway のドキュメント](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[VPN Gateway のドキュメント](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[ExpressRoute のドキュメント](https://azure.microsoft.com/documentation/services/expressroute/) |

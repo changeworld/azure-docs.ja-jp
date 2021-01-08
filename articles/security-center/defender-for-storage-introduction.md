@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8979e315f188a5c21cce206c24f195f72096d438
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: b338b8ee93fb24cff54968630d4ff00deca0b64b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516513"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606727"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Azure Defender for Storage の概要
 
@@ -20,7 +20,6 @@ ms.locfileid: "97516513"
 **Azure Defender for Storage** は、ストレージ アカウントに対する通常とは異なる潜在的に有害なアクセスの試行、すなわちストレージ アカウントの悪用を検出する、Azure ネイティブのセキュリティ インテリジェンス レイヤーです。 セキュリティ AI の高度な機能と [Microsoft の脅威インテリジェンス](https://go.microsoft.com/fwlink/?linkid=2128684)を利用して、コンテキストに応じたセキュリティ アラートと推奨事項を提供します。
 
 セキュリティ アラートは、アクティビティで異常が発生したときにトリガーされます。 これらのアラートは Azure Security Center と統合されます。また、アラートは不審なアクティビティの詳細や、脅威の調査および修復方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。
-
 
 ## <a name="availability"></a>可用性
 
@@ -31,6 +30,17 @@ ms.locfileid: "97516513"
 |保護されるストレージの種類:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
 |||
+
+
+## <a name="what-are-the-benefits-of-azure-defender-for-storage"></a>Azure Defender for Storage の利点
+
+Azure Defender for Storage の利点は次のとおりです。
+
+- **Azure ネイティブのセキュリティ** - 1 回クリックして有効にすれば、Azure Blob、Azure Files、Data Lake に格納されているデータが Defender for Storage によって保護されます。 Defender for Storage は Azure ネイティブのサービスとして、Azure で管理されるすべてのデータ資産に一元的なセキュリティを提供し、Azure Sentinel など他の Azure セキュリティ サービスとも連携します。
+- **豊富な検出スイート** - Microsoft の脅威インテリジェンスを利用した Defender for Storage の検出機能は、匿名アクセス、資格情報の漏洩、ソーシャル エンジニアリング、特権の乱用、悪意のあるコンテンツなど、ストレージに関する代表的な脅威をカバーしています。
+- **包括的な対応** - 特定された脅威は、Security Center のオートメーション ツールによって簡単に防止、対応できます。 詳細については、「[Security Center のトリガーへの応答を自動化する](workflow-automation.md)」を参照してください。
+
+:::image type="content" source="media/defender-for-storage-introduction/defender-for-storage-high-level-overview.png" alt-text="Azure Defender for Storage の機能概要":::
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-storage-provide"></a>Azure Defender for Storage で提供されるアラートの種類

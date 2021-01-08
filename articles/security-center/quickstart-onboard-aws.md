@@ -3,16 +3,16 @@ title: Azure Security Center への AWS アカウントの接続
 description: Azure Security Center から AWS リソースを監視します
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 12/29/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 23609613cace2f9be90ad5c88d4d51bb1c2f1a9b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 4c919115efb39a8e8c008eab69dc087792f7b105
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573512"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814314"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Azure Security Center への AWS アカウントの接続
 
@@ -41,7 +41,7 @@ AWS アカウントを Security Center にオンボードすると、AWS Securit
 |----|:----|
 |リリース状態:|プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
-|必要なロールとアクセス許可:|関連する Azure サブスクリプションの **所有者** または **共同作成者**|
+|必要なロールとアクセス許可:|関連する Azure サブスクリプションの **所有者**<br>所有者がサービス プリンシパルの詳細を提供する場合は、**共同作成者** も AWS アカウントに接続できます|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
 

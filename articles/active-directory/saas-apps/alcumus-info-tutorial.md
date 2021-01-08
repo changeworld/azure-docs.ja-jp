@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 704449a9d70a38f9a05a68df290a4c0d0e6aeb54
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2aaa301a95f3f07ca81d20daba3ef28b812da0e6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318908"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672391"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alcumus-info-exchange"></a>チュートリアル: Azure Active Directory と Alcumus Info Exchange の統合
 
@@ -63,7 +63,7 @@ Azure AD への Alcumus Info Exchange の統合を構成するには、ギャラ
 
 4. 検索ボックスに「**Alcumus Info Exchange**」と入力し、結果パネルで **[Alcumus Info Exchange]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Alcumus Info Exchange](common/search-new-app.png)
+    ![結果一覧の Alcumus Info Exchange](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -108,7 +108,7 @@ Alcumus Info Exchange で Azure AD のシングル サインオンを構成す�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Alcumus Info Exchange クライアント サポート チーム](mailto:helpdesk@alcumusgroup.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -124,7 +124,7 @@ Alcumus Info Exchange で Azure AD のシングル サインオンを構成す�
 
 ### <a name="configure-alcumus-info-exchange-single-sign-on"></a>Alcumus Info Exchange のシングル サインオンの構成
 
-**Alcumus Info Exchange** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Alcumus Info Exchange サポート チーム](mailto:helpdesk@alcumusgroup.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Alcumus Info Exchange** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Alcumus Info Exchange サポート チーム](mailto:helpdesk@alcumusgroup.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -143,7 +143,7 @@ Alcumus Info Exchange で Azure AD のシングル サインオンを構成す�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -179,7 +179,7 @@ Alcumus Info Exchange で Azure AD のシングル サインオンを構成す�
 
 ### <a name="create-alcumus-info-exchange-test-user"></a>Alcumus Info Exchange テスト ユーザーの作成
 
-このセクションでは、Alcumus Info Exchange で Britta Simon というユーザーを作成します。  [Alcumus Info Exchange サポート チーム](mailto:helpdesk@alcumusgroup.com)と協力して、Alcumus Info Exchange プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Alcumus Info Exchange で Britta Simon というユーザーを作成します。 [Alcumus Info Exchange サポート チーム](mailto:helpdesk@alcumusgroup.com)と連携して、Alcumus Info Exchange プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

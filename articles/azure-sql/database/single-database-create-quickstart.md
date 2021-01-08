@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/03/2020
-ms.openlocfilehash: 21ccbc83c80e1b659dd240973a609d624f270835
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: cb7a441a6d86cd64847300d1e597cf6f86067282
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028514"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740948"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>クイック スタート:Azure SQL Database の単一データベースを作成する
 
@@ -141,7 +141,7 @@ az sql server firewall-rule create \
 ```
 
 
-## <a name="create-a-single-database"></a>単一データベースを作成する
+## <a name="create-a-single-database-with-azure-cli"></a>Azure CLI を使用して単一データベースを作成する
 
 [az sql db create](/cli/azure/sql/db) コマンドを使用してデータベースを作成します。 次のコードを使用して作成します。
 
@@ -230,7 +230,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 ```
 
 
-## <a name="create-a-single-database"></a>単一データベースを作成する
+## <a name="create-a-single-database-with-powershell"></a>PowerShell を使用して単一データベースを作成する
 
 [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) コマンドレットを使用して、単一データベースを作成します。
 

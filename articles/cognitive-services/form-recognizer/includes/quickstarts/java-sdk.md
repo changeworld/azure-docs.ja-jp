@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: d53863ccf71970cca3900707c844a2e5add050fa
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6768f46f39920c975e7eccef72563fc0bb7e5180
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356513"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808591"
 ---
 > [!IMPORTANT]
 > この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。
@@ -58,7 +58,7 @@ gradle init --type basic
 
 プロジェクトの *build.gradle.kts* ファイルに、必要なプラグインと設定と共に、クライアント ライブラリを `implementation` ステートメントとして含めます。
 
-#### <a name="version-30"></a>[バージョン 3.0](#tab/ga)
+#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
 ```kotlin
 plugins {
     java
@@ -74,6 +74,10 @@ dependencies {
     implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.0.0")
 }
 ```
+
+> [!NOTE]
+> Form Recognizer 3.0.0 SDK は、API バージョン 2.0 を反映しています
+
 #### <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/preview)
 ```kotlin
 plugins {
@@ -90,6 +94,10 @@ dependencies {
     implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.1.0-beta.1")
 }
 ```
+
+> [!NOTE]
+> Form Recognizer 3.1.0 SDK は、API バージョン 2.1 プレビューを反映しています
+
 ---
 
 ### <a name="create-a-java-file"></a>Java ファイルを作成する
@@ -120,15 +128,17 @@ mkdir -p src/main/java
 
 アプリケーションの **main** メソッドで、このクイックスタートで使用するメソッドの呼び出しを追加します。 その定義は後から行います。 また、トレーニング データとテスト データの URL への参照を追加する必要もあります。
 
-* カスタム モデルのトレーニング データの SAS URL を取得するには、Microsoft Azure Storage Explorer を開き、ご利用のコンテナーを右クリックし、 **[Shared Access Signature の取得]** を選択します。 アクセス許可の **[読み取り]** と **[表示]** がオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
+* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+  
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL の取得":::
 * テストするフォームの URL を取得するには、上記の手順を使用して、BLOB ストレージ内の個々のドキュメントの SAS URL を取得できます。 または、別の場所にあるドキュメントの URL を取得します。
 * 上記のメソッドを使用して、領収書の画像の URL も取得します。
 
-#### <a name="version-30"></a>[バージョン 3.0](#tab/ga)
+#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_maincalls)]
-#### <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/preview)
+#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_maincalls)]
@@ -165,14 +175,14 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 これらのコード スニペットでは、Java 用 Form Recognizer クライアント ライブラリを使用して次のタスクを実行する方法を示します。
 
-#### <a name="version-30"></a>[バージョン 3.0](#tab/ga)
+#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
 * [クライアントを認証する](#authenticate-the-client)
 * [フォーム コンテンツを認識する](#recognize-form-content)
 * [領収書を認識する](#recognize-receipts)
 * [カスタム モデルをトレーニングする](#train-a-custom-model)
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
 * [カスタム モデルを管理する](#manage-your-custom-models)
-#### <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/preview)
+#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
 * [クライアントを認証する](#authenticate-the-client)
 * [フォーム コンテンツを認識する](#recognize-form-content)
 * [領収書を認識する](#recognize-receipts)
@@ -259,11 +269,14 @@ Quantity: null, confidence: 0.927s]
 Total Price: null, confidence: 0.93
 ```
 
-#### <a name="version-30"></a>[バージョン 3.0](#tab/ga)
-
-#### <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/preview)
-
 ## <a name="recognize-business-cards"></a>名刺を認識する
+
+#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> この機能は、選択した API バージョンでは使用できません。
+
+#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
 
 このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを認識して抽出する方法を示します。
 
@@ -278,7 +291,16 @@ URL から名刺を認識するには、`beginRecognizeBusinessCardsFromUrl` メ
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
 
+---
+
 ## <a name="recognize-invoices"></a>請求書を認識する
+
+#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> この機能は、選択した API バージョンでは使用できません。
+
+#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
 
 このセクションでは、事前トレーニング済みのモデルを使用して、売上請求書から共通フィールドを認識して抽出する方法を示します。
 

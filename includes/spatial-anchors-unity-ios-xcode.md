@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 11/20/2020
 ms.author: parkerra
-ms.openlocfilehash: d969b1639dbb39b920c985964abe1239f068d740
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 81d2804d99896200ea6f68592ea168112e172c20
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185345"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762611"
 ---
 **[Build]\(ビルド\)** を選択します。 ウィンドウが開いたら、Xcode プロジェクトのエクスポート先にするフォルダーを選択します。
 
@@ -30,9 +30,9 @@ open ./Unity-iPhone.xcodeproj
 
 ルートの **Unity-iPhone** ノードを選択してプロジェクトの設定を表示し、**[General]\(全般\)** タブを選択します。
 
-**[Signing]\(署名\)** で、 **[Automatically manage signing]\(署名を自動的に管理\)** を有効にします。 有効でない場合は有効にして、表示されたウィンドウで **[Enable Automatic]\(自動を有効にする\)** を選択して、ビルドの設定をリセットします。
+**[Deployment Info]\(展開情報\)** で、展開ターゲットが **iOS 11.0** に設定されていることを確認します。
 
-**[Deployment Info]\(展開情報\)** で、 **[Deployment Target]\(展開ターゲット\)** が **11.0** に設定されていることを確認します。
+**[Signing & Capabilities]\(署名と機能\)** タブを選択し、 **[Automatically manage signing]\(署名を自動的に管理\)** が有効になっていることを確認します。 有効でない場合は有効にして、表示されたウィンドウで **[Enable Automatic]\(自動を有効にする\)** を選択して、ビルドの設定をリセットします。
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>アプリを iOS デバイスにデプロイする
 

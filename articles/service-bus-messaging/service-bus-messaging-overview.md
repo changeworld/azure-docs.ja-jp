@@ -3,15 +3,15 @@ title: Azure Service Bus メッセージングの概要 | Microsoft Docs
 description: この記事では、フル マネージド エンタープライズ統合メッセージ ブローカーである Azure Service Bus の概要を簡単に説明します。
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: b795d0c5b429a812d90e0759fbcde3d348b86e22
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 70e9d966a14f78866d72865eed4cbb2dfd6c18dd
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602718"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755737"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus とは
-Microsoft Azure Service Bus は、メッセージ キューとパブリック サブスクライブ トピックを備えたフル マネージド エンタープライズ統合メッセージ ブローカーです。 Service Bus は、アプリケーションとサービスを相互に分離するために使用され、次のような利点があります。
+Microsoft Azure Service Bus は、メッセージ キューとパブリッシュとサブスクライブ トピックを備えたフル マネージド エンタープライズ統合メッセージ ブローカーです。 Service Bus は、アプリケーションとサービスを相互に分離するために使用され、次のような利点があります。
 
 - 競合する worker 間での作業の負荷分散
 - サービスやアプリケーションの境界を越えたデータと制御の安全なルーティングおよび転送

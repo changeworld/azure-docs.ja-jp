@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 92a878c60ba2a7c08a17ce2833132b389ef49435
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9b6fcec6f564e944f0e73d151b61d46af4b4cc03
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318744"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673139"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-anaplan"></a>チュートリアル: Azure Active Directory と Anaplan の統合
 
@@ -63,7 +63,7 @@ Azure AD への Anaplan の統合を構成するには、ギャラリーから�
 
 4. 検索ボックスに「**Anaplan**」と入力し、結果パネルで **[Anaplan]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Anaplan](common/search-new-app.png)
+    ![結果一覧の Anaplan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -108,7 +108,7 @@ Anaplan で Azure AD シングル サインオンを構成するには、次の�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Anaplan クライアント サポート チーム](mailto:support@anaplan.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -124,7 +124,7 @@ Anaplan で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="configure-anaplan-single-sign-on"></a>Anaplan のシングル サインオンの構成
 
-**Anaplan** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Anaplan サポート チーム](mailto:support@anaplan.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Anaplan** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Anaplan サポート チーム](mailto:support@anaplan.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -143,7 +143,7 @@ Anaplan で Azure AD シングル サインオンを構成するには、次の�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -179,7 +179,7 @@ Anaplan で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="create-anaplan-test-user"></a>Anaplan のテスト ユーザーの作成
 
-このセクションでは、Anaplan で Britta Simon というユーザーを作成します。  [Anaplan サポート チーム](mailto:support@anaplan.com)と協力して、Anaplan プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Anaplan で Britta Simon というユーザーを作成します。 [Anaplan サポート チーム](mailto:support@anaplan.com)と連携して、Anaplan プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

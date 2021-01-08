@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: ae2361d12dfe18cadd80dd3b84405b2b17751e59
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 44a5131a7ad90feeeeff56e95b64e65f3f18855c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584087"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674159"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>チュートリアル:ARM テンプレートのデプロイで Azure Key Vault を統合する
 
@@ -32,6 +32,8 @@ Azure のキー コンテナーからシークレットを取得し、Azure Reso
 > * リソースをクリーンアップする
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+
+キー コンテナーのセキュリティで保護された値を使用する Microsoft Learn モジュールについては、「[高度な ARM テンプレート機能を使用して複雑なクラウド デプロイを管理する](/learn/modules/manage-deployments-advanced-arm-template-features/)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

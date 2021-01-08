@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 5d105ad4c2aff03dae52b340037e4c193bf82ca1
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 92fdef48556a3306ee5e3f10e07ff609a8fc4be4
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608437"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656225"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB Emulator - リリース ノートとダウンロード情報
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "96608437"
 | | |
 |---------|---------|
 |**MSI ダウンロード**|[Microsoft ダウンロード センター](https://aka.ms/cosmosdb-emulator)|
-|**開始するには**|[Azure Cosmos Emulator を使用してローカルで開発する](local-emulator.md)|
+|**開始するには**|[Azure Cosmos DB Emulator を使用してローカルで開発する](local-emulator.md)|
 
 ## <a name="release-notes"></a>リリース ノート
 
@@ -83,7 +83,7 @@ ms.locfileid: "96608437"
 
 ### <a name="246"></a>2.4.6
 
-- このリリースは、2019 年 7 月時点の Azure Cosmos サービスの機能と同等です。ただし、[Azure Cosmos エミュレーターを使用したローカルでの開発](local-emulator.md)に関するページに記載されている例外を除きます。 また、コマンド ラインを介して起動した場合のエミュレーターのシャットダウンに関連するバグ、および直接モード接続を使用する SDK クライアントに対する内部 IP アドレスのオーバーライドに関するバグも修正されます。
+- このリリースは、2019 年 7 月時点の Azure Cosmos サービスの機能と同等です。ただし、[Azure Cosmos DB Emulator を使用したローカルでの開発](local-emulator.md)に関するページに記載されている例外を除きます。 また、コマンド ラインを介して起動した場合のエミュレーターのシャットダウンに関連するバグ、および直接モード接続を使用する SDK クライアントに対する内部 IP アドレスのオーバーライドに関するバグも修正されます。
 
 ### <a name="243"></a>2.4.3
 

@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 11/20/2020
 ms.author: parkerra
-ms.openlocfilehash: 131b21ea7bc47df9654dd7c163eb22adb68e6678
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 596b73f8fb205b6a5681fecf3d00fd2a67c1f59f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185317"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97628714"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Spatial Anchors リソースを作成する
 
@@ -27,23 +27,23 @@ ms.locfileid: "96185317"
 
 **[Spatial Anchors アカウント]** ウィンドウで次を行います。
 
-* 通常の英数字を使用して一意のリソース名を入力します。  
-* リソースをアタッチするサブスクリプションを選択します。  
-* **[新規作成]** を選択して、リソース グループを作成します。 「**myResourceGroup**」と名前を付け、 **[OK]** を選択します。  
+* 通常の英数字を使用して一意のリソース名を入力します。
+* リソースをアタッチするサブスクリプションを選択します。
+* **[新規作成]** を選択して、リソース グループを作成します。 「**myResourceGroup**」と名前を付け、 **[OK]** を選択します。
 
   [!INCLUDE [resource group intro text](resource-group.md)]
-  
-* リソースを配置する場所 (リージョン) を選択します。  
+
+* リソースを配置する場所 (リージョン) を選択します。
 * **[新規]** を選択して、リソースの作成を開始します。
 
 ![リソースを作成するための [Spatial Anchors] ウィンドウのスクリーンショット。](./media/spatial-anchors-get-started-create-resource/create-resource-form.png)
 
-リソースが作成されると、Azure portal に、デプロイが完了したことが表示されます。 
-   
+リソースが作成されると、Azure portal に、デプロイが完了したことが表示されます。
+
 ![リソースのデプロイが完了したことを示すスクリーンショット。](./media/spatial-anchors-get-started-create-resource/deployment-complete.png)
 
-**[リソースに移動]** を選択します。 これでリソースのプロパティを表示できます。 
-   
+**[リソースに移動]** を選択します。 これでリソースのプロパティを表示できます。
+
 リソースの **[アカウント ID]** 値は後で使用するためにテキスト エディターにコピーしておきます。
 
 ![[リソース プロパティ] ウィンドウのスクリーンショット。](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
@@ -121,6 +121,80 @@ ms.locfileid: "96185317"
 
 ```azurecli
 az spatial-anchors-account delete --resource-group myResourceGroup --name MySpatialAnchorsQuickStart
+```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+まず、Azure PowerShell の環境を準備します。
+
+[!INCLUDE [azure-powershell-requirements-no-header.md](azure-powershell-requirements-no-header.md)]
+
+> [!IMPORTANT]
+> **Az.MixedReality** PowerShell モジュールがプレビュー段階にある間は、`Install-Module` コマンドレットを使用して、これを別途インストールする必要があります。 この PowerShell モジュールは、一般提供されると、将来の Az PowerShell モジュール リリースに含まれ、既定で Azure Cloud Shell 内から使用できるようになります。
+
+```azurepowershell-interactive
+Install-Module -Name Az.MixedReality
+```
+
+1. サインインしたら、[Set-AzContext](/powershell/module/az.accounts/set-azcontext) コマンドレットを使用して、Spatial Anchors アカウントを設定するサブスクリプションを選択します。
+
+   ```azurepowershell-interactive
+   Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
+   ```
+
+1. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを実行してリソース グループを作成するか、または既存のリソース グループを使用します。
+
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name myResourceGroup -Location eastus2
+   ```
+
+   [!INCLUDE [resource group intro text](resource-group.md)]
+
+   リソース グループの現在の Spatial Anchors アカウントを表示するには、[Get-AzSpatialAnchorsAccount](/powershell/module/az.mixedreality/get-azspatialanchorsaccount) コマンドレットを使用します。
+
+   ```azurepowershell-interactive
+   Get-AzSpatialAnchorsAccount -ResourceGroup myResourceGroup
+   ```
+
+   また、ご利用のサブスクリプションの Spatial Anchors アカウントを表示することもできます。
+
+   ```azurepowershell-interactive
+   Get-AzSpatialAnchorsAccount
+   ```
+
+1. [New-AzSpatialAnchorsAccount](/powershell/module/az.mixedreality/new-azspatialanchorsaccount) コマンドレットを実行して、Spatial Anchors アカウントを作成します。
+
+   ```azurepowershell-interactive
+   New-AzSpatialAnchorsAccount -ResourceGroup myResourceGroup -Name MySpatialAnchorsQuickStart -Location eastus2
+   ```
+
+1. [Get-AzSpatialAnchorsAccount](/powershell/module/az.mixedreality/get-azspatialanchorsaccount) コマンドレットを使用してリソースのプロパティを表示します。
+
+   ```azurepowershell-interactive
+   Get-AzSpatialAnchorsAccount -ResourceGroup myResourceGroup -Name MySpatialAnchorsQuickStart
+   ```
+
+   **accountId** プロパティの値と **accountDomain** プロパティの値を後で使用するためにテキスト エディターにコピーします。
+
+1. [Get-AzSpatialAnchorsAccountKey](/powershell/module/az.mixedreality/get-azspatialanchorsaccountkey) コマンドレットを実行して、プライマリ キーとセカンダリ キーを取得します。
+
+   ```azurepowershell-interactive
+   Get-AzSpatialAnchorsAccountKey -ResourceGroup myResourceGroup -Name MySpatialAnchorsQuickStart
+   ```
+
+   後で使用するためにキー値をテキスト エディターにコピーします。
+
+   キーを再生成する必要がある場合は、[New-AzSpatialAnchorsAccountKey](/powershell/module/az.mixedreality/new-azspatialanchorsaccountkey) コマンドレットを使用します。
+
+   ```azurepowershell-interactive
+   New-AzSpatialAnchorsAccountKey -ResourceGroupName myResourceGroup -Name MySpatialAnchorsQuickStart -Primary
+   New-AzSpatialAnchorsAccountKey -ResourceGroupName myResourceGroup -Name MySpatialAnchorsQuickStart -Secondary
+   ```
+
+アカウントは、[Remove-AzSpatialAnchorsAccount](/powershell/module/az.mixedreality/remove-azspatialanchorsaccount) コマンドレットを使用して削除できます。
+
+```azurepowershell-interactive
+Remove-AzSpatialAnchorsAccount -ResourceGroup myResourceGroup -Name MySpatialAnchorsQuickStart
 ```
 
 ---

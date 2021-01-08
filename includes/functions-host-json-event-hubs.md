@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 8f3a58d3a7470867ab23249bbd645289e010ad89
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f5101233f7995fb58fc530e613ba3235a55c783c
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997310"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97628717"
 ---
 ### <a name="functions-2x-and-higher"></a>Functions 2.x 以降
 
@@ -22,6 +22,10 @@ ms.locfileid: "95997310"
             "eventProcessorOptions": {
                 "maxBatchSize": 256,
                 "prefetchCount": 512
+            },
+            "initialOffsetOptions": {
+                "type": "fromStart",
+                "enqueuedTime": ""
             }
         }
     }
@@ -30,10 +34,11 @@ ms.locfileid: "95997310"
 
 |プロパティ  |Default | 説明 |
 |---------|---------|---------|
-|maxBatchSize|10|受信ループあたりで受信される最大イベント数。|
-|prefetchCount|該当なし|基となる `EventProcessorHost` によって使用される既定のプリフェッチ カウント。 許容される最小値は 10 です。|
 |batchCheckpointFrequency|1|EventHub カーソル チェックポイントを作成する前に処理するイベント バッチ数。|
-
+|eventProcessorOptions/maxBatchSize|10|受信ループあたりで受信される最大イベント数。|
+|eventProcessorOptions/prefetchCount|300|基となる `EventProcessorHost` によって使用される既定のプリフェッチ カウント。 許容される最小値は 10 です。|
+|initialOffsetOptions/type|fromStart|チェックポイントがストレージに存在しない場合に処理を開始するイベント ストリーム内の位置。 `fromStart`、`fromEnd`、`fromEnqueuedTime` のいずれかを選択できます。 `fromEnd` は、関数アプリが実行を開始した後にエンキューされた新しいイベントを処理します。 すべてのパーティションに適用されます。  詳細については、[EventProcessorOptions のドキュメント](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider?view=azure-dotnet)を参照してください。|
+|initialOffsetOptions/enqueuedTime|該当なし| ストリームにエンキューされたイベントの処理を開始する時刻を指定します。 `initialOffsetOptions/type` が `fromEnqueuedTime` として構成されている場合、この設定は必須です。 [DateTime.Parse()](/dotnet/standard/base-types/parsing-datetime) でサポートされている形式の時刻がサポートされます (`2020-10-26T20:31Z` など)。 明確にするためには、タイムゾーンも指定する必要があります。 タイムゾーンが指定されなかった場合は、関数アプリを実行しているマシンのローカル タイムゾーン (Azure で実行されている場合は UTC) が使用されます。 詳細については、[EventProcessorOptions のドキュメント](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider?view=azure-dotnet)を参照してください。|
 > [!NOTE]
 > Azure Functions 2.x 以降の host.json のリファレンスについては、[Azure Functions の host.json のリファレンス](../articles/azure-functions/functions-host-json.md)に関する記事を参照してください。
 

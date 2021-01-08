@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 200d23f390c9c22af90099e1e136c832287aa10d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d8a7bb620b7fcc9c878986d3575e22bb6f0f77bc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207531"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724138"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>チュートリアル:Azure Remote Rendering とモデル ストレージのセキュリティ保護
 
@@ -204,7 +204,7 @@ AAD 認証を使用すると、ARR を使用している個人またはグルー
     **[AAR] -> [アクセス制御 (IAM)]** ![ARR ロール](./media/azure-remote-rendering-role-assignment-complete.png)
 
     >[!NOTE]
-    > クライアント アプリケーションを介してセッションを管理する場合、"*所有者*" ロールでは不十分です。 セッションの管理権限を付与したい各ユーザーに対して、**Remote Rendering クライアント** ロールを指定する必要があります。 セッションの管理とモデルの変換を行う各ユーザーに対して、**Remote Rendering 管理者**ロールを指定する必要があります。
+    > クライアント アプリケーションを介してセッションを管理する場合、"*所有者*" ロールでは不十分です。 セッションの管理権限を付与したい各ユーザーに対して、**Remote Rendering クライアント** ロールを指定する必要があります。 セッションの管理とモデルの変換を行う各ユーザーに対して、**Remote Rendering 管理者** ロールを指定する必要があります。
 
 Azure 側の設定が済んだら、AAR サービスへの接続方法に関する変更をコードに加える必要があります。 そのためには、新しい **AzureFrontendAccountInfo** オブジェクトを返す、**BaseARRAuthentication** のインスタンスを実装します。 この場合は、Azure アクセス トークンを使用してアカウント情報が構成されます。
 
@@ -255,6 +255,14 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
             get => azureRemoteRenderingAccountID.Trim();
             set => azureRemoteRenderingAccountID = value;
         }
+    
+        [SerializeField]
+        private string azureRemoteRenderingAccountAuthenticationDomain;
+        public string AzureRemoteRenderingAccountAuthenticationDomain
+        {
+            get => azureRemoteRenderingAccountAuthenticationDomain.Trim();
+            set => azureRemoteRenderingAccountAuthenticationDomain = value;
+        }
 
         public override event Action<string> AuthenticationInstructions;
 
@@ -262,7 +270,7 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
 
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
 
-        string[] scopes => new string[] { "https://sts.mixedreality.azure.com/mixedreality.signin" };
+        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountAuthenticationDomain + "/mixedreality.signin" };
 
         public void OnEnable()
         {
@@ -279,7 +287,7 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
 
                 var AD_Token = result.AccessToken;
 
-                return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+                return await Task.FromResult(new AzureFrontendAccountInfo(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -369,7 +377,7 @@ ARR の観点から見て、このクラスの最も重要な部分は次の行�
 return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-ここでは、アカウント ドメイン、アカウント ID、アクセス トークンを使用して新しい **AzureFrontendAccountInfo** オブジェクトを作成します。 その後、このトークンは、前に構成したロールベースのアクセス許可に基づいてユーザーが承認されている限り、ARR サービスでリモート レンダリング セッションの各種の処理 (クエリ、作成、参加) を行う際に使用されます。
+ここでは、アカウント ドメイン、アカウント ID、アカウント認証ドメイン、アクセス トークンを使用して新しい **AzureFrontendAccountInfo** オブジェクトを作成します。 その後、このトークンは、前に構成したロールベースのアクセス許可に基づいてユーザーが承認されている限り、ARR サービスでリモート レンダリング セッションの各種の処理 (クエリ、作成、参加) を行う際に使用されます。
 
 この変更により、アプリケーションの現在の状態とその Azure リソースへのアクセスは次のようになります。
 
@@ -390,7 +398,8 @@ Unity エディターでは、AAD 認証がアクティブである場合、ア�
     * **[Account Domain]\(アカウント ドメイン\)** は、**RemoteRenderingCoordinator** の [Account Domain]\(アカウント ドメイン\) で使用しているものと同じドメインです。
     * **[Active Directory Application Client ID]\(Active Directory アプリケーション クライアント ID\)** は、AAD アプリの登録にある *[アプリケーション (クライアント) ID]* です (下図参照)。
     * **[Azure Tenant ID]\(Azure テナント ID\)** は、AAD アプリの登録にある *[ディレクトリ (テナント) ID]* です (下図参照)。
-    * **[Azure Remote Rendering Account ID]\(Azure Remote Rendering アカウント ID\)** は、**RemoteRenderingCoordinator** に使用しているものと同じ**アカウント ID** です。
+    * **[Azure Remote Rendering Account ID]\(Azure Remote Rendering アカウント ID\)** は、**RemoteRenderingCoordinator** に使用しているものと同じ **アカウント ID** です。
+    * **[Account Authentication Domain]\(アカウント認証ドメイン\)** は、**RemoteRenderingCoordinator** の **[Account Authentication Domain]\(アカウント認証ドメイン\)** で使用しているものと同じです。
 
     ![アプリケーション (クライアント) ID とディレクトリ (テナント) ID が強調表示されているスクリーンショット。](./media/app-overview-data.png)
 
@@ -403,7 +412,7 @@ Unity エディターでは、AAD 認証がアクティブである場合、ア�
 
 ## <a name="build-to-device"></a>デバイスにビルドする
 
-MSAL を使用してアプリケーションをデバイスにビルドする場合、プロジェクトの **Assets** フォルダーにファイルを追加する必要があります。 そうすることで、**チュートリアル アセット**に含まれている *Microsoft.Identity.Client.dll* を使用して、アプリケーションがコンパイラによって適切にビルドされます。
+MSAL を使用してアプリケーションをデバイスにビルドする場合、プロジェクトの **Assets** フォルダーにファイルを追加する必要があります。 そうすることで、**チュートリアル アセット** に含まれている *Microsoft.Identity.Client.dll* を使用して、アプリケーションがコンパイラによって適切にビルドされます。
 
 1. **Assets** に、**link.xml** という名前の新しいファイルを追加します。
 1. そのファイルに次の内容を追加します。

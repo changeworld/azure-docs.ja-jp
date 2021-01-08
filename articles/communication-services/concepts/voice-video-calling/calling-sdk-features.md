@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f47ee36c0e7806afc10f8f0907825378c2d24410
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: c801a276f3a116f00b34d750ca8bfec7e56d377b
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505547"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680745"
 ---
 # <a name="calling-client-library-overview"></a>通話クライアント ライブラリの概要
 
@@ -58,13 +58,13 @@ ms.locfileid: "97505547"
 |                   | グループ通話から PSTN 参加者としてダイヤルアウトする                                                                    | ✔️   | ✔️            | ✔️   
 | 全般           | オーディオ テスト サービスを使用して、マイク、スピーカー、およびカメラをテストする (8:echo123 に通話することで利用可能)                   |  ✔️  | ✔️            | ✔️   
 
-## <a name="calling-client-library-browser-support"></a>通話クライアント ライブラリのブラウザー サポート
+## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>OS とブラウザによる JavaScript 通話クライアントライブラリのサポート
 
 次の表は、現在使用可能な、サポートされているブラウザーとバージョンのセットを示しています。
 
-|                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    |
-| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ |
-| **通話クライアント ライブラリ** | Chrome*、新しい Edge | Chrome *、Safari** | Chrome*  | Chrome* | Chrome* | Safari** |
+|                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | iPad OS|
+| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ | -------|
+| **通話クライアント ライブラリ** | Chrome*、新しい Edge | Chrome *、Safari** | Chrome*  | Chrome* | Chrome* | Safari** | Safari** |
 
 
 \* 前の 2 つのリリースに加えて Chrome の最新バージョンがサポートされていることに注意してください。<br/>

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 786fcd1a0c6d7df2c38a086a830a63f7179d7d40
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e3768ef233c60f1687bc804778c3dabf32666e1d
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352509"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835161"
 ---
 # <a name="quickstart-onboard-azure-defender-for-iot-service-in-iot-hub"></a>クイック スタート:IoT Hub での Azure Defender for IoT サービスのオンボード
 
@@ -33,7 +33,7 @@ ms.locfileid: "96352509"
   - 既定では、Defender for IoT によって、2 種類の情報 (**セキュリティ アラート** と **レコメンデーション**) が Log Analytics ワークスペースに保存されます。
   - 追加の情報の種類として **未加工のイベント** のストレージを追加することもできます。 Log Analytics に **未加工のイベント** を保存すると、追加のストレージ コストがかかることに注意してください。
 - IoT Hub (Standard レベル)
-- すべての[サービスの前提条件](service-prerequisites.md)を満たしていること
+- すべての[システムの前提条件](quickstart-system-prerequisites.md)を満たしていること。
 
 ## <a name="enable-defender-for-iot-on-your-iot-hub"></a>IoT Hub で Defender for IoT を有効にする
 

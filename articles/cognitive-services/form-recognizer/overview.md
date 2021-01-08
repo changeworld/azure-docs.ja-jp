@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 自動データ処理、ドキュメント処理、自動データ入力、フォーム処理
-ms.openlocfilehash: 39243f4428d055ee5d4491c3e87b4b91213f63f1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ed940622f72271ef3e606c5068babcb6366c31b6
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353682"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845520"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
 
@@ -108,23 +108,21 @@ Form Recognizer には、固有のフォームの種類を持つ自動データ�
 
 [サンプル Form Recognizer ツール](https://fott.azurewebsites.net/)を使用するか、クイックスタートに従って、フォームからのデータの抽出を開始します。 テクノロジを学習している場合は、無料のサービスを使用することをお勧めします。 無料のページは 1 か月あたり 500 ページに制限されていることに注意してください。
 
-* [クライアント ライブラリのクイックスタート](./quickstarts/client-library.md) (すべての言語、複数のシナリオ)
+* [クライアント ライブラリまたは REST API のクイックスタート](./quickstarts/client-library.md) (すべての言語、複数のシナリオ)
 * Web UI クイックスタート
   * [ラベルを使用したトレーニング - サンプル ラベル付けツール](quickstarts/label-tool.md)
-* REST クイック スタート
+* REST のサンプル (GitHub)
  * ドキュメントからテキスト、選択マーク、およびテーブル構造を抽出する
-    * [レイアウト データを抽出する - Python](quickstarts/python-layout.md)
+    * [レイアウト データを抽出する - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-layout.md)
   * カスタム モデルをトレーニングしてフォーム データを抽出する
-    * [ラベルを使用しないトレーニング - cURL](quickstarts/curl-train-extract.md)
-    * [ラベルを使用しないトレーニング - Python](quickstarts/python-train-extract.md)
-    * [ラベルを使用したトレーニング - Python](quickstarts/python-labeled-data.md)
+    * [ラベルを使用しないトレーニング - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md)
+    * [ラベルを使用したトレーニング - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
   * 請求書からデータを抽出する
-    * [請求書データを抽出する - Python](quickstarts/python-invoices.md)
+    * [請求書データを抽出する - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-invoices.md)
   * レシートからデータを抽出する
-    * [レシートのデータを抽出する - cURL](quickstarts/curl-receipts.md)
-    * [レシートのデータを抽出する - Python](quickstarts/python-receipts.md)
+    * [レシートのデータを抽出する - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-receipts.md)
   * 名刺からデータを抽出する
-    * [名刺データを抽出する - Python](quickstarts/python-business-cards.md)
+    * [名刺データを抽出する - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-business-cards.md)
 
 ### <a name="review-the-rest-apis"></a>REST API を確認します
 
@@ -162,4 +160,4 @@ Cognitive Services 全般に言えることですが、Form Recognizer サービ
 
 ## <a name="next-steps"></a>次のステップ
 
-選択した言語で Form Recognizer を使用してフォーム処理アプリの作成を開始するには、[クライアント ライブラリ クイックスタート](quickstarts/client-library.md)を完了します。
+選択した言語で Form Recognizer を使用してフォーム処理アプリの作成を開始するには、[クイックスタート](quickstarts/client-library.md)を完了します。

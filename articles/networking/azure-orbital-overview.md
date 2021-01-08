@@ -7,25 +7,25 @@ ms.service: vnf-manager
 ms.topic: overview
 ms.date: 09/22/2020
 ms.author: wamota
-ms.openlocfilehash: fcc44bb1c8017d63ee7926a31177aebaafd832fc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 05f3b5b461e42c29a12f126928f69069b45007d3
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336379"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797272"
 ---
 # <a name="what-is-azure-orbital-preview"></a>Azure Orbital とは (プレビュー)
 
-Azure Orbital は、フル マネージドなクラウドベースのサービスとしての地上局です。これを使用すると、宇宙船や人工衛星コンステレーションとの通信、データのダウンリンクやアップリンク、クラウドでのデータ処理、独自のシナリオでの Azure サービスとサービスの連結、およびユーザーの顧客のための製品を生み出すことが可能になります。 Azure Orbital を使用することで、地上局資産の配置とメンテナンスの責任を軽減し、ミッションと製品データに集中できます。 このシステムは、Azure グローバル インフラストラクチャと低待機時間のグローバル ファイバー ネットワーク上に構築されています。
+Azure Orbital は、フル マネージドなクラウドベースのサービスとしての地上局です。これを使用すると、宇宙船や人工衛星コンステレーションとの通信、データのダウンリンクやアップリンク、クラウドでのデータ処理、独自のシナリオでの Azure サービスとサービスの連結、およびユーザーの顧客のための製品を生み出すことが可能になります。 Azure Orbital を使用することで、地上局資産のデプロイとメンテナンスの責任を軽減し、ミッションと製品データに集中できます。 このシステムは、Azure グローバル インフラストラクチャと低待機時間のグローバル ファイバー ネットワーク上に構築されています。
 
 [:::image type="content" source="./media/azure-orbital-overview/orbital-all-ignite-link.png" alt-text="Ignite の Azure Orbital 発表ビデオ":::](https://aka.ms/orbitalatignite)
 [Azure YouTube チャンネルで、Ignite での Azure Orbital の発表をご覧ください](https://aka.ms/orbitalatignite)
 
-Azure Orbital では、お客様が Orbital の地上局に加えてパートナーの地上局を利用できるようにすることや、統合されたクラウド モデムに加えてパートナーのクラウド モデムを利用できるようにするためのパートナー エコシステムを構築することに注力しています。   Microsoft では Azure Orbital において、ViaSat の Real-time Earth (RTE) や US Electrodynamics Inc. のような他の地上局/テレポート プロバイダーに加えて、KSAT などの業界リーダーとの提携に焦点を当てており、最前線で利用可能な幅広いカバレッジを提供しています。 このパートナーシップは、SES や他の地上局/テレポート プロバイダー、ViaSat の Real-time Earth (RTE)、および US Electrodynamics Inc. のような人工衛星通信プロバイダーまで拡大され、LEO/MEO フリートへのグローバル アクセス、通信コンスタレーションでの Azure の直接アクセス、または LEO/MEO フリートへのグローバル アクセスを実現します。 Microsoft は RF 信号を仮想化し、Kratos や Amergint などのリーダー企業と提携して、このような企業のモデムを Marketplace に発行するため取り組んできました。 当社の目標は、Microsoft の豊富で拡張性があり、柔軟性の高い地上局サービス プラットフォームを使用して、お客様がより多くのことを達成し、システムを構築できるよう支援することです。
+Azure Orbital では、お客様が Orbital の地上局に加えてパートナーの地上局を利用できるようにすることや、統合されたクラウド モデムに加えてパートナーのクラウド モデムを利用できるようにするためのパートナー エコシステムを構築することに注力しています。 Azure Orbital は、ViaSat の Real-time Earth (RTE) や US Electrodynamics Inc. のような他の地上局またはテレポート プロバイダーに加えて、KSAT などの業界リーダーとの提携に焦点を当てており、最前線で利用可能な幅広いカバレッジを提供しています。 このパートナーシップは、SES や他の地上局/テレポート プロバイダー、ViaSat の Real-time Earth (RTE)、および US Electrodynamics Inc. のような人工衛星通信プロバイダーまで拡大され、LEO/MEO フリートへのグローバル アクセス、通信コンスタレーションでの Azure の直接アクセス、または LEO/MEO フリートへのグローバル アクセスを実現します。 Microsoft は RF 信号を仮想化し、Kratos や Amergint などのリーダー企業と提携して、このような企業のモデムを Marketplace に発行するため取り組んできました。 当社の目標は、Microsoft の豊富で拡張性があり、柔軟性の高い地上局サービス プラットフォームを使用して、お客様がより多くのことを達成し、システムを構築できるよう支援することです。
 
 Azure Orbital は、地球観測やグローバル コミュニケーションなど、お客様の複数のユース ケースを実現します。 また、仮想化を使用して既存の地上局のデジタル変革を可能にするプラットフォームも提供します。 ユーザーはすべての Azure サービス、Azure グローバル インフラストラクチャ、Marketplace に直接アクセスし、サービスを通じて世界クラスのパートナー エコシステムにアクセスすることができます。
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-overview.png" alt-text="Ignite の Azure Orbital 発表ビデオ":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-overview.png" alt-text="Azure Orbital の概要":::
 
 **Azure Orbital ユーザー向けの価値提案は次のとおりです。**
 
@@ -49,13 +49,13 @@ Azure Orbital は、地球観測やグローバル コミュニケーション�
 
 ## <a name="earth-observation"></a><a name="earth-observation"></a>地球観測
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-eos-dataflow.png" alt-text="Ignite の Azure Orbital 発表ビデオ" lightbox="./media/azure-orbital-overview/orbital-eos-dataflow-expanded.png":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-eos-dataflow.png" alt-text="Azure Orbital for Earth Observation のデータフロー" lightbox="./media/azure-orbital-overview/orbital-eos-dataflow-expanded.png":::
 
 Azure Orbital を使用すると、維持管理とペイロードのダウンリンクのために、従量課金制で人工衛星との通信をスケジュールすることができます。 スケジュールされたアクセス時間を使用して、人工衛星からデータを取り込み、人工衛星の正常性と状態を監視するか、人工衛星にコマンドを送信します。 受信データはプライベート仮想ネットワークに配信され、Azure で処理または保存することができます。
 
 サービスは完全にデジタル化されているため、Kratos と Amergint のソフトウェア モデムを使用して、データを復旧するための変調/復調およびエンコード/デコード関数を実行できます。 この部分は Marketplace から購入するか、管理を委託するかを選択できます。 さらに、Kubos との統合により、エンドツーエンドのソリューションをフルに活用して、フリート運用とテレメトリ、追跡、および制御 (TT&C) 関数を管理できます。 Azure のリソースとツールボックスを使用して Azure にワークロードを実装し、ペイロード データを操作して最終的なオファリングに組み込みます。
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-eos-schedule.png" alt-text="Ignite の Azure Orbital 発表ビデオ":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-eos-schedule.png" alt-text="Azure Orbital for Earth Observation のスケジュール設定":::
 
 ### <a name="scheduling-contacts"></a><a name="scheduling-contacts"></a>通信のスケジュール設定
 
@@ -71,7 +71,7 @@ Azure Orbital を使用した通信のスケジュール設定は、次の 3 段
 
 ## <a name="global-communication"></a><a name="global-communication"></a>グローバル通信
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-communications-use-flow.png" alt-text="Ignite の Azure Orbital 発表ビデオ":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-communications-use-flow.png" alt-text="Azure Orbital for Global Communications ユーザーフロー":::
 
 グローバル通信機能を顧客に提供する人工衛星プロバイダーは、Azure Orbital を使用して、Azure データセンターまたは Azure ネットワークのエッジに新しい地上局を併置したり、既存の地上局をグローバルな Azure バックボーンと接続したりすることができます。 その後、グローバルな Microsoft ネットワークでトラフィックをルーティングし、インターネット サービスやその他の管理サービスを顧客に提供するために、Azure ネットワークのエッジからインターネットのブレークアウトを活用できます。
 
@@ -85,7 +85,7 @@ Azure Orbital では、独自の地上局を構築するだけでなく、パー
 
 地上局やテレポート プロバイダーは、Azure Orbital と連携して、地上局でデジタル変革を行うことができます。 これにより、お客様はこれらの地上局を使用して、Marketplace を通じてプラットフォームと Orbital のパートナーが提供するすべてのソフトウェア無線処理およびデータ処理機能を活用しながら、人工衛星との通信をスケジュールすることができます。 このサービスは、クラウドのワークロードと密接に統合されており、モデム、リソース管理、およびミッション コントロール サービスなどのマーケットプレイスを介して、サードパーティのソリューションの活気あるエコシステムを提供しています。 またすべてのデータで、Azure の低待機時間と高い信頼性を持つグローバル ファイバー ネットワークを利用することもできます。 これにより、お客様が最大限の敏捷性と信頼性をもって人工衛星と通信するための、最も広いカバレッジと柔軟性を提供することができると信じています。
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-digital-transformations.png" alt-text="Ignite の Azure Orbital 発表ビデオ":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-digital-transformations.png" alt-text="デジタル変革のための Azure Orbital":::
 
 プレビューの詳細について、またはプレビューへの参加の意思表明を行うには、[こちら](https://aka.ms/iaminterested)の連絡先フォームに入力するか、メール ([MSAzureOrbital@microsoft.com](mailto:MSAzureOrbital@microsoft.com)) でお問い合わせください。
 
@@ -93,7 +93,7 @@ Azure Orbital では、独自の地上局を構築するだけでなく、パー
 
 宇宙への革新を進めるにあたり、お客様が Azure Orbital を使用してより多くのことを達成できるよう、エコシステムへパートナーを追加していく予定です。 Azure Orbital では、パートナー主導のアプローチで構築していきます。 Microsoft の目標は、パートナーとお客様の双方にとってより多くの価値を共同で生み出すために、パートナーの活気あるエコシステムを構築することでもあります。 これはまさに、サンゴ礁のようなものです。
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-partners.png" alt-text="Ignite の Azure Orbital 発表ビデオ":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-partners.png" alt-text="Azure Orbital パートナー":::
 
 以下のセクションでは、パートナーのカテゴリ、および既に Orbital エコシステムの一員となった Azure Orbital パートナーの一覧を示します。
 

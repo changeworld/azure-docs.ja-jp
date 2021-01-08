@@ -6,18 +6,21 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: dff98a5c54d2fee350e2b35dc00148c19ea233b8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 15a77835e3e618c17b9839aa5a010cd4d29cebe1
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956502"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653114"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service で TLS/SSL 証明書を追加する
 
 [Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 この記事では、App Service にプライベート証明書またはパブリック証明書を作成、アップロード、またはインポートする方法について説明します。 
 
 証明書が App Service アプリまたは[関数アプリ](../azure-functions/index.yml)に追加されたら、[その証明書を使用してカスタム DNS 名をセキュリティで保護](configure-ssl-bindings.md)したり、[その証明書をアプリケーション コードで使用](configure-ssl-certificate-in-code.md)したりできます。
+
+> [!NOTE]
+> アプリにアップロードされた証明書は、アプリのリソース グループとリージョンの組み合わせ (内部的には "*Web 空間*" と呼ばれます) にバインドされたデプロイ ユニットに格納されます。 こうして、リソース グループとリージョンの組み合わせが同じである他のアプリが証明書にアクセスできるようになります。 
 
 次の表に、App Service で証明書を追加するためのオプションを示します。
 
@@ -116,7 +119,7 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 
 次の表を使用して、証明書を構成できます。 完了したら、 **[作成]** をクリックします。
 
-| 設定 | 説明 |
+| 設定 | [説明] |
 |-|-|
 | 名前 | App Service 証明書のフレンドリ名。 |
 | ネイキッド ドメインのホスト名 | ルート ドメインはここで指定します。 発行された証明書によって、ルート ドメインと `www` サブドメインの "*両方*" が保護されます。 発行された証明書の [共通名] フィールドにはルート ドメインが含まれ、[サブジェクトの別名] フィールドには `www` ドメインが含まれています。 任意のサブドメインのみをセキュリティで保護するには、ここでサブドメインの完全修飾ドメイン名 を指定します (例: `mysubdomain.contoso.com`)。|
@@ -141,7 +144,7 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 
 **[Key Vault の状態]** ページで **[Key Vault リポジトリ]** をクリックして、新しいコンテナーを作成するか、既存のコンテナーを選択します。 新しいコンテナーの作成を選択する場合は、次の表を使用してコンテナーを構成し、[作成] をクリックします。 App Service アプリと同じサブスクリプションおよび同じリソース グループに新しい Key Vault を作成します。
 
-| 設定 | 説明 |
+| 設定 | [説明] |
 |-|-|
 | 名前 | 英数字とダッシュで構成される一意の名前。 |
 | Resource group | 推奨事項として、App Service 証明書と同じリソース グループを選択します。 |

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/11/2020
+ms.date: 12/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 3a53a5b7e60ef214a3db58d9e280e9dee8fec609
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 11aac69816714611c168cd05c2828dd1ae85786e
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355921"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813651"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-clientvpn"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と AWS ClientVPN の統合
 
@@ -89,7 +89,7 @@ AWS ClientVPN に対して Azure AD SSO を構成してテストするには、�
     |
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値を、実際のサインオン URL および応答 URL で更新してください。 これらの値を取得するには、[AWS ClientVPN Client クライアント サポート チーム](https://aws.amazon.com/contact-us/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。  これらの値を、実際のサインオン URL および応答 URL で更新してください。  サインオン URL と応答 URL の値は同じでもかまいません (http://127.0.0.1:35001) 。  詳細については、[AWS Client VPN のドキュメント](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/client-authentication.html#ad)を参照してください。   Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。 構成の問題については、[AWS ClientVPN サポート チーム](https://aws.amazon.com/contact-us/)にお問い合わせください。 
 
 1. Azure Active Directory サービスで、 **[アプリの登録]** に移動し、 **[すべてのアプリケーション]** を選択します。
 

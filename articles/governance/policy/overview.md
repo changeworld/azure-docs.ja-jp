@@ -3,12 +3,12 @@ title: Azure Policy の概要
 description: Azure Policy は Azure のサービスであり、Azure 環境でのポリシー定義の作成、割り当て、管理に使うことができます。
 ms.date: 10/05/2020
 ms.topic: overview
-ms.openlocfilehash: 8a32e32afb544588bb033cc64ede5ecbe6e2bac2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 96fd29b5e3d24bc3e678461a95005e004a8a3a80
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097390"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803954"
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 
@@ -20,7 +20,7 @@ Azure Policy のデータとオブジェクトはすべて、暗号化された�
 
 ## <a name="overview"></a>概要
 
-Azure Policy では、Azure 内のリソースのプロパティをビジネス ルールと比較して、それらのリソースを評価します。 [JSON 形式](./concepts/definition-structure.md)で記述されるこれらのビジネス ルールは、[ポリシー定義](#policy-definition)と呼ばれます。 管理を容易にするために、複数のビジネス ルールをグループ化して、 [ポリシー イニシアチブ](#initiative-definition) ( _policySet_ とも呼ばれます) を作成できます。 ビジネス ルールを作成すると、ポリシーの定義またはイニシアチブは、Azure でサポートされているリソース ([管理グループ](../management-groups/overview.md)、サブスクリプション、[リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)、個々のリソースなど) の任意のスコープに[割り当て](#assignments)られます。 割り当ては、その割り当ての [Resource Manager スコープ](../../azure-resource-manager/management/overview.md#understand-scope)内のすべてのリソースに適用されます。 サブスコープは必要に応じて除外できます。 詳細については、[Azure Policy のスコープ](./concepts/scope.md)に関するページを参照してください。
+Azure Policy では、Azure 内のリソースのプロパティをビジネス ルールと比較して、それらのリソースを評価します。 [JSON 形式](./concepts/definition-structure.md)で記述されるこれらのビジネス ルールは、[ポリシー定義](#policy-definition)と呼ばれます。 管理を容易にするために、複数のビジネス ルールをグループ化して、[ポリシー イニシアチブ](#initiative-definition) (_policySet_ とも呼ばれます) を作成できます。 ビジネス ルールを作成すると、ポリシーの定義またはイニシアチブは、Azure でサポートされているリソース ([管理グループ](../management-groups/overview.md)、サブスクリプション、[リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)、個々のリソースなど) の任意のスコープに[割り当て](#assignments)られます。 割り当ては、その割り当ての [Resource Manager スコープ](../../azure-resource-manager/management/overview.md#understand-scope)内のすべてのリソースに適用されます。 サブスコープは必要に応じて除外できます。 詳細については、[Azure Policy のスコープ](./concepts/scope.md)に関するページを参照してください。
 
 Azure Policy では、リソースが準拠しているかどうかを特定するために評価で使用されるロジックの作成に、[JSON 形式](./concepts/definition-structure.md)を使用します。 定義には、メタデータとポリシー規則が含まれています。 定義される規則では、目的とするシナリオに正確に合わせて関数、パラメーター、論理演算子、条件、プロパティの[別名](./concepts/definition-structure.md#aliases)を使用できます。 ポリシー規則によって、割り当てのスコープ内のどのリソースが評価されるかが決定されます。
 
@@ -45,7 +45,7 @@ Azure Policy では、リソースが準拠しているかどうかを特定す�
 - 変更後にリソースを変更する
 - 準拠している関連リソースをデプロイする
 
-Azure Policy では、[効果](./concepts/effects.md)を適用して、これらの各ビジネス対応を実現できます。 効果は、 [ポリシー定義](./concepts/definition-structure.md)の **ポリシー規則** の部分で設定されます。
+Azure Policy では、[効果](./concepts/effects.md)を適用して、これらの各ビジネス対応を実現できます。 効果は、[ポリシー定義](./concepts/definition-structure.md)の **ポリシー規則** の部分で設定されます。
 
 ### <a name="remediate-non-compliant-resources"></a>準拠していないリソースを修復する
 
@@ -61,7 +61,7 @@ Azure Policy では、[効果](./concepts/effects.md)を適用して、これら
 
 ### <a name="azure-policy-and-azure-rbac"></a>Azure Policy と Azure RBAC
 
-Azure Policy と Azure ロールベースのアクセス制御 (Azure RBAC) には、いくつかの主要な違いがあります。 Azure Policy では、Resource Manager で表されるリソースのプロパティと一部のリソースプロバイダーのプロパティを調査することによって状態を評価します。 Azure Policy によってアクション (" _操作_ " とも呼ばれる) が制限されることはありません。 Azure Policy では、だれが変更を行ったかや、だれが変更を行うアクセス許可を持っているかに関係なく、リソースがお客様のビジネス ルールに準拠した状態になります。
+Azure Policy と Azure ロールベースのアクセス制御 (Azure RBAC) には、いくつかの主要な違いがあります。 Azure Policy では、Resource Manager で表されるリソースのプロパティと一部のリソースプロバイダーのプロパティを調査することによって状態を評価します。 Azure Policy によってアクション ("_操作_" とも呼ばれる) が制限されることはありません。 Azure Policy では、だれが変更を行ったかや、だれが変更を行うアクセス許可を持っているかに関係なく、リソースがお客様のビジネス ルールに準拠した状態になります。
 
 Azure RBAC の焦点は、さまざまなスコープでのユーザー[操作](../../role-based-access-control/resource-provider-operations.md)の管理にあります。 アクションの制御が必要な場合は、Azure RBAC が使用に適したツールになります。 あるユーザーがアクションを実行するためのアクセス権を持っていても、結果としてリソースが準拠していない場合、その作成や更新は Azure Policy によってブロックされます。
 
@@ -74,7 +74,7 @@ Azure Policy は、次の 2 つのリソース プロバイダーにおいて、
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Azure Policy のリソースに対するアクセス許可は、さまざまな組み込みロールによって与えられます。 **リソース ポリシーの共同作成者** ロールには、Azure Policy のほとんどの操作が含まれます。 **所有者** は完全な権限を持っています。 **共同作成者** と **閲覧者** はどちらも、Azure Policy のすべての " _読み取り_ " 操作にアクセスできます。 **共同作成者** はリソースの修復をトリガーできますが、定義や割り当てを " _作成_ " することはできません。 **deployIfNotExists** や **modify** 割り当てのマネージド ID に対して必要なアクセス許可を与えるには、 **ユーザー アクセス管理者** が必要です。
+Azure Policy のリソースに対するアクセス許可は、さまざまな組み込みロールによって与えられます。 **リソース ポリシーの共同作成者** ロールには、Azure Policy のほとんどの操作が含まれます。 **所有者** は完全な権限を持っています。 **共同作成者** と **閲覧者** はどちらも、Azure Policy のすべての "_読み取り_" 操作にアクセスできます。 **共同作成者** はリソースの修復をトリガーできますが、定義や割り当てを "_作成_" することはできません。 **deployIfNotExists** や **modify** 割り当てのマネージド ID に対して必要なアクセス許可を与えるには、**ユーザー アクセス管理者** が必要です。
 
 いずれの組み込みロールにも必要なアクセス許可がない場合は、[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成してください。
 
@@ -124,16 +124,16 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 
 ポリシー パラメーターは、作成する必要があるポリシー定義の数を減らしてポリシーの管理を簡素化するのに役立ちます。 ポリシー定義を作成するときにパラメーターを定義して、ポリシー定義を汎用化できます。 その後、そのポリシー定義を、さまざまなシナリオで再利用できます。 これを行うには、ポリシー定義を割り当てるときに、さまざまな値を渡します。 たとえば、サブスクリプションに対して一連の場所を指定します。
 
-パラメーターは、ポリシー定義を作成するときに定義します。 パラメーターを定義するときは、名前と、必要に応じて値を指定します。 たとえば、" _場所_ " というポリシーのパラメーターを定義できます。 その後、ポリシーを割り当てるときに、 _EastUS_ 、 _WestUS_ など、さまざまな値を指定できます。
+パラメーターは、ポリシー定義を作成するときに定義します。 パラメーターを定義するときは、名前と、必要に応じて値を指定します。 たとえば、"_場所_" というポリシーのパラメーターを定義できます。 その後、ポリシーを割り当てるときに、_EastUS_、_WestUS_ など、さまざまな値を指定できます。
 
 ポリシー パラメーターについて詳しくは、[定義の構造でのパラメーター](./concepts/definition-structure.md#parameters)に関する項目をご覧ください。
 
 ### <a name="initiative-definition"></a>イニシアチブ定義
 
-イニシアチブ定義は、単一の包括的なゴールを達成することを目的として調整されたポリシー定義のコレクションです。 イニシアチブ定義により、ポリシー定義の管理と割り当てが簡素化されます。 簡素化するには、一連のポリシーを 1 つのアイテムとしてグループ化します。 たとえば、Azure Security Center で利用可能なすべてのセキュリティ推奨事項を監視することを目的とする、" **Azure Security Center での監視を有効にする** " というタイトルのイニシアチブを作成できます。
+イニシアチブ定義は、単一の包括的なゴールを達成することを目的として調整されたポリシー定義のコレクションです。 イニシアチブ定義により、ポリシー定義の管理と割り当てが簡素化されます。 簡素化するには、一連のポリシーを 1 つのアイテムとしてグループ化します。 たとえば、Azure Security Center で利用可能なすべてのセキュリティ推奨事項を監視することを目的とする、"**Azure Security Center での監視を有効にする**" というタイトルのイニシアチブを作成できます。
 
 > [!NOTE]
-> Azure CLI や Azure PowerShell などの SDK では、 **PolicySet** という名前のプロパティとパラメーターを使用して、イニシアチブを参照します。
+> Azure CLI や Azure PowerShell などの SDK では、**PolicySet** という名前のプロパティとパラメーターを使用して、イニシアチブを参照します。
 
 このイニシアチブでは、次のようなポリシー定義を作成します。
 
@@ -152,9 +152,9 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 
 このシナリオで **initiativeC** のイニシアチブ パラメーターを定義する場合、3 つのオプションがあります。
 
-- このイニシアチブ内でポリシー定義のパラメーターを使用します。この例では、 _allowedLocations_ と _allowedSingleLocation_ が **initiativeC** のイニシアチブ パラメーターになります。
-- このイニシアチブ定義内でポリシー定義のパラメーターに値を指定します。 この例では、 **policyA** のパラメーター – **allowedLocations** および **policyB** のパラメーター – **allowedSingleLocation** に場所のリストを提供できます。 このイニシアチブを割り当てるときに値を指定することもできます。
-- このイニシアチブを割り当てるときに使うことができる " _値_ " オプションのリストを指定します。 このイニシアチブを割り当てるときは、イニシアチブ内のポリシー定義から継承したパラメーターは、この指定されたリストの値だけを持つことができます。
+- このイニシアチブ内でポリシー定義のパラメーターを使用します。この例では、_allowedLocations_ と _allowedSingleLocation_ が **initiativeC** のイニシアチブ パラメーターになります。
+- このイニシアチブ定義内でポリシー定義のパラメーターに値を指定します。 この例では、**policyA** のパラメーター – **allowedLocations** および **policyB** のパラメーター – **allowedSingleLocation** に場所のリストを提供できます。 このイニシアチブを割り当てるときに値を指定することもできます。
+- このイニシアチブを割り当てるときに使うことができる "_値_" オプションのリストを指定します。 このイニシアチブを割り当てるときは、イニシアチブ内のポリシー定義から継承したパラメーターは、この指定されたリストの値だけを持つことができます。
 
 イニシアチブ定義で値のオプションを作成すると、イニシアチブの割り当てで別の値を入力することは、リストの一部ではないためできません。
 
@@ -162,7 +162,7 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 
 ### <a name="assignments"></a>代入
 
-割り当ては、特定のスコープ内で実行するように割り当てられたポリシーの定義またはイニシアチブです。 このスコープの範囲は、[管理グループ](../management-groups/overview.md)から個々のリソースまでです。 " _スコープ_ " という用語は、定義が割り当てられる、すべてのリソース、リソース グループ、サブスクリプション、または管理グループのことを指します。 割り当ては、すべての子リソースによって継承されます。 この設計は、リソース グループに適用された定義が、そのリソース グループ内のリソースにも適用されることを意味します。 ただし、サブスコープを割り当てから除外できます。
+割り当ては、特定のスコープ内で実行するように割り当てられたポリシーの定義またはイニシアチブです。 このスコープの範囲は、[管理グループ](../management-groups/overview.md)から個々のリソースまでです。 "_スコープ_" という用語は、定義が割り当てられる、すべてのリソース、リソース グループ、サブスクリプション、または管理グループのことを指します。 割り当ては、すべての子リソースによって継承されます。 この設計は、リソース グループに適用された定義が、そのリソース グループ内のリソースにも適用されることを意味します。 ただし、サブスコープを割り当てから除外できます。
 
 たとえば、サブスクリプション スコープで、ネットワーク リソースの作成を禁止する定義を割り当てることができます。 ネットワーク インフラストラクチャを対象としたリソース グループを、そのサブスクリプション内で除外できます。 その後、このネットワーク リソース グループへのアクセスは、信頼できるユーザーに許可し、そのユーザーがネットワーク リソースを作成できるようにします。
 

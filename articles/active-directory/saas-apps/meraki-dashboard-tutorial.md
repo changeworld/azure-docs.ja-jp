@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/07/2020
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 0d5b6b7b3cf74ab740dbaeb8d86ab8bbb98e8531
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 0c43e085725ceb5db718c9b4c9c9d83787964d63
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357109"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813532"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Meraki Dashboard の統合
 
@@ -132,7 +132,7 @@ Meraki Dashboard に対して Azure AD SSO を構成してテストするには�
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 
     ![ユーザー ロール](./media/meraki-dashboard-tutorial/user-role.png)
 
@@ -143,7 +143,15 @@ Meraki Dashboard に対して Azure AD SSO を構成してテストするには�
 
 ## <a name="configure-meraki-dashboard-sso"></a>Meraki Dashboard SSO の構成
 
-1. 別の Web ブラウザー ウィンドウで、管理者として Meraki Dashboard にサインインします。
+1. Meraki Dashboard 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後、 **[Meraki Dashboard のセットアップ]** をクリックすると、Meraki Dashboard アプリケーションに移動します。 そこから、管理者の資格情報を入力して Meraki Dashboard にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 7 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+3. Meraki Dashboard を手動でセットアップする場合は、別の Web ブラウザー ウィンドウで、Meraki Dashboard 企業サイトに管理者としてサインインします。
 
 1. **[Organization]\(組織\)**  ->  **[Settings]\(設定\)** に移動します。
 

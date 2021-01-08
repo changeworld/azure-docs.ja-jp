@@ -5,16 +5,16 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5eec15871279f3ca38c726fcd1ef1b21d0d38699
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ba314963058389e171601407ff00411049eecd45
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88750188"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845425"
 ---
 # <a name="durable-orchestrations"></a>持続的オーケストレーション
 
-Durable Functions は [Azure Functions](../functions-overview.md) の拡張機能です。 *オーケストレーター関数*を使用すると、関数アプリ内の他の持続的関数の実行を調整できます。 オーケストレーター関数には次のような特性があります。
+Durable Functions は [Azure Functions](../functions-overview.md) の拡張機能です。 *オーケストレーター関数* を使用すると、関数アプリ内の他の持続的関数の実行を調整できます。 オーケストレーター関数には次のような特性があります。
 
 * オーケストレーター関数では、手続き型コードを使用して関数のワークフローが定義されています。 宣言型スキーマまたはデザイナーは必要ありません。
 * オーケストレーター関数では、他の持続的関数を同期および非同期のどちらでも呼び出すことができます。 呼び出された関数からの出力を、ローカル変数に確実に保存できます。
@@ -179,7 +179,7 @@ Durable Task Framework では、`await` (C#) または `yield` (JavaScript/Pytho
 
 ### <a name="durable-timers"></a>持続的タイマー
 
-オーケストレーションでは、*持続的タイマー*をスケジュールして、遅延を実装したり、非同期アクションに対するタイムアウト処理を設定したりすることができます。 オーケストレーター関数の持続的タイマーは、`Thread.Sleep` および `Task.Delay` (C#)、または `setTimeout()` および `setInterval()` (JavaScript)、または `time.sleep()` (Python) の代わりに使用します。
+オーケストレーションでは、*持続的タイマー* をスケジュールして、遅延を実装したり、非同期アクションに対するタイムアウト処理を設定したりすることができます。 オーケストレーター関数の持続的タイマーは、`Thread.Sleep` および `Task.Delay` (C#)、または `setTimeout()` および `setInterval()` (JavaScript)、または `time.sleep()` (Python) の代わりに使用します。
 
 詳細と例については、[持続的タイマー](durable-functions-timers.md)に関する記事をご覧ください。
 
@@ -293,7 +293,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-.NET では、[ValueTuples](/dotnet/csharp/tuples) オブジェクトを使用することもできます。 次の例では、[C# 7](/dotnet/csharp/whats-new/csharp-7#tuples) に追加された [ValueTuples](/dotnet/csharp/tuples) の新機能を使用しています。
+.NET では、[ValueTuple](/dotnet/csharp/tuples) オブジェクトを使用することもできます。 次の例では、[C# 7](/dotnet/csharp/whats-new/csharp-7#tuples) で追加された [ValueTuple](/dotnet/csharp/tuples) の新機能を使用しています。
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]

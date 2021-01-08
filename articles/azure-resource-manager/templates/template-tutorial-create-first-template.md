@@ -2,16 +2,16 @@
 title: チュートリアル - テンプレートの作成とデプロイ
 description: 初めての Azure Resource Manager テンプレート (ARM テンプレート) を作成します。 このチュートリアルでは、テンプレート ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
 author: mumian
-ms.date: 09/28/2020
+ms.date: 12/17/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 191eacbc9cc66ccfb9b378cb5e8a90b4e0fb20e6
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 001a20c38a82d053ae22a2614a32f0be9d8aabce
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107025"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656990"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>チュートリアル:初めての ARM テンプレートを作成してデプロイする
 
@@ -19,7 +19,7 @@ ms.locfileid: "97107025"
 
 これは、シリーズの最初のチュートリアルです。 シリーズを進めながら、ARM テンプレートの核となる部分がすべてわかるまで、開始時のテンプレートを段階的に変更していきます。 それらの要素は、はるかに複雑なテンプレートの構成要素となります。 シリーズの最後には、独自のテンプレートを作成したり、テンプレートを使ってデプロイを自動化したりする自信が持てるようになればさいわいです。
 
-テンプレートを使用する利点と、テンプレートを使用してデプロイを自動化すべき理由については、[ARM テンプレートの概要](overview.md)に関する記事をご覧ください。
+テンプレートを使用する利点と、テンプレートを使用してデプロイを自動化すべき理由については、[ARM テンプレートの概要](overview.md)に関する記事をご覧ください。 Microsoft Learn のガイド付きモジュール セットを使用して ARM テンプレートを学習するには、「[ARM テンプレートを使用して Azure にリソースをデプロイして管理する](/learn/paths/deploy-manage-resource-manager-templates/)」を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 

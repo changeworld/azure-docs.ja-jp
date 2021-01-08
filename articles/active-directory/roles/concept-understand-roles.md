@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 968ca6fa293e7bcc01bae6f48164c48c19b8267b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: db3eaef240e1f76e4c61a454e104336806666a7c
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501677"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803903"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>Azure Active Directory のロールについて
 
@@ -44,7 +44,7 @@ Teams、SharePoint、マネージド デスクトップなど、他のサービ�
 
 ## <a name="why-some-azure-ad-roles-are-for-other-services"></a>その他のサービスで一部の Azure AD ロールが使用される理由
 
-Microsoft 365 には、これまで個別に開発されてきたロールベースのアクセス制御システムが多数あり、それぞれに独自のサービス ポータルが用意されています。 Microsoft 365 全体での ID 管理を Azure AD ポータルから便利に行えるように、Microsoft はサービス固有の組み込みロールをいくつか追加しました。これらでは、それぞれの Microsoft 365 サービスへの管理アクセス権が付与されます。 この追加の一例として、Azure AD の Exchange 管理者ロールがあります。 このロールは Exchange のロールベースのアクセス制御システムにおける[組織管理用ロール グループ](/exchange/organization-management-exchange-2013-help)と同等であり、Exchange のあらゆる側面を管理できます。 同様に、Intune 管理者ロール、Teams 管理者、SharePoint 管理者なども追加されました。 サーバー固有のロールは、次のセクションに出てくる Azure AD 組み込みロールのカテゴリの 1 つです。
+Microsoft 365 には、これまで個別に開発されてきたロールベースのアクセス制御システムが多数あり、それぞれに独自のサービス ポータルが用意されています。 Microsoft 365 全体での ID 管理を Azure AD ポータルから便利に行えるように、Microsoft はサービス固有の組み込みロールをいくつか追加しました。これらでは、それぞれの Microsoft 365 サービスへの管理アクセス権が付与されます。 この追加の一例として、Azure AD の Exchange 管理者ロールがあります。 このロールは Exchange のロールベースのアクセス制御システムにおける[組織管理用ロール グループ](/exchange/organization-management-exchange-2013-help)と同等であり、Exchange のあらゆる側面を管理できます。 同様に、Intune 管理者ロール、Teams 管理者、SharePoint 管理者なども追加されました。 サービス固有のロールは、次のセクションに出てくる Azure AD 組み込みロールのカテゴリの 1 つです。
 
 ## <a name="categories-of-azure-ad-roles"></a>Azure AD ロールのカテゴリ
 

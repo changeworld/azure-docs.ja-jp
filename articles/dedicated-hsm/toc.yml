@@ -14,6 +14,8 @@
   items:
     - name: Azure PowerShell を使用して Azure Dedicated HSM を作成する
       href: quickstart-create-hsm-powershell.md
+    - name: Azure CLI を使用して Azure Dedicated HSM を作成する
+      href: quickstart-hsm-azure-cli.md
 - name: 概念
   items:
     - name: 高可用性

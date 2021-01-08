@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: bbebe3b3f63e6ccbb5f351abfc9ba3b846ca6fbe
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: d53a619dc6ca5fb0f43f6097664f50bf22943928
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337663"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678884"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>チュートリアル:Azure Data Box に NFS 経由でデータをコピーする
 
@@ -98,11 +98,11 @@ Data Box の共有に接続したら、次にデータをコピーします。 �
 > [!IMPORTANT]
 > Data Box によって Azure Storage にデータが転送されたことを確認できるまでは、ソース データのコピーを保持するようにしてください。
 
-Linux ホスト コンピューターを使用している場合は、Robocopy のようなコピー ユーティリティを使用します。 Linux で使用できる代替手段は、[rsync](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[Unison](https://www.cis.upenn.edu/~bcpierce/unison/)、[Ultracopier](https://ultracopier.first-world.info/) などです。  
+Linux ホスト コンピューターを使用している場合は、Robocopy のようなコピー ユーティリティを使用します。 Linux で使用できる代替手段は、[`rsync`](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[Unison](https://www.cis.upenn.edu/~bcpierce/unison/)、[Ultracopier](https://ultracopier.first-world.info/) などです。  
 
 `cp` コマンドは、ディレクトリをコピーするのに最適なオプションの 1 つです。 使用方法について詳しくは、[cp の man ページ](http://man7.org/linux/man-pages/man1/cp.1.html)をご覧ください。
 
-マルチスレッドのコピーに rsync オプションを使用する場合は、以下のガイドラインに従ってください。
+マルチスレッドのコピーに `rsync` オプションを使用する場合は、以下のガイドラインに従ってください。
 
 * Linux クライアントで使用されているファイル システムに応じて、**CIFS Utils** または **NFS Utils** パッケージをインストールします。
 
@@ -110,7 +110,7 @@ Linux ホスト コンピューターを使用している場合は、Robocopy �
 
     `sudo apt-get install nfs-utils`
 
-* **Rsync** および **Parallel** をインストールします (Linux ディストリビューションのバージョンによって異なります)。
+* `rsync` および **Parallel** をインストールします (Linux ディストリビューションのバージョンによって異なります)。
 
     `sudo apt-get install rsync`
    

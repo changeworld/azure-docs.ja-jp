@@ -1,18 +1,18 @@
 ---
 title: Azure SQL Database の登録とスキャン
 description: このチュートリアルでは、Azure SQL Database をスキャンする方法について説明します
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 1fbeedd8643a777b29ebe4993eed7b664240621c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 15708e35fa27bb4a1f72368df6f49ff747eb799b
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920277"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739792"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL Database の登録とスキャン
 
@@ -28,7 +28,7 @@ Azure SQL Database データ ソースでは、以下の機能がサポートさ
 
 ### <a name="known-limitations"></a>既知の制限事項
 
-Azure Purview では、Azure SQL Database の[ビュー](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15)のスキャンはサポートされていません。 
+Azure Purview では、Azure SQL Database の[ビュー](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15&preserve-view=true)のスキャンはサポートされていません。 
 
 ## <a name="prerequisites"></a>必須コンポーネント
 
@@ -57,7 +57,7 @@ Azure SQL Database のログインが使用可能になっていない場合は�
 1. **[+ Generate/Import]\(+ 生成/インポート\)** を選択し、**名前** と **値** を Azure SQL Database の "*パスワード*" として入力します
 1. **[作成]** を選択して完了します
 1. 自分のキー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります
-1. 最後に、**ユーザー名** と **パスワード** を使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
+1. 最後に、**ユーザー名** と **パスワード** を使用して [新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
 
 #### <a name="service-principal-and-managed-identity"></a>サービス プリンシパルとマネージド ID
 
@@ -89,7 +89,7 @@ Purview でサービス プリンシパルまたは Purview の **マネージ�
 サービス プリンシパルまたはマネージド ID には、データベース、スキーマ、およびテーブルのメタデータを取得するためのアクセス許可が必要です。 また、分類用のサンプリングを行うために、テーブルに対してクエリを実行できる必要もあります。
 
 - [Azure SQL での Azure AD 認証を構成して管理する](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- マネージド ID を使用している場合、Purview アカウントには独自のマネージド ID があります。これは基本的に、作成時の Purview の名前です。 「[Azure SQL Database にサービス プリンシパル ユーザーを作成する](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database)」のチュートリアルに従い、Purview の正確なマネージド ID または独自のサービス プリンシパルを使用して、Azure SQL Database に Azure AD ユーザーを作成する必要があります。 ID に `db_owner` (**推奨**) アクセス許可を割り当てる必要があります。 ユーザーを作成してアクセス許可を付与する SQL 構文の例:
+- マネージド ID を使用している場合、Purview アカウントには独自のマネージド ID があります。これは基本的に、作成時の Purview の名前です。 「[Azure SQL Database にサービス プリンシパル ユーザーを作成する](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database)」のチュートリアルに従い、Purview の正確なマネージド ID または独自のサービス プリンシパルを使用して、Azure SQL Database に Azure AD ユーザーを作成する必要があります。 ID に適切なアクセス許可 ( `db_owner` または `db_datareader`) を割り当てる必要があります。 ユーザーを作成してアクセス許可を付与する SQL 構文の例:
 
     ```sql
     CREATE USER [Username] FROM EXTERNAL PROVIDER
@@ -100,7 +100,7 @@ Purview でサービス プリンシパルまたは Purview の **マネージ�
     ```
 
     > [!Note]
-    > `Username` は、独自のサービス プリンシパルか、Purview のマネージド ID です
+    > `Username` は、独自のサービス プリンシパルか、Purview のマネージド ID です。 [固定データベース ロールとその機能](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles)を確認してください。
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>キー コンテナーおよび Purview の資格情報にサービス プリンシパルを追加する
 
@@ -112,10 +112,10 @@ Purview でサービス プリンシパルまたは Purview の **マネージ�
 1. [Azure portal](https://portal.azure.com) で自分のサービス プリンシパルに移動します
 1. **[概要]** から **[アプリケーション (クライアント) ID]** 、 **[証明書とシークレット]** から **[クライアント シークレット]** の値をコピーします。
 1. お使いのキー コンテナーに移動する
-1. **[設定]、[シークレット]** の順に選択します
-1. **[+ Generate/Import]\(+ 生成/インポート\)** を選択して、サービス プリンシパルの **[クライアント シークレット]** として任意の **[名前]** と **[値]** を入力します
-1. **[作成]** を選択して完了します
-1. 自分のキー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります
+1. **[設定] > [シークレット]** の順に選択します。
+1. **[生成/インポート]** を選択し、サービス プリンシパルの **クライアント シークレット** として任意の **名前** と **値** を入力します
+1. **[作成]** を選択して完了します。
+1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
 1. 最後に、サービス プリンシパルを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
 
 ### <a name="firewall-settings"></a>ファイアウォールの設定
@@ -138,7 +138,7 @@ Purview でサービス プリンシパルまたは Purview の **マネージ�
 
 1. 自分の Purview アカウントに移動します
 
-1. 左側のナビゲーションで **[ソース]** を選択します
+1. 左側のナビゲーションで **[ソース]** を選択します。
 
 1. **[登録]** を選択します
 

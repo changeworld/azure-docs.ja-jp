@@ -12,20 +12,27 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 12/30/2020
 ms.author: memildin
-ms.openlocfilehash: bd8c5c31579ac22cd6c77dffd31103680e393f69
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d3ed064547b1202aa562fffdfde85a28cbe8514e
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187172"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809549"
 ---
-# <a name="quickstart-setting-up-azure-security-center"></a>クイック スタート:Azure Security Center を設定する
+# <a name="quickstart-set-up-azure-security-center"></a>クイックスタート: Azure Security Center を設定する
 
 Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と脅威保護を実現します。 無料の機能で提供されるのは Azure リソースのみの制限付きセキュリティですが、Azure Defender ではこれらの機能がオンプレミスと他のクラウドに拡張されます。 Azure Defender は、セキュリティの脆弱性の検出と修正、悪意のあるアクティビティをブロックするためのアクセス制御とアプリケーション制御の適用、分析とインテリジェンスを使用した脅威の検出、攻撃を受けたときのすばやい対応を支援します。 Azure Defender は無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
-この記事では、セキュリティを強化するために Azure Defender にアップグレードし、ご使用のマシンに Log Analytics エージェントをインストールしてセキュリティの脆弱性と脅威を監視します。
+このクイック スタートでは、セキュリティを強化するための Azure Defender を有効にし、セキュリティの脆弱性と脅威を監視するための Log Analytics エージェントをご使用のマシンにインストールする方法について説明します。
+
+次の手順を実行します。
+
+> [!div class="checklist"]
+> * お使いの Azure サブスクリプションで Security Center を有効にする
+> * お使いの Azure サブスクリプションで Azure Defender を有効にする
+> * 自動データ収集を有効にする
 
 ## <a name="prerequisites"></a>前提条件
 セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。

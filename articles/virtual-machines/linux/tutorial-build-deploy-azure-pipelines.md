@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 6bc6776df889c5c8ccc6acfe5764549ccf7354a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d26da693d83fd680c644849d581ea35ca7b49af
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320202"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739707"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>チュートリアル:Azure DevOps Services と Azure Pipelines を使用して Azure の Linux 仮想マシンにアプリをデプロイする
 
@@ -104,7 +104,7 @@ Nginx を含む Linux VM がまだない場合は、[こちらの例](./quick-cr
 1.  Azure DevOps 組織にサインインし、プロジェクトに移動します。
 2.  プロジェクト内で、 **[パイプライン]** ページに移動します。 次に **[環境]** を選択し、 **[環境の作成]** をクリックします。 環境の **[名前]** (必須) と、 **[説明]** を指定します。
 3.  環境に追加する **[リソース]** として **[仮想マシン]** を選択し、 **[次へ]** をクリックします。
-4.  オペレーティング システム (Windows/Linux) を選択し、**PS 登録スクリプトをコピー**します。 
+4.  オペレーティング システム (Windows/Linux) を選択し、**PS 登録スクリプトをコピー** します。 
 5.  次に、この環境に登録する各ターゲット VM で、管理者の PowerShell コマンド プロンプトから、コピーしたスクリプトを実行します。
     > [!NOTE]
     > - ログインしているユーザーの個人用アクセス トークンが、スクリプトに事前に挿入されています。このトークンは、その日に有効期限が切れ、コピーしたスクリプトを使用できなくなります。
@@ -118,7 +118,7 @@ Nginx を含む Linux VM がまだない場合は、[こちらの例](./quick-cr
 
     ![VMresource_view](media/tutorial-deploy-vms-azure-pipelines/vm-resourceview.png)
 
-9. 対話型の PS 登録スクリプトの一部として、VM にタグを追加できます。または、リソース ビューの各 VM リソースの最後にある 3 つのドットをクリックして、リソース ビューからタグを追加または削除することもできます。
+9. 対話型の PowerShell 登録スクリプトの一部として、VM にタグを追加できます。または、リソース ビューの各 VM リソースの最後にある 3 つのドットをクリックして、リソース ビューからタグを追加または削除することもできます。
 
    割り当てたタグを使用すると、環境がデプロイ ジョブで使用されるときに、特定の仮想マシンにデプロイを制限できます。 各タグは 256 文字以下に制限されていますが、使用できるタグの数に制限はありません。
 
@@ -202,7 +202,7 @@ jobs:
 
 - パイプラインを調べて、何が行われているかを確認します。 すべての既定の入力が自分のコードに適していることを確認します。
 
-- **[保存して実行]** を選択し、 **[master ブランチに直接コミット]** を選択した後、 **[保存して実行]** を再度選択します。
+- **[保存および実行]** を選択し、 **[Commit directly to the main branch]\(メイン ブランチに直接コミットする\)** を選択した後、 **[保存および実行]** を再度選択します。
 
 - 新しい実行が開始されます。 実行が終了するまで待ちます。
 
@@ -221,7 +221,7 @@ jobs:
        resourceType: VirtualMachine
        tags: web
    ```
-2. 環境内の各仮想マシンに対して定義した**タグ**を指定することにより、デプロイを受け取る特定の仮想マシンのセットを環境から選択できます。
+2. 環境内の各仮想マシンに対して定義した **タグ** を指定することにより、デプロイを受け取る特定の仮想マシンのセットを環境から選択できます。
 デプロイ ジョブの完全な YAML スキーマについては、[こちら](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job)をご覧ください。
 
 3. デプロイ方法として、`runOnce` または `rolling` を指定できます。 

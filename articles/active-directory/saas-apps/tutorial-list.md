@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: 29f33f05c2883fe0696ea7769ac655e91aeb0b42
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 2e4746b8beb722f74681beb9afe8c5dd1115539c
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399704"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831599"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>SaaS アプリケーションと Azure Active Directory の統合に関するチュートリアル
 
@@ -45,7 +45,7 @@ Azure AD に事前に統合されているすべての SaaS アプリの一覧�
 | :--- | :--- | :--- |
 | ![ロゴ - アマゾン ウェブ サービス (AWS) コンソール](./media/tutorial-list/active-directory-saas-amazon-web-service-tutorial.png)| [アマゾン ウェブ サービス (AWS) コンソール](amazon-web-service-tutorial.md)| [アマゾン ウェブ サービス (AWS) コンソール - ロール プロビジョニング](amazon-web-service-tutorial.md#configure-azure-ad-sso) |
 | ![ロゴ - Alibaba Cloud Service (ロールベースの SSO)](./media/tutorial-list/active-directory-saas-alibaba-tutorial.png)| [Alibaba Cloud Service (ロールベースの SSO)](alibaba-cloud-service-role-based-sso-tutorial.md)| |
-| ![ロゴ - Google Cloud Platform](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Google Cloud Platform](google-apps-tutorial.md)| [Google Cloud Platform - ユーザー プロビジョニング](google-apps-provisioning-tutorial.md) |
+| ![ロゴ - Google Cloud Platform](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Google Cloud Platform](google-apps-tutorial.md)| [Google Cloud Platform - ユーザー プロビジョニング](g-suite-provisioning-tutorial.md) |
 | ![ロゴ - Salesforce](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)| [Salesforce - User Provisioning](salesforce-provisioning-tutorial.md) |
 | ![ロゴ - SAP Cloud ID プラットフォーム](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [SAP Cloud ID プラットフォーム](saphana-tutorial.md)|[SAP Cloud ID プラットフォーム - プロビジョニング](./sap-cloud-platform-identity-authentication-provisioning-tutorial.md) |
 
@@ -63,8 +63,8 @@ Azure AD に事前に統合されているすべての SaaS アプリの一覧�
 | ![ロゴ - AskYourTeam](./media/tutorial-list/active-directory-saas-askyourteam-tutorial.png)| [AskYourTeam](askyourteam-tutorial.md)|
 | ![ロゴ - Atlassian Cloud](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)|
 | ![ロゴ - Box](./media/tutorial-list/active-directory-saas-box-tutorial.png)| [ボックス](box-tutorial.md)|
-| ![ロゴ - Carbonite Endpoint Backup](./media/tutorial-list/active-directory-saas-carbonite-endpoint-backup-tutorial.png)| [Carbonite Endpoint Backup](carbonite-endpoint-backup-tutorial.md)|
 | ![ロゴ - CakeHR](./media/tutorial-list/active-directory-saas-cakehr-tutorial.png)| [CakeHR](cakehr-tutorial.md)|
+| ![ロゴ - Carbonite Endpoint Backup](./media/tutorial-list/active-directory-saas-carbonite-endpoint-backup-tutorial.png)| [Carbonite Endpoint Backup](carbonite-endpoint-backup-tutorial.md)|
 | ![ロゴ - Cisco WebEx](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-spark-tutorial.md)|
 | ![ロゴ - Citrix ShareFile](./media/tutorial-list/active-directory-saas-sharefile-tutorial.png)| [Citrix ShareFile](sharefile-tutorial.md)|
 | ![ロゴ - Concur Travel and Expense](./media/tutorial-list/active-directory-saas-concur-travel-and-expense-tutorial.png)| [Concur Travel and Expense](concur-travel-and-expense-tutorial.md)|
@@ -113,9 +113,11 @@ Azure AD に事前に統合されているすべての SaaS アプリの一覧�
 | ![ロゴ - Slack](./media/tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](slack-tutorial.md)|
 | ![ロゴ - SmartDraw](./media/tutorial-list/active-directory-saas-smartdraw-tutorial.png)| [SmartDraw](smartdraw-tutorial.md)|
 | ![ロゴ - Soloinsight-CloudGate SSO](./media/tutorial-list/active-directory-saas-soloinsight-cloudgate-sso-tutorial.png)| [Soloinsight-CloudGate SSO](soloinsight-cloudgate-sso-tutorial.md)|
+| ![ロゴ - StatusPage](./media/tutorial-list/active-directory-saas-statuspage-tutorial.png)| [StatusPage](statuspage-tutorial.md)|
 | ![ロゴ - Tableau Online](./media/tutorial-list/active-directory-saas-tableau-online-tutorial.png)| [Tableau Online](tableauonline-tutorial.md)|
 | ![ロゴ - TargetProcess](./media/tutorial-list/active-directory-saas-target-process-tutorial.png)| [TargetProcess](target-process-tutorial.md)|
 | ![ロゴ - Teamphoria](./media/tutorial-list/active-directory-saas-teamphoria-tutorial.png)| [Teamphoria](teamphoria-tutorial.md)|
+| ![ロゴ - Terraform Cloud](./media/tutorial-list/active-directory-saas-terraform-cloud-tutorial.png)| [Terraform Cloud](terraform-cloud-tutorial.md)|
 | ![ロゴ - TextMagic](./media/tutorial-list/active-directory-saas-textmagic-tutorial.png)| [TextMagic](textmagic-tutorial.md)|
 | ![ロゴ - Upshotly](./media/tutorial-list/active-directory-saas-upshotly-tutorial.png)| [Upshotly](upshotly-tutorial.md)|
 | ![ロゴ - Velpic SAML](./media/tutorial-list/active-directory-saas-velpicsaml-tutorial.png)| [Velpic SAML](velpicsaml-tutorial.md)|
@@ -129,6 +131,7 @@ Azure AD に事前に統合されているすべての SaaS アプリの一覧�
 | ![ロゴ - XaitPorter](./media/tutorial-list/active-directory-saas-xaitporter-tutorial.png)| [XaitPorter](xaitporter-tutorial.md)|
 | ![ロゴ - Yodeck](./media/tutorial-list/active-directory-saas-yodeck-tutorial.png)| [Yodeck](yodeck-tutorial.md)|  
 | ![ロゴ - Zendesk](./media/tutorial-list/active-directory-saas-zendesk-tutorial.png)| [Zendesk](zendesk-tutorial.md)|  
+| ![ロゴ - Zoom](./media/tutorial-list/active-directory-saas-zoom-tutorial.png)| [[ズーム]](zoom-tutorial.md)|
 | ![ロゴ - Zscaler](./media/tutorial-list/active-directory-saas-zscaler-tutorial.png)| [Zscaler](zscaler-tutorial.md)|
 | ![ロゴ - Zscaler Beta](./media/tutorial-list/active-directory-saas-zscaler-beta-tutorial.png)| [Zscaler Beta](zscaler-beta-tutorial.md)|
 | ![ロゴ - Zscaler One](./media/tutorial-list/active-directory-saas-zscaler-one-tutorial.png)| [Zscaler One](zscaler-one-tutorial.md)|

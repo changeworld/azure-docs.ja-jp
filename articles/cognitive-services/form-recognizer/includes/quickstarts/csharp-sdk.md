@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: d7577668d87ecaf2d769136d64990f95fc212fe6
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4b44a8375bc13709959e2401f9d772fdeab00f52
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356530"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808608"
 ---
 > [!IMPORTANT]
 > この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。
@@ -58,17 +58,24 @@ Build succeeded.
 
 次のコマンドを使用して、アプリケーション ディレクトリ内に .NET 用 Form Recognizer クライアント ライブラリをインストールします。
 
-#### <a name="version-30"></a>[バージョン 3.0](#tab/ga)
+#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 ```
 
-#### <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/preview)
+> [!NOTE]
+> Form Recognizer 3.0.0 SDK は、API バージョン 2.0 を反映しています
+
+#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 ```
+
+> [!NOTE]
+> Form Recognizer 3.1.0 SDK は、API バージョン 2.1 プレビューを反映しています
+
 ---
 
 > [!TIP]
@@ -89,9 +96,9 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 
 アプリケーションの **Main** メソッドで、このクイックスタートで使用する非同期タスクへの呼び出しを追加します。 これらは後で実装します。
 
-#### <a name="version-30"></a>[バージョン 3.0](#tab/ga)
+#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
-#### <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/preview)
+#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_main)]
 
 ---
@@ -127,7 +134,7 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 これらのコード スニペットでは、.NET 用 Form Recognizer クライアント ライブラリを使用して次のタスクを実行する方法を示します。
 
-#### <a name="version-30"></a>[バージョン 3.0](#tab/ga)
+#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
 
 * [クライアントを認証する](#authenticate-the-client)
 * [フォーム コンテンツを認識する](#recognize-form-content)
@@ -136,7 +143,7 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
 * [カスタム モデルを管理する](#manage-your-custom-models)
 
-#### <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/preview)
+#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
 
 * [クライアントを認証する](#authenticate-the-client)
 * [フォーム コンテンツを認識する](#recognize-form-content)
@@ -168,13 +175,15 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 また、トレーニング データとテスト データの URL への参照を追加する必要もあります。 これらを **Program** クラスのルートに追加します。
 
-* カスタム モデルのトレーニング データの SAS URL を取得するには、Microsoft Azure Storage Explorer を開き、ご利用のコンテナーを右クリックし、 **[Shared Access Signature の取得]** を選択します。 アクセス許可の **[読み取り]** と **[表示]** がオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
-* 次に、上記の手順を使用して、Blob Storage 内の個々のドキュメントの SAS URL を取得します。
+* [!INCLUDE [get SAS URL](../sas-instructions.md)]
+
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL の取得":::
+* 次に、上記の手順を繰り返して、Blob Storage コンテナー内の個々のドキュメントの SAS URL を取得します。 同様に、一時的な場所にこれを保存します。
 * 最後に、以下に含まれているサンプル画像の URL を保存します ([GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) でも入手できます)。 
 
-#### <a name="version-30"></a>[バージョン 3.0](#tab/ga)
+#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
-#### <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/preview)
+#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_urls)]
 
 ---
@@ -289,11 +298,15 @@ Item:
 Total: '1203.39', with confidence '0.774'
 ```
 
-#### <a name="version-30"></a>[バージョン 3.0](#tab/ga)
-
-#### <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/preview)
-
 ## <a name="recognize-business-cards"></a>名刺を認識する
+
+#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> この機能は、選択した API バージョンでは使用できません。
+
+#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
+
 
 このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを認識して抽出する方法を示します。
 
@@ -308,7 +321,16 @@ URL から名刺を認識するには、`StartRecognizeBusinessCardsFromUriAsync
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
 
+---
+
 ## <a name="recognize-invoices"></a>請求書を認識する
+
+#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> この機能は、選択した API バージョンでは使用できません。
+
+#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
 
 このセクションでは、事前トレーニング済みのモデルを使用して、売上請求書から共通フィールドを認識して抽出する方法を示します。
 

@@ -3,15 +3,15 @@ title: Durable Functions の概要 - Azure
 description: Azure Functions の Durable Functions 拡張機能の概要です。
 author: cgillum
 ms.topic: overview
-ms.date: 03/12/2020
+ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 28c494bf2867ec5d2d3ee99ef7ee45f8181cfd90
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 3725970c982c2d060685bf0b99d12a8fc998f20a
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669250"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763576"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions とは
 
@@ -23,9 +23,11 @@ Durable Functions では、現在次の言語をサポートしています。
 
 * **C#**: [プリコンパイル済みクラス ライブラリ](../functions-dotnet-class-library.md)と [C# スクリプト](../functions-reference-csharp.md)の両方。
 * **JavaScript**: Azure Functions ランタイムのバージョン 2.x でのみサポートされています。 Durable Functions 拡張機能のバージョン 1.7.0 以降が必要です。 
-* **Python**: Durable Functions 拡張機能のバージョン 1.8.5 以降が必要です。 Durable Functions のサポートは、現在パブリック プレビューの段階です。
+* **Python**: Durable Functions 拡張機能のバージョン 2.3.1 以降が必要です。 Durable Functions のサポートは、現在パブリック プレビューの段階です。
 * **F#**: プリコンパイル済みクラス ライブラリと F# スクリプト。 F# スクリプトは、Azure Functions ランタイムのバージョン 1.x でのみサポートされています。
 * **PowerShell**: Durable Functions のサポートは、現在パブリック プレビューの段階です。 Azure Functions ランタイムのバージョン 3.x と PowerShell 7 でのみサポートされています。 Durable Functions 拡張機能のバージョン 2.2.2 以降が必要です。 現在サポートされているパターンは次のとおりです。[関数チェーン](#chaining)、[ファンアウトおよびファンイン](#fan-in-out)、[非同期 HTTP API](#async-http)。
+
+最新の機能と更新プログラムにアクセスするには、最新バージョンの Durable Functions 拡張機能と言語固有の Durable Functions ライブラリを使用することをお勧めします。 [Durable Functions のバージョン](durable-functions-versions.md)の詳細情報を参照してください。
 
 Durable Functions では、すべての [Azure Functions 言語](../supported-languages.md)をサポートすることを目標としています。 追加言語をサポートするための最新の作業状況については、[Durable Functions の問題の一覧](https://github.com/Azure/azure-functions-durable-extension/issues)を参照してください。
 
@@ -261,7 +263,7 @@ Invoke-ActivityFunction -FunctionName 'F3' -Input $Total
 
 ![HTTP API パターンの図](./media/durable-functions-concepts/async-http-api.png)
 
-Durable Functions には、このパターン向けの**組み込みサポート**が用意されており、長時間の関数の実行を操作するために記述する必要があるコードを簡略化できます。または、そのようなコードの記述が不要になります。 たとえば、Durable Functions のクイック スタート サンプル ([C#](durable-functions-create-first-csharp.md) と [JavaScript](quickstart-js-vscode.md)) に、新しいオーケストレーター関数のインスタンスを開始するために使用できる、シンプルな REST コマンドが示されています。 インスタンスが開始されると、この拡張機能によって、オーケストレーター関数の状態をクエリする Webhook HTTP API が公開されます。 
+Durable Functions には、このパターン向けの **組み込みサポート** が用意されており、長時間の関数の実行を操作するために記述する必要があるコードを簡略化できます。または、そのようなコードの記述が不要になります。 たとえば、Durable Functions のクイック スタート サンプル ([C#](durable-functions-create-first-csharp.md) と [JavaScript](quickstart-js-vscode.md)) に、新しいオーケストレーター関数のインスタンスを開始するために使用できる、シンプルな REST コマンドが示されています。 インスタンスが開始されると、この拡張機能によって、オーケストレーター関数の状態をクエリする Webhook HTTP API が公開されます。 
 
 次の例は、オーケストレーターを開始し、その状態をクエリする REST コマンドを示しています。 わかりやすくするため、この例ではプロトコルの細部をいくらか省略しています。
 
@@ -556,7 +558,7 @@ async def main(client: str):
 
 ### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>パターン #6:アグリゲーター (ステートフル エンティティ)
 
-6 番目のパターンは、ある期間のイベント データを 1 つのアドレス可能な*エンティティ* に集計することに関連しています。 このパターンでは、集計されるデータは、複数のソースから取得されるか、バッチで配信されるか、または長期間にわたって分散される可能性があります。 アグリゲーターがイベント データの到着時にイベント データに対してアクションを行ったり、外部クライアントが集計されたデータをクエリする必要が生じたりする場合があります。
+6 番目のパターンは、ある期間のイベント データを 1 つのアドレス可能な *エンティティ* に集計することに関連しています。 このパターンでは、集計されるデータは、複数のソースから取得されるか、バッチで配信されるか、または長期間にわたって分散される可能性があります。 アグリゲーターがイベント データの到着時にイベント データに対してアクションを行ったり、外部クライアントが集計されたデータをクエリする必要が生じたりする場合があります。
 
 ![アグリゲーターの図](./media/durable-functions-concepts/aggregator.png)
 
@@ -639,7 +641,7 @@ module.exports = df.entity(function(context) {
 
 ---
 
-クライアントは、[エンティティ クライアント バインディング](durable-functions-bindings.md#entity-client)を使用して、エンティティ関数の*操作*をエンキューすることができます ("シグナル通知" とも呼ばれる)。
+クライアントは、[エンティティ クライアント バインディング](durable-functions-bindings.md#entity-client)を使用して、エンティティ関数の *操作* をエンキューすることができます ("シグナル通知" とも呼ばれる)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 

@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: e267de136271991446444a47a470dd52789b3613
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: e42e49f69a159bf3bfdc732d41dc66a9a707f42f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533963"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617359"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows Virtual Desktop の最新情報
 
@@ -49,7 +49,7 @@ Windows Virtual Desktop コマンドレットのバージョン 2.0.1 がリリ�
 
 ### <a name="azure-advisor-updates"></a>Azure Advisor の更新
 
-Azure Advisor に、Windows Virtual Desktop での近接ガイダンスに関する新しい推奨事項が追加されました。 詳細については、[Azure Web サイト](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/)を参照してください。
+Windows Virtual Desktop での近接ガイダンスに関する新しい推奨事項と、深さ優先の負荷分散ホスト プールにおけるパフォーマンスの最適化に関する新しい推奨事項が Azure Advisor に追加されました。 詳細については、[Azure Web サイト](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/)を参照してください。
 
 ## <a name="october-2020"></a>2020 年 10 月
 

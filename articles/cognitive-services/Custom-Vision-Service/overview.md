@@ -12,12 +12,12 @@ ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 画像認識、画像識別子、画像認識アプリ、Custom Vision
-ms.openlocfilehash: 7274fed961c4bbac8841e1c741f54031614cea5c
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 12877f2d43f9b8f864871e5a5ab050aa0eeb61e2
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562992"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814603"
 ---
 # <a name="what-is-custom-vision"></a>Custom Vision とは
 
@@ -51,4 +51,4 @@ Cognitive Services 全般に言えることですが、Custom Vision サービ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[分類器の構築](getting-started-build-a-classifier.md)に関するガイドに従って、Web ポータルで Custom Vision の使用を開始するか、[クライアント ライブラリのクイックスタート](quickstarts/image-classification.md)を実行して、コードで基本的なシナリオを実装します。
+[分類器の構築](getting-started-build-a-classifier.md)に関するガイドに従って、Web ポータルで Custom Vision の使用を開始するか、[クイックスタート](quickstarts/image-classification.md)を実行して、コードで基本的なシナリオを実装します。

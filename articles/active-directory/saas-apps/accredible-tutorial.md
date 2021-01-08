@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 3329d092e27e7d8885daa87650734cd8e84202c9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: cf74b563352ccd0f62e583bccccd72078cbb2046
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313652"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>チュートリアル: Azure Active Directory と Accredible の統合
 
@@ -63,7 +63,7 @@ Azure AD への Accredible の統合を構成するには、ギャラリーか�
 
 4. 検索ボックスに「**Accredible**」と入力し、結果パネルで **Accredible** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Accredible](common/search-new-app.png)
+    ![結果一覧の Accredible](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -113,7 +113,7 @@ Accredible で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > 応答 URL 値は、実際の値ではありません。 ユーザーのロールに従って、対応する識別子の値を使います。 各顧客は、それぞれの ID に応じた一意の応答 URL を持っています。 これらの値を取得するには、[Accredible サポート チーム](mailto:support@accredible.com)に連絡してください。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -129,7 +129,7 @@ Accredible で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="configure-accredible-single-sign-on"></a>Accredible のシングル サインオンの構成
 
-**Accredible** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Accredible サポート チーム](mailto:support@accredible.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Accredible** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Accredible サポート チーム](mailto:support@accredible.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -148,7 +148,7 @@ Accredible で Azure AD シングル サインオンを構成するには、次�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -184,7 +184,7 @@ Accredible で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="create-accredible-test-user"></a>Accredible のテスト ユーザーの作成
 
-このセクションでは、Accredible で Britta Simon というユーザーを作成します。 ユーザーの電子メール ID を  [Accredible サポート チーム](mailto:support@accredible.com)に送信する必要があり、メールを確認したサポートチームから送られてくる招待メールを使って、Accredible プラットフォームにユーザーを追加できます。
+このセクションでは、Accredible で Britta Simon というユーザーを作成します。 ユーザーのメール ID を [Accredible サポート チーム](mailto:support@accredible.com)に送信する必要があり、メールを確認したサポートチームから送られてくる招待メールを使って、Accredible プラットフォームにユーザーを追加できます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

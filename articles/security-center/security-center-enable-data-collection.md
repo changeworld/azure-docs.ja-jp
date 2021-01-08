@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: f5cf432e3824ca0bb441a458a08fc7353291cf1f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: be8123d3c8a4acc684610aeaa9ee263c5defa17d
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490059"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813617"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Azure Security Center からのエージェントと拡張機能の自動プロビジョニング
 
@@ -30,6 +30,17 @@ Security Center では、セキュリティの脆弱性と脅威を監視する�
 > Security Center の拡大に伴い、監視できるリソースの種類も増えています。 また、拡張機能の数も増えています。 Azure Policy の機能を活用して追加のリソースの種類をサポートするために、自動プロビジョニングが拡張されました。
 
 :::image type="content" source="./media/security-center-enable-data-collection/auto-provisioning-options.png" alt-text="Security Center の自動プロビジョニング設定ページ":::
+
+
+## <a name="availability"></a>可用性
+
+| 側面                  | 詳細                                                                                                                                                                                                                      |
+|-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| リリース状態:          | **機能**:自動プロビジョニングが一般提供 (GA)<br>**エージェントと拡張機能**: Azure VM 用の Log Analytics エージェントは GA です。Microsoft Dependency エージェントはプレビュー段階です。Kubernetes 用のポリシー アドオンは GA です                |
+| 価格:                | Free                                                                                                                                                                                                                         |
+| サポートされる宛先: | ![はい](./media/icons/yes-icon.png) Azure マシン<br>![いいえ](./media/icons/no-icon.png) Azure Arc マシン<br>![いいえ](./media/icons/no-icon.png) Kubernetes ノード<br>![いいえ](./media/icons/no-icon.png) Virtual Machine Scale Sets |
+| クラウド:                 | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov、China Gov、その他の Gov                                                                                                      |
+|                         |                                                                                                                                                                                                                              |
 
 
 ## <a name="why-use-auto-provisioning"></a>自動プロビジョニングを使用する理由

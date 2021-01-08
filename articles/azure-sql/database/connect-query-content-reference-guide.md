@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: e25469e23358ade32e050bed0818338dc290e71f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7dccce597dcfbcedd5083befafa79b8ba6f3adac
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451385"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693484"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL Database と Azure SQL Managed Instance の接続とクエリに関する記事
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,6 +42,29 @@ ms.locfileid: "96451385"
 |[Ruby](connect-query-ruby.md)|このクイック スタートでは、Ruby を使ってプログラムを作成してデータベースに接続し、Transact-SQL ステートメントを使ってデータに対してクエリを実行する方法について説明します。|
 |[R](connect-query-r.md)|このクイック スタートでは、Azure SQL Database Machine Learning Services で R を使用して、Azure SQL Database のデータベースに接続するためのプログラムを作成し、Transact-SQL ステートメントを使用してデータに対してクエリを実行する方法について説明します。|
 |||
+
+## <a name="get-server-connection-information"></a>サーバーの接続情報を取得する
+
+Azure SQL Database のデータベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
+
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+
+2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
+
+3. **[概要]** ページで、Azure SQL Database のデータベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、Azure SQL マネージド インスタンスまたは Azure VM 上の SQL Server の場合は **[ホスト]** の横の完全修飾サーバー名 (または IP アドレス) を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
+
+> [!NOTE]
+> Azure VM 上の SQL Server の接続情報については、[SQL Server インスタンスへの接続](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)に関するページをご覧ください。
+
+## <a name="get-adonet-connection-information-optional---sql-database-only"></a>ADO.NET の接続情報を取得する (省略可能 - SQL Database のみ)
+
+1. Azure portal のデータベース ブレードに移動し、 **[設定]** の **[接続文字列]** を選択します。
+
+2. 完全な **ADO.NET** 接続文字列を確認します。
+
+    ![ADO.NET の接続文字列](./media/connect-query-dotnet-core/adonet-connection-string2.png)
+
+3. 使用する場合は、**ADO.NET** の接続文字列をコピーします。
 
 ## <a name="tls-considerations-for-database-connectivity"></a>データベース接続に関する TLS の考慮事項
 

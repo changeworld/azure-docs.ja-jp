@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: ce86da7697341e769ada120dc7a941319b64fc18
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 935aa8297e8b244bfd05483f07aad3eadb485f1b
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109540"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797079"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>チュートリアル:Server Assessment を使用して AWS インスタンスを検出する
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 --- | ---
 **アプライアンス** | Azure Migrate アプライアンスを実行する EC2 VM が必要です。 このマシンには以下が必要です。<br/><br/> - Windows Server 2016 がインストールされていること。 Windows Server 2019 を搭載したコンピューターでのアプライアンスの実行はサポートされていません。<br/><br/> - 16 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチ。<br/><br/> - 直接またはプロキシ経由でインターネットにアクセスできる、静的または動的 IP アドレス。
 **Windows インスタンス** | WinRM ポート 5985 (HTTP) で受信接続を許可して、アプライアンスが構成とパフォーマンスのメタデータをプルできるようにします。
-**Linux インスタンス** | ポート22 (TCP) で受信接続を許可します。
+**Linux インスタンス** | ポート22 (TCP) で受信接続を許可します。<br/><br/> インスタンスでは、既定のシェルとして `bash` を使用する必要があります。そうしないと検出は失敗します。
 
 ## <a name="prepare-an-azure-user-account"></a>Azure ユーザー アカウントを準備する
 
@@ -222,11 +222,16 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
 1. ポータルからコピーした **Azure Migrate プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Server Assessment] > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
-1. **[ログイン]** をクリックします。 新しいブラウザー タブで Azure ログイン プロンプトが開きます。表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
-1. 新しいタブで、Azure のユーザー名とパスワードを使用してサインインします。
+1. Azure で認証するには、デバイス コードが必要です。 **[ログイン]** をクリックすると、次に示すように、デバイス コードを含むモーダルが開きます。
+
+    ![デバイス コードを示すモーダル](./media/tutorial-discover-vmware/device-code.png)
+
+1. **[Copy code & Login]\(コードのコピーとログイン\)** をクリックしてデバイス コードをコピーし、新しいブラウザー タブで Azure ログイン プロンプトを開きます。表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
+1. 新しいタブで、デバイス コードを貼り付け、Azure のユーザー名とパスワードを使用してサインインします。
    
    PIN を使用したサインインはサポートされていません。
-3. 正常にログインしたら、Web アプリに戻ります。 
+3. ログインせずにログイン タブを誤って閉じた場合は、アプライアンス構成マネージャーのブラウザー タブを最新の情報に更新して、[ログイン] ボタンを再度有効にする必要があります。
+1. 正常にログインしたら、アプライアンス構成マネージャーで前のタブに戻ります。
 4. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しい[アクセス許可](./tutorial-discover-physical.md)が付与されている場合、アプライアンスの登録が開始されます。
 1. アプライアンスが正常に登録された後は、 **[詳細の表示]** をクリックすることで登録の詳細を確認できるようになります。
 
@@ -243,6 +248,10 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
     - Azure Migrate では、RSA、DSA、ECDSA、ed25519 の各アルゴリズムを使用して、ssh-keygen コマンドによって生成された SSH 秘密キーがサポートされています。
     - 現在、Azure Migrate では、パスフレーズ ベースの SSH キーはサポートされていません。 パスフレーズなしで SSH キーを使用してください。
     - 現在、Azure Migrate では、PuTTY によって生成された SSH 秘密キー ファイルはサポートされていません。
+    - Azure Migrate では、次に示すように、OpenSSH 形式の SSH 秘密キー ファイルがサポートされています。
+    
+    ![SSH 秘密キーのサポートされている形式](./media/tutorial-discover-physical/key-format.png)
+
 
 1. 複数の資格情報を一度に追加するには、 **[さらに追加]** をクリックして資格情報を保存して追加します。 物理サーバーの検出では、複数の資格情報がサポートされています。
 1. **[Step 2:Provide physical or virtual server details]\(ステップ 2:物理サーバーまたは仮想サーバーの詳細を指定する\)** で、 **[Add discovery source]\(検出ソースの追加\)** をクリックして、サーバーの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** と、サーバーに接続するための資格情報のフレンドリ名を指定します。

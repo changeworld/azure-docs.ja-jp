@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: 4f5c47000355a004f8d76d8b740b705618748380
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 6ea7b992a682537471ce0e78385b37674199d687
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505224"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673055"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>方法: 感情分析とオピニオン マイニング
 
@@ -24,8 +24,6 @@ Text Analytics API の感情分析機能には、肯定的および否定的セ�
 API で使用される AI モデルはサービスによって提供されるため、分析対象のコンテンツを送信するだけで済みます。
 
 ## <a name="sentiment-analysis-versions-and-features"></a>感情分析のバージョンと機能
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 | 機能                                   | 感情分析 v3 | Sentiment Analysis v3.1 (プレビュー) |
 |-------------------------------------------|-----------------------|-----------------------------------|
@@ -47,7 +45,7 @@ API で使用される AI モデルはサービスによって提供されるた
 | ドキュメントに、`negative` の文が少なくとも 1 つ、`positive` の文が少なくとも 1 つ含まれている。    | `mixed`                 |
 | ドキュメント内のすべての文が `neutral` である。                                                  | `neutral`               |
 
-信頼度スコアは、1 から 0 の範囲で割り当てられます。 スコアが 1 に近いほど、ラベルの分類の信頼度が高いことを示し、スコアが低いほど信頼度が低いことを示します。 各ドキュメントまたは各文で、ラベル (positive、negative、neutral) に関連付けられた予測スコアは合計で 1 になります。
+信頼度スコアは、1 から 0 の範囲で割り当てられます。 スコアが 1 に近いほど、ラベルの分類の信頼度が高いことを示し、スコアが低いほど信頼度が低いことを示します。 各ドキュメントまたは各文で、ラベル (positive、negative、neutral) に関連付けられた予測スコアは合計で 1 になります。 詳細については、[Text Analytics の透明性に関するメモ](/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context)を参照してください。 
 
 ## <a name="opinion-mining"></a>オピニオン マイニング
 

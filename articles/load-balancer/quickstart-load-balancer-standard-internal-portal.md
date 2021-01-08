@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 6ac76b3d3cc8fb27734730275836fba0dbfb08fe
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 14203021846e97a53f59c3bc24a1586774613dec
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700309"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704335"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して VM の負荷を分散する内部ロード バランサーを作成する
 
-Azure portal を使用して内部ロード バランサーと 2 つの仮想マシンを作成することにより、Azure Load Balancer の使用を開始します。
+Azure portal を使用して内部ロード バランサーと 3 つの仮想マシンを作成することにより、Azure Load Balancer の使用を開始します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,6 +40,8 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。  SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="クイックスタートで作成される標準的なロード バランサー リソース。" border="false":::
 
 このセクションでは、仮想マシンの負荷分散を行うロード バランサーを作成します。 
 
@@ -208,12 +210,12 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 このセクションでは、次の作業を行います。
 
-* ロード バランサーのバックエンド プール用に 2 つの仮想マシンを作成します。
+* ロード バランサーのバックエンド プール用に 3 つの仮想マシンを作成します。
 * 仮想マシンに IIS をインストールし、ロード バランサーをテストします。
 
 ### <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-このセクションでは、2 つの VM (**myVM1** と **myVM2**) を作成します。
+このセクションでは、3 つの VM (**myVM1**、**myVM2**、**myVM3**) を作成します。
 
 これらの VM を、前に作成したロード バランサーのバックエンド プールに追加します。
 
@@ -221,7 +223,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
    
 2. **[仮想マシンの作成]** の **[Basic]** タブに、値を入力するか選択します。
 
-    | 設定 | [値]                                          |
+    | 設定 | 値                                          |
     |-----------------------|----------------------------------|
     | **プロジェクトの詳細** |  |
     | サブスクリプション | Azure サブスクリプションを選択します。 |
@@ -243,7 +245,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
   
 4. [ネットワーク] タブで、次を選択または入力します。
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     |-|-|
     | **ネットワーク インターフェイス** |  |
     | 仮想ネットワーク | **myVNet** |
@@ -262,19 +264,21 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
   
 6. 設定を確認し、 **[作成]** を選択します。
 
-7. 手順 1 から 8 のようにして、次の値を持つ 1 つの追加の VM を作成します。他の設定はすべて **myVM1** と同じにします。
+7. 手順 1. から 8. に従って、さらに 2 つの VM を作成します。次の値を使用し、他の設定はすべて **myVM1** と同じにします。
 
-    | 設定 | VM 2|
-    | ------- | ----- |
-    | 名前 |  **myVM2** |
-    | 可用性ゾーン | **2** |
-    | ネットワーク セキュリティ グループ | 既存の **[myNSG]** を選択します|
+    | 設定 | VM 2 | VM 3 |
+    | ------- | ----- | ---- |
+    | 名前 |  **myVM2** | **myVM3** |
+    | 可用性ゾーン | **2** | **3** |
+    | ネットワーク セキュリティ グループ | 既存の **[myNSG]** を選択します| 既存の **[myNSG]** を選択します |
 
 
 # <a name="basic-sku"></a>[**Basic SKU**](#tab/option-1-create-internal-load-balancer-basic)
 
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。  SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="クイックスタートで作成される基本的なロード バランサー リソース。" border="false":::
 
 このセクションでは、仮想マシンの負荷分散を行うロード バランサーを作成します。 
 
@@ -341,7 +345,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力または選択します。 
 
-    | 設定                 | [値]                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | 前の手順で作成した **CreateIntLBQS-rg** を選択します。|
@@ -379,7 +383,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 3. **[バックエンド プールの追加]** ページで、次を入力または選択します。
     
-    | 設定 | [値] |
+    | 設定 | 値 |
     | ------- | ----- |
     | 名前 | 「**myBackendPool**」と入力します。 |
     | 仮想ネットワーク | **[myVNet]** を選択します。 |
@@ -399,7 +403,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 2. **[設定]** で、 **[正常性プローブ]** 、 **[追加]** の順に選択します。
     
-    | 設定 | [値] |
+    | 設定 | 値 |
     | ------- | ----- |
     | 名前 | 「**myHealthProbe**」と入力します。 |
     | Protocol | **[HTTP]** を選択します。 |
@@ -427,7 +431,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 3. 負荷分散規則の構成には、以下の値を使用します。
     
-    | 設定 | [値] |
+    | 設定 | 値 |
     | ------- | ----- |
     | 名前 | 「**myHTTPRule**」と入力します。 |
     | IP バージョン | **[IPv4]** を選択します |
@@ -445,13 +449,13 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 このセクションでは、次の作業を行います。
 
-* ロード バランサーのバックエンド プール用に 2 つの仮想マシンを作成します。
+* ロード バランサーのバックエンド プール用に 3 つの仮想マシンを作成します。
 * 仮想マシンの可用性セットを作成します。
 * 仮想マシンに IIS をインストールし、ロード バランサーをテストします。
 
 ### <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-このセクションでは、2 つの VM (**myVM1** と **myVM2**) を作成します。
+このセクションでは、3 つの VM (**myVM1**、**myVM2**、**myVM3**) を作成します。
 
 2 つの VM は **myAvailabilitySet** という名前の可用性セットに追加します。
 
@@ -461,7 +465,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
    
 2. **[仮想マシンの作成]** の **[Basic]** タブに、値を入力するか選択します。
 
-    | 設定 | [値]                                          |
+    | 設定 | 値                                          |
     |-----------------------|----------------------------------|
     | **プロジェクトの詳細** |  |
     | サブスクリプション | Azure サブスクリプションを選択します。 |
@@ -483,7 +487,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
   
 4. [ネットワーク] タブで、次を選択または入力します。
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     |-|-|
     | **ネットワーク インターフェイス** |  |
     | 仮想ネットワーク | **[myVNet]** を選択します |
@@ -498,13 +502,13 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
   
 6. 設定を確認し、 **[作成]** を選択します。
 
-7. 手順 1 から 8 のようにして、次の値を持つ 1 つの追加の VM を作成します。他の設定はすべて **myVM1** と同じにします。
+7. 手順 1. から 8. に従って、さらに 2 つの VM を作成します。次の値を使用し、他の設定はすべて **myVM1** と同じにします。
 
-    | 設定 | VM 2 |
-    | ------- | ----- |
-    | 名前 |  **myVM2** |
-    | 可用性セット| **[myAvailabilitySet]** を選択します |
-    | ネットワーク セキュリティ グループ | 既存の **[myNSG]** を選択します|
+    | 設定 | VM 2 | VM 3 |
+    | ------- | ----- | ---- |
+    | 名前 |  **myVM2** | **myVM3** |
+    | 可用性セット | **[myAvailabilitySet]** を選択します | **[myAvailabilitySet]** を選択します |
+    | ネットワーク セキュリティ グループ | 既存の **[myNSG]** を選択します | 既存の **[myNSG]** を選択します |
 
 ### <a name="add-virtual-machines-to-the-backend-pool"></a>仮想マシンをバックエンド プールに追加する
 
@@ -518,7 +522,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 4. **[仮想マシン]** セクションで、 **[+ 追加]** を選択します。
 
-5. **myVM1** と **myVM2** の横にあるチェック ボックスをオンにします。
+5. **myVM1**、**myVM2**、**myVM3** の横にあるチェック ボックスをオンにします。
 
 6. **[追加]** を選択します。
 
@@ -533,7 +537,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
    
 2. **[仮想マシンの作成]** の **[Basic]** タブに、値を入力するか選択します。
 
-    | 設定 | [値]                                          |
+    | 設定 | 値                                          |
     |-----------------------|----------------------------------|
     | **プロジェクトの詳細** |  |
     | サブスクリプション | Azure サブスクリプションを選択します。 |
@@ -554,7 +558,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
   
 4. [ネットワーク] タブで、次を選択または入力します。
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     |-|-|
     | **ネットワーク インターフェイス** |  |
     | 仮想ネットワーク | **myVNet** |
@@ -598,7 +602,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
    ```
 8. **myVM1** との Bastion セッションを閉じます。
 
-9. 手順 1 から 6 を繰り返して、IIS と更新済み iisstart.htm ファイルを **myVM2** にインストールします。
+9. 手順 1. から 6. を繰り返して、IIS と更新済み iisstart.htm ファイルを **myVM2** と **myVM3** にインストールします。
 
 
 ## <a name="test-the-load-balancer"></a>ロード バランサーをテストする
@@ -630,7 +634,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 このクイック スタートでは次の作業を行います。
 
 * Azure の Standard または Basic 内部ロード バランサーを作成しました。
-* 2 つの VM をロード バランサーにアタッチしました。
+* 3 つの VM をロード バランサーに接続しました。
 * ロード バランサー トラフィック規則と正常性プローブを構成し、ロード バランサーをテストしました。 
 
 Azure Load Balancer についてさらに学習するには、次の記事に進んでください。

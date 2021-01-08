@@ -3,22 +3,36 @@ title: チュートリアル:Bing 地図から Azure Maps に移行する | Micr
 description: Bing 地図から Microsoft Azure Maps に移行する方法に関するチュートリアル。 ガイダンスでは、Azure Maps の API と SDK への切り替え方法について説明します。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 9/10/2020
+ms.date: 12/17/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0045520849ea20d3e53a30101e6db0f5d495ab15
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 52768874ef27bf87846d4abbd68e9e8c1972f996
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897009"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679439"
 ---
-# <a name="tutorial---migrate-from-bing-maps-to-azure-maps"></a>チュートリアル - Bing 地図から Azure Maps に移行する
+# <a name="tutorial-migrate-from-bing-maps-to-azure-maps"></a>チュートリアル:Bing 地図から Azure Maps に移行する
 
-このガイドでは、Web アプリケーション、モバイル アプリケーション、サーバーベース アプリケーションを Bing 地図から Azure Maps プラットフォームに移行する方法についての分析情報を提供します。 このガイドには、Azure Maps に移行するための比較コード サンプル、移行に関する提案、ベスト プラクティスが含まれています。
+このガイドでは、Web アプリケーション、モバイル アプリケーション、サーバーベース アプリケーションを Bing 地図から Azure Maps プラットフォームに移行する方法についての分析情報を提供します。 このガイドには、Azure Maps に移行するための比較コード サンプル、移行に関する提案、ベスト プラクティスが含まれています。 
+
+このチュートリアルでは、次のことについて説明します。
+
+> [!div class="checklist"]
+> * Azure Maps で使用できる機能と同等の Bing 地図の機能との大まかな比較。
+> * 考慮すべきライセンスの相違点。
+> * 移行を計画する方法。
+> * テクニカル リソースとサポートの場所
+
+## <a name="prerequisites"></a>前提条件
+
+1. [Azure portal](https://portal.azure.com) にサインインします。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+2. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
 ## <a name="azure-maps-platform-overview"></a>Azure Maps プラットフォームの概要
 
@@ -39,7 +53,7 @@ Azure Maps は、Web アプリケーションやモバイル アプリケーシ�
 | 自動提案                           | ✓                  |
 | ルート案内 (トラックを含む)          | ✓                  |
 | Distance Matrix                       | ✓                  |
-| 標高                            | 対応予定            |
+| 標高                            | ✓ (プレビュー)        |
 | 映像 - 静的マップ                  | ✓                  |
 | 映像メタデータ                      | ✓                  |
 | 等時線                            | ✓                  |
@@ -58,11 +72,11 @@ Bing 地図では、基本的なキーベースの認証が提供されます。
 
 ## <a name="licensing-considerations"></a>ライセンスに関する考慮事項
 
-Bing 地図から Azure Maps に移行する場合は、ライセンスに関して次の点を考慮する必要があります。
+Bing 地図から Azure Maps に移行する場合は、ライセンスに関して次の情報を考慮する必要があります。
 
--   Azure Maps では、読み込まれたマップ タイルの数に基づいて対話型マップの使用量に対して料金が請求されます。一方、Bing 地図では、マップ コントロール (セッション) の読み込みに対して料金が請求されます。 Azure Maps では、開発者のコストを削減するために、マップ タイルが自動的にキャッシュされます。 マップ タイルが 15 個読み込まれるごとに、1 個の Azure Maps トランザクションが生成されます。 対話型 Azure Maps SDK では、512 ピクセルのタイルが使用され、平均してページ ビューあたり 1 個またはそれより少ないトランザクションが生成されます。
+* Azure Maps では、読み込まれたマップ タイルの数に基づいて対話型マップの使用量に対して料金が請求されます。一方、Bing 地図では、マップ コントロール (セッション) の読み込みに対して料金が請求されます。 Azure Maps では、開発者のコストを削減するためにマップ タイルが自動的にキャッシュされます。 マップ タイルが 15 個読み込まれるごとに、1 個の Azure Maps トランザクションが生成されます。 対話型 Azure Maps SDK では、512 ピクセルのタイルが使用され、平均してページ ビューあたり 1 個またはそれより少ないトランザクションが生成されます。
 
--   Azure Maps を使用すると、データをそのプラットフォームから Azure に格納できます。 また、[使用条件](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)に従って、最大 6 か月間キャッシュすることもできます。
+* Azure Maps を使用すると、データをそのプラットフォームから Azure に格納できます。 また、[使用条件](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)に従って、最大 6 か月間キャッシュすることもできます。
 
 Azure Maps のいくつかのライセンス関連リソースを次に示します。
 
@@ -73,7 +87,7 @@ Azure Maps のいくつかのライセンス関連リソースを次に示しま
 
 ## <a name="suggested-migration-plan"></a>おすすめの移行プラン
 
-移行プランの概要を次に示します。
+大まかな移行プランの例を次に示します。
 
 1.  アプリケーションで使用している Bing Maps SDK とサービスのインベントリを取得し、移行先となる代替の SDK とサービスが Azure Maps で用意されていることを確認します。
 2.  <https://azure.com> で Azure サブスクリプションを作成します (まだお持ちでない場合)。
@@ -88,28 +102,28 @@ Azure Maps アカウントを作成し、Azure Maps プラットフォームに�
 
 1. Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 2. [Azure portal](https://portal.azure.com/) にサインインします。
-3. [Azure Maps アカウント](./how-to-manage-account-keys.md)を作成します。 
+3. [Azure Maps アカウント](./how-to-manage-account-keys.md)を作成します。
 4. [Azure Maps サブスクリプション キー](./how-to-manage-authentication.md#view-authentication-details)を取得するか、Azure Active Directory 認証を設定し、セキュリティを強化します。
 
 ## <a name="azure-maps-technical-resources"></a>Azure Maps の技術リソース
 
 Azure Maps に関する役に立つ技術リソースの一覧を次に示します。
 
--   概要: https://azure.com/maps
--   ドキュメント: <https://aka.ms/AzureMapsDocs>
--   Web SDK コード サンプル: <https://aka.ms/AzureMapsSamples>
--   開発者フォーラム: <https://aka.ms/AzureMapsForums>
--   ビデオ: <https://aka.ms/AzureMapsVideos>
--   ブログ: <https://aka.ms/AzureMapsBlog>
--   Azure Maps のフィードバック (UserVoice): <https://aka.ms/AzureMapsFeedback>
+* 概要: <https://azure.com/maps>
+* ドキュメント: <https://aka.ms/AzureMapsDocs>
+* Web SDK コード サンプル: <https://aka.ms/AzureMapsSamples>
+* 開発者フォーラム: <https://aka.ms/AzureMapsForums>
+* ビデオ: <https://aka.ms/AzureMapsVideos>
+* ブログ: <https://aka.ms/AzureMapsBlog>
+* Azure Maps のフィードバック (UserVoice): <https://aka.ms/AzureMapsFeedback>
 
 ## <a name="migration-support"></a>移行サポート
 
 開発者は、[フォーラム](/answers/topics/azure-maps.html) または多くの Azure サポート オプション (<https://azure.microsoft.com/support/options/>) のいずれかを使用して、移行サポートを探すことができます。
 
-## <a name="new-terminology"></a>新しい用語 
+## <a name="new-terminology"></a>新しい用語
 
-以下に示したのは、Bing 地図に関してよく用いられる用語のうち、Azure Maps では呼称が異なるものの一覧です。
+以下に示したのは、Bing 地図でよく使われる用語と、それに対応する Azure Maps の用語を一覧にしたものです。
 
 | Bing 地図の用語                    | Azure Maps の用語                                                |
 |-----------------------------------|----------------------------------------------------------------|
@@ -128,12 +142,13 @@ Azure Maps に関する役に立つ技術リソースの一覧を次に示しま
 | ナビゲーション バー                    | マップ スタイル ピッカー、ズーム コントロール、ピッチ コントロール、コンパス コントロール |
 | 画鋲                           | バブル レイヤー、シンボル レイヤー、HTML マーカー                      |
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+クリーンアップが必要なリソースはありません。
+
 ## <a name="next-steps"></a>次の手順
 
 Bing 地図アプリケーションを移行する詳しい方法について次の記事でご確認ください。
 
 > [!div class="nextstepaction"]
 > [Web アプリを移行する](migrate-from-bing-maps-web-app.md)
-
-> [!div class="nextstepaction"]
-> [Web サービスを移行する](migrate-from-bing-maps-web-services.md)

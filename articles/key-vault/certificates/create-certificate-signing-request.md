@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 6d66648680aa14baa53372732df52a6c247a0117
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 42f649f9dd206b34f0fac8513ba742febed2dbcb
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483765"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724631"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Key Vault での CSR の作成とマージ
 
@@ -38,7 +38,34 @@ Key Vault は、証明書の作成を簡素化するために、次の 2 つの�
 次の手順を実行すると、Key Vault と提携していない証明機関から証明書を作成できます (たとえば、GoDaddy は信頼されたキー コンテナー CA ではありません)。 
 
 
-### <a name="azure-powershell"></a>Azure PowerShell
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+1.  任意の CA の CSR を生成するには、証明書を追加するキー コンテナーに移動します。
+2.  Key Vault のプロパティ ページで、 **[証明書]** を選択します。
+3.  **[生成/インポート]** タブを選択します。
+4.  **[証明書の作成]** 画面で、次の値を選択します。
+    - **[証明書の作成方法]:** 生成。
+    - **[証明書名]:** ContosoManualCSRCertificate。
+    - **[Type of Certificate Authority (CA)] (証明機関 (CA) の種類):** 統合されていない CA によって発行された証明書。
+    - **[件名]:** `"CN=www.contosoHRApp.com"`
+    - 必要に応じて、他の値を選択します。 **Create** をクリックしてください。
+
+    ![証明書のプロパティ](../media/certificates/create-csr-merge-csr/create-certificate.png)  
+
+
+6.  証明書が [証明書] の一覧に追加されていることがわかります。 先ほど作成した新しい証明書を選択します。 証明書の現在の状態は、CA によってまだ発行されていないため、"無効" になります。
+7. **[証明書の操作]** タブをクリックし、 **[CSR のダウンロード]** を選択します。
+
+   ![[CSR のダウンロード] ボタンが強調表示されているスクリーンショット。](../media/certificates/create-csr-merge-csr/download-csr.png)
+ 
+8.  要求が署名されるように、.csr ファイルを CA に持っていきます。
+9.  CA によって要求が署名されたら、証明書ファイルを戻し、同じ [証明書の操作] 画面で **署名された要求をマージ** します。
+
+証明書要求が正常にマージされました。
+
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 
 
@@ -68,36 +95,11 @@ Key Vault は、証明書の作成を簡素化するために、次の 2 つの�
     ```
 
     証明書要求が正常にマージされました。
-
-### <a name="azure-portal"></a>Azure portal
-
-1.  任意の CA の CSR を生成するには、証明書を追加するキー コンテナーに移動します。
-2.  Key Vault のプロパティ ページで、 **[証明書]** を選択します。
-3.  **[生成/インポート]** タブを選択します。
-4.  **[証明書の作成]** 画面で、次の値を選択します。
-    - **[証明書の作成方法]:** 生成。
-    - **[証明書名]:** ContosoManualCSRCertificate。
-    - **[Type of Certificate Authority (CA)] (証明機関 (CA) の種類):** 統合されていない CA によって発行された証明書。
-    - **[件名]:** `"CN=www.contosoHRApp.com"`
-    - 必要に応じて、他の値を選択します。 **Create** をクリックしてください。
-
-    ![証明書のプロパティ](../media/certificates/create-csr-merge-csr/create-certificate.png)  
-
-
-6.  証明書が [証明書] の一覧に追加されていることがわかります。 先ほど作成した新しい証明書を選択します。 証明書の現在の状態は、CA によってまだ発行されていないため、"無効" になります。
-7. **[証明書の操作]** タブをクリックし、 **[CSR のダウンロード]** を選択します。
-
-   ![[CSR のダウンロード] ボタンが強調表示されているスクリーンショット。](../media/certificates/create-csr-merge-csr/download-csr.png)
- 
-8.  要求が署名されるように、.csr ファイルを CA に持っていきます。
-9.  CA によって要求が署名されたら、証明書ファイルを戻し、同じ [証明書の操作] 画面で **署名された要求をマージ** します。
-
-証明書要求が正常にマージされました。
+---
 
 > [!NOTE]
 > RDN 値にコンマが含まれている場合は、手順 4. に示すように、値を二重引用符で囲んで **[サブジェクト]** フィールドに追加することもできます。
 > たとえば、[サブジェクト] のエントリが `DC=Contoso,OU="Docs,Contoso",CN=www.contosoHRApp.com` であるとします。この例では、RDN の `OU` には、名前にコンマを含む値が含まれています。 `OU` の結果の出力は、**Docs, Contoso** になります。
-
 
 ## <a name="adding-more-information-to-csr"></a>CSR への詳細情報の追加
 
@@ -105,8 +107,8 @@ CSR を作成する際に、次のような詳細情報を追加する必要が�
     - 国:
     - 市区町村、
     - 都道府県、
-    - 組織、
-    - 組織単位。これらの情報はすべて、CSR の作成時に subjectName で定義することにより追加できます。
+    - 組織: 
+    - 組織単位:これらの情報はすべて、CSR の作成時に subjectName で定義することにより追加できます。
 
 例
     ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
@@ -117,6 +119,8 @@ CSR を作成する際に、次のような詳細情報を追加する必要が�
 
 
 ## <a name="troubleshoot"></a>トラブルシューティング
+
+- 証明書要求の応答を監視または管理する方法の詳細については、[こちら](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios)をご覧ください。
 
 - **エラーの種類「指定された X.509 証明書の内容のエンド エンティティ証明書の公開キーが、指定された秘密キーの公開部分と一致しません。証明書が有効かどうかをご確認ください」** 。このエラーは、CSR を、開始された同じ CSR 要求とマージしない場合に発生することがあります。 CSR が作成されるたびに、署名された要求をマージするときに一致する必要がある秘密キーが作成されます。
     
@@ -129,6 +133,7 @@ CSR を作成する際に、次のような詳細情報を追加する必要が�
 
 - **エラーの種類 "The subject name provided is not a valid X500 name"\(指定されたサブジェクト名は有効な X500 名ではありません\)** このエラーは、SubjectName の値に "特殊文字" が含まれている場合に発生する可能性があります。 Azure portal と PowerShell の手順の「注意」をそれぞれ参照してください。 
 
+---
 ## <a name="next-steps"></a>次のステップ
 
 - [認証、要求、応答](../general/authentication-requests-and-responses.md)

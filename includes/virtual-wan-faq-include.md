@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c476fe2af1fb4bddff4799609b164aab14f57b00
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5aab11b31756ee8430e8ae4d54a2b3de5ea2e136
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187402"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612689"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure Virtual WAN は GA ですか。
 
@@ -277,3 +277,7 @@ Azure Firewall 経由のインターネット ブレークアウトを使用し�
 ### <a name="does-virtual-wan-store-customer-data"></a>Virtual WAN に顧客データは格納されますか? 
 
 いいえ。 Virtual WAN にお客様のデータは一切格納されません。
+
+### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>ユーザーに代わって Virtual WAN をサービスとして管理できるマネージド サービス プロバイダーはありますか? 
+
+はい。 Azure Marketplace から利用できるマネージド サービス プロバイダー (MSP) ソリューションの一覧については、「[Azure ネットワーク MSP パートナーによる Azure Marketplace のオファー](../articles/networking/networking-partners-msp.md#msp)」を参照してください。

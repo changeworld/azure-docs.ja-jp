@@ -4,12 +4,12 @@ description: Azure Resource Manager を使用して、Azure のリソースを�
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f3b3ebce3dd34637a787895e7724736adfc186fb
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: fad49db94195bbd2f9e5e32f8596f33fab586752
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032254"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858520"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager とは
 
@@ -33,7 +33,7 @@ Azure Resource Manager には、初めて使う方にとって、あまり馴染
 
 * **リソース** - Azure を通じて管理できる要素。 リソースの例として、仮想マシン、ストレージ アカウント、Web アプリ、データベース、および仮想ネットワークがあります。 リソース グループ、サブスクリプション、管理グループ、およびタグもリソースの例です。
 * **リソース グループ** - Azure ソリューションの関連するリソースを保持するコンテナー。 リソース グループには、グループとして管理するリソースが含まれます。 組織にとって最も有用になるように、どのリソースをリソース グループに含めるかを決定します。 「 [リソース グループ](#resource-groups)」を参照してください。
-* **リソース プロバイダー** - Azure リソースを提供するサービス。 一般的なリソースプロバイダーの一例として、仮想マシン リソースを提供する Microsoft.Compute があります。 Microsoft.Storage は、もう 1 つの一般的なリソースプロバイダーです。 [リソースプロバイダーと種類](resource-providers-and-types.md)に関するページを参照してください。
+* **リソース プロバイダー** - Azure リソースを提供するサービス。 一般的なリソースプロバイダーの一例として、仮想マシン リソースを提供する `Microsoft.Compute` があります。 `Microsoft.Storage` は、もう 1 つの一般的なリソースプロバイダーです。 [リソースプロバイダーと種類](resource-providers-and-types.md)に関するページを参照してください。
 * **Resource Manager テンプレート** - リソース グループ、サブスクリプション、管理グループ、またはテナントにデプロイする 1 つまたは複数のリソースを定義する JavaScript Object Notation (JSON) ファイル。 このテンプレートを使えば、リソースを一貫性のある形で繰り返しデプロイできます。 [テンプレートのデプロイの概要](../templates/overview.md)に関するページを参照してください。
 * **宣言型構文** - 一連のプログラミング コマンドを記述しなくても、"作成しようとしているもの" を明確に宣言することのできる構文です。 宣言型構文の例として、Resource Manager テンプレートがあります。 このファイルで、Azure にデプロイするインフラストラクチャのプロパティを定義します。  [テンプレートのデプロイの概要](../templates/overview.md)に関するページを参照してください。
 
@@ -99,11 +99,11 @@ Azure には、[管理グループ](../../governance/management-groups/overview.
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Azure Resource Manager の回復性
 
-Azure Resource Manager サービスは、回復性と継続的な可用性を実現するよう設計されています。 REST API での Resource Manager とコントロール プレーン操作 (management.azure.com に送信される要求) は、次のように動作します。
+Azure Resource Manager サービスは、回復性と継続的な可用性を実現するよう設計されています。 REST API での Resource Manager とコントロール プレーン操作 (`management.azure.com` に送信される要求) は、次のように動作します。
 
 * リージョン間に分散されます。 一部のサービスはリージョン固有です。
 
-* 複数の可用性ゾーンを含む場所では、可用性ゾーン (リージョン) 間で分散されます。
+* 複数の可用性ゾーンを含む場所では、可用性ゾーン (およびリージョン) 間で分散されます。
 
 * 単一の論理データ センターに依存しません。
 

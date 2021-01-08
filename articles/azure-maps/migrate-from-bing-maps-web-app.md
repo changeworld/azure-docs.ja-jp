@@ -9,29 +9,46 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 6037deb484ca966ab3a54cc60b0d53ac8299d500
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: ef2c69409ce3f479338ffc9d418b3469f197ad30
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590003"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679388"
 ---
-# <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>チュートリアル - Bing 地図から Web アプリを移行する
+# <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>チュートリアル:Bing 地図から Web アプリを移行する
 
-Bing 地図が使用される Web アプリでは、多くの場合、Bing 地図 V8 JavaScript SDK が使用されます。 Azure Maps Web SDK は、移行に適した Azure ベースの SDK です。 Azure Maps Web SDK を使用すると、インタラクティブ マップをカスタマイズして、Web アプリケーションまたはモバイル アプリケーションに独自のコンテンツや映像を表示することができます。 このコントロールには、WebGL が利用されているため、大きなデータ セットを高いパフォーマンスでレンダリングすることができます。 JavaScript または TypeScript を使用して、この SDK での開発を行います。
+Bing 地図が使用される Web アプリでは、多くの場合、Bing 地図 V8 JavaScript SDK が使用されます。 Azure Maps Web SDK は、移行に適した Azure ベースの SDK です。 Azure Maps Web SDK を使用すると、インタラクティブ マップをカスタマイズして、Web アプリケーションまたはモバイル アプリケーションに独自のコンテンツや映像を表示することができます。 このコントロールには、WebGL が利用されているため、大きなデータ セットを高いパフォーマンスでレンダリングすることができます。 JavaScript または TypeScript を使用して、この SDK での開発を行います。 このチュートリアルでは、次の内容を学習します。
+
+> [!div class="checklist"]
+> * マップを読み込む
+> * マップをローカライズする
+> * 画鋲、ポリライン、およびポリゴンを追加する。
+> * ポップアップまたは情報ボックスに情報を表示する
+> * KML と GeoJSON のデータを読み込んで表示する
+> * 画鋲をクラスタリングする
+> * タイル レイヤーをオーバーレイする
+> * トラフィック データを表示する
+> * グラウンド オーバーレイを追加する
 
 既存の Web アプリケーションを移行する場合は、Cesium、Leaflet、OpenLayers などのオープンソースのマップ コントロール ライブラリが使用されているかどうかを確認します。 そういったライブラリが使用されていて、使用を継続したい場合は、それを Azure Maps タイル サービス ([道路タイル](/rest/api/maps/render/getmaptile) \| [衛星タイル](/rest/api/maps/render/getmapimagerytile)) に接続することができます。 よく使用されるいくつかのオープンソースのマップ コントロール ライブラリで Azure Maps を使用する方法については、以下のリンクから詳しい情報をご覧いただけます。
 
--   Cesium - Web 用の 3D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [ドキュメント](https://cesiumjs.org/)
--   Leaflet – Web 用の軽量な 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [ドキュメント](https://leafletjs.com/)
--   OpenLayers - プロジェクションをサポートする Web 用の 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [ドキュメント](https://openlayers.org/)
+* Cesium - Web 用の 3D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [ドキュメント](https://cesiumjs.org/)
+* Leaflet – Web 用の軽量な 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [ドキュメント](https://leafletjs.com/)
+* OpenLayers - プロジェクションをサポートする Web 用の 2D マップ コントロール。 [コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [ドキュメント](https://openlayers.org/)
 
 JavaScript フレームワークを開発に使用している場合は、次のいずれかのオープンソース プロジェクトを利用できる可能性があります。
 
-- [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps) - Azure Maps の Angular 10 ラッパー。
-- [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure Maps Blazor コンポーネント。
-- [Azure Maps React Component](https://github.com/WiredSolutions/react-azure-maps) - Azure Maps コントロール用の React ラッパー。
-- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) - Vue アプリケーション用の Azure Maps コンポーネント。
+* [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps) - Azure Maps の Angular 10 ラッパー。
+* [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure Maps Blazor コンポーネント。
+* [Azure Maps React Component](https://github.com/WiredSolutions/react-azure-maps) - Azure Maps コントロール用の React ラッパー。
+* [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) - Vue アプリケーション用の Azure Maps コンポーネント。
+
+## <a name="prerequisites"></a>前提条件
+
+1. [Azure portal](https://portal.azure.com) にサインインします。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+2. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
 ## <a name="key-features-support"></a>主なフィーチャーのサポート
 
@@ -68,24 +85,24 @@ Azure Maps には、その機能を拡張する [Web SDK 用のオープンソ�
 
 Bing 地図と Azure Maps の Web SDK の注意すべき主な相違点をいくつか以下に示します。
 
--   Azure Maps Web SDK にアクセスするためのホスト エンドポイントが提供されるだけでなく、必要に応じて、Web SDK をアプリに埋め込むための NPM パッケージも使用可能です。 詳細については、こちらの[ドキュメント](./how-to-use-map-control.md)を参照してください。 このパッケージには TypeScript 定義も含まれています。
--   Bing 地図には、SDK のホスト ブランチとして、リリース用と実験用の 2 つがあります。 実験ブランチでは、新規の開発が進行していると、1 日に複数回、更新が行われる場合があります。 Azure Maps でホストされるのはリリース ブランチのみですが、オープンソースの Azure Maps コード サンプル プロジェクトに試験的な機能がカスタム モジュールとして作成されます。 Bing 地図にはかつて、更新頻度を低くすることによってリリースによる破壊的変更のリスクを軽減する凍結ブランチもありました。 Azure Maps では、NPM モジュールを使用して、過去にリリースされたあらゆるマイナー バージョンを参照できるようになっています。
+* Azure Maps Web SDK にアクセスするためのホスト エンドポイントが提供されるだけでなく、必要に応じて、Web SDK をアプリに埋め込むための NPM パッケージも使用可能です。 詳細については、こちらの[ドキュメント](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)を参照してください。 このパッケージには TypeScript 定義も含まれています。
+* Bing 地図には、SDK のホスト ブランチとして、リリース用と実験用の 2 つがあります。 実験ブランチでは、新規の開発が進行していると、1 日に複数回、更新が行われる場合があります。 Azure Maps でホストされるのはリリース ブランチのみですが、オープンソースの Azure Maps コード サンプル プロジェクトに試験的な機能がカスタム モジュールとして作成されます。 Bing 地図にはかつて、更新頻度を低くすることによってリリースによる破壊的変更のリスクを軽減する凍結ブランチもありました。 Azure Maps では、NPM モジュールを使用して、過去にリリースされたあらゆるマイナー バージョンを参照できるようになっています。
 
 > [!TIP]
 > Azure Maps では、縮小されたバージョンと縮小されていないバージョン両方の SDK が公開されています。 ファイル名から `.min` を削除するだけでかまいません。 縮小されていないバージョンは問題をデバッグする際に役立ちますが、運用環境では必ず、縮小されたバージョンを使用してください。その方がファイル サイズが小さくて済みます。
 
--   Azure Maps で Map クラスのインスタンスを作成した後、マップを操作する前にマップの `ready` または `load` イベントが発生するのをコードで待機する必要があります。 これらのイベントにより、マップ リソースがすべて読み込まれ、アクセスできる状態であることが保証されます。
--   両方のプラットフォームで基本マップに同様のタイリング システムを使用しますが、Bing 地図のタイルのディメンションは 256 ピクセルで、Azure Maps のタイルのディメンションは 512 ピクセルとなります。 そのため、Azure Maps で Bing 地図と同じマップ ビューを取得するには、Bing 地図で使用されるズーム レベルを、Azure Maps で 1 ずつ減算する必要があります。
--   Bing 地図では座標は `latitude, longitude` と呼ばれますが、Azure Maps では `longitude, latitude` が使用されます。 この形式は、ほとんどの GIS プラットフォームが準拠する標準の `[x, y]` と合致します。
+* Azure Maps で Map クラスのインスタンスを作成した後、マップを操作する前にマップの `ready` または `load` イベントが発生するのをコードで待機する必要があります。 これらのイベントにより、マップ リソースがすべて読み込まれ、アクセスできる状態であることが保証されます。
+* 両方のプラットフォームで基本マップに同様のタイリング システムを使用しますが、Bing 地図のタイルのディメンションは 256 ピクセルで、Azure Maps のタイルのディメンションは 512 ピクセルとなります。 そのため、Azure Maps で Bing 地図と同じマップ ビューを取得するには、Bing 地図で使用されるズーム レベルを、Azure Maps で 1 ずつ減算する必要があります。
+* Bing 地図では座標は `latitude, longitude` と呼ばれますが、Azure Maps では `longitude, latitude` が使用されます。 この形式は、ほとんどの GIS プラットフォームが準拠する標準の `[x, y]` と合致します。
 
--   Azure Maps Web SDK の図形は、GeoJSON スキーマに基づいています。 ヘルパー クラスは、"[atlas.data" 名前空間](/javascript/api/azure-maps-control/atlas.data)を通じて公開されます。 また、[atlas.Shape](/javascript/api/azure-maps-control/atlas.shape) というクラスがあります。これを使用して、GeoJSON オブジェクトをラップし、データ バインド可能な方法で簡単に更新および保守できるようにします。
--   Azure Maps の座標は、`[longitude, latitude]` または `new atlas.data.Position(longitude, latitude)` 形式のシンプルな数値配列として指定できる位置オブジェクトとして定義されます。
+* Azure Maps Web SDK の図形は、GeoJSON スキーマに基づいています。 ヘルパー クラスは、"[atlas.data" 名前空間](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)を通じて公開されます。 また、[atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) というクラスがあります。これを使用して、GeoJSON オブジェクトをラップし、データ バインド可能な方法で簡単に更新および保守できるようにします。
+* Azure Maps の座標は、`[longitude, latitude]` または `new atlas.data.Position(longitude, latitude)` 形式のシンプルな数値配列として指定できる位置オブジェクトとして定義されます。
 
 > [!TIP]
 > Position クラスには、`latitude, longitude` 形式の座標をインポートするための静的ヘルパー関数があります。 [atlas.data.Position.fromLatLng](/javascript/api/azure-maps-control/atlas.data.position) 関数は、多くの場合、Bing 地図コードの `new Microsoft.Maps.Location` 関数と置き換えることができます。
 
--   マップに追加される各図形にスタイル設定情報を指定するのではなく、Azure Maps によってデータからスタイルが分離されます。 データはデータ ソースに格納され、Azure Maps コードでデータをレンダリングするために使用される、レンダリング レイヤーに接続されます。 この手法では、パフォーマンスが向上します。 さらに、多くのレイヤーでは、データドリブンのスタイル設定がサポートされます。これにより、ビジネス ロジックをレイヤー スタイル オプションに追加して、図形で定義されているプロパティに基づいてレイヤー内で個々の図形をレンダリングする方法を変更することができます。
--   Azure Maps の `atlas.math` 名前空間には、便利な空間演算関数が数多く用意されていますが、これらは Bing 地図の空間演算モジュールのものとは異なります。 主な違いとして、Azure Maps には、二項演算 (和集合、積集合など) 用の組み込みの関数がありません。ただし Azure Maps は、オープン スタンダードである GeoJSON をベースとしているため、オープンソースのライブラリが数多く提供されています。 広く使われているオプションの 1 つとして、[turf js](http://turfjs.org/) があります。これは Azure Maps との相性がよく、多数の空間演算機能を利用できます。
+* マップに追加される各図形にスタイル設定情報を指定するのではなく、Azure Maps によってデータからスタイルが分離されます。 データはデータ ソースに格納され、Azure Maps コードでデータをレンダリングするために使用される、レンダリング レイヤーに接続されます。 この手法では、パフォーマンスが向上します。 さらに、多くのレイヤーでは、データドリブンのスタイル設定がサポートされます。これにより、ビジネス ロジックをレイヤー スタイル オプションに追加して、図形で定義されているプロパティに基づいてレイヤー内で個々の図形をレンダリングする方法を変更することができます。
+* Azure Maps の `atlas.math` 名前空間には、便利な空間演算関数が数多く用意されていますが、これらは Bing 地図の空間演算モジュールのものとは異なります。 主な違いとして、Azure Maps には、二項演算 (和集合、積集合など) 用の組み込みの関数がありません。ただし Azure Maps は、オープン スタンダードである GeoJSON をベースとしているため、オープンソースのライブラリが数多く提供されています。 広く使われているオプションの 1 つとして、[turf js](http://turfjs.org/) があります。これは Azure Maps との相性がよく、多数の空間演算機能を利用できます。
 
 Azure Maps 関連の用語を網羅した一覧については、[Azure Maps の用語集](./glossary.md)も参照してください。
 
@@ -95,41 +112,40 @@ Web アプリケーションを Bing 地図 V8 JavaScript SDK から Azure Maps 
 
 **トピック**
 
-- [マップを読み込む](#load-a-map)
-- [マップのローカライズ](#localizing-the-map)
-- [マップ ビューの設定](#setting-the-map-view)
-- [画鋲の追加](#adding-a-pushpin)
-- [カスタム画鋲の追加](#adding-a-custom-pushpin)
-- [ポリラインの追加](#adding-a-polyline)
-- [多角形の追加](#adding-a-polygon)
-- [情報ボックスの表示](#display-an-infobox)
-- [画鋲クラスタリング](#pushpin-clustering)
-- [ヒート マップを追加する](#add-a-heat-map)
-- [タイル レイヤーをオーバーレイする](#overlay-a-tile-layer)
-- [トラフィック データを表示する](#show-traffic-data)
-- [グラウンド オーバーレイを追加する](#add-a-ground-overlay)
-- [マップへの KML データの追加](#add-kml-data-to-the-map)
-- [描画ツールの追加](#add-drawing-tools)
-
+* [マップを読み込む](#load-a-map)
+* [マップのローカライズ](#localizing-the-map)
+* [マップ ビューの設定](#setting-the-map-view)
+* [画鋲の追加](#adding-a-pushpin)
+* [カスタム画鋲の追加](#adding-a-custom-pushpin)
+* [ポリラインの追加](#adding-a-polyline)
+* [多角形の追加](#adding-a-polygon)
+* [情報ボックスの表示](#display-an-infobox)
+* [画鋲クラスタリング](#pushpin-clustering)
+* [ヒート マップを追加する](#add-a-heat-map)
+* [タイル レイヤーをオーバーレイする](#overlay-a-tile-layer)
+* [トラフィック データを表示する](#show-traffic-data)
+* [グラウンド オーバーレイを追加する](#add-a-ground-overlay)
+* [マップへの KML データの追加](#add-kml-data-to-the-map)
+* [描画ツールの追加](#add-drawing-tools)
 
 ### <a name="load-a-map"></a>マップを読み込む
 
 どちらの SDK も、マップの読み込みは、同じ一連の手順に従って行います。
 
--   Map SDK への参照を追加します。
--   マップのプレースホルダーとして機能する `div` タグをページの本文に追加します。
--   ページが読み込まれたときに呼び出される JavaScript 関数を作成します。
--   それぞれのマップ クラスのインスタンスを作成します。
+* Map SDK への参照を追加します。
+* マップのプレースホルダーとして機能する `div` タグをページの本文に追加します。
+* ページが読み込まれたときに呼び出される JavaScript 関数を作成します。
+* それぞれのマップ クラスのインスタンスを作成します。
 
 **いくつかの主な相違点**
 
--   Bing 地図では、API のスクリプト参照で、またはマップ オプションとして、アカウント キーを指定する必要があります。 Azure Maps の認証資格情報は、マップ クラスのオプションとして指定されます。 これは、サブスクリプション キーまたは Azure Active Directory 情報にすることができます。
--   Bing 地図では、API のスクリプト参照でコールバック関数を受け取ります。これは、マップを読み込むために初期化関数を呼び出す際に使用されます。 Azure Maps では、ページの onload イベントを使用する必要があります。
--   マップがレンダリングされる `div` 要素を ID で参照するとき、Bing 地図では HTML セレクター (`#myMap`) が使用されるのに対し、Azure Maps では ID 値のみ (`myMap`) が使用されます。
--   Azure Maps の座標は、`[longitude, latitude]` 形式のシンプルな数値配列として指定できる位置オブジェクトとして定義されます。
--   Azure Maps のズーム レベルは、Bing 地図の例よりも 1 つ下のレベルとなります。これは、プラットフォーム間のタイリング システム サイズが異なるためです。
--   既定では、Azure Maps で、ズーム ボタンやマップ スタイル ボタンなどのナビゲーション コントロールはマップ キャンバスに追加されません。 しかし、マップ スタイル ピッカー、ズーム ボタン、コンパスまたは回転コントロール、およびピッチ コントロールを追加するためのコントロールがあります。
--   イベント ハンドラーは、マップ インスタンスの `ready` イベントを監視するために Azure Maps に追加されます。 これは、マップで WebGL コンテキストおよび必要なすべてのリソースの読み込みが完了したときに発生します。 このイベント ハンドラーでは、任意のポスト ロード コードを追加できます。
+* Bing 地図では、API のスクリプト参照で、またはマップ オプションとして、アカウント キーを指定する必要があります。 Azure Maps の認証資格情報は、マップ クラスのオプションとして指定されます。 これは、サブスクリプション キーまたは Azure Active Directory 情報にすることができます。
+* Bing 地図では、API のスクリプト参照でコールバック関数を受け取ります。これは、マップを読み込むために初期化関数を呼び出す際に使用されます。 Azure Maps では、ページの onload イベントを使用する必要があります。
+* マップがレンダリングされる `div` 要素を ID で参照するとき、Bing 地図では HTML セレクター (`#myMap`) が使用されるのに対し、Azure Maps では ID 値のみ (`myMap`) が使用されます。
+* Azure Maps の座標は、`[longitude, latitude]` 形式のシンプルな数値配列として指定できる位置オブジェクトとして定義されます。
+* Azure Maps のズーム レベルは、Bing 地図の例よりも 1 つ下のレベルとなります。これは、プラットフォーム間のタイリング システム サイズが異なるためです。
+* 既定では、Azure Maps で、ズーム ボタンやマップ スタイル ボタンなどのナビゲーション コントロールはマップ キャンバスに追加されません。 しかし、マップ スタイル ピッカー、ズーム ボタン、コンパスまたは回転コントロール、およびピッチ コントロールを追加するためのコントロールがあります。
+* イベント ハンドラーは、マップ インスタンスの `ready` イベントを監視するために Azure Maps に追加されます。 これは、マップで WebGL コンテキストおよび必要なすべてのリソースの読み込みが完了したときに発生します。 このイベント ハンドラーでは、任意のポスト ロード コードを追加できます。
 
 以下の例では、ニューヨークが中心の基本マップの読み込み方法が示されています。これは、座標の経度が -73.985、緯度が 40.747 で、ズーム レベルが 12 の Bing 地図の場合です。
 
@@ -152,7 +168,7 @@ Web アプリケーションを Bing 地図 V8 JavaScript SDK から Azure Maps 
         function initMap() {
             map = new Microsoft.Maps.Map('#myMap', {
                 credentials: '<Your Bing Maps Key>',
-          center: new Microsoft.Maps.Location(40.747, -73.985),
+                center: new Microsoft.Maps.Location(40.747, -73.985),
                 zoom: 12
             });
         }
@@ -169,9 +185,7 @@ Web アプリケーションを Bing 地図 V8 JavaScript SDK から Azure Maps 
 
 ブラウザーでこのコードを実行すると、次のイメージのようなマップが表示されます。
 
-<center>
-
-![Bing 地図のマップ](media/migrate-bing-maps-web-app/bing-maps-load-map.jpg)</center>
+![Bing 地図のマップ](media/migrate-bing-maps-web-app/bing-maps-load-map.jpg)
 
 **後: Azure Maps**
 
@@ -209,10 +223,10 @@ Web アプリケーションを Bing 地図 V8 JavaScript SDK から Azure Maps 
             map.events.add('ready', function () {
                 //Add zoom and map style controls to top right of map.
                 map.controls.add([
-                    new atlas.control.StyleControl(),
-                    new atlas.control.ZoomControl()
-                ], {
-                    position: 'top-right'
+                        new atlas.control.StyleControl(),
+                        new atlas.control.ZoomControl()
+                    ], {
+                        position: 'top-right'
                 });
             });
         }
@@ -226,18 +240,16 @@ Web アプリケーションを Bing 地図 V8 JavaScript SDK から Azure Maps 
 
 ブラウザーでこのコードを実行すると、次のイメージのようなマップが表示されます。
 
-<center>
+![Azure Maps のマップ](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)
 
-![Azure Maps のマップ](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)</center>
-
-Web アプリで Azure Maps マップ コントロールを設定して使用する方法に関する詳細なドキュメントについては、[こちら](./how-to-use-map-control.md)を参照してください。
+Web アプリで Azure Maps マップ コントロールを設定して使用する方法に関する詳細なドキュメントについては、[こちら](how-to-use-map-control.md)を参照してください。
 
 > [!TIP]
 > Azure Maps では、縮小されたバージョンと縮小されていないバージョン両方の SDK が公開されています。 ファイル名から `.min` を削除してください。 縮小されていないバージョンは問題をデバッグする際に役立ちますが、運用環境では必ず、縮小されたバージョンを使用してください。その方がファイル サイズが小さくて済みます。
 
 **その他のリソース**
 
--   Azure Maps では、マップ ビューの回転とピッチを行うためのナビゲーション コントロールも提供されます ([こちら](./map-add-controls.md)を参照してください)。
+* Azure Maps では、マップ ビューの回転とピッチを行うためのナビゲーション コントロールも提供されます ([こちら](map-add-controls.md)を参照してください)。
 
 ### <a name="localizing-the-map"></a>マップのローカライズ
 
@@ -253,13 +265,11 @@ Bing 地図をローカライズするために、API の `<script>` タグ参�
 
 以下に、言語が "fr-FR" に設定されている Bing 地図の例を示します。
 
-<center>
-
-![ローカライズされた Bing 地図のマップ](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)</center>
+![ローカライズされた Bing 地図のマップ](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)
 
 **後: Azure Maps**
 
-Azure Maps には、マップの言語と地域ビューを設定するためのオプションのみが用意されています。 市場パラメーターは、機能を制限するためには使用されません。 マップの言語と地域ビューを設定するための 2 つの異なる方法が用意されています。 最初のオプションでは、この情報をグローバルな `atlas` 名前空間に追加します。これにより、アプリ内のすべてのマップ コントロール インスタンスにより、これらの設定が既定で使用されます。 以下では、言語をフランス語 ("fr-FR") に、地域ビューを `"auto"` に設定します。
+Azure Maps には、マップの言語と地域ビューを設定するためのオプションのみが用意されています。 市場パラメーターは、機能を制限するためには使用されません。 マップの言語と地域ビューを設定するための 2 つの異なる方法が用意されています。 最初のオプションでは、この情報をグローバルな `atlas` 名前空間に追加します。これにより、アプリ内のすべてのマップ コントロール インスタンスにより、これらの設定が既定で使用されます。 以下では、言語をフランス語 ("fr-FR") に、地域ビューを `"Auto"` に設定します。
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -285,9 +295,7 @@ map = new atlas.Map('myMap', {
 
 言語が "fr" に設定され、ユーザーの地域が "fr-FR" に設定されている Azure Maps の例を以下に示します。
 
-<center>
-
-![ローカライズされた Azure Maps のマップ](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)</center>
+![ローカライズされた Azure Maps のマップ](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)
 
 ### <a name="setting-the-map-view"></a>マップ ビューの設定
 
@@ -308,9 +316,7 @@ map.setView({
 });
 ```
 
-<center>
-
-![Bing 地図のマップ ビュー設定](media/migrate-bing-maps-web-app/bing-maps-set-map-view.jpg)</center>
+![Bing 地図のマップ ビュー設定](media/migrate-bing-maps-web-app/bing-maps-set-map-view.jpg)
 
 **後: Azure Maps**
 
@@ -327,9 +333,7 @@ map.setStyle({
 });
 ```
 
-<center>
-
-![Azure Maps のマップ ビュー設定](media/migrate-bing-maps-web-app/azure-maps-set-map-view.jpg)</center>
+![Azure Maps のマップ ビュー設定](media/migrate-bing-maps-web-app/azure-maps-set-map-view.jpg)
 
 **その他のリソース**
 
@@ -340,9 +344,9 @@ map.setStyle({
 
 Azure Maps には、ポイント データをマップ上にレンダリングできる方法が複数あります。
 
--   HTML マーカー – 従来の DOM 要素を使用してポイントをレンダリングします。 HTML マーカーではドラッグがサポートされます。
--   シンボル レイヤー – WebGL コンテキスト内でアイコンやテキストを使用してポイントをレンダリングします。
--   バブル レイヤー - ポイントをマップ上で円としてレンダリングします。 円の半径は、データのプロパティに基づいてスケーリングできます。
+* HTML マーカー – 従来の DOM 要素を使用してポイントをレンダリングします。 HTML マーカーではドラッグがサポートされます。
+* シンボル レイヤー – WebGL コンテキスト内でアイコンやテキストを使用してポイントをレンダリングします。
+* バブル レイヤー - ポイントをマップ上で円としてレンダリングします。 円の半径は、データのプロパティに基づいてスケーリングできます。
 
 シンボルおよびバブル レイヤーの両方は、WebGL コンテキスト内にレンダリングされ、マップ上で非常に大きなポイント セットをレンダリングできます。 これらのレイヤーでは、データをデータ ソースに格納する必要があります。 `ready` イベントが発生した後、データ ソースとレンダリング レイヤーをマップに追加する必要があります。 HTML マーカーは、ページ内に DOM 要素としてレンダリングされ、データ ソースは使用されません。 ページに含まれる DOM 要素が多いほど、そのページの速度は遅くなります。 マップ上で数百を超えるポイントをレンダリングする場合は、代わりにレンダリング レイヤーのいずれかを使用することをお勧めします。
 
@@ -374,9 +378,7 @@ var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(51.5, -0.2)
 map.entities.add(pushpin);
 ```
 
-<center>
-
-![画鋲を追加する (Bing 地図)](media/migrate-bing-maps-web-app/bing-maps-add-pushpin.jpg)</center>
+![画鋲を追加する (Bing 地図)](media/migrate-bing-maps-web-app/bing-maps-add-pushpin.jpg)
 
 **後: HTML マーカーを使用した Azure Maps**
 
@@ -390,9 +392,7 @@ map.markers.add(new atlas.HtmlMarker({
 }));
 ```
 
-<center>
-
-![マーカーを追加する (Azure Maps)](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)</center>
+![マーカーを追加する (Azure Maps)](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)
 
 **後: シンボル レイヤーを使用した Azure Maps**
 
@@ -456,9 +456,7 @@ map.markers.add(new atlas.HtmlMarker({
 </html>
 ```
 
-<center>
-
-![シンボル レイヤーを追加する (Azure Maps)](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)</center>
+![シンボル レイヤーを追加する (Azure Maps)](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)
 
 **その他のリソース**
 
@@ -481,7 +479,6 @@ map.markers.add(new atlas.HtmlMarker({
 |:-----------------------------------------------------------------------:|
 | yellow-pushpin.png                                                        |
 
-
 **前: Bing 地図**
 
 Bing 地図では、画鋲の `icon` オプションに画像の URL を渡すことでカスタム マーカーを作成します。 画鋲の画像のポイントは、`anchor` オプションを使用して、マップ上の座標に合わせます。 Bing 地図のアンカー値は、画像の左上隅を基準とします。
@@ -497,9 +494,7 @@ layer.add(pushpin);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![カスタム画鋲を追加する (Bing 地図)](media/migrate-bing-maps-web-app/bing-maps-add-custom-pushpin.jpg)</center>
+![カスタム画鋲を追加する (Bing 地図)](media/migrate-bing-maps-web-app/bing-maps-add-custom-pushpin.jpg)
 
 **後: HTML マーカーを使用した Azure Maps**
 
@@ -517,9 +512,7 @@ map.markers.add(new atlas.HtmlMarker({
 }));
 ```
 
-<center>
-
-![カスタム マーカーを追加する (Azure Maps)](media/migrate-bing-maps-web-app/azure-maps-add-custom-marker.jpg)</center>
+![カスタム マーカーを追加する (Azure Maps)](media/migrate-bing-maps-web-app/azure-maps-add-custom-marker.jpg)
 
 **後: シンボル レイヤーを使用した Azure Maps**
 
@@ -584,9 +577,7 @@ Azure Maps のシンボル レイヤーでもカスタム イメージがサポ�
 </html>
 ```
 
-<center>
-
-![カスタム シンボル レイヤーを追加する (Bing 地図)](media/migrate-bing-maps-web-app/azure-maps-add-custom-symbol-layer.jpg)</center>
+![カスタム シンボル レイヤーを追加する (Bing 地図)](media/migrate-bing-maps-web-app/azure-maps-add-custom-symbol-layer.jpg)
 
 > [!TIP]
 > ポイントの高度なカスタム レンダリングを作成するには、複数のレンダリング レイヤーを一緒に使用します。 たとえば、異なる色付きの円で同じアイコンの画鋲を複数使用する場合は、色ごとに多くのイメージを作成するのではなく、バブル レイヤーの上にシンボル レイヤーをオーバーレイし、同じデータ ソースを参照するようにします。 これは作成するよりもはるかに効率的であり、マップに多くのさまざまなイメージが保持されます。
@@ -631,9 +622,7 @@ layer.add(polyline);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![Bing 地図のポリライン](media/migrate-bing-maps-web-app/bing-maps-line.jpg)</center>
+![Bing 地図のポリライン](media/migrate-bing-maps-web-app/bing-maps-line.jpg)
 
 **後: Azure Maps**
 
@@ -662,9 +651,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 }));
 ```
 
-<center>
-
-![Azure Maps の線](media/migrate-bing-maps-web-app/azure-maps-line.jpg)</center>
+![Azure Maps の線](media/migrate-bing-maps-web-app/azure-maps-line.jpg)
 
 **その他のリソース**
 
@@ -702,9 +689,7 @@ layer.add(polygon);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![Bing 地図の多角形](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)</center>
+![Bing 地図の多角形](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)
 
 **後: Azure Maps**
 
@@ -738,9 +723,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 }));
 ```
 
-<center>
-
-![Azure Maps の多角形](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)</center>
+![Azure Maps の多角形](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)
 
 **その他のリソース**
 
@@ -780,9 +763,7 @@ Microsoft.Maps.Events.addHandler(pushpin, 'click', function () {
 });
 ```
 
-<center>
-
-![Bing 地図の情報ボックス](media/migrate-bing-maps-web-app/bing-maps-infobox.jpg)</center>
+![Bing 地図の情報ボックス](media/migrate-bing-maps-web-app/bing-maps-infobox.jpg)
 
 **後: Azure Maps**
 
@@ -811,9 +792,7 @@ map.events.add('click', marker, function () {
 });
 ```
 
-<center>
-
-![Azure Maps のポップアップ](media/migrate-bing-maps-web-app/azure-maps-popup.jpg)</center>
+![Azure Maps のポップアップ](media/migrate-bing-maps-web-app/azure-maps-popup.jpg)
 
 > [!NOTE]
 > シンボル、バブル、線または多角形のレイヤーで同じことを行うには、マーカーではなく、マップのイベント コードにレイヤーを渡します。
@@ -883,7 +862,7 @@ Bing 地図では、GeoJSON モジュールを使用して GeoJSON データを�
             var clusterSize = cluster.containedPushpins.length;
 
             var radius = 20;    //Default radius to 20 pixels.
-            var fillColor = 'lime';   //Default to lime green.
+            var fillColor = 'lime';     //Default to lime green.
 
             if (clusterSize >= 750) {
                 radius = 40;   //If point_count >= 750, radius is 40 pixels.
@@ -917,18 +896,16 @@ Bing 地図では、GeoJSON モジュールを使用して GeoJSON データを�
 </html>
 ```
 
-<center>
-
-![Bing 地図のクラスタリング](media/migrate-bing-maps-web-app/bing-maps-clustering.jpg)</center>
+![Bing 地図のクラスタリング](media/migrate-bing-maps-web-app/bing-maps-clustering.jpg)
 
 **後: Azure Maps**
 
 Azure Maps では、データはデータ ソースによって追加および管理されます。 レイヤーはデータ ソースに接続され、そこでデータがレンダリングされます。 Azure Maps の `DataSource` クラスでは、いくつかのクラスタリング オプションが提供されます。
 
--   `cluster` – データ ソースにポイント データをクラスタリングするように指示します。 
--   `clusterRadius` -ポイントをまとめてクラスタリングする場合の半径 (ピクセル単位)。
--   `clusterMaxZoom` - クラスタリングが行われる最大ズーム レベル。 これを超えてズームインすると、すべてのポイントがシンボルとしてレンダリングされます。
--   `clusterProperties` - 各クラスター内のすべてのポイントに対して式を使用して計算され、各クラスター ポイントのプロパティに追加されるカスタム プロパティを定義します。
+* `cluster` – データ ソースにポイント データをクラスタリングするように指示します。 
+* `clusterRadius` -ポイントをまとめてクラスタリングする場合の半径 (ピクセル単位)。
+* `clusterMaxZoom` - クラスタリングが行われる最大ズーム レベル。 これを超えてズームインすると、すべてのポイントがシンボルとしてレンダリングされます。
+* `clusterProperties` - 各クラスター内のすべてのポイントに対して式を使用して計算され、各クラスター ポイントのプロパティに追加されるカスタム プロパティを定義します。
 
 クラスタリングが有効になっている場合、データ ソースでは、クラスタリングおよびクラスタリング解除されたデータ ポイントをレンダリングするためにレイヤーに送信します。 データ ソースでは、数十万のデータ ポイントをクラスタリングすることができます。 クラスタリングされたデータ ポイントには、次のプロパティがあります。
 
@@ -1045,9 +1022,7 @@ GeoJSON データは、`DataSource` クラスの `importDataFromUrl` 関数を�
 </html>
 ```
 
-<center>
-
-![Azure Maps のクラスタリング](media/migrate-bing-maps-web-app/azure-maps-clustering.jpg)</center>
+![Azure Maps のクラスタリング](media/migrate-bing-maps-web-app/azure-maps-clustering.jpg)
 
 **その他のリソース**
 
@@ -1113,9 +1088,7 @@ Bing 地図でヒート マップを作成するには、ヒート マップ モ
 </html>
 ```
 
-<center>
-
-![Bing 地図のヒートマップ](media/migrate-bing-maps-web-app/bing-maps-heatmap.jpg)</center>
+![Bing 地図のヒートマップ](media/migrate-bing-maps-web-app/bing-maps-heatmap.jpg)
 
 **後: Azure Maps**
 
@@ -1177,9 +1150,7 @@ Azure Maps で、GeoJSON データをデータ ソースに読み込み、その
 </html>
 ```
 
-<center>
-
-![Azure Maps のヒートマップ](media/migrate-bing-maps-web-app/azure-maps-heatmap.jpg)</center>
+![Azure Maps のヒートマップ](media/migrate-bing-maps-web-app/azure-maps-heatmap.jpg)
 
 **その他のリソース**
 
@@ -1207,9 +1178,7 @@ var weatherTileLayer = new Microsoft.Maps.TileLayer({
 map.layers.insert(weatherTileLayer);
 ```
 
-<center>
-
-![Bing 地図の加重ヒートマップ](media/migrate-bing-maps-web-app/bing-maps-weighted-heatmap.jpg)</center>
+![Bing 地図の加重ヒートマップ](media/migrate-bing-maps-web-app/bing-maps-weighted-heatmap.jpg)
 
 **後: Azure Maps**
 
@@ -1217,7 +1186,7 @@ Azure Maps では、他のレイヤーとほぼ同じように、タイル レ�
 
 > [!TIP]
 > Azure Maps では、レイヤーは、基本マップ レイヤーを含む、他のレイヤーの下に簡単にレンダリングできます。 多くの場合、読みやすいようにタイル レイヤーをマップ ラベルの下にレンダリングすることをお勧めします。 `map.layers.add` 関数には第 2 パラメーターがあります。これは、2 つ目のレイヤーの ID です。新しいレイヤーはこの下に挿入されます。 マップ ラベルの下にタイル レイヤーを挿入する場合は、次のコードを使用できます。
-> 
+>
 > `map.layers.add(myTileLayer, "labels");`
 
 ```javascript
@@ -1229,9 +1198,7 @@ map.layers.add(new atlas.layer.TileLayer({
 }), 'labels');
 ```
 
-<center>
-
-![Azure Maps の加重ヒートマップ](media/migrate-bing-maps-web-app/azure-maps-weighted-heatmap.jpg)</center>
+![Azure Maps の加重ヒートマップ](media/migrate-bing-maps-web-app/azure-maps-weighted-heatmap.jpg)
 
 > [!TIP]
 > タイル要求は、マップの `transformRequest` オプションを使用してキャプチャできます。 これにより、必要に応じて、要求に対してヘッダーの変更や追加を行うことができます。
@@ -1257,9 +1224,7 @@ Microsoft.Maps.loadModule('Microsoft.Maps.Traffic', function () {
 });
 ```
 
-<center>
-
-![Bing 地図の交通情報](media/migrate-bing-maps-web-app/bing-maps-traffic.jpg)</center>
+![Bing 地図の交通情報](media/migrate-bing-maps-web-app/bing-maps-traffic.jpg)
 
 **後: Azure Maps**
 
@@ -1272,15 +1237,11 @@ map.setTraffic({
 });
 ```
 
-<center>
-
-![Azure Maps の交通情報](media/migrate-bing-maps-web-app/azure-maps-traffic.jpg)</center>
+![Azure Maps の交通情報](media/migrate-bing-maps-web-app/azure-maps-traffic.jpg)
 
 Azure Maps の交通アイコンのいずれかをクリックすると、ポップアップに追加情報が表示されます。
 
-<center>
-
-![Azure Maps の交通情報のポップアップ](media/migrate-bing-maps-web-app/azure-maps-traffic-popup.jpg)</center>
+![Azure Maps の交通情報のポップアップ](media/migrate-bing-maps-web-app/azure-maps-traffic-popup.jpg)
 
 **その他のリソース**
 
@@ -1335,9 +1296,7 @@ Bing 地図でグラウンド オーバーレイを作成する場合は、オ�
 
 ブラウザーでこのコードを実行すると、次のイメージのようなマップが表示されます。
 
-<center>
-
-![Bing 地図のグラウンド オーバーレイ](media/migrate-bing-maps-web-app/bing-maps-ground-overlay.jpg)</center>
+![Bing 地図のグラウンド オーバーレイ](media/migrate-bing-maps-web-app/bing-maps-ground-overlay.jpg)
 
 **後: Azure Maps**
 
@@ -1398,9 +1357,7 @@ Azure Maps では、`atlas.layer.ImageLayer` クラスを使用して、ジオ�
 </html>
 ```
 
-<center>
-
-![Azure Maps のグラウンド オーバーレイ](media/migrate-bing-maps-web-app/azure-maps-ground-overlay.jpg)</center>
+![Azure Maps のグラウンド オーバーレイ](media/migrate-bing-maps-web-app/azure-maps-ground-overlay.jpg)
 
 **その他のリソース**
 
@@ -1433,7 +1390,7 @@ Azure と Bing のどちらのマップも、KML、KMZ、GeoRSS、GeoJSON、Well
                 center: new Microsoft.Maps.Location(40.747, -73.985),
                 zoom: 12
             });
-
+                
             Microsoft.Maps.loadModule('Microsoft.Maps.GeoXml', function () {
                 var callback = function (dataset) {
                     if (dataset.shapes) {
@@ -1461,9 +1418,7 @@ Azure と Bing のどちらのマップも、KML、KMZ、GeoRSS、GeoJSON、Well
 </html>
 ```
 
-<center>
-
-![Bing 地図の KML](media/migrate-bing-maps-web-app/bing-maps-kml.jpg)</center>
+![Bing 地図の KML](media/migrate-bing-maps-web-app/bing-maps-kml.jpg)
 
 **後: Azure Maps**
 
@@ -1558,9 +1513,7 @@ Azure Maps では、GeoJSON が Web SDK で使用される主なデータ形式�
 </html>
 ```
 
-<center>
-
-![Azure Maps の KML](media/migrate-bing-maps-web-app/azure-maps-kml.jpg)</center>
+![Azure Maps の KML](media/migrate-bing-maps-web-app/azure-maps-kml.jpg)
 
 **その他のリソース**
 
@@ -1617,9 +1570,7 @@ Bing 地図では、`Microsoft.Maps.loadModule` 関数を使用して `DrawingTo
 
 ```
 
-<center>
-
-![Bing 地図の描画ツール](media/migrate-bing-maps-web-app/bing-maps-drawing-tools.jpg)</center>
+![Bing 地図の描画ツール](media/migrate-bing-maps-web-app/bing-maps-drawing-tools.jpg)
 
 **後: Azure Maps**
 
@@ -1649,8 +1600,8 @@ Azure Maps では、アプリで参照する必要のある JavaScript ファイ
             //Initialize a map instance.
             map = new atlas.Map('myMap', {
                 view: 'Auto',
-                
-                //Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
+
+                //Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.                
                 authOptions: {
                     authType: 'subscriptionKey',
                     subscriptionKey: '<Your Azure Maps Key>'
@@ -1674,9 +1625,7 @@ Azure Maps では、アプリで参照する必要のある JavaScript ファイ
 </html>
 ```
 
-<center>
-
-![Azure Maps の描画ツール](media/migrate-bing-maps-web-app/azure-maps-drawing-tools.jpg)</center>
+![Azure Maps の描画ツール](media/migrate-bing-maps-web-app/azure-maps-drawing-tools.jpg)
 
 > [!TIP]
 > Azure Maps のレイヤーでは、描画ツールに備わっているさまざまな方法を利用してユーザーが図形を描画できます。 たとえば多角形を描画する場合、ユーザーは、個々のポイントをクリックして追加するか、マウスの左ボタンを押し下げたままマウスをドラッグしてパスを描画することができます。 これは、`DrawingManager` の `interactionType` オプションを使用して変更できます。
@@ -1686,7 +1635,7 @@ Azure Maps では、アプリで参照する必要のある JavaScript ファイ
 -   [ドキュメント](./set-drawing-options.md)
 -   [コード サンプル](https://azuremapscodesamples.azurewebsites.net/#Drawing-Tools-Module)
 
-## <a name="next-steps"></a>次の手順
+## <a name="additional-resources"></a>その他のリソース
 
 [オープンソースの Azure Maps Web SDK モジュール](open-source-projects.md#open-web-sdk-modules)をご覧ください。 これらのモジュールは、他にもさまざまな機能を備えており、自在にカスタマイズすることができます。
 
@@ -1733,3 +1682,14 @@ Azure Maps Web SDK の詳細について学習します。
 
 > [!div class="nextstepaction"]
 > [Azure Maps Web SDK サービス API のリファレンス ドキュメント](/javascript/api/azure-maps-control/)
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+クリーンアップすべきリソースはありません。
+
+## <a name="next-steps"></a>次のステップ
+
+Bing 地図から Azure Maps への移行について理解を深めます。
+
+> [!div class="nextstepaction"]
+> [Web サービスを移行する](migrate-from-bing-maps-web-services.md)

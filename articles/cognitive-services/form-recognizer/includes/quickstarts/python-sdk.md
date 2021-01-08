@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 12b49bf81328cc405337b682241aef2cd965c3de
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9762ca79f73b3333045d1c11376ab315aac2d55e
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356547"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808659"
 ---
 > [!IMPORTANT]
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 以下のリファレンス ドキュメントを参照してください。 
@@ -36,17 +36,23 @@ ms.locfileid: "96356547"
 
 Python をインストールしたら、次のコマンドを使用して最新バージョンの Form Recognizer クライアント ライブラリをインストールすることができます。
 
-#### <a name="version-30"></a>[バージョン 3.0](#tab/ga)
+#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
 
 ```console
 pip install azure-ai-formrecognizer
 ```
 
-#### <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/preview)
+> [!NOTE]
+> 最新の Form Recognizer は、API バージョン 2.0 を反映しています
+
+#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
 
 ```console
 pip install azure-ai-formrecognizer --pre
 ```
+
+> [!NOTE]
+> Form Recognizer プレビュー SDK は、API バージョン 2.1 プレビューを反映しています
 
 ---
 
@@ -91,7 +97,7 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 これらのコード スニペットでは、Python 用 Form Recognizer クライアント ライブラリを使用して次のタスクを実行する方法を示します。
 
-#### <a name="version-30"></a>[バージョン 3.0](#tab/ga)
+#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
 
 * [クライアントを認証する](#authenticate-the-client)
 * [フォーム コンテンツを認識する](#recognize-form-content)
@@ -100,7 +106,7 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
 * [カスタム モデルを管理する](#manage-your-custom-models)
 
-#### <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/preview)
+#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
 
 * [クライアントを認証する](#authenticate-the-client)
 * [フォーム コンテンツを認識する](#recognize-form-content)
@@ -123,7 +129,9 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 ## <a name="get-assets-for-testing"></a>テスト用のアセットを取得する
 
 トレーニングとテスト データの URL への参照を追加する必要があります。
-* カスタム モデルのトレーニング データの SAS URL を取得するには、Microsoft Azure Storage Explorer を開き、ご利用のコンテナーを右クリックし、 **[Shared Access Signature の取得]** を選択します。 アクセス許可の **[読み取り]** と **[表示]** がオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
+* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+  
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL の取得":::
 * 以下のサンプルに含まれるフォームや領収書のサンプル画像を使用します ([GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) から入手することもできます)。または、上記の手順を使用して、Blob Storage 内の各ドキュメントの SAS URL を取得することもできます。 
 
 > [!NOTE]
@@ -194,11 +202,15 @@ Tax: 104.4 has confidence 0.713
 Total: 1203.39 has confidence 0.774
 ```
 
-#### <a name="version-30"></a>[バージョン 3.0](#tab/ga)
-
-#### <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/preview)
 
 ## <a name="recognize-business-cards"></a>名刺を認識する
+
+#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> この機能は、選択した API バージョンでは使用できません。
+
+#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
 
 このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを認識して抽出する方法を示します。 URL から名刺を認識するには、`begin_recognize_business_cards_from_url` メソッドを使用します。 
 
@@ -207,7 +219,16 @@ Total: 1203.39 has confidence 0.774
 > [!TIP]
 > ローカルにある名刺の画像を認識することもできます。 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) のメソッドを参照してください (`begin_recognize_business_cards` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
 
+---
+
 ## <a name="recognize-invoices"></a>請求書を認識する
+
+#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
+
+> [!IMPORTANT]
+> この機能は、選択した API バージョンでは使用できません。
+
+#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
 
 このセクションでは、事前トレーニング済みのモデルを使用して、売上請求書から共通フィールドを認識して抽出する方法を示します。 URL から請求書を認識するには、`begin_recognize_invoices_from_url` メソッドを使用します。 
 

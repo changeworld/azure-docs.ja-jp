@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/28/2020
+ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 0eb7f4c8daf74c629e7b83ce05e6ac17719755ba
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: fec95dc033eb5eacaf79f5bbd2b6b294628667b9
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454424"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725091"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EasySSO for Bamboo の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "92454424"
 * Bamboo にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Bamboo に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,27 +37,26 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* EasySSO for Bamboo では、 **SP および IDP** Initiated SSO がサポートされます
-* EasySSO for Bamboo では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
-* EasySSO for Bamboo を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* EasySSO for Bamboo では、**SP および IDP** Initiated SSO がサポートされます
+* EasySSO for Bamboo では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-easysso-for-bamboo-from-the-gallery"></a>ギャラリーからの EasySSO for Bamboo の追加
 
 Azure AD への EasySSO for Bamboo の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に EasySSO for Bamboo を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **EasySSO for Bamboo** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**EasySSO for Bamboo**」と入力します。
 1. 結果のパネルから **[EasySSO for Bamboo]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-bamboo"></a>EasySSO for Bamboo の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-easysso-for-bamboo"></a>EasySSO for Bamboo の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、EasySSO for Bamboo に対する Azure AD SSO を構成してテストします。 SSO を機能させるためには、Azure AD ユーザーと EasySSO for Bamboo の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-EasySSO for Bamboo で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+EasySSO for Bamboo で Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -72,7 +69,7 @@ EasySSO for Bamboo で Azure AD SSO を構成してテストするには、次�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **EasySSO for Bamboo** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. Azure portal の **EasySSO for Bamboo** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -105,7 +102,7 @@ EasySSO for Bamboo で Azure AD SSO を構成してテストするには、次�
     | urn:oid:2.5.4.4 | User.surname |
     | urn:oid:2.5.4.42 | User.givenname |
     
-    Azure AD ユーザーに対して既に **sAMAccountName** を構成済みの場合には、 **sAMAccountName** 属性に **urn:oid:0.9.2342.19200300.100.1.1** をマップする必要があります。
+    Azure AD ユーザーに対して既に **sAMAccountName** を構成済みの場合には、**sAMAccountName** 属性に **urn:oid:0.9.2342.19200300.100.1.1** をマップする必要があります。
     
 1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** セクションで **[証明書 (Base64)]** または **[フェデレーション メタデータ XML]** オプションの **[ダウンロード]** リンクをクリックし、そのいずれかまたは両方をコンピューターに保存します。 これは、後で Bamboo EasySSO を構成するために必要になります。
 
@@ -133,19 +130,25 @@ EasySSO for Bamboo で Azure AD SSO を構成してテストするには、次�
 1. アプリケーションの一覧で、 **[EasySSO for Bamboo]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-easysso-for-bamboo-sso"></a>EasySSO for Bamboo SSO の構成
 
-1. 管理者権限で Atlassian Bamboo インスタンスにサインインし、 **[Manage Apps]\(アプリの管理\)** セクションに移動します。 
+1. Zoom 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして、**My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後、 **[Zoom のセットアップ]** をクリックすると、Zoom アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して Zoom にサインインします。 ブラウザー拡張機能により、アプリケーションが自動的に構成され、手順 3. から 10. が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+3. Zoom を手動でセットアップする場合は、別の Web ブラウザー ウィンドウで、Zoom 企業サイトに管理者としてサインインします。
+
+1. **[Manage Apps]\(アプリの管理\)** セクションに移動します。 
 
     ![[Manage Apps]\(アプリの管理\)](./media/easysso-for-bamboo-tutorial/bamboo-admin-1.png)
 
@@ -175,7 +178,7 @@ EasySSO for Bamboo で Azure AD SSO を構成してテストするには、次�
  
 6. ページの下部にある **[Save]\(保存\)** ボタンをクリックします。 メタデータ ファイルまたは証明書ファイルの内容が構成フィールドで解析されていることを確認できます。 これで、EasySSO for Bamboo の構成は完了しました。
 
-7. 最適なテスト エクスペリエンスを得るには、 **[Look & Feel]\(外観\)** タブに移動し、 **[SAML Login Button]\(SAML ログイン ボタン\)** オプションをオンにします。 これにより、Bamboo ログイン画面の独立したボタンが有効になり、Azure AD SAML 統合をエンド ツー エンドでテストできるようになります。 このボタンをオンのままにすることで、運用モードでの配置、色、および翻訳を構成することもできます。
+7. 最適なテスト エクスペリエンスを得るには、 **[Look & Feel]\(外観\)** タブに移動し、 **[SAML Login Button]\(SAML ログイン ボタン\)** オプションをオンにします。 これにより、Bamboo ログイン画面の独立したボタンが有効になり、Azure AD SAML 統合をエンド ツー エンドでテストできるようになります。 このボタンをオンのままにすることで、運用モードでの配置、色、翻訳を構成することもできます。
 
     ![[Look & Feel]\(外観\)](./media/easysso-for-bamboo-tutorial/bamboo-admin-5.png)
 
@@ -194,9 +197,9 @@ EasySSO for Bamboo で Azure AD SSO を構成してテストするには、次�
 
 ### <a name="idp-initiated-workflow"></a>IdP-Initiated ワークフロー
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、マイ アプリを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [EasySSO for Bamboo] タイルをクリックすると、SSO を設定した Bamboo インスタンスに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+マイ アプリで [EasySSO for Bamboo] タイルをクリックすると、SSO を設定した Bamboo インスタンスに自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
 ### <a name="sp-initiated-workflow"></a>SP-Initiated ワークフロー
 
@@ -210,20 +213,10 @@ Azure AD からのリダイレクト後に、次の画面が表示される可�
 
 ![EasySSO のエラー画面](./media/easysso-for-bamboo-tutorial/bamboo-admin-8.png)
 
-このような場合には、 [こちらのページの手順]( https://techtime.co.nz/display/TECHTIME/EasySSO+How+to+get+the+logs#EasySSOHowtogetthelogs-RETRIEVINGTHELOGS)に従って **atlassian-bamboo.log** ファイルにアクセスする必要があります。 EasySSO エラー ページにある参照 ID を使って、エラーの詳細を確認できます。
+このような場合には、[こちらのページの手順]( https://techtime.co.nz/display/TECHTIME/EasySSO+How+to+get+the+logs#EasySSOHowtogetthelogs-RETRIEVINGTHELOGS)に従って **atlassian-bamboo.log** ファイルにアクセスする必要があります。 EasySSO エラー ページにある参照 ID を使って、エラーの詳細を確認できます。
 
 ログ メッセージの内容について疑問がある場合には、[EasySSO サポート チーム](mailto:support@techtime.co.nz)にお問い合わせください。
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="next-steps"></a>次のステップ
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
-
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
-
-- [Azure AD で EasySSO for Bamboo を試す](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
-
-- [高度な可視性と制御によって EasySSO for Bamboo を保護する方法](/cloud-app-security/proxy-intro-aad)
+EasySSO for Bamboo を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

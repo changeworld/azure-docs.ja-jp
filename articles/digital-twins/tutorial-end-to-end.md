@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: f788c9e78790e6872870869e2bc153e1b1451e51
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 64e648cf6ae3c763d3e9ab1a6970f48c84331bad
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566539"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845635"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>チュートリアル:エンド ツー エンドのソリューションを構築する
 
@@ -52,8 +52,6 @@ Azure Digital Twins インスタンスは、環境のライブ データによ�
 * Azure Digital Twins API を呼び出すためのコンソール インターフェイス
 * *SampleClientApp* - サンプル Azure Digital Twins ソリューション
 * *SampleFunctionsApp* - IoT Hub および Azure Digital Twins のイベントから受け取ったテレメトリの結果として Azure Digital Twins グラフを更新する Azure Functions アプリ
-
-このサンプル プロジェクトには、対話型の承認コンポーネントも含まれています。 プロジェクトを起動するたびに、ブラウザー ウィンドウが開いて、自分の Azure アカウントへのログインを求められます。
 
 ### <a name="instantiate-the-pre-created-twin-graph"></a>事前に作成されたツイン グラフをインスタンス化する
 
@@ -134,7 +132,7 @@ _**AdtE2ESample**_ プロジェクトが開いた状態の Visual Studio ウィ�
 
 *[Functions インスタンス]* ページで、該当するサブスクリプションを選択します。 これで、サブスクリプション内の "*リソース グループ*" がボックスに反映されます。
 
-インスタンスのリソース グループを選択し、 *[+ 新しい Azure 関数の作成]* をクリックします。
+インスタンスのリソース グループを選択し、 *+* をクリックして新しい Azure 関数を作成します。
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="Visual Studio で Azure 関数を発行する: Functions インスタンス (関数アプリの前)":::
 

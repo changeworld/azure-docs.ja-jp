@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2020
+ms.date: 12/28/2020
 ms.author: memildin
-ms.openlocfilehash: 484a8c7c230863f230719ddaf4e98a6248512bcc
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 488aff74b632cbec97cbe9a07d4add953ba29fea
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560255"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796085"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -40,6 +40,12 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 - [グローバル管理者が自分にテナントレベルのアクセス許可を付与できるようになりました](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
 - [2 つの新しい Azure Defender プラン: Azure Defender for DNS と Azure Defender for Resource Manager (プレビュー段階)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
 - [Azure portal の新しいセキュリティ アラート ページ (プレビュー)](#new-security-alerts-page-in-the-azure-portal-preview)
+- [Azure SQL Database と SQL Managed Instance における Security Center エクスペリエンスの刷新](#revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance)
+- [資産インベントリ ツールとフィルターの更新](#asset-inventory-tools-and-filters-updated)
+- [SSL 証明書を要求する Web アプリに関する推奨事項がセキュリティ スコアの対象から除外](#recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score)
+- [環境、重大度、利用可能な応答用の新しいフィルターが推奨事項のページに追加](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)
+- [連続エクスポートで新しいデータ型が利用可能になり、deployifnotexist ポリシーが改善](#continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies)
+
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>マシン上の SQL サーバー向け Azure Defender の一般提供開始
 
@@ -114,6 +120,87 @@ Azure Security Center のセキュリティ アラート ページは、次の�
 :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="新しいアラート エクスペリエンス (プレビュー) へのリンクが表示されたバナー":::
 
 新しいアラート エクスペリエンスでサンプル アラートを作成するには、「[Azure Defender のサンプル アラートを生成する](security-center-alert-validation.md#generate-sample-azure-defender-alerts)」を参照してください。
+
+
+### <a name="revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance における Security Center エクスペリエンスの刷新 
+
+SQL 内の Security Center エクスペリエンスでは、Security Center と Azure Defender for SQL の次の機能にアクセスできます。
+
+- **セキュリティに関する推奨事項** - Security Center では、接続されているすべての Azure リソースのセキュリティの状態を定期的に分析して、潜在的なセキュリティの構成ミスを特定します。 そのうえで、それらの脆弱性を修復し、組織のセキュリティ体制を改善する方法に関する推奨事項を提供します。
+- **セキュリティ アラート** - SQL インジェクション、ブルートフォース攻撃、特権の悪用などの脅威がないか、Azure SQL アクティビティを継続的に監視する検出サービス。 このサービスは、Security Center で詳細なアクション指向のセキュリティ アラートをトリガーし、Microsoft の Azure ネイティブ SIEM ソリューションである Azure Sentinel を使用して調査を継続するためのオプションを提供します。
+- **調査結果** – Azure SQL 構成を継続的に監視し、脆弱性を修復するのに役立つ脆弱性評価サービスです。 評価スキャンでは、Azure SQL のセキュリティ状態の概要が詳細なセキュリティ調査結果と一緒に示されます。     
+
+:::image type="content" source="media/release-notes/azure-security-center-experience-in-sql.png" alt-text="Azure Security Center の SQL 用セキュリティ機能が Azure SQL 内から利用可能":::
+
+
+### <a name="asset-inventory-tools-and-filters-updated"></a>資産インベントリ ツールとフィルターの更新
+
+Azure Security Center のインベントリ ページが更新され、次の変更が加えられました。
+
+- **[Guides and feedback]\(ガイドとフィードバック\)** がツール バーに追加されました。 これにより、関連する情報やツールへのリンクがあるペインが開きます。 
+- **サブスクリプション フィルター** が、リソースで使用可能な既定のフィルターに追加されました。
+- 現在のフィルター オプションを Azure Resource Graph クエリとして開くための **[クエリを開く]** リンク (以前は "Resource Graph エクスプローラーで表示" という名前でした)。
+- 各フィルターの **演算子オプション**。 "=" に加えて追加の論理演算子を選択できるようになりました。 たとえば、タイトルに "encrypt" という文字列が含まれているアクティブな推奨事項があるすべてのリソースを検索することができます。 
+
+    :::image type="content" source="media/release-notes/inventory-filter-operators.png" alt-text="資産インベントリのフィルターでの演算子オプションのコントロール":::
+
+インベントリの詳細については、「[資産インベントリを使用してリソースの調査と管理を行う](asset-inventory.md)」を参照してください。
+
+
+### <a name="recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score"></a>SSL 証明書を要求する Web アプリに関する推奨事項がセキュリティ スコアの対象から除外
+
+推奨事項 "Web apps should request an SSL certificate for all incoming requests (Web アプリではすべての受信要求に対して SSL 証明書を要求する必要がある)" が、 **[Manage access and permissions]\(アクセスおよびアクセス許可の管理\)** (最大 4 ポイントに相当) セキュリティ コントロールから **[Implement security best practices]\(セキュリティのベスト プラクティスを実装する\)** (ポイントなしに相当) に移動されました。 
+
+Web アプリが証明書を要求するようにすることで、確実にセキュリティが向上します。 ただし、公開されている Web アプリの場合は関係ありません。 HTTPS ではなく HTTP 経由でサイトにアクセスする場合は、クライアント証明書を受信しません。 したがって、アプリケーションにクライアント証明書が必要な場合は、HTTP 経由でのアプリケーションへの要求を許可しないでください。 詳細については、「[Azure App Service に対する TLS 相互認証の構成](../app-service/app-service-web-configure-tls-mutual-auth.md)」を参照してください。
+
+この変更により、この推奨事項は、スコアに影響を与えない、推奨のベスト プラクティスになりました。 
+
+各セキュリティ コントロールに含まれる推奨事項については、「[セキュリティ コントロールとその推奨事項](secure-score-security-controls.md#security-controls-and-their-recommendations)」を参照してください。
+
+
+### <a name="recommendations-page-has-new-filters-for-environment-severity-and-available-responses"></a>環境、重大度、利用可能な応答用の新しいフィルターが推奨事項のページに追加
+
+Azure Security Center では、接続されているすべてのリソースを監視し、セキュリティの推奨事項を生成します。 これらの推奨事項を使用して、ハイブリッド クラウドの体制を強化し、組織、業界、および国に関連するポリシーと標準へのコンプライアンス状況を追跡します。
+
+Security Center のカバレッジと機能が拡張されるにつれて、セキュリティに関する推奨事項の一覧が毎月増えていきます。 たとえば、「[Azure セキュリティ ベンチマークのカバレッジを広げるために追加された、29 個のプレビュー推奨事項](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)」を参照してください。
+
+一覧が増加するのに伴い、フィルターを使用して最も関心のある推奨事項を絞り込む機能が求められるようになりました。 11 月に、推奨事項のページにフィルターを追加しました (「[推奨事項の一覧にフィルターを追加](#recommendations-list-now-includes-filters)」を参照してください)。
+
+この月に追加されたフィルターには、次の条件で推奨事項の一覧を絞り込むためのオプションがあります。
+
+- **環境** - AWS、GCP、または Azure リソース (または任意の組み合わせ) の推奨事項を表示します
+- **重大度** - Security Center によって設定された重大度分類に従って推奨事項を表示します
+- **応答アクション** - Security Center の応答オプションの可用性に応じて推奨事項を表示します (クイック修正、拒否、強制)
+
+    > [!TIP]
+    > 応答アクション フィルターは、 **[Quick fix available (Yes/No)]\(クイック修正を使用できます (はい/いいえ)\)** フィルターに置き換わるものです。 
+    > 
+    > これらの応答オプションの詳細については、次を参照してください。
+    > - [クイック修正による修復](security-center-remediate-recommendations.md#quick-fix-remediation)
+    > - [適用/拒否の推奨事項を使用した構成ミスの防止](prevent-misconfigurations.md)
+
+:::image type="content" source="./media/release-notes/added-recommendations-filters.png" alt-text="セキュリティ コントロールにグループ化された推奨事項" lightbox="./media/release-notes/added-recommendations-filters.png":::
+
+### <a name="continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies"></a>連続エクスポートで新しいデータ型が利用可能になり、deployifnotexist ポリシーが改善
+
+Azure Security Center の連続エクスポート ツールを使用すると、環境内の他の監視ツールで使用するために Security Center の推奨事項とアラートをエクスポートできます。
+
+連続エクスポートを使用して、エクスポートする "内容" とエクスポート先の "場所" を完全にカスタマイズできます。 詳細については、「[Security Center のデータを連続的にエクスポートする](continuous-export.md)」を参照してください。
+
+これらのツールは、次の点で強化および拡張されました。
+
+- **連続エクスポートの deployifnotexist ポリシーの強化**。 これらのポリシーで、以下のことが可能になりました。
+
+    - **構成が有効になっているかどうかの確認。** 有効になっていない場合、ポリシーによって非準拠として表示され、準拠しているリソースが作成されます。 提供されている Azure Policy テンプレートの詳細については、「[連続エクスポートを設定する](continuous-export.md#set-up-a-continuous-export)」の [Azure ポリシーを使用して大規模にデプロイする] タブを参照してください。
+
+    - **セキュリティ調査結果のエクスポートのサポート。** Azure Policy テンプレートを使用する場合、調査結果が含まれるように連続エクスポートを構成できます。 これは、"サブ" 推奨事項 (たとえば、脆弱性評価スキャナーからの調査結果) や、"親" 推奨事項 "システム更新プログラムをマシンにインストールする必要がある" に対する特定のシステム更新プログラムを含む推奨事項をエクスポートする場合に関連します。
+    
+    - **セキュリティ スコア データのエクスポートのサポート。**
+
+- **規制コンプライアンス評価データの追加 (プレビュー)。** 任意のカスタム イニシアティブを含め、規制コンプライアンス評価の更新を Log Analytics ワークスペースまたはイベント ハブに連続的にエクスポートできるようになりました。 この機能は、各国のクラウドまたはソブリン クラウドでは使用できません。
+
+    :::image type="content" source="media/release-notes/continuous-export-regulatory-compliance-option.png" alt-text="連続エクスポート データに規制コンプライアンス評価情報を含めるためのオプション。":::
+
 
 ## <a name="november-2020"></a>2020 年 11 月
 
@@ -462,9 +549,9 @@ Azure Security Center の資産インベントリ ページを使用すると、
 
 Security Center では、Azure リソースのセキュリティの状態が定期的に分析されて、潜在的なセキュリティ脆弱性が特定されます。 その後、これらの脆弱性を修正する方法に関する推奨事項が提供されます。
 
-いずれかのリソースに未処理のレコメンデーションがある場合は、インベントリに表示されます。
+いずれかのリソースに未処理の推奨事項がある場合は、インベントリに表示されます。
 
-詳細については、[資産インベントリおよび管理ツールを使用したリソースの調査と管理](asset-inventory.md)に関するページを参照してください。
+詳細については、「[資産インベントリを使用してリソースの調査と管理を行う](asset-inventory.md)」を参照してください。
 
 
 
@@ -805,7 +892,7 @@ Security Center でのコンテナー セキュリティの詳細については
 
     * パスの末尾でワイルドカードを使用し、そのフォルダーとサブフォルダー内のすべての実行可能ファイルを許可します
 
-    * パスの途中でワイルドカードを使用し、変化するフォルダー名を持つ既知の実行可能ファイルの名前 (既知の実行可能ファイルを含む個人ユーザー フォルダー、自動生成されたフォルダー名など) を有効にします。
+    * パスの途中でワイルドカードを使用し、変化するフォルダー名を備えた既知の実行可能ファイルの名前 (既知の実行可能ファイルを含む個人ユーザー フォルダー、自動生成されたフォルダー名など) を有効にします。
 
 
 適応型アプリケーション制御の詳細については、[こちら](security-center-adaptive-application.md)をご覧ください。

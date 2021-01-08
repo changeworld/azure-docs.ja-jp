@@ -6,17 +6,17 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 12/18/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ecc6e1e1a543f3190e9f73512ca0b9ae45cc3fe9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 495b4427fb7e456c60a489b9ce3d19c2a44bd918
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335215"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680894"
 ---
-# <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>チュートリアル:Azure Data Box から SMB 経由でデータをコピーする (プレビュー)
+# <a name="tutorial-copy-data-from-azure-data-box-via-smb"></a>チュートリアル:Azure Data Box から SMB 経由でデータをコピーする
 
 このチュートリアルでは、Data Box に接続し、ローカル Web UI を使用して Data Box のデータをオンプレミスのデータ サーバーにコピーする方法について説明します。 Data Box デバイスには、Azure Storage アカウントからエクスポートされたデータが含まれています。
 
@@ -27,8 +27,6 @@ ms.locfileid: "94335215"
 > * 前提条件
 > * Data Box に接続する
 > * Data Box からデータをコピーする
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
