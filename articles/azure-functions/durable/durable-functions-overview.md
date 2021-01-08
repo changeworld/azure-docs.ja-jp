@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 3725970c982c2d060685bf0b99d12a8fc998f20a
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 2079a3a7c9ce6817186e743bb09d31facdecf0e7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763576"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97931723"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions とは
 
@@ -697,7 +697,7 @@ Durable Functions 拡張機能の背後には、コードでワークフロー�
 
 ## <a name="billing"></a>課金
 
-Durable Functions は Azure Functions と同じように課金されます。 詳細については、[Azure Functions の価格](https://azure.microsoft.com/pricing/details/functions/)に関するページを参照してください。 Azure Functions の[従量課金プラン](../functions-scale.md#consumption-plan)でオーケストレーター関数を実行する場合は、注意する必要がある課金動作がいくつかあります。 これらの動作の詳細については、「[Durable Functions の課金](durable-functions-billing.md)」の記事を参照してください。
+Durable Functions は Azure Functions と同じように課金されます。 詳細については、[Azure Functions の価格](https://azure.microsoft.com/pricing/details/functions/)に関するページを参照してください。 Azure Functions の[従量課金プラン](../consumption-plan.md)でオーケストレーター関数を実行する場合は、注意する必要がある課金動作がいくつかあります。 これらの動作の詳細については、「[Durable Functions の課金](durable-functions-billing.md)」の記事を参照してください。
 
 ## <a name="jump-right-in"></a>すぐに始める
 

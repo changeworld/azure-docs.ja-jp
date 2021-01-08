@@ -30,7 +30,7 @@ ms.locfileid: "93308234"
 
 ## <a name="business-scenarios-and-the-machine-learning-algorithm-cheat-sheet"></a>ビジネス シナリオと機械学習アルゴリズム チート シート
 
-[Azure Machine Learning アルゴリズム チート シート](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri)は、最初の考慮事項である、「 **データを使って何をしたいか** 」について検討するのに役立ちます。 Machine Learning アルゴリズム チート シートで、目的のタスクを探して、予測分析ソリューション用の [Azure Machine Learning デザイナー](./concept-designer.md?WT.mc_id=docs-article-lazzeri)のアルゴリズムを見つけます。 
+[Azure Machine Learning アルゴリズム チート シート](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri)は、最初の考慮事項である、「**データを使って何をしたいか**」について検討するのに役立ちます。 Machine Learning アルゴリズム チート シートで、目的のタスクを探して、予測分析ソリューション用の [Azure Machine Learning デザイナー](./concept-designer.md?WT.mc_id=docs-article-lazzeri)のアルゴリズムを見つけます。 
 
 Machine Learning デザイナーは、[多クラス デシジョン フォレスト](./algorithm-module-reference/multiclass-decision-forest.md?WT.mc_id=docs-article-lazzeri)、[レコメンデーション システム](./algorithm-module-reference/evaluate-recommender.md?WT.mc_id=docs-article-lazzeri)、[ニューラル ネットワーク回帰](./algorithm-module-reference/neural-network-regression.md?WT.mc_id=docs-article-lazzeri)、[多クラス ニューラル ネットワーク](./algorithm-module-reference/multiclass-neural-network.md?WT.mc_id=docs-article-lazzeri)、[K-Means クラスタリング](./algorithm-module-reference/k-means-clustering.md?WT.mc_id=docs-article-lazzeri)などのアルゴリズムの包括的なポートフォリオを提供します。 各アルゴリズムは、機械学習の異なる種類の問題に対処するように設計されています。 完全な一覧、各アルゴリズムのしくみとパラメーターを調整してアルゴリズムを最適化する方法に関するドキュメントについては、「[Azure Machine Learning デザイナーのアルゴリズムとモジュールのリファレンス](./algorithm-module-reference/module-reference.md?WT.mc_id=docs-article-lazzeri)」を参照してください。
 

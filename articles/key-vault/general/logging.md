@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b1f7b115c5a8198b53e36672a891903a41a9511b
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: d900659f3ca8a8688c1b1d3a66cd888f37521fc6
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704131"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883386"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 
@@ -150,9 +150,38 @@ Key Vault の概要については、「[Azure Key Vault とは](overview.md)」
 
 | operationName | REST API コマンド |
 | --- | --- |
-
-| **CertificateGet** |[証明書に関する情報を取得します](/rest/api/keyvault/getcertificate) | | **CertificateCreate** |[証明書を作成します](/rest/api/keyvault/createcertificate) | | **CertificateImport** |[証明書をコンテナーにインポートします](/rest/api/keyvault/importcertificate) | | **CertificateUpdate** |[証明書を更新します](/rest/api/keyvault/updatecertificate) | | **CertificateList** |[コンテナー内の証明書を一覧表示します](/rest/api/keyvault/getcertificates) | | **CertificateListVersions** |[証明書のバージョンを一覧表示します](/rest/api/keyvault/getcertificateversions) | | **CertificateDelete** |[証明書を削除します](/rest/api/keyvault/deletecertificate) | | **CertificatePurge** |[証明書を消去します](/rest/api/keyvault/purgedeletedcertificate) | | **CertificateBackup** |[証明書をバックアップします](/rest/api/keyvault/backupcertificate) | | **CertificateRestore** |[証明書を復元します](/rest/api/keyvault/restorecertificate) | | **CertificateRecover** |[証明書を復旧します](/rest/api/keyvault/recoverdeletedcertificate) | | **CertificateGetDeleted** |[削除された証明書を取得します](/rest/api/keyvault/getdeletedcertificate) | | **CertificateListDeleted** |[コンテナー内の削除された証明書を一覧表示します](/rest/api/keyvault/getdeletedcertificates) | | **CertificatePolicyGet** |[証明書ポリシーを取得します](/rest/api/keyvault/getcertificatepolicy) | | **CertificatePolicyUpdate** |[証明書ポリシーを更新します](/rest/api/keyvault/updatecertificatepolicy) | | **CertificatePolicySet** |[証明書ポリシーを作成します](/rest/api/keyvault/createcertificate) | | **CertificateContactsGet** |[証明書の連絡先を取得します](/rest/api/keyvault/getcertificatecontacts) | | **CertificateContactsSet** |[証明書の連絡先を設定します](/rest/api/keyvault/setcertificatecontacts) | | **CertificateContactsDelete** |[証明書の連絡先を削除します](/rest/api/keyvault/deletecertificatecontacts) | | **CertificateIssuerGet** |[証明書の発行者を取得します](/rest/api/keyvault/getcertificateissuer) | | **CertificateIssuerSet** |[証明書の発行者を設定します](/rest/api/keyvault/setcertificateissuer) | | **CertificateIssuerUpdate** |[証明書の発行者を更新します](/rest/api/keyvault/updatecertificateissuer) | | **CertificateIssuerDelete** |[証明書の発行者を削除します](/rest/api/keyvault/deletecertificateissuer) | | **CertificateIssuersList** |[証明書の発行者を一覧表示します](/rest/api/keyvault/getcertificateissuers) | | **CertificateEnroll** |証明書を登録します| | **CertificateRenew** |証明書を更新します| | **CertificatePendingGet** |保留中の証明書を取得します | | **CertificatePendingMerge** |証明書のマージを保留しています | | **CertificatePendingUpdate** |証明書の更新を保留しています | | **CertificatePendingDelete** |保留中の証明書を削除します | | **CertificateNearExpiryEventGridNotification** |有効期限が近づいている証明書イベントが公開されました |
-<a name="-certificateexpiredeventgridnotification-certificate-expired-event-published-"></a>| **CertificateExpiredEventGridNotification** |期限切れの証明書イベントが公開されました |
+| **CertificateGet** |[証明書に関する情報を取得する](/rest/api/keyvault/getcertificate) |
+| **CertificateCreate** |[証明書を作成します](/rest/api/keyvault/createcertificate) |
+| **CertificateImport** |[証明書をコンテナーにインポートします](/rest/api/keyvault/importcertificate) |
+| **CertificateUpdate** |[証明書を更新します](/rest/api/keyvault/updatecertificate) |
+| **CertificateList** |[コンテナー内の証明書を一覧表示します](/rest/api/keyvault/getcertificates) |
+| **CertificateListVersions** |[証明書のバージョンを一覧表示します](/rest/api/keyvault/getcertificateversions) |
+| **CertificateDelete** |[証明書を削除します](/rest/api/keyvault/deletecertificate) |
+| **CertificatePurge** |[証明書を消去します](/rest/api/keyvault/purgedeletedcertificate) |
+| **CertificateBackup** |[証明書をバックアップします](/rest/api/keyvault/backupcertificate) |
+| **CertificateRestore** |[証明書を復元します](/rest/api/keyvault/restorecertificate) |
+| **CertificateRecover** |[証明書を復旧します](/rest/api/keyvault/recoverdeletedcertificate) |
+| **CertificateGetDeleted** |[削除された証明書を取得します](/rest/api/keyvault/getdeletedcertificate) |
+| **CertificateListDeleted** |[コンテナー内の削除された証明書を一覧表示します](/rest/api/keyvault/getdeletedcertificates) |
+| **CertificatePolicyGet** |[証明書ポリシーを取得します](/rest/api/keyvault/getcertificatepolicy) |
+| **CertificatePolicyUpdate** |[証明書ポリシーを更新します](/rest/api/keyvault/updatecertificatepolicy) |
+| **CertificatePolicySet** |[証明書ポリシーを作成します](/rest/api/keyvault/createcertificate) |
+| **CertificateContactsGet** |[証明書の連絡先を取得します](/rest/api/keyvault/getcertificatecontacts) |
+| **CertificateContactsSet** |[証明書の連絡先を設定します](/rest/api/keyvault/setcertificatecontacts) |
+| **CertificateContactsDelete** |[証明書の連絡先を削除します](/rest/api/keyvault/deletecertificatecontacts) |
+| **CertificateIssuerGet** |[証明書の発行者を取得します](/rest/api/keyvault/getcertificateissuer) |
+| **CertificateIssuerSet** |[証明書の発行者を設定します](/rest/api/keyvault/setcertificateissuer) |
+| **CertificateIssuerUpdate** |[証明書の発行者を更新します](/rest/api/keyvault/updatecertificateissuer) |
+| **CertificateIssuerDelete** |[証明書の発行者を削除します](/rest/api/keyvault/deletecertificateissuer) |
+| **CertificateIssuersList** |[証明書の発行者を一覧表示します](/rest/api/keyvault/getcertificateissuers) |
+| **CertificateEnroll** |証明書を登録します |
+| **CertificateRenew** |証明書を更新する |
+| **CertificatePendingGet** |保留中の証明書を取得します |
+| **CertificatePendingMerge** |証明書のマージを保留しています |
+| **CertificatePendingUpdate** |証明書の更新を保留しています |
+| **CertificatePendingDelete** |保留中の証明書を削除します |
+| **CertificateNearExpiryEventGridNotification** |有効期限が近づいている証明書イベントが公開されました |
+| **CertificateExpiredEventGridNotification** |期限切れの証明書イベントが公開されました |
 ---
 
 ## <a name="use-azure-monitor-logs"></a>Azure Monitor ログの使用
