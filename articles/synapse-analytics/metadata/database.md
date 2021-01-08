@@ -10,18 +10,18 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 14ae8b8670db53761d085bc019711e829633601b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 93602e522338166abac98c3e4a198e1aff392d21
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451808"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934970"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics の共有データベース
 
-Azure Synapse Analytics では、さまざまな計算ワークスペース エンジンが、サーバーレス Apache Spark プールとサーバーレス SQL プール エンジンの間でデータベースとテーブルを共有できます。
+Azure Synapse Analytics では、さまざまな計算ワークスペース エンジンがデータベースとテーブルを共有できます。 現時点では、Apache Spark プールに作成されたデータベースと Parquet テーブルは、サーバーレス SQL プール エンジンと自動的に共有されます。
 
-Spark ジョブを使用して作成されたデータベースは、その同じ名前で、サーバーレス SQL プール エンジンも含め、ワークスペース内の現在および将来のすべての Spark プールから参照できるようになります。
+Spark ジョブを使用して作成されたデータベースは、その同じ名前で、サーバーレス SQL プール エンジンも含め、ワークスペース内の現在および将来のすべての Spark プールから参照できるようになります。 サーバーレス SQL プールを使用して、このレプリケートされたデータベースにカスタム オブジェクト (外部テーブル、ビュー、プロシージャ) を直接追加することはできません。
 
 Spark の既定のデータベース (`default` と呼ばれる) は、`default` と呼ばれるデータベースとしてサーバーレス SQL プール コンテキストにも表示されます。
 

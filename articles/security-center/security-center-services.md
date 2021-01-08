@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center でサポートされている使用可能な機能 | Microsoft Docs
-description: このドキュメントでは、Azure Security Center でサポートされるサービスの一覧を示します。
+title: OS、マシンの種類、クラウドに応じた Azure Security Center の機能
+description: OS、種類、クラウドのデプロイに応じて使用できる Azure Security Center の機能について説明します。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2020
+ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 40d70c7bd740d8c72ddb72047a3bae3586e1aa1f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f5d6d6255b48192a5943159599531fac18ebeb26
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445253"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796994"
 ---
 # <a name="feature-coverage-for-machines"></a>マシンを対象とする機能
 
@@ -99,10 +99,45 @@ ms.locfileid: "94445253"
 | McAfee v10 以降 | Linux Server ファミリ  | いいえ | はい * *\** _ |
 | Sophos V9+| Linux Server ファミリ  | いいえ | はい  _*\**_  |
 
- _ *\** * カバレッジの状態とサポート データは、現在、保護されているサブスクリプションに関連付けられている Log Analytics ワークスペース内でのみ使用できます。 Azure Security Center ポータルには反映されません。
+ _*\**_ カバレッジの状態とサポート データは、現在、保護されているサブスクリプションに関連付けられている Log Analytics ワークスペース内でのみ使用できます。 Azure Security Center ポータルには反映されません。
 
 > [!NOTE]
 > Windows Server 2008 R2 の仮想マシンで System Center Endpoint Protection (SCEP) を検出するには、PowerShell (v3.0 またはそれ以降) の後で SCEP をインストールする必要があります。
+
+
+
+## <a name="feature-support-in-government-clouds"></a>Government クラウドでの機能のサポート
+
+| サービスまたは機能 | US Gov | China Gov |
+|------|:----:|:----:|
+|[Just-In-Time VM アクセス](security-center-just-in-time.md) (1)|✔|✔|
+|[ファイルの整合性の監視](security-center-file-integrity-monitoring.md) (1)|✔|✔|
+|[適応型アプリケーション制御](security-center-adaptive-application.md) (1)|✔|✔|
+|[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md) (1)|-|-|
+|[Docker ホストのセキュリティ強化機能](harden-docker-hosts.md) (1)|✔|✔|
+|[マシンに対する統合された脆弱性評価](deploy-vulnerability-assessment-vm.md) (1)|-|-|
+|[Microsoft Defender for Endpoint](harden-docker-hosts.md) (1)|✔|-|
+|[AWS アカウントを接続する](quickstart-onboard-aws.md) (1)|-|-|
+|[GCP アカウントを接続する](quickstart-onboard-gcp.md) (1)|-|-|
+|[連続エクスポート](continuous-export.md)|✔|✔ (2)|
+|[ワークフローの自動化](workflow-automation.md)|✔|✔|
+|[推奨事項の除外規則](exempt-resource.md)|-|-|
+|[アラートの抑制ルール](alerts-suppression-rules.md)|✔|✔|
+|[セキュリティ アラートのメール通知](security-center-provide-security-contact-details.md)|✔|✔|
+|[資産インベントリ](asset-inventory.md)|✔|✔|
+|[Azure Defender for App Service](defender-for-app-service-introduction.md)|-|-|
+|[Azure Defender for Storage](defender-for-storage-introduction.md)|✔|-|
+|[Azure Defender for SQL](defender-for-sql-introduction.md)|✔|✔ (2)|
+|[Azure Defender for Key Vault](defender-for-key-vault-introduction.md)|-|-|
+|[Azure Defender for Resource Manager](defender-for-resource-manager-introduction.md)|-|-|
+|[Azure Defender for DNS](defender-for-dns-introduction.md)|-|-|
+|[Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md)|✔|✔|
+|[Azure Defender for container registries](defender-for-container-registries-introduction.md)|✔ (2)|-|
+|||
+
+(1) _ *Azure Defender for servers** が必要
+
+(2) 部分的
 
 
 ## <a name="next-steps"></a>次のステップ

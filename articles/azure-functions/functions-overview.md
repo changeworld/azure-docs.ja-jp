@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d0641129d641043f10cdb94d9e7f634fb35fbbef
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 41b627259d84539c868f95eb3cf33db5dbdab52c
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033002"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862406"
 ---
 # <a name="introduction-to-azure-functions"></a>Azure Functions の概要
 
-Azure Functions は、記述するコードと管理するインフラストラクチャを減らし、コストを節約できるサーバーレス ソリューションです。 クラウド インフラストラクチャによって、アプリケーションの実行を維持するために必要な最新のサーバーがすべて提供されるので、サーバーのデプロイや管理について心配する必要はありません。
+Azure Functions は、記述するコードと管理するインフラストラクチャを減らし、コストを節約できるサーバーレス ソリューションです。 クラウド インフラストラクチャによって、アプリケーションの実行を維持するために必要な最新のリソースがすべて提供されるので、サーバーのデプロイや管理について心配する必要はありません。
 
 ユーザーは最も重要なコードに集中でき、残りの部分は Azure Functions が処理します。<br /><br />
 

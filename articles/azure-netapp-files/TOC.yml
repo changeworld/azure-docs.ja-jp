@@ -123,6 +123,8 @@
           href: troubleshoot-cross-region-replication.md
         - name: デュアルプロトコル ボリュームのトラブルシューティング
           href: troubleshoot-dual-protocol-volumes.md
+        - name: NFSv4.1 Kerberos ボリュームのトラブルシューティング
+          href: troubleshoot-nfsv41-kerberos-volumes.md
         - name: スナップショット ポリシーのトラブルシューティング
           href: troubleshoot-snapshot-policies.md
         - name: リソース プロバイダーのエラーのトラブルシューティング

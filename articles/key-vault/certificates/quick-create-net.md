@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 700efe8e251af3f124e087e2a2d170db262aec08
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 4dd216f4018feca8c3461104a5beb220d90fd743
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826111"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932845"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-net-sdk-v4"></a>クイックスタート: .NET 用 Azure Key Vault 証明書クライアント ライブラリ (SDK v4)
 
@@ -108,7 +108,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS または Linux
@@ -254,4 +254,4 @@ Key Vault の詳細およびアプリとの統合方法の詳細については�
 - [App Service アプリケーションから Key Vault にアクセスする方法についてのチュートリアル](../general/tutorial-net-create-vault-azure-web-app.md)を参照する
 - [仮想マシンから Key Vault にアクセスする方法についてのチュートリアル](../general/tutorial-net-virtual-machine.md)を参照する
 - 「[Azure Key Vault 開発者ガイド](../general/developers-guide.md)」を参照する
-- [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する

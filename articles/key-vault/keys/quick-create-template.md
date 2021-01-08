@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 73c52963df65dc4037f087a93108ccfacb3fb5d4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 566ddae3893a5499ddefe0ccd1ade8caff4567c2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461560"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934987"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>クイックスタート: ARM テンプレートを使用して Azure キー コンテナーとキーを作成する (プレビュー)
 
@@ -218,4 +218,4 @@ Write-Host "Press [ENTER] to continue..."
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - [Azure Resource Manager](../../azure-resource-manager/management/overview.md) の詳細を確認する
-- [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する

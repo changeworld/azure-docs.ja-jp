@@ -12,12 +12,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 画像認識、画像認識アプリ、Custom Vision
-ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8274ddd0e492d1a27ebc1579fc6efdcc8cc84955
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018373"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912986"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>クイックスタート: クイックスタート: Custom Vision の Web サイトでオブジェクト検出器を構築する
 
@@ -57,7 +57,7 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
     |---|---|
     |__全般__| さまざまなオブジェクト検出タスク用に最適化されています。 他のドメインのいずれも適切でないか、どのドメインを選択すればよいか不確かな場合は、汎用ドメインを選択してください。 |
     |__ロゴ__|画像内のブランド ロゴを探すために最適化されています。|
-    |__棚の製品__|棚で製品を検出して分類するために最適化されています。|
+    |__シェルブの製品__|シェルブで製品を検出して分類するために最適化されています。|
     |__コンパクト ドメイン__| モバイル デバイス上でのリアルタイムのオブジェクト検出の制約に最適化されています。 コンパクト ドメインで生成されたモデルは、ローカルで実行するためにエクスポートできます。|
 
 1. 最後に、__[プロジェクトの作成]__ を選択します。
@@ -100,6 +100,7 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 - **精度** は、正しかったと識別された分類の割合を示します。 たとえばあるモデルで、100 個の画像が犬として識別され、それらのうち 99 個が実際に犬であった場合、精度は 99% になります。
 - **再現率** は、正しく識別された実際の分類の割合を示します。 たとえば、実際にりんごである画像が 100 個あり、そのモデルで、80 個がりんごとして識別された場合、再現率は 80% になります。
+- **平均精度** は、平均精度 (AP) の平均値です。 AP は、精度/再現率曲線 (行われた各予測の再現率に対してプロットされた精度) の下の領域です。
 
 ![トレーニング結果には、全体的な精度および再現率と、平均精度が表示されます。](./media/get-started-build-detector/trained-performance.png)
 

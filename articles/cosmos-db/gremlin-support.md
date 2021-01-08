@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 11/11/2020
 ms.author: sngun
-ms.openlocfilehash: a149f0b331a77462aa53b948fedf25dd1331969e
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 036338e90a3e7b466924d419400c0dcc692dec5f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "94683626"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630753"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Azure Cosmos DB での Gremlin グラフのサポートと、TinkerPop 機能との互換性
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -195,31 +195,31 @@ _ **ラムダ式と関数** は現在サポートされていません。 これ
 
 _ **トラバーサル中の `.V()` ステップによる Gremlin クエリのインデックス使用率**:現時点では、トラバーサルの最初の `.V()` 呼び出しのみによって、アタッチされているフィルターまたは述語を解決するために、インデックスが利用されます。 後続の呼び出しでは、インデックスが参照されないため、クエリの待機時間とコストが増加する可能性があります。
     
-    Assuming default indexing, a typical read Gremlin query that starts with the `.V()` step would use parameters in its attached filtering steps, such as `.has()` or `.where()` to optimize the cost and performance of the query. For example:
+既定のインデックス作成を前提とすると、`.V()` ステップによって開始された通常の読み取り Gremlin クエリでは、`.has()` や `.where()` など、アタッチされたフィルター処理のステップの中でパラメーターが使用され、クエリのコストとパフォーマンスが最適化されます。 次に例を示します。
 
-    ```java
-    g.V().has('category', 'A')
-    ```
+```java
+g.V().has('category', 'A')
+```
 
-    However, when more than one `.V()` step is included in the Gremlin query, the resolution of the data for the query might not be optimal. Take the following query as an example:
+ただし、2 つ以上の `.V()` ステップが Gremlin クエリ内に含まれている場合、そのクエリのデータの解決は最適でない可能性があります。 例として、次のクエリを取り上げます。
 
-    ```java
-    g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
-    ```
+```java
+g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
+```
 
-    This query will return two groups of vertices based on their property called `category`. In this case, only the first call, `g.V().has('category', 'A')` will make use of the index to resolve the vertices based on the values of their properties.
+このクエリでは、`category` というプロパティに基づいて、2 つの頂点のグループが返されます。 この場合、最初の呼び出しの `g.V().has('category', 'A')` のみによって、インデックスが使用され、プロパティの値に基づいて頂点が解決されます。
 
-    A workaround for this query is to use subtraversal steps such as `.map()` and `union()`. This is exemplified below:
+このクエリでの回避策は、`.map()` および `union()` などのサブトラバーサル ステップを使用することです。 これは、以下のように例示されます。
 
-    ```java
-    // Query workaround using .map()
-    g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
+```java
+// Query workaround using .map()
+g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
 
-    // Query workaround using .union()
-    g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
-    ```
+// Query workaround using .union()
+g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
+```
 
-    You can review the performance of the queries by using the [Gremlin `executionProfile()` step](graph-execution-profile.md).
+[Gremlin の `executionProfile()` ステップ](graph-execution-profile.md)を使用して、クエリのパフォーマンスを確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 

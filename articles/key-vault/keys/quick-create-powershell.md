@@ -9,12 +9,12 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3cea28fa278bb699a7fb5aaa0c79bf1e71f59ac1
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: e3570a716eccf131cf19192454bfbc1008a6306e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940499"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935038"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure Key Vault との間でキーの設定と取得を行う
 
@@ -94,4 +94,4 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - [Azure PowerShell の Key Vault コマンドレット](/powershell/module/az.keyvault/)のリファレンスを参照する
-- [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する

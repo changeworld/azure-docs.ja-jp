@@ -137,6 +137,8 @@
           href: batch-automatic-scaling.md
         - name: コンピューティング ノードの VM サイズを選択する
           href: batch-pool-vm-sizes.md
+        - name: クラウドサービスから仮想マシン プールに移行する
+          href: batch-pool-cloud-service-to-virtual-machine-configuration.md
         - name: コンピューティング ノードへのアクセスを構成する
           href: pool-endpoint-configuration.md
         - name: Shared Image Gallery を使用してプールを作成する

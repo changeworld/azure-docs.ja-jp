@@ -235,7 +235,7 @@ PowerShell 関数におけるログは、通常の PowerShell のログと同様
 | ------------- | -------------- |
 | エラー | **`Write-Error`** |
 | 警告 | **`Write-Warning`**  | 
-| Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | " _情報_ " レベル ログへの書き込み |
+| Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | "_情報_" レベル ログへの書き込み |
 | デバッグ | **`Write-Debug`** |
 | Trace | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
@@ -246,7 +246,7 @@ PowerShell 関数におけるログは、通常の PowerShell のログと同様
 
 ### <a name="configure-the-function-app-log-level"></a>関数アプリのログ レベルの構成
 
-Azure Functions では、しきい値レベルを定義することで、関数によるログへの書き込み方法を簡単に制御することができます。 コンソールに書き込まれるすべてのトレースのしきい値を設定するには、[`host.json` ファイル][host.json]の `logging.logLevel.default` プロパティを使用します。 この設定は、関数アプリのすべての関数に適用されます。
+Azure Functions では、しきい値レベルを定義することで、関数によるログへの書き込み方法を簡単に制御することができます。 コンソールに書き込まれるすべてのトレースのしきい値を設定するには、[`host.json` ファイル][host.json referenceの  プロパティを使用します。 この設定は、関数アプリのすべての関数に適用されます。
 
 次の例では、すべての関数の詳細ログが有効になるようしきい値を設定しますが、`MyFunction` という名前の関数についてはデバッグ ログが有効になるようしきい値を設定しています。
 
@@ -261,7 +261,7 @@ Azure Functions では、しきい値レベルを定義することで、関数�
 }  
 ```
 
-詳細については、[host.json] のリファレンスを参照してください。
+詳細については、[host.json reference] のリファレンスを参照してください。
 
 ### <a name="viewing-the-logs"></a>ログの表示
 
@@ -418,7 +418,7 @@ PowerShell Core 6 から PowerShell 7 にアップグレードできるように
 
 1. [Azure portal](https://portal.azure.com) で、関数アプリに移動します。
 
-1. **[設定]** で **[構成]** を選択します。 **[全般設定]** タブで、 **PowerShell のバージョン** を探します。 
+1. **[設定]** で **[構成]** を選択します。 **[全般設定]** タブで、**PowerShell のバージョン** を探します。 
 
     :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="関数アプリで使用される PowerShell のバージョンを選択する"::: 
 
@@ -525,7 +525,7 @@ PSFunctionApp
 現在のモジュールの一覧は次のとおりです。
 
 * [Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): アーカイブ (`.zip`、`.nupkg` など) に使用されるモジュール。
-* **ThreadJob** : PowerShell ジョブ API のスレッドベースの実装です。
+* **ThreadJob**: PowerShell ジョブ API のスレッドベースの実装です。
 
 既定では、Functions では、これらのモジュールの最新のバージョンが使用されます。 特定のバージョンを使用するには、関数アプリの `Modules` フォルダーにその特定のバージョンのモジュールを格納してください。
 
@@ -567,9 +567,9 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 ### <a name="considerations-for-using-concurrency"></a>コンカレンシーの使用に関する注意点
 
-PowerShell は、既定では " _シングル スレッド_ " のスクリプト言語です。 ただし、同じプロセス内で複数の PowerShell 実行空間を使用することで、コンカレンシーを追加できます。 作成される実行空間の量は、```PSWorkerInProcConcurrencyUpperBound``` のアプリケーション設定と一致します。 スループットは、選択したプランで使用可能な CPU とメモリの量によって影響を受けます。
+PowerShell は、既定では "_シングル スレッド_" のスクリプト言語です。 ただし、同じプロセス内で複数の PowerShell 実行空間を使用することで、コンカレンシーを追加できます。 作成される実行空間の量は、```PSWorkerInProcConcurrencyUpperBound``` のアプリケーション設定と一致します。 スループットは、選択したプランで使用可能な CPU とメモリの量によって影響を受けます。
 
-開発者の入力の手間を軽減するために、Azure PowerShell では、" _プロセスレベル_ " のコンテキストと状態が使用されています。 ただし、関数アプリでコンカレンシーを有効にし、状態の変更を伴うアクションを呼び出した場合は、最終的に競合状態に陥る可能性があります。 このような競合状態をデバッグするのは困難です。なぜなら、一方の呼び出しが特定の状態に依存しているのに、もう一方の呼び出しがその状態を変更したためです。
+開発者の入力の手間を軽減するために、Azure PowerShell では、"_プロセスレベル_" のコンテキストと状態が使用されています。 ただし、関数アプリでコンカレンシーを有効にし、状態の変更を伴うアクションを呼び出した場合は、最終的に競合状態に陥る可能性があります。 このような競合状態をデバッグするのは困難です。なぜなら、一方の呼び出しが特定の状態に依存しているのに、もう一方の呼び出しがその状態を変更したためです。
 
 一部の操作にはかなりの時間がかかる可能性があるため、Azure PowerShell のコンカレンシーには非常に大きな価値があります。 しかし、実際に使用する場合には注意が必要です。 競合状態が発生していると思われる場合は、PSWorkerInProcConcurrencyUpperBound アプリ設定を `1` に設定し、代わりに、コンカレンシーに対して[言語ワーカー プロセス レベルの分離](functions-app-settings.md#functions_worker_process_count)を使用します。
 
@@ -649,11 +649,11 @@ PowerShell 関数を使用するときは、以下のセクションに記載さ
 
 ### <a name="cold-start"></a>コールド スタート
 
-[サーバーレス ホスティング モデル](functions-scale.md#consumption-plan)で Azure Functions を開発する際は、コールド スタートを避けて通ることはできません。 " *コールド スタート* " とは、関数アプリの実行が開始されて要求が処理されるまでにかかる時間のことを指します。 従量課金プランでは、非アクティブな期間中に関数アプリがシャットダウンされるため、コールド スタートの発生頻度が高くなります。
+[サーバーレス ホスティング モデル](functions-scale.md#consumption-plan)で Azure Functions を開発する際は、コールド スタートを避けて通ることはできません。 "*コールド スタート*" とは、関数アプリの実行が開始されて要求が処理されるまでにかかる時間のことを指します。 従量課金プランでは、非アクティブな期間中に関数アプリがシャットダウンされるため、コールド スタートの発生頻度が高くなります。
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>`Install-Module` を使用せずにモジュールをバンドルする
 
-スクリプトは、呼び出しのたびに実行されます。 スクリプト内で `Install-Module` を使用することは避けてください。 その代わり、発行前に `Save-Module` を使用します。そうすれば、関数がモジュールをダウンロードする際に生じる無駄な時間をなくすことができます。 コールド スタートが関数に影響を及ぼす場合は、" *常にオン* " に設定された [App Service プラン](functions-scale.md#app-service-plan)、または [Premium プラン](functions-scale.md#premium-plan)に関数アプリをデプロイすることを検討してください。
+スクリプトは、呼び出しのたびに実行されます。 スクリプト内で `Install-Module` を使用することは避けてください。 その代わり、発行前に `Save-Module` を使用します。そうすれば、関数がモジュールをダウンロードする際に生じる無駄な時間をなくすことができます。 コールド スタートが関数に影響を及ぼす場合は、"*常にオン*" に設定された [App Service プラン](functions-scale.md#app-service-plan)、または [Premium プラン](functions-scale.md#premium-plan)に関数アプリをデプロイすることを検討してください。
 
 ## <a name="next-steps"></a>次のステップ
 

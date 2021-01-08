@@ -13,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 60d789c4297c400b812cd6c5c19c8c6148cb347d
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: f43cb80a148f5dadb409f506f237cb1210a2000a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575981"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934001"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>クイック スタート:テナントを設定する
 
@@ -55,7 +55,7 @@ Azure AD テナントはそれぞれ異なり、その他の Azure AD とは分�
 > [!TIP]
 > テナント ID を調べる必要がある場合は、次の操作を実行できます。
 > * アカウント名をポイントして、ディレクトリ/テナント ID を取得します。または、
-> * Azure portal で、 **[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します
+> * Azure portal で **[Azure Active Directory] を検索し、[プロパティ] > [テナント ID]** を選択します
 
 アカウントに関連付けられた既存のテナントがない場合は、アカウント名の下に GUID が表示されます。次のセクションの手順に従うまで、アプリの登録などのアクションは実行できません。
 

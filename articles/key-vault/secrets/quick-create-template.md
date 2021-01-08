@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: 68c10ba5581ffe404e8e3c1ac8ce92832cfcd6c4
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 1cbe5f986ca36ecc3b45cf4bb7ecffa7067a27bd
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896431"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936619"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -83,15 +83,15 @@ ms.locfileid: "92896431"
 
     指定がない場合、既定値を使用してキー コンテナーとシークレットを作成してください。
 
-    * **サブスクリプション** : Azure サブスクリプションを選択します。
-    * **リソース グループ** : **[新規作成]** を選択し、リソース グループの一意の名前を入力し、 **[OK]** をクリックします。
-    * **場所** : 場所を選択します。 たとえば **[米国中部]** です。
-    * **Key Vault 名** : キー コンテナーの名前を入力します。この名前は、.vault.azure.net 名前空間内でグローバルに一意である必要があります。 次のセクションでデプロイを検証するときに、その名前が必要です。
-    * **テナント ID** : テンプレート関数によって自動的にテナント ID が取得されます。 既定値を変更しないでください。
-    * **Ad ユーザー ID** : [前提条件](#prerequisites)から取得した Azure AD ユーザー オブジェクト ID を入力します。
-    * **シークレット名** : キー コンテナーに格納するシークレットの名前を入力します。 たとえば、 **adminpassword** にします。
-    * **シークレット値** : シークレットの値を入力します。 パスワードを保管する場合、前提条件で作成したパスワードを使用することをお勧めします。
-    * **上記の使用条件に同意する** : 選択。
+    * **サブスクリプション**: Azure サブスクリプションを選択します。
+    * **リソース グループ**: **[新規作成]** を選択し、リソース グループの一意の名前を入力し、 **[OK]** をクリックします。
+    * **場所**: 場所を選択します。 たとえば **[米国中部]** です。
+    * **Key Vault 名**: キー コンテナーの名前を入力します。この名前は、.vault.azure.net 名前空間内でグローバルに一意である必要があります。 次のセクションでデプロイを検証するときに、その名前が必要です。
+    * **テナント ID**: テンプレート関数によって自動的にテナント ID が取得されます。 既定値を変更しないでください。
+    * **Ad ユーザー ID**: [前提条件](#prerequisites)から取得した Azure AD ユーザー オブジェクト ID を入力します。
+    * **シークレット名**: キー コンテナーに格納するシークレットの名前を入力します。 たとえば、**adminpassword** にします。
+    * **シークレット値**: シークレットの値を入力します。 パスワードを保管する場合、前提条件で作成したパスワードを使用することをお勧めします。
+    * **上記の使用条件に同意する**: 選択。
 3. **[購入]** を選択します。 キー コンテナーが正常にデプロイされると、次の通知が表示されます。
 
     ![ARM テンプレート、Key Vault 統合、デプロイ ポータル通知](../media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
@@ -163,4 +163,4 @@ Write-Host "Press [ENTER] to continue..."
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - [Azure Resource Manager](../../azure-resource-manager/management/overview.md) の詳細を確認する
-- [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する

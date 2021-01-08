@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b5f4f3d2b3eda9f00049cee26ae95850d65257d6
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 729b6ccf1092679a71aa35f49be7d3199d4f4918
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778871"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936279"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してキー コンテナーを作成する
 
@@ -70,5 +70,5 @@ Key Vault に関する他のクイック スタートとチュートリアルは
 このクイックスタートでは、Azure portal を使用してキー コンテナーを作成しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
 - [Azure Key Vault の概要](overview.md)を確認する
+- 「[Azure Key Vault のセキュリティの概要](security-overview.md)」を確認する
 - 「[Azure Key Vault 開発者ガイド](developers-guide.md)」を参照する
-- [Azure Key Vault のベスト プラクティス](best-practices.md)を確認する

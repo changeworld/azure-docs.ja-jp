@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c3407b9539047b5c683f304549977eace7b57341
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 73d247464f167040c6f7129bdf7014b877317fc5
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779007"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936262"
 ---
 # <a name="quickstart-create-a-key-vault-using-powershell"></a>クイック スタート:PowerShell を使用してキー コンテナーを作成する
 
@@ -78,4 +78,5 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 - [Azure Key Vault の概要](overview.md)を確認する
 - [Azure PowerShell の Key Vault コマンドレット](/powershell/module/az.keyvault/)のリファレンスを参照する
-- [Azure Key Vault のベスト プラクティス](best-practices.md)を確認する
+- 「[Azure Key Vault のセキュリティの概要](security-overview.md)」を確認する
+

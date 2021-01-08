@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 55a25f4f40668172aa8a9c80dd08d9fafcef78af
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 2bb718d038dd7b3f5aa6f3bac1ce1de572c8e829
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516478"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936364"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Key Vault から証明書の設定と取得を行う
 
@@ -91,4 +91,4 @@ az group delete --name ContosoResourceGroup
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - [Azure CLI az keyvault コマンド](/cli/azure/keyvault?view=azure-cli-latest)のリファレンスを参照する
-- [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する

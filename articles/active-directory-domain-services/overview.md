@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 12/03/2020
 ms.author: justinha
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 99a207810f51949b0da0e78b1cb0e0a7f8bc95e3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 765aa10e57c472d7a1af0952364783bb1d711078
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027341"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861508"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とは
 
@@ -41,7 +41,7 @@ Azure AD DS のマネージド ドメインを作成するときは、一意の�
 
 ![AD Connect を使用した、Azure AD Domain Services における Azure AD とオンプレミスの AD DS の同期](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
-Azure AD DS では、ID 情報が Azure AD からレプリケートされるため、クラウド専用の Azure AD テナント、またはオンプレミス (AD DS) 環境と同期される Azure AD テナントとも連携します。 両方の環境に同じ Azure AD DS 機能セットが存在します。
+Azure AD DS では、ID 情報が Azure AD からレプリケートされるため、クラウド専用の Azure AD テナント、またはオンプレミスの AD DS 環境と同期される Azure AD テナントとも連携します。 両方の環境に同じ Azure AD DS 機能セットが存在します。
 
 * オンプレミスの AD DS 環境を既に使用している場合は、ユーザー アカウント情報を同期させて、ユーザーに一貫性のある ID を提供できます。 詳細については、[マネージド ドメイン内でのオブジェクトと資格情報の同期のしくみ][synchronization]に関するページを参照してください。
 * クラウド専用の環境では、従来のオンプレミスの AD DS 環境を必要とすることなく、Azure AD DS で提供される ID の集中管理サービスを利用できます。

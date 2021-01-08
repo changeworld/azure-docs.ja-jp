@@ -41,7 +41,7 @@ Mozy Enterprise と Azure AD の統合を構成するには、次のものが必
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Mozy Enterprise では、 **SP** によって開始される SSO がサポートされます
+* Mozy Enterprise では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-mozy-enterprise-from-the-gallery"></a>ギャラリーからの Mozy Enterprise の追加
 
@@ -61,13 +61,13 @@ Azure AD への Mozy Enterprise の統合を構成するには、ギャラリー
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Mozy Enterprise** 」と入力し、結果パネルで **[Mozy Enterprise]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Mozy Enterprise**」と入力し、結果パネルで **[Mozy Enterprise]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
      ![結果一覧の Mozy Enterprise](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Mozy Enterprise で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Mozy Enterprise で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Mozy Enterprise 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Mozy Enterprise で Azure AD のシングル サインオンを構成し、テストするには、次の一連の作業を完了させる必要があります。
@@ -164,9 +164,9 @@ Mozy Enterprise で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

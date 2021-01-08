@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 3225fff1c82822dee990804f934ada86068841e8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 96533c1742e8ad5fde9796ea2073f6e402ac8dcf
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011304"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862370"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>チュートリアル:Azure Digital Twins API を使用したコーディング
 
@@ -57,9 +57,12 @@ dotnet new console
 
 コマンド ウィンドウは、チュートリアル全体を通して使用するため、開いたままにしておきます。
 
-次に、Azure Digital Twins を操作するために必要な **2 つの依存関係をプロジェクトに追加** します。 以下のリンクを使用すると、NuGet のパッケージに移動できます。そこでコンソール コマンド (.NET CLI を含む) を見つけて、それぞれの最新バージョンをプロジェクトに追加できます。
-* [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core)。 これは、[.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) のパッケージです。 
-* [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity)。 このライブラリでは、Azure に対する認証を支援するツールが提供されます。
+次に、Azure Digital Twins を操作するために必要な **2 つの依存関係をプロジェクトに追加** します。 以下のリンクを使用すると、NuGet のパッケージに移動できます。そこでコンソール コマンド (.NET CLI 用を含む) を見つけて、それぞれをプロジェクトに追加できます。
+* [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core)。 これは、[.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) のパッケージです。 最新バージョンを追加してください。
+* [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity)。 このライブラリでは、Azure に対する認証を支援するツールが提供されます。 バージョン 1.2.2 を追加してください。
+
+>[!NOTE]
+> 現時点では、このチュートリアルで Azure.Identity バージョン 1.3.0 を使用する機能に影響する[既知の問題](troubleshoot-known-issues.md#issue-with-default-azure-credential-authentication-on-azureidentity-130)があります。 この問題が残っている間は、バージョン 1.2.2 を使用してください。
 
 ## <a name="get-started-with-project-code"></a>プロジェクト コードでの作業開始
 

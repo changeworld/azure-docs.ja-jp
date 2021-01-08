@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 85080c018749f9aab716eff0a4527363da987007
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 53e6d6e67a90cd1f39aed7f9cd7c2368282b2d1f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620479"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916594"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
@@ -118,7 +118,7 @@ Azure Machine Learning は、Azure プラットフォーム上の他のサービ
 + __Azure Virtual Networks__。 詳細については、「[仮想ネットワークの分離とプライバシーの概要](how-to-network-security-overview.md)」を参照してください。
 + __Azure Pipelines__。 詳細については、「[機械学習モデルのトレーニングとデプロイ](/azure/devops/pipelines/targets/azure-machine-learning)」を参照してください。
 + __Git リポジトリのログ__。 詳細については、「[Git 統合](concept-train-model-git-integration.md)」を参照してください。
-+ __MLFlow__。 詳細については、[MLflow を使用してメトリックを追跡し、モデルをデプロイする方法](how-to-use-mlflow.md)に関するページを参照してください。 
++ __MLFlow__。 詳細については、[メトリックを追跡する MLflow](how-to-use-mlflow.md) と [Web サービスとしての MLflow モデルのデプロイ](how-to-deploy-mlflow-models.md)に関するページを参照してください。 
 + __Kubeflow__。 詳細については、[エンド ツー エンドのワークフロー パイプラインを構築する方法](https://www.kubeflow.org/docs/azure/)に関するページを参照してください。
 
 ### <a name="secure-communications"></a>セキュリティで保護された通信

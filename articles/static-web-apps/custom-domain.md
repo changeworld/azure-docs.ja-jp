@@ -84,7 +84,7 @@ CNAME レコードでは、あるドメインが別のドメインにマップ�
 
 これで、カスタム ドメインが構成されました。DNS プロバイダーによって世界規模で変更が反映されるには、数時間かかる場合があります。 [dnspropagation.net](https://dnspropagation.net) に移動して、反映の状態を確認できます。 `www` を含めてお使いのカスタム ドメインを入力し、ドロップダウンから [CNAME] を選択して、 **[開始]** を選択します。
 
-DNS の変更が設定されると、Web サイトでは Static Web App の自動生成された URL ( _random-name-123456789c.azurestaticapps.net_ など) が返されます。
+DNS の変更が設定されると、Web サイトでは Static Web App の自動生成された URL (_random-name-123456789c.azurestaticapps.net_ など) が返されます。
 
 ## <a name="configure-a-root-domain"></a>ルート ドメインを構成する
 

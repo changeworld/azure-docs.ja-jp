@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d84f500560031322cff32005b537037dc897919e
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: e29a692e3fdad1bea7132b3bed50444c7398ba46
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516766"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936313"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用してキー コンテナーを作成する
 
@@ -72,5 +72,6 @@ az group delete --name myResourceGroup
 このクイックスタートでは、キー コンテナーを作成して削除しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
 - [Azure Key Vault の概要](overview.md)を確認する
-- [Azure CLI az keyvault コマンド](/cli/azure/keyvault?view=azure-cli-latest)のリファレンスを参照する
-- [Azure Key Vault のベスト プラクティス](best-practices.md)を確認する
+- 「[Azure Key Vault のセキュリティの概要](security-overview.md)」を確認する
+- [Azure CLI az keyvault コマンド](/cli/azure/keyvault)のリファレンスを参照する
+

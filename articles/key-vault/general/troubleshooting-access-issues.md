@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 78b42a8ad3685d07b61c4faca384c7ee8f5a5f94
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8e4e64cd872794354479c29d4aaa000cee45c5a3
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616390"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901217"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Key Vault のアクセス ポリシーの問題のトラブルシューティング
 
@@ -32,7 +32,7 @@ ms.locfileid: "97616390"
 ### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>アクセス ポリシーを変更できません。どのような方法で有効にできますか。
 アクセス ポリシーを変更するために必要な AAD アクセス許可がユーザーに与えられている必要があります。 この場合、上位の共同作成者ロールをユーザーに与える必要があります。
 
-### <a name="i-am-seeing-unkwown-policy-error-what-does-that-mean"></a>"不明なポリシー" というエラーが表示されます。 これはどういう意味ですか。
+### <a name="i-am-seeing-unknown-policy-error-what-does-that-mean"></a>"Unknown Policy (不明なポリシー)" というエラーが表示されます。 これはどういう意味ですか。
 [不明] セクションにアクセス ポリシーが表示されることには 2 つの異なる可能性があります。
 * 前のユーザーにアクセスが与えられていた可能性がありますが、何らかの理由でそのユーザーが存在しません。
 * アクセス ポリシーが PowerShell 経由で追加されるとき、サービス プリンシパルではなく、アプリケーション オブジェクト ID に対してアクセス ポリシーが追加されます。

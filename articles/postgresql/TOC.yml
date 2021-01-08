@@ -14,7 +14,7 @@
   items:
     - name: データベースのデプロイ
       items:
-        - name: Github Actions
+        - name: GitHub のアクション
           href: how-to-deploy-github-action.md
     - name: 移行
       items:
@@ -640,6 +640,8 @@
           href: howto-hyperscale-create-users.md
         - name: 分散データ
           items:
+            - name: テーブルのサイズを決定する
+              href: howto-hyperscale-table-size.md
             - name: テーブルの配布と変更
               href: howto-hyperscale-modify-distributed-tables.md
         - name: 高可用性
@@ -657,6 +659,8 @@
             - name: 接続エラーのトラブルシューティング
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
               displayName: 'connection errors, hyperscale'
+            - name: 有用な診断クエリ
+              href: howto-hyperscale-useful-diagnostic-queries.md
 - name: リファレンス
   items:
     - name: Azure CLI

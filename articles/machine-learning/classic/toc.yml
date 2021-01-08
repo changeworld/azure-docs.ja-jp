@@ -161,6 +161,6 @@
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-studio/'
     - name: カスタム ニューラル ネットワーク (Net#)
       href: azure-ml-netsharp-reference-guide.md

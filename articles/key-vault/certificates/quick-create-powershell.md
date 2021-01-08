@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ff618024c269a010eddf08128e827ade7921c94
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: ae53ebac1c2a943a2b1ca98b222a8dbab210bdb5
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940601"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935123"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure Key Vault から証明書の設定と取得を行う
 
@@ -98,4 +98,4 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - [Azure PowerShell の Key Vault コマンドレット](/powershell/module/az.keyvault/)のリファレンスを参照する
-- [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する

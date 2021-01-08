@@ -141,8 +141,16 @@
     - name: ランタイムのバージョンの比較
       href: functions-versions.md
       displayName: 'migrate, migration, v3'
-    - name: Premium プラン
-      href: functions-premium-plan.md
+    - name: ホスティングとスケール
+      items:
+        - name: 従量課金プラン
+          href: consumption-plan.md
+        - name: Premium プラン
+          href: functions-premium-plan.md
+        - name: 専用プラン
+          href: dedicated-plan.md
+        - name: イベント ドリブン スケーリング
+          href: event-driven-scaling.md
     - name: デプロイメント
       href: functions-deployment-technologies.md
     - name: イベントとメッセージング
@@ -261,6 +269,8 @@
                   href: create-function-app-linux-app-service-plan.md
                 - name: Linux 従量課金プラン
                   href: create-first-function-cli-python.md
+                - name: Premium プラン
+                  href: create-premium-plan-function-app-portal.md
                 - name: Microsoft Azure for Students Starter
                   href: functions-create-student-starter.md
             - name: Azure Cosmos DB のトリガー

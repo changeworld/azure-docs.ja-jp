@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 5894a57e6495ca02002c8f32b893e696c7f5679b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5c21efc9cb082d915fd87e9ae01606fce18016bc
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350706"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897293"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために ServiceNow を構成する
 
@@ -50,7 +50,7 @@ ms.locfileid: "96350706"
 
 1. ServiceNow インスタンス名を指定します。 インスタンス名は、ServiceNow にアクセスするために使用する URL で確認できます。 次の例では、インスタンス名は dev35214 です。
 
-   ![ServiceNow インスタンス](media/servicenow-provisioning-tutorial/servicenow_instance.png)
+   ![ServiceNow インスタンス](media/servicenow-provisioning-tutorial/servicenow-instance.png)
 
 2. ServiceNow で管理者の資格情報を取得します。 ServiceNow のユーザー プロファイルに移動し、ユーザーが管理者ロールを持っていることを確認します。 
 
@@ -94,7 +94,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 5. **[管理者資格情報]** セクションで、ServiceNow 管理者の資格情報とユーザー名を入力します。 **[接続テスト]** をクリックして、Azure AD から ServiceNow に確実に接続できるようにします。 接続できない場合は、使用中の ServiceNow アカウントで管理者アクセス許可を確保してから、もう一度試します。
 
-    ![スクリーンショットには、管理者資格情報を入力できる [サービス プロビジョニング] ページが示されています。](./media/servicenow-provisioning-tutorial/provisioning.png)
+    ![スクリーンショットには、管理者資格情報を入力できる [サービス プロビジョニング] ページが示されています。](./media/servicenow-provisioning-tutorial/servicenow-provisioning.png)
 
 6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
@@ -142,11 +142,16 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
   
   `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
 
-   このエラーは、ServiceNow インスタンスとの通信の問題を示しています。 ダブルクリックして、以下の設定が ServiceNow で *無効* になっていることを確認します。
+   このエラーは、ServiceNow インスタンスとの通信の問題を示しています。 
+   
+   テスト接続の問題が発生した場合は、ServiceNow で次の設定を **無効** としてみてください。
    
    1. **[System Security] (システム セキュリティ)**  >  **[High security settings] (高セキュリティ設定)**  >  **[Require basic authentication for incoming SCHEMA requests] (受信 SCHEMA 要求で基本認証を要求する)** と選択します。
    2. **[System Properties] (システム プロパティ)**  >  **[Web サービス]**  >  **[Require basic authorization for incoming SOAP requests] (受信 SOAP 要求で基本認証を要求する)** と選択します。
 
+   ![SOAP 要求の承認](media/servicenow-provisioning-tutorial/servicenow-webservice.png)
+
+   これで問題が解決した場合は、ServiceNow サポートに連絡し、トラブルシューティングに役立てるために SOAP デバッグを有効にするように依頼してください。 
 ## <a name="additional-resources"></a>その他のリソース
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
