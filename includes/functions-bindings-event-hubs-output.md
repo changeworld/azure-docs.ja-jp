@@ -290,4 +290,4 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 | バインド | リファレンス |
 |---|---|
-| イベント ハブ | [運用ガイド](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
+| Event Hub | [運用ガイド](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
