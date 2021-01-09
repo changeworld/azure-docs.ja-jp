@@ -110,7 +110,7 @@
 - name: リソース
   items:
     - name: よく寄せられる質問
-      href: firewall-faq.md
+      href: firewall-faq.yml
     - name: テンプレートの作成
       href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure のロードマップ
