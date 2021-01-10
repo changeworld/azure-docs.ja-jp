@@ -2,14 +2,13 @@
 title: よく寄せられる質問
 description: Azure VMware Solution についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
-ms.date: 11/19/2020
-ms.author: dikamath
-ms.openlocfilehash: 3033df2021a8d1780caf9b0b7cd4dbe8de2a6050
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.date: 12/22/2020
+ms.openlocfilehash: 941708003558dda601aa43459bc83133788687fd
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861410"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835195"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware Solution についてよく寄せられる質問
 
@@ -59,13 +58,11 @@ Azure VMware Solution のお客様はすべての Azure サービスを利用で
 
 新しい Azure VMware Solution では、Microsoft と VMware の間に直接クラウド プロバイダー パートナーシップがあります。 新しいソリューションは、Microsoft によって完全に設計、構築、サポートされ、VMware によって保証されます。 アーキテクチャ上、ソリューションは専用の Azure インフラストラクチャで実行されている VMware テクノロジ スタックと一貫しています。
 
-
-
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Azure VMware Solution の VM は VMRC で管理できますか?
-はい。インストールされるシステムがプライベート クラウドの vCenter にアクセスでき、パブリック DNS を使用して ESXi ホスト名を解決している場合は管理できます。
+はい。 インストールされるシステムがプライベート クラウドの vCenter にアクセスでき、パブリック DNS を使用して ESXi ホスト名を解決している場合は管理できます。
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Azure VMware Solution の VM で VMRC をインストールして使用するための特別な手順はありますか?
-いいえ。 [VMware によって提供されている手順](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html)を使用し、その手順で指定されている VM の前提条件を満たすようにしてください。 
+いいえ。 VM の前提条件を満たすには、[VMware が提供する手順](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html)に従ってください。 
 
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>VMware HCX は VPN でサポートされますか?
 いいえ。帯域幅と待機時間の要件があるためサポートされません。
@@ -77,7 +74,7 @@ Azure Bastion は、Azure VMware Solution がインターネットに公開さ�
 いいえ。 内部 Azure Load Balancer では、Azure IaaS VM のみがサポートされます。 Azure Load Balancer は IP ベースのバックエンド プールをサポートしていません。Azure VMware Solution VM が Azure オブジェクトではない Azure VM または仮想マシン スケール セット オブジェクトのみです。
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>既存の ExpressRoute ゲートウェイを使用して、Azure VMware Solution に接続できますか?
-はい。仮想ネットワークあたり 4 つの ExpressRoute 回線という上限を超えない限り、既存の ExpressRoute ゲートウェイを使用して Azure VMware Solution に接続できます。  ただし、ExpressRoute 経由でオンプレミスから Azure VMware Solution にアクセスするには、ExpressRoute Global Reach を用意する必要があります。ExpressRoute ゲートウェイでは、それに接続されている回線間で推移的ルーティングが行われないためです。
+はい。 仮想ネットワークあたり 4 つの ExpressRoute 回路という上限を超えない限り、既存の ExpressRoute ゲートウェイを使用して Azure VMware Solution に接続できます。 オンプレミスから ExpressRoute 経由で Azure VMware Solution にアクセスするには、ExpressRoute Global Reach が必要です。これは、ExpressRoute ゲートウェイでは、それに接続されている回路との間で推移的なルーティングが提供されないためです。
 
 ## <a name="compute-network-storage-and-backup"></a>コンピューティング、ネットワーク、ストレージ、およびバックアップ
 
@@ -105,9 +102,9 @@ Azure VMware Solution の各 ESXi ホストは、4 つの 25 Gbps NIC、ESXi の
 
 はい。すべての vSAN データが、Azure Key Vault に保存されているキーを使用して既定で暗号化されます。
 
-#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendors-isvs-backup-solutions"></a>Commvault、Veritas、Veeam の各社は Azure VMware Solution と連係するようにバックアップ ソリューションを拡張したと Microsoft のドキュメントに記載されています。 その他の独立系ソフトウェア ベンダー (ISV) のバックアップ ソリューションはどうですか?
+####  <a name="what-independent-software-vendors-isvs-backup-solutions-work-with-azure-vmware-solution"></a>Azure VMware Solution と連係する独立系ソフトウェア ベンダー (ISV) のバックアップ ソリューションにはどのようなものがありますか?
 
-Microsoft で把握している限りでは、HotAdd トランスポート モードで VMware VADP を使用するバックアップ ソリューションは、Azure VMware Solution ですぐに使用できるはずです。
+Commvault、Veritas、Veeam の各社は Azure VMware Solution と連係するように自社のバックアップ ソリューションを拡張しています。  ただし、HotAdd トランスポート モードで VMware VADP を使用するバックアップ ソリューションは、Azure VMware Solution ですぐに使用できるはずです。
 
 #### <a name="what-about-support-for-isv-backup-solutions"></a>ISV バックアップ ソリューションのサポートはどのようなものですか?
 
@@ -127,7 +124,7 @@ VM テンプレートに "*thin_provision*" ストレージ ポリシーを使�
 
 いいえ。プライベート クラウド ホストとクラスターは専用であり、使用前と使用後に安全に消去されます。
 
-#### <a name="what-are-the-minimum-and-the-maximum-number-of-hosts-per-cluster"></a>クラスターあたりのホストの最小数と最大数はどれくらいですか?
+#### <a name="what-are-the-minimum-and-maximum-number-of-hosts-per-cluster"></a>クラスターあたりのホストの最小数と最大数はどれくらいですか?
 
 クラスターは、3 台から 16 台の ESXi ホストにスケーリングできます。 試用版クラスターは、3 台のホストに制限されます。
 
@@ -147,7 +144,8 @@ VM テンプレートに "*thin_provision*" ストレージ ポリシーを使�
 
 #### <a name="what-versions-of-vmware-software-is-used-in-private-clouds"></a>プライベート クラウドで使用される VMware ソフトウェアのバージョンは何ですか?
 
-プライベート クラウドでは、vSphere 6.7 U3、vSAN 6.7 U3、VMware HCX、および NSX-T 2.5 が使用されます。  詳細については、[VMware ソフトウェアの要件](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)に関するページを参照してください。
+[!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
+
 
 #### <a name="do-private-clouds-use-vmware-nsx"></a>プライベート クラウドでは VMware NSX は使用されますか?
 
@@ -188,7 +186,7 @@ Azure portal で、プライベート クラウドのインターネット接続
 
 #### <a name="do-i-need-to-restrict-access-from-the-internet-to-vms-on-logical-networks-in-a-private-cloud"></a>インターネットからプライベート クラウド内の論理ネットワーク上の VM へのアクセスを制限する必要はありますか?
 
-いいえ。 インターネットからプライベート クラウドへの直接的なインバウンド ネットワーク トラフィックは、規定では許可されません。  ただし、Azure VMware Solution のプライベート クラウド用に Azure portal の[パブリック IP](public-ip-usage.md) オプションを使用して、Azure VMware Solution VM をインターネットに公開することはできます。
+いいえ。 インターネットからプライベート クラウドへの直接的なインバウンド ネットワーク トラフィックは、既定では許可されません。  ただし、Azure VMware Solution のプライベート クラウド用に Azure portal の[パブリック IP](public-ip-usage.md) オプションを使用して、Azure VMware Solution VM をインターネットに公開することはできます。
 
 #### <a name="do-i-need-to-restrict-internet-access-from-vms-on-logical-networks-to-the-internet"></a>論理ネットワーク上の VM からインターネットへのインターネット アクセスを制限する必要はありますか?
 
@@ -201,6 +199,9 @@ Azure portal で、プライベート クラウドのインターネット接続
 #### <a name="can-transit-connectivity-be-established-between-on-premises-and-azure-vmware-solution-through-azure-virtual-wan-over-expressroute-global-reach"></a>ExpressRoute Global Reach 経由で Azure Virtual WAN を使用して、オンプレミスと Azure VMware Solution の間にトランジット接続を確立できますか?
 Azure Virtual WAN では、接続されている 2 つの ExpressRoute 回線と Virtual WAN 以外の ExpressRoute ゲートウェイの間に推移的なルーティングは提供されません。 ExpressRoute Global Reach を使用すると、オンプレミスと Azure VMware Solution の接続が可能になりますが、Virtual WAN ハブではなく Microsoft のグローバル ネットワークを通過します。
 
+#### <a name="could-i-use-hcx-through-public-internet-communications-as-a-workaround-for-the-non-supportability-of-hcx-when-using-vpn-s2s-with-vwan-for-on-premises-communications"></a>オンプレミスの通信で vWAN で VPN S2S を使用する場合に、HCX がサポート対象外であることに対する回避策として、公共のインターネット通信を介して HCX を使用できますか?
+
+現在、HCX でサポートされる唯一の方法は ExpressRoute です。
 
 ## <a name="accounts-and-privileges"></a>アカウントと特権
 
@@ -279,7 +280,7 @@ Azure VMware Solution リソースを作成する前に、サポート チケッ
    - その他の詳細
 
    >[!NOTE]
-   >Azure VMware Solution では、プライベート クラウドを稼働させ、冗長 N + 1 ホストを提供するために、3 つ以上のホストをお勧めしています。 
+   >Azure VMware Solution では、プライベート クラウドを稼働させ、冗長 N + 1 ホストを提供するために、3 つ以上のホストを推奨しています。 
 
 1. **[確認および作成]** を選択して、リクエストを送信します。
 
@@ -298,7 +299,7 @@ Azure VMware Solution リソースを作成する前に、サポート チケッ
 
 #### <a name="are-reserved-instances-available-for-purchasing-through-the-cloud-solution-provider-csp-program"></a>予約インスタンスは、クラウド ソリューション プロバイダー (CSP) プログラムを通じて購入できますか?
 
-はい。 CSP は顧客のために予約インスタンスを購入できます。 詳細については、「[予約インスタンスを使用してコストを節約する](reserved-instance.md)」を参照してください。 
+はい。 CSP は顧客のために予約インスタンスを購入できます。 詳細については、[予約インスタンスを使用したコスト節約](reserved-instance.md)に関するページを参照してください。 
 
 #### <a name="does-azure-vmware-solution-offer-multi-tenancy-for-hosting-csp-partners"></a>Azure VMware Solution では CSP パートナーをホストするためのマルチテナントは提供されますか?
 

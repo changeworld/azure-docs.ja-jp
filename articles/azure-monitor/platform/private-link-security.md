@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: a85619b4947808ba1c13df3c1543102eea7273fd
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: e8d0dcae81944d5799841c22093585b942934b79
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853929"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732106"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する
 
@@ -215,9 +215,9 @@ Azure Portal にアクセスします。 Azure Monitor Application Insights コ�
 
 ## <a name="use-apis-and-command-line"></a>API とコマンド ラインの使用
 
-前に説明したプロセスは、Azure Resource Manager テンプレートとコマンド ライン インターフェイスを使用して自動化できます。
+前に説明したプロセスは、Azure Resource Manager テンプレート、REST、コマンド ライン インターフェイスを使用して自動化できます。
 
-Pivate Link スコープを作成して管理するには、[az monitor private-link-scope](/cli/azure/monitor/private-link-scope?view=azure-cli-latest) を使用します。 このコマンドを使用すると、スコープの作成、Log Analytics ワークスペースと Application Insights コンポーネントの関連付け、プライベート エンドポイントの追加、削除、承認を行うことができます。
+プライベート リンク スコープを作成して管理するには、[REST API](https://docs.microsoft.com/rest/api/monitor/private%20link%20scopes%20(preview)) または [Azure CLI (az monitor private-link-scope)](/cli/azure/monitor/private-link-scope?view=azure-cli-latest) を使用します。
 
 ネットワーク アクセスを管理するには、[Log Analytics ワークスペース](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest)または [Application Insights コンポーネント](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)でフラグ `[--ingestion-access {Disabled, Enabled}]` と `[--query-access {Disabled, Enabled}]` を使用します。
 

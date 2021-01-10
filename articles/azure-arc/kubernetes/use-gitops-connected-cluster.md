@@ -6,24 +6,24 @@ ms.date: 05/19/2020
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: Azure Arc 対応のクラスター構成に対して GitOps を使用する (プレビュー)
-keywords: GitOps、Kubernetes、K8s、Azure、Arc、Azure Kubernetes Service、コンテナー
-ms.openlocfilehash: ce6c754c308d2979db9b1b8eb36e7858e8a91c3c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+description: GitOps を使用して Azure Arc 対応の Kubernetes クラスターを構成する (プレビュー)
+keywords: GitOps、Kubernetes、K8s、Azure、Arc、Azure Kubernetes Service、AKS、コンテナー
+ms.openlocfilehash: 85771824a6cecd10346937220e400028a4570377
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659796"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653454"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Arc 対応 Kubernetes クラスターに対して GitOps を使用して構成をデプロイする (プレビュー)
 
-GitOps では、Git リポジトリ内で Kubernetes 構成 (デプロイ、名前空間など) の望ましい状態を宣言した後、ポーリングしたり、演算子を使用してこれらの構成をクラスターにプルベースで展開したりします。 このドキュメントでは、Azure Arc 対応 Kubernetes クラスターでのこのようなワークフローのセットアップについて説明します。
+Kubernetes に関連する GitOps では、Git リポジトリ内で Kubernetes 構成 (デプロイ、名前空間など) の望ましい状態を宣言した後、ポーリングしたり、演算子を使用してこれらの構成をクラスターにプルベースで展開したりします。 このドキュメントでは、Azure Arc 対応 Kubernetes クラスターでのこのようなワークフローのセットアップについて説明します。
 
-クラスターと 1 つ以上の Git リポジトリの間の接続は、Azure Resource Manager で `sourceControlConfiguration` 拡張リソースとして追跡されます。 `sourceControlConfiguration` リソースのプロパティは、Kubernetes リソースが Git からお客様のクラスターへとフローする場所と方法を表します。 `sourceControlConfiguration` データの保存中は Azure Cosmos DB データベースに暗号化された状態で格納されるので、データの機密性が確保されます。
+クラスターと Git リポジトリの間の接続は、Azure Resource Manager で `Microsoft.KubernetesConfiguration/sourceControlConfigurations` 拡張リソースとして作成されます。 `sourceControlConfiguration` リソースのプロパティは、Kubernetes リソースが Git からお客様のクラスターへとフローする場所と方法を表します。 `sourceControlConfiguration` データの保存中は Azure Cosmos DB データベースに暗号化された状態で格納されるので、データの機密性が確保されます。
 
-クラスターで実行されている `config-agent` は、Azure Arc 対応 Kubernetes リソースで新規または更新された `sourceControlConfiguration` の拡張リソースを監視し、Git リポジトリを監視するための Flux 演算子をデプロイし、`sourceControlConfiguration` に加えられた更新を伝達する役割を担います。 複数の `sourceControlConfiguration` リソースを同じ Azure Arc 対応 Kubernetes クラスター上の `namespace` スコープで作成し、マルチテナントを実現することもできます。 このような場合、各演算子はそれぞれの名前空間にのみ構成をデプロイできます。
+クラスターで実行されている `config-agent` は、Azure Arc 対応 Kubernetes リソースで新規または更新された `sourceControlConfiguration` の拡張リソースを監視し、各 `sourceControlConfiguration` について Git リポジトリを監視するための Flux 演算子をデプロイし、`sourceControlConfiguration` に加えられた更新を適用する役割を担います。 複数の `sourceControlConfiguration` リソースを同じ Azure Arc 対応 Kubernetes クラスター上に作成し、マルチテナントを実現できます。 各 `sourceControlConfiguration` を異なる `namespace` スコープで作成し、それぞれの名前空間内のデプロイを制限することができます。
 
-この Git リポジトリには、Namespace、ConfigMap、Deployment、DaemonSet などの有効な Kubernetes リソースを含めることができます。また、アプリケーションをデプロイするための Helm グラフを含めることもできます。 一般的なシナリオ セットとして、組織のベースライン構成の定義が含まれます。これには、一般的な Azure ロールとバインド、監視またはログ エージェント、またはクラスター全体のサービスが含まれる場合があります。
+Git リポジトリには、Namespace、ConfigMap、Deployment、DaemonSet などの有効な Kubernetes リソースを記述する YAML 形式のマニフェストを含めることができます。また、アプリケーションをデプロイするための Helm グラフを含めることもできます。 一般的なシナリオ セットとして、組織のベースライン構成の定義が含まれます。これには、一般的な Azure ロールとバインド、監視またはログ エージェント、またはクラスター全体のサービスが含まれる場合があります。
 
 同じパターンを使用して、異機種混合の環境全体にデプロイされているような、より大規模なクラスターのコレクションを管理できます。 たとえば、組織のベースライン構成を定義するリポジトリが 1 つあり、それを一度に数十の Kubernetes クラスターに適用しているとします。 [Azure Policy では、スコープ (サブスクリプションまたはリソース グループ) にあるすべての Azure Arc 対応 Kubernetes リソースで、特定のパラメーター セットを使用して `sourceControlConfiguration` の作成を自動化](use-azure-policy.md)できます。
 
@@ -42,11 +42,11 @@ GitOps では、Git リポジトリ内で Kubernetes 構成 (デプロイ、名�
 **ConfigMap:** `team-a/endpoints`
 
 `config-agent` は、新規または更新された `sourceControlConfiguration` を 30 秒ごと (`config-agent` が新規または更新された構成を取得するためにかかる最大時間) に Azure でポーリングします。
-`sourceControlConfiguration` を持つプライベート リポジトリを関連付ける場合は、[プライベート git リポジトリから構成を適用する](#apply-configuration-from-a-private-git-repository)手順も完了するようにします。
+`sourceControlConfiguration` を持つプライベート リポジトリを関連付ける場合は、[プライベート Git リポジトリから構成を適用する](#apply-configuration-from-a-private-git-repository)手順も完了するようにします。
 
 ### <a name="using-azure-cli"></a>Azure CLI の使用
 
-`k8sconfiguration` の Azure CLI 拡張機能を使用して、接続されたクラスターを [Git リポジトリの例](https://github.com/Azure/arc-k8s-demo)にリンクしましょう。 この構成に `cluster-config` と名前を付け、`cluster-config` 名前空間にオペレーターを配置するようにエージェントに指示し、オペレーターに `cluster-admin` アクセス許可を与えます。
+`k8sconfiguration` の Azure CLI 拡張機能を使用して、接続されたクラスターを [Git リポジトリの例](https://github.com/Azure/arc-k8s-demo)にリンクしてください。 この構成に `cluster-config` と名前を付け、`cluster-config` 名前空間にオペレーターを配置するようにエージェントに指示し、オペレーターに `cluster-admin` アクセス許可を与えます。
 
 ```console
 az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name cluster-config --operator-namespace cluster-config --repository-url https://github.com/Azure/arc-k8s-demo --scope cluster --cluster-type connectedClusters
@@ -58,84 +58,115 @@ az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 {
   "complianceStatus": {
-    "ComplianceStatus": 1,
-    "clientAppliedTime": null,
-    "level": 3,
-    "message": "{\"OperatorMessage\":null,\"ClusterState\":null}"
+    "complianceState": "Pending",
+    "lastConfigApplied": "0001-01-01T00:00:00",
+    "message": "{\"OperatorMessage\":null,\"ClusterState\":null}",
+    "messageLevel": "3"
   },
-  "configKind": "Git",
-  "configName": "cluster-config",
-  "configOperator": {
-    "operatorInstanceName": "cluster-config",
-    "operatorNamespace": "cluster-config",
-    "operatorParams": "--git-readonly",
-    "operatorScope": "cluster",
-    "operatorType": "flux"
-  },
-  "configType": "",
-  "id": null,
-  "name": null,
-  "operatorInstanceName": null,
-  "operatorNamespace": null,
-  "operatorParams": null,
-  "operatorScope": null,
-  "operatorType": null,
-  "providerName": "ConnectedClusters",
+  "configurationProtectedSettings": {},
+  "enableHelmOperator": false,
+  "helmOperatorProperties": null,
+  "id": "/subscriptions/<sub id>/resourceGroups/<group name>/providers/Microsoft.Kubernetes/connectedClusters/<cluster name>/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/cluster-config",
+  "name": "cluster-config",
+  "operatorInstanceName": "cluster-config",
+  "operatorNamespace": "cluster-config",
+  "operatorParams": "--git-readonly",
+  "operatorScope": "cluster",
+  "operatorType": "Flux",
   "provisioningState": "Succeeded",
-  "repositoryPublicKey": null,
-  "repositoryUrl": null,
-  "sourceControlConfiguration": {
-    "repositoryPublicKey": "",
-    "repositoryUrl": "git://github.com/Azure/arc-k8s-demo.git"
+  "repositoryPublicKey": "",
+  "repositoryUrl": "https://github.com/Azure/arc-k8s-demo",
+  "resourceGroup": "MyRG",
+  "sshKnownHostsContents": "",
+  "systemData": {
+    "createdAt": "2020-11-24T21:22:01.542801+00:00",
+    "createdBy": null,
+    "createdByType": null,
+    "lastModifiedAt": "2020-11-24T21:22:01.542801+00:00",
+    "lastModifiedBy": null,
+    "lastModifiedByType": null
   },
-  "type": null
-}
-```
+  "type": "Microsoft.KubernetesConfiguration/sourceControlConfigurations"
+  ```
 
-#### <a name="repository-url-parameter"></a>repository-url パラメーター
+#### <a name="use-a-public-git-repo"></a>パブリック Git リポジトリを使用する
 
-次に --repository-url パラメーターの値についてサポートされているシナリオを示します。
+| パラメーター | Format |
+| ------------- | ------------- |
+| --repository-url | http[s]://server/repo[.git] or git://server/repo[.git]
 
-| シナリオ | Format | 説明 |
+#### <a name="use-a-private-git-repo-with-ssh-and-flux-created-keys"></a>SSH および Flux で作成されたキーを使用してプライベート Git リポジトリを使用する
+
+| パラメーター | Format | Notes
 | ------------- | ------------- | ------------- |
-| パブリック Git リポジトリ | http[s]://server/repo.git or git://server/repo.git   | パブリック Git リポジトリ  |
-| プライベート Git リポジトリ – SSH – Flux で作成されたキー | ssh://[user@]server/repo.git or [user@]server:repo.git | Flux によって生成される公開キーは、Git サービス プロバイダー上のユーザー アカウントに追加する必要があります。 デプロイ キーがユーザー アカウントではなくリポジトリに追加された場合は、`user@` の代わりに `git@` を使用します。 詳細については、 [こちら](#apply-configuration-from-a-private-git-repository) |
+| --repository-url | ssh://user@server/repo[.git] または user@server:repo[.git] | `git@` は `user@` に置き換え可能
 
-これらのシナリオは Flux でサポートされていますが、sourceControlConfiguration ではまだサポートされていません。
+> [!NOTE]
+> Flux によって生成される公開キーは、Git サービス プロバイダーのユーザー アカウントに追加する必要があります。 キーがユーザー アカウントではなくリポジトリに追加された場合は、`user@` の代わりに `git@` を URL で使用します。 [詳細を表示](#apply-configuration-from-a-private-git-repository)
 
-| シナリオ | Format | 説明 |
+#### <a name="use-a-private-git-repo-with-ssh-and-user-provided-keys"></a>SSH および ユーザー指定のキーを使用してプライベート Git リポジトリを使用する
+
+| パラメーター | Format | Notes |
 | ------------- | ------------- | ------------- |
-| プライベート Git リポジトリ - HTTPS | https://server/repo.git | 近日対応予定 (ユーザー名/パスワード、ユーザー名/トークン、証明書をサポートします) |
-| プライベート Git リポジトリ - SSH – ユーザー指定のキー | ssh://[user@]server/repo.git or [user@]server:repo.git | 近日中にご利用になれます |
-| プライベート Git ホスト – SSH – カスタム known_hosts | ssh://[user@]server/repo.git or [user@]server:repo.git | 近日中にご利用になれます |
+| --repository-url  | ssh://user@server/repo[.git] または user@server:repo[.git] | `git@` は `user@` に置き換え可能 |
+| --ssh-private-key | base64-encoded キー ([PEM 形式](https://aka.ms/PEMformat)) | キーを直接指定 |
+| --ssh-private-key-file | ローカル ファイルへの完全なパス | PEM 形式のキーを含むローカル ファイルへの完全なパスを指定
+
+> [!NOTE]
+> 独自の秘密キーを直接またはファイルに指定します。 キーは [PEM 形式](https://aka.ms/PEMformat) で、末尾に改行文字 (\n) を使用する必要があります。  関連付けられた公開キーは、Git サービス プロバイダーのユーザー アカウントに追加する必要があります。 キーがユーザー アカウントではなくリポジトリに追加された場合は、`user@` の代わりに `git@` を使用します。 [詳細を表示](#apply-configuration-from-a-private-git-repository)
+
+#### <a name="use-a-private-git-host-with-ssh-and-user-provided-known-hosts"></a>SSH および ユーザー指定の既知のホストを使用してプライベート Git ホストを使用する
+
+| パラメーター | Format | Notes |
+| ------------- | ------------- | ------------- |
+| --repository-url  | ssh://user@server/repo[.git] または user@server:repo[.git] | `git@` は `user@` に置き換え可能 |
+| --ssh-known-hosts | base64-encoded | 直接指定された既知のホストのコンテンツ |
+| --ssh-known-hosts-file | ローカル ファイルへの完全なパス | ローカル ファイルに指定された既知のホストのコンテンツ
+
+> [!NOTE]
+> Flux 演算子は、SSH 接続を確立する前に Git リポジトリを認証するため、既知のホスト ファイルに一般的な Git ホストの一覧を保持します。 一般的ではない Git リポジトリまたは独自の Git ホストを使用している場合は、ホスト キーを指定して、Flux がリポジトリを識別できるようにする必要があります。 既知のホストのコンテンツは、直接指定することも、ファイルに指定することもできます。 [既知のホストのコンテンツに関する形式の仕様](https://aka.ms/KnownHostsFormat)をご確認ください。
+> これは、前述の SSH キー シナリオの 1 つと組み合わせて使用できます。
+
+#### <a name="use-a-private-git-repo-with-https"></a>HTTPS を使用してプライベート Git リポジトリを使用する
+
+| パラメーター | Format | Notes |
+| ------------- | ------------- | ------------- |
+| --repository-url | https://server/repo [.git] | 基本認証を使用した HTTPS |
+| --https-user | raw または base64-encoded | HTTPS のユーザー名 |
+| --https-key | raw または base64-encoded | HTTPS の個人用アクセス トークンまたはパスワード
+
+> [!NOTE]
+> HTTPS Helm リリースのプライベート認証は、バージョン 1.2.0 以上の Helm 演算子グラフでのみサポートされます。  既定ではバージョン 1.2.0 が使用されます。
+> HTTPS Helm リリースのプライベート認証は現在、Azure Kubernetes Services のマネージド クラスターではサポートされていません。
+> プロキシを介して Git リポジトリにアクセスするために Flux が必要な場合は、プロキシ設定を使用して Azure Arc エージェントを更新する必要があります。 [詳細情報](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#connect-using-an-outbound-proxy-server)
 
 #### <a name="additional-parameters"></a>追加のパラメーター
 
-構成の作成をカスタマイズするために、いくつかの追加パラメーターを次に示します。
+構成をカスタマイズするために使用できるその他のパラメーターは次のとおりです。
 
 `--enable-helm-operator`:*省略可能*: Helm グラフの配置のサポートを有効にするように切り替えます。
 
-`--helm-operator-chart-values`:*省略可能*: Helm 演算子 (有効な場合) のグラフの値。  たとえば、'--set helm.versions=v3' です。
+`--helm-operator-params`:*省略可能*: Helm 演算子 (有効な場合) のグラフの値。  たとえば、'--set helm.versions=v3' です。
 
-`--helm-operator-chart-version`:*省略可能*: Helm 演算子 (有効な場合) のグラフのバージョン。 既定値は'0.6.0'。
+`--helm-operator-chart-version`:*省略可能*: Helm 演算子 (有効な場合) のグラフのバージョン。 既定値は1.2.0 です。
 
 `--operator-namespace`:*省略可能*: オペレーターの名前空間の名前。 既定値: 'default'
 
-`--operator-params`:*省略可能*: オペレーターのパラメーター。 単一引用符で囲む必要があります。 たとえば、```--operator-params='--git-readonly --git-path=releases' ``` のように指定します。
+`--operator-params`:*省略可能*: オペレーターのパラメーター。 単一引用符で囲む必要があります。 たとえば、```--operator-params='--git-readonly --git-path=releases --sync-garbage-collection' ``` のように指定します。
 
 --operator-params でサポートされているオプション
 
 | オプション | 説明 |
 | ------------- | ------------- |
-| --git-branch  | Kubernetes マニフェストに使用する git リポジトリのブランチ。 既定値は 'master' です。 |
+| --git-branch  | Kubernetes マニフェストに使用する Git リポジトリのブランチ。 既定値は 'master' です。 |
 | --git-path  | Flux から Kubernetes マニフェストを特定するための Git リポジトリ内の相対パス。 |
 | --git-readonly | Git リポジトリは読み取り専用と見なされます。Flux では書き込みが試行されなくなります。 |
 | --manifest-generation  | 有効にすると、Flux によって .flux.yaml が検索され、Kustomize または他のマニフェスト ジェネレーターが実行されます。 |
 | --git-poll-interval  | 新しいコミットに対して Git リポジトリをポーリングする期間。 既定は '5m' (5 分) です。 |
 | --sync-garbage-collection  | 有効にすると、Flux によって作成されたリソースは削除されますが、Git には存在しなくなります。 |
 | --git-label  | 同期の進行状況を追跡するためのラベル。Git ブランチのタグ付けに使用されます。  既定値は 'flux-sync' です。 |
-| --git-user  | git コミットのユーザー名。 |
-| --git-email  | git コミットに使用するメール アドレス。 |
+| --git-user  | Git コミットのユーザー名。 |
+| --git-email  | Git コミットに使用するメール アドレス。 |
 
 * '--git-user' または '--git-email' が設定されていない場合 (つまり、Flux を使用してリポジトリに書き込みたくない場合)、--git-readonly が自動的に設定されます (まだ設定していない場合)。
 
@@ -148,7 +179,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 詳細については、[Flux のドキュメント](https://aka.ms/FluxcdReadme)を参照してください。
 
 > [!TIP]
-> sourceControlConfiguration は、Azure portal の Azure Arc 対応 Kubernetes リソース ブレードの **[構成]** タブで作成することもできます。
+> sourceControlConfiguration は、Azure portal の Azure Arc 対応 Kubernetes リソースの **[GitOps]** タブで作成できます。
 
 ## <a name="validate-the-sourcecontrolconfiguration"></a>sourceControlConfiguration を確認する
 
@@ -167,11 +198,17 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 {
   "complianceStatus": {
     "complianceState": "Installed",
-    "lastConfigApplied": "2019-12-05T05:34:41.481000",
+    "lastConfigApplied": "2020-12-10T18:26:52.801000+00:00",
     "message": "...",
-    "messageLevel": "3"
+    "messageLevel": "Information"
   },
-  "id": "/subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/cluster-config",
+  "configurationProtectedSettings": {},
+  "enableHelmOperator": false,
+  "helmOperatorProperties": {
+    "chartValues": "",
+    "chartVersion": ""
+  },
+  "id": "/subscriptions/<sub id>/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/cluster-config",
   "name": "cluster-config",
   "operatorInstanceName": "cluster-config",
   "operatorNamespace": "cluster-config",
@@ -182,20 +219,29 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
   "repositoryPublicKey": "...",
   "repositoryUrl": "git://github.com/Azure/arc-k8s-demo.git",
   "resourceGroup": "AzureArcTest",
+  "sshKnownHostsContents": null,
+  "systemData": {
+    "createdAt": "2020-12-01T03:58:56.175674+00:00",
+    "createdBy": null,
+    "createdByType": null,
+    "lastModifiedAt": "2020-12-10T18:30:56.881219+00:00",
+    "lastModifiedBy": null,
+    "lastModifiedByType": null
+},
   "type": "Microsoft.KubernetesConfiguration/sourceControlConfigurations"
 }
 ```
 
 `sourceControlConfiguration` が作成されると、内部でいくつかの処理が行われます。
 
-1. Azure Arc `config-agent` では、Azure Resource Manager の新規または更新された構成 (`Microsoft.KubernetesConfiguration/sourceControlConfiguration`) が監視されます
+1. Azure Arc `config-agent` では、Azure Resource Manager の新規または更新された構成 (`Microsoft.KubernetesConfiguration/sourceControlConfigurations`) が監視されます
 1. `config-agent` を使用すると、新しい`Pending` 構成が通知されます
 1. `config-agent` を使用すると、構成プロパティが読み取られ、`flux` のマネージド インスタンスのデプロイが準備されます
     * `config-agent` を使用すると、ターゲットの名前空間が作成されます
     * `config-agent` を使用すると、適切なアクセス許可 (`cluster` または `namespace` スコープ) を持つ Kubernetes サービス アカウントが準備されます
     * `config-agent` を使用すると、`flux` のインスタンスがデプロイされます
-    * `flux` を使用すると、SSH キーが生成され、公開キーがログに記録されます
-1. `config-agent` を使用すると、状態が `sourceControlConfiguration` に報告されます
+    * `flux` を使用すると、SSH キーが生成され、公開キーがログに記録されます (Flux が生成したキーで SSH のオプションを使用している場合)
+1. `config-agent` を使用すると、Azure の `sourceControlConfiguration` リソースに状態が報告されます
 
 プロビジョニング プロセスが実行されている間、`sourceControlConfiguration` はいくつかの状態に遷移します。 上記の `az k8sconfiguration show ...` のコマンドを使用して進行状況を監視します。
 
@@ -203,11 +249,15 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 1. `complianceStatus` -> `Installed`: `config-agent` によってクラスターが正常に構成され、エラーなしで `flux` がデプロイされました
 1. `complianceStatus` -> `Failed`: `config-agent` で `flux` のデプロイ中にエラーが発生しました。詳細は `complianceStatus.message` 応答本文で確認できます
 
-## <a name="apply-configuration-from-a-private-git-repository"></a>プライベート git リポジトリから構成を適用する
+## <a name="apply-configuration-from-a-private-git-repository"></a>プライベート Git リポジトリから構成を適用する
 
-プライベート git リポジトリを使用している場合、ループを閉じるためにもう 1 つのタスクを実行する必要があります。リポジトリで、`flux` によって生成された公開キーを **デプロイ キー** として追加します。
+プライベート Git リポジトリを使用している場合は、リポジトリで SSH 公開キーを構成する必要があります。 公開キーは、Git リポジトリで構成するか、リポジトリにアクセスできる Git ユーザーが構成します。 SSH 公開キーは、自分で指定するか、または Flux によって生成されます。
 
-**Azure CLI を使用して公開キーを取得する**
+**独自の公開キーを取得する**
+
+独自の SSH キーを生成した場合は、既に秘密キーと公開キーを持っています。
+
+**Azure CLI を使用して公開キーを取得する (Flux によってキーが生成される場合に便利)**
 
 ```console
 $ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --query 'repositoryPublicKey'
@@ -215,16 +265,16 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAREDACTED"
 ```
 
-**Azure portal から公開キーを取得する**
+**Azure portal から公開キーを取得する (Flux によってキーが生成される場合に便利)**
 
 1. Azure portal で、接続されているクラスター リソースに移動します。
-2. [リソース] ページで [構成] を選択し、このクラスターの構成の一覧を表示します。
+2. [リソース] ページで GitOps を選択し、このクラスターの構成の一覧を表示します。
 3. プライベート Git リポジトリを使用する構成を選択します。
 4. 開いたコンテキスト ウィンドウで、ウィンドウの下部にある **[リポジトリの公開キー]** をコピーします。
 
 GitHub を使用している場合は、次の 2 つのオプションのいずれかを使用します。
 
-**オプション 1: 自分のユーザー アカウントに公開キーを追加する**
+**オプション 1: ユーザー アカウントに公開キーを追加する (アカウントのすべてのリポジトリに適用)**
 
 1. GitHub を開き、ページの右上隅にあるプロファイル アイコンをクリックします。
 2. **[設定]** をクリックします。
@@ -234,7 +284,7 @@ GitHub を使用している場合は、次の 2 つのオプションのいず�
 6. 公開キーを貼り付けます (囲んでいる引用符は除きます)
 7. **[Add SSH key]\(SSH キーの追加\)** をクリックします
 
-**オプション 2: 公開キーをデプロイ キーとして git リポジトリに追加する**
+**オプション 2: 公開キーをデプロイ キーとして Git リポジトリに追加する (このリポジトリにのみ適用)**
 
 1. GitHub を開き、リポジトリに移動して、 **[設定]** 、 **[Deploy keys]\(デプロイ キー\)** の順に移動します
 2. **[Add deploy key]\(デプロイ キーの追加\)** をクリックします
@@ -253,7 +303,7 @@ GitHub を使用している場合は、次の 2 つのオプションのいず�
 
 ## <a name="validate-the-kubernetes-configuration"></a>Kubernetes の構成を確認する
 
-`config-agent` で `flux` インスタンスがインストールされた後、git リポジトリに保持されているリソースがクラスターにフローし始めます。 名前空間、デプロイ、およびリソースが作成されていることを確認します。
+`config-agent` で `flux` インスタンスがインストールされた後、Git リポジトリに保持されているリソースがクラスターにフローし始めます。 名前空間、デプロイ、およびリソースが作成されていることを確認します。
 
 ```console
 kubectl get ns --show-labels
@@ -301,11 +351,11 @@ kubectl -n itops get all
 
 ## <a name="delete-a-configuration"></a>構成を削除する
 
-`sourceControlConfiguration` を削除するには、Azure CLI または Azure portal を使用します。  delete コマンドを開始すると、Azure の `sourceControlConfiguration` リソースはすぐに削除されますが、クラスターから関連オブジェクトが完全に削除されるまでに最大 1 時間かかることがあります (このタイムラグを短縮するためにバックログ項目が用意されています)。
+`sourceControlConfiguration` を削除するには、Azure CLI または Azure portal を使用します。  delete コマンドを開始すると、Azure の `sourceControlConfiguration` リソースはすぐに削除され、10 分以内に関連オブジェクトがクラスターから完全に削除されます。  `sourceControlConfiguration` が、削除されたときにエラー状態の場合、関連オブジェクトの完全な削除には最大 1 時間かかることがあります。
 
 > [!NOTE]
-> 名前空間スコープを持つ sourceControlConfiguration を作成した後、名前空間で `edit` ロールがバインドされているユーザーは、この名前空間にワークロードをデプロイできます。 名前空間スコープを持つこの `sourceControlConfiguration` が削除されると、その名前空間はそのまま残り、他のワークロードが中断されることを防ぐために削除されません。
-> `sourceControlConfiguration` が削除されても、追跡対象の git リポジトリからのデプロイの結果としてクラスターに加えられた変更は削除されません。
+> 名前空間スコープを持つ sourceControlConfiguration を作成した後、名前空間で `edit` ロールがバインドされているユーザーは、この名前空間にワークロードをデプロイできます。 名前空間スコープを持つこの `sourceControlConfiguration` が削除されると、その名前空間はそのまま残り、他のワークロードが中断されることを防ぐために削除されません。  必要に応じて、kubectl を使用してこの名前空間を手動で削除できます。
+> `sourceControlConfiguration` が削除されても、追跡対象の Git リポジトリからのデプロイの結果としてクラスターに加えられた変更は削除されません。
 
 ```console
 az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters

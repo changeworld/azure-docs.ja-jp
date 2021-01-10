@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: cc06f12317f5e30721452e07bd4dc5f50dfdb7ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/18/2020
+ms.openlocfilehash: d23b2f65f25b704beaee12c53e47706653dcc208
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022362"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858588"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
@@ -169,7 +169,7 @@ Azure SQL ソース システムでの読み取りの分離レベルは、パフ
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure Synapse Analytics のソース
 
-Azure Synapse Analytics を使用するとき、ソース オプションに **[Enable staging]\(ステージングの有効化\)** という設定があります。 これにより、ADF で ```Polybase``` を使用して Synapse から読み取ることができます。そうすることで、読み取りのパフォーマンスが大幅に向上します。 ```Polybase``` を有効にするには、データ フロー アクティビティの設定で Azure Blob Storage または Azure Data Lake Storage gen2 ステージングの場所を指定する必要があります。
+Azure Synapse Analytics を使用するとき、ソース オプションに **[Enable staging]\(ステージングの有効化\)** という設定があります。 これにより、ADF で ```Staging``` を使用して Synapse から読み取ることができます。そうすることで、読み取りのパフォーマンスが大幅に向上します。 ```Staging``` を有効にするには、データ フロー アクティビティの設定で Azure Blob Storage または Azure Data Lake Storage gen2 ステージングの場所を指定する必要があります。
 
 ![ステージングの有効化](media/data-flow/enable-staging.png "ステージングの有効化")
 
@@ -216,9 +216,9 @@ DTU の制限に達したら、ソースとシンクの Azure SQL DB と DW の�
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure Synapse Analytics のシンク
 
-Azure Synapse Analytics に書き込むときは、 **[Enable staging]\(ステージングの有効化\)** が true に設定されていることを確認してください。 これにより、ADF で [PolyBase](/sql/relational-databases/polybase/polybase-guide) を使用して書き込むことができ、データを一括で効率的に読み込むことができます。 PolyBase を使用する場合は、データのステージングのために Azure Data Lake Storage gen2 または Azure Blob Storage アカウントを参照する必要があります。
+Azure Synapse Analytics に書き込むときは、 **[Enable staging]\(ステージングの有効化\)** が true に設定されていることを確認してください。 これにより、ADF で [SQL Copy Command](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) を使用して書き込むことができ、データを一括で効率的に読み込むことができます。 ステージングを使用する場合は、データのステージングのために Azure Data Lake Storage gen2 または Azure Blob Storage アカウントを参照する必要があります。
 
-PolyBase 以外でも、Azure Synapse Analytics に Azure SQL Database と同じベスト プラクティスが適用されます。
+ステージング以外でも、Azure Synapse Analytics に Azure SQL Database と同じベスト プラクティスが適用されます。
 
 ### <a name="file-based-sinks"></a>ファイルベースのシンク 
 
@@ -309,6 +309,14 @@ SSIS などのツールでのマージ結合とは異なり、結合変換は強
 ### <a name="overloading-a-single-data-flow"></a>単一データ フローのオーバーロード
 
 すべてのロジックを 1 つのデータ フロー内に配置すると、ADF によって単一の Spark インスタンスでジョブ全体が実行されます。 これはコストを削減する方法のように思えるかもしれませんが、さまざまな論理フローを組み合わせるため、監視やデバッグが困難になる可能性があります。 1 つのコンポーネントが失敗すると、ジョブの他のすべての部分も失敗します。 Azure Data Factory チームでは、ビジネス ロジックの独立したフローによってデータ フローを整理することをお勧めしています。 データ フローが大きくなりすぎた場合、コンポーネントを分割すると、監視とデバッグが容易になります。 データ フロー内の変換の数にはハード制限はありませんが、多すぎるとジョブが複雑になります。
+
+### <a name="execute-sinks-in-parallel"></a>シンクを並列実行する
+
+データ フロー シンクの既定の動作では、各シンクが順番に実行され、シンクでエラーが発生した場合はデータ フローが失敗します。 さらに、データ フロー プロパティでシンクに異なる優先順位を設定しない限り、すべてのシンクは既定で同じグループに設定されます。
+
+データ フローでは、UI デザイナーのデータ フロー プロパティのタブで、シンクをグループにまとめることができます。 シンクの実行順序を設定できるほか、同じグループ番号を使用してシンクをグループ化できます。 グループを管理しやすくするため、同じグループ内のシンクを並列実行するように ADF に要求することもできます。
+
+シンクのプロパティ セクションにある、パイプラインのデータ フロー実行アクティビティでも、シンクの並列読み込みを有効にできます。 並列実行を有効にすると、データ フローは、接続されているシンクに (順次ではなく) 同時に書き込まれるように指示されます。 並列実行のオプションを利用するには、シンクがグループ化され、新しい分岐または条件分割を使用して同じストリームに接続されている必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

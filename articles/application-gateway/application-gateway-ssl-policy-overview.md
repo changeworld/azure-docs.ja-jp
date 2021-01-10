@@ -5,14 +5,14 @@ services: application gateway
 author: amsriva
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 11/16/2019
+ms.date: 12/17/2020
 ms.author: amsriva
-ms.openlocfilehash: 16c6dd28d47573c2ad5b0d5a331b0dc48e7aacef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77239cd8586b8fb07abf6862be436979541bdb99
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85253632"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631692"
 ---
 # <a name="application-gateway-tls-policy-overview"></a>Application Gateway の TLS ポリシーの概要
 
@@ -23,6 +23,18 @@ TLS ポリシーでは、TLS プロトコルのバージョン、暗号スイー
 ## <a name="predefined-tls-policy"></a>定義済み TLS ポリシー
 
 Application Gateway には、3 つの定義済みセキュリティ ポリシーがあります。 これらのポリシーを使用してゲートウェイを構成し、適切なセキュリティ レベルを設定できます。 ポリシー名には、構成が行われた年月が付加されます。 各ポリシーでは、それぞれ異なる TLS プロトコルのバージョンと暗号スイートが提供されます。 最新の TLS ポリシーを使用して、最高レベルの TLS セキュリティを設定することをお勧めします。
+
+## <a name="known-issue"></a>既知の問題
+Application Gateway v2 では、次の DHE 暗号はサポートされていません。これらが定義済みのポリシーに記載されている場合でも、クライアントとの TLS 接続には使用されません。 DHE 暗号ではなく、安全でより高速な ECDHE 暗号をお勧めします。
+
+- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+- TLS_DHE_DSS_WITH_AES_128_CBC_SHA256
+- TLS_DHE_DSS_WITH_AES_128_CBC_SHA
+- TLS_DHE_DSS_WITH_AES_256_CBC_SHA256
+- TLS_DHE_DSS_WITH_AES_256_CBC_SHA
 
 ### <a name="appgwsslpolicy20150501"></a>AppGwSslPolicy20150501
 
@@ -39,7 +51,7 @@ Application Gateway には、3 つの定義済みセキュリティ ポリシー
 |   ---      |  ---       |
 |名前     | AppGwSslPolicy20170401        |
 |MinProtocolVersion     | TLSv1_1        |
-|Default| False |
+|Default| 誤 |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA |
   
 ### <a name="appgwsslpolicy20170401s"></a>AppGwSslPolicy20170401S
@@ -48,12 +60,16 @@ Application Gateway には、3 つの定義済みセキュリティ ポリシー
 |---|---|
 |名前     | AppGwSslPolicy20170401S        |
 |MinProtocolVersion     | TLSv1_2        |
-|Default| False |
+|Default| 誤 |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 <br>    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 <br>    TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA<br> |
 
 ## <a name="custom-tls-policy"></a>カスタム TLS ポリシー
 
 定義済み TLS ポリシーを要件に合わせて構成する必要がある場合、ご自身のカスタム TLS ポリシーを定義する必要があります。 カスタム TLS ポリシーでは、サポートされる最小バージョンの TLS プロトコルと、サポートされる暗号スイートとその優先順位を完全に制御できます。
+
+> [!IMPORTANT]
+> Application Gateway v1 SKU (Standard または WAF) でカスタム SSL ポリシーを使用している場合は、必ず、必須の暗号 "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256" をリストに追加してください。 この暗号は、Application Gateway v1 SKU でメトリックとログを有効にするために必要です。
+> これは、Application Gateway v2 SKU (Standard_v2 または WAF_v2) では必須ではありません。
  
 ### <a name="tlsssl-protocol-versions"></a>TLS/SSL プロトコルのバージョン
 
@@ -97,17 +113,6 @@ Application Gateway では、カスタム ポリシーで選択できる次の�
 
 > [!NOTE]
 > 接続に使用される TLS 暗号化スイートはまた、使用される証明書の種類にも基づきます。 クライアントからアプリケーション ゲートウェイへの接続では、使用される暗号化スイートはそのアプリケーション ゲートウェイ リスナー上のサーバー証明書の種類に基づきます。 アプリケーション ゲートウェイからバックエンド プールへの接続では、使用される暗号化スイートはそのバックエンド プール サーバー上のサーバー証明書の種類に基づきます。
-
-## <a name="known-issue"></a>既知の問題
-Application Gateway v2 では現在、次の暗号はサポートされていません。
-- DHE-RSA-AES128-GCM-SHA256
-- DHE-RSA-AES128-SHA
-- DHE-RSA-AES256-GCM-SHA384
-- DHE-RSA-AES256-SHA
-- DHE-DSS-AES128-SHA256
-- DHE-DSS-AES128-SHA
-- DHE-DSS-AES256-SHA256
-- DHE-DSS-AES256-SHA
 
 ## <a name="next-steps"></a>次のステップ
 

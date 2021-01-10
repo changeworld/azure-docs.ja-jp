@@ -12,60 +12,65 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/07/2020
+ms.date: 12/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 822d0c742bbd54b5bab0c69e82652743584a0696
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95e78c7557092a4d1203a8df3a107fe7b63eac9b
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659616"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631443"
 ---
 # <a name="connect-your-data-from-azure-defender-formerly-azure-security-center-for-iot-to-azure-sentinel"></a>Azure Defender (旧称 Azure Security Center) for IoT からのデータを Azure Sentinel に接続する 
 
 
 > [!IMPORTANT]
-> Azure Defender for IoT データ コネクタは、現在パブリック プレビュー段階です。 この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> Defender for IoT データ コネクタは、現在パブリック プレビュー段階です。 この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-Azure Defender for IoT コネクタを使用して、Azure Defender for IoT イベントをすべて Azure Sentinel にストリーミングします。 
+Defender for IoT コネクタを使用して、Defender for IoT イベントをすべて Azure Sentinel にストリーミングします。 
 
+この統合により、組織では、IT と OT の境界を越えることの多いマルチステージ攻撃を迅速に検出できます。 さらに、Defender for IoT と Azure Sentinel のセキュリティ オーケストレーション、オートメーション、および応答 (SOAR) 機能との統合により、OT 向けに最適化された組み込みのプレイブックを使って応答と防止を自動化できます。 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure Sentinel がデプロイされているワークスペースに対する**読み取り**および**書き込み**アクセス許可
-- お使いの適切な IoT ハブで **Azure Defender for IoT** を**有効**にする必要があります
-- 接続する **Azure IoT Hub** に対する**読み取り**および**書き込み**アクセス許可
-- **Azure IoT Hub リソース グループ**に対する**読み取り**および**書き込み**アクセス許可
+- Azure Sentinel がデプロイされているワークスペースに対する **読み取り** および **書き込み** アクセス許可
+- お使いの適切な IoT Hub で **Defender for IoT** を **有効** にする
+- 接続する **サブスクリプション** に対する **共同作成者** アクセス許可
 
-## <a name="connect-to-azure-defender-for-iot"></a>Azure Defender for IoT に接続する
+## <a name="connect-to-defender-for-iot"></a>Defender for IoT に接続する
 
-1. Azure Sentinel で、 **[データ コネクタ]** を選択し、 **[Azure Defender for IoT]** (名称は Azure Security Center for IoT のままの場合があります) をギャラリーから選択します。
-1. 右下のペインで、 **[コネクタ ページを開く]** をクリックします。 
+1. Azure Sentinel で、 **[データ コネクタ]** を選択し、 **[Defender for IoT]** (名称は Azure Security Center for IoT のままの場合があります) をギャラリーから選択します。
+
+1. 右側のペインの下部で、 **[コネクタ ページを開く]** をクリックします。 
+
 1. アラートとデバイス アラートを Azure Sentinel にストリーム配信する各 IoT Hub サブスクリプションの横にある **[接続]** をクリックします。 
-    - そのハブで Azure Defender for IoT が有効になっていない場合は、**有効化**に関する警告メッセージが表示されます。 **[Enable]\(有効にする\)** リンクをクリックして、サービスを開始します。 
-1. Azure Defender for IoT からのアラートによって Azure Sentinel でインシデントが生成されるようにするかどうかを指定できます。 **[Create incidents]\(インシデントの作成\)** で **[Enable]\(有効にする\)** を選択して、接続されたセキュリティ サービスで生成されたアラートからインシデントを自動的に作成する既定の分析ルールを有効にします。このルールは **[Analytics]**  >  **[アクティブ]** ルールで変更または編集できます。
+    - サブスクリプション内の少なくとも 1 つの IoT Hub で Defender for IoT が有効になっていない場合、エラーメッセージが表示されます。 エラーを削除するには、IoT Hub 内で Defender for IoT を有効にします。
+
+1. Defender for IoT からのアラートによって Azure Sentinel でインシデントが生成されるようにするかどうかを指定できます。 **[インシデントの作成]** で **[有効]** を選択して、生成されたアラートからインシデントを自動的に作成する既定の分析ルールを有効にします。 このルールは、 **[分析]**  >  **[アクティブ]** ルールで変更または編集できます。
 
 > [!NOTE]
-> 接続を変更した後、ハブの一覧が更新されるまでにしばらく時間がかかる場合があります。 
+> 接続を変更した後、**サブスクリプション** リストが更新されるまでに 10 秒以上かかる場合があります。 
 
-## <a name="log-analytics-alert-display"></a>Log Analytics のアラートの表示
+## <a name="log-analytics-alert-view"></a>Log Analytics のアラートの表示
 
-Log Analytics の適切なスキーマを使用して Azure Defender for IoT のアラートを表示するには:
+Log Analytics の適切なスキーマを使用して Defender for IoT のアラートを表示するには、次のようにします。
 
 1. **[ログ]**  >  **[SecurityInsights]**  >  **[SecurityAlert]** を開くか、**SecurityAlert** を検索します。 
-2. 次の kql フィルターを使用して、Azure Defender for IoT によって生成されたアラートのみが表示するようにします。
+
+2. 次の kql フィルターを使用して、Defender for IoT によって生成されたアラートのみが表示されるようにします。
 
 ```kusto
-SecurityAlert | where ProductName == "Azure Defender for IoT"
+SecurityAlert | where ProductName == "Azure Security Center for IoT"
 ``` 
 
 ### <a name="service-notes"></a>サービスに関する注意事項
 
-IoT ハブに接続してから約 15 分後に Azure Sentinel でハブ データを利用できるようになります。
+**サブスクリプション** に接続してから約 15 分後に Azure Sentinel でハブ データを利用できるようになります。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Azure Defender for IoT のデータを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+このドキュメントでは、Defender for IoT を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
 - [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。

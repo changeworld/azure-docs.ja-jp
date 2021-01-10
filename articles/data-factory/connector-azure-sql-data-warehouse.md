@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/12/2020
-ms.openlocfilehash: 7f92b4327b53b38cc83493c65ad573523546ee58
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 12/18/2020
+ms.openlocfilehash: 68f536e06ec5a40083d96745f5b72e511e423f64
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095119"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695169"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics のデータをコピーおよび変換する
 
@@ -274,6 +274,10 @@ Azure Synapse Analytics からデータをコピーするには、コピー ア�
 | partitionColumnName | 並列コピーの範囲パーティション分割で使用される *整数型または日付/日時型* (`int`、`smallint`、`bigint`、`date`、`smalldatetime`、`datetime`、`datetime2`、または `datetimeoffset`) のソース列の名前を指定します。 指定されない場合は、テーブルのインデックスまたは主キーが自動検出され、パーティション列として使用されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfDynamicRangePartitionCondition ` をフックします。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
 | partitionUpperBound | パーティション範囲の分割のための、パーティション列の最大値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されていない場合は、コピー アクティビティによって値が自動検出されます。  <br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
 | partitionLowerBound | パーティション範囲の分割のための、パーティション列の最小値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されていない場合は、コピー アクティビティによって値が自動検出されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
+
+**以下の点に注意してください。**
+
+- ソースのストアド プロシージャを使用してデータを取得する場合、異なるパラメーター値が渡されたときにストアド プロシージャが別のスキーマを返すように設計されていると、UI からスキーマをインポートするとき、または自動テーブル作成を使用して SQL データベースにデータをコピーするときに、エラーが発生したり、予期しない結果が表示されます。
 
 **例: SQL クエリの使用**
 
@@ -834,7 +838,7 @@ Azure Synapse Analytics との間でデータをコピーする場合、Azure Sy
 | :------------------------------------ | :----------------------------- |
 | bigint                                | Int64                          |
 | binary                                | Byte[]                         |
-| bit                                   | Boolean                        |
+| bit                                   | ブール型                        |
 | char                                  | String, Char[]                 |
 | date                                  | DateTime                       |
 | Datetime                              | DateTime                       |
@@ -856,7 +860,7 @@ Azure Synapse Analytics との間でデータをコピーする場合、Azure Sy
 | smallmoney                            | Decimal                        |
 | time                                  | TimeSpan                       |
 | tinyint                               | Byte                           |
-| UNIQUEIDENTIFIER                      | GUID                           |
+| UNIQUEIDENTIFIER                      | Guid                           |
 | varbinary                             | Byte[]                         |
 | varchar                               | String, Char[]                 |
 

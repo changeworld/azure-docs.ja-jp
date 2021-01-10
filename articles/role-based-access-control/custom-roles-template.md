@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager テンプレートを使用して Azure カスタム ロールを作成する - Azure RBAC
-description: Azure Resource Manager テンプレート (ARM テンプレート) と Azure ロールベースのアクセス制御 (Azure RBAC) を使用して Azure カスタム ロールを作成する方法について説明します。
+title: Azure Resource Manager テンプレートを使用して Azure カスタム ロールを作成または更新する - Azure RBAC
+description: Azure Resource Manager テンプレート (ARM テンプレート) と Azure ロールベースのアクセス制御 (Azure RBAC) を使用して Azure カスタム ロールを作成または更新する方法について説明します。
 services: role-based-access-control,azure-resource-manager
 author: rolyon
 manager: mtillman
@@ -8,18 +8,18 @@ ms.service: role-based-access-control
 ms.topic: how-to
 ms.custom: subject-armqs
 ms.workload: identity
-ms.date: 06/25/2020
+ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 96dfdc0a1c32237c55d4e65bb25989656e2a4ad2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: beea0c5cecd7bb99973a4692a4cce17e7a69d708
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097024"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631314"
 ---
-# <a name="create-an-azure-custom-role-using-an-arm-template"></a>ARM テンプレートを使用して Azure カスタム ロールを作成する
+# <a name="create-or-update-azure-custom-roles-using-an-arm-template"></a>ARM テンプレートを使用して Azure カスタム ロールを作成または更新する
 
-[Azure の組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自の[カスタム ロール](custom-roles.md)を作成することができます。 この記事では、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、カスタム ロールを作成する方法について説明します。
+[Azure の組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自の[カスタム ロール](custom-roles.md)を作成することができます。 この記事では、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、カスタム ロールを作成または更新する方法について説明します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -66,15 +66,13 @@ ms.locfileid: "93097024"
     $location = Read-Host -Prompt "Enter a location (i.e. centralus)"
     [string[]]$actions = Read-Host -Prompt "Enter actions as a comma-separated list (i.e. action1,action2)"
     $actions = $actions.Split(',')
-
     $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/create-role-def/azuredeploy.json"
-
     New-AzDeployment -Location $location -TemplateUri $templateUri -actions $actions
     ```
 
-1. デプロイの場所を入力します ( *centralus* など)。
+1. デプロイの場所を入力します (`centralus` など)。
 
-1. カスタム ロールのアクションの一覧をコンマ区切りの一覧として入力します ( *Microsoft.Resources/resources/read,Microsoft.Resources/subscriptions/resourceGroups/read* など)。
+1. カスタム ロールのアクションの一覧をコンマ区切りの一覧として入力します (`Microsoft.Resources/resources/read,Microsoft.Resources/subscriptions/resourceGroups/read` など)。
 
 1. 必要に応じて、Enter キーを押して `New-AzDeployment` コマンドを実行します。
 
@@ -153,6 +151,47 @@ ms.locfileid: "93097024"
 
    ![Azure portal 内の新しいカスタム ロール](./media/custom-roles-template/custom-role-template-portal.png)
 
+## <a name="update-a-custom-role"></a>カスタム ロールの更新
+
+カスタム ロールを作成する場合と同じく、テンプレートを使用して既存のカスタム ロールを更新できます。 カスタム ロールを更新するには、更新するロールを指定する必要があります。
+
+ここでは、カスタム ロールを更新するために、以前のクイック スタート テンプレートに対して行う必要がある変更について説明します。
+
+- ロール ID をパラメーターとして含めます。
+    ```json
+        ...
+        "roleDefName": {
+          "type": "string",
+          "metadata": {
+            "description": "ID of the role definition"
+          }
+        ...
+    ```
+
+- ロール定義にロール ID パラメーターを含めます。
+
+    ```json
+      ...
+      "resources": [
+        {
+          "type": "Microsoft.Authorization/roleDefinitions",
+          "apiVersion": "2018-07-01",
+          "name": "[parameters('roleDefName')]",
+          "properties": {
+            ...
+    ```
+
+テンプレートをデプロイする方法の例を次に示します。
+
+```azurepowershell
+$location = Read-Host -Prompt "Enter a location (i.e. centralus)"
+[string[]]$actions = Read-Host -Prompt "Enter actions as a comma-separated list (i.e. action1,action2)"
+$actions = $actions.Split(',')
+$roleDefName = Read-Host -Prompt "Enter the role ID to update"
+$templateFile = "rg-reader-update.json"
+New-AzDeployment -Location $location -TemplateFile $templateFile -actions $actions -roleDefName $roleDefName
+```
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 カスタム ロールを削除するには、次の手順に従います。
@@ -163,7 +202,7 @@ ms.locfileid: "93097024"
     Get-AzRoleDefinition -Name "Custom Role - RG Reader" | Remove-AzRoleDefinition
     ```
 
-1. 「 **Y** 」と入力して、カスタム ロールを削除することを確認します。
+1. 「**Y**」と入力して、カスタム ロールを削除することを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

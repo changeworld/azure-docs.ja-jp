@@ -1,19 +1,19 @@
 ---
 title: 結果をトリミングするためのセキュリティ フィルター
 titleSuffix: Azure Cognitive Search
-description: セキュリティ フィルターとユーザー ID を使用した Azure Cognitive Search の検索結果に対するドキュメント レベルのセキュリティ特権。
+description: セキュリティ フィルターとユーザー ID を使用した Azure Cognitive Search の検索結果に対するドキュメント レベルのセキュリティ特権を実装する方法について説明します。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: 8562fd1afaa01e362bd6d95fd4dcf90cf3145c5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/16/2020
+ms.openlocfilehash: 8bd162fcf2011d2ccce716564763e7f54f19ff69
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88928525"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631805"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Azure Cognitive Search の結果をトリミングするためのセキュリティ フィルター
 
@@ -62,7 +62,7 @@ ms.locfileid: "88928525"
   
 インデックスの URL エンドポイントに HTTP POST 要求を発行します。 HTTP 要求の本文は、追加するドキュメントを含む JSON オブジェクトです。
 
-```
+```http
 POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2020-06-30  
 Content-Type: application/json
 api-key: [admin key]
@@ -110,17 +110,18 @@ api-key: [admin key]
 ```
 
 セキュリティの追加または更新の詳細については、[セキュリティの編集](/rest/api/searchservice/addupdate-or-delete-documents)に関するページを参照してください。
-   
+
 ## <a name="apply-the-security-filter"></a>セキュリティ フィルターを適用する
 
 `group_ids` のアクセス権に基づいてドキュメントをトリミングするには、`group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` フィルターを含む検索クエリを発行する必要があります (この "group_id1, group_id2,..." は、検索要求の発行元が属するグループです)。
+
 このフィルターは、指定された識別子のいずれかが `group_ids` フィールドに含まれるすべてのドキュメントと一致します。
 Azure Cognitive Search を使用してドキュメントを検索する方法の詳細については、[ドキュメントの検索](/rest/api/searchservice/search-documents)に関するページを参照してください。
 このサンプルでは、POST 要求を使用してドキュメントを検索する方法について説明している点に注意してください。
 
 HTTP POST 要求を発行します。
 
-```
+```http
 POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2020-06-30
 Content-Type: application/json  
 api-key: [admin or query key]
@@ -152,12 +153,12 @@ api-key: [admin or query key]
  ]
 }
 ```
-## <a name="conclusion"></a>まとめ
 
-ここでは、ユーザー ID と Azure Cognitive Search の `search.in()` 関数に基づいて結果をフィルターする方法について説明しました。 この関数を使用して、各ターゲット ドキュメントに関連付けられたプリンシパルの識別子と一致する要求元のユーザーについて、プリンシパルの識別子を渡すことができます。 検索要求が処理されると、`search.in` 関数によって、ユーザーのプリンシパルが読み取りアクセス権を持っていない検索結果は除外されます。 プリンシパルの識別子は、セキュリティ グループ、ロール、さらにはユーザー自身の ID を表す場合があります。
- 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
-+ [Azure Cognitive Search フィルターを使用した Active Directory の ID ベースのアクセス制御](search-security-trimming-for-azure-search-with-aad.md)
-+ [Azure Cognitive Search のフィルター](search-filters.md)
-+ [Azure Cognitive Search 操作でのデータ セキュリティとアクセスの制御](search-security-overview.md)
+この記事では、ユーザー ID と `search.in()` 関数に基づいて結果をフィルター処理するためのパターンについて説明します。 この関数を使用して、各ターゲット ドキュメントに関連付けられたプリンシパルの識別子と一致する要求元のユーザーについて、プリンシパルの識別子を渡すことができます。 検索要求が処理されると、`search.in` 関数によって、ユーザーのプリンシパルが読み取りアクセス権を持っていない検索結果は除外されます。 プリンシパルの識別子は、セキュリティ グループ、ロール、さらにはユーザー自身の ID を表す場合があります。
+
+Active Directory に基づく代替パターン、または他のセキュリティ機能を再確認する方法については、次のリンクを参照してください。
+
+* [Active Directory ID を使用して結果をトリミングするためのセキュリティ フィルター](search-security-trimming-for-azure-search-with-aad.md)
+* [Azure Cognitive Search のセキュリティ](search-security-overview.md)

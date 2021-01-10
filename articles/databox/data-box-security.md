@@ -1,23 +1,23 @@
 ---
 title: Microsoft Azure Data Box セキュリティの概要 | Microsoft Docs in data
-description: Data Box 上のデバイス、サービス、およびデータにおける Azure Data Box のセキュリティ機能について説明します
+description: Data Box 上のデバイス、サービス、およびデータにおける Azure Data Box のセキュリティ機能について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 12/16/2020
 ms.author: alkohli
-ms.openlocfilehash: f9330f99a0473aa38da2fcbb8ae0624a37746613
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 4d6c77b3e8920cabc397cdcbc235baefa031e5ab
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444760"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655494"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box のセキュリティとデータ保護
 
-Data Box は、承認済みのエンティティ以外データの閲覧、変更、削除ができないよう徹底することによって、データ保護のための安全なソリューションを実現しています。 この記事では、Azure Data Box のセキュリティに注目し、Azure Data Box ソリューションの各コンポーネントとそこに格納されるデータを保護する働きを持った機能について説明します。 
+Data Box は、承認済みのエンティティ以外データの閲覧、変更、削除ができないよう徹底することによって、データ保護のための安全なソリューションを実現しています。 この記事では、Azure Data Box のセキュリティに注目し、Azure Data Box ソリューションの各コンポーネントとそこに格納されるデータを保護する働きを持った機能について説明します。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
@@ -26,9 +26,9 @@ Data Box は、承認済みのエンティティ以外データの閲覧、変�
 Microsoft Azure Data Box ソリューションは、互いに連携し合う 4 つのメイン コンポーネントで構成されています。
 
 - **Azure でホストされる Azure Data Box サービス** - デバイスを発注して構成し、その注文を最後まで追跡するための管理サービス。
-- **Data Box デバイス** - オンプレミスのデータを Azure にインポートするためにお客様に発送される転送デバイス。 
+- **Data Box デバイス** - オンプレミスのデータを Azure にインポートするためにお客様に発送される転送デバイス。
 - **デバイスに接続されるクライアント/ホスト** – お客様のインフラストラクチャにおいて保護の対象となるデータを格納しているクライアント。Data Box デバイスに接続されます。
-- **クラウド ストレージ** – Azure クラウド内のデータの保存先となる場所。 通常は、お客様が作成した Azure Data Box リソースにリンクされたストレージ アカウントです。
+- **クラウド ストレージ** – Azure クラウド内のデータの保存先となる場所。 この場所は通常、お客様が作成した Azure Data Box リソースにリンクされたストレージ アカウントです。
 
 次の図は、オンプレミスから Azure への Azure Data Box ソリューション経由のデータの流れと、ソリューション経由でデータが流れるときのさまざまなセキュリティ機能を示しています。 このフローは Data Box のインポート注文に関するものです。
 
@@ -45,7 +45,7 @@ Microsoft Azure Data Box ソリューションは、互いに連携し合う 4 �
 
 ## <a name="security-features"></a>セキュリティ機能
 
-Data Box は、承認済みのエンティティ以外データの閲覧、変更、削除ができないよう徹底することによって、データ保護のための安全なソリューションを実現しています。 このソリューションのセキュリティ機能は、ディスクおよび関連するサービスを対象としたものであり、そこに格納されるデータのセキュリティを確保するものです。 
+Data Box は、承認済みのエンティティ以外データの閲覧、変更、削除ができないよう徹底することによって、データ保護のための安全なソリューションを実現しています。 このソリューションのセキュリティ機能は、ディスクおよび関連するサービスを対象としたものであり、そこに格納されるデータのセキュリティを確保するものです。
 
 ### <a name="data-box-device-protection"></a>Data Box デバイスの保護
 
@@ -55,14 +55,19 @@ Data Box デバイスは、次の機能によって保護されます。
 - ハードウェアおよびソフトウェアの不正開封を検出し、デバイスに対するそれ以上の操作を防ぎます。
 - Data Box 固有のソフトウェアのみを実行します。
 - ロック状態で起動します。
-- デバイスのロック解除パスワードによってデバイスへのアクセスを制御します。
-- デバイスとの間でデータをコピーするためのアクセス資格情報。 Azure portal の **[デバイスの資格情報]** ページへのすべてのアクセスは [アクティビティ ログ](data-box-logs.md#query-activity-logs-during-setup)に記録されます。
+- デバイスのロック解除パスキーによってデバイスへのアクセスを制御します。 このパスキーは、暗号化キーによって保護されています。 パスキーは、独自のカスタマー マネージド キーを使用して保護できます。 詳細については、「[Azure Key Vault のカスタマー マネージド キーを Azure Data Box に使用する](data-box-customer-managed-encryption-key-portal.md)」を参照してください。
+- デバイスとの間でデータをコピーするためのアクセス資格情報。 Azure portal の **[デバイスの資格情報]** ページへのすべてのアクセスは[アクティビティ ログ](data-box-logs.md#query-activity-logs-during-setup)に記録されます。
+- デバイスと共有へのアクセスには、独自のパスワードを使用できます。 詳細については、[Azure Data Box の注文](data-box-deploy-ordered.md)に関するページを参照してください。
+
+### <a name="establish-trust-with-the-device-via-certificates"></a>証明書を使用してデバイスとの信頼関係を確立する
+
+Data Box デバイスを使用すると、独自の証明書をインストールして、ローカル Web UI や blob ストレージへの接続に使用できます。 詳細については、「[Data Box/Data Box Heavy デバイスで独自の証明書を使用する](data-box-bring-your-own-certificates.md)」を参照してください。
 
 ### <a name="data-box-data-protection"></a>Data Box のデータ保護
 
 Data Box に対する入出力データは、次の機能によって保護されます。
 
-- 保存データの AES 256 ビット暗号化。
+- 保存データの AES 256 ビット暗号化。 セキュリティが強力な環境では、ソフトウェアベースの二重暗号化を使用できます。 詳細については、[Azure Data Box の注文](data-box-deploy-ordered.md)に関するページを参照してください。
 - 輸送中データのための暗号化プロトコルを使用できます。 データ サーバーからデータをコピーする場合は、そのデータを保護するために暗号化付き SMB 3.0 を使用することをお勧めします。
 - Azure へのアップロードが完了したデータは、デバイスから確実に消去されます。 データ消去は、[NIST 800-88r1 標準の ATA ハード ディスク ドライブに関する付録 A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) のガイドラインに従っています。 データ消去イベントは[注文履歴](data-box-logs.md#download-order-history)に記録されます。
 
@@ -104,7 +109,7 @@ Azure Data Box は、同サービスにおける次の主要なインスタン�
 
 ## <a name="security-guidelines-reference"></a>セキュリティ ガイドラインのリファレンス
 
-Data Box では、次のセキュリティ ガイドラインが実装されています。 
+Data Box では、次のセキュリティ ガイドラインが実装されています。
 
 |ガイドライン   |説明   |
 |---------|---------|

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 34064fe3fe88a34b0dd2430d7adec3ebcb17ebcc
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 79224c14fc5182df7a699864af3d78c9be36259f
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528229"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797280"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>(リソース グループ) のリソースをリージョン間で移動する
 
@@ -57,6 +57,9 @@ ms.locfileid: "95528229"
 ## <a name="select-resources-to-move"></a>移動するリソースを選択する
 
 移動するリソースを選択します。 ソース リージョンのサブスクリプションのターゲット リージョンにリソースを移動します。 サブスクリプションを変更する場合は、リソースの移動後に変更を行うことができます。
+
+> [!NOTE]
+>  関連するディスクを選択しないと、操作が失敗します。 関連するディスクは、VM の移動に自動的に含まれます。
 
 1. Azure portal で、関連するリソース グループを開きます。
 2. リソース グループ ページで、移動するリソースを選択します。
@@ -134,7 +137,7 @@ ms.locfileid: "95528229"
 2. **[リソースの移動]** で、 **[移動の開始]** を選択します。 リソース グループは、"*移動の開始が進行中*" の状態に移ります。
 3. 移動を開始した後、生成された ARM テンプレートに基づいて、ターゲット リソース グループが作成されます。 ソース リソース グループは、"*移動のコミットが保留中*" の状態に移ります。
 
-![移動のコミットを示す状態](./media/move-region-availability-zone/commit-move-pending.png)
+![移動のコミットを示すステータス](./media/move-region-availability-zone/commit-move-pending.png)
 
 移動プロセスをコミットして完了するには、次のようにします。
 
@@ -267,4 +270,4 @@ ms.locfileid: "95528229"
 ## <a name="next-steps"></a>次のステップ
 
 
-移動プロセスについて[学習する](about-move-process.md)。
+移動プロセス[について学習します](about-move-process.md)。

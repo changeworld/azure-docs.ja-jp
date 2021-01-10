@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 266c04a049cab574576f781c397aee566efe5372
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 0876891e42ce629a3b088d8068c74386d690492d
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516620"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683184"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>ステートレス専用ノード タイプを使用した Azure Service Fabric クラスターのデプロイ (プレビュー)
 Service Fabric ノード タイプには、ある時点でステートフル サービスがノードに配置されるという固有の前提があります。 ステートレス ノード タイプを使用することで、ノード タイプに対するこの仮定を緩和します。これにより、ノード タイプでスケールアウト操作の高速化、ブロンズ持続性での自動 OS アップグレードのサポート、および単一の仮想マシン スケール セット内の 100 以上のノードへのスケールアウトなどの他の機能を使用することができます。
@@ -37,14 +37,14 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
             "startPort": "[parameters('nt0applicationStartPort')]"
         },
         "clientConnectionEndpointPort": "[parameters('nt0fabricTcpGatewayPort')]",
-        "durabilityLevel": "Bronze",
+        "durabilityLevel": "Silver",
         "ephemeralPorts": {
             "endPort": "[parameters('nt0ephemeralEndPort')]",
             "startPort": "[parameters('nt0ephemeralStartPort')]"
         },
         "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
         "isPrimary": true,
-        "isStateles": false,
+        "isStateless": false,
         "vmInstanceCount": "[parameters('nt0InstanceCount')]"
     },
     {
@@ -54,7 +54,7 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
             "startPort": "[parameters('nt1applicationStartPort')]"
         },
         "clientConnectionEndpointPort": "[parameters('nt1fabricTcpGatewayPort')]",
-        "durabilityLevel": "Silver",
+        "durabilityLevel": "Bronze",
         "ephemeralPorts": {
             "endPort": "[parameters('nt1ephemeralEndPort')]",
             "startPort": "[parameters('nt1ephemeralStartPort')]"
@@ -71,9 +71,9 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
 ## <a name="configuring-virtual-machine-scale-set-for-stateless-node-types"></a>ステートレス ノード タイプ用に仮想マシン スケール セットを構成する
 ステートレス ノード タイプを有効にするには、基になる仮想マシン スケール セットのリソースを次の方法で構成する必要があります。
 
-* 値 **singlePlacementGroup** プロパティは、100 以上の VM にスケールする要件に応じて true または false に設定する必要があります。
-* スケール セットの **upgradeMode** は、Rolling に設定する必要があります。
-* ローリング アップグレード モードを使用するには、アプリケーション正常性拡張機能または正常性プローブが構成されている必要があります。 次に示すように、ステートレス ノード タイプの既定の構成を使用して正常性プローブを構成します。 アプリケーションが nodetype にデプロイされると、正常性プローブまたは正常性拡張機能のポートを変更して、アプリケーションの正常性を監視できます。
+* 値 **singlePlacementGroup** プロパティは、100 台を超える VM に拡張する場合は **false** に設定する必要があります。
+* スケール セットの **upgradePolicy** の **モード** は、**Rolling** に設定する必要があります。
+* ローリング アップグレード モードを使用するには、アプリケーション正常性拡張機能または正常性プローブが構成されている必要があります。 次に示すように、ステートレス ノード タイプの既定の構成を使用して正常性プローブを構成します。 アプリケーションがノード タイプにデプロイされると、正常性プローブまたは正常性拡張機能のポートを変更して、アプリケーションの正常性を監視できます。
 
 ```json
 {
@@ -103,7 +103,7 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
             "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
             "nodeTypeRef": "[parameters('vmNodeType1Name')]",
             "dataPath": "D:\\\\SvcFab",
-            "durabilityLevel": "Silver",
+            "durabilityLevel": "Bronze",
             "certificate": {
                 "thumbprint": "[parameters('certificateThumbprint')]",
                 "x509StoreName": "[parameters('certificateStoreValue')]"

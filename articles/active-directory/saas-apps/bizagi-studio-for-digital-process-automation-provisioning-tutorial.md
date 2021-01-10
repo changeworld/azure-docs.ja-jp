@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
-ms.openlocfilehash: 141dd37dff8403825df713de8f7176d4dd9d20f8
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 4eaac716d06b102a07872059af28da4986889caa
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008046"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673441"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Bizagi Studio for Digital Process Automation を構成する
 
@@ -132,7 +132,16 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
    |name.familyName|String|
    |name.formatted|String|
    |phoneNumbers[type eq "mobile"].value|String|
+
+   カスタム拡張属性は、 **[詳細オプションの表示] > [Bizagi の属性リストを編集します]** で追加できます。 カスタム拡張属性には、**urn:ietf:params:scim:schemas:extension:bizagi:2.0:UserProperties:** というプレフィックスを付ける必要があります。 たとえば、カスタム拡張属性が **IdentificationNumber** の場合、属性は **urn:ietf:params:scim:schemas:extension:bizagi:2.0:UserProperties:IdentificationNumber** として追加する必要があります。 すべての変更をコミットするには、 **[保存]** を選択します。
    
+    ![属性リストを編集します。](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/edit.png)  
+
+   カスタム属性の追加方法の詳細については、[アプリケーション属性のカスタマイズ](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)に関するページを参照してください。
+
+> [!NOTE]
+> サポートされるのは、基本的な型のプロパティのみです (String、Integer、Boolean、DateTime など)。 パラメーター テーブルまたは複数の型にリンクされているプロパティは、まだサポートされていません。
+
 10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)を参照してください。
 
 11. Bizagi Studio for Digital Process Automation に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。

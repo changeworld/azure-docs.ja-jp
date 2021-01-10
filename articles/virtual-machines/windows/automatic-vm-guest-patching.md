@@ -5,14 +5,14 @@ author: mayanknayar
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 12/23/2020
 ms.author: manayar
-ms.openlocfilehash: 8c7574daced9cec078b6e98e378212ce30d6f4f6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e22e8b81382614c2930c72a8150606f859be501d
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744726"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762981"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>プレビュー:Azure の Windows VM における VM ゲストの自動パッチ適用
 
@@ -34,11 +34,11 @@ VM ゲストの自動パッチ適用には、次の特性があります。
 
 VM で VM ゲストの自動パッチ適用が有効になっている場合、使用可能な *[重大]* および *[セキュリティ]* パッチが自動的にダウンロードされて VM に適用されます。 このプロセスは、Windows Update で新しいパッチがリリースされるたびに、毎月自動的に開始されます。 パッチの評価とインストールは自動的に実行され、このプロセスでは必要に応じて VM の再起動が行われます。
 
-VM は、その VM に適用可能なパッチを確認するために定期的に評価されます。 パッチは、VM のピーク外の時間帯であればいつでも VM にインストールされる可能性があります。 この自動評価により、不足しているパッチができるだけ早く検出されるようになります。
+VM は、その VM に適用可能なパッチを確認するため、数日ごと、または 30 日以内に複数回、定期的に評価されます。 パッチは、VM のピーク外の時間帯であればいつでも VM にインストールされる可能性があります。 この自動評価により、不足しているパッチができるだけ早く検出されるようになります。
 
-次に説明する可用性優先のオーケストレーションに従って、パッチは毎月の Windows Update リリースから 30 日以内にインストールされます。 パッチは、VM のタイムゾーンに応じて、VM のピーク外の時間帯にのみインストールされます。 パッチが自動的にインストールされるようにするには、ピーク外の時間帯に VM が実行されている必要があります。 定期的な評価の際に VM の電源がオフになっている場合、VM の電源がオンになっている次の定期的な評価中に VM が自動的に評価され、適用するパッチが自動的にインストールされます。
+次に説明する可用性優先のオーケストレーションに従って、パッチは毎月の Windows Update リリースから 30 日以内にインストールされます。 パッチは、VM のタイムゾーンに応じて、VM のピーク外の時間帯にのみインストールされます。 パッチが自動的にインストールされるようにするには、ピーク外の時間帯に VM が実行されている必要があります。 定期的な評価の際に VM の電源がオフになっている場合、VM の電源がオンになっている次の定期的な評価中 (通常は数日以内) に VM が自動的に評価され、該当するパッチが自動的にインストールされます。
 
-他のパッチの分類が適用されたパッチをインストールしたり、独自のカスタム メンテナンス期間内でパッチをインストールするようスケジュールしたりするには、[Update Management](tutorial-config-management.md#manage-windows-updates) を使用します。
+*重要* または *セキュリティ* として分類されていない定義の更新プログラムやパッチは、VM ゲストの自動パッチ適用ではインストールされません。 他のパッチの分類が適用されたパッチをインストールしたり、独自のカスタム メンテナンス期間内でパッチをインストールするようスケジュールしたりするには、[Update Management](tutorial-config-management.md#manage-windows-updates) を使用します。
 
 ### <a name="availability-first-patching"></a>可用性優先のパッチ適用
 
@@ -69,11 +69,11 @@ VM は、その VM に適用可能なパッチを確認するために定期的�
 
 | Publisher               | OS 製品      |  Sku               |
 |-------------------------|---------------|--------------------|
-| Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter    |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter-Server-Core |
-| Microsoft Corporation   | WindowsServer | 2019-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2019-Datacenter-Server-Core |
+| MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter    |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-Server-Core |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-Core |
 
 ## <a name="patch-orchestration-modes"></a>パッチ オーケストレーションのモード
 Azure の Windows VM では、次のパッチ オーケストレーション モードがサポートされるようになりました。
@@ -83,7 +83,7 @@ Azure の Windows VM では、次のパッチ オーケストレーション モ
 - このモードは、可用性優先のパッチを適用するために必要です。
 - このモードを設定すると、重複を避けるために、Windows 仮想マシンのネイティブ自動更新も無効になります。
 - このモードは、上記のサポートされている OS プラットフォーム イメージを使用して作成された VM でのみサポートされています。
-- このモードを使用するには、プロパティ `osProfile.windowsConfiguration.enableAutomaticUpdates=true` を設定し、VM テンプレートでプロパティ `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatfom` を設定します。
+- このモードを使用するには、プロパティ `osProfile.windowsConfiguration.enableAutomaticUpdates=true` を設定し、VM テンプレートでプロパティ `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatform` を設定します。
 
 **AutomaticByOS:**
 - このモードでは、Windows 仮想マシンで自動更新が有効になり、自動更新によってパッチが VM にインストールされます。
@@ -107,7 +107,7 @@ Azure の Windows VM では、次のパッチ オーケストレーション モ
 - 仮想マシンから Windows Update エンドポイントにアクセスできる必要があります。 Windows Server Update Services (WSUS) を使用するように仮想マシンが構成されている場合は、関連する WSUS サーバー エンドポイントにアクセスできる必要があります。
 - コンピューティング API バージョン 2020-06-01 以降を使用します。
 
-プレビュー機能を有効にするには、以下で詳しく説明するように、サブスクリプションごとに *InGuestAutoPatchVMPreview* 機能を 1 回のみオプトインする必要があります。
+プレビュー機能を有効にするには、以下で詳しく説明するように、サブスクリプションごとに **InGuestAutoPatchVMPreview** 機能を 1 回のみオプトインする必要があります。
 
 ### <a name="rest-api"></a>REST API
 次の例では、お使いのサブスクリプションでプレビューを有効にする方法について説明します。
@@ -199,7 +199,7 @@ Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-新しい VM を作成するときに VM ゲストの自動パッチ適用を有効にするには、[az vm create](/cli/azure/vm#az-vm-create) を使用します。 次の例では、 *myResourceGroup* という名前のリソース グループ内の *myVM* という名前の VM に対して、VM ゲストの自動パッチ適用を構成します。
+新しい VM を作成するときに VM ゲストの自動パッチ適用を有効にするには、[az vm create](/cli/azure/vm#az-vm-create) を使用します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という名前の VM に対して、VM ゲストの自動パッチ適用を構成します。
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroup --name myVM --image Win2019Datacenter --enable-agent --enable-auto-update --patch-mode AutomaticByPlatform
@@ -254,10 +254,10 @@ VM のパッチのインストール結果は、`lastPatchInstallationSummary` �
 ## <a name="on-demand-patch-assessment"></a>オンデマンドのパッチ評価
 VM に対して VM ゲストの自動パッチ適用が既に有効になっている場合は、VM のピーク外の時間帯に定期的なパッチの評価が実行されます。 このプロセスは自動的に行われ、このドキュメントで既に説明したように、VM のインスタンス ビューで最新の評価の結果を確認できます。 また、いつでも VM に対してオンデマンドのパッチ評価をトリガーすることもできます。 パッチの評価が完了するまで数分かかることがあります。また、最新の評価の状態は、VM のインスタンス ビューに更新されます。
 
-プレビュー機能を有効にするには、サブスクリプションごとに機能 *InGuestPatchVMPreview* のワンタイム オプトインが必要になります。 オンデマンド パッチ評価の機能プレビューは、自動 VM ゲスト パッチについて前に説明した[プレビュー有効化プロセス](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching)に従うことで有効にすることができます。
+プレビュー機能を有効にするには、サブスクリプションごとに機能 **InGuestPatchVMPreview** のワンタイム オプトインが必要になります。 この機能プレビューは、**InGuestAutoPatchVMPreview** で以前実行された、VM ゲストの自動パッチ適用機能とは異なります。 追加の機能プレビューを有効にすることは、別の要件となります。 オンデマンド パッチ評価の機能プレビューは、自動 VM ゲスト パッチについて前に説明した[プレビュー有効化プロセス](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching)に従うことで有効にすることができます。
 
 > [!NOTE]
->オンデマンドのパッチ評価では、パッチ インストールは自動的にトリガーされません。 VM の評価された適用可能なパッチは、このドキュメントで既に説明した可用性優先のパッチ適用プロセスに従って、VM のピーク外の時間帯にのみインストールされます。
+>オンデマンドのパッチ評価では、パッチ インストールは自動的にトリガーされません。 VM ゲストの自動パッチ適用を有効にすると、評価された適用可能な VM のパッチは、このドキュメントで既に説明した可用性優先のパッチ適用プロセスに従って、VM のピーク外の時間帯にインストールされます。
 
 ### <a name="rest-api"></a>REST API
 ```

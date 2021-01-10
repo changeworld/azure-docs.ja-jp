@@ -2,21 +2,21 @@
 title: Azure CLI でキュー データへのアクセスの承認方法を選択する
 titleSuffix: Azure Storage
 description: Azure CLI を使用して、キューのデータに対するデータ操作を承認する方法を指定します。 データ操作を承認するには、アカウント アクセス キーまたは アクセス共有シグネチャ (SAS) トークンを使用して、Azure AD 資格情報を使用します。
-services: storage
 author: tamram
-ms.service: storage
-ms.topic: how-to
-ms.date: 11/13/2020
+services: storage
 ms.author: tamram
 ms.reviewer: ozgun
+ms.date: 11/13/2020
+ms.topic: how-to
+ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e753f5b09b6cd03744ba8520c668a8227e56e8a1
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 01b78fa3250f371cfc4d713668531664ef8c139e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637252"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587606"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Azure CLI でキュー データへのアクセスの承認方法を選択する
 
@@ -32,22 +32,22 @@ Azure Storage には、キューのデータに対する操作を承認する方
 - Azure AD セキュリティ プリンシパルを利用してサインインするために、`--auth-mode` パラメーターを `login` に設定します（推奨）。
 - `--auth-mode` パラメーターをレガシ `key` 値に設定して、承認に使用するアカウント アクセス キーを取得しようとします。 また、 `--auth-mode` パラメーターを省略すると、Azure CLI はアクセス キーの取得を試みます。
 
-`--auth-mode` パラメーターを使用するには、 Azure CLI バージョン 2.0.46 以降がインストールされていることを確認してください。 `az --version` を実行し、インストールされたバージョンを確認します。
+`--auth-mode` パラメーターを使用するには、Azure CLI v2.0.46 以降がインストールされていることを確認してください。 `az --version` を実行し、インストールされたバージョンを確認します。
 
 > [!IMPORTANT]
-> `--auth-mode` パラメーターを省略した場合、または `key` に設定した場合、Azure CLI はアカウント アクセス キーを使用して承認を試みます。 この場合、コマンドまたは **AZURE_STORAGE_KEY** 環境変数のいずれかでアクセス キーを指定することをお勧めします。 環境変数の詳細については、「 [承認パラメーターの環境変数を設定する](#set-environment-variables-for-authorization-parameters)」セクションを参照してください。
+> `--auth-mode` パラメーターを省略した場合、または `key` に設定した場合、Azure CLI はアカウント アクセス キーを使用して承認を試みます。 この場合、コマンドまたは `AZURE_STORAGE_KEY` 環境変数のいずれかでアクセス キーを指定することをお勧めします。 環境変数の詳細については、「 [承認パラメーターの環境変数を設定する](#set-environment-variables-for-authorization-parameters)」セクションを参照してください。
 >
 > アクセス キーを指定しない場合、Azure CLI は Azure Storage リソース プロバイダーを呼び出して各操作のために取得を試みます。 リソース プロバイダーの呼び出しを必要とする多くのデータ操作を実行すると、スロットリングが発生する可能性があります。 リソース プロバイダーの制限の詳細については、「 [Azure Storage リソース プロバイダーのスケーラビリティとパフォーマンスのターゲット](../common/scalability-targets-resource-provider.md)」を参照してください。
 
 ## <a name="authorize-with-azure-ad-credentials"></a>Azure AD の資格情報で承認する
 
-Azure AD 資格情報で Azure CLI にサインインすると、OAuth 2.0 アクセス トークンが返されます。 そのトークンが Azure CLI によって自動的に使用され、BLOB または Queue storage に対するその後のデータ操作が承認されます。 サポートされている操作については、コマンドでアカウント キーや SAS トークンを渡す必要がなくなりました。
+Azure AD 資格情報で Azure CLI にサインインすると、OAuth 2.0 アクセス トークンが返されます。 そのトークンが Azure CLI によって自動的に使用され、Blob Storage または Queue Storage に対するその後のデータ操作が承認されます。 サポートされている操作については、コマンドでアカウント キーや SAS トークンを渡す必要がなくなりました。
 
 キュー データへのアクセス許可を Azure ロールベースのアクセス制御 (Azure RBAC) を介して Azure AD セキュリティ プリンシパルに割り当てることができます。 Azure Storage の Azure ロールの詳細については、[Azure RBAC を使用した Azure Storage データへのアクセス権の管理](../common/storage-auth-aad-rbac-portal.md)に関する記事を参照してください。
 
 ### <a name="permissions-for-calling-data-operations"></a>データ操作呼び出しのアクセス許可
 
-Azure Storage 拡張機能は、キュー データの操作でサポートされています。 呼び出す操作は、Azure CLI にサインインする Azure AD セキュリティ プリンシパルに与えられているアクセス許可に依存します。 Azure Storage キューへのアクセス許可は、Azure RBAC を介して割り当てられます。 たとえば、**ストレージ キュー データ閲覧者** ロールが割り当てられている場合、キューからデータを読み取るスクリプト コマンドを実行できます。 **ストレージ キュー データ共同作成者** ロールが割り当てられている場合、キューまたはキューに含まれているデータの読み取り、書き込み、削除を行うスクリプト コマンドを実行できます。
+Azure Storage 拡張機能は、キュー データの操作でサポートされています。 呼び出す操作は、Azure CLI にサインインする Azure AD セキュリティ プリンシパルに与えられているアクセス許可に依存します。 キューへのアクセス許可は、Azure RBAC を介して割り当てられます。 たとえば、**ストレージ キュー データ閲覧者** ロールが割り当てられている場合、キューからデータを読み取るスクリプト コマンドを実行できます。 **ストレージ キュー データ共同作成者** ロールが割り当てられている場合、キューまたはキューに含まれているデータの読み取り、書き込み、削除を行うスクリプト コマンドを実行できます。
 
 キューでの各 Azure Storage 操作に必要なアクセス許可の詳細については、「[OAuth トークンを使用したストレージ操作の呼び出し](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)」を参照してください。  
 
@@ -60,7 +60,7 @@ Azure Storage 拡張機能は、キュー データの操作でサポートさ�
     > [!IMPORTANT]
     > Azure ロールの割り当ての反映には数分かかることがあります。
 
-1. [az storage queue create](/cli/azure/storage/queue#az-storage-queue-create) コマンドを、`--auth-mode` パラメーターに `login` を設定して呼び出し、自分の Azure AD サインイン情報を使用してキューを作成します。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
+1. [`az storage queue create`](/cli/azure/storage/queue#az-storage-queue-create) コマンドを、`--auth-mode` パラメーターに `login` を設定して呼び出し、自分の Azure AD サインイン情報を使用してキューを作成します。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
 
     ```azurecli
     az storage queue create \
@@ -98,13 +98,13 @@ az storage queue create \
 
 この環境変数に適切な値を指定すれば、Azure Storage データ操作の呼び出しのたびにパラメーターに値を設定する必要はなくなります。 次の表に、使用可能な環境変数を示します。
 
-| 環境変数                  | 説明                                                                                                                                                                                                                                                                                                                                                                     |
-|---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|    AZURE_STORAGE_ACCOUNT              |    ストレージ アカウント名。 この変数は、ストレージ アカウント キーまたは SAS トークンと組み合わせて使用する必要があります。 どちらも存在しない場合、Azure CLI は、認証された Azure AD アカウントを使用して、ストレージ アカウントのアクセス キーを取得しようとします。 一度に多数のコマンドが実行された場合、Azure Storage リソース プロバイダーの制限に達している可能性があります。 リソース プロバイダーの制限の詳細については、「 [Azure Storage リソース プロバイダーのスケーラビリティとパフォーマンスのターゲット](../common/scalability-targets-resource-provider.md)」を参照してください。             |
-|    AZURE_STORAGE_KEY                  |    ストレージ アカウント キー。 この変数は、ストレージ アカウント名と組み合わせて使用する必要があります。                                                                                                                                                                                                                                                                          |
-|    AZURE_STORAGE_CONNECTION_STRING    |    ストレージ アカウント キーまたは SAS トークンを含む接続文字列。 この変数は、ストレージ アカウント名と組み合わせて使用する必要があります。                                                                                                                                                                                                                       |
-|    AZURE_STORAGE_SAS_TOKEN            |    アクセス共有シグネチャ (SAS) トークン。 この変数は、ストレージ アカウント名と組み合わせて使用する必要があります。                                                                                                                                                                                                                                                            |
-|    AZURE_STORAGE_AUTH_MODE            |    コマンドの実行に使用する承認モード。 使用できる値は `login` (推奨) または `key`です。 `login` を指定した場合、Azure CLI は Azure AD の資格情報を使用してデータ操作を承認します。 レガシ `key` モードを指定した場合、Azure CLI はアカウント アクセス キーを照会し、そのキーを使用してコマンドを承認しようとします。    |
+| 環境変数 | 説明 |
+|--|--|
+| **AZURE_STORAGE_ACCOUNT** | ストレージ アカウント名。 この変数は、ストレージ アカウント キーまたは SAS トークンと組み合わせて使用する必要があります。 どちらも存在しない場合、Azure CLI は、認証された Azure AD アカウントを使用して、ストレージ アカウントのアクセス キーを取得しようとします。 一度に多数のコマンドが実行された場合、Azure Storage リソース プロバイダーの制限に達している可能性があります。 リソース プロバイダーの制限の詳細については、「 [Azure Storage リソース プロバイダーのスケーラビリティとパフォーマンスのターゲット](../common/scalability-targets-resource-provider.md)」を参照してください。 |
+| **AZURE_STORAGE_KEY** | ストレージ アカウント キー。 この変数は、ストレージ アカウント名と組み合わせて使用する必要があります。 |
+| **AZURE_STORAGE_CONNECTION_STRING** | ストレージ アカウント キーまたは SAS トークンを含む接続文字列。 この変数は、ストレージ アカウント名と組み合わせて使用する必要があります。 |
+| **AZURE_STORAGE_SAS_TOKEN** | アクセス共有シグネチャ (SAS) トークン。 この変数は、ストレージ アカウント名と組み合わせて使用する必要があります。 |
+| **AZURE_STORAGE_AUTH_MODE** | コマンドの実行に使用する承認モード。 使用できる値は `login` (推奨) または `key`です。 `login` を指定した場合、Azure CLI は Azure AD の資格情報を使用してデータ操作を承認します。 レガシ `key` モードを指定した場合、Azure CLI はアカウント アクセス キーを照会し、そのキーを使用してコマンドを承認しようとします。 |
 
 ## <a name="next-steps"></a>次のステップ
 

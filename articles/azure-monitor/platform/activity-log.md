@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 1b49faabb1c61a10418bfce3ae2e8187429981ad
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6eae805b6edce4c414d26f1b79d52ac33f8f2d9d
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186084"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709114"
 ---
 # <a name="azure-activity-log"></a>Azure アクティビティ ログ
 アクティビティ ログは、サブスクリプション レベルのイベントの分析情報を提供する Azure の[プラットフォーム ログ](platform-logs-overview.md)です。 これには、リソースが変更されたときや仮想マシンが起動されたときなどの情報が含まれます。 Azure portal でアクティビティ ログを表示したり、PowerShell と CLI を使用してエントリを取得したりできます。 その他の機能を使用するには、診断設定を作成して、[Azure Monitor ログ](data-platform-logs.md)、Azure Event Hubs (Azure の外部に転送するため)、または Azure Storage (アーカイブのため) にアクティビティログを送信する必要があります。 この記事では、アクティビティ ログの表示と、別の宛先への送信について詳しく説明します。
@@ -56,7 +56,8 @@ Azure portal のほとんどのメニューから、アクティビティ ログ
 - ログ クエリを使用して複雑な分析を実行し、アクティビティ ログのエントリから詳細な分析情報を得ます。
 - アクティビティ エントリでログ アラートを使用すると、より複雑なアラート ロジックを使用できます。
 - アクティビティ ログのエントリを 90 日を超えて保存します。
-- Log Analytics ワークスペースに格納されているアクティビティ ログ データのデータ インジェストまたはデータ保持の料金は発生しません。
+- Log Analytics ワークスペースに格納されているアクティビティ ログ データのデータ インジェストの料金は発生しません。
+- Log Analytics ワークスペースに格納されているアクティビティ ログ データのデータ保持の料金は、90 日後まで発生しません。
 
 アクティビティ ログを Log Analytics ワークスペースに送信するには、[診断設定を作成します](diagnostic-settings.md)。 任意の 1 つのサブスクリプションから最大 5 つのワークスペースに、アクティビティ ログを送信できます。 テナント間でログを収集するには [Azure Lighthouse](../../lighthouse/index.yml) が必要です。
 
@@ -66,14 +67,14 @@ Log Analytics ワークスペースでは、アクティビティ ログのデ�
 
 ```kusto
 AzureActivity
-| summarize count() by Category
+| summarize count() by CategoryValue
 ```
 
 管理カテゴリのすべてのレコードを取得するには、次のクエリを使用します。
 
 ```kusto
 AzureActivity
-| where Category == "Administrative"
+| where CategoryValue == "Administrative"
 ```
 
 
@@ -199,7 +200,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | プロパティ | 必須 | Description |
+    | プロパティ | 必須 | 説明 |
     | --- | --- | --- |
     | 名前 |はい |ログ プロファイルの名前。 |
     | StorageAccountId |いいえ |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
@@ -277,6 +278,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 |:---|:---|
 | ActivityStatus    | ActivityStatusValue    |
 | ActivitySubstatus | ActivitySubstatusValue |
+| カテゴリ          | CategoryValue          |
 | OperationName     | OperationNameValue     |
 | ResourceProvider  | ResourceProviderValue  |
 

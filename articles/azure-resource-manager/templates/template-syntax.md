@@ -2,19 +2,19 @@
 title: テンプレートの構造と構文
 description: 宣言型 JSON 構文を使用した Azure Resource Manager テンプレート (ARM テンプレート) の構造とプロパティについて説明します。
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: ce36d725b3844fcd4c8d43a9f044423611d44fbd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/17/2020
+ms.openlocfilehash: 698309c5aa0817c4b758ec81133d4c98061aa355
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497879"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653131"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>ARM テンプレートの構造と構文について
 
 この記事では、Azure Resource Manager テンプレート (ARM テンプレート) の構造について説明します。 テンプレートの各種セクションとそこで使用できるプロパティを紹介しています。
 
-この記事は、ARM テンプレートにある程度慣れているユーザー向けです。 テンプレートの構造に関する詳細情報を提供します。 テンプレートの作成手順について説明したチュートリアルについては、「[チュートリアル:初めての ARM テンプレートを作成してデプロイする](template-tutorial-create-first-template.md)」を参照してください。
+この記事は、ARM テンプレートにある程度慣れているユーザー向けです。 テンプレートの構造に関する詳細情報を提供します。 テンプレートの作成手順について説明したチュートリアルについては、「[チュートリアル:初めての ARM テンプレートを作成してデプロイする](template-tutorial-create-first-template.md)」を参照してください。 Microsoft Learn のガイド付きモジュール セットを使用して ARM テンプレートを学習するには、「[ARM テンプレートを使用して Azure にリソースをデプロイして管理する](/learn/paths/deploy-manage-resource-manager-templates/)」を参照してください。
 
 ## <a name="template-format"></a>テンプレートの形式
 
