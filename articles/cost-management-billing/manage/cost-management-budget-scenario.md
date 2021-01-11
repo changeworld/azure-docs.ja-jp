@@ -29,8 +29,8 @@ ms.locfileid: "88690189"
 このチュートリアルで説明するアクションでは、次のことを行います。
 
 - Azure Automation Runbook を作成します。この Runbook で、Webhook を使用して VM を停止します。
-- Azure ロジック アプリを作成します。このアプリは予算のしきい値に基づいてトリガーされ、適切なパラメーター付きで Runbook を呼び出します。
-- Azure Monitor アクション グループを作成します。このグループは、予算のしきい値に達したときに Azure ロジック アプリをトリガーするように構成されます。
+- Azure Logic Apps を作成します。このアプリは予算のしきい値に基づいてトリガーされ、適切なパラメーター付きで Runbook を呼び出します。
+- Azure Monitor アクション グループを作成します。このグループは、予算のしきい値に達したときに Azure Logic Apps をトリガーするように構成されます。
 - Azure 予算を作成し、希望のしきい値を指定して、アクション グループに関連付けます。
 
 ## <a name="create-an-azure-automation-runbook"></a>Azure Automation Runbook を作成する
@@ -89,7 +89,7 @@ ms.locfileid: "88690189"
 
 Azure Automation のセットアップが完了しました。 単純な Postman テストを使用して、Webhook が機能することを検証できます。 次に、オーケストレーションのためのロジック アプリを作成する必要があります。
 
-## <a name="create-an-azure-logic-app-for-orchestration"></a>オーケストレーションのための Azure ロジック アプリを作成する
+## <a name="create-an-azure-logic-app-for-orchestration"></a>オーケストレーションのための Azure Logic Apps を作成する
 
 Logic Apps は、プロセスをワークフローとして構築、スケジューリング、自動化し、企業や組織の間でアプリ、データ、システム、サービスを統合する際に役立つサービスです。 このシナリオで作成する[ロジック アプリ](https://docs.microsoft.com/azure/logic-apps/)は、作成したオートメーション Webhook を呼び出すだけでなく、その他の処理も行います。
 
@@ -324,8 +324,8 @@ Cost Management の[予算機能](../costs/tutorial-acm-create-budgets.md)を使
 このチュートリアルで学習した内容は次のとおりです。
 
 - VM を停止するための Azure Automation Runbook を作成する方法。
-- 予算のしきい値に基づいてトリガーされ、適切なパラメーター付きで関連する Runbook を呼び出す Azure ロジック アプリを作成する方法。
-- 予算のしきい値に到達したときに Azure ロジック アプリをトリガーするように構成された Azure Monitor アクション グループを作成する方法。
+- 予算のしきい値に基づいてトリガーされ、適切なパラメーター付きで関連する Runbook を呼び出す Azure Logic Apps を作成する方法。
+- 予算のしきい値に到達したときに Azure Logic Apps をトリガーするように構成された Azure Monitor アクション グループを作成する方法。
 - Azure 予算を作成して希望のしきい値を指定し、アクション グループに関連付ける方法。
 
 これで、サブスクリプションの予算が完成し、構成した予算のしきい値に達したときに VM がシャットダウンされるようになりました。

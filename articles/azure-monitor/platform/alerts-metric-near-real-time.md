@@ -97,7 +97,7 @@ Azure Monitor が[新しいタイプのメトリック アラート](./alerts-ov
 |Microsoft.Relay/namespaces | はい | いいえ | [リレー](./metrics-supported.md#microsoftrelaynamespaces) |
 |Microsoft.Search/searchServices | いいえ | いいえ | [検索サービス](./metrics-supported.md#microsoftsearchsearchservices) |
 |Microsoft.ServiceBus/namespaces | はい | × | [Service Bus](./metrics-supported.md#microsoftservicebusnamespaces) |
-|Microsoft.Sql/managedInstances | × | ○ | [SQL マネージド インスタンス](./metrics-supported.md#microsoftsqlmanagedinstances) |
+|Microsoft.Sql/managedInstances | × | ○ | [SQL Managed Instance](./metrics-supported.md#microsoftsqlmanagedinstances) |
 |Microsoft.Sql/servers/databases | いいえ | ○ | [SQL Database](./metrics-supported.md#microsoftsqlserversdatabases) |
 |Microsoft.Sql/servers/elasticPools | × | ○ | [SQL エラスティック プール](./metrics-supported.md#microsoftsqlserverselasticpools) |
 |Microsoft.Storage/storageAccounts |はい | いいえ | [ストレージ アカウント](./metrics-supported.md#microsoftstoragestorageaccounts)|

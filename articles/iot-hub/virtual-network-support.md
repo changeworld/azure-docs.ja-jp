@@ -24,7 +24,7 @@ ms.locfileid: "88272902"
 
 自分が所有して運用する VNet を介した Azure リソース (IoT Hub を含む) への接続を制限したい場合があります。 これらの理由には以下のものが含まれます。
 
-* パブリック インターネットへの接続の露出を防ぐことにより、IoT ハブにネットワークの分離を導入する。
+* パブリック インターネットへの接続の露出を防ぐことにより、IoT Hub にネットワークの分離を導入する。
 
 * オンプレミスのネットワーク資産からのプライベート接続エクスペリエンスを有効にし、データとトラフィックが Azure バックボーン ネットワークに直接送信されるようにする。
 
@@ -36,7 +36,7 @@ ms.locfileid: "88272902"
 
 ## <a name="ingress-connectivity-to-iot-hub-using-azure-private-link"></a>Azure Private Link を使用した IoT Hub へのイングレス接続
 
-プライベート エンドポイントは、Azure リソースに到達可能な、顧客所有の VNet 内に割り当てられたプライベート IP アドレスです。 Azure Private Link を使用すると、IoT ハブ用にプライベート エンドポイントを設定して、IoT Hub のパブリック エンドポイントにトラフィックを送信しなくても、VNet 内のサービスが IoT Hub に到達できるようにすることができます。 同様に、オンプレミスのデバイスでは [仮想プライベート ネットワーク (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoute](https://azure.microsoft.com/services/expressroute/) ピアリングを使用して、VNet と (プライベート エンドポイント経由で) IoT Hub に接続することができます。 その結果、[IoT Hub の IP フィルター](./iot-hub-ip-filtering.md)を使用したり、[組み込みのエンドポイントにデータを送信しないようにルーティングを構成](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint)したりすることで、IoT ハブのパブリック エンドポイントへの接続を制限または完全にブロックすることができます。 この方法では、デバイスのプライベート エンドポイントを使用して、ハブへの接続を維持します。 この設定の主な対象は、オンプレミス ネットワーク内のデバイスです。 ワイドエリア ネットワークにデプロイされているデバイスには、この設定はお勧めできません。
+プライベート エンドポイントは、Azure リソースに到達可能な、顧客所有の VNet 内に割り当てられたプライベート IP アドレスです。 Azure Private Link を使用すると、IoT Hub 用にプライベート エンドポイントを設定して、IoT Hub のパブリック エンドポイントにトラフィックを送信しなくても、VNet 内のサービスが IoT Hub に到達できるようにすることができます。 同様に、オンプレミスのデバイスでは [仮想プライベート ネットワーク (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoute](https://azure.microsoft.com/services/expressroute/) ピアリングを使用して、VNet と (プライベート エンドポイント経由で) IoT Hub に接続することができます。 その結果、[IoT Hub の IP フィルター](./iot-hub-ip-filtering.md)を使用したり、[組み込みのエンドポイントにデータを送信しないようにルーティングを構成](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint)したりすることで、IoT Hub のパブリック エンドポイントへの接続を制限または完全にブロックすることができます。 この方法では、デバイスのプライベート エンドポイントを使用して、ハブへの接続を維持します。 この設定の主な対象は、オンプレミス ネットワーク内のデバイスです。 ワイドエリア ネットワークにデプロイされているデバイスには、この設定はお勧めできません。
 
 ![IoT Hub のパブリック エンドポイント](./media/virtual-network-support/virtual-network-ingress.png)
 
@@ -66,9 +66,9 @@ ms.locfileid: "88272902"
 
 ### <a name="built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint"></a>組み込みのイベント ハブ互換エンドポイントでは、プライベート エンドポイント経由のアクセスがサポートされない
 
-[組み込みのイベント ハブ互換エンドポイント](iot-hub-devguide-messages-read-builtin.md)では、プライベート エンドポイント経由のアクセスがサポートされていません。 構成されている場合、IoT ハブのプライベート エンドポイントは、イングレス接続専用になります。 組み込みのイベント ハブ互換エンドポイントからのデータの消費は、パブリック インターネット経由でのみ行えます。 
+[組み込みのイベント ハブ互換エンドポイント](iot-hub-devguide-messages-read-builtin.md)では、プライベート エンドポイント経由のアクセスがサポートされていません。 構成されている場合、IoT Hub のプライベート エンドポイントは、イングレス接続専用になります。 組み込みのイベント ハブ互換エンドポイントからのデータの消費は、パブリック インターネット経由でのみ行えます。 
 
-IoT Hub の [IP フィルター](iot-hub-ip-filtering.md) でも、組み込みのエンドポイントへのパブリック アクセスは制御されません。 IoT ハブへのパブリック ネットワーク アクセスを完全にブロックするには、次のことを行う必要があります。 
+IoT Hub の [IP フィルター](iot-hub-ip-filtering.md) でも、組み込みのエンドポイントへのパブリック アクセスは制御されません。 IoT Hub へのパブリック ネットワーク アクセスを完全にブロックするには、次のことを行う必要があります。 
 
 1. IoT Hub 用にプライベート エンドポイント アクセスを構成する
 1. [パブリック ネットワーク アクセスを無効にする](iot-hub-public-network-access.md)、または IP フィルターを使用してすべての IP をブロックする
@@ -86,7 +86,7 @@ IoT Hub は、リソースのパブリック エンドポイントを経由し�
 
 ### <a name="turn-on-managed-identity-for-iot-hub"></a>IoT Hub のマネージド ID を有効にする
 
-他のサービスが IoT ハブを信頼された Microsoft サービスとして検出できるようにするには、システムに割り当てられたマネージド ID が必要です。
+他のサービスが IoT Hub を信頼された Microsoft サービスとして検出できるようにするには、システムに割り当てられたマネージド ID が必要です。
 
 1. IoT Hub ポータルで **[ID]** に移動します。
 
@@ -94,9 +94,9 @@ IoT Hub は、リソースのパブリック エンドポイントを経由し�
 
     :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="IoT Hub のマネージド ID を有効にする方法を示すスクリーンショット":::
 
-### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>ARM テンプレートを使用して、作成時にマネージド ID を IoT ハブに割り当てる
+### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>ARM テンプレートを使用して、作成時にマネージド ID を IoT Hub に割り当てる
 
-リソースのプロビジョニング時にマネージド ID を IoT ハブに割り当てるには、次の ARM テンプレートを使用します。
+リソースのプロビジョニング時にマネージド ID を IoT Hub に割り当てるには、次の ARM テンプレートを使用します。
 
 ```json
 {

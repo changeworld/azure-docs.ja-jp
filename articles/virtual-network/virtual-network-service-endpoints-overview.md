@@ -45,7 +45,7 @@ ms.locfileid: "87132825"
 
 - **[Azure Container Registry](../container-registry/container-registry-vnet.md)** (*Microsoft.ContainerRegistry*):プレビュー公開 (Azure Container Registry を利用できる限られた Azure リージョン)。
 
-最新情報については、[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
+最新情報については、[Azure Virtual Network の更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
 
 ## <a name="key-benefits"></a>主な利点
 
