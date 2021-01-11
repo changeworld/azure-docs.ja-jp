@@ -157,7 +157,7 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 
 ![ソース管理の設定が、JSON コードで入れ子になったリソースとしてどのように定義されているかが示されています。](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
 
-`RepoUrl` と `branch` は、非常に直感的で、Git リポジトリと、発行元となる分岐の名前を指しています。 繰り返しになりますが、これらの情報は入力パラメーターで定義されています。 
+`RepoUrl` と `branch` は、非常に直感的で、Git リポジトリと、発行元となるブランチの名前を指しています。 繰り返しになりますが、これらの情報は入力パラメーターで定義されています。 
 
 `dependsOn` 要素では、`sourcecontrols/web` がアプリのリソース自体に加え、`config/appsettings` と `config/connectionstrings` にも依存していることに注意してください。 これは、 `sourcecontrols/web` が構成されると、Azure のデプロイメント プロセスが、アプリケーション コードのデプロイ、ビルド、開始を自動的に試みるためです。 したがって、この依存関係を挿入すると、アプリケーション コードが実行される前に、アプリケーションから必要なアプリ設定と接続文字列にアクセスできることを確認できます。 
 

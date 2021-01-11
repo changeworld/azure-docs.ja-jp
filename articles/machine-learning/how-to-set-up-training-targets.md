@@ -26,7 +26,7 @@ Azure Machine Learning では、さまざまなリソースまたは環境でご
 Azure Machine Learning SDK、Azure Machine Learning Studio、Azure CLI、または Azure Machine Learning VS Code 拡張機能を使用してコンピューティング ターゲットを作成および管理できます。 別のサービス (たとえば、HDInsight クラスター) によって作成されたコンピューティング先がある場合、それらを Azure Machine Learning ワークスペースに接続して使用できます。
  
 この記事では、モデル トレーニング用にさまざまなコンピューティング先を使用する方法について説明します。  すべてのコンピューティング先の手順が、同じワークフローに従います。
-1. まだない場合は、コンピューティング先を__作成__します。
+1. まだない場合は、コンピューティング先を __作成__ します。
 2. コンピューティング先をワークスペースに __アタッチ__ します。
 3. スクリプトに必要な Python 環境とパッケージ依存関係が含まれるように、コンピューティング先を __構成__ します。
 
@@ -307,7 +307,7 @@ Azure Machine Learning では、独自のコンピューティング リソー�
     > [!WARNING]
     > Azure Machine Learning では、**Ubuntu** を実行する仮想マシンのみがサポートされます。 VM を作成するとき、または既存の VM を選択するときは、Ubuntu を使用する VM を選択する必要があります。
     > 
-    > さらに Azure Machine Learning では、仮想マシンに__パブリック IP アドレス__が必要です。
+    > さらに Azure Machine Learning では、仮想マシンに __パブリック IP アドレス__ が必要です。
 
 1. **アタッチする**:コンピューティング ターゲットとして既存の仮想マシンを接続するには、仮想マシンのリソース ID、ユーザー名、およびパスワードを入力する必要があります。 VM のリソース ID は、次の文字列形式を使用して、サブスクリプション ID、リソース グループ名、VM 名から作成できます: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
 
@@ -345,7 +345,7 @@ Azure HDInsight は、ビッグ データ分析のための一般的なプラッ
 1. **作成**:モデルのトレーニングに使用する HDInsight クラスターを、事前に作成します。 HDInsight クラスターで Spark を作成するには、[HDInsight での Spark クラスターの作成](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql)に関する記事をご覧ください。 
 
     > [!WARNING]
-    > Azure Machine Learning では、HDInsight クラスターに__パブリック IP アドレス__が必要です。
+    > Azure Machine Learning では、HDInsight クラスターに __パブリック IP アドレス__ が必要です。
 
     クラスターを作成するとき、SSH ユーザー名とパスワードを指定する必要があります。 コンピューティング先として HDInsight を使用するときに必要になるので、これらの値をメモしておいてください。
     

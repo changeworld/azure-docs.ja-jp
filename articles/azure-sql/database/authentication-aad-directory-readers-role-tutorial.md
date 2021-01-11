@@ -66,11 +66,11 @@ ms.locfileid: "88556106"
 
 1. SQL Managed Instance を管理し、前に作成したグループの所有者であるユーザーとして Azure portal にログインします。
 
-1. Azure portal で、対象の **SQL マネージド インスタンス** リソースの名前を見つけます。
+1. Azure portal で、対象の **SQL Managed Instance** リソースの名前を見つけます。
 
    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="azure-ad-managed-instance":::
 
-   SQL マネージド インスタンスの作成中に、そのインスタンスの Azure ID が作成されています。 作成された ID は、対象の SQL マネージド インスタンス名のプレフィックスと同じ名前になります。 次の手順に従って、Azure AD アプリケーションとして作成された SQL Managed Instance ID のサービス プリンシパルを見つけることができます。
+   SQL Managed Instance の作成中に、そのインスタンスの Azure ID が作成されています。 作成された ID は、対象の SQL Managed Instance 名のプレフィックスと同じ名前になります。 次の手順に従って、Azure AD アプリケーションとして作成された SQL Managed Instance ID のサービス プリンシパルを見つけることができます。
 
     - **Azure Active Directory** リソースに移動します。 **[管理]** 設定で、 **[エンタープライズ アプリケーション]** を選択します。 **オブジェクト ID** が、インスタンスの ID です。
     

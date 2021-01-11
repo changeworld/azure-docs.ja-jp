@@ -93,7 +93,7 @@ Azure Pipelines のリリース テンプレートごとに個別の API キー�
 
 ![[詳細設定] メニューのスクリーンショット。[コメントを表示する] というテキストが強調表示され、有効にするために設定の横にチェックマークが付いています。](./media/annotations/workbook-show-annotations.png)
 
-注釈マーカーを選択すると、要求元、ソース管理の分岐、リリース パイプライン、環境を含む、リリースに関する詳細が表示されます。
+注釈マーカーを選択すると、要求元、ソース管理のブランチ、リリース パイプライン、環境を含む、リリースに関する詳細が表示されます。
 
 ## <a name="create-custom-annotations-from-powershell"></a>PowerShell からカスタム注釈を作成する
 Azure DevOps を使わずに、GitHub の [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell スクリプトを使って、任意のプロセスから注釈を作成できます。 
