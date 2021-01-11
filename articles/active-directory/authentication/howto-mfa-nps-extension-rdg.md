@@ -333,7 +333,7 @@ Azure MFA で以前に構成したセカンダリ認証方法で認証に成功�
 
 ### <a name="view-event-viewer-logs-for-successful-logon-events"></a>成功したログオン イベントのイベント ビューアーのログを表示する
 
-Windows イベント ビューアーのログで成功したサインイン イベントを表示するには、次の Windows PowerShell コマンドを発行して、Windows ターミナル サービスのログと Windows のセキュリティ ログを照会します。
+Windows イベント ビューアーのログで成功したサインイン イベントを表示するには、次の Windows PowerShell コマンドを発行して、Windows Terminal サービスのログと Windows のセキュリティ ログを照会します。
 
 ゲートウェイの操作ログ _(Event Viewer\Applications and Services Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)_ の成功したサインイン イベントを照会するには、次の PowerShell コマンドを使用します。
 

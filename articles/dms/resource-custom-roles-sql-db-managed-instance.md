@@ -94,7 +94,7 @@ Azure Database Migration Service では、Azure サービスとの対話にア�
 
 Azure Active Directory のカスタム ロールの数が問題にならない場合は、合計 3 つのロールを作成することをお勧めします。 "DMS ロール - アプリ ID - サブ" ロールは引き続き必要ですが、上記の "DMS ロール - アプリ ID" ロールはリソースの種類ごとに 2 つの異なるロールに分割されます。
 
-**SQL マネージド インスタンス用の アプリ ID のカスタム ロール**
+**SQL Managed Instance 用の アプリ ID のカスタム ロール**
 
 ```json
 {

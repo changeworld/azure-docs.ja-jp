@@ -53,7 +53,7 @@ Azure SQL Database の計画メンテナンス イベントに備える方法の
 
 - クライアント プログラムをホストするコンピューターのファイアウォールで、ポート 1433 での発信 TCP が許可されていることを確認します。  詳細情報: [Azure SQL Database ファイアウォールの構成](firewall-configure.md)。
 - クライアントが Azure 仮想マシン (VM) で実行されているときに、クライアント プログラムが SQL Database に接続する場合、VM で特定のポートの範囲を開く必要があります。 詳細情報: 「[ADO.NET 4.5 用の 1433 以外のポート](adonet-v12-develop-direct-route-ports.md)」を参照してください。
-- Azure SQL Database へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。 1433 以外のポートが重要になります。 詳細については、「[Azure SQL Database connectivity architecture](connectivity-architecture.md)」 (Azure SQL データベース接続アーキテクチャ) および「[ADO.NET 4.5 用の 1433 以外のポート](adonet-v12-develop-direct-route-ports.md)」を参照してください。
+- Azure SQL Database へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。 1433 以外のポートが重要になります。 詳細については、「[Azure SQL Database connectivity architecture](connectivity-architecture.md)」 (Azure SQL Database 接続アーキテクチャ) および「[ADO.NET 4.5 用の 1433 以外のポート](adonet-v12-develop-direct-route-ports.md)」を参照してください。
 - SQL Managed Instance のインスタンスに対するネットワーク構成については、[SQL Managed Instance のネットワーク構成](../managed-instance/how-to-content-reference-guide.md#network-configuration)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ

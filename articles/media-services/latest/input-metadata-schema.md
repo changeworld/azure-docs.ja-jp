@@ -53,9 +53,9 @@ JSON スキーマ の例は、この記事の最後に記載されています�
 
 | 名前 | 説明 |
 | --- | --- |
-| **名前**<br />必須 |資産ファイルの名前。 <br /><br />例: `"Name": "Ignite-short.mp4"` |
+| **Name**<br />必須 |資産ファイルの名前。 <br /><br />例: `"Name": "Ignite-short.mp4"` |
 | **Uri**<br />必須 |入力資産が配置されている URL。 出力資産が属している入力資産を特定するには、ID ではなく `Uri` フィールドを使用します。|
-| **[サイズ]**<br />必須 |資産ファイルのサイズ (バイト単位)。  <br /><br />例: `"Size": 75739259`|
+| **Size**<br />必須 |資産ファイルのサイズ (バイト単位)。  <br /><br />例: `"Size": 75739259`|
 | **Duration**<br />必須 |コンテンツの再生時間。 <br /><br />例: `"Duration": "PT1M10.304S"`. |
 | **NumberOfStreams**<br />必須 |資産ファイル内のストリーム数。  <br /><br />例: `"NumberOfStreams": 2`|
 | **FormatNames**<br />必須 |形式の名前。  <br /><br />例: `"FormatNames": "mov,mp4,m4a,3gp,3g2,mj2"`|
@@ -65,10 +65,10 @@ JSON スキーマ の例は、この記事の最後に記載されています�
 
 ## <a name="videotracks"></a>VideoTracks
 
-| 名前 |  | 説明 |
+| 名前 | 説明 |
 | --- | --- |
 | **FourCC**<br />必須 |ffmpeg によって報告されるビデオ コーデックの FourCC コード。<br /><br />例: `"FourCC": "avc1"` |
-| **プロファイル** |ビデオ トラックのプロファイル。 <br /><br />例: `"Profile": "Main"`|
+| **Profile** |ビデオ トラックのプロファイル。 <br /><br />例: `"Profile": "Main"`|
 | **Level** |ビデオ トラックのレベル。 <br /><br />例: `"Level": "3.2"`|
 | **PixelFormat** |ビデオ トラックのピクセル形式。 <br /><br />例: `"PixelFormat": "yuv420p"`|
 | **Width**<br />必須 |エンコードされたビデオの幅 (ピクセル単位)。 <br /><br />例: `"Width": "1280"`|

@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 
 * *Azure Storage アカウント*。 BLOB ストレージを*ソース* データ ストアとして使用します。 Azure ストレージ アカウントがない場合は、[汎用ストレージ アカウントの作成](../storage/common/storage-account-create.md)に関するページを参照してください。
-* *Azure SQL データベース*。 データベースを*シンク* データ ストアとして使用します。 Azure SQL Database のデータベースがない場合は、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
+* *Azure SQL Database*。 データベースを*シンク* データ ストアとして使用します。 Azure SQL Database のデータベースがない場合は、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
 * *Visual Studio*. この記事のチュートリアルでは、Visual Studio 2019 を使用します。
 * *[Azure SDK for .NET](/dotnet/azure/dotnet-tools)* .
 * *Azure Active Directory アプリケーション*。 Azure Active Directory アプリケーションをお持ちでない場合は、「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)」セクションを、[ポータルを使用して Azure AD アプリケーションを作成する方法](../active-directory/develop/howto-create-service-principal-portal.md)に関するページから参照してください。 以降の手順で使用するために、次の値をコピーします。**アプリケーション (クライアント) ID**、**認証キー**、および**ディレクトリ (テナント) ID** です。 同じ記事の手順に従って、アプリケーションを **[共同作成者]** ロールに割り当てます。
@@ -67,7 +67,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 次に、シンク SQL テーブルを作成します。
 
-1. 次の SQL スクリプトを使用して、*dbo.emp* テーブルを Azure SQL データベースに作成します。
+1. 次の SQL スクリプトを使用して、*dbo.emp* テーブルを Azure SQL Database に作成します。
 
     ```sql
     CREATE TABLE dbo.emp
