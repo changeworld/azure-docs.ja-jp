@@ -33,7 +33,7 @@ Azure Functions を使用すると、Function App 内で `FUNCTIONS_EXTENSION_VE
 | 2.x  | `~2` |
 | 1.x  | `~1` |
 
-ランタイム バージョンを変更するたびに、Function App　が再起動されます。
+ランタイム バージョンを変更するたびに、Function App が再起動されます。
 
 ## <a name="view-and-update-the-current-runtime-version"></a>現在のランタイム バージョンの表示と更新
 

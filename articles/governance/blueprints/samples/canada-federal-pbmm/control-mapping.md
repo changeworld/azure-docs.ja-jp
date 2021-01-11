@@ -75,11 +75,11 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 
 ## <a name="ac-7-security-attributes"></a>AC-7 セキュリティ属性
 
-Azure SQL Database 用の高度なデータ セキュリティであるデータ検出および分類機能を使用すると、データベース内の機密データを検出、分類、ラベル付け、および保護することができます。 データベースの分類の状態を把握し、データベース内やその境界を越えて機密データへのアクセスを追跡するために使用できます。 Advanced Data Security は、情報が組織の適切なセキュリティ属性に関連付けられていることを確認するために役立ちます。 このブループリントでは、SQL サーバーに対する Advanced Data Security の使用を監視および強制する [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
+Azure SQL Database 用の高度なデータ セキュリティであるデータ検出および分類機能を使用すると、データベース内の機密データを検出、分類、ラベル付け、および保護することができます。 データベースの分類の状態を把握し、データベース内やその境界を越えて機密データへのアクセスを追跡するために使用できます。 Advanced Data Security は、情報が組織の適切なセキュリティ属性に関連付けられていることを確認するために役立ちます。 このブループリントでは、SQL Server に対する Advanced Data Security の使用を監視および強制する [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
 
-- Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
-- Advanced Data Security を、SQL サーバー上で有効にする必要がある
-- SQL サーバーに対する Advanced Data Security のデプロイ
+- Advanced Data Security を SQL Managed Instance 上で有効にする必要がある
+- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- SQL Server に対する Advanced Data Security のデプロイ
 
 ## <a name="ac-17-1-remote-access--automated-monitoring--control"></a>AC-17 (1) リモート アクセス | 自動監視および制御
 
@@ -108,8 +108,8 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 
 - 診断設定の監査
 - SQL Server の監査を有効にする必要があります
-- Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
-- Advanced Data Security を、SQL サーバー上で有効にする必要がある
+- Advanced Data Security を SQL Managed Instance 上で有効にする必要がある
+- Advanced Data Security を、SQL Server 上で有効にする必要がある
 
 ## <a name="au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>AU-6 (4) 監査の確認、分析、およびレポート | 集中的な確認と分析
 
@@ -123,7 +123,7 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 
 ## <a name="au-12-audit-generation"></a>AU-12 監査の生成
 
-このブループリントでは、Azure リソースのログ設定を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、システム イベントのログ記録の徹底を支援します。 これらのポリシー定義では、Azure 仮想マシンにおける Log Analytics エージェントのデプロイのほか、他の Azure リソースの監査設定の構成が監査および実施されます。 また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 さらに、SQL サーバーには監査と Advanced Data Security が構成されます。
+このブループリントでは、Azure リソースのログ設定を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、システム イベントのログ記録の徹底を支援します。 これらのポリシー定義では、Azure 仮想マシンにおける Log Analytics エージェントのデプロイのほか、他の Azure リソースの監査設定の構成が監査および実施されます。 また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 さらに、SQL Server には監査と Advanced Data Security が構成されます。
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
 - VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
@@ -133,10 +133,10 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 - 診断設定の監査
 - SQL Server の監査を有効にする必要があります
-- Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
-- Advanced Data Security を、SQL サーバー上で有効にする必要がある
-- SQL サーバーに対する Advanced Data Security のデプロイ
-- SQL サーバーでの監査のデプロイ
+- Advanced Data Security を SQL Managed Instance 上で有効にする必要がある
+- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- SQL Server に対する Advanced Data Security のデプロイ
+- SQL Server での監査のデプロイ
 - ネットワーク セキュリティ グループの診断設定のデプロイ
 
 ## <a name="cm-7-5-least-functionality--authorized-software--whitelisting"></a>CM-7 (5) 最小限の機能 | 承認されたソフトウェアまたはホワイトリスト登録
@@ -197,11 +197,11 @@ Azure Site Recovery では、仮想マシンで実行中のワークロードが
 
 ## <a name="ra-5-vulnerability-scanning"></a>RA-5 脆弱性のスキャン
 
-このブループリントは、オペレーティング システムの脆弱性、SQL の脆弱性、仮想マシンの脆弱性を Azure Security Center で監視する [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、情報システムの脆弱性管理を支援するものです。 Azure Security Center では、デプロイされた Azure リソースのセキュリティ状態をリアルタイムに分析するためのレポート機能が提供されます。 このブループリントでは、他にも、SQL サーバー上で Advanced Data Security を監査および強制するポリシー定義が割り当てられます。 Advanced Data Security には、脆弱性の評価機能と高度な脅威に対する保護機能が含まれており、デプロイ済みのリソースに存在する脆弱性について理解を深めるうえで役立ちます。
+このブループリントは、オペレーティング システムの脆弱性、SQL の脆弱性、仮想マシンの脆弱性を Azure Security Center で監視する [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、情報システムの脆弱性管理を支援するものです。 Azure Security Center では、デプロイされた Azure リソースのセキュリティ状態をリアルタイムに分析するためのレポート機能が提供されます。 このブループリントでは、他にも、SQL Server 上で Advanced Data Security を監査および強制するポリシー定義が割り当てられます。 Advanced Data Security には、脆弱性の評価機能と高度な脅威に対する保護機能が含まれており、デプロイ済みのリソースに存在する脆弱性について理解を深めるうえで役立ちます。
 
-- Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
-- Advanced Data Security を、SQL サーバー上で有効にする必要がある
-- SQL サーバーに対する Advanced Data Security のデプロイ
+- Advanced Data Security を SQL Managed Instance 上で有効にする必要がある
+- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- SQL Server に対する Advanced Data Security のデプロイ
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 使用している仮想マシン上のセキュリティ構成の脆弱性を修復する必要がある
 - SQL データベースの脆弱性を修復する必要がある
@@ -250,9 +250,9 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 
 このブループリントは、特定の暗号化コントロールを適用し、脆弱な暗号化設定の使用を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、保存情報の保護のための暗号化コントロールの使用に関するポリシーの実施を支援するものです。 最適でない暗号化構成が Azure リソースのどこに存在しているかを把握することにより、適切な是正措置を実施し、リソースの構成を情報セキュリティ ポリシーに準拠させることができます。 具体的には、このブループリントにより割り当てられるポリシー定義では、Data Lake Storage アカウントの暗号化と SQL データベースでの Transparent Data Encryption が必須になるほか、SQL データベース、仮想マシン ディスク、Automation アカウント変数の暗号化に漏れがないかどうかが監査されます。
 
-- Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
-- Advanced Data Security を、SQL サーバー上で有効にする必要がある
-- SQL サーバーに対する Advanced Data Security のデプロイ
+- Advanced Data Security を SQL Managed Instance 上で有効にする必要がある
+- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- SQL Server に対する Advanced Data Security のデプロイ
 - SQL DB Transparent Data Encryption のデプロイ
 - 仮想マシンでディスク暗号化を適用する必要がある
 - Data Lake Store アカウントの暗号化を要求する
@@ -294,13 +294,13 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - \[プレビュー\]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
-- Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
-- Advanced Data Security を、SQL サーバー上で有効にする必要がある
-- SQL サーバーに対する Advanced Data Security のデプロイ
+- Advanced Data Security を SQL Managed Instance 上で有効にする必要がある
+- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- SQL Server に対する Advanced Data Security のデプロイ
 - ストレージ アカウントに対する Advanced Threat Protection のデプロイ
-- SQL サーバーでの監査のデプロイ
+- SQL Server での監査のデプロイ
 - 仮想ネットワーク作成時の Network Watcher のデプロイ
-- SQL サーバーでの脅威検出のデプロイ
+- SQL Server での脅威検出のデプロイ
 
 > [!NOTE]
 > 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。 

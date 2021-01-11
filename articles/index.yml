@@ -495,8 +495,8 @@ productDirectory:
     - compute
     - databases
     url: https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json
-  - title: 静的 Web アプリ
-    summary: 完全なスタック Web アプリをビルドして GitHub リポジトリから Azure にデプロイする
+  - title: Static Web Apps (Preview)
+    summary: フルスタック Web アプリをビルドして GitHub リポジトリから Azure にデプロイする
     imageSrc: ./media/index/static-apps.svg
     azureCategories:
     - compute
@@ -604,7 +604,7 @@ productDirectory:
     - hybrid
     - databases
     url: azure-sql/index.yml
-  - title: Azure SQL データベース
+  - title: Azure SQL Database
     summary: クラウド内の管理されたインテリジェントな SQL
     imageSrc: https://static.docs.com/ui/media/product/azure/sql-database.svg
     azureCategories:
@@ -1243,7 +1243,7 @@ productDirectory:
     azureCategories:
     - storage
     url: storage/index.yml
-  - title: ストレージ エクスプローラー
+  - title: Storage Explorer
     summary: Azure Storage リソースの表示と操作
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-explorer.svg
     azureCategories:
