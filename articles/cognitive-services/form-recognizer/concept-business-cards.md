@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 76e19c36f0fa4096966c5dd23d2384b6b30f2271
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ed57c496443c9d1541bfa9933e7718213da116d7
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95498862"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845611"
 ---
 # <a name="business-card-concepts"></a>名刺の概念
 
@@ -374,7 +374,7 @@ Business Card API は、名刺からキー フィールドを抽出し、それ�
 }
 ```
 
-[名刺データ抽出](./QuickStarts/python-business-cards.md)のクイックスタートに従って、Python と REST API を使用した名刺データ抽出を実装します。
+[クイックスタート](./QuickStarts/client-library.md)に従って、Python と REST API を使用した名刺データ抽出を実装します。
 
 ## <a name="customer-scenarios"></a>顧客シナリオ  
 
@@ -385,11 +385,11 @@ Business Card API で抽出されたデータは、さまざまな作業を行�
 * 潜在顧客を追跡します。  
 * 既存の名刺画像から、連絡先情報を一括して抽出します。 
 
-また、Business Card API では、[AIBuilder の名刺処理機能](/ai-builder/prebuilt-business-card)も強化されています。
+また、Business Card API では、[AI Builder の名刺処理機能](/ai-builder/prebuilt-business-card)も強化されています。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Business Card API Python のクイックスタート](./quickstarts/python-business-cards.md)に従って、名刺の認識を開始します。
+- [クイックスタート](./quickstarts/client-library.md)に従って、名刺の認識を開始します。
 
 ## <a name="see-also"></a>関連項目
 

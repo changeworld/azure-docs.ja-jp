@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 3f71cef19d25a7f987af4147ae0a889280e49bd1
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 7539e896d810a2f0fbf3c07f389f25e2d3c31fe1
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563162"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845005"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Recognizer の新機能
 
@@ -39,7 +39,7 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
  
   > [レイアウト抽出の詳細情報](concept-layout.md)
 
-- **クライアント ライブラリの更新** - .NET、Python、Java、JavaScript 用の[クライアント ライブラリ](quickstarts/client-library.md)の最新バージョンでは、Form Recognizer 2.1 API がサポートされています。
+- **クライアント ライブラリの更新** - .NET、Python、Java、JavaScript 用の [クライアント ライブラリ](quickstarts/client-library.md)の最新バージョンでは、Form Recognizer 2.1 API がサポートされています。
 - **サポートされている新しい言語: 日本語** - `AnalyzeLayout` と `AnalyzeCustomForm` に対して、新しい言語: 日本語 (`ja`) がサポートされるようになりました。 [言語サポート](language-support.md)
 - **テキスト行のスタイルの表示 (手書き/その他) (ラテン言語のみ)** - Form Recognizer では、信頼度スコアと共に、各テキスト行が手書きスタイルであるかどうかを分類する `appearance` オブジェクトが出力されるようになりました。 この機能は、ラテン語系の言語でのみサポートされています。
 - **品質の向上** - 1 桁の抽出の改善を含め、抽出の品質が向上しました。
@@ -209,7 +209,7 @@ TLS 1.2 は現在、このサービスへのすべての HTTP 要求に適用さ
 
 ## <a name="next-steps"></a>次のステップ
 
-選択した言語で Form Recognizer を使用してフォーム処理アプリの作成を開始するには、[クライアント ライブラリ クイックスタート](quickstarts/client-library.md)を完了します。
+選択した言語で Form Recognizer を使用してフォーム処理アプリの作成を開始するには、[クイックスタート](quickstarts/client-library.md)を完了します。
 
 ## <a name="see-also"></a>関連項目
 

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8bacb7a434cfa04dbdfdaf39d9fd3a0baab5f11a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b0a5547928bd7d19343c50e40ab9fcb2c335e893
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489814"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674533"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>PowerShell を使用して Azure Database for PostgreSQL の読み取りレプリカを作成し、管理する方法
 
@@ -56,16 +56,16 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 | ResourceGroupName |  myresourcegroup |  レプリカ サーバーが作成されるリソース グループ。  |
 | 名前 | mydemoreplicaserver | 作成する新しいレプリカ サーバーの名前。 |
 
-リージョンをまたがる読み取りレプリカを作成するには、 **Location** パラメーターを使用します。 次の例では、 **米国西部** リージョンにレプリカを作成します。
+リージョンをまたがる読み取りレプリカを作成するには、**Location** パラメーターを使用します。 次の例では、**米国西部** リージョンにレプリカを作成します。
 
 ```azurepowershell-interactive
 Get-AzPostgreSqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
-  New-AzMariaDServerReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -Location westus
+  New-AzPostgreSQLServerReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -Location westus
 ```
 
 レプリカを作成できるリージョンの詳細については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。
 
-既定では、 **Sku** パラメーターが指定されていない限り、読み取りレプリカはプライマリと同じサーバー構成で作成されます。
+既定では、**Sku** パラメーターが指定されていない限り、読み取りレプリカはプライマリと同じサーバー構成で作成されます。
 
 > [!NOTE]
 > レプリカが確実にマスターに追随できるように、レプリカ サーバーの構成をプライマリと同じかそれ以上の値にしておくことをお勧めします。
@@ -75,15 +75,23 @@ Get-AzPostgreSqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 特定のプライマリ サーバーのレプリカをすべて表示するには、次のコマンドを実行します。
 
 ```azurepowershell-interactive
-Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
+Get-AzPostgreSQLReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 ```
 
-`Get-AzMariaDReplica` コマンドには、次のパラメーターが必要です。
+`Get-AzPostgreSQLReplica` コマンドには、次のパラメーターが必要です。
 
 | 設定 | 値の例 | 説明  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  レプリカ サーバーを作成するリソース グループ。  |
 | ServerName | mydemoserver | プライマリ サーバーの名前または ID。 |
+
+### <a name="stop-a-replica-server"></a>レプリカ サーバーを停止する
+
+読み取りレプリカ サーバーを停止すると、読み取りレプリカは独立したサーバーに昇格します。 これを行うには、`Update-AzPostgreSqlServer` コマンドレットを実行し、ReplicationRole 値を `None` に設定します。
+
+```azurepowershell-interactive
+Update-AzPostgreSqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -ReplicationRole None
+```
 
 ### <a name="delete-a-replica-server"></a>レプリカ サーバーを削除します
 

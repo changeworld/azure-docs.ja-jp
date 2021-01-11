@@ -2,19 +2,21 @@
 title: テンプレート内の子リソース
 description: Azure Resource Manager テンプレートで子リソースの名前と種類を設定する方法について説明します。
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: 3a69829e674925982c618807f49433a033d8c5f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/21/2020
+ms.openlocfilehash: c594096fd95f663db2120b29c575b341924dcc36
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80743842"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97721945"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>子リソースの名前と種類の設定
 
-子リソースとは、別のリソースのコンテキスト内でのみ存在するリソースのことです。 たとえば[仮想マシン拡張機能](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions)は、[仮想マシン](/azure/templates/microsoft.compute/2019-03-01/virtualmachines)なしでは存在できません。 この拡張機能リソースが仮想マシンの子です。
+子リソースとは、別のリソースのコンテキスト内でのみ存在するリソースのことです。 たとえば[仮想マシン拡張機能](/azure/templates/microsoft.compute/virtualmachines/extensions)は、[仮想マシン](/azure/templates/microsoft.compute/virtualmachines)なしでは存在できません。 この拡張機能リソースが仮想マシンの子です。
 
-Resource Manager テンプレートでは、親リソースの内側または外側で子リソースを指定できます。 次の例は、親リソースの resources プロパティ内に追加された子リソースを示しています。
+各親リソースは、子リソースとして特定のリソースの種類のみを受け取ります。 子リソースのリソースの種類には、親リソースのリソースの種類が含まれます。 たとえば、**Microsoft.Web/sites/config** と **Microsoft.Web/sites/extensions** は、どちらも **Microsoft.Web/sites** の子リソースです。 許容されるリソースの種類は、親リソースの[テンプレート スキーマ](https://github.com/Azure/azure-resource-manager-schemas)で指定されます。
+
+Azure Resource Manager テンプレート (ARM テンプレート) では、親リソースの内側または外側に子リソースを指定できます。 次の例は、親リソースの resources プロパティ内に追加された子リソースを示しています。
 
 ```json
 "resources": [
@@ -26,6 +28,8 @@ Resource Manager テンプレートでは、親リソースの内側または外
   }
 ]
 ```
+
+子リソースの定義の深さは 5 レベルまでです。
 
 次の例は、親リソースの外側の子リソースを示しています。 親リソースが同じテンプレート内にデプロイされていない場合、または複数の子リソースを作成するために [copy](copy-resources.md) を使う場合は、このアプローチを使用することがあります。
 
@@ -132,6 +136,6 @@ Resource Manager テンプレートでは、親リソースの内側または外
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure リソース マネージャーのテンプレートの作成の詳細については、 [テンプレートの作成](template-syntax.md)に関するページを参照してください。
+* ARM テンプレートの作成の詳細については、[テンプレートの作成](template-syntax.md)に関するページを参照してください。
 
 * リソースを参照する際のリソース名の形式については、[reference 関数](template-functions-resource.md#reference)の説明を参照してください。

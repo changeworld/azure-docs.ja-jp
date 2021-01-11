@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/12/2020
+ms.date: 12/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 0b48b8d954b132caab96e5978c90687899ea04c2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 59acbc545e6bb37ebd090ec458d98586de882133
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549227"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696289"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -53,6 +53,12 @@ ms.locfileid: "96549227"
 |**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="261"></a><a name="2.6.1"></a>2.6.1
+* サービスの相互運用を通じてクエリを処理する際のバグを修正しました。
+
+### <a name="260"></a><a name="2.6.0"></a>2.6.0
+* 特定の時点から変更フィードのクエリを実行するためのサポートを追加しました。
 
 ### <a name="251"></a><a name="2.5.1"></a>2.5.1
 * documentCollection クエリのプライマリ パーティション キャッシュの問題を修正します。
@@ -271,6 +277,8 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.6.1](#2.6.1) |2020 年 12 月 17 日 |--- |
+| [2.6.0](#2.6.0) |2020 年 7 月 16 日 |--- |
 | [2.5.1](#2.5.1) |2020 年 6 月 3 日 |--- |
 | [2.5.0](#2.5.0) |2020 年 5 月 12 日 |--- |
 | [2.4.7](#2.4.7) |2020 年 2 月 20 日 |--- |

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 219fe2d9d8ac46ba3dbeebe6aaae9dddc0883aa0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e7d013775861f290d532e0d7c132896ebeff8ae8
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500412"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680205"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>プラットフォームでサポートされている、Linux のクラシックから Azure Resource Manager への IaaS リソースの移行
 
@@ -22,7 +22,7 @@ ms.locfileid: "96500412"
 
 
 
-この記事では、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイ モデルから Resource Manager デプロイ モデルに移行する方法と、サブスクライブ内で共存する 2 つのデプロイ モデルから仮想ネットワークのサイト間ゲートウェイを使用してリソースに接続する方法の詳細を説明します。 [Azure Resource Manager の機能と利点](../azure-resource-manager/management/overview.md)の詳細を参照してください。 
+この記事では、プラットフォームでサポートされる移行ツールの概要、Azure Service Manager (ASM) (別名クラシックな Resource Manager (ARM)) デプロイ モデルからリソースを移行する方法、およびサブスクリプション内で共存する 2 つのデプロイ モデルから仮想ネットワークのサイト間ゲートウェイを使用してリソースに接続する方法の詳細を説明します。 [Azure Resource Manager の機能と利点](../azure-resource-manager/management/overview.md)の詳細を参照してください。 
 
 ## <a name="goal-for-migration"></a>移行の目的
 Resource Manager では、テンプレートを使用して複雑なアプリケーションをデプロイできます。また、VM の拡張機能を使用して仮想マシンを構成し、アクセス管理とタグ付けを統合します。 Azure Resource Manager には、仮想マシンの可用性セットへのスケーラブルな並列デプロイも含まれます。 さらに、新しいモデルでは、計算、ネットワーク、ストレージの個別のライフサイクル管理が提供されます。 最後に、仮想ネットワークでの仮想マシンの実行によって、セキュリティが既定で有効になることが重要視されています。
@@ -37,7 +37,7 @@ Resource Manager では、テンプレートを使用して複雑なアプリケ
 * ストレージ アカウント
 * 仮想ネットワーク
 * VPN ゲートウェイ
-* ExpressRoute ゲートウェイ _(仮想ネットワークと同じサブスクリプション内にある場合のみ)_
+* [ExpressRoute ゲートウェイ](https://docs.microsoft.com/azure/expressroute/expressroute-howto-move-arm) _(仮想ネットワークと同じサブスクリプション内にある場合のみ)_
 * ネットワーク セキュリティ グループ
 * ルート テーブル
 * 予約済み IP

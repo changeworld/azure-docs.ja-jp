@@ -4,20 +4,20 @@ description: Azure Functions から RabbitMQ メッセージを送信する方�
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/13/2020
+ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 212bfcee09cd63b6ff09faaba4d99e4b4c583fe8
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: d9e575d68fe4fef607bdf443ece1ddd04f085533
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505679"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746458"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>Azure Functions における RabbitMQ の出力バインドの概要
 
 > [!NOTE]
-> RabbitMQ のバインドは **Windows Premium** プランでのみ完全にサポートされています。 現在、従量課金と Linux はサポートされていません。
+> RabbitMQ バインドは、**Premium および Dedicated** プランでのみ完全にサポートされています。 従量課金はサポートされていません。
 
 RabbitMQ 出力バインドを使用して、RabbitMQ キューにメッセージを送信します。
 
@@ -31,7 +31,7 @@ RabbitMQ 出力バインドを使用して、RabbitMQ キューにメッセー�
 
 ```cs
 [FunctionName("RabbitMQOutput")]
-[return: RabbitMQ("outputQueue", ConnectionStringSetting = "ConnectionStringSetting")]
+[return: RabbitMQ(QueueName = "outputQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")]
 public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILogger log)
 {
     log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
@@ -44,34 +44,35 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 ```cs
 [FunctionName("RabbitMQOutput")]
 public static async Task Run(
-[RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "TriggerConnectionString")] string rabbitMQEvent,
-[RabbitMQ("destinationQueue", ConnectionStringSetting = "OutputConnectionString")]IAsyncCollector<string> outputEvents,
+[RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] string rabbitMQEvent,
+[RabbitMQ(QueueName = "destinationQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")]IAsyncCollector<string> outputEvents,
 ILogger log)
 {
-    // processing:
-    var myProcessedEvent = DoSomething(rabbitMQEvent);
-    
      // send the message
-    await outputEvents.AddAsync(JsonConvert.SerializeObject(myProcessedEvent));
+    await outputEvents.AddAsync(JsonConvert.SerializeObject(rabbitMQEvent));
 }
 ```
 
 次の例は、メッセージを POCO として送信する方法を示しています。
 
 ```cs
-public class TestClass
+namespace Company.Function
 {
-    public string x { get; set; }
-}
-
-[FunctionName("RabbitMQOutput")]
-public static async Task Run(
-[RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "TriggerConnectionString")] TestClass rabbitMQEvent,
-[RabbitMQ("destinationQueue", ConnectionStringSetting = "OutputConnectionString")]IAsyncCollector<TestClass> outputPocObj,
-ILogger log)
-{
-    // send the message
-    await outputPocObj.Add(rabbitMQEvent);
+    public class TestClass
+    {
+        public string x { get; set; }
+    }
+    public static class RabbitMQOutput{
+        [FunctionName("RabbitMQOutput")]
+        public static async Task Run(
+        [RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass rabbitMQEvent,
+        [RabbitMQ(QueueName = "destinationQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")]IAsyncCollector<TestClass> outputPocObj,
+        ILogger log)
+        {
+            // send the message
+            await outputPocObj.AddAsync(rabbitMQEvent);
+        }
+    }
 }
 ```
 
@@ -98,7 +99,7 @@ ILogger log)
             "type": "rabbitMQ",
             "name": "outputMessage",
             "queueName": "outputQueue",
-            "connectionStringSetting": "connectionStringAppSetting",
+            "connectionStringSetting": "rabbitMQConnectionAppSetting",
             "direction": "out"
         }
     ]
@@ -107,7 +108,7 @@ ILogger log)
 
 C# スクリプト コードを次に示します。
 
-```csx
+```C#
 using System;
 using Microsoft.Extensions.Logging;
 
@@ -141,7 +142,7 @@ public static void Run(string input, out string outputMessage, ILogger log)
             "type": "rabbitMQ",
             "name": "outputMessage",
             "queueName": "outputQueue",
-            "connectionStringSetting": "connectionStringAppSetting",
+            "connectionStringSetting": "rabbitMQConnectionAppSetting",
             "direction": "out"
         }
     ]
@@ -186,21 +187,21 @@ module.exports = function (context, input) {
             "type": "rabbitMQ",
             "name": "outputMessage",
             "queueName": "outputQueue",
-            "connectionStringSetting": "connectionStringAppSetting",
+            "connectionStringSetting": "rabbitMQConnectionAppSetting",
             "direction": "out"
         }
     ]
 }
 ```
 
-*_\_init_\_.py* で、値を `set` メソッドに渡すことでメッセージをキューに書き出すことができます。
+*_\_init_\_.py* の内容:
 
 ```python
 import azure.functions as func
 
-def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
+def main(req: func.HttpRequest, outputMessage: func.Out[str]) -> func.HttpResponse:
     input_msg = req.params.get('message')
-    msg.set(input_msg)
+    outputMessage.set(input_msg)
     return 'OK'
 ```
 
@@ -212,7 +213,7 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
 @FunctionName("RabbitMQOutputExample")
 public void run(
 @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
-@RabbitMQOutput(connectionStringSetting = "rabbitMQ", queueName = "hello") OutputBinding<String> output,
+@RabbitMQOutput(connectionStringSetting = "rabbitMQConnectionAppSetting", queueName = "hello") OutputBinding<String> output,
 final ExecutionContext context) {
     output.setValue("Some string");
 }
@@ -271,11 +272,13 @@ ILogger log)
 |**direction** | 該当なし | "out" に設定する必要があります。 |
 |**name** | 該当なし | 関数コード内のキューを表す変数の名前。 |
 |**queueName**|**QueueName**| メッセージの送信先となるキューの名前。 |
-|**hostName**|**HostName**|(ConnectStringSetting を使用する場合は省略可能) <br>キューのホスト名 (例:10.26.45.210)|
-|**userNameSetting**|**UserNameSetting**|(ConnectionStringSetting を使用している場合は省略可能) <br>キューにアクセスするための名前 |
-|**passwordSetting**|**PasswordSetting**|(ConnectionStringSetting を使用している場合は省略可能) <br>キューにアクセスするためのパスワード|
+|**hostName**|**HostName**|(ConnectStringSetting を使用する場合は無視されます) <br>キューのホスト名 (例:10.26.45.210)|
+|**userName**|**UserName**|(ConnectionStringSetting を使用する場合は無視されます) <br>キューにアクセスするためのユーザー名を含むアプリ設定の名前。 例: UserNameSetting: "< UserNameFromSettings >"|
+|**password**|**パスワード**|(ConnectionStringSetting を使用する場合は無視されます) <br>キューにアクセスするためのパスワードを含むアプリ設定の名前。 例: UserNameSetting: "< UserNameFromSettings >"|
 |**connectionStringSetting**|**ConnectionStringSetting**|RabbitMQ メッセージ キュー接続文字列を含むアプリ設定の名前。 接続文字列は、local.settings.json のアプリ設定ではなく、直接指定した場合、トリガーは機能しないことに注意してください。 (例:*function.json* の場合: connectionStringSetting: "rabbitMQConnection" <br> *local.settings.json* の場合: "rabbitMQConnection" : "< ActualConnectionstring >")|
-|**port**|**[ポート]**|使用されているポートを取得または設定します。 既定値は 0 です。|
+|**port**|**[ポート]**|(ConnectionStringSetting を使用する場合は無視されます) 使用されるポートを取得または設定します。 既定値は 0 です。これは rabbitmq クライアントの既定のポート設定を指します (5672)。|
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>使用法
 
@@ -297,7 +300,7 @@ C# 関数を使用する場合:
 
 * `byte[]` - 関数が終了したときにパラメーター値が null の場合、Functions はメッセージを作成しません。
 * `string` - 関数が終了したときにパラメーター値が null の場合、Functions はメッセージを作成しません。
-* `POCO` - パラメーター値が C# オブジェクトとして書式設定されていない場合は、エラーが発生します。
+* `POCO` - パラメーター値が C# オブジェクトとして書式設定されていない場合は、エラーが発生します。 完全な例については、C# スクリプトの[例](#example)を参照してください。
 
 C# スクリプト関数を使用する場合:
 
@@ -305,11 +308,11 @@ C# スクリプト関数を使用する場合:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-RabbitMQ メッセージは、文字列を介して送信されます。
+キュー メッセージは、context.bindings.<NAME> を介して使用できます。 ここでの <NAME> は、function.json で定義されている名前と一致します。 ペイロードが JSON の場合、値はオブジェクトに逆シリアル化されます。
 
 # <a name="python"></a>[Python](#tab/python)
 
-RabbitMQ メッセージは、文字列を介して送信されます。
+Python の[例](#example)を参照してください。
 
 # <a name="java"></a>[Java](#tab/java)
 

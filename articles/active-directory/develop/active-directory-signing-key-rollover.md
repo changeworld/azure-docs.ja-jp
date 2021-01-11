@@ -12,12 +12,12 @@ ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 981ac775e7153cfd03dc1760bbbc4e50fd9ecc57
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a8c9a15761a4b37dfcf5ba7cc4cf046390092145
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169547"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672147"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Microsoft ID プラットフォームでの署名キーのロールオーバー
 この記事では、Microsoft ID プラットフォームによってセキュリティ トークンに署名するために使用される公開キーに関して、知っておく必要があることについて説明します。 これらのキーは定期的にロールオーバーされ、緊急時にはすぐにロールオーバーされる可能性があることにご注意ください。 Microsoft ID プラットフォームを使用するすべてのアプリケーションは、キーのロールオーバー プロセスをプログラムで処理できる必要があります。 ここではキーのしくみについて説明すると共に、アプリケーションへのロールオーバーの影響を評価する方法について説明します。また、必要に応じてキーのロールオーバーに対処できるよう、アプリケーションを更新したり、定期的な手動ロールオーバー プロセスを確立したりする方法について説明しています。
@@ -68,28 +68,30 @@ Azure App Service の認証/承認 (EasyAuth) 機能には、キーのロール�
 ### <a name="web-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>.NET OWIN OpenID Connect、WS-Fed、WindowsAzureActiveDirectoryBearerAuthentication のいずれかのミドルウェアを使用し、リソースを保護する Web アプリケーション/API
 アプリケーションで .NET OWIN OpenID Connect、WS-Fed、WindowsAzureActiveDirectoryBearerAuthentication のいずれかのミドルウェアを使用している場合、キーのロールオーバーに自動的に対処するうえで必要なロジックがあらかじめ用意されています。
 
-それらがアプリケーションで使用されているかどうかは、アプリケーションの Startup.cs または Startup.Auth.cs から次のスニペットを探すことで確認できます。
+それらがアプリケーションで使用されているかどうかは、アプリケーションの Startup.cs または Startup.Auth.cs ファイルで次のスニペットを探すことで確認できます。
 
-```
+```csharp
 app.UseOpenIdConnectAuthentication(
-     new OpenIdConnectAuthenticationOptions
-     {
-         // ...
-     });
+    new OpenIdConnectAuthenticationOptions
+    {
+        // ...
+    });
 ```
-```
+
+```csharp
 app.UseWsFederationAuthentication(
     new WsFederationAuthenticationOptions
     {
-     // ...
-     });
+        // ...
+    });
 ```
-```
- app.UseWindowsAzureActiveDirectoryBearerAuthentication(
-     new WindowsAzureActiveDirectoryBearerAuthenticationOptions
-     {
-     // ...
-     });
+
+```csharp
+app.UseWindowsAzureActiveDirectoryBearerAuthentication(
+    new WindowsAzureActiveDirectoryBearerAuthenticationOptions
+    {
+        // ...
+    });
 ```
 
 ### <a name="web-applications--apis-protecting-resources-using-net-core-openid-connect-or--jwtbearerauthentication-middleware"></a><a name="owincore"></a>.NET Core OpenID Connect と JwtBearerAuthentication のいずれかのミドルウェアを使用し、リソースを保護する Web アプリケーション/API

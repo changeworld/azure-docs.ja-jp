@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 724809dbce3ca1b5a36f4da0ba5c03d0f78897f5
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 9d1460a8bebe75a3ee471eb304fcf642d566b5dd
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577583"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614644"
 ---
 # <a name="viewing-multiple-resources-in-metrics-explorer"></a>メトリックス エクスプローラーでの複数のリソースの表示
 
@@ -71,7 +71,7 @@ ms.locfileid: "97577583"
 
 ![分割を使用して VM あたりの CPU 使用率を確認する方法を示すスクリーンショット](./media/metrics-charts/026.png)
 
-分割に加えて、フィルター機能を使用して、見たいリソース グループだけを表示することもできます。  たとえば、特定のリソース グループの VM の CPU 使用率を表示する場合は、[フィルターの追加] ツールを使用することで、リソース グループでフィルター処理できます。 この例では、TailspinToys でフィルター処理しており、これによって TailspinToysDemo のリソースに関連付けられたメトリクスが削除されます。 
+分割に加えて、フィルター機能を使用して、見たいリソース グループだけを表示することもできます。  たとえば、特定のリソース グループの VM の CPU 使用率を表示する場合は、[フィルターの追加] ツールを使用することで、リソース グループでフィルター処理できます。 この例では、TailspinToysDemo でフィルター処理します。これにより、TailspinToys のリソースに関連付けられたメトリックが削除されます。 
 
 ![リソース グループでフィルター処理する方法を示すスクリーンショット](./media/metrics-charts/027.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "97577583"
 > [!WARNING] 
 > 複数のリソース、リソース グループ、またはサブスクリプションのメトリックを視覚化するには、サブスクリプション レベルの監視閲覧者のアクセス許可を持っている必要があります。 これを行うには、[こちらのドキュメント](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)の手順に従ってください。 
 
-マルチリソース グラフをピン留めするには、[こちら](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#create-alert-rules)の手順に従ってください。 
+マルチリソース グラフをピン留めするには、[こちら](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pin-charts-to-dashboards)の手順に従ってください。 
 
 ## <a name="next-steps"></a>次の手順
 

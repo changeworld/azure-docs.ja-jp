@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 769dea079339af2c6307d9230e047a654dc3d5dd
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 82f6c5989149b50a1ef5e6c6fb5350d474476436
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95492212"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845473"
 ---
 # <a name="receipt-concepts"></a>レシートの概念
 
@@ -460,8 +460,7 @@ Form Recognizer レシート サービスを試すには、オンラインのサ
 
 ## <a name="next-steps"></a>次のステップ
 
-- 選択した言語で Form Recognizer を使用してレシート処理アプリの作成を開始するには、[Form Recognizer クライアント ライブラリのクイックスタート](quickstarts/client-library.md)を完了します。
-- または、[Receipt API Python クイックスタート](./quickstarts/python-receipts.md)に従って、REST API を使用してレシートを認識します。
+- 選択した言語で Form Recognizer を使用して領収書処理アプリの作成を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md)を完了します。
 
 ## <a name="see-also"></a>関連項目
 

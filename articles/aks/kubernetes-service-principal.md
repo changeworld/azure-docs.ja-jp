@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のクラスター用の Azure Activ
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: e95eae3ab8d992bc169e54700e7e31715e72102e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: c6f50b152174cee1ee2cc37baa22432957107d2c
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607825"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614797"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -100,18 +100,7 @@ Azure Container Registry (ACR) をコンテナーのイメージ ストアとし
 
 ### <a name="networking"></a>ネットワーク
 
-仮想ネットワークとサブネットまたはパブリック IP アドレスが別のリソース グループに存在する高度なネットワークを使用することも考えられます。 ロールの一連のアクセス許可として、次のいずれかを割り当てます。
-
-- [カスタム ロール][rbac-custom-role]を作成し、次のロールのアクセス許可を定義します。
-  - *Microsoft.Network/virtualNetworks/subnets/join/action*
-  - *Microsoft.Network/virtualNetworks/subnets/read*
-  - *Microsoft.Network/publicIPAddresses/join/action*
-  - *Microsoft.Network/publicIPAddresses/read*
-  - *Microsoft.Network/publicIPAddresses/write*
-  - [Kubernet クラスター上のカスタム ルート テーブル](configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet)を使用する場合は、次の追加のアクセス許可を追加します。
-    - *Microsoft.Network/routeTables/write*
-    - *Microsoft.Network/routeTables/read*
-- または、仮想ネットワーク内のサブネットに[ネットワーク共同作成者][rbac-network-contributor]の組み込みロールを割り当てます。
+仮想ネットワークとサブネットまたはパブリック IP アドレスが別のリソース グループに存在する高度なネットワークを使用することも考えられます。 仮想ネットワーク内のサブネットに[ネットワーク共同作成者][rbac-network-contributor]の組み込みロールを割り当てます。 または、そのリソース グループ内のネットワーク リソースにアクセスするためのアクセス許可を持つ[カスタム ロール][rbac-custom-role]を作成することもできます。 詳細については、「[AKS サービスのアクセス許可][aks-permissions]」を参照してください。
 
 ### <a name="storage"></a>ストレージ
 
@@ -188,3 +177,4 @@ Azure Active Directory サービス プリンシパルの詳細については�
 [aks-to-acr]: cluster-container-registry-integration.md
 [update-credentials]: update-credentials.md
 [azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md
+[aks-permissions]: concepts-identity.md#aks-service-permissions

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: be3d3f11e90c17bd8c4792418500da651039e480
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a80eaecc02fa3c8c6618341c02e22241f0dc7faf
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562805"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845008"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure メトリックス エクスプローラーの高度な機能
 
@@ -22,6 +22,35 @@ ms.locfileid: "97562805"
 ## <a name="metrics-in-azure"></a>Azure のメトリック
 
 [Azure Monitor におけるメトリック](data-platform-metrics.md)は、時間をかけて収集して保存された一連の測定値とカウントです。 標準 ("プラットフォーム") メトリックとカスタム メトリックがあります。 標準メトリックは、Azure プラットフォーム自体によって提供されます。 標準メトリックは、Azure リソースの状態と使用状況の統計を反映します。 カスタム メトリックは、[カスタム イベントとメトリック用の Application Insights API](../app/api-custom-events-metrics.md)、[Windows Azure Diagnostics (WAD) 拡張機能](./diagnostics-extension-overview.md)、または [Azure Monitor REST API](./metrics-store-custom-rest-api.md) を使用して、アプリケーションによって Azure に送信されます。
+
+## <a name="resource-scope-picker"></a>リソース スコープ ピッカー
+リソース スコープ ピッカーを使用すると、1 つまたは複数のリソースにわたるメトリックを表示できます。 リソース スコープ ピッカーの使用方法については、以下を参照してください。 
+
+### <a name="selecting-a-single-resource"></a>1 つのリソースの選択
+**[Azure Monitor]** メニューまたはリソースのメニューの **[監視]** セクションから **メトリック** を選択します。 [Select a scope]\(スコープの選択\) ボタンをクリックしてスコープ ピッカーを開くと、メトリックを表示するリソースを選択できるようになります。 リソースのメニューからメトリックス エクスプローラーを開いた場合は、既に設定されています。 
+
+![リソース スコープ ピッカーのスクリーンショット](./media/metrics-charts/scope-picker.png)
+
+特定のリソースでは、一度に 1 つのリソースのメトリックしか表示できません。 これらのリソースは、[リソースの種類] ドロップダウンの [All resource types]\(すべてのリソースの種類\) セクションにあります。
+
+![1 つのリソースのスクリーンショット](./media/metrics-charts/single-resource-scope.png)
+
+目的のリソースをクリックすると、そのリソースを含むすべてのサブスクリプションとリソース グループが表示されます。
+
+![使用可能なリソースのスクリーンショット](./media/metrics-charts/available-single-resource.png)
+
+> [!TIP]
+> 複数のリソースのメトリックを同時に表示したい場合、またはサブスクリプションまたはリソース グループ全体のメトリックを表示したい場合は、[賛成票] ボタンをクリックします。
+
+選択が完了したら、[適用] をクリックします。
+
+### <a name="viewing-metrics-across-multiple-resources"></a>複数のリソースのメトリックの表示
+一部のリソースの種類では、同じサブスクリプションと場所にあれば、複数のリソースのメトリックのクエリを実行できる機能が有効になっています。 これらのリソースの種類は、[リソースの種類] ドロップダウンの上部にあります。 複数のリソースのメトリックを表示する方法の詳細については、[このドキュメント](metrics-dynamic-scope.md#selecting-multiple-resources)を参照してください。
+
+![さまざまな種類のリソースのスクリーンショット](./media/metrics-charts/multi-resource-scope.png)
+
+マルチリソースに互換性のある種類の場合は、サブスクリプションまたは複数のリソース グループにわたるメトリックのクエリを実行することもできます。 これを行う方法については、[こちらの記事](metrics-dynamic-scope.md#selecting-a-resource-group-or-subscription)をご覧ください。
+
 
 ## <a name="create-views-with-multiple-metrics-and-charts"></a>複数のメトリックとグラフがあるビューを作成する
 
@@ -61,11 +90,25 @@ ms.locfileid: "97562805"
 
 メトリック エクスプローラーでは、**Sum**、**Count**、**Min**、**Max**、および **Average** という 5 種類の基本的な統計集計方法を使用できます。 **Sum** 集計は **Total** 集計とも呼ばれます。 メトリック エクスプローラーでは、多くのメトリックにおいて完全に無関係、または使用できない集計は非表示になります。
 
-- **Sum** – 集計間隔でキャプチャされたすべての値の合計
-- **Count** – 集計間隔でキャプチャされた測定値の数。 メトリックが常に 1 の値でキャプチャされる場合において、**Count** は **Sum** と等しくなることに注意してください。 これは、メトリックが個別のイベントの数を追跡し、各測定が 1 つのイベント (つまり、新しい要求が送信されるたびにメトリック レコードからコードが実行される) を表す場合によく発生します
-- **Average** – 集計間隔でキャプチャされたメトリック値の平均
-- **Min** –集計間隔でキャプチャされた値の最小値
-- **Max** –集計間隔でキャプチャされた値の最大値
+**Sum** – 集計間隔でキャプチャされたすべての値の合計
+
+![要求の合計のスクリーンショット](./media/metrics-charts/request-sum.png)
+
+**Count** – 集計間隔でキャプチャされた測定値の数。 メトリックが常に 1 の値でキャプチャされる場合において、**Count** は **Sum** と等しくなることに注意してください。 これは、メトリックが個別のイベントの数を追跡し、各測定が 1 つのイベント (つまり、新しい要求が送信されるたびにメトリック レコードからコードが実行される) を表す場合によく発生します
+
+![要求の数のスクリーンショット](./media/metrics-charts/request-count.png)
+
+**Average** – 集計間隔でキャプチャされたメトリック値の平均
+
+![平均要求のスクリーンショット](./media/metrics-charts/request-avg.png)
+
+**Min** –集計間隔でキャプチャされた値の最小値
+
+![最小要求のスクリーンショット](./media/metrics-charts/request-min.png)
+
+**Max** –集計間隔でキャプチャされた値の最大値
+
+![最大要求のスクリーンショット](./media/metrics-charts/request-max.png)
 
 ## <a name="apply-filters-to-charts"></a>グラフにフィルターを適用する
 

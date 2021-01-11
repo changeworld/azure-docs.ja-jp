@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: ff9eca855269597477bc42a319c99c886576d92c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: d50ce842a1b2bca26ef14dfbc81aab90d4ac2d8c
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94482801"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97691982"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,7 +53,7 @@ Azure Communication Services 通話クライアント ライブラリが備え�
 const userToken = '<user token>';
 callClient = new CallClient(options);
 const tokenCredential = new AzureCommunicationUserCredential(userToken);
-const callAgent = await callClient.createCallAgent(tokenCredential);
+const callAgent = await callClient.createCallAgent(tokenCredential, { displayName: 'optional ACS user name' });
 const deviceManager = await callClient.getDeviceManager()
 ```
 
@@ -89,7 +89,9 @@ const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
 > 現在、発信ローカル動画ストリームは 1 つしか使用できません。
 動画通話を行うには、deviceManager の `getCameraList` API を使用してローカル カメラを列挙する必要があります。
 目的のカメラを選択したら、それを使用して `LocalVideoStream` インスタンスを構築し、それを `call` メソッドへの `localVideoStream` 配列内の項目として、`videoOptions` に渡します。
-通話が接続されると、選択したカメラから他の参加者への動画ストリームの送信が自動的に開始されます
+通話が接続されると、選択したカメラから他の参加者へのビデオ ストリームの送信が自動的に開始されます。
+
+これは、Call.accept() ビデオ オプションと CallAgent.join() ビデオ オプションにも適用されます。
 ```js
 const deviceManager = await callClient.getDeviceManager();
 const videoDeviceInfo = deviceManager.getCameraList()[0];
@@ -99,13 +101,41 @@ const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
+### <a name="receiving-an-incoming-call"></a>着信呼び出しの受信
+```js
+callAgent.on('callsUpdated', e => {
+    e.added.forEach(addedCall => {
+        if(addedCall.isIncoming) {
+        addedCall.accept();
+    }
+    });
+})
+```
+
 ### <a name="join-a-group-call"></a>グループ通話に参加する
 新しいグループ通話を始めるか、進行中のグループ通話に参加するには、"join" メソッドを使用して、`groupId` プロパティを含むオブジェクトを渡します。 値には GUID を指定する必要があります。
 ```js
 
-const context = { groupId: <GUID>}
-const call = callAgent.join(context);
+const locator = { groupId: <GUID>}
+const call = callAgent.join(locator);
 
+```
+
+### <a name="join-a-teams-meeting"></a>Teams 会議に参加する
+Teams 会議に参加するには、'join' メソッドを使用し、会議リンクまたは会議の座標を渡します。
+```js
+// Join using meeting link
+const locator = { meetingLink: <meeting link>}
+const call = callAgent.join(locator);
+
+// Join using meeting coordinates
+const locator = {
+    threadId: <thread id>,
+    organizerId: <organizer id>,
+    tenantId: <tenant id>,
+    messageId: <message id>
+}
+const call = callAgent.join(locator);
 ```
 
 ## <a name="call-management"></a>通話の管理
@@ -162,6 +192,11 @@ const callEndReason = call.callEndReason;
 * 現在の通話が着信通話かどうかを確認するには、`isIncoming` プロパティを調べます。これは `Boolean` を返します。
 ```js
 const isIncoming = call.isIncoming;
+```
+
+* 通話が記録されているかどうかを確認するには、`isRecordingActive` プロパティを調べます。これは `Boolean` を返します。
+```js
+const isResordingActive = call.isRecordingActive;
 ```
 
 *  現在マイクがミュートされているかどうかを確認するには、`muted` プロパティを調べます。これは `Boolean` を返します。

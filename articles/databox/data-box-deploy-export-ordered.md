@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 11/23/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: b132368982e0013bfe6f3ffd52e7aacb7b1274eb
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: e822a2be200f701d65ab2080804d252f99589680
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96003176"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680786"
 ---
-# <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>チュートリアル:Azure Data Box のエクスポート注文を作成する (プレビュー)
+# <a name="tutorial-create-export-order-for-azure-data-box"></a>チュートリアル:Azure Data Box のエクスポート注文を作成する
 
 Azure Data Box は、Azure から特定の場所にデータを移動できるハイブリッド ソリューションです。 このチュートリアルでは、Azure Data Box のエクスポート注文を作成する方法について説明します。 エクスポート注文を作成する主な理由は、オンプレミスのストレージが侵害され、バックアップを復元する必要がある場合のディザスター リカバリーのためです。
 
@@ -27,8 +27,6 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
 > * エクスポート用の Data Box の注文
 > * エクスポート注文の追跡
 > * エクスポート注文のキャンセル
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

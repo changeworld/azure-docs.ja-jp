@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: 7b872340c50c800ebe4d4d6c7ca56b3b327bf162
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: seodec18,references_regions
+ms.openlocfilehash: f11ccafd58cc64e6186ef590bbbccbfab3335ea4
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95972651"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854861"
 ---
 # <a name="speech-service-supported-regions"></a>Speech サービスがサポートされているリージョン
 
@@ -44,6 +44,8 @@ Speech サービスは、以下のリージョンで **音声認識**、**テキ
 
 [Speech SDK](speech-sdk.md) を使用する場合、リージョンは **リージョン識別子** によって (たとえば、`SpeechConfig.FromSubscription` へのパラメーターとして) 指定されます。 リージョンがサブスクリプションのリージョンと一致していることを確認してください。
 
+オーディオ データを使用してカスタム モデルをトレーニングする場合は、トレーニングを高速化するために[専用のハードウェアを備えたリージョン](custom-speech-overview.md#set-up-your-azure-account)のいずれかを使用します。 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) を使用して、完全にトレーニングされたモデルを後から別のリージョンにコピーできます。
+
 ### <a name="intent-recognition"></a>意図認識
 
 Speech SDK を介して **意図認識** を使用できるリージョンは以下の通りです。
@@ -67,17 +69,21 @@ Speech SDK を介して **意図認識** を使用できるリージョンは以
 
 ### <a name="voice-assistants"></a>音声アシスタント
 
-[Speech SDK](speech-sdk.md) は、以下のリージョンで **音声アシスタント** 機能をサポートしています。
+[Speech SDK](speech-sdk.md) は、以下のリージョンで [Direct Line Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/direct-line-speech) による **音声アシスタント** 機能をサポートしています。
 
-| リージョン         | リージョン識別子 |
-| -------------- | -------------------- |
-| 米国西部        | `westus`             |
-| 米国西部 2      | `westus2`            |
-| 米国東部        | `eastus`             |
-| 米国東部 2      | `eastus2`            |
-| 西ヨーロッパ    | `westeurope`         |
-| 北ヨーロッパ   | `northeurope`        |
-| 東南アジア | `southeastasia`      |
+| グローバル リージョン | リージョン           | リージョン識別子    |
+| ------------- | ---------------- | -------------------- |
+| 北米 | 米国西部          | `westus`             |
+| 北米 | 米国西部 2        | `westus2`            |
+| 北米 | 米国東部          | `eastus`             |
+| 北米 | 米国東部 2        | `eastus2`            |
+| 北米 | 米国中西部  | `westcentralus`      |
+| 北米 | 米国中南部 | `southcentralus`     |
+| ヨーロッパ        | 西ヨーロッパ      | `westeurope`         |
+| ヨーロッパ        | 北ヨーロッパ     | `northeurope`        |
+| アジア          | 東アジア        | `eastasia`           |
+| アジア          | 東南アジア   | `southeastasia`      |
+| インド         | インド中部    | `centralindia`       |
 
 ### <a name="speaker-recognition"></a>Speaker Recognition
 

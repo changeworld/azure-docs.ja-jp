@@ -4,12 +4,12 @@ description: プライベート Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 450d68e26c5a3fc1ecfbaf6a3be6b5f698ee65e3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 696ba785abb317a29de38160440dc06487ff5bca
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183262"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673887"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -27,6 +27,8 @@ ms.locfileid: "96183262"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure CLI バージョン 2.2.0 以降
+* Private Link サービスは、Standard Azure Load Balancer でのみサポートされています。 Basic Azure Load Balancer はサポートされていません。  
+* カスタム DNS サーバーを使用するには、カスタム DNS サーバーにアップストリーム DNS サーバーとして Azure DNS IP 168.63.129.16 を追加します。
 
 ## <a name="create-a-private-aks-cluster"></a>プライベート AKS クラスターを作成する
 
@@ -64,6 +66,20 @@ az aks create \
 > [!NOTE]
 > Docker ブリッジ アドレス CIDR (172.17.0.1/16) がサブネット CIDR と競合する場合は、Docker ブリッジ アドレスを適切に変更します。
 
+### <a name="configure-private-dns-zone"></a>プライベート DNS ゾーンを構成する
+
+--private-dns-zone 引数が省略されている場合の既定値は "system" です。 AKS によって、ノード リソース グループにプライベート DNS ゾーンが作成されます。 "none" パラメーターを渡すことは、AKS によってプライベート DNS ゾーンを作成しないことを意味します。  これは、独自の DNS サーバーと、プライベート FQDN の DNS 解決の構成に依存します。  DNS 解決を構成しない場合、エージェント ノード内でのみ DNS の解決が可能になり、デプロイ後にクラスターの問題が発生します。
+
+## <a name="no-private-dns-zone-prerequisites"></a>プライベート DNS ゾーンには前提条件が ない
+PrivateDNSZone なし
+* Azure CLI バージョン 0.4.67 以降
+* API バージョン 2020-11-01 以降
+
+## <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する
+
+```azurecli-interactive
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system]
+```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>プライベート クラスターに接続するための選択肢
 
 API サーバー エンドポイントには、パブリック IP アドレスがありません。 API サーバーを管理するには、AKS クラスターの Azure Virtual Network (VNet) にアクセスできる VM を使用する必要があります。 プライベート クラスターへのネットワーク接続を確立するには、いくつかの選択肢があります。
@@ -100,23 +116,19 @@ AKS クラスターと同じ VNET に VM を作成するのが最も簡単な方
 
 3. クラスターを含む VNet にカスタム DNS 設定があるシナリオでは (4)、プライベート DNS ゾーンがカスタム DNS リゾルバーを含む VNet にリンクされていない限り (5)、クラスターのデプロイは失敗します。 このリンクは、クラスターのプロビジョニング中にプライベート ゾーンを作成した後に手動で、またはイベントベースのデプロイ メカニズム (Azure Event Grid や Azure Functions など) を使用したゾーンの作成の検出時に自動で、作成することができます。
 
-## <a name="dependencies"></a>依存関係  
-
-* Private Link サービスは、Standard Azure Load Balancer でのみサポートされています。 Basic Azure Load Balancer はサポートされていません。  
-* カスタム DNS サーバーを使用するには、カスタム DNS サーバーにアップストリーム DNS サーバーとして Azure DNS IP 168.63.129.16 を追加します。
+> [!NOTE]
+> [kubernet で独自のルート テーブル](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet)を使用し、プライベート クラスターで独自の DNS を使用する場合、クラスターの作成は失敗します。 作成を成功させるためには、クラスターの作成に失敗した後、ノード リソース グループの [RouteTable](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) をサブネットに関連付ける必要があります。
 
 ## <a name="limitations"></a>制限事項 
 * 承認済み IP 範囲は、プライベート API サーバー エンドポイントには適用できません。パブリック API サーバーにのみ適用されます
-* [Availability Zones][availability-zones] は現在、特定のリージョンでサポートされています。 
 * [Azure Private Link サービスの制限事項][private-link-service]は、プライベート クラスターに適用されます。
-* Azure DevOps Microsoft でホストするエージェントとプライベート クラスターの組み合わせはサポートされていません。 [セルフホステッド エージェント][devops-agents]を使用することを検討してください。 
+* Azure DevOps Microsoft でホストするエージェントとプライベート クラスターの組み合わせはサポートされていません。 [セルフホステッド エージェント](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops&tabs=browser&preserve-view=true)を使用することを検討してください。 
 * Azure Container Registry をプライベート AKS で使用できるようにする必要があるカスタマーは、Container Registry 仮想ネットワークをエージェントクラスターの仮想ネットワークとピアリングしてください。
-* Azure Dev Spaces は現在サポートされていません
 * 既存の AKS クラスターからプライベートクラスターへの変換はサポートされていません
 * カスタマーのサブネット内でプライベート エンドポイントを削除または変更すると、クラスターが機能しなくなります。 
 * コンテナー用 Azure Monitor の Live Data は現在サポートされていません。
-* アップタイム SLA は現在サポートされていません。
-
+* お客様が自身の DNS サーバーで A レコードを更新した後、移行後にポッドが再起動されるまで、これらのポッドによる API サーバーの FQDN は引き続き古い IP に解決されます。 お客様は、コントロール プレーンの移行後に、hostNetwork ポッドと default-DNSPolicy Pod ポッドを再起動する必要があります。
+* コントロール プレーンのメンテナンスの場合、[AKS IP](https://docs.microsoft.com/azure/aks/limit-egress-traffic#:~:text=By%20default%2C%20AKS%20clusters%20have%20unrestricted%20outbound%20%28egress%29,be%20accessible%20to%20maintain%20healthy%20cluster%20maintenance%20tasks.) が変更される可能性があります。 この場合は、カスタム DNS サーバー上で API サーバーのプライベート IP を指している A レコードを更新し、hostNetwork を使用するカスタム ポッドまたはデプロイを再起動する必要があります。
 
 <!-- LINKS - internal -->
 [az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register

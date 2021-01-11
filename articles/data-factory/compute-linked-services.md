@@ -10,12 +10,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.date: 05/08/2019
-ms.openlocfilehash: a454c1297b0f25c64b11217811999d4331148205
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f2a0784b2795b82131880d73a6d9217acc1d72d3
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96022464"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606217"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 
@@ -32,7 +32,7 @@ ms.locfileid: "96022464"
 | [Azure Machine Learning Studio (クラシック)](#azure-machine-learning-studio-classic-linked-service) | [Machine Learning スタジオ (クラシック) のアクティビティ: バッチ実行とリソースの更新](transform-data-using-machine-learning.md) |
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning 実行パイプライン](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
-| [Azure SQL](#azure-sql-database-linked-service)、[Azure Synapse Analytics (旧称 SQL Data Warehouse)](#azure-synapse-analytics-linked-service)、[SQL Server](#sql-server-linked-service) | [ストアド プロシージャ](transform-data-using-stored-procedure.md) |
+| [Azure SQL](#azure-sql-database-linked-service)、[Azure Synapse Analytics](#azure-synapse-analytics-linked-service)、[SQL Server](#sql-server-linked-service) | [ストアド プロシージャ](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Notebook](transform-data-databricks-notebook.md)、[Jar](transform-data-databricks-jar.md)、[Python](transform-data-databricks-python.md) |
 | [Azure 関数](#azure-function-linked-service)         | [Azure 関数アクティビティ](control-flow-azure-function-activity.md)
 >  
@@ -253,7 +253,7 @@ D4 サイズのヘッド ノードとワーカー ノードを作成する場合
 "dataNodeSize": "Standard_D4",
 ```
 
-これらのプロパティに間違った値を指定すると、次のエラーが発生します。**エラー:** クラスターを作成できませんでした。 例外:クラスター作成操作を完了できません。 コード '400' で操作が失敗しました。 取り残されたクラスターの状態:'Error'。 メッセージ:'PreClusterCreationValidationFailure'。 このエラーが発生した場合は、[仮想マシンのサイズ](../virtual-machines/sizes.md)に関する記事の表に記載されている **コマンドレットと API** の名前を使用していることを確認してください。          
+これらのプロパティに間違った値を指定すると、次のエラーが発生します。**エラー:** クラスターを作成できませんでした。 例外:クラスター作成操作を完了できません。 コード '400' で操作が失敗しました。 取り残されたクラスターの状態:'Error'。 メッセージ:'PreClusterCreationValidationFailure'。 このエラーが発生した場合は、[仮想マシンのサイズ](../virtual-machines/sizes.md)に関する記事の表に記載されている **コマンドレットと API** の名前を使用していることを確認してください。
 
 ### <a name="bring-your-own-compute-environment"></a>Bring Your Own のコンピューティング環境
 この種類の構成では、既存のコンピューティング環境を Data Factory の「リンクされたサービス」として登録できます。 このコンピューティング環境はユーザーにより管理され、Data Factory サービスをこの環境を利用し、アクティビティを実行します。
@@ -564,7 +564,7 @@ Azure SQL のリンクされたサービスを作成し、 [ストアド プロ�
 
 ## <a name="azure-synapse-analytics-linked-service"></a>Azure Synapse Analytics のリンクされたサービス
 
-Azure Synapse Analytics (旧称 SQL Data Warehouse) のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動します。 このリンクされたサービスの詳細については、[Azure Synapse Analytics (旧称 SQL Data Warehouse) コネクタ](connector-azure-sql-data-warehouse.md#linked-service-properties) に関する記事をご覧ください。
+Azure Synapse Analytics のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)で使用して、Data Factory パイプラインからストアド プロシージャを呼び出します。 このリンクされたサービスの詳細については、[Azure Synapse Analytics コネクタ](connector-azure-sql-data-warehouse.md#linked-service-properties)に関する記事を参照してください。
 
 ## <a name="sql-server-linked-service"></a>SQL Server のリンクされたサービス
 

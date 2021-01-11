@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 12/17/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8633ae0d23650eb12ee2e1fdcd355864dfd8b6c3
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bfff8d450a6506cb37730838e4f70609080ca7b1
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743634"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670793"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>認証方法の使用状況と分析情報 (プレビュー)
 
@@ -31,7 +31,7 @@ ms.locfileid: "96743634"
 - セキュリティ管理者
 - レポート閲覧者
 
-使用状況と分析情報にアクセスするうえで追加のライセンスは必要ありません。 Azure AD Multi-Factor Authentication とセルフサービス パスワード リセット (SSPR) のライセンス情報は、[Azure Active Directory の価格に関するサイト](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+ 使用状況と分析情報にアクセスするには、Azure AD Premium P1 または P2 ライセンスが必要です。 Azure AD Multi-Factor Authentication とセルフサービス パスワード リセット (SSPR) のライセンス情報は、[Azure Active Directory の価格に関するサイト](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
 
 ## <a name="how-it-works"></a>しくみ
 

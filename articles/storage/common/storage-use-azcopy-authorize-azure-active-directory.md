@@ -4,15 +4,15 @@ description: AzCopy 操作の認証資格情報は、Azure Active Directory (Azu
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 12/17/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 43002fdfbdce146b52774aa4182445bf34dd7199
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 99e06a36c2afa66f2874c14990d50c6287623efd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360290"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672493"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>AzCopy と Azure Active Directory (Azure AD) を使用して BLOB へのアクセスを承認する
 
@@ -183,9 +183,11 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 > [!NOTE]
 > この例で示すように、プロンプトを使用することを検討してください。 そうすると、ご自分のパスワードがご使用のコンソールのコマンド履歴に表示されません。 
 
-## <a name="authorize-without-a-keyring-linux"></a>キーリングを使用しないで承認する (Linux)
+## <a name="authorize-without-a-secret-store"></a>シークレット ストアなしで承認する
 
-オペレーティング システムに "*キーリング*" などのシークレット ストアがない場合、`azcopy login` コマンドは機能しません。 代わりに、各操作を実行する前に、メモリ内の環境変数を設定することができます。 操作が完了すると、これらの値はメモリから消えてしまうため、azcopy コマンドを実行するたびに、これらの変数を設定する必要があります。
+`azcopy login` コマンドによって OAuth トークンが取得され、そのトークンがシステムのシークレット ストアに配置されます。 オペレーティング システムに Linux "*キーリング*" などのシークレット ストアがない場合、トークンを配置する場所がないため、`azcopy login` コマンドは機能しません。 
+
+`azcopy login` コマンドを使用する代わりに、メモリ内環境変数を設定できます。 次に、任意の AzCopy コマンドを実行します。 AzCopy によって、操作を完了するために必要な認証トークンが取得されます。 操作が完了すると、トークンがメモリから消えます。 
 
 ### <a name="authorize-a-user-identity"></a>ユーザー ID を承認する
 
@@ -248,8 +250,6 @@ export AZCOPY_MSI_RESOURCE_STRING=<resource-id>
 これらの変数を設定したら、任意の azcopy コマンド (`azcopy list https://contoso.blob.core.windows.net` など) を実行することができます。
 
 ### <a name="authorize-a-service-principal"></a>サービス プリンシパルを承認する
-
-そのスクリプトを実行する前に、少なくとも 1 回は対話形式でサインインする必要があります。そうすることで、ご自身のサービス プリンシパルの資格情報を AzCopy に渡すことができます。  それらの資格情報は暗号化された安全なファイルに格納されます。そのため、実際のスクリプトでその機密情報を渡す必要がありません。
 
 クライアント シークレットを使用して、またはご自分のサービス プリンシパルのアプリ登録に関連付けられている証明書のパスワードを使用して、ご自分のアカウントにサインインできます。
 

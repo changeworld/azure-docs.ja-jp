@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 513d98ae274c668197b066c742119055248f37f9
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 661b0bbf1aa389dc76567d95ad917548255a1b35
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911717"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845601"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>カスタム モデルのトレーニング データ セットを作成する
 
@@ -72,11 +72,8 @@ Form Recognizer のカスタム モデルを使用する場合は、モデルを
 
 トレーニング データ セットの作成方法を習得したので、クイックスタートに従って、カスタム Form Recognizer モデルをトレーニングし、お使いのフォームでの使用を開始してください。
 
-* [クライアント ライブラリを使用し、モデルをトレーニングし、フォーム データを抽出する](./quickstarts/client-library.md)
-* [cURL を使用してモデルをトレーニングし、フォーム データを抽出する](./quickstarts/curl-train-extract.md)
-* [REST API と Python を使用してモデルをトレーニングし、フォーム データを抽出する](./quickstarts/python-train-extract.md)
+* [クライアント ライブラリまたは REST API を使用し、モデルをトレーニングし、フォーム データを抽出する](./quickstarts/client-library.md)
 * [サンプル ラベル付けツールを使用したラベルによるトレーニング](./quickstarts/label-tool.md)
-* [REST API と Python を使用したラベルのトレーニング](./quickstarts/python-labeled-data.md)
 
 ## <a name="see-also"></a>関連項目
 

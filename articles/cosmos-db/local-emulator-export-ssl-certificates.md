@@ -7,17 +7,17 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperf-fy21q1
-ms.openlocfilehash: 1c111ca23ce7cf749dc4a7d5ad2ad39756236ab1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6c144f33f32422e27916e1987e0b2e8693f97945
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028208"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656480"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>Java、Python、および Node.js アプリで使用する Azure Cosmos DB エミュレーター証明書のエクスポート
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB Emulator では、Azure Cosmos DB サービスを開発目的でエミュレートするローカル環境を利用できます。 Azure Cosmos エミュレーターは、TLS 接続経由の、セキュリティで保護された通信のみをサポートします。
+Azure Cosmos DB Emulator では、Azure Cosmos DB サービスを開発目的でエミュレートするローカル環境を利用できます。 Azure Cosmos DB エミュレーターでは、TLS 接続経由のセキュリティで保護された通信のみがサポートされます。
 
 Azure Cosmos DB ローカル エミュレーターの証明書は、エミュレーターを初めて実行したときに生成されます。 証明書は 2 つあります。 その 1 つはローカル エミュレーターへの接続に使用され、もう 1 つはエミュレーター内のエミュレーター データの既定の暗号化を管理するために使用されます。 エクスポートする証明書は、"DocumentDBEmulatorCertificate" というフレンドリ名の接続証明書です。
 

@@ -1,14 +1,14 @@
 ---
 title: 修復できるポリシーをデプロイする
 description: Azure Lighthouse を通して修復タスクを使用するポリシーをデプロイするには、顧客テナント内にマネージド ID を作成する必要があります。
-ms.date: 08/12/2020
+ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 998576d06d470c525a551463861f7a25d4ab9d8f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eb473fe2f589cf719e3944c887d46e75e9e7fdbf
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010097"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670493"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>委任されたサブスクリプション内で修復が可能なポリシーをデプロイする
 
@@ -41,7 +41,7 @@ Azure Lighthouse に顧客をオンボードする際には、[Azure Resource Ma
 
 ## <a name="deploy-policies-that-can-be-remediated"></a>修復可能なポリシーをデプロイする
 
-上で説明したとおりに必要なアクセス許可を設定してユーザーを作成した後、そのユーザーが修復タスクを使用するポリシーを顧客テナントにデプロイできます。
+上で説明したとおりに必要なアクセス許可を設定してユーザーを作成した後、そのユーザーが、修復タスクを使用するポリシーを委任された顧客サブスクリプション内にデプロイできます。
 
 たとえば、こちらの[サンプル](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring)にあるように、顧客テナント内にある Azure Key Vault リソースを対象とした診断を有効にしたい場合を考えてみましょう。 (上で説明したとおり) 管理主体となるテナント内で適切なアクセス許可の設定を済ませたユーザーが、このシナリオを実現するために [Azure Resource Manager テンプレート](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json)をデプロイします。
 

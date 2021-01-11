@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 9f8004b41e8048dfc97fb61bb67a634963c0c575
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: a913bc0ae01507cb26c1650d63918a8319eeacf4
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317556"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857428"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor でのログ アラート
 
@@ -120,6 +120,8 @@ requests
 ### <a name="split-by-alert-dimensions"></a>アラート ディメンションで分割する
 
 一意の組み合わせにグループ化することで、アラートを数値または文字列の列で個別のアラートに分割します。 大規模なリソース中心のアラート (サブスクリプションまたはリソース グループのスコープ) を作成するときは、Azure リソース ID 列で分割できます。 Azure リソース ID で分割すると、アラートのターゲットが指定したリソースに変わります。
+
+複数の Azure リソースで同じ条件を監視する場合は、Azure リソース ID 列での分割を推奨します。 たとえば、CPU 使用率が 80% を超えるすべての仮想マシンの監視です。 また、リソース グループのスコープの少なくとも 5 台のマシンが CPU 使用率が 80% を超えていることを監視するなど、スコープ内の複数のリソースに対して 1 つの条件を設定する場合は、分割しないようにすることもできます。
 
 ワークスペースと Application Insights では、**メトリック測定** メジャーの種類でのみサポートされます。 フィールドは、**集約** と呼ばれます。 それは、3 つの列に制限されています。 クエリ内の列で 3 つより多くのグループを作成すると、予期しない結果になる可能性があります。 他のすべてのリソースの種類では、条件の **ディメンションによる分割** セクションで構成されます (6 分割に限定)。
 

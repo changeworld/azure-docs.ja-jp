@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: a2cddc9bbe868a2d18ee8111aabf6db7dc8643cf
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346997"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606285"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -111,6 +111,7 @@ az role assignment create --role "Reader" --assignee user@contoso.com --scope /s
 - [レジストリ リソースを管理するためのアクセス許可なしで、イメージをプルまたはプッシュするためのアクセス権を付与するにはどうすればよいですか?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [レジストリに対するイメージの自動検疫を有効にするにはどうすればよいですか?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
 - [匿名プル アクセスを有効にするにはどうすればよいですか?](#how-do-i-enable-anonymous-pull-access)
+- [非再頒布可能レイヤーをレジストリにプッシュするにはどうすればよいですか?](#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Docker Registry HTTP API V2 にアクセスするにはどうすればよいですか?
 
@@ -264,6 +265,33 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
 > [!NOTE]
 > * 既知のイメージをプルするために必要な API にのみ、匿名でアクセスできます。 タグ リストやリポジトリ リストなどの操作に関する他の API に匿名でアクセスすることはできません。
 > * 匿名のプル操作を実行する前に、`docker logout` を実行して、既存の Docker 資格情報がクリアされていることを確認します。
+
+### <a name="how-do-i-push-non-distributable-layers-to-a-registry"></a>非再頒布可能レイヤーをレジストリにプッシュするにはどうすればよいですか?
+
+マニフェスト内の非再頒布可能レイヤーには、コンテンツのフェッチ元となる可能性がある URL パラメーターが含まれています。 非再頒布可能レイヤーのプッシュを有効にするユース ケースとしては、ネットワーク制限付きレジストリ、アクセス制限のあるエアギャップ レジストリ、またはインターネット接続のないレジストリが考えられます。
+
+たとえば、VM によるイメージのプルをお使いの Azure コンテナー レジストリからのみ実行できるように NSG 規則を設定している場合、Docker では、外部または非再頒布可能レイヤーのプル エラーが発生します。 たとえば、Windows Server Core イメージには、マニフェスト内の Azure コンテナー レジストリへの外部レイヤー参照が含まれており、このシナリオではプルは失敗します。
+
+非再頒布可能レイヤーのプッシュを有効にするには:
+
+1. `daemon.json` ファイルを編集します。これは、Linux ホストでは `/etc/docker/` に、Windows Server では `C:\ProgramData\docker\config\daemon.json` にあります。 これまでファイルが空であったと仮定して、次の内容を追加します。
+
+   ```json
+   {
+     "allow-nondistributable-artifacts": ["myregistry.azurecr.io"]
+   }
+   ```
+   > [!NOTE]
+   > 値は、コンマで区切られたレジストリ アドレスの配列です。
+
+2. ファイルを保存して終了します。
+
+3. Docker を再起動します。
+
+一覧のレジストリにイメージをプッシュすると、非再頒布可能レイヤーがレジストリにプッシュされます。
+
+> [!WARNING]
+> 非再頒布可能アーティファクトには、通常、頒布と共有の方法と場所に関する制限があります。 この機能は、アーティファクトをプライベート レジストリにプッシュする場合にのみ使用します。 非再頒布可能アーティファクトの再頒布に関するすべての条件を順守していることを確認します。
 
 ## <a name="diagnostics-and-health-checks"></a>診断と正常性チェック
 

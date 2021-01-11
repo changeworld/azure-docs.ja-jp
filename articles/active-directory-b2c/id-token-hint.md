@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 79a99d9f0ca117d8f47d56d76399210a72b91bb7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d77e145cabcef2931d5fe6e76599da7931e576e8
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951657"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669161"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで ID トークン ヒントの技術プロファイルを定義する
 
@@ -36,10 +36,10 @@ id_token_hint は、有効な JWT トークンである必要があります。 
 
 | 名前 | 要求 | 値の例 | 説明 |
 | ---- | ----- | ------------- | ----------- |
-| 対象ユーザー | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | トークンの受信者を示します。 これは、トークン発行者によって定義される任意の文字列です。 Azure AD B2C はこの値を検証し、一致しない場合はトークンを拒否します。  |
-| 発行者 | `iss` |`https://localhost` | セキュリティ トークン サービス (トークン発行者) を識別します。 これは、トークン発行者によって定義される任意の URI です。 Azure AD B2C はこの値を検証し、一致しない場合はトークンを拒否します。  |
-| 期限切れ日時 | `exp` | `1600087315` | トークンが無効になる日時です。エポック時間で表されます。 Azure AD B2C はこの要求を検証しません。 |
-| 期間の開始時刻 | `nbf` | `1599482515` | トークンが有効になる日時です。エポック時間で表されます。 この日時は、通常、トークンが発行されたのと同じ日時です。 Azure AD B2C はこの要求を検証しません。 |
+| 対象ユーザー | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | トークンの受信者を示します。 対象ユーザーは、トークン発行者によって定義される任意の文字列です。 Azure AD B2C によってこの値が検証され、一致しない場合はトークンが拒否されます。  |
+| 発行者 | `iss` |`https://localhost` | セキュリティ トークン サービス (トークン発行者) を識別します。 発行者は、トークン発行者によって定義される任意の URI です。 Azure AD B2C によってこの値が検証され、一致しない場合はトークンが拒否されます。  |
+| 期限切れ日時 | `exp` | `1600087315` | トークンが無効になる日時です。エポック時間で表されます。 Azure AD B2C によってこの値が検証され、期限切れになっている場合、トークンは拒否されます。|
+| 期間の開始時刻 | `nbf` | `1599482515` | トークンが有効になる日時です。エポック時間で表されます。 この日時は、通常、トークンが発行されたのと同じ日時です。 Azure AD B2C によってこの値が検証され、有効期間が有効でない場合、トークンは拒否されます。 |
 
  次のトークンは、有効な ID トークンの例です。
 
@@ -272,7 +272,7 @@ New-SelfSignedCertificate `
     </RelyingParty>
     ```
 
-ビジネス要件によっては、トークンの有効期限、電子メール アドレスの形式などを確認するために、トークン検証を追加することが必要になる場合があります。 これを行うには、[要求変換技術プロファイル](claims-transformation-technical-profile.md)を呼び出すオーケストレーション ステップを追加します。 また、エラー メッセージを表示するために、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)を追加します。 
+ビジネス要件によっては、トークンの検証 (電子メール アドレスの形式確認など) の追加が必要になる場合があります。 これを行うには、[要求変換技術プロファイル](claims-transformation-technical-profile.md)を呼び出すオーケストレーション ステップを追加します。 また、エラー メッセージを表示するために、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)を追加します。 
 
 ### <a name="create-and-sign-a-token"></a>トークンを作成して署名する
 

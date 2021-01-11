@@ -12,12 +12,12 @@ metadata:
   ms.author: kumud
   manager: mtillman
   ms.date: 09/28/2020
-  ms.openlocfilehash: e348e1e93506a668f448e834ad1eaa5ce0c36d4a
-  ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+  ms.openlocfilehash: efc78307a4b03c9b5a7546dd899f83b0eed76457
+  ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/28/2020
-  ms.locfileid: "92900312"
+  ms.lasthandoff: 01/10/2021
+  ms.locfileid: "98059740"
 highlightedContent:
   items:
   - title: Azure ネットワークとは
@@ -141,7 +141,7 @@ conceptualContent:
       text: Traffic Manager の機能低下状態のトラブルシューティング
     footerLink:
       url: ../traffic-manager/index.yml
-      text: 詳細情報
+      text: さらに詳しく
   - title: Web アプリケーション ロード バランサー
     links:
     - url: ../application-gateway/overview.md
@@ -150,7 +150,7 @@ conceptualContent:
     - url: ../application-gateway/quick-create-portal.md
       itemType: quickstart
       text: ポータルを使用して Web トラフィックを転送する
-    - url: ../application-gateway/application-gateway-faq.md
+    - url: ../application-gateway/application-gateway-faq.yml
       itemType: concept
       text: よく寄せられる質問
     - url: ../application-gateway/application-gateway-troubleshooting-502.md
@@ -189,7 +189,7 @@ conceptualContent:
       text: VM との間のネットワーク トラフィック フローのログを記録する
     footerLink:
       url: ../network-watcher/index.yml
-      text: 詳細情報
+      text: さらに詳しく
   - title: ネットワーク ファイアウォール
     links:
     - url: ../firewall/overview.md

@@ -10,13 +10,13 @@ ms.author: weetok
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 84e156074d6db837556ba4ed9febdb43bcdf3318
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.date: 12/17/2020
+ms.openlocfilehash: b5b0f6dcef728f0597e7eac8ba57c8fd240d19c9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902325"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680304"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -28,7 +28,7 @@ ms.locfileid: "96902325"
 
 Azure Data Factory では、継続的インテグレーションと継続的デリバリー (CI/CD) とは、Data Factory パイプラインをある環境 (開発、テスト、運用) から別の環境に移動することを意味します。 Azure Data Factory では [Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)を活用し、さまざまな ADF エンティティ (パイプライン、データセット、データ フローなど) の構成を保存します。 データ ファクトリを別の環境に昇格させる手法が 2 つ提案されています。
 
--    Data Factory と [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) の統合を利用した自動化されたデプロイ
+-    Data Factory と [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) の統合を利用した自動化されたデプロイ
 -    Data Factory UX と Azure Resource Manager の統合を利用した Resource Manager テンプレートの手動アップロード。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -41,9 +41,9 @@ Azure Repos Git で構成された Azure Data Factory での CI/CD のライフ�
 
 1.  開発者は変更を行う目的で[機能ブランチを作成](source-control.md#creating-feature-branches)します。 一番新しい変更を利用し、パイプライン実行をデバッグします。 パイプライン実行をデバッグする方法の詳細については、「[Azure Data Factory での反復開発とデバッグ](iterative-development-debugging.md)」を参照してください。
 
-1.  開発者は、変更の結果に問題がなければ、各自の機能ブランチからマスターまたはコラボレーション ブランチへの pull request を作成して、同僚が変更をレビューできるようにします。
+1.  開発者は、変更の結果に問題がなければ、各自の機能ブランチからメインまたはコラボレーション ブランチへのプル要求を作成して、同僚が変更をレビューできるようにします。
 
-1.  pull request が承認され、変更がマスター ブランチにマージされたら、変更が開発ファクトリに発行されます。
+1.  プル要求が承認され、変更がメイン ブランチにマージされたら、変更が開発ファクトリに発行されます。
 
 1.  チームは、変更をテストまたは UAT (ユーザー受け入れテスト) ファクトリにデプロイする準備ができたら、Azure Pipelines リリースに進み、望ましいバージョンの開発ファクトリを UAT にデプロイします。 このデプロイは Azure Pipelines タスクの一環として行われ、Resource Manager テンプレート パラメーターを使用し、適切な構成を適用します。
 
@@ -115,7 +115,7 @@ Azure Repos Git で構成された Azure Data Factory での CI/CD のライフ�
 
 1.  リリース パイプラインを保存します。
 
-1. リリースをトリガーするには、 **[Create release]\(リリースの作成\)** を選択します。 リリースの作成を自動化するには、[Azure DevOps のリリース トリガー](/azure/devops/pipelines/release/triggers?view=azure-devops)に関するページを参照してください。
+1. リリースをトリガーするには、 **[Create release]\(リリースの作成\)** を選択します。 リリースの作成を自動化するには、[Azure DevOps のリリース トリガー](/azure/devops/pipelines/release/triggers)に関するページを参照してください。
 
    ![[Create release]\(リリースの作成\) の選択](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -207,6 +207,12 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
 
 * 自動化された CI/CD を使用していて、Resource Manager のデプロイ中にいくつかのプロパティを変更したいが、プロパティが既定でパラメーター化されていない。
 * ファクトリが非常に大きく、既定の Resource Manager テンプレートが許容されるパラメーターの上限 (256) よりも多いために無効である。
+
+    カスタム パラメーターの 256 の上限に対処するには、次の 3 つのオプションがあります。    
+  
+    * カスタム パラメーター ファイルを使用してパラメーター化を必要としない (既定値を保持できる) プロパティを削除して、パラメーターの数を減らします。
+    * データフローのロジックをリファクタリングして、パラメーターを減らします。たとえば、パイプライン パラメーターの値がすべて同じである場合は、代わりにグローバル パラメーターを使用できます。
+    * 1 つのデータ ファクトリを複数のデータ フローに分割します。
 
 既定のパラメーター化テンプレートをオーバーライドするには、管理ハブにアクセスし、ソース管理セクションの **[パラメーター化テンプレート]** を選択します。 **[テンプレートの編集]** を選択して、パラメーター化テンプレート コード エディターを開きます。 
 
@@ -639,7 +645,7 @@ Git が構成されていない場合は、 **[ARM テンプレート]** 一覧�
 
 ## <a name="exposure-control-and-feature-flags"></a>露出調整と機能フラグ
 
-チームで作業しているときに、変更をマージする場合があるかもしれませんが、PROD や QA などより高度な環境では実行しないかもしれません。 このようなシナリオに対応するため、ADF チームでは、[機能フラグを使用する DevOps 構想](/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops)をお勧めしています。 ADF では、[グローバル パラメーター](author-global-parameters.md)と [If Condition アクティビティ](control-flow-if-condition-activity.md)を組み合わせて、これらの環境フラグに基づいてロジックのセットを非表示にすることができます。
+チームで作業しているときに、変更をマージする場合があるかもしれませんが、PROD や QA などより高度な環境では実行しないかもしれません。 このようなシナリオに対応するため、ADF チームでは、[機能フラグを使用する DevOps 構想](/azure/devops/migrate/phase-features-with-feature-flags)をお勧めしています。 ADF では、[グローバル パラメーター](author-global-parameters.md)と [If Condition アクティビティ](control-flow-if-condition-activity.md)を組み合わせて、これらの環境フラグに基づいてロジックのセットを非表示にすることができます。
 
 機能フラグを設定する方法については、次のビデオ チュートリアルをご覧ください。
 

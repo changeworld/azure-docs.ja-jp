@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 35c1ffb370a158acc91e2378119055337e28580d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 2af79efa2bd1685d0e7bd621e2ddb8930425dee1
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443094"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614899"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Web API を呼び出すモバイル アプリを登録する
 
@@ -81,7 +81,12 @@ B2C の機関およびポリシーを渡すソーシャル ID を使用してユ
 
 アプリでユーザー名とパスワード認証のみを使用する場合は、アプリケーションのリダイレクト URI を登録する必要はありません。 このフローは、Microsoft ID プラットフォーム バージョン 2.0 エンドポイントへのラウンドトリップを実行します。 アプリケーションが特定の URI でコールバックされることはありません。
 
-ただし、アプリケーションをパブリック クライアント アプリケーションとして識別する必要があります。 これを行うには、アプリケーションの **[認証]** セクションから開始します。 **[詳細設定]** サブセクションの **[既定のクライアントの種類]** 段落で、 **[アプリケーションは、パブリック クライアントとして扱います]** の質問に対して **[はい]** を選択します。
+ただし、アプリケーションをパブリック クライアント アプリケーションとして識別する必要があります。 そのためには次を行います。
+
+1. 引き続き [Azure portal](https://portal.azure.com) の **[アプリの登録]** でアプリを選択し、 **[認証]** を選択します。
+1. **[詳細設定]**  >  **[Allow public client flows]\(パブリック クライアント フローを許可する\)**  >  **[Enable the following mobile and desktop flows:]\(次のモバイルとデスクトップのフローを有効にする\)** で **[はい]** を選択します。
+
+   :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Azure portal の [認証] ウィンドウでパブリック クライアント設定を有効にする":::
 
 ## <a name="api-permissions"></a>API のアクセス許可
 

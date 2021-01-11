@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 54d1d8a29c87f8d129c0ea5b29973c4fef0e6f7a
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 2d9d511098613ddc5bf3579a42b7abe91f51e1a4
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888999"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694317"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Azure CLI 2.0 を使用して Log Analytics ワークスペースを作成する
 
@@ -35,7 +35,7 @@ Azure CLI 2.0 は、コマンド ラインやスクリプトで Azure リソー�
 - この記事では、Azure CLI のバージョン 2.0.30 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
-[az group deployment create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) を使用してワークスペースを作成します。 次の例では、ローカル コンピューターから Resource Manager テンプレートを使用して、*eastus* の場所にワークスペースを作成します。 JSON テンプレートは、ワークスペースの名前の入力だけをユーザーに求め、環境の標準構成として使用される可能性のある他のパラメーターには既定値を指定するように構成されています。 または、組織内の共有アクセス用に Azure ストレージ アカウントにテンプレートを格納することができます。 テンプレートを操作する方法の詳細については、「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)」を参照してください
+[az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) を使用してワークスペースを作成します。 次の例では、ローカル コンピューターから Resource Manager テンプレートを使用して、*eastus* の場所にワークスペースを作成します。 JSON テンプレートは、ワークスペースの名前の入力だけをユーザーに求め、環境の標準構成として使用される可能性のある他のパラメーターには既定値を指定するように構成されています。 または、組織内の共有アクセス用に Azure ストレージ アカウントにテンプレートを格納することができます。 テンプレートを操作する方法の詳細については、「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../../azure-resource-manager/templates/deploy-cli.md)」を参照してください
 
 サポートされているリージョンについては、[Log Analytics を使用できるリージョン](https://azure.microsoft.com/regions/services/)に関するページを参照し、 **[製品を検索する]** フィールドから Azure Monitor を検索してください。
 
@@ -111,7 +111,7 @@ Azure CLI 2.0 は、コマンド ラインやスクリプトで Azure リソー�
 4. これでこのテンプレートをデプロイする準備が整いました。 テンプレートがあるフォルダーから以下のコマンドを使用します。 ワークスペース名の入力を求められたら、すべての Azure サブスクリプションでグローバルに一意の名前を指定します。
 
     ```azurecli
-    az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
+    az deployment group create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
     ```
 
 デプロイが完了するまでに数分かかる場合があります。 完了すると、次のような結果を含むメッセージが表示されます。

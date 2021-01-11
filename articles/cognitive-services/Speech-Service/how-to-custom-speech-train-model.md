@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 130cd643856b38471eac6d6869cdc1ed8b0bcd2e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5a912790b4a7a86c44576b98ce7e95f44b810c9e
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499154"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857377"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Custom Speech モデルのトレーニングとデプロイ
 
@@ -67,7 +67,7 @@ Custom Speech モデルの精度の評価と向上については、[方法](how
 
 ## <a name="view-logging-data"></a>ログ データを表示する
 
-ログ データは **[エンドポイント]**  >  **[詳細]** からダウンロードできます。
+**[デプロイ]** の下でエンドポイントのページに移動すると、ログ データをエクスポートできます。
 > [!NOTE]
 >ログ データは、Microsoft が所有するストレージで 30 日間使用できます。 その後、削除されます。 お客様が所有するストレージ アカウントが Cognitive Services サブスクリプションにリンクされている場合は、ログ データは自動的に削除されません。
 

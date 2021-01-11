@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/22/2020
+ms.date: 12/16/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b84d24174771e8395677874c9dac863fa6f27a54
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a3a4c7a51f0d75b67465a83a2fbbf3ae8a141c4c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185914"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671167"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -78,7 +78,7 @@ Log Analytics の課金は Azure の課金内容に加えられます。 Azure P
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>ご自分の Azure 請求書での Log Analytics の使用状況の表示 
 
-Azure では、[Azure Cost Management と課金](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json)ハブに便利な機能が多数用意されています。 たとえば、"コスト分析" 機能を使用すると、Azure リソースに対するご自分の支出を表示できます。 まず、"リソースの種類" によるフィルターを追加します (Log Analytics の場合は microsoft.operationalinsights/workspace、Log Analytics クラスターの場合は microsoft.operationalinsights/workspace)。これにより、Log Analytics の支出を追跡できます。 次に、[グループ化] で [測定カテゴリ] または [測定] を選択します。  Azure Security Center や Azure Sentinel などの他のサービスも、Log Analytics ワークスペース リソースに対して使用量の請求を行うことに注意してください。 サービス名へのマッピングを表示するには、グラフの代わりにテーブル ビューを選択できます。 
+Azure では、[Azure Cost Management と課金](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json)ハブに便利な機能が多数用意されています。 たとえば、"コスト分析" 機能を使用すると、Azure リソースに対するご自分の支出を表示できます。 まず、"リソースの種類" によるフィルターを追加します (Log Analytics の場合は microsoft.operationalinsights/workspace、Log Analytics クラスターの場合は microsoft.operationalinsights/cluster)。これにより、Log Analytics の支出を追跡できます。 次に、[グループ化] で [測定カテゴリ] または [測定] を選択します。  Azure Security Center や Azure Sentinel などの他のサービスも、Log Analytics ワークスペース リソースに対して使用量の請求を行うことに注意してください。 サービス名へのマッピングを表示するには、グラフの代わりにテーブル ビューを選択できます。 
 
 [Azure portal から使用状況をダウンロード](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)することで、使用状況をさらに詳しく理解できます。 ダウンロードしたスプレッドシートでは、Azure リソースごとに (たとえば、Log Analytics ワークスペース)、1 日あたりの使用量を確認することができます。 この Excel スプレッドシートでは、ご利用の Log Analytics ワークスペースからの使用状況を検索することができます。それには、まず、"測定カテゴリ" 列でフィルター処理を行って "Log Analytics"、"洞察と分析" (従来の価格レベルの一部で使用)、および "Azure Monitor" (容量予約の価格レベルで使用) を表示し、次に "インスタンス ID" 列に対するフィルター "contains workspace" または "contains cluster" (後者の場合は、Log Analytics クラスターの使用量を含めます) を追加します。 使用量は "消費量" 列に表示され、各エントリの単位は "測定単位" 列に表示されます。  詳細については、「[Microsoft Azure の課金内容を確認する](../../cost-management-billing/understand/review-individual-bill.md)」を参照してください。 
 
@@ -216,7 +216,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 > 特にワークスペース上で大量のデータを受信している場合には、日次上限によって、指定された上限レベルで厳密にデータ収集を停止することはできず、一部のデータが超過することが予想されます。 日次上限の動作を確認する際に役立つクエリについては、[下記](#view-the-effect-of-the-daily-cap)を参照してください。 
 
 > [!WARNING]
-> 2017 年 6 月 19 日より前にインストールされた Azure Security Center のワークスペースを除き、日次上限によって Azure Sentinal または Azure Security Center からのデータ収集が停止されることはありません。 
+> 日次上限によって、[Azure Security Center の日単位のノードごとの許容量](#log-analytics-and-security-center)に含まれるデータの種類 (WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、WindowsFirewall、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus、Update および UpdateSummary) の収集が停止することはありません。ただし、2017 年 6 月 19 日より前に Azure Security Center がインストールされたワークスペースは除きます。 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>定義する日次データ制限を明らかにする
 
@@ -266,7 +266,7 @@ Usage
 - アラート ルール名: 1 日のデータ制限に達しました
 - 重大度: 警告 (重大度 1)
 
-アラートを定義した後で制限に達すると、アラートがトリガーされ、アクション グループで定義されている応答が実行されます。 メールおよびテキスト メッセージでチームに通知したり、webhook、Automation Runbook、または[外部の ITSM ソリューションとの統合](itsmc-overview.md#create-itsm-work-items-from-azure-alerts)を使ってアクションを自動化したりできます。 
+アラートを定義した後で制限に達すると、アラートがトリガーされ、アクション グループで定義されている応答が実行されます。 メールおよびテキスト メッセージでチームに通知したり、webhook、Automation Runbook、または[外部の ITSM ソリューションとの統合](itsmc-definition.md#create-itsm-work-items-from-azure-alerts)を使ってアクションを自動化したりできます。 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>使用量が予想よりも多い理由のトラブルシューティング
 

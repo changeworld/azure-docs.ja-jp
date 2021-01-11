@@ -3,12 +3,12 @@ title: PowerShell を使用して Azure VM をバックアップおよび復元�
 description: PowerShell を使用して Azure Backup によって Azure VM をバックアップおよび復旧する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ded2bc8a71bf564e31f40ca9f0d6c8049188768b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 610049ec14243abb296aef431eb37533c6169817
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95978371"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797062"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップおよび復元する
 
@@ -259,6 +259,8 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 > Azure Government クラウドを使用している場合は、[Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) コマンドレットの **ServicePrincipalName** パラメーターで、値 `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` を使用します。
 >
 
+[こちらのシナリオ](selective-disk-backup-restore.md#scenarios)に記載されているように、いくつかのディスクを選択的にバックアップし、他のディスクを除外する場合は、[こちら](selective-disk-backup-restore.md#enable-backup-with-powershell)に記載された要領で保護を構成し、関連するディスクのみをバックアップすることができます。
+
 ## <a name="monitoring-a-backup-job"></a>バックアップ ジョブの監視
 
 Azure ポータルを使用せず、バックアップ ジョブなどの実行時間の長い操作を監視できます。 進行中のジョブの状態を取得するには、[Get-AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) コマンドレットを使用します。 このコマンドレットは、特定のコンテナーのバックアップ ジョブを取得し、そのコンテナーはコンテナーのコンテキストで指定されます。 次の例では、配列として進行中のジョブの状態を取得し、状態を $joblist 変数に格納します。
@@ -338,6 +340,10 @@ $bkpPol.AzureBackupRGName="Contosto_"
 $bkpPol.AzureBackupRGNameSuffix="ForVMs"
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
+
+### <a name="exclude-disks-for-a-protected-vm"></a>保護された VM のディスクを除外する
+
+Azure VM バックアップでは、ディスクを選択的に除外または含める機能が提供されます (この機能は[これらのシナリオ](selective-disk-backup-restore.md#scenarios)で役立ちます)。 仮想マシンが既に Azure VM バックアップによって保護されていて、すべてのディスクがバックアップされている場合は、[こちら](selective-disk-backup-restore.md#modify-protection-for-already-backed-up-vms-with-powershell)に記載されているように、保護を変更してディスクを選択的に追加または除外することができます。
 
 ### <a name="trigger-a-backup"></a>バックアップをトリガーする
 
@@ -511,6 +517,13 @@ Wait-AzRecoveryServicesBackupJob -Job $restorejob -Timeout 43200
 $restorejob = Get-AzRecoveryServicesBackupJob -Job $restorejob -VaultId $targetVault.ID
 $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $targetVault.ID
 ```
+
+#### <a name="restore-selective-disks"></a>選択的なディスクの復元
+
+ユーザーは、バックアップ セット全体ではなく、いくつかのディスクを選択的に復元できます。 [こちら](selective-disk-backup-restore.md#restore-selective-disks-with-powershell)に記載されているように、必要なディスク LUN をパラメーターとして指定し、セット全体ではなく、それらのディスクのみを復元します。
+
+> [!IMPORTANT]
+> ディスクを選択的に復元するには、ディスクを選択的にバックアップする必要があります。 詳細については、[こちら](selective-disk-backup-restore.md#selective-disk-restore)をご覧ください。
 
 ディスクを復元したら、次のセクションに移動して VM を作成します。
 

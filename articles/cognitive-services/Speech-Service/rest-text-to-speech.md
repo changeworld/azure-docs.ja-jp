@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 77a8321ba8bac0ecaf577bce6c3c05d10508128e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: references_regions
+ms.openlocfilehash: bfdea5f2e2bd20a35ee948e99b3be9bf55038b13
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96020162"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760658"
 ---
 # <a name="text-to-speech-rest-api"></a>Text to Speech REST API
 
@@ -34,7 +35,7 @@ Text to Speech REST API ではニューラルと標準のテキスト読み上�
 * Text to Speech REST API には、Authorization ヘッダーが必要です。 つまり、このサービスにアクセスするためには、トークンの交換が済んでいる必要があります。 詳細については、[認証](#authentication)に関するページをご覧ください。
 
 > [!TIP]
-> Government クラウド (FairFax) エンドポイントについては、Azure Government の[ドキュメント](../../azure-government/compare-azure-government-global-azure.md)を参照してください。
+> Government クラウド (FairFax) エンドポイントについては、[Azure Government のドキュメント](/azure/azure-government/compare-azure-government-global-azure)を参照してください。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -65,6 +66,9 @@ Text to Speech REST API ではニューラルと標準のテキスト読み上�
 | 西ヨーロッパ | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 米国西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 米国西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+
+> [!TIP]
+> [プレビュー段階の音声](language-support.md#neural-voices-in-preview)は 3 つのリージョン (米国東部、西ヨーロッパ、東南アジア) でのみ使用できます。
 
 ### <a name="request-headers"></a>要求ヘッダー
 
@@ -98,46 +102,78 @@ Authorization: Bearer [Base64 access_token]
 
 ```json
 [
+  {
+    "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
+    "DisplayName": "Hoda",
+    "LocalName": "هدى",
+    "ShortName": "ar-EG-Hoda",
+    "Gender": "Female",
+    "Locale": "ar-EG",
+    "SampleRateHertz": "16000",
+    "VoiceType": "Standard",
+    "Status": "GA"
+  },
+
+...
+      
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
-        "ShortName": "ar-EG-Hoda",
-        "Gender": "Female",
-        "Locale": "ar-EG",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)",
-        "ShortName": "ar-SA-Naayf",
-        "Gender": "Male",
-        "Locale": "ar-SA",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)",
-        "ShortName": "bg-BG-Ivan",
-        "Gender": "Male",
-        "Locale": "bg-BG",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)",
-        "ShortName": "ca-ES-HerenaRUS",
-        "Gender": "Female",
-        "Locale": "ca-ES",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)",
-        "ShortName": "zh-CN-XiaoxiaoNeural",
-        "Gender": "Female",
-        "Locale": "zh-CN",
-        "SampleRateHertz": "24000",
-        "VoiceType": "Neural"
-    },
+    "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)",
+    "DisplayName": "Aria",
+    "LocalName": "Aria",
+    "ShortName": "en-US-AriaNeural",
+    "Gender": "Female",
+    "Locale": "en-US",
+    "StyleList": [
+      "chat",
+      "customerservice",
+      "newscast-casual",
+      "newscast-formal",
+      "cheerful",
+      "empathetic"
+    ],
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "GA"
+  },
+  
+  ...
+    
+     {
+    "Name": "Microsoft Server Speech Text to Speech Voice (ga-IE, OrlaNeural)",
+    "DisplayName": "Orla",
+    "LocalName": "Orla",
+    "ShortName": "ga-IE-OrlaNeural",
+    "Gender": "Female",
+    "Locale": "ga-IE",
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "Preview"
+  },
+  
+  ...
+    
+   {
+    "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, YunxiNeural)",
+    "DisplayName": "Yunxi",
+    "LocalName": "云希",
+    "ShortName": "zh-CN-YunxiNeural",
+    "Gender": "Male",
+    "Locale": "zh-CN",
+    "StyleList": [
+      "Calm",
+      "Fearful",
+      "Cheerful",
+      "Disgruntled",
+      "Serious",
+      "Angry",
+      "Sad",
+      "Depressed",
+      "Embarrassed"
+    ],
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "Preview"
+  },
 
     ...
 ]
@@ -208,23 +244,17 @@ audio-24khz-48kbitrate-mono-mp3     ogg-24khz-16bit-mono-opus
 ```http
 POST /cognitiveservices/v1 HTTP/1.1
 
-X-Microsoft-OutputFormat: raw-16khz-16bit-mono-pcm
+X-Microsoft-OutputFormat: raw-24khz-16bit-mono-pcm
 Content-Type: application/ssml+xml
 Host: westus.tts.speech.microsoft.com
 Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
 <speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
-    name='en-US-AriaRUS'>
+    name='en-US-AriaNeural'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
 ```
-
-言語固有の例については、クイック スタートを参照してください。
-
-* [.NET Core、C#](./get-started-text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
-* [Python](./get-started-text-to-speech.md?pivots=programming-language-python)
-* [Node.js](./get-started-text-to-speech.md)
 
 ### <a name="http-status-codes"></a>HTTP 状態コード
 
@@ -235,7 +265,6 @@ Authorization: Bearer [Base64 access_token]
 | 200 | [OK] | 要求は成功しました。応答本文はオーディオ ファイルです。 |
 | 400 | 正しくない要求 | 必須パラメーターが指定されていない、空、または null です。 または、必須またはオプションのパラメーターに渡された値が無効です。 よくある問題はヘッダーが長すぎることです。 |
 | 401 | 権限がありません | 要求が承認されていません。 サブスクリプション キーまたはトークンが有効であり、正しいリージョンにあることを確認してください。 |
-| 413 | 要求のエンティティが大きすぎます | SSML 入力が 1024 文字を超えています |
 | 415 | サポートされていないメディアの種類です | 間違った `Content-Type` が提供された可能性があります。 `Content-Type` は `application/ssml+xml` に設定する必要があります。 |
 | 429 | 要求が多すぎます | 使用中のサブスクリプションで許可されている要求のクォータまたは速度を超えています。 |
 | 502 | 無効なゲートウェイ    | ネットワークまたはサーバー側の問題です。 無効なヘッダーを示す場合もあります。 |
@@ -245,5 +274,5 @@ HTTP ステータスが `200 OK` の場合、応答の本文には要求され�
 ## <a name="next-steps"></a>次のステップ
 
 - [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
-- [長い形式の音声の非同期合成](./long-audio-api.md)
+- [長い形式の音声の非同期合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 - [カスタム音声の概要](how-to-custom-voice.md)

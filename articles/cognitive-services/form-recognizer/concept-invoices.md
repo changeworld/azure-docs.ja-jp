@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 9a3a6bd6489baea90ed4143b42a09e7d697bbc50
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7acfa9c2ffdd4cdd62e965041cdc42dc44d469c5
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602446"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845569"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Form Recognizer の事前構築済み請求書モデル
 
@@ -107,8 +107,8 @@ JSON 出力には次の 3 つの部分があります。
 ## <a name="next-steps"></a>次のステップ
 
 - [Form Recognizer サンプル UI](https://fott-preview.azurewebsites.net/) で、独自の請求書とサンプルを試してみてください。
-- 選択した言語で Form Recognizer を使用して請求書処理アプリの作成を始めるには、[Form Recognizer クライアント ライブラリのクイックスタート](quickstarts/client-library.md)を完了します。
-- または、[請求書データ抽出](./quickstarts/python-invoices.md)のクイックスタートに従い、Python と REST API を使用して請求書データ抽出を実装します。
+- 選択した言語で Form Recognizer を使用して請求書処理アプリの作成を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md)を完了します。
+
 ## <a name="see-also"></a>関連項目
 
 * [Form Recognizer とは](./overview.md)

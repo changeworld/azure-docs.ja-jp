@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2020
+ms.date: 12/23/2020
 ms.author: memildin
-ms.openlocfilehash: 07a94685fb3655aa5aa21a8658b9d975c764daff
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 3899b00038f3c12add4dbf49a7f05e07141d8606
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512280"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755856"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender for SQL servers on machines 
 
@@ -108,7 +108,7 @@ ms.locfileid: "96512280"
     各ビューでは、セキュリティ チェックが **重要度** 順に表示されます。 特定のセキュリティ チェックをクリックすると詳細ウィンドウが表示され、**説明**、**修復方法**、およびその他の関連情報 (**影響** や **ベンチマーク** など) が表示されます。
 
 ## <a name="azure-defender-for-sql-alerts"></a>Azure Defender for SQL のアラート
-普段は見られない、潜在的に有害な SQL マシンへのアクセスが試行されると、あるいは SQL マシンの悪用が試行されると、アラートが生成されます。 これらのイベントが発生すると、[アラート リファレンス ページの「SQL Database および Azure Synapse Analytics のアラート」セクション](alerts-reference.md#alerts-sql-db-and-warehouse)で示されるアラートがトリガーされます。
+普段は見られない、潜在的に有害な SQL マシンへのアクセスが試行されると、あるいは SQL マシンの悪用が試行されると、アラートが生成されます。 これらのイベントにより、[アラートのリファレンス ページ](alerts-reference.md#alerts-sql-db-and-warehouse)に記載されているアラートがトリガーされる場合があります。
 
 ## <a name="explore-and-investigate-security-alerts"></a>セキュリティ通知について調査する
 
@@ -131,4 +131,3 @@ Azure Defender for SQL のアラートは、Security Center のアラート ペ�
 - [SQL Database と Azure Synapse Analytics のセキュリティ アラート](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [セキュリティ アラートのメール通知を設定する](security-center-provide-security-contact-details.md)
 - [Azure Sentinel に関する詳細](../sentinel/index.yml)
-- [Azure Security Center のデータ セキュリティ パッケージ](../azure-sql/database/azure-defender-for-sql.md)

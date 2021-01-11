@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: cfbbc1d218f590241fab804e389acd689c009dac
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 2be77a47c4b111dd2f25a8fc9ca35690d1b2d80c
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754013"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796756"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>物理サーバーの評価のサポート マトリックス 
 
@@ -67,7 +67,7 @@ Azure Government で、[このスクリプトを使用して](deploy-appliance-s
 **[デバイス]** | **接続**
 --- | ---
 **アプライアンス** | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/><br/> ポート 44368 で、次の URL を使用してアプライアンス管理アプリにリモートでアクセスするためのインバウンド接続: ``` https://<appliance-ip-or-name>:44368 ```<br/><br/> ポート 443 (HTTPS) で検出とパフォーマンスのメタデータを Azure Migrate に送信するためのアウトバウンド接続。
-**物理サーバー** | **Windows:** WinRM ポート 5985 (HTTP) で Windows サーバーから構成とパフォーマンスのメタデータをプルするためのインバウンド接続。 <br/><br/> **Linux:** ポート 22 (TCP) で Linux サーバーから構成とパフォーマンスのメタデータをプルするための受信接続。 |
+**物理サーバー** | **Windows:** WinRM ポート 5985 (HTTP) または 5986 (HTTPS) で Windows サーバーから構成とパフォーマンスのメタデータをプルするためのインバウンド接続。 <br/><br/> **Linux:** ポート 22 (TCP) で Linux サーバーから構成とパフォーマンスのメタデータをプルするための受信接続。 |
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>エージェント ベースの依存関係の分析の要件
 

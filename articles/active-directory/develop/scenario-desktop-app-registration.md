@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 787380dbf6f739d4b88f18a836da2146b06024c3
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 7c0623d58bf88b8bcc5f19665a081ce012b560b6
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443145"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614875"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API を呼び出すデスクトップ アプリ:アプリの登録
 
@@ -49,7 +49,7 @@ ms.locfileid: "94443145"
 - [デバイス コード フロー](scenario-desktop-acquire-token.md#device-code-flow)、[統合 Windows 認証](scenario-desktop-acquire-token.md#integrated-windows-authentication)、[ユーザー名とパスワード](scenario-desktop-acquire-token.md#username-and-password)を、リダイレクト URI を必要としない[デーモン アプリケーション](scenario-daemon-overview.md)で使用されるクライアント資格証明フローを使用する機密クライアント アプリケーションと区別するには、そのアプリケーションをパブリック クライアント アプリケーションとして構成する必要があります。 この構成を実現するには:
 
     1. [Azure portal](https://portal.azure.com) の **[アプリの登録]** でアプリを選択し、 **[認証]** を選択します。
-    1. **[詳細設定]**  >  **[既定のクライアントの種類]**  >  **[アプリケーションは、パブリック クライアントとして扱います]** で、 **[はい]** を選択します。
+    1. **[詳細設定]**  >  **[Allow public client flows]\(パブリック クライアント フローを許可する\)**  >  **[Enable the following mobile and desktop flows:]\(次のモバイルとデスクトップのフローを有効にする\)** で **[はい]** を選択します。
 
         :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Azure portal の [認証] ウィンドウでパブリック クライアント設定を有効にする":::
 

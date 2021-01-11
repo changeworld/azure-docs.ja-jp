@@ -443,7 +443,7 @@
     - name: 課金モデル
       href: billing.md
     - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
+      href: /samples/browse/?terms=b2c
     - name: Cookie の定義
       href: cookie-definitions.md
       displayName: 'cookies, SameSite'

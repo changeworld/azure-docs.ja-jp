@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 439714f8fe4a6373f2ffce80e744802dd19b67f0
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: ab9e2a5483f0699ad7bfca991539025adff34b11
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928785"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606914"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS クラスターの構成
 
@@ -173,7 +173,7 @@ Moby (Docker) ランタイムを使用してノード プールを作成する�
 * Docker エンジン (`/var/run/docker.sock`) にアクセスすることも、Docker-in-Docker (DinD) を使用することもできなくなります。
   * 現在、アプリケーション ログや監視データを Docker エンジンから抽出している場合は、代わりに [Azure Monitor for Containers](../azure-monitor/insights/container-insights-enable-new-cluster.md) などを使用してください。 さらに、AKS では、不安定になる可能性のある、エージェント ノードでの帯域外コマンドの実行はサポートされていません。
   * Moby (Docker) を使用している場合でも、上記の方法でイメージをビルドしたり、Docker エンジンを直接利用したりすることは極力避けてください。 Kubernetes では、使用されたリソースが完全に認識されるわけではなく、これらの方法では、たとえば[こちら](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/)と[こちら](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/)で詳述されている多くの問題が生じます。
-* イメージのビルド - イメージをビルドする際に推奨される方法は、[ACR タスク](../container-registry/container-registry-quickstart-task-cli.md)を使用することです。 別の方法として、[docker buildx](https://github.com/docker/buildx) などのより安全なクラスター内オプションを使用します。
+* イメージの構築 - AKS クラスター内でイメージを構築する場合を除き、現在の Docker ビルド ワークフローを通常どおりに引き続き使用できます。 この場合は、[ACR タスク](../container-registry/container-registry-quickstart-task-cli.md)を使用してイメージを構築するための推奨される方法に切り替えるか、[docker buildx](https://github.com/docker/buildx) のようなより安全なクラスター内オプションを選択することを検討してください。
 
 ## <a name="generation-2-virtual-machines-preview"></a>第 2 世代仮想マシン (プレビュー)
 

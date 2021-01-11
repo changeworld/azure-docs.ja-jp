@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 94c926c555a4bc96ac3c6fbe773650e16554bcf2
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: d04fa25b9c953d151fc16d11f304c48b7046ab76
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315704"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680401"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Azure Monitor エージェント用のデータ収集の構成 (プレビュー)
 
@@ -35,6 +35,9 @@ DCR を仮想マシンに適用するには、仮想マシンの関連付けを�
 
 Azure portal を使用してデータ収集ルールを作成し、サブスクリプション内の仮想マシンをそのルールに関連付けることができます。 Azure Monitor エージェントは自動的にインストールされ、まだそれがインストールされていないすべての仮想マシンに対して、マネージド ID が作成されます。
 
+> [!IMPORTANT]
+> 現在、既知の問題があります。既にユーザーが割り当てたマネージド ID が設定されている仮想マシンで、データ収集ルールによってマネージド ID が作成された場合、ユーザーが割り当てた ID が無効になります。
+
 Azure portal の **[Azure Monitor]** メニューで、 **[設定]** セクションから **[データ収集ルール]** を選択します。 **[追加]** をクリックして、新しいデータ収集ルールと割り当てを追加します。
 
 [![データ収集ルール](media/azure-monitor-agent/data-collection-rules.png)](media/azure-monitor-agent/data-collection-rules.png#lightbox)
@@ -52,7 +55,7 @@ Azure portal の **[Azure Monitor]** メニューで、 **[設定]** セクシ�
 [![データ ソースの基本](media/azure-monitor-agent/data-collection-rule-data-source-basic.png)](media/azure-monitor-agent/data-collection-rule-data-source-basic.png#lightbox)
 
 
-他のログとパフォーマンス カウンターを指定するには、 **[カスタム]** を選択します。 それにより、収集する特定の値の [XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) を指定できます。 例については、[サンプル DCR](data-collection-rule-overview.md#sample-data-collection-rule) を参照してください。
+[現在サポートされているデータ ソース](azure-monitor-agent-overview.md#data-sources-and-destinations)のその他のログとパフォーマンス カウンターを指定する、または XPath クエリを使用してイベントをフィルター処理するには、 **[カスタム]** を選択します。 それにより、収集する特定の値の [XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) を指定できます。 例については、[サンプル DCR](data-collection-rule-overview.md#sample-data-collection-rule) を参照してください。
 
 [![データ ソース カスタム](media/azure-monitor-agent/data-collection-rule-data-source-custom.png)](media/azure-monitor-agent/data-collection-rule-data-source-custom.png#lightbox)
 

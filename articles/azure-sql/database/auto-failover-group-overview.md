@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 11/16/2020
-ms.openlocfilehash: 0d2248b9c0a289f5e4f9f2f8e987365ab58c49c0
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/26/2020
+ms.openlocfilehash: 91375f4460b55617ace0b18b60d59d961a762f4c
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988546"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792502"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -229,7 +229,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.dat
 
 ### <a name="creating-the-secondary-instance"></a>セカンダリ インスタンスを作成する
 
-フェールオーバー後にプライマリ SQL Managed Instance に中断することなく確実に接続するには、プライマリとセカンダリの両方のインスタンスが同じ DNS ゾーンにある必要があります。 それにより、フェールオーバー グループに属する 2 つのインスタンスのいずれかに対してクライアント接続を認証する目的で同じマルチドメイン (SAN) 証明書を利用できます。 アプリケーションを運用環境にデプロイする準備ができたら、別のリージョンでセカンダリ SQL Managed Instance を作成し、プライマリ SQL Managed Instance と DNS ゾーンを共有していることを確認します。 これは、Azure portal、PowerShell、または REST API を使用して、省略可能な `DNS Zone Partner` パラメーターを指定することで実行できます。
+フェールオーバー後にプライマリ SQL Managed Instance に中断することなく確実に接続するには、プライマリとセカンダリの両方のインスタンスが同じ DNS ゾーンにある必要があります。 それにより、フェールオーバー グループに属する 2 つのインスタンスのいずれかに対してクライアント接続を認証する目的で同じマルチドメイン (SAN) 証明書を利用できます。 アプリケーションを運用環境にデプロイする準備ができたら、別のリージョンでセカンダリ SQL Managed Instance を作成し、プライマリ SQL Managed Instance と DNS ゾーンを共有していることを確認します。 これを行うには、作成時に省略可能なパラメーターを指定します。 PowerShell または REST API を使用している場合、省略可能なパラメーターの名前は `DNS Zone Partner`、Azure portal 内の対応する省略可能フィールドの名前は Primary Managed Instance になります。
 
 > [!IMPORTANT]
 > サブネットに作成された最初のマネージド インスタンスにより、同じサブネット内のそれ以降のすべてのインスタンスに対する DNS ゾーンが決まります。 つまり、同じサブネットの 2 つのインスタンスが異なる DNS ゾーンに属することはできません。

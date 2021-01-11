@@ -7,12 +7,12 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 51bd073b6f84f3378b91091e04f2f278ea2f49b6
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ddb8027c145f6a38bfcd953be66dae2943a20c3a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495271"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654610"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>IoT プラグ アンド プレイのデジタル ツインを管理する
 
@@ -26,7 +26,7 @@ IoT プラグ アンド プレイ デバイスは、[Digital Twins Definition La
 
 この記事の例として使用されている IoT プラグ アンド プレイ デバイスには、[Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) コンポーネントを持つ [Temperature Controller モデル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)が実装されています。
 
-次のスニペットは、JSON オブジェクトとしてフォーマットされた、**デジタル ツインの取得** 要求に対する応答を示しています。 デジタル ツインの形式の詳細については、「[IoT プラグ アンド プレイのデジタル ツインを理解する](./concepts-digital-twin.md#digital-twin-json-format)」を参照してください。
+次のスニペットは、JSON オブジェクトとしてフォーマットされた、**デジタル ツインの取得** 要求に対する応答を示しています。 デジタル ツインの形式の詳細については、「[IoT プラグ アンド プレイのデジタル ツインを理解する](./concepts-digital-twin.md#digital-twin-example)」を参照してください。
 
 ```json
 {
