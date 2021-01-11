@@ -1,5 +1,5 @@
 ---
-title: コンピューティング先とは
+title: コンピューティング ターゲットとは
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning を使用してモデルをトレーニングまたはデプロイする場所を定義します。
 services: machine-learning
@@ -16,7 +16,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/12/2020
 ms.locfileid: "88141927"
 ---
-#  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング先とは 
+#  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング ターゲットとは 
 
 **コンピューティング ターゲット**とは、トレーニング スクリプトを実行したり、サービスのデプロイをホストしたりする、指定されたコンピューティング リソース/環境のことです。 この場所は、ローカル コンピューターでも、クラウドベースのコンピューティング リソースでもかまいません。 コンピューティング ターゲットを使用すると、コードを変更しなくても、後でコンピューティング環境を容易に変更できます。  
 

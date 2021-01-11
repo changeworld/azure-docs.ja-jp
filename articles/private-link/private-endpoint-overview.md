@@ -47,7 +47,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
  
 - 同じ仮想ネットワーク内の同じサブネットまたは異なるサブネットに複数のプライベート エンドポイントを作成できます。 サブスクリプションに作成できるプライベート エンドポイントの数には制限があります。 詳細については、 [Azure の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)に関する記事を参照してください。
 
-- プライベート リンク リソースからのサブスクリプションも、Micosoft.Network リソース プロバイダーに登録されている必要があります。 詳細については、 [Azure リソース プロバイダー](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)に関する記事を参照してください。
+- プライベート リンク リソースからのサブスクリプションも、Microsoft.Network リソース プロバイダーに登録されている必要があります。 詳細については、 [Azure リソース プロバイダー](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)に関する記事を参照してください。
 
  
 ## <a name="private-link-resource"></a>プライベート リンク リソース 

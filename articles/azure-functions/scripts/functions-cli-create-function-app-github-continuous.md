@@ -1,6 +1,6 @@
 ---
-title: GitHub デプロイを使用して関数アプリを作成する - Azure CLI
-description: Azure Functions を使用して、関数アプリを作成し、GitHub リポジトリから関数コードをデプロイします。
+title: GitHub デプロイを使用して Function App を作成する - Azure CLI
+description: Azure Functions を使用して、Function App を作成し、GitHub リポジトリから関数コードをデプロイします。
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
@@ -11,9 +11,9 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 07/31/2020
 ms.locfileid: "87498523"
 ---
-# <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>GitHub からデプロイされる関数アプリを Azure で作成する
+# <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>GitHub からデプロイされる Function App を Azure で作成する
 
-この Azure Functions のサンプル スクリプトでは、[従量課金プラン](../functions-scale.md#consumption-plan)を使用して、関数アプリと関連リソースが作成されます。 また、GitHub レポジトリから継続的にデプロイされるように関数コードを構成します。 
+この Azure Functions のサンプル スクリプトでは、[従量課金プラン](../functions-scale.md#consumption-plan)を使用して、Function App と関連リソースが作成されます。 また、GitHub レポジトリから継続的にデプロイされるように関数コードを構成します。 
 
 このサンプルでは、以下が必要です。
 
@@ -41,8 +41,8 @@ Azure CLI をローカルで使用する場合は、バージョン 2.0 以降�
 | command | メモ |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 関数アプリに必要なストレージ アカウントを作成します。 |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | サーバーレスの[従量課金プラン](../functions-scale.md#consumption-plan)で関数アプリを作成し、Git リポジトリまたは Mercurial リポジトリにそれを関連付けます。 |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Function App に必要なストレージ アカウントを作成します。 |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | サーバーレスの[従量課金プラン](../functions-scale.md#consumption-plan)で Function App を作成し、Git リポジトリまたは Mercurial リポジトリにそれを関連付けます。 |
 
 ## <a name="next-steps"></a>次のステップ
 
