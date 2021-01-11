@@ -19,7 +19,7 @@ ms.locfileid: "88166775"
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning 環境とは?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning 環境は、機械学習トレーニングが行われる環境をカプセル化したものです。 そこでは、トレーニングとスコアリングのスクリプトに関連する、Python パッケージ、環境変数、およびソフトウェア設定を指定します。 また、実行時間 (Python、Spark、または Docker) も指定します。 環境は、Machine Learning ワークスペース内で管理およびバージョン管理されるエンティティであり、さまざまなコンピューティング先で再現、監査、移植が可能な機械学習ワークフローを実現します。
+Azure Machine Learning 環境は、機械学習トレーニングが行われる環境をカプセル化したものです。 そこでは、トレーニングとスコアリングのスクリプトに関連する、Python パッケージ、環境変数、およびソフトウェア設定を指定します。 また、ランタイム (Python、Spark、または Docker) も指定します。 環境は、Machine Learning ワークスペース内で管理およびバージョン管理されるエンティティであり、さまざまなコンピューティング先で再現、監査、移植が可能な機械学習ワークフローを実現します。
 
 ローカル コンピューティングで `Environment` オブジェクトを使用して、次のことを行うことができます。
 * トレーニング スクリプトを開発します。

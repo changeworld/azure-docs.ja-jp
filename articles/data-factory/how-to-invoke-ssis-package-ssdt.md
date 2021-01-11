@@ -25,7 +25,7 @@ ms.locfileid: "88041852"
 
 この記事では、SQL Server Data Tools (SSDT) での Azure 対応 SQL Server Integration Services (SSIS) プロジェクトの機能について説明します。 これにより、SSIS パッケージのクラウド互換性を評価したり、Azure Data Factory (ADF) の Azure-SSIS Integration Runtime (IR) で実行したりできます。 この機能を使用して、既存のパッケージを Azure にリフト アンド シフト/移行する前にテストしたり、Azure 内で実行する新しいパッケージを開発したりすることができます。
 
-この機能では、新規作成または既存の Azure-SSIS IR を SSIS プロジェクトにアタッチして、そこでパッケージを実行できます。  プロジェクト デプロイ モデルで Azure SQL Database サーバーまたはマネージド インスタンスをホストとする SSIS カタログ (SSISDB) にデプロイされるパッケージの実行がサポートされます。 パッケージ デプロイ モデルで Azure SQL マネージド インスタンスをホストとするファイル システム、Azure Files、SQL Server データベース (MSDB) のいずれかにデプロイされるパッケージの実行もサポートされます。 
+この機能では、新規作成または既存の Azure-SSIS IR を SSIS プロジェクトにアタッチして、そこでパッケージを実行できます。  プロジェクト デプロイ モデルで Azure SQL Database サーバーまたはマネージド インスタンスをホストとする SSIS カタログ (SSISDB) にデプロイされるパッケージの実行がサポートされます。 パッケージ デプロイ モデルで Azure SQL Managed Instance をホストとするファイル システム、Azure Files、SQL Server データベース (MSDB) のいずれかにデプロイされるパッケージの実行もサポートされます。 
 
 ## <a name="prerequisites"></a>前提条件
 

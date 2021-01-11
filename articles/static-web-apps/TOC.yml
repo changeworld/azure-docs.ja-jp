@@ -26,7 +26,7 @@
       href: authentication-authorization.md
     - name: ユーザー情報にアクセスする
       href: user-information.md
-    - name: 運用前環境でプル要求を確認する
+    - name: 運用前環境で pull request を確認する
       href: review-publish-pull-requests.md
     - name: カスタム ドメイン
       href: custom-domain.md
