@@ -18,7 +18,7 @@ ms.locfileid: "88006640"
 ---
 # <a name="secure-a-daemon-application"></a>デーモン アプリケーションをセキュリティで保護する
 
-以下のガイドは、信頼されており、セキュリティで保護されている環境でホストされるバックグラウンド プロセス、タイマー、ジョブを対象としています。 例としては、Azure Web ジョブ、Azure Function App、Windows サービス、およびその他の信頼性の高いバックグラウンド サービスなどがあります。
+以下のガイドは、信頼されており、セキュリティで保護されている環境でホストされるバックグラウンド プロセス、タイマー、ジョブを対象としています。 例としては、Azure Web Jobs、Azure Function App、Windows サービス、およびその他の信頼性の高いバックグラウンド サービスなどがあります。
 
 > [!Tip]
 > Microsoft では、運用アプリケーション用に Azure Active Directory (Azure AD) および Azure ロールベースのアクセス制御 (Azure RBAC) を実装することをお勧めします。 概念の概要については、[Azure Maps 認証](./azure-maps-authentication.md)に関するページを参照してください。

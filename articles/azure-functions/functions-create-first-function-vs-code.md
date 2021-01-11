@@ -1,6 +1,6 @@
 ---
-title: Visual Studio Code を使用して Azure で初めての関数を作成する
-description: Visual Studio Code で Azure Functions 拡張機能を使用して、HTTP によってトリガーされる単純な関数を作成し、Azure に発行します。
+title: Visual Studio Code を使用して 初めての Azure Functions を作成する
+description: Visual Studio Code で Azure Functions 拡張機能を使用して、HTTP によってトリガーされる単純な Functions を作成し、Azure に発行します。
 ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo, devx-track-python
@@ -12,7 +12,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/30/2020
 ms.locfileid: "89146574"
 ---
-# <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用して Azure で関数を作成する
+# <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用して Azure Functions を作成する
 
 ::: zone pivot="programming-language-csharp"  
 この記事では、Visual Studio Code を使用して、HTTP 要求に応答する C# クラス ライブラリベースの関数を作成します。 コードをローカルでテストした後、Azure Functions のサーバーレス環境にデプロイします。 
@@ -160,13 +160,13 @@ ms.locfileid: "89146574"
 
 ::: zone-end
 
-関数がローカル コンピューター上で正常に動作することを確認したら、Visual Studio Code を使用してプロジェクトを直接 Azure に発行します。 
+Functions がローカル コンピューター上で正常に動作することを確認したら、Visual Studio Code を使用してプロジェクトを直接 Azure に発行します。 
 
 [!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
-## <a name="run-the-function-in-azure"></a>Azure で関数を実行する
+## <a name="run-the-function-in-azure"></a>Azure Functions を実行する
 
 1. **[Azure: Functions]** 領域 (サイド バー内) に戻り、サブスクリプションの下にある新しい関数アプリを展開します。 **[Functions]** を展開し、 **[HttpExample]** を右クリック (Windows) または Ctrl キーを押しながらクリック (macOS) して、 **[Copy function URL]\(関数 URL のコピー\)** を選択します。
 
@@ -197,7 +197,7 @@ Functions のコストについて詳しくは、「[従量課金プランのコ
 Visual Studio Code を使用して、HTTP によってトリガーされる単純な関数を含む関数アプリを作成しました。 次の記事では、出力バインディングを追加してその関数を拡張します。 このバインディングでは、HTTP 要求の文字列が Azure Queue Storage キュー内のメッセージに書き込まれます。 
 
 > [!div class="nextstepaction"]
-> [関数に Azure Storage キュー バインドを追加する](functions-add-output-binding-storage-queue-vs-code.md)
+> [Functions に Azure Storage キュー バインドを追加する](functions-add-output-binding-storage-queue-vs-code.md)
 
 [Azure Functions Core Tools]: functions-run-local.md
 [Azure Functions extension for Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions

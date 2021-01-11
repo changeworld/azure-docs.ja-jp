@@ -22,7 +22,7 @@ ms.locfileid: "87843965"
 # <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:Python を使用して Azure SQL Database または Azure SQL Managed Instance 内のデータベースに対してクエリを実行する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-このクイックスタートでは、Python を使用して Azure SQL データベースまたは Azure SQL マネージド インスタンスに接続し、T-SQL ステートメントを使用してデータに対してクエリを実行します。
+このクイックスタートでは、Python を使用して Azure SQL Database または Azure SQL Managed Instance に接続し、T-SQL ステートメントを使用してデータに対してクエリを実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -69,7 +69,7 @@ ms.locfileid: "87843965"
 > この記事のスクリプトは、**Adventure Works** データベースを使用するように記述されています。
 
 > [!NOTE]
-> オプションで、Azure SQL マネージド インスタンスの使用を選択できます。
+> オプションで、Azure SQL Managed Instance の使用を選択できます。
 >
 > 作成して構成するには、[Azure portal](../managed-instance/instance-create-quickstart.md)、[PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md)、または [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) を使用して、[オンプレミス](../managed-instance/point-to-site-p2s-configure.md)または [VM](../managed-instance/connect-vm-instance-configure.md) 接続を設定します。
 >
@@ -85,7 +85,7 @@ Azure SQL Database のデータベースに接続するために必要な接続�
 
 2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
 
-3. **[概要]** ページで、Azure SQL Database のデータベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、Azure SQL マネージド インスタンスまたは Azure VM 上の SQL Server の場合は **[ホスト]** の横の完全修飾サーバー名 (または IP アドレス) を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
+3. **[概要]** ページで、Azure SQL Database のデータベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、Azure SQL Managed Instance または Azure VM 上の SQL Server の場合は **[ホスト]** の横の完全修飾サーバー名 (または IP アドレス) を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
 
 > [!NOTE]
 > Azure VM 上の SQL Server の接続情報については、[SQL Server インスタンスへの接続](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)に関するページをご覧ください。

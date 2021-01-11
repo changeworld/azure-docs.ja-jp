@@ -251,7 +251,7 @@ SQL Managed Instance の PITR バックアップ保有期間の変更は、個�
 
 #### <a name="sql-database"></a>[SQL Database](#tab/single-database)
 
-アクティブな Azure SQL データベースの PITR バックアップ保持期間を変更するには、次の PowerShell の例を使用します。
+アクティブな Azure SQL Database の PITR バックアップ保持期間を変更するには、次の PowerShell の例を使用します。
 
 ```powershell
 # SET new PITR backup retention period on an active individual database

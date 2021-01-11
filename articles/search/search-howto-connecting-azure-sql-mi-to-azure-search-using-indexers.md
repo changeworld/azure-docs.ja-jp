@@ -1,5 +1,5 @@
 ---
-title: 検索インデックス作成のための Azure SQL マネージド インスタンスの接続
+title: 検索インデックス作成のための Azure SQL Managed Instance の接続
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search 上のインデクサーから SQL マネージド インスタンスへの接続を許可するために、パブリック エンドポイントを有効にします。
 manager: nitinme
@@ -19,12 +19,12 @@ ms.locfileid: "88922890"
 
 [インデクサーを使用した Azure Cognitive Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)に関するページに示されているように、**SQL マネージド インスタンス**に対するインデクサーの作成は、Azure Cognitive Search によってパブリック エンドポイント経由でサポートされています。
 
-## <a name="create-azure-sql-managed-instance-with-public-endpoint"></a>パブリック エンドポイントを使用して Azure SQL マネージド インスタンスを作成する
+## <a name="create-azure-sql-managed-instance-with-public-endpoint"></a>パブリック エンドポイントを使用して Azure SQL Managed Instance を作成する
 **[パブリック エンドポイントの有効化]** オプションが選択された状態で SQL マネージド インスタンスを作成します。
 
    ![パブリック エンドポイントを有効にする](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/enable-public-endpoint.png "パブリック エンドポイントの有効化")
 
-## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>Azure SQL マネージド インスタンスのパブリック エンドポイントを有効にする
+## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>Azure SQL Managed Instance のパブリック エンドポイントを有効にする
 **[セキュリティ]**  >  **[仮想ネットワーク]**  >  **[パブリック エンドポイント]**  >  **[有効化]** によって、既存の SQL マネージド インスタンスでパブリック エンドポイントを有効にすることもできます。
 
    ![パブリック エンドポイントを有効にする](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "パブリック エンドポイントの有効化")

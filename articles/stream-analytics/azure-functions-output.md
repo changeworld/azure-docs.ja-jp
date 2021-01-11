@@ -26,13 +26,13 @@ Azure Stream Analytics では、HTTP トリガーを使用して Azure Functions
 | --- | --- |
 | 関数アプリ |Azure Functions アプリの名前です。 |
 | 機能 |ご自分の Azure Functions アプリ内にある関数の名前です。 |
-| Key |別のサブスクリプションの Azure 関数を使用するには、ご自分の関数にアクセスするためのキーを指定します。 |
-| 最大バッチ サイズ |ご自分の Azure 関数に送信される各出力バッチの最大サイズを設定できるプロパティです。 入力の単位はバイトです。 既定値は 262,144 バイト (256 KB) です。 |
+| Key |別のサブスクリプションの Azure Functions を使用するには、ご自分の関数にアクセスするためのキーを指定します。 |
+| 最大バッチ サイズ |ご自分の Azure Functions に送信される各出力バッチの最大サイズを設定できるプロパティです。 入力の単位はバイトです。 既定値は 262,144 バイト (256 KB) です。 |
 | 最大バッチ カウント  |Azure Functions に送信される各バッチのイベントの最大数を指定できるプロパティです。 既定値は 100 です。 |
 
 Azure Stream Analytics は、正常に処理されたバッチに対して Functions アプリから HTTP ステータス 200 を想定しています。
 
-Azure Stream Analytics は、Azure 関数から 413 ("http の要求したエンティティが大きすぎる") 例外を受け取ると、Azure Functions に送信するバッチのサイズを縮小します。 Azure 関数コードで、この例外を使用して、Azure Stream Analytics がサイズの大きすぎるバッチを送信しないようにします。 また、関数で使用する最大バッチ カウントおよび最大バッチ サイズの値が Stream Analytics ポータルに入力した値と矛盾しないことを確認します。
+Azure Stream Analytics は、Azure Functions から 413 ("http の要求したエンティティが大きすぎる") 例外を受け取ると、Azure Functions に送信するバッチのサイズを縮小します。 Azure Functions コードで、この例外を使用して、Azure Stream Analytics がサイズの大きすぎるバッチを送信しないようにします。 また、関数で使用する最大バッチ カウントおよび最大バッチ サイズの値が Stream Analytics ポータルに入力した値と矛盾しないことを確認します。
 
 > [!NOTE]
 > テスト接続中、Stream Analytics から Azure Functions に空のバッチが送信され、この 2 つの間の接続が機能するかどうかがテストされます。 テスト接続に合格するように、Functions アプリで空のバッチ要求が処理されるようにします。

@@ -95,7 +95,7 @@ Azure Data Box は、同サービスにおける次の主要なインスタン�
 
 - **配送先住所** - Data Box サービスは、注文を受けると、サード パーティの運送業者 (UPS、DHL など) に配送先住所を提供します。 
 
-詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
+詳細については、[Trust Center](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
 
 
 ## <a name="security-guidelines-reference"></a>セキュリティ ガイドラインのリファレンス

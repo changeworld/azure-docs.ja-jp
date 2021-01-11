@@ -247,4 +247,4 @@ FSLogix プロファイル コンテナーを作成する別の方法を探し�
 - [ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成](create-host-pools-user-profile.md)します。
 - [Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する](create-fslogix-profile-container.md)
 
-Azure ファイルの FSlogix コンテナーに関連のある概念の詳細な情報については、「[FSLogix プロファイル コンテナーと Azure ファイル](fslogix-containers-azure-files.md)」をご覧ください。
+Azure Files の FSlogix コンテナーに関連のある概念の詳細な情報については、「[FSLogix プロファイル コンテナーと Azure Files](fslogix-containers-azure-files.md)」をご覧ください。
