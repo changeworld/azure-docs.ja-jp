@@ -604,7 +604,7 @@ productDirectory:
     - hybrid
     - databases
     url: azure-sql/index.yml
-  - title: Azure SQL データベース
+  - title: Azure SQL Database
     summary: クラウド内の管理されたインテリジェントな SQL
     imageSrc: https://static.docs.com/ui/media/product/azure/sql-database.svg
     azureCategories:
