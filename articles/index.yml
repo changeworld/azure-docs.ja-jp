@@ -495,7 +495,7 @@ productDirectory:
     - compute
     - databases
     url: https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json
-  - title: 静的 Web アプリ
+  - title: Static Web Apps (Preview)
     summary: フルスタック Web アプリをビルドして GitHub リポジトリから Azure にデプロイする
     imageSrc: ./media/index/static-apps.svg
     azureCategories:
