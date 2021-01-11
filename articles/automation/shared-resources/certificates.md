@@ -3,21 +3,21 @@ title: Azure Automation で証明書を管理する
 description: この記事では、Runbook および DSC 構成によるアクセスに必要な証明書を操作する方法について説明します。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1c79b7c239c41e8d195230423b17fa3c5a7f51a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbf9eb6c97dcceeca5e86e8bef47a39fb685792f
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825806"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734812"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Azure Automation で証明書を管理する
 
 Azure Automation では証明書を安全に保存し、Azure Resource Manager リソースの [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) コマンドレットを使用して、Runbook および DSC 構成でアクセスできるようにします。 証明書を安全に保存できることで、認証に証明書を使用する Runbook および DSC 構成を作成したり、それらを Azure またはサードパーティのリソースに追加したりすることができます。
 
 >[!NOTE]
->Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Automation に保存されます。 Automation では、キーはシステムによって管理される Key Vault サービスに格納されます。 セキュリティで保護された資産を保存する前に、Automation によって Key Vault からキーが読み込まれ、それを使用して資産が暗号化されます。 
+>Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Automation に保存されます。 Automation では、キーはシステムによって管理される Key Vault サービスに格納されます。 セキュリティで保護された資産を保存する前に、Automation によって Key Vault からキーが読み込まれ、それを使用して資産が暗号化されます。
 
 ## <a name="powershell-cmdlets-to-access-certificates"></a>証明書にアクセスするための PowerShell コマンドレット
 
@@ -40,12 +40,12 @@ PowerShell を使用して Automation 証明書を作成および管理するた
 |:---|:---|
 |`Get-AutomationCertificate`|Runbook または DSC 構成で使用する証明書を取得します。 [System.Security.Cryptography.X509Certificates.X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) オブジェクトを返します。|
 
-> [!NOTE] 
+> [!NOTE]
 > Runbook または DSC 構成で、`Get-AutomationCertificate` の `Name` パラメーターに変数を使用することは避けてください。 このような変数を使用すると、デザイン時に、Runbook または DSC 構成と Automation 変数との間の依存関係の検出が複雑になる可能性があります。
 
-## <a name="python-2-functions-to-access-certificates"></a>証明書にアクセスするための Python 2 関数
+## <a name="python-functions-to-access-certificates"></a>証明書にアクセスするための Python 関数
 
-次の表の関数を使用して、Python 2 Runbook の証明書にアクセスします。
+次の表の関数を使用して、Python 2 および 3 Runbook の証明書にアクセスします。 Python 3 Runbook は現在プレビュー段階です。
 
 | 機能 | 説明 |
 |:---|:---|
@@ -126,7 +126,9 @@ New-AzResourceGroupDeployment -Name NewCert -ResourceGroupName $ResourceGroupNam
 
 証明書を取得するには、内部 `Get-AutomationCertificate` コマンドレットを使用します。 [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) コマンドレットは、証明書資産に関する情報は返しますが証明書自体を返さないので使用できません。
 
-### <a name="textual-runbook-example"></a>テキスト形式の Runbook の例
+### <a name="textual-runbook-examples"></a>テキスト形式の Runbook の例
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 次の例では、Runbook でクラウド サービスに証明書を追加する方法を示します。 このサンプルでは、パスワードは暗号化された Automation 変数から取得されます。
 
@@ -138,17 +140,7 @@ $certPwd = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 Add-AzureCertificate -ServiceName $serviceName -CertToDeploy $cert
 ```
 
-### <a name="graphical-runbook-example"></a>グラフィカルな Runbook の例
-
-[ライブラリ] ペインで証明書を右クリックして **[キャンバスに追加]** を選択することにより、内部 `Get-AutomationCertificate` コマンドレットのアクティビティをグラフィカルな Runbook に追加します。
-
-![証明書をキャンバスに追加する操作のスクリーンショット](../media/certificates/automation-certificate-add-to-canvas.png)
-
-次の図は、グラフィカルな Runbook で証明書を使用する例を示したものです。
-
-![グラフィカル作成の例のスクリーンショット](../media/certificates/graphical-runbook-add-certificate.png)
-
-### <a name="python-2-example"></a>Python 2 の例
+# <a name="python-2"></a>[Python 2](#tab/python2)
 
 次の例では、Python 2 Runbook の証明書にアクセスする方法を示します。
 
@@ -159,6 +151,30 @@ cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
 # returns the binary cert content  
 print cert
 ```
+
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+次の例では、Python 3 Runbook (プレビュー) の証明書にアクセスする方法を示します。
+
+```python
+# get a reference to the Azure Automation certificate
+cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
+
+# returns the binary cert content  
+print (cert)
+```
+
+---
+
+### <a name="graphical-runbook-example"></a>グラフィカルな Runbook の例
+
+[ライブラリ] ペインで証明書を右クリックして **[キャンバスに追加]** を選択することにより、内部 `Get-AutomationCertificate` コマンドレットのアクティビティをグラフィカルな Runbook に追加します。
+
+![証明書をキャンバスに追加する操作のスクリーンショット](../media/certificates/automation-certificate-add-to-canvas.png)
+
+次の図は、グラフィカルな Runbook で証明書を使用する例を示したものです。
+
+![グラフィカル作成の例のスクリーンショット](../media/certificates/graphical-runbook-add-certificate.png)
 
 ## <a name="next-steps"></a>次のステップ
 

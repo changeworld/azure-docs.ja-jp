@@ -4,16 +4,16 @@ description: Cosmos DB 用 Azure Functions トリガーを使用するときの�
 author: ealsur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 03/13/2020
+ms.date: 12/29/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 9fc5da214a50cb000d2154d08bb9b6f6f98ac5ec
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1b7b82ea07b7e00d281739011c9c9f83ab4dff73
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340534"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825623"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB 用 Azure Functions トリガーを使用するときの問題の診断とトラブルシューティングを行う
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -33,7 +33,7 @@ Cosmos DB 用 Azure Functions トリガーとバインドは、基になる Azur
 
 拡張機能パッケージの重要な機能は、Cosmos DB 用 Azure Functions のトリガーとバインドのサポートを提供することです。 また、[Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md) も含まれており、トリガーやバインドを使わずにプログラムで Azure Cosmos DB とやり取りする場合に便利です。
 
-Azure Cosmos DB SDK を使う場合は、別の NuGet パッケージの参照をプロジェクトに追加しないでください。 代わりに、 **Azure Functions の拡張機能パッケージによって SDK の参照が解決されるようにします** 。 トリガーおよびバインドとは別に Azure Cosmos DB SDK を使用する
+Azure Cosmos DB SDK を使う場合は、別の NuGet パッケージの参照をプロジェクトに追加しないでください。 代わりに、**Azure Functions の拡張機能パッケージによって SDK の参照が解決されるようにします**。 トリガーおよびバインドとは別に Azure Cosmos DB SDK を使用する
 
 さらに、[Azure Cosmos DB SDK クライアント](./sql-api-sdk-dotnet-core.md)の独自のインスタンスを手動で作成する場合は、[シングルトン パターン アプローチを使用](../azure-functions/manage-connections.md#documentclient-code-example-c)して、クライアントのインスタンスを 1 つだけ使用するパターンに従う必要があります。 このプロセスにより、操作でのソケットの問題の可能性を回避できます。
 
@@ -43,7 +43,7 @@ Azure Cosmos DB SDK を使う場合は、別の NuGet パッケージの参照�
 
 Azure Function が次のエラー メッセージで失敗する: "Either the source collection 'collection-name' (in database 'database-name') or the lease collection 'collection2-name' (in database 'database2-name') does not exist. Both collections must exist before the listener starts. To automatically create the lease collection, set 'CreateLeaseCollectionIfNotExists' to 'true'" (ソース コレクション 'コレクション名' (データベース 'データベース名' 内) またはリース コレクション 'コレクション名 2' (データベース 'データベース名 2' 内) が存在しません。リスナーが開始する前に、両方のコレクションが存在している必要があります。リース コレクションを自動的に作成するには、'CreateLeaseCollectionIfNotExists' を 'true' に設定します)
 
-これは、トリガーが機能するために必要な Azure Cosmos コンテナーのいずれか一方または両方が存在しないか、または Azure 関数でアクセスできないことを意味します。 構成に基づき、 **トリガーが探している Azure Cosmos データベースとコンテナーがエラー自体で示されます** 。
+これは、トリガーが機能するために必要な Azure Cosmos コンテナーのいずれか一方または両方が存在しないか、または Azure 関数でアクセスできないことを意味します。 構成に基づき、**トリガーが探している Azure Cosmos データベースとコンテナーがエラー自体で示されます**。
 
 1. `ConnectionStringSetting` 属性を確認し、それが **Azure 関数アプリ内に存在する設定を参照している** ことを確認します。 この属性の値は、接続文字列自体ではなく、構成設定の名前になっている必要があります。
 2. Azure Cosmos アカウントに `databaseName` と `collectionName` が存在していることを確認します。 値の自動置換を使用している場合は (`%settingName%` パターンを使用)、設定の名前が自分の Azure 関数アプリに存在することを確認します。
@@ -85,18 +85,20 @@ Azure portal を使用していて、トリガーを使用する Azure 関数を
 
 ### <a name="some-changes-are-missing-in-my-trigger"></a>一部の変更がトリガーで失われる
 
-Azure Cosmos コンテナーで発生した変更の一部が、Azure 関数によって取得されない場合は、最初に行う必要のある調査手順があります。
+Azure Cosmos コンテナーで発生した変更の一部が Azure Function によって取得されない場合、または、一部の変更のコピー中にコピー先で変更が失われた場合は、次の手順に従ってください。
 
 Azure 関数では、多くの場合、受け取った変更の処理が行われ、必要に応じて結果が別の宛先に送信されることがあります。 失われた変更を調査するときは、その宛先ではなく、(Azure 関数の開始時に) **インジェスト ポイントで受信されている変更を測定する** 必要があります。
 
 一部の変更が宛先で失われる場合、変更を受け取った後の Azure 関数での実行の間に何らかのエラーが発生していることを意味している可能性があります。
 
-このシナリオでの最善の対応策は、コードに `try/catch` ブロックを追加し、変更を処理している可能性があるループ内で、項目の特定のサブセットに対する障害を検出して、それらを適切に処理することです (さらに分析するために別のストレージに送信するか、再試行します)。 
+このシナリオでの最善の対応策は、コードに `try/catch` ブロックを追加し、変更を処理している可能性があるループ内で、項目の特定のサブセットに対する障害を検出して、それらを適切に処理することです (さらに分析するために別のストレージに送信するか、再試行します)。
 
 > [!NOTE]
 > 既定の Cosmos DB 用 Azure Functions トリガーでは、コードの実行中にハンドルされない例外が発生した場合、変更のバッチの再試行は行われません。 つまり、宛先に変更が到達しなかった理由は、それらを処理していないためです。
 
-一部の変更がトリガーによってまったく受信されない場合、最もよくあるシナリオは、 **別の Azure 関数が実行されている** ことです。 **まったく同じ構成** (監視対象コンテナーとリース コンテナーが同じ) を持つ別の Azure 関数が、Azure にデプロイされているか、または開発者のコンピューター上でローカルに実行されていて、この Azure 関数により、自分の Azure 関数で処理されるはずの変更のサブセットが盗まれている可能性があります。
+コピー先が別の Cosmos コンテナーであり、項目をコピーするために Upsert 操作を実行している場合は、**監視対象のコンテナーとコピー先コンテナーの両方でパーティション キー定義が同じであることを確認します**。 この構成の違いが原因で、Upsert 操作で、複数のソース項目がコピー先で 1 つの項目として保存されている可能性があります。
+
+一部の変更がトリガーによってまったく受信されない場合、最もよくあるシナリオは、**別の Azure 関数が実行されている** ことです。 **まったく同じ構成** (監視対象コンテナーとリース コンテナーが同じ) を持つ別の Azure 関数が、Azure にデプロイされているか、または開発者のコンピューター上でローカルに実行されていて、この Azure 関数により、自分の Azure 関数で処理されるはずの変更のサブセットが盗まれている可能性があります。
 
 さらに、実行している Azure 関数アプリ インスタンスの数がわかっている場合は、そのシナリオを検証できます。 リース コンテナーを調べて、その中のリース項目の数を数えた場合、`Owner` プロパティの異なる値の数は、関数アプリのインスタンスの数と等しくなっている必要があります。 既知の Azure 関数アプリ インスタンスの数より所有者の数が多い場合、余分な所有者が変更を "盗んでいる" ことを意味します。
 

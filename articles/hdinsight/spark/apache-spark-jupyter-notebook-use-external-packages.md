@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: 772b136c00dc9c20f8bc35d7ebb324175a56e885
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82c61fe77e7bffea6a20e47c71561ab6dc86d12b
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061718"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822252"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>HDInsight の Apache Spark クラスターの Jupyter Notebook で外部のパッケージを使用する
 
@@ -48,7 +48,7 @@ HDInsight 上の Apache Spark クラスター内の [Jupyter Notebook](https://j
     >[!IMPORTANT]  
     >最初のセルでカーネルを構成しなかった場合、`-f` パラメーターを指定して `%%configure` を使用できますが、その場合セッションが最初からやり直しとなり、すべての進捗が失われます。
 
-    | HDInsight のバージョン | command |
+    | HDInsight のバージョン | コマンド |
     |-------------------|---------|
     | HDInsight 3.5 および HDInsight 3.6 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.11:1.5.0" }}`|
     |HDInsight 3.3 および HDInsight 3.4 | `%%configure` <br>`{ "packages":["com.databricks:spark-csv_2.10:1.4.0"] }`|
@@ -59,7 +59,7 @@ HDInsight 上の Apache Spark クラスター内の [Jupyter Notebook](https://j
 
     b. リポジトリで **GroupId**、**ArtifactId**、**Version** の値を確認します。 収集した値が、クラスターに一致することを確認します。 この例では、Scala 2.11 と Spark 1.5.0 パッケージを使用していますが、クラスター内の Scala または Spark のバージョンに応じて別のバージョンを選択しなければならないことがあります。 クラスター上の Scala のバージョンを確認するには、Spark Jupyter カーネルまたは Spark 送信に対して `scala.util.Properties.versionString` を実行します。 クラスター上の Spark のバージョンを確認するには、Jupyter Notebook に対して `sc.version` を実行します。
 
-    ![Jupyter Notebook で外部のパッケージを使用する](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Use external packages with Jupyter notebook")
+    ![Jupyter Notebook で外部のパッケージを使用する](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Jupyter Notebook で外部のパッケージを使用します")
 
     c. 3 つの値をコロン ( **:** ) で区切って連結します。
 
@@ -95,13 +95,13 @@ HDInsight 上の Apache Spark クラスター内の [Jupyter Notebook](https://j
 
 ## <a name="see-also"></a><a name="seealso"></a>関連項目
 
-* [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
+* [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
 
-* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark と BI: HDInsight の Spark と BI ツールを使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
+* [Apache Spark と Machine Learning: HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark と Machine Learning: HDInsight 上で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行

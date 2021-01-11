@@ -13,17 +13,21 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/15/2019
+ms.date: 12/31/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 550e22ac861b92994f2695594d09fc2935d273d1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e5adb8edbeafa4d77e24bf865338e111c455cb80
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967756"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827514"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Azure portal を介した Azure HANA L インスタンスの制御
+
+>[!NOTE]
+>リビジョン 4.2 については、「[Azure portal を使用して BareMetal インスタンスを管理する](../../../baremetal-infrastructure/workloads/sap/baremetal-infrastructure-portal.md)」トピックの手順に従ってください。
+
 このドキュメントでは、[HANA Large Instances](./hana-overview-architecture.md) が [Azure portal](https://portal.azure.com) で提供される方法、および自動的にデプロイされる HANA Large Instance ユニットについて Azure portal で実行できるアクティビティについて説明します。 Azure portal での HANA Large Instances の表示は、HANA Large Instances 用の Azure リソース プロバイダー (現在はパブリック プレビュー) によって提供されます
 
 ## <a name="register-hana-large-instance-resource-provider"></a>HANA Large Instance リソース プロバイダーを登録する

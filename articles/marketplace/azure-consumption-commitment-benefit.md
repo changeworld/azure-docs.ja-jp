@@ -8,12 +8,12 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: aeee13152364c31d82f674df784a27114035a041
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d8cb5179583dd23ea2bd4baf5ebe7d84b0ae9cbf
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028548"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814433"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Azure の消費コミットメントのベネフィット
 
@@ -31,7 +31,7 @@ ms.locfileid: "97028548"
 
 ## <a name="determine-if-your-organization-has-an-azure-consumption-commitment-maccctc"></a>組織に Azure の消費コミットメント (MACC/CtC) があるかどうかを判断する
 
-組織に適格な契約があるかどうかわからない場合は、[Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) 内の組織に関連付けられているテナントの下にある Marketplace エクスペリエンスにサインインします。 価格フィルター内に **[Azure ベネフィット対象]** オプションが表示されている場合は、適格な Azure 消費コミットメントがあります。 Azure Marketplace を通じて直接購入した場合、適格な Azure Marketplace での購入は、組織の Azure の消費コミットメントに貢献します。
+組織に適格な契約があるかどうかわからない場合は、[Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) 内の組織に関連付けられているテナントの下にある Marketplace エクスペリエンスにサインインします。 フィルター オプションとして **Azure ベネフィット対象のみ** を選択するためのオプションが表示される場合は、適格な Azure 消費コミットメントがあります。 Azure Marketplace を通じて直接購入した場合、適格な Azure Marketplace での購入は、組織の Azure の消費コミットメントに貢献します。
 
 [![[Azure ベネフィット対象] メニュー オプション。](media/azure-benefit/azure-benefit-eligible.png)](media/azure-benefit/azure-benefit-eligible.png#lightbox)
 

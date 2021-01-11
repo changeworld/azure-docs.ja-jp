@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 0bbf70016dc9b93120b3158e8954c336095ea211
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0d1cbb8efe0882f48a345d44a650eb711a44d570
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832689"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739187"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning コンピューティング クラスターの作成
 
@@ -212,7 +212,15 @@ VM を作成するときに、スタジオで **[低優先度]** を選択しま
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-default.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="troubleshooting"></a>トラブルシューティング
+
+GA リリースの前に Azure portal から Azure Machine Learning ワークスペースを作成したユーザーが、そのワークスペースに AmlCompute を作成できないことがあります。 サービスにサポート リクエストを送るか、ポータルまたは SDK を使って新しいワークスペースを作成することで、すぐにブロックを解除することができます。
+
+ノードの状態に応じてサイズ変更 (0-> 0) を実行しているときに Azure Machine Learning のコンピューティング クラスターが停止したと表示される場合は、Azure リソースのロックが原因である可能性があります。
+
+[!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
+
+## <a name="next-steps"></a>次のステップ
 
 コンピューティング クラスターを使用して以下を行います。
 

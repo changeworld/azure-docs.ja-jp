@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: afe92351fe82a4e07665789c2ed4d4631be8731f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2e6da1783c3bec4958783494cb6928f5a6a69a58
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547454"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822354"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure Toolkit for IntelliJ を使用して HDInsight 上で VPN を介して Apache Spark アプリケーションをリモートでデバッグする
 
@@ -29,13 +29,13 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション** 。 詳しくは、[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* **HDInsight での Apache Spark クラスター** 。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
-* **Oracle Java Development Kit** 。 [Oracle Web サイト](/azure/developer/java/fundamentals/java-jdk-long-term-support)からインストールできます。
-* **IntelliJ IDEA** 。 この記事では、バージョン 2017.1 を使用します。 [JetBrains Web サイト](https://www.jetbrains.com/idea/download/)からインストールできます。
-* **Azure Toolkit for IntelliJ のHDInsight ツール** 。 IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属しています。 Azure Toolkit をインストールする手順については、[Azure Toolkit for IntelliJ のインストール](/java/azure/intellij/azure-toolkit-for-intellij-installation)に関するページをご覧ください。
-* **IntelliJ IDEA から Azure サブスクリプションにサインインします** 。 「[Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する](apache-spark-intellij-tool-plugin.md)」の手順に従います。
-* **例外の回避策** 。 リモート デバッグを行うために Windows コンピューター上で Spark Scala アプリケーションを実行しているときに、例外が発生する場合があります。 この例外は [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) に説明があり、Windows に WinUtils.exe ファイルがないことが原因で発生します。 このエラーを回避するには、 [Winutils.exe](https://github.com/steveloughran/winutils) を **C:\WinUtils\bin** などの場所にダウンロードする必要があります。 **HADOOP_HOME** 環境変数を追加し、この変数の値を **C\WinUtils** に設定します。
+* **Azure サブスクリプション**。 詳しくは、[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+* **HDInsight での Apache Spark クラスター**。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
+* **Oracle Java Development Kit**。 [Oracle Web サイト](/azure/developer/java/fundamentals/java-jdk-long-term-support)からインストールできます。
+* **IntelliJ IDEA**。 この記事では、バージョン 2017.1 を使用します。 [JetBrains Web サイト](https://www.jetbrains.com/idea/download/)からインストールできます。
+* **Azure Toolkit for IntelliJ のHDInsight ツール**。 IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属しています。 Azure Toolkit をインストールする手順については、[Azure Toolkit for IntelliJ のインストール](/java/azure/intellij/azure-toolkit-for-intellij-installation)に関するページをご覧ください。
+* **IntelliJ IDEA から Azure サブスクリプションにサインインします**。 「[Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する](apache-spark-intellij-tool-plugin.md)」の手順に従います。
+* **例外の回避策**。 リモート デバッグを行うために Windows コンピューター上で Spark Scala アプリケーションを実行しているときに、例外が発生する場合があります。 この例外は [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) に説明があり、Windows に WinUtils.exe ファイルがないことが原因で発生します。 このエラーを回避するには、[Winutils.exe](https://github.com/steveloughran/winutils) を **C:\WinUtils\bin** などの場所にダウンロードする必要があります。 **HADOOP_HOME** 環境変数を追加し、この変数の値を **C\WinUtils** に設定します。
 
 ## <a name="step-1-create-an-azure-virtual-network"></a>手順 1:Azure の仮想ネットワークを作成する
 

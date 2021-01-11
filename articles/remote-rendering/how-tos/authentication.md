@@ -5,28 +5,31 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: dc325fdf68c5afbb122f9e77c5509a6a8053a12e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 35fd78a9d55dc684045fdb4b83691c1613801421
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427464"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724885"
 ---
 # <a name="configure-authentication"></a>認証を構成する。
 
 Azure Remote Rendering には、[Azure Spatial Anchors (ASA)](../../spatial-anchors/concepts/authentication.md?tabs=csharp) と同じ認証メカニズムが使用されます。 REST API を正常に呼び出すには、クライアントで以下の内 *1 つ* を設定する必要があります。
 
-* **AccountKey** : Azure portal の Remote Rendering アカウントの [キー] タブで取得できます。 アカウント キーは、開発、またはプロトタイプ作成でのみ推薦されます。
+* **AccountKey**: Azure portal の Remote Rendering アカウントの [キー] タブで取得できます。 アカウント キーは、開発、またはプロトタイプ作成でのみ推薦されます。
     ![アカウント ID](./media/azure-account-primary-key.png)
 
-* **AuthenticationToken** : Azure AD トークンであり、 [MSAL ライブラリ](../../active-directory/develop/msal-overview.md)を使用して取得できます。 ユーザー資格情報を受け入れ、これらの資格情報を使用してアクセス トークンを取得するには、複数の異なるフローが使用できます。
+* **AccountDomain**: Azure portal の Remote Rendering アカウントの [概要] タブで取得できます。
+    ![アカウントのドメイン](./media/azure-account-domain.png)
 
-* **MRAccessToken** : MR トークンであり、Azure Mixed Reality Security Token Service (STS) から取得できます。 次の呼び出しのような REST 呼び出しを使用して、`https://sts.mixedreality.azure.com` エンドポイントから取得されます。
+* **AuthenticationToken**: Azure AD トークンであり、[MSAL ライブラリ](../../active-directory/develop/msal-overview.md)を使用して取得できます。 ユーザー資格情報を受け入れ、これらの資格情報を使用してアクセス トークンを取得するには、複数の異なるフローが使用できます。
+
+* **MRAccessToken**: MR トークンであり、Azure Mixed Reality Security Token Service (STS) から取得できます。 次のような REST 呼び出しを使用して、`https://sts.<accountDomain>` エンドポイントから取得されます。
 
     ```rest
-    GET https://sts.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
+    GET https://sts.southcentralus.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni<truncated>FL8Hq5aaOqZQnJr1koaQ
-    Host: sts.mixedreality.azure.com
+    Host: sts.southcentralus.mixedreality.azure.com
     Connection: Keep-Alive
 
     HTTP/1.1 200 OK
@@ -52,8 +55,8 @@ Azure Remote Rendering には、[Azure Spatial Anchors (ASA)](../../spatial-anch
 
 サービスに付与するアクセス レベルを制御するには、ロールベースのアクセス権を付与するときに次のロールを使用します。
 
-* **Remote Rendering 管理者** :ユーザーに、Azure Remote Rendering の変換、セッション管理、レンダリング、診断の機能を提供します。
-* **Remote Rendering クライアント** :ユーザーに、Azure Remote Rendering のセッション管理、レンダリング、診断の機能を提供します。
+* **Remote Rendering 管理者**:ユーザーに、Azure Remote Rendering の変換、セッション管理、レンダリング、診断の機能を提供します。
+* **Remote Rendering クライアント**:ユーザーに、Azure Remote Rendering のセッション管理、レンダリング、診断の機能を提供します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,17 +5,18 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/16/2020
+ms.date: 12/30/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: c9dd39ffa68d8261f5c5d301d4c351c52b3f27c1
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 922ec6c4b579a657e7ee5e872148f8126ce175e2
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654594"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822286"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory のトラブルシューティング
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory における外部の制御アクティビティの一般的なトラブルシューティング方法について説明します。
@@ -546,7 +547,6 @@ ms.locfileid: "94654594"
 
 - **推奨事項**:指定のサブスクリプションで HDInsight クラスターを作成するアクセス許可を持っているサービス プリンシパルの指定を検討し、再試行します。 [管理 ID が正しく設定されていること](../hdinsight/hdinsight-managed-identities.md)を確認します。
 
-
 ### <a name="error-code-2300"></a>エラー コード:2300
 
 - **メッセージ**: `Failed to submit the job '%jobId;' to the cluster '%cluster;'. Error: %errorMessage;.`
@@ -952,6 +952,16 @@ ms.locfileid: "94654594"
 
 - **推奨事項**:HDInsight オンデマンドのリンクされたサービスの追加ストレージとして Azure Blob Storage アカウントを指定します。
 
+### <a name="ssl-error-when-adf-linked-service-using-hdinsight-esp-cluster"></a>HDInsight ESP クラスターを使用している ADF のリンクされたサービスで SSL エラーが発生しました
+
+- **メッセージ**: `Failed to connect to HDInsight cluster: 'ERROR [HY000] [Microsoft][DriverSupport] (1100) SSL certificate verification failed because the certificate is missing or incorrect.`
+
+- **原因**:この問題は、システムの信頼ストアに関連している可能性が最も高いです。
+
+- **解決方法**:パス **Microsoft Integration Runtime\4.0\Shared\ODBC Drivers\Microsoft Hive ODBC Driver\lib** に移動し、DriverConfiguration64.exe を開いて設定を変更できます。
+
+    ![[Use System Trust Store]\(システムの信頼ストアの使用\) をオフにする](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+
 ## <a name="web-activity"></a>Web アクティビティ
 
 ### <a name="error-code-2128"></a>エラー コード:2128
@@ -1015,9 +1025,9 @@ ms.locfileid: "94654594"
 
 **エラー メッセージ:** `The payload including configurations on activity/dataSet/linked service is too large. Please check if you have settings with very large value and try to reduce its size.`
 
-**原因:** 各アクティビティの実行のペイロードには、アクティビティの構成、関連付けられているデータセットとリンクされたサービスの構成 (ある場合)、アクティビティの種類ごとに生成されるシステム プロパティの一部が含まれます。 このようなペイロード サイズの制限は、「[Data Factory の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)」の項で説明されているように 896 KB です。
+**原因:** 各アクティビティの実行のペイロードには、アクティビティの構成、関連付けられているデータセットとリンクされたサービスの構成 (ある場合)、アクティビティの種類ごとに生成されるシステム プロパティの一部が含まれます。 このようなペイロード サイズの制限は、「[Data Factory の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)」セクションで説明されているように 896 KB です。
 
-**推奨事項:** アップストリーム アクティビティの出力または外部から 1 つ以上の大きなパラメーター値を渡す場合、特に制御フロー内のアクティビティ間で実際のデータを渡す場合、この制限に達する可能性があります。 大きなパラメーター値のサイズを減らせるかどうかを確認するか、パイプライン ロジックを調整して、アクティビティ間で値が渡されずにアクティビティ内で処理されるようにしてください。
+**推奨事項:** アップストリーム アクティビティの出力または外部から 1 つ以上の大きなパラメーター値を渡す場合、特に制御フロー内のアクティビティ間で実際のデータを渡す場合、この制限に達する可能性があります。 大きなパラメーター値のサイズを減らせるかどうかを確認するか、パイプライン ロジックを調整して、アクティビティ間で値が渡されずにアクティビティ内で処理されるようにします。
 
 ## <a name="next-steps"></a>次のステップ
 

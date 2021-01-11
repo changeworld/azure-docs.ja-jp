@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: e5d360933cbeb611046aede6164ec2e2fa497664
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 7ed7c3a586f5671191e3c517b5925cab888caefb
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347797"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724308"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>並列ドキュメントの文のペアリングとアライン
 
@@ -22,7 +22,7 @@ ms.locfileid: "97347797"
 
 ## <a name="pairing-and-alignment-process"></a>ペアリングとアラインのプロセス
 
-Custom Translator では、一度に 1 文ずつ、文の翻訳が学習されます。 ソースから文が読み取られ、次にターゲットからその文の翻訳が読み取られます。 次に、2 つの文に含まれる単語とフレーズが相互にアラインされます。 このプロセスによって、ある文の単語とフレーズから、その文の翻訳に含まれる同義の単語とフレーズへのマップを作成できるようになります。 アラインでは、相互の翻訳である文に対してシステムが確実にトレーニングされるように試行します。
+Custom Translator では、一度に 1 文ずつ、文の翻訳が学習されます。 ソース テキストから文が読み取られた後、ターゲット テキストからその文の翻訳が読み取られます。 次に、2 つの文に含まれる単語とフレーズが相互にアラインされます。 このプロセスによって、ある文の単語とフレーズから、その文の翻訳に含まれる同義の単語とフレーズへのマップを作成できるようになります。 アラインでは、相互の翻訳である文に対してシステムが確実にトレーニングされるように試行します。
 
 ## <a name="pre-aligned-documents"></a>事前にアラインされたドキュメント
 

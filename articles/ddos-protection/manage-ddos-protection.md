@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: fc60ca462a2891cc022847e056e32239f2675f70
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fd154ec40ed4d1650e44a67fd5d362a2bc0c519d
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094576"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813940"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>クイックスタート: Azure DDoS Protection Standard の作成と構成
 
@@ -42,12 +42,12 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
 3. **［作成］** を選択します
 4. 次の値を入力または選択し、 **[作成]** を選択します。
 
-    |設定        |[値]                                              |
+    |設定        |値                                              |
     |---------      |---------                                          |
-    |名前           | 「 _MyDdosProtectionPlan_ 」と入力します。                     |
+    |名前           | 「_MyDdosProtectionPlan_」と入力します。                     |
     |サブスクリプション   | サブスクリプションを選択します。                         |
-    |Resource group | **[新規作成]** を選択し、「 _MyResourceGroup_ 」と入力します。|
-    |場所       | 「 _米国東部_ 」と入力します。                                  |
+    |Resource group | **[新規作成]** を選択し、「_MyResourceGroup_」と入力します。|
+    |場所       | 「_米国東部_」と入力します。                                  |
 
 ## <a name="enable-ddos-protection-for-a-virtual-network"></a>仮想ネットワークの DDoS 保護を有効にする
 
@@ -57,12 +57,12 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
 2. **[ネットワーク]** を選択してから、 **[仮想ネットワーク]** を選択します。
 3. 次の値を入力するか選択し、それ以外は既定値をそのまま使用して、 **[作成]** を選択します。
 
-    | 設定         | [値]                                           |
+    | 設定         | 値                                           |
     | ---------       | ---------                                       |
-    | 名前            | 「 _MyVnet_ 」と入力します。                                 |
+    | 名前            | 「_MyVnet_」と入力します。                                 |
     | サブスクリプション    | サブスクリプションを選択します。                                    |
     | Resource group  | **[既存のものを使用]** 、 **[MyResourceGroup]** の順に選択します。 |
-    | 場所        | 「 _米国東部_ 」と入力します。                                                    |
+    | 場所        | 「_米国東部_」と入力します。                                                    |
     | DDoS Protection Standard | **[有効化]** を選択します。 選択したプランは仮想ネットワークと同じサブスクリプションまたは異なるサブスクリプションのどちらにあっても構いませんが、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。|
 
 仮想ネットワークに対して DDoS Standard が有効になっている場合、仮想ネットワークを別のリソース グループまたはサブスクリプションに移動することはできません。 DDoS Standard が有効になっている仮想ネットワークを移動する必要がある場合は、まず DDoS Standard を無効にし、仮想ネットワークを移動してから、DDoS Standard を有効にします。 移動後に、仮想ネットワーク内のすべての保護されたパブリック IP アドレスの自動調整されたポリシーしきい値がリセットされます。
@@ -75,26 +75,30 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
 4. **[設定]** で、 **[DDoS Protection]** を選択します。
 5. **[Standard]** を選択します。 **[DDoS protection plan]\(DDoS Protection プラン\)** で、既存の DDoS Protection プランまたは手順 1. で作成したプランを選び、 **[保存]** を選択します。 選択したプランは仮想ネットワークと同じサブスクリプションまたは異なるサブスクリプションのどちらにあっても構いませんが、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。
 
+### <a name="enable-ddos-protection-for-all-virtual-networks"></a>すべての仮想ネットワークの DDoS 保護を有効にする
+
+この[ポリシー](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Policy%20-%20Virtual%20Networks%20should%20be%20associated%20with%20an%20Azure%20DDoS%20Protection%20Standard%20plan)により、定義されているスコープ内で、DDoS Protection Standard が有効にされていない仮想ネットワークが検出された後、必要に応じて、VNet を保護するための関連付けを作成する修復タスクが作成されます。 このポリシーをデプロイする方法の詳細な手順については、 https://aka.ms/ddosvnetpolicy-techcommunity を参照してください。
+
 ## <a name="validate-and-test"></a>検証とテスト
 
 まず、DDoS 保護プランの詳細を確認します。
 
 1. ポータルの左上にある **[すべてのサービス]** を選択します。
-2. **[フィルター]** ボックスに「 *DDoS* 」と入力します。 結果に **[DDoS protection plans]\(DDoS Protection プラン\)** が表示されたら、それを選択します。
+2. **[フィルター]** ボックスに「*DDoS*」と入力します。 結果に **[DDoS protection plans]\(DDoS Protection プラン\)** が表示されたら、それを選択します。
 3. 一覧から DDoS 保護プランを選択します。
 
 _MyVnet_ 仮想ネットワークが一覧表示されます。 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-次のチュートリアルのためにリソースを保持しておくことができます。 不要になったら、 _MyResourceGroup_ リソース グループを削除します。 リソース グループを削除する際に、DDoS 保護プランとその関連リソースもすべて削除します。 この DDoS 保護プランを使用する予定がない場合は、不要な料金が発生しないようリソースを削除してください。
+次のチュートリアルのためにリソースを保持しておくことができます。 不要になったら、_MyResourceGroup_ リソース グループを削除します。 リソース グループを削除する際に、DDoS 保護プランとその関連リソースもすべて削除します。 この DDoS 保護プランを使用する予定がない場合は、不要な料金が発生しないようリソースを削除してください。
 
    >[!WARNING]
    >このアクションは元に戻すことができません。
 
 1. Azure portal で **[リソース グループ]** を探して選択するか、Azure portal のメニューから **[リソース グループ]** を選択します。
 
-2. フィルター処理するか下へスクロールして、 _MyResourceGroup_ リソース グループを見つけます。
+2. フィルター処理するか下へスクロールして、_MyResourceGroup_ リソース グループを見つけます。
 
 3. リソース グループを選択し、 **[リソース グループの削除]** を選択します。
 
@@ -112,4 +116,4 @@ DDoS 保護プランを削除する場合は、最初にそのプランからす
 DDoS 保護プラン用にテレメトリを表示および構成する方法を学習するには、チュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [DDoS 保護テレメトリの表示と構成](telemetry-monitoring-alerting.md)
+> [DDoS 保護テレメトリの表示と構成](telemetry.md)

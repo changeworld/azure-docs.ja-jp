@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: ebed7d87ba538b2f886155527bb89c1ffd2bcf58
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c8ce1a66d6dbf215c3d49740f2aec47ab01f7591
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545703"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822320"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Azure Toolkit for IntelliJ を使用した失敗した Spark ジョブのデバッグ (プレビュー)
 
-この記事では、 [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij) の HDInsight Tools を使用して **Spark Failure Debug** アプリケーションを実行する方法に関するステップ バイ ステップ ガイダンスを提供します。
+この記事では、[Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij) の HDInsight Tools を使用して **Spark Failure Debug** アプリケーションを実行する方法に関するステップ バイ ステップ ガイダンスを提供します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,13 +52,13 @@ ms.locfileid: "92545703"
 
    a. プロジェクト名とプロジェクトの場所を入力します。
 
-   b. **[Project SDK] (プロジェクト SDK)** ドロップダウン リストで、 **Spark 2.3.2** クラスター用に **[Java 1.8]** を選択します。
+   b. **[Project SDK] (プロジェクト SDK)** ドロップダウン リストで、**Spark 2.3.2** クラスター用に **[Java 1.8]** を選択します。
 
    c. **[Spark バージョン]** ドロップダウン リストで、 **[Spark 2.3.2(Scala 2.11.8)]** を選択します。
 
    d. **[完了]** を選択します。
 
-3. **[src]**  >  **[main]**  >  **[scala]** を選択してプロジェクトのコードを開きます。 この例では、 **AgeMean_Div()** スクリプトを使用します。
+3. **[src]**  >  **[main]**  >  **[scala]** を選択してプロジェクトのコードを開きます。 この例では、**AgeMean_Div()** スクリプトを使用します。
 
 ## <a name="run-a-spark-scalajava-application-on-an-hdinsight-cluster"></a>HDInsight クラスター上で Spark Scala/Java アプリケーションを実行する
 
@@ -72,7 +72,7 @@ Spark Scala/Java アプリケーション作成した後、次の手順を実行
 
    ![Intellij の新規構成の追加](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. **[Remotely Run in Cluster]\(クラスターでリモート実行\)** タブに切り替えます。 **[名前]** 、 **[Spark cluster]\(Spark クラスター\)** 、 **[Main class name]\(メイン クラス名\)** に情報を入力します。 ツールでは、 **Executor** を使用したデバッグがサポートされています。 **[numExectors]** は既定値が 5 ですが、3 より大きい値に設定することはお勧めできません。 実行時間を短縮するために、 **[job Configurations] (ジョブ構成)** に **[spark.yarn.maxAppAttempts]** を追加し、その値を 1 に設定できます。 **[OK]** ボタンをクリックして構成を保存します。
+3. **[Remotely Run in Cluster]\(クラスターでリモート実行\)** タブに切り替えます。 **[名前]** 、 **[Spark cluster]\(Spark クラスター\)** 、 **[Main class name]\(メイン クラス名\)** に情報を入力します。 ツールでは、**Executor** を使用したデバッグがサポートされています。 **[numExectors]** は既定値が 5 ですが、3 より大きい値に設定することはお勧めできません。 実行時間を短縮するために、 **[job Configurations] (ジョブ構成)** に **[spark.yarn.maxAppAttempts]** を追加し、その値を 1 に設定できます。 **[OK]** ボタンをクリックして構成を保存します。
 
    ![Intellij の新規構成の実行/デバッグ](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 
@@ -100,7 +100,7 @@ Spark Scala/Java アプリケーション作成した後、次の手順を実行
 
 1. 元のプロジェクトを開くか、または新しいプロジェクトを作成し、それを元のソース コードに関連付けます。 現在、失敗したデバッグでは Spark 2.3.2 バージョンのみがサポートされています。
 
-1. IntelliJ IDEA で、 **Spark Failure Debug** 構成ファイルを作成し、 **[Spark Job Failure Context location] (Spark ジョブの失敗したコンテキストの場所)** フィールドで前にダウンロードされた失敗したジョブのリソースから FTD ファイルを選択します。
+1. IntelliJ IDEA で、**Spark Failure Debug** 構成ファイルを作成し、 **[Spark Job Failure Context location] (Spark ジョブの失敗したコンテキストの場所)** フィールドで前にダウンロードされた失敗したジョブのリソースから FTD ファイルを選択します。
 
    ![失敗構成の作成](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
 

@@ -3,12 +3,12 @@ title: デプロイ モード
 description: Azure Resource Manager で完全デプロイ モードと増分デプロイ モードのどちらを使用するか指定する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: bc499be4185905af7eaf71b3515895de9bee46d3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 45eee255cec06925095ed0696c669b5c205f8b56
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184044"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724410"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager のデプロイ モード
 
@@ -33,7 +33,7 @@ ms.locfileid: "96184044"
 
 完全モードでは、リソースの種類に応じて削除の動作が多少異なります。 親リソースは、完全モードでデプロイされたテンプレートに含まれていない場合、自動的に削除されます。 一部の子リソースは、テンプレートに含まれていなければ、自動的には削除されません。 ただし、親リソースが削除されると、これらの子リソースも削除されます。
 
-たとえば、リソース グループに DNS ゾーン (リソースの種類は Microsoft.Network/dnsZones) と CNAME レコード (リソースの種類は Microsoft.Network/dnsZones/CNAME) が含まれるとします。DNS ゾーンは CNAME レコードの親リソースです。 テンプレートを完全モードでデプロイし、そこに DNS ゾーンを含めていない場合、DNS ゾーンと CNAME レコードの両方が削除されます。 テンプレートに DNS ゾーンだけを含め、CNAME レコードは含めていない場合、CNAME は削除されません。
+たとえば、リソース グループに DNS ゾーン (リソースの種類は `Microsoft.Network/dnsZones`) と CNAME レコード (リソースの種類は `Microsoft.Network/dnsZones/CNAME`) が含まれるとします。DNS ゾーンは CNAME レコードの親リソースです。 テンプレートを完全モードでデプロイし、そこに DNS ゾーンを含めていない場合、DNS ゾーンと CNAME レコードの両方が削除されます。 テンプレートに DNS ゾーンだけを含め、CNAME レコードは含めていない場合、CNAME は削除されません。
 
 リソースの種類別に削除の動作を説明した一覧については、「[Deletion of Azure resources for complete mode deployments (完全モードのデプロイでの Azure リソースの削除)](complete-mode-deletion.md)」をご覧ください。
 
@@ -113,19 +113,19 @@ az deployment group create \
 ```json
 "resources": [
   {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "linkedTemplate",
-      "properties": {
-          "mode": "Incremental",
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2017-05-10",
+    "name": "linkedTemplate",
+    "properties": {
+      "mode": "Incremental",
           <nested-template-or-external-template>
-      }
+    }
   }
 ]
 ```
 
 ## <a name="next-steps"></a>次のステップ
 
-* リソース マネージャーのテンプレートの作成の詳細については、 [Azure リソース マネージャーのテンプレートの作成](template-syntax.md)に関するページを参照してください。
-* リソースをデプロイする方法を確認するには、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)」を参照してください。
+* Resource Manager テンプレートの作成については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* リソースをデプロイする方法については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。
 * リソース プロバイダーの操作を表示するには、「[Azure REST API](/rest/api/)」を参照してください。

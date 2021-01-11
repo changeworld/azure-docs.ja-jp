@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: ffc8fcf734877f55210507310849a5746a280c3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13dd960cc7c900882acbcb9b17a5b8a1f32f956c
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504351"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821504"
 ---
 # <a name="deep-dive---advanced-analytics"></a>詳細情報 - 高度な分析
 
@@ -91,7 +91,7 @@ HDInsight を使用した、高度な分析の機械学習パイプラインの�
 
 1. Apache Spark 2.1.0 ディストリビューションを使用して、Azure HDInsight Hadoop クラスターを作成する。
 2. Microsoft Cognitive Toolkit を Azure HDInsight Spark クラスターのすべてのノードにインストールするカスタム スクリプトを実行する。
-3. 事前構築済みの Jupyter Notebook を、ご利用の HDInsight Spark クラスターにアップロードし、トレーニング済みの Microsoft Cognitive Toolkit ディープ ラーニング モデルを Spark Python API (PySpark) を使用して Azure Blob Storage アカウント内のファイルに適用する。
+3. 事前構築済みの Jupyter Notebook を、HDInsight Spark クラスターにアップロードし、トレーニング済みの Microsoft Cognitive Toolkit ディープ ラーニング モデルを Spark Python API (PySpark) を使用して Azure Blob Storage アカウント内のファイルに適用する。
 
 この例では、Alex Krizhevsky、Vinod Nair、Geoffrey Hinton らによって編集と配布が行なわれている CIFAR-10 の画像セットを使用します。 CIFAR-10 のデータセットには、相互排他的な 10 個のクラスに属している 32×32 のカラー画像が 60,000 枚含まれています。
 

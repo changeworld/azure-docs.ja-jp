@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: ccompy
-ms.openlocfilehash: 93b92da999c15255f543abca346fc2bf8840006c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0b93111357cf0d6e57eeb5495d50bd18a15dca77
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999446"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97812790"
 ---
 * Isolated を除くすべての価格プランをサポートするマルチテナント システム
 * VNet にデプロイされ、Isolated 価格プランのアプリをサポートする App Service Environment。

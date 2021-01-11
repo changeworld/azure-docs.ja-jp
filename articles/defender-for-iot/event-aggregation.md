@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/03/2020
 ms.author: mlottner
-ms.openlocfilehash: 7f7575697706363c082a4e6374b3df7a49e65cdf
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c823f0034db7d5fbe1f6b46f6af74e9fa374a6de
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548853"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832371"
 ---
 # <a name="defender-for-iot-event-aggregation"></a>Defender for IoT のイベント集計
 
@@ -97,6 +97,6 @@ Defender for IoT のデプロイの概要について引き続き学習するに
 
 - [セキュリティ エージェントの認証方法](concept-security-agent-authentication-methods.md)を理解する
 - [セキュリティ エージェント](how-to-deploy-agent.md)を選択してデプロイする
-- Defender for IoT の[サービスの要件](service-prerequisites.md)を確認する
+- Defender for IoT の[システムの要件](quickstart-system-prerequisites.md)を確認する
 - [IoT Hub で Defender for IoT サービスを有効にする](quickstart-onboard-iot-hub.md)方法について確認する
 - [Defender for IoT についてよく寄せられる質問](resources-frequently-asked-questions.md)からサービスの詳細について確認する

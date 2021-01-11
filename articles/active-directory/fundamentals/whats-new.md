@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 12/18/2020
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710e31c18338243f9405a071b8fa544fe44044be
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 71c0fa7a6e676e1b888bc13e0fa4cb42e93b2e71
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903158"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802849"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -38,6 +38,94 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 このページは毎月更新されるため、定期的にアクセスしてご確認ください。 6 か月以上前の項目を探す場合は、「[新着情報のアーカイブ - Azure Active Directory](whats-new-archive.md)」をご覧ください。
 
 ---
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="public-preview---azure-ad-b2c-phone-sign-up-and-sign-in-using-built-in-policy"></a>パブリック プレビュー - 組み込みポリシーを使用した Azure AD B2C Phone のサインアップとサインイン
+
+**種類:** 新機能  
+**サービス カテゴリ:** B2C - コンシューマー ID 管理  
+**製品の機能:** B2B/B2C
+ 
+組み込みポリシーを使用した B2C Phone のサインアップとサインインを使用すると、組織の IT 管理者や開発者は、エンド ユーザーが電話番号を使用してサインインおよびサインアップできるユーザー フローを提供できます。 詳細については、「[ユーザー フローの電話でのサインアップとサインインを設定する (プレビュー)](../../active-directory-b2c/phone-authentication-user-flows.md)」を参照してください。
+
+---
+
+### <a name="general-availability---security-defaults-now-enabled-for-all-new-tenants-by-default"></a>一般提供 - すべての新規テナントに対して既定で有効にされるようになったセキュリティの既定値群
+
+**種類:** 新機能  
+**サービス カテゴリ:** その他  
+**製品の機能:** ID のセキュリティ & 保護
+ 
+ユーザー アカウントを保護するため、2020 年 11 月 12 日以降に作成されるすべての新しいテナントについては、セキュリティの既定値群が有効になります。 セキュリティの既定値群により、次のような複数のポリシーが適用します。
+- すべてのユーザーと管理者は、Microsoft Authenticator アプリを使用して MFA に登録する必要があります
+- クリティカルな管理者ロールは、サインインするたびに MFA を使用する必要があります。 他のすべてのユーザーは、必要に応じて MFA の入力を求められます。 
+- レガシ認証は、テナント全体でブロックされます。 
+
+詳細については、「[セキュリティの既定値群とは](../fundamentals/concept-fundamentals-security-defaults.md)」を参照してください。
+
+---
+
+### <a name="general-availability---support-for-groups-with-up-to-250k-members-in-aadconnect"></a>一般提供 - AADConnect での最大 250,000 メンバーが含まれるグループのサポート
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** AD Connect  
+**製品の機能:** ID ライフサイクル管理
+ 
+Microsoft がデプロイした Azure AD Connect 用の新しいエンドポイント (API) では、Azure Active Directory に対する同期サービス操作のパフォーマンスが向上しています。 新しい [V2 エンドポイント](../hybrid/how-to-connect-sync-endpoint-api-v2.md)を使用すると、Azure AD に対するエクスポートとインポートのパフォーマンスが明らかに向上していることがわかります。 この新しいエンドポイントでは、次のシナリオがサポートされています。
+
+- メンバー数が最大 250,000 までのグループの同期
+- Azure AD に対するエクスポートとインポートのパフォーマンスの向上
+
+---
+
+### <a name="general-availability---entitlement-management-available-for-tenants-in-azure-china-cloud"></a>一般提供 - Azure China クラウドのテナントに利用できるエンタイトルメント管理
+
+**種類:** 新機能  
+**サービス カテゴリ:** ユーザー アクセス管理  
+**製品の機能:** エンタイトルメント管理
+ 
+
+Azure China クラウドのすべてのテナントで、エンタイトルメント管理の機能を使用できるようになりました。 詳細については、[ID ガバナンスのドキュメント](https://docs.azure.cn/zh-cn/active-directory/governance/)に関するサイトを参照してください。
+
+---
+
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---december-2020"></a>Azure AD アプリケーション ギャラリーの新しいプロビジョニング コネクタ - 2020 年 12 月
+
+**種類:** 新機能  
+**サービス カテゴリ:** アプリ プロビジョニング  
+**製品の機能:** サード パーティ統合
+
+新しく統合された次のアプリでのユーザー アカウントの作成、更新、および削除を自動化できるようになりました。
+
+- [Bizagi Studio for Digital Process Automation](../saas-apps/bizagi-studio-for-digital-process-automation-provisioning-tutorial.md)
+- [CybSafe](../saas-apps/cybsafe-provisioning-tutorial.md)
+- [GroupTalk](../saas-apps/grouptalk-provisioning-tutorial.md)
+- [PaperCut Cloud Print Management](/azure/active-directory/saas-apps/papercut-cloud-print-management-provisioning-tutorial)
+- [Parsable](../saas-apps/parsable-provisioning-tutorial.md)
+- [Shopify Plus](../saas-apps/shopify-plus-provisioning-tutorial.md)
+
+自動化されたユーザー アカウント プロビジョニングを使用して組織をより適切にセキュリティ保護する方法の詳細については、[Azure AD による SaaS アプリケーションへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)に関するページをご覧ください。
+ 
+---
+ 
+[1233182](https://identitydivision.visualstudio.com/IAM/IXR/_queries?id=1233182&triage=true&fullScreen=false&_a=edit)
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---december-2020"></a>Azure AD アプリケーション ギャラリーで新しいフェデレーション アプリが利用できるようになりました - 2020 年 12 月
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** サード パーティ統合
+ 
+2020 年 12 月には、フェデレーションをサポートする次の 18 個の新しいアプリケーションがアプリ ギャラリーに追加されました。
+
+[AwareGo](../saas-apps/awarego-tutorial.md)、[HowNow SSO](https://gethownow.com/)、[ZyLAB ONE Legal Hold](https://www.zylab.com/en/product/legal-hold)、[Guider](http://www.guider-ai.com/)、[Softcrisis](https://www.softcrisis.se/sv/)、[Pims 365](http://www.omega365.com/pims)、[InformaCast](../saas-apps/informacast-tutorial.md)、[RetrieverMediaDatabase](../saas-apps/retrievermediadatabase-tutorial.md)、[vonage](../saas-apps/vonage-tutorial.md)、[Count Me In - Operations Dashboard](../saas-apps/count-me-in-operations-dashboard-tutorial.md)、[ProProfs Knowledge Base](../saas-apps/proprofs-knowledge-base-tutorial.md)、[RightCrowd Workforce Management](../saas-apps/rightcrowd-workforce-management-tutorial.md)、[JLL TRIRIGA](../saas-apps/jll-tririga-tutorial.md)、[Shutterstock](../saas-apps/shutterstock-tutorial.md)、[FortiWeb Web Application Firewall](../saas-apps/linkedin-talent-solutions-tutorial.md)、[LinkedIn Talent Solutions](../saas-apps/linkedin-talent-solutions-tutorial.md)、[Equinix Federation App](../saas-apps/equinix-federation-app-tutorial.md)、[KFAdvance](../saas-apps/kfadvance-tutorial.md)
+
+すべてのアプリケーションのドキュメントについては、こちら (https://aka.ms/AppsTutorial ) をご覧ください
+
+Azure AD アプリ ギャラリーにアプリケーションを公開する場合は、こちらの詳細 (https://aka.ms/AzureADAppRequest ) をお読みください
+
+--- 
+
 ## <a name="november-2020"></a>2020 年 11 月
 
 ### <a name="azure-active-directory-tls-10-tls-11-and-3des-deprecation"></a>Azure Active Directory TLS 1.0、TLS 1.1、3DES の非推奨化
@@ -159,6 +247,8 @@ Azure Active Directory (Azure AD) アプリケーション プロキシ は、�
 **製品の機能:** 監視とレポート
  
 サインイン診断の初期プレビュー リリースでは、管理者はユーザーのサインインを確認できるようになりました。管理者は、サインイン中に発生したことと問題の修正方法に関する、状況に応じた具体的で関連性のある詳細とガイダンスを受け取ることができます。 診断は Azure AD レベルと条件付きアクセスの診断と解決ブレードの両方で使用できます。 このリリースが対応する診断シナリオは、条件付きアクセス、Multi-Factor Authentication、成功したサインインです。
+
+詳細については、「[Azure AD におけるサインイン診断とは](../reports-monitoring/overview-sign-in-diagnostics.md)」を参照してください。
  
 ---
 
@@ -1015,190 +1105,4 @@ Azure AD ポータルの [ロールと管理者] タブで、ロールのすべ�
 
 ---
 
-## <a name="june-2020"></a>2020 年 6 月 
-
-### <a name="user-risk-condition-in-conditional-access-policy"></a>条件付きアクセス ポリシーのユーザー リスク条件
-
-**種類:** 変更の計画  
-**サービス カテゴリ:** 条件付きアクセス  
-**製品の機能:** ID のセキュリティ & 保護
- 
-
-Azure AD 条件付きアクセス ポリシーのユーザー リスク サポートを使用すると、複数のユーザー リスクベースのポリシーを作成できます。 ユーザーやアプリごとに、必要な最小ユーザー リスク レベルが異なる可能性があります。 ユーザー リスクに基づいて、アクセスをブロックしたり、多要素認証を要求したり、パスワードの変更をセキュリティで保護したり、Microsoft Cloud App Security にリダイレクトして追加監査などのセッション ポリシーを強制したりするポリシーを作成できます。
-
-ユーザー リスク条件には、Azure AD Premium P2 が必要です。P2 オファリングである Azure Identity Protection が使用されるためです。 条件付きアクセスの詳細については、[Azure AD 条件付きアクセスのドキュメント](../conditional-access/index.yml)を参照してください。
-
----
-
-### <a name="saml-sso-now-supports-apps-that-require-spnamequalifier-to-be-set-when-requested"></a>要求時に SPNameQualifier を設定する必要があるアプリが SAML SSOでサポートされるようになりました
-
-**種類:** 固定  
-**サービス カテゴリ:** エンタープライズ アプリケーション  
-**製品の機能:** SSO
- 
-一部の SAML アプリケーションでは、要求時にアサーション サブジェクトで SPNameQualifier が返される必要があります。 要求 NameID ポリシーで SPNameQualifier が要求されたときに、Azure AD が正しく応答するようになりました。 これは、SP initiated サインインでも機能します。また、IdP initiated サインインでも機能するようになる予定です。  Azure Active Directory での SAML プロトコルの詳細については、「[シングル サインオンの SAML プロトコル](../develop/single-sign-on-saml-protocol.md)」を参照してください。
-
----
-
-### <a name="azure-ad-b2b-collaboration-supports-inviting-msa-and-google-users-in-azure-government-tenants"></a>Azure AD B2B Collaboration により Azure Government テナントでの MSA および Google ユーザーの招待がサポートされます
-
-**種類:** 新機能  
-**サービス カテゴリ:** B2B  
-**製品の機能:** B2B/B2C
- 
-
-B2B Collaboration 機能を使用する Azure Government テナントは、Microsoft または Google アカウントを持つユーザーを招待できるようになりました。 お使いのテナントでこれらの機能を使用できるかどうかを確認するには、「[B2B コラボレーションが Azure US Government テナントで利用可能かどうかを確認するにはどうすればよいですか？](../external-identities/current-limitations.md#how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant)」の手順に従ってください。
-
- 
----
- 
-### <a name="user-object-in-ms-graph-v1-now-includes-externaluserstate-and-externaluserstatechangeddatetime-properties"></a>MS Graph v1 のユーザー オブジェクトに externalUserState と externalUserStateChangedDateTime プロパティが含まれるようになりました
-
-**種類:** 新機能  
-**サービス カテゴリ:** B2B  
-**製品の機能:** B2B/B2C
- 
-
-externalUserState と externalUserStateChangedDateTime プロパティを使用すると、招待したがまだ招待を受諾していない B2B ゲストを検索できます。また、数日間経過した後にまだ招待を受諾していないユーザーを削除するなどのビルド自動化を行うことができます。 これらのプロパティが、MS Graph v1 で使用できるようになりました。 これらのプロパティの使用方法については、[ユーザー リソースの種類](/graph/api/resources/user)に関するページを参照してください。
- 
----
-
-### <a name="manage-authentication-sessions-in-azure-ad-conditional-access-is-now-generally-available"></a>Azure AD 条件付きアクセスでの認証セッションの管理が一般提供されるようになりました
-
-**種類:** 新機能  
-**サービス カテゴリ:** 条件付きアクセス  
-**製品の機能:** ID のセキュリティ & 保護
- 
-認証セッションの管理機能を使用すると、ユーザーがサインイン資格情報を提供する必要がある頻度と、ブラウザーを閉じて再び開いた後に資格情報を提供する必要があるかどうかを構成することで、環境内でより高いセキュリティと柔軟性を提供できます。
- 
-また、認証セッション管理は以前、Azure AD 参加済み、Hybrid Azure AD 参加済み、および Azure AD 登録済みのデバイスでの第一要素認証のみに適用されていました。 現在、認証セッション管理は MFA にも適用されるようになりました。 詳細については、「[条件付きアクセスを使用して認証セッション管理を構成する](../conditional-access/howto-conditional-access-session-lifetime.md)」を参照してください。
-
----
-
-### <a name="new-federated-apps-available-in-azure-ad-application-gallery---june-2020"></a>Azure AD アプリケーション ギャラリーで新しいフェデレーション アプリが利用できるようになりました - 2020 年 6 月
-
-**種類:** 新機能  
-**サービス カテゴリ:** エンタープライズ アプリケーション  
-**製品の機能:** サード パーティ統合
- 
-2020 年 6 月、フェデレーションをサポートする次の 29 個の新しいアプリケーションがアプリ ギャラリーに追加されました。
-
-[Shopify Plus](../saas-apps/shopify-plus-tutorial.md)、[Ekarda](../saas-apps/ekarda-tutorial.md)、[MailGates](../saas-apps/mailgates-tutorial.md)、[BullseyeTDP](../saas-apps/bullseyetdp-tutorial.md)、[Raketa](../saas-apps/raketa-tutorial.md)、[Segment](../saas-apps/segment-tutorial.md)、[Ai Auditor](https://www.mindbridge.ai/products/ai-auditor/)、[Pobuca Connect](https://app.pobu.ca/)、[Proto.io](../saas-apps/proto.io-tutorial.md)、[Gatekeeper](https://www.gatekeeperhq.com/)、[Hub Planner](../saas-apps/hub-planner-tutorial.md)、[Ansira-Partner Go-to-Market Toolbox](https://ansira.com/technology/channel-engagement)、[IBM Digital Business Automation on Cloud](../saas-apps/ibm-digital-business-automation-on-cloud-tutorial.md)、[Kisi Physical Security](../saas-apps/kisi-physical-security-tutorial.md)、[ViewpointOne](https://team.viewpoint.com/)、[IntelligenceBank](../saas-apps/intelligencebank-tutorial.md)、[pymetrics](../saas-apps/pymetrics-tutorial.md)、[Zero](https://www.teamzero.com/)、[InStation](https://instation.invillia.com/)、[edX for Business SAML 2.0 Integration](../saas-apps/edx-for-business-saml-integration-tutorial.md)、[MOOC Office 365](https://mooc.office365-training.com/en/)、[SmartKargo](../saas-apps/smartkargo-tutorial.md)、[PKIsigning platform](https://platform.pkisigning.nl/)、[SiteIntel](../saas-apps/siteintel-tutorial.md)、[Field iD](../saas-apps/field-id-tutorial.md)、[Curricula SAML](../saas-apps/curricula-saml-tutorial.md)、[Perforce Helix Core - Helix Authentication Service](../saas-apps/perforce-helix-core-tutorial.md)、[MyCompliance Cloud](https://cloud.metacompliance.com/)、[Smallstep SSH](https://smallstep.com/sso-ssh/)  
-
-すべてのアプリケーションのドキュメントについては、こちら (https://aka.ms/AppsTutorial ) をご覧ください。 Azure AD アプリ ギャラリーにアプリケーションを公開する場合は、こちらの詳細 (https://aka.ms/AzureADAppRequest ) をお読みください。
-
----
-
-### <a name="api-connectors-for-external-identities-self-service-sign-up-are-now-in-public-preview"></a>External Identities セルフサービス サインアップ用の API コネクターは、現在パブリック プレビュー中です
-
-**種類:** 新機能  
-**サービス カテゴリ:** B2B  
-**製品の機能:** B2B/B2C
- 
-External Identities API コネクタを使用すると、Web API を利用してセルフサービス サインアップを外部クラウド システムと統合できます。 つまり、Web API をサインアップ フローの特定の手順として呼び出して、クラウドベースのカスタム ワークフローをトリガーできるようになりました。 たとえば、API コネクタを使用して次のことを行うことができます。
-
-- カスタム承認ワークフローと統合する
-- ID 証明を実行する
-- ユーザー入力データを検証する
-- ユーザー属性を上書する
-- カスタム ビジネス ロジックを実行する
-
-API コネクタで可能なすべてのエクスペリエンスの詳細については、「[API コネクタを使用してセルフサービス サインアップをカスタマイズおよび拡張する](../external-identities/api-connectors-overview.md)」、または[Web API 統合を使用した External Identities セルフサービス サインアップのカスタマイズ](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/customize-external-identities-self-service-sign-up-with-web-api/ba-p/1257364#.XvNz2fImuQg.linkedin)に関する記事を参照してください。
- 
----
-
-### <a name="provision-on-demand-and-get-users-into-your-apps-in-seconds"></a>オンデマンドで数秒でユーザーをアプリにプロビジョニング
-
-**種類:** 新機能  
-**サービス カテゴリ:** アプリ プロビジョニング  
-**製品の機能:** ID ライフサイクル管理
- 
-Azure AD プロビジョニング サービスは、現在、周期的に動作しています。 このサービスは 40 分ごとに実行されます。 [オンデマンド プロビジョニング機能](https://aka.ms/provisionondemand)を使用すると、ユーザーを選択し、数秒でプロビジョニングできます。 この機能を使用すると、プロビジョニング サイクルを強制的に再起動しなくても、プロビジョニングの問題を迅速にトラブルシューティングできます。 
- 
----
-
-### <a name="new-permission-for-using-azure-ad-entitlement-management-in-graph"></a>Graph で Azure AD エンタイトルメント管理を使用するための新しいアクセス許可
-
-**種類:** 新機能  
-**サービス カテゴリ:** その他  
-**製品の機能:** エンタイトルメント管理
- 
-新しい委任されたアクセス許可 EntitlementManagement.Read.All を Microsoft Graph ベータ版のエンタイトルメント管理 API で使用できるようになりました。 使用可能な API の詳細については、[Azure AD エンタイトルメント管理 API の操作](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)に関する記事を参照してください。
-
----
-
-### <a name="identity-protection-apis-available-in-v10"></a>Identity Protection API を v1.0 で利用できるようになりました
-
-**種類:** 新機能  
-**サービス カテゴリ:** Identity Protection  
-**製品の機能:** ID のセキュリティ & 保護
- 
-riskyUsers および riskDetections Microsoft Graph API が一般提供されるようになりました。 v1.0 エンドポイントで利用できるようになったので、運用環境で使用することをお勧めします。 詳細については、[Microsoft Graph のドキュメント](/graph/api/resources/identityprotectionroot)を参照してください。
- 
----
-
-### <a name="sensitivity-labels-to-apply-policies-to-microsoft-365-groups-is-now-generally-available"></a>Microsoft 365 グループにポリシーを適用するための秘密度ラベルが一般提供されるようになりました
-
-**種類:** 新機能  
-**サービス カテゴリ:** グループ管理  
-**製品の機能:** コラボレーション
- 
-
-秘密度ラベルを作成し、そのラベルの設定を使用して、プライバシー (パブリックまたはプライベート) と外部ユーザー アクセス ポリシーを含むポリシーを Microsoft 365 グループに適用できるようになりました。 プライバシー ポリシーをプライベートに設定し、外部ユーザー アクセス ポリシーを、ゲスト ユーザーの追加を許可しないように設定したラベルを作成できます。 ユーザーがこのラベルをグループに適用すると、そのグループはプライベートになり、ゲスト ユーザーをグループに追加することは許可されません。 
-
-秘密度ラベルは、ビジネスに不可欠なデータを保護するうえで重要であり、これを使用することにより、コンプライアンスに準拠しセキュリティで保護された方法で、大規模なグループを管理できます。 秘密度ラベルの使用のガイダンスについては、「[Azure Active Directory で Microsoft 365 グループに秘密度ラベルを割り当てる (プレビュー)](../enterprise-users/groups-assign-sensitivity-labels.md)」を参照してください。
- 
----
-
-### <a name="updates-to-support-for-microsoft-identity-manager-for-azure-ad-premium-customers"></a>Azure AD Premium のお客様を対象とする Microsoft Identity Manager のサポートに対する更新
-
-**種類:** 変更された機能  
-**サービス カテゴリ:** Microsoft Identity Manager  
-**製品の機能:** ID ライフサイクル管理
- 
-Microsoft Identity Manager 2016 の延長サポートの終了により、Microsoft Identity Manager 2016 の Azure AD 統合コンポーネントに対して Azure サポートが利用できるようになりました。 詳細については、「[Microsoft Identity Manager を利用している Azure AD Premium のお客様向けの更新のサポート](/microsoft-identity-manager/support-update-for-azure-active-directory-premium-customers)」をお読みください。
-
----
-
-### <a name="the-use-of-group-membership-conditions-in-sso-claims-configuration-is-increased"></a>SSO 要求構成でのグループ メンバーシップ条件の使用が増加しています
-
-**種類:** 変更された機能  
-**サービス カテゴリ:** エンタープライズ アプリケーション  
-**製品の機能:** SSO
- 
-以前は、1 つのアプリケーション構成内で、グループ メンバーシップに基づいて条件付きで要求を変更するときに使用できるグループの数は、10 個に制限されていました。 SSO 要求構成でのグループ メンバーシップ条件の使用が、最大 50 グループに増加しました。 要求を構成する方法の詳細については、[エンタープライズ アプリケーションの SSO 要求の構成](../develop/active-directory-saml-claims-customization.md#emitting-claims-based-on-conditions)に関する記事を参照してください。 
-
----
-
-### <a name="enabling-basic-formatting-on-the-sign-in-page-text-component-in-company-branding"></a>会社のブランドのサインイン ページ テキスト コンポーネントにおける基本的な書式設定の有効化
-
-**種類:** 変更された機能  
-**サービス カテゴリ:** 認証 (ログイン)  
-**製品の機能:** ユーザー認証
- 
-Azure AD/Microsoft 365 ログイン エクスペリエンスでの会社のブランド機能が更新され、ハイパーリンクや、太字、下線、斜体などの書式設定をお客様が追加できるようになりました。 この機能の使用方法については、「[組織の Azure Active Directory のサインイン ページにブランドを追加する](./customize-branding.md)」を参照してください。
-
----
-
-### <a name="provisioning-performance-improvements"></a>プロビジョニング パフォーマンスの向上
-
-**種類:** 変更された機能  
-**サービス カテゴリ:** アプリ プロビジョニング  
-**製品の機能:** ID ライフサイクル管理
- 
-[増分サイクル](../app-provisioning/how-provisioning-works.md#incremental-cycles)が完了するまでの時間を短縮するようにプロビジョニング サービスが更新されました。 これは、ユーザーとグループが、以前よりも迅速にアプリケーションにプロビジョニングされることを意味します。 2020 年 6 月 10 日より後に作成されたすべての新しいプロビジョニング ジョブは、自動的にパフォーマンス向上の恩恵を受けます。 2020 年 6 月 10 日までにプロビジョニング用に構成されたアプリケーションでこのパフォーマンス向上を活用するためには、2020 年 6 月 10 日より後に 1 回再起動する必要があります。 
-
----
-
-### <a name="announcing-the-deprecation-of-adal-and-ms-graph-parity"></a>ADAL と MS Graph パリティの非推奨の発表
-
-**種類:** 非推奨  
-**サービス カテゴリ:** 該当なし  
-**製品の機能:** デバイスのライフサイクル管理
-
-Microsoft 認証ライブラリ (MSAL) が利用できるようになったため、Azure Active Directory 認証ライブラリ (ADAL) への新機能の追加は行われなくなり、セキュリティ更新プログラムは 2022 年 6 月 30 日に終了となります。 MSAL への移行方法については、「[Microsoft Authentication Library (MSAL) へのアプリケーションの移行](../develop/msal-migration.md)」を参照してください。
-
-さらに、MS Graph からすべての Azure AD Graph の機能を利用できるようにする作業を終了しました。 したがって、Azure AD Graph API がバグ修正とセキュリティ修正を受け取るのは、2022 年 6 月 30 日までのみとなります。 詳細については、[Microsoft 認証ライブラリと Microsoft Graph API を使用するようにアプリケーションを更新する](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)ことに関する記事を参照してください。
- 
----
  

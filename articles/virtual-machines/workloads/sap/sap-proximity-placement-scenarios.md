@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/29/2020
+ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aae822665702300064e82e80d74b5c2256423ea1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1e6aaf1b37073bf93e0aca8237161bf11af3a872
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957284"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827225"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>SAP アプリケーションで最適なネットワーク待ち時間を実現するための Azure 近接通信配置グループ
 SAP NetWeaver または SAP S/4HANA アーキテクチャを基盤とする SAP アプリケーションは、SAP アプリケーション層と SAP データベース層の間のネットワーク待ち時間の影響を受けます。 この影響は、アプリケーション レイヤーで実行されているほとんどのビジネス ロジックの結果です。 SAP アプリケーション レイヤーはビジネス ロジックを実行するため、データベース層に対して、1 秒あたり何千回または何万回という高い頻度でクエリを実行します。 これらのクエリの性質は、ほとんどの場合単純です。 多くの場合、データベース層で 500 マイクロ秒以内で実行できます。
@@ -42,6 +42,8 @@ SAP NetWeaver または SAP S/4HANA アーキテクチャを基盤とする SAP 
 > - 必要な場合のみ
 > - システム全体のランドスケープまたは完全な SAP ランドスケープではなく、単一の SAP システムという粒度でのみ
 > - 近接配置グループ内の各種 VM の種類と VM の数を最小限に抑えるように
+
+前提として、可用性ゾーンを指定して VM をデプロイし、同じ可用性ゾーンを選択する場合、これらの VM 間のネットワーク待ち時間は、SAP NetWeaver および S/4HANA システムを満足のいくパフォーマンスとスループットで運用するのに十分なものである必要があります。 この前提は、特定のゾーンが 1 つのデータセンターで構成されているか、複数のデータセンターで構成されているかには関係ありません。 ゾーンでのデプロイに近接配置グループを使用する唯一の理由は、Azure 可用性セットを使用してデプロイされた VM を、ゾーンにデプロイされた VM と一緒に割り当てる必要があるケースであるということです。
 
 
 ## <a name="what-are-proximity-placement-groups"></a>近接通信配置グループとは 

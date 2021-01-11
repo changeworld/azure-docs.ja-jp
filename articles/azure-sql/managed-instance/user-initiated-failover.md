@@ -3,19 +3,19 @@ title: SQL Managed Instance でのフェールオーバーを手動で開始す�
 description: Azure SQL Managed Instance でプライマリ レプリカとセカンダリ レプリカを手動でフェールオーバーする方法について説明します。
 services: sql-database
 ms.service: sql-managed-instance
-ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurecli
+ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 08/31/2020
-ms.openlocfilehash: 51e9e66e2fd8ff60dd20c275a66fd13c047cc629
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/16/2020
+ms.openlocfilehash: 4b1c98d8621267b300a82b697bce66a6b94e82f3
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985520"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825911"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL Managed Instance でユーザーによって開始される手動フェールオーバー
 
@@ -140,7 +140,7 @@ GP サービス レベルでは、上記の BC で示されているものと同
 
 > [!IMPORTANT]
 > ユーザーが開始した手動フェールオーバーの機能上の制限は次のとおりです。
-> - 同じ Managed Instance では、**30 分** ごとに 1 つのフェールオーバーを開始できます。
+> - 同じ Managed Instance 上では、**15 分** ごとに 1 つのフェールオーバーを開始できます。
 > - BC インスタンスの場合、フェールオーバー要求が受け入れられるには、レプリカのクォーラムが存在している必要があります。
 > - BC インスタンスの場合、フェールオーバーを開始する読み取り可能セカンダリ レプリカを指定することはできません。
 

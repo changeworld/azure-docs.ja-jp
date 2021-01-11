@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 6abdb3cc6981a4fbdd52b88a75457c37709597f5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 42b9958678c76c1d0eed67cc9d97361c84f1dea9
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020791"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821164"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>HDInsight Spark クラスターを使用して Data Lake Storage Gen1 内のデータを分析する
 
@@ -73,7 +73,7 @@ Data Lake Storage を追加ストレージとして使用し、Azure Storage Blo
 
 3. 新しい Notebook を作成します。 **[新規]** をクリックし、 **[PySpark]** をクリックします。
 
-    ![新しい Jupyter Notebook を作成します](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "新しい Jupyter Notebook を作成します")
+    ![新しい Jupyter Notebook を作成する](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "新しい Jupyter Notebook を作成する")
 
 4. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark および Hive コンテキストが自動的に作成されます。 このシナリオに必要な種類をインポートすることから始めることができます。 このためには、次のコード スニペットをセルに貼り付けて、 **Shift + Enter** キーを押します。
 

@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 12/28/2020
 ms.author: jgao
-ms.openlocfilehash: c6d171717865fe4bdf3dfb30a6d24badd4fe29ca
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 4d2a55355318a1bf916017fa77026a87a95b7f57
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505564"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809719"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>ARM テンプレートでデプロイ スクリプトを使用する
 
@@ -39,51 +39,45 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
 
 > [!IMPORTANT]
 > deploymentScripts リソース API バージョン 2020-10-01 では、[OnBehalfofTokens(OBO)](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md) がサポートされています。 OBO を使用することにより、デプロイ スクリプト サービスは、デプロイ プリンシパルのトークンを使用して、デプロイ スクリプトを実行するための基になるリソースを作成します。これには、Azure Container Instance、Azure Storage アカウント、およびマネージド ID のロール割り当てが含まれます。 以前の API バージョンでは、これらのリソースを作成するためにマネージド ID が使用されています。
-> 現在は、Azure サインインの再試行ロジックがラッパー スクリプトに組み込まれています。 デプロイ スクリプトを実行する同じテンプレートでアクセス許可を付与する場合。  マネージド ID のロール割り当てがレプリケートされるまで、デプロイ スクリプト サービスによって、10 秒間隔で 10 分間サインインが試行されます。
+> 現在は、Azure サインインの再試行ロジックがラッパー スクリプトに組み込まれています。 デプロイ スクリプトを実行する同じテンプレートでアクセス許可を付与する場合。 マネージド ID のロール割り当てがレプリケートされるまで、デプロイ スクリプト サービスによって、10 秒間隔で 10 分間サインインが試行されます。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="configure-the-minimum-permissions"></a>最低限のアクセス許可を構成する
 
-- **(省略可能) スクリプトの操作を実行するために必要なアクセス許可が付与されたユーザー割り当てマネージド ID**。 デプロイ スクリプト API バージョン2020-10-01 以降では、基になるリソースを作成するためにデプロイ プリンシパルが使用されます。 スクリプトで Azure に対する認証を行い、Azure 固有のアクションを実行する必要がある場合は、スクリプトにユーザー割り当てマネージド ID を指定することをお勧めします。 スクリプト内の操作を完了するには、マネージド ID に、ターゲット リソース グループの必要なアクセス権がある必要があります。 デプロイ スクリプトで Azure にサインインすることもできます。 リソース グループの外部で操作を実行するには、追加のアクセス許可を付与する必要があります。 たとえば、新しいリソース グループを作成する場合は、サブスクリプション レベルに ID を割り当てます。 
+デプロイ スクリプト API バージョン 2020-10-01 以降では、デプロイ プリンシパルを使用して、デプロイ スクリプト リソースの実行に必要な基になるリソース (ストレージ アカウントと Azure コンテナー インスタンス) を作成します。 スクリプトで Azure に対する認証を行い、Azure 固有のアクションを実行する必要がある場合は、スクリプトにユーザー割り当てマネージド ID を指定することをお勧めします。 マネージド ID に、スクリプト内の操作を完了するために必要なアクセス権がある必要があります。
 
-  ID を作成するには、[Azure portal を使用してユーザー割り当てマネージド ID を作成する方法](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)、[Azure CLI を使用する方法](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)、または [Azure PowerShell を使用する方法](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)に関する各記事を参照してください。 この識別 ID は、テンプレートをデプロイするときに必要です。 ID の形式は次のとおりです。
+最小特権のアクセス許可を構成するには、次のことが必要です。
+
+- 次のプロパティを持つカスタム ロールをデプロイ プリンシパルに割り当てます。
 
   ```json
-  /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
+  {
+    "roleName": "deployment-script-minimum-privilege-for-deployment-principal",
+    "description": "Configure least privilege for the deployment principal in deployment script",
+    "type": "customRole",
+    "IsCustom": true,
+    "permissions": [
+      {
+        "actions": [
+          "Microsoft.Storage/storageAccounts/*",
+          "Microsoft.ContainerInstance/containerGroups/*",
+          "Microsoft.Resources/deployments/*",
+          "Microsoft.Resources/deploymentScripts/*"
+        ],
+      }
+    ],
+    "assignableScopes": [
+      "[subscription().id]"
+    ]
+  }
   ```
 
-  次の CLI または PowerShell スクリプトを使用して、リソース グループ名と ID 名を指定することで ID を取得します。
+  Azure Storage と Azure Container Instance のリソース プロバイダーが登録されていない場合は、`Microsoft.Storage/register/action` と `Microsoft.ContainerInstance/register/action` も追加する必要があります。
 
-  # <a name="cli"></a>[CLI](#tab/CLI)
-
-  ```azurecli-interactive
-  echo "Enter the Resource Group name:" &&
-  read resourceGroupName &&
-  echo "Enter the managed identity name:" &&
-  read idName &&
-  az identity show -g $resourceGroupName -n $idName --query id
-  ```
-
-  # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-  ```azurepowershell-interactive
-  $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
-  $idName = Read-Host -Prompt "Enter the name of the managed identity"
-
-  (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name $idName).Id
-  ```
-
-  ---
-
-- **Azure PowerShell** または **Azure CLI**。 [サポートされている Azure PowerShell バージョン](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)の一覧を参照してください。 [サポートされている Azure CLI バージョン](https://mcr.microsoft.com/v2/azure-cli/tags/list)の一覧を参照してください。
-
-    >[!IMPORTANT]
-    > デプロイ スクリプトでは、Microsoft Container Registry (MCR) から入手可能な CLI イメージが使用されます。 デプロイ スクリプトに対する CLI イメージの認定には、1 か月ほどかかります。 30 日以内にリリースされた CLI バージョンは使用しないでください。 イメージのリリース日を確認するには、「[Azure CLI リリース ノート](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true)」を参照してください。 サポートされていないバージョンが使用されている場合、サポートされているバージョンがエラー メッセージに一覧表示されます。
-
-    これらのバージョンは、テンプレートのデプロイには必要ありません。 ただし、これらのバージョンは、デプロイ スクリプトをローカルでテストするために必要です。 [Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 事前構成済みの Docker イメージを使用できます。  「[開発環境の設定](#configure-development-environment)」を参照してください。
+- マネージド ID を使用する場合は、デプロイ プリンシパルに、マネージ ID リソースに割り当てられた **マネージド ID オペレーター** ロール (組み込みロール) が必要です。
 
 ## <a name="sample-templates"></a>サンプル テンプレート
 
-次の JSON はサンプルです。  最新のテンプレートのスキーマについては、[こちら](/azure/templates/microsoft.resources/deploymentscripts)をご覧ください。
+次の JSON は例です。 詳細については、最新の[テンプレート スキーマ](/azure/templates/microsoft.resources/deploymentscripts)を参照してください。
 
 ```json
 {
@@ -99,7 +93,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
     }
   },
   "properties": {
-    "forceUpdateTag": 1,
+    "forceUpdateTag": "1",
     "containerSettings": {
       "containerGroupName": "mycustomaci"
     },
@@ -111,13 +105,17 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
     "arguments": "-name \\\"John Dole\\\"",
     "environmentVariables": [
       {
-        "name": "someSecret",
-        "secureValue": "if this is really a secret, don't put it here... in plain text..."
+        "name": "UserName",
+        "value": "jdole"
+      },
+      {
+        "name": "Password",
+        "secureValue": "jDolePassword"
       }
     ],
     "scriptContent": "
       param([string] $name)
-      $output = 'Hello {0}' -f $name
+      $output = 'Hello {0}. The username is {1}, the password is {2}.' -f $name,${Env:UserName},${Env:Password}
       Write-Output $output
       $DeploymentScriptOutputs = @{}
       $DeploymentScriptOutputs['text'] = $output
@@ -131,37 +129,44 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
 ```
 
 > [!NOTE]
-> この例は、デモンストレーション用です。  **scriptContent** と **primaryScriptUri** をテンプレート内で共存させることはできません。
+> この例は、デモンストレーション用です。 1 つのテンプレートでプロパティ `scriptContent` と `primaryScriptUri` の両方を指定することはできません。
 
 プロパティ値の詳細:
 
-- **identity**: デプロイ スクリプト API バージョン2020-10-01 以降では、スクリプトで Azure 固有のアクションを実行する必要がない限り、ユーザー割り当てマネージド ID は省略可能です。  API バージョン 2019-10-01-preview では、デプロイ スクリプト サービスでスクリプトを実行するために使用されるため、マネージド ID が必要です。 現時点では、ユーザー割り当てマネージド ID のみがサポートされています。
-- **kind**: スクリプトの種類を指定します。 現在、Azure PowerShell および Azure CLI のスクリプトがサポートされています。 値は、**AzurePowerShell** と **AzureCLI** です。
-- **forceUpdateTag**:テンプレートのデプロイ間でこの値を変更すると、デプロイ スクリプトが強制的に再実行されます。 newGuid() または utcNow() 関数を使用する場合は、どちらの関数もパラメーターの既定値でのみ使用できます。 詳細については、「[スクリプトを複数回実行する](#run-script-more-than-once)」を参照してください。
-- **containerSettings**:Azure Container Instance をカスタマイズするための設定を指定します。  **containerGroupName** は、コンテナー グループ名を指定するためのものです。  指定しない場合、グループ名は自動的に生成されます。
-- **storageAccountSettings**:既存のストレージ アカウントを使用するための設定を指定します。 指定しない場合、ストレージ アカウントは自動的に作成されます。 「[既存のストレージ アカウントの使用](#use-existing-storage-account)」を参照してください。
-- **azPowerShellVersion**/**azCliVersion**:使用するモジュールのバージョンを指定します。 サポートされている PowerShell と CLI のバージョンの一覧については、「[前提条件](#prerequisites)」を参照してください。
-- **arguments**: パラメーター値を指定します。 値はスペースで区切ります。
+- `identity`: デプロイ スクリプト API バージョン2020-10-01 以降では、スクリプトで Azure 固有のアクションを実行する必要がない限り、ユーザー割り当てマネージド ID は省略可能です。  API バージョン 2019-10-01-preview では、デプロイ スクリプト サービスでスクリプトを実行するために使用されるため、マネージド ID が必要です。 現時点では、ユーザー割り当てマネージド ID のみがサポートされています。
+- `kind`: スクリプトの種類を指定します。 現在、Azure PowerShell および Azure CLI のスクリプトがサポートされています。 値は、**AzurePowerShell** と **AzureCLI** です。
+- `forceUpdateTag`:テンプレートのデプロイ間でこの値を変更すると、デプロイ スクリプトが強制的に再実行されます。 `newGuid()` または `utcNow()` 関数を使用する場合は、どちらの関数もパラメーターの既定値でのみ使用できます。 詳細については、「[スクリプトを複数回実行する](#run-script-more-than-once)」を参照してください。
+- `containerSettings`:Azure Container Instance をカスタマイズするための設定を指定します。  `containerGroupName` は、コンテナー グループ名を指定するためのものです。 指定しない場合、グループ名は自動的に生成されます。
+- `storageAccountSettings`:既存のストレージ アカウントを使用するための設定を指定します。 指定しない場合、ストレージ アカウントは自動的に作成されます。 「[既存のストレージ アカウントの使用](#use-existing-storage-account)」を参照してください。
+- `azPowerShellVersion`/`azCliVersion`:使用するモジュールのバージョンを指定します。 [サポートされている Azure PowerShell バージョン](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)の一覧を参照してください。 [サポートされている Azure CLI バージョン](https://mcr.microsoft.com/v2/azure-cli/tags/list)の一覧を参照してください。
 
-    デプロイ スクリプトは、[CommandLineToArgvW](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) システム呼び出しを起動して、引数を文字列の配列に分割します。 この手順が必要なのは、引数が [command プロパティ](/rest/api/container-instances/containergroups/createorupdate#containerexec)として Azure コンテナー インスタンスに渡され、その command プロパティは文字列の配列であるためです。
+  >[!IMPORTANT]
+  > デプロイ スクリプトでは、Microsoft Container Registry (MCR) から入手可能な CLI イメージが使用されます。 デプロイ スクリプトに対する CLI イメージの認定には、1 か月ほどかかります。 30 日以内にリリースされた CLI バージョンは使用しないでください。 イメージのリリース日を確認するには、「[Azure CLI リリース ノート](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true)」を参照してください。 サポートされていないバージョンが使用されている場合、サポートされているバージョンがエラー メッセージに一覧表示されます。
 
-    引数にエスケープ文字が含まれている場合は [JsonEscaper](https://www.jsonescaper.com/) を使用して、文字をダブル エスケープします。 元のエスケープされた文字列をそのツールに貼り付け、 **[エスケープ]** を選択します。  ツールにより、ダブル エスケープされた文字列が出力されます。 たとえば、前のサンプル テンプレートの引数は **-name \\"John Dole\\"** です。  エスケープされた文字列は、 **-name \\\\\\"John dole\\\\\\"** です。
+- `arguments`:パラメーター値を指定します。 値はスペースで区切ります。
 
-    オブジェクト型の ARM テンプレート パラメーターを引数として渡すには、[string ()](./template-functions-string.md#string) 関数を使用してオブジェクトを文字列に変換してから、[replace ()](./template-functions-string.md#replace) 関数を使用して **\\"** を **\\\\\\"** にすべて置き換えます。 次に例を示します。
+  デプロイ スクリプトは、[CommandLineToArgvW](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) システム呼び出しを起動して、引数を文字列の配列に分割します。 この手順が必要なのは、引数が [command プロパティ](/rest/api/container-instances/containergroups/createorupdate#containerexec)として Azure コンテナー インスタンスに渡され、その command プロパティは文字列の配列であるためです。
 
-    ```json
-    replace(string(parameters('tables')), '\"', '\\\"')
-    ```
+  引数にエスケープ文字が含まれている場合は [JsonEscaper](https://www.jsonescaper.com/) を使用して、文字をダブル エスケープします。 元のエスケープされた文字列をそのツールに貼り付け、 **[エスケープ]** を選択します。  ツールにより、ダブル エスケープされた文字列が出力されます。 たとえば、前のサンプル テンプレートの引数は `-name \"John Dole\"` です。 エスケープされた文字列は `-name \\\"John Dole\\\"` です。
 
-    サンプル テンプレートを表示するには、[ここ](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json)を選択します。
+  オブジェクト型の ARM テンプレート パラメーターを引数として渡すには、[string ()](./template-functions-string.md#string) 関数を使用してオブジェクトを文字列に変換してから、[replace ()](./template-functions-string.md#replace) 関数を使用してすべての `\"` を `\\\"` に置き換えます。 例:
 
-- **environmentVariables**:スクリプトに渡す環境変数を指定します。 詳細については、「[デプロイ スクリプトを開発する](#develop-deployment-scripts)」を参照してください。
-- **scriptContent**:スクリプトの内容を指定します。 外部スクリプトを実行するには、代わりに `primaryScriptUri` を使用します。 例については、「[インライン スクリプトを使用する](#use-inline-scripts)」および「[外部スクリプトを使用する](#use-external-scripts)」を参照してください。
-- **primaryScriptUri**:サポートされているファイル拡張子を含むプライマリ デプロイ スクリプトへのパブリックにアクセス可能な URL を指定します。
-- **supportingScriptUris**:`ScriptContent` または `PrimaryScriptUri` で呼び出されるサポート ファイルへのパブリックにアクセス可能な URL の配列を指定します。
-- **timeout**: [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定される、スクリプトの許容最長実行時間を指定します。 既定値は **P1D** です。
-- **cleanupPreference**。 スクリプトの実行がターミナル状態になった際の、デプロイ リソースのクリーンアップ設定を指定します。 既定の設定は、**Always** です。これは、ターミナル状態 (Succeeded、Failed、Canceled) に関係なくリソースを削除することを意味します。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](#clean-up-deployment-script-resources)」を参照してください。
-- **retentionInterval**:デプロイ スクリプトの実行が終了状態に達した後、サービスがデプロイ スクリプト リソースを保持する間隔を指定します。 この期間が経過すると、デプロイ スクリプト リソースは削除されます。 期間は [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) のパターンに基づきます。 保持期間は 1 から 26 時間 (PT26H) です。 このプロパティは、cleanupPreference が *OnExpiration* に設定されている場合に使用されます。 *OnExpiration* プロパティは、現在有効になっていません。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](#clean-up-deployment-script-resources)」を参照してください。
+  ```json
+  replace(string(parameters('tables')), '\"', '\\\"')
+  ```
+
+  詳細については、[サンプル テンプレート](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json)を参照してください。
+
+- `environmentVariables`:スクリプトに渡す環境変数を指定します。 詳細については、「[デプロイ スクリプトを開発する](#develop-deployment-scripts)」を参照してください。
+- `scriptContent`:スクリプトの内容を指定します。 外部スクリプトを実行するには、代わりに `primaryScriptUri` を使用します。 例については、「[インライン スクリプトを使用する](#use-inline-scripts)」および「[外部スクリプトを使用する](#use-external-scripts)」を参照してください。
+  > [!NOTE]
+  > Azure portal で複数行のデプロイ スクリプトを解析することはできません。 Azure portal からデプロイ スクリプトを使用してテンプレートをデプロイするには、セミコロンを使用して PowerShell コマンドを 1 行にチェーンするか、外部のスクリプト ファイルで `primaryScriptUri` プロパティを使用することができます。
+
+- `primaryScriptUri`:サポートされているファイル拡張子を含むプライマリ デプロイ スクリプトへのパブリックにアクセス可能な URL を指定します。
+- `supportingScriptUris`:`scriptContent` または `primaryScriptUri` で呼び出されるサポート ファイルへのパブリックにアクセス可能な URL の配列を指定します。
+- `timeout`: [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定される、スクリプトの許容最長実行時間を指定します。 既定値は **P1D** です。
+- `cleanupPreference`. スクリプトの実行がターミナル状態になった際の、デプロイ リソースのクリーンアップ設定を指定します。 既定の設定は、**Always** です。これは、ターミナル状態 (Succeeded、Failed、Canceled) に関係なくリソースを削除することを意味します。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](#clean-up-deployment-script-resources)」を参照してください。
+- `retentionInterval`:デプロイ スクリプトの実行が終了状態に達した後、サービスがデプロイ スクリプト リソースを保持する間隔を指定します。 この期間が経過すると、デプロイ スクリプト リソースは削除されます。 期間は [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) のパターンに基づきます。 保持期間は 1 から 26 時間 (PT26H) です。 このプロパティは、`cleanupPreference` が **OnExpiration** に設定されている場合に使用されます。 **OnExpiration** プロパティは、現在有効になっていません。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](#clean-up-deployment-script-resources)」を参照してください。
 
 ### <a name="additional-samples"></a>その他のサンプル
 
@@ -176,9 +181,9 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-44" highlight="24-30":::
 
 > [!NOTE]
-> インライン デプロイ スクリプトは二重引用符で囲まれているため、デプロイ スクリプト内の文字列は、 **&#92;** を使用してエスケープするか、単一引用符で囲む必要があります。 前の JSON サンプルに示されているように、文字列の置換を使用することを検討することもできます。
+> インライン デプロイ スクリプトは二重引用符で囲まれているため、デプロイ スクリプト内の文字列は、円記号 ( **&#92;** ) を使用してエスケープするか、単一引用符で囲む必要があります。 前の JSON サンプルに示されているように、文字列の置換を使用することを検討することもできます。
 
-このスクリプトは、1 つのパラメーターを受け取り、パラメーター値を出力します。 **DeploymentScriptOutputs** は、出力を格納するために使用されます。  出力セクションの **値** の線は、格納されている値にアクセスする方法を示しています。 `Write-Output` はデバッグ目的で使用されます。 出力ファイルにアクセスする方法については、「[デプロイ スクリプトの監視とトラブルシューティング](#monitor-and-troubleshoot-deployment-scripts)」を参照してください。  プロパティの説明については、「[サンプル テンプレート](#sample-templates)」を参照してください。
+このスクリプトは、1 つのパラメーターを受け取り、パラメーター値を出力します。 `DeploymentScriptOutputs` は、出力を格納するために使用されます。 出力セクションの`value`の線は、格納されている値にアクセスする方法を示しています。 `Write-Output` はデバッグ目的で使用されます。 出力ファイルにアクセスする方法については、「[デプロイ スクリプトの監視とトラブルシューティング](#monitor-and-troubleshoot-deployment-scripts)」を参照してください。 プロパティの説明については、「[サンプル テンプレート](#sample-templates)」を参照してください。
 
 スクリプトを実行するには、 **[試してみる]** を選択して Cloud Shell を開き、次のコードをシェル ウィンドウに貼り付けます。
 
@@ -199,17 +204,17 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="use-external-scripts"></a>外部スクリプトを使用する
 
-インライン スクリプトに加えて、外部スクリプト ファイルを使用することもできます。 **ps1** ファイル拡張子を持つプライマリ PowerShell スクリプトのみがサポートされています。 CLI スクリプトの場合、スクリプトが有効な bash スクリプトである限り、プライマリ スクリプトには任意の拡張子を設定できます (または拡張子なしにできます)。 外部スクリプト ファイルを使用するには、`scriptContent` を `primaryScriptUri` に置き換えます。 次に例を示します。
+インライン スクリプトに加えて、外部スクリプト ファイルを使用することもできます。 _ps1_ ファイル拡張子を持つプライマリ PowerShell スクリプトのみがサポートされています。 CLI スクリプトの場合、スクリプトが有効な bash スクリプトである限り、プライマリ スクリプトには任意の拡張子を設定できます (または拡張子なしにできます)。 外部スクリプト ファイルを使用するには、`scriptContent` を `primaryScriptUri` に置き換えます。 次に例を示します。
 
 ```json
-"primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
+"primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
 ```
 
-例を確認するには、[[こちら]](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json) を選択します。
+詳細については、[テンプレートの例](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json)を参照してください。
 
-外部スクリプト ファイルにアクセスできる必要があります。  Azure ストレージ アカウントに格納されているスクリプト ファイルをセキュリティで保護するには、「[SAS トークンを使用してプライベート ARM テンプレートをデプロイする](./secure-template-with-sas-token.md)」を参照してください。
+外部スクリプト ファイルにアクセスできる必要があります。 Azure ストレージ アカウントに格納されているスクリプト ファイルをセキュリティで保護するには、「[SAS トークンを使用してプライベート ARM テンプレートをデプロイする](./secure-template-with-sas-token.md)」を参照してください。
 
-デプロイ スクリプトによって参照されるスクリプトの整合性を確保する必要があります (**PrimaryScriptUri** または **SupportingScriptUris** のいずれか)。  信頼できるスクリプトのみを参照します。
+デプロイ スクリプトによって参照されるスクリプトの整合性を確保する必要があります (`primaryScriptUri` または `supportingScriptUris` のいずれか)。 信頼できるスクリプトのみを参照します。
 
 ## <a name="use-supporting-scripts"></a>サポート スクリプトを使用する
 
@@ -233,11 +238,11 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="work-with-outputs-from-powershell-script"></a>PowerShell スクリプトからの出力を操作する
 
-次のテンプレートは、2 つの deploymentScripts リソース間で値を渡す方法を示しています。
+次のテンプレートでは、2 つの `deploymentScripts` リソース間で値を渡す方法が示されています。
 
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-68" highlight="30-31,50":::
 
-最初のリソースでは、 **$DeploymentScriptOutputs** という名前の変数を定義し、それを使用して出力値を格納します。 テンプレート内の別のリソースから出力値にアクセスするには、次のように指定します。
+最初のリソースでは、 `$DeploymentScriptOutputs` という名前の変数を定義し、それを使用して出力値を格納します。 テンプレート内の別のリソースから出力値にアクセスするには、次のように指定します。
 
 ```json
 reference('<ResourceName>').output.text
@@ -245,9 +250,9 @@ reference('<ResourceName>').output.text
 
 ## <a name="work-with-outputs-from-cli-script"></a>CLI スクリプトからの出力を操作する
 
-PowerShell デプロイ スクリプトとは異なり、CLI/Bash のサポートでは、スクリプト出力を格納するための共通変数は公開されません。代わりに、スクリプトの出力ファイルが存在する場所を格納する **AZ_SCRIPTS_OUTPUT_PATH** という環境変数があります。 デプロイ スクリプトが Resource Manager テンプレートから実行される場合、この環境変数は Bash シェルによって自動的に設定されます。
+PowerShell デプロイ スクリプトとは異なり、CLI/Bash のサポートでは、スクリプト出力を格納するための共通変数は公開されません。代わりに、スクリプトの出力ファイルが存在する場所を格納する `AZ_SCRIPTS_OUTPUT_PATH` という環境変数があります。 デプロイ スクリプトが Resource Manager テンプレートから実行される場合、この環境変数は Bash シェルによって自動的に設定されます。
 
-デプロイ スクリプトの出力は AZ_SCRIPTS_OUTPUT_PATH の場所に保存される必要があり、その出力は有効な JSON 文字列オブジェクトでなければなりません。 ファイルの内容は、キーと値のペアとして保存される必要があります。 たとえば、文字列の配列は、{ "MyResult": [ "foo", "bar"] } として格納されます。  配列の結果のみ ([ "foo", "bar" ] など) の格納は、無効です。
+デプロイ スクリプトの出力は `AZ_SCRIPTS_OUTPUT_PATH` の場所に保存される必要があり、その出力は有効な JSON 文字列オブジェクトでなければなりません。 ファイルの内容は、キーと値のペアとして保存される必要があります。 たとえば、文字列の配列は、`{ "MyResult": [ "foo", "bar"] }` として格納されます。  配列の結果のみ (`[ "foo", "bar" ]` など) の格納は、無効です。
 
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json" range="1-44" highlight="32":::
 
@@ -270,11 +275,12 @@ PowerShell デプロイ スクリプトとは異なり、CLI/Bash のサポー�
     | Standard_RAGZRS | StorageV2          |
     | Standard_ZRS    | StorageV2          |
 
-    これらの組み合わせはファイル共有をサポートしています。  詳細については、「[Azure ファイル共有を作成する](../../storage/files/storage-how-to-create-file-share.md)」および「[ストレージ アカウントの種類](../../storage/common/storage-account-overview.md)」を参照してください。
+    これらの組み合わせによりファイル共有がサポートされます。 詳細については、「[Azure ファイル共有を作成する](../../storage/files/storage-how-to-create-file-share.md)」および「[ストレージ アカウントの種類](../../storage/common/storage-account-overview.md)」を参照してください。
+
 - ストレージ アカウントのファイアウォール規則はまだサポートされていません。 詳細については、[Azure Storage ファイアウォールおよび仮想ネットワークの構成](../../storage/common/storage-network-security.md)に関する記事を参照してください。
 - デプロイ プリンシパルには、ストレージ アカウントを管理するためのアクセス許可が必要です。これには、ファイル共有の読み取り、作成、削除が含まれます。
 
-既存のストレージ アカウントを指定するには、次の json を `Microsoft.Resources/deploymentScripts` のプロパティ要素に追加します。
+既存のストレージ アカウントを指定するには、次の JSON を `Microsoft.Resources/deploymentScripts` のプロパティ要素に追加します。
 
 ```json
 "storageAccountSettings": {
@@ -283,8 +289,8 @@ PowerShell デプロイ スクリプトとは異なり、CLI/Bash のサポー�
 },
 ```
 
-- **storageAccountName**: ストレージ アカウントの名前を指定します。
-- **storageAccountKey"** : ストレージ アカウント キーのいずれかを指定します。 [`listKeys()`](./template-functions-resource.md#listkeys) 関数を使用して、キーを取得することができます。 次に例を示します。
+- `storageAccountName`: ストレージ アカウントの名前を指定します。
+- `storageAccountKey` : ストレージ アカウント キーのいずれかを指定します。 [listKeys()](./template-functions-resource.md#listkeys) 関数を使用して、キーを取得することができます。 次に例を示します。
 
     ```json
     "storageAccountSettings": {
@@ -301,9 +307,9 @@ PowerShell デプロイ スクリプトとは異なり、CLI/Bash のサポー�
 
 ### <a name="handle-non-terminating-errors"></a>終了しないエラーを処理する
 
-デプロイ スクリプトで **$ErrorActionPreference** 変数を使用することで、終了しないエラーに PowerShell が対応する方法を制御できます。 この変数がデプロイ スクリプトに設定されていない場合、スクリプト サービスでは既定値 **Continue** が使用されます。
+デプロイ スクリプトで `$ErrorActionPreference` 変数を使用することで、終了しないエラーに PowerShell が対応する方法を制御できます。 この変数がデプロイ スクリプトに設定されていない場合、スクリプト サービスでは既定値 **Continue** が使用されます。
 
-$ErrorActionPreference の設定に関係なく、デプロイ スクリプトでエラーが発生すると、スクリプト サービスによってリソースのプロビジョニングの状態が **[失敗]** に設定されます。
+`$ErrorActionPreference` の設定に関係なく、デプロイ スクリプトでエラーが発生すると、スクリプト サービスによってリソースのプロビジョニングの状態が **失敗** に設定されます。
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>セキュリティで保護された文字列をデプロイ スクリプトに渡す
 
@@ -319,17 +325,17 @@ $ErrorActionPreference の設定に関係なく、デプロイ スクリプト�
 
 ユーザー スクリプト、実行結果、stdout ファイルは、ストレージ アカウントのファイル共有に格納されます。 `azscripts` という名前のフォルダーがあります。 このフォルダーには、`azscriptinput` と `azscriptoutput` という、入力用と出力ファイル用の 2 つのフォルダーがあります。
 
-出力フォルダーには、**executionresult.json** とスクリプトの出力ファイルが含まれています。 **executionresult.json** で、スクリプト実行のエラー メッセージを確認できます。 出力ファイルは、スクリプトが正常に実行された場合にのみ作成されます。 入力フォルダーには、システム用 PowerShell スクリプト ファイルとユーザー用デプロイ スクリプト ファイルが含まれています。 ユーザー用デプロイ スクリプトを変更したものに置き換え、Azure コンテナー インスタンスからデプロイ スクリプトを再実行することができます。
+出力フォルダーには、_executionresult.json_ とスクリプトの出力ファイルが含まれています。 _executionresult.json_ で、スクリプト実行のエラー メッセージを確認できます。 出力ファイルは、スクリプトが正常に実行された場合にのみ作成されます。 入力フォルダーには、システム用 PowerShell スクリプト ファイルとユーザー用デプロイ スクリプト ファイルが含まれています。 ユーザー用デプロイ スクリプトを変更したものに置き換え、Azure コンテナー インスタンスからデプロイ スクリプトを再実行することができます。
 
 ### <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
-デプロイ スクリプト リソースをデプロイすると、Azure portal のリソース グループの下にそのリソースが一覧表示されます。 次のスクリーンショットは、デプロイ スクリプト リソースの [概要] ページを示しています。
+デプロイ スクリプト リソースをデプロイすると、Azure portal のリソース グループの下にそのリソースが一覧表示されます。 次のスクリーンショットは、デプロイ スクリプト リソースの **[概要]** ページです。
 
 ![Resource Manager テンプレートのデプロイ スクリプトのポータルの概要](./media/deployment-script-template/resource-manager-deployment-script-portal.png)
 
 概要ページには、リソースの重要な情報が表示されます。たとえば、 **[プロビジョニングの状態]** 、 **[ストレージ アカウント]** 、 **[コンテナー インスタンス]** 、 **[ログ]** などです。
 
-左側のメニューから、デプロイ スクリプトの内容、スクリプトに渡される引数、および出力を表示できます。  デプロイ スクリプトを含む、デプロイ スクリプトのテンプレートをエクスポートすることもできます。
+左側のメニューから、デプロイ スクリプトの内容、スクリプトに渡される引数、および出力を表示できます。 デプロイ スクリプトを含む、デプロイ スクリプトのテンプレートをエクスポートすることもできます。
 
 ### <a name="use-powershell"></a>PowerShell の使用
 
@@ -340,7 +346,7 @@ Azure PowerShell を使用すると、サブスクリプションまたはリソ
 - [Remove-AzDeploymentScript](/powershell/module/az.resources/remove-azdeploymentscript):デプロイ スクリプトとそれに関連付けられているリソースを削除します。
 - [Save-AzDeploymentScriptLog](/powershell/module/az.resources/save-azdeploymentscriptlog):デプロイ スクリプト実行のログをディスクに保存します。
 
-Get-AzDeploymentScript の出力は次のようになります。
+`Get-AzDeploymentScript` の出力は次のようになります。
 
 ```output
 Name                : runPowerShellInlineWithOutput
@@ -525,29 +531,29 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 これらのリソースのライフ サイクルは、テンプレートの次のプロパティによって制御されます。
 
-- **cleanupPreference**:スクリプトの実行がターミナル状態になった再のクリーンアップ設定 サポートされる値は
+- `cleanupPreference`:スクリプトの実行がターミナル状態になった再のクリーンアップ設定 サポートされる値は
 
-  - **Always**:スクリプトの実行が終了状態になったときに、自動的に作成されたリソースを削除します。 既存のストレージ アカウントが使用されている場合は、スクリプト サービスによって、ストレージ アカウントに作成されたファイル共有が削除されます。 リソースがクリーンアップされた後も deploymentScripts リソースが依然として存在する可能性があるため、リソースが削除される前に、スクリプト サービスがスクリプトの実行結果 (stdout、出力、戻り値など) を保持します。
+  - **Always**:スクリプトの実行が終了状態になったときに、自動的に作成されたリソースを削除します。 既存のストレージ アカウントが使用されている場合は、スクリプト サービスによって、ストレージ アカウントに作成されたファイル共有が削除されます。 リソースがクリーンアップされた後も `deploymentScripts` リソースがまだ存在する可能性があるため、リソースが削除される前に、スクリプト サービスによってスクリプトの実行結果 (stdout、出力、戻り値) が保持されます。
   - **OnSuccess**:スクリプトの実行が成功した場合にのみ、自動的に作成されたリソースを削除します。 既存のストレージ アカウントが使用されている場合は、スクリプトの実行が成功した場合にのみ、スクリプト サービスによってファイル共有が削除されます。 引き続きリソースにアクセスして、デバッグ情報を見つけることができます。
-  - **OnExpiration**:**retentionInterval** 設定の有効期限が切れている場合にのみ、自動的に作成されたリソースを削除します。 既存のストレージ アカウントが使用されている場合は、スクリプト サービスによってファイル共有が削除されますが、ストレージ アカウントは保持されます。
+  - **OnExpiration**:`retentionInterval` 設定の有効期限が切れている場合にのみ、自動的に作成されたリソースを削除します。 既存のストレージ アカウントが使用されている場合は、スクリプト サービスによってファイル共有が削除されますが、ストレージ アカウントは保持されます。
 
-- **retentionInterval**:スクリプト リソースを保持する期間を指定します。この時間が経過すると、期限切れになり削除されます。
+- `retentionInterval`:スクリプト リソースを保持する期間を指定します。この時間が経過すると、期限切れになり削除されます。
 
 > [!NOTE]
 > スクリプト サービスによって生成されたストレージ アカウントとコンテナー インスタンスを、他の目的で使用しないことをお勧めします。 この 2 つのリソースは、スクリプト ライフ サイクルに応じて削除される場合があります。
 
-コンテナー インスタンスとストレージ アカウントは、**cleanupPreference** に従って削除されます。 ただし、スクリプトが失敗し、**cleanupPreference** が **Always** に設定されていない場合、コンテナーはデプロイ プロセスによって自動的に 1 時間実行されたままになります。 この時間を使用して、スクリプトのトラブルシューティングを行うことができます。 デプロイが成功した後もコンテナーを実行したままにする場合は、スクリプトにスリープ ステップを追加します。 たとえば、スクリプトの最後に [Start-Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) を追加します。 スリープ ステップを追加しないと、コンテナーはターミナル状態に設定され、まだ削除されていない場合でもアクセスできなくなります。
+コンテナー インスタンスとストレージ アカウントは、`cleanupPreference` に従って削除されます。 ただし、スクリプトが失敗し、`cleanupPreference` が **Always** に設定されていない場合、コンテナーはデプロイ プロセスによって自動的に 1 時間実行されたままになります。 この時間を使用して、スクリプトのトラブルシューティングを行うことができます。 デプロイが成功した後もコンテナーを実行したままにする場合は、スクリプトにスリープ ステップを追加します。 たとえば、スクリプトの最後に [Start-Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) を追加します。 スリープ ステップを追加しないと、コンテナーはターミナル状態に設定され、まだ削除されていない場合でもアクセスできなくなります。
 
 ## <a name="run-script-more-than-once"></a>スクリプトを複数回実行する
 
-デプロイ スクリプトの実行はべき等操作です。 deploymentScripts リソースのどのプロパティ (インライン スクリプトを含む) も変更されていない場合は、テンプレートを再デプロイしてもスクリプトは実行されません。 デプロイ スクリプト サービスは、テンプレート内のリソース名と同じリソース グループ内の既存のリソースを比較します。 同じデプロイ スクリプトを複数回実行する場合は、次の 2 つのオプションがあります。
+デプロイ スクリプトの実行はべき等操作です。 `deploymentScripts` リソースのどのプロパティ (インライン スクリプトを含む) も変更されていない場合は、テンプレートを再デプロイしてもスクリプトは実行されません。 デプロイ スクリプト サービスは、テンプレート内のリソース名と同じリソース グループ内の既存のリソースを比較します。 同じデプロイ スクリプトを複数回実行する場合は、次の 2 つのオプションがあります。
 
-- deploymentScripts リソースの名前を変更します。 たとえば、[utcNow](./template-functions-date.md#utcnow) テンプレート関数をリソース名として使用するか、リソース名の一部として使用します。 リソース名を変更すると、新しい deploymentScripts リソースが作成されます。 これは、スクリプトの実行履歴を保持するのに適しています。
+- `deploymentScripts` リソースの名前を変更します。 たとえば、[utcNow](./template-functions-date.md#utcnow) テンプレート関数をリソース名として使用するか、リソース名の一部として使用します。 リソース名を変更すると、新しい `deploymentScripts` リソースが作成されます。 これは、スクリプトの実行履歴を保持するのに適しています。
 
     > [!NOTE]
-    > この utcNow 関数は、パラメーターの既定値でのみ使用できます。
+    > `utcNow` 関数は、パラメーターの既定値でのみ使用できます。
 
-- `forceUpdateTag` テンプレート プロパティに別の値を指定してください。  たとえば、値として utcNow を使用します。
+- `forceUpdateTag` テンプレート プロパティに別の値を指定してください。 たとえば、値として `utcNow` を使用します。
 
 > [!NOTE]
 > べき等であるデプロイ スクリプトを記述します。 それにより、誤って再び実行されることがあっても、システム変更が引き起こされません。 たとえば、デプロイ スクリプトを使用して Azure リソースを作成する場合は、スクリプトが成功するか、リソースが再度作成されないよう、作成する前にリソースが存在しないことを確認してください。
@@ -592,3 +598,6 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 > [!div class="nextstepaction"]
 > [チュートリアル:Azure Resource Manager テンプレートでデプロイ スクリプトを使用する](./template-tutorial-deployment-script.md)
+
+> [!div class="nextstepaction"]
+> [Learn モジュール: デプロイ スクリプトを使用して ARM テンプレートを拡張する](/learn/modules/extend-resource-manager-template-deployment-scripts/)

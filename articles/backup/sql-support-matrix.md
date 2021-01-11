@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Azure VM 内の SQL Server
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: b189eceb6b5a7f2e508387c0b91b238ff5fcb088
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 78436981c515b95ccda763d8ac916738b4364953
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174050"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734795"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure VM 内の SQL Server のバックアップに関するサポート マトリックス
 
@@ -39,7 +39,7 @@ Azure Backup を使用すると、Microsoft Azure クラウド プラットフ�
 * SQL Server のバックアップは、Azure portal または **PowerShell** を使用して構成できます。 CLI はサポートされていません。
 * このソリューションは、Azure Resource Manager VM とクラシック VM のどちらの種類の[デプロイ](../azure-resource-manager/management/deployment-models.md)でもサポートされます。
 * すべてのバックアップの種類 (完全、差分、ログ) と復旧モデル (簡易、完全、一括ログ) がサポートされています。
-* **読み取り専用**データベースについては、バックアップの種類として完全とコピーのみの完全をサポートしています。
+* **読み取り専用** データベースの場合: 完全とコピーのみの完全バックアップだけが、バックアップの種類としてサポートされています。
 * SQL ネイティブの圧縮は、バックアップ ポリシーでユーザーが明示的に有効にした場合にサポートされます。 Azure Backup を使用すると、ユーザーが設定したこのコントロールの値に応じて、COMPRESSION または NO_COMPRESSION 句を使用してインスタンス レベルの既定値がオーバーライドされます。
 * TDE - 有効なデータベース バックアップがサポートされています。 TDE で暗号化されたデータベースを別の SQL Server に復元するには、まず[証明書を宛先サーバーに復元する](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)必要があります。 SQL Server 2016 以降のバージョンでは、TDE が有効になっているデータベースのバックアップの圧縮は使用できますが、[ここ](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)で説明されているように転送サイズは低くなります。
 * ミラー データベースおよびデータベース スナップショットのバックアップ操作および復元操作はサポートされていません。

@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 4425fdf488665ad555c73c59682041cb23a9ca66
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3fca8e74112b90b3cac70adaa955bbf242999705
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447333"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739588"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning ワークスペースを作成して管理する 
 
@@ -31,6 +31,8 @@ ms.locfileid: "96447333"
 ## <a name="limitations"></a>制限事項
 
 [!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
+
+既定では、ワークスペースを作成すると Azure Container Registry (ACR) も作成されます。  現在、ACR ではリソース グループ名での Unicode 文字がサポートされていないため、これらの文字が含まれていないリソース グループを使用します。
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 
@@ -154,6 +156,8 @@ ms.locfileid: "96447333"
  1. 新しいワークスペースを表示するには、 **[Go to resource]\(リソースに移動\)** を選択します。
  
 ---
+
+
 
 ### <a name="networking"></a>ネットワーク  
 
@@ -368,6 +372,16 @@ ws.delete(delete_dependent_resources=False, no_wait=False)
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
 ## <a name="troubleshooting"></a>トラブルシューティング
+
+* **Azure Machine Learning スタジオでサポートされているブラウザー**:オペレーティング システムと互換性のある最新ブラウザーを使うことをお勧めします。 次のブラウザーがサポートされています。
+  * Microsoft Edge (新しい Microsoft Edge の最新バージョンです。 Microsoft Edge レガシではありません)。
+  * Safari (最新バージョン、Mac のみ)
+  * Chrome (最新バージョン)
+  * Firefox (最新バージョン)
+
+* **Azure ポータル**: 
+  * SDK または Azure portal で共有リンクからワークスペースに直接移動する場合、拡張機能のサブスクリプション情報を含む標準の **[概要]** ページは表示できません。 このシナリオでは、別のワークスペースに切り替えることもできません。 別のワークスペースを表示するには、[Azure Machine Learning Studio](https://ml.azure.com) に直接移動し、そのワークスペース名を検索します。
+  * すべての資産 (データセット、実験、コンピューティングなど) は、[Azure Machine Learning Studio](https://ml.azure.com) でのみ使用できます。 Azure portal から使用することは "*できません*"。
 
 ### <a name="resource-provider-errors"></a>リソース プロバイダーのエラー
 

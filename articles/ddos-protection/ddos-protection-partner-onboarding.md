@@ -8,12 +8,12 @@ mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
-ms.openlocfilehash: 4cc0fd970f9adc26f5fdb024f501dcb0edf77bde
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 962f6bcf7747a82749e7ccab95de34f7834a8372
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992422"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814212"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Azure DDoS Protection Standard との提携
 この記事では、Azure DDoS Protection Standard によって可能になるパートナーの営業案件について説明します。 この記事は、プロダクト マネージャーと営業開発の担当者が投資の道筋を理解し、パートナーとなる価値提案を分析できるように設計されています。
@@ -40,8 +40,8 @@ Azure DDoS Protection Standard を使うと、保護されたアプリケーシ�
 Azure DDoS Protection は、ユーザーの介入がなくても DDoS 攻撃を識別して軽減します。
 
 - 保護されているリソースが Azure Security Center の対象となるサブスクリプションにある場合、保護されているアプリケーションに対する DDoS 攻撃が検出され、軽減されるたびに、DDoS Protection Standard からセキュリティ センターに自動的にアラートが送信されます。
-- 保護されているパブリック IP に対してリスク軽減がアクティブになった場合に通知を受け取るには、メトリック Under DDoS attack or not (DDoS 攻撃中かどうか) に対して[アラートを構成する](telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)ことができます。
-- さらに、他の DDoS メトリックのアラートを作成し、[攻撃の分析を構成](telemetry-monitoring-alerting.md)して、攻撃の規模、ドロップしたトラフィック、攻撃ベクトル、主な寄与要素、その他の詳細を把握できます。
+- 保護されているパブリック IP に対してリスク軽減がアクティブになった場合に通知を受け取るには、メトリック Under DDoS attack or not (DDoS 攻撃中かどうか) に対して[アラートを構成する](alerts.md)ことができます。
+- さらに、他の DDoS メトリックのアラートを作成し、[攻撃のテレメトリを構成](telemetry.md)して、攻撃の規模、ドロップしたトラフィック、攻撃ベクトル、主な寄与要素、その他の詳細を把握できます。
 
 ![DDoS メトリック](./media/ddos-protection-partner-onboarding/ddos-metrics.png)
 
@@ -71,7 +71,7 @@ Azure DDoS Protection Standard パートナーの営業案件は、Azure portal�
 3. 最初の手順で作成した DDoS Protection プランを使用して、パブリック エンドポイントを持つサービスの仮想ネットワークで Azure DDoS Protection Standard を有効にします。 詳細な手順については、[DDoS Standard 保護計画を有効にする](manage-ddos-protection.md#enable-ddos-protection-for-an-existing-virtual-network)方法に関する記事を参照してください。
    > [!IMPORTANT] 
    > 仮想ネットワークで Azure DDoS Protection Standard を有効にすると、その仮想ネットワーク内のすべてのパブリック IP が自動的に保護されます。 これらのパブリック IP の発信元は、Azure (クライアント サブスクリプション) の内部または Azure の外部の可能性があります。 
-4. 必要に応じて、Azure DDoS Protection Standard のテレメトリと攻撃分析をアプリケーション固有の顧客向けダッシュボードに統合します。 テレメトリの使用の詳細については、「[DDoS 保護テレメトリの表示と構成](telemetry-monitoring-alerting.md)」を参照してください。 
+4. 必要に応じて、Azure DDoS Protection Standard のテレメトリと攻撃分析をアプリケーション固有の顧客向けダッシュボードに統合します。 テレメトリの使用の詳細については、「[DDoS 保護テレメトリの表示と構成](telemetry.md)」を参照してください。 
 
 ### <a name="onboarding-guides-and-technical-documentation"></a>オンボード ガイドと技術ドキュメント
 

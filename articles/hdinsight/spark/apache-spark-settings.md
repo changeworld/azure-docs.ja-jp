@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: c2e2daf6d8c9afa6ffef03b088ec9a7dc144cf47
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: f74307cc7f074788ac12712b3722dc0ad7fa71b6
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504935"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821147"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark の設定を構成する
 
@@ -130,7 +130,7 @@ HDInsight の Spark クラスターには、既定で複数のコンポーネン
 |Spark Core|Spark Core、Spark SQL、Spark ストリーミング API、GraphX、Apache Spark MLlib。|
 |Anaconda|Python パッケージ マネージャー。|
 |Apache Livy|Apache Spark REST API (HDInsight Spark クラスターへのリモート ジョブの送信に使われます)。|
-|Jupyter ノートブックと Apache Zeppelin ノートブック|Spark クラスターを操作するためのブラウザー ベースの対話型 UI。|
+|Jupyter Notebook と Apache Zeppelin Notebook|Spark クラスターを操作するためのブラウザー ベースの対話型 UI。|
 |ODBC ドライバー|HDInsight の Spark クラスターを、Microsoft Power BI や Tableau などのビジネス インテリジェンス (BI) ツールに接続します。|
 
 Jupyter Notebook で実行されているアプリケーションについては、`%%configure` コマンドを使って、Notebook 自体の内部から構成を変更できます。 これらの構成変更は、お使いの Notebook インスタンスから実行された Spark ジョブに適用されます。 そのような変更は、最初のコード セルを実行する前、アプリケーションの冒頭で行います。 変更された構成は、Livy セッションの作成時に適用されます。

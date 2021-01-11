@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 1094235f5bc5cc25cf6d8f3762dc242503952de6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61ec2db1799919eb395996b56d08b77e3be7ff5a
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083799"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822371"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>HDInsight 上の Apache Spark クラスターでカスタム Python ライブラリを使用して Web サイト ログを分析する
 
-このノートブックは、HDInsight 上の Apache Spark でカスタム ライブラリを使用してログ データを分析する方法を示します。 使用するカスタム ライブラリは、 **iislogparser.py**と呼ばれる Python ライブラリです。
+このノートブックは、HDInsight 上の Apache Spark でカスタム ライブラリを使用してログ データを分析する方法を示します。 使用するカスタム ライブラリは、 **iislogparser.py** と呼ばれる Python ライブラリです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -154,7 +154,7 @@ HDInsight での Apache Spark クラスター。 手順については、「 [Cr
     (u'/blogposts/mvc4/step1.png', 98.0)]
     ```
 
-1. また、この情報をプロットの形式で表示することもできます。 プロットを作成する最初の手順として、まず、一時テーブル **AverageTime**を作成します。 テーブル グループは、特定の時間に異常な遅延の急増があったかどうかがわかるように、ログを時間でグループ化します。
+1. また、この情報をプロットの形式で表示することもできます。 プロットを作成する最初の手順として、まず、一時テーブル **AverageTime** を作成します。 テーブル グループは、特定の時間に異常な遅延の急増があったかどうかがわかるように、ログを時間でグループ化します。
 
     ```pyspark
     avgTimeTakenByMinute = avgTimeTakenByKey(logLines.map(lambda p: (p.datetime.minute, p))).sortByKey()
@@ -172,7 +172,7 @@ HDInsight での Apache Spark クラスター。 手順については、「 [Cr
     SELECT * FROM AverageTime
     ```
 
-   `%%sql` マジックの後に `-o averagetime` と入力して、クエリの出力が Jupyter サーバー (通常はクラスターのヘッドノード) にローカルに保持されるようにします。 出力は、 [Pandas](https://pandas.pydata.org/) データフレームとして、 **averagetime**という名前で保持されます。
+   `%%sql` マジックの後に `-o averagetime` と入力して、クエリの出力が Jupyter サーバー (通常はクラスターのヘッドノード) にローカルに保持されるようにします。 出力は、 [Pandas](https://pandas.pydata.org/) データフレームとして、 **averagetime** という名前で保持されます。
 
    次のイメージのような結果が表示されます。
 

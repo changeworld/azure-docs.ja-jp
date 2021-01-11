@@ -1,18 +1,18 @@
 ---
 title: テンプレートのベスト プラクティス
-description: Azure Resource Manager テンプレートを作成するための推奨されるアプローチについて説明します。 テンプレートを使用する場合の一般的な問題を回避するための推奨事項を示します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) を作成するための推奨されるアプローチについて説明します。 テンプレートを使用する場合の一般的な問題を回避するための推奨事項を示します。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: c62bde8fc8cfc79330d13b7b2ff4f778dadf1339
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 85d58098508d5ac7cad6c1cb3cb68ad6c7f179f9
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497981"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724988"
 ---
 # <a name="arm-template-best-practices"></a>ARM テンプレートのベスト プラクティス
 
-この記事では、ARM テンプレートを構築するときに推奨される方法を使用する方法について説明します。 これらの推奨事項は、ARM テンプレートを使用したソリューションのデプロイに関する一般的な問題を回避するうえで役立ちます。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) を構築する際に推奨プラクティスを使用する方法について説明します。 これらの推奨事項は、ARM テンプレートを使用したソリューションのデプロイに関する一般的な問題を回避するうえで役立ちます。
 
 ## <a name="template-limits"></a>テンプレートの制限
 
@@ -26,7 +26,7 @@ ms.locfileid: "96497981"
 * 出力値 64 個
 * テンプレート式内で 24,576 文字
 
-入れ子になったテンプレートを使用すると、一部のテンプレートの制限を超過することができます。 詳細については、「[Azure リソース デプロイ時のリンクされたテンプレートの使用](linked-templates.md)」を参照してください。 パラメーター、変数、出力の数を減らすために、いくつかの値を 1 つのオブジェクトに結合することができます。 詳しくは、[パラメーターとしてのオブジェクト](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)に関する記事をご覧ください。
+入れ子になったテンプレートを使用すると、一部のテンプレートの制限を超過することができます。 詳細については、「[Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用](linked-templates.md)」を参照してください。 パラメーター、変数、出力の数を減らすために、いくつかの値を 1 つのオブジェクトに結合することができます。 詳しくは、[パラメーターとしてのオブジェクト](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)に関する記事をご覧ください。
 
 ## <a name="resource-group"></a>Resource group
 
@@ -50,30 +50,30 @@ ms.locfileid: "96497981"
 
 * メタデータですべてのパラメーターを説明します。
 
-   ```json
-   "parameters": {
-       "storageAccountType": {
-           "type": "string",
-           "metadata": {
-               "description": "The type of the new storage account created to store the VM disks."
-           }
-       }
-   }
-   ```
-
-* 重要ではないパラメーターの既定値を定義します。 既定値を指定することで、テンプレートをデプロイしやすくなり、ご自身のテンプレートのユーザーに適切な値の例が表示されます。 パラメーターの既定値は、既定のデプロイ構成のすべてのユーザーに対して有効である必要があります。 
-   
-   ```json
-   "parameters": {
-        "storageAccountType": {
-            "type": "string",
-            "defaultValue": "Standard_GRS",
-            "metadata": {
-                "description": "The type of the new storage account created to store the VM disks."
-            }
+    ```json
+    "parameters": {
+      "storageAccountType": {
+        "type": "string",
+        "metadata": {
+          "description": "The type of the new storage account created to store the VM disks."
         }
-   }
-   ```
+      }
+    }
+    ```
+
+* 重要ではないパラメーターの既定値を定義します。 既定値を指定することで、テンプレートをデプロイしやすくなり、ご自身のテンプレートのユーザーに適切な値の例が表示されます。 パラメーターの既定値は、既定のデプロイ構成のすべてのユーザーに対して有効である必要があります。
+
+    ```json
+    "parameters": {
+      "storageAccountType": {
+        "type": "string",
+        "defaultValue": "Standard_GRS",
+        "metadata": {
+          "description": "The type of the new storage account created to store the VM disks."
+        }
+      }
+    }
+    ```
 
 * オプションのパラメーターを指定するために、空の文字列を既定値として使用しないでください。 代わりに、リテラル値または言語式を使用して値を構成します。
 
@@ -84,7 +84,7 @@ ms.locfileid: "96497981"
      "metadata": {
        "description": "Name of the storage account"
      }
-   },
+   }
    ```
 
 * `allowedValues` は慎重に使用してください。 許可されているオプションに、ある値が含まれていないことを確認する必要がある場合にのみ使用します。 `allowedValues` を盛大に使用しすぎると、ご自身の一覧が最新の状態に保たれなくなり、有効なデプロイをブロックしてしまう可能性があります。
@@ -95,18 +95,18 @@ ms.locfileid: "96497981"
 
 * ユーザー名とパスワード (またはシークレット) に対して必ずパラメーターを使用します。
 
-* すべてのパスワードおよびシークレットに `securestring` を使用します。 JSON オブジェクトに機密データを渡す場合は、`secureObject` 型を使用します。 secure string 型または secure object 型を含むテンプレート パラメーターをリソースのデプロイ後に読み取ることはできません。 
-   
-   ```json
-   "parameters": {
-       "secretValue": {
-           "type": "securestring",
-           "metadata": {
-               "description": "The value of the secret to store in the vault."
-           }
-       }
-   }
-   ```
+* すべてのパスワードおよびシークレットに `securestring` を使用します。 JSON オブジェクトに機密データを渡す場合は、`secureObject` 型を使用します。 secure string 型または secure object 型を含むテンプレート パラメーターをリソースのデプロイ後に読み取ることはできません。
+
+    ```json
+    "parameters": {
+      "secretValue": {
+        "type": "securestring",
+        "metadata": {
+          "description": "The value of the secret to store in the vault."
+        }
+      }
+    }
+    ```
 
 * ユーザー名、パスワード、または `secureString` 型を必要とする任意の値には既定値を指定しないでください。
 
@@ -114,7 +114,7 @@ ms.locfileid: "96497981"
 
 ### <a name="location-recommendations-for-parameters"></a>パラメーターに関する場所の推奨事項
 
-* パラメーターを使用して、リソースの場所を指定し、既定値を `resourceGroup().location` に設定します。 場所パラメーターを指定することにより、テンプレートのユーザーが、自身がアクセス許可を持つ場所をデプロイ先として指定できます。
+* パラメーターを使用して、リソースの場所を指定し、既定値を `resourceGroup().location` に設定します。 場所パラメーターを指定することにより、テンプレートのユーザーが、自身がリソースをデプロイするアクセス許可を持つ場所を指定できます。
 
    ```json
    "parameters": {
@@ -125,7 +125,7 @@ ms.locfileid: "96497981"
          "description": "The location in which the resources should be deployed."
        }
      }
-   },
+   }
    ```
 
 * 場所パラメーターに `allowedValues` を指定しないでください。 指定する場所がすべてのクラウドで使用できるとは限りません。
@@ -142,9 +142,9 @@ ms.locfileid: "96497981"
 
 * テンプレート内で複数回使用する必要のある値には、変数を使用してください。 1 回しか使用しない値は、ハードコーディングすることでテンプレートが読みやすくなります。
 
-* テンプレート関数を複雑に組み合わせて作成する値に対して変数を使用してください。 複雑な式が変数内にのみ表示されていると、ご自身のテンプレートが読みやすくなります。
+* テンプレート関数を複雑に組み合わせて作成する値に対して変数を使用してください。 複雑な式が変数内にのみ現れるようにすると、テンプレートが読みやすくなります。
 
-* テンプレートの **variables** セクションでは [reference](template-functions-resource.md#reference) 関数は使用できません。 **reference** 関数は、リソースのランタイム状態からその値を取得します。 ただし、変数が解決されるのは、テンプレートの初期解析時です。 **reference** 関数を必要とする値は、テンプレートの **resources** セクションまたは **outputs** セクションに直接作成してください。
+* テンプレートの `variables` セクションでは [reference](template-functions-resource.md#reference) 関数は使用できません。 `reference` 関数は、リソースのランタイム状態からその値を取得します。 ただし、変数が解決されるのは、テンプレートの初期解析時です。 `reference` 関数を必要とする値は、テンプレートの `resources` セクションまたは `outputs` セクションに直接作成してください。
 
 * リソース名を表す変数は、一意である必要があります。
 
@@ -166,7 +166,7 @@ API バージョンに対しては変数を使用しないでください。 特
 
 どのような[依存関係](define-resource-dependency.md)を設定するかを決めるときは、次のガイドラインを使用してください。
 
-* プロパティを共有する必要があるリソース間に暗黙的な依存関係を設定するには、**reference** 関数を使用して、リソース名を渡します。 暗黙的な依存関係を既に定義してある場合は、明示的な `dependsOn` 要素を追加しないでください。 これにより、不要な依存関係が設定されるリスクを減らすことができます。 暗黙の依存関係を設定する例については、[暗黙の依存関係](define-resource-dependency.md#reference-and-list-functions)に関するページを参照してください。
+* プロパティを共有する必要があるリソース間に暗黙的な依存関係を設定するには、`reference` 関数を使用して、リソース名を渡します。 暗黙的な依存関係を既に定義してある場合は、明示的な `dependsOn` 要素を追加しないでください。 これにより、不要な依存関係が設定されるリスクを減らすことができます。 暗黙の依存関係を設定する例については、「[reference 関数と list 関数](define-resource-dependency.md#reference-and-list-functions)」を参照してください。
 
 * 子リソースは、その親リソースに依存するように設定します。
 
@@ -180,109 +180,108 @@ API バージョンに対しては変数を使用しないでください。 特
 
 [リソース](template-syntax.md#resources)を使用する場合は、次の情報を活用してください。
 
-* 他の共同作業者にリソースの用途がわかるように、テンプレート内の各リソースに **comments** を指定してください。
-   
-   ```json
-   "resources": [
-     {
-         "name": "[variables('storageAccountName')]",
-         "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2019-06-01",
-         "location": "[resourceGroup().location]",
-         "comments": "This storage account is used to store the VM disks.",
-         ...
-     }
-   ]
-   ```
+* 他の共同作業者にリソースの用途がわかるように、テンプレート内の各リソースに `comments` を指定してください。
 
-* テンプレートで "*パブリック エンドポイント*" (Azure Blob Storage のパブリック エンドポイントなど) を使用する場合、名前空間は "*ハードコーディングしない*" でください。 名前空間を動的に取得するには、**reference** 関数を使用します。 そうすることで、テンプレートのエンドポイントを手作業で変更することなく、別のパブリック名前空間環境にテンプレートをデプロイできます。 API バージョンは、テンプレートのストレージ アカウントで使用するものと同じバージョンに設定します。
-   
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
-       }
-   }
-   ```
-   
-   ストレージ アカウントが、作成しているものと同じテンプレートにデプロイされ、そのストレージ アカウントの名前がテンプレート内の別のリソースと共有されない場合、リソースを参照するときにプロバイダーの名前空間または apiVersion を指定する必要はありません。 簡単な構文の例を次に示します。
-   
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-       }
-   }
-   ```
-     
+    ```json
+    "resources": [
+      {
+        "name": "[variables('storageAccountName')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2019-06-01",
+        "location": "[resourceGroup().location]",
+        "comments": "This storage account is used to store the VM disks.",
+          ...
+      }
+    ]
+    ```
+
+* テンプレートで "*パブリック エンドポイント*" (Azure Blob Storage のパブリック エンドポイントなど) を使用する場合、名前空間は "*ハードコーディングしない*" でください。 名前空間を動的に取得するには、`reference` 関数を使用します。 そうすることで、テンプレートのエンドポイントを手作業で変更することなく、別のパブリック名前空間環境にテンプレートをデプロイできます。 API バージョンは、テンプレートのストレージ アカウントで使用するものと同じバージョンに設定します。
+
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
+      }
+    }
+    ```
+
+   ストレージ アカウントが、作成しているものと同じテンプレートにデプロイされ、そのストレージ アカウントの名前がテンプレート内の別のリソースと共有されない場合、リソースを参照するときにプロバイダーの名前空間または `apiVersion` を指定する必要はありません。 簡単な構文の例を次に示します。
+
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
+      }
+    }
+    ```
+
    また、別のリソース グループにある既存のストレージ アカウントを参照することもできます。
 
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('existingStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
-       }
-   }
-   ```
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('existingStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
+      }
+    }
+    ```
 
 * 仮想マシンにパブリック IP アドレスを割り当てるのは、アプリケーションで必要な場合のみにしてください。 デバッグや各種管理のために仮想マシン (VM) に接続するには、受信 NAT 規則、仮想ネットワーク ゲートウェイ、またはジャンプボックスを使用してください。
-   
+
      仮想マシンへの接続の詳細については、以下の記事を参照してください。
-   
+
    * [Azure で N 層アーキテクチャの VM を実行する](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
    * [Azure Resource Manager の VM の WinRM アクセスを設定する](../../virtual-machines/windows/winrm.md)
    * [Azure Portal を使用して VM への外部アクセスを許可する](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [PowerShell を使用して VM への外部アクセスを許可する](../../virtual-machines/windows/nsg-quickstart-powershell.md)
    * [Azure CLI を使用して Linux VM への外部アクセスを許可する](../../virtual-machines/linux/nsg-quickstart.md)
 
-* パブリック IP アドレスの **domainNameLabel** プロパティは一意である必要があります。 **domainNameLabel** の値は、3 文字以上 63 文字以下で、正規表現 `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` で指定された規則に従う必要があります。 **uniqueString** 関数は 13 文字の文字列を生成するため、**dnsPrefixString** パラメーターは 50 文字に制限されます。
+* パブリック IP アドレスの `domainNameLabel` プロパティは一意である必要があります。 `domainNameLabel` の値は、3 文字以上 63 文字以下で、正規表現 `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` で指定された規則に従う必要があります。 `uniqueString` 関数は 13 文字の文字列を生成するため、`dnsPrefixString` パラメーターは 50 文字に制限されます。
 
-   ```json
-   "parameters": {
-       "dnsPrefixString": {
-           "type": "string",
-           "maxLength": 50,
-           "metadata": {
-               "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$"
-           }
-       }
-   },
-   "variables": {
-       "dnsPrefix": "[concat(parameters('dnsPrefixString'),uniquestring(resourceGroup().id))]"
-   }
-   ```
+    ```json
+    "parameters": {
+      "dnsPrefixString": {
+        "type": "string",
+        "maxLength": 50,
+        "metadata": {
+          "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$"
+        }
+      }
+    },
+    "variables": {
+      "dnsPrefix": "[concat(parameters('dnsPrefixString'),uniquestring(resourceGroup().id))]"
+    }
+    ```
 
-* カスタム スクリプト拡張機能にパスワードを追加する場合は、**protectedSettings** プロパティで **commandToExecute** プロパティを使用してください。
-   
-   ```json
-   "properties": {
-       "publisher": "Microsoft.Azure.Extensions",
-       "type": "CustomScript",
-       "typeHandlerVersion": "2.0",
-       "autoUpgradeMinorVersion": true,
-       "settings": {
-           "fileUris": [
-               "[concat(variables('template').assets, '/lamp-app/install_lamp.sh')]"
-           ]
-       },
-       "protectedSettings": {
-           "commandToExecute": "[concat('sh install_lamp.sh ', parameters('mySqlPassword'))]"
-       }
-   }
-   ```
-   
+* カスタム スクリプト拡張機能にパスワードを追加する場合は、`protectedSettings` プロパティで `commandToExecute` プロパティを使用してください。
+
+    ```json
+    "properties": {
+      "publisher": "Microsoft.Azure.Extensions",
+      "type": "CustomScript",
+      "typeHandlerVersion": "2.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+        "fileUris": [
+          "[concat(variables('template').assets, '/lamp-app/install_lamp.sh')]"
+        ]
+      },
+      "protectedSettings": {
+        "commandToExecute": "[concat('sh install_lamp.sh ', parameters('mySqlPassword'))]"
+      }
+    }
+    ```
+
    > [!NOTE]
-   > シークレット情報を VM と拡張機能にパラメーターとして渡すときに暗号化されるように、関連する拡張機能の **protectedSettings** プロパティを使用する必要があります。
-   > 
+   > シークレット情報を VM と拡張機能にパラメーターとして渡すときに暗号化されるように、関連する拡張機能の `protectedSettings` プロパティを使用する必要があります。
 
 ## <a name="use-test-toolkit"></a>テスト ツールキットの使用
 
 ARM テンプレート テスト ツールキットは、推奨される方法がテンプレートで使用されているかどうかを確認するスクリプトです。 テンプレートが推奨されるプラクティスに準拠していない場合は、推奨される変更を含む警告の一覧が返されます。 テスト ツールキットは、テンプレートにベストプラクティスを実装する方法を理解するのに役立ちます。
 
-テンプレートが完成したら、テスト ツールキットを実行して、実装を改善する方法があるかどうかを確認します。 詳細については、[ARM テンプレート テスト ツールキット](test-toolkit.md)に関する記事を参照してください。
+テンプレートが完成したら、テスト ツールキットを実行して、その実装を改善する方法があるかどうかを確認します。 詳細については、「[ARM テンプレート テスト ツールキットを使用する](test-toolkit.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

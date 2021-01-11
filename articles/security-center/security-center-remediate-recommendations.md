@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center でレコメンデーションを修復する | Microsoft Docs
-description: この記事では、リソースを保護してセキュリティ ポリシーを順守するために、Azure Security Center でレコメンデーションを修復する方法について説明します。
+description: この記事では、リソースを保護してセキュリティ ポリシーを満たすために、Azure Security Center でレコメンデーションに対応する方法について説明します。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: 3d4b968d0d5e091d72cf718d58b11ade68ddf8c6
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: dabd7e9e2c3c74225efc4611c7ad3523a6c76ba5
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637090"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807992"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Azure Security Center の修復レコメンデーション
 
@@ -26,41 +26,41 @@ ms.locfileid: "94637090"
 
 ## <a name="remediation-steps"></a>修復手順 <a name="remediation-steps"></a>
 
-すべてのレコメンデーションを確認したら、最初に修復するレコメンデーションを決定します。 [セキュリティ スコアの影響](security-center-recommendations.md#monitor-recommendations)を使用して、最初にすることの優先順位を決めることをお勧めします。
+すべてのレコメンデーションを確認したら、最初に修復するレコメンデーションを決定します。 セキュリティ スコアを上げる可能性が最も高いセキュリティ制御を最優先にすることをお勧めします。
 
-1. 一覧から、レコメンデーションをクリックします。
+1. 一覧から、レコメンデーションを選択します。
 
 1. 「**修復の手順**」セクションの指示に従ってください。 レコメンデーションごとに、独自の指示のセットがあります。 HTTPS 経由のトラフィックのみを許可するようにアプリケーションを構成するための修復手順のスクリーンショットを次に示します。
 
-    ![推奨事項の詳細](./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png)
+    :::image type="content" source="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png" alt-text="レコメンデーションの手動修復手順" lightbox="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png":::
 
-1. 完了すると、修復が成功したかどうかを知らせる通知が表示されます。
+1. 完了すると、問題が解決されたかどうかを示す通知が表示されます。
 
-## <a name="quick-fix-remediation"></a>クイック修復のレコメンデーション<a name="one-click"></a>
+## <a name="quick-fix-remediation"></a>クイック修復のレコメンデーション
 
-クイック修復によって修復が簡単になり、セキュリティ スコアをすばやく向上させ、環境内のセキュリティを強化することができます。
+修復を単純化し、環境のセキュリティを向上させる (そしてセキュリティ スコアを上げる) ため、多くのレコメンデーションにはクイック修正オプションが含まれています。
 
-クイック修復を使用すると、複数のリソースに関するレコメンデーションを迅速に修復できます。 
+クイック修正を使用すると、複数のリソースに関するレコメンデーションを迅速に修復できます。
 
 > [!TIP]
-> クイック修復は、特定のレコメンデーションにのみ使用できます。 クイック修正オプションがあるレコメンデーションを確認するには、レコメンデーションの一覧の一番上にある専用フィルターを使用します。
+> クイック修正ソリューションは、特定のレコメンデーションにのみ使用できます。 使用可能なクイック修正があるレコメンデーションを確認するには、レコメンデーションの一覧に対して **対応アクション** フィルターを使用します。
 > 
 > :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="レコメンデーション リストの上にあるフィルターを使用して、クイック修正オプションがあるレコメンデーションを見つける":::
 
-クイック修復レコメンデーションを実装するには、次の手順に従います。
+クイック修正ソリューションを実装するには:
 
-1. **クイック修復** ラベルを含むレコメンデーションの一覧から レコメンデーションをクリックします。
+1. **クイック修復** ラベルを含むレコメンデーションの一覧から レコメンデーションを選択します。
 
-    [![クイック修復を選択します](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png)](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png#lightbox)。
+    [![クイック修復を選択します](media/security-center-remediate-recommendations/security-center-quick-fix-select.png)](media/security-center-remediate-recommendations/security-center-quick-fix-select.png#lightbox)。
 
-1. **[正常でないリソース]** タブで、推奨事項を実装するリソースを選択し、 **[修復]** をクリックします。
+1. **[正常でないリソース]** タブで、レコメンデーションを実装するリソースを選択し、 **[修復]** を選択します。
 
     > [!NOTE]
     > 一覧表示されるリソースの一部は、変更するための適切なアクセス許可を持っていないために無効な場合があります。
 
 1. 確認ボックスで、修復の詳細と影響を確認します。
 
-    ![クイック修復](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
+    ![クイック修復](./media/security-center-remediate-recommendations/security-center-quick-fix-view.png)
 
     > [!NOTE]
     > 影響は、 **[修復]** をクリックした後に開かれる **[リソースの修復]** ウィンドウの灰色のボックスに表示されます。 ここには、クイック修復を進めたときに実行される変更内容が表示されます。
@@ -79,7 +79,7 @@ ms.locfileid: "94637090"
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Security Center でレコメンデーションを修復する方法について説明しました。 Security Center の詳細については、次のトピックを参照してください。
+このドキュメントでは、Security Center でレコメンデーションを修復する方法について説明しました。 セキュリティ センターの詳細については、次のページを参照してください。
 
 * 「[Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md)」 - Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
 * 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 - Azure リソースの正常性を監視する方法について説明しています。

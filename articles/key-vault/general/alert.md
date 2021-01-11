@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 9195bb59264731914740e1cca902707603e3502d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7ff3daded48612fd308396420dca65cd81d9fafc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018122"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724699"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault の監視とアラート
 
@@ -40,7 +40,7 @@ ms.locfileid: "96018122"
 
 **コンテナーの飽和度** - キー コンテナーが処理できる 1 秒あたりの要求の数は、実行されている操作の種類によって決まります。 一部のコンテナー操作では、1 秒あたりの要求数のしきい値が低くなります。 このメトリックは、すべての操作の種類におけるキー コンテナーの総使用量を集計し、現在のキー コンテナーの使用量を示すパーセンテージ値を取得します。 キー コンテナー サービス制限の完全な一覧については、次のドキュメントを参照してください。 [Azure Key Vault サービスの制限](service-limits.md)
 
-**サービス API 待機時間** - このメトリックは、キー コンテナーへの呼び出しの平均待機時間を示します。 キー コンテナーがサービス制限の範囲内にある場合でも、キー コンテナーの使用率が高いと待機時間が発生し、ダウンストリームのアプリケーションに障害が発生する可能性があります。 
+**サービス API 待機時間** - このメトリックは、サービスで測定されたキー コンテナーへの呼び出しの平均待機時間を示します。 クライアント、またはクライアントとサービス間のネットワークによって消費される時間は含まれません。
 
 **Total API Hits (API ヒット数の合計)** - このメトリックは、キー コンテナーに対して行われたすべての呼び出しを表示します。 これは、どのアプリケーションがキー コンテナーを呼び出しているかを特定するのに役立ちます。 
 

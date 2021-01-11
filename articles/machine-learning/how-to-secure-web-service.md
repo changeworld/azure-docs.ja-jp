@@ -10,13 +10,13 @@ ms.author: aashishb
 author: aashishb
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: f7e16400f6460f7479cdffd1928126cdd70a8f0c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.custom: how-to
+ms.openlocfilehash: 86cd5a5cbbb17dc3d3e4d56e4267be2718f6081d
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504000"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830872"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する
 
@@ -73,36 +73,28 @@ TLS/SSL 証明書 (デジタル証明書) を取得する方法はたくさん�
 
 ## <a name="enable-tls-and-deploy"></a><a id="enable"></a> TLS を有効にしてデプロイする
 
-TLS が有効なサービスをデプロイ (または再デプロイ) するには、"*ssl_enabled*" パラメーターを "True" に設定します (該当する場合は必ず)。 *ssl_certificate* パラメーターを *certificate* ファイルの値に設定します。 *ssl_key* を *key* ファイルの値に設定します。
+**AKS デプロイ** の場合、AML ワークスペースで [AKS クラスター](how-to-create-attach-kubernetes.md)を作成または接続するときに TLS 終端を有効にすることができます。 AKS モデルのデプロイ時に、デプロイ構成オブジェクトを使用して TLS 終端を無効にすることができます。そうしないと、AKS クラスターの作成時または接続時に、すべての AKS モデルのデプロイの TLS 終端が既定で有効になります。
 
-### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>AKS およびフィールド プログラマブル ゲート アレイ (FPGA) にデプロイする
+ACI のデプロイの場合、デプロイ構成オブジェクトを使用して、モデルのデプロイ時に TLS 終端を有効にすることができます。
+
+
+### <a name="deploy-on-azure-kubernetes-service"></a>Azure Kubernetes Service にデプロイする
 
   > [!NOTE]
   > このセクションの情報は、デザイナー用のセキュリティで保護された Web サービスをデプロイするときにも適用されます。 Python SDK に慣れていない場合は、[Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) に関するページを参照してください。
 
-AKS にデプロイする場合、新しい AKS クラスターを作成するか、既存のクラスターを接続することができます。 クラスターの作成または接続について詳しくは、「[Azure Kubernetes Service クラスターにモデルをデプロイする](how-to-deploy-azure-kubernetes-service.md)」をご覧ください。
-  
--  新しいクラスターを作成する場合、 **[AksCompute.provisionining_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** を使用します。
-- 既存のクラスターを接続する場合、 **[AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** を使用します。 どちらも **enable_ssl** メソッドを持つ構成オブジェクトが返されます。
+AML ワークスペースで [AKS クラスターを作成またはアタッチする](how-to-create-attach-kubernetes.md)ときに、 **[AksCompute.provisioning_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** および **[AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** の構成オブジェクトを使用して TLS 終端を有効にすることができます。 どちらのメソッドからも、**enable_ssl** メソッドを持つ構成オブジェクトが返されます。また、**enable_ssl** メソッドを使用して TLS を有効にすることができます。
 
-**enable_ssl** メソッドは、Microsoft によって提供される証明書でも、購入する証明書を使用することもできます。
+Microsoft 証明書または CA から購入したカスタム証明書を使用して、TLS を有効にすることができます。 
 
-> [!WARNING]
-> AKS クラスターが内部ロード バランサーで構成されている場合、Microsoft が提供する証明書の使用は __サポートされていません__。 Microsoft 提供の証明書を使用するには、Azure のパブリック IP リソースが必要です。これが内部ロード バランサー用に構成されている場合、AKS には使用できません。
-
-  * Microsoft 提供の証明書を使用する場合、*leaf_domain_label* パラメーターを使用する必要があります。 このパラメーターは、サービスの DNS 名を生成します。 たとえば、"contoso" という値を使用すると "contoso\<six-random-characters>.\<azureregion>.cloudapp.azure.com" というドメイン名が作成されます。この場合の \<azureregion> は、サービスが含まれるリージョンを意味しています。 必要に応じて、*overwrite_existing_domain* パラメーターを使用して既存の *leaf_domain_label* を上書きできます。
-
-    TLS が有効なサービスをデプロイ (または再デプロイ) するには、"*ssl_enabled*" パラメーターを "True" に設定します (該当する場合は必ず)。 *ssl_certificate* パラメーターを *certificate* ファイルの値に設定します。 *ssl_key* を *key* ファイルの値に設定します。
-
-    > [!IMPORTANT]
-    > Microsoft 提供の証明書を使用する場合、独自の証明書またはドメイン名を購入する必要はありません。
-
-    次の例では、Microsoft 提供の TLS/SSL 証明書を有効にする構成の作成方法を示します。
+* **Microsoft 提供の証明書を使用する場合**、*leaf_domain_label* パラメーターを使用する必要があります。 このパラメーターは、サービスの DNS 名を生成します。 たとえば、"contoso" という値を使用すると "contoso\<six-random-characters>.\<azureregion>.cloudapp.azure.com" というドメイン名が作成されます。この場合の \<azureregion> は、サービスが含まれるリージョンを意味しています。 必要に応じて、*overwrite_existing_domain* パラメーターを使用して既存の *leaf_domain_label* を上書きできます。 次の例では、Microsoft 証明書を使用して TLS を有効にする構成の作成方法を示します。
 
     ```python
     from azureml.core.compute import AksCompute
+
     # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
+
     # Leaf domain label generates a name using the formula
     #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
     #  where "######" is a random series of characters
@@ -112,20 +104,28 @@ AKS にデプロイする場合、新しい AKS クラスターを作成する�
     # Config used to attach an existing AKS cluster to your workspace and enable TLS
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                           cluster_name = cluster_name)
+
     # Leaf domain label generates a name using the formula
     #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
     #  where "######" is a random series of characters
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
+    > [!IMPORTANT]
+    > Microsoft 提供の証明書を使用する場合、独自の証明書またはドメイン名を購入する必要はありません。
 
-  * *購入した証明書* を使用する場合、*ssl_cert_pem_file*、*ssl_key_pem_file*、および *ssl_cname* のパラメーターを使用します。 次の例では、 *.pem* ファイルを使用して、購入した TLS/SSL 証明書を使用する構成を作成する方法を示します。
+    > [!WARNING]
+    > AKS クラスターが内部ロード バランサーを使用して構成されている場合、Microsoft 提供の証明書を使用することは __サポートされていません__。TLS を有効にするにはカスタム証明書を使用する必要があります。
 
+* **購入したカスタム証明書** を使用する場合、*ssl_cert_pem_file*、*ssl_key_pem_file*、および *ssl_cname* のパラメーターを使用します。 次の例では、 .pem ファイルを使用して、購入した TLS/SSL 証明書を使用する構成を作成する方法を示します。
+ 
     ```python
     from azureml.core.compute import AksCompute
+
     # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
     provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
@@ -150,23 +150,17 @@ aci_config = AciWebservice.deploy_configuration(
 
 ## <a name="update-your-dns"></a>DNS を更新する
 
-次に、Web サービスを指すように DNS を更新する必要があります。
+カスタム証明書を使用した AKS デプロイまたは ACI デプロイのいずれの場合も、スコアリング エンドポイントの IP アドレスを指すように DNS レコードを更新する必要があります。
 
-+ **Container Instances の場合:**
+  > [!IMPORTANT]
+  > AKS デプロイに Microsoft 提供の証明書を使用する場合、クラスターの DNS 値を手動で更新する必要はありません。 この値は、自動的に設定される必要があります。
 
-  ドメイン名レジストラー提供のツールを使用して、ドメイン名の DNS レコードを更新します。 レコードは、サービスの IP アドレスを指している必要があります。
+以下の手順に従って、カスタム ドメイン名の DNS レコードを更新することができます。
+* スコアリング エンドポイントの IP アドレスをスコアリング エンドポイント URI から取得します。通常、これは *http://104.214.29.152:80/api/v1/service/<service-name>/score* という形式です。 
+* ドメイン名レジストラー提供のツールを使用して、ドメイン名の DNS レコードを更新します。 レコードは、スコアリング エンドポイントの IP アドレスを指している必要があります。
+* DNS レコードの更新後、*nslookup custom-domain-name* コマンドを使用して DNS の解決を検証できます。 DNS レコードが正しく更新されている場合、カスタム ドメイン名はスコアリング エンドポイントの IP アドレスを指します。
+* レジストラーと、ドメイン名に対して構成された "Time to Live" (TTL) に応じて、クライアントがドメイン名を解決できるまで、数分から数時間の遅延が生じることがあります。
 
-  レジストラーと、ドメイン名に対して構成された "Time to Live" (TTL) に応じて、クライアントがドメイン名を解決できるまで、数分から数時間の遅延が生じることがあります。
-
-+ **AKS の場合:**
-
-  > [!WARNING]
-  > Microsoft 提供の証明書を使用してサービスを作成するために *leaf_domain_label* を使用した場合は、クラスターの DNS 値を手動で更新しないでください。 この値は、自動的に設定される必要があります。
-  >
-  > AKS クラスターが内部ロード バランサーで構成されている場合、Microsoft が提供する証明書の使用 (*leaf_domain_label* を設定) は __サポートされていません__。 Microsoft 提供の証明書を使用するには、Azure のパブリック IP リソースが必要です。これが内部ロード バランサー用に構成されている場合、AKS には使用できません。
-  左ウィンドウの **[設定]** タブの下の **[構成]** タブで、AKS クラスターのパブリック IP アドレスの DNS を更新します。 (次の図を参照してください)。パブリック IP アドレスは、AKS エージェント ノードとその他のネットワーク リソースを含むリソース グループの下に作成されるリソースの種類です。
-
-  [![Azure Machine Learning: TLS を使用して Web サービスをセキュリティで保護する](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-tlsssl-certificate"></a>TLS/SSL 証明書を更新する
 

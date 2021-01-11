@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: e773c2db9c7849dd9680f8ae0c600405f422d7e1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6400d3f3c721619551ba3989a2e5799b72ff9f38
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463186"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831926"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -281,6 +281,78 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 ---
 
+## <a name="create-or-attach-an-aks-cluster-with-tls-termination"></a>TLS 終端を使用した AKS クラスターの作成またはアタッチ
+[AKS クラスターを作成またはアタッチする](how-to-create-attach-kubernetes.md)ときに、 **[AksCompute.provisioning_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** および **[AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** の構成オブジェクトを使用して TLS 終端を有効にすることができます。 どちらのメソッドからも、**enable_ssl** メソッドを持つ構成オブジェクトが返されます。また、**enable_ssl** メソッドを使用して TLS を有効にすることができます。
+
+次の例は、内部で Microsoft 証明書を使用して、TLS 証明書の自動生成と構成で TLS 終端を有効にする方法を示しています。
+```python
+   from azureml.core.compute import AksCompute, ComputeTarget
+   
+   # Enable TLS termination when you create an AKS cluster by using provisioning_config object enable_ssl method
+
+   # Leaf domain label generates a name using the formula
+   # "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+   # where "######" is a random series of characters
+   provisioning_config.enable_ssl(leaf_domain_label = "contoso")
+   
+   # Enable TLS termination when you attach an AKS cluster by using attach_config object enable_ssl method
+
+   # Leaf domain label generates a name using the formula
+   # "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+   # where "######" is a random series of characters
+   attach_config.enable_ssl(leaf_domain_label = "contoso")
+
+
+```
+次の例は、カスタム証明書とカスタム ドメイン名を使用して TLS 終端を有効にする方法を示しています。 カスタム ドメインと証明書を使用する場合は、スコアリング エンドポイントの IP アドレスを指すように DNS レコードを更新する必要があります。「[DNS を更新する](how-to-secure-web-service.md#update-your-dns)」を参照してください。
+
+```python
+   from azureml.core.compute import AksCompute, ComputeTarget
+
+   # Enable TLS termination with custom certificate and custom domain when creating an AKS cluster
+   
+   provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
+                                        ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+    
+   # Enable TLS termination with custom certificate and custom domain when attaching an AKS cluster
+
+   attach_config.enable_ssl(ssl_cert_pem_file="cert.pem",
+                                        ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+
+
+```
+>[!NOTE]
+> AKS クラスター上のモデルのデプロイをセキュリティで保護する方法の詳細については、「[TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)」を参照してください。
+
+## <a name="create-or-attach-an-aks-cluster-to-use-internal-load-balancer-with-private-ip"></a>プライベート IP で内部ロード バランサーを使用する AKS クラスターの作成または接続
+AKS クラスターを作成または接続するときに、内部ロード バランサーを使用するようにクラスターを構成できます。 内部ロード バランサーを使用すると、AKS へのデプロイに関するスコア付けエンドポイントには、仮想ネットワーク内でプライベート IP が使用されます。 次のコード スニペットは、AKS クラスターの内部ロード バランサーを構成する方法を示しています。
+```python
+   
+   from azureml.core.compute.aks import AksUpdateConfiguration
+   from azureml.core.compute import AksCompute, ComputeTarget
+   
+   # When you create an AKS cluster, you can specify Internal Load Balancer to be created with provisioning_config object
+   provisioning_config = AksCompute.provisioning_configuration(load_balancer_type = 'InternalLoadBalancer')
+
+   # when you attach an AKS cluster, you can update the cluster to use internal load balancer after attach
+   aks_target = AksCompute(ws,"myaks")
+
+   # Change to the name of the subnet that contains AKS
+   subnet_name = "default"
+   # Update AKS configuration to use an internal load balancer
+   update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", subnet_name)
+   aks_target.update(update_config)
+   # Wait for the operation to complete
+   aks_target.wait_for_completion(show_output = True)
+   
+   
+```
+>[!IMPORTANT]
+> Azure Machine Learning は、内部ロード バランサーによる TLS 終端をサポートしていません。 内部ロード バランサーにはプライベート IP があり、そのプライベート IP は別のネットワーク上にある可能性があるため、証明書が拒否される可能性があります。 
+
+>[!NOTE]
+> 推論環境をセキュリティで保護する方法の詳細については、[Azure Machine Learning 推論環境のセキュリティ保護](how-to-secure-inferencing-vnet.md)に関する記事を参照してください。
+
 ## <a name="detach-an-aks-cluster"></a>AKS クラスターをデタッチする
 
 ワークスペースからクラスターをデタッチするには、次のいずれかの方法を使用します。
@@ -305,6 +377,52 @@ az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure Machine Learning スタジオで、 __[コンピューティング]__ 、 __[推論クラスター]__ 、削除するクラスターの順に選択します。 __[デタッチ]__ リンクを使用して、クラスターをデタッチします。
+
+---
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="update-the-cluster"></a>クラスターの更新
+
+Azure Kubernetes Service クラスターにインストールされている Azure Machine Learning コンポーネントの更新プログラムは、手動で適用する必要があります。 
+
+これらの更新プログラムを適用するには、Azure Machine Learning ワークスペースからクラスターをデタッチしてから、クラスターをワークスペースに再アタッチします。 クラスターで TLS が有効な場合は、クラスターを再アタッチするときに TLS/SSL 証明書と秘密キーを指定する必要があります。 
+
+```python
+compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
+compute_target.detach()
+compute_target.wait_for_completion(show_output=True)
+
+attach_config = AksCompute.attach_configuration(resource_group=resourceGroup, cluster_name=kubernetesClusterName)
+
+## If SSL is enabled.
+attach_config.enable_ssl(
+    ssl_cert_pem_file="cert.pem",
+    ssl_key_pem_file="key.pem",
+    ssl_cname=sslCname)
+
+attach_config.validate_configuration()
+
+compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceName, attach_configuration=attach_config)
+compute_target.wait_for_completion(show_output=True)
+```
+
+TLS/SSL 証明書と秘密キーがなくなった場合、または Azure Machine Learning によって生成された証明書を使用している場合は、`kubectl` を使用してクラスターに接続し、シークレット `azuremlfessl` を取得することで、クラスターをデタッチする前にファイルを取得できます。
+
+```bash
+kubectl get secret/azuremlfessl -o yaml
+```
+
+>[!Note]
+>Kubernetes では、base-64 でエンコードされた形式でシークレットが格納されます。 シークレットの `cert.pem` コンポーネントと `key.pem` コンポーネントを `attach_config.enable_ssl` に提供する前に、base-64 でデ コードする必要があります。 
+
+### <a name="webservice-failures"></a>Webservice のエラー
+
+AKS の多くの Webservice エラーは、`kubectl` を使用してクラスターに接続することでデバッグできます。 AKS クラスターの `kubeconfig.json` を取得するには、以下を実行します
+
+```azurecli-interactive
+az aks get-credentials -g <rg> -n <aks cluster name>
+```
 
 ## <a name="next-steps"></a>次のステップ
 

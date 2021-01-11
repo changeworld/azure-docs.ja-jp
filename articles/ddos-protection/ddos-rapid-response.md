@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 3655b117b641a6179bd6539aaf3f75af07f21a1a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 8de95a56f3da928997a97ff216b13d522c82afca
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992371"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814195"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS Rapid Response
 
-アクティブなアクセスの間、Azure DDoS Protection Standard のお客様は、DDoS Rapid Response (DRR) チームにアクセスできます。このチームは、攻撃中の攻撃の調査、攻撃後の分析を支援します。
+アクティブなアクセスの間、Azure DDoS Protection Standard のお客様は、DDoS Rapid Response (DRR) チームにアクセスできます。このチームは、攻撃中の攻撃の調査と、攻撃後の分析を支援します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ ms.locfileid: "94992371"
 
 1. Azure portal で新しいサポート リクエストを作成する際、 **[問題の種類]** で [技術] を選択します。
 2. **[サービス]** で **[DDOS 保護]** を選択します。
-3. [リソース] ドロップ ダウン メニューでリソースを選択します。 _DRR に問い合わせるには DDoS Protection Standard によって保護されている仮想ネットワークにリンクしている DDoS プランを選択する必要があります。_
+3. リソース ドロップダウン メニューでリソースを選択します。 _DRR に問い合わせるには DDoS Protection Standard によって保護されている仮想ネットワークにリンクしている DDoS プランを選択する必要があります。_
 
     ![リソースを選択する](./media/ddos-rapid-response/choose-resource.png)
 
@@ -56,5 +56,5 @@ DRR は、Azure Rapid Response サポート モデルに従います。 Rapid Re
 ## <a name="next-steps"></a>次のステップ
 
 - [シミュレーションを通じてテストする](test-through-simulations.md)方法を学習します。
-- [DDoS 保護テレメトリを表示および構成する](telemetry-monitoring-alerting.md)方法を学習します。
-- [DDoS 攻撃の軽減策レポートとフロー ログを構成する](reports-and-flow-logs.md)方法を学習します。
+- [DDoS 保護テレメトリを表示および構成する](telemetry.md)方法を学習します。
+- [DDoS 診断ログを表示および構成する](diagnostic-logging.md)方法を学習します。

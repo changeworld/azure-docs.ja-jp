@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1b17729437b238b98f60e2cd97664fa6aafcccd4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b3ba007f03b3aa4883d9455dc43b2bc19676da59
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462450"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803971"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>IoT プラグ アンド プレイ デバイスを認定する方法
 
@@ -41,7 +41,7 @@ IoT プラグ アンド プレイで実行されるアプリケーション コ�
 - [DPS](../iot-dps/about-iot-dps.md) を使用して、Azure IoT Hub に接続する。
 - IoT プラグ アンド プレイ規則に従ったテレメトリ、プロパティ、またはコマンドを実装する。
 - デバイスと [DTDL v2](https://aka.ms/dtdl) モデルとのやりとりについて説明する。
-- モデル、および必要なすべてのインターフェイスを [Azure IoT パブリック モデル リポジトリに発行する](https://devicemodels.azureiotsolutions.com/)
+- モデル、および必要なすべてのインターフェイスを Azure IoT パブリック モデル リポジトリに発行する
 - DPS プロビジョニング ペイロードで [DPS 登録](./concepts-developer-guide-device.md#dps-payload)中にモデル ID を送信する。
 - [MQTT 接続](./concepts-developer-guide-device.md#model-id-announcement)中にモデル ID を知らせる。
 - すべてのデバイス モデルは、[Azure IoT Central](../iot-central/core/overview-iot-central-developer.md) と互換性がある必要がある。
@@ -174,7 +174,7 @@ az iot product test task create --type QueueTestRun --test-id d45d53d9-656d-4be7
 
 [認定ポータル](https://aka.ms/acdp)を使用するには、職場または学校のテナントからの Azure Active Directory を使用する必要があります。
 
-Azure IoT パブリック モデル リポジトリにモデルを発行するには、アカウントが [Microsoft Partner Network](https://partner.microsoft.com) のメンバーである必要があります。 デバイス カタログに発行する前に、システムによって Microsoft Partner Network ID が存在し、アカウントが十分調査されていることが確認されます。
+[Azure IoT パブリック モデル リポジトリ](https://github.com/Azure/iot-plugandplay-models)にモデルを発行するには、アカウントが [Microsoft Partner Network](https://partner.microsoft.com) のメンバーである必要があります。 デバイス カタログに発行する前に、システムによって Microsoft Partner Network ID が存在し、アカウントが十分調査されていることが確認されます。
 
 ### <a name="company-profile"></a>会社のプロファイル
 

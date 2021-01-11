@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: オンプレミス、Docker、コンテナー
-ms.openlocfilehash: 9ca5229200b39f0a3c68da152f4d89f842d021ca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2123098aafb414495f55d557ac1546819c25fdad
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95996447"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822065"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Speech サービス API 向けの Docker コンテナーをインストールし、実行する 
 
@@ -312,6 +312,10 @@ ApiKey={API_KEY}
 * 4 つの CPU コアと 4 ギガバイト (GB) のメモリを割り当てます。
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
+
+> [!NOTE]
+> コンテナーによる Speech SDK への圧縮オーディオ入力のサポートには、GStreamer が使用されます。
+> コンテナーに GStreamer をインストールするには、「[Speech SDK でコーデック圧縮オーディオを使用する](how-to-use-codec-compressed-audio-input-streams.md)」での GStreamer に関する Linux の手順に従ってください。
 
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>音声テキスト変換の出力のセンチメントを分析する 

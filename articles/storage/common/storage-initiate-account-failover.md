@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 12/29/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 300b9b6279231079807f8c923570bddab657ff56
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 93bcbab9445d83bf17b37b6affc1d2bc70703bbf
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92095910"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814331"
 ---
 # <a name="initiate-a-storage-account-failover"></a>ストレージ アカウントのフェールオーバーを開始する
 
@@ -38,6 +38,13 @@ ms.locfileid: "92095910"
 
 Azure Storage の冗長性の詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」を参照してください。
 
+次の機能とサービスは、アカウントのフェールオーバーではサポートされていないことに注意してください。
+
+- Azure File Sync では、ストレージ アカウントのフェールオーバーはサポートされていません。 Azure File Sync でクラウド エンドポイントとして使用されている Azure ファイル共有を含むストレージ アカウントは、フェールオーバーしないでください。 それを行うと、同期の動作が停止し、新しく階層化されたファイルの場合は予期せずデータが失われる可能性があります。
+- ADLS Gen2 ストレージ アカウント (階層型名前空間が有効になっているアカウント) は、現時点ではサポートされていません。
+- Premium ブロック BLOB 含むストレージ アカウントは、フェールオーバーできません。 現在、Premium ブロック BLOB をサポートするストレージ アカウントでは、geo 冗長がサポートされていません。
+- 任意の [WORM 不変ポリシー](../blobs/storage-blob-immutable-storage.md)対応コンテナーを含むストレージ アカウントをフェール オーバーすることはできません。 ロックされていない、またはロックされている時間ベースのリテンション期間または訴訟ホールド ポリシーでは、コンプライアンスを維持するためにフェール オーバーが防止されます。
+
 ## <a name="initiate-the-failover"></a>フェールオーバーを開始する
 
 ## <a name="portal"></a>[ポータル](#tab/azure-portal)
@@ -50,11 +57,11 @@ Azure portal からアカウントのフェールオーバーを開始するに�
     :::image type="content" source="media/storage-initiate-account-failover/portal-failover-prepare.png" alt-text="geo レプリケーションとフェールオーバーの状態を示すスクリーンショット":::
 
 1. お使いのストレージ アカウントが、geo 冗長ストレージ (GRS) または読み取りアクセス geo 冗長ストレージ (RA-GRS) 用に構成されていることを確認します。 そうでない場合は、 **[設定]** の **[構成]** を選択して、アカウントを geo 冗長に更新します。
-1. **[最終同期時刻]** プロパティでは、セカンダリがプライマリからどれくらい遅れているかが示されます。 **[最終同期時刻]** では、フェールオーバー完了後に発生するデータ損失の範囲の見積もりが提供されます。 **[最終同期時刻]** プロパティの詳細については、「 [ストレージ アカウントの最終同期時刻プロパティを確認する](last-sync-time-get.md)」を参照してください。
+1. **[最終同期時刻]** プロパティでは、セカンダリがプライマリからどれくらい遅れているかが示されます。 **[最終同期時刻]** では、フェールオーバー完了後に発生するデータ損失の範囲の見積もりが提供されます。 **[最終同期時刻]** プロパティの詳細については、「[ストレージ アカウントの最終同期時刻プロパティを確認する](last-sync-time-get.md)」を参照してください。
 1. **[フェールオーバーの準備]** を選択します。
 1. 確認ダイアログを確認します。 準備ができていれば、 **[はい]** を選択して確認し、フェールオーバーを開始します。
 
-    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="geo レプリケーションとフェールオーバーの状態を示すスクリーンショット":::
+    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="アカウントのフェールオーバーの確認ダイアログを示すスクリーンショット":::
 
 ## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -106,7 +113,7 @@ az storage account failover \ --name accountName
 
 ストレージ アカウントのアカウントのフェールオーバーを開始すると、セカンダリ エンドポイントがプライマリ エンドポイントになるように、セカンダリ エンドポイントの DNS レコードが更新されます。 フェールオーバーを開始する前に、ストレージ アカウントに対して可能性のある影響について理解しておいてください。
 
-フェールオーバーを始める前に、可能性のあるデータ損失の範囲を見積もるには、 **[最終同期時刻]** プロパティを確認します。 **[最終同期時刻]** プロパティの詳細については、「 [ストレージ アカウントの最終同期時刻プロパティを確認する](last-sync-time-get.md)」を参照してください。
+フェールオーバーを始める前に、可能性のあるデータ損失の範囲を見積もるには、 **[最終同期時刻]** プロパティを確認します。 **[最終同期時刻]** プロパティの詳細については、「[ストレージ アカウントの最終同期時刻プロパティを確認する](last-sync-time-get.md)」を参照してください。
 
 開始後のフェールオーバーにかかる時間は異なりますが、通常 1 時間未満です。
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: fcb845904216fbe4cb05828877775ea2178c45e9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b5795172517ba2e707d66ebe486c51d31575bd0d
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539158"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821878"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Apache Spark REST API を使用してリモート ジョブを HDInsight Spark クラスターに送信する
 
@@ -155,7 +155,7 @@ Livy は、クラスター上で実行される Spark ジョブに対する高�
     {"id":0,"state":"starting","log":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    出力の最後の行に **state:starting** とある点に注意してください。 また、 **id:0** とも表示されています。 ここで、 **0** はバッチ ID です。
+    出力の最後の行に **state:starting** とある点に注意してください。 また、 **id:0** とも表示されています。 ここで、**0** はバッチ ID です。
 
 1. これで、バッチ ID を使用して、この特定のバッチの状態を取得できるようになりました。
 
@@ -207,7 +207,7 @@ HDInsight 3.5 以上のクラスターでは、サンプル データ ファイ�
 
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Azure 仮想ネットワーク内でクラスターの Livy ジョブを送信する
 
-Azure 仮想ネットワーク内から HDInsight Spark クラスターに接続すると、クラスター上の Livy に直接接続することができます。 このような場合、Livy エンドポイントの URL は `http://<IP address of the headnode>:8998/batches` になります。 ここで、 **8998** は、クラスター ヘッドノードで Livy が実行されているポートです。 非パブリック ポート上のサービスへのアクセスの詳細については、「[HDInsight 上の Hadoop サービスで使用されるポート](../hdinsight-hadoop-port-settings-for-services.md)」を参照してください。
+Azure 仮想ネットワーク内から HDInsight Spark クラスターに接続すると、クラスター上の Livy に直接接続することができます。 このような場合、Livy エンドポイントの URL は `http://<IP address of the headnode>:8998/batches` になります。 ここで、**8998** は、クラスター ヘッドノードで Livy が実行されているポートです。 非パブリック ポート上のサービスへのアクセスの詳細については、「[HDInsight 上の Hadoop サービスで使用されるポート](../hdinsight-hadoop-port-settings-for-services.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

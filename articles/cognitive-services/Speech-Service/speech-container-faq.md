@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a657f43ef2d889cad1608d34e9235b1d5e7cb576
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 85534d1f64b273e42a2ea063e67286ee7bb4a90a
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894152"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827157"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>音声サービスコンテナーの良くある質問(FAQ)
 
@@ -169,7 +169,7 @@ StatusCode: InvalidArgument,
 Details: Voice does not match.
 ```
 
-**回答 2:** 要求で正しい音声名を指定する必要があります。これは大文字と小文字が区別されます。 完全なサービスマッピング名を参照してください。 `en-US-JessaRUS`を使用する必要があります。これは、現在、コンテナーバージョンのテキスト読み上げでは `en-US-JessaNeural`が利用できないためです。
+**回答 2:** 要求で正しい音声名を指定する必要があります。これは大文字と小文字が区別されます。 完全なサービスマッピング名を参照してください。
 
 **エラー 3:**
 
@@ -309,6 +309,8 @@ Websocket が正しくセットアップされていることがわかります�
 コードでは、エンドポイントを `host:port`/speech/recognition/interactive/cognitiveservices/v1 に設定します
 
 さまざまなモードについては、以下の音声モード参照してください：
+
+## <a name="speech-modes---interactive-conversation-dictation"></a>音声モード - 対話型、会話、ディクテーション
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
@@ -558,6 +560,8 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 </summary>
 
 **回答:** 音声コンテナーには、さまざまな用途のエンドポイントが3つあります。これらは音声モードとして定義されています。以下を参照してください：
+
+## <a name="speech-modes"></a>音声モード
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 

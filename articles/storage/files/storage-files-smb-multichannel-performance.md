@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: ee3d1335de1b2bb3096e88c4d04cd03daaa665f5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4f4cd8189c9166ee08c1e4ccd800a1202d3b5893
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "96014102"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724818"
 ---
 # <a name="smb-multichannel-performance"></a>SMB マルチチャネルのパフォーマンス
 
@@ -63,7 +63,7 @@ Azure ストレージ アカウントで、SMB マルチチャネルを有効に
 1. 管理者として PowerShell を開き、次のコマンドを使用します: `Get-SmbMultichannelConnection |fl`
 1. **MaxChannels** および **CurrentChannels** プロパティを検索します
 
-:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG" alt-text="get-smbmultichannelconnection の結果のスクリーンショット。" lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG":::
+:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG" alt-text="Get-SMBMultichannelConnection の結果のスクリーンショット。" lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG":::
 
 ## <a name="performance-comparison"></a>パフォーマンスの比較
 
@@ -81,7 +81,7 @@ Azure ストレージ アカウントで、SMB マルチチャネルを有効に
 |---|---|---|---|---|---|---|---|---|
 | [Standard_D32s_v3](../../virtual-machines/dv3-dsv3-series.md) | 32 | 128 | 256 | 32 | 64000/512 (800)    | 51200/768  | 8|16000 |
 
-:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-nic-settings-all-nics.PNG" alt-text="get-smbmultichannelconnection の結果のスクリーンショット。" lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-nic-settings-all-nics.PNG":::
+:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-nic-settings-all-nics.PNG" alt-text="パフォーマンス テストの構成を示すスクリーンショット。" lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-nic-settings-all-nics.PNG":::
 
 ### <a name="mutli-threadedmultiple-files-with-smb-multichannel"></a>SMB マルチチャネルを使用した、マルチスレッド、複数ファイル
 
@@ -119,7 +119,7 @@ Azure ストレージ アカウントで、SMB マルチチャネルを有効に
 - ストレージ アカウントとクライアントが同じ Azure リージョンに確実に共存しているようにして、ネットワーク待ち時間を短縮します。
 - マルチスレッド アプリケーションを使用し、複数のファイルに負荷を分散します。
 - SMB マルチチャネルのパフォーマンス上の利点は、負荷を分散するファイルの数と共に増えます。
-- Premium 共有のパフォーマンスは、プロビジョニングされた共有サイズ (IOPS、エグレス、イングレス) と単一ファイルの制限に縛られます。 詳細については、「[Premium ファイル共有のプロビジョニングについて](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)」を参照してください。
+- Premium 共有のパフォーマンスは、プロビジョニングされた共有サイズ (IOPS、エグレス、イングレス) と単一ファイルの制限に縛られます。 詳細については、「[Premium ファイル共有のプロビジョニングについて](understanding-billing.md#provisioned-billing)」を参照してください。
 - 1 つの VM クライアントの最大パフォーマンスは VM の制限に引き続き縛られます。 たとえば [Standard_D32s_v3](../../virtual-machines/dv3-dsv3-series.md) で最大帯域幅 16,000 MBps (または 2 GBps) をサポートでき、VM からのエグレス (ストレージへの書き込み) は測定され、イングレス (ストレージからの読み取り) は測定されません。 ファイル共有のパフォーマンスは、マシン ネットワーク制限、CPU、内部ストレージの使用可能なネットワーク帯域幅、IO サイズ、並列処理、その他の要因の影響を受けます。
 - 初期テストは通常、ウォームアップであり、その結果は破棄して、テストを繰り返します。
 - パフォーマンスが 1 つのクライアントによって制限されていて、ワークロードがプロビジョニングされた共有制限をまだ下回っている場合は、複数のクライアントに負荷を分散することでパフォーマンスを向上させることができます。

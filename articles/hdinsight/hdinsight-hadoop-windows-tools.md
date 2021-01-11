@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: 6482b2ec07a0473ddbea2098d37c5d67c8b68704
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 770c73cb6f1309e64cd44c5a1b1570899108e4e7
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539702"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821045"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Windows PC から HDInsight の Apache Hadoop エコシステムで作業する
 
@@ -75,9 +75,9 @@ Visual Studio で .NET SDK を使用して実行できるタスクの例:
 
 ## <a name="notebooks-on-spark-for-data-scientists"></a>データ サイエンティスト向けの Spark のノートブック
 
-HDInsight の Apache Spark クラスターには、Jupyter ノートブックと共に使用できる Apache Zeppelin ノートブックおよびカーネルが含まれています。
+HDInsight の Apache Spark クラスターには、Jupyter Notebook で使用できる Apache Zeppelin ノートブックとカーネルが含まれています。
 
-* [Apache Spark クラスターでカーネルを Jupyter ノートブックと共に使用して Spark アプリケーションをテストする方法について学ぶ](spark/apache-spark-zeppelin-notebook.md)
+* [Apache Spark クラスターと Jupyter Notebook でカーネルを使用して Spark アプリケーションをテストする方法について学ぶ](spark/apache-spark-zeppelin-notebook.md)
 * [Apache Spark クラスターで Apache Zeppelin ノートブックを使用して Spark ジョブを実行する方法について学ぶ](spark/apache-spark-jupyter-notebook-kernels.md)
 
 ## <a name="run-linux-based-tools-and-technologies-on-windows"></a>Windows での Linux ベースのツールおよびテクノロジの実行
@@ -85,7 +85,7 @@ HDInsight の Apache Spark クラスターには、Jupyter ノートブックと
 Linux のみで提供されているツールまたはテクノロジを使用する必要がある場合は、次のオプションを検討してください。
 
 * **Bash on Ubuntu on Windows 10** は、Windows で Linux サブシステムを提供します。 Bash では、専用の Linux インストールを管理することなく、Linux ユーティリティを直接実行することができます。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](/windows/wsl/install-win10)」をご覧ください。  他の [Unix シェル](https://www.gnu.org/software/bash/)も動作します。
-* **Docker for Windows** は、多くの Linux ベースのツールへのアクセスを提供し、Windows から直接実行できます。 たとえば、Docker を使用して、Windows から Hive 用 Beeline クライアントを直接実行できます。 また、Docker を使用して、ローカルの Jupyter ノートブックを実行し、HDInsight の Spark にリモート接続することもできます。 [Docker for Windows を使用する](https://docs.docker.com/docker-for-windows/)
+* **Docker for Windows** は、多くの Linux ベースのツールへのアクセスを提供し、Windows から直接実行できます。 たとえば、Docker を使用して、Windows から Hive 用 Beeline クライアントを直接実行できます。 また、Docker を使用して、ローカル環境の Jupyter Notebook を実行し、HDInsight の Spark にリモート接続することもできます。 [Docker for Windows を使用する](https://docs.docker.com/docker-for-windows/)
 * **[MobaXTerm](https://mobaxterm.mobatek.net/)** を使用すると、SSH 接続経由でクラスター ファイル システムをグラフィカルに参照することができます。
 
 ## <a name="cross-platform-tools"></a>クロス プラットフォーム ツール

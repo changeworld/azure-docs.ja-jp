@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 8c3993d8208a9a9e2ab54be44d88de0b20a2e586
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1139ce2358d5e5b3b52376892524e7ee0dd5611
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084717"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822235"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Apache Spark クラスター上の Jupyter Notebook のカーネル
 
-HDInsight Spark クラスターは、アプリケーションをテストするために [Apache Spark](./apache-spark-overview.md) 上の Jupyter Notebook で使用できるカーネルを提供します。 カーネルは、コードを実行し、解釈するプログラムです。 次の 3 つのカーネルがあります。
+HDInsight Spark クラスターには、アプリケーションをテストするために [Apache Spark](./apache-spark-overview.md) 上の Jupyter Notebook で使用できるカーネルが用意されています。 カーネルは、コードを実行し、解釈するプログラムです。 次の 3 つのカーネルがあります。
 
 - **PySpark** - Python2 で記述されたアプリケーション用。
 - **PySpark3** - Python3 で記述されたアプリケーション用。
@@ -29,7 +29,7 @@ HDInsight Spark クラスターは、アプリケーションをテストする�
 
 HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
 
-## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>Spark HDInsight での Jupyter Notebook の作成
+## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>Spark HDInsight で Jupyter Notebook を作成する
 
 1. [Azure portal](https://portal.azure.com/) で Spark クラスターを選択します。  手順については、「[クラスターの一覧と表示](../hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。 **[概要]** ビューが開きます。
 
@@ -57,7 +57,7 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
   - **sc** : Spark コンテキスト用
   - **sqlContext** : Hive コンテキスト用
 
-    そのため、コンテキストを設定するための次のようなステートメントを実行する必要は**ありません**。
+    そのため、コンテキストを設定するための次のようなステートメントを実行する必要は **ありません**。
 
     ```sql
     sc = SparkContext('yarn-client')
@@ -107,10 +107,10 @@ SELECT * FROM hivesampletable
 
 上記のステートメントは、次のアクションを実行します。
 
-- **hivesampletable**からすべてのレコードを選択します。
+- **hivesampletable** からすべてのレコードを選択します。
 - -q を使用しているため、自動視覚化がオフになります。
 - `-m sample -r 0.1 -n 500` を使用しているため、hivesampletable 内の行の 10% がランダムにサンプリングされ、結果セットのサイズは 500 行に制限されます。
-- 最後に、 `-o query2` を使用しているため、 **query2**という名前のデータフレームにも、その出力が保存されます。
+- 最後に、 `-o query2` を使用しているため、 **query2** という名前のデータフレームにも、その出力が保存されます。
 
 ## <a name="considerations-while-using-the-new-kernels"></a>新しいカーネルを使用する場合の考慮事項
 
@@ -139,7 +139,7 @@ Spark HDInsight クラスター上の Jupyter Notebook は、Google Chrome で�
 
 ## <a name="suggestions"></a>検索候補
 
-新しいカーネルは進化の過程にあり、時間の経過と共に成熟するでしょう。 したがって、カーネルが成熟するにつれて、API が変更される可能性があります。 これらの新しいカーネルに関するフィードバックを、ぜひお寄せください。 フィードバックは、これらのカーネルの最終リリースを形作るのに役立ちます。 ご意見やフィードバックは、この記事の下部にある **フィードバック**のセクションからお寄せください。
+新しいカーネルは進化の過程にあり、時間の経過と共に成熟するでしょう。 したがって、カーネルが成熟するにつれて、API が変更される可能性があります。 これらの新しいカーネルに関するフィードバックを、ぜひお寄せください。 フィードバックは、これらのカーネルの最終リリースを形作るのに役立ちます。 ご意見やフィードバックは、この記事の下部にある **フィードバック** のセクションからお寄せください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: fbf8c1987a66cad6d9d9bc9dab829af4b42a224e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 236390529ddaf84416448138d7b5bdf31caf681b
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971559"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827497"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>ブート診断を使用して、Azure 内の仮想マシンをトラブルシューティングする方法
 

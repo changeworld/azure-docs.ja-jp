@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5be0d45843eed8c7c0d7d9b6dc4655de01e914c3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d064eb0b748c361b76139b1a21d25cec8996e818
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461452"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734778"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Azure Automation で変数を管理する
 
@@ -80,11 +80,11 @@ $mytestencryptvar = Get-AutomationVariable -Name TestVariable
 Write-output "The encrypted value of the variable is: $mytestencryptvar"
 ```
 
-## <a name="python-2-functions-to-access-variables"></a>変数にアクセスするための Python 2 関数
+## <a name="python-functions-to-access-variables"></a>変数にアクセスするための Python 関数
 
-Python 2 Runbook の変数にアクセスするには、次の表の関数を使用します。
+Python 2 および 3 Runbook の変数にアクセスするには、次の表の関数を使用します。 Python 3 Runbook は現在プレビュー段階です。
 
-|Python 2 関数|説明|
+|Python 関数|説明|
 |:---|:---|
 |`automationassets.get_automation_variable`|既存の変数の値を取得します。 |
 |`automationassets.set_automation_variable`|既存の変数の値を設定します。 |
@@ -135,9 +135,10 @@ $vmValue = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 $vmName = $vmValue.Name
 $vmExtensions = $vmValue.Extensions
 ```
+
 ## <a name="textual-runbook-examples"></a>テキスト形式の Runbook の例
 
-### <a name="retrieve-and-set-a-simple-value-from-a-variable"></a>変数の単純値を取得して設定する
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 次の例は、テキスト形式の Runbook で変数を設定し取得する方法を示しています。 この例では、`NumberOfIterations` と `NumberOfRunnings` という名前の整数型の変数と、`SampleMessage` という名前の文字列型の変数を作成することを想定しています。
 
@@ -154,7 +155,7 @@ for ($i = 1; $i -le $NumberOfIterations; $i++) {
 Set-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
 ```
 
-### <a name="retrieve-and-set-a-variable-in-a-python-2-runbook"></a>Python 2 Runbook で変数を取得して設定する
+# <a name="python-2"></a>[Python 2](#tab/python2)
 
 次のサンプルは、Python 2 Runbook の変数の取得方法、変数の設定方法、および存在しない変数の例外処理方法を示しています。
 
@@ -177,6 +178,32 @@ try:
 except AutomationAssetNotFound:
     print "variable not found"
 ```
+
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+次のサンプルは、Python 3 Runbook (プレビュー) の変数の取得方法、変数の設定方法、および存在しない変数の例外処理方法を示しています。
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a variable
+value = automationassets.get_automation_variable("test-variable")
+print value
+
+# set a variable (value can be int/bool/string)
+automationassets.set_automation_variable("test-variable", True)
+automationassets.set_automation_variable("test-variable", 4)
+automationassets.set_automation_variable("test-variable", "test-string")
+
+# handle a non-existent variable exception
+try:
+    value = automationassets.get_automation_variable("nonexisting variable")
+except AutomationAssetNotFound:
+    print ("variable not found")
+```
+
+---
 
 ## <a name="graphical-runbook-examples"></a>グラフィカルな Runbook の例
 

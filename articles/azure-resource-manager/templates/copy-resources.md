@@ -2,13 +2,13 @@
 title: リソースの複数のインスタンスをデプロイする
 description: Azure Resource Manager テンプレート (ARM テンプレート) で copy 操作と配列を使用して、リソースの種類を複数回デプロイします。
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 47f3d693b84347973889a6003360d7113c427f4d
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.date: 12/21/2020
+ms.openlocfilehash: c9bcb22ec53129520fd9574d0eb58b1e5777531e
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905912"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724495"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM テンプレートでのリソースの反復処理
 
@@ -189,43 +189,6 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 
 `mode` プロパティでも **parallel** が既定値として使用されます。
 
-## <a name="depend-on-resources-in-a-loop"></a>ループ内のリソースへの依存
-
-`dependsOn` 要素を使用することで、リソースを別のリソースの後にデプロイするよう指定することが可能です。 ループ内のリソースの集合に依存するリソースをデプロイするには、dependsOn 要素にコピー ループの名前を指定します。 次の例では、仮想マシンをデプロイする前に 3 つのストレージ アカウントをデプロイする方法を示します。 完全な仮想マシン定義は示されていません。 コピー要素の name が `storagecopy` に設定され、Virtual Machines の dependsOn 要素が `storagecopy` に設定されるよう注意してください。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-04-01",
-      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "copy": {
-        "name": "storagecopy",
-        "count": 3
-      },
-      "properties": {}
-    },
-    {
-      "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2015-06-15",
-      "name": "[concat('VM', uniqueString(resourceGroup().id))]",
-      "dependsOn": ["storagecopy"],
-      ...
-    }
-  ],
-  "outputs": {}
-}
-```
-
 ## <a name="iteration-for-a-child-resource"></a>子リソースの反復処理
 
 子リソースにコピー ループを使用することはできません。 通常は別のリソース内で入れ子になっているように定義するリソースの複数のインスタンスを作成するには、代わりに、そのリソースを最上位のリソースとして作成する必要があります。 type および name の各プロパティを使用して、親リソースとの関係を定義します。
@@ -286,16 +249,14 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 |[Copy storage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |名前にインデックス番号を含む複数のストレージ アカウントをデプロイします。 |
 |[Serial copy storage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |複数のストレージ アカウントを一度に 1 つずつデプロイします。 名前にはインデックス番号が含まれます。 |
 |[Copy storage with array](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |複数のストレージ アカウントをデプロイします。 名前には、配列からの値が含まれます。 |
-|[VM deployment with a variable number of data disks](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |仮想マシンと共に複数のデータ ディスクをデプロイします。 |
-|[Multiple security rules](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |ネットワーク セキュリティ グループに複数のセキュリティ規則をデプロイします。 セキュリティ規則はパラメーターから構築されます。 パラメーターについては、[複数の NSG パラメーター ファイル](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)に関するページを参照してください。 |
 
 ## <a name="next-steps"></a>次のステップ
 
+* コピー ループで作成されたリソースへの依存関係を設定するには、「[ARM テンプレートでのリソース デプロイ順序の定義](define-resource-dependency.md)」を参照してください。
 * チュートリアルについては、「[チュートリアル:ARM テンプレートを使用した複数のリソース インスタンスの作成](template-tutorial-create-multiple-instances.md)」を参照してください。
+* リソースのコピーについて取り上げた Microsoft Learn モジュールについては、「[高度な ARM テンプレート機能を使用して複雑なクラウド デプロイを管理する](/learn/modules/manage-deployments-advanced-arm-template-features/)」を参照してください。
 * copy 要素のその他の使用方法については、以下を参照してください。
   * [ARM テンプレートでのプロパティの反復処理](copy-properties.md)
   * [ARM テンプレートでの変数の反復処理](copy-variables.md)
   * [ARM テンプレートでの出力の反復処理](copy-outputs.md)
 * 入れ子になったテンプレートで copy を使用する方法については、「[copy の使用](linked-templates.md#using-copy)」を参照してください。
-* テンプレートのセクションの詳細については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
-* テンプレートをデプロイする方法の詳細については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。

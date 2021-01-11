@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/05/2020
-ms.openlocfilehash: 783431c4888a68e24cf3d2603c541c4797ea65d8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 12/29/2020
+ms.openlocfilehash: 34a5dfb44ee78245b56c1774701f48b3b8a494df
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741101"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827480"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Logic Apps REST API を使用して統合サービス環境 (ISE) を作成する
 
@@ -69,9 +69,7 @@ Logic Apps REST API を呼び出して ISE を作成するには、この HTTPS 
 
 要求本文には、ISE で有効にする追加機能の情報など、ISE の作成に使用するリソース定義を指定します。たとえば、次のようにします。
 
-* `TrustedRoot` の場所にインストールされている自己署名証明書の使用を許可する ISE を作成するには、この記事で後述するように、ISE 定義の `properties` セクションに `certificates` オブジェクトを含めます。
-
-  既存の ISE でこの機能を有効にするために、`certificates` オブジェクトに対してのみ、PATCH 要求を送信できます。 自己署名証明書の使用の詳細については、[アクセスとデータのセキュリティ保護 - 他のサービスやシステムへの発信呼び出しのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)に関するページを参照してください。
+* `TrustedRoot` の場所にインストールされている、自己署名証明書とエンタープライズ証明機関によって発行された証明書の使用を許可する ISE を作成するには、この記事で後述するように、ISE 定義の `properties` セクションに `certificates` オブジェクトを含めます。
 
 * システム割り当てまたはユーザー割り当てのマネージド ID を使用する ISE を作成するには、この記事で後述するように、マネージド ID の種類およびその他の必要な情報を含む `identity` オブジェクトを ISE 定義に含めます。
 
@@ -123,7 +121,7 @@ ISE の作成時に使用するプロパティを記述する要求本文の構�
             }
          ]
       },
-      // Include `certificates` object to enable self-signed certificate support
+      // Include `certificates` object to enable self-signed certiificate and certificate issued by Enterprise Certificate Authority
       "certificates": {
          "testCertificate": {
             "publicCertificate": "{base64-encoded-certificate}",
@@ -183,6 +181,45 @@ ISE の作成時に使用するプロパティを記述する要求本文の構�
             "publicCertificate": "LS0tLS1CRUdJTiBDRV...",
             "kind": "TrustedRoot"
          }
+      }
+   }
+}
+```
+## <a name="add-custom-root-certificates"></a>カスタム ルート証明書の追加
+
+ISE を、仮想ネットワーク上またはオンプレミスのカスタム サービスに接続するために使用することがよくあります。 多くの場合、これらのカスタム サービスは、エンタープライズ証明機関などのカスタムのルート証明機関によって発行された証明書、または自己署名証明書によって保護されます。 自己署名証明書の使用の詳細については、[アクセスとデータのセキュリティ保護 - 他のサービスやシステムへの発信呼び出しのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)に関するページを参照してください。 ISE がトランスポート層セキュリティ (TLS) を使用してこれらのサービスに正常に接続するためには、ISE がこれらのルート証明書にアクセスできる必要があります。 カスタムの信頼されたルート証明書で ISE を更新するには、次の HTTPS `PATCH` 要求を行います。
+
+`PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
+
+この操作を実行する前に、次の考慮事項を確認してください。
+
+* 必ず、ルート証明書 *および* すべての中間証明書をアップロードしてください。 証明書の最大数 は 20 です。
+
+* ルート証明書のアップロードは、最新のアップロードによって前のアップロードが上書きされる置換操作です。 たとえば、ある証明書をアップロードする要求を送信した後に、別の証明書をアップロードする別の要求を送信した場合、2 番目の証明書のみが ISE によって使用されます。 両方の証明書を使用する必要がある場合は、同じ要求内に一緒に追加します。  
+
+* ルート証明書のアップロードは、時間がかかる可能性がある非同期操作です。 状態または結果を確認するには、同じ URI を使用して `GET` 要求を送信します。 応答メッセージには、アップロード操作がまだ実行中の場合に `InProgress` 値を返す `provisioningState` フィールドがあります。 `provisioningState` 値が `Succeeded` の場合、アップロード操作は完了しています。
+
+#### <a name="request-body-syntax-for-adding-custom-root-certificates"></a>カスタム ルート証明書を追加するための要求本文の構文
+
+ルート証明書を追加するときに使用するプロパティを記述する要求本文の構文を次に示します。
+
+```json
+{
+   "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
+   "name": "{ISE-name}",
+   "type": "Microsoft.Logic/integrationServiceEnvironments",
+   "location": "{Azure-region}",
+   "properties": {
+      "certificates": {
+         "testCertificate1": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         },
+         "testCertificate2": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         }
+      }
    }
 }
 ```

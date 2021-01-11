@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: f4d9cc4c02ab062c73e9dbd977d9ea9e6ccdb60d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43cd03e8f4a66d18adc33c943481002ff7b326d3
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90533009"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813209"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>通知とバックアップのために Azure Storage を統合する
 
@@ -35,8 +35,8 @@ Custom Vision プロジェクトを Azure Blob Storage キューと統合して�
 Azure portal で Custom Vision トレーニング リソースに移動し、 **[ID]** ページを選択して、システム割り当てマネージド ID を有効にします。
 
 次に、Azure portal でストレージ リソースに移動します。 **[アクセス制御 (IAM)]** ページに移動し、各統合機能に対してロールの割り当てを追加します。
-* モデルのバックアップ機能を使用する場合は、Custom Vision トレーニング リソースを選択して、**ストレージ BLOB データ共同作成者**ロールを割り当てます。 
-* 次に、通知キュー機能を使用する場合は、Custom Vision トレーニング リソースを選択して、**ストレージ キュー データ共同作成者**を割り当てます。
+* モデルのバックアップ機能を使用する場合は、Custom Vision トレーニング リソースを選択して、**ストレージ BLOB データ共同作成者** ロールを割り当てます。 
+* 次に、通知キュー機能を使用する場合は、Custom Vision トレーニング リソースを選択して、**ストレージ キュー データ共同作成者** を割り当てます。
 
 > [!div class="mx-imgBorder"]
 > ![ストレージ アカウントのロール割り当て追加ページ](./media/storage-integration/storage-access.png)
@@ -206,4 +206,5 @@ curl -v -X PATCH "{endpoint}/customvision/v3.3/Training/projects/{projectId}"
 ## <a name="next-steps"></a>次の手順
 
 このガイドでは、Custom Vision リソース間でプロジェクトをコピーして移動する方法について説明しました。 次に、API リファレンス ドキュメントを参照して、Custom Vision を使用して他にできることを確認してください。
-* [REST API リファレンス ドキュメント](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)
+* [REST API リファレンス ドキュメント (トレーニング)](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)
+* [REST API リファレンス ドキュメント (予測)](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.1/operations/5eb37d24548b571998fde5f3)

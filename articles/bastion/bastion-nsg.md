@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: afb751e08faea6dabde72b192d246b48735cff53
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 4fe22e0dae73df7af4fc24ba508ecbecf72dfd05
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938693"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795378"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>NSG アクセスと Azure Bastion を使用する
 
@@ -40,7 +40,8 @@ Azure Bastion は、***AzureBastionSubnet** に対して明示的にデプロイ
 
    * **パブリック インターネットからのイグレス トラフィック:** Azure Bastion によってパブリック IP が作成されます。このパブリック IP では、イグレス トラフィック用にポート 443 が有効になっている必要があります。 AzureBastionSubnet でポート 3389/22 が開かれている必要はありません。
    * **Azure Bastion からのイグレス トラフィックのコントロール プレーン:** コントロール プレーン接続の場合は、**GatewayManager** サービス タグからのポート 443 受信を有効にします。 これにより、コントロール プレーン、つまりゲートウェイ マネージャーから Azure Bastion への通信が可能になります。
-   * **Azure Load Balancer からのイングレス トラフィック:** 正常性プローブの場合は、**AzureLoadBalancer** サービス タグからのポート 443 受信を有効にします。 これにより、Azure Load Balancer は接続を検出できます 
+   * **Azure Bastion データ プレーンからのイングレス トラフィック:** Azure Bastion の基盤コンポーネント間でのデータ プレーン通信については、ポート 8080, 5701 で、**VirtualNetwork** サービス タグから **VirtualNetwork** サービス タグへの受信を有効にします。 これにより、Azure Bastion のコンポーネントが相互に通信できるようになります。
+   * **Azure Load Balancer からのイングレス トラフィック:** 正常性プローブの場合は、**AzureLoadBalancer** サービス タグからのポート 443 受信を有効にします。 これにより、Azure Load Balancer は接続を検出できます
 
 
    :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Azure Bastion 接続のインバウンド セキュリティ規則のスクリーンショット。":::
@@ -48,7 +49,9 @@ Azure Bastion は、***AzureBastionSubnet** に対して明示的にデプロイ
 * **エグレス トラフィック:**
 
    * **ターゲット VM へのエグレス トラフィック:** Azure Bastion は、プライベート IP 経由でターゲット VM にリーチします。 NSG では、他のターゲット VM サブネットへのエグレス トラフィックをポート 3389 と 22 に許可する必要があります。
+   * **Azure Bastion データ プレーンへのエグレス トラフィック:** Azure Bastion の基盤コンポーネント間でのデータ プレーン通信については、ポート 8080, 5701 で、**VirtualNetwork** サービス タグから **VirtualNetwork** サービス タグへの送信を有効にします。 これにより、Azure Bastion のコンポーネントが相互に通信できるようになります。
    * **Azure の他のパブリックエンド ポイントへのエグレス トラフィック:** Azure Bastion から Azure 内のさまざまなパブリック エンドポイントに接続できる必要があります (たとえば、診断ログや測定ログを格納するため)。 このため、Azure Bastion には **AzureCloud** サービス タグに対する 443 への送信が必要です。
+   * **インターネットへのエグレス トラフィック:** Azure Bastion は、セッションと証明書の検証のためにインターネットと通信できる必要があります。 そのため、ポート 80 で **インターネット** への送信を有効にすることをお勧めします。
 
 
    :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Azure Bastion 接続のアウトバウンド セキュリティ規則のスクリーンショット。":::

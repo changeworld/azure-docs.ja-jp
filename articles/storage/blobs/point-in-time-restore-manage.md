@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2350177373bc99907c437d814d8f01193f18f3fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7bd85c60025475e8208847a12ccc2729743a975a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895725"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803920"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>ブロック BLOB データに対してポイントインタイム リストアを実行する
 
@@ -23,7 +23,7 @@ ms.locfileid: "95895725"
 ポイントインタイム リストアの詳細については、「[ブロック BLOB のポイントインタイム リストア](point-in-time-restore-overview.md)」を参照してください。
 
 > [!CAUTION]
-> ポイントインタイム リストアでは、ブロック BLOB に対する復元操作のみがサポートされます。 コンテナーに対する操作は復元できません。 [Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーは復元操作を使って復元できません。 復元が必要になる可能性がある場合は、コンテナーを削除するのではなく、個々の BLOB を削除してください。
+> ポイントインタイム リストアでは、ブロック BLOB に対する復元操作のみがサポートされます。 コンテナーに対する操作は復元できません。 [Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーは復元操作を使って復元できません。 後で復元が必要になる可能性がある場合は、コンテナー全体を削除するのではなく、個々の BLOB を削除してください。
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>ポイントインタイム リストアを有効にして構成する
 
@@ -107,6 +107,8 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 > 復元操作を実行すると、Azure Storage では操作中、復元される範囲内の BLOB に対するデータ操作がブロックされます。 読み取り、書き込み、および削除の各操作がプライマリ ロケーションでブロックされます。 このため、Azure portal でのコンテナーの一覧表示などの操作は、復元操作の実行中に予期したとおりに実行されない場合があります。
 >
 > ストレージ アカウントが geo レプリケートされている場合は、復元操作中にセカンダリ ロケーションからの読み取り操作を続行できます。
+>
+> 一連のデータの復元にかかる時間は、復元期間中に行われた書き込み操作と削除操作の数に基づきます。 たとえば、100 万オブジェクトのアカウントで毎日 3,000 オブジェクトが追加され、1,000 オブジェクトが削除される場合、過去 30 日間のポイントまで復元するのに約 2 時間必要になります。 1 保有期間と過去 90 日間の復元は、この変更率のアカウントには推奨されません。
 
 ### <a name="restore-all-containers-in-the-account"></a>アカウント内のすべてのコンテナーを復元する
 

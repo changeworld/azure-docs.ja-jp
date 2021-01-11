@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/07/2020
+ms.date: 12/28/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2408db2d91740350405f11e2a1250ab9b3a4fe31
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 56818862b6bc4eb38b819185aceb121e6e78488e
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181205"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803529"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory ポータルのプロビジョニング レポート (プレビュー)
 
@@ -44,6 +44,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 ### <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
 * アプリケーションの所有者は、自分が所有するアプリケーションのログを表示できます
 * セキュリティ管理者、セキュリティ閲覧者、レポート閲覧者、アプリケーション管理者、クラウド アプリケーション管理者のいずれかのロールであるユーザー
+* [provisioningLogs アクセス許可](https://docs.microsoft.com/azure/active-directory/roles/custom-enterprise-app-permissions#full-list-of-permissions)を持つカスタム ロールのユーザー
 * グローバル管理者
 
 
@@ -56,7 +57,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 プロビジョニング ログから、次の情報を得ることができます。
 
 * ServiceNow で正常に作成されたグループ
-* アマゾン ウェブ サービスからインポートされたロール
+* Adobe から正常に削除されたユーザー
 * DropBox で作成に失敗したユーザー
 
 [Azure portal](https://portal.azure.com) の **[Azure Active Directory]** ブレードの **[監視]** セクションで **[プロビジョニング ログ]** を選択して、プロビジョニング レポートにアクセスできます。 プロビジョニング レコードによっては、ポータルに表示されるまでに最大 2 時間かかるものもあります。
@@ -219,7 +220,9 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 - ユーザーがスコープに含まれていない場合、スキップされたイベントが表示されることがあります。 同期スコープがすべてのユーザーとグループに設定されているときは特にこれが予想されます。 Microsoft のサービスでは、スコープ外であっても、テナント内のすべてのオブジェクトが評価されます。 
 
-- プロビジョニング ログは現在、政府のクラウドで利用できません。 プロビジョニング ログにアクセスできない場合は、一時的な回避策として監査ログを使用してください。  
+- プロビジョニング ログは現在、政府のクラウドで利用できません。 プロビジョニング ログにアクセスできない場合は、一時的な回避策として監査ログを使用してください。 
+
+- プロビジョニング ログには、ロールのインポートは表示されません (AWS、SalesForce、ZenDesk に適用されます)。 ロールのインポートのログは、監査ログで確認できます。 
 
 ## <a name="error-codes"></a>エラー コード
 

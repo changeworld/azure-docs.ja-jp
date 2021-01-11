@@ -1,0 +1,231 @@
+---
+title: Azure Active Directory への外部アクセスに関するセキュリティ プランを作成する
+description: 組織のリソースに対する外部アクセスについて、セキュリティ プランを策定します。
+services: active-directory
+author: BarbaraSelden
+manager: daveba
+ms.service: active-directory
+ms.workload: identity
+ms.subservice: fundamentals
+ms.topic: conceptual
+ms.date: 12/18/2020
+ms.author: baselden
+ms.reviewer: ajburnle
+ms.custom: it-pro, seodec18
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a08a4f4a31893fc93789d019ea87dff390552f6a
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97743775"
+---
+# <a name="3-create-a-security-plan-for-external-access"></a>3.外部アクセスのセキュリティ プランを作成する 
+
+[外部アクセスに対する必要なセキュリティ対策を決定](1-secure-access-posture.md)し、[現在のコラボレーション状態を検出](2-secure-access-current-state.md)したら、次は外部ユーザーのセキュリティとガバナンスに関するプランを作成します。 
+
+このプランでは、次のことを文書化する必要があります。
+
+* アクセス用にグループ化する必要があるアプリケーションとその他のリソース。
+
+* 外部ユーザーに対する適切なサインイン条件。 これには、デバイスの状態、サインインの場所、クライアント アプリケーションの要件、およびユーザーのリスクが含まれます。
+
+* アクセスをレビューおよび削除するタイミングについてのビジネス ポリシー。 
+
+* グループ化され、同様に処理されるユーザー。
+
+これらの情報を文書化したら、Microsoft または他の ID プロバイダー (IdP) から提供された ID とアクセス管理ポリシーを使用して、このプランを実装できます。
+
+## <a name="document-resources-to-be-grouped-for-access"></a>アクセス用にグループ化されるリソースの文書化
+
+アクセス用にリソースをグループ化するには、複数の方法があります。 
+
+* Microsoft Teams では、ファイル、会話スレッド、およびその他のリソースが 1 つの場所にグループ化されます。 Microsoft Teams の外部アクセス戦略を策定するようにしましょう。 「[Microsoft Teams、SharePoint、OneDrive for Business への外部アクセスをセキュリティで保護する](9-secure-access-teams-sharepoint.md)」を参照してください。
+
+* エンタイトルメント管理アクセス パッケージを使用すると、アクセス権を付与できるアプリケーションとその他のリソースを、1 つのパッケージとして作成できます。 
+
+* 条件付きアクセス ポリシーは、同じアクセス要件を持つ、最大 250 のアプリケーションに適用できます。
+
+アクセスの管理方法にかかわらず、グループ化する必要があるアプリケーションは文書化する必要があります。 考慮事項は次のとおりです。
+
+* **リスク プロファイル**。 不適切なアクターがアプリケーションへのアクセス権を得た場合、ビジネスにとってどのようなリスクがあるでしょうか? 各アプリケーションを、高、中、低のリスクとしてコーディングすることを検討してください。 高リスクのアプリケーションを低リスクのアプリケーションと一緒にグループ化することについては、十分な注意を払ってください。 
+
+   * 外部ユーザーと共有されないようにする必要があるアプリケーションも文書化するようにしてください。
+
+* **コンプライアンス フレームワーク**。 アプリケーションで、何らかのコンプライアンス フレームワークに準拠する必要はありますか? アクセスとレビューについては、どのような要件が必要でしょうか?
+
+* **特定のジョブ ロールや部門に向けたアプリケーション**。 特定のジョブロールや部門のすべてのユーザーがアクセスできるよう、グループ化する必要があるアプリケーションはありますか?
+
+* **コラボレーションに特化したアプリケーション**。 コラボレーションに特化したアプリケーションで、外部ユーザーがアクセスする必要があるものはありますか? Microsoft Teams や SharePoint は、これに該当する可能性があります。 Office 365 内の生産性アプリケーション (Word や Excel など) で、外部ユーザーが自分のライセンスを持ち込むことは予定されていますか? また、それらのユーザーにライセンスを付与し、アクセスを提供する必要はありますか?
+
+外部ユーザーのアクセスを許可するアプリケーションやリソースのグループ化については、次の情報を文書化してください。
+
+* グループのわかりやすい名前 (たとえば、*High_Risk_External_Access_Finance*)。 
+
+* グループ内のすべてのアプリケーションとリソースの完全な一覧。
+
+* アプリケーションとリソースの所有者と連絡先情報。
+
+* アクセスが IT によって管理されるのか、それともビジネス所有者に委任されるのか。
+
+* アクセスに必要なすべての前提条件 (バックグラウンド調査やトレーニングの完了など)。
+
+* リソースにアクセスするためのすべてのコンプライアンス要件。
+
+* その他の課題 (特定のリソースに対して多要素認証を要求するなど)。
+
+* アクセスのレビュー頻度、レビュー担当者、およびどこに文書化されるか。
+
+この種のガバナンス プランは内部アクセスについても実施できるので、ぜひ実施するようにしましょう。
+
+## <a name="document-sign-in-conditions-for-external-users"></a>外部ユーザーに対するサインイン条件の文書化
+
+プランの一部として、外部ユーザーがリソースにアクセスするときのサインイン要件を決定する必要があります。 サインインの要件は、多くの場合、リソースのリスク プロファイルと、ユーザーのサインインに対するリスク評価に基づいて決定されます。
+
+サインイン条件は、[Azure AD の条件付きアクセス](../conditional-access/overview.md)で構成します。これらは条件と結果で構成されます。 たとえば、多要素認証を必要とする場合は次のようになります
+
+**リソースのリスクベースのサインイン条件。**
+
+| アプリケーションのリスク プロファイル| 多要素認証のトリガーについては、次のポリシーを検討してください |
+| - |-|
+| 低リスク| 特定のアプリケーション セットに対して MFA を必須にする |
+| 中リスク| 他のリスクが存在する場合には MFA を必須にする |
+| 高リスク| 外部ユーザーに対しては常に MFA を必須とする |
+
+
+現在、[多要素認証はテナント内の B2B ユーザーに対して適用する](https://docs.microsoft.com/azure/active-directory/external-identities/b2b-tutorial-require-mfa)ことができます。 
+
+**ユーザーベースとデバイスベースのサインイン条件**。
+
+| ユーザーまたはサインインのリスク| 次のポリシーを検討してください |
+| - | - |
+| Device| Require compliant devices (準拠しているデバイスが必須) |
+| モバイル アプリ| 承認済みのアプリを必須とする |
+| ID 保護で高いリスクが示されている| ユーザーにパスワードの変更を要求する |
+| ネットワークの場所| 機密性の高いプロジェクトについては、特定の IP アドレス範囲からサインインすることを要求する |
+
+現在、デバイスの状態をポリシーへの入力として使用するには、デバイスをテナントに登録するか、または参加させる必要があります。 
+
+[ID 保護のリスクベースのポリシー](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk)を使用することは可能です。 ただし、ユーザーのホーム テナントで問題を軽減する必要があります。
+
+[ネットワークの場所](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-location)については、自分が所有している IP アドレス範囲へのアクセスを制限することができます。 これは、外部パートナーが自社のサイトにアクセスしているときにのみ、アプリケーションにアクセスできるようにしたい場合に使用できます。
+
+[条件付きアクセス ポリシーの詳細についてご確認ください](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)。
+
+## <a name="document-access-review-policies"></a>アクセス レビュー ポリシーの文書化
+
+リソースへのアクセスをいつ確認する必要があるかや、外部ユーザーのアカウント アクセスをいつ削除する必要があるかについて、ビジネス ポリシーを文書化しましょう。 これらの決定に必要な情報としては、次のようなものがあります。
+
+* コンプライアンス フレームワークの詳細を示した要件事項。
+
+* 内部のビジネス ポリシーとプロセス
+
+* ユーザーの動作
+
+ポリシーはニーズに合わせて高度にカスタマイズされますが、次の点を考慮してください。
+
+* **エンタイトルメント管理のアクセス レビュー**。 エンタイトルメント管理の機能を使用して、次のことを行いましょう
+
+   * [アクセス パッケージの期限切れ処理を自動化](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-lifecycle-policy)し、パッケージ内のリソースへの外部ユーザー アクセスを適切に失効させる。
+
+   * アクセス レビューの[必須レビュー頻度](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-reviews-create)を設定する。
+
+   * 1 つのパートナーのすべてのユーザーをグループ化するために[接続済み組織](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-organization)を使用している場合は、ビジネス所有者とパートナー代表者による定期的なレビューをスケジュールする。
+
+* **Microsoft 365 グループ**。 外部ユーザーを招待する Microsoft 365 グループの[グループ有効期限ポリシー](https://docs.microsoft.com/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide)を設定しましょう。 
+
+* **その他のオプション**。 外部ユーザーがエンタイトルメント管理アクセス パッケージや Microsoft 365 グループの外部にアクセスできる場合は、アカウントを非アクティブにしたり削除したりするタイミングをレビューするためのビジネス プロセスを設定しましょう。 例:
+
+   * 90 日間サインインしていないアカウントについては、サインイン資格を削除する。
+
+   * アクセス ニーズを評価し、外部ユーザーがいるすべてのプロジェクトの完了時に、必要な措置を実行する。
+
+ 
+
+## <a name="determine-your-access-control-methods"></a>アクセス制御方法を決定する
+
+アクセス制御の対象と、それらの資産を共通アクセス用にグループ化する方法、そしてサインインとアクセス レビューに関する必要なポリシーが確認できたら、次はプランの実行方法を決定していきます。 
+
+一部の機能 ([エンタイトルメント管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)など) は、Azure AD Premium 2 (P2) ライセンスでのみ使用できます。 Microsoft 365 E5 と Office 365 E5 のライセンスには、Azure AD P2 ライセンスが含まれています。 
+
+Microsoft 365、Office 365、Azure AD のその他の組み合わせでも、外部ユーザーを管理するための一部の機能が使用できます。 詳細については、[Information Protection](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance) に関する記事を参照してください。
+
+> [!NOTE]
+> ライセンスはユーザー単位です。 そのため、Azure AD P2 や Microsoft 365 E5 レベルでは、特定のユーザー (管理者やビジネス所有者など) に対してアクセス制御を委任することができ、すべてのユーザーに対してライセンスを有効にする必要がありません。 最初の 5 万件分の外部ユーザーは無料です。 他の内部ユーザーに対して P2 ライセンスを有効にしなかった場合、それらのユーザーはアクセス パッケージなどのエンタイトルメント管理機能を使用できなくなります。 
+
+
+## <a name="govern-access-with-azure-ad-p2-and-microsoft--office-365-e5"></a>Azure AD P2 および Microsoft/Office 365 E5 を使用してアクセスを管理する
+Azure AD P2 と Microsoft 365 E5 には、セキュリティとガバナンスのツールがフル スイートで用意されています。
+
+### <a name="provisioning-signing-in-reviewing-access-and-deprovisioning-bolded-entries-are-preferred-methods"></a>プロビジョニング、サインイン、アクセス レビュー、およびプロビジョニング解除。 太字のエントリは、推奨される方法です
+
+| 機能| 外部ユーザーのプロビジョニング| サインイン要件の強制。| アクセスのレビュー| アクセスのプロビジョニング解除 |
+| - | - | - | - | - |
+| Azure AD B2B コラボレーション| メール、OTP、セルフサービスを通じて招待| | **パートナーごとの定期的なレビュー**| Remove account<br>サインインを制限 |
+| エンタイトルメント管理| **割り当てまたはセルフサービス アクセスを通じてユーザーを追加**| | アクセス レビュー|**アクセス パッケージの期限切れ、またはパッケージからの削除**|
+| Office 365 グループ| | | グループ メンバーシップのレビュー| グループの期限切れまたは削除<br> グループからの削除 |
+| Azure AD セキュリティ グループ| | **条件付きアクセス ポリシー** (必要に応じてセキュリティ グループに外部ユーザーを追加)| |  |
+
+
+
+ ### <a name="access-to-resources-bolded-entries-are-preferred-methods"></a>リソースにアクセスする。 太字のエントリは、推奨される方法です
+
+|機能 | アプリとリソースへのアクセス| SharePoint および OneDrive へのアクセス| Teams へのアクセス| 電子メールとドキュメントのセキュリティ |
+| - |-|-|-|-|
+| エンタイトルメント管理| **割り当てまたはセルフサービス アクセスを通じてユーザーを追加**| **アクセス パッケージ**| **アクセス パッケージ**|  |
+| Office 365 グループ| | グループに含まれているサイト (および関連するコンテンツ) へのアクセス| グループに含まれているチーム (および関連するコンテンツ) へのアクセス|  |
+| 秘密度ラベル| | **アクセスを手動および自動で分類して制限**| **アクセスを手動および自動で分類して制限**| **アクセスを手動および自動で分類して制限** |
+| Azure AD セキュリティ グループ| **アクセス パッケージに含まれていないアクセスの CA ポリシー**| | |  |
+
+
+### <a name="entitlement-management"></a>エンタイトルメント管理 
+
+[エンタイトルメント管理アクセス パッケージ](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-create)では、グループ、チーム、アプリケーション、および SharePoint サイトへのアクセス権について、プロビジョニングとプロビジョニング解除を行うことができます。 どの接続済み組織にアクセスを許可するかや、セルフサービス要求を許可するかどうか、またアクセスを許可するためにどのような承認ワークフローが必要か (必要な場合) を定義できます。 アクセスの有効期間が必要以上に長くならないようにするために、各アクセス パッケージの有効期限ポリシーとアクセス レビューを定義することもできます。 
+
+ 
+
+## <a name="govern-access-with-azure-ad-p1-and-microsoft--office-365-e3"></a>Azure AD P1 および Microsoft/Office 365 E3 を使用してアクセスを管理する
+Azure AD P1 および Microsoft 365 E3 では、堅牢なガバナンスを実現できます
+
+### <a name="provisioning-signing-in-reviewing-access-and-deprovisioning"></a>プロビジョニング、サインイン、アクセス レビュー、およびプロビジョニング解除
+
+
+|機能 | 外部ユーザーのプロビジョニング| サインイン要件の強制| アクセスのレビュー| アクセスのプロビジョニング解除 |
+| - |-|-|-|-|
+| Azure AD B2B コラボレーション| **メール、OTP、セルフサービスを通じて招待**| 直接 B2B フェデレーション| **パートナーごとの定期的なレビュー**| Remove account<br>サインインを制限 |
+| Microsoft または Office 365 グループ| | | | グループの期限切れまたは削除。<br>グループからの削除。 |
+| セキュリティ グループ| | **外部ユーザーをセキュリティ グループ (組織、チーム、プロジェクトなど) に追加**| |  |
+| 条件付きアクセス ポリシー| | **外部ユーザーのサインイン CA ポリシー**| |  |
+
+
+ ### <a name="access-to-resources"></a>リソースにアクセスする。
+
+|機能 | アプリとリソースへのアクセス| SharePoint および OneDrive へのアクセス| Teams へのアクセス| 電子メールとドキュメントのセキュリティ |
+| - |-|-|-|-|
+| Microsoft または Office 365 グループ| | **グループ (および関連付けられているコンテンツ) に含まれているサイトへのアクセス**|**Microsoft 365 グループ (および関連付けられているコンテンツ) に含まれているチームへのアクセス**|  |
+| 秘密度ラベル| | アクセスを手動で分類してアクセスを制限| アクセスを手動で分類してアクセスを制限。| 手動で分類して制限し、暗号化 |
+| 条件付きアクセス ポリシー| アクセス制御の CA ポリシー| | |  |
+| 他の方法| | セキュリティ グループを使用して、SharePoint サイトへのアクセスを細かく制限。<br>直接の共有を禁止。| **チーム内からの外部招待を制限**|  |
+
+
+### <a name="next-steps"></a>次のステップ
+
+リソースへの外部アクセスをセキュリティで保護する方法については、次の記事を参照してください。 アクションは、表示されている順序で実行することをお勧めします。
+
+1. [外部アクセスに対するセキュリティ体制を決定する](1-secure-access-posture.md)
+
+2. [現在の状態を理解する](2-secure-access-current-state.md)
+
+3. [ガバナンス プランを作成する](3-secure-access-plan.md) (このページのトピック)
+
+4. [セキュリティにグループを使用する](4-secure-access-groups.md)
+
+5. [Azure AD B2B に移行する](5-secure-access-b2b.md)
+
+6. [エンタイトルメント管理を使用してアクセスをセキュリティで保護する](6-secure-access-entitlement-managment.md)
+
+7. [条件付きアクセス ポリシーを使用してアクセスをセキュリティで保護する](7-secure-access-conditional-access.md)
+
+8. [秘密度ラベルを使用してアクセスをセキュリティで保護する](8-secure-access-sensitivity-labels.md)
+
+9. [Microsoft Teams、OneDrive、SharePoint へのアクセスをセキュリティで保護する](9-secure-access-teams-sharepoint.md)

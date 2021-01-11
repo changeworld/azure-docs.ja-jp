@@ -4,12 +4,12 @@ description: この記事では、コンテナー用 Azure Monitor で kubectl �
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: 45ed931f734e874e81af837fff5c4a326349cb21
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 62bc7613995296504dfba551cdb631ac3386aa75
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530184"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830787"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>ライブ データ (プレビュー) 機能を設定する方法
 
@@ -48,7 +48,7 @@ Azure portal では、Azure Active Directory クラスターのログイン資�
 
 [Kubernetes RBAC 承認を有効化](#configure-kubernetes-rbac-authorization)した後に、Kubernetes ユーザーロールのバインディング **clusterUser** でライブデータ (プレビュー) 機能へのアクセスを許可するために、追加の構成変更を適用する必要がないようにするため、AKS には **clusterMonitoringUser** と呼ばれる新しい Kubernetes クラスター ロール バインディングが追加されました。 このクラスターロールのバインディングには、Kubernetes API にアクセスするために必要なすべてのアクセス許可と、ライブデータ (プレビュー) 機能を利用するためのエンドポイントが含まれています。
 
-この新しいユーザーでライブデータ (プレビュー) 機能を利用するには、AKS クラスターリソースの [共同作成者](../../role-based-access-control/built-in-roles.md#contributor) ロールのメンバーである必要があります。 コンテナーの Azure Monitor (有効化されている場合) は、既定でこのユーザーを使用して認証するように構成されます。 クラスターに clusterMonitoringUser ロールのバインドが存在しない場合は、代わりに **clusterUser** が認証に使用されます。
+この新しいユーザーでライブデータ (プレビュー) 機能を利用するには、AKS クラスター リソースの [Azure Kubernetes Service Cluster User](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) または [Contributor](../../role-based-access-control/built-in-roles.md#contributor) ロールのメンバーである必要があります。 コンテナーの Azure Monitor (有効化されている場合) は、既定で clusterMonitoringUser を使用して認証するように構成されます。 クラスターに clusterMonitoringUser ロールのバインドが存在しない場合は、代わりに **clusterUser** が認証に使用されます。 Contributor の場合、clusterMonitoringUser (存在する場合) にアクセスできるようになります。Azure Kuberenetes Service Cluster User の場合、clusterUser にアクセスできるようになります。 これら 2 つのロールのいずれにも、この機能を使用するための十分なアクセス権が付与されます。
 
 AKS は 2020年1月にこの新しいロールバインドをリリースしたため、2020年1月より前に作成されたクラスターには存在しません。 2020 年の 1 月より前に作成されたクラスターがある場合、クラスター上で PUT 操作を実行するか、クラスターのバージョンの更新など、クラスター上で PUT 操作を実行するその他の操作を実行することで、新しい **clusterMonitoringUser** を既存のクラスターに追加できます。
 

@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンのバックアップと�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: cb25d9263648fbd92bc075751c1a8e627d03bd44
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2cda13ea089ac08dff7c1ba5ca93ba56ab3c23cf
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325215"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831552"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure 仮想マシンでのバックアップ エラーのトラブルシューティング
 
@@ -73,6 +73,16 @@ VM が [失敗] 状態にあるため、バックアップ操作に失敗しま�
 * **umount** コマンドを使用して、ファイル システム状態がクリーニングされなかったデバイスをマウント解除します。
 * **fsck** コマンドを使用して、これらのデバイスに対してファイル システム整合性チェックを実行します。
 * これらのデバイスを再度マウントし、バックアップ操作を再試行します。</ol>
+
+デバイスのマウントを解除できない場合は、VM のバックアップ構成を更新して、特定のマウント ポイントを無視することができます。 たとえば、'/mnt/resource' マウント ポイントのマウントを解除できず、VM バックアップが失敗する場合は、次のように ```MountsToSkip``` プロパティを使用して VM バックアップ構成ファイルを更新できます。
+
+```bash
+cat /var/lib/waagent/Microsoft.Azure.RecoveryServices.VMSnapshotLinux-1.0.9170.0/main/tempPlugin/vmbackup.conf[SnapshotThread]
+fsfreeze: True
+MountsToSkip = /mnt/resource
+SafeFreezeWaitInSeconds=600
+```
+
 
 ### <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM/ExtensionInstallationFailedCOM/ExtensionInstallationFailedMDTC - COM+ エラーのために拡張機能のインストール/操作に失敗しました
 
