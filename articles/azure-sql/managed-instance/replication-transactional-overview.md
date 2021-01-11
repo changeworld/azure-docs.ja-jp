@@ -43,7 +43,7 @@ ms.locfileid: "87920128"
 
 ![SQL Database を使用したレプリケーション](./media/replication-transactional-overview/replication-to-sql-database.png)
 
-| Role | Azure SQL データベース | Azure SQL Managed Instance |
+| Role | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
 | **発行元** | いいえ | はい |
 | **ディストリビューター** | いいえ | はい|
@@ -72,7 +72,7 @@ Azure SQL Managed Instance では、次のバージョンの SQL Server をサ�
 
 さまざまな[レプリケーションの種類](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)があります。
 
-| レプリケーション | Azure SQL データベース | Azure SQL Managed Instance |
+| レプリケーション | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
 | [**標準トランザクション**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | はい (サブスクライバーとしてのみ) | はい |
 | [**スナップショット**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | はい (サブスクライバーとしてのみ) | はい|

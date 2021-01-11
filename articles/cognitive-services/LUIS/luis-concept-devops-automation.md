@@ -20,7 +20,7 @@ Language Understanding (LUIS) アプリを開発するソフトウェア エン�
 
 ソース コード管理 (SCM) システムで、次のイベント時に実行されるように自動ビルド パイプラインを構成します。
 
-1. [プル要求](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) が発生したときにトリガーされる **PR ワークフロー**。 このワークフローでは、更新がマスター ブランチにマージされる*前に* PR の内容を検証します。
+1. [Pull request](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) が発生したときにトリガーされる **PR ワークフロー**。 このワークフローでは、更新がマスター ブランチにマージされる*前に* PR の内容を検証します。
 1. マスター ブランチに更新がプッシュされたとき (たとえば、PR からの変更をマージしたとき) にトリガーされる **CI/CD ワークフロー**。 このワークフローでは、マスター ブランチに対するすべての更新の品質を保証します。
 
 **CI/CD ワークフロー**では、2 つの補完的な開発プロセスを組み合わせます。

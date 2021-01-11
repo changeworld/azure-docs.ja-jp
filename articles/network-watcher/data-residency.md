@@ -25,7 +25,7 @@ Azure Network Watcher では、接続モニター (プレビュー) サービス
 
 
 ## <a name="connection-monitor-preview-data-residency"></a>接続モニター (プレビュー) のデータ所在地
-*接続モニター (プレビュー)* サービスを使用すると、顧客データが格納されます。 このデータは、Network Watcher によって 1 つのリージョンに自動的に格納されます。 そのため、*接続モニター (プレビュー)* は、[セキュリティ センター](https://azuredatacentermap.azurewebsites.net/)で指定されているように、リージョン内のデータ所在地の要件を自動的に満たします。
+*接続モニター (プレビュー)* サービスを使用すると、顧客データが格納されます。 このデータは、Network Watcher によって 1 つのリージョンに自動的に格納されます。 そのため、*接続モニター (プレビュー)* は、[Trust Center](https://azuredatacentermap.azurewebsites.net/)で指定されているように、リージョン内のデータ所在地の要件を自動的に満たします。
 
 ## <a name="singapore-data-residency"></a>シンガポールのデータ所在地
 

@@ -1,7 +1,7 @@
 ---
-title: Jupyter ノートブックの例
+title: Jupyter notebooks の例
 titleSuffix: Azure Machine Learning
-description: サンプルの Jupyter Notebook を検索して使用し、Azure Machine Learning Python SDK を探索します。
+description: サンプルの Jupyter notebook を検索して使用し、Azure Machine Learning Python SDK を探索します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -18,7 +18,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/20/2020
 ms.locfileid: "88653717"
 ---
-# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupyter ノートブックを使用して Azure Machine Learning を探索する
+# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupyter notebooks を使用して Azure Machine Learning を探索する
 
 [サンプルの Azure Machine Learning Notebooks のリポジトリ](https://github.com/azure/machinelearningnotebooks)には、最新の Azure Machine Learning Python SDK のサンプルが含まれています。 これらの Juypter Notebook は、SDK の探索を支援し、独自の機械学習プロジェクトのモデルとして機能するように設計されています。
 

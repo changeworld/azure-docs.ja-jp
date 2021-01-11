@@ -49,7 +49,7 @@ Python SDK または Machine Learning CLI からトレーニング実行を送�
 | `mlflow.source.git.branch` | `git symbolic-ref --short HEAD` | 実行が送信されたときのアクティブなブランチ。 |
 | `azureml.git.commit` | `git rev-parse HEAD` | 実行するために送信されたコードのコミット ハッシュ。 |
 | `mlflow.source.git.commit` | `git rev-parse HEAD` | 実行するために送信されたコードのコミット ハッシュ。 |
-| `azureml.git.dirty` | `git status --porcelain .` | 分岐/コミットがダーティである場合は `True`、そうでない場合は `false`。 |
+| `azureml.git.dirty` | `git status --porcelain .` | ブランチ/コミットがダーティである場合は `True`、そうでない場合は `false`。 |
 
 この情報は、エスティメーター、機械学習パイプライン、またはスクリプト実行を使用する実行のために送信されます。
 

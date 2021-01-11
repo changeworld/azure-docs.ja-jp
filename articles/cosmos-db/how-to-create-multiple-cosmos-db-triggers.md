@@ -41,7 +41,7 @@ Cosmos DB 用 Azure Functions トリガーの "*要件*" を考えると、状�
 
 共有リース コンテナーを構成するには、トリガーに対して行う必要がある唯一の追加の構成として、`LeaseCollectionPrefix`[属性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) (C# を使用している場合) または `leaseCollectionPrefix`[属性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) (JavaScript を使用している場合) を追加します。 この属性の値は、その特定のトリガーの論理的な記述子である必要があります。
 
-たとえば、メールを送信するトリガー、具体化されたビューを作成するために集計を実行するトリガー、後で分析するために変更を別のストレージに送信するトリガーという 3 つのトリガーがある場合、最初のトリガーには "emails"、2 番目のトリガーには "materialized"、3 番目のトリガーには "analytics" を `LeaseCollectionPrefix` に割り当てることができます。
+たとえば、メールを送信するトリガー、マテリアライズドビューを作成するために集計を実行するトリガー、後で分析するために変更を別のストレージに送信するトリガーという 3 つのトリガーがある場合、最初のトリガーには "emails"、2 番目のトリガーには "materialized"、3 番目のトリガーには "analytics" を `LeaseCollectionPrefix` に割り当てることができます。
 
 重要なのは、3 つのすべてのトリガーが**同じリース コンテナー構成 (アカウント、データベース、およびコンテナー名) を使用できる**ということです。
 
