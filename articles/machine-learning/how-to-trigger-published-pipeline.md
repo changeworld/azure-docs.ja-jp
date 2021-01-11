@@ -45,7 +45,7 @@ Logic Apps がプロビジョニングされたら、次の手順に従って、
 
 1. [システム割り当てマネージド ID](../logic-apps/create-managed-service-identity.md) を作成し、アプリに Azure Machine Learning ワークスペースへのアクセス権を付与します。
 
-1. Logic Apps デザイナー ビューに移動し、[空のロジックアプリ] テンプレートを選択します。 
+1. Logic Apps デザイナー ビューに移動し、[空の Logic Apps] テンプレートを選択します。 
     > [!div class="mx-imgBorder"]
     > ![空のテンプレート](media/how-to-trigger-published-pipeline/blank-template.png)
 
