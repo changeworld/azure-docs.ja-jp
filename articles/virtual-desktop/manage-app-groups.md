@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e495288bcd2c966dab49925a55507ab1f2379f64
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 21dba3c9beeefa2b25b8038f6cbd0ec77f947774
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88659485"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226728"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してアプリ グループを管理する
 
@@ -31,6 +31,8 @@ Windows Virtual Desktop の新しいホスト プール向けに作成される�
 Azure portal または PowerShell を使用してホスト プールとセッション ホスト VM を作成済みである場合、Azure portal から次の手順に従ってアプリケーション グループを追加できます。
 
 1.  [Azure portal](https://portal.azure.com/) にサインインします。
+   
+   >![注] US Gov ポータルにサインインしている場合は、代わりに [https://portal.azure.us/](https://portal.azure.us/) にアクセスしてください。
 
 2.  **[Windows Virtual Desktop]** を検索して選択します。
 

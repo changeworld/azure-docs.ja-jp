@@ -43,7 +43,7 @@ ms.locfileid: "89267991"
 
 このチュートリアルの CLI スクリプトの例を実行するには、次の 2 つの方法があります。
 
-- Azure Portal から、または各コード ブロックの右上隅にある **[試してみる]** ボタンを使用して、[Azure Cloud Shell](~/articles/cloud-shell/overview.md) を使用します。
+- Azure Portal から、または各コード ブロックの右上隅にある **[使ってみる]** ボタンを使用して、[Azure Cloud Shell](~/articles/cloud-shell/overview.md) を使用します。
 - ローカル CLI コンソールを使用する場合は、[CLI 2.0 の最新バージョン (2.0.23 以降) をインストール](/cli/azure/install-azure-cli)します。
 
 ## <a name="create-a-cosmos-db-account"></a>Cosmos DB アカウントを作成する 

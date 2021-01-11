@@ -232,7 +232,7 @@ df.bulkCopyToSqlDB(bulkCopyConfig, bulkCopyMetadata)
 
 Spark コネクタをまだダウンロードしていない場合は、[GitHub の azure-sqldb-spark リポジトリ](https://github.com/Azure/azure-sqldb-spark)からダウンロードし、リポジトリのその他のリソースを調べます。
 
-- [Azure Databricks ノートブックのサンプル](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
+- [Azure Databricks notebooks のサンプル](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
 - [サンプル スクリプト (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
 また、[Apache Spark SQL、DataFrames、データセット ガイド](https://spark.apache.org/docs/latest/sql-programming-guide.html)と [Azure Databricks ドキュメント](https://docs.microsoft.com/azure/azure-databricks/)を確認することもできます。

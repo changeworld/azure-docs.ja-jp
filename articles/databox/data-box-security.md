@@ -67,7 +67,7 @@ Data Box に対する入出力データは、次の機能によって保護さ�
 Data Box サービスは、次の機能によって保護されます。
 
 - Data Box サービスにアクセスするには、Data Box を含む Azure サブスクリプションを会社が保有している必要があります。 Azure ポータルから利用できる機能は、保有するサブスクリプションによって決まります。
-- Data Box サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「 [Microsoft Azure セキュリティ センター](https://www.microsoft.com/TrustCenter/Security/default.aspx)」をご覧ください。
+- Data Box サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。 Microsoft Azure のセキュリティ機能の詳細については、「 [Microsoft Azure トラスト センター](https://www.microsoft.com/TrustCenter/Security/default.aspx)」をご覧ください。
 - Data Box の注文へのアクセスは、Azure ロールを使用して制御できます。 詳細については、[Data Box の注文のアクセス制御の設定](data-box-logs.md#set-up-access-control-on-the-order)に関する記事を参照してください
 - Data Box サービスでは、サービスでデバイスのロックを解除するために使用されるロック解除パスワードを保存します。
 - Data Box サービスは、その注文の詳細と状態を格納します。 この情報は、注文が削除されると削除されます。
@@ -95,7 +95,7 @@ Azure Data Box は、同サービスにおける次の主要なインスタン�
 
 - **配送先住所** - Data Box サービスは、注文を受けると、サード パーティの運送業者 (UPS、DHL など) に配送先住所を提供します。 
 
-詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
+詳細については、[Trust Center](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
 
 
 ## <a name="security-guidelines-reference"></a>セキュリティ ガイドラインのリファレンス

@@ -83,7 +83,7 @@ ILB ASE は特定のゾーンに固定されるため、AZ に明示的にデプ
 
 可用性ゾーンにデプロイされた ILB ASE には、ゾーン ILB ASE がデプロイされているリージョン内のユーザー データのみが格納されます。 Web サイトのファイル コンテンツ、ユーザーが指定した設定、および App Service に格納されているシークレットは、いずれもゾーン ILB ASE がデプロイされているリージョン内に残ります。
 
-ユーザーは、「可用性ゾーンに App Service Environment をデプロイする方法」の項で説明した手順に従って、単一リージョンのデータの保存場所となるようにしてください。 これらの手順に従って App Service Environment を構成することにより、可用性ゾーンにデプロイされた App Service Environment で、リージョンのデータの保存場所の要件が満たされます ([Azure セキュリティ センター](https://azuredatacentermap.azurewebsites.net/)に指定されている要件を含む)。
+ユーザーは、「可用性ゾーンに App Service Environment をデプロイする方法」の項で説明した手順に従って、単一リージョンのデータの保存場所となるようにしてください。 これらの手順に従って App Service Environment を構成することにより、可用性ゾーンにデプロイされた App Service Environment で、リージョンのデータの保存場所の要件が満たされます ([Azure トラスト センター](https://azuredatacentermap.azurewebsites.net/)に指定されている要件を含む)。
 
 ユーザーは、次の手順に従って、1 つのリージョンにデータが格納されるように App Service Environment が適切に構成されていることを検証できます。 
 

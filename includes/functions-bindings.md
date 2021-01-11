@@ -15,7 +15,7 @@ ms.locfileid: "89303933"
 この表は、Azure Functions のメジャー バージョンのランタイムでサポートされているバインディングを示しています。
 
 
-| 種類 | 1.x | 2.x 以降<sup>1</sup> | トリガー | 入力 | Output |
+| 種類 | 1.x | 2.x 以降<sup>1</sup> | トリガー | 入力 | 出力 |
 | ---- | :-: | :-: | :------: | :---: | :----: |
 | [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|

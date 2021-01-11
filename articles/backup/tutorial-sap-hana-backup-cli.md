@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure CLI を使用して、Azu
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a0b6683183d6bf73b5376c6320106373ffd4ba78
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: eb6b9f4d58a94cc8a4b9f70b5ead7d319a0d51b5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762404"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007589"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM 内の SAP HANA データベースをバックアップする
 
@@ -50,7 +50,7 @@ az backup vault create --resource-group saphanaResourceGroup \
     --location westus2
 ```
 
-既定では、Recovery Services コンテナーが geo 冗長ストレージ用に設定されています。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンにバックアップ データがレプリケートされます。 ストレージの冗長性設定を変更する必要がある場合は、[az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) コマンドレットを使用します。
+既定では、Recovery Services コンテナーが geo 冗長ストレージ用に設定されています。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンにバックアップ データが確実にレプリケートされます。 ストレージの冗長性設定を変更する必要がある場合は、[az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) コマンドレットを使用します。
 
 ```azurecli
 az backup vault backup-properties set \
@@ -83,7 +83,7 @@ az backup container register --resource-group saphanaResourceGroup \
 ```
 
 >[!NOTE]
->VM がコンテナーと同じリソース グループにない場合、*saphanaResourceGroup* からは、コンテナーが作成されたリソース グループを参照されます。
+>VM がコンテナーと同じリソース グループにない場合、*saphanaResourceGroup* は、コンテナーが作成されたリソース グループを参照します。
 
 SAP HANA インスタンスを登録すると、現在のすべてのデータベースが自動的に検出されます。 ただし、今後追加される可能性のある新しいデータベースを検出するには、[登録済み SAP HANA インスタンスに追加された新しいデータベースの検出](tutorial-sap-hana-manage-cli.md#protect-new-databases-added-to-an-sap-hana-instance)に関するセクションを参照してください。
 
@@ -141,7 +141,7 @@ Name                                  Operation         Status     Item Name   S
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2019-12-03T03:09:210831+00:00  
 ```
 
-[az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) コマンドレットを使うと、登録、バックアップの構成、バックアップ データの削除などの他の操作に加えて、保護されたデータベース上で実行されていた、または現在実行中のすべてのバックアップ ジョブ (スケジュールまたはオンデマンド) が一覧表示されます。
+[az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) コマンドレットを実行すると、登録、バックアップの構成、バックアップ データの削除などの他の操作に加えて、保護されたデータベース上で実行されたか、現在実行中のすべてのバックアップ ジョブ (スケジュール済みまたはオンデマンド) が一覧表示されます。
 
 >[!NOTE]
 >Azure Backup では、Azure VM で実行されている SAP HANA データベースをバックアップしている場合、夏時間変更に合わせた自動調整は行われません。

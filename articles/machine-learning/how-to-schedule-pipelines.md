@@ -106,7 +106,7 @@ Azure Logic Apps は、Azure Machine Learning パイプラインよりも複雑�
 
 ## <a name="view-your-scheduled-pipelines"></a>スケジュールされたパイプラインを表示する
 
-Web ブラウザーで Azure Machine Learning に移動します。 ナビゲーション パネルの **[エンドポイント]** セクションで、 **[Pipeline endpoints]/(パイプラインのエンドポイント/)** を選択します。 これにより、ワークスペースで発行されたパイプラインの一覧が表示されます。
+Web ブラウザーで Azure Machine Learning に移動します。 ナビゲーション パネルの **[エンドポイント]** セクションで、 **[Pipeline endpoints]\(パイプラインのエンドポイント\)** を選択します。 これにより、ワークスペースで発行されたパイプラインの一覧が表示されます。
 
 ![AML の [パイプライン] ページ](./media/how-to-schedule-pipelines/scheduled-pipelines.png)
 

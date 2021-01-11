@@ -568,7 +568,7 @@ func deploy
 | **`--min`**  | 必要に応じて、デプロイする関数アプリ インスタンスの最小数を設定します。 |
 | **`--config`** | オプションのデプロイ構成ファイルを設定します。 |
 
-## <a name="monitoring-functions"></a>関数の監視
+## <a name="monitoring-functions"></a>Functions の監視
 
 関数の実行を監視するための推奨される方法は、Azure Application Insights との統合です。 また、ローカル コンピューターに実行ログをストリーミングすることもできます。 詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 

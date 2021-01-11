@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 1873cd14883e8b1a5174b8761e4a0bc9ba1ef872
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 1cc7d7755d22568b9b66216709dc0c3765d58657
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641859"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300155"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>クイック スタート:Azure Active Directory (Azure AD) テナントのアプリケーションのプロパティを構成する
 
@@ -93,6 +93,6 @@ Azure AD テナントへのアプリケーションの追加が完了すると�
 
 ## <a name="next-steps"></a>次のステップ
 
-次の記事に進み、アプリのシングル サインオンをセットアップする方法を学習してください。
+次の記事に進み、アプリにユーザーを割り当てる方法を学習してください。
 > [!div class="nextstepaction"]
-> [シングル サインオンを設定する](add-application-portal-setup-sso.md)
+> [アプリにユーザーを割り当てる](add-application-portal-assign-users.md)
