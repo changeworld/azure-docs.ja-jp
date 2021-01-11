@@ -28,7 +28,7 @@ ONNX は、機械学習モデルを表現するためのオープン スタン�
 
 [ONNX Runtime](https://onnxruntime.ai) は、ONNX モデルを運用環境にデプロイするためのハイパフォーマンスの推論エンジンです。 クラウドとエッジの両方に最適化され、Linux、Windows、Mac で動作します。 C++ で記述されていますが、さまざまな環境で使用するために、C、Python、C#、Java、Javascript (Node.js) API も用意されています。 ONNX ランタイムは、DNN と従来の ML モデルの両方をサポートし、NVidia GPU 上の TensorRT、Intel プロセッサ上の OpenVINO、Windows 上の DirectML などのさまざまなハードウェアのアクセラレータと統合されます。 ONNX Runtime を使用することにより、広範囲にわたる運用グレードの最適化、テスト、継続的改善の恩恵が得られます。
 
-ONNX Runtime は、Bing、Office、Azure Cognitive Services といった高スケールの Microsoft サービスで使用されています。 パフォーマンス向上はさまざまな要素に左右されますが、これらの Microsoft サービスは、__CPU のパフォーマンスが平均 2 倍に向上__しています。 ONNX ランタイムは、Azure Machine Learning サービスに加えて、Machine Learning のワークロードをサポートする次のような他の製品でも実行できます。
+ONNX Runtime は、Bing、Office、Azure Cognitive Services といった高スケールの Microsoft サービスで使用されています。 パフォーマンス向上はさまざまな要素に左右されますが、これらの Microsoft サービスは、__CPU のパフォーマンスが平均 2 倍に向上__ しています。 ONNX ランタイムは、Azure Machine Learning サービスに加えて、Machine Learning のワークロードをサポートする次のような他の製品でも実行できます。
 + Windows: ランタイムは [Windows Machine Learning](https://docs.microsoft.com/windows/ai/windows-ml/) の一部として Windows に組み込まれており、数億台のデバイスで実行されています。 
 + Azure SQL 製品ファミリ:[Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/onnx-overview) および [Azure SQL Managed Instance](https://docs.microsoft.com/azure/azure-sql/managed-instance/machine-learning-services-overview) のデータに対して、ネイティブなスコアリングを実行します。
 + ML.NET:[ML.NET で ONNX モデルを実行します](https://docs.microsoft.com/dotnet/machine-learning/tutorials/object-detection-onnx)。

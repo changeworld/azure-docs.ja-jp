@@ -11,7 +11,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/22/2020
 ms.locfileid: "88751350"
 ---
-# <a name="artificial-intelligence-in-language-understanding-luis"></a>Language Understanding (LUIS) における人口知能
+# <a name="artificial-intelligence-in-language-understanding-luis"></a>Language Understanding (LUIS) における人工知能
 
 LUIS では、人工知能 (AI) を使用し、定義されたスキーマに基づいて、データに自然言語理解 (NLU) を提供します。
 

@@ -110,7 +110,7 @@ Azure のメトリック グラフでは、2 つの既知の時間グレイン �
 
 1. ストレージ アカウントがファイアウォールによって保護されていないことを確認します。 Azure portal では、メトリック データを取得してグラフをプロットするために、ストレージ アカウントにアクセスする必要があります。
 
-1. [Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)を使って、メトリックがストレージ アカウントに送られていることを検証します。 メトリックが収集されていない場合は、[Azure Diagnostics 拡張機能のトラブルシューティング ガイド](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)に従ってください。
+1. [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使って、メトリックがストレージ アカウントに送られていることを検証します。 メトリックが収集されていない場合は、[Azure Diagnostics 拡張機能のトラブルシューティング ガイド](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)に従ってください。
 
 ## <a name="next-steps"></a>次のステップ
 
