@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure 関数をモジュールとしてデプロイする - Azure IoT Edge
-description: このチュートリアルでは、Azure 関数を IoT Edge モジュールとして開発した後、エッジ デバイスにそれを展開します。
+title: チュートリアル:Azure Functions をモジュールとしてデプロイする - Azure IoT Edge
+description: このチュートリアルでは、Azure Functions を IoT Edge モジュールとして開発した後、エッジ デバイスにそれを展開します。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -18,11 +18,11 @@ ms.locfileid: "88999123"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>チュートリアル:Azure Functions を IoT Edge モジュールとして展開する
 
-Azure Functions を使用して、ビジネス ロジックを実装するコードを Azure IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされた IoT Edge デバイス上のセンサー データをフィルター処理する Azure 関数の作成と展開について段階的に説明します。 [Windows](quickstart.md) または [Linux](quickstart-linux.md) のシミュレートされたデバイスに Azure IoT Edge をデプロイするクイック スタートで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルでは、以下の内容を学習します。
+Azure Functions を使用して、ビジネス ロジックを実装するコードを Azure IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされた IoT Edge デバイス上のセンサー データをフィルター処理する Azure Functions の作成と展開について段階的に説明します。 [Windows](quickstart.md) または [Linux](quickstart-linux.md) のシミュレートされたデバイスに Azure IoT Edge をデプロイするクイック スタートで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 >
-> * Visual Studio Code を使用して、Azure 関数を作成する。
+> * Visual Studio Code を使用して、Azure Functions を作成する。
 > * VS Code と Docker を使用して Docker イメージを作成し、コンテナー レジストリに発行する。
 > * コンテナー レジストリから IoT Edge デバイスにモジュールを配置する。
 > * フィルター処理されたデータを表示する。
@@ -32,7 +32,7 @@ Azure Functions を使用して、ビジネス ロジックを実装するコー
 ![図 - チュートリアルのアーキテクチャ: 関数モジュールのステージとデプロイ](./media/tutorial-deploy-function/functions-architecture.png)
 </center>
 
-このチュートリアルでは、デバイスによって生成される温度データをフィルター処理する Azure 関数を作成します。 この関数では、指定されたしきい値を温度が上回っているときにのみ、上流の Azure IoT Hub にメッセージを送信します。
+このチュートリアルでは、デバイスによって生成される温度データをフィルター処理する Azure Functions を作成します。 この関数では、指定されたしきい値を温度が上回っているときにのみ、上流の Azure IoT Hub にメッセージを送信します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -53,7 +53,7 @@ Azure Functions を使用して IoT Edge モジュールを開発するには、
 
 ## <a name="create-a-function-project"></a>関数プロジェクトを作成する
 
-前提条件としてインストールした Visual Studio Code 用 Azure IoT Tools は、いくつかのコード テンプレートと管理機能を提供します。 このセクションでは、Visual Studio Code を使用して、Azure 関数を含む IoT Edge ソリューションを作成します。
+前提条件としてインストールした Visual Studio Code 用 Azure IoT Tools は、いくつかのコード テンプレートと管理機能を提供します。 このセクションでは、Visual Studio Code を使用して、Azure Functions を含む IoT Edge ソリューションを作成します。
 
 ### <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 
@@ -237,7 +237,7 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードが含まれる Azure 関数モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[Visual Studio Code を使用した Azure IoT Edge 用の開発](how-to-vs-code-develop-module.md)方法の詳細をご覧ください。
+このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードが含まれる Azure Functions モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[Visual Studio Code を使用した Azure IoT Edge 用の開発](how-to-vs-code-develop-module.md)方法の詳細をご覧ください。
 
 引き続き次のチュートリアルを実行すると、Azure IoT Edge を利用して、エッジでデータをビジネス上の分析情報に変える他の方法について学習できます。
 

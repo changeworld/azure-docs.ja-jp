@@ -41,8 +41,8 @@ Media Services では、メタデータを生成するために入力資産は�
 | **Sources** |この AssetFile を生成するために処理された入力/ソース メディア ファイルのコレクション。<br />例: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **VideoTracks**|各物理 AssetFile には、適切なコンテナー形式にインターリーブされる 0 個以上のビデオ トラックを含めることができます。 <br />「[VideoTracks](#videotracks)」を参照してください。 |
 | **AudioTracks**|各物理 AssetFile には、適切なコンテナー形式にインターリーブされる 0 個以上のオーディオ トラックを含めることができます。 これは、そのオーディオ トラックすべてのコレクションです。<br /> 詳細については、「[AudioTracks](#audiotracks)」を参照してください。 |
-| **名前**<br />必須 |メディア資産ファイルの名前。 <br /><br />例: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
-| **[サイズ]**<br />必須 |資産ファイルのサイズ (バイト単位)。 <br /><br />例: `"Size": 32414631`|
+| **Name**<br />必須 |メディア資産ファイルの名前。 <br /><br />例: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
+| **Size**<br />必須 |資産ファイルのサイズ (バイト単位)。 <br /><br />例: `"Size": 32414631`|
 | **Duration**<br />必須 |コンテンツの再生時間。 詳細については、[ISO8601](https://www.iso.org/iso-8601-date-and-time-format.html) 形式を参照してください。 <br /><br />例: `"Duration": "PT1M10.315S"`|
 
 ## <a name="videotracks"></a>VideoTracks 
@@ -53,7 +53,7 @@ Media Services では、メタデータを生成するために入力資産は�
 | --- | --- |
 | **Id**<br /> 必須 |このビデオ トラックの 0 から始まるインデックス。**注:** この **Id** は、必ずしも MP4 ファイルで使用されている TrackID であるとは限りません。 <br /><br />例: `"Id": 1`|
 | **FourCC**<br />必須 | ffmpeg によって報告されるビデオ コーデックの FourCC コード。  <br /><br />例: `"FourCC": "avc1"`|
-| **プロファイル** |H264 プロファイル (H264 コーデックのみに適用されます)。  <br /><br />例: `"Profile": "High"` |
+| **Profile** |H264 プロファイル (H264 コーデックのみに適用されます)。  <br /><br />例: `"Profile": "High"` |
 | **Level** |H264 レベル (H264 コーデックのみに適用されます)。  <br /><br />例: `"Level": "3.2"`|
 | **Width**<br />必須 |エンコードされたビデオの幅 (ピクセル単位)。  <br /><br />例: `"Width": "1280"`|
 | **Height**<br />必須 |エンコードされたビデオの高さ (ピクセル単位)。  <br /><br />例: `"Height": "720"`|
