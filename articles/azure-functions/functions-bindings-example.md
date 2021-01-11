@@ -1,6 +1,6 @@
 ---
 title: Azure Functions のトリガーとバインドの例
-description: Azure 関数のバインドを構成する方法について学習します
+description: Azure Functions のバインドを構成する方法について学習します
 author: craigshoemaker
 ms.topic: reference
 ms.custom: devx-track-csharp
@@ -15,7 +15,7 @@ ms.locfileid: "88205967"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions のトリガーとバインドの例
 
-この記事では、Azure 関数の[トリガーとバインド](./functions-triggers-bindings.md)を構成する方法について説明します。
+この記事では、Azure Functions の[トリガーとバインド](./functions-triggers-bindings.md)を構成する方法について説明します。
 
 Azure Queue Storage に新しいメッセージが表示されるたびに Azure Table Storage に新しい行を書き込むとします。 このシナリオは、Azure Queue Storage トリガーと Azure Table Storage の出力バインドを使用して実装できます。 
 

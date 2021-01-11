@@ -129,7 +129,7 @@ SQL Server インスタンスから Azure SQL Database の単一データベー�
 
     ![Data Migration Assistant のソース接続詳細](media/tutorial-sql-server-to-azure-sql/dma-source-connect.png)
 
-6. **[次へ]** を選択し、 **[Connect to target server]\(対象サーバーへの接続\)** で Azure SQL データベースのターゲット接続の詳細を指定し、 **[接続]** を選択し、Azure SQL Database で事前プロビジョニングした **AdventureWorksAzure** データベースを選択します。
+6. **[次へ]** を選択し、 **[Connect to target server]\(対象サーバーへの接続\)** で Azure SQL Database のターゲット接続の詳細を指定し、 **[接続]** を選択し、Azure SQL Database で事前プロビジョニングした **AdventureWorksAzure** データベースを選択します。
 
     ![Data Migration Assistant のターゲット接続詳細](media/tutorial-sql-server-to-azure-sql/dma-target-connect.png)
 
@@ -143,7 +143,7 @@ SQL Server インスタンスから Azure SQL Database の単一データベー�
 
     ![スキーマ スクリプト](media/tutorial-sql-server-to-azure-sql/dma-schema-script.png)
 
-9. **[Deploy schema]\(スキーマのデプロイ\)** を選択して Azure SQL データベースにスキーマをデプロイし、スキーマがデプロイされたら、ターゲット サーバーに異常がないかをチェックします。
+9. **[Deploy schema]\(スキーマのデプロイ\)** を選択して Azure SQL Database にスキーマをデプロイし、スキーマがデプロイされたら、ターゲット サーバーに異常がないかをチェックします。
 
     ![スキーマをデプロイする](media/tutorial-sql-server-to-azure-sql/dma-schema-deploy.png)
 
@@ -241,7 +241,7 @@ SQL Server インスタンスから Azure SQL Database の単一データベー�
 
 3. **[保存]** を選択し、 **[テーブルの選択]** 画面でテーブルの一覧を展開して、影響を受けるフィールドの一覧を確認します。
 
-    Azure Database Migration Service では、ターゲット Azure SQL データベース インスタンスに存在する空のソース テーブルがすべて自動的に選択されます。 データが既に含まれているテーブルを再移行する場合は、このブレードでテーブルを明示的に選択する必要があります。
+    Azure Database Migration Service では、ターゲット Azure SQL Database インスタンスに存在する空のソース テーブルがすべて自動的に選択されます。 データが既に含まれているテーブルを再移行する場合は、このブレードでテーブルを明示的に選択する必要があります。
 
     ![テーブルを選択する](media/tutorial-sql-server-to-azure-sql/dms-configure-setting-activity2.png)
 

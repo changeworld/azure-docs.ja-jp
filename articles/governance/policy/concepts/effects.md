@@ -17,7 +17,7 @@ Azure Policy 内の各ポリシー定義には単一の効果があります。 
 現在、ポリシー定義では次の効果がサポートされています。
 
 - [Append](#append)
-- [監査](#audit)
+- [Audit](#audit)
 - [AuditIfNotExists](#auditifnotexists)
 - [Deny](#deny)
 - [DeployIfNotExists](#deployifnotexists)
@@ -205,7 +205,7 @@ AuditIfNotExists 効果の **details** プロパティは、照合する関連�
 }
 ```
 
-## <a name="deny"></a>拒否
+## <a name="deny"></a>Deny
 
 Deny は、ポリシーを通して定義された基準に一致していないために失敗するリソース要求を防ぐために使用されます。
 
