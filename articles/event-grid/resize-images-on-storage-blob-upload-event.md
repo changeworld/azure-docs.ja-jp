@@ -85,7 +85,7 @@ Azure Functions には、一般的なストレージ アカウントが必要で
     $location="eastus"
     ```
 
-1. Azure 関数が必要とする新しいストレージ アカウントの名前の変数を設定します。
+1. Azure Functions が必要とする新しいストレージ アカウントの名前の変数を設定します。
 
     ```bash
     functionstorage="<name of the storage account to be used by the function>"
@@ -95,7 +95,7 @@ Azure Functions には、一般的なストレージ アカウントが必要で
     $functionstorage="<name of the storage account to be used by the function>"
     ```
 
-1. Azure 関数用のストレージ アカウントを作成します。
+1. Azure Functions 用のストレージ アカウントを作成します。
 
     ```bash
     az storage account create --name $functionstorage --location $location \
@@ -123,7 +123,7 @@ Azure Functions には、一般的なストレージ アカウントが必要で
     $functionapp="<name of the function app>"
     ```
 
-1. Azure 関数を作成します。
+1. Azure Functions を作成します。
 
     ```bash
     az functionapp create --name $functionapp --storage-account $functionstorage \

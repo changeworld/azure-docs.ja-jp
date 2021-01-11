@@ -213,5 +213,5 @@ Azure のクラウド サービス、仮想マシン、アプリケーション�
 このホワイト ペーパーで触れた具体的な情報のほか、Azure とそれに関連する Microsoft サービスの一般情報については、以下のリソースを参照してください。
 
 * [特権アクセスのセキュリティ保護](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access) – Azure の管理を目的とした安全な管理ワークステーションの設計と構築について、技術的な側面から説明します
-* [Microsoft セキュリティ センター](https://microsoft.com/en-us/trustcenter/cloudservices/azure) – Azure のファブリックと Azure 上で動作するワークロードを保護する Azure プラットフォームの機能について説明します
+* [Microsoft トラスト センター](https://microsoft.com/en-us/trustcenter/cloudservices/azure) – Azure のファブリックと Azure 上で動作するワークロードを保護する Azure プラットフォームの機能について説明します
 * [Microsoft セキュリティ レスポンス センター](https://www.microsoft.com/msrc) - このサイトでは、Azure に関する問題を含め、マイクロソフトのセキュリティの脆弱性を報告できます。メールの場合は、[secure@microsoft.com](mailto:secure@microsoft.com) 宛に報告してください
