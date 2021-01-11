@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: nibaccam
 author: aniththa
 ms.reviewer: nibaccam
-ms.date: 07/10/2020
+ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 7cd704dad3d0ede55e4df4d9e222ff83fd7ae350
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 4539936007de0b45ab33dbd391baacc8f7d2ce2a
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919643"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796059"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning を使用して自動機械学習モデルを作成、確認、デプロイする
 
@@ -91,7 +91,7 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
         **[次へ]** を選択します。
 1. 新しく作成したデータセットが表示されたら、それを選択します。 また、データセットとサンプル統計のプレビューを表示することもできます。 
 
-1. **[Configure run]\(構成の実行\)** フォームで、一意の実験名を入力します。
+1. **[実行の構成]** フォームで、 **[新規作成]** を選択し、実験名として「**Tutorial-automl-deploy**」と入力します。
 
 1. ターゲット列を選択します。これは、予測を実行する列です。
 
@@ -172,7 +172,7 @@ Included | トレーニングに含める列を指定します。
 
 **[Models]\(モデル\)** タブには、メトリック スコアの順で作成されたモデルの一覧が表示されます。 既定では、選択したメトリックに基づいて最高のスコアを付けたモデルが、一覧の先頭になります。 トレーニング ジョブでその他のモデルを試みると、それらが一覧に追加されます。 これを使用すると、これまでに生成されたモデルのメトリックを簡単に比較できます。
 
-[![詳細ダッシュボードの実行](media/how-to-use-automated-ml-for-ml-models/run-details.png)](media/how-to-use-automated-ml-for-ml-models/run-details-expanded.png#lightbox)
+![実行の詳細](./media/how-to-use-automated-ml-for-ml-models/explore-models.gif)
 
 ### <a name="view-training-run-details"></a>トレーニング実行の詳細の表示
 
@@ -216,10 +216,10 @@ Included | トレーニングに含める列を指定します。
 1. **[デプロイ]** を選択します。 デプロイの完了には 20 分程度かかる場合があります。
     デプロイが開始されると、 **[モデルの概要]** タブが表示されます。 **[Deploy status]\(デプロイの状態\)** セクションで、デプロイの進行状況を確認します。 
 
-これで、予測を生成するための運用 Web サービスが作成されました。 予測をテストするには、[Power BI の組み込みの Azure Machine Learning サポート](how-to-consume-web-service.md#consume-the-service-from-power-bi)からサービスのクエリを実行します。
+これで、予測を生成するための運用 Web サービスが作成されました。 予測をテストするには、[Power BI の組み込みの Azure Machine Learning サポート](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)からサービスのクエリを実行します。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Web サービスを使用する方法を学習します](./how-to-consume-web-service.md)。
+* [Web サービスを使用する方法を学習します](how-to-consume-web-service.md)。
 * [自動化された機械学習の結果を解釈します](how-to-understand-automated-ml.md)。
 * [自動化された機械学習の詳細](concept-automated-ml.md)と Azure Machine Learning について学習します。

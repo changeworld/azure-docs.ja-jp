@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 5e7eabd44ea8c56fbb102f9e48812745a31de62a
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 0c303adb4ee7c7551c6b389ec169d92a661a63bc
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089198"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835025"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>Azure Defender for IoT についてよく寄せられる質問
 
@@ -79,15 +79,11 @@ Azure Defender for IoT センサーを SPAN ポートまたはネットワーク
 
 デバイスが実行されている限り、センサーとエージェントは引き続き実行され、データが格納されます。 データは、サイズの構成に従ってセキュリティ メッセージのキャッシュに格納されます。 デバイスが接続を再取得すると、セキュリティ メッセージが送信を再開します。
 
-
-
-
-
 ## <a name="next-steps"></a>次のステップ
 
 Defender for IoT の開始方法の詳細については、次の記事を参照してください。
 
 - Defender for IoT の[概要](overview.md)について確認する
-- [サービスの前提条件](service-prerequisites.md)を確認してください
-- [開始する](getting-started.md)方法の詳細をご覧ください
+- [システムの前提条件](quickstart-system-prerequisites.md)を確認する
+- [Defender for IoT での作業を開始する](getting-started.md)方法について確認する
 - [Defender for IoT のセキュリティ アラート](concept-security-alerts.md)について理解する

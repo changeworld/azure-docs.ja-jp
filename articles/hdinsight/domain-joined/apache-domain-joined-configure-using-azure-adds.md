@@ -1,5 +1,5 @@
 ---
-title: Active Directory 統合用のクラスターの構成
+title: Azure Active Directory 統合用のクラスターの構成
 titleSuffix: Azure HDInsight
 description: Azure Active Directory Domain Services と Enterprise セキュリティ パッケージ機能を使用して、Active Directory と統合された HDInsight クラスターを設定して構成する方法について学習します。
 author: hrasheed-msft
@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
-ms.openlocfilehash: 248d909e633607271aec7c2c9b8a373f111f7d98
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c5c5db892f417f2e2ef3fde3535d806d39342327
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031484"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631552"
 ---
-# <a name="configure-hdinsight-clusters-for-active-directory-integration-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して Active Directory 統合用に HDInsight クラスターを構成する
+# <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して Azure Active Directory 統合用に HDInsight クラスターを構成する
 
-この記事では、Enterprise セキュリティ パッケージ (ESP) と呼ばれる機能、Azure Active Directory Domain Services (Azure AD-DS)、既存のオンプレミスの Active Directory を使用して、Active Directory と統合された HDInsight クラスターを作成し、構成する方法について学習します。
+この記事では、Azure Active Directory と統合された HDInsight クラスターを作成および構成するプロセスの要約と概要について説明します。 この統合は、Enterprise セキュリティ パッケージ (ESP) と呼ばれる HDInsight 機能、Azure Active Directory Domain Services (Azure AD DS)、および既存のオンプレミス Active Directory に依存しています。
 
-Azure でのドメインの設定と構成と、ESP が有効なクラスターの作成に関するチュートリアルについては、「[Azure HDInsight で Enterprise セキュリティ パッケージ クラスターを作成および構成する](apache-domain-joined-create-configure-enterprise-security-cluster.md)」を参照してください。
+Azure でドメインを設定して構成し、ESP が有効なクラスターを作成して、オンプレミスのユーザーを同期するための詳細な手順については、「[Azure HDInsight で Enterprise セキュリティ パッケージ クラスターを作成および構成する](apache-domain-joined-create-configure-enterprise-security-cluster.md)」を参照してください。
 
 ## <a name="background"></a>バックグラウンド
 
@@ -33,12 +33,13 @@ Enterprise セキュリティ パッケージ (ESP) には、Azure HDInsight 向
 
 ESP が有効な HDInsight クラスターを作成する前に、いくつかの前提条件を満たす必要があります。
 
+- 既存のオンプレミスの Active Directory と Azure Active Directory
 - Azure AD-DS を有効にする
 - Azure AD-DS の正常性状態を確認して、同期を確実に完了する
 - マネージド ID を作成して承認する
 - DNS および関連する問題のネットワーク設定を完了する
 
-これらの各項目については、以下で詳しく説明します。
+これらの各項目については、以下で詳しく説明します。 これらすべての手順を完了するためのチュートリアルについては、「[Azure HDInsight で Enterprise セキュリティ パッケージ クラスターを作成および構成する](apache-domain-joined-create-configure-enterprise-security-cluster.md)」を参照してください。
 
 ### <a name="enable-azure-ad-ds"></a>Azure AD DS を有効にする
 

@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
 ms.topic: how-to
-ms.openlocfilehash: 0122e67714efb201584a52f1cb763528dbb0b925
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbd83fb3ef3225fc19c48bb4c5962d6559cf32f8
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903782"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708451"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>Visual Studio Code を使用してサンプル データで Stream Analytics クエリをローカルでテストする
 
@@ -59,11 +59,11 @@ Visual Studio Code の Azure Stream Analytics ツールを使用して、Stream 
 
     ![Visual Studio でのローカル ファイル パスの入力](./media/vscode-local-run/local-file-path.png)
 
-6. **[データのプレビュー]** を選択して入力データをプレビューします。 ご利用のデータに対するシリアル化の種類では、JSON と CSV のいずれであるかが自動的に検出されます。 セレクターを使用して、ご利用のデータを**表**または**未加工**の形式で表示します。 次の表は、**表形式**でのデータの例です。
+6. **[データのプレビュー]** を選択して入力データをプレビューします。 ご利用のデータに対するシリアル化の種類では、JSON と CSV のいずれであるかが自動的に検出されます。 セレクターを使用して、ご利用のデータを **表** または **未加工** の形式で表示します。 次の表は、**表形式** でのデータの例です。
 
      ![表形式でのローカル データのプレビュー](./media/vscode-local-run/local-file-preview-table.png)
 
-    次の表は、**未加工の形式**でのデータの例です。
+    次の表は、**未加工の形式** でのデータの例です。
 
     ![未加工の形式でのローカル データのプレビュー](./media/vscode-local-run/local-file-preview-raw.png)
 

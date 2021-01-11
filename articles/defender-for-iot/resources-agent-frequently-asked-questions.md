@@ -13,17 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 9862519a2003eb373c43fef1b660986a8d830327
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: f584f11603e41b63f3c96749ed6c720eb5ce07a8
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094208"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835059"
 ---
 # <a name="azure-defender-for-iot-agent-frequently-asked-questions"></a>Azure Defender for IoT エージェントについてよく寄せられる質問
 
 この記事では、Defender for IoT エージェントについてのよく寄せられる質問と回答の一覧を示します。
-
 
 ## <a name="do-i-have-to-install-an-embedded-security-agent"></a>埋め込みセキュリティ エージェントをインストールする必要はありますか?
 
@@ -41,7 +40,6 @@ IoT デバイス上でのエージェントのインストールは、Defender f
 Defender for IoT エージェントによって、デバイスの構成、動作、および (構成をスキャンすることによる) アクセス、プロセス、接続に対して、デバイス レベルで脅威から保護されます。 Defender for IoT セキュリティ エージェントでは、ビジネス関連データやアクティビティはスキャンされません。
 
 Defender for IoT セキュリティ エージェントはオープン ソースであり、GitHub で 32 ビットと 64 ビットの Windows および Linux バージョンを入手できます (https://github.com/Azure/Azure-IoT-Security )。
-
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>エージェントの依存関係と前提条件は何ですか?
 
@@ -85,15 +83,13 @@ Defender for IoT では、さまざまなプラットフォームがサポート
 
 ## <a name="is-there-a-way-to-test-if-the-agent-is-working-correctly"></a>エージェントが正常に動作しているかどうかをテストする方法はありますか?
 
-エージェントが通信を停止したりセキュリティ メッセージの送信に失敗したりした場合、 **デバイスがサイレントである** というアラートが生成されます。
-
-
+エージェントが通信を停止したりセキュリティ メッセージの送信に失敗したりした場合、**デバイスがサイレントである** というアラートが生成されます。
 
 ## <a name="next-steps"></a>次のステップ
 
 Defender for IoT の開始方法の詳細については、次の記事を参照してください。
 
 - Defender for IoT の[概要](overview.md)について確認する
-- [サービスの前提条件](service-prerequisites.md)を確認してください
-- [開始する](getting-started.md)方法の詳細をご覧ください
+- [システムの前提条件](quickstart-system-prerequisites.md)を確認する
+- [Defender for IoT での作業を開始する](getting-started.md)方法について確認する
 - [Defender for IoT のセキュリティ アラート](concept-security-alerts.md)について理解する

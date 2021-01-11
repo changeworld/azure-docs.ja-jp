@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 138160eb1515d1443302dbc23bbafa482e2eb905
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 0f0d94dbc7b2c720faa1da41a88e3c3313dac377
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904552"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680748"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps コミュニティ - オープンソース プロジェクト
 
@@ -38,13 +38,20 @@ ms.locfileid: "96904552"
 | プロジェクト名 | 説明 |
 |-|-|
 | [Azure Maps アニメーション モジュール](https://github.com/Azure-Samples/azure-maps-animations) | Azure Maps Web SDK で使用するための、アニメーションの豊富なライブラリ。 |
+| [Azure Maps ビューへのデータ追加コントロール モジュール](https://github.com/Azure-Samples/azure-maps-bring-data-into-view-control) | マップに読み込まれたすべてのデータを簡単にビューに表示するコントロールを提供する Azure Maps Web SDK モジュール。 |
 | [Azure Maps 位置情報コントロール モジュール](https://github.com/Azure-Samples/azure-maps-geolocation-control) | ブラウザーの位置情報 API を使用して地図上でユーザーを探すコントロールを提供する Azure Maps Web SDK モジュール。 |
 | [Azure Maps Gridded Data Source モジュール](https://github.com/Azure-Samples/azure-maps-gridded-data-source) | グリッド領域のセルにデータ ポイントを集めるデータ ソースを提供する Azure Maps Web SDK のモジュール。 この操作は、テセレーション、データのビン分割、16 進数ビンなど、さまざまな名前で知られています。  |
 | [Azure Maps 全画面コントロール モジュール](https://github.com/Azure-Samples/azure-maps-fullscreen-control) | 全画面表示モードで地図を表示するコントロールを提供する Azure Maps Web SDK モジュール。 |
+| [Azure Maps HTML マーカー レイヤー モジュール](https://github.com/Azure-Samples/azure-maps-html-marker-layer) | データ ソースからのポイント データをマップ上の HTML 要素としてレンダリングするレイヤーを提供する Azure Maps Web SDK モジュール。 |
+| [Azure Maps 画像エクスポート モジュール](https://github.com/Azure-Samples/azure-maps-image-exporter) | マップのスクリーンショットを生成する Azure Maps Web SDK 用のモジュール。 |
+| [Azure Maps 概要マップ モジュール](https://github.com/Azure-Samples/azure-maps-overview-map) | フォーカスされているメイン マップの領域の概要マップを表示するコントロールを提供する Azure Maps Web SDK モジュール。 |
+| [Azure Maps スケール バー コントロール モジュール](https://github.com/Azure-Samples/azure-maps-scale-bar-control) | ピクセル解像度を基準としたスケール バーをマップの中心に表示するコントロールを提供する Azure Maps Web SDK モジュール。 |
 | [Azure Maps 選択コントロール モジュール](https://github.com/Azure-Samples/azure-maps-selection-control) | 描画ツールを使用して、またはルート範囲のポリゴンを要求することで、データ ソース内のデータを選択するためのコントロールを提供する Azure Maps Web SDK モジュール。 |
+| [Azure Maps Services UI モジュール](https://github.com/Azure-Samples/azure-maps-services-ui) | Azure Maps REST サービスをラップする Web UI コントロールのセット。 |
+| [Azure Maps スパイダー クラスター モジュール](https://github.com/Azure-Samples/azure-maps-spider-clusters) | クラスターをらせん状の蜘蛛の巣のようなレイアウトに展開する視覚化をマップに追加する Azure Maps Web SDK 用のモジュール。 |
+| [Azure Maps スパイグラス コントロール モジュール](https://github.com/Azure-Samples/azure-maps-spyglass-control) | マップ上にデータセットを表示するスパイグラス状のウィンドウを提供する Azure Maps Web SDK モジュール。  |
 | [Azure Maps Swipe Map モジュール](https://github.com/Azure-Samples/azure-maps-swipe-map) | 2 つの重複するマップ間でのスワイプを可能にする Azure Maps Web SDK 用のモジュール。2 つの重複するデータ セットを比較する目的に最適です。 |
 | [Azure Maps 同期マップ モジュール](https://github.com/Azure-Samples/azure-maps-sync-maps) | 2 つ以上の地図のカメラを同期する Azure Maps Web SDK モジュール。 |
-| [Azure Maps Services UI モジュール](https://github.com/Azure-Samples/azure-maps-services-ui) | Azure Maps REST サービスをラップする Web UI コントロールのセット。 |
 
 **サンプル**
 
@@ -53,6 +60,7 @@ ms.locfileid: "96904552"
 | [Azure Maps のコード サンプル](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Web ベースのアプリで Azure Maps を使用するためのコード サンプルのコレクション。 |
 | [Azure Maps Gov Cloud のコード サンプル](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Azure Government Cloud 経由で Azure Maps を使用するためのコード サンプルのコレクション。 |
 | [Azure Maps および Azure Active Directory のサンプル](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Azure Maps と Azure Active Directory を使用する方法を示すサンプルのコレクション。 | 
+| [LiveMaps](https://github.com/Azure-Samples/LiveMaps) | Azure Maps Creator を使用して Azure Maps 上に IoT データをライブの室内マップで視覚化するサンプル アプリケーション |
 | [Azure Maps の Jupyter Notebook サンプル](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | Azure Maps REST サービスを使用した python サンプルのコレクション。 |
 | [Azure Maps .NET UWP IoT リモート コントロール](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | これは、Azure Maps サービスと IoT Hub サービスを使用して、リモートで制御される地図を構築する方法を示すサンプル アプリケーションです。 |
 | [Azure Maps を使用した IoT 空間分析の実装](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | 空間と時間に生じる関連イベントを追跡およびキャプチャすることは、一般的な IoT シナリオです。 |
