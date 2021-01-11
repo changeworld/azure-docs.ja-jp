@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 391692d708adbd542b2cf358f0ac597dc1db3fa0
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 9d3c5a914fe472dd7e4f797cb633e65951bf07e7
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565555"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871464"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概要:Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する
 
-ロジック アプリの作成とデプロイを自動化する準備ができたら、ロジック アプリの基になるワークフロー定義を [Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)に展開することができます。 このテンプレートでは、ロジック アプリをプロビジョニングおよびデプロイするためのインフラストラクチャ、リソース、パラメーター、およびその他の情報を定義します。 デプロイ時に変動する値に対してパラメーターを定義する ("*パラメーター化*" とも呼ばれます) ことにより、さまざまなデプロイ ニーズに応じてロジック アプリを繰り返し一貫した方法でデプロイすることができます。
+ロジック アプリの作成とデプロイを自動化する準備ができたら、ロジック アプリの基になるワークフロー定義を [Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)にデプロイすることができます。 このテンプレートでは、ロジック アプリをプロビジョニングおよびデプロイするためのインフラストラクチャ、リソース、パラメーター、およびその他の情報を定義します。 デプロイ時に変動する値に対してパラメーターを定義する ("*パラメーター化*" とも呼ばれます) ことにより、さまざまなデプロイ ニーズに応じてロジック アプリを繰り返し一貫した方法でデプロイすることができます。
 
 たとえば、開発環境、テスト環境、運用環境にデプロイする場合、環境ごとに異なる接続文字列を使用すると効果的です。 異なる接続文字列を受け取るテンプレート パラメーターを宣言した後、それらの文字列を別々の[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)に格納することができます。 こうすることで、テンプレートを更新して再デプロイしなくても、これらの値を変更することができます。 パスワードやシークレットのような機密性の高いまたはセキュリティ保護が必要なパラメーター値を使用しているシナリオでは、これらの値を [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) に格納し、パラメーター ファイルによってこれらの値を取得することができます。 ただし、このようなシナリオでは、再デプロイを行って現在の値を取得することをお勧めします。
 
@@ -269,17 +269,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 ### <a name="view-resource-definitions"></a>リソース定義を表示する
 
-Azure リソース グループ内のすべてのリソースのリソース定義を確認するには、[Azure から Visual Studio にロジック アプリをダウンロード](../logic-apps/manage-logic-apps-with-visual-studio.md)するか (これは、デプロイの準備がほとんど整っている有効なパラメーター化されたロジック アプリ テンプレートを作成するための最も簡単な方法です)、Azure portal で以下の手順に従います。
-
-1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
-
-1. ロジック アプリ、接続、およびその他のリソースを含む Azure リソース グループを見つけます。
-
-1. リソース グループのツールバーで、 **[概要]** を選択してから、リソース グループ内のすべてのリソースを選択します。
-
-1. リソース グループのツールバーで、 **[設定]** の下にある **[テンプレートのエクスポート]** を選択します。
-
-   ポータルに、選択したリソースの定義が表示されます。 詳細については、「[Azure portal のテンプレートへの単一および複数リソースのエクスポート](../azure-resource-manager/templates/export-template-portal.md)」を参照してください。
+Azure リソース グループ内のすべてのリソースのリソース定義を確認するには、[Azure から Visual Studio にロジック アプリをダウンロード](../logic-apps/manage-logic-apps-with-visual-studio.md)します。これは、デプロイの準備がほとんど整っているパラメーター化された有効なロジック アプリ テンプレートを作成するための最も簡単な方法です。
 
 テンプレート リソースとその属性に関する一般的な情報については、次のトピックをご覧ください。
 
@@ -335,7 +325,7 @@ Azure リソース グループ内のすべてのリソースのリソース定�
 
 ロジック アプリのリソース定義に固有の属性は次のとおりです。
 
-| 属性 | 必須 | Type | 説明 |
+| 属性 | 必須 | 種類 | 説明 |
 |-----------|----------|------|-------------|
 | `state` | はい | String | デプロイ時のロジック アプリの状態。`Enabled` はロジック アプリがアクティブな状態であることを意味し、`Disabled` はロジック アプリが非アクティブな状態であることを意味します。 たとえば、ロジック アプリをアクティブにする準備ができておらず、ドラフト バージョンをデプロイする必要がある場合は、`Disabled` オプションを使用できます。 |
 | `integrationAccount` | いいえ | Object | 企業間 (B2B) のシナリオで成果物を格納する統合アカウントをロジック アプリで使用している場合、このオブジェクトには、統合アカウントの ID を指定する `id` 属性が含まれます。 |
@@ -584,7 +574,7 @@ Azure リソース グループ内のすべてのリソースのリソース定�
 
 ## <a name="connection-resource-definitions"></a>接続リソースの定義
 
-ロジック アプリで[マネージド コネクタ](../connectors/apis-list.md)を使って他のサービスやシステムへの接続を作成および使用している場合、テンプレートの `resources` オブジェクトには、それらの接続のリソース定義が含まれます。
+ロジック アプリで[マネージド コネクタ](../connectors/apis-list.md)を使って他のサービスやシステムへの接続を作成および使用している場合、テンプレートの `resources` オブジェクトには、それらの接続のリソース定義が含まれます。 ロジック アプリ内から接続を作成しますが、接続は独自のリソース定義を持つ個別の Azure リソースです。 これらの接続リソース定義を確認するには、[Azure から Visual Studio にロジック アプリをダウンロード](../logic-apps/manage-logic-apps-with-visual-studio.md)します。これは、デプロイの準備がほとんど整っているパラメーター化された有効なロジック アプリ テンプレートを作成するための最も簡単な方法です。
 
 ```json
 {

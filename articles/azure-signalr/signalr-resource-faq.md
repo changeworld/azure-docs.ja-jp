@@ -4,14 +4,15 @@ description: Azure SignalR Service のトラブルシューティングと一般
 author: sffamily
 ms.service: signalr
 ms.topic: overview
+ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: c944ae3a5d647cc457edd20a5d3dd0489e19e286
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9aa510a055cb76b30508cb98a25cd9c919eb117d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192277"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928311"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service の FAQ
 
@@ -78,8 +79,8 @@ Azure SignalR Service リソースの概要ブレードでは、適切な集計�
 ## <a name="what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose"></a>サービス モード `Default`/`Serverless`/`Classic` の意味を教えてください。 どのように選べばよいでしょうか?
 
 モード:
-* `Default` モードには、ハブ サーバーが**必要**です。 ハブに利用できるサーバー接続がない場合、クライアントはこのハブへの接続を試みますが失敗します。
-* `Serverless` モードでは、サーバー接続が一切許可**されません**。つまり、すべてのサーバー接続が拒否されます。すべてのクライアントがサーバーレス モードである必要があります。
+* `Default` モードには、ハブ サーバーが*必要*です。 このモードでは、Azure SignalR がその接続先のハブ サーバー接続にクライアント トラフィックをルーティングします。 Azure SignalR は、接続先のハブ サーバーをチェックします。 接続先のハブ サーバーが見つからない場合、Azure SignalR は、受信クライアント接続を拒否します。 このモードでは、**Management Api** を使用し、Azure SignalR 経由で直接、接続先のクライアントを管理することもできます。
+* `Serverless` モードでは、サーバー接続が一切許可 "*されません*"。つまり、すべてのサーバー接続が拒否されます。 すべてのクライアントがサーバーレス モードである必要があります。 クライアントは Azure SignalR に接続し、ユーザーは通常、サーバーレス テクノロジ (**Azure Function** など) を使用して、ハブのロジックを処理します。 Azure SignalR のサーバーレス モードを使用した[簡単な例](https://docs.microsoft.com/azure/azure-signalr/signalr-quickstart-azure-functions-javascript?WT.mc_id=signalrquickstart-github-antchu)を参照してください。
 * `Classic` モードは、混在した状態です。 ハブにサーバー接続がある場合、新しいクライアントはハブ サーバーにルーティングされます。それ以外の場合、クライアントはサーバーレス モードになります。
 
   これが原因で問題が発生することがあります。たとえば、すべてのサーバー接続が少しの間失われ、一部のクライアントがハブ サーバーにルーティングされずに、サーバーレス モードになります。
@@ -95,7 +96,7 @@ Azure SignalR を使用すると、ASP.NET SignalR のいくつかの API と機
 - Azure SignalR を使用している場合、`PersistentConnection` クラスはまだサポートされません。
 - Azure SignalR を使用している場合、**Forever Frame の転送**はサポートされません。
 - クライアントがオフラインのとき、Azure SignalR では、クライアントに送信されたメッセージが再生されません。
-- Azure SignalR を使用している場合、1 つのクライアント接続のトラフィックは、接続期間中、常に 1 つのアプリ サーバー インスタンスにルーティングされます ("スティッキー" セッションとも呼ばれます)。 <bpt id="p1">**</bpt>sticky<ept id="p1">**</ept>) to one app server instance for the duration of the connection
+- Azure SignalR を使用している場合、1 つのクライアント接続のトラフィックは、接続期間中、常に 1 つのアプリ サーバー インスタンスにルーティングされます ("スティッキー" セッションとも呼ばれます)。 ****
 
 ASP.NET SignalR のサポートは互換性に重点が置かれているため、ASP.NET Core SignalR の一部の新機能はサポートされません。 たとえば、**MessagePack** や **Streaming** は ASP.NET Core SignalR アプリケーションでのみ提供されます。
 

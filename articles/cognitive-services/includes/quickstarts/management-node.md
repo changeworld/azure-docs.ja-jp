@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 59063912b2976890976e3c27bc4f2d93b6392e37
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: fcfefb2b6cd5c23e9b77d7d27413d1ff6d775bfe
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607644"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321621"
 ---
 [リファレンスのドキュメント](https://docs.microsoft.com/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices) | [パッケージ (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices) | [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
@@ -22,15 +22,9 @@ ms.locfileid: "88607644"
 * 有効な Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)。
 * 最新バージョンの [Node.js](https://nodejs.org/)
 
-## <a name="create-an-azure-service-principal"></a>Azure サービス プリンシパルを作成する
+[!INCLUDE [Create a service principal](./create-service-principal.md)]
 
-アプリケーションが Azure アカウントと対話できるようにするには、アクセス許可を管理するための Azure サービス プリンシパルが必要です。 [Azure サービス プリンシパルの作成](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-4.4.0&viewFallbackFrom=azps-3.3.0)に関するページの手順に従ってください。
-
-サービス プリンシパルを作成すると、それにシークレット値、ID、およびアプリケーション ID が含まれていることがわかります。 後の手順のために、アプリケーション ID とシークレットを一時的な場所に保存します。
-
-## <a name="create-a-resource-group"></a>リソース グループを作成する
-
-Cognitive Services リソースを作成する前に、リソースを格納するための Azure リソース グループをアカウントに用意する必要があります。 リソース グループがまだ存在しない場合は、[Azure portal](https://ms.portal.azure.com/) で作成します。
+[!INCLUDE [Create a resource group](./create-resource-group.md)]
 
 ## <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
 
@@ -90,71 +84,7 @@ _index.js_ スクリプトを開き、以下のライブラリをインポート
 
 [!INCLUDE [cognitive-services-subscription-types](../../../../includes/cognitive-services-subscription-types.md)]
 
-SKU と価格の情報の一覧については、以下を参照してください。 
-
-#### <a name="multi-service"></a>マルチサービス
-
-| サービス                    | 種類                      |
-|----------------------------|---------------------------|
-| 複数のサービス。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/)に関するページを参照してください。            | `CognitiveServices`     |
-
-
-#### <a name="vision"></a>視覚
-
-| サービス                    | 種類                      |
-|----------------------------|---------------------------|
-| Computer Vision            | `ComputerVision`          |
-| Custom Vision - Prediction | `CustomVision.Prediction` |
-| Custom Vision - Training   | `CustomVision.Training`   |
-| Face                       | `Face`                    |
-| Form Recognizer            | `FormRecognizer`          |
-| Ink Recognizer             | `InkRecognizer`           |
-
-#### <a name="search"></a>検索
-
-| サービス            | 種類                  |
-|--------------------|-----------------------|
-| Bing Autosuggest   | `Bing.Autosuggest.v7` |
-| Bing Custom Search | `Bing.CustomSearch`   |
-| Bing Entity Search | `Bing.EntitySearch`   |
-| Bing Search        | `Bing.Search.v7`      |
-| Bing Spell Check   | `Bing.SpellCheck.v7`  |
-
-#### <a name="speech"></a>音声
-
-| サービス            | 種類                 |
-|--------------------|----------------------|
-| Speech Services    | `SpeechServices`     |
-| 音声認識 | `SpeakerRecognition` |
-
-#### <a name="language"></a>言語
-
-| サービス            | 種類                |
-|--------------------|---------------------|
-| Form Understanding | `FormUnderstanding` |
-| LUIS               | `LUIS`              |
-| QnA Maker          | `QnAMaker`          |
-| Text Analytics     | `TextAnalytics`     |
-| Text Translation   | `TextTranslation`   |
-
-#### <a name="decision"></a>決定
-
-| サービス           | 種類               |
-|-------------------|--------------------|
-| Anomaly Detector  | `AnomalyDetector`  |
-| Content Moderator | `ContentModerator` |
-| Personalizer      | `Personalizer`     |
-
-
-#### <a name="pricing-tiers-and-billing"></a>価格レベルと請求
-
-価格レベル (および請求される金額) は、認証情報を使用して送信するトランザクションの数に基づきます。 各価格レベルにより、以下が指定されます。
-* 1 秒あたりに許可されるトランザクションの最大数 (TPS)。
-* 価格レベル内で有効にされるサービス機能。
-* 事前に定義された数のトランザクションのコスト。 この数を超えると、サービスの「[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)」で指定されている追加料金が発生します。
-
-> [!NOTE]
-> Cognitive Services の多くには、サービスを試すために使用できる無料レベルがあります。 無料レベルを使用するには、リソースの SKU として `F0` を使用します。
+[!INCLUDE [SKUs and pricing](./sku-pricing.md)]
 
 ## <a name="create-a-cognitive-services-resource"></a>Cognitive Services リソースの作成
 

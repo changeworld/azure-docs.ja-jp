@@ -1,6 +1,6 @@
 ---
 title: Azure portal での Azure Storage アカウントの監視方法 | Microsoft Docs
-description: Azure portal と Azure Storage Analytics を使用して、Azure でストレージ アカウントを監視する方法について説明します。
+description: Azure Portal と Azure Storage Analytics を使用して、Azure でストレージ アカウントを監視する方法について説明します。
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -16,7 +16,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/10/2020
 ms.locfileid: "88034670"
 ---
-# <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure ポータルでのストレージ アカウントの監視
+# <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure Portal でのストレージ アカウントの監視
 
 [Azure Storage Analytics](storage-analytics.md) では、すべてのストレージ サービスのメトリックと、BLOB、キュー、およびテーブルのログを利用できます。 [Azure Portal](https://portal.azure.com) を使用すると、アカウントに対してどのメトリックとログを記録するか、また、そのメトリック データを視覚的に表現するグラフを構成できます。 
 
@@ -29,7 +29,7 @@ ms.locfileid: "88034670"
 >
 > Premium パフォーマンス ブロック BLOB のストレージ アカウントでは、ストレージ分析メトリックをサポートしていませんが、ログ記録をサポートしています。 REST API またはクライアント ライブラリを使用してプログラムでログ記録を有効にすることができます。 Premium パフォーマンス ブロック BLOB のストレージ アカウントでメトリックを表示する場合は、[Azure Monitor の Azure Storage メトリック](storage-metrics-in-azure-monitor.md)を使用することを検討してください。
 >
-> Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「 [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
+> Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
 >
 
 ## <a name="configure-monitoring-for-a-storage-account"></a>ストレージ アカウントの監視の設定

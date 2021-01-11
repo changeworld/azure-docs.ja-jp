@@ -8,18 +8,19 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/20/2020
-ms.openlocfilehash: 693a7006a9f5742341a11af23b64bcd8c501618f
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 09273cf901830e850acca05c57c0b110ffd7e28a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705896"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002864"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して Azure BLOB から AI で生成する検索可能なコンテンツ
 
 Azure Blob Storage に非構造化テキストまたは画像がある場合、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)で情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオに役立つ新しいコンテンツを作成することができます。 この C# チュートリアルでは、画像に光学式文字認識 (OCR) を適用し、自然言語処理を実行して、クエリ、ファセット、フィルターで活用できる新しいフィールドを作成します。
 
-このチュートリアルでは、C# と [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) を使用して次のタスクを実行します。
+このチュートリアルでは、C# と [.NET SDK](/dotnet/api/overview/azure/search) を使用して次のタスクを実行します。
 
 > [!div class="checklist"]
 > * Azure Blob Storage にアプリケーション ファイルと画像を準備する。
@@ -127,7 +128,7 @@ AI エンリッチメントは、自然言語と画像の処理のための Text
 
 ### <a name="install-nuget-packages"></a>NuGet パッケージのインストール
 
-[Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) は､HTTP や JSON に関する詳しい知識がなくても､インデックスやデータ ソース､インデクサー､スキルセットの管理､ドキュメントのアップロードと管理､クエリの実行を行うことを可能にするいくつかのクライアント ライブラリから構成されています。 これらのクライアント ライブラリはすべて､NuGet パッケージとして配布されます｡
+[Azure Cognitive Search .NET SDK](/dotnet/api/overview/azure/search) は､HTTP や JSON に関する詳しい知識がなくても､インデックスやデータ ソース､インデクサー､スキルセットの管理､ドキュメントのアップロードと管理､クエリの実行を行うことを可能にするいくつかのクライアント ライブラリから構成されています。 これらのクライアント ライブラリはすべて､NuGet パッケージとして配布されます｡
 
 このプロジェクトでは、`Microsoft.Azure.Search` NuGet パッケージのバージョン 9 以降をインストールします。
 
@@ -680,7 +681,7 @@ private static Index CreateDemoIndex(SearchServiceClient serviceClient)
 using Index = Microsoft.Azure.Search.Models.Index;
 ```
 
-インデックスの定義の詳細については、[インデックスの作成 (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) に関するページを参照してください。
+インデックスの定義の詳細については、[インデックスの作成 (Azure Cognitive Search REST API)](/rest/api/searchservice/create-index) に関するページを参照してください。
 
 ### <a name="step-4-create-and-run-an-indexer"></a>手順 4:インデクサーの作成と実行
 
@@ -905,7 +906,7 @@ catch (Exception e)
 }
 ```
 
-その他のフィールド (この演習では、content、languageCode、keyPhrases、および organizations) でも同様に繰り返します。 [Select](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet) プロパティでコンマ区切りリストを使用すれば、複数のフィールドを取得することができます。
+その他のフィールド (この演習では、content、languageCode、keyPhrases、および organizations) でも同様に繰り返します。 [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet) プロパティでコンマ区切りリストを使用すれば、複数のフィールドを取得することができます。
 
 <a name="reset"></a>
 

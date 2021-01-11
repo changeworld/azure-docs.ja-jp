@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバー (プレビュー) を使用した VM 拡張�
 description: Azure Arc 対応サーバー (プレビュー) を使用すると、Azure 以外の VM でのデプロイ後構成と自動化タスクを提供する仮想マシン拡張機能のデプロイを管理できます。
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b27172a14896041cb4217b12af41d6a04118721
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 259a55c0e5cb4074871fd70a61e6c61d5cf3c50a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213116"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018163"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>Azure Arc 対応サーバー (プレビュー) を使用した仮想マシン拡張機能の管理
 
@@ -89,7 +89,7 @@ VM 拡張機能は、Azure portal を使用して、Arc for server (プレビュ
 
     ![Log Analytics VM 拡張機能をインストールする](./media/manage-vm-extensions/mma-extension-config.png)
 
-    インストールを完了するには、ワークスペース ID と主キーを指定する必要があります。 この情報の検索方法に慣れていない場合は、「[ワークスペース ID とキーを取得する](../../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)」を参照してください。
+    インストールを完了するには、ワークスペース ID と主キーを指定する必要があります。 この情報の検索方法に慣れていない場合は、「[ワークスペース ID とキーを取得する](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)」を参照してください。
 
 4. 表示される必要な情報を確認したら、 **[作成]** を選択します。 デプロイの概要が表示され、デプロイの状態を確認できます。
 

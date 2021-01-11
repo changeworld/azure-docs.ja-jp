@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: aaba608ba80a751c40cd300dee80f673897c22a8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 236134887728ebc3dd4d03fa4c9d9d450b39eac2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525651"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930674"
 ---
 # <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
 Azure ファイル共有を作成するには、その使用方法について 3 つの質問に答える必要があります。
@@ -267,6 +267,9 @@ Update-AzRmStorageShare `
     -AccessTier Cool
 ```
 
+> [!Note]  
+> PowerShell を使用して層を設定し変更する機能が、プレビュー Az.Storage PowerShell モジュールに用意されています。 これらのコマンドレットまたは出力は、一般公開されている Az.Storage PowerShell モジュールでリリースされる前に変更される可能性があるため、この点に留意してスクリプトを作成してください。
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ファイル共有を作成したり特定の層に移動したりする機能は、最新の Azure CLI 更新プログラムで利用できます。 Azure CLI の更新は、使用しているオペレーティング システムや Linux ディストリビューションに固有です。 システム上で Azure CLI を更新する方法については、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
@@ -282,6 +285,10 @@ az storage share-rm create \
     --name $shareName \
     --access-tier "Hot"
 ```
+
+> [!Note]  
+> `--access-tier` パラメーターで層を設定する機能は、最新の Azure CLI パッケージのプレビューで提供されています。 このコマンドまたはその出力は、一般公開されているものとしてマークされる前に変更される可能性があるため、この点に留意してスクリプトを作成してください。
+
 ---
 
 ## <a name="next-steps"></a>次のステップ

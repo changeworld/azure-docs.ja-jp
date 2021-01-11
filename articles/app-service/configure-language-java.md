@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 30d5fa329131cdfd380a84843b3ba202b2e22e39
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 5d94da91428da2270e0f690df4dcd43ae43d8597
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080132"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961654"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service 向けの Java アプリを構成する
 
@@ -31,8 +31,8 @@ Azure App Service を使用すると、Java 開発者は、完全に管理され
 
 それ以外の場合、デプロイの方法はアーカイブの種類によって異なります。
 
-- .war ファイルを Tomcat にデプロイするには、`/api/wardeploy/` エンドポイントを使用してアーカイブ ファイルを POST します。 この API の詳細については、[このドキュメント](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)を参照してください。
-- Java SE に .jar ファイルをデプロイするには、Kudu サイトの `/api/zipdeploy/` エンドポイントを使用します。 この API の詳細については、[このドキュメント](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)を参照してください。
+- .war ファイルを Tomcat にデプロイするには、`/api/wardeploy/` エンドポイントを使用してアーカイブ ファイルを POST します。 この API の詳細については、[このドキュメント](./deploy-zip.md#deploy-war-file)を参照してください。
+- Java SE に .jar ファイルをデプロイするには、Kudu サイトの `/api/zipdeploy/` エンドポイントを使用します。 この API の詳細については、[このドキュメント](./deploy-zip.md#rest)を参照してください。
 
 FTP を使用して .war や .jar をデプロイしないでください。 FTP ツールは、スタートアップ スクリプト、依存関係、またはその他のランタイム ファイルをアップロードするために設計されています。 これは、Web アプリをデプロイするための最適な選択肢ではありません。
 
@@ -56,7 +56,7 @@ jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename=
 
 #### <a name="analyze-jfr-files"></a>`.jfr` ファイルの分析
 
-JFR ファイルをご自分のローカル コンピューターにダウンロードするには、[FTPS](deploy-ftp.md) を使います。 JFR ファイルを分析するには、[Zulu Mission Control](https://www.azul.com/products/zulu-mission-control/) をダウンロードしてインストールします。 Zulu Mission Control については、[Azul のドキュメント](https://docs.azul.com/zmc/)と[インストール手順](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)をご覧ください。
+JFR ファイルをご自分のローカル コンピューターにダウンロードするには、[FTPS](deploy-ftp.md) を使います。 JFR ファイルを分析するには、[Zulu Mission Control](https://www.azul.com/products/zulu-mission-control/) をダウンロードしてインストールします。 Zulu Mission Control については、[Azul のドキュメント](https://docs.azul.com/zmc/)と[インストール手順](/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)をご覧ください。
 
 ### <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
 
@@ -68,7 +68,7 @@ JFR ファイルをご自分のローカル コンピューターにダウンロ
 
 Azure portal または [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) を使用して[アプリケーションのログ記録](troubleshoot-diagnostic-logs.md#enable-application-logging-windows)を有効にし、アプリケーションの標準コンソール出力および標準コンソール エラー ストリームをローカル ファイル システムまたは Azure BLOB ストレージに書き込むよう App Service を構成します。 App Service のローカル ファイル システム インスタンスへのログ記録は、構成されてから 12 時間後に無効になります。 リテンション期間を長くする必要がある場合は、BLOB ストレージ コンテナーに出力を書き込むようアプリケーションを構成します。 Java と Tomcat のアプリ ログは */LogFiles/Application/* ディレクトリにあります。
 
-アプリケーションで [Logback](https://logback.qos.ch/) または [Log4j](https://logging.apache.org/log4j) をトレースに使用している場合は、「[Application Insights を使用した Java トレース ログの探索](/azure/application-insights/app-insights-java-trace-logs)」にあるログ記録フレームワークの構成手順に従って、これらのトレースを確認のために Azure Application Insights に転送することができます。
+アプリケーションで [Logback](https://logback.qos.ch/) または [Log4j](https://logging.apache.org/log4j) をトレースに使用している場合は、「[Application Insights を使用した Java トレース ログの探索](../azure-monitor/app/java-trace-logs.md)」にあるログ記録フレームワークの構成手順に従って、これらのトレースを確認のために Azure Application Insights に転送することができます。
 
 
 ## <a name="customization-and-tuning"></a>カスタマイズとチューニング
@@ -144,7 +144,7 @@ Tomcat アプリケーションのパフォーマンスを向上させるには�
 
 ## <a name="secure-applications"></a>セキュリティで保護されたアプリケーション
 
-App Service で実行される Java アプリケーションは、他のアプリケーションと同じ一連の[セキュリティのベスト プラクティス](/azure/security/security-paas-applications-using-app-services)を備えています。
+App Service で実行される Java アプリケーションは、他のアプリケーションと同じ一連の[セキュリティのベスト プラクティス](../security/fundamentals/paas-applications-using-app-services.md)を備えています。
 
 ### <a name="authenticate-users-easy-auth"></a>ユーザーを認証する (Easy Auth)
 
@@ -172,7 +172,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-ユーザーをサインアウトさせるには、`/.auth/ext/logout` パスを使用します。 他のアクションを実行する場合は、「[Azure App Service 上での認証と承認の高度な使用方法](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)」を参照してください。 Tomcat の [HttpServletRequest インターフェイス](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)とそのメソッドに関する公式ドキュメントもあります。 次のサーブレット メソッドも、ご利用の App Service 構成に基づいてハイドレートされます。
+ユーザーをサインアウトさせるには、`/.auth/ext/logout` パスを使用します。 他のアクションを実行する場合は、「[Azure App Service 上での認証と承認の高度な使用方法](./app-service-authentication-how-to.md)」を参照してください。 Tomcat の [HttpServletRequest インターフェイス](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)とそのメソッドに関する公式ドキュメントもあります。 次のサーブレット メソッドも、ご利用の App Service 構成に基づいてハイドレートされます。
 
 ```java
 public boolean isSecure()
@@ -235,7 +235,7 @@ Spring または Tomcat 構成ファイルにこれらのシークレットを�
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [ダウンロード](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [ダウンロード](https://dev.mysql.com/downloads/connector/j/) ("プラットフォームに依存しない" を選択) |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [ダウンロード](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [ダウンロード](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
 
 Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用するように Tomcat を構成するには、まず、起動時に Tomcat によって読み込まれる `CATALINA_OPTS` 環境変数をカスタマイズします。 [App Service Maven プラグイン](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)のアプリ設定を使用して、次の値を設定します。
 
@@ -321,7 +321,7 @@ Azure でサポートされている Java Development Kit (JDK) は、[Azul Syst
 
 メジャー バージョンの更新プログラムは、Azure App Service for Windows の新しいランタイム オプションによって提供されます。 お客様は、App Service デプロイを構成することで Java のこれらの新しいバージョンに更新します。また、主要な更新プログラムをテストし、ニーズを満たしていることを確認する必要があります。
 
-サポートされている JDK は、毎年 1 月、4 月、7 月、および 10 月の四半期ごとに自動的に適用されます。 Azure 上の Java の詳細については、[こちらのサポート ドキュメント](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)を参照してください。
+サポートされている JDK は、毎年 1 月、4 月、7 月、および 10 月の四半期ごとに自動的に適用されます。 Azure 上の Java の詳細については、[こちらのサポート ドキュメント](/azure/developer/java/fundamentals/java-jdk-long-term-support)を参照してください。
 
 ### <a name="security-updates"></a>セキュリティ更新プログラム
 
@@ -343,14 +343,14 @@ Tomcat 8.0 は、[2018 年 9 月 30 日にサポートが終了 (EOL)](https://t
 
 ### <a name="runtime-support"></a>ランタイム サポート
 
-[正規のサポート プラン](https://azure.microsoft.com/support/plans/)の対象である開発者は、Azure サポートを利用して Azul Zulu JDK に関する[問題を投稿](/azure/azure-portal/supportability/how-to-create-azure-support-request)できます。
+[正規のサポート プラン](https://azure.microsoft.com/support/plans/)の対象である開発者は、Azure サポートを利用して Azul Zulu JDK に関する[問題を投稿](../azure-portal/supportability/how-to-create-azure-support-request.md)できます。
 
 ## <a name="next-steps"></a>次のステップ
 
 このトピックでは、Azure App Service for Windows の Java ランタイムのサポート ステートメントを提供します。
 
 - Azure App Service での Web アプリケーションのホストの詳細については、「[App Service の概要](overview.md)」を参照してください。
-- Azure 開発に関する Java については、「[Java 開発者向けの Azure](https://docs.microsoft.com/java/azure/?view=azure-java-stable)」を参照してください。
+- Azure 開発に関する Java については、「[Java 開発者向けの Azure](/java/azure/?view=azure-java-stable)」を参照してください。
 
 ::: zone-end
 
@@ -366,8 +366,8 @@ Azure App Service on Linux を使用すると、Java 開発者は、完全に管
 
 それ以外の場合、デプロイの方法はアーカイブの種類によって異なります。
 
-- .war ファイルを Tomcat にデプロイするには、`/api/wardeploy/` エンドポイントを使用してアーカイブ ファイルを POST します。 この API の詳細については、[このドキュメント](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)を参照してください。
-- Java SE イメージ上に .jar ファイルをデプロイするには、Kudu サイトの `/api/zipdeploy/` エンドポイントを使用します。 この API の詳細については、[このドキュメント](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)を参照してください。
+- .war ファイルを Tomcat にデプロイするには、`/api/wardeploy/` エンドポイントを使用してアーカイブ ファイルを POST します。 この API の詳細については、[このドキュメント](./deploy-zip.md#deploy-war-file)を参照してください。
+- Java SE イメージ上に .jar ファイルをデプロイするには、Kudu サイトの `/api/zipdeploy/` エンドポイントを使用します。 この API の詳細については、[このドキュメント](./deploy-zip.md#rest)を参照してください。
 
 FTP を使用して .war や .jar をデプロイしないでください。 FTP ツールは、スタートアップ スクリプト、依存関係、またはその他のランタイム ファイルをアップロードするために設計されています。 これは、Web アプリをデプロイするための最適な選択肢ではありません。
 
@@ -390,9 +390,9 @@ FTP を使用して .war や .jar をデプロイしないでください。 FTP
 Azure portal または [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) を使用して[アプリケーションのログ記録](troubleshoot-diagnostic-logs.md#enable-application-logging-windows)を有効にし、アプリケーションの標準コンソール出力および標準コンソール エラー ストリームをローカル ファイル システムまたは Azure BLOB ストレージに書き込むよう App Service を構成します。 App Service のローカル ファイル システム インスタンスへのログ記録は、構成されてから 12 時間後に無効になります。 リテンション期間を長くする必要がある場合は、BLOB ストレージ コンテナーに出力を書き込むようアプリケーションを構成します。 Java と Tomcat のアプリ ログは */home/LogFiles/Application/* ディレクトリにあります。
 
 >[!NOTE]
->App Service のローカル ファイル システムへのログ記録が 12 時間後に無効になるというのは、Window ベースの App Services にのみ適用されます。 Linux ベースの App Services の Azure Blob Storage のログ記録は [Azure Monitor (プレビュー) を使用してのみ構成できます](/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) 
+>App Service のローカル ファイル システムへのログ記録が 12 時間後に無効になるというのは、Window ベースの App Services にのみ適用されます。 Linux ベースの App Services の Azure Blob Storage のログ記録は [Azure Monitor (プレビュー) を使用してのみ構成できます](./troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor-preview) 
 
-アプリケーションで [Logback](https://logback.qos.ch/) または [Log4j](https://logging.apache.org/log4j) をトレースに使用している場合は、「[Application Insights を使用した Java トレース ログの探索](/azure/application-insights/app-insights-java-trace-logs)」にあるログ記録フレームワークの構成手順に従って、これらのトレースを確認のために Azure Application Insights に転送することができます。
+アプリケーションで [Logback](https://logback.qos.ch/) または [Log4j](https://logging.apache.org/log4j) をトレースに使用している場合は、「[Application Insights を使用した Java トレース ログの探索](../azure-monitor/app/java-trace-logs.md)」にあるログ記録フレームワークの構成手順に従って、これらのトレースを確認のために Azure Application Insights に転送することができます。
 
 ### <a name="troubleshooting-tools"></a>トラブルシューティング ツール
 
@@ -439,7 +439,7 @@ jcmd <pid> JFR.dump name=continuous_recording filename="/home/recording1.jfr"
 
 ### <a name="analyzing-recordings"></a>記録の分析
 
-JFR ファイルをご自分のローカル コンピューターにダウンロードするには、[FTPS](deploy-ftp.md) を使います。 JFR ファイルを分析するには、[Zulu Mission Control](https://www.azul.com/products/zulu-mission-control/) をダウンロードしてインストールします。 Zulu Mission Control については、[Azul のドキュメント](https://docs.azul.com/zmc/)と[インストール手順](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)をご覧ください。
+JFR ファイルをご自分のローカル コンピューターにダウンロードするには、[FTPS](deploy-ftp.md) を使います。 JFR ファイルを分析するには、[Zulu Mission Control](https://www.azul.com/products/zulu-mission-control/) をダウンロードしてインストールします。 Zulu Mission Control については、[Azul のドキュメント](https://docs.azul.com/zmc/)と[インストール手順](/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)をご覧ください。
 
 ## <a name="customization-and-tuning"></a>カスタマイズとチューニング
 
@@ -520,7 +520,7 @@ Tomcat アプリケーションのパフォーマンスを向上させるには�
 
 ## <a name="secure-applications"></a>セキュリティで保護されたアプリケーション
 
-App Service for Linux で実行される Java アプリケーションは、他のアプリケーションと同じ一連の[セキュリティのベスト プラクティス](/azure/security/security-paas-applications-using-app-services)を備えています。
+App Service for Linux で実行される Java アプリケーションは、他のアプリケーションと同じ一連の[セキュリティのベスト プラクティス](../security/fundamentals/paas-applications-using-app-services.md)を備えています。
 
 ### <a name="authenticate-users-easy-auth"></a>ユーザーを認証する (Easy Auth)
 
@@ -548,7 +548,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-ユーザーをサインアウトさせるには、`/.auth/ext/logout` パスを使用します。 他のアクションを実行する場合は、「[Azure App Service 上での認証と承認の高度な使用方法](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)」を参照してください。 Tomcat の [HttpServletRequest インターフェイス](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)とそのメソッドに関する公式ドキュメントもあります。 次のサーブレット メソッドも、ご利用の App Service 構成に基づいてハイドレートされます。
+ユーザーをサインアウトさせるには、`/.auth/ext/logout` パスを使用します。 他のアクションを実行する場合は、「[Azure App Service 上での認証と承認の高度な使用方法](./app-service-authentication-how-to.md)」を参照してください。 Tomcat の [HttpServletRequest インターフェイス](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)とそのメソッドに関する公式ドキュメントもあります。 次のサーブレット メソッドも、ご利用の App Service 構成に基づいてハイドレートされます。
 
 ```java
 public boolean isSecure()
@@ -583,7 +583,7 @@ Spring または Tomcat 構成ファイルにこれらのシークレットを�
 Java キー ストアの証明書を使用して JDBC 接続を暗号化するために、追加の構成が必要になる場合があります。 選択した JDBC ドライバーのドキュメントを参照してください。
 
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
-- [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
+- [SQL Server](/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 - [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
 - [Cassandra](https://docs.datastax.com/en/developer/java-driver/4.3/)
@@ -668,7 +668,7 @@ App Service Linux では着信要求がポート 80 にルーティングされ�
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [ダウンロード](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [ダウンロード](https://dev.mysql.com/downloads/connector/j/) ("プラットフォームに依存しない" を選択) |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [ダウンロード](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [ダウンロード](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
 
 Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用するように Tomcat を構成するには、まず、起動時に Tomcat によって読み込まれる `CATALINA_OPTS` 環境変数をカスタマイズします。 [App Service Maven プラグイン](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)のアプリ設定を使用して、次の値を設定します。
 
@@ -831,7 +831,7 @@ Spring Boot アプリケーション内のデータ ソースに接続するに�
 
 ## <a name="use-redis-as-a-session-cache-with-tomcat"></a>Tomcat を使用してセッション キャッシュとして Redis を使用する
 
-[Azure Cache for Redis](/azure/azure-cache-for-redis/) などの外部セッション ストアを使用するように Tomcat を構成できます。 これにより、自動スケール、再起動、フェールオーバーが発生した場合など、ユーザーがアプリの別のインスタンスに転送されるときに、ユーザーのセッション状態 (ショッピング カート データなど) を保持できます。
+[Azure Cache for Redis](../azure-cache-for-redis/index.yml) などの外部セッション ストアを使用するように Tomcat を構成できます。 これにより、自動スケール、再起動、フェールオーバーが発生した場合など、ユーザーがアプリの別のインスタンスに転送されるときに、ユーザーのセッション状態 (ショッピング カート データなど) を保持できます。
 
 Redis で Tomcat を使用するには、[PersistentManager](https://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) の実装を使用するようにアプリを構成する必要があります。 次の手順では、例として [Pivotal Session Manager: redis-store](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store) を使用してこのプロセスを説明します。
 
@@ -883,7 +883,7 @@ Redis で Tomcat を使用するには、[PersistentManager](https://tomcat.apac
 
     このファイルで、アプリのセッション マネージャーの実装を指定して構成します。 前の手順で設定した環境変数を使用して、ソース ファイルからアカウント情報を保持します。
 
-3. FTP を使用して、セッション マネージャーの JAR ファイルを App Service インスタンスにアップロードし、 */home/tomcat/lib* ディレクトリに配置します。 詳しくは、「[FTP/S を使用した Azure App Service へのアプリのデプロイ](https://docs.microsoft.com/azure/app-service/deploy-ftp)」をご覧ください。
+3. FTP を使用して、セッション マネージャーの JAR ファイルを App Service インスタンスにアップロードし、 */home/tomcat/lib* ディレクトリに配置します。 詳しくは、「[FTP/S を使用した Azure App Service へのアプリのデプロイ](./deploy-ftp.md)」をご覧ください。
 
 4. App Service インスタンスの[セッション アフィニティ Cookie](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) を無効にします。 Azure portal からこれを実行するには、アプリに移動し、 **[構成] > [全般設定] > [ARR アフィニティ]** を **[オフ]** に設定します。 または、次のコマンドを使用できます。
 

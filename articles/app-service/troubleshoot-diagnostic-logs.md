@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 1a6c109907c20e06796744d42feae20dc53f2b52
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 89162a0b8ca20e59319802f9e2359c2f27ff163f
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207531"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962181"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -46,12 +46,12 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 
 **[アプリケーション ログ (ファイル システム)]** と **[アプリケーション ログ (Blob)]** の一方または両方で、 **[オン]** を選択します。 
 
-**ファイル システム** オプションは、一時的なデバッグ用であり、12 時間で自動的にオフになります。 **Blob** オプションは、長期的なログ記録用であり、ログを書き込む BLOB ストレージ コンテナーが必要です。  **Blob** オプションには、ログ メッセージの生成元 VM インスタンスの ID (`InstanceId`)、スレッド ID (`Tid`)、さらに細かいタイムスタンプ ([`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks)) など、ログ メッセージの追加情報も含まれます。
+**ファイル システム** オプションは、一時的なデバッグ用であり、12 時間で自動的にオフになります。 **Blob** オプションは、長期的なログ記録用であり、ログを書き込む BLOB ストレージ コンテナーが必要です。  **Blob** オプションには、ログ メッセージの生成元 VM インスタンスの ID (`InstanceId`)、スレッド ID (`Tid`)、さらに細かいタイムスタンプ ([`EventTickCount`](/dotnet/api/system.datetime.ticks)) など、ログ メッセージの追加情報も含まれます。
 
 > [!NOTE]
 > 現在、Blob Storage には .NET アプリケーションのログのみ書き込むことができます。 Java、PHP、Node.js、Python のアプリケーション ログは、App Service ファイル システムにのみ保存できます (外部ストレージにログを書き込むためのコードの変更は必要ありません)。
 >
-> また、[ストレージ アカウントのアクセス キーを再生成する](../storage/common/storage-create-storage-account.md)場合、更新されたキーを使用するように、該当するログ記録の構成を再設定する必要があります。 これを行うには、次の手順を実行します。
+> また、[ストレージ アカウントのアクセス キーを再生成する](../storage/common/storage-account-create.md)場合、更新されたキーを使用するように、該当するログ記録の構成を再設定する必要があります。 これを行うには、次の手順を実行します。
 >
 > 1. **[構成]** タブで、該当するログ機能を **[オフ]** に設定します。 設定を保存します。
 > 2. ストレージ アカウントの BLOB へのログを再び有効にします。 設定を保存します。
@@ -89,7 +89,7 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 **[リテンション期間 (日)]** で、ログを保持する日数を設定します。
 
 > [!NOTE]
-> [ストレージ アカウントのアクセス キーを再生成する](../storage/common/storage-create-storage-account.md)場合は、該当するログ構成を更新後のキーを使用するように設定し直す必要があります。 これを行うには、次の手順を実行します。
+> [ストレージ アカウントのアクセス キーを再生成する](../storage/common/storage-account-create.md)場合は、該当するログ構成を更新後のキーを使用するように設定し直す必要があります。 これを行うには、次の手順を実行します。
 >
 > 1. **[構成]** タブで、該当するログ機能を **[オフ]** に設定します。 設定を保存します。
 > 2. ストレージ アカウントの BLOB へのログを再び有効にします。 設定を保存します。
@@ -116,7 +116,7 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
     ```
 
-- ASP.NET Core では、既定で、[Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) ログ プロバイダーが使用されます。 詳しくは、[Azure 内での ASP.NET Core のログ記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging/)に関するページをご覧ください。
+- ASP.NET Core では、既定で、[Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) ログ プロバイダーが使用されます。 詳しくは、[Azure 内での ASP.NET Core のログ記録](/aspnet/core/fundamentals/logging/)に関するページをご覧ください。
 
 ## <a name="stream-logs"></a>ログのストリーミング
 
@@ -151,7 +151,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 ### <a name="in-local-terminal"></a>ローカル ターミナルの場合
 
-ローカル コンソールでログをストリーミングするには、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) をインストールし、[アカウントにサインイン](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)します。 サインインした後、[Cloud Shell の手順](#in-cloud-shell)に従います
+ローカル コンソールでログをストリーミングするには、[Azure CLI](/cli/azure/install-azure-cli) をインストールし、[アカウントにサインイン](/cli/azure/authenticate-azure-cli)します。 サインインした後、[Cloud Shell の手順](#in-cloud-shell)に従います
 
 ## <a name="access-log-files"></a>アクセス ログ ファイル
 

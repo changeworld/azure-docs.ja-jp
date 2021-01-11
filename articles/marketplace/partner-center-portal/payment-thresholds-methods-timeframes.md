@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2020
-ms.openlocfilehash: f5614da7eac0717894d2bcb3c9cfdd959cb57f72
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 09/02/2020
+ms.openlocfilehash: 0d98afb97113f222b9ff0edc8405ea75ad10a3fb
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607275"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322077"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>支払いのしきい値、方法、期間
 
@@ -78,7 +78,7 @@ ms.locfileid: "88607275"
 | コートジボワール | はい | はい | はい | いいえ |
 | クロアチア | はい | はい | はい | いいえ |
 | キプロス | はい | はい | はい | はい |
-| チェコ共和国 | はい | はい | はい | はい |
+| チェコ | はい | はい | はい | はい |
 | デンマーク | はい | はい | はい | はい |
 | ドミニカ | はい | はい | いいえ | はい |
 | ドミニカ共和国 | はい | はい | はい | はい |
@@ -123,7 +123,6 @@ ms.locfileid: "88607275"
 | リヒテンシュタイン | はい | はい | はい | はい |
 | リトアニア | はい | はい | はい | いいえ |
 | ルクセンブルク | はい | はい | はい | はい |
-| マケドニア旧ユーゴスラビア共和国 | いいえ | はい | はい | いいえ |
 | マダガスカル | はい | はい | はい | いいえ |
 | マラウイ | はい | はい | はい | はい |
 | マレーシア | はい | はい | はい | はい |
@@ -142,6 +141,7 @@ ms.locfileid: "88607275"
 | ニカラグア | はい | はい | はい | はい |
 | ニジェール | はい | はい | はい | いいえ |
 | ナイジェリア | はい | はい | はい | いいえ |
+| 北マケドニア | いいえ | はい | はい | いいえ |
 | ノルウェー | はい | はい | はい | はい |
 | オマーン | はい | はい | はい | はい |
 | パキスタン | はい | はい | はい | いいえ |

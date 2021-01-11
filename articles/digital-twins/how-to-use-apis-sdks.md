@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 885394b2dd50b9f8a94ece409c47609c8f7f18fd
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 39dd9604cf0e58eda94acf6528ab31eca26355d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587564"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936777"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins の API および SDK を使用する
 
@@ -65,14 +65,14 @@ Azure Digital Twins .NET (C#) SDK は、Azure SDK for .Net に含まれていま
 > [!NOTE]
 > SDK の設計の詳細については、[Azure SDK の一般的な設計原則](https://azure.github.io/azure-sdk/general_introduction.html)と特定の [.NET 設計ガイドライン](https://azure.github.io/azure-sdk/dotnet_introduction.html)を参照してください。
 
-SDK を使用するには、NuGet パッケージ **Azure.DigitalTwins.Core** をプロジェクトに含めます。 また、**Azure.Identity** パッケージ (バージョン 1.1.1) も必要です。
+SDK を使用するには、NuGet パッケージ **Azure.DigitalTwins.Core** をプロジェクトに含めます。 また、**Azure.Identity** パッケージの最新バージョンも必要です。
 
 * Visual Studio では、NuGet パッケージ マネージャーを使用してパッケージを追加できます。そのためには、[ツール] > [NuGet パッケージ マネージャー] > [ソリューションの NuGet パッケージの管理] の順に選択します。** 
 * .NET コマンド ライン ツールを使用して、次のコマンドを実行できます。
 
     ```cmd/sh
     dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-    dotnet add package Azure.identity --version 1.1.1
+    dotnet add package Azure.identity
     ```
 
 実際の API の使用方法の詳細については、["*クライアント アプリのコーディングに関するチュートリアル*"](tutorial-code.md) を参照してください。 
@@ -143,7 +143,7 @@ await foreach (string twin in result)
 
 #### <a name="serialization-helpers"></a>シリアル化のヘルパー
 
-前述のように、コア SDK メソッドはツイン データを JSON として返します。 ただし、SDK にはシリアル化のためのヘルパー クラスも含まれています。 これらのヘルパー関数を使用すると、基本的な情報にアクセスするためのツイン データをすばやく作成したり、逆シリアル化したりすることができます。
+シリアル化のヘルパーは、基本情報にアクセスするためのツイン データを、迅速に作成または逆シリアル化するために SDK 内で使用できるヘルパー関数です。 コア SDK メソッドは、既定でツイン データを JSON として返すため、これらのヘルパー クラスを使用して、ツイン データをさらに分割するのに役立ちます。
 
 使用できるヘルパー クラスは次のとおりです。
 * `BasicDigitalTwin`:デジタル ツインのコアデータを表します。
@@ -230,7 +230,7 @@ foreach (string prop in rel.CustomProperties.Keys)
 
 ##### <a name="create-a-relationship"></a>リレーションシップを作成する
 
-`BasicDigitalTwin` クラスを使用すると、ツイン インスタンスでリレーションシップを作成するためのデータを準備できます。
+`BasicRelationship` クラスを使用すると、ツイン インスタンスでリレーションシップを作成するためのデータを準備できます。
 
 ```csharp
 BasicRelationship rel = new BasicRelationship();

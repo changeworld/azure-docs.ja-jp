@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/22/2020
-ms.openlocfilehash: b1290a17c93043ffbedb7a641e1a0afad6ae79d1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/25/2020
+ms.openlocfilehash: 624668ad80d72933d6dd1e67fcac799fd210d659
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066480"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816662"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
@@ -39,7 +39,7 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
   > [!IMPORTANT]
   > ISE 内で実行されるロジック アプリ、組み込みトリガー、組み込みアクション、およびコネクターでは、使用量ベースの価格プランとは異なる価格プランが使用されます。 ISE の価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。 価格については、[Logic Apps の価格](../logic-apps/logic-apps-pricing.md)に関する記事を参照してください。
@@ -94,6 +94,8 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
   [NSG セキュリティ規則](../virtual-network/security-overview.md#security-rules)を設定する場合は、**TCP** プロトコルと **UDP** プロトコルの*両方*を使用するか、代わりに **[任意]** を選択する必要があります。そうしないと、プロトコルごとに個別のルールを作成する必要があります。 NSG セキュリティ規則では、これらのポートへのアクセスが必要な IP アドレスに対して開く必要があるポートが記述されています。 すべてのファイアウォール、ルーター、またはこれらのエンドポイント間に存在するその他の項目で、これらのポートがこれらの IP アドレスにアクセスできる状態になっていることも確認してください。
 
+* ファイアウォールを経由してインターネットへのトラフィックをリダイレクトする強制トンネリングを設定した場合は、[強制トンネリングの追加要件](#forced-tunneling)を確認してください。
+
 <a name="network-ports-for-ise"></a>
 
 ### <a name="network-ports-used-by-your-ise"></a>ISE で使用されるネットワーク ポート
@@ -141,6 +143,26 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
 * Azure Firewall 以外のファイアウォール アプライアンスを使用する場合は、App Service Environment に必要とされる、[ファイアウォール統合の依存関係](../app-service/environment/firewall-integration.md#dependencies)にリストされている "*すべて*" の規則を使用してファイアウォールを設定する必要があります。
 
+<a name="forced-tunneling"></a>
+
+#### <a name="forced-tunneling-requirements"></a>強制トンネリングの要件
+
+ファイアウォール経由の[強制トンネリング](../firewall/forced-tunneling.md)を設定または使用する場合は、ISE の追加の外部依存関係を許可する必要があります。 強制トンネリングを使用すると、インターネットへのトラフィックを、インターネットではなく、仮想プライベート ネットワーク (VPN) や仮想アプライアンスなどの特定のホップにリダイレクトできます。これにより、送信ネットワーク トラフィックを検査および監査することができます。
+
+通常、ISE の送信依存関係トラフィックはすべて、ISE でプロビジョニングされた仮想 IP アドレス (VIP) を通過します。 ただし、ISE へのトラフィックまたは ISE からのトラフィックのルーティングを変更する場合は、次ホップを `Internet` に設定することによって、ファイアウォールで次の送信依存関係を許可する必要があります。 Azure Firewall を使用する場合は、手順に従って [App Service Environment を使用してファイアウォールを設定](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)します。
+
+これらの依存関係へのアクセスが許可されていない場合、ISE のデプロイは失敗し、デプロイされた ISE は動作を停止します。
+
+* [App Service Environment の管理アドレス](../app-service/environment/management-addresses.md)
+
+* [Azure API Management のアドレス](../api-management/api-management-using-with-vnet.md#control-plane-ips)
+
+* [Azure Traffic Manager の管理アドレス](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)
+
+* [ISE 領域における Logic Apps の受信および送信アドレス](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)
+
+* Azure SQL、Storage、Service Bus、および Event Hub のサービス エンドポイントは有効にする必要があります。これは、ファイアウォールを経由してこれらのサービスにトラフィックを送信することはできないためです。
+
 <a name="create-environment"></a>
 
 ## <a name="create-your-ise"></a>ISE を作成する
@@ -151,7 +173,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
 1. **[統合サービス環境]** ペインで、 **[追加]** を選択します。
 
-   ![[統合サービス環境] を探して選択](./media/connect-virtual-network-vnet-isolated-environment/add-integration-service-environment.png)
+   ![統合サービス環境を作成するには、[追加] を選択します](./media/connect-virtual-network-vnet-isolated-environment/add-integration-service-environment.png)
 
 1. 次の例のように、環境について次の詳細を指定してから **[確認と作成]** を選択します。
 

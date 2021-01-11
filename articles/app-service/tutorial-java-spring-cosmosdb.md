@@ -7,16 +7,16 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 0018e952516e08d6d01e2e79fea038745acadf62
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b63d487d09679e64b5a2029284471c1aa3c3b769
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082499"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958306"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>チュートリアル:Azure App Service on Linux と Azure Cosmos DB を使用して Java Spring Boot Web アプリを構築する
 
-このチュートリアルでは、Azure で Java Web アプリを構築、構成、デプロイ、およびスケーリングするプロセスを、順を追って説明します。 完了すると、[Azure App Service on Linux](overview.md) で実行中の [Azure Cosmos DB](/azure/cosmos-db) にデータを格納する [Spring Boot](https://projects.spring.io/spring-boot/) アプリケーションが完成します。
+このチュートリアルでは、Azure で Java Web アプリを構築、構成、デプロイ、およびスケーリングするプロセスを、順を追って説明します。 完了すると、[Azure App Service on Linux](overview.md) で実行中の [Azure Cosmos DB](../cosmos-db/index.yml) にデータを格納する [Spring Boot](https://projects.spring.io/spring-boot/) アプリケーションが完成します。
 
 ![Azure Cosmos DB にデータを格納する Spring Boot アプリケーション](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
@@ -33,14 +33,14 @@ ms.locfileid: "88082499"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 開発コンピューターに [Azure CLI](https://docs.microsoft.com/cli/azure/overview) がインストールされている。 
+* 開発コンピューターに [Azure CLI](/cli/azure/overview) がインストールされている。 
 * [Git](https://git-scm.com/)
 * [Java JDK](https://aka.ms/azure-jdks)
 * [Maven](https://maven.apache.org)
 
 ## <a name="clone-the-sample-todo-app-and-prepare-the-repo"></a>サンプルの TODO アプリを複製してリポジトリを準備する
 
-このチュートリアルでは、[Spring Data Azure Cosmos DB](https://github.com/Microsoft/spring-data-cosmosdb) を基盤とする Spring REST API を呼び出す Web UI を備えた、サンプルの TODO リスト アプリを使用します。 このアプリのコードは、[GitHub](https://github.com/Microsoft/spring-todo-app) で入手できます。 Spring と Cosmos DB を使用して Java アプリを記述することの詳細については、[Azure Cosmos DB SQL API を備える Spring Boot Starter のチュートリアル](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db )と、[Spring Data Azure Cosmos DB のクイック スタート](https://github.com/Microsoft/spring-data-cosmosdb#quick-start)を参照してください。
+このチュートリアルでは、[Spring Data Azure Cosmos DB](https://github.com/Microsoft/spring-data-cosmosdb) を基盤とする Spring REST API を呼び出す Web UI を備えた、サンプルの TODO リスト アプリを使用します。 このアプリのコードは、[GitHub](https://github.com/Microsoft/spring-todo-app) で入手できます。 Spring と Cosmos DB を使用して Java アプリを記述することの詳細については、[Azure Cosmos DB SQL API を備える Spring Boot Starter のチュートリアル](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)と、[Spring Data Azure Cosmos DB のクイック スタート](https://github.com/Microsoft/spring-data-cosmosdb#quick-start)を参照してください。
 
 
 お使いのターミナルで次のコマンドを実行して、サンプル リポジトリを複製し、サンプル アプリの環境をセットアップします。
@@ -310,7 +310,7 @@ az group delete --name <your-azure-group-name>
 ## <a name="next-steps"></a>次のステップ
 
 [Java 開発者向けの Azure](/java/azure/)
-[Spring Boot](https://spring.io/projects/spring-boot)、[Cosmos DB 用の Spring データ](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable)、[Azure Cosmos DB](/azure/cosmos-db/sql-api-introduction)、および [App Service Linux](overview.md)。
+[Spring Boot](https://spring.io/projects/spring-boot)、[Cosmos DB 用の Spring データ](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable)、[Azure Cosmos DB](../cosmos-db/introduction.md)、および [App Service Linux](overview.md)。
 
 App Service on Linux での Java アプリの実行の詳細について開発者ガイドで確認してください。
 

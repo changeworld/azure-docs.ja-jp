@@ -2,13 +2,13 @@
 title: チュートリアル - Azure に vSphere クラスターをデプロイする
 description: Azure VMware Solution を使用して Azure に vSphere クラスターをデプロイする方法について説明します
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: 8aeedeeb785f149239f2bf9a4b58a18ec8bfeb77
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/07/2020
+ms.openlocfilehash: 69a29a459ba283bb34169112ac2fa174ac6a14af
+ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750485"
+ms.lasthandoff: 09/08/2020
+ms.locfileid: "89512373"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>チュートリアル:Azure に Azure VMware Solution のプライベート クラウドをデプロイする
 
@@ -30,14 +30,7 @@ Azure VMware Solution では、最初はオンプレミスの vCenter でプラ�
 
 ## <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
 
-Azure VMware Solution を使用するには、最初にリソース プロバイダーをサブスクリプションに登録する必要があります。
-
-```
-azurecli-interactive
-az provider register -n Microsoft.AVS --subscription <your subscription ID>
-```
-
-リソース プロバイダーを登録するその他の方法については、「[Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」を参照してください。
+[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
 
 
 ## <a name="create-a-private-cloud"></a>プライベート クラウドを作成する
@@ -46,34 +39,7 @@ az provider register -n Microsoft.AVS --subscription <your subscription ID>
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
-
-1. **[新しいリソースを作成]** を選択します。 **[Marketplace を検索]** テキスト ボックスに「`Azure VMware Solution`」と入力し、一覧から **[Azure VMware Solution]** を選択します。 **[Azure VMware Solution]** ウィンドウで、 **[作成]** を選択します
-
-1. **[基本]** タブで、各フィールドの値を入力します。 次の表に、フィールドのプロパティの一覧を示します。
-
-   | フィールド   | 値  |
-   | ---| --- |
-   | **サブスクリプション** | デプロイに使用する予定のサブスクリプション。|
-   | **リソース グループ** | プライベート クラウド リソースのリソース グループ。 |
-   | **場所** | 場所 (**米国東部**など) を選択します。|
-   | **リソース名** | Azure VMware Solution のプライベート クラウドの名前。 |
-   | **SKU** | 次の SKU 値を選択します。AV36 |
-   | **ホスト** | プライベート クラウド クラスターに追加するホストの数。 既定値は 3 です。この値は、デプロイ後に増減できます。  |
-   | **vCenter 管理者パスワード** | クラウド管理者のパスワードを入力します。 |
-   | **NSX-T Manager のパスワード** | NSX-T 管理者のパスワードを入力します。 |
-   | **アドレス ブロック** | プライベート クラウドの CIDR ネットワークの IP アドレス ブロックを入力します (例: 10.175.0.0/22)。 |
-
-   :::image type="content" source="./media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="[基本] タブで、フィールドの値を入力します。" border="true":::
-
-1. 終わったら、 **[確認と作成]** を選択します。 次の画面で、入力した情報を確認します。 情報がすべて正しければ、 **[作成]** を選択します。
-
-   > [!NOTE]
-   > この手順には約 2 時間かかります。 
-
-1. デプロイが成功したことを確認します。 作成したリソース グループに移動し、プライベート クラウドを選択します。  デプロイが完了すると、状態が **[成功]** として表示されます。 
-
-   :::image type="content" source="./media/tutorial-create-private-cloud/validate-deployment.png" alt-text="デプロイが成功したことを確認します。" border="true":::
+[!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-avs-private-cloud-azure-portal-steps.md)]
 
 ### <a name="azure-cli"></a>Azure CLI
 

@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a8bed6c46b0660d5bf43863a5c7aaf4eeaf7e26f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6b62f8c33c73ded978c0c2e3a8c3b7fadea49c96
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853223"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852082"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>シナリオ:NVA を経由するトラフィックのルーティング
 
 Virtual WAN の仮想ハブ ルーティングを使用する場合、多くのシナリオを利用できます。 この NVA シナリオでの目標は、NVA (ネットワーク仮想アプライアンス) を経由するブランチへのトラフィックを VNet にルーティングし、VNet へのトラフィックをブランチにルーティングすることです。 仮想ハブ ルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
 
 > [!NOTE]
-> これらのルーティング機能の一部は、まだロールアウト中の可能性があります。お客様のリージョンでロールアウトがまだの場合は、当面、以下の版の記事にある手順を使用してください。
+> 新機能の[仮想ハブのルーティングを構成する方法](how-to-virtual-hub-routing.md)が利用可能になる前のルートを既に設定している場合は、次のバージョンの記事の手順を使用してください。
 >* [Azure portal に関する記事](virtual-wan-route-table-nva-portal.md)
 >* [PowerShell に関する記事](virtual-wan-route-table-nva.md)
 >

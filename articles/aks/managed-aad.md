@@ -3,14 +3,14 @@ title: Azure Kubernetes Service で Azure AD を使用する
 description: Azure Kubernetes Service (AKS) における Azure AD の使用方法
 services: container-service
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: afc20052680e7f3e5b7d3a6b7320b7ca3b10dbd5
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 32273bbb14e6cee73f03bd83b84be77299186370
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799859"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936998"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS マネージド Azure Active Directory 統合
 
@@ -20,7 +20,7 @@ AKS マネージド Azure AD 統合は、Azure AD の統合エクスペリエン
 
 クラスター管理者は、ユーザーの ID またはディレクトリ グループのメンバーシップに基づいて、Kubernetes のロールベースのアクセス制御 (RBAC) を構成できます。 Azure AD 認証は、OpenID Connect によって AKS クラスターに提供されます。 OpenID Connect は、OAuth 2.0 プロトコル上に構築された ID レイヤーです。 OpenID Connect の詳細については、[OpenID Connect のドキュメント][open-id-connect]を参照してください。
 
-[Azure Active Directory 統合の概念に関するドキュメント](concepts-identity.md#azure-active-directory-integration)で AAD 統合フローの詳細を確認してください。
+[Azure Active Directory 統合の概念に関するドキュメント](concepts-identity.md#azure-active-directory-integration)で、Azure AD 統合フローの詳細を確認してください。
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
@@ -32,22 +32,24 @@ AKS マネージド Azure Active Directory 統合は、[AKS がサポートさ�
 ## <a name="limitations"></a>制限事項 
 
 * AKS マネージド Azure AD 統合は無効にできません
-* AKS マネージド AAD 統合では、RBAC に対応していないクラスターはサポートされません
-* AKS マネージド AAD 統合に関連付けられている Azure AD テナントの変更はサポートされません
+* AKS マネージド Azue AD 統合では、RBAC に対応していないクラスターはサポートされません
+* AKS マネージド Azue AD 統合に関連付けられている Azure AD テナントの変更はサポートされません
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure CLI バージョン 2.9.0 以降
-* 最小バージョンが [1.18](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1180) の Kubectl
+* Azure CLI バージョン 2.11.0 以降
+* バージョン [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) 以降の kubectl、または [kubelogin](https://github.com/Azure/kubelogin)
+* [helm](https://github.com/helm/helm) を使用している場合は、helm 3.3 以降
 
 > [!Important]
-> 最小バージョンが 1.18 の Kubectl を使用する必要があります。
+> バージョン 1.18.1 以降の kubectl、または kubelogin を使用する必要があります。 適切なバージョンを使用しない場合は、認証の問題が発生します。
 
-Kubectl をインストールするには、次のコマンドを使用します。
+kubectl および kubelogin をインストールするには、次のコマンドを使用します。
 
 ```azurecli-interactive
 sudo az aks install-cli
 kubectl version --client
+kubelogin --version
 ```
 
 他のオペレーティング システムでは、[これらの手順](https://kubernetes.io/docs/tasks/tools/install-kubectl/)を使用します。
@@ -138,6 +140,31 @@ aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster --admin
 ```
+
+## <a name="enable-aks-managed-azure-ad-integration-on-your-existing-cluster"></a>既存のクラスターで AKS マネージド Azure AD 統合を有効にする
+
+既存の RBAC 対応クラスターで AKS マネージド Azure AD 統合を有効にすることができます。 クラスターへのアクセスが維持されるように、管理者グループを設定してください。
+
+```azurecli-interactive
+az aks update -g MyResourceGroup -n MyManagedCluster --enable-aad --aad-admin-group-object-ids <id-1> [--aad-tenant-id <id>]
+```
+
+正常にアクティブ化された AKS マネージド Azure AD クラスターの応答本文には、次のセクションが含まれます
+
+```output
+"AADProfile": {
+    "adminGroupObjectIds": [
+      "5d24****-****-****-****-****afa27aed"
+    ],
+    "clientAppId": null,
+    "managed": true,
+    "serverAppId": null,
+    "serverAppSecret": null,
+    "tenantId": "72f9****-****-****-****-****d011db47"
+  }
+```
+
+[こちら][access-cluster]の手順に従って、ユーザー資格情報をもう一度ダウンロードして、クラスターにアクセスします。
 
 ## <a name="upgrading-to-aks-managed-azure-ad-integration"></a>AKS マネージド Azure AD 統合へのアップグレード
 

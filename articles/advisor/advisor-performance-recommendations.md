@@ -3,12 +3,12 @@ title: Advisor を使用して Azure アプリのパフォーマンスを向上�
 description: Azure Advisor のパフォーマンスに関する推奨事項を使用すると、ビジネスに不可欠なアプリケーションのスピードと応答性を向上させることができます。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bdca8cd39427fb0d25f8b3308eaf2be24e0eb81a
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 0112e94e7652026e020e99ca82ad757c236a0c53
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257465"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653309"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -51,32 +51,32 @@ Advisor によって、ストレージ アカウントに大量のトランザ�
 
 Azure Premium Storage は、高負荷の I/O ワークロードを実行する仮想マシン向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 Premium Storage アカウントを使用する仮想マシンのディスクでは、ソリッド ステート ドライブ (SSD) にデータを格納します。 アプリケーションで最適なパフォーマンスを実現するには、高い IOPS を必要とする仮想マシン ディスクは Premium Storage に移行することをお勧めします。
 
-## <a name="remove-data-skew-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>SQL Data Warehouse テーブルのデータ スキューを除去してクエリのパフォーマンスを向上させる
+## <a name="remove-data-skew-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Azure Synapse Analytics テーブルのデータ スキューを除去してクエリのパフォーマンスを向上させる
 
 データ スキューは、ワークロードの実行時に不要なデータ移動やリソースのボトルネックを引き起こす可能性があります。 Advisor によって、15% を超える分散データ スキューが検出されます。 データを再配分して、テーブルの分散キーの選択を見直すことをお勧めします。 スキューの識別と除去の詳細については、[スキューのトラブルシューティング](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice)に関する記事を参照してください。
 
-## <a name="create-or-update-outdated-table-statistics-in-your-sql-data-warehouse-tables-to-increase-query-performance"></a>SQL Data Warehouse テーブルの古いテーブル統計情報を作成するか更新してクエリのパフォーマンスを向上させる
+## <a name="create-or-update-outdated-table-statistics-in-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Azure Synapse Analytics テーブルの古いテーブル統計を作成するか更新してクエリのパフォーマンスを向上させる
 
-Advisor によって最新の[テーブル統計](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md)状態がないテーブルが特定され、統計の作成または更新が推奨されます。 Azure SQL Data Warehouse のクエリ オプティマイザーでは、最新の統計が使用され、クエリ結果のカーディナリティまたは行数が推定されます。 このような推定値を使用すると、クエリ オプティマイザーでクエリ プランを作成し、最速のパフォーマンスを実現することができます。
+Advisor によって最新の[テーブル統計](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md)状態がないテーブルが特定され、統計の作成または更新が推奨されます。 Azure Synapse Analytics のクエリ オプティマイザーでは、最新の統計が使用され、クエリ結果のカーディナリティまたは行数が推定されます。 このような推定値を使用すると、クエリ オプティマイザーでクエリ プランを作成し、最速のパフォーマンスを実現することができます。
 
 ## <a name="improve-mysql-connection-management"></a>MySQL 接続管理を向上させる
 
 Advisor の分析には、MySQL サーバーに接続するアプリケーションで接続が効率的に管理されていない可能性が示されることがあります。 このような状態は、不必要なリソース消費とアプリケーション待機時間の全体的な増加につながる可能性があります。 接続管理を向上させるには、有効期間の短い接続の数を減らし、不要なアイドル状態の接続を排除することをお勧めします。 こうした機能強化は、ProxySQL のようなサーバー側の接続プーラーを構成することで実現できます。
 
 
-## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>スケールアップして SQL Data Warehouse テーブルでのキャッシュ使用率を最適化し、クエリのパフォーマンスを向上させる
+## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>スケールアップして Azure Synapse Analytics テーブルでのキャッシュ使用率を最適化し、クエリのパフォーマンスを向上させる
 
-Azure Advisor を使用すると、SQL Data Warehouse テーブルのキャッシュ使用率が高く、ヒット率が低いかどうかを検出できます。 この状態は、SQL Data Warehouse インスタンスのパフォーマンスに影響を与える可能性がある高いキャッシュ削除を示しています。 Advisor によって、SQL Data Warehouse インスタンスをスケールアップし、ワークロードに十分なキャッシュ容量を割り当てることが推奨されます。
+Azure Advisor を使用すると、Azure Synapse Analytics テーブルのキャッシュ使用率が高く、ヒット率が低いかどうかを検出できます。 この状態はキャッシュ削除が多いことを示し、Azure Synapse Analytics インスタンスのパフォーマンスに影響を及ぼす可能性があります。 Advisor によって、ワークロードに十分なキャッシュ容量を割り当てられるように、Azure Synapse Analytics インスタンスをスケールアップすることが推奨されます。
 
-## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>SQL Data Warehouse のテーブルをレプリケートされたテーブルに変換し、クエリのパフォーマンスを向上させる
+## <a name="convert-azure-synapse-analytics-tables-to-replicated-tables-to-increase-query-performance"></a>Azure Synapse Analytics のテーブルをレプリケートされたテーブルに変換し、クエリのパフォーマンスを向上させる
 
 Advisor によって、レプリケートされておらず、変換によってメリットが得られるテーブルが特定されます。 このようなテーブルを変換することをお勧めします。 推奨事項は以下に基づいています。
 - レプリケートされるテーブルのサイズ。 
 - 列数です。 
 - テーブルの分散の種類。 
-- SQL Data Warehouse テーブルのパーティション数。 
+- Azure Synapse Analytics テーブルのパーティション数。 
 
-コンテキストに対する推奨では、追加のヒューリスティックが提供される場合があります。 この推奨事項が決定される方法の詳細については、[SQL Data Warehouse の推奨事項](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables)に関する記事を参照してください。 
+コンテキストに対する推奨では、追加のヒューリスティックが提供される場合があります。 この推奨事項が決定される方法の詳細については、[Azure Synapse Analytics の推奨事項](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables)に関する記事を参照してください。 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-the-latest-azure-features"></a>ストレージ アカウントを Azure Resource Manager に移行して最新の Azure 機能を手に入れる
 

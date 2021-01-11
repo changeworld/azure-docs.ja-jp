@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b88d9132ec1548c9d94fc418af35b55ac2836e96
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 3ea9923dd98a49b1533defa3e95616655b7ea78d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121240"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299305"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してジオフェンスを設定する
 
@@ -258,15 +258,15 @@ Azure Maps では、3 種類のイベントがサポートされています。 
 
 5. 前のセクションで作成したロジック アプリの Exit エンドポイントについても、手順 1. から手順 4. を繰り返します。 手順 3. で、イベントの種類として必ず `Geofence Exited` を選択してください。
 
-## <a name="use-search-geofence-get-api"></a>Search Geofence Get API を使用する
+## <a name="use-spatial-geofence-get-api"></a>Spatial Geofence Get API を使用する
 
-今度は、[Search Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) を使用して、機材がジオフェンスを出入りしたときに電子メールによる通知を作業の管理者に送信します。
+今度は、[Spatial Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) を使用して、機材がジオフェンスを出入りしたときに電子メールによる通知を作業の管理者に送信します。
 
 機材にはそれぞれ `deviceId` があります。 このチュートリアルでは、一意の ID が `device_1` である単一の機材を追跡します。
 
 わかりやすくするために、時間の経過に伴う 5 つの機材位置を次の図で示しました。ジオフェンス外側のどこかにある *Start* 位置が起点となります。 *Start* 位置は定義していません。このチュートリアルの目的上、その位置のデバイスに対してクエリを実行することはないためです。
 
-ジオフェンスの最初の出入りを示す機材位置を [Search Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) に照会すると、Event Grid によって適切なロジック アプリ エンドポイントが呼び出されて、電子メールによる通知が作業の管理者に送信されます。
+ジオフェンスの最初の出入りを示す機材位置を指定して [Spatial Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) に対するクエリを実行すると、Event Grid によって適切なロジック アプリ エンドポイントが呼び出されて、電子メールによる通知が作業の管理者に送信されます。
 
 以降の各セクションでは、5 つの異なる機材位置座標を使用して HTTP GET Geofencing API 要求を実行します。
 

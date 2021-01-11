@@ -11,23 +11,26 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 08/31/2020
 ms.author: juliako
-ms.openlocfilehash: 21eb3d9862c8fa2b840117d5f0e9fbd0ad2214c9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4cdc3efc766daff38b566e71f06dc4db0f38fe7a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091744"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255513"
 ---
-# <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Media Services v2 REST API 呼び出し用に Postman を構成する  
+# <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>Media Services v2 REST API 呼び出し用に Postman を構成する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 このチュートリアルでは、Azure Media Services (AMS) REST API を呼び出すために使用できるように **Postman** を構成する方法を示します。 チュートリアルでは、環境およびコレクション ファイルを **Postman** にインポートする方法を示しています。 コレクションには、Azure Media Services (AMS) REST API を呼び出す HTTP 要求のグループ化された定義が含まれます。 環境ファイルには、コレクションによって使用される変数が含まれています。
 
-この環境とコレクションは、Azure Media Services REST API を使用してさまざまなタスクを実現する方法を示す記事で使用されます。
+この環境とコレクションは、Azure Media Services REST AP
+I を使用してさまざまなタスクを実現する方法を示す記事で使用されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,10 +42,10 @@ ms.locfileid: "87091744"
 
 1. AMS チュートリアルで使用される環境変数を含む .json ファイルを作成します。 ファイルに名前を付けます (例: **AzureMediaServices.postman_environment.json**)。 ファイルを開き、Postman 環境を定義するコードを[このコード リスト](postman-environment.md)から貼り付けます。 
 2. **Postman** を開きます。
-3. 画面の右側で、 **[Manage environment]/(環境の管理/)** オプションを選択します。
+3. 画面の右側で、 **[Manage environment]\(環境の管理\)** オプションを選択します。
 
     ![ファイルをアップロードする](./media/media-services-rest-upload-files/postman-create-env.png)
-4. **[Manage environment]/(環境の管理/)** ダイアログで、 **[インポート]** をクリックします。
+4. **[Manage environment]\(環境の管理\)** ダイアログで、 **[インポート]** をクリックします。
 5. **AzureMediaServices.postman_environment.json** ファイルを参照し、選択します。
 6. **AzureMedia** 環境が追加されます。
 7. ダイアログを閉じます。

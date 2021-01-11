@@ -4,16 +4,16 @@ description: このクイックスタートでは、Azure Database for PostgreSQ
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: f3240969278c3a57b589df84d97586f97267e051
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 80f42fd1f2291acfcdd7814f1b9811bd85d26746
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182920"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012179"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:.NET (C#) を使用して Azure Database for PostgreSQL - Single Server に接続してデータを照会する
 

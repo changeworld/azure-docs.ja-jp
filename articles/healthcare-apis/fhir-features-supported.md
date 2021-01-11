@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 46568bf3969d050fd964c85278debd9d599db266
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: bdf328222fef1f763776bd26c47f5cd4d65e487e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796563"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000007"
 ---
 # <a name="features"></a>特徴
 
@@ -98,7 +98,7 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | 検索操作       | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説 |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | いいえ        | いいえ        | いいえ        |         |
-| `_sort`                 | いいえ        | いいえ        | いいえ        |         |
+| `_sort`                 | いいえ        | Partial   | 部分的        |   `_sort=_lastUpdated` がサポートされています       |
 | `_score`                | いいえ        | いいえ        | いいえ        |         |
 | `_count`                | はい       | はい       | はい       |         |
 | `_summary`              | 部分的   | 部分的   | 部分的   | `_summary=count` がサポートされています |

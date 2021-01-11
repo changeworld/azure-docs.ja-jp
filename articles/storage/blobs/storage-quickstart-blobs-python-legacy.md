@@ -223,4 +223,4 @@ BLOB ストレージを使用する Python 開発の詳細については、以�
  
 このクイック スタートでは、Python を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 
 
-Storage Explorer と BLOB の詳細については、「[ストレージ エクスプローラーを使用した Azure BLOB ストレージリソースの管理](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
+Storage Explorer と BLOB の詳細については、「[Storage Explorer を使用した Azure BLOB ストレージリソースの管理](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。

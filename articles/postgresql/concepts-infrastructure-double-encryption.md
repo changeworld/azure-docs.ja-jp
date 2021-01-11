@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 8468d733756ef92ffc9078e945dc46d23e1ab54a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d54bef277d80a178c45ce918290d46c11387b7d1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067496"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918096"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Azure Database for PostgreSQL インフラストラクチャの二重暗号化
 
@@ -62,6 +62,12 @@ Azure Database for PostgreSQL によって提供される暗号化機能を一�
 Azure Database for PostgreSQL の場合、サービス マネージド キーを使用したインフラストラクチャの二重暗号化のサポートには、次の制限があります。
 
 * この機能のサポートは、**General Purpose** および **Memory Optimized** 価格レベルに限定されています。
+* 次のリージョンでは、インフラストラクチャ二重暗号化を有効にして Azure Database for PostgreSQL を作成することができます。
+
+   * 米国東部
+   * 米国中南部
+   * 米国西部 2
+   
 * この機能は、16 TB までのストレージをサポートしているリージョンとサーバーでのみサポートされています。 最大 16 TB のストレージをサポートする Azure リージョンの一覧については、[ストレージのドキュメント](concepts-pricing-tiers.md#storage)を参照してください
 
     > [!NOTE]

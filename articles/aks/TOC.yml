@@ -40,11 +40,6 @@
       href: tutorial-kubernetes-app-update.md
     - name: 7 - クラスターをアップグレードする
       href: tutorial-kubernetes-upgrade-cluster.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: クラスターとワークロード
@@ -129,6 +124,8 @@
       href: security-hardened-vm-host-image.md
     - name: Azure Kubernetes Service 診断の概要
       href: concepts-diagnostics.md
+    - name: 持続可能なソフトウェア エンジニアリング
+      href: concepts-sustainable-software-engineering.md
 - name: 操作方法ガイド
   items:
     - name: クラスターの操作
@@ -190,6 +187,14 @@
           href: azure-netapp-files.md
         - name: Azure Ultra Disks の使用 (プレビュー)
           href: use-ultra-disks.md
+        - name: CSI ストレージ ドライバー
+          items:
+            - name: CSI ストレージ ドライバーを有効にする (プレビュー)
+              href: csi-storage-drivers.md
+            - name: Azure Disk CSI ドライバー (プレビュー)
+              href: azure-disk-csi.md
+            - name: Azure Files CSI ドライバー (プレビュー)
+              href: azure-files-csi.md
     - name: ネットワークを構成する
       items:
         - name: 既存の仮想ネットワークの作成または使用
@@ -255,9 +260,9 @@
           href: update-credentials.md
         - name: Azure Active Directory の統合の有効化
           items:
-            - name: AKS マネージド AAD
+            - name: AKS マネージド Azure AD
               href: managed-aad.md
-            - name: AAD 統合 (レガシ)
+            - name: Azure AD 統合 (レガシ)
               href: azure-ad-integration-cli.md
         - name: Kubernetes 承認での Azure RBAC の使用 (プレビュー)
           href: manage-azure-rbac.md
@@ -386,6 +391,9 @@
       href: /javascript/api/overview/azure/container-service
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.containerservice/managedclusters
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

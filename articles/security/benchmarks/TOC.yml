@@ -65,6 +65,10 @@
       href: ../../firewall/security-baseline.md
     - name: Azure Functions のセキュリティ ベースライン
       href: ../../azure-functions/security-baseline.md
+    - name: Azure IoT Hub のセキュリティ ベースライン
+      href: ../../iot-hub/security-baseline.md
+    - name: Azure Monitor のセキュリティ ベースライン
+      href: ../../azure-monitor/security-baseline.md
     - name: Azure Machine Learning のセキュリティ ベースライン
       href: ../../machine-learning/security-baseline.md
     - name: Azure Policy のセキュリティ ベースライン

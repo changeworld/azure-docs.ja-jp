@@ -72,9 +72,6 @@
   items:
     - name: Service Bus サンプル
       href: service-bus-samples.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Premium メッセージング
@@ -272,6 +269,9 @@
       href: service-bus-messaging-sql-filter.md
     - name: SQLRuleAction 構文
       href: service-bus-messaging-sql-rule-action.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: よく寄せられる質問

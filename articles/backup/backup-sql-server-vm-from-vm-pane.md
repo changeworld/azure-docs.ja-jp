@@ -3,12 +3,12 @@ title: VM ウィンドウから SQL Server VM をバックアップする
 description: この記事では、VM ウィンドウから Azure 仮想マシン上の SQL Server データベースをバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 08/13/2020
-ms.openlocfilehash: dd30ca1fb138d3e3bd44633b9d5e71beae6d96be
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 4f4ea202ee96e93a621c8dd0025c9ebc8b8d445d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226878"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891659"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>VM ウィンドウから SQL Server をバックアップする
 
@@ -62,7 +62,7 @@ VM の **[バックアップ]** ウィンドウから SQL Server VM のバック
 
     ![[バックアップの準備] が [準備ができていません] になっている](./media/backup-sql-server-vm-from-vm-pane/backup-readiness-not-ready.png)
 
-8. バックアップされた SQL Server VM で行う必要がある他の操作または監視については、対応する Recovery Service コンテナーを参照してください。 このコンテナーにバックアップされているすべてのデータベースを表示し、オンデマンドのバックアップや復元などの操作をトリガーするには、 **[バックアップ項目]** にアクセスします。 同様に、保護の構成、バックアップ、復元などの操作に対応するジョブを[監視](manage-monitor-sql-database-backup.md)するには、 **[バックアップ ジョブ]** にアクセスします。
+8. バックアップされた SQL Server VM で行う必要がある他の操作または監視については、対応する Recovery Services コンテナーを参照してください。 このコンテナーにバックアップされているすべてのデータベースを表示し、オンデマンドのバックアップや復元などの操作をトリガーするには、 **[バックアップ項目]** にアクセスします。 同様に、保護の構成、バックアップ、復元などの操作に対応するジョブを[監視](manage-monitor-sql-database-backup.md)するには、 **[バックアップ ジョブ]** にアクセスします。
 
     ![[バックアップ項目] でバックアップされたデータベースを表示する](./media/backup-sql-server-vm-from-vm-pane/backup-items.png)
 

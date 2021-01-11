@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 1755c2d572b44f1e0d8597a108ca83d429405f25
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 01021530c491fd25a199f32475c031a0e7f6cd0b
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565657"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89376640"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Queue storage トリガー
 
@@ -388,7 +388,7 @@ public class QueueTriggerDemo {
 - メッセージが見つかると、ランタイムは 2 秒間待機してから、別のメッセージを確認します
 - メッセージが見つからない場合は、約 4 秒間待機してから再試行します。
 - 再試行後もキュー メッセージが取得できなかった場合、待ち時間が最大になるまで再試行が続けられます。既定の最大待ち時間は 1 分間です。
-- 最大待ち時間は、[host.json ファイル](functions-host-json.md#queues)内の `maxPollingInterval` プロパティで構成できます。
+- 最大待ち時間は、[host.json ファイル](functions-host-json-v1.md#queues)内の `maxPollingInterval` プロパティで構成できます。
 
 ローカル開発の場合、最大ポーリング間隔は既定で 2 秒に設定されます。
 
@@ -408,7 +408,7 @@ public class QueueTriggerDemo {
 
 ## <a name="next-steps"></a>次のステップ
 
-- [キュー ストレージ メッセージを書き込む (出力バインド)](./functions-bindings-storage-blob-output.md)
+- [BLOB ストレージ メッセージの書き込み (出力バインド)](./functions-bindings-storage-blob-output.md)
 
 <!-- LINKS -->
 

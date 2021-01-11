@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 67816544e173c19cbc85c5779ffeba92578e00b2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 30fddaec9ca5d0439beadedf7c5ca6b6c7d51d83
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211863"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961705"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>Azure App Service 向けの ASP.NET アプリを構成する
 
@@ -95,7 +95,7 @@ Visual Studio デバッガーで ASP.NET アプリの実行中に例外が発生
 
 ## <a name="access-diagnostic-logs"></a>診断ログにアクセスする
 
-[System.Diagnostics.Trace](https://docs.microsoft.com/dotnet/api/system.diagnostics.trace) を使用して、アプリケーション コードに診断メッセージを追加できます。 次に例を示します。 
+[System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) を使用して、アプリケーション コードに診断メッセージを追加できます。 次に例を示します。 
 
 ```csharp
 Trace.TraceError("Record not found!"); // Error trace

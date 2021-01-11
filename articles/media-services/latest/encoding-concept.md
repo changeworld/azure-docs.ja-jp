@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: この記事では、Azure Media Services を使用したビデオとオーディオのエンコードについて説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 04/29/2020
-ms.author: juliako
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: a54f86081774ffb9ac2fe23a72c8ba83e3d6845c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8533c99011232385e31f4e698743bbb1c6c00bc5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053341"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300206"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Media Services を使用したビデオとオーディオのエンコード
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Media Services では、エンコードという用語は、デジタル ビデオやデジタル オーディオを含むファイルをある標準形式から別の標準形式に変換するプロセスを表します。変換の目的は、(a) ファイルのサイズを減らしたり、(b) 広範なデバイスやアプリと互換性のある形式を生成したりすることにあります。 このプロセスは、ビデオ圧縮やコード変換とも呼ばれます。 この概念の詳細については、「[Data compression (データ圧縮)](https://en.wikipedia.org/wiki/Data_compression)」と「[What Is Encoding and Transcoding? (エンコードとコード変換とは)](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx)」を参照してください。
 

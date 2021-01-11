@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: 49984349ce8d9d1bc43778c0042dd21485eded15
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1b6fdbdfaef601751961d022858545d731fe62a8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829681"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856016"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Azure Application Insights を使ってカスタム KPI ダッシュボードを作成する
 
@@ -40,6 +40,9 @@ Azure Portal で複数のダッシュボードを作成し、各ダッシュボ�
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
 ## <a name="create-a-new-dashboard"></a>新しいダッシュボードを作成する
+> [!WARNING]
+> Application Insights リソースを別のリソース グループまたはサブスクリプションに移動する場合は、古いタイルを削除し、同じ Application Insights リソースから新しいタイルを新しい場所にピン留めすることによって、ダッシュボードを手動で更新する必要があります。 
+
 単一のダッシュボードには、複数のアプリケーション、リソース グループ、サブスクリプションからのリソースを含めることができます。  お使いのアプリケーションの新しいダッシュボードを作成して、チュートリアルを開始します。  
 
 1. ダッシュボード ウィンドウで、 **[新しいダッシュボード]** を選択します。

@@ -10,23 +10,22 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 274228ea5aa9ac9de9725176c8b6221ee9e9542e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 7130ed2965e2df0d366635f6ce84c822c1359b59
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182699"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378170"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>クイック スタート:Azure App Service で Java アプリを作成する
 
-[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。  このクイックスタートでは、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を [Azure Web App Plugin for Maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) と共に使用して Java Web アーカイブ (WAR) ファイルをデプロイする方法を示します。
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。  このクイックスタートでは、[Azure CLI](/cli/azure/get-started-with-azure-cli) を [Azure Web App Plugin for Maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) と共に使用して .jar ファイルまたは .war ファイルをデプロイする方法を示します。 タブを使用して Java SE と Tomcat の手順を切り替えることができます。
 
-> [!NOTE]
-> この記事では、WAR ファイル内にパッケージ化された Java アプリのみを操作します。 このプラグインは、JAR Web アプリケーションもサポートしています。[Java SE JAR ファイルを App Service on Linux にデプロイする方法](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)に関するページにアクセスしてお試しください。
 
 > [!NOTE]
 > IntelliJ や Eclipse のような一般的な IDE を使っても同じことができます。 [Azure Toolkit for IntelliJ のクイック スタート](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app)または [Azure Toolkit for Eclipse のクイック スタート](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)で類似するドキュメントを確認してください。
->
+
+
 ![Azure App Service で実行されているサンプル アプリ](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -34,6 +33,22 @@ ms.locfileid: "88182699"
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-java-app"></a>Java アプリを作成する
+
+# <a name="java-se"></a>[Java SE](#tab/javase)
+
+[Spring Boot Getting Started](https://github.com/spring-guides/gs-spring-boot) サンプル プロジェクトをクローンします。
+
+```bash
+git clone https://github.com/spring-guides/gs-spring-boot
+```
+
+完成したプロジェクトにディレクトリを変更します。
+
+```bash
+cd gs-spring-boot/complete
+```
+
+# <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
 Cloud Shell プロンプトで次の Maven コマンドを実行して、`helloworld` という名前の新しいアプリを作成します。
 
@@ -47,146 +62,140 @@ mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-Darc
 cd helloworld
 ```
 
+---
+
 ## <a name="configure-the-maven-plugin"></a>Maven プラグインを構成する
 
-Azure App Service へのデプロイ プロセスでは、Azure CLI から Azure 資格情報を自動的に取得できます。 Azure CLI がローカル環境にインストールされていない場合、ユーザーは Maven プラグインにより Oauth またはデバイス ログインを使用してサインインされます。 必要に応じて、[Maven プラグインによる認証](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)の詳細を確認してください。
+Azure App Service へのデプロイ プロセスでは、Azure CLI から Azure 資格情報が自動的に使用されます。 Azure CLI がローカル環境にインストールされていない場合、ユーザーは Maven プラグインにより Oauth またはデバイス ログインを使用して認証されます。 詳細については、[Maven プラグインによる認証](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)に関するページを参照してください。
 
-次の Maven コマンドを実行して、デプロイを構成することができます
+次の Maven コマンドを実行して、デプロイを構成します。 このコマンドは、App Service オペレーティング システム、Java バージョン、および Tomcat バージョンを設定するのに役立ちます。
+
 ```bash
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
 
-::: zone pivot="platform-windows" 
-選択を求めるメッセージが表示されます 
-* **OS (既定値: `linux`)**
-* **Java バージョン (既定値: `1.8`)**
-* **Web コンテナー (既定値: `tomcat 8.5`)** 
- 
-最初のステップでは、「 **`2`** 」と入力して **Windows** OS を選択するように注意してください。 その他の構成は、**Enter** キーを押して既定値のままにすることができます。 最後に、 **[Confirm (Y/N)]** というプロンプトで **`Y`** キーを押して、構成を完了します。
+::: zone pivot="platform-windows"
 
-サンプル プロセスは次のようになります。
+# <a name="java-se"></a>[Java SE](#tab/javase)
 
-```console
-~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
-[INFO] Scanning for projects...
-[INFO]
-[INFO] ----------------------< example.demo:helloworld >-----------------------
-[INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
-[INFO] --------------------------------[ war ]---------------------------------
-[INFO]
-[INFO] --- azure-webapp-maven-plugin:1.9.1:config (default-cli) @ helloworld ---
-[WARNING] The plugin may not work if you change the os of an existing webapp.
-Define value for OS(Default: Linux):
-1. linux [*]
-2. windows
-3. docker
-Enter index to use: 2
-Define value for javaVersion(Default: 1.8): 
-1. 1.7
-2. 1.7.0_191_ZULU
-3. 1.7.0_51
-4. 1.7.0_71
-5. 1.7.0_80
-6. 1.8 [*]
-7. 1.8.0_102
-8. 1.8.0_111
-9. 1.8.0_144
-10. 1.8.0_172
-11. 1.8.0_172_ZULU
-12. 1.8.0_181
-13. 1.8.0_181_ZULU
-14. 1.8.0_202
-15. 1.8.0_202_ZULU
-16. 1.8.0_25
-17. 1.8.0_60
-18. 1.8.0_73
-19. 1.8.0_92
-20. 11
-21. 11.0.2_ZULU
-Enter index to use:
-Define value for webContainer(Default: tomcat 8.5): 
-1. jetty 9.1
-2. jetty 9.1.0.20131115
-3. jetty 9.3
-4. jetty 9.3.13.20161014
-5. tomcat 7.0
-6. tomcat 7.0.50
-7. tomcat 7.0.62
-8. tomcat 8.0
-9. tomcat 8.0.23
-10. tomcat 8.5 [*]
-11. tomcat 8.5.20
-12. tomcat 8.5.31
-13. tomcat 8.5.34
-14. tomcat 8.5.37
-15. tomcat 8.5.6
-16. tomcat 9.0
-17. tomcat 9.0.0
-18. tomcat 9.0.12
-19. tomcat 9.0.14
-20. tomcat 9.0.8
-Enter index to use:
-Please confirm webapp properties
-AppName : helloworld-1590394316693
-ResourceGroup : helloworld-1590394316693-rg
-Region : westeurope
-PricingTier : PremiumV2_P1v2
-OS : Windows
-Java : 1.8
-WebContainer : tomcat 8.5
-Deploy to slot : false
-Confirm (Y/N)? :
-[INFO] Saving configuration to pom.
-```
+1. プロンプトが表示されたら、「`2`」と入力して **Windows** を選択します。
+2. Enter キーを押して、既定の Java バージョン 1.8 を使用します。
+3. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
+
+    要約出力は、次に示すスニペットのようになります。
+
+    ```
+    Please confirm webapp properties
+    AppName : spring-boot-1599007390755
+    ResourceGroup : spring-boot-1599007390755-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Windows
+    Java : 1.8
+    WebContainer : java 8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 41.118 s
+    [INFO] Finished at: 2020-09-01T17:43:45-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+# <a name="tomcat"></a>[Tomcat](#tab/tomcat)
+
+1. プロンプトが表示されたら、「`2`」と入力して **Windows** を選択します。
+1. Enter キーを押して、既定の Java バージョン 1.8 を使用します。
+1. Enter キーを押して、既定の Web コンテナーである Tomcat 8.5 を使用します。
+1. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
+
+    要約出力は、次に示すスニペットのようになります。
+
+    ```
+    Please confirm webapp properties
+    AppName : helloworld-1599003152123
+    ResourceGroup : helloworld-1599003152123-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Windows
+    Java : 1.8
+    WebContainer : tomcat 8.5
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 03:03 min
+    [INFO] Finished at: 2020-09-01T16:35:30-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+---
+
 ::: zone-end
-::: zone pivot="platform-linux"  
+::: zone pivot="platform-linux"
 
-選択を求めるメッセージが表示されます 
-* **OS (既定値: `linux`)**
-* **Java バージョン (既定値: `Java 8`)**
-* **Web コンテナー (既定値: `Tomcat 8.5`)** 
+### <a name="java-se"></a>[Java SE](#tab/javase)
 
-すべての構成は、**Enter** キーを押して既定値のままにすることができます。 最後に、 **[Confirm (Y/N)]** というプロンプトで **`Y`** キーを押して、構成を完了します。
-サンプル プロセスは次のようになります。
+1. プロンプトが表示されたら、Enter キーを押して **Linux** を選択します。
+2. Enter キーを押して、既定の Java バージョン 1.8 を使用します。
+3. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
 
-```cmd
-~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
-[INFO] Scanning for projects...
-[INFO]
-[INFO] ----------------------< example.demo:helloworld >-----------------------
-[INFO] Building helloworld Maven Webapp 1.0-SNAPSHOT
-[INFO] --------------------------------[ war ]---------------------------------
-[INFO]
-[INFO] --- azure-webapp-maven-plugin:1.9.1:config (default-cli) @ helloworld ---
-[WARNING] The plugin may not work if you change the os of an existing webapp.
-Define value for OS(Default: Linux):
-1. linux [*]
-2. windows
-3. docker
-Enter index to use:
-Define value for javaVersion(Default: jre8):
-1. Java 11
-2. Java 8 [*]
-Enter index to use:
-Define value for runtimeStack(Default: TOMCAT 8.5):
-1. TOMCAT 9.0
-2. TOMCAT 8.5 [*]
-Enter index to use:
-Please confirm webapp properties
-AppName : helloworld-1558400876966
-ResourceGroup : helloworld-1558400876966-rg
-Region : westeurope
-PricingTier : Premium_P1V2
-OS : Linux
-RuntimeStack : TOMCAT 8.5-jre8
-Deploy to slot : false
-Confirm (Y/N)? : Y
-```
+    ```
+    Please confirm webapp properties
+    AppName : spring-boot-1599007116351
+    ResourceGroup : spring-boot-1599007116351-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Linux
+    RuntimeStack : JAVA 8-jre8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 20.925 s
+    [INFO] Finished at: 2020-09-01T17:38:51-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
+
+1. プロンプトが表示されたら、Enter キーを押して **Linux** を選択します。
+1. Enter キーを押して、既定の Java バージョン 1.8 を使用します。
+1. Enter キーを押して、既定の Web コンテナーである Tomcat 8.5 を使用します。
+1. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
+
+    ```
+    Please confirm webapp properties
+    AppName : helloworld-1599003744223
+    ResourceGroup : helloworld-1599003744223-rg
+    Region : westeurope
+    PricingTier : PremiumV2_P1v2
+    OS : Linux
+    RuntimeStack : TOMCAT 8.5-jre8
+    Deploy to slot : false
+    Confirm (Y/N)? : Y
+    [INFO] Saving configuration to pom.
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 50.785 s
+    [INFO] Finished at: 2020-09-01T16:43:09-07:00
+    [INFO] ------------------------------------------------------------------------
+    ```
+
+---
+
 ::: zone-end
 
-必要に応じて、`pom.xml` で App Service の構成を直接変更できます。その一般的なものを次に示します。
+必要に応じて、`pom.xml` 内で App Service の構成を直接変更できます。 いくつかの一般的なものを次に示します。
 
- プロパティ | 必須 | 説明 | Version
+プロパティ | 必須 | 説明 | Version
 ---|---|---|---
 `<schemaVersion>` | false | 構成スキーマのバージョンを指定します。 サポートされる値は `v1`、`v2` です。 | 1.5.2
 `<resourceGroup>` | true | Web アプリの Azure リソース グループ。 | 0.1.0 以降
@@ -203,12 +212,13 @@ Confirm (Y/N)? : Y
 
 ## <a name="deploy-the-app"></a>アプリケーションのデプロイ
 
-Azure App Service へのデプロイ プロセスでは、Azure CLI からアカウントの資格情報を使います。 続行する前に、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)します。
+Maven プラグインでは、Azure CLI からのアカウント資格情報を App Services へのデプロイに使用します。 続行する前に、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)します。
 
 ```azurecli
 az login
 ```
-次のコマンドを使用して、Java アプリを Azure にデプロイできます。
+
+次のコマンドを使用して、対象の Java アプリを Azure にデプロイできます。
 
 ```bash
 mvn package azure-webapp:deploy
@@ -235,13 +245,13 @@ az group delete --name <your resource group name; for example: helloworld-155840
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
-> [Java を使用して Azure SQL Database に接続する](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+> [Java を使用して Azure SQL Database に接続する](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
 
 > [!div class="nextstepaction"]
-> [Java を使用して Azure DB for MySQL に接続する](/azure/mysql/connect-java)
+> [Java を使用して Azure DB for MySQL に接続する](../mysql/connect-java.md)
 
 > [!div class="nextstepaction"]
-> [Java を使用して Azure DB for PostgreSQL に接続する](/azure/postgresql/connect-java)
+> [Java を使用して Azure DB for PostgreSQL に接続する](../postgresql/connect-java.md)
 
 > [!div class="nextstepaction"]
 > [Java 開発者向けの Azure リソース](/java/azure/)
@@ -250,7 +260,7 @@ az group delete --name <your resource group name; for example: helloworld-155840
 > [Java アプリを構成する](configure-language-java.md)
 
 > [!div class="nextstepaction"]
-> [Jenkins での CI/CD](/azure/jenkins/deploy-jenkins-app-service-plugin)
+> [Jenkins での CI/CD](/azure/developer/jenkins/deploy-to-azure-app-service-using-plugin)
 
 > [!div class="nextstepaction"]
 > [カスタム ドメインをマップする](app-service-web-tutorial-custom-domain.md)

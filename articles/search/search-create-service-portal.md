@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: b9507e500282afbdfba5cedd5420974aa8b3ade8
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 6813db0b7416695fb9433a701114f2684dd0e122
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554024"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927121"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>クイック スタート:ポータルで Azure Cognitive Search サービスを作成する
 
@@ -96,7 +96,7 @@ Azure Cognitive Search はほとんどのリージョンで利用できます。
 
  AI エンリッチメントを使用している場合は、Cognitive Services と同じリージョンに検索サービスを作成します。 *Azure Cognitive Search と Cognitive Services を同じリージョンに配置することは、AI エンリッチメントの要件です*。
 
- 事業継続とディザスター リカバリー (BCDR) の要件を持つお客様は、[リージョンのペア](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs)にそれらのサービスを作成する必要があります。 たとえば、北米で活動している場合は、各サービスについて米国東部と米国西部や、米国中北部と米国中南部などを選択できます。
+ 事業継続とディザスター リカバリー (BCDR) の要件を持つお客様は、[リージョンのペア](../best-practices-availability-paired-regions.md#azure-regional-pairs)にそれらのサービスを作成する必要があります。 たとえば、北米で活動している場合は、各サービスについて米国東部と米国西部や、米国中北部と米国中南部などを選択できます。
 
 ### <a name="recommendations"></a>Recommendations
 
@@ -160,7 +160,7 @@ Azure Cognitive Search はほとんどのリージョンで利用できます。
 
 ほとんどのお客様はサービスを 1 つしか使いませんが、運用要件に次のことが含まれる場合、サービスの冗長性が必要になる場合があります。
 
-+ [ビジネス継続性とディザスター リカバリー (BCDR)](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 Azure Cognitive Search では、停止時の即時フェールオーバーは提供されません。
++ [ビジネス継続性とディザスター リカバリー (BCDR)](../best-practices-availability-paired-regions.md)。 Azure Cognitive Search では、停止時の即時フェールオーバーは提供されません。
 
 + [マルチテナント アーキテクチャ](search-modeling-multitenant-saas-applications.md)では、2 つ以上のサービスが呼び出されることがあります。
 

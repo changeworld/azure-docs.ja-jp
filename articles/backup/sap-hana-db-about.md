@@ -3,12 +3,12 @@ title: Azure VM での SAP HANA データベースバックアップについて
 description: この記事では、Azure 仮想マシン上で実行されている SAP HANA データベースをバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: a6c4f627059a8d536e1d006103650dca5d2f5109
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e30507e433ff9a828266c88ca79e576c508edc31
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533446"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757542"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Azure VM での SAP HANA データベースバックアップについて
 
@@ -31,7 +31,7 @@ Azure Backup を使用して SAP HANA データベースをバックアップお
 
 ![Backup アーキテクチャの図](./media/sap-hana-db-about/backup-architecture.png)
 
-* バックアッププロセスは、Azure で [Recovery services コンテナー](./tutorial-backup-sap-hana-db.md#create-a-recovery-service-vault) を作成することによって開始されます。 このコンテナーは、時間の経過と共に作成されたバックアップと復元ポイントを格納するために使用されます。
+* バックアップ プロセスは、Azure で [Recovery services コンテナー](./tutorial-backup-sap-hana-db.md#create-a-recovery-services-vault)を作成することによって開始されます。 このコンテナーは、時間の経過と共に作成されたバックアップと復元ポイントを格納するために使用されます。
 * SAP HANA サーバーを実行している Azure VM がコンテナーに登録されており、バックアップされるデータベースが [検出](./tutorial-backup-sap-hana-db.md#discover-the-databases) されます。 Azure Backup サービスでデータベースを検出できるようにするには、[事前登録スクリプト](https://aka.ms/scriptforpermsonhana) を HANA サーバーで、root ユーザーとして実行する必要があります。
 * このスクリプトは **AZUREWLBACKUPHANAUSER** DB ユーザー　を作成し、**hdbuserstore**に同じ名前の対応するキーを作成します。 スクリプトで実行される処理の詳細の解釈については、「[事前登録スクリプトで実行される処理](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)」セクションをご参照ください。
 * Azure Backup サービスは、登録されている SAP HANA サーバー上に、 **HANA 用の Azure Backup Plugin** をインストールするようになりました。

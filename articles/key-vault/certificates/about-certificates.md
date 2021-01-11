@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 38ae6bec99498440d7bf7e68e2d5c397e696192a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: e7bae2ad19aaf4f1c93d8d2bdefa7fa9f0414860
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604901"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923689"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Azure Key Vault の証明書について
 
@@ -44,7 +44,8 @@ Key Vault 証明書が作成されるとき、秘密キーと共にアドレス�
 
 アドレス指定可能なキーは、エクスポート不可能な KV 証明書との関連性が高くなります。 アドレス指定可能な KV キーの操作は、KV 証明書の作成に使用された KV 証明書ポリシーの *keyusage* フィールドからマップされます。  
 
-証明書では、*RSA* または *RSA HSM* の 2 種類のキーがサポートされています。 エクスポート可能は RSA でのみ許可され、RSA HSM ではサポートされていません。  
+ - サポートされているキーの種類: RSA、RSA-HSM、EC、EC-HSM、oct (一覧は[こちら](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype))。エクスポート可能にできるのは、RSA、EC のみです。 HSM キーはエクスポートできません。
+
 
 ## <a name="certificate-attributes-and-tags"></a>証明書の属性とタグ
 

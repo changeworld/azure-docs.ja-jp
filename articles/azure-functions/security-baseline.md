@@ -28,7 +28,7 @@ Azure Functions 用の Azure セキュリティ ベースラインには、ご�
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1:Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する
 
-**ガイダンス**: Azure Functions アプリを Azure 仮想ネットワークと統合します。 Premium プランで実行されている関数アプリには、"VNet 統合" 機能を含む、Azure App Service の Web アプリと同じホスティング機能があります。  Azure 仮想ネットワークを使用すると、Azure Functions などの Azure リソースの多くを、インターネットにルーティングできないネットワークに配置することができます。
+**ガイダンス**: Azure Functions アプリを Azure 仮想ネットワークと統合します。 Premium プランで実行されている Functions アプリには、"VNet 統合" 機能を含む、Azure App Service の Web アプリと同じホスティング機能があります。  Azure 仮想ネットワークを使用すると、Azure Functions などの Azure リソースの多くを、インターネットにルーティングできないネットワークに配置することができます。
 
 - [Functions を Azure 仮想ネットワークに統合する方法](./functions-create-vnet.md)
 
@@ -56,16 +56,16 @@ Azure Functions の実装にネットワーク セキュリティ グループ (
 
 ### <a name="13-protect-critical-web-applications"></a>1.3:重要な Web アプリケーションを保護する
 
-**ガイダンス**:運用環境で、Azure 関数エンドポイントを完全に保護するには、次の関数アプリ レベルのセキュリティ オプションのいずれかの実装を検討してください。
-- 関数アプリの App Service 認証および承認をオンにする
+**ガイダンス**: 運用環境で、Azure Functions エンドポイントを完全に保護するには、次の Functions アプリ レベルのセキュリティ オプションのいずれかの実装を検討してください。
+- Functions アプリの App Service 認証および承認をオンにする
 - 要求の認証に Azure API Management (APIM) を使用する、または
-- Azure App Service Environment に関数アプリをデプロイする。
+- Azure App Service Environment に Functions アプリをデプロイする。
 
-また、運用環境の Azure Functions のリモート デバッグが無効になっていることを確認します。 さらに、クロスオリジン リソース共有 (CORS) では、すべてのドメインが Azure Function アプリにアクセスすることを許可しないでください。 Azure 関数アプリの操作に必要なドメインのみを許可します。
+また、運用環境の Azure Functions のリモート デバッグが無効になっていることを確認します。 さらに、クロスオリジン リソース共有 (CORS) では、すべてのドメインが Azure Function アプリにアクセスすることを許可しないでください。 Azure Functions アプリの操作に必要なドメインのみを許可します。
 
 受信トラフィックをさらに検査するために、ネットワーク構成の一部として Azure Web アプリケーション ファイアウォール (WAF) をデプロイすることを検討します。 WAF の診断設定を有効にし、ストレージ アカウント、イベント ハブ、または Log Analytics ワークスペースにログを取り込みます。 
 
-- [運用環境で Azure 関数エンドポイントをセキュリティで保護する方法](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
+- [運用環境で Azure Functions エンドポイントをセキュリティで保護する方法](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
 - [Azure WAF をデプロイする方法](../web-application-firewall/ag/create-waf-policy-ag.md)
 
@@ -75,8 +75,8 @@ Azure Functions の実装にネットワーク セキュリティ グループ (
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4:既知の悪意のある IP アドレスとの通信を拒否する
 
-**ガイダンス**: 関数アプリに関連付けられた仮想ネットワーク上で DDoS Protection 標準を有効にして、DDoS 攻撃から保護します。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のパブリック IP アドレスとの通信を拒否します。
-さらに、すべての受信要求を認証し、悪意のあるトラフィックをフィルターで除外するように Azure Web アプリケーション ファイアウォールなどのフロントエンド ゲートウェイを構成します。 Azure Web アプリケーション ファイアウォールを使用すると、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、および DDoS 攻撃をブロックするために受信 Web トラフィックを検査することで、Azure 関数アプリを保護できます。 WAF を導入するには、App Service Environment またはプライベート エンドポイント (プレビュー) を使用する必要があります。 必ずプライベート エンドポイントが (プレビュー) 段階ではなくなってから、運用環境のワークロードで使用してください。
+**ガイダンス**: Functions アプリに関連付けられた仮想ネットワーク上で DDoS Protection 標準を有効にして、DDoS 攻撃から保護します。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のパブリック IP アドレスとの通信を拒否します。
+さらに、すべての受信要求を認証し、悪意のあるトラフィックをフィルターで除外するように Azure Web アプリケーション ファイアウォールなどのフロントエンド ゲートウェイを構成します。 Azure Web アプリケーション ファイアウォールを使用すると、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、および DDoS 攻撃をブロックするために受信 Web トラフィックを検査することで、Azure Functions アプリを保護できます。 WAF を導入するには、App Service Environment またはプライベート エンドポイント (プレビュー) を使用する必要があります。 必ずプライベート エンドポイントが (プレビュー) 段階ではなくなってから、運用環境のワークロードで使用してください。
 
 - [Azure Functions のネットワーク オプション](./functions-networking-options.md)
 
@@ -118,7 +118,7 @@ Azure Functions の実装にネットワーク セキュリティ グループ (
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6:ネットワーク ベースの侵入検出/侵入防止システム (IDS/IPS) をデプロイする
 
-**ガイダンス**:すべての受信要求を認証し、悪意のあるトラフィックをフィルターで除外するように Azure Web アプリケーション ファイアウォールなどのフロントエンド ゲートウェイを構成します。 Azure Web アプリケーション ファイアウォールを使用すると、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、および DDoS 攻撃をブロックするために受信 Web トラフィックを検査することで、関数アプリを保護できます。 WAF を導入するには、App Service Environment またはプライベート エンドポイント (プレビュー) を使用する必要があります。 必ずプライベート エンドポイントが (プレビュー) 段階ではなくなってから、運用環境のワークロードで使用してください。
+**ガイダンス**:すべての受信要求を認証し、悪意のあるトラフィックをフィルターで除外するように Azure Web アプリケーション ファイアウォールなどのフロントエンド ゲートウェイを構成します。 Azure Web アプリケーション ファイアウォールを使用すると、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、および DDoS 攻撃をブロックするために受信 Web トラフィックを検査することで、Functions アプリを保護できます。 WAF を導入するには、App Service Environment またはプライベート エンドポイント (プレビュー) を使用する必要があります。 必ずプライベート エンドポイントが (プレビュー) 段階ではなくなってから、運用環境のワークロードで使用してください。
 
 また、IDS または IPS 機能を含め、Azure Marketplace で入手できる Barracuda WAF for Azure などのマーケットプレースの選択肢が複数あります。
 
@@ -175,9 +175,9 @@ Azure Functions の実装にネットワーク セキュリティ グループ (
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
 **ガイダンス**: Azure Functions に関連するネットワーク設定の標準的なセキュリティ構成を定義して実装します。 Azure Functions のネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Web" および "Microsoft.Network" 名前空間で Azure Policy エイリアスを使用します。 また、次のように、Azure Functions 用の組み込みのポリシー定義を使用することもできます。
-- CORS で関数アプリへのアクセスをすべてのリソースには許可しない
+- CORS で Functions アプリへのアクセスをすべてのリソースには許可しない
 - Function App には HTTPS 経由でのみアクセスできるようにする
-- 関数アプリでは最新の TLS バージョンを使用する必要がある
+- Functions アプリでは最新の TLS バージョンを使用する必要がある
 
 また、Azure Blueprints を使用して、Azure Resource Manager テンプレート、ロールベースのアクセス制御 (RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整できます。
 
@@ -231,9 +231,9 @@ Azure Functions の実装にネットワーク セキュリティ グループ (
 
 **ガイダンス**: コントロール プレーンの監査ログ記録については、Azure アクティビティ ログの診断設定を有効にして、Log Analytics ワークスペース、Azure イベント ハブ、または Azure ストレージ アカウントにログを送信してアーカイブします。 Azure アクティビティ ログのデータを使用すると、Azure リソースのコントロール プレーン レベルで実行された書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを特定することができます。
 
-Azure Functions には、関数を監視するための Azure Application Insights とのビルトイン統合機能も用意されています。 Application Insights を使用すると、ログ、パフォーマンス、およびエラー データを収集できます。 また、パフォーマンスの異常が自動的に検出されるほか、問題の診断や、関数がどのように使用されているかの理解に役立つ強力な分析ツールも含まれています。
+Azure Functions には、Functions を監視するための Azure Application Insights とのビルトイン統合機能も用意されています。 Application Insights を使用すると、ログ、パフォーマンス、およびエラー データを収集できます。 また、パフォーマンスの異常が自動的に検出されるほか、問題の診断や、Functions がどのように使用されているかの理解に役立つ強力な分析ツールも含まれています。
 
-Azure 関数アプリ内に組み込みのカスタム セキュリティおよび監査ログがある場合は、診断設定 "FunctionAppLogs" を有効にして、アーカイブのために Log Analytics ワークスペース、Azure イベントハブ、または Azure ストレージ アカウントにログを送信します。 
+Azure Functions アプリ内に組み込みのカスタム セキュリティおよび監査ログがある場合は、診断設定 "FunctionAppLogs" を有効にして、アーカイブのために Log Analytics ワークスペース、Azure イベントハブ、または Azure ストレージ アカウントにログを送信します。 
 
 必要に応じて、Azure Sentinel またはサード パーティの SIEM に対してデータを有効にしてオンボードすることもできます。 
 
@@ -253,7 +253,7 @@ Azure 関数アプリ内に組み込みのカスタム セキュリティおよ�
 
 **ガイダンス**: コントロール プレーンの監査ログ記録については、Azure アクティビティ ログの診断設定を有効にして、Log Analytics ワークスペース、Azure イベント ハブ、または Azure ストレージ アカウントにログを送信してアーカイブします。 Azure アクティビティ ログのデータを使用すると、Azure リソースのコントロール プレーン レベルで実行された書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを特定することができます。
 
-Azure 関数アプリ内に組み込みのカスタム セキュリティおよび監査ログがある場合は、診断設定 "FunctionAppLogs" を有効にして、アーカイブのために Log Analytics ワークスペース、Azure イベントハブ、または Azure ストレージ アカウントにログを送信します。 
+Azure Functions アプリ内に組み込みのカスタム セキュリティおよび監査ログがある場合は、診断設定 "FunctionAppLogs" を有効にして、アーカイブのために Log Analytics ワークスペース、Azure イベントハブ、または Azure ストレージ アカウントにログを送信します。 
 
 - [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
 
@@ -287,7 +287,7 @@ Azure 関数アプリ内に組み込みのカスタム セキュリティおよ�
 
 Azure Functions アプリの Application Insights を有効にすると、ログ、パフォーマンス、およびエラー データを収集できます。 Azure portal 内で Application Insights によって収集されたテレメトリ データを表示できます。
 
-Azure 関数アプリ内に組み込みのカスタム セキュリティおよび監査ログがある場合は、診断設定 "FunctionAppLogs" を有効にして、アーカイブのために Log Analytics ワークスペース、Azure イベントハブ、または Azure ストレージ アカウントにログを送信します。 
+Azure Functions アプリ内に組み込みのカスタム セキュリティおよび監査ログがある場合は、診断設定 "FunctionAppLogs" を有効にして、アーカイブのために Log Analytics ワークスペース、Azure イベントハブ、または Azure ストレージ アカウントにログを送信します。 
 
 必要に応じて、Azure Sentinel またはサード パーティの SIEM に対してデータを有効にしてオンボードすることもできます。 
 
@@ -371,7 +371,7 @@ Azure Functions アプリの Application Insights を有効にすると、ログ
 
 データ プレーン アクセスは、承認キー、ネットワーク制限、AAD ID の検証など、いくつかの方法で制御できます。 承認キーは、Azure Functions HTTP エンドポイントに接続するクライアントによって使用され、いつでも再生成できます。 これらのキーは、既定で新しい HTTP エンドポイント用に生成されます。
 
-関数アプリには複数の導入方法を使用できます。その一部は、生成された資格情報のセットを活用するものもあります。 アプリケーションに使用されるデプロイ方法を確認してください。
+Functions アプリには複数の導入方法を使用できます。その一部は、生成された資格情報のセットを活用するものもあります。 アプリケーションに使用されるデプロイ方法を確認してください。
 
 - [HTTP エンドポイントをセキュリティで保護する](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
@@ -399,7 +399,7 @@ Azure Functions アプリの Application Insights を有効にすると、ログ
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: シングル サインオン (SSO) と Azure Active Directory を統合する
 
-**ガイダンス**: 可能な限り、関数アプリへのデータ アクセス用に個々のスタンドアロンの資格情報を構成するのではなく、Azure Active Directory SSO を使用します。 Azure Security Center ID とアクセス管理の推奨事項を使用してください。 App Service の認証および承認機能を使用して、Azure Functions アプリにシングル サインオンを実装します。
+**ガイダンス**: 可能な限り、Functions アプリへのデータ アクセス用に個々のスタンドアロンの資格情報を構成するのではなく、Azure Active Directory SSO を使用します。 Azure Security Center ID とアクセス管理の推奨事項を使用してください。 App Service の認証および承認機能を使用して、Azure Functions アプリにシングル サインオンを実装します。
 
 - [Azure Functions での認証と承認の概要](../app-service/overview-authentication-authorization.md#identity-providers)
 
@@ -483,7 +483,7 @@ Azure Functions アプリの Application Insights を有効にすると、ログ
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: 非アクティブ化されたアカウントへのアクセス試行を監視する
 
-**ガイダンス**: Azure 関数アプリの主要な認証および承認システムとして Azure Active Directory (AD) を使用します。 Azure AD でデータを保護するには、保存データと転送中のデータに強力な暗号化を使用します。 また、Azure AD では、ユーザーの資格情報がソルト化およびハッシュされ、安全に格納されます。
+**ガイダンス**: Azure Functions アプリの主要な認証および承認システムとして Azure Active Directory (AD) を使用します。 Azure AD でデータを保護するには、保存データと転送中のデータに強力な暗号化を使用します。 また、Azure AD では、ユーザーの資格情報がソルト化およびハッシュされ、安全に格納されます。
 
 Azure AD サインイン アクティビティ、監査、リスク イベント ログのソースにアクセスできるため、Azure Sentinel またはサードパーティの SIEM と統合することができます。
 
@@ -539,9 +539,9 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 
-**ガイダンス**:開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 Azure 関数アプリは、仮想ネットワーク (VNet) またはサブネットで分離し、適切にタグを付けるようにします。
+**ガイダンス**:開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 Azure Functions アプリは、仮想ネットワーク (VNet) またはサブネットで分離し、適切にタグを付けるようにします。
 
-プライベート エンドポイントを使用してネットワークの分離を実行することもできます。 Azure プライベート エンドポイントは、Azure Private Link を利用したサービス (例: Azure Functions アプリの HTTP エンドポイント) に非公開かつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントでは、自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。 Premium プランで実行されている関数アプリのプライベート エンドポイントは (プレビュー) 段階です。 必ずプライベート エンドポイントが (プレビュー) 段階ではなくなってから、運用環境のワークロードで使用してください。
+プライベート エンドポイントを使用してネットワークの分離を実行することもできます。 Azure プライベート エンドポイントは、Azure Private Link を利用したサービス (例: Azure Functions アプリの HTTP エンドポイント) に非公開かつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントでは、自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。 Premium プランで実行されている Functions アプリのプライベート エンドポイントは (プレビュー) 段階です。 必ずプライベート エンドポイントが (プレビュー) 段階ではなくなってから、運用環境のワークロードで使用してください。
 
 - [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
@@ -583,7 +583,7 @@ Microsoft では、Azure Functions 用の基になるインフラストラクチ
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5:アクティブ検出ツールを使用して機密データを特定する
 
-**ガイダンス**: 現在は使用できません。現在、Azure Functions では、データの識別、分類、損失防止機能を使用できません。 そのため、機密情報を処理する可能性のある関数アプリにはタグを付けます。また、コンプライアンスの目的で必要な場合はサードパーティ製のソリューションを実装します。
+**ガイダンス**: 現在は使用できません。現在、Azure Functions では、データの識別、分類、損失防止機能を使用できません。 そのため、機密情報を処理する可能性のある Functions アプリにはタグを付けます。また、コンプライアンスの目的で必要な場合はサードパーティ製のソリューションを実装します。
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
@@ -595,7 +595,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure Active Directory (AD) ロールベースのアクセス制御 (RBAC) を使用して、Azure 関数コントロール プレーン (Azure portal) へのアクセスを制御します。 
+**ガイダンス**: Azure Active Directory (AD) ロールベースのアクセス制御 (RBAC) を使用して、Azure Functions コントロール プレーン (Azure portal) へのアクセスを制御します。 
 
 - [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
@@ -617,7 +617,7 @@ Microsoft では、Azure Functions 用の基になるインフラストラクチ
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8:機密情報を保存時に暗号化する
 
-**ガイダンス**:関数アプリを作成するときは、BLOB、キュー、テーブル ストレージをサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 これは、Functions ではトリガーの管理や関数実行のログ記録などの操作に Azure Storage を使用しているためです。 Azure Storage は、保存されているストレージ アカウント内のすべてのデータを暗号化します。 規定では、データは Microsoft のマネージド キーで暗号化されます。 暗号化キーをさらに制御するには、BLOB およびファイル データの暗号化のためにカスタマー マネージド キーを用意します。 関数アプリからストレージ アカウントにアクセスできるように、これらのキーは Azure Key Vault 内に置かれている必要があります。
+**ガイダンス**:Functions アプリを作成するときは、BLOB、キュー、テーブル ストレージをサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 これは、Functions ではトリガーの管理や Functions 実行のログ記録などの操作に Azure Storage を使用しているためです。 Azure Storage は、保存されているストレージ アカウント内のすべてのデータを暗号化します。 規定では、データは Microsoft のマネージド キーで暗号化されます。 暗号化キーをさらに制御するには、BLOB およびファイル データの暗号化のためにカスタマー マネージド キーを用意します。 Functions アプリからストレージ アカウントにアクセスできるように、これらのキーは Azure Key Vault 内に置かれている必要があります。
 
 - [Azure Functions のストレージに関する考慮事項](./storage-considerations.md)
 
@@ -629,7 +629,7 @@ Microsoft では、Azure Functions 用の基になるインフラストラクチ
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9:重要な Azure リソースへの変更に関するログとアラート
 
-**ガイダンス**:運用環境の Azure 関数アプリおよびその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
+**ガイダンス**: 運用環境の Azure Functions アプリおよびその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
 - [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -645,7 +645,7 @@ Microsoft では、Azure Functions 用の基になるインフラストラクチ
 
 **ガイダンス**: Azure Functions アプリケーションをセキュリティで保護し、ライフサイクル全体を通じて可能な限り安全に保たれるように、DevSecOps プラクティスを採用します。 DevSecOps によって、組織のセキュリティ チームとその機能を DevOps プラクティスに組み込み、チームの全員がセキュリティを担当するようにします。
 
-さらに、Azure Security Center の推奨事項に従って、Azure 関数アプリをセキュリティで保護します。
+さらに、Azure Security Center の推奨事項に従って、Azure Functions アプリをセキュリティで保護します。
 
 - [CI/CD パイプラインに継続的なセキュリティ検証を追加する方法](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops)
 
@@ -821,9 +821,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13:リスクの高いアプリケーションを物理的または論理的に分離する
 
-**ガイダンス**: 機密性の高いまたはリスクの高い Azure 関数アプリの場合は、個別のサブスクリプションや管理グループを実装して分離を実現します。
+**ガイダンス**: 機密性の高いまたはリスクの高い Azure Functions アプリの場合は、個別のサブスクリプションや管理グループを実装して分離を実現します。
 
-リスクの高い Azure 関数アプリを独自の仮想ネットワーク (VNet) にデプロイします。 Azure Functions の境界セキュリティは、VNet によって実現されます。 Premium プランまたは App Service Environment (ASE) で実行されている関数は、VNet と統合できます。 ユース ケースに最適なアーキテクチャを選択します。
+リスクの高い Azure Functions アプリを独自の仮想ネットワーク (VNet) にデプロイします。 Azure Functions の境界セキュリティは、VNet によって実現されます。 Premium プランまたは App Service Environment (ASE) で実行されている Functions は、VNet と統合できます。 ユース ケースに最適なアーキテクチャを選択します。
 
 - [Azure Functions のネットワーク オプション](./functions-networking-options.md)
 
@@ -849,9 +849,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
-**ガイダンス**:Azure Policy を使用して、Azure 関数アプリの標準的なセキュリティ構成を定義および実装します。 "Microsoft.Web" 名前空間の Azure Policy エイリアスを使用して、Azure Functions アプリの構成を監査または適用するカスタム ポリシーを作成します。 次のように、組み込みのポリシー定義を使用することもできます。
-- 関数アプリではマネージド ID を使用する必要がある
-- 関数アプリでリモート デバッグを無効にする必要がある
+**ガイダンス**: Azure Policy を使用して、Azure Functions アプリの標準的なセキュリティ構成を定義および実装します。 "Microsoft.Web" 名前空間の Azure Policy エイリアスを使用して、Azure Functions アプリの構成を監査または適用するカスタム ポリシーを作成します。 次のように、組み込みのポリシー定義を使用することもできます。
+- Functions アプリではマネージド ID を使用する必要がある
+- Functions アプリでリモート デバッグを無効にする必要がある
 - Function App には HTTPS 経由でのみアクセスできるようにする
 
 - [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
@@ -884,9 +884,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4:セキュリティで保護されたオペレーティング システムの構成を維持する
 
-**ガイダンス**: 適用できません。オンプレミスの関数をデプロイすることはできますが、このガイドラインは IaaS コンピューティング リソースを対象としています。 オンプレミスの関数をデプロイする際は、お客様が環境のセキュリティで保護された構成を実現する必要があります。
+**ガイダンス**: 適用できません。オンプレミスの Functions をデプロイすることはできますが、このガイドラインは IaaS コンピューティング リソースを対象としています。 オンプレミスの Functions をデプロイする際は、お客様が環境のセキュリティで保護された構成を実現する必要があります。
 
-- [オンプレミスの関数の概要](./functions-runtime-install.md)
+- [オンプレミスの Functions の概要](./functions-runtime-install.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -954,7 +954,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11:Azure シークレットを安全に管理する
 
-**ガイダンス**:マネージド ID を Azure Key Vault と組み合わせて使用し、クラウド アプリケーションのシークレット管理を簡素化し、セキュリティで保護します。 関数アプリにマネージド ID を使用すると、コードに資格情報を追加しなくても、Azure AD の認証をサポートするさまざまなサービス (Key Vault を含む) に対して認証を行うことができます。
+**ガイダンス**:マネージド ID を Azure Key Vault と組み合わせて使用し、クラウド アプリケーションのシークレット管理を簡素化し、セキュリティで保護します。 Functions アプリにマネージド ID を使用すると、コードに資格情報を追加しなくても、Azure AD の認証をサポートするさまざまなサービス (Key Vault を含む) に対して認証を行うことができます。
 
 - [キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md)
 
@@ -970,7 +970,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12:ID を安全かつ自動的に管理する
 
-**ガイダンス**: マネージド ID を使用して、Azure AD で自動的に管理される ID を Azure 関数アプリに提供します。 マネージド ID を使用すると、コードに資格情報を追加しなくても、Azure AD の認証をサポートするさまざまなサービス (Key Vault を含む) に対して認証を行うことができます。
+**ガイダンス**: マネージド ID を使用して、Azure AD で自動的に管理される ID を Azure Functions アプリに提供します。 マネージド ID を使用すると、コードに資格情報を追加しなくても、Azure AD の認証をサポートするさまざまなサービス (Key Vault を含む) に対して認証を行うことができます。
 
 - [App Service と Azure Functions でマネージド ID を使用する方法](../app-service/overview-managed-identity.md)
 
@@ -1027,7 +1027,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Functions な�
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
-**ガイダンス**: バックアップと復元機能を使用して、アプリの定期的なバックアップをスケジュールします。 Premium プランで実行されている関数アプリには、"バックアップと復元" 機能を含む、Azure App Service の Web アプリと同じホスティング機能があります。
+**ガイダンス**: バックアップと復元機能を使用して、アプリの定期的なバックアップをスケジュールします。 Premium プランで実行されている Functions アプリには、"バックアップと復元" 機能を含む、Azure App Service の Web アプリと同じホスティング機能があります。
 
 また、Azure Repos や Azure DevOps などのソース管理ソリューションを利用して、コードを安全に格納し、管理します。 Azure DevOps Services では、Azure Storage 機能の多くを活用して、ハードウェア障害、サービスの中断、またはリージョンの災害が発生した場合にデータの可用性を確保しています。 さらに、Azure DevOps チームは、データを偶発的または悪意のある削除から保護する手順に従っています。
 
@@ -1045,7 +1045,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Functions な�
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: システムの完全バックアップを実行し、カスタマー マネージド キーをバックアップする
 
-**ガイダンス**: バックアップと復元機能を使用して、アプリの定期的なバックアップをスケジュールします。 Premium プランで実行されている関数アプリには、"バックアップと復元" 機能を含む、Azure App Service の Web アプリと同じホスティング機能があります。 Azure Key Vault 内のカスタマー マネージド キーをバックアップします。
+**ガイダンス**: バックアップと復元機能を使用して、アプリの定期的なバックアップをスケジュールします。 Premium プランで実行されている Functions アプリには、"バックアップと復元" 機能を含む、Azure App Service の Web アプリと同じホスティング機能があります。 Azure Key Vault 内のカスタマー マネージド キーをバックアップします。
 
 また、Azure Repos や Azure DevOps などのソース管理ソリューションを利用して、コードを安全に格納し、管理します。 Azure DevOps Services では、Azure Storage 機能の多くを活用して、ハードウェア障害、サービスの中断、またはリージョンの災害が発生した場合にデータの可用性を確保しています。 さらに、Azure DevOps チームは、データを偶発的または悪意のある削除から保護する手順に従っています。
 

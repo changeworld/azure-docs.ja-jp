@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: cebc2c3d364cdb93c4b528c186dcef79c58ac6ea
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d7ac2777ffd500082bd0b8a9700d53bffd9d6931
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167013"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177314"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Security Center の最新情報のアーカイブ
 
@@ -141,7 +141,7 @@ Kubernetes は、ソフトウェアをクラウドにデプロイして管理す
 
 多くの場合、仮想マシンにインストールされているアプリケーションには、仮想マシンの侵害につながるおそれのある脆弱性が存在する可能性があります。 Microsoft は、Security Center Standard レベルに、追加料金なしで仮想マシンの脆弱性評価を組み込むことを発表しました。 Qualys を利用した脆弱性評価 (パブリック プレビュー) を使用すると、仮想マシンにインストールされているすべてのアプリケーションを継続的にスキャンして脆弱なアプリケーションを検出し、Security Center ポータルのエクスペリエンスに結果を表示できます。 Security Center がすべてのデプロイ操作を処理するため、ユーザーが追加の作業を行う必要はありません。 今後、お客様固有のビジネス ニーズに対応する脆弱性評価オプションを提供する予定です。
 
-Azure Virtual Machines の脆弱性評価の詳細については、[こちら](security-center-vulnerability-assessment-recommendations.md)をご覧ください。
+Azure Virtual Machines の脆弱性評価の詳細については、[こちら](deploy-vulnerability-assessment-vm.md)をご覧ください。
 
 
 ### <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Azure Virtual Machines の SQL Server 向け Advanced Data Security (プレビュー)

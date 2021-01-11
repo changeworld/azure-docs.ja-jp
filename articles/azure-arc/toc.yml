@@ -3,7 +3,7 @@
 - name: 概要
   items:
     - name: Azure Arc について
-      href: arc-overview.md
+      href: overview.md
 - name: Arc 対応サーバー >
   href: ./servers/overview.md
 - name: Arc 対応 Kubernetes >

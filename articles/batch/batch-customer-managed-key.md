@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 2af82233013f064b185aefde3f2e1710bd86ed43
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a89d0182f6a659cee65ebc1de7d97d40418b4b20
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053747"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654890"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Azure Key Vault とマネージド ID を使用して Azure Batch アカウントのカスタマー マネージド キーを構成する
 
@@ -19,7 +19,7 @@ ms.locfileid: "88053747"
 提供するキーは、[Azure Key Vault](../key-vault/general/basic-concepts.md) で生成する必要があります。また、カスタマー マネージド キーを使用して構成する Batch アカウントは、[Azure マネージ ID](../active-directory/managed-identities-azure-resources/overview.md) で有効にする必要があります。
 
 > [!IMPORTANT]
-> 現在、Azure Batch でのカスタマー マネージド キーのサポートは、米国中西部、米国東部、米国中南部、米国西部 2、US Gov バージニア、US Gov アリゾナの各リージョンでパブリック プレビュー段階にあります。
+> 現在、Azure Batch でのカスタマー マネージド キーのサポートは、西ヨーロッパ、北ヨーロッパ、スイス北部、米国中部、米国中南部、米国中西部、米国東部、米国東部 2、米国西部 2、US Gov バージニア、US Gov アリゾナの各リージョンでパブリック プレビュー段階にあります。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 

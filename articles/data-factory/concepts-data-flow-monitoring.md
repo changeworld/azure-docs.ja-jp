@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/03/2020
-ms.openlocfilehash: ad5fb077596b6cc444c1c4df81af32cbcfa7c1db
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.date: 08/19/2020
+ms.openlocfilehash: 77dda42b27aa6f5fb505fe65667876523cb3f5d2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475551"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650895"
 ---
 # <a name="monitor-data-flows"></a>データ フローの監視
 
@@ -76,6 +76,10 @@ ms.locfileid: "87475551"
          ]
 }
 ```
+
+### <a name="post-processing-time"></a>後処理時間
+
+マップでシンク変換アイコンを選択すると、右側のスライドイン パネルの下部に "後処理時間" という追加のデータ ポイントが表示されます。 これは、データが読み込まれ、変換され、書き込まれた "*後に*"、Spark クラスターでジョブを実行するために費やされた時間です。 この時間には、接続プールの終了、ドライバーのシャットダウン、ファイルの削除、ファイルの結合などが含まれます。フローで "ファイルの移動" や "1 つのファイルへの出力" などの操作を実行すると、後処理時間の値が増加することがあります。
   
 ## <a name="monitor-icons"></a>監視アイコン
 

@@ -4,6 +4,8 @@
   items:
     - name: Azure Arc 対応サーバーについて
       href: overview.md
+    - name: Connected Machine エージェントの新機能
+      href: agent-release-notes.md
 - name: クイックスタート
   items:
     - name: Arc 対応サーバー エージェントを有効にする
@@ -14,12 +16,6 @@
       href: ./learn/tutorial-assign-policy-portal.md
     - name: マシンの監視
       href: ./learn/tutorial-enable-vm-insights.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      items:
-        - name: Arc 対応サーバー
-          href: policy-samples.md
 - name: 概念
   items:
     - name: セキュリティ
@@ -27,6 +23,8 @@
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: security-controls-policy.md
+        - name: セキュリティの概要
+          href: security-overview.md
 - name: 操作方法ガイド
   items:
     - name: Azure Arc への接続
@@ -55,3 +53,6 @@
           href: data-residency.md
         - name: REST
           href: /rest/api/hybridcompute
+        - name: Azure Policy の組み込み
+          displayName: 'samples, policies, definitions'
+          href: policy-reference.md

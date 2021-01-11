@@ -2,17 +2,17 @@
 title: Azure ExpressRoute Direct について
 description: Azure ExpressRoute Direct の主な特徴と、利用できる SKU や技術的要件など、ExpressRoute Direct にオンボードするために必要な情報について説明します。
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.author: jaredro
-ms.openlocfilehash: f0faa4992b025783e4e5448dcf04fcfa958ba5ed
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: duau
+ms.openlocfilehash: ab281f6ead148aa19242ebd7a2661379b25e918a
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192360"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397374"
 ---
 # <a name="about-expressroute-direct"></a>ExpressRoute Direct について
 

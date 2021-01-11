@@ -273,7 +273,9 @@
               href: msal-net-adfs-support.md
             - name: MSAL.NET への移行
               href: msal-net-migration.md
-            - name: ブローカーを使用する Xamarin アプリの MSAL.NET への移行
+            - name: ブローカーを使用する Xamarin Android アプリの MSAL.NET への移行
+              href: msal-net-migration-android-broker.md
+            - name: ブローカーを使用する Xamarin iOS アプリの MSAL.NET への移行
               href: msal-net-migration-ios-broker.md
             - name: Web ブラウザーの考慮事項
               href: msal-net-web-browsers.md
@@ -468,13 +470,13 @@
     - name: 自動ユーザー プロビジョニング (SCIM)
       items:
         - name: 自動ユーザー プロビジョニングとは
-          href: ../app-provisioning/user-provisioning.md
+          href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: SCIM エンドポイントの開発と統合
-          href: ../app-provisioning/use-scim-to-provision-users-and-groups.md
+          href: ../app-provisioning/use-scim-to-provision-users-and-groups.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: 一般的なプロビジョニングのシナリオ
-          href: ../app-provisioning/scim-graph-scenarios.md
+          href: ../app-provisioning/scim-graph-scenarios.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: MS Graph を使用した構成の自動化
-          href: ../app-provisioning/application-provisioning-configure-api.md
+          href: ../app-provisioning/application-provisioning-configure-api.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
     - name: Azure portal のヘルプ記事
       items:
         - name: 独自に開発したアプリケーションのトークン有効期間の既定値

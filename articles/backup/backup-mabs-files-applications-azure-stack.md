@@ -3,12 +3,12 @@ title: Azure Stack VM のファイルのバックアップ
 description: Azure Backup を使用して、Azure Stack ファイルとアプリケーションを Azure Stack 環境にバックアップし、復元します。
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.openlocfilehash: b45e3a0916f46f247503ea336105646f5538246c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: caac247b5a972c515b4350f1b0c79792bbf75537
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263131"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825802"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Azure Stack 上のファイルとアプリケーションのバックアップ
 
@@ -66,7 +66,7 @@ Azure Stack 仮想マシンのファイルを保護できるように Azure Back
 
 6. **[ディスク割り当ての確認]** 画面では、保護グループに割り当てられている記憶域プールのディスク領域を確認します。
 
-    **[合計データ サイズ]** は、バックアップするデータのサイズです。Azure Backup Server 上の **[Disk space to be provisioned]/(プロビジョニングされるディスク領域/)** は、保護グループ用に推奨されている領域です。 Azure Backup Server は、設定に基づいて理想的なバックアップ ボリュームを選択します。 ただし、ディスク割り当ての詳細でバックアップ ボリュームの選択を編集できます。 ワークロードの場合、ドロップダウン メニューで、優先ストレージを選択します。 編集すると、[利用可能なディスク記憶域] ペインの [ストレージの合計] と [空き記憶域] の値が変わります。 過小にプロビジョニングされた領域とは、今後もスムーズなバックアップを確実に行うためにボリュームに追加することを Azure Backup Server から提案されるストレージの量です。
+    **[合計データ サイズ]** は、バックアップするデータのサイズです。Azure Backup Server 上の **[Disk space to be provisioned]\(プロビジョニングされるディスク領域\)** は、保護グループ用に推奨されている領域です。 Azure Backup Server は、設定に基づいて理想的なバックアップ ボリュームを選択します。 ただし、ディスク割り当ての詳細でバックアップ ボリュームの選択を編集できます。 ワークロードの場合、ドロップダウン メニューで、優先ストレージを選択します。 編集すると、[利用可能なディスク記憶域] ペインの [ストレージの合計] と [空き記憶域] の値が変わります。 過小にプロビジョニングされた領域とは、今後もスムーズなバックアップを確実に行うためにボリュームに追加することを Azure Backup Server から提案されるストレージの量です。
 
 7. **[レプリカの作成方法の選択]** で、最初の全データのレプリケーションを処理する方法を選択します。 ネットワーク経由でレプリケートする場合、Azure では、ピーク時以外を選択することをお勧めします。 データが大量にある場合や、ネットワークの状態が最適でない場合は、リムーバブル メディアを使用してデータをレプリケートすることを検討してください。
 

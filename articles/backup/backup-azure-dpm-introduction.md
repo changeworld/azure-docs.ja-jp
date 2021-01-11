@@ -3,12 +3,12 @@ title: DPM サーバーを準備してワークロードをバックアップす
 description: この記事では、Azure Backup サービスを使用して、Azure への System Center Data Protection Manager (DPM) バックアップを準備する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 7043b4411856addf0fae26ee5402c4d3878e7f12
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 96eadb4d600b6aa842cdbded2a906d70f27cf55e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612658"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890809"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM を使用して Azure にワークロードをバックアップするための準備
 
@@ -90,7 +90,7 @@ DPM サーバーをコンテナーに登録する場合、コンテナーの資�
 - コンテナーの資格情報は登録ワークフロー中しか使用されません。
 - コンテナーの資格情報ファイルが安全で漏えいしないようにするのはユーザーの責任です。
   - 資格情報のコントロールが失われた場合は、コンテナーの資格情報を使用して、他のマシンをコンテナーに登録できます。
-  - ただし、バックアップ データは顧客に属するパスフレーズを使用して暗号化されているため、既存のバックアップ データが漏えいすることはありません。
+  - ただし、バックアップ データは自分に属するパスフレーズを使用して暗号化されているため、既存のバックアップ データが漏えいすることはありません。
 - ファイルが、DPM サーバーからアクセスできる場所に保存されることを確実にします。 ファイル共有または SMB に格納されている場合は、アクセス許可を確認します。
 - コンテナー資格情報は 48 時間後に有効期限が切れます。 新しいコンテナー資格情報は、必要な回数だけダウンロードできます。 ただし、登録ワークフローでは、最新のコンテナー資格情報ファイルのみを使用してください。
 - Azure Backup サービスでは、証明書の秘密キーは認識されません。また、ポータルまたはサービスでは、この秘密キーは使用できません。

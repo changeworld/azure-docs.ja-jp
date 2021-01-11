@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: df303801daba0509177e48565b3ddbe7674013e8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: aa8cf0d2a48c75b71895eb75db362c4ec4e291c5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689968"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925047"
 ---
 # <a name="create-an-additional-azure-subscription"></a>追加 Azure サブスクリプションの作成
 
@@ -73,7 +73,7 @@ Microsoft Online Services プログラム (MOSP) の課金アカウントをお�
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>追加の Azure サブスクリプションをプログラムから作成する
 
-追加サブスクリプションをプログラムで作成することもできます。 詳細については、[Azure サブスクリプションをプログラムで作成する方法](../../azure-resource-manager/management/programmatically-create-subscription.md)に関するページを参照してください。
+追加サブスクリプションをプログラムで作成することもできます。 詳細については、[Azure サブスクリプションをプログラムで作成する方法](programmatically-create-subscription.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

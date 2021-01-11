@@ -3,23 +3,25 @@ title: Media Services アカウント用のロールベースのアクセス制�
 description: この記事では、Azure Media Services アカウント用のロールベースのアクセス制御 (RBAC) について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 05/23/2019
-ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: c75b6e67932cfd26a3374eab3f3efa34ceade577
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: d6bc37a8aaddfb48e6d06eb46d9c1648e815b5ad
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504485"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289251"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Media Services アカウント用のロールベースのアクセス制御 (RBAC)
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 現在、Azure Media Services では、サービスに固有のカスタム ロールは定義されていません。 Media Services アカウントへのフル アクセスを取得する場合、お客様は、組み込みロールである**所有者**または**共同作成者**を使用します。 これらのロールの主な違いとして、**所有者**はリソースにアクセスできるユーザーを制御できますが、**共同作成者**はできません。 組み込みの**閲覧者**ロールも使用できますが、ユーザーまたはアプリケーションには Media Services API への読み取りアクセス許可が与えられるだけです。 
 

@@ -3,12 +3,12 @@ title: Azure Data Box を使用したオフライン バックアップ
 description: Azure Data Box を使用して、MARS エージェントから Recovery Services コンテナーに、大規模な初期バックアップ データをオフラインでシード処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: e377ccde714c1486ff731d24d5a0cd64364bca37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ad97ee60c3c7debea72357cf7fc8d483a3c1d46
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091030"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761561"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Data Box を使用した Azure Backup のオフライン バックアップ
 
@@ -259,13 +259,13 @@ Microsoft Azure Recovery Services (MARS) エージェントによって、テナ
 
 問題が前述のものと同じかどうかを確認するには、次のいずれかの手順を実行します。
 
-#### <a name="step-1"></a>手順 1
+#### <a name="step-1-of-verification"></a>検証の手順 1
 
 オフライン バックアップを構成したときに、MAB コンソールに次のエラー メッセージが表示されるかどうかを確認します。
 
 ![Unable to create Offline Backup policy for the current Azure account (現在の Azure アカウントのオフライン バックアップ ポリシーを作成できません)](./media/offline-backup-azure-data-box/unable-to-create-policy.png)
 
-#### <a name="step-2"></a>手順 2.
+#### <a name="step-2-of-verification"></a>検証の手順 2
 
 1. インストール パスの **Temp** フォルダーを開きます。 既定の一時フォルダーのパスは、*C:\Program Files\Microsoft Azure Recovery Services Agent\Temp* です。*CBUICurr* ファイルを探し、そのファイルを開きます。
 
@@ -275,11 +275,11 @@ Microsoft Azure Recovery Services (MARS) エージェントによって、テナ
 
 この問題を解決する回避策として、次の手順を実行し、ポリシーの構成を再試行します。
 
-#### <a name="step-1"></a>手順 1
+#### <a name="step-1-of-workaround"></a>回避策の手順 1
 
 インポートまたはエクスポート ジョブが作成されるサブスクリプションで、管理者アクセス権がある別のアカウントを使用して、MAB UI に表示される PowerShell にサインインします。
 
-#### <a name="step-2"></a>手順 2.
+#### <a name="step-2-of-workaround"></a>回避策の手順 2
 
 他のサーバーでオフライン シード処理が構成されておらず、他のサーバーが `AzureOfflineBackup_<Azure User Id>` アプリケーションに依存していない場合は、このアプリケーションを削除します。 **[Azure portal]**  >  **[Azure Active Directory]**  >  **[アプリの登録]** を選択します。
 

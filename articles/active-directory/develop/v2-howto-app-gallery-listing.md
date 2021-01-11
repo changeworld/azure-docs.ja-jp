@@ -12,12 +12,12 @@ ms.date: 08/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3d810d14dd6b49bc054e3844a60ec33c62dc084c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 1ce8f376d3264a06618cb7321c75142dcf92d9ea
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271245"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891863"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>アプリを Azure AD アプリ ギャラリーで公開する
 
@@ -98,7 +98,7 @@ OAuth 2.0 は、認可用の[業界標準](https://oauth.net/2/)プロトコル�
 
 ### <a name="saml-20-or-ws-fed"></a>SAML 2.0 または WS-Fed
 
-SAML は、Web アプリケーション向けのシングルサインオン標準として、成熟し、広く採用されています。 Azure による SAML の使用方法の詳細については、[Azure での SAML プロトコルの使用方法](active-directory-saml-protocol-reference.md)に関する記事を参照してください。 
+SAML は、Web アプリケーション向けの[シングルサインオン標準](https://www.oasis-open.org/standards#samlv2.0)として、成熟し、広く採用されています。 Azure による SAML の使用方法の詳細については、[Azure での SAML プロトコルの使用方法](active-directory-saml-protocol-reference.md)に関する記事を参照してください。 
 
 Web Services Federation (WS-Fed) は、.NET プラットフォームを使用して開発された Web アプリケーションに一般に使用される[業界標準](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html)です。
 

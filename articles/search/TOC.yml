@@ -88,9 +88,6 @@
       href: /samples/browse/?languages=python&products=azure-cognitive-search
     - name: REST サンプル
       href: /samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: フルテキスト検索
@@ -117,6 +114,8 @@
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+        - name: インデクサー リソースのセキュリティ保護
+          href: search-indexer-securing-resources.md
 - name: 操作方法ガイド
   items:
     - name: インデックスとコンストラクトの作成
@@ -357,6 +356,14 @@
               href: search-security-trimming-for-azure-search.md
             - name: ユーザー ID でフィルター処理する
               href: search-security-trimming-for-azure-search-with-aad.md
+        - name: アウトバウンド セキュリティ (インデクサー)
+          items:
+            - name: IP 範囲に対するアクセス
+              href: search-indexer-howto-access-ip-restricted.md
+            - name: 信頼されたサービスの例外によるアクセス
+              href: search-indexer-howto-access-trusted-service-exception.md
+            - name: プライベート エンドポイント経由のアクセス
+              href: search-indexer-howto-access-private.md
     - name: 管理する
       items:
         - name: ポータル
@@ -395,14 +402,14 @@
       href: /azure/templates/microsoft.search/searchservices
     - name: REST
       items:
-        - name: 検索 2020-06-30
+        - name: Search API (安定)
           href: /rest/api/searchservice
-        - name: 検索 2020-06-30-Preview
+        - name: Search API (プレビュー)
           href: /rest/api/searchservice/index-preview
-        - name: 管理 2020-03-13
+        - name: Management API (安定)
           href: /rest/api/searchmanagement
-        - name: 管理 2019-10-01-Preview
-          href: /rest/api/searchmanagement/index-2019-10-01-preview
+        - name: Management API (プレビュー)
+          href: /rest/api/searchmanagement/index-preview
     - name: .NET
       items:
         - name: Search API
@@ -496,6 +503,9 @@
           items:
             - name: 名前付きエンティティの認識
               href: cognitive-search-skill-named-entity-recognition.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure コミュニティ サポート

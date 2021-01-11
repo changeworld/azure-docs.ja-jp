@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 5748f758d8ac2f1723a20858920a4f261c07f938
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608685"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871184"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>エージェントレスの VMware VM 移行におけるレプリケーションの問題のトラブルシューティング
 
@@ -38,6 +38,29 @@ ms.locfileid: "88608685"
 
 ここでは、いくつかの一般的なエラーとそのトラブルシューティング方法について説明します。
 
+## <a name="key-vault-operation-failed-error-when-trying-to-replicate-vms"></a>VM をレプリケートしようとしたときにエラーが発生して Key Vault の操作が失敗した
+
+**エラー:** “Key Vault の操作が失敗しました。 操作:マネージド ストレージ アカウントの構成、Key Vault:Key-vault-name、ストレージ アカウント: エラーで失敗したストレージ アカウント名:"
+
+**エラー:** “Key Vault の操作が失敗しました。 操作:Shared Access Signature 定義の生成、Key Vault:Key-vault-name、ストレージ アカウント: エラーで失敗したストレージ アカウント名:"
+
+![Key Vault](./media/troubleshoot-changed-block-tracking-replication/key-vault.png)
+
+一般的に、このエラーが発生するのは、Key Vault のユーザー アクセス ポリシーによって、現在ログインしているユーザーに、Key Vault で管理されるストレージ アカウントを構成するために必要なアクセス許可が付与されていないためです。 Key Vault のユーザー アクセス ポリシーを確認するには、Key Vault のポータルの [Key Vault] ページにアクセスして、[アクセス ポリシー] を選択します。 
+
+ポータルでキー コンテナーが作成されると、ユーザー アクセス ポリシーも追加され、現在ログインしているユーザーに Key Vault で管理されるストレージ アカウントを構成するためのアクセス許可が付与されます。 これは、2 つの理由で失敗する可能性があります
+
+- ログインしたユーザーが、顧客の Azure テナント (CSP サブスクリプション - ログインしているユーザーはパートナー管理者) のリモート プリンシパルである場合です。 この場合の回避策は、キー コンテナーを削除し、ポータルからログアウトしてから、(リモート プリンシパルではなく) 顧客テナントからのユーザー アカウントでログインして、操作を再試行することです。 CSP パートナーには、通常、使用できるユーザー アカウントが顧客の Azure Active Directory テナントにあります。 ない場合は、顧客の Azure Active Directory テナントに自分用の新しいユーザー アカウントを作成し、その新しいユーザーとしてポータルにログインしてから、レプリケート操作を再試行できます。 使用するアカウントには、リソース グループ (Migrate プロジェクト リソース グループ) のアカウントに付与された所有者または共同作成者のアクセス許可とユーザー アクセス管理者のアクセス許可が必要です。
+
+- この問題が起こるその他のケースとして、あるユーザー (user1) が最初にレプリケーションをセットアップしようとしてエラーが発生したが、キー コンテナーが既に作成されている (およびユーザー アクセス ポリシーがこのユーザーに適切に割り当てられている) 場合があります。 後で、別のユーザー (user2) がレプリケーションのセットアップを試みますが、キー コンテナー内の user2 に対応するユーザー アクセス ポリシーがないため、マネージド ストレージ アカウントの構成操作または SAS 定義の生成操作は失敗します。
+
+**解決方法**:この問題を回避するには、キー コンテナーに user2 のユーザー アクセス ポリシーを作成し、user2 にマネージド ストレージ アカウントの構成と SAS 定義の生成を行うためのアクセス許可を付与します。 user2 は、Azure PowerShell から次のコマンドレットを使用してこれを行うことができます。
+
+$userPrincipalId = $(Get-AzureRmADUser -UserPrincipalName "user2_email_address").Id
+
+Set-AzureRmKeyVaultAccessPolicy -VaultName "keyvaultname" -ObjectId $userPrincipalId -PermissionsToStorage get, list, delete, set, update, regeneratekey, getsas, listsas, deletesas, setsas, recover, backup, restore, purge
+
+
 ## <a name="disposeartefactstimedout"></a>DisposeArtefactsTimedOut
 
 **エラー ID:** 181008
@@ -59,7 +82,7 @@ Azure にデータをレプリケートしようとしているコンポーネ�
 
    2.  Microsoft サービス MMC スナップインを開き ([ファイル名を指定して実行] > services.msc)、"Microsoft Azure ゲートウェイ サービス" が実行されているかどうかを確認します。 サービスが停止しているか、実行されていない場合は、サービスを開始します。 または、コマンド プロンプトまたは PowerShell を開いて、次を実行できます:"Net Start asrgwy"
 
-3. Azure Migrate アプライアンスとキャッシュ ストレージ アカウントの間の接続に問題がないか確認します。 
+3. Azure Migrate アプライアンスとアプライアンス ストレージ アカウントの間の接続に問題がないか確認します。 
 
     Azure Migrate アプライアンスに azcopy をダウンロードした後、次のコマンドを実行します。
     
@@ -149,7 +172,7 @@ Azure にデータをレプリケートしようとしているコンポーネ�
     
       1. azcopy を[ダウンロード](https://go.microsoft.com/fwlink/?linkid=2138966)します
         
-      2. リソース グループでアプライアンス ストレージ アカウントを探します。 ストレージ アカウントは、migrategwsa\*\*\*\*\*\*\*\*\*\* のような名前です。 これは、上記のコマンドのパラメーター [account] の値です。
+      2. リソース グループでアプライアンス ストレージ アカウントを探します。 ストレージ アカウントは、migratelsa\*\*\*\*\*\*\*\*\*\* のような名前です。 これは、上記のコマンドのパラメーター [account] の値です。
         
       3. Azure portal で、お使いのストレージ アカウントを検索します。 検索に使用するサブスクリプションが、ストレージ アカウントが作成されるサブスクリプション (ターゲット サブスクリプション) と同じであることを確認します。 [Blob service] セクションの [コンテナー] にアクセスします。 [+ コンテナー] をクリックし、コンテナーを作成します。 パブリック アクセス レベルを既定の選択された値のままにします。
         
@@ -226,7 +249,7 @@ _エラー メッセージ:An internal error occurred. [Error message] (内部�
 
 次のセクションでは、よく見られる VMware のエラーとその対処法を示します。
 
-## <a name="error-message-an-internal-error-occurred-server-refused-connection"></a>エラー メッセージ:An internal error occurred. [Server Refused Connection] (内部エラーが発生しました。[サーバーが接続を拒否しました])
+### <a name="error-message-an-internal-error-occurred-server-refused-connection"></a>エラー メッセージ:An internal error occurred. [Server Refused Connection] (内部エラーが発生しました。[サーバーが接続を拒否しました])
 
 この問題は、VMware の既知の問題であり、VDDK 6.7 で発生します。 Azure Migrate アプライアンスで実行されているゲートウェイ サービスを停止し、[VMware KB から更新プログラムをダウンロード](https://go.microsoft.com/fwlink/?linkid=2138889)し、ゲートウェイ サービスを再起動する必要があります。
 
@@ -240,33 +263,33 @@ _エラー メッセージ:An internal error occurred. [Error message] (内部�
 1. Windows + R キーを押し、services.msc を開きます。 "Microsoft Azure ゲートウェイ サービス" を右クリックして開始します。
 2. または、コマンド プロンプトまたは PowerShell を開いて、次を実行できます:Net Start asrgwy。
 
-## <a name="error-message-an-internal-error-occurred-an-invalid-snapshot-configuration-was-detected"></a>エラー メッセージ:An internal error occurred. ['An Invalid snapshot configuration was detected.'] (内部エラーが発生しました。['無効なスナップショット構成が検出されました。'])
+### <a name="error-message-an-internal-error-occurred-an-invalid-snapshot-configuration-was-detected"></a>エラー メッセージ:An internal error occurred. ['An Invalid snapshot configuration was detected.'] (内部エラーが発生しました。['無効なスナップショット構成が検出されました。'])
 
 複数のディスクを持つ仮想マシンがある場合、仮想マシンからディスクを削除すると、このエラーが発生することがあります。 この問題を修復するには、[こちらの VMware の記事](https://go.microsoft.com/fwlink/?linkid=2138890)の手順を参照してください。
 
-## <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>エラー メッセージ:An internal error occurred. [Generate Snapshot Hung] (内部エラーが発生しました。[スナップショットの生成が応答停止しました])
+### <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>エラー メッセージ:An internal error occurred. [Generate Snapshot Hung] (内部エラーが発生しました。[スナップショットの生成が応答停止しました])
 
 この問題は、スナップショットの生成が応答停止した場合に発生します。 この問題が発生した場合は、スナップショットの作成タスクが 95% または 99% で停止していることを確認できます。 この問題を解決するには、こちらの [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138969) を参照してください。
 
-## <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>エラー メッセージ:An internal error occurred. [Failed to consolidate the disks on VM _[Reasons]_ ] (内部エラーが発生しました。[VM のディスクを統合できませんでした "[理由]"])
+### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>エラー メッセージ:An internal error occurred. [Failed to consolidate the disks on VM _[Reasons]_ ] (内部エラーが発生しました。[VM のディスクを統合できませんでした "[理由]"])
 
 レプリケーション サイクルの最後にディスクを統合するとき、操作が失敗します。 問題を解決するには、該当する "_理由_" を選択して、[VMware KB](https://go.microsoft.com/fwlink/?linkid=2138970) の指示に従ってください。
 
 次のエラーは、VMware スナップショット関連の操作 (ディスクの作成、削除、または統合) が失敗したときに発生します。 次のセクションのガイダンスに従って、エラーを修復してください。
 
-## <a name="error-message-an-internal-error-occurred-another-task-is-already-in-progress"></a>エラー メッセージ:An internal error occurred. [Another task is already in progress] (内部エラーが発生しました。[このタスクは既に実行中です])
+### <a name="error-message-an-internal-error-occurred-another-task-is-already-in-progress"></a>エラー メッセージ:An internal error occurred. [Another task is already in progress] (内部エラーが発生しました。[このタスクは既に実行中です])
 
 この問題は、バックグラウンドで実行されている仮想マシン タスクが競合している場合、または vCenter Server 内のタスクがタイムアウトした場合に発生します。次の [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138891) に示されている解決方法に従ってください。
 
-## <a name="error-message-an-internal-error-occurred-operation-not-allowed-in-current-state"></a>エラー メッセージ:An internal error occurred. [Operation not allowed in current state] (内部エラーが発生しました。[現在の状態では操作は許可されていません])
+### <a name="error-message-an-internal-error-occurred-operation-not-allowed-in-current-state"></a>エラー メッセージ:An internal error occurred. [Operation not allowed in current state] (内部エラーが発生しました。[現在の状態では操作は許可されていません])
 
 この問題は、vCenter Server 管理エージェントが動作を停止した場合に発生します。 この問題を解決するには、次の [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138971) の解決策を参照してください。
 
-## <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>エラー メッセージ:An internal error occurred. [Snapshot Disk size invalid] (内部エラーが発生しました。[スナップショット ディスクのサイズが無効です])
+### <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>エラー メッセージ:An internal error occurred. [Snapshot Disk size invalid] (内部エラーが発生しました。[スナップショット ディスクのサイズが無効です])
 
 これは、スナップショットによって示されたディスク サイズがゼロになる VMware の既知の問題です。 [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138972) に示されている解決方法に従ってください。
 
-## <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>エラー メッセージ:An internal error occurred. [Memory allocation failed. Out of memory.] (内部エラーが発生しました。[メモリの割り当てが失敗しました。 メモリ不足です。])
+### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>エラー メッセージ:An internal error occurred. [Memory allocation failed. Out of memory.] (内部エラーが発生しました。[メモリの割り当てが失敗しました。 メモリ不足です。])
 
 これは、NFC ホスト バッファーのメモリが不足している場合に発生します。 この問題を解決するには、空きリソースがある別のホストに VM (コンピューティング vMotion) を移動する必要があります。
 

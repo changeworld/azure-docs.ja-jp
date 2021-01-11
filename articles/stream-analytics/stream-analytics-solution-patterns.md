@@ -62,7 +62,7 @@ CRUD ベースのシステムでは、大量のデータがパフォーマンス
 
 ![ASA イベント ソーシング アプリ](media/stream-analytics-solution-patterns/event-sourcing-app.png)
 
-このソリューション パターンでは、Azure Stream Analytics によってイベントが処理されてデータ ストアに集約されます。 アプリケーション レイヤーは、従来の要求/応答パターンを使用して、そのデータ ストアと対話することになります。 Stream Analytics には大量のイベントをリアルタイムに処理する機能があるため、アプリケーションは非常にスケーラブルであり、データ ストア レイヤーを増強する必要はありません。 実質的にはデータ ストア レイヤーが、システムにおける具体化されたビューとなります。 Stream Analytics の出力として Cosmos DB を使用する方法は、「[Azure Cosmos DB への Azure Stream Analytics の出力](stream-analytics-documentdb-output.md)」で説明されています。
+このソリューション パターンでは、Azure Stream Analytics によってイベントが処理されてデータ ストアに集約されます。 アプリケーション レイヤーは、従来の要求/応答パターンを使用して、そのデータ ストアと対話することになります。 Stream Analytics には大量のイベントをリアルタイムに処理する機能があるため、アプリケーションは非常にスケーラブルであり、データ ストア レイヤーを増強する必要はありません。 実質的にはデータ ストア レイヤーが、システムにおけるマテリアライズドビューとなります。 Stream Analytics の出力として Cosmos DB を使用する方法は、「[Azure Cosmos DB への Azure Stream Analytics の出力](stream-analytics-documentdb-output.md)」で説明されています。
 
 処理ロジックが複雑で、特定のロジック領域を個別にアップグレードする必要があるような実際のアプリケーションでは、中間イベント ブローカーとしての Event Hubs に複数の Stream Analytics ジョブを組み合わせることができます。
 

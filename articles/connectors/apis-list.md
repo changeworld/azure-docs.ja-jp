@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 1dd38f0360a4471124497d8357481283cd98383c
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 1bd3cb1c18d1bac078ac1344f574914dba73d07b
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566303"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871566"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps のコネクタ
 
@@ -48,7 +48,7 @@ Logic Apps には[数百のコネクタ](/connectors)が用意されています
 
   コネクタは、標準またはエンタープライズのいずれかとして分類されます。 [エンタープライズ コネクタ](#enterprise-connectors) では、追加コストを払うことで、SAP、IBM MQ、IBM 3270 などのエンタープライズ システムへのアクセスが提供されます。 コネクタが標準かエンタープライズかを判断するには、[コネクタの概要](/connectors)に関する記事で示されている各コネクタのリファレンス ページにある技術的な詳細をご覧ください。
 
-  これらのカテゴリを使ってコネクタを識別することもできますが、一部のコネクタは複数のカテゴリに属している場合があります。 たとえば、SAP はエンタープライズ コネクタでもありオンプレミス コネクタでもあります。
+  これらのカテゴリを使ってコネクタを識別することもできますが、一部のコネクタは複数のカテゴリに存在している場合があります。 たとえば、SAP はエンタープライズ コネクタでもありオンプレミス コネクタでもあります。
 
   | カテゴリ | 説明 |
   |----------|-------------|
@@ -68,7 +68,7 @@ Azure 仮想ネットワーク内のリソースに直接アクセスする必�
 
 | Label | 例 | 説明 |
 |-------|---------|-------------|
-| **CORE** | ![ISE コネクタの例](./media/apis-list/example-core-connector.png) | このラベルが付いた組み込みトリガーおよびアクションは、ロジック アプリと同じ ISE 内で動作します。 |
+| **CORE** | ![CORE コネクタの例](./media/apis-list/example-core-connector.png) | このラベルが付いた組み込みトリガーおよびアクションは、ロジック アプリと同じ ISE 内で動作します。 |
 | **ISE** | ![ISE コネクタの例](./media/apis-list/example-ise-connector.png) | このラベルが付いたマネージド コネクタは、ロジック アプリと同じ ISE 内で動作します。 Azure 仮想ネットワークに接続されているオンプレミス システムがある場合、ISE を使用すると、ロジック アプリで[オンプレミス データ ゲートウェイ](../logic-apps/logic-apps-gateway-connection.md)を使用せずに、そのシステムに直接アクセスすることができます。 代わりに、そのシステムの **ISE** コネクタ (使用可能な場合)、HTTP アクション、または[カスタム コネクタ](#custom)を使用できます。 **ISE** コネクタがないオンプレミス システムの場合は、オンプレミスのデータ ゲートウェイを使用します。 使用可能な ISE コネクタを確認するには、「[ISE コネクタ](#ise-connectors)」を参照してください。 |
 | ラベルなし | ![マルチテナント コネクタの例](./media/apis-list/example-multi-tenant-connector.png) | **CORE** または **ISE** ラベルのない他のすべてのコネクタは、引き続き使用でき、グローバルなマルチテナント Logic Apps サービスで実行できます。 |
 |||
@@ -81,13 +81,13 @@ Logic Apps は、組み込みトリガーおよびアクションを備えてい
 
 | 名前 | [説明] |
 |------|-------------|
-| [![API アイコン][schedule-icon]<br>**スケジュール**][schedule-doc] | - [**繰り返し**トリガー][schedule-recurrence-doc]を使用して、指定した繰り返しでロジック アプリを実行します。基本的なスケジュールから詳細なスケジュールまで指定できます。 <br>- [**スライディング ウィンドウ** トリガー][schedule-sliding-window-doc]を使用して、連続したチャンクのデータを処理する必要があるロジック アプリを実行します。 <br>- [**遅延**アクション][schedule-delay-doc]を使用して、指定した期間、ロジック アプリを一時停止します。 <br>- [**延期期限**アクション][schedule-delay-until-doc]を使用して、指定した日時までロジック アプリを一時停止します。 |
-| [![API アイコン][batch-icon]<br>**バッチ**][batch-doc] | - **[メッセージのバッチ処理]** トリガーを使用して、メッセージをバッチで処理します。 <br>- **[バッチへのメッセージの送信]** アクションを使用して、既存のバッチ トリガーを持つロジック アプリを呼び出します。 |
-| [![API アイコン][http-icon]<br>**HTTP**][http-doc] | HTTP のトリガーとアクションを使用して HTTP または HTTPS エンドポイントを呼び出します。 その他の HTTP 組み込みトリガーおよびアクションには [HTTP + Swagger][http-swagger-doc] と [HTTP + Webhook][http-webhook-doc] が含まれます。 |
-| [![API アイコン][http-request-icon]<br>**要求**][http-request-doc] | - 他のアプリやサービスからロジック アプリを呼び出し可能にしたり、Event Grid リソース イベントでロジック アプリをトリガーしたり、 **[要求]** トリガーによる Azure Security Center アラートへの応答でロジック アプリをトリガーしたりします。 <br>- **[応答]** アクションを使用して、アプリやサービスに応答を送信します。 |
-| [![API アイコン][azure-api-management-icon]<br>**Azure API<br>Management**][azure-api-management-doc] | Azure API Management で管理および発行する独自の API によって定義されたトリガーとアクションを呼び出します。 |
-| [![API アイコン][azure-app-services-icon]<br>**Azure App <br>Services**][azure-app-services-doc] | Azure App Service でホストされている Azure API アプリまたは Web アプリを呼び出します。 Swagger が含まれている場合、これらのアプリで定義されているトリガーとアクションは、他のファースト クラスのトリガーおよびアクションのように表示されます。 |
-| [![API アイコン][azure-logic-apps-icon]<br>**Azure Logic <br>Apps**][nested-logic-app-doc] | **要求**トリガーで開始するその他のロジック アプリを呼び出します。 |
+| [![スケジュール組み込みコネクタ][schedule-icon]<br>**スケジュール**][schedule-doc] | - [**繰り返し**トリガー][schedule-recurrence-doc]を使用して、指定した繰り返しでロジック アプリを実行します。基本的なスケジュールから詳細なスケジュールまで指定できます。 <br>- [**スライディング ウィンドウ** トリガー][schedule-sliding-window-doc]を使用して、連続したチャンクのデータを処理する必要があるロジック アプリを実行します。 <br>- [**遅延**アクション][schedule-delay-doc]を使用して、指定した期間、ロジック アプリを一時停止します。 <br>- [**延期期限**アクション][schedule-delay-until-doc]を使用して、指定した日時までロジック アプリを一時停止します。 |
+| [![バッチ組み込みコネクタ][batch-icon]<br>**バッチ**][batch-doc] | - **[メッセージのバッチ処理]** トリガーを使用して、メッセージをバッチで処理します。 <br>- **[バッチへのメッセージの送信]** アクションを使用して、既存のバッチ トリガーを持つロジック アプリを呼び出します。 |
+| [![HTTP 組み込みコネクタ][http-icon]<br>**HTTP**][http-doc] | HTTP のトリガーとアクションを使用して HTTP または HTTPS エンドポイントを呼び出します。 その他の HTTP 組み込みトリガーおよびアクションには [HTTP + Swagger 組み込みコネクタ][http-swagger-doc]と [HTTP + Webhook][http-webhook-doc] が含まれます。 |
+| [![要求組み込みコネクタ][http-request-icon]<br>**要求**][http-request-doc] | - 他のアプリやサービスからロジック アプリを呼び出し可能にしたり、Event Grid リソース イベントでロジック アプリをトリガーしたり、 **[要求]** トリガーによる Azure Security Center アラートへの応答でロジック アプリをトリガーしたりします。 <br>- **[応答]** アクションを使用して、アプリやサービスに応答を送信します。 |
+| [![Azure API Management 組み込みコネクタ][azure-api-management-icon]<br>**Azure API <br>Management**][azure-api-management-doc] | Azure API Management で管理および発行する独自の API によって定義されたトリガーとアクションを呼び出します。 |
+| [![Azure App Services 組み込みコネクタ][azure-app-services-icon]<br>**Azure App <br>Services**][azure-app-services-doc] | Azure App Service でホストされている Azure API アプリまたは Web アプリを呼び出します。 Swagger が含まれている場合、これらのアプリで定義されているトリガーとアクションは、他のファースト クラスのトリガーおよびアクションのように表示されます。 |
+| [![Azure Logic Apps 組み込みコネクタ][azure-logic-apps-icon]<br>**Azure Logic <br>Apps**][nested-logic-app-doc] | **要求**トリガーで開始するその他のロジック アプリを呼び出します。 |
 |||
 
 ### <a name="run-code-from-logic-apps"></a>ロジック アプリからコードを実行する
@@ -96,8 +96,8 @@ Logic Apps には、ロジック アプリのワークフローで独自のコ�
 
 | 名前 | [説明] |
 |------|-------------|
-| [![API アイコン][azure-functions-icon]<br>**Azure Functions**][azure-functions-doc] | カスタム コード スニペット (C# または Node.js) をロジック アプリから実行する Azure 関数を呼び出します。 |
-| [![API アイコン][inline-code-icon]<br>**インライン コード**][inline-code-doc] | ロジック アプリから JavaScript コード スニペットを追加して実行します。 |
+| [![Azure Functions 組み込みコネクタ][azure-functions-icon]<br>**Azure Functions**][azure-functions-doc] | カスタム コード スニペット (C# または Node.js) をロジック アプリから実行する Azure 関数を呼び出します。 |
+| [![インライン コード組み込みコネクタ][inline-code-icon]<br>**インライン コード**][inline-code-doc] | ロジック アプリから JavaScript コード スニペットを追加して実行します。 |
 |||
 
 ### <a name="control-workflow"></a>ワークフローを制御する
@@ -106,12 +106,12 @@ Logic Apps では、ロジック アプリのワークフローでアクショ�
 
 | 名前 | [説明] |
 |------|-------------|
-| [![組み込みアイコン][condition-icon]<br>**条件**][condition-doc] | 条件を評価し、条件が true と false のいずれであるかに基づいて、さまざまなアクションを実行します。 |
-| [![組み込みアイコン][for-each-icon]<br>**For each**][for-each-doc] | 配列内のすべての項目に対して同じアクションを実行します。 |
-| [![組み込みアイコン][scope-icon]<br>**スコープ**][scope-doc] | アクションを*スコープ*にグループ化します。スコープ内のアクションが実行を完了すると、スコープ独自のステータスが取得されます。 |
-| [![組み込みアイコン][switch-icon]<br>**スイッチ**][switch-doc] | アクションを*ケース*にグループ化します。既定のケースを除き、ケースには、一意の値が割り当てられます。 割り当てられた値が式、オブジェクト、またはトークンの結果に一致するケースのみを実行します。 一致が存在しない場合は、既定のケースを実行します。 |
-| [![組み込みアイコン][terminate-icon]<br>**終了**][terminate-doc] | アクティブに実行中のロジック アプリ ワークフローを停止します。 |
-| [![組み込みアイコン][until-icon]<br>**期限**][until-doc] | 指定された条件が true になるまで、または特定の状態が変化するまで、アクションを繰り返します。 |
+| [![Condition 組み込みアクション][condition-icon]<br>**Condition**][condition-doc] | 条件を評価し、条件が true と false のいずれであるかに基づいて、さまざまなアクションを実行します。 |
+| [![For Each 組み込みアクション][for-each-icon]<br>**For each**][for-each-doc] | 配列内のすべての項目に対して同じアクションを実行します。 |
+| [![Scope 組み込みアクション][scope-icon]<br>**Scope**][scope-doc] | アクションを*スコープ*にグループ化します。スコープ内のアクションが実行を完了すると、スコープ独自のステータスが取得されます。 |
+| [![Switch 組み込みアクション][switch-icon]<br>**Switch**][switch-doc] | アクションを*ケース*にグループ化します。既定のケースを除き、ケースには、一意の値が割り当てられます。 割り当てられた値が式、オブジェクト、またはトークンの結果に一致するケースのみを実行します。 一致が存在しない場合は、既定のケースを実行します。 |
+| [![Terminate 組み込みアクション][terminate-icon]<br>**Terminate**][terminate-doc] | アクティブに実行中のロジック アプリ ワークフローを停止します。 |
+| [![Until 組み込みアクション][until-icon]<br>**Until**][until-doc] | 指定された条件が true になるまで、または特定の状態が変化するまで、アクションを繰り返します。 |
 |||
 
 ### <a name="manage-or-manipulate-data"></a>データを管理または操作する
@@ -120,9 +120,9 @@ Logic Apps では、データ出力とその形式を操作するための組み
 
 | 名前 | [説明] |
 |------|-------------|
-| [![組み込みアイコン][data-operations-icon]<br>**データの操作**][data-operations-doc] | データの操作を実行します。 <p>- **作成**:さまざまな型の複数の入力から単一の出力を作成します。 <br>- **CSV テーブルの作成**:JSON オブジェクトの配列からコンマ区切り値 (CSV) テーブルを作成します。 <br>- **HTML テーブルの作成**:JSON オブジェクトの配列から HTML テーブルを作成します。 <br>- **配列のフィルター処理**:別の配列内にある、条件を満たす項目から配列を作成します。 <br>- **結合**:配列内のすべての項目から 1 つの文字列を作成し、それらの項目を指定の区切り記号で区切ります。 <br>- **JSON の解析**:JSON コンテンツ内のプロパティとその値からわかりやすいトークンを作成して、ユーザーがそれらのプロパティをワークフロー内で使用できるようにします。 <br>- **選択**:別の配列内の項目または値を変換し、それらの項目を指定のプロパティにマッピングすることにより、JSON オブジェクトで配列を作成します。 |
-| ![組み込みアイコン][date-time-icon]<br>**日付/時刻** | タイムスタンプを使用して操作を実行します。 <p>- **時間への追加**:指定した数の単位をタイムスタンプに追加します。 <br>- **タイム ゾーンの変換**:タイムスタンプをソース タイム ゾーンからターゲット タイム ゾーンに変換します。 <br>- **現在の時刻**:現在のタイムスタンプを文字列として返します。 <br>- **未来の時間の取得**:現在のタイムスタンプに指定した時刻単位を加えて返します。 <br>- **過去の時間の取得**:現在のタイムスタンプから指定した時刻単位を引いて返します。 <br>- **時間からの減算**:タイムスタンプから時間単位数を減算します。 |
-| [![組み込みアイコン][variables-icon]<br>**変数**][variables-doc] | 変数の操作を実行します。 <p>- **配列変数に追加**:変数によって保管される配列内に、値を最後の項目として挿入します。 <br>- **文字列変数に追加**:変数によって保管される文字列内に、値を最後の文字として挿入します。 <br>- **変数の値を減らす**:変数の値を一定値だけ減らします。 <br>- **変数の値を増やす**:変数の値を一定値だけ増やします。 <br>- **変数を初期化する**:変数を作成し、そのデータ型と初期値を宣言します。 <br>- **変数の設定**:既存の変数に異なる値を代入します。 |
+| [![データ操作組み込みアクション][data-operations-icon]<br>**データ操作**][data-operations-doc] | データの操作を実行します。 <p>- **作成**:さまざまな型の複数の入力から単一の出力を作成します。 <br>- **CSV テーブルの作成**:JSON オブジェクトの配列からコンマ区切り値 (CSV) テーブルを作成します。 <br>- **HTML テーブルの作成**:JSON オブジェクトの配列から HTML テーブルを作成します。 <br>- **配列のフィルター処理**:別の配列内にある、条件を満たす項目から配列を作成します。 <br>- **結合**:配列内のすべての項目から 1 つの文字列を作成し、それらの項目を指定の区切り記号で区切ります。 <br>- **JSON の解析**:JSON コンテンツ内のプロパティとその値からわかりやすいトークンを作成して、ユーザーがそれらのプロパティをワークフロー内で使用できるようにします。 <br>- **選択**:別の配列内の項目または値を変換し、それらの項目を指定のプロパティにマッピングすることにより、JSON オブジェクトで配列を作成します。 |
+| ![日付と時刻組み込みアクション][date-time-icon]<br>**日付/時刻** | タイムスタンプを使用して操作を実行します。 <p>- **時間への追加**:指定した数の単位をタイムスタンプに追加します。 <br>- **タイム ゾーンの変換**:タイムスタンプをソース タイム ゾーンからターゲット タイム ゾーンに変換します。 <br>- **現在の時刻**:現在のタイムスタンプを文字列として返します。 <br>- **未来の時間の取得**:現在のタイムスタンプに指定した時刻単位を加えて返します。 <br>- **過去の時間の取得**:現在のタイムスタンプから指定した時刻単位を引いて返します。 <br>- **時間からの減算**:タイムスタンプから時間単位数を減算します。 |
+| [![変数組み込みアクション][variables-icon]<br>**変数**][variables-doc] | 変数の操作を実行します。 <p>- **配列変数に追加**:変数によって保管される配列内に、値を最後の項目として挿入します。 <br>- **文字列変数に追加**:変数によって保管される文字列内に、値を最後の文字として挿入します。 <br>- **変数の値を減らす**:変数の値を一定値だけ減らします。 <br>- **変数の値を増やす**:変数の値を一定値だけ増やします。 <br>- **変数を初期化する**:変数を作成し、そのデータ型と初期値を宣言します。 <br>- **変数の設定**:既存の変数に異なる値を代入します。 |
 |||
 
 <a name="managed-api-connectors"></a>
@@ -133,18 +133,18 @@ Logic Apps には、次のサービスまたはシステムでタスク、プロ
 
 | 名前 | 説明 |
 |------|-------------|
-| [![API アイコン][azure-service-bus-icon]<br>**Azure Service Bus**][azure-service-bus-doc] | Logic Apps で最もよく使用されているコネクタを使用して非同期メッセージ、セッション、およびトピック サブスクリプションを管理します。 |
-| [![API アイコン][sql-server-icon]<br>**SQL Server**][sql-server-doc] | オンプレミスの SQL Server、またはクラウド内の Azure SQL Database に接続して、レコードの管理、ストアド プロシージャの実行、クエリの実行を行えるようにします。 |
-| [![API アイコン][azure-blob-storage-icon]<br>**Azure Blob<br>Storage**][azure-blob-storage-doc] | ストレージ アカウントに接続して、BLOB コンテンツの作成と管理ができるようにします。 |
-| [![API アイコン][office-365-outlook-icon]<br>**Office 365<br>Outlook**][office-365-outlook-doc] | Office 365 メール アカウントに接続して、メール、タスク、カレンダー イベントおよび会議、連絡先、要求などの作成と管理ができるようにします。 |
-| [![API アイコン][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc] | SSH を使用してインターネットからアクセス可能な SFTP サーバーに接続して、ファイルとフォルダーを操作できるようにします。 |
-| [![API アイコン][sharepoint-online-icon]<br>**SharePoint<br>Online**][sharepoint-online-doc] | SharePoint Online に接続して、ファイル、添付ファイル、フォルダーなどを管理できるようにします。 |
-| [![API アイコン][azure-queues-icon]<br>**Azure <br>キュー**][azure-queues-doc] | Azure Storage アカウントに接続して、キューとメッセージの作成と管理ができるようにします。 |
-| [![API アイコン][ftp-icon]<br>**FTP**][ftp-doc] | インターネットからアクセス可能な FTP サーバーに接続して、ファイルとフォルダーを操作できるようにします。 |
-| [![API アイコン][file-system-icon]<br>**ファイル <br>システム**][file-system-doc] | オンプレミスのファイル共有に接続して、ファイルの作成と管理ができるようにします。 |
-| [![API アイコン][azure-event-hubs-icon]<br>**Azure Event Hubs**][azure-event-hubs-doc] | イベント ハブを通じてイベントを使用したり、発行したりします。 たとえば、ロジック アプリから Event Hubs を使用して出力を取得し、リアルタイム分析プロバイダーに送信できます。 |
-| [![API アイコン][azure-event-grid-icon]<br>**Azure Event**<br>**Grid**][azure-event-grid-doc] | Azure やサードパーティのリソースが変更されたときなどに、Event Grid が発行するイベントを監視します。 |
-| [![API アイコン][salesforce-icon]<br>**Salesforce**][salesforce-doc] | Salesforce アカウントに接続して、レコード、ジョブ、オブジェクトなどの項目の作成と管理ができるようにします。 |
+| [![Azure Service Bus マネージド コネクタ][azure-service-bus-icon]<br>**Azure Service Bus**][azure-service-bus-doc] | Logic Apps で最もよく使用されているコネクタを使用して非同期メッセージ、セッション、およびトピック サブスクリプションを管理します。 |
+| [![SQL Server マネージド コネクタ][sql-server-icon]<br>**SQL Server**][sql-server-doc] | オンプレミスの SQL Server、またはクラウド内の Azure SQL Database に接続して、レコードの管理、ストアド プロシージャの実行、クエリの実行を行えるようにします。 |
+| [![Azure Blob Storage マネージド コネクタ][azure-blob-storage-icon]<br>**Azure Blob<br>Storage**][azure-blob-storage-doc] | ストレージ アカウントに接続して、BLOB コンテンツの作成と管理ができるようにします。 |
+| [![Office 365 Outlook マネージド コネクタ][office-365-outlook-icon]<br>**Office 365<br>Outlook**][office-365-outlook-doc] | Office 365 メール アカウントに接続して、メール、タスク、カレンダー イベントおよび会議、連絡先、要求などの作成と管理ができるようにします。 |
+| [![SFTP-SSH マネージド コネクタ][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc] | SSH を使用してインターネットからアクセス可能な SFTP サーバーに接続して、ファイルとフォルダーを操作できるようにします。 |
+| [![SharePoint Online マネージド コネクタ][sharepoint-online-icon]<br>**SharePoint<br>Online**][sharepoint-online-doc] | SharePoint Online に接続して、ファイル、添付ファイル、フォルダーなどを管理できるようにします。 |
+| [![Azure キュー マネージド コネクタ][azure-queues-icon]<br>**Azure <br>Queues**][azure-queues-doc] | Azure Storage アカウントに接続して、キューとメッセージの作成と管理ができるようにします。 |
+| [![FTP マネージド コネクタ][ftp-icon]<br>**FTP**][ftp-doc] | インターネットからアクセス可能な FTP サーバーに接続して、ファイルとフォルダーを操作できるようにします。 |
+| [![ファイル システム マネージド コネクタ][file-system-icon]<br>**ファイル<br>システム**][file-system-doc] | オンプレミスのファイル共有に接続して、ファイルの作成と管理ができるようにします。 |
+| [![Azure Event Hubs マネージド コネクタ][azure-event-hubs-icon]<br>**Azure Event Hubs**][azure-event-hubs-doc] | イベント ハブを通じてイベントを使用したり、発行したりします。 たとえば、ロジック アプリから Event Hubs を使用して出力を取得し、リアルタイム分析プロバイダーに送信できます。 |
+| [![Azure Event Grid マネージド コネクタ][azure-event-grid-icon]<br>**Azure Event**<br>**Grid**][azure-event-grid-doc] | Azure やサードパーティのリソースが変更されたときなどに、Event Grid が発行するイベントを監視します。 |
+| [![Salesforce マネージド コネクタ][salesforce-icon]<br>**Salesforce**][salesforce-doc] | Salesforce アカウントに接続して、レコード、ジョブ、オブジェクトなどの項目の作成と管理ができるようにします。 |
 |||
 
 <a name="on-premises-connectors"></a>
@@ -155,38 +155,38 @@ Logic Apps には、次のサービスまたはシステムでタスク、プロ
 
 :::row:::
     :::column:::
-        [![API アイコン][biztalk-server-icon]<br>**BizTalk** <br>**Server**][biztalk-server-doc]
+        [![BizTalk Server コネクタ][biztalk-server-icon]<br>**BizTalk** <br>**Server**][biztalk-server-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][file-system-icon]<br>**ファイル <br>システム**][file-system-doc]
+        [![ファイル システム コネクタ][file-system-icon]<br>**ファイル<br>システム**][file-system-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc]
+        [![DB2 コネクタ][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][ibm-informix-icon]<br>**IBM** <br>**Informix**][ibm-informix-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API アイコン][mysql-icon]<br>**MySQL**][mysql-doc]
-    :::column-end:::
-    :::column:::
-        [![API アイコン][oracle-db-icon]<br>**Oracle DB**][oracle-db-doc]
-    :::column-end:::
-    :::column:::
-        [![API アイコン][postgre-sql-icon]<br>**PostgreSQL**][postgre-sql-doc]
-    :::column-end:::
-    :::column:::
-        [![API アイコン][sharepoint-server-icon]<br>**SharePoint <br>Server**][sharepoint-server-doc]
+        [![Informix コネクタ][ibm-informix-icon]<br>**IBM** <br>**Informix**][ibm-informix-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API アイコン][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc]
+        [![MySQL コネクタ][mysql-icon]<br>**MySQL**][mysql-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][teradata-icon]<br>**Teradata**][teradata-doc]
+        [![Oracle DB コネクタ][oracle-db-icon]<br>**Oracle DB**][oracle-db-doc]
+    :::column-end:::
+    :::column:::
+        [![PostgreSQL コネクタ][postgre-sql-icon]<br>**PostgreSQL**][postgre-sql-doc]
+    :::column-end:::
+    :::column:::
+        [![SharePoint Server コネクタ][sharepoint-server-icon]<br>**SharePoint <br>Server**][sharepoint-server-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![SQL Server コネクタ][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![Teradata コネクタ][teradata-icon]<br>**Teradata**][teradata-doc]
     :::column-end:::
     :::column:::
         
@@ -204,44 +204,44 @@ Logic Apps では、Azure の Enterprise Integration Pack (EIP) で利用可能�
 
 :::row:::
     :::column:::
-        [![API アイコン][as2-icon]<br>**AS2 <br>のデコード**][as2-doc]
+        [![AS2 デコード アクション][as2-icon]<br>**AS2 <br>デコード**][as2-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][as2-icon]<br>**AS2 <br>のエンコード**][as2-doc]
+        [![AS2 エンコード アクション][as2-icon]<br>**AS2 <br>エンコード**][as2-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][edifact-icon]<br>**EDIFACT <br>のデコード**][edifact-decode-doc]
+        [![EDIFACT デコード アクション][edifact-icon]<br>**EDIFACT <br>デコード**][edifact-decode-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][edifact-icon]<br>**EDIFACT <br>のエンコード**][edifact-encode-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API アイコン][flat-file-decode-icon]<br>**フラット ファイル<br>のデコード**][flat-file-decode-doc]
-    :::column-end:::
-    :::column:::
-        [![API アイコン][flat-file-encode-icon]<br>**フラット ファイル<br>のエンコード**][flat-file-encode-doc]
-    :::column-end:::
-    :::column:::
-        [![API アイコン][integration-account-icon]<br>**統合<br>アカウント**][integration-account-doc]
-    :::column-end:::
-    :::column:::
-        [![API アイコン][liquid-icon]<br>**Liquid** <br>**変換**][json-liquid-transform-doc]
+        [![EDIFACT エンコード アクション][edifact-icon]<br>**EDIFACT <br>エンコード**][edifact-encode-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API アイコン][x12-icon]<br>**X12 <br>のデコード**][x12-decode-doc]
+        [![フラット ファイル デコード アクション][flat-file-decode-icon]<br>**フラット ファイル<br>デコード**][flat-file-decode-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][x12-icon]<br>**X12 <br>のエンコード**][x12-encode-doc]
+        [![フラット ファイル エンコード アクション][flat-file-encode-icon]<br>**フラット ファイル<br>エンコード**][flat-file-encode-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][xml-transform-icon]<br>**XML** <br>**変換**][xml-transform-doc]
+        [![統合アカウント アクション][integration-account-icon]<br>**統合<br>アカウント**][integration-account-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][xml-validate-icon]<br>**XML <br>検証**][xml-validate-doc]
+        [![Liquid 変換アクション][liquid-icon]<br>**Liquid** <br>**変換**][json-liquid-transform-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![X12 デコード アクション][x12-icon]<br>**X12 <br>デコード**][x12-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![X12 エンコード アクション][x12-icon]<br>**X12 <br>エンコード**][x12-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![XML 変換アクション][xml-transform-icon]<br>**XML** <br>**変換**][xml-transform-doc]
+    :::column-end:::
+    :::column:::
+        [![XML 検証アクション][xml-validate-icon]<br>**XML <br>検証**][xml-validate-doc]
     :::column-end:::
 :::row-end:::
 
@@ -253,13 +253,13 @@ Logic Apps では、SAP や IBM MQ などのエンタープライズ システ�
 
 :::row:::
     :::column:::
-        [![API アイコン][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc]
+        [![IBM 3270 コネクタ][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc]
+        [![MQ コネクタ][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][sap-icon]<br>**SAP**][sap-connector-doc]
+        [![SAP コネクタ][sap-icon]<br>**SAP**][sap-connector-doc]
     :::column-end:::
     :::column:::
         
@@ -274,86 +274,86 @@ Logic Apps では、SAP や IBM MQ などのエンタープライズ システ�
 
 :::row:::
     :::column:::
-        [![API アイコン][as2-icon]<br>**AS2**][as2-doc]
+        [![AS2 ISE コネクタ][as2-icon]<br>**AS2**][as2-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][azure-automation-icon]<br>**Azure <br>Automation**][azure-automation-doc]
+        [![Azure Automation ISE コネクタ][azure-automation-icon]<br>**Azure <br>Automation**][azure-automation-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][azure-blob-storage-icon]<br>**Azure Blob<br>Storage**][azure-blob-storage-doc]
+        [![Azure Blob Storage ISE コネクタ][azure-blob-storage-icon]<br>**Azure Blob<br>Storage**][azure-blob-storage-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][azure-cosmos-db-icon]<br>**Azure Cosmos <br>DB**][azure-cosmos-db-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API アイコン][azure-event-hubs-icon]<br>**Azure Event <br>Hubs**][azure-event-hubs-doc]
-    :::column-end:::
-    :::column:::
-        [![API アイコン][azure-event-grid-icon]<br>**Azure Event <br>Grid**][azure-event-grid-doc]
-    :::column-end:::
-    :::column:::
-        [![API アイコン][azure-file-storage-icon]<br>**Azure File<br>Storage**][azure-file-storage-doc]
-    :::column-end:::
-    :::column:::
-        [![API アイコン][azure-key-vault-icon]<br>**Azure Key <br>Vault**][azure-key-vault-doc]
+        [![Azure Cosmos DB ISE コネクタ][azure-cosmos-db-icon]<br>**Azure Cosmos <br> DB**][azure-cosmos-db-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API アイコン][azure-monitor-logs-icon]<br>**Azure Monitor <br>ログ**][azure-monitor-logs-doc]
+        [![Azure Event Hubs ISE コネクタ][azure-event-hubs-icon]<br>**Azure Event <br>Hubs**][azure-event-hubs-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][azure-service-bus-icon]<br>**Azure Service <br>Bus**][azure-service-bus-doc]
+        [![Azure Event Grid ISE コネクタ][azure-event-grid-icon]<br>**Azure Event <br>Grid**][azure-event-grid-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][azure-sql-data-warehouse-icon]<br>**Azure SQL Data <br>Warehouse**][azure-sql-data-warehouse-doc]
+        [![Azure File Storage ISE コネクタ][azure-file-storage-icon]<br>**Azure File<br>Storage**][azure-file-storage-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][azure-table-storage-icon]<br>**Azure Table <br>Storage**][azure-table-storage-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API アイコン][azure-queues-icon]<br>**Azure <br>キュー**][azure-queues-doc]
-    :::column-end:::
-    :::column:::
-        [![API アイコン][edifact-icon]<br>**EDIFACT**][edifact-doc]
-    :::column-end:::
-    :::column:::
-        [![API アイコン][file-system-icon]<br>**ファイル <br>システム**][file-system-doc]
-    :::column-end:::
-    :::column:::
-        [![API アイコン][ftp-icon]<br>**FTP**][ftp-doc]
+        [![Azure Key Vault ISE コネクタ][azure-key-vault-icon]<br>**Azure Key <br>Vault**][azure-key-vault-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API アイコン][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc]
+        [![Azure Monitor ログ ISE コネクタ][azure-monitor-logs-icon]<br>**Azure Monitor <br>Logs**][azure-monitor-logs-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc]
+        [![Azure Service Bus ISE コネクタ][azure-service-bus-icon]<br>**Azure Service <br>Bus**][azure-service-bus-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc]
+        [![Azure SQL Data Warehouse ISE コネクタ][azure-sql-data-warehouse-icon]<br>**Azure SQL Data <br>Warehouse**][azure-sql-data-warehouse-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][sap-icon]<br>**SAP**][sap-connector-doc]
+        [![Azure Table Storage ISE コネクタ][azure-table-storage-icon]<br>**Azure Table <br>Storage**][azure-table-storage-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API アイコン][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc]
+        [![Azure キュー ISE コネクタ][azure-queues-icon]<br>**Azure <br>キュー**][azure-queues-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][smtp-icon]<br>**SMTP**][smtp-doc]
+        [![EDIFACT ISE コネクタ][edifact-icon]<br>**EDIFACT**][edifact-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc]
+        [![ファイル システム ISE コネクタ][file-system-icon]<br>**ファイル<br>システム**][file-system-doc]
     :::column-end:::
     :::column:::
-        [![API アイコン][x12-icon]<br>**X12**][x12-doc]
+        [![FTP ISE コネクタ][ftp-icon]<br>**FTP**][ftp-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![IBM 3270 ISE コネクタ][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![DB2 ISE コネクタ][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![MQ ISE コネクタ][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![SAP ISE コネクタ][sap-icon]<br>**SAP**][sap-connector-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![SFTP-SSH ISE コネクタ][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc]
+    :::column-end:::
+    :::column:::
+        [![SMTP ISE コネクタ][smtp-icon]<br>**SMTP**][smtp-doc]
+    :::column-end:::
+    :::column:::
+        [![SQL Server ISE コネクタ][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![X12 ISE コネクタ][x12-icon]<br>**X12**][x12-doc]
     :::column-end:::
 :::row-end:::
 
@@ -410,7 +410,7 @@ Azure Logic Apps でコネクタを使用して特定のリソースに接続す
 
 ## <a name="get-ready-for-deployment"></a>展開の準備
 
-ロジック アプリ内から接続を作成しますが、接続は独自のリソース定義を持つ個別の Azure リソースです。 これらの接続リソース定義を確認するには、[Azure portal を使用してロジック アプリのリソース グループを調査](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#view-resource-definitions)するか、[Azure から Visual Studio にロジック アプリをダウンロード](../logic-apps/manage-logic-apps-with-visual-studio.md)することができます。これは、デプロイの準備がほとんど整っているパラメーター化された有効なロジック アプリ テンプレートを作成するための最も簡単な方法です。
+ロジック アプリ内から接続を作成しますが、接続は独自のリソース定義を持つ個別の Azure リソースです。 これらの接続リソース定義を確認するには、[Azure から Visual Studio にロジック アプリをダウンロード](../logic-apps/manage-logic-apps-with-visual-studio.md)します。これは、デプロイの準備がほとんど整っているパラメーター化された有効なロジック アプリ テンプレートを作成するための最も簡単な方法です。
 
 ## <a name="next-steps"></a>次のステップ
 

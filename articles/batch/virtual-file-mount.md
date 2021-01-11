@@ -4,23 +4,23 @@ description: 仮想ファイル システムを Batch プールにマウント�
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/13/2019
-ms.openlocfilehash: 6b42d73954bf7ccaedfec15371cc73115c51198a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: df03275fdeea88df1a2f2b6e2cda55021497cdf7
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921632"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89145486"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>仮想ファイル システムを Batch プールにマウントする
 
 Azure Batch は、Batch プール内の Windows または Linux 計算ノードへのクラウド ストレージまたは外部ファイル システムのマウントをサポートするようになりました。 計算ノードがプールに参加すると、仮想ファイル システムがマウントされ、そのノードのローカル ドライブとして扱われます。 Azure Files、Azure Blob Storage、ネットワーク ファイル システム (NFS) ([Avere vFXT キャッシュ](../avere-vfxt/avere-vfxt-overview.md)を含む)、Common Internet File System (CIFS) などのファイル システムをマウントできます。
 
-この記事では、[Batch Management Library for .NET](/dotnet/api/overview/azure/batch?view=azure-dotnet) を使用して、計算ノードのプールに仮想ファイル システムをマウントする方法について説明します。
+この記事では、[Batch Management Library for .NET](/dotnet/api/overview/azure/batch) を使用して、計算ノードのプールに仮想ファイル システムをマウントする方法について説明します。
 
 > [!NOTE]
 > 仮想ファイル システムのマウントは、2019-08-19 以降に作成された Batch プールでサポートされています。 2019-08-19 より前に作成された Batch プールでは、この機能はサポートされていません。
 > 
-> 計算ノードにファイル システムをマウントする API は、[Batch .NET](/dotnet/api/microsoft.azure.batch?view=azure-dotnet) ライブラリに含まれています。
+> 計算ノードにファイル システムをマウントする API は、[Batch .NET](/dotnet/api/microsoft.azure.batch) ライブラリに含まれています。
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>プールにマウントする利点
 

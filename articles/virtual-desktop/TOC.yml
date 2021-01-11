@@ -94,6 +94,10 @@
       href: configure-automatic-updates.md
     - name: 言語パックをインストールする
       href: language-packs.md
+    - name: Azure Advisor を使用する
+      href: azure-advisor.md
+    - name: 推奨事項を解決する
+      href: azure-advisor-recommendations.md
 - name: 概念
   items:
     - name: 認証
@@ -162,6 +166,8 @@
       href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
     - name: Azure シナリオ例
       href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
+    - name: メール検出
+      href: /windows-server/remote/remote-desktop-services/rds-email-discovery
 - name: リソース
   items:
     - name: PowerShell

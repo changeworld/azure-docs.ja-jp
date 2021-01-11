@@ -22,7 +22,7 @@
     - name: ブラウザーの使用
       href: luis-get-started-get-intent-from-browser.md
     - name: SDK の使用
-      href: quickstart-sdk.md
+      href: azure-sdk-quickstart.md
     - name: REST API の使用
       items:
         - name: 意図の取得
