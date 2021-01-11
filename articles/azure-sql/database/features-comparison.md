@@ -184,7 +184,7 @@ Azure SQL Database と Azure SQL Managed Instance では、データの管理に
 マイクロソフトは、Azure SQL Database に継続的に機能を追加します。 最新の更新プログラムについては、以下のフィルターを使用して、Azure のサービスの更新情報 Web ページを参照してください。
 
 - [Azure SQL Database](https://azure.microsoft.com/updates/?service=sql-database) にフィルターが適用されています。
-- SQL Database の機能について、[General Availability] [(GA) のアナウンス](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) でフィルター処理します。
+- SQL Database の機能について、[General Availability \(GA\) のアナウンス](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) でフィルター処理します。
 
 Azure SQL Database と Azure SQL Managed Instance の詳細については、以下を参照してください。
 

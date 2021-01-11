@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: eafe13adb5b37de2de2bc4eb8bf15c775af0b039
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 1ddcdfd9efddd050f996e5c2b953baba242967fa
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171865"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640584"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Migrate アプライアンスと検出のトラブルシューティング
 
@@ -117,6 +117,28 @@ Azure へのサインインに正しくない Azure アカウントを使用し�
     3. IP アドレスとホスト名を 1 行で追加します。 このエラーが見られるホストまたはクラスターごとに繰り返します。
     4. hosts ファイルを保存して閉じます。
     5. アプライアンス管理アプリを使用して、アプライアンスからホストに接続できるかどうかを確認します。 30 分後、これらのホストの最新情報が Azure portal に表示されるようになるはずです。
+
+
+## <a name="error-60001-unable-to-connect-to-server"></a>Error 60001:サーバーに接続できない 
+
+- アプライアンスからサーバーへの接続があることを確認します
+- Linux サーバーの場合は、次の手順に従ってパスワード ベースの認証が有効になっていることを確認します。
+    1. Linux マシンにログインし、コマンド 'vi /etc/ssh/sshd_config' を使用して SSH 構成ファイルを開きます
+    2. "PasswordAuthentication" オプションを [はい] に設定します。 ファイルを保存します。
+    3. "service sshd restart" を実行して SSH サービスを再起動します
+- Windows サーバーの場合は、リモート WMI 呼び出しを許可するため、ポート 5985 が開かれていることを確認します。
+- GCP Linux サーバーを検出中で、ルート ユーザーを使用している場合は、次のコマンドを使用して、ルート ログインの既定の設定を変更します
+    1. Linux マシンにログインし、コマンド 'vi /etc/ssh/sshd_config' を使用して SSH 構成ファイルを開きます
+    2. "PermitRootLogin" オプションを [はい] に設定します。
+    3. "service sshd restart" を実行して SSH サービスを再起動します
+
+## <a name="error-no-suitable-authentication-method-found"></a>エラー:適切な認証方法が見つからない
+
+次の手順に従って、Linux サーバーでパスワード ベースの認証が有効になっていることを確認します。
+    1. Linux マシンにログインし、コマンド 'vi /etc/ssh/sshd_config' を使用して SSH 構成ファイルを開きます
+    2. "PasswordAuthentication" オプションを [はい] に設定します。 ファイルを保存します。
+    3. "service sshd restart" を実行して SSH サービスを再起動します
+
 
 ## <a name="discovered-vms-not-in-portal"></a>ポータルで VM が検出されない
 

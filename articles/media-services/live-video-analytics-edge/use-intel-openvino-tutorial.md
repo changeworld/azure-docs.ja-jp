@@ -4,12 +4,12 @@ description: このチュートリアルでは、Intel が提供する AI モデ
 ms.topic: tutorial
 ms.date: 07/24/2020
 titleSuffix: Azure
-ms.openlocfilehash: 2268300f711a939ed808d1f39bbde1653e8832c8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 102c54d8f738c3e8e62c7092d0df6ec7d12b8a0c
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212352"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950257"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>チュートリアル:Intel の AI 拡張機能 OpenVINO™ モデル サーバーを使用してライブ ビデオを分析する 
 
@@ -53,7 +53,7 @@ HTTP 拡張ノードは、プロキシの役割を果たします。 ビデオ �
 ## <a name="about-openvino-model-server--ai-extension-from-intel"></a>Intel の AI 拡張機能 OpenVINO™ モデル サーバーについて
 Intel® のディストリビューション [OpenVINO™ ツールキット](https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit.html) (Open Visual Inference and Neural Network Optimization) は無料のソフトウェア キットで、開発者やデータ サイエンティストがコンピューター ビジョン ワークロードをスピードアップしたり、ディープ ラーニングの推論およびデプロイを効率化したり、エッジからクラウドまで Intel® プラットフォーム全体で簡単に異種実行環境を実現したりする際に役立ちます。 モデル オプティマイザーと推論エンジンを備えた Intel® ディープ ラーニング デプロイメント ツールキットのほか、40 を超える最適化された事前トレーニング済みモデルを含んだ [Open Model Zoo](https://github.com/openvinotoolkit/open_model_zoo) リポジトリが同梱されています。
 
-複雑なハイパフォーマンスのライブ ビデオ分析ソリューションを構築するには、Live Video Analytics on IoT Edge モジュールに、エッジのスケールを活かせる強力な推論エンジンを組み合わせる必要があります。 このチュートリアルでは、Live Video Analytics on IoT Edge と連動するように設計された Edge モジュールである [Intel の AI 拡張機能 OpenVINO™ モデル サーバー](https://aka.ms/lva-intel-ovms)に推論要求が送信されます。 この推論サーバー モジュールには、OpenVINO™ モデル サーバー (OVMS) が含まれています。これは OpenVINO™ ツールキットを使用する推論サーバーであり、コンピューター ビジョン ワークロード向けに高度に最適化され、また Intel アーキテクチャ向けに開発されています。 OVMS には、推論サーバーと Live Video Analytics on IoT Edge モジュールの間でビデオ フレームおよび推論結果を簡単に交換するための拡張機能が追加されているため、OpenVINO に対応したモデルであれば、どのようなモデルでも実行することができます (推論サーバー モジュールは、[こちら](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper)のコードを変更することでカスタマイズできます)。 さらに、Intel のハードウェアが提供するさまざまなアクセラレーション メカニズムから選択することができます。 これらには、CPU (Atom、Core、Xeon)、FPGA、VPU が含まれます。
+複雑なハイパフォーマンスのライブ ビデオ分析ソリューションを構築するには、Live Video Analytics on IoT Edge モジュールに、エッジのスケールを活かせる強力な推論エンジンを組み合わせる必要があります。 このチュートリアルでは、Live Video Analytics on IoT Edge と連動するように設計された Edge モジュールである [Intel の AI 拡張機能 OpenVINO™ モデル サーバー](https://aka.ms/lva-intel-ovms)に推論要求が送信されます。 この推論サーバー モジュールには、OpenVINO™ モデル サーバー (OVMS) が含まれています。これは OpenVINO™ ツールキットを使用する推論サーバーであり、コンピューター ビジョン ワークロード向けに高度に最適化され、また Intel® アーキテクチャ向けに開発されています。 OVMS には、推論サーバーと Live Video Analytics on IoT Edge モジュールの間でビデオ フレームおよび推論結果を簡単に交換するための拡張機能が追加されているため、OpenVINO™ ツールキットに対応したモデルであれば、どのようなモデルでも実行することができます (推論サーバー モジュールは、[コード](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_wrapper)を変更することでカスタマイズできます)。 さらに、Intel® のハードウェアが提供するさまざまなアクセラレーション メカニズムから選択することができます。 これらには、CPU (Atom、Core、Xeon)、FPGA、VPU が含まれます。
 
 この推論サーバーの初期リリースでは、次の[モデル](https://github.com/openvinotoolkit/model_server/tree/master/extras/ams_models)を利用できます。
 

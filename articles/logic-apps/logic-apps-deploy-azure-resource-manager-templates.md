@@ -3,16 +3,16 @@ title: ロジック アプリ テンプレートのデプロイ
 description: Azure Logic Apps 用に作成された Azure Resource Manager テンプレートをデプロイする方法について説明します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 08/01/2019
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: d3ef4275e5b309bb499338fe90c0f527aeaeb71f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/25/2020
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 81fad94dc02bd57f839d7ab8653bec7074e41800
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501510"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076342"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps 用の Azure Resource Manager テンプレートをデプロイする
 
@@ -119,13 +119,20 @@ Azure Pipelines を使用するための一般的な大まかな手順は次の�
 
 ## <a name="authorize-oauth-connections"></a>OAuth 接続を作成する
 
-デプロイ後、ロジック アプリは有効なパラメーターを使用してエンド ツー エンドで動作します。 ただし、引き続き OAuth 接続を承認し、[資格情報を認証する](../active-directory/develop/authentication-vs-authorization.md)ための有効なアクセス トークンを生成する必要があります。 OAuth 接続を認証する方法は次のとおりです。
+デプロイ後、ロジック アプリは有効なパラメーターを使用してエンドツーエンドで動作しますが、[資格情報を認証する](../active-directory/develop/authentication-vs-authorization.md)ための有効なアクセス トークンを生成するには、引き続き事前承認された OAuth 接続を承認または使用する必要があります。 ただし、API 接続リソースのデプロイおよび認証は 1 回だけ行う必要があります。つまり、接続情報を更新する必要がある場合を除き、それらの接続リソースを後続のデプロイに含める必要はありません。 継続的インテグレーションと継続的デプロイ パイプラインを使用する場合は、更新されたロジック アプリ リソースのみをデプロイし、接続を毎回再認証する必要はありません。
 
-* 自動デプロイの場合は、各 OAuth 接続に同意するスクリプトを使用できます。 例として、[LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) プロジェクトの GitHub のスクリプトがあります。
+接続の承認に関するいくつかの推奨事項を次に示します。
 
-* OAuth 接続を手動で承認するには、Azure portal または Visual Studio で、Logic App Designer でロジック アプリを開きます。 デザイナーでは、必要な接続を承認します。
+* 同じリージョンにあるロジック アプリ全体で、API 接続リソースを事前承認して共有します。 API 接続は、ロジック アプリとは別に Azure リソースとして存在します。 ロジック アプリは API 接続リソースに依存しますが、API 接続リソースはロジック アプリに依存せず、依存するロジック アプリを削除した後も維持されます。 また、ロジック アプリは他のリソース グループに存在する API 接続を使用できます。 ただし、ロジック アプリ デザイナーは、使用するロジック アプリと同じリソース グループ内の API 接続の作成のみサポートします。
 
-接続を承認するのではなく Azure Active Directory (Azure AD) [サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)を使用する場合は、[ロジック アプリ テンプレートでサービス プリンシパル パラメーターを指定する方法](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)のページを参照してください。
+  > [!NOTE]
+  > API 接続の共有を検討している場合、ソリューションによって[調整に関する問題を解決できる](../logic-apps/handle-throttling-problems-429-errors.md#connector-throttling)ことを確認してください。 調整は接続レベルで行われるため、複数のロジック アプリにわたって同じ接続を再利用すると、調整の問題が発生する可能性が高くなることがあります。
+
+* 多要素認証を必要とするサービスやシステムがシナリオに含まれている場合を除き、PowerShell スクリプトを使用して、承認と同意が既に提供されたアクティブなブラウザー セッションを持つ仮想マシン上で継続的インテグレーション ワーカーを通常のユーザー アカウントとして実行することによって、各 OAuth 接続への同意を提供することができます。 たとえば、[Logic Apps GitHub リポジトリの LogicAppConnectionAuth プロジェクト](https://github.com/logicappsio/LogicAppConnectionAuth)によって提供されるサンプル スクリプトを再利用できます。
+
+* Azure portal または Visual Studio のいずれかで、Logic App Designer でロジック アプリを開くことによって OAuth 接続を手動で承認します。
+
+* 接続を承認するのではなく Azure Active Directory (Azure AD) [サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)を使用する場合は、[ロジック アプリ テンプレートでサービス プリンシパル パラメーターを指定する方法](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)のページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

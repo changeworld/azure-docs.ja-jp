@@ -3,12 +3,12 @@ title: 仮想マシンのコンテンツの監査を学習する
 description: Azure Policy がゲスト構成エージェントを使用して仮想マシン内の設定を監査するしくみについて説明します。
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 624f0a2464323e8002b9940471c93b3030f053d5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 951960793ebda50fdb87d266c4dc8561f2fcd70f
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544674"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756692"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
@@ -36,7 +36,7 @@ Azure Policy では、Azure 内で実行するマシンと [Arc に接続され�
 > [!IMPORTANT]
 > Azure の仮想マシンを監査するには、ゲスト構成拡張機能とマネージド ID が必要です。 拡張機能を大規模にデプロイするには、次のポリシー イニシアチブを割り当てます。
 > 
-> - [仮想マシンでゲスト構成ポリシーを有効にするための前提条件をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
+> `Deploy prerequisites to enable Guest Configuration policies on virtual machines`
 
 ### <a name="limits-set-on-the-extension"></a>拡張機能に設定されている制限
 
@@ -70,7 +70,7 @@ Azure Policy では、Azure 内で実行するマシンと [Arc に接続され�
 |Microsoft|Windows クライアント|Windows 10|
 |OpenLogic|CentOS|7.3 以降|
 |Red Hat|Red Hat Enterprise Linux|7.4 - 7.8|
-|Suse|SLES|12 SP3 以降|
+|Suse|SLES|12 SP3 - SP5|
 
 カスタム仮想マシン イメージについては、上記の表にあるいずれかのオペレーティング システムであれば、ゲスト構成ポリシーでサポートされます。
 
@@ -96,6 +96,11 @@ Azure Arc によって接続されている Azure の外部にあるノードで
 
 Azure のゲスト構成リソース プロバイダーと通信するには、マシンはポート **443** で Azure データセンターに対してアウトバウンド アクセスを行う必要があります。 Azure 内のネットワークで送信トラフィックが許可されていない場合は、[ネットワーク セキュリティ グループ](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)の規則で例外を構成します。 [サービス タグ](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" を使用して、ゲスト構成サービスを参照できます。
 
+プライベート データセンターの Arc 接続サーバーでは、次のパターンを使用してトラフィックを許可します。
+
+- ポート: 送信インターネット アクセスには TCP 443 のみが必要です
+- グローバル URL: `*.guestconfiguration.azure.com`
+
 ## <a name="managed-identity-requirements"></a>マネージド ID の要件
 
 イニシアチブ「[仮想マシンでゲスト構成ポリシーを有効にするための前提条件をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)」のポリシー定義を使用すると、システムによって割り当てられたマネージド ID が有効になります (まだ存在しない場合)。 ID の作成を管理するイニシアチブには、2 つのポリシー定義があります。 ポリシー定義内の IF 条件により、Azure のマシン リソースの現在の状態に基づいて正しい動作が保証されます。
@@ -106,25 +111,16 @@ Azure のゲスト構成リソース プロバイダーと通信するには、�
 
 ## <a name="guest-configuration-definition-requirements"></a>ゲスト構成定義の要件
 
-ゲスト構成によって実行される各監査には、**DeployIfNotExists** 定義と **AuditIfNotExists** 定義の 2 つのポリシー定義が必要です。 **DeployIfNotExists** ポリシー定義を使用して、各マシンで監査を実行するための依存関係を管理します。
+ゲスト構成ポリシーでは、**AuditIfNotExists** 効果が使用されます。 定義が割り当てられると、バックエンド サービスでは、`Microsoft.GuestConfiguration` Azure リソース プロバイダーのすべての要件のライフサイクルが自動的に処理されます。
 
-**DeployIfNotExists** ポリシー定義が検証し、次の項目を修正します。
+**AuditIfNotExists** ポリシーは、コンピューター上のすべての要件が満たされるまで、コンプライアンスの結果を返しません。 要件の詳細については、「[Azure 仮想マシンの要件をデプロイする](#deploy-requirements-for-azure-virtual-machines)」セクションを参照してください。
 
-- マシンに評価する構成が割り当てられていることを検証します。 割り当てが現在存在しない場合は、割り当てを取得し、次のようにしてマシンを準備します。
-  - [マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) を使用して、マシンへの認証を行う
-  - **Microsoft.GuestConfiguration** 拡張機能の最新バージョンをインストールする
-  - 必要とする場合、[検証ツール](#validation-tools)と依存関係をインストールする
+> [!IMPORTANT]
+> 以前のリリースのゲスト構成では、**DeployIfNoteExists** 定義と **AuditIfNotExists** 定義を組み合わせるためにイニシアチブが必要でした。 **DeployIfNotExists** 定義は不要になりました。 定義とイニシアチブには `[Deprecated]` ラベルが付けられていますが、既存の割り当ては引き続き機能します。
+>
+> 手動操作が必要です。 以前にカテゴリ `Guest Configuration` にポリシー イニシアチブを割り当てていた場合は、ポリシー割り当てを削除し、新しい定義を割り当てます。 ゲスト構成ポリシーには、`Audit <Windows/Linux> machines that <non-compliant condition>` という名前パターンがあります。
 
-**DeployIfNotExists** の割り当てが準拠していない場合は、[修復タスク](../how-to/remediate-resources.md#create-a-remediation-task)を使用できます。
-
-**DeployIfNotExists** 割り当てが [対応] になったら、**AuditIfNotExists** ポリシー割り当てによって、ゲスト割り当てが [対応] または [非対応] のどちらであるが判定されます。 この検証ツールは、結果をゲスト構成クライアントに提供します。 クライアントは、その結果をゲストの拡張機能に転送します。それにより、その結果がゲスト構成のリソース プロバイダー全体で使用可能になります。
-
-Azure Policy は、ゲスト構成リソースプロバイダーの **complianceStatus** プロパティを使用して**コンプライアンス** ノードでコンプライアンスを報告します。 詳細については、[コンプライアンス データを取得する](../how-to/get-compliance-data.md)を参照してください。
-
-> [!NOTE]
-> **AuditIfNotExists** ポリシーから結果を返すには、**DeployIfNotExists** ポリシーが必要です。 **DeployIfNotExists** がない場合、**AuditIfNotExists** ポリシーは状態として"0 of 0" のリソースを示します。
-
-割り当てで使用するための定義をグループ化するためのイニシアティブには、ゲストの構成のすべての組み込みポリシーが含まれます。 " _\[[プレビュー]\]: Linux および Windows マシン内でのパスワードの監査セキュリティ_" という名前の組み込みイニシアティブには 18 のポリシーが含まれています。 Windows のために **DeployIfNotExists** と **AuditIfNotExists** の 6  つのペアがあって、Linux 用に 3 つのペアがあります。 [ポリシー定義](definition-structure.md#policy-rule)のロジックでは、対象のオペレーティング システムのみが評価されることが検証されます。
+Azure Policy は、ゲスト構成リソース プロバイダーの **complianceStatus** プロパティを使用して**コンプライアンス** ノードでコンプライアンスを報告します。 詳細については、[コンプライアンス データを取得する](../how-to/get-compliance-data.md)を参照してください。
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>業界の基準に従ってオペレーティング システムの設定を監査する
 
@@ -139,9 +135,12 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
 
 #### <a name="applying-configurations-using-guest-configuration"></a>ゲスト構成を使用して構成を適用する
 
-Azure Policy の最新の機能によって、コンピューター内の設定が構成されます。 _[Windows コンピューターでタイムゾーンを構成]_ する定義は、タイムゾーンを構成することによって、マシンに変更を加えます。
+_[Windows コンピューターでタイムゾーンを構成]_ する定義のみが、タイムゾーンを構成することによって、マシンに変更を加えます。 コンピューター内の設定を構成するためのカスタム ポリシー定義はサポートされていません。
 
 _[構成]_ で始まる定義を割り当てるとき、 _[前提条件を展開して Windows VM でゲスト構成ポリシーを有効にする]_ 定義も割り当てる必要があります。 必要に応じて、これらの定義をイニシアチブで結合させることができます。
+
+> [!NOTE]
+> 組み込みのタイムゾーン ポリシーは、コンピューター内の設定の構成をサポートする唯一の定義であり、コンピューター内の設定を構成するカスタム ポリシーはサポートされていません。
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>Azure 外部のコンピューターにポリシーを割り当てる
 

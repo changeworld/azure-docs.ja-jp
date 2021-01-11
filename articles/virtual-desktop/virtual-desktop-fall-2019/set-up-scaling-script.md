@@ -20,7 +20,7 @@ ms.locfileid: "88005586"
 
 仮想マシン (VM) をスケーリングすると、Windows Virtual Desktop の総デプロイ コストを削減できます。 これは、ピーク時以外の使用時間帯にセッション ホスト VM をシャットダウンして割り当て解除し、ピーク時間帯に再びオンにして再割り当てすることを意味します。
 
-この記事では、Azure Automation アカウントで構築されたスケーリング ツールと、Windows Virtual Desktop 環境でセッション ホスト VM を自動的にスケーリングする Azure ロジック アプリについて説明します。 スケーリング ツールの使用方法を確認するには、「[前提条件](#prerequisites)」に進んでください。
+この記事では、Azure Automation アカウントで構築されたスケーリング ツールと、Windows Virtual Desktop 環境でセッション ホスト VM を自動的にスケーリングする Azure Logic Appsについて説明します。 スケーリング ツールの使用方法を確認するには、「[前提条件](#prerequisites)」に進んでください。
 
 ## <a name="report-issues"></a>レポートに関する問題
 
@@ -36,7 +36,7 @@ ms.locfileid: "88005586"
 - CPU コアあたりのセッション数に基づいて VM をスケールアウトします。
 - ピーク時以外の時間帯に VM をスケールインして、最低限の数のセッション ホスト VM だけを実行状態のままにします。
 
-スケーリング ツールは、Azure Automation アカウント、PowerShell Runbook、Webhook、Azure ロジック アプリを組み合わせて使用することで機能します。 ツールが実行されると、Azure ロジック アプリによって Webhook が呼び出されて Azure Automation Runbook が起動します。 その後、Runbook によってジョブが作成されます。
+スケーリング ツールは、Azure Automation アカウント、PowerShell Runbook、Webhook、Azure Logic Appsを組み合わせて使用することで機能します。 ツールが実行されると、Azure Logic Appsによって Webhook が呼び出されて Azure Automation Runbook が起動します。 その後、Runbook によってジョブが作成されます。
 
 ピーク時の使用時間帯は、このジョブによって現在のセッション数と現在実行中のセッション ホストの VM 容量が、ホスト プールごとにチェックされます。 この情報を使用して、実行中のセッション ホスト VM が既存のセッションをサポートできるかどうかが、**CreateOrUpdateAzLogicApp.ps1** ファイルに定義された *SessionThresholdPerCPU* パラメーターに基づいて計算されます。 セッション ホスト VM が既存のセッションをサポートできない場合は、このジョブによってホスト プール内の追加のセッション ホスト VM が起動されます。
 
@@ -46,7 +46,7 @@ ms.locfileid: "88005586"
 ピーク時以外の使用時間中に、*MinimumNumberOfRDSH* パラメーターに基づいて、シャットダウンすべきセッション ホスト VM の数がジョブによって決定されます。 *LimitSecondsToForceLogOffUser* パラメーターを 0 以外の正の値に設定した場合、ジョブによってセッション ホスト VM はドレイン モードに設定され、新しいセッションがホストに接続できないようになります。 その後、ジョブによって、現在サインインしているすべてのユーザーは作業内容を保存するよう通知され、構成された時間待機した後、ユーザーは強制的にサインアウトされます。セッション ホスト VM 上のすべてのユーザー セッションがサインアウトされると、ジョブによって VM がシャットダウンされます。 VM がシャットダウンされると、ジョブによってセッション ホストのドレイン モードがリセットされます。
 
 >[!NOTE]
->セッション ホスト VM を手動でドレイン モードに設定した場合、セッション ホスト VM はジョブでは管理されません。 セッション ホスト VM が実行中で、ドレイン モードに設定されている場合は、使用不可として扱われます。これにより、ジョブで負荷を処理するために追加の VM が起動されます。 Azure VM を手動でドレイン モードに設定する場合は、事前にタグを付けるようお勧めします。 後で Azure ロジック アプリ スケジューラを作成するときに、*MaintenanceTagName* パラメーターを使用してタグに名前を付けることができます。 タグを使用すると、こうした VM をスケーリング ツールが管理する VM と区別することができます。 メンテナンス タグを設定すると、タグを削除するまで、スケーリング ツールでその VM に変更を加えることもできなくなります。
+>セッション ホスト VM を手動でドレイン モードに設定した場合、セッション ホスト VM はジョブでは管理されません。 セッション ホスト VM が実行中で、ドレイン モードに設定されている場合は、使用不可として扱われます。これにより、ジョブで負荷を処理するために追加の VM が起動されます。 Azure VM を手動でドレイン モードに設定する場合は、事前にタグを付けるようお勧めします。 後で Azure Logic Apps スケジューラを作成するときに、*MaintenanceTagName* パラメーターを使用してタグに名前を付けることができます。 タグを使用すると、こうした VM をスケーリング ツールが管理する VM と区別することができます。 メンテナンス タグを設定すると、タグを削除するまで、スケーリング ツールでその VM に変更を加えることもできなくなります。
 
 *LimitSecondsToForceLogOffUser* パラメーターを 0 に設定した場合は、指定されたグループ ポリシー内のセッション構成設定で、ユーザー セッションのサインオフを処理することがジョブによって許可されます。 これらのグループ ポリシーを確認するには、 **[コンピューターの構成]**  >  **[ポリシー]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[リモート デスクトップ サービス]**  >  **[リモート デスクトップ セッション ホスト]**  >  **[セッションの時間制限]** にアクセスしてください。 セッション ホスト VM にアクティブなセッションが存在する場合は、ジョブによってセッション ホスト VM は実行状態のままとなります。 アクティブなセッションが存在しない場合は、ジョブによってセッション ホスト VM はシャットダウンされます。
 
@@ -57,7 +57,7 @@ ms.locfileid: "88005586"
 ただし、このツールには次の制限事項もあります。
 
 - このソリューションは、プールされたマルチセッションのセッション ホスト VM にのみ適用されます。
-- このソリューションでは任意のリージョンの VM が管理されますが、Azure Automation アカウントおよび Azure ロジック アプリと同じサブスクリプションでのみ使用できます。
+- このソリューションでは任意のリージョンの VM が管理されますが、Azure Automation アカウントおよび Azure Logic Appsと同じサブスクリプションでのみ使用できます。
 - Runbook 内のジョブの最長実行時間は、3 時間です。 ホスト プール内の VM の起動または停止に時間がかかる場合、ジョブは失敗します。 詳細については、「[共有リソース](../../automation/automation-runbook-execution.md#fair-share)」を参照してください。
 
 >[!NOTE]
@@ -121,9 +121,9 @@ ms.locfileid: "88005586"
     .\CreateOrUpdateAzAutoAccount.ps1 @Params
     ```
 
-5. コマンドレットの出力には、Webhook の URI が含まれています。 Azure ロジック アプリの実行スケジュールを設定するときにパラメーターとして使用するため、必ずこの URI を記録しておいてください。
+5. コマンドレットの出力には、Webhook の URI が含まれています。 Azure Logic Appsの実行スケジュールを設定するときにパラメーターとして使用するため、必ずこの URI を記録しておいてください。
 
-6. Log Analytics に **WorkspaceName** パラメーターを指定した場合、コマンドレットの出力には、Log Analytics ワークスペース ID とその主キーも含まれます。 後で Azure ロジック アプリの実行スケジュールを設定するときにパラメーターとしてまた使用する必要があるため、必ずこの URI を覚えておいてください。
+6. Log Analytics に **WorkspaceName** パラメーターを指定した場合、コマンドレットの出力には、Log Analytics ワークスペース ID とその主キーも含まれます。 後で Azure Logic Appsの実行スケジュールを設定するときにパラメーターとしてまた使用する必要があるため、必ずこの URI を覚えておいてください。
 
 7. Azure Automation アカウントの設定が完了したら、Azure サブスクリプションにサインインし、次の図に示すように、指定のリソースグループに Azure Automation アカウントと関連する Runbook が表示されていることを確認します。
 
@@ -175,9 +175,9 @@ Get-RdsTenant
 New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId "<applicationid>" -TenantName "<tenantname>"
 ```
 
-## <a name="create-the-azure-logic-app-and-execution-schedule"></a>Azure ロジック アプリと実行スケジュールを作成する
+## <a name="create-the-azure-logic-app-and-execution-schedule"></a>Azure Logic Appsと実行スケジュールを作成する
 
-最後に、Azure ロジック アプリを作成し、新しいスケーリング ツールの実行スケジュールを設定する必要があります。
+最後に、Azure Logic Appsを作成し、新しいスケーリング ツールの実行スケジュールを設定する必要があります。
 
 1. Windows PowerShell を開きます。
 
@@ -187,7 +187,7 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId "<app
     Login-AzAccount
     ```
 
-3. 次のコマンドレットを実行して、Azure ロジック アプリを作成するためのスクリプトをダウンロードします。
+3. 次のコマンドレットを実行して、Azure Logic Appsを作成するためのスクリプトをダウンロードします。
 
     ```powershell
     New-Item -ItemType Directory -Path "C:\Temp" -Force
@@ -206,7 +206,7 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId "<app
     # Set-RdsContext -TenantGroupName "<Tenant_Group_Name>"
     ```
 
-5. 次の PowerShell スクリプトを実行して、ホスト プール用の Azure ロジック アプリと実行スケジュールを作成します。
+5. 次の PowerShell スクリプトを実行して、ホスト プール用の Azure Logic Appsと実行スケジュールを作成します。
 
     >[!NOTE]
     >このスクリプトは、自動スケーリングするホスト プールごとに実行する必要がありますが、必要な Azure Automation アカウントは 1 つだけです。
@@ -269,15 +269,15 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId "<app
     .\CreateOrUpdateAzLogicApp.ps1 @Params
     ```
 
-    スクリプトを実行すると、次の図に示すように、Azure ロジック アプリがリソース グループに表示されます。
+    スクリプトを実行すると、次の図に示すように、Azure Logic Appsがリソース グループに表示されます。
 
     >[!div class="mx-imgBorder"]
-    >![Azure ロジック アプリの例を表す概要ページの画像。](../media/logic-app.png)
+    >![Azure Logic Appsの例を表す概要ページの画像。](../media/logic-app.png)
 
-    繰り返し間隔やタイム ゾーンを変更するなど、実行スケジュールに変更を加えるには、Azure ロジック アプリの自動スケーリングのスケジューラにアクセスし、 **[編集]** を選択して Azure ロジック アプリ デザイナーに移動します。
+    繰り返し間隔やタイム ゾーンを変更するなど、実行スケジュールに変更を加えるには、Azure Logic Appsの自動スケーリングのスケジューラにアクセスし、 **[編集]** を選択して Azure Logic Apps デザイナーに移動します。
 
     >[!div class="mx-imgBorder"]
-    >![Azure ロジック アプリ デザイナーの画像。 ユーザーが繰り返し時間と Webhook ファイルを編集するための [繰り返し] および [Webhook] メニューが開いています。](../media/logic-apps-designer.png)
+    >![Azure Logic Apps デザイナーの画像。 ユーザーが繰り返し時間と Webhook ファイルを編集するための [繰り返し] および [Webhook] メニューが開いています。](../media/logic-apps-designer.png)
 
 ## <a name="manage-your-scaling-tool"></a>スケーリング ツールを管理する
 

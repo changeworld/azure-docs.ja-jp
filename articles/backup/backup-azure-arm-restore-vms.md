@@ -4,12 +4,12 @@ description: Azure Portal を使用して復旧ポイントから Azure 仮想�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: af9b505e762e201713b8e554b7886e5e2062dfef
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 0607133f26113123f1c75d714c6c71f19cf2db63
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263012"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826516"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -65,7 +65,7 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
     - **新規作成**: 新しい VM を作成する場合、このオプションを使用します。 単純な設定で VM を作成することも、ディスクを復元して、カスタマイズされた VM を作成することもできます。
     - **既存のものを置き換える**:既存の VM 上のディスクを置き換える場合、このオプションを使用します。
 
-        ![復元の構成ウィザード](./media/backup-azure-arm-restore-vms/restore-configuration.png)
+        ![仮想マシンの復元の構成ウィザード](./media/backup-azure-arm-restore-vms/restore-configuration.png)
 
 1. 選択した復元オプションの設定を指定します。
 
@@ -79,7 +79,7 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 1. **[仮想ネットワーク]** で、VM が配置される VNet を選択します。 サブスクリプションに関連付けられているすべての VNet が表示されます。 サブネットを選択します。 最初のサブネットが既定で選択されています。
 1. **[ステージングの場所]** で、VM のストレージ アカウントを指定します。 [詳細については、こちらを参照してください](#storage-accounts)。
 
-    ![復元の構成ウィザード](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
+    ![復元の構成ウィザード - 復元オプションを選択する](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
 1. **[復元]** を選択して復元操作をトリガーします。
 
@@ -184,7 +184,7 @@ CRR が有効になっている場合は、セカンダリ リージョンのバ
 
 ## <a name="restoring-unmanaged-vms-and-disks-as-managed"></a>アンマネージドの VM およびディスクをマネージドとして復元する
 
-復元の際に[アンマネージド ディスク](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks)を[マネージド ディスク](../virtual-machines/windows/managed-disks-overview.md)として復元するオプションが用意されています。 既定では、アンマネージドの VM およびディスクは、アンマネージドの VM およびディスクとして復元されます。 ただし、マネージドの VM およびディスクとして復元することを選択できるようになりました。 これらの復元はスナップショット フェーズからはトリガーされず、コンテナー フェーズからのみトリガーされます。 この機能は、アンマネージドの暗号化された VM では使用できません。
+復元の際に[アンマネージド ディスク](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks)を[マネージド ディスク](../virtual-machines/managed-disks-overview.md)として復元するオプションが用意されています。 既定では、アンマネージドの VM およびディスクは、アンマネージドの VM およびディスクとして復元されます。 ただし、マネージドの VM およびディスクとして復元することを選択できるようになりました。 これらの復元はスナップショット フェーズからはトリガーされず、コンテナー フェーズからのみトリガーされます。 この機能は、アンマネージドの暗号化された VM では使用できません。
 
 ![マネージド ディスクとして復元する](./media/backup-azure-arm-restore-vms/restore-as-managed-disks.png)
 

@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 8/13/2020
+ms.date: 09/01/2020
 ms.topic: include
-ms.custom: include file, devx-track-javascript
+ms.custom: include file, devx-track-javascript, cog-serv-seo-aug-2020
 ms.author: diberry
-ms.openlocfilehash: e52aba2fe6189c8964fd6525581b0bd6ee6def48
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: b961bb0598a1f6e9cdc7b4df27af50e7af1d9d81
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246172"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89323077"
 ---
 Node.js 用 Language Understanding (LUIS) クライアント ライブラリの用途は次のとおりです。
 
@@ -43,13 +43,13 @@ Node.js 用 Language Understanding (LUIS) クライアント ライブラリの�
     mkdir quickstart-sdk && cd quickstart-sdk
     ```
 
-1. `package.json` ファイルを作成して、ディレクトリを JavaScript アプリケーションとして初期化します。 
+1. `package.json` ファイルを作成して、ディレクトリを JavaScript アプリケーションとして初期化します。
 
     ```console
     npm init -y
     ```
 
-1. JavaScript コード用に `index.js` という名前のファイルを作成します。 
+1. JavaScript コード用に `index.js` という名前のファイルを作成します。
 
     ```console
     touch index.js
@@ -61,7 +61,7 @@ Node.js 用 Language Understanding (LUIS) クライアント ライブラリの�
 
 ```console
 npm install @azure/ms-rest-js
-npm install @azure/cognitiveservices-luis-authoring 
+npm install @azure/cognitiveservices-luis-authoring
 npm install @azure/cognitiveservices-luis-runtime
 ```
 
@@ -91,6 +91,8 @@ npm install @azure/cognitiveservices-luis-runtime
 
 Language Understanding (LUIS) 作成クライアントは、認証を経て作成キーの保管場所である Azure にアクセスする [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient?view=azure-node-latest) オブジェクトです。
 
+## <a name="code-examples-for-authoring"></a>作成のコード例
+
 クライアントを作成したら、このクライアントを使用して次のような機能にアクセスします。
 
 * アプリ - [追加](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#add-applicationcreateobject--msrest-requestoptionsbase-)、[削除](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#deletemethod-string--models-appsdeletemethodoptionalparams-)、[公開](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#publish-string--applicationpublishobject--msrest-requestoptionsbase-)
@@ -105,6 +107,8 @@ Language Understanding (LUIS) 作成クライアントは、認証を経て作�
 
 Language Understanding (LUIS) 作成クライアントは、認証を経て作成キーの保管場所である Azure にアクセスする [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/luisruntimeclient?view=azure-node-latest) オブジェクトです。
 
+## <a name="code-examples-for-prediction-runtime"></a>予測ランタイムのコード例
+
 クライアントを作成したら、このクライアントを使用して次のような機能にアクセスします。
 
 * `staging` または `production` スロット別の[予測](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-)
@@ -118,16 +122,16 @@ Language Understanding (LUIS) 作成クライアントは、認証を経て作�
 
 [!code-javascript[Add NPM libraries to code file](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=Dependencies)]
 
-## <a name="add-boilerplate-code"></a>定型コードを追加する 
+## <a name="add-boilerplate-code"></a>定型コードを追加する
 
-1. `quickstart` メソッドとその呼び出しを追加します。 このメソッドには、残りのコードの大部分が含まれています。 このメソッドは、ファイルの末尾で呼び出されます。 
+1. `quickstart` メソッドとその呼び出しを追加します。 このメソッドには、残りのコードの大部分が含まれています。 このメソッドは、ファイルの末尾で呼び出されます。
 
     ```javascript
     const quickstart = async () => {
-    
+
         // add calls here
-    
-    
+
+
     }
     quickstart()
         .then(result => console.log("Done"))
@@ -136,9 +140,11 @@ Language Understanding (LUIS) 作成クライアントは、認証を経て作�
             })
     ```
 
-1. 特に指定がなければ、quickstart メソッドの残りのコードを追加します。 
+1. 特に指定がなければ、quickstart メソッドの残りのコードを追加します。
 
 ## <a name="create-variables-for-the-app"></a>アプリの変数を作成する
+
+変数の 2 つのセットを作成します。最初のセットに変更を加え、2 番目のセットはコード サンプルに表示されるままにしておきます。 
 
 1. 作成キーとリソース名を保持する変数を作成します。
 
@@ -152,7 +158,7 @@ Language Understanding (LUIS) 作成クライアントは、認証を経て作�
 
 自分のキーを指定して [CognitiveServicesCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials?view=azure-node-latest) オブジェクトを作成し、それを自分のエンドポイントと共に使用して [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient?view=azure-node-latest) オブジェクトを作成します。
 
-[!code-javascript[Create LUIS authoring client object](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateClient)]
+[!code-javascript[Authenticate the client](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateClient)]
 
 ## <a name="create-a-luis-app"></a>LUIS アプリの作成
 
@@ -160,7 +166,7 @@ LUIS アプリには、意図、エンティティ、発話例を備えた自然
 
 [AppsOperation](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest) オブジェクトの [add](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest) メソッドを作成してアプリを作成します。 名前と言語のカルチャは必須のプロパティです。
 
-[!code-javascript[Create LUIS client app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateApplication)]
+[!code-javascript[Create a LUIS app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringCreateApplication)]
 
 
 ## <a name="create-intent-for-the-app"></a>アプリの意図の作成
@@ -170,7 +176,7 @@ LUIS アプリのモデルの中で最も重要なオブジェクトが、意図
 
 `intentName` の値は、「[アプリの変数を作成する](#create-variables-for-the-app)」セクションの変数の一部として `OrderPizzaIntent` にハードコーディングされます。
 
-[!code-javascript[Create intent](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AddIntent)]
+[!code-javascript[Create intent for the app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AddIntent)]
 
 ## <a name="create-entities-for-the-app"></a>アプリのエンティティの作成
 
@@ -182,7 +188,7 @@ LUIS アプリのモデルの中で最も重要なオブジェクトが、意図
 
 エンティティ作成コードによって、サブエンティティを備えた機械学習エンティティが作成され、さまざまな特徴が `Quantity` サブエンティティに適用されます。
 
-:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="エンティティ作成コードによって、サブエンティティを備えた機械学習エンティティが作成され、さまざまな特徴が Quantity サブエンティティに適用されます。":::
+:::image type="content" source="../media/quickstart-sdk/machine-learned-entity.png" alt-text="ポータルの部分的なスクリーンショット。サブエンティティを備えた機械学習エンティティが作成され、さまざまな特徴が `Quantity` サブエンティティに適用される。":::
 
 [!code-javascript[Create entities for the app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringAddEntities)]
 
@@ -196,11 +202,11 @@ Quantity サブエンティティに特徴を割り当てるために、次の�
 
 [ExampleLabelObject](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/examplelabelobject?view=azure-node-latest) オブジェクトの一覧 (発話の例 1 件につき 1 つのオブジェクト) を作成し、発話の例を追加します。 それぞれの例では、エンティティの名前とエンティティの値から成る名前と値のペアのディクショナリを使用し、エンティティをすべてマークする必要があります。 エンティティの値は、発話の例のテキストに表示されているものと正確に一致している必要があります。
 
-:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="エンティティの値は、発話の例のテキストに表示されているものと正確に一致している必要があります。":::
+:::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="ポータルでのラベル付けされた発話の例を示す部分的なスクリーンショット。":::
 
 アプリ ID、バージョン ID、および例を指定して [examples.add](https://docs.microsoft.com//javascript/api/@azure/cognitiveservices-luis-authoring/examples?view=azure-node-latest#add-string--string--examplelabelobject--models-examplesaddoptionalparams-) を呼び出します。
 
-[!code-javascript[Add example utterance to a specific intent](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringAddLabeledExamples)]
+[!code-javascript[Add example utterance to intent](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringAddLabeledExamples)]
 
 ## <a name="train-the-app"></a>アプリをトレーニングする
 
@@ -210,9 +216,9 @@ Quantity サブエンティティに特徴を割り当てるために、次の�
 
 このクイックスタートで示したような非常に小さなモデルであれば、トレーニングが短時間で完了します。 運用レベルのアプリケーションの場合には、アプリのトレーニングに、トレーニングが成功したかどうかと、そのタイミングを確認するための [get_status](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/train?view=azure-node-latest#getstatus-string--string--msrest-requestoptionsbase-) メソッドに対するポーリング呼び出しが含まれます。 応答は、オブジェクトごとの状態を格納した [ModelTrainingInfo](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/modeltraininginfo?view=azure-node-latest) オブジェクトの一覧です。 トレーニングが完了したと判定されるには、オブジェクトがすべて成功している必要があります。
 
-[!code-javascript[Train the app's version](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=TrainAppVersion)]
+[!code-javascript[Train the app](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=TrainAppVersion)]
 
-## <a name="publish-a-language-understanding-app"></a>Language Understanding アプリの公開
+## <a name="publish-app-to-production-slot"></a>アプリを運用スロットに公開する
 
 [app.publish](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/apps?view=azure-node-latest#publish-string--applicationpublishobject--msrest-requestoptionsbase-) メソッドを使用して、LUIS アプリを公開します。 これにより、トレーニング済みの最新バージョンがエンドポイントの指定されたスロットに公開されます。 クライアント アプリケーションではこのエンドポイントを使用して、意図の予測とエンティティの抽出の対象となるユーザー発話を送信します。
 
@@ -225,7 +231,7 @@ msRest.ApiKeyCredentials オブジェクトに自分のキーを指定し、こ�
 
 [!INCLUDE [Caution about using authoring key](caution-authoring-key.md)]
 
-[!code-javascript [Create LUIS runtime client object](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=PredictionCreateClient)]
+[!code-javascript [Authenticate the prediction runtime client](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=PredictionCreateClient)]
 
 ## <a name="get-prediction-from-runtime"></a>ランタイムから予測を取得する
 
@@ -233,7 +239,7 @@ msRest.ApiKeyCredentials オブジェクトに自分のキーを指定し、こ�
 
 **[luisRuntimeClient.prediction.getSlotPrediction](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/predictionoperations?view=azure-node-latest#getslotprediction-string--string--predictionrequest--models-predictiongetslotpredictionoptionalparams-)** メソッドには、アプリ ID、スロット名、要求を満たす予測要求オブジェクトなど、いくつかのパラメーターが必要です。 詳細、すべての意図の表示、ログなど、その他のオプションは省略可能です。
 
-[!code-javascript [Get prediction based on query](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=QueryPredictionEndpoint)]
+[!code-javascript [Get prediction from runtime](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=QueryPredictionEndpoint)]
 
 [!INCLUDE [Prediction JSON response](sdk-json.md)]
 

@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47973a8444de64dc5c2bb75b5f0d65d1e6d35f6e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 062b2cac093c3049f65dd485e280776602c06e4b
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509087"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279722"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ
 この記事では、主な統合ソリューションとして Azure AD Connect 同期を使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とサポートされていない構成の両方が含まれています。
@@ -122,8 +122,8 @@ Office 365 の一部のワークロードでは、サポートされるトポロ
 
 | ワークロード | 制限 |
 | --------- | --------- |
-| Exchange Online | Exchange Online でサポートされているハイブリッド トポロジの詳細については、「[Hybrid deployments with multiple Active Directory forests (複数の Active Directory フォレストを伴うハイブリッド展開)](https://technet.microsoft.com/library/jj873754.aspx)」を参照してください。 |
-| Skype for Business | 複数のオンプレミス フォレストを使用している場合は、アカウント リソース フォレスト トポロジのみがサポートされます。 詳細については、「[Skype for Business Server 2015 の環境要件](https://technet.microsoft.com/library/dn933910.aspx)」を参照してください。 |
+| Exchange Online | Exchange Online でサポートされているハイブリッド トポロジの詳細については、「[Hybrid deployments with multiple Active Directory forests (複数の Active Directory フォレストを伴うハイブリッド展開)](/Exchange/hybrid-deployment/hybrid-with-multiple-forests)」を参照してください。 |
+| Skype for Business | 複数のオンプレミス フォレストを使用している場合は、アカウント リソース フォレスト トポロジのみがサポートされます。 詳細については、「[Skype for Business Server 2015 の環境要件](/skypeforbusiness/plan-your-deployment/requirements-for-your-environment/environmental-requirements)」を参照してください。 |
 
 大規模な組織の場合は、[Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) 機能を使用することを検討してください。 これにより、ユーザーのリソースが配置されているデータ センターのリージョンを定義できます。
 

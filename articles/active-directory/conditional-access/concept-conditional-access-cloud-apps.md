@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: defb959a56446da337c4c7c16ee118ceecd3e674
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b8b1440f34feb1cda2661178e520590cb9ec54f1
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846311"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948404"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件付きアクセス:クラウド アプリまたはアクション
 
@@ -115,7 +115,7 @@ Microsoft Azure Management アプリケーションには、基になる複数�
 
 - [Azure AD アプリケーション プロキシ](../manage-apps/what-is-application-proxy.md)経由で公開されるアプリケーション
 - [ギャラリーから追加されたアプリケーション](../manage-apps/add-application-portal.md)
-- [ギャラリーにないカスタム アプリケーション](../manage-apps/add-non-gallery-app.md)
+- [ギャラリーにないカスタム アプリケーション](../manage-apps/view-applications-portal.md)
 - [アプリ配信コントローラーとネットワーク経由で公開されるレガシ アプリケーション](../manage-apps/secure-hybrid-access.md)
 - [パスワードに基づくシングル サインオン](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)を使用するアプリケーション
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 8dc7c16b83816d2b408cef7ade06767bfe2a4582
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 297595c6c4a9c82c3d0293f2cea2db66ea9ca54a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826550"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180407"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法
 
@@ -76,6 +76,7 @@ blobfuse では、ファイル システム内に、すべての開かれたフ�
 ### <a name="optional-use-a-ramdisk-for-the-temporary-path"></a>(省略可能) 一時パスに RAM ディスクを使用する
 次の例では、16 GB の RAM ディスクと blobfuse 用のディレクトリを作成します。 ニーズに基づいてサイズを選択します。 この RAM ディスクにより、blobfuse は、サイズが最大 16 GB のファイルを開くことができます。 
 ```bash
+sudo mkdir /mnt/ramdisk
 sudo mount -t tmpfs -o size=16g tmpfs /mnt/ramdisk
 sudo mkdir /mnt/ramdisk/blobfusetmp
 sudo chown <youruser> /mnt/ramdisk/blobfusetmp

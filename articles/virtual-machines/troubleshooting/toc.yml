@@ -105,6 +105,8 @@
           href: unresponsive-vm-apply-group-policy.md
         - name: セキュリティ ポリシーの適用時に VM が応答しない
           href: unresponsive-vm-apply-security-policy.md
+        - name: Windows ブート マネージャー エラー - 無効なイメージ ハッシュ状態
+          href: windows-boot-error-invalid-image-hash.md
         - name: Windows STOP エラー - 無効なシステム構成情報
           href: windows-stop-error-bad-system-config-info.md
         - name: Windows STOP エラー - メモリなし状態

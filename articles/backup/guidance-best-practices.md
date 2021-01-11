@@ -3,12 +3,12 @@ title: ガイダンスとベスト プラクティス
 description: クラウドとオンプレミスのワークロードをクラウドにバックアップするためのベストプラクティスとガイダンスについて説明します
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 2571fcc31a0ea6a548ec764d7a15d6d976ae4822
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 6daa3051a00093f74b8b5dac5c81befe006107a4
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808629"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825581"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>クラウドとオンプレミスのワークロードをクラウドにバックアップする
 
@@ -247,13 +247,13 @@ Azure Backup サービスの機能には、コストを効果的に管理しな�
 
 * Azure Backup には、エラー、警告、および重要な操作に対応した、電子メール経由での**組み込みのアラート**通知メカニズムが備わっています。 アラートの生成時に通知を受け取る個別のメール アドレスや配布リストを指定できます。 また、それぞれのアラートについて個別に通知を受け取るか、アラートをまとめて 1 時間ごとのダイジェストとして通知を受け取るかを選択することもできます。
   * これらのアラートは、サービスによって定義され、制限付きのシナリオ (バックアップ/復元エラー、データを保持して保護を停止、データを削除して保護を停止など) のサポートを提供します。 [こちら](backup-azure-monitoring-built-in-monitor.md#alert-scenarios)を参照してください。
-  * 破壊的な操作 (データを削除して保護を停止など) が実行されると、アラートが生成され、Recovery Services コンテナー用に通知が構成されていない場合でも、サブスクリプションの所有者、管理者、共同管理者にメールが送信されます。
+  * 破壊的な操作 (データを削除して保護を停止など) が実行されると、アラートが生成され、Recovery Services コンテナー用に通知が構成されて**いない**場合でも、サブスクリプションの所有者、管理者、共同管理者にメールが送信されます。
   * 一部のワークロードでは、高頻度でエラーが発生することがあります (SQL Server では 15 分ごとなど)。 エラーが発生するたびに生成されるアラートに打ちのめされないようにするために、アラートは統合されます。 [こちら](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts)を参照してください。
   * 組み込みのアラートはカスタマイズできず、Azure portal で定義されている電子メールに制限されます。
 
 * (成功したジョブのアラートなど) **カスタム アラートを作成**する必要がある場合は、Log Analytics を使用します。 Azure Monitor では、Log Analytics ワークスペースで独自のアラートを作成できます。 ハイブリッド ワークロード (DPM/MABS) では、データを LA に送信し、LA を使用して、Azure Backup でサポートされているワークロード間で共通のアラートを提供することもできます。
 
-* 組み込みの Recovery Services コンテナーの**アクティビティ ログ**を使用して通知を受け取ることもできます。ただし、これは制限付きのシナリオをサポートしており、スケジュールされたバックアップなどの操作には適していません。この操作には、アクティビティ ログよりもリソース ログが適しています。 これらの制限事項と、Azure Backup で保護されているすべてのワークロードの大規模な監視とアラートに Log Analytics ワークスペースを使用する方法について詳しくは、こちらの[記事](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale)をご覧ください。
+* 組み込みの Recovery Services コンテナーの**アクティビティ ログ**を使用して通知を受け取ることもできます。 ただし、これは制限付きのシナリオをサポートしており、スケジュールされたバックアップなどの操作には適していません。この操作には、アクティビティ ログよりもリソース ログが適しています。 これらの制限事項と、Azure Backup で保護されているすべてのワークロードの大規模な監視とアラートに Log Analytics ワークスペースを使用する方法について詳しくは、こちらの[記事](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

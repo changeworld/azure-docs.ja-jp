@@ -3,12 +3,12 @@ title: Azure Event Hubs を Azure Private Link サービスと統合する
 description: Azure Event Hubs を Azure Private Link サービスと統合する方法について説明します
 ms.date: 07/29/2020
 ms.topic: article
-ms.openlocfilehash: 8d6d5c13e1a5eab55998d3b98596ce845de104eb
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 817ec7b9256829ace61a0d1dad98f1f34683c95e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185470"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716793"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>プライベート エンドポイント経由での Azure Event Hubs 名前空間へのアクセスを許可する 
 Azure Private Link サービスを使用すると、仮想ネットワーク内の**プライベート エンドポイント**経由で、Azure サービス (Azure Event Hubs、Azure Storage、Azure Cosmos DB など) や、Azure でホストされている顧客またはパートナー サービスにアクセスできます。
@@ -222,7 +222,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 2. 承認する**プライベート エンドポイント**を選択します
 3. **[承認]** ボタンを選択します。
 
-    ![Image](./media/private-link-service/approve-private-endpoint.png)
+    ![プライベート エンドポイントを承認する](./media/private-link-service/approve-private-endpoint.png)
 4. **[接続の承認]** ページで、コメントを追加し (省略可能)、 **[はい]** を選択します。 **[いいえ]** を選択した場合は、何も起こりません。 
 5. 一覧に表示されたプライベート エンドポイント接続の状態が **[承認済み]** に変わります。 
 
@@ -230,7 +230,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 1. 拒否するプライベート エンドポイント接続がある場合は、保留中の要求か既存の接続かにかかわらず、該当する接続を選択し、 **[拒否]** ボタンをクリックします。
 
-    ![Image](./media/private-link-service/private-endpoint-reject-button.png)
+    ![プライベート エンドポイントを拒否する](./media/private-link-service/private-endpoint-reject-button.png)
 2. **[接続の拒否]** ページで、コメントを入力し (省略可能)、 **[はい]** を選択します。 **[いいえ]** を選択した場合は、何も起こりません。 
 3. 一覧に表示されたプライベート エンドポイント接続の状態が **[拒否済み]** に変わります。 
 
@@ -242,7 +242,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ## <a name="validate-that-the-private-link-connection-works"></a>プライベート リンク接続が機能することを検証する
 
-プライベート エンドポイント リソースの同一サブネット内にあるリソースが、プライベート IP アドレスを使用して自分の Event Hubs 名前空間に接続していること、そしてそれらがプライベート DNS ゾーンに正しく統合されていることを検証する必要があります。
+プライベート エンドポイントの仮想ネットワーク内にあるリソースが、プライベート IP アドレスを使用して自分の Event Hubs 名前空間に接続していること、そしてそれらがプライベート DNS ゾーンに正しく統合されていることを検証する必要があります。
 
 最初に、[Azure portal での Windows 仮想マシンの作成](../virtual-machines/windows/quick-create-portal.md)に関するページの手順に従って、仮想マシンを作成します。
 

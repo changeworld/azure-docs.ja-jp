@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
-ms.openlocfilehash: f9ad39b88ad2212ea2cdceb40e61fbc0a2d1a764
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5c3cb13d0b2da9370f402083d82397679f2c9343
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320495"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022498"
 ---
 # <a name="what-is-azure-monitor-for-vms"></a>VM 用 Azure Monitor とは?
 
@@ -26,10 +26,6 @@ Azure Monitor for VMs では、次で実行する Windows および Linux オペ
 - 別のクラウド環境でホストされている仮想マシン
   
 
-
->[!NOTE]
->最近、Microsoft では、パブリック プレビューのお客様からのフィードバックに基づいて正常性機能に対して行っている[変更を発表](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
-)しました。 実施する変更の数を考慮して、新しいお客様への正常性機能の提供を停止する予定です。 既存のお客様は、引き続き正常性機能を使用できます。 詳細については、[一般提供の FAQ](vminsights-ga-release-faq.md) に関するページを参照してください。  
 
 
 Azure Monitor for VMs では、そのデータを Azure Monitor ログに格納するため、強力な集計とフィルター処理を実現し、時間の経過に伴うデータの傾向を分析できるようになります。 単一の VM 内のこのデータをその仮想マシンから直接表示することも、Azure Monitor を使用して、複数の VM の集計ビューを提供することもできます。

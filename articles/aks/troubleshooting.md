@@ -378,15 +378,15 @@ fixing permissions on existing directory /var/lib/postgresql/data
 
 多数の小さなファイルを処理する場合など、Azure ディスクと比較して Azure Files を使用すると待機時間が長くなることがあります。
 
-### <a name="error-when-enabling-allow-access-allow-access-from-selected-network-setting-on-storage-account"></a>ストレージアカウントの [Allow access from selected network]/(選択したネットワークからのアクセスを許可する/) 設定を有効にすると、エラーが発生する
+### <a name="error-when-enabling-allow-access-allow-access-from-selected-network-setting-on-storage-account"></a>ストレージアカウントの [Allow access from selected network]\(選択したネットワークからのアクセスを許可する\) 設定を有効にすると、エラーが発生する
 
-AKS で動的プロビジョニングに使用されるストレージ アカウントの *[Allow access from selected network]/(選択したネットワークからのアクセスを許可する/)* 設定を有効にすると、AKS がファイル共有を作成するときに次のエラーが表示されます。
+AKS で動的プロビジョニングに使用されるストレージ アカウントの *[Allow access from selected network]\(選択したネットワークからのアクセスを許可する\)* 設定を有効にすると、AKS がファイル共有を作成するときに次のエラーが表示されます。
 
 ```console
 persistentvolume-controller (combined from similar events): Failed to provision volume with StorageClass "azurefile": failed to create share kubernetes-dynamic-pvc-xxx in account xxx: failed to create file share, err: storage: service returned error: StatusCode=403, ErrorCode=AuthorizationFailure, ErrorMessage=This request is not authorized to perform this operation.
 ```
 
-このエラーは、 *[Allow access from selected network]/(選択したネットワークからのアクセスを許可する/)* の設定時に *Kubernetes persistentvolume-controller* が選択したネットワーク上に存在しないことが原因で発生します。
+このエラーは、 *[Allow access from selected network]\(選択したネットワークからのアクセスを許可する\)* の設定時に *Kubernetes persistentvolume-controller* が選択したネットワーク上に存在しないことが原因で発生します。
 
 [Azure Files で静的プロビジョニング](azure-files-volume.md)を使用することによって、この問題を軽減できます。
 

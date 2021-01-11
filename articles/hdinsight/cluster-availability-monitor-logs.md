@@ -125,4 +125,4 @@ Azure Monitor ログの統合が有効になったら (これには数分かか�
 ## <a name="next-steps"></a>次のステップ
 
 * [クラスターの可用性 - Apache Ambari](./hdinsight-cluster-availability.md)
-* [Azure モニター ログを使用する](hdinsight-hadoop-oms-log-analytics-tutorial.md)
+* [Azure Monitor ログを使用する](hdinsight-hadoop-oms-log-analytics-tutorial.md)

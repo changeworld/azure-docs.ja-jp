@@ -4,18 +4,18 @@ description: Azure portal を使用して、マネージド ディスクのプ�
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 08/11/2020
+ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 83f204a35e48962e525ad7d64c018eef301f9933
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135846"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815863"
 ---
-# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure portal - プライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
+# <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure portal からプライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
 
 マネージド ディスクでのプライベート リンクのサポート (現在プレビュー段階) により、マネージド ディスクのエクスポートとインポートを制限して、Azure 仮想ネットワーク内でのみ実行されるようにすることができます。 接続されていないマネージド ディスクおよびスナップショットに対して期限付きの Shared Access Signature (SAS) URI を生成して、リージョン拡張のための他のリージョンへのデータのエクスポート、ディザスター リカバリー、フォレンジック分析のためのデータの読み取りに使用することができます。 SAS URI は、オンプレミスから空のディスクに VHD を直接アップロードするために使用することもできます。 仮想ネットワーク上のクライアントとマネージド ディスク間のネットワーク トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベート リンク経由でのみ送信され、パブリック インターネットに公開されることはなくなります。
 
@@ -100,5 +100,5 @@ NetworkAccessPolicy プロパティを `DenyAll` に設定すれば、ディス�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [プライベート リンクに関する FAQ](linux/faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
+- [プライベート リンクに関する FAQ](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
 - [PowerShell を使用して別のリージョンのストレージ アカウントにマネージド スナップショットを VHD としてエクスポートまたはコピーする](scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md)

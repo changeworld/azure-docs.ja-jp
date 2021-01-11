@@ -3,12 +3,12 @@ title: Azure Stack への Azure Backup Server のインストール
 description: この記事では、Azure Backup Server を使用してワークロードを保護し、Azure Stack にバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 5b6ae97f30bf704e5bc495cc8020e8bcb0e30ce3
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 644aeeb8670c4b8d551ba1d3f6b1b16aa199f4ef
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263063"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827009"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack への Azure Backup Server のインストール
 
@@ -94,7 +94,7 @@ Azure Backup Server のサーバーを選ぶときは、Windows Server 2012 R2 D
 Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、[MABS の保護マトリックス](./backup-mabs-protection-matrix.md)に関するページで説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
 
 > [!NOTE]
-> Azure Backup Server は、単一目的の専用の仮想マシンで動作するように設計されています。 Azure Backup Server を次の場所にインストールすることはできません。
+> Azure Backup Server は、単一目的の専用の仮想マシンで動作するように設計されています。 Azure Backup Server は、次の場所にインストールすることはできません。
 >
 > - ドメイン コントローラーとして実行されているコンピューター
 > - アプリケーション サーバー ロールがインストールされているコンピューター

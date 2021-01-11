@@ -3,12 +3,13 @@ title: Linux 用のゲスト構成ポリシーを作成する方法
 description: Linux VM に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 8bf01d8f69439f7b4d60fba76de0b7abf636c274
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4f49732aa2be50b0d8be6f1f3af974121dc9f363
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547722"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076363"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux 用のゲスト構成ポリシーを作成する方法
 
@@ -25,8 +26,7 @@ Azure または非 Azure マシンの状態を検証するための独自の構�
 > [!IMPORTANT]
 > ゲスト構成でのカスタム ポリシーは、プレビュー機能です。
 >
-> Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。 すべての Linux マシンに拡張機能を大規模にデプロイするには、次のポリシー定義を割り当てます。
-> - [Linux VM でゲスト構成ポリシーを有効にするための前提条件をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。 すべての Linux マシンに拡張機能を大規模にデプロイするには、ポリシー定義 `Deploy prerequisites to enable Guest Configuration Policy on Linux VMs` を割り当てます。
 
 ## <a name="install-the-powershell-module"></a>PowerShell モジュールをインストールする
 

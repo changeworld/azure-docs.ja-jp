@@ -12,17 +12,17 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5d88c685f1e55bd361ac50662d9eaf931cba15c3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: da99468b1582c4acab192ad3b96761172aa69580
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115800"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068662"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) リソースにアクセスする場合、Azure AD Graph API ではなく [Microsoft Graph](https://developer.microsoft.com/graph) を使用することを強くお勧めします。 開発作業は現在 Microsoft Graph に集中しており、Azure AD Graph API の追加の機能強化は予定されていません。 Azure AD Graph API の使用が適切なシナリオの数は非常に限られています。詳しくは、ブログ投稿「[Microsoft Graph か Azure AD Graph か](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/)」および「[Azure AD Graph アプリを Microsoft Graph に移行する](/graph/migrate-azure-ad-graph-overview)」を参照してください。
+> Azure Active Directory (Azure AD) リソースにアクセスする場合、Azure AD Graph API ではなく [Microsoft Graph](https://developer.microsoft.com/graph) を使用することを強くお勧めします。 開発作業は現在 Microsoft Graph に集中しており、Azure AD Graph API の追加の機能強化は予定されていません。 Azure AD Graph API の使用が適切なシナリオの数は非常に限られています。詳しくは、ブログ投稿「[Microsoft Graph か Azure AD Graph か](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/)」および「[Azure AD Graph アプリを Microsoft Graph に移行する](/graph/migrate-azure-ad-graph-planning-checklist)」を参照してください。
 
 この記事は、Azure AD Graph API に適用されます。 Microsoft Graph API に関する同様の情報については、「[Microsoft Graph API を使用する](/graph/use-the-api)」をご覧ください。
 

@@ -20,7 +20,7 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
 
 次の手順は、PowerShell を使用して VHD ファイルを Azure DevTest Labs にアップロードする方法を示しています。 
 
-1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
 
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 

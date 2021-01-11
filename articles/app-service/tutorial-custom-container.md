@@ -7,18 +7,18 @@ ms.author: msangapu
 keywords: Azure App Service, Web アプリ, Linux, Windows, Docker, コンテナー
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: a3579ba805d0da08184e6274de60086a9d55a938
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: df46d61ddfba5f4da977b19db3158691c78168f8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212954"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958475"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>カスタム コンテナーを使用してカスタム ソフトウェアを Azure App Service に移行する
 
 ::: zone pivot="container-windows"  
 
-[Azure App Service](overview.md) は、IIS 上で稼働する ASP.NET や IIS 上で稼働する Node.js など、Windows 上の定義済みのアプリケーション スタックを提供します。 Windows 環境があらかじめ構成されていることで、オペレーティング システムは、管理アクセスやソフトウェアのインストール、グローバル アセンブリ キャッシュへの変更などができないようにロックされます (「[Azure App Service におけるオペレーティング システムの機能](operating-system-functionality.md)」を参照)。 ただし、App Service でカスタム Windows コンテナーを使用する (プレビュー) とアプリで必要な OS の変更を行うことができるので、カスタム OS とソフトウェアの構成が必要なオンプレミスのアプリを簡単に移行できます。 このチュートリアルでは、Windows フォント ライブラリにインストールされているカスタム フォントを使用する ASP.NET アプリを App Service に移行する方法を示します。 Visual Studio からカスタム構成の Windows イメージを [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) に展開した後、App Service でそれを実行します。
+[Azure App Service](overview.md) は、IIS 上で稼働する ASP.NET や IIS 上で稼働する Node.js など、Windows 上の定義済みのアプリケーション スタックを提供します。 Windows 環境があらかじめ構成されていることで、オペレーティング システムは、管理アクセスやソフトウェアのインストール、グローバル アセンブリ キャッシュへの変更などができないようにロックされます (「[Azure App Service におけるオペレーティング システムの機能](operating-system-functionality.md)」を参照)。 ただし、App Service でカスタム Windows コンテナーを使用する (プレビュー) とアプリで必要な OS の変更を行うことができるので、カスタム OS とソフトウェアの構成が必要なオンプレミスのアプリを簡単に移行できます。 このチュートリアルでは、Windows フォント ライブラリにインストールされているカスタム フォントを使用する ASP.NET アプリを App Service に移行する方法を示します。 Visual Studio からカスタム構成の Windows イメージを [Azure Container Registry](../container-registry/index.yml) に展開した後、App Service でそれを実行します。
 
 ![Windows コンテナーで実行中の Web アプリを示します。](media/tutorial-custom-container/app-running.png)
 
@@ -92,7 +92,7 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 
 ## <a name="publish-to-azure-container-registry"></a>Azure Container Registry に発行する
 
-[Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) では、コンテナーの展開用にイメージを格納することができます。 Azure Container Registry でホストされているイメージを使用するように App Service を構成できます。
+[Azure Container Registry](../container-registry/index.yml) では、コンテナーの展開用にイメージを格納することができます。 Azure Container Registry でホストされているイメージを使用するように App Service を構成できます。
 
 ### <a name="open-publish-wizard"></a>発行ウィザードを開く
 
@@ -439,7 +439,7 @@ Azure App Service にコンテナーをデプロイするには、まず App Ser
     
     この環境変数の詳細については、[サンプルの GitHub リポジトリにある Readme](https://github.com/Azure-Samples/docker-django-webapp-linux) を参照してください。
 
-1. [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) コマンドを使用して、Web アプリの[マネージド ID](/azure/app-service/overview-managed-identity) を有効にします。
+1. [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) コマンドを使用して、Web アプリの[マネージド ID](./overview-managed-identity.md) を有効にします。
 
     ```azurecli-interactive
     az webapp identity assign --resource-group AppSvc-DockerTutorial-rg --name <app-name> --query principalId --output tsv
@@ -466,7 +466,7 @@ Azure App Service にコンテナーをデプロイするには、まず App Ser
     - `<registry-name>` を、コンテナー レジストリの名前に置き換えます。
     - `<subscription-id>` を、`az account show` コマンドから取得したサブスクリプション ID に置き換えます。
 
-これらのアクセス許可については、「[Azure ロールベースのアクセス制御とは](/azure/role-based-access-control/overview)」を参照してください。 
+これらのアクセス許可については、「[Azure ロールベースのアクセス制御とは](../role-based-access-control/overview.md)」を参照してください。 
 
 ## <a name="deploy-the-image-and-test-the-app"></a>イメージをデプロイしてアプリをテストする
 

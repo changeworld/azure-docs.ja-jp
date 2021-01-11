@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 57039149afd22546bbd584db47e7a015b8b5f85c
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4990862bacbf2afe2d4b5f39c2b9d31a7c48b78e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213567"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962895"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal で App Service アプリを構成する
 
@@ -44,7 +44,7 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service でのアプリ�
 アプリの設定は、格納されるときに常に暗号化されます (保存時の暗号化)。
 
 > [!NOTE]
-> アプリ設定は、[Key Vault 参照](app-service-key-vault-references.md)を使用して [Key Vault](/azure/key-vault/) から解決することもできます。
+> アプリ設定は、[Key Vault 参照](app-service-key-vault-references.md)を使用して [Key Vault](../key-vault/index.yml) から解決することもできます。
 
 ### <a name="show-hidden-values"></a>非表示の値を表示する
 
@@ -115,7 +115,7 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文�
 接続文字列は、格納されるときに常に暗号化されます (保存時の暗号化)。
 
 > [!NOTE]
-> 接続文字列は、[Key Vault 参照](app-service-key-vault-references.md)を使用して [Key Vault](/azure/key-vault/) から解決することもできます。
+> 接続文字列は、[Key Vault 参照](app-service-key-vault-references.md)を使用して [Key Vault](../key-vault/index.yml) から解決することもできます。
 
 ### <a name="show-hidden-values"></a>非表示の値を表示する
 

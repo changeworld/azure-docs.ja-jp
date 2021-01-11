@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3b339b359ddbaf105b95bdf5d94ee0f66f339a82
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: f30221de81b6bef199c0a25e770558c4db8c4006
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611451"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958514"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service プランの概要
 
@@ -53,11 +53,11 @@ App Service プランの "_価格レベル_" は、取得する App Service の�
 
 **Free** と **Shared** のレベルでは、アプリは共有 VM インスタンス上の CPU 時間 (分) を受け取り、スケールアウトできません。他のレベルでは、アプリは次のように実行およびスケーリングされます。
 
-App Service でアプリを作成すると、App Service プランに入れられます。 アプリを実行すると、App Service プランで構成されているすべての VM インスタンスで実行されます。 複数のアプリが同じ App Service プランにある場合、これらはすべて同じ VM インスタンスを共有します。 アプリのデプロイ スロットが複数ある場合は、すべてのデプロイ スロットも同じ VM インスタンスで実行されます。 診断ログを有効にするか、バックアップを実行するか、Web ジョブを実行すると、これらもこれらの VM インスタンス上の CPU サイクルとメモリを使用します。
+App Service でアプリを作成すると、App Service プランに入れられます。 アプリを実行すると、App Service プランで構成されているすべての VM インスタンスで実行されます。 複数のアプリが同じ App Service プランにある場合、これらはすべて同じ VM インスタンスを共有します。 アプリのデプロイ スロットが複数ある場合は、すべてのデプロイ スロットも同じ VM インスタンスで実行されます。 診断ログを有効にするか、バックアップを実行するか、WebJobs を実行すると、これらもこれらの VM インスタンス上の CPU サイクルとメモリを使用します。
 
 このように、App Service プランは App Service アプリのスケール ユニットです。 プランが 5 つの VM インスタンスを実行するように構成されている場合、プラン内のすべてのアプリが 5 つすべてのインスタンスで実行されます。 プランが自動スケール用に構成されている場合は、プラン内のすべてのアプリが自動スケール設定に基づいて一緒にスケールアウトされます。
 
-アプリのスケールアウトについては、「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md)」をご覧ください。
+アプリのスケールアウトについては、「[手動または自動によるインスタンス数のスケール変更](../azure-monitor/platform/autoscale-get-started.md)」をご覧ください。
 
 <a name="cost"></a>
 

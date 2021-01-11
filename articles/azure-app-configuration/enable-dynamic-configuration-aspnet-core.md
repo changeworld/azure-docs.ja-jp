@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 217c564a6bdb340ec15262c1eaf54a75bbffc833
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b0435daee7f5bbd1435d5e69fc32f27c21e5e4a3
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585017"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300291"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで動的な構成を使用する
 
@@ -53,13 +53,11 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
 "*センチネル キー*" は、構成が変更されたときの通知に使用される特殊なキーです。 センチネル キーの変化をアプリで監視してください。 変更を検出したら、すべての構成の値を更新します。 すべてのキーの変化を監視した場合よりも、このアプローチの方が、アプリから App Configuration に対して行う全体的な要求の数が少なくなります。
 
 1. Azure portal で **[構成エクスプローラー] > [作成] > [キー値]** の順に選択します。
-
 1. **[キー]** に「*TestApp:Settings:Sentinel*」と入力します。 **[値]** には、「1」と入力します。 **[ラベル]** と **[コンテンツの種類]** は空にしておきます。
-
 1. **[適用]** を選択します。
 
-    > [!NOTE]
-    > センチネル キーを使用していない場合は、監視するすべてのキーを手動で登録する必要があります。
+> [!NOTE]
+> センチネル キーを使用していない場合は、監視するすべてのキーを手動で登録する必要があります。
 
 ## <a name="reload-data-from-app-configuration"></a>App Configuration からデータを再度読み込む
 
@@ -162,9 +160,8 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
     }
     ```
     ---
-
-    > [!TIP]
-    > 構成値を読み取る際のオプション パターンの詳細については、「 [ASP.NET Core のオプション パターン](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)」を参照してください。
+    > [!Tip]
+    > 構成値を読み取る際のオプション パターンの詳細については、「 [ASP.NET Core のオプション パターン](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)」を参照してください。
 
 4. `Configure` メソッドに `UseAzureAppConfiguration` ミドルウェアを追加して更新し、ASP.NET Core Web アプリで要求の受信が続けられている間、更新用に登録された構成設定を更新できるようにします。
 
@@ -316,15 +313,15 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
 
 1. .NET Core CLI を使用してアプリケーションをビルドするには、コマンド シェルで次のコマンドを実行します。
 
-```console
+    ```console
         dotnet build
-```
+    ```
 
 1. ビルドが正常に完了したら、次のコマンドを実行して、Web アプリをローカルで実行します。
 
-```console
+    ```console
         dotnet run
-```
+    ```
 
 1. ブラウザー ウィンドウを開いて、`dotnet run` 出力に表示される URL に移動します。
 

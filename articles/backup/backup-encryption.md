@@ -4,12 +4,12 @@ description: Azure Backup の暗号化機能が、バックアップ データ�
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.custom: references_regions
-ms.openlocfilehash: 1350be3fb869e7b81eaba14f91aff7f0e9e3c992
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 71183e99522707737812096567d877df740c4bae
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586649"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763645"
 ---
 # <a name="encryption-in-azure-backup"></a>Azure Backup での暗号化
 
@@ -27,7 +27,7 @@ Azure Backup には、次の 2 つのレベルの暗号化が含まれていま�
   - **Azure 仮想マシンのバックアップ**: Azure Backup では、[プラットフォーム マネージド キー](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys)だけでなく、自分が所有および管理している[カスタマー マネージド キー](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)を使用して暗号化されたディスクでの VM のバックアップがサポートされます。 さらに、その OS またはデータ ディスクが [Azure Disk Encryption](backup-azure-vms-encryption.md#encryption-support-using-ade) を使用して暗号化されている Azure 仮想マシンをバックアップすることもできます。 ADE は、Windows VM では BitLocker、Linux VM では DM-Crypt を使用してゲスト内暗号化を実行します。
 
 >[!NOTE]
->現在、インフラストラクチャの暗号化は限定プレビュー段階であり、米国東部、米国西部 2、米国中南部、US Gov アリゾナ、および US GOV バージニア リージョンでのみご利用いただけます。 これらのリージョンのいずれかでこの機能を使用する場合は、[こちらのフォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u)に記入し、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) にお問い合わせください。
+>現在、インフラストラクチャの暗号化は限定プレビュー段階であり、米国東部、米国西部 2、米国中南部、US Gov アリゾナ、および US GOV バージニア リージョンでのみご利用いただけます。 これらのリージョンのいずれかでこの機能を使用する場合は、[こちらのフォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u)に記入し、メールで [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) にお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 

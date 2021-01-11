@@ -26,7 +26,7 @@
           href: hana-operations-model.md
         - name: 互換性のあるオペレーティング システム
           href: os-compatibility-matrix-hana-large-instance.md
-    - name: Architecture
+    - name: アーキテクチャ
       items:
         - name: 全般的なアーキテクチャ
           href: hana-architecture.md
@@ -301,6 +301,8 @@
   items:
     - name: Azure CLI
       href: /cli/azure/ext/sap-hana/hanainstance
+    - name: Azure PowerShell
+      href: /powershell/module/az.hanaonazure/#sap-hana-on-azure
 - name: リソース
   items:
     - name: Azure のロードマップ

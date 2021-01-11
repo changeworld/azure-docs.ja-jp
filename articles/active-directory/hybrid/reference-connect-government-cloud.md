@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39acc0373f5748f57f4fef5a5cee5fb038071523
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c083b319b11807a88461b2464153821fa2ad0b67
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080183"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276186"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure Government クラウドのハイブリッド ID に関する考慮事項
 
@@ -25,7 +25,7 @@ ms.locfileid: "88080183"
 > [!NOTE]
 > オンプレミスの Microsoft Azure Active Directory (Azure AD) 環境を Azure Government クラウドと統合するには、[Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) の最新リリースにアップグレードする必要があります。
 
-米国政府の国防総省エンドポイントの完全一覧については、[こちらのドキュメント](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints)を参照してください。
+米国政府の国防総省エンドポイントの完全一覧については、[こちらのドキュメント](/office365/enterprise/office-365-u-s-government-dod-endpoints)を参照してください。
 
 ## <a name="azure-ad-pass-through-authentication"></a>Azure AD パススルー認証
 

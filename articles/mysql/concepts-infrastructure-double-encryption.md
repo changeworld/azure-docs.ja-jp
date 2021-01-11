@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 079e3f9219d649d9740d38a8a8452e51b9d84acf
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: a2f319f7bbd3fa0c6c4efb7e225bfc85a76002f2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066408"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919711"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Azure Database for MySQL のインフラストラクチャの二重暗号化
 
@@ -62,6 +62,12 @@ Azure Database for MySQL によって提供される暗号化機能を一緒に�
 Azure Database for MySQL の場合、サービス マネージド キーを使用したインフラストラクチャの二重暗号化のサポートには、次の制限があります。
 
 * この機能のサポートは、**General Purpose** および **Memory Optimized** 価格レベルに限定されています。
+* 次のリージョンでは、インフラストラクチャ暗号化を有効にして Azure Database for MySQL を作成することができます。
+
+   * 米国東部
+   * 米国中南部
+   * 米国西部 2
+   
 * * この機能は、16 TB までのストレージをサポートしているリージョンとサーバーでのみサポートされています。 最大 16 TB のストレージをサポートする Azure リージョンの一覧については、[ストレージのドキュメント](concepts-pricing-tiers.md#storage)を参照してください
 
     > [!NOTE]

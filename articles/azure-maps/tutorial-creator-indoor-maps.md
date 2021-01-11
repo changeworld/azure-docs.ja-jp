@@ -3,17 +3,17 @@ title: Creator を使用して屋内マップを作成する
 description: 屋内マップを作成するには、Azure Maps Creator を使用します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/17/2020
+ms.date: 08/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 7ea1995b6d1232b3e4c6371313e5b3d45bdbb756
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bf2fbb48c34631bc74a3b712e135b618a1718d8e
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075406"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688090"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Creator を使用して屋内マップを作成する
 
@@ -109,16 +109,25 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
     ```http
     https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={udid}&inputType=DWG
     ```
+
     >[!IMPORTANT]
     > このドキュメントの API URL は、場合によっては、Creator リソースの場所に合わせて調整する必要があります。 「[Creator サービスにアクセスする](how-to-manage-creator.md#access-to-creator-services)」を参照してください。
 
-3. **[Send]\(送信\)** ボタンをクリックし、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動し、**Location** キーを探します。 **Location** キーの値をコピーします。これは、変換要求の `status URL` です。
+3. **[Send]\(送信\)** ボタンをクリックし、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動し、**Location** キーを探します。 **Location** キーの値をコピーします。これは、変換要求の `status URL` です。 これは次の手順で使用します。
 
-4. ビルダー タブで新しい **GET** HTTP メソッドを開始します。Azure Maps のプライマリ サブスクリプション キーを `status URL` に追加します。 前の手順の `status URL` で **GET** 要求を行います。 変換プロセスがまだ完了していない場合、次の JSON 応答のようなものが表示されることがあります。
+    :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="Location キーの値をコピーする":::
+
+4. ビルダー タブで新しい **GET** HTTP メソッドを開始します。Azure Maps のプライマリ サブスクリプション キーを `status URL` に追加します。 手順 3 でコピーした `status URL` で **GET** 要求を行います。 `status URL` は次の URL のようになります。
+
+    ```http
+    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0
+    ```
+
+    変換プロセスがまだ完了していない場合、次の JSON 応答のようなものが表示されることがあります。
 
     ```json
     {
-        "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:39:54.9518496+00:00",
         "status": "Running"
     }
@@ -128,7 +137,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 
     ```json
    {
-        "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:39:54.9518496+00:00",
         "status": "Succeeded",
         "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
@@ -143,7 +152,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 
 ```json
 {
-    "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+    "operationId": "<operationId>",
     "created": "2020-04-22T19:39:54.9518496+00:00",
     "status": "Failed",
     "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
@@ -177,7 +186,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 
     ```json
     {
-        "operationId": "a93570cb-3e4f-4e45-a2b1-360df174180a",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:52:38.9352189+00:00",
         "status": "Succeeded",
         "resourceLocation": "https://azure.microsoft.com/dataset/{datasetiId}?api-version=1.0"
@@ -206,7 +215,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 
     ```json
     {
-        "operationId": "a93570cb-3e4f-4e45-a2b1-360df174180a",
+        "operationId": "<operationId>",
         "createdDateTime": "3/11/2020 8:45:13 PM +00:00",
         "status": "Succeeded",
         "resourceLocation": "https://atlas.microsoft.com/tileset/{tilesetId}?api-version=1.0"

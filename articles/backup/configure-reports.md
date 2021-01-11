@@ -3,12 +3,12 @@ title: Azure Backup のレポートを構成する
 description: Log Analytics と Azure ブックを使用して Azure Backup のレポートを構成および表示する
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 94298c5826f7158655367ae1dd6b7dd54cb88d24
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 4e5e9258540e5cdab14e438cde96cd89aad7498d
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612437"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826856"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 
@@ -89,7 +89,7 @@ Log Analytics にデータを送信するようにコンテナーを構成した
    ![[使用] タブ](./media/backup-azure-configure-backup-reports/usage.png)
 
 > [!NOTE]
-> DPM ワークロードの場合、レポートに表示されている使用量の値が、Recovery Services コンテナーの概要タブに表示されている使用量の集計値と比較してわずかに (DPM サーバーごとに 20 MB ほど) 異なることが、ユーザーから確認できることがあります。この違いは、バックアップ用に登録されているすべての DPM サーバーに、レポート用の成果物として表示されない "メタデータ" データソースが関連付けられているという事実によって説明されます。
+> DPM ワークロードの場合、レポートに表示されている使用量の値が、Recovery Services コンテナーの **[概要]** タブに表示されている使用量の集計値と比較してわずかに (DPM サーバーごとに 20 MB ほど) 異なることが、ユーザーから確認できることがあります。この違いは、バックアップ用に登録されているすべての DPM サーバーに、レポート用の成果物として表示されない "メタデータ" データソースが関連付けられているという事実によって説明されます。
 
 ##### <a name="jobs"></a>ジョブ
 

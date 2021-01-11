@@ -83,7 +83,7 @@ Mimecast Personal Portal で Azure AD SSO を構成してテストするには�
     | リージョン  |  値 | 
     | --------------- | --------------- |
     | ヨーロッパ          | `https://eu-api.mimecast.com/sso/<accountcode>`|
-    | United States   | `https://us-api.mimecast.com/sso/<accountcode>`|
+    | 米国   | `https://us-api.mimecast.com/sso/<accountcode>`|
     | 南アフリカ    | `https://za-api.mimecast.com/sso/<accountcode>`|
     | オーストラリア       | `https://au-api.mimecast.com/sso/<accountcode>`|
     | オフショア        | `https://jer-api.mimecast.com/sso/<accountcode>`|
@@ -96,7 +96,7 @@ Mimecast Personal Portal で Azure AD SSO を構成してテストするには�
     | リージョン  |  値 |
     | --------------- | --------------- |
     | ヨーロッパ          | `https://eu-api.mimecast.com/login/saml`|
-    | United States   | `https://us-api.mimecast.com/login/saml`|
+    | 米国   | `https://us-api.mimecast.com/login/saml`|
     | 南アフリカ    | `https://za-api.mimecast.com/login/saml`|
     | オーストラリア       | `https://au-api.mimecast.com/login/saml`|
     | オフショア        | `https://jer-api.mimecast.com/login/saml`|

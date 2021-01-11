@@ -10,16 +10,17 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b61ba7f160d012cc3d9ad9f477e969a626fdc38e
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5adc2a91df5d394fbed3ff10b0ebc5cb543a3ba3
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541421"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378017"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>1 セットの認証資格情報を使用したリソースを対象にシークレットのローテーションを自動化する
 
-Azure サービスに対する認証を行う最善の方法は[マネージド ID](../general/managed-identity.md) を使用することですが、この方法を選択できないシナリオもあります。 このような場合は、アクセス キーまたはシークレットが使用されます。 アクセス キーやシークレットは定期的にローテーションする必要があります。
+Azure サービスに対する認証を行う最善の方法は[マネージド ID](../general/authentication.md) を使用することですが、この方法を選択できないシナリオもあります。 このような場合は、アクセス キーまたはシークレットが使用されます。 アクセス キーやシークレットは定期的にローテーションする必要があります。
 
 このチュートリアルでは、1 セットの認証資格情報を使用するデータベースとサービスを対象に、シークレットの定期的なローテーションを自動化する方法について説明します。 具体的には、このチュートリアルでは Azure Event Grid の通知によってトリガーされる関数を使用して、Azure Key Vault に格納されている SQL Server のパスワードをローテーションします。
 
@@ -112,7 +113,7 @@ akvrotation-fnapp        akvrotation       eastus      Microsoft.Web/sites
 akvrotation-fnapp        akvrotation       eastus      Microsoft.insights/components
 ```
 
-関数アプリを作成し、マネージド ID を使用して Key Vault にアクセスする方法については、「[Azure portal から関数アプリを作成する](../../azure-functions/functions-create-function-app-portal.md)」と「[マネージド ID で Key Vault の認証を提供する](../general/managed-identity.md)」を参照してください。
+関数アプリを作成し、マネージド ID を使用して Key Vault にアクセスする方法については、「[Azure portal から関数アプリを作成する](/azure/azure-functions/functions-create-function-app-portal)」、[App Service と Azure Functions のマネージド ID を使用する方法](/azure/app-service/overview-managed-identity)、および [Azure portal を使用した Key Vault アクセス ポリシーの割り当て](../general/assign-access-policy-portal.md)に関するページを参照してください。
 
 ### <a name="rotation-function"></a>ローテーション関数
 前の手順でデプロイした関数は、イベントを使用して、Key Vault と SQL データベースを更新することにより、シークレットのローテーションをトリガーします。 

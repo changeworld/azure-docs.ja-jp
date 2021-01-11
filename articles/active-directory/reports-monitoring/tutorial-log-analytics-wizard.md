@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cffd72171693499365f31b6eb51fd2586187b98b
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 93caf52d8b4a11f9843ad5f18ebf968d1d0730cd
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271265"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226209"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>チュートリアル:ログ分析ウィザードを構成する
 
@@ -41,15 +41,15 @@ ms.locfileid: "88271265"
 
 以下の記事の内容を確認します。
 
-- [チュートリアル:Azure リソースからリソース ログを収集して分析する](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)
+- [チュートリアル:Azure リソースからリソース ログを収集して分析する](../../azure-monitor/learn/tutorial-resource-logs.md)
 
-- [アクティビティ ログを Log Analytics と統合する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [アクティビティ ログを Log Analytics と統合する方法](./howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Azure AD で緊急アクセス用アカウントを管理する](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+- [Azure AD で緊急アクセス用アカウントを管理する](../users-groups-roles/directory-emergency-access.md)
 
-- [KQL クイック リファレンス](https://docs.microsoft.com/azure/data-explorer/kql-quick-reference)
+- [KQL クイック リファレンス](/azure/data-explorer/kql-quick-reference)
 
-- [Azure Monitor ブック](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
+- [Azure Monitor ブック](../../azure-monitor/platform/workbooks-overview.md)
 
 
 

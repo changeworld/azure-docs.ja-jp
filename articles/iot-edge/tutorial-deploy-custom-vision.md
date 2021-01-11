@@ -88,7 +88,7 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
 画像分類器を作成するには、トレーニング画像のセットと、テスト画像が必要です。
 
-1. [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows) リポジトリのサンプル画像を、ローカル開発マシンに複製またはダウンロードします。
+1. [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows) リポジトリのサンプル画像を、ローカル開発マシンにクローンまたはダウンロードします。
 
    ```cmd/sh
    git clone https://github.com/Microsoft/Cognitive-CustomVision-Windows.git
@@ -96,7 +96,7 @@ Custom Vision サービスを使用して IoT Edge モジュールを開発す�
 
 2. Custom Vision プロジェクトに戻り、 **[Add images]\(画像の追加\)** を選択します。
 
-3. ローカルに複製した Git リポジトリを参照し、最初の画像フォルダー **Cognitive-CustomVision-Windows/Samples/Images/Hemlock** に移動します。 フォルダー内の 10 個の画像をすべて選択し、 **[開く]** を選択します。
+3. ローカルにクローンした Git リポジトリを参照し、最初の画像フォルダー **Cognitive-CustomVision-Windows/Samples/Images/Hemlock** に移動します。 フォルダー内の 10 個の画像をすべて選択し、 **[開く]** を選択します。
 
 4. この画像のグループにタグ **hemlock** を追加し、**Enter** キーを押してタグを適用します。
 

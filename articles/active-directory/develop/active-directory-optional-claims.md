@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/30/2020
+ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e82f5fb868dd728d439c68943c8809c5373ae133
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e53cf38c9544884caddfdf03c2615217c49ec3d0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115732"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068728"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>方法:アプリに省略可能な要求を提供する
 
@@ -54,13 +54,12 @@ ms.locfileid: "88115732"
 | `auth_time`                | ユーザーが最後に認証された時刻。 OpenID Connect の仕様を参照してください。| JWT        |           |  |
 | `tenant_region_scope`      | リソースのテナントのリージョン | JWT        |           | |
 | `sid`                      | セッション ID。セッションごとのユーザーのサインアウトに使用されます。 | JWT        |  個人用アカウントと Azure AD アカウント。   |         |
-| `platf`                    | デバイスのプラットフォーム    | JWT        |           | デバイスの種類を検証できる、マネージド デバイスに制限されます。|
 | `verified_primary_email`   | ユーザーの PrimaryAuthoritativeEmail が送信元です      | JWT        |           |         |
 | `verified_secondary_email` | ユーザーの SecondaryAuthoritativeEmail が送信元です   | JWT        |           |        |
 | `vnet`                     | VNET 指定子情報。 | JWT        |           |      |
 | `fwd`                      | IP アドレス。| JWT    |   | 要求側クライアントの元の IPv4 アドレスを追加します (VNET 内の場合) |
-| `ctry`                     | ユーザーの国またはリージョン | JWT |  | Azure AD は、存在する場合、`ctry` の省略可能な要求を返します。要求の値は、FR、JP、SZ などの標準の 2 文字の国またはリージョン番号です。 |
-| `tenant_ctry`              | リソース テナントの国またはリージョン | JWT | | |
+| `ctry`                     | ユーザーの国またはリージョン | JWT、SAML |  | Azure AD は、存在する場合、`ctry` の省略可能な要求を返します。フィールドの値は、FR、JP、SZ などの標準の 2 文字の国またはリージョン番号です。 |
+| `tenant_ctry`              | リソース テナントの国 | JWT | | 管理者がテナント レベルを設定することを除き `ctry` と同じです。また、標準の 2 文字値にする必要があります。 |
 | `xms_pdl`             | 優先されるデータの場所   | JWT | | Multi-Geo テナントの場合、優先されるデータの場所は、ユーザーがどの地域にいるかを示す 3 文字のコードです。 詳細については、[優先されるデータの場所に関する Azure AD Connect のドキュメント](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md)を参照してください。<br/>たとえば、アジア太平洋の場合は `APC` です。 |
 | `xms_pl`                   | ユーザーの優先する言語  | JWT ||ユーザーの優先する言語 (設定されている場合)。 ゲスト アクセスのシナリオの場合、ソースはホーム テナントです。 LL-CC ("en-us") という形式です。 |
 | `xms_tpl`                  | テナントの優先する言語| JWT | | リソース テナントの優先する言語 (設定されている場合)。 LL ("en") という形式です。 |
@@ -183,7 +182,7 @@ UI またはアプリケーション マニフェストを使用して、アプ�
 
 **表 5:OptionalClaims 型のプロパティ**
 
-| 名前          | Type                       | 説明                                           |
+| 名前          | 種類                       | 説明                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | コレクション (OptionalClaim) | JWT ID トークンで返される省略可能な要求。     |
 | `accessToken` | コレクション (OptionalClaim) | JWT アクセス トークンで返される省略可能な要求。 |
@@ -196,7 +195,7 @@ UI またはアプリケーション マニフェストを使用して、アプ�
 
 **表 6:OptionalClaim 型のプロパティ**
 
-| 名前                   | Type                    | 説明                                                                                                                                                                                                                                                                                                   |
+| 名前                   | 種類                    | 説明                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | 省略可能な要求の名前。                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | 要求のソース (ディレクトリ オブジェクト)。 定義済みの要求と、拡張プロパティのユーザー定義の要求があります。 ソース値が null の場合、この要求は定義済みの省略可能な要求です。 ソース値が user の場合、name プロパティの値はユーザー オブジェクトの拡張プロパティです。 |

@@ -61,7 +61,7 @@
           href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
 - name: 概念
   items:
-    - name: Architecture
+    - name: アーキテクチャ
       href: concepts-architecture.md
     - name: アプリケーション テンプレートとは
       href: concepts-app-templates.md
@@ -107,10 +107,10 @@
           href: howto-run-a-job.md
     - name: 変換
       items:
-        - name: Azure で宛先にデータをエクスポートする (レガシ)
-          href: howto-export-data.md
         - name: クラウドの宛先にデータをエクスポートする (プレビュー)
-          href: howto-use-data-export.md
+          href: howto-export-data.md
+        - name: クラウドの宛先にデータをエクスポートする (レガシ)
+          href: howto-export-data-legacy.md
         - name: 規則に基づいて Webhook を作成する
           href: howto-create-webhooks.md
         - name: ワークフローを使用して他のサービスと統合する

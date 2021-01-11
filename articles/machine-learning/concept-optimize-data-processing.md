@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 6bb85ada5ab1cd443d47ed85024b45d98354e97f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c73a5c5339403ecd91d45968405682c59f2f23b4
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500965"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719276"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータ処理の最適化
 
@@ -46,6 +46,16 @@ CSV ファイルは、Excel での編集や読み取りが簡単であるため�
 解決策の 1 つは、データフレームに合わせて RAM を増設することです。 コンピューティング サイズと処理能力を RAM のサイズの 2 倍にすることをお勧めします。 つまりデータフレームが 10 GB の場合、データフレームがメモリ内に収まり、処理されるようにするには、少なくとも 20 GB の RAM を搭載したコンピューティング先を使用します。 
 
 複数の仮想 CPU (vCPU) では、各 vCPU がマシン上で持つことのできる RAM に収まるように、パーティションを 1 つずつ配置する必要があることに注意してください。 つまり、16 GB RAM で 4 つの仮想 CPU を使用している場合は、各 vCPU につき約 2 GB のデータフレームとする必要があります。
+
+### <a name="local-vs-remote"></a>ローカルとリモートの比較
+
+特定の Pandas データフレーム コマンドの実行が、ローカル PC で作業した場合に、Azure Machine Learning でプロビジョニングしたリモート VM と比べて速くなることがあります。 ローカル PC では通常、ページ ファイルが有効になっているため、物理メモリの容量を超えて読み込むことができます。つまり、ハードドライブが RAM の拡張として使用されます。 現時点では、Azure Machine Learning の VM はページ ファイルなしで実行されるため、使用可能な物理 RAM に収まるだけのデータを読み込むことができます。 
+
+コンピューティング負荷の高いジョブの場合は、処理速度を向上させるために、より大きな VM を選択することをお勧めします。
+
+Azure Machine Learning で[使用可能な VM シリーズとサイズ](concept-compute-target.md#supported-vm-series-and-sizes)の詳細に関する記事を参照してください。 
+
+RAM 仕様については、[Dv2-Dsv2 シリーズ](../virtual-machines/dv2-dsv2-series-memory.md)や [NC シリーズ](../virtual-machines/nc-series.md)など、対応する VM シリーズのページを参照してください。
 
 ### <a name="minimize-cpu-workloads"></a>CPU の負荷を最小限に抑える
 

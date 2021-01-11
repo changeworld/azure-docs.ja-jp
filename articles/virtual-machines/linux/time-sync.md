@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 4214fca9e295dc7716d8e2c069f52c719aa74697
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8a122a36b14bd3c5f4912387dc98585cb89ab53b
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292111"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705642"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure での Linux VM の時刻同期
 
@@ -64,7 +64,7 @@ Azure でホストされている Linux VM 用の時刻同期を構成する方�
 - NTP (プライマリとして)。NTP サーバーから時刻を取得します。 たとえば、Ubuntu 16.04 LTS の Marketplace イメージでは、**ntp.ubuntu.com** が使用されます。
 - VMICTimeSync サービス (セカンダリとして)。VM にホスト時刻を知らせ、VM がメンテナンスのために一時停止した後、修正を行うために使用されます。 Azure ホストでは、Microsoft 所有の Stratum 1 デバイスを使用して、正確な時刻を保持します。
 
-新しい Linux ディストリビューションでは、VMICTimeSync サービスで PTP (Precision Time Protocol) が使用されますが、以前のディストリビューションでは PTP はサポートされない可能性があり、ホストから時刻を取得するために NTP にフォールバックします。
+新しい Linux ディストリビューションでは、VMICTimeSync サービスで PTP (Precision Time Protocol) ハードウェア クロック ソースが提供されますが、以前のディストリビューションでは、このクロック ソースが提供されない可能性があり、ホストから時刻を取得するために NTP にフォールバックします。
 
 NTP が正しく同期していることを確認するには、`ntpq -p` コマンドを実行します。
 
@@ -112,9 +112,9 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 ```
 
 
-### <a name="check-for-ptp"></a>PTP を確認する
+### <a name="check-for-ptp-clock-source"></a>PTP クロック ソースを確認する
 
-新しいバージョンの Linux では、PTP (Precision Time Protocol) クロック ソースを VMICTimeSync プロバイダーの一部として利用できます。 以前のバージョンの Red Hat Enterprise Linux や CentOS 7.x では、[Linux Integration Services](https://github.com/LIS/lis-next) をダウンロードし、それを使用して更新されたドライバーをインポートできます。 PTP を使用する場合、Linux デバイスの形式は /dev/ptp*x* となります。 
+新しいバージョンの Linux では、PTP (Precision Time Protocol) クロック ソースを VMICTimeSync プロバイダーの一部として利用できます。 以前のバージョンの Red Hat Enterprise Linux や CentOS 7.x では、[Linux Integration Services](https://github.com/LIS/lis-next) をダウンロードし、それを使用して更新されたドライバーをインポートできます。 PTP クロック ソースを使用できる場合、Linux デバイスの形式は /dev/ptp*x* になります。 
 
 どの PTP クロック ソースを使用できるかを確認します。
 

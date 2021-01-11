@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 07/09/2020
-ms.openlocfilehash: 5a7f13982de000478b14eb75d7341ed2e99c1274
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.date: 08/28/2020
+ms.openlocfilehash: 3b81ce6e1b77db7b89f293850e2d00fde5d40cfa
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245572"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076516"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -89,11 +89,11 @@ ms.locfileid: "88245572"
 
 - **フェールオーバー グループの読み取り/書き込みリスナー**
 
-  現在のプライマリの URL を指す、DNS CNAME レコード。 フェールオーバー グループの作成時に自動的に作成され、フェールオーバー後、プライマリ データベースの変更時に読み取り/書き込みワークロードが透過的にプライマリに再接続できるようにします。 サーバーでフェールオーバー グループが作成されたときに、リスナー URL の DNS CNAME レコードの形式は `<fog-name>.database.windows.net` になります。 SQL Managed Instance でフェールオーバー グループが作成されたときに、リスナー URL の DNS CNAME レコードの形式は `<fog-name>.zone_id.database.windows.net` になります。
+  現在のプライマリの URL を指す、DNS CNAME レコード。 フェールオーバー グループの作成時に自動的に作成され、フェールオーバー後、プライマリ データベースの変更時に読み取り/書き込みワークロードが透過的にプライマリに再接続できるようにします。 サーバーでフェールオーバー グループが作成されたときに、リスナー URL の DNS CNAME レコードの形式は `<fog-name>.database.windows.net` になります。 SQL Managed Instance でフェールオーバー グループが作成されたときに、リスナー URL の DNS CNAME レコードの形式は `<fog-name>.<zone_id>.database.windows.net` になります。
 
 - **フェールオーバー グループの読み取り専用リスナー**
 
-  セカンダリの URL を指す読み取り専用リスナーを指す、形成された DNS CNAME レコード。 フェールオーバー グループの作成時に自動的に作成され、指定された負荷分散規則を使用して、読み取り専用 SQL ワークロードが透過的にセカンダリに接続できるようにします。 サーバーでフェールオーバー グループが作成されたときに、リスナー URL の DNS CNAME レコードの形式は `<fog-name>.secondary.database.windows.net` になります。 SQL Managed Instance でフェールオーバー グループが作成されたときに、リスナー URL の DNS CNAME レコードの形式は `<fog-name>.zone_id.secondary.database.windows.net` になります。
+  セカンダリの URL を指す読み取り専用リスナーを指す、形成された DNS CNAME レコード。 フェールオーバー グループの作成時に自動的に作成され、指定された負荷分散規則を使用して、読み取り専用 SQL ワークロードが透過的にセカンダリに接続できるようにします。 サーバーでフェールオーバー グループが作成されたときに、リスナー URL の DNS CNAME レコードの形式は `<fog-name>.secondary.database.windows.net` になります。 SQL Managed Instance でフェールオーバー グループが作成されたときに、リスナー URL の DNS CNAME レコードの形式は `<fog-name>.secondary.<zone_id>.database.windows.net` になります。
 
 - **自動フェールオーバー ポリシー**
 
@@ -257,13 +257,13 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zon
 
 ### <a name="using-read-only-listener-to-connect-to-the-secondary-instance"></a>読み取り専用リスナーを使用してセカンダリ インスタンスに接続する
 
-データがある程度古くても構わない、論理的に分離された読み取り専用ワークロードがある場合、アプリケーションでセカンダリ データベースを使用できます。 geo レプリケートされたセカンダリに直接接続するには、`server.secondary.zone_id.database.windows.net` をサーバー URL として使用します。これにより、geo レプリケートされたセカンダリに直接接続されます。
+データがある程度古くても構わない、論理的に分離された読み取り専用ワークロードがある場合、アプリケーションでセカンダリ データベースを使用できます。 geo レプリケートされたセカンダリに直接接続するには、`<fog-name>.secondary.<zone_id>.database.windows.net` をサーバー URL として使用します。これにより、geo レプリケートされたセカンダリに直接接続されます。
 
 > [!NOTE]
 > 特定のサービス レベルでは、SQL Database で、1 つの読み取り専用レプリカの容量を使用し、また、接続文字列の `ApplicationIntent=ReadOnly` パラメーターを使用して、読み取り専用クエリ ワークロードの負荷を分散するための[読み取り専用レプリカ](read-scale-out.md)の使用がサポートされます。 geo レプリケートされたセカンダリを構成した場合は、この機能を使用して、プライマリ ロケーション、または geo レプリケートされたロケーションの読み取り専用レプリカに接続できます。
 >
-> - プライマリ ロケーションの読み取り専用レプリカに接続するには、`<fog-name>.zone_id.database.windows.net` を使用します。
-> - セカンダリ ロケーションの読み取り専用レプリカに接続するには、`<fog-name>.secondary.zone_id.database.windows.net` を使用します。
+> - プライマリ ロケーションの読み取り専用レプリカに接続するには、`<fog-name>.<zone_id>.database.windows.net` を使用します。
+> - セカンダリ ロケーションの読み取り専用レプリカに接続するには、`<fog-name>.secondary.<zone_id>.database.windows.net` を使用します。
 
 ### <a name="preparing-for-performance-degradation"></a>パフォーマンスの低下に対して準備する
 

@@ -4,15 +4,15 @@ description: Azure ファイル共有のパフォーマンスに関する既知�
 author: gunjanj
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 04/25/2019
+ms.date: 08/24/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 6739e5619a0dcaa940d38571c4a88c4f68971dfe
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: fe1460d4353addff1b8e3095cfe06c1fcb3b7bd0
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009275"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782372"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Azure Files のパフォーマンスに関する問題のトラブルシューティング
 
@@ -20,9 +20,9 @@ ms.locfileid: "88009275"
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>高待機時間、低スループット、および全般的なパフォーマンスの問題
 
-### <a name="cause-1-share-experiencing-throttling"></a>原因 1:共有でのスロットルの発生
+### <a name="cause-1-share-was-throttled"></a>原因 1:共有がスロットルされていた
 
-Premium 共有の既定のクォータは 100 GiB であり、これは 100 ベースライン IOPS (1 時間に最高 300 のバーストの可能性あり) を提供します。 プロビジョニングとその IOPS との関係の詳細については、プランニング ガイドの[プロビジョニング済みの共有](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)に関するセクションを参照してください。
+IOPS、ファイル共有のイングレスまたはエグレスの制限に達した場合、要求はスロットルされます。 Standard および Premium ファイル共有の制限については、「[ファイル共有とファイルのスケール ターゲット](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)」を参照してください。
 
 共有がスロットルされているかどうかを確認するには、ポータルで Azure メトリックスを利用できます。
 
@@ -47,7 +47,8 @@ Premium 共有の既定のクォータは 100 GiB であり、これは 100 ベ�
 
 ### <a name="solution"></a>解決策
 
-- 共有のクォータを高くすることで、共有のプロビジョニング容量を増やします。
+- Standard ファイル共有を使用している場合は、お使いのストレージ アカウントで [[大きいファイルの共有]](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share?tabs=azure-portal) を有効にします。 大きいファイルの共有では、共有あたり最大 10,000 IOPS がサポートされています。
+- Premium ファイル共有を使用している場合は、プロビジョニングされたファイル共有のサイズを増やして IOPS の上限を上げます 詳細については、Azure Files 計画ガイドの「[Premium ファイル共有のプロビジョニングについて](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares)」セクションを参照してください。
 
 ### <a name="cause-2-metadatanamespace-heavy-workload"></a>原因 2:メタデータ/名前空間の過大なワークロード
 

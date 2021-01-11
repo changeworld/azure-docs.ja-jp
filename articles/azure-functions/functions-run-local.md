@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: bbdc05d2b5a770791bb81f26a71b9dc3eb7523d5
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8dfc1471955a6d10199a078922151ff3aeda4294
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505718"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929493"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -37,7 +37,7 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 
 + **バージョン 1.x**: Azure Functions ランタイムのバージョン 1.x をサポートします。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://www.npmjs.com/package/azure-functions-core-tools)からインストールされます。
 
-特に記載がない限り、この記事の例ではバージョン 3.x を対象にしています。
+特定のコンピューターには、1 つのバージョンの Core Tools のみをインストールできます。 特に記載がない限り、この記事の例ではバージョン 3.x を対象にしています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -257,20 +257,21 @@ Azure Functions ランタイム バージョン 2.x では、関数で使用す�
 
   ![Storage Explorer から接続文字列をコピーする](./media/functions-run-local/storage-explorer.png)
 
-+ Core Tools を使用して、次のいずれかのコマンドで Azure から接続文字列をダウンロードします。
++ プロジェクトのルートから Core Tools を使用して、次のいずれかのコマンドで Azure から接続文字列をダウンロードします。
 
   + 既存の関数アプリからすべての設定をダウンロードします。
 
     ```
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
+
   + 特定のストレージ アカウントの接続文字列を取得します。
 
     ```
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    Azure にまだサインインしていない場合は、それを求めるメッセージが表示されます。
+    Azure にまだサインインしていない場合は、それを求めるメッセージが表示されます。 これらのコマンドは、local.settings.json ファイル内のすべての既存の設定を上書きします。 
 
 ## <a name="create-a-function"></a><a name="create-func"></a>関数を作成する
 
@@ -567,7 +568,7 @@ func deploy
 | **`--min`**  | 必要に応じて、デプロイする関数アプリ インスタンスの最小数を設定します。 |
 | **`--config`** | オプションのデプロイ構成ファイルを設定します。 |
 
-## <a name="monitoring-functions"></a>関数の監視
+## <a name="monitoring-functions"></a>Functions の監視
 
 関数の実行を監視するための推奨される方法は、Azure Application Insights との統合です。 また、ローカル コンピューターに実行ログをストリーミングすることもできます。 詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 

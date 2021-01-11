@@ -4,12 +4,12 @@ description: この記事では、Azure Backup を使用して Azure VM 上の S
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: 674bbf968b42f66a4c421aec6653881c8fd52a8b
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 5b0d1b603e8a9c06e210083863e0ca6bfbee2399
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439583"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826465"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM 上の SAP HANA データベースのバックアップに関するサポート マトリックス
 
@@ -41,7 +41,6 @@ Azure Backup では、Azure への SAP HANA データベースのバックアッ
 >Azure Backup では、Azure VM で実行されている SAP HANA データベースをバックアップしている場合、夏時間変更に合わせた自動調整は行われません。
 >
 >必要に応じて手動でポリシーを変更してください。
-
 
 > [!NOTE]
 > Azure portal で、HANA ネイティブ クライアント (SAP HANA Studio、コックピット、DBA コックピット) からトリガーされた[バックアップ ジョブと (同じマシンへの) 復元ジョブを監視](./sap-hana-db-manage.md#monitor-manual-backup-jobs-in-the-portal)できるようになりました。

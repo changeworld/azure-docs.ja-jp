@@ -1,20 +1,40 @@
 ---
-title: 変換されたモデルに関する情報を取得する
-description: モデル変換のすべてのパラメーターについての説明
+title: 変換に関する情報を取得する
+description: 変換に関する情報を取得する
 author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: f5c38ac88503416b37b720a091c9e46d819a3146
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 529bfb61b3af7040f3656c04071683841f5abe86
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509299"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870291"
 ---
-# <a name="get-information-about-a-converted-model"></a>変換されたモデルに関する情報を取得する
+# <a name="get-information-about-conversions"></a>変換に関する情報を取得する
 
-変換サービスによって生成された arrAsset ファイルは、レンダリング サービスによる使用のみを目的としています。 ただし、レンダリング セッションを開始せずにモデルに関する情報にアクセスしたい場合があります。 そのため、変換サービスによって、arrAsset ファイルとは別に JSON ファイルが出力コンテナー内に配置されます。 たとえば、ファイル `buggy.gltf` が変換される場合、出力コンテナーには、変換された資産 `buggy.arrAsset` とは別に `buggy.info.json` というファイルが格納されます。 これには、ソース モデル、変換されたモデル、および変換自体に関する情報が含まれています。
+## <a name="information-about-a-conversion-the-result-file"></a>変換に関する情報: 結果ファイル
+
+変換サービスは、資産を変換するときに、問題の概要を "結果ファイル" に書き込みます。 たとえば、ファイル `buggy.gltf` が変換される場合、出力コンテナーには `buggy.result.json` というファイルが格納されます。
+
+結果ファイルには、変換中に発生したエラーと警告が一覧表示され、`succeeded`、`failed`、または `succeeded with warnings` という結果の概要が示されます。
+結果ファイルは、オブジェクトの JSON 配列として構成されます。各オブジェクトには、`warning`、`error`、`internal warning`、`internal error`、`result` のいずれかの文字列プロパティが含まれます。 多くても 1 つのエラー (`error` または `internal error`) が発生し、`result` は常に 1 つ存在します。
+
+## <a name="example-result-file"></a>"*結果*" ファイルの例
+
+次の例では、arrAsset が正常に生成された変換について説明します。 ただし、テクスチャが不足していたため、結果として得られる arrAsset は意図したとおりではない可能性があります。
+
+```JSON
+[
+  {"warning":"4004","title":"Missing texture","details":{"texture":"buggy_baseColor.png","material":"buggy_col"}},
+  {"result":"succeeded with warnings"}
+]
+```
+
+## <a name="information-about-a-converted-model-the-info-file"></a>変換されたモデルに関する情報: info ファイル
+
+変換サービスによって生成された arrAsset ファイルは、レンダリング サービスによる使用のみを目的としています。 ただし、レンダリング セッションを開始せずにモデルに関する情報にアクセスしたい場合があります。 このワークフローをサポートするために、変換サービスによって、arrAsset ファイルとは別に JSON ファイルが出力コンテナー内に配置されます。 たとえば、ファイル `buggy.gltf` が変換される場合、出力コンテナーには、変換された資産 `buggy.arrAsset` とは別に `buggy.info.json` というファイルが格納されます。 これには、ソース モデル、変換されたモデル、および変換自体に関する情報が含まれています。
 
 ## <a name="example-info-file"></a>*info* ファイルの例
 
@@ -124,6 +144,11 @@ ms.locfileid: "88509299"
 * `numMeshPartsInstanced`:arrAsset で再利用されるメッシュの数。
 * `recenteringOffset`:[ConversionSettings](configure-model-conversion.md) の `recenterToOrigin` オプションが有効な場合、この値は、変換されたモデルを元の位置に戻す変換です。
 * `boundingBox`:モデルの境界。
+
+## <a name="deprecated-features"></a>非推奨の機能
+
+変換サービスによって、ファイル `stdout.txt` およびファイル `stderr.txt` が出力コンテナーに書き込まれます。これらが、警告とエラーの唯一のソースとなっていました。
+現在これらのファイルは、非推奨となっています。 このため、代わりに[結果ファイル](#information-about-a-conversion-the-result-file)を使用してください。
 
 ## <a name="next-steps"></a>次のステップ
 

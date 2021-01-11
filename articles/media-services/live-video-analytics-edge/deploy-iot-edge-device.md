@@ -3,17 +3,16 @@ title: IoT Edge デバイスに Live Video Analytics をデプロイする - Azu
 description: この記事では、IoT Edge デバイスに Live Video Analytics をデプロイするときに役立つ手順を示します。 たとえば、ローカル Linux コンピューターにアクセスできる場合や、以前に Azure Media Services アカウントを作成してある場合などに、これを行います。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: f031f679d8fe8e1c14b6a4086f5e1c37f15c7855
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 774fdb440307d0df92e9735a8bdf055687f450a2
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067910"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684101"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge デバイスに Live Video Analytics をデプロイする
 
 この記事では、IoT Edge デバイスに Live Video Analytics をデプロイするときに役立つ手順を示します。 たとえば、ローカル Linux コンピューターにアクセスできる場合や、以前に Azure Media Services アカウントを作成してある場合などに、これを行います。
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,6 +22,7 @@ ms.locfileid: "88067910"
 * [IoT Edge デバイスを登録します](../../iot-edge/how-to-register-device.md)
 * [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Azure Media Services アカウントを作成します](../latest/create-account-howto.md)
+
     * 次のいずれかのリージョンを使用します: 米国東部 2、米国中部、米国中北部、東日本、米国西部 2、米国中西部、カナダ東部、英国南部、フランス中部、フランス南部、スイス北部、スイス西部、西日本。
     * General Purpose v2 (GPv2) ストレージ アカウントを使用することをお勧めします
 
@@ -51,7 +51,7 @@ az ams streaming-endpoint scale --resource-group $RESOURCE_GROUP --account-name 
 az ams streaming-endpoint start --resource-group $RESOURCE_GROUP --account-name $AMS_ACCOUNT -n default --no-wait
 ```
 
-[Media Service API へのアクセス](../latest/access-api-howto.md#use-the-azure-portal)に関する記事の手順に従って、Media Service API にアクセスするための資格情報を取得します。
+[Media Service API へのアクセス](../latest/access-api-howto.md?tabs=portal)に関する記事の手順に従って Media Service API にアクセスするための資格情報を取得し、[ポータル] タブを選択します。
 
 ## <a name="create-and-use-local-user-account-for-deployment"></a>デプロイ用のローカル ユーザー アカウントを作成して使用する
 Live Video Analytics on IoT Edge モジュールを実行するには、可能な限り少ない権限でローカル ユーザー アカウントを作成します。 たとえば、Linux コンピューターで次のコマンドを実行します。
@@ -168,7 +168,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
     * {resourceGroupName} - これは、Media Services アカウントが属しているリソース グループです
     * {AMS-account-name} - これは、Media Services アカウントの名前です
     
-    他の値については、[Azure Media Services API へのアクセス](../latest/access-api-howto.md#use-the-azure-portal)に関する記事を参照してください。  
+    他の値については、[Azure Media Services API へのアクセス](../latest/access-api-howto.md?tabs=portal)に関する記事を参照し、[ポータル] タブを選択します。  
     * aadTenantId - これはテナントの ID であり、上記のリンクの "AadTenantId" と同じです。
     * aadServicePrincipalAppId - これは、Media Services アカウントのサービス プリンシパルのアプリ ID であり、上記のリンクの "AadClientId" と同じです。
     * aadServicePrincipalSecret - これはサービス プリンシパルのパスワードであり、上記のリンクの "AadSecret" と同じです。
@@ -190,6 +190,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
     "armEndpoint": "https://management.azure.com/",
     "allowUnsecuredEndpoints": true
     ```
+
    > [!Note]
    > ツイン プロパティ **allowUnsecuredEndpoints** を true に設定してあるのは、チュートリアルとクイックスタートのためです。   
    運用環境で実行する場合は、このプロパティを **false** に設定する必要があります。 これにより、セキュリティ保護されていないすべてのエンドポイントがアプリケーションでブロックされ、グラフのトポロジを実行するには、有効な接続資格情報が必要になります。  
@@ -210,8 +211,8 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
 
 デプロイを作成すると、IoT ハブの IoT Edge ページに戻ります。
 
-1.  デプロイで対象にした Azure IoT Edge デバイスを選択して、その詳細を開きます。
-2.  デバイスの詳細で、Blob Storage モジュールが **[デプロイで指定] と [デバイス別に報告]** の両方として一覧に表示されていることを確認します。
+1. デプロイで対象にした Azure IoT Edge デバイスを選択して、その詳細を開きます。
+2. デバイスの詳細で、Blob Storage モジュールが **[デプロイで指定] と [デバイス別に報告]** の両方として一覧に表示されていることを確認します。
 
 モジュールがデバイス上で開始してから IoT Hub にレポートされるまでしばらく時間がかかる場合があります。 ページを更新して、最新の状態を表示します。
 状態コード:200 –OK は、[IoT Edge ランタイム](../../iot-edge/iot-edge-runtime.md)が正常であり、正常に動作していることを意味します。
@@ -247,6 +248,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
     ![200 状態メッセージ](./media/deploy-iot-edge-device/connection-timeout.png) 
 
 ## <a name="next-steps"></a>次のステップ
+
 次を試します。「[クイックスタート: はじめに - Live Video Analytics on IoT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
 > [!TIP]

@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Azure Arc 対応の Kubernetes クラスターを Azure Arc と接続する
 keywords: Kubernetes, Arc, Azure, K8s, コンテナー
 ms.custom: references_regions
-ms.openlocfilehash: 761263a4cb8c83475142c2afcc39695bb84d46cd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: eb3921d3ab2090b6bac54c9b68e9def3949ed4b5
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080492"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723743"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc 対応の Kubernetes クラスターを接続する (プレビュー)
 
@@ -72,6 +72,7 @@ Azure Arc エージェントが機能するには、次のプロトコル、ポ�
 | `https://github.com`、git://github.com                                                                         | GitOps リポジトリの例は、GitHub でホストされています。 構成エージェントには、指定する git エンドポイントへの接続が必要です。 |
 | `https://login.microsoftonline.com`                                                                            | Azure Resource Manager トークンをフェッチして更新するために必要です                                                                                    |
 | `https://azurearcfork8s.azurecr.io`                                                                            | Azure Arc エージェント用のコンテナー イメージをプルするために必要です                                                                  |
+| `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  システムによって割り当てられたマネージド ID 証明書をプルするために必須                                                                  |
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes 用の 2 つのプロバイダーを登録する:
 
@@ -174,7 +175,7 @@ AzureArcTest1  eastus      AzureArcTest
 
 ## <a name="connect-using-an-outbound-proxy-server"></a>送信プロキシ サーバーを使用して接続する
 
-クラスターが送信プロキシ サーバーの内側にある場合、Azure CLI および Arc 対応 Kubernetes エージェントは、要求を送信プロキシ サーバー経由でルーティングする必要があります。 次の構成を使用することで、これが実現します。
+クラスターが送信プロキシ サーバーの内側にある場合、Azure CLI および Arc 対応 Kubernetes エージェントは、要求を送信プロキシ サーバー経由でルーティングする必要があります。 次の構成で可能になること:
 
 1. 次のコマンドを実行して、お使いのコンピューターにインストールされている `connectedk8s` 拡張機能のバージョンを確認します。
 
@@ -182,7 +183,7 @@ AzureArcTest1  eastus      AzureArcTest
     az -v
     ```
 
-    送信プロキシを使用してエージェントをセットアップするには、`connectedk8s` 拡張機能のバージョン 0.2.3 以降が必要です。 お使いのコンピューターに 0.2.3 より前のバージョンがある場合は、[更新手順](#before-you-begin)に従って、そのコンピューター上に最新バージョンの拡張機能を取得してください。
+    送信プロキシを使用してエージェントを設定するには、`connectedk8s` 拡張機能のバージョン 0.2.3 以降が必要です。 お使いのコンピューターに 0.2.3 より前のバージョンがある場合は、[更新手順](#before-you-begin)に従って、そのコンピューター上に最新バージョンの拡張機能を取得してください。
 
 2. Azure CLI に必要な環境変数を設定します。
 

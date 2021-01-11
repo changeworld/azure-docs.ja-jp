@@ -36,12 +36,6 @@
       href: concepts-security.md
 - name: 操作方法ガイド
   items:
-    - name: 開発
-      items:
-        - name: API と SDK を使用する
-          href: how-to-use-apis-sdks.md
-        - name: AutoRest を使用してカスタム SDK を作成する
-          href: how-to-create-custom-sdks.md
     - name: 配置
       items:
         - name: Azure Digital Twins CLI を使用する
@@ -56,6 +50,8 @@
               href: how-to-set-up-instance-portal.md
         - name: アプリ認証コードを作成する
           href: how-to-authenticate-client.md
+        - name: インスタンスを別のリージョンに移動する
+          href: how-to-move-regions.md
     - name: モデルを設計する
       items:
         - name: カスタム モデルを管理する
@@ -76,10 +72,20 @@
           href: how-to-create-azure-function.md
         - name: ツイン グラフにクエリを実行する
           href: how-to-query-graph.md
+    - name: クライアント アプリの開発
+      items:
+        - name: API と SDK を使用する
+          href: how-to-use-apis-sdks.md
+        - name: AutoRest を使用してカスタム SDK を作成する
+          href: how-to-create-custom-sdks.md
+        - name: Azure SignalR Service と統合する
+          href: how-to-integrate-azure-signalr.md
     - name: 入力を接続する
       items:
         - name: IoT Hub からテレメトリを取り込む
           href: how-to-ingest-iot-hub-data.md
+        - name: DPS を使用したデバイスの自動管理
+          href: how-to-provision-using-device-provisioning-service.md
         - name: Logic Apps との統合
           href: how-to-integrate-logic-apps.md
     - name: 出力を接続する
@@ -181,7 +187,11 @@
         - name: DTDL 検証ツール (サンプル)
           href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
         - name: DPS と IoT Hub の統合サンプル
-          href: 'https://github.com/Azure-Samples/digital-twins-iothub-integration'
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/'
+        - name: Azure Digital Twins のカスタム Swagger
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/'
+        - name: SignalR 統合のサンプル
+          href: 'https://docs.microsoft.com/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/'
     - name: Azure ツール
       items:
         - name: Azure Cloud Shell

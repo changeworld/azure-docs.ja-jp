@@ -3,23 +3,25 @@ title: コンテンツに対応したエンコードのプリセット - Azure M
 description: この記事では、Microsoft Azure Media Services v3 でのコンテンツに対応したエンコードについて説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 04/29/2020
-ms.author: juliako
-ms.custom: ''
-ms.openlocfilehash: 3669919a8ddf4ffcbcf0d3e7e060c62f4c8df1c6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5d08e09905841f6068f2bac45680a8e5a011c158
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039144"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297367"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>コンテンツに対応したエンコードのプリセットを使用して、特定の解像度に最適なビットレートの値を検索する
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 [アダプティブ ビットレート ストリーミング](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)によるコンテンツ配信の準備をするためには、ビデオを複数のビット レート (高から低まで) でエンコードする必要があります。 これによりビットレートが低くなるにつれてビデオの解像度も低下するため、品質のグレースフル デグラデーションが保証されます。 このような複数のビットレート エンコードにより、いわゆるエンコード ラダー (解像度とビットレートの表) が生成されます。Media Services の[組み込みエンコード プリセット](/rest/api/media/transforms/createorupdate#encodernamedpreset)をご覧ください。
 

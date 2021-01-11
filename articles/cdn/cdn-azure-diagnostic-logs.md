@@ -184,10 +184,10 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 ## <a name="consuming-diagnostics-logs-from-azure-storage"></a>Azure Storage からの診断ログの使用
 このセクションでは、CDN コア分析のスキーマと、Azure ストレージ アカウントでの編成について説明し、ログを CSV ファイルにダウンロードするためのサンプル コードを提供します。
 
-### <a name="using-microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラーの使用
+### <a name="using-microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer の使用
 ツールをダウンロードするには、「[Azure Storage Explorer](https://storageexplorer.com/)」を参照してください。 ソフトウェアをダウンロードしてインストールしたら、CDN 診断ログの保存先として構成したのと同じ Microsoft Azure Storage アカウントを使用するように構成します。
 
-1.  **Microsoft Azure ストレージ エクスプローラー**を開きます
+1.  **Microsoft Azure Storage Explorer** を開きます
 2.  ストレージ アカウントを見つけます
 3.  このストレージ アカウントで **Blob Containers** ノードを展開します。
 4.  *Insights-logs-coreanalytics* というコンテナーを選択します。

@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: e9b9e0b27e46c95ca4c2bc3a5c547259bada5fda
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a6a185c61c32636dd0189bc5835f850348b196cd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685410"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020356"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評価と依存関係の視覚化のトラブルシューティング
 
@@ -164,7 +164,7 @@ Linux VM の場合、MMA と依存関係エージェントのインストール�
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
-- **MMS エージェント**:サポートされている [Windows](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) オペレーティング システムと [Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) オペレーティング システムを確認します。
+- **MMS エージェント**:サポートされている [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems) オペレーティング システムと [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) オペレーティング システムを確認します。
 - **依存関係エージェント**: サポートされている [Windows および Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) オペレーティング システムを確認します。
 
 ## <a name="visualize-dependencies-for--hour"></a>最大 1 時間分の依存関係を視覚化する

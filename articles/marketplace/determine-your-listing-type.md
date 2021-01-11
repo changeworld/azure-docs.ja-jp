@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/30/2020
-ms.openlocfilehash: 1b0846c68f6860b5c7dac9e93808088dac4f6a05
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4a27ace4e45d00a2fbb35b9e0e3e9b7c03383681
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607428"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705879"
 ---
 # <a name="determine-your-publishing-option"></a>公開オプションを選定する
 
@@ -47,9 +47,9 @@ ms.locfileid: "88607428"
 
 &#42;&#42; Microsoft 365 のオファーは、無料でインストールすることができ、SaaS オファーを介してライセンス サービスとして収益化できます。 詳細については、「[Microsoft Commercial Marketplace を通して Office 365 アドインを収益化する](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)」を参照してください。
 
-## <a name="choose-a-call-to-action"></a>行動喚起を選択する
+## <a name="choose-a-listing-option"></a>リスト オプションを選択する
 
-公開オプションによってお客様のエンゲージメントが差別化され、潜在顧客の共有や[商業マーケットプレース特典](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)へのアクセスも可能になります。 公開オプションに対応した行動喚起を次に示します。
+リスト オプションによってお客様のエンゲージメントが差別化され、潜在顧客の共有や[商業マーケットプレース特典](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)へのアクセスも可能になります。 公開オプションに対応したリスト オプションを次に示します。
 
 | **公開オプション**    | **説明**  |
 | :------------------- | :-------------------|

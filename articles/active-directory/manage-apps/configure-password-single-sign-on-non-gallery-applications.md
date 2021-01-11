@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: 1193e6f9ed637f6bd28b2fef6488b2d4902ec67b
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: be6a8a58f1d66df9d0fe557584c4731e42ae9c59
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459387"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640550"
 ---
 # <a name="configure-password-based-single-sign-on"></a>パスワードベースのシングル サインオンの構成
 
@@ -29,7 +29,7 @@ ms.locfileid: "87459387"
 
 - サインインするためにユーザー名とパスワード以外のフィールドも必要とするアプリケーションのために、複数のサインイン フィールドを必要とするアプリケーションをサポートする
 
-- ユーザーが資格情報を入力するときに[アプリケーション アクセス パネル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に表示されるユーザー名とパスワードのフィールドのラベルをカスタマイズする
+- ユーザーが資格情報を入力するときに[マイ アプリ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に表示されるユーザー名とパスワードのフィールドのラベルをカスタマイズする
 
 - ユーザーが既存のアプリケーション アカウントに対する自分のユーザー名とパスワードを手動で入力して指定できるようにする
 
@@ -71,7 +71,7 @@ Azure AD による解析の試行が失敗した場合、サインオンを手�
    ![パスワードベースのシングル サインオンの手動構成](./media/configure-password-single-sign-on/password-configure-sign-on.png)
 3. **[サインイン フィールドの取り込み]** を選択します。 キャプチャ ステータス ページが新しいタブで開き、「**メタデータ キャプチャは現在進行中です**」というメッセージが示されます。
 
-4. **[Access Panel Extension Required]** (アクセス パネル拡張機能必要) ボックスが新しいタブに表示された場合、 **[今すぐインストール]** を選択して、 **[マイ アプリによるセキュリティで保護されたサインイン拡張機能]** ブラウザー拡張機能をインストールします。 (ブラウザー拡張機能には、Microsoft Edge、Chrome、または Firefox が必要です)。続いて拡張機能をインストールし、起動し、有効にして、キャプチャ ステータス ページを更新します。
+4. **[My Apps Extension Required]\(マイ アプリ拡張機能必要\)** ボックスが新しいタブに表示された場合、 **[今すぐインストール]** を選択して、 **[マイ アプリによるセキュリティで保護されたサインイン拡張機能]** ブラウザー拡張機能をインストールします。 (ブラウザー拡張機能には、Microsoft Edge、Chrome、または Firefox が必要です)。続いて拡張機能をインストールし、起動し、有効にして、キャプチャ ステータス ページを更新します。
 
    ブラウザー拡張機能は次に、入力した URL を表示する別のタブを開きます。
 5. 入力した URL のタブで、サインイン プロセスを実行します。 ユーザー名とパスワードのフィールドを入力し、サインインを試みます。 (正しいパスワードを指定する必要がありません)。

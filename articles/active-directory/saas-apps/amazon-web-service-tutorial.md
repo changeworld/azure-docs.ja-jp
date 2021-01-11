@@ -340,7 +340,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
     ![[管理者資格情報] ダイアログ ボックスのスクリーンショット](./media/amazon-web-service-tutorial/provisioning1.png)
 
-    a. AWS ユーザーのアクセス キーを **[clientsecret]/(clientsecret/)** フィールドに入力します。
+    a. AWS ユーザーのアクセス キーを **[clientsecret]** フィールドに入力します。
 
     b. AWS ユーザー シークレットを **[シークレット トークン]** フィールドに入力します。
 

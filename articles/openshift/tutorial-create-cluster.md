@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: d4938d2e4649d62ab656b6854e8176fd82b59a8f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: a581678fdd05dade336f7ca9fcbcf5ad4c92d49a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587737"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300172"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを作成する
 
@@ -23,6 +23,8 @@ ms.locfileid: "88587737"
 ## <a name="before-you-begin"></a>開始する前に
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+
+OpenShift クラスターを作成して実行するには、Azure Red Hat OpenShift に少なくとも 40 コアが必要です。 新しい Azure サブスクリプションの既定の Azure リソース クォータは、この要件を満たしていません。 リソースの制限の引き上げを依頼するには、[標準クォータ: VM シリーズでの制限の引き上げ](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)に関するページの説明に従って引き上げをリクエストしてください。
 
 ### <a name="verify-your-permissions"></a>アクセス許可を確認する
 
@@ -87,12 +89,15 @@ Red Hat プル シークレットを使用すると、クラスターは追加�
 1. **リソース グループを作成します。**
 
     Azure リソース グループは、Azure リソースが展開され管理される論理グループです。 リソース グループを作成する際は、場所を指定するよう求められます。 この場所は、リソース グループのメタデータが格納される場所です。リソースの作成時に別のリージョンを指定しない場合は、Azure でリソースが実行される場所でもあります。 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) コマンドを使用して、リソース グループを作成します。
+    
+> [!NOTE]
+> Azure Red Hat OpenShift は、Azure リソース グループを作成できるすべてのリージョンで使用可能なわけではありません。 Azure Red Hat OpenShift がサポートされている場所については、「[使用可能なリージョン](https://docs.openshift.com/aro/4/welcome/index.html#available-regions)」を参照してください。
 
     ```azurecli-interactive
     az group create --name $RESOURCEGROUP --location $LOCATION
     ```
 
-    次の出力例では、正常に作成されたリソース グループが示されています。
+    The following example output shows the resource group created successfully:
 
     ```json
     {

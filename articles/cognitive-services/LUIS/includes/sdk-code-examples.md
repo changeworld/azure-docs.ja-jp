@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 08/12/2020
+ms.date: 09/01/2020
 ms.topic: include
 ms.custom: include file, devx-track-javascript
 ms.author: diberry
-ms.openlocfilehash: 67b747d19a7866201afabd7f9590895a26ef55d6
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 51b8fc9aae787b0fe033e9046059a65a4d79616c
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88237325"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89323076"
 ---
 ## <a name="code-examples"></a>コード例
 
@@ -26,5 +26,5 @@ ms.locfileid: "88237325"
 * [エンティティの追加](#create-entities-for-the-app)
 * [発話の例を追加する](#add-example-utterance-to-intent)
 * [アプリのトレーニング](#train-the-app)
-* [アプリの公開](#publish-a-language-understanding-app)
+* [アプリの公開](#publish-app-to-production-slot)
 * [スロット別の予測](#get-prediction-from-runtime)

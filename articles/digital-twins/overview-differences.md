@@ -5,16 +5,16 @@ description: Azure Digital Twins の新しいバージョンでの変更点に�
 author: baanders
 ms.author: baanders
 ms.date: 3/12/2020
-ms.topic: overview
+ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ad99dc3dc17e81c3b5da144b21519781353baa47
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6d1786766fc61ed0edfdc53295a50ba212818fc0
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826825"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89181427"
 ---
-# <a name="how-is-the-new-azure-digital-twins-different-from-the-previous-version-2018"></a>新しい Azure Digital Twins と以前のバージョン (2018) との違い
+# <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-previous-version-2018"></a>新しい Azure Digital Twins と以前のバージョン (2018) との違い How is it different from the previous version (2018)?
 
 Azure Digital Twins の最初のパブリック プレビューは、2018 年 10 月にリリースされました。 以前のバージョンの主要な概念は、現在パブリック プレビュー段階にある新しいサービスに引き継がれていますが、インターフェイスと実装の詳細の多くは、サービスの柔軟性を高め、サービスにアクセスしやすくするために変更されています。 これらの変更は、お客様からのフィードバックによって行われました。
 
@@ -44,5 +44,4 @@ Azure Digital Twins の最初のパブリック プレビューは、2018 年 10
 
 次に、最初のチュートリアルで Azure Digital Twins の使用について詳しく確認します。
 
-> [!div class="nextstepaction"]
-> [*チュートリアル:クライアント アプリをコーディングする*](tutorial-code.md)"
+[*チュートリアル:クライアント アプリをコーディングする*](tutorial-code.md)"

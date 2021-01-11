@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 990a2d5279c796f354055328e6968ea705ea10b2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 581feff516e0f0cd820c94290d4aaa729cc4d3a4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873638"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889942"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>ファイアウォールの内側で Azure Machine Learning のワークスペースを使用する
 
@@ -24,12 +24,12 @@ ms.locfileid: "87873638"
 
 このドキュメントの情報は [Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md) を使用した場合に基づいていますが、他のファイアウォール製品でも使用できます。 ファイアウォール経由の通信を許可する方法について不明な点がある場合は、使用しているファイアウォールのドキュメントを参照してください。
 
-## <a name="network-rules"></a>ネットワーク ルール
+## <a name="application-rules"></a>アプリケーション ルール
 
-ファイアウォールで、この記事のアドレスとの間で送受信されるトラフィックを許可するネットワーク ルールを作成します。
+ファイアウォールで、この記事のアドレスとの間で送受信されるトラフィックを許可する_アプリケーション ルール_を作成します。
 
 > [!TIP]
-> ネットワーク ルールを追加するときは、__プロトコル__を任意に設定し、ポートを `*` に設定します。
+> ネットワーク ルールを追加するときは、__プロトコル__ を任意に設定し、ポートを `*` に設定します。
 >
 > Azure Firewall の構成について詳しくは、[Azure Firewall のデプロイと構成](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule)に関する記事をご覧ください。
 
@@ -57,6 +57,7 @@ ms.locfileid: "87873638"
 | **mcr.microsoft.com** | 基本 Docker イメージ用の Microsoft Container Registry |
 | **your-acr-server-name.azurecr.io** | Azure Container Registry が仮想ネットワークの背後にある場合にのみ必要です。 この構成では、Microsoft 環境からサブスクリプションの ACR インスタンスへのプライベート リンクが作成されます。 Azure Machine Learning ワークスペースの ACR サーバー名を使用します。 |
 | **\*.notebooks.azure.net** | Azure Machine Learning studio のノートブックで必要です。 |
+| **graph.windows.net** | ノートブックに必要です |
 
 ## <a name="python-hosts"></a>Python のホスト
 
@@ -78,6 +79,15 @@ ms.locfileid: "87873638"
 | **ホスト名** | **目的** |
 | ---- | ---- |
 | **cloud.r-project.org** | CRAN パッケージをインストールするときに使用されます。 |
+
+## <a name="azure-government-region"></a>Azure Government リージョン
+
+Azure Government リージョンに必要な URL。
+
+| **ホスト名** | **目的** |
+| ---- | ---- |
+| **usgovarizona.api.ml.azure.us** | 米国アリゾナ リージョン |
+| **usgovvirginia.api.ml.azure.us** | 米国バージニア リージョン |
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,12 +4,12 @@ description: App Service アプリからビジネス プロセスを呼び出す
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 9d4136099a8cadc43a53298f367f6eeb784e5ce1
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ddd57bfe653766d133824f42098d9ad9adb1e56b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212851"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962198"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>チュートリアル:App Service からメールを送信したり他のビジネス プロセスを呼び出したりする
 
@@ -84,7 +84,7 @@ ms.locfileid: "88212851"
 1. デザイナーの下部にある **[新しいステップ]** をクリックし、アクション検索ボックスに「**Gmail**」と入力して、 **[メールの送信 (V2)]** を見つけて選択します。
     
     > [!TIP]
-    > SendGrid、MailChimp、Office 365、SalesForce など、他の種類の統合を検索することができます。 詳細については、[Logic Apps のドキュメント](https://docs.microsoft.com/azure/logic-apps/)を参照してください。
+    > SendGrid、MailChimp、Office 365、SalesForce など、他の種類の統合を検索することができます。 詳細については、[Logic Apps のドキュメント](../logic-apps/index.yml)を参照してください。
 1. **[Gmail]** ダイアログで、 **[サインイン]** を選択し、メールの送信に使用する Gmail アカウントにサインインします。
 
     ![電子メールの送信元にする Gmail アカウントにサインインするための [Gmail] ダイアログ ボックスのスクリーンショット。](./media/tutorial-send-email/gmail-sign-in.png)
@@ -152,7 +152,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
-ASP.NET では、[System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) クラスを使用して HTTP Post を送信できます。 次に例を示します。
+ASP.NET では、[System.Net.Http.HttpClient](/dotnet/api/system.net.http.httpclient) クラスを使用して HTTP Post を送信できます。 次に例を示します。
 
 ```csharp
 // requires using System.Net.Http;
@@ -177,7 +177,7 @@ var statusCode = result.StatusCode.ToString();
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-ASP.NET Core では、[System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) クラスを使用して HTTP Post を送信できます。 次に例を示します。
+ASP.NET Core では、[System.Net.Http.HttpClient](/dotnet/api/system.net.http.httpclient) クラスを使用して HTTP Post を送信できます。 次に例を示します。
 
 ```csharp
 // requires using System.Net.Http;
@@ -199,7 +199,7 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> このコードは、デモの簡略化を意図して記述されています。 実際には、要求ごとに `HttpClient` オブジェクトをインスタンス化しないでください。 「[IHttpClientFactory を使用して回復力の高い HTTP 要求を実装する](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)」のガイダンスに従ってください。
+> このコードは、デモの簡略化を意図して記述されています。 実際には、要求ごとに `HttpClient` オブジェクトをインスタンス化しないでください。 「[IHttpClientFactory を使用して回復力の高い HTTP 要求を実装する](/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)」のガイダンスに従ってください。
 
 このコードを「[チュートリアル: Azure App Service での ASP.NET Core および SQL Database アプリの作成](tutorial-dotnetcore-sqldb-app.md)」のサンプル アプリでテストしている場合は、そのアプリを使用して、[Create アクション](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)で、`Todo` 項目の追加後に確認メールを送信できます。
 

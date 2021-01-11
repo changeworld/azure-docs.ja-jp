@@ -2,13 +2,14 @@
 title: Azure Application Insights における依存関係の追跡 | Microsoft Docs
 description: オンプレミスまたは Microsoft Azure Web アプリケーションからの依存関係呼び出しを Application Insights で監視します。
 ms.topic: conceptual
-ms.date: 06/26/2020
-ms.openlocfilehash: a7f42c19c835e4f5c49f4d7aa91504b606a09f5b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/26/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 3d98fe91994c992d11fc58e3fec42d1796c0c966
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321379"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936539"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights での依存関係の追跡 
 
@@ -196,6 +197,18 @@ ASP.NET アプリケーションの場合は、バイト コード インスト�
 ### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*依存関係の自動コレクターが呼び出しの失敗を依存関係に報告する方法は?*
 
 * 依存関係の呼び出しに失敗すると、"成功" フィールドが False に設定されます。 `DependencyTrackingTelemetryModule` から `ExceptionTelemetry` が報告されることはありません。 依存関係の完全なデータ モデルは[こちら](data-model-dependency-telemetry.md)で説明されています。
+
+### <a name="how-do-i-calculate-ingestion-latency-for-my-dependency-telemetry"></a>"*依存関係テレメトリのインジェスト待機時間を計算する方法は?* "
+
+```kusto
+dependencies
+| extend E2EIngestionLatency = ingestion_time() - timestamp 
+| extend TimeIngested = ingestion_time()
+```
+
+### <a name="how-do-i-determine-the-time-the-dependency-call-was-initiated"></a>"*依存関係の呼び出しが開始された時刻を判断する方法は?* "
+
+Log Analytics のクエリ ビュー `timestamp` では、依存関係呼び出しの応答を受信した直後に発生する TrackDependency() 呼び出しが開始された瞬間が表されています。 依存関係の呼び出しが開始された時刻を計算するには、`timestamp` を取得して、依存関係の呼び出しの記録済み `duration` を減算します。
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
 あらゆる Application Insights SDK と同様に、依存関係収集モジュールもオープンソースです。 コードの閲覧、投稿、問題のレポートは[公式の GitHub リポジトリ](https://github.com/Microsoft/ApplicationInsights-dotnet-server)で行ってください。

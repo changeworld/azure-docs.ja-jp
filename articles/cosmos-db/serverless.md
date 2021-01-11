@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB の従量課金ベースのサーバーレス プラン
-description: Azure Cosmos DB の従量課金ベースのサーバーレス プランの詳細については説明します。
+description: Azure Cosmos DB の従量課金ベースのサーバーレス プランの詳細について説明します。
 author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: d99deea8271a3f9e630a7d2e8cd9f73bd41645a2
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: ef681f861a14fbbf86e7e350441d05f84fc95f58
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608672"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757899"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB サーバーレス (プレビュー)
 
@@ -81,7 +81,7 @@ Azure Cosmos DB サーバーレスで最適なシナリオは次のとおりで�
 
 サーバーレス リソースでは、プロビジョニングされたスループット リソースが提供するものとは異なる、特有のパフォーマンス特性がもたらされます。
 
-- **稼働率**:サーバーレス オファーが一般公開されると、Availability Zones (ゾーンの冗長性) が使用されていない場合、サーバーレス コンテナーの可用性は、サービス レベル アグリーメント (SLA) に記載される 99.9% になります。 Availability Zones が使用されている場合の SLA は 99.99% です。
+- **稼働率**:サーバーレス オファーが一般公開されると、Availability Zones (ゾーンの冗長性) が使用されていない場合、サーバーレス コンテナーの可用性は、サービス レベル アグリーメント (SLA) に記載される 99.9% となります。 Availability Zones が使用されている場合の SLA は 99.99% です。
 - **待ち時間**:サーバーレス オファーが一般公開されると、サーバーレス コンテナーの待機時間は、サービスレベル目標 (SLO) に記載されるポイント読み取り 10 ミリ秒以下、書き込み 30 ミリ秒以下になります。 ポイント読み取り操作では、1 つの項目をその ID とパーティション キー値でフェッチします。
 - **バースタビリティ**:サーバーレス オファーが一般公開されると、サーバーレス コンテナーのバースタビリティは、サービスレベル目標 (SLO) に記載される 95% になります。 これは、少なくとも 95% の時間で、最大バースタビリティを達成できることを意味します。
 

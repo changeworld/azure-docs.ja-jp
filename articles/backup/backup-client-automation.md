@@ -3,12 +3,12 @@ title: PowerShell を使用して Windows Server を Azure にバックアップ
 description: この記事では、PowerShell を使用して Windows Server または Windows クライアント上に Azure Backup を設定したり、バックアップと回復を管理したりする方法について説明します。
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 0deccc49b82d4a8b81889c35174c3efa81b6d74d
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 47c8fc39626d3bca3355c1d1e46f1634327748a8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564029"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892373"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell を使用して Windows Server/Windows Client に Microsoft Azure Backup をデプロイおよび管理する手順
 
@@ -20,7 +20,7 @@ ms.locfileid: "87564029"
 
 開始するには、[PowerShell の最新リリースをインストール](/powershell/azure/install-az-ps)します。
 
-## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーの作成
+## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
 次の手順では、Recovery Services コンテナーの作成について説明します。 Recovery Services コンテナーは Backup コンテナーとは異なります。
 
@@ -42,7 +42,7 @@ ms.locfileid: "87564029"
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. 使用するストレージ冗長性の種類を指定します。[ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md) または [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md) を使用できます。 次に示す例では、*testVault* の **-BackupStorageRedundancy** オプションが **GeoRedundant** に設定されています。
+4. 使用するストレージ冗長性の種類を指定します。 [ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md) または [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md) を使用できます。 次に示す例では、*testVault* の **-BackupStorageRedundancy** オプションが **GeoRedundant** に設定されています。
 
    > [!TIP]
    > Azure Backup コマンドレットの多くは、入力として Recovery Services コンテナー オブジェクトを必要としています。 このため、Backup Recovery Services コンテナー オブジェクトを変数に格納すると便利です。

@@ -4,12 +4,12 @@ description: エージェント、拡張機能、ディスクに関する Azure 
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: d690ed23f49d3aa3f77b88c8d57c963ae2a98682
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: a3fe61bf5d116d257ed7aeb32226a437d0193c54
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611859"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892390"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -58,7 +58,7 @@ Azure Backup では、VM スナップショット拡張機能を使用して Azu
   - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 
 - **ネットワーク アクセスが必要かどうかを確認します**:拡張機能パッケージは、Azure Storage 拡張機能リポジトリからダウンロードされ、拡張機能ステータスのアップロードが Azure Storage に転記されます。 [詳細については、こちらを参照してください](../virtual-machines/extensions/features-windows.md#network-access)。
-  - サポートされていないバージョンのエージェントを使用する場合は、VM からそのリージョン内の Azure Storage への送信アクセスを許可する必要があります。
+  - サポートされていないバージョンのエージェントを使用する場合は、そのリージョン内の Azure Storage への VM からの送信アクセスを許可する必要があります。
   - ゲスト ファイアウォールまたはプロキシを使用して `168.63.129.16` へのアクセスをブロックしている場合は、上記とは関係なく拡張機能はエラーになります。 ポート 80、443、および 32526 が必要です。[詳細はこちらを参照してください](../virtual-machines/extensions/features-windows.md#network-access)。
 
 - **ゲスト VM 内で DHCP が有効になっていることを確認します**:これは、IaaS VM のバックアップを機能させるために、DHCP からホストまたはファブリック アドレスを取得するのに必要です。 静的プライベート IP が必要な場合は、Azure portal または PowerShell を通じて静的プライベート IP を構成し、VM 内の DHCP オプションが有効になっていることを確認します。[詳細はこちらを参照してください](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)。
@@ -119,7 +119,7 @@ Azure Backup サービスに VM を登録してスケジュール設定すると
 推奨される操作:<br>
 この問題を解決するには、VM のリソース グループに対するロックを解除して、クリーンアップをトリガーする操作を再試行します。
 > [!NOTE]
-> Backup サービスでは、復元ポイント コレクションを格納する VM のリソース グループとは別のリソース グループが作成されます。 Backup サービスに使用するために作成されたリソース グループはロックしないことをお勧めします。 Backup サービスによって作成されるリソース グループの名前付け形式は次のとおりです。AzureBackupRG_`<Geo>`_`<number>` 例:AzureBackupRG_northeurope_1
+> Backup サービスでは、復元ポイント コレクションを格納する VM のリソース グループとは別のリソース グループが作成されます。 Backup サービスに使用するために作成されたリソース グループは、ロックしないことをお勧めします。 Backup サービスによって作成されるリソース グループの名前付け形式は次のとおりです。AzureBackupRG_`<Geo>`_`<number>`。 次に例を示します。*AzureBackupRG_northeurope_1*
 
 **ステップ 1:[復元ポイントのリソース グループのロックを解除する](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **手順 2:[復元ポイント コレクションをクリーンアップする](#clean_up_restore_point_collection)**<br>
@@ -227,7 +227,7 @@ Linux VM の場合、エージェントに関連するエラーまたは拡張�
 1. [Linux VM エージェントを更新](../virtual-machines/extensions/update-linux-agent.md)する手順に従います。
 
    > [!NOTE]
-   > ディストリビューション リポジトリを通してのみエージェントを更新することを "*強くお勧め*" します。 エージェント コードを直接 GitHub からダウンロードして、更新することはお勧めしません。 最新のエージェントをディストリビューションで使用できない場合は、そのエージェントをインストールする方法をディストリビューション サポートにお問い合わせください。 最新のエージェントを確認するには、GitHub リポジトリの [Windows Azure Linux エージェント](https://github.com/Azure/WALinuxAgent/releases)のページをご覧ください。
+   > ディストリビューション リポジトリを通してのみエージェントを更新することを "*強くお勧め*" します。 エージェント コードを GitHub から直接ダウンロードし、それを更新することは、推奨されません。 最新のエージェントをディストリビューションで使用できない場合は、そのエージェントをインストールする方法をディストリビューション サポートにお問い合わせください。 最新のエージェントを確認するには、GitHub リポジトリの [Windows Azure Linux エージェント](https://github.com/Azure/WALinuxAgent/releases)のページをご覧ください。
 
 2. `ps -e` コマンドを実行して、Azure エージェントが VM で実行されていることを確認します。
 
@@ -297,7 +297,7 @@ VM のリソース グループまたは VM 自体を削除した場合、マネ
 
 #### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a><a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>オンデマンド バックアップを実行して復元ポイント コレクションをクリーンアップする
 
-ロックを解除した後、オンデマンド バックアップをトリガーします。 このアクションによって、復元ポイントが自動的にクリーンアップされます。 このオンデマンド操作は、初回は失敗することを予期しておいてください。ただし、復元ポイントの手動削除の代わりに、自動クリーンアップが確実に行われます。 クリーンアップ後、次にスケジュールされているバックアップは成功するはずです。
+ロックを解除した後、オンデマンド バックアップをトリガーします。 このアクションによって、復元ポイントが自動的にクリーンアップされます。 このオンデマンド操作は、初回は失敗することを予期しておいてください。 ただし、復元ポイントの手動削除の代わりに、自動クリーンアップが確実に行われます。 クリーンアップ後、次にスケジュールされているバックアップは成功するはずです。
 
 > [!NOTE]
 > 自動クリーンアップは、オンデマンド バックアップをトリガーした数時間後に行われます。 スケジュールされたバックアップが引き続き失敗する場合は、[こちら](#clean-up-restore-point-collection-from-azure-portal)に記載されている手順を使用して、復元ポイント コレクションを手動で削除してみてください。
@@ -320,4 +320,4 @@ VM のリソース グループまたは VM 自体を削除した場合、マネ
 6. バックアップ操作を再試行します。
 
 > [!NOTE]
- >リソース (RP コレクション) に多数の復元ポイントがある場合、ポータルからこれらを削除しようとするとタイムアウトして失敗する可能性があります。 これは既知の CRP 問題であり、規定の時間内にすべての復元ポイントが削除されず、操作がタイムアウトします。ただし、削除操作は通常、2 ～ 3 回の再試行後に成功します。
+ >リソース (RP コレクション) に多数の復元ポイントがある場合、ポータルからこれらを削除しようとするとタイムアウトして失敗する可能性があります。 これは既知の CRP 問題であり、規定の時間内にすべての復元ポイントが削除されず、操作がタイムアウトします。ただし、削除操作は通常、再試行を 2 回から 3 回行った後に成功します。

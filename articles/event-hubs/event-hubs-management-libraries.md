@@ -3,12 +3,13 @@ title: 管理ライブラリ - Azure Event Hubs | Microsoft Docs
 description: この記事では、.NET から Azure Event Hubs 名前空間とエンティティを管理するのに使用できるライブラリについて説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 79656d95cf925c21b0f0c5f2b3bafe6348e0b553
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 74392fbf0b2c0b81898410af8027a4f13fc52b67
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074833"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013998"
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs 管理ライブラリ
 

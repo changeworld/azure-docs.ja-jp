@@ -5,14 +5,14 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
-ms.openlocfilehash: e651b02bf72ced58b6cba637a68ace3258514176
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: fdb3bd034d93e623037be9fa0721a805924af5c3
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405597"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864859"
 ---
-ロールの割り当てを正常に設定したことを確認するための 1 つの方法として、[Azure portal](https://portal.azure.com) で Azure Digital Twins インスタンスのロールの割り当てを表示します。 [Azure Digital Twins インスタンス](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances)のポータルのページ (このリンクを使用するか、またはポータルの検索バーで検索できます) に移動し、確認するインスタンスの名前を選択します。 
+ロールの割り当てを正常に設定したことを確認するための 1 つの方法として、[Azure portal](https://portal.azure.com) で Azure Digital Twins インスタンスのロールの割り当てを表示します。 Azure portal で Azure Digital Twins インスタンスに移動します ([Azure Digital Twins インスタンス](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances)のページで確認するか、ポータルの検索バーで名前を検索することができます)。
 
 次に、 *[アクセス制御 (IAM)] > [ロールの割り当て]* で、それに割り当てられているすべてのロールを表示します。 ユーザーは、 *[Azure Digital Twins 所有者 (プレビュー)]* のロールで一覧に表示されます。 
 

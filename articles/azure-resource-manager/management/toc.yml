@@ -4,11 +4,6 @@
   items:
     - name: Azure Resource Manager とは
       href: overview.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: サブスクリプションとサービスの制限
@@ -17,8 +12,6 @@
       href: resource-name-rules.md
     - name: Resource Manager デプロイとクラシック デプロイ
       href: deployment-models.md
-    - name: Azure の一般的なセキュリティ属性
-      href: azure-resource-manager-security-controls.md
     - name: サービスごとのリソース プロバイダー
       href: azure-services-resource-providers.md
     - name: 拡張リソースの種類
@@ -30,6 +23,8 @@
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+        - name: Azure の一般的なセキュリティ属性
+          href: azure-resource-manager-security-controls.md
 - name: 方法
   items:
     - name: 移動 - リソース グループ/サブスクリプション
@@ -172,6 +167,9 @@
       href: /java/api/com.microsoft.azure.management.resources
     - name: Python
       href: /python/api/overview/azure/resources?view=azure-python
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure のロードマップ

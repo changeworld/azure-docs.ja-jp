@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a93e0b6d29bb10e5e71f48134916cac9cd563fb2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3cf14ce3e8ef9b1d783191fe6c01c5e311d57786
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420041"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855949"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>AutoRest を使用して Azure Digital Twins 用のカスタム SDK を作成する
 
@@ -41,10 +41,10 @@ npm install -g autorest@2.0.4413
 Azure Digital Twins Swagger ファイルに対して AutoRest を実行するには、次の手順に従います。
 1. Azure Digital Twins Swagger ファイルとそれに付属する例のフォルダーを、作業ディレクトリにコピーします。
 2. コマンド プロンプト ウィンドウを使用して、その作業ディレクトリに切り替えます。
-3. 次のコマンドを使用して、AutoRest を実行します。 `<language>` プレースホルダーを、`--python`、`--java`、`--go` などの任意の言語に置き換えてください。 (オプションの完全な一覧は [AutoRest の README](https://github.com/Azure/autorest) に記載されています。)
+3. 次のコマンドを使用して、AutoRest を実行します。 `<language>` プレースホルダーを、`python`、`java`、`go` などの任意の言語に置き換えてください。 (オプションの完全な一覧は [AutoRest の README](https://github.com/Azure/autorest) に記載されています。)
 
 ```cmd/sh
-autorest --input-file=adtApiSwagger.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
+autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
 その結果、作業ディレクトリに *ADTApi* という名前の新しいフォルダーが表示されます。 生成された SDK ファイルの名前空間は *ADTApi* になります。 この記事の残りの使用例では、その名前空間を使用し続けます。

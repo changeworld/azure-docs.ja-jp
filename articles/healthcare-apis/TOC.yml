@@ -46,11 +46,6 @@
       items:
         - name: Azure IoT Hub を通じてデバイス データを受信する
           href: device-data-through-iot-hub.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 操作方法ガイド
   expanded: false
   items:
@@ -82,6 +77,11 @@
           href: configure-cross-origin-resource-sharing.md
         - name: エクスポートを構成する
           href: configure-export-data.md
+    - name: データのエクスポート
+      expanded: false
+      items:
+        - name: 匿名化エクスポート
+          href: export-data.md
     - name: ID オブジェクト ID を見つける
       href: find-identity-object-ids.md
     - name: Azure API for FHIR® で診断ログを有効にする
@@ -118,3 +118,6 @@
   items:
     - name: Azure CLI
       href: /cli/azure/ext/healthcareapis/healthcareapis
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

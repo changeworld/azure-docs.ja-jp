@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2032a7c9d9cd9b17da956dc829234462f8b9e726
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 049b962740abc98a6ac7d029c1419d40aa722165
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509605"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922567"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Microsoft Teams を使用する
 
 >[!IMPORTANT]
->Teams のメディア最適化は、Microsoft 365 Government 環境ではサポートされていません。
+>Teams のメディア最適化は、Microsoft 365 Government (GCC) 環境ではサポートされています。 Teams のメディア最適化は、GCC-High または DoD ではサポートされていません。
 
 >[!NOTE]
 >Microsoft Teams のメディア最適化は、Windows 10 マシン上の Windows デスクトップ クライアントのみ利用できます。 メディア最適化の利用には、Windows デスクトップ クライアントのバージョン 1.2.1026.0 以降が必要です。
@@ -32,7 +32,7 @@ Windows Virtual Desktop で Microsoft Teams を使用するには、次の操作
 - Microsoft Teams 用の[ネットワークを準備します](/microsoftteams/prepare-network/)。
 - [Windows PC 上で Microsoft Teams を使用するためのハードウェア要件](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)を満たしている Windows 10 または Windows 10 IoT Enterprise デバイスに [Windows デスクトップ クライアント](connect-windows-7-10.md)をインストールします。
 - Windows 10 マルチセッションまたは Windows 10 Enterprise 仮想マシン (VM) に接続します。
-- マシン単位のインストールを使って、ホストに Teams のデスクトップ アプリをインストールします。 Microsoft Teams のメディア最適化の利用には、Teams デスクトップ アプリのバージョン 1.3.00.4461 以降が必要です。
+- マシン単位のインストールを使用し、ホストに Teams のデスクトップ アプリを[ダウンロード](https://www.microsoft.com/microsoft-365/microsoft-teams/download-app)し、インストールします。 Microsoft Teams のメディア最適化の利用には、Teams デスクトップ アプリのバージョン 1.3.00.4461 以降が必要です。
 
 ## <a name="install-the-teams-desktop-app"></a>Teams デスクトップ アプリをインストールする
 
@@ -94,8 +94,8 @@ VM イメージに最新の [WebSocket Service](https://query.prod.cms.rt.micros
 
         これにより、64 ビット オペレーティング システム上の Program Files (x86) フォルダーと、32 ビット オペレーティング システム上の Program Files フォルダーに Teams がインストールされます。 この時点で、ゴールデン イメージのセットアップが完了しています。 非永続的なセットアップのためには、マシン単位で Teams をインストールする必要があります。
 
-        Teams のインストール時に設定できるフラグには、**ALLUSER=1** と **ALLUSERS=1** の 2 つがあります。 これらのパラメーターの違いを理解することが重要です。 **ALLUSER=1** パラメーターは、コンピューターごとのインストールを指定するために VDI 環境でのみ使用されます。 **ALLUSERS=1** パラメーターは、VDI 以外の環境と VDI 環境で使用できます。 このパラメーターを設定すると、[Teams Machine-Wide Installer] がコントロール パネルの [プログラムと機能] のほか [Windows の設定] の [アプリと機能] に表示されます。 コンピューターの管理者資格情報を持つすべてのユーザーが Teams をアンインストールできます。 
-       
+        Teams のインストール時に設定できるフラグには、**ALLUSER=1** と **ALLUSERS=1** の 2 つがあります。 これらのパラメーターの違いを理解することが重要です。 **ALLUSER=1** パラメーターは、コンピューターごとのインストールを指定するために VDI 環境でのみ使用されます。 **ALLUSERS=1** パラメーターは、VDI 以外の環境と VDI 環境で使用できます。 このパラメーターを設定すると、[Teams Machine-Wide Installer] がコントロール パネルの [プログラムと機能] のほか [Windows の設定] の [アプリと機能] に表示されます。 コンピューターの管理者資格情報を持つすべてのユーザーが Teams をアンインストールできます。
+
         > [!NOTE]
         > この時点では、ユーザーと管理者がサインイン中に Teams の自動起動を無効にすることはできません。
 

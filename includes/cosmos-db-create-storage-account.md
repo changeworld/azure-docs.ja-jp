@@ -15,7 +15,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/14/2020
 ms.locfileid: "88236433"
 ---
-Azure ストレージ アカウントを作成する最も簡単な方法は、[Azure portal](https://portal.azure.com) を利用することです。 詳細については、「 [ストレージ アカウントの作成](../articles/storage/common/storage-account-create.md)」を参照してください。
+Azure ストレージ アカウントを作成する最も簡単な方法は、[Azure Portal](https://portal.azure.com) を利用することです。 詳細については、「[ストレージ アカウントの作成](../articles/storage/common/storage-account-create.md)」を参照してください。
 
 [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md) または [Azure CLI](../articles/storage/common/storage-azure-cli.md) を使って、Azure Storage アカウントを作成することもできます。
 

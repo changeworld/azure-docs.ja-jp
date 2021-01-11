@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: 168d343ea4582d8c19a577cedadf6f1bc3c39971
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 08/18/2020
+ms.openlocfilehash: c475e548cc8e29a83f2d440df43fb8ac31dc1c1e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607374"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816254"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge のモジュール
 
@@ -40,13 +40,13 @@ IoT Edge モジュール プランの種類は、IoT Edge デバイスで実行�
 
 **正しいオンライン ストアの選択**
 
-IoT Edge モジュールが Azure Marketplace でのみ発行され、AppSource は適用されません。  オンライン ストア間の相違点と対象ユーザーの詳細については、「[公開オプションを選定する](determine-your-listing-type.md)」を参照してください。
- 
+IoT Edge モジュールが Azure Marketplace でのみ発行され、AppSource は適用されません。 オンライン ストア間の相違点と対象ユーザーの詳細については、「[公開オプションを選定する](determine-your-listing-type.md)」を参照してください。
+
 **課金オプション**
 
 Marketplace は現在、IoT Edge モジュールの**無料**および**ライセンスを持ち込む (BYOL)** 課金オプションをサポートしています。
- 
-**発行オプション**
+
+### <a name="publishing-options"></a>公開オプション
 
 すべてのケースで IoT Edge モジュールでは、**Transact** 発行オプションを選択する必要があります。  発行オプションの詳細については、[発行オプションを選択する](determine-your-listing-type.md)を参照してください。  
 
@@ -54,28 +54,27 @@ Marketplace は現在、IoT Edge モジュールの**無料**および**ライ�
 
 Microsoft Azure Marketplace の契約とポリシーのすべてのご契約条件は、IoT Edge モジュールのプランに適用されます。  さらに、IoT Edge モジュールの前提条件と技術面の要件があります。  
 
-**前提条件**
+### <a name="prerequisites"></a>前提条件
 
 IoT Edge モジュールを Azure Marketplace で発行するには、次の前提条件を満たす必要があります。
 
 - パートナー センターへのアクセス。 詳細については、 [Azure Marketplace と AppSource の発行ガイド](marketplace-publishers-guide.md)を参照してください。
-- Azure Container registry で IoT Edge モジュールをホストします。 
-- IoT Edge モジュールのメタデータを (非網羅的なリストのように) 用意してください： 
+- Azure Container registry で IoT Edge モジュールをホストします。
+- IoT Edge モジュールのメタデータを (非網羅的なリストのように) 用意してください：
     - タイトル
     - (HTML 形式) での説明
-    - ロゴのイメージ (40x40px、90x90px、115x115px 255x115px を含むPNG 形式および固定イメージのサイズ)
+    - ロゴ イメージ (48 x 48 (オプション)、90 x 90 (オプション)、および 216 x 216 から 350 x 350 px までのサイズ (すべて PNG 形式))
     - 使用条件とプライバシー ポリシー
     - 既定のモジュールの構成 (ルート、ツインの必要なプロパティ、createOptions、環境変数)
     - ドキュメント
     - サポートの連絡先
 
-**技術的な要件**
+### <a name="technical-requirements"></a>技術的な要件
 
 Azure Marketplace で認定および発行されるためには、IoT Edge モジュールの主要な技術面の要件の詳細は、「[IoT Edge モジュールの技術アセットの準備](./partner-center-portal/create-iot-edge-module-asset.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 - コマーシャル マーケットプレースについて[学習](https://azuremarketplace.microsoft.com/sell)します。
-- パートナー センターの [IoT Edge モジュール オファーの作成]。
 - [パートナー センターにサインイン](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)し、オファーを作成するか完成させます。
-- IoT Edge オファーを発行する方法の詳細については、[IoT Edge モジュール オファーを作成する](./partner-center-portal/azure-iot-edge-module-creation.md)方法に関するページを参照してください。
+- パートナー センターで [IoT Edge モジュール オファーを作成](./partner-center-portal/azure-iot-edge-module-creation.md)します。

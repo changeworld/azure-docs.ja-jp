@@ -55,6 +55,8 @@
           href: check-status-user-account-provisioning.md
         - name: 構成のエクスポートとインポート
           href: export-import-provisioning-configuration.md
+        - name: レポートのプロビジョニング
+          href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: アプリケーションのプロビジョニングのトラブルシューティング
       items:
         - name: 既知の問題
