@@ -26,7 +26,7 @@ Azure Cache for Redis には、クラスタリング、永続性、仮想ネッ�
 [Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/) のデプロイにより、Azure Cache for Redis のセキュリティと分離が強化されると共に、サブネット、アクセス制御ポリシー、アクセスをさらに制限する他の機能も提供されます。
 
 ## <a name="virtual-network-support"></a>Virtual Network のサポート
-仮想ネットワーク (VNet) のサポートは、キャッシュの作成中に **[New Azure Cache for Redis]\(新しい Azure Cache for Redis\)** ブレードで構成します。 
+Virtual Network (VNet) のサポートは、キャッシュの作成中に **[New Azure Cache for Redis]\(新しい Azure Cache for Redis\)** ブレードで構成します。 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
