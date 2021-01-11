@@ -327,7 +327,7 @@ Windows グループ `migration` のメンバーを使用して、SQL Managed In
 
 1. `aadsqlmi\testGroupUser` という Azure SQL Managed Instance サブスクリプションを使用して、フェデレーション VM にログインします
 1. SSMS と **Active Directory 統合**認証を使用して、Azure SQL Managed Instance サーバーとデータベース `migration` に接続します
-    1. SSMS オプション **[Active Directory - MFA サポートで汎用]** で testGroupUser@aadsqlmi.net の資格情報を使用してサインインすることもできます。 ただし、この場合、シングル サインオン メカニズムを使用することはできず、パスワードを入力する必要があります。 フェデレーション VM を使用してSQL Managed Instance にログインする必要はありません。
+    1. SSMS オプション **[Active Directory - MFA サポートで汎用]** で testGroupUser@aadsqlmi.net の資格情報を使用してサインインすることもできます。 ただし、この場合、シングル サインオン メカニズムを使用することはできず、パスワードを入力する必要があります。 フェデレーション VM を使用して SQL Managed Instance にログインする必要はありません。
 1. `db_owner` ロールの一部として、新しいテーブルを作成できます。
 
     ```sql
