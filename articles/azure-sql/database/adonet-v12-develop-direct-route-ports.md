@@ -24,7 +24,7 @@ ms.locfileid: "88928328"
 このトピックでは、クライアントで ADO.NET 4.5 以降のバージョンが使用される場合の Azure SQL Database の接続動作について説明します。
 
 > [!IMPORTANT]
-> 接続アーキテクチャについては、「[Azure SQL Database connectivity architecture](connectivity-architecture.md)」 (Azure SQL データベース接続アーキテクチャ) を参照してください。
+> 接続アーキテクチャについては、「[Azure SQL Database connectivity architecture](connectivity-architecture.md)」 (Azure SQL Database 接続アーキテクチャ) を参照してください。
 >
 
 ## <a name="outside-vs-inside"></a>外部と内部

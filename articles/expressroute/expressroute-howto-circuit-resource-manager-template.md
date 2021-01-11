@@ -43,7 +43,7 @@ Azure PowerShell を使用して、Azure Resource Manager テンプレートを�
 
 テンプレートをデプロイすることで、ExpressRoute 回線を作成するには:
 
-1. 次のコード ブロックの **[試してみる]** を選択し、指示に従って Azure Cloud Shell にサインインします。
+1. 次のコード ブロックの **[使ってみる]** を選択し、指示に従って Azure Cloud Shell にサインインします。
 
     ```azurepowershell-interactive
     $circuitName = Read-Host -Prompt "Enter a circuit name"

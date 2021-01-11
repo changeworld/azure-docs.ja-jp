@@ -44,7 +44,7 @@ DSVM がデータ サイエンス向けにカスタマイズされた VM イメ�
 
 ### <a name="comparison-with-azureml-compute-instances"></a>AzureML コンピューティング インスタンスとの比較
 
-[Azure Machine Learning コンピューティング インスタンス](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance)がフル構成の__マネージド__ VM イメージであるのに対し、DSVM は__アンマネージド__ VM です。
+[Azure Machine Learning コンピューティング インスタンス](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance)がフル構成の __マネージド__ VM イメージであるのに対し、DSVM は __アンマネージド__ VM です。
 
 2 つの製品の主な違いは次のとおりです。
 
