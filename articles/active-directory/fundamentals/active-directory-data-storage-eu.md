@@ -57,7 +57,7 @@ Microsoft Exchange サーバーのフェデレーションの詳細について�
 
 Azure AD と統合されるサービスとアプリケーションは、ID データにアクセスします。 ID データの処理方法を判断するために使用する各サービスとアプリケーション、およびそれらが会社のデータ記憶域の要件を満たしているかどうかを評価します。
 
-Microsoft サービスのデータ保存場所の詳細については、Microsoft セキュリティ センターの[データの保存場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)に関するセクションを参照してください。
+Microsoft サービスのデータ保存場所の詳細については、Microsoft Trust Center の[データの保存場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)に関するセクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 上記の機能の詳細については、以下の記事を参照してください。

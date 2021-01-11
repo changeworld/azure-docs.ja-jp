@@ -34,7 +34,7 @@ ms.locfileid: "87500148"
 
 ### <a name="what-resource-types-and-purchasing-models-support-hyperscale"></a>ハイパースケールをサポートするリソースの種類と購入モデル
 
-ハイパースケール サービス レベルを利用できるのは、Azure SQL データベース において仮想コアベースの購入モデルを使用する単一のデータベースのみです。  
+ハイパースケール サービス レベルを利用できるのは、Azure SQL Database において仮想コアベースの購入モデルを使用する単一のデータベースのみです。  
 
 ### <a name="how-does-the-hyperscale-service-tier-differ-from-the-general-purpose-and-business-critical-service-tiers"></a>ハイパースケール サービス レベルと General Purpose サービス レベルおよび Business Critical サービス レベルとの違い
 

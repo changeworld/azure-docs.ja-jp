@@ -196,7 +196,7 @@ SQL Managed Instance には、監視とトラブルシューティングのた�
 
 移行の間にマネージド インスタンスで何も変更しない場合でも、インスタンスを運用するときに新しい機能を有効にして、最新のデータベース エンジンの機能強化を利用する機会があります。 一部の変更は[データベースの互換性レベルを変更した](https://docs.microsoft.com/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)後でのみ有効になります。
 
-たとえば、マネージド インスタンスでバックアップを作成する必要はありません。サービスによってバックアップが自動的に実行されます。 バックアップのスケジュール設定、取得、管理について心配する必要はなくなります。 SQL マネージド インスタンスでは、[特定の時点への復旧 (PITR)](../database/recovery-using-backups.md#point-in-time-restore) を使用して、この保有期間内の任意の時点に復元する機能が提供されます。 さらに、[高可用性](../database/high-availability-sla.md)が組み込まれているため、高可用性の設定について心配する必要はありません。
+たとえば、マネージド インスタンスでバックアップを作成する必要はありません。サービスによってバックアップが自動的に実行されます。 バックアップのスケジュール設定、取得、管理について心配する必要はなくなります。 SQL Managed Instance では、[特定の時点への復旧 (PITR)](../database/recovery-using-backups.md#point-in-time-restore) を使用して、この保有期間内の任意の時点に復元する機能が提供されます。 さらに、[高可用性](../database/high-availability-sla.md)が組み込まれているため、高可用性の設定について心配する必要はありません。
 
 セキュリティを強化するには、[Azure Active Directory 認証](../database/security-overview.md)、[監査](auditing-configure.md)、[脅威の検出](../database/advanced-data-security.md)、[行レベル セキュリティ](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)、[動的データ マスク](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)の使用を検討します。
 

@@ -178,7 +178,7 @@ ms.locfileid: "88208462"
 
 ### <a name="sp-113--threats-must-be-identified-that-could-negatively-impact-the-confidentiality-integrity-or-availability-of-company-information-and-content-along-with-the-likelihood-of-their-occurrence"></a>SP-11.3 - 会社の情報とコンテンツの機密性、整合性、可用性に悪影響を及ぼす脅威とその発生の可能性を特定する
 
-- SQL マネージド インスタンスの Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
+- SQL Managed Instance の Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
 
 ### <a name="security-continuity"></a>セキュリティ継続性
 

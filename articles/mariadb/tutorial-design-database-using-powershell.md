@@ -119,7 +119,7 @@ mydemoserver.mariadb.database.azure.com       myadmin
 
 ## <a name="connect-to-the-server-using-the-mysql-command-line-tool"></a>mysql コマンドライン ツールを使用してサーバーに接続する
 
-`mysql` コマンドライン ツールを使用してサーバーに接続します。 コマンドライン ツールをダウンロードしてインストールするには、「[MariaDB コミュニティ ダウンロード](https://dev.mysql.com/downloads/shell/)」を参照してください。 また、この記事のコード サンプルにある **[試してみる]** ボタンを選択することにより、Azure Cloud Shell の `mysql` コマンドライン ツールのプレインストール バージョンにアクセスすることもできます。 Azure Cloud Shell にアクセスするその他の方法として、Azure portal の右上のツール バーにある **[>_]** を選択するか、[shell.azure.com](https://shell.azure.com/) にアクセスします。
+`mysql` コマンドライン ツールを使用してサーバーに接続します。 コマンドライン ツールをダウンロードしてインストールするには、「[MariaDB コミュニティ ダウンロード](https://dev.mysql.com/downloads/shell/)」を参照してください。 また、この記事のコード サンプルにある **[使ってみる]** ボタンを選択することにより、Azure Cloud Shell の `mysql` コマンドライン ツールのプレインストール バージョンにアクセスすることもできます。 Azure Cloud Shell にアクセスするその他の方法として、Azure portal の右上のツール バーにある **[>_]** を選択するか、[shell.azure.com](https://shell.azure.com/) にアクセスします。
 
 ```azurepowershell-interactive
 mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
