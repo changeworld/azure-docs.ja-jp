@@ -1,5 +1,5 @@
 ---
-title: Azure Functions での Python 関数アプリのトラブルシューティング
+title: Azure Functions での Python Function App のトラブルシューティング
 description: Python 関数のトラブルシューティングの方法について説明します。
 author: Hazhzeng
 ms.topic: article
@@ -22,11 +22,11 @@ Python 関数の一般的な問題に関するトラブルシューティング 
 
 ## <a name="troubleshoot-modulenotfounderror"></a>ModuleNotFoundError のトラブルシューティング
 
-このセクションは、Python 関数アプリでのモジュール関連のエラーのトラブルシューティングに役立ちます。 これらのエラーでは、通常、次のような Azure Functions エラー メッセージが示されます。
+このセクションは、Python Function App でのモジュール関連のエラーのトラブルシューティングに役立ちます。 これらのエラーでは、通常、次のような Azure Functions エラー メッセージが示されます。
 
 > `Exception: ModuleNotFoundError: No module named 'module_name'.`
 
-このエラーの問題は、Python 関数アプリで Python モジュールの読み込みに失敗した場合に発生します。 このエラーの根本原因は、次の問題のいずれかです。
+このエラーの問題は、Python Function App で Python モジュールの読み込みに失敗した場合に発生します。 このエラーの根本原因は、次の問題のいずれかです。
 
 - [パッケージが見つからない](#the-package-cant-be-found)
 - [パッケージが適切な Linux ホイールで解決されない](#the-package-isnt-resolved-with-proper-linux-wheel)
@@ -36,14 +36,14 @@ Python 関数の一般的な問題に関するトラブルシューティング 
 
 ### <a name="view-project-files"></a>プロジェクト ファイルを表示する
 
-問題の実際の原因を特定するには、関数アプリで実行される Python プロジェクト ファイルを取得する必要があります。 ローカル コンピューターにプロジェクト ファイルがない場合は、次のいずれかの方法で取得できます。
+問題の実際の原因を特定するには、Function App で実行される Python プロジェクト ファイルを取得する必要があります。 ローカル コンピューターにプロジェクト ファイルがない場合は、次のいずれかの方法で取得できます。
 
-- 関数アプリのアプリ設定が `WEBSITE_RUN_FROM_PACKAGE` で、その値が URL の場合は、URL をコピーしてブラウザーに貼り付け、ファイルをダウンロードします。
-- 関数アプリに `WEBSITE_RUN_FROM_PACKAGE` があり、それが `1` に設定されている場合は、`https://<app-name>.scm.azurewebsites.net/api/vfs/data/SitePackages` に移動し、最新の `href` URL からファイルをダウンロードします。
-- 関数アプリに前述のアプリ設定がない場合は、`https://<app-name>.scm.azurewebsites.net/api/settings` に移動し、`SCM_RUN_FROM_PACKAGE` の下の URL を見つけます。 URL をコピーし、ブラウザーに貼り付けて、ファイルをダウンロードします。
+- Function App のアプリ設定が `WEBSITE_RUN_FROM_PACKAGE` で、その値が URL の場合は、URL をコピーしてブラウザーに貼り付け、ファイルをダウンロードします。
+- Function App に `WEBSITE_RUN_FROM_PACKAGE` があり、それが `1` に設定されている場合は、`https://<app-name>.scm.azurewebsites.net/api/vfs/data/SitePackages` に移動し、最新の `href` URL からファイルをダウンロードします。
+- Function App に前述のアプリ設定がない場合は、`https://<app-name>.scm.azurewebsites.net/api/settings` に移動し、`SCM_RUN_FROM_PACKAGE` の下の URL を見つけます。 URL をコピーし、ブラウザーに貼り付けて、ファイルをダウンロードします。
 - これらのいずれもうまくいかない場合は、`https://<app-name>.scm.azurewebsites.net/DebugConsole` に移動し、`/home/site/wwwroot` の下のコンテンツを表示します。
 
-この記事の残りの部分は、関数アプリのコンテンツを検査し、根本原因を特定し、特定の問題を解決することによって、このエラーの考えられる原因をトラブルシューティングするのに役立ちます。
+この記事の残りの部分は、Function App のコンテンツを検査し、根本原因を特定し、特定の問題を解決することによって、このエラーの考えられる原因をトラブルシューティングするのに役立ちます。
 
 ### <a name="diagnose-modulenotfounderror"></a>ModuleNotFoundError を診断する
 
@@ -69,9 +69,9 @@ Python 関数は、Azure の Linux でのみ実行されます。関数ランタ
 
 `.python_packages/lib/python3.6/site-packages/<package-name>-<version>-dist-info` または `.python_packages/lib/site-packages/<package-name>-<version>-dist-info` に移動します。 テキスト エディターを使用して、METADATA ファイルを開き、**Classifiers:** セクションを確認します。 セクションに `Python :: 3`、`Python :: 3.6`、`Python :: 3.7`、または `Python :: 3.8` が含まれていない場合、パッケージのバージョンが古すぎるか、ほとんどの場合、パッケージが既にメンテナンスの対象外となっていることを意味します。
 
-ご利用の関数アプリの Python バージョンは、[Azure portal](https://portal.azure.com) から確認できます。 関数アプリに移動し、 **[リソース エクスプローラー]** を選び、 **[移動]** を選択します。
+ご利用の Function App の Python バージョンは、[Azure portal](https://portal.azure.com) から確認できます。 Function App に移動し、 **[リソース エクスプローラー]** を選び、 **[移動]** を選択します。
 
-:::image type="content" source="media/recover-module-not-found/resource-explorer.png" alt-text="ポータルで関数アプリのリソース エクスプローラーを開く":::
+:::image type="content" source="media/recover-module-not-found/resource-explorer.png" alt-text="ポータルで Function App のリソース エクスプローラーを開く":::
 
 エクスプローラーが読み込まれた後に、**LinuxFxVersion** を検索します。これは、Python のバージョンを示しています。
 
@@ -130,7 +130,7 @@ you must uninstall azure-storage first.</pre>
 
 #### <a name="handcraft-requirementstxt"></a>requirements.txt を手動で作成する
 
-一部の開発者は `pip freeze > requirements.txt` を使用して、開発環境用の Python パッケージの一覧を生成します。 ほとんどの場合、この利便性が機能するはずですが、関数は Windows または macOS でローカルに開発しても、Linux で実行される関数アプリに発行する場合など、クロスプラットフォームのデプロイ シナリオで問題が発生する可能性があります。 このシナリオでは、`pip freeze` によって、ローカル開発環境に対して予期しないオペレーティング システム固有の依存関係が生じる場合があります。 これらの依存関係により、Python 関数アプリが Linux で実行されている場合に中断される可能性があります。
+一部の開発者は `pip freeze > requirements.txt` を使用して、開発環境用の Python パッケージの一覧を生成します。 ほとんどの場合、この利便性が機能するはずですが、関数は Windows または macOS でローカルに開発しても、Linux で実行される Function App に発行する場合など、クロスプラットフォームのデプロイ シナリオで問題が発生する可能性があります。 このシナリオでは、`pip freeze` によって、ローカル開発環境に対して予期しないオペレーティング システム固有の依存関係が生じる場合があります。 これらの依存関係により、Python Function App が Linux で実行されている場合に中断される可能性があります。
 
 プロジェクト ソース コード内の各 .py ファイルの import ステートメントを確認し、requirements.txt ファイルでそれらのモジュールのみをチェックインすることをお勧めします。 これにより、さまざまなオペレーティング システムでパッケージの解決を適切に扱えることが保証されます。
 
@@ -146,11 +146,11 @@ you must uninstall azure-storage first.</pre>
 
 ## <a name="troubleshoot-cannot-import-cygrpc"></a>トラブルシューティングで "cygrpc" をインポートできない
 
-このセクションは、Python 関数アプリでの "cygrpc" 関連のエラーのトラブルシューティングに役立ちます。 これらのエラーでは、通常、次のような Azure Functions エラー メッセージが示されます。
+このセクションは、Python Function App での "cygrpc" 関連のエラーのトラブルシューティングに役立ちます。 これらのエラーでは、通常、次のような Azure Functions エラー メッセージが示されます。
 
 > `Cannot import name 'cygrpc' from 'grpc._cython'`
 
-このエラーは、Python 関数アプリで適切な Python インタープリターの使用を開始できない場合に発生します。 このエラーの根本原因は、次の問題のいずれかです。
+このエラーは、Python Function App で適切な Python インタープリターの使用を開始できない場合に発生します。 このエラーの根本原因は、次の問題のいずれかです。
 
 - [Python インタープリターが OS アーキテクチャに一致しない](#the-python-interpreter-mismatches-os-architecture)
 - [Python インタープリターが Azure Functions の Python Worker でサポートされない](#the-python-interpreter-is-not-supported-by-azure-functions-python-worker)

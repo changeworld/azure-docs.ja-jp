@@ -77,13 +77,13 @@ Azure DevTest Labs には、[Azure Resource Manager テンプレートのパブ�
 
 1. **[リポジトリ]** ウィンドウで、次の情報を入力します。
 
-   - **Name**:ラボで使用するリポジトリ名を入力します。
-   - **[Git クローン URL]** :GitHub または Azure Repos から Git HTTPS クローン URL を入力します。
-   - **[分岐]** (省略可能):Azure Resource Manager テンプレートの定義にアクセスするための分岐名を入力します。
-   - **[個人用アクセス トークン]** :リポジトリに安全にアクセスするために使用される個人用アクセス トークンを入力します。
+   - **[Name]/(名前)/**:ラボで使用するリポジトリ名を入力します。
+   - **[Git clone URL]/(Git クローン URL/)** :GitHub または Azure Repos から Git HTTPS クローン URL を入力します。
+   - **[Branch]/(ブランチ)/** (省略可能):Azure Resource Manager テンプレートの定義にアクセスするためのブランチ名を入力します。
+   - **[Personal access token]/(個人用アクセス トークン)/** :リポジトリに安全にアクセスするために使用される個人用アクセス トークンを入力します。
      - Azure Repos からトークンを取得するには、自分のプロファイルで **[ユーザー設定]**  >  **[セキュリティ]**  >  **[個人用アクセス トークン]** を選択します。
      - GitHub からトークンを取得するには、自分のプロファイルで、 **[Settings]\(設定\)**  >  **[Developer Settings]\(開発者の設定\)**  >  **[Personal access tokens]\(個人用アクセス トークン\)** を選択します。
-   - **[フォルダー パス]** :アーティファクトの定義または Azure Resource Manager テンプレートの定義の Git クローン URI に対する相対フォルダー パスを入力します。
+   - **[Folder paths]/(フォルダー パス)/** :アーティファクトの定義または Azure Resource Manager テンプレートの定義の Git クローン URI に対する相対フォルダー パスを入力します。
 
 1. **[保存]** を選択します。
 

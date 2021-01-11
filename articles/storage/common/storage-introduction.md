@@ -30,7 +30,7 @@ Azure Storage プラットフォームは、最新のデータ ストレージ �
 Azure Storage プラットフォームには、次のデータ サービスが含まれています。
 
 - [Azure BLOB](../blobs/storage-blobs-introduction.md):テキストおよびバイナリ データのための高度にスケーラブルなオブジェクト ストア。 また、Data Lake Storage Gen2 によるビッグ データ分析のサポートも含まれています。
-- [Azure ファイル](../files/storage-files-introduction.md):クラウドまたはオンプレミスのデプロイ用のマネージド ファイル共有。
+- [Azure Files](../files/storage-files-introduction.md):クラウドまたはオンプレミスのデプロイ用のマネージド ファイル共有。
 - [Azure キュー](../queues/storage-queues-introduction.md):アプリケーション コンポーネント間の信頼性の高いメッセージングのためのメッセージング ストア。
 - [Azure テーブル](../tables/table-storage-overview.md):構造化データのスキーマレス ストレージのための NoSQL ストア。
 - [Azure ディスク](../../virtual-machines/managed-disks-overview.md): Azure VM のためのブロック レベルのストレージ ボリューム。

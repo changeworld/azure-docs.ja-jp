@@ -20,7 +20,7 @@ ms.locfileid: "87497275"
 ---
 # <a name="use-cli-to-create-an-azure-sql-managed-instance"></a>CLI を使用して Azure SQL Managed Instance を作成する
 
-この Azure CLI サンプル スクリプトは、新しい仮想ネットワーク内の専用サブネットに Azure SQL Managed Instance を作成します。 また、仮想ネットワークのルート テーブルとネットワーク セキュリティ グループも構成します。 スクリプトが正常に実行されると、マネージド インスタンスに仮想ネットワーク内またはオンプレミス環境からアクセスできます。 [Azure SQL Managed Instance に接続するように Azure VM を構成する](../../azure-sql/managed-instance/connect-vm-instance-configure.md)方法に関するページと、[オンプレミスから Azure SQL マネージド インスタンスへのポイント対サイト接続を構成する](../../azure-sql/managed-instance/point-to-site-p2s-configure.md)方法に関するページを参照してください。
+この Azure CLI サンプル スクリプトは、新しい仮想ネットワーク内の専用サブネットに Azure SQL Managed Instance を作成します。 また、仮想ネットワークのルート テーブルとネットワーク セキュリティ グループも構成します。 スクリプトが正常に実行されると、マネージド インスタンスに仮想ネットワーク内またはオンプレミス環境からアクセスできます。 [Azure SQL Managed Instance に接続するように Azure VM を構成する](../../azure-sql/managed-instance/connect-vm-instance-configure.md)方法に関するページと、[オンプレミスから Azure SQL Managed Instance へのポイント対サイト接続を構成する](../../azure-sql/managed-instance/point-to-site-p2s-configure.md)方法に関するページを参照してください。
 
 > [!IMPORTANT]
 > 制限については、[サポートされているリージョン](../../azure-sql/managed-instance/resource-limits.md#supported-regions)と[サポートされているサブスクリプションの種類](../../azure-sql/managed-instance/resource-limits.md#supported-subscription-types)に関するセクションを参照してください。

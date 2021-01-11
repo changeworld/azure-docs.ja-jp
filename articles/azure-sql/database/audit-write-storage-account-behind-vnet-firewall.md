@@ -114,6 +114,7 @@ VNet またはファイアウォールの背後にあるストレージ アカ�
      "administratorLoginPassword": "<complex password>",
      "version": "12.0",
      "state": "Ready"
+     }
    }
    ```
 
