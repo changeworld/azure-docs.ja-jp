@@ -1,6 +1,7 @@
 - name: Azure Data Share のドキュメント
   href: index.yml
 - name: 概要
+  expanded: true
   items:
     - name: Azure Data Share とは
       href: overview.md
@@ -8,9 +9,9 @@
       href: supported-data-stores.md
 - name: クイックスタート
   items:
-    - name: データ共有の作成 - Azure portal
+    - name: データの共有 - Azure portal
       href: share-your-data-portal.md
-    - name: データ共有の作成 - ARM テンプレート
+    - name: データの共有 - ARM テンプレート
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: チュートリアル
@@ -36,6 +37,15 @@
       href: samples-powershell.md
 - name: 操作方法ガイド
   items:
+    - name: ソース別にデータを共有および受信する
+      items:
+        - name: Azure Storage からの共有
+          href: how-to-share-from-storage.md
+        - name: Azure SQL Database または Synapse Analytics からの共有
+          href: how-to-share-from-sql.md
+        - name: Azure Data Explorer からの共有
+          href: /azure/data-explorer/data-share
+          maintainContext: true
     - name: モニター
       href: how-to-monitor.md
     - name: トラブルシューティング
@@ -54,9 +64,6 @@
       href: security.md
     - name: 障害復旧
       href: disaster-recovery.md
-    - name: Azure Data Explorer のデータの共有
-      href: /azure/data-explorer/data-share
-      maintainContext: true
 - name: リファレンス
   items:
     - name: .NET

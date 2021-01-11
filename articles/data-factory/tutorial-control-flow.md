@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure ストレージ アカウント。 BLOB ストレージをソース データ ストアとして使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。
+* Azure ストレージ アカウント。 BLOB ストレージをソース データ ストアとして使用します。 Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。
 * Azure Storage Explorer. このツールをインストールするには、「[Azure Storage Explorer](https://storageexplorer.com/)」を参照してください。
 * Azure SQL Database。 データベースをシンク データ ストアとして使用します。 Azure SQL Database のデータベースがない場合は、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
 * 見ることができます。 この記事では、Visual Studio 2019 を使用します。
@@ -65,7 +65,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    Tamika|Walsh
    ```
 
-1. Azure ストレージ エクスプローラーを開きます。 お使いのストレージ アカウントを展開します。 **[BLOB コンテナー]** を右クリックし、 **[BLOB コンテナーの作成]** を選択します。
+1. Azure Storage Explorer を開きます。 お使いのストレージ アカウントを展開します。 **[BLOB コンテナー]** を右クリックし、 **[BLOB コンテナーの作成]** を選択します。
 1. 新しいコンテナーに *adfv2branch* という名前を付け、 **[アップロード]** を選択して、そのコンテナーに *input.txt* ファイルを追加します。
 
 ## <a name="create-visual-studio-project"></a>Visual Studio プロジェクトを作成する<a name="create-visual-studio-project"></a>

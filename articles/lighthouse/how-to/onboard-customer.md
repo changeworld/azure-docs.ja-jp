@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse への顧客のオンボード
 description: Azure Lighthouse に顧客をオンボードする方法について説明します。これにより、Azure の委任されたリソース管理を使用して自分のテナントからそれらのリソースにアクセスして管理できるようになります。
-ms.date: 08/12/2020
+ms.date: 08/20/2020
 ms.topic: how-to
-ms.openlocfilehash: f20df54a4bc689effad210746f93928defdaf0f5
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: db6a819c72f1ef46f542ed47cad6caae23c0d191
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167319"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719055"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Azure Lighthouse への顧客のオンボード
 
@@ -121,7 +121,7 @@ az role definition list --name "<roleName>" | grep name
 
 |フィールド  |定義  |
 |---------|---------|
-|**mspOfferName**     |この定義を説明する名前。 この値は、プランのタイトルとして顧客に表示されます。         |
+|**mspOfferName**     |この定義を説明する名前。 この値は、オファーのタイトルとして顧客に表示され、一意の値である必要があります。        |
 |**mspOfferDescription**     |自分のオファーの簡単な説明 (例: "Contoso VM 管理オファー")。      |
 |**managedByTenantId**     |テナント ID。          |
 |**authorizations**     |**principalId** 値はテナントのユーザー、グループ、または SPN を表し、それぞれに、顧客が承認の目的を理解するのに役立つ **principalIdDisplayName** が指定されているほか、アクセス レベルを指定するための組み込みの **roleDefinitionId** 値がマップされています。      |
@@ -138,7 +138,7 @@ az role definition list --name "<roleName>" | grep name
 |サブスクリプション (Azure Marketplace に公開されたオファーの使用時)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
-> ここで説明するプロセスでは、同じ顧客テナントにサブスクリプションをオンボードしている場合でも、オンボードするサブスクリプションごとに個別のサブスクリプション レベルのデプロイが必要です。 また、同じ顧客テナントで異なるサブスクリプション内の複数のリソース グループをオンボードする場合も個別のデプロイが必要です。 ただし、1 つのサブスクリプション内の複数のリソース グループをオンボードする場合は、1 つのサブスクリプションレベルのデプロイで実行できます。
+> ここで説明するプロセスでは、同じ顧客テナントにサブスクリプションをオンボードしている場合でも、オンボードするサブスクリプションごとに個別のデプロイが必要です。 また、同じ顧客テナントで異なるサブスクリプション内の複数のリソース グループをオンボードする場合も個別のデプロイが必要です。 ただし、1 つのサブスクリプション内の複数のリソース グループをオンボードする場合は、1 つのデプロイで実行できます。
 >
 > また、同じサブスクリプション (またはサブスクリプション内のリソース グループ) に適用される複数のプランに対しても個別のデプロイが必要です。 適用される各プランに、それぞれ異なる **mspOfferName** を使用する必要があります。
 
@@ -199,12 +199,22 @@ az role definition list --name "<roleName>" | grep name
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートをデプロイする
 
-パラメーター ファイルを更新したら、顧客のテナント内のユーザーは、Azure Resource Manager テンプレートをサブスクリプションレベルのデプロイとして顧客のテナントにデプロイする必要があります。 オンボードするサブスクリプションごと (または、オンボードするリソース グループを含むサブスクリプションごと) に個別のデプロイが必要です。 デプロイは、次に示すように PowerShell または Azure CLI を使用して、行うことができます。
+パラメーター ファイルを更新したら、顧客のテナント内のユーザーは、Azure Resource Manager テンプレートを顧客のテナントにデプロイする必要があります。 オンボードするサブスクリプションごと (または、オンボードするリソース グループを含むサブスクリプションごと) に個別のデプロイが必要です。
 
 > [!IMPORTANT]
-> このサブスクリプションレベルのデプロイは、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者の組み込みロール](../../role-based-access-control/built-in-roles.md#owner)を持っている (またはオンボード対象のリソース グループを含む) 顧客のテナントで実行する必要があります。 サブスクリプションを委任できるすべてのユーザーを表示するには、顧客のテナントのユーザーが Azure portal でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)することができます。
+> このデプロイは、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者の組み込みロール](../../role-based-access-control/built-in-roles.md#owner)を持っている (またはオンボード対象のリソース グループを含む) 顧客のテナントで実行する必要があります。 サブスクリプションを委任できるすべてのユーザーを表示するには、顧客のテナントのユーザーが Azure portal でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)することができます。 
 >
 > サブスクリプションが[クラウド ソリューション プロバイダー (CSP) プログラム](../concepts/cloud-solution-provider.md)を使用して作成されている場合、サービス プロバイダー テナントの[管理エージェント](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) ロールを持つユーザーがデプロイを実行できます。
+
+デプロイは、次に示すように PowerShell または Azure CLI を使用して、Azure portal で行うことができます。
+
+### <a name="azure-portal"></a>Azure portal
+
+1. [GitHub リポジトリ](https://github.com/Azure/Azure-Lighthouse-samples/)で、使用するテンプレートの横に表示される **[Deploy to Azure]\(Azure へのデプロイ\)** ボタンを選択します。 Azure portal でテンプレートが開きます。
+1. **[Msp Offer Name]\(Msp オファー名\)** **[Msp Offer Description]\(Msp オファーの説明\)** 、 **[Managed by Tenant Id]\(テナント ID による管理\)** 、および **[Authorizations]\(承認\)** の値を入力します。 必要に応じて、 **[パラメーターの編集]** を選択してパラメーター ファイルに `mspOfferName`、`mspOfferDescription`、`managedbyTenantId`、および `authorizations` の値を直接入力できます。 テンプレートの既定値を使用するのではなく、必ず、これらの値を更新してください。
+1. **[確認と作成]** を選択し、次に **[作成]** を選択します。
+
+数分後に、デプロイが完了したという通知が表示されます。
 
 ### <a name="powershell"></a>PowerShell
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 649f1e6cf79aa17d053cc547debf5232120bb4fe
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 1e4dfb399432278ee09d1c016faae8fd3b584647
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760636"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318048"
 ---
 # <a name="language-support-for-computer-vision"></a>Computer Vision の言語サポート
 
@@ -36,12 +36,12 @@ Computer Vision の OCR API では複数の言語をサポートしています�
 |英語 | `en` |✔ |✔ |✔ |
 |フィンランド語 | `fi` |✔ | | |
 |フランス語 | `fr` |✔ |✔ |✔ |
-|ドイツ語 | `de` |✔ |✔ |✔ |
+|German | `de` |✔ |✔ |✔ |
 |ギリシャ語 | `el` |✔ | | |
 |ハンガリー語 | `hu` |✔ | | |
-|イタリア語 | `it` |✔ |✔ |✔ |
-|日本語 | `ja` |✔ | | |
-|韓国語 | `ko` |✔ | | |
+|Italian | `it` |✔ |✔ |✔ |
+|Japanese | `ja` |✔ | | |
+|Korean | `ko` |✔ | | |
 |ノルウェー語 | `nb` |✔ | | |
 |ポーランド語 | `pl` |✔ | | |
 |Portuguese | `pt` |✔ |✔ |✔ |
@@ -52,17 +52,17 @@ Computer Vision の OCR API では複数の言語をサポートしています�
 |スロバキア語 | `sk` |✔ | | |
 |スペイン語 | `es` |✔ |✔ |✔ |
 |スウェーデン語 | `sw` |✔ | | |
-|トルコ語 | `tr` |✔ | | |
+|Turkish | `tr` |✔ | | |
 
 ## <a name="image-analysis"></a>画像分析
 
-[Analyze - Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API の一部のアクションは、`language` クエリ パラメーターで指定された他の言語で結果を返すことができます。 他のアクションは、どの言語が指定されていても英語で結果を返し、その他のアクションはサポートされていない言語に対して例外をスローします。 アクションは `visualFeatures` および `details` クエリ パラメーターで指定されます。画像分析で実行できるすべてのアクションの一覧については、[概要](home.md)に関するページを参照してください。
+[Analyze - Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API の一部のアクションは、`language` クエリ パラメーターで指定された他の言語で結果を返すことができます。 他のアクションは、どの言語が指定されていても英語で結果を返し、その他のアクションはサポートされていない言語に対して例外をスローします。 アクションは `visualFeatures` および `details` クエリ パラメーターで指定されます。画像分析で実行できるすべてのアクションの一覧については、[概要](overview.md)に関するページを参照してください。
 
 |Language | 言語コード | Categories | Tags | 説明 | 成人向けコンテンツ | ブランド | Color | 顔 | ImageType | Objects | 有名人 | ランドマーク |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Chinese | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |英語 | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
-|日本語 | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
+|Japanese | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Portuguese | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |スペイン語 | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 

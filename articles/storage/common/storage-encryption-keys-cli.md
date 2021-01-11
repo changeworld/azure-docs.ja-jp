@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 08/24/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 351fe5acd8d607b5b60817c235161ac09e530e99
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 25ee5d389bc70d82730c7056c752de393a6bf4c5
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495014"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799147"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Azure CLI を使用して Azure Key Vault でカスタマー マネージド キーを構成する
 
@@ -94,13 +94,16 @@ Azure Storage の暗号化では、2048、3072、および 4096 のサイズの 
 
 既定で Azure Storage の暗号化には、Microsoft マネージド キーを使用します。 この手順では、Azure Key Vault でカスタマー マネージド キーを使用するように Azure Storage アカウントを構成してから、そのストレージ アカウントに関連付けるキーを指定します。
 
-カスタマー マネージド キーを使用して暗号化を構成する場合は、関連付けられているキー コンテナーでバージョンが変更されたときに、暗号化に使用するキーを自動的に交換することを選択できます。 または、キーのバージョンが手動で更新されるまで暗号化に使用するキーのバージョンを明示的に指定できます。
+カスタマー マネージド キーを使用して暗号化を構成する場合は、関連付けられているキー コンテナーでキーのバージョンが変更されたときに、暗号化に使用するキーを自動的に更新することを選択できます。 または、キーのバージョンが手動で更新されるまで暗号化に使用するキーのバージョンを明示的に指定できます。
 
-### <a name="configure-encryption-for-automatic-rotation-of-customer-managed-keys"></a>カスタマー マネージド キーを自動交換するように暗号化を構成する
+> [!NOTE]
+> キーを交換するには、Azure Key Vault でキーの新しいバージョンを作成します。 Azure Storage では Azure Key Vault でのキーの交換は処理されないため、キーを手動で交換するか、スケジュールに基づいて交換する関数を作成する必要があります。
 
-カスタマー マネージド キーを自動交換するように暗号化を構成するには、[Azure CLI version 2.4.0](/cli/azure/release-notes-azure-cli#april-21-2020) 以降をインストールします。 詳細については、「 [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
+### <a name="configure-encryption-to-automatically-update-the-key-version"></a>キーのバージョンを自動的に更新するように暗号化を構成する
 
-カスタマー マネージド キーを自動で交換するには、ストレージ アカウント用のカスタマー マネージド キーを構成するときにキーのバージョンを省略します。 ストレージ アカウントの暗号化設定を更新するには、次の例に示すように [az storage account update](/cli/azure/storage/account#az-storage-account-update) を呼び出します。 `--encryption-key-source` パラメーターを含め、それを `Microsoft.Keyvault` に設定して、アカウントのカスタマー マネージド キーを有効にします。 角かっこ内のプレースホルダー値を独自の値で置き換えてください。
+キーのバージョンを自動的に更新するようにカスタマー マネージド キーを使用した暗号化を構成するには、[Azure CLI バージョン 2.4.0](/cli/azure/release-notes-azure-cli#april-21-2020) 以降をインストールします。 詳細については、「 [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
+
+カスタマー マネージド キーのキー バージョンを自動的に更新するには、ストレージ アカウントでカスタマー マネージド キーを使用した暗号化を構成するときに、キーのバージョンを省略します。 ストレージ アカウントの暗号化設定を更新するには、次の例に示すように [az storage account update](/cli/azure/storage/account#az-storage-account-update) を呼び出します。 `--encryption-key-source` パラメーターを含め、それを `Microsoft.Keyvault` に設定して、アカウントのカスタマー マネージド キーを有効にします。 角かっこ内のプレースホルダー値を独自の値で置き換えてください。
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -116,7 +119,7 @@ az storage account update
     --encryption-key-vault $key_vault_uri
 ```
 
-### <a name="configure-encryption-for-manual-rotation-of-key-versions"></a>キー バージョンを手動交換するように暗号化を構成する
+### <a name="configure-encryption-for-manual-updating-of-key-versions"></a>キー バージョンを手動で更新するように暗号化を構成する
 
 暗号化で使用するキー バージョンを明示的に指定するには、ストレージ アカウント用のカスタマー マネージド キーを指定して暗号化を設定するときに、キー バージョンを指定します。 ストレージ アカウントの暗号化設定を更新するには、次の例に示すように [az storage account update](/cli/azure/storage/account#az-storage-account-update) を呼び出します。 `--encryption-key-source` パラメーターを含め、それを `Microsoft.Keyvault` に設定して、アカウントのカスタマー マネージド キーを有効にします。 角かっこ内のプレースホルダー値を独自の値で置き換えてください。
 
@@ -140,7 +143,7 @@ az storage account update
     --encryption-key-vault $key_vault_uri
 ```
 
-キー バージョンを手動で交換する場合は、新しいバージョンを使用するようにストレージ アカウントの暗号化設定を更新する必要があります。 まず、[az keyvault show](/cli/azure/keyvault#az-keyvault-show) を呼び出すことでキー コンテナーの URI を照会し、[az keyvault key list-versions](/cli/azure/keyvault/key#az-keyvault-key-list-versions) を呼び出すことでキーのバージョンを照会します。 次に、[az storage account update](/cli/azure/storage/account#az-storage-account-update) を呼び出して、キーの新しいバージョンを使用するようにストレージ アカウントの暗号化設定を更新します (前の例を参照)。
+キー バージョンを手動で更新する場合は、新しいバージョンを使用するようにストレージ アカウントの暗号化設定を更新する必要があります。 まず、[az keyvault show](/cli/azure/keyvault#az-keyvault-show) を呼び出すことでキー コンテナーの URI を照会し、[az keyvault key list-versions](/cli/azure/keyvault/key#az-keyvault-key-list-versions) を呼び出すことでキーのバージョンを照会します。 次に、[az storage account update](/cli/azure/storage/account#az-storage-account-update) を呼び出して、キーの新しいバージョンを使用するようにストレージ アカウントの暗号化設定を更新します (前の例を参照)。
 
 ## <a name="use-a-different-key"></a>別のキーを使用する
 

@@ -53,7 +53,7 @@ Azure ID で `az acr login` を使用すると、[Azure ロールベースのア
 このシナリオでは、最初に `--expose-token` パラメーターを指定して `az acr login` を実行します。 このオプションは、Docker CLI を使用してログインするのではなく、アクセス トークンを公開します。
 
 ```azurecli
-az acr login -name <acrName> --expose-token
+az acr login --name <acrName> --expose-token
 ```
 
 出力には、次のようにアクセス トークン (ここでは省略されています) が表示されます。

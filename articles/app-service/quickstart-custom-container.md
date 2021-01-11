@@ -7,12 +7,12 @@ ms.date: 08/28/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 2aed6a2fea38f10a2e06ea51edb7fb529c8a2dde
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 33eaf6274f2da09ab98a21e6028b0103df817744
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212521"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961365"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Azure でカスタム コンテナーを実行する
 
@@ -103,7 +103,7 @@ ms.locfileid: "88212521"
 
    ![Web App for Containers を構成する](media/quickstart-custom-container/configure-web-app-continer.png)
 
-    [Azure Container Registry](/azure/container-registry/) や他のプライベート リポジトリなど、どこか他の場所に目的の Web アプリケーションのカスタム イメージがある場合は、ここで構成することができます。
+    [Azure Container Registry](../container-registry/index.yml) や他のプライベート リポジトリなど、どこか他の場所に目的の Web アプリケーションのカスタム イメージがある場合は、ここで構成することができます。
 
 1. **[確認と作成]** 、 **[作成]** の順に選択して、必要なリソースが Azure によって作成されるまで待ちます。
 
@@ -173,8 +173,8 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 
 別のカスタム Docker イメージを使用してアプリを実行することもできます。 ただし、必要なフレームワークに合った適切な[親イメージ (基本イメージ)](https://docs.docker.com/develop/develop-images/baseimages/) を選ぶ必要があります。
 
-- .NET Framework のアプリをデプロイするには、Windows Server Core 2019 [Long-Term Servicing Channel (LTSC: 長期的なサービス チャネル)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) リリースに基づく親イメージを使用します。 
-- .NET Core のアプリをデプロイするには、Windows Server Nano 1809 [Semi-Annual Servicing Channel (SAC: 半期サービス チャネル)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) リリースに基づく親イメージを使用します。 
+- .NET Framework のアプリをデプロイするには、Windows Server Core 2019 [Long-Term Servicing Channel (LTSC: 長期的なサービス チャネル)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) リリースに基づく親イメージを使用します。 
+- .NET Core のアプリをデプロイするには、Windows Server Nano 1809 [Semi-Annual Servicing Channel (SAC: 半期サービス チャネル)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) リリースに基づく親イメージを使用します。 
 
 アプリの起動中は、親イメージのダウンロードに多少の時間がかかります。 ただし、Azure App Service にあらかじめキャッシュされている次のいずれかの親イメージを使用することで、起動時間を短縮することができます。
 
@@ -188,7 +188,7 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 ::: zone-end  
 
 ::: zone pivot="container-linux"
-App Service on Linux は、事前定義済みのアプリケーション スタックを Linux 上で提供し、.NET、PHP、Node.js などの言語をサポートします。 まだ Azure で定義されていないアプリケーション スタックで Web アプリを実行する場合にも、カスタム Docker イメージを使用できます。 このクイックスタートでは、[Azure Container Registry](/azure/container-registry) (ACR) から App Service にイメージをデプロイする方法について説明します。
+App Service on Linux は、事前定義済みのアプリケーション スタックを Linux 上で提供し、.NET、PHP、Node.js などの言語をサポートします。 まだ Azure で定義されていないアプリケーション スタックで Web アプリを実行する場合にも、カスタム Docker イメージを使用できます。 このクイックスタートでは、[Azure Container Registry](../container-registry/index.yml) (ACR) から App Service にイメージをデプロイする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -200,7 +200,7 @@ App Service on Linux は、事前定義済みのアプリケーション スタ�
 
 ## <a name="create-an-image"></a>イメージを作成する
 
-このクイックスタートを完了するには、[Azure Container Registry](/azure/container-registry) に格納されている適切な Web アプリ イメージが必要です。 「[クイックスタート: Azure portal を使用したプライベート コンテナー レジストリの作成](/azure/container-registry/container-registry-get-started-portal)」の手順に従ってください。ただし、使用するイメージは、`hello-world` ではなく `mcr.microsoft.com/azuredocs/go` となります。 [Azure Samples リポジトリにサンプル Dockerfile があります](https://github.com/Azure-Samples/go-docs-hello-world)。ご参考ください。
+このクイックスタートを完了するには、[Azure Container Registry](../container-registry/index.yml) に格納されている適切な Web アプリ イメージが必要です。 「[クイックスタート: Azure portal を使用したプライベート コンテナー レジストリの作成](../container-registry/container-registry-get-started-portal.md)」の手順に従ってください。ただし、使用するイメージは、`hello-world` ではなく `mcr.microsoft.com/azuredocs/go` となります。 [Azure Samples リポジトリにサンプル Dockerfile があります](https://github.com/Azure-Samples/go-docs-hello-world)。ご参考ください。
 
 > [!IMPORTANT]
 > コンテナー レジストリを作成するときは必ず、**[管理者ユーザー]** オプションを **[有効]** に設定してください。 Azure portal のレジストリ ページの **[アクセス キー]** セクションから設定することもできます。 App Service にアクセスするためには、この設定が必要となります。
@@ -257,8 +257,8 @@ Web サイトをホストするために使用される物理リソースは、*
 * [Cosmos DB](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
 * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 * [Azure CLI Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)
-* [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+* [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
 または、[Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) 拡張機能パックをインストールして、これらすべてを入手しましょう。
 
-::: zone-end  
+::: zone-end

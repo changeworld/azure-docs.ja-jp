@@ -103,7 +103,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサイン�
 
 ![情報の例と、[Explorer で開く] へのリンクを示すストレージ アカウント ページ](./media/tutorial-export-acm-data/storage-account-page.png)
 
-ストレージ エクスプローラーで、開くコンテナーに移動し、当月のフォルダーを選択します。 CSV ファイルの一覧が表示されます。 1 つを選択して、 **[開く]** を選択します。
+Storage Explorer で、開くコンテナーに移動し、当月のフォルダーを選択します。 CSV ファイルの一覧が表示されます。 1 つを選択して、 **[開く]** を選択します。
 
 ![ストレージ エクスプローラーに表示される情報の例](./media/tutorial-export-acm-data/storage-explorer.png)
 

@@ -10,12 +10,12 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 zone_pivot_groups: aml-control-methods
-ms.openlocfilehash: 6bbee606c59482e4a06f344d3221e8611f6dcc9d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: a3aed23441df225316f52eb3acb1387cbba6d807
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544475"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935587"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>モデルをプロファイルしてリソース使用状況を判断する
 
@@ -36,6 +36,9 @@ ms.locfileid: "87544475"
 
 > [!IMPORTANT]
 > 現時点では、要求データが文字列であることを期待するサービスのプロファイリングのみがサポートされています。たとえば、文字列のシリアル化された JSON、テキスト、文字列のシリアル化された画像などです。データセット (文字列) の各行の内容は、HTTP 要求の本文に置かれ、スコアリングのためにモデルをカプセル化するサービスに送信されます。
+
+> [!IMPORTANT]
+> ChinaEast2 リージョンと USGovArizona リージョンでは、最大 2 つの CPU のプロファイルのみがサポートされています。
 
 以下に、入力データセットを作成して、受信する要求データにシリアル化された JSON が含まれていることを想定するサービスをプロファイルできる方法の例を示します。 ここでは、要求データの内容が同じである 100 個のインスタンスに基づくデータセットを作成しました。 実際のシナリオでは、モデル リソースの使用状況/動作が入力に依存している場合は特に、さまざまな入力を含むより規模の大きいデータセットを使用することをお勧めします。
 

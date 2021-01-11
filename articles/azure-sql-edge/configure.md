@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: 0cb2eed0895c10f649facaa184a5f9f9ea158aa5
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 722d33e76b6009a44811dfcb8a3238b042ec6918
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551984"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816883"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) の構成
 
@@ -157,6 +157,60 @@ chown -R 10001:0 <database file dir>
   - コンテナー作成オプションの下にキーと値のペア `*"User": "user_name | user_id*` を追加することを指定するように、コンテナー作成オプションを更新します。 user_name または user_id は、実際の Docker ホストの user_name または user_id に置き換えてください。 
   - ディレクトリまたはマウント ボリュームに対するアクセス許可を変更します。
 
+## <a name="persist-your-data"></a> データを保持する
+
+`docker stop` と `docker start` を使用してコンテナーを再起動しても、Azure SQL Edge の構成変更とデータベース ファイルはコンテナーに保持されています。 一方、`docker rm` を使用してコンテナーを削除すると、Azure SQL Edge とデータベースを含め、コンテナーの内容がすべて削除されます。 次のセクションでは、関連付けられているコンテナーが削除された場合でも、**データ ボリューム**を使用してデータベース ファイルを保持する方法について説明します。
+
+> [!IMPORTANT]
+> Azure SQL Edge の場合、Docker 内でのデータの保持について理解しておくことが重要です。 このセクションの説明に加えて、[Docker コンテナー内でデータを管理する方法](https://docs.docker.com/engine/tutorials/dockervolumes/)については、Docker のドキュメントをご覧ください。
+
+### <a name="mount-a-host-directory-as-data-volume"></a>ホスト ディレクトリをデータ ボリュームとしてマウントする
+
+1 つ目のオプションは、ホスト上のディレクトリをコンテナー内のデータ ボリュームとしてマウントすることです。 これを行うには、`docker run` コマンドを `-v <host directory>:/var/opt/mssql` フラグと共に使用します。 これにより、コンテナーの実行間でデータを復元できます。
+
+```bash
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+```PowerShell
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+この手法では、Docker の外部にあるホスト上のファイルを共有して表示することもできます。
+
+> [!IMPORTANT]
+> **Windows 上の Docker** のホスト ボリューム マッピングでは現在のところ、完全な `/var/opt/mssql` ディレクトリをマッピングできません。 ただし、`/var/opt/mssql/data` など、サブディレクトリをホスト コンピューターにマッピングできます。
+
+> [!IMPORTANT]
+> 現時点では、Azure SQL Edge イメージを使用した **Mac 上の Docker** のホスト ボリューム マッピングはサポートされていません。 代わりにデータ ボリューム コンテナーを使用してください。 この制限は、`/var/opt/mssql` ディレクトリに固有のものです。 マウントされたディレクトリからの読み取りは正常に機能します。 たとえば、Mac 上で -v を使用してホスト ディレクトリをマウントし、ホスト上に存在する .bak ファイルからバックアップを復元することができます。
+
+### <a name="use-data-volume-containers"></a>データ ボリューム コンテナーを使用する
+
+2 つ目のオプションは、データ ボリューム コンテナーを使用することです。 `-v` パラメーターを使用してホスト ディレクトリではなくボリューム名を指定して、データ ボリューム コンテナーを作成できます。 次の例では、**sqlvolume** という名前の共有データ ボリュームを作成します。
+
+```bash
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+```PowerShell
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+```
+
+> [!NOTE]
+> 実行コマンド内でデータ ボリュームを暗黙的に作成するためのこの手法は、以前のバージョンの Docker では動作しません。 その場合は、Docker のドキュメント、「[データ ボリューム コンテナーの作成とマウント](https://docs.docker.com/engine/tutorials/dockervolumes/#creating-and-mounting-a-data-volume-container)」に概説されている明示的な手順を使用します。
+
+このコンテナーを停止して削除しても、データ ボリュームは保持されます。 `docker volume ls` コマンドを使用して表示できます。
+
+```bash
+docker volume ls
+```
+
+その後、同じボリューム名を持つ別のコンテナーを作成すると、新しいコンテナーでは、ボリュームに含まれているのと同じ Azure SQL Edge データが使用されます。
+
+データ ボリューム コンテナーを削除するには、`docker volume rm` コマンドを使用します。
+
+> [!WARNING]
+> データ ボリューム コンテナーを削除すると、コンテナー内のすべての Azure SQL Edge データが*完全に*削除されます。
 
 
 ## <a name="next-steps"></a>次のステップ

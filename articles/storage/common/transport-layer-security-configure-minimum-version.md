@@ -10,12 +10,12 @@ ms.date: 07/29/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e7bb996b3d42e2db2b4fa65d050ec1cb6a935bc6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2439bec08c16ce109b271844dc72b8fd2569aa07
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533378"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755910"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>ストレージ アカウントへの要求に必要な最小バージョンのトランスポート層セキュリティ (TLS) を適用する
 
@@ -338,6 +338,10 @@ Deny 効果を持つポリシーを作成し、これをスコープに割り当
 次の図では、Deny 効果を持つポリシーで、最小 TLS バージョンを TLS 1.2 に設定することが要求されているときに、最小 TLS バージョンを TLS 1.0 に設定して (新しいアカウントの既定) ストレージ アカウントを作成しようとした場合に発生するエラーが示されています。
 
 :::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="ポリシーに違反するストレージ アカウントを作成したときに発生したエラーを示すスクリーンショット":::
+
+## <a name="network-considerations"></a>ネットワークに関する考慮事項
+
+クライアントがストレージ アカウントに要求を送信すると、クライアントは、最初にストレージ アカウントのパブリック エンドポイントとの接続を確立してから、要求を処理します。 TLS の最小バージョンの設定は、接続が確立された後にチェックされます。 設定で指定されたものよりも前のバージョンの TLS が要求で使用されている場合、接続は引き続き成功しますが、要求は最終的に失敗します。 Azure Storage のパブリック エンドポイントの詳細については、「[リソースの URI の構文](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#resource-uri-syntax)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

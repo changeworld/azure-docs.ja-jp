@@ -3,12 +3,12 @@ title: Azure Backup エージェントのトラブルシューティング
 description: この記事では、Azure Backup エージェントのインストールと登録のトラブルシューティング方法について説明します。
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 1afe437239ec7015bf3bbc195cf0b90e75698142
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 64996737a18add8ca1bee25e32929f1d602f9018
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564114"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763509"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントをトラブルシューティングする
 
@@ -258,13 +258,13 @@ MARS エージェントの操作を成功させるには、キャッシュ フ�
 
 エラー メッセージ | 推奨される操作
 --|--
-Microsoft Azure Recovery Services Agent was unable to access backup checksum stored in scratch location (Microsoft Azure Recovery Services Agent は、スクラッチ場所に格納されているバックアップ チェックサムにアクセスできませんでした) | この問題を解決するには、次の手順を実行してサーバーを再起動します <br/> - [スクラッチ場所ファイルをロックしているウイルス対策またはその他のプロセスがあるかどうか確認します](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [スクラッチ場所が有効で、MARS エージェントにアクセスできるかどうか確認します。](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+Microsoft Azure Recovery Services Agent was unable to access backup checksum stored in scratch location (Microsoft Azure Recovery Services Agent は、スクラッチ場所に格納されているバックアップ チェックサムにアクセスできませんでした) | この問題を解決するには、次の手順を行ってサーバーを再起動します <br/> - [スクラッチ場所ファイルをロックしているウイルス対策またはその他のプロセスがあるかどうか確認します](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [スクラッチ場所が有効で、MARS エージェントにアクセスできるかどうか確認します。](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="salvhdinitializationerror"></a>SalVhdInitializationError
 
 エラー メッセージ | 推奨される操作
 --|--
-Microsoft Azure Recovery Services Agent was unable to access the scratch location to initialize VHD (Microsoft Azure Recovery Services Agent は、スクラッチ場所にアクセスして VHD を初期化できませんでした) | この問題を解決するには、次の手順を実行してサーバーを再起動します <br/> - [スクラッチ場所ファイルをロックしているウイルス対策またはその他のプロセスがあるかどうか確認します](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [スクラッチ場所が有効で、MARS エージェントにアクセスできるかどうか確認します。](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+Microsoft Azure Recovery Services Agent was unable to access the scratch location to initialize VHD (Microsoft Azure Recovery Services Agent は、スクラッチ場所にアクセスして VHD を初期化できませんでした) | この問題を解決するには、次の手順を行ってサーバーを再起動します <br/> - [スクラッチ場所ファイルをロックしているウイルス対策またはその他のプロセスがあるかどうか確認します](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [スクラッチ場所が有効で、MARS エージェントにアクセスできるかどうか確認します。](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="sallowdiskspace"></a>SalLowDiskSpace
 

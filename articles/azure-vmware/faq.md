@@ -1,35 +1,35 @@
 ---
 title: よく寄せられる質問
-description: Azure VMware Solution (AVS) についてよく寄せられる質問にお答えします。
+description: Azure VMware Solution についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: bd27d4669788b10fc12c47e4514020f6b01300bc
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: cffa31bb66adfde2af24ab2542322479639ed9dd
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872329"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752183"
 ---
-# <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Azure VMware Solution (AVS) プレビューについてよく寄せられる質問
+# <a name="frequently-asked-questions-about-azure-vmware-solution-preview"></a>Azure VMware Solution プレビューについてよく寄せられる質問
 
-Azure VMware Solution (AVS) についてよく寄せられる質問にお答えします。
+Azure VMware Solution についてよく寄せられる質問にお答えします。
 
 ## <a name="general"></a>全般
 
-**Azure VMware Solution (AVS) とは何ですか?**
+**Azure VMware Solution とは**
 
-企業によるビジネスの機敏性の向上、コスト削減、イノベーションの促進のための IT 近代化戦略の追及を受けて、ハイブリッド クラウド プラットフォームが顧客のデジタル変革の主要な手段として登場しました。 AVS は、VMware の Software Defined Data Center (SDDC) ソフトウェアと Microsoft Azure グローバル クラウド サービス エコシステムを組み合わせたものです。 AVS ソリューションは、パフォーマンス、可用性、セキュリティ、およびコンプライアンスの要件を満たすために管理されます。
+企業によるビジネスの機敏性の向上、コスト削減、イノベーションの促進のための IT 近代化戦略の追及を受けて、ハイブリッド クラウド プラットフォームが顧客のデジタル変革の主要な手段として登場しました。 Azure VMware Solution は、VMware の Software Defined Data Center (SDDC) ソフトウェアと Microsoft Azure グローバル クラウド サービス エコシステムを組み合わせたものです。 Azure VMware Solution は、パフォーマンス、可用性、セキュリティ、およびコンプライアンスの要件を満たすために管理されます。
 
-## <a name="avs-service"></a>AVS サービス
+## <a name="azure-vmware-solution-service"></a>Azure VMware Solution サービス
 
-**現在、AVS はどこで利用できますか?**
+**現在、Azure VMware Solution はどこで利用できますか?**
 
 このサービスは新しいリージョンに継続的に追加されているので、詳細については、[最新のサービスの可用性情報](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware)に関するページを参照してください。 
 
-**Azure VMware Solution (AVS) インスタンスで実行されるワークロードで Azure サービスを使用できますか? また、このワークロードを Azure サービスと統合できますか?**
+**Azure VMware Solution インスタンスで実行されるワークロードで Azure サービスを使用できますか? また、このワークロードを Azure サービスと統合できますか?**
 
-AVS ソリューションのお客様はすべての Azure サービスを利用できるようになります。 特定のサービスのパフォーマンスと可用性の制限については、ケースバイケースで対処する必要があります。
+Azure VMware Solution のお客様はすべての Azure サービスを利用できるようになります。 特定のサービスのパフォーマンスと可用性の制限については、ケースバイケースで対処する必要があります。
 
 **プライベート クラウドのリソースを管理するために現在使用しているのと同じツールを使用しますか?**
 
@@ -37,13 +37,13 @@ AVS ソリューションのお客様はすべての Azure サービスを利用
 
 **オンプレミスの vCenter を使用してプライベート クラウドを管理できますか?**
 
-初期の AVS は、オンプレミス環境とプライベート クラウド環境全体に対して単一の管理エクスペリエンスをサポートしていません。 プライベート クラウド クラスターは、プライベート クラウドに対してローカルな vCenter および NSX Manager を使用して管理します。
+初期の Azure VMware Solution は、オンプレミス環境とプライベート クラウド環境全体に対して単一の管理エクスペリエンスをサポートしていません。 プライベート クラウド クラスターは、プライベート クラウドに対してローカルな vCenter および NSX Manager を使用して管理します。
 
 **オンプレミスで実行される vRealize スイートを使用できますか?** 
 
 特定の統合およびユース ケースは、ケースバイケースで評価されます。
 
-**オンプレミス環境から AVS プライベート クラウドに vSphere VM を移行できますか?**
+**オンプレミス環境から Azure VMware Solution のプライベート クラウドに vSphere VM を移行できますか?**
 
 はい。 標準クロス vCenter [vMotion の要件](https://kb.vmware.com/s/article/210695)が満たされる場合、VM 移行と vMotion を使用して VM をプライベート クラウドに移動できます。
 
@@ -89,7 +89,7 @@ AVS ソリューションのお客様はすべての Azure サービスを利用
 
 **各 ESXi ホストで使用できるネットワーク帯域幅はどれくらいですか?**
 
-各 ESXi ホストは、4 つの 25 Gbps NIC で構成された AVS です。ESXi のシステム トラフィック用に 2 つの NIC がプロビジョニングされ、ワークロードのトラフィック用に 2 つの NIC がプロビジョニングされます。 
+各 ESXi ホストは、4 つの 25 Gbps NIC で構成された Azure VMware Solution です。ESXi のシステム トラフィック用に 2 つの NIC がプロビジョニングされ、ワークロードのトラフィック用に 2 つの NIC がプロビジョニングされます。 
 
 **vSAN データストアに保存されるデータは保存時に暗号化されますか?**
 
@@ -111,13 +111,13 @@ AVS ソリューションのお客様はすべての Azure サービスを利用
 
 **試用版クラスターとはどのようなものですか?**
 
-試用版クラスターは、AVS プライベート クラウドの 1 か月間の評価に使用される 3 つのホストのクラスターです。
+試用版クラスターは、Azure VMware Solution プライベート クラウドの 1 か月間の評価に使用される 3 台のホストのクラスターです。
 
 **試用版クラスターでハイエンド ホストを使用できますか?**
 
 いいえ。 ハイエンド ESXi ホストは、運用クラスターで使用するために予約されています。
 
-## <a name="avs-and-vmware-software"></a>AVS と VMware ソフトウェア
+## <a name="azure-vmware-solution-and-vmware-software"></a>Azure VMware Solution と VMware ソフトウェア
 
 **プライベート クラウドで使用される VMware ソフトウェアのバージョンは何ですか?**
 
@@ -125,7 +125,7 @@ AVS ソリューションのお客様はすべての Azure サービスを利用
 
 **プライベート クラウドでは VMware NSX は使用されますか?**
 
-はい。AVS プライベート クラウドでは、ソフトウェア定義のネットワークのために NSX-T 2.5 が使用されます。
+はい。Azure VMware Solution のプライベート クラウドでは、ソフトウェア定義のネットワークのために NSX-T 2.5 が使用されます。
 
 **プライベート クラウドで VMware NSX-V は使用できますか?**
 
@@ -147,9 +147,9 @@ AVS ソリューションのお客様はすべての Azure サービスを利用
 
 **オンプレミス環境にプライベート クラウドを組み込むには、どのようなネットワーク IP アドレスを計画する必要がありますか?**
 
-AVS プライベート クラウドをデプロイするには、/22 プライベート ネットワーク アドレス空間が 1 つ必要です。 このプライベート アドレス空間は、サブスクリプションの他の仮想ネットワーク、またはオンプレミス ネットワークと重複しないようにする必要があります。
+Azure VMware Solution のプライベート クラウドをデプロイするには、/22 プライベート ネットワーク アドレス空間が 1 つ必要です。 このプライベート アドレス空間は、サブスクリプションの他の仮想ネットワーク、またはオンプレミス ネットワークと重複しないようにする必要があります。
  
-**オンプレミス環境から AVS プライベート クラウドにはどのように接続しますか?**
+**オンプレミス環境から Azure VMware Solution のプライベート クラウドにはどのように接続しますか?**
 
 次の 2 つの方法のいずれかでサービスに接続できます。 
 
@@ -170,7 +170,7 @@ Azure portal で、プライベート クラウドのインターネット接続
 
 ## <a name="accounts-and-privileges"></a>アカウントと特権
 
-**新しい AVS プライベート クラウドでは、どのようなアカウントと特権が取得されますか?**
+**新しい Azure VMware Solution プライベート クラウドでは、どのようなアカウントと特権が取得されますか?**
 
 vCenter の cloudadmin ユーザーの資格情報と、NSX-T Manager の管理者アクセス権が提供されます。 また、Azure Active Directory を組み込むために使用できる CloudAdmin グループもあります。 詳細については、[アクセスと ID の概念](concepts-identity.md)に関するページを参照してください。
 
@@ -191,19 +191,19 @@ NSX-T に対する完全な管理者特権があり、オンプレミスの NSX-
 
 ## <a name="billing-and-support"></a>課金とサポート
 
-**AVS のプレビュー期間中はどのように課金されますか?**
+**Azure VMware Solution のプレビュー期間中はどのように課金されますか?**
 
-プレビュー期間中の AVS の課金は、1 か月ごとの従量課金制です。 一般提供時に追加のオプションが提供される予定です。
+プレビュー期間中の Azure VMware Solution の課金は、1 か月ごとの従量課金制です。 一般提供時に追加のオプションが提供される予定です。
 
-**AVS のプレビュー期間中の価格体系はどのようなものですか?**
+**Azure VMware Solution のプレビュー期間中の価格体系はどのようなものですか?**
 
 価格に関する一般的な質問については、Azure VMware ソリューションの[価格](https://azure.microsoft.com/pricing/details/azure-vmware)に関するページを参照してください。 要請に応じてプレビュー価格をご利用いただけます。アカウント チームにお問い合わせいただくか、価格ページのリンクに従って営業担当者にお問い合わせください。
 
-**AVS のサポート提供元はどこですか?**
+**Azure VMware Solution のサポート提供元はどこですか?**
 
-AVS のサポートは、Microsoft が提供します。 プレビューのガイドラインにより、サポートが提供されるのは、PST の営業時間で、月曜日から金曜日の午前 9 時から午後 5 時までです。 サポート チケットは[こちらのリンク](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)から送信できます
+Azure VMware Solution のサポートは、Microsoft が提供します。 プレビューのガイドラインにより、サポートが提供されるのは、PST の営業時間で、月曜日から金曜日の午前 9 時から午後 5 時までです。 サポート チケットは[こちらのリンク](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)から送信できます
 
-**AVS プライベート クラウドを作成するにはどのアカウントが必要ですか?**
+**Azure VMware Solution のプライベート クラウドを作成するにはどのアカウントが必要ですか?**
 
 Azure サブスクリプションの Azure アカウントが必要です。
 

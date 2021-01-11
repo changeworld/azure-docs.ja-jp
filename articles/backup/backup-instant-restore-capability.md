@@ -4,17 +4,17 @@ description: Azure のインスタント リストア機能と、VM バックア
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: bb9a7a32306fc76ea8852787601f3b3b3828daf8
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: ddc8e8fa460943c09f80ebb462b1dbd578f9b23b
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611808"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892628"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 
 > [!NOTE]
-> ユーザーからのフィードバックに基づき、Azure Stack 機能との混同を避けるため、名前を**VM バックアップ スタック V2** から**インスタント リストア**に変更しています。
+> ユーザーからのフィードバックに基づき、Azure Stack 機能との混同を避けるため、名前を **VM バックアップ スタック V2** から**インスタント リストア**に変更しています。
 > Azure のすべてのバックアップ ユーザーは、**インスタント リストア**にアップグレードされました。
 
 インスタント リストアの新しいモデルでは、次の機能が強化されています。
@@ -76,7 +76,7 @@ $bkpPol.SnapshotRetentionInDays=5
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 
-各ポリシーのスナップショットの既定のリテンション期間は、2 日に設定されます。 この値は、最小で 1 日、最大で 5 日にユーザーが変更することができます。 週間ポリシーでは、スナップショットのリテンション期間は 5 日に固定されています。
+各ポリシーのスナップショットの既定のリテンション期間は、2 日に設定されます。 この値は、最小で 1 日、最大で 5 日に変更することができます。 週間ポリシーでは、スナップショットのリテンション期間は 5 日に固定されています。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -115,4 +115,3 @@ VM の変化によって異なります。 安定状態では、コストの増�
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>インスタント リストア機能は必要ありません。 無効にすることはできますか。
 
 インスタント リストア機能はすべてのユーザーに対して有効になっており、無効にすることはできません。 スナップショットのリテンション期間は、最小で 1 日に短縮することができます。
-

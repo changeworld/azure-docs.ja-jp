@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 19c21f1e95127d064d90d5c6915b4dd67871adaa
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: fcb38f761a72bf2c6e5dee8bb993cec9143e7241
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263488"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998953"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>C# を使用して Azure Time Series Insights Gen2 環境からデータを照会する
 
 この C# サンプルでは、Azure Time Series Insights Gen2 環境にある[Gen2 のデータ アクセス API](https://docs.microsoft.com/rest/api/time-series-insights/reference-data-access-overview) からデータを照会する方法を示しています。
 
 > [!TIP]
-> [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) で Gen2 C# コード サンプルを確認します。
+> [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) で Gen2 C# コード サンプルを確認します。
 
 ## <a name="summary"></a>まとめ
 
@@ -71,7 +71,7 @@ ms.locfileid: "88263488"
 
 ## <a name="c-sample-code"></a>C# サンプル コード
 
-C# サンプル コードは、おそらく [csharpquery-example](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) にあります
+[Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) リポジトリを参照し、C# サンプル コードにアクセスします。 
 
 > [!NOTE]
 >

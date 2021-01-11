@@ -40,9 +40,6 @@
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: ストリーミング分析テクノロジの選択
@@ -75,9 +72,9 @@
           displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
         - name: Azure Data Lake Storage Gen 1
           href: azure-data-lake-storage-gen1-output.md
-        - name: Azure SQL データベース
+        - name: Azure SQL Database
           href: sql-database-output.md
-        - name: SQL データベースのパフォーマンス
+        - name: SQL Database のパフォーマンス
           href: stream-analytics-sql-output-perf.md
         - name: Azure Synapse Analytics
           href: azure-synapse-analytics-output.md
@@ -655,6 +652,9 @@
       href: /azure/templates/microsoft.streamanalytics/allversions
     - name: Azure CLI
       href: /cli/azure/ext/stream-analytics/stream-analytics
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Stream Analytics プレビュー

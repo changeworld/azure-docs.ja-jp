@@ -9,18 +9,20 @@ editor: ''
 ms.service: media-services
 ms.subservice: ''
 ms.workload: ''
-ms.topic: article
+ms.topic: conceptual
 ms.custom: ''
-ms.date: 07/15/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2dca351133394e27a1d795dc9f5f958f730bbf42
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3aaba6939f9e5e3f5d7c169cd3a199cc93f527d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092084"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296777"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Media Services とビデオ オン デマンド(VOD) を使用した高可用性
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 ## <a name="high-availability-for-vod"></a>VOD のための高可用性
 

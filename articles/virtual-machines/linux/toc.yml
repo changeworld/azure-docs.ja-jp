@@ -85,17 +85,17 @@
         - name: ストレージの管理
           items:
             - name: VHD からマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: スナップショットからマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: 同じまたは別のサブスクリプションにマネージド ディスクをコピーする
-              href: ../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: ストレージ アカウントに VHD としてスナップショットをエクスポートする
               href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: ストレージ アカウントにマネージド ディスクの VHD をエクスポートする
-              href: ../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: 同じまたは別のサブスクリプションにスナップショットをコピーする
-              href: ../scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: ネットワークの仮想マシン
           items:
             - name: 仮想マシン間のネットワーク トラフィックのセキュリティ保護
@@ -127,34 +127,31 @@
             - name: WordPress がインストールされている VM の作成
               href: ./../scripts/virtual-machines-linux-powershell-sample-create-vm-wordpress.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: 管理 OS ディスクから VM を作成する
-              href: ./../scripts/virtual-machines-linux-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ./../scripts/virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: スナップショットから VM を作成する
               href: ./../scripts/virtual-machines-linux-powershell-sample-create-vm-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: ストレージの管理
           items:
             - name: 同じまたは別のサブスクリプションの VHD からマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: スナップショットからマネージド ディスクを作成する
-              href: ../scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: ストレージ アカウントに VHD としてスナップショットをエクスポートする
               href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: ストレージ アカウントにマネージド ディスクの VHD をエクスポートする
-              href: ../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: VHD からスナップショットを作成する
-              href: ../scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: 同じサブスクリプションまたは別のサブスクリプションにスナップショットをコピーする
-              href: ../scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 仮想マシンの監視
           items:
             - name: Azure Monitor ログを使用して VM を監視する
               href: ./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: 同じサブスクリプションまたは別のサブスクリプションにマネージド ディスクをコピーする
-              href: ../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: PowerShell を使用してサブスクリプション内のすべての VM に関する詳細情報を収集する
               href: ../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
 - name: 概念
   items:
     - name: イメージング
@@ -192,7 +189,7 @@
         - name: VM サイズ
           href: ../sizes.md
         - name: 第 2 世代 VM
-          href: generation-2.md
+          href: ../generation-2.md
         - name: 汎用
           items:
             - name: 概要
@@ -239,7 +236,7 @@
             - name: Mv2 シリーズ
               href: ../mv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 制約付き vCPU
-              href: ../constrained-vcpu.md
+              href: ../constrained-vcpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: ストレージ最適化
           items:
             - name: 概要
@@ -294,7 +291,7 @@
             - name: Azure の予約とは
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/linux/toc.json
             - name: VM インスタンス サイズの柔軟性
-              href: ../reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: スポット VM
           displayName: 'pre-empt, preempt'
           href: ../spot-vms.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -310,14 +307,6 @@
           href: ../acu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: vCPU のクォータ
           href: quotas.md
-        - name: 予約インスタンス
-          items:
-            - name: VM の前払い
-              href: prepay-reserved-vm-instances.md
-            - name: Azure の予約とは
-              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
-            - name: VM インスタンス サイズの柔軟性
-              href: ../reserved-vm-instance-size-flexibility.md
         - name: ベンチマーク スコア
           href: compute-benchmark-scores.md
     - name: 動作保証済みディストリビューション
@@ -329,21 +318,21 @@
     - name: Disk Storage
       items:
         - name: マネージド ディスクの概要
-          href: ../managed-disks-overview.md
+          href: ../managed-disks-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: IaaS VM 用のディスクの種類の選択
-          href: ../disks-types.md
+          href: ../disks-types.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 暗号化
           href: disk-encryption.md
         - name: Disk Storage の予約
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 高パフォーマンス用の設計
-          href: ../premium-storage-performance.md
+          href: ../premium-storage-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: ディスク バースト
           href: disk-bursting.md
         - name: ディスクのスケーラビリティ ターゲット
           href: disk-scalability-targets.md
         - name: ディスクのバックアップとディザスター リカバリー
-          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md
+          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 共有ディスク
           href: disks-shared.md
         - name: エフェメラル OS ディスク
@@ -357,7 +346,7 @@
     - name: セキュリティ
       items:
         - name: セキュリティとポリシー
-          href: ../security-policy.md
+          href: ../security-policy.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Azure Disk Encryption
           href: disk-encryption-overview.md
         - name: Azure Policy によるセキュリティ制御
@@ -370,7 +359,7 @@
         - name: Bastion
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 状態とライフサイクル
-      href: ../states-lifecycle.md
+      href: ../states-lifecycle.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 監視
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: ブート診断
@@ -418,7 +407,7 @@
         - name: 移行の概要
           href: migration-classic-resource-manager-overview.md
         - name: 移行の詳細
-          href: ../migration-classic-resource-manager-deep-dive.md
+          href: ../migration-classic-resource-manager-deep-dive.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 移行の計画
           href: migration-classic-resource-manager-plan.md
         - name: CLI を使用して移行する
@@ -428,7 +417,7 @@
         - name: 移行用のコミュニティ ツール
           href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: よく寄せられる質問
-          href: ../migration-classic-resource-manager-faq.md
+          href: ../migration-classic-resource-manager-faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: イメージの使用
       displayName: 'SIG, AMI, image'
       items:
@@ -474,7 +463,7 @@
               href: cloudinit-bash-script.md
             - name: cloud-init のための既存の VM の準備
               href: cloudinit-prepare-custom-image.md
-        - name: 次を使用せずにイメージを作成する
+        - name: プロビジョニング エージェントを使用せずにイメージを作成する
           href: no-agent.md
         - name: Linux エージェントのプロビジョニングを無効にする
           href: disable-provisioning.md
@@ -677,7 +666,7 @@
     - name: VM の管理
       items:
         - name: VM の使用状況
-          href: vm-usage.md
+          href: ../vm-usage.md
         - name: 一般的な CLI タスク
           href: cli-manage.md
         - name: VM サイズの変更
@@ -956,9 +945,9 @@
           href: detach-disk.md
         - name: Resource Manager テンプレートによるディスクのデプロイ
           displayName: 'Azure Resource Manager, ARM'
-          href: ../using-managed-disks-template-deployments.md
+          href: ../using-managed-disks-template-deployments.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 共有ディスクを有効にする
-          href: ../disks-shared-enable.md
+          href: ../disks-shared-enable.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: ディスクに VHD をアップロードする - CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: ディスクを安全にインポート/エクスポートする - CLI
@@ -968,11 +957,11 @@
         - name: ディスクのサイズの変更
           href: expand-disks.md
         - name: Storage Explorer を使用してディスクを管理する
-          href: ../disks-use-storage-explorer-managed-disks.md
+          href: ../disks-use-storage-explorer-managed-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: ディスクのスナップショットの作成
           href: snapshot-copy-managed-disk.md
         - name: Disk Storage の予約
-          href: ../disks-reserved-capacity.md
+          href: ../disks-reserved-capacity.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 増分スナップショットの作成 - CLI
           href: disks-incremental-snapshots.md
         - name: 増分スナップショットの作成 - ポータル
@@ -1006,9 +995,9 @@
         - name: パフォーマンス
           items:
             - name: 書き込みアクセラレータの使用
-              href: ../how-to-enable-write-accelerator.md
+              href: ../how-to-enable-write-accelerator.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: ウルトラ ディスクの使用
-              href: ../disks-enable-ultra-ssd.md
+              href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: ディスクのベンチマークの実行
               href: disks-benchmarks.md
             - name: パフォーマンスの最適化
@@ -1150,6 +1139,9 @@
     - name: Resource Manager テンプレート
       displayName: ARM
       href: /azure/templates/microsoft.compute/allversions
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
 - name: リソース
   items:
     - name: Q & A

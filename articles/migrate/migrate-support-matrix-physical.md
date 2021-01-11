@@ -3,12 +3,12 @@ title: Azure Migrate での物理サーバーの評価のサポート
 description: Azure Migrate Server Assessment での物理サーバーの評価のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 97da09fa88cc3e69965237cb5b4326b8b59739bd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2b96bff7468f0705f2b80f60dcd5248960495f16
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423781"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640125"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>物理サーバーの評価のサポート マトリックス 
 
@@ -34,7 +34,7 @@ ms.locfileid: "87423781"
 | **サポート**                | **詳細**               
 | :-------------------       | :------------------- |
 | **物理サーバーの展開**       | 物理サーバーは、スタンドアロンにすることも、クラスターにデプロイすることもできます。 |
-| **アクセス許可**           | **Windows:** ドメインに参加しているマシンにはドメイン アカウントを使用し、ドメインに参加していないマシンにはローカル アカウントを使用します。 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。 <br/><br/> **Linux:** 検出する Linux サーバーのルート アカウントが必要です。 |
+| **アクセス許可**           | **Windows:** ドメインに参加しているマシンにはドメイン アカウントを使用し、ドメインに参加していないマシンにはローカル アカウントを使用します。 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。 <br/><br/> **Linux:** 検出する Linux サーバーのルート アカウントが必要です。 <br/> または、次のコマンドを使用して必要な機能が設定されていることを確認します。 <br/> setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/fdisk <br/> setcap CAP_DAC_READ_SEARCH+eip /sbin/fdisk (/usr/sbin/fdisk が存在しない場合) <br/> setcap "cap_dac_override、cap_dac_read_search、cap_fowner、cap_fsetid、cap_setuid、cap_setpcap、cap_net_bind_service、cap_net_admin、cap_sys_chroot、cap_sys_admin、cap_sys_resource、cap_audit_control、cap_setfcap=+eip" /sbin/lvm <br/> setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/dmidecode <br/> chmod a+r /sys/class/dmi/id/product_uuid
 | **オペレーティング システム** | Windows Server 2003 および SUSE Linux を除くすべてのオペレーティング システムは、移行について評価することができます。 |
 
 

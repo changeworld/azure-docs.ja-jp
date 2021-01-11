@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 898f63cbfba082f8c268587bcd2ea7f575d07f81
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 602a36964d4a6d5f3660499570327db3479c980e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420330"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299203"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
@@ -74,6 +74,10 @@ Basic Load Balancer は、既定ではインターネットに対して公開さ
 Standard Load Balancer の価格の情報については、「[Load Balancer の価格](https://azure.microsoft.com/pricing/details/load-balancer/)」を参照してください。
 Basic Load Balancer は無料で提供されます。
 [Load Balancer の SLA](https://aka.ms/lbsla) を参照してください。 Basic Load Balancer には SLA がありません。
+
+## <a name="whats-new"></a>新機能
+
+RSS フィードを購読し、[Azure の更新情報](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer)ページで、最新の Azure Load Balancer 機能の更新を確認します。
 
 ## <a name="next-steps"></a>次のステップ
 Basic Load Balancer を Standard Load Balancer にアップグレードするには、[Basic Load Balancer のアップグレード](upgrade-basic-standard.md)に関するページをご覧ください。

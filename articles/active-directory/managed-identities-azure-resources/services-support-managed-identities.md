@@ -2,21 +2,21 @@
 title: マネージド ID をサポートする Azure サービス - Azure AD
 description: Azure リソースのマネージド ID と Azure AD 認証をサポートするサービスの一覧
 services: active-directory
-author: MarkusVi
-ms.author: markvi
+author: barclayn
+ms.author: barclayn
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
-manager: markvi
+manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 13521017076c609c2fadb4362d5cccdf12d94098
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e62fc34ad02303f61214f754f6506c39af76fc94
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873587"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267447"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -39,7 +39,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 Azure API Management のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
-- [Azure Resource Manager テンプレート](/azure/api-management/api-management-howto-use-managed-service-identity)
+- [Azure Resource Manager テンプレート](../../api-management/api-management-howto-use-managed-service-identity.md)
 
 
 ### <a name="azure-app-service"></a>Azure App Service
@@ -51,10 +51,10 @@ Azure API Management のために (それが提供されているリージョン
 
 Azure App Service のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
-- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
-- [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
-- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Azure Resource Manager テンプレート](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+- [Azure Portal](../../app-service/overview-managed-identity.md#using-the-azure-portal)
+- [Azure CLI](../../app-service/overview-managed-identity.md#using-the-azure-cli)
+- [Azure PowerShell](../../app-service/overview-managed-identity.md#using-azure-powershell)
+- [Azure Resource Manager テンプレート](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
 
 ### <a name="azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes
 
@@ -63,7 +63,7 @@ Azure App Service のために (それが提供されているリージョンで
 | システム割り当て済み | プレビュー | 使用不可 | 使用不可 | 使用不可 | 
 | ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
-Azure Arc 対応 Kubernetes では、現在、[システムによって割り当てられた ID がサポートされています](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#azure-arc-agents-for-kubernetes)。 マネージド サービス ID 証明書は、すべての Azure Arc 対応 Kubernetes エージェントによって Azure との通信のために使用されています。
+Azure Arc 対応 Kubernetes では、現在、[システムによって割り当てられた ID がサポートされています](../../azure-arc/kubernetes/connect-cluster.md#azure-arc-agents-for-kubernetes)。 マネージド サービス ID 証明書は、すべての Azure Arc 対応 Kubernetes エージェントによって Azure との通信のために使用されています。
 
 ### <a name="azure-blueprints"></a>Azure Blueprint
 
@@ -90,14 +90,14 @@ Azure Arc 対応 Kubernetes では、現在、[システムによって割り当
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
-| ユーザー割り当て済み | 使用不可 | 使用できません | 使用できません | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 
 ### <a name="azure-container-instances"></a>Azure Container Instances
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | Linux: プレビュー<br>Windows: 使用不可 | 使用不可 | 使用できません | 使用不可 |
+| システム割り当て済み | Linux: プレビュー<br>Windows: 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 | ユーザー割り当て済み | Linux: プレビュー<br>Windows: 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 Azure Container Instances のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
@@ -111,7 +111,7 @@ Azure Container Instances のために (それが提供されているリージ�
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| システム割り当て済み | ![利用可能][check] | 使用不可 | 使用できません | 使用不可 |
+| システム割り当て済み | ![利用可能][check] | 使用不可 | 使用不可 | 使用不可 |
 | ユーザー割り当て済み | プレビュー | 使用不可 | 使用不可 | 使用不可 |
 
 Azure Container Registry タスクのために (それが提供されているリージョンで) マネージド ID を構成するには、次の一覧を参照してください。
@@ -130,7 +130,7 @@ Azure Container Registry タスクのために (それが提供されている�
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
-| ユーザー割り当て済み | 使用不可 | 使用できません | 使用不可 | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 Azure Data Factory V2 のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
@@ -146,7 +146,7 @@ Azure Data Factory V2 のために (それが提供されているリージョ�
 マネージド ID の種類 |すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | プレビュー | プレビュー | 使用不可 | プレビュー |
-| ユーザー割り当て済み | 使用不可 | 使用できません  | 使用できません  | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用不可  | 使用不可  | 使用不可 |
 
 
 
@@ -165,17 +165,17 @@ Azure Data Factory V2 のために (それが提供されているリージョ�
 
 Azure Functions のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
-- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
-- [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
-- [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Azure Resource Manager テンプレート](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+- [Azure Portal](../../app-service/overview-managed-identity.md#using-the-azure-portal)
+- [Azure CLI](../../app-service/overview-managed-identity.md#using-the-azure-cli)
+- [Azure PowerShell](../../app-service/overview-managed-identity.md#using-azure-powershell)
+- [Azure Resource Manager テンプレート](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
 
 ### <a name="azure-iot-hub"></a>Azure IoT Hub
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
-| ユーザー割り当て済み | 使用不可 | 使用できません | 使用不可 | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 Azure Data Factory V2 のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
@@ -186,7 +186,7 @@ Azure Data Factory V2 のために (それが提供されているリージョ�
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
 | システム割り当て済み | Azure Import Export サービスが利用可能なリージョンで利用可能 | プレビュー | 利用可能 | 利用可能 |
-| ユーザー割り当て済み | 使用不可 | 使用できません | 使用不可 | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 ### <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -196,7 +196,7 @@ Azure Data Factory V2 のために (それが提供されているリージョ�
 | ユーザー割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | ![利用可能][check] |
 
 
-詳細については、「[Azure Kubernetes Service でマネージド ID を使用する](https://docs.microsoft.com/azure/aks/use-managed-identity)」を参照してください。
+詳細については、「[Azure Kubernetes Service でマネージド ID を使用する](../../aks/use-managed-identity.md)」を参照してください。
 
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps
@@ -209,8 +209,8 @@ Azure Data Factory V2 のために (それが提供されているリージョ�
 
 Azure Logic Apps のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
-- [Azure Portal](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
-- [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
+- [Azure Portal](../../logic-apps/create-managed-service-identity.md#enable-system-assigned-identity-in-azure-portal)
+- [Azure Resource Manager テンプレート](../../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 
 
 ### <a name="azure-policy"></a>Azure Policy
@@ -218,20 +218,20 @@ Azure Logic Apps のために (それが提供されているリージョンで)
 |マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | ![利用可能][check] | ![利用可能][check] | ![利用可能][check] | ![利用可能][check] |
-| ユーザー割り当て済み | 使用不可 | 使用できません | 使用できません | 使用不可 |
+| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 Azure Policy のために (それが提供されているリージョンで) マネージド ID を構成するには、次の一覧を参照してください。
 
 - [Azure Portal](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
-- [Azure CLI](https://docs.microsoft.com/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
-- [Azure リソース マネージャーのテンプレート](https://docs.microsoft.com/azure/templates/microsoft.authorization/policyassignments)
-- [REST](https://docs.microsoft.com/rest/api/resources/policyassignments/create)
+- [Azure CLI](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
+- [Azure リソース マネージャーのテンプレート](/azure/templates/microsoft.authorization/policyassignments)
+- [REST](/rest/api/resources/policyassignments/create)
 
 
 ### <a name="azure-service-fabric"></a>Azure Service Fabric
 
-すべてのリージョンで [Service Fabric アプリケーションのマネージド ID](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) を使用できます。
+すべてのリージョンで [Service Fabric アプリケーションのマネージド ID](../../service-fabric/concepts-managed-identity.md) を使用できます。
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
@@ -291,9 +291,9 @@ Azure Virtual Machines のために (それが提供されているリージョ�
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | 利用不可 | 利用不可 | 利用不可 | 利用不可 | 
-| ユーザー割り当て済み | [サポートされているリージョンで利用可能](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) | 利用不可 | 利用不可 | 利用不可 |
+| ユーザー割り当て済み | [サポートされているリージョンで利用可能](../../virtual-machines/windows/image-builder-overview.md#regions) | 利用不可 | 利用不可 | 利用不可 |
 
-Azure VM Image Builder のために (それが提供されているリージョンで) マネージド ID を構成する方法については、[Image Builder の概要](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#permissions)に関するページを参照してください。
+Azure VM Image Builder のために (それが提供されているリージョンで) マネージド ID を構成する方法については、[Image Builder の概要](../../virtual-machines/windows/image-builder-overview.md#permissions)に関するページを参照してください。
 ### <a name="azure-signalr-service"></a>Azure SignalR Service
 
 マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
@@ -397,7 +397,7 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 | Azure China 21Vianet | `https://*.asazure.chinacloudapi.cn` | ![利用可能][check] |
 
 > [!Note]
-> Microsoft Power BI は[マネージド ID もサポートします](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)。
+> Microsoft Power BI は[マネージド ID もサポートします](../../stream-analytics/powerbi-output-managed-identity.md)。
 
 
 [check]: media/services-support-managed-identities/check.png "利用可能"

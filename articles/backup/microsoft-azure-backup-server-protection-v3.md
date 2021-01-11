@@ -3,12 +3,12 @@ title: Azure Backup Server V3 RTM でバックアップできる内容
 description: この記事では、Azure Backup Server V3 RTM によって保護されるすべてのワークロード、データ型、およびインストールを一覧表示した保護のマトリックスを示します。
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 86e192e13b49b89e8d66c5f912ef88f02a1b21b4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 21c5fbcdf8aa3454a9af968509cb4cbf76b31f9e
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611978"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763611"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server V3 RTM の保護マトリックス
 
@@ -32,9 +32,9 @@ ms.locfileid: "88611978"
 |サーバー (32 ビットおよび 64 ビット)|Windows Server 2012/2012 SP1 - Datacenter および Standard|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|V3、V2|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル<br /><br />Windows Server 2012 の重複除去されたボリュームを保護するには、Azure Backup Server が少なくとも Windows Server 2012 R2 上で実行されている必要があります。|
 |サーバー (32 ビットおよび 64 ビット)|Windows Server 2012/2012 SP1 - Datacenter および Standard|Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)<br /> <br /> Azure Stack|V3、V2|ボリューム、共有、フォルダー、ファイル<br /><br />Windows Server 2012 の重複除去されたボリュームを保護するには、Azure Backup Server が少なくとも Windows Server 2012 R2 上で実行されている必要があります。|
 |サーバー (32 ビットおよび 64 ビット)|Windows Server 2012/2012 SP1 - Datacenter および Standard|VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル<br /><br />Windows Server 2012 の重複除去されたボリュームを保護するには、Azure Backup Server が少なくとも Windows Server 2012 R2 上で実行されている必要があります。|
-|サーバー (32 ビットおよび 64 ビット)|Windows Server 2008 R2 SP1 - Standard および Enterprise|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|V3、V2<br />SP1 を実行しており、かつ [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) をインストールする必要があります|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル|
-|サーバー (32 ビットおよび 64 ビット)|Windows Server 2008 R2 SP1 - Standard および Enterprise|Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)<br /> <br /> Azure Stack|V3、V2<br />SP1 を実行しており、かつ [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) をインストールする必要があります|ボリューム、共有、フォルダー、ファイル|
-|サーバー (32 ビットおよび 64 ビット)|Windows Server 2008 R2 SP1 - Standard および Enterprise|VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2<br />SP1 を実行しており、かつ [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) をインストールする必要があります|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル|
+|サーバー (32 ビットおよび 64 ビット)|Windows Server 2008 R2 SP1 - Standard および Enterprise|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|V3、V2<br />SP1 を実行しており、かつ [Windows Management Frame](https://www.microsoft.com/download/details.aspx?id=54616) をインストールする必要があります|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル|
+|サーバー (32 ビットおよび 64 ビット)|Windows Server 2008 R2 SP1 - Standard および Enterprise|Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)<br /> <br /> Azure Stack|V3、V2<br />SP1 を実行しており、かつ [Windows Management Frame](https://www.microsoft.com/download/details.aspx?id=54616) をインストールする必要があります|ボリューム、共有、フォルダー、ファイル|
+|サーバー (32 ビットおよび 64 ビット)|Windows Server 2008 R2 SP1 - Standard および Enterprise|VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2<br />SP1 を実行しており、かつ [Windows Management Frame](https://www.microsoft.com/download/details.aspx?id=54616) をインストールする必要があります|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル|
 |サーバー (32 ビットおよび 64 ビット)|Windows Server 2008 SP2|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|サポートされていません|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル|
 |サーバー (32 ビットおよび 64 ビット)|Windows Server 2008 SP2|VMware 内の Windows 仮想マシン (VMware 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル|
 |サーバー (32 ビットおよび 64 ビット)|Windows Storage Server 2008|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|V3、V2|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル|
@@ -92,7 +92,7 @@ ms.locfileid: "88611978"
 * `.microsoftonline.com`
 * `.windows.net`
 
-Microsoft ピアリングを使用して、次のサービスまたはリージョン、および関連するコミュニティ値を選択してください。
+Microsoft ピアリングの使用時には、サービス、リージョン、関連するコミュニティについて以下の値を選択します。
 
 * Azure Active Directory (12076:5060)
 * Microsoft Azure リージョン (Recovery Services コンテナーの場所による)

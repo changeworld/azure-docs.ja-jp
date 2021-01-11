@@ -461,7 +461,7 @@ var client = new QueueClient(
   );
 ```
 
-### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラー
+### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
 
 Storage Explorer を使用すると、Azurite に格納されているデータを表示できます。
 

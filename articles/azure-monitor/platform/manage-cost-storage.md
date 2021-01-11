@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f6420683d22488abc66b387fd44cb74cc8f8b7bd
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 84a5b1cd7b2229defd4e38a227f75cfbf9ebdd95
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184654"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933666"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -604,7 +604,7 @@ Operation | where OperationCategory == 'Data Collection Status'
 |収集が停止する原因| 解決策| 
 |-----------------------|---------|
 |ワークスペースの 1 日あたりの上限に達した|収集が自動的に再開されるまで待つか、「最大日次データ ボリュームを管理する」で説明されているようにして 1 日のデータ ボリューム制限を増やします。 日次上限のリセット時間が **[日次上限]** ページに表示されます。 |
-| お使いのワークスペースが[データ インジェストのボリューム レート](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces)に達しました | ワークスペースには、既定のインジェスト ボリューム レートのしきい値である 500 MB (圧縮) が適用されており、これは約 **6 GB/分** (非圧縮) に相当します。実際のサイズは、ログの長さとその圧縮率に左右され、データの種類によって異なることがあります。 このしきい値は、[診断設定](diagnostic-settings.md)、[Data Collector API](data-collector-api.md)、エージェントのどれを使用して Azure リソースから送信されたかを問わず、すべてのインジェスト データに適用されます。 ワークスペースに構成されているしきい値の 80% を超えるボリューム レートでワークスペースにデータを送信すると、しきい値を超え続けている間、6 時間ごとにワークスペースの *Operation* テーブルにイベントが送信されます。 インジェスト ボリューム レートがしきい値を超えると、一部のデータが削除され、しきい値を超え続けている間、6 時間ごとにワークスペースの *Operation* テーブルにイベントが送信されます。 インジェスト ボリューム レートがしきい値を超え続けている場合、または間もなくそれに達すると予測される場合は、サポート リクエストを開き、ワークスペースでのしきい値の引き上げを依頼できます。 ワークスペースでのそのようなイベントについて通知を受けるには、ゼロより大きい結果数、5 分の評価期間、5 分の頻度に関するアラート ロジック ベースを使った次のクエリを使用して、[ログ アラート ルール](alerts-log.md)を作成します。 インジェスト ボリューム レートがしきい値の 80% に到達した場合: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"`。 インジェスト ボリューム レートがしきい値に到達した場合: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"`。 |
+| お使いのワークスペースが[データ インジェストのボリューム レート](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces)に達しました | ワークスペースには、既定のインジェスト ボリューム レートのしきい値である 500 MB (圧縮) が適用されており、これは約 **6 GB/分** (非圧縮) に相当します。実際のサイズは、ログの長さとその圧縮率に左右され、データの種類によって異なることがあります。 このしきい値は、[診断設定](diagnostic-settings.md)、[Data Collector API](data-collector-api.md)、エージェントのどれを使用して Azure リソースから送信されたかを問わず、すべてのインジェスト データに適用されます。 ワークスペースに構成されているしきい値の 80% を超えるボリューム レートでワークスペースにデータを送信すると、しきい値を超え続けている間、6 時間ごとにワークスペースの *Operation* テーブルにイベントが送信されます。 インジェスト ボリューム レートがしきい値を超えると、一部のデータが削除され、しきい値を超え続けている間、6 時間ごとにワークスペースの *Operation* テーブルにイベントが送信されます。 インジェスト ボリューム レートがしきい値を超え続けている場合、または間もなくそれに達すると予測される場合は、サポート リクエストを開き、ワークスペースでのしきい値の引き上げを依頼できます。 ワークスペースでのそのようなイベントについて通知を受けるには、ゼロより大きい結果数、5 分間の評価期間、5 分間の頻度に基づくアラート ロジックを使った次のクエリを使用して、[ログ アラート ルール](alerts-log.md)を作成します。 インジェスト ボリューム レートがしきい値の 80% に到達した場合: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"`。 インジェスト ボリューム レートがしきい値に到達した場合: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"`。 |
 |レガシの無料価格レベルの 1 日の制限に到達している |収集が自動的に再開される次の日まで待つか、または有料の価格レベルに変更します。|
 |次のために、Azure サブスクリプションが中断された状態にある<br> 無料試用版が終了した<br> Azure パスの期限が切れた<br> 1 月の使用制限に達した (たとえば、MSDN または Visual Studio サブスクリプションで)|有料のサブスクリプションに変換する<br> 制限を削除するか、または制限がリセットされるまで待つ|
 

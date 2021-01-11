@@ -1,16 +1,16 @@
 ---
 title: Azure Arc 対応サーバー (プレビュー) の概要
-description: Azure Arc 対応サーバー (プレビュー) を使用して、Azure の外部でホストされているマシンを Azure リソースと同じように管理する方法について説明します。
+description: Azure Arc 対応サーバー (プレビュー) を使用して、Azure の外部でホストされているサーバーを Azure リソースと同じように管理する方法について説明します。
 keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新管理, 変更追跡, インベントリ, Runbook, Python, グラフィカル, ハイブリッド
 ms.custom: references_regions
 ms.date: 08/06/2020
 ms.topic: overview
-ms.openlocfilehash: dfc4d8e046cef5af7c3eaf0d31ce2d6120dfc8f2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: c368307df911f5143541bb5337eb76a208416909
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211329"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89228089"
 ---
 # <a name="what-is-azure-arc-enabled-servers-preview"></a>Azure Arc 対応サーバー (プレビュー) とは
 
@@ -51,4 +51,4 @@ Connected Machine エージェントは、5 分間隔でハートビート メ�
 
 ## <a name="next-steps"></a>次のステップ
 
-複数のハイブリッド マシン間で Arc 対応サーバー (プレビュー) を評価または有効化する前に、[Connected Machine エージェントの概要](agent-overview.md)の記事を確認し、必要なもの、エージェントに関する技術的な詳細、デプロイ方法を把握してください。
+複数のハイブリッド マシン間で Arc 対応サーバー (プレビュー) を評価または有効化する前に、[Connected Machine エージェントの概要](agent-overview.md)を確認し、要件、エージェントに関する技術的な詳細、デプロイ方法を把握してください。

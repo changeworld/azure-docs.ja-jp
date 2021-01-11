@@ -8,30 +8,30 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 702486a0728a7394d8d8febffc11b11bc113a030
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 465543e639514753bc0a6762dbbeb888d490ccd2
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606752"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705046"
 ---
 # <a name="marketplace-rewards"></a>Marketplace 報酬
 
-Marketplace 報酬によって、認識アクティビティから始めて最初の顧客の獲得まで、成長の特定の段階でパートナーにサポートが提供されます。 コマーシャル マーケットプレースで成長するにつれて、顧客の変換と取引の成立に役立つように設計された新しいベネフィットを利用できるようになります。
+Marketplace 報酬によって、認識アクティビティから始めて最初の顧客の獲得まで、成長の特定の段階でパートナーにサポートが提供されます。 Microsoft コマーシャル マーケットプレースで成長するにつれて、顧客の変換と取引の成立に役立つように設計された新しいベネフィットを利用できるようになります。
 
 プログラムでは正のフィードバック ループが作成されます。成長の各段階でのベネフィットは、次の段階に進むのに役立ち、パートナーは、Microsoft の現場と協力し、商用マーケットプレースをプラットフォームとして利用することで Microsoft のチャネルを通して、Microsoft の顧客に対するビジネスを拡大できます。
 
-ベネフィットは、オファーが[リスト、試用版、トランザクション](../determine-your-listing-type.md#choose-a-call-to-action)のいずれであるかによって異なります。
+ベネフィットは、オファーが[リスト、試用版、トランザクション](../determine-your-listing-type.md#choose-a-listing-option)のいずれであるかによって異なります。
 
 パートナーがオファーを発行すると、資格に基づいて、報酬チームのメンバーから連絡があります。
 
-トランザクション パートナーの場合は、マーケットプレース プラットフォームを通じて請求売上が拡大すると、レベルごとにさらに多くのベネフィットを得られます。
+トランザクション パートナーの場合は、コマーシャル マーケットプレース プラットフォームを通じて請求売上が拡大すると、レベルごとにさらに多くのベネフィットを得られます。
 
-オンライン ストアには最低で MPNID があれば発行することができます。したがって、MPN コンピテンシーの状態やパートナーの種類に関係なく、すべてのパートナーがこれらのベネフィットを利用できます。 各パートナーは、プラットフォームとしてのマーケットプレースを通じてビジネスを強化できます。
+オンライン ストアには最低で MPNID があれば発行することができます。したがって、MPN コンピテンシーの状態やパートナーの種類に関係なく、すべてのパートナーがこれらのベネフィットを利用できます。 各パートナーは、プラットフォームとしてのコマーシャル マーケットプレースを通じてビジネスを強化できます。
 
 パートナーは、使用可能なリソースの理解およびベスト プラクティスの実装についてサポートを受けることができます。また、[パートナー自身で確認する](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)こともできます。
 
-Marketplace Rewards プログラムの資格については、[こちら](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)を参照してください。
+Marketplace Rewards プログラムの資格を確認するには、パートナー センターで [Marketplace Rewards](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) ページをご覧ください。
 
 始める手順は簡単です。
 

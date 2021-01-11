@@ -11,16 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9528efb0ce7dd9df57db21ccdcf19e54a969d2e4
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 00808c25ac84da852cce6169fb210767ee2b56cf
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654839"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265883"
 ---
-# <a name="get-credentials-to-access-media-services-api"></a>Media Services API にアクセスするための資格情報を取得する  
+# <a name="get-credentials-to-access-media-services-api"></a>Media Services API にアクセスするための資格情報を取得する
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure AD 認証を使用して Azure Media Services API にアクセスする場合、次の 2 つの認証オプションがあります。
 

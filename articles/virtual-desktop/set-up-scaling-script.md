@@ -17,7 +17,7 @@ ms.locfileid: "88009445"
 
 仮想マシン (VM) をスケーリングすると、Windows Virtual Desktop の総デプロイ コストを削減できます。 これは、ピーク時以外の使用時間帯にセッション ホスト VM をシャットダウンして割り当て解除し、ピーク時間帯に再びオンにして再割り当てすることを意味します。
 
-この記事では、Azure Automation アカウントで構築されたスケーリング ツールと、Windows Virtual Desktop 環境でセッション ホスト VM を自動的にスケーリングする Azure ロジック アプリについて説明します。 スケーリング ツールの使用方法を確認するには、「[前提条件](#prerequisites)」に進んでください。
+この記事では、Azure Automation アカウントで構築されたスケーリング ツールと、Windows Virtual Desktop 環境でセッション ホスト VM を自動的にスケーリングする Azure Logic Apps について説明します。 スケーリング ツールの使用方法を確認するには、「[前提条件](#prerequisites)」に進んでください。
 
 ## <a name="report-issues"></a>レポートに関する問題
 
@@ -33,7 +33,7 @@ ms.locfileid: "88009445"
 - CPU コアあたりのセッション数に基づいて VM をスケールアウトします。
 - ピーク時以外の時間帯に VM をスケールインして、最低限の数のセッション ホスト VM だけを実行状態のままにします。
 
-スケーリング ツールは、Azure Automation アカウント、PowerShell Runbook、Webhook、Azure Logic Appsを組み合わせて使用することで機能します。 ツールが実行されると、Azure Logic Appsによって Webhook が呼び出されて Azure Automation Runbook が起動します。 その後、Runbook によってジョブが作成されます。
+スケーリング ツールは、Azure Automation アカウント、PowerShell Runbook、Webhook、Azure Logic Apps を組み合わせて使用することで機能します。 ツールが実行されると、Azure Logic Apps によって Webhook が呼び出されて Azure Automation Runbook が起動します。 その後、Runbook によってジョブが作成されます。
 
 ピーク時の使用時間帯は、このジョブによって現在のセッション数と現在実行中のセッション ホストの VM 容量が、ホスト プールごとにチェックされます。 この情報を使用して、実行中のセッション ホスト VM が既存のセッションをサポートできるかどうかが、**CreateOrUpdateAzLogicApp.ps1** ファイルに定義された *SessionThresholdPerCPU* パラメーターに基づいて計算されます。 セッション ホスト VM が既存のセッションをサポートできない場合は、このジョブによってホスト プール内の追加のセッション ホスト VM が起動されます。
 
@@ -54,7 +54,7 @@ ms.locfileid: "88009445"
 ただし、このツールには次の制限事項もあります。
 
 - このソリューションは、プールされたマルチセッションのセッション ホスト VM にのみ適用されます。
-- このソリューションでは任意のリージョンの VM が管理されますが、Azure Automation アカウントおよび Azure Logic Appsと同じサブスクリプションでのみ使用できます。
+- このソリューションでは任意のリージョンの VM が管理されますが、Azure Automation アカウントおよび Azure Logic Apps と同じサブスクリプションでのみ使用できます。
 - Runbook 内のジョブの最長実行時間は、3 時間です。 ホスト プール内の VM の起動または停止に時間がかかる場合、ジョブは失敗します。 詳細については、「[共有リソース](../automation/automation-runbook-execution.md#fair-share)」を参照してください。
 
 >[!NOTE]
@@ -119,9 +119,9 @@ ms.locfileid: "88009445"
     .\CreateOrUpdateAzAutoAccount.ps1 @Params
     ```
 
-5. コマンドレットの出力には、Webhook の URI が含まれています。 Azure Logic Appsの実行スケジュールを設定するときにパラメーターとして使用するため、必ずこの URI を記録しておいてください。
+5. コマンドレットの出力には、Webhook の URI が含まれています。 Azure Logic Apps の実行スケジュールを設定するときにパラメーターとして使用するため、必ずこの URI を記録しておいてください。
 
-6. Log Analytics に **WorkspaceName** パラメーターを指定した場合、コマンドレットの出力には、Log Analytics ワークスペース ID とその主キーも含まれます。 後で Azure Logic Appsの実行スケジュールを設定するときにパラメーターとしてまた使用する必要があるため、必ずこの URI を覚えておいてください。
+6. Log Analytics に **WorkspaceName** パラメーターを指定した場合、コマンドレットの出力には、Log Analytics ワークスペース ID とその主キーも含まれます。 後で Azure Logic Apps の実行スケジュールを設定するときにパラメーターとしてまた使用する必要があるため、必ずこの URI を覚えておいてください。
 
 7. Azure Automation アカウントの設定が完了したら、Azure サブスクリプションにサインインし、次の図に示すように、指定のリソースグループに Azure Automation アカウントと関連する Runbook が表示されていることを確認します。
 
@@ -152,9 +152,9 @@ Azure Automation アカウントで実行アカウントを作成するには、
 
 6. 作成プロセスが完了すると、指定の Azure Automation アカウントに **AzureRunAsConnection** という名前の資産が作成されます。 **[Azure 実行アカウント]** を選択します。 この接続資産には、アプリケーション ID、テナント ID、サブスクリプション ID、証明書の拇印が格納されます。 **[接続]** ページでも同じ情報を確認できます。 このページに移動するには、ウィンドウの左側のペインで、 **[共有リソース]** セクションの **[接続]** を選択し、**AzureRunAsConnection** という接続資産をクリックします。
 
-## <a name="create-the-azure-logic-app-and-execution-schedule"></a>Azure Logic Appsと実行スケジュールを作成する
+## <a name="create-the-azure-logic-app-and-execution-schedule"></aAzure Logic Apps と実行スケジュールを作成する
 
-最後に、Azure Logic Appsを作成し、新しいスケーリング ツールの実行スケジュールを設定する必要があります。 まず、PowerShell セッション内で使用する [Desktop Virtualization PowerShell モジュール](powershell-module.md)をダウンロードしてインポートします (まだ行っていない場合)。
+最後に、Azure Logic Apps を作成し、新しいスケーリング ツールの実行スケジュールを設定する必要があります。 まず、PowerShell セッション内で使用する [Desktop Virtualization PowerShell モジュール](powershell-module.md)をダウンロードしてインポートします (まだ行っていない場合)。
 
 1. Windows PowerShell を開きます。
 
@@ -164,7 +164,7 @@ Azure Automation アカウントで実行アカウントを作成するには、
     Login-AzAccount
     ```
 
-3. 次のコマンドレットを実行して、Azure Logic Appsを作成するためのスクリプトをダウンロードします。
+3. 次のコマンドレットを実行して、Azure Logic Apps を作成するためのスクリプトをダウンロードします。
 
     ```powershell
     New-Item -ItemType Directory -Path "C:\Temp" -Force
@@ -174,7 +174,7 @@ Azure Automation アカウントで実行アカウントを作成するには、
     Invoke-WebRequest -Uri $Uri -OutFile ".\CreateOrUpdateAzLogicApp.ps1"
     ```
 
-4. 次の PowerShell スクリプトを実行して、ホスト プール用の Azure Logic Appsと実行スケジュールを作成します。
+4. 次の PowerShell スクリプトを実行して、ホスト プール用の Azure Logic Apps と実行スケジュールを作成します。
 
     >[!NOTE]
     >このスクリプトは、自動スケーリングするホスト プールごとに実行する必要がありますが、必要な Azure Automation アカウントは 1 つだけです。
@@ -234,12 +234,12 @@ Azure Automation アカウントで実行アカウントを作成するには、
     .\CreateOrUpdateAzLogicApp.ps1 @Params
     ```
 
-    スクリプトを実行すると、次の図に示すように、Azure Logic Appsがリソース グループに表示されます。
+    スクリプトを実行すると、次の図に示すように、Azure Logic Apps がリソース グループに表示されます。
 
     >[!div class="mx-imgBorder"]
     >![Azure Logic Appsの例を表す概要ページの画像。](media/logic-app.png)
 
-    繰り返し間隔やタイム ゾーンを変更するなど、実行スケジュールに変更を加えるには、Azure Logic Appsの自動スケーリングのスケジューラにアクセスし、 **[編集]** を選択して Azure Logic Apps デザイナーに移動します。
+    繰り返し間隔やタイム ゾーンを変更するなど、実行スケジュールに変更を加えるには、Azure Logic Apps の自動スケーリングのスケジューラにアクセスし、 **[編集]** を選択して Azure Logic Apps デザイナーに移動します。
 
     >[!div class="mx-imgBorder"]
     >![Azure Logic Apps デザイナーの画像。 ユーザーが繰り返し時間と Webhook ファイルを編集するための [繰り返し] および [Webhook] メニューが開いています。](media/logic-apps-designer.png)

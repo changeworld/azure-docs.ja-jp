@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 9130a3248e881c9d4e2c9bfe9017f43198d50f51
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 01d962db45a58781ca5f2ba494de16ad420b0807
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590168"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921071"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure Digital Twins の既知の問題
 
@@ -51,7 +51,9 @@ Cloud Shell のコマンドが断続的に失敗して、エラー "400 Client E
 
 ## <a name="issue-with-interactive-browser-authentication"></a>対話型ブラウザーの認証に関する問題
 
-**[Azure.Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) ライブラリ**の最新バージョン (バージョン **1.2.0**) を使用して Azure Digital Twins アプリケーションで認証コードを記述すると、[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) メソッドで問題が発生することがあります。
+**[Azure.Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) ライブラリ**のバージョン **1.2.0** を使用して Azure Digital Twins アプリケーションで認証コードを記述すると、[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) メソッドで問題が発生することがあります。
+
+これはライブラリの最新バージョンではありません。 最新バージョンは **1.2.2** です。
 
 影響を受けるメソッドは、次の記事で使用されています。 
 * [*チュートリアル:クライアント アプリをコーディングする*](tutorial-code.md)
@@ -62,16 +64,13 @@ Cloud Shell のコマンドが断続的に失敗して、エラー "400 Client E
 
 ### <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 
-解決するには、アプリケーションで Azure.Identity バージョン **1.1.1** を明示的に使用します。 このバージョンのライブラリを使用することで、ブラウザーが想定どおりに読み込まれ、認証されるはずです。
-
->[!NOTE]
-> バージョンを指定せずにライブラリを追加しても、最新の **1.2.0** が規定で使用されるため、これだけでは十分ではありません。 バージョン **1.1.1** を明示的に指定する必要があります。
+解決するには、Azure.Identity バージョン **1.2.2** を使用するようにアプリケーションを更新します。 このバージョンのライブラリを使用することで、ブラウザーが想定どおりに読み込まれ、認証されるはずです。
 
 ### <a name="possible-causes"></a>考えられる原因
 
-これは、Azure Digital Twins と Azure.Identity ライブラリの最新バージョンであるバージョン **1.2.0** との間の非互換性です。 
+これは、最新版 Azure.Identity ライブラリ (バージョン **1.2.0**) の未解決問題に関連しています。[*InteractiveBrowserCredential の使用時に認証に失敗します*](https://github.com/Azure/azure-sdk-for-net/issues/13940)。
 
-この問題は、アプリケーションでバージョン **1.2.0** を使用している場合や、バージョンを指定せずにライブラリをプロジェクトに追加した場合 (これによっても最新バージョンが規定で使用されます) に発生します。
+この問題は、Azure Digital Twins アプリケーションでバージョン **1.2.0** を使用している場合や、バージョンを指定せずにライブラリをプロジェクトに追加した場合 (これによっても最新バージョンが規定で使用されます) に発生します。
 
 ## <a name="next-steps"></a>次のステップ
 

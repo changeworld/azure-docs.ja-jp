@@ -73,9 +73,6 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 単一サーバー
@@ -120,6 +117,9 @@
               href: concepts-data-encryption-postgresql.md
             - name: インフラストラクチャの二重暗号化
               href: concepts-infrastructure-double-encryption.md
+            - name: Azure Policy によるセキュリティ制御
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: Azure セキュリティ ベンチマーク用のセキュリティ ベースライン
               href: security-baseline.md
         - name: ビジネス継続性
@@ -393,6 +393,9 @@
           href: reference-hyperscale-parameters.md
         - name: システム テーブル
           href: reference-hyperscale-metadata.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

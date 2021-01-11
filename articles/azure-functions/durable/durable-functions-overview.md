@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: adf58b667d17393fc905fbf31261530fce88d9f8
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: d1c4f62f19a36867ebc85a98b0cd38bbbf8ce757
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272350"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660684"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions とは
 
@@ -704,8 +704,9 @@ Durable Functions は Azure Functions と同じように課金されます。 �
 * [C# と Visual Studio 2019 を使用する場合](durable-functions-create-first-csharp.md)
 * [Visual Studio Code と JavaScript を使用する場合](quickstart-js-vscode.md)
 * [Visual Studio Code と Python を使用する場合](quickstart-python-vscode.md)
+* [Visual Studio Code と PowerShell を使用する場合](quickstart-powershell-vscode.md)
 
-どちらのクイック スタートでも、"hello world" という永続関数をローカルで作成してテストします。 その後、関数コードを Azure に発行します。 作成した関数は、他の関数の呼び出しを調整し、連結します。
+これらのクイックスタートでは、"hello world" という持続的関数をローカルで作成してテストします。 その後、関数コードを Azure に発行します。 作成した関数は、他の関数の呼び出しを調整し、連結します。
 
 ## <a name="learn-more"></a>詳細情報
 

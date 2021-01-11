@@ -6,12 +6,13 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 173633e16648bce262051947ec2bc9c1f61fbb9c
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1b9603e43541ec1a364e4653caeeafc751f7e4f0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606763"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012094"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>マネージド ID を使用して Azure Database for PostgreSQL に接続する
 

@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Microsoft Azure Recovery S
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 581141ea5ffaecf774d292f66a05da5e40c8dc54
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: b46303bdb7fc6c39aafd3046a4bcbc5e0ba75766
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263301"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893070"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup サービスを使用して Microsoft Azure Recovery Services (MARS) エージェントのバックアップを管理する
 
@@ -92,7 +92,7 @@ ms.locfileid: "88263301"
   - このオプションでは、今後、バックアップ ジョブによる保護がすべて停止されます。
   - 既存のすべての復旧ポイントは、引き続き Azure Backup サービスによって保持されます。  
   - 有効期限になっていない復旧ポイントのバックアップ データを復元することができます。
-  - 保護を再開する場合は、*バックアップ スケジュールを再有効化する*オプションを使用できます。 その後は、新しい保持ポリシーに基づいてデータが保持されます。
+  - 保護を再開する場合は、*バックアップ スケジュールを再有効化する*オプションを使用できます。 その後は、新しいアイテム保持ポリシーに基づいてデータが保持されます。
 - **保護を停止してバックアップ データを削除します**。
   - このオプションでは、今後、バックアップ ジョブによるデータの保護がすべて停止され、すべての復旧ポイントが削除されます。
   - ユーザーは、バックアップ データの削除に関するアラート メールを受信します。このメールには、"*Your data for this Backup item has been deleted. (このバックアップ項目のデータは削除されました。)This data will be temporarily available for 14 days, after which it will be permanently deleted (このデータは 14 日間一時的に使用できるようになり、その後、完全に削除されます)* " というメッセージと、"*Reprotect the Backup item within 14 days to recover your data. (データを復旧するには、14 日以内にバックアップ項目を再保護してください。)* という推奨される操作が記載されています。
@@ -154,7 +154,7 @@ ms.locfileid: "88263301"
 
 ## <a name="re-generate-passphrase"></a>パスフレーズを再生成する
 
-パスフレーズは、MARS エージェントを使用して Azure との間でオンプレミスまたはローカル マシンをバックアップまたは復元するときに、データを暗号化および復号化するために使用されます。 パスフレーズを紛失した場合または忘れた場合は、次の手順に従ってパスフレーズを再生成できます (マシンが Recovery Services Vault にまだ登録され、バックアップが構成されている場合)。
+パスフレーズは、MARS エージェントを使用して Azure との間でオンプレミスまたはローカル マシンをバックアップまたは復元するときに、データを暗号化および復号化するために使用されます。 パスフレーズを紛失した場合または忘れた場合は、次のステップに従ってパスフレーズを再生成できます (マシンが Recovery Services コンテナーにまだ登録され、バックアップが構成されている場合)。
 
 1. MARS エージェント コンソールで、 **[操作] ペイン** >  **[プロパティの変更]** に移動します。 次に、 **[暗号化] タブ**に移動します。<br>
 1. **[パスフレーズの変更]** チェックボックスをオンにします。<br>
@@ -163,7 +163,7 @@ ms.locfileid: "88263301"
 
     ![パスフレーズを生成します。](./media/backup-azure-manage-mars/passphrase.png)
 
-1. **[OK]** を選択して変更を適用します。  Azure portal 上で Recovery Services コンテナーの [[Security Feature]\(セキュリティ機能\)](./backup-azure-security-feature.md#enable-security-features) が有効な場合、[セキュリティ PIN] の入力を求められます。 PIN を受信するには、こちらの[記事](./backup-azure-security-feature.md#authentication-to-perform-critical-operations)に記載されている手順に従います。<br>
+1. **[OK]** を選択して変更を適用します。  Azure portal 上で Recovery Services コンテナーの [[セキュリティ機能]](./backup-azure-security-feature.md#enable-security-features) が有効な場合、[セキュリティ PIN] の入力を求められます。 PIN を受信するには、こちらの[記事](./backup-azure-security-feature.md#authentication-to-perform-critical-operations)に記載されている手順に従います。<br>
 1. ポータルからセキュリティ PIN を貼り付けて、 **[OK]** を選択して変更を適用します。<br>
 
     ![セキュリティ PIN の貼り付け](./media/backup-azure-manage-mars/passphrase2.png)

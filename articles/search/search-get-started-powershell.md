@@ -9,23 +9,24 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/17/2020
-ms.openlocfilehash: b74deaecd1a71fec14e31f0a6aca2fed34361d76
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f803532e7d08d0de21541cb5d1b52639b623bb90
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506007"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078301"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>クイック スタート:REST API を使用して PowerShell に Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
-> * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C#](search-create-index-dotnet.md)
+> * [PowerShell (REST)]()
+> * [C#](./search-get-started-dotnet.md)
 > * [Postman (REST)](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 > * [ポータル](search-get-started-portal.md)
 > 
 
-この記事では、PowerShell および [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して Azure Cognitive Search のインデックスを作成、読み込み、クエリを実行するプロセスについて説明します。 この記事では、PowerShell コマンドを対話的に実行する方法について説明します。 または、同じ操作を実行する [PowerShell スクリプトをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart)こともできます。
+この記事では、PowerShell および [Azure Cognitive Search REST API](/rest/api/searchservice/) を使用して Azure Cognitive Search のインデックスを作成、読み込み、クエリを実行するプロセスについて説明します。 この記事では、PowerShell コマンドを対話的に実行する方法について説明します。 または、同じ操作を実行する [PowerShell スクリプトをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart)こともできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -33,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイックスタートでは、次のサービスとツールが必要です。 
 
-+ [PowerShell 5.1 以降](https://github.com/PowerShell/PowerShell) (シーケンシャルおよび対話型の手順で [Invoke-restmethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) を使用します)。
++ [PowerShell 5.1 以降](https://github.com/PowerShell/PowerShell) (シーケンシャルおよび対話型の手順で [Invoke-restmethod](/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) を使用します)。
 
 + [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
 
@@ -85,7 +86,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 ## <a name="1---create-an-index"></a>1 - インデックスの作成
 
-ポータルを使用している場合を除き、データを読み込むには、サービスにインデックスが存在する必要があります。 この手順では、インデックスを定義して、それをサービスにプッシュします。 この手順では[インデックスの作成 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) を使用します。
+ポータルを使用している場合を除き、データを読み込むには、サービスにインデックスが存在する必要があります。 この手順では、インデックスを定義して、それをサービスにプッシュします。 この手順では[インデックスの作成 REST API](/rest/api/searchservice/create-index) を使用します。
 
 インデックスの必要な要素には、名前とフィールド コレクションが含まれます。 フィールド コレクションは*ドキュメント*の構造を定義します。 各フィールドには、名前、型、およびその使用方法を決定する属性 (たとえば、フルテキスト検索可能、フィルター可能、または検索結果で取得可能) があります。 インデックス内には、`Edm.String` 型のフィールドのいずれかをドキュメント ID の*キー*として指定する必要があります。
 
@@ -179,7 +180,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 ## <a name="2---load-documents"></a>2 - ドキュメントを読み込む
 
-ドキュメントをプッシュするには、インデックスの URL エンドポイントに対して HTTP POST 要求を使用します。 このタスクの REST API は、[ドキュメントの追加、更新、または削除](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)です。
+ドキュメントをプッシュするには、インデックスの URL エンドポイントに対して HTTP POST 要求を使用します。 このタスクの REST API は、[ドキュメントの追加、更新、または削除](/rest/api/searchservice/addupdate-or-delete-documents)です。
 
 1. この例を PowerShell に貼り付けて、アップロードするドキュメントを含む **$body** オブジェクトを作成します。 
 
@@ -281,7 +282,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
     ```
-    結果は次の例のようになります。 [状態コード 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes) が表示されます。
+    結果は次の例のようになります。 [状態コード 201](/rest/api/searchservice/HTTP-status-codes) が表示されます。
 
     ```
     {
@@ -317,7 +318,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 ## <a name="3---search-an-index"></a>3 - インデックスの検索
 
-この手順では、[Search Documents API](https://docs.microsoft.com/rest/api/searchservice/search-documents) を使用してインデックスのクエリを実行する方法を示します。
+この手順では、[Search Documents API](/rest/api/searchservice/search-documents) を使用してインデックスのクエリを実行する方法を示します。
 
 $url の検索では、必ず単一引用符を使用してください。 クエリ文字列に **$** 文字が含まれているときに、文字列全体を単一引用符で囲むと、それらをエスケープする必要がなくなります。
 

@@ -86,10 +86,10 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 > zip ファイルを外部ソースからダウンロードして抽出すると、実行可能なコンテンツ (スクリプトと DLL) が Windows によってブロックされる場合があります。 スクリプトを展開する前に、手順に従って .zip ファイルのブロックを解除してください。 ブロック解除により、スクリプトの実行が許可されます。
 
 1. [WingtipTicketsSaaS-DbPerTenant GitHub リポジトリ][github-wingtip-dpt]を参照します。
-1. **[複製またはダウンロード]** を選択します。
-1. **[Download ZIP]/(ZIP をダウンロード/)** を選択し、ファイルを保存します。
-1. **WingtipTicketsSaaS-DbPerTenant-master.zip** ファイルを右クリックし、 **[プロパティ]** を選択します。
-1. **[全般]** タブで **[ブロックの解除]**  >  **[適用]** と選択します。
+1. **[Clone or download]\(クローンまたはダウンロード\)** を選択します。
+1. **[Download ZIP]\(ZIP をダウンロード\)** を選択し、ファイルを保存します。
+1. **WingtipTicketsSaaS-DbPerTenant-master.zip** ファイルを右クリックし、 **[Properties]\(プロパティ\)** を選択します。
+1. **[General]\(全般\)** タブで **[Unblock]\(ブロックの解除\)**  >  **[Apply]\(適用\)** と選択します。
 1. **[OK]** を選択し、ファイルを展開します。
 
 スクリプトは、...\\WingtipTicketsSaaS-DbPerTenant-master\\Learning Modules フォルダーにあります。
@@ -131,7 +131,7 @@ Wingtip アプリケーションでは、 [*Azure Traffic Manager*](../../traff
     | URL の部分        | 説明       |
     | :-------------- | :---------------- |
     | events.wingtip-dpt | Wingtip アプリのイベントの部分。<br /><br /> *-dpt* によって、Wingtip Tickets の "*テナント単位データベース*" の実装が他の実装と区別されます。 たとえば、テナントごとの "*単一*" アプリ ( *-sa*) の実装や "*マルチテナント データベース*" ( *-mt*) の実装です。 |
-    | . *&lt;ユーザー&gt;* | この例では *af1*。 |
+    | . *&lt;user&gt;* | この例では *af1*。 |
     | .trafficmanager.net/ | Traffic Manager、ベース URL。 |
     | fabrikamjazzclub | Fabrikam Jazz Club という名前のテナントを識別します。 |
     | &nbsp; | &nbsp; |
@@ -242,7 +242,7 @@ Events Hub を更新すると、新しいテナントが一覧に表示されま
 
 *LoadGenerator.ps1* を数分間実行したら、十分な量のデータが生成されています。このデータを使って、一部の監視機能を見てみましょう。 これらの機能は、プールとデータベースに組み込まれています。
 
-**tenants1-dpt-&lt;ユーザー&gt;** サーバーを参照し、**Pool1** をクリックして、プールのリソース使用率を表示します。 次のグラフでは、ロード ジェネレーターを 1 時間実行しました。
+**tenants1-dpt-&lt;USER&gt;** サーバーを参照し、**Pool1** をクリックして、プールのリソース使用率を表示します。 次のグラフでは、ロード ジェネレーターを 1 時間実行しました。
 
    ![プールの監視](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 

@@ -4,12 +4,12 @@ description: Recovery Services コンテナーを Azure サブスクリプショ
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: fbbe914b3e567a1a136d735fc52965524bc17b67
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 0b06b12c2bb989e4c0fc4e04440fc5f452df2da3
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612573"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827122"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する
 
@@ -50,12 +50,12 @@ Recovery Services コンテナーのリソースの移動がサポートされ�
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Azure portal を使用して Recovery Services コンテナーを別のリソース グループに移動する
 
-Recovery Services コンテナーとその関連リソースを別のリソース グループに移動するには
+Recovery Services コンテナーとその関連リソースを別のリソース グループに移動するには:
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **Recovery Services コンテナー**の一覧を開き、移動するコンテナーの名前を選択します。 コンテナーのダッシュボードが開き、次の図のように表示されます。
 
-   ![Recover Service コンテナーを開く](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+   ![Recovery Services コンテナーを開く](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
    コンテナーの **[Essentials]** 情報が表示されない場合、ドロップダウン アイコンを選択します。 コンテナーの Essentials 情報が表示されるはずです。
 
@@ -84,7 +84,7 @@ Recovery Services コンテナーとその関連リソースを別のサブス�
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. Recovery Services コンテナーの一覧を開き、移動するコンテナーを選択します。 コンテナーのダッシュボードが開き、次の図のように表示されます。
 
-    ![Recover Service コンテナーを開く](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+    ![Recovery Services コンテナーを開く](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
     コンテナーの **[Essentials]** 情報が表示されない場合、ドロップダウン アイコンを選択します。 コンテナーの Essentials 情報が表示されるはずです。
 

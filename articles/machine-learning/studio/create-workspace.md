@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 89c79f668da3ff924dbb7f27574260118003655f
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c283ef2f6eb28dca7ca5bc5e391ef30465c65dc0
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433234"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691277"
 ---
 # <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>Machine Learning Studio (classic) ワークスペースを作成して共有する
 
@@ -70,7 +70,7 @@ Studio (クラシック) ワークスペースの管理方法の詳細につい�
 
 
 ## <a name="share-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (クラシック) ワークスペースを共有する
-Machine Learning Studio (クラシック) ワークスペースを作成した後、ユーザーをワークスペースに招待し、ワークスペースとその実験、データセット、ノートブックなどのすべてに対するアクセスを共有できます。ユーザーは、次のいずれかの役割で追加することができます。
+Machine Learning Studio (classic) ワークスペースを作成した後、ユーザーをワークスペースに招待し、ワークスペースとその実験、データセットなどのすべてに対するアクセスを共有できます。ユーザーは、次のいずれかの役割で追加することができます。
 
 * **ユーザー** - ワークスペース内の実験やデータセットの作成、表示、変更、削除を行うことができます。
 * **所有者** - ワークスペース ユーザーの招待と削除、ユーザーが実行できる操作の登録を行うことができます。

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1822e41c8cfb3646ab43fde1b9a86569ce2c399
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 718a01abacf6f2c3cbc9523cc644aca02dc5ff49
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796762"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321193"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Azure Active Directory を使用して最近削除されたユーザーを復元または削除する
 ユーザーを削除した後、アカウントは 30 日間、中断状態のままになります。 その 30 日の期間中は、ユーザー アカウントをそのすべてのプロパティと共に復元することができます。 30 日の期間が経過すると、ユーザーは自動的に完全に削除されます。
@@ -88,6 +88,6 @@ Azure portal 内で Azure Active Directory (Azure AD) を使用して、復元�
 
 - [プロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)
 
-- [別の組織からゲスト ユーザーを追加する](../b2b/what-is-b2b.md)
+- [別の組織からゲスト ユーザーを追加する](../external-identities/what-is-b2b.md)
 
 他の使用可能なユーザー管理タスクの詳細については、[Azure AD のユーザー管理のドキュメント](../users-groups-roles/index.yml)を参照してください。

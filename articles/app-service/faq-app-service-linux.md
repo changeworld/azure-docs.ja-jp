@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e01954e0f2f311a7229a69cb18f881e0491b80d3
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c35647a46cd252ce045d10e8dfefcf78236ba74b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082819"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961722"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
@@ -122,7 +122,7 @@ const io = require('socket.io')(server,{
 
 **プライベート レジストリ オプションのイメージ名の形式は何ですか。**
 
-プライベート レジストリ の URL を含む完全なイメージ名を追加します (例: myacr.azurecr.io/dotnet:latest)。 カスタム ポートを使用するイメージ名は、[ポータル経由で入力することはできません](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 `docker-custom-image-name` を設定するには、[`az` コマンドライン ツール](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)を使用します。
+プライベート レジストリ の URL を含む完全なイメージ名を追加します (例: myacr.azurecr.io/dotnet:latest)。 カスタム ポートを使用するイメージ名は、[ポータル経由で入力することはできません](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 `docker-custom-image-name` を設定するには、[`az` コマンドライン ツール](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)を使用します。
 
 **カスタム コンテナー イメージで複数のポートを公開できますか。**
 
@@ -130,7 +130,7 @@ const io = require('socket.io')(server,{
 
 **自分が所有するストレージを持ち込むことはできますか?**
 
-はい、[ストレージの持ち込み](https://docs.microsoft.com/azure/app-service/configure-connect-to-azure-storage)はプレビュー段階です。
+はい、[ストレージの持ち込み](./configure-connect-to-azure-storage.md)はプレビュー段階です。
 
 **SCM サイトからカスタム コンテナーのファイル システムや実行中のプロセスを参照できないのはなぜですか。**
 

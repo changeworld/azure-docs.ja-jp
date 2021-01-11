@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: a13a8b2eef9fa1bd9c7281ac6b7c7dba40105428
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: d8a1b2192784c26ed17b31be262b22efbf935d84
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497326"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225606"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure Data Box 用の Azure セキュリティ ベースライン
 
@@ -216,11 +216,11 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
-**ガイダンス**: ご利用の Azure Data Box への管理アクセス権を持つユーザー アカウントのインベントリを維持します。 Azure portal でサブスクリプションの ID およびアクセス管理 (IAM) ペインを使用して、ロールベースのアクセス制御 (RBAC) を構成できます。 ロールは、Active Directory 内のユーザー、グループ、サービス プリンシパル、マネージド ID に適用されます。注文が最初に作成されたときに、注文にアクセスできるユーザーを制御できます。 さまざまな範囲の Azure ロールを設定して、Data Box の注文へのアクセスを制御します。 Azure ロールは、アクセスの種類 (読み取り/書き込み、読み取り専用、操作のサブセットへの読み取り/書き込み) を決定します。
+**ガイダンス**: ご利用の Azure Data Box への管理アクセス権を持つユーザー アカウントのインベントリを維持します。 サブスクリプションの Azure portal にある ID およびアクセス管理 (IAM) ウィンドウを使用して、Azure ロールベースのアクセス制御 (Azure RBAC) を構成できます。 ロールは、Active Directory 内のユーザー、グループ、サービス プリンシパル、マネージド ID に適用されます。注文が最初に作成されたときに、注文にアクセスできるユーザーを制御できます。 さまざまな範囲の Azure ロールを設定して、Data Box の注文へのアクセスを制御します。 Azure ロールは、アクセスの種類 (読み取り/書き込み、読み取り専用、操作のサブセットへの読み取り/書き込み) を決定します。
 
 * [カスタム ロールについて](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 
-* [ブック用に RBAC を構成する方法](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [ブック用に Azure RBAC を構成する方法](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
 
 * [注文に対するアクセス制御のセットアップ方法を理解する](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
 
@@ -230,7 +230,7 @@ Azure Data Box 用の Azure セキュリティ ベースラインには、ご自
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: 既定のパスワードを変更する (該当する場合)
 
-**ガイダンス**:Azure AD には既定のパスワードという概念がありません。 パスワードを必要とする他の Azure リソースでは、パスワードが強制的に作成されます。これには複雑な要件と、サービスによって異なるパスワードの最小文字数が適用されます。 既定のパスワードが使用される可能性があるサードパーティ製のアプリケーションとマーケットプレース サービスについては、お客様が責任を負うものとします。
+**ガイダンス**: Azure AD には既定のパスワードという概念がありません。 パスワードを必要とする他の Azure リソースでは、パスワードが強制的に作成されます。これには複雑な要件と、サービスによって異なるパスワードの最小文字数が適用されます。 既定のパスワードが使用される可能性があるサードパーティ製のアプリケーションとマーケットプレース サービスについては、お客様が責任を負うものとします。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -427,7 +427,7 @@ Azure へのデータのアップロード中に、Data Box のアプライア�
 
 **責任**: 適用なし
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
 **ガイダンス**: Data Box の注文を作成するサブスクリプションに対して、所有者または共同作成者アクセス権があることを確認します。 また、Data Box 閲覧者ロールと Data Box 共同作成者ロールをリソース レベルで定義することもできます。
 

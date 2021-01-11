@@ -7,6 +7,8 @@
     - name: Media Services の最新情報
       displayName: release notes
       href: release-notes.md
+    - name: Media Services のコンプライアンス
+      href: concept-compliance.md
 - name: クイックスタート
   items:
     - name: 環境を設定する
@@ -45,33 +47,36 @@
           href: encrypt-content-quickstart.md
 - name: チュートリアル
   items:
-    - name: リモート ファイルのエンコードとビデオのストリーム配信
+    - name: .NET
       items:
-        - name: REST の場合
-          displayName: 'encoding, job, transform'
-          href: stream-files-tutorial-with-rest.md
-        - name: CLI の場合
-          href: stream-files-cli-quickstart.md
-        - name: .NET の場合
+        - name: リモート ファイルのエンコードとストリーム配信 (.NET)
           href: stream-files-dotnet-quickstart.md
-        - name: Node.js の場合
+        - name: アップロードされたファイルのエンコードとストリーム配信 (.NET)
+          href: stream-files-tutorial-with-api.md
+        - name: .NET を使用したライブ ストリーム配信
+          href: stream-live-tutorial-with-api.md
+        - name: .NET を使用したビデオの分析
+          href: analyze-videos-tutorial-with-api.md
+        - name: AES-128 を使用した動的な暗号化
+          href: protect-with-aes128.md
+        - name: DRM を使用した動的な暗号化
+          href: protect-with-drm.md
+    - name: REST
+      items:
+        - name: リモート ファイルのエンコードとストリーム配信 (REST)
+          href: stream-files-tutorial-with-rest.md
+    - name: CLI
+      items:
+        - name: リモート ファイルのエンコードとストリーム配信 (CLI)
+          href: stream-files-cli-quickstart.md
+    - name: Node.js
+      items:
+        - name: リモート ファイルのエンコードとストリーム配信 (Node.js)
           href: stream-files-nodejs-quickstart.md
-    - name: Azure Log Analytics での AMS イベントの保存
-      href: tutorial-events-log-analytics.md
-    - name: アップロードされたファイルのエンコードとビデオのストリーム配信
-      displayName: 'encode, encoding, job, transform'
-      href: stream-files-tutorial-with-api.md
-    - name: ライブ ストリーム配信
-      href: stream-live-tutorial-with-api.md
-      displayName: 'Live Events, Live Outputs, ingest'
-    - name: ビデオの分析
-      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
-      href: analyze-videos-tutorial-with-api.md
-    - name: AES-128 を使用した動的な暗号化
-      href: protect-with-aes128.md
-    - name: DRM を使用した動的な暗号化
-      displayName: 'PlayReady, Widevine, FairPlay'
-      href: protect-with-drm.md
+    - name: Azure portal
+      items:
+        - name: Azure Log Analytics での AMS イベントの保存
+          href: tutorial-events-log-analytics.md
 - name: サンプル
   items:
     - name: Media Services v3 のサンプル

@@ -3,12 +3,12 @@ title: Microsoft Azure Backup Server の新機能
 description: Microsoft Azure Backup Server には、VM、ファイルとフォルダー、ワークロードなどを保護するための高度なバックアップ機能があります。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: a3ff38d9371ee9b95666ce638d0a6dc4b8822e20
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: fb47d2f14ca686e04cd2d9e3dec27d3ca4a30f5c
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190839"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893189"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure Backup Server (MABS) の新機能
 
@@ -37,7 +37,7 @@ MABS V3 UR1 では、ReFS ボリュームとそこにデプロイされたワー
 >[!NOTE]
 > ReFS ボリュームに格納されている Hyper-V VM のバックアップは、MABS V3 でサポートされます。
 
->[重要] 重複除去された ReFS ボリュームのバックアップに問題がいくつか見つかっています。 これらの修正に取り組んでおり、修正プログラムが利用可能になり次第、このセクションを更新します。 それまでは、重複除去された ReFS ボリュームのバックアップ サポートを MABSv3 UR1 から削除します。
+>[重要] 重複除去された ReFS ボリュームのバックアップに問題がいくつか見つかっています。 これらの修正に取り組んでおり、このセクションは、修正プログラムが利用可能になるとすぐに更新されます。 それまでは、重複除去された ReFS ボリュームのバックアップ サポートを MABSv3 UR1 から削除します。
 
 ### <a name="azure-vmware-solution-protection-support"></a>Azure VMware Solution の保護に対応
 

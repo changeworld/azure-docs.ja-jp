@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad6bbc1d3c20659441b8b062898526471f4d713a
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 15c0368b2d0bd85f6fee65ffa2c9d6776d07f162
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510234"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650617"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -111,10 +111,7 @@ Microsoft Azure のアーキテクチャと Microsoft Azure 仮想マシンの�
 ## <a name="storage-structure-of-a-vm-for-rdbms-deployments"></a><a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>RDBMS デプロイ用の VM のストレージ構造
 この章に進むにあたって、[デプロイ ガイド][deployment-guide]の[こちらの章][deployment-guide-3]に記載されている情報を読んで理解しておいてください。 この章を読む前に、別の VM シリーズについて把握し、Standard Storage と Premium Storage の違いについて理解しておく必要があります。 
 
-Azure VM 用の Azure Storage については、以下を参照してください。
-
-- [Azure Windows VM のマネージド ディスクの概要](../../windows/managed-disks-overview.md)。
-- [Azure Linux VM のマネージド ディスクの概要](../../linux/managed-disks-overview.md)。
+Azure VM 向け Azure Storage の詳細については、[Azure VM のマネージド ディスクの概要](../../managed-disks-overview.md)に関するセクションを参照してください。
 
 基本的な構成では、通常、オペレーティング システム、DBMS、および最終的に導入する SAP バイナリとデータベース ファイルとを分けたデプロイ構造にすることをお勧めしています。 Azure 仮想マシン上で実行する SAP システムには、オペレーティング システム、データベース管理システムの実行可能ファイル、および SAP の実行可能ファイルがインストールされたベース VHD またはディスクを使用することをお勧めします。 
 

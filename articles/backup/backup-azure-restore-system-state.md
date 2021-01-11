@@ -3,12 +3,12 @@ title: Windows Server へのシステム状態の復元
 description: Azure のバックアップから Windows Server のシステム状態を復元する手順について説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 727268b2dc9473a6bda79f023e8a75202d43afe4
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 9237d3d087da7f9e72813baa0056cd6b70f2c914
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263437"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892543"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Windows Server へのシステム状態の復元
 
@@ -154,7 +154,7 @@ Azure Recovery Services エージェントを使用してシステム状態を�
     ![システム状態ファイルの復元を開始する](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
 
     >[!NOTE]
-    >DSRM モードで復元を実行している場合は、 **[サーバーを自動的に再起動する]** オプションを選択しないでください。
+    >DSRM モードで復元を実行している場合は、 **[自動でサーバーを再起動する]** オプションを選択しないでください。
 
 1. 復元が正常に完了したら、通常モードでサーバーを再起動する必要があります。 コマンド プロンプトを開き、「`bcdedit /deletevalue safeboot`」と入力します。
 1. サーバーを再起動します。
@@ -181,7 +181,7 @@ Azure Recovery Services エージェントを使用してシステム状態を�
     * 上記の手順に従い Windows Server バックアップ ユーティリティを使用して、[復元されたシステム状態を Windows Server に適用します](#apply-restored-system-state-on-a-windows-server)。
 
         >[!NOTE]
-        >すべての Active Directory データを復元している場合 (機能するドメイン コントローラーがフォレストに残っていない) は、上記の手順 9. で必ず **[Active Directory ファイルの Authoritative Restore を実行する]** を選択してください。
+        >すべての Active Directory データを復元している (および、機能するドメイン コントローラーがフォレストに残っていない) 場合は、上記の手順 9. で **[Active Directory ファイルの Authoritative Restore を実行する]** を必ず選択してください。
 
     * [wbadmin](/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery) ユーティリティを使用して、コマンド ラインから復元を実行します。
 

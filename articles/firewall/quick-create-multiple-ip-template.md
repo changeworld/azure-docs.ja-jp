@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:複数のパブリック IP アドレスを使用した Azure Firewall の作成 - Resource Manager テンプレート
-description: Azure Resource Manager テンプレート (ARM テンプレート) を使用して、複数のパブリック IP アドレスを持つ Azure Firewall を作成する方法について説明します。
+description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、複数のパブリック IP アドレスを備えた Azure Firewall を作成する方法について説明します。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 04/14/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 41190cd52e29b187182589f93e9d494d05943cf8
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 282ce16c926c61008d0ebd70106b161425a15c9e
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705437"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079083"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>クイック スタート:複数のパブリック IP アドレスを使用した Azure Firewall の作成 - ARM テンプレート
 

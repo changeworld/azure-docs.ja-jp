@@ -9,16 +9,17 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/05/2020
-ms.openlocfilehash: a2a860a2ff96c74f9d19fe7abfd845bbae8023cd
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7901254463ef052f3c13b2c9fc49c31bd8ebc454
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922270"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020866"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>クイック スタート:Azure.Search.Documents クライアント ライブラリを使用して検索インデックスを作成する
 
-新しい [Azure.Search.Documents (バージョン 11) クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)を使用して、検索インデックスの作成、読み込み、照会を行う C# の .NET Core コンソール アプリケーションを作成します。
+新しい [Azure.Search.Documents (バージョン 11) クライアント ライブラリ](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)を使用して、検索インデックスの作成、読み込み、照会を行う C# の .NET Core コンソール アプリケーションを作成します。
 
 [ソース コードをダウンロード](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v11)して完成済みのプロジェクトで開始するか、この記事の手順に従いながらご自身でアプリケーションを作成してみましょう。
 
@@ -77,7 +78,7 @@ Visual Studio を起動し、.NET Core 上で実行する新しいコンソー�
    using Azure.Search.Documents.Models;
    ```
 
-1. 2 つのクライアントを作成します。[SearchIndexClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient) はインデックスを作成するクライアントで、[SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) は既存のインデックスを扱うクライアントです。 どちらも、作成と削除の権限に関する認証のためのサービス エンドポイントと管理 API キーが必要です。
+1. 2 つのクライアントを作成します。[SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) はインデックスを作成するクライアントで、[SearchClient](/dotnet/api/azure.search.documents.searchclient) は既存のインデックスを扱うクライアントです。 どちらも、作成と削除の権限に関する認証のためのサービス エンドポイントと管理 API キーが必要です。
 
    ```csharp
    static void Main(string[] args)
@@ -99,7 +100,7 @@ Visual Studio を起動し、.NET Core 上で実行する新しいコンソー�
 
 このクイックスタートでは、Hotels インデックスを作成します。そこにホテル データを読み込んでクエリを実行することになります。 この手順では、インデックス内のフィールドを定義します。 それぞれのフィールドの定義には、名前とデータ型、属性が存在し、それらによってフィールドの使い方が決まります。
 
-簡潔で読みやすくするために、この例では、Azure.Search.Documents ライブラリの同期メソッドを使用しています。 ただし運用環境のシナリオでは、アプリのスケーラビリティと応答性を確保するために非同期メソッドを使用する必要があります。 たとえば、[CreateIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) ではなく [CreateIndexAsync](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) を使用します。
+簡潔で読みやすくするために、この例では、Azure.Search.Documents ライブラリの同期メソッドを使用しています。 ただし運用環境のシナリオでは、アプリのスケーラビリティと応答性を確保するために非同期メソッドを使用する必要があります。 たとえば、[CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) ではなく [CreateIndexAsync](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) を使用します。
 
 1. 空のクラス定義を **Hotel.cs** プロジェクトに追加します。
 
@@ -131,7 +132,7 @@ Visual Studio を起動し、.NET Core 上で実行する新しいコンソー�
     }
     ```
 
-1. **Program.cs** で、フィールドと属性を指定します。 [SearchIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex) と [CreateIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) は、インデックスの作成に使用されます。
+1. **Program.cs** で、フィールドと属性を指定します。 [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) と [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) は、インデックスの作成に使用されます。
 
    ```csharp
     // Define an index schema using SearchIndex
@@ -154,9 +155,9 @@ Visual Studio を起動し、.NET Core 上で実行する新しいコンソー�
 
 フィールドは、その属性によって、アプリケーション内でどのように使用できるかが決まります。 たとえばフィルター式をサポートするフィールドには、それぞれ `IsFilterable` 属性が割り当てられている必要があります。
 
-以前のバージョンの .NET SDK では、検索可能な文字列フィールドに [IsSearchable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable) を指定する必要がありましたが、[SearchableField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchablefield) と [SimpleField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.simplefield) を使用できるので、フィールドを効率よく定義することができます。
+以前のバージョンの .NET SDK では、検索可能な文字列フィールドに [IsSearchable](/dotnet/api/microsoft.azure.search.models.field.issearchable) を指定する必要がありましたが、[SearchableField](/dotnet/api/azure.search.documents.indexes.models.searchablefield) と [SimpleField](/dotnet/api/azure.search.documents.indexes.models.simplefield) を使用できるので、フィールドを効率よく定義することができます。
 
-その他の属性は、以前のバージョンと同様、定義自体に必要となります。 たとえば、[IsFilterable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable)、[IsSortable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable)、[IsFacetable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) の各属性は、上のサンプルのように明示的に指定する必要があります。 
+その他の属性は、以前のバージョンと同様、定義自体に必要となります。 たとえば、[IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable)、[IsSortable](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable)、[IsFacetable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) の各属性は、上のサンプルのように明示的に指定する必要があります。 
 
 <a name="load-documents"></a>
 
@@ -166,7 +167,7 @@ Azure Cognitive Search は、サービスに格納されたコンテンツを対
 
 Azure Cognitive Search では、ドキュメントにはインデックス作成の入力とクエリからの出力があり、どちらもデータ構造です。 外部データ ソースから取得するドキュメント入力には、データベース内の行、Blob storage 内の BLOB、ディスク上の JSON ドキュメントがあります。 この例では、手短な方法として、5 つのホテルの JSON ドキュメントをコード自体に埋め込みます。 
 
-ドキュメントをアップロードするときは、[IndexDocumentsBatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) オブジェクトを使用する必要があります。 IndexDocumentsBatch には [Actions](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions) のコレクションが含まれていて、そのそれぞれには、ドキュメントが 1 つと、実行するアクション ([upload、merge、delete、mergeOrUpload](search-what-is-data-import.md#indexing-actions)) を Azure Cognitive Search に指示するプロパティが 1 つ含まれています。
+ドキュメントをアップロードするときは、[IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) オブジェクトを使用する必要があります。 IndexDocumentsBatch には [Actions](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions) のコレクションが含まれていて、そのそれぞれには、ドキュメントが 1 つと、実行するアクション ([upload、merge、delete、mergeOrUpload](search-what-is-data-import.md#indexing-actions)) を Azure Cognitive Search に指示するプロパティが 1 つ含まれています。
 
 1. **Program.cs** で、ドキュメントとインデックスの操作の配列を作成し、その配列を `ndexDocumentsBatch` に渡します。以下のドキュメントは、hotel クラスによって定義された hotels-quickstart-v11 インデックスに準拠しています。
 
@@ -185,7 +186,7 @@ Azure Cognitive Search では、ドキュメントにはインデックス作成
     qryclient.IndexDocuments(batch, idxoptions);
     ```
 
-    [IndexDocumentsBatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) オブジェクトを初期化したら、[SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) オブジェクトの [IndexDocuments](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.indexdocuments) を呼び出すことによって、それをインデックスに送信することができます。
+    [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) オブジェクトを初期化したら、[SearchClient](/dotnet/api/azure.search.documents.searchclient) オブジェクトの [IndexDocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments) を呼び出すことによって、それをインデックスに送信することができます。
 
 1. これはすべてのコマンドを連続して実行するコンソール アプリであるため、インデックス作成とクエリの間に 2 秒の待ち時間を追加します。
 
@@ -201,9 +202,9 @@ Azure Cognitive Search では、ドキュメントにはインデックス作成
 
 最初のドキュメントのインデックスが作成されるとすぐにクエリの結果を取得できますが、インデックスの実際のテストではすべてのドキュメントのインデックスが作成されるまで待つ必要があります。
 
-このセクションでは、クエリ ロジックと結果の 2 つの機能を追加します。 クエリには、[Search](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search) メソッドを使用します。 このメソッドでは、検索テキスト (クエリ文字列) のほか、[オプション](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions)を使用できます。
+このセクションでは、クエリ ロジックと結果の 2 つの機能を追加します。 クエリには、[Search](/dotnet/api/azure.search.documents.searchclient.search) メソッドを使用します。 このメソッドでは、検索テキスト (クエリ文字列) のほか、[オプション](/dotnet/api/azure.search.documents.searchoptions)を使用できます。
 
-その結果は、[SearchResults](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.searchresults-1) クラスによって表されます。
+その結果は、[SearchResults](/dotnet/api/azure.search.documents.models.searchresults-1) クラスによって表されます。
 
 1. **Program.cs** で、検索結果をコンソールに出力する WriteDocuments メソッドを作成します。
 
@@ -267,17 +268,17 @@ Azure Cognitive Search では、ドキュメントにはインデックス作成
 
 + フルテキスト検索では、インデックス内の検索可能フィールドに対して 1 つまたは複数の語句を照会します。 1 つ目のクエリはフルテキスト検索です。 フルテキスト検索では、結果の順位付けに使用される関連性スコアが生成されます。
 
-+ フィルターは、インデックス内の [IsFilterable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) フィールドに対して評価されるブール式です。 フィルター クエリでは、値は包含されるか除外されるかのどちらかです。 そのため、フィルター クエリに関しては関連性スコアはありません。 最後の 2 つのクエリは、フィルター検索を示しています。
++ フィルターは、インデックス内の [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) フィールドに対して評価されるブール式です。 フィルター クエリでは、値は包含されるか除外されるかのどちらかです。 そのため、フィルター クエリに関しては関連性スコアはありません。 最後の 2 つのクエリは、フィルター検索を示しています。
 
 フルテキスト検索とフィルターは、単独でまたは組み合わせて使用できます。
 
-検索とフィルターは、どちらも [SearchClient.Search](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search) メソッドを使用して実行できます。 検索クエリは `searchText` 文字列で渡すことができます。一方、フィルター式は [SearchOptions](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions) クラスの [Filter](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions.filter) プロパティで渡すことができます。 検索せずにフィルター処理を実行するには、[Search](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search) メソッドの `searchText` パラメーターに `"*"` を渡します。 フィルター処理を行わずに検索するには、`Filter` プロパティを未設定のままにするか、`SearchOptions` インスタンスを 1 つも渡さないようにします。
+検索とフィルターは、どちらも [SearchClient.Search](/dotnet/api/azure.search.documents.searchclient.search) メソッドを使用して実行できます。 検索クエリは `searchText` 文字列で渡すことができます。一方、フィルター式は [SearchOptions](/dotnet/api/azure.search.documents.searchoptions) クラスの [Filter](/dotnet/api/azure.search.documents.searchoptions.filter) プロパティで渡すことができます。 検索せずにフィルター処理を実行するには、[Search](/dotnet/api/azure.search.documents.searchclient.search) メソッドの `searchText` パラメーターに `"*"` を渡します。 フィルター処理を行わずに検索するには、`Filter` プロパティを未設定のままにするか、`SearchOptions` インスタンスを 1 つも渡さないようにします。
 
 ## <a name="run-the-program"></a>プログラムを実行する
 
 F5 キーを押して、アプリをリビルドし、プログラム全体を実行します。 
 
-出力には、[Console.WriteLIne](https://docs.microsoft.com/dotnet/api/system.console.writeline) からのメッセージに加え、クエリの情報と結果が表示されます。
+出力には、[Console.WriteLIne](/dotnet/api/system.console.writeline) からのメッセージに加え、クエリの情報と結果が表示されます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -297,4 +298,4 @@ F5 キーを押して、アプリをリビルドし、プログラム全体を�
 クラウドの支出を最適化して節約しますか?
 
 > [!div class="nextstepaction"]
-> [Cost Management を使用してコスト分析を開始する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Cost Management を使用してコスト分析を開始する](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

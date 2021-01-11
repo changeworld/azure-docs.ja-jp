@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: d37fae18cd2f3e3bfad647cc176253dc6bb101ab
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b37b327a535b716bbce845cd5883e58ec5379c48
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585776"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782721"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault を別のサブスクリプションに移動する
 
@@ -59,7 +59,9 @@ Azure portal の Azure Policy ページにアクセスし、現在のサブス�
 
 ## <a name="procedure"></a>手順
 
-### <a name="initial-steps-moving-key-vault"></a>最初の手順 (キー コンテナーの移動)
+もし 
+
+### <a name="moving-key-vault-to-a-new-subscription-within-the-same-tenant"></a>同じテナントの新しいサブスクリプションへの Key Vault の移動
 
 1. Azure Portal にログインする
 2. お使いのキー コンテナーに移動する
@@ -70,9 +72,9 @@ Azure portal の Azure Policy ページにアクセスし、現在のサブス�
 7. リソースの移動に関する警告を確認する
 8. [OK] を選択する
 
-### <a name="additional-steps-post-move"></a>追加の手順 (移動後)
+### <a name="additional-steps-if-you-moved-key-vault-to-a-subscription-in-a-new-tenant"></a>キー コンテナーを新しいテナントのサブスクリプションに移動した場合の追加の手順
 
-キー コンテナーを新しいサブスクリプションに移動したので、テナント ID を更新し、古いアクセス ポリシーを削除する必要があります。 ここでは、PowerShell と Azure CLI でこれらの手順を実行するためのチュートリアルを紹介します。
+お使いのキー コンテナーを新しいテナントのサブスクリプションに移動した場合、そのテナントの ID を手動で更新して、古いアクセス ポリシーを削除する必要があります。 ここでは、PowerShell と Azure CLI でこれらの手順を実行するためのチュートリアルを紹介します。 PowerShell を使用している場合は、お使いの現在選択されているスコープ以外のリソースを表示できるように、次に示す Clear-AzContext コマンドを実行する必要がある場合があります。 
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription

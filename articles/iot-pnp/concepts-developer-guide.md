@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ef221ea068f2786a4a84f20a29e80dd7176f06c6
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: f1860f9645a50789803d509a6a1ea98bc0ea1a9e
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337417"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950138"
 ---
 # <a name="iot-plug-and-play-preview-developer-guide"></a>IoT プラグ アンド プレイ プレビュー開発者ガイド
 
@@ -54,6 +54,16 @@ DeviceClient.CreateFromConnectionString(
 |Java|1.14.0|
 |Node|1.17.0|
 |Python|2.1.4|
+
+## <a name="dps-payload"></a>DPS ペイロード
+
+[Device Provisioning Service (DPS)](../iot-dps/about-iot-dps.md) を使用するデバイスには、次の JSON ペイロードを使用して、プロビジョニング プロセス中に使用される `modelId` を含めることができます。
+
+```json
+{
+    "modelId" : "dtmi:com:example:Thermostat;1"
+}
+```
 
 ## <a name="implement-telemetry-properties-and-commands"></a>テレメトリ、プロパティ、およびコマンドを実装する
 

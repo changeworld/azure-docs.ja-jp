@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: bd575eb5f646b749b431516670c64c764f4d4c9c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a78e1b9cc1d9ca8a815fdb586287983020232fd1
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828508"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782942"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -80,6 +80,10 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 ### <a name="how-do-i-retrieve-log-data"></a>ログ データはどのようにして取得しますか?
 すべてのデータは、Kusto クエリ言語 (KQL) で記述したログ クエリを使用して、Log Analytics ワークスペースから取得します。 独自のクエリを記述したり、特定のアプリケーションまたはサービス用のログ クエリが含まれるソリューションや分析情報を使用したりできます。 「[Azure Monitor のログ クエリの概要](log-query/log-query-overview.md)」をご覧ください。
+
+### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Log Analytics ワークスペースのデータは削除できますか?
+データは、ワークスペースの[保有期間](platform/manage-cost-storage.md#change-the-data-retention-period)に従って削除されます。 プライバシーやコンプライアンス上の理由から、特定のデータを削除することが可能です。 詳細については、「[プライベート データをエクスポートして削除する方法](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)」を参照してください。
+
 
 ### <a name="what-is-a-log-analytics-workspace"></a>Log Analytics ワークスペースとはどのようなものですか?
 Azure Monitor によって収集されたすべてのログ データは、Log Analytics ワークスペースに保存されます。 ワークスペースは、基本的に、さまざまなソースからログ データが収集されるコンテナーです。 すべての監視データに対して 1 つの Log Analytics ワークスペースを使用する場合や、複数のワークスペースが必要な場合があります。 「[Azure Monitor ログのデプロイの設計](platform/design-logs-deployment.md)」をご覧ください。

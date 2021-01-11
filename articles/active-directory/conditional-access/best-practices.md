@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d72a98a22fa85e87eb8560ad968415ca70f9a5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b5536c3c427e5b6225d81d649722d8af48c23091
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87275430"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948455"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスのベスト プラクティス
 
-[Azure Active Directory (Azure AD) の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)を使うと、承認されたユーザーによるクラウド アプリへのアクセスを制御できます。 この記事では、次の項目に関する情報を提供します。
+[Azure Active Directory (Azure AD) の条件付きアクセス](./overview.md)を使うと、承認されたユーザーによるクラウド アプリへのアクセスを制御できます。 この記事では、次の項目に関する情報を提供します。
 
 - 知っておくべきこと 
 - 条件付きアクセス ポリシーを構成するときに避けるべきこと 
 
-この記事は、「[Azure Active Directory の条件付きアクセスとは](../active-directory-conditional-access-azure-portal.md)」で説明する概念と用語について理解していることを前提としています。
+この記事は、「[Azure Active Directory の条件付きアクセスとは](./overview.md)」で説明する概念と用語について理解していることを前提としています。
 
 ## <a name="whats-required-to-make-a-policy-work"></a>ポリシーを機能させるために必要なこと
 
@@ -35,7 +35,7 @@ ms.locfileid: "87275430"
 
 ポリシーを機能させるには、以下を構成する必要があります。
 
-| 何を           | どのように                                  | 理由 |
+| 対象           | どのように                                  | 理由 |
 | :--            | :--                                  | :-- |
 | **クラウド アプリ** |1 つまたは複数のアプリを選択します。  | 条件付きアクセス ポリシーの目的は、許可されているユーザーがクラウド アプリにアクセスする方法を制御できるようにすることです。|
 | **ユーザーとグループ** | 選択したクラウド アプリにアクセスする権限が付与されたユーザーまたはグループを、少なくとも 1 つ選択します。 | ユーザーとグループが割り当てられていない条件付きアクセス ポリシーがトリガーされることはありません。 |
@@ -154,5 +154,5 @@ Office 365 のアプリは相互接続されているため、ポリシーを作
 
 次のことが知りたい場合:
 
-- 条件付きアクセス ポリシーの構成方法については、[Azure Active Directory の条件付きアクセスを使用した特定のアプリに対する MFA の要求](app-based-mfa.md)に関する記事をご覧ください。
+- 条件付きアクセス ポリシーの構成方法については、[Azure Active Directory の条件付きアクセスを使用した特定のアプリに対する MFA の要求](../authentication/tutorial-enable-azure-mfa.md)に関する記事をご覧ください。
 - 条件付きアクセス ポリシーの計画方法については、「[方法: Azure Active Directory の条件付きアクセスの展開を計画する](plan-conditional-access.md)」をご覧ください。

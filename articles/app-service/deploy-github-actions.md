@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python
-ms.openlocfilehash: 713f4228bc2ba968fc96668d4d5c568f33b7e786
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 264976fdfe514a8778c60fe9242ac555f268718d
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080285"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962572"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのデプロイ
 
@@ -28,15 +28,15 @@ Azure App Service のワークフロー ファイルには、次の 3 つのセ�
 
 |Section  |タスク  |
 |---------|---------|
-|**認証** | 1.サービス プリンシパルを定義します。 <br /> 2.GitHub シークレットを作成します。 |
-|**ビルド** | 1.環境を設定します。 <br /> 2.Web アプリを作成します。 |
-|**展開** | 1.Web アプリをデプロイします。 |
+|**Authentication** | 1.サービス プリンシパルを定義します。 <br /> 2.GitHub シークレットを作成します。 |
+|**Build** | 1.環境を設定します。 <br /> 2.Web アプリを作成します。 |
+|**Deploy** | 1.Web アプリをデプロイします。 |
 
 ## <a name="generate-deployment-credentials"></a>デプロイ資格情報を生成する
 
 # <a name="user-level-credentials"></a>[ユーザー レベルの資格情報](#tab/userlevel)
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/) の [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用すると、[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を作成できます。 このコマンドは、Azure portal の [Azure Cloud Shell](https://shell.azure.com/) を使用するか、 **[試してみる]** ボタンを選択して実行できます。
+[Azure CLI](/cli/azure/) の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用すると、[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を作成できます。 このコマンドは、Azure portal の [Azure Cloud Shell](https://shell.azure.com/) を使用するか、 **[使ってみる]** ボタンを選択して実行できます。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -71,7 +71,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="user-level-credentials"></a>[ユーザー レベルの資格情報](#tab/userlevel)
 
-[GitHub](https://github.com/) で自分のリポジトリを参照し、 **[設定]、[シークレット]、[Add a new secret]\(新しいシークレットの追加\)** の順に選択します。
+[GitHub](https://github.com/) でご自分のリポジトリを参照し、 **Settings > Secrets > Add a new secret\(新しいシークレットの追加\)**  を選択します。
 
 [ユーザー レベルの資格情報](#generate-deployment-credentials)を使用するには、Azure CLI コマンドからの JSON 出力全体をシークレットの値フィールドに貼り付けます。 シークレットに `AZURE_CREDENTIALS` などの名前を付けます。
 
@@ -85,7 +85,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="app-level-credentials"></a>[アプリ レベルの資格情報](#tab/applevel)
 
-[GitHub](https://github.com/) で自分のリポジトリを参照し、 **[設定]、[シークレット]、[Add a new secret]\(新しいシークレットの追加\)** の順に選択します。
+[GitHub](https://github.com/) で自分のリポジトリを参照し、 **Settings > Secrets > Add a new secret\(新しいシークレットの追加\)** の順に選択します。
 
 [アプリ レベルの資格情報](#generate-deployment-credentials)を使用するには、ダウンロードした発行プロファイルのファイルの内容をシークレットの値フィールドに貼り付けます。 シークレットに `azureWebAppPublishProfile` などの名前を付けます。
 

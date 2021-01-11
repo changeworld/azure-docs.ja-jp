@@ -4,12 +4,12 @@ description: プライベート エンドポイントを使用して、Azure Bat
 ms.topic: how-to
 ms.date: 08/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: fac9523dc2ecabaec5d1c108e0ddd7536f01f077
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 0fd16e4e11d0b3f08a7ba0e2f425785e3cce7927
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004239"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814112"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Azure Batch アカウントでプライベート エンドポイントを使用する
 
@@ -19,7 +19,8 @@ ms.locfileid: "88004239"
 
 Private Link を使用すると、ユーザーは、仮想ネットワーク内から、またはピアリングされた任意の仮想ネットワークから、Azure Batch アカウントにアクセスできます。 Private Link にマップされたリソースは、プライベート ピアリングを使用して、VPN または [Azure ExpressRoute](../expressroute/expressroute-introduction.md) 経由でオンプレミスからアクセスすることもできます。 [自動または手動の承認方法](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)により、Private Link を使用して構成された Azure Batch アカウントに接続できます。
 
-Azure Batch でのプライベート接続のサポートは現在、次の Azure リージョンでご利用いただけます。米国中西部、米国西部 2、米国東部、米国中南部、US Gov バージニア、US Gov アリゾナ、東アジア、フランス、英国南部。
+> [!IMPORTANT]
+> Azure Batch でのプライベート接続のサポートは現在、次の Azure リージョンでご利用いただけます。米国中部、米国中北部、米国中南部、米国中西部、米国東部、米国東部 2、米国西部、米国西部 2、東アジア、フランス中部、英国南部、北ヨーロッパ、西ヨーロッパ、東日本、西日本、オーストラリア東部、US Gov および US DoD のすべてのリージョン。
 
 この記事では、プライベート Batch アカウントを作成し、プライベート エンドポイントを使用してそれにアクセスする手順について説明します。
 
@@ -41,7 +42,7 @@ Azure portal を使用してプライベート Batch アカウントを作成す
    - **プライベート DNS ゾーンと統合する**:  **[はい]** を選択します。 プライベート エンドポイントに非公開で接続するには、DNS レコードが必要です。 プライベート エンドポイントとプライベート DNS ゾーンを統合することをお勧めします。 また、独自の DNS サーバーを使用したり、仮想マシン上のホスト ファイルを使用して DNS レコードを作成したりすることもできます。
    - **プライベート DNS ゾーン**: privatelink.<region>.batch.azure.com を選択します。 プライベート DNS ゾーンは自動的に決定されます。 Azure portal を使用して変更することはできません。
 8. **[確認と作成]** を選択し、Azure で構成が検証されるまで待ちます。
-9. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。
+9. "**検証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。
 
 プライベート エンドポイントがプロビジョニングされたら、プライベート エンドポイントを使用して、同じ仮想ネットワーク内の VM から Batch アカウントにアクセスできます。 Azure portal から IP アドレスを表示するには、次のようにします。
 

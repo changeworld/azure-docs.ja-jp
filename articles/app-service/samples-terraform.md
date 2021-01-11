@@ -9,12 +9,12 @@ author: ericgre
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 8b15b3c4444a6f26734b133f169cea7074956ae7
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: f88ccd077c857826271484c9929b37f8c5d751fe
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042919"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962708"
 ---
 # <a name="terraform-samples-for-azure-app-service"></a>Azure App Service の Terraform サンプル
 
@@ -24,5 +24,5 @@ ms.locfileid: "88042919"
 |-|-|
 |**アプリの作成**||
 | [2 つのアプリを作成し、プライベート エンドポイントおよび VNet 統合と安全に接続する](./scripts/terraform-secure-backend-frontend.md )| 2 つの App Service アプリを作成して、これらをプライベート エンドポイントおよび VNet 統合と安全に接続します。 |
-| [App Service をプロビジョニングし、スロット スワップを使用してデプロイする](https://docs.microsoft.com/azure/developer/terraform/provision-infrastructure-using-azure-deployment-slots)| Azure デプロイ スロットを使用して App Service インフラストラクチャをプロビジョニングします。 |
+| [App Service をプロビジョニングし、スロット スワップを使用してデプロイする](/azure/developer/terraform/provision-infrastructure-using-azure-deployment-slots)| Azure デプロイ スロットを使用して App Service インフラストラクチャをプロビジョニングします。 |
 | | |

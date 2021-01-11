@@ -9,13 +9,15 @@
     - name: パブリック ロード バランサ―の作成 - ポータル
       href: quickstart-load-balancer-standard-public-portal.md
     - name: パブリック ロード バランサーの作成 - PowerShell
-      href: quickstart-create-standard-load-balancer-powershell.md
+      href: quickstart-load-balancer-standard-public-powershell.md
     - name: パブリック ロード バランサ―の作成 - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
     - name: パブリック ロード バランサ―の作成 - Resource Manager テンプレート
       href: quickstart-load-balancer-standard-public-template.md
     - name: 内部ロード バランサ―の作成 - Azure PowerShell
       href: quickstart-load-balancer-standard-internal-portal.md
+    - name: 内部ロード バランサ―の作成 - PowerShell
+      href: quickstart-load-balancer-standard-internal-powershell.md
     - name: 内部ロード バランサーの作成 - Azure CLI
       href: quickstart-load-balancer-standard-internal-cli.md
   expanded: true
@@ -45,8 +47,6 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: 新機能
-      href: whats-new.md
     - name: コンポーネント
       href: components.md
     - name: 概念

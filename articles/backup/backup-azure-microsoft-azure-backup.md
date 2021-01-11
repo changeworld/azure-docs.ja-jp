@@ -3,12 +3,12 @@ title: Azure Backup Server を使用してワークロードをバックアッ�
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用してワークロードを保護およびバックアップするように環境を準備する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 9ae8fd824144c70edeb1e084155e8cdff95cd8b9
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 553073cf70e6806077a4df98e237bbbe0d2bb21a
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612335"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892288"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 
@@ -62,7 +62,7 @@ Azure Backup Server を使用したワークロードの保護には、数多く
 Windows Server の重複除去を使用して DPM ストレージの重複を除去することができます。 Hyper-V VM にデプロイするときは、 [DPM と重複除去](/system-center/dpm/deduplicate-dpm-storage?view=sc-dpm-2019) が連携するしくみの詳細を確認してください。
 
 > [!NOTE]
-> Azure Backup Server は、単一目的の専用サーバーで動作するように設計されています。 Azure Backup Server を次の場所にインストールすることはできません。
+> Azure Backup Server は、単一目的の専用サーバーで動作するように設計されています。 Azure Backup Server は、次の場所にインストールすることはできません。
 >
 > * ドメイン コントローラーとして実行されているコンピューター
 > * アプリケーション サーバー ロールがインストールされているコンピューター
@@ -70,7 +70,7 @@ Windows Server の重複除去を使用して DPM ストレージの重複を除
 > * Exchange Server が実行されているコンピューター
 > * クラスターのノードであるコンピューター
 >
-> Azure Backup Server のインストールは、Windows Server Core または Microsoft Hyper-V サーバーではサポートされていません。
+> Azure Backup Server のインストールは、Windows Server Core または Microsoft Hyper-V Server ではサポートされていません。
 
 Azure Backup Server は、常にドメインに参加させる必要があります。 サーバーを別のドメインに移動する予定がある場合は、まず Azure Backup Server をインストールし、次にそのサーバーを新しいドメインに参加させます。 デプロイ後の、新しいドメインへの既存の Azure Backup Server マシンの移動は *サポートされていません*。
 
@@ -101,7 +101,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
    * リソース ボックスに「 **Recovery Services**」と入力します。
    * 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]** が表示されたら、それを選択します。
 
-     ![Create Recovery Services Vault step 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
+     ![Recovery Services コンテナー作成ステップ 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
      Recovery Services コンテナーの一覧が表示されます。
    * Recovery Services コンテナーの一覧で、コンテナーを選択します。
@@ -143,7 +143,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
     ![Download center 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
-    すべてのファイルをまとめてダウンロードするとサイズが 3 G を超えるため、10 Mbps のダウンロード リンクでは、ダウンロードが完了するまでに最大で 60 分かかることがあります。
+    すべてのファイルをまとめてダウンロードするとサイズが 3 GB を超えるため、10 MBps のダウンロード リンクでは、ダウンロードが完了するまでに最大で 60 分かかることがあります。
 
 ### <a name="extracting-the-software-package"></a>ソフトウェア パッケージの抽出
 
@@ -333,7 +333,7 @@ MABS をアップグレードするには、次の手順を使用します。
 
 > [!NOTE]
 >
-> MABS V2 は MABS V3 をインストールするための前提条件ではありません。 ただし、MABS V3 にアップグレードできるのは MABS V2 からのみです。
+> MABS V2 は、MABS V3 をインストールするための前提条件ではありません。 ただし、MABS V3 にアップグレードできるのは MABS V2 からのみです。
 
 次の手順を使用して MABS をアップグレードします。
 
@@ -343,7 +343,7 @@ MABS をアップグレードするには、次の手順を使用します。
 
    > [!NOTE]
    >
-   > SQL インスタンスのアップグレード中に終了しないでください。終了すると、SQL レポート インスタンスがアンインストールされるため、MABS を再アップグレードする試みが失敗します。
+   > SQL インスタンスのアップグレード中は終了しないでください。 終了すると、SQL レポート インスタンスがアンインストールされるため、MABS を再アップグレードする試みが失敗します。
 
    > [!IMPORTANT]
    >

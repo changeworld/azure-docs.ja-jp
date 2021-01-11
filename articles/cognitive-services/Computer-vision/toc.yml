@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Computer Vision とは
-      href: Home.md
+      href: overview.md
     - name: 新機能
       href: whats-new.md
 - name: クイックスタート
