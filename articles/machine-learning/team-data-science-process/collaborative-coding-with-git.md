@@ -19,7 +19,7 @@ ms.locfileid: "87090214"
 ---
 # <a name="collaborative-coding-with-git"></a>Git を使用した共同コーディング
 
-この記事では、データ サイエンス プロジェクトの共同コード開発フレームワークとして Git を使用する方法について説明します。 Azure Repos のコードを Azure Boards の[アジャイル開発](agile-development.md)作業項目にリンクする方法、コード レビューを実行する方法、および変更のプル要求を作成およびマージする方法について取り上げます。
+この記事では、データ サイエンス プロジェクトの共同コード開発フレームワークとして Git を使用する方法について説明します。 Azure Repos のコードを Azure Boards の[アジャイル開発](agile-development.md)作業項目にリンクする方法、コード レビューを実行する方法、および変更の pull request を作成およびマージする方法について取り上げます。
 
 ## <a name="link-a-work-item-to-an-azure-repos-branch"></a><a name='Linkaworkitemwithagitbranch-1'></a>Azure Repos ブランチに作業項目をリンクする 
 
@@ -72,25 +72,25 @@ git push origin script
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## <a name="create-a-pull-request"></a><a name='CreateapullrequestonVSTS-3'></a>プル要求を作成する
+## <a name="create-a-pull-request"></a><a name='CreateapullrequestonVSTS-3'></a>Pull request を作成する
 
-1 回以上のコミットおよびプッシュの実行後に、現在の作業ブランチをそのベース ブランチにマージする準備ができたら、Azure Repos で*プル要求*を作成して送信できます。 
+1 回以上のコミットおよびプッシュの実行後に、現在の作業ブランチをそのベース ブランチにマージする準備ができたら、Azure Repos で*pull request*を作成して送信できます。 
 
-Azure DevOps プロジェクトのメイン ページから、左のナビゲーションで **[Repos]**  >  **[プル要求]** をポイントします。 次に、 **[新しいプル要求]** ボタンまたは **[プル要求の作成]** リンクのいずれかを選択します。
+Azure DevOps プロジェクトのメイン ページから、左のナビゲーションで **[Repos]**  >  **[Pull request]** をポイントします。 次に、 **[新しい pull request]** ボタンまたは **[Pull request の作成]** リンクのいずれかを選択します。
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-必要に応じて、 **[新しいプル要求]** 画面で、変更をマージする Git リポジトリとブランチに移動します。 必要な情報を追加または変更します。 **[レビュー担当者]** で、レビュー担当者の名前を追加し、 **[作成]** を選択します。 
+必要に応じて、 **[新しい pull request]** 画面で、変更をマージする Git リポジトリとブランチに移動します。 必要な情報を追加または変更します。 **[レビュー担当者]** で、レビュー担当者の名前を追加し、 **[作成]** を選択します。 
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
 ## <a name="review-and-merge"></a><a name='ReviewandMerge-4'></a>レビューとマージ
 
-プル要求が作成されると、レビュー担当者は、プル要求のレビューを求める電子メール通知を受け取ります。 レビュー担当者は、変更が機能するかどうかをテストし、可能であれば要求者と一緒に変更を確認します。 レビュー担当者は、評価に基づいて、コメントの作成、変更の要求、プル要求の承認または拒否を行います。 
+pull request が作成されると、レビュー担当者は、pull request のレビューを求める電子メール通知を受け取ります。 レビュー担当者は、変更が機能するかどうかをテストし、可能であれば要求者と一緒に変更を確認します。 レビュー担当者は、評価に基づいて、コメントの作成、変更の要求、pull request の承認または拒否を行います。 
 
 ![8](./media/collaborative-coding-with-git/8-add_comments.png)
 
-レビュー担当者が変更を承認すると、マージ権限を持つ担当者が作業ブランチをそのベース ブランチにマージできます。 **[完了]** を選択し、 **[プル要求の完了]** ダイアログで **[マージの完了]** を選択します。 マージ後に、作業しているブランチを削除することを選択できます。 
+レビュー担当者が変更を承認すると、マージ権限を持つ担当者が作業ブランチをそのベース ブランチにマージできます。 **[完了]** を選択し、 **[Pull request の完了]** ダイアログで **[マージの完了]** を選択します。 マージ後に、作業しているブランチを削除することを選択できます。 
 
 ![10](./media/collaborative-coding-with-git/10-spring-complete-pullrequest.png)
 
