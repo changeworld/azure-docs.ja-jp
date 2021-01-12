@@ -1,15 +1,15 @@
 ---
 title: Azure での BareMetal インフラストラクチャ プレビューの概要
-description: Azure に BareMetal インフラストラクチャをデプロイする方法の概要。
+description: Azure の BareMetal インフラストラクチャの概要。
 ms.custom: references_regions
 ms.topic: conceptual
-ms.date: 12/31/2020
-ms.openlocfilehash: db974d9260344d1f6050235bb2a9fbaa0420659b
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 1/4/2021
+ms.openlocfilehash: eb4dc129719dc410f7101598e3d72e68f17809c1
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829083"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97860983"
 ---
 #  <a name="what-is-baremetal-infrastructure-preview-on-azure"></a>Azure 上の BareMetal インフラストラクチャ プレビューとは
 
@@ -25,7 +25,7 @@ BareMetal インフラストラクチャを使用すると、既存の投資と�
 - 米国中南部
 
 >[!NOTE]
->**Rev 4.2** は既存の Rev 4 アーキテクチャを使用した、最新のブランド変更された BareMetal インフラストラクチャです。  Rev 4 を使用すると、Azure 仮想マシン (VM) のホストにより近くなり、Azure VM と BareMetal インスタンス ユニット間のネットワーク待機時間を短縮することができます。 Azure portal を使用して BareMetal インスタンスにアクセスし、管理することができます。 
+>**Rev 4.2** は、既存の Rev 4 アーキテクチャを使用した、最新のブランド変更された BareMetal インフラストラクチャです。  Rev 4 では、Azure 仮想マシン (VM) ホストにより近接します。 これにより、Azure VM と Rev 4 のスタンプまたは行にデプロイされた BareMetal インスタンス ユニットの間のネットワーク待ち時間が大幅に改善されます。  Azure portal を使用して BareMetal インスタンスにアクセスし、管理することができます。 
 
 ## <a name="support"></a>サポート
 BareMetal インフラストラクチャは、ISO 27001、ISO 27017、SOC 1、SOC 2 に準拠しています。  また、次のライセンス持ち込み (BYOL) モデルも使用されます (OS、専用のワークロード、およびサードパーティー製のアプリケーション)。  
@@ -35,13 +35,13 @@ BareMetal インフラストラクチャは、ISO 27001、ISO 27017、SOC 1、SO
 - OS およびサードパーティ製ソフトウェアのライセンス、セキュリティ、およびサポート
 
 Microsoft の責任は次のとおりです。
-- 専用のワークロードに認定ハードウェアを提供する 
+- 専用のワークロードにハードウェアを提供する 
 - OS をプロビジョニングする
 
 :::image type="content" source="media/baremetal-support-model.png" alt-text="BareMetal インフラストラクチャ サポート モデル" border="false":::
 
 ## <a name="compute"></a>Compute
-BareMetal インフラストラクチャには、専用のワークロード用に認定された複数の SKU が用意されています。 使用できる SKU は、小型の 2 ソケット システムから 24 ソケット システムまでさまざまです。 専用のワークロードには、ワークロード固有の認定 SKU を使用します。
+BareMetal インフラストラクチャには、専用のワークロード用に複数の SKU が用意されています。 使用できる SKU は、小型の 2 ソケット システムから 24 ソケット システムまでさまざまです。 専用のワークロードには、ワークロード固有の SKU を使用します。
 
 BareMetal インスタンス スタンプ自体は次のコンポーネントを結合します。
 
@@ -72,10 +72,10 @@ BareMetal インスタンスのプロビジョニング時に、コンピュー�
    - SLES 15 SP1
 
 ## <a name="storage"></a>ストレージ
-特定の SKU の種類に基づく BareMetal インスタンスには、特定のワークロードの種類に基づいて事前に定義された NFS ストレージが付属しています。 BareMetal をプロビジョニングするときに、サポート リクエストを送信することで、見積もった成長率に基づいて追加のストレージをプロビジョニングすることができます。 すべてのストレージには、NFSv3 および NFSv4 をサポートするリビジョン 4.2 のオールフラッシュ ディスクが付属しています。 新しいリビジョン 4.5 NVMe SSD を使用できるようになる予定です。 ストレージのサイズ設定の詳細については、[BareMetal ワークロードの種類](../../../virtual-machines/workloads/sap/get-started.md)に関するセクションを参照してください。
+特定の SKU の種類に基づく BareMetal インスタンスには、特定のワークロードの種類に対応する事前定義された NFS ストレージが付属しています。 BareMetal をプロビジョニングするときに、サポート リクエストを送信することで、予測される成長率に基づいてより多くのストレージをプロビジョニングできます。 すべてのストレージには、NFSv3 および NFSv4 をサポートするリビジョン 4.2 のオールフラッシュ ディスクが付属しています。 新しいリビジョン 4.5 NVMe SSD を使用できるようになる予定です。 ストレージのサイズ設定の詳細については、[BareMetal ワークロードの種類](../../../virtual-machines/workloads/sap/get-started.md)に関するセクションを参照してください。
 
 >[!NOTE]
->BareMetal に使用されるストレージは、既定で暗号化を提供する FIPS 140-2 のセキュリティ要件を満たしています。 データは、セキュリティで保護された状態でディスクに格納されます。
+>BareMetal に使用されるストレージは、[Federal Information Processing Standard (FIPS) Publication 140-2](/microsoft-365/compliance/offering-fips-140-2) の要件を満たしており、既定で保存時の暗号化を提供します。 データは、セキュリティで保護された状態でディスクに格納されます。
 
 ## <a name="networking"></a>ネットワーク
 Azure ネットワーク サービスのアーキテクチャは、BareMetal インスタンスに専用のワークロードを正常にデプロイするための重要なコンポーネントです。 すべての IT システムが既に Azure に配置されているとは限りません。 Azure には、オンプレミスのソフトウェア デプロイで Azure を仮想データ センターのように取り扱うためのネットワーク テクノロジが用意されています。 BareMetal インスタンスに必要な Azure ネットワーク機能は次のとおりです。
@@ -91,10 +91,10 @@ BareMetal インスタンスは、Azure VNET サーバーの IP アドレス範�
 :::image type="content" source="media/baremetal-infrastructure-portal/baremetal-infrastructure-diagram.png" alt-text="Azure BareMetal インフラストラクチャの図" lightbox="media/baremetal-infrastructure-portal/baremetal-infrastructure-diagram.png" border="false":::
 
 上記のアーキテクチャは、次の 3 つのセクションに分かれています。
-- **左:** パートナーまたはローカル エッジ ルーター (Equinix など) を介して接続し、さまざまなアプリケーションを実行しているお客様のオンプレミス インフラストラクチャを示します。 詳細については、[接続プロバイダー: Azure ExpressRoute](../../../expressroute/expressroute-locations.md) に関する記事を参照してください。
-- **中央:** Azure エッジ ネットワークへの接続を提供する Azure サブスクリプションを使用してプロビジョニングされた [ExpressRoute](../../../expressroute/expressroute-introduction.md) を示します。
-- **右:** Azure IaaS を示します。この場合、VM を使用してアプリケーションをホストします。これは Azure 仮想ネットワーク内でプロビジョニングされます。
-- **下:** 短い待機時間の BareMetal 接続のために [ExpressRoute FastPath](../../../expressroute/about-fastpath.md) によって有効にされた ExpressRoute ゲートウェイの使用を示します。   
+- **左:** パートナーまたはローカルのエッジ ルーター (Equinix など) を介して接続し、さまざまなアプリケーションを実行しているお客様のオンプレミス インフラストラクチャを示します。 詳細については、[接続プロバイダー: Azure ExpressRoute](../../../expressroute/expressroute-locations.md) に関する記事を参照してください。
+- **中央:** Azure エッジ ネットワークへの接続を提供する、Azure サブスクリプションを使用してプロビジョニングされた [ExpressRoute](../../../expressroute/expressroute-introduction.md) を示します。
+- **右:** Azure IaaS を示します。この場合、VM を使用して、Azure 仮想ネットワーク内でプロビジョニングされるアプリケーションをホストします。
+- **下:** 低遅延の BareMetal 接続のために、[ExpressRoute FastPath](../../../expressroute/about-fastpath.md) を有効にした ExpressRoute ゲートウェイの使用を示します。   
    >[!TIP]
    >これをサポートするには、ExpressRoute ゲートウェイを UltraPerformance にする必要があります。  詳細については、「[ExpressRoute の仮想ネットワーク ゲートウェイについて](../../../expressroute/expressroute-about-virtual-network-gateways.md)」を参照してください。
 

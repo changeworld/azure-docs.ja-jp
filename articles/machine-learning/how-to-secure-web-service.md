@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 11/18/2020
+ms.date: 01/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 86cd5a5cbbb17dc3d3e4d56e4267be2718f6081d
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 14e4fda6ef36dd8fc57529046473d8afa916ef2c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830872"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97880972"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する
 
@@ -168,7 +168,7 @@ TLS/SSL 証明書には有効期限切れがあるため、更新する必要が
 
 ### <a name="update-a-microsoft-generated-certificate"></a>Microsoft が生成した証明書を更新する
 
-証明書が元は Microsoft によって (*leaf_domain_label* を使用してサービスを作成するときに) 生成されたものである場合、次のいずれかの例を使用して証明書を更新します。
+証明書は、(*leaf_domain_label* を使用してサービスを作成したときに) 元々 Microsoft によって生成されたものである場合、必要に応じて **自動的に更新** されます。 証明書を手動で更新する場合は、次のいずれかの例を使用して更新します。
 
 > [!IMPORTANT]
 > * 既存の証明書がまだ有効な場合は、`renew=True` (SDK) か `--ssl-renew` (CLI) を使用して、構成によってこれを強制的に更新します。 たとえば、既存の証明書があと 10 日間有効で、`renew=True` を使用しない場合、証明書は更新されない可能性があります。
