@@ -25,7 +25,7 @@ ms.locfileid: "93391995"
 
 ## <a name="whats-new"></a>新機能
 
-Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々のセクションに分割されました。 また、 *Azure SQL Database マネージド インスタンス* からマネージド インスタンスを参照する方法を *Azure SQL Managed Instance* へ更新しました。
+Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々のセクションに分割されました。 また、*Azure SQL Database マネージド インスタンス* からマネージド インスタンスを参照する方法を *Azure SQL Managed Instance* へ更新しました。
 
 これは、一部の特徴や機能が単一データベースとマネージド インスタンスの間で大きく異なるための処置です。個々の共有記事で Azure SQL Database と Azure SQL Managed Instance 間の複雑な差異を説明することはますます困難になっています。
 
@@ -150,19 +150,19 @@ GO
 BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzureBlobStorage');
 ```
 
-**回避策** : [Shared Access Signature を使用して、ストレージに対する認証を実行します](/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)。
+**回避策**:[Shared Access Signature を使用して、ストレージに対する認証を実行します](/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)。
 
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>サービス プリンシパルから Azure AD および AKV にアクセスできません
 
 場合によっては、Azure AD および Azure Key Vault (AKV) サービスへのアクセスに使用されるサービス プリンシパルに問題が存在することがあります。 そのため、この問題は SQL Managed Instance での Azure AD 認証および Transparent Database Encryption (TDE) の使用に影響します。 これは、断続的な接続の問題として発生する可能性があります。または、CREATE LOGIN/USER FROM EXTERNAL PROVIDER または EXECUTE AS LOGIN/USER などのステートメントを実行できない場合に発生する可能性があります。 新しい Azure SQL Managed Instance 上でカスタマー マネージド キーを使用して TDE を設定しても、状況によっては機能しないことがあります。
 
-**回避策** :更新コマンドを実行する前に、ご利用の SQL Managed Instance 上でこの問題が発生しないようにするには、または更新コマンドの実行後にこの問題が既に発生している場合は、Azure portal に移動し、SQL Managed Instance の [[Active Directory 管理者]](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal) ブレード にアクセスします。 "Azure Active Directory にアクセスするには、Managed Instance にサービス プリンシパルが必要です。 サービス プリンシパルを作成するには、ここをクリックします" というエラー メッセージが表示されるかどうかを確認します。 このエラーメッセージが表示された場合は、それをクリックし、このエラーが解決されるまで、示されるステップ バイ ステップの手順に従います。
+**回避策**:更新コマンドを実行する前に、ご利用の SQL Managed Instance 上でこの問題が発生しないようにするには、または更新コマンドの実行後にこの問題が既に発生している場合は、Azure portal に移動し、SQL Managed Instance の [[Active Directory 管理者]](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal) ブレード にアクセスします。 "Azure Active Directory にアクセスするには、Managed Instance にサービス プリンシパルが必要です。 サービス プリンシパルを作成するには、ここをクリックします" というエラー メッセージが表示されるかどうかを確認します。 このエラーメッセージが表示された場合は、それをクリックし、このエラーが解決されるまで、示されるステップ バイ ステップの手順に従います。
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>CHECKSUM を使用せずに手動バックアップを復元すると失敗することがある
 
 特定の状況で、CHECKSUM なしでマネージド インスタンス上に作成されたデータベースの手動バックアップが復元に失敗することがあります。 このような場合は、成功するまでバックアップの復元を再試行してください。
 
-**回避策** :CHECKSUM を有効にして、マネージド インスタンス上のデータベースの手動バックアップを実行します。
+**回避策**:CHECKSUM を有効にして、マネージド インスタンス上のデータベースの手動バックアップを実行します。
 
 ### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>既存のジョブを変更、無効化、または有効化するとエージェントが応答しなくなる
 
@@ -172,19 +172,19 @@ BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzur
 
 リソース グループ (RG) に SQL Managed Instance 共同作成者 Azure ロールが適用されている場合、SQL Managed Instance には適用されず、効果がありません。
 
-**回避策** :ユーザーの SQL Managed Instance 共同作成者ロールをサブスクリプション レベルで設定します。
+**回避策**:ユーザーの SQL Managed Instance 共同作成者ロールをサブスクリプション レベルで設定します。
 
 ### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>ポータルを使用したフェールオーバー グループに対する手動フェールオーバーの制限
 
 フェールオーバー グループが、異なる Azure サブスクリプションやリソース グループのインスタンスにまたがっている場合、フェールオーバー グループのプライマリ インスタンスから手動フェールオーバーを開始することはできません。
 
-**回避策** :Geo セカンダリ インスタンスからポータル経由でフェールオーバーを開始します。
+**回避策**:Geo セカンダリ インスタンスからポータル経由でフェールオーバーを開始します。
 
 ### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL エージェント ロールには、sysadmin 以外のログインに対する明示的な EXECUTE 権限が必要です
 
 sysadmin 以外のログインが [SQL Agent の固定データベース ロール](/sql/ssms/agent/sql-server-agent-fixed-database-roles)に追加されると、これらのログインを機能させるには、明示的な EXECUTE 権限を Master ストアド プロシージャに付与する必要があるという問題が存在します。 この問題が発生した場合は、エラー メッセージ "EXECUTE 権限がオブジェクト <object_name> で拒否されました (Microsoft SQL Server、エラー:229)" が表示されます。
 
-**回避策** :SQL Agent 固定データベース ロール (SQLAgentUserRole、SQLAgentReaderRole、または SQLAgentOperatorRole) にログインを追加した後、これらのロールに追加された各ログインに対して次の T-SQL スクリプトを実行して、一覧表示されているストアド プロシージャに明示的に EXECUTE 権限を付与します。
+**回避策**:SQL Agent 固定データベース ロール (SQLAgentUserRole、SQLAgentReaderRole、または SQLAgentOperatorRole) にログインを追加した後、これらのロールに追加された各ログインに対して次の T-SQL スクリプトを実行して、一覧表示されているストアド プロシージャに明示的に EXECUTE 権限を付与します。
 
 ```tsql
 USE [master]
@@ -204,13 +204,13 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 Business Critical サービス レベルでは、[メモリ最適化オブジェクトの最大メモリ制限](../managed-instance/resource-limits.md#in-memory-oltp-available-space)が正しく適用されない場合があります。 SQL Managed Instance では、ワークロードが、インメモリ OLTP 操作に対してより多くのメモリを使用できる場合があり、これがインスタンスの可用性と安定性に影響を及ぼすことがあります。 インメモリ OLTP クエリは、制限に達しても、すぐには失敗しない可能性があります。 この問題は、まもなく解決されます。 さらに多くのインメモリ OLTP メモリを使用するクエリは、[制限](../managed-instance/resource-limits.md#in-memory-oltp-available-space)に達するとすぐに失敗するようになります。
 
-**回避策** : [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) を使用して [インメモリ OLTP ストレージの使用状況を監視](../in-memory-oltp-monitor-space.md)し、使用可能な量を超えるメモリがワークロードによって使用されないようにします。 仮想コアの数に応じてメモリ制限を増やすか、ワークロードを最適化して、使用するメモリを減らします。
+**回避策**:[SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) を使用して [インメモリ OLTP ストレージの使用状況を監視](../in-memory-oltp-monitor-space.md)し、使用可能な量を超えるメモリがワークロードによって使用されないようにします。 仮想コアの数に応じてメモリ制限を増やすか、ワークロードを最適化して、使用するメモリを減らします。
  
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>空ではないファイルを削除しようとしたときに誤ったエラーが返される
 
 SQL Server と SQL Managed Instance では、[ユーザーは空でないファイルを削除できません](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)。 `ALTER DATABASE REMOVE FILE` ステートメントを使用して空でないデータ ファイルを削除しようとすると、エラー `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` はすぐには返されません。 SQL Managed Instance では引き続きファイルの削除が試行されますが、操作は 30 分後に `Internal server error` で失敗します。
 
-**回避策** :`DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` コマンドを使用して、ファイルの内容を削除します。 ファイル グループ内の唯一のファイルの場合は、ファイルを圧縮する前に、このファイル グループに関連付けられているテーブルまたはパーティションからデータを削除する必要があります。また、必要に応じて、このデータを別のテーブルまたはパーティションに読み込みます。
+**回避策**:`DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` コマンドを使用して、ファイルの内容を削除します。 ファイル グループ内の唯一のファイルの場合は、ファイルを圧縮する前に、このファイル グループに関連付けられているテーブルまたはパーティションからデータを削除する必要があります。また、必要に応じて、このデータを別のテーブルまたはパーティションに読み込みます。
 
 ### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>サービス レベルの変更とインスタンスの作成操作が、進行中のデータベースの復元によってブロックされる
 
@@ -218,19 +218,19 @@ SQL Server と SQL Managed Instance では、[ユーザーは空でないファ�
 
 復元プロセスでは、復元プロセスが実行されているのと同じサブネット内のマネージド インスタンスとインスタンス プールでこれらの操作がブロックされます。 インスタンス プール内のインスタンスは影響を受けません。 サービス レベルを作成または変更する操作が失敗したり、タイムアウトしたりすることはありません。復元プロセスが完了するかキャンセルされると、処理が続行されます。
 
-**回避策** :サービス レベルの作成または更新操作の優先順位が高い場合は、復元プロセスが完了するか、復元プロセスがキャンセルされるまで待機します。
+**回避策**:サービス レベルの作成または更新操作の優先順位が高い場合は、復元プロセスが完了するか、復元プロセスがキャンセルされるまで待機します。
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Business Critical サービス レベルの Resource Governor をフェールオーバー後に再構成しなければならない場合がある
 
 ユーザー ワークロードに割り当てられるリソースを制限することを可能にする [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) 機能では、フェールオーバー後、またはユーザーが開始したサービス レベルの変更 (たとえば、最大仮想コア数やインスタンスの最大ストレージ サイズの変更) 後に、一部のユーザー ワークロードが誤って分類されることがあります。
 
-**回避策** : [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) を使用している場合、`ALTER RESOURCE GOVERNOR RECONFIGURE` を定期的に、または、インスタンスの開始時に SQL タスクを実行する SQL Agent ジョブの一環として実行します。
+**回避策**:[Resource Governor](/sql/relational-databases/resource-governor/resource-governor) を使用している場合、`ALTER RESOURCE GOVERNOR RECONFIGURE` を定期的に、または、インスタンスの開始時に SQL タスクを実行する SQL Agent ジョブの一環として実行します。
 
 ### <a name="cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade"></a>サービス レベルのアップグレード後は、複数データベースにまたがる Service Broker のダイアログを再初期化する必要がある
 
-サービス レベルの変更操作の後、複数データベースにまたがる Service Broker のダイアログで、他のデータベースのサービスにメッセージが配信されなくなります。 メッセージは " *失われたわけではなく* "、センダーのキューに存在しています。 SQL Managed Instance の仮想コア数やインスタンスのストレージ サイズを変更すると、すべてのデータベースについて、[sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) ビューの `service_broke_guid` 値が変更されます。 [BEGIN DIALOG](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) ステートメントを使用して作成された、他のデータベースの Service Broker を参照する `DIALOG` から、ターゲット サービスにメッセージが配信されなくなります。
+サービス レベルの変更操作の後、複数データベースにまたがる Service Broker のダイアログで、他のデータベースのサービスにメッセージが配信されなくなります。 メッセージは "*失われたわけではなく*"、センダーのキューに存在しています。 SQL Managed Instance の仮想コア数やインスタンスのストレージ サイズを変更すると、すべてのデータベースについて、[sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) ビューの `service_broke_guid` 値が変更されます。 [BEGIN DIALOG](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) ステートメントを使用して作成された、他のデータベースの Service Broker を参照する `DIALOG` から、ターゲット サービスにメッセージが配信されなくなります。
 
-**回避策** :複数データベースにまたがる Service Broker ダイアログのメッセージ交換を使用するアクティビティはすべて、サービス レベルを更新する前に停止し、後で再初期化してください。 サービス レベルの変更後、未配信のままのメッセージがあった場合は、それらのメッセージをソース キューから読み取って、ターゲット キューに再送信します。
+**回避策**:複数データベースにまたがる Service Broker ダイアログのメッセージ交換を使用するアクティビティはすべて、サービス レベルを更新する前に停止し、後で再初期化してください。 サービス レベルの変更後、未配信のままのメッセージがあった場合は、それらのメッセージをソース キューから読み取って、ターゲット キューに再送信します。
 
 ### <a name="impersonation-of-azure-ad-login-types-is-not-supported"></a>Azure AD ログイン タイプの偽装がサポートされない
 
@@ -254,11 +254,11 @@ SQL Server Data Tools では、Azure AD のログインとユーザーが完全�
 
 SQL Managed Instance でデータベースが復元されるとき、復元サービスではまず、目的の名前で空のデータベースが作成され、インスタンス上でその名前が割り当てられます。 しばらくすると、このデータベースは削除され、実際のデータベースの復元が開始されます。 
 
-" *復元中* " 状態のデータベースには、名前ではなくランダムな GUID 値が一時的に与えられます。 復元プロセスが終了すると、一時的な名前は、`RESTORE` ステートメントで指定した目的の名前に変更されます。 
+"*復元中*" 状態のデータベースには、名前ではなくランダムな GUID 値が一時的に与えられます。 復元プロセスが終了すると、一時的な名前は、`RESTORE` ステートメントで指定した目的の名前に変更されます。 
 
 初期フェーズでは、ユーザーは空のデータベースにアクセスしたり、さらにはこのデータベースにテーブルを作成したり、データを読み込んだりできます。 この一時的なデータベースは、復元サービスで 2 つ目のフェーズが開始されると削除されます。
 
-**回避策** :復元の完了を確認するまで、復元中のデータベースにはアクセスしないでください。
+**回避策**:復元の完了を確認するまで、復元中のデータベースにはアクセスしないでください。
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB の構造と内容は再作成される
 
@@ -285,7 +285,7 @@ SQL Managed Instance の各 General Purpose インスタンスには、Azure Pre
 
 複数のシステム ビュー、パフォーマンス カウンター、エラー メッセージ、XEvent、およびエラー ログ エントリで、実際のデータベース名ではなく GUID データベース識別子が表示されています。 将来、実際のデータベース名に置き換えられるため、これらの GUID 識別子には依存しないでください。
 
-**回避策** :sys.databases ビューを使用して、実際のデータベース名を、GUID データベース識別子の形式で指定した物理データベース名から解決します。
+**回避策**:sys.databases ビューを使用して、実際のデータベース名を、GUID データベース識別子の形式で指定した物理データベース名から解決します。
 
 ```tsql
 SELECT name as ActualDatabaseName, physical_database_name as GUIDDatabaseIdentifier 
@@ -330,7 +330,7 @@ using (var scope = new TransactionScope())
 
 SQL Managed Instance 内の CLR モジュールと、現在のインスタンスを参照しているリンク サーバーまたは分散クエリでは、ローカル インスタンスの IP を解決できないことがあります。 このエラーは一時的な問題です。
 
-**回避策** :可能であれば、CLR モジュールでコンテキスト接続を使用します。
+**回避策**:可能であれば、CLR モジュールでコンテキスト接続を使用します。
 
 ## <a name="updates"></a>更新プログラム
 

@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 12/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5bd88493324867dc957922a732506f5cfb8bbc20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2de9dbb479f43d6b646cd9f6cf604d6a08c8b6a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361236"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586125"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Video Indexer Web サイトを使用してブランド モデルをカスタマイズする
 
@@ -31,20 +31,23 @@ Video Indexer では、ビデオとオーディオ コンテンツのインデ�
 
 このトピックで説明されているように、Video Indexer Web サイトを使って、ビデオで検出されるカスタム ブランド モデルを作成、使用、および編集することができます。 また、API を使用することもできます (「[API を使用してブランド モデルをカスタマイズする](customize-brands-model-with-api.md)」で説明しています)。
 
+> [!NOTE]
+> ブランド追加に先立ってビデオにインデックスを付けた場合、インデックスを再作成する必要があります。 動画に関連付けられているドロップダウン メニューに **[インデックスの再作成]** 項目があります。 **[詳細設定オプション]** 、 **[ブランドのカテゴリ]** の順に選択し、 **[すべてのブランド]** をオンにします。
+
 ## <a name="edit-brands-model-settings"></a>ブランド モデルの設定を編集する
 
 Bing ブランド データベースからのブランドを検出するかどうかを設定するオプションもあります。 このオプションを設定するには、ブランド モデルの設定を編集する必要があります。 次の手順に従います。
 
 1. [Video Indexer](https://www.videoindexer.ai/) の Web サイトに移動してサインインします。
-2. アカウント内のモデルをカスタマイズするには、ページの右上隅にある **[コンテンツ モデルのカスタマイズ]** ボタンを選択します。
+1. アカウント内のモデルをカスタマイズするには、ページの左にある **[コンテンツ モデルのカスタマイズ]** ボタンを選択します。
 
-   ![Video Indexer でコンテンツ モデルをカスタマイズする](./media/content-model-customization/content-model-customization.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/content-model-customization/content-model-customization.png" alt-text="Video Indexer でコンテンツ モデルをカスタマイズする":::
+1. ブランドを編集するには、 **[ブランド]** タブを選択します。
 
-3. ブランドを編集するには、 **[ブランド]** タブを選択します。
-
-    ![[コンテンツ モデルのカスタマイズ] ダイアログ ボックスの [ブランド] タブを示すスクリーンショット。](./media/customize-brand-model/customize-brand-model.png)
-
-4. Video Indexer で、Bing によって提案されたブランドを含める場合は、 **[Bing で提案されたブランドを表示する]** オプションをオンにします。そうしない場合は、チェックボックスをオフのままにします。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-brand-model/customize-brand-model.png" alt-text="[コンテンツ モデルのカスタマイズ] ダイアログ ボックスの [ブランド] タブを示すスクリーンショット":::
+1. Video Indexer で、Bing によって提案されたブランドを含める場合は、 **[Bing で提案されたブランドを表示する]** オプションをオンにします。そうしない場合は、チェックボックスをオフのままにします。
 
 ## <a name="include-brands-in-the-model"></a>モデルにブランドを含める
 
@@ -52,16 +55,14 @@ Bing ブランド データベースからのブランドを検出するかど�
 
 ### <a name="add-a-brand-to-include-list"></a>含めるリストにブランドを追加する
 
-1. **[+ ブランドの追加]** を選択します。
-
-    ![ブランドを追加できる場所である [ブランドを含める] ダイアログ ボックスを示すスクリーンショット。](./media/customize-brand-model/add-brand.png)
+1. **[+ Create new brand]\(+ 新しいブランドの作成\)** を選択します。
 
     名前 (必須)、カテゴリ (省略可能)、説明 (省略可能)、参照 URL (省略可能) を指定します。
     カテゴリ フィールドは、ブランドをタグ付けするためのものです。 このフィールドは、Video Indexer API を使用している場合に、ブランドの "*タグ*" として表示されます。 たとえば、ブランドが "Azure" の場合、"クラウド" としてタグを付けたり、分類したりすることができます。
 
     参照用の URL フィールドは、Wikipedia ページへのリンクなど、ブランドの任意の参照 Web サイトにすることができます。
 
-2. **[ブランドの追加]** をクリックすると、 **[ブランドを含める]** の一覧にブランドが追加されます。
+2. **[保存]** を選択すると、 **[ブランドを含める]** の一覧にブランドが追加されます。
 
 ### <a name="edit-a-brand-on-the-include-list"></a>含めるリストのブランドを編集する
 
@@ -82,11 +83,11 @@ Bing ブランド データベースからのブランドを検出するかど�
 
 ### <a name="add-a-brand-to-exclude-list"></a>除外リストにブランドを追加する
 
-1. **[+ ブランドの追加]** を選択します。
+1. **[+ Create new brand]\(+ 新しいブランドの作成\)** を選択します。
 
     名前 (必須)、カテゴリ (省略可能) を指定します。
 
-2. **[ブランドの追加]** をクリックすると、 *[ブランドの除外]* の一覧にブランドが追加されます。
+2. **[保存]** を選択すると、 *[ブランドの除外]* の一覧にブランドが追加されます。
 
 ### <a name="edit-a-brand-on-the-exclude-list"></a>除外リストのブランドを編集する
 
