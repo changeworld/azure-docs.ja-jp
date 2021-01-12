@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 01/05/2021
 ms.author: mbullwin
 keywords: 異常検出, 機械学習, アルゴリズム
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d8698a17db8be6a3d5b26d764ef86702320ebfa4
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 425c6cab4a4a5e1329e2d38f49c5058ec8ffc5b9
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705083"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901370"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomaly Detector API とは
 
@@ -83,8 +83,17 @@ Anomaly Detector API は RESTful Web サービスです。HTTP 要求を作成�
 
 Microsoft によって開発された SR-CNN アルゴリズムの詳細については、論文「[Microsoft での時系列の異常検出サービス](https://arxiv.org/abs/1906.03821)」(KDD 2019 採択済み) を参照してください。
 
-
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="service-availability-and-redundancy"></a>サービスの可用性と冗長性
+
+### <a name="is-the-anomaly-detector-service-zone-resilient"></a>Anomaly Detector サービスにゾーン回復性はありますか?
+
+はい。 Anomaly Detector サービスは、既定ではゾーン回復性を備えています。
+
+### <a name="how-do-i-configure-the-anomaly-detector-service-to-be-zone-resilient"></a>どのように Anomaly Detector サービスにゾーン回復性を構成しますか?
+
+ゾーン回復性を有効にするために、顧客による構成は必要ありません。 Anomaly Detector リソースのゾーン回復性は、既定で使用できるようになっており、サービス自体によって管理されます。
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Docker コンテナーを使用してオンプレミスにデプロイする
 

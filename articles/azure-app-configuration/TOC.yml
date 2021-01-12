@@ -54,7 +54,7 @@
           href: enable-dynamic-configuration-java-spring-app.md
     - name: 機能フラグの使用
       items:
-        - name: .NET Core
+        - name: ASP.NET Core
           href: use-feature-flags-dotnet-core.md
         - name: Spring Boot
           href: use-feature-flags-spring-boot.md
@@ -92,7 +92,7 @@
       href: concept-feature-management.md
     - name: イベント処理
       href: concept-app-configuration-event.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: カスタマー マネージド キーの暗号化
           href: concept-customer-managed-keys.md
@@ -110,7 +110,7 @@
           href: concept-disaster-recovery.md
 - name: 操作方法ガイド
   items:
-    - name: ユーザーのパーセンテージの機能を有効にする
+    - name: 件付き機能フラグを使用する
       href: howto-feature-filters-aspnet-core.md
     - name: 指定したユーザー/グループの機能を有効にする
       href: howto-targetingfilter-aspnet-core.md

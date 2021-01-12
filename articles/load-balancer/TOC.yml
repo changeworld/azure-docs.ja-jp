@@ -146,11 +146,15 @@
       items:
         - name: Azure Load Balancer のトラブルシューティング
           href: load-balancer-troubleshoot.md
-        - name: 一般的なデプロイ エラーのトラブルシューティング
+        - name: 正常性プローブの状態
+          href: load-balancer-troubleshoot-health-probe-status.md
+        - name: バックエンド プール (VM) のトラフィック
+          href: load-balancer-troubleshoot-backend-traffic.md
+        - name: 一般的なデプロイのエラー
           href: load-balancer-common-deployment-errors.md
-        - name: 送信接続に関する一般的な問題のトラブルシューティング
+        - name: 送信接続に関する一般的な問題
           href: troubleshoot-outbound-connection.md
-        - name: リソース正常性と受信の可用性に関する問題のトラブルシューティング
+        - name: リソース正常性と受信の可用性に関する問題
           href: troubleshoot-rhc.md
 - name: リファレンス
   items:

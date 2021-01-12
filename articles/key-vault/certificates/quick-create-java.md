@@ -1,6 +1,6 @@
 ---
-title: クイックスタート - Java 用 Azure Key Vault 証明書クライアント ライブラリ
-description: Java 用 Azure Key Vault 証明書クライアント ライブラリのクイックスタートを提供します。
+title: Azure Key Vault 証明書クライアント ライブラリのクイックスタート - Java
+description: このクイックスタートの手順を使用して、Java 用 Azure Key Vault 証明書クライアント ライブラリについて学習します。
 author: msmbaldwin
 ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
@@ -8,14 +8,14 @@ ms.date: 12/18/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: 1890c2a3d4043d43dd890f06942dbe704e3f7689
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 99b8c63060cebeffea0f3473e03b5f49a415230b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733496"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936041"
 ---
-# <a name="quickstart-azure-key-vault-certificate-client-library-for-java"></a>クイックスタート: Java 用 Azure Key Vault 証明書クライアント ライブラリ
+# <a name="quickstart-azure-key-vault-certificate-client-library-for-java-certificates"></a>クイックスタート: Java 用 Azure Key Vault 証明書クライアント ライブラリ (証明書)
 Java 用 Azure Key Vault 証明書クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。
 
 その他のリソース:
@@ -126,7 +126,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS または Linux

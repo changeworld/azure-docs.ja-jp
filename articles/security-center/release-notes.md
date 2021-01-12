@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/28/2020
 ms.author: memildin
-ms.openlocfilehash: 488aff74b632cbec97cbe9a07d4add953ba29fea
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: f0015177332aa07ed65f9d0345a11bfdad170104
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796085"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862611"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 

@@ -1,29 +1,29 @@
 ---
-title: クイックスタート - Java 用 Azure Key Vault 証明書クライアント ライブラリ
-description: Java 用 Azure Key Vault 証明書クライアント ライブラリのクイックスタートを提供します。
+title: クイックスタート - Java 用 Azure Key Vault キー クライアント ライブラリ
+description: Java 用 Azure Key Vault キー クライアント ライブラリのクイックスタートを提供します。
 author: msmbaldwin
 ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
-ms.date: 12/18/2020
+ms.date: 01/05/2021
 ms.service: key-vault
-ms.subservice: certificates
+ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: 1890c2a3d4043d43dd890f06942dbe704e3f7689
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: cb5abf59c446ef0835375bac45d1e852144a6f28
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733474"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935276"
 ---
-# <a name="quickstart-azure-key-vault-certificate-client-library-for-java"></a>クイックスタート: Java 用 Azure Key Vault 証明書クライアント ライブラリ
-Java 用 Azure Key Vault 証明書クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。
+# <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>クイックスタート: Java 用 Azure Key Vault キー クライアント ライブラリ
+Java 用 Azure Key Vault キー クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。
 
 その他のリソース:
 
-* [ソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-certificates)
+* [ソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-keys)
 * [API リファレンス ドキュメント](https://azure.github.io/azure-sdk-for-java/keyvault.html)
 * [製品ドキュメント](index.yml)
-* [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-certificates/src/samples/java/com/azure/security/keyvault/certificates)
+* [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-keys/src/samples/java/com/azure/security/keyvault/keys)
 
 ## <a name="prerequisites"></a>前提条件
 - Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -50,11 +50,11 @@ Java 用 Azure Key Vault 証明書クライアント ライブラリを使って
 2. ブラウザーでアカウントの資格情報を使用してサインインします。
 
 ### <a name="create-a-new-java-console-app"></a>新しい Java コンソール アプリを作成する
-コンソール ウィンドウで、`mvn` コマンドを使用し、`akv-certificates-java` という名前で新しい Java コンソール アプリを作成します。
+コンソール ウィンドウで、`mvn` コマンドを使用し、`akv-keys-java` という名前で新しい Java コンソール アプリを作成します。
 
 ```console
-mvn archetype:generate -DgroupId=com.keyvault.certificates.quickstart
-                       -DartifactId=akv-certificates-java
+mvn archetype:generate -DgroupId=com.keyvault.keys.quickstart
+                       -DartifactId=akv-keys-java
                        -DarchetypeArtifactId=maven-archetype-quickstart
                        -DarchetypeVersion=1.4
                        -DinteractiveMode=false
@@ -66,16 +66,16 @@ mvn archetype:generate -DgroupId=com.keyvault.certificates.quickstart
 [INFO] ----------------------------------------------------------------------------
 [INFO] Using following parameters for creating project from Archetype: maven-archetype-quickstart:1.4
 [INFO] ----------------------------------------------------------------------------
-[INFO] Parameter: groupId, Value: com.keyvault.certificates.quickstart
-[INFO] Parameter: artifactId, Value: akv-certificates-java
+[INFO] Parameter: groupId, Value: com.keyvault.keys.quickstart
+[INFO] Parameter: artifactId, Value: akv-keys-java
 [INFO] Parameter: version, Value: 1.0-SNAPSHOT
-[INFO] Parameter: package, Value: com.keyvault.certificates.quickstart
+[INFO] Parameter: package, Value: com.keyvault.keys.quickstart
 [INFO] Parameter: packageInPathFormat, Value: com/keyvault/quickstart
-[INFO] Parameter: package, Value: com.keyvault.certificates.quickstart
-[INFO] Parameter: groupId, Value: com.keyvault.certificates.quickstart
-[INFO] Parameter: artifactId, Value: akv-certificates-java
+[INFO] Parameter: package, Value: com.keyvault.keys.quickstart
+[INFO] Parameter: groupId, Value: com.keyvault.keys.quickstart
+[INFO] Parameter: artifactId, Value: akv-keys-java
 [INFO] Parameter: version, Value: 1.0-SNAPSHOT
-[INFO] Project created from Archetype in dir: /home/user/quickstarts/akv-certificates-java
+[INFO] Project created from Archetype in dir: /home/user/quickstarts/akv-keys-java
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
@@ -84,10 +84,10 @@ mvn archetype:generate -DgroupId=com.keyvault.certificates.quickstart
 [INFO] ------------------------------------------------------------------------
 ```
 
-新しく作成された `akv-certificates-java/` フォルダーにディレクトリを変更します。
+新しく作成された `akv-keys-java/` フォルダーにディレクトリを変更します。
 
 ```console
-cd akv-certificates-java
+cd akv-keys-java
 ```
 
 ### <a name="install-the-package"></a>パッケージをインストールする
@@ -96,8 +96,8 @@ cd akv-certificates-java
 ```xml
     <dependency>
       <groupId>com.azure</groupId>
-      <artifactId>azure-security-keyvault-certificates</artifactId>
-      <version>4.1.3</version>
+      <artifactId>azure-security-keyvault-keys</artifactId>
+      <version>4.2.3</version>
     </dependency>
 
     <dependency>
@@ -111,10 +111,10 @@ cd akv-certificates-java
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
 #### <a name="grant-access-to-your-key-vault"></a>キー コンテナーへのアクセス許可を付与する
-自分のユーザー アカウントに証明書のアクセス許可を付与するアクセス ポリシーをキー コンテナーに対して作成します。
+自分のユーザー アカウントにキーのアクセス許可を付与するアクセス ポリシーをキー コンテナーに対して作成します。
 
 ```console
-az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
+az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --key-permissions delete get list create purge
 ```
 
 #### <a name="set-environment-variables"></a>環境変数の設定
@@ -126,7 +126,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS または Linux
@@ -135,7 +135,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
 ## <a name="object-model"></a>オブジェクト モデル
-Java 用 Azure Key Vault 証明書クライアント ライブラリを使用すると、証明書を管理できます。 「[コード例](#code-examples)」セクションでは、クライアントの作成、証明書の作成、証明書の取得、および証明書の削除の方法を示しています。
+キーは、Java 用 Azure Key Vault キー クライアント ライブラリを使用して管理できます。 「[コード例](#code-examples)」セクションでは、クライアントの作成、キーの作成、キーの取得、およびキーの削除方法を示しています。
 
 コンソール アプリ全体は[以下](#sample-code)にあります。
 
@@ -147,13 +147,11 @@ Java 用 Azure Key Vault 証明書クライアント ライブラリを使用す
 import com.azure.core.util.polling.SyncPoller;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 
-import com.azure.security.keyvault.certificates.CertificateClient;
-import com.azure.security.keyvault.certificates.CertificateClientBuilder;
-import com.azure.security.keyvault.certificates.models.CertificateOperation;
-import com.azure.security.keyvault.certificates.models.CertificatePolicy;
-import com.azure.security.keyvault.certificates.models.DeletedCertificate;
-import com.azure.security.keyvault.certificates.models.KeyVaultCertificate;
-import com.azure.security.keyvault.certificates.models.KeyVaultCertificateWithPolicy;
+import com.azure.security.keyvault.keys.KeyClient;
+import com.azure.security.keyvault.keys.KeyClientBuilder;
+import com.azure.security.keyvault.keys.models.DeletedKey;
+import com.azure.security.keyvault.keys.models.KeyType;
+import com.azure.security.keyvault.keys.models.KeyVaultKey;
 ```
 
 ### <a name="authenticate-and-create-a-client"></a>クライアントの認証と作成
@@ -165,44 +163,48 @@ import com.azure.security.keyvault.certificates.models.KeyVaultCertificateWithPo
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
 String keyVaultUri = "https://" + keyVaultName + ".vault.azure.net";
 
-CertificateClient certificateClient = new CertificateClientBuilder()
+KeyClient keyClient = new KeyClientBuilder()
     .vaultUrl(keyVaultUri)
     .credential(new DefaultAzureCredentialBuilder().build())
     .buildClient();
 ```
 
-### <a name="save-a-secret"></a>シークレットを保存する
-アプリケーションが認証されたら、`certificateClient.beginCreateCertificate` メソッドを使用して、キー コンテナーに証明書を作成できます。 これには証明書の名前と証明書ポリシーが必要です。このサンプルでは、値 "myCertificate" を `certificateName` 変数に割り当てて、既定のポリシーを使用しています。
-
-証明書の作成は実行時間の長い操作です。進行状況をポーリングすることも、操作が完了するまで待つこともできます。
+### <a name="create-a-key"></a>キーの作成
+アプリケーションが認証されたら、`keyClient.createKey` メソッドを使用して、キー コンテナーにキーを作成できます。 これにはキーの名前とキーの種類が必要です。このサンプルでは、`keyName` 変数に "myKey" という値を代入し、RSA `KeyType` を使用しています。
 
 ```java
-SyncPoller<CertificateOperation, KeyVaultCertificateWithPolicy> certificatePoller =
-    certificateClient.beginCreateCertificate(certificateName, CertificatePolicy.getDefault());
-certificatePoller.waitForCompletion();
+keyClient.createKey(keyName, KeyType.RSA);
 ```
 
-作成が完了したら、次の呼び出しを使用して証明書を取得できます。
+キーが設定されたことは、[az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) コマンドを使用して確認できます。
 
-```java
-KeyVaultCertificate createdCertificate = certificatePoller.getFinalResult();
+```azurecli
+az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
 ```
 
-### <a name="retrieve-a-certificate"></a>証明書の取得
-`certificateClient.getCertificate` メソッドを使用して、以前に作成した証明書を取得できるようになりました。
+### <a name="retrieve-a-key"></a>キーの取得
+先ほど作成したキーを、`keyClient.getKey` メソッドを使用して取得できるようになりました。
 
 ```java
-KeyVaultCertificate retrievedCertificate = certificateClient.getCertificate(certificateName);
+KeyVaultKey retrievedKey = keyClient.getKey(keyName);
  ```
 
-これで、`retrievedCertificate.getName`、`retrievedCertificate.getProperties` などの操作を使用して、取得した証明書の詳細にアクセスできるようになりました。内容を取得するには、`retrievedCertificate.getCer` を使用します。
+これで、`retrievedKey.getProperties`、`retrievedKey.getKeyOperations` などの操作を使用して、取得したキーの詳細にアクセスできるようになりました。
 
-### <a name="delete-a-certificate"></a>証明書の削除
-最後に、`certificateClient.beginDeleteCertificate` メソッドを使用して、キー コンテナーから証明書を削除しましょう。これも実行時間の長い操作です。
+### <a name="delete-a-key"></a>キーの削除
+最後に、`keyClient.beginDeleteKey` メソッドを使用して、キー コンテナーからキーを削除してみましょう。
+
+キーの削除は実行時間の長い操作です。進行状況をポーリングすることも、操作が完了するまで待つこともできます。
 
 ```java
-SyncPoller<DeletedCertificate, Void> deletionPoller = certificateClient.beginDeleteCertificate(certificateName);
+SyncPoller<DeletedKey, Void> deletionPoller = keyClient.beginDeleteKey(keyName);
 deletionPoller.waitForCompletion();
+```
+
+キーが削除されたことを確認するには、[az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) コマンドを使用します。
+
+```azurecli
+az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
 ```
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
@@ -218,48 +220,44 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="sample-code"></a>サンプル コード
 ```java
-package com.keyvault.certificates.quickstart;
+package com.keyvault.keys.quickstart;
 
 import com.azure.core.util.polling.SyncPoller;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 
-import com.azure.security.keyvault.certificates.CertificateClient;
-import com.azure.security.keyvault.certificates.CertificateClientBuilder;
-import com.azure.security.keyvault.certificates.models.CertificateOperation;
-import com.azure.security.keyvault.certificates.models.CertificatePolicy;
-import com.azure.security.keyvault.certificates.models.DeletedCertificate;
-import com.azure.security.keyvault.certificates.models.KeyVaultCertificate;
-import com.azure.security.keyvault.certificates.models.KeyVaultCertificateWithPolicy;
+import com.azure.security.keyvault.keys.KeyClient;
+import com.azure.security.keyvault.keys.KeyClientBuilder;
+import com.azure.security.keyvault.keys.models.DeletedKey;
+import com.azure.security.keyvault.keys.models.KeyType;
+import com.azure.security.keyvault.keys.models.KeyVaultKey;
 
 public class App {
     public static void main(String[] args) throws InterruptedException, IllegalArgumentException {
         String keyVaultName = System.getenv("KEY_VAULT_NAME");
         String keyVaultUri = "https://" + keyVaultName + ".vault.azure.net";
 
-        System.out.printf("key vault name = %s and kv uri = %s \n", keyVaultName, keyVaultUri);
+        System.out.printf("key vault name = %s and key vault URI = %s \n", keyVaultName, keyVaultUri);
 
-        CertificateClient certificateClient = new CertificateClientBuilder()
+        KeyClient keyClient = new KeyClientBuilder()
                 .vaultUrl(keyVaultUri)
                 .credential(new DefaultAzureCredentialBuilder().build())
                 .buildClient();
 
-        String certificateName = "myCertificate";
+        String keyName = "myKey";
 
-        System.out.print("Creating a certificate in " + keyVaultName + " called '" + certificateName + " ... ");
+        System.out.print("Creating a key in " + keyVaultName + " called '" + keyName + " ... ");
 
-        SyncPoller<CertificateOperation, KeyVaultCertificateWithPolicy> certificatePoller =
-                certificateClient.beginCreateCertificate(certificateName, CertificatePolicy.getDefault());
-        certificatePoller.waitForCompletion();
+        keyClient.createKey(keyName, KeyType.RSA);
 
         System.out.print("done.");
-        System.out.println("Retrieving certificate from " + keyVaultName + ".");
+        System.out.println("Retrieving key from " + keyVaultName + ".");
 
-        KeyVaultCertificate retrievedCertificate = certificateClient.getCertificate(certificateName);
+        KeyVaultKey retrievedKey = keyClient.getKey(keyName);
 
-        System.out.println("Your certificate's ID is '" + retrievedCertificate.getId() + "'.");
-        System.out.println("Deleting your certificate from " + keyVaultName + " ... ");
+        System.out.println("Your key's ID is '" + retrievedKey.getId() + "'.");
+        System.out.println("Deleting your key from " + keyVaultName + " ... ");
 
-        SyncPoller<DeletedCertificate, Void> deletionPoller = certificateClient.beginDeleteCertificate(certificateName);
+        SyncPoller<DeletedKey, Void> deletionPoller = keyClient.beginDeleteKey(keyName);
         deletionPoller.waitForCompletion();
 
         System.out.print("done.");
@@ -268,8 +266,9 @@ public class App {
 ```
 
 ## <a name="next-steps"></a>次のステップ
-このクイックスタートでは、キー コンテナーを作成し、証明書を作成しました。さらに証明書を取得した後、これを削除しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
+このクイックスタートでは、キー コンテナーを作成し、キーを作成して、それを取得した後、削除しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する
 - 「[Azure Key Vault 開発者ガイド](../general/developers-guide.md)」を参照する
 - [キー コンテナーへのアクセスをセキュリティで保護する](../general/secure-your-key-vault.md)方法

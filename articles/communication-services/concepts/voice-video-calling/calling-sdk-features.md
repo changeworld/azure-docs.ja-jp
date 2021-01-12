@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c801a276f3a116f00b34d750ca8bfec7e56d377b
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: e0fff67d6998e55854d4dc3c8db261bc4499f0be
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680745"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936058"
 ---
 # <a name="calling-client-library-overview"></a>通話クライアント ライブラリの概要
 
@@ -58,7 +58,7 @@ ms.locfileid: "97680745"
 |                   | グループ通話から PSTN 参加者としてダイヤルアウトする                                                                    | ✔️   | ✔️            | ✔️   
 | 全般           | オーディオ テスト サービスを使用して、マイク、スピーカー、およびカメラをテストする (8:echo123 に通話することで利用可能)                   |  ✔️  | ✔️            | ✔️   
 
-## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>OS とブラウザによる JavaScript 通話クライアントライブラリのサポート
+## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>OS とブラウザーによる JavaScript 通話クライアント ライブラリのサポート
 
 次の表は、現在使用可能な、サポートされているブラウザーとバージョンのセットを示しています。
 
@@ -96,8 +96,8 @@ Communication Services の通話クライアント ライブラリでは、次�
 
 |           |Web | Android、iOS|
 |-----------|----|------------|
-|同時に送信できる発信ストリームの数 |1 つのビデオと 1 つの画面の共有 | 1 つのビデオと 1 つの画面の共有|
-|同時に表示できる着信ストリームの数 |1 つのビデオと 1 つの画面の共有| 6 つのビデオと 1 つの画面の共有 |
+|**同時に送信できる発信ストリームの数** |1 つのビデオと 1 つの画面の共有 | 1 つのビデオと 1 つの画面の共有|
+|**同時に表示できる着信ストリームの数** |1 つのビデオと 1 つの画面の共有| 6 つのビデオと 1 つの画面の共有 |
 
 
 ## <a name="next-steps"></a>次の手順
