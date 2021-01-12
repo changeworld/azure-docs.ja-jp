@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 72079cc399eea249bce4d285e2c3c4fbf9304708
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 9e0102cdb7e8494a8540b1970932f0d9f7f39fde
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760607"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912919"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>MLflow と Azure Machine Learning を使用した Azure Databricks ML 実験の追跡 (プレビュー)
 
@@ -24,7 +24,7 @@ ms.locfileid: "97760607"
 
 [MLflow](https://www.mlflow.org) は、機械学習の実験のライフ サイクルを管理するためのオープンソース ライブラリです。 MLflow Tracking は、トレーニング実行のメトリックとモデル成果物のログ記録と追跡を行う、MLflow のコンポーネントです。 [Azure Databricks と MLflow](/azure/databricks/applications/mlflow/)の詳細を参照してください。 
 
-MLflow と Azure Machine Learning のその他の機能統合については、[MLflow と Azure Machine Learning を使用して実験の実行を追跡し、エンドポイントを作成する](how-to-use-mlflow.md)方法に関するページを参照してください。
+MLflow と Azure Machine Learning のその他の機能統合については、[MLflow と Azure Machine Learning を使用した実験実行の追跡](how-to-use-mlflow.md)に関する記事をご覧ください。
 
 >[!NOTE]
 > オープン ソース ライブラリである MLflow は頻繁に変更されます。 そのため、Azure Machine Learning と MLflow の統合によって利用できるようになる機能はプレビューとして見なす必要があり、Microsoft は完全にサポートしていません。
@@ -38,6 +38,7 @@ MLflow と Azure Machine Learning のその他の機能統合については、[
     * このパッケージからは自動的に、MLflow がワークスペースにアクセスするための接続を提供する、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) の `azureml-core` が持ち込まれます。
 * [Azure Databricks ワークスペースおよびクラスター](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)。
 * [Azure Machine Learning ワークスペースを作成](how-to-manage-workspace.md)します。
+    * [ワークスペースで MLflow 操作を実行するために必要なアクセス許可](how-to-assign-roles.md#mlflow-operations)を確認します。
 
 ## <a name="track-azure-databricks-runs"></a>Azure Databricks の実行を追跡する
 
@@ -180,8 +181,8 @@ ML モデルのエンドポイントを作成する準備ができたら、 以�
 [mlflow.azureml.deploy](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) API を利用して、Azure Machine Learning ワークスペースにモデルをデプロイできます。 「[MLflow にモデルを登録する](#register-models-with-mlflow)」セクションで説明したように、モデルを Azure Databricks ワークスペースだけに登録した場合は、`model_name` パラメーターを指定してモデルを Azure Machine Learning ワークスペースに登録します。 
 
 Azure Databricks の実行は、以下のエンドポイントにデプロイできます。 
-* [Azure Container Instance](how-to-deploy-models-with-mlflow.md#deploy-to-aci)
-* [Azure Kubernetes Service](how-to-deploy-models-with-mlflow.md#deploy-to-aks)
+* [Azure Container Instance](how-to-deploy-mlflow-models.md#deploy-to-azure-container-instance-aci)
+* [Azure Kubernetes Service](how-to-deploy-mlflow-models.md#deploy-to-azure-kubernetes-service-aks)
 
 ### <a name="deploy-models-to-adb-endpoints-for-batch-scoring"></a>バッチ スコアリングのためにモデルを ADB エンドポイントにデプロイする 
 
@@ -231,7 +232,7 @@ display(preds)
 [Azure Machine Learning ノートブックでの MLflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow) は、この記事で提示した概念を示し、さらに詳しく説明します。
 
 ## <a name="next-steps"></a>次のステップ
-
+* [MLflow モデルを Azure Web サービスとしてデプロイします](how-to-deploy-mlflow-models.md)。 
 * [モデルを管理します](concept-model-management-and-deployment.md)。
-* [MLflow と Azure Machine Learning を使用して実験の実行を追跡し、エンドポイントを作成します](how-to-use-mlflow.md)。 
+* [MLflow と Azure Machine Learning を使用して実験実行を追跡します](how-to-use-mlflow.md)。 
 * [Azure Databricks と MLflow](/azure/databricks/applications/mlflow/)の詳細を参照してください。

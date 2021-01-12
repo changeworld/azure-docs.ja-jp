@@ -3,12 +3,12 @@ title: Apache Kafka アプリからイベント ハブを使用する - Azure Ev
 description: この記事では、Azure Event Hubs での Apache Kafka のサポートに関する情報を提供します。
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: d9aa8af30d5ef5e1a985e4d73a9d4a8921ac7d45
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b0f0da76bba68f8a66695700d530e871cbd35e3c
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369592"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861342"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Apache Kafka アプリケーションから Azure Event Hubs を使用する
 Event Hubs により、独自の Apache Kafka® クラスターを実行する代わりに、既存のほとんどの Apache Kafka クライアント アプリケーションで使用できる、Apache Kafka プロデューサーおよびコンシューマー API と互換性のあるエンドポイントが提供されます。 Event Hubs によって、Apache Kafka のプロデューサーおよびコンシューマー API クライアントのバージョン 1.0 以降がサポートされています。
@@ -71,7 +71,7 @@ sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
 ```
 
 #### <a name="shared-access-signature-sas"></a>Shared Access Signature (SAS)
-Event Hubs には、 **Shared Access Signature (SAS)** も用意されており、Kafka 用 Event Hubs リソースへの委任アクセスを実現することができます。 OAuth 2.0 トークンベースのメカニズムを使用したアクセス承認の方が、SAS よりもセキュリティが高く、使いやすさの点でも有利です。 また、ACL ベースの承認はユーザーが維持、管理する必要がありますが、組み込みロールであれば ACL ベースの承認は必要ありません。 protocol に **SASL_SSL** を、mechanism に **PLAIN** を指定すれば、この機能を Kafka クライアントで使用することができます。 
+Event Hubs には、**Shared Access Signature (SAS)** も用意されており、Kafka 用 Event Hubs リソースへの委任アクセスを実現することができます。 OAuth 2.0 トークンベースのメカニズムを使用したアクセス承認の方が、SAS よりもセキュリティが高く、使いやすさの点でも有利です。 また、ACL ベースの承認はユーザーが維持、管理する必要がありますが、組み込みロールであれば ACL ベースの承認は必要ありません。 protocol に **SASL_SSL** を、mechanism に **PLAIN** を指定すれば、この機能を Kafka クライアントで使用することができます。 
 
 ```properties
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -88,9 +88,9 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 
 #### <a name="samples"></a>サンプル 
-SAS または OAuth を使用してイベント ハブを作成しアクセスする手順の **チュートリアル** については、「 [クイックスタート: Kafka プロトコルを使用した Event Hubs によるデータ ストリーミング](event-hubs-quickstart-kafka-enabled-event-hubs.md)」を参照してください。
+SAS または OAuth を使用してイベント ハブを作成しアクセスする手順の **チュートリアル** については、「[クイックスタート: Kafka プロトコルを使用した Event Hubs によるデータ ストリーミング](event-hubs-quickstart-kafka-enabled-event-hubs.md)」を参照してください。
 
-Kafka 用 Event Hubs で OAuth を使用する方法を紹介したその他の **例** については、 [GitHub 上のサンプル](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)を参照してください。
+Kafka 用 Event Hubs で OAuth を使用する方法を紹介したその他の **例** については、[GitHub 上のサンプル](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)を参照してください。
 
 ## <a name="other-event-hubs-features"></a>その他の Event Hubs 機能 
 
@@ -118,9 +118,7 @@ Event Hubs イベントのペイロードはバイト ストリームであり�
 
 ### <a name="log-compaction"></a>ログの圧縮
 
-Apache Kafka ログの圧縮は、各キーの最後のレコード以外のすべてをパーティションから除去できる機能です。これにより、実質的に Apache Kafka のトピックは、最後に追加された値によって前の値がオーバーライドされるキー値ストアになります。 キー値ストア パターンは、頻繁に更新される場合でも、[Azure Cosmos DB](../cosmos-db/introduction.md) のようなデータベース サービスによってはるかに適切にサポートされます。
-
-ログ圧縮機能は、Kafka Connect および Kafka Streams クライアント フレームワークによって使用されます。
+Apache Kafka ログの圧縮は、各キーの最後のレコード以外のすべてをパーティションから除去できる機能です。これにより、実質的に Apache Kafka のトピックは、最後に追加された値によって前の値がオーバーライドされるキー値ストアになります。 現在、この機能は Azure Event Hubs では実装されていません。 キー値ストア パターンは、頻繁に更新される場合でも、[Azure Cosmos DB](../cosmos-db/introduction.md) のようなデータベース サービスによってはるかに適切にサポートされます。 詳細については、Event Hubs フェデレーション ガイダンスの[ログ プロジェクション](event-hubs-federation-overview.md#log-projections)に関するトピックをご覧ください。 
 
 ### <a name="kafka-streams"></a>Kafka Streams
 

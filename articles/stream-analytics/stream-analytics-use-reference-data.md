@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/2/2020
-ms.openlocfilehash: 2cfd391daa13a100a56bb10b79b27eda80902374
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.date: 12/18/2020
+ms.openlocfilehash: e7f5b3ae0a4dc7faa67a361b210b1d014e1f1b93
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533611"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722132"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
 
@@ -137,6 +137,18 @@ INTO    output
 FROM    Step1
 JOIN    refData2 ON refData2.Desc = Step1.Desc 
 ``` 
+
+## <a name="iot-edge-jobs"></a>IoT Edge ジョブ
+
+Stream Analytics エッジ ジョブの場合、ローカル参照データのみがサポートされます。 ジョブが IoT Edge デバイスに展開されると、ユーザー定義のファイル パスから参照データが読み込まれます。 デバイス上で参照データ ファイルを準備します。 Windows コンテナーの場合は、ローカル ドライブ上に参照データ ファイルを配置し、ローカル ドライブを Docker コンテナーと共有します。 Linux コンテナーの場合は、Docker ボリュームを作成し、ボリュームにデータ ファイルを設定します。
+
+IoT Edge の更新プログラム上の参照データは、デプロイによってトリガーされます。 トリガーされると、実行中のジョブを停止することなく、更新されたデータが Stream Analytics モジュールによって取得されます。
+
+参照データを更新する方法は 2 つあります。
+
+* Azure portal から Stream Analytics ジョブ内の参照データ パスを更新します。
+
+* IoT Edge デプロイを更新します。
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]

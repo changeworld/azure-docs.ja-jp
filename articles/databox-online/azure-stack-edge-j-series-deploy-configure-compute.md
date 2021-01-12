@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 75428b28095b0e425a1670caffcf960aa6ae58f6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 28b5c107fb35c7bda9b1680050b92004436b98ff
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185506"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935464"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro でデータを変換する
 
@@ -37,7 +37,6 @@ ms.locfileid: "96185506"
 ## <a name="prerequisites"></a>前提条件
 
 お客様の Azure Stack Edge Pro デバイスでコンピューティング ロールを設定する前に、次のことを確認してください。
-
 - [Azure Stack Edge Pro のアクティブ化](azure-stack-edge-gpu-deploy-activate.md)に関するページで説明されているように、Azure Stack Edge Pro デバイスがアクティブ化されていること。
 
 
@@ -45,36 +44,36 @@ ms.locfileid: "96185506"
 
 Azure Stack Edge Pro でコンピューティングを構成するために、IoT Hub リソースを作成します。
 
-1. Azure portal で、Azure Stack Edge リソースの **[概要]** に移動します。 右側のウィンドウの **[コンピューティング]** タイルで **[開始]** を選択します。
+1. Azure portal で、Azure Stack Edge リソースの **[概要]** に移動し、 **[IoT Edge]** を選択します。
 
-    ![コンピューティングの開始](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-1.png)
+   ![コンピューティングの開始](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-1.png)
 
-2. **[Edge コンピューティングの構成]** タイルで、 **[コンピューティングの構成]** を選択します。
+2. **[IoT Edge サービスを有効にする]** の **[追加]** を選択します。
 
-    ![コンピューティングを構成する](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-2.png)
+   ![コンピューティングを構成する](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-2.png)
 
-3. **[Edge コンピューティングの構成]** ブレードで、次を入力します。
+3. **[IoT Edge サービスの作成]** に、自分の IoT Hub リソースの設定を入力します。
 
-   
-    |フィールド  |値  |
-    |---------|---------|
-    |IoT Hub     | **[新規]** または **[既存]** を選択します。 <br> 既定では、IoT リソースの作成には Standard レベル (S1) が使用されます。 Free レベルの IoT リソースを使用するには、それを作成してから既存のリソースを選択します。 <br> いずれの場合も、IoT Hub リソースでは、Azure Stack Edge リソースによって使用されるのと同じサブスクリプションとリソース グループが使用されます。     |
-    |名前     |自分の IoT Hub リソースの名前を入力します。         |
+   |フィールド   |値    |
+   |--------|---------|
+   |サブスクリプション      | Azure Stack Edge リソースによって使用されるサブスクリプション。 |
+   |Resource group    | Azure Stack Edge リソースによって使用されるリソース グループ。 |
+   |IoT Hub           | **[新規作成]** または **[既存のデータを使用する]** を選択します。 <br> 既定では、IoT リソースの作成には Standard レベル (S1) が使用されます。 Free レベルの IoT リソースを使用するには、それを作成してから既存のリソースを選択します。 <br> いずれの場合も、IoT Hub リソースでは、Azure Stack Edge リソースによって使用されるのと同じサブスクリプションとリソース グループが使用されます。     |
+   |名前              | 新しい IoT Hub リソースに既定の名前を使用したくない場合は、別の名前を入力します。 |
 
     ![コンピューティングの開始 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
-4. **［作成］** を選択します IoT Hub リソースの作成には数分かかります。 IoT Hub リソースが作成された後、**[コンピューティングの構成]** タイルが更新され、コンピューティングの構成が表示されます。 
+4. 設定が完了したら、 **[確認および作成]** を選択します。 IoT Hub リソースの設定を確認し、 **[作成]** を選択します。
+
+   IoT Hub リソースの作成には数分かかります。 リソースの作成後、IoT Edge サービスが実行中であることが **[概要]** に示されます。
 
     ![コンピューティングの開始 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
 
-5. Edge コンピューティング ロールが構成されたことを確認するには、**[コンピューティングの構成]** タイルの **[View Compute]\(コンピューティングの表示\)** を選択します。
-    
-    ![コンピューティングの開始 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+5. Edge コンピューティング ロールが構成されたことを確認するには、 **[プロパティ]** を選択します。
 
-    > [!NOTE]
-    > Azure Stack Edge Pro デバイスに IoT Hub が関連付けられる前に **[コンピューティングの構成]** ダイアログが閉じた場合、IoT Hub は作成されますが、コンピューティングの構成には表示されません。 
-    
-    Edge デバイスで Edge コンピューティング ロールが設定されると、2 つのデバイスが作成されます (IoT デバイスと IoT Edge デバイス)。 IoT Hub リソースでは、両方のデバイスを表示できます。 IoT Edge ランタイムは、この IoT Edge デバイス上でも動作しています。 現時点では、お客様の IoT Edge デバイスに対して使用できるのは Linux プラットフォームのみです。
+   ![コンピューティングの開始 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+
+   Edge デバイスで Edge コンピューティング ロールが設定されると、2 つのデバイスが作成されます (IoT デバイスと IoT Edge デバイス)。 IoT Hub リソースでは、両方のデバイスを表示できます。 IoT Edge ランタイムは、この IoT Edge デバイス上でも動作しています。 現時点では、お客様の IoT Edge デバイスに対して使用できるのは Linux プラットフォームのみです。
 
 
 ## <a name="add-shares"></a>共有を追加する
@@ -94,11 +93,11 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
 
         ![Edge 共有の追加](./media/azure-stack-edge-j-series-deploy-configure-compute/add-edge-share-1.png) 
 
-    ローカルの NFS 共有を作成した場合は、次のリモート同期 (rsync) コマンド オプションを使用して、ファイルを共有にコピーします。
+    ローカルの NFS 共有を作成した場合は、次のリモート同期 (`rsync`) コマンド オプションを使用して、ファイルを共有にコピーします。
 
     `rsync <source file path> < destination file path>`
 
-    `rsync` コマンドの詳細については、[rsync に関するドキュメント](https://www.computerhope.com/unix/rsync.htm)を参照してください。
+    `rsync` コマンドの詳細については、[`Rsync`](https://www.computerhope.com/unix/rsync.htm) に関するドキュメントを参照してください。
 
     > [!NOTE]
     > NFS 共有をコンピューティングにマウントするには、コンピューティング ネットワークを NFS 仮想 IP アドレスと同じサブネット上に構成する必要があります。 コンピューティング ネットワークを構成する方法の詳細については、[Azure Stack Edge Pro でのコンピューティング ネットワークの有効化](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)に関するページを参照してください。
@@ -148,21 +147,21 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
 
 モジュールが実行中であることを確認するには、以下を実行します。
 
-1. **[モジュールの追加]** タイルを選択します。 これにより、**[モジュール]** ブレードが開きます。 モジュールの一覧で、自分がデプロイしたモジュールを特定します。 自分が追加したモジュールのランタイムの状態は、*[実行中]* になっているはずです。
+1. **[モジュールの追加]** タイルを選択します。 これにより、 **[モジュール]** ブレードが開きます。 モジュールの一覧で、自分がデプロイしたモジュールを特定します。 自分が追加したモジュールのランタイムの状態は、*[実行中]* になっているはずです。
 
     ![デプロイされたモジュールを表示する](./media/azure-stack-edge-j-series-deploy-configure-compute/add-module-3.png)
  
 1. エクスプローラーで、先ほど作成した Edge ローカル共有と Edge 共有の両方に接続します。
 
-    ![データ変換を検証する](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-2.png) 
+    ![データ変換を検証する - 1](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-2.png) 
  
 1. データをローカル共有に追加します。
 
-    ![データ変換を検証する](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-3.png) 
+    ![データ変換を検証する - 2](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-3.png) 
  
    そのデータはクラウド共有に移動されます。
 
-    ![データ変換を検証する](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-4.png)  
+    ![データ変換を検証する -3](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-4.png)  
 
    データは次に、クラウド共有からストレージ アカウントにプッシュされます。 データを表示するには、Storage Explorer を使用できます。
 

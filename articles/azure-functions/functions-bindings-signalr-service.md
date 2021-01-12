@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 1446808b77e5eea78a9912db4c7a8e2dd783f33a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 9e60fd9a20720d75f96a0b78ee783bd5509a8f90
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104378"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763491"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions における SignalR サービスのバインド
 
@@ -18,6 +18,7 @@ ms.locfileid: "92104378"
 
 | アクション | Type |
 |---------|---------|
+| SignalR Service からのメッセージの処理 | [トリガー バインド](./functions-bindings-signalr-service-trigger.md) |
 | サービス エンドポイント URL とアクセス トークンを返す | [入力バインド](./functions-bindings-signalr-service-input.md) |
 | SignalR Service メッセージを送信する |[出力バインド](./functions-bindings-signalr-service-output.md) |
 
@@ -55,5 +56,6 @@ SignalR Service の注釈を Java 関数で使用するには、*azure-functions
 
 ## <a name="next-steps"></a>次のステップ
 
+- [SignalR Service からのメッセージの処理 (トリガー バインド)](./functions-bindings-signalr-service-trigger.md)
 - [サービス エンドポイント URL とアクセス トークンを返す (入力バインド)](./functions-bindings-signalr-service-input.md)
 - [SignalR Service メッセージを送信する (出力バインド)](./functions-bindings-signalr-service-output.md)

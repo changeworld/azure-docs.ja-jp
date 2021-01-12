@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: a0d596c7c1046ea26ac389a48c17fa5abccbfd12
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 3182258245701903e7b3d6d6163cf3e2bd55c1fc
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951606"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915472"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>Azure portal を使用して Azure Stack Edge Pro GPU の帯域幅のスケジュールを管理する 
 
@@ -40,7 +40,7 @@ Azure portal を使用して Azure Stack Edge Pro の帯域幅スケジュール
 
     ![帯域幅の選択](media/azure-stack-edge-j-series-manage-bandwidth-schedules/add-schedule-1.png)
 
-3. **[スケジュールの追加]** で、以下の操作を行います。 
+3. **[スケジュールの追加]** で、以下の操作を行います。
 
    1. スケジュールの **[開始日]** 、 **[終了日]** 、 **[開始時刻]** 、および **[終了時刻]** を指定します。
    2. このスケジュールを 1 日中実行する場合は、 **[終日]** オプションをオンにします。
@@ -58,9 +58,10 @@ Azure portal を使用して Azure Stack Edge Pro の帯域幅スケジュール
 
 帯域幅のスケジュールを編集するには、次の手順を実行します。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[帯域幅]** に移動します。 
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[帯域幅]** に移動します。
 2. 帯域幅のスケジュールの一覧で、変更するスケジュールを選択します。
-    ![帯域幅スケジュールの選択](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-1.png)
+
+   ![帯域幅スケジュールの選択](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-1.png)
 
 3. 必要な変更を加えたら、変更を保存します。
 

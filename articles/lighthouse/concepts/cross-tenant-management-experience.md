@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-ms.date: 11/19/2020
+ms.date: 12/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4550921fdefdca440b6757e7a3b7a03337599d16
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 111e5310f1dac01053eebc6592d7b56105358c41
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510653"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630090"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -78,6 +78,11 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 
 - CSP パートナーは、管理しているテナントから、Azure プランに含まれるお客様に対する、(購入を含めずに) 税引き前消費コストを表示、管理、分析できます。 コストは、小売価格と、お客様のサブスクリプションに対してパートナーが持っている Azure ロールベースのアクセス制御 (Azure RBAC) アクセスに基づきます。
 
+[Azure Key Vault](../../key-vault/general/index.yml):
+
+- 顧客テナント内で Key Vault を作成する
+- マネージド ID を使用して顧客テナント内で Key Vault を作成する
+
 [Azure Kubernetes Service (AKS)](../../aks/index.yml):
 
 - ホストされている Kubernetes 環境を管理し、顧客のテナント内でコンテナー化されたアプリケーションをデプロイして管理する
@@ -94,7 +99,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 - 委任されたサブスクリプションのアクティビティ ログの詳細を表示する
 - ログ分析: 複数のテナントにあるリモートのワークスペースからデータを照会する
 - 顧客のテナント内に、Webhook を使用して管理側テナントで Azure Automation Runbook や Azure Functions などの自動化をトリガーするアラートを作成する
-- 顧客テナント内で診断設定を作成して、管理テナント内のワークスペースにリソース ログを送信する
+- 顧客テナント内で[診断設定](../..//azure-monitor/platform/diagnostic-settings.md)を作成して、管理テナント内のワークスペースにリソース ログを送信する
 - SAP ワークロードに対しては、[顧客のテナント全体で集計されたビューを使って SAP ソリューションのメトリックを監視する](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
 
 [Azure のネットワーク](../../networking/networking-overview.md):

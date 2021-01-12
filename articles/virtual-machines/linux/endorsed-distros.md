@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
-ms.date: 10/09/2020
+ms.date: 01/03/2021
 ms.author: guybo
-ms.openlocfilehash: b27b7344d84ce1361d8294fa4f3490c50afbb4c3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 9d278582840404702bfef3e5fc9af395f659d844
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489660"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898081"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure で動作保証済みの Linux ディストリビューション
 
@@ -36,7 +36,7 @@ Azure Linux エージェントは、Azure Marketplace イメージにプレイ�
 | --- | --- | --- | --- |
 | Rogue Wave Software の CentOS |CentOS 6.x、7.x、8.x |CentOS 6.3:[LIS のダウンロード](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 以降:カーネル内 |パッケージ:[リポジトリ](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> CoreOS は、2020 年 5 月 26 日付けで[サポートが終了](https://coreos.com/os/eol/)します。 |利用不可 | | |
-| Credativ の Debian |8.x、9.x |カーネル内 |パッケージ:リポジトリ内の "waagent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
+| Credativ の Debian |8.x、9.x、10.x |カーネル内 |パッケージ:リポジトリ内の "waagent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
 |Kinvolk の Flatcar Container Linux| Pro、安定版、ベータ版| カーネル内 | wa-linux-agent は /usr/share/oem/bin/waagent に既にインストールされています |
 | Oracle の Oracle Linux |6.x、7.x、8.x |カーネル内 |パッケージ:リポジトリ内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | [Red Hat の Red Hat Enterprise Linux](../workloads/redhat/overview.md) |6.x、7.x、8.x |カーネル内 |パッケージ:リポジトリ内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |

@@ -1,5 +1,5 @@
 ---
-title: リモート Web サービスのデプロイのトラブルシューティング
+title: リモートでのモデル デプロイのトラブルシューティング
 titleSuffix: Azure Machine Learning
 description: Azure Kubernetes Service と Azure Container Instances での一般的な Docker デプロイ エラーの回避、解決、またはトラブルシューティング方法について説明します。
 services: machine-learning
@@ -11,16 +11,16 @@ ms.reviewer: jmartens
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 92cd70e864ae0490ce3f9e7435d9518241f93c8e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 4224e301d6410fc97da1f98cd0dd9577c6341cd3
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031506"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740625"
 ---
-# <a name="troubleshoot-model-deployment"></a>モデル デプロイのトラブルシューティング
+# <a name="troubleshooting-remote-model-deployment"></a>リモートでのモデル デプロイのトラブルシューティング 
 
-Azure Machine Learning を使用する Azure Container Instances (ACI) と Azure Kubernetes Service (AKS) での一般的なリモート Docker デプロイ エラーをトラブルシューティング、解決、または回避する方法について説明します。
+Azure Machine Learning を使用する Azure Container Instances (ACI) と Azure Kubernetes Service (AKS) にモデルをデプロイする際に発生する可能性がある一般的なエラーをトラブルシューティング、解決、または回避する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -177,6 +177,16 @@ Azure Kubernetes Service のデプロイでは、自動スケールがサポー�
 504 状態コードは、要求がタイムアウトしたことを示します。既定のタイムアウトは 1 分です。
 
 タイムアウト値を増やすか、score.py を変更して不要な呼び出しを削除することで、サービスの高速化を試みることができます。 これらのアクションで問題が解決しない場合は、この記事の情報を使用して score.py ファイルをデバッグします。 コードが応答なし状態または無限ループになっている可能性があります。
+
+## <a name="other-error-messages"></a>その他のエラー メッセージ
+
+次のエラーに対して、これらのアクションを実行します。
+
+|エラー  | 解決方法  |
+|---------|---------|
+|Web サービスのデプロイ時のイメージ構築エラー     |  イメージ構成用の pip の依存関係として "pynacl==1.2.1" を Conda ファイルに追加します。       |
+|`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   デプロイで使用される VM の SKU を、メモリがより多い SKU に変更します。 |
+|FPGA エラー     |  FPGA クォータを要求して承認されるまでは、FPGA にモデルをデプロイできません。 アクセスを要求するには、クォータ要求フォーム https://aka.ms/aml-real-time-ai に入力します。       |
 
 ## <a name="advanced-debugging"></a>高度なデバッグ
 

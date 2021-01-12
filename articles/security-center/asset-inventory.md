@@ -5,17 +5,17 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 09/22/2020
+ms.date: 12/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: d15d73b0f2b87b8e6f66c7bd4e7fb34f6b06e1a0
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: d5820af1efd91efd79fb2a860d6aad8d2eeed80d
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341925"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740880"
 ---
-# <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>資産インベントリ ツールと資産管理ツールを使用してリソースの調査と管理を行う
+# <a name="explore-and-manage-your-resources-with-asset-inventory"></a>資産インベントリを使用してリソースの調査と管理を行う
 
 Azure Security Center の資産インベントリ ページを使用すると、Security Center に接続したリソースのセキュリティ態勢が 1 つのページに表示されます。 
 
@@ -33,7 +33,7 @@ Security Center では、Azure リソースのセキュリティの状態が定�
 このツールによる資産管理には大きな可能性があり、その範囲は拡大し続けています。 
 
 > [!TIP]
-> 資産インベントリ ページのセキュリティに関する推奨事項は、**推奨事項**に関するページのセキュリティに関する推奨事項と同じですが、ここでは影響を受けるリソースに応じて示しています。 推奨事項の解決方法の詳細については、[Azure Security Center でのセキュリティに関する推奨事項の実装](security-center-recommendations.md)に関するページを参照してください。
+> 資産インベントリ ページのセキュリティに関する推奨事項は、**推奨事項** に関するページのセキュリティに関する推奨事項と同じですが、ここでは影響を受けるリソースに応じて示しています。 推奨事項の解決方法の詳細については、[Azure Security Center でのセキュリティに関する推奨事項の実装](security-center-recommendations.md)に関するページを参照してください。
 
 
 ## <a name="availability"></a>可用性
@@ -43,7 +43,7 @@ Security Center では、Azure リソースのセキュリティの状態が定�
 |リリース状態:|一般提供 (GA)|
 |価格:|Free|
 |必要なロールとアクセス許可:|すべてのユーザー|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
 
 
@@ -63,9 +63,9 @@ Security Center では、Azure リソースのセキュリティの状態が定�
 
     フィルターを適用すると、すぐに概要の値がクエリ結果に関連付けて更新されます。 
 
-- **エクスポート オプション** - インベントリには、選択したフィルター オプションの結果を CSV ファイルにエクスポートするオプションが用意されています。 さらに、クエリ自体を Azure Resource Graph エクスプローラーにエクスポートして、KQL クエリの絞り込み、保存、変更を行うこともできます。
+- **エクスポート オプション** - インベントリには、選択したフィルター オプションの結果を CSV ファイルにエクスポートするオプションが用意されています。 さらに、クエリ自体を Azure Resource Graph エクスプローラーにエクスポートして、Kusto クエリ言語 (KQL) クエリの絞り込み、保存、変更を行うこともできます。
 
-    ![インベントリのエクスポート オプション](./media/asset-inventory/inventory-export-options.png)
+    :::image type="content" source="./media/asset-inventory/inventory-export-options.png" alt-text="インベントリのエクスポート オプション":::
 
     > [!TIP]
     > KQL のドキュメントでは、いくつかのサンプル データと単純なクエリを組み合わせたデータベースを使用して、この言語の「感触」をつかむことができます。 詳しくは、[KQL のチュートリアル](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer)をご覧ください。
@@ -94,12 +94,12 @@ ARG は、大規模なクエリの実行機能によってリソースを効率�
 
 1. フィルターの関連するオプションを選択して、実行する特定のクエリを作成します。
 
-    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="監視されていない運用リソースへのフィルター処理" lightbox="./media/asset-inventory/inventory-filters.png":::
+    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="インベントリのフィルター処理オプション" lightbox="./media/asset-inventory/inventory-filters.png":::
 
     既定では、リソースはアクティブなセキュリティのレコメンデーションの数によって並べ替えられます。
 
     > [!IMPORTANT]
-    > 各フィルターのオプションは、現在選択されているサブスクリプション内のリソース**および**他のフィルターで選択した項目に固有のものです。
+    > 各フィルターのオプションは、現在選択されているサブスクリプション内のリソース **および** 他のフィルターで選択した項目に固有のものです。
     >
     > たとえば、サブスクリプションを 1 つだけ選択していて、そのサブスクリプションに、修復すべき未処理のセキュリティの推奨事項があるリソースがない場合 (異常なリソースが 0 の場合)、 **[推奨事項]** フィルターにオプションは表示されません。 
 
@@ -114,16 +114,16 @@ ARG は、大規模なクエリの実行機能によってリソースを効率�
 
     - **[オフ]** - Azure Defender プランによって保護されていないリソース。 これらのいずれかを右クリックしてアップグレードできます。
 
-        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="監視されていない運用リソースへのフィルター処理" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="右クリックでリソースを Azure Defender にアップグレードする" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
 
     - **[オン]** - Azure Defender プランによって保護されているリソース。
-    - **[一部]** - これは、Azure Defender プランのすべてではなく一部が無効になっている**サブスクリプション**に適用されます。 たとえば、次のサブスクリプションでは、5 つの Azure Defender プランが無効になっています。 
+    - **[一部]** - これは、Azure Defender プランのすべてではなく一部が無効になっている **サブスクリプション** に適用されます。 たとえば、次のサブスクリプションでは、5 つの Azure Defender プランが無効になっています。 
 
-        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="監視されていない運用リソースへのフィルター処理":::
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Azure Defender が部分的に有効なサブスクリプション":::
 
 1. クエリの結果をさらに調べるには、該当するリソースを選択します。
 
-1. 現在選択されているフィルター オプションを、Resource Graph エクスプローラーでクエリとして表示するには、 **[Resource Graph エクスプローラーで表示]** を選択します。
+1. 現在選択されているフィルター オプションを、Resource Graph エクスプローラーでクエリとして表示するには、 **[クエリを開く]** を選択します。
 
     ![ARG でのインベントリ クエリ](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
 
@@ -138,9 +138,9 @@ ARG は、大規模なクエリの実行機能によってリソースを効率�
 
 インベントリ ビューには、クラウド セキュリティ態勢管理 (CSPM) の観点から、Security Center に接続されたリソースの一覧が表示されます。 フィルター処理によって返されるのは、環境内のすべてのリソースではなく、未処理の (または「アクティブな」) レコメンデーションを含むリソースだけです。 
 
-たとえば、次のスクリーンショットは、38 個のサブスクリプションにアクセスできるユーザーを示しています。現在、10 個にのみ推奨事項があります。 そのため、**リソースの種類 = サブスクリプション**でフィルター処理すると、アクティブな推奨事項がある 10 個のサブスクリプションだけがインベントリに表示されます。
+たとえば、次のスクリーンショットは、38 個のサブスクリプションにアクセスできるユーザーを示しています。現在、10 個にのみ推奨事項があります。 そのため、**リソースの種類 = サブスクリプション** でフィルター処理すると、アクティブな推奨事項がある 10 個のサブスクリプションだけがインベントリに表示されます。
 
-:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="監視されていない運用リソースへのフィルター処理":::
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="アクティブなレコメンデーションがない場合、一部のサブスクリプションは返されません。":::
 
 ### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>一部のリソースで、Azure Defender 列またはエージェントの監視列に空白の値が表示されるのはなぜですか。
 
@@ -148,7 +148,7 @@ Security Center で監視されているすべてのリソースにエージェ�
 
 価格やエージェントの監視がリソースに関係しない場合、インベントリのこれらの列には何も表示されません。
 
-:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="監視されていない運用リソースへのフィルター処理":::
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="一部のリソースでエージェントの監視列または Azure Defender 列に空白の情報が表示される":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -10,15 +10,15 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/13/2019
+ms.date: 01/05/2020
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a33c7e7d637b519b249c250481a73d04c661d4d5
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819889"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915846"
 ---
 # <a name="microsoft-global-network"></a>マイクロソフトのグローバル ネットワーク
 
@@ -71,4 +71,5 @@ Microsoft Azure はサービスと機能の最も豊富なポートフォリオ�
 Azure とそのネットワークの急激な成長は、グローバル ネットワークの運用管理において人間の直感に頼ることがもはや不可能になったことを認めざるを得ない段階に達しました。 ネットワークの長期的、中期的、そして短期的な変化を検証するニーズを満たすために、マイクロソフトでは、実稼働ネットワークを合成的にミラー化およびエミュレートするプラットフォームを開発しました。 ミラー化された環境を作成して、何百万回でもシミュレーションを実行できるため、ソフトウェアやハードウェアの変更とその影響を、実稼働のプラットフォームやネットワークにコミットする前にテストすることが可能になります。 
 
 ## <a name="next-steps"></a>次のステップ
+- [インテリジェントなソフトウェアによってグローバル ネットワークの信頼性を高めることを目指す Microsoft の取り組みについて学ぶ](https://azure.microsoft.com/blog/advancing-global-network-reliability-through-intelligent-software-part-1-of-2/)
 - [Azure で提供されるネットワーク サービスについて詳しく理解する](https://azure.microsoft.com/product-categories/networking/)

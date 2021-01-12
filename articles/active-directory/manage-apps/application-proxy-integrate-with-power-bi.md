@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c3188571e9188add7bc8f4f4d07ea5a562a79b3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8d4515d6140123e8e8784fc2d828242d49c59fc4
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658113"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616900"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用して Power BI Mobile へのリモート アクセスを有効にする
 
@@ -154,7 +154,9 @@ Microsoft Intune を使用して、会社の従業員が使用するクライア
 
 レポートの読み込みが数分以上試行された後にアプリケーションからエラー ページが返された場合、タイムアウト設定の変更が必要になることがあります。 既定では、アプリケーション プロキシは、要求に応答するまでに最大 85 秒かかるアプリケーションをサポートします。 この設定を 180 秒に延長するには、アプリケーションの [アプリ プロキシ] 設定ページでバックエンドのタイムアウト を **[Long]\(長い\)** に設定します。 高速で信頼性の高いレポートを作成する方法のヒントについては、[Power BI レポートのベスト プラクティス](/power-bi/power-bi-reports-performance)に関するページを参照してください。
 
+条件付きアクセス ポリシーでは、承認されたクライアント アプリとして Microsoft Power BI アプリが必要となります。ここでは、Azure AD アプリケーション プロキシを使用して、Power BI モバイル アプリからオンプレミスの Power BI Report Server に接続できるようにすることはできません。
+
 ## <a name="next-steps"></a>次のステップ
 
 - [ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにします](application-proxy-configure-native-client-application.md)。
-- [Power BI Mobile アプリでオンプレミスのレポート サーバー レポートと KPI を表示します](/power-bi/consumer/mobile/mobile-app-ssrs-kpis-mobile-on-premises-reports)
+- [Power BI モバイル アプリでオンプレミスのレポート サーバーのレポートと KPI を表示する](/power-bi/consumer/mobile/mobile-app-ssrs-kpis-mobile-on-premises-reports)

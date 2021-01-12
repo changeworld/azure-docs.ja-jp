@@ -2,13 +2,13 @@
 title: テンプレート関数 - リソース
 description: Azure Resource Manager テンプレート (ARM テンプレート) で、リソースに関する値を取得するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: 166e9104a9d791ac6d82ed0e8e2d3659efd2ae0d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/04/2021
+ms.openlocfilehash: f16e8e06bf5deb2b66af7758f2944fe256cfa268
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919990"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861425"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM テンプレート用のリソース関数
 
@@ -175,7 +175,7 @@ resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-この関数の構文はリスト操作の名前によって異なります。 実装ごとに、リスト操作をサポートするリソースの種類の値が返されます。 操作名は `list` で始める必要があります。 一般的な使用法として、`listKeys`、`listKeyValue`、`listSecrets` などがあります。
+この関数の構文はリスト操作の名前によって異なります。 実装ごとに、リスト操作をサポートするリソースの種類の値が返されます。 操作名は `list` で始まる必要があり、サフィックスを付けることができます。 一般的に使用されるものとして、`list`、`listKeys`、`listKeyValue`、`listSecrets` があります。
 
 ### <a name="parameters"></a>パラメーター
 

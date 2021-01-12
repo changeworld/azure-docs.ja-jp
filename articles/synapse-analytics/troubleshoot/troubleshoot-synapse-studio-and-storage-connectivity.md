@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: cee6d030a9639a7203a32a3c0957733cecb1f8b6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8cf440a517c1a3496b3df438fdd0d2534609908f
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445313"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733113"
 ---
 # <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>Azure Synapse Analytics の Synapse Studio とストレージ間の接続のトラブルシューティング
 
@@ -24,7 +24,11 @@ Synapse Studio では、リンクされたストレージにあるデータ リ�
 
 詳細なエラー メッセージは異なる場合がありますが、エラー メッセージの一般的な意味は次のとおりです。"この要求では、この操作の実行は許可されません。"。
 
-![ストレージの接続の問題 1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.1.png)
+リンクされたストレージ ノードで:  
+![ストレージの接続の問題 1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1.png)
+
+ストレージ コンテナー ノードで:  
+![ストレージの接続の問題 1a](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1a.png)
 
 **解決策**:アカウントを適切なロールに割り当てるために、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](../../storage/common/storage-auth-aad-rbac-portal.md)」を参照してください。
 
@@ -33,7 +37,11 @@ Synapse Studio では、リンクされたストレージにあるデータ リ�
 
 Synapse Studio の [データ]--> [リンク] で矢印を選択してストレージ構造を展開すると、左側のパネルに "REQUEST_SEND_ERROR" という問題が表示される場合があります。 下の問題症状のスクリーンショットを参照してください。
 
-![ストレージの接続の問題 2](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.2.png)
+リンクされたストレージ ノードで:  
+![ストレージの接続の問題 2](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-2.png)
+
+ストレージ コンテナー ノードで:  
+![ストレージの接続の問題 2a](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-2a.png)
 
 この問題には、いくつかの原因が考えられます。
 
@@ -51,6 +59,7 @@ Synapse Studio の [データ]--> [リンク] で矢印を選択してストレ�
 
 * アクセスするストレージ リソースが Azure Data Lake Storage Gen2 であり、同時にファイアウォールと (ストレージ プライベート エンドポイントが構成された) vNet の内側にある。
 * アクセスするコンテナー リソースが削除されているか、存在しない。
+* テナントをまたぐ: ユーザーがログインに使用したワークスペース テナントがストレージ アカウントのテナントと同じでない。 
 
 
 ## <a name="next-steps"></a>次のステップ

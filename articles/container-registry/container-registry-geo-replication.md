@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: 636896edf8180052508f366bcc548efe13dec1e2
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: e5f0fe76b599874afe8d64c293f3d914da5dd243
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810047"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705168"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
@@ -59,6 +59,8 @@ Azure Container Registry の geo レプリケーション機能を使用する�
 * すべてのリージョンで同じイメージ URL (`contoso.azurecr.io/public/products/web:1.2`) が使用されるので、イメージのデプロイの 1 つの構成を管理すれば済む。
 * 1 つのレジストリにプッシュすれば済む。geo レプリケーションは、ACR が管理する。 ACR は一意のレイヤーのみをレプリケートし、リージョン間のデータ転送を削減する。 
 * 特定のレプリカ内のイベントを通知するように、リージョン [Webhook](container-registry-webhook.md) を構成する。
+
+Azure Container Registry では、耐障害性と可用性に優れた Azure コンテナー レジストリを Azure リージョンに作成するため、[可用性ゾーン](zone-redundancy.md)もサポートされています。 リージョン内の冗長性のための可用性ゾーンと、複数のリージョンをまたぐ geo レプリケーションを組み合わせることで、レジストリの信頼性とパフォーマンスが強化されます。
 
 ## <a name="configure-geo-replication"></a>geo レプリケーションの構成
 

@@ -2,14 +2,14 @@
 title: サービスのクォータと制限
 description: 既定の Azure Batch のクォータ、制限、および制約と、クォータの引き上げを要求する方法について説明します
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 12/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: b2039794a0c8a13070c9d81b83869ca4097bd02e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 11c9ad1e916ad7e64b59cc13c0967d2b9daed4aa
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325972"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814637"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -33,7 +33,7 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 
 ### <a name="cores-quotas-in-batch-service-mode"></a>Batch サービス モードでのコア クォータ
 
-専用コア クォータの適用が強化されました。変更は各ステージで使用可能になり、2020 年 12 月の終わりまでにすべての Batch アカウントに対してこの措置が完了します。
+専用コア クォータの適用が強化されました。変更は各ステージで使用可能になり、2021 年 1 月の終わりまでにすべての Batch アカウントに対してこの措置が完了します。
 
 コア クォータは、Batch でサポートされる各 VM シリーズに存在し、ポータルの **クォータ** ページに表示されます。 次に説明するように、VM シリーズのクォータ制限はサポート要求で更新できます。
 
@@ -70,7 +70,7 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 
 ## <a name="other-limits"></a>その他の制限
 
-Batch サービスによって設定される追加の制限。 [リソース クォータ](#resource-quotas)と異なり、これらの値は変更できません。
+これらの追加制限は Batch サービスによって設定されます。 [リソース クォータ](#resource-quotas)と異なり、これらの値は変更できません。
 
 | **リソース** | **上限** |
 | --- | --- |
@@ -80,6 +80,7 @@ Batch サービスによって設定される追加の制限。 [リソース �
 | プールあたりのアプリケーション パッケージ数 | 10 |
 | タスクの最長有効期間 | 180 日<sup>1</sup> |
 | コンピューティング ノードあたりの[マウント](virtual-file-mount.md)数 | 10 |
+| プールあたりの証明書数 | 12 |
 
 <sup>1</sup> タスクの最長有効期間 (ジョブに追加されてから完了するまで) は、180 日間です。 完了したタスクは 7 日間保持されます。最長有効期間内に完了しなかったタスクのデータにはアクセスできません。
 
@@ -91,7 +92,7 @@ Batch アカウントのクォータを [Azure portal](https://portal.azure.com)
 1. Batch アカウントのメニューで **[クォータ]** を選びます。
 1. Batch アカウントに現在適用されているクォータを確認します。
 
-:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Batch アカウントのクォータ":::
+:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Azure portal の Batch アカウント クォータを示すスクリーンショット。":::
 
 ## <a name="increase-a-quota"></a>クォータを増やす
 
@@ -100,26 +101,26 @@ Batch アカウントのクォータを [Azure portal](https://portal.azure.com)
 1. ポータルのダッシュボードで **[ヘルプとサポート]** タイルを選択します。または、ポータルの右上隅にある疑問符 ( **[?]** ) を選択します。
 1. **[新しいサポート要求]**  >  **[基本]** の順にクリックします。
 1. **[基本]** で次のようにします。
-   
+
     1. **[問題の種類]**  >  **[サービスとサブスクリプションの制限 (クォータ)]**
-   
+
     1. サブスクリプションを選択します。
-   
+
     1. **[クォータの種類]**  > **バッチ**
-      
+
        **[次へ]** を選択します。
-    
+
 1. **[Details (詳細)]** には次の項目があります。
-      
+
     1. **[詳細の指定]** で、場所、クォータの種類、Batch アカウントを指定します。
-    
-       ![Batch によるクォータの増加][quota_increase]
+
+       :::image type="content" source="media/batch-quota-limit/quota-increase.png" alt-text="クォータ増加を要求したときのクォータ詳細画面のスクリーンショット。":::
 
        クォータの種類には次のものが含まれます。
 
        * **Batch アカウントあたり**  
          1 つの Batch アカウントに固有の値。専用コアと優先順位の低いコア、およびジョブとプールの数を含みます。
-        
+
        * **リージョンあたり**  
          リージョン内のすべての Batch アカウントに適用される値。各サブスクリプションのリージョンごとの Batch アカウント数を含みます。
 
@@ -130,11 +131,11 @@ Batch アカウントのクォータを [Azure portal](https://portal.azure.com)
        **[次へ]** を選択します。
 
 1. **[連絡先情報]** で次のようにします。
-   
+
     1. **希望連絡方法** を選択します。
-   
+
     1. 必要な連絡先情報を確認および入力します。
-   
+
        **[作成]** を選択してサポート リクエストを送信します。
 
 サポート要求を送信した後は、Azure サポートからの連絡を待ちます。 クォータ要求の処理が完了するには、数分または最大で 2 営業日かかる場合があります。

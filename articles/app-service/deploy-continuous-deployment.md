@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: b7730558e2a660b0cf00a5b6962d1e2275dd472c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 799699662b738804790e3fe18ce9bd579027808d
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004351"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616317"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service への継続的デプロイ
 
@@ -96,7 +96,7 @@ Bitbucket または GitHub の場合は、Azure App Service がお使いのリ�
 
 Azure App Service で Azure Pipelines を使用する継続的デリバリーを作成するには、Azure DevOps 組織が次のアクセス許可を所有している必要があります。 
 
-- ご利用の Azure アカウントには、Azure Active Directory への書き込みを行うためのアクセス許可とサービスを作成するためのアクセス許可が必要です。 
+- ご利用の Azure アカウントには、Azure Active Directory への書き込みを行うためのアクセス許可とアプリ登録を作成するためのアクセス許可が必要です。 
   
 - ご利用の Azure アカウントには、Azure サブスクリプションの **所有者** ロールが必要です。
 

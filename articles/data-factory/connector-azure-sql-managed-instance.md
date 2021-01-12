@@ -10,13 +10,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 10/15/2020
-ms.openlocfilehash: c532758ce29646ba32530269233759551117968b
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.date: 12/18/2020
+ms.openlocfilehash: d24eea36d45e49f19625c260f2518fb5ae0369e0
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901635"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695072"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>Azure Data Factory を使用して、Azure SQL Managed Instance のデータをコピーして変換する
 
@@ -284,7 +284,7 @@ SQL Managed Instance からデータをコピーするために、コピー ア�
 **以下の点に注意してください。**
 
 - **SqlMISource** に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために SQL Managed Instance のインスタンス ソースに対してこのクエリを実行します。 **sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することもできます (ストアド プロシージャでパラメーターを使用する場合)。
-- **sqlReaderQuery** または **sqlReaderStoredProcedureName** プロパティを指定しない場合は、データセット JSON の "structure" セクションで定義されている列を使用して、クエリが作成されます。 クエリ `select column1, column2 from mytable` は SQL Managed Instance に対して実行されます。 データセット定義に "structure" がない場合は、すべての列がテーブルから選択されます。
+- ソースのストアド プロシージャを使用してデータを取得する場合、異なるパラメーター値が渡されたときに別のスキーマを返すようにストアド プロシージャが設計されていると、UI からスキーマをインポートするときや、テーブルの自動作成を使用して SQL データベースにデータをコピーするときに、エラーが発生したり、予期しない結果になったりする可能性があります。
 
 **例:SQL クエリの使用**
 

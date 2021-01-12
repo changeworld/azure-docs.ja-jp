@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 161348f7566ff64858d563f34ad8f3f4c7511adf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 16fff00f04c4cd57ad46759cceb50134e58d5e01
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009162"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933100"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と F5 の統合
 
@@ -195,7 +195,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 1. **[条件付きアクセス]** をクリックします。
 1. **[新しいポリシー]** をクリックします。
-1. F5 アプリを CA ポリシーのリソースとして表示し、多要素認証やデバイス ベースのアクセス制御、ID 保護ポリシーなど、任意の条件付きアクセスを適用できます。
+1. F5 アプリを条件付きアクセス ポリシーのリソースとして表示し、多要素認証やデバイス ベースのアクセス制御、ID 保護ポリシーなど、任意の条件付きアクセスを適用できます。
 
 ## <a name="configure-f5-sso"></a>F5 SSO の構成
 

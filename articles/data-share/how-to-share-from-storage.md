@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: da1683ec48fcae10ff74163a7db089c30ddd7aad
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.date: 12/16/2020
+ms.openlocfilehash: 9dfc8be54fc55842440e376916b2eb9bb04a4610
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219906"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617087"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Azure Blob Storage と Azure Data Lake Storage からデータを共有および受信する
 
@@ -21,7 +21,7 @@ Azure Data Share によって、ストレージ アカウントからのスナ�
 
 Azure Data Share では、Azure Data Lake Gen1 および Azure Data Lake Gen2 からのファイル、フォルダー、ファイル システムの共有がサポートされています。 また、Azure Blob Storage からの BLOB、フォルダー、コンテナーの共有もサポートされています。 現時点では、ブロック BLOB のみがサポートされています。 これらのソースから共有されているデータは、Azure Data Lake Gen2 または Azure Blob Storage で受信することができます。
 
-スナップショット ベースの共有でファイル システム、コンテナー、またはフォルダーが共有されている場合、データ コンシューマーは、共有データの完全なコピーを作成するか、増分スナップショット機能を利用して新規または更新されたファイルのみをコピーするかを選択できます。 増分スナップショットは、ファイルの最終更新時刻に基づいています。 同じ名前の既存のファイルは上書きされます。
+スナップショット ベースの共有でファイル システム、コンテナー、またはフォルダーが共有されている場合、データ コンシューマーは、共有データの完全なコピーを作成するか、増分スナップショット機能を利用して新規または更新されたファイルのみをコピーするかを選択できます。 増分スナップショットは、ファイルの最終更新時刻に基づいています。 同じ名前の既存のファイルは、スナップショット中に上書きされます。 ソースから削除されたファイルは、ターゲットで削除されません。 ソースにある空のサブフォルダーは、ターゲットにコピーされません。 
 
 ## <a name="share-data"></a>データの共有
 
@@ -45,11 +45,11 @@ Azure Data Share では、Azure Data Lake Gen1 および Azure Data Lake Gen2 �
 
 Azure リソース グループに Azure Data Share リソースを作成します。
 
-1. ポータルの左上隅にあるメニュー ボタンを選択して、 **[リソースの作成]** (+) を選択します。
+1. ポータルの左上隅にあるメニュー ボタンを選択し、 **[リソースの作成]** (+) を選択します。
 
 1. *Data Share* を検索します。
 
-1. [Data Share] を選択し、 **[作成]** を選択します。
+1. Data Share を選択し、 **[作成]** を選択します。
 
 1. Azure Data Share リソースの基本的な詳細に、次の情報を入力します。 
 

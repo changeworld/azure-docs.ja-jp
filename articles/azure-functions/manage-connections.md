@@ -4,12 +4,12 @@ description: 静的接続クライアントを使用して、Azure Functions の
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 6a426aff1721ac3565b53cf2eef7c5aa094dd7e2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 53848e6273cf59439d44b431652981b18bdd5ba6
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168309"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755958"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Azure Functions での接続の管理
 
@@ -29,9 +29,9 @@ ms.locfileid: "92168309"
 
 Azure Functions アプリケーションでサービス固有のクライアントを使用する場合のガイドラインを次に示します。
 
-- 関数呼び出しごとに新しいクライアントを *作成しない* 。
-- すべての関数呼び出しで使用できる単一の静的クライアントを *作成する* 。
-- さまざまな関数が同じサービスを使用している場合は、共有ヘルパー クラスで単一の静的クライアントを作成することを *検討する* 。
+- 関数呼び出しごとに新しいクライアントを *作成しない*。
+- すべての関数呼び出しで使用できる単一の静的クライアントを *作成する*。
+- さまざまな関数が同じサービスを使用している場合は、共有ヘルパー クラスで単一の静的クライアントを作成することを *検討する*。
 
 ## <a name="client-code-examples"></a>クライアント コードの例
 
@@ -103,7 +103,7 @@ public static async Task Run(string input)
     // Rest of function
 }
 ```
-Functions v3 を使用する予定の場合は、Microsoft.Azure.DocumentDB.Core への参照が必要です。 コード内に参照を追加します。
+Functions v3.x を使用している場合は、Microsoft.Azure.DocumentDB.Core への参照が必要です。 コード内に参照を追加します。
 
 ```cs
 #r "Microsoft.Azure.DocumentDB.Core"

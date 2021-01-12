@@ -3,12 +3,12 @@ title: Azure Service Fabric でサポートされているクラスターのバ�
 description: Service Fabric チーム ブログからの最新リリースへのリンクなど、Azure Service Fabric のクラスターのバージョンについて説明します。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 4407ddb80b00c847e14643be816bc681718dcb8b
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 5770aa072666f89a574da9d1f2584ab33b612330
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652213"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862174"
 ---
 # <a name="supported-service-fabric-versions"></a>サポートされている Service Fabric のバージョン
 
@@ -21,8 +21,31 @@ Service Fabric ランタイムの特定のバージョンでは、指定され�
 - [Azure Service Fabric クラスターのアップグレード](service-fabric-cluster-upgrade.md)
 - [スタンドアロン Windows Server クラスター上で実行される Service Fabric のバージョンをアップグレードする](service-fabric-cluster-upgrade-windows-server.md)
 
-## <a name="supported-versions"></a>サポートされているバージョン
 
+## <a name="unsupported-versions"></a>サポートされていないバージョン
+
+### <a name="upgrade-alert-for-versions-between-57-and-below-6363"></a>バージョン 5.7 から 6.3.63.* のアップグレードの警告
+
+***サポートされていないバージョン 5.7 から 6.3.63.* のすべての Service Fabric クラスターは、 2021 年 1 月 7 日*** に Azure でロールアウトされるセキュリティの破壊的変更の影響を受けます。
+ 
+ 重大なサービス中断 (クラスターが起動しないなど) を回避するには、セキュリティの問題の修正プログラムが含まれた、Service Fabric ランタイムの下記のサポートされているバージョンのいずれかにクラスターをできるだけ早くアップグレードする必要があります。 影響を受けるお客様には、ガイダンスをお送りしました。 サポート プランをお持ちで、技術的な支援が必要な場合は、サポート リクエストを開き、サポート チケットにこのコンテキストを記載して、[Azure サポート チャネル](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)を介してご連絡ください。 
+ 
+  #### <a name="supported-service-fabric-runtime-versions-including-the-fix-for-the-security-breaking-change"></a>セキュリティの破壊的変更に対応する修正プログラムを含む、サポートされている Service Fabric ランタイムのバージョン 
+   セキュリティの破壊的変更の影響を受ける、サポートされていない古いバージョンで実行されている Service Fabric クラスターを、次のサポートされているバージョンのいずれかにアップグレードしてください。
+
+  | OS | クラスター内の現在の Service Fabric ランタイム | CU/パッチ リリース  | 
+  | --- | --- |--- | 
+  | Windows | 7.0.* | 7.0.478.9590 |
+  | Windows | 7.1.* | 7.1.503.9590 |
+  | Windows | 7.2.* | 7.2.445.9590 |
+  | Ubuntu 16 | 7.0.* | 7.0.472.1  |
+  | Ubuntu 16 | 7.1.* | 7.1.455.1  |
+  | Ubuntu 1804 | 7.1.* | 7.1.455.1804 |
+  | Ubuntu 16 | 7.2.* | 7.2.447.1 |
+  | Ubuntu 1804 | 7.2.* | 7.2.447.1804 |
+ 
+
+## <a name="supported-versions"></a>サポートされているバージョン
 次の表に、Service Fabric のバージョンとサポート終了日の一覧を示します。
 
 | クラスター内の Service Fabric ランタイム | クラスター バージョンから直接アップグレードできる |互換性のある SDK または NuGet パッケージのバージョン | サポート終了 |

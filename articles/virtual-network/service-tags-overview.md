@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: d01136ea4377bd7d35a2e11b4bcf654bcf677fbe
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: e357667e650e9feeb8dceeffe71c287cde9fe8a0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401561"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631603"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
@@ -53,6 +53,7 @@ ms.locfileid: "97401561"
 | **AzureActiveDirectory** | Azure Active Directory。 | 送信 | いいえ | はい |
 | **AzureActiveDirectoryDomainServices** | Azure Active Directory Domain Services 専用デプロイのための管理トラフィック。 | 両方 | いいえ | はい |
 | **AzureAdvancedThreatProtection** | Azure Advanced Threat Protection。 | 送信 | いいえ | いいえ |
+| **AzureArcInfrastructure** | Azure Arc 対応サーバー、Azure Arc 対応 Kubernetes、ゲスト構成トラフィック。<br/><br/>*注:* このタグは、**AzureActiveDirectory**、**AzureTrafficManager**、**AzureResourceManager** の各タグに依存しています。 *現在、このタグは Azure portal で構成することはできません。*| 送信 | いいえ | はい |
 | **AzureBackup** |Azure Backup。<br/><br/>*注:* このタグは、**Storage** タグと **AzureActiveDirectory** タグに依存します。 | 送信 | いいえ | はい |
 | **AzureBotService** | Azure Bot Service。 | 送信 | いいえ | いいえ |
 | **AzureCloud** | すべての[データセンター パブリック IP アドレス](https://www.microsoft.com/download/details.aspx?id=56519)。 | 送信 | はい | はい |

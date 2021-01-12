@@ -4,12 +4,12 @@ description: アクティビティ ログ アラートがアクティブにな�
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: 026613c3f5710137fb110153b34f9ed74bbf8a7b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b48f094b460a2871b502c72b39b849ed68b9c085
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522789"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916637"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure アクティビティ ログ アラートのための webhook
 アクション グループの定義の一部として、アクティビティ ログ アラート通知を受信するように webhook エンドポイントを構成することができます。 webhook を使用すると、後処理やカスタム アクションのために、これらの通知を他のシステムにルーティングすることができます。 この記事では、webhook に対する HTTP POST のペイロードの概要について説明します。
@@ -27,6 +27,20 @@ webhook は、認証のためにトークンベースの承認を使用するこ
 
 ## <a name="payload-schema"></a>ペイロード スキーマ
 POST 操作に含まれる JSON ペイロードは、ペイロードの data.context.activityLog.eventSource フィールドによって異なります。
+
+> [!NOTE]
+> 現時点では、アクティビティ ログ イベントの一部である説明は、発生した **"アラートの説明"** プロパティにコピーされます。
+>
+> アクティビティ ログのペイロードを他のアラートの種類に合わせるために、2021 年 4 月 1 日以降は、発生したアラートの **"説明"** プロパティにアラート ルールの説明が含まれるようになります。
+>
+> この変更に向けた準備として、アクティビティ ログの発生したアラートに、 **"Activity Log Event Description"\(アクティビティ ログ イベントの説明\)** という新しいプロパティが作成されました。 この新しいプロパティには、既に使用可能な **"説明"** プロパティが入力されます。 つまり、新しい **"Activity Log Event Description"\(アクティビティ ログ イベントの説明\)** フィールドには、アクティビティ ログ イベントの一部である説明が含まれます。
+>
+> 発生したアラートの **"説明"** プロパティを使用している可能性のあるアラート ルール、アクション ルール、Webhook、ロジック アプリ、またはその他の構成を確認し、 **"Activity Log Event Description"\(アクティビティ ログ イベントの説明\)** プロパティに置き換えてください。
+>
+> 現在、(アクション ルール、Webhook、ロジック アプリ、またはその他の構成の) 状態が、アクティビティ ログ アラートの **"説明"** プロパティに基づいている場合は、代わりに **"Activity Log Event Description"\(アクティビティ ログ イベントの説明\)** プロパティに基づくように変更することが必要な場合があります。
+>
+> 新しい **"説明"** プロパティに入力するために、アラート ルールの定義に説明を追加できます。
+> ![発生したアクティビティ ログ アラート](media/activity-log-alerts-webhook/activity-log-alert-fired.png)
 
 ### <a name="common"></a>共通
 

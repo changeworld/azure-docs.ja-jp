@@ -10,13 +10,13 @@ ms.topic: how-to
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 04/14/2020
-ms.openlocfilehash: 3cab3b262f9116903d0b423cd5e4a0ebd03c46fa
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/16/2020
+ms.openlocfilehash: 49dfed7faac1e55a40bc7b7ddd5e9555519350a2
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984432"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617308"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database の長期的なバックアップ保有期間を管理する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -203,6 +203,7 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 
 ## <a name="limitations"></a>制限事項
 - LTR バックアップから復元する場合、読み取りスケール プロパティは無効になります。 復元されたデータベースの読み取りスケールを有効にするには、データベースが作成された後にデータベースを更新します。
+- データベースがエラスティック プール内にあるときに作成された LTR バックアップから復元する場合は、ターゲットのサービス レベル目標を指定する必要があります。 
 
 ## <a name="next-steps"></a>次のステップ
 

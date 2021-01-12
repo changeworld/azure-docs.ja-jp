@@ -8,16 +8,32 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 661cfd5bb410a714bc42e0cd9676ac2ec08f8a45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a37c86268d2424971058021044c60185a25348f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708462"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916458"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Azure NFS ファイル共有に関するトラブルシューティング
 
 この記事では、Azure NFS ファイル共有に関連する一般的な問題をいくつか示します。 これらの問題が発生した場合に考えられる原因と回避策を提示します。
+
+## <a name="chgrp-filename-failed-invalid-argument-22"></a>chgrp "filename" が失敗しました: 無効な引数 (22)
+
+### <a name="cause-1-idmapping-is-not-disabled"></a>原因 1: idmapping が無効になっていない
+Azure Files では、英数字の UID/GID は許可されていません。 そのため、idmapping を無効にする必要があります。 
+
+### <a name="cause-2-idmapping-was-disabled-but-got-re-enabled-after-encountering-bad-filedir-name"></a>原因 2: idmapping は無効になっていたが、無効なファイル名またはディレクトリ名が検出された後に再度有効化された
+idmapping が正しく無効になっている場合でも、idmapping を無効にする設定が上書きされる場合があります。 たとえば、Azure Files が無効なファイル名を検出すると、エラーが返されます。 この特定のエラー コードが発生すると、NFS v 4.1 Linux クライアントは idmapping を再度有効にすることを決定し、今後の要求は再び英数字の UID/GID を使用して送信されます。 Azure Files でサポートされていない文字の一覧については、こちらの[記事](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#:~:text=The%20Azure%20File%20service%20naming%20rules%20for%20directory,be%20no%20more%20than%20255%20characters%20in%20length)をご覧ください。 コロンは、サポートされていない文字の 1 つです。 
+
+### <a name="workaround"></a>回避策
+idmapping が無効になっており、再度有効にするものがないことを確認してから、次の手順を実行します。
+
+- 共有のマウントを解除します
+- # echo Y > /sys/module/nfs/parameters/nfs4_disable_idmapping を使用して idmapping を無効にします。
+- 共有を再度マウントします。
+- rsync を実行する場合は、無効なディレクトリ名またはファイル名が使用されていないディレクトリから、"—numeric-ids" 引数を指定した rsync を実行します。
 
 ## <a name="unable-to-create-an-nfs-share"></a>NFS 共有を作成できない
 
@@ -52,7 +68,7 @@ NFS は、次の構成のストレージ アカウントでのみ使用できま
 - レベル - Premium
 - アカウントの種類 - FileStorage
 - 冗長性 - LRS
-- リージョン - 米国東部、米国東部 2、英国南部、東南アジア
+- リージョン - [サポートされているリージョンの一覧](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-nfs-shares?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>解決策
 
@@ -90,7 +106,7 @@ SMB とは異なり、NFS にはユーザーベースの認証がありません
     - プライベート エンドポイントでホストされている仮想ネットワークを使用した仮想ネットワーク ピアリングでは、ピアリングされた仮想ネットワーク内のクライアントに NFS 共有へのアクセスが許可されます。
     - プライベート エンドポイントは、ExpressRoute、ポイント対サイト VPN、サイト間 VPN と共に使用できます。
 
-:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="パブリック エンドポイント接続の図。" lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
+:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="プライベート エンドポイント接続の図。" lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
 
 ### <a name="cause-2-secure-transfer-required-is-enabled"></a>原因 2:[安全な転送が必須] が有効になっている
 
@@ -100,7 +116,7 @@ NFS 共有では、二重暗号化がまだサポートされていません。 
 
 ストレージ アカウントの構成ブレードで [安全な転送が必須] を無効にします。
 
-:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="パブリック エンドポイント接続の図。":::
+:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="[安全な転送が必須] を無効にしている、ストレージ アカウントの構成ブレードのスクリーンショット。":::
 
 ### <a name="cause-3-nfs-common-package-is-not-installed"></a>原因 3: nfs-common パッケージがインストールされていない
 マウント コマンドを実行する前に、以下に示すディストリビューション固有のコマンドを実行して、このパッケージをインストールします。

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cac0d8cb8a910b735454c9270060364cab2db5fb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c9f9cc53c62ed19fa5fbd1e78c840a8a34b6fb84
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187240"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824657"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins の API および SDK を使用する
 
@@ -26,7 +26,7 @@ Azure Digital Twins には、インスタンスとその要素を管理するた
 
 コントロール プレーン API は、[ARM](../azure-resource-manager/management/overview.md) API であり、Azure Digital Twins インスタンス全体を管理するために使用されます。そのため、インスタンス全体の作成や削除などの操作に対応しています。 また、エンドポイントの作成と削除にも使用します。
 
-最新のコントロール プレーン API のバージョンは、_**2020-10-31**_ です。
+最新のコントロール プレーン API のバージョンは、_**2020-12-01**_ です。
 
 コントロール プレーン API を使用するには
 * [コントロール プレーン Swagger フォルダー](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)の最新の Swagger を参照することで、API を直接呼び出すことができます。 このリポジトリには、使用法を示す例が保存されているフォルダーもあります。
@@ -81,15 +81,9 @@ Azure Digital Twins .NET (C#) SDK は、Azure SDK for .Net に含まれていま
 > [!NOTE]
 > SDK の設計の詳細については、[Azure SDK の一般的な設計原則](https://azure.github.io/azure-sdk/general_introduction.html)と特定の [.NET 設計ガイドライン](https://azure.github.io/azure-sdk/dotnet_introduction.html)を参照してください。
 
-SDK を使用するには、NuGet パッケージ **Azure.DigitalTwins.Core** をプロジェクトに含めます。 また、**Azure.Identity** パッケージの最新バージョンも必要です。
-
-* Visual Studio では、NuGet パッケージ マネージャーを使用してパッケージを追加できます。そのためには、[ツール] > [NuGet パッケージ マネージャー] > [ソリューションの NuGet パッケージの管理] の順に選択します。 
-* .NET コマンド ライン ツールを使用して、次のコマンドを実行できます。
-
-    ```cmd/sh
-    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-    dotnet add package Azure.identity
-    ```
+SDK を使用するには、NuGet パッケージ **Azure.DigitalTwins.Core** をプロジェクトに含めます。 また、**Azure.Identity** パッケージの最新バージョンも必要です。 Visual Studio では、NuGet パッケージ マネージャーを使用してこれらのパッケージを追加できます。そのためには、 *[ツール]、[NuGet パッケージ マネージャー]、[ソリューションの NuGet パッケージの管理]* の順に選択します。 または、.NET コマンド ライン ツールと次の NuGet パッケージ リンクにあるコマンドを使用し、プロジェクトにこれらを追加できます。
+* [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core)。 これは、[.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) のパッケージです。 
+* [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity)。 このライブラリでは、Azure に対する認証を支援するツールが提供されます。
 
 実際の API の使用方法の詳細については、["*クライアント アプリのコーディングに関するチュートリアル*"](tutorial-code.md) を参照してください。 
 

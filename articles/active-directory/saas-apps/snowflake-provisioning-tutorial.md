@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: ac6981d998f25b8df7cea553fe152d68cd43fee5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cc88712dd686983baed858de47e11dfa44e85350
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181426"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955520"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>チュートリアル:Snowflake を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -159,6 +159,12 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
 * Snowflake で生成される SCIM トークンの有効期間は 6 か月です。 プロビジョニングの同期を続行するには、有効期限が切れる前にこれらを更新する必要があることに注意してください。 
+
+## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
+
+* **IP 範囲** 
+
+   現在、Azure AD のプロビジョニング サービスは特定の IP 範囲下で動作します。 そのため、必要であれば他の IP 範囲を制限し、それらの特定の IP 範囲をアプリケーションの許可リストに追加して、Azure AD プロビジョニング サービスからアプリケーションへのトラフィック フローを許可することができます。「[IP 範囲](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges)」を参照してください。
 
 ## <a name="change-log"></a>変更履歴
 

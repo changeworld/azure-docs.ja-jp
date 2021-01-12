@@ -1,20 +1,20 @@
 ---
-title: 仮想マシンとディスクのパフォーマンス
-description: VM とそれに接続されたディスクを連係させてパフォーマンスを向上させる方法について説明します
+title: 仮想マシンとディスクのパフォーマンス - Windows
+description: Windows で、仮想マシンとそれに接続されたディスクを連携させてパフォーマンスを向上させる方法について説明します
 author: albecker1
 ms.author: albecker
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 88cf9c28a9d325d617f4b049015f0cd238a2fb31
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: dec8b0cc33a9fffa7cac1ac9261b3c38ef5a6449
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016461"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584121"
 ---
-# <a name="virtual-machine-and-disk-performance"></a>仮想マシンとディスクのパフォーマンス
+# <a name="virtual-machine-and-disk-performance-windows"></a>仮想マシンとディスクのパフォーマンス (Windows)
 [!INCLUDE [VM and Disk Performance](../../../includes/virtual-machine-disk-performance.md)]
 
 ## <a name="virtual-machine-uncached-vs-cached-limits"></a>キャッシュなしの仮想マシンとキャッシュありの仮想マシンの制限

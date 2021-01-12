@@ -3,14 +3,14 @@ title: Azure Automation で資格情報を管理する
 description: この記事では、資格情報資産を作成し、Runbook または DSC 構成でそれを使用する方法について説明します。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 12/03/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ec35653f67c46a7032e834020d8e2ca4ab3125c8
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: caaeb0e40d277ef5e356c0f385a818b831326d6e
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558839"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734829"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Azure Automation で資格情報を管理する
 
@@ -51,9 +51,9 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 > [!NOTE]
 > `Get-AutomationPSCredential` の `Name` パラメーターに変数を使用することは避けてください。 この変数を使用すると、デザイン時に、Runbook または DSC 構成と資格情報資産との間の依存関係の検出が複雑になる可能性があります。
 
-## <a name="python-2-functions-that-access-credentials"></a>資格情報にアクセスする Python 2 関数
+## <a name="python-functions-that-access-credentials"></a>資格情報にアクセスする Python 関数
 
-次の表の関数を使用して、Python 2 Runbook の資格情報にアクセスします。
+次の表の関数を使用して、Python 2 および 3 の Runbook の資格情報にアクセスします。 Python 3 Runbook は現在プレビュー段階です。
 
 | 機能 | 説明 |
 |:---|:---|
@@ -104,6 +104,8 @@ Runbook または DSC 構成では、内部の `Get-AutomationPSCredential` コ�
 
 ### <a name="textual-runbook-example"></a>テキスト形式の Runbook の例
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 次の例では、Runbook で PowerShell 資格情報を使用する方法を示しています。 資格情報を取得して、そのユーザー名とパスワードを変数に割り当てます。
 
 ```powershell
@@ -126,6 +128,36 @@ $myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$sec
 Connect-AzAccount -Credential $myPsCred
 ```
 
+# <a name="python-2"></a>[Python 2](#tab/python2)
+
+次の例では、Python 2 Runbook で資格情報にアクセスする例を示しています。
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print cred["username"]
+print cred["password"]
+```
+
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+次の例では、Python 3 Runbook (プレビュー) で資格情報にアクセスする例を示しています。
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print (cred["username"])
+print (cred["password"])
+```
+
+---
+
 ### <a name="graphical-runbook-example"></a>グラフィカルな Runbook の例
 
 グラフィカル エディターの [ライブラリ] ペインで資格情報を右クリックし、 **[キャンバスに追加]** を選択することで、内部 `Get-AutomationPSCredential` コマンドレットのアクティビティをグラフィカルな Runbook に追加できます。
@@ -139,20 +171,6 @@ Connect-AzAccount -Credential $myPsCred
 ## <a name="use-credentials-in-a-dsc-configuration"></a>DSC 構成で資格情報を使用する
 
 Azure Automation の DSC 構成では、`Get-AutomationPSCredential` を使用して資格情報資産を操作できますが、パラメーターを使用して資格情報資産を渡すこともできます。 詳細については、「 [Azure Automation DSC での構成のコンパイル](../automation-dsc-compile.md#credential-assets)」を参照してください。
-
-## <a name="use-credentials-in-a-python-2-runbook"></a>Python 2 Runbook で資格情報を使用する
-
-次の例では、Python 2 Runbook で資格情報にアクセスする例を示しています。
-
-```python
-import automationassets
-from automationassets import AutomationAssetNotFound
-
-# get a credential
-cred = automationassets.get_automation_credential("credtest")
-print cred["username"]
-print cred["password"]
-```
 
 ## <a name="next-steps"></a>次のステップ
 

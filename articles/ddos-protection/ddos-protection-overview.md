@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: c3931cafb6c755c6119bf8deb4ecc6b58ea7bc51
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 5e633b5e4b2ff2ce884bfaf99e3730968150cbed
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938445"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746373"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard の概要
 
@@ -33,8 +33,8 @@ Azure DDoS Protection では、顧客データは保存されません。
 ## <a name="features"></a>特徴
 
 - **ネイティブのプラットフォーム統合:** Azure にネイティブに統合します。 Azure Portal による構成が含まれます。 DDoS Protection Standard は、ユーザーのリソースおよびリソース構成を理解しています。
-- **ターンキー保護:** DDoS Protection Standard が有効になるとすぐに、簡略化された構成によって、仮想ネットワーク上のすべてのリソースが直ちに保護されます。 ユーザーが介入したり、ユーザーが定義したりする必要はありません。 DDoS Protection Standard では、攻撃が検出されるとすぐに自動で軽減されます。
-- **常時接続のトラフィック監視:** DDoS 攻撃の兆候を検出するために、アプリケーションのトラフィック パターンが 24 時間 365 日監視されます。 軽減策は、保護ポリシーを超えた場合に実行されます。
+- **ターンキー保護:** DDoS Protection Standard が有効になるとすぐに、簡略化された構成によって、仮想ネットワーク上のすべてのリソースが直ちに保護されます。 ユーザーが介入したり、ユーザーが定義したりする必要はありません。 
+- **常時接続のトラフィック監視:** DDoS 攻撃の兆候を検出するために、アプリケーションのトラフィック パターンが 24 時間 365 日監視されます。 DDoS Protection Standard では、攻撃が検出されるとすぐに自動で軽減されます。
 - **アダプティブ チューニング:** インテリジェント トラフィック プロファイリングにより、一定期間にわたってアプリケーションのトラフィックが学習され、そのサービスに最も適したプロファイルが選択および更新されます。 このプロファイルは、時間の経過とともにトラフィックが変化すると調整されます。
 - **多層保護:** Web アプリケーション ファイアウォールと共に使用する場合、フルスタックの DDoS 保護が提供され、ネットワーク層 (Azure DDoS Protection Standard によって提供されるレイヤー 3 と 4) とアプリケーション層 (WAF によって提供されるレイヤー 7) の両方で保護が得られます。 WAF オファリングには、Azure [Application Gateway WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に加えて、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall) で利用できるサードパーティの Web アプリケーション ファイアウォール オファリングが含まれています。
 - **広範囲にわたる軽減スケール:** 60 種類を超える攻撃を軽減することができ、地球規模の容量を利用して、過去最大の DDoS 攻撃からも保護されます。
@@ -42,7 +42,7 @@ Azure DDoS Protection では、顧客データは保存されません。
 - **攻撃メトリック:** 各攻撃から要約されたメトリックに Azure Monitor 経由でアクセスできます。
 - **攻撃アラート:** 組み込みの攻撃メトリックを使用して、攻撃の開始時と停止時、およびその攻撃の期間にわたってアラートを構成できます。 アラートは、Microsoft Azure Monitor ログ、Splunk、Azure Storage、電子メール、Azure portal などの運用ソフトウェアに統合されます。
 - **DDoS Rapid Response**:攻撃の調査と分析の支援を受けるため、DDoS Protection Rapid Response (DRR) チームを関与させます。 詳細については、[DDoS Rapid Response](ddos-rapid-response.md) に関するページを参照してください。
-- **コストの保証:** データ転送とアプリケーションは、ドキュメント化された DDoS 攻撃のサービス クレジットをスケールアウトします。
+- **コストの保証:** ドキュメント化された DDoS 攻撃の結果として発生するリソース コストについて、データ転送およびアプリケーションのスケールアウト サービス クレジットを受け取ります。
 
 ## <a name="pricing"></a>価格
 

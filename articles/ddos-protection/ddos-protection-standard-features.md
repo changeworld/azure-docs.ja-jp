@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 104c9dcd3b7fd931e4f54841c9de9d17cfd72353
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 602bb98f2cdc8a96874eba8dadfa33f3267d19ac
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937323"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746560"
 ---
 # <a name="azure-ddos-protection-standard-features"></a>Azure DDoS Protection Standard の機能
 
@@ -24,7 +24,7 @@ ms.locfileid: "96937323"
 
 ## <a name="always-on-traffic-monitoring"></a>常時接続のトラフィック監視:
 
-DDoS Protection Standard は実際のトラフィック使用率を監視し、それを DDoS ポリシーで定義されたしきい値と常に比較します。 そのトラフィックしきい値を超えた場合は、DDoS 軽減策が自動的に開始されます。 トラフィックがしきい値未満に戻ると、その軽減策は削除されます。
+DDoS Protection Standard は実際のトラフィック使用率を監視し、それを DDoS ポリシーで定義されたしきい値と常に比較します。 そのトラフィックしきい値を超えた場合は、DDoS 軽減策が自動的に開始されます。 トラフィックがしきい値未満に戻ると、その軽減策は停止されます。
 
 ![Azure DDoS Protection Standard の軽減策](./media/ddos-protection-overview/mitigation.png)
 
@@ -34,13 +34,13 @@ DDoS Protection Standard は実際のトラフィック使用率を監視し、�
 - クライアントと対話して、それが偽装されたパケットである可能性があるかどうかを判定します (たとえば、SYN Auth や SYN Cookie、またはソースへのパケットを削除してそれを再送信します)。
 - 他に適用できる方法がない場合は、パケットをレート制限します。
 
-DDoS Protection は、攻撃トラフィックをブロックし、残りのトラフィックをその目的の宛先に転送します。 攻撃の検出から数分以内に、Azure Monitor メトリックを使用してユーザーに通知します。 DDoS Protection Standard テレメトリへのログ記録を構成することによって、そのログを将来の分析のための使用可能なオプションに書き込むことができます。 DDoS Protection Standard のための Azure Monitor 内のメトリック データは、30 日間保持されます。
+DDoS Protection によって、攻撃トラフィックがドロップされ、残りのトラフィックがその目的の宛先に転送されます。 攻撃の検出から数分以内に、Azure Monitor メトリックを使用してユーザーに通知します。 DDoS Protection Standard テレメトリへのログ記録を構成することによって、そのログを将来の分析のための使用可能なオプションに書き込むことができます。 DDoS Protection Standard のための Azure Monitor 内のメトリック データは、30 日間保持されます。
 
 ## <a name="adaptive-real-time-tuning"></a>アダプティブ リアルタイム チューニング
 
-Azure DDoS Protection Basic サービスは、お客様のシステムの保護と、他のお客様への影響を防ぐのに役立ちます。 たとえば、インフラストラクチャ全体にわたる DDoS Protection ポリシーの "*トリガー レート*" より小さい正規の着信トラフィックの一般的な量に対してサービスがプロビジョニングされている場合、そのお客様のリソースに対する DDoS 攻撃は認識されない可能性があります。 さらに一般的には、最近の攻撃 (たとえば、複数ベクター DDoS) の複雑さと、テナントのアプリケーション固有の動作により、お客様ごとに保護ポリシーをカスタマイズする必要があります。 このカスタマイズは、次の 2 つのインサイト手法を通じて実行されます。
+Azure DDoS Protection Basic サービスは、お客様のシステムの保護と、他のお客様への影響を防ぐのに役立ちます。 たとえば、インフラストラクチャ全体にわたる DDoS Protection ポリシーの "*トリガー レート*" より小さい正規の着信トラフィックの一般的な量に対してサービスがプロビジョニングされている場合、そのお客様のリソースに対する DDoS 攻撃は認識されない可能性があります。 より一般的には、最近の攻撃 (たとえば、複数ベクター DDoS) の複雑さと、テナントのアプリケーション固有の動作により、お客様ごとに保護ポリシーを調整する必要があります。 このサービスは、次の 2 つのインサイト手法を通じてこれを実現します。
 
-- お客様ごと (IP ごと) に、レイヤー 3 および 4 のトラフィック パターンを自動学習する。
+- お客様ごと (パブリック IP ごと) に、レイヤー 3 および 4 のトラフィック パターンを自動学習する。
 
 - 誤検出を最小限に減らす (大量のトラフィックを吸収できる Azure のスケールを活用したもの)。
 
@@ -48,7 +48,7 @@ Azure DDoS Protection Basic サービスは、お客様のシステムの保護�
 
 ## <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS 保護のテレメトリ、監視、アラート
 
-DDoS Protection Standard では、DDoS 攻撃の発生時に、[Azure Monitor](../azure-monitor/overview.md) によって豊富なテレメトリが公開されます。 お客様は、DDoS Protection で使用される任意の Azure Monitor メトリックについて、アラートを構成することができます。 また、ログを Splunk (Azure Event Hubs)、Azure Monitor ログ、Azure Storage と統合し、Azure Monitor 診断インターフェースを介して高度な分析を行うこともできます。
+DDoS Protection Standard では、[Azure Monitor](../azure-monitor/overview.md) を通じて豊富なテレメトリが公開されています。 お客様は、DDoS Protection で使用される任意の Azure Monitor メトリックについて、アラートを構成することができます。 また、ログを Splunk (Azure Event Hubs)、Azure Monitor ログ、Azure Storage と統合し、Azure Monitor 診断インターフェースを介して高度な分析を行うこともできます。
 
 ### <a name="ddos-mitigation-policies"></a>DDoS 軽減ポリシー
 

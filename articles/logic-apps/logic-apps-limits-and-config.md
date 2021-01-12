@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
-ms.openlocfilehash: ee314708f0d564bf1af639a3d864ea19472425cf
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 7122c960dc7921e833329d528f96f0efe0347bda
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937629"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707471"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -305,12 +305,12 @@ Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの
 
 * [Developer SKU と Premium SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) の両方にわたる任意の[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内の統合アカウントを含む、合計 1,000 個の統合アカウント。
 
-* [Developer であるか Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) であるかにかかわらず、各 ISE は統合アカウントの合計数に制限されますが、[コストを追加してこの制限を引き上げることができます](logic-apps-pricing.md#fixed-pricing)。
+* [Developer でも Premium でも](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)、各 ISE で追加コストなしで 1 つの統合アカウントを使用できます。ただし、含まれるアカウントの種類は ISE SKU によって異なります。 [コストを追加すれば](logic-apps-pricing.md#fixed-pricing)、ISE の統合アカウントを上限まで増やすことができます。
 
   | ISE SKU | 統合アカウントの制限 |
   |---------|----------------------------|
-  | **Premium** | 合計 20 個。[Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) アカウントのみ (無料の Standard アカウント 1 つを含む)。 [コストを追加して統合アカウントを増やす](logic-apps-pricing.md#fixed-pricing)ことができます。 Free または Basic アカウントは使用できません。 |
-  | **開発者** | 合計 20 個。[Free](../logic-apps/logic-apps-pricing.md#integration-accounts) (1 アカウントに制限) と [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) の組み合わせ、またはすべて Standard アカウント。 [コストを追加して統合アカウントを増やす](logic-apps-pricing.md#fixed-pricing)ことができます。 Basic アカウントは使用できません。 [Developer SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) は、運用やパフォーマンス テストにではなく、実験、開発、テストに使用してください。 |
+  | **Premium** | 合計 20 アカウント。追加コストなしで Standard アカウントが 1 つ含まれます。 この SKU では、[Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) アカウントのみが与えられます。 Free または Basic アカウントは使用できません。 |
+  | **開発者** | 合計 20 アカウント。[Free](../logic-apps/logic-apps-pricing.md#integration-accounts) アカウントが 1 つ含まれます (1 に制限)。 この SKU では、次のいずれかの組み合わせを利用できます。 <p>- Free アカウントが 1 つと最大 19 の [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) アカウント。 <br>- Free アカウントなしと最大 20 の Standard アカウント。 <p>Basic と追加の Free アカウントは許可されません。 <p><p>**重要**:[Developer SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) は、運用やパフォーマンス テストにではなく、実験、開発、テストに使用してください。 |
   |||
 
 ISE の価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。
@@ -319,8 +319,7 @@ ISE の価格と課金のしくみについては、「[固定価格モデル](.
 
 ### <a name="artifact-limits-per-integration-account"></a>統合アカウントごとのアーティファクトの制限
 
-次に示すのは、各統合アカウント レベルのアーティファクト数の制限です。
-価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。 統合アカウントの価格と課金のしくみについては、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#integration-accounts)に関する記事を参照してください。
+次に示すのは、各統合アカウント レベルのアーティファクト数の制限です。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。 統合アカウントの価格と課金のしくみについては、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#integration-accounts)に関する記事を参照してください。
 
 > [!NOTE]
 > Free レベルは、調査シナリオでのみ使用し、運用シナリオでは使用しないでください。 このレベルでは、スループットと使用率が制限され、サービス レベル アグリーメント (SLA) はありません。
@@ -413,7 +412,9 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 
 > [!TIP]
 > セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、各リージョンの受信 Logic Apps IP アドレスのプレフィックスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md) **LogicAppsManagement** を使用することもできます。
-> このタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。
+> マネージド コネクタの場合は、リージョンごとに受信マネージド コネクタの IP アドレス プレフィックスを指定する代わりに、必要に応じて **AzureConnectors** サービス タグを使用することができます。
+> これらのタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。
+
 
 <a name="multi-tenant-inbound"></a>
 
@@ -477,7 +478,7 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 
 > [!TIP]
 > セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、各リージョンの送信 Logic Apps IP アドレスのプレフィックスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md) **LogicApps** を使用することもできます。
-> マネージド コネクタの場合は、リージョンごとに送信マネージド コネクタの IP アドレス プレフィックスを指定する代わりに、必要に応じて **AzureConnectors** サービス タグを使用することができます。 これらのタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。 
+> このタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。 
 
 <a name="multi-tenant-outbound"></a>
 

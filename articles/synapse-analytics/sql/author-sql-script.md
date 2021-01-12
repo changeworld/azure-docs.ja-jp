@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 077815d117af0328a3466346727e135caaf8ff21
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8d4c1928ae1fac9b840245756c4bf5fe22a83f0f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458004"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590513"
 ---
 # <a name="synapse-studio-sql-scripts-in-azure-synapse-analytics"></a>Azure Synapse Analytics での Synapse Studio SQL スクリプト 
 
@@ -79,7 +79,7 @@ SQL データベースのノードを右クリックして、使用可能なジ�
 [開発]、[SQL スクリプト] の [アクション] メニューから、[新しいフォルダー] を選択します。 次に、ポップアップ ウィンドウに新しいフォルダーの名前を入力します。 
 
 > [!div class="mx-imgBorder"] 
-> ![newsqlscript](./media/author-sql-script/new-sql-script-create-folder.png)
+> ![SQL スクリプトの例のスクリーンショット。[新しいフォルダー] が選択されています。](./media/author-sql-script/new-sql-script-create-folder.png)
 
 SQL スクリプトをフォルダーに移動するには、SQL スクリプトを選択し、[アクション] メニューの [移動] を選択します。 次に、新しいウィンドウで目的のフォルダーを検索し、SQL スクリプトを選択済みフォルダーに移動します。SQL スクリプトをすばやくドラッグしてフォルダーにドロップすることもできます。  
 

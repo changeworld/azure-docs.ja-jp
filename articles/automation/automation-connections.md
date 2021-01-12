@@ -3,15 +3,15 @@ title: Azure Automation の接続を管理する
 description: この記事では、外部サービスまたはアプリケーションへの Azure Automation 接続を管理する方法と、Runbook でこれらの接続を使用する方法について説明します。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 01/13/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0a3cff616f814b8e5209b15f9d3f7439533452ca
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8deb249dc042701ec02c3e5e30f3603be132d0ec
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071763"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733996"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Azure Automation の接続を管理する
 
@@ -43,10 +43,10 @@ PowerShell を使用して Automation 接続を作成および管理するため
 
 |コマンドレット|説明|
 |---|---|
-|[Get-AzAutomationConnection](/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|接続に関する情報を取得します。|
-|[New-AzAutomationConnection](/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|新しい接続を作成します。|
-|[Remove-AzAutomationConnection](/powershell/module/Az.Automation/Remove-AzAutomationConnection?view=azps-3.7.0)|既存の接続を削除します。|
-|[Set-AzAutomationConnectionFieldValue](/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue?view=azps-3.7.0)|既存の接続の特定のフィールドの値を設定します。|
+|[Get-AzAutomationConnection](/powershell/module/az.automation/get-azautomationconnection)|接続に関する情報を取得します。|
+|[New-AzAutomationConnection](/powershell/module/az.automation/new-azautomationconnection)|新しい接続を作成します。|
+|[Remove-AzAutomationConnection](/powershell/module/Az.Automation/Remove-AzAutomationConnection)|既存の接続を削除します。|
+|[Set-AzAutomationConnectionFieldValue](/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue)|既存の接続の特定のフィールドの値を設定します。|
 
 ## <a name="internal-cmdlets-to-access-connections"></a>接続にアクセスするための内部コマンドレット
 
@@ -59,9 +59,9 @@ Runbook および DSC 構成内で接続にアクセスするための内部コ�
 >[!NOTE]
 >`Get-AutomationConnection` の `Name` パラメーターには変数を使用しないようにしてください。 この場合に変数を使用すると、デザイン時に、Runbook または DSC 構成と接続資産間の依存関係の検出が複雑になる可能性があります。
 
-## <a name="python-2-functions-to-access-connections"></a>接続にアクセスするための Python 2 関数
+## <a name="python-functions-to-access-connections"></a>接続にアクセスするための Python 関数
 
-次の表の関数は、Python 2 Runbook の接続へのアクセスに使用します。
+次の表の関数は、Python 2 および 3 の Runbook の接続へのアクセスに使用します。 Python 3 Runbook は現在プレビュー段階です。
 
 | 機能 | 説明 |
 |:---|:---|
@@ -124,9 +124,9 @@ Runbook または DSC 構成を外部サービスに接続する場合は、統�
 
 ## <a name="get-a-connection-in-a-runbook-or-dsc-configuration"></a>Runbook または DSC 構成で接続を取得する
 
-内部 `Get-AutomationConnection` コマンドレットを使用して、Runbook または DSC 構成で接続を取得します。 このコマンドレットは、接続に関する情報ではなく接続値を取得するため、`Get-AzAutomationConnection` コマンドレットよりも推奨されます。 
+内部 `Get-AutomationConnection` コマンドレットを使用して、Runbook または DSC 構成で接続を取得します。 このコマンドレットは、接続に関する情報ではなく接続値を取得するため、`Get-AzAutomationConnection` コマンドレットよりも推奨されます。
 
-### <a name="textual-runbook-example"></a>テキスト形式の Runbook の例
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 次の例は、実行アカウントを使用して Runbook 内で Azure Resource Manager リソースを認証する方法を示しています。 実行アカウントを表す接続資産を使用し、証明書ベースのサービス プリンシパルを参照します。
 
@@ -135,19 +135,9 @@ $Conn = Get-AutomationConnection -Name AzureRunAsConnection
 Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 ```
 
-### <a name="graphical-runbook-examples"></a>グラフィカルな Runbook の例
+# <a name="python"></a>[Python](#tab/python2)
 
-グラフィカルな Runbook に、内部コマンドレット `Get-AutomationConnection` のアクティビティを追加できます。 グラフィカル エディターの [ライブラリ] ウィンドウで接続を右クリックし、 **[キャンバスに追加]** を選択します。
-
-![キャンバスに追加](media/automation-connections/connection-add-canvas.png)
-
-次の図は、グラフィカルな Runbook で接続オブジェクトを使用する例を示したものです。 この例では、`Get RunAs Connection` アクティビティ用の `Constant value` データ セットを使用し、認証に接続オブジェクトを使用します。 `ServicePrincipalCertificate` パラメーターは、オブジェクトを 1 つ受け取るので、ここでは[パイプライン リンク](automation-graphical-authoring-intro.md#use-links-for-workflow)を使用します。
-
-![接続の取得](media/automation-connections/automation-get-connection-object.png)
-
-### <a name="python-2-runbook-example"></a>Python 2 Runbook の例
-
-次の例では、Python 2 Runbook の実行接続を使用して認証する方法を示します。
+次の例では、Python 2 および 3 の Runbook の実行接続を使用して認証する方法を示します。
 
 ```python
 """ Tutorial to show how to authenticate against Azure resource manager resources """
@@ -155,7 +145,7 @@ import azure.mgmt.resource
 import automationassets
 
 def get_automation_runas_credential(runas_connection):
-    """ Returns credentials to authenticate against Azure resoruce manager """
+    """ Returns credentials to authenticate against Azure resource manager """
     from OpenSSL import crypto
     from msrestazure import azure_active_directory
     import adal
@@ -189,6 +179,18 @@ runas_connection = automationassets.get_automation_connection(
     "AzureRunAsConnection")
 azure_credential = get_automation_runas_credential(runas_connection)
 ```
+
+---
+
+### <a name="graphical-runbook-examples"></a>グラフィカルな Runbook の例
+
+グラフィカルな Runbook に、内部コマンドレット `Get-AutomationConnection` のアクティビティを追加できます。 グラフィカル エディターの [ライブラリ] ウィンドウで接続を右クリックし、 **[キャンバスに追加]** を選択します。
+
+![キャンバスに追加](media/automation-connections/connection-add-canvas.png)
+
+次の図は、グラフィカルな Runbook で接続オブジェクトを使用する例を示したものです。 この例では、`Get RunAs Connection` アクティビティ用の `Constant value` データ セットを使用し、認証に接続オブジェクトを使用します。 `ServicePrincipalCertificate` パラメーターは、オブジェクトを 1 つ受け取るので、ここでは[パイプライン リンク](automation-graphical-authoring-intro.md#use-links-for-workflow)を使用します。
+
+![接続の取得](media/automation-connections/automation-get-connection-object.png)
 
 ## <a name="next-steps"></a>次のステップ
 

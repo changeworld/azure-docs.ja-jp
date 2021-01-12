@@ -3,12 +3,12 @@ title: 仮想ネットワークを使用するシナリオ
 description: コンテナー グループを Azure 仮想ネットワークにデプロイするシナリオ、リソース、制限。
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 5e9c1d1606a9ad491ba7a7e623f1606717aa5b1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fb468a6a860bcc076043c30606922f43fbdb1ad
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569171"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882434"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>仮想ネットワークのシナリオとリソース
 
@@ -41,6 +41,7 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 * 仮想ネットワークにデプロイされたコンテナー グループ内で[マネージド ID](container-instances-managed-identity.md) を使用することはできません。
 * 仮想ネットワークにデプロイされているコンテナー グループ内の [liveness probe](container-instances-liveness-probe.md) または [readiness probe](container-instances-readiness-probe.md) を有効にすることはできません。
 * 追加のネットワーク リソースが関係しているため、通常、仮想ネットワークへのデプロイには標準のコンテナー インスタンスをデプロイするよりも時間がかかります。
+* コンテナー グループを Azure Storage アカウントに接続する場合は、そのリソースに[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を追加する必要があります。
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 

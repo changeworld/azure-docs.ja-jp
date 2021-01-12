@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 73e3d8834fcb41f863fe2e3d686b812bb6174e70
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 7c5cac0b52fb0a224595ca7e328b551fd48d6661
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507661"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614236"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>構成オプション - Azure Monitor Application Insights for Java
 
@@ -168,6 +168,9 @@ Application Insights Java 3.0 は、既定では構成ファイルが `applicati
 ```
 
 `${...}` を使用すると、起動時に指定した環境変数から値を読み取ることができます。
+
+> [!NOTE]
+> バージョン 3.0.1-BETA より、`service.version` という名称のカスタム ディメンションを追加した場合、カスタム ディメンションではなく、Application Insights Logs テーブルの `application_Version` 列に値が格納されます。
 
 ## <a name="telemetry-processors-preview"></a>テレメトリ プロセッサ (プレビュー)
 

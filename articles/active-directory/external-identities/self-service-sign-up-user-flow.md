@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f76f4a3e5fc87420c242c693e3c48a91244641e0
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 51602e97a8424bade542eec6f88b673130fee8b5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560035"
+ms.locfileid: "97586025"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>セルフサービス サインアップのユーザー フローをアプリに追加する (プレビュー)
 > [!NOTE]
@@ -70,6 +70,9 @@ Azure AD は、セルフサービス サインアップ用の既定の ID プロ
 7. **[ユーザー属性]** で、ユーザーから収集する属性を選択します。 その他の属性については、 **[さらに表示]** を選択します。 たとえば、 **[Show more]\(さらに表示\)** を選択し、 **[国/リージョン]** 、 **[表示名]** 、 **[郵便番号]** の属性と要求を選択します。 **[OK]** を選択します。
 
    ![新しいユーザー フローの作成ページ](media/self-service-sign-up-user-flow/create-user-flow.png)
+
+> [!NOTE]
+> 初回のみ、ユーザーの新規登録時に属性を収集できます。 ユーザーの新規登録後は、ユーザー フローを変更する場合であっても、属性情報の収集は求められなくなります。
 
 8. **［作成］** を選択します
 9. 新しいユーザー フローは **[User flows (Preview)]\(ユーザー フロー (プレビュー)\)** の一覧に表示されます。 必要に応じて、ページを更新してください。

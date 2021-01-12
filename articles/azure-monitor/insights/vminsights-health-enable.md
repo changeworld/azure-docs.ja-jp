@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 20d38e5caee67ca8bb13877d3162401fa245dc2d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: references_regions
+ms.openlocfilehash: 78ce082c6e90cfc9c67ddcfa00926d292b9ed7ea
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444775"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740472"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Azure Monitor for VMs のゲストの正常性 (プレビュー) を有効にする
 Azure Monitor for VMs のゲストの正常性を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、サブスクリプションでこの機能を有効にする方法と、仮想マシンごとにゲストの監視を有効にする方法について説明します。
@@ -20,38 +21,57 @@ Azure Monitor for VMs のゲストの正常性を使用すると、一定間隔�
 Azure Monitor for VMs のゲストの正常性には、パブリック プレビュー段階では次の制限があります。
 
 - 現在、Azure 仮想マシンのみがサポートされています。 Azure Arc for servers は現在サポートされていません。
-- 仮想マシンでは、次のいずれかのオペレーティング システムを実行する必要があります。 
+
+
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
+仮想マシンでは、次のいずれかのオペレーティング システムを実行する必要があります。 
+
   - Ubuntu 16.04 LTS、Ubuntu 18.04 LTS
   - Windows Server 2012 またはそれ以降
-- 仮想マシンは、次のいずれかのリージョンに配置されている必要があります。
-  - オーストラリア東部
-  - オーストラリア南東部
-  - インド中部
-  - 米国中部
-  - 米国東部
-  - 米国東部 2
-  - 米国東部 2 EUAP
-  - ドイツ中西部
-  - 東日本
-  - 米国中北部
-  - 北ヨーロッパ
-  - 米国中南部
-  - 東南アジア
-  - 英国南部
-  - 西ヨーロッパ
-  - 米国西部
-  - 米国西部 2
-- Log Analytics ワークスペースは、次のいずれかのリージョンに配置されている必要があります。
-  - 米国東部
-  - 米国東部 2 EUAP
-  - 西ヨーロッパ リージョン
+
+## <a name="supported-regions"></a>サポートされているリージョン
+
+仮想マシンは、次のいずれかのリージョンに配置されている必要があります。
+
+- オーストラリア中部
+- オーストラリア東部
+- オーストラリア南東部
+- インド中部
+- 米国中部
+- 東アジア
+- 米国東部
+- 米国東部 2
+- 米国東部 2 EUAP
+- ドイツ中西部
+- 東日本
+- 米国中北部
+- 北ヨーロッパ
+- 米国中南部
+- 東南アジア
+- 英国南部
+- 米国中西部
+- 西ヨーロッパ
+- 米国西部
+- 米国西部 2
+
+
+Log Analytics ワークスペースは、次のいずれかのリージョンに配置されている必要があります。
+
+- 米国中部
+- 米国東部
+- 米国東部 2
+- 米国東部 2 EUAP
+- 北ヨーロッパ
+- 東南アジア
+- 英国南部
+- 西ヨーロッパ リージョン
+- 米国西部 2
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure Monitor for VMs に仮想マシンをオンボードする必要があります。
 - オンボード手順を実行するユーザーには、仮想マシンとデータ収集ルールが配置されているサブスクリプションに対する共同作成者レベルの最小限のアクセス権が必要です。
 - 次のセクションで説明されているように、必要な Azure リソース プロバイダーを登録する必要があります。
-
 
 ## <a name="register-required-azure-resource-providers"></a>必要な Azure リソース プロバイダーを登録する
 Azure Monitor for VMs のゲストの正常性を有効にするには、次の Azure リソース プロバイダーを対象のサブスクリプションに登録する必要があります。 

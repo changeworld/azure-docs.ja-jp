@@ -3,7 +3,7 @@ title: チュートリアル:Postgres を使用した Python Django アプリを
 description: PostgreSQL データベースを使用する Python Web アプリを作成し、Azure にデプロイします。 このチュートリアルは Django フレームワークを使用しており、アプリは Azure App Service on Linux でホストされています。
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 11/02/2020
+ms.date: 01/04/2021
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: b106b403022f3407a3838b7f65222baf41cbfff5
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: ffde74a0567661d6b9f77e45a80bfd585e5c7212
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852967"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898591"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>チュートリアル:PostgreSQL を使用した Django Web アプリを Azure App Service にデプロイする
 
@@ -236,14 +236,11 @@ Django データベースの移行によって、Azure データベース上の 
 1. SSH セッションで次のコマンドを実行します (**Ctrl**+**Shift**+**V** キーを使用してコマンドを貼り付けることができます)。
 
     ```bash
-    # Change to the folder where the app code is deployed
-    cd site/wwwroot
+    # Change to the app folder
+    cd $APP_PATH
     
-    # Activate default virtual environment in App Service container
+    # Activate the venv (requirements.txt is installed automatically)
     source /antenv/bin/activate
-
-    # Install packages
-    pip install -r requirements.txt
 
     # Run database migrations
     python manage.py migrate
@@ -251,6 +248,8 @@ Django データベースの移行によって、Azure データベース上の 
     # Create the super user (follow prompts)
     python manage.py createsuperuser
     ```
+
+    データベースへの接続に関するエラーが発生した場合は、前のセクションで作成したアプリケーション設定の値を確認してください。
 
 1. `createsuperuser` コマンドを使用すると、スーパーユーザーの資格情報の入力を求められます。 このチュートリアルの目的では、既定のユーザー名である `root` を使用し、**Enter** キーを押してメール アドレスを空白のままにして、パスワードを「`Pollsdb1`」と入力します。
 
@@ -260,13 +259,13 @@ Django データベースの移行によって、Azure データベース上の 
     
 ### <a name="44-create-a-poll-question-in-the-app"></a>4.4 アプリで投票の質問を作成する
 
-1. ブラウザーで `http://<app-name>.azurewebsites.net` という URL を開きます。 データベース内に特定の投票がまだないため、アプリには "No polls are available" (投票は利用できません) というメッセージが表示されます。
+1. ブラウザーで `http://<app-name>.azurewebsites.net` という URL を開きます。 データベース内に特定の投票がまだないため、アプリには "Polls app (投票アプリ)" および "No polls are available (投票は利用できません)" というメッセージが表示されます。
 
     "アプリケーション エラー" が表示される場合は、前の手順「[データベースに接続するための環境変数を構成する](#42-configure-environment-variables-to-connect-the-database)」で必須の設定を作成していないか、またはそれらの値にエラーが含まれていることが考えられます。 コマンド `az webapp config appsettings list` を実行して、設定を確認します。 また、[診断ログ調べて](#6-stream-diagnostic-logs)、アプリの起動時に発生したエラーを具体的に確認することもできます。 たとえば、該当する設定を作成していない場合、ログには `KeyError: 'DBNAME'` というエラーが示されます。
 
     設定を更新してエラーを修正したら、アプリが再起動するまで少し待ってから、ブラウザーを最新の状態に更新します。
 
-1. [https://www.microsoft.com](`http://<app-name>.azurewebsites.net/admin`) を参照します。 前のセクションのスーパーユーザー資格情報 (`root` と `Pollsdb1`) を使用してサインインします。 **[Polls]\(投票\)** で、 **[Questions]\(質問\)** の横の **[Add]\(追加\)** を選択し、いくつかの選択肢がある投票の質問を作成します。
+1. [https://www.microsoft.com](`http://<app-name>.azurewebsites.net/admin`) を参照します。 前のセクションで用いた Django のスーパーユーザー資格情報 (`root` と `Pollsdb1`) を使用してサインインします。 **[Polls]\(投票\)** で、 **[Questions]\(質問\)** の横の **[Add]\(追加\)** を選択し、いくつかの選択肢がある投票の質問を作成します。
 
 1. もう一度 `http://<app-name>.azurewebsites.net` に移動し、質問がユーザーに表示されるようになったことを確認します。 質問に自由に回答してデータベースにデータを生成します。
 
@@ -292,7 +291,7 @@ Django データベースの移行によって、Azure データベース上の 
 python3 -m venv venv
 source venv/bin/activate
 
-# Install packages
+# Install dependencies
 pip install -r requirements.txt
 # Run Django migrations
 python manage.py migrate
@@ -310,7 +309,7 @@ py -3 -m venv venv
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 venv\scripts\activate
 
-# Install packages
+# Install dependencies
 pip install -r requirements.txt
 # Run Django migrations
 python manage.py migrate
@@ -327,7 +326,7 @@ python manage.py runserver
 py -3 -m venv venv
 venv\scripts\activate
 
-:: Install packages
+:: Install dependencies
 pip install -r requirements.txt
 :: Run Django migrations
 python manage.py migrate
@@ -397,11 +396,8 @@ az webapp up
 ブラウザーで `https://<app-name>.scm.azurewebsites.net/webssh/host` にアクセスして SSH セッションを再度開きます。 次のコマンドを実行します。
 
 ```
-cd site/wwwroot
-
-# Activate default virtual environment in App Service container
+cd $APP_PATH
 source /antenv/bin/activate
-# Run database migrations
 python manage.py migrate
 ```
 

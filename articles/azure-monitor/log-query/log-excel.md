@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: roygalMS
 ms.author: roygal
 ms.date: 11/03/2020
-ms.openlocfilehash: d903d1bb16ba3576d0092979f1cc6b82fac1c0be
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 6fa181a35c46ed16e4e8c1884e66c54984c418ca
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507412"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703451"
 ---
 # <a name="integrate-log-analytics-and-excel"></a>Log Analytics と Excel を統合する
 
-M クエリと Log Analytics API を使用して、Azure Monitor Log Analytics と Microsoft Excel を統合できます。  この統合により、50 万件のレコードを Excel に送信できます。
+M クエリと Log Analytics API を使用して、Azure Monitor Log Analytics と Microsoft Excel を統合できます。 この統合により、結果の合計量が 61 MiB を超えない限り、最大 500,000 レコードを Excel に送信できます。
 
 > [!NOTE]
 > Excel はローカル クライアント アプリケーションであるため、大量のデータ セットを処理する際のパフォーマンスと機能は、ローカルのハードウェアとソフトウェアの制限に影響されます。
@@ -97,6 +97,9 @@ in AnalyticsQuery
  
 
    :::image type="content" source="media/log-excel/excel-query-result.png" alt-text="Excel でのクエリ結果" border="true":::
+
+> [!Note]
+> レコード数が予想より少ない場合、結果の量は 61 MiB の制限を超える可能性があります。 クエリで `project` または `project-away` を使用して、列を必要なものに制限してみてください。
 
 ##  <a name="refreshing--data"></a>データの更新
 

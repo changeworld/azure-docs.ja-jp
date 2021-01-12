@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
-ms.openlocfilehash: 3aedbef079ba62f42ea79afdcd9995d7ee23d9fa
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 15f1a814b302611029cf6459b8d2df93a32a2d36
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020727"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740557"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>新しい Azure Time Series Insights Gen2 API バージョンへの移行
 
@@ -76,7 +76,7 @@ Power BI コネクタを使用してクエリを生成していた場合、そ�
 新しい API バージョンと新しいタイム シリーズ式の構文を使用するようにクエリを更新するには、エクスプローラーからクエリを再生成する必要があります。 [Power BI コネクタを使用してクエリを作成する](./how-to-connect-power-bi.md)方法に関する詳細をご覧ください。
 
 > [!NOTE]
-> 2020 年 7 月バージョンの Power BI Desktop を使用する必要があります。 そうでない場合は、[invalid query payload version (クエリのペイロード バージョンが無効です) エラー](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect)が表示されることがあります。
+> 2020 年 7 月バージョン以降の Power BI Desktop を使用する必要があります。 そうでない場合は、"invalid query payload version" (クエリのペイロード バージョンが無効です) エラーが表示されることがあります。
 
 ## <a name="migrate-custom-applications"></a>カスタム アプリケーションを移行する
 

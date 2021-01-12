@@ -1,18 +1,18 @@
 ---
 title: Power BI テナントの登録とスキャン (プレビュー)
 description: Azure Purview portal を使用して Power BI テナントの登録とスキャンを行う方法について説明します。
-author: viseshag
-ms.author: viseshag
+author: chanuengg
+ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 1f08bfd6b7c0439dd08a3091b5ea927781af9b84
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 3d8107e980b9cad9bc55cb51cc78b63985986ba5
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387583"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696232"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI テナントの登録とスキャン (プレビュー)
 
@@ -50,6 +50,7 @@ ms.locfileid: "97387583"
 ## <a name="associate-the-security-group-with-the-tenant"></a>セキュリティ グループのテナントへの関連付け
 
 1. [Power BI 管理ポータル](https://app.powerbi.com/admin-portal/tenantSettings)にログインします。
+1. **[テナント設定]** ページを選択します。
 
     > [!Important]
     > テナント設定のページを表示するには、Power BI 管理者である必要があります。
@@ -70,8 +71,6 @@ ms.locfileid: "97387583"
 Power BI テナントの Admin API に接続するためのカタログのアクセス許可が付与されたので、カタログ ポータルからスキャンを設定できるようになりました。
 
 まず、Purview URL に特別な機能フラグを追加します 
-
-1. Purview インスタンスの URI の末尾に、次の文字列を追加します: `?feature.ext.catalog={"pbi":"true"}`。 これにより、カタログの Power BI 登録オプションが有効になります。
 
 1. **管理センター** のアイコンを選択します。
 
@@ -111,6 +110,5 @@ Power BI テナントの Admin API に接続するためのカタログのアク
 
 ## <a name="next-steps"></a>次のステップ
 
-PowerShell コマンドレットを使用して Power BI テナントを登録およびスキャンする方法については、以下を参照してください。
-  
-- [PowerShell を使用した Power BI の登録とスキャン](powershell-register-scan-power-bi.md)
+- [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
+- [Azure Purview データ カタログを検索する](how-to-search-catalog.md)

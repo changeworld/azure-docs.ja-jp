@@ -1,7 +1,7 @@
 ---
-title: ローカルでの Web サービスのデプロイのトラブルシューティング
+title: ローカルでのモデル デプロイのトラブルシューティング
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning の一般的な Docker のデプロイ エラーをローカルで回避、解決、トラブルシューティングする方法について説明します。
+description: モデル デプロイ エラーのトラブルシューティングの最初の手順として、ローカルでのモデル デプロイを試してください。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 4f70978e7b7c2315aff4c51d8b019933df78e7e8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a879a81ae2bcb4e659c69a801f7c299c10ab3d77
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028803"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740642"
 ---
-# <a name="troubleshoot-model-deployment-locally"></a>ローカルでのモデル デプロイのトラブルシューティング
+# <a name="troubleshooting-with-a-local-model-deployment"></a>ローカルでのモデル デプロイを使用したトラブルシューティング
 
-Azure Machine Learning の一般的な Docker Web サービスのデプロイ エラーをローカルでトラブルシューティング、解決、または回避する方法について説明します。
+Azure Container Instances (ACI) または Azure Kubernetes Service (AKS) へのデプロイのトラブルシューティングの最初の手順として、ローカルでのモデル デプロイを試してください。  ローカルの Web サービスを使用すると、Azure Machine Learning の一般的な Docker Web サービスのデプロイ エラーを見つけて修正することがより簡単にできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,13 +28,11 @@ Azure Machine Learning の一般的な Docker Web サービスのデプロイ �
 * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
 * [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
-* ローカルでデバッグするには、ローカル システム上に機能する Docker のインストールが必要です。
+* ローカルでデバッグするには、モデルを [Azure Machine Learning コンピューティング インスタンス](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-local-container-notebook-vm)にデプロイするか、ローカル システム上に機能する Docker をインストールします。
 
     Docker のインストールを確認するには、ターミナルまたはコマンド プロンプトからコマンド `docker run hello-world` を使用します。 Docker のインストール、または Docker のエラーのトラブルシューティングについては、[Docker のドキュメント](https://docs.docker.com/)を参照してください。
 
 ## <a name="debug-locally"></a>ローカル デバッグ
-
-モデルを ACI または AKS にデプロイする際に問題が発生した場合は、ローカル Web サービスとしてデプロイしてください。 ローカル Web サービスを使用すると、問題のトラブルシューティングが簡単になります。
 
 [MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks) リポジトリにあるサンプル[ローカル展開ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb)から、実行可能な例を探索します。
 

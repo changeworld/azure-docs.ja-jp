@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 47c837e7a2ee859c7805d6b2e11058bcc02e6c22
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9a96da607ceea5a6d5cb6ef02df5a9a4db24562e
+ms.sourcegitcommit: e8bd58dbcfe0eae45979d86e071778b9aec40b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400575"
+ms.lasthandoff: 12/25/2020
+ms.locfileid: "97770963"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL Managed Instance のリソース制限の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -84,7 +84,7 @@ SQL Managed Instance には 2 つのサービス レベルがあります。[Gen
 | 最大セッション数 | 30000 | 30000 |
 | 最大同時実行ワーカー (要求) 数 | Gen4:210 * 仮想コアの数 + 800<br>Gen5:105 * 仮想コアの数 + 800 | Gen4:210 * 仮想コア数 + 800<br>Gen5:105 * 仮想コア数 + 800 |
 | [読み取り専用レプリカ](../database/read-scale-out.md) | 0 | 1 (価格に含まれます) |
-| コンピューティングの分離 | Gen5:<br/>\- 80 仮想コアについてサポートされます<br/>\- 他のサイズではサポートされません<br/><br/>Gen4 は非推奨のためサポートされていません|Gen5:<br/>\- 60、64、80 仮想コアについてサポートされます<br/>\- 他のサイズではサポートされません<br/><br/>Gen4 は非推奨のためサポートされていません|
+| コンピューティングの分離 | General Purpose インスタンスによって、他のインスタンスと物理ハードウェアが共有される可能性があるため、Gen5 はサポートされていません<br/>Gen4 は非推奨のためサポートされていません|Gen5:<br/>\- 40、64、80 仮想コアでサポートされます<br/>\- 他のサイズではサポートされません<br/><br/>Gen4 は非推奨のためサポートされていません|
 
 
 追加の考慮事項: 
@@ -150,7 +150,7 @@ SQL Managed Instance では、現在、次の種類のサブスクリプショ�
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional および MSDN Platforms|2|32|
 
-\* デプロイの計画では、Business Critical (BC) サービス レベルの場合、仮想コアの容量が General Purpose (GP) サービス レベルより 4 倍多い必要があることを考慮してください。 次に例を示します。1 つの GP 仮想コア = 1 つの仮想コア ユニット、1 つの BC 仮想コア = 4 つの仮想コア ユニットとなります。 既定の制限に対する消費量分析を簡素化するために、SQL Managed Instance がデプロイされているリージョン内のすべてのサブネットの仮想コア ユニットを集計して、その結果をサブスクリプションの種類のインスタンス ユニットの制限と比較します。 「**最大仮想コア ユニット数**」の制限は、リージョン内の各サブスクリプションに適用されます。 個々のサブネットあたりの制限はありませんが、複数のサブネット全体のデプロイされたすべての仮想コアの合計は、「**最大仮想コア ユニット数**」以下である必要があります。
+\* デプロイの計画では、Business Critical (BC) サービス レベルの場合、仮想コアの容量が General Purpose (GP) サービス レベルより 4 倍多い必要があることを考慮してください。 次に例を示します。1 つの GP 仮想コア = 1 つの仮想コア ユニット、1 つの BC 仮想コア = 4 つの仮想コアとなります。 既定の制限に対する消費量分析を簡素化するために、SQL Managed Instance がデプロイされているリージョン内のすべてのサブネットの仮想コア ユニットを集計して、その結果をサブスクリプションの種類のインスタンス ユニットの制限と比較します。 「**最大仮想コア ユニット数**」の制限は、リージョン内の各サブスクリプションに適用されます。 個々のサブネットあたりの制限はありませんが、複数のサブネット全体のデプロイされたすべての仮想コアの合計は、「**最大仮想コア ユニット数**」以下である必要があります。
 
 \*\* 次のリージョンには、より大きなサブネットと仮想コアの制限があります。オーストラリア東部、米国東部、米国東部 2、北ヨーロッパ、米国中南部、東南アジア、英国南部、西ヨーロッパ、米国西部 2。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 983b1a5e024a44733fab418a67375f232e66cfe4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3c291d9a9d48b6f75148b673848b8451521bab91
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457161"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615803"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
 
@@ -19,22 +19,65 @@ Kubernetes クラスターに対する認証の実行、アクセス制御と認
 
 この記事では、AKS で認証とアクセス許可の割り当てを行うために役立つ中心概念を紹介します。
 
-- [Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC)](#kubernetes-role-based-access-control-kubernetes-rbac)
-  - [ロールと ClusterRoles](#roles-and-clusterroles)
-  - [RoleBindings と ClusterRoleBindings](#rolebindings-and-clusterrolebindings) 
-  - [Kubernetes サービス アカウント](#kubernetes-service-accounts)
-- [Azure Active Directory の統合](#azure-active-directory-integration)
-- [Azure RBAC](#azure-role-based-access-control-azure-rbac)
-  - [AKS リソースへのアクセスを認可するための Azure RBAC](#azure-rbac-to-authorize-access-to-the-aks-resource)
-  - [Kubernetes 認可に対する Azure RBAC (プレビュー)](#azure-rbac-for-kubernetes-authorization-preview)
+## <a name="aks-service-permissions"></a>AKS サービスの権限
 
+クラスターの作成時には、クラスターを作成するユーザーに代わり、AKS によって、クラスターを作成して実行するために必要なリソース (VM や NIC など) が作成または変更されます。 この ID は、クラスターの作成時に作成される、クラスターの ID 権限とは異なります。
+
+### <a name="identity-creating-and-operating-the-cluster-permissions"></a>クラスターの権限を作成および操作する ID
+
+クラスターを作成および操作する ID には、次の権限が必要です。
+
+| 権限 | 理由 |
+|---|---|
+| Microsoft.Compute/diskEncryptionSets/read | ディスク暗号化セット ID を読み取るために必要です。 |
+| Microsoft.Compute/proximityPlacementGroups/write | 近接配置グループを更新する場合に必要です。 |
+| Microsoft.Network/applicationGateways/read <br/> Microsoft.Network/applicationGateways/write <br/> Microsoft.Network/virtualNetworks/subnets/join/action | アプリケーション ゲートウェイを構成し、サブネットに参加するために必要です。 |
+| Microsoft.Network/virtualNetworks/subnets/join/action | カスタム VNET を使用する場合、サブネットのネットワーク セキュリティ グループを構成するために必要です。|
+| Microsoft.Network/publicIPAddresses/join/action <br/> Microsoft.Network/publicIPPrefixes/join/action | Standard Load Balancer において送信パブリック IP を構成するために必要です。 |
+| Microsoft.OperationalInsights/workspaces/sharedkeys/read <br/> Microsoft.OperationalInsights/workspaces/read <br/> Microsoft.OperationsManagement/solutions/write <br/> Microsoft.OperationsManagement/solutions/read <br/> Microsoft.ManagedIdentity/userAssignedIdentities/assign/action | Log Analytics ワークスペース、およびコンテナーの Azure 監視を作成および更新するために必要です。 |
+
+### <a name="aks-cluster-identity-permissions"></a>AKS クラスター ID 権限
+
+クラスターの作成時に作成され、AKS クラスターに関連付けられる AKS クラスター ID によって使用されるのは、以下の権限です。 各アクセス許可は、次の理由で使用されます。
+
+| 権限 | 理由 |
+|---|---|
+| Microsoft.Network/loadBalancers/delete <br/> Microsoft.Network/loadBalancers/read <br/> Microsoft.Network/loadBalancers/write | LoadBalancer サービスのロード バランサーを構成するために必要です。 |
+| Microsoft.Network/publicIPAddresses/delete <br/> Microsoft.Network/publicIPAddresses/read <br/> Microsoft.Network/publicIPAddresses/write | LoadBalancer サービスのパブリック IP を検索して構成するために必要です。 |
+| Microsoft.Network/publicIPAddresses/join/action | LoadBalancer サービスのパブリック IP を構成する場合に必要です。 |
+| Microsoft.Network/networkSecurityGroups/read <br/> Microsoft.Network/networkSecurityGroups/write | LoadBalancer サービスのセキュリティ規則を作成または削除するために必要です。 |
+| Microsoft.Compute/disks/delete <br/> Microsoft.Compute/disks/read <br/> Microsoft.Compute/disks/write <br/> Microsoft.Compute/locations/DiskOperations/read | AzureDisks を構成するために必要です。 |
+| Microsoft.Storage/storageAccounts/delete <br/> Microsoft.Storage/storageAccounts/listKeys/action <br/> Microsoft.Storage/storageAccounts/read <br/> Microsoft.Storage/storageAccounts/write <br/> Microsoft.Storage/operations/read | AzureFile または AzureDisk のストレージ アカウントを構成するために必要です。 |
+| Microsoft.Network/routeTables/read <br/> Microsoft.Network/routeTables/routes/delete <br/> Microsoft.Network/routeTables/routes/read <br/> Microsoft.Network/routeTables/routes/write <br/> Microsoft.Network/routeTables/write | ノードのルート テーブルとルートを構成するために必要です。 |
+| Microsoft.Compute/virtualMachines/read | ゾーン、障害ドメイン、サイズ、データ ディスクなど、VMAS 内の仮想マシンに関する情報を検索するために必要です。 |
+| Microsoft.Compute/virtualMachines/write | VMAS 内の仮想マシンに AzureDisks をアタッチするために必要です。 |
+| Microsoft.Compute/virtualMachineScaleSets/read <br/> Microsoft.Compute/virtualMachineScaleSets/virtualMachines/read <br/> Microsoft.Compute/virtualMachineScaleSets/virtualmachines/instanceView/read | ゾーン、障害ドメイン、サイズ、データ ディスクなど、仮想マシン スケール セット内の仮想マシンに関する情報を検索するために必要です。 |
+| Microsoft.Network/networkInterfaces/write | VMAS 内の仮想マシンをロード バランサーのバックエンド アドレス プールに追加するために必要です。 |
+| Microsoft.Compute/virtualMachineScaleSets/write | 仮想マシン スケール セットをロード バランサーのバックエンド アドレスプールに追加し、仮想マシン スケール セット内のノードをスケール アウトするために必要です。 |
+| Microsoft.Compute/virtualMachineScaleSets/virtualmachines/write | AzureDisks をアタッチし、仮想マシン スケール セットからロード バランサーに仮想マシンを追加するために必要です。 |
+| Microsoft.Network/networkInterfaces/read | VMAS 内の仮想マシン用の内部 IP およびロード バランサーのバックエンド アドレス プールを検索するために必要です。 |
+| Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/read | 仮想マシン スケール セット内の仮想マシン用の内部 IP およびロード バランサーのバックエンド アドレス プールを検索するために必要です。 |
+| Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/ ipconfigurations/publicipaddresses/read | 仮想マシン スケール セット内の仮想マシンのパブリック IP を検索するために必要です。 |
+| Microsoft.Network/virtualNetworks/read <br/> Microsoft.Network/virtualNetworks/subnets/read | 別のリソース グループ内の内部ロード バランサーに対してサブネットが存在するかどうかを確認するために必要です。 |
+| Microsoft.Compute/snapshots/delete <br/> Microsoft.Compute/snapshots/read <br/> Microsoft.Compute/snapshots/write | AzureDisk のスナップショットを構成するために必要です。 |
+| Microsoft.Compute/locations/vmSizes/read <br/> Microsoft.Compute/locations/operations/read | AzureDisk ボリュームの制限を把握する目的で仮想マシンのサイズを検索するために必要です。 |
+
+### <a name="additional-cluster-identity-permissions"></a>追加のクラスター ID 権限
+
+特定の属性を持つクラスターを作成する場合、クラスター ID には次の追加の権限が必要です。 これらの権限は自動的に割り当てられないため、クラスター ID を作成したら、これらの権限をそれに追加する必要があります。
+
+| 権限 | 理由 |
+|---|---|
+| Microsoft.Network/networkSecurityGroups/write <br/> Microsoft.Network/networkSecurityGroups/read | 別のリソース グループ内のネットワーク セキュリティ グループを使用する場合に必要です。 LoadBalancer サービスのセキュリティ規則を構成するために必要です。 |
+| Microsoft.Network/virtualNetworks/subnets/read <br/> Microsoft.Network/virtualNetworks/subnets/join/action | カスタム VNET など、別のリソース グループ内のサブネットを使用する場合に必要です。 |
+| Microsoft.Network/routeTables/routes/read <br/> Microsoft.Network/routeTables/routes/write | カスタム ルート テーブルを持つカスタム VNET など、別のリソース グループ内のルート テーブルに関連付けられているサブネットを使用する場合に必要です。 他のリソース グループ内のサブネットに対してサブネットが既に存在しているかどうかを確認するために必要です。 |
+| Microsoft.Network/virtualNetworks/subnets/read | 別のリソース グループの内部ロード バランサーを使用する場合に必要です。 リソース グループの内部ロード バランサーに対してサブネットが既に存在しているかどうかを確認するために必要です。 |
 
 ## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC)
 
 ユーザーが行うことのできるアクションの詳細なフィルター処理を提供するために、Kubernetes では Kubernetes ロールベースのアクセス制御 (Kubernetes RBAC) が使用されます。 この制御メカニズムを使用して、ユーザーまたはユーザー グループに対して、リソースの作成または変更、実行中のアプリケーション ワークロードのログの表示などの操作を行うアクセス許可を割り当てることができます。 これらのアクセス許可は、付与するスコープを単一の名前空間にすることも、AKS クラスター全体にすることもできます。 Kubernetes の RBAC では、アクセス許可を定義する "*ロール*" を作成し、それらのロールを "*ロールのバインド*" を使用してユーザーに割り当てます。
 
 詳細については、[Kubernetes RBAC 認可の使用][kubernetes-rbac]に関するページをご覧ください。
-
 
 ### <a name="roles-and-clusterroles"></a>ロールと ClusterRole
 
@@ -84,11 +127,11 @@ Azure AD 認証は、OpenID Connect によって AKS クラスターに提供さ
 1. [OAuth 2.0 デバイス承認許可フロー](../active-directory/develop/v2-oauth2-device-code.md)でユーザーをサインインさせるため、kubectl では Azure AD クライアント アプリケーションが使用されます。
 2. Azure AD では、access_token、id_token、refresh_token が提供されます。
 3. ユーザーは、kubeconfig からの access_token を使用して kubectl に対する要求を行います。
-4. kubectl では、APIServer に access_token が送信されます。
+4. kubectl から API Server に access_token が送信されます。
 5. API サーバーは、検証を実行するように Auth Webhook サーバーで構成されます。
 6. 認証 Webhook サーバーでは、Azure AD の公開署名キーをチェックすることによって、JSON Web トークン署名が有効であることが確認されます。
 7. サーバー アプリケーションでは、ユーザーが指定した資格情報を使用して、MS Graph API からログインしたユーザーのグループ メンバーシップが照会されます。
-8. 応答は、アクセス トークンのユーザー プリンシパル名 (UPN) 要求や、オブジェクト ID に基づくユーザーのグループ メンバーシップなどのユーザー情報と共に APIServer に送信されます。
+8. 応答は、アクセス トークンのユーザー プリンシパル名 (UPN) 要求や、オブジェクト ID に基づくユーザーのグループ メンバーシップなどのユーザー情報と共に API Server に送信されます。
 9. API では、Kubernetes のロールと RoleBinding に基づいて認可の決定が実行されます。
 10. 認可されると、API サーバーから kubectl に応答が返されます。
 11. kubectl からユーザーにフィードバックが提供されます。
@@ -192,3 +235,4 @@ Kubernetes と AKS の中心概念の詳細については、次の記事を参�
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
 [operator-best-practices-identity]: operator-best-practices-identity.md
+[upgrade-per-cluster]: ../azure-monitor/insights/container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli

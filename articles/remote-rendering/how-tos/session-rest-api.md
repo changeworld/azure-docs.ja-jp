@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 0af9d6906e038a4b9285a2c302fc0c98345fdbd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d957c5d6521010c7393e2297be16cd7bef41c35f
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90023756"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724070"
 ---
 # <a name="use-the-session-management-rest-api"></a>セッション管理 REST API を使用する
 
@@ -37,11 +37,14 @@ $endPoint = "https://remoterendering.westus2.mixedreality.azure.com"
 
 Remote Rendering アカウントを持っていない場合は、[1 つ作成します](create-an-account.md)。 各リソースは、セッション API 全体で使用される *accountId* によって識別されます。
 
-### <a name="example-script-set-accountid-and-accountkey"></a>スクリプトの例:accountId と accountKey を設定する
+### <a name="example-script-set-accountid-accountkey-and-account-domain"></a>スクリプトの例:accountId、accountKey、アカウント ドメインの設定
+
+アカウント ドメインは、リモート レンダリング アカウントの場所です。 この例では、アカウントの場所はリージョン *eastus* です。
 
 ```PowerShell
 $accountId = "********-****-****-****-************"
 $accountKey = "*******************************************="
+$accountDomain = "eastus.mixedreality.azure.com"
 ```
 
 ## <a name="common-request-headers"></a>共通の要求ヘッダー
@@ -52,7 +55,7 @@ $accountKey = "*******************************************="
 
 ```PowerShell
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-$webResponse = Invoke-WebRequest -Uri "https://sts.mixedreality.azure.com/accounts/$accountId/token" -Method Get -ContentType "application/json" -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
+$webResponse = Invoke-WebRequest -Uri "https://sts.$accountDomain/accounts/$accountId/token" -Method Get -ContentType "application/json" -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
 $response = ConvertFrom-Json -InputObject $webResponse.Content
 $token = $response.AccessToken;
 ```
@@ -73,7 +76,7 @@ $token = $response.AccessToken;
 
 * maxLeaseTime (期間): セッションが自動的に使用停止されるときのタイムアウト値。
 * models (配列): 事前に読み込まれるアセット コンテナーの URL。
-* size (文字列): 構成するサーバー サイズ ([ **"standard"** ](../reference/vm-sizes.md) または [ **"premium"** ](../reference/vm-sizes.md))。 具体的な[サイズの制限](../reference/limits.md#overall-number-of-polygons)を参照してください。
+* size (文字列): 構成するサーバー サイズ ([ **"standard"**](../reference/vm-sizes.md) または [ **"premium"**](../reference/vm-sizes.md))。 具体的な[サイズの制限](../reference/limits.md#overall-number-of-polygons)を参照してください。
 
 **応答:**
 
@@ -122,7 +125,7 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 既存のセッションのパラメーターを照会または変更するためのコマンドがいくつかあります。
 
 > [!CAUTION]
-> すべての REST 呼び出しについて、それらのコマンドを頻繁に呼び出しすぎるとサーバーでスロットルが発生し、最終的にエラーが返されます。 この場合の状態コードは 429 ("要求が多すぎます") になります。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒**の間隔が必要です。
+> すべての REST 呼び出しについて、それらのコマンドを頻繁に呼び出しすぎるとサーバーでスロットルが発生し、最終的にエラーが返されます。 この場合の状態コードは 429 ("要求が多すぎます") になります。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒** の間隔が必要です。
 
 ### <a name="update-session-parameters"></a>セッション パラメーターの更新
 

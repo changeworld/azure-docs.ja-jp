@@ -4,12 +4,12 @@ description: アクティビティ ログで特定のイベントが発生した
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 836fc20b6c3d46766801dce0e2aeda83a217d6a3
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: e0d71c014780637b490c745ed829078d138df675
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536083"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708434"
 ---
 # <a name="alerts-on-activity-log"></a>アクティビティ ログ アラート
 
@@ -18,7 +18,8 @@ ms.locfileid: "95536083"
 アクティビティ ログ アラートは、アラートに指定した条件と一致する新しい[アクティビティのログ イベント](activity-log-schema.md)が発生したときにアクティブになるアラートです。 [Azure アクティビティ ログ](platform-logs-overview.md)に記録されたイベントの順序と量に基づいて、アラートルールが起動します。 アクティビティ ログ アラートは Azure リソースであるため、Azure Resource Manager テンプレートを使用して作成できます。 これらは、Azure Portal で作成、更新、削除することもできます。 この記事では、アクティビティ ログ アラートの背後の概念について説明します。 アクティビティ ログ アラート ルールの作成と使用の詳細については、[アクティビティ ログ アラートの作成と管理](alerts-activity-log.md)に関するページをご覧ください。
 
 > [!NOTE]
-> アクティビティ ログのアラートのカテゴリに含まれるイベントに対して、アラートを作成することは **できません**。
+> * アクティビティ ログのアラートのカテゴリに含まれるイベントに対して、アラートを作成することは **できません**。
+> * カテゴリが Security の Activity Log Alerts は [ServiceNow](https://docs.microsoft.com/azure/security-center/export-to-siem) への[新しいアップグレードされたフロー](https://docs.microsoft.com/azure/security-center/continuous-export?tabs=azure-portal)でも定義できます
 
 通常、アクティビティ ログ アラートを作成して、通知を受け取るのは次の場合です。
 

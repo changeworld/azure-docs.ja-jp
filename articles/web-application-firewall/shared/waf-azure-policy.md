@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: fd474a32b4a517230a82615065d7815c04140045
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 7798d7e960286d4f8aa971eb2eb0b03d24bd6360
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432970"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589459"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Azure Web アプリケーション ファイアウォールと Azure Policy
 
@@ -47,7 +47,7 @@ WAF リソースを管理するための組み込みの Azure Policy 定義が�
     2.  **除外**:ポリシーの割り当てから除外するリソースをスコープから選択します。
     3.  **ポリシーの定義**:除外対象のスコープに適用するポリシー定義を選択します。 検索バーに「Web アプリケーション ファイアウォール」と入力して、関連する Web アプリケーション ファイアウォール Azure Policy を選択します。
 
-:::image type="content" source="../media/waf-azure-policy/policy-listing.png" alt-text="[ポリシーの割り当て] ページの [基本] タブ":::
+:::image type="content" source="../media/waf-azure-policy/policy-listing.png" alt-text="[使用可能な定義] ページの [ポリシー定義] タブのスクリーンショット。":::
 
 5.  **[パラメーター]** タブを選択し、ポリシーの割り当てのパラメーターを更新します。 パラメーター名の横にある情報アイコンをポイントすると、パラメーターの機能がさらに明確になります。
 

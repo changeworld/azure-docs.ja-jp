@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: f82ea154d5949f4d229ac76e7a7ce2a89d15ac13
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7e27c3dd6e70d9a532c326d8187d82e14bf7ddda
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025669"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591618"
 ---
 # <a name="cicd-for-custom-speech"></a>Custom Speech の CI/CD
 
@@ -31,7 +31,7 @@ ms.locfileid: "95025669"
 
 これらのワークフローの目的は、各 Custom Speech モデルの認識の正確性を確実に以前のビルドよりも向上させることです。 テスト データやトレーニング データの更新によって正確性が向上する場合、これらのワークフローによって新しい Custom Speech エンドポイントが作成されます。
 
-GitHub や Azure DevOps などの Git サーバーを使用すると、マージや pull request などの特定の Git イベントが発生したときに、自動ワークフローを実行できます。 たとえば、テスト データの更新が "*マスター*" ブランチにプッシュされたときに、CI ワークフローをトリガーできます。 Git サーバーによってツールも異なりますが、ビルド サーバー上で実行されるように、スクリプト コマンドライン インターフェイス (CLI) コマンドを作成することができます。
+GitHub や Azure DevOps などの Git サーバーを使用すると、マージや pull request などの特定の Git イベントが発生したときに、自動ワークフローを実行できます。 たとえば、テスト データの更新が "*メイン*" ブランチにプッシュされたときに、CI ワークフローをトリガーできます。 Git サーバーによってツールも異なりますが、ビルド サーバー上で実行されるように、スクリプト コマンドライン インターフェイス (CLI) コマンドを作成することができます。
 
 その過程で、ワークフローでは、元のコミットまたはバージョンまでさかのぼって追跡できるように、データ、テスト、テスト ファイル、モデル、エンドポイントに名前を付けて保存するようにします。 また、このような資産に名前を付けると、テスト データとトレーニング データを更新した後に作成された資産を簡単に確認できるようになります。
 
@@ -84,7 +84,7 @@ Custom Speech 用に既に実装されている DevOps ソリューションに�
 
 - テンプレート リポジトリを GitHub アカウントにコピーし、GitHub Actions CI/CD ワークフロー用の Azure リソースと[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を作成します。
 - "[開発者の内部ループ](https://mitchdenny.com/the-inner-loop/)" の手順を確認します。 機能ブランチのトレーニングおよびテスト データを更新し、一時的な開発モデルを使用して変更をテストし、pull request を発生させて変更を提案および確認します。
-- トレーニング データが pull request で "*マスター*" に更新されたら、GitHub Actions CI ワークフローを使用してモデルをトレーニングします。
+- トレーニング データが pull request で "*メイン*" に更新されたら、GitHub Actions CI ワークフローを使用してモデルをトレーニングします。
 - 自動正確性テストを実行し、モデルの[ワード エラー率](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER) を確立します。 テスト結果を Azure BLOB に格納します。
 - WER が改善されたら、CD ワークフローを実行してエンドポイントを作成します。
 

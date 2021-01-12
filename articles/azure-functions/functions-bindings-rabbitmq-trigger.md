@@ -4,20 +4,20 @@ description: RabbitMQ メッセージの作成時に Azure 関数を実行する
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/13/2020
+ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: e7095c08c385457bddf6d70d345c4f47073b4adb
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 4ba19fdf700790d89fe04867985fb803c3b0a2fc
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505678"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760403"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Functions の RabbitMQ トリガーの概要
 
 > [!NOTE]
-> RabbitMQ のバインドは **Windows Premium** プランでのみ完全にサポートされています。 現在、従量課金と Linux はサポートされていません。
+> RabbitMQ バインドは、**Premium および Dedicated** プランでのみ完全にサポートされています。 従量課金はサポートされていません。
 
 RabbitMQ キューからのメッセージに応答するには、RabbitMQ トリガーを使用します。
 
@@ -32,7 +32,7 @@ RabbitMQ キューからのメッセージに応答するには、RabbitMQ ト�
 ```cs
 [FunctionName("RabbitMQTriggerCSharp")]
 public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnection")] BasicDeliverEventArgs args,
+    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] BasicDeliverEventArgs args,
     ILogger logger
     )
 {
@@ -43,18 +43,23 @@ public static void RabbitMQTrigger_BasicDeliverEventArgs(
 次の例は、メッセージを POCO として読み取る方法を示しています。
 
 ```cs
-public class TestClass
+namespace Company.Function
 {
-    public string x { get; set; }
-}
+    public class TestClass
+    {
+        public string x { get; set; }
+    }
 
-[FunctionName("RabbitMQTriggerCSharp")]
-public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnection")] TestClass pocObj,
-    ILogger logger
-    )
-{
-    logger.LogInformation($"C# RabbitMQ queue trigger function processed message: {Encoding.UTF8.GetString(pocObj)}");
+    public class RabbitMQTriggerCSharp{
+        [FunctionName("RabbitMQTriggerCSharp")]
+        public static void RabbitMQTrigger_BasicDeliverEventArgs(
+            [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
+            ILogger logger
+            )
+        {
+            logger.LogInformation($"C# RabbitMQ queue trigger function processed message: {pocObj}");
+        }
+    }
 }
 ```
 
@@ -74,7 +79,7 @@ JSON オブジェクトと同様に、メッセージが C# オブジェクト�
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -82,7 +87,7 @@ JSON オブジェクトと同様に、メッセージが C# オブジェクト�
 
 C# スクリプト コードを次に示します。
 
-```csx
+```C#
 using System;
 
 public static void Run(string myQueueItem, ILogger log)
@@ -105,7 +110,7 @@ public static void Run(string myQueueItem, ILogger log)
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -133,14 +138,12 @@ RabbitMQ のバインドは *function.json* で定義され、そこで *type* �
             "name": "myQueueItem",
             "type": "rabbitMQTrigger",
             "direction": "in",
-            "queueName": "",
-            "connectionStringSetting": ""
+            "queueName": "queue",
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
 ```
-
-*_\_init_\_.py* のコードによってパラメーターが `func.RabbitMQMessage` として宣言され、関数でメッセージを読み取ることができるようになります。
 
 ```python
 import logging
@@ -157,7 +160,7 @@ def main(myQueueItem) -> None:
 ```java
 @FunctionName("RabbitMQTriggerExample")
 public void run(
-    @RabbitMQTrigger(connectionStringSetting = "rabbitMQConnection", queueName = "queue") String input,
+    @RabbitMQTrigger(connectionStringSetting = "rabbitMQConnectionAppSetting", queueName = "queue") String input,
     final ExecutionContext context)
 {
     context.getLogger().info("Java HTTP trigger processed a request." + input);
@@ -182,7 +185,7 @@ public static void RabbitMQTest([RabbitMQTrigger("queue")] string message, ILogg
 }
 ```
 
-完全な例については、「C# の例」を参照してください。
+完全な例については、C# の[例](#example)を参照してください。
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
@@ -214,11 +217,11 @@ public static void RabbitMQTest([RabbitMQTrigger("queue")] string message, ILogg
 |**direction** | 該当なし | "in" に設定する必要があります。|
 |**name** | 該当なし | 関数コード内のキューを表す変数の名前。 |
 |**queueName**|**QueueName**| メッセージを受信するキューの名前です。 |
-|**hostName**|**HostName**|(ConnectStringSetting を使用する場合は省略可能) <br>キューのホスト名 (例:10.26.45.210)|
-|**userNameSetting**|**UserNameSetting**|(ConnectionStringSetting を使用している場合は省略可能) <br>キューにアクセスするための名前 |
-|**passwordSetting**|**PasswordSetting**|(ConnectionStringSetting を使用している場合は省略可能) <br>キューにアクセスするためのパスワード|
+|**hostName**|**HostName**|(ConnectStringSetting を使用する場合は無視されます) <br>キューのホスト名 (例:10.26.45.210)|
+|**userNameSetting**|**UserNameSetting**|(ConnectionStringSetting を使用する場合は無視されます) <br>キューにアクセスするためのユーザー名を含むアプリ設定の名前。 例: UserNameSetting: "%< UserNameFromSettings >%"|
+|**passwordSetting**|**PasswordSetting**|(ConnectionStringSetting を使用する場合は無視されます) <br>キューにアクセスするためのパスワードを含むアプリ設定の名前。 例: PasswordSetting: "%< PasswordFromSettings >%"|
 |**connectionStringSetting**|**ConnectionStringSetting**|RabbitMQ メッセージ キュー接続文字列を含むアプリ設定の名前。 接続文字列は、local.settings.json のアプリ設定ではなく、直接指定した場合、トリガーは機能しないことに注意してください。 (例:*function.json* の場合: connectionStringSetting: "rabbitMQConnection" <br> *local.settings.json* の場合: "rabbitMQConnection" : "< ActualConnectionstring >")|
-|**port**|**[ポート]**|使用されているポートを取得または設定します。 既定値は 0 です。|
+|**port**|**[ポート]**|(ConnectionStringSetting を使用する場合は無視されます) 使用されるポートを取得または設定します。 既定値は 0 です。これは rabbitmq クライアントの既定のポート設定を指します (5672)。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -226,31 +229,29 @@ public static void RabbitMQTest([RabbitMQTrigger("queue")] string message, ILogg
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-メッセージには次のパラメーター型を使用できます。
+既定のメッセージの種類は [RabbitMQ Event](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) であり、RabbitMQ Event の `Body` プロパティは次の一覧に示されている型として読み取ることができます。
 
-* [RabbitMQ イベント](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) - RabbitMQ メッセージの既定の形式。
-  * `byte[]`- RabbitMQ イベントの 'Body' プロパティ経由の場合。
-* `string` - メッセージがテキストである場合。
 * `An object serializable as JSON` - メッセージが有効な JSON 文字列として配信されている場合。
+* `string`
+* `byte[]`
 * `POCO` - メッセージが C# オブジェクトとして書式設定されている場合。 完全な例については、C# の[例](#example)を参照してください。
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
-メッセージには次のパラメーター型を使用できます。
+既定のメッセージの種類は [RabbitMQ Event](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) であり、RabbitMQ Event の `Body` プロパティは次の一覧に示されている型として読み取ることができます。
 
-* [RabbitMQ イベント](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) - RabbitMQ メッセージの既定の形式。
-  * `byte[]`- RabbitMQ イベントの 'Body' プロパティ経由の場合。
-* `string` - メッセージがテキストである場合。
 * `An object serializable as JSON` - メッセージが有効な JSON 文字列として配信されている場合。
-* `POCO` - メッセージが C# オブジェクトとして書式設定されている場合。
+* `string`
+* `byte[]`
+* `POCO` - メッセージが C# オブジェクトとして書式設定されている場合。 完全な例については、C# スクリプトの[例](#example)を参照してください。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-RabbitMQ メッセージが文字列または JSON オブジェクトとして関数に渡されます。
+キュー メッセージは、context.bindings.<NAME> を介して使用できます。 ここでの <NAME> は、function.json で定義されている名前と一致します。 ペイロードが JSON の場合、値はオブジェクトに逆シリアル化されます。
 
 # <a name="python"></a>[Python](#tab/python)
 
-RabbitMQ メッセージが文字列または JSON オブジェクトとして関数に渡されます。
+Python の[例](#example)を参照してください。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -282,16 +283,16 @@ Java の[属性と注釈](#attributes-and-annotations)に関するページを�
 |プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |prefetchCount|30|メッセージの受信者が同時に要求およびキャッシュできるメッセージ数を取得または設定します。|
-|queueName|該当なし| メッセージを受信するキューの名前です。 |
-|connectionString|該当なし|RabbitMQ メッセージ キュー接続文字列を含むアプリ設定の名前。 接続文字列は、local.settings.json のアプリ設定ではなく、直接指定した場合、トリガーは機能しないことに注意してください。|
-|port|0|スケーリングされたインスタンスごとに同時に処理できるセッションの最大数。|
+|queueName|該当なし| メッセージを受信するキューの名前です。|
+|connectionString|該当なし|RabbitMQ メッセージ キューの接続文字列。 接続文字列は、アプリ設定ではなく、ここで直接指定されることに注意してください。|
+|port|0|(connectionString を使用する場合は無視されます) 使用されるポートを取得または設定します。 既定値は 0 です。これは rabbitmq クライアントの既定のポート設定を指します (5672)。|
 
 ## <a name="local-testing"></a>ローカル テスト
 
 > [!NOTE]
 > connectionString は、"hostName"、"userName"、および "password" よりも優先されます。 これらがすべて設定されている場合、connectionString によって他の 2 つがオーバーライドされます。
 
-接続文字列を使用せずにローカルでテストする場合は、*host.json* の "rabbitMQ" セクションで、"hostName" 設定と "username" および "password" を設定する必要があります。
+接続文字列を使用せずにローカルでテストする場合は、該当する場合、*host.json* の "rabbitMQ" セクションで、"hostName" 設定と "userName" および "password" を設定する必要があります。
 
 ```json
 {
@@ -300,8 +301,8 @@ Java の[属性と注釈](#attributes-and-annotations)に関するページを�
         "rabbitMQ": {
             ...
             "hostName": "localhost",
-            "username": "<your username>",
-            "password": "<your password>"
+            "username": "userNameSetting",
+            "password": "passwordSetting"
         }
     }
 }
@@ -309,9 +310,24 @@ Java の[属性と注釈](#attributes-and-annotations)に関するページを�
 
 |プロパティ  |Default | 説明 |
 |---------|---------|---------|
-|hostName|該当なし|(ConnectStringSetting を使用する場合は省略可能) <br>キューのホスト名 (例:10.26.45.210)|
-|userName|該当なし|(ConnectionStringSetting を使用している場合は省略可能) <br>キューにアクセスするための名前 |
-|password|該当なし|(ConnectionStringSetting を使用している場合は省略可能) <br>キューにアクセスするためのパスワード|
+|hostName|該当なし|(connectionString を使用する場合は無視されます) <br>キューのホスト名 (例:10.26.45.210)|
+|userName|該当なし|(connectionString を使用する場合は無視されます) <br>キューにアクセスするための名前 |
+|password|該当なし|(connectionString を使用する場合は無視されます) <br>キューにアクセスするためのパスワード|
+
+
+## <a name="enable-runtime-scaling"></a>ランタイム スケールを有効にする
+
+RabbitMQ トリガーを複数のインスタンスにスケールアウトするには、**ランタイム スケールの監視** 設定を有効にする必要があります。 
+
+ポータルでは、この設定はご利用の関数アプリの **[構成]**  >  **[関数のランタイム設定]** の下で見つけることができます。
+
+:::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
+
+CLI では、次のコマンドを使用して、**ランタイム スケールの監視** を有効にすることができます。
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
+```
 
 ## <a name="monitoring-rabbitmq-endpoint"></a>RabbitMQ エンドポイントの監視
 特定の RabbitMQ エンドポイントのキューと交換を監視するには、次のようにします。

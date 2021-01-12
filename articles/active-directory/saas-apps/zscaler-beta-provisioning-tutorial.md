@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 59784b6e618e875a6eedc947ce75afdf3bd1df74
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 0d4945ee97a46c78aac3c4ac508c5f89f5942296
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327408"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937163"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>チュートリアル:Zscaler Beta を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -80,6 +80,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 > [!TIP]
 > Zscaler Beta では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Zscaler Beta シングル サインオンのチュートリアル](zscaler-beta-tutorial.md)に関するページで説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+
+> [!NOTE]
+> ユーザーとグループをプロビジョニングしたりプロビジョニング解除したりする際は、グループ メンバーシップが適切に更新されるよう、定期的にプロビジョニングをやり直すことをお勧めします。 そうすることによって、サービスによって強制的にすべてのグループが再評価され、メンバーシップが更新されます。  
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-beta-in-azure-ad"></a>Azure AD で Zscaler Beta の自動ユーザー プロビジョニングを構成するには
 

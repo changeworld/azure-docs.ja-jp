@@ -5,15 +5,15 @@ author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/11/2020
-ms.openlocfilehash: f1aad2464e4979ecbf35deceaad4de70e05b3004
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/15/2020
+ms.openlocfilehash: 2e55b1f18648ce6970b81b943cd8a6a0fc3e7e81
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573665"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705134"
 ---
-# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>マネージド ID (プレビュー) を使用して、Azure Blob Storage 出力に対して Azure Stream Analytics ジョブを認証する
+# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>マネージド ID (プレビュー) を使用して、Azure Blob Storage に対して Azure Stream Analytics ジョブを認証する
 
 Azure Blob Storage への出力に対して[マネージド ID 認証](../active-directory/managed-identities-azure-resources/overview.md) (プレビュー) を使用すると、Stream Analytics ジョブで、接続文字列を使用せずに、ストレージ アカウントに直接アクセスできます。 この機能により、セキュリティが向上し、さらに Azure 内の仮想ネットワーク (VNET) のストレージ アカウントにデータを書き込むことができます。
 
@@ -98,7 +98,7 @@ Azure Resource Manager を使用すると、Stream Analytics ジョブのデプ�
     次の Azure CLI コマンドを使用して、上記のジョブをリソース グループ **ExampleGroup** にデプロイできます。
 
     ```azurecli
-    az group deployment create --resource-group ExampleGroup -template-file StreamingJob.json
+    az deployment group create --resource-group ExampleGroup -template-file StreamingJob.json
     ```
 
 2. ジョブが作成された後、Azure Resource Manager を使用して、そのジョブの完全な定義を取得できます。

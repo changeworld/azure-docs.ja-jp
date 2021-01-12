@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 13959c4a3c798656efdc72b5c8e5f96e4fb2392a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2b811b1ace646cc4e0a93b937fbb90cfbf7aec0f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011899"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704896"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -241,23 +241,6 @@ nss-pem パッケージ [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/n
 3. OMI を再起動します。 <br/>
 `sudo scxadmin -restart`
 
-## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>問題点:Azure portal にデータが表示されない
-
-### <a name="probable-causes"></a>考えられる原因
-
-- Azure Monitor へのオンボードに失敗しました
-- Azure Monitor への接続がブロックされています
-- Linux 用 Log Analytics エージェントのデータがバックアップされています
-
-### <a name="resolution"></a>解像度
-1. ファイル `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` が存在するかどうかをチェックして、Azure Monitor のオンボードに成功したかどうかを確認します。
-2. `omsadmin.sh` コマンドライン命令を使用して再オンボードします。
-3. プロキシを使用する場合は、上記のプロキシの解決手順を参照してください。
-4. 場合によっては、Linux 用 Log Analytics エージェントがサービスと通信できないときに、エージェントのデータが最大バッファー サイズ (50 MB) までキューイングされます。 `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]` コマンドを実行して、エージェントを再起動する必要があります。 
-
-    >[!NOTE]
-    >この問題は、エージェント バージョン 1.1.0-28 以降で修正されます。
-
 
 ## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>問題点:転送された Syslog メッセージが表示されない 
 
@@ -335,6 +318,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 * Azure Monitor への接続がブロックされています
 * 仮想マシンが再起動されました
 * Linux 用 Log Analytics エージェント パッケージによってインストールされたものより新しいバージョンの OMI パッケージに手動でアップグレードされました
+* OMI がフリーズし、OMS エージェントがブロックされています
 * DSC リソースにより、"*クラスが見つからない*" というエラーが `omsconfig.log` ログ ファイルに記録されています
 * Log Analytics エージェントのデータがバックアップされています
 * DSC ログの "*現在の構成が存在しません。-Path パラメーターで構成ファイルを指定して Start-DscConfiguration コマンドを実行し、現在の構成を先に作成します。* " `omsconfig.log` ログ ファイルに、`PerformRequiredConfigurationChecks` 操作に関するログ メッセージが存在しません。
@@ -345,6 +329,7 @@ omsagent.log で `[error]: unexpected error error_class=Errno::EADDRINUSE error=
 4. プロキシを使用している場合は、上記のプロキシのトラブルシューティング手順を確認します。
 5. 一部の Azure ディストリビューション システムでは、仮想マシンの再起動後に、omid OMI サーバー デーモンが開始しません。 これにより、Audit、ChangeTracking、または UpdateManagement ソリューション関連データが表示されません。 回避するには、`sudo /opt/omi/bin/service_control restart` を実行して omi サーバーを手動で開始します。
 6. OMI パッケージを手動で新しいバージョンにアップグレードした後、Log Analytics エージェントが継続して機能するには、手動で再起動する必要があります。 この手順は、OMI サーバーがアップグレード後に自動的に起動しない一部のディストリビューションで必要です。 `sudo /opt/omi/bin/service_control restart` を実行して OMI を再起動します。
+* 場合によっては、OMI がフリーズすることがあります。 OMS エージェントは、OMI を待機するブロック状態になり、すべてのデータ収集がブロックされる可能性があります。 OMS エージェント プロセスは実行されますが、アクティビティは発生しません。これは、`omsagent.log` に新しいログ行 (送信されたハートビートなど) が存在しないことからもわかります。 `sudo /opt/omi/bin/service_control restart` を使用して OMI を再起動し、エージェントを復旧します。
 7. DSC リソースの "*クラスが見つからない*" というエラーが omsconfig.log に記録されている場合は、`sudo /opt/omi/bin/service_control restart` を実行します。
 8. 場合によっては、Linux 用 Log Analytics エージェントが Azure Monitor に接続できないとき、エージェント上のデータが次のバッファー サイズ全体までバックアップされます。50 MB。 `/opt/microsoft/omsagent/bin/service_control restart` コマンドを実行して、エージェントを再起動する必要があります。
 

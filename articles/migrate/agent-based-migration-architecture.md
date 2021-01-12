@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1389b03d87beb24cba50fec0a782de8b7f935557
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: c605c21307cda874f34ae5ea9f4e4959e5e6c183
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753894"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861952"
 ---
 # <a name="agent-based-migration-architecture"></a>エージェントベースの移行アーキテクチャ
 
@@ -99,7 +99,7 @@ VMware VM をレプリケートする場合、[VMware 用の Site Recovery Deplo
 --- | --- | --- | --- | ---
 8 vCPU (2 ソケット * 4 コア \@ 2.5 GHz) | 16 GB | 300 GB | 500 GB 以下 | 100 台未満のマシン 
 12 vCPU (2 ソケット * 6 コア \@ 2.5 GHz) | 18 GB | 600 GB | 501 GB ～ 1 TB | 100 台 ～ 150 台のマシン
-16 vCPU (2 ソケット * 8 コア \@ 2.5 GHz) | 32 G1 |  1 TB (テラバイト) | 1 TB ～ 2 TB | 151 台 ～ 200 台のマシン
+16 vCPU (2 ソケット * 8 コア \@ 2.5 GHz) | 32 GB |  1 TB (テラバイト) | 1 TB ～ 2 TB | 151 台 ～ 200 台のマシン
 
 ### <a name="sizing-scale-out-process-servers"></a>スケールアウト プロセス サーバーのサイズ設定
 
@@ -108,7 +108,7 @@ VMware VM をレプリケートする場合、[VMware 用の Site Recovery Deplo
 **プロセス サーバー** | **データ キャッシュ用の空き領域** | **チャーン レート** | **レプリケーションの制限**
 --- | --- | --- | --- 
 4 vCPU (2 ソケット * 2 コア \@ 2.5 GHz)、8 GB メモリ | 300 GB | 250 GB 以下 | 最大 85 台のマシン 
-8 vCPU (2 ソケット * 4 コア \@ 2.5 GHz)、12 GB メモリ | 600 GB | 251 GB ～ 1 TB    | 86 台 ～ 150 台のマシン
+8 vCPU (2 ソケット * 4 コア \@ 2.5 GHz)、12 GB メモリ | 600 GB | 251 GB ～ 1 TB | 86 台 ～ 150 台のマシン
 12 vCPU (2 ソケット * 6 コア \@ 2.5 GHz)、24 GB メモリ | 1 TB (テラバイト) | 1 ～ 2 TB | 151 台 ～ 225 台のマシン
 
 ## <a name="throttle-upload-bandwidth"></a>アップロード帯域幅を調整します。

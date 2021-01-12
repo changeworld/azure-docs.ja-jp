@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b40171d87ccffa7c5c4fb72d2e79af015b1d16f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: a78cf9b7d78078030ac0db8bd2f0fddb93a8dda4
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859965"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881398"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory で Microsoft 365 グループに秘密度ラベルを割り当てる
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアン�
     ```
 
     > [!NOTE]
-    > この Azure AD 組織に対してグループ設定が作成されていない場合は、まず設定を作成する必要があります。 「[グループの設定を構成するための Azure Active Directory コマンドレット](../enterprise-users/groups-settings-cmdlets.md)」の手順に従って、この Azure AD 組織のグループ設定を作成します。
+    > この Azure AD 組織のグループ設定が作成されていない場合、上記のコマンドレットで、"引数が null であるため、パラメーター 'Id' にバインドできません" というエラーが表示されます。 この場合、まず設定を作成する必要があります。 「[グループの設定を構成するための Azure Active Directory コマンドレット](../enterprise-users/groups-settings-cmdlets.md)」の手順に従って、この Azure AD 組織のグループ設定を作成します。
 
 1. 次に、現在のグループ設定を表示します。
 

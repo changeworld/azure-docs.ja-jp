@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 17fc2db8c51c06601852037c38b9cfc2096c811f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: ba64f5972d77637ec830fe6b872af66363d6c1bd
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109757"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740047"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの BLOB ストレージと Azure Data Lake Gen2 出力
 
@@ -63,9 +63,5 @@ Azure Blob Storage を使用すると、大量の非構造化データをクラ�
 
 ## <a name="next-steps"></a>次のステップ
 
+* [マネージド ID (プレビュー) を使用して、Azure Blob Storage に対して Azure Stream Analytics ジョブを認証する](blob-output-managed-identity.md)
 * [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
-* [クイック スタート:Azure CLI を使用して Azure Stream Analytics ジョブを作成する](quick-create-azure-cli.md)
-* [クイック スタート: ARM テンプレートを使用して Azure Stream Analytics ジョブを作成する](quick-create-azure-resource-manager.md)
-* [クイック スタート: Azure PowerShell を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-powershell.md)
-* [クイック スタート:Visual Studio を使用して Azure Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
-* [クイック スタート: Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-visual-studio-code.md)

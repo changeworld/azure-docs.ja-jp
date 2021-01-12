@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7e8746d9b29b0b4af30ba799628328acc3fd8bc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17c0e63b02d61b3aecf70624bc97a468d18f66fe
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931279"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607509"
 ---
 # <a name="what-is-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale とは
 
@@ -43,14 +43,14 @@ Azure Arc 対応 PostgreSQL Hyperscale は、Azure Arc 対応データ サービ
 
 ## <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale
 
-:::image type="content" source="media/postgres-hyperscale/postgresql-hyperscale-arc.png" alt-text="Azure SQL Database for PostgreSQL Hyperscale (Citus)":::
+:::image type="content" source="media/postgres-hyperscale/postgresql-hyperscale-arc.png" alt-text="Azure Arc 対応 PostgreSQL Hyperscale":::
 
 これは、Azure Arc 対応データ サービスで使用できる Postgres データベース エンジンのハイパースケール フォーム ファクターです。 これもまた、ハイパースケール エクスペリエンスを可能にする Citus 拡張機能を備えています。 このフォーム ファクターでは、システムをホストするインフラストラクチャを顧客が提供し、それらのシステムを運用します。
 
 ## <a name="next-steps"></a>次のステップ
 - **作成**
-   > **試してみたい場合**  
-   > Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE)、または Azure VM 上で [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) をすぐに開始できます。
+   > **試用をご希望ですか。利用できる Kubernetes クラスターがありませんか。サンドボックスを提供します。**  
+   > Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE)、または Azure VM 上で [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) をすぐに開始できます。
 
    - **作成:**
       - [クライアント ツールをインストールする](install-client-tools.md)

@@ -1,14 +1,14 @@
 ---
 title: 仮想マシンのコンテンツの監査を学習する
-description: Azure Policy がゲスト構成エージェントを使用して仮想マシン内の設定を監査するしくみについて説明します。
+description: Azure Policy がゲスト構成クライアントを使用して仮想マシン内の設定を監査するしくみについて説明します。
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7d7aa14038c834747240d17441c61d000ac6bb74
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 58fe1c630de4abfb2fe04ddedb45b360cfebd423
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347882"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862321"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
@@ -58,7 +58,7 @@ Azure Policy では、Azure 内で実行するマシンと [Arc に接続され�
 
 ## <a name="supported-client-types"></a>サポートされているクライアントの種類
 
-ゲスト構成ポリシー定義には、新しいバージョンが含まれます。 ゲスト構成エージェントに互換性がない場合、Azure Marketplace で入手できる古いバージョンのオペレーティング システムは除外されます。 次の表は、Azure イメージでサポートされているオペレーティング システムの一覧を示します。
+ゲスト構成ポリシー定義には、新しいバージョンが含まれます。 ゲスト構成クライアントに互換性がない場合、Azure Marketplace で入手できる古いバージョンのオペレーティング システムは除外されます。 次の表は、Azure イメージでサポートされているオペレーティング システムの一覧を示します。
 
 |Publisher|名前|バージョン|
 |-|-|-|

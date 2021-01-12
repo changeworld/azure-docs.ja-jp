@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7ca9b21838d35b54b4ed84d5aaf3aa797b02d9e0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: dd0b6833c4c51c218497cea4fec04390200edff4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630770"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935358"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>チュートリアル:Azure Stack Edge Pro R の配置を準備する
 
-これは、Azure Stack Edge Pro R を完全に配置するために必要な一連の配置チュートリアルの最初のチュートリアルです。このチュートリアルでは、Azure Stack Edge リソースを配置するために Azure portal を準備する方法を説明します。 このチュートリアルでは、無停電電源装置 (UPS) に付属の 1 ノードの Azure Stack Edge Pro R デバイスを使用します。
+このチュートリアルは、Azure Stack Edge Pro R を完全に配置するために必要な一連の配置チュートリアルの 1 つ目です。このチュートリアルでは、Azure Stack Edge リソースを配置するために Azure portal を準備する方法を説明します。 このチュートリアルでは、無停電電源装置 (UPS) に付属の 1 ノードの Azure Stack Edge Pro R デバイスを使用します。
 
 セットアップと構成のプロセスを完了するには、管理者特権が必要です。 ポータルの準備は 10 分ほどで完了します。
 
@@ -37,7 +37,7 @@ Azure Stack Edge Pro R を配置するには、次の順序どおりにチュー
 | --- | --- |
 | **準備** |後で行う配置のための準備として、これらの手順を完了する必要があります。 |
 | **[配置の構成のチェック リスト](#deployment-configuration-checklist)** |このチェック リストを使用して、デプロイ前およびデプロイ中に情報を収集し、記録します。 |
-| **[デプロイの前提条件](#prerequisites)** |これらの前提条件を使用して、デプロイに対する環境の準備が完了していることを確認します。 |
+| **[デプロイの前提条件](#prerequisites)** |これらの前提条件を使用して、配置に対する環境の準備が完了していることを確認します。 |
 |  | |
 |**配置のチュートリアル** |これらのチュートリアルは、ご利用の Azure Stack Edge Pro R デバイスを運用環境に配置するために必要です。 |
 |**[1. デバイスのために Azure portal を準備する](azure-stack-edge-pro-r-deploy-prep.md)** |Azure Stack Box Edge 物理デバイスを設置する前に、Azure Stack Edge リソースを作成して構成します。 |
@@ -47,7 +47,7 @@ Azure Stack Edge Pro R を配置するには、次の順序どおりにチュー
 |**[5.デバイス設定を構成する](azure-stack-edge-pro-r-deploy-set-up-device-update-time.md)** |デバイス名と DNS ドメインを割り当てて、更新サーバーとデバイスの時刻を構成します。 |
 |**[6.セキュリティ設定を構成する](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)** |ご利用のデバイスの証明書、VPN、保存時の暗号化を構成します。 デバイスで生成された証明書を使用するか、独自の証明書を使用します。   |
 |**[7.デバイスをアクティブにする](azure-stack-edge-pro-r-deploy-activate.md)** |サービスからのアクティブ化キーを使用して、デバイスをアクティブ化します。 デバイスは、SMB または NFS 共有を設定するか、REST 経由で接続できる状態になります。 |
-|**[8.コンピューティングを構成する](azure-stack-edge-gpu-deploy-configure-compute.md)** |デバイスでコンピューティング ロールを構成します。 Kubernetes クラスターも作成します。 |
+|**[8.コンピューティングを構成する](azure-stack-edge-gpu-deploy-configure-compute.md)** |デバイスでコンピューティング ロールを構成します。 Kubernetes クラスターも作成されます。 |
 
 これで、Azure Portal をセットアップする準備が整いました。
 
@@ -109,7 +109,7 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
     
     |設定  |値  |
     |---------|---------|
-    |サブスクリプション    |事前に選択した内容に応じて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
+    |サブスクリプション    |サブスクリプションは、前の選択に基づいて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
     |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。     |
 
 7. 次の **インスタンス情報** を入力または選択します。
@@ -150,7 +150,7 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
 
 Microsoft は受け取った注文を確認し、発送の詳細と共にお客様に (メールで) 連絡します。
 
-<!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)-->
+<!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png) - If this is restored, it must go above "After the resource is successfully created." The azure-stack-edge-resource-1.png would seem superfluous in that case.--> 
 
 注文処理の間に問題が発生した場合は、[注文の問題のトラブルシューティング](azure-stack-edge-troubleshoot-ordering.md)に関する記事を参照してください。
 
@@ -158,20 +158,17 @@ Microsoft は受け取った注文を確認し、発送の詳細と共にお客�
 
 Azure Stack Edge リソースが起動して実行中になったら、アクティブ化キーを取得する必要があります。 このキーを使用して、Azure Stack Edge Pro デバイスのアクティブ化とリソースへの接続を行います。 このキーは Azure portal ですぐに入手できます。
 
-1. 作成したリソースを選択します。 **[概要]** を選択し、 **[デバイスの設定]** を選択します。
+1. 自分が作成したリソースを選択して、 **[概要]** を選択します。
 
-    ![[デバイスの設定] を選択する](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-2.png)
+2. 右ペインで、Azure キー コンテナーの名前を入力するか、既定の名前をそのまま使用します。 キー コンテナーの名前は 3 から 24 文字で指定できます。
 
-2. **[アクティブ化]** タイルで、Azure キー コンテナーの名前を指定するか、既定の名前をそのまま使用します。 キー コンテナーの名前は 3 から 24 文字で指定できます。 
+   デバイスでアクティブ化される Azure Stack Edge リソースごとに、キー コンテナーが作成されます。 キー コンテナーを使用すると、シークレットを格納してアクセスできます。たとえば、サービスのチャネル整合性キー (CIK) をキー コンテナーに格納できます。
 
-    デバイスでアクティブ化される Azure Stack Edge リソースごとに、キー コンテナーが作成されます。 キー コンテナーを使用すると、シークレットを格納してアクセスできます。たとえば、サービスのチャネル整合性キー (CIK) をキー コンテナーに格納できます。 
+   キー コンテナーの名前を指定したら、 **[Generate activation key]\(アクティブ化キーの生成\)** を選択して、アクティブ化キーを作成します。
 
-    キー コンテナーの名前を指定したら、 **[キーの生成]** を選択して、アクティブ化キーを作成します。 
+   ![アクティブ化キーの取得](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-3.png)
 
-    ![アクティブ化キーの取得](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-3.png)
-
-    キー コンテナーとアクティブ化キーが作成されるまで数分待ちます。 コピー アイコンを選択してキーをコピーし、後で使用できるように保存します。
-
+   キー コンテナーとアクティブ化キーが作成されるまで数分待ちます。 コピー アイコンを選択してキーをコピーし、後で使用できるように保存します。<!--Verify that the new screen has a copy icon.-->
 
 > [!IMPORTANT]
 > - アクティブ化キーは生成後 3 日間で有効期限が切れます。

@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 72d7a40c38f3629a70260f223074b456dff9ce38
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ae3e12c11f194b3efcc149382dc952bd74d38b5
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182837"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704318"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure Attestation のトラブルシューティング ガイド
 
@@ -280,7 +280,7 @@ PowerShell ギャラリーの操作を続行するには、Install-Module コマ
 ユーザーに適切なロールが割り当てられています。 しかし、PowerShell を使用して構成証明ポリシーを管理するときに、承認の問題に直面します。
 
 ### <a name="error"></a>エラー
-オブジェクト ID が <object Id> のクライアントに、スコープ ‘subcriptions/<subscriptionId>resourcegroups/secure_enclave_poc/providers/Microsoft.Authorization/roleassignments/<role assignmentId>’ に対して Microsoft.Authorization/roleassignments/write アクションを実行するための許可がないか、スコープが無効です。 アクセス許可が最近付与された場合は、資格情報を更新してください。
+オブジェクト ID が &lt;object Id&gt; のクライアントに、スコープ ‘subcriptions/&lt;subscriptionId&gt;resourcegroups/secure_enclave_poc/providers/Microsoft.Authorization/roleassignments/&lt;role assignmentId&gt;’ に対して Microsoft.Authorization/roleassignments/write アクションを実行するための許可がないか、スコープが無効です。 アクセス許可が最近付与された場合は、資格情報を更新してください。
 
 ### <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 

@@ -3,27 +3,39 @@ title: Azure Key Vault の回復の概要 | Microsoft Docs
 description: Key Vault の回復機能は、キー コンテナーと、キー コンテナー内のシークレット、キー、証明書が誤って、または悪意で削除されるのを防ぐように設計されています。
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
-author: ShaneBala-keyvault
-ms.author: sudbalas
-manager: ravijan
+ms.topic: how-to
+ms.author: mbaldwin
+author: msmbaldwin
+manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: 86190fa307133360c411aafc070412e7d527039e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 258d100276b20ea2437ebffb1473492a247657e8
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324960"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704216"
 ---
-# <a name="how-to-enable-soft-delete-and-purge-protection"></a>論理的な削除と消去保護を有効にする方法
+# <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>論理的な削除と消去保護を使用した Azure Key Vault の回復の管理
 
 この記事では、Azure Key Vault の 2 つの回復機能である論理的な削除と消去保護について説明します。 このドキュメントでは、これらの機能の概要について説明し、Azure portal、Azure CLI、Azure PowerShell を使用してそれらを管理する方法を示します。
 
+Key Vault の詳細については、以下を参照してください。
+- [Key Vault の概要](overview.md)
+- [Azure Key Vault のキー、シークレット、証明書の概要](about-keys-secrets-certificates.md)
+
+## <a name="prerequisites"></a>前提条件
+
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/dotnet)
+* [PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+* [Azure CLI](/cli/azure/install-azure-cli)
+* キー コンテナー - [Azure portal](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md)、または [Azure PowerShell](../general/quick-create-powershell.md) を使用して作成できます
+
 ## <a name="what-are-soft-delete-and-purge-protection"></a>論理的な削除および消去保護とは
 
-論理的な削除と消去保護は、Key Vault の 2 つの異なる回復機能です。
+[論理的な削除](soft-delete-overview.md)と消去保護は、Key Vault の 2 つの異なる回復機能です。
+
 > [!IMPORTANT]
-> すべてのキー コンテナーで、論理的な削除を有効にする必要があります。 論理的な削除による保護を無効にする機能は、2020 年 12 月までに非推奨となる予定です。 詳細については、[**こちら**](soft-delete-change.md)を参照してください。
+> 論理的な削除を有効にすることは、キー コンテナーと資格情報が誤って削除されないように保護するために重要です。 ただし、場合によってはアプリケーション ロジックの変更や、サービス プリンシパルに対する追加のアクセス許可の付与が必要になるため、論理的な削除の有効化は破壊的変更と見なされます。 以下の手順を使用して論理的な削除を有効にする前に、[**こちら**](soft-delete-change.md)のドキュメントを参照して、アプリケーションがこの変更と互換性があることをご確認ください。
 
 **論理的な削除** は、キー コンテナーおよびキー コンテナー内に格納されているキー、シークレット、証明書が誤って削除されるのを防ぐように設計されています。 論理的な削除はごみ箱のようなものと考えることができます。 キー コンテナーまたはキー コンテナー オブジェクトを削除すると、ユーザーが構成可能な保持期間または既定の 90 日の間、回復可能な状態に維持されます。 論理的に削除された状態のキー コンテナーは、**消去** することもできます。これは、完全に削除されることを意味します。 これにより、同じ名前でキー コンテナーとキー コンテナー オブジェクトを作成し直すことができます。 キー コンテナーとオブジェクトの回復と削除のどちらについても、昇格されたアクセス ポリシーのアクセス許可が必要です。 **いったん有効にした論理的な削除を、無効にすることはできません。**
 
@@ -33,6 +45,8 @@ ms.locfileid: "96324960"
 
 > [!NOTE]
 > 消去保護は、管理者のロールまたはアクセス許可によって消去保護を上書き、無効化、または回避することができないように設計されています。 **Microsoft を含むすべてのユーザーは、いったん有効にされた消去保護は、無効にしたり上書きしたりできません。** つまり、キー コンテナー名を再利用するには、最初に削除されたキー コンテナーを回復するか、保持期間が経過するまで待つ必要があります。
+
+論理的な削除の詳細については、「[Azure Key Vault の論理的な削除の概要](soft-delete-overview.md)」を参照してください。
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -370,3 +384,14 @@ ms.locfileid: "96324960"
   ```powershell
   Remove-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
   ```
+---
+
+## <a name="next-steps"></a>次のステップ
+
+- [Azure Key Vault の PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.keyvault)
+- [Key Vault の Azure CLI コマンド](https://docs.microsoft.com/cli/azure/keyvault)
+- [Azure Key Vault のバックアップ](backup.md)
+- [Key Vault のログ記録を有効にする方法](howto-logging.md)
+- [キー コンテナーへのアクセスをセキュリティで保護する](secure-your-key-vault.md)
+- [Azure Key Vault 開発者ガイド](developers-guide.md)
+- [キー コンテナーを使用するためのベスト プラクティス](best-practices.md)

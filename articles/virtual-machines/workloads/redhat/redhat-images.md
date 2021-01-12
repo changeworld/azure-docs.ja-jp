@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 5cac21046b6b4afdefc4213f6a1fab438d62cca3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dbff136ac5787ef9549cca9dc8f946c56a138986
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957539"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900503"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux イメージの概要
 
@@ -22,7 +22,7 @@ ms.locfileid: "94957539"
 すべてのバージョンの RHEL の Red Hat サポート ポリシーの詳細については、「[Red Hat Enterprise Linux life cycle (Red Hat Enterprise Linux のライフ サイクル)](https://access.redhat.com/support/policy/updates/errata)」を参照してください。 料金の詳細については、「[Azure 料金計算ツール](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)」を参照してください。
 
 >[!IMPORTANT]
-> Azure Marketplace で現在入手できる RHEL イメージは、BYOS (Bring-Your-Own-Subscription) または従量課金制ライセンス モデルをサポートしています。 [Azure Hybrid Use Benefit](../../windows/hybrid-use-benefit-licensing.md) と、BYOS と従量課金制ライセンス間の動的切り替えはサポートされていません。 ライセンス モードを切り替えるには、対応するイメージから VM を再デプロイする必要があります。
+> Azure Marketplace で現在入手できる RHEL イメージは、BYOS (Bring-Your-Own-Subscription) または従量課金制ライセンス モデルをサポートしています。 BYOS と従量課金制ライセンスの動的切り替えは、[Azure Hybrid Use Benefit](../../linux/azure-hybrid-benefit-linux.md) を使用して実行できます。
 
 >[!NOTE]
 > Azure Marketplace の RHEL イメージに関連する問題については、サポート チケットを Microsoft に提出してください。

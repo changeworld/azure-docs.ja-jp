@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: 8fabf8169270c3162604b6535a6cf2fb07cd9a9d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: dc19b95e891235ac35c703adef50a23a9f70fbdb
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422146"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706798"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) の読み取りレプリカ
 
@@ -71,6 +71,8 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 読み取りレプリカ機能では、PostgreSQL の (論理レプリケーションではなく) 物理レプリケーションが使用されます。 レプリケーション スロットを使用したストリーミング レプリケーションが、既定の動作モードです。 必要に応じて、遅れを取り戻すためにログ配布が使用されます。
 
 [Azure portal で読み取りレプリカを作成する](howto-read-replicas-portal.md)方法を確認してください。
+
+ソース PostgreSQL サーバーがカスタマー マネージド キーで暗号化されている場合、追加の考慮事項については[こちらのドキュメント](concepts-data-encryption-postgresql.md)を参照してください。
 
 ## <a name="connect-to-a-replica"></a>レプリカへの接続
 作成されたレプリカでは、プライマリ サーバーのファイアウォール規則または VNet サービス エンドポイントは継承されません。 これらの規則は、レプリカに対して個別に設定する必要があります。

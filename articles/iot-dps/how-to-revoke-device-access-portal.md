@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 120446472038076e34f62b47ba79348e5de8b972
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c75fcd1fd20e41df5018fcaa07fe83051d7e5f1a
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010930"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740370"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning サービスからデバイスの登録を抹消する方法
 
@@ -26,7 +26,7 @@ IoT ソリューションなどの重要なシステムでは、デバイスの�
 
 ## <a name="disallow-devices-by-using-an-individual-enrollment-entry"></a>個別登録エントリを使用してデバイスを禁止する
 
-個別登録は、単一のデバイスに適用され、(実際の TPM または仮想 TPM 内の) X.509 証明書や SAS トークンを構成証明メカニズムとして使用できます (SAS トークンを構成証明メカニズムとして使用するデバイスは、個別登録でのみプロビジョニングできます)。個別登録を持つデバイスを禁止するには、その登録エントリを無効にするか削除します。 
+個別登録は、単一のデバイスに適用され、X.509 証明書、TPM 保証キー (実際または仮想の TPM)、または SAS トークンを構成証明メカニズムとして使用できます。 個別登録を持つデバイスを禁止するには、その登録エントリを無効にするか削除します。 
 
 デバイスを一時的に禁止するには、その登録エントリを無効にします。 
 

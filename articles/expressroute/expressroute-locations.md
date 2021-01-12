@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 12/10/2020
+ms.date: 01/05/2021
 ms.author: duau
-ms.openlocfilehash: dab480012ced3a8fc50fd5f4295272c0eccc4307
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: c68d9654c673b75742205853ec186caa5d6a3ce5
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831858"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916152"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 接続パートナーとピアリングの場所
 
@@ -105,7 +105,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **du datamena** |サポートされています |サポートされています | ドバイ 2 |
 | **eir** |サポートされています |サポートされています |ダブリン|
 | **[Epsilon Global Communications](https://www.epsilontel.com/solutions/direct-cloud-connect)** |サポートされています |サポートされています |シンガポール、シンガポール 2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |サポートされています |サポートされています |アムステルダム、アトランタ、ベルリン、キャンベラ 2、シカゴ、ダラス、ドバイ 2、ダブリン、フランクフルト、ジュネーブ、香港特別行政区、ロンドン、ロンドン 2、ロサンゼルス、ロサンゼルス 2、メルボルン、マイアミ、ミラノ、ニューヨーク、大阪、パリ、サンパウロ、シアトル、ソウル、シリコン バレー、シンガポール、ストックホルム、シドニー、東京、トロント、ワシントン DC、チューリッヒ |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |サポートされています |サポートされています |アムステルダム、アムステルダム 2、アトランタ、ベルリン、キャンベラ 2、シカゴ、ダラス、ドバイ 2、ダブリン、フランクフルト、ジュネーブ、香港特別行政区、ロンドン、ロンドン 2、ロサンゼルス、ロサンゼルス 2、メルボルン、マイアミ、ミラノ、ニューヨーク、大阪、パリ、サンパウロ、シアトル、ソウル、シリコン バレー、シンガポール、ストックホルム、シドニー、東京、トロント、ワシントン DC、チューリッヒ |
 | **Etisalat UAE** |サポートされています |サポートされています |ドバイ|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |サポートされています |サポートされています |アムステルダム、アムステルダム 2、ダブリン、フランクフルト、ロンドン |
 | **[FarEasTone](https://www.fetnet.net/corporate/en/Enterprise.html)** |サポートされています |サポートされています |台北|

@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/14/2020
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 18a1fc7f42884dcc194256e1f51ddecb62d2708c
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 87ec1f03a1f2294a4423e26129644eafcf7c915c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516399"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655477"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
 
@@ -88,7 +88,7 @@ A. Data Box の注文を作成できない場合は、サブスクリプショ�
 
 サポートされている種類のサブスクリプション プランをお持ちの場合は、サブスクリプションのアクセス レベルを確認してください。 注文を作成するには、サブスクリプションの共同作成者または所有者である必要があります。
 
-### <a name="q-how-long-will-my-order-take-from-order-creation-to-data-uploaded-to-azure"></a>Q. 注文の作成から Azure にデータがアップロードされるまでにはどのくらいの時間がかかりますか。
+### <a name="q-how-long-will-my-order-take-from-order-creation-to-data-uploaded-to-azure"></a>Q. 注文の作成から Azure にデータがアップロードされるまでにはどのくらいの時間がかかりますか?
 
 A. 注文処理のフェーズごとの推定リード タイムの目安は、以下のとおりです。  
 
@@ -97,12 +97,12 @@ A. 注文処理のフェーズごとの推定リード タイムの目安は、�
 **Data Box の注文の推定リード タイム:**
 
 1. Data Box の注文:数分間 (ポータルから)
-2. デバイスの割り当てと準備:1 から 2 営業日
+2. デバイスの割り当てと準備:1 から 2 営業日。在庫状況やその他の注文の完了状況に応じて変わります
 3. 発送:2 から 3 営業日
 4. お客様のサイトでのデータ コピー:データの性質、サイズ、ファイル数によって異なります
 5. 返却発送:2 から 3 営業日
-6. データセンターでのデバイスの処理:1 から 2 営業日
-7. Azure へのデータのアップロード:処理が完了し、デバイスが接続され次第すぐに開始されます。 アップロード時間は、データの性質、サイズ、ファイルの数によって異なります。
+6. データセンターでのデバイスの処理:1 から 2 営業日。他の注文の完了処理に応じて変わります
+7. Azure へのデータのアップロード:処理が完了し、デバイスが接続され次第すぐに開始されます。 アップロード時間は、データの性質、サイズ、ファイル数によって異なります。
 
 ### <a name="q-i-ordered-a-couple-of-data-box-devices-i-cant-create-any-additional-orders-why"></a>Q. Data Box デバイスをいくつか注文しました。 追加注文を作成できません。 なぜでしょうか。
 A. 商取引の境界 (選択された国とリージョンの組み合わせ) ごとに、サブスクリプションあたり最大 5 件まで、有効な注文を作成できます。 デバイスをさらに注文する必要がある場合は、Microsoft サポートに連絡してサブスクリプションの上限を増やしてください。
@@ -198,7 +198,7 @@ NFS クライアントを使用している場合は、[rsync](https://rsync.sam
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>Q. データのコピーを高速化するうえで何かヒントはありますか?
 A.  コピー処理は、次の方法で高速化できます。
 
-- データ コピーのストリームを複数使用する。 たとえば、`Robocopy` では、マルチスレッド オプションを使用します。 使用される正確なコマンドについては、「[チュートリアル: Azure Data Box にデータをコピーして確認する](data-box-deploy-copy-data.md)」を完了していることを確認してください。
+- データ コピーのストリームを複数使用する。 たとえば、`Robocopy` でマルチスレッド オプションを使用します。 使用される正確なコマンドについては、「[チュートリアル: Azure Data Box にデータをコピーして確認する](data-box-deploy-copy-data.md)」を完了していることを確認してください。
 - 複数のセッションを使用する。
 - ネットワーク共有 (ネットワーク速度によってコピー速度が制限される可能性のある場所) 経由でコピーする代わりに、Data Box が接続されているコンピューターにデータをローカルで保存します。
 - データのコピーに使用するコンピューターのパフォーマンスをベンチマークする。 [`Bluestop` FIO ツール](https://ci.appveyor.com/project/axboe/fio)をダウンロードします。このツールを使って、サーバーのハードウェアのパフォーマンスをベンチマークしてください。 最新の x86 または x64 ビルドを選択し、 **[Artifacts]\(成果物\)** タブを選択して、MSI をダウンロードします。

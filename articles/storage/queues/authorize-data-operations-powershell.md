@@ -1,31 +1,31 @@
 ---
 title: Azure AD 資格情報を使用して PowerShell コマンドを実行し、キューのデータにアクセスする
 titleSuffix: Azure Storage
-description: PowerShell では、Azure AD 資格情報でサインインし、Azure Storage キューのデータにコマンドを実行できます。 セッションにはアクセス トークンが与えられ、呼び出し操作の承認に使用されます。 アクセス許可は、Azure AD セキュリティ プリンシパルに割り当てられた Azure ロールによって異なります。
-services: storage
+description: PowerShell では、Azure AD 資格情報でサインインし、Azure Queue Storage のデータにコマンドを実行できます。 セッションにはアクセス トークンが与えられ、呼び出し操作の承認に使用されます。 アクセス許可は、Azure AD セキュリティ プリンシパルに割り当てられた Azure ロールによって異なります。
 author: tamram
-ms.service: storage
-ms.topic: how-to
-ms.date: 09/14/2020
+services: storage
 ms.author: tamram
 ms.reviewer: ozgun
+ms.date: 09/14/2020
+ms.topic: how-to
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 3636b0366dfe687c4825ec1a16c5e8094a7db10b
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: bf2696d329f852741c42219219600dc773090623
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637223"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590717"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-queue-data"></a>Azure AD 資格情報を使用して PowerShell コマンドを実行し、キューのデータにアクセスする
 
-Azure Storage には、PowerShell のための拡張機能があります。この機能では、Azure Active Directory (Azure AD) 資格情報でサインインし、スクリプト コマンドを実行できます。 Azure AD 資格情報で PowerShell にサインインすると、OAuth 2.0 アクセス トークンが返されます。 そのトークンが PowerShell によって自動的に使用され、Queue storage に対するその後のデータ操作が承認されます。 サポートされている操作については、コマンドでアカウント キーや SAS トークンを渡す必要がなくなりました。
+Azure Storage には、PowerShell のための拡張機能があります。この機能では、Azure Active Directory (Azure AD) 資格情報でサインインし、スクリプト コマンドを実行できます。 Azure AD 資格情報で PowerShell にサインインすると、OAuth 2.0 アクセス トークンが返されます。 そのトークンが PowerShell によって自動的に使用され、Queue Storage に対するその後のデータ操作が承認されます。 サポートされている操作については、コマンドでアカウント キーや SAS トークンを渡す必要がなくなりました。
 
 キュー データへのアクセス許可を Azure ロールベースのアクセス制御 (Azure RBAC) を介して Azure AD セキュリティ プリンシパルに割り当てることができます。 Azure Storage の Azure ロールの詳細については、[Azure RBAC を使用した Azure Storage データへのアクセス権の管理](../common/storage-auth-aad-rbac-portal.md)に関する記事を参照してください。
 
 ## <a name="supported-operations"></a>サポート対象の操作
 
-Azure Storage 拡張機能は、キュー データの操作でサポートされています。 呼び出す操作は、PowerShell にサインインする Azure AD セキュリティ プリンシパルに与えられているアクセス許可に依存します。 Azure Storage キューへのアクセス許可は、Azure RBAC を介して割り当てられます。 たとえば、**キュー データ閲覧者** ロールが割り当てられている場合、キューからデータを読み取るスクリプト コマンドを実行できます。 **キュー データ共同作成者** ロールが割り当てられている場合、キューまたはキューに含まれているデータの読み取り、書き込み、削除を行うスクリプト コマンドを実行できます。
+Azure Storage 拡張機能は、キュー データの操作でサポートされています。 呼び出す操作は、PowerShell にサインインする Azure AD セキュリティ プリンシパルに与えられているアクセス許可に依存します。 キューへのアクセス許可は、Azure RBAC を介して割り当てられます。 たとえば、**キュー データ閲覧者** ロールが割り当てられている場合、キューからデータを読み取るスクリプト コマンドを実行できます。 **キュー データ共同作成者** ロールが割り当てられている場合、キューまたはキューに含まれているデータの読み取り、書き込み、削除を行うスクリプト コマンドを実行できます。
 
 キューでの各 Azure Storage 操作に必要なアクセス許可の詳細については、「[OAuth トークンを使用したストレージ操作の呼び出し](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)」を参照してください。
 

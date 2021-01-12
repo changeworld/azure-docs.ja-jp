@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: b8b6383c7808fd6c298d7776fc10572631bc6ddc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f6725045064b74079e00ca5bbe1d560f3b19f3ff
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006219"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937129"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>チュートリアル:Zscaler One を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -78,6 +78,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 > [!TIP]
 > Zscaler One に対する SAML ベースのシングル サインオンを有効にすることもできます。 [Zscaler One のシングル サインオンに関するチュートリアル](zscaler-One-tutorial.md)の手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
+> [!NOTE]
+> ユーザーとグループをプロビジョニングしたりプロビジョニング解除したりする際は、グループ メンバーシップが適切に更新されるよう、定期的にプロビジョニングをやり直すことをお勧めします。 そうすることによって、サービスによって強制的にすべてのグループが再評価され、メンバーシップが更新されます。  
+
 ### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Azure AD で Zscaler One に対する自動ユーザー プロビジョニングを構成する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[Zscaler One]** を選択します。
@@ -96,7 +99,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Zscaler One のプロビジョニング モード](./media/zscaler-one-provisioning-tutorial/provisioning-credentials.png)
 
-5. **[管理者資格情報]** セクションで、 **[テナント URL]** ボックスと **[シークレット トークン]** ボックスに、手順 6 で説明する Zscaler One アカウントの設定を入力します。
+5. **[管理者資格情報]** セクションで、**[テナント URL]** ボックスと **[シークレット トークン]** ボックスに、手順 6 で説明する Zscaler One アカウントの設定を入力します。
 
 6. テナント URL とシークレット トークンを取得するには、Zscaler One ポータル UI で **[Administration]\(管理\)**  >  **[Authentication Settings]\(認証設定\)** の順に移動します。 **[Authentication Type]\(認証タイプ\)** で **[SAML]** を選択します。
 
@@ -106,9 +109,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Zscaler One での SAML の構成](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
 
-    b. **[Enable SCIM-Based Provisioning]\(SCIM ベースのプロビジョニングを有効にする\)** を選択して、 **[Base URL]\(ベース URL\)** と **[Bearer Token]\(ベアラー トークン\)** の設定を取得します。 それらの設定を保存します。 **[Base URL]\(ベース URL\)** の設定を、Azure portal の **[テナント URL]** にコピーします。 **[Bearer Token]\(ベアラー トークン\)** の設定を、Azure portal の **[シークレット トークン]** にコピーします。
+    b. **[Enable SCIM-Based Provisioning]\(SCIM ベースのプロビジョニングを有効にする\)** を選択して、**[Base URL]\(ベース URL\)** と **[Bearer Token]\(ベアラー トークン\)** の設定を取得します。 それらの設定を保存します。 **[Base URL]\(ベース URL\)** の設定を、Azure portal の **[テナント URL]** にコピーします。 **[Bearer Token]\(ベアラー トークン\)** の設定を、Azure portal の **[シークレット トークン]** にコピーします。
 
-7. 手順 5 に示されているボックスに入力したら、 **[テスト接続]** を選択して、Azure AD が Zscaler One に接続できることを確認します。 接続できない場合は、使用中の Zscaler One アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+7. 手順 5 に示されているボックスに入力したら、**[テスト接続]** を選択して、Azure AD が Zscaler One に接続できることを確認します。 接続できない場合は、使用中の Zscaler One アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![Zscaler One のテスト接続](./media/zscaler-one-provisioning-tutorial/test-connection.png)
 
@@ -136,7 +139,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の手順を参照してください。
 
-15. Zscaler One に対する Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+15. Zscaler One に対する Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
     ![Zscaler One のプロビジョニングの状態](./media/zscaler-one-provisioning-tutorial/provisioning-status.png)
 

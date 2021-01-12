@@ -7,19 +7,20 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f9881a4517f77587cecb2dcd04befaddb523965b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e812b7872dd4d41d9a6cb87d75403524106c5981
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647649"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706866"
 ---
 # <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL - 単一サーバーを再起動する
 このトピックでは、Azure Database for PostgreSQL サーバーを再起動する方法について説明します。 メンテナンス上の理由でサーバーの再起動が必要な場合があります。これを行うと、サーバーが操作を実行しているときに短時間の停止が発生します。
 
 サービスがビジー状態の場合、サーバーの再起動はブロックされます。 たとえば、仮想コアのスケーリングなどの前に要求した操作がサービスで処理中である場合があります。
  
-再起動を完了するために必要な時間は、PostgreSQL の回復プロセスに依存しています。 再起動の時間を短縮するために、再起動の実行前にサーバー上で発生しているアクティビティの量を最小限に抑えることをお勧めします。
+> [!NOTE] 
+> 再起動を完了するために必要な時間は、PostgreSQL の回復プロセスに依存しています。 再起動の時間を短縮するために、再起動の実行前にサーバー上で発生しているアクティビティの量を最小限に抑えることをお勧めします。 チェックポイントの頻度を増やすこともできます。 `max_wal_size` など、チェックポイント関連のパラメーター値を調整することもできます。 サーバーを再起動する前に `CHECKPOINT` コマンドを実行することも推奨されます。
 
 ## <a name="prerequisites"></a>前提条件
 この手順を実行するには、以下が必要です。

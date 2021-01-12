@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 1a46c272ee2f7aa2d6621e3dc2db81605ba0363f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6ac3a492c5544a4a782871ff50cda9a248fe50f4
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833114"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882383"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Functions における Azure Blob Storage の入力バインド
 
@@ -85,117 +85,6 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-<!--Same example for input and output. -->
-
-次の例は、*function.json* ファイルの BLOB 入出力バインドと、そのバインドを使用する [JavaScript](functions-reference-node.md) コードを示しています。 関数は、BLOB のコピーを作成します。 関数は、コピーする BLOB の名前を含むキュー メッセージによってトリガーされます。 新しい BLOB の名前は *{originalblobname}-Copy* です。
-
-*function.json* ファイルでは、`queueTrigger` メタデータ プロパティは `path` プロパティ内の BLOB 名の指定に使用されます。
-
-```json
-{
-  "bindings": [
-    {
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnectionAppSetting",
-      "name": "myQueueItem",
-      "type": "queueTrigger",
-      "direction": "in"
-    },
-    {
-      "name": "myInputBlob",
-      "type": "blob",
-      "path": "samples-workitems/{queueTrigger}",
-      "connection": "MyStorageConnectionAppSetting",
-      "direction": "in"
-    },
-    {
-      "name": "myOutputBlob",
-      "type": "blob",
-      "path": "samples-workitems/{queueTrigger}-Copy",
-      "connection": "MyStorageConnectionAppSetting",
-      "direction": "out"
-    }
-  ],
-  "disabled": false
-}
-```
-
-これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
-
-JavaScript コードを次に示します。
-
-```javascript
-module.exports = function(context) {
-    context.log('Node.js Queue trigger function processed', context.bindings.myQueueItem);
-    context.bindings.myOutputBlob = context.bindings.myInputBlob;
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-<!--Same example for input and output. -->
-
-次の例は、*function.json* ファイルの BLOB 入出力バインドと、バインドを使用する [Python スクリプト](functions-reference-python.md) コードを示しています。 関数は、BLOB のコピーを作成します。 関数は、コピーする BLOB の名前を含むキュー メッセージによってトリガーされます。 新しい BLOB の名前は *{originalblobname}-Copy* です。
-
-*function.json* ファイルでは、`queueTrigger` メタデータ プロパティは `path` プロパティ内の BLOB 名の指定に使用されます。
-
-```json
-{
-  "bindings": [
-    {
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnectionAppSetting",
-      "name": "queuemsg",
-      "type": "queueTrigger",
-      "direction": "in"
-    },
-    {
-      "name": "inputblob",
-      "type": "blob",
-      "dataType": "binary",
-      "path": "samples-workitems/{queueTrigger}",
-      "connection": "MyStorageConnectionAppSetting",
-      "direction": "in"
-    },
-    {
-      "name": "$return",
-      "type": "blob",
-      "path": "samples-workitems/{queueTrigger}-Copy",
-      "connection": "MyStorageConnectionAppSetting",
-      "direction": "out"
-    }
-  ],
-  "disabled": false,
-  "scriptFile": "__init__.py"
-}
-```
-
-これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
-
-使用されるバインドは、`dataType` プロパティによって決まります。 次の値は、さまざまなバインド方法をサポートするために使用できます。
-
-| バインド値 | Default | 説明 | 例 |
-| --- | --- | --- | --- |
-| `undefined` | Y | リッチ バインドを使用します | `def main(input: func.InputStream)` |
-| `string` | × | 汎用バインドを使用し、入力型を `string` としてキャストします | `def main(input: str)` |
-| `binary` | × | 汎用バインドを使用し、入力 BLOBを `bytes` Python オブジェクトとしてキャストします | `def main(input: bytes)` |
-
-
-Python コードを次に示します。
-
-```python
-import logging
-import azure.functions as func
-
-
-def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.InputStream:
-    logging.info('Python Queue trigger function processed %s', inputblob.name)
-    return inputblob
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 このセクションには、次の例が含まれています。
@@ -252,6 +141,145 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
 
 [Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が BLOB に由来するパラメーター上で `@BlobInput` 注釈を使用します。  この注釈は、Java のネイティブ型、POJO、または `Optional<T>` を使用した null 許容値で使用できます。
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+<!--Same example for input and output. -->
+
+次の例は、*function.json* ファイルの BLOB 入出力バインドと、そのバインドを使用する [JavaScript](functions-reference-node.md) コードを示しています。 関数は、BLOB のコピーを作成します。 関数は、コピーする BLOB の名前を含むキュー メッセージによってトリガーされます。 新しい BLOB の名前は *{originalblobname}-Copy* です。
+
+*function.json* ファイルでは、`queueTrigger` メタデータ プロパティは `path` プロパティ内の BLOB 名の指定に使用されます。
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "myInputBlob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    },
+    {
+      "name": "myOutputBlob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}-Copy",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
+
+JavaScript コードを次に示します。
+
+```javascript
+module.exports = function(context) {
+    context.log('Node.js Queue trigger function processed', context.bindings.myQueueItem);
+    context.bindings.myOutputBlob = context.bindings.myInputBlob;
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+次の例は、_function.json_ ファイルで定義されている BLOB 入力バインドを示しています。このバインドにより、受信 BLOB データを [PowerShell](functions-reference-powershell.md) 関数で使用できるようになります。
+
+json 構成を次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "InputBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "source/{name}",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
+```
+
+関数コードを次に示します。
+
+```powershell
+# Input bindings are passed in via param block.
+param([byte[]] $InputBlob, $TriggerMetadata)
+
+Write-Host "PowerShell Blob trigger: Name: $($TriggerMetadata.Name) Size: $($InputBlob.Length) bytes"
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+<!--Same example for input and output. -->
+
+次の例は、*function.json* ファイルの BLOB 入出力バインドと、バインドを使用する [Python スクリプト](functions-reference-python.md) コードを示しています。 関数は、BLOB のコピーを作成します。 関数は、コピーする BLOB の名前を含むキュー メッセージによってトリガーされます。 新しい BLOB の名前は *{originalblobname}-Copy* です。
+
+*function.json* ファイルでは、`queueTrigger` メタデータ プロパティは `path` プロパティ内の BLOB 名の指定に使用されます。
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "queuemsg",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "inputblob",
+      "type": "blob",
+      "dataType": "binary",
+      "path": "samples-workitems/{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    },
+    {
+      "name": "$return",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}-Copy",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "__init__.py"
+}
+```
+
+これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
+
+使用されるバインドは、`dataType` プロパティによって決まります。 次の値は、さまざまなバインド方法をサポートするために使用できます。
+
+| バインド値 | Default | 説明 | 例 |
+| --- | --- | --- | --- |
+| `undefined` | Y | リッチ バインドを使用します | `def main(input: func.InputStream)` |
+| `string` | × | 汎用バインドを使用し、入力型を `string` としてキャストします | `def main(input: str)` |
+| `binary` | × | 汎用バインドを使用し、入力 BLOBを `bytes` Python オブジェクトとしてキャストします | `def main(input: bytes)` |
+
+Python コードを次に示します。
+
+```python
+import logging
+import azure.functions as func
+
+
+def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.InputStream:
+    logging.info('Python Queue trigger function processed %s', inputblob.name)
+    return inputblob
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>属性と注釈
@@ -293,17 +321,21 @@ public static void Run(
 
 属性は、C# スクリプトではサポートされていません。
 
+# <a name="java"></a>[Java](#tab/java)
+
+`@BlobInput` 属性を使用すると、関数をトリガーした BLOB にアクセスできます。 この属性と共にバイト配列を使用する場合は、`dataType` を `binary` に設定します。 詳細については、「[入力 - 例](#example)」を参照してください。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 属性は、JavaScript ではサポートされていません。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+属性は、PowerShell ではサポートされていません。
+
 # <a name="python"></a>[Python](#tab/python)
 
 属性は、Python ではサポートされていません。
-
-# <a name="java"></a>[Java](#tab/java)
-
-`@BlobInput` 属性を使用すると、関数をトリガーした BLOB にアクセスできます。 この属性と共にバイト配列を使用する場合は、`dataType` を `binary` に設定します。 詳細については、「[入力 - 例](#example)」を参照してください。
 
 ---
 
@@ -333,17 +365,21 @@ public static void Run(
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
+# <a name="java"></a>[Java](#tab/java)
+
+`@BlobInput` 属性を使用すると、関数をトリガーした BLOB にアクセスできます。 この属性と共にバイト配列を使用する場合は、`dataType` を `binary` に設定します。 詳細については、「[入力 - 例](#example)」を参照してください。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `<NAME>` が *function.json* で定義されている値と一致する `context.bindings.<NAME>` を使用して BLOB データにアクセスします。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+_function.json_ ファイルのバインドの name パラメーターで指定されている名前と一致するパラメーターを使用して、BLOB データにアクセスします。
+
 # <a name="python"></a>[Python](#tab/python)
 
-[InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python) に型指定したパラメーターを使用して BLOB データにアクセスします。 詳細については、「[入力 - 例](#example)」を参照してください。
-
-# <a name="java"></a>[Java](#tab/java)
-
-`@BlobInput` 属性を使用すると、関数をトリガーした BLOB にアクセスできます。 この属性と共にバイト配列を使用する場合は、`dataType` を `binary` に設定します。 詳細については、「[入力 - 例](#example)」を参照してください。
+[InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python&preserve-view=true) に型指定したパラメーターを使用して BLOB データにアクセスします。 詳細については、「[入力 - 例](#example)」を参照してください。
 
 ---
 

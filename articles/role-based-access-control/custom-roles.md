@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/11/2020
+ms.date: 12/15/2020
 ms.author: rolyon
-ms.openlocfilehash: eddbd9cb695f3ff7eabd9f2549d0a868d8826eb9
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 79aaeee942a6d46243ee1c72d5904484b8698ebe
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369125"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617325"
 ---
 # <a name="azure-custom-roles"></a>Azure カスタム ロール
 
@@ -208,6 +208,7 @@ Microsoft.CostManagement/*/query/*
 - 各ディレクトリは、最大 **5,000** 個のカスタム ロールを持つことができます
 - Azure Germany と Azure China 21Vianet では、各ディレクトリに対して最大 2,000 のカスタム ロールを持つことができます。
 - ルート スコープ (`"/"`) には `AssignableScopes` を設定できません。
+- `AssignableScopes` にワイルドカード (`*`) を使用することはできません。 このワイルドカード制限は、ロール定義を更新することで、ユーザーがスコープにアクセスできないようにするのに役立ちます。
 - カスタム ロールの `AssignableScopes` に定義できる管理グループは 1 つだけです。 `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。
 - `DataActions` が含まれるカスタム ロールを管理グループのスコープで割り当てることはできません。
 - ロールの定義の割り当て可能なスコープに管理グループが存在するかどうかは、Azure Resource Manager では確認されません。

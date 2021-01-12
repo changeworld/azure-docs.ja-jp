@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 75073cd2f0dae9cac12175677427671101813a90
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: e839b8a22da50ce172043f57a4467219a1771175
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355224"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584203"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -103,7 +103,7 @@ Azure Repos Git 統合を使ったビジュアルの作成では、データ フ
 | **Azure Repos 組織** | Azure Repos 組織の名前｡ Azure Repos 組織名は`https://{organization name}.visualstudio.com`で確認することができます｡ [Azure Repos 組織にサインイン](https://www.visualstudio.com/team-services/git/)し、お使いの Visual Studio プロファイルにアクセスして、リポジトリとプロジェクトを確認してください。 | `<your organization name>` |
 | **ProjectName** | Azure Repos プロジェクトの名前。 Azure Repos プロジェクトの名前は `https://{organization name}.visualstudio.com/{project name}` で確認することができます｡ | `<your Azure Repos project name>` |
 | **RepositoryName** | Azure Repos コード リポジトリの名前｡ Azure Repos プロジェクトには、プロジェクトの拡大に合わせてソース コードを管理するための Git リポジトリが含まれます。 新しいリポジトリを作成するか、プロジェクト内に既にある既存のリポジトリを使用できます。 | `<your Azure Repos code repository name>` |
-| **コラボレーション ブランチ** | 発行に使用する Azure Repos コラボレーション ブランチ。 既定では `master` です。 別のブランチからのリソースを発行する場合は、この設定を変更します。 | `<your collaboration branch name>` |
+| **コラボレーション ブランチ** | 発行に使用する Azure Repos コラボレーション ブランチ。 既定では、これは `main` です。 別のブランチからのリソースを発行する場合は、この設定を変更します。 | `<your collaboration branch name>` |
 | **ルート フォルダー** | Azure Repos コラボレーション ブランチのルート フォルダー。 | `<your root folder name>` |
 | **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** | UX **作成キャンバス** からの既存のデータ ファクトリ リソースを Azure Repos Git リボジトリにインポートするかどうかを指定します。 オンにすると、JSON 形式でデータ ファクトリ リソースを関連付けられている Git リポジトリにインポートします。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。 このボックスを選択しなかった場合、既存のリソースはインポートされません。 | 選択済み (既定値) |
 | **ソースをインポートするブランチ** | データ ファクトリのリソース (パイプライン、データセット、リンクされたサービスなど) をインポートするブランチを指定します。 次のブランチのいずれかにリソースをインポートできます。a. コラボレーション b. 新規作成 c. 既存のものを使用 |  |
@@ -153,7 +153,7 @@ GitHub リポジトリを構成するには、使用している Azure サブス
 | **GitHub Enterprise の URL** | GitHub Enterprise ルート URL (ローカル GitHub Enterprise サーバーの場合は HTTPS である必要があります)。 (例: `https://github.mydomain.com`)。 **[Use GitHub Enterprise]\(GitHub Enterprise を使用する\)** がオンの場合にのみ必要です | `<your GitHub enterprise url>` |                                                           
 | **GitHub アカウント** | GitHub アカウント名。 この名前は、https:\//github.com/{アカウント名}/{リポジトリ名} で確認できます。 このページに移動すると、お使いの GitHub アカウントへの GitHub OAuth の資格情報を入力するよう求められます。 | `<your GitHub account name>` |
 | **リポジトリ名**  | GitHub コード リポジトリ名。 GitHub アカウントには、ソース コードを管理するための Git リポジトリが含まれます。 新しいリポジトリを作成するか、プロジェクト内の既存のリポジトリを使用できます。 | `<your repository name>` |
-| **コラボレーション ブランチ** | 発行に使用される GitHub コラボレーション ブランチ。 既定では、そのマスターです。 別のブランチからのリソースを発行する場合は、この設定を変更します。 | `<your collaboration branch>` |
+| **コラボレーション ブランチ** | 発行に使用される GitHub コラボレーション ブランチ。 既定ではメインです。 別のブランチからのリソースを発行する場合は、この設定を変更します。 | `<your collaboration branch>` |
 | **ルート フォルダー** | GitHub コラボレーション ブランチのルート フォルダー。 |`<your root folder name>` |
 | **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** | UX 作成キャンバスからの既存のデータ ファクトリ リソースを GitHub リボジトリにインポートするかどうかを指定します。 オンにすると、JSON 形式でデータ ファクトリ リソースを関連付けられている Git リポジトリにインポートします。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。 このボックスを選択しなかった場合、既存のリソースはインポートされません。 | 選択済み (既定値) |
 | **ソースをインポートするブランチ** | データ ファクトリのリソース (パイプライン、データセット、リンクされたサービスなど) をインポートするブランチを指定します。 次のブランチのいずれかにリソースをインポートできます。a. コラボレーション b. 新規作成 c. 既存のものを使用 |  |
@@ -207,11 +207,11 @@ GitHub 組織に接続するには、Azure Data Factory のアクセス許可を
 
 ### <a name="creating-feature-branches"></a>機能ブランチの作成
 
-データ ファクトリに関連付けられている各 Azure Repos Git リポジトリには、コラボレーション ブランチが存在します。 (`main` は既定のコラボレーション ブランチです)。 ユーザーは、ブランチのドロップダウンで **[+ New Branch]\(新しいブランチ\)** をクリックして機能分岐を作成することもできます。 新しいブランチのウィンドウが表示されたら、機能ブランチの名前を入力します。
+データ ファクトリに関連付けられている各 Azure Repos Git リポジトリには、コラボレーション ブランチが存在します。 (`main`) は既定のコラボレーション ブランチです)。 ユーザーは、ブランチのドロップダウンで **[+ New Branch]\(新しいブランチ\)** をクリックして機能分岐を作成することもできます。 新しいブランチのウィンドウが表示されたら、機能ブランチの名前を入力します。
 
 ![新しいブランチを作成する](media/author-visually/new-branch.png)
 
-機能ブランチの変更をコラボレーション ブランチにマージする準備ができたら、ブランチのドロップダウンをクリックし、 **[Create pull request]\(pull request の作成\)** を選択します。 このアクションで Azure Repos Git に移動します。Azure Repos Git では、pull request の発行、コード レビューの実行、およびコラボレーション ブランチへの変更のマージを行うことができます。 (`master` が既定値です)。 コラボレーション ブランチからは、Data Factory サービスにのみ発行することができます。 
+機能ブランチの変更をコラボレーション ブランチにマージする準備ができたら、ブランチのドロップダウンをクリックし、 **[Create pull request]\(pull request の作成\)** を選択します。 このアクションで Azure Repos Git に移動します。Azure Repos Git では、pull request の発行、コード レビューの実行、およびコラボレーション ブランチへの変更のマージを行うことができます。 (`main` が既定値です)。 コラボレーション ブランチからは、Data Factory サービスにのみ発行することができます。 
 
 ![新しい pull request を作成する](media/author-visually/create-pull-request.png)
 
@@ -232,7 +232,7 @@ Azure Data Factory に指定できる公開ブランチは一度に 1 つとな�
 
 ### <a name="publish-code-changes"></a>コード変更の発行
 
-コラボレーション ブランチ (`master` が既定値) に変更をマージしたら、 **[発行]** をクリックして、マスター ブランチ内のコード変更を Data Factory サービスに手動で発行します。
+コラボレーション ブランチ (`main` が既定値) に変更をマージしたら、 **[発行]** をクリックして、メイン ブランチ内のコード変更を Data Factory サービスに手動で発行します。
 
 ![Data Factory サービスに変更を発行する](media/author-visually/publish-changes.png)
 
@@ -241,7 +241,7 @@ Azure Data Factory に指定できる公開ブランチは一度に 1 つとな�
 ![発行ブランチが正しいことを確認する](media/author-visually/configure-publish-branch.png)
 
 > [!IMPORTANT]
-> マスター ブランチは Data Factory サービスに展開されているものを代表しているわけではありません。 マスター ブランチを Data Factory サービスに手動で発行する "*必要があります*"。
+> メイン ブランチは Data Factory サービスに展開されているものを代表しているわけではありません。 メイン ブランチを Data Factory サービスに手動で発行する "*必要があります*"。
 
 ## <a name="best-practices-for-git-integration"></a>Git 統合のベスト プラクティス
 
@@ -264,7 +264,7 @@ Data Factory のリンクされたサービスのすべての接続文字列ま�
 
 ### <a name="stale-publish-branch"></a>古い発行ブランチ
 
-発行ブランチがマスター ブランチと同期しておらず、最新の発行があっても古いリソースが含まれている場合は、次の手順を行います。
+発行ブランチがメイン ブランチと同期しておらず、最新の発行があっても古いリソースが含まれている場合は、次の手順を行います。
 
 1. 現在の Git リポジトリを削除します
 1. 同じ設定で Git を再構成しますが、 **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** がオンになっていることを確認し、 **[New branch]\(新しいブランチ\)** を選択します

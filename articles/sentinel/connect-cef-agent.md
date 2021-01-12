@@ -9,17 +9,17 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2020
+ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: ead878daaab977c77b3ab36f42ccfe4d01d7bc03
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 617599e3eb6dcca74324a7bdfd51e604904a2fa1
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548632"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897503"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>手順 1:ログ フォワーダーをデプロイする
 
@@ -51,13 +51,13 @@ ms.locfileid: "96548632"
 1. **[1.2 Linux マシンへの CEF コレクターのインストール]** で、 **[Run the following script to install and apply the CEF collector]\(CEF コレクターをインストールして適用するには、次のスクリプトを実行します\)** の下にあるリンクをコピーします。または、次のテキストからコピーしてください (プレースホルダーをワークスペース ID と主キーに置き換えます)。
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
     ```
 
 1. スクリプトの実行中に、エラーまたは警告メッセージが表示されないことを確認してください。
     - *[コンピューター]* フィールドのマッピングに関する問題を修正するためのコマンドを実行するよう指示するメッセージが表示される場合があります。 詳細については、[デプロイ スクリプトの説明](#mapping-command)を参照してください。
 
-1. [手順 2 に進みます:セキュリティソリューションを構成して、CEF メッセージを転送するようにします](connect-cef-solution-config.md) 。
+1. [手順 2 に進みます:CEF メッセージを送信するように、セキュリティ ソリューションを構成する](connect-cef-solution-config.md)に進みます。
 
 
 > [!NOTE]
@@ -189,8 +189,7 @@ syslog デーモンを選択して、適切な説明を表示してください�
         `security-config-omsagent.conf` ファイルの内容は次のとおりです。
 
         ```bash
-        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
-        destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
+        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};destination oms_destination {tcp(\"127.0.0.1\" port(25226));};
         log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
         ```
 

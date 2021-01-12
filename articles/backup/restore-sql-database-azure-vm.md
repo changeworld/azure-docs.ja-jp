@@ -3,12 +3,12 @@ title: Azure VM 上の SQL Server データベースを復元する
 description: この記事では、Azure VM 上で実行されており、Azure Backup でバックアップしてある SQL Server データベースを復元する方法について説明します。 [リージョンをまたがる復元] を使用して、データベースをセカンダリ リージョンに復元することもできます。
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: bbafd179f4b2f4e91a4bf19da41ffc14e4775e5c
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 7dd8d8d54fa7d33bb4a0935357597d19dd2368c5
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172171"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734404"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM 上の SQL Server データベースを復元する
 
@@ -23,12 +23,13 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
 - トランザクション ログ バックアップを使用して、特定の日付または時刻 (秒) に復元します。 Azure Backup は、選択された時刻に基づいて復元するために必要な、適切な完全または差分バックアップおよび一連のログ バックアップを自動的に判定します。
 - 特定の復旧ポイントに復元するには、特定の完全または差分バックアップを復元します。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="restore-prerequisites"></a>復元の前提条件
 
 データベースを復元する前に、次のことに注意してください。
 
 - このデータベースを同じ Azure リージョン内の SQL Server のインスタンスに復元することができます。
 - 宛先サーバーがソースと同じコンテナーに登録されている必要があります。
+- サーバー上で複数のインスタンスを実行している場合は、すべてのインスタンスが稼働している必要があります。 そうでない場合、データベースを復元する対象サーバーの一覧にサーバーが表示されません。 詳細については、[トラブルシューティングの手順](backup-sql-server-azure-troubleshoot.md#faulty-instance-in-a-vm-with-multiple-sql-server-instances)を参照してください。
 - TDE で暗号化されたデータベースを別の SQL Server に復元するには、まず[証明書を宛先サーバーに復元する](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)必要があります。
 - [CDC](/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server) 対応のデータベースは、[[ファイルとして復元]](#restore-as-files) オプションを使用して復元する必要があります。
 - "マスター" データベースを復元する前に、スタートアップ オプション **-m AzureWorkloadBackup** を使用して、シングル ユーザー モードで SQL Server インスタンスを起動します。
@@ -36,15 +37,14 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
   - 指定されたクライアント名のみで接続を開くことができます。
 - すべてのシステム データベース (モデル、マスター、msdb) の場合は、復元をトリガーする前に SQL Server Agent サービスを停止してください。
 - これらのいずれかのデータベースへの接続を奪おうとする可能性があるアプリケーションはすべて閉じます。
-- サーバーで複数のインスタンスが実行している場合、すべてのインスタンスが稼働している必要があり、そうでないと、データベースを復元するための宛先サーバーの一覧にサーバーが表示されないことがあります。
 
 ## <a name="restore-a-database"></a>データベースを復元する
 
 復元するには、次のアクセス許可が必要です。
 
-- 復元を実行するコンテナー内の**バックアップ オペレーター** アクセス許可。
-- バックアップされるソース VM への**共同作成者 (書き込み)** アクセス。
-- ターゲット VM への**共同作成者 (書き込み)** アクセス。
+- 復元を実行するコンテナー内の **バックアップ オペレーター** アクセス許可。
+- バックアップされるソース VM への **共同作成者 (書き込み)** アクセス。
+- ターゲット VM への **共同作成者 (書き込み)** アクセス。
   - 同じ VM に復元する場合は、これがソース VM になります。
   - 別の場所に復元する場合は、これが新しいターゲット VM になります。
 
@@ -181,7 +181,7 @@ CRR が有効になっているかどうかを確認するには、「[リージ
 
 CRR が有効になっている場合は、セカンダリ リージョンのバックアップ項目を表示できます。
 
-1. ポータルから **[Recovery Services コンテナー]**  >  **[バックアップ項目]** に移動します。
+1. ポータルから **[Recovery Services コンテナー]** 、 **[バックアップ項目]** の順に移動します。
 1. セカンダリ リージョンの項目を表示するには、 **[セカンダリ リージョン]** を選択します。
 
 >[!NOTE]

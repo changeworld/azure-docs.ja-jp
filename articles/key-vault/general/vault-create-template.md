@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d6f3d2051790ba02f5e4ea1687830ccbdf6dcf21
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 1ab382ec10d932b94961c73b7d7ac9082125a88c
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285132"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704522"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure キー コンテナーとコンテナーのアクセス ポリシーを作成する方法
 
@@ -174,16 +174,16 @@ Key Vault オブジェクトで使用できる Resource Manager テンプレー�
 
 ## <a name="deploy-the-templates"></a>テンプレートの配備
 
-Azure portal を使うと、次に示すように、 **[エディターで独自のテンプレートを作成する]** オプションを使って上記のテンプレートをデプロイできます。次のページに説明があります:「 [カスタム テンプレートからリソースをデプロイする](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)」。
+Azure portal を使うと、次に示すように、 **[エディターで独自のテンプレートを作成する]** オプションを使って上記のテンプレートをデプロイできます。次のページに説明があります:「[カスタム テンプレートからリソースをデプロイする](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)」。
 
-また、上記のテンプレートをファイルに保存し、次のコマンドを使用することもできます。[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) および [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create):
+また、上記のテンプレートをファイルに保存し、次のコマンドを使用することもできます。[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) と [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create):
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile key-vault-template.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file key-vault-template.json
+az deployment group create --resource-group ExampleGroup --template-file key-vault-template.json
 ```
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

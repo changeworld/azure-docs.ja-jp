@@ -3,12 +3,12 @@ title: 仮想マシンの Azure Resource Manager テンプレートの表示と�
 description: 仮想マシンから Azure Resource Manager テンプレートを使用して他の VM を作成する方法を説明します
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7f969abe1ca903a226e73c5c70781dce512c2926
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fb7cb38dfb2c1664017f0e342fefecdd464df45f
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282495"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696010"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して仮想マシンを作成する 
 
@@ -25,7 +25,7 @@ Resource Manager テンプレートを使用して DevTest Labs で VM を作成
 
    ![DevTest Labs 仮想マシンの一覧に、1 つの項目として表示されている仮想マシンの一覧を示すスクリーンショット。](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
-   この種類の Resource Manager テンプレートは、Azure PowerShell コマンド **New-AzResourceGroupDeployment** によって、または Azure CLI コマンド **az group deployment create** によってプロビジョニングできます。 これには管理者のアクセス許可が必要なので、DevTest Labs のユーザー ロールに割り当てられているユーザーはデプロイを実行できません。 
+   この種類の Resource Manager テンプレートは、Azure PowerShell コマンド **New-AzResourceGroupDeployment** によって、または Azure CLI コマンド **az deployment group create** によってプロビジョニングできます。 これには管理者のアクセス許可が必要なので、DevTest Labs のユーザー ロールに割り当てられているユーザーはデプロイを実行できません。 
 
 - Microsoft.Compute/virtualmachines というリソースの種類を使用する Resource Manager テンプレートは、複数の VM を、DevTest Labs 仮想マシンの一覧における 1 つの環境としてプロビジョニングできます。
 

@@ -2,13 +2,13 @@
 title: Azure Arc 対応サーバー エージェントの新機能
 description: この記事には、Azure Arc 対応サーバー エージェントのリリース ノートが含まれています。 まとめられている問題の多くについては、追加詳細のリンクがあります。
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: 3a01113d0d6416fb050f5c66191d5c420b7ac137
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.date: 12/21/2020
+ms.openlocfilehash: 4b7fd97d5b7e1cddc1d78e0d24205890e74c45c1
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505649"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722523"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの新機能
 
@@ -20,6 +20,8 @@ Azure Arc 対応サーバーの Connected Machine エージェントは、継続
 
 ## <a name="december-2020"></a>2020 年 12 月
 
+バージョン:1.3
+
 ### <a name="new-feature"></a>新機能
 
 Windows Server 2008 R2 のサポートを追加
@@ -30,11 +32,15 @@ Linux にカスタム スクリプト拡張機能を正常にインストール�
 
 ## <a name="november-2020"></a>2020 年 11 月
 
+バージョン:1.2
+
 ### <a name="fixed"></a>固定
 
 RPM ベースのディストリビューションでアップグレード後にプロキシ構成が失われる可能性がある問題が解決されました。
 
 ## <a name="october-2020"></a>2020 年 10 月
+
+Version: 1.1
 
 ### <a name="fixed"></a>固定
 
@@ -61,7 +67,7 @@ RPM ベースのディストリビューションでアップグレード後に�
 - エージェントの状態を簡単に解析可能な形式で出力する `azcmagent show --json` オプションが追加されました。
 - `azcmagent show` の出力に、Azure でホストされている仮想マシン上にサーバーが存在するかどうかを示すフラグが追加されました。
 - Azure サービスに到達できない場合にローカル エージェントの状態のリセットを許可する `azcmagent disconnect --force-local-only` オプションが追加されました。
-- 追加のクラウドをサポートする `azcmagent connect --cloud` オプションが追加されました。 このリリースでは、エージェントのリリース時に Azure のみがサービスでサポートされます。
+- 他のクラウドをサポートするために `azcmagent connect --cloud` オプションが追加されました。 このリリースでは、エージェントのリリース時に Azure のみがサービスでサポートされます。
 - エージェントは、Azure でサポートされている言語にローカライズされています。
 
 ### <a name="fixed"></a>固定

@@ -4,12 +4,12 @@ description: Python を使用して関数を開発する方法について説明
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 8254abda68949e6884143316d4b29b07ade129dc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cf1d8f89de61a548f6c542d6d8a73fde93675e95
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96167847"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895412"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -299,87 +299,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ## <a name="scaling-and-performance"></a>スケーリングとパフォーマンス
 
-関数がどのように実行されるか、およびそのパフォーマンスが関数アプリのスケーリング方法にどのように影響するかを理解することが重要です。 これは、高パフォーマンスのアプリを設計する場合に特に重要です。 関数アプリを設計、作成、および構成する際に考慮する必要がある要素は次のとおりです。
-
-### <a name="horizontal-scaling"></a>水平スケーリング
-既定では、Azure Functions は、アプリケーションの負荷を自動的に監視し、必要に応じて Python 用に追加のホスト インスタンスを作成します。 関数は、さまざまなトリガー型の組み込みしきい値を使用して、メッセージの経過時間や QueueTrigger のキューサイズなど、インスタンスを追加するタイミングを決定します。 これらのしきい値は、ユーザーが構成することはできません。 詳細については、「[従量課金プランと Premium プランのしくみ](functions-scale.md#how-the-consumption-and-premium-plans-work)」をご覧ください。
-
-### <a name="improving-throughput-performance"></a>スループットのパフォーマンスの向上
-
-パフォーマンスを向上させる鍵は、アプリがリソースをどのように使用するかを理解し、それに応じて関数アプリを構成できるということです。
-
-#### <a name="understanding-your-workload"></a>ワークロードを理解する
-
-ほとんどの Azure Functions アプリケーションの場合、既定の構成が適しています。 ただし、ワークロード プロファイルに基づく構成を採用することで、アプリケーションのスループットのパフォーマンスを向上させることができます。 最初の手順は、実行しているワークロードの種類を理解することです。
-
-| | I/O バウンド ワークロード | CPU バウンド ワークロード |
-|--| -- | -- |
-|**関数アプリの特性**| <ul><li>アプリで多くの同時呼び出しを処理する必要がある。</li> <li> アプリは、ネットワーク呼び出しやディスクの読み取り/書き込みなど、大量の I/O イベントを処理します。</li> </ul>| <ul><li>アプリでは、イメージのサイズ変更など、長時間実行される計算が行われます。</li> <li>アプリでは、データの変換が行われます。</li> </ul> |
-|**使用例**| <ul><li>Web API</li><ul> | <ul><li>データ処理</li><li> 機械学習推論</li><ul>|
-
-
-> [!NOTE]
->  実際の関数のワークロードは多くの場合、I/O と CPU バインドされたものが混在しているため、現実的な実稼働環境の負荷に応じてワークロードをプロファイリングすることをお勧めします。
-
-
-#### <a name="performance-specific-configurations"></a>パフォーマンス固有の構成
-
-関数アプリのワークロード プロファイルを理解したら、次は関数のスループット パフォーマンスを向上させるために使用できる構成を行います。
-
-##### <a name="async"></a>Async
-
-[Python はシングルスレッド ランタイムである](https://wiki.python.org/moin/GlobalInterpreterLock)ため、Python のホスト インスタンスは一度に 1 つの関数呼び出ししか処理できません。 大量の I/O イベントを処理するアプリケーションや、I/O バインドされているアプリケーションでは、関数を非同期に実行することによってパフォーマンスを著しく向上させることができます。
-
-関数を非同期に実行するには、`async def` ステートメントを使用します。これにより、[asyncio](https://docs.python.org/3/library/asyncio.html) を使用して関数が直接実行されます。
-
-```python
-async def main():
-    await some_nonblocking_socket_io_op()
-```
-[aiohttp](https://pypi.org/project/aiohttp/) http クライアントを使用する HTTP トリガーを使用した関数の例を次に示します。
-
-```python
-import aiohttp
-
-import azure.functions as func
-
-async def main(req: func.HttpRequest) -> func.HttpResponse:
-    async with aiohttp.ClientSession() as client:
-        async with client.get("PUT_YOUR_URL_HERE") as response:
-            return func.HttpResponse(await response.text())
-
-    return func.HttpResponse(body='NotFound', status_code=404)
-```
-
-
-`async` キーワードを持たない関数は、自動的に asyncio スレッド プールで実行されます。
-
-```python
-# Runs in an asyncio thread-pool
-
-def main():
-    some_blocking_socket_io()
-```
-
-関数を非同期的に実行する利点を最大限に活用するには、コード内で使用されている I/O 操作/ライブラリにも async を実装する必要があります。 非同期として定義されている関数で同期 I/O 操作を使用すると、全体的なパフォーマンスが **低下する可能性が あります**。
-
-非同期パターンを実装したクライアント ライブラリのいくつかの例を次に示します。
-- [aiohttp](https://pypi.org/project/aiohttp/) - asyncio の Http クライアント/サーバー 
-- [Streams API](https://docs.python.org/3/library/asyncio-stream.html) -ネットワーク接続を操作するための高レベルの async/await 対応プリミティブ
-- [Janus Queue](https://pypi.org/project/janus/) - Python 用のスレッドセーフな asyncio 対応キュー
-- [pyzmq](https://pypi.org/project/pyzmq/) -ZeroMQ 用の Python バインド
- 
-
-##### <a name="use-multiple-language-worker-processes"></a>複数の言語ワーカー プロセスを使用する
-
-既定では、すべての Functions ホスト インスタンスに 1 つの言語ワーカー プロセスがあります。 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) アプリケーション設定を使用して、ホストごとのワーカー プロセスの数を増やすことができます (最大 10)。 次に、Azure Functions は、これらのワーカー間で同時関数呼び出しを均等に分散しようとします。
-
-CPU バインド アプリの場合、言語ワーカーの数は、関数アプリごとに使用できるコアの数と同じかそれ以上である必要があります。 詳細については、「[利用可能インスタンス SKU](functions-premium-plan.md#available-instance-skus)」を参照してください。 
-
-I/O バインド アプリでも、使用可能なコア数を超えてワーカー プロセスの数を増やすことでメリットが得られる場合もあります。 ワーカー数を大きく設定し過ぎると、必要なコンテキスト切り替えの数が増えるため、全体的なパフォーマンスに影響する可能性があることに注意してください。 
-
-FUNCTIONS_WORKER_PROCESS_COUNT は、需要に応じてアプリケーションをスケールアウトするときに Functions が作成する各ホストに適用されます。
-
+Python 関数アプリのスケーリングとパフォーマンスのベスト プラクティスについては、[Python のスケーリングとパフォーマンスに関する記事](python-scale-performance-reference.md)をご覧ください。
 
 ## <a name="context"></a>Context
 

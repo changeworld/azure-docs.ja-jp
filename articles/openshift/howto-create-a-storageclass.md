@@ -8,12 +8,12 @@ author: grantomation
 ms.author: b-grodel
 keywords: aro、openshift、az aro、red hat、cli、azure file
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: fe80698b71ae0ba808991d79b423d49abfacdf7c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 201ec3293943f53179bcabde45259d15ce6208a6
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825914"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901285"
 ---
 # <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 で Azure Files StorageClass を作成する
 
@@ -59,7 +59,7 @@ ARO_RESOURCE_GROUP=aro-rg
 CLUSTER=cluster
 ARO_SERVICE_PRINCIPAL_ID=$(az aro show -g $ARO_RESOURCE_GROUP -n $CLUSTER --query servicePrincipalProfile.clientId -o tsv)
 
-az role assignment create --role Contributor -–assignee $ARO_SERVICE_PRINCIPAL_ID -g $AZURE_FILES_RESOURCE_GROUP
+az role assignment create --role Contributor --assignee $ARO_SERVICE_PRINCIPAL_ID -g $AZURE_FILES_RESOURCE_GROUP
 ```
 
 ### <a name="set-aro-cluster-permissions"></a>ARO クラスターのアクセス許可を設定する
@@ -81,6 +81,8 @@ oc adm policy add-cluster-role-to-user azure-secret-reader system:serviceaccount
 
 この手順では、Azure Files プロビジョナーを使用して StorageClass を作成します。 ARO クラスターが現在のリソース グループの外部にあるストレージ アカウントを認識できるようにするため、StorageClass マニフェストにストレージ アカウントの詳細を記述する必要があります。
 
+ストレージのプロビジョニング中に、マウント資格情報用に secretName という名前のシークレットが作成されます。 マルチテナントのコンテキストでは、secretNamespace の値を明示的に設定することを強くお勧めします。そうしないと、ストレージ アカウントの資格情報が他のユーザーによって読み取られる可能性があります。
+
 ```bash
 cat << EOF >> azure-storageclass-azure-file.yaml
 kind: StorageClass
@@ -90,6 +92,7 @@ metadata:
 provisioner: kubernetes.io/azure-file
 parameters:
   location: $LOCATION
+  secretNamespace: kube-system
   skuName: Standard_LRS
   storageAccount: $AZURE_STORAGE_ACCOUNT_NAME
   resourceGroup: $AZURE_FILES_RESOURCE_GROUP
@@ -116,7 +119,7 @@ oc patch storageclass azure-file -p '{"metadata": {"annotations":{"storageclass.
 
 ```bash
 oc new-project azfiletest
-oc new-app –template httpd-example
+oc new-app -template httpd-example
 
 #Wait for the pod to become Ready
 curl $(oc get route httpd-example -n azfiletest -o jsonpath={.spec.host})

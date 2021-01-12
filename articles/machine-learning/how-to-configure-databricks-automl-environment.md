@@ -1,7 +1,7 @@
 ---
-title: autoML と Azure Databricks を使用して開発する
+title: AutoML と Azure Databricks を使用して開発する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning と Azure Databricks に開発環境をセットアップすることについて説明します。 Databricks 用の Azure ML SDK と、autoML を含む Databricks を使用します。
+description: Azure Machine Learning と Azure Databricks に開発環境をセットアップすることについて説明します。 Databricks 用の Azure ML SDK と、AutoML を含む Databricks を使用します。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,14 +11,14 @@ ms.reviewer: larryfr
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ef8ee7718aabb443fda6cd7b276ee53472261913
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 878e6f11645a6478c0d536e9d6d6dac4518c5349
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423851"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740965"
 ---
-# <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Azure Machine Learning 内に Azure Databricks と autoML を含む開発環境をセットアップする 
+# <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Azure Machine Learning 内に Azure Databricks と AutoML を含む開発環境をセットアップする 
 
 Azure Databricks と自動 ML を使用する開発環境を Azure Machine Learning 内に構成する方法について説明します。
 
@@ -32,9 +32,9 @@ Azure Databricks は、Azure クラウド内のスケーラブルな Apache Spar
 Azure Machine Learning ワークスペース。 Azure Machine Learning ワークスペースがない場合は、[Azure portal](how-to-manage-workspace.md)、[Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)、[Azure Resource Manager テンプレート](how-to-create-workspace-template.md)を使用して作成できます。
 
 
-## <a name="azure-databricks-with-azure-machine-learning-and-automl"></a>Azure Machine Learning と autoML を使用する Azure Databricks
+## <a name="azure-databricks-with-azure-machine-learning-and-automl"></a>Azure Machine Learning と AutoML を使用する Azure Databricks
 
-Azure Databricks は、Azure Machine Learning と、その autoML 機能と統合されています。 
+Azure Databricks は、Azure Machine Learning と、その AutoML 機能と統合されています。 
 
 Azure Databricks は、以下のように使用できます。
 
@@ -120,6 +120,44 @@ AutoML 構成では、Azure Databricks を使用するときに次のパラメ�
 ![パネルのインポ―ト](./media/how-to-configure-environment/azure-db-import.png)
 
 + [トレーニング コンピューティングとして Databricks を使用してパイプラインを作成](how-to-create-your-first-pipeline.md)する方法を確認します。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+* **パッケージをインストールする際の失敗**
+
+    追加のパッケージがインストールされていると、Azure Databricks で Azure Machine Learning SDK のインストールが失敗します。 `psutil` のようなパッケージでは、競合が発生することがあります。 インストール エラーを回避するには、ライブラリ バージョンを止めてパッケージをインストールします。 この問題は Databricks に関連したもので、Azure Machine Learning SDK には関連はありません。 他のライブラリでもこの問題が発生する場合があります。 例:
+    
+    ```python
+    psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
+    ```
+
+    別の方法として、Python ライブラリでインストールの問題が発生し続けている場合は、初期化スクリプトを使用することができます。 この方法は、公式にはサポートされていません。 詳細については、「[Cluster-scoped init scripts](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)」を参照してください。
+
+* **インポート エラー: `pandas._libs.tslibs`** から名前 `Timedelta` をインポートできません:自動機械学習を使用するときにこのエラーが表示される場合は、notebook で次の 2 行を実行します。
+    ```
+    %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
+    %sh /databricks/python/bin/pip install pandas==0.23.4
+    ```
+
+* **インポート エラー:'pandas.core.indexes' という名前のモジュールはありません**:自動化された機械学習を使用しているときにこのエラーが表示される場合は、以下を実行します。
+
+    1. 次のコマンドを実行して、Azure Databricks クラスターに 2 つのパッケージをインストールします。
+    
+       ```bash
+       scikit-learn==0.19.1
+       pandas==0.22.0
+       ```
+    
+    1. クラスターをデタッチし、次にクラスターをノートブックに再アタッチします。
+    
+    これらの手順で問題が解決しない場合は、クラスターを再起動してみてください。
+
+* **FailToSendFeather**:Azure Databricks クラスター上のデータの読み取り時に `FailToSendFeather` エラーが表示された場合は、次の解決策を参照してください。
+    
+    * `azureml-sdk[automl]` パッケージを最新バージョンにアップグレードします。
+    * `azureml-dataprep` バージョン 1.1.8 以降を追加します。
+    * `pyarrow` バージョン 0.11 以降を追加します。
+  
 
 ## <a name="next-steps"></a>次のステップ
 

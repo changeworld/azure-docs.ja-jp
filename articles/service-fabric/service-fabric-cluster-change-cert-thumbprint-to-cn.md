@@ -3,12 +3,12 @@ title: 証明書の共通名を使用するようにクラスターを更新す�
 description: Azure Service Fabric クラスター証明書を拇印ベースの宣言から共通名に変換する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 013b8190390a4b05791b0a56072487f249956ec5
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: f719b1eb39da776827c6babec61e9e6701bb4602
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495205"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900792"
 ---
 # <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>クラスター証明書を拇印ベースの宣言から共通名に変換する
 
@@ -34,14 +34,14 @@ CN によって宣言された証明書は、通常、次の場合に有効と�
 
 Service Fabric は、次の 2 つの方法で CN による証明書の宣言をサポートしています。
 
-* " *暗黙的な* " 発行者 (チェーンはトラスト アンカーで終了する必要があることを意味します)。
+* "*暗黙的な*" 発行者 (チェーンはトラスト アンカーで終了する必要があることを意味します)。
 * 拇印によって宣言された発行者 (発行者のピン留めと呼ばれます)。
 
 詳細については、「[共通名ベースの証明書検証の宣言](cluster-security-certificates.md#common-name-based-certificate-validation-declarations)」を参照してください。
 
 拇印によって宣言された自己署名証明書を使用してクラスターを CN に変換するには、まずターゲットの CA 署名付き証明書を拇印によってクラスターに導入する必要があります。 そうして初めて、拇印から CN への変換が可能になります。
 
-テスト目的であれば、自己署名証明書を CN によって宣言することが " *できます* " が、発行者が独自の拇印にピン留めされている場合に限ります。 セキュリティの観点から見ると、このアクションは、拇印によって同じ証明書を宣言することとほぼ同じです。 この種の変換が成功したからといって、拇印から CA 署名証明書を使用した CN に正常に変換されることは保証されません。 適切な CA 署名証明書を使用して変換をテストすることをお勧めします。 このテストには無料のオプションがあります。
+テスト目的であれば、自己署名証明書を CN によって宣言することが "*できます*" が、発行者が独自の拇印にピン留めされている場合に限ります。 セキュリティの観点から見ると、このアクションは、拇印によって同じ証明書を宣言することとほぼ同じです。 この種の変換が成功したからといって、拇印から CA 署名証明書を使用した CN に正常に変換されることは保証されません。 適切な CA 署名証明書を使用して変換をテストすることをお勧めします。 このテストには無料のオプションがあります。
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>証明書をアップロードしてそれをスケールセットにインストールする
 
@@ -63,8 +63,11 @@ Azure では、証明書を取得してプロビジョニングするために�
 #### <a name="valid-starting-states"></a>有効な開始状態
 
 - `Thumbprint: GoalCert, ThumbprintSecondary: None`
-- `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` (`GoalCert` の `NotAfter` の日付は `OldCert1` よりも後です)
-- `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` (`GoalCert` の `NotAfter` の日付は `OldCert1` よりも後です)
+- `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` (`GoalCert` の `NotBefore` の日付は `OldCert1` よりも後です)
+- `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` (`GoalCert` の `NotBefore` の日付は `OldCert1` よりも後です)
+
+> [!NOTE]
+> バージョン 7.2.445 (7.2 CU4) より前は、Service Fabric では、有効期限が最も遠い証明書 ("NotAfter" プロパティが最も遠い証明書) が選択されるので、7.2 CU4 より前の上記の開始状態では、GoalCert の `NotAfter` の日付が `OldCert1` よりも後である必要があります。
 
 クラスターが前述の有効な状態のいずれでもない場合は、この記事の最後にあるセクションで、その状態を達成する方法に関する情報を参照してください。
 
@@ -79,7 +82,7 @@ Azure では、証明書を取得してプロビジョニングするために�
    >
    > 発行者が指定されていないか、リストが空の場合、そのチェーンを構築できれば、証明書は認証のために受け入れられます。 これで、この証明書は最終的に検証機関によって信頼されたルートになります。 1 つ以上の発行者の拇印が指定されている場合、チェーンから抽出された直接の発行者の拇印がこのフィールドで指定された値のいずれかに一致していれば、証明書は受け入れられます。 ルートが信頼されているかどうかに関係なく、証明書は受け入れられます。
    >
-   > 特定のサブジェクトで証明書に署名するために、PKI にはさまざまな証明機関 (" *発行者* " とも呼ばれます) が使用される場合があります。 このため、そのサブジェクトについて想定される発行者の拇印をすべて指定することが重要です。 つまり、証明書の更新は、更新される証明書と同じ発行者によって署名されることが保証されていません。
+   > 特定のサブジェクトで証明書に署名するために、PKI にはさまざまな証明機関 ("*発行者*" とも呼ばれます) が使用される場合があります。 このため、そのサブジェクトについて想定される発行者の拇印をすべて指定することが重要です。 つまり、証明書の更新は、更新される証明書と同じ発行者によって署名されることが保証されていません。
    >
    > 発行者を指定することがベスト プラクティスと考えられます。 発行者を省略すると、信頼されたルートにチェーンされる証明書に対しては引き続き機能しますが、この動作には制限があり、近い将来、段階的に廃止される可能性があります。 Azure にデプロイされ、プライベート PKI によって発行された X509 証明書を使用して保護され、サブジェクトによって宣言されたクラスターは、(クラスターとサービス間の通信の場合) Service Fabric によって検証できない場合があります。 検証を行うには、PKI の証明書ポリシーが検出可能であり、使用可能であり、アクセス可能である必要があります。
 
@@ -152,7 +155,7 @@ Azure Resource Manager (ARM) テンプレートを使用して Service Fabric �
 
 ### <a name="update-the-cluster-resource"></a>クラスター リソースを更新する
 
-**Microsoft.ServiceFabric/clusters** リソースで、 **commonNames** 設定を使用して **certificateCommonNames** プロパティを追加し、 **certificate** プロパティ (とその設定) を完全に削除します。
+**Microsoft.ServiceFabric/clusters** リソースで、**commonNames** 設定を使用して **certificateCommonNames** プロパティを追加し、**certificate** プロパティ (とその設定) を完全に削除します。
 
 差出人:
 ```json
@@ -217,11 +220,14 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
 
 | 開始時の状態 | アップグレード 1 | アップグレード 2 |
 | :--- | :--- | :--- |
-| `Thumbprint: OldCert1, ThumbprintSecondary: None` と `GoalCert` の `NotAfter` の日付は `OldCert1` よりも後です | `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` | - |
-| `Thumbprint: OldCert1, ThumbprintSecondary: None` と `OldCert1` の `NotAfter` の日付は `GoalCert` よりも後です | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` | `Thumbprint: GoalCert, ThumbprintSecondary: None` |
-| `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` (`OldCert1` の `NotAfter` の日付は `GoalCert` よりも後です) | `Thumbprint: GoalCert, ThumbprintSecondary: None` へのアップグレード | - |
-| `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` (`OldCert1` の `NotAfter` の日付は `GoalCert` よりも後です) | `Thumbprint: GoalCert, ThumbprintSecondary: None` へのアップグレード | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` と `GoalCert` の `NotBefore` の日付は `OldCert1` よりも後です | `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` と `OldCert1` の `NotBefore` の日付は `GoalCert` よりも後です | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` | `Thumbprint: GoalCert, ThumbprintSecondary: None` |
+| `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` (`OldCert1` の `NotBefore` の日付は `GoalCert` よりも後です) | `Thumbprint: GoalCert, ThumbprintSecondary: None` へのアップグレード | - |
+| `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` (`OldCert1` の `NotBefore` の日付は `GoalCert` よりも後です) | `Thumbprint: GoalCert, ThumbprintSecondary: None` へのアップグレード | - |
 | `Thumbprint: OldCert1, ThumbprintSecondary: OldCert2` | 状態 `Thumbprint: OldCertx, ThumbprintSecondary: None` にするには、`OldCert1` または `OldCert2` のいずれかを削除します | 新しい開始状態から続行します |
+
+> [!NOTE]
+> バージョン 7.2.445 (7.2 CU4) より前のバージョンのクラスターの場合、上記の状態で `NotBefore` を `NotAfter` に置き換えます。
 
 これらのアップグレードを実行する方法については、[Azure Service Fabric クラスターでの証明書の管理](service-fabric-cluster-security-update-certs-azure.md)に関するページを参照してください。
 

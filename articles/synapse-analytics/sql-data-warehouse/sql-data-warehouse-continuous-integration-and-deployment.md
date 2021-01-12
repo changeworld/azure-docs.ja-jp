@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 35f503e7214fa91962c91c35611fc9447302f9fc
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9f2bbc39b9c9c4770775bf49a7775ab8980a1f3b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462812"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589901"
 ---
 # <a name="continuous-integration-and-deployment-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのための継続的インテグレーションと継続的デプロイ
 
@@ -42,7 +42,7 @@ ms.locfileid: "96462812"
 
       ![YAML](./media/sql-data-warehouse-continuous-integration-and-deployment/3-yaml-file.png "YAML")
 
-この時点で、ソース管理リポジトリの master ブランチにチェックインすると、データベース プロジェクトの Visual Studio ビルドが成功したことが自動的にトリガーされる単純な環境ができています。 ローカル データベース プロジェクトに変更を加え、その変更を master ブランチにチェックインして、オートメーション全体が正常に機能していることを検証します。
+この時点で、ソース管理リポジトリのメイン ブランチにチェックインすると、データベース プロジェクトの Visual Studio ビルドが成功したことが自動的にトリガーされるシンプルな環境ができています。 ローカル データベース プロジェクトに変更を加え、その変更をメイン ブランチにチェックインして、オートメーションがエンドツーエンドで正常に機能していることを検証します。
 
 ## <a name="continuous-deployment-with-the-azure-synapse-analytics-or-database-deployment-task"></a>Azure Synapse Analytics (または Database) デプロイ タスクを使用した継続的デプロイ
 

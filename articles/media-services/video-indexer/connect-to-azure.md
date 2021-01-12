@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 282e1ef98a3c0d6e152b56a180a639c86d004af9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 82dc9aa9615ef86c878fb75df6650dcc1f904a8f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493102"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702635"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを作成する
 
@@ -107,9 +107,14 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
 
 1. [アカウントの作成](../previous/media-services-portal-create-account.md)に関するページに従って、[Azure](https://portal.azure.com/) portal を使用して Azure Media Services アカウントを作成します。
 
+     Media Services アカウントがクラシック API で作成されていることを確認します。 
+ 
+    ![Media Services クラシック API](./media/create-account/enable-classic-api.png)
+
+
     Media Services アカウント用にストレージ アカウントを作成する場合は、アカウントの種類に **StorageV2**、レプリケーション フィールドに **geo 冗長** (GRS) を選択します。
 
-    ![新しい AMS アカウント](./media/create-account/create-ams-account1.png)
+    ![新しい AMS アカウント](./media/create-account/create-new-ams-account.png)
 
     > [!NOTE]
     > Media Services リソースとアカウント名を書き留めてください。 次のセクションの手順で必要になります。
@@ -120,7 +125,7 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
 
     新しい Media Services アカウントで **[ストリーミング エンドポイント]** を選択します。 次に、ストリーミング エンドポイントを選択し、[開始] を押します。
 
-    ![ストリーミング エンドポイント](./media/create-account/create-ams-account2.png)
+    ![ストリーミング エンドポイント](./media/create-account/create-ams-account-se.png)
 4. Video Indexer が Media Services API を使用して認証するには、AD アプリを作成する必要があります。 次に、「[Azure ポータルで Azure AD 認証を開始する](../previous/media-services-portal-get-started-with-aad.md)」で説明されている Azure AD 認証プロセスについて、手順を追って説明します。
 
     1. 新しい Media Services アカウントで **[API アクセス]** をクリックします。
@@ -171,7 +176,9 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
 
 Azure Media Services に関する次の考慮事項が適用されます。
 
-* 自動的に接続されると、Azure サブスクリプションに新しいリソース グループ、Media Services アカウント、ストレージ アカウントが表示されます。
+* 既存の Media Services アカウントに接続する予定の場合は、Media Services アカウントがクラシック API で作成されていることをご確認ください。 
+ 
+    ![Media Services クラシック API](./media/create-account/enable-classic-api.png)
 * 既存の Media Services アカウントに接続した場合、Video Indexer で既存メディアの **[予約ユニット]** の構成は変更されません。
 
    予想される負荷に従って、メディアの [予約ユニット] の種類と数を調整する必要があります。 負荷が高く、ユニットや速度が十分ではない場合は、ビデオ処理でタイムアウト エラーが発生する可能性がある点に注意してください。

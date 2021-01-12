@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/05/2020
+ms.date: 12/18/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4b97b223ac180df7f8eb07ad8eaab66847f50776
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 50d5d73e71b8129f061ec49b363a0ebb13d22bdf
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422996"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704658"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>例:C# で Azure Cognitive Search にシノニムを追加する
 
@@ -94,6 +94,8 @@ static void Main(string[] args)
 
 `RunQueriesWithNonExistentTermsInIndex` では、"five star"、"internet"、および "economy AND hotel" で検索クエリを発行します。
 
+"five star" などの語句クエリは引用符で囲む必要があります。また、クライアントによってはエスケープ文字が必要になる場合もあります。
+
 ```csharp
 Console.WriteLine("Search the entire index for the phrase \"five star\":\n");
 results = searchClient.Search<Hotel>("\"five star\"", searchOptions);
@@ -146,7 +148,7 @@ WriteDocuments(results);
 
 シノニム マップがアップロードされ、インデックスがシノニム マップを使用するように更新された後、2 回目の `RunQueriesWithNonExistentTermsInIndex` 呼び出しは次の出力を返します。
 
-```
+```dos
 Search the entire index for the phrase "five star":
 
 Name: Fancy Stay        Category: Luxury        Tags: [pool, view, wifi, concierge]

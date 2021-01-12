@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfe8af8c30bbc2bc66c363fbd85f6764a48c28a1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 666b3c609224c1665c150718b2b89c4bac72577e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488070"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882230"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
@@ -42,18 +42,13 @@ RDS デプロイでは、RD Web ロールと RD ゲートウェイ ロールは�
 ## <a name="requirements"></a>必要条件
 
 - RD Web と RD ゲートウェイの両方のエンドポイントが同じコンピューター上にあり、ルートが共通である必要があります。 RD Web と RD ゲートウェイはアプリケーション プロキシで単一のアプリケーションとして発行されるため、2 つのアプリケーション間でシングル サインオン エクスペリエンスを実現できます。
-
-- [RDS をデプロイ](/windows-server/remote/remote-desktop-services/rds-in-azure)し、[アプリケーション プロキシを有効にしている](application-proxy-add-on-premises-application.md)必要があります。
-
+- [RDS をデプロイ](/windows-server/remote/remote-desktop-services/rds-in-azure)し、[アプリケーション プロキシを有効にしている](application-proxy-add-on-premises-application.md)必要があります。 コネクタをインストールする、必要なポートと URL を開く、サーバーで TLS 1.2 を有効にするなど、アプリケーション プロキシを有効にするための前提条件を満たしていることを確認します。
 - エンド ユーザーは、RD Web または RD Web クライアントに接続するために、互換性のあるブラウザーを使用する必要があります。 詳細については、[クライアント構成のサポート](#support-for-other-client-configurations)に関するセクションをご覧ください。
-
 - RD Web を発行するときは、内部 FQDN と外部 FQDN を同じにすることをお勧めします。 内部 FQDN と外部 FQDN が異なる場合は、クライアントが無効なリンクを受け取るのを避けるため、要求ヘッダー変換を無効にする必要があります。
-
 - Internet Explorer で RDS Web を使用する場合は、RDS ActiveX アドオンを有効にする必要があります。
-
 - RD Web クライアントを使用する場合は、アプリケーション プロキシ [コネクタ バージョン 1.5.1975 以降](./application-proxy-release-version-history.md)を使用する必要があります。
-
 - Azure AD の事前認証フローでは、ユーザーは **[RemoteApp およびデスクトップ]** ウィンドウで自分に公開されているリソースにのみ接続できます。 ユーザーは **[リモート PC に接続]** ウィンドウを使用してデスクトップに接続できません。
+- Windows Server 2019 を使用している場合は、HTTP2 プロトコルを無効にすることが必要な場合があります。 詳細については、[Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)を参照してください。
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>RDS とアプリケーション プロキシの共同デプロイのシナリオ
 

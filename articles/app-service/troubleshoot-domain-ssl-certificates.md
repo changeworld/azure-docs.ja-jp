@@ -8,19 +8,18 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 1cefb5a7b554b9a477f6a51eab3b22b0e8f55378
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 691cbd79e82432c8e919dcbb51642a76000296dc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958439"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607611"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと TLS/SSL 証明書に関する問題のトラブルシューティング
 
 この記事では、Azure App Service でお使いの Web アプリ用のドメインまたは TLS/SSL 証明書を構成するときに発生する可能性がある、一般的な問題の一覧を示します。 これらの問題の考えられる原因と解決策についても説明します。
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN のフォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 [Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、 **[サポートの要求]** をクリックしてください。
-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -120,7 +119,7 @@ Azure Portal から [Azure App Service 証明書](./configure-ssl-certificate.md
 
 **原因 2 の解決策**
 
-ブラウザーをクリアします。 Windows デバイスの場合は、`ipconfig /flushdns` コマンドを実行できます。 [WhatsmyDNS.net](https://www.whatsmydns.net/) を使用して、ドメインがアプリの IP アドレスを指し示していることを確認します。 
+ブラウザーをクリアします。 Windows デバイスの場合は、`ipconfig /flushdns` コマンドを実行できます。 [WhatsmyDNS.net](https://www.whatsmydns.net/) を使用して、ドメインがアプリの IP アドレスを指し示していることを確認します。
 
 ### <a name="you-cant-add-a-subdomain"></a>サブドメインを追加できない 
 
@@ -185,7 +184,7 @@ App Service 証明書が更新されましたが、その App Service 証明書�
 
 #### <a name="cause"></a>原因 
 証明書は 48 時間以内に App Service によって自動的に同期されます。 証明書の交換や更新を行うときには、アプリケーションが今までどおり古い証明書を取得していて、新しく更新された証明書を取得していないことがあります。 証明書リソースを同期するジョブがまだ実行されていないことが理由です。 [同期] をクリックします。同期操作によって、アプリにダウンタイムを発生させることなく、App Service 内の証明書に対するホスト名のバインドが自動的に更新されます。
- 
+
 #### <a name="solution"></a>解決策
 
 証明書の同期を強制することができます。
@@ -201,17 +200,17 @@ App Service 証明書では、証明書を使う準備ができる前に、ド�
 
 #### <a name="solution"></a>解決策
 TXT レコードを追加して、手動でドメインを確認します。
- 
-1.  使用中のドメイン名をホストしているドメイン ネーム サービス (DNS) プロバイダーに移動します。
-2.  Azure Portal に表示されるドメイン トークンの値を使用しているドメインの TXT レコードを追加します。 
+
+1. 使用中のドメイン名をホストしているドメイン ネーム サービス (DNS) プロバイダーに移動します。
+1. Azure Portal に表示されるドメイン トークンの値を使用しているドメインの TXT レコードを追加します。 
 
 DNS 伝達が実行されるのを数分待ってから、 **[最新の情報に更新]** ボタンを選択して確認をトリガーします。 
 
 別の方法として、HTML Web ページによる方法を使用して、手動でドメインを確認することができます。 この方法を使用すると、証明機関は、証明書が発行されるドメインの所有権を確認できます。
 
-1.  {domain verification token}.html という名前の HTML ファイルを作成します。 このファイルの内容には、ドメイン確認トークンの値を指定します。
-3.  ドメインをホストしている Web サーバーのルートに、このファイルをアップロードします。
-4.  **[最新の情報に更新]** を選択して証明書の状態を確認します。 確認が完了するまで数分かかる場合があります。
+1. {domain verification token}.html という名前の HTML ファイルを作成します。 このファイルの内容には、ドメイン確認トークンの値を指定します。
+1. ドメインをホストしている Web サーバーのルートに、このファイルをアップロードします。
+1. **[最新の情報に更新]** を選択して証明書の状態を確認します。 確認が完了するまで数分かかる場合があります。
 
 たとえば、1234abcd というドメイン確認トークンを使用して azure.com の標準証明書を購入しようとしている場合、 https://azure.com/1234abcd.html に対して Web 要求を行うと、1234abcd が返されます。 
 
@@ -235,7 +234,7 @@ Microsoft Azure portal 内の App Service からドメインを購入できま�
 
 - サブスクリプションの所有者でないため、ドメインを購入する権限がありません。
 
-    **解決策**:アカウントに[所有者ロールを割り当て](../role-based-access-control/role-assignments-portal.md)ます。 または、サブスクリプションの管理者に連絡し、ドメインを購入する権限を取得します。
+    **解決策**:アカウントに [所有者ロールを割り当て](../role-based-access-control/role-assignments-portal.md)ます。 または、サブスクリプションの管理者に連絡し、ドメインを購入する権限を取得します。
 - サブスクリプションで、ドメイン購入の上限に達しました。 現在の上限は 20 です。
 
     **解決策**:上限の増加を要求するには、[Azure サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。
@@ -288,7 +287,7 @@ App Service ドメインはドメイン登録のために GoDaddy を使用し�
 
 ドメイン購入の初期コストは、ドメイン登録にのみ適用されます。 登録コストに加えて、使用状況に基づいた Azure DNS に対する料金が発生します。 詳細については、「[Azure DNS の価格](https://azure.microsoft.com/pricing/details/dns/)」を参照してください。
 
-**以前に Azure Portal からドメインを購入しており、GoDaddy ホスティングから Azure DNS ホスティング移行したいと考えています。どうすればよいですか**
+**以前に Azure Portal からドメインを購入しており、GoDaddy ホスティングから Azure DNS ホスティング移行したいと考えています。どうすればよいですか。**
 
 Azure DNS ホスティングへの移行は必須ではありません。 Azure DNS に移行したい場合は、Azure Portal でのドメイン管理エクスペリエンスによって、Azure DNS に移行するために必要な手順に関する情報が提供されます。 そのドメインが App Service 経由で購入された場合、GoDaddy ホスティングから Azure DNS への移行は比較的シームレスな手順になります。
 

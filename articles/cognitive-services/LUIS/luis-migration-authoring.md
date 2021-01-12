@@ -3,18 +3,20 @@ title: Azure リソース オーサリング キーに移行する
 titleSuffix: Azure Cognitive Services
 description: この記事では、Language Understanding (LUIS) オーサリング認証を電子メール アカウントから Azure リソースに移行する方法について説明します。
 services: cognitive-services
+author: aahill
+ms.author: aahi
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, contperf-fy21q2
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/07/2020
-ms.openlocfilehash: 243c9834aa256e26d620c00ac0fa7a262919aabd
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.date: 12/14/2020
+ms.openlocfilehash: 086bc17938064571e8759ecda633fb5f87d1060f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762683"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616815"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure リソース オーサリング キーに移行する
 
@@ -26,41 +28,22 @@ Language Understanding (LUIS) のオーサリング認証が、メール アカ�
 
 ## <a name="what-is-migration"></a>移行とは。
 
-移行とは、オーサリング認証をメール アカウントから Azure リソースに変更するプロセスです。 移行後、お使いのアカウントは Azure サブスクリプションと Azure オーサリング リソースにリンクされます。 *すべての LUIS ユーザー (アプリの所有者とコラボレーター) は、最終的に移行する必要があります。*
+移行とは、オーサリング認証をメール アカウントから Azure リソースに変更するプロセスです。 移行後、お使いのアカウントは Azure サブスクリプションと Azure オーサリング リソースにリンクされます。
 
-移行は、[LUIS ポータル](https://www.luis.ai)から実行する必要があります。 たとえば、LUIS CLI を使用してオーサリング キーを作成する場合、移行プロセスは LUIS ポータルで完了する必要があります。 移行後もアプリケーションに共同作成者を指定することはできますが、これらはアプリケーション レベルではなく Azure リソース レベルで追加されます。
-
-> [!Note]
-> 移行前は、共同作成者は LUIS アプリ レベルで "_コラボレーター_" と呼ばれます。 移行後は、同じ機能に対して、Azure リソース レベルで "_共同作成者_" の Azure ロールが使用されます。
-
-## <a name="notes-before-you-migrate"></a>移行前の注意事項
-
-* 移行を元に戻すことはできません。
-* 複数の [LUIS リージョン ポータル](./luis-reference-regions.md#luis-authoring-regions)にサインインしている場合は、一度に複数のリージョンで移行するように求められます。
-* アプリケーションの所有者である場合、アプリケーションは一緒に自動的に移行されます。
-* 所有者は移行するアプリのサブセットを選択できません。また、プロセスを元に戻すことはできません。
-* 所有者が移行すると、アプリケーションはコラボレーターのアカウントからは削除されます。
-* 所有者は、移行を通知するために、コラボレーターにメールを送信するよう求められます。
-* アプリケーションのコラボレーターである場合、アプリケーションは一緒に移行されません。 ただし、コラボレーターは、必要なアプリをエクスポートするように求められます。
-* コラボレーターが移行したかどうかを、所有者が知る方法はありません。
-* 移行によって自動的にコラボレーターが Azure オーサリング リソースに移動されたり、追加されたりすることはありません。 アプリの所有者が、移行後にこの手順を実行する必要があります。 この手順では、[Azure オーサリング リソースへのアクセス許可](./luis-how-to-collaborate.md)が必要です。
-* Azure リソースに割り当てられたコラボレーターがアプリケーションにアクセスするには、移行を済ませておくことが必要です。 そうしないと、アプリケーションをオーサリングするためのアクセス権が付与されません。
-* 移行されたユーザーをアプリケーションのコラボレーターとして追加することはできません。
-
+移行は、[LUIS ポータル](https://www.luis.ai)から実行する必要があります。 たとえば、LUIS CLI を使用してオーサリング キーを作成する場合、移行プロセスは LUIS ポータルで完了する必要があります。 移行後もアプリケーションに共同作成者を指定することはできますが、これらはアプリケーション レベルではなく Azure リソース レベルで追加されます。 アカウントの移行を元に戻すことはできません。
 
 > [!Note]
-> 予測ランタイム リソースを作成する必要がある場合は、それを作成するための[別のプロセス](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)があります。
+> * 予測ランタイム リソースを作成する必要がある場合は、それを作成するための[別のプロセス](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)があります。
+> * アプリケーションと共同作成者に対する影響に関する詳細については、次の「[移行に関する注意事項](#migration-notes)」セクションを参照してください。 
+> * LUIS アプリの作成は無料 (F0 レベル) です。 価格レベルの詳細については[こちら](luis-limits.md#key-limits)をご覧ください。
 
 ## <a name="migration-prerequisites"></a>移行の前提条件
 
-* 有効な Azure サブスクリプションに関連付けられている必要があります。 サブスクリプションに追加してもらうようテナント管理者に依頼するか、[無料でサインアップ](https://azure.microsoft.com/free/cognitive-services)してください。
-* LUIS ポータルまたは [Azure portal](https://portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) から LUIS Azure オーサリング リソースを作成する必要があります。 LUIS ポータルからオーサリング リソースを作成することは、次のセクションで説明されている移行プロセスの一部です。
-* アプリケーションのコラボレーターの場合、アプリケーションは自動的には移行されません。 移行フローの実行中に、これらのアプリをエクスポートするように求めるメッセージが表示されます。 また、[エクスポート API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) を使用することもできます。 移行後に、アプリを LUIS に再度インポートすることができます。 インポート プロセスにより、新しいアプリ ID を使用して新しいアプリが作成され、自身がその所有者になります。
+* 有効な Azure サブスクリプション。 サブスクリプションに追加してもらうようテナント管理者に依頼するか、[無料でサインアップ](https://azure.microsoft.com/free/cognitive-services)してください。
+* LUIS ポータルまたは [Azure portal](https://portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) の LUIS Azure オーサリング リソース。 
+    * LUIS ポータルからオーサリング リソースを作成することは、次のセクションで説明されている移行プロセスの一部です。
+* アプリケーションのコラボレーターの場合、アプリケーションは自動的には移行されません。 移行フローの実行中に、これらのアプリをエクスポートするように求めるメッセージが表示されます。 また、[エクスポート API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) を使用することもできます。 移行後に、アプリを LUIS に再度インポートすることができます。 インポート プロセスにより、新しいアプリ ID を使用して新しいアプリが作成され、自身がその所有者になります。        
 * アプリケーションの所有者である場合、アプリは自動的に移行されるため、これらをエクスポートする必要はありません。 アプリケーションごとにすべてのコラボレーターの一覧が記載されたメール テンプレートが提供されるため、各自は移行プロセスの通知を受けることができます。
-
-> [!Note]
-> LUIS アプリの作成は無料 (F0 レベル) です。 価格レベルの詳細については[こちら](luis-limits.md#key-limits)をご覧ください。
-
 
 ## <a name="migration-steps"></a>移行の手順
 
@@ -117,6 +100,15 @@ Language Understanding (LUIS) のオーサリング認証が、メール アカ�
 
 6. すべてのリージョンで移行が完了したら、[完了] をクリックします。 これで、アプリケーションにアクセスできるようになります。 ポータル内のすべてのリージョンで、すべてのアプリケーションのオーサリングと保守を続けることができます。
 
+## <a name="migration-notes"></a>移行に関する注意事項
+
+* 移行前は、共同作成者は LUIS アプリ レベルで "_コラボレーター_" と呼ばれます。 移行後は、同じ機能に対して、Azure リソース レベルで "_共同作成者_" の Azure ロールが使用されます。
+* 複数の [LUIS リージョン ポータル](./luis-reference-regions.md#luis-authoring-regions)にサインインしている場合は、一度に複数のリージョンで移行するように求められます。
+* アプリケーションの所有者である場合、アプリケーションは一緒に自動的に移行されます。 アプリケーションのコラボレーターである場合、アプリケーションは一緒に移行されません。 ただし、コラボレーターは、必要なアプリをエクスポートするように求められます。
+* アプリケーションの所有者は、移行するアプリのサブセットを選択することができません。また、コラボレーターが移行したかどうかを、所有者が知る方法はありません。
+* 移行によって自動的にコラボレーターが Azure オーサリング リソースに移動されたり、追加されたりすることはありません。 アプリの所有者が、移行後にこの手順を実行する必要があります。 この手順では、[Azure オーサリング リソースへのアクセス許可](./luis-how-to-collaborate.md)が必要です。
+* 共同作成者は、Azure リソースに割り当てられたら、アプリケーションにアクセスする前に移行を済ませておく必要があります。 そうしないと、アプリケーションをオーサリングするためのアクセス権が付与されません。
+
 
 ## <a name="using-apps-after-migration"></a>移行後のアプリの使用
 
@@ -139,7 +131,6 @@ Language Understanding (LUIS) のオーサリング認証が、メール アカ�
 
 > [!Note]
 > LUIS アプリの所有者が移行し、Azure リソースの共同作成者としてコラボレーターを追加した場合、コラボレーターも移行しないと、アプリにアクセスできません。
-
 
 ## <a name="troubleshooting-the-migration-process"></a>移行プロセスに関するトラブルシューティング
 

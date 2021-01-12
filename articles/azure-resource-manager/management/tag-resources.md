@@ -2,14 +2,14 @@
 title: 論理的な組織化のためにリソース、リソース グループ、サブスクリプションにタグを付ける
 description: タグを適用して、課金や管理のために Azure リソースを整理する方法を示します。
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 01/04/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e47d3acf15ce5e4f5cb70444419b76beb21ae98b
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 3d1161eb99e1145c7a003326310db1922ec3d55c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558149"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881750"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>タグを使用して Azure リソースと整理階層を整理する
 
@@ -438,9 +438,12 @@ az tag delete --resource-id $resource
 az tag update --resource-id $group --operation Merge --tags "Cost Center"=Finance-1222 Location="West US"
 ```
 
-## <a name="templates"></a>テンプレート
+## <a name="arm-templates"></a>ARM テンプレート
 
-Resource Manager テンプレートによるデプロイの間に、リソース、リソース グループ、サブスクリプションにタグを付けることができます。
+Azure Resource Manager テンプレート (ARM テンプレート) を使用したデプロイ時に、リソース、リソース グループ、サブスクリプションにタグを付けることができます。
+
+> [!NOTE]
+> ARM テンプレートを使用して適用したタグによって既存のタグが上書きされます。
 
 ### <a name="apply-values"></a>値を適用する
 
@@ -448,7 +451,7 @@ Resource Manager テンプレートによるデプロイの間に、リソース
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "utcShort": {
@@ -487,7 +490,7 @@ Resource Manager テンプレートによるデプロイの間に、リソース
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -525,7 +528,7 @@ Resource Manager テンプレートによるデプロイの間に、リソース
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -558,7 +561,7 @@ Resource Manager テンプレートによるデプロイの間に、リソース
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {

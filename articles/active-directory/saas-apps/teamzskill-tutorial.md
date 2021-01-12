@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/17/2020
+ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 490bce5ba39b374d54dc9a3f5d76e7ddcdc4e99a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 643cfd1efcc03f0a5d36e4ba53213bba18fc422d
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504560"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914656"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamzskill"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TeamzSkill の統合
 
@@ -37,8 +37,8 @@ ms.locfileid: "92504560"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* TeamzSkill では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* TeamzSkill では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* TeamzSkill では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* TeamzSkill では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-teamzskill-from-the-gallery"></a>ギャラリーからの TeamzSkill の追加
 
@@ -48,7 +48,7 @@ Azure AD への TeamzSkill の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **TeamzSkill** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**TeamzSkill**」と入力します。
 1. 結果のパネルから **[TeamzSkill]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -71,7 +71,7 @@ TeamzSkill に対して Azure AD SSO を構成してテストするには、次�
 
 1. Azure portal の **TeamzSkill** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -106,7 +106,7 @@ TeamzSkill に対して Azure AD SSO を構成してテストするには、次�
     | role | user.assignedroles |
 
     > [!NOTE]
-    > TeamzSkill では、アプリケーションに対してユーザーのロールが割り当てられていることを想定しています。 ユーザーに適切なロールを割り当てることができるように、Azure AD でこれらのロールを設定してください。 Azure AD でロールを構成する方法については、[こちら](../develop/active-directory-enterprise-app-role-management.md)を参照してください。
+    > TeamzSkill では、アプリケーションに対してユーザーのロールが割り当てられていることを想定しています。 ユーザーに適切なロールを割り当てることができるように、Azure AD でこれらのロールを設定してください。 Azure AD でロールを構成する方法については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)を参照してください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -137,7 +137,7 @@ TeamzSkill に対して Azure AD SSO を構成してテストするには、次�
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. 前述のロールを設定した場合、 **[ロールの選択]** ボックスの一覧からそれを選択できます。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-teamzskill-sso"></a>TeamzSkill の SSO の構成
@@ -152,7 +152,7 @@ TeamzSkill に対して Azure AD SSO を構成してテストするには、次�
 
     ![Teamzskill の設定](./media/teamzskill-tutorial/metadata.png)
 
-    a。 **[Company]\(会社\) > [Single Sign-On]\(シングル サインオン\)** の順に移動し、 **[Metadata Upload]\(メタデータのアップロード\)** タブを選択します。
+    a. **[Company]\(会社\) > [Single Sign-On]\(シングル サインオン\)** の順に移動し、 **[Metadata Upload]\(メタデータのアップロード\)** タブを選択します。
 
     b. **[XML Metadata]\(XML メタデータ\)** フィールドに、Azure portal からコピーした **[フェデレーション メタデータ XML]** の値を貼り付けます。
      
@@ -179,6 +179,6 @@ TeamzSkill に対して Azure AD SSO を構成してテストするには、次�
 また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで TeamzSkill タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した TeamzSkill に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 TeamzSkill を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

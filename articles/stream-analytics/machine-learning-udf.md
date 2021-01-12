@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 12/21/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 14f7462aec65d2a13eb36b291331c347b995d281
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 01c85311c9ea49be3543edee405cdd66a0659797
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130682"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733007"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics と Azure Machine Learning の統合 (プレビュー)
 
@@ -83,7 +83,7 @@ INTO output
 FROM input
 ```
 
-Stream Analytics では、Azure Machine Learning 関数に対して 1 つのパラメーターを渡す動作のみがサポートされています。 Machine Learning UDF に入力として渡す前に、データを準備することが必要な場合があります。
+Stream Analytics では、Azure Machine Learning 関数に対して 1 つのパラメーターを渡す動作のみがサポートされています。 Machine Learning UDF に入力として渡す前に、データを準備することが必要な場合があります。 ML UDF への入力が null にならないようにする必要があります。null 入力はジョブ失敗の原因になります。
 
 ## <a name="pass-multiple-input-parameters-to-the-udf"></a>複数の入力パラメーターを UDF に渡す
 
@@ -104,11 +104,18 @@ function createArray(vendorid, weekday, pickuphour, passenger, distance) {
 JavaScript UDF をジョブに追加したら、次のクエリを使用して Azure Machine Learning UDF を呼び出すことができます。
 
 ```SQL
-SELECT udf.score(
-udf.createArray(vendorid, weekday, pickuphour, passenger, distance)
-)
-INTO output
+WITH 
+ModelInput AS (
+#use JavaScript UDF to construct array that will be used as input to ML UDF
+SELECT udf.createArray(vendorid, weekday, pickuphour, passenger, distance) as inputArray
 FROM input
+)
+
+SELECT udf.score(inputArray)
+INTO output
+FROM ModelInput
+#validate inputArray is not null before passing it to ML UDF to prevent job from failing
+WHERE inputArray is not null
 ```
 
 次の JSON は要求の例です。

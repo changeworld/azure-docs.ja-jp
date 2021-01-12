@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 66967c1fa8f6ca42459559caf46bffb0e5afe925
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bef344414a9ba27d5808fcd17ed664b7f51bddc
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743592"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916012"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro"></a>Azure portal を使用して Azure Stack Edge Pro のユーザーを管理する
 
@@ -30,19 +30,19 @@ ms.locfileid: "91743592"
 
 ## <a name="about-users"></a>ユーザーについて
 
-ユーザーには、読み取りアクセス権だけを指定することも、すべての特権を指定することもできます。 名前が示すとおり、読み取り専用ユーザーは、共有データを表示することだけができます。 すべての特権を持つユーザーは、共有データの読み取り、これらの共有への書き込み、および共有データの変更または削除を行うことができます。
+ユーザーには、読み取りアクセス権だけを指定することも、すべての特権を指定することもできます。 読み取り専用ユーザーは、共有データの表示だけが可能です。 すべての特権を持つユーザーは、共有データの読み取り、これらの共有への書き込み、共有データの変更または削除を行うことができます
 
  - **すべての特権を持つユーザー** - フル アクセス権を持つローカル ユーザー。
  - **読み取り専用ユーザー** - 読み取り専用アクセス権を持つローカル ユーザー。 これらのユーザーは、読み取り専用の操作を許可する共有に関連付けられます。
 
-ユーザーのアクセス許可は、まず、共有の作成中にユーザーを作成するときに定義します。 ユーザーに関連付けられるアクセス許可を定義した後、これらのアクセス許可は、エクスプローラーを使用して変更することができます。
+ユーザーのアクセス許可は、まず、共有の作成中にユーザーを作成するときに定義します。 これらはエクスプローラーを使用して変更できます。
 
 
 ## <a name="add-a-user"></a>ユーザーの追加
 
 ユーザーを追加するには、Azure portal で次の手順を実行します。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[概要] > [ユーザー]** に移動します。 コマンド バーの **[+ ユーザーの追加]** を選択します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[ユーザー]** に移動します。 コマンド バーの **[+ ユーザーの追加]** を選択します。
 
     ![[ユーザーの追加] の選択](media/azure-stack-edge-j-series-manage-users/add-user-1.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "91743592"
 ## <a name="modify-user"></a>ユーザーの変更
 
 ユーザーの作成後、ユーザーに関連付けられているパスワードを変更することができます。 ユーザーの一覧から選択します。 新しいパスワードを入力して確認します。 変更を保存します。
- 
+
 ![ユーザーの変更](media/azure-stack-edge-j-series-manage-users/modify-user-1.png)
 
 
@@ -68,7 +68,7 @@ ms.locfileid: "91743592"
 ユーザーを削除するには、Azure portal で次の手順を実行します。
 
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[概要] > [ユーザー]** に移動します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[ユーザー]** に移動します。
 
     ![削除するユーザーの選択](media/azure-stack-edge-j-series-manage-users/delete-user-1.png)
 

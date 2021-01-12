@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 99ed7d3ad81202ab6fe67bf52888bbdbf0b28d2a
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: b7bd04790c7ac124afe3e9b503803f27118ae959
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387090"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861862"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -52,7 +52,7 @@ ms.locfileid: "97387090"
 ![技術プロファイルのフローを示している図](./media/technical-profiles/technical-profile-flow.png)
 
 1. **シングル サインオン (SSO) セッション管理** - [SSO セッション管理](custom-policy-reference-sso.md)を使用して、技術プロファイルのセッション状態を復元します。
-1. **入力要求変換** - 技術プロファイルが開始される前に、Azure AD B2C によって入力 [要求変換] (claimstransformations.md) が実行されます。
+1. **入力要求変換** - 技術プロファイルが開始される前に、Azure AD B2C によって入力[要求変換](claimstransformations.md)が実行されます。
 1. **入力要求** - 要求バッグから要求がピックアップされ、技術プロファイルに使用されます。
 1. **技術プロファイルの実行** - 技術プロファイルでは、その要求を構成されたパーティと交換します。 次に例を示します。
     - ユーザーを ID プロバイダーにリダイレクトして、サインインを完了します。 サインインが成功したら、ユーザーが返され、技術プロファイルの実行が続行されます。
@@ -61,7 +61,7 @@ ms.locfileid: "97387090"
     - MFA テキスト メッセージを送信して検証します。
 1. **検証技術プロファイル** - [セルフアサート技術プロファイル](self-asserted-technical-profile.md)からは、[検証技術プロファイル](validation-technical-profile.md)を呼び出して、ユーザーによってプロファイルされたデータを検証することができます。
 1. **出力要求** - 要求は要求バッグに戻されます。 次のオーケストレーションの手順、または出力要求変換でこれらの要求を使用できます。
-1. **出力要求変換** - 技術プロファイルの完了後、Azure AD B2C によって出力[要求変換](claimstransformations.md)が実行されます。 
+1. **出力要求変換** - 技術プロファイルの完了後、Azure AD B2C によって出力 [要求変換](claimstransformations.md)が実行されます。 
 1. **シングル サインオン (SSO) セッション管理** - [SSO セッション管理](custom-policy-reference-sso.md)を使用して、技術プロファイルのデータをセッションに永続化します。
 
 **TechnicalProfiles** 要素には、クレーム プロバイダーによってサポートされる一連の技術プロファイルが含まれています。 どのクレーム プロバイダーも、そのクレーム プロバイダーと通信するために必要なエンドポイントとプロトコルを特定する技術プロファイルを 1 つ以上持っている必要があります。 1 つのクレーム プロバイダーが複数の技術プロファイルを持つことができます。
@@ -545,7 +545,7 @@ Azure AD B2C により、シークレットと証明書が[ポリシー キー](
 
 ## <a name="use-technical-profile-for-session-management"></a>セッション管理に技術プロファイルを使用する
 
-**UseTechnicalProfileForSessionManagement** 要素は[シングル サインオン セッション技術プロファイル](custom-policy-reference-sso.md)を参照します。 **UseTechnicalProfileForSessionManagement** 要素には、次の属性が含まれています。
+**UseTechnicalProfileForSessionManagement** 要素は [シングル サインオン セッション技術プロファイル](custom-policy-reference-sso.md)を参照します。 **UseTechnicalProfileForSessionManagement** 要素には、次の属性が含まれています。
 
 | 属性 | 必須 | Description |
 | --------- | -------- | ----------- |

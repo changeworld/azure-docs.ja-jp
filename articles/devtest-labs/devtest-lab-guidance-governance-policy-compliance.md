@@ -4,12 +4,12 @@ description: この記事では、Azure DevTest Labs インフラストラクチ
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: fe370ec882fd0462bba6afdf11c718cf46618f0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89fe380c3a8e0e0a82cc806bf19f9a3454041d94
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480934"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592349"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Azure DevTest Labs インフラストラクチャのガバナンス - 会社のポリシーとコンプライアンス
 この記事では、Azure DevTest Labs インフラストラクチャに対する会社のポリシーとコンプライアンスの管理に関するガイダンスを提供します。 
@@ -37,7 +37,7 @@ DevTest Labs でのパブリック成果物リポジトリとプライベート�
 - Azure Repos と、Azure サブスクリプションで認証と承認に使用されているものと同じ Azure Active Directory テナントを関連付けます。
 - 一元管理する **All DevTest Labs Developers** という名前のグループを Azure Active Directory に作成します。 成果物の開発に関与するすべての開発者を、このグループに入れる必要があります。
 - 同じ Azure Active Directory グループを使用して、Azure Repos リポジトリおよびラボへのアクセスを提供できます。
-- Azure Repos でブランチまたはフォークを使用して、開発中のリポジトリとプライマリ運用リポジトリを分離する必要があります。 コンテンツは、適切なコード レビュー後に pull request でマスター ブランチのみに追加されます。 コード レビューで変更が承認されたら、マスター ブランチのメンテナンスを担当する開発リーダーが、更新されたコードをマージします。 
+- Azure Repos でブランチまたはフォークを使用して、開発中のリポジトリとプライマリ運用リポジトリを分離する必要があります。 コンテンツは、適切なコード レビュー後に pull request でメイン ブランチのみに追加されます。 コード レビューで変更が承認されたら、メイン ブランチのメンテナンスを担当する開発リーダーが、更新されたコードをマージします。 
 
 ## <a name="corporate-security-policies"></a>企業のセキュリティ ポリシー
 

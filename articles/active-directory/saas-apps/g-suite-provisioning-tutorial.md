@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4851dfb4a96ab2ca19ba6ea67139772f9c091a69
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: c3f61c3fe688a0b7533902fb0caa19b67f883482
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763649"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901591"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル:G Suite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -24,13 +24,6 @@ ms.locfileid: "97763649"
 
 > [!NOTE]
 > このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
-
-> [!NOTE]
-> G Suite コネクタは最近、2019 年 10 月に更新されました。 G Suite コネクタに加えられた変更には、次のものがあります。
->
-> * G Suite の追加のユーザーおよびグループ属性に対するサポートが追加されました。
-> * G Suite ターゲットの属性名が、[ここで](https://developers.google.com/admin-sdk/directory)定義されている内容に一致するように更新されました。
-> * 既定の属性マッピングが更新されました。
 
 > [!NOTE]
 > この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
@@ -63,15 +56,15 @@ Azure AD での自動ユーザー プロビジョニング用に G Suite を構�
 
 1. [G Suite の管理コンソール](https://admin.google.com/)に管理者アカウントでサインインし、 **[セキュリティ]** を選択します。 このリンクが表示されていない場合、画面下部の **[その他の設定]** メニューに隠れていることがあります。
 
-    ![G Suite のセキュリティ](./media/google-apps-provisioning-tutorial/gapps-security.png)
+    ![G Suite のセキュリティ](./media/g-suite-provisioning-tutorial/gapps-security.png)
 
 2. **[セキュリティ]** ページで、 **[API リファレンス]** を選択します。
 
-    ![G Suite の API](./media/google-apps-provisioning-tutorial/gapps-api.png)
+    ![G Suite の API](./media/g-suite-provisioning-tutorial/gapps-api.png)
 
 3. **[API アクセスを有効にする]** を選択します。
 
-    ![G Suite の API の有効化](./media/google-apps-provisioning-tutorial/gapps-api-enabled.png)
+    ![G Suite の API の有効化](./media/g-suite-provisioning-tutorial/gapps-api-enabled.png)
 
     > [!IMPORTANT]
    > G Suite にプロビジョニングしようとしているすべてのユーザーについて、その Azure AD でのユーザー名がカスタム ドメインに関連付けられている **必要があります**。 たとえば G Suite では、bob@contoso.onmicrosoft.com のようなユーザー名は使用できませんが、 bob@contoso.com のようなユーザー名は使用できます。 既存のユーザーのドメインは、[ここ](../fundamentals/add-custom-domain.md)にある手順に従って変更できます。
@@ -80,15 +73,15 @@ Azure AD での自動ユーザー プロビジョニング用に G Suite を構�
 
     a. [G Suite の管理コンソール](https://admin.google.com/)で、 **[ドメイン]** を選択します。
 
-    ![G Suite のドメイン](./media/google-apps-provisioning-tutorial/gapps-domains.png)
+    ![G Suite のドメイン](./media/g-suite-provisioning-tutorial/gapps-domains.png)
 
     b. **[ドメインやドメイン エイリアスを追加]** を選択します。
 
-    ![G Suite のドメインの追加](./media/google-apps-provisioning-tutorial/gapps-add-domain.png)
+    ![G Suite のドメインの追加](./media/g-suite-provisioning-tutorial/gapps-add-domain.png)
 
     c. **[別のドメインを追加]** を選択し、追加するドメインの名前を入力します。
 
-    ![G Suite の別の追加](./media/google-apps-provisioning-tutorial/gapps-add-another.png)
+    ![G Suite の別の追加](./media/g-suite-provisioning-tutorial/gapps-add-another.png)
 
     d. **[Continue and verify domain ownership]\(続行してドメインの所有権を確認\)** を選択します。 次に、手順に従って、ドメイン名を所有していることを確認します。 Google でドメインを検証する方法に関する包括的な手順については、「[サイトの所有権を確認する](https://support.google.com/webmasters/answer/35179)」を参照してください。
 
@@ -96,11 +89,11 @@ Azure AD での自動ユーザー プロビジョニング用に G Suite を構�
 
 5. 次に、G Suite でユーザー プロビジョニングを管理するためにどの管理者アカウントを使用するかを決定します。 **[Admin Roles] (管理者ロール)** に移動します。
 
-    ![G Suite の管理者](./media/google-apps-provisioning-tutorial/gapps-admin.png)
+    ![G Suite の管理者](./media/g-suite-provisioning-tutorial/gapps-admin.png)
 
 6. そのアカウントの **[Admin role] (管理者ロール)** で、そのロールの **[特権]** を編集します。 このアカウントをプロビジョニングに使用できるように、 **[Admin API Privileges]\(管理 API の権限\)** がすべて有効になっていることを確認します。
 
-    ![G Suite の管理者権限](./media/google-apps-provisioning-tutorial/gapps-admin-privileges.png)
+    ![G Suite の管理者権限](./media/g-suite-provisioning-tutorial/gapps-admin-privileges.png)
 
 ## <a name="step-3-add-g-suite-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから G Suite を追加する
 
@@ -126,9 +119,9 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。 ユーザーは portal.azure.com にログインする必要があり、aad.portal.azure.com を使用できなくなります
 
-    ![[エンタープライズ アプリケーション] ブレード](./media/google-apps-provisioning-tutorial/enterprise-applications.png)
+    ![[エンタープライズ アプリケーション] ブレード](./media/g-suite-provisioning-tutorial/enterprise-applications.png)
 
-    ![[すべてのアプリケーション] ブレード](./media/google-apps-provisioning-tutorial/all-applications.png)
+    ![[すべてのアプリケーション] ブレード](./media/g-suite-provisioning-tutorial/all-applications.png)
 
 2. アプリケーションの一覧で **[G Suite]** を選択します。
 
@@ -138,7 +131,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
-      ![[開始] ブレード](./media/google-apps-provisioning-tutorial/get-started.png)
+      ![[開始] ブレード](./media/g-suite-provisioning-tutorial/get-started.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
@@ -146,11 +139,11 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 5. **[管理者資格情報]** セクション下にある **[承認する]** をクリックします。 ブラウザーの新しいウィンドウで Google 認可ダイアログ ボックスにリダイレクトされます。
 
-      ![G Suite の承認](./media/google-apps-provisioning-tutorial/authorize-1.png)
+      ![G Suite の承認](./media/g-suite-provisioning-tutorial/authorize-1.png)
 
 6. Azure AD に G Suite テナントを変更するためのアクセス許可を付与することを確認します。 **[Accept]\(承認\)** を選択します。
 
-     ![G Suite のテナントの承認](./media/google-apps-provisioning-tutorial/gapps-auth.png)
+     ![G Suite のテナントの承認](./media/g-suite-provisioning-tutorial/gapps-auth.png)
 
 7. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が G Suite に接続できることを確認します。 接続できない場合は、使用中の G Suite アカウントに管理者アクセス許可があることを確認してから、もう一度試します。 その後、**承認** 手順を再び試します。
 
@@ -276,7 +269,13 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 1. [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
 2. [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
-3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。
+3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。  
+
+## <a name="change-log"></a>ログの変更
+
+* 10/17/2020 - G Suite の追加のユーザーおよびグループ属性に対するサポートが追加されました。
+* 10/17/2020 - G Suite ターゲットの属性名が、[ここで](https://developers.google.com/admin-sdk/directory)定義されている内容に一致するように更新されました。
+* 10/17/2020 - 既定の属性マッピングが更新されました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

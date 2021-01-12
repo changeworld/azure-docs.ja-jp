@@ -6,18 +6,18 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: fd33ca4c5d637e31230d8c124fdb9ec7c71d2ba7
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 3213df378bc3b8403ebd11f899d722106de67a65
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094847"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882026"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Blob Storage トリガー
 
 Blob ストレージ トリガーは、新しいまたは更新された BLOB が検出されたときに関数を開始します。 BLOB の内容は、[関数への入力](./functions-bindings-storage-blob-input.md)として提供されます。
 
-Azure Blob Storage トリガーには、汎用ストレージ アカウントが必要です。 [階層的名前空間](../storage/blobs/data-lake-storage-namespace.md)を持つストレージ V2 アカウントも サポートされています。 BLOB 専用アカウントを使用する場合、またはアプリケーションに特別な必要性がある場合は、このトリガーの使用に代わる方法を検討してください。
+Azure Blob Storage トリガーには、汎用ストレージ アカウントが必要です。 [階層型名前空間](../storage/blobs/data-lake-storage-namespace.md)を持つストレージ V2 アカウントもサポートされています。 BLOB 専用アカウントを使用する場合、またはアプリケーションに特別な必要性がある場合は、このトリガーの使用に代わる方法を検討してください。
 
 セットアップと構成の詳細については、[概要](./functions-bindings-storage-blob.md)に関するページをご覧ください。
 
@@ -114,6 +114,24 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+この関数は、`myblob` コンテナーで BLOB が追加または更新されたときにログを書き込みます。
+
+```java
+@FunctionName("blobprocessor")
+public void run(
+  @BlobTrigger(name = "file",
+               dataType = "binary",
+               path = "myblob/{name}",
+               connection = "MyStorageAccountAppSetting") byte[] content,
+  @BindingName("name") String filename,
+  final ExecutionContext context
+) {
+  context.getLogger().info("Name: " + filename + " Size: " + content.length + " bytes");
+}
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 次の例は、*function.json* ファイルの BLOB トリガー バインドと、バインドを使用する [JavaScript](functions-reference-node.md) コードを示しています。 関数は、`samples-workitems` コンテナーで BLOB が追加または更新されたときにログを書き込みます。
@@ -146,6 +164,34 @@ module.exports = function(context) {
     context.log('Node.js Blob trigger function processed', context.bindings.myBlob);
     context.done();
 };
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+次の例は、`source` BLOB ストレージ コンテナーにファイルが追加されたときに実行される関数を作成する方法を示しています。
+
+関数構成ファイル (_function.json_) には、`type` が `blobTrigger` で、`direction` が `in` に設定されたバインドが含まれています。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "InputBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "source/{name}",
+      "connection": "MyStorageAccountConnectionString"
+    }
+  ]
+}
+```
+
+_run.ps1_ ファイルに関連するコードを次に示します。
+
+```powershell
+param([byte[]] $InputBlob, $TriggerMetadata)
+
+Write-Host "PowerShell Blob trigger: Name: $($TriggerMetadata.Name) Size: $($InputBlob.Length) bytes"
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -183,24 +229,6 @@ import azure.functions as func
 
 def main(myblob: func.InputStream):
     logging.info('Python Blob trigger function processed %s', myblob.name)
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-この関数は、`myblob` コンテナーで BLOB が追加または更新されたときにログを書き込みます。
-
-```java
-@FunctionName("blobprocessor")
-public void run(
-  @BlobTrigger(name = "file",
-               dataType = "binary",
-               path = "myblob/{name}",
-               connection = "MyStorageAccountAppSetting") byte[] content,
-  @BindingName("name") String filename,
-  final ExecutionContext context
-) {
-  context.getLogger().info("Name: " + filename + " Size: " + content.length + " bytes");
-}
 ```
 
 ---
@@ -267,17 +295,21 @@ public void run(
 
 属性は、C# スクリプトではサポートされていません。
 
+# <a name="java"></a>[Java](#tab/java)
+
+`@BlobTrigger` 属性を使用すると、関数をトリガーした BLOB にアクセスできます。 詳細については、「[トリガー - 例](#example)」を参照してください。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 属性は、JavaScript ではサポートされていません。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+属性は、PowerShell ではサポートされていません。
+
 # <a name="python"></a>[Python](#tab/python)
 
 属性は、Python ではサポートされていません。
-
-# <a name="java"></a>[Java](#tab/java)
-
-`@BlobTrigger` 属性を使用すると、関数をトリガーした BLOB にアクセスできます。 詳細については、「[トリガー - 例](#example)」を参照してください。
 
 ---
 
@@ -305,17 +337,21 @@ public void run(
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
+# <a name="java"></a>[Java](#tab/java)
+
+`@BlobTrigger` 属性を使用すると、関数をトリガーした BLOB にアクセスできます。 詳細については、「[トリガー - 例](#example)」を参照してください。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `<NAME>` が *function.json* で定義されている値と一致する `context.bindings.<NAME>` を使用して BLOB データにアクセスします。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+_function.json_ ファイルのバインドの name パラメーターで指定されている名前と一致するパラメーターを使用して、BLOB データにアクセスします。
+
 # <a name="python"></a>[Python](#tab/python)
 
-[InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python) に型指定したパラメーターを使用して BLOB データにアクセスします。 詳細については、「[トリガー - 例](#example)」を参照してください。
-
-# <a name="java"></a>[Java](#tab/java)
-
-`@BlobTrigger` 属性を使用すると、関数をトリガーした BLOB にアクセスできます。 詳細については、「[トリガー - 例](#example)」を参照してください。
+[InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python&preserve-view=true) に型指定したパラメーターを使用して BLOB データにアクセスします。 詳細については、「[トリガー - 例](#example)」を参照してください。
 
 ---
 
@@ -374,6 +410,10 @@ BLOB の名前が *{20140101}-soundfile.mp3* の場合、関数コード内の `
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
+# <a name="java"></a>[Java](#tab/java)
+
+メタデータは、Java では使用できません。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
@@ -383,13 +423,13 @@ module.exports = function (context, myBlob) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+メタデータは、`$TriggerMetadata` パラメーターを介して使用できます。
+
 # <a name="python"></a>[Python](#tab/python)
 
 メタデータは、Python では使用できません。
-
-# <a name="java"></a>[Java](#tab/java)
-
-メタデータは、Java では使用できません。
 
 ---
 
@@ -399,11 +439,11 @@ Azure Functions ランタイムでは、BLOB トリガー関数は、同一の�
 
 Azure Functions では、BLOB の配信確認メッセージは (アプリ設定 `AzureWebJobsStorage` で指定した) 関数アプリの Azure ストレージ アカウント内の *azure-webjobs-hosts* というコンテナーに格納されます。 BLOB の配信確認メッセージには次の情報が含まれています。
 
-* トリガーされた関数 (" *&lt;関数アプリ名>* .Functions. *&lt;関数名>* "。たとえば、"MyFunctionApp.Functions.CopyBlob")
+* トリガーされた関数 (`<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>`。例: `MyFunctionApp.Functions.CopyBlob`)
 * コンテナーの名前
-* BLOB の種類 ("BlockBlob" か "PageBlob")
+* BLOB の種類 (`BlockBlob` または `PageBlob`)。
 * BLOB の名前
-* ETag (BLOB のバージョン識別子。たとえば、"0x8D1DC6E70A277EF")
+* ETag (BLOB のバージョン識別子。例: `0x8D1DC6E70A277EF`)
 
 BLOB を強制的に再処理する場合は、*azure-webjobs-hosts* コンテナーからその BLOB の配信確認メッセージを手動で削除します。 再処理がすぐに行われない場合がありますが、後で必ず行われます。 すぐに再処理するには、*azure-webjobs-hosts/blobscaninfo* 内の *scaninfo* BLOB を更新できます。 `LatestScan` プロパティの後に最後に変更されたタイムスタンプを持つすべての BLOB が再びスキャンされます。
 
@@ -413,11 +453,11 @@ BLOB を強制的に再処理する場合は、*azure-webjobs-hosts* コンテ�
 
 試行が 5 回とも失敗した場合、Azure Functions は *webjobs-blobtrigger-poison* という名前のストレージ キューにメッセージを追加します。 再試行回数の最大値の設定は変更可能です。 同じ MaxDequeueCount 設定は、有害な BLOB の処理と有害キュー メッセージの処理に使用されます。 有害な BLOB のキュー メッセージは次のプロパティを持つ JSON オブジェクトです。
 
-* FunctionId (形式: *&lt;Function App 名>* .Functions. *&lt;関数名>* )
-* BLOB の種類 ("BlockBlob" か "PageBlob")
+* FunctionId (`<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>` の形式)
+* BlobType (`BlockBlob` または `PageBlob`)
 * コンテナー名
 * BlobName
-* ETag (BLOB のバージョン識別子。たとえば、"0x8D1DC6E70A277EF")
+* ETag (BLOB のバージョン識別子。例: `0x8D1DC6E70A277EF`)
 
 ## <a name="concurrency-and-memory-usage"></a>コンカレンシーとメモリ使用量
 

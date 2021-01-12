@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 12/25/2020
 ms.author: memildin
-ms.openlocfilehash: c0952e0f267f9c2511a2e80fa7106958d8dd0ee5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 115d89783a849a9c4c7adb2fceceaf8d1575c785
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791887"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795990"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Security recommendations in Azure Security Center 
 このトピックでは、Azure セキュリティ センターで推奨事項を確認し、理解し、Azure リソースの保護に役立てる方法について説明します。
@@ -42,7 +42,11 @@ Security Center はリソースのセキュリティの状態を分析して、�
 
 1. Security Center のメニューから **[推奨事項]** ページを開いて、お使いの環境に適用できる推奨事項を確認します。 推奨事項は、セキュリティ コントロールにグループ化されています。
 
-      ![セキュリティ コントロールにグループ化された推奨事項](./media/security-center-recommendations/view-recommendations.png)
+    :::image type="content" source="./media/security-center-recommendations/view-recommendations.png" alt-text="セキュリティ コントロールにグループ化された推奨事項" lightbox="./media/security-center-recommendations/view-recommendations.png":::
+
+1. リソースの種類、重大度、環境、あるいは自分にとって重要なその他の条件に固有の推奨を見つけるには、推奨事項一覧に任意のフィルターを使用してください。
+
+    :::image type="content" source="media/security-center-recommendations/recommendation-list-filters.png" alt-text="Azure Security Center 推奨事項一覧を絞り込むためのフィルター":::
 
 1. コントロールを展開し、特定の推奨事項を選択して [推奨事項の詳細] ページを表示します。
 
@@ -50,7 +54,7 @@ Security Center はリソースのセキュリティの状態を分析して、�
 
     このページには次の項目が含まれています。
 
-    1. サポートされている推奨事項の **[適用]** と **[拒否]** ボタン (「 [適用/拒否の推奨事項を使用した構成ミスの防止](prevent-misconfigurations.md)」を参照)
+    1. サポートされている推奨事項の **[適用]** と **[拒否]** ボタン (「[適用/拒否の推奨事項を使用した構成ミスの防止](prevent-misconfigurations.md)」を参照)
     1. **重大度インジケーター**
     1. **更新間隔** (該当する場合) 
     1. **説明** - 問題の簡単な説明

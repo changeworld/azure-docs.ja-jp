@@ -11,16 +11,19 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8560acd9c5a11004c5144441d395863c8b85edba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0fa3492555b2870ae7b95abec08bbd3280cdc985
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461395"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705066"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>ファイアウォールの内側で Azure Machine Learning のワークスペースを使用する
 
-この記事では、Azure Firewall を構成して、Azure Machine Learning ワークスペースとパブリック インターネットへのアクセスを制御する方法について説明します。 Azure Machine Learning のセキュリティ保護の詳細については、「[Azure Machine Learning のエンタープライズ セキュリティ](concept-enterprise-security.md)」を参照してください
+この記事では、Azure Firewall を構成して、Azure Machine Learning ワークスペースとパブリック インターネットへのアクセスを制御する方法について説明します。 Azure Machine Learning のセキュリティ保護の詳細については、[Azure Machine Learning のエンタープライズ セキュリティ](concept-enterprise-security.md)に関するページを参照してください。
+
+> [!WARNING]
+> ファイアウォールの背後にあるデータ ストレージへのアクセスは、コード ファースト エクスペリエンスでのみサポートされます。 [Azure Machine Learning スタジオ](overview-what-is-machine-learning-studio.md)を使用してファイアウォールの背後にあるデータにアクセスすることはサポートされていません。 スタジオを使用してプライベート ネットワーク上のデータ ストレージを操作するには、まず[仮想ネットワークを設定し](../virtual-network/quick-create-portal.md)、[仮想ネットワーク内に格納されているデータへのアクセス権をスタジオに付与する](how-to-enable-studio-virtual-network.md)必要があります。
 
 ## <a name="azure-firewall"></a>Azure Firewall
 
@@ -28,7 +31,7 @@ Azure Firewall を使用する場合は、__宛先ネットワーク アドレ�
 
 ### <a name="inbound-configuration"></a>受信の構成
 
-Azure Machine Learning __コンピューティング インスタンス__ または __コンピューティング クラスター__ を使用する場合は、Azure Machine Learning リソースを含むサブネットの[ユーザー定義ルート (UDR)](../virtual-network/virtual-networks-udr-overview.md) を追加します。 このルートによって、`BatchNodeManagement` と `AzureMachineLearning` リソースの IP アドレス __から__ コンピューティング インスタンスとコンピューティング クラスターのパブリック IP にトラフィックが強制的に送信されます。
+Azure Machine Learning __コンピューティング インスタンス__ または __コンピューティング クラスター__ を使用する場合は、Azure Machine Learning リソースを含むサブネットの [ユーザー定義ルート (UDR)](../virtual-network/virtual-networks-udr-overview.md) を追加します。 このルートによって、`BatchNodeManagement` と `AzureMachineLearning` リソースの IP アドレス __から__ コンピューティング インスタンスとコンピューティング クラスターのパブリック IP にトラフィックが強制的に送信されます。
 
 これらの UDR により、Batch サービスが、タスクをスケジュールする目的でプールのコンピューティング ノードと通信できるようになります。 コンピューティング インスタンスへのアクセスに必要なため、リソースが存在する Azure Machine Learning service の IP アドレスも追加します。 Batch サービスと Azure Machine Learning service の IP アドレスの一覧を取得するには、次のいずれかの方法を使用します。
 

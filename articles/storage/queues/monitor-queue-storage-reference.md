@@ -1,22 +1,22 @@
 ---
-title: Azure Queue storage 監視データのリファレンス | Microsoft Docs
-description: Azure Queue storage からのデータを監視するためのログとメトリックのリファレンス。
+title: Azure Queue Storage 監視データのリファレンス
+description: Azure Queue Storage からのデータを監視するためのログとメトリックのリファレンス。
 author: normesta
 services: azure-monitor
-ms.service: azure-monitor
-ms.topic: reference
-ms.date: 10/02/2020
 ms.author: normesta
+ms.date: 10/02/2020
+ms.topic: reference
+ms.service: azure-monitor
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: a3a07f828bb8ef20da630e909e46f03e8556eb98
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: ba8a82ed1113bfb3e71560ca9a6c713602df21f2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780367"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590649"
 ---
-# <a name="azure-queue-storage-monitoring-data-reference"></a>Azure Queue storage 監視データのリファレンス
+# <a name="azure-queue-storage-monitoring-data-reference"></a>Azure Queue Storage 監視データのリファレンス
 
 Azure Storage の監視データの収集と分析の詳細については、「[Azure Storage の監視](monitor-queue-storage.md)」を参照してください。
 
@@ -30,23 +30,23 @@ Azure Storage の監視データの収集と分析の詳細については、「
 
 Azure Storage は、Azure Monitor で次の容量メトリックを提供します。
 
-#### <a name="account-level"></a>アカウント レベル
+#### <a name="account-level-capacity-metrics"></a>アカウントレベルの容量メトリック
 
-[!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
+[!INCLUDE [Account-level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
 
-#### <a name="queue-storage"></a>ストレージ
+#### <a name="queue-storage-metrics"></a>Queue Storage メトリック
 
-この表は、[Queue storage のメトリック](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)を示しています。
+この表は、[Queue Storage のメトリック](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)を示しています。
 
 | メトリック | 説明 |
 | ------------------- | ----------------- |
-| QueueCapacity | ストレージ アカウントによって使用されている Queue ストレージの量。 <br/><br/> 単位:バイト <br/> 集計の種類:Average <br/> 値の例:1024 |
-| QueueCount   | ストレージ アカウントのキューの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
-| QueueMessageCount | ストレージ アカウントの Queue サービス内のキュー メッセージの概数。 <br/><br/>単位:Count <br/> 集計の種類:Average <br/> 値の例:1024 |
+| **QueueCapacity** | ストレージ アカウントによって使用されている Queue Storage の量。 <br><br> 単位: `Bytes` <br> 集計の種類: `Average` <br> 値の例: `1024` |
+| **QueueCount** | ストレージ アカウントのキューの数。 <br><br> 単位: `Count` <br> 集計の種類: `Average` <br> 値の例: `1024` |
+| **QueueMessageCount** | ストレージ アカウント内のキュー メッセージの概数。 <br><br> 単位: `Count` <br> 集計の種類: `Average` <br> 値の例: `1024` |
 
 ### <a name="transaction-metrics"></a>トランザクション メトリック
 
-トランザクション メトリックは、ストレージ アカウントへの要求ごとに、Azure Storage から Azure Monitor に出力されます。 ストレージ アカウントにアクティビティがない場合、その間はトランザクション メトリックのデータは存在しません。 すべてのトランザクション メトリックは、アカウントと Queue storage の両方のサービス レベルで使用できます。 時間グレインは、メトリック値が提供される時間間隔を定義します。 すべてのトランザクション メトリックに対してサポートされている時間グレインは PT1H と PT1M です。
+トランザクション メトリックは、ストレージ アカウントへの要求ごとに、Azure Storage から Azure Monitor に出力されます。 ストレージ アカウントにアクティビティがない場合、その間はトランザクション メトリックのデータは存在しません。 すべてのトランザクション メトリックは、アカウントと Queue Storage の両方のサービス レベルで使用できます。 時間グレインは、メトリック値が提供される時間間隔を定義します。 すべてのトランザクション メトリックに対してサポートされている時間グレインは PT1H と PT1M です。
 
 [!INCLUDE [Transaction metrics](../../../includes/azure-storage-account-transaction-metrics.md)]
 
@@ -79,5 +79,5 @@ Azure Storage では、Azure Monitor の次のメトリック ディメンショ
 
 ## <a name="see-also"></a>関連項目
 
-- Azure Storage 監視の詳細については、「[Azure Queue storage の監視](monitor-queue-storage.md)」を参照してください。
+- Azure Queue Storage 監視の詳細については、「[Azure Queue Storage の監視](monitor-queue-storage.md)」を参照してください。
 - Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。

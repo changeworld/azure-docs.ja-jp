@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Azure, Kinect, RGB, IR, 記録, センサー, SDK, アクセス, 深度, ビデオ, カメラ, IMU, モーション, センサー, オーディオ, マイク, Matroska, センサー SDK, ダウンロード, 体, トラッキング, サポート
-ms.openlocfilehash: 2fbfe9c52a46cbf7058e6d5ca91008f1f289bfd2
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9bb6e0ad8ebbb763389f13e317036eacc5c7d074
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357047"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587096"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Azure Kinect のサポート オプションとリソース
 
@@ -56,6 +56,8 @@ Sensor SDK や Body Tracking SDK をオンプレミスで使用するための�
 デバイスまたはセンサーの機能、ファームウェアの更新、または購入オプションに関するヘルプは、[こちら](https://support.microsoft.com/supportforbusiness/productselection?sapId=f77b1b95-721e-43a0-2db8-b01e81a3f813)を参照してください。
 
 サポートの提供の詳細については、[Microsoft ビジネス向けサポート](https://support.microsoft.com/help/4341255/support-for-business)のページを参照してください。
+
+Microsoft ハードウェア製品に対する EU 適合宣言は[こちら](https://www.microsoft.com/en-us/eu-declarations-compliance?activetab=pivot1:primaryr3)にあります
 
 ## <a name="next-steps"></a>次のステップ
 

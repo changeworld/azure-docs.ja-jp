@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: e2838b759a611cb55b9fd3fadf834c84eb74210d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a61d6ba1f908a7dae56db066bfae329fc26f1c5c
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533640"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696122"
 ---
 # <a name="register-for-azure-netapp-files"></a>Azure NetApp Files に登録する
 
@@ -30,7 +30,8 @@ ms.locfileid: "91533640"
 
 ## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>サービスにアクセスするための順番待ちリクエストを送信する
 
-1. [Azure NetApp Files の順番待ち送信ページ](https://aka.ms/azurenetappfiles)から、Azure NetApp Files サービスにアクセスするための順番待ちリクエストを送信します。 
+1. 次のページにアクセスして、Azure NetApp Files サービスにアクセスするための waitlist 要求を送信します。  
+    [**Azure NetApp Files の waitlist の送信ページ**](https://aka.ms/azurenetappfiles) 
 
     順番待ちにサインアップしても、すぐにサービスにアクセスできるとは限りません。 
 

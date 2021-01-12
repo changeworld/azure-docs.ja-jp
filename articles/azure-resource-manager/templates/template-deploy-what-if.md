@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: tomfitz
-ms.openlocfilehash: a1ce7f8f718b364dc4b47593cf9ea37e8baf1e72
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: fa70d88b046cf38aa74582066d230c15580465b9
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563094"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673972"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM テンプレート デプロイの What-If 操作
 
@@ -396,6 +396,7 @@ what-if 操作は、Azure SDK を介して使用できます。
 ## <a name="next-steps"></a>次のステップ
 
 - what-if 操作から正しくない結果が表示された場合は、[https://aka.ms/whatifissues](https://aka.ms/whatifissues) で問題を報告してください。
+- what if の使用に関して説明している Microsoft Learn モジュールについては、「[what-if と ARM テンプレート テスト ツールキットを使用して変更をプレビューし、Azure リソースを検証する](/learn/modules/arm-template-test/)」を参照してください。
 - Azure PowerShell を使用してテンプレートをデプロイするには、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。
 - Azure CLI を使用してテンプレートをデプロイするには、「[ARM テンプレートと Azure CLI を使用したリソースのデプロイ](deploy-cli.md)」を参照してください。
 - REST を使用してテンプレートをデプロイするには、「[ARM テンプレートと Resource Manager REST API を使用したリソースのデプロイ](deploy-rest.md)」を参照してください。

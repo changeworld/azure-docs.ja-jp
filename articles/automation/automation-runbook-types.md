@@ -3,14 +3,14 @@ title: Azure Automation の Runbook の種類
 description: この記事では、Azure Automation で使用できる Runbook の種類と、使用する種類を決定する際の考慮事項について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 03/05/2019
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 24d0123eecc56b56573e94d831283d8d360cd16e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a0c12297f19d30bf13ffbe594e0433c83914a8e
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185927"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733962"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation の Runbook の種類
 
@@ -20,9 +20,9 @@ Azure Automation のプロセス オートメーション機能では、次の�
 |:--- |:--- |
 | [グラフィカル](#graphical-runbooks)|Windows PowerShell に基づき、Azure portal のグラフィカル エディターで完全に作成および編集される グラフィカル Runbook です。 |
 | [グラフィカル PowerShell ワークフロー](#graphical-runbooks)|Windows PowerShell ワークフローに基づき、Azure portal のグラフィカル エディターで完全に作成および編集される グラフィカル Runbook です。 |
-| [PowerShell](#powershell-runbooks) |Windows PowerShell スクリプトに基づくテキスト Runbook です。 |
-| [PowerShell ワークフロー](#powershell-workflow-runbooks)|Windows PowerShell ワークフロー スクリプトに基づくテキスト Runbook です。 |
-| [Python](#python-runbooks) |Python スクリプトに基づくテキスト Runbook です。 |
+| [PowerShell](#powershell-runbooks) |Windows PowerShell スクリプトに基づくテキスト形式の Runbook です。 |
+| [PowerShell ワークフロー](#powershell-workflow-runbooks)|Windows PowerShell ワークフロー スクリプトに基づくテキスト形式の Runbook です。 |
+| [Python](#python-runbooks) |Python スクリプトに基づくテキスト形式の Runbook です。 |
 
 特定の Runbook に使用する種類を決定するときは、次のことを考慮します。
 
@@ -33,9 +33,9 @@ Azure Automation のプロセス オートメーション機能では、次の�
 
 Azure portal のグラフィカル エディターを使用して、グラフィカルおよびグラフィカル PowerShell ワークフロー Runbook を作成および編集できます。 ただし、別のツールを使用してこの種類の Runbook を作成または編集することはできません。 グラフィカル Runbook の主な機能を次に示します。
 
-* Automation アカウントのファイルにエクスポートし、別の Automation アカウントにインポートすることができます。 
-* PowerShell コードを生成します。 
-* インポート時にグラフィカル PowerShell ワークフロー Runbook との間で変換できます。 
+* Automation アカウントのファイルにエクスポートし、別の Automation アカウントにインポートします。
+* PowerShell コードを生成します。
+* インポート時にグラフィカル PowerShell ワークフロー Runbook との間で変換します。
 
 ### <a name="advantages"></a>長所
 
@@ -59,7 +59,7 @@ PowerShell Runbook は、Windows PowerShell に基づきます。 Azure ポー�
 
 ### <a name="advantages"></a>長所
 
-* すべての複雑なロジックを PowerShell コードで実装でき、PowerShell ワークフローに関する複雑さが加わることはありません。
+* すべての複雑なロジックを PowerShell コードで実装でき、PowerShell ワークフローのその他の複雑さはありません。
 * 実行前にコンパイルする必要がないため、PowerShell ワークフロー Runbook よりも速く起動できます。
 * Windows と Linux の両方の Azure と Hybrid Runbook Worker で動作します。
 
@@ -68,7 +68,7 @@ PowerShell Runbook は、Windows PowerShell に基づきます。 Azure ポー�
 * PowerShell スクリプトについて理解している必要があります。
 * Runbook に[並列処理](automation-powershell-workflow.md#use-parallel-processing)を使用し、複数のアクションを並列して実行することはできません。
 * Runbook に[チェックポイント](automation-powershell-workflow.md#use-checkpoints-in-a-workflow)を使用し、エラーが発生した場合に Runbook を再開することはできません。
-* PowerShell ワークフロー Runbook とグラフィカル Runbook を子 Runbook として組み込むには、新しいジョブを作成する [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) コマンドレットを使用する必要があります。
+* PowerShell ワークフロー Runbook とグラフィカル Runbook を子 Runbook として組み込むには、新しいジョブを作成する [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) コマンドレットを使用する必要があります。
 
 ### <a name="known-issues"></a>既知の問題
 
@@ -76,7 +76,7 @@ PowerShell Runbook に関する現在の既知の問題は次のとおりです�
 
 * PowerShell Runbook では、null 値を含む暗号化されていない[変数資産](./shared-resources/variables.md)は取得できません。
 * PowerShell Runbook では、名前に `*~*` が含まれる変数資産は取得できません。
-* PowerShell Runbook のループ内の [Get-Process](/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) 操作は、約 80 回の反復後にクラッシュする可能性があります。
+* PowerShell Runbook のループ内の [Get-Process](/powershell/module/microsoft.powershell.management/get-process) 操作は、約 80 回の反復後にクラッシュする可能性があります。
 * 一度に大量のデータを出力ストリームに書き込もうとした場合、PowerShell Runbook が失敗する可能性があります。 通常、大きなオブジェクトの処理に必要な情報のみを Runbook から出力することで、この問題を回避できます。 たとえば、制限なしで `Get-Process` を使用するのではなく、`Get-Process | Select ProcessName, CPU` のように必要なパラメーターのみをコマンドレットから出力させることができます。
 
 ## <a name="powershell-workflow-runbooks"></a>PowerShell ワークフロー Runbook
@@ -100,18 +100,29 @@ PowerShell ワークフロー Runbook は、 [Windows PowerShell ワークフロ
 
 ## <a name="python-runbooks"></a>Python Runbook
 
-Python Runbook は Python 2 でコンパイルします。 Azure portal のテキスト エディターを使用して、Runbook のコードを直接編集することができます。 また、任意のオフライン テキスト エディターを使用したり、Azure Automation に [Runbook をインポート](manage-runbooks.md)したりすることもできます。
+Python Runbook は Python 2 および Python 3 でコンパイルされます。 Python 3 Runbook は現在プレビュー段階です。 Azure portal のテキスト エディターを使用して、Runbook のコードを直接編集することができます。 また、任意のオフライン テキスト エディターを使用したり、Azure Automation に [Runbook をインポート](manage-runbooks.md)したりすることもできます。
 
 ### <a name="advantages"></a>長所
 
 * 堅牢な Python ライブラリを使用できます。
-* Azure または Linux Hybrid Runbook Worker で実行できます。 Windows Hybrid Runbook Worker がサポートされるには、[Python2.7](https://www.python.org/downloads/release/latest/python2) がインストールされている必要があります。
+* Azure または Hybrid Runbook Worker で実行できます。
+* Python 2 の場合、Windows Hybrid Runbook Worker がサポートされるには、[Python 2.7](https://www.python.org/downloads/release/latest/python2) がインストールされている必要があります。
+* Python 3 クラウド ジョブの場合、Python 3.8 バージョンがサポートされています。 コードが異なるバージョン間で互換性がある場合は、任意の 3.x バージョンのスクリプトとパッケージが動作する可能性があります。  
+* Windows マシン上の Python 3 ハイブリッド ジョブの場合、使用する可能性のある任意の 3.x バージョンをインストールすることを選択できます。  
+* Linux マシン上の Python 3 ハイブリッド ジョブの場合、DSC OMSConfig と Linux Hybrid Worker を実行するために、そのマシンにインストールされている Python 3 バージョンに依存します。 Linux マシンには 3.6 をインストールすることをお勧めします。 ただし、Python 3 のバージョン間でメソッド シグネチャまたはコントラクトに破壊的変更がない場合には、異なるバージョンでも機能します。
 
 ### <a name="limitations"></a>制限事項
 
 * Python スクリプトについて理解している必要があります。
-* 現在、Python 2 のみがサポートされています。 Python 3 固有の関数は失敗します。
 * サードパーティ製ライブラリを使用するには、Automation アカウントに[パッケージをインポートする](python-packages.md)必要があります。
+* PowerShell/PowerShell ワークフローで **Start-AutomationRunbook**  コマンドレットを使用して Python 3 Runbook (プレビュー) を開始することはできません。 この制限を回避するには、Az.Automation モジュールから **Start-AzAutomationRunbook** コマンドレットを使用するか、または AzureRm.Automation モジュールから  **Start-AzureRmAutomationRunbook** コマンドレットを使用します。  
+* Python 3 Runbook (プレビュー) とパッケージは、PowerShell では機能しません。
+* Webhook を使用して Python Runbook を開始することはできません。
+* Azure Automation では  **sys.stderr** がサポートされていません。
+
+### <a name="known-issues"></a>既知の問題
+
+Python 3 のジョブが例外メッセージ *invalid interpreter executable path* (無効なインタープリターの実行可能ファイルのパス) で失敗することがあります。 この例外は、ジョブが遅延している場合、開始して 10 分以上経っている場合、または **Start-AutomationRunbook** を使用して Python 3 Runbook を開始している場合に発生することがあります。 ジョブが遅延している場合は、Runbook を再度開始するだけで十分です。
 
 ## <a name="next-steps"></a>次のステップ
 

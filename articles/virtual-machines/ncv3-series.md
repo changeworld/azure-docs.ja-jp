@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 854c988346bce9be06811d386b3798d2d0427dd7
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 0e3aa70a1a40e3878aea7b4f42f5aa167e4204c5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92095927"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585389"
 ---
 # <a name="ncv3-series"></a>NCv3 シリーズ
 
@@ -23,6 +23,7 @@ NCv3 シリーズ VM は NVIDIA Tesla V100 GPU を備えています。 これ�
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
+Nvidia NVLink Interconnect:サポートされていません<br>
 
 > [!IMPORTANT]
 > この VM シリーズでは、ご利用のサブスクリプションの vCPU (コア) クォータが、各リージョンで 0 に初期設定されています。 このシリーズについては、[提供リージョン](https://azure.microsoft.com/regions/services/)で [vCPU クォータの引き上げを要求](../azure-portal/supportability/resource-manager-core-quotas-request.md)してください。 これらの SKU は、試用版または Visual Studio サブスクライバーの Azure サブスクリプションでは使用できません。 ご利用のサブスクリプション レベルでは、これらの SKU の選択またはデプロイがサポートされていない可能性があります。 

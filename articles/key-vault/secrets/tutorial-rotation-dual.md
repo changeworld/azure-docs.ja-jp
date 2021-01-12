@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: c2496959f851b55f8cc66c0e793b641cdafb003a
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 39081bc7bec7cfd76ccfc9107d5c2286affb7df0
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808336"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913772"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>2 セットの認証資格情報があるリソースを対象にシークレットのローテーションを自動化する
 
@@ -222,8 +222,15 @@ az storage account keys list -n vaultrotationstorage
 
 ## <a name="key-vault-rotation-functions-for-two-sets-of-credentials"></a>2 組の資格情報を使用する Key Vault ローテーション関数
 
-- [ストレージ アカウント](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
-- [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
+2 組の資格情報用のローテーション関数と、すぐに使用できるいくつかの関数:
+
+- [プロジェクト テンプレート](https://serverlesslibrary.net/sample/bc72c6c3-bd8f-4b08-89fb-c5720c1f997f)
+- [Redis Cache](https://serverlesslibrary.net/sample/0d42ac45-3db2-4383-86d7-3b92d09bc978)
+- [ストレージ アカウント](https://serverlesslibrary.net/sample/0e4e6618-a96e-4026-9e3a-74b8412213a4)
+- [Cosmos DB](https://serverlesslibrary.net/sample/bcfaee79-4ced-4a5c-969b-0cc3997f47cc)
+
+> [!NOTE]
+> 上記のローテーション関数は、Microsoft ではなく、コミュニティのメンバーによって作成されています。 コミュニティの Azure 関数は、Microsoft サポート プログラムまたはサービスのサポート対象ではなく、手を加えずに提供され、いかなる保証もありません。
 
 ## <a name="next-steps"></a>次のステップ
 

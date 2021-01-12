@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 12/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ed368615395614bc0d3e9a6f06727da8c64d8486
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: e3bf77406df302c4ba83cb7a8f1a30fba9f6339e
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559643"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795939"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して PyTorch モデルを大規模にトレーニングする
 
@@ -199,14 +199,14 @@ src = ScriptRunConfig(source_directory=project_folder,
 ScriptRunConfig を使用したジョブの構成の詳細については、[トレーニングの実行の構成と送信](how-to-set-up-training-targets.md)に関する記事をご覧ください。
 
 > [!WARNING]
-> 以前に PyTorch 推定器 を使用して PyTorch トレーニング ジョブを構成していた場合は、Azure ML SDK の将来のリリースでは、推定器が非推奨になる予定であることに注意してください。 Azure ML SDK 1.15.0 以上では、DL フレームワークを使用するものを含めて、ScriptRunConfig がトレーニング ジョブを構成する場合に推奨される方法です。
+> 以前に PyTorch Estimator を使用して PyTorch トレーニング ジョブを構成していた場合は、1.19.0 SDK のリリース以降では、Estimator が非推奨になっていることに注意してください。 Azure ML SDK 1.15.0 以降では、ディープ ラーニング フレームワークを使用するものを含めて、ScriptRunConfig がトレーニング ジョブを構成する場合に推奨される方法です。 移行に関する一般的な質問については、[Estimator から ScriptRunConfig への移行](how-to-migrate-from-estimators-to-scriptrunconfig.md)に関するガイドを参照してください。
 
 ## <a name="submit-your-run"></a>実行を送信する
 
 [実行オブジェクト](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)には、ジョブの実行中および完了後の実行履歴へのインターフェイスが用意されています。
 
 ```Python
-run = Experiment(ws, name='pytorch-birds').submit(src)
+run = Experiment(ws, name='Tutorial-pytorch-birds').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
@@ -314,6 +314,10 @@ src = ScriptRunConfig(source_directory=project_folder,
 その代わり Gloo バックエンドを分散トレーニング用に使用する場合は、代わりに `communication_backend='Gloo'` を指定します。 分散 CPU トレーニング用には、Gloo バックエンドが推奨されます。
 
 Azure ML で分散 PyTorch を実行することに関する完全なチュートリアルについては、[DistributedDataParallel を使用する分散 PyTorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/distributed-pytorch-with-nccl-gloo) に関するページを参照してください。
+
+### <a name="troubleshooting"></a>トラブルシューティング
+
+* **Horovod がシャットダウンされている**:"AbortedError: Horovod がシャットダウンされました" が発生した場合のほとんどで、プロセスの 1 つにおいて Horovod のシャットダウンを引き起こす基となる例外が発生しています。 MPI ジョブの各ランクでは、Azure ML 内にある固有の専用ログ ファイルが取得されます。 これらのログは、`70_driver_logs` という名前です。 分散トレーニングの場合、ログを区別しやすいようにログ名の末尾に `_rank` が付与されます。 実際に Horovod シャットダウンの原因となったエラーを見つけるには、すべてのログ ファイルを確認して、driver_log ファイルの末尾にある `Traceback` を探します。 これらのファイルの 1 つから、基になる実際の例外がわかります。 
 
 ## <a name="export-to-onnx"></a>ONNX にエクスポートする
 

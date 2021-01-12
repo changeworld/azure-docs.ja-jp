@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 30004306d9ff44df04a26640a2bd7a09256fce25
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 4c964f3661e120026189a75d331e6db975b41c70
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516686"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97756077"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Azure Purview でのソース認証用の資格情報
 
@@ -73,7 +73,7 @@ Purview で現在サポートされている資格情報の種類は次のとお
 * SQL 認証: **パスワード** をシークレットとしてキー コンテナーに追加します
 * アカウント キー: **アカウント キー** をシークレットとしてキー コンテナーに追加します
 
-キー コンテナーにシークレットを追加する方法について詳しくは、こちらをご覧ください: (キー コンテナー関する記事を挿入する)
+詳細については、「[Key Vault にシークレットを追加する](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)」を参照してください。
 
 キー コンテナーにシークレットを格納した後、[資格情報] のコマンド バーで [+ 新規] を選択して新しい資格情報を作成します。 必要な情報を入力します (認証方法と、シークレットの選択元となる Key Vault インスタンスの選択を含む)。 すべての詳細の入力が完了したら、[作成] をクリックします。
 

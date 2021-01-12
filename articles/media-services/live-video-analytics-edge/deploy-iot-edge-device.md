@@ -3,12 +3,12 @@ title: IoT Edge デバイスに Live Video Analytics をデプロイする - Azu
 description: この記事では、IoT Edge デバイスに Live Video Analytics をデプロイするときに役立つ手順を示します。 たとえば、ローカル Linux コンピューターにアクセスできる場合や、以前に Azure Media Services アカウントを作成してある場合などに、これを行います。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 4fa4a9643976ba513b025706cacec26b2a50afb5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 38d138b43441016e06fca5003bc09c940cb23efe
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498321"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883318"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge デバイスに Live Video Analytics をデプロイする
 
@@ -108,7 +108,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
     例 :
     
     * **IoT Edge モジュールの名前**: lvaEdge
-    * **イメージ URI**: mcr.microsoft.com/media/live-video-analytics:1.0    
+    * **イメージ URI**: mcr.microsoft.com/media/live-video-analytics:2.0    
     
     ![[モジュール設定] タブを示しているスクリーンショット。](./media/deploy-iot-edge-device/add.png)
     

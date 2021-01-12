@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
-ms.openlocfilehash: e67376e2ef79f9711f54ce54d0d91623593ca8ea
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 9a35c0dc8a3b994b015d7a8d64f76f7e10d95a00
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853290"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722404"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance の接続アーキテクチャ
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -311,12 +311,13 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 
 **TLS 1.2 は送信接続に適用されます**:2020 年 1 月、Microsoft はすべての Azure サービスのサービス内トラフィックに TLS 1.2 を適用しました。 その結果、Azure SQL Managed Instance については、SQL Server へのレプリケーションとリンク サーバー接続に使用される送信接続に対して、TLS 1.2 が適用されることになりました。 SQL Managed Instance で 2016 より前のバージョンの SQL Server を使用している場合は、[TLS 1.2 固有の更新プログラム](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) が確実に適用されているようにしてください。
 
-現在、SQL Managed Instance では、次の仮想ネットワーク機能はサポートされていません。
+現在、SQL Managed Instance では、次の仮想ネットワーク機能は "*サポートされていません*"。
 
 - **Microsoft ピアリング**:SQL Managed Instance が存在する仮想ネットワークと直接または推移的にピアリングされた ExpressRoute 回線で [Microsoft ピアリング](../../expressroute/expressroute-faqs.md#microsoft-peering)を有効にすると、仮想ネットワーク内の SQL Managed Instance コンポーネント間のトラフィック フローと、それに依存するサービスに影響が及び、可用性の問題が発生します。 Microsoft ピアリングが既に有効になっている仮想ネットワークへの SQL Managed Instance デプロイは、失敗することが予想されます。
 - **グローバル仮想ネットワーク ピアリング**:Azure リージョン間での [仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)接続は、2020 年 9 月 22 日より前に作成されてサブネットに配置された SQL マネージド インスタンスでは機能しません。
 - **AzurePlatformDNS**:AzurePlatformDNS [サービス タグ](../../virtual-network/service-tags-overview.md)を使用してプラットフォーム DNS 解決をブロックすると、SQL Managed Instance をレンダリングできなくなります。 SQL Managed Instance では、エンジン内部の DNS 解決にお客様による定義の DNS がサポートされていますが、プラットフォームの操作については、プラットフォーム DNS への依存性があります。
 - **NAT Gateway**:[Azure Virtual Network NAT](../../virtual-network/nat-overview.md) を使用して、特定のパブリック IP アドレスでの送信接続を制御すると、SQL Managed Instance をレンダリングできなくなります。 現時点では、SQL Managed Instance サービスは基本的なロード バランサーの使用に制限されており、Virtual Network NAT を使用した受信フローと送信フローを同時に実行することができません。
+- **Azure Virtual Network の IPv6**:SQL Managed Instance は[デュアル スタックの IPv4 または IPv6 仮想ネットワーク](../../virtual-network/ipv6-overview.md)にデプロイできないことが予想されています。 ネットワーク セキュリティ グループ (NSG) または IPv6 アドレス プレフィックスを含むルート テーブル (UDR) を SQL Managed Instance サブネットに関連付けるか、Managed Instance サブネットに既に関連付けられている NSG または UDR に IPv6 アドレス プレフィックスを追加すると、SQL Managed Instance が利用できなくなります。 既に IPv6 プレフィックスが与えられている NSG と UDR を含むサブネットに SQL Managed Instance はデプロイできないことが想定されています。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,12 +11,12 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
 ms.custom: data4ml
-ms.openlocfilehash: 5aec3d6bb2afeadda64ac19563f8334a6aef3b77
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 238801171d19191bcac505f0c95395320f96d75c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347508"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882468"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>チュートリアル:多クラス画像分類のラベル付けプロジェクトを作成する 
 
@@ -104,7 +104,8 @@ Azure Machine Learning データストアは、サブスクリプション ID �
 1. **[Create dataset from datastore]\(データストアからデータセットを作成\)** フォームで次の情報を入力します。
 
     1. **[基本情報]** フォームで名前を追加します。ここでは **images-for-tutorial** を使用します。  必要に応じて説明を追加します。  **[次へ]** を選択します。
-    1. **[データストアの選択]** フォームで、ドロップダウンから **以前に作成したデータストア** (例: **tutorial_images (Azure Blob Storage)** ) を選択します。
+    1. **[データストアの選択]** フォームの **[以前に作成されたデータストア]** を選択してデータストア名をクリックし、 **[データストアの選択]** を選択します。
+    1. 次のページで、現在選択されているデータストアが正しいことを確認します。 正しくない場合は、 **[以前に作成されたデータストア]** を選択して、前の手順を繰り返します。
     1. 引き続き **[データストアの選択]** フォームで、 **[参照]** を選択し、 **[MultiClass - DogsCats]** を選択します。  **[保存]** を選択して **/MultiClass - DogsCats** をパスとして使用します。
     1. **[次へ]** を選択して詳細を確認し、 **[作成]** を選択してデータセットを作成します。
     1. リスト内のデータセット名 (例: **images-for-tutorial**) の横にある円を選択します。

@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f536e163e3d19d91c150506ab44fdd9cbc02c693
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 524e3f70f9588cfae2c739722fc1a44e683f9a7f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907412"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617291"
 ---
 # <a name="copy-blobs-between-azure-storage-accounts-by-using-azcopy-v10"></a>AzCopy v10 を使用して Azure ストレージ アカウント間で BLOB をコピーする
 
@@ -28,6 +28,8 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 ## <a name="guidelines"></a>ガイドライン
 
 AzCopy コマンドには次のガイドラインを適用します。 
+
+- クライアントは、ソース ストレージ アカウントと宛先ストレージ アカウントの両方へのネットワーク アクセスを持っている必要があります。 各ストレージ アカウントのネットワーク設定を構成する方法の詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](storage-network-security.md?toc=/azure/storage/blobs/toc.json)」を参照してください。
 
 - 各ソース URL に SAS トークンを追加します。 
 
@@ -107,7 +109,7 @@ BLOB を別のストレージ アカウントにコピーし、[BLOB インデ�
 
 Azure AD 承認を使用している場合は、セキュリティ プリンシパルに[ストレージ Blob データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)ロールが割り当てられているか、カスタム Azure ロールを使用して `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Azure リソース プロバイダーの操作](../../role-based-access-control/resource-provider-operations.md#microsoftstorage)に対するアクセス許可が付与されている必要があります。 Shared Access Signature (SAS) トークンを使用している場合、そのトークンは、`t` SAS アクセス許可を使用して BLOB のタグへのアクセスを提供する必要があります。
 
-タグを追加するには、URL エンコードされたキーと値のペアと共に、`--blob-tags` オプションを使用します。 
+タグを追加するには、URL でエンコードされたキーと値のペアと共に `--blob-tags` オプションを使用します。 
 
 たとえば、キー `my tag` と値 `my tag value` を追加するには、宛先パラメーターに `--blob-tags='my%20tag=my%20tag%20value'` を追加します。 
 
@@ -140,11 +142,11 @@ Azure AD 承認を使用している場合は、セキュリティ プリンシ�
 |特定のアクセス層 (アーカイブ層など) にコピーします。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
 |自動的にファイルを圧縮解除します。|**--decompress**=\[gzip\|deflate\]|
 
-完全な一覧については、[オプション](storage-ref-azcopy-copy.md#options)を参照してください。 
+完全な一覧については、「[オプション](storage-ref-azcopy-copy.md#options)」を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 
-以下の記事にサンプルがあります。
+他の例については、次の記事を参照してください。
 
 - [例:アップロード](storage-use-azcopy-blobs-upload.md)
 - [例:ダウンロード](storage-use-azcopy-blobs-download.md)」をご覧ください

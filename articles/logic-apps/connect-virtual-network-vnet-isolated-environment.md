@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 11/12/2020
-ms.openlocfilehash: 6c5badf4760bff559fb050278df84c7ad6e703bd
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.date: 12/18/2020
+ms.openlocfilehash: 315de18539bf083515658b40fa70f3c214d7c909
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616945"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739741"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
@@ -44,24 +44,14 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
   > [!IMPORTANT]
   > ISE 内で実行されるロジック アプリ、組み込みトリガー、組み込みアクション、およびコネクターでは、使用量ベースの価格プランとは異なる価格プランが使用されます。 ISE の価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。 価格については、[Logic Apps の価格](../logic-apps/logic-apps-pricing.md)に関する記事を参照してください。
 
-* [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)。 仮想ネットワークには、"*空の*" サブネットが 4 つ必要です。これらのサブネットは、ISE 内にリソースを作成してデプロイするために必要であり、これらの内部または非表示のコンポーネントで使用されます。
+* 4 つの "*空の*" サブネットがある [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)。これらは、ISE 内にリソースを作成してデプロイするために必要であり、これらの内部または非表示のコンポーネントで使用されます。
 
   * Logic Apps コンピューティング
   * 内部 App Service Environment (コネクタ)
   * 内部 API Management (コネクタ)
   * キャッシュとパフォーマンスのための内部 Redis
   
-  サブネットは、事前に作成することも、ISE を作成するまで待ってから同時に作成することもできます。 ただし、サブネットを作成する前に、[サブネットの要件](#create-subnet)を確認してください。
-
-  > [!IMPORTANT]
-  >
-  > 次の IP アドレス空間は Azure Logic Apps によって解決されないため、仮想ネットワークやサブネットに使用しないでください。<p>
-  > 
-  > * 0.0.0.0/8
-  > * 100.64.0.0/10
-  > * 127.0.0.0/8
-  > * 168.63.129.16/32
-  > * 169.254.169.254/32
+  サブネットは、事前に作成することも、ISE を作成するときに同時に作成することもできます。 ただし、サブネットを作成する前に、[サブネットの要件](#create-subnet)を必ず確認してください。
 
   * ISE が正常に動作し、アクセス可能な状態を維持できるように、仮想ネットワークで [ISE アクセスが有効になっている](#enable-access)ことを確認します。
 
@@ -156,21 +146,29 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
 ファイアウォール経由の[強制トンネリング](../firewall/forced-tunneling.md)を設定または使用する場合は、ISE の追加の外部依存関係を許可する必要があります。 強制トンネリングを使用すると、インターネットへのトラフィックを、インターネットではなく、仮想プライベート ネットワーク (VPN) や仮想アプライアンスなどの特定のホップにリダイレクトできます。これにより、送信ネットワーク トラフィックを検査および監査することができます。
 
-通常、ISE の送信依存関係トラフィックはすべて、ISE でプロビジョニングされた仮想 IP アドレス (VIP) を通過します。 ただし、ISE へのトラフィックまたは ISE からのトラフィックのルーティングを変更する場合は、次ホップを `Internet` に設定することによって、ファイアウォールで次の送信依存関係を許可する必要があります。 Azure Firewall を使用する場合は、手順に従って [App Service Environment を使用してファイアウォールを設定](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)します。
-
 これらの依存関係へのアクセスが許可されていない場合、ISE のデプロイは失敗し、デプロイされた ISE は動作を停止します。
 
-* [App Service Environment の管理アドレス](../app-service/environment/management-addresses.md)
+* ユーザー定義のルート
 
-* [Azure API Management のアドレス](../api-management/api-management-using-with-vnet.md#control-plane-ips)
+  非対称ルーティングを回避するには、以下に一覧表示されているすべての IP アドレスそれぞれに対して **インターネット** で次ホップとしてルートを定義する必要があります。
+  
+  * [App Service Environment の管理アドレス](../app-service/environment/management-addresses.md)
+  * [ISE リージョンのコネクタの Azure IP アドレス。このダウンロード ファイルで入手できます](https://www.microsoft.com/download/details.aspx?id=56519)
+  * [Azure Traffic Manager の管理アドレス](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)
+  * [ISE 領域における Logic Apps の受信および送信アドレス](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)
+  * [ISE リージョンのコネクタの Azure IP アドレス。このダウンロード ファイルにあります](https://www.microsoft.com/download/details.aspx?id=56519)
 
-* [Azure Traffic Manager の管理アドレス](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)
+* サービス エンドポイント
 
-* [ISE 領域における Logic Apps の受信および送信アドレス](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)
+  Azure SQL、Storage、Service Bus、KeyVault、および Event Hubs のサービス エンドポイントを有効にする必要があります。これは、ファイアウォールを経由してこれらのサービスにトラフィックを送信することはできないためです。
 
-* [ISE リージョンのコネクタの Azure IP アドレス。このダウンロード ファイルにあります](https://www.microsoft.com/download/details.aspx?id=56519)
+*  その他の受信および送信の依存関係
 
-* Azure SQL、Storage、Service Bus、および Event Hub のサービス エンドポイントは有効にする必要があります。これは、ファイアウォールを経由してこれらのサービスにトラフィックを送信することはできないためです。
+   ファイアウォールで、次の受信および送信の依存関係を許可する "*必要*" があります。
+   
+   * [Azure App Service の依存関係](../app-service/environment/firewall-integration.md#deploying-your-ase-behind-a-firewall)
+   * [Azure キャッシュ サービスの依存関係](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-virtual-networks)
+   * [Azure API Management の依存関係](../api-management/api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 <a name="create-environment"></a>
 
@@ -188,7 +186,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
    ![環境の詳細を指定する](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | 必須 | 値 | [説明] |
    |----------|----------|-------|-------------|
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | 環境に使用する Azure サブスクリプション |
    | **リソース グループ** | はい | <*Azure-resource-group-name*> | 環境を作成する新しいまたは既存の Azure リソース グループ |
@@ -211,7 +209,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
    * 名前の先頭がアルファベット文字かアンダースコア (数字ではない) で、名前に `<`、`>`、`%`、`&`、`\\`、`?`、`/` の文字が使用されていない。
 
-   * [Classless Inter-Domain Routing (CIDR) 形式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)とクラス B アドレス空間を使用する。
+   * [Classless Inter-Domain Routing (CIDR) 形式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)を使用する。
    
      > [!IMPORTANT]
      >

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/04/2020
+ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 40ee2d9470f80f6bcfe79b0f96a871e1affe003c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 94dff1f66f631141c7ce29139f6c38cbe16308e6
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458795"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913602"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kumolus"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Kumolus の統合
 
@@ -37,8 +37,8 @@ ms.locfileid: "92458795"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Kumolus では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Kumolus では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* Kumolus では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Kumolus では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-kumolus-from-the-gallery"></a>ギャラリーからの Kumolus の追加
 
@@ -48,7 +48,7 @@ Azure AD への Kumolus の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Kumolus** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Kumolus**」と入力します。
 1. 結果のパネルから **[Kumolus]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -71,7 +71,7 @@ Kumolus に対して Azure AD SSO を構成してテストするには、次の�
 
 1. Azure portal の **Kumolus** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -100,7 +100,7 @@ Kumolus に対して Azure AD SSO を構成してテストするには、次の�
     | role | user.assignedroles |
 
     > [!NOTE]
-    > Kumolus では、アプリケーションに対してユーザーのロールが割り当てられていることを想定しています。 ユーザーに適切なロールを割り当てることができるように、Azure AD でこれらのロールを設定してください。 Azure AD でロールを構成する方法については、[こちら](../develop/active-directory-enterprise-app-role-management.md)を参照してください。
+    > Kumolus では、アプリケーションに対してユーザーのロールが割り当てられていることを想定しています。 ユーザーに適切なロールを割り当てることができるように、Azure AD でこれらのロールを設定してください。 Azure AD でロールを構成する方法については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)を参照してください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -131,7 +131,7 @@ Kumolus に対して Azure AD SSO を構成してテストするには、次の�
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1.  ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. 前述のロールを設定した場合、 **[ロールの選択]** ボックスの一覧からそれを選択できます。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-kumolus-sso"></a>Kumolus の SSO の構成
@@ -158,6 +158,6 @@ Kumolus に対して Azure AD SSO を構成してテストするには、次の�
 
 また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで Kumolus タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Kumolus に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Kumolus を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

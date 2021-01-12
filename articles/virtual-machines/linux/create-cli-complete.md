@@ -6,19 +6,19 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 17d36acfa2de699ff2b22ac16d327ea738519f4a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5992fb20fc8b86d4a0094a8fe5ed6cb6eb03754d
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975384"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704471"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した完全な Linux 仮想マシンの作成
 必要なサポート リソースすべてを既定値で作成する単一の Azure CLI コマンドを使用すると、Azure で仮想マシン (VM) を短時間で作成することができます。 仮想ネットワーク、パブリック IP アドレス、ネットワーク セキュリティ グループの規則などのリソースが自動的に作成されます。 実稼働用に環境をより細かく制御する場合は、こうしたリソースを先に作成してから、作成したリソースに VM を追加します。 この記事では、VM の作成方法、および各サポート リソースを 1 つずつ作成する方法を説明します。
 
 [Azure CLI ](/cli/azure/install-az-cli2) の最新版がインストールされていること、および [az login](/cli/azure/reference-index) で Azure アカウントにログインしていることを確認します。
 
-次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myVnet*、*myVM*といったパラメーター名にします。
+次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myVnet*、*myVM* といったパラメーター名にします。
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 リソース グループは、仮想マシンおよび関連する仮想ネットワーク リソースよりも前に作成する必要があります。 [az group create](/cli/azure/group) で、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
@@ -558,10 +558,10 @@ az group export --name myResourceGroup > myResourceGroup.json
 
 このコマンドで、現在の作業ディレクトリ内に `myResourceGroup.json` ファイルが作成されます。 このテンプレートから環境を作成する場合、リソース名をすべて入力するように求められます。 `az group export` コマンドに `--include-parameter-default-value` パラメーターを追加することで、テンプレート ファイルにこれらの名前を入力できます。 リソース名を指定する JSON テンプレートを編集するか、リソース名を指定する [parameters.json ファイルを作成](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json) します。
 
-テンプレートから環境を作成するには、次のように [az group deployment create](/cli/azure/group/deployment) を使います。
+テンプレートから環境を作成するには、次のように [az deployment group create](/cli/azure/deployment/group) を使います。
 
 ```azurecli
-az group deployment create \
+az deployment group create \
     --resource-group myNewResourceGroup \
     --template-file myResourceGroup.json
 ```

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 38365cc144bbffbedfa1416112c5f8eca2b5fc13
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 97b5d6bc6f19e07ea7c980b98c1e7986c59dc546
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653521"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585413"
 ---
 # <a name="nc-series"></a>NC シリーズ
 
@@ -23,6 +23,7 @@ NC シリーズ VM は、[NVIDIA Tesla K80](https://www.nvidia.com/content/dam/e
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代<br>
+Nvidia NVLink Interconnect:サポートされていません<br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | 最大 NIC 数 |

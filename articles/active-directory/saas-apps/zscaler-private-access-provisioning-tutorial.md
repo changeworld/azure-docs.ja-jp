@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: da3ad4f70e0cc41fe95327eb74093c1471c877bd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 14708ddcc5c0e06ee58f5e9db5945c4e9f1a1d08
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351573"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937146"
 ---
 # <a name="tutorial-configure-zscaler-private-access-zpa-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Zscaler Private Access (ZPA) を構成する
 
@@ -115,6 +115,9 @@ Azure AD での自動ユーザー プロビジョニング用に Zscaler Private
 
 > [!TIP]
 > [Zscaler Private Access (ZPA) のシングル サインオン](./zscalerprivateaccess-tutorial.md)に関するチュートリアルに示されている手順に従って、Zscaler Private Access (ZPA) の SAML ベースのシングル サインオンを有効にすることも選択できます。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+
+> [!NOTE]
+> ユーザーとグループをプロビジョニングしたりプロビジョニング解除したりする際は、グループ メンバーシップが適切に更新されるよう、定期的にプロビジョニングをやり直すことをお勧めします。 そうすることによって、サービスによって強制的にすべてのグループが再評価され、メンバーシップが更新されます。  
 
 > [!NOTE]
 > Zscaler Private Access の SCIM エンドポイントの詳細については、[ここ](https://www.zscaler.com/partners/microsoft)を参照してください。

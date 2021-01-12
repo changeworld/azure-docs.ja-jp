@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: cf64deb17bea508637debb5612231d355d523fbb
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 57b350c7772d42e5dbd89c1d03c89f905a26398b
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315585"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895531"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor エージェントの概要 (プレビュー)
 Azure Monitor エージェント (AMA) では、仮想マシンのゲスト オペレーティング システムから監視データが収集され、それが Azure Monitor に配信されます。 この記事では、Azure Monitor エージェントのインストール方法やデータ収集の構成方法など、Azure Monitor エージェントの概要について説明します。
@@ -54,7 +54,7 @@ Azure Monitor エージェントのパブリック プレビュー中は、次�
 
 - Azure Monitor エージェントでは、Azure Monitor for VMs や Azure Security Center などのソリューションと分析情報がサポートされません。 現在サポートされているシナリオは、構成したデータ収集ルールを使用してデータを収集することだけです。 
 - データ収集ルールは、収集先として使用する Log Analytics ワークスペースと同じリージョンに作成する必要があります。
-- 現在、Azure 仮想マシンと Azure Arc 対応サーバーがサポートされています。仮想マシン スケール セット、Azure Kubernetes Service、およびその他のコンピューティング リソースの種類は、現在サポートされていません。
+- 現在、Azure 仮想マシン、仮想マシン スケール セット、Azure Arc 対応サーバーがサポートされています。 Azure Kubernetes Service と他のコンピューティング リソースの種類は、現在サポートされていません。
 - 仮想マシンは、次の HTTPS エンドポイントにアクセスできる必要があります。
   - *.ods.opinsights.azure.com
   - *.ingest.monitor.azure.com

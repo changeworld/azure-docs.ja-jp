@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4ddb02bbcf284566550517f8fa343a728e2275a9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 895b4529a8b99ecc66e3566b4696a0e61c337153
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483629"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881907"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -38,16 +38,23 @@ ms.locfileid: "96483629"
 >
 > 詳細については、[Media Services v3 に関する Azure portal の制限事項](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)に関する記事を参照してください。
 
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="regional-availability"></a>リージョン別の提供状況
+
+Azure Media Services は、ノルウェー東部リージョンの Azure portal で利用できるようになりました。  このリージョンには restV2 はありません。
+
 ## <a name="october-2020"></a>2020 年 10 月
 
 ### <a name="basic-audio-analysis"></a>Basic の音声分析
+
 音声分析のプリセットに、Basic モードの価格レベルが含まれるようになりました。 新しい Basic の音声アナライザー モードによって、音声の文字起こしの抽出、出力キャプションと字幕の書式設定の低コストのオプションが提供されます。 このモードを使用すると、音声からテキストへの文字起こし、VTT 字幕またはキャプション ファイルの生成が実行されます。 このモードの出力には、キーワード、文字起こし、タイミング情報のみを含む Insights JSON ファイルなどがあります。 このモードには、自動言語検出と話者のダイアライゼーションは含まれていません。 [サポートされている言語](analyzing-video-audio-files-concept.md#built-in-presets)のリストを参照してください。
 
 インデクサー v1 およびインデクサー v2 を使用しているお客様は、Basic の音声分析のプリセットに移行する必要があります。
 
 基本的な音声アナライザー モードの詳細については、[ビデオおよび音声のファイルの分析](analyzing-video-audio-files-concept.md)に関するページを参照してください。  REST API で Basic の音声アナライザー モードを使用する方法については、[基本的なオーディオ変換を作成する方法](how-to-create-basic-audio-transform.md)に関するページを参照してください。
 
-## <a name="live-events"></a>ライブ イベント
+### <a name="live-events"></a>ライブ イベント
 
 ライブ イベントが停止したときに、ほとんどのプロパティの更新が許可されるようになりました。 さらに、ユーザーは、ライブ イベントの入力およびプレビューの URL に対して、静的ホスト名のプレフィックスを指定できます。 VanityUrl は、プロパティの意図をより適切に反映するために `useStaticHostName` と呼ばれるようになりました。
 
@@ -57,7 +64,7 @@ ms.locfileid: "96483629"
 
 ライブ エンコードに、0.5 - 20 秒の固定キー フレーム間隔フラグメントを出力する機能が追加されました。
 
-## <a name="accounts"></a>アカウント
+### <a name="accounts"></a>アカウント
 
 > [!WARNING]
 > 2020-05-01 API バージョンで Media Services アカウントを作成した場合、RESTv2 では機能しません。 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: c28595458fea61f66b6930ce72fa0702e00aecd9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 74cab14cd162ba608a9c5d0168485e9055661f55
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129298"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590794"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>承認済みのベースを使用して Azure 仮想マシンを作成する方法
 
@@ -40,11 +40,15 @@ ms.locfileid: "93129298"
 2. **[Virtual Machines]** を選択します。
 3. **[+ 追加]** を選択して、 **[仮想マシンの作成]** 画面を開きます。
 4. ドロップダウン リストからイメージを選択するか、または **[すべてのパブリックおよびプライベート イメージを参照する]** を選択して、使用可能なすべての仮想マシン イメージを検索または参照します。
-5. **Gen 2** VM を作成するには、 **[詳細設定]** タブに移動し、 **[Gen 2]** オプションを選択します。
+5. **Gen 1** VM を作成する場合、 **[ディスク]** タブに移動し、指定のストレージ アカウントで VM の VHD を取得できるよう、 **[マネージド ディスクの使用]** オプションを **[いいえ]** に設定します。
+
+   :::image type="content" source="media/create-vm/create-virtual-machine-sizes-2.png" alt-text="アンマネージド ディスクを選択します。":::
+   
+6. **Gen 2** VM を作成するには、 **[詳細設定]** タブに移動し、 **[Gen 2]** オプションを選択します。
 
     :::image type="content" source="media/create-vm/vm-gen-option.png" alt-text="Gen 1 または Gen 2 を選択します。":::
 
-6. デプロイする VM のサイズを選択します。
+7. デプロイする VM のサイズを選択します。
 
     :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="選択したイメージで推奨される VM サイズを選択します。":::
 
@@ -78,6 +82,6 @@ Azure で、指定した仮想マシンのプロビジョニングが開始さ�
 
 ## <a name="next-steps"></a>次の手順
 
-- 推奨される次の手順:[VM イメージをテストして](azure-vm-image-test.md)、Azure Marketplace の発行要件を満たしていることを確認します。 これは省略可能です。
-- VM イメージをテストしない場合は、[SAS URI の生成](azure-vm-get-sas-uri.md)に進んでください。
-- Azure ベースの新しい VHD の作成で問題が発生した場合は、[Azure Marketplace の VM に関する FAQ](azure-vm-create-faq.md) を参照してください。
+- 推奨される次の手順:[お使いの VM イメージをテストし](azure-vm-image-test.md)、それが Azure Marketplace の公開要件を満たしていることを確認します。 これは省略可能です。
+- お使いの VM イメージをテストしない場合は、[SAS URI の生成](azure-vm-get-sas-uri.md)に進んでください。
+- お使いの Azure ベースの新しい VHD の作成で問題が発生した場合は、[Azure Marketplace の VM に関する FAQ](azure-vm-create-faq.md) を参照してください。

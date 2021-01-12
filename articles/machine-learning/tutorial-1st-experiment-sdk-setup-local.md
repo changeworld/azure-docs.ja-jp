@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 62a1f43fb73f0eda77ebb8f62f64c95ff4ad37a1
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 5df8b478c550522d4602398afd208c1e001c96a2
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734200"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883301"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>チュートリアル:個人の開発環境で Azure Machine Learning の使用を開始する (パート 1/4)
 
@@ -67,8 +67,10 @@ tutorial
 - `.azureml`: Azure Machine Learning の構成ファイルを格納するための非表示のサブディレクトリ。
 
 > [!TIP]
-> Mac を使用している場合は、Finder ウィンドウで **Command + Shift + .** キーを使用して、 ドットで始まるディレクトリを表示および作成する機能を切り替えます。  または、コマンド ターミナルを使用してディレクトリを作成します。
-
+> 非表示のサブディレクトリ .azureml はターミナル ウィンドウで作成できます。  または、次を使用します。
+> * Mac の Finder ウィンドウで **Command + Shift + .** キーを使用して、 ドットで始まるディレクトリを表示および作成する機能を切り替えます。  
+> * Windows 10 の場合、[非表示のファイルとフォルダーを表示する方法](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5)に関するページを参照してください。 
+> * Linux グラフィカル インターフェイスでは、**Ctrl + H** キーを使用するか、 **[表示]** メニューで **非表示のファイルを表示する** チェック ボックスをオンにします。
 
 > [!div class="nextstepaction"]
 > [ディレクトリを作成しました](?success=create-dir#workspace) [問題が発生しました](https://www.research.net/r/7C8Z3DN?issue=create-dir)

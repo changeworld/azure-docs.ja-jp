@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b680c275b92340cc7efba187769cb17602b08b45
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 365c9a990f16e9077450ae15f6677ab716fc45ba
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973288"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900452"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 
@@ -283,6 +283,17 @@ Azure AD Connect を正常にインストールした後、Azure AD Connect Heal
     Register-AzureADConnectHealthSyncAgent
 
 ```
+
+> [!NOTE]
+> ソブリン クラウドに登録するには、次のコマンド ラインを使用します。
+>
+> ```powershell
+> Register-AzureADConnectHealthADFSAgent -UserPrincipalName upn-of-the-user
+> Register-AzureADConnectHealthADDSAgent -UserPrincipalName upn-of-the-user
+> Register-AzureADConnectHealthSyncAgent -UserPrincipalName upn-of-the-user
+> ```
+>
+
 
 これらのコマンドは、`Credential` をパラメーターとして受け入れて非対話的に登録を完了するか、Server Core を実行しているマシンで登録を完了します。 次の点に留意します。
 * `Credential` は、パラメーターとして渡される PowerShell 変数内で取得できます。

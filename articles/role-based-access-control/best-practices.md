@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 4cb3e1fe0275c676e2ce54ff9201502fc3595937
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 00fd00112dad9efc31cea83f69bb458a8e1ca935
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91595490"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617376"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC のベスト プラクティス
 
@@ -24,7 +24,7 @@ ms.locfileid: "91595490"
 
 Azure RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定のスコープで特定の操作のみを許可することができます。
 
-アクセス制御戦略を計画する場合のベスト プラクティスは、ユーザーの作業を実行できる最低限の特権をユーザーに付与することです。 当初、より広範なスコープでより広範なロールを割り当てる方が便利に思われたとしても、避けてください。 ロールとスコープを制限することで、セキュリティ プリンシパルが侵害された場合にリスクにさらされるリソースを制限できます。
+アクセス制御戦略を計画する場合のベスト プラクティスは、ユーザーの作業を実行できる最低限の特権をユーザーに付与することです。 当初、より広範なスコープでより広範なロールを割り当てる方が便利に思われたとしても、避けてください。 カスタム ロールを作成する場合は、ユーザーが必要とするアクセス許可のみが含まれます。 ロールとスコープを制限することで、セキュリティ プリンシパルが侵害された場合にリスクにさらされるリソースを制限することができます。
 
 次の図は、Azure RBAC を使用するための推奨パターンを示しています。
 

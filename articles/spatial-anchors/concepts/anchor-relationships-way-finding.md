@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8c321eae9451715077aa50d163b62b51ec88ce1a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ce79fe88b33659241a226af7bbb7a966ede41abb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95496887"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696169"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Azure Spatial Anchors でのアンカーのリレーションシップとウェイファインディング
 
@@ -64,7 +64,7 @@ ms.locfileid: "95496887"
 
 複数のセッションを使用してアンカーを接続するには:
 
-1. このアプリは、いくつかのアンカーを 1 つの CloudSpatialAnchorSession で作成します。
+1. アプリによって、1 つの CloudSpatialAnchorSession にいくつかのアンカー (アンカー A および B) が作成されます。
 2. 別の時間に、アプリは新しい CloudSpatialAnchorSession を使用して、これらのアンカーのいずれか (たとえば、アンカー A) を見つけます。
 3. 新しい場所に歩いて行きます。 基になる複合現実または拡張現実プラットフォームがその移動を追跡します。
 4. 同じ CloudSpatialAnchorSession を使用してアンカー C を作成します。 アンカー A、B、および C が接続されました。 Spatial Anchors サービスがこの関係を保持します。

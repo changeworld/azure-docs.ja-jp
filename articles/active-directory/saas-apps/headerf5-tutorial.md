@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 8706ac588f2cc868805de7126140a1edd4b8c735
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6bf21205c028eaff08eef91757424f8b52764ada
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92445530"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936143"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>チュートリアル:Azure Active Directory と F5 の間でのシングル サインオン (SSO) の構成
 
@@ -60,7 +60,7 @@ ms.locfileid: "92445530"
 
 ## <a name="access-guided-configuration"></a>アクセス ガイド付き構成
 
-* アクセス ガイド付き構成は、F5 TMOS バージョン 13.1.0.8 以降でサポートされます。 BIG-IP システムで実行されているバージョンが 13.1.0.8 未満である場合は、「 **詳細な構成** 」セクションを参照してください。
+* アクセス ガイド付き構成は、F5 TMOS バージョン 13.1.0.8 以降でサポートされます。 BIG-IP システムで実行されているバージョンが 13.1.0.8 未満である場合は、「**詳細な構成**」セクションを参照してください。
 
 * アクセス ガイド付き構成により、効率化されたまったく新しいユーザー エクスペリエンスが得られます。 このワークフローベースのアーキテクチャにより、選択したトポロジに合わせて調整された直感的で再入可能な構成ステップが提供されます。
 
@@ -117,7 +117,7 @@ Azure AD への F5 の統合を構成するには、ギャラリーからマネ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **F5** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**F5**」と入力します。
 1. 結果のパネルから **[F5]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>F5 の Azure AD シングル サインオンの構成とテスト
@@ -195,7 +195,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 1. **[条件付きアクセス]** をクリックします。
 1. **[新しいポリシー]** をクリックします。
-1. F5 アプリを CA ポリシーのリソースとして表示し、多要素認証やデバイス ベースのアクセス制御、ID 保護ポリシーなど、任意の条件付きアクセスを適用できます。
+1. F5 アプリを条件付きアクセス ポリシーのリソースとして表示し、多要素認証やデバイス ベースのアクセス制御、ID 保護ポリシーなど、任意の条件付きアクセスを適用できます。
 
 ## <a name="configure-f5-sso"></a>F5 SSO の構成
 
@@ -301,7 +301,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
         * 既存のアプリケーション プールを指定するか、新たに作成します。
 
-        * 新しいアプリ サーバーを作成する場合は、 **内部 IP アドレス** と **ポート番号** を指定します。
+        * 新しいアプリ サーバーを作成する場合は、**内部 IP アドレス** と **ポート番号** を指定します。
 
         ![これらの詳細を指定できるペインを示すスクリーンショット。](./media/headerf5-tutorial/configure19.png) 
 
@@ -341,7 +341,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
  
     ![[Create New I d P Connector]\(新しい I d P コネクタの作成\) が選択されている [Edit SAML I d Ps that use this S P]\(この S P を使用する SAML I d P の編集\) ダイアログ ボックスを示すスクリーンショット。](./media/headerf5-tutorial/configure29.png)
 
-    a. Azure AD からダウンロードした metadata.xml ファイルを参照し、 **ID プロバイダー名** を指定します。
+    a. Azure AD からダウンロードした metadata.xml ファイルを参照し、**ID プロバイダー名** を指定します。
 
     b. **[OK]** をクリックします。
 
@@ -361,7 +361,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
     i. **[OK]**
 
-    j. **SAML IDP の設定は完了です** 。
+    j. **SAML IDP の設定は完了です**。
     
     ![[Edit SAML I d Ps that use this S P]\(この S P を使用する SAML I d P の編集\) ダイアログ ボックスを示すスクリーンショット。](./media/headerf5-tutorial/configure31.png)
 

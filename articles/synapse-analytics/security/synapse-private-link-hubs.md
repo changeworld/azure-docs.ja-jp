@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2613a4fd931ad49a4f40a4221ea20e8c25f185fe
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d49868199d8f9f2da97f08dd06f29afd8f553bd9
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501353"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97586977"
 ---
 # <a name="connect-to-azure-synapse-studio-using-azure-private-link-hubs"></a>Azure Private Link ハブを使用して Azure Synapse Studio に接続する 
 
@@ -35,9 +35,9 @@ ms.locfileid: "96501353"
 ## <a name="azure-private-links-hubs-and-azure-virtual-network"></a>Azure プライベート リンク ハブと Azure Virtual Network
 Synapse Studio へのエンドツーエンド接続をセキュリティで保護するには、Azure 仮想ネットワークを Synapse プライベート リンク ハブ リソースに接続する必要があります。 そのためには、ユーザーの仮想ネットワークから、作成したプライベート リンク ハブにプライベート エンドポイントを作成する必要があります。 プライベート リンク ハブについては Azure portal を使用して、プライベート エンドポイント セクションに進むことができます。 [+ プライベート エンドポイント] を選択して、プライベート リンク ハブに接続する新しいプライベート エンドポイントを作成します。
 
-:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="プライベート リンク ハブへのプライベート エンドポイントを作成する":::
+:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="プライベート エンドポイント接続ページを示すスクリーンショット。":::
 
-[リソース] タブで、"Microsoft.Synapse/privateLinkHubs" というリソースの種類を選択してください。:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="プライベート リンク ハブへのプライベート エンドポイントを作成する":::
+[リソース] タブで、"Microsoft.Synapse/privateLinkHubs" というリソースの種類を選択してください。:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="[プライベート エンドポイントの作成] ページのスクリーンショット。[リソースの種類] が強調されています。":::
 
 [構成] タブで、仮想ネットワークをプライベート DNS ゾーンと統合するときに、プライベート DNS ゾーンとして "privatelink.azuresynapse.net" を選択します。
 

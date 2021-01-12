@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 4b1bc58b6b4a87cd6e5e09e83020a38261b8746f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14564b0591ef0146131b3f9324556b613e25daac
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905365"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901234"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Azure Static Web Apps Preview を使用してフロントエンド フレームワークとライブラリを構成する
 
@@ -24,7 +24,7 @@ Azure Static Web Apps を使用するには、フロントエンド フレーム
 
 表の各列の意図は、次の項目によって説明されます。
 
-- **アプリ成果物の場所**:`app_artifact_location` の値を表示します。これは、[ビルドされたバージョンのアプリケーション ファイル用のフォルダー](github-actions-workflow.md#build-and-deploy)です。
+- **出力場所**: `output_location` の値を表示します。これは、[ビルドされたバージョンのアプリケーション ファイル用のフォルダー](github-actions-workflow.md#build-and-deploy)です。
 
 - **カスタム ビルド コマンド**:フレームワークで `npm run build` または `npm run azure:build` とは異なるコマンドが必要となる場合に、[カスタム ビルド コマンド](github-actions-workflow.md#custom-build-commands)を規定できます。
 

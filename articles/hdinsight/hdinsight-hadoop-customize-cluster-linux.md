@@ -6,20 +6,52 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020, devx-track-azurecli
+ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
 ms.date: 09/02/2020
-ms.openlocfilehash: 35c3901e9a48523a10c1a6aacbc52e6c165e278f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 70918d1dc829ff0114a8c1019524feb934c9f915
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009791"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630940"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>スクリプト アクションを使用して Azure HDInsight クラスターをカスタマイズする
 
 Azure HDInsight には、クラスターをカスタマイズするためにカスタム スクリプトを呼び出す **スクリプト アクション** という構成方法があります。 これらのスクリプトは、追加コンポーネントのインストールおよび構成設定の変更に使用されます。 スクリプト アクションは、クラスターの作成中または作成後に使用できます。
 
 スクリプト アクションは、HDInsight アプリケーションとして Azure Marketplace にも発行することができます。 HDInsight のアプリケーションについて詳しくは、「[Azure Marketplace への HDInsight アプリケーションの発行](hdinsight-apps-publish-applications.md)」をご覧ください。
+
+## <a name="understand-script-actions"></a>スクリプト アクションについて
+
+スクリプト アクションは、HDInsight クラスター内のノードで実行される Bash スクリプトです。 スクリプト アクションの特性と機能を次に示します。
+
+- HDInsight クラスターからアクセスできる URI に保存されている必要があります。 たとえば保存スペースとして、次の場所を使用できます。
+
+    - 通常 (非 ESP) のクラスターの場合:
+      - Data Lake Storage Gen1/Gen2: HDInsight が Data Lake Storage へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。 Data Lake Storage Gen1 に格納されているスクリプトの URI の形式は、`adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` になります。 Data Lake Storage Gen2 スクリプトの URI の形式は、`abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>` になります。
+      - Azure ストレージ アカウントの BLOB (HDInsight クラスターのプライマリ ストレージ アカウントまたはセカンダリ ストレージ アカウント)。 HDInsight には、両方のタイプのストレージ アカウントに対するアクセス権がクラスターの作成時に付与されます。
+
+        > [!IMPORTANT]  
+        > この Azure ストレージ アカウントでは、ストレージ キーのローテーションを行わないでください。そこにスクリプトが格納されている後続のスクリプト アクションが失敗します。
+
+      - `http://` パスを介してアクセス可能なパブリック ファイル共有サービス。 たとえば、Azure Blob、GitHub、OneDrive などです。 URI の例については、「[スクリプト アクションのサンプル スクリプト](#example-script-action-scripts)」をご覧ください。
+    - ESP を使用するクラスターの場合、`wasb://`、`wasbs://`、または `http[s]://` の URI がサポートされます。
+
+- 特定の種類のノードのみで実行するように制限できます。 たとえば、ヘッド ノードやワーカー ノードなどです。
+- 保存することも、"*アドホック*" に使うこともできます。
+
+    - 保存済みスクリプト アクションには一意の名前が必要です。 保存済みスクリプトは、スケーリング操作でクラスターに追加される新しいワーカー ノードをカスタマイズするために使われます。 スケーリング操作が発生したとき、保存済みスクリプトによって、別の種類のノードに変更が適用されることもあります。 たとえば、ヘッド ノードなどです。
+    - "*アドホック*" スクリプトは保存されません。 クラスターの作成時に使用されるスクリプト アクションは自動的に保存されます。 スクリプトの実行後にクラスターに追加された worker ノードには適用されません。 後で "*アドホック*" スクリプトを保存済みスクリプトに昇格したり、保存済みスクリプトを "*アドホック*" スクリプトに降格したりすることができます。 失敗したスクリプトは、保存するように指定した場合でも保存されません。
+
+- 実行中にスクリプトによって使用されるパラメーターを受け取ることができます。
+- クラスター ノードでルート レベルの権限を使用して実行されます。
+- Azure portal、Azure PowerShell、Azure CLI、または HDInsight .NET SDK で使用できます。
+- VM 上のサービス ファイルを削除または変更するスクリプト アクションは、サービスの正常性と可用性に影響を与える可能性があります。
+
+クラスターには、実行されたすべてのスクリプトの履歴が保持されます。 履歴は、昇格または降格の操作のためスクリプトの ID を検索する必要がある場合に便利です。
+
+> [!IMPORTANT]  
+> スクリプト アクションで行われた変更を自動的に元に戻すことはできません。 スクリプトの変更は、手動またはスクリプトを使用して戻す必要があります。
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -32,62 +64,25 @@ Azure HDInsight には、クラスターをカスタマイズするためにカ�
 
 ## <a name="access-control"></a>アクセス制御
 
-自分が管理者または所有者ではない Azure サブスクリプションを使用している場合、自分の Azure アカウントに、HDInsight クラスターが含まれるリソース グループに対して共同作成者以上のアクセスが設定されていることを確認する必要があります。
+自分が管理者または所有者ではない Azure サブスクリプションを使用している場合、自分の Azure アカウントには、HDInsight クラスターが含まれるリソース グループに対して `Contributor` 以上のアクセスが設定されている必要があります。
 
 プロバイダーは、Azure サブスクリプションに対する共同作成者以上のアクセス権を持つユーザーによって前もって登録されていることが必要です。 プロバイダーの登録は、サブスクリプションに対する共同作成者アクセス権を持つユーザーが、リソースを作成したときに行われます。 リソースを作成しない場合は、[REST を使用してプロバイダーを登録する](/rest/api/resources/providers#Providers_Register)方法に関する記事を参照してください。
 
 アクセス管理の操作について詳しくは、次の記事をご覧ください。
 
-* [Azure Portal でのアクセス管理の概要](../role-based-access-control/overview.md)
-* [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../role-based-access-control/role-assignments-portal.md)
+- [Azure Portal でのアクセス管理の概要](../role-based-access-control/overview.md)
+- [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../role-based-access-control/role-assignments-portal.md)
 
-## <a name="understand-script-actions"></a>スクリプト アクションについて
+## <a name="methods-for-using-script-actions"></a>スクリプト アクションを使用する方法
 
-スクリプト アクションは、HDInsight クラスター内のノードで実行される Bash スクリプトです。 スクリプト アクションの特性と機能を次に示します。
-
-* HDInsight クラスターからアクセスできる URI に保存されている必要があります。 たとえば保存スペースとして、次の場所を使用できます。
-
-    * 通常のクラスターの場合:
-
-      * ADLS Gen1:HDInsight が Data Lake Storage へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。 Data Lake Storage Gen1 に格納されているスクリプトの URI の形式は、`adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` になります。
-
-      * Azure ストレージ アカウントの BLOB (HDInsight クラスターのプライマリ ストレージ アカウントまたはセカンダリ ストレージ アカウント)。 HDInsight には、両方のタイプのストレージ アカウントに対するアクセス権がクラスターの作成時に付与されます。
-
-        > [!IMPORTANT]  
-        > この Azure ストレージ アカウントでは、ストレージ キーのローテーションを行わないでください。そこにスクリプトが格納されている後続のスクリプト アクションが失敗します。
-
-      * http:// パスを介してアクセス可能なパブリック ファイル共有サービス。 たとえば、Azure Blob、GitHub、OneDrive などです。 URI の例については、「[スクリプト アクションのサンプル スクリプト](#example-script-action-scripts)」をご覧ください。
-
-     * ESP を使用するクラスターの場合、wasb://、wasbs://、または http[s]:// の URI がサポートされます。
-
-* 特定の種類のノードのみで実行するように制限できます。 たとえば、ヘッド ノードやワーカー ノードなどです。
-
-* 保存または `ad hoc` できます。
-
-    保存済みスクリプト アクションには一意の名前が必要です。 保存済みスクリプトは、スケーリング操作でクラスターに追加される新しいワーカー ノードをカスタマイズするために使われます。 スケーリング操作が発生したとき、保存済みスクリプトによって、別の種類のノードに変更が適用されることもあります。 たとえば、ヘッド ノードなどです。
-
-    `Ad hoc` スクリプトは保存されません。 クラスターの作成時に使用されるスクリプト アクションは自動的に保存されます。 スクリプトの実行後にクラスターに追加された worker ノードには適用されません。 後で `ad hoc` スクリプトを保存済みスクリプトに昇格したり、保存済みスクリプトを `ad hoc` スクリプトに降格したりできます。 失敗したスクリプトは、保存するように指定した場合でも保存されません。
-
-* 実行中にスクリプトによって使用されるパラメーターを受け取ることができます。
-
-* クラスター ノードでルート レベルの権限を使用して実行されます。
-
-* Azure portal、Azure PowerShell、Azure CLI、または HDInsight .NET SDK で使用できます。
-
-* VM 上のサービス ファイルを削除または変更するスクリプト アクションは、サービスの正常性と可用性に影響を与える可能性があります。
-
-クラスターには、実行されたすべてのスクリプトの履歴が保持されます。 履歴は、昇格または降格の操作のためスクリプトの ID を検索する必要がある場合に便利です。
-
-> [!IMPORTANT]  
-> スクリプト アクションで行われた変更を自動的に元に戻すことはできません。 スクリプトの変更は、手動またはスクリプトを使用して戻す必要があります。
+スクリプト アクションは、クラスターが最初に作成されたとき、または既存のクラスターで実行されているときに実行されるように構成できます。
 
 ### <a name="script-action-in-the-cluster-creation-process"></a>クラスターの作成処理でのスクリプト アクション
 
 クラスターの作成時に使用されるスクリプト アクションは、既存のクラスターで実行されるスクリプト アクションとは少し異なります。
 
-* このスクリプトは、自動的に保存されます。
-
-* スクリプトのエラーによって、クラスターの作成プロセスが失敗することがあります。
+- このスクリプトは、自動的に保存されます。
+- スクリプトのエラーによって、クラスターの作成プロセスが失敗することがあります。
 
 次の図は、作成処理中にスクリプト アクションが実行された場合を示しています。
 
@@ -191,9 +186,8 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
 テンプレートをデプロイする方法について詳しくは、以下をご覧ください。
 
-* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)
-
-* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-cli.md)
+- [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)
+- [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-cli.md)
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>クラスターの作成時に Azure PowerShell からスクリプト アクションを使用する
 
@@ -327,7 +321,7 @@ NodeTypes       : {HeadNode, WorkerNode}
 |[`az hdinsight script-action execute`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute)|指定した HDInsight クラスター上でスクリプト アクションを実行します。|
 | [`az hdinsight script-action list`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-list) |指定したクラスターに対する永続化されたスクリプト アクションを一覧表示します。 |
 |[`az hdinsight script-action list-execution-history`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-list-execution-history)|指定したクラスターに対するスクリプトの実行履歴をすべて一覧表示します。|
-|[`az hdinsight script-action promote`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-promote)|指定したアドホック スクリプトの実行を、永続化されたスクリプトに昇格します。|
+|[`az hdinsight script-action promote`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-promote)|指定したアドホック スクリプトの実行を、保存済みスクリプトに昇格します。|
 |[`az hdinsight script-action show-execution-details`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-show-execution-details)|指定されたスクリプト実行 ID のスクリプト実行の詳細を取得します。|
 
 ### <a name="hdinsight-net-sdk"></a>HDInsight .NET SDK

@@ -1,30 +1,29 @@
 ---
-title: 自動スケーリングによる Azure HDInsight クラスターのスケーリング
-description: Azure HDInsight の自動スケーリング機能を使用して Apache Hadoop クラスターを自動的にスケーリングする。
+title: Azure HDInsight クラスターを自動的にスケール調整する
+description: 自動スケーリング機能を使用して、スケジュールまたはパフォーマンス メトリックに基づいて、Azure HDInsight クラスターを自動的にスケーリングします。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: contperf-fy21q1
-ms.date: 09/14/2020
-ms.openlocfilehash: 09e4412128a3b13abfa91bf0c128372b30b3e686
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.date: 12/14/2020
+ms.openlocfilehash: 2b23b4256e79723ce0b5edafd59186dc345eb791
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033138"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629257"
 ---
-# <a name="autoscale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターを自動スケーリングする
+# <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターを自動的にスケール調整する
 
-Azure HDInsight の無料自動スケーリング機能を使用すると、以前に設定した条件に基づいて、クラスター内のワーカー ノードの数を自動的に増減できます。 クラスターの作成中にノードの最小および最大の数を設定し、日付と時刻のスケジュールまたは特定のパフォーマンス メトリックを使用してスケーリングの基準を設定すると、HDInsight プラットフォームで残りの処理が実行されます。
+Azure HDInsight の無料自動スケーリング機能を使用すると、以前に設定した条件に基づいて、クラスター内のワーカー ノードの数を自動的に増減できます。 自動スケーリング機能は、パフォーマンス メトリックまたはスケールアップ操作やスケールダウン操作のスケジュールに基づいて、事前設定された制限内のノードの数をスケーリングすることで機能します。
 
 ## <a name="how-it-works"></a>しくみ
 
-自動スケーリング機能では、スケーリング イベントをトリガーするために 2 種類の条件を使用します。さまざまなクラスター パフォーマンス メトリックのしきい値 ("*負荷ベースのスケーリング*" と呼ばれます) と、時間ベースのトリガー ("*スケジュール ベースのスケーリング*" と呼ばれます) です。 負荷ベースのスケーリングでは、ユーザーが設定した範囲内でクラスター内のノードの数が変更され、最適な CPU 使用率と最小のランニング コストが保証されます。 スケジュール ベースのスケーリングでは、特定の日付と時刻に関連付ける操作に基づいて、クラスター内のノードの数が変更されます。
+自動スケーリング機能では、スケーリング イベントをトリガーするために 2 種類の条件を使用します。さまざまなクラスター パフォーマンス メトリックのしきい値 ("*負荷ベースのスケーリング*" と呼ばれます) と、時間ベースのトリガー ("*スケジュール ベースのスケーリング*" と呼ばれます) です。 負荷ベースのスケーリングでは、ユーザーが設定した範囲内でクラスター内のノードの数が変更され、最適な CPU 使用率と最小のランニング コストが保証されます。 スケジュール ベースのスケーリングでは、スケールアップ操作やスケールダウン操作のスケジュールに基づいて、クラスター内のノードの数が変更されます。
 
 次のビデオでは、自動スケーリングによって解決される課題の概要と、HDInsight を使用したコストの管理にそれがどのように役立つかについて説明します。
-
 
 > [!VIDEO https://www.youtube.com/embed/UlZcDGGFlZ0?WT.mc_id=dataexposed-c9-niner]
 
@@ -133,7 +132,7 @@ Azure portal を使用した HDInsight クラスターの作成に関する詳�
 
 #### <a name="load-based-autoscaling"></a>負荷ベースの自動スケーリング
 
-以下の JSON スニペットに示すように、プロパティ `minInstanceCount` と `maxInstanceCount` で `computeProfile` > `workernode` セクションに `autoscale` ノードを追加することで、Azure Resource Manager テンプレートで負荷ベースの自動スケーリングを使用する HDInsight クラスターを作成できます。 完全な Resource manager テンプレートについては、[Deploy Spark Cluster with Loadbased Autoscale Enabled](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased) というクイックスタート テンプレートを参照してください。
+以下の JSON スニペットに示すように、プロパティ `minInstanceCount` と `maxInstanceCount` で `computeProfile` > `workernode` セクションに `autoscale` ノードを追加することで、Azure Resource Manager テンプレートで負荷ベースの自動スケーリングを使用する HDInsight クラスターを作成できます。 完全な Resource Manager テンプレートについては、「[Deploy Spark Cluster with Loadbased Autoscale Enabled](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased)」 (クイックスタート テンプレート: 負荷ベースの自動スケーリングを有効にして Spark クラスターをデプロイする) というクイックスタート テンプレートを参照してください。
 
 ```json
 {
@@ -161,7 +160,7 @@ Azure portal を使用した HDInsight クラスターの作成に関する詳�
 
 #### <a name="schedule-based-autoscaling"></a>スケジュール ベースの自動スケーリング
 
-`computeProfile` > `workernode` セクションに `autoscale` ノードを追加することで、Azure Resource Manager テンプレートでスケジュール ベースの自動スケーリングを使用する HDInsight クラスターを作成できます。 `autoscale` ノードには、`timezone` および変更を実行するタイミングが記述されている `schedule` を含む `recurrence` が含まれます。 完全なリソース マネージャー テンプレートについては、[Deploy Spark Cluster with schedule-based Autoscale Enabled](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased) を参照してください。
+`computeProfile` > `workernode` セクションに `autoscale` ノードを追加することで、Azure Resource Manager テンプレートでスケジュール ベースの自動スケーリングを使用する HDInsight クラスターを作成できます。 `autoscale` ノードには、`timezone` および変更を実行するタイミングが記述されている `schedule` を含む `recurrence` が含まれます。 完全な Resource Manager テンプレートについては、「[Deploy Spark Cluster with schedule-based Autoscale Enabled](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased)」 (スケジュールベースの自動スケーリングを有効にして Spark クラスターをデプロイする) を参照してください。
 
 ```json
 {

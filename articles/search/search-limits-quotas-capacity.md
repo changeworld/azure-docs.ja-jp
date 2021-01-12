@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: f3763857af1df8f34f38b36835a667c6610e1909
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 12/15/2020
+ms.openlocfilehash: 5d265fe02d801cf0d2d66be37a8dc2a220e19b34
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107829"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591346"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Cognitive Search におけるサービスの制限
 
-インデックスやその他のオブジェクトのストレージ、ワークロード、および数量の上限は、 [Azure Cognitive Search](search-create-service-portal.md) を **Free** 、 **Basic** 、 **Standard** 、 **ストレージ最適化** のどの価格レベルでプロビジョニングするかによって異なります。
+インデックスやその他のオブジェクトのストレージ、ワークロード、および数量の上限は、[Azure Cognitive Search](search-create-service-portal.md) を **Free**、**Basic**、**Standard**、**ストレージ最適化** のどの価格レベルでプロビジョニングするかによって異なります。
 
 + **Free** は、Azure サブスクリプションに付属しているマルチテナント共有サービスです。 
 
@@ -25,7 +25,7 @@ ms.locfileid: "92107829"
 
 + **Standard** は、すべてのレベルでさらに多くのストレージや処理能力を持つ専用マシン上で実行されます。 Standard には 4 つのレベル(S1、S2、S3、S3 HD) があります。 S3 高密度 (S3 HD) は、[マルチテナント](search-modeling-multitenant-saas-applications.md)と大量の小さなインデックス (サービスあたり 3,000 インデックス) 向けに設計されています。 S3 HD は、[インデクサー](search-indexer-overview.md)機能を提供しません。また、データ インジェストでは、ソースからインデックスにデータをプッシュする API を活用する必要があります。 
 
-+ **ストレージ最適化** は、 **Standard** よりも多くの合計ストレージ、ストレージ帯域幅、およびメモリを備えた専用マシンで実行されます。 このレベルでは、大型で、緩やかに変化するインデックスが対象となります。 ストレージ最適化は 2 つのレベルがあります: L1 と L2 です。
++ **ストレージ最適化** は、**Standard** よりも多くの合計ストレージ、ストレージ帯域幅、およびメモリを備えた専用マシンで実行されます。 このレベルでは、大型で、緩やかに変化するインデックスが対象となります。 ストレージ最適化は 2 つのレベルがあります: L1 と L2 です。
 
 ## <a name="subscription-limits"></a>サブスクリプションの制限
 [!INCLUDE [azure-search-limits-per-subscription](../../includes/azure-search-limits-per-subscription.md)]
@@ -143,7 +143,7 @@ QPS の見積もりは、すべての顧客ごとに個別に開発する必要�
 
 インデックスに関連する操作の静的なレート要求の制限:
 
-+ インデックスの一覧取得 (GET /indexes):1 秒あたり 5 件 (検索単位あたり)
++ インデックスの一覧取得 (GET /indexes):1 秒あたり 3 件 (検索単位あたり)
 + インデックスの取得 (GET /indexes/myindex):1 秒あたり 10 件 (検索単位あたり)
 + インデックスの作成 (POST /indexes):1 分あたり 12 件 (検索単位あたり)
 + インデックスの作成または更新 (PUT /indexes/myindex):1 秒あたり 6 件 (検索単位あたり)

@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 99339914b66dc40f686cc46cacbcea15438c9004
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7fa8590b4fb148b2a8969c4f474f6627cea263df
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413345"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935327"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM で保護されたキーを Key Vault にインポートする
 
@@ -44,5 +44,5 @@ HSM で保護されたキーの Key Vault への転送は、使用する HSM に
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Key Vault のベスト プラクティス](../general/best-practices.md)に従って、キーのセキュリティ、持続性および監視を確実にします。
+* [Key Vault のセキュリティの概要](../general/security-overview.md)を読んで、キーのセキュリティ、持続性、監視を徹底します。
 * 新しい BYOK の方法の詳細については、[BYOK の仕様](./byok-specification.md)に関するページを参照してください

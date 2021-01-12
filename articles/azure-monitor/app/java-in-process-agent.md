@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 3cab22c2271fd5874b4b094be65c36f5b5f3a22d
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 2011d013cce43eaf471d61936d5c34c318360381
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371885"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616645"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション
 
@@ -139,7 +139,7 @@ Application Insights Java 3.0 を使用すると、これらの API を使用し
 
 ### <a name="supported-custom-telemetry"></a>サポートされているカスタム テレメトリ
 
-次の表は、現在サポートされているカスタム テレメトリの種類を示しています。これを有効にすると、Java 3.0 エージェントを補完することができます。 要約すると、カスタム メトリックはマイクロメーターを通じてサポートされ、カスタムの例外とトレースはログ記録フレームワークを使用して有効にできます。また、カスタム テレメトリの種類は、[Application Insights Java 2.x SDK](#send-custom-telemetry-using-application-insights-java-2x-sdk) を通じてサポートされます。
+次の表は、現在サポートされているカスタム テレメトリの種類を示しています。これを有効にすると、Java 3.0 エージェントを補完することができます。 要約すると、カスタム メトリックはマイクロメーターを通じてサポートされ、カスタムの例外とトレースはログ記録フレームワークを使用して有効にできます。また、カスタム テレメトリの種類は、[Application Insights Java 2.x SDK](#send-custom-telemetry-using-the-2x-sdk) を通じてサポートされます。
 
 |                     | Micrometer | Log4j、logback、JUL | 2.x SDK |
 |---------------------|------------|---------------------|---------|
@@ -188,7 +188,7 @@ Log4j、Logback、java.util.logging は自動的にインストルメント化�
 
 カスタム ディメンションをログに添付する場合は、[Log4j 1.2 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html)、[Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)、または [Logback MDC](http://logback.qos.ch/manual/mdc.html) を使用できます。また、Application Insights Java 3.0 を使用すると、トレースおよび例外テレメトリでそれらの MDC プロパティがカスタム ディメンションとして自動的にキャプチャされます。
 
-### <a name="send-custom-telemetry-using-application-insights-java-2x-sdk"></a>Application Insights Java 2.x SDK を使用するカスタム テレメトリの送信
+### <a name="send-custom-telemetry-using-the-2x-sdk"></a>2\.x SDK を使用してカスタム テレメトリを送信する
 
 アプリケーションに `applicationinsights-core-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
 
@@ -251,3 +251,80 @@ try {
     telemetryClient.trackException(e);
 }
 ```
+
+### <a name="add-request-custom-dimensions-using-the-2x-sdk"></a>2\.x SDK を使用して要求カスタム ディメンションを追加する
+
+> [!NOTE]
+> この機能は、3.0.1 以降のベータ版でのみ提供されています。
+
+アプリケーションに `applicationinsights-web-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+コードにカスタム ディメンションを追加します。
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.getProperties().put("mydimension", "myvalue");
+```
+
+### <a name="set-the-request-telemetry-user_id-using-the-2x-sdk"></a>2\.x SDK を使用して要求テレメトリ user_Id 設定する
+
+> [!NOTE]
+> この機能は、3.0.1 以降のベータ版でのみ提供されています。
+
+アプリケーションに `applicationinsights-web-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+コードに `user_Id` を設定します。
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.getContext().getUser().setId("myuser");
+```
+
+### <a name="override-the-request-telemetry-name-using-the-2x-sdk"></a>2\.x SDK を使用して要求テレメトリ名をオーバーライドする
+
+> [!NOTE]
+> この機能は、3.0.1 以降のベータ版でのみ提供されています。
+
+アプリケーションに `applicationinsights-web-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+コードに名前を設定します。
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.setName("myname");
+```
+
+> [!NOTE]
+> 上記で説明した操作以外の `ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry()` から取得された `RequestTelemetry` に対する他のすべての操作は、すぐに失敗し、3.0 エージェントで未定義の動作であることを知らせる例外がスローされます。
+>
+> `RequestTelemetry` に対して他の方法で相互運用が必要な場合は、問題 https://github.com/microsoft/ApplicationInsights-Java/issues を開いてお知らせください。

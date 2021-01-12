@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5bc00ecf5e4c8ae440ce6610e9be8c8f77ed666
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: e9e5db87f983c5db59715eb8b6a9561acf5fad14
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862209"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630617"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>REST API の v2.0 から v3.0 にコードを移行する
 
@@ -33,12 +33,16 @@ v2 のすべてのエンティティは、同じ ID で v3 API にも存在し�
 ### <a name="host-name-changes"></a>ホスト名の変更
 
 エンドポイントのホスト名が `{region}.cris.ai` から `{region}.api.cognitive.microsoft.com` に変更されました。 新しいエンドポイントへのパスには `api/` が含まれなくなりました (ホスト名に含まれているため)。 [Swagger ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)に、有効なリージョンとパスが記載されています。
+>[!IMPORTANT]
+>ホスト名を `{region}.cris.ai` から `{region}.api.cognitive.microsoft.com` に変更します。ここでのリージョンは、音声サブスクリプションのリージョンです。 また、クライアント コード内の任意のパスから `api/` を削除します。
 
 ### <a name="identity-of-an-entity"></a>エンティティの ID
 
 プロパティ `id` は、`self` に変わりました。 v2 の API のユーザーは、API のパスが作成される方法を知る必要がありました。 これは拡張性に欠け、ユーザーに不必要な手間をかけるものでした。 プロパティ `id` (uuid) は `self` (string) に置き換えられました。これはエンティティの場所 (URL) です。 値は、引き続きすべてのエンティティ間で一意です。 `id` がコードに文字列として格納されている場合は、名前を変更すれば新しいスキーマをサポートできます。 `self` の内容は、エンティティの `GET`、`PATCH`、`DELETE` REST 呼び出しの URL として使用できるようになりました。
 
 エンティティに他のパスを通じて使用できる追加機能がある場合は、`links` の下に一覧表示されます。 次の文字起こしの例は、文字起こしの内容の `GET` を行う別個のメソッドを示しています。
+>[!IMPORTANT]
+>クライアント コード内のプロパティの名前を `id` から `self` に変更します。 必要に応じて、`uuid` 型から `string` 型に変更します。 
 
 **v2 の文字起こし:**
 
@@ -91,6 +95,9 @@ v2 のすべてのエンティティは、同じ ID で v3 API にも存在し�
 
 この変更により、すべての要素が返されるまでループして、コレクションに対する `GET` を呼び出すことが必要になりました。
 
+>[!IMPORTANT]
+>`speechtotext/v3.0/{collection}` に対する GET の応答に `$.@nextLink` の値が含まれている場合は、そのコレクションのすべての要素を取得するように `$.@nextLink` が設定されていない限り、`$.@nextLink` に対して `GETs` を発行し続けます。
+
 ### <a name="creating-transcriptions"></a>文字起こしの作成
 
 文字起こしのバッチを作成する方法の詳細な説明については、[バッチ文字起こしの使用方法](./batch-transcription.md)に関するページをご覧ください。
@@ -134,6 +141,8 @@ v3 の文字起こし API では、特定の文字起こしオプションを明
   }
 }
 ```
+>[!IMPORTANT]
+>プロパティの名前を `recordingsUrl` から `contentUrls` に変更し、1 つの url ではなく、url の配列を渡します。 `diarizationEnabled` または `wordLevelTimestampsEnabled` の設定を、`string` ではなく `bool` として渡します。
 
 ### <a name="format-of-v3-transcription-results"></a>v3 の文字起こし結果の形式
 
@@ -201,6 +210,9 @@ v3 の文字起こし結果のサンプルです。 相違点については、�
   ]
 }
 ```
+>[!IMPORTANT]
+>上に示すように、文字起こしの結果を新しい型に逆シリアル化します。 オーディオ チャネルごとに 1 つのファイルではなく、`recognizedPhrases` 内の各要素について `channel` のプロパティ値を確認することで、チャネルを区別します。 これで、入力ファイルごとに 1 つの結果ファイルが生成されます。
+
 
 ### <a name="getting-the-content-of-entities-and-the-results"></a>エンティティの内容と結果の取得
 
@@ -269,6 +281,9 @@ v3 では、エンティティによってデータ (データセット、文字
 
 `kind` プロパティは、ファイルの内容の形式を示します。 文字起こしの場合、`TranscriptionReport` という種類のファイルはジョブの概要であり、`Transcription` という種類のファイルはジョブそのものの結果です。
 
+>[!IMPORTANT]
+>操作の結果を取得するには、`/speechtotext/v3.0/{collection}/{id}/files` で `GET` を使用します。これらの操作は、`/speechtotext/v3.0/{collection}/{id}` または `/speechtotext/v3.0/{collection}` に対する `GET` の応答には含まれなくなります。
+
 ### <a name="customizing-models"></a>モデルのカスタマイズ
 
 v3 より前では、モデルをトレーニングするときに "_音響モデル_" と "_言語モデル_" とが区別されていました。 この区別があるため、エンドポイントまたは文字起こしを作成するときに複数のモデルを指定する必要がありました。 このプロセスを呼び出し元に対して簡略化するために、この違いが排除され、モデルのトレーニングに使用されているデータセットの内容に応じてすべてが判断されるようになりました。 この変更により、モデルの作成で混合データセット (言語データと音響データ) がサポートされるようになりました。 エンドポイントと文字起こしに必要なモデルは 1 つのみになりました。
@@ -277,11 +292,17 @@ v3 より前では、モデルをトレーニングするときに "_音響モ�
 
 トレーニング済みのモデルの結果を向上させるために、言語のトレーニング中に音響データが自動的に内部で使用されます。 一般に、v3 API を使用して作成されたモデルでは、v2 API を使用して作成されたモデルよりも正確な結果が提供されます。
 
+>[!IMPORTANT]
+>音響と言語の両方のモデル パーツをカスタマイズするには、必要なすべての言語と音響のデータセットを `/speechtotext/v3.0/models` に対する POST の `datasets[]` に渡します。 これにより、両方のパーツがカスタマイズされた単一モデルが作成されます。
+
 ### <a name="retrieving-base-and-custom-models"></a>基本およびカスタム モデルの取得
 
 使用可能なモデルを簡単に取得できるように、v3 では、"基本モデル" のコレクションが顧客の所有している "カスタマイズされたモデル" から分離されています。 この 2 つのルートは `GET /speechtotext/v3.0/models/base` と `GET /speechtotext/v3.0/models/` です。
 
 v2 では、すべてのモデルが 1 つの応答でまとめて返されていました。
+
+>[!IMPORTANT]
+>カスタマイズのために提供された基本モデルの一覧を取得するには、`/speechtotext/v3.0/models/base` で `GET` を使用します。 独自にカスタマイズしたモデルは、`/speechtotext/v3.0/models` で `GET` を使用すると見つかります。
 
 ### <a name="name-of-an-entity"></a>エンティティの名前
 
@@ -302,6 +323,9 @@ v2 では、すべてのモデルが 1 つの応答でまとめて返されて�
     "displayName": "Transcription using locale en-US"
 }
 ```
+
+>[!IMPORTANT]
+>クライアント コード内のプロパティの名前を `name` から `displayName` に変更します。
 
 ### <a name="accessing-referenced-entities"></a>参照されたエンティティのアクセス
 
@@ -351,6 +375,10 @@ v2 では、参照されたエンティティは常にインライン化され�
 
 上の例に示されている参照されたモデルの詳細を使用する必要がある場合は、`$.model.self` に対して GET を実行するだけで済みます。
 
+>[!IMPORTANT]
+>参照されたエンティティのメタデータを取得するには、`$.{referencedEntity}.self` に対して GET を発行します。たとえば、文字起こしのモデルを取得するには、`$.model.self` に対して `GET` を実行します。
+
+
 ### <a name="retrieving-endpoint-logs"></a>エンドポイント ログの取得
 
 サービスのバージョン v2 では、エンドポイントの結果のログがサポートされていました。 v2 を使用してエンドポイントの結果を取得するには、"データのエクスポート" を作成していました。これは、時間の範囲で定義された結果のスナップショットを表すものでした。 データのバッチをエクスポートするプロセスには柔軟性がありませんでした。 v3 API では、個々のファイルへのアクセスが提供され、それらのファイルを反復処理できます。
@@ -392,6 +420,9 @@ v2 では、参照されたエンティティは常にインライン化され�
 
 v3 では、ファイルの `self` に対して `DELETE` 操作を発行するか、`$.links.logs` に対して `DELETE` を使用すれば、各エンドポイント ログを個別に削除することができます。 終了日を指定するには、クエリ パラメーター `endDate` を要求に追加します。
 
+>[!IMPORTANT]
+>ログのエクスポートを `/api/speechtotext/v2.0/endpoints/{id}/data` で作成するのではなく、`/v3.0/endpoints/{id}/files/logs/` を使用してログ ファイルに個別にアクセスします。 
+
 ### <a name="using-custom-properties"></a>カスタム プロパティの使用
 
 カスタム プロパティをオプションの構成プロパティから分離するために、明示的に名前を指定されたすべてのプロパティは `properties` プロパティに配置され、呼び出し元によって定義されたすべてのプロパティは `customProperties` プロパティに配置されるようになりました。
@@ -424,15 +455,26 @@ v3 では、ファイルの `self` に対して `DELETE` 操作を発行する�
 
 この変更により、`properties` の下にある明示的に名前を指定されたすべてのプロパティに対して適切な型 (たとえば、文字列ではなくブール値) を使用することもできるようになりました。
 
+>[!IMPORTANT]
+>`POST` 要求で、`properties` ではなく、すべてのカスタム プロパティを `customProperties` として渡します。
+
 ### <a name="response-headers"></a>応答ヘッダー
 
 v3 では、`POST` 要求で `Location` ヘッダーに加えて `Operation-Location` ヘッダーが返されることがなくなりました。 v2 では、この両方のヘッダーの値は同じでした。 現在は `Location` のみが返されるようになりました。
 
 新しい API バージョンは Azure API Management (APIM) によって管理されるようになったため、スロットリング関連のヘッダー `X-RateLimit-Limit`、`X-RateLimit-Remaining`、`X-RateLimit-Reset` は応答ヘッダーに含まれなくなりました。
 
+>[!IMPORTANT]
+>`Operation-Location` ではなく、応答ヘッダー `Location` から場所を読み取ります。 429 応答コードの場合は、`X-RateLimit-Limit`、`X-RateLimit-Remaining`、`X-RateLimit-Reset` ではなく、`Retry-After` ヘッダー値を読み取ります。
+
+
 ### <a name="accuracy-tests"></a>正確性テスト
 
 正確性テストは、名前が表す内容をより適切に示すため、評価に名称が変更されました。 新しいパスは次のとおりです: `https://{region}.api.cognitive.microsoft.com/speechtotext/v3.0/evaluations`。
+
+>[!IMPORTANT]
+>クライアント コード内のパスのセグメントの名前を `accuracytests` から `evaluations` に変更します。
+
 
 ## <a name="next-steps"></a>次のステップ
 

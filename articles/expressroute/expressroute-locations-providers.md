@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 01/05/2021
 ms.author: duau
-ms.openlocfilehash: 533b0f4d2c786506aa36810c3e5c0ea855cdbb24
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 09d5b76dac7daf621d5c21bd71f5b2bb037ffa4d
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803852"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913092"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -78,7 +78,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **場所** | **アドレス** | **ゾーン** | **ローカル Azure リージョン** | **ER Direct** | **サービス プロバイダー** |
 | --- | --- | --- | --- | --- | --- |
 | **アムステルダム** | [Equinix AM5](https://www.equinix.com/locations/europe-colocation/netherlands-colocation/amsterdam-data-centers/am5/) | 1 | 西ヨーロッパ | 10G、100G | Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Interxion、KPN、IX Reach、Level 3 Communications、Megaport、NTT Communications、Orange、Tata Communications、Telefonica、Telenor、Telia Carrier、Verizon、Zayo |
-| **アムステルダム 2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 1 | 西ヨーロッパ | 10G、100G | British Telecom、CenturyLink Cloud Connect、Colt、DE-CIX、euNetworks、GÉANT、Interxion、NOS、NTT Global DataCenters EMEA、Orange、Vodafone |
+| **アムステルダム 2** | [Interxion AMS8](https://www.interxion.com/Locations/amsterdam/schiphol/) | 1 | 西ヨーロッパ | 10G、100G | British Telecom、CenturyLink Cloud Connect、Colt、DE-CIX、Equinix、euNetworks、GÉANT、Interxion、NOS、NTT Global DataCenters EMEA、Orange、Vodafone |
 | **アトランタ** | [Equinix AT2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at2/) | 1 | 該当なし | 10G、100G | Equinix、Megaport |
 | **オークランド** | [Vocus Group NZ Albany](https://www.vocus.co.nz/business/cloud-data-centres) | 2 | 該当なし | 10G | Devoli、Kordia、Megaport、Spark NZ、Vocus Group NZ |
 | **バンコク** | [AIS](https://business.ais.co.th/solution/en/azure-expressroute.html) | 2 | 該当なし | 10G | AIS、UIH |

@@ -7,12 +7,12 @@ ms.service: sql-db-mi
 ms.subservice: service
 ms.topic: conceptual
 ms.date: 09/13/2020
-ms.openlocfilehash: b0a10744d2b48fa620b48b731144222199f711c7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 96367b143711c4ec5f3f8d609f048c72c6fded16
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792533"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590853"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance のルート CA の変更における変更点について
 
@@ -34,7 +34,7 @@ SSL/TLS を現在使用していない場合、アプリケーションの可用
 
 大多数のドライバーでそうであるように、クライアント ドライバーが OS 証明書ストアを利用しており、OS のメンテナンスが定期的に行われている場合、この変更の影響はおそらくありません。切り替え後のルート証明書は、お客様の信頼されたルート証明書ストアで既に使用可能になっているためです。 Baltimore CyberDigiCert GlobalRoot G2 を調べて、それが存在することを確認してください。
 
-クライアント ドライバーがローカルのファイル証明書ストアを利用している場合は、証明書の予期しない取り消しによってアプリケーションの可用性が中断されないようにするため、または取り消された証明書を更新するため、「 [**接続を維持するために必要な作業**](./ssl-root-certificate-expiring.md#what-do-i-need-to-do-to-maintain-connectivity)」セクションを参照してください。
+クライアント ドライバーがローカルのファイル証明書ストアを利用している場合は、証明書の予期しない取り消しによってアプリケーションの可用性が中断されないようにするため、または取り消された証明書を更新するため、「[**接続を維持するために必要な作業**](./ssl-root-certificate-expiring.md#what-do-i-need-to-do-to-maintain-connectivity)」セクションを参照してください。
 
 ## <a name="what-do-i-need-to-do-to-maintain-connectivity"></a>接続を維持するために必要な作業
 
@@ -72,7 +72,7 @@ SSL/TLS を使用していない場合は、この変更に関して何も行う
 ### <a name="how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>Microsoft はどのくらいの頻度で証明書を更新しますか、または有効期限ポリシーはどのようなものですか?
 Azure SQL Database と SQL Managed Instance によって使用されるこれらの証明書は、信頼された証明機関 (CA) によって提供されます。 そのため、Azure SQL Database と SQL Managed Instance でのこれらの証明書のサポートは、CA によるこれらの証明書のサポートに結び付いています。 ただし、今回のケースのように、事前に定義されたこれらの証明書に予期しないバグが存在する可能性があり、その場合はできるだけ早く修正する必要があります。
 
-### <a name="if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-all-the-read-replicas"></a>読み取りレプリカを使用している場合、この更新を実行する必要があるのは、マスター サーバーだけですか、またはすべての読み取りレプリカですか?
+### <a name="if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-primary-server-or-all-the-read-replicas"></a>読み取りレプリカを使用している場合、この更新を行う必要があるのはプライマリ サーバーだけですか? または、すべての読み取りレプリカでも必要ですか?
 この更新はクライアント側の変更であるため、レプリカ サーバーからデータを読み取るために使用されていたクライアントの場合、それらのクライアントにも変更を適用する必要があります。 
 
 ### <a name="do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>SSL が使用されているかどうかを確認するためのサーバー側クエリはありますか?

@@ -1,27 +1,27 @@
 ---
-title: Azure Stack Edge Pro の共有管理 | Microsoft Docs
-description: Azure portal を使用して Azure Stack Edge Pro の共有を管理する方法について説明します。
+title: Azure Stack Edge Pro - FPGA の共有管理 | Microsoft Docs
+description: Azure portal を使用して Azure Stack Edge Pro - FPGA の共有を管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/25/2019
+ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 4d43b70c8f958ad37b6ac2d0ee043d5f07d11da9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7fbb5ca43d2877e2e14914b71df7cc1bcdf27f88
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444588"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898379"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro"></a>Azure portal を使用して Azure Stack Edge Pro の共有を管理する
+# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro-fpga"></a>Azure portal を使用して Azure Stack Edge Pro FPGA の共有を管理する 
 
-この記事では、Azure Stack Edge Pro の共有を管理する方法について説明します。 Azure Stack Edge Pro の管理は、Azure portal またはローカル Web UI を通じて行うことができます。 Azure portal を使用し、共有に関連付けられているストレージ アカウントの共有を追加、削除、更新したり、ストレージ キーを同期したりすることができます。
+この記事では、Azure Stack Edge Pro FPGA デバイスの共有を管理する方法について説明します。 Azure Stack Edge Pro FPGA デバイスは、Azure portal またはローカル Web UI を使用して管理できます。 Azure portal を使用し、共有に関連付けられているストレージ アカウントの共有を追加、削除、更新したり、ストレージ キーを同期したりすることができます。
 
 ## <a name="about-shares"></a>共有について
 
-データを Azure に転送するには、Azure Stack Edge Pro で共有を作成する必要があります。 Azure Stack Edge Pro デバイスで追加する共有は、ローカル共有か、クラウドにデータをプッシュする共有になります。
+データを Azure に転送するには、Azure Stack Edge Pro FPGA で共有を作成する必要があります。 Azure Stack Edge Pro デバイスで追加する共有は、ローカル共有か、クラウドにデータをプッシュする共有になります。
 
  - **ローカル共有**:デバイス上でデータをローカル処理するとき、ローカル共有を使用します。
  - **共有**:デバイス データがクラウドのご利用のストレージ アカウントに自動的にプッシュされるようにする場合は、クラウド共有を使用します。 共有には、すべてのクラウド機能 (**更新**、**ストレージ キーの同期** など) が適用されます。
@@ -39,7 +39,7 @@ ms.locfileid: "96444588"
 
 共有を作成するには、Azure portal で次の手順を実行します。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[ゲートウェイ] > [共有]** に移動します。 コマンド バーの **+ [共有の追加]** を選択します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\)** に移動します。 **[共有]** に移動し、コマンド バーの **[+ 共有の追加]** を選択します。
 
     ![[共有の追加] を選択する](media/azure-stack-edge-manage-shares/add-share-1.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "96444588"
 
 ## <a name="add-a-local-share"></a>ローカル共有を追加する
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[ゲートウェイ] > [共有]** に移動します。 コマンド バーの **+ [共有の追加]** を選択します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\) > [共有]** に移動します。 コマンド バーの **+ [共有の追加]** を選択します。
 
    ![[共有の追加] を選択する 2](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
@@ -96,15 +96,13 @@ ms.locfileid: "96444588"
 
    ![[共有] ブレードの更新の表示](media/azure-stack-edge-manage-shares/add-local-share-3.png)
     
-    共有を選択すると、この共有の Edge コンピューティング モジュールのローカル マウント ポイントが表示されます。
 
-   ![ローカル共有の詳細の表示](media/azure-stack-edge-manage-shares/add-local-share-4.png)
 
 ## <a name="mount-a-share"></a>共有のマウント
 
 Azure Stack Edge Pro デバイス上でコンピューティングを構成する前に共有を作成した場合、その共有をマウントする必要があります。 共有をマウントするには、次の手順を行います。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[ゲートウェイ] > [共有]** に移動します。 共有の一覧からマウントする共有を選択します。 **[コンピューティングに使用]** 列で、選択した共有の状態に **無効** と表示されます。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\) > [共有]** に移動します。 共有の一覧からマウントする共有を選択します。 **[コンピューティングに使用]** 列で、選択した共有の状態に **無効** と表示されます。
 
    ![共有を選択する 3](media/azure-stack-edge-manage-shares/select-share-mount.png)
 
@@ -122,13 +120,13 @@ Azure Stack Edge Pro デバイス上でコンピューティングを構成す�
 
 5. もう一度共有を選択し、共有に使用するローカル マウント ポイントを表示します。 Edge コンピューティング モジュールでは、共有にこのローカル マウント ポイントを使用します。
 
-   ![共有用のローカル マウント ポイント](media/azure-stack-edge-manage-shares/share-mountpoint.png)
+   ![共有用のローカル マウント ポイント](media/azure-stack-edge-manage-shares/share-mountpoint.png) 
 
 ## <a name="unmount-a-share"></a>共有のマウントの解除
 
 共有のマウントを解除するには、Azure portal で次の手順を行います。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[ゲートウェイ] > [共有]** に移動します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\) > [共有]** に移動します。
 
    ![共有を選択する 4](media/azure-stack-edge-manage-shares/select-share-unmount.png)
 
@@ -148,13 +146,13 @@ Azure Stack Edge Pro デバイス上でコンピューティングを構成す�
 
 共有を削除するには、Azure portal で次の手順を実行します。
 
-1. 共有の一覧で、削除したい共有を選択してクリックします。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\) > [共有]** に移動します。 共有の一覧で、削除したい共有を選択してクリックします。
 
    ![共有を選択する 5](media/azure-stack-edge-manage-shares/delete-share-1.png)
 
-2. **[削除]** をクリックします。
+2. **[削除]** を選択します。
 
-   ![[削除] をクリック](media/azure-stack-edge-manage-shares/delete-share-2.png)
+   ![[削除] の選択](media/azure-stack-edge-manage-shares/delete-share-2.png)
 
 3. 確認を求められたら、 **[はい]** をクリックします。
 
@@ -173,15 +171,15 @@ Azure Stack Edge Pro デバイス上でコンピューティングを構成す�
 
 共有を更新するには、Azure portal で次の手順を実行します。
 
-1. Azure portal で **[共有]** に移動します。 更新したい共有を選択してクリックします。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\) > [共有]** に移動します。 更新したい共有を選択してクリックします。
 
    ![共有を選択する 6](media/azure-stack-edge-manage-shares/refresh-share-1.png)
 
-2. **[最新の情報に更新]** をクリックします。
+2. **[最新のデータに更新]** を選択します。
 
-   ![[最新の情報に更新] をクリックする](media/azure-stack-edge-manage-shares/refresh-share-2.png)
+   ![更新を選択する](media/azure-stack-edge-manage-shares/refresh-share-2.png)
  
-3. 確認を求められたら、 **[はい]** をクリックします。 オンプレミスの共有の内容を更新するジョブが開始されます。
+3. 確認を求められたら、 **[はい]** を選択します。 オンプレミスの共有の内容を更新するジョブが開始されます。
 
    ![更新を確認する](media/azure-stack-edge-manage-shares/refresh-share-3.png)
 
@@ -199,7 +197,7 @@ Azure Stack Edge Pro デバイス上でコンピューティングを構成す�
 
 ストレージ アクセス キーを同期するには、Azure portal で次の手順を実行してください。
 
-1. リソースの **[概要]** に移動します。 共有の一覧で、同期する必要があるストレージ アカウントに関連付けられている共有を選択してクリックします。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\) > [共有]** に移動します。 共有の一覧で、同期する必要があるストレージ アカウントに関連付けられている共有を選択してクリックします。
 
     ![ストレージ アカウントに関連付けられている共有を選択する](media/azure-stack-edge-manage-shares/sync-storage-key-1.png)
 

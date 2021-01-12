@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: 4a7f21410bb97db0a7974870efb812c9954ac241
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: d12ec5e3fef45429741fff1665f435d68e6c83f6
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503558"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734183"
 ---
 # <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>テンプレートでデプロイ スクリプトの開発環境を構成する
 
@@ -155,7 +155,10 @@ $DeploymentScriptOutputs['text'] = $output
 ```
 マウント パスの既定値は **deploymentScript** です。  これは、ファイル共有にマウントされるコンテナー インスタンス内のパスです。
 
-テンプレートに指定されている既定のコンテナー イメージは **mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3** です。  サポートされている Azure PowerShell のバージョンおよび Azure CLI のバージョンの一覧については、「[Azure PowerShell または Azure CLI](./deployment-script-template.md#prerequisites)」を参照してください。
+テンプレートに指定されている既定のコンテナー イメージは **mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3** です。   [サポートされている Azure PowerShell バージョン](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)の一覧を参照してください。 [サポートされている Azure CLI バージョン](https://mcr.microsoft.com/v2/azure-cli/tags/list)の一覧を参照してください。
+
+  >[!IMPORTANT]
+  > デプロイ スクリプトでは、Microsoft Container Registry (MCR) から入手可能な CLI イメージが使用されます。 デプロイ スクリプトに対する CLI イメージの認定には、1 か月ほどかかります。 30 日以内にリリースされた CLI バージョンは使用しないでください。 イメージのリリース日を確認するには、「[Azure CLI リリース ノート](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true)」を参照してください。 サポートされていないバージョンが使用されている場合、サポートされているバージョンがエラー メッセージに一覧表示されます。
 
 このテンプレートは、コンテナー インスタンスを 1800 秒間中断します。 コンテナー インスタンスが終了状態になり、セッションが終了するまでの時間は 30 分間です。
 
@@ -200,7 +203,7 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
 1. **[接続]** を選択し、次に **[接続]** を選択します。 コンテナー インスタンスに接続できない場合は、コンテナー グループを再起動して、再試行してください。
 1. コンソール ペインで、次のコマンドを実行します。
 
-    ```
+    ```console
     cd deploymentScript
     ls
     pwsh ./hello.ps1 "John Dole"
@@ -209,6 +212,14 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
     出力は **Hello John Dole** です。
 
     ![デプロイ スクリプト、コンテナー インスタンスのテスト](./media/deployment-script-template-configure-dev/deployment-script-container-instance-test.png)
+
+1. AZ CLI コンテナー イメージを使用する場合は、次のコードを実行します。
+
+   ```console
+   cd /mnt/azscripts/azscriptinput
+   ls
+   ./userscript.sh
+   ```
 
 ## <a name="use-docker"></a>Docker を使用する
 

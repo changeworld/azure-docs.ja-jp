@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/25/2020
-ms.openlocfilehash: 1943aae3a2b01490dca687bcdea99d76da238d51
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/23/2020
+ms.openlocfilehash: a6f8b79ecc8dcac71dc8f5d1be2bb58a0288a307
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187257"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760335"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>プロビジョニングされたスループットとサーバーレスのどちらかを選択する方法
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -25,7 +25,7 @@ Azure Cosmos DB は、[プロビジョニングされたスループット](set-
 | 条件 | プロビジョニング スループット | サーバーレス |
 | --- | --- | --- |
 | 状態 | 一般公開 | プレビュー段階 |
-| 最も適しているデータ | 予測可能なパフォーマンスを必要とするミッションクリティカルなワークロード | 小規模から中規模の重要ではない断続的な低トラフィックのワークロード |
+| 最も適しているデータ | 予測可能なパフォーマンスを必要とするミッションクリティカルなワークロード | 予測が困難な、断続的な少ないトラフィックでの小規模から中規模のワークロード |
 | しくみ | 各コンテナーに対して、1 秒あたりの[要求ユニット](request-units.md)数で表されるスループットの量をプロビジョニングします。 毎秒、この量の要求ユニットをデータベース操作に使用できます。 プロビジョニングされたスループットは、手動で更新することも、[自動スケール](provision-throughput-autoscale.md)で自動的に調整することもできます。 | コンテナーに対してデータベース操作を実行し、容量をプロビジョニングする必要はありません。 |
 | 地理的分散 | 使用可能 (Azure リージョンの数に制限なし) | 使用不可 (サーバーレス アカウントは 1 つの Azure リージョンでのみ実行できます) |
 | コンテナーあたりの最大ストレージ | 無制限 | 50 GB |

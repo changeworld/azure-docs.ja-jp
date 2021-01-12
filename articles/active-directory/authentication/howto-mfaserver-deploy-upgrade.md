@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1755404a06d8586968801aa22f2af532da278802
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fbddd2eb52414827561d8896dfc8bc9ff705f41b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742325"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584393"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>最新の Azure Multi-Factor Authentication Server にアップグレードする
 
@@ -33,16 +33,16 @@ v6.x 以前から v7.x 以降にアップグレードする場合、すべての
 
 アップグレードの手順:
 
-* Azure MFA Server をアップグレードする (下位からマスターへという順番で)
+* Azure MFA Server をアップグレードする (下位からプライマリへという順番で)
 * ユーザー ポータル インスタンスをアップグレードする
 * AD FS アダプター インスタンスをアップグレードする
 
 ## <a name="upgrade-azure-mfa-server"></a>Azure MFA Server をアップグレードする
 
 1. 「[Azure Multi-Factor Authentication Server のダウンロード](howto-mfaserver-deploy.md#download-the-mfa-server)」の説明に従って、Azure MFA Server インストーラーの最新バージョンを入手します。
-2. マスター MFA Server の C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (既定のインストール場所の場合) にある MFA Server データ ファイルのバックアップを作成します。
+2. プライマリ MFA Server の C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (既定のインストール場所の場合) にある MFA Server データ ファイルのバックアップを作成します。
 3. 高可用性のために複数のサーバーを実行している場合は、アップグレード中のサーバーへのトラフィック送信を停止するように、MFA Server への認証を行うクライアント システムを変更します。 ロード バランサーを使用する場合は、下位の MFA Server をロード バランサーから削除し、アップグレードを行ってから、ファームにサーバーを追加して戻します。
-4. 各 MFA Server で新しいインストーラーを実行します。 下位サーバーはマスターによってレプリケートされる古いデータ ファイルを読み取ることができるため、最初に下位サーバーをアップグレードします。
+4. 各 MFA Server で新しいインストーラーを実行します。 下位サーバーはプライマリによってレプリケートされる古いデータ ファイルを読み取ることができるため、最初に下位サーバーをアップグレードします。
 
    > [!NOTE]
    > サーバーをアップグレードする場合には、他の MFA サーバーとの負荷分散やトラフィック共有から削除する必要があります。
@@ -51,7 +51,7 @@ v6.x 以前から v7.x 以降にアップグレードする場合、すべての
   
 5. Microsoft Visual C++ 2015 再頒布可能 Update パッケージのインストールを求められた場合は、受け入れます。 パッケージの x86 バージョンと x64 バージョンの両方がインストールされます。
 6. Web サービス SDK を使用する場合は、新しい Web サービス SDK のインストールを求められます。 新しい Web サービス SDK をインストールするときは、仮想ディレクトリ名が前にインストールされていた仮想ディレクトリ (たとえば、MultiFactorAuthWebServiceSdk) と一致することを確認してください。
-7. すべての下位サーバーで手順を繰り返します。 下位サーバーの 1 つを新しいマスターに昇格させた後、元のマスター サーバーをアップグレードします。
+7. すべての下位サーバーで手順を繰り返します。 下位サーバーの 1 つを新しいプライマリに昇格させた後、元のプライマリ サーバーをアップグレードします。
 
 ## <a name="upgrade-the-user-portal"></a>ユーザー ポータルをアップグレードする
 

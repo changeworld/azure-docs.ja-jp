@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 12/14/2020
+ms.date: 01/05/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: 78e9d7355b8c96295456f8aa9cb80b1d3bdd2fab
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: bde5cecc4052724f795cac03f6efceb3451ea2ee
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509548"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914350"
 ---
 # <a name="known-issues-application-provisioning"></a>既知の問題:アプリケーションのプロビジョニング
 アプリのプロビジョニングを使用するときに注意する必要がある既知の問題。 UserVoice のアプリケーション プロビジョニング サービスに関するフィードバックを提供することができます。[Azure AD のアプリケーションのプロビジョニングの UserVoice](https://aka.ms/appprovisioningfeaturerequest) ページを参照してください。 Microsoft では、サービスを改善するために UserVoice を注意深く確認しています。 
@@ -82,6 +82,10 @@ UI のソース属性ドロップダウンにスキーマの拡張機能が表�
 **変更がターゲット アプリから Azure AD に反映されない**
 
 アプリのプロビジョニング サービスでは、外部アプリで行われた変更が認識されません。 そのため、ロールバックするアクションは行われません。 アプリのプロビジョニング サービスは、Azure AD で行われた変更に依存しています。 
+
+**"すべて同期" から "割り当てられた同期" への切り替えが機能しない**
+
+"すべて同期" から "割り当てられた同期" にスコープを変更したら、変更を有効にするために必ず再起動も実行してください。 再起動は UI から実行できます。
 
 **プロビジョニング サイクルが完了するまで続行される**
 

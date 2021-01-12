@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: ef0c8d53d885f11acdcf578db155de3d7848887e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: dcb5a3c664386e65e676f5559c47236126fefe87
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360069"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704930"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLI を使用して専用ホストにデプロイする
  
@@ -263,10 +263,10 @@ az group export --name myDHResourceGroup > myDHResourceGroup.json
 
 このコマンドで、現在の作業ディレクトリ内に `myDHResourceGroup.json` ファイルが作成されます。 このテンプレートから環境を作成する場合、リソース名をすべて入力するように求められます。 `az group export` コマンドに `--include-parameter-default-value` パラメーターを追加することで、テンプレート ファイルにこれらの名前を入力できます。 リソース名を指定する JSON テンプレートを編集するか、リソース名を指定する parameters.json ファイルを作成します。
  
-テンプレートから環境を作成するには、[az group deployment create](/cli/azure/group/deployment#az-group-deployment-create) を使います。
+テンプレートから環境を作成するには、[az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) を使用します。
 
 ```azurecli-interactive
-az group deployment create \ 
+az deployment group create \ 
     --resource-group myNewResourceGroup \ 
     --template-file myDHResourceGroup.json 
 ```

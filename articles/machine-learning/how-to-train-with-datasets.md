@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: b6ec9d7035194efc471fc06befad9822c8684a5d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 8b95c5a45992c895713e0be056856172b14b830d
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685581"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740676"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning でデータセットを使用してトレーニングする
 
@@ -220,6 +220,7 @@ print(os.listdir(mounted_path))
 print (mounted_path)
 ```
 
+
 ## <a name="directly-access-datasets-in-your-script"></a>スクリプトでデータセットに直接アクセスする
 
 登録されたデータセットは、Azure Machine Learning コンピューティングなどのコンピューティング クラスター上で、ローカルまたはリモートでアクセスできます。 実験で登録済みデータセットにアクセスするには、次のコードを使用して、ワークスペースと登録済みデータセットに名前でアクセスします。 既定では、`Dataset` クラスの [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) メソッドからは、ワークスペースに登録されているデータセットの最新バージョンが返されます。
@@ -256,6 +257,33 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 
 + [データセット ノートブック](https://aka.ms/dataset-tutorial)では、この記事の概念を示し、さらに詳しく説明します。
 + [ML パイプラインでデータセットをパラメーター化する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb)方法を参照してください。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+* **データセットの初期化に失敗しました:マウント ポイントの準備が完了するまで待っていましたがタイムアウトになりました**: 
+  * アウトバウンド [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)規則がなく、`azureml-sdk>=1.12.0` を使用している場合は、`azureml-dataset-runtime` とその依存関係を更新して、特定のマイナー バージョンの最新版にします。または、それを実行で使用している場合は、修正プログラムを含む最新パッチが適用されるように、お使いの環境を再作成します。 
+  * `azureml-sdk<1.12.0` を使用している場合は、最新バージョンにアップグレードします。
+  * アウトバウンド NSG 規則がある場合は、サービス タグ `AzureResourceMonitor` のすべてのトラフィックを許可するアウトバウンド規則があることを確認します。
+
+### <a name="overloaded-azurefile-storage"></a>オーバーロードされた AzureFile ストレージ
+
+エラー `Unable to upload project files to working directory in AzureFile because the storage is overloaded` が発生する場合は、次の回避策を適用してください。
+
+データ転送などの他のワークロードにファイル共有を使用している場合は、BLOB を使用して、ファイル共有を実行の送信のために自由に使用できるようにすることをお勧めします。 2 つの異なるワークスペース間でワークロードを分割することもできます。
+
+### <a name="passing-data-as-input"></a>入力としてのデータの引き渡し
+
+*  **TypeError:FileNotFound:そのようなファイルまたはディレクトリはありません**:このエラーは、指定したファイル パスにファイルがない場合に発生します。 ファイルを参照する方法が、コンピューティング先でデータセットをマウントした場所と一致していることを確認する必要があります。 確定的な状態を確保するには、データセットをコンピューティング先にマウントするときに抽象パスを使用することをお勧めします。 たとえば、次のコードでは、コンピューティング先のファイルシステムのルート `/tmp` にデータセットをマウントしています。 
+    
+    ```python
+    # Note the leading / in '/tmp/dataset'
+    script_params = {
+        '--data-folder': dset.as_named_input('dogscats_train').as_mount('/tmp/dataset'),
+    } 
+    ```
+
+    先頭のスラッシュ "/" を含めない場合は、データセットをマウントする場所を示すために、コンピューティング先の作業ディレクトリをプレフィックスとして付ける必要があります (たとえば、`/mnt/batch/.../tmp/dataset`)。
+
 
 ## <a name="next-steps"></a>次のステップ
 

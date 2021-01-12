@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning デザイナーを使用してモデルを再トレーニングする
+title: パイプライン パラメーターを使用し、デザイナーのモデルを再トレーニングする
 titleSuffix: Azure Machine Learning
-description: 発行されたパイプラインを使用して Azure Machine Learning デザイナーで機械学習モデルを再トレーニングする方法について説明します。
+description: 発行されたパイプラインとパイプライン パラメーターを使用して Azure Machine Learning デザイナーでモデルを再トレーニングします。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d754674fe3aa65fa9fd8540b05083979ce96aff8
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437118"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708468"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用してモデルを再トレーニングする
+# <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>パイプライン パラメーターを使用し、デザイナーのモデルを再トレーニングする
 
 
-このハウツー記事では、Azure Machine Learning デザイナーを使用して機械学習モデルを再トレーニングする方法について説明します。 発行されたパイプラインを使用してワークフローを自動化し、パラメーターを設定して新しいデータに対してモデルをトレーニングします。 
+このハウツー記事では、Azure Machine Learning デザイナーでパイプライン パラメーターを使用して機械学習モデルを再トレーニングする方法について説明します。 発行されたパイプラインを使用してワークフローを自動化し、パラメーターを設定して新しいデータに対してモデルをトレーニングします。 パイプライン パラメーターを使用すると、異なるジョブに対して既存のパイプラインを再利用できます。  
 
 この記事では、次のことについて説明します。
 

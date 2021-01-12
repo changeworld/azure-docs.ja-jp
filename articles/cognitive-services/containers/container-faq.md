@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 188a348b497a485be0a8091b50a3f2c11b6493c0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 71b57eae1a66e6966f61123e638c4790410ef445
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960752"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862527"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Cognitive Services コンテナーについてよくあるご質問 (FAQ)
 
@@ -22,7 +22,7 @@ ms.locfileid: "94960752"
 
 **Q:何を利用できますか。**
 
-**A:** Azure Cognitive Services コンテナーを使用すると、開発者は Azure で利用できるものと同じインテリジェントな API を使用できますが、それに加えてコンテナー化の [利点](../cognitive-services-container-support.md#features-and-benefits)があります。 一部のコンテナーは、ゲート プレビューとして使用できます。この場合、アプリケーションへのアクセスが必要になることがあります。 他のコンテナーは、ゲートなしプレビューとして公開されているか、一般提供されています。 コンテナーの詳細な一覧と使用可能性については、「[Azure Cognitive Services でのコンテナーの使用可能性](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)」を参照してください。 [Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services) でコンテナーを確認することもできます。
+**A:** Azure Cognitive Services コンテナーを使用すると、開発者は Azure で利用できるものと同じインテリジェントな API を使用できますが、それに加えてコンテナー化の [利点](../cognitive-services-container-support.md#features-and-benefits)があります。 一部のコンテナーは、ゲート プレビューとして使用できます。この場合、アプリケーションへのアクセスが必要になることがあります。 他のコンテナーは、ゲートなしプレビューとして公開されているか、一般提供されています。 コンテナーの詳細な一覧と使用可能性については、「[Azure Cognitive Services でのコンテナーの使用可能性](../cognitive-services-container-support.md)」を参照してください。 [Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services) でコンテナーを確認することもできます。
 
 **Q:Cognitive Services のクラウドとコンテナーには違いがありますか。**
 
@@ -164,7 +164,7 @@ OpenShift を使用してコンテナーをテストすることはありませ�
  
 **Q:コンテナーはどのような方法で見つけますか?**
 
-**A:** Cognitive Services コンテナーは、Azure portal、Docker ハブ、Azure コンテナー レジストリなど、さまざまな場所で利用できます。 コンテナーの場所の最新情報については、「[コンテナーのリポジトリとイメージ](../cognitive-services-container-support.md#container-repositories-and-images)」を参照してください。
+**A:** Cognitive Services コンテナーは、Azure portal、Docker ハブ、Azure コンテナー レジストリなど、さまざまな場所で利用できます。 コンテナーの最新の場所については、[コンテナー イメージ](container-image-tags.md)に関する記事をご覧ください。
 
 **Q:Cognitive Services コンテナーは、AWS や Google のサービスと比べてどうですか?**
 

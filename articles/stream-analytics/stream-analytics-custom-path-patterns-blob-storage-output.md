@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9763a0ac3cba15dcfd66b8fad83230e2b0eb356b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7239c2e3cb42cb17b01904e8fc226ae2408dbb47
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491674"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617427"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割
 
@@ -25,7 +25,13 @@ Azure Stream Analytics は、カスタム フィールドまたは属性およ�
 
 ### <a name="partition-key-options"></a>パーティション キーのオプション
 
-入力データをパーティション分割するために使用されるパーティション キー (または列名) には、ハイフン、アンダースコア、およびスペースを含む英数字を含めることができます。 入れ子になったフィールドは、別名と共に使用されない限り、パーティション キーとして使用できません。 パーティション キーは NVARCHAR(MAX)、BIGINT、FLOAT、または BIT (互換性レベル 1.2 以上) にする必要があります。 詳細については、[Azure Stream Analytics のデータ型](/stream-analytics-query/data-types-azure-stream-analytics)に関するページをご覧ください。
+入力データをパーティション分割するために使用されるパーティション キーまたは列名には、[BLOB 名](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)に使用できる任意の文字を含めることができます。 入れ子になったフィールドは、別名と共に使用されない限り、パーティション キーとして使用することはできませんが、任意の文字を使用して、ファイルの階層を作成することはできます。 たとえば、次のクエリを使用して列を作成し、この列で他の 2 つの列のデータを結合して、一意のパーティション キーを作成することができます。
+
+```sql
+SELECT name, id, CONCAT(name, "/", id) AS nameid
+```
+
+パーティション キーは NVARCHAR(MAX)、BIGINT、FLOAT、または BIT (互換性レベル 1.2 以上) にする必要があります。 DateTime、Array、および Records 型はサポートされていませんが、文字列に変換された場合には、パーティション キーとして使用することができます。 詳細については、[Azure Stream Analytics のデータ型](/stream-analytics-query/data-types-azure-stream-analytics)に関するページをご覧ください。
 
 ### <a name="example"></a>例
 

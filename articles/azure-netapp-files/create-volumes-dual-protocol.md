@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 01/05/2020
 ms.author: b-juche
-ms.openlocfilehash: ceaf0209dd14c8d97088d7f8e8e6990429607089
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: d296f80d85bb5081c466b27e6a8624e8b3f2c924
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591824"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914997"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files のデュアルプロトコル (NFSv3 と SMB) ボリュームを作成する
 
@@ -132,7 +132,11 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュア�
     * ドメインに参加し、ルート証明書がインストールされている Windows ベースのクライアント 
     * ルート証明書を含むドメイン内の別のマシン  
 
-3. ルート証明書をエクスポートします。  
+3. ルート CA 証明書をエクスポートします。  
+    次の例に示すように、ルート CA 証明書は、[個人用] または [信頼されたルート証明機関] ディレクトリからエクスポートできます。   
+    ![個人用証明書を示すスクリーンショット](../media/azure-netapp-files/personal-certificates.png)   
+    ![信頼されたルート証明機関を示すスクリーンショット](../media/azure-netapp-files/trusted-root-certification-authorities.png)    
+
     証明書が Base 64 encoded x.509 (.CER) 形式でエクスポートされていることを確認します。 
 
     ![証明書のエクスポート ウィザード](../media/azure-netapp-files/certificate-export-wizard.png)

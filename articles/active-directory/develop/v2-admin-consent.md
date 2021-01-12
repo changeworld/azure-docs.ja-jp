@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/3/2019
+ms.date: 12/18/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7de97fd775853f64803ab62ac397e754d065e4df
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 353c349ebe348addac60c5f9f7b1bf0fbb1fc425
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509327"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703317"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームの管理者の同意
 
@@ -50,10 +50,9 @@ https://graph.microsoft.com/mail.send
 | `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた **アプリケーション (クライアント) ID**。 |
 | `redirect_uri` | 必須 |処理するアプリの応答の送信先となるリダイレクト URI。 アプリケーション登録ポータルで登録したリダイレクト URI のいずれかと完全に一致させる必要があります。 |
 | `state` | 推奨 | 要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用します。 |
-|`scope` | 必須 | アプリケーションによって要求されるアクセス許可のセットを定義します。 これは静的スコープ (/.default を使用) か動的スコープになります。 これには OIDC スコープ (`openid`、`profile`、`email`) が含まれることもあります。 |
+|`scope` | 必須 | アプリケーションによって要求されるアクセス許可のセットを定義します。 これは静的スコープ (`/.default` を使用) か動的スコープになります。 これには OIDC スコープ (`openid`、`profile`、`email`) が含まれることもあります。 |
 
-
-現在 Azure AD では、テナント管理者がサインインして、要求を完了する必要があります。 管理者は、ユーザーが `scope` パラメーターで要求したすべてのアクセス許可を承認するように求められます。  静的な (`/.default`) 値を使用した場合、それは v1.0 管理者の同意エンドポイントのように機能し、アプリに必要なアクセス許可で見つかったすべてのスコープに対する同意を要求します。
+現在 Azure AD では、テナント管理者がサインインして、要求を完了する必要があります。 管理者は、ユーザーが `scope` パラメーターで要求したすべてのアクセス許可を承認するように求められます。  静的な (`/.default`) 値を使用した場合、それは v1.0 管理者の同意エンドポイントのように機能し、(ユーザーとアプリの両方に) 必要なアクセス許可で見つかったすべてのスコープに対する同意を要求します。 アプリのアクセス許可を要求するには、`/.default` 値を使用する必要があります。 `/.default` を使用しているときに、管理者の同意画面に特定のアクセス許可を管理者に常に表示しないようにする場合、ベスト プラクティスは、必要なアクセス許可セクションにアクセス許可を配置しないことです。 代わりに、`/.default` を使用するのではなく、動的同意を使用して、実行時に同意画面に表示するアクセス許可を追加できます。
 
 ### <a name="successful-response"></a>成功応答
 

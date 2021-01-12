@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: 8d11ff6eaab8ed6a13c3c2aa1b712cc57e7825ea
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: aa95d6792f2f5754a237c7bf5e90a11e2e011ede
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960973"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861782"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -61,7 +61,7 @@ GitHub または Azure Storage などからスクリプトを外部でダウン�
 * スクリプトの実行に許されているのは 90 分間で、これを超えると拡張機能へのプロビジョニングが失敗します。
 * スクリプトの中に再起動を組み込まないでください。これを守らないと、インストールされているその他の拡張機能で問題が発生します。 再起動後にその拡張機能は実行されなくなります。
 * スクリプトが再起動を誘導するとき、アプリケーションをインストールし、スクリプトを実行する場合、Windows スケジュール化タスクを使用して再起動をスケジュールしたり、DSC、Chef、Puppet 拡張機能などのツールを使用したりすることができます。
-* VM エージェントの停止または更新の原因となるスクリプトを実行することはお勧めしません。 これにより、拡張機能は遷移状態になり、タイムアウトにつながります。
+* VM エージェントの停止または更新の原因となるスクリプトを実行することはお勧めしません。 これにより、拡張機能が移行中の状態のままになり、タイムアウトになる可能性があります。
 * 拡張機能ではスクリプトを 1 回だけ実行します。すべての起動時にスクリプトを実行する場合は、拡張機能を使用して Windows スケジュール化タスクを作成する必要があります。
 * スクリプトを実行する時期をスケジュールする場合は、拡張機能を使用して Windows スケジュール化タスクを作成する必要があります。
 * スクリプトが実行されている場合は、Azure Portal または CLI には拡張機能の状態が「移行中」とのみ表示されます。 実行中のスクリプトのステータスをより高い頻度で更新するには、独自のソリューションを作成する必要があります。

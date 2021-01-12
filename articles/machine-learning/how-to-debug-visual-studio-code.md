@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: 12163419ad779acfa116f1dee66284623e2d45fb
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: e572f1f6a9452ccab9deddb62a5e219a81df5d47
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616112"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739996"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code を使用した対話型デバッグ
 
@@ -355,9 +355,9 @@ ip_address: 10.3.0.5
 
 1. Docker イメージと通信するように VS Code を構成するには、次のような新しいデバッグ構成を作成します。
 
-    1. VS Code から __[デバッグ]__ メニューを選択し、 __[構成を開く]__ を選択します。 __launch.json__ という名前のファイルが開きます。
+    1. VS Code から、 __[実行]__ 拡張機能の __[デバッグ]__ メニューを選択し、 __[構成を開く]__ を選択します。 __launch.json__ という名前のファイルが開きます。
 
-    1. __launch.json__ ファイルで、`"configurations": [` を含む行を見つけ、その後に次のテキストを挿入します。
+    1. __launch.json__ ファイルで、 __"configurations"__ の項目 (`"configurations": [` を含む行) を見つけ、その後に次のテキストを挿入します。 
 
         ```json
         {
@@ -376,11 +376,44 @@ ip_address: 10.3.0.5
             ]
         }
         ```
+        挿入すると、__launch.json__ ファイルは次のようになります。
+        ```json
+        {
+        // Use IntelliSense to learn about possible attributes.
+        // Hover to view descriptions of existing attributes.
+        // For more information, visit: https://go.microsoft.com/fwlink/linkid=830387
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Python: Current File",
+                "type": "python",
+                "request": "launch",
+                "program": "${file}",
+                "console": "integratedTerminal"
+            },
+            {
+                "name": "Azure Machine Learning Deployment: Docker Debug",
+                "type": "python",
+                "request": "attach",
+                "connect": {
+                    "port": 5678,
+                    "host": "0.0.0.0"
+                    },
+                "pathMappings": [
+                    {
+                        "localRoot": "${workspaceFolder}",
+                        "remoteRoot": "/var/azureml-app"
+                    }
+                ]
+            }
+            ]
+        }
+        ```
 
         > [!IMPORTANT]
-        > 構成セクションに既に他のエントリがある場合は、挿入したコードの後にコンマ (,) を追加します。
+        > 構成セクションに既に他のエントリがある場合は、挿入したコードの後にコンマ ( __,__ ) を追加します。
 
-        このセクションは、ポート 5678 を使用して Docker コンテナーにアタッチされます。
+        このセクションは、ポート __5678__ を使用して Docker コンテナーにアタッチされます。
 
     1. __launch.json__ ファイルを保存します。
 
@@ -433,13 +466,13 @@ ip_address: 10.3.0.5
     package.pull()
     ```
 
-    イメージが作成されてダウンロードされると、イメージ パス (リポジトリ、名前、タグ、また、ここではそのダイジェストを含む) が次のようなメッセージに表示されます。
+    イメージが作成されてダウンロードされると (このプロセスには 10 分以上かかる場合があるため、気長にお待ちください)、次のようなメッセージでイメージ パス (リポジトリ、名前、タグ、また、ここではそのダイジェストを含む) が最終的に表示されます。
 
     ```text
     Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. イメージの操作を容易にするには、次のコマンドを使用してタグを追加します。 `myimagepath` を、前の手順の場所の値で置き換えます。
+1. イメージをローカルで簡単に操作できるようにするには、次のコマンドを使用して、このイメージのタグを追加します。 次のコマンドの `myimagepath` を、前の手順の場所の値で置き換えます。
 
     ```bash
     docker tag myimagepath debug:1
@@ -457,22 +490,37 @@ ip_address: 10.3.0.5
 1. イメージを使って Docker コンテナーを開始するには、次のコマンドを使用します。
 
     ```bash
-    docker run -it --name debug -p 8000:5001 -p 5678:5678 -v <my_path_to_score.py>:/var/azureml-apps/score.py debug:1 /bin/bash
+    docker run -it --name debug -p 8000:5001 -p 5678:5678 -v <my_local_path_to_score.py>:/var/azureml-app/score.py debug:1 /bin/bash
     ```
 
     これにより、`score.py` がコンテナー内のものにローカルでアタッチされます。 そのため、エディターで行われた変更はすべて、コンテナーに自動的に反映されます。
 
-1. コンテナー内で、シェルから次のコマンドを実行します
+2. エクスペリエンスを向上させるために、新しい VS Code インターフェイスを使用してコンテナーにアクセスできます。 VS Code のサイドバーから `Docker` の拡張機能を選択し、自分のローカル コンテナー (このドキュメントでは `debug:1`) を見つけます。 このコンテナーを右クリックして `"Attach Visual Studio Code"` を選択すると、新しい VS Code インターフェイスが自動的に開きます。このインターフェイスに作成したコンテナーの内部が表示されます。
+
+    ![コンテナー VS Code インターフェイス](./media/how-to-troubleshoot-deployment/container-interface.png)
+
+3. コンテナー内で、シェルから次のコマンドを実行します
 
     ```bash
     runsvdir /var/runit
     ```
+    これにより、コンテナー内のシェルに次の出力が表示されます。
 
-1. VS Code をコンテナー内の debugpy に接続するには、VS Code を開き、F5 キーを使用するか __[デバッグ]__ を選択します。 メッセージが表示されたら、 __[Azure Machine Learning Deployment: Docker Debug]__ 構成を選択します。 サイド バーのデバッグ アイコンを選択して、[デバッグ] ドロップダウン メニューから __[Azure Machine Learning Deployment: Docker Debug]__ エントリを選択し、緑色の矢印を使用してデバッガーをアタッチすることもできます。
+    ![コンテナーの実行コンソールの出力](./media/how-to-troubleshoot-deployment/container-run.png)
+
+4. VS Code をコンテナー内の debugpy に接続するには、VS Code を開き、F5 キーを使用するか __[デバッグ]__ を選択します。 メッセージが表示されたら、 __[Azure Machine Learning Deployment: Docker Debug]__ 構成を選択します。 サイド バーの __[実行]__ 拡張機能アイコンを選択して、[デバッグ] ドロップダウン メニューから __[Azure Machine Learning Deployment: Docker Debug]__ エントリを選択し、緑色の矢印を使用してデバッガーをアタッチすることもできます。
 
     ![デバッグ アイコン、デバッグの開始ボタン、および構成セレクター](./media/how-to-troubleshoot-deployment/start-debugging.png)
+    
+    緑色の矢印をクリックしてデバッガーをアタッチすると、コンテナー VS Code インターフェイスに新しい情報が表示されます。
+    
+    ![コンテナー デバッガーのアタッチされた情報](./media/how-to-troubleshoot-deployment/debugger-attached.png)
+    
+    また、メインの VS Code インターフェイスには、次のような情報が表示されます。
 
-この時点で、VS Code は Docker コンテナー内の debugpy に接続し、前に設定したブレークポイントで停止します。 これで、実行時のようにコードをステップ実行したり、変数を表示したりできます。
+    ![score.py の VS Code ブレークポイント](./media/how-to-troubleshoot-deployment/local-debugger.png)
+
+ここで、コンテナーにアタッチされているローカル `score.py` は、設定したブレークポイントで既に停止しています。 この時点で、VS Code は Docker コンテナー内の debugpy に接続され、前に設定したブレークポイントで Docker コンテナーを停止させます。 これで、実行時のようにコードをステップ実行したり、変数を表示したりできます。
 
 VS Code を使用した Python のデバッグの詳細については、「[Python コードのデバッグ](https://code.visualstudio.com/docs/python/debugging)」を参照してください。
 
@@ -488,4 +536,10 @@ docker stop debug
 
 VS Code Remote の設定が完了したので、VS Code からコンピューティング インスタンスをリモート コンピューティングとして使用して、自分のコードを対話形式でデバッグすることができます。 
 
-[チュートリアル:最初の ML モデルをトレーニングする)](tutorial-1st-experiment-sdk-train.md)」では、統合ノートブックでコンピューティング インスタンスを使用する方法を示しています。
+トラブルシューティングについて学習します。
+
+* [ローカルでのモデル デプロイ](how-to-troubleshoot-deployment-local.md)
+* [リモートでのモデル デプロイ](how-to-troubleshoot-deployment.md)
+* [Machine Learning パイプライン](how-to-debug-pipelines.md)
+* [ParallelRunStep](how-to-debug-parallel-run-step.md)
+

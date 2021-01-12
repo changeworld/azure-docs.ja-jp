@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 73fb9bf436c043e903977fafbb5a502e2edc5488
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 78c21e9515965f1c15315967f6a19a0df2838dc2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518687"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591197"
 ---
 # <a name="msix-app-attach-faq"></a>MSIX アプリ アタッチに関するごよくある質問
 
@@ -27,7 +27,7 @@ MSIX はアプリのパッケージ形式であり、MSIX アプリ アタッチ
 
 MSIX アプリ アタッチでは、FSLogix は使用されません。 ただし、MSIX アプリ アタッチと FSLogix は、ユーザーがシームレスなエクスペリエンスを得られるよう連携して動作するように設計されています。
 
-## <a name="can-i-use-msix-app-attach-outside-of-windows-virtual-desktop"></a>MSIX アプリ アタッチは Windows Virtual Desktop 外で使用できますか?
+## <a name="can-i-use-the-msix-app-attach-outside-of-windows-virtual-desktop"></a>MSIX アプリ アタッチは Windows Virtual Desktop 外で使用できますか?
 
 MSIX アプリ アタッチを強化する API が Windows 10 Enterprise 向けに用意されています。 これらの API は、Windows Virtual Desktop 外で使用できます。 ただし、Windows Virtual Desktop 外には MSIX アプリ アタッチの管理プレーンはありません。
 

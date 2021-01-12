@@ -3,12 +3,12 @@ title: SQL Server のデータベース バックアップに関するトラブ�
 description: Azure VM で実行されている SQL Server データベースの Azure Backup によるバックアップに関するトラブルシューティング情報です。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: f215b848bedae333979f0fed8eb7f216fb6e25f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d702959be70716f0c2bc85920bdb7aa3e061aff1
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332782"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733945"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup を使用した SQL Server データベースのバックアップのトラブルシューティング
 
@@ -55,6 +55,40 @@ SQL VM を新しいコンテナーに登録する必要がある場合は、古�
     - TriggerExtensionJob.exe
 
 1. SQL には、ウイルス対策プログラムの使用に関するいくつかのガイドラインも用意されています。 詳細については、[こちらの記事](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server)をご覧ください。
+
+## <a name="faulty-instance-in-a-vm-with-multiple-sql-server-instances"></a>複数の SQL Server インスタンスを持つ VM のインスタンスに問題がある
+
+VM 内で実行されているすべての SQL インスタンスが正常であると報告された場合にのみ、SQL VM に復元できます。 1 つ以上のインスタンスに "問題" がある場合、その VM は復元ターゲットとして表示されません。 そのため、これが、復元操作中にマルチインスタンスの VM が [サーバー] ドロップダウンに表示されない理由として考えられます。
+
+**[バックアップの構成]** で、VM 内のすべての SQL インスタンスの "バックアップの準備" を検証できます。
+
+![バックアップの準備の検証](./media/backup-sql-server-azure-troubleshoot/backup-readiness.png)
+
+正常な SQL インスタンスで復元をトリガーする場合は、次の手順を実行します。
+
+1. SQL VM にサインインし、`C:\Program Files\Azure Workload Backup\bin` にアクセスします。
+1. `ExtensionSettingsOverrides.json` という名前の JSON ファイルを作成します (まだない場合)。 このファイルが VM 上に既に存在する場合は、それをそのまま使用します。
+1. JSON ファイルに次の内容を追加し、ファイルを保存します。
+
+    ```json
+    {
+                  "<ExistingKey1>":"<ExistingValue1>",
+                    …………………………………………………… ,
+              "whitelistedInstancesForInquiry": "FaultyInstance_1,FaultyInstance_2"
+            }
+            
+            Sample content:        
+            { 
+              "whitelistedInstancesForInquiry": "CRPPA,CRPPB "
+            }
+
+    ```
+
+1. 影響を受けるサーバーで、Azure portal (バックアップの準備を確認できる場所と同じ場所) から **DB の再検出** 操作をトリガーします。 復元操作のターゲットとして VM が表示されるようになります。
+
+    ![DB の再検出](./media/backup-sql-server-azure-troubleshoot/rediscover-dbs.png)
+
+1. 復元操作が完了したら、ExtensionSettingsOverrides.json ファイルから *whitelistedInstancesForInquiry* エントリを削除します。
 
 ## <a name="error-messages"></a>エラー メッセージ
 

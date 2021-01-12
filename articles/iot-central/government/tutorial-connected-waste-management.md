@@ -1,267 +1,260 @@
 ---
 title: チュートリアル:Azure IoT Central を使用して接続された廃棄物管理アプリを作成する
-description: チュートリアル:Azure IoT Central アプリケーション テンプレートを使用して、接続された廃棄物管理アプリケーションを作成する方法について説明します。
+description: Azure IoT Central アプリケーション テンプレートを使用して、コネクテッド廃棄物管理アプリケーションを作成する方法について説明します。
 author: miriambrus
 ms.author: miriamb
 ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 5ecfa3e4c46c17a3b381e9743953c7d97309ea3b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8085409c3dc38d17b6fe0d3cb15857b2396e23b6
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587249"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881346"
 ---
-# <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>チュートリアル:IoT Central で接続された廃棄物管理アプリケーションを作成する
+# <a name="tutorial-create-a-connected-waste-management-app"></a>チュートリアル:接続された廃棄物管理アプリを作成する
 
-このチュートリアルでは、Azure IoT Central の **Connected waste management (接続された廃棄物管理)** アプリケーション テンプレートから、IoT Central の接続された廃棄物管理アプリケーションを作成する方法について説明します。 
+このチュートリアルでは、Azure IoT Central を使用して、コネクテッド廃棄物管理アプリケーションを作成する方法について説明します。 
 
-このチュートリアルでは、次の内容を学習します。 
+具体的には、次の方法を学習します。 
 
-* Azure IoT Central の **Connected waste management (接続された廃棄物管理)** テンプレートを使用して、接続された廃棄物管理アプリケーションを作成する
-* オペレーター ダッシュボードの探索とカスタマイズ 
-* 接続された廃棄物処理デバイス テンプレートの探索
-* シミュレートされたデバイスを探索する
-* ルールを探索して構成する
-* ジョブの構成
-* ホワイト ラベルを使用してアプリケーションのブランド化をカスタマイズします
+* Azure IoT Central の "*コネクテッド廃棄物管理*" テンプレートを使用してアプリを作成します。
+* オペレーター ダッシュボードを探索してカスタマイズします。 
+* コネクテッド廃棄物処理デバイス テンプレートを探索します。
+* シミュレートされたデバイスを探索します。
+* ルールを探索して構成します。
+* ジョブを構成します。
+* アプリケーションのブランドをカスタマイズします。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、次のものが必要です。
-*  Azure サブスクリプションをお勧めします。 必要に応じて、7 日間無料の試用版を使用することもできます。 Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で作成できます。
+Azure サブスクリプションをお勧めします。 また、7 日間無料の試用版を使用することもできます。 Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で作成できます。
 
-## <a name="create-connected-waste-management-app-in-iot-central"></a>IoT Central で接続された廃棄物管理アプリを作成する
+## <a name="create-your-app-in-azure-iot-central"></a>Azure IoT Central でのアプリの作成
 
-このセクションでは、Azure IoT Central で、IoT Central の **Connected waste management (接続された廃棄物管理)** テンプレートを使用して、接続された廃棄物管理アプリケーションを作成します。
+このセクションでは、Azure IoT Central でコネクテッド廃棄物管理テンプレートを使用してアプリを作成します。 その方法は次のとおりです。
 
-新しい Azure IoT Central の接続された廃棄物管理アプリケーションを作成するには:  
+1. [Azure IoT Central](https://aka.ms/iotcentral) に移動します。
 
-1. [Azure IoT Central ホームページ](https://aka.ms/iotcentral) Web サイトに移動します。
+    Azure サブスクリプションを持っている場合は、そのサブスクリプションへのアクセス用の資格情報を使用してサインインします。 持っていない場合は、Microsoft アカウントを使用してサインインします。
 
-    Azure サブスクリプションを持っている場合は、そのサブスクリプションへのアクセス用の資格情報を使用してサインインします。持っていない場合は、Microsoft アカウントを使用してサインインします。
+    ![Microsoft サインインのスクリーンショット](./media/tutorial-connectedwastemanagement/sign-in.png)
 
-    ![所属組織のアカウントを入力](./media/tutorial-connectedwastemanagement/sign-in.png)
+1. 左側のペインから **[ビルド]** を選択します。 次に、 **[Government]\(政府機関\)** タブを選択します。政府機関ページに、いくつかの政府機関アプリケーション テンプレートが表示されます。
 
-1. 左側のウィンドウで **[ビルド]** をクリックし、 **[政府機関]** タブを選択します。政府機関ページに、いくつかの政府機関アプリケーション テンプレートが表示されます。
+    ![Azure IoT Central の [ビルド] ページのスクリーンショット。](./media/tutorial-connectedwastemanagement/iotcentral-government-tab-overview.png)
 
-    ![政府機関アプリ テンプレートを構築する](./media/tutorial-connectedwastemanagement/iotcentral-government-tab-overview.png)
+1. **コネクテッド廃棄物管理** アプリケーション テンプレートを選択します。 このテンプレートには、コネクテッド廃棄物処理デバイス テンプレートのサンプル、シミュレートされたデバイス、オペレーター ダッシュボード、事前構成済みの監視ルールが含まれています。    
 
-1. **Connected Waste Management (接続された廃棄物管理)** アプリケーションテンプレートを選択します。 このテンプレートには、サンプルの接続された廃棄物処理デバイス テンプレート、シミュレートされたデバイス、オペレーター ダッシュボード、事前構成済みのモニタリング ルールが含まれています。    
+1. **[アプリの作成]** を選択して、 **[新しいアプリケーション]** ダイアログ ボックスを開きます。 次のフィールドに情報を入力します。
+    * **アプリケーション名**: 既定では、**Connected waste management** に続けて、Azure IoT Central によって生成される一意の ID 文字列が付加されます。 必要に応じて、わかりやすいアプリケーション名を選んでください。 後でアプリケーション名を変更することもできます。
+    * **URL**。 必要に応じて、目的の URL を選択できます。 URL は後から変更できます。 
+    * **価格プラン**。 Azure サブスクリプションをお持ちの場合は、 **[課金情報]** ダイアログ ボックスの該当するフィールドに、ご自分のディレクトリ、Azure サブスクリプション、リージョンを入力してください。 サブスクリプションをお持ちでない場合は、 **[Free]\(無料\)** を選択して、7 日間の試用版サブスクリプションを有効にし、必須の連絡先情報を入力してください。  
 
-1. **[アプリの作成]** をクリックすると、次のフィールドがある **[新しいアプリケーション]** 作成フォームが開きます。
-    * **アプリケーション名**: 既定で、アプリケーションでは、*Connected waste management* と、その後に IoT Central が生成する一意の ID 文字列が使われます。 必要に応じて、わかりやすいアプリケーション名を選択します。 後でアプリケーション名を変更することもできます。
-    * **URL** - 必要に応じて、目的の URL を選択できます。 URL は後で変更することもできます。 
-    * Azure サブスクリプションをお持ちの場合は、"*ディレクトリ、Azure サブスクリプション、リージョン*" を入力します。 サブスクリプションをお持ちでない場合は、**7 日間の無料試用版** を有効にし、必須の連絡先情報を入力できます。  
+    ディレクトリとサブスクリプションの詳細については、「[クイックスタート - Azure IoT Central アプリケーションを作成する](../core/quick-deploy-iot-central.md)」を参照してください。
 
-    ディレクトリとサブスクリプションの詳細については、[アプリケーションの作成のクイック スタート](../core/quick-deploy-iot-central.md)に関するページを参照してください。
+1. ページの下部にある **[作成]** を選択します。 
 
-1. ページの下部にある **[作成]** ボタンをクリックします。 
-
-    ![Azure IoT Central の [Create Connected Waste Application]\(接続された廃棄物アプリケーションの作成\) ページ](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
+    ![Azure IoT Central の [新しいアプリケーションの作成] ダイアログ ボックスのスクリーンショット。](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
     
-    ![Azure IoT Central の接続されたアプリケーションの作成の課金情報](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
+    ![Azure IoT Central の [課金情報] ダイアログ ボックスのスクリーンショット。](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
 
  
-1. これで、Azure IoT Central の **Connected waste management template (接続された廃棄物管理テンプレート)** を使用して、接続された廃棄物管理アプリを作成しました。 
-
-お疲れさまでした。 新しく作成されたアプリケーションには、事前構成された次のものが付属しています。
-* オペレーター ダッシュボードのサンプル
-* 事前定義済みの接続された廃棄物処理デバイス テンプレートのサンプル
-* シミュレートされた接続された廃棄物処理デバイス
-* 事前構成済みの規則とジョブ
-* ホワイト ラベルを使用したブランド化のサンプル 
+新しく作成されたアプリケーションには、事前構成された次のものが付属しています。
+* オペレーター ダッシュボードのサンプル。
+* 事前定義済みのコネクテッド廃棄物処理デバイス テンプレートのサンプル。
+* シミュレートされたコネクテッド廃棄物処理デバイス。
+* ルールおよびジョブ。
+* ブランドのサンプル。 
 
 これは自分のアプリケーションであるため、いつでも変更できます。 ここで、アプリケーションを探索して、いくつかのカスタマイズを行いましょう。  
 
-## <a name="explore-and-customize-operator-dashboard"></a>オペレーター ダッシュボードの探索とカスタマイズ 
-アプリケーションの作成後、**Wide Waste connected waste management dashboard (Wide Waste 接続された廃棄物管理ダッシュボード)** に移動します。
+## <a name="explore-and-customize-the-operator-dashboard"></a>オペレーター ダッシュボードの探索とカスタマイズ 
 
-   ![接続された廃棄物管理ダッシュボード](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard1.png)
+**[Wide World waste management dashboard]\(Wide World 廃棄物管理ダッシュボード\)** をご覧ください。これはアプリの作成後に表示されます。
 
-ビルダーは、オペレーターのダッシュボードのビューを作成したりカスタマイズしたりすることができます。 カスタマイズしてみる前に、ダッシュボードを探索しましょう。 
+   ![Wide World 廃棄物管理ダッシュボードのスクリーンショット。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard1.png)
 
->>[!NOTE]
->> ダッシュボードに表示されるすべてのデータは、シミュレートされたデバイス データに基づいています。これについては、次のセクションで詳しく説明します。 
+ビルダーは、オペレーターのダッシュボードのビューを作成したりカスタマイズしたりすることができます。 まず、ダッシュボードを詳しく見ていきましょう。 
 
-ダッシュボードは、さまざまな種類のタイルで構成されています。
+>[!NOTE]
+>ダッシュボードに表示されるすべてのデータは、シミュレートされたデバイス データに基づいています。これについては、次のセクションで詳しく説明します。 
 
-* ***Wide World Waste utility (Wide World Waste 公益事業) 画像タイル** _: ダッシュボードの最初のタイルは、架空の廃棄物処理事業 "Wide World Waste" の画像タイルです。 タイルをカスタマイズしたり、独自のイメージを追加したり、削除したりできます。 
+ダッシュボードは、各種のタイルで構成されています。
 
-_ ***Waste bin (ごみ箱) 画像タイル** _: 画像およびコンテンツ タイルを使用して、説明テキストと共に、監視対象のデバイスの視覚的表現を作成できます。 
+* **Wide World Water Utility 画像タイル**: ダッシュボードの最初のタイルは、架空の公益水道事業 "Wide World Waste" の画像タイルです。 タイルをカスタマイズしたり、独自の画像を追加したり、削除したりできます。 
 
-_ ***Fill level KPI (充填レベル KPI) タイル** _: このタイルには、ごみ箱の "_充填レベル*" センサーによってレポートされた値が表示されます。 ごみ箱の *充填レベル* と、*臭気メーター* や *重量* などのその他のセンサーは、リモートで監視できます。 オペレーターは、ごみ収集トラックの派遣などのアクションをとることができます。 
+* **Waste bin (ごみ箱) 画像タイル**: 画像およびコンテンツ タイルを使用して、説明と共に、監視対象のデバイスの視覚的表現を作成できます。 
 
-* ***Waste monitoring area map (廃棄物監視区域マップ)** _: このマップでは Azure Maps が使用されており、Azure IoT Central で直接構成できます。 マップ タイルにデバイスの場所が表示されています。 マップの上にポインターを置いて、マップ上でズームイン、ズームアウト、展開などのコントロールを試してみてください。
+* **Fill level (充填レベル) KPI タイル**: このタイルには、ごみ箱の "*充填レベル*" センサーによってレポートされた値が表示されます。 ごみ箱の充填レベルとその他のセンサー ("*臭気メーター*"、"*重量*" など) は、リモートで監視できます。 オペレーターは、ごみ収集トラックの派遣などのアクションを実行できます。 
 
-     ![接続された廃棄物管理ダッシュボードのマップ](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-map.png)
+* **Waste monitoring area map (廃棄物監視エリア マップ)** : このタイルでは Azure Maps が使用されており、Azure IoT Central で直接構成できます。 マップ タイルにデバイスの場所が表示されます。 マップの上にポインターを置いて、マップ上でズームイン、ズームアウト、展開などのコントロールを試してみてください。
 
-
-_ ***Fill, odor, weight level (充填、臭気、重量レベル) 棒グラフ**: 1 つまたは複数のデバイス テレメトリ データを棒グラフで視覚化できます。 棒グラフを展開することもできます。  
-
-  ![接続された廃棄物管理ダッシュボードの棒グラフ](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-barchart.png)
+     ![コネクテッド廃棄物管理ダッシュボードのマップのスクリーンショット。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-map.png)
 
 
-* **Field Services content tile (フィールド サービス コンテンツ タイル)** : ダッシュボードには、Azure IoT Central アプリケーションから Dynamics 365 フィールド サービスと統合する方法へのリンクが含まれています。 たとえば、フィールド サービスを使用して、ごみ収集サービスを派遣するためのチケットを作成できます。 
+* **Fill, odor, weight level (充填、臭気、重量レベル) 棒グラフ**: 1 つまたは複数の種類のデバイス テレメトリ データを棒グラフで視覚化できます。 棒グラフを展開することもできます。  
+
+  ![コネクテッド廃棄物管理ダッシュボードの棒グラフのスクリーンショット。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-barchart.png)
 
 
-### <a name="customize-dashboard"></a>ダッシュボードのカスタマイズ 
+* **Field Services (フィールド サービス)** : このダッシュボードには、Azure IoT Central アプリケーションから Dynamics 365 フィールド サービスと統合する方法へのリンクが含まれています。 たとえば、フィールド サービスを使用して、ごみ収集サービスを派遣するためのチケットを作成できます。 
 
-ビルダーは、オペレーターのダッシュボードのビューをカスタマイズできます。 次を行うことができます。
-1. **[編集]** をクリックして、**Wide World connected waste management dashboard (Wide World 接続された廃棄物管理ダッシュボード)** をカスタマイズします。 ダッシュボードをカスタマイズするには、 **[編集]** メニューをクリックします。 ダッシュボードが **編集** モードになったら、新しいタイルを追加したり、構成したりできます 
 
-    ![ダッシュボードの編集](./media/tutorial-connectedwastemanagement/edit-dashboard.png)
+### <a name="customize-the-dashboard"></a>ダッシュボードのカスタマイズ 
 
-1. 新しいダッシュボードを作成し、最初から構成するには、 **[+ 新規]** をクリックすることもできます。 複数のダッシュボードを作成し、ダッシュボード メニューからダッシュボード間を移動できます。 
+ダッシュボードは、 **[編集]** メニューを選択することによってカスタマイズできます。 新しいタイルを追加したり、既存のものを構成したりできます。 編集モードのダッシュボードは次のように表示されます。 
 
-## <a name="explore-connected-waste-bin-device-template"></a>接続された廃棄物処理デバイス テンプレートの探索
+![コネクテッド廃棄物管理ダッシュボードの編集モードのスクリーンショット。](./media/tutorial-connectedwastemanagement/edit-dashboard.png)
 
-Azure IoT Central のデバイス テンプレートは、デバイスの機能を定義します。これは、テレメトリ、プロパティ、コマンドなどになります。 ビルダーは、接続するデバイスの機能を表すデバイス テンプレートを定義できます。 
+**[+ 新規]** を選択して新しいダッシュボードを作成し、最初から構成することもできます。 複数のダッシュボードを用意して、ダッシュボード メニューからダッシュボードを切り替えることができます。 
 
-**Connected Waste Management (接続された廃棄物管理)** アプリケーションには、サンプルの接続された廃棄物処理デバイス テンプレートが付属しています。
+## <a name="explore-the-device-template"></a>デバイス テンプレートを探索する
+
+Azure IoT Central のデバイス テンプレートでは、テレメトリ、プロパティ、コマンドなど、デバイスの機能を定義します。 ビルダーは、接続するデバイスの機能を表すデバイス テンプレートを定義できます。 
+
+コネクテッド廃棄物管理アプリケーションには、コネクテッド廃棄物処理デバイス テンプレートのサンプルが付属しています。
 
 デバイス テンプレートを表示するには:
 
-1. IoT Central で、アプリケーションの左側のペインにある **[デバイス テンプレート]** をクリックします。 
+1. Azure IoT Central で、アプリの左ペインから **[デバイス テンプレート]** を選択します。 
 
-    ![アプリケーションのデバイス テンプレートを一覧表示する画面のスクリーンショット](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
+    ![アプリケーションのデバイス テンプレートを一覧表示する画面のスクリーンショット。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
-1. [デバイス テンプレート] リストに、 **[Connected Waste Bin]\(接続された廃棄物処理\)** が表示されます。 名前をクリックして開きます。
+1. **[デバイス テンプレート]** リストで **[Connected Waste Bin]\(コネクテッド廃棄物処理\)** を選択します。
 
-1. デバイス テンプレートの機能を理解します。 "*充填レベル*"、"*臭気メーター*"、"*重量*"、"*場所*" などのセンサーが定義されているのを確認できます。
+1. このデバイス テンプレートの機能を確認します。 **Fill level (充填レベル)** 、**Odor meter (臭気メーター)** 、**Weight (重量)** 、**Location (場所)** などのセンサーが定義されていることがわかります。
 
-   ![接続された廃棄物処理デバイス テンプレートの詳細を表示する画面のスクリーンショット](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
+   ![コネクテッド廃棄物処理デバイス テンプレートの詳細を表示する画面のスクリーンショット](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
 
-### <a name="customizing-the-device-template"></a>デバイス テンプレートのカスタマイズ
+### <a name="customize-the-device-template"></a>デバイス テンプレートをカスタマイズする
 
 次のカスタマイズを行います。
-1. デバイス テンプレート メニューから **[カスタマイズ]** に移動します
-1. `Odor meter` テレメトリの種類を見つけます
-1. `Odor meter` の **表示名** を `Odor level` に更新します
-1. 測定単位を更新するか、*最小値* と *最大値* を設定することもできます
-1. すべての変更を **保存** します 
+1. デバイス テンプレート メニューから **[カスタマイズ]** を選択します。
+1. **[Odor meter]\(臭気メーター\)** テレメトリ タイプを見つけます。
+1. **[Odor meter]\(臭気メーター\)** の **[表示名]** を「**Odor level**」に更新します。
+1. 測定単位を更新するか、**最小値** と **最大値** を設定してみましょう。
+1. **[保存]** を選択します。 
 
 ### <a name="add-a-cloud-property"></a>クラウド プロパティを追加する 
 
-1. デバイス テンプレート メニューから **[クラウド プロパティ]** に移動します。
-1. **[+ クラウド プロパティの追加]** をクリックして、新しいクラウド プロパティを追加します。 IoT Central では、デバイスに関連していますが、デバイスから送信されることを期待しないプロパティを追加できます。 たとえば、クラウドのプロパティは、設置区域、アセット情報、メンテナンス情報、その他の情報などに固有のアラートのしきい値などになります。 
-1. すべての変更を **保存** します 
+その方法は次のとおりです。
+1. デバイス テンプレート メニューから **[クラウド プロパティ]** を選択します。
+1. **[クラウド プロパティの追加]** を選択します。 Azure IoT Central では、デバイスには関連するものの、デバイスから送信されることは考えにくいようなプロパティを追加できます。 たとえば、設置区域、アセット情報、メンテナンス情報ごとのアラートしきい値がクラウド プロパティとして考えられます。 
+1. **[保存]** を選択します。 
  
 ### <a name="views"></a>ビュー 
-* 接続された廃棄物処理デバイス テンプレートには、事前定義済みのビューが付属しています。 ビューを調べて、更新を行うことができます。 ビューでは、オペレーターにデバイス データがどのように表示されるかを定義しますが、クラウドのプロパティも入力します。 
+コネクテッド廃棄物処理デバイス テンプレートには、事前定義済みのビューが付属しています。 ビューを確認し、必要に応じて更新しましょう。 このビューには、オペレーターによるデバイス データの表示方法とクラウド プロパティの入力方法が定義されています。 
 
-  ![デバイス テンプレートのビュー](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-views.png)
+  ![コネクテッド廃棄物管理テンプレートのデバイス テンプレート ビューのスクリーンショット。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-views.png)
 
 ### <a name="publish"></a>発行 
 
-* 何らかの変更を行った場合は、必ずデバイス テンプレートを **発行** してください。 
+変更を行ったデバイス テンプレートは、必ず発行してください。 
 
 ### <a name="create-a-new-device-template"></a>新しいデバイス テンプレートの作成 
 
-* 新しいデバイス テンプレートを作成するには、 **[+ 新規]** を選択し、作成プロセスに従います。 カスタム デバイス テンプレートを最初から作成することも、Azure デバイス カタログからデバイス テンプレートを選択することもできます。 
+新しいデバイス テンプレートを作成するには、 **[+ 新規]** を選択して、手順に従います。 カスタム デバイス テンプレートを最初から作成することも、Azure デバイス カタログからデバイス テンプレートを選択することもできます。 
 
 ## <a name="explore-simulated-devices"></a>シミュレートされたデバイスを探索する
 
-IoT Central では、シミュレートされたデバイスを作成して、デバイス テンプレートとアプリケーションをテストできます。 
+Azure IoT Central では、シミュレートされたデバイスを作成して、デバイス テンプレートとアプリケーションをテストできます。 
 
-**Connected Waste Management (接続された廃棄物管理)** アプリケーションには、接続された廃棄物処理デバイス テンプレートにマップされた 2 つのシミュレートされたデバイスがあります。 
+コネクテッド廃棄物管理アプリケーションには、コネクテッド廃棄物処理デバイス テンプレートに関連付けられた 2 つのシミュレートされたデバイスがあります。 
 
-### <a name="to-view-the-devices"></a>デバイスを表示するには:
+### <a name="view-the-devices"></a>デバイスを表示する
 
-1. IoT Central の左側のペインから **[デバイス]** に移動します。 
+1. Azure IoT Central の左ペインから **[デバイス]** を選択します。 
 
-   ![デバイス](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices.png)
+   ![コネクテッド廃棄物管理テンプレートの [デバイス] のスクリーンショット。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices.png)
 
-1. 接続された廃棄物処理デバイスを選択して、クリックします。  
+1. **[Connected Waste Bin]\(コネクテッド廃棄物処理\)** デバイスを選択します。  
 
-     ![デバイス 1](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices-bin1.png)
+     ![コネクテッド廃棄物管理テンプレートの [Device Properties]\(デバイスのプロパティ\) のスクリーンショット。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices-bin1.png)
 
-1. **[クラウドのプロパティ]** タブに移動し、`Bin full alert threshold` 値を `95` から `100` に更新します。 
-* **[デバイスのプロパティ]** タブと **[Device Dashboard]\(デバイス ダッシュボード\)** タブを調べます。 
+1. **[Cloud Properties]\(クラウドのプロパティ\)** タブに移動します。 **[Bin full alert threshold]\(ごみ箱容量オーバー アラートしきい値\)** を **95** から **100** に更新します。 
 
->> [!NOTE]
->> すべてのタブが **デバイス テンプレート ビュー** から構成されています。
+**[Device Properties]\(デバイスのプロパティ\)** と **[Device Dashboard]\(デバイス ダッシュボード\)** のタブを調べます。 
+
+> [!NOTE]
+> すべてのタブはデバイス テンプレート ビューから構成されています。
 
 ### <a name="add-new-devices"></a>新しいデバイスを追加する
 
-* 新しいデバイスを追加するには、 **[デバイス]** タブの **[+ 新規]** をクリックします。 
+新しいデバイスは、 **[デバイス]** タブの **[+ 新規]** を選択することで追加できます。 
 
 ## <a name="explore-and-configure-rules"></a>ルールを探索して構成する
 
-Azure IoT Central では、ルールを作成して、デバイスのテレメトリを自動的に監視し、1 つまたは複数の条件が満たされたときにアクションをトリガーできます。 アクションには、メール通知の送信や、Power Automate アクションまたは他のサービスにデータを送信する Webhook アクションのトリガーを含めることができます。
+Azure IoT Central では、ルールを作成して、デバイスのテレメトリを自動的に監視し、1 つまたは複数の条件が満たされたときにアクションをトリガーできます。 アクションには、メール通知の送信や Power Automate アクションのトリガー、他のサービスにデータを送信する Webhook アクションの開始などがあります。
 
-**Connected waste management (接続された廃棄物管理)** アプリケーションには、4 つのサンプル ルールがあります。
+Connected waste management (接続された廃棄物管理) アプリケーションには、4 つのサンプル ルールがあります。
 
-### <a name="to-view-rules"></a>ルールを表示するには:
-1. IoT Central の左側のペインから **[ルール]** に移動します
+### <a name="view-rules"></a>ルールを表示する
+1. Azure IoT Central の左ペインから **[Rules]\(ルール\)** を選択します。
 
-   ![ルール](./media/tutorial-connectedwastemanagement/connectedwastemanagement-rules.png)
+   ![コネクテッド廃棄物管理テンプレートの [Rules]\(ルール\) のスクリーンショット。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-rules.png)
 
-1. **[Bin full alert]\(ごみ箱充填アラート\)** を選択します
+1. **[Bin full alert]\(ごみ箱容量オーバーアラート\)** を選択します。
 
-     ![Bin full alert (ごみ箱充填アラート)](./media/tutorial-connectedwastemanagement/connectedwastemanagement-binfullalert.png)
+     ![ごみ箱容量オーバーアラートのスクリーンショット。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-binfullalert.png)
 
- 1. `Bin full alert` では、**条件** `Fill level is greater than or equal to Bin full alert threshold` が確認されます。
+ 1. **[Bin full alert]\(ごみ箱容量オーバー アラート\)** では、**充填レベルがごみ箱容量オーバー アラートしきい値以上** であるかどうかの条件がチェックされます。
 
-    `Bin full alert threshold` は、`Connected waste bin` デバイス テンプレートに定義されている *クラウドのプロパティ* です。 
+    **[Bin full alert threshold]\(ごみ箱容量オーバー アラートしきい値\)** は、コネクテッド廃棄物処理デバイス テンプレートに定義されているクラウド プロパティです。 
 
 次に、メール アクションを作成しましょう。
 
 ### <a name="create-an-email-action"></a>メール アクションを作成する
-ルールのアクションの一覧でメール アクションを構成するには:
-1. **[+ Email]\(+ メール\)** を選択します。 
-1. アクションのわかりやすい **表示名** として、「*High pH alert*」を入力します。
-1. IoT Central アカウントに関連付けられているメール アドレスを **[送信先]** に入力します。 
-1. 必要に応じて、メールのテキストに含めるメモを入力します。
-1. **[完了]** を選択して、アクションを完了します。
-1. **[保存]** を選択して、新しいルールを保存してアクティブにします。 
 
-構成された **条件** が満たされると、メールを受信するはずです。
+メール アクションの構成は、ルールの **[Actions]\(アクション\)** リストで行うことができます。
+1. **[+ Email]\(+ メール\)** を選択します。 
+1. **[表示名]** に「**High pH alert**」と入力します。
+1. 自分の Azure IoT Central アカウントに関連付けられているメール アドレスを **[送信先]** に入力します。 
+1. 必要に応じて、メールのテキストに含めるメモを入力します。
+1. **[Done]\(完了\)**  >  **[Save]\(保存\)** の順に選択します。 
+
+今後、構成した条件が満たされるとメールが送信されます。
 
 >[!NOTE]
->アプリケーションから、条件が満たされるたびにメールが送信されます。 自動ルールからのメールの受信を停止するには、ルールを **無効** にします。 
+>アプリケーションから、条件が満たされるたびにメールが送信されます。 自動ルールからのメールの受信を停止するには、ルールを無効にします。 
   
-新しいルールを作成するには: 
-1. 左側のペインの **[ルール]** で、 **[+ 新規]** を選択します。
+新しいルールを作成するには、 **[Rules]\(ルール\)** の左ペインから **[+ 新規]** を選択します。
 
 ## <a name="configure-jobs"></a>ジョブの構成
 
-IoT Central では、ジョブを使用して、複数のデバイスで、デバイスまたはクラウドのプロパティの更新をトリガーできます。 プロパティに加えて、ジョブを使用して、複数のデバイスでデバイス コマンドをトリガーすることもできます。 IoT Central によって、ワークフローが自動化されます。 
+Azure IoT Central では、ジョブを使用して、複数のデバイスで、デバイスまたはクラウドのプロパティの更新をトリガーできます。 また、ジョブを使用して、複数のデバイス上でデバイス コマンドをトリガーすることもできます。 Azure IoT Central によって、ワークフローが自動化されます。 
 
-1. 左側のペインから **[ジョブ]** に移動します。 
-1. **[+ 新規]** をクリックし、1 つまたは複数のジョブを構成します。 
-
+1. Azure IoT Central の左ペインから **[ジョブ]** を選択します。 
+1. **[+ 新規]** を選択し、1 つまたは複数のジョブを構成します。 
 
 ## <a name="customize-your-application"></a>アプリケーションのカスタマイズ 
 
 ビルダーとして、いくつかの設定を変更して、アプリケーションでのユーザー エクスペリエンスをカスタマイズできます。
 
-### <a name="to-change-the-application-theme"></a>アプリケーション テーマを変更するには:
+### <a name="change-the-application-theme"></a>アプリケーションのテーマを変更する
 
-1. **[管理] > [アプリケーションのカスタマイズ]** に移動します。
-1. **[変更]** ボタンを使用して、**アプリケーション ロゴ** としてアップロードするイメージを選択します。
-1. **[変更]** ボタンを使用して、ブラウザーのタブに表示される **ブラウザー アイコン** イメージを選択します。
-1. HTML 16 進数のカラー コードを追加して、既定の **[ブラウザーの色]** を置き換えることもできます。
+その方法は次のとおりです。
+1. **[管理]**  >  **[アプリケーションのカスタマイズ]** の順に移動します。
+1. **[変更]** を選択して、**アプリケーション ロゴ** 用にアップロードする画像を選択します。
+1. **[変更]** を選択して、**ブラウザー アイコン** (ブラウザーのタブに表示される画像) 用にアップロードする画像を選択します。
+1. HTML 16 進数のカラー コードを追加して、既定のブラウザーの色を置き換えることもできます。 その場合は **[ヘッダー]** と **[アクセント]** のフィールドを使用します。
 
-   ![Azure IoT Central によるアプリケーションのカスタマイズ](./media/tutorial-connectedwastemanagement/connectedwastemanagement-customize-your-application.png)
+   ![コネクテッド廃棄物管理テンプレートの [アプリケーションのカスタマイズ] のスクリーンショット。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-customize-your-application.png)
 
-1. また、アプリケーション イメージを変更するには、 **[管理] > [アプリケーション設定]** の順に移動し、 **[画像の選択]** ボタンを選択して、アプリケーション イメージとしてアップロードするイメージを選択します。
-1. 最後に、アプリケーションのタイトルで **[設定]** をクリックして、 **[テーマ]** を変更することもできます。
+1. アプリケーションの画像を変更することもできます。 **[管理]**  >  **[アプリケーションの設定]**  >  **[画像の選択]** の順に選択し、アプリケーションの画像としてアップロードする画像を選択します。
+1. 最後に、アプリケーションのタイトルで **[設定]** を選択して、テーマを変更することもできます。
 
-  
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このアプリケーションを引き続き使用しない場合は、次の手順でアプリケーションを削除します。
 
-1. IoT Central アプリケーションの左側のウィンドウで [管理] タブを開きます。
-1. [アプリケーションの設定] を選択し、ページの下部にある [削除] ボタンをクリックします。
+1. 自分の Azure IoT Central アプリの左ペインから **[管理]** を選択します。
+1. **[アプリケーションの設定]**  >  **[削除]** の順に選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
-* 次のトピックについて詳細をご覧ください。
- 
 > [!div class="nextstepaction"]
 > [接続された廃棄物管理の概念](./concepts-connectedwastemanagement-architecture.md)

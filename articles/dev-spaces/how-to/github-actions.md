@@ -7,12 +7,12 @@ description: GitHub アクションと Azure Dev Spaces を使用して、Azure 
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, GitHub アクション, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 9bed61861c80f141270e50b644b32ae42fbe8e77
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 447c41055ededfc55e44bebd92de89b3d23de3c7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995568"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591567"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub のアクションと Azure Kubernetes Service (プレビュー)
 
@@ -103,7 +103,7 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 > [!NOTE]
 > これらのシークレットはすべて GitHub アクションによって使用され、[.github/workflows/bikes.yml][github-action-yaml] 内で構成されます。
 
-PR をマージした後にマスター スペースを更新する場合は、必要に応じて *GATEWAY_HOST* シークレットを追加します。その形式は *<MASTER_SPACE>.gateway.<HOST_SUFFIX>* で、この例では *dev.gateway.fedcab0987.eus.azds.io* となります。 変更をフォークのマスター ブランチにマージすると、別のアクションが実行され、マスター開発空間でアプリケーション全体がリビルドされ、実行されます。 この例では、マスター空間は *dev* です。 このアクションは [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] 内で構成されています。
+PR をマージした後にマスター スペースを更新する場合は、必要に応じて *GATEWAY_HOST* シークレットを追加します。その形式は *<MASTER_SPACE>.gateway.<HOST_SUFFIX>* で、この例では *dev.gateway.fedcab0987.eus.azds.io* となります。 変更をフォークのメイン ブランチにマージすると、別のアクションが実行され、マスター開発空間でアプリケーション全体がリビルドされ、実行されます。 この例では、マスター空間は *dev* です。 このアクションは [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] 内で構成されています。
 
 また、PR の変更が孫スペースで実行されるようにする場合は、*MASTER_SPACE* および *HOST* シークレットを更新します。 たとえば、アプリケーションが *dev* で実行されており、*dev/azureuser1* の子スペースがある場合、PR が *dev/azureuser1* の子空間で実行されるようにするには次の操作を行います。
 
@@ -149,7 +149,7 @@ git commit -m "Removing hard coded imageUrl from /bikes/:id route"
 git push origin bike-images
 ```
 
-プッシュが完了したら、GitHub でフォークされたリポジトリに移動し、*bike-images* ブランチと比較される基本ブランチとして、フォークされたリポジトリの *master* ブランチを使用して pull request を作成します。
+プッシュが完了したら、GitHub でフォークされたリポジトリに移動し、*bike-images* ブランチと比較される基本ブランチとして、フォークされたリポジトリの "*メイン*" ブランチを使用して pull request を作成します。
 
 Pull request が開かれたら、 *[アクション]* タブに移動します。新しいアクションが開始され、*Bikes* サービスを構築中であることを確認します。
 
@@ -162,7 +162,7 @@ Pull request が開かれたら、 *[アクション]* タブに移動します�
 
 コメントから URL を開いて *bikesharingweb* サービスに移動します。 ユーザーとして *Aurelia Briggs (顧客)* を選択してから、借りる自転車を選択します。 自転車のプレースホルダー画像が表示されなくなっていることを確認します。
 
-変更をフォークの *master* ブランチにマージすると、別のアクションが実行され、親の開発空間でアプリケーション全体がリビルドされ、実行されます。 この例では、親空間は *dev* です。 このアクションは [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] 内で構成されています。
+変更をフォークの "*メイン*" ブランチにマージすると、別のアクションが実行され、親の開発空間でアプリケーション全体がリビルドされ、実行されます。 この例では、親空間は *dev* です。 このアクションは [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] 内で構成されています。
 
 ## <a name="clean-up-your-azure-resources"></a>Azure リソースをクリーンアップする
 

@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 0da970724a5d6f0ad42ba64939f316ec1ada855b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7af2e6794d0d2f37c342a86b2f36b94c9601cc7e
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905555"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617257"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Azure Storage のプライベート エンドポイントを使用する
 
@@ -45,6 +45,9 @@ VNet 内のアプリケーションは、プライベート エンドポイン�
 > ストレージ アカウントへのアクセスを、プライベート エンドポイント経由のみに制限する場合は、パブリック エンドポイント経由のアクセスを拒否または制御するようにストレージ ファイアウォールを構成します。
 
 既定でパブリック エンドポイント経由のアクセスを拒否するように[ストレージ ファイアウォールを構成する](storage-network-security.md#change-the-default-network-access-rule)ことにより、VNet からの接続のみを受け入れるようにストレージ アカウントをセキュリティで保護することができます。 ストレージ ファイアウォールはパブリック エンドポイント経由のアクセスのみを制御するため、プライベート エンドポイントを持つ VNet からのトラフィックを許可するファイアウォール規則は必要ありません。 代わりに、プライベート エンドポイントは、ストレージ サービスへのアクセスをサブネットに許可するための同意フローに依存します。
+
+> [!NOTE]
+> ストレージ アカウント間で BLOB をコピーする場合、クライアントは、両方のアカウントへのネットワーク アクセスを持っている必要があります。 そのため、1 つのアカウント (送信元または送信先) にのみプライベート リンクを使用する場合は、クライアントが他のアカウントへのネットワーク アクセスを持っていることをご確認ください。 ネットワーク アクセスを構成するその他の方法の詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](storage-network-security.md?toc=/azure/storage/blobs/toc.json)」を参照してください。 
 
 ### <a name="private-endpoints-for-azure-storage"></a>Azure Storage のプライベート エンドポイント
 

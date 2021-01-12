@@ -3,12 +3,12 @@ title: Windows 用のゲスト構成ポリシーを作成する方法
 description: Windows に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 124f747a1e7c7925efc2519ee826d62034e69cc5
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: d01f4fff28debc3fabcfb32b32b02c5029ce7323
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302698"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755975"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows 用のゲスト構成ポリシーを作成する方法
 
@@ -491,13 +491,18 @@ New-GuestConfigurationPackage `
 
 ## <a name="policy-lifecycle"></a>ポリシーのライフサイクル
 
-ポリシーの更新をリリースする場合、注意が必要な 3 つのフィールドがあります。
+ポリシーの更新をリリースする場合は、ゲスト構成パッケージと Azure Policy 定義の詳細の両方に対して変更を行います。
 
 > [!NOTE]
 > ゲスト構成割り当ての `version` プロパティは、Microsoft によってホストされているパッケージにのみ影響します。 カスタム コンテンツのバージョン管理のベストプラクティスは、ファイル名にバージョンを含めることです。
 
+まず、`New-GuestConfigurationPackage` を実行するときに、以前のバージョンと異なる一意のパッケージの名前を指定します。 名前には、`PackageName_1.0.0` などのバージョン番号を含めることができます。
+この例の番号は、パッケージを一意にするためにのみ使用されており、パッケージを他のパッケージよりも新しいまたは古いものとして見なすように指定するものではありません。
+
+次に、以下の各説明に従って、`New-GuestConfigurationPolicy` コマンドレットで使用するパラメーターを更新します。
+
 - **バージョン**:`New-GuestConfigurationPolicy` コマンドレットを実行するときは、現在発行されているバージョンより大きいバージョン番号を指定する必要があります。
-- **contentUri**:`New-GuestConfigurationPolicy` コマンドレットを実行するときは、パッケージの場所の URI を指定する必要があります。 ファイル名にパッケージのバージョンを含めると、各リリースでこのプロパティの値が変更されます。
+- **contentUri**: `New-GuestConfigurationPolicy` コマンドレットを実行するときは、パッケージの場所の URI を指定する必要があります。 ファイル名にパッケージのバージョンを含めると、各リリースでこのプロパティの値が変更されます。
 - **contentHash**: このプロパティは、`New-GuestConfigurationPolicy` コマンドレットによって自動的に更新されます。 `New-GuestConfigurationPackage` によって作成されるパッケージのハッシュ値です。 このプロパティは、発行する `.zip` ファイルに対して適切なものである必要があります。 **contentUri** プロパティのみが更新された場合、拡張機能ではコンテンツ パッケージが受け入れられません。
 
 更新されたパッケージをリリースする最も簡単な方法は、この記事で説明されているプロセスを繰り返し、更新されたバージョン番号を指定することです。 このプロセスにより、すべてのプロパティが正しく更新されることが保証されます。

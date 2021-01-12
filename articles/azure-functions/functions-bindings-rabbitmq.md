@@ -4,22 +4,22 @@ description: Azure Functions で Azure RabbitMQ のトリガーとバインド�
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: cd6c8de0d9290aab273e25403bb1cb2d8fe07e27
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 2a480f25821f5022295b18ca24abfd2c0fb8a50c
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505675"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746526"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>Azure Functions における RabbitMQ バインドの概要
 
 > [!NOTE]
-> RabbitMQ バインドは **Windows Premium** プランでのみ完全にサポートされています。 現在、従量課金と Linux はサポートされていません。
+> RabbitMQ バインドは、**Premium および Dedicated** プランでのみ完全にサポートされています。 従量課金はサポートされていません。
 
-Azure Functions は[トリガーとバインド](./functions-triggers-bindings.md)を使用して [RabbitMQ](https://www.rabbitmq.com/) と統合されます。 Azure Functions の RabbitMQ バインド拡張機能を使用すると、Functions で RabbitMQ API を使用してメッセージを送受信できます。
+Azure Functions は[トリガーとバインド](./functions-triggers-bindings.md)を使用して [RabbitMQ](https://www.rabbitmq.com/) と統合されます。 Azure Functions の RabbitMQ 拡張機能を使用すると、Functions で RabbitMQ API を使用してメッセージを送受信できます。
 
 | アクション | Type |
 |---------|---------|
@@ -30,11 +30,11 @@ Azure Functions は[トリガーとバインド](./functions-triggers-bindings.m
 
 この拡張機能を使用して開発を開始するには、まず、[RabbitMQ エンドポイントを設定](https://github.com/Azure/azure-functions-rabbitmq-extension/wiki/Setting-up-a-RabbitMQ-Endpoint)します。 RabbitMQ の詳細については、[作業の開始に関するページ](https://www.rabbitmq.com/getstarted.html)をご覧ください。
 
-### <a name="functions-2x-and-higher"></a>Functions 2.x 以降
+### <a name="functions-3x-and-higher"></a>Functions 3.x 以降
 
 トリガーとバインドを使用するには、適切なパッケージを参照する必要があります。 NuGet パッケージは .NET クラス ライブラリに使用されますが、他のすべてのアプリケーションの種類には拡張バンドルが使用されます。
 
-| Language                                        | 追加手段                                   | 解説 
+| Language                                        | 追加手段                                   | 解説
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | [NuGet パッケージ] バージョン 4.x をインストールする | |
 | C# スクリプト、Java、JavaScript、Python、PowerShell | [拡張機能バンドル]を登録する          | Visual Studio Code で使用するには [Azure Tools 拡張機能]をお勧めします。 |
@@ -46,9 +46,9 @@ Azure Functions は[トリガーとバインド](./functions-triggers-bindings.m
 [拡張機能の更新]: ./functions-bindings-register.md
 [Azure Tools 拡張機能]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
-### <a name="functions-1x"></a>Functions 1.x
+### <a name="functions-1x-and-2x"></a>Functions 1.x および 2.x
 
-RabbitMQ バインド拡張機能は、Functions 1.x ではサポートされていません。 Functions 2.x 以降を使用してください。
+RabbitMQ バインド拡張機能は、Functions 1.x および 2.x ではサポートされていません。 Functions 3.x 以降を使用してください。
 
 ## <a name="next-steps"></a>次の手順
 

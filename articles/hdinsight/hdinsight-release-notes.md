@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 0895e84363d40bdbf30408f2b2a0d95f951eb303
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d749c901b21651eec7b3e25ce111fb107e09b754
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032560"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883352"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight リリース ノート
 
@@ -53,8 +53,14 @@ HDInsight では、ネットワーク セキュリティ グループ (NSG) と�
 ## <a name="upcoming-changes"></a>今後の変更
 今後のリリースでは、次の変更が行われます。
 
+### <a name="default-cluster-vm-size-will-be-changed-to-ev3-family"></a>クラスターの既定の VM サイズが Ev3 ファミリに変更される
+次のリリース (1 月末) 以降、クラスターの既定の VM サイズが D ファミリから Ev3 ファミリに変更されます。 この変更は、ヘッド ノードとワーカー ノードに適用されます。 この変更を回避するには、使用する VM サイズを ARM テンプレートで指定します。
+
 ### <a name="default-cluster-version-will-be-changed-to-40"></a>既定のクラスター バージョンは 4.0 に変更されます
 2021 年 2 月以降、HDInsight クラスターの既定のバージョンは 3.6 から 4.0 に変更されます。 使用可能なバージョンの詳細については、「[使用可能なバージョン](./hdinsight-component-versioning.md#available-versions)」を参照してください。 HDInsight 4.0 の新機能については、[こちら](./hdinsight-version-release.md)を参照してください
+
+### <a name="os-version-upgrade"></a>OS バージョンのアップグレード
+HDInsight では、OS バージョンが 16.04 から 18.04 にアップグレードされます。 アップグレードは、2021 年 4 月までに完了する予定です。
 
 ### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>HDInsight 3.6 は 2021 年 6 月 30 日にサポート終了
 HDInsight 3.6 のサポートが終了します。 2021 年 6 月 30 日以降は、お客様が新しい HDInsight 3.6 クラスターを作成することはできません。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 システムやサポートが中断される可能性を回避するため、HDInsight 4.0 への移行を検討してください。

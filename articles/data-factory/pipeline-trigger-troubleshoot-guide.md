@@ -1,20 +1,20 @@
 ---
-title: ADF でのパイプライン オーケストレーションおよびトリガーをトラブルシューティングする
-description: さまざまな方法を使用して、ADF でのパイプライン トリガーの問題のトラブルシューティングを行います
+title: Azure Data Factory でのパイプライン オーケストレーションおよびトリガーのトラブルシューティング
+description: さまざまな方法を使用して、Azure Data Factory でのパイプライン トリガーの問題のトラブルシューティングを行います
 author: ssabat
 ms.service: data-factory
 ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: ed3728513820da9f4ef85d44cac983dc09c3fc7d
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 0e67a316b012eda61607c84edfd8e10d6aa3318d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97517706"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589170"
 ---
-# <a name="troubleshoot-pipeline-orchestration-and-triggers-in-adf"></a>ADF でのパイプライン オーケストレーションおよびトリガーをトラブルシューティングする
+# <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプライン オーケストレーションおよびトリガーのトラブルシューティング
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -27,10 +27,10 @@ Azure Data Factory の "パイプライン実行" により、パイプライン
 ### <a name="pipeline-with-azure-function-throws-error-with-private-end-point-connectivity"></a>Azure 関数を使用したパイプラインで、プライベート エンドポイント接続でエラーがスローされる
  
 #### <a name="issue"></a>問題
-一部のコンテキストでは、ADF と Azure 関数アプリがプライベート エンドポイントで実行されています。 Azure 関数アプリと連携して動作するパイプラインを取得しようとしています。 3 つの異なるメソッドを試行しましたが、1 つのメソッドでエラー `Bad Request` が返され、他の 2 つのメソッドで `103 Error Forbidden` が返されました。
+一部のコンテキストでは、Data Factory と Azure 関数アプリがプライベート エンドポイントで実行されています。 Azure 関数アプリと連携して動作するパイプラインを取得しようとしています。 3 つの異なるメソッドを試行しましたが、1 つのメソッドでエラー `Bad Request` が返され、他の 2 つのメソッドで `103 Error Forbidden` が返されました。
 
 #### <a name="cause"></a>原因 
-現在、ADF は Azure 関数アプリ用のプライベート エンドポイント コネクタをサポートしていません。 これが、Azure 関数アプリがプライベート リンクからの接続だけを許可するように構成されているために呼び出しを拒否している理由です。
+現在、Data Factory は Azure 関数アプリ用のプライベート エンドポイント コネクタをサポートしていません。 これが、Azure 関数アプリがプライベート リンクからの接続だけを許可するように構成されているために呼び出しを拒否している理由です。
 
 #### <a name="resolution"></a>解決方法
 **PrivateLinkService** 型のプライベート エンドポイントを作成し、関数アプリの DNS を指定して、接続を機能させることができます。
@@ -46,7 +46,7 @@ Azure Data Factory の "パイプライン実行" により、パイプライン
 ### <a name="copy-pipeline-failure--found-more-columns-than-expected-column-count-delimitedtextmorecolumnsthandefined"></a>コピー パイプラインの失敗 - 予想された列数よりも多くの列が見つかった (DelimitedTextMoreColumnsThanDefined)
 
 #### <a name="issue"></a>問題  
-コピーしている特定のフォルダーにあるファイルに、不定の列数、異なる区切り文字、引用符文字の設定、何らかのデータ問題などスキーマが異なるファイルが含まれている場合、ADF パイプラインの実行は次のエラーで終了します。
+コピーしている特定のフォルダーにあるファイルに、不定の列数、異なる区切り文字、引用符文字の設定、何らかのデータ問題などスキーマが異なるファイルが含まれている場合、Data Factory パイプラインの実行は次のエラーで終了します。
 
 `
 Operation on target Copy_sks  failed: Failure happened on 'Sink' side.
@@ -57,7 +57,7 @@ Source=Microsoft.DataTransfer.Common,'
 `
 
 #### <a name="resolution"></a>解決方法
-[データのコピー] アクティビティの作成中に [バイナリ コピー] オプションを選択します。 このように、**バイナリ** オプションを使用してデータを一括コピーまたは Data Lake 間で移行する場合、ADF はファイルを開いてスキーマを読み取ることはせず、すべてのファイルをバイナリとして扱い、他の場所にコピーするだけです。
+[データのコピー] アクティビティの作成中に [バイナリ コピー] オプションを選択します。 このように、**バイナリ** オプションを使用してデータを一括コピーまたは Data Lake 間で移行する場合、Data Factory はファイルを開いてスキーマを読み取ることはせず、すべてのファイルをバイナリとして扱い、他の場所にコピーするだけです。
 
 ### <a name="pipeline-run-fails-when-capacity-limit-of-integration-runtime-is-reached"></a>統合ランタイムの容量限度に達した場合、パイプラインの実行が失敗する
 
@@ -79,19 +79,19 @@ Type=Microsoft.DataTransfer.Execution.Core.ExecutionException,Message=There are 
 ### <a name="how-to-monitor-pipeline-failures-on-regular-interval"></a>定期的な間隔でパイプライン エラーを監視する方法
 
 #### <a name="issue"></a>問題
-多くの場合、ADF パイプラインはたとえば 5 分間隔で定期的に監視する必要があります。 エンドポイントを使用して、データ ファクトリからパイプラインの実行を照会し、フィルター処理することができます。 
+多くの場合、Data Factory パイプラインはたとえば 5 分間隔で定期的に監視する必要があります。 エンドポイントを使用して、データ ファクトリからパイプラインの実行を照会し、フィルター処理することができます。 
 
 #### <a name="recommendation"></a>推奨
 1. 失敗したすべてのパイプラインを 5 分ごとに照会するように Azure Logic App を設定します。
 2. 次に、[QueryByFactory](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory) に従って、インシデントをチケット システムに報告できます。
 
-#### <a name="reference"></a>リファレンス
-- [ADF から通知を外部送信する](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)
+#### <a name="reference"></a>関連項目
+- [Data Factory から通知を外部送信する](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)
 
 ### <a name="how-to-handle-activity-level-errors-and-failures-in-pipelines"></a>パイプラインのアクティビティ レベルのエラーと障害を処理する方法
 
 #### <a name="issue"></a>問題
-Azure Data Factory オーケストレーションでは、条件付きロジックが許可され、ユーザーは、前のアクティビティの結果に基づいて異なるパスを選択できます。 "成功時 (既定のパス)"、"失敗時"、"完了時"、"スキップ時" の 4 つの条件付きパスを使用できます。 異なるパスを使用できます。
+Azure Data Factory オーケストレーションでは、条件付きロジックが許可され、ユーザーは、前のアクティビティの結果に基づいて異なるパスを選択できます。 次の 4 つの条件付きパスを使用できます。"成功時 (既定のパス)"、"失敗時"、"完了時"、"スキップ時"。 異なるパスを使用できます。
 
 Azure Data Factory では、パイプライン実行の成功と失敗が次のように定義されています。
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-java
-ms.openlocfilehash: 8a95ee631797c4dcca87f3506a6cf29245328159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c86689681aa99f60c4345e92f7f5c426795a69e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263452"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586705"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Azure Media Services 用 Java クライアント SDK の概要
 
@@ -51,12 +51,12 @@ Java 用 Media Services SDK の使用を開始するには、[Azure Media Servic
 >`azure-media` パッケージ バージョン `0.9.8` 以降では、Azure Active Directory (AAD) 認証のサポートが追加され、Azure Access Control Service (ACS) 認証のサポートが削除されます。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。 詳細については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」をご覧ください。
 
 >[!NOTE]
->Azure Media Services Java SDK のソース コードは [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media)にあります。 master ブランチではなく、必ず 0.9 ブランチに切り替えてください。 
+>Azure Media Services Java SDK のソース コードは [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media)にあります。 メイン ブランチではなく、必ず 0.9 ブランチに切り替えてください。 
 
 ## <a name="how-to-use-azure-media-services-with-java"></a>方法:Java で Azure Media Services を使用する
 
 >[!NOTE]
->Media Services アカウントの作成時に、**既定**のストリーミング エンドポイントが**停止**状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。
+>Media Services アカウントの作成時に、**既定** のストリーミング エンドポイントが **停止** 状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが **実行中** 状態である必要があります。
 
 次のコードは、資産を作成してメディア ファイルを資産にアップロードし、資産の変換タスクを伴うジョブを実行して、ビデオをストリーミングするためのロケーターを作成する方法を示しています。
 

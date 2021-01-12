@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: bbea6a0aa31034cd1c04145fb50b72432c9f8520
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9e5d12bcea1bd7a587568c30b49c8c4ee95f8362
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319013"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937384"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Akamai の統合
 
@@ -53,7 +53,7 @@ Microsoft と Akamai EAA のパートナーシップにより、ビジネス要�
 
 #### <a name="integration-scenario-1"></a>統合シナリオ 1
 
-Akamai EAA が Azure AD 上で単一のアプリケーションとして構成されます。 管理者はそのアプリケーション上で CA ポリシーを構成することができ、条件が満たされると、ユーザーは Akamai EAA ポータルにアクセスできます。
+Akamai EAA が Azure AD 上で単一のアプリケーションとして構成されます。 管理者はそのアプリケーション上で条件付きアクセス ポリシーを構成することができ、条件が満たされると、ユーザーは Akamai EAA ポータルにアクセスできます。
 
 **長所:** :
 
@@ -63,13 +63,13 @@ Akamai EAA が Azure AD 上で単一のアプリケーションとして構成�
 
 * ユーザーは最終的に 2 つのアプリケーション ポータルを持つことになる
 
-* すべてのアプリケーションを対象とする、共通する 1 つの CA ポリシー。
+* すべてのアプリケーションを対象とする、共通する 1 つの条件付きアクセス ポリシー。
 
 ![統合シナリオ 1](./media/header-akamai-tutorial/scenario1.png)
 
 #### <a name="integration-scenario-2"></a>統合シナリオ 2
 
-Akamai EAA アプリケーションが Azure AD ポータル上で個別に設定されます。 管理者はアプリケーションに対して個々の CA ポリシーを構成でき、条件が満たされると、ユーザーは特定のアプリケーションに直接リダイレクトされます。
+Akamai EAA アプリケーションが Azure AD ポータル上で個別に設定されます。 管理者はアプリケーションに対して個々の条件付きアクセス ポリシーを構成でき、条件が満たされると、ユーザーは特定のアプリケーションに直接リダイレクトされます。
 
 **長所:** :
 
@@ -99,7 +99,7 @@ Akamai EAA アプリケーションが Azure AD ポータル上で個別に設�
 
 #### <a name="important"></a>重要
 
-以下に示す設定はすべて、**統合シナリオ 1** と**シナリオ 2** で同じです。 **統合シナリオ 2** では、Akamai EAA で個々の IDP を設定する必要があり、URL プロパティはアプリケーション URL を指すように変更する必要があります。
+以下に示す設定はすべて、**統合シナリオ 1** と **シナリオ 2** で同じです。 **統合シナリオ 2** では、Akamai EAA で個々の IDP を設定する必要があり、URL プロパティはアプリケーション URL を指すように変更する必要があります。
 
 ![Akamai Enterprise Application Access の [AZURESSO-SP] の [General]\(全般\) タブのスクリーンショット。 [Authentication configuration]\(認証構成\) の [URL] フィールドが強調表示されている。](./media/header-akamai-tutorial/important.png)
 
@@ -196,7 +196,7 @@ Akamai に対する Azure AD SSO を構成してテストするには、次の�
 **AKAMAI EAA IDP の構成**
 
 1. **Akamai Enterprise Application Access** コンソールにサインインします。
-1. **Akamai EAA コンソール**で、 **[Identity]\(ID\)**  >  **[Identity Providers]\(ID プロバイダー\)** の順に選択し、 **[Add Identity Provider]\(ID プロバイダーの追加\)** をクリックします。
+1. **Akamai EAA コンソール** で、 **[Identity]\(ID\)**  >  **[Identity Providers]\(ID プロバイダー\)** の順に選択し、 **[Add Identity Provider]\(ID プロバイダーの追加\)** をクリックします。
 
     ![Akamai EAA コンソールの [Identity Providers]\(ID プロバイダー\) ウィンドウのスクリーンショット。 [Identity]\(ID\) メニューの [Identity Providers]\(ID プロバイダー\) を選択し、[Add Identity Provider]\(ID プロバイダーの追加\) を選択する。](./media/header-akamai-tutorial/configure01.png)
 
@@ -204,7 +204,7 @@ Akamai に対する Azure AD SSO を構成してテストするには、次の�
 
     ![Akamai EAA コンソールの [Create New Identity Providers]\(新しい ID プロバイダーの作成\) ダイアログのスクリーンショット。](./media/header-akamai-tutorial/configure02.png)
 
-    a. **一意の名前**を指定します。
+    a. **一意の名前** を指定します。
 
     b. **[Third Party SAML]\(サード パーティの SAML\)** を選択し、 **[Create Identity Provider and Configure]\(ID プロバイダーを作成して構成する\)** をクリックします。
 
@@ -283,7 +283,7 @@ Akamai ヘッダー ベースの認証
 
     ![Akamai EAA コンソールのスクリーンショット。[Authentication]\(認証\) タブが選択されている。](./media/header-akamai-tutorial/configure09.png)
 
-2. **ID プロバイダー**を割り当てます。
+2. **ID プロバイダー** を割り当てます。
 
     ![Akamai EAA コンソールの MYHEADERAPP の [Authentication]\(認証\) タブのスクリーンショット。[Identity provider]\(ID プロバイダー\) が [Azure AD SSO]\(Azure AD SSO\) に設定されている。](./media/header-akamai-tutorial/configure10.png)
 
@@ -295,7 +295,7 @@ Akamai ヘッダー ベースの認証
 
 #### <a name="advanced-settings"></a>詳細設定
 
-1. **[Customer HTTP Headers]\(カスタマー HTTP ヘッダー\)** で、**カスタマー ヘッダー**と **SAML 属性**を指定します。
+1. **[Customer HTTP Headers]\(カスタマー HTTP ヘッダー\)** で、**カスタマー ヘッダー** と **SAML 属性** を指定します。
 
     ![Akamai EAA コンソールの [Advanced Settings]\(詳細設定\) タブのスクリーンショット。[Authentication]\(認証\) の [SSO Logged URL]\(SSO ログ URL\) フィールドが強調表示されている。](./media/header-akamai-tutorial/configure12.png)
 
@@ -509,7 +509,7 @@ ID プロバイダーを割り当てます。
     ![Akamai EAA コンソールの Azure AD SSO の [Directories]\(ディレクトリ\) タブのスクリーンショット。 [Currently assigned directories]\(現在割り当てられているディレクトリ\) の一覧に、ディレクトリ superdemo.live が表示されている。](./media/header-akamai-tutorial/assigndirectory.png)
 
     > [!NOTE]
-    > このユーザー名は **ID インターセプト名**に基づく特定の形式にする必要があります。 図 1 から、**corpapps.login.go.akamai-access.com** であることがわかります。
+    > このユーザー名は **ID インターセプト名** に基づく特定の形式にする必要があります。 図 1 から、**corpapps.login.go.akamai-access.com** であることがわかります。
 
 1. ユーザーログオン名は `HTTP/corpapps.login.go.akamai-access.com` になります。
 

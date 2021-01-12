@@ -3,12 +3,12 @@ title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 19811eca33be7dff4d9bee5b8bd89dd38f185a57
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e72e94766dce2660409e729bc43eb107fb9ab39a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873950"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883080"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -42,6 +42,8 @@ Azure Policy 内の各ポリシー定義には単一の効果があります。 
 - **Audit** が最後に評価されます。
 
 リソース マネージャー モードの要求では、リソース プロバイダーによって成功コードが返された後、**AuditIfNotExists** と **DeployIfNotExists** が評価され、追加のコンプライアンスのログ記録またはアクションが必要かどうかが判断されます。
+
+さらに、`tags` の関連フィールドだけを変更する `PATCH` 要求では、ポリシーの評価が、`tags` の関連フィールドを検査する条件を含むポリシーに限定されます。
 
 ## <a name="append"></a>Append
 
@@ -141,7 +143,7 @@ Audit は、リソースの作成中または更新中に Azure Policy によっ
 
 ## <a name="auditifnotexists"></a>AuditIfNotExists
 
-AuditIfNotExists は、**if** 条件に一致するリソースに_関連する_リソースで監査を有効にしますが、**then** 条件の **details** で指定されるプロパティはありません。
+AuditIfNotExists は、**if** 条件に一致するリソースに _関連する_ リソースで監査を有効にしますが、**then** 条件の **details** で指定されるプロパティはありません。
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists の評価
 
@@ -301,7 +303,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
   - このプロパティには、サブスクリプションでアクセス可能なロールベースのアクセス制御ロール ID と一致する文字列の配列を含める必要があります。 詳細については、[修復 - ポリシー定義を構成する](../how-to/remediate-resources.md#configure-policy-definition)を参照してください。
 - **DeploymentScope** (省略可能)
   - 使用できる値は _Subscription_ と _ResourceGroup_ です。
-  - トリガーされるデプロイの種類を設定します。 _Subscription_ は[サブスクリプション レベルでのデプロイ](../../../azure-resource-manager/templates/deploy-to-subscription.md)を示し、_ResourceGroup_ はリソース グループへのデプロイを示します。
+  - トリガーされるデプロイの種類を設定します。 _Subscription_ は [サブスクリプション レベルでのデプロイ](../../../azure-resource-manager/templates/deploy-to-subscription.md)を示し、_ResourceGroup_ はリソース グループへのデプロイを示します。
   - サブスクリプション レベルのデプロイを使用する場合は、_Deployment_ で _location_ プロパティを指定する必要があります。
   - 既定値は _ResourceGroup_ です。
 - **Deployment** (必須)
@@ -372,7 +374,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
 
 ## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-この効果は、`Microsoft.Kubernetes.Data` のポリシー定義_モード_で使用されます。 これは、[OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) で [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に対して定義された Gatekeeper v3 受付制御ルールを、Azure 上の Kubernetes クラスターに渡すために使用されます。
+この効果は、`Microsoft.Kubernetes.Data` のポリシー定義 _モード_ で使用されます。 これは、[OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) で [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に対して定義された Gatekeeper v3 受付制御ルールを、Azure 上の Kubernetes クラスターに渡すために使用されます。
 
 > [!IMPORTANT]
 > **EnforceOPAConstraint** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは、"_非推奨_" になっています。 代わりに、リソース プロバイダー モード `Microsoft.Kubernetes.Data` で _Audit_ 効果と _Deny_ 効果を使用します。
@@ -428,10 +430,10 @@ EnforceOPAConstraint 効果の **details** プロパティには、Gatekeeper v3
 
 ## <a name="enforceregopolicy"></a>EnforceRegoPolicy
 
-この効果は、`Microsoft.ContainerService.Data` のポリシー定義_モード_で使用されます。 これは、[Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) で定義されている Gatekeeper v2 受付制御ルールを [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に渡すために使用されます。
+この効果は、`Microsoft.ContainerService.Data` のポリシー定義 _モード_ で使用されます。 これは、[Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) で定義されている Gatekeeper v2 受付制御ルールを [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に渡すために使用されます。
 
 > [!IMPORTANT]
-> **EnforceRegoPolicy** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは、_非推奨_になっています。 代わりに、リソース プロバイダー モード `Microsoft.Kubernetes.Data` で _Audit_ 効果と _Deny_ 効果を使用します。
+> **EnforceRegoPolicy** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは、_非推奨_ になっています。 代わりに、リソース プロバイダー モード `Microsoft.Kubernetes.Data` で _Audit_ 効果と _Deny_ 効果を使用します。
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy の評価
 
@@ -520,7 +522,7 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
 - **conflictEffect** (省略可能)
   - 複数のポリシー定義によって同じプロパティが変更された場合、または Modify 操作が指定したエイリアスで動作しない場合に、どのポリシー定義を "優先" するかを決定します。
     - 新規または更新されたリソースについては、_Deny_ を持つポリシー定義が優先されます。 _Audit_ のポリシー定義では、すべての **operations** がスキップされます。 複数のポリシー定義に _Deny_ がある場合、その要求は競合として拒否されます。 すべてのポリシー定義に _Audit_ がある場合、競合しているポリシー定義のどの **operations** も処理されません。
-    - 既存のリソースについては、複数のポリシー定義に _Deny_ がある場合、コンプライアンス状態は_競合_になります。 _Deny_ があるポリシー定義が 1 つ以下の場合、各割り当ては_非準拠_のコンプライアンス状態を返します。
+    - 既存のリソースについては、複数のポリシー定義に _Deny_ がある場合、コンプライアンス状態は _競合_ になります。 _Deny_ があるポリシー定義が 1 つ以下の場合、各割り当ては _非準拠_ のコンプライアンス状態を返します。
   - 使用可能な値は、_Audit_、_Deny_、_Disabled_ です。
   - 既定値は _Deny_ です。
 - **operations** (必須)
@@ -534,7 +536,7 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
       - タグに設定する値です。
       - このプロパティは、**operation** が _addOrReplace_ または _Add_ の場合に必要です。
     - **condition** (オプション)
-      - _true_ または _false_ として評価される[ポリシー関数](./definition-structure.md#policy-functions)による Azure Policy 言語式を含む文字列です。
+      - _true_ または _false_ として評価される [ポリシー関数](./definition-structure.md#policy-functions)による Azure Policy 言語式を含む文字列です。
       - `field()`、`resourceGroup()`、`subscription()` の各ポリシー関数はサポートされていません。
 
 ### <a name="modify-operations"></a>Modify の操作
@@ -671,7 +673,7 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
 - サブスクリプション A の新しいリソースで、場所が 'westus' でないリソースは、ポリシー 1 によって拒否される
 - サブスクリプション A のリソース グループ B の新しいリソースは、すべて拒否される
 
-各割り当ては個別に評価されます。 そのため、スコープの違いによって発生する隙間をリソースがすり抜けるチャンスはありません。 ポリシー定義の階層化による最終的な結果は、**累積的に最も制限が厳しい**と考えられます。 たとえば、ポリシー 1 とポリシー 2 の両方に拒否効果が設定されている場合、重複するポリシー定義と競合するポリシー定義によって、リソースがブロックされます。 リソースを対象のスコープ内に必ず作成する必要がある場合は、それぞれの割り当ての除外を見直して、適切なポリシー割り当てが適切なスコープに影響を与えていることを確認してください。
+各割り当ては個別に評価されます。 そのため、スコープの違いによって発生する隙間をリソースがすり抜けるチャンスはありません。 ポリシー定義の階層化による最終的な結果は、**累積的に最も制限が厳しい** と考えられます。 たとえば、ポリシー 1 とポリシー 2 の両方に拒否効果が設定されている場合、重複するポリシー定義と競合するポリシー定義によって、リソースがブロックされます。 リソースを対象のスコープ内に必ず作成する必要がある場合は、それぞれの割り当ての除外を見直して、適切なポリシー割り当てが適切なスコープに影響を与えていることを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

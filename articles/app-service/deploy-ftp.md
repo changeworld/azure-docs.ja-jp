@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 9884b109db3f3a34ceb323bef9fba1d5bfc23147
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ce8c32b1afdf4178e3ffdc09e9c9176436fa771b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150252"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605078"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>FTP/S を使用した Azure App Service へのアプリのデプロイ
 
@@ -39,7 +39,7 @@ FTP ダッシュボードで、 **[コピー]** を選択して、FTPS エンド
 
 ![FTP 情報のコピー](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
-アプリごとに一意であるため、**アプリの資格情報**を使用してデプロイすることをお勧めします。 ただし、 **[ユーザーの資格情報]** をクリックした場合は、サブスクリプション内のすべての App Service アプリへの FTP/S のログインで使用できるユーザー レベルの資格情報を設定できます。
+アプリごとに一意であるため、**アプリの資格情報** を使用してデプロイすることをお勧めします。 ただし、 **[ユーザーの資格情報]** をクリックした場合は、サブスクリプション内のすべての App Service アプリへの FTP/S のログインで使用できるユーザー レベルの資格情報を設定できます。
 
 > [!NOTE]
 > ユーザーレベルの資格情報を使用した FTP または FTPS エンドポイントの認証には、次の形式のユーザー名が必要です。 
@@ -85,9 +85,18 @@ FTP ダッシュボードで、 **[コピー]** を選択して、FTPS エンド
 
 ## <a name="troubleshoot-ftp-deployment"></a>FTP デプロイのトラブルシューティング
 
-- [FTP デプロイをトラブルシューティングするには、どうすればよいですか。](#how-can-i-troubleshoot-ftp-deployment)
-- [FTP 接続してコードを発行できません。問題を解決するには、どうすればよいですか。](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
-- [パッシブ モードを使用して Azure App Service で FTP に接続するには、どうすればよいですか。](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
+- [FTP/S を使用した Azure App Service へのアプリのデプロイ](#deploy-your-app-to-azure-app-service-using-ftps)
+  - [FTP ダッシュボードを開く](#open-ftp-dashboard)
+  - [FTP の接続情報を取得する](#get-ftp-connection-information)
+  - [ファイルを Azure にデプロイする](#deploy-files-to-azure)
+  - [FTPS を強制する](#enforce-ftps)
+  - [スクリプトで自動化する](#automate-with-scripts)
+  - [FTP デプロイのトラブルシューティング](#troubleshoot-ftp-deployment)
+    - [FTP デプロイをトラブルシューティングするには、どうすればよいですか。](#how-can-i-troubleshoot-ftp-deployment)
+    - [FTP 接続してコードを発行できません。問題を解決するには、どうすればよいですか。](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+    - [パッシブ モードを使用して Azure App Service で FTP に接続するには、どうすればよいですか。](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
+  - [次の手順](#next-steps)
+  - [その他のリソース](#more-resources)
 
 ### <a name="how-can-i-troubleshoot-ftp-deployment"></a>FTP デプロイをトラブルシューティングするには、どうすればよいですか。
 

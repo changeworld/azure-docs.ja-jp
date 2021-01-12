@@ -9,14 +9,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: andzha
 author: Anurzeuii
-ms.date: 08/24/2020
+ms.date: 12/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0300dab1fa7d0ef0d20c4236cc452135b3ade20e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 88240f9b46997d11f1e7c2d93fa880b004615a11
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305758"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725022"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning ソブリン クラウドの同等性
 
@@ -30,7 +30,7 @@ ms.locfileid: "93305758"
 > [!TIP]
 > ソブリンとソブリン以外のリージョンを区別するために、この記事ではソブリン以外のリージョンを __パブリック クラウド__ という用語を使用して表現します。
 
-Microsoft では、パブリック クラウドとソブリン リージョンの間に最大の同等性を提供することを目標としています。 パブリック クラウドでは、 **GA (一般公開) の 30 日以内** に、これらのリージョンですべての Azure Machine Learning 機能を利用できるようになります。 また、これらのリージョンの一部のプレビュー機能を有効にすることもできます。 ソブリンとパブリック クラウドの間の現在の同等性の相違点を以下に示します。
+Microsoft では、パブリック クラウドとソブリン リージョンの間に最大の同等性を提供することを目標としています。 パブリック クラウドでは、**GA (一般公開) の 30 日以内** に、これらのリージョンですべての Azure Machine Learning 機能を利用できるようになります。 また、これらのリージョンの一部のプレビュー機能を有効にすることもできます。 ソブリンとパブリック クラウドの間の現在の同等性の相違点を以下に示します。
 
 ## <a name="azure-government"></a>Azure Government 
 
@@ -92,7 +92,7 @@ Microsoft では、パブリック クラウドとソブリン リージョン�
 | ML によるラベル付け (イメージ分類とオブジェクトの検出)           | パブリック プレビュー       | YES                | YES         |
 | **信頼できる ML** |   | | |
 | UI での説明可能性                                                       | パブリック プレビュー       | NO                 | NO          |
-| 差分プライバシー WhiteNoise ツールキット                                    | OSS                  | NO                 | NO          |
+| 差分プライバシー SmartNoise ツールキット                                    | OSS                  | NO                 | NO          |
 | データシートを実装するための Azure Machine Learning のカスタム タグ              | GA                   | NO                 | NO          |
 | 公平性 AzureML 統合                                               | パブリック プレビュー       | NO                 | NO          |
 | SDK の解釈可能性                                                      | GA                   | YES                | YES         |
@@ -205,7 +205,7 @@ Microsoft では、パブリック クラウドとソブリン リージョン�
 | ML によるラベル付け (イメージ分類とオブジェクトの検出)           | パブリック プレビュー   | YES       | 該当なし        |
 | **信頼できる ML** |    | | |
 | UI での説明可能性                                                       | パブリック プレビュー   | NO        | 該当なし        |
-| 差分プライバシー WhiteNoise ツールキット                                    | OSS              | NO        | 該当なし        |
+| 差分プライバシー SmartNoise ツールキット                                    | OSS              | NO        | 該当なし        |
 | データシートを実装するための Azure Machine Learning のカスタム タグ              | GA               | NO        | 該当なし        |
 | 公平性 AzureML 統合                                               | パブリック プレビュー   | NO        | 該当なし        |
 | SDK の解釈可能性                                                      | GA               | YES       | 該当なし        |

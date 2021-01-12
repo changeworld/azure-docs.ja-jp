@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6830bdd38e8e1f1d649673cfdaf48e8c50ba6c3e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: b9a41f4d4bb10599d50e58ad6f08d61aaba7ecfc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413226"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608784"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Azure Arc データ コントローラーを作成する
 
@@ -36,7 +36,7 @@ Azure Arc 対応データ サービスは、複数の異なる種類の Kubernet
 - Kubeadm を使用して通常デプロイされるオープンソースのアップストリーム Kubernetes
 
 > [!IMPORTANT]
-> * Kubernetes のサポートされている最小バージョンは 1.17 です。
+> * Kubernetes のサポートされている最小バージョンは 1.17 です。 追加情報については、[既知の問題](./release-notes.md#known-issues)を参照してください。 
 > * サポートされる OCP の最小バージョンは 4.3 です。
 > * 環境と Azure の間に必要な接続については、「[接続要件](connectivity.md)」を参照してください。
 > * 永続ストレージを構成する方法の詳細については、「[ストレージ構成ガイダンス](storage-configuration.md)」を参照してください。
@@ -64,10 +64,10 @@ Azure Arc 対応データ サービスは、複数の異なる種類の Kubernet
 次のように、Azure Arc データ コントローラーを作成するためのオプションは複数あります。
 
 > **試してみたい場合**  
-> Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE)、または Azure VM 上で [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) をすぐに開始できます。
+> Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE)、または Azure VM 上で [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) をすぐに開始できます。
 > 
 - [[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] を使用してデータ コントローラーを作成する](create-data-controller-using-azdata.md)
 - [Azure Data Studio を使用してデータ コントローラーを作成する](create-data-controller-azure-data-studio.md)
 - [Azure Data Studio で Jupyter ノートブックを使用して Azure portal からデータ コントローラーを作成する](create-data-controller-resource-in-azure-portal.md)
 - [kubectl や oc などの Kubernetes ツールを使用してデータ コントローラーを作成する](create-data-controller-using-kubernetes-native-tools.md)
-- [テスト デプロイのエクスペリエンスを向上させるために Azure Arc Jumpstart でデータ コントローラーを作成する](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)
+- [テスト デプロイのエクスペリエンスを向上させるために Azure Arc Jumpstart でデータ コントローラーを作成する](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)

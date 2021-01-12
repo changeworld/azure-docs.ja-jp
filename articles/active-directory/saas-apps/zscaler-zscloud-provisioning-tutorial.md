@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 4579fa3c6dd1e34072a31747fda5113a5ac1be2a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fa90cbf1e467416010ae0ba83e9344a84ce52e21
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517431"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936500"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>チュートリアル:Zscaler ZSCloud を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -53,7 +53,7 @@ Azure AD で自動ユーザー プロビジョニング用に Zscaler ZSCloud �
 
 ![[新しいアプリケーション] を選択する](common/add-new-app.png)
 
-検索ボックスに、「 **Zscaler ZSCloud** 」と入力します。 結果から **[Zscaler ZSCloud]** を選択して **[追加]** を選択します。
+検索ボックスに、「**Zscaler ZSCloud**」と入力します。 結果から **[Zscaler ZSCloud]** を選択して **[追加]** を選択します。
 
 ![結果リスト](common/search-new-app.png)
 
@@ -75,6 +75,9 @@ Azure AD ユーザーが特定のアプリを使用するためには、その�
 
 > [!TIP]
 > Zscaler ZSCloud では、SAML ベースのシングル サインオンを有効にすることもできます。 その場合は、[Zscaler ZSCloud のシングル サインオンに関するチュートリアル](zscaler-zsCloud-tutorial.md)の手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+
+> [!NOTE]
+> ユーザーとグループをプロビジョニングしたりプロビジョニング解除したりする際は、グループ メンバーシップが適切に更新されるよう、定期的にプロビジョニングをやり直すことをお勧めします。 そうすることによって、サービスによって強制的にすべてのグループが再評価され、メンバーシップが更新されます。 
 
 1. [Azure portal](https://portal.azure.com) にサインインし、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[Zscaler ZSCloud]** の順に選択します。
 
@@ -102,7 +105,7 @@ Azure AD ユーザーが特定のアプリを使用するためには、その�
 
     ![[Configure SAML]\(SAML の構成\) ウィンドウ](./media/zscaler-zscloud-provisioning-tutorial/secrettoken2.png)
 
-    **[Enable SCIM-Based Provisioning]\(SCIM ベースのプロビジョニングを有効にする\)** を選択して、 **ベース URL** と **ベアラー トークン** をコピーし、設定を保存します。 Azure portal で、 **ベース URL** を **[テナント URL]** ボックスに、 **ベアラー トークン** を **[シークレット トークン]** ボックスに貼り付けます。
+    **[Enable SCIM-Based Provisioning]\(SCIM ベースのプロビジョニングを有効にする\)** を選択して、**ベース URL** と **ベアラー トークン** をコピーし、設定を保存します。 Azure portal で、**ベース URL** を **[テナント URL]** ボックスに、**ベアラー トークン** を **[シークレット トークン]** ボックスに貼り付けます。
 
 7. **[テナント URL]** ボックスと **[シークレット トークン]** ボックスに値を入力したら、 **[テスト接続]** を選択して Azure AD が Zscaler ZSCloud に接続できることを確認します。 接続できない場合は、使用中の Zscaler ZSCloud アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

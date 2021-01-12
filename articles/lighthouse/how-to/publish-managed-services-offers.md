@@ -1,14 +1,14 @@
 ---
 title: Azure Marketplace にマネージド サービス オファーを発行する
 description: Azure Lighthouse に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
-ms.date: 08/18/2020
+ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 033003d7e782ca0e99b1fc908c5261b6e31bf613
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a003e671631e9f23654eb524c7c2d937339a9588
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023927"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673156"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
@@ -18,7 +18,7 @@ ms.locfileid: "96023927"
 
 オファーを作成して発行するには、[パートナー センターの有効なアカウント](../../marketplace/partner-center-portal/create-account.md)が必要です。 まだアカウントをお持ちでない場合は、[サインアップ プロセス](https://aka.ms/joinmarketplace)の手順に従って、パートナー センターのアカウントを作成し、コマーシャル マーケットプレース プログラムに登録します。
 
-[マネージド サービス オファーの認定要件](/legal/marketplace/certification-policies#7004-business-requirements)に従って、マネージド サービス オファーを発行するには、[Silver または Gold Cloud Platform コンピテンシー レベル](/partner-center/learn-about-competencies)を取得しているか、または [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) である必要があります。
+[マネージド サービス オファーの認定要件](/legal/marketplace/certification-policies#7004-business-requirements)に従って、マネージド サービス オファーを発行するには、[Silver または Gold Cloud Platform コンピテンシー レベル](/partner-center/learn-about-competencies)を取得しているか、または [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) である必要があります。 また、顧客がオファーをデプロイするたびに、[CRM システムにレコードを作成するリードのターゲットを入力する](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#customer-leads)必要があります。
 
 顧客エンゲージメント全体に対するお客様の影響を追跡するために、ご使用の Microsoft Partner Network (MPN) ID はお客様が発行したオファーに[自動的に関連付けられます](../../cost-management-billing/manage/link-partner-id.md)。
 

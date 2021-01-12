@@ -13,12 +13,12 @@ ms.date: 11/13/2020
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 96c52c46a75d6d5810dfddf91439c275d14e85f1
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: bae8f0955ef45e21d38797789bdea4f62bf5ea28
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616139"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614933"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>方法: アプリケーションにアプリ ロールを追加してトークンで受け取る
 
@@ -30,7 +30,10 @@ RBAC をアプリケーション ロールおよびロール要求と一緒に�
 
 ## <a name="declare-roles-for-an-application"></a>アプリケーションのロールを宣言する
 
-アプリ ロールを定義するには、[Azure portal](https://portal.azure.com) を使用します。 ユーザーがアプリケーションにサインインすると、Azure AD によって、各ロール (ユーザーに個別に付与されたロール、およびグループ メンバーシップを通じて付与されているロール) の `roles` 要求が生成されます。
+アプリ ロールを定義するには、[Azure portal](https://portal.azure.com) を使用します。 アプリ ロールは通常、サービス、アプリ、または API を表すアプリケーション登録で定義されます。 ユーザーがアプリケーションにサインインすると、Azure AD によって、各ロール (ユーザーまたはサービス プリンシパルに個別に付与されたロール、およびグループ メンバーシップを通じて付与されているロール) の `roles` 要求が生成されます。 これは要求ベースの承認を実装するために使用できます。 アプリ ロールは[ユーザーまたはユーザー グループ](../manage-apps/add-application-portal-assign-users.md#assign-users-to-an-app)に割り当てることができます。 アプリ ロールは、別のアプリケーションのサービス プリンシパルに割り当てたり、[マネージド ID のサービス プリンシパルに](../managed-identities-azure-resources/how-to-assign-app-role-managed-identity-powershell.md)割り当てたりすることもできます。
+
+> [!IMPORTANT]
+> 現在のところ、サービス プリンシパルをグループに追加し、その後、アプリ ロールを割り当てる場合、Azure AD では、それが発行するトークンに `roles` 要求が追加されません。
 
 Azure portal を使用してアプリ ロールを宣言するには、2 つの方法があります。
 
@@ -57,7 +60,7 @@ Azure portal のユーザー インターフェイスを使用してアプリ �
 
     :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-create-context-pane.png" alt-text="Azure portal の [アプリの登録] のアプリ ロールによって作成されるコンテキスト ペイン":::
 
-    | フィールド | Description | 例 |
+    | フィールド | [説明] | 例 |
     |-------|-------------|---------|
     | **表示名** | 管理者の同意やアプリの割り当て時に表示されるアプリのロールの表示名です。 この値にはスペースを含めることができます。 | `Survey Writer` |
     | **Allowed member types (許可されるメンバーの種類)** | このアプリのロールをユーザー、アプリケーション、またはその両方に割り当てることができるかどうかを指定します。<br/><br/>`applications` から使用できる場合、アプリ ロールは、アプリの登録の **[管理]** セクション > **[API のアクセス許可] > [アクセス許可の追加] > [自分の API] > [API を選択する] > [アプリケーションの許可]** の下にアプリケーションのアクセス許可として表示されます。 | `Users/Groups` |

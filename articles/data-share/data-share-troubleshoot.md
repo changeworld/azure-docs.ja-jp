@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 10/15/2020
-ms.openlocfilehash: e29c640494a18bb3be2125a5b53b4f943521fe6c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 12/16/2020
+ms.openlocfilehash: c93ce9c81ada3c30128846b43041603e132abd88
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579149"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617240"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Azure Data Share での一般的な問題のトラブルシューティング 
 
@@ -67,6 +67,10 @@ SQL ベースの共有には、追加のアクセス許可が必要です。 前
 * ソースまたはターゲット データ ストアへの Data Share の接続がファイアウォールによってブロックされています。
 * 共有データセット、もしくはソースまたはターゲット データ ストアが削除されています。
 
+ストレージ アカウントの場合、スナップショットが失敗するその他の原因は次のとおりです。
+
+* スナップショットの実行中に、ソースでファイルが更新されています。 これにより、ターゲットに 0 バイトのファイルが生成される可能性があります。 ソースで更新が実行された後のスナップショットは、成功するはずです。
+
 SQL ソースの場合、スナップショットの失敗のその他の原因は次のとおりです。 
 
 * Data Share のアクセス許可を付与するソースまたはターゲットの SQL スクリプトは実行されません。 または、Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW) の場合は、Azure Active Directory 認証ではなく、SQL 認証を使用して実行されます。  
@@ -75,6 +79,9 @@ SQL ソースの場合、スナップショットの失敗のその他の原因�
 * ソースまたはターゲットの SQL データ ストアが他のプロセスによってロックされています。 Azure Data Share は、ソースとターゲットの SQL データ ストアにロックを適用しません。 ただし、ソースとターゲットの SQL データ ストアに対する既存のロックによって、スナップショットの失敗が発生します。
 * ターゲット SQL テーブルが外部キー制約により参照されています。 スナップショット中に、同じ名前のターゲット テーブルが存在する場合、Azure Data Share はテーブルを削除し、新しいテーブルを作成します。 ターゲット SQL テーブルが外部キー制約により参照されている場合、テーブルを削除できません。
 * ターゲット CSV ファイルは生成されますが、Excel でデータを読み取ることができません。 これは、ソース SQL テーブルに英語以外の文字のデータが含まれている場合に発生する可能性があります。 Excel で、[データの取得] タブを選択して、CSV ファイルを選択し、元のファイルとして [65001:Unicode (UTF-8)] を選択して、データを読み込みます。
+
+## <a name="snapshot-issue-after-updating-snapshot-schedule"></a>スナップショット スケジュール更新後のスナップショットの問題
+送信された共有のスナップショット スケジュールがデータ プロバイダーによって更新された後は、データ コンシューマーによる前のスナップショット スケジュールの無効化および受信された共有の更新済みスナップショット スケジュールの再有効化が必要になります。 
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 36e73ceddaa5e3f9cbbf4a41f76a4ba6d70eed0f
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 50e199d2d56016086bb409f8690e9828f1d19984
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979965"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881511"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Monitor でアプリケーション変更分析 (プレビュー) を使用する
 
@@ -183,7 +183,6 @@ foreach ($webapp in $webapp_list)
     ```
 
 - **Microsoft.ChangeAnalysis リソース プロバイダーを登録できませんでした**。 このメッセージは、UI によってリソース プロバイダーの登録の要求が送信された直後に何かが失敗し、それがアクセス許可の問題に関係していないことを示しています。 一時的なインターネット接続の問題である可能性があります。 ページを更新し、インターネット接続を確認してみてください。 エラーが解決しない場合は、changeanalysishelp@microsoft.com にお問い合わせください
-- **Microsoft ChangeAnalysis リソース プロバイダーの照会に失敗し**、「*Azure lighthouse サブスクリプションはサポートされていません。変更はサブスクリプションのホーム テナントでのみ行えます*」というようなメッセージを受け取ります。 変更分析リソース プロバイダーの登録に現時点で制限があり、ホーム テナントにないユーザーの Azure Lighthouse サブスクリプションを介して行うことができません。 この制限は、近い将来に解決される予定です。 これが障害となっている問題である場合、サービス プリンシパルを作成し、アクセスを許可するためのロールを明示的に割り当てることによって回避できます。  詳細については、changeanalysishelp@microsoft.com にお問い合わせください。
 
 - **予想以上に時間がかかっています**。 このメッセージは、登録に 2 分以上かかっていることを示しています。 これはめったにありませんが、必ずしも問題が発生したことを示しているわけではありません。 **サブスクリプション | リソース プロバイダー** に移動して、**Microsoft.ChangeAnalysis** リソースプロバイダーの登録状態を確認できます。 UI を使用して登録を解除し、再登録または更新してみて、それが役立つかどうかを確認できます。 問題が解決しない場合は、changeanalysishelp@microsoft.com にサポートについてお問い合わせください。
     ![時間がかかりすぎる RP 登録のトラブルシューティング](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
@@ -191,6 +190,10 @@ foreach ($webapp in $webapp_list)
 ![[トラブルシューティング ツール] が選択されている、仮想マシンの [問題の診断と解決] ツールのスクリーンショット。](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
 
 ![仮想マシンの [最近の変更の分析] トラブルシューティング ツールのタイルのスクリーンショット。](./media/change-analysis/analyze-recent-changes.png)
+
+### <a name="azure-lighthouse-subscription-is-not-supported"></a>Azure Lighthouse サブスクリプションはサポートされていません
+
+- **Microsoft ChangeAnalysis リソース プロバイダーの照会に失敗し**、「*Azure lighthouse サブスクリプションはサポートされていません。変更はサブスクリプションのホーム テナントでのみ行えます*」というようなメッセージを受け取ります。 変更分析リソース プロバイダーの登録に現時点で制限があり、ホーム テナントにないユーザーの Azure Lighthouse サブスクリプションを介して行うことができません。 この制限は、近い将来に解決される予定です。 これが障害となっている問題である場合、サービス プリンシパルを作成し、アクセスを許可するためのロールを明示的に割り当てることによって回避できます。  詳細については、changeanalysishelp@microsoft.com にお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 

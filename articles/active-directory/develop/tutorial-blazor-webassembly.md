@@ -8,18 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 09e922ffddcce732d9213eb91026561528c0728a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ce854c8f2d1d317c3660aaab9c0a6569aae0bb36
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169139"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895973"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>チュートリアル:Blazor WebAssembly アプリでユーザーのサインインを行い、保護された API を呼び出す
 
-このチュートリアルでは、Microsoft ID プラットフォームを使用し、Azure Active Directory (Azure AD) にアプリを登録することで、ユーザーのサインインを行い、Microsoft Graph からデータを取得する Blazor WebAssembly アプリを構築します。
-
-[Blazor Server のチュートリアル](tutorial-blazor-server.md)も用意されています。 
+このチュートリアルでは、Microsoft ID プラットフォームを使用し、Azure Active Directory (Azure AD) にアプリを登録することで、ユーザーのサインインを行い、Microsoft Graph からデータを取得する Blazor WebAssembly アプリを構築します。 
 
 このチュートリアルの内容:
 
@@ -27,6 +25,10 @@ ms.locfileid: "96169139"
 >
 > * Microsoft ID プラットフォームを使用して、[認証と承認](authentication-vs-authorization.md)に Azure Active Directory (Azure AD) を使用するように構成された新しい Blazor WebAssembly アプリを作成する
 > * 保護された Web API (この場合は [Microsoft Graph](/graph/overview)) からデータを取得する
+
+このチュートリアルでは .NET Core 3.1 を使用します。 .NET のドキュメントに、ASP.NET Core 5.0 を使用して [Blazor WebAssembly アプリのセキュリティを確保する方法](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api)が記載されています。 
+
+[Blazor Server のチュートリアル](tutorial-blazor-server.md)も用意されています。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -74,9 +76,11 @@ dotnet run --framework netstandard2.1
 
 Microsoft ID プラットフォームを使用して Azure AD でのログインを有効にするこのテンプレートのコンポーネントについては、[このトピックに関する ASP.NET のドキュメント](/aspnet/core/blazor/security/webassembly/standalone-with-azure-active-directory#authentication-package)を参照してください。
 
-## <a name="retrieving-data-from-microsoft-graph"></a>Microsoft Graph からデータを取得する
+## <a name="retrieving-data-from-a-protected-api-microsoft-graph"></a>保護された API (Microsoft Graph) からデータを取得する
 
-[Microsoft Graph](/graph/overview) には、テナント内のユーザーの Microsoft 365 データにアクセスできるようにする一連の API が用意されています。 Microsoft ID プラットフォームをアプリの ID プロバイダーとして使用することで、Microsoft ID プラットフォームによって発行されたトークンは Microsoft Graph によって直接サポートされるため、この情報に簡単にアクセスできます。 このセクションでは、サインインしたユーザーの電子メールをアプリケーションの [フェッチ データ] ページに表示できるようにするコードを追加します。
+[Microsoft Graph](/graph/overview) は、Microsoft 365 データへのアクセスをユーザーに提供する API を備え、Microsoft ID プラットフォームによって発行されたトークンをサポートしているため、保護された API の例として使用するのに適しています。 このセクションでは、Microsoft Graph を呼び出して、ユーザーのメールをアプリケーションの [Fetch data]\(データのフェッチ\) ページに表示するコードを追加します。
+
+このセクションは、保護された API を名前付きクライアントから呼び出す一般的なアプローチを使用して記述されています。 同じ方法は、他の保護された API を呼び出す場合にも使用できます。 ただし、Microsoft Graph を自分のアプリケーションから呼び出す予定がある場合は、Graph SDK を使用することで定型的なコードを減らすことができます。 [Graph SDK の使用方法](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0)は、.NET のドキュメントに記載されています。
 
 開始する前に、必要なアクセス許可を変更するため、アプリからログアウトしてください。そうしないと、現在のトークンは機能しません。 まだしていない場合は、以下のコードを更新する前に、もう一度アプリを実行して **[ログアウト]** を選択します。
 

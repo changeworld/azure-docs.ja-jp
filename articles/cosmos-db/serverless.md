@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/25/2020
-ms.openlocfilehash: cabc243c6ba74217873b5b0a5fa51a7cb410512e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/23/2020
+ms.openlocfilehash: c5086eee805ffbcdf0741eae4db405b1bcbe8692
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170836"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760362"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB サーバーレス (プレビュー)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -19,7 +19,7 @@ ms.locfileid: "96170836"
 > [!IMPORTANT]
 > Azure Cosmos DB サーバーレスは現在プレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-Azure Cosmos DB サーバーレスでは、従量課金ベースの方法で Azure Cosmos アカウントを使用できます。この方法では、データベース操作によって消費される要求ユニットと、データによって消費されるストレージに対してのみ課金されます。 Azure Cosmos DB をサーバーレス モードで使用する場合に必要となる最小料金はありません。
+Azure Cosmos DB サーバーレスでは、従量課金ベースの方法で Azure Cosmos アカウントを使用できます。この方法では、データベース操作によって消費される要求ユニットと、データによって消費されるストレージに対してのみ課金されます。 サーバーレス コンテナーを使用すると、1 秒あたり数千の要求に対応できます。最低料金はなく、キャパシティ プランニングも必要ありません。
 
 > [!IMPORTANT] 
 > サーバーレスに関するフィードバックはありますか。 ご意見をお待ちしています。 Azure Cosmos DB サーバーレス チーム ([azurecosmosdbserverless@service.microsoft.com](mailto:azurecosmosdbserverless@service.microsoft.com)) までお気軽にご連絡ください。
@@ -36,13 +36,12 @@ Azure Cosmos DB サーバーレスで最適なシナリオは次のとおりで�
 - **低、断続的、および予測不可能なトラフィック**:理由は、このような状況では容量をプロビジョニングは必要なく、コストが非常に高くなるからです
 - **中程度のパフォーマンス**:理由は、サーバーレス コンテナーには [固有のパフォーマンス特性](#performance)があるからです
 
-これらの理由から、次の種類のワークロードについては、Azure Cosmos DB サーバーレスを検討する必要があります。
+これらの理由から、次の状況では、Azure Cosmos DB サーバーレスを検討する必要があります。
 
-- 開発
-- テスト
-- プロトタイプ作成
-- 概念実証
-- 重要ではない低トラフィックのアプリケーション
+- Azure Cosmos DB の作業の開始
+- 新しいアプリケーションの開発、テスト、プロトタイプ作成
+- 予測が困難な、断続的なトラフィックでの小規模から中規模のアプリケーションの実行
+- [Azure Functions](../azure-functions/functions-overview.md) のようなサーバーレス コンピューティング サービスとの統合
 
 ユース ケースに最適なプランを選択する方法の詳細については、「[プロビジョニングされたスループットとサーバーレスのどちらかを選択する方法](throughput-serverless.md)」を参照してください。
 

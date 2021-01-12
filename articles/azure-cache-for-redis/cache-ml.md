@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: d9731455edf0afbe4c0768ae40a51316ac71ad94
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c2241d738a43c6891ee4bea0829400fdc51a664b
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537577"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734234"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Azure Cache for Redis を使用して Azure Functions に機械学習モデルをデプロイする 
 
@@ -45,13 +45,13 @@ Basic、Standard、または Premium のいずれのキャッシュ インスタ
    
 1. **[新規]** ページで、 **[データベース]** を選択し、 **[Azure Cache for Redis]** を選択します。
 
-    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="[Azure Cache for Redis] を選択します。&quot;:::
+    :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="[Azure Cache for Redis] を選択します。":::
    
 1. **[新規 Redis Cache]** ページで、新しいキャッシュの設定を構成します。
    
    | 設定      | 推奨値  | 説明 |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS 名** | グローバルに一意の名前を入力します。 | キャッシュ名は 1 から 63 文字の文字列で、数字、英字、ハイフンのみを使用する必要があります。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの &quot; *ホスト名* &quot; は、 *\<DNS name>.redis.cache.windows.net* になります。 | 
+   | **DNS 名** | グローバルに一意の名前を入力します。 | キャッシュ名は 1 から 63 文字の文字列で、数字、英字、ハイフンのみを使用する必要があります。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの "*ホスト名*" は、 *\<DNS name>.redis.cache.windows.net* になります。 | 
    | **サブスクリプション** | ドロップダウンで、ご自身のサブスクリプションを選択します。 | この新しい Azure Cache for Redis インスタンスが作成されるサブスクリプション。 | 
    | **リソース グループ** | ドロップ ダウンでリソース グループを選択するか、 **[新規作成]** を選択し、新しいリソース グループの名前を入力します。 | その中にキャッシュやその他のリソースを作成するリソース グループの名前。 すべてのアプリ リソースを 1 つのリソース グループに配置することで、それらをまとめて簡単に管理または削除できます。 | 
    | **場所** | ドロップ ダウンで場所を選択します。 | キャッシュを使用する他のサービスの近くの[リージョン](https://azure.microsoft.com/regions/)を選択します。 |
@@ -75,13 +75,13 @@ Basic、Standard、または Premium のいずれのキャッシュ インスタ
 
 1. 緑色の検証に成功のメッセージが表示された後、 **[作成]** を選択します。
 
-キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に &quot; **実行中** " と表示されている場合は、キャッシュを使用する準備ができています。 
+キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に "**実行中**" と表示されている場合は、キャッシュを使用する準備ができています。 
 
 ## <a name="prepare-for-deployment"></a>展開を準備する
 
 デプロイを行う前に、モデルを Web サービスとして実行するために必要なものを定義する必要があります。 次の一覧で、デプロイするために必要となる中心的な項目について説明します。
 
-* __エントリ スクリプト__ 。 このスクリプトは、要求を受け入れ、モデルを使用してその要求にスコアを付け、その結果を返します。
+* __エントリ スクリプト__。 このスクリプトは、要求を受け入れ、モデルを使用してその要求にスコアを付け、その結果を返します。
 
     > [!IMPORTANT]
     > エントリ スクリプトはモデルに固有のものです。受信要求データの形式、モデルで想定されるデータの形式、およびクライアントに返されるデータの形式を理解しておく必要があります。
@@ -123,9 +123,9 @@ def run(data):
 
 エントリ スクリプトの詳細については、[スコアリング コードの定義](../machine-learning/how-to-deploy-and-where.md?tabs=python#define-an-entry-script)に関する記事を参照してください。
 
-* **依存関係** 。エントリ スクリプトまたはモデルを実行するために必要なヘルパー スクリプトや Python/Conda パッケージなど。
+* **依存関係**。エントリ スクリプトまたはモデルを実行するために必要なヘルパー スクリプトや Python/Conda パッケージなど。
 
-これらのエンティティは、 __推論構成__ にカプセル化されます。 推論構成では、エントリ スクリプトとその他の依存関係が参照されます。
+これらのエンティティは、__推論構成__ にカプセル化されます。 推論構成では、エントリ スクリプトとその他の依存関係が参照されます。
 
 > [!IMPORTANT]
 > Azure Functions で使用するための推論構成を作成する際は、[環境](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py)オブジェクトを使用する必要があります。 カスタム環境を定義する場合は、バージョン 1.0.45 以降の azureml-defaults を pip 依存関係として追加する必要があることに注意してください。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。 次の例で、環境オブジェクトを作成し、推論構成でそれを使用する方法を示します。
@@ -151,7 +151,7 @@ def run(data):
 > [!IMPORTANT]
 > Functions にデプロイするときに __デプロイ構成__ を作成する必要はありません。
 
-## <a name="install-the-sdk-preview-package-for-functions-support"></a>関数のサポート用に SDK プレビュー パッケージをインストールする
+## <a name="install-the-sdk-preview-package-for-functions-support"></a>Functions のサポート用に SDK プレビュー パッケージをインストールする
 
 Azure Functions 用のパッケージをビルドするには、SDK プレビュー パッケージをインストールする必要があります。
 
@@ -178,7 +178,7 @@ print(model_package.location)
 `show_output=True` の場合、Docker ビルド プロセスの出力が表示されます。 プロセスが完了すると、ワークスペース用の Azure Container Registry 内にイメージが作成されます。 イメージがビルドされると、Azure Container Registry 内の場所が表示されます。 返される場所は、`<acrinstance>.azurecr.io/package@sha256:<imagename>` の形式です。
 
 > [!NOTE]
-> 現在、関数のパッケージ化では、HTTP トリガー、BLOB トリガー、および Service Bus トリガーがサポートされています。 トリガーの詳細については、[Azure Functions のバインド](../azure-functions/functions-bindings-storage-blob-trigger.md#blob-name-patterns)に関する記事をご覧ください。
+> 現在、Functions のパッケージ化では、HTTP トリガー、BLOB トリガー、および Service Bus トリガーがサポートされています。 トリガーの詳細については、[Azure Functions のバインド](../azure-functions/functions-bindings-storage-blob-trigger.md#blob-name-patterns)に関する記事をご覧ください。
 
 > [!IMPORTANT]
 > イメージをデプロイするときに使用されるため、場所情報を保存します。
@@ -218,7 +218,7 @@ print(model_package.location)
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    この例では、 _Linux Basic_ 価格レベル (`--sku B1`) が使用されます。
+    この例では、_Linux Basic_ 価格レベル (`--sku B1`) が使用されます。
 
     > [!IMPORTANT]
     > Azure Machine Learning によって作成されたイメージでは Linux が使用されるため、`--is-linux` パラメーターを使用する必要があります。
@@ -283,14 +283,14 @@ print(model_package.location)
 > [!IMPORTANT]
 > イメージが読み込まれるまで数分かかる場合があります。 Azure portal を使用して進行状況を監視できます。
 
-## <a name="test-azure-function-http-trigger"></a>Azure 関数の HTTP トリガーをテストする 
+## <a name="test-azure-functions-http-trigger"></a>Azure Functions の HTTP トリガーをテストする 
 
-ここでは、Azure 関数の HTTP トリガーを実行してテストします。
+ここでは、Azure Functions の HTTP トリガーを実行してテストします。
 
-1. Azure portal で Azure 関数アプリにアクセスします。
+1. Azure portal で関数アプリにアクセスします。
 1. Developer で、 **[コードとテスト]** を選択します。 
 1. 右側にある **[入力]** タブを選択します。 
-1. **[実行]** ボタンをクリックして、Azure 関数の HTTP トリガーをテストします。 
+1. **[実行]** ボタンをクリックして、Azure Functions の HTTP トリガーをテストします。 
 
 これで、Azure Cache for Redis インスタンスを使用して、Azure Machine Learning からのモデルを関数アプリとして正常にデプロイできました。 Azure Cache for Redis の詳細については、以下のセクションのリンクを参照してください。
 
@@ -307,9 +307,9 @@ print(model_package.location)
 
 1. [Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。
 
-2. **[名前でフィルター]** ボックスにリソース グループの名前を入力します。 リソース グループの結果一覧で、 **[...]** を選択し、 **[リソース グループの削除]** を選択します。
+2. **[名前でフィルター]** ボックスにリソース グループの名前を入力します。 リソース グループの結果一覧で、**[...]** を選択し、**[リソース グループの削除]** を選択します。
 
-リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、 **[削除]** を選択します。
+リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、**[削除]** を選択します。
 
 しばらくすると、リソース グループとそのリソースのすべてが削除されます。
 

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: bonova, sstein
-ms.date: 11/10/2020
-ms.openlocfilehash: b40f618b65af6fd7a6d283431aaf63c2cc1dcd1a
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.reviewer: bonova, sstein, danil
+ms.date: 12/25/2020
+ms.openlocfilehash: 7bdde57c1d33118fd7d3c8e04a2507d8997c36d0
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368462"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809515"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>機能の比較:Azure SQL Database と Azure SQL Managed Instance
 
@@ -51,7 +51,7 @@ Azure がデータベースを管理し、高可用性を保証します。 高�
 | [照合順序 - サーバー/インスタンス](/sql/relational-databases/collations/set-or-change-the-server-collation) | いいえ、既定のサーバーの照合順序である `SQL_Latin1_General_CP1_CI_AS` が常に使用されます。 | はい、[インスタンスが作成される](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md)ときに設定できます。後で更新することはできません。 |
 | [列ストア インデックス](/sql/relational-databases/indexes/columnstore-indexes-overview) | はい - [Premium レベル、Standard レベル - S3 以上、General Purpose レベル、Business Critical、および HyperScale レベル](/sql/relational-databases/indexes/columnstore-indexes-overview) |はい |
 | [共通言語ランタイム - CLR](/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | いいえ | はい、ただし、`CREATE ASSEMBLY` ステートメントでファイル システムにアクセスすることはできません - [CLR の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#clr)に関する記述を参照してください |
-| [資格情報](/sql/relational-databases/security/authentication-access/credentials-database-engine) | はい、ただし、[データベース スコープの資格情報](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)のみとなります。 | はい、ただし、サポートされるのは **Azure Key Vault** と `SHARED ACCESS SIGNATURE` のみとなります。[詳細](../managed-instance/transact-sql-tsql-differences-sql-server.md#credential)を参照してください |
+| [資格情報](/sql/relational-databases/security/authentication-access/credentials-database-engine) | はい、ただし、[データベース スコープの資格情報](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)のみとなります。 | はい。ただし、サポートされるのは **Azure Key Vault** と `SHARED ACCESS SIGNATURE` のみです。[詳細](../managed-instance/transact-sql-tsql-differences-sql-server.md#credential)をご覧ください |
 | [クロスデータベース/3 部構成の名前のクエリ](/sql/relational-databases/linked-servers/linked-servers-database-engine) | いいえ - [エラスティック クエリ](elastic-query-overview.md)に関する記事を参照してください | はい - [エラスティック クエリ](elastic-query-overview.md)に関する記事も参照してください |
 | [データベースにまたがるトランザクション](/sql/relational-databases/linked-servers/linked-servers-database-engine) | いいえ | はい、インスタンス内で。 クロスインスタンス クエリについては、[リンク サーバーの違い](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers)に関する記事を参照してください。 |
 | [データベース メール - DbMail](/sql/relational-databases/database-mail/database-mail) | いいえ | はい |
@@ -64,6 +64,7 @@ Azure がデータベースを管理し、高可用性を保証します。 高�
 | [分散トランザクション - MS DTC](/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | いいえ - [エラスティック トランザクション](elastic-transactions-overview.md)に関する記事を参照してください |  いいえ - [リンク サーバーの違い](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers)に関する記事を参照してください。 移行時に、複数の分散 SQL Server インスタンスから 1 つの SQL Managed Instance にデータベースを統合してみてください。 |
 | [DML トリガー](/sql/relational-databases/triggers/create-dml-triggers) | ほとんどの場合 - 個々のステートメントに関する記事を参照してください |  はい |
 | [DMV](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | ほとんどの場合 - 個々の DMV に関する記事を参照してください |  はい - [T-SQL の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md)に関する記事を参照してください |
+| [エラスティック クエリ](elastic-query-overview.md) (パブリック プレビュー) | はい。必要な RDBMS の種類を使用します。 | はい。必要な RDBMS の種類を使用します。 |
 | [イベント通知](/sql/relational-databases/service-broker/event-notifications) | いいえ - [アラート](alerts-insights-configure-portal.md)に関する記事を参照してください | いいえ |
 | [式](/sql/t-sql/language-elements/expressions-transact-sql) |はい | はい |
 | [拡張イベント (XEvent)](/sql/relational-databases/extended-events/extended-events) | 一部 - 「[SQL Database の拡張イベント](xevent-db-diff-from-svr.md)」を参照してください | はい - [拡張イベントの相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#extended-events)を参照してください |
@@ -127,6 +128,7 @@ Azure プラットフォームには、標準のデータベース機能に追�
 | [Azure Resource Health](../../service-health/resource-health-overview.md) | はい | いいえ |
 | バックアップ保有期間 | はい。 既定値は 7 日、最大値は 35 日です。 | はい。 既定値は 7 日、最大値は 35 日です。 |
 | [データ移行サービス (DMS)](/sql/dma/dma-overview) | はい | はい |
+| [エラスティック ジョブ](elastic-jobs-overview.md) | はい - [エラスティック ジョブ (プレビュー)](elastic-jobs-overview.md) に関する記事をご覧ください | いいえ ([SQL Agent](../managed-instance/transact-sql-tsql-differences-sql-server.md#sql-server-agent) を代わりに使用できます)。 |
 | ファイル システムへのアクセス | いいえ。 代わりとして [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) または [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) を使用して、Azure Blob Storage のデータにアクセスし、Azure Blob Storage からデータを読み込みます。 | いいえ。 代わりとして [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) または [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) を使用して、Azure Blob Storage のデータにアクセスし、Azure Blob Storage からデータを読み込みます。 |
 | [geo リストア](recovery-using-backups.md#geo-restore) | はい | はい |
 | [Hyperscale アーキテクチャ](service-tier-hyperscale.md) | はい | いいえ |
@@ -146,7 +148,7 @@ Azure プラットフォームには、標準のデータベース機能に追�
 | [Query Performance Insights (QPI)](query-performance-insight-use.md) | はい | いいえ。 SQL Server Management Studio と Azure Data Studio で組み込みのレポートを使用します。 |
 | [VNet](../../virtual-network/virtual-networks-overview.md) | 部分的、[VNet エンドポイント](vnet-service-endpoint-rule-overview.md)を使用して制限付きアクセスを有効にします | はい、SQL Managed Instance は顧客の VNet に組み込まれます。 [サブネット](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet)と [VNet](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) を参照してください |
 | VNet サービス エンドポイント | [はい](vnet-service-endpoint-rule-overview.md) | いいえ |
-| VNet グローバル ピアリング | はい、[Private IP とサービス エンドポイント](vnet-service-endpoint-rule-overview.md)を使用します。 | いいえ、[グローバル ピアリングでの VNet ロード バランサーの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)により、[SQL Managed Instance はサポートされていません](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
+| VNet グローバル ピアリング | はい、[Private IP とサービス エンドポイント](vnet-service-endpoint-rule-overview.md)を使用します。 | はい。[仮想ネットワーク ピアリング](https://techcommunity.microsoft.com/t5/azure-sql/new-feature-global-vnet-peering-support-for-azure-sql-managed/ba-p/1746913)を使用します。 |
 
 ## <a name="tools"></a>ツール
 

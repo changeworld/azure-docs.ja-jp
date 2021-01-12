@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8915ae349e33390ce5bb687d7c07a21665a0258
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 34f82fc060586e2df5acefa6b0836171e558aa4a
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029406"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615769"
 ---
 # <a name="conditional-access-grant"></a>条件付きアクセス:Grant
 
@@ -110,6 +110,7 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
    - デバイス プラットフォームの条件に関しては、iOS と Android のみがサポートされます。
    - デバイスを登録するには、ブローカー アプリが必要です。 ブローカー アプリには、iOS 用の Microsoft Authenticator か、Android デバイス用の Microsoft Authenticator または Microsoft ポータル サイトを使用できます。
 - 条件付きアクセスでは、InPrivate モードの Microsoft Edge を承認されたクライアント アプリと見なすことはできません。
+- 条件付きアクセス ポリシーでは、承認されたクライアント アプリとして Microsoft Power BI アプリが必要となります。ここでは、Azure AD アプリケーション プロキシを使用して、Power BI モバイル アプリからオンプレミスの Power BI Report Server に接続できるようにすることはできません。
 
 「[方法: 条件付きアクセスを使用してクラウド アプリへのアクセスに承認されたクライアント アプリを要求する](app-based-conditional-access.md)」を参照して構成の例を確認してください。
 

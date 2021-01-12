@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: ee2e7dc577e000878884655c0ed5f4bcb1aabab5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 70ec9248db002823e969fa5f4fba8bf1074a9af7
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167697"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706934"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 
@@ -29,6 +29,8 @@ Azure Functions では、依存関係の挿入 (DI) ソフトウェア デザイ
 - [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
 - [Microsoft.NET.Sdk.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) パッケージ バージョン 1.0.28 以降
+
+- [Microsoft.Extensions.DependencyInjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/) (現在のところ、バージョン 3.x 以前のみサポートされています)
 
 ## <a name="register-services"></a>サービスを登録する
 
@@ -68,7 +70,7 @@ namespace MyNamespace
 
 - *スタートアップ クラスは設定と登録だけを目的とします。* スタートアップ プロセス中、スタートアップ時に登録されるサービスを使用しないでください。 たとえば、スタートアップ中に登録されているロガーにメッセージを記録しないでください。 登録プロセスのこの時点は、サービスを利用するには早すぎます。 `Configure` メソッドが実行されると、Functions ランタイムは追加の依存関係を引き続き登録します。これがサービスの動作に影響を与える可能性があります。
 
-- *依存関係挿入コンテナーでは、明示的に登録された型のみが保持されます* 。 挿入可能な型として利用できる唯一のサービスは `Configure` メソッド内で設定されるサービスです。 結果的に、`BindingContext` や `ExecutionContext` のような Functions 固有の型は設定中に利用できず、また、挿入可能な型として利用できません。
+- *依存関係挿入コンテナーでは、明示的に登録された型のみが保持されます*。 挿入可能な型として利用できる唯一のサービスは `Configure` メソッド内で設定されるサービスです。 結果的に、`BindingContext` や `ExecutionContext` のような Functions 固有の型は設定中に利用できず、また、挿入可能な型として利用できません。
 
 ## <a name="use-injected-dependencies"></a>挿入された依存関係を使用する
 
@@ -118,9 +120,9 @@ namespace MyNamespace
 
 Azure Functions アプリのサービス有効期間は [ASP.NET 依存関係挿入](/aspnet/core/fundamentals/dependency-injection#service-lifetimes)と同じになります。 Functions アプリの場合、各種サービス有効期間が次のように動作します。
 
-- **一時的** :一時的なサービスは、サービスが要求されるたびに作成されます。
-- **スコープ付き** :スコープ付きサービスの有効期間は、関数実行の有効期間に一致します。 スコープ付きサービスは毎回作成されます。 実行時のそのサービスに対する後続の要求では、既存のサービス インスタンスが再利用されます。
-- **シングルトン** :シングルトン サービスの有効期間はホストの有効期間に一致し、そのインスタンスでの関数実行間で再利用されます。 シングルトン サービスの有効期間は、`DocumentClient` インスタンスや `HttpClient` インスタンスなど、接続やクライアントに推奨されます。
+- **一時的**:一時的なサービスは、サービスが解決されるたびに作成されます。
+- **スコープ付き**:スコープ付きサービスの有効期間は、関数実行の有効期間に一致します。 スコープ付きサービスは、関数の実行ごとに 1 回作成されます。 実行時のそのサービスに対する後続の要求では、既存のサービス インスタンスが再利用されます。
+- **シングルトン**:シングルトン サービスの有効期間はホストの有効期間に一致し、そのインスタンスでの関数実行間で再利用されます。 シングルトン サービスの有効期間は、`DocumentClient` インスタンスや `HttpClient` インスタンスなど、接続やクライアントに推奨されます。
 
 GitHub の[さまざまなサービスの有効期間のサンプル](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes)を表示するか、ダウンロードします。
 
@@ -181,6 +183,8 @@ namespace MyNamespace
     }
 }
 ```
+
+ログ レベルの詳細については、「[ログ レベルを構成する](configure-monitoring.md#configure-log-levels)」を参照してください。
 
 ## <a name="function-app-provided-services"></a>関数アプリで提供されるサービス
 
@@ -291,7 +295,7 @@ namespace MyNamespace
 
 `FunctionsHostBuilderContext` は `IFunctionsConfigurationBuilder.GetContext()` から取得されます。 このコンテキストを使用して現在の環境名を取得し、関数アプリ フォルダー内の構成ファイルの場所を解決します。
 
-既定では、 *appsettings.json* などの構成ファイルは、関数アプリの出力フォルダーに自動的にコピーされません。 ファイルがコピーされるようにするため、次のサンプルと一致するように *.csproj* ファイルを更新します。
+既定では、*appsettings.json* などの構成ファイルは、関数アプリの出力フォルダーに自動的にコピーされません。 ファイルがコピーされるようにするため、次のサンプルと一致するように *.csproj* ファイルを更新します。
 
 ```xml
 <None Update="appsettings.json">

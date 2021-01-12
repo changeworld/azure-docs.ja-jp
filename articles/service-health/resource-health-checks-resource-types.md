@@ -3,12 +3,12 @@ title: Azure Resource Health でサポートされるリソースの種類 |Micr
 description: Azure Resource Health でサポートされるリソースの種類
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 79f979b55366d29ca8cf22a1e65ebdcc557ef594
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 1b0958732a96786b2fb86b2b145f5cb8d36c0c5a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899490"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883369"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Resource Health で利用できるリソースの種類と正常性チェック
 Resource Health で実行されるすべてのチェックをリソースの種類別にまとめた完全な一覧を次に示します。
@@ -168,6 +168,11 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |実行されるチェック|
 |---|
 |<ul><li>Application Gateway のパフォーマンスが低下しているか</li><li>Application Gateway を利用できるか</li></ul>|
+
+## <a name="microsoftnetworkbastionhosts"></a>Microsoft.network/bastionhosts
+|実行されるチェック|
+|---|
+|<ul><li>bastion ホストが稼働しているか</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |実行されるチェック|

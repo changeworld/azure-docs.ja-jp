@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: e7b4a1b2e1d737dad0054cbdf08443436ac2c181
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 90532a88e145507b09de9d36f704bc5c88899e95
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705559"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861904"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>チュートリアル:Server Assessment を使用して Hyper-V VM を検出する
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 **要件** | **詳細**
 --- | ---
 **Hyper-V ホスト** | VM が配置されている Hyper-V ホストは、スタンドアロンでも、クラスターに含まれていてもかまいません。<br/><br/> ホストでは、Windows Server 2019、Windows Server 2016、または Windows Server 2012 R2 が実行されている必要があります。<br/><br/> Common Information Model (CIM) セッションを使用して、アプライアンスが VM メタデータとパフォーマンス データをプルするために接続できるように、WinRM ポート 5985 (HTTP) で受信接続が許可されていることを確認します。
-**アプライアンスのデプロイ** | Hyper-v には、アプライアンスに VM を割り当てるためのリソースが必要です。<br/><br/> - Windows Server 2016<br/><br/> \- 16 GB の RAM<br/><br/> - 8 つの vCPU<br/><br/> - 約 80 GB のディスク記憶域<br/><br/> - 外部仮想スイッチ<br/><br/> - VM のインターネット アクセス (直接またはプロキシ経由)
+**アプライアンスのデプロイ** | Hyper-V には、アプライアンスに VM を割り当てるためのリソースが必要です。<br/><br/> - Windows Server 2016<br/><br/> \- 16 GB の RAM<br/><br/> - 8 つの vCPU<br/><br/> - 約 80 GB のディスク記憶域<br/><br/> - 外部仮想スイッチ<br/><br/> - VM のインターネット アクセス (直接またはプロキシ経由)
 **VM** | VM では、任意の Windows または Linux オペレーティング システムを実行できます。 
 
 開始する前に、検出中にアプライアンスによって収集される[データを確認](migrate-appliance.md#collected-data---hyper-v)できます。

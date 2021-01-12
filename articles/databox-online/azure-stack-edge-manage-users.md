@@ -1,23 +1,23 @@
 ---
-title: Azure Stack Edge Pro のユーザー管理 | Microsoft Docs
+title: Azure Stack Edge Pro FPGA のユーザー管理 | Microsoft Docs
 description: Azure portal を使用して Azure Stack Edge Pro のユーザーを管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/11/2019
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 3fb82e95d9d7dcfdf59bd05f91beff8e1184955e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27ca190f3bad7f75175e5206d48e13dae1f5687e
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904393"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913328"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-azure-stack-edge-pro"></a>Azure portal を使用して Azure Stack Edge Pro のユーザーを管理する
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro-fpga"></a>Azure portal を使用して Azure Stack Edge Pro FPGA のユーザーを管理する
 
-この記事では、Azure Stack Edge Pro のユーザーを管理する方法について説明します。 Azure Stack Edge Pro の管理は、Azure portal またはローカル Web UI を通じて行えます。 Azure portal を使用してユーザーを追加、変更、または削除します。
+この記事では、Azure Stack Edge Pro FPGA デバイスのユーザーを管理する方法について説明します。 Azure Stack Edge Pro の管理は、Azure portal またはローカル Web UI を通じて行えます。 Azure portal を使用してユーザーを追加、変更、または削除します。
 
 この記事では、次のことについて説明します。
 
@@ -39,7 +39,7 @@ ms.locfileid: "90904393"
 
 ユーザーを追加するには、Azure portal で次の手順を実行します。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[概要] > [ユーザー]** に移動します。 コマンド バーの **[+ ユーザーの追加]** を選択します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[ユーザー]** に移動します。 コマンド バーの **[+ ユーザーの追加]** を選択します。
 
     ![[ユーザーの追加] の選択](media/azure-stack-edge-manage-users/add-user-1.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "90904393"
 ユーザーを削除するには、Azure portal で次の手順を実行します。
 
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[概要] > [ユーザー]** に移動します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[ユーザー]** に移動します。
 
     ![削除するユーザーの選択](media/azure-stack-edge-manage-users/delete-user-1.png)
 

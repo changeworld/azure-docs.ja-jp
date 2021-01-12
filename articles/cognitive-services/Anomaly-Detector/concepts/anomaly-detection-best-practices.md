@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: b02ccea396fc65f9ecfe1d59e953da7440e87951
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9457c610b256dd4602ef0dc51a47eeffb3c63b49
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363645"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705151"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Anomaly Detector API の使用に関するベスト プラクティス
 
@@ -104,4 +104,4 @@ JSON 要求を作成するときに `period` を指定すると、異常検出�
 ## <a name="next-steps"></a>次のステップ
 
 * [Anomaly Detector API とは](../overview.md)
-* [クイック スタート: Anomaly Detector REST API を使用し、時系列データ内の異常を検出する](../quickstarts/detect-data-anomalies-csharp.md)
+* [クイック スタート: Anomaly Detector を使用して時系列データ内の異常を検出する](../quickstarts/client-libraries.md)

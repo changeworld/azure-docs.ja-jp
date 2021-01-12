@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 0ea08f8ec98ff8ddd4a9f15f12a0224db440b7b0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 710164fa3712058d64e5d23006b986eb3dc3eaba
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675693"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882757"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-imperva-data-security"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Imperva Data Security の統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "97675693"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Imperva Data Security では、**IDP** Initiated SSO がサポートされます
+* Imperva Data Security では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-imperva-data-security-from-the-gallery"></a>ギャラリーからの Imperva Data Security の追加
 
@@ -76,9 +76,13 @@ Imperva Data Security に対して Azure AD SSO を構成してテストする�
 
 1. **[SAML でシングル サインオンをセットアップします]** ページで、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`https://<IMPERVA_DNS_NAME>:8443` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`application-name` の形式で識別子を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<IMPERVA_DNS_NAME>:8443` のパターンを使用して URL を入力します
+    
+    c. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<IMPERVA_DNS_NAME>:8443`
+    
+    d. **[ログアウト URL]** テキスト ボックスに、`https://<IMPERVA_DNS_NAME>:8443` のパターンを使用して URL を入力します。    
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Imperva Data Security クライアント サポート チーム](mailto:support@jsonar.imperva.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: f1e4e288b5b95f355221188a45f1e6c764fde77c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dedbcf58e76b8c969f8607db6922e87a85f08e5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187338"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591875"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>Azure Automation でソース管理の統合を使用する - 従来
 
@@ -43,13 +43,13 @@ GitHub アカウントと、Azure Automation にリンクするリポジトリ�
    | ソースの選択 |ソースを選択します。 現時点では、 **GitHub** のみがサポートされています。 |
    | 承認 |**[承認する]** ボタンをクリックすると、GitHub リポジトリへのアクセスが Azure Automation に許可されます。 既に別のウィンドウで GitHub アカウントにログインしている場合は、そのアカウントの資格情報が使用されます。 承認が成功すると、ページの **[承認プロパティ]** の下にご利用の GitHub ユーザー名が表示されます。 |
    | リポジトリの選択 |使用可能なリポジトリの一覧から GitHub リポジトリを選択します。 |
-   | ブランチの選択 |使用可能なブランチの一覧からブランチを選択します。 ブランチを作成したことがない場合は、 **master** ブランチのみが表示されます。 |
-   | Runbook フォルダーのパス |Runbook フォルダーのパスは、コードをプッシュまたはプルする GitHub リポジトリのパスを指定します。 これは、 **/foldername/subfoldername**形式で指定する必要があります。 Runbook フォルダーのパスにある Runbook のみが Automation アカウントと同期されます。 Runbook フォルダーのパスのサブフォルダーにある Runbook は同期 **されません** 。 リポジトリですべての Runbook を同期するには、 **/** を使います。 |
+   | ブランチの選択 |使用可能なブランチの一覧からブランチを選択します。 ブランチを作成したことがない場合は、**メイン** ブランチのみが表示されます。 |
+   | Runbook フォルダーのパス |Runbook フォルダーのパスは、コードをプッシュまたはプルする GitHub リポジトリのパスを指定します。 これは、 **/foldername/subfoldername** 形式で指定する必要があります。 Runbook フォルダーのパスにある Runbook のみが Automation アカウントと同期されます。 Runbook フォルダーのパスのサブフォルダーにある Runbook は同期 **されません** 。 リポジトリですべての Runbook を同期するには、 **/** を使います。 |
 3. たとえば、**PowerShellScripts** という名前のリポジトリに **RootFolder** という名前のフォルダーがあり、このフォルダー内に **SubFolder** という名前のフォルダーがあるとします。 次の文字列を使用して、各フォルダー レベルで同期できます。
 
-   1. **リポジトリ**から Runbook を同期するには、Runbook フォルダーのパスは **/** となります。
-   2. **RootFolder**から Runbook を同期するには、Runbook フォルダーのパスは **/RootFolder** となります。
-   3. **SubFolder**から Runbook を同期するには、Runbook フォルダーのパスは **/RootFolder/SubFolder**となります。
+   1. **リポジトリ** から Runbook を同期するには、Runbook フォルダーのパスは **/** となります。
+   2. **RootFolder** から Runbook を同期するには、Runbook フォルダーのパスは **/RootFolder** となります。
+   3. **SubFolder** から Runbook を同期するには、Runbook フォルダーのパスは **/RootFolder/SubFolder** となります。
 4. 構成したパラメーターは、[ソース管理の設定] ページに表示されます。  
 
     ![設定が表示される [ソース管理] ページ](media/source-control-integration-legacy/automation-SourceControlConfigure.png)
@@ -66,7 +66,7 @@ GitHub アカウントと、Azure Automation にリンクするリポジトリ�
      | `Type`  |String |
      | `Value` |{"Branch":\<*Your branch name*>,"RunbookFolderPath":\<*Runbook folder path*>,"ProviderType":\<*has a value 1 for GitHub*>,"Repository":\<*Name of your repository*>,"Username":\<*Your GitHub user name*>} |
 
-   * **Microsoft.Azure.Automation.SourceControl.OauthToken**変数には、OAuthToken のセキュリティで保護され暗号化された値が格納されます。  
+   * **Microsoft.Azure.Automation.SourceControl.OauthToken** 変数には、OAuthToken のセキュリティで保護され暗号化された値が格納されます。  
 
      |**パラメーター**            |**Value** |
      |:---|:---|

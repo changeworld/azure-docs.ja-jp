@@ -1,18 +1,21 @@
 ---
 title: ベスト プラクティス
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
-ms.date: 11/18/2020
+ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0f19fceca0212bd0a05d7caa311403b173c19de5
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 5c3521a3b5fe0dd9c2d1534f6e2a6864647f5da3
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563179"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694168"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
 この記事では、Batch での現実の経験に基づいて、Azure Batch サービスを効果的に使用するための一連のベスト プラクティスと役立つヒントについて説明します。 これらのヒントは、パフォーマンスを向上させ、Azure Batch ソリューションの設計上の落とし穴を回避するために役立ちます。
+
+> [!TIP]
+> Azure Batch のセキュリティのガイダンスについては、「[Batch のセキュリティとコンプライアンスのベスト プラクティス](security-best-practices.md)」を参照してください。
 
 ## <a name="pools"></a>プール
 

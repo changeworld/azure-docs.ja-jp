@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6d41c186a5d239ad7228c37902f5691085e43dbf
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4535368b7d8d044469a4b0effee914176aca78e4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631246"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935409"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>チュートリアル:Azure Stack Edge Mini R の配置を準備する
 
-これは、Azure Stack Edge Mini R デバイスを完全に配置するために必要な配置チュートリアル シリーズの最初のチュートリアルです。 このチュートリアルでは、Azure Stack Edge リソースを配置するために Azure portal を準備する方法を説明します。
+このチュートリアルは、Azure Stack Edge Mini R デバイスを完全に配置するために必要な配置チュートリアル シリーズの 1 つ目です。 このチュートリアルでは、Azure Stack Edge リソースを配置するために Azure portal を準備する方法を説明します。
 
 セットアップと構成のプロセスを完了するには、管理者特権が必要です。 ポータルの準備は 10 分ほどで完了します。
 
@@ -36,7 +36,7 @@ Azure Stack Edge Mini R デバイスを配置するには、次の順序どお�
 | --- | --- |
 | **準備** |後で行う配置のための準備として、これらの手順を完了する必要があります。 |
 | **[配置の構成のチェック リスト](#deployment-configuration-checklist)** |このチェック リストを使用して、デプロイ前およびデプロイ中に情報を収集し、記録します。 |
-| **[デプロイの前提条件](#prerequisites)** |これらの前提条件を使用して、デプロイに対する環境の準備が完了していることを確認します。 |
+| **[デプロイの前提条件](#prerequisites)** |これらの前提条件を使用して、配置に対する環境の準備が完了していることを確認します。 |
 |  | |
 |**配置のチュートリアル** |これらのチュートリアルは、ご利用の Azure Stack Edge Mini R デバイスを運用環境に配置するために必要です。 |
 |**[1. デバイスのために Azure portal を準備する](azure-stack-edge-mini-r-deploy-prep.md)** |物理デバイスを設置する前に、ご利用の Azure Stack Edge リソースを作成して構成します。 |
@@ -46,7 +46,7 @@ Azure Stack Edge Mini R デバイスを配置するには、次の順序どお�
 |**[5.デバイス設定を構成する](azure-stack-edge-mini-r-deploy-set-up-device-update-time.md)** |デバイス名と DNS ドメインを割り当てて、更新サーバーとデバイスの時刻を構成します。 |
 |**[6.セキュリティ設定を構成する](azure-stack-edge-mini-r-deploy-configure-certificates-vpn-encryption.md)** |独自の証明書を使用して証明書を構成し、VPN を設定し、ご利用のデバイスの保存時の暗号化を構成します。   |
 |**[7.デバイスをアクティブにする](azure-stack-edge-mini-r-deploy-activate.md)** |サービスからのアクティブ化キーを使用して、デバイスをアクティブ化します。 デバイスは、SMB または NFS 共有を設定するか、REST 経由で接続できる状態になります。 |
-|**[8.コンピューティングを構成する](azure-stack-edge-gpu-deploy-configure-compute.md)** |デバイスでコンピューティング ロールを構成します。 Kubernetes クラスターも作成します。 |
+|**[8.コンピューティングを構成する](azure-stack-edge-gpu-deploy-configure-compute.md)** |デバイスでコンピューティング ロールを構成します。 Kubernetes クラスターも作成されます。 |
 
 これで、Azure Portal をセットアップする準備が整いました。
 
@@ -89,7 +89,7 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
 1. Microsoft Azure 資格情報を使用し、Azure portal にサインインします。URL は [https://portal.azure.com](https://portal.azure.com) です。
 
 
-2. 左側のウィンドウで、 **[+ リソースの作成]** を選択します。 **[Azure Stack Edge/Data Box Gateway]** を検索して選択します。 **［作成］** を選択します 
+2. 左側のウィンドウで、**[+ リソースの作成]** を選択します。 **[Azure Stack Edge/Data Box Gateway]** を検索して選択します。 **［作成］** を選択します 
 
 3. Azure Stack Edge Pro デバイスに使用するサブスクリプションを選択します。 この物理デバイスを発送する先の国を選択します。 **[デバイスの表示]** を選択します。
 
@@ -101,43 +101,43 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
     [![リソースを作成する 2](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png)](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png#lightbox)
 
 
-6. **[基本]** タブで、次の **プロジェクト情報** を入力または選択します。
+5. **[基本]** タブで、次の **プロジェクト情報** を入力または選択します。
     
     |設定  |値  |
     |---------|---------|
-    |サブスクリプション    |事前に選択した内容に応じて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
+    |サブスクリプション    |サブスクリプションは、前の選択に基づいて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
     |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。     |
 
 
-7. 次の **インスタンス情報** を入力または選択します。
+6. 次の **インスタンス情報** を入力または選択します。
 
     |設定  |値  |
     |---------|---------|
-    |名前   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 - 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |
+    |名前   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 から 50 文字で、英字、数字、ハイフンを含みます。<br> 名前の最初と最後には、英字か数字を使用します。        |
     |リージョン     |Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。 Azure Government を使用している場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。<br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
 
     ![リソースを作成する 4](media/azure-stack-edge-mini-r-deploy-prep/create-resource-4.png)
 
 
-8. **配送先住所** を選択します。
+7. **配送先住所** を選択します。
 
-    - 既にデバイスがある場合は、 **[I have a Azure Stack Edge Pro R device]\(Azure Stack Edge Pro R デバイスを持っています\)** のコンボ ボックスを選択します。
+    - 既にデバイスがある場合は、 **[I already have a device]\(既にデバイスを持っています\)** のコンボ ボックスを選択します。
 
-        ![リソースを作成する 5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
+     ![リソースを作成する 5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
 
     - 新しいデバイスを注文する場合は、連絡先名、会社、デバイスの配送先住所、連絡先情報を入力します。
 
-        ![リソースを作成する 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
+     ![リソースを作成する 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
 
-9. **タグ** を選択します。 必要に応じて、リソースを分類し、請求を統合するためのタグを指定します。 **確認と作成** をクリックします。
+8. **タグ** を選択します。 必要に応じて、リソースを分類し、請求を統合するためのタグを指定します。 **確認と作成** をクリックします。
 
-10. **[確認と作成]** タブで、**価格の詳細**、**使用条件**、リソースの詳細を確認します。 **[I have reviewed the privacy terms]\(プライバシー条件を確認しました\)** のコンボ ボックスを選択します。
+9. **[確認と作成]** タブで、**価格の詳細**、**使用条件**、リソースの詳細を確認します。 **[I have reviewed the privacy terms]\(プライバシー条件を確認しました\)** のコンボ ボックスを選択します。
 
-    ![リソースを作成する 7](media/azure-stack-edge-mini-r-deploy-prep/create-resource-7.png) 
+    ![リソースを作成する 7](media/azure-stack-edge-mini-r-deploy-prep/create-resource-7.png)
 
-    また、リソースの作成時に、クラウド サービスに対して認証できるようにするマネージド サービス ID (MSI) が有効になっていることも通知されます。 この ID は、リソースが存在する限り存在します。
+    また、リソースの作成時に、クラウド サービスに対して認証できるようにする管理サービス ID (MSI) が有効になっていることも通知されます。 この ID は、リソースが存在する限り存在します。
 
-8. **［作成］** を選択します
+10. **［作成］** を選択します
 
     リソースの作成には数分かかります。 また、Azure Stack Edge デバイスが Azure のリソースプロバイダーと通信できるようにする MSI も作成されます。
     
@@ -153,15 +153,15 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
 
 Azure Stack Edge リソースが起動して実行中になったら、アクティブ化キーを取得する必要があります。 このキーを使用して、ご利用の Azure Stack Edge Mini R デバイスのアクティブ化とリソースへの接続を行います。 このキーは Azure portal ですぐに入手できます。
 
-1. 作成したリソースを選択します。 **[概要]** を選択し、 **[デバイスの設定]** を選択します。
+1. 自分が作成したリソースを選択し、 **[概要]** を選択します。
 
-    ![[デバイスの設定] を選択する](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-2.png)
+   ![[デバイスの設定] を選択する](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-2.png)
 
 2. **[アクティブ化]** タイルで、Azure キー コンテナーの名前を指定するか、既定の名前をそのまま使用します。 キー コンテナーの名前は 3 から 24 文字で指定できます。 
 
-    デバイスでアクティブ化される Azure Stack Edge リソースごとに、キー コンテナーが作成されます。 キー コンテナーを使用すると、シークレットを格納してアクセスできます。たとえば、サービスのチャネル整合性キー (CIK) をキー コンテナーに格納できます。 
+    デバイスでアクティブ化される Azure Stack Edge リソースごとに、キー コンテナーが作成されます。 キー コンテナーを使用すると、シークレットを格納してアクセスできます。 たとえば、サービスのチャネル整合性キー (CIK) をキー コンテナーに格納できます。
 
-    キー コンテナーの名前を指定したら、 **[キーの生成]** を選択して、アクティブ化キーを作成します。 
+    キー コンテナーの名前を指定したら、 **[Generate activation key]\(アクティブ化キーの生成\)** を選択して、アクティブ化キーを作成します。
 
     [![アクティブ化キーの取得](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png)](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png#lightbox)
 

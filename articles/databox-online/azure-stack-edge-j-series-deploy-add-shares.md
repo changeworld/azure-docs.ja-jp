@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/22/2020
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 845eef6e119823af789c9a263bfb750845d55bc0
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 919ec1c3c2b71b7d9aecb90d434aa919c7188d38
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740914"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897624"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>チュートリアル:Azure Stack Edge Pro GPU を使用して共有経由でデータを転送する
 
@@ -43,7 +43,7 @@ ms.locfileid: "97740914"
 
 共有を作成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) で Azure Stack Edge リソースを選択し、 **[概要]** に移動します。 デバイスがオンラインになっている必要があります。
+1. [Azure portal](https://portal.azure.com/) で Azure Stack Edge リソースを選択し、 **[概要]** に移動します。 デバイスがオンラインになっている必要があります。 **[クラウド ストレージ ゲートウェイ]** を選択します。
 
    ![デバイスがオンライン](./media/azure-stack-edge-j-series-deploy-add-shares/device-online-1.png)
 
@@ -51,7 +51,7 @@ ms.locfileid: "97740914"
 
    ![共有の追加](./media/azure-stack-edge-j-series-deploy-add-shares/select-add-share-1.png)
 
-3. **[共有の追加]** ウィンドウで、次の手順を行います。
+3. **[共有の追加]** ペインで、次の手順に従います。
 
     a. **[名前]** ボックスで、一意の名前をお客様の共有に指定します。  
     共有名に使用できるのは、アルファベット、数字、ハイフンのみです。 長さは 3 文字から 63 文字で、先頭は文字または数字である必要があります。 ハイフンの前後には文字または数字が必要です。
@@ -66,7 +66,7 @@ ms.locfileid: "97740914"
     お客様が選択するサービスの種類は、Azure で使用したいデータの形式によって変わります。 この例では、データをブロック BLOB として Azure に格納したいため、 **[ブロック BLOB]** を選択します。 **ページ BLOB** を選択する場合は、お客様のデータが 512 バイトでアラインされるようにします。 たとえば、VHDX は常に 512 バイトでアラインされています。
 
    > [!IMPORTANT]
-   > Azure Stack Edge Pro または Data Box Gateway デバイスで Azure Storage アカウントを使用する場合、そのアカウントに不変ポリシーが設定されていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](../storage/blobs/storage-blob-immutability-policies-manage.md)」を参照してください。
+   > Azure Stack Edge Pro または Data Box Gateway デバイスで Azure Storage アカウントを使用する場合、その Azure Storage アカウントに不変ポリシーが設定されていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](../storage/blobs/storage-blob-immutability-policies-manage.md)」を参照してください。
 
     e. 新しい BLOB コンテナーを作成するか、ドロップダウン リストから既存の BLOB コンテナーを選択します。 BLOB コンテナーを作成する場合は、コンテナー名を入力します。 コンテナーがまだ存在しない場合は、新しく作成された共有の名前が付いたものがストレージ アカウントに作成されます。
    

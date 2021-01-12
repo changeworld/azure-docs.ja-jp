@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: b2cd5e32503953de874ab470ca3f9413d2b37d59
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 74f891ba7f5b400b5782565e670539167f4e2464
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014649"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703434"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>方法:時系列データに Anomaly Detector API を使用する  
 
@@ -71,4 +71,4 @@ Anomaly Detector API には、バッチとストリーミングの検出モー�
 ## <a name="next-steps"></a>次の手順
 
 * [Anomaly Detector API とは](../overview.md)
-* [クイック スタート: Anomaly Detector REST API を使用し、時系列データ内の異常を検出する](../quickstarts/detect-data-anomalies-csharp.md)
+* [クイック スタート: Anomaly Detector を使用して時系列データ内の異常を検出する](../quickstarts/client-libraries.md)

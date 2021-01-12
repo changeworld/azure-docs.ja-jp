@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 12/11/2020
 ms.author: jeedes
-ms.openlocfilehash: 688c496239becad7d1462f41afee9c6f88af9f95
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a282e1be019c697ad15d86df56ad191043ab4ae9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676687"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935846"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>チュートリアル:SAP NetWeaver と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -36,7 +36,7 @@ ms.locfileid: "92676687"
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-* SAP NetWeaver では、 **SAML** ( **SP Initiated SSO** ) と **OAuth** の両方がサポートされます。 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 
+* SAP NetWeaver では、**SAML** (**SP Initiated SSO**) と **OAuth** の両方がサポートされます。 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,7 +52,7 @@ Azure AD への SAP NetWeaver の統合を構成するには、ギャラリー�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **SAP NetWeaver** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**SAP NetWeaver**」と入力します。
 1. 結果パネルから **[SAP NetWeaver]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-sap-netweaver"></a>SAP NetWeaver の Azure AD SSO の構成とテスト
@@ -77,7 +77,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
 1. 新しい Web ブラウザー ウィンドウを開き、SAP NetWeaver 企業サイトに管理者としてサインインします。
 
-1. **http** および **https** サービスがアクティブであり、 **SMICM** T-Code で適切なポートが割り当てられていることを確認します。
+1. **http** および **https** サービスがアクティブであり、**SMICM** T-Code で適切なポートが割り当てられていることを確認します。
 
 1. SAP システム (T01) のビジネス クライアントにサインオンします。SSO が必要であり、HTTP セキュリティ セッション管理をアクティブ化します。
 
@@ -124,7 +124,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     ![複数の SAP NetWeaver ABAP エンジン](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
 
-1. **サービス プロバイダーのメタデータの生成** :- SAML 2.0 ユーザー インターフェイスで **[Local Provider]\(ローカル プロバイダー\)** と **[Trusted Providers]\(信頼できるプロバイダー\)** の設定の構成が完了したら、次のステップでは、サービス プロバイダーのメタデータ ファイルを生成します (これには、すべての設定、認証コンテキスト、および SAP での他の構成が含まれます)。 このファイルを生成したら、それを Azure AD にアップロードする必要があります。
+1. **サービス プロバイダーのメタデータの生成**:- SAML 2.0 ユーザー インターフェイスで **[Local Provider]\(ローカル プロバイダー\)** と **[Trusted Providers]\(信頼できるプロバイダー\)** の設定の構成が完了したら、次のステップでは、サービス プロバイダーのメタデータ ファイルを生成します (これには、すべての設定、認証コンテキスト、および SAP での他の構成が含まれます)。 このファイルを生成したら、それを Azure AD にアップロードする必要があります。
 
     ![サービス プロバイダーのメタデータを生成する](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_generatesp.png)
 
@@ -148,7 +148,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     b. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
-    c. メタデータ ファイルが正常にアップロードされると、次に示すように、 **識別子** と **応答 URL** の値が、 **[基本的な SAML 構成]** セクションのテキスト ボックスに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、次に示すように、**識別子** と **応答 URL** の値が、 **[基本的な SAML 構成]** セクションのテキスト ボックスに自動的に設定されます。
 
     d. **[サインオン URL]** ボックスに、`https://<your company instance of SAP NetWeaver>` という形式で URL を入力します。
 
@@ -171,9 +171,9 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     ![image](./media/sapnetweaver-tutorial/nameidattribute1.png)
 
-    b. **[変換]** の一覧で、 **ExtractMailPrefix()** を選択します。
+    b. **[変換]** の一覧で、**ExtractMailPrefix()** を選択します。
 
-    c. **[パラメーター 1]** の一覧で、 **user.userprincipalname** を選択します。
+    c. **[パラメーター 1]** の一覧で、**user.userprincipalname** を選択します。
 
     d. **[保存]** をクリックします。
 
@@ -213,7 +213,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
 1. SAP システムにサインインし、トランザクション コード SAML2 に移動します。 新しいブラウザー ウィンドウで SAML 構成画面が開きます。
 
-2. 信頼できる ID プロバイダー (Azure AD) のエンド ポイントを構成するには、 **[Trusted Providers]\(信頼できるプロバイダー\)** タブに移動します。
+2. 信頼できる ID プロバイダー (Azure AD) のエンド ポイントを構成するには、**[Trusted Providers]\(信頼できるプロバイダー\)** タブに移動します。
 
     ![シングル サインオンの構成 (信頼できるプロバイダー)](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_samlconfig.png)
 
@@ -225,27 +225,27 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     ![シングル サインオンの構成 3](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_metadatafile.png)
 
-5. 次の画面で、エイリアス名を入力します。 たとえば「aadsts」と入力し、 **[Next]\(次へ\)** をクリックして続行します。
+5. 次の画面で、エイリアス名を入力します。 たとえば「aadsts」と入力し、**[Next]\(次へ\)** をクリックして続行します。
 
     ![シングル サインオンの構成 4](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_aliasname.png)
 
-6. **[Digest Algorithm]\(ダイジェスト アルゴリズム\)** が **[SHA-256]** であることを確認します。何も変更する必要はありません。 **[Next]\(次へ\)** をクリックします。
+6. **[Digest Algorithm]\(ダイジェスト アルゴリズム\)** が **[SHA-256]** であることを確認します。何も変更する必要はありません。**[Next]\(次へ\)** をクリックします。
 
     ![シングル サインオンの構成 5](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_identityprovider.png)
 
-7. **[Single Sign-On Endpoints]\(シングル サインオン エンドポイント\)** では **[HTTP POST]** を使用し、 **[Next]\(次へ\)** をクリックして続行します。
+7. **[Single Sign-On Endpoints]\(シングル サインオン エンドポイント\)** では **[HTTP POST]** を使用し、**[Next]\(次へ\)** をクリックして続行します。
 
     ![シングル サインオンの構成 6](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect.png)
 
-8. **[Single Logout Endpoints]\(シングル ログアウト エンドポイント\)** では **[HTTPRedirect]** を選択し、 **[Next]\(次へ\)** をクリックして続行します。
+8. **[Single Logout Endpoints]\(シングル ログアウト エンドポイント\)** では **[HTTPRedirect]** を選択し、**[Next]\(次へ\)** をクリックして続行します。
 
     ![シングル サインオンの構成 7](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect1.png)
 
-9. **[Artifact Endpoints]\(アーティファクト エンドポイント\)** では、 **[Next]\(次へ\)** をクリックして続行します。
+9. **[Artifact Endpoints]\(アーティファクト エンドポイント\)** では、**[Next]\(次へ\)** をクリックして続行します。
 
     ![シングル サインオンの構成 8](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_artifactendpoint.png)
 
-10. **[Authentication Requirements]\(認証要件\)** では、 **[Finish]\(完了\)** をクリックします。
+10. **[Authentication Requirements]\(認証要件\)** では、**[Finish]\(完了\)** をクリックします。
 
     ![シングル サインオンの構成 9](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_authentication.png)
 
@@ -261,7 +261,11 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     ![シングル サインオンの構成 12](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameid.png)
 
-14. **[user ID Source]\(ユーザー ID ソース\)** と **[user ID mapping mode]\(ユーザー ID マッピング モード\)** の値によって、SAP ユーザーと Azure AD 要求の間のリンクが決まることに注意してください。  
+1. **[User ID Source]\(ユーザー ID ソース\)** の値として「**Assertion Attribute**」を、 **[User ID mapping mode]\(ユーザー ID マッピング モード\)** の値として「**Email**」を、 **[Assertion Attribute Name]\(アサーション属性名\)** の値として「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」を指定します。
+
+    ![Configure single sign-on ](./media/sapnetweaver-tutorial/nameid-format.png)
+
+14. **[User ID Source]\(ユーザー ID ソース\)** と **[User ID mapping mode]\(ユーザー ID マッピング モード\)** の値によって、SAP ユーザーと Azure AD 要求の間のリンクが決まることに注意してください。
 
     #### <a name="scenario-sap-user-to-azure-ad-user-mapping"></a>シナリオ: SAP ユーザーから Azure AD ユーザーへのマッピング。
 
@@ -283,11 +287,11 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     ![シングル サインオンの構成 16](./media/sapnetweaver-tutorial/claimsaad2.png)
 
-15. **[Save]\(保存\)** をクリックし、 **[Enable]\(有効\)** をクリックして ID プロバイダーを有効にします。
+15. **[Save]\(保存\)** をクリックし、**[Enable]\(有効\)** をクリックして ID プロバイダーを有効にします。
 
     ![シングル サインオンの構成 17](./media/sapnetweaver-tutorial/configuration1.png)
 
-16. メッセージが表示されたら、 **[OK]** をクリックします。
+16. メッセージが表示されたら、**[OK]** をクリックします。
 
     ![シングル サインオンの構成 18](./media/sapnetweaver-tutorial/configuration2.png)
 
@@ -320,7 +324,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
 1. SAP によって文書化されたプロセスが「[NetWeaver Gateway サービスの有効化と OAuth 2.0 スコープの作成](https://wiki.scn.sap.com/wiki/display/Security/NetWeaver+Gateway+Service+Enabling+and+OAuth+2.0+Scope+Creation)」に記載されています
 
-2. SPRO に移動し、 **[Activate and Maintain services]\(サービスのアクティブ化と管理\)** を探します。
+2. SPRO に移動し、**[Activate and Maintain services]\(サービスのアクティブ化と管理\)** を探します。
 
     ![サービスのアクティブ化と管理](./media/sapnetweaver-tutorial/oauth01.png)
 
@@ -350,7 +354,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
 ### <a name="register-the-new-oauth-20-client-id-with-the-creation-wizard"></a>新しい OAuth 2.0 クライアント ID を作成ウィザードで登録する
 
-1. 新しい **OAuth 2.0 クライアント** を登録するために、トランザクション **SOAUTH2** を開始します。 このトランザクションは、既に登録されている OAuth 2.0 クライアントについての概要を表示します。 この例では CLIENT1 という名前の新しい OAuth クライアントのために、 **[Create]\(作成\)** を選択してウィザードを開始します。
+1. 新しい **OAuth 2.0 クライアント** を登録するために、トランザクション **SOAUTH2** を開始します。 このトランザクションは、既に登録されている OAuth 2.0 クライアントについての概要を表示します。 この例では CLIENT1 という名前の新しい OAuth クライアントのために、**[Create]\(作成\)** を選択してウィザードを開始します。
 
 2. T-Code: **SOAUTH2** に移動して説明を入力し、 **[next]\(次へ\)** をクリックします。
 

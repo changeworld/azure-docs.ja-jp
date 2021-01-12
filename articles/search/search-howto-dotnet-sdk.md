@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3ceead297ea726e256d806c08c22810b39296793
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 15a878eb863b71a4519e75def2598f013152dfb7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917173"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881635"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>C# .NET アプリケーションで Azure.Search.Documents を使用する方法
 
