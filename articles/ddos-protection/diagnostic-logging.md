@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: dd350cc5fa0c3b30b4f0d57938348a8328af311a
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: 22c49502883cb444027bd59a24bfb5bb3c32da4c
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827395"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915166"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>DDoS 診断ログの表示と構成
 
@@ -40,7 +40,7 @@ Azure DDoS Protection Standard には、次の診断ログを使用できます�
 
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 - このチュートリアルの手順を実行する前に、まず [Azure DDoS Standard 保護プラン](manage-ddos-protection.md)を作成し、仮想ネットワーク上で DDoS Protection Standard を有効にしておく必要があります。
-- DDoS は、仮想ネットワーク内のリソースに割り当てられているパブリック IP アドレスを監視します。 仮想ネットワーク内のパブリック IP アドレスを持つリソースがない場合は、最初にパブリック IP アドレスを使用してリソースを作成する必要があります。 Azure App Service Environment と Azure VPN Gateway を除き、[Azure サービスの仮想ネットワーク](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)に関するページに一覧表示されている Resource Manager (クラシックではない) を通じてデプロイされているすべてのリソースのパブリック IP アドレスを監視できます (バックエンド仮想マシンが仮想ネットワーク内にある Azure Load Balancer を含む)。 このチュートリアルを続行するために、[Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシンをすばやく作成できます。    
+- DDoS は、仮想ネットワーク内のリソースに割り当てられているパブリック IP アドレスを監視します。 仮想ネットワーク内のパブリック IP アドレスを持つリソースがない場合は、最初にパブリック IP アドレスを使用してリソースを作成する必要があります。 Azure App Service Environment を除き、[Azure サービスの仮想ネットワーク](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)に関する記事に一覧表示されている Resource Manager (クラシックではない) を通じてデプロイされている、すべてのリソースのパブリック IP アドレスを監視できます (バックエンド仮想マシンが仮想ネットワーク内にある Azure Load Balancer を含む)。 このチュートリアルを続行するために、[Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシンをすばやく作成できます。    
 
 ## <a name="configure-ddos-diagnostic-logs"></a>DDoS 診断ログを構成する
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: e7d013775861f290d532e0d7c132896ebeff8ae8
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 137670715af8b90d8a867459fa50249cd9be8e70
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680205"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897118"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>プラットフォームでサポートされている、Linux のクラシックから Azure Resource Manager への IaaS リソースの移行
 
@@ -23,6 +23,8 @@ ms.locfileid: "97680205"
 
 
 この記事では、プラットフォームでサポートされる移行ツールの概要、Azure Service Manager (ASM) (別名クラシックな Resource Manager (ARM)) デプロイ モデルからリソースを移行する方法、およびサブスクリプション内で共存する 2 つのデプロイ モデルから仮想ネットワークのサイト間ゲートウェイを使用してリソースに接続する方法の詳細を説明します。 [Azure Resource Manager の機能と利点](../azure-resource-manager/management/overview.md)の詳細を参照してください。 
+
+ASM では、2 つの異なるコンピューティング製品がサポートされています。Azure Virtual Machines (クラシック) (別名 IaaS VM) と [Azure Cloud Services (クラシック)](https://docs.microsoft.com/azure/cloud-services/) (別名 PaaS VM または Web と worker ロール) です。 このドキュメントでは、Azure Virtual Machines (クラシック) の移行についてのみ説明します。
 
 ## <a name="goal-for-migration"></a>移行の目的
 Resource Manager では、テンプレートを使用して複雑なアプリケーションをデプロイできます。また、VM の拡張機能を使用して仮想マシンを構成し、アクセス管理とタグ付けを統合します。 Azure Resource Manager には、仮想マシンの可用性セットへのスケーラブルな並列デプロイも含まれます。 さらに、新しいモデルでは、計算、ネットワーク、ストレージの個別のライフサイクル管理が提供されます。 最後に、仮想ネットワークでの仮想マシンの実行によって、セキュリティが既定で有効になることが重要視されています。

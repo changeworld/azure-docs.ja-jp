@@ -127,7 +127,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: 警告
+    - name: アラート
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -226,6 +226,8 @@
               href: platform/service-providers.md
             - name: Dedicated クラスター
               href: log-query/logs-dedicated-clusters.md
+            - name: トラブルシューティング ログ
+              href: platform/azure-monitor-troubleshooting-logs.md
         - name: Log Analytics
           items:
             - name: 概要

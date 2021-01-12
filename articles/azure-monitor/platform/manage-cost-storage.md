@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/16/2020
+ms.date: 12/24/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a3a4c7a51f0d75b67465a83a2fbbf3ae8a141c4c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 45f02850797582f97220e91d1582b04b3be711c0
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97671167"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882485"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -132,9 +132,9 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 
 ## <a name="change-the-data-retention-period"></a>データ保持期間の変更
 
-次の手順では、ワークスペースにログ データを保持する期間を構成する方法について説明します。 データ保持期間は、従来の Free 価格レベルを使用している場合を除き、すべてのワークスペースで 30 ～ 730 日 (2 年) に構成できます。より長いデータ保持期間の価格については、[こちら](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。 
+次の手順では、ワークスペースにログ データを保持する期間を構成する方法について説明します。 ワークスペース レベルでのデータ保有期間は、従来の Free 価格レベルを使用している場合を除き、すべてのワークスペースで 30 から 730 日 (2 年) に構成できます。より長いデータ保有期間の価格については、[こちら](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。 個々のデータ型の保有期間は、最短 4 日に設定できます。 
 
-### <a name="default-retention"></a>既定のリテンション期間
+### <a name="workspace-level-default-retention"></a>ワークスペース レベルの既定の保有期間
 
 ご利用のワークスペースに既定のリテンション期間を設定するには 
  
@@ -158,7 +158,7 @@ Log Analytics [消去 API](/rest/api/loganalytics/workspacepurge/purge) はデ�
 
 ### <a name="retention-by-data-type"></a>データの種類別のリテンション期間
 
-また、個々のデータの種類に対して、30 ～ 730 日でそれぞれ異なるリテンション期間を指定することもできます (従来の Free 価格レベルのワークスペースを除きます)。 それぞれのデータの種類は、ワークスペースのサブリソースです。 たとえば、SecurityEvent テーブルは [Azure Resource Manager](../../azure-resource-manager/management/overview.md) で次のようにアドレス指定できます。
+また、個々のデータの種類に対して、4 から 730 日でそれぞれ異なるリテンション期間を指定することもできます (従来の Free 価格レベルのワークスペースを除きます)。これは、ワークスペース レベルの既定の保有期間をオーバーライドします。 それぞれのデータの種類は、ワークスペースのサブリソースです。 たとえば、SecurityEvent テーブルは [Azure Resource Manager](../../azure-resource-manager/management/overview.md) で次のようにアドレス指定できます。
 
 ```
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
@@ -350,7 +350,8 @@ Usage
 | where TimeGenerated > ago(32d)
 | where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
 | where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution 
+| render columnchart
 ```
 
 `TimeGenerated` を含む句は、Azure portal のクエリ機能が既定の 24 時間を超えてさかのぼって参照するようにするためだけのものです。 Usage データ型を使用する場合、`StartTime` と `EndTime` は、結果が表示される時間バケットを表します。 
@@ -364,7 +365,8 @@ Usage
 | where TimeGenerated > ago(32d)
 | where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
 | where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType 
+| render columnchart
 ```
 
 または、過去 1 か月について、ソリューション別および種類別にテーブルを表示するには、次のようにします
@@ -661,4 +663,5 @@ Operation | where OperationCategory == 'Data Collection Status'
 - 効果的なイベント収集ポリシーを構成するには、[Azure Security Center のフィルタリング ポリシー](../../security-center/security-center-enable-data-collection.md)に関するページを参照してください。
 - [パフォーマンス カウンターの構成](data-sources-performance-counters.md)を変更します。
 - イベントの収集設定を変更する方法については、[イベント ログの構成](data-sources-windows-events.md)に関するページを参照してください。
+- Syslog の収集設定を変更する方法については、[Syslog の構成](data-sources-syslog.md)に関するページを参照してください。
 - Syslog の収集設定を変更する方法については、[Syslog の構成](data-sources-syslog.md)に関するページを参照してください。

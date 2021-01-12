@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 69c2bd96c7aa3bb3328784bb3b5027ade4902c43
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 129809a83bcebdcf80b05a7300dd9acf862e5886
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97669229"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900401"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Salesforce アカウントでのサインアップおよびサインインを設定する
 
@@ -30,7 +30,7 @@ ms.locfileid: "97669229"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>[前提条件]
+## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -48,10 +48,12 @@ Azure Active Directory B2C (Azure AD B2C) で Salesforce アカウントを使�
     1. **[API Name]\(アプリ名\)** 
     1. **[Contact Email]\(連絡先の電子メール\)** - Salesforce での連絡先の電子メール
 1. **[API (Enable OAuth Settings)]\(API (OAuth 設定を有効にする)\)** で、 **[Enable OAuth Settings]\(OAuth 設定を有効にする\)** を選択します。
-1. **[Callback URL]\(コールバック URL\)** に、「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
-1. **[Selected OAuth Scopes]\(選択された OAuth のスコープ\)** で、 **[Access your basic information (id, profile, email, address, phone)]\(基本情報 (ID、プロファイル、電子メール、アドレス、電話) にアクセスする\)** と **[Allow access to your unique identifier (openid)]\(一意識別子 (openid) へのアクセスを許可する\)** を選択します。
-1. **[Require Secret for Web Server Flow]\(Web サーバー フロー用のシークレットが必要\)** を選択します。
-1. **[Configure ID Token]\(ID トークンの構成\)** を選択し、 **[Include Standard Claims]\(標準要求を含める\)** を選択します。
+    1. **[Callback URL]\(コールバック URL\)** に、「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
+    1. **[Selected OAuth Scopes]\(選択された OAuth のスコープ\)** で、 **[Access your basic information (id, profile, email, address, phone)]\(基本情報 (ID、プロファイル、電子メール、アドレス、電話) にアクセスする\)** と **[Allow access to your unique identifier (openid)]\(一意識別子 (openid) へのアクセスを許可する\)** を選択します。
+    1. **[Require Secret for Web Server Flow]\(Web サーバー フロー用のシークレットが必要\)** を選択します。
+1. **[Configure ID Token]\(ID トークンの構成\)** を選択します 
+    1. **[Token Valid for]\(トークンの有効期限\)** を 5 分に設定します。
+    1. **[Include Standard Claims]\(標準要求を含める\)** を選択します。
 1. **[保存]** をクリックします。
 1. **[Consumer Key]\(コンシューマー キー\)** と **[Consumer Secret]\(コンシューマー シークレット\)** の値をコピーします。 テナントで Salesforce を ID プロバイダーとして構成するには、両方の値が必要です。 **[クライアント シークレット]** は、重要なセキュリティ資格情報です。
 
@@ -63,10 +65,10 @@ Azure Active Directory B2C (Azure AD B2C) で Salesforce アカウントを使�
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. **[ID プロバイダー]** を選択してから、 **[新しい OpenID Connect プロバイダー ]** を選択します。
 1. **[名前]** を入力します。 たとえば、「*Salesforce*」と入力します。
-1. **[メタデータ URL]** には､次の URL の `{org}` を Salesforce 組織に置き換えて入力します。
+1. **[メタデータ URL]** には、[Salesforce OpenID Connect 構成ドキュメント](https://help.salesforce.com/articleView?id=remoteaccess_using_openid_discovery_endpoint.htm)の URL を入力してください。 サンドボックスの場合、login.salesforce.com は test.salesforce.com に置き換えられます。 コミュニティの場合、login.salesforce.com は username.force.com/.well-known/openid-configuration などのコミュニティ URL に置き換えられます。 この URL は HTTPS である必要があります。
 
     ```
-    https://{org}.my.salesforce.com/.well-known/openid-configuration
+    https://login.salesforce.com/.well-known/openid-configuration
     ```
 
 1. **[クライアント ID]** には、前に記録したアプリケーション ID を入力します。
@@ -80,7 +82,7 @@ Azure Active Directory B2C (Azure AD B2C) で Salesforce アカウントを使�
     - **[表示名]** : *name*
     - **[名]** : *given_name*
     - **[姓]** : *family_name*
-    - **[電子メール]** : *preferred_username*
+    - **[電子メール]** : *email*
 
 1. **[保存]** を選択します。
 ::: zone-end
@@ -121,8 +123,7 @@ Salesforce アカウントをクレーム プロバイダーとして定義す�
           <DisplayName>Salesforce</DisplayName>
           <Protocol Name="OpenIdConnect" />
           <Metadata>
-            <!-- Update the {org} below to your Salesforce organization -->
-            <Item Key="METADATA">https://{org}.my.salesforce.com/.well-known/openid-configuration</Item>
+            <Item Key="METADATA">https://login.salesforce.com/.well-known/openid-configuration</Item>
             <Item Key="response_types">code</Item>
             <Item Key="response_mode">form_post</Item>
             <Item Key="scope">openid id profile email</Item>
@@ -154,7 +155,7 @@ Salesforce アカウントをクレーム プロバイダーとして定義す�
     </ClaimsProvider>
     ```
 
-4. **メタデータ** URI `{org}` を、Salesforce 組織に設定します。
+4. **METADATA** には、[Salesforce OpenID Connect 構成ドキュメント](https://help.salesforce.com/articleView?id=remoteaccess_using_openid_discovery_endpoint.htm)の URL が設定されます。 サンドボックスの場合、login.salesforce.com は test.salesforce.com に置き換えられます。 コミュニティの場合、login.salesforce.com は username.force.com/.well-known/openid-configuration などのコミュニティ URL に置き換えられます。 この URL は HTTPS である必要があります。
 5. **client_id** を、アプリケーションの登録で取得したアプリケーション ID に設定します。
 6. ファイルを保存します。
 

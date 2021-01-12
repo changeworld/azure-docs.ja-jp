@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/23/2020
+ms.date: 01/04/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: a2d26689a3036f05d7c8e7f417fbbb447402aedc
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: f140384ee2c78b38982c99dab5912bc451584a42
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762862"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898149"
 ---
 # <a name="connect-stream-analytics-jobs-to-resources-in-an-azure-virtual-network-vnet"></a>Azure Virtual Network (VNet) のリソースへの Stream Analytics ジョブの接続
 
@@ -41,7 +41,7 @@ Stream Analytics クラスターでのプライベート エンドポイント�
 1. [Blob Storage または Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/stream-analytics/blob-output-managed-identity) - ジョブのストレージ アカウント、ストリーミング入力または出力。
 2. [Azure Event Hubs](https://docs.microsoft.com/azure/stream-analytics/event-hubs-managed-identity) - ジョブのストリーミング入力または出力。
 
-ジョブが他の種類の入力または出力に接続する必要がある場合、唯一のオプションは、Stream Analytics クラスターでプライベート エンドポイントを使用することです。
+ジョブから他の入力または出力の種類に接続する必要がある場合は、まず Stream Analytics から Event Hubs 出力に書き込み、次に Azure Functions を使用して任意の出力先に書き込むことができます。 VNet またはファイアウォールでセキュリティで保護されている他の出力の種類に Stream Analytics から直接書き込む必要がある場合は、Stream Analytics クラスターでプライベート エンドポイントを使用するしかありません。
 
 ## <a name="next-steps"></a>次のステップ
 

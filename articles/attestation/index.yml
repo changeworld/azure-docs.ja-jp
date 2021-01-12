@@ -10,12 +10,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 07/20/2020
-  ms.openlocfilehash: 64266f5eff2388634486215c2e9b7a00b2ab157b
-  ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+  ms.openlocfilehash: d461fb946eeb7a0913162ec164f75b63101cfe97
+  ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/09/2020
-  ms.locfileid: "96937204"
+  ms.lasthandoff: 01/11/2021
+  ms.locfileid: "98070254"
 landingContent:
 - title: Microsoft Azure Attestation について
   linkLists:
@@ -51,6 +51,8 @@ landingContent:
     links:
     - text: 構成証明ポリシーの作成
       url: author-sign-policy.md
+    - text: プライベート エンドポイントの作成 - PowerShell
+      url: private-endpoint-powershell.md
     - text: SGX 構成証明コード サンプル
       url: /samples/browse/?expanded=azure&terms=attestation
 - title: References

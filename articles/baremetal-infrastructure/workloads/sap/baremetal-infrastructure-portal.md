@@ -2,20 +2,22 @@
 title: Azure での BareMetal インスタンス ユニット
 description: Azure portal を使用して BareMetal インスタンス ユニットを識別および操作する方法について説明します。
 ms.topic: how-to
-ms.date: 12/31/2020
-ms.openlocfilehash: 927baa79519781ef74920b17bc9fcd858f0f6c6f
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 1/4/2021
+ms.openlocfilehash: 30e1661e82546dbaf6d8dc4288ad896df89f401e
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829076"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861034"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>Azure portal を使用して BareMetal インスタンスを管理する
  
 この記事では、[Azure portal](https://portal.azure.com/) 上で [BareMetal インスタンス](baremetal-overview-architecture.md)がどのように表示されるかを説明します。 また、この記事では、デプロイ済みの BareMetal インスタンス ユニットに対して Azure portal 上で実行できるアクティビティについても説明します。 
  
 ## <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
-BareMetal インスタンス用の Azure リソース プロバイダー (現在はパブリック プレビュー) により、このインスタンスの Azure portal 上での表示が提供されます。 既定では、BareMetal インスタンスのデプロイに使用する Azure サブスクリプションに *BareMetalInfrastructure* リソース プロバイダーが登録されます。 デプロイ済みの BareMetal インスタンス ユニットが表示されない場合は、リソース プロバイダーをサブスクリプションに登録する必要があります。 BareMetal インスタンス リソース プロバイダーを登録するには、2 つの方法があります。
+BareMetal インスタンス用の Azure リソース プロバイダー (現在はパブリック プレビュー) により、このインスタンスの Azure portal 上での表示が提供されます。 既定では、BareMetal インスタンスのデプロイに使用する Azure サブスクリプションに *BareMetalInfrastructure* リソース プロバイダーが登録されます。 デプロイ済みの BareMetal インスタンス ユニットが表示されない場合は、リソース プロバイダーをサブスクリプションに登録する必要があります。 
+
+BareMetal インスタンス リソース プロバイダーを登録するには、2 つの方法があります。
  
 * [Azure CLI](#azure-cli)
  
@@ -85,15 +87,15 @@ BareMetal インスタンスのデプロイ中に、デプロイ要求で使用�
 右側には、ユニットの名前、オペレーティング システム (OS)、IP アドレス、および CPU スレッドの数とメモリを示す SKU が表示されます。 電源の状態と、ハードウェアのバージョン (BareMetal インスタンス スタンプのリビジョン) も表示されます。 電源の状態では、ハードウェア ユニットの電源がオンかオフかが示されます。 ただし、オペレーティング システムの詳細では、稼働中かどうかは示されません。
  
 ハードウェア リビジョンは次のいずれかになります。
+
+* リビジョン 3 (Rev 3)
+
+* リビジョン 4 (Rev 4)
  
-* Revision 3
- 
-* Revision 4
- 
-* リビジョン 4.2
+* リビジョン 4.2 (Rev 4.2)
  
 >[!NOTE]
->リビジョン 4.2 は、リビジョン 4 アーキテクチャを使用した、最新のブランド変更された BareMetal インフラストラクチャです。 Azure VM とリビジョン 4 のスタンプまたは行にデプロイされた BareMetal インスタンス ユニットの間のネットワーク待ち時間が大幅に改善されています。 さまざまなリビジョンの詳細については、[Azure での BareMetal インフラストラクチャに関する記事](baremetal-overview-architecture.md)を参照してください。
+>Rev 4.2 は、既存の Rev 4 アーキテクチャを使用した、最新のブランド変更された BareMetal インフラストラクチャです。 Rev 4 では、Azure 仮想マシン (VM) ホストにより近接します。 これにより、Azure VM と Rev 4 のスタンプまたは行にデプロイされた BareMetal インスタンス ユニットの間のネットワーク待ち時間が大幅に改善されます。 Azure portal を使用して BareMetal インスタンスにアクセスし、管理することができます。 詳細については、[Azure での BareMetal インフラストラクチャ](baremetal-overview-architecture.md)に関する記事を参照してください。
  
 また、右側には、[Azure 近接配置グループ](../../../virtual-machines/linux/co-location.md)の名前があります。これは、デプロイされた各 BareMetal インスタンス ユニットに対して自動的に作成されます。 アプリケーション レイヤーをホストする Azure VM をデプロイするときは、この近接配置グループを参照します。 BareMetal インスタンス ユニットに関連付けられている近接配置グループを使用すると、Azure VM が確実に BareMetal インスタンス ユニットの近くにデプロイされるようになります。
  

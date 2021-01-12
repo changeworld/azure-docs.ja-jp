@@ -1,7 +1,7 @@
 ---
 title: オープンソースの機械学習の統合
 titleSuffix: Azure Machine Learning
-description: オープンソースの Python 機械学習フレームワークを使用して、Azure Machine Learning でエンドツーエンドの機械学習ソリューションをトレーニング、デプロイ、および管理する方法について説明します。
+description: オープンソースの Python 機械学習フレームワークを使用して、Azure Machine Learning でエンドツーエンドの機械学習ソリューションをトレーニング、デプロイ、管理する方法について学習します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 12/16/2020
-ms.openlocfilehash: b3fa9767310bfc300087c9dc7384f33993aca70d
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d987d21700e5f19ad8228b08508e8da842cc39eb
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675744"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914112"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>オープンソースと Azure Machine Learning プロジェクトとの統合
 
@@ -52,7 +52,7 @@ ms.locfileid: "97675744"
 
 強化学習は、アクション、状態、および報酬を使用してモデルをトレーニングする人工知能手法です。強化学習エージェントは、環境の現在の状態に基づいて、指定された報酬を最大化する定義済みのアクションのセットを取得する方法を学習します。 
 
-[Ray RLLib](https://github.com/ray-project/ray) プロジェクトには、トレーニング プロセス全体で高いスケーラビリティを実現するように設定された特徴量があります。 反復プロセスでは、強化学習エージェントがタスクを達成するための最適な方法を学習するための試みが行われるため、時間とリソースが大量に消費されます。  また、Ray RLLib では、TensorFlow や PyTorch などのディープ ラーニング フレームワークがネイティブでサポートされています。  
+[Ray RLLib](https://github.com/ray-project/ray) プロジェクトには、トレーニング プロセス全体で高いスケーラビリティを実現できる機能セットが用意されています。 反復プロセスでは、強化学習エージェントがタスクを達成するための最適な方法を学習するための試みが行われるため、時間とリソースが大量に消費されます。  また、Ray RLLib では、TensorFlow や PyTorch などのディープ ラーニング フレームワークがネイティブでサポートされています。  
 
 Azure Machine Learning での Ray RLLib の使用方法については、[強化学習モデルをトレーニングする方法](how-to-use-reinforcement-learning.md)に関する記事を参照してください。
 
@@ -101,4 +101,4 @@ Docker などのコンテナー テクノロジは、モデルを Web サービ�
 
 継続的インテグレーション (CI) や継続的デプロイ (CD) などの DevOps プラクティスを使用することで、エンドツーエンドの機械学習ライフサイクルを自動化し、その周囲のガバナンス データを把握できます。 [機械学習の CI/CD パイプラインを GitHub アクション](./how-to-github-actions-machine-learning.md)で定義して、Azure Machine Learning のトレーニングとデプロイのタスクを実行できます。 
 
-ソフトウェアの依存関係、メトリック、メタデータ、データ、およびモデルのバージョンを把握することは、透明性、再現可能性、および監査可能性を備えたパイプラインを構築するための MLOps プロセスの重要な部分です。 このタスクのために、[Azure Machine Learning の MLFlow](how-to-use-mlflow.md) を使用できます。[Azure Databricks で機械学習モデルをトレーニングする](./how-to-use-mlflow-azure-databricks.md)ときにも、それを使用できます。
+ソフトウェアの依存関係、メトリック、メタデータ、データ、およびモデルのバージョンを把握することは、透明性、再現可能性、および監査可能性を備えたパイプラインを構築するための MLOps プロセスの重要な部分です。 このタスクのために、[Azure Machine Learning の MLFlow](how-to-use-mlflow.md) を使用できます。[Azure Databricks で機械学習モデルをトレーニングする](./how-to-use-mlflow-azure-databricks.md)ときにも、それを使用できます。 また、[MLflow モデルを Azure Web サービスとしてデプロイ](how-to-deploy-mlflow-models.md)することもできます。 

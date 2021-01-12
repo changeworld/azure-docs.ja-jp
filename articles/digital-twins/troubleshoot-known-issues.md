@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: a9735e355244d51464c66c10e02f97f03d2e67cd
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: db29fbda404900c29f85fa876e9427994ee9a093
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673472"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915914"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure Digital Twins の既知の問題
 
@@ -37,13 +37,21 @@ ms.locfileid: "97673472"
 | --- | --- | --- |
 | スクリプトの実行後にロールの割り当てが正常に設定されたかどうかを確認するには、セットアップの記事にある「[*ユーザー ロールの割り当てを確認する*](how-to-set-up-instance-scripted.md#verify-user-role-assignment)」の手順に従ってください。 ユーザーに対してこのロールが表示されていない場合、この問題による影響があります。 | 個人の [Microsoft アカウント (MSA)](https://account.microsoft.com/account) でログインしているユーザーの場合、このようなコマンドにおいてユーザーの識別に使用されるユーザーのプリンシパル ID が、ユーザーのサインイン メールとは異なる場合があります。そのため、スクリプトによってこれを検出し、使用してロールを適切に割り当てることが困難になります。 | これを解決するには、[CLI のインストラクション](how-to-set-up-instance-cli.md#set-up-user-access-permissions)または[Azure portal のインストラクション](how-to-set-up-instance-portal.md#set-up-user-access-permissions)を使用して、手動でロールの割り当てを設定します。 |
 
-## <a name="issue-with-interactive-browser-authentication"></a>対話型ブラウザーの認証に関する問題
+## <a name="issue-with-interactive-browser-authentication-on-azureidentity-120"></a>Azure.Identity 1.2.0 での対話型ブラウザーの認証に関する問題
 
 **問題の説明:** **[Azure.Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) ライブラリ** のバージョン **1.2.0** を使用して Azure Digital Twins アプリケーションで認証コードを記述すると、[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) メソッドで問題が発生することがあります。 これにより、ブラウザー ウィンドウで認証を試みるときに "Azure.Identity.AuthenticationFailedException" というエラー応答が表示されます。 ブラウザー ウィンドウが完全に起動できなくなるか、一見ユーザーが正常に認証されたかのように見せてクライアント アプリケーションがエラーで失敗します。
 
 | 影響 | 原因 | 解決方法 |
 | --- | --- | --- |
-| 影響を受けるメソッドは、次の記事で使用されています。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>[*チュートリアル:クライアント アプリをコーディングする*](tutorial-code.md)<br><br>[*方法: アプリ認証コードを作成する*](how-to-authenticate-client.md)<br><br>[*方法: Azure Digital Twins の API および SDK を使用する*](how-to-use-apis-sdks.md) | 一部のユーザーは、`Azure.Identity` ライブラリのバージョン **1.2.0** でこの問題に直面しています。 | 解決するには、`Azure.Identity` の[最新バージョン](https://www.nuget.org/packages/Azure.Identity)を使用するようにアプリケーションを更新します。 ライブラリのバージョンを更新すると、ブラウザーが想定どおりに読み込まれ、認証されるはずです。 |
+| 影響を受けるメソッドは、次の記事で使用されています。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>[*チュートリアル:クライアント アプリをコーディングする*](tutorial-code.md)<br><br>[*方法: アプリ認証コードを作成する*](how-to-authenticate-client.md)<br><br>[*方法: Azure Digital Twins の API および SDK を使用する*](how-to-use-apis-sdks.md) | 一部のユーザーは、`Azure.Identity` ライブラリのバージョン **1.2.0** でこの問題に直面しています。 | 解決するには、`Azure.Identity` の[新しいバージョン](https://www.nuget.org/packages/Azure.Identity)を使用するようにアプリケーションを更新します。 ライブラリのバージョンを更新すると、ブラウザーが想定どおりに読み込まれ、認証されるはずです。 |
+
+## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Azure.Identity 1.3.0 での既定の Azure 資格情報認証に関する問題
+
+**問題の説明:** **[Azure.Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) ライブラリ** のバージョン **1.3.0** を使用して認証コードを記述している場合、一部のユーザーに、これらの Azure Digital Twins ドキュメントを通じて多くのサンプルで使用される [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true) メソッドに関する問題が発生しています。これは、コードから認証を試みるときに "Azure.Identity.AuthenticationFailedException: SharedTokenCacheCredential 認証に失敗しました" というエラー応答が表示されます。
+
+| 影響 | 原因 | 解決方法 |
+| --- | --- | --- |
+| `DefaultAzureCredential` は、認証を含むこのサービスのドキュメント例のほとんどで使用されます。 `Azure.Identity` ライブラリのバージョン 1.3.0 で `DefaultAzureCredential` を使用して認証コードを記述し、このエラー メッセージが表示される場合は、この影響を受けます。 | これは、`Azure.Identity` の構成に何らかの問題があるためである可能性があります。 | この問題を解決する方法の 1 つは、現在 `Azure.Identity` に対して開かれているこの [DefaultAzureCredential イシュー](https://github.com/Azure/azure-sdk/issues/1970)で説明されているように、ご利用の資格情報から `SharedTokenCacheCredential` を除外することです。<br>別の方法として、[バージョン 1.2.3](https://www.nuget.org/packages/Azure.Identity/1.2.3) など、以前のバージョンの `Azure.Identity` を使用するようにアプリケーションを変更することもできます。 これは Azure Digital Twins に機能的な影響を与えないため、これもソリューションとして受け入れることができます。 |
 
 ## <a name="next-steps"></a>次のステップ
 
