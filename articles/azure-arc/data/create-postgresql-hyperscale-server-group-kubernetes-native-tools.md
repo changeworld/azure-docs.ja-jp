@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f447c6028b1750aa96e531a97e7b0861f66a5749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30852b6b3f9a4b490c4b58fe07f34ee49c60fa9f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761670"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955248"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Kubernetes ツールを使用して PostgreSQL Hyperscale サーバー グループを作成する
 
@@ -34,7 +34,7 @@ PostgreSQL Hyperscale サーバー グループを作成するには、postgres 
 
 ## <a name="create-a-yaml-file"></a>yaml ファイルを作成する
 
-[テンプレート yaml](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/postsgresql.yaml) ファイルを出発点として使用して、PostgreSQL Hyperscale サーバー グループのカスタム yaml ファイルを独自に作成することができます。  このファイルをローカル コンピューターにダウンロードし、テキスト エディターで開きます。  yaml ファイルの構文の強調表示とリンティングがサポートされている [VS Code](https://code.visualstudio.com/download) などのテキスト エディターを使用すると便利です。
+[テンプレート yaml](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/postgresql.yaml) ファイルを出発点として使用して、PostgreSQL Hyperscale サーバー グループのカスタム yaml ファイルを独自に作成することができます。  このファイルをローカル コンピューターにダウンロードし、テキスト エディターで開きます。  yaml ファイルの構文の強調表示とリンティングがサポートされている [VS Code](https://code.visualstudio.com/download) などのテキスト エディターを使用すると便利です。
 
 次に、yaml ファイルの例を示します。
 
@@ -121,7 +121,7 @@ echo '<your string to encode here>' | base64
 > 詳細については、[Kubernetes リソースのガバナンス](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes)に関する記事を参照してください。
 
 リソースの制限と要求の要件:
-- コア数の制限値は、課金のために**必要**です。
+- コア数の制限値は、課金のために **必要** です。
 - それ以外のリソースの要求と制限は省略可能です。
 - コア数の制限と要求を指定する場合は、正の整数値にする必要があります。
 - コア数の要求を指定する場合は、少なくとも 1 コアを指定する必要があります。

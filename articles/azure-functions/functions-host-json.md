@@ -3,12 +3,12 @@ title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 96d6b884e9e2c835316af01140c6fc7208ee5ab9
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 735c92720f4a3f871499ad3a0565446a02b438eb
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746082"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654814"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
@@ -129,7 +129,8 @@ ms.locfileid: "96746082"
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ]
+    "watchDirectories": [ "Shared", "Test" ],
+    "watchFiles": [ "myFile.txt" ]
 }
 ```
 
@@ -444,6 +445,16 @@ Application Insights など、関数アプリのログの動作を制御しま�
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="watchfiles"></a>watchFiles
+
+アプリを再起動する必要がある変更について監視されているファイルの 1 つ以上の名前の配列。  これにより、これらのファイル内のコードが変更されたときに、その更新が関数によって取得されることが保証されます。
+
+```json
+{
+    "watchFiles": [ "myFile.txt" ]
 }
 ```
 

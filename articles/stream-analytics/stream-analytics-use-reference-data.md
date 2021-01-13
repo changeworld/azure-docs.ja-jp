@@ -3,16 +3,15 @@ title: Azure Stream Analytics での参照に参照データを使用する
 description: この記事では、Azure Stream Analytics ジョブのクエリ デザインで参照データを使用してデータを参照または関連付ける方法について説明します。
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: e7f5b3ae0a4dc7faa67a361b210b1d014e1f1b93
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: d4053cd02dd11922a402971c7f3934a8b818eaa4
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722132"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015905"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
 

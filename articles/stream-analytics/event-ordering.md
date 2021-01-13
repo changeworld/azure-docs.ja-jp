@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics 用のイベント順序ポリシーの構成
 description: この記事では、Stream Analytics でイベント順序設定を構成する方法について説明します。
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/06/2020
-ms.openlocfilehash: 80567a211f08d6322c80b6645f8b70ec7df64b59
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f7ec6f32b48a93a29210311c7ba6747eb2e2d066
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130665"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014297"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Azure Stream Analytics 用のイベント順序ポリシーの構成
 
@@ -20,9 +19,9 @@ ms.locfileid: "93130665"
 
 ## <a name="event-time-and-arrival-time"></a>イベント時間と到着時間
 
-Stream Analytics ジョブは、 *イベント時間* または *到着時間* のいずれかに基づいてイベントを処理できます。 **イベント/アプリケーション時間** は、イベント ペイロードに含まれるタイムスタンプです (イベントが生成された時間)。 **到着時刻** は、イベントが入力ソース (イベント ハブ/IoT ハブ/Blob ストレージ) に到達した時間のタイムスタンプです。 
+Stream Analytics ジョブは、*イベント時間* または *到着時間* のいずれかに基づいてイベントを処理できます。 **イベント/アプリケーション時間** は、イベント ペイロードに含まれるタイムスタンプです (イベントが生成された時間)。 **到着時刻** は、イベントが入力ソース (イベント ハブ/IoT ハブ/Blob ストレージ) に到達した時間のタイムスタンプです。 
 
-既定では、Stream Analytics は *到着時間* でイベントを処理しますが、クエリで [TIMESTAMP BY](/stream-analytics-query/timestamp-by-azure-stream-analytics) 節を使用することによって、 *イベント時間* でイベントを処理することもできます。 遅延着信と順不同のポリシーは、イベント時間でイベントを処理する場合にのみ適用できます。 これらの設定を構成するときに、自分のシナリオの待機時間と正確性の要件を考慮に入れてください。 
+既定では、Stream Analytics は *到着時間* でイベントを処理しますが、クエリで [TIMESTAMP BY](/stream-analytics-query/timestamp-by-azure-stream-analytics) 節を使用することによって、*イベント時間* でイベントを処理することもできます。 遅延着信と順不同のポリシーは、イベント時間でイベントを処理する場合にのみ適用できます。 これらの設定を構成するときに、自分のシナリオの待機時間と正確性の要件を考慮に入れてください。 
 
 ## <a name="what-is-late-arrival-policy"></a>遅延到着ポリシーとは
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: d10689937a037469399863395e0190e399334bd3
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a7e19894a4688fe270422e93f7081f98e0b699a3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924076"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936534"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>Azure Logic Apps プレビューを使用して Azure portal でステートフルとステートレスのワークフローを作成する
 
@@ -90,7 +90,7 @@ Azure portal では、新しい **ロジック アプリ (プレビュー)** リ
    | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **ストレージ アカウント** | はい | <*Azure-storage-account-name*> | ストレージ トランザクションに使用する [Azure ストレージ アカウント](../storage/common/storage-account-overview.md)。 このリソース名は、リージョン間で一意であり、数字と小文字のみを含む 3 から 24 文字である必要があります。 既存のアカウントを選択するか、新しいアカウントを作成します。 <p><p>この例では、`fabrikamstorageacct` という名前のストレージ アカウントを作成します。 |
-   | **[プランの種類]** | はい | <*Azure ホスティング プラン*> | ロジック アプリのデプロイに使用する [ホスティング プラン](../app-service/overview-hosting-plans.md)。[ **[Premium]**](../azure-functions/functions-scale.md#premium-plan) または [ **[App Service プラン]** ](../azure-functions/functions-scale.md#app-service-plan) のいずれかです。 この選択により、後で選択できる価格レベルが決まります。 <p><p>この例では、 **[App Service プラン]** を使用します。 <p><p>**注**:Azure Functions と同様に、**ロジック アプリ (プレビュー)** リソースの種類には、ホスティング プランと価格レベルが必要です。 このリソースの種類には、従量課金ホスティング プランはサポートされておらず、使用できません。 詳細については、次のトピックをご覧ください。 <p><p>- [Azure Functions のスケーリングとホスティング](../azure-functions/functions-scale.md) <br>- [App Service の価格の詳細](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
+   | **[プランの種類]** | はい | <*Azure ホスティング プラン*> | ロジック アプリのデプロイに使用する [ホスティング プラン](../app-service/overview-hosting-plans.md)。[ **[Premium]**](../azure-functions/functions-premium-plan.md) または [ **[App Service プラン]**](../azure-functions/dedicated-plan.md) のいずれかです。 この選択により、後で選択できる価格レベルが決まります。 <p><p>この例では、 **[App Service プラン]** を使用します。 <p><p>**注**:Azure Functions と同様に、**ロジック アプリ (プレビュー)** リソースの種類には、ホスティング プランと価格レベルが必要です。 このリソースの種類には、従量課金ホスティング プランはサポートされておらず、使用できません。 詳細については、次のトピックをご覧ください。 <p><p>- [Azure Functions のスケーリングとホスティング](../azure-functions/functions-scale.md) <br>- [App Service の価格の詳細](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
    | **Windows プラン** | はい | <*プラン名*> | 使用するプラン名。 既存のプランを選択するか、新しいプランの名前を指定します。 <p><p>この例では、 `Fabrikam-Service-Plan`という名前を使用しています。 |
    | **SKU とサイズ** | はい | <*価格レベル*> | ロジック アプリのホスティングに使用する[価格レベル](../app-service/overview-hosting-plans.md)。 選択肢は、前に選択したプランの種類によって異なります。 既定のレベルを変更するには、 **[サイズの変更]** を選択します。 その後、必要なワークロードに基づいて、他の価格レベルを選択できます。 <p><p>この例では、**開発とテスト** のワークロード用に無料の **F1 価格レベル** を使用します。 詳細については、[App Service の価格の詳細](https://azure.microsoft.com/pricing/details/app-service/)に関するページをご確認ください。 |
    |||||
@@ -135,7 +135,7 @@ Azure portal では、新しい **ロジック アプリ (プレビュー)** リ
 
    ![ロジック アプリ リソースのメニューで [ワークフロー] が選択され、ツール バーで [追加] が選択されているスクリーンショット。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-add-blank-workflow.png)
 
-1. **[新しいワークフロー]** ペインが開いたら、ワークフローの名前を指定し、[ **[ステートフル]** または **[ステートレス]** ](logic-apps-overview-preview.md#stateful-stateless) いずれかのワークフローの種類を選択します。 完了したら **[作成]** を選択します。
+1. **[新しいワークフロー]** ペインが開いたら、ワークフローの名前を指定し、[ **[ステートフル]** または **[ステートレス]**](logic-apps-overview-preview.md#stateful-stateless) いずれかのワークフローの種類を選択します。 完了したら **[作成]** を選択します。
 
    この例では、`Fabrikam-Stateful-Workflow` という名前の空のステートフル ワークフローを追加します。 ワークフローは既定で有効になりますが、トリガーとアクションを追加するまでは何も行われません。
 

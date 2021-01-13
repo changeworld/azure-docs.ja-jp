@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 1f4e1def81fc79ec159ce6be825793a9bd8d0ce7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b29d8007ba7c6fb41209ad4f792069667416616b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286951"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011545"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 
@@ -33,7 +33,7 @@ Azure portal で、あるいは [REST API](/graph/api/resources/application) ま
 
 アプリケーション マニフェストを構成するには:
 
-1. [Azure ポータル](https://portal.azure.com)にアクセスします。 **Azure Active Directory** サービスを検索して選択します。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にアクセスします。 **Azure Active Directory** サービスを検索して選択します。
 1. **[アプリの登録]** を選択します。
 1. 構成するアプリを選択します。
 1. アプリの **[概要]** ページで、 **[マニフェスト]** セクションを選択します。 Web ベースのマニフェスト エディターが開き、ポータルでマニフェストを編集できます。 必要があれば、 **[ダウンロード]** を選択してローカルでマニフェストを編集します。その後、 **[アップロード]** を使用して、アプリケーションにマニフェストを再適用します。
@@ -124,7 +124,7 @@ Azure portal で、あるいは [REST API](/graph/api/resources/application) ま
 アプリケーションが他のテナントと共有されている場合は true、それ以外の場合は false に設定します。
 
 > [!NOTE]
-> この属性は、 **アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`signInAudience` に置き換えられます。
+> この属性は、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`signInAudience` に置き換えられます。
 
 ### <a name="appid-attribute"></a>appId 属性
 
@@ -174,7 +174,7 @@ Azure AD によってアプリに割り当てられた一意識別子を指定�
 アプリの表示名。
 
 > [!NOTE]
-> この属性は、 **アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`name` に置き換えられます。
+> この属性は、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`name` に置き換えられます。
 
 ### <a name="errorurl-attribute"></a>errorUrl 属性
 
@@ -212,7 +212,7 @@ Azure AD によってアプリに割り当てられた一意識別子を指定�
 アプリケーションのホームページの URL です。
 
 > [!NOTE]
-> この属性は、 **アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`signInUrl` に置き換えられます。
+> この属性は、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`signInUrl` に置き換えられます。
 
 ### <a name="objectid-attribute"></a>objectId 属性
 
@@ -222,7 +222,7 @@ Azure AD によってアプリに割り当てられた一意識別子を指定�
 
 ディレクトリ内のアプリの一意識別子。
 
-これは、 **アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`id` に置き換えられます。
+これは、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`id` に置き換えられます。
 
 例:
 
@@ -497,7 +497,7 @@ OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求では�
 
 このアプリケーションがパブリック クライアント (モバイル デバイス上で実行されているインストール済みのアプリケーションなど) であるかどうかを指定します。
 
-このプロパティは、 **アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`allowPublicClient` に置き換えられます。
+このプロパティは、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`allowPublicClient` に置き換えられます。
 
 ### <a name="publisherdomain-attribute"></a>publisherDomain 属性
 
@@ -521,7 +521,7 @@ OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求では�
 
 この複数値プロパティは、Azure AD がトークンを返すときに宛先として受け入れる登録された redirect_uri 値の一覧を保持します。
 
-このプロパティは、 **アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`replyUrlsWithType` に置き換えられます。
+このプロパティは、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`replyUrlsWithType` に置き換えられます。
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType 属性
 
@@ -644,7 +644,7 @@ OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求では�
 アプリケーション マニフェストには、appRoles、keyCredentials、knownClientApplications、identifierUris、redirectUris、requiredResourceAccess、oauth2Permissions など複数の属性があり、コレクションと呼ばれています。 任意のアプリケーションの完全なアプリケーション マニフェスト内では、すべてのコレクションを組み合わせたときのエントリの合計数は 1200 個に制限されています。 アプリケーション マニフェストで 100 個のリダイレクト URI を以前に指定した場合、マニフェストを構成する他の組み合わされたコレクション全体で使用できるエントリ数は残りの 1100 個です。
 
 > [!NOTE]
-> アプリケーション マニフェストに 1200 個を超えるエントリを追加しようとすると、" **アプリケーション xxxxxx を更新できませんでした。エラーの詳細:マニフェストのサイズ制限を超えました。値の数を減らしてから、要求を再試行してください** " というエラーが表示される場合があります。
+> アプリケーション マニフェストに 1200 個を超えるエントリを追加しようとすると、"**アプリケーション xxxxxx を更新できませんでした。エラーの詳細:マニフェストのサイズ制限を超えました。値の数を減らしてから、要求を再試行してください**" というエラーが表示される場合があります。
 
 ### <a name="unsupported-attributes"></a>サポート外の属性
 
@@ -673,7 +673,7 @@ OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求では�
 これらのエラーのいずれかが表示された場合、以下の操作を実行することをお勧めします。
 
 1. 以前にダウンロードしたマニフェストのアップロードではなく、マニフェスト エディターで個別に属性を編集します。 関心のある属性を正常に編集するために、[マニフェスト リファレンス](#manifest-reference)の表を使って新旧の属性の構文とセマンティクスを理解します。
-1. ワークフローにおいて、後で使用するためにソース リポジトリ内にマニフェストを保存する必要がある場合は、リポジトリに保存されたマニフェストを、 **アプリの登録** エクスペリエンスに表示されているものにリベースすることをお勧めします。
+1. ワークフローにおいて、後で使用するためにソース リポジトリ内にマニフェストを保存する必要がある場合は、リポジトリに保存されたマニフェストを、**アプリの登録** エクスペリエンスに表示されているものにリベースすることをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 

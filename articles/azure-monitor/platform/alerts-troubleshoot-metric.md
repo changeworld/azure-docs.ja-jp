@@ -4,14 +4,14 @@ description: Azure Monitor のメトリック警告に関する一般的な問�
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 11/25/2020
+ms.date: 01/03/2021
 ms.subservice: alerts
-ms.openlocfilehash: ef8a07f0360338aeb659942967169b0605b08e51
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 9a05fe509e032681a0bf5ed989595a25f66d33c6
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507219"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857343"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor のメトリック警告に関する問題のトラブルシューティング 
 
@@ -72,7 +72,7 @@ Azure Monitor のアラートは、監視データで重要な状態が見つか
 - [Linux VM の場合](./collect-custom-metrics-linux-telegraf.md)
 
 仮想マシンのゲスト オペレーティング システムからデータを収集する方法の詳細については、[こちら](../insights/monitor-vm-azure.md#guest-operating-system)を参照してください。
-    
+
 > [!NOTE] 
 > Log Analytics ワークスペースに送信されるようにゲスト メトリックを構成した場合、これらのメトリックは Log Analytics ワークスペース リソースの下に表示され、それらを監視する警告ルールを作成した後で **のみ** データの表示が開始されます。 これを行うには、[ログのメトリック アラートを構成する](./alerts-metric-logs.md#configuring-metric-alert-for-logs)手順に従います。
 
@@ -265,6 +265,23 @@ Resource Manager テンプレート、REST API、PowerShell、または Azure �
 -   複数のディメンションを監視するメトリック アラート ルール – 新しいディメンション値の組み合わせが追加されたとき
 -   複数のリソースを監視するメトリック アラート ルール – 新しいリソースがスコープに追加されたとき
 -   連続して生成されないメトリックを監視するメトリック アラート ルール (スパース メトリック) – メトリックが生成されていない 24 時間以上の期間の後に生成されたとき
+
+## <a name="the-dynamic-thresholds-borders-dont-seem-to-fit-the-data"></a>動的しきい値の境界がデータに適合していないように見える
+
+メトリックの動作が最近変化した場合、その変化は必ずしも動的しきい値の境界 (上限と下限) に即時反映されるとは限りません。それは、これらが過去 10 日間のメトリック データに基づいて計算されるからです。 特定のメトリックに対する動的しきい値の境界を見るときには、最近の時間や日だけでなく、過去 1 週間のメトリック傾向を確認するようにしてください。
+
+## <a name="why-is-weekly-seasonality-not-detected-by-dynamic-thresholds"></a>週単位の季節性が動的しきい値で検出されないのはなぜですか
+
+週単位の季節性を特定するには、動的しきい値モデルに少なくとも 3 週間の履歴データが必要です。 十分な履歴データが利用可能になると、メトリック データに存在する週単位の季節性が特定されるようになり、それに応じてモデルが調整されます。 
+
+## <a name="dynamic-thresholds-shows-a-negative-lower-bound-for-a-metric-even-though-the-metric-always-has-positive-values"></a>メトリックの値が常に正でも、動的しきい値でメトリックの負の下限が示される
+
+メトリックで大きな変動が示されている場合は、動的しきい値によって作成されるメトリック値を中心としたモデルが大きくなり、その結果として下限が 0 未満になることがあります。 具体的には、これは次のような場合に発生する可能性があります。
+1. 感度が低く設定されている 
+2. 中央値が 0 に近い
+3. メトリックで、変動幅が大きい不規則な動作が示されている (データにスパイクやディップがある)
+
+下限に負の値が含まれている場合は、メトリックの不規則な動作によってメトリックがゼロ値になる可能性があることを意味します。 より高い感度またはより大きな "*集計粒度 (期間)* " を選択してモデルの感度を低くするか、 *[以前のデータを無視]* オプションを使用して、モデルを作成するために使用される履歴データから最近の不規則性を除外することを検討してください。
 
 ## <a name="next-steps"></a>次のステップ
 

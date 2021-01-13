@@ -3,42 +3,115 @@ title: IoT プラグ アンド プレイのデジタル ツインを理解する
 description: IoT プラグ アンド プレイによってデジタル ツインがどのように使用されるかを理解する
 author: prashmo
 ms.author: prashmo
-ms.date: 07/17/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f13230c7bd88a9c3cf043fc1881a34f6b7ce6fe7
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 99c957e5bf6ffe69c94e109796590f5ab975c3cf
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495323"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656888"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>IoT プラグ アンド プレイのデジタル ツインを理解する
 
-IoT プラグ アンド プレイ デバイスは、[Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) スキーマによって記述されたモデルを実装します。 モデルは、特定のデバイスが持つことができるコンポーネント、プロパティ、コマンド、およびテレメトリ メッセージのセットを表します。 デバイス ツインとデジタル ツインは、IoT プラグ アンド プレイ デバイスが IoT ハブに初めて接続した時に初期化されます。
+IoT プラグ アンド プレイ デバイスは、[Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) スキーマによって記述されたモデルを実装します。 モデルは、特定のデバイスが持つことができるコンポーネント、プロパティ、コマンド、およびテレメトリ メッセージのセットを表します。
 
 IoT プラグ アンド プレイでは、DTDL バージョン 2 が使用されています。 このバージョンの詳細については、GitHub の[Digital Twins Definition Language (DTDL) - バージョン 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) の仕様を参照してください。
 
-DTDL は、IoT プラグ アンド プレイ専用ではありません。 [Azure Digital Twins](../digital-twins/overview.md) などの他の IoT サービスでは、これは建物やエネルギー ネットワークなどの環境全体を表すために使用されています。 詳細については、「[Azure Digital Twins のツイン モデルについて](../digital-twins/concepts-models.md)」を参照してください。
+> [!NOTE]
+> DTDL は、IoT プラグ アンド プレイ専用ではありません。 [Azure Digital Twins](../digital-twins/overview.md) などの他の IoT サービスでは、これは建物やエネルギー ネットワークなどの環境全体を表すために使用されています。
 
-この記事では、デバイス ツインの *desired* と *reported* セクションで、コンポーネントとプロパティがどのように表現されるかについて説明します。 また、これらの概念が対応するデジタル ツインにどのようにマップしているかについても説明します。
+Azure IoT service SDK には、サービスがデバイスのデジタル ツインを操作できるようにする API が含まれています。 たとえば、サービスは、デジタル ツインからデバイスのプロパティを読み取ったり、デジタル ツインを使用してデバイスでコマンドを呼び出したりできます。 詳細については、「[IoT Hub デジタル ツインの例](concepts-developer-guide-service.md#iot-hub-digital-twin-examples)」を参照してください。
 
-この記事に登場する IoT プラグ アンド プレイ デバイスには、[Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) コンポーネントを持つ [Temperature Controller モデル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)が実装されています。
+この記事の例の IoT プラグ アンド プレイ デバイスには、[Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) コンポーネントを含む [Temperature Controller モデル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)が実装されています。
 
 ## <a name="device-twins-and-digital-twins"></a>デバイス ツインとデジタル ツイン
 
-デバイス ツインは、デバイスに関する情報 (メタデータ、構成、状態など) を格納する JSON ドキュメントです。 詳細については、「[IoT Hub のデバイス ツインの理解と使用](../iot-hub/iot-hub-devguide-device-twins.md)」を参照してください。 デバイス ビルダーとソリューション ビルダーは、どちらも引き続き同じ Device Twin API と SDK のセットを使用して、IoT プラグ アンド プレイ規則を用いてデバイスとソリューションを実装できます。
+デジタル ツインに加えて、Azure IoT Hub では、接続されているすべてのデバイスに対して "*デバイス ツイン*" が保持されます。 デバイス ツインは、デバイスのプロパティの表現であるという点で、デジタル ツインに似ています。 Azure IoT service SDK には、デバイス ツインを操作するための API が含まれています。
 
-Digital Twin API は、コンポーネント、プロパティ、コマンドなどの、Digital Twins Definition Language (DTDL) の高レベル コンストラクトで機能します。 Digital Twin API を使用すると、ソリューション ビルダーで IoT プラグ アンド プレイ ソリューションを簡単に作成できます。
+IoT ハブは、IoT プラグ アンド プレイ デバイスが初めて接続するときに、デバイス ツインとデジタル ツインを初期化します。
 
-デバイス ツインでは、書き込み可能なプロパティの状態は、desired セクションと reported セクションに分割されます。 すべての読み取り専用プロパティは、reported セクション内で使用できます。
+デバイス ツインは、デバイスに関する情報 (メタデータ、構成、状態など) を格納する JSON ドキュメントです。 詳細については、「[IoT Hub サービス クライアントの例](concepts-developer-guide-service.md#iot-hub-service-client-examples)」を参照してください。 デバイス ビルダーとソリューション ビルダーは、どちらも引き続き同じ Device Twin API と SDK のセットを使用して、IoT プラグ アンド プレイ規則を用いてデバイスとソリューションを実装できます。
+
+Digital Twin APIは、コンポーネント、プロパティ、コマンドなどの、上位レベルの DTDL コンストラクトで機能します。 Digital Twin API を使用すると、ソリューション ビルダーで IoT プラグ アンド プレイ ソリューションを簡単に作成できます。
+
+デバイス ツインでは、書き込み可能なプロパティの状態は、"*desired プロパティ*" と "*reported プロパティ*" のセクションに分割されます。 すべての読み取り専用プロパティは、reported プロパティ セクション内で使用できます。
 
 デジタル ツインには、プロパティの現在の状態と目的の状態を示す統合ビューがあります。 特定のプロパティの同期状態は、対応する既定のコンポーネント `$metadata` セクションに格納されます。
 
-### <a name="digital-twin-json-format"></a>デジタル ツインの JSON 形式
+### <a name="device-twin-json-example"></a>デバイス ツインの JSON の例
 
-JSON オブジェクトとして表された場合、デジタル ツインには次のフィールドが含まれます。
+次のスニペットは、JSON オブジェクトとして書式設定された IoT プラグ アンド プレイ デバイス ツインを示しています。
+
+```json
+{
+  "deviceId": "sample-device",
+  "modelId": "dtmi:com:example:TemperatureController;1",
+  "version": 15,
+  "properties": {
+    "desired": {
+      "thermostat1": {
+        "__t": "c",
+        "targetTemperature": 21.8
+      },
+      "$metadata": {...},
+      "$version": 4
+    },
+    "reported": {
+      "serialNumber": "alwinexlepaho8329",
+      "thermostat1": {
+        "maxTempSinceLastReboot": 25.3,
+        "__t": "c",
+        "targetTemperature": {
+          "value": 21.8,
+          "ac": 200,
+          "ad": "Successfully executed patch",
+        }
+      },
+      "$metadata": {...},
+      "$version": 11
+    }
+  }
+}
+```
+
+### <a name="digital-twin-example"></a>デジタル ツインの例
+
+次のスニペットは、JSON オブジェクトとして書式設定されたデジタル ツインを示しています。
+
+```json
+{
+  "$dtId": "sample-device",
+  "serialNumber": "alwinexlepaho8329",
+  "thermostat1": {
+    "maxTempSinceLastReboot": 25.3,
+    "targetTemperature": 21.8,
+    "$metadata": {
+      "targetTemperature": {
+        "desiredValue": 21.8,
+        "desiredVersion": 4,
+        "ackVersion": 4,
+        "ackCode": 200,
+        "ackDescription": "Successfully executed patch",
+        "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
+      },
+      "maxTempSinceLastReboot": {
+         "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+      }
+    }
+  },
+  "$metadata": {
+    "$model": "dtmi:com:example:TemperatureController;1",
+    "serialNumber": {
+      "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+    }
+  }
+}
+```
+
+次の表では、デジタル ツイン JSON オブジェクト内のフィールドについて説明します。
 
 | フィールド名 | 説明 |
 | --- | --- |
@@ -55,83 +128,13 @@ JSON オブジェクトとして表された場合、デジタル ツインに�
 | `{componentName}.{propertyName}` | JSON でのコンポーネントのプロパティ値 |
 | `{componentName}.$metadata` | コンポーネントのメタデータ情報。 |
 
-#### <a name="device-twin-sample"></a>デバイス ツインのサンプル
-
-次のスニペットは、JSON オブジェクトとして書式設定された IoT プラグ アンド プレイ デバイス ツインを示しています。
-
-```json
-{
-    "deviceId": "sample-device",
-    "modelId": "dtmi:com:example:TemperatureController;1",
-    "version": 15,
-    "properties": {
-        "desired": {
-            "thermostat1": {
-                "__t": "c",
-                "targetTemperature": 21.8
-            },
-            "$metadata": {...},
-            "$version": 4
-        },
-        "reported": {
-            "serialNumber": "alwinexlepaho8329",
-            "thermostat1": {
-                "maxTempSinceLastReboot": 25.3,
-                "__t": "c",
-                "targetTemperature": {
-                    "value": 21.8,
-                    "ac": 200,
-                    "ad": "Successfully executed patch",
-                }
-            },
-            "$metadata": {...},
-            "$version": 11
-        }
-    }
-}
-```
-
-#### <a name="digital-twin-sample"></a>デジタル ツインのサンプル
-
-次のスニペットは、JSON オブジェクトとして書式設定されたデジタル ツインを示しています。
-
-```json
-{
-    "$dtId": "sample-device",
-    "serialNumber": "alwinexlepaho8329",
-    "thermostat1": {
-        "maxTempSinceLastReboot": 25.3,
-        "targetTemperature": 21.8,
-        "$metadata": {
-            "targetTemperature": {
-                "desiredValue": 21.8,
-                "desiredVersion": 4,
-                "ackVersion": 4,
-                "ackCode": 200,
-                "ackDescription": "Successfully executed patch",
-                "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
-            },
-            "maxTempSinceLastReboot": {
-                "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-            }
-        }
-    },
-    "$metadata": {
-        "$model": "dtmi:com:example:TemperatureController;1",
-        "serialNumber": {
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
-    }
-}
-```
-
 ### <a name="properties"></a>Properties
 
 プロパティは、エンティティの状態を表すデータ フィールドです (多くのオブジェクト指向プログラミング言語のプロパティと同様)。
 
 #### <a name="read-only-property"></a>読み取り専用プロパティ
 
-スキーマ:
+DTDL スキーマ:
 
 ```json
 {
@@ -152,9 +155,9 @@ JSON オブジェクトとして表された場合、デジタル ツインに�
 
 ```json
 "properties": {
-    "reported": {
-        "serialNumber": "alwinexlepaho8329"
-    }
+  "reported": {
+    "serialNumber": "alwinexlepaho8329"
+  }
 }
 ```
 
@@ -171,15 +174,17 @@ JSON オブジェクトとして表された場合、デジタル ツインに�
 
 #### <a name="writable-property"></a>書き込み可能なプロパティ
 
-デバイスには、既定のコンポーネントに以下の書き込み可能なプロパティがあるとします。
+次の例は、既定のコンポーネント内の書き込み可能なプロパティを示しています。
+
+DTDL:
 
 ```json
 {
-    "@type": "Property",
-    "name": "fanSpeed",
-    "displayName": "Fan Speed",
-    "writable": true,
-    "schema": "double"
+  "@type": "Property",
+  "name": "fanSpeed",
+  "displayName": "Fan Speed",
+  "writable": true,
+  "schema": "double"
 }
 ```
 
@@ -189,19 +194,19 @@ JSON オブジェクトとして表された場合、デジタル ツインに�
 
 ```json
 {
-    "properties": {
-        "desired": {
-            "fanSpeed": 2.0,
-        },
-        "reported": {
-            "fanSpeed": {
-                "value": 3.0,
-                "ac": 200,
-                "av": 1,
-                "ad": "Successfully executed patch version 1"
-            }
-        }
+  "properties": {
+    "desired": {
+      "fanSpeed": 2.0,
     },
+    "reported": {
+      "fanSpeed": {
+        "value": 3.0,
+        "ac": 200,
+        "av": 1,
+        "ad": "Successfully executed patch version 1"
+      }
+    }
+  },
 }
 ```
 
@@ -211,17 +216,17 @@ JSON オブジェクトとして表された場合、デジタル ツインに�
 
 ```json
 {
-    "fanSpeed": 3.0,
-    "$metadata": {
-        "fanSpeed": {
-            "desiredValue": 2.0,
-            "desiredVersion": 2,
-            "ackVersion": 1,
-            "ackCode": 200,
-            "ackDescription": "Successfully executed patch version 1",
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
+  "fanSpeed": 3.0,
+  "$metadata": {
+    "fanSpeed": {
+      "desiredValue": 2.0,
+      "desiredVersion": 2,
+      "ackVersion": 1,
+      "ackCode": 200,
+      "ackDescription": "Successfully executed patch version 1",
+      "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
     }
+  }
 }
 ```
 
@@ -233,8 +238,7 @@ JSON オブジェクトとして表された場合、デジタル ツインに�
 ### <a name="components"></a>コンポーネント
 
 コンポーネントを使用すると、他のインターフェイスのアセンブリとしてモデル インターフェイスを作成できます。
-モデルとして定義されている [Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) インターフェイスがあるとします。
-このインターフェイスを、[Temperature Controller モデル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)を定義するときに、コンポーネント thermostat1 (および別のコンポーネント thermostat2) として組み込むことができるようになりました。
+たとえば、[Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) インターフェイスは、`thermostat1` および `thermostat2` コンポーネントとして [Temperature Controller モデル](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)に組み込むことができます。
 
 デバイス ツインでは、コンポーネントは `{ "__t": "c"}` マーカーによって識別されます。 デジタル ツインでは、`$metadata` の存在によってコンポーネントがマークされます。
 
@@ -251,30 +255,30 @@ JSON オブジェクトとして表された場合、デジタル ツインに�
 
 ```json
 "properties": {
-    "desired": {
-        "thermostat1": {
-            "__t": "c",
-            "targetTemperature": 21.8
-        },
-        "$metadata": {
-        },
-        "$version": 4
+  "desired": {
+    "thermostat1": {
+      "__t": "c",
+      "targetTemperature": 21.8
     },
-    "reported": {
-        "thermostat1": {
-            "maxTempSinceLastReboot": 25.3,
-            "__t": "c",
-            "targetTemperature": {
-                "value": 21.8,
-                "ac": 200,
-                "ad": "Successfully executed patch",
-                "av": 4
-            }
-        },
-        "$metadata": {
-        },
-        "$version": 11
-    }
+    "$metadata": {
+    },
+    "$version": 4
+  },
+  "reported": {
+    "thermostat1": {
+      "maxTempSinceLastReboot": 25.3,
+      "__t": "c",
+      "targetTemperature": {
+        "value": 21.8,
+        "ac": 200,
+        "ad": "Successfully executed patch",
+        "av": 4
+      }
+    },
+    "$metadata": {
+    },
+    "$version": 11
+  }
 }
 ```
 
@@ -284,21 +288,21 @@ JSON オブジェクトとして表された場合、デジタル ツインに�
 
 ```json
 "thermostat1": {
-    "maxTempSinceLastReboot": 25.3,
-    "targetTemperature": 21.8,
-    "$metadata": {
-        "targetTemperature": {
-            "desiredValue": 21.8,
-            "desiredVersion": 4,
-            "ackVersion": 4,
-            "ackCode": 200,
-            "ackDescription": "Successfully executed patch",
-            "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
-        },
-        "maxTempSinceLastReboot": {
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
+  "maxTempSinceLastReboot": 25.3,
+  "targetTemperature": 21.8,
+  "$metadata": {
+    "targetTemperature": {
+      "desiredValue": 21.8,
+      "desiredVersion": 4,
+      "ackVersion": 4,
+      "ackCode": 200,
+      "ackDescription": "Successfully executed patch",
+      "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
+    },
+    "maxTempSinceLastReboot": {
+       "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
     }
+  }
 }
 ```
 
@@ -307,7 +311,7 @@ JSON オブジェクトとして表された場合、デジタル ツインに�
 
 ## <a name="digital-twin-apis"></a>Digital Twin API
 
-Azure Digital Twins には、デバイスのデジタル ツインを管理するための **Get Digital Twin**、**Update Digital Twin**、**Invoke Component Command**、および **Invoke Command** が用意されています。 [REST API](/rest/api/iothub/service/digitaltwin) は直接使用することも、[サービス SDK](../iot-pnp/libraries-sdks.md) を通じて使用することもできます。
+Digital Twin API には、**Get Digital Twin**、**Update Digital Twin**、**Invoke Component Command**、および **Invoke Command** の各操作が含まれ、デジタル ツインをさらに管理できます。 [REST API](/rest/api/iothub/service/digitaltwin) は直接使用することも、[サービス SDK](../iot-pnp/libraries-sdks.md) を通じて使用することもできます。
 
 ## <a name="digital-twin-change-events"></a>デジタル ツインの変更イベント
 

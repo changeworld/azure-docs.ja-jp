@@ -5,12 +5,12 @@ ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 07/14/2017
-ms.openlocfilehash: ef32372cbaa70f7bca609c2ed1db118f33237e2b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 194fe3494915be9f6784e1596e647885634817ad
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "92216200"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969012"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>U-SQL を実行し、Visual Studio Code のローカルでデバッグする
 このアーティクルは、ローカルの開発コンピューター上で U-SQL ジョブを実行して、初期のコーディング フェーズを迅速化したり、Visual Studio Code でローカルにコードをデバッグしたりする方法について説明します。 Azure Data Lake Tools for Visual Studio Code に関する手順については、「[Azure Data Lake Tools for Visual Studio Code の使用](data-lake-analytics-data-lake-tools-for-vscode.md)」をご覧ください。
@@ -68,7 +68,7 @@ U-SQL ジョブをローカルで実行したり U-SQL をローカルでデバ�
   ![リマインダーが Dotnet をインストールする](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)
 3. Visual Studio Code 向けの C# をまだインストールしていない場合は、メッセージ ボックスの提示に従ってインストールします。   **[インストール]** をクリックして続行し、VSCode を再起動します。
 
-    ![リマインダーによる C# のインストール](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)
+![リマインダーによる C# のインストール](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)
 
 ローカル デバッグを実行するには、次の手順に従います。
   

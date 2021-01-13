@@ -7,11 +7,11 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
-ms.openlocfilehash: 26efa840bacd3ee542816cf861cf2ef586b0582f
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 88fb9c823df6ae5df345911ccce1c579009fba02
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 01/07/2021
 ms.locfileid: "96780214"
 ---
 # <a name="supported-data-stores"></a>サポートされているデータ ストア
@@ -31,8 +31,7 @@ Purview では、次のデータ ストアがサポートされています。 �
 ||[Azure SQL Database マネージド インスタンス](register-scan-azure-sql-database-managed-instance.md)|はい| ○| いいえ| ○| ○| ○|
 ||[Azure Synapse Analytics (以前の SQL DW)](register-scan-azure-synapse-analytics.md)|○| ○| いいえ| ○| ○| ○|
 |データベース|[SQL Server](register-scan-on-premises-sql-server.md)|○| ○| いいえ| ○| ○| ○|
-||[Teradata (プレビュー)](register-scan-teradata-source.md)|○| ○| いいえ| いいえ| いいえ| はい|
-|Power BI|[Power BI](register-scan-power-bi-tenant.md)|はい| ○| いいえ| いいえ| いいえ| ○|
+|Power BI|[Power BI](register-scan-power-bi-tenant.md)|○| はい| いいえ| いいえ| いいえ| はい|
 
 ## <a name="next-steps"></a>次のステップ
 

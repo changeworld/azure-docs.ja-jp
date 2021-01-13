@@ -2,16 +2,16 @@
 title: Visual Studio Code で Azure Stream Analytics ジョブを調べる
 description: この記事では、Azure Stream Analytics ジョブをローカル プロジェクトにエクスポートする方法、ジョブを一覧表示する方法、ジョブ エンティティを表示する方法について説明します。
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: su-jie
+ms.author: sujie
 ms.date: 05/15/2019
 ms.topic: how-to
-ms.openlocfilehash: 4b4ddd7db4891c642ec2002bbe992314fe67a20f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f1c0650820a419275ade6095344033b6d81a568
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891983"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013874"
 ---
 # <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>Visual Studio Code で使用する Azure Stream Analytics の詳細 (プレビュー)
 
@@ -32,7 +32,7 @@ Visual Studio Code 用 Azure Stream Analytics 拡張機能は、Stream Analytics
 ジョブ ビューを使用して、Visual Studio から Azure Stream Analytics ジョブとやりとりすることができます。
 
 
-1. Visual Studio Code のアクティビティ バーの **[Azure]** アイコンをクリックし、**Stream Analytics ノード**を展開します。 ジョブは、サブスクリプションの下に表示されます。
+1. Visual Studio Code のアクティビティ バーの **[Azure]** アイコンをクリックし、**Stream Analytics ノード** を展開します。 ジョブは、サブスクリプションの下に表示されます。
 
    ![Stream Analytics Explorer を開く](./media/vscode-explore-jobs/open-explorer.png)
 

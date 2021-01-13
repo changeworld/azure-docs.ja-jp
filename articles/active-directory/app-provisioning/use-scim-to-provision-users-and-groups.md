@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a0abbacc55cff2f561323a22dd83311c87b1511d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 90debef39b3e657bf96221dfaf5fa762d332a364
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584495"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976522"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>チュートリアル - SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成
 
@@ -1217,7 +1217,7 @@ OAuth コード付与フローの手順は次のとおりです。
 > [!NOTE]
 > 現在、ギャラリー以外のアプリケーションで OAuth を設定することはできませんが、承認サーバーからアクセス トークンを手動で生成し、ギャラリー以外のアプリケーションのシークレット トークンのフィールドに入力することができます。 これにより、OAuth コード付与がサポートされるアプリ ギャラリーにオンボードする前に、SCIM サーバーと Azure AD SCIM クライアントとの互換性を確認できます。  
 
-**有効期間が長い OAuth ベアラー トークン:** アプリケーションで OAuth 認証コード付与フローがサポートされていない場合は、管理者がプロビジョニング統合のセットアップに使用できる、有効期間が長い OAuth ベアラー トークンを生成することもできます。 トークンは永続的である必要があり、そうでない場合、トークンの有効期限が切れるとプロビジョニング ジョブが[検疫](application-provisioning-quarantine-status.md)されます。 このトークンのサイズは 1 KB 未満である必要があります。  
+**有効期間が長い OAuth ベアラー トークン:** アプリケーションで OAuth 認証コード付与フローがサポートされていない場合は、管理者がプロビジョニング統合のセットアップに使用できる、有効期間が長い OAuth ベアラー トークンを生成することもできます。 トークンは永続的である必要があり、そうでない場合、トークンの有効期限が切れるとプロビジョニング ジョブが[検疫](application-provisioning-quarantine-status.md)されます。
 
 追加の認証および承認方法については、[UserVoice](https://aka.ms/appprovisioningfeaturerequest) にご連絡ください。
 

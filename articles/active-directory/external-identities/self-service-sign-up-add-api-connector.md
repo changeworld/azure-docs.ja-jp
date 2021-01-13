@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f34ca47d5ff6c809eef40f89ee0049285cfd7d42
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: aa6726bb5c60dceab0a58632da99c04361183246
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355395"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932692"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>API コネクタをユーザー フローに追加する
 
@@ -319,7 +319,7 @@ Azure Functions の HTTP トリガーなどのサーバーレス機能を使用�
 * API コネクタの **エンドポイント URL** によって、正確な API エンドポイントが指定されます。
 * API によって、受け取った要求の null 値が明示的に確認されます。
 * API が可能な限り迅速に応答することで、スムーズなユーザー エクスペリエンスが保証されます。
-    * サーバーレス機能またはスケーラブルな Web サービスを使用している場合は、API を運用環境で "起動状態" または "ウォーム状態" に保つホスティング プランを Azure Functions の場合は、[Premium プラン](../../azure-functions/functions-scale.md#premium-plan)を使用することをお勧めします。 
+    * サーバーレス機能またはスケーラブルな Web サービスを使用している場合は、API を運用環境で "起動状態" または "ウォーム状態" に保つホスティング プランを Azure Functions の場合は、[Premium プラン](../../azure-functions/functions-premium-plan.md)を使用することをお勧めします。 
 
 
 ### <a name="use-logging"></a>ログの使用

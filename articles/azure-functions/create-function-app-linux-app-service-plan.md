@@ -3,16 +3,16 @@ title: Linux 上で Azure portal から Function Appを作成する
 description: Azure portal を使用して Linux 上で初めての Azure 関数を作成する方法について説明します。
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 20390239ed58e42749e9a3bae472a2f3f6324bb2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 34a93795b5e041ccef8e9576f97092e16c429444
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181256"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937180"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Azure App Service プランで Linux 上に Function App を作成する
 
-Azure Functions を使うと、既定の Azure App Service コンテナー内の Linux で関数をホストできます。 この記事では、[Azure portal](https://portal.azure.com) を使用して、Linux でホストされた Function App を作成し、[App Service プラン](functions-scale.md#app-service-plan)内で実行する方法について説明します。 [独自のカスタム コンテナーを利用する](functions-create-function-linux-custom-image.md)こともできます。
+Azure Functions を使うと、既定の Azure App Service コンテナー内の Linux で関数をホストできます。 この記事では、[Azure portal](https://portal.azure.com) を使用して、Linux でホストされた Function App を作成し、[App Service プラン](dedicated-plan.md)内で実行する方法について説明します。 [独自のカスタム コンテナーを利用する](functions-create-function-linux-custom-image.md)こともできます。
 
 ![Azure Portal での Function App の作成](./media/create-function-app-linux-app-service-plan/function-app-in-portal-editor.png)
 
@@ -50,7 +50,7 @@ Linux での関数の実行をホストするための Function App が必要で
 
     | 設定      | 推奨値  | 説明 |
     | ------------ | ---------------- | ----------- |
-    | **[ストレージ アカウント](../storage/common/storage-account-create.md)** |  グローバルに一意の名前 |  Function App で使用されるストレージ アカウントを作成します。 ストレージ アカウント名は、3 文字から 24 文字までの長さにし、数字と小文字のみを使用する必要があります。 既存のアカウントを使用することもできますが、[ストレージ アカウントの要件](../azure-functions/functions-scale.md#storage-account-requirements)を満たしている必要があります。 |
+    | **[ストレージ アカウント](../storage/common/storage-account-create.md)** |  グローバルに一意の名前 |  Function App で使用されるストレージ アカウントを作成します。 ストレージ アカウント名は、3 文字から 24 文字までの長さにし、数字と小文字のみを使用する必要があります。 既存のアカウントを使用することもできますが、[ストレージ アカウントの要件](../azure-functions/storage-considerations.md#storage-account-requirements)を満たしている必要があります。 |
     |**オペレーティング システム**| **Linux** | オペレーティング システムは、ランタイム スタックの選択に基づいてあらかじめ選択されますが、必要に応じて設定を変更できます。 |
     | **[プラン](../azure-functions/functions-scale.md)** | **従量課金プラン (サーバーレス)** | Function App にどのようにリソースが割り当てられるかを定義するホスティング プラン。 既定の **[従量課金プラン]** では、リソースは関数の必要に応じて動的に追加されます。 この[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)のホスティングでは、関数が実行された時間にのみ課金されます。 App Service プランで実行する場合は、[関数アプリのスケーリング](../azure-functions/functions-scale.md)を管理する必要があります。  |
 

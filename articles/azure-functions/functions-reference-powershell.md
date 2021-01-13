@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: af9490433c344c712da55e9b29bf9df364380736
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 61ed3ed274505101c65e251260bd759fe78f7b31
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422537"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936789"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 
@@ -649,11 +649,11 @@ PowerShell 関数を使用するときは、以下のセクションに記載さ
 
 ### <a name="cold-start"></a>コールド スタート
 
-[サーバーレス ホスティング モデル](functions-scale.md#consumption-plan)で Azure Functions を開発する際は、コールド スタートを避けて通ることはできません。 "*コールド スタート*" とは、関数アプリの実行が開始されて要求が処理されるまでにかかる時間のことを指します。 従量課金プランでは、非アクティブな期間中に関数アプリがシャットダウンされるため、コールド スタートの発生頻度が高くなります。
+[サーバーレス ホスティング モデル](consumption-plan.md)で Azure Functions を開発する際は、コールド スタートを避けて通ることはできません。 "*コールド スタート*" とは、関数アプリの実行が開始されて要求が処理されるまでにかかる時間のことを指します。 従量課金プランでは、非アクティブな期間中に関数アプリがシャットダウンされるため、コールド スタートの発生頻度が高くなります。
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>`Install-Module` を使用せずにモジュールをバンドルする
 
-スクリプトは、呼び出しのたびに実行されます。 スクリプト内で `Install-Module` を使用することは避けてください。 その代わり、発行前に `Save-Module` を使用します。そうすれば、関数がモジュールをダウンロードする際に生じる無駄な時間をなくすことができます。 コールド スタートが関数に影響を及ぼす場合は、"*常にオン*" に設定された [App Service プラン](functions-scale.md#app-service-plan)、または [Premium プラン](functions-scale.md#premium-plan)に関数アプリをデプロイすることを検討してください。
+スクリプトは、呼び出しのたびに実行されます。 スクリプト内で `Install-Module` を使用することは避けてください。 その代わり、発行前に `Save-Module` を使用します。そうすれば、関数がモジュールをダウンロードする際に生じる無駄な時間をなくすことができます。 コールド スタートが関数に影響を及ぼす場合は、"*常にオン*" に設定された [App Service プラン](dedicated-plan.md)、または [Premium プラン](functions-premium-plan.md)に関数アプリをデプロイすることを検討してください。
 
 ## <a name="next-steps"></a>次のステップ
 

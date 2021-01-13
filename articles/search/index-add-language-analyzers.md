@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: ca5f237585f74225a04091b5694dbfad12864332
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 555709776c88dd3003e400bbcefe2ec1cfa0f4af
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656038"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934171"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスの文字列フィールドに言語アナライザーを追加する
 
@@ -68,9 +68,9 @@ Azure Cognitive Search では、Lucene によって提供される 35 個の言�
 ## <a name="language-analyzer-list"></a>言語アナライザー一覧 
  サポートされている言語と、Lucene およびマイクロソフトのアナライザーの名前を以下に一覧します。  
 
-| Language | Microsoft のアナライザーの名前 | Lucene のアナライザーの名前 |  |
-|--|--|--|--|
-| アラビア語 | ar.microsoft | ar.lucene |  |
+| Language | Microsoft のアナライザーの名前 | Lucene のアナライザーの名前 |
+|--|--|--|
+| アラビア語 | ar.microsoft | ar.lucene |
 | アルメニア語 |  | hy.lucene |  |
 | ベンガル語 | bn.microsoft |  |  |
 | バスク語 |  | eu.lucene |  |

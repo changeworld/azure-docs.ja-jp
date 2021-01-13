@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/29/2020
-ms.openlocfilehash: 34a5dfb44ee78245b56c1774701f48b3b8a494df
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 12/30/2020
+ms.openlocfilehash: ee6c116d02a7be1682d9e8379037ef1b8c92bce8
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827480"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967040"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Logic Apps REST API を使用して統合サービス環境 (ISE) を作成する
 
@@ -121,7 +121,7 @@ ISE の作成時に使用するプロパティを記述する要求本文の構�
             }
          ]
       },
-      // Include `certificates` object to enable self-signed certiificate and certificate issued by Enterprise Certificate Authority
+      // Include `certificates` object to enable self-signed certificate and the certificate issued by Enterprise Certificate Authority
       "certificates": {
          "testCertificate": {
             "publicCertificate": "{base64-encoded-certificate}",
@@ -185,6 +185,7 @@ ISE の作成時に使用するプロパティを記述する要求本文の構�
    }
 }
 ```
+
 ## <a name="add-custom-root-certificates"></a>カスタム ルート証明書の追加
 
 ISE を、仮想ネットワーク上またはオンプレミスのカスタム サービスに接続するために使用することがよくあります。 多くの場合、これらのカスタム サービスは、エンタープライズ証明機関などのカスタムのルート証明機関によって発行された証明書、または自己署名証明書によって保護されます。 自己署名証明書の使用の詳細については、[アクセスとデータのセキュリティ保護 - 他のサービスやシステムへの発信呼び出しのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)に関するページを参照してください。 ISE がトランスポート層セキュリティ (TLS) を使用してこれらのサービスに正常に接続するためには、ISE がこれらのルート証明書にアクセスできる必要があります。 カスタムの信頼されたルート証明書で ISE を更新するには、次の HTTPS `PATCH` 要求を行います。

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b9fc465b5e5f132264fd36e004fa3ee7623b87a5
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: c94218248f1122cdb60ab8124bc9d9365fe8947b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854990"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97931740"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions のパフォーマンスとスケーリング (Azure Functions)
 
@@ -51,7 +51,7 @@ Durable Task 拡張機能は、アイドル状態のキューのポーリング�
 最大ポーリング遅延は、[host.json ファイル](../functions-host-json.md#durabletask)内の `maxQueuePollingInterval` プロパティを使用して構成できます。 このプロパティを高い値に設定するほど、メッセージ処理の待機時間が長くなる可能性があります。 長い処理時間が予期されるのは、非アクティブ期間の後のみになります。 このプロパティを低い値に設定すると、ストレージ トランザクションの増加により、ストレージ コストが上昇する可能性があります。
 
 > [!NOTE]
-> Azure Functions Consumption プランおよび Premium プランで実行しているとき、[Azure Functions Scale Controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) は、それぞれのコントロールと作業項目キューを 10 秒に 1 回ポーリングします。 この追加のポーリングは、関数アプリをアクティブにしてスケーリングの決定を行うタイミングを判別するために必要です。 この記事の執筆時点では、この 10 秒の間隔は定数であり、構成することはできません。
+> Azure Functions Consumption プランおよび Premium プランで実行しているとき、[Azure Functions Scale Controller](../event-driven-scaling.md) は、それぞれのコントロールと作業項目キューを 10 秒に 1 回ポーリングします。 この追加のポーリングは、関数アプリをアクティブにしてスケーリングの決定を行うタイミングを判別するために必要です。 この記事の執筆時点では、この 10 秒の間隔は定数であり、構成することはできません。
 
 ### <a name="orchestration-start-delays"></a>オーケストレーション開始の遅延
 オーケストレーションのインスタンスを開始するには、タスク ハブのコントロール キューのいずれかに `ExecutionStarted` メッセージを追加します。 特定の状況では、オーケストレーションの実行がスケジュールされている時刻から、実際に実行が開始されるまでの間に、複数秒の遅延が発生する場合があります。 この時間の間、オーケストレーションのインスタンスは `Pending` 状態のままになります。 この遅延には、次の 2 つの原因が考えられます。
@@ -138,7 +138,7 @@ Durable Functions で使用されるキュー、テーブル、BLOB は、構成
 
 ## <a name="auto-scale"></a>自動スケール
 
-従量課金およびエラスティック Premium プランで実行されるすべての Azure Functions と同様に、Durable Functions では、[Azure Functions のスケール コントローラー](../functions-scale.md#runtime-scaling)による自動スケールがサポートされています。 スケール コントローラーは、_peek_ コマンドを定期的に発行してすべてのキューの待ち時間を監視します。 スケール コントローラーは、ピークされたメッセージの待ち時間に基づいて、VM を追加するか削除するかを決定します。
+従量課金およびエラスティック Premium プランで実行されるすべての Azure Functions と同様に、Durable Functions では、[Azure Functions のスケール コントローラー](../event-driven-scaling.md#runtime-scaling)による自動スケールがサポートされています。 スケール コントローラーは、_peek_ コマンドを定期的に発行してすべてのキューの待ち時間を監視します。 スケール コントローラーは、ピークされたメッセージの待ち時間に基づいて、VM を追加するか削除するかを決定します。
 
 コントロール キューのメッセージ待ち時間が長すぎると判断された場合、メッセージ待ち時間が許容レベルまで低減されるか、コントロール キューのパーティション数に達するまで、VM インスタンスが追加されます。 同様に、作業項目キューの待ち時間が長い場合は、パーティション数に関係なく、VM インスタンスが継続的に追加されます。
 

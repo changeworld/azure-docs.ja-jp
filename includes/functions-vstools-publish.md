@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/30/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: ef617b9ed6c35d33350b173efe6189b5b79b6ae6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e4231f5c4e947f29a72e581cf461ff737c1a0c82
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008201"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97956562"
 ---
 1. **ソリューション エクスプローラー** で、プロジェクトを右クリックし、 **[発行]** を選択します。
 
@@ -25,14 +25,14 @@ ms.locfileid: "96008201"
 
 1. **[Function Instance]\(関数インスタンス\)** で **[Create a new Azure Function]\(新しい Azure 関数の作成\)** を選択し、次の表に示す値を使用します。
 
-    | 設定      | 値  | 説明                                |
+    | 設定      | [値]  | 説明                                |
     | ------------ |  ------- | -------------------------------------------------- |
     | **名前** | グローバルに一意の名前 | 新しい関数アプリを一意に識別する名前。 この名前をそのまま使用するか、新しい名前を入力します。 有効な文字は、`a-z`、`0-9`、`-` です。 |
     | **サブスクリプション** | 該当するサブスクリプション | 使用する Azure サブスクリプション。 このサブスクリプションを承諾するか、ドロップダウン リストから新しいものを選択します。 |
     | **[リソース グループ](../articles/azure-resource-manager/management/overview.md)** | リソース グループの名前 |  関数アプリを作成するリソース グループ。 ドロップダウン リストから既存のリソース グループを選択するか、または **[新規]** を選択して新しいリソース グループを作成します。|
-    | **[プランの種類](../articles/azure-functions/functions-scale.md)** | 従量課金 | [従量課金プラン](../articles/azure-functions/functions-scale.md#consumption-plan)で実行される関数アプリにプロジェクトを発行する場合は、関数アプリの実行に対してのみお支払いください。 他のホスティング プランでは、コストが高くなります。 |
+    | **[プランの種類](../articles/azure-functions/functions-scale.md)** | 従量課金 | [従量課金プラン](../articles/azure-functions/consumption-plan.md)で実行される関数アプリにプロジェクトを発行する場合は、関数アプリの実行に対してのみお支払いください。 他のホスティング プランでは、コストが高くなります。 |
     | **場所** | App Service の場所 | 最寄りの [リージョン](https://azure.microsoft.com/regions/)または関数がアクセスする他のサービスの近くのリージョン内の **[場所]** を選択します。 |
-    | **[Azure Storage](../articles/storage/common/storage-account-create.md)** | 汎用ストレージ アカウント | Functions Runtime には Azure Storage アカウントが必須です。 **[新規]** を選択して汎用ストレージ アカウントを構成します。 または、[ストレージ アカウントの要件](../articles/azure-functions/functions-scale.md#storage-account-requirements)を満たす既存のアカウントを選択することもできます。  |
+    | **[Azure Storage](../articles/azure-functions/storage-considerations.md)** | 汎用ストレージ アカウント | Functions Runtime には Azure Storage アカウントが必須です。 **[新規]** を選択して汎用ストレージ アカウントを構成します。 または、[ストレージ アカウントの要件](../articles/azure-functions/storage-considerations.md#storage-account-requirements)を満たす既存のアカウントを選択することもできます。  |
 
     ![[App Service の作成] ダイアログ](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 

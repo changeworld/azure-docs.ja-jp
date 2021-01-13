@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f4d7611f285535680469f3a334ab889b0b644bfe
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020998"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936867"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -21,9 +21,9 @@ ms.locfileid: "96020998"
 関数アプリは、いくつかの方法でホストできます。
 
 * さまざまなレベルの仮想ネットワーク接続性とスケーリングのオプションを備えた、マルチテナント インフラストラクチャ上で実行されるプラン オプションから選択できます。
-    * [従量課金プラン](functions-scale.md#consumption-plan)。負荷に応じて動的なスケーリングが行われ、最小限のネットワークの分離オプションが提供されます。
-    * [Premium プラン](functions-scale.md#premium-plan)。やはり動的なスケーリングが行われますが、より包括的なネットワークの分離が提供されます。
-    * [App Service プラン](functions-scale.md#app-service-plan)。固定されたスケールで動作し、Premium プランと同様のネットワークの分離が提供されます。
+    * [従量課金プラン](consumption-plan.md)。負荷に応じて動的なスケーリングが行われ、最小限のネットワークの分離オプションが提供されます。
+    * [Premium プラン](functions-premium-plan.md)。やはり動的なスケーリングが行われますが、より包括的なネットワークの分離が提供されます。
+    * [App Service プラン](dedicated-plan.md)。固定されたスケールで動作し、Premium プランと同様のネットワークの分離が提供されます。
 * [App Service Environment](../app-service/environment/intro.md) で関数を実行できます。 この方法では、関数を仮想ネットワークにデプロイし、完全なネットワーク制御と分離を提供します。
 
 ## <a name="matrix-of-networking-features"></a>ネットワーク機能のマトリックス
@@ -34,7 +34,7 @@ ms.locfileid: "96020998"
 
 アクセス制限を使用すると、アプリへのアクセスを許可または拒否される IP アドレスの優先順位付きリストを定義できます。 この一覧には、IPv4 と IPv6 のアドレス、または[サービス エンドポイント](#use-service-endpoints)を使用する特定の仮想ネットワーク サブネットを含めることができます。 1 つ以上のエントリがある場合、リストの最後にあるものは暗黙的に "すべて拒否" になります。 IP 制限は、すべての関数ホスティング オプションで有効です。
 
-アクセス制限は、[Premium](functions-premium-plan.md)、[従量課金](functions-scale.md#consumption-plan)、[App Service](functions-scale.md#app-service-plan) で利用できます。
+アクセス制限は、[Premium](functions-premium-plan.md)、[従量課金](consumption-plan.md)、[App Service](dedicated-plan.md) で利用できます。
 
 > [!NOTE]
 > ネットワーク制限が適用されると、仮想ネットワーク内からか、または Azure portal へのアクセスに使用しているコンピューターの IP アドレスを [信頼された宛先のリスト] に入れている場合にのみ、デプロイを行うことができます。 ただし、ポータルを使用して関数を管理することもできます。

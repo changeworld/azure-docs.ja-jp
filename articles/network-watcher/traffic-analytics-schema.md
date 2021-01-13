@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 015b8e400e9d386fff8f35756a77139e61bbaff1
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74666377"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809294"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Traffic Analytics のスキーマとデータ集計
 
@@ -39,11 +39,11 @@ Traffic Analytics は、クラウド ネットワークでのユーザーとア�
 5. FlowStartTime_t フィールドは、"FlowIntervalStartTime_t" から "FlowIntervalEndTime_t" までのフロー ログ処理間隔の間に集計されたフロー (同じ 4 タプル) の、最初の発生日時を示します。
 6. TA 内のリソースについては、UI に示されるフローは NSG から見たフロー総数ですが、Log Analytics のユーザーには 1 つのレコードのみが表示されます。 すべてのフローを表示するには、blob_id フィールドを使用します (これはストレージから参照できます)。 そのレコードの合計フロー数は、BLOB 内にある個々 のフローと一致します。
 
-次のクエリは、過去 30 日間のオンプレミスからのすべてのフロー ログを調べるのに役立ちます。
+下のクエリは、過去 30 日間に Azure 以外のパブリック IP と対話したすべてのサブネットを確認するのに役立ちます。
 ```
 AzureNetworkAnalytics_CL
 | where SubType_s == "FlowLog" and FlowStartTime_t >= ago(30d) and FlowType_s == "ExternalPublic"
-| project Subnet_s  
+| project Subnet1_s, Subnet2_s  
 ```
 上記のクエリでフローの BLOB パスを表示するには、次のクエリを使用します。
 

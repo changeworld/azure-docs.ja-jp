@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 08afba8ade30775a49492f337bb5337320b9e282
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b2f95ddb13896ed461a20f1948fef34569586d1f
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97837219"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977076"
 ---
 # <a name="control-what-traffic-is-monitored"></a>監視するトラフィックを制御する
 
@@ -228,7 +228,7 @@ DNS サーバーを定義するには:
 
 3. **[DNS reverse lookup test for server]\(サーバーの DNS 逆引き参照テスト\)** ダイアログ ボックスの **[Lookup Address]\(アドレスの参照\)** にアドレスを入力します。
 
-    :::image type="content" source="media/how-to-enrich-asset-information/dns-reverse-looup-test-screen.png" alt-text="[Lookup Address]\(アドレスの参照\) 領域を示すスクリーンショット。":::
+    :::image type="content" source="media/how-to-enrich-asset-information/dns-reverse-lookup-test-screen.png" alt-text="[Lookup Address]\(アドレスの参照\) 領域を示すスクリーンショット。":::
 
 4. **[Test]** を選択します。
 

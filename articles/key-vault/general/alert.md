@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 7ff3daded48612fd308396420dca65cd81d9fafc
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 5946a5d6d1adb5f609f497b4c2194582f624fe24
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724699"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934596"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault の監視とアラート
 
@@ -25,8 +25,8 @@ ms.locfileid: "97724699"
 キー コンテナーを使用した運用環境のシークレットの保管を開始した後は、サービスが意図したとおりに動作しているか確認するために、キー コンテナーの正常性を監視することが重要です。 サービスのスケーリングを開始すると、キー コンテナーに送信される要求の数が増加します。 これにより要求の待機時間が長くなる可能性があり、極端な場合には要求がスロットルされてサービスのパフォーマンスに影響を与えます。 また、アクセス ポリシーやファイアウォールの構成の問題についてすぐに通知を受けられるように、キー コンテナーが異常な数のエラー コードを送信している場合にアラートを受け取る必要があります。 このドキュメントでは、次のトピックについて説明します。
 
 + 監視する基本的な Key Vault メトリック
-+ メトリックの構成方法とダッシュボードの作成方法 
-+ 指定したしきい値でアラートを作成する方法 
++ メトリックの構成方法とダッシュボードの作成方法
++ 指定したしきい値でアラートを作成する方法
 
 ## <a name="basic-key-vault-metrics-to-monitor"></a>監視する基本的な Key Vault メトリック
 

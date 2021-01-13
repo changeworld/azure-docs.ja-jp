@@ -3,12 +3,12 @@ title: テンプレートでのユーザー定義関数
 description: Azure Resource Manager テンプレート (ARM テンプレート) でユーザー定義関数を定義して使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 12199aca788438e4558ed2c607b866f0dc723e2a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: f428fa3bc827af3820ad9f928f4f92b881c9c84c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436965"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934681"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>ARM テンプレートでのユーザー定義関数
 
@@ -44,7 +44,7 @@ ms.locfileid: "96436965"
 
 ## <a name="use-the-function"></a>関数を使用する
 
-次の例は、ユーザー定義関数を含むテンプレートを示しています。 この関数を使用して、ストレージ アカウントの一意の名前を取得します。 このテンプレートには、関数にパラメーターとして渡す **storageNamePrefix** という名前のパラメーターがあります。
+次の例は、ユーザー定義関数を含むテンプレートを示しています。 この関数を使用して、ストレージ アカウントの一意の名前を取得します。 このテンプレートには、関数にパラメーターとして渡す `storageNamePrefix` という名前のパラメーターがあります。
 
 ```json
 {

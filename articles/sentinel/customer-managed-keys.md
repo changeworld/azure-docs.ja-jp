@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: bd85936c86656a8ae59a04ccdf53a62bd852368f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b346a23ccde6abd0f76982a4d19e00e28e8511a7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655274"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930873"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Azure Sentinel のカスタマー マネージド キーの設定
 
@@ -63,7 +63,7 @@ CMK をプロビジョニングするには、次の手順を実行します。
     > [!NOTE]
     >  キーとアクセスを保護するため、Azure Key Vault を回復可能として構成する必要があります。
 
-1.  [回復オプションを有効にする:](../key-vault/general/best-practices.md#turn-on-recovery-options)
+1.  [回復オプションを有効にする:](../key-vault/general/key-vault-recovery.md)
 
     -   [[論理的な削除]](../key-vault/general/soft-delete-overview.md) が有効になっていることを確認します。
 

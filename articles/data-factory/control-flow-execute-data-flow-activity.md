@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 11/24/2020
-ms.openlocfilehash: 1c0ed7cf38cc01623169216ec45e88d198ede3d2
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 01/03/2021
+ms.openlocfilehash: 3eff23a42a6ac5f5360bdebfcc692e13acb3e8b0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095085"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858784"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フロー アクティビティ
 
@@ -38,6 +38,8 @@ ms.locfileid: "97095085"
          "computeType": "General"
       },
       "traceLevel": "Fine",
+      "runConcurrently": true,
+      "continueOnError": true,      
       "staging": {
           "linkedService": {
               "referenceName": "MyStagingLinkedService",
@@ -95,6 +97,14 @@ Azure Synapse Analytics をシンクまたはソースとして使用する場�
 データ フロー アクティビティのすべてのパイプラインを実行してすべての詳細なテレメトリ ログを完全にログする必要がない場合は、必要に応じてログ レベルを "基本" または "なし" に設定できます。 データ フローを "詳細" モード (既定値) で実行する場合、データ変換中に各パーティション レベルでアクティビティを完全にログするように ADF に要求します。 これは負荷の高い操作であるため、トラブルシューティングを行うときにのみ詳細を有効にすることで、データ フローとパイプラインのパフォーマンス全体を向上させることができます。 "基本" モードでは、その変換の期間だけがログされるのに対し、"なし" を指定した場合は、期間の概要のみが提供されます。
 
 ![ログ記録レベル](media/data-flow/logging.png "ログ レベルの設定")
+
+## <a name="sink-properties"></a>シンクのプロパティ
+
+データ フローのグループ化機能を使用すると、シンクの実行順序を設定できるほか、同じグループ番号を使用してシンクをグループ化できます。 グループを管理しやすくするため、シンクを同じグループ内で並列で実行するように ADF に要求できます。 また、いずれかのシンクでエラーが発生しても続行するようにシンク グループを設定することもできます。
+
+データ フロー シンクの既定の動作では、各シンクが逐次実行され、シンクでエラーが発生した場合はデータ フローが失敗します。 さらに、データ フロー プロパティでシンクに異なる優先順位を設定しない限り、すべてのシンクは既定で同じグループに設定されます。
+
+![シンクのプロパティ](media/data-flow/sink-properties.png "シンク プロパティの設定")
 
 ## <a name="parameterizing-data-flows"></a>データ フローをパラメーター化する
 

@@ -3,17 +3,16 @@ title: Azure Stream Analytics の JavaScript ユーザー定義集計
 description: この記事では、Azure Stream Analytics の JavaScript ユーザー定義集計で高度なクエリ機構を実行する方法を説明します。
 author: rodrigoaatmicrosoft
 ms.author: rodrigoa
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
 ms.custom: devx-track-js
-ms.openlocfilehash: 8891bb5cd3b8bd8ae9e02c871d6d0ffe42078c0b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e9695a268d1c6ec43a737afd36536e4ec2a41a41
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124766"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012480"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics の JavaScript ユーザー定義集計
  
@@ -114,7 +113,7 @@ deaccumulateState() メソッドは、以前の状態とホップの状態に基
 computeResult() メソッドは、現在の状態に基づいて集計の結果を返します。 このメソッドは、タイム ウィンドウ (TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW、または SESSIONWINDOW) の最後に呼び出されます。
 
 ## <a name="javascript-uda-supported-input-and-output-data-types"></a>JavaScript UDA がサポートする入力と出力のデータ型
-JavaScript UDA のデータ型については、 [JavaScript UDF の統合](stream-analytics-javascript-user-defined-functions.md)に関するページの「 **Stream Analytics と JavaScript の型変換** 」のセクションをご覧ください。
+JavaScript UDA のデータ型については、[JavaScript UDF の統合](stream-analytics-javascript-user-defined-functions.md)に関するページの「**Stream Analytics と JavaScript の型変換**」のセクションをご覧ください。
 
 ## <a name="adding-a-javascript-uda-from-the-azure-portal"></a>Azure Portal から JavaScript UDA を追加する
 

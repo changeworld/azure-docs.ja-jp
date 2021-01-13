@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics のプレビュー機能
 description: この記事では、現在プレビュー段階にある Azure Stream Analytics の機能を示します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 8/07/2020
-ms.openlocfilehash: a32491453812d74d4bd93f3f97b7e6a32036f65f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d07a2364cbd2b63ef9e38387b6e915f7e63676ae
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573376"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012157"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics のプレビュー機能
 

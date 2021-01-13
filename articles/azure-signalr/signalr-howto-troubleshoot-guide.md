@@ -1,17 +1,17 @@
 ---
 title: Azure SignalR Service のトラブルシューティング ガイド
 description: 一般的な問題をトラブルシューティングする方法を確認する
-author: YanJin
+author: yjin81
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: cc17dcef7a554bee2715c79ba7d0c2356db2c6b3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 505176758e1dbba1d6bf262554568edd8a197a4d
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185659"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707675"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR Service の一般的な問題に関するトラブルシューティング ガイド
 
@@ -63,6 +63,8 @@ services.MapAzureSignalR(GetType().FullName, options =>
             });
 ```
 
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="tls-12-required"></a>TLS 1.2 が必要
 
 ### <a name="possible-errors"></a>考えられるエラー:
@@ -104,11 +106,15 @@ GlobalHost.TraceManager.Switch.Level = SourceLevels.Information;
 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="400-bad-request-returned-for-client-requests"></a>クライアント要求に対して 400 "無効な要求" が返された
 
 ### <a name="root-cause"></a>根本原因
 
 クライアント要求に、複数の `hub` クエリ文字列があるかどうかを確認します。 `hub` は、保持されているクエリ パラメーターであり、サービスがクエリ内で複数の `hub` を検出した場合に 400 がスローされます。
+
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="401-unauthorized-returned-for-client-requests"></a>クライアント要求に対して未承認 401 が返された
 
@@ -128,6 +134,8 @@ ASP.NET SignalR の場合、クライアントは時々 `/ping` KeepAlive 要求
 
 クライアント接続を再開する方法については、[こちら](#restart_connection)を参照してください。
 
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="404-returned-for-client-requests"></a>クライアント要求に対して 404 が返された
 
 SignalR の永続的な接続の場合、まず Azure SignalR サービスに対して `/negotiate` を行い、次に Azure SignalR サービスへの実際の接続を確立します。
@@ -138,17 +146,29 @@ SignalR の永続的な接続の場合、まず Azure SignalR サービスに対
 * 404 が発生したときの要求の URL を調べます。 URL のターゲットが Web アプリで、`{your_web_app}/hubs/{hubName}` に似ている場合は、クライアントの `SkipNegotiation` が `true` かどうかを確認します。 Azure SignalR の使用時には、クライアントは最初にアプリ サーバーとネゴシエートするときにリダイレクト URL を受け取ります。 Azure SignalR の使用時には、クライアントがネゴシエーションをスキップしては **いけません**。
 * `/negotiate` の呼び出し後、接続要求の処理が **5** 秒より長くかかると、別の 404 が発生する可能性があります。 クライアント要求のタイムスタンプを調べて、サービスに対する要求の応答が遅くなっている場合は、Microsoft へのイシューを開きます。
 
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="404-returned-for-aspnet-signalrs-reconnect-request"></a>ASP.NET SignalR の再接続要求に対して 404 が返された
 
 ASP.NET SignalR の場合、[クライアント接続が切断される](#client_connection_drop)と、接続を停止する前に、同じ `connectionId` を使用して 3 回再接続されます。 `/reconnect` を使用して永続的な接続を正常に再確立できるネットワークの間欠的な問題が原因で接続が切断される場合は、`/reconnect` が役立ちます。 ルーティングされたサーバー接続が切断されたためにクライアント接続が切断された、SignalR Service でインスタンスの再起動/フェールオーバー/デプロイなどの内部エラーが発生したので接続が存在しなくなったなどのその他の状況では、`/reconnect` から `404` が返されます。 これは `/reconnect` の予期されている動作であり、3 回の試行後に接続が停止します。 接続停止時の[接続再開](#restart_connection)ロジックを実装することをお勧めします。
 
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="429-too-many-requests-returned-for-client-requests"></a>クライアント要求に対して 429 (要求が多すぎます) が返された
 
-**コンカレント** 接続数が制限を超えた場合は 429 が返されます。
+次の 2 つのケースがあります。
+
+### <a name="concurrent-connection-count-exceeds-limit"></a>**コンカレント** 接続数が制限を超えている
 
 **Free** インスタンスの場合、**コンカレント** 接続数の制限は 20 です。**Standard** インスタンスの場合、**コンカレント** 接続数の制限は **ユニットあたり** 1 K です。つまり、100 ユニットでは 100 K のコンカレント接続が許可されます。
 
 接続には、クライアントとサーバーの両方の接続が含まれます。 接続がどのようにカウントされるかについては、[ここ](./signalr-concept-messages-and-connections.md#how-connections-are-counted)で確認してください。
+
+### <a name="too-many-negotiate-requests-at-the-same-time"></a>同時のネゴシエート要求が多すぎる
+
+再接続の前にランダム遅延を使用することをお勧めします。再試行のサンプルについては、[こちら](#restart_connection)を確認してください。
+
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500 "ネゴシエート時のエラー":Azure SignalR サービスはまだ接続されていません。後でもう一度試してください。
 
@@ -209,6 +229,8 @@ Azure SignalR のロガー カテゴリは常に `Microsoft.Azure.SignalR` で�
 
 <a name="client_connection_drop"></a>
 
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="client-connection-drops"></a>クライアント接続が切断される
 
 クライアントが Azure SignalR に接続されているときに、クライアントと Azure SignalR の間の永続的な接続が、さまざまな理由で切断されることがあります。 このセクションでは、このような接続の切断を引き起こす可能性があるいくつかの原因について説明し、根本原因を特定する方法に関するガイダンスをいくつか示します。
@@ -234,6 +256,7 @@ Azure SignalR のロガー カテゴリは常に `Microsoft.Azure.SignalR` で�
 2. アプリ サーバー側のイベント ログで、アプリ サーバーが再起動されたかどうかを確認します
 3. Microsoft へのイシューを作成して概算時間を提供し、リソース名をメールで送信します
 
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="client-connection-increases-constantly"></a>クライアント接続が絶えず増加する
 
@@ -289,6 +312,8 @@ finally
 
 <a name="server_connection_drop"></a>
 
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="server-connection-drops"></a>サーバー接続が切断される
 
 アプリ サーバーが起動すると、バックグラウンドでは、Azure SDK によってリモートの Azure SignalR へのサーバー接続が開始されます。 「[Azure SignalR Service の内部構造](https://github.com/Azure/azure-signalr/blob/dev/docs/internal.md)」で説明されているように、着信クライアント トラフィックは、Azure SignalR によってこれらのサーバー接続にルーティングされます。 サーバー接続が切断されると、それがサービスを提供しているすべてのクライアント接続も閉じられます。
@@ -314,6 +339,8 @@ finally
 1. アプリ サーバー側のログを開き、通常とは異なる何かが発生したかどうかを確認します
 2. アプリ サーバー側のイベント ログで、アプリ サーバーが再起動されたかどうかを確認します
 3. Microsoft へのイシューを作成して概算時間を提供し、リソース名をメールで送信します
+
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="tips"></a>ヒント
 
@@ -346,6 +373,8 @@ finally
     * [ASP.NET C# クライアント](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
 
     * [ASP.NET JavaScript クライアント](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
+
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="next-steps"></a>次のステップ
 

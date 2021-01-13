@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/03/2020
-ms.openlocfilehash: 69b2713e928707479945df0bb242ac2fbc001c32
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.date: 12/23/2020
+ms.openlocfilehash: 3f5a6171ba81b858d649f381ed316be0637a2571
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600661"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858656"
 ---
 # <a name="data-flow-script-dfs"></a>データ フロー スクリプト (DFS)
 
@@ -245,6 +245,18 @@ derive(each(match(type=='string'), $$ = 'string'),
     each(match(type=='timestamp'), $$ = 'timestamp'),
     each(match(type=='boolean'), $$ = 'boolean'),
     each(match(type=='double'), $$ = 'double')) ~> DerivedColumn1
+```
+
+### <a name="fill-down"></a>フィル ダウン
+ここでは、NULL 値をシーケンス内の NULL 以外の前の値に置換する場合に、データセットで一般的な "フィル ダウン" 問題を実装する方法について説明します。 この操作では、データセット全体に対して "dummy" カテゴリ値を使って合成ウィンドウを作成する必要があるため、パフォーマンスに悪影響がある可能性があることに注意してください。 また、NULL 以外の前の値を見つけるには、値で並べ替えて適切なデータ シーケンスを作成する必要があります。 次のスニペットでは、"dummy" として合成カテゴリが作成され、代理キーで並べ替えが行われます。 この代理キーを削除して、独自のデータ固有の並べ替えキーを使用できます。 このコード スニペットでは、```source1``` というソース変換が既に追加済みであることを前提としています。
+
+```
+source1 derive(dummy = 1) ~> DerivedColumn
+DerivedColumn keyGenerate(output(sk as long),
+    startAt: 1L) ~> SurrogateKey
+SurrogateKey window(over(dummy),
+    asc(sk, true),
+    Rating2 = coalesce(Rating, last(Rating, true()))) ~> Window1
 ```
 
 ## <a name="next-steps"></a>次のステップ

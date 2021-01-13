@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9e1ae369560fcf8357e6016e1f7e2e438edd8c9
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: e90adcb5312df6e1dfe6d4b58407edeb924a8809
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803223"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862444"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -141,7 +141,7 @@ Azure AD プロビジョニング サービスは、現在、周期的に動作�
 **サービス カテゴリ:** その他  
 **製品の機能:** エンタイトルメント管理
  
-新しい委任されたアクセス許可 EntitlementManagement.Read.All を Microsoft Graph ベータ版のエンタイトルメント管理 API で使用できるようになりました。 使用可能な API の詳細については、[Azure AD エンタイトルメント管理 API の操作](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)に関する記事を参照してください。
+新しい委任されたアクセス許可 EntitlementManagement.Read.All を Microsoft Graph ベータ版のエンタイトルメント管理 API で使用できるようになりました。 使用可能な API の詳細については、[Azure AD エンタイトルメント管理 API の操作](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta&preserve-view=true)に関する記事を参照してください。
 
 ---
 
@@ -339,7 +339,7 @@ Azure AD アプリ ギャラリー内でご自分のアプリケーションを�
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティ & 保護
 
-[Azure AD 条件付きアクセスのレポート専用モード](../conditional-access/concept-conditional-access-report-only.md)を使用すると、アクセス制御を実施せずにポリシーの結果を評価できます。 組織全体でレポート専用ポリシーをテストし、その影響について理解してから有効にすることで、展開がより安全で簡単になります。 これまで数か月にわたって、私たちはレポート専用モードを広範に導入しており、既に 2,600 万を超えるユーザーがレポート専用ポリシーのスコープ内に存在しています。 本日のこの発表では、新しい Azure AD 条件付きアクセス ポリシーが、既定でレポート専用モードで作成されます。 これは、ポリシーが作成された時点からその影響を監視できることを意味します。 また、MS Graph API シリーズを使用しているユーザーは、[プログラムによってレポート専用ポリシーを管理する](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta)こともできます。 
+[Azure AD 条件付きアクセスのレポート専用モード](../conditional-access/concept-conditional-access-report-only.md)を使用すると、アクセス制御を実施せずにポリシーの結果を評価できます。 組織全体でレポート専用ポリシーをテストし、その影響について理解してから有効にすることで、展開がより安全で簡単になります。 これまで数か月にわたって、私たちはレポート専用モードを広範に導入しており、既に 2,600 万を超えるユーザーがレポート専用ポリシーのスコープ内に存在しています。 本日のこの発表では、新しい Azure AD 条件付きアクセス ポリシーが、既定でレポート専用モードで作成されます。 これは、ポリシーが作成された時点からその影響を監視できることを意味します。 また、MS Graph API シリーズを使用しているユーザーは、[プログラムによってレポート専用ポリシーを管理する](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta&preserve-view=true)こともできます。 
 
 ---
 
@@ -406,7 +406,7 @@ Microsoft Graph ディレクトリ オブジェクト API シリーズに新し�
 * [Juno Journey](../saas-apps/juno-journey-provisioning-tutorial.md)
 * [MediusFlow](../saas-apps/mediusflow-provisioning-tutorial.md)
 * [New Relic by Organization](../saas-apps/new-relic-by-organization-provisioning-tutorial.md)
-* [Oracle Cloud Infrastructure Console](../saas-apps/oracle-cloud-infratstructure-console-provisioning-tutorial.md)
+* [Oracle Cloud Infrastructure Console](../saas-apps/oracle-cloud-infrastructure-console-provisioning-tutorial.md)
 
 自動化されたユーザー アカウント プロビジョニングを使用して組織をより適切にセキュリティ保護する方法の詳細については、[Azure AD による SaaS アプリケーションへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)に関するページをご覧ください。
 
@@ -546,7 +546,7 @@ B2B の招待機能は拡張中であり、今後、B2B コラボレーション
 
 **製品の機能:** ID のセキュリティ & 保護
 
-[Azure AD 条件付きアクセスのレポート専用モード](../conditional-access/concept-conditional-access-report-only.md)を使用すると、アクセス制御を実施せずにポリシーの結果を評価できます。 組織全体でレポート専用ポリシーをテストし、その影響について理解してから有効にすることで、展開がより安全で簡単になります。 これまで数か月にわたって、私たちはレポート専用モードを広範に導入しており、既に 26M のユーザーがレポート専用ポリシーのスコープ内に存在しています。 この発表では、新しい Azure AD 条件付きアクセス ポリシーが、既定でレポート専用モードで作成されます。 これは、ポリシーが作成された時点からその影響を監視できることを意味します。 また、MS Graph API を使用しているユーザーは、[プログラムによってレポート専用ポリシーを管理する](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta)こともできます。 
+[Azure AD 条件付きアクセスのレポート専用モード](../conditional-access/concept-conditional-access-report-only.md)を使用すると、アクセス制御を実施せずにポリシーの結果を評価できます。 組織全体でレポート専用ポリシーをテストし、その影響について理解してから有効にすることで、展開がより安全で簡単になります。 これまで数か月にわたって、私たちはレポート専用モードを広範に導入しており、既に 26M のユーザーがレポート専用ポリシーのスコープ内に存在しています。 この発表では、新しい Azure AD 条件付きアクセス ポリシーが、既定でレポート専用モードで作成されます。 これは、ポリシーが作成された時点からその影響を監視できることを意味します。 また、MS Graph API を使用しているユーザーは、[プログラムによってレポート専用ポリシーを管理する](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta&preserve-view=true)こともできます。 
 
 ---
 
@@ -598,7 +598,7 @@ B2B の招待機能は拡張中であり、今後、B2B コラボレーション
 
 **製品の機能:** 開発者エクスペリエンス
 
-oAuth2PermissionGrant に対するデルタ クエリがパブリック プレビューで利用可能になりました。 ユーザーは、Microsoft Graph を継続的にポーリングすることなく、変更を追跡できるようになりました。 [詳細情報。](/graph/api/oAuth2PermissionGrant-delta?tabs=http&view=graph-rest-beta)
+oAuth2PermissionGrant に対するデルタ クエリがパブリック プレビューで利用可能になりました。 ユーザーは、Microsoft Graph を継続的にポーリングすることなく、変更を追跡できるようになりました。 [詳細情報。](/graph/api/oAuth2PermissionGrant-delta?tabs=http&view=graph-rest-beta&preserve-view=true)
 
 ---
 
@@ -632,7 +632,7 @@ oAuth2PermissionGrant に対するデルタ クエリがパブリック プレ�
 
 **サービス カテゴリ:** MS Graph
 
-**製品の機能:** 管理単位に対する開発者エクスペリエンスのデルタ クエリがパブリック プレビューで利用可能になりました。 ユーザーは、Microsoft Graph を継続的にポーリングすることなく、変更を追跡できるようになりました。 [詳細情報。](/graph/api/administrativeunit-delta?tabs=http&view=graph-rest-beta)
+**製品の機能:** 管理単位に対する開発者エクスペリエンスのデルタ クエリがパブリック プレビューで利用可能になりました。 ユーザーは、Microsoft Graph を継続的にポーリングすることなく、変更を追跡できるようになりました。 [詳細情報。](/graph/api/administrativeunit-delta?tabs=http&view=graph-rest-beta&preserve-view=true)
 
 ---
 
@@ -650,7 +650,7 @@ oAuth2PermissionGrant に対するデルタ クエリがパブリック プレ�
 - ユーザーのパスワードをリセットする
 - SMS サインインを有効または無効にする
 
-詳細については、「[Azure AD 認証方法の API の概要](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)」をご覧ください。
+詳細については、「[Azure AD 認証方法の API の概要](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta&preserve-view=true)」をご覧ください。
 
 ---
 
@@ -1424,7 +1424,7 @@ Azure AD アプリケーション ギャラリーが更新され、プロビジ�
 
 **種類:** 変更の計画 **サービス カテゴリ:** ID 保護 **製品の機能:** ID のセキュリティ & 保護
 
-開発者からのフィードバックに応え、Azure AD Premium P2 サブスクライバーは Microsoft Graph 用の新しい riskDetection API を使用して Azure AD Identity Protection のリスク検出データに対して複雑なクエリを実行できるようになりました。 既存の [identityRiskEvent](/graph/api/resources/identityriskevent?view=graph-rest-beta) API ベータ版では、**2020 年 1 月 10 日** 頃からデータを戻すことを停止します。 組織で identityRiskEvent API を使用している場合は、新しい riskDetection API に移行する必要があります。
+開発者からのフィードバックに応え、Azure AD Premium P2 サブスクライバーは Microsoft Graph 用の新しい riskDetection API を使用して Azure AD Identity Protection のリスク検出データに対して複雑なクエリを実行できるようになりました。 既存の [identityRiskEvent](/graph/api/resources/identityriskevent?view=graph-rest-beta&preserve-view=true) API ベータ版では、**2020 年 1 月 10 日** 頃からデータを戻すことを停止します。 組織で identityRiskEvent API を使用している場合は、新しい riskDetection API に移行する必要があります。
 
 新しい riskDetection API の詳細については、[リスク検出 API のリファレンス ドキュメント](/graph/api/resources/riskdetection)をご覧ください。
 
@@ -2144,7 +2144,7 @@ Azure AD PowerShell モジュールを通じて Azure AD のアクティビテ�
 
 Microsoft Graph 用の新しい riskDetections API のパブリック プレビューが開始されました。 この新しい API を使用すると、組織の Identity Protection に関連したユーザーおよびサインインのリスク検出の一覧を表示できます。 また、この API を使用して、検出の種類、状態、レベルなどの詳細を含むリスク検出のクエリをさらに効率良く行うことができます。
 
-詳細については、[リスク検出 API のリファレンス ドキュメント](/graph/api/resources/riskdetection?view=graph-rest-beta)をご覧ください。
+詳細については、[リスク検出 API のリファレンス ドキュメント](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)をご覧ください。
 
 ---
 
@@ -2292,7 +2292,7 @@ ID セキュリティ スコア機能の詳細については、「[Azure Active
 
 Risky Users API を使用して、ユーザーのリスク履歴を取得し、危険なユーザーを無視し、ユーザーを侵害対象として確認できるようになったことをお知らせします。 この変更により、より効率的にユーザーのリスク状態を更新し、リスク履歴を理解できるようになりました。
 
-詳細については、[Risky Users API のリファレンス ドキュメント](/graph/api/resources/riskyuser?view=graph-rest-beta)を参照してください。
+詳細については、[Risky Users API のリファレンス ドキュメント](/graph/api/resources/riskyuser?view=graph-rest-beta&preserve-view=true)を参照してください。
 
 ---
 

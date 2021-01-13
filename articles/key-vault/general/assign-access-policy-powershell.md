@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fb28b4b678b37f69331b2ecff6272fd7aa64d191
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4cf0393cdb0aae1b352b81df4893f874f34970cc
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287620"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934537"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>Azure PowerShell を使用して Key Vault アクセス ポリシーを割り当てる
 
@@ -51,7 +51,7 @@ Azure PowerShell を使用して Azure Active Directory にグループを作成
     Get-AzADServicePrincipal -SearchString <search-string>
     ```
 
-- グループ: [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup?view=azps-2.7.0) コマンドレットを `-SearchString` パラメーターを指定して使用し、結果を目的のグループの名前にフィルター処理します。
+- グループ: [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) コマンドレットを `-SearchString` パラメーターを指定して使用し、結果を目的のグループの名前にフィルター処理します。
 
     ```azurepowershell-interactive
     Get-AzADGroup -SearchString <search-string>
@@ -79,7 +79,6 @@ Set-AzKeyVaultAccessPolicy -VaultName <key-vault-name> -ObjectId <Id> -Permissio
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Key Vault セキュリティ: ID 管理とアクセス管理](overview-security.md#identity-and-access-management)
+- [Azure Key Vault セキュリティ: ID 管理とアクセス管理](security-overview.md#identity-management)
 - [キー コンテナーをセキュリティで保護する](secure-your-key-vault.md)
 - [Azure Key Vault 開発者ガイド](developers-guide.md)
-- [Azure Key Vault のベスト プラクティス](best-practices.md)

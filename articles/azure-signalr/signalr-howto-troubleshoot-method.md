@@ -1,17 +1,17 @@
 ---
 title: Azure SignalR Service のトラブルシューティングの実践
 description: 接続とメッセージ配信に関する問題のトラブルシューティング方法について説明します
-author: YanJin
+author: yjin81
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: 413bb88deac96c1ca12e8a9d25fc9cd16edf4616
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2e22777b747ae24c3e643cbd43bfdb0604d453a2
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183959"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707658"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>接続とメッセージ配信に関する問題のトラブルシューティング方法
 
@@ -28,6 +28,8 @@ ms.locfileid: "96183959"
 * `Classic` モードの場合は、「[クラシック モードのトラブルシューティング](#classic_mode_tsg)」を参照してください
 
 <a name="default_mode_tsg"></a>
+
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="default-mode-troubleshooting"></a>既定モードのトラブルシューティング
 
@@ -73,6 +75,7 @@ Azure SignalR Service のネットワークが不安定であるかその定期�
 
 サーバー側のネットワーク トレースを表示して、"*サーバー接続*" が切断された理由や、*サービス* に拒否された理由について、状態コードとエラーの詳細を確認します。そして、[トラブルシューティング ガイド](./signalr-howto-troubleshoot-guide.md)で根本原因を調べます。
 
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
 
 ### <a name="how-to-add-logs"></a>ログを追加する方法
 
@@ -166,6 +169,8 @@ Azure SignalR サービスに対して[診断ログを有効にする](./signalr
 
 <a name="serverless_mode_tsg"></a>
 
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="serverless-mode-troubleshooting"></a>サーバーレス モードのトラブルシューティング
 
 **ASRS** が "*サーバーレス*" モードになっている場合、**ASP.NET Core SignalR** では `Serverless` モードのみがサポートされ、**ASP.NET SignalR** ではこのモードはサポート **されません**。
@@ -174,11 +179,15 @@ Azure SignalR サービスに対して[診断ログを有効にする](./signalr
 
 <a name="classic_mode_tsg"></a>
 
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="classic-mode-troubleshooting"></a>クラシック モードのトラブルシューティング
 
 `Classic` モードは古くなっており、使用することはお勧めできません。 このモードでは、Azure SignalR サービスは接続された "*サーバー接続*" を使用して、現在のサービスが `default` モードと `serverless` モードのどちらになっているかを判断します。 ネットワークの不安定性などの理由で、接続されているすべての "*サーバー接続*" が突然切断されると、Azure SignalR では `serverless` モードに切り替えられたと認識されて、この期間中に接続されたクライアントは、ホストされていたアプリ サーバーにルーティングされなくなるため、これが中間クライアント接続の問題につながる可能性があります。 [サービス側のログ](#add_logs_server)を有効にして、ホストされているアプリ サーバーがあっても、一部のクライアントがアプリ サーバー側に到達しない場合は、`ServerlessModeEntered` として記録されたクライアントがあるかどうかを確認します。 存在する場合は、[これらのクライアント接続を中止](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md#API)して、クライアントを再起動させると役立つことがあります。
 
 `classic` モードの接続とメッセージ配信に関する問題のトラブルシューティングは、[既定モードの問題のトラブルシューティング](#default_mode_tsg)に似ています。
+
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="service-health"></a>サービス正常性
 
@@ -195,6 +204,8 @@ Azure SignalR サービスに対して[診断ログを有効にする](./signalr
     * 上記のすべての選択肢が機能しない場合は、Azure portal で新しいサポート要求を追加し、Microsoft までお問い合わせください。
 
 [ディザスター リカバリー](./signalr-concept-disaster-recovery.md)の詳細を確認してください。
+
+[トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="next-steps"></a>次のステップ
 

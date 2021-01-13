@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 87d6ca8ee69ca49cf52b61e6beddb56721658afa
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: bdbbf3e808e1dda0970aaf87d154ee79bea4dcb1
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593741"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964169"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics からのデータの共有と受信
 
@@ -302,7 +302,7 @@ SQL ソースからデータを共有するとき、スナップショットの�
 | Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
-| イメージ |Byte[] |
+| image |Byte[] |
 | INT |Int32 |
 | money |Decimal |
 | nchar |String, Char[] |
@@ -341,7 +341,7 @@ SQL スナップショットのパフォーマンスは、さまざまな要因�
 * ソースとターゲットのデータ ストアの場所。 
 
 ## <a name="troubleshoot-sql-snapshot-failure"></a>SQL スナップショット エラーのトラブルシューティング
-スナップショット エラーの最も一般的な原因は、Data Share にソースまたはターゲットのデータ ストアへのアクセス許可がないことです。 ソースまたはターゲットの Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW) へのアクセス許可を Data Share に付与するには、Azure Active Directory 認証を使用して SQL データベースに接続するときに、提供された SQL スクリプトを実行する必要があります。 その他の SQL スナップショット エラーをトラブルシューティングするには、[スナップショット エラーのトラブルシューティング](data-share-troubleshoot.md#snapshot-failed)に関する記事を参照してください。
+スナップショット エラーの最も一般的な原因は、Data Share にソースまたはターゲットのデータ ストアへのアクセス許可がないことです。 ソースまたはターゲットの Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW) へのアクセス許可を Data Share に付与するには、Azure Active Directory 認証を使用して SQL データベースに接続するときに、提供された SQL スクリプトを実行する必要があります。 その他の SQL スナップショット エラーをトラブルシューティングするには、[スナップショット エラーのトラブルシューティング](data-share-troubleshoot.md#snapshots)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Share サービスを使用して SQL ソースからデータを共有および受信する方法について学習しました。 他のデータ ソースからの共有の詳細については、[サポートされているデータ ストア](supported-data-stores.md)に関するページに進んでください。

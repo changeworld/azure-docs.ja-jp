@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 06a9a955e8a963f94b1885abf5a920cb96c01940
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: adb3691625d6cdde03c803480ae948bb1911cc7d
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007442"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964373"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure portal を使用して Azure でのロールの割り当てを一覧表示する
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] この記事では、Azure portal を使用してロールの割り当てを一覧表示する方法を説明します。
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] この記事では、Azure portal を使用してロールの割り当てを一覧表示する方法を説明します。
 
 > [!NOTE]
 > 組織が、[Azure の委任されたリソース管理](../lighthouse/concepts/azure-delegated-resource-management.md)を使用するサービス プロバイダーに管理機能を外部委託している場合、そのサービス プロバイダーによって承認されているロールの割り当てはここに表示されません。

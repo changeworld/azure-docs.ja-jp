@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 874d44e3900b1edf24c2f6bee95d787c5fc3988d
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 24f6052c436b73d0075371fa74160d21826e2209
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704860"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97866136"
 ---
 ## <a name="create-an-azure-container-instance-resource-using-the-azure-portal"></a>Azure portal を使用して Azure コンテナー インスタンス リソースを作成する
 
@@ -28,8 +28,8 @@ ms.locfileid: "97704860"
     |Resource group|利用可能なリソース グループを選択するか、新しいリソース グループを作成します (`cognitive-services` など)。|
     |コンテナー名|`cognitive-container-instance` などの名前を入力します。 この名前は小文字である必要があります。|
     |場所|デプロイのためのリージョンを選択します。|
-    |イメージの種類|資格情報を必要としないコンテナー レジストリにコンテナー イメージが格納されている場合、`Public` を選択します。 コンテナー イメージにアクセスするとき、資格情報が必要な場合、`Private` を選択します。 コンテナー イメージが `Public` または `Private` ("パブリック プレビュー") であるかどうかに関する詳細は、「[コンテナーのリポジトリとイメージ](../../cognitive-services-container-support.md#container-repositories-and-images)」を参照してください。 |
-    |イメージ名|Cognitive Services コンテナーの場所を入力します。 場所は `docker pull` コマンドの引数として使用される場所です。 使用可能なイメージ名と対応するリポジトリについては、[コンテナーのリポジトリとイメージ](../../cognitive-services-container-support.md#container-repositories-and-images)を参照してください。<br><br>イメージ名は、3 つの部分を指定する完全修飾名にする必要があります。 最初にコンテナー レジストリ、次にリポジトリ、最後にイメージ名 `<container-registry>/<repository>/<image-name>` です。<br><br>例を 1 つ挙げてみると、`mcr.microsoft.com/azure-cognitive-services/keyphrase` であれば、Microsoft Container Registry の Azure Cognitive Services リポジトリにあるキー フレーズ抽出イメージを指します。 もう 1 つの例を挙げると、`containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` は、Container Preview コンテナー レジストリの Microsoft リポジトリの Speech to Text イメージです。 |
+    |イメージの種類|資格情報を必要としないコンテナー レジストリにコンテナー イメージが格納されている場合、`Public` を選択します。 コンテナー イメージにアクセスするとき、資格情報が必要な場合、`Private` を選択します。 コンテナー イメージが `Public` または `Private` ("パブリック プレビュー") であるかどうかに関する詳細は、「[コンテナーのリポジトリとイメージ](../container-image-tags.md)」を参照してください。 |
+    |イメージ名|Cognitive Services コンテナーの場所を入力します。 場所は `docker pull` コマンドの引数として使用される場所です。 使用可能なイメージ名と対応するリポジトリについては、[コンテナーのリポジトリとイメージ](../container-image-tags.md)を参照してください。<br><br>イメージ名は、3 つの部分を指定する完全修飾名にする必要があります。 最初にコンテナー レジストリ、次にリポジトリ、最後にイメージ名 `<container-registry>/<repository>/<image-name>` です。<br><br>例を 1 つ挙げてみると、`mcr.microsoft.com/azure-cognitive-services/keyphrase` であれば、Microsoft Container Registry の Azure Cognitive Services リポジトリにあるキー フレーズ抽出イメージを指します。 もう 1 つの例を挙げると、`containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` は、Container Preview コンテナー レジストリの Microsoft リポジトリの Speech to Text イメージです。 |
     |OS の種類|`Linux`|
     |サイズ|特定の Cognitive Service コンテナーに対して推奨されるサイズに変更します。<br>2 CPU コア<br>4 GB
 

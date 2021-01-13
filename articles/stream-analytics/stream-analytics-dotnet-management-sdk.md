@@ -3,17 +3,16 @@ title: Azure Stream Analytics の管理用 .NET SDK
 description: Stream Analytics 管理用 .NET SDK の使用 分析ジョブを設定および実行する方法について説明します。 プロジェクト、入力、出力、および変換を作成します。
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 93e10baa5281481b57e945f93b7375060b574de5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 633885bb1062edac8226c073768ffdeba84fcb55
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126857"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012633"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>管理用 .NET SDK:.NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行
 管理用 .NET SDK を使用する .NET 用 Stream Analytics API で、分析ジョブを設定して実行する方法について説明します。 プロジェクトの設定、入力と出力ソース、変換の作成、およびジョブの開始と停止を行います。 分析ジョブでは、BLOB ストレージまたはイベント ハブからデータをストリームできます。
@@ -167,7 +166,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
    ```
 
 ## <a name="create-a-stream-analytics-input-source"></a>Stream Analytics の入力ソースの作成
-次のコードは、BLOB 入力ソースの種類と CSV シリアル化が指定された Stream Analytics の入力ソースを作成します。 イベント ハブ入力ソースを作成するには、 **BlobStreamInputDataSource** の代わりに **EventHubStreamInputDataSource** を使用します。 同様に、入力ソースのシリアル化の種類もカスタマイズすることができます。
+次のコードは、BLOB 入力ソースの種類と CSV シリアル化が指定された Stream Analytics の入力ソースを作成します。 イベント ハブ入力ソースを作成するには、**BlobStreamInputDataSource** の代わりに **EventHubStreamInputDataSource** を使用します。 同様に、入力ソースのシリアル化の種類もカスタマイズすることができます。
 
    ```csharp
    // Create an input

@@ -3,16 +3,15 @@ title: Azure Stream Analytics との Power BI ダッシュボードの統合
 description: この記事では、リアルタイムの Power BI ダッシュボードを使って、Azure Stream Analytics ジョブからデータを視覚化する方法について説明します。
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/16/2020
-ms.openlocfilehash: 4e3f31442c5fa645e27a640d8facf86aed20aa75
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3bd35df91e836245de52d8959dff0671582ebc3f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006697"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012446"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics と Power BI:ストリーミング データのリアルタイム分析ダッシュボード
 

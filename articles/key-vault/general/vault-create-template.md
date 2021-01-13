@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1ab382ec10d932b94961c73b7d7ac9082125a88c
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: e19277aa3639031371e0e8dd28f4dd849efd4597
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704522"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933933"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure キー コンテナーとコンテナーのアクセス ポリシーを作成する方法
 
@@ -213,7 +213,7 @@ Write-Host "Press [ENTER] to continue..."
 
 - [Azure Key Vault の概要](../general/overview.md)を確認します。
 - [Azure リソース マネージャー](../../azure-resource-manager/management/overview.md)の詳細を確認します。
-- [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認します。
+- 「[Azure Key Vault のセキュリティの概要](security-overview.md)」を確認する
 
 ## <a name="next-steps"></a>次の手順
 

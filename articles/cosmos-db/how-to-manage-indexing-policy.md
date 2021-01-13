@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: cd51210a64223fab5d2d48a91bd3d0a6521a9627
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8d52f8c59e83a4aae8724100770965f756a439fb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341316"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015693"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でインデックス作成ポリシーを管理する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,7 +27,7 @@ Azure Cosmos DB では、コンテナーごとに定義された[インデック
 
 [JSON 形式](index-policy.md#include-exclude-paths)で示されたインデックス作成ポリシーの例をいくつか紹介します。これは、Azure portal 上に公開される際の方法です。 同じパラメーターは、Azure CLI のほか、任意の SDK で設定することができます。
 
-### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>一部のプロパティ パスを選択的に除外するオプトアウト ポリシー
+### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a><a id="range-index"></a>一部のプロパティ パスを選択的に除外するオプトアウト ポリシー
 
 ```json
     {
@@ -144,9 +144,9 @@ Azure Cosmos DB では、コンテナーごとに定義された[インデック
 ```
 
 > [!NOTE]
-> 一般的に、データ モデルに追加される新しいプロパティのインデックスを Azure Cosmos DB がプロアクティブに作成できるよう、 **オプトアウト** インデックス作成ポリシーの使用をお勧めします。
+> 一般的に、データ モデルに追加される新しいプロパティのインデックスを Azure Cosmos DB がプロアクティブに作成できるよう、**オプトアウト** インデックス作成ポリシーの使用をお勧めします。
 
-### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>特定のプロパティ パスに対してのみ空間インデックスを使用する
+### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a><a id="spatial-index"></a>特定のプロパティ パスに対してのみ空間インデックスを使用する
 
 ```json
 {
@@ -176,7 +176,7 @@ Azure Cosmos DB では、コンテナーごとに定義された[インデック
 }
 ```
 
-## <a name="composite-indexing-policy-examples"></a>複合インデックス作成ポリシーの例
+## <a name="composite-indexing-policy-examples"></a><a id="composite-index"></a>複合インデックス作成ポリシーの例
 
 個々のプロパティのパスを含めたり除外したりするほかに、複合インデックスを指定することもできます。 複数のプロパティを対象とする 1 つの `ORDER BY` 句を使用したクエリを実行したい場合は、これらのプロパティに対する[複合インデックス](index-policy.md#composite-indexes)が必要になります。 さらに、複合インデックスには、さまざまなプロパティに複数のフィルターや、1 つのフィルターと 1 つの ORDER BY 句の両方が与えられているクエリでパフォーマンス上の長所があります。
 

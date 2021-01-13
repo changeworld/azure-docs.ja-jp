@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics のクエリのトラブルシューティング
 description: この記事では、Azure Stream Analytics ジョブのクエリのトラブルシューティングを行う方法について説明します。
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: ef03560cff704255d2779a747d124e0b39a1c657
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 0dc36b817d5b5cdf731edecd64e1879c153d866a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491309"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015132"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics のクエリのトラブルシューティング
 

@@ -5,19 +5,28 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 12/14/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7931ad9e55d62d5fa2b1828d276e56f7c8cd02e1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: aea51e56f2d96fa634b1ece2029c9ea5bf3f60fc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286484"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011307"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLI の使用による ExpressRoute Direct の構成
 
 ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所を通じて Microsoft のグローバル ネットワークに直接接続できます。 詳しくは、[ExpressRoute Direct の接続](expressroute-erdirect-about.md)に関する記事をご覧ください。
+
+## <a name="before-you-begin"></a>開始する前に
+
+ExpressRoute Direct を利用する前に、まず、サブスクリプションを登録する必要があります。 登録するには、以下の詳細を含め、サブスクリプション ID を記載して、<ExpressRouteDirect@microsoft.com> にメールを送信します。
+
+* **ExpressRoute Direct** で実行しようとしているシナリオ
+* 場所設定。すべての場所の完全なリストについては、[パートナーとピアリングの場所](expressroute-locations-providers.md)に関するページを参照してください。
+* 実装のタイムライン
+* その他の質問について
 
 ## <a name="create-the-resource"></a><a name="resources"></a>リソースを作成する
 

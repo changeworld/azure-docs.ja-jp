@@ -1,21 +1,21 @@
 ---
-title: Azure Maps Android SDK を使用してマップにタイル レイヤーを追加する
-description: マップにタイル レイヤーを追加する方法について説明します。 Microsoft Azure Maps Android SDK を使用して気象レーダーのオーバーレイをマップに追加する例を参照してください。
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 04/26/2019
-ms.topic: how-to
+title: Android マップへのタイル レイヤーの追加 | Microsoft Azure Maps
+description: マップにタイル レイヤーを追加する方法について説明します。 Azure Maps Android SDK を使用して気象レーダーのオーバーレイをマップに追加する例を参照してください。
+author: rbrundritt
+ms.author: richbrun
+ms.date: 12/08/2020
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 22618a28f1a87e68c19467aedf639e96ec2fb91e
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+manager: cpendle
+ms.openlocfilehash: 8ea6f44c47c5cd4d223b053640f65827f46db482
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532678"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679293"
 ---
-# <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用してマップにタイル レイヤーを追加する
+# <a name="add-a-tile-layer-to-a-map-android-sdk"></a>マップにタイル レイヤーを追加する (Android SDK)
 
 この記事では、Azure Maps Android SDK を使用してマップにタイル レイヤーをレンダリングする方法を示します。 タイル レイヤーを使用すると、Azure Maps ベース マップ タイルの上に画像を重ねることができます。 Azure Maps のタイル システムの詳細については、[ズーム レベルとタイル グリッド](zoom-levels-and-tile-grid.md)のドキュメントを参照してください。
 
@@ -23,10 +23,10 @@ ms.locfileid: "96532678"
 
 * X、Y、ズーム表記 - ズーム レベルに基づいた、タイル グリッド内のタイルの列 (x)、行 (x) の位置です。
 * quadkey 表記 - x、y、ズーム情報を組み合わせて、タイルの一意の識別子である 1 つの文字列値にします。
-* 境界ボックス - 境界ボックス座標を使用して、[Web マッピング サービス (WMS)](https://www.opengeospatial.org/standards/wms) で一般的に使用されている `{west},{south},{east},{north}` の形式で画像を指定することができます。
+* 境界ボックス - 境界ボックス座標を使用して、[Web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms) で一般的に使用されている `{west},{south},{east},{north}` の形式で画像を指定できます。
 
 > [!TIP]
-> TileLayer は、マップ上で大規模なデータ セットを視覚化する場合に適しています。 画像からタイル レイヤーを生成できるだけでなく、ベクター データもタイル レイヤーとしてレンダリングできます。 ベクター データをタイル レイヤーとしてレンダリングすることで、マップ コントロールでは、タイルが表すベクター データよりもはるかにファイル サイズの小さいタイルを読み込むだけで済みます。 この手法は、何百万行ものデータをマップにレンダリングする必要がある場合によく使われています。
+> TileLayer は、マップ上で大規模なデータ セットを視覚化する場合に適しています。 画像からタイル レイヤーを生成できるだけでなく、ベクター データもタイル レイヤーとしてレンダリングできます。 ベクター データをタイル レイヤーとしてレンダリングすることで、マップ コントロールで必要となるのはタイルの読み込みだけです。タイルは、それらが表すベクター データよりもはるかに小さいファイル サイズである可能性があります。 この手法は、何百万行ものデータをマップにレンダリングする必要がある場合によく使われています。
 
 タイル レイヤーに渡されるタイル URL は、TileJSON リソースへの http/https URL、または次のパラメーターを使用するタイル URL テンプレートにする必要があります。 
 
@@ -39,144 +39,34 @@ ms.locfileid: "96532678"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事のプロセスを完了するには、[Azure Maps Android SDK](./how-to-use-android-map-control-library.md) をインストールしてマップを読み込む必要があります。
-
+この記事のプロセスを完了するには、[Azure Maps Android SDK](how-to-use-android-map-control-library.md) をインストールしてマップを読み込む必要があります。
 
 ## <a name="add-a-tile-layer-to-the-map"></a>マップにタイル レイヤーを追加する
 
- このサンプルは、タイルのセットを指すタイル レイヤーを作成する方法を示しています。 これらのタイルでは、"x、y、ズーム" のタイル システムが使用されます。 このタイル レイヤーのソースは、[アイオワ州立大学の Iowa Environmental Mesonet](https://mesonet.agron.iastate.edu/ogc/) の気象レーダー オーバーレイです。 
+このサンプルは、タイルのセットを指すタイル レイヤーを作成する方法を示しています。 このサンプルでは、"x、y、ズーム" タイル システムを使用します。 このタイル レイヤーのソースは、クラウド ソーシングされた海図が含まれている [OpenSeaMap プロジェクト](https://openseamap.org/index.php)です。 多くの場合、タイル レイヤーを表示するときは、マップ上の都市のラベルをはっきりと確認できることが求められます。 この動作は、マップ ラベル レイヤーの下にタイル レイヤーを挿入することによって実現できます。
 
-次の手順に従って、マップにタイル レイヤーを追加できます。
+```java
+TileLayer layer = new TileLayer(
+    tileUrl("https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"),
+    opacity(0.8f),
+    tileSize(256),
+    minSourceZoom(7),
+    maxSourceZoom(17)
+);
 
-1. **res > layout > activity_main.xml** を編集すると、次のようになります。
+map.layers.add(layer, "labels");
+```
 
-    ```XML
-    <?xml version="1.0" encoding="utf-8"?>
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-    
-        <com.microsoft.azure.maps.mapcontrol.MapControl
-            android:id="@+id/mapcontrol"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:mapcontrol_centerLat="40.75"
-            app:mapcontrol_centerLng="-99.47"
-            app:mapcontrol_zoom="3"
-            />
-    
-    </FrameLayout>
-    ```
+次のスクリーンショットは、上記のコードによって、濃いグレー スケール スタイルが設定されたマップ上に航海情報のタイル レイヤーが表示されている状態を示しています。
 
-2. 次のコード スニペットを `MainActivity.java` クラスの **onCreate()** メソッドにコピーします。
-
-    ```Java
-    mapControl.onReady(map -> {
-        //Add a tile layer to the map, below the map labels.
-        map.layers.add(new TileLayer(
-            tileUrl("https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{z}/{x}/{y}.png"),
-            opacity(0.8f),
-            tileSize(256)
-        ), "labels");
-    });
-    ```
-    
-    上記のコード スニペットは、まず **onReady()** コールバック メソッドを使用して Azure Maps コントロール インスタンスを取得します。 次に、`TileLayer` オブジェクトを作成し、書式設定された **xyz** タイル URL を `tileUrl` オプションに渡します。 レイヤーの不透明度は `0.8` に設定されます。使用されているタイル サービスのタイルは 256 ピクセルのタイルであるため、この情報が `tileSize` オプションに渡されます。 タイル レイヤーは、次にマップ レイヤー マネージャーに渡されます。
-
-    上記のコード スニペットを追加したら、`MainActivity.java` は次のようになります。
-    
-    ```Java
-    package com.example.myapplication;
-
-    import android.app.Activity;
-    import android.os.Bundle;
-    import android.support.v7.app.AppCompatActivity;
-    import com.microsoft.azure.maps.mapcontrol.layer.TileLayer;
-    import java.util.Arrays;
-    import java.util.List;
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-    import com.microsoft.azure.maps.mapcontrol.MapControl;
-    import static com.microsoft.azure.maps.mapcontrol.options.TileLayerOptions.tileSize;
-    import static com.microsoft.azure.maps.mapcontrol.options.TileLayerOptions.tileUrl;
-        
-    public class MainActivity extends AppCompatActivity {
-    
-        static{
-            AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
-        }
-    
-        MapControl mapControl;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-    
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-    
-            mapControl = findViewById(R.id.mapcontrol);
-    
-            mapControl.onCreate(savedInstanceState);
-    
-            mapControl.onReady(map -> {
-
-                //Add a tile layer to the map, below the map labels.
-                map.layers.add(new TileLayer(
-                    tileUrl("https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{z}/{x}/{y}.png"),
-                    opacity(0.8f),
-                    tileSize(256)
-                ), "labels");
-            });    
-        }
-    
-        @Override
-        public void onResume() {
-            super.onResume();
-            mapControl.onResume();
-        }
-    
-        @Override
-        public void onPause() {
-            super.onPause();
-            mapControl.onPause();
-        }
-    
-        @Override
-        public void onStop() {
-            super.onStop();
-            mapControl.onStop();
-        }
-    
-        @Override
-        public void onLowMemory() {
-            super.onLowMemory();
-            mapControl.onLowMemory();
-        }
-    
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            mapControl.onDestroy();
-        }
-    
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            super.onSaveInstanceState(outState);
-            mapControl.onSaveInstanceState(outState);
-        }    
-    }
-    ```
-
-これでアプリケーションを実行すると、次に示すようにマップ上に線が表示されます。
-
-<center>
-
-![Android マップの線](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
+![タイル レイヤーを表示している Android マップ](media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)
 
 ## <a name="next-steps"></a>次の手順
 
 マップのスタイルを設定する方法の詳細については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [Android マップでのマップ スタイルの変更](./set-android-map-styles.md)
+> [マップ スタイルを変更する](set-android-map-styles.md)
+
+> [!div class="nextstepaction"]
+> [ヒート マップを追加する](map-add-heat-map-layer-android.md)

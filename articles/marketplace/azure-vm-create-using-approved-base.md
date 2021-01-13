@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: krsh
-ms.date: 10/20/2020
-ms.openlocfilehash: 74cab14cd162ba608a9c5d0168485e9055661f55
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 01/06/2021
+ms.openlocfilehash: 9164c1e2542024a02bf4868658d0f29728f32c7b
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590794"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976862"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>承認済みのベースを使用して Azure 仮想マシンを作成する方法
 
@@ -40,15 +40,11 @@ ms.locfileid: "97590794"
 2. **[Virtual Machines]** を選択します。
 3. **[+ 追加]** を選択して、 **[仮想マシンの作成]** 画面を開きます。
 4. ドロップダウン リストからイメージを選択するか、または **[すべてのパブリックおよびプライベート イメージを参照する]** を選択して、使用可能なすべての仮想マシン イメージを検索または参照します。
-5. **Gen 1** VM を作成する場合、 **[ディスク]** タブに移動し、指定のストレージ アカウントで VM の VHD を取得できるよう、 **[マネージド ディスクの使用]** オプションを **[いいえ]** に設定します。
-
-   :::image type="content" source="media/create-vm/create-virtual-machine-sizes-2.png" alt-text="アンマネージド ディスクを選択します。":::
-   
-6. **Gen 2** VM を作成するには、 **[詳細設定]** タブに移動し、 **[Gen 2]** オプションを選択します。
+5. **Gen 2** VM を作成するには、 **[詳細設定]** タブに移動し、 **[Gen 2]** オプションを選択します。
 
     :::image type="content" source="media/create-vm/vm-gen-option.png" alt-text="Gen 1 または Gen 2 を選択します。":::
 
-7. デプロイする VM のサイズを選択します。
+6. デプロイする VM のサイズを選択します。
 
     :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="選択したイメージで推奨される VM サイズを選択します。":::
 
@@ -56,7 +52,6 @@ ms.locfileid: "97590794"
 8. **[確認と作成]** を選択して、選択内容を確認します。 緑色の **検証に成功** のメッセージが表示されたら、 **[作成]** を選択します。
 
 Azure で、指定した仮想マシンのプロビジョニングが開始されます。 左側のメニューで **[Virtual Machines]** タブを選択して、進捗状況を追跡します。 仮想マシンが作成されると、状態が **[実行中]** に変更されます。
-
 
 ## <a name="configure-the-vm"></a>VM を構成する
 

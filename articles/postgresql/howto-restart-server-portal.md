@@ -1,17 +1,17 @@
 ---
 title: サーバーを再起動する - Azure portal - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure portal を使用して Azure Database for PostgreSQL - 単一サーバーを再起動する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 12/20/2020
-ms.openlocfilehash: d3dc01ee163b941f450eeac98adfdf1ea0e91190
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.openlocfilehash: faa61ff477f44347755890dc59ebf4b917afda6f
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706900"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882944"
 ---
 # <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL - 単一サーバーを再起動する
 このトピックでは、Azure Database for PostgreSQL サーバーを再起動する方法について説明します。 メンテナンス上の理由でサーバーの再起動が必要な場合があります。これを行うと、サーバーが操作を実行しているときに短時間の停止が発生します。

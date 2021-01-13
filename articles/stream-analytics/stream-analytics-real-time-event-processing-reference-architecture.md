@@ -3,16 +3,15 @@ title: Azure Stream Analytics を使用したリアルタイム イベント処�
 description: この記事では、Azure Stream Analytics を使用したリアルタイム イベント処理と分析を行うための参照アーキテクチャについて説明します。
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
-ms.openlocfilehash: 0aa489e1732a8be564b3cefe1ed74d7aaacb1456
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 858ec5fef065acba6934945a96c21fb1c26b3685
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124426"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012089"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>参照アーキテクチャ:Microsoft Azure Stream Analytics によるリアルタイム イベント処理
 Azure Stream Analytics を使用したリアルタイム イベント処理のための参照アーキテクチャの目的は、リアルタイムのサービスとしてのプラットフォーム (PaaS) のストリーム処理ソリューションを、 Microsoft Azure でデプロイするための一般的な青写真を提供することです。

@@ -3,17 +3,16 @@ title: リソース ログを使用した Azure Stream Analytics のトラブル
 description: この記事では、Azure Stream Analytics でリソース ログを分析する方法について説明します。
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperf-fy21q1
 ms.date: 06/18/2020
-ms.openlocfilehash: b29e0f99cb4549370be49dc5a1b11d367e30d8c0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 56c7ad49fc9af3ca4f30aa5309623c31e9db7385
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029143"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011120"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>リソース ログを使用した Azure Stream Analytics のトラブルシューティング
 

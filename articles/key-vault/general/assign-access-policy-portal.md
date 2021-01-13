@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9277d100eb6744adfc20fbba9f96b822654e64a3
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 910b8dae10036cc2e396be13495fd28363dc971d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287706"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934562"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Azure portal を使用して Key Vault アクセス ポリシーを割り当てる
 
@@ -54,7 +54,6 @@ Azure Active Directory での Azure portal を通じたグループの作成の�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Key Vault セキュリティ: ID 管理とアクセス管理](overview-security.md#identity-and-access-management)
+- [Azure Key Vault セキュリティ: ID 管理とアクセス管理](security-overview.md#identity-management)
 - [キー コンテナーをセキュリティで保護する](secure-your-key-vault.md)
 - [Azure Key Vault 開発者ガイド](developers-guide.md)
-- [Azure Key Vault のベスト プラクティス](best-practices.md)

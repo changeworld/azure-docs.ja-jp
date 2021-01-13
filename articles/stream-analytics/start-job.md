@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics ジョブを開始する方法
 description: この記事では、Azure portal、PowerShell、Visual Studio から Stream Analytics ジョブを開始する方法について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f89b23d0c20aafeeb07a744545208f6056efa2c9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 79149d8e9862ece24b4b2da4c2ca4afcceb23d63
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130818"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016254"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>Azure Stream Analytics ジョブを開始する方法
 
@@ -24,9 +23,9 @@ Azure portal、Visual Studio、PowerShell を使用して、Azure Stream Analyti
 * **[今すぐ]** :出力イベント ストリームの開始点をジョブの開始時刻と同じにします。 時間演算子 (時間枠、LAG、JOIN など) が使用された場合、Azure Stream Analytics では、入力ソース内のデータが自動的にルックバックされます。 たとえば、ジョブを [今すぐ] で開始したときに、クエリで 5 分間のタンブリング ウィンドウが使用される場合、Azure Stream Analytics では、入力内の 5 分前のデータがシークされます。
 起こり得る最初の出力イベントのタイムスタンプは現在時刻と同じであるかそれよりも後の時刻になり、論理的に出力を生成するために使用できる可能性があるすべての入力イベントが ASA によって確実に処理されます。 たとえば、部分的なウィンドウ集計は生成されません。 それは常に完全な集計値になります。
 
-* **Custom** :出力の開始点を選択できます。 **[今すぐ]** オプションと同じように、Azure Stream Analytics では、時間演算子が使用された場合は、この時刻より前のデータが自動的に読み取られます。 
+* **Custom**:出力の開始点を選択できます。 **[今すぐ]** オプションと同じように、Azure Stream Analytics では、時間演算子が使用された場合は、この時刻より前のデータが自動的に読み取られます。 
 
-* **最終停止時刻** 。 このオプションは、以前にジョブが開始されたが、手動で停止されたか失敗した場合に使用できます。 このオプションを選択すると、Azure Stream Analytics では、データが失われないように、最後の出力時刻を使用してジョブが再開されます。 前のオプションと同じように、Azure Stream Analytics では、時間演算子が使用された場合は、この時刻より前のデータが自動的に読み取られます。 複数の入力パーティションで時刻が異なっている可能性があるため、すべてのパーティションの中で最も早い停止時刻が使用され、その結果、出力内で多少の重複が発生する場合があります。 正確に 1 回のみの処理の詳細については、「[Event Delivery Guarantees (イベント配信の保証)](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)」を参照してください。
+* **最終停止時刻**。 このオプションは、以前にジョブが開始されたが、手動で停止されたか失敗した場合に使用できます。 このオプションを選択すると、Azure Stream Analytics では、データが失われないように、最後の出力時刻を使用してジョブが再開されます。 前のオプションと同じように、Azure Stream Analytics では、時間演算子が使用された場合は、この時刻より前のデータが自動的に読み取られます。 複数の入力パーティションで時刻が異なっている可能性があるため、すべてのパーティションの中で最も早い停止時刻が使用され、その結果、出力内で多少の重複が発生する場合があります。 正確に 1 回のみの処理の詳細については、「[Event Delivery Guarantees (イベント配信の保証)](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)」を参照してください。
 
 
 ## <a name="azure-portal"></a>Azure portal
@@ -39,7 +38,7 @@ Azure portal でジョブに移動し、概要ページで **[開始]** を選�
 
 ジョブ ビューで、緑色の矢印ボタンを選択してジョブを開始します。 **[ジョブ出力の開始モード]** を設定し、 **[開始]** を選択します。 ジョブの状態が **[実行中]** に変わります。
 
-**[ジョブ出力の開始モード]** には、 *JobStartTime* 、 *CustomTime* 、 *LastOutputEventTime* の 3 つのオプションがあります。 このプロパティが指定されていない場合、既定値は *JobStartTime* です。 これらのオプションの詳細については、上記を参照してください。
+**[ジョブ出力の開始モード]** には、*JobStartTime*、*CustomTime*、*LastOutputEventTime* の 3 つのオプションがあります。 このプロパティが指定されていない場合、既定値は *JobStartTime* です。 これらのオプションの詳細については、上記を参照してください。
 
 
 ## <a name="powershell"></a>PowerShell
@@ -53,7 +52,7 @@ Start-AzStreamAnalyticsJob `
   -OutputStartMode 'JobStartTime'
 ```
 
-**OutputStartMode** には、 *JobStartTime* 、 *CustomTime* 、 *LastOutputEventTime* の 3 つのオプションがあります。 このプロパティが指定されていない場合、既定値は *JobStartTime* です。 これらのオプションの詳細については、上記を参照してください。
+**OutputStartMode** には、*JobStartTime*、*CustomTime*、*LastOutputEventTime* の 3 つのオプションがあります。 このプロパティが指定されていない場合、既定値は *JobStartTime* です。 これらのオプションの詳細については、上記を参照してください。
 
 `Start-AzStreamAnalyitcsJob` コマンドレットの詳細については、[Start-AzStreamAnalyticsJob リファレンス](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob)をご覧ください。
 

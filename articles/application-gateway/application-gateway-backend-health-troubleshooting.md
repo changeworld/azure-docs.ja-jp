@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: b8acf1b025a5943773821c8ab78de6288eb6bec2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 05df2144b892aed764f9606fb19bd6a3242b97f3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397900"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934902"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway のバックエンドの正常性に関する問題のトラブルシューティング
 ==================================================
@@ -21,6 +21,9 @@ ms.locfileid: "93397900"
 --------
 
 既定では、Azure Application Gateway は、バックエンド サーバーに対して probe を実行して、その正常性状態を確認すると共に、バックエンド サーバーが要求を処理する準備ができているかどうかを確認します。 ユーザーは、カスタム probe を作成して、ホスト名、probe の対象となるパス、および正常として受け入れられる状態コードを指定することもできます。 どちらのケースでも、バックエンド サーバーが正常に応答しない場合、Application Gateway はそのサーバーを "異常" とマークし、サーバーへの要求の転送を停止します。 サーバーが正常に応答し始めると、Application Gateway は要求の転送を再開します。
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ### <a name="how-to-check-backend-health"></a>バックエンドの正常性を確認する方法
 
@@ -304,7 +307,7 @@ Windows の場合:
 
 1.  Win + R キーを押すか、 **[スタート]** を右クリックして **[実行]** を選択します。
 
-1.  「 **certmgr.msc** 」と入力し、Enter キーを押します。 **[スタート]** メニューで証明書マネージャーを検索することもできます。
+1.  「**certmgr.msc**」と入力し、Enter キーを押します。 **[スタート]** メニューで証明書マネージャーを検索することもできます。
 
 1.  証明書を見つけて開きます (通常は、`\Certificates - Current User\\Personal\\Certificates` にあります)。
 
@@ -393,7 +396,7 @@ OpenSSL を使用する Linux の場合:
 
 1.  仮想ネットワークにカスタム DNS サーバーが構成されている場合は、サーバーがパブリック ドメインを解決できるかどうかを確認します。 パブリック ドメイン名の解決は、Application Gateway が OCSP サーバーなどの外部ドメインにアクセスする必要があるシナリオや、証明書の失効状態などを確認する必要があるシナリオで必要になる場合があります。
 
-1.  Application Gateway が正常で実行中であることを確認するには、ポータルの **[Resource Health]\(リソース正常性\)** オプションにアクセスし、状態が **[正常]** であることを確認します。 **[異常]** または **[デグレード]** 状態が表示される場合は、 [サポートにお問い合わせください](https://azure.microsoft.com/support/options/)。
+1.  Application Gateway が正常で実行中であることを確認するには、ポータルの **[Resource Health]\(リソース正常性\)** オプションにアクセスし、状態が **[正常]** であることを確認します。 **[異常]** または **[デグレード]** 状態が表示される場合は、[サポートにお問い合わせください](https://azure.microsoft.com/support/options/)。
 
 <a name="next-steps"></a>次のステップ
 ----------

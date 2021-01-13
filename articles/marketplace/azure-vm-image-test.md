@@ -7,12 +7,12 @@ ms.topic: how-to
 author: github-2407
 ms.author: krsh
 ms.date: 10/15/2020
-ms.openlocfilehash: 36eebb218ed2b2d9a48cf7d970896115af5cf6f8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a9698981b1a658664bfc14886628bbfd0a4a64d2
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424861"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976930"
 ---
 # <a name="test-a-virtual-machine-image"></a>仮想マシン イメージをテストする
 
@@ -214,28 +214,6 @@ VM オファーを送信する前に、次の手順を完了します。
                             "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('nicName'))]"
                         }
                     ]
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "apiVersion": "2015-06-15",
-            "name": "[concat(parameters('vmName'),'/WinRMCustomScriptExtension')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
-            ],
-            "properties": {
-                "publisher": "Microsoft.Compute",
-                "type": "CustomScriptExtension",
-                "typeHandlerVersion": "1.4",
-                "settings": {
-                    "fileUris": [
-                        "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/ConfigureWinRM.ps1",
-                        "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/makecert.exe",
-                        "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/winrmconf.cmd"
-                    ],
-                    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file ConfigureWinRM.ps1 ',variables('hostDNSNameScriptArgument'))]"
                 }
             }
         }
@@ -705,11 +683,11 @@ $Content = $res | ConvertFrom-Json
 
 次のサンプル画面は、PowerShell で API を呼び出す例を示しています。
 
-**SSH キーを使用** :
+**SSH キーを使用**:
 
  :::image type="content" source="media/vm/call-api-with-ssh-key.png" alt-text="SSH キーを使用した PowerShell での API の呼び出し。":::
 
-**パスワードを使用** :
+**パスワードを使用**:
 
  :::image type="content" source="media/vm/call-api-with-password.png" alt-text="パスワードを使用した PowerShell での API の呼び出し。":::
 

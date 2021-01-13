@@ -3,12 +3,12 @@ title: Azure Service Bus での AMQP 1.0 の概要
 description: オープン標準プロトコルである Advanced Message Queuing Protocol (AMQP) が Azure Service Bus によってどのようにサポートされているかについて説明します。
 ms.topic: article
 ms.date: 11/20/2020
-ms.openlocfilehash: e585fcc905d1651d49008b623b01a6c2f8a04fcc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 241a6b7fb9f9055ce610e44e5cd37dba87c77554
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498780"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709284"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Service Bus での AMQP 1.0 サポート
 Azure Service Bus クラウド サービスでは、主要な通信手段として [Advanced Message Queuing Protocol (AMQP) 1.0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) が使用されています。 Microsoft は、AMQP を開発および進化させるために、過去 10 年間にわたって、お客様および競合するメッセージング ブローカーのベンダーの両方を含む、業界全体のパートナーと協力して、[OASIS AMQP 技術委員会](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)において新しい拡張機能を開発してきました。 AMQP 1.0 は、ISO/IEC 標準です ([ISO 19464:20149](https://www.iso.org/standard/64955.html))。 
@@ -42,7 +42,7 @@ AMQP 1.0 は、2008 年以降、20 社を超える企業 (テクノロジ サプ
 * **テクノロジ ベンダー**: Axway Software、Huawei Technologies、IIT Software、INETCO Systems、Kaazing、Microsoft、Mitre Corporation、Primeton Technologies、Progress Software、Red Hat、SITA、Software AG、Solace Systems、VMware、WSO2、Zenika。
 * **ユーザー企業**: Bank of America、Credit Suisse、Deutsche Boerse、Goldman Sachs、JPMorgan Chase。
 
-[OASIS AMQP 技術委員会](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) の現在の議長は、Red Hat と Microsoft です。
+[OASIS AMQP 技術委員会](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)の現在の議長は、Red Hat と Microsoft です。
 
 オープン標準の利点としては、次のような点がよく挙げられます。
 

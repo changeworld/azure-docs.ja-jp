@@ -2,24 +2,24 @@
 title: Azure Stream Analytics で JSON と AVRO を解析する
 description: この記事では、配列、JSON、CSV 形式のデータなどの複雑なデータ型を操作する方法について説明します。
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6c2eb4225cb014b3251d12470e4e9827150a5cf2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f6cb131fb3ff3cab4122aac5e1c6960dee4f8421
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123355"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012242"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Azure Stream Analytics で JSON データと Avro データを解析する
 
 Azure Stream Analytics では、CSV、JSON、および Avro データ形式のイベントの処理をサポートしています。 JSON データと Avro データのどちらも、入れ子になったオブジェクト (レコード) や配列などの複合型を含む構造にすることができます。 
 
 >[!NOTE]
->Event Hub Capture によって作成される AVRO ファイルは、 *カスタム逆シリアライザー* 機能を使用する必要がある特定の形式を使用します。 詳細については、[.NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る](./custom-deserializer-examples.md)を参照してください。
+>Event Hub Capture によって作成される AVRO ファイルは、*カスタム逆シリアライザー* 機能を使用する必要がある特定の形式を使用します。 詳細については、[.NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る](./custom-deserializer-examples.md)を参照してください。
 >
 >Stream Analytics AVRO 逆シリアル化では、マップの種類はサポートされません。 EventHub キャプチャでマップが使用されるため、Stream Analytics は EventHub キャプチャ BLOB を読み取ることができません。
 
@@ -121,7 +121,7 @@ WHERE
     GetRecordPropertyValue(input.SensorReadings, thresholds.SensorName) > thresholds.Value
 ```
 
-**GetRecordPropertyValue** により、 *SensorReadings* のプロパティを選択します。この名前は参照データから取得したプロパティ名と一致します。 次に、 *SensorReadings* の関連する値が抽出されます。
+**GetRecordPropertyValue** により、 *SensorReadings* のプロパティを選択します。この名前は参照データから取得したプロパティ名と一致します。 次に、*SensorReadings* の関連する値が抽出されます。
 
 結果は次のとおりです。
 
@@ -179,7 +179,7 @@ SELECT DeviceID, PropertyValue AS Humidity INTO HumidityOutput FROM Stage0 WHERE
 |12345|{"key" : "value1"}|
 |54321|{"key" : "value2"}|
 
-単純な JavaScript ユーザー定義関数を記述することで、 *Data* 列の JSON レコードを解析できます。
+単純な JavaScript ユーザー定義関数を記述することで、*Data* 列の JSON レコードを解析できます。
 
 ```javascript
 function parseJson(string) {

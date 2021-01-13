@@ -3,12 +3,12 @@ title: テンプレート内のパラメーター
 description: Azure Resource Manager テンプレート (ARM テンプレート) でパラメーターを定義する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 4ac1aeb579040b35b2a9b4cb90fb5687f91ebd3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 929d871bc0087d4fda585773b349dee4e0945c7c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353512"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934715"
 ---
 # <a name="parameters-in-arm-templates"></a>ARM テンプレートのパラメーター
 
@@ -20,7 +20,7 @@ Resource Manager は、デプロイ操作を開始する前にパラメーター
 
 ## <a name="define-parameter"></a>パラメーターを定義する
 
-単純なパラメーター定義の例を次に示します。 **storageSKU** という名前のパラメーターを定義します。 パラメーターは、文字列値であり、使用目的に対して有効な値のみを受け入れます。 デプロイ時に値が指定されなかった場合、パラメーターは既定値を使用します。
+単純なパラメーター定義の例を次に示します。 `storageSKU` という名前のパラメーターを定義します。 パラメーターは、文字列値であり、使用目的に対して有効な値のみを受け入れます。 デプロイ時に値が指定されなかった場合、パラメーターは既定値を使用します。
 
 ```json
 "parameters": {

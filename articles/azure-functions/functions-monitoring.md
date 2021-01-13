@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 7dbaa8712e09de9084e2bcb66d43f2181af292a0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6dc3c582466fe0646b0350213947ff2173368bde
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033036"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936840"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -113,7 +113,7 @@ Application Insights を使用すると、利用統計情報を長期的スト�
 
 _この機能はプレビュー段階にあります。_ 
 
-[Azure Functions スケール コントローラー](./functions-scale.md#runtime-scaling)は、アプリが実行されている Azure Functions ホストのインスタンスを監視します。 このコントローラーは、現在のパフォーマンスに基づいて、インスタンスを追加または削除するタイミングを決定します。 スケール コントローラーから Application Insights にログを出力させることで、関数アプリのためにスケール コントローラーで下されている決定をより詳細に理解できます。 生成されたログを、別のサービスによる分析のために BLOB ストレージに格納することもできます。 
+[Azure Functions スケール コントローラー](./event-driven-scaling.md#runtime-scaling)は、アプリが実行されている Azure Functions ホストのインスタンスを監視します。 このコントローラーは、現在のパフォーマンスに基づいて、インスタンスを追加または削除するタイミングを決定します。 スケール コントローラーから Application Insights にログを出力させることで、関数アプリのためにスケール コントローラーで下されている決定をより詳細に理解できます。 生成されたログを、別のサービスによる分析のために BLOB ストレージに格納することもできます。 
 
 この機能を有効にするには、`SCALE_CONTROLLER_LOGGING_ENABLED` という名前のアプリケーション設定を、ご利用の関数アプリの設定に追加します。 詳細については、「[スケール コントローラー ログを構成する](configure-monitoring.md#configure-scale-controller-logs)」を参照してください。
 

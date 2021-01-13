@@ -3,12 +3,12 @@ title: Azure Functions での従量課金プランのコストの見積もり
 description: Azure の従量課金プランで関数アプリを実行するときに発生する可能性があるコストをより正確に見積もる方法について説明します。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 58082e03c1416848e9aa1e97308bed1ceaa67295
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 430804d478df718f51ae1da9adb6693f597157a9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168115"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934885"
 ---
 # <a name="estimating-consumption-plan-costs"></a>従量課金プランのコストの見積もり
 
@@ -16,9 +16,9 @@ ms.locfileid: "92168115"
 
 | プラン | 説明 |
 | ---- | ----------- |
-| [**従量課金**](functions-scale.md#consumption-plan) | 関数アプリが実行された時間に対してのみ課金されます。 このプランには、サブスクリプションごとの[無料提供][価格ページ]が含まれます。|
-| [**Premium**](functions-scale.md#premium-plan) | 従量課金プランと同じ機能とスケーリング メカニズムが提供されますが、パフォーマンスと VNET アクセスが増強されています。 コストは、お客様が選択した価格レベルに基づきます。 詳細については、「[Azure Functions の Premium プラン](functions-premium-plan.md)」を参照してください。 |
-| [**専用 (App Service)**](functions-scale.md#app-service-plan) <br/>(Basic レベル以上) | 専用 VM または分離環境で実行する必要がある場合は、カスタム イメージつまり超過した App Service プラン容量を使用します。 [標準の App Service プランの料金](https://azure.microsoft.com/pricing/details/app-service/)を使用します。 コストは、お客様が選択した価格レベルに基づきます。|
+| [**従量課金**](consumption-plan.md) | 関数アプリが実行された時間に対してのみ課金されます。 このプランには、サブスクリプションごとの[無料提供][価格ページ]が含まれます。|
+| [**Premium**](functions-premium-plan.md) | 従量課金プランと同じ機能とスケーリング メカニズムが提供されますが、パフォーマンスと VNET アクセスが増強されています。 コストは、お客様が選択した価格レベルに基づきます。 詳細については、「[Azure Functions の Premium プラン](functions-premium-plan.md)」を参照してください。 |
+| [**専用 (App Service)**](dedicated-plan.md) <br/>(Basic レベル以上) | 専用 VM または分離環境で実行する必要がある場合は、カスタム イメージつまり超過した App Service プラン容量を使用します。 [標準の App Service プランの料金](https://azure.microsoft.com/pricing/details/app-service/)を使用します。 コストは、お客様が選択した価格レベルに基づきます。|
 
 関数のパフォーマンスとコストの要件に最適なプランを選択します。 詳細については、「[Azure Functions のスケールとホスティング](functions-scale.md)」を参照してください。
 

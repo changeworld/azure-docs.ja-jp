@@ -3,12 +3,12 @@ title: Azure Functions を Azure 仮想ネットワークに統合する
 description: 関数を Azure 仮想ネットワークに接続する方法を説明するステップ バイ ステップ チュートリアル
 ms.topic: article
 ms.date: 4/23/2020
-ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efc936111d162d73b1cc5465ae6b677c9006ab32
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387525"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937020"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>チュートリアル: Functions を Azure 仮想ネットワークに統合する
 
@@ -49,7 +49,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. ポータルで、左側のナビゲーション ウィンドウで **[+ リソースの作成]** を選択し、検索フィールドに「`WordPress LEMP7 Max Performance`」と入力して Enter キーを押します。
 
-1. 検索結果で **[Wordpress LEMP Max Performance]** を選択します。 **ソフトウェア プラン**として **Wordpress LEMP Max Performance for CentOS** のソフトウェア プランを選択し、 **[作成]** を選択します。
+1. 検索結果で **[Wordpress LEMP Max Performance]** を選択します。 **ソフトウェア プラン** として **Wordpress LEMP Max Performance for CentOS** のソフトウェア プランを選択し、 **[作成]** を選択します。
 
 1. **[基本]** タブで、画像の下の表で指定されているように VM 設定を使用します。
 
@@ -105,7 +105,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. **[VNET 統合]** ページで、 **[VNet の追加]** を選択します。
 
-    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="関数アプリで [ネットワーク] を選択する":::
+    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="VNet 統合プレビューを追加する":::
 
 1. **[ネットワーク機能の状態]** で、画像の下にある表の設定を使用します。
 
@@ -129,7 +129,7 @@ VNet 統合を有効にすると、仮想ネットワークで実行している
 
 1. 関数アプリで、左側のメニューから **[プロキシ]** を選択し、次に **[追加]** を選択します。 画像の下の表に示したプロキシ設定を使用してください。
 
-    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="関数アプリで [ネットワーク] を選択する":::
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="プロキシ設定を定義する":::
 
     | 設定  | 推奨値  | 説明      |
     | -------- | ---------------- | ---------------- |
@@ -160,4 +160,4 @@ Premium プランで実行されている関数は、PremiumV2 プラン上の W
 > [!div class="nextstepaction"]
 > [関数のネットワーク オプションに関する詳細情報](./functions-networking-options.md)
 
-[Premium プラン]: functions-scale.md#premium-plan
+[Premium プラン]: functions-premium-plan.md

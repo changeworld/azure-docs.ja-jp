@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 4f9de2f956451cd6ab8bc8a7a0fc51903ec54694
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: d9b77def3ccefe3c866ccef78684d38da0b8a268
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97815871"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915149"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>DDoS 保護アラートの表示と構成
 
@@ -33,8 +33,8 @@ Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、�
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-- このチュートリアルの手順を実行する前に、まず [Azure DDoS Standard Protection プラン](manage-ddos-protection.md)を作成し、仮想ネットワーク上で DDoS Protection Standard を有効にする必要があります。
-- DDoS は、仮想ネットワーク内のリソースに割り当てられているパブリック IP アドレスを監視します。 仮想ネットワーク内のパブリック IP アドレスを持つリソースがない場合は、最初にパブリック IP アドレスを使用してリソースを作成する必要があります。 Azure App Service Environment と Azure VPN Gateway を除き、[Azure サービスの仮想ネットワーク](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)に関するページに一覧表示されている Resource Manager (クラシックではない) を通じてデプロイされているすべてのリソースのパブリック IP アドレスを監視できます (バックエンド仮想マシンが仮想ネットワーク内にある Azure Load Balancer を含む)。 このチュートリアルを続行するために、[Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシンをすばやく作成できます。     
+- このチュートリアルの手順を実行する前に、まず [Azure DDoS Standard 保護プラン](manage-ddos-protection.md)を作成し、仮想ネットワーク上で DDoS Protection Standard を有効にしておく必要があります。
+- DDoS は、仮想ネットワーク内のリソースに割り当てられているパブリック IP アドレスを監視します。 仮想ネットワーク内のパブリック IP アドレスを持つリソースがない場合は、最初にパブリック IP アドレスを使用してリソースを作成する必要があります。 Azure App Service Environment を除き、[Azure サービスの仮想ネットワーク](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)に関する記事に一覧表示されている Resource Manager (クラシックではない) を通じてデプロイされている、すべてのリソースのパブリック IP アドレスを監視できます (バックエンド仮想マシンが仮想ネットワーク内にある Azure Load Balancer を含む)。 このチュートリアルを続行するために、[Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシンをすばやく作成できます。     
 
 ## <a name="configure-alerts-through-azure-monitor"></a>Azure Monitor を使用してアラートを構成する
 
@@ -60,11 +60,11 @@ Azure Monitor のアラート構成を使用すると、利用可能な DDoS Pro
 3. 灰色のナビゲーション バーで、 **[新しいアラート ルール]** を選択します。 
 4. 独自の値を入力または選択するか次の例の値を入力し、残りの既定値はそのまま受け入れて、 **[アラート ルールの作成]** を選択します。
 
-    |設定                  |値                                                                                               |
+    |設定                  |[値]                                                                                               |
     |---------                |---------                                                                                           |
     | スコープ                   | **[リソースの選択]** を選択します。 </br> ログに記録するパブリック IP アドレスを含む **サブスクリプション** を選択し、 **[リソースの種類]** で **[パブリック IP アドレス]** を選択してから、メトリックのログを記録する特定のパブリック IP アドレスを選択します。 </br> **[Done]** を選択します。 | 
     | 条件 | **[条件の選択]** を選択します。 </br> シグナル名で、 **[DDoS 攻撃中かどうか]** を選択します。 </br> **[演算子]** で、 **[次の値以上]** を選択します。 </br> **[集計の種類]** で、 **[最大]** を選択します。 </br> **[しきい値]** で、「*1*」と入力します。 **[DDoS 攻撃中かどうか]** メトリックの場合、**0** は攻撃を受けていないことを示し、**1** は攻撃を受けていることを示します。 </br> **[Done]** を選択します。 | 
-    | Actions | **[アクション グループの追加]** を選択します。 </br> **[アクション グループの作成]** を選択します。 </br> **[通知]** の **[通知の種類]** で、 **[メール/SMS メッセージ/プッシュ/音声]** を選択します。 </br> **[名前]** に「_MyUnderAttackEmailAlert_」と入力します。 </br> 編集ボタンをクリックし、 **[メール]** と次のオプションを必要なだけ選択してから、 **[OK]** を選択します。 </br> **[Review + create]\(レビュー + 作成\)** を選択します。 | 
+    | アクション | **[アクション グループの追加]** を選択します。 </br> **[アクション グループの作成]** を選択します。 </br> **[通知]** の **[通知の種類]** で、 **[メール/SMS メッセージ/プッシュ/音声]** を選択します。 </br> **[名前]** に「_MyUnderAttackEmailAlert_」と入力します。 </br> 編集ボタンをクリックし、 **[メール]** と次のオプションを必要なだけ選択してから、 **[OK]** を選択します。 </br> **[Review + create]\(レビュー + 作成\)** を選択します。 | 
     | アラート ルールの詳細 | **[アラート ルール名]** の下で、「_MyDdosAlert_」と入力します。 |
 
 攻撃の検出から数分以内に、次の図のような電子メールが Azure Monitor メトリックから届くはずです。

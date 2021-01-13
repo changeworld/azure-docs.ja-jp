@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 4dca1fa0e823b482044d35f98412187af2fa72ed
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: f0620c4d373ee96c87b575ae7eb173b2f16eecb2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507763"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013653"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>チュートリアル:ASP.NET Web アプリに Microsoft へのサインインを追加する
 
@@ -374,7 +374,8 @@ Visual Studio で、Web ページでユーザー要求を表示するための�
    1. [SSL 有効] を `True` に変更します。
    1. Visual Studio でプロジェクトを右クリックし、 **[プロパティ]** を選択してから **[Web]** タブを選択します。 **[サーバー]** セクションで、 **[プロジェクト URL]** の設定を **SSL URL** に変更します。
    1. SSL URL をコピーします。 この後の手順で、登録ポータルのリダイレクト URI の一覧に、この URL を追加します。<br/><br/>![プロジェクトのプロパティ](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-1. [Azure portal](https://portal.azure.com) にサインインします。
+   
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。

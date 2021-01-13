@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: a74244cc45e1a3d2116f98ac73290d184f4affc0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: be8d00d795c19399d494db21578e9a7ba8dd9711
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632062"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934018"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (プレビュー) 拡張機能を使用して Visual Studio Code でステートフルおよびステートレスのワークフローを作成する
 
@@ -742,7 +742,7 @@ Visual Studio Code からは、プロジェクトを Azure に直接発行する
 
       ![[Azure:Logic Apps (プレビュー)] ウィンドウと、作成する新しいロジック アプリの名前を入力するプロンプトを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/enter-logic-app-name.png)
 
-   1. 新しいロジック アプリのホスティング プランとして、[ **[App Service プラン]**](../azure-functions/functions-scale.md#app-service-plan) または [ **[Premium]**](../azure-functions/functions-scale.md#premium-plan) を選択します。 この例では、 **[App Service プラン]** を選択します。
+   1. 新しいロジック アプリのホスティング プランとして、[ **[App Service プラン]**](../azure-functions/dedicated-plan.md) または [ **[Premium]**](../azure-functions/functions-premium-plan.md) を選択します。 この例では、 **[App Service プラン]** を選択します。
 
       ![[Azure:Logic Apps (プレビュー)] ウィンドウと、[App Service プラン] または [Premium] を選択するように求めるプロンプトを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/select-hosting-plan.png)
 

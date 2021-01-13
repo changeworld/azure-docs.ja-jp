@@ -13,18 +13,16 @@ ms.custom: project-no-code, devx-track-js
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e54aac6317b21a490627022b110bb5927e6986a6
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 1a1fa09c7c9b8baeeb8f3c2c9b2cf8271e513be1
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111036"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963538"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C における JavaScript とページ レイアウトのバージョン
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
-
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 ::: zone pivot="b2c-custom-policy"
 
@@ -77,7 +75,7 @@ JavaScript クライアント側コードを有効にする場合は、JavaScrip
 
 アプリケーションのユーザー インターフェイスの要素に[ページ レイアウト](contentdefinitions.md#select-a-page-layout)を選択します。
 
-カスタム ポリシーのコンテンツ定義の "*すべて*" に対して、ページ `contract` バージョンを使用して[ページ レイアウト バージョン](contentdefinitions.md#migrating-to-page-layout)を定義します。 値の形式には、次のように `contract` という語が含まれている必要があります: _urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_。 ページ バージョンで[ページ レイアウトに移行する](contentdefinitions.md#migrating-to-page-layout)方法について説明します。
+カスタム ポリシーのコンテンツ定義の "*すべて*" に対して、ページ `contract` バージョンを使用して [ページ レイアウト バージョン](contentdefinitions.md#migrating-to-page-layout)を定義します。 値の形式には、次のように `contract` という語が含まれている必要があります: _urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_。 ページ バージョンで[ページ レイアウトに移行する](contentdefinitions.md#migrating-to-page-layout)方法について説明します。
 
 次の例は、コンテンツ定義識別子と、対応する **DataUri** をページ コントラクトと共に示しています。 
 

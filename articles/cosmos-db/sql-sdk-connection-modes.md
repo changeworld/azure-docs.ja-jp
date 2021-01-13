@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: c30e97a4bff8fa845f6eb3c3092a00ee541e59f4
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: cf985999bac0cf45eec5d8f0f5f9e921b6f4591c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032798"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934953"
 ---
 # <a name="azure-cosmos-db-sql-sdk-connectivity-modes"></a>Azure Cosmos DB SQL SDK の接続モード
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "97032798"
       
     ゲートウェイ モードは、すべての SDK プラットフォームでサポートされています。 ゲートウェイ モードでは標準の HTTPS ポートと単一の DNS エンドポイントが使用されるため、ファイアウォールの厳しい制限がある企業ネットワーク内でアプリケーションを実行する場合は、ゲートウェイ モードが最適な選択肢となります。 ただし、パフォーマンスのトレードオフとして、ゲートウェイ モードでは、Azure Cosmos DB に対してデータの読み取りまたは書き込みを行うたびに、追加のネットワーク ホップが必要になります。 ソケット接続の数に制限がある環境でアプリケーションを実行する場合、ゲートウェイ接続モードも推奨されます。
 
-    Azure Functions (特に[従量課金プラン](../azure-functions/functions-scale.md#consumption-plan)) で SDK を使用する場合は、現在の[接続数の制限](../azure-functions/manage-connections.md)に注意してください。
+    Azure Functions (特に[従量課金プラン](../azure-functions/consumption-plan.md)) で SDK を使用する場合は、現在の[接続数の制限](../azure-functions/manage-connections.md)に注意してください。
 
   * 直接モード
 

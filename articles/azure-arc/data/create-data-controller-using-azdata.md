@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 0b4cf72622df78e13add723853d935fc97649b4a
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 19451fb09919238a04ac953c9c38fc70b4744d16
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358998"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955299"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] を使用した Azure Arc データ コントローラーの作成
 
@@ -271,12 +271,12 @@ azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc
 Azure Red Hat OpenShift でデータ コントローラーを作成する前に、特定のセキュリティ コンテキスト制約 (SCC) を適用する必要があります。 プレビュー リリースでは、これらによってセキュリティ制約が緩和されます。 今後のリリースで、更新された SCC が提供されます。
 
 1. カスタム セキュリティ コンテキスト制約 (SCC) をダウンロードします。 次のいずれかを使用します: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([未加工](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml))
+   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
+   - ([未加工](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
    - `curl` 次のコマンドを実行すると、arc-data-scc.yaml がダウンロードされます。
 
       ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
+      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
       ```
 
 1. SCC を作成します。
@@ -329,12 +329,12 @@ azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --
 Red Hat OCP でデータ コントローラーを作成する前に、特定のセキュリティ コンテキスト制約 (SCC) を適用する必要があります。 プレビュー リリースでは、これらによってセキュリティ制約が緩和されます。 今後のリリースで、更新された SCC が提供されます。
 
 1. カスタム セキュリティ コンテキスト制約 (SCC) をダウンロードします。 次のいずれかを使用します: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([未加工](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml))
+   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
+   - ([未加工](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
    - `curl` 次のコマンドを実行すると、arc-data-scc.yaml がダウンロードされます。
 
       ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
+      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
       ```
 
 1. SCC を作成します。

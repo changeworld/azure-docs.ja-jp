@@ -10,16 +10,16 @@ ms.workload: identity
 ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 10060e0dc6595a4d59f3968fa324ca40c91a7a39
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e1aa4945391e159f99c82fecff99c238ae0e7e93
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033801"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964407"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Azure CLI を使用して Azure でのロールの割り当てを追加または削除する
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] この記事では、Azure CLI を使用してロールを割り当てる方法について説明します。
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] この記事では、Azure CLI を使用してロールを割り当てる方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

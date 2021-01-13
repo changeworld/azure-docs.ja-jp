@@ -4,12 +4,12 @@ description: プログラミング言語とバインドを問わず、Azure で�
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 54bfd770fba9a1766396d66c0c263111c233c9c2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: dd9a517749030f9f99731d36947c4d4ff2f13b01
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96167881"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936738"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 開発者ガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインド固有の詳細を学習する前に、それらすべてに当てはまるこの概要をお読みください。
@@ -69,7 +69,7 @@ function.json ファイルには、関数のトリガー、バインド、その
 Azure portal に組み込まれている関数エディターを使用すると、コードと *function.json* ファイルを直接インラインで更新できます。 これは、軽微な変更や概念実証の場合にのみお勧めします。ベスト プラクティスは、VS Code などのローカル開発ツールを使うことです。
 
 ## <a name="parallel-execution"></a>並列実行
-シングル スレッドの関数ランタイムが処理できるより速く複数のトリガー イベントが発生する場合、ランタイムは関数を並列で複数回呼び出す場合があります。  関数アプリが[従量課金ホスティング プラン](functions-scale.md#how-the-consumption-and-premium-plans-work)を使用している場合、関数アプリは自動的にスケールアウトできます。  アプリが従量課金ホスティング プランと標準の [App Service ホスティング プラン](../app-service/overview-hosting-plans.md)のどちらで実行されていても、関数アプリの各インスタンスは、複数の同時関数呼び出しを、複数のスレッドを使用して並列に処理します。  各関数アプリ インスタンスでの同時関数呼び出しの最大数は、使用されるトリガーの種類と、関数アプリ内の他の関数によって使用されるリソースに応じて異なります。
+シングル スレッドの関数ランタイムが処理できるより速く複数のトリガー イベントが発生する場合、ランタイムは関数を並列で複数回呼び出す場合があります。  関数アプリが[従量課金ホスティング プラン](event-driven-scaling.md)を使用している場合、関数アプリは自動的にスケールアウトできます。  アプリが従量課金ホスティング プランと標準の [App Service ホスティング プラン](../app-service/overview-hosting-plans.md)のどちらで実行されていても、関数アプリの各インスタンスは、複数の同時関数呼び出しを、複数のスレッドを使用して並列に処理します。  各関数アプリ インスタンスでの同時関数呼び出しの最大数は、使用されるトリガーの種類と、関数アプリ内の他の関数によって使用されるリソースに応じて異なります。
 
 ## <a name="functions-runtime-versioning"></a>Functions ランタイムのバージョン管理
 

@@ -4,12 +4,12 @@ description: C# を使用して Azure Functions を開発する方法につい�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 9e11d013b6e7473f290ba1ccb54857034491d116
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 77ae736c787666df5e78358bc78e06eee9b7d4f9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672667"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936925"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -138,7 +138,7 @@ public static class BindingExpressionsExample
 
 ビルド処理では、ビルド フォルダー内の関数フォルダーに *function.json* ファイルを作成します。 前述のとおり、このファイルに対しては直接編集が行われません。 このファイルを編集して、バインド構成を変更したり、関数を無効にしたりすることはできません。 
 
-このファイルの目的は、[従量課金プランでのスケーリングの判断](functions-scale.md#how-the-consumption-and-premium-plans-work)に使用するスケール コントローラーに情報を提供することです。 このため、ファイルはトリガー情報だけを含み、入力または出力バインドは含まれません。
+このファイルの目的は、[従量課金プランでのスケーリングの判断](event-driven-scaling.md)に使用するスケール コントローラーに情報を提供することです。 このため、ファイルはトリガー情報だけを含み、入力または出力バインドは含まれません。
 
 生成された *function.json* ファイルには、*function.json* 構成ではなく、バインドの .NET 属性を使用するようにランタイムに指示する `configurationSource` プロパティが含まれます。 次に例を示します。
 
@@ -208,7 +208,7 @@ npm を使用して Core Tools をインストールする場合、これは Vis
 
 ## <a name="readytorun"></a>ReadyToRun
 
-関数アプリは [ReadyToRun バイナリ](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)としてコンパイルできます。 ReadyToRun は、事前コンパイル形式であり、起動時のパフォーマンスを向上させることができます。これは、[従量課金プラン](functions-scale.md#consumption-plan)で実行される場合に[コールドスタート](functions-scale.md#cold-start)の影響を軽減するのに役立ちます。
+関数アプリは [ReadyToRun バイナリ](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)としてコンパイルできます。 ReadyToRun は、事前コンパイル形式であり、起動時のパフォーマンスを向上させることができます。これは、[従量課金プラン](consumption-plan.md)で実行される場合に[コールドスタート](event-driven-scaling.md#cold-start)の影響を軽減するのに役立ちます。
 
 ReadyToRun は .NET 3.0 で使用でき、[Azure Functions ランタイムのバージョン 3.0](functions-versions.md) が必要です。
 

@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 12/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 15d8a198df4769b94bced49b82f7be827c771994
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 9038d6bc9cd061200ef4553242889776f30d2dc1
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630915"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964560"
 ---
 # <a name="trigger-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK for Python を使用して機械学習パイプラインをトリガーする
 
@@ -190,16 +190,19 @@ published_pipeline.endpoint
 1. 使用する可能性のあるすべての [DataPath PipelineParameters](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-datapath-and-pipelineparameter.ipynb) の値を設定するためのスケジュールを設定します。
 
     ```json
-    "DataPathAssignments": { 
-         "input_datapath": { 
-                            "DataStoreName": "<datastore-name>", 
-                            "RelativePath": "@triggerBody()?['Name']" 
-    } 
-    }, 
-    "ExperimentName": "MyRestPipeline", 
-    "ParameterAssignments": { 
-    "input_string": "sample_string3" 
-    },
+    {
+      "DataPathAssignments": {
+        "input_datapath": {
+          "DataStoreName": "<datastore-name>",
+          "RelativePath": "@{triggerBody()?['Name']}" 
+        }
+      },
+      "ExperimentName": "MyRestPipeline",
+      "ParameterAssignments": {
+        "input_string": "sample_string3"
+      },
+      "RunSource": "SDK"
+    }
     ```
 
     ワークスペースに追加した `DataStoreName` を[前提条件](#prerequisites)として使用します。

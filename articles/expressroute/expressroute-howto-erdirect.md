@@ -5,18 +5,27 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: a450c4057b4639206fd1db4b7f44d27c69441f7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 964af92006aad7b5ce8bdf25a332cbcf9c7ef144
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569841"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014520"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute Direct を構成する方法
 
 ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所を通じて Microsoft のグローバル ネットワークに直接接続できます。 詳細については、[ExpressRoute Direct](expressroute-erdirect-about.md) に関するページを参照してください。
+
+## <a name="before-you-begin"></a>開始する前に
+
+ExpressRoute Direct を利用する前に、まず、サブスクリプションを登録する必要があります。 登録するには、以下の詳細を含め、サブスクリプション ID を記載して、<ExpressRouteDirect@microsoft.com> にメールを送信します。
+
+* **ExpressRoute Direct** で実行しようとしているシナリオ
+* 場所設定。すべての場所の完全なリストについては、[パートナーとピアリングの場所](expressroute-locations-providers.md)に関するページを参照してください。
+* 実装のタイムライン
+* その他の質問について
 
 ## <a name="create-the-resource"></a><a name="resources"></a>リソースを作成する
 

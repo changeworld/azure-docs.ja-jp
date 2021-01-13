@@ -1,17 +1,17 @@
 ---
 title: Azure Stream Analytics の互換性レベル
 description: Azure Stream Analytics ジョブの互換性レベルを設定する方法と、最新の互換性レベルでの大きな変更について説明します
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 11014c5a5c5cd0cabae1b62083bd5e662be2c6b7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 8105988cd2036f44d214befad3365cf9ee96ee0d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348935"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015982"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
 
@@ -53,7 +53,7 @@ Azure portal でジョブの互換性レベルを更新するには:
 
 ###  <a name="amqp-messaging-protocol"></a>AMQP メッセージングプロトコル
 
-**1.2 レベル** :Azure Stream Analytics では [Advanced Message Queuing Protocol (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) メッセージングプロトコルを使用して Service Bus キューおよびトピックに書き込みます。 AMQP を使用すると、オープンな標準プロトコルを使用したクロス プラットフォームのハイブリッド アプリケーションをビルドできます。
+**1.2 レベル**:Azure Stream Analytics では [Advanced Message Queuing Protocol (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) メッセージングプロトコルを使用して Service Bus キューおよびトピックに書き込みます。 AMQP を使用すると、オープンな標準プロトコルを使用したクロス プラットフォームのハイブリッド アプリケーションをビルドできます。
 
 ### <a name="geospatial-functions"></a>地理空間の関数
 
@@ -75,11 +75,11 @@ Azure Stream Analytics では、地理空間参照データのインデックス
 
 ### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>CosmosDB 出力でのネイティブ Bulk API 統合
 
-**以前のレベル:** アップサート動作は " *挿入またはマージ* " でした。
+**以前のレベル:** アップサート動作は "*挿入またはマージ*" でした。
 
 **1.2 レベル:** CosmosDB 出力でのネイティブ Bulk API 統合により、スループットが最大になり、要求の調整が効率的に処理されます。 詳細については、[Azure Cosmos DB ページへの Azure Stream Analytics の出力](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12)に関する記事を参照してください。
 
-アップサート動作は " *挿入または置換* " です。
+アップサート動作は "*挿入または置換*" です。
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>SQL 出力に書き込むときの DateTimeOffset
 

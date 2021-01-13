@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: d09dddbceed773cd723897cc9730198b68be0ff7
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9964c99ddfb59811fc67df634b41cede5847ede0
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903617"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678844"
 ---
 # <a name="create-a-data-source"></a>データ ソースを作成する
 
 Azure Maps Web SDK では、データがデータ ソースに格納されます。 データ ソースを使用すると、クエリとレンダリングのデータ操作が最適化されます。 現在、次の 2 種類のデータ ソースがあります。
 
-- **GeoJSON ソース**: 場所の生データを GeoJSON 形式でローカルに管理します。 小規模から中規模のデータ セット (数十万点を超える図形) に適しています。
-- **ベクター タイル ソース**: マップのタイル システムに基づいて、現在のマップ ビューのベクター タイルとして書式設定されたデータを読み込みます。 大規模から大規模なデータセット (数百万または数十億点の図形) に最適です。
+* **GeoJSON ソース**: 場所の生データを GeoJSON 形式でローカルに管理します。 小規模から中規模のデータ セット (数十万点を超える図形) に適しています。
+* **ベクター タイル ソース**: マップのタイル システムに基づいて、現在のマップ ビューのベクター タイルとして書式設定されたデータを読み込みます。 大規模から大規模なデータセット (数百万または数十億点の図形) に最適です。
 
 ## <a name="geojson-data-source"></a>GeoJSON データ ソース
 
@@ -50,8 +50,8 @@ var geoJsonClass = new atlas.data.Feature(new atlas.data.Point([-100, 45]), {
 
 ```javascript
 //Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 ```
 
 次のコードは、GeoJSON データを `DataSource` に追加するさまざまな方法を示しています。
@@ -60,13 +60,13 @@ map.sources.add(dataSource);
 //GeoJsonData in the following code can be a single or array of GeoJSON features or geometries, a GeoJSON feature colleciton, or a single or array of atlas.Shape objects.
 
 //Add geoJSON object to data source. 
-dataSource.add(geoJsonData);
+source.add(geoJsonData);
 
 //Load geoJSON data from URL. URL should be on a CORs enabled endpoint.
-dataSource.importDataFromUrl(geoJsonUrl);
+source.importDataFromUrl(geoJsonUrl);
 
 //Overwrite all data in data source.
-dataSource.setShapes(geoJsonData);
+source.setShapes(geoJsonData);
 ```
 
 > [!TIP]
@@ -76,10 +76,10 @@ dataSource.setShapes(geoJsonData);
 
 ベクター タイル ソースには、ベクター タイル レイヤーにアクセスする方法が記述されています。 ベクター タイル ソースをインスタンス化するには、[VectorTileSource](/javascript/api/azure-maps-control/atlas.source.vectortilesource) クラスを使用します。 ベクター タイル レイヤーはタイル レイヤーに似ていますが、同じではありません。 タイル レイヤーはラスター イメージです。 ベクター タイル レイヤーは、**PBF** 形式の圧縮ファイルです。 この圧縮ファイルには、ベクター マップ データと 1 つ以上のレイヤーが含まれています。 このファイルは、各レイヤーのスタイルに基づいて、クライアントでレンダリングおよびスタイル設定できます。 ベクター タイルのデータには、ポイント、線、および多角形の形式で地理的特徴が含まれています。 ベクター タイル レイヤーの使用には、ラスター タイル レイヤーよりも優れている点がいくつかあります。
 
- - ベクター タイルのファイル サイズは、通常、同等のラスター タイルよりはるかに小さくなります。 そのため、使用される帯域幅が少なくなります。 つまり、待機時間の短縮、より高速なマップ、ユーザー エクスペリエンスの向上を意味します。
- - ベクター タイルはクライアント上でレンダリングされるため、表示されているデバイスの解像度に適応できます。 結果として、レンダリングされるマップはより明確に定義され、鮮明なラベルが表示されます。
- - ベクター マップ内のデータのスタイルを変更しても、クライアントに新しいスタイルを適用できるので、データを再度ダウンロードする必要はありません。 これに対し、ラスター タイル レイヤーのスタイルを変更するには、通常、タイルをサーバーから読み込み、新しいスタイルを適用する必要があります。
- - データはベクター形式で配信されるので、データを準備するために必要なサーバー側の処理が少なくなります。 つまり、新しいデータをより速く使用できるようになります。
+* ベクター タイルのファイル サイズは、通常、同等のラスター タイルよりはるかに小さくなります。 そのため、使用される帯域幅が少なくなります。 つまり、待機時間の短縮、より高速なマップ、ユーザー エクスペリエンスの向上を意味します。
+* ベクター タイルはクライアント上でレンダリングされるため、表示されているデバイスの解像度に適応できます。 結果として、レンダリングされるマップはより明確に定義され、鮮明なラベルが表示されます。
+* ベクター マップ内のデータのスタイルを変更しても、クライアントに新しいスタイルを適用できるので、データを再度ダウンロードする必要はありません。 これに対し、ラスター タイル レイヤーのスタイルを変更するには、通常、タイルをサーバーから読み込み、新しいスタイルを適用する必要があります。
+* データはベクター形式で配信されるので、データを準備するために必要なサーバー側の処理が少なくなります。 つまり、新しいデータをより速く使用できるようになります。
 
 Azure Maps は、オープン スタンダードである [Mapbox Vector Tile 仕様](https://github.com/mapbox/vector-tile-spec)に準拠しています。 Azure Maps では、プラットフォームの一部として次のベクター タイル サービスが提供されます。
 
@@ -95,14 +95,14 @@ Azure Maps は、オープン スタンダードである [Mapbox Vector Tile �
 
 ```javascript
 //Create a vector tile source and add it to the map.
-var datasource = new atlas.source.VectorTileSource(null, {
+var source = new atlas.source.VectorTileSource(null, {
     tiles: ['https://{azMapsDomain}/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}'],
     maxZoom: 22
 });
-map.sources.add(datasource);
+map.sources.add(source);
 
 //Create a layer for traffic flow lines.
-var flowLayer = new atlas.layer.LineLayer(datasource, null, {
+var flowLayer = new atlas.layer.LineLayer(source, null, {
     //The name of the data layer within the data source to pass into this rendering layer.
     sourceLayer: 'Traffic flow',
 
@@ -142,30 +142,30 @@ map.layers.add(flowLayer, 'labels');
 
 データは、レンダリング レイヤーを使用してマップ上にレンダリングされます。 1 つのデータ ソースは、1 つ以上のレンダリング レイヤーから参照できます。 次のレンダリング レイヤーでは、データ ソースが必要です。
 
-- [バブル レイヤー](map-add-bubble-layer.md) - ポイント データをマップ上で拡大縮小された円としてレンダリングします。
-- [シンボル レイヤー](map-add-pin.md) - ポイント データをアイコンやテキストとしてレンダリングします。
-- [ヒート マップ レイヤー](map-add-heat-map-layer.md) - ポイント データを密度ヒート マップとしてレンダリングします。
-- [線レイヤー](map-add-shape.md) - 線をレンダリングしたり、多角形のアウトラインをレンダリングしたりします。 
-- [多角形レイヤー](map-add-shape.md) - 純色または画像パターンで多角形の領域を塗りつぶします。
+* [バブル レイヤー](map-add-bubble-layer.md) - ポイント データをマップ上で拡大縮小された円としてレンダリングします。
+* [シンボル レイヤー](map-add-pin.md) - ポイント データをアイコンやテキストとしてレンダリングします。
+* [ヒート マップ レイヤー](map-add-heat-map-layer.md) - ポイント データを密度ヒート マップとしてレンダリングします。
+* [線レイヤー](map-add-shape.md) - 線をレンダリングしたり、多角形のアウトラインをレンダリングしたりします。 
+* [多角形レイヤー](map-add-shape.md) - 純色または画像パターンで多角形の領域を塗りつぶします。
 
 次のコードは、データ ソースを作成し、マップに追加してバブル レイヤーに接続する方法を示しています。 次に、GeoJSON ポイント データをリモートの場所からデータ ソースにインポートします。 
 
 ```javascript
 //Create a data source and add it to the map.
-var datasource = new atlas.source.DataSource();
-map.sources.add(datasource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 
 //Create a layer that defines how to render points in the data source and add it to the map.
-map.layers.add(new atlas.layer.BubbleLayer(datasource));
+map.layers.add(new atlas.layer.BubbleLayer(source));
 
 //Load the earthquake data.
-datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson');
+source.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson');
 ```
 
 これらのデータ ソースに接続せず、レンダリングするためのデータを直接読み込む追加のレンダリング レイヤーがあります。 
 
-- [画像レイヤー](map-add-image-layer.md) - マップの上に 1 つの画像をオーバーレイし、指定した座標のセットにその角をバインドします。
-- [タイル レイヤー](map-add-tile-layer.md) - マップの上にラスター タイル レイヤーを重ねて表示します。
+* [画像レイヤー](map-add-image-layer.md) - マップの上に 1 つの画像をオーバーレイし、指定した座標のセットにその角をバインドします。
+* [タイル レイヤー](map-add-tile-layer.md) - マップの上にラスター タイル レイヤーを重ねて表示します。
 
 ## <a name="one-data-source-with-multiple-layers"></a>複数のレイヤーがある 1 つのデータ ソース
 
@@ -179,34 +179,40 @@ Azure Maps で必要なものは、次のコードで示すように、データ
 
 ```javascript
 //Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 
 //Create a polygon and add it to the data source.
-dataSource.add(new atlas.data.Polygon([[[/* Coordinates for polygon */]]]));
+source.add(new atlas.data.Polygon([[[/* Coordinates for polygon */]]]));
 
 //Create a polygon layer to render the filled in area of the polygon.
-var polygonLayer = new atlas.layer.PolygonLayer(dataSource, 'myPolygonLayer', {
+var polygonLayer = new atlas.layer.PolygonLayer(source, 'myPolygonLayer', {
      fillColor: 'rgba(255,165,0,0.2)'
 });
 
 //Create a line layer for greater control of rendering the outline of the polygon.
-var lineLayer = new atlas.layer.LineLayer(dataSource, 'myLineLayer', {
+var lineLayer = new atlas.layer.LineLayer(source, 'myLineLayer', {
      color: 'orange',
      width: 2
 });
 
 //Create a bubble layer to render the vertices of the polygon as scaled circles.
-var bubbleLayer = new atlas.layer.BubbleLayer(dataSource, 'myBubbleLayer', {
+var bubbleLayer = new atlas.layer.BubbleLayer(source, 'myBubbleLayer', {
      color: 'orange',
      radius: 5,
-     outlineColor: 'white',
-     outlineWidth: 2
+     strokeColor: 'white',
+     strokeWidth: 2
 });
 
 //Add all layers to the map.
 map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 ```
+
+> [!TIP]
+> `map.layers.add` 関数を使用してマップにレイヤーを追加するときに、既存のレイヤーの ID またはインスタンスを 2 番目のパラメーターとして渡すことができます。 これにより、マップは、追加される新しいレイヤーを既存のレイヤーの下に挿入するように指示されます。 このメソッドは、レイヤー ID を渡すだけでなく、次の値もサポートします。
+>
+> * `"labels"` - マップ ラベル レイヤーの下に新しいレイヤーを挿入します。
+> * `"transit"` - マップの道路および輸送のレイヤーの下に新しいレイヤーを挿入します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,12 +4,12 @@ description: 監視のために関数アプリを Application Insights に接続
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 77cc87e44990f471ef38871c0225835660779a3c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 24350eb07481db66907d199cd96f84a02cc98c9e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825756"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937282"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Azure Functions の監視を構成する方法
 
@@ -197,7 +197,7 @@ Application Insights には、負荷がピークのときに、完了した実�
 
 _この機能はプレビュー段階にあります。_ 
 
-[Azure Functions スケール コントローラー](./functions-scale.md#runtime-scaling)から Application Insights または BLOB ストレージにログを出力させることで、関数アプリに対してスケール コントローラーが行っている決定をより詳しく把握することができます。
+[Azure Functions スケール コントローラー](./event-driven-scaling.md#runtime-scaling)から Application Insights または BLOB ストレージにログを出力させることで、関数アプリに対してスケール コントローラーが行っている決定をより詳しく把握することができます。
 
 この機能を有効にするには、`SCALE_CONTROLLER_LOGGING_ENABLED` という名前のアプリケーション設定を、ご利用の関数アプリの設定に追加します。 この設定の値は `<DESTINATION>:<VERBOSITY>` の形式にし、以下に基づいて指定する必要があります。
 

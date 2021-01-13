@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: acb85a04b8a1ca491058702510079a36b93fc657
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3d69b72012819e3d9099e447b9048fe07aea86d3
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151049"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858707"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR Service を使用した Azure Functions の開発と構成
 
@@ -41,7 +41,7 @@ Azure Functions および Azure SignalR Service で構築されたサーバー�
 
 HTTP によってトリガーされる Azure 関数と *SignalRConnectionInfo* 入力バインドを使用して、接続情報オブジェクトを生成します。 関数には、`/negotiate` で終わる HTTP ルートが必要です。
 
-C# の[クラス ベース モデル](#class-based-model)では、*SignalRConnectionInfo* 入力バインドは必要なく、カスタム要求をより簡単に追加できます。 「[クラス ベース モデルでの negotiate エクスペリエンス](#negotiate-experience-in-class-based-model)」を参照してください。
+C# の [クラス ベース モデル](#class-based-model)では、*SignalRConnectionInfo* 入力バインドは必要なく、カスタム要求をより簡単に追加できます。 「[クラス ベース モデルでの negotiate エクスペリエンス](#negotiate-experience-in-class-based-model)」を参照してください。
 
 negotiate 関数を作成する方法の詳細については、[*SignalRConnectionInfo* 入力バインドのリファレンス](../azure-functions/functions-bindings-signalr-service-input.md)に関するページを参照してください。
 
@@ -49,11 +49,11 @@ negotiate 関数を作成する方法の詳細については、[*SignalRConnect
 
 ### <a name="handle-messages-sent-from-signalr-service"></a>SignalR Service から送信されたメッセージを処理する
 
-SignalR Service から送信されたメッセージを処理するには、"*SignalR トリガー*" バインドを使用します。 クライアントがメッセージを送信したり、クライアントが接続または切断されたりすると、トリガーされることがあります。
+SignalR Service から送信されたメッセージを処理するには、"*SignalR トリガー*" バインドを使用します。 クライアントがメッセージを送信したり、クライアントが接続または切断されたりすると、通知を受け取ることがあります。
 
 詳細については、"[*SignalR トリガー*" バインドのリファレンス](../azure-functions/functions-bindings-signalr-service-trigger.md)を参照してください。
 
-また、クライアントからのメッセージが存在する関数がサービスによってトリガーされるように、関数エンドポイントをアップストリームとして構成する必要もあります。 アップストリームを構成する方法の詳細については、この[ドキュメント](concept-upstream.md)を参照してください。
+また、クライアントからのメッセージがあった場合に関数がサービスによってトリガーされるように、関数エンドポイントをアップストリームとして構成する必要もあります。 アップストリームを構成する方法の詳細については、この[ドキュメント](concept-upstream.md)を参照してください。
 
 ### <a name="sending-messages-and-managing-group-membership"></a>メッセージの送信とグループ メンバーシップの管理
 
@@ -111,7 +111,7 @@ public class SignalRTestHub : ServerlessHub
 
 ### <a name="define-hub-method"></a>ハブ メソッドを定義する
 
-すべてのハブ メソッドには、`[SignalRTrigger]` 属性で装飾された `InvocationContext` の引数が必要であり、パラメーターなしのコンストラクターを使用する**必要があります**。 **メソッド名**は、パラメーター **イベント**として扱われます。
+すべてのハブ メソッドには、`[SignalRTrigger]` 属性で装飾された `InvocationContext` の引数が必要であり、パラメーターなしのコンストラクターを使用する **必要があります**。 **メソッド名** は、パラメーター **イベント** として扱われます。
 
 既定では、メソッド名以外の `category=messages` は次のいずれかの名前になります。
 

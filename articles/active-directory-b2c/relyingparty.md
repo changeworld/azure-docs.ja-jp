@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9c50bd71f4e2e5bbe12518f5a5d1cd486af9723a
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0f0f3b6ffcb7ee12a692470b922cf23a3f0f40f0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509753"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858436"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -231,6 +231,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 | KeyEncryptionMethod| No | データの暗号化に使用されたキーのコピーを暗号化するために Azure AD B2C で使用される方法を示します。 このメタデータにより、SAML 応答内の `<EncryptedKey>` 要素の値が制御されます。 使用可能な値: ` Rsa15` (既定) - RSA 公開鍵暗号化標準 (PKCS) バージョン 1.5 アルゴリズム、` RsaOaep` - RSA OAEP (Optimal Asymmetric Encryption Padding) 暗号化アルゴリズム。 |
 | UseDetachedKeys | No |  指定できる値: `true` または `false` (既定値)。 値が `true` に設定されている場合、暗号化されたアサーションの形式が変わります。 デタッチされたキーを使用すると、暗号化されたアサーションが EncryptedData ではなく、EncrytedAssertion の子として追加されます。 |
 | WantsSignedResponses| No | Azure AD B2C が SAML 応答の `Response` セクションに署名するかどうかを示します。 指定できる値: `true` (既定値) または `false`。  |
+| RemoveMillisecondsFromDateTime| いいえ | SAML 応答内の datetime の値からミリ秒を削除するかどうかを示します (これには、 IssueInstant、NotBefore、NotOnOrAfter、および AuthnInstant が含まれます)。 指定できる値: `false` (既定値) または `true`。  |
 
 ### <a name="outputclaims"></a>OutputClaims
 

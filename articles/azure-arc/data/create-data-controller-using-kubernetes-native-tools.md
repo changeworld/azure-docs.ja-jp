@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 051a7f506d351a17764e38c760ffba06d224cc38
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: e8d00055d9a4d7355ccd8a33c8a9b811b852f5c8
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422571"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955282"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Kubernetes ツールを使用した Azure Arc データ コントローラーの作成
 
@@ -38,11 +38,9 @@ Kubernetes ツールを使用して Azure Arc データ コントローラーを
 ```console
 # Cleanup azure arc data service artifacts
 kubectl delete crd datacontrollers.arcdata.microsoft.com 
-kubectl delete sqlmanagedinstances.sql.arcdata.microsoft.com 
-kubectl delete postgresql-11s.arcdata.microsoft.com 
-kubectl delete postgresql-12s.arcdata.microsoft.com
-kubectl delete clusterroles azure-arc-data:cr-arc-metricsdc-reader
-kubectl delete clusterrolebindings azure-arc-data:crb-arc-metricsdc-reader
+kubectl delete crd sqlmanagedinstances.sql.arcdata.microsoft.com 
+kubectl delete crd postgresql-11s.arcdata.microsoft.com 
+kubectl delete crd postgresql-12s.arcdata.microsoft.com
 ```
 
 ## <a name="overview"></a>概要
@@ -59,7 +57,7 @@ Azure Arc データ コントローラーを作成するステップの概要は
 次のコマンドを実行して、カスタム リソース定義を作成します。  **[Kubernetes クラスター管理者のアクセス許可が必要]**
 
 ```console
-kubectl create -f https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/custom-resource-definitions.yaml
+kubectl create -f https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/custom-resource-definitions.yaml
 ```
 
 ## <a name="create-a-namespace-in-which-the-data-controller-will-be-created"></a>データ コントローラーが作成される名前空間を作成する
@@ -79,7 +77,7 @@ kubectl create namespace arc
 次のコマンドを実行して、ブートストラップ サービス、そのブートストラップ サービス用のサービス アカウント、そのブートストラップ サービス アカウントのロールとロールのバインドを作成します。
 
 ```console
-kubectl create --namespace arc -f https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/bootstrapper.yaml
+kubectl create --namespace arc -f https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/bootstrapper.yaml
 ```
 
 次のコマンドを使用して、ブートストラップ ポッドが実行されていることを確認します。  状態が `Running` に変わるまで、数回実行することが必要になる場合があります。
@@ -102,7 +100,7 @@ containers:
       - env:
         - name: ACCEPT_EULA
           value: "Y"
-        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-oct-2020  <-- template value to change
+        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-dec-2020  <-- template value to change
         image: <your registry DNS name or IP address>/<your repo>/arc-bootstrapper:<your tag>
         imagePullPolicy: IfNotPresent
         name: bootstrapper
@@ -150,7 +148,7 @@ echo '<your string to encode here>' | base64
 # echo 'example' | base64
 ```
 
-ユーザー名とパスワードをエンコードした後に、[テンプレート ファイル](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/controller-login-secret.yaml)に基づいてファイルを作成し、ユーザー名とパスワードの値を独自の値に置き換えることができます。
+ユーザー名とパスワードをエンコードした後に、[テンプレート ファイル](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/controller-login-secret.yaml)に基づいてファイルを作成し、ユーザー名とパスワードの値を独自の値に置き換えることができます。
 
 それから、次のコマンドを実行してシークレットを作成します。
 
@@ -165,26 +163,26 @@ kubectl create --namespace arc -f C:\arc-data-services\controller-login-secret.y
 
 これで、データ コントローラー自体を作成する準備が整いました。
 
-まず、[テンプレート ファイル](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/data-controller.yaml)のコピーをコンピューターのローカルに作成し、設定の一部を変更できるようにします。
+まず、[テンプレート ファイル](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/data-controller.yaml)のコピーをコンピューターのローカルに作成し、設定の一部を変更できるようにします。
 
 必要に応じて、次の値を編集します。
 
 **必須**
-- **location** :これを、データ コントローラーに関する " _メタデータ_ " が格納される Azure の場所に変更します。  使用できる Azure の場所の一覧は、[データ コントローラーの作成の概要](create-data-controller.md)に関する記事で確認できます。
-- **resourceGroup** : Azure Resource Manager でデータ コントローラーの Azure リソースを作成する Azure リソース グループ。  通常、このリソース グループは既に存在しているはずですが、データを Azure にアップロードするときまでは必要ありません。
-- **subscription** : Azure リソースを作成するサブスクリプションの Azure サブスクリプション GUID。
+- **location**:これを、データ コントローラーに関する "_メタデータ_" が格納される Azure の場所に変更します。  使用できる Azure の場所の一覧は、[データ コントローラーの作成の概要](create-data-controller.md)に関する記事で確認できます。
+- **resourceGroup**: Azure Resource Manager でデータ コントローラーの Azure リソースを作成する Azure リソース グループ。  通常、このリソース グループは既に存在しているはずですが、データを Azure にアップロードするときまでは必要ありません。
+- **subscription**: Azure リソースを作成するサブスクリプションの Azure サブスクリプション GUID。
 
 **見直してできれば既定値を変更することを推奨**
-- **storage..className** : データ コントローラーのデータ ファイルとログ ファイルに使用するストレージ クラス。  Kubernetes クラスターで使用できるストレージ クラスがわからない場合は、次のコマンドを実行します。`kubectl get storageclass`  既定値は `default` で、既定のストレージ クラスではなく、`default` という名前の既存のストレージ クラスがあることを前提としています。  注:目的のストレージ クラスに設定される className 設定は 2 つあり、1 つはデータ用で、もう 1 つはログ用です。
-- **serviceType** :LoadBalancer を使用していない場合は、サービス タイプを `NodePort` に変更します。  注:2 つの serviceType 設定を変更する必要があります。
+- **storage..className**: データ コントローラーのデータ ファイルとログ ファイルに使用するストレージ クラス。  Kubernetes クラスターで使用できるストレージ クラスがわからない場合は、次のコマンドを実行します。`kubectl get storageclass`  既定値は `default` で、既定のストレージ クラスではなく、`default` という名前の既存のストレージ クラスがあることを前提としています。  注:目的のストレージ クラスに設定される className 設定は 2 つあり、1 つはデータ用で、もう 1 つはログ用です。
+- **serviceType**:LoadBalancer を使用していない場合は、サービス タイプを `NodePort` に変更します。  注:2 つの serviceType 設定を変更する必要があります。
 
 **省略可能**
-- **name** :データ コントローラーの既定の名前は `arc` ですが、必要に応じて変更できます。
-- **displayName** :ファイルの先頭にある name 属性と同じ値に設定します。
-- **registry** :既定では Microsoft Container Registry です。  Microsoft Container Registry からイメージを取得して[プライベート コンテナー レジストリにプッシュ](offline-deployment.md)している場合は、ここでレジストリの IP アドレスまたは DNS 名を入力します。
-- **dockerRegistry** :必要に応じて、プライベート コンテナー レジストリからイメージをプルするために使用するイメージのプル シークレット。
-- **repository** :Microsoft Container Registry 上の既定のリポジトリは `arcdata` です。  プライベート コンテナー レジストリを使用している場合は、Azure Arr が有効になっているデータ サービスのコンテナーイメージが格納されているフォルダーまたはリポジトリのパスを入力します。
-- **imageTag** : テンプレート内には最新バージョンのタグが既定で設定されていますが、古いバージョンを使用する必要がある場合は変更できます。
+- **name**:データ コントローラーの既定の名前は `arc` ですが、必要に応じて変更できます。
+- **displayName**:ファイルの先頭にある name 属性と同じ値に設定します。
+- **registry**:既定では Microsoft Container Registry です。  Microsoft Container Registry からイメージを取得して[プライベート コンテナー レジストリにプッシュ](offline-deployment.md)している場合は、ここでレジストリの IP アドレスまたは DNS 名を入力します。
+- **dockerRegistry**:必要に応じて、プライベート コンテナー レジストリからイメージをプルするために使用するイメージのプル シークレット。
+- **repository**:Microsoft Container Registry 上の既定のリポジトリは `arcdata` です。  プライベート コンテナー レジストリを使用している場合は、Azure Arr が有効になっているデータ サービスのコンテナーイメージが格納されているフォルダーまたはリポジトリのパスを入力します。
+- **imageTag**: テンプレート内には最新バージョンのタグが既定で設定されていますが、古いバージョンを使用する必要がある場合は変更できます。
 
 完成したデータ コントローラーの yaml ファイルの例を次に示します。
 ```yaml
@@ -200,7 +198,7 @@ spec:
     serviceAccount: sa-mssql-controller
   docker:
     imagePullPolicy: Always
-    imageTag: public-preview-oct-2020 
+    imageTag: public-preview-dec-2020 
     registry: mcr.microsoft.com
     repository: arcdata
   security:
@@ -274,7 +272,7 @@ kubectl describe po/<pod name> --namespace arc
 
 Azure Data Studio 用の Azure Arc 拡張機能には、Azure Arc 対応 Kubernetes をセットアップし、SQL Managed Instance のサンプル yaml ファイルを含む git リポジトリを監視するように構成する方法を順を追って説明するノートブックが用意されています。 すべてが接続されると、新しい SQL Managed Instance が Kubernetes クラスターにデプロイされます。
 
-Azure Data Studio 用の Azure Arc 拡張機能にある「 **Azure Arc 対応 Kubernetes と Flux を使用した SQL Managed Instance のデプロイ** 」のノートブックを参照してください。
+Azure Data Studio 用の Azure Arc 拡張機能にある「**Azure Arc 対応 Kubernetes と Flux を使用した SQL Managed Instance のデプロイ**」のノートブックを参照してください。
 
 ## <a name="troubleshooting-creation-problems"></a>作成の問題のトラブルシューティング
 

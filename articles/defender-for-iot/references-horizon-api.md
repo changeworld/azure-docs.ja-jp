@@ -4,15 +4,15 @@ description: このガイドでは、よく使用される Horizon メソッド�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 11/19/2020
+ms.date: 1/7/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 3266517b9ddc8fc7ac7b06a137286c05ea9a28fa
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 6d2e3fccd6a61fe129050faa29cb7bb77674ccfe
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836551"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976906"
 ---
 # <a name="horizon-api"></a>Horizon API 
 
@@ -24,7 +24,7 @@ Horizon および CyberX プラットフォームでの作業の詳細につい�
 
 - Horizon Open Development Environment (ODE) SDK については、CyberX の担当者にお問い合わせください。
 - サポートとトラブルシューティングの情報については、<support@cyberx-labs.com> にお問い合わせください。
-- CyberX コンソールから Cyberx ユーザー ガイドにアクセスするには、:::image type="icon" source="media/references-horizon-api//image3.png"::: を選択し、 **[Download User Guide]\(ユーザー ガイドのダウンロード\)** を選択します。
+- CyberX コンソールから Cyberx ユーザー ガイドにアクセスするには、:::image type="icon" source="media/references-horizon-api/profile-icon.png"::: を選択し、 **[Download User Guide]\(ユーザー ガイドのダウンロード\)** を選択します。
 
 ## `horizon::protocol::BaseParser`
 

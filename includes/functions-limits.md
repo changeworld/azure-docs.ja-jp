@@ -4,14 +4,14 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
-ms.openlocfilehash: 826fccad043b067ce86d5f56eaebc6ee48b532d1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: aa75d1d57f44bb1a4d6513823ac97ac9917b260f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027799"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934469"
 ---
-| リソース |[従量課金プラン](../articles/azure-functions/functions-scale.md#consumption-plan)|[Premium プラン](../articles/azure-functions/functions-scale.md#premium-plan)|[専用プラン](../articles/azure-functions/functions-scale.md#app-service-plan)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
+| リソース |[従量課金プラン](../articles/azure-functions/consumption-plan.md)|[Premium プラン](../articles/azure-functions/functions-premium-plan.md)|[専用プラン](../articles/azure-functions/dedicated-plan.md)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
 | --- | --- | --- | --- | --- | --- |
 |既定の[タイムアウトまでの時間](../articles/azure-functions/functions-scale.md#timeout) (分) |5 | 30 |30<sup>1</sup> | 30 | 30 |
 |最大の[タイムアウトまでの時間](../articles/azure-functions/functions-scale.md#timeout) (分) |10 | 無制限<sup>7</sup> | 無制限<sup>2</sup> | unbounded | unbounded |
@@ -28,10 +28,10 @@ ms.locfileid: "96027799"
 | カスタム ドメインの [SSL サポート](../articles/app-service/configure-ssl-bindings.md) |無制限の SNI SSL 接続が含まれる | 無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる | 無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる | 該当なし |
 
 <sup>1</sup> 既定では、App Service プランでの Functions 1.x ランタイムのタイムアウトは無制限です。  
-<sup>2</sup> App Service プランが [Always On](../articles/azure-functions/functions-scale.md#always-on) に設定されている必要があります。 標準[料金](https://azure.microsoft.com/pricing/details/app-service/)でのお支払い。  
+<sup>2</sup> App Service プランが [Always On](../articles/azure-functions/dedicated-plan.md#always-on) に設定されている必要があります。 標準[料金](https://azure.microsoft.com/pricing/details/app-service/)でのお支払い。  
 <sup>3</sup> これらの制限は[ホストで設定](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config)されます。  
 <sup>4</sup> 実際にホストできる関数アプリの数は、アプリのアクティビティ、マシン インスタンスのサイズ、対応するリソース使用量によって異なります。  
 <sup>5</sup> ストレージの上限は、同じ App Service プランのすべてのアプリにまたがる一時ストレージ内の合計コンテンツ サイズです。 従量課金プランでは、Azure Files を一時ストレージに使用します。  
-<sup>6</sup> 関数アプリが[従量課金プラン](../articles/azure-functions/functions-scale.md#consumption-plan)でホストされている場合、CNAME オプションのみがサポートされます。 [Premium プラン](../articles/azure-functions/functions-scale.md#premium-plan)または [App Service プラン](../articles/azure-functions/functions-scale.md#app-service-plan)の関数アプリでは、CNAME または A レコードを使用してカスタム ドメインをマップできます。  
+<sup>6</sup> 関数アプリが[従量課金プラン](../articles/azure-functions/consumption-plan.md)でホストされている場合、CNAME オプションのみがサポートされます。 [Premium プラン](../articles/azure-functions/functions-premium-plan.md)または [App Service プラン](../articles/azure-functions/dedicated-plan.md)の関数アプリでは、CNAME または A レコードを使用してカスタム ドメインをマップできます。  
 <sup>7</sup> 60 分まで保証されます。  
 <sup>8</sup> ワーカーは、お客様のアプリをホストする役割です。 ワーカーは、3 つの固定サイズで使用できます。1 vCPU/3.5 GB RAM。2 vCPU/7 GB RAM。4 vCPU/14 GB RAM。

@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2902274cfff11ac256459abd4fe0378146ee067b
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: dde2794e459e9375a231b7792bc1bd5ab21561bf
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280184"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955231"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>Kubernetes ツールを使用して Azure SQL マネージド インスタンスを作成する
 
@@ -34,7 +34,7 @@ SQL マネージド インスタンスを作成するには、システム管理
 
 ## <a name="create-a-yaml-file"></a>yaml ファイルを作成する
 
-[テンプレート yaml](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/sqlmi.yaml) ファイルを出発点として使用して、独自のカスタム SQL マネージド インスタンスの yaml ファイルを作成することができます。  このファイルをローカル コンピューターにダウンロードし、テキスト エディターで開きます。  yaml ファイルの構文の強調表示とリンティングがサポートされている [VS Code](https://code.visualstudio.com/download) などのテキスト エディターを使用すると便利です。
+[テンプレート yaml](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/sqlmi.yaml) ファイルを出発点として使用して、独自のカスタム SQL マネージド インスタンスの yaml ファイルを作成することができます。  このファイルをローカル コンピューターにダウンロードし、テキスト エディターで開きます。  yaml ファイルの構文の強調表示とリンティングがサポートされている [VS Code](https://code.visualstudio.com/download) などのテキスト エディターを使用すると便利です。
 
 次に、yaml ファイルの例を示します。
 
@@ -131,7 +131,7 @@ echo '<your string to encode here>' | base64
 
 ### <a name="customizing-storage"></a>ストレージのカスタマイズ
 
-ストレージのストレージ クラスを環境に合わせてカスタマイズできます。  使用可能なストレージ クラスがわからない場合は、コマンド `kubectl get storageclass` を実行して表示できます。  テンプレートの既定値は "default" です。  これは、既定値 " _として設定された_ " ストレージ クラスがあるということではなく、"default" という " _名前が付けられた_ " ストレージ クラスがあることを意味します。  必要に応じて、ストレージのサイズを変更することもできます。  詳細については、「[ストレージの構成](./storage-configuration.md)」を参照してください。
+ストレージのストレージ クラスを環境に合わせてカスタマイズできます。  使用可能なストレージ クラスがわからない場合は、コマンド `kubectl get storageclass` を実行して表示できます。  テンプレートの既定値は "default" です。  これは、既定値 "_として設定された_" ストレージ クラスがあるということではなく、"default" という "_名前が付けられた_" ストレージ クラスがあることを意味します。  必要に応じて、ストレージのサイズを変更することもできます。  詳細については、「[ストレージの構成](./storage-configuration.md)」を参照してください。
 
 ## <a name="creating-the-sql-managed-instance"></a>SQL マネージド インスタンスの作成
 

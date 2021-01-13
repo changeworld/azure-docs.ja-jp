@@ -3,7 +3,7 @@ title: 同期での Azure AD Connect Health の使用 | Microsoft Docs
 description: Azure AD Connect 同期を監視する方法を説明する Azure AD Connect Health のページです。
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: daveba
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efb332cf8d5e34a435010a39a12b38f87cff5875
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e803614a02e76d179579a2258abd563b5c58e63a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91313367"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016985"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Azure AD Connect Health を使用した Azure AD Connect の同期の監視
 次のドキュメントは、Azure AD Connect Health を使用した Azure AD Connect (同期) の監視について記述しています。  Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「 [AD FS での Azure AD Connect Health の使用](how-to-connect-health-adfs.md)」を参照してください。 また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)」を参照してください。
@@ -70,7 +70,7 @@ Windows Server AD と Azure AD との間で Azure AD Connect を使って ID デ
 * このレポートには、同期クライアント (Azure AD Connect Version 1.1.281.0 以降) によって記録されたエラーが含まれます。
 * 同期エンジンにおける直近の同期操作で発生したエラーが対象となります  (Azure AD Connector の "エクスポート")。
 * レポートに最新のデータを取り込むには、Azure AD Connect Health の同期エージェントに、適切なエンド ポイントへの送信接続が必要です。
-* このレポートは、Azure AD Connect Health の同期エージェントによってアップロードされたデータを使用して **30 分ごとに更新**されます。その主な機能を示します。
+* このレポートは、Azure AD Connect Health の同期エージェントによってアップロードされたデータを使用して **30 分ごとに更新** されます。その主な機能を示します。
 
   * エラー カテゴリの分類
   * オブジェクトとエラー (カテゴリごと) の一覧表示

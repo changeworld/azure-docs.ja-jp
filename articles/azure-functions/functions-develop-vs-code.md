@@ -4,12 +4,12 @@ description: Visual Studio Code 用 Azure Functions 拡張機能を使用して�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 573177615ff898326eb29649a7f766b5df34b587
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 33adcb853099778c4b06a9cd428f480f6138ee8b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168435"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936976"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を開発する
 
@@ -255,7 +255,7 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
     | ------ | ----- | ----------- |
     | Select function app in Azure (Azure で関数アプリを選択する) | \+ Create New Function App in Azure (+ Azure で新しい関数アプリを作成する) | 次のプロンプトで、新しい関数アプリを識別するグローバルに一意の名前を入力し、Enter キーを選択します。 関数アプリ名の有効な文字は、`a-z`、`0-9`、`-` です。 |
     | Select an OS (OS を選択する) | Windows | 関数アプリは Windows で実行されます。 |
-    | Select a hosting plan (ホスティング プランを選択する) | 従量課金プラン | サーバーレス[従量課金プランでのホスティング](functions-scale.md#consumption-plan)が使用されます。 |
+    | Select a hosting plan (ホスティング プランを選択する) | 従量課金プラン | サーバーレス[従量課金プランでのホスティング](consumption-plan.md)が使用されます。 |
     | Select a runtime for your new app (新しいアプリのランタイムを選択する) | プロジェクトの言語 | ランタイムは、発行するプロジェクトに一致している必要があります。 |
     | Select a resource group for new resources (新しいリソースのリソース グループを選択する) | 新しいリソース グループの作成 | 次のプロンプトで、`myResourceGroup` のようなリソース グループ名を入力し、Enter キーを選択します。 既存のリソース グループを選択することもできます。 |
     | Select a storage account (ストレージ アカウントを選択する) | 新しいストレージ アカウントを作成する | 次のプロンプトで、関数アプリで使用する新しいストレージ アカウントのグローバルに一意の名前を入力して、Enter キーを選択します。 ストレージ アカウント名の長さは 3 文字から 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを選択することもできます。 |

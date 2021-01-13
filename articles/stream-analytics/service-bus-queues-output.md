@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics からの Service Bus キュー出力
 description: この記事では、Azure Stream Analytics の出力としての Service Bus キューについて説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 3527bdbbf1ba337d24dc390f97ed090c8dfbe039
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 9f71a0f9c6d3fdca4b81be3a69479c78236fcc31
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348391"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014214"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Service Bus キュー出力
 
@@ -50,7 +49,7 @@ ms.locfileid: "93348391"
 
 ## <a name="custom-metadata-properties-for-output"></a>出力用のカスタム メタデータ プロパティ
 
-ご自分の送信メッセージにクエリ列をユーザー プロパティとして添付できます。 これらの列はペイロードに入りません。 これらのプロパティは、出力メッセージにディクショナリの形式で表示されます。 " *キー* " は列名で、" *値* " はプロパティ ディクショナリの列値です。 Record と Array を除き、すべての Stream Analytics データ型がサポートされています。
+ご自分の送信メッセージにクエリ列をユーザー プロパティとして添付できます。 これらの列はペイロードに入りません。 これらのプロパティは、出力メッセージにディクショナリの形式で表示されます。 "*キー*" は列名で、"*値*" はプロパティ ディクショナリの列値です。 Record と Array を除き、すべての Stream Analytics データ型がサポートされています。
 
 次の例では、`DeviceId` フィールドと `DeviceStatus` フィールドがメタデータに追加されています。
 

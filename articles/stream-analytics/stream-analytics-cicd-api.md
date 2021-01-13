@@ -1,18 +1,17 @@
 ---
 title: REST API を使用して Azure Stream Analytics on IoT Edge の CI/CD を行う
 description: REST API を使用して Azure Stream Analytics のための継続的インテグレーションと継続的なデプロイのパイプラインを実装する方法について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: su-jie
+ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: a7e56758a1a76933d6bb18883aa15ce33ce2e89e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3c3f776ad0996fa0b7422f0fca2d899a35e853d1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130920"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016135"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>API を使用して IoT Edge 上に Stream Analytics 向けの CI/CD を実装する
 

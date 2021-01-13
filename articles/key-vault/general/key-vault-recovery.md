@@ -8,12 +8,12 @@ ms.author: mbaldwin
 author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: 258d100276b20ea2437ebffb1473492a247657e8
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: a9a783333d8edd40556b7744eb7cf7dfb52953a7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704216"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933984"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>論理的な削除と消去保護を使用した Azure Key Vault の回復の管理
 
@@ -394,4 +394,4 @@ Key Vault の詳細については、以下を参照してください。
 - [Key Vault のログ記録を有効にする方法](howto-logging.md)
 - [キー コンテナーへのアクセスをセキュリティで保護する](secure-your-key-vault.md)
 - [Azure Key Vault 開発者ガイド](developers-guide.md)
-- [キー コンテナーを使用するためのベスト プラクティス](best-practices.md)
+- [キー コンテナーを使用するためのベスト プラクティス](security-overview.md)

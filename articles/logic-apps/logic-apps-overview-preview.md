@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 0c4d0416c107c9ceb4cd0dbdf80761ab9b52d56c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 7c15b3a854b533d93bc05f7e5302671711da75c2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924059"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936126"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>概要:Azure Logic Apps プレビュー
 
@@ -84,7 +84,7 @@ Azure Logic Apps プレビュー ランタイムには、[Azure Functions](../az
 
 ### <a name="nested-behavior-differences-between-stateful-and-stateless-workflows"></a>ステートフルおよびステートレス ワークフローの入れ子になった動作の違い
 
-[Request トリガー](../connectors/connectors-native-reqres.md)、[HTTP Webhook トリガー](../connectors/connectors-native-webhook.md)、または [ApiConnectionWebhook 型](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)であり HTTPS 要求を受信できるマネージド コネクタ トリガーを使用することによって、同じ **ロジック アプリ (プレビュー)** リソースに存在する他のワークフローから[ワークフローを呼び出せるようにする](../logic-apps/logic-apps-http-endpoint.md)ことができます。
+[Request トリガー](../connectors/connectors-native-reqres.md)、[HTTP Webhook トリガー](../connectors/connectors-native-webhook.md)、または [ApiConnectionWebhook 型](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)であり HTTPS 要求を受信できるマネージド コネクタ トリガーを使用することによって、同じ **ロジック アプリ (プレビュー)** リソースに存在する他のワークフローから [ワークフローを呼び出せるようにする](../logic-apps/logic-apps-http-endpoint.md)ことができます。
 
 親ワークフローで子ワークフローが呼び出された後、入れ子になったワークフローで従うことができる動作パターンを次に示します。
 
@@ -148,7 +148,7 @@ Azure Logic Apps プレビューには、現在および追加の機能が多数
 
 Azure portal で新しいロジック アプリの種類を作成するか、Visual Studio Code からデプロイする場合は、ロジック アプリで使用するホスティング プラン ([App Service または Premium](../azure-functions/functions-scale.md)) を選ぶ必要があります。 このプランによって、ロジック アプリの実行に適用される価格モデルが決まります。 App Service プランを選択した場合は、[価格レベル](../app-service/overview-hosting-plans.md)も選ぶ必要があります。
 
-"*ステートフル*" ワークフローには[外部ストレージ](../azure-functions/functions-scale.md#storage-account-requirements)が使用されるため、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)は、Azure Logic Apps プレビュー ランタイムで実行されるストレージ トランザクションに適用されます。 たとえば、キューはスケジュール設定に使用され、テーブルと BLOB はワークフローの状態の格納に使用されます。
+"*ステートフル*" ワークフローには [外部ストレージ](../azure-functions/storage-considerations.md#storage-account-requirements)が使用されるため、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)は、Azure Logic Apps プレビュー ランタイムで実行されるストレージ トランザクションに適用されます。 たとえば、キューはスケジュール設定に使用され、テーブルと BLOB はワークフローの状態の格納に使用されます。
 
 > [!NOTE]
 > パブリック プレビュー期間中は、App Service でロジック アプリを実行しても、選択したプランの他に "*追加*" 料金は発生しません。

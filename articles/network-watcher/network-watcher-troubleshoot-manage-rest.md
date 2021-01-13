@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/19/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: ad89ac04d753fbe3203851af268aed29813fa587
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 72f279d90d071b0e5fe7f552a05474bc3b37a82e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960395"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011035"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Azure Network Watcher を使用した仮想ネットワーク ゲートウェイと接続のトラブルシューティング
 

@@ -6,16 +6,16 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8033235cde5b7ebe298bb1fa8d4222e208df998b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a29d81be9b750d89230a180b8a7c786466d99bb8
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183007"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936432"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service プランの概要
 
-App Service (Web Apps、API Apps、または Mobile Apps) では、アプリは常に _App Service プラン_ で実行されます。 また、[Azure Functions](../azure-functions/functions-scale.md#app-service-plan) には、_App Service プラン_ で実行するオプションもあります。 App Service プランでは、Web アプリを実行するための一連のコンピューティング リソースを定義します。 これらのコンピューティング リソースは従来の Web ホスティングの ["_サーバー ファーム_"](https://wikipedia.org/wiki/Server_farm) に似ています。 1 つまたは複数のアプリを同じコンピューティング リソース (または、同じ App Service プラン) で実行するように構成することができます。
+App Service (Web Apps、API Apps、または Mobile Apps) では、アプリは常に _App Service プラン_ で実行されます。 また、[Azure Functions](../azure-functions/dedicated-plan.md) には、_App Service プラン_ で実行するオプションもあります。 App Service プランでは、Web アプリを実行するための一連のコンピューティング リソースを定義します。 これらのコンピューティング リソースは従来の Web ホスティングの ["_サーバー ファーム_"](https://wikipedia.org/wiki/Server_farm) に似ています。 1 つまたは複数のアプリを同じコンピューティング リソース (または、同じ App Service プラン) で実行するように構成することができます。
 
 特定のリージョン (西ヨーロッパなど) の App Service プランを作成する場合、一連のコンピューティング リソースはそのリージョンのそのプランに対して作成されます。 この App Service プランに入れたアプリは、App Service プランで定義されたとおりにこれらのコンピューティング リソースで実行されます。 各 App Service プランは以下を定義します。
 

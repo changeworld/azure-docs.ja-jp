@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1, deploy, devx-track-azurecli
+ms.custom: how-to, contperf-fy21q1, deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: d7540066ccc0d3a62dbd4012eee100d8e8aea98f
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 7ba01139e365b2f0023ef0784b6ed83e7bde609a
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505088"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831731"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 
@@ -91,6 +91,55 @@ Azure Machine Learning では、"デプロイ"は、「プロジェクト リソ
 azureml-fe は、より多くのコアを使用するためのスケールアップ (垂直方向)、およびより多くのポッドを使用するためのスケールアウト (水平方向) の両方を行います。 スケールアップするかどうかを決定するときは、受信推論要求のルーティングにかかる時間が使用されます。 この時間がしきい値を超えると、スケールアップが発生します。 受信要求をルーティングする時間がしきい値を超え続けると、スケールアウトが発生します。
 
 スケールダウンとスケールインを行うときは、CPU 使用率が使用されます。 CPU 使用率のしきい値に達した場合、フロントエンドでは、まずスケールダウンが行われます。 CPU 使用率がスケールインのしきい値にまで低下した場合は、スケールイン操作が行われます。 スケールアップとスケールアウトは、使用可能なクラスター リソースが十分にある場合にのみ発生します。
+
+## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>AKS 推論クラスターの接続要件を理解する
+
+Azure Machine Learning で AKS クラスターを作成またはアタッチすると、次の 2 つのネットワーク モデルのいずれかで AKS クラスターがデプロイされます。
+* Kubenet ネットワーク - AKS クラスターのデプロイ時に、通常はネットワーク リソースが作成され、構成されます。
+* Azure Container Networking Interface (CNI) ネットワーク - AKS クラスターは、既存の仮想ネットワーク リソースと構成に接続されます。
+
+最初のネットワーク モードでは、ネットワークが作成され、Azure Machine Learning service 用に適切に構成されます。 2 番目のネットワーク モードでは、クラスターが既存の仮想ネットワークに接続されるため、特に既存の仮想ネットワークでカスタム DNS を使用している場合は、お客様は AKS 推論クラスターの接続要件に注意し、AKS 推論の DNS 解決と送信接続を確認する必要があります。
+
+次の図は、AKS 推論のすべての接続要件をキャプチャします。 黒い矢印は実際の通信を表し、青い矢印はドメイン名を表します。このドメイン名は、お客様が管理する DNS で解決されます。
+
+ ![AKS 推論の接続要件](./media/how-to-deploy-aks/aks-network.png)
+
+### <a name="overall-dns-resolution-requirements"></a>全体的な DNS 解決の要件
+既存の VNET 内の DNS 解決は、お客様の管理下にあります。 次の DNS エントリが解決可能である必要があります。
+* \<cluster\>.hcp.\<region\>.azmk8s.io の形式の AKS API サーバー
+* Microsoft Container Registry (MCR): mcr.microsoft.com
+* \<ACR name\>.azurecr.io の形式のお客様の Azure Container Registry (ARC)
+* \<account\>.table.core.windows.net および \<account\>.blob.core.windows.net の形式の Azure Storage アカウント
+* (省略可能) AAD 認証の場合: api.azureml.ms
+* スコアリング エンドポイントのドメイン名。 Azure ML またはカスタム ドメイン名で自動生成されます。 自動生成されたドメイン名は、\<leaf-domain-label \+ auto-generated suffix\>.\<region\>.cloudapp.azure.com のようになります
+
+### <a name="connectivity-requirements-in-chronological-order-from-cluster-creation-to-model-deployment"></a>クラスターの作成からモデル デプロイまで、時系列順の接続要件
+
+AKS の作成またはアタッチのプロセスでは、Azure ML ルーター (azureml-fe) が AKS クラスターにデプロイされます。 Azure ML ルーターをデプロイするために、AKS ノードで次の処理が可能である必要があります。
+* AKS API サーバーの DNS を解決する
+* Azure ML ルーターの docker イメージをダウンロードするために、MCR の DNS を解決する
+* 送信接続が必要な MCR からイメージをダウンロードする
+
+azureml-fe はデプロイされるとすぐに開始しようとしますが、これには次の処理を行う必要があります。
+* AKS API サーバーの DNS を解決する
+* AKS API サーバーにそれ自体の他のインスタンスを検出するためにクエリを実行する (マルチポッド サービス)
+* それ自体の他のインスタンスに接続する
+
+azureml-fe が開始されると、正常に機能するために追加の接続が必要になります。
+* Azure Storage に接続して動的構成をダウンロードする
+* デプロイされたサービスが AAD 認証を使用している場合は、AAD 認証サーバー api.azureml.ms の DNS を解決して、そのサーバーと通信します。
+* デプロイされたモデルを検出するために AKS API サーバーにクエリを実行する
+* デプロイされたモデル POD と通信する
+
+モデルのデプロイ時に、モデル デプロイが成功すると、AKS ノードでは次の操作が可能になります。 
+* お客様の ACR の DNS を解決する
+* お客様の ACR からイメージをダウンロードする
+* モデルが格納されている Azure BLOB の DNS を解決する
+* Azure BLOB からモデルをダウンロードする
+
+モデルがデプロイされ、サービスが開始されると、azureml-fe は AKS API を使用してモデルを自動的に検出して、要求をそこにルーティングできるようになります。 モデル POD と通信できる必要があります。
+>[!Note]
+>デプロイされたモデルに接続が必要な場合 (外部データベースやその他の REST サービスへのクエリの実行やブログのダウンロードなど)、これらのサービスの DNS 解決と送信通信の両方を有効にする必要があります。
 
 ## <a name="deploy-to-aks"></a>AKS にデプロイする
 

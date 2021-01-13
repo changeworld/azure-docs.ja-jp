@@ -4,12 +4,12 @@ description: 静的接続クライアントを使用して、Azure Functions の
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 53848e6273cf59439d44b431652981b18bdd5ba6
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: ec16ce3e7f9793be2a012a029bcca31c9a7ea4cf
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755958"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936704"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Azure Functions での接続の管理
 
@@ -19,7 +19,7 @@ ms.locfileid: "97755958"
 
 使用できる接続の数が制限される理由の 1 つは、関数アプリが[サンドボックス環境](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)で実行されるためです。 サンドボックスがコードに課す制限の 1 つに、送信接続数の制限があります。現在は、インスタンスあたり 600 アクティブ (合計 1,200) 接続です。 この制限に達すると、関数ランタイムによって `Host thresholds exceeded: Connections` というメッセージがログに出力されます。 詳細については、[Functions のサービスの制限](functions-scale.md#service-limits)に関する記事を参照してください。
 
-この制限はインスタンスごとに適用されます。 より多くの要求を処理するために、[スケール コントローラーによって関数アプリ インスタンスが追加](functions-scale.md#how-the-consumption-and-premium-plans-work)されると、インスタンスごとに接続の制限が適用されます。 つまり、接続のグローバルな制限はないので、すべてのアクティブ インスタンスでアクティブな接続の数が 600 をはるかに超える可能性があります。
+この制限はインスタンスごとに適用されます。 より多くの要求を処理するために、[スケール コントローラーによって関数アプリ インスタンスが追加](event-driven-scaling.md)されると、インスタンスごとに接続の制限が適用されます。 つまり、接続のグローバルな制限はないので、すべてのアクティブ インスタンスでアクティブな接続の数が 600 をはるかに超える可能性があります。
 
 トラブルシューティングを行う際には、関数アプリに対して Application Insights を有効にしたことを確認します。 Application Insights では、実行など、関数アプリのメトリックを表示できます。 詳細については、「[Application Insights でテレメトリを表示する](analyze-telemetry-data.md#view-telemetry-in-application-insights)」を参照してください。  
 

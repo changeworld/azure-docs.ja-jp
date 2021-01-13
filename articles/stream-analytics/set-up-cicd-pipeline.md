@@ -4,16 +4,15 @@ description: この記事では、Azure DevOps で Azure Stream Analytics ジョ
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: d9b6dfc977aab7d8907b5d3c3851a22f96227d78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b601a3586cfa971b2e8337a914f4e10bb0178ba0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757760"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014248"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Azure DevOps を使用して Stream Analytics ジョブの CI/CD パイプラインを作成する
 
@@ -39,7 +38,7 @@ ms.locfileid: "91757760"
 
 1. ソースの種類、チーム プロジェクト、リポジトリを選択します。 その後、 **[続行]** を選択します。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="新しい Azure パイプラインの作成":::
+   :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="Azure Stream Analytics プロジェクトの選択":::
 
 1. **[テンプレートの選択]** ページで、**[空のジョブ]** を選択します。
 
@@ -47,13 +46,15 @@ ms.locfileid: "91757760"
 
 1. **[タスク]** ページで、**[Agent job 1]\(エージェントジョブ 1\)** の横にあるプラス記号を選択します。 タスク検索に「*npm*」と入力し、 **[npm]** を選択します。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/search-npm.png" alt-text="新しい Azure パイプラインの作成" に変更し、**[コマンドと引数]** に次のコマンドを入力します。 他の既定のオプションはそのまま使用します。
+   :::image type="content" source="media/set-up-cicd-pipeline/search-npm.png" alt-text="npm タスクの選択":::
+
+2. タスクに **表示名** を付けます。 **[コマンド]** オプションを "*カスタム*" に変更し、**[コマンドと引数]** に次のコマンドを入力します。 他の既定のオプションはそのまま使用します。
 
    ```bash
    install -g azure-streamanalytics-cicd
    ```
 
-   :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="新しい Azure パイプラインの作成":::
+   :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="npm タスクの構成の入力":::
 
 ## <a name="add-a-build-task"></a>ビルド タスクの追加
 
@@ -67,7 +68,7 @@ ms.locfileid: "91757760"
 
 2. **[タスク]** ページで、**[Agent job 1]\(エージェントジョブ 1\)** の横にあるプラス記号を選択します。 **[コマンド ライン]** を探します。
 
-3. タスクに**表示名**を指定し、次のスクリプトを入力します。 リポジトリ名とプロジェクト名を使用してスクリプトを変更します。
+3. タスクに **表示名** を指定し、次のスクリプトを入力します。 リポジトリ名とプロジェクト名を使用してスクリプトを変更します。
 
    ```bash
    azure-streamanalytics-cicd build -project $(projectRootPath)/asaproj.json -outputpath $(projectRootPath)/$(outputPath)/$(deployPath)
@@ -75,7 +76,7 @@ ms.locfileid: "91757760"
 
    以下の画像では、Stream Analytics Visual Studio Code プロジェクトを例として使用しています。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-build.png" alt-text="新しい Azure パイプラインの作成":::
+   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-build.png" alt-text="コマンド ライン タスクの構成を入力する (Visual Studio Code)":::
 
 ## <a name="add-a-test-task"></a>テスト タスクを追加する
 
@@ -85,11 +86,11 @@ ms.locfileid: "91757760"
    |-|-|
    |testPath|テスト|
 
-   :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="新しい Azure パイプラインの作成":::
+   :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="パイプライン変数を追加する":::
 
 2. **[タスク]** ページで、**[Agent job 1]\(エージェントジョブ 1\)** の横にあるプラス記号を選択します。 **[コマンド ライン]** を探します。
 
-3. タスクに**表示名**を指定し、次のスクリプトを入力します。 スクリプトは、実際のプロジェクト ファイル名とテスト構成ファイルのパスに合わせて変更してください。 
+3. タスクに **表示名** を指定し、次のスクリプトを入力します。 スクリプトは、実際のプロジェクト ファイル名とテスト構成ファイルのパスに合わせて変更してください。 
 
    テスト ケースを追加して構成する方法について詳しくは、[自動テストの手順](cicd-tools.md#automated-test)を参照してください。
 
@@ -97,7 +98,7 @@ ms.locfileid: "91757760"
    azure-streamanalytics-cicd test -project $(projectRootPath)/asaproj.json -outputpath $(projectRootPath)/$(outputPath)/$(testPath) -testConfigPath $(projectRootPath)/test/testConfig.json 
    ```
 
-   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-test.png" alt-text="新しい Azure パイプラインの作成":::
+   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-test.png" alt-text="コマンド ライン タスクの構成を入力する":::
 
 ## <a name="add-a-copy-files-task"></a>ファイルのコピー タスクを追加する
 
@@ -114,7 +115,7 @@ ms.locfileid: "91757760"
 
 2. **[管理オプション]** を展開します。 **[このタスクを実行]** の **[前のいずれかのタスクが失敗した場合でも、ビルドがキャンセルされていなければ]** を選択します。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/copy-config.png" alt-text="新しい Azure パイプラインの作成":::
+   :::image type="content" source="media/set-up-cicd-pipeline/copy-config.png" alt-text="コピー タスクの構成の入力":::
 
 ## <a name="add-a-publish-build-artifacts-task"></a>ビルド成果物の公開タスクを追加する
 
@@ -122,7 +123,7 @@ ms.locfileid: "91757760"
 
 2. **[管理オプション]** を展開します。 **[このタスクを実行]** の **[前のいずれかのタスクが失敗した場合でも、ビルドがキャンセルされていなければ]** を選択します。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/publish-config.png" alt-text="新しい Azure パイプラインの作成":::
+   :::image type="content" source="media/set-up-cicd-pipeline/publish-config.png" alt-text="公開タスクの構成を入力する":::
 
 ## <a name="save-and-run"></a>保存と実行
 
@@ -132,9 +133,9 @@ npm パッケージ、コマンド ライン、ファイルのコピー、およ
 
 テスト概要ファイルと Azure Resource Manager テンプレート ファイルは、 **[Published]\(公開済み\)** フォルダーにあります。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/check-build-test-result.png" alt-text="新しい Azure パイプラインの作成":::
+   :::image type="content" source="media/set-up-cicd-pipeline/check-build-test-result.png" alt-text="ビルドとテストの結果を確認する":::
 
-   :::image type="content" source="media/set-up-cicd-pipeline/check-drop-folder.png" alt-text="新しい Azure パイプラインの作成":::
+   :::image type="content" source="media/set-up-cicd-pipeline/check-drop-folder.png" alt-text="成果物を確認する":::
 
 ## <a name="release-with-azure-pipelines"></a>Azure Pipelines を使用したリリース
 
@@ -148,7 +149,7 @@ Web ブラウザーを開き、Azure Stream Analytics Visual Studio Code プロ�
 
 3. **[Artifacts]\(成果物\)** ボックスで、**[+ Add an artifact]\(+ 成果物の追加\)** を選択します。 **[ソース]** で、作成したビルド パイプラインを選択し、 **[追加]** を選択します。
 
-   :::image type="content" source="media/set-up-cicd-pipeline/build-artifact.png" alt-text="新しい Azure パイプラインの作成":::
+   :::image type="content" source="media/set-up-cicd-pipeline/build-artifact.png" alt-text="ビルド パイプライン成果物の入力":::
 
 4. **[Stage 1]\(ステージ 1\)** の名前を **[Deploy job to test environment]\(テスト環境にジョブをデプロイ\)** に変更します。
 
@@ -194,7 +195,7 @@ Web ブラウザーを開き、Azure Stream Analytics Visual Studio Code プロ�
 
 リリースを作成するには、右上隅にある **[リリースの作成]** を選択します。
 
-:::image type="content" source="media/set-up-cicd-pipeline/create-release.png" alt-text="新しい Azure パイプラインの作成":::
+:::image type="content" source="media/set-up-cicd-pipeline/create-release.png" alt-text="Azure Pipelines を使用したリリースの作成":::
 
 ## <a name="next-steps"></a>次のステップ
 

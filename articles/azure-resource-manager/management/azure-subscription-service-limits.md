@@ -3,12 +3,12 @@ title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 4d56c5c3fd33d1cda05e23d5bc53e7540428671b
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 20de08ee30deae74954f2857b4de756b8cf46f08
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547850"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964195"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -132,7 +132,7 @@ Azure Database for PostgreSQL の制限については、「[Azure Database for 
 
 [!INCLUDE [functions-limits](../../../includes/functions-limits.md)]
 
-詳細については、[Functions のホスティング プランの比較](../../azure-functions/functions-scale.md#hosting-plans-comparison)に関するページを参照してください。
+詳細については、[Functions のホスティング プランの比較](../../azure-functions/functions-scale.md)に関するページを参照してください。
 
 ## <a name="azure-kubernetes-service-limits"></a>Azure Kubernetes Service の制限
 
@@ -175,6 +175,10 @@ Azure Machine Learning コンピューティング クォータの最新の値�
 ## <a name="azure-policy-limits"></a>Azure Policy の制限
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
+
+## <a name="azure-role-based-access-control-limits"></a>Azure のロールベースのアクセス制御の制限
+
+[!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control/limits.md)]
 
 ## <a name="azure-signalr-service-limits"></a>Azure SignalR Service の制限
 
@@ -339,10 +343,6 @@ Azure Purview のクォータの最新の値については、 [Azure Purview �
 ## <a name="notification-hubs-limits"></a>Notification Hubs の制限
 
 [!INCLUDE [notification-hub-limits](../../../includes/notification-hub-limits.md)]
-
-## <a name="azure-role-based-access-control-limits"></a>Azure のロールベースのアクセス制御の制限
-
-[!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control-limits.md)]
 
 ## <a name="service-bus-limits"></a>Service Bus の制限
 

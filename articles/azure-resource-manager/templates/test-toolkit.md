@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 29ebe2f0ec4d4c39154272bbbdf4d0c9ede9fd95
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e5ad0b6dca7718166517b52148fbc6dd49f38869
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928190"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674014"
 ---
 # <a name="use-arm-template-test-toolkit"></a>ARM テンプレート テスト ツールキットを使用する
 
@@ -282,4 +282,5 @@ param(
 
 ## <a name="next-steps"></a>次のステップ
 
-既定のテストの詳細については、「[ARM テンプレート テスト ツールキットの既定のテスト ケース](test-cases.md)」を参照してください。
+- 既定のテストの詳細については、「[ARM テンプレート テスト ツールキットの既定のテスト ケース](test-cases.md)」を参照してください。
+- テスト ツールキットの使用に関して説明している Microsoft Learn モジュールについては、「[what-if と ARM テンプレート テスト ツールキットを使用して変更をプレビューし、Azure リソースを検証する](/learn/modules/arm-template-test/)」を参照してください。
