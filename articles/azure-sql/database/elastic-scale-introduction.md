@@ -9,21 +9,21 @@ ms.custom: sqldbrb=1
 author: stevestein
 ms.author: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 2eb7984097b4edf34ed2f0214e1453246e12916f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3f00b2c1a8a8264267aa8ae68d80890adeb642ea
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786753"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059147"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Azure SQL Database によるスケールアウト
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-**Elastic Database** ツールを使用すると、Azure SQL Database のデータベースを簡単にスケールアウトできます。 これらのツールと機能では、 **Azure SQL Database** のデータベースのリソースを使用して、トランザクションのワークロードに対するソリューション、特にサービスとしてのソフトウェア (SaaS) アプリケーションを作成できます。 Elastic Database は、次の機能で構成されています。
+**Elastic Database** ツールを使用すると、Azure SQL Database のデータベースを簡単にスケールアウトできます。 これらのツールと機能では、**Azure SQL Database** のデータベースのリソースを使用して、トランザクションのワークロードに対するソリューション、特にサービスとしてのソフトウェア (SaaS) アプリケーションを作成できます。 Elastic Database は、次の機能で構成されています。
 
 * [Elastic Database クライアント ライブラリ](elastic-database-client-library.md):クライアント ライブラリ機能を使用すると、シャード化されたデータベースを作成および管理できます。  「 [エラスティック データベース ツールの概要](elastic-scale-get-started.md)」を参照してください。
 * [Elastic Database 分割/マージ ツール](elastic-scale-overview-split-and-merge.md): シャード化されたデータベース間でデータを移動します。 このツールは、マルチ テナント データベースからシングル テナント データベースに (またはその逆に) データを移動するのに便利です。 「 [エラスティック データベース Split-Merge ツールに関するチュートリアル](elastic-scale-configure-deploy-split-and-merge.md)」を参照してください。
-* [Elastic Database ジョブ](elastic-jobs-overview.md): ジョブを使用して、Azure SQL Database の多数のデータベースを管理します。 ジョブを使用して、スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) テレメトリの収集などの管理操作を簡単に実行できます。
+* [Elastic Database ジョブ](elastic-jobs-overview.md) (プレビュー):ジョブを使用して、Azure SQL Database の多数のデータベースを管理します。 ジョブを使用して、スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) テレメトリの収集などの管理操作を簡単に実行できます。
 * [Elastic Database クエリ](elastic-query-overview.md) (プレビュー):複数のデータベースにまたがる Transact-SQL クエリを実行することができます。 これにより、Excel、Power BI、Tableau などのレポート作成ツールに接続できます。
 * [エラスティック トランザクション](elastic-transactions-overview.md):この機能を使用すると、複数のデータベースにまたがるトランザクションを実行できます。 Elastic Database トランザクションは、ADO .NET を使用して .NET アプリケーションで利用できます。[System.Transaction クラス](/dotnet/api/system.transactions)を使用することで、これまでに培ったプログラミングの経験を活かすことができます。
 
@@ -33,7 +33,7 @@ ms.locfileid: "92786753"
 
 1. **SQL データベース** が、シャーディング アーキテクチャを使用して Azure でホストされています。
 2. **Elastic Database クライアント ライブラリ** は、シャード セットの管理に使用します。
-3. 一部のデータベースは、 **エラスティック プール** に入っています。 (「[プールとは](elastic-pool-overview.md)」をご覧ください)。
+3. 一部のデータベースは、**エラスティック プール** に入っています。 (「[プールとは](elastic-pool-overview.md)」をご覧ください)。
 4. **エラスティック データベース ジョブ** は、すべてのデータベースに対して、スケジュールされた、またはアドホックの T-SQL スクリプトを実行します。
 5. 1 つのシャードから別のシャードにデータを移動するときには、 **分割/マージ ツール** を使用します。
 6. **Elastic Database クエリ** では、シャード セット内のすべてのデータベースにまたがるクエリを記述することができます。
@@ -80,7 +80,7 @@ ms.locfileid: "92786753"
 
 ## <a name="multi-tenant-and-single-tenant"></a>マルチ テナントとシングル テナント
 
-一部のアプリケーションでは、テナントごとに別個のデータベースを作成する最も単純なアプローチが使用されています。 このアプローチは、テナント単位で分離、バックアップ/復元、およびリソースのスケーリングを可能にする、 **単一テナントのシャーディング パターン** です。 単一テナントのシャーディングでは、各データベースは特定のテナント ID 値 (または顧客キー値) に関連付けられますが、キーは必ずしもデータ自体に存在する必要はありません。 各要求を適切なデータベースにルーティングするのはアプリケーションの役目です。クライアント ライブラリはこの作業を簡素化できます。
+一部のアプリケーションでは、テナントごとに別個のデータベースを作成する最も単純なアプローチが使用されています。 このアプローチは、テナント単位で分離、バックアップ/復元、およびリソースのスケーリングを可能にする、**単一テナントのシャーディング パターン** です。 単一テナントのシャーディングでは、各データベースは特定のテナント ID 値 (または顧客キー値) に関連付けられますが、キーは必ずしもデータ自体に存在する必要はありません。 各要求を適切なデータベースにルーティングするのはアプリケーションの役目です。クライアント ライブラリはこの作業を簡素化できます。
 
 ![単一テナントをマルチテナント][4]
 

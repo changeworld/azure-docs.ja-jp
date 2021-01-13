@@ -3,17 +3,16 @@ title: Visual Studio における Azure Stream Analytics Edge ジョブ
 description: この記事では、Visual Studio の Stream Analytics ツールを使って、Stream Analytics on IoT Edge ジョブをオーサリング、デバッグ、および作成する方法について説明します。
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55ff983169e15c74bf343993b66088932a538c36
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 09151ea0fe3d419401d576149f6655b8cdc09f8e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127520"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019960"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Visual Studio Tools を使用して Stream Analytics Edge ジョブを作成する
 
@@ -33,7 +32,7 @@ Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェク�
 
 ![Visual Studio での新しい Stream Analytics Edge プロジェクト](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 
-プロジェクトが作成されたら、 **ソリューション エクスプローラー** に移動して、フォルダー階層を表示します。
+プロジェクトが作成されたら、**ソリューション エクスプローラー** に移動して、フォルダー階層を表示します。
 
 ![Stream Analytics Edge ジョブのソリューション エクスプローラー ビュー](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
 
@@ -46,7 +45,7 @@ Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェク�
 
 ## <a name="define-inputs"></a>入力を定義する
 
-1. **ソリューション エクスプローラー** で、 **[入力]** ノードを展開します。 **EdgeInput.json** という名前の入力が表示されます。 ダブルクリックしてその設定を表示します。  
+1. **ソリューション エクスプローラー** で、 **[入力]** ノードを展開します。**EdgeInput.json** という名前の入力が表示されます。 ダブルクリックしてその設定を表示します。  
 
 2. [ソースの種類] を **[データ ストリーム]** に設定します。 次に、[ソース] を **[Edge Hub]** に、[イベントのシリアル化形式] を **[Json]** に、[エンコード] を **[UTF8]** に設定します。 必要に応じて **[入力のエイリアス]** の名前を変更できますが、この例ではそのままにします。 入力の別名の名前を変更する場合は、クエリを定義するときに指定した名前を使用します。 **[保存]** を選択して設定を保存します。  
    ![Stream Analytics ジョブの入力構成](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-input-configuration.png)
@@ -55,7 +54,7 @@ Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェク�
 
 ## <a name="define-outputs"></a>出力を定義する
 
-1. **ソリューション エクスプローラー** で、 **[出力]** ノードを展開します。 **EdgeOutput.json** という名前の出力が表示されます。 ダブルクリックしてその設定を表示します。  
+1. **ソリューション エクスプローラー** で、 **[出力]** ノードを展開します。**EdgeOutput.json** という名前の出力が表示されます。 ダブルクリックしてその設定を表示します。  
 
 2. [シンク] が **[Edge Hub]** に、[イベントシリアル化形式] が **[Json]** に、[エンコード] が **[UTF8]** に、[フォーマット] が **[配列]** に設定されていることを確認します。 必要に応じて **[出力のエイリアス]** の名前を変更できますが、この例ではそのままにします。 出力の別名の名前を変更する場合は、クエリを定義するときに指定した名前を使用します。 **[保存]** を選択して設定を保存します。 
    ![Stream Analytics ジョブの出力構成](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
@@ -71,7 +70,7 @@ Stream Analytics IoT Edge 環境にデプロイする Stream Analytics ジョブ
 
 ポータルで Stream Analytics Edge ジョブを作成するときに、サポートされている演算子を使用していない場合は、コンパイラによって自動的に警告が表示されます。
 
-Visual Studio のクエリ エディターで、次の変換クエリを定義します ( **script.asaql ファイル** )。
+Visual Studio のクエリ エディターで、次の変換クエリを定義します (**script.asaql ファイル**)。
 
 ```sql
 SELECT * INTO EdgeOutput
@@ -82,7 +81,7 @@ FROM EdgeInput
 
 クエリをローカルでテストするには、サンプル データをアップロードする必要があります。 サンプル データは、[GitHub リポジトリ](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/Registration.json)から登録データをダウンロードしてローカル コンピューターに保存することで取得できます。 
 
-1. サンプル データをアップロードするには、 **EdgeInput.json** ファイルを右クリックし、 **[ローカル入力の追加]** を選択します。  
+1. サンプル データをアップロードするには、**EdgeInput.json** ファイルを右クリックし、 **[ローカル入力の追加]** を選択します。  
 
 2. ポップアップ ウィンドウで、ローカル パスからサンプル データを **参照** し、 **[保存]** を選択します。
    ![Visual Studio でのローカルの入力構成](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-local-input-configuration.png)
@@ -103,7 +102,7 @@ FROM EdgeInput
 
 2. Azure にジョブを送信するには、クエリ エディターに移動し、 **[Azure に送信]** を選択します。  
 
-3. ポップアップ ウィンドウが表示されます。 既存の Stream Analytics Edge ジョブを更新するか、新しく作成することを選択してください。 既存のジョブを更新すると、すべてのジョブの構成が置き換えられます。このシナリオでは、新しいジョブを発行します。 **[新しい Azure Stream Analytics ジョブの作成]** を選択し、 **MyASAEdgeJob** のようなジョブの名前を入力し、必要な **[サブスクリプション]** 、 **[リソース グループ]** 、および **[場所]** を選択し、 **[送信]** を選択します。
+3. ポップアップ ウィンドウが表示されます。 既存の Stream Analytics Edge ジョブを更新するか、新しく作成することを選択してください。 既存のジョブを更新すると、すべてのジョブの構成が置き換えられます。このシナリオでは、新しいジョブを発行します。 **[新しい Azure Stream Analytics ジョブの作成]** を選択し、**MyASAEdgeJob** のようなジョブの名前を入力し、必要な **[サブスクリプション]** 、 **[リソース グループ]** 、および **[場所]** を選択し、 **[送信]** を選択します。
 
    ![Visual Studio から Azure に Stream Analytics ジョブを送信する](./media/stream-analytics-tools-for-visual-studio-edge-jobs/submit-stream-analytics-job-to-azure.png)
  

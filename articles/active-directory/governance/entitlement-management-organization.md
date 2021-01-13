@@ -16,12 +16,12 @@ ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6299f9ad660252ae39903401672d493b1c1ad52c
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 8f08c25749bbd21e3624dee898d9a8c97fd74164
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347491"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059383"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理で接続されている組織を追加する
 
@@ -135,8 +135,6 @@ Azure AD ディレクトリまたはドメインのユーザーの認証方法�
 1. 左側のペインで、 **[接続されている組織]** を選択した後、接続されている組織を選択して開きます。
 
 1. 接続されている組織の概要ウィンドウで、 **[削除]** を選択して削除します。
-
-    現時点では、接続されているユーザーがいない場合にのみ、接続されている組織を削除できます。
 
     ![接続されている組織の [削除] ボタン](./media/entitlement-management-organization/organization-delete.png)
 

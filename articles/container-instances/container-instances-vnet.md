@@ -4,12 +4,12 @@ description: Azure コマンド ライン インターフェイスを使用し�
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 02cf514e6c19387e3a9e2f1c78b65f346fff764e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b791d3f37809c2eca53f5a3cd34f7c44dd11ce40
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746892"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028881"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>コンテナー インスタンスを Azure 仮想ネットワークにデプロイする
 
@@ -20,7 +20,7 @@ ms.locfileid: "92746892"
 ネットワークのシナリオと制限事項については、[Azure Container Instances の仮想ネットワークのシナリオとリソース](container-instances-virtual-network-concepts.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> 仮想ネットワークへのコンテナー グループのデプロイは、一般に Azure Container Instances が利用可能なほとんどのリージョンでは、Linux コンテナーで使用できます。 詳細については、[リージョンとリソースの可用性](container-instances-virtual-network-concepts.md#where-to-deploy)に関するページをご覧ください。 
+> 仮想ネットワークへのコンテナー グループのデプロイは、一般に Azure Container Instances が利用可能なほとんどのリージョンでは、Linux コンテナーで使用できます。 詳細については、[リージョンとリソースの可用性][container-regions]に関するページをご覧ください。 
 
 この記事の例は、Bash シェル形式で示してあります。 PowerShell やコマンド プロンプトなど、別のシェルを使用する場合は、行継続文字を適切に調整してください。
 
@@ -69,7 +69,7 @@ az container create \
 
 次の例では、前に作成した同じサブネットに 2 つ目のコンテナー グループをデプロイし、2 つのコンテナー インスタンス間の通信を検証します。
 
-まず、デプロイした 1 つ目のコンテナー グループ ( *appcontainer* ) の IP アドレスを取得します。
+まず、デプロイした 1 つ目のコンテナー グループ (*appcontainer*) の IP アドレスを取得します。
 
 ```azurecli
 az container show --resource-group myResourceGroup \
@@ -83,7 +83,7 @@ az container show --resource-group myResourceGroup \
 10.0.0.4
 ```
 
-次に、`CONTAINER_GROUP_IP` を `az container show` コマンドで取得した IP アドレスに設定し、次の `az container create` コマンドを実行します。 この 2 つ目のコンテナー ( *commchecker* ) は、Alpine Linux ベースのイメージを実行し、最初のコンテナー グループのプライベート サブネット IP アドレスに対して `wget` を実行します。
+次に、`CONTAINER_GROUP_IP` を `az container show` コマンドで取得した IP アドレスに設定し、次の `az container create` コマンドを実行します。 この 2 つ目のコンテナー (*commchecker*) は、Alpine Linux ベースのイメージを実行し、最初のコンテナー グループのプライベート サブネット IP アドレスに対して `wget` を実行します。
 
 ```azurecli
 CONTAINER_GROUP_IP=<container-group-IP-address>
@@ -139,7 +139,7 @@ az network profile list --resource-group myResourceGroup \
 /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
 ```
 
-ネットワーク プロファイル ID が取得できたら、 *vnet-deploy-aci.yaml* という名前の新しいファイルに、次の YAML をコピーします。 `networkProfile` で、`id` の値を先ほど取得した ID に置き換え、ファイルを保存します。 この YAML は、 *appcontaineryaml* という名前のコンテナー グループを仮想ネットワーク内に作成します。
+ネットワーク プロファイル ID が取得できたら、*vnet-deploy-aci.yaml* という名前の新しいファイルに、次の YAML をコピーします。 `networkProfile` で、`id` の値を先ほど取得した ID に置き換え、ファイルを保存します。 この YAML は、*appcontaineryaml* という名前のコンテナー グループを仮想ネットワーク内に作成します。
 
 ```YAML
 apiVersion: '2019-12-01'
@@ -204,7 +204,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 スクリプトを実行する前に、`RES_GROUP` 変数を、削除する仮想ネットワークとサブネットを含んだリソース グループの名前に設定してください。 以前に提案された `aci-vnet` の名前を使用しなかった場合は、仮想ネットワークの名前を更新します。 スクリプトは Bash シェル用に書式設定されています。 別のシェル (PowerShell やコマンド プロンプトなど) を使用する場合は、変数の割り当てとアクセサーを適宜調整する必要があります。
 
 > [!WARNING]
-> このスクリプトを実行すると、リソースが削除されます。 仮想ネットワークと、それに含まれているすべてのサブネットが削除されます。 このスクリプトを実行する前に、仮想ネットワーク (およびそれに含まれるすべてのサブネット) 内の *いずれの* リソースも、今後必要でないことを確認してください。 一度削除すると、 **それらのリソースを復旧することはできません** 。
+> このスクリプトを実行すると、リソースが削除されます。 仮想ネットワークと、それに含まれているすべてのサブネットが削除されます。 このスクリプトを実行する前に、仮想ネットワーク (およびそれに含まれるすべてのサブネット) 内の *いずれの* リソースも、今後必要でないことを確認してください。 一度削除すると、**それらのリソースを復旧することはできません**。
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group
@@ -238,3 +238,4 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 [az-container-show]: /cli/azure/container#az-container-show
 [az-network-vnet-create]: /cli/azure/network/vnet#az-network-vnet-create
 [az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
+[container-regions]: container-instances-region-availability.md

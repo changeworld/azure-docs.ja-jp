@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 520b2eff91faf2e333ab0a5df7bcc85e6a47c80a
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4a789574b736eb22bd8d13fcf1a9facec5e241c9
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585192"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058669"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする
 
@@ -74,7 +74,7 @@ Azure AD B2C では、[クロス オリジン リソース共有 (CORS)](https:/
 ## <a name="guidelines-for-using-custom-page-content"></a>カスタム ページ コンテンツを使用するためのガイドライン
 
 - メディア、CSS、JavaScript ファイルなどの外部リソースを HTML ファイルに含める場合は、絶対 URL を使用します。
-- [ページ レイアウト バージョン](page-layout.md) 1.2.0 以降を使用すると、HTML タグに `data-preload="true"` 属性を追加して、CSS と JavaScript の読み込み順序を制御できます。 `data-preload=true` では、ページはユーザーに表示される前に構築されます。 この属性は、スタイルが設定されていない HTML がユーザーに表示されることなく、CSS ファイルをプリロードすることでページが "ちらつく" のを防ぐのに役立ちます。 次の HTML コード スニペットは、`data-preload` タグの使用方法を示しています。
+- [ページ レイアウト バージョン](page-layout.md) 1.2.0 以降を使用すると、HTML タグに `data-preload="true"` 属性を追加して、CSS と JavaScript の読み込み順序を制御できます。 `data-preload="true"` では、ページはユーザーに表示される前に構築されます。 この属性は、スタイルが設定されていない HTML がユーザーに表示されることなく、CSS ファイルをプリロードすることでページが "ちらつく" のを防ぐのに役立ちます。 次の HTML コード スニペットは、`data-preload` タグの使用方法を示しています。
   ```HTML
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```

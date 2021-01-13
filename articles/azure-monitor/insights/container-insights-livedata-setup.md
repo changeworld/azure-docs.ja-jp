@@ -2,14 +2,14 @@
 title: コンテナー用 Azure Monitor のライブ データ (プレビュー) の設定 | Microsoft Docs
 description: この記事では、コンテナー用 Azure Monitor で kubectl を使用せずに、コンテナーのログ (stdout/stderr) とイベントのリアルタイム ビューを設定する方法について説明します。
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 62bc7613995296504dfba551cdb631ac3386aa75
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: d5b978e7138e10ed88f5748b84ff62ddd22bebec
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830787"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050784"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>ライブ データ (プレビュー) 機能を設定する方法
 
@@ -29,8 +29,6 @@ Azure Kubernetes Service (AKS) クラスターから、コンテナー用 Azure 
 - Kubernetes ロールベースのアクセス制御 (Kubernetes RBAC) 対応の AKS クラスター
 - Azure Active Directory と統合された AKS クラスター
 
->[!NOTE]
->[プライベート クラスター](https://azure.microsoft.com/updates/aks-private-cluster/)として有効にされた AKS クラスターは、この機能でサポートされていません。 この機能では、ブラウザーからプロキシ サーバーを介した Kubernetes API への直接アクセスを利用します。 このプロキシから Kubernetes API をブロックするようにネットワーク セキュリティを有効にすると、このトラフィックはブロックされます。
 
 ## <a name="authentication-model"></a>認証モデル
 

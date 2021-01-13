@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 12/03/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: e39e27dbeb9394d19a9d7fd8791c147e11a56bdb
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: dc36d45e226cffafb51cf7aa09ea6f0d528ee016
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558889"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051379"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Azure PowerShell を使用して Azure Firewall のデプロイと構成を行う
 
@@ -68,7 +68,7 @@ New-AzResourceGroup -Name Test-FW-RG -Location "East US"
 この仮想ネットワークには次の 3 つのサブネットが含まれています。
 
 > [!NOTE]
-> AzureFirewallSubnet サブネットのサイズは /26 です。 サブネットのサイズの詳細については、「[Azure Firewall に関する FAQ](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)」を参照してください。
+> AzureFirewallSubnet サブネットのサイズは /26 です。 サブネットのサイズの詳細については、「[Azure Firewall に関する FAQ](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size)」を参照してください。
 
 ```azurepowershell
 $Bastionsub = New-AzVirtualNetworkSubnetConfig -Name AzureBastionSubnet -AddressPrefix 10.0.0.0/27

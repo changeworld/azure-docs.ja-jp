@@ -11,12 +11,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: 3f8c296860fc36772a85039e27c86a72614c2a50
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e551925bbd1426256a81ac2ca3f245af7697245b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791054"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028014"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Azure Portal で SQL Database 動的データ マスクを使用する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "92791054"
 この記事では、Azure Portal で[動的データ マスク](dynamic-data-masking-overview.md)を実装する方法を示します。 [Azure SQL Database コマンドレット](/powershell/module/az.sql/)または [REST API](/rest/api/sql/) を使って動的データ マスクを実装することもできます。
 
 > [!NOTE]
-> この機能は、Azure Synapse のポータル (PowerShell または REST API を使用) または SQL Managed Instance を使用して設定することはできません。 詳細については、「 [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking)」を参照してください。
+> この機能は、ポータルを使用して SQL Managed Instance に設定することはできません (PowerShell または REST API を使用してください)。 詳細については、「 [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking)」を参照してください。
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>Azure Portal を使用してデータベースの動的データ マスクを設定する
 

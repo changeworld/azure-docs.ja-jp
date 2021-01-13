@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/29/2020
-ms.openlocfilehash: 2668f969076fd2b9960995fec44350d61b405740
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 0834b8f00e4c414b3a36314b80f6c99fb8f2aea2
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809423"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955214"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>発話の例のセットを使用したバッチ テスト
 
@@ -168,17 +168,17 @@ LUIS ポータルのグラフでは、次の操作を実行できます。
 
 LUIS では、LUIS ポータルと REST API を使用してバッチ テストを行うことができます。 REST API のエンドポイントを下に示します。 LUIS ポータルを使用したバッチ テストの詳細については、[チュートリアル: バッチ テストのデータ セット](luis-tutorial-batch-testing.md)に関する記事を参照してください。 下の完全な URL を使用して、プレースホルダーの値を独自の LUIS 予測キーとエンドポイントに置き換えます。 
 
-必ずヘッダーで LUIS キーを `Apim-Subscription-Id` に追加し、さらに `Content-Type` を `application/json` に設定してください。
+必ずヘッダーで LUIS キーを `Ocp-Apim-Subscription-Key` に追加し、さらに `Content-Type` を `application/json` に設定してください。
 
 ### <a name="start-a-batch-test"></a>バッチ テストを開始する
 
 アプリのバージョン ID または発行スロットのいずれかを使用して、バッチ テストを開始します。 **POST** 要求を、次のいずれかのエンドポイント形式に送信します。 要求の本文にバッチ ファイルを含めます。
 
 発行スロット
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-NAME>/evaluations`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-NAME>/evaluations`
 
 アプリのバージョン ID
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations`
 
 これらのエンドポイントは、状態の確認と結果の取得に使用する操作 ID を返します。 
 
@@ -188,20 +188,20 @@ LUIS では、LUIS ポータルと REST API を使用してバッチ テスト�
 開始したバッチ テストの操作 ID を使用して、次のエンドポイント形式からその状態を取得します。 
 
 発行スロット
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/status`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/status`
 
 アプリのバージョン ID
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/status`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/status`
 
 ### <a name="get-the-results-from-a-batch-test"></a>バッチ テストの結果を取得する
 
 開始したバッチ テストの操作 ID を使用して、次のエンドポイント形式からその結果を取得します。 
 
 発行スロット
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/result`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/result`
 
 アプリのバージョン ID
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/result`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/result`
 
 
 ### <a name="batch-file-of-utterances"></a>発話のバッチ ファイル

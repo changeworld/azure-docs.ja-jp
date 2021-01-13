@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 370b84f451e22c20c798018951a7a801e0bba826
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 9763835142e66bbbce51cd5c863dff87f261c270
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763946"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060162"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows での node アプリケーションのベスト プラクティスとトラブルシューティング ガイド
 
@@ -245,9 +245,8 @@ node.exe がランダムにシャット ダウンされる理由はいくつか�
 アプリケーションの起動時間が長くなる一般的な原因は、node\_modules 内に多数のファイルがあることです。 アプリケーションは起動時にこれらのファイルのほとんどを読み込もうとします。 既定では、ファイルは Azure App Service 上のネットワーク共有に存在するため、多くのファイルの読み込みには時間がかかります。
 このプロセスを高速化するための解決策は、次のようにいくつかあります。
 
-1. npm3 を使用してモジュールをインストールすることによって、依存関係構造がフラットであり、重複する依存関係がないことを確認してください。
-2. node\_modules の遅延読み込みを試し、起動時にすべてのモジュールを読み込まないようにします。 遅延読み込みを行うには、モジュール コードを初めて実行する前に、関数内でモジュールが実際に必要になったときに、require('module') を呼び出す必要があります。
-3. Azure App Service には、ローカル キャッシュと呼ばれる機能が用意されています。 この機能は、コンテンツをネットワーク共有から VM 上のローカル ディスクにコピーします。 ファイルはローカルにあるため、node\_modules の読み込み時間は短縮されます。
+1. node\_modules の遅延読み込みを試し、起動時にすべてのモジュールを読み込まないようにします。 遅延読み込みを行うには、モジュール コードを初めて実行する前に、関数内でモジュールが実際に必要になったときに、require('module') を呼び出す必要があります。
+2. Azure App Service には、ローカル キャッシュと呼ばれる機能が用意されています。 この機能は、コンテンツをネットワーク共有から VM 上のローカル ディスクにコピーします。 ファイルはローカルにあるため、node\_modules の読み込み時間は短縮されます。
 
 ## <a name="iisnode-http-status-and-substatus"></a>IISNODE の HTTP の状態と副状態
 

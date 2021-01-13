@@ -1,15 +1,15 @@
 ---
 title: Azure portal 用の組み込みポリシー定義
 description: Azure portal 用の Azure Policy 組み込みポリシー定義の一覧を示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 11/17/2020
+ms.date: 01/08/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: a4b9664e7627074f62b2961b3867144965bea6d4
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 34cfeadb301b520e0884333e32a30ec49f663106
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745691"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043909"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-portal"></a>Azure portal 用の Azure Policy 組み込み定義
 

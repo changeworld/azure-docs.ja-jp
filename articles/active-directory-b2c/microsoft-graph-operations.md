@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e4463b932c95e224981b74093effbb355de24f6b
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.custom: fasttrack-edit
+ms.openlocfilehash: fed1e31380381b864530b3fa0b9e8c0886737d04
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509820"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033610"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Azure AD B2C に使用可能な Microsoft Graph 操作
 
@@ -57,10 +58,10 @@ Azure AD B2C テナントのユーザーフローで使用できる ID プロバ
 
 サインアップ、サインイン、パスワードのリセット、プロファイルの更新のための事前構築されたポリシーを構成します。
 
-- [ユーザー フローの一覧表示](/graph/api/identityuserflow-list)
-- [ユーザー フローを作成する](/graph/api/identityuserflow-post-userflows)
-- [ユーザー フローの取得](/graph/api/identityuserflow-get)
-- [ユーザー フローの削除](/graph/api/identityuserflow-delete)
+- [ユーザー フローの一覧表示](/graph/api/identitycontainer-list-b2cuserflows)
+- [ユーザー フローを作成する](/graph/api/identitycontainer-post-b2cuserflows)
+- [ユーザー フローの取得](/graph/api/b2cidentityuserflow-get)
+- [ユーザー フローの削除](/graph/api/b2cidentityuserflow-delete)
 
 ## <a name="custom-policies"></a>カスタム ポリシー
 

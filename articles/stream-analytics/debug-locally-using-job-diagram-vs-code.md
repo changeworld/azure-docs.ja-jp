@@ -3,16 +3,15 @@ title: Visual Studio Code のジョブ ダイアグラムを使用して Azure S
 description: この記事では、Visual Studio Code 用 Azure Stream Analytics 拡張機能のジョブ ダイアグラムを使用して、クエリをローカルでデバッグする方法について説明します。
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 766d3f8d4d4c03fb4fe173dbb12eb85bb09cd71a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 25ad696ad345fbf672f6bf26eb3f35a13fb03ea5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124171"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019501"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>Visual Studio Code のジョブ ダイアグラムを使用して Azure Stream Analytics のクエリをローカルでデバッグする
 
@@ -56,7 +55,7 @@ Azure Stream Analytics スクリプトは、入力データを出力データに
    > [!div class="mx-imgBorder"]
    > ![ジョブ ダイアグラムのメトリック](./media/debug-locally-using-job-diagram-vs-code/job-metrics.png)
 
-3. 入力メトリックを表示するには、ドロップダウンから入力データ ソースの名前を選択します。 次のスクリーンショットの入力ソースの名前は " *見積もり* " になっています。 入力メトリックの詳細については、「[Stream Analytics ジョブ監視とクエリの監視方法の概要](stream-analytics-monitoring.md)」を参照してください。
+3. 入力メトリックを表示するには、ドロップダウンから入力データ ソースの名前を選択します。 次のスクリーンショットの入力ソースの名前は "*見積もり*" になっています。 入力メトリックの詳細については、「[Stream Analytics ジョブ監視とクエリの監視方法の概要](stream-analytics-monitoring.md)」を参照してください。
 
    > [!div class="mx-imgBorder"]
    > ![ジョブ ダイアグラムの入力メトリック](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)

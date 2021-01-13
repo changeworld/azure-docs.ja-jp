@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/20/2018
+ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: 0a69df8a20c4e1502de151c38c60b54667c2d4dc
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: e1e7e78cab1f3a240737b5e25e0dff28c420add8
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814484"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883114"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Azure でのアウトバウンド SMTP 接続に関する問題のトラブルシューティング
 
@@ -76,10 +76,6 @@ Enterprise Agreement の Azure ユーザーの場合、認証済みリレーを�
 (認証済み SMTP リレーを使用せずに) Azure VM から外部のメール プロバイダーに直接メールを送信できるようにする必要がある場合は、次の問題の種類を使用してサポート ケースを開くことでリクエストできます。 **[Technical]\(技術\)**  >  **[仮想ネットワーク]**  >  **[接続]**  >  **[Cannot send email (SMTP/Port 25)]\(メールを送信できない (SMTP/ポート 25)\)** 。 現在のデプロイで、認証済みリレーを使用する代わりに、メール プロバイダーに直接メールを送信する必要がある理由を詳しく記入してください。 リクエストは Microsoft の裁量でレビューおよび承認されます。 リクエストは、不正行為に関する追加確認が完了した後にのみ許可されます。 
 
 サブスクリプションが除外され、VM が Azure portal で一旦停止された後に再開されると、それ以降はそのサブスクリプション内のすべての VM が除外されます。 除外されるのは、リクエストされたサブスクリプションのみであり、インターネットに直接ルーティングされる VM トラフィックのみです。
-
-## <a name="restrictions-and-limitations"></a>制限事項と制約事項
-
-[Azure Firewall](https://azure.microsoft.com/services/azure-firewall/) などの Azure PaaS サービスを介してポート 25 のトラフィックをルーティングすることはサポートされていません。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 

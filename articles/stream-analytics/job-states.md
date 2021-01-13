@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics のジョブの状態
 description: この記事では、Stream Analytics ジョブの 4 種類の状態 (実行中、停止、デグレード、失敗) について説明します。
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 008493c6eb8840752be3815d30a5df5bad42aff2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dd298fae148b9e1e51072e98a4e0e5ece10967f3
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023859"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020453"
 ---
 # <a name="azure-stream-analytics-job-states"></a>Azure Stream Analytics のジョブの状態
 

@@ -8,12 +8,12 @@ mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
-ms.openlocfilehash: 962f6bcf7747a82749e7ccab95de34f7834a8372
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: f6cba0118a98ea50e8020b91b9c2064299ca4ccf
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814212"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019161"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Azure DDoS Protection Standard との提携
 この記事では、Azure DDoS Protection Standard によって可能になるパートナーの営業案件について説明します。 この記事は、プロダクト マネージャーと営業開発の担当者が投資の道筋を理解し、パートナーとなる価値提案を分析できるように設計されています。
@@ -94,4 +94,3 @@ Azure DDoS Protection Standard パートナーの営業案件は、Azure portal�
 既存のパートナーとの統合について確認してください。
 
 - [Barracuda WAF-as-a-service](https://www.barracuda.com/waf-as-a-service)
-- [Radware の Azure Cloud WAF](https://www.radware.com/resources/microsoft-azure/)

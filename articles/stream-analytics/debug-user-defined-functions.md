@@ -3,17 +3,16 @@ title: Azure Stream Analytics のユーザー定義関数をデバッグする
 description: この記事では、Azure Stream Analytics でユーザー定義関数をデバッグする方法について説明します。
 author: jenssuessmeyer
 ms.author: jenss
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 567def7abaff3cd8d70eb56f0aa117d1eeb52a13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f5a24e4d351d7c133251900a80c70094b84cc4e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300430"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019433"
 ---
 # <a name="debug-user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics のユーザー定義関数をデバッグする 
 
@@ -86,7 +85,7 @@ exports.data = methods;
   
 ## <a name="install-debug-support"></a>デバッグ サポートのインストール
 
-デバッグするには、**Node.js** を[ダウンロード](https://nodejs.org/en/download/)してインストールする必要があります。 使用しているプラットフォームに応じて、正しいバージョンをインストールしてください。 Node.js ランタイムをインストールしたら、Visual Studio Code を再起動して変更を適用します。 
+デバッグするには、**Node.js** を [ダウンロード](https://nodejs.org/en/download/)してインストールする必要があります。 使用しているプラットフォームに応じて、正しいバージョンをインストールしてください。 Node.js ランタイムをインストールしたら、Visual Studio Code を再起動して変更を適用します。 
 
 デバッグを開始するには、 **[Run and Debug]\(実行とデバッグ\)** を選択するか、**Ctrl + Shift + D** キーを同時に押します。 表示されるコンボ ボックスで、ランタイムとして **Node.js** を選択します。 Node.js のみがインストールされている場合は、これが既定で使用されます。 コードをステップ実行でき、必要であれば F11 でサテライト ファイルにステップインできます。 
 

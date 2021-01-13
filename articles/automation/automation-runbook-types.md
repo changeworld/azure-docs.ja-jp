@@ -3,14 +3,14 @@ title: Azure Automation の Runbook の種類
 description: この記事では、Azure Automation で使用できる Runbook の種類と、使用する種類を決定する際の考慮事項について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 12/22/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1a0c12297f19d30bf13ffbe594e0433c83914a8e
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: c1398d25b6d2540abea0012acd69555e5e53e25c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733962"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050971"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation の Runbook の種類
 
@@ -117,7 +117,6 @@ Python Runbook は Python 2 および Python 3 でコンパイルされます。
 * サードパーティ製ライブラリを使用するには、Automation アカウントに[パッケージをインポートする](python-packages.md)必要があります。
 * PowerShell/PowerShell ワークフローで **Start-AutomationRunbook**  コマンドレットを使用して Python 3 Runbook (プレビュー) を開始することはできません。 この制限を回避するには、Az.Automation モジュールから **Start-AzAutomationRunbook** コマンドレットを使用するか、または AzureRm.Automation モジュールから  **Start-AzureRmAutomationRunbook** コマンドレットを使用します。  
 * Python 3 Runbook (プレビュー) とパッケージは、PowerShell では機能しません。
-* Webhook を使用して Python Runbook を開始することはできません。
 * Azure Automation では  **sys.stderr** がサポートされていません。
 
 ### <a name="known-issues"></a>既知の問題

@@ -1,19 +1,18 @@
 ---
 title: Azure Cosmos DB への Azure Stream Analytics の出力
 description: この記事では、構造化されていない JSON データに対するデータ アーカイブと待機時間の短いクエリのために、Azure Stream Analytics を使用して、Azure Cosmos DB for JSON 出力に出力を保存する方法について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: 35231eda43e766b5febd8ba90c4d92a44537e0ef
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 2d00d489ff248ecf5599d78e0a351c93248cf8ee
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703757"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018091"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB への Azure Stream Analytics の出力  
 Azure Stream Analytics では、JSON 出力のターゲットを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) にすることができるため、構造化されていない JSON データに対してデータ アーカイブと待機時間の短いクエリを有効にすることができます。 このドキュメントでは、この構成を実装するためのベスト プラクティスについて説明します。 Azure Cosmos DB を出力として使用する場合は、ジョブを互換性レベル 1.2 に設定することをお勧めします。

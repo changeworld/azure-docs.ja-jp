@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 6540b5f93bebfe39253a88dc495a3613568f8926
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: e5fa4bde316f4b1677f78c65e913a6303a9f4735
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836567"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019144"
 ---
 # <a name="about-high-availability"></a>高可用性について
 
@@ -52,7 +52,7 @@ ms.locfileid: "97836567"
 
 3. オンプレミス管理コンソール セカンダリ アプライアンスをインストールします。 詳細については、[Defender for IoT のインストールに関する記事](how-to-install-software.md)を参照してください。
 
-4. [ここ](/create-the-primary-and-secondary-pair.md)で説明されているように、プライマリとセカンダリのオンプレミス管理コンソール アプライアンスをペアリングします。 プライマリ オンプレミス管理コンソールでは、セットアップを実行するために、少なくとも 2 つのセンサーを管理する必要があります。
+4. [ここ](https://infrascale.secure.force.com/pkb/articles/Support_Article/How-to-access-your-Appliance-Management-Console)で説明されているように、プライマリとセカンダリのオンプレミス管理コンソール アプライアンスをペアリングします。 プライマリ オンプレミス管理コンソールでは、セットアップを実行するために、少なくとも 2 つのセンサーを管理する必要があります。
 
 ## <a name="high-availability-requirements"></a>高可用性の要件
 

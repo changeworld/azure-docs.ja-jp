@@ -3,16 +3,15 @@ title: Visual Studio のジョブ ダイアグラムを使用して Azure Stream
 description: この記事では、Azure Stream Analytics Tools for Visual Studio のジョブ ダイアグラムを使用して、クエリをローカルでデバッグする方法について説明します。
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: c32ba468979e4566d8e349d481eddca7d407b659
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d0e94fda1fb21be1a01516f4cecf657426ae867e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130988"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019450"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Visual Studio のジョブ ダイアグラムを使用して Azure Stream Analytics のクエリをローカルでデバッグする
 

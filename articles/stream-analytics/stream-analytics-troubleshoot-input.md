@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics の入力のトラブルシューティング
 description: この記事では、Azure Stream Analytics ジョブの入力接続のトラブルシューティングを行う方法について説明します。
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 760c98ce9464e4d40f01256a973e07d9084c6dfe
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2d7171c9ec1e60447fb3342caa72098fb2eb9337
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123287"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019909"
 ---
 # <a name="troubleshoot-input-connections"></a>入力接続のトラブルシューティング
 
@@ -93,11 +92,11 @@ Event Hubs インスタンスに新しいコンシューマー グループを�
 
 パーティションあたりのリーダーの数が Event Hubs の上限である 5 つを上回るシナリオとしては、次のものがあります。
 
-* 複数の SELECT ステートメント: **同じ** イベント ハブ入力を参照する複数の SELECT ステートメントを使用する場合、各 SELECT ステートメントによって新しいレシーバーが作成されます。
+* 複数の SELECT ステートメント:**同じ** イベント ハブ入力を参照する複数の SELECT ステートメントを使用する場合、各 SELECT ステートメントによって新しいレシーバーが作成されます。
 
-* UNION:UNION を使用する場合、 **同じ** イベント ハブとコンシューマー グループを参照する複数の入力を使用できます。
+* UNION:UNION を使用する場合、**同じ** イベント ハブとコンシューマー グループを参照する複数の入力を使用できます。
 
-* SELF JOIN:SELF JOIN 操作を使用する場合、 **同じ** イベント ハブを複数回参照できます。
+* SELF JOIN:SELF JOIN 操作を使用する場合、**同じ** イベント ハブを複数回参照できます。
 
 次のベスト プラクティスは、パーティションあたりのリーダーの数が 5 つという Event Hubs の制限を超えるシナリオに対処するのに役立ちます。
 

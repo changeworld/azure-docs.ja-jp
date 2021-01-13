@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 21ab58095fa919e6302251c16e474b02f1445993
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 0b32efe3738dedbe8178889b3e9008964d485b00
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301993"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034919"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -20,7 +20,7 @@ Express.js、Node.js、または JavaScript の開発者が、Azure Functions �
 
 | 作業の開始 | 概念| ガイド付き学習 |
 | -- | -- | -- | 
-| <ul><li>[Visual Studio Code を使用した Node.js 関数](./create-first-function-vs-code-node.md)</li><li>[ターミナル/コマンド プロンプトを使用した Node.js 関数](./create-first-function-cli-java.md)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[TypeScript 関数](#typescript)</li><li>[パフォーマンス&nbsp;に関する考慮事項](functions-best-practices.md)</li></ul> | <ul><li>[サーバーレス アプリケーションの作成](/learn/paths/create-serverless-applications/)</li><li>[Node.js と Express API をサーバーレス API にリファクタリングする](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[Visual Studio Code を使用した Node.js 関数](./create-first-function-vs-code-node.md)</li><li>[ターミナル/コマンド プロンプトを使用した Node.js 関数](./create-first-function-cli-node.md)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[TypeScript 関数](#typescript)</li><li>[パフォーマンス&nbsp;に関する考慮事項](functions-best-practices.md)</li></ul> | <ul><li>[サーバーレス アプリケーションの作成](/learn/paths/create-serverless-applications/)</li><li>[Node.js と Express API をサーバーレス API にリファクタリングする](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>JavaScript 関数の基本
 
@@ -493,7 +493,7 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
 
 ## <a name="scaling-and-concurrency"></a>スケーリングと同時性
 
-既定では、Azure Functions は、アプリケーションの負荷を自動的に監視し、必要に応じて node.js 用の追加のホストインスタンスを作成します。 関数は、さまざまなトリガー型の組み込み（ユーザー設定不可）しきい値を使用して、メッセージの経過時間や QueueTrigger のキューサイズなど、インスタンスを追加するタイミングを決定します。 詳細については、「[従量課金プランと Premium プランのしくみ](functions-scale.md#how-the-consumption-and-premium-plans-work)」をご覧ください。
+既定では、Azure Functions は、アプリケーションの負荷を自動的に監視し、必要に応じて node.js 用の追加のホストインスタンスを作成します。 関数は、さまざまなトリガー型の組み込み（ユーザー設定不可）しきい値を使用して、メッセージの経過時間や QueueTrigger のキューサイズなど、インスタンスを追加するタイミングを決定します。 詳細については、「[従量課金プランと Premium プランのしくみ](event-driven-scaling.md)」をご覧ください。
 
 ほとんどの Node.js アプリケーションでは、このスケーリング動作で十分です。 CPUにバインドされたアプリケーションの場合、複数の言語ワーカープロセスを使用して、パフォーマンスをさらに向上させることができます。
 

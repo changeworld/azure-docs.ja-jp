@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: tisande
-ms.openlocfilehash: 2d99e0e2b65f7131e564e6ab64e454d2947c58a6
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 00c80fa311837918a78f26e941f00cb17f1dc279
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903022"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019178"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -135,7 +135,7 @@ Azure Cosmos DB の含まれるパスと除外されるパスの優先順位に�
 
 ## <a name="composite-indexes"></a>複合インデックス
 
-2 つ以上のプロパティを使用する `ORDER BY` 句が含まれるクエリには、複合インデックスが必要です。 また、複合インデックスを定義して、多くの等値クエリと範囲クエリのパフォーマンスを向上させることもできます。 既定では、複合インデックスは定義されないため、必要に応じて[複合インデックスを追加する](how-to-manage-indexing-policy.md#composite-indexing-policy-examples)必要があります。
+2 つ以上のプロパティを使用する `ORDER BY` 句が含まれるクエリには、複合インデックスが必要です。 また、複合インデックスを定義して、多くの等値クエリと範囲クエリのパフォーマンスを向上させることもできます。 既定では、複合インデックスは定義されないため、必要に応じて[複合インデックスを追加する](how-to-manage-indexing-policy.md#composite-index)必要があります。
 
 含まれるパスまたは除外されるパスとは異なり、`/*` ワイルドカードを使用してパスを作成することはできません。 すべての複合パスには、指定する必要のないパスの末尾に暗黙的な `/?` があります。 複合パスはスカラー値になります。これは、複合インデックスに含まれる唯一の値です。
 

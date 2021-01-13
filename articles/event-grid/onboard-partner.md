@@ -3,12 +3,12 @@ title: Azure portal を使用して Azure Event Grid のパートナーとして
 description: Azure portal を使用して、Azure Event Grid パートナーをオンボードします。
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 8344fcd822bfcdc67e2c27b200d97fa70dfefdf2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 44dece4d46a6d702d48fa49983818986fcd59f7b
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349388"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050954"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner-using-the-azure-portal"></a>Azure portal を使って Azure Event Grid のパートナーとしてオンボード
 この記事では、サードパーティの SaaS プロバイダー (イベント発行者またはパートナーとも呼ばれます) が Event Grid にオンボードされ、サービスからイベントが発行できるようにする方法と、それらのイベントがエンドユーザーによってどのように使用されるかについて説明します。
@@ -112,7 +112,6 @@ ms.locfileid: "96349388"
     1. **[チャネルの詳細]** セクションで、次の手順を実行します。
         1. **[イベント チャネル名]** には、イベント チャネルの名前を入力します。 
         1. **ソース** を入力します。 ソースに適した値については、[Cloud Events 1.0 の仕様](https://github.com/cloudevents/spec/blob/v1.0/spec.md#source-1)に関するページを参照してください。 また、[このクラウド イベント スキーマの例](cloud-event-schema.md#sample-event-using-cloudevents-schema)を参照してください。
-        1. ソース を入力してください (これはなんですか?)。
     1. **[宛先の詳細]** セクションで、このイベント チャネルに対して作成される宛先パートナー トピックの詳細を入力します。 
         1. パートナー トピックを作成する **サブスクリプションの ID** を入力します。 
         1. パートナー トピック リソースを作成する **リソース グループの名前** を入力します。 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/22/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 87bc3b172fdbd99130dbb36cceb5f3d16fc39dbd
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: daaca1d7c6cf43f69241e6a23f8bdfaf4015ba23
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836643"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976947"
 ---
 # <a name="manage-individual-sensors"></a>個々のセンサーの管理
 
@@ -427,8 +427,6 @@ CLI コマンドを使用する場合:
 
 - リモート バックアップの失敗
 
-:::image type="content" source="media/how-to-work-with-system-notifications/image81.png" alt-text="管理システムの状態メール ビューのスクリーンショット。](media/image80)![管理システムの状態メール ビューのスクリーンショット":::
-
 この情報は、システム通知の転送ルールを作成するときに送信されます。
 
 > [!NOTE]
@@ -439,7 +437,7 @@ CLI コマンドを使用する場合:
 1. オンプレミス管理コンソールにサインインします。
 1. サイド メニューから **[転送]** を選択します。
 1. 転送ルールを作成します。
-1. **[システム通知の報告]** を選択します。
+1. **[Report System Notifications]\(システム通知の報告\)** を選択します。
 
 転送ルールについて詳しくは、「[アラート情報を転送する](how-to-forward-alert-information-to-partners.md)」をご覧ください。
 

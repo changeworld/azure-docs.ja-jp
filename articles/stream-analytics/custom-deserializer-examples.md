@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics で .NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る
 description: この記事では、シリアル化の形式と、Azure Stream Analytics のクラウド ジョブとエッジ ジョブに対するカスタム .NET 逆シリアライザーが定義されているインターフェイスについて説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4adf0b8a7c12abed9689b9ac0cc9c5d5c8c3f980
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 140a836882ad3abe048047120e4fe1ebc0a3067c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488436"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018158"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る
 

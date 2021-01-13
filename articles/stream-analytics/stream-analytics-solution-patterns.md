@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics のソリューション パターン
 description: ダッシュボード、イベント メッセージング、データ ストア、参照データ エンリッチメント、監視など、Azure Stream Analytics の一般的なソリューション パターンについて説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 02276ebf8e8a2289db2a1f6eac506443cea61c31
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 1bd3c1099344bd266d7e3bc153613daaecfb412a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97682716"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020317"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics のソリューション パターン
 

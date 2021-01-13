@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: dc5efd6ad478710ba839634a49f041211756af71
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 732054ae2cd8f93d17694e9ea1bdd85680e9c314
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397673"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058652"
 ---
 # <a name="application-gateway-front-end-ip-address-configuration"></a>Application Gateway のフロントエンド IP アドレスの構成
 
@@ -25,10 +25,10 @@ ms.locfileid: "93397673"
 * プライベート IP アドレスとパブリック IP アドレス
 * パブリック IP アドレスのみ
 
-詳細については、「[Application Gateway に関してよく寄せられる質問](application-gateway-faq.md#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address)」を参照してください。
+詳細については、「[Application Gateway に関してよく寄せられる質問](application-gateway-faq.yml#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address)」を参照してください。
 
 
-パブリック IP アドレスは、インターネットに公開されない内部エンドポイントには必要ありません。 これは、" *内部ロード バランサー* " (ILB) エンドポイントまたはプライベート フロントエンド IP と呼ばれます。 アプリケーション ゲートウェイ ILB は、インターネットに接続されていない内部の基幹業務アプリケーションで便利です。 また、インターネットに接続されていないセキュリティの境界にある多階層アプリケーション内のサービスや階層に役立ちますが、ラウンド ロビンの負荷分散、セッションの持続性、または TLS ターミネーションが必要です。
+パブリック IP アドレスは、インターネットに公開されない内部エンドポイントには必要ありません。 これは、"*内部ロード バランサー*" (ILB) エンドポイントまたはプライベート フロントエンド IP と呼ばれます。 アプリケーション ゲートウェイ ILB は、インターネットに接続されていない内部の基幹業務アプリケーションで便利です。 また、インターネットに接続されていないセキュリティの境界にある多階層アプリケーション内のサービスや階層に役立ちますが、ラウンド ロビンの負荷分散、セッションの持続性、または TLS ターミネーションが必要です。
 
 1 つのパブリック IP アドレスまたは 1 つのプライベート IP アドレスしかサポートされません。 アプリケーション ゲートウェイを作成するときにフロントエンド IP を選択します。
 
@@ -36,7 +36,7 @@ ms.locfileid: "93397673"
 
 - プライベート IP アドレスの場合は、アプリケーション ゲートウェイが作成されるサブネットのプライベート IP アドレスを指定できます。 指定しないと、サブネットから任意の IP アドレスが自動的に選択されます。 選択した IP アドレスの種類 (静的または動的) は後で変更できません。 詳細については、[内部ロード バランサーを使用したアプリケーション ゲートウェイの作成](./application-gateway-ilb-arm.md)に関するページを参照してください。
 
-フロントエンド IP アドレスが関連付けられた " *リスナー* " が、フロントエンド IP での着信要求をチェックします。
+フロントエンド IP アドレスが関連付けられた "*リスナー*" が、フロントエンド IP での着信要求をチェックします。
 
 ## <a name="next-steps"></a>次の手順
 

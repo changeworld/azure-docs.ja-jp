@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 07/11/2017
+ms.topic: reference
+ms.date: 01/07/2021
 ms.author: kenwith
-ms.openlocfilehash: 49dd8b65db771a182138f13218adda2f0e7f7396
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 18e29ce8bf744cabb31c5634c9b0ca547bca5acc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858231"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020674"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>ID 管理用の Azure AD テナントを使用してアプリを表示する
 「[アプリケーション管理のクイックスタート シリーズ](view-applications-portal.md)」では、基本情報を紹介します。 ID 管理用の Azure AD テナントを使用して、すべてのアプリを表示する方法について説明します。 この記事では、表示されるアプリの種類についてもう少し詳しく説明します。

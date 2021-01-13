@@ -2,18 +2,17 @@
 title: Azure Stack での Azure Stream Analytics の実行 (プレビュー)
 description: Azure Stream Analytics Edge ジョブを作成し、IoT Edge ランタイムを使用して Azure Stack ハブに展開します。
 ms.service: stream-analytics
-author: raan
+author: an-emma
 ms.author: raan
-ms.reviewer: mamccrea
 ms.topic: how-to
 ms.date: 08/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 21cf432576829b575d70a94227f28df373a4d899
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3463b3eae96c0a65206023ed0f21efe44294d4eb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126160"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020130"
 ---
 # <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>Azure Stack での Azure Stream Analytics の実行 (プレビュー)
 
@@ -67,9 +66,9 @@ Azure Stream Analytics ジョブを作成して IoT Edge デバイスで実行�
    | 名前 | ストレージ アカウント用に一意の名前を指定します。 |
    | 場所 | 近くの場所を選択します。|
    | サブスクリプション | IoT ハブと同じサブスクリプションを選択します。|
-   | リソース グループ | [IoT Edge のクイック スタート](../iot-edge/quickstart.md)およびチュートリアルで作成するすべてのテスト リソースに、同じリソース グループを使用することをお勧めします。 たとえば、 **IoTEdgeResources** を使用します。 |
+   | リソース グループ | [IoT Edge のクイック スタート](../iot-edge/quickstart.md)およびチュートリアルで作成するすべてのテスト リソースに、同じリソース グループを使用することをお勧めします。 たとえば、**IoTEdgeResources** を使用します。 |
 
-3. 他のフィールドは既定値のままにして、 **[作成]** を選択します。
+3. 他のフィールドは既定値のままにして、**[作成]** を選択します。
 
 
 ### <a name="create-a-new-job"></a>新しいジョブを作成する
@@ -79,9 +78,9 @@ Azure Stream Analytics ジョブを作成して IoT Edge デバイスで実行�
 
    | フィールド | 値 |
    | --- | --- |
-   | ジョブ名 | ジョブの名前を指定します。 たとえば、「 **IoTEdgeJob** 」と指定します。 |
+   | ジョブ名 | ジョブの名前を指定します。 たとえば、「**IoTEdgeJob**」と指定します。 |
    | サブスクリプション | IoT ハブと同じサブスクリプションを選択します。|
-   | リソース グループ | [IoT Edge のクイック スタート](../iot-edge/quickstart.md)およびチュートリアルで作成するすべてのテスト リソースに、同じリソース グループを使用することをお勧めします。 たとえば、 **IoTEdgeResources** を使用します。 |
+   | リソース グループ | [IoT Edge のクイック スタート](../iot-edge/quickstart.md)およびチュートリアルで作成するすべてのテスト リソースに、同じリソース グループを使用することをお勧めします。 たとえば、**IoTEdgeResources** を使用します。 |
    | 場所 | 近くの場所を選択します。 |
    | ホスト環境 | **[Edge]** を選択します。 |
 
@@ -104,7 +103,7 @@ Azure portal で Stream Analytics ジョブが作成されたら、ジョブの�
    | フィールド | 値 |
    | --- | --- |
    | 入力のエイリアス | この入力を参照するジョブのクエリで使用するわかりやすい名前。 |
-   | Service Bus 名前空間 | 名前空間は、一連のメッセージング エンティティのコンテナーです。 新しいイベント ハブを作成するときは、名前空間も作成します。 (例: *sb://<Event Hub Name>.eventhub.shanghai.azurestack.corp.microsoft.com* ) |
+   | Service Bus 名前空間 | 名前空間は、一連のメッセージング エンティティのコンテナーです。 新しいイベント ハブを作成するときは、名前空間も作成します。 (例: *sb://<Event Hub Name>.eventhub.shanghai.azurestack.corp.microsoft.com*) |
    | イベント ハブ名 | 入力として使用するイベント ハブの名前。 |
    | イベント ハブ ポリシー名 | イベント ハブへのアクセスを提供する共有アクセス ポリシー。 各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 Event Hub の設定を手動で入力するオプションを選択しない限り、このオプションは自動的に設定されます。 |
    | イベント ハブ ポリシー キー | イベント ハブへのアクセスを承認するために使用する共有アクセス キー。 イベント ハブの設定を手動で入力するオプションを選択しない限り、このオプションは自動的に事前設定されます。 これはイベント ハブの設定で見つけることができます。 |
@@ -119,7 +118,7 @@ Azure portal で Stream Analytics ジョブが作成されたら、ジョブの�
    | フィールド | 値 |
    | --- | --- |
    | 入力のエイリアス | この入力を参照するジョブのクエリで使用するわかりやすい名前。 |
-   | IoT Hub | 入力として使用する IoT Hub の名前。 (例: *<IoT Hub Name>.shanghai.azurestack.corp.microsoft.com* ) |
+   | IoT Hub | 入力として使用する IoT Hub の名前。 (例: *<IoT Hub Name>.shanghai.azurestack.corp.microsoft.com*) |
    | 共有アクセス ポリシー名 | IoT Hub へのアクセスを提供する共有アクセス ポリシー。 各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 |
    | 共有アクセス ポリシー キー | IoT Hub へのアクセスを承認するために使用する共有アクセス キー。 IoT Hub の設定を手動で入力するオプションを選択しない限り、このオプションは自動的に事前設定されます。 |
    | コンシューマー グループ (省略可能) | Stream Analytics ジョブごとに異なるコンシューマー グループを使用することを強くお勧めします。 IoT Hub からのデータを取り込むために使用するコンシューマー グループです。 明示的に指定されない限り、Stream Analytics は $Default コンシューマー グループを使用します。 |
@@ -138,7 +137,7 @@ Azure portal で Stream Analytics ジョブが作成されたら、ジョブの�
    | フィールド | 値 |
    | --- | --- |
    | 出力エイリアス | クエリの出力をこのイベント ハブに出力するためにクエリ内で使用されるフレンドリ名です。 |
-   | Service Bus 名前空間 | 一連のメッセージング エンティティのコンテナーです。 新しいイベント ハブを作成したときに、Service Bus 名前空間も作成されました。(例: *sb://<Event Hub Name>.eventhub.shanghai.azurestack.corp.microsoft.com* ) |
+   | Service Bus 名前空間 | 一連のメッセージング エンティティのコンテナーです。 新しいイベント ハブを作成したときに、Service Bus 名前空間も作成されました。(例: *sb://<Event Hub Name>.eventhub.shanghai.azurestack.corp.microsoft.com*) |
    | イベント ハブ名 | ご自分のイベント ハブ出力の名前です。 |
    | イベント ハブ ポリシー名 | 共有アクセス ポリシーです。イベント ハブの [構成] タブで作成できます。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 |
    | イベント ハブ ポリシー キー | イベント ハブの名前空間へのアクセスを認証するために使用される共有アクセス キーです。 |
@@ -151,7 +150,7 @@ Azure portal で Stream Analytics ジョブが作成されたら、ジョブの�
    | フィールド | 値 |
    | --- | --- |
    | 出力エイリアス | クエリの出力をこの BLOB ストレージに出力するためにクエリで使用されるわかりやすい名前です。 |
-   | ストレージ アカウント | 出力を送信するストレージ アカウントの名前です。(例: *<Storage Account Name>.blob.shanghai.azurestack.corp.microsoft.com* ) |
+   | ストレージ アカウント | 出力を送信するストレージ アカウントの名前です。(例: *<Storage Account Name>.blob.shanghai.azurestack.corp.microsoft.com*) |
    | ストレージ アカウント キー | ストレージ アカウントに関連付けられている秘密キー。 Blob Storage の設定を手動で入力するオプションを選択しない限り、このオプションは自動的に事前設定されます。 |
 
 > [!NOTE]

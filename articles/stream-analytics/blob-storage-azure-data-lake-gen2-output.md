@@ -1,22 +1,21 @@
 ---
 title: Azure Stream Analytics からの BLOB ストレージと Azure Data Lake Gen2 出力
 description: この記事では、Azure Stream Analytics の出力としての BLOB ストレージと Azure Data Lake Gen 2 について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: ba64f5972d77637ec830fe6b872af66363d6c1bd
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 8f8fa524a69d0431fe98cdcd4d1f12addc576e86
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740047"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019586"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの BLOB ストレージと Azure Data Lake Gen2 出力
 
-Data Lake Storage Gen2 によって、Azure Storage は、Azure 上にエンタープライズ データ レイクを構築するための基盤となります。 Data Lake Storage Gen2 は、当初から、何百ものギガビット単位のスループットを維持しつつ、複数のペタバイト単位の情報を利用可能にする目的で設計されているため、大量のデータを簡単に管理することができます。Data Lake Storage Gen2 の基礎部分は、BLOB ストレージに階層型名前空間を追加したものです。
+Data Lake Storage Gen2 によって、Azure Storage は、Azure 上にエンタープライズ データ レイクを構築するための基盤となります。 Data Lake Storage Gen2 は、当初から、何百ものギガビット単位のスループットを維持しつつ、複数のペタバイト単位の情報を利用可能にする目的で設計されているため、大量のデータを簡単に管理することができます。 Data Lake Storage Gen2 の基礎部分は、BLOB ストレージに階層型名前空間を追加したものです。
 
 Azure Blob Storage を使用すると、大量の非構造化データをクラウドに保存する場合に、コスト効果の高いスケーラブルなソリューションを実現できます。 BLOB ストレージとその使用法の概要については、[Azure Portal を使用した BLOB のアップロード、ダウンロード、および一覧表示](../storage/blobs/storage-quickstart-blobs-portal.md)に関するページを参照してください。
 

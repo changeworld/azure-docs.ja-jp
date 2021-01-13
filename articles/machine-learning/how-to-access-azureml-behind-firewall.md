@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0fa3492555b2870ae7b95abec08bbd3280cdc985
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 8ffbe5debaa980385a2c6dc0078de5f1cc2e9bde
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705066"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045514"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>ファイアウォールの内側で Azure Machine Learning のワークスペースを使用する
 
@@ -27,7 +27,7 @@ ms.locfileid: "97705066"
 
 ## <a name="azure-firewall"></a>Azure Firewall
 
-Azure Firewall を使用する場合は、__宛先ネットワーク アドレス変換 (DNAT)__ を使用して受信トラフィックの NAT 規則を作成します。 送信トラフィックの場合は、__ネットワーク__ や __アプリケーション__ の規則を作成します。 これらの規則コレクションの詳細については、「[Azure Firewall の概念をいくつか教えてください](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)」を参照してください。
+Azure Firewall を使用する場合は、__宛先ネットワーク アドレス変換 (DNAT)__ を使用して受信トラフィックの NAT 規則を作成します。 送信トラフィックの場合は、__ネットワーク__ や __アプリケーション__ の規則を作成します。 これらの規則コレクションの詳細については、「[Azure Firewall の概念をいくつか教えてください](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts)」を参照してください。
 
 ### <a name="inbound-configuration"></a>受信の構成
 

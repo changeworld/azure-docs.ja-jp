@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 12/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: b0937bbd72460b1d46ce0394af1933e858424966
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c2efd9ac137c226c1d3a77e2cb6ebe17d75cb496
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360324"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051532"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>ユーザー VPN クライアント用のスポーク VNet にあるリソースへのセキュリティで保護されたアクセスを管理する
 
@@ -147,4 +147,4 @@ Azure Firewall の動作を規定する規則を作成します。 ハブをセ�
 ## <a name="next-steps"></a>次のステップ
 
 * Virtual WAN の詳細については、[Virtual WAN FAQ](virtual-wan-faq.md) を参照してください。
-* Azure Firewall の詳細については、「[Azure Firewall に関する FAQ](../firewall/firewall-faq.md)」を参照してください。
+* Azure Firewall の詳細については、「[Azure Firewall に関する FAQ](../firewall/firewall-faq.yml)」を参照してください。
