@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
-ms.openlocfilehash: 860b880faae9c5fe37a2c7eab2ef3a068ed4da3e
-ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
+ms.openlocfilehash: 127a9568d4f129763bee26210efedeaee8fe4aa1
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96299092"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709378"
 ---
 # <a name="tutorial-configure-papercut-cloud-print-management-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために PaperCut Cloud Print Management を構成する
 
@@ -37,9 +37,9 @@ ms.locfileid: "96299092"
 
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
-* [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)。 
 * プロビジョニングを構成するための[アクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
-* 管理者のアクセス許可を持つ、PaperCut Cloud Print Management のユーザーアカウント
+* PaperCut Cloud Print Management 管理者アカウント。
 
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
@@ -76,7 +76,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-papercut-cloud-print-management"></a>手順 5. PaperCut Cloud Print Management に自動ユーザー プロビジョニングを構成する
 
-このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、TestApp でユーザー、グループ、またはその両方が作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成する手順について説明します。
+このセクションでは、Azure AD プロビジョニング サービスを構成し、Azure AD でのユーザーやグループの割り当てに基づいて PaperCut Cloud Print Management のユーザーやグループを作成、更新、無効化する手順について説明します。
 
 ### <a name="to-configure-automatic-user-provisioning-for-papercut-cloud-print-management-in-azure-ad"></a>Azure AD で PaperCut Cloud Print Management への自動ユーザー プロビジョニングを構成するには:
 
@@ -106,7 +106,8 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 7. **[保存]** を選択します。
 
-8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to PaperCut Cloud Print Management]\(Azure Active Directory ユーザーを PaperCut Cloud Print Management に同期\)** を選択します。
+8. **[マッピング]** セクションの **[Provision Azure Active Directory Users]\(Azure Active Directory ユーザーをプロビジョニングする\)** を選択します。
+   ![AAD マッピング](media/papercut-cloud-print-management-provisioning-tutorial/mapping.png)
 
 9. **[属性マッピング]** セクションで、Azure AD から PaperCut Cloud Print Management に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で PaperCut Cloud Print Management のユーザー アカウントとの照合に使用されます。 [一致する対象の属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)を変更する場合は、その属性に基づいたユーザーのフィルター処理が確実に PaperCut Cloud Print Management API でサポートされているようにする必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 

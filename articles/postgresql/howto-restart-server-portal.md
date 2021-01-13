@@ -5,20 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 5/6/2019
-ms.openlocfilehash: d25c8908b46608ac64bcf135404a070740413fe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/20/2020
+ms.openlocfilehash: d3dc01ee163b941f450eeac98adfdf1ea0e91190
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907383"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706900"
 ---
 # <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL - 単一サーバーを再起動する
 このトピックでは、Azure Database for PostgreSQL サーバーを再起動する方法について説明します。 メンテナンス上の理由でサーバーの再起動が必要な場合があります。これを行うと、サーバーが操作を実行しているときに短時間の停止が発生します。
 
 サービスがビジー状態の場合、サーバーの再起動はブロックされます。 たとえば、仮想コアのスケーリングなどの前に要求した操作がサービスで処理中である場合があります。
  
-再起動を完了するために必要な時間は、PostgreSQL の回復プロセスに依存しています。 再起動の時間を短縮するために、再起動の実行前にサーバー上で発生しているアクティビティの量を最小限に抑えることをお勧めします。
+> [!NOTE] 
+> 再起動を完了するために必要な時間は、PostgreSQL の回復プロセスに依存しています。 再起動の時間を短縮するために、再起動の実行前にサーバー上で発生しているアクティビティの量を最小限に抑えることをお勧めします。 チェックポイントの頻度を増やすこともできます。 `max_wal_size` など、チェックポイント関連のパラメーター値を調整することもできます。 サーバーを再起動する前に `CHECKPOINT` コマンドを実行することも推奨されます。
 
 ## <a name="prerequisites"></a>前提条件
 このハウツー ガイドを完了するには、次が必要です。
@@ -36,15 +37,15 @@ ms.locfileid: "90907383"
 
 3. **[はい]** をクリックして、サーバーを再起動することを確認します。
 
-   :::image type="content" source="./media/howto-restart-server-portal/3-restart-confirm.png" alt-text="Azure Database for PostgreSQL - 概要 - [再起動] ボタン":::
+   :::image type="content" source="./media/howto-restart-server-portal/3-restart-confirm.png" alt-text="Azure Database for PostgreSQL - 再起動の確認":::
 
 4. サーバーの状態が [再起動中] に変わることを確認します。
 
-   :::image type="content" source="./media/howto-restart-server-portal/4-restarting-status.png" alt-text="Azure Database for PostgreSQL - 概要 - [再起動] ボタン":::
+   :::image type="content" source="./media/howto-restart-server-portal/4-restarting-status.png" alt-text="Azure Database for PostgreSQL - 再起動状態":::
 
 5. サーバーの再起動が成功したことを確認します。
 
-   :::image type="content" source="./media/howto-restart-server-portal/5-restart-success.png" alt-text="Azure Database for PostgreSQL - 概要 - [再起動] ボタン":::
+   :::image type="content" source="./media/howto-restart-server-portal/5-restart-success.png" alt-text="Azure Database for PostgreSQL - 再起動成功":::
 
 ## <a name="next-steps"></a>次のステップ
 

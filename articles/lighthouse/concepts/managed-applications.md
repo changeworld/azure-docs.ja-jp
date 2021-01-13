@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse と Azure Managed Applications
-description: Azure Lighthouse と Azure Managed Applications がさまざまなシナリオの実現にどのように役立つか、およびこれらを組み合わせて使用する方法について説明します。
-ms.date: 08/12/2020
+description: Azure Lighthouse と Azure Managed Applications を組み合わせて使用する方法について説明します。
+ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3d6c83a50f1da006f2618f7f4ff59759dac2555
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 5c30c3234a57e25ceaa521ad485f58d4d663ebe9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436523"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693976"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse と Azure Managed Applications
 
@@ -18,6 +18,16 @@ Azure Managed Applications と Azure Lighthouse はどちらも、サービス �
 > このトピックではサービス プロバイダーと顧客の場合について説明していますが、[複数のテナントを管理するエンタープライズ](enterprise.md)も同じプロセスとツールを使用できます。
 
 ## <a name="comparing-azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse と Azure Managed Applications の比較
+
+次の表は、Azure Lighthouse または Azure Managed Applications の使用の選択に影響を与える可能性がある、いくつかの大まかな違いを示しています。 次に示すように、これらを組み合わせて使用するソリューションを設計することもできます。
+
+|考慮事項  |Azure Lighthouse  |Azure Managed Applications  |
+|---------|---------|---------|
+|一般的なユーザー     |複数のテナントを管理するサービス プロバイダーまたは企業         |独立系ソフトウェア ベンダー (ISV)         |
+|テナント間アクセスの範囲     |サブスクリプションまたはリソース グループ         |リソース グループ (1 つのアプリケーションに範囲指定)         |
+|Azure Marketplace で購入可能     |いいえ (オファーは Azure Marketplace に発行できますが、お客様には別途請求されます)        |はい         |
+|IP 保護     |はい (IP はサービス プロバイダーのテナントに残せます)        |はい (仕様では、リソース グループはお客様にロックされています)         |
+|拒否割り当て     |いいえ         |はい        |
 
 ### <a name="azure-lighthouse"></a>Azure Lighthouse
 
@@ -51,3 +61,4 @@ Azure Lighthouse と Azure Managed Applications は異なるアクセス メカ�
 
 - [Azure Managed Applications](../../azure-resource-manager/managed-applications/overview.md) の詳細について説明します。
 - [サブスクリプションを Azure Lighthouse にオンボードする](../how-to/onboard-customer.md)方法について学習します。
+- [Azure Lighthouse を使用した ISV シナリオ](isv-scenarios.md)について説明します。

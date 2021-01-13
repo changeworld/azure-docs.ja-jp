@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a093fe330ccbecc33cd8dac03d6425655e90366d
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: ed9d41a84e455241ed3cfc41b905a671f2a2d499
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760471"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912956"
 ---
 # <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>MLflow と Azure Machine Learning を使用して ML モデルをトレーニングして追跡する (プレビュー)
 
@@ -65,6 +65,7 @@ ms.locfileid: "97760471"
 * `azureml-mlflow` パッケージをインストールします。 
     * このパッケージからは自動的に、MLflow がワークスペースにアクセスするための接続を提供する、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) の `azureml-core` が持ち込まれます。
 * [Azure Machine Learning ワークスペースを作成](how-to-manage-workspace.md)します。
+    * [ワークスペースで MLflow 操作を実行するために必要なアクセス許可](how-to-assign-roles.md#mlflow-operations)を確認します。
 
 ## <a name="track-local-runs"></a>ローカル実行の追跡
 
@@ -210,7 +211,7 @@ run.get_metrics()
 
 MLflow モデル レジストリをサポートする [Azure Machine Learning モデル レジストリ](concept-model-management-and-deployment.md#register-package-and-deploy-models-from-anywhere)にモデルを登録して追跡します。 Azure Machine Learning モデルは、MLflow モデル スキーマに対応しているため、これらのモデルをさまざまなワークフロー間で容易にエクスポートおよびインポートすることができます。 実行 ID などの MLflow 関連のメタデータには、追跡可能性のために、登録されたモデルのタグも付けられます。 ユーザーは、トレーニングの実行を送信し、MLflow の実行から生成されたモデルを登録およびデプロイすることができます。 
 
-運用準備が整ったモデルを 1 つの手順でデプロイおよび登録したい場合は、「[MLflow モデルのデプロイと登録](how-to-deploy-models-with-mlflow.md)」を参照してください。
+運用準備が整ったモデルを 1 つの手順でデプロイおよび登録したい場合は、「[MLflow モデルのデプロイと登録](how-to-deploy-mlflow-models.md)」を参照してください。
 
 実行からのモデルを登録して表示するには、次の手順に従います。
 
@@ -259,7 +260,7 @@ MLflow モデル レジストリをサポートする [Azure Machine Learning �
 
 ## <a name="next-steps"></a>次のステップ
 
-* [MLflow を使用してモデルをデプロイします](how-to-deploy-models-with-mlflow.md)。
+* [MLflow を使用してモデルをデプロイします](how-to-deploy-mlflow-models.md)。
 * [データの誤差](./how-to-enable-data-collection.md)について実稼働モデルを監視します。
 * [MLflow を使用して Azure Databricks 実行を追跡する](how-to-use-mlflow-azure-databricks.md)。
 * [モデルを管理します](concept-model-management-and-deployment.md)。

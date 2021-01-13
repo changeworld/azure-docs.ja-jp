@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 33c572719d76a2add39aec37329679113fcddb76
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 86f2abb8bfb95d5b9e72936ca3e9464747c00b1c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146332"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049305"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Azure Digital Twins のクエリ ユニット 
 
-Azure Digital Twins の **クエリ ユニット (QU)** は、 [クエリ API](/rest/api/digital-twins/dataplane/query) を使用して [Azure Digital Twins クエリ](how-to-query-graph.md)を実行するために使われるオンデマンド計算の単位です。 
+Azure Digital Twins の **クエリ ユニット (QU)** は、[クエリ API](/rest/api/digital-twins/dataplane/query) を使用して [Azure Digital Twins クエリ](how-to-query-graph.md)を実行するために使われるオンデマンド計算の単位です。 
 
 Azure Digital Twins でサポートされているクエリ操作を実行するために必要なシステム リソース (CPU、IOPS、メモリなど) を抽象化し、代わりにクエリ ユニットで使用状況を追跡できるようにします。
 
@@ -35,41 +35,14 @@ Azure Digital Twins の [SDK](how-to-use-apis-sdks.md) を使用すると、ペ�
 
 次のコード スニペットは、クエリ API を呼び出すと発生するクエリ料金を抽出する方法を示しています。 まず応答ページを反復処理して query-charge ヘッダーにアクセスした後、各ページ内のデジタル ツイン結果を反復処理します。 
 
-```csharp
-AsyncPageable<string> asyncPageableResponseWithCharge = client.QueryAsync("SELECT * FROM digitaltwins");
-int pageNum = 0;
-
-// The "await" keyword here is required, as a call is made when fetching a new page.
-
-await foreach (Page<string> page in asyncPageableResponseWithCharge.AsPages())
-{
-    Console.WriteLine($"Page {++pageNum} results:");
-
-    // Extract the query-charge header from the page
-
-    if (QueryChargeHelper.TryGetQueryCharge(page, out float queryCharge))
-    {
-        Console.WriteLine($"Query charge was: {queryCharge}");
-    }
-
-    // Iterate over the twin instances.
-
-    // The "await" keyword is not required here, as the paged response is local.
-
-    foreach (string response in page.Values)
-    {
-        BasicDigitalTwin twin = JsonSerializer.Deserialize<BasicDigitalTwin>(response);
-        Console.WriteLine($"Found digital twin '{twin.Id}'");
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/getQueryCharges.cs":::
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins のクエリの詳細については、次を参照してください。
 
-* " [*概念: クエリ言語*](concepts-query-language.md)
+* "[*概念: クエリ言語*](concepts-query-language.md)
 * [*方法: ツイン グラフにクエリを実行する*](how-to-query-graph.md)
 * [クエリ API リファレンス ドキュメント](/rest/api/digital-twins/dataplane/query/querytwins)
 
-Azure Digital Twins のクエリ関連の制限については、「 [*リファレンス: サービスの制限*](reference-service-limits.md)に関するページを参照してください。
+Azure Digital Twins のクエリ関連の制限については、「[*リファレンス: サービスの制限*](reference-service-limits.md)に関するページを参照してください。

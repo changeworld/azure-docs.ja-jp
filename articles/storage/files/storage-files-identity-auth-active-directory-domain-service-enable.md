@@ -4,16 +4,16 @@ description: Azure Active Directory Domain Services を使用して Azure Files 
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: deed7c3dce2d7da1940a8a4871efac7453e2cf60
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 340455450cd6a18adfd8d0843fee423f82f10a45
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033682"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858401"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Files に対する Azure Active Directory Domain Services 認証を有効にする
 
@@ -22,8 +22,7 @@ ms.locfileid: "97033682"
 Azure ファイル共有を初めて使用する場合は、次の一連の記事を読む前に、[計画ガイド](storage-files-planning.md)に目を通すことをお勧めします。
 
 > [!NOTE]
-> Azure Files では、Azure AD DS と RC4-HMAC 暗号化を使用した Kerberos 認証がサポートされています。 AES Kerberos 暗号化はまだサポートされていません。
-> Azure Files では、Azure AD と完全に同期する Azure AD DS の認証がサポートされています。 Azure AD DS で範囲指定された同期を有効にし、Azure AD から限定された ID のセットのみを同期する場合、認証と承認はサポートされていません。
+> Azure Files では、Azure AD DS と共に RC4-HMAC および AES 256 暗号化を使用した Kerberos 認証がサポートされています。 Azure Files では、Azure AD と完全に同期する Azure AD DS の認証がサポートされています。 Azure AD DS で範囲指定された同期を有効にし、Azure AD から限定された ID のセットのみを同期する場合、認証と承認はサポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,7 +58,7 @@ Azure ファイル共有への SMB 経由の Azure AD を有効にする前に�
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
-Azure AD DS を使用した Azure Files 認証は、[すべての Azure パブリック リージョンおよび Gov リージョン](https://azure.microsoft.com/global-infrastructure/locations/)で利用できます。
+Azure AD DS を使用した Azure Files 認証は、[すべての Azure パブリック リージョン、Gov リージョン、および中国リージョン](https://azure.microsoft.com/global-infrastructure/locations/)で利用できます。
 
 ## <a name="overview-of-the-workflow"></a>ワークフローの概要
 

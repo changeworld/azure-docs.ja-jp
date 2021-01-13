@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 12/02/2020
-ms.openlocfilehash: 360f0ce60a35bc96c6dd8e46d636f07124d01255
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d1e4ffa525c5628d0b6c9a3ca67f3e069c44e823
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511918"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679199"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 
@@ -156,7 +156,7 @@ Python スクリプトの実行モジュールには、出発点として利用�
     1. スクリプトとその他のカスタム リソースを zip ファイルにバンドルます。
     1. この zip ファイルを **[ファイル データセット]** として Studio にアップロードします。 
     1. [デザイナー作成] ページの左側のモジュール ペインにある *[データセット]* の一覧から、データセット モジュールをドラッグします。 
-    1. データセット モジュールを **R スクリプトの実行** モジュールの **スクリプト バンドル** ポートに接続します。
+    1. データセット モジュールを **Python スクリプトの実行** モジュールの **スクリプト バンドル** ポートに接続します。
     
     アップロード済みの ZIP アーカイブに格納されていれば、どのファイルでもパイプラインの実行中に使用できます。 アーカイブにディレクトリ構造が含まれる場合、その構造が保持されます。
  

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: af77f18771d8e18ee86b79360ac03307d3330cb0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: b02c5bbf2e6accbea9c7a33dc26c4e89e46bb697
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131430"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679144"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI アプリの作成の概要
 
@@ -33,7 +33,7 @@ ms.locfileid: "93131430"
 
 これらは主な公開手順です。
 
-1. Power BI でアプリケーションを作成します。 パッケージのインストール リンクを受け取ります。これは、オファーの主な技術資産です。 パートナー センターでオファーを作成する前に、テスト パッケージを運用前環境に送信します。 詳細については、[Power BI アプリ](/power-bi/service-template-apps-overview)に関するページを参照してください。
+1. Power BI でアプリケーションを作成します。 パッケージのインストール リンクを受け取ります。これは、オファーの主な技術資産です。 パートナー センターでオファーを作成する前に、テスト パッケージを運用前環境に送信します。 詳細については、[Power BI アプリ](/power-bi/service-template-apps-overview)に関するページをご覧ください
 2. 公式名、説明、ロゴなどのマーケティング資料を追加します。
 3. 使用条件、プライバシー ポリシー、サポート ポリシー、ユーザー ヘルプなど、オファーの法的およびサポート ドキュメントを含めます。
 4. オファーを作成する - パートナー センターを使用して、オファーの説明、マーケティング資料、法的情報、サポート情報、資産の仕様などの詳細を編集します。

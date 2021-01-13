@@ -1,41 +1,41 @@
 ---
 title: ExpressRoute:クラシックから Azure Resource Manager への回線の移行
-description: Azure ExpressRoute 回線をクラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに移行する意味について説明します。
+description: Azure ExpressRoute 回線をクラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに移行するときに起きることについて説明します。
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/07/2018
+ms.date: 12/15/2020
 ms.author: duau
-ms.openlocfilehash: 649174e59c3e58b4675393ce665cf765016d5551
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: dcba2e9de2b37e8c432f94781b3c4c369ad52395
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331551"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807943"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行
-この記事では、Azure ExpressRoute 回線をクラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに移行する意味について概説します。
+この記事では、Azure ExpressRoute 回線をクラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに移行するときに起きることについて概説します。
 
-クラシック デプロイ モデルでデプロイされた仮想ネットワークと Resource Manager デプロイ モデルでデプロイされた仮想ネットワークにはどちらも、単一の ExpressRoute 回線を使用して接続できます。 この両方のデプロイメント モデルにまたがって、その作成方法を問わず、ExpressRoute 回線を仮想ネットワークにリンクできるようになりました。
+クラシック デプロイ モデルでデプロイされた仮想ネットワークと Resource Manager デプロイ モデルでデプロイされた仮想ネットワークはどちらも、単一の ExpressRoute 回線を使用して接続できます。
 
 ![An ExpressRoute circuit that links to virtual networks across both deployment models](./media/expressroute-move/expressroute-move-1.png)
 
 ## <a name="expressroute-circuits-that-are-created-in-the-classic-deployment-model"></a>クラシック デプロイ モデルで作成された ExpressRoute 回線
-クラシック デプロイ モデルで作成された ExpressRoute 回線で、クラシック デプロイ モデルと Resource Manager デプロイ モデルの両方に接続できるようにするためには、最初に Resource Manager デプロイ モデルに移行する必要があります。 接続の移行中に接続が失われたり中断が発生したりすることはありません。 クラシック デプロイ モデルにおける回線と仮想ネットワークとの間のリンクは、(同じサブスクリプション内であるかどうかに関係なく) すべて保持されます。
+クラシック デプロイ モデルで作成された ExpressRoute 回線は、最初に Resource Manager デプロイ モデルに移行する必要があります。 このようにした場合にのみ、クラシック デプロイ モデルと Resource Manager デプロイ モデルの両方への接続を有効にすることができます。 接続の移行中に接続が失われたり中断されたりすることはありません。 クラシック デプロイ モデルにおける回線と仮想ネットワークとの間のリンクは、同じサブスクリプション内であるかどうかに関係なくすべて保持されます。
 
-移行が正常に完了すると、見た目、パフォーマンス、操作感は、Resource Manager デプロイ モデルで作成された ExpressRoute 回線とまったく同じになります。 これで、Resource Manager デプロイ モデルの仮想ネットワークへの接続を作成することができます。
+移行が正常に完了すると、Resource Manager デプロイ モデルで作成された ExpressRoute 回線とまったく同じように動作します。 これで、Resource Manager デプロイ モデルの仮想ネットワークへの接続を作成することができます。
 
-ExpressRoute 回線を Resource Manager デプロイ モデルに移行すると、ExpressRoute 回線のライフ サイクルの管理は Resource Manager デプロイ モデルを使用してのみ行えるようになります。 これは、ピアリングの追加、更新、削除、回線のプロパティ (帯域幅、SKU、課金タイプなど) の更新、回線の削除などの操作を行うことができるのが Resource Manager デプロイ モデルに限られることを意味します。 両方のデプロイ モデルへのアクセスを管理する方法の詳細については、Resource Manager デプロイ モデルで作成された回線に関する以下のセクションを参照してください。
+ExpressRoute 回線を Resource Manager デプロイ モデルに移行すると、Resource Manager デプロイ モデル以外では管理できなくなります。 ピアリングの管理、回線のプロパティの更新、回線の削除の操作は、Resource Manager デプロイ モデルからしか利用できません。 両方のデプロイ モデルへのアクセスを管理する方法の詳細については、次のセクションを参照してください。
 
-移行にあたって接続プロバイダーの関与は必要ありません。
+回線を Resource Manager デプロイ モデルに移行するときに、接続プロバイダーが関わる必要はありません。
 
 ## <a name="expressroute-circuits-that-are-created-in-the-resource-manager-deployment-model"></a>Resource Manager デプロイ モデルで作成された ExpressRoute 回線
-Resource Manager デプロイ モデルで作成された ExpressRoute 回線を両方のデプロイ モデルからアクセスできるように設定できます。 サブスクリプションのすべての ExpressRoute 回線は、両方のデプロイ モデルからアクセスできるように設定できます。
+Resource Manager デプロイ モデルで作成された ExpressRoute 回線を両方のデプロイ モデルからアクセスできるように設定できます。 サブスクリプションのすべての ExpressRoute 回線は、両方のデプロイ モデルからアクセスできるように構成できます。
 
 * Resource Manager デプロイ モデルで作成された ExpressRoute 回線は、既定でクラシック デプロイ モデルにアクセスできません。
 * クラシック デプロイ モデルから Resource Manager デプロイ モデルに移行された ExpressRoute 回線は、既定で両方のデプロイ モデルからアクセスできます。
-* ExpressRoute 回線は、作成されたのが Resource Manager デプロイ モデルであるかクラシック デプロイ モデルであるかに関係なく、必ず Resource Manager デプロイ モデルにアクセスできます。 これは、[仮想ネットワークをリンクする方法](expressroute-howto-linkvnet-arm.md)に従うことで、Resource Manager デプロイ モデルで作成された仮想ネットワークへの接続を作成できることを意味します。
+* ExpressRoute 回線は、Resource Manager デプロイ モデルで作成されたか、クラシック デプロイ モデルで作成されたかに関係なく、必ず Resource Manager デプロイ モデルにアクセスできます。 仮想ネットワークへの接続を作成するには、[仮想ネットワークをリンクする方法](expressroute-howto-linkvnet-arm.md)に関する手順に従います。
 * クラシック デプロイ モデルへのアクセスは、ExpressRoute 回線の **allowClassicOperations** パラメーターを使用して制御します。
 
 > [!IMPORTANT]
@@ -44,11 +44,13 @@ Resource Manager デプロイ モデルで作成された ExpressRoute 回線を
 > 
 
 ## <a name="controlling-access-to-the-classic-deployment-model"></a>クラシック デプロイ モデルへのアクセスの制御
-ExpressRoute 回線の **allowClassicOperations** パラメーターを設定すると、単一の ExpressRoute 回線で両方のデプロイメント モデルの仮想ネットワークにリンクできるようになります。
+ExpressRoute 回路が両方のデプロイ モデルの仮想ネットワークにリンクできるようにすることができます。 これを行うには、ExpressRoute 回線で **allowClassicOperations** パラメーターを設定します。
 
-**allowClassicOperations** を TRUE に設定すると、両方のデプロイメント モデルから ExpressRoute 回線に仮想ネットワークをリンクできます。 クラシック デプロイ モデルの仮想ネットワークにリンクするには、[クラシック デプロイ モデルの仮想ネットワークをリンクする方法](expressroute-howto-linkvnet-classic.md)に関するガイダンスに従ってください。 Resource Manager デプロイ モデルの仮想ネットワークにリンクするには、[Resource Manager デプロイ モデルの仮想ネットワークをリンクする方法](expressroute-howto-linkvnet-arm.md)に関するガイダンスに従ってください。
+**allowClassicOperations** を TRUE に設定すると、両方のデプロイメント モデルから ExpressRoute 回線に仮想ネットワークをリンクできます。 
+* クラシック デプロイ モデルの仮想ネットワークをリンクさせるには、[クラシック デプロイ モデルの仮想ネットワークをリンクする方法](expressroute-howto-linkvnet-classic.md)に関するページを参照してください。
+* Resource Manager デプロイ モデルの仮想ネットワークをリンクさせるには、[Resource Manager デプロイ モデルの仮想ネットワークをリンクする方法](expressroute-howto-linkvnet-arm.md)に関するページを参照してください。
 
-**allowClassicOperations** を FALSE に設定すると、クラシック デプロイ モデルから回線へのアクセスがブロックされます。 ただし、クラシック デプロイ モデルのすべての仮想ネットワーク リンクは保持されます。 この場合、ExpressRoute 回線は、クラシック デプロイ モデルで認識されません。
+**allowClassicOperations** を FALSE に設定すると、クラシック デプロイ モデルから回線へのアクセスがブロックされます。 ただし、クラシック デプロイ モデル内でリンクされたすべての仮想ネットワークは保持されます。 ExpressRoute 回線は、クラシック デプロイ モデルで認識されません。
 
 ## <a name="supported-operations-in-the-classic-deployment-model"></a>クラシック デプロイ モデルでサポートされる操作
 **allowClassicOperations** が TRUE に設定されている場合は、ExpressRoute 回線で次の従来の操作がサポートされます。
@@ -57,13 +59,13 @@ ExpressRoute 回線の **allowClassicOperations** パラメーターを設定す
 * クラシック仮想ネットワークへの仮想ネットワーク リンクの作成/更新/取得/削除
 * 仮想ネットワーク リンクでのサブスクリプションの境界を越えた接続に必要な承認の作成/更新/取得/削除
 
-ただし、 **allowClassicOperations** が TRUE に設定されていても、次に示す従来の操作は実行できません。
+ただし、**allowClassicOperations** が TRUE に設定されていても、次に示す従来の操作は実行できません。
 
 * Azure プライベート ピアリング、Azure パブリック ピアリング、Microsoft ピアリングに使用するボーダー ゲートウェイ プロトコル (BGP) ピアリングの作成/更新/取得/削除
 * ExpressRoute 回線の削除
 
 ## <a name="communication-between-the-classic-and-the-resource-manager-deployment-models"></a>クラシック デプロイ モデルと Resource Manager デプロイ モデルとの間の通信
-ExpressRoute 回線は、クラシック デプロイ モデルと Resource Manager デプロイ モデルとの間の橋渡し的な役割を果たします。 クラシック デプロイ モデルの仮想ネットワーク内の仮想マシンと Resource Manager デプロイ モデルの仮想ネットワーク内の仮想マシンとの間のトラフィックは、両方の仮想ネットワークが同じ ExpressRoute 回線にリンクされている場合は ExpressRoute を通過します。
+ExpressRoute 回線は、クラシック デプロイ モデルと Resource Manager デプロイ モデルとの間の橋渡し的な役割を果たします。 両方のデプロイ モデルの仮想ネットワーク間のトラフィックは、両方の仮想ネットワークが同じ回線にリンクされている場合、ExpressRoute 回線を通過できます。
 
 合計スループットは、仮想ネットワーク ゲートウェイのスループット容量によって制限されます。 トラフィックは、接続プロバイダーのネットワークや組織のネットワークを通過しません。 仮想ネットワーク間のトラフィック フローは、完全に Microsoft ネットワーク内で完結します。
 
@@ -74,10 +76,10 @@ ExpressRoute 回線は、クラシック デプロイ モデルと Resource Mana
 ここでは、ExpressRoute 回線でサポートされる操作について説明します。
 
 * クラシック デプロイ モデルでデプロイされた仮想ネットワークと Resource Manager デプロイ モデルでデプロイされた仮想ネットワークには、単一の ExpressRoute 回線を使用してアクセスできます。
-* クラシック デプロイ モデルから Resource Manager デプロイ モデルに ExpressRoute 回線を移行することができます。 移行が完了すると、見た目、操作感、パフォーマンスは、Resource Manager デプロイ モデルで作成された ExpressRoute 回線と同じになります。
+* クラシック デプロイ モデルから Resource Manager デプロイ モデルに ExpressRoute 回線を移行することができます。 移行が完了すると、Resource Manager デプロイ モデルで作成された ExpressRoute 回線と同じように動作し続けます。
 * 移行できるのは ExpressRoute 回線のみです。 この操作で回線リンク、仮想ネットワーク、VPN ゲートウェイを移行することはできません。
 * ExpressRoute 回線を Resource Manager デプロイ モデルに移行すると、ExpressRoute 回線のライフ サイクルの管理は Resource Manager デプロイ モデルを使用してのみ行えるようになります。 これは、ピアリングの追加、更新、削除、回線のプロパティ (帯域幅、SKU、課金タイプなど) の更新、回線の削除などの操作を行うことができるのが Resource Manager デプロイ モデルに限られることを意味します。
-* ExpressRoute 回線は、クラシック デプロイ モデルと Resource Manager デプロイ モデルとの間の橋渡し的な役割を果たします。 クラシック デプロイ モデルの仮想ネットワーク内の仮想マシンと Resource Manager デプロイ モデルの仮想ネットワーク内の仮想マシンとの間のトラフィックは、両方の仮想ネットワークが同じ ExpressRoute 回線にリンクされている場合は ExpressRoute を通過します。
+* ExpressRoute 回線は、クラシック デプロイ モデルと Resource Manager デプロイ モデルとの間の橋渡し的な役割を果たします。 クラシック仮想ネットワーク内の仮想マシンと Resource Manager 仮想ネットワーク内の仮想マシンとの間のトラフィックは、両方の仮想ネットワークが同じ ExpressRoute 回線にリンクされている場合、ExpressRoute を介して通信できます。
 * サブスクリプションの境界を越えた接続は、クラシック デプロイ モデルと Resource Manager デプロイ モデルの両方でサポートされます。
 * ExpressRoute 回線をクラシック モデルから Azure Resource Manager モデルに移動した後、[その ExpressRoute 回線にリンクされている仮想ネットワークを移行する](expressroute-migration-classic-resource-manager.md)ことができます。
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: acaa0fdb1fa0e9a338f4e249622cad0115c6b58e
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 3df8f75a726639e87157a1aa7fd9ff4d35c0ef4f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516454"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654627"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk:よく寄せられる質問
 
@@ -100,13 +100,11 @@ A. 注文処理のフェーズごとの推定リード タイムの目安は、�
 **Data Box Disk の注文の推定リード タイム:**
 
 1. Data Box Disk の注文:数分間 (ポータルから)
-2. ディスクの割り当てと準備:1 から 2 営業日
+2. ディスクの割り当てと準備:在庫状況と処理される保留中の注文の数に応じて、最大 5 営業日
 3. 発送:2 から 3 営業日
-4. お客様のサイトでのデータ コピー:データの性質、サイズ、ファイル数によって異なります
+4. お客様のサイトでのデータ コピー:データの性質、サイズ、ファイル数によって異なります。
 5. 返却発送:2 から 3 営業日
-6. データセンターでのディスクの処理:1 から 2 営業日
-7. Azure へのデータのアップロード:処理が完了し、ディスクが接続され次第すぐに開始されます。 アップロード時間は、データの性質、サイズ、ファイル数によって異なります。
-
+6. データセンターでの処理と Azure へのアップロード:データのアップロードは、操作の処理が完了し、ディスクが接続されるとすぐにデータセンターから開始されます。 アップロード時間は、データの性質、サイズ、ファイル数によって異なります。
 
 ## <a name="configure-and-connect"></a>構成と接続
  

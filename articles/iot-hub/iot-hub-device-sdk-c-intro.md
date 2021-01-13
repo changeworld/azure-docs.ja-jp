@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 9b870e21ffd5c6a8261b6731b939b5dff558256d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 17b31e365e311b97e322828927827f40733313a6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501194"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588830"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C 用 Azure IoT device SDK
 
@@ -43,9 +43,9 @@ C 用 Azure IoT デバイス SDK は、移植性を最大限まで高めるた�
 
 [**C 用 Azure IoT device SDK**](https://github.com/Azure/azure-iot-sdk-c) は GitHub リポジトリから入手でき、API の詳細は [C API リファレンス](/azure/iot-hub/iot-c-sdk-ref/)に関するページで確認できます。
 
-最新バージョンのライブラリは、このリポジトリの **master** ブランチにあります。
+最新バージョンのライブラリは、このリポジトリの **メイン** ブランチにあります。
 
-  ![リポジトリのマスター ブランチのスクリーンショット](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
+  ![リポジトリのメイン ブランチのスクリーンショット](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
 
 * SDK の中心となる実装は **iothub\_client** フォルダー内にあり、このフォルダーには SDK 内の最下位の API 層の実装 (**IoTHubClient**) が格納されています。 **IoTHubClient** ライブラリには、IoT Hub とのメッセージの送受信のために、未加工メッセージングを実装する API が含まれています。 このライブラリを使用する場合、メッセージのシリアル化はユーザー自身が実装する必要がありますが、IoT Hub と通信するためのその他の詳細は自動で処理されます。
 
@@ -72,7 +72,7 @@ C 用 Azure IoT device SDK のサンプルを実行する前に、Azure サブ�
 
 パッケージは一般的なプラットフォーム (Windows 用 NuGet、Debian と Ubuntu 用 apt_get など) に提供され、利用可能な場合にサンプルはこれらのパッケージを使用します。 場合によっては、デバイス向けに、またはデバイス上で SDK をコンパイルする必要があります。 SDK をコンパイルする必要がある場合は、GitHub リポジトリで「[Prepare your development environment (開発環境の準備)](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」を参照してください。
 
-サンプル アプリケーション コードを取得するには、GitHub から SDK のコピーをダウンロードします。 [GitHub リポジトリ](https://github.com/Azure/azure-iot-sdk-c)の **master** ブランチからソースのコピーを入手します。
+サンプル アプリケーション コードを取得するには、GitHub から SDK のコピーをダウンロードします。 [GitHub リポジトリ](https://github.com/Azure/azure-iot-sdk-c)の **メイン** ブランチからソースのコピーを入手します。
 
 
 ### <a name="obtain-the-device-credentials"></a>デバイスの資格情報を取得する

@@ -2,13 +2,13 @@
 title: テンプレートを使用した条件付きデプロイ
 description: Azure Resource Manager テンプレート (ARM テンプレート) 内のリソースを条件付きでデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: 0a31bd1fbf755046f331542b4d5952b27a793360
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.date: 12/17/2020
+ms.openlocfilehash: 1492e9f9f45f23628f9933628fd2740e08ad9eb0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905997"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672850"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>ARM テンプレートでの条件付きデプロイ
 
@@ -90,5 +90,6 @@ ms.locfileid: "96905997"
 
 ## <a name="next-steps"></a>次のステップ
 
+* 条件付きデプロイについて取り上げた Microsoft Learn モジュールについては、「[高度な ARM テンプレート機能を使用して複雑なクラウド デプロイを管理する](/learn/modules/manage-deployments-advanced-arm-template-features/)」をご覧ください。
 * テンプレートの作成に関するレコメンデーションについては、「[ARM テンプレートのベストプラクティス](template-best-practices.md)」を参照してください。
 * リソースから複数のインスタンスを作成するには、「[ARM テンプレートでのリソースのイテレーション](copy-resources.md)」を参照してください。

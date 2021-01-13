@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 9b8d48139e6cbabfbc5bf63f85d2d03c64d7efd9
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 41231e19960edfe1a4f0521b8738fa62a463c927
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542288"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796467"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な TensorFlow モデルをトレーニングする
 
@@ -216,14 +216,14 @@ src = ScriptRunConfig(source_directory=script_folder,
 ScriptRunConfig を使用したジョブの構成の詳細については、[トレーニングの実行の構成と送信](how-to-set-up-training-targets.md)に関する記事をご覧ください。
 
 > [!WARNING]
-> 以前に TensorFlow 推定器 を使用して TensorFlow トレーニング ジョブを構成していた場合は、Azure ML SDK の将来のリリースでは、推定器が非推奨になる予定であることに注意してください。 Azure ML SDK 1.15.0 以上では、DL フレームワークを使用するものを含めて、ScriptRunConfig がトレーニング ジョブを構成する場合に推奨される方法です。
+> 以前に TensorFlow Estimator を使用して TensorFlow トレーニング ジョブを構成していた場合は、1.19.0 SDK のリリース以降では、Estimator が非推奨になっていることに注意してください。 Azure ML SDK 1.15.0 以降では、ディープ ラーニング フレームワークを使用するものを含めて、ScriptRunConfig がトレーニング ジョブを構成する場合に推奨される方法です。 移行に関する一般的な質問については、[Estimator から ScriptRunConfig への移行](how-to-migrate-from-estimators-to-scriptrunconfig.md)に関するガイドを参照してください。
 
 ### <a name="submit-a-run"></a>実行を送信する
 
 [実行オブジェクト](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)には、ジョブの実行中および完了後の実行履歴へのインターフェイスが用意されています。
 
 ```Python
-run = Experiment(workspace=ws, name='tf-mnist').submit(src)
+run = Experiment(workspace=ws, name='Tutorial-TF-Mnist').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 ### <a name="what-happens-during-run-execution"></a>実行実施中の動作

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7016abc9d52aa12b497d29f605fe351ee3f6a2dd
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 33b30f29146e446c5525b1bbcfd76af71c557702
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519115"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045320"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure Digital Twins のエンドポイントとルートを管理する (API と CLI)
 
@@ -125,17 +125,8 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 1. 次に、要求の **本文** で `deadLetterSecret` フィールドをプロパティ オブジェクトに追加します。 この値を以下のテンプレートに従って設定します。これにより、[前のセクション](#set-up-storage-resources)で収集したストレージ アカウント名、コンテナー名、SAS トークンの値から URL が生成されます。
       
-    ```json
-    {
-      "properties": {
-        "endpointType": "EventGrid",
-        "TopicEndpoint": "https://contosoGrid.westus2-1.eventgrid.azure.net/api/events",
-        "accessKey1": "xxxxxxxxxxx",
-        "accessKey2": "xxxxxxxxxxx",
-        "deadLetterSecret":"https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>"
-      }
-    }
-    ```
+  :::code language="json" source="~/digital-twins-docs-samples/api-requests/deadLetterEndpoint.json":::
+
 1. 要求を送信してエンドポイントを作成します。
 
 この要求の構造化に関する詳細については、次の Azure Digital Twins REST API のドキュメントを参照してください:「[エンドポイント - DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate)」。
@@ -202,11 +193,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 `CreateOrReplaceEventRouteAsync` は、イベント ルートを追加するために使用される SDK 呼び出しです。 その使用例を次に示します。
 
-```csharp
-string eventFilter = "$eventType = 'DigitalTwinTelemetryMessages' or $eventType = 'DigitalTwinLifecycleNotification'";
-var er = new DigitalTwinsEventRoute("<your-endpointName>", eventFilter);
-await client.CreateOrReplaceEventRouteAsync("routeName", er);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/eventRoute_operations.cs" id="CreateEventRoute":::
     
 > [!TIP]
 > すべての SDK 関数に同期バージョンと非同期バージョンがあります。
@@ -214,35 +201,8 @@ await client.CreateOrReplaceEventRouteAsync("routeName", er);
 ### <a name="event-route-sample-code"></a>イベント ルートのサンプル コード
 
 次のサンプル メソッドは、イベント ルートを作成、一覧表示、削除する方法を示しています。
-```csharp
-private async static Task CreateEventRoute(DigitalTwinsClient client, String routeName, DigitalTwinsEventRoute er)
-{
-  try
-  {
-    Console.WriteLine("Create a route: testRoute1");
-            
-    // Make a filter that passes everything
-    er.Filter = "true";
-    await client.CreateOrReplaceEventRouteAsync(routeName, er);
-    Console.WriteLine("Create route succeeded. Now listing routes:");
-    Pageable<DigitalTwinsEventRoute> result = client.GetEventRoutes();
-    foreach (DigitalTwinsEventRoute r in result)
-    {
-        Console.WriteLine($"Route {r.Id} to endpoint {r.EndpointName} with filter {r.Filter} ");
-    }
-    Console.WriteLine("Deleting routes:");
-    foreach (DigitalTwinsEventRoute r in result)
-    {
-        Console.WriteLine($"Deleting route {r.Id}:");
-        client.DeleteEventRoute(r.Id);
-    }
-  }
-    catch (RequestFailedException e)
-    {
-        Console.WriteLine($"*** Error in event route processing ({e.ErrorCode}):\n${e.Message}");
-    }
-  }
-```
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/eventRoute_operations.cs" id="FullEventRouteSample":::
 
 ## <a name="filter-events"></a>イベントのフィルター処理
 
@@ -255,12 +215,8 @@ private async static Task CreateEventRoute(DigitalTwinsClient client, String rou
 
 フィルターを追加するために、次の本文を含む PUT 要求を *https://{Your-azure-digital-twins-hostname}/eventRoutes/{event-route-name}?api-version=2020-10-31* に対して使用できます。
 
-```json  
-{
-    "endpointName": "<endpoint-name>",
-    "filter": "<filter-text>"
-}
-``` 
+:::code language="json" source="~/digital-twins-docs-samples/api-requests/filter.json":::
+
 サポートされているルート フィルターを次に示します。 「*フィルター テキスト スキーマ*」列の情報を使用して、上記の要求本文の `<filter-text>` プレースホルダーを置き換えてください。
 
 [!INCLUDE [digital-twins-route-filters](../../includes/digital-twins-route-filters.md)]

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 3f28c50be73b2b87ed8b25429cfa2dee9a663f1b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ee1c59c71834ab9d80f1ed66a002e211bdcacbbf
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452169"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796501"
 ---
 # <a name="secure-access-to-a-key-vault"></a>キー コンテナーへのアクセスをセキュリティで保護する
 
@@ -186,8 +186,8 @@ Azure サービスでプライベート リンクを使用する一般的なシ�
 | --- | --- | --- | --- |
 | セキュリティ チーム | [Key Vault Contributor](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | 証明書: すべての操作 <br> キー: すべての操作 <br> シークレット: すべての操作 | [Key Vault Administrator (プレビュー)](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
 | 開発者と&nbsp;運用者 | Key Vault デプロイ アクセス許可<br><br> **注**:このアクセス許可により、デプロイされた VM によりキー コンテナーからシークレットが取り込まれることが許可されます。 | なし | なし |
-| 監査者 | なし | 証明書: 一覧表示 <br> キー: 一覧表示<br>シークレット: 一覧表示<br><br> **注**:このアクセス許可により、監査者はログに出力されないキーとシークレットの属性 (タグ、ライセンス認証を行った日付、有効期限) を調べることができます。 | [Key Vault Reader (プレビュー)]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
-| Azure Storage アカウント | なし | キー: 取得、一覧表示、キーのラップ、キーのラップ解除 <br> | [Key Vault Crypto Service Encryption](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-preview) |
+| 監査者 | なし | 証明書: 一覧表示 <br> キー: 一覧表示<br>シークレット: 一覧表示<br><br> **注**:このアクセス許可により、監査者はログに出力されないキーとシークレットの属性 (タグ、ライセンス認証を行った日付、有効期限) を調べることができます。 | [Key Vault Reader (プレビュー)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
+| Azure Storage アカウント | なし | キー: 取得、一覧表示、キーのラップ、キーのラップ解除 <br> | [Key Vault Crypto Service Encryption User](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
 | Application | なし | シークレット: 取得、一覧表示 <br> 証明書: 取得、一覧表示 | [Key Vault Reader (プレビュー)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview)、[Key Vault シークレット ユーザー (プレビュー)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 
 この 3 つのチーム ロールでは、Key Vault アクセス許可に加えて、他のリソースへのアクセス権も必要です。 VM (または Azure App Service の Web Apps 機能) をデプロイするには、開発者と運用者はアクセス権をデプロイする必要があります。 監査者には、Key Vault のログが格納されているストレージ アカウントに対する読み取りアクセス権が必要です。

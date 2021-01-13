@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c9f9cc53c62ed19fa5fbd1e78c840a8a34b6fb84
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 3c880d570cfa6e1b1388e59557836a3070d7cdc7
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97824657"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862540"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins の API および SDK を使用する
 
@@ -29,7 +29,7 @@ Azure Digital Twins には、インスタンスとその要素を管理するた
 最新のコントロール プレーン API のバージョンは、_**2020-12-01**_ です。
 
 コントロール プレーン API を使用するには
-* [コントロール プレーン Swagger フォルダー](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)の最新の Swagger を参照することで、API を直接呼び出すことができます。 このリポジトリには、使用法を示す例が保存されているフォルダーもあります。
+* [コントロール プレーン Swagger リポジトリ](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable)の最新の Swagger フォルダーを参照することで、API を直接呼び出すことができます。 このフォルダーには、使用法を示す例が保存されているフォルダーも含まれています。
 * 現在、コントロール API の SDK には、次の言語でアクセスできます。
   - [ **.NET (C#)**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([参照 [自動生成]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ([ソース](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
   - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([参照 [自動生成]](/java/api/overview/azure/digitaltwins?view=azure-java-stable&preserve-view=true)) ([ソース](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
@@ -51,7 +51,7 @@ Azure Digital Twins には、インスタンスとその要素を管理するた
 
 データ プレーン API を使用するには
 * API を直接呼び出すには、次の操作を実行します。
-   - [データ プレーン Swagger フォルダー](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)の最新の Swagger を参照する。 このリポジトリには、使用法を示す例が保存されているフォルダーもあります。 
+   - [データ プレーン Swagger リポジトリ](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)の最新の Swagger フォルダーを参照する。 このフォルダーには、使用法を示す例が保存されているフォルダーも含まれています。 
    - [API リファレンス ドキュメント](/rest/api/azure-digitaltwins/)を参照する。
 * **.NET (C#)** SDK を使用できます。 .NET SDK は次の方法で使用します。
    - NuGet からパッケージを表示して追加する。[Azure.DigitalTwins.Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core) を表示する。 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: f861f9efa6ecc1886647ed6c460b6718ff97e8a1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 90831c0e8d5ab73f65dc801319a357d59799cbc6
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522330"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807554"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Azure プライベート エンドポイント接続に関する問題のトラブルシューティング
 
@@ -100,8 +100,24 @@ Azure プライベート エンドポイントは、プライベート リンク
     
        ![NSG アウトバウンド規則](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
+1. ソース仮想マシンでは、NIC の有効なルートで、プライベート エンドポイント IP のネクスト ホップへのルートが InterfaceEndpoints として設定されている必要があります。 
+
+    a. ソース VM のプライベート エンドポイント ルートを確認できない場合は、次の点を調べてください 
+     - ソース VM とプライベート エンドポイントが同じ VNET に属している。 「はい」の場合は、サポートに問い合わせる必要があります。 
+     - ソース VM とプライベート エンドポイントは異なる VNET に属している。この場合は、VNET 間の IP 接続を調べます。 IP 接続が確立していてもルートを確認できない場合は、サポートにお問い合わせください。 
+
 1. 接続の結果が正しいと確認された場合、接続の問題は、アプリケーション層でのシークレット、トークン、パスワードなどの他の側面に関連している可能性があります。
-   - この場合、プライベート エンドポイントに関連付けられているプライベート リンク リソースの構成を確認してください。 詳細については、[Azure Private Link トラブルシューティング ガイド](troubleshoot-private-link-connectivity.md)を参照してください。
+   - この場合、プライベート エンドポイントに関連付けられているプライベート リンク リソースの構成を確認してください。 詳細については、[Azure Private Link トラブルシューティング ガイド](troubleshoot-private-link-connectivity.md)を参照してください
+   
+1. 常に、サポート チケットを提出する前に絞り込むことをお勧めします。 
+
+    a. ソースがオンプレミスであり Azure のプライベート エンドポイントに接続し、問題が発生している場合は、次の接続を試してください 
+      - オンプレミスから仮想マシンへの接続。オンプレミスから Virtual Network への IP 接続が確立されているかどうかを調べます。 
+      - Virtual Network 内の仮想マシンからプライベート エンドポイントへの接続。
+      
+    b. ソースが Azure であり、プライベート エンドポイントが別の Virtual Network 内にある場合は、次の接続を試してください 
+      - 別のソースからプライベート エンドポイントへの接続。 このようにすることで、仮想マシン固有のすべての問題を切り離せます。 
+      - プライベート エンドポイントと同じ Virtual Network の一部である任意の仮想マシンへの接続。  
 
 1. 問題が解決されず、接続の問題が依然として存在する場合は、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) チームにお問い合わせください。
 

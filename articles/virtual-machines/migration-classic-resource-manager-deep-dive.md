@@ -1,19 +1,19 @@
 ---
-title: クラシックから Azure Resource Manager への移行に関する技術的な詳細
+title: プラットフォームでサポートされている移行ツール
 description: プラットフォームでサポートされている、クラシック デプロイ モデルから Azure Resource Manager へのリソースの移行に関する技術的な詳細。
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 12/17/2020
 ms.author: tagore
-ms.openlocfilehash: d73ad3235e5ff2c9dbf0cca546308469ef6b5ac0
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c17ade2af751b80e612aa104a9af1a22c4325413
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887041"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695746"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細
 

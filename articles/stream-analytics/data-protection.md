@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 4436289d544de057acef132117346ac53c20b5a7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 76218003a40c02def3dc62ea8480022d9647938d
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576506"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723339"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics でのデータ保護 
 
@@ -72,7 +72,7 @@ Stream Analytics ポータルを使用しても、ストレージ アカウン�
 
    ![プライベート データ ストレージ アカウントの設定](./media/data-protection/storage-account-create.png)
 
-1. マネージド ID (プレビュー) を使用して認証するには、[認証モード] ドロップダウンから **[マネージド ID]** を選択します。 マネージド ID を選択した場合は、Stream Analytics ジョブをストレージ アカウントのアクセス制御リストに追加する必要があります。 ジョブにアクセス権を付与しない場合は、そのジョブではどのような操作も実行できなくなります。 アクセス権を付与する方法に関する詳細については、「[Azure RBAC を使用して他のリソースにマネージド ID アクセスを割り当てる](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource)」を参照してください。
+1. マネージド ID (プレビュー) を使用して認証するには、[認証モード] ドロップダウンから **[マネージド ID]** を選択します。 マネージド ID を選択した場合は、*ストレージ BLOB データ共同作成者* ロール で Stream Analytics ジョブをストレージ アカウントのアクセス制御リストに追加する必要があります。 ジョブにアクセス権を付与しない場合は、そのジョブではどのような操作も実行できなくなります。 アクセス権を付与する方法に関する詳細については、「[Azure RBAC を使用して他のリソースにマネージド ID アクセスを割り当てる](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource)」を参照してください。
 
    :::image type="content" source="media/data-protection/storage-account-create-msi.png" alt-text="マネージド ID の認証を使用したプライベート データ ストレージ アカウントの設定":::
 

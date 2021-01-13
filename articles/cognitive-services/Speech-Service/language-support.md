@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: d0cb9dc3c54f409c3bdd71fbb57c823e15abc22d
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 68a384197409115343a81aea23b0f7d42166d716
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762964"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976811"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -53,9 +53,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | アラビア語 (アラブ首長国連邦)      | `ar-AE` | 言語モデル                                   |
 | ブルガリア語 (ブルガリア)               | `bg-BG` | 言語モデル                                   |
 | カタルニア語 (スペイン)                    | `ca-ES` | 言語モデル                                   |
-| 中国語 (繁体字)   | `zh-HK` | 言語モデル                                   |
+| 中国語 (繁体字)   | `zh-HK` | 音響モデル<br>言語モデル                 |
 | 中国語 (標準、簡体字)     | `zh-CN` | 音響モデル<br>言語モデル                 |
-| 中国語 (台湾標準中国語)       | `zh-TW` | 言語モデル                                   |
+| 中国語 (台湾標準中国語)       | `zh-TW` | 音響モデル<br>言語モデル                 |
 | クロアチア語 (クロアチア)                 | `hr-HR` | 言語モデル                                   |
 | チェコ語 (チェコ共和国)             | `cs-CZ` | 言語モデル                                   |
 | デンマーク語 (デンマーク)                   | `da-DK` | 言語モデル                                   |
@@ -83,8 +83,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | ハンガリー語 (ハンガリー)                | `hu-HU` | 言語モデル                                   |
 | アイルランド語 (アイルランド)                     | `ga-IE` | 言語モデル                                   |
 | イタリア語 (イタリア)                    | `it-IT` | 音響モデル<br>言語モデル<br>発音|
-| 日本語 (日本)                   | `ja-JP` | 言語モデル                                   |
-| 韓国語 (韓国)                     | `ko-KR` | 言語モデル                                   |
+| 日本語 (日本)                   | `ja-JP` | 音響モデル<br>言語モデル                 |
+| 韓国語 (韓国)                     | `ko-KR` | 音響モデル<br>言語モデル                 |
 | ラトビア語 (ラトビア)                   | `lv-LV` | 言語モデル                                   |
 | リトアニア語 (リトアニア)             | `lt-LT` | 言語モデル                                   |
 | マルタ語 (マルタ)                     | `mt-MT` | 言語モデル                                   |

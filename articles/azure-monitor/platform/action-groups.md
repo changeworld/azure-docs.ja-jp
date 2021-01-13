@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 9b5b20de1b86eae72de54b3f2c1cf37074fba144
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: b5b6a697e6a5cae064a6a48419246dc12e8d048c
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095170"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695825"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 
@@ -132,6 +132,18 @@ Runbook ペイロードの制限については、[Azure サブスクリプシ�
 サブスクリプションのロールのメンバーに電子メールを送信します。 電子メールはこのロールの **Azure AD ユーザー** メンバーにのみ送信されます。 Azure AD グループまたはサービス プリンシパルに電子メールが送信されることはありません。
 
 通知電子メールは、*標準の電子メール* アドレスにのみ送信されます。
+
+*プライマリ電子メール* で通知を受信していない場合は、次の手順を試してください。
+
+1. Azure portal で *[Active Directory]* に移動します。
+2. [すべてのユーザー] (左側のウィンドウ) をクリックすると、ユーザーの一覧が表示されます (右側のウィンドウ)。
+3. *プライマリ電子メール* 情報を表示する対象のユーザーを選択します。
+
+  :::image type="content" source="media/action-groups/active-directory-user-profile.png" alt-text="ユーザー プロファイルを表示する方法の例。"border="true":::
+
+4. [連絡先情報] の下の [ユーザー プロファイル] で、[電子メール] タブが空白の場合は上部にある *[編集]* ボタンをクリックし、お使いの *プライマリ電子メール* を追加して、上部にある *[保存]* ボタンをクリックします。
+
+  :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="プライマリ電子メールを追加する方法の例。"border="true":::
 
 アクション グループには、電子メールに関する限られた数のアクションを持つことができます。 [レート制限情報](./alerts-rate-limiting.md)の記事を参照してください。
 

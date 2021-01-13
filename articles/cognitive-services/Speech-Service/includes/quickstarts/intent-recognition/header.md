@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: trbye
-ms.openlocfilehash: 8d70d282ffb1a39f9ffb3eb6addf694ac9d0d060
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4725a1a9cf2cb74655a37ac27a0a86f10d7f4bb9
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81421730"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052930"
 ---
 このクイックスタートでは、[Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) と Language Understanding (LUIS) サービスを使用して、マイクによってキャプチャされたオーディオ データから意図を認識します。 具体的には、Speech SDK を使用して音声をキャプチャし、LUIS のあらかじめ構築されたドメインを使用してホーム オートメーションに対する意図 (照明のオン/オフなど) を特定します。 
 
@@ -22,3 +22,4 @@ ms.locfileid: "81421730"
 > * 上記の `SpeechConfig` オブジェクトを使用して `IntentRecognizer` オブジェクトを作成します。
 > * `IntentRecognizer` オブジェクトを使用して、1 つの発話の認識プロセスを開始します。
 > * 返された `IntentRecognitionResult` を検査します。
+

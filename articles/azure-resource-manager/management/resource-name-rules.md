@@ -2,13 +2,13 @@
 title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
-ms.date: 12/04/2020
-ms.openlocfilehash: a6aac03277a11cf671f5a618bc85ff987cfdc2dd
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.date: 12/29/2020
+ms.openlocfilehash: edcf3f09b57ed7628611c482effddb210ef8e456
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608318"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814382"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
@@ -170,7 +170,7 @@ ms.locfileid: "96608318"
 > | galleries | resource group | 1 ～ 80 | 英数字とピリオド。<br><br>先頭と末尾には英数字を使用します。 |
 > | galleries / applications | ギャラリー | 1 ～ 80 | 英数字、ハイフン、およびピリオド。<br><br>先頭と末尾には英数字を使用します。 |
 > | galleries/applications/versions | application | 32-bit integer | 数字とピリオド。 |
-> | galleries/images | ギャラリー | 1 ～ 80 | 英数字、ハイフン、およびピリオド。<br><br>先頭と末尾には英数字を使用します。 |
+> | galleries/images | ギャラリー | 1 ～ 80 | 英数字、アンダースコア、ハイフン、およびピリオド。<br><br>先頭と末尾には英数字を使用します。 |
 > | galleries/images/versions | image | 32-bit integer | 数字とピリオド。 |
 > | images | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | スナップショット | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
@@ -537,7 +537,7 @@ ms.locfileid: "96608318"
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | clusters | resource group | 4-63 | 英数字とハイフン。<br><br>先頭と末尾には英数字を使用します。 |
-> | workspaces | resource group | 4-63 | 英数字とハイフン。<br><br>先頭と末尾には英数字を使用します。 |
+> | workspaces | グローバル | 4-63 | 英数字とハイフン。<br><br>先頭と末尾には英数字を使用します。 |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 

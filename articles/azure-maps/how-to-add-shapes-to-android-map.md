@@ -1,361 +1,111 @@
 ---
-title: Azure Maps Android SDK を使用したマップへの図形の追加
-description: マップに図形を追加する方法について説明します。 Microsoft Azure Maps Android SDK を使用してマップに線と多角形を追加するコード サンプルを参照してください。
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 11/18/2020
-ms.topic: how-to
+title: Android マップへの多角形レイヤーの追加 | Microsoft Azure Maps
+description: マップに多角形または円を追加する方法について説明します。 Azure Maps Android SDK を使用して幾何学図形をカスタマイズし、それらの更新や維持を容易にする方法について説明します。
+author: rbrundritt
+ms.author: richbrun
+ms.date: 12/08/2020
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 9ef6e1910803cc18f03347e08abc4f0d836b3c0a
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+manager: cpendle
+ms.openlocfilehash: 1712cedab9cef23108fcc48b8e09bdc3e33065c4
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532773"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679456"
 ---
-# <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用したマップへの図形の追加
+# <a name="add-a-polygon-layer-to-the-map-android-sdk"></a>マップに多角形レイヤーを追加する (Android SDK)
 
-この記事では、Azure Maps Android SDK を使用してマップに図形をレンダリングする方法を示します。
+この記事では、多角形レイヤーを使用してマップ上に `Polygon` および `MultiPolygon` フィーチャー ジオメトリの領域をレンダリングする方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 
-1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
-3. [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) をダウンロードしてインストールします。
+必ず、[クイック スタート:Android アプリの作成](quick-android-map.md)に関するドキュメントの手順を完了してください。 この記事のコード ブロックは、マップ `onReady` イベント ハンドラーに挿入できます。
 
-## <a name="add-a-line-to-the-map"></a>マップへの線の追加
+## <a name="use-a-polygon-layer"></a>多角形レイヤーを使用する
 
-次の手順に従って **線レイヤー** を使用し、マップに線を追加します。
+多角形レイヤーがデータ ソースに接続されていると、マップに読み込まれるときに、`Polygon` および `MultiPolygon` フィーチャーを含む領域がレンダリングされます。 多角形を作成し、データ ソースに追加し、`PolygonLayer` クラスを使用して多角形レイヤーでレンダリングします。
 
-1. `res > layout > activity_main.xml` を編集して、次のコードのようにします。
+```java
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
 
-    ```XML
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-        <com.microsoft.azure.maps.mapcontrol.MapControl
-            android:id="@+id/mapcontrol"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:mapcontrol_centerLat="40.743270"
-            app:mapcontrol_centerLng="-74.004420"
-            app:mapcontrol_zoom="12"
-            />
-    </FrameLayout>
-    ```
-
-2. 次のコード スニペットを `MainActivity.java` クラスの **onCreate()** メソッドにコピーします。
-
-    >[!WARNING]
-    >Android Studio に必要なクラスがインポートされていない可能性があります。  その場合、コードにいくつかの未解決の参照が存在することになります。 必要なクラスをインポートするには、未解決の各参照にマウス ポインターを置き、`Alt + Enter` (Mac では Option + Return) を押します。
-
-    ```Java
-    mapControl.onReady(map -> {
-
-        //Create a data source and add it to the map.
-        DataSource dataSource = new DataSource();
-        map.sources.add(dataSource);
-
-        //Create a list of points.
-        List<Point> points = Arrays.asList(
-            Point.fromLngLat(-73.972340, 40.743270),
-            Point.fromLngLat(-74.004420, 40.756800));
-    
-        //Create a LineString feature and add it to the data source.
-        dataSource.add(LineString.fromLngLats(points));
-    
-        //Create a line layer and add it to the map.
-        map.layers.add(new LineLayer(dataSource,
-            strokeColor("blue"),
-            strokeWidth(5f)));
-    });
-
-    ```
-    上記のコード スニペットは、まず **onReady()** コールバック メソッドを使用して Azure Maps コントロール インスタンスを取得します。 次にこれは **DataSource** クラスを使用してデータ ソース オブジェクトを作成し、それをマップに追加します。 次にこれは **ポイント** オブジェクトの一覧を作成します。 **LineString** がポイントの一覧から作成され、データ ソースに追加されます。 **線レイヤー** は、マップ上にデータ ソースでラップされた線オブジェクトをレンダリングします。 次に線レイヤーが作成され、データ ソースがそれに追加されます。
-    
-    上記のコード スニペットを追加したら、`MainActivity.java` は次のようになります。
-
-    ```Java
-    package com.example.myapplication;
-
-    import android.app.Activity;
-    import android.os.Bundle;
-    import com.mapbox.geojson.LineString;
-    import com.mapbox.geojson.Point;
-    import android.support.v7.app.AppCompatActivity;
-    import com.microsoft.azure.maps.mapcontrol.layer.LineLayer;
-    import com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions;
-    import com.microsoft.azure.maps.mapcontrol.source.DataSource;
-    import java.util.Arrays;
-    import java.util.List;
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-    import com.microsoft.azure.maps.mapcontrol.MapControl;
-    import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeColor;
-    import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeWidth;
-        
-    public class MainActivity extends AppCompatActivity {
-    
-        static{
-            AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
-        }
-    
-        MapControl mapControl;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-    
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-    
-            mapControl = findViewById(R.id.mapcontrol);
-    
-            mapControl.onCreate(savedInstanceState);
-    
-            mapControl.onReady(map -> {
-
-                //Create a data source and add it to the map.
-                DataSource dataSource = new DataSource();
-                map.sources.add(dataSource);
-            
-                //Create a list of points.
-                List<Point> points = Arrays.asList(
-                    Point.fromLngLat(-73.972340, 40.743270),
-                    Point.fromLngLat(-74.004420, 40.756800));
-            
-                //Create a LineString feature and add it to the data source.
-                dataSource.add(LineString.fromLngLats(points));
-            
-                //Create a line layer and add it to the map.
-                map.layers.add(new LineLayer(dataSource,
-                    strokeColor("blue"),
-                    strokeWidth(5f)));
-            });    
-        }
-    
-        @Override
-        public void onResume() {
-            super.onResume();
-            mapControl.onResume();
-        }
-    
-        @Override
-        public void onPause() {
-            super.onPause();
-            mapControl.onPause();
-        }
-    
-        @Override
-        public void onStop() {
-            super.onStop();
-            mapControl.onStop();
-        }
-    
-        @Override
-        public void onLowMemory() {
-            super.onLowMemory();
-            mapControl.onLowMemory();
-        }
-    
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            mapControl.onDestroy();
-        }
-    
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            super.onSaveInstanceState(outState);
-            mapControl.onSaveInstanceState(outState);
-        }    
-    }
-    ```
-
-アプリケーションを実行すると、次に示すようにマップ上に線が表示されます。
-
-![Android マップにレンダリングされた線](./media/how-to-add-shapes-to-android-map/android-map-line.png)</
-
-
-## <a name="add-a-polygon-to-the-map"></a>マップに多角形を追加する
-
-**多角形レイヤー** では、マップに多角形の領域をレンダリングできます。 マップ上に多角形を追加するには、次の手順に従います。
-
-1. **res > layout > activity_main.xml** を編集すると、次のようになります。
-
-    ```XML
-    <?xml version="1.0" encoding="utf-8"?>
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-    
-        <com.microsoft.azure.maps.mapcontrol.MapControl
-            android:id="@+id/mapcontrol"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:mapcontrol_centerLat="40.78"
-            app:mapcontrol_centerLng="-73.97"
-            app:mapcontrol_zoom="12"
-            />
-    
-    </FrameLayout>
-    ```
-
-2. 次のコード スニペットを **onCreate()** method of your `MainActivity.java` クラスにコピーします。
-
-    ```Java
-    mapControl.onReady(map -> {
-        //Create a data source and add it to the map.
-        DataSource dataSource = new DataSource();
-        map.sources.add(dataSource);
-    
-        //Create a list of point arrays to create polygon rings.
-        List<List<Point>> rings = Arrays.asList(Arrays.asList(
+//Create a rectangular polygon.
+source.add(Polygon.fromLngLats(
+    Arrays.asList(
+        Arrays.asList(
             Point.fromLngLat(-73.98235, 40.76799),
             Point.fromLngLat(-73.95785, 40.80044),
-            Point.fromLngLat(-73.94928, 40.7968),
+            Point.fromLngLat(-73.94928, 40.79680),
             Point.fromLngLat(-73.97317, 40.76437),
-            Point.fromLngLat(-73.98235, 40.76799)));
-    
-        //Create a Polygon feature and add it to the data source.
-        dataSource.add(Feature.fromGeometry(Polygon.fromLngLats(rings)));
-    
-        //Add a polygon layer for rendering the polygon area.
-        map.layers.add(new PolygonLayer(dataSource,
-            fillColor("red")));
-    
-        //Add a line layer for rendering the polygon outline.
-        map.layers.add(new LineLayer(dataSource,
-            strokeColor("blue"),
-            strokeWidth(2f)));
-    });
-    ```
-    
-    上記のコード スニペットを追加したら、`MainActivity.java` は次のようになります。
+            Point.fromLngLat(-73.98235, 40.76799)
+        )
+    )
+));
 
-    ```Java
-    package com.example.myapplication;
-    
-    import android.app.Activity;
-    import android.os.Bundle;
-    import java.util.Arrays;
-    import android.util.Log;
-    import java.util.Collections;
-    import android.support.v7.app.AppCompatActivity;
-    import com.mapbox.geojson.Point;
-    import com.mapbox.geojson.Polygon;
-    import com.mapbox.geojson.Feature;
-    import com.microsoft.azure.maps.mapcontrol.layer.LineLayer;
-    import com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions;
-    import com.microsoft.azure.maps.mapcontrol.layer.PolygonLayer;
-    import com.microsoft.azure.maps.mapcontrol.source.DataSource;
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-    import com.microsoft.azure.maps.mapcontrol.MapControl;
-    import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeColor;
-    import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeWidth;
-    import static com.microsoft.azure.maps.mapcontrol.options.PolygonLayerOptions.fillColor;
-    
-    public class MainActivity extends AppCompatActivity {
-    
-        static{
-            AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
-        }
-    
-        MapControl mapControl;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-    
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-    
-            mapControl = findViewById(R.id.mapcontrol);
-    
-            mapControl.onCreate(savedInstanceState);
-    
-            mapControl.onReady(map -> {
-                //Create a data source and add it to the map.
-                DataSource dataSource = new DataSource();
-                map.sources.add(dataSource);
-            
-                //Create a list of point arrays to create polygon rings.
-                List<List<Point>> rings = Arrays.asList(Arrays.asList(
-                    Point.fromLngLat(-73.98235, 40.76799),
-                    Point.fromLngLat(-73.95785, 40.80044),
-                    Point.fromLngLat(-73.94928, 40.7968),
-                    Point.fromLngLat(-73.97317, 40.76437),
-                    Point.fromLngLat(-73.98235, 40.76799)));
-            
-                //Create a Polygon feature and add it to the data source.
-                dataSource.add(Feature.fromGeometry(Polygon.fromLngLats(rings)));
-            
-                //Add a polygon layer for rendering the polygon area.
-                map.layers.add(new PolygonLayer(dataSource,
-                    fillColor("red")));
-            
-                //Add a line layer for rendering the polygon outline.
-                map.layers.add(new LineLayer(dataSource,
-                    strokeColor("blue"),
-                    strokeWidth(2f)));
-            });    
-        }
-    
-        @Override
-        public void onResume() {
-            super.onResume();
-            mapControl.onResume();
-        }
-    
-        @Override
-        public void onPause() {
-            super.onPause();
-            mapControl.onPause();
-        }
-    
-        @Override
-        public void onStop() {
-            super.onStop();
-            mapControl.onStop();
-        }
-    
-        @Override
-        public void onLowMemory() {
-            super.onLowMemory();
-            mapControl.onLowMemory();
-        }
-    
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            mapControl.onDestroy();
-        }
-    
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            super.onSaveInstanceState(outState);
-            mapControl.onSaveInstanceState(outState);
-        }    
-    }
-    ```
+//Create and add a polygon layer to render the polygon on the map, below the label layer.
+map.layers.add(new PolygonLayer(source, 
+    fillColor("red"),
+    fillOpacity(0.7f)
+), "labels");
+```
 
-アプリケーションを実行すると、次に示すようにマップ上に多角形が表示されます。
+次のスクリーンショットは、上記のコードによって、多角形レイヤーを使用して多角形の領域がレンダリングされている状態を示しています。
 
-![Android マップにレンダリングされた多角形](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</
+![塗りつぶし領域がレンダリングされた多角形](media/how-to-add-shapes-to-android-map/android-polygon-layer.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="use-a-polygon-and-line-layer-together"></a>多角形と線レイヤーを同時に使用する
 
-マップにさらにデータを追加するには:
+線レイヤーを使用して、多角形のアウトラインをレンダリングします。 次のコード サンプルでは、前の例のように多角形がレンダリングされますが、今度は線レイヤーが追加されます。 この線レイヤーは、データ ソースに接続される 2 番目のレイヤーです。  
+
+```java
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
+
+//Create a rectangular polygon.
+source.add(Polygon.fromLngLats(
+    Arrays.asList(
+        Arrays.asList(
+            Point.fromLngLat(-73.98235, 40.76799),
+            Point.fromLngLat(-73.95785, 40.80044),
+            Point.fromLngLat(-73.94928, 40.79680),
+            Point.fromLngLat(-73.97317, 40.76437),
+            Point.fromLngLat(-73.98235, 40.76799)
+        )
+    )
+));
+
+//Create and add a polygon layer to render the polygon on the map, below the label layer.
+map.layers.add(new PolygonLayer(source,
+    fillColor("rgba(0, 200, 200, 0.5)")
+), "labels");
+
+//Create and add a line layer to render the outline of the polygon.
+map.layers.add(new LineLayer(source,
+    strokeColor("red"),
+    strokeWidth(2f)
+));
+```
+
+次のスクリーンショットは、アウトラインが線レイヤーを使用してレンダリングされた多角形が、上記のコードによってレンダリングされている状態を示しています。
+
+![塗りつぶし領域とアウトラインがレンダリングされた多角形](media/how-to-add-shapes-to-android-map/android-polygon-and-line-layer.png)
+
+> [!TIP]
+> 線レイヤーを使用して多角形のアウトラインを設定する場合は、ポイントの各配列の起点および終点が同じになるように、必ず多角形のすべてのリングを閉じてください。 このように行わないと、線レイヤーは多角形の最後の点を最初の点に接続できなくなる可能性があります。
+
+## <a name="next-steps"></a>次のステップ
+
+マップに追加できる他のコード サンプルについては、次の記事をご覧ください。
 
 > [!div class="nextstepaction"]
-> [シンボル レイヤーを追加する](how-to-add-symbol-to-android-map.md)
+> [データ ソースを作成する](create-data-source-android-sdk.md)
 
 > [!div class="nextstepaction"]
-> [タイル レイヤーを追加する](how-to-add-tile-layer-android-map.md)
+> [データドリブンのスタイルの式を使用する](data-driven-style-expressions-android-sdk.md)
 
 > [!div class="nextstepaction"]
-> [フィーチャーの情報を表示する](display-feature-information-android.md)
+> [線レイヤーを追加する](android-map-add-line-layer.md)

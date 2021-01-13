@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 180de56e3c158802460d2ff995041e8572d4dcd7
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: a0cd968c90a27d6f1ae79d08fb2bd027169233db
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97844960"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133788"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 の言語のサポート 
 
@@ -86,11 +86,9 @@ ms.locfileid: "97844960"
 
 #### <a name="key-phrase-extraction"></a>[キー フレーズ抽出](#tab/key-phrase-extraction)
 
-> [!NOTE]
-> 2020 年 7 月 1 日より前のキー フレーズ抽出のモデル バージョンには、64 文字の制限があります。 後のモデル バージョンには、この制限はありません。
-
 | Language              | 言語コード | v2 のサポート | v3 のサポート | 次の v3 モデル バージョン以降で使用可能 |       Notes        |
 |:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
+| デンマーク語                |     `da`      |     ✓      |      ✓     |                2019-10-01                 |                    |
 | オランダ語                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | 英語               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | フィンランド語               |     `fi`      |     ✓      |     ✓      |                2019-10-01                 |                    |

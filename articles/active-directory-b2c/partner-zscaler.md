@@ -1,7 +1,7 @@
 ---
-title: Azure Active Directory B2C と Zscaler を構成するためのチュートリアル
+title: チュートリアル - Azure Active Directory B2C と Zscaler を構成する
 titleSuffix: Azure AD B2C
-description: Azure AD B2C 認証を Zscaler と統合する方法について説明します
+description: Azure AD B2C 認証を Zscaler と統合する方法について説明します。
 services: active-directory-b2c
 author: gargi-sinha
 manager: martinco
@@ -11,156 +11,145 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: ff51c2a71dfcaec580733a92e265628ac816e229
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 254f8da74a187e88cfb973da7100fe5654c84bb6
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095845"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732448"
 ---
-# <a name="tutorial-to-configure-zscaler-private-access-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>セキュリティで保護されたハイブリッド アクセスのために Azure Active Directory B2C で Zscaler Private Access を構成するためのチュートリアル
+# <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C で Zscaler Private Access を構成する
 
-このチュートリアルでは、Azure AD B2C 認証を [Zscaler Private Access (ZPA)](https://www.zscaler.com/products/zscaler-private-access) と統合する方法について説明します。 ZPA は、仮想プライベート ネットワーク (VPN) のコスト、手間、またはセキュリティ上のリスクが生じることなく、非公開のアプリケーションおよび資産へのセキュリティで保護された、ポリシーベースのアクセスを実現します。 Zscaler のセキュリティで保護されたハイブリッド アクセス オファリングを Azure AD B2C と組み合わせて使用すると、コンシューマー向けアプリケーションの攻撃対象領域をなくすことができます。
+このチュートリアルでは、Azure Active Directory B2C (Azure AD B2C) 認証を [Zscaler Private Access (ZPA)](https://www.zscaler.com/products/zscaler-private-access) と統合する方法について説明します。 ZPA は、仮想プライベート ネットワーク (VPN) のコスト、手間、またはセキュリティ上のリスクが生じることなく、非公開のアプリケーションおよび資産へのセキュリティで保護された、ポリシーベースのアクセスを実現します。 Zscaler のセキュリティで保護されたハイブリッド アクセス オファリングを Azure AD B2C と組み合わせて使用すると、コンシューマー向けアプリケーションの攻撃対象領域をなくすことができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-作業を開始するには、以下が必要です。
+開始する前に、以下が必要になります。
 
-- Azure サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-
-- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。
-
-- [ZPA サブスクリプション](https://azuremarketplace.microsoft.com/marketplace/apps/aad.zscalerprivateaccess?tab=Overview)
+- Azure サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。  
+- お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。  
+- [ZPA サブスクリプション](https://azuremarketplace.microsoft.com/marketplace/apps/aad.zscalerprivateaccess?tab=Overview)。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 ZPA 統合には、次のコンポーネントが含まれています。
 
-- Azure AD B2C – ユーザーの資格情報の検証を受け持つ ID プロバイダー (IdP)。 また、新しいユーザーのサインアップも受け持ちます。
-
-- ZPA - [ゼロトラスト アクセス](https://www.microsoft.com/security/blog/2018/12/17/zero-trust-part-1-identity-and-access-management/#:~:text=Azure%20Active%20Directory%20%28Azure%20AD%29%20provides%20the%20strong%2C,to%20express%20their%20access%20requirements%20in%20simple%20terms.)を適用することによって Web アプリケーションのセキュリティ保護を受け持つサービス。
-
-- Web アプリケーション - ユーザーがアクセスしようとしているサービスをホストします。
+- **Azure AD B2C**:ユーザーの資格情報の検証を受け持つ ID プロバイダー (IdP)。 また、新しいユーザーのサインアップも受け持ちます。  
+- **ZPA**:[ゼロトラスト アクセス](https://www.microsoft.com/security/blog/2018/12/17/zero-trust-part-1-identity-and-access-management/#:~:text=Azure%20Active%20Directory%20%28Azure%20AD%29%20provides%20the%20strong%2C,to%20express%20their%20access%20requirements%20in%20simple%20terms.)を適用することによって Web アプリケーションのセキュリティ保護を受け持つサービス。  
+- **Web アプリケーション**: ユーザーがアクセスしようとしているサービスをホストします。
 
 次の図は、ZPA を Azure AD B2C と統合する方法を示しています。
 
-![Zscaler アーキテクチャ図を示す画像](media/partner-zscaler/zscaler-architecture-diagram.png)
+![Zscaler アーキテクチャの図。ZPA を Azure AD B2C と統合する方法を示しています。](media/partner-zscaler/zscaler-architecture-diagram.png)
 
-|手順 | 説明 |
-|:-----| :-----------|
-| 1. | ユーザーが、ZPA User Portal またはZPA Browser Access アプリケーションにアクセスします。
-| 2. | ZPA は、ユーザーが Web アプリケーションにアクセスすることを許可するかどうかを決定する前に、ユーザー コンテキスト情報を必要とします。 ユーザーを認証するために、ZPA は Azure AD B2C ログイン ページへの SAML リダイレクトを実行します。  
-| 3. | ユーザーが、Azure AB B2C ログイン ページにたどり着きます。 新しいユーザーである場合、ユーザーはサインアップして新しいアカウントを作成します。 既存のユーザーは、既存の資格情報を使用してサインインします。 Azure AD B2C により、ユーザーの ID が検証されます。
-| 4. | 認証が成功すると、Azure AD B2C によってユーザーは SAML アサーションと共に ZPA にリダイレクトされます。 ZPA で SAML アサーションが検証され、ユーザー コンテキストが設定されます。
-| 5. | ZPA で、ユーザーのアクセス ポリシーが評価されます。 ユーザーが Web アプリケーションへのアクセスを許可されている場合、接続は通過できます。
+このシーケンスについて次の表で説明します。
+
+|手順 | [説明] |
+| :-----:| :-----------|
+| 1 | ユーザーが、ZPA User Portal または ZPA Browser Access アプリケーションにアクセスします。
+| 2 | ZPA は、ユーザーが Web アプリケーションにアクセスすることを許可するかどうかを決定する前に、ユーザー コンテキスト情報を必要とします。 ユーザーを認証するために、ZPA は Azure AD B2C ログイン ページへの SAML リダイレクトを実行します。  
+| 3 | ユーザーが、Azure AB B2C ログイン ページにたどり着きます。 新しいユーザーがサインアップすると、アカウントが作成され、既存のユーザーは既存の資格情報でログインします。 Azure AD B2C により、ユーザーの ID が検証されます。
+| 4 | 認証が成功すると、Azure AD B2C によってユーザーは SAML アサーションと共に ZPA にリダイレクトされます。 ZPA で SAML アサーションが検証され、ユーザー コンテキストが設定されます。
+| 5 | ZPA で、ユーザーのアクセス ポリシーが評価されます。 ユーザーが Web アプリケーションへのアクセスを許可されている場合、接続は通過できます。
 
 ## <a name="onboard-to-zpa"></a>ZPA にオンボードする
 
 このチュートリアルでは、ZPA の動作セットアップが既に行われていることを前提としています。 ZPA の使用を開始する場合は、「[ZPA の詳細な構成ガイド](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)」を参照してください。
 
-## <a name="integrate-with-azure-ad-b2c"></a>Azure AD B2C との統合
+## <a name="integrate-zpa-with-azure-ad-b2c"></a>ZPA と Azure AD B2C の統合
 
-### <a name="part-1---configure-azure-ad-b2c-as-an-idp-on-zpa"></a>パート 1 - ZPA で IdP として Azure AD B2C を構成する
+### <a name="step-1-configure-azure-ad-b2c-as-an-idp-on-zpa"></a>手順 1:ZPA で IdP として Azure AD B2C を構成する
 
-[ZPA での ID プロバイダー (IdP)](https://help.zscaler.com/zpa/configuring-idp-single-sign) として Azure AD B2C を構成するには、次のようにします。
+[ZPA で IdP](https://help.zscaler.com/zpa/configuring-idp-single-sign) として Azure AD B2C を構成するには、次の操作を行います。
 
-1. [ZPA Admin Portal](https://admin.private.zscaler.com) にログインします
+1. [ZPA Admin Portal](https://admin.private.zscaler.com) にログインします。
 
-2. **[Administration]\(管理\)**  >  **[IdP Configuration]\(IdP 構成\)** に移動します
+1. **[Administration]\(管理\)**  >  **[IdP Configuration]\(IdP 構成\)** に移動します。
 
-3. **[Add IdP Configuration]\(IdP 構成の追加\)** を選択します
+1. **[IdP 構成の追加]** を選択します。
 
-4. **[1 IdP Information]\(1 IdP 情報\)** で、以下を入力します。
+   **[IdP 構成の追加]** ウィンドウが開きます。
 
-   a. **[名前]** : Azure AD B2C
+   ![[IdP 構成の追加] ウィンドウの [IdP 情報] タブのスクリーンショット。](media/partner-zscaler/add-idp-configuration.png)
 
-   b. **[Single Sign-On]\(シングル サインオン\)** :ユーザーの選択
+1. **[IdP 情報]** タブを選択し、次の操作を行います。
 
-   c. **[Domains]\(ドメイン\)** :この IdP に関連付ける認証ドメインを選択し、 **[Done]\(完了\)** を選択します
+   a. **[名前]** ボックスに、「**Azure AD B2C**」と入力します。  
+   b. **[シングル サインオン]** の **[ユーザー]** を選択します。  
+   c. **[ドメイン]** ドロップダウン リストで、この IdP に関連付ける認証ドメインを選択します。
 
-   ![IdP 情報を示す画像](media/partner-zscaler/add-idp-configuration.png)
+1. **[次へ]** を選択します。
 
-5. **[次へ]** を選択します
+1. **[SP メタデータ]** タブをクリックして、次の操作を行います。
 
-6. **[2 SP Metadata]\(2 SP メタデータ\)** で、以下を行います
+   a. **[サービス プロバイダー URL]** の値を、後で使用するためにコピーするかメモしておきます。  
+   b. **[サービス プロバイダー エンティティ ID]** の値を、後で使用するためにコピーするかメモしておきます。
 
-   a. サービス プロバイダー URL をコピーし、後で使用するためにメモしておきます。
+   ![[IdP 構成の追加] ウィンドウの [SP メタデータ] タブのスクリーンショット。](media/partner-zscaler/sp-metadata.png)
 
-   b. サービス プロバイダーのエンティティ ID をコピーし、後で使用するためにメモしておきます。
+1. **[一時停止]** を選択します。
 
-   ![SP メタデータ情報を示す画像](media/partner-zscaler/sp-metadata.png)
+Azure AD B2C を構成すると、残りの IdP の構成が再開されます。
 
-7. **[Pause]\(一時停止\)** を選択します
-
-IdP 構成の残りの部分は、Azure AD B2C の構成後に再開します。
-
-### <a name="part-2---configure-custom-policy-in-azure-ad-b2c"></a>パート 2 - Azure AD B2C でカスタム ポリシーを構成する
+### <a name="step-2-configure-custom-policies-in-azure-ad-b2c"></a>手順 2:Azure AD B2C のカスタム ポリシーを構成する
 
 >[!Note]
 >この手順は、カスタム ポリシーをまだ設定していない場合にのみ必要です。 1 つ以上のカスタム ポリシーが既にある場合は、この手順を省略できます。
 
-記事「[Azure Active Directory B2C でのカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)」に、Azure AD B2C テナントでカスタム ポリシーを構成する方法の手順が記載されています。
+Azure AD B2C テナントでカスタム ポリシーを構成するには、「[Azure Active Directory B2C でのカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)」を参照してください。
 
-### <a name="part-3---register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>パート 3 - ZPA を SAML アプリケーションとして Azure AD B2C に登録する
+### <a name="step-3-register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>手順 3:ZPA を SAML アプリケーションとして Azure AD B2C に登録する
 
-記事「[SAML アプリケーションを Azure AD B2C に登録する](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers)」に、Azure AD B2C で SAML アプリケーションを構成する手順が記載されています。 [手順 3.2](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#32-upload-and-test-your-policy-metadata) で、Azure AD B2C によって使用される IdP SAML メタデータ URL が得られます。 これは後で必要になります。
+Azure AD B2C で SAML アプリケーションを構成するには、「[SAML アプリケーションを Azure AD B2C に登録する](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers)」を参照してください。 
 
-[手順 4.2](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#42-update-the-app-manifest) に記載されている手順に従います。 手順 4.2 では、アプリ マニフェストを更新する必要があります。 次のようにプロパティを更新します。
+手順[「3.2 ポリシー メタデータをアップロードしてテストする」](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#32-upload-and-test-your-policy-metadata)では、Azure AD B2C によって使用される IdP SAML メタデータ URL をコピーまたはメモします。 この情報は後で必要になります。
 
-- **identifierUris**:**パート 1 の手順 6a** でメモしたサービス プロバイダーのエンティティ ID を使用します。
+手順[「4.2 アプリ マニフェストを更新する」](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#42-update-the-app-manifest)に記載されている手順に従います。 手順 4.2 では、次のようにアプリケーション マニフェストのプロパティを更新します。
 
-- **samlMetadataUrl**:ZPA が SAML メタデータ URL をホストしないため、このプロパティはスキップします。
-
-- **replyUrlsWithType**:**パート 1 の手順 6b** でメモしたサービス プロバイダー URL を使用します。
-
-- **logoutUrl**:ZPA ではログアウト URL がサポートされていないため、このプロパティはスキップします。
+- **identifierUris** の場合:前の「手順 1.6.b」でコピーまたはメモしたサービス プロバイダー エンティティ ID を使用します。  
+- **samlMetadataUrl** の場合:ZPA が SAML メタデータ URL をホストしないため、このプロパティはスキップします。  
+- **replyUrlsWithType** の場合:前の「手順 1.6.a」でコピーまたはメモしたサービス プロバイダー URL を使用します。  
+- **logoutUrl** の場合:ZPA ではログアウト URL がサポートされていないため、このプロパティはスキップします。
 
 残りの手順は、このチュートリアルには関係ありません。
 
-### <a name="part-4---extract-the-idp-saml-metadata-from-azure-ad-b2c"></a>パート 4 - Azure AD B2C から IdP SAML メタデータを抽出する
+### <a name="step-4-extract-the-idp-saml-metadata-from-azure-ad-b2c"></a>手順 4:Azure AD B2C から IdP SAML メタデータを抽出する
 
-前の手順から、次の形式で SAML メタデータ URL を取得する必要があります。
+次に、次の形式で SAML メタデータ URL を取得する必要があります。
 
 ```https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/Samlp/metadata```
 
-ここで `<tenant-name>` は Azure AD B2C テナントの名前、`<policy-name>` は最後の手順で作成したカスタム SAML ポリシーの名前です。
+`<tenant-name>` は Azure AD B2C テナントの名前、`<policy-name>` は前の手順で作成したカスタム SAML ポリシーの名前であることに注意してください。
 
-たとえば、https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata のように指定します。
+たとえば、URL は `https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata` になります。
 
-Web ブラウザーを開き、SAML メタデータ URL に移動します。 ページが読み込まれたら、ページの任意の場所を右クリックします。 **[Save Page As]\(ページに名前を付けて保存\)** を選択し、お使いのコンピューターにファイルを保存します。これは次のパートで使用します。
+Web ブラウザーを開き、SAML メタデータ URL に移動します。 ページ上の任意の場所を右クリックし、 **[名前を付けて保存]** を選択して、次の手順で使用するためにコンピューターにファイルを保存します。
 
-### <a name="part-5---complete-idp-configuration-on-zpa"></a>パート 5 - ZPA で IdP 構成を完了する
+### <a name="step-5-complete-the-idp-configuration-on-zpa"></a>手順 5:ZPA で IdP 構成を完了する
 
-[ZPA Admin Portal での IdP の構成](https://help.zscaler.com/zpa/configuring-idp-single-sign)を完了します。パート 1 で一部の構成を行いました。
+[ZPA Admin Portal での IdP の構成](https://help.zscaler.com/zpa/configuring-idp-single-sign)を完了します。これは前に「手順 1: ZPA で IdP として Azure AD B2C を構成する」で一部を構成済みです。
 
-1. [ZPA Admin Portal](https://admin.private.zscaler.com) にログインします
+1. [ZPA Admin Portal](https://admin.private.zscaler.com) で、 **[管理]**  >  **[IdP 構成]** に移動します。
 
-2. **[Administration]\(管理\)**  >  **[IdP Configuration]\(IdP 構成\)** に移動します。
+1. 「手順 1」で構成した IdP を選択し、 **[再開]** を選択します。
 
-3. パート 1 で構成した IdP を選択し、 **[Resume]\(再開\)** を選択します。
+1. **[IdP 構成の追加]** ウィンドウで、 **[IdP の作成]** タブを選択し、次の操作を行います。
 
-4. **[3 Create IdP]\(3 IdP の作成\)** で、以下を行います
-
-   a. **[IdP Metadata File]\(IdP メタデータ ファイル\)**  >  **[Select File]\(ファイルの選択\)** にアクセスし、パート 4 で保存したメタデータ ファイルをアップロードします。
-
-   b. IdP 構成の **[Status]\(状態\)** が **[Enabled]\(有効\)** になっていることを確認します。
-
+   a. **[IdP メタデータ ファイル]** の下で、前に「手順 4: Azure AD B2C から IdP SAML メタデータを抽出する」で保存したメタデータ ファイルをアップロードします。  
+   b. IdP 構成の **[状態]** が **[有効]** になっていることを確認します。  
    c. **[保存]** を選択します。
 
-      ![IdP の作成の情報を示す画像](media/partner-zscaler/create-idp.png)
+   ![[IdP 構成の追加] ウィンドウの [IdP の作成] タブのスクリーンショット。](media/partner-zscaler/create-idp.png)
 
 ## <a name="test-the-solution"></a>ソリューションをテストする
 
-ZPA User Portal または Browser Access アプリケーションにアクセスし、サインアップまたはサインインのプロセスをテストします。 これで SAML 認証が成功するはずです。
+ZPA User Portal または Browser Access アプリケーションにアクセスし、サインアップまたはサインインのプロセスをテストします。 このテストで SAML 認証が成功するはずです。
 
 ## <a name="next-steps"></a>次のステップ
 
-追加情報については、次の記事を参照してください。
+詳細については、次の記事を参照してください。
 
-- [Azure Active Directory B2C でのカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)
-
+- [Azure AD B2C のカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)
 - [SAML アプリケーションを Azure AD B2C に登録する](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers)
-
 - [ZPA の詳細な構成ガイド](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)
-
 - [シングル サインオンのための IdP の構成](https://help.zscaler.com/zpa/configuring-idp-single-sign)

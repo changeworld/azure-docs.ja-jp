@@ -8,16 +8,16 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 3e5eb49a91e2c8bbd73f5dd37ed90f10b406fa3d
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 7b2039f8b1aebef65112067e4fd9184777192015
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496045"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051583"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Digital Twins を使用して Azure Maps の屋内マップを更新する
 
-この記事では、Azure Digital Twins のデータを使用し、 [Azure Maps](../azure-maps/about-azure-maps.md) を使って " *屋内マップ* " に表示される情報を更新するために必要な手順について説明します。 Azure Digital Twins によって、IoT デバイスの関係のグラフが格納され、テレメトリがさまざまなエンドポイントにルーティングされます。これにより、マップ上の情報オーバーレイを更新するための完全なサービスとなります。
+この記事では、Azure Digital Twins のデータを使用し、[Azure Maps](../azure-maps/about-azure-maps.md) を使って "*屋内マップ*" に表示される情報を更新するために必要な手順について説明します。 Azure Digital Twins によって、IoT デバイスの関係のグラフが格納され、テレメトリがさまざまなエンドポイントにルーティングされます。これにより、マップ上の情報オーバーレイを更新するための完全なサービスとなります。
 
 この攻略ガイドでは、以下について説明します。
 
@@ -29,9 +29,9 @@ ms.locfileid: "92496045"
 
 * Azure Digital Twins の [*チュートリアル: エンド ツー エンドのソリューションの接続*](./tutorial-end-to-end.md)に関するページを参照してください。
     * 追加のエンドポイントとルートを使用して、このツインを拡張します。 また、このチュートリアルでは、関数アプリに別の関数を追加します。 
-* Azure Maps の [*チュートリアル: Azure Maps Creator を使用する屋内マップの作成*](../azure-maps/tutorial-creator-indoor-maps.md)方法に従って、" *地物状態セット* " を含む Azure Maps の屋内マップを作成します。
+* Azure Maps の [*チュートリアル: Azure Maps Creator を使用する屋内マップの作成*](../azure-maps/tutorial-creator-indoor-maps.md)方法に従って、"*地物状態セット*" を含む Azure Maps の屋内マップを作成します。
     * [地物状態セット](../azure-maps/creator-indoor-maps.md#feature-statesets)は、部屋や機器といったデータセットの地物に割り当てられた動的なプロパティ (状態) のコレクションです。 上記の Azure Maps チュートリアルでは、地物状態セットによって、マップに表示される部屋の状態が格納されます。
-    * 地物の " *状態セット ID* " と Azure Maps の " *サブスクリプション ID* " が必要になります。
+    * 地物の "*状態セット ID*" と Azure Maps の "*サブスクリプション ID*" が必要になります。
 
 ### <a name="topology"></a>トポロジ
 
@@ -64,7 +64,7 @@ ms.locfileid: "92496045"
     >[!NOTE]
     >Cloud Shell には現在、`az dt route`、`az dt model`、`az dt twin` の各コマンド グループに影響する **既知の問題** があります。
     >
-    >解決するには、コマンドを実行する前に Cloud Shell で `az login` を実行するか、Cloud Shell ではなく[ローカル CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) を使用します。 この件の詳細については、「 [*トラブルシューティング: Azure Digital Twins の既知の問題*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)」を参照してください。
+    >解決するには、コマンドを実行する前に Cloud Shell で `az login` を実行するか、Cloud Shell ではなく[ローカル CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) を使用します。 この件の詳細については、「[*トラブルシューティング: Azure Digital Twins の既知の問題*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)」を参照してください。
 
     ```azurecli-interactive
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -72,66 +72,13 @@ ms.locfileid: "92496045"
 
 ## <a name="create-an-azure-function-to-update-maps"></a>マップを更新する Azure 関数を作成する
 
-エンドツーエンドのチュートリアルで、Event Grid によってトリガーされる関数を関数アプリ内に作成します ( [*チュートリアル: エンド ツー エンドのソリューションの接続*](./tutorial-end-to-end.md)に関するページを参照)。 この関数によって、これらの通知がアンパックされ、1 つの部屋の温度を更新するために Azure Maps の地物状態セットに更新が送信されます。 
+エンドツーエンドのチュートリアルで、Event Grid によってトリガーされる関数を関数アプリ内に作成します ([*チュートリアル: エンド ツー エンドのソリューションの接続*](./tutorial-end-to-end.md)に関するページを参照)。 この関数によって、これらの通知がアンパックされ、1 つの部屋の温度を更新するために Azure Maps の地物状態セットに更新が送信されます。 
 
 参照情報については、次のドキュメントを参照してください: [*Azure Functions の Azure Event Grid トリガー*](../azure-functions/functions-bindings-event-grid-trigger.md)。
 
 関数コードを次のコードに置き換えます。 これにより、空間のツインに対する更新のみが除外され、更新された温度が読み取られ、その情報が Azure Maps に送信されるようになります。
 
-```C#
-using Microsoft.Azure.EventGrid.Models;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Threading.Tasks;
-using System.Net.Http;
-
-namespace SampleFunctionsApp
-{
-    public static class ProcessDTUpdatetoMaps
-    {   //Read maps credentials from application settings on function startup
-        private static string statesetID = Environment.GetEnvironmentVariable("statesetID");
-        private static string subscriptionKey = Environment.GetEnvironmentVariable("subscription-key");
-        private static HttpClient httpClient = new HttpClient();
-
-        [FunctionName("ProcessDTUpdatetoMaps")]
-        public static async Task Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
-        {
-            JObject message = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-            log.LogInformation("Reading event from twinID:" + eventGridEvent.Subject.ToString() + ": " +
-                eventGridEvent.EventType.ToString() + ": " + message["data"]);
-
-            //Parse updates to "space" twins
-            if (message["data"]["modelId"].ToString() == "dtmi:contosocom:DigitalTwins:Space;1")
-            {   //Set the ID of the room to be updated in your map. 
-                //Replace this line with your logic for retrieving featureID. 
-                string featureID = "UNIT103";
-
-                //Iterate through the properties that have changed
-                foreach (var operation in message["data"]["patch"])
-                {
-                    if (operation["op"].ToString() == "replace" && operation["path"].ToString() == "/Temperature")
-                    {   //Update the maps feature stateset
-                        var postcontent = new JObject(new JProperty("States", new JArray(
-                            new JObject(new JProperty("keyName", "temperature"),
-                                 new JProperty("value", operation["value"].ToString()),
-                                 new JProperty("eventTimestamp", DateTime.Now.ToString("s"))))));
-
-                        var response = await httpClient.PostAsync(
-                            $"https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetID}&featureID={featureID}&subscription-key={subscriptionKey}",
-                            new StringContent(postcontent.ToString()));
-
-                        log.LogInformation(await response.Content.ReadAsStringAsync());
-                    }
-                }
-            }
-        }
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/updateMaps.cs":::
 
 関数アプリで 2 つの環境変数を設定する必要があります。 1 つは [Azure Maps のプライマリ サブスクリプション キー](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account)で、もう 1 つは [Azure Maps の状態セット ID](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset) です。
 
@@ -144,15 +91,15 @@ az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-st
 
 ライブ更新温度を表示するには、以下の手順に従います。
 
-1. **DeviceSimulator** プロジェクトを実行し、シミュレートされた IoT データの送信を Azure Digital Twins から開始します ( [*チュートリアル:エンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)に関するページを参照)。 この手順は、「 [*シミュレーションを構成して実行する*](././tutorial-end-to-end.md#configure-and-run-the-simulation)」セクションにあります。
+1. **DeviceSimulator** プロジェクトを実行し、シミュレートされた IoT データの送信を Azure Digital Twins から開始します ([*チュートリアル:エンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)に関するページを参照)。 この手順は、「[*シミュレーションを構成して実行する*](././tutorial-end-to-end.md#configure-and-run-the-simulation)」セクションにあります。
 2. [**Azure Maps Indoor** モジュール](../azure-maps/how-to-use-indoor-module.md)を使用して、Azure Maps Creator で作成された屋内マップをレンダリングします。
-    1. 「 [*例: Indoor Maps モジュールを使用する*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module)」 (Indoor Maps の「 [*チュートリアル: Azure Maps の Indoor Maps モジュールを使用する*](../azure-maps/how-to-use-indoor-module.md)」に含まれるセクション) の HTML をローカル ファイルにコピーします。
+    1. 「[*例: Indoor Maps モジュールを使用する*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module)」 (Indoor Maps の「[*チュートリアル: Azure Maps の Indoor Maps モジュールを使用する*](../azure-maps/how-to-use-indoor-module.md)」に含まれるセクション) の HTML をローカル ファイルにコピーします。
     1. ローカル HTML ファイルの *tilesetId* と *statesetID* を、実際の値に置き換えます。
     1. ブラウザーでそのファイルを開きます。
 
 どちらのサンプルでも、互換性のある範囲で温度が送信されるので、マップには約 30 秒ごとに 121 号室の更新の色が表示されるはずです。
 
-:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="屋内マップの統合部分が強調表示されている、エンドツーエンドのシナリオにおける Azure サービスのビュー":::
+:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="121 号室がオレンジ色で表示されているオフィス マップ":::
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>Azure Digital Twins にマップ情報を格納する
 

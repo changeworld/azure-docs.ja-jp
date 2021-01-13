@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: df7462cf047dd113c34669d9a5f68f2589cc50f4
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 47883c742d77a88adb662e8dded0723f0e105385
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672995"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044188"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital Twins ツイン グラフに対してクエリを実行する
 
@@ -28,43 +28,28 @@ ms.locfileid: "97672995"
 
 次に示すのは、インスタンス内のすべてのデジタル ツインの一覧を返す基本的なクエリです。
 
-```sql
-SELECT *
-FROM DIGITALTWINS
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="GetAllTwins":::
 
 ## <a name="query-by-property"></a>プロパティで照会
 
 **プロパティ** (ID とメタデータを含む) を指定してデジタル ツインを取得します。
 
-```sql
-SELECT  *
-FROM DigitalTwins T  
-WHERE T.firmwareVersion = '1.1'
-AND T.$dtId in ['123', '456']
-AND T.Temperature = 70
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty1":::
 
 > [!TIP]
 > デジタル ツインの ID のクエリ実行には、メタデータ フィールド `$dtId` を使用します。
 
 **特定のプロパティが定義されているかどうか** に基づいて Twins を取得することもできます。 次は、*Location* プロパティが定義されているツインを取得するクエリです。
 
-```sql
-SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(Location)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty2":::
 
 「[デジタル ツインにタグを追加する](how-to-use-tags.md)」で説明されているように、"*タグ*" プロパティを使用してツインを取得する場合に役立ちます。 次は、*red* のタグが付いているツインをすべて取得するクエリです。
 
-```sql
-SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(tags.red)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
 **プロパティの型** に基づいてツインを取得することもできます。 次は、*Temperature* プロパティが数字であるツインを取得するクエリです。
 
-```sql
-SELECT * FROM DIGITALTWINS T WHERE IS_NUMBER(T.Temperature)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty3":::
 
 ## <a name="query-by-model"></a>モデルでクエリを実行する
 
@@ -82,30 +67,22 @@ SELECT * FROM DIGITALTWINS T WHERE IS_NUMBER(T.Temperature)
 `IS_OF_MODEL` の最も簡単な使用法では、`IS_OF_MODEL(twinTypeName)` のように `twinTypeName` パラメーターのみを受け取ります。
 このパラメーターで値を渡すクエリの例を次に示します。
 
-```sql
-SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:example:thing;1')
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByModel1":::
 
 (`JOIN` が使用されている場合のように) 複数のツイン コレクションがある場合に検索対象を指定するには、`IS_OF_MODEL(twinCollection, twinTypeName)` のように `twinCollection` パラメーターを追加します。
 このパラメーターに値を追加するクエリの例を次に示します。
 
-```sql
-SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1')
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByModel2":::
 
 完全一致を行うには、`IS_OF_MODEL(twinTypeName, exact)` のように `exact` パラメーターを追加します。
 このパラメーターに値を追加するクエリの例を次に示します。
 
-```sql
-SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:example:thing;1', exact)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByModel3":::
 
 また、`IS_OF_MODEL(twinCollection, twinTypeName, exact)` のように 3 つの引数すべてを渡すこともできます。
 3 つのパラメーターすべての値を指定するクエリの例を次に示します。
 
-```sql
-SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1', exact)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByModel4":::
 
 ## <a name="query-by-relationship"></a>リレーションシップによるクエリ
 
@@ -127,12 +104,7 @@ Azure Digital Twins の[モデル](concepts-models.md)機能では、ツイン�
 
 リレーションシップベースのクエリの例を次に示します。 このコード スニペットを実行すると、*ID* プロパティが 'ABC' であるすべてのデジタル ツインと、*contains* リレーションシップを介してこれらのデジタル ツインに関連するすべてのデジタル ツインが選択されます。
 
-```sql
-SELECT T, CT
-FROM DIGITALTWINS T
-JOIN CT RELATED T.contains
-WHERE T.$dtId = 'ABC'
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationship1":::
 
 > [!NOTE]
 > 開発者は、この `JOIN` を `WHERE` 句のキー値と関連付ける (または `JOIN` 定義を使用してインラインでキー値を指定する) 必要はありません。 リレーションシップのプロパティ自体でターゲット エンティティが識別されるため、この相関関係はシステムによって自動的に計算されます。
@@ -144,13 +116,7 @@ Azure Digital Twins ストア言語を使用すると、`JOIN` 句内のリレ�
 
 例として、*reportedCondition* プロパティがある *servicedBy* リレーションシップを考えてみます。 次のクエリでは、プロパティを参照するために、このリレーションシップには 'R' という別名が与えられています。
 
-```sql
-SELECT T, SBT, R
-FROM DIGITALTWINS T
-JOIN SBT RELATED T.servicedBy R
-WHERE T.$dtId = 'ABC'
-AND R.reportedCondition = 'clean'
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationship2":::
 
 上記の例では、*reportedCondition* が *servicedBy* リレーションシップ自体のプロパティであることに注意してください (*servicedBy* リレーションシップを持つ何らかのデジタル ツインではありません)。
 
@@ -160,58 +126,27 @@ AND R.reportedCondition = 'clean'
 
 次に、複数結合のクエリの例を示します。このクエリでは、ルーム 1 と 2 のライトパネルに含まれるすべての電球が取得されます。
 
-```sql
-SELECT LightBulb
-FROM DIGITALTWINS Room
-JOIN LightPanel RELATED Room.contains
-JOIN LightBulb RELATED LightPanel.contains
-WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1')
-AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')
-AND Room.$dtId IN ['room1', 'room2']
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationship3":::
 
 ## <a name="count-items"></a>項目をカウントする
 
 `Select COUNT` 句を使用して、結果セット内の項目の数をカウントできます。
 
-```sql
-SELECT COUNT()
-FROM DIGITALTWINS
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="SelectCount1":::
 
 `WHERE` 句を追加することで、特定の条件に一致する項目の数をカウントします。 ツイン モデルの種類に基づいて適用されたフィルターを使用してカウントする例をいくつか次に示します (この構文の詳細については、後述する [ *「モデルでクエリを実行する」*](#query-by-model)を参照してください)。
 
-```sql
-SELECT COUNT()
-FROM DIGITALTWINS
-WHERE IS_OF_MODEL('dtmi:sample:Room;1')
-
-SELECT COUNT()
-FROM DIGITALTWINS c
-WHERE IS_OF_MODEL('dtmi:sample:Room;1') AND c.Capacity > 20
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="SelectCount2":::
 
 また、`COUNT` を `JOIN` 句と共に使用することもできます。 次に、ルーム 1 と 2 のライト パネルに含まれるすべての電球をカウントするクエリを示します。
 
-```sql
-SELECT COUNT()  
-FROM DIGITALTWINS Room  
-JOIN LightPanel RELATED Room.contains  
-JOIN LightBulb RELATED LightPanel.contains  
-WHERE IS_OF_MODEL(LightPanel, 'dtmi:contoso:com:lightpanel;1')  
-AND IS_OF_MODEL(LightBulb, 'dtmi:contoso:com:lightbulb ;1')  
-AND Room.$dtId IN ['room1', 'room2']
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="SelectCount3":::
 
 ## <a name="filter-results-select-top-items"></a>結果のフィルター処理: 上位項目を選択する
 
 `Select TOP` 句を使用して、1 つのクエリで複数の "上位" 項目を選択できます。
 
-```sql
-SELECT TOP (5)
-FROM DIGITALTWINS
-WHERE ...
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="SelectTop":::
 
 ## <a name="filter-results-specify-return-set-with-projections"></a>結果のフィルター処理: プロジェクションを使用して戻り値のセットを指定する
 
@@ -222,54 +157,25 @@ WHERE ...
 
 プロジェクションを使用してツインとリレーションシップを返すクエリの例を次に示します。 次のクエリでは、ID が "*ABC*" の "*Factory*" が "*Factory.customer*" のリレーションシップを介して "*Consumer*" と関連付けられており、そのリレーションシップが "*Edge*" としてプロジェクションされるシナリオから、"*Consumer*"、"*Factory*"、"*Edge*" がプロジェクションされています。
 
-```sql
-SELECT Consumer, Factory, Edge
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections1":::
 
 また、プロジェクションを使用してツインのプロパティを返すこともできます。 以下のクエリでは、"*Factory.customer*" のリレーションシップを介して、ID が "*ABC*" の "*Factory*" に関連付けられている "*Consumers*" の "*Name*" プロパティがプロジェクションされています。
 
-```sql
-SELECT Consumer.name
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Consumer.name)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections2":::
 
 また、プロジェクションを使用してリレーションシップのプロパティを返すこともできます。 前述の例と同様に、以下のクエリでは、"*Factory.customer*" のリレーションシップを介して、ID が "*ABC*" の "*Factory*" に関連付けられている "*Consumers*" の "*Name*" プロパティがプロジェクションされていますが、今回は、そのリレーションシップの 2 つのプロパティである *prop1* および *prop2* も返されます。 これは、リレーションシップに "*Edge*" という名前を付け、そのプロパティを収集することで行います。  
 
-```sql
-SELECT Consumer.name, Edge.prop1, Edge.prop2, Factory.area
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections3":::
 
 また、別名を使用して、プロジェクションによるクエリを簡略化することもできます。
 
 次のクエリを実行すると、前述の例と同じ操作が行われますが、プロパティ名には別名の `consumerName`、`first`、`second`、および `factoryArea` が使用されています。
 
-```sql
-SELECT Consumer.name AS consumerName, Edge.prop1 AS first, Edge.prop2 AS second, Factory.area AS factoryArea
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name) AND IS_PRIMITIVE(Edge.prop1) AND IS_PRIMITIVE(Edge.prop2)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections4":::
 
 これは、上記と同じセットに対してクエリを実行する類似のクエリですが、"*Consumer.name*" プロパティのみが `consumerName` としてプロジェクションされ、完全な "*Factory*" はツインとしてプロジェクションされます。
 
-```sql
-SELECT Consumer.name AS consumerName, Factory
-FROM DIGITALTWINS Factory
-JOIN Consumer RELATED Factory.customer Edge
-WHERE Factory.$dtId = 'ABC'
-AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name)
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="Projections5":::
 
 ## <a name="build-efficient-queries-with-the-in-operator"></a>IN 演算子を使用して効率的なクエリを作成する
 
@@ -279,12 +185,7 @@ AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name)
 
 1. `contains` のリレーションシップに基づいて、建物内のフロアを見つけます。
 
-    ```sql
-    SELECT Floor
-    FROM DIGITALTWINS Building
-    JOIN Floor RELATED Building.contains
-    WHERE Building.$dtId = @buildingId
-    ```
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="INOperatorWithout":::
 
 2. 部屋を見つけるには、フロアを 1 つずつ検討し、`JOIN` クエリを実行してそれぞれの部屋を見つけるのではなく、建物内のフロアのコレクション (以下のクエリでは *Floor* という名前) を使用してクエリを実行することができます。
 
@@ -296,26 +197,18 @@ AND IS_PRIMITIVE(Factory.area) AND IS_PRIMITIVE(Consumer.name)
     
     クエリ:
     
-    ```sql
-    
-    SELECT Room
-    FROM DIGITALTWINS Floor
-    JOIN Room RELATED Floor.contains
-    WHERE Floor.$dtId IN ['floor1','floor2', ..'floorn']
-    AND Room. Temperature > 72
-    AND IS_OF_MODEL(Room, 'dtmi:com:contoso:Room;1')
-    
-    ```
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="INOperatorWith":::
 
 ## <a name="other-compound-query-examples"></a>その他の複合クエリの例
 
 結合演算子を使用して上記のクエリ タイプを **組み合わせ**、1 つのクエリに含める詳細を増やすことができます。 次に、複数のツイン記述子タイプに対して一度にクエリを実行する複合クエリの追加例をいくつか挙げます。
 
-| 説明 | クエリ |
-| --- | --- |
-| *Room 123* に与えられているデバイスの中から、Operator の役割を担う MxChip デバイスが返されます | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contoso:com:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
-| ID が *id1* の別のツインとの間に *Contains* という名前のリレーションシップがあるツインを取得します | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
-| *floor11* によって包含されるこの部屋モデルのすべての部屋を取得します | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contoso:com:DigitalTwins:Room;1')` |
+* *Room 123* に与えられているデバイスの中から、Operator の役割を担う MxChip デバイスが返されます
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="OtherExamples1":::
+* ID が *id1* の別のツインとの間に *Contains* という名前のリレーションシップがあるツインを取得します
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="OtherExamples2":::
+* *floor11* によって包含されるこの部屋モデルのすべての部屋を取得します
+    :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="OtherExamples3":::
 
 ## <a name="run-queries-with-the-api"></a>API を使用してクエリを実行する
 
@@ -325,42 +218,13 @@ API を直接呼び出すか、Azure Digital Twins で使用可能な [SDK](how-
 
 次のコード スニペットは、クライアント アプリからの [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 呼び出しを示しています。
 
-```csharp
-    string adtInstanceEndpoint = "https://<your-instance-hostname>";
-
-    var credential = new DefaultAzureCredential();
-    DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceEndpoint), credential);
-
-    // Run a query for all twins   
-    string query = "SELECT * FROM DIGITALTWINS";
-    AsyncPageable<BasicDigitalTwin> result = client.QueryAsync<BasicDigitalTwin>(query);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="RunQuery":::
 
 この呼び出しからは、[BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) オブジェクトの形式でクエリ結果が返されます。
 
 クエリ呼び出しはページングをサポートしています。 エラー処理とページングを含むクエリ結果の種類として `BasicDigitalTwin` を使用した完全な例を以下に示します。
 
-```csharp
-try
-{
-    await foreach(BasicDigitalTwin twin in result)
-        {
-            // You can include your own logic to print the result
-            // The logic below prints the twin's ID and contents
-            Console.WriteLine($"Twin ID: {twin.Id} \nTwin data");
-            IDictionary<string, object> contents = twin.Contents;
-            foreach (KeyValuePair<string, object> kvp in contents)
-            {
-                Console.WriteLine($"{kvp.Key}  {kvp.Value}");
-            }
-        }
-}
-catch (RequestFailedException e)
-{
-    Console.WriteLine($"Error {e.Status}: {e.Message}");
-    throw;
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="FullQuerySample":::
 
 ## <a name="next-steps"></a>次のステップ
 

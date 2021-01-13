@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ca56c285baff9982ff465b0d4115d15eadedb8c9
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: a8b2fdf99b33df3322748b7e073cc4ab18957c84
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534757"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045242"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Twins のモデルを管理する
 
@@ -36,35 +36,7 @@ Azure Digital Twins のモデルは DTDL で記述され、 *.json* ファイル
 
 ソリューションに向けた最初の手順は、病院の状況を表すモデルを作成することです。 このシナリオの病室は、次のように記述できます。
 
-```json
-{
-  "@id": "dtmi:com:contoso:PatientRoom;1",
-  "@type": "Interface",
-  "@context": "dtmi:dtdl:context;2",
-  "displayName": "Patient Room",
-  "contents": [
-    {
-      "@type": "Property",
-      "name": "visitorCount",
-      "schema": "double"
-    },
-    {
-      "@type": "Property",
-      "name": "handWashCount",
-      "schema": "double"
-    },
-    {
-      "@type": "Property",
-      "name": "handWashPercentage",
-      "schema": "double"
-    },
-    {
-      "@type": "Relationship",
-      "name": "hasDevices"
-    }
-  ]
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/PatientRoom.json":::
 
 > [!NOTE]
 > これは、クライアントプロジェクトの一部としてアップロードされる、モデルが定義され保存されている .json ファイルのサンプル本文です。 一方、REST API 呼び出しは、上記のようなモデル定義の配列を取得します (これは .NET SDK の `IEnumerable<string>` にマップされています)。 そのため、REST API でこのモデルを直接使用するには、ブラケットで囲みます。
@@ -86,48 +58,16 @@ Azure Digital Twins のモデルは DTDL で記述され、 *.json* ファイル
 
 モデルをアップロードする準備が整ったら、次のコード スニペットを使用できます。
 
-```csharp
-// 'client' is an instance of DigitalTwinsClient
-// Read model file into string (not part of SDK)
-StreamReader r = new StreamReader("MyModelFile.json");
-string dtdl = r.ReadToEnd(); r.Close();
-string[] dtdls = new string[] { dtdl };
-client.CreateModels(dtdls);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModel":::
 
 `CreateModels` メソッドが 1 つのトランザクションで複数のファイルを受け入れることを確認します。 次に例を示します。
 
-```csharp
-var dtdlFiles = Directory.EnumerateFiles(sourceDirectory, "*.json");
-
-List<string> dtdlStrings = new List<string>();
-foreach (string fileName in dtdlFiles)
-{
-    // Read model file into string (not part of SDK)
-    StreamReader r = new StreamReader(fileName);
-    string dtdl = r.ReadToEnd(); r.Close();
-    dtdlStrings.Add(dtdl);
-}
-client.CreateModels(dtdlStrings);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModels_multi":::
 
 モデル ファイルには、1 つ以上のモデルを含めることができます。 この場合、モデルを JSON 配列に配置する必要があります。 次に例を示します。
 
-```json
-[
-  {
-    "@id": "dtmi:com:contoso:Planet",
-    "@type": "Interface",
-    //...
-  },
-  {
-    "@id": "dtmi:com:contoso:Moon",
-    "@type": "Interface",
-    //...
-  }
-]
-```
- 
+:::code language="json" source="~/digital-twins-docs-samples/models/Planet-Moon.json":::
+
 アップロード時に、サービスによってモデル ファイルが検証されます。
 
 ## <a name="retrieve-models"></a>モデルの取得
@@ -141,18 +81,7 @@ Azure Digital Twins インスタンスに格納されているモデルを一覧
 
 呼び出し例を次に示します。
 
-```csharp
-// 'client' is a valid DigitalTwinsClient object
-
-// Get a single model, metadata and data
-DigitalTwinsModelData md1 = client.GetModel(id);
-
-// Get a list of the metadata of all available models
-Pageable<DigitalTwinsModelData> pmd2 = client.GetModels();
-
-// Get models and metadata for a model ID, including all dependencies (models that it inherits from, components it references)
-Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { IncludeModelDefinition = true });
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="GetModels":::
 
 モデルを取得するための API 呼び出しはすべて `DigitalTwinsModelData` オブジェクトを返します。 `DigitalTwinsModelData` には、名前、DTMI、モデルの作成日など、Azure Digital Twins インスタンスに格納されているモデルに関するメタデータが含まれます。 `DigitalTwinsModelData` オブジェクトには、必要に応じてモデル自体を含めることもできます。 パラメーターによっては、取得呼び出しを使用して、メタデータのみ (これは、使用可能なツールの UI の一覧やモデル全体を表示するシナリオで役に立ちます)、またはモデル全体を取得できます。
 
@@ -208,12 +137,7 @@ Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { I
 
 モデルの使用を停止するコードを次に示します。
 
-```csharp
-// 'client' is a valid DigitalTwinsClient  
-client.DecommissionModel(dtmiOfPlanetInterface);
-// Write some code that deletes or transitions digital twins
-//...
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="DecommissionModel":::
 
 モデルの使用停止状態は、モデル取得 API によって返された `ModelData` レコードに含まれます。
 
@@ -244,10 +168,8 @@ client.DecommissionModel(dtmiOfPlanetInterface);
 6. モデルを削除します 
 
 モデルを削除するには、次の呼び出しを使用します。
-```csharp
-// 'client' is a valid DigitalTwinsClient
-await client.DeleteModelAsync(IDToDelete);
-```
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="DeleteModel":::
 
 #### <a name="after-deletion-twins-without-models"></a>削除後: モデルなしのツイン
 

@@ -32,7 +32,7 @@
       href: 'https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay'
 - name: 概念
   items:
-    - name: セキュリティ
+    - name: Security
       items:
         - name: 認証と権限承認
           href: relay-authentication-and-authorization.md
@@ -67,7 +67,7 @@
       items:
         - name: IP ファイアウォールの構成 (プレビュー)
           href: ip-firewall-virtual-networks.md
-        - name: プライベート エンドポイントの構成 (プレビュー)
+        - name: プライベート エンドポイントの構成
           href: private-link-service.md
     - name: 管理および監視
       items:

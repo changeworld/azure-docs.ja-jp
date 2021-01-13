@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: ffbf3fa3e2d404b7bc5888ef01707cbd816600b3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ab056e0685264b03d35ee6b95afad7c6362f9db6
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182854"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695782"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure Automanage for virtual machines
 
@@ -52,7 +52,7 @@ Azure Automanage に仮想マシンをオンボードすると、各ベスト �
 > [!NOTE]
 > 別のサブスクリプションのワークスペースに接続されている VM で Automanage を使用する場合は、サブスクリプションごとに上記に記載されているアクセス許可を持っている必要があります。
 
-また、Automanage では次のリージョンにある Windows VM のみがサポートされることにも注意してください: 西ヨーロッパ、米国東部、米国西部 2、カナダ中部、米国中西部。
+また、Automanage では次のリージョンにある Windows VM のみがサポートされることにも注意してください: 西ヨーロッパ、米国東部、米国西部 2、カナダ中部、米国中西部、東日本。
 
 ## <a name="participating-services"></a>対象となるサービス
 

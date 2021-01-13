@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: f221237bee441ec78d726dabf476d1085a27071d
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 0a2439f0ed18cf93691a1d0389e049b1b7993d93
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095306"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732064"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics でのカスタマー マネージド ストレージ アカウントの使用
 
@@ -32,11 +32,11 @@ Azure Diagnostics 拡張機能エージェント (Windows エージェントの�
 * IIS ログ
 
 ## <a name="using-private-links"></a>プライベート リンクの使用
-Azure Monitor リソースへの接続にプライベート リンクを使用する場合、一部のユース ケースでは、カスタマー マネージド ストレージ アカウントが必要になります。 そのようなケースの 1 つは、カスタム ログまたは IIS ログのインジェストです。 これらのデータの種類は、最初に BLOB として中間 Azure ストレージ アカウントにアップロードされ、その後でのみワークスペースに取り込まれます。 同様に、一部の Azure Monitor ソリューションでは、ストレージ アカウントを使用して、Azure Security Center ソリューションで使用される Watson ダンプ ファイルなどの大きなファイルが格納される場合があります。 
+Azure Monitor リソースへの接続にプライベート リンクを使用する場合、一部のユース ケースでは、カスタマー マネージド ストレージ アカウントが必要になります。 そのようなケースの 1 つは、カスタム ログまたは IIS ログのインジェストです。 これらのデータの種類は、最初に BLOB として中間 Azure ストレージ アカウントにアップロードされ、その後でのみワークスペースに取り込まれます。 同様に、一部の Azure Monitor ソリューションでは、ストレージ アカウントを使用して、ファイルのアップロードが必要な可能性のある Azure Security Center (ASC) などの大きなファイルが格納される場合があります。 
 
 ##### <a name="private-link-scenarios-that-require-a-customer-managed-storage"></a>カスタマー マネージド ストレージを必要とするプライベート リンクのシナリオ
 * カスタム ログと IIS ログのインジェスト
-* ASC ソリューションで Watson ダンプ ファイルを収集できるようにする
+* ASC ソリューションによるファイルのアップロードを許可する
 
 ### <a name="how-to-use-a-customer-managed-storage-account-over-a-private-link"></a>カスタマー マネージド ストレージ アカウントをプライベート リンクで使用する方法
 ##### <a name="workspace-requirements"></a>ワークスペースの要件
@@ -45,13 +45,14 @@ Azure Monitor リソースへの接続にプライベート リンクを使用�
 プライベート リンクに正常に接続するには、ストレージ アカウントが次のようになっている必要があります。
 * VNet 上またはピアリングされたネットワーク上に存在し、プライベート リンク経由で VNet に接続されていること。 これにより、VNet 上のエージェントはストレージ アカウントにログを送信できるようになります。
 * リンク先のワークスペースと同じリージョンに存在していること。
-* Azure Monitor によるストレージ アカウントへのアクセスが許可されていること。 ストレージ アカウントへのアクセスを選択したネットワークだけに許可する場合は、この例外 "信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します" も許可する必要があります。 これにより、このストレージ アカウントに取り込まれたログを Log Analytics で読み取ることができます。
+* Azure Monitor によるストレージ アカウントへのアクセスが許可されていること。 選択したネットワークのみにストレージ アカウントへのアクセスを許可することにした場合は、次の例外を選択する必要があります。"信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します"。
+![ストレージ アカウント信頼 MS サービスの画像](./media/private-storage/storage-trust.png)
 * ワークスペースで他のネットワークからのトラフィックも処理する場合は、関連するネットワークまたはインターネットからの受信トラフィックを許可するように、ストレージ アカウントを構成する必要があります。
 
 ##### <a name="link-your-storage-account-to-a-log-analytics-workspace"></a>ストレージ アカウントを Log Analytics ワークスペースにリンクする
 ストレージ アカウントをワークスペースにリンクするには、[Azure CLI](/cli/azure/monitor/log-analytics/workspace/linked-storage) または [REST API](/rest/api/loganalytics/linkedstorageaccounts) を使用します。 適用可能な dataSourceType の値:
 * CustomLogs – インジェストの間にカスタム ログと IIS ログにストレージを使用します。
-* AzureWatson – ASC (Azure Security Center) ソリューションによってアップロードされた Watson ダンプ ファイルにストレージを使用します。 データ保持の管理、リンクされたストレージ アカウントの置換、ストレージ アカウントのアクティビティの監視の詳細については、「[リンクされたストレージ アカウントの管理](#managing-linked-storage-accounts)」を参照してください。 
+* AzureWatson – ASC (Azure Security Center) ソリューションによってアップロードされたファイルにストレージを使用します。 データ保持の管理、リンクされたストレージ アカウントの置換、ストレージ アカウントのアクティビティの監視の詳細については、「[リンクされたストレージ アカウントの管理](#managing-linked-storage-accounts)」を参照してください。 
 
 ## <a name="encrypting-data-with-cmk"></a>CMK でのデータの暗号化
 ストレージ アカウント内の保存データはすべて、Azure Storage によって暗号化されます。 既定では、Microsoft マネージド キー (MMK) がデータの暗号化に使用されます。 ただし、Azure Storage では代わりに、Azure Key Vault のカスタマー マネージド キー (CMK) を使用して、ストレージ データを暗号化することができます。 独自のキーを Azure Key Vault にインポートするか、または Azure Key Vault API を使用してキーを生成することができます。

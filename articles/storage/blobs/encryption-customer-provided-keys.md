@@ -5,21 +5,21 @@ description: Azure BLOB ストレージに対して要求を行うクライア�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: abdc83019205fc39e1e85a53da7e49f8a7d4f11c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcc5c02c4a37e205622470260d3c620ad76d07d8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618728"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694698"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>BLOB ストレージに対する要求で暗号化キーを指定する
 
-Azure BLOB ストレージに対して要求を行うクライアントには、要求ごとに暗号化キーを指定するオプションがあります。 要求に暗号化キーを含めると、BLOB ストレージ操作の暗号化設定をきめ細かく制御できます。 カスタマー指定のキーは、Azure Key Vault または別のキー ストアに格納できます。
+Azure BLOB ストレージに対して要求を行うクライアントには、要求ごとに AES-256 暗号化キーを指定するオプションがあります。 要求に暗号化キーを含めると、BLOB ストレージ操作の暗号化設定をきめ細かく制御できます。 カスタマー指定のキーは、Azure Key Vault または別のキー ストアに格納できます。
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -45,7 +45,7 @@ REST 呼び出しの場合、クライアントは次のヘッダーを使用し
 |---------------|-------------|
 |`x-ms-encryption-key` |書き込み要求と読み取り要求の両方に必要です。 Base64 でエンコードされた AES-256 暗号化キー値です。 |
 |`x-ms-encryption-key-sha256`| 書き込み要求と読み取り要求の両方に必要です。 暗号化キーの Base64 でエンコードされた SHA256 です。 |
-|`x-ms-encryption-algorithm` | 書き込み要求の場合は必須、読み取り要求の場合は省略可能です。 指定されたキーを使用してデータを暗号化するときに使用するアルゴリズムを指定します。 AES256 である必要があります。 |
+|`x-ms-encryption-algorithm` | 書き込み要求の場合は必須、読み取り要求の場合は省略可能です。 指定されたキーを使用してデータを暗号化するときに使用するアルゴリズムを指定します。  このヘッダーの値は `AES256` である必要があります。 |
 
 要求に対する暗号化キーの指定は省略できます。 ただし、上記のいずれかのヘッダーを書き込み操作に指定する場合は、それらのすべてを指定する必要があります。
 

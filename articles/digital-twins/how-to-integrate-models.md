@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f5bfe128ddc04e8048bb89a8e39035434dfd2b92
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3376f5d5e207a33ad39cd7506998e2ee90e084ad
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352883"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051549"
 ---
 # <a name="integrate-industry-standard-models-with-dtdl-for-azure-digital-twins"></a>業界標準モデルを Azure Digital Twins 用の DTDL に統合する
 
@@ -56,54 +56,7 @@ RDF ベースのモデルを DTDL に変換するときに使用できるサー�
 
 次の C# コード スニペットは、[**dotNetRDF**](https://www.dotnetrdf.org/) ライブラリを使用して、RDF モデル ファイルがどのようにグラフに読み込まれ、DTDL に変換されるかを示しています。 
 
-```csharp
-using VDS.RDF.Ontology; 
-using VDS.RDF.Parsing; 
-using Microsoft.Azure.DigitalTwins.Parser; 
-
-//...
-
-Console.WriteLine("Reading file..."); 
-
-FileLoader.Load(_ontologyGraph, rdfFile.FullName); 
-
-// Start looping through for each owl:Class 
-foreach (OntologyClass owlClass in _ontologyGraph.OwlClasses) 
-{ 
-
-    // Generate a DTMI for the owl:Class 
-    string Id = GenerateDTMI(owlClass); 
-
-    if (!String.IsNullOrEmpty(Id)) 
-    { 
-
-        Console.WriteLine($"{owlClass.ToString()} -> {Id}"); 
-
-        // Create Interface
-        DtdlInterface dtdlInterface = new DtdlInterface 
-        { 
-            Id = Id, 
-            Type = "Interface", 
-            DisplayName = GetInterfaceDisplayName(owlClass), 
-            Comment = GetInterfaceComment(owlClass), 
-            Contents = new List<DtdlContents>() 
-        }; 
-
-        // Use DTDL 'extends' for super classes 
-        IEnumerable<OntologyClass> foundSuperClasses = owlClass.DirectSuperClasses; 
-
-        //... 
-     }
-
-     // Add interface to the list of interfaces 
-     _interfaceList.Add(dtdlInterface); 
-} 
-
-// Serialize to JSON 
-var json = JsonConvert.SerializeObject(_interfaceList); 
-
-//...
-``` 
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/convertRDF.cs":::
 
 ### <a name="sample-converter-application"></a>サンプル コンバーター アプリケーション 
 

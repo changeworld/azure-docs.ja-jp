@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: 7e27c3dd6e70d9a532c326d8187d82e14bf7ddda
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: d37fca06a3d2eafa0af9e31c3a30ac66be5404f0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591618"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020606"
 ---
 # <a name="cicd-for-custom-speech"></a>Custom Speech の CI/CD
 
@@ -83,7 +83,7 @@ Custom Speech 用に既に実装されている DevOps ソリューションに�
 [Speech DevOps テンプレート リポジトリ](https://github.com/Azure-Samples/Speech-Service-DevOps-Template)には、以下のインフラストラクチャと詳細なガイダンスが用意されています。
 
 - テンプレート リポジトリを GitHub アカウントにコピーし、GitHub Actions CI/CD ワークフロー用の Azure リソースと[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を作成します。
-- "[開発者の内部ループ](https://mitchdenny.com/the-inner-loop/)" の手順を確認します。 機能ブランチのトレーニングおよびテスト データを更新し、一時的な開発モデルを使用して変更をテストし、pull request を発生させて変更を提案および確認します。
+- "[開発者の内部ループ](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow)" の手順を確認します。 機能ブランチのトレーニングおよびテスト データを更新し、一時的な開発モデルを使用して変更をテストし、pull request を発生させて変更を提案および確認します。
 - トレーニング データが pull request で "*メイン*" に更新されたら、GitHub Actions CI ワークフローを使用してモデルをトレーニングします。
 - 自動正確性テストを実行し、モデルの[ワード エラー率](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER) を確立します。 テスト結果を Azure BLOB に格納します。
 - WER が改善されたら、CD ワークフローを実行してエンドポイントを作成します。

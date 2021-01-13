@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 10/02/2020
 ms.author: aahi
-ms.openlocfilehash: 308b2a9cb00f44f0e330d4fef5592d8855ee3394
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 00c1c8ddab9214bf7698c21b05c24afa36ec20d9
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553095"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147349"
 ---
 ## <a name="text-analytics-for-health-categories-entities-and-attributes"></a>Text Analytics for Health のカテゴリ、エンティティ、属性
 
@@ -23,15 +23,15 @@ ms.locfileid: "94553095"
 
 | カテゴリ  | 説明  |
 |---------|---------|
-| ANATOMY | 身体および解剖学的な系統、部位、位置、または領域に関する情報を取得するための概念。 |
- | DEMOGRAPHICS | 性別と年齢に関する情報を取得するための概念。 |
- | EXAMINATION | 診断手順と検査に関する情報を取得するための概念。 |
- | GENOMICS | 遺伝子と変異に関する情報を取得するための概念。 |
- | HEALTHCARE | 管理イベント、医療環境、医療関係職に関する情報を取得するための概念。 |
- | MEDICAL CONDITION | 診断、症状、兆候に関する情報を取得するための概念。 |
- | MEDICATION | 薬の名前、クラス、投薬量、投与方法など、薬に関する情報を取得するための概念。 |
- | SOCIAL | 家族関係など、医療関連の社会的な側面に関する情報を取得するための概念。 |
- | TREATMENT | 治療手段に関する情報を取得するための概念。 |
+| [ANATOMY](#anatomy) | 身体および解剖学的な系統、部位、位置、または領域に関する情報を取得するための概念。 |
+ | [DEMOGRAPHICS](#demographics) | 性別と年齢に関する情報を取得するための概念。 |
+ | [EXAMINATION](#examinations) | 診断手順と検査に関する情報を取得するための概念。 |
+ | [GENOMICS](#genomics) | 遺伝子と変異に関する情報を取得するための概念。 |
+ | [HEALTHCARE](#healthcare) | 管理イベント、医療環境、医療関係職に関する情報を取得するための概念。 |
+ | [MEDICAL CONDITION](#medical-condition) | 診断、症状、兆候に関する情報を取得するための概念。 |
+ | [MEDICATION](#medication) | 薬の名前、クラス、投薬量、投与方法など、薬に関する情報を取得するための概念。 |
+ | [SOCIAL](#social) | 家族関係など、医療関連の社会的な側面に関する情報を取得するための概念。 |
+ | [TREATMENT](#treatment) | 治療手段に関する情報を取得するための概念。 |
   
 各カテゴリには、次の 2 つの概念グループが含まれル場合があります。
 
@@ -267,7 +267,15 @@ ms.locfileid: "94553095"
 +   **FREQUENCY_OF_MEDICATION**
 +   **ROUTE_OF_MEDICATION**
 +   **TIME_OF_MEDICATION**
-  
+
+## <a name="social"></a>ソーシャル
+
+### <a name="entities"></a>エンティティ
+
+**FAMILY_RELATION** – 対象者の家族関係に関する言及。 たとえば、父、娘、兄弟、親など。
+
+:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="治療時間属性の別の例を示すスクリーンショット。":::
+
 ## <a name="treatment"></a>処理方法
 
 ### <a name="entities"></a>エンティティ
@@ -294,17 +302,8 @@ ms.locfileid: "94553095"
 
 :::image type="content" source="../../media/ta-for-health/treatment-time.png" alt-text="治療時間属性の例を示すスクリーンショット。":::
 
-
 ### <a name="supported-relations"></a>サポートされる関係
 
 + **DIRECTION_OF_TREATMENT**
 +   **TIME_OF_TREATMENT**
 +   **FREQUENCY_OF_TREATMENT**
-
-## <a name="social"></a>ソーシャル
-
-### <a name="entities"></a>エンティティ
-
-**FAMILY_RELATION** – 対象者の家族関係に関する言及。 たとえば、父、娘、兄弟、親など。
-
-:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="治療時間属性の別の例を示すスクリーンショット。":::

@@ -1,18 +1,18 @@
 ---
 title: テンプレートの構文と式
-description: Azure Resource Manager テンプレートの宣言型 JSON 構文について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) の宣言型 JSON 構文について説明します。
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: baddedae1b918502e579d2ed230e0779960f45e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a386ed849771dfba717c8d1414e64422d0c7bd
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82203830"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797045"
 ---
-# <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構文と式
+# <a name="syntax-and-expressions-in-arm-templates"></a>ARM テンプレートの構文と式
 
-テンプレートの基本的な構文は JSON です。 ただし、式を使用して、テンプレート内で使用できる JSON の値を拡張できます。  式の始まりと終わりは、それぞれ角かっこ `[` と `]` です。 式の値は、テンプレートのデプロイ時に評価されます。 式では、文字列、整数、ブール値、配列、またはオブジェクトを返すことができます。
+Azure Resource Manager テンプレート (ARM テンプレート) の基本構文は JavaScript Object Notation (JSON) です。 ただし、式を使用して、テンプレート内で使用できる JSON の値を拡張できます。  式の始まりと終わりは、それぞれ角かっこ `[` と `]` です。 式の値は、テンプレートのデプロイ時に評価されます。 式では、文字列、整数、ブール値、配列、またはオブジェクトを返すことができます。
 
 テンプレート式は、24,576 文字を超えることはできません。
 
@@ -31,7 +31,7 @@ Azure Resource Manager には、テンプレートで使用できる[関数](tem
 
 式の構文 `resourceGroup()` では、Resource Manager によってテンプレート内で使用するために提供されている関数の 1 つを呼び出します。 このケースでは、[resourceGroup](template-functions-resource.md#resourcegroup) 関数です。 JavaScript の場合と同様に、関数呼び出しは `functionName(arg1,arg2,arg3)` という形式になります。 構文 `.location` では、その関数によって返されたオブジェクトから 1 つのプロパティを取得します。
 
-テンプレート関数とそのパラメーターでは大文字と小文字が区別されません。 たとえば、Resource Manager では、**variables('var1')** と **VARIABLES('VAR1')** が同じものとして解決されます。 評価の際、関数は、大文字/小文字を明確に変更する (toUpper、toLower など) 場合を除き、大文字/小文字を保持します。 特定の種類のリソースでは、関数の評価方法とは別に、大文字/小文字の要件が存在する場合があります。
+テンプレート関数とそのパラメーターでは大文字と小文字が区別されません。 たとえば、Resource Manager は `variables('var1')` と `VARIABLES('VAR1')` を同時に解決します。 評価の際、関数は、大文字/小文字を明確に変更する (`toUpper`、`toLower` など) 場合を除き、大文字/小文字を保持します。 特定の種類のリソースでは、関数の評価方法とは別に、大文字/小文字の要件が存在する場合があります。
 
 文字列値をパラメーターとして関数に渡すには、単一引用符を使用します。
 
@@ -123,7 +123,7 @@ New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azurede
 
 ## <a name="null-values"></a>Null 値
 
-プロパティを null に設定するには、**null** または **[json('null')]** を使用できます。 パラメーターとして `null` を指定すると、[json 関数](template-functions-object.md#json) は空のオブジェクトを返します。 どちらの場合も、Resource Manager テンプレートでは、プロパティが存在しないかのように扱われます。
+プロパティを null に設定するには、`null` または `[json('null')]` を使用します。 パラメーターとして `null` を指定すると、[json 関数](template-functions-object.md#json) は空のオブジェクトを返します。 どちらの場合も、Resource Manager テンプレートでは、プロパティが存在しないかのように扱われます。
 
 ```json
 "stringValue": null,
@@ -132,5 +132,5 @@ New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azurede
 
 ## <a name="next-steps"></a>次のステップ
 
-* テンプレート関数の完全一覧が必要な場合、「 [Azure リソース マネージャーのテンプレートの関数](template-functions.md)」を参照してください。
-* テンプレート ファイルの詳細については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
+* テンプレート関数の完全な一覧については、「[ARM テンプレート関数](template-functions.md)」を参照してください。
+* テンプレート ファイルの詳細については、「[ARM テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。

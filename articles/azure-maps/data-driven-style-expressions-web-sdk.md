@@ -7,14 +7,14 @@ ms.date: 4/4/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
+manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 8f27f7532d074428fafe74e4a453628f5c61d2b8
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 41a117c9ea8b47afcedaa1714abc2031d3be6c21
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895972"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680055"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>データ ドリブンのスタイルの式 (Web SDK)
 
@@ -24,9 +24,9 @@ ms.locfileid: "92895972"
 
 このビデオでは、Azure Maps Web SDK でのデータ ドリブンのスタイル処理の概要を示します。
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player?format=ny]
 
 式は JSON 配列として表されます。 配列内の式の最初の要素は、式の演算子の名前を指定する文字列です。 たとえば、"+" や "case" です。 次の要素 (存在する場合) は、式に対する引数です。 各引数は、リテラル値 (文字列、数値、ブール値、`null`)、または別の式の配列です。 次の疑似コードでは、式の基本構造を定義します。 
 
@@ -58,7 +58,7 @@ Azure Maps Web SDK では、さまざまな種類の式がサポートされて�
 
 このドキュメントのすべての例では、次の機能を使用して、各種の式を使用できるさまざまな方法を示します。 
 
-```javascript
+```json
 {
     "type": "Feature",
     "geometry": {
@@ -70,13 +70,13 @@ Azure Maps Web SDK では、さまざまな種類の式がサポートされて�
         "entityType": "restaurant",
         "revenue": 12345,
         "subTitle": "Building 40", 
-        "temperature": 72,
+        "temperature": 64,
         "title": "Cafeteria", 
-        "zoneColor": "red",
-        "abcArray": ['a', 'b', 'c'],
-        "array2d": [['a', 'b'], ['x', 'y']],
+        "zoneColor": "purple",
+        "abcArray": ["a", "b", "c"],
+        "array2d": [["a", "b"], ["x", "y"]],
         "_style": {
-            "fillColor": 'red'
+            "fillColor": "red"
         }
     }
 }
@@ -88,22 +88,22 @@ Azure Maps Web SDK では、さまざまな種類の式がサポートされて�
 
 | 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
-| `['at', number, array]` | object | 配列から項目を取得します。 |
+| `['at', number, array]` | value | 配列から項目を取得します。 |
 | `['geometry-type']` | string | 機能の geometry 型: Point、MultiPoint、LineString、MultiLineString、Polygon、MultiPolygon を取得します。 |
 | `['get', string]` | value | 現在の機能のプロパティからプロパティ値を取得します。 要求されたプロパティがない場合は、null が返されます。 |
 | `['get', string, object]` | value | 指定されたオブジェクトのプロパティからプロパティ値を取得します。 要求されたプロパティがない場合は、null が返されます。 |
 | `['has', string]` | boolean | 機能のプロパティに、指定されたプロパティがあるかどうかを判断します。 |
 | `['has', string, object]` | boolean | オブジェクトのプロパティに、指定されたプロパティがあるかどうかを判断します。 |
 | `['id']` | value | 機能の ID がある場合は取得します。 |
-| `['length', string | array]` | number | 文字列または配列の長さを取得します。 |
 | `['in', boolean | string | number, array]` | boolean | 項目が配列に存在するかどうかを判断します |
 | `['in', substring, string]` | boolean | substring が文字列に存在するかどうかを判断します |
 | `['index-of', boolean | string | number, array | string]`<br/><br/>`['index-of', boolean | string | number, array | string, number]` | number | 配列または部分文字列内で項目が見つかった最初の位置を返します。または、入力が見つからない場合は、`-1` を返します。 検索の開始位置から、オプションのインデックスを受け入れます。 |
-| `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | `string` \| 配列 | 指定された開始インデックスの文字列、または設定されている場合は開始インデックスと終了インデックスの間の文字列の、配列または部分文字列から項目を返します。 戻り値には、開始インデックスが含まれますが、終了インデックスは含まれません。 |
+| `['length', string | array]` | number | 文字列または配列の長さを取得します。 |
+| `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | 文字列\|配列 | 指定された開始インデックスの文字列、または設定されている場合は開始インデックスと終了インデックスの間の文字列の、配列または部分文字列から項目を返します。 戻り値には、開始インデックスが含まれますが、終了インデックスは含まれません。 |
 
 **使用例**
 
-機能のプロパティには、`get` 式を使用して式内で直接アクセスできます。 この例では、機能の "zoneColor" 値を使用して、バブル レイヤーの色のプロパティを指定します。 
+機能のプロパティには、`get` 式を使用して式内で直接アクセスできます。 この例では、機能の `zoneColor` 値を使用して、バブル レイヤーの色のプロパティを指定します。 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -203,7 +203,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 | `['max', number, number, …]` | number | 指定された数値セット内の最大数が計算されます。 |
 | `['min', number, number, …]` | number | 指定された数値セット内の最小数が計算されます。 |
 | `['pi']` | number | 数理定数 `PI` が返されます。 |
-| `['round', number]` | number | 数値が最も近い整数に丸められます。 端数を含む値は、ゼロから離れる方向に丸められます。 たとえば、`['round', -1.5]` は -2 に評価されます。 |
+| `['round', number]` | number | 数値が最も近い整数に丸められます。 端数を含む値は、ゼロから離れる方向に丸められます。 たとえば、`['round', -1.5]` は `-2` に評価されます。 |
 | `['sin', number]` | number | 指定された数値のサインが計算されます。 |
 | `['sqrt', number]` | number | 指定された数値の平方根が計算されます。 |
 | `['tan', number]` | number | 指定された数値のタンジェントが計算されます。 |
@@ -228,6 +228,16 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 データ セット内のすべての機能に、数値である `revenue` プロパティがある場合。 この場合、データ セットから作成されたクラスター内のすべてのポイントの合計収益を計算できます。 この計算は、次の集計式を使用して行われます。`['+', 0, ['get', 'revenue']]`
 
+### <a name="accumulated-expression"></a>累積式
+
+`accumulated` 式は、これまでに累積したクラスター プロパティの値を取得します。 これは、クラスター化された `DataSource` ソースの `clusterProperties` オプションでのみ使用できます。
+
+**使用方法**
+
+```javascript
+["accumulated"]
+```
+
 ## <a name="boolean-expressions"></a>ブール式
 
 ブール式により、ブール値の比較を評価するためにブール演算子式のセットが提供されます。
@@ -245,6 +255,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 | `['>=' value, value]` | boolean | 最初の入力が 2 番目の入力以上の場合は `true` が返され、それ以外の場合は `false` が返されます。 引数は、両方とも文字列、または両方とも数値である必要があります。 |
 | `['all', boolean, boolean, …]` | boolean | すべての入力が `true` の場合は `true` が返され、それ以外の場合は `false` が返されます。 |
 | `['any', boolean, boolean, …]` | boolean | いずれかの入力が `true` の場合は `true` が返され、それ以外の場合は `false` が返されます。 |
+| `['within', Polygon | MultiPolygon | Feature<Polygon | MultiPolygon>]` | boolean | 評価された機能が入力ジオメトリの境界内部に完全に含められている場合は `true` が返され、それ以外の場合は false が返されます。 入力値には、`Polygon`、`MultiPolygon`、`Feature`、または `FeatureCollection` の型の有効な GeoJSON を指定できます。 評価でサポートされている機能:<br/><br/>- Point:ポイントが境界上にあるか、境界の外側にある場合は `false` が返されます。<br/>- LineString:線の一部が境界の外側にある場合、線が境界と交差している場合、または線のエンドポイントが境界上にある場合は `false` が返されます。 |
 
 ## <a name="conditional-expressions"></a>条件式
 
@@ -355,28 +366,6 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-次の例では、match 式を使用して、"配列内にある" または "配列が含む" の種類のフィルターを実行します。 この場合、式は、許可された ID の一覧に含まれる ID 値を持つデータをフィルター処理します。 フィルターを含む式を使用するときは、結果がブール値である必要があります。
-
-```javascript
-var layer = new atlas.layer.BubbleLayer(datasource, null, {
-    filter: [
-        'match',  
-
-        //Get the property to match.
-        ['get', 'id'],  
-
-         //List of values to match.
-        [24, 53, 98], 
-
-        //If there is a match, return true.
-        true,
-    
-        //Otherwise return false.
-        false
-    ]
-});
-```
-
 ### <a name="coalesce-expression"></a>coalesce 式
 
 `coalesce` 式では、一連の式を通過し、最初の null 以外の値を取得したら、その値が返されます。 
@@ -394,7 +383,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **例**
 
-次の例では、`coalesce` 式を使用して、シンボル レイヤーの `textField` オプションを設定します。 `title` プロパティが機能内にないか、`null` に設定されている場合は、式で `subtitle` プロパティの検索が試行されます。このプロパティがないか `null` である場合は、空の文字列にフォールバックされます。 
+次の例では、`coalesce` 式を使用して、シンボル レイヤーの `textField` オプションを設定します。 `title` プロパティが機能内にないか、`null` に設定されている場合は、式で `subTitle` プロパティの検索が試行されます。このプロパティがないか `null` である場合は、空の文字列にフォールバックされます。 
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -405,8 +394,8 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
             //Try getting the title property.
             ['get', 'title'],
 
-            //If there is no title, try getting the subtitle. 
-            ['get', 'subtitle'],
+            //If there is no title, try getting the subTitle. 
+            ['get', 'subTitle'],
 
             //Default to an empty string.
             ''
@@ -439,8 +428,14 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 | 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
+| `['array', value]` \| `['array', type: "string" | "number" | "boolean", value]` | Object[] | 入力が配列であることをアサートします。 |
+| `['boolean', value]` \| `["boolean", value, fallback: value, fallback: value, ...]` | boolean | 入力値がブール値であることをアサートします。 複数の値が指定されている場合は、ブール値が取得されるまで、それぞれの値が順に評価されます。 いずれの入力もブール値でない場合、式はエラーになります。 |
+| `['collator', { 'case-sensitive': boolean, 'diacritic-sensitive': boolean, 'locale': string }]` | collator | ロケールに依存する比較操作で使用する collator が返されます。 大文字と小文字の区別と分音記号の区別のオプションは、既定で false に設定されています。 locale 引数は、使用するロケールの IETF 言語タグを指定します。 値が指定されない場合は、既定のロケールが使用されます。 要求されたロケールが使用できない場合、collator はシステム定義のフォールバック ロケールを使用します。 解決済みのロケールを使用して、ロケール フォールバック動作の結果をテストします。 |
 | `['literal', array]`<br/><br/>`['literal', object]` | array \| object | リテラル配列またはオブジェクト値が返されます。 配列またはオブジェクトが式として評価されないようにするには、この式を使用します。 この操作は、式で配列またはオブジェクトを返さなければならない場合に必要となります。 |
 | `['image', string]` | string | 指定されたイメージ ID がマップ イメージ スプライトに読み込まれているかどうかを確認します。 そうである場合は、ID が返されます。それ以外の場合は、null 値が返されます。 |
+| `['number', value]` \| `["number", value, fallback: value, fallback: value, ...]` | number | 入力値が数値であることをアサートします。 複数の値が指定されている場合は、数値が取得されるまで、それぞれの値が順に評価されます。 いずれの入力も数値でない場合、式はエラーになります。 |
+| `['object', value]`  \| `["object", value, fallback: value, fallback: value, ...]` | Object | 入力値がオブジェクトであることをアサートします。  複数の値が指定されている場合は、オブジェクトが取得されるまで、それぞれの値が順に評価されます。 いずれの入力もオブジェクトでない場合、式はエラーになります。 |
+| `['string', value]` \| `["string", value, fallback: value, fallback: value, ...]` | string | 入力値が文字列であることをアサートします。 複数の値が指定されている場合は、文字列が取得されるまで、それぞれの値が順に評価されます。 いずれの入力も文字列でない場合、式はエラーになります。 |
 | `['to-boolean', value]` | boolean | 入力値をブール値に変換します。 入力が空の文字列、`0`、`false`、`null`、`NaN` である場合は、結果は `false` になり、それ以外の場合は `true` になります。 |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | 入力値が色に変換されます。 複数の値が指定されている場合は、最初の正常な変換が取得されるまで、それぞれの値が順に評価されます。 いずれの入力も変換できない場合、式はエラーになります。 |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | number | 可能な場合は、入力値を数値に変換します。 入力が `null` または `false` の場合、結果は 0 になります。 入力が `true` の場合、結果は 1 になります。 入力が文字列である場合は、ECMAScript 言語仕様の [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) 文字列関数を使用して、数値に変換されます。 複数の値が指定されている場合は、最初の正常な変換が取得されるまで、それぞれの値が順に評価されます。 いずれの入力も変換できない場合、式はエラーになります。 |
@@ -475,13 +470,13 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 | 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
-| `['rgb', number, number, number]` | color | `0` から `255` の範囲でなければならない *red* 、 *green* 、 *blue* コンポーネント、およびアルファ コンポーネント `1` から、色の値を作成します。 いずれかのコンポーネントが範囲外である場合、式はエラーとなります。 |
-| `['rgba', number, number, number, number]` | color | `0` から `255` の範囲でなければならない *red* 、 *green* 、 *blue* コンポーネント、および `0` から `1` の範囲内のアルファ コンポーネントから、色の値を作成します。 いずれかのコンポーネントが範囲外である場合、式はエラーとなります。 |
-| `['to-rgba']` | \[number, number, number, number\] | 入力色の *red* 、 *green* 、 *blue* 、 *アルファ* コンポーネントを含む 4 つの要素の配列が、この順序で返されます。 |
+| `['rgb', number, number, number]` | color | `0` から `255` の範囲でなければならない *red*、*green*、*blue* コンポーネント、およびアルファ コンポーネント `1` から、色の値を作成します。 いずれかのコンポーネントが範囲外である場合、式はエラーとなります。 |
+| `['rgba', number, number, number, number]` | color | `0` から `255` の範囲でなければならない *red*、*green*、*blue* コンポーネント、および `0` から `1` の範囲内のアルファ コンポーネントから、色の値を作成します。 いずれかのコンポーネントが範囲外である場合、式はエラーとなります。 |
+| `['to-rgba']` | \[number, number, number, number\] | 入力色の *red*、*green*、*blue*、*アルファ* コンポーネントを含む 4 つの要素の配列が、この順序で返されます。 |
 
 **例**
 
-次の例では、 *red* 値 `255`、および `2.5` を `temperature` プロパティの値で乗算して計算された *green* 値と *blue* 値を含む、色の RGB 値が作成されます。 温度の変化に応じて、色はさまざまな色調の *red* に変化します。
+次の例では、*red* 値 `255`、および `2.5` を `temperature` プロパティの値で乗算して計算された *green* 値と *blue* 値を含む、色の RGB 値が作成されます。 温度の変化に応じて、色はさまざまな色調の *red* に変化します。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -505,6 +500,8 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | string | 複数の文字列を連結します。 各値は文字列である必要があります。 必要に応じて、`to-string` 型式を使用して、他の型の値を文字列に変換します。 |
 | `['downcase', string]` | string | 指定された文字列を小文字に変換します。 |
+| `['is-supported-script', string]` \| `['is-supported-script', Expression]`| boolean | 入力文字列で現在のフォント スタックでサポートされている文字セットを使用するかどうかを判断します。 例: `['is-supported-script', 'ಗೌರವಾರ್ಥವಾಗಿ']` |
+| `['resolved-locale', string]` | string | 指定された collator によって使用されているロケールの IETF 言語タグを返します。 これを使用して、既定のシステム ロケールを確認したり、要求されたロケールが正常に読み込まれたかどうかを確認したりできます。 |
 | `['upcase', string]` | string | 指定された文字列を大文字に変換します。 |
 
 **例**
@@ -575,14 +572,10 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
         'interpolate',
         ['linear'],
         ['get', 'temperature'],
-        50,        
-        'blue',
-        60,
-        'yellow',
-        70,
-        'orange',
-        80,
-        'red'
+        50, 'blue',
+        60, 'yellow',
+        70, 'orange',
+        80, 'red'
     ]
 });
 ```
@@ -624,12 +617,9 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
         'step',
         ['get', 'temperature'],
         'blue',
-        60,
-        'yellow',
-        70,
-        'orange',
-        80,
-        'red'
+        60, 'yellow',
+        70, 'orange',
+        80, 'red'
     ]
 });
 ```
@@ -724,7 +714,6 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 
  * `'font-scale'` - フォント サイズのスケール ファクターを指定します。 指定されている場合、この値は、個々の文字列に対して `textOptions` の `size` プロパティをオーバーライドします。
  * `'text-font'` - この文字列に使用する 1 つまたは複数のフォント ファミリを指定します。 指定されている場合、この値は、個々の文字列に対して `textOptions` の `font` プロパティをオーバーライドします。
- * `'text-color'` - レンダリング時にテキストに適用する色を指定します。 
 
 次の疑似コードでは、テキスト フィールドの書式指定式の構造が定義されます。 
 
@@ -734,14 +723,12 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
     input1: string, 
     options1: { 
         'font-scale': number, 
-        'text-font': string[],
-        'text-color': color
+        'text-font': string[]
     },
     input2: string, 
     options2: { 
         'font-scale': number, 
-        'text-font': string[] ,
-        'text-color': color
+        'text-font': string[]
     },
     …
 ]
@@ -749,7 +736,7 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 
 **例**
 
-次の例では、太字フォントを追加し、機能の `title` プロパティのフォント サイズをスケール アップすることで、テキスト フィールドを書式設定します。 また、この例では、フォント サイズをスケール ダウンして色を赤にし、改行で機能の `subtitle` プロパティを追加します。
+次の例では、太字フォントを追加し、機能の `title` プロパティのフォント サイズをスケール アップすることで、テキスト フィールドを書式設定します。 また、この例では、フォント サイズをスケール ダウンして、改行で機能の `subTitle` プロパティを追加します。
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -766,11 +753,10 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
             '\n', {},   //Add a new line without any formatting.
 
-            //Scale the font size down of the subtitle property. 
-            ['get', 'subtitle'],
+            //Scale the font size down of the subTitle property. 
+            ['get', 'subTitle'],
             { 
-                'font-scale': 0.75, 
-                'text-color': 'red' 
+                'font-scale': 0.75
             }
         ]
     }
@@ -817,7 +803,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
         textField: [
             'number-format', 
             ['get', 'revenue'], 
-            { ‘currency': 'USD' }
+            { 'currency': 'USD' }
         ],
 
         offset: [0, 0.75]
@@ -885,7 +871,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
         ['zoom'],
         
         //For zoom level 1 set the radius to 2 pixels.
-        10, 2,
+        1, 2,
 
         //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * Math.pow(2, 19 - 1) pixels (524,288 pixels).
         19, 2 * Math.pow(2, 19 - 1)

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 6fa8705221e1f1f9a9143f274a53db21b657988f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0a7f54d991d31594a6ab522dbf9e73958cde3023
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763706"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900146"
 ---
 # <a name="gpu-vms-for-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイス用の GPU VM
 
@@ -338,7 +338,7 @@ PS C:\Program Files\NVIDIA Corporation\NVSMI>
 
 ### <a name="gpu-extension-for-linux"></a>Linux 用の GPU 拡張機能
 
-既存の VM 用の Nvidia GPU ドライバーをデプロイするには、`addGPUExtLinuxVM.parameters.json` パラメーター ファイルを編集してから、`addGPUextensiontoVM.json` テンプレートをデプロイします。
+既存の VM 用の Nvidia GPU ドライバーをデプロイするには、パラメーター ファイルを編集してから、`addGPUextensiontoVM.json` テンプレートをデプロイします。 次のセクションで説明するように、Ubuntu および Red Hat Enterprise Linux (RHEL) 固有のパラメーター ファイルがあります。
 
 #### <a name="edit-parameters-file"></a>パラメーター ファイルを編集する
 
@@ -371,8 +371,7 @@ Ubuntu を使用している場合、`addGPUExtLinuxVM.parameters.json` ファ�
     }
     }
 ```
-Red Hat Enterprise Linux (RHEL) を使用している場合、ファイルは次のパラメーターを受け取ります。
-
+Red Hat Enterprise Linux (RHEL) を使用している場合、`addGPUExtensionRHELVM.parameters.json` ファイルは次のパラメーターを受け取ります。
 
 ```powershell
 {

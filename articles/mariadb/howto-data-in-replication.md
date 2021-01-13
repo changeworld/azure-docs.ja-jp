@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: fe7e02cc34dc9c97e540d7b8d96c48ee8d5cfe09
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3ed0fea4846b969c2af80aa525f7da64e7700bb5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535369"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587929"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのデータイン レプリケーションの構成
 
@@ -52,7 +52,7 @@ ms.locfileid: "94535369"
 
 次の手順では、オンプレミス、VM、またはクラウド データベース サービスでホストされる MariaDB サーバーをデータイン レプリケーション用に準備し、構成します。 MariaDB サーバーは、データイン レプリケーションにおけるソースになります。
 
-1. 続行する前に、[マスター サーバーの要件](concepts-data-in-replication.md#requirements)を確認してください。 
+1. 続行する前に、[プライマリ サーバーの要件](concepts-data-in-replication.md#requirements)を確認してください。 
 
 2. 確実に、ソース サーバーでポート 3306 での受信と送信の両方のトラフィックが許可されていて、ソース サーバーに **パブリック IP アドレス** がある、または DNS にパブリックにアクセス可能である、あるいは完全修飾ドメイン名 (FQDN) があるかのいずれかであるようにします。 
    
@@ -284,7 +284,7 @@ ms.locfileid: "94535369"
     
     MariaDB ではネイティブのレプリケーション制限があるため、GTID なしのレプリケーション シナリオでは、[`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) および [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) 変数を設定する必要があります。
 
-    スレーブ サーバーの `sync_master_info` および `sync_relay_log_info` 変数を調べて、データイン レプリケーションが安定していることを確認し、変数を `1` に設定します。
+    レプリカ サーバーの `sync_master_info` および `sync_relay_log_info` 変数を調べて、データイン レプリケーションが安定していることを確認し、変数を `1` に設定します。
     
 ## <a name="other-stored-procedures"></a>その他のストアド プロシージャ
 

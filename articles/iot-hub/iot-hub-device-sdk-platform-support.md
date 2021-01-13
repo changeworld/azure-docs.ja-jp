@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 5df36cdb3c02fd4c813625c4869c21581f009b02
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b8f8403617a5fc8b442e8a3f74ab9226fe1479fe
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152224"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588762"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT device SDK プラットフォームのサポート
 
@@ -34,7 +34,7 @@ Microsoft では、GitHub で次の言語のオープンソース SDK を公開�
 
 一覧表示されている各 SDK について、Microsoft では次のことを行っています。
 
-* いくつかの一般的なプラットフォーム上で、GitHub 内の関連する SDK のマスター ブランチに対するエンドツーエンド テストを継続的に構築して実行しています。  異なるコンパイラ バージョン間でのテスト カバレッジを提供するために、最新の LTS バージョンと、最も一般的なバージョンに対してテストを行っています。
+* いくつかの一般的なプラットフォーム上で、GitHub 内の関連する SDK のメイン ブランチに対するエンドツーエンド テストを継続的に構築して実行しています。  異なるコンパイラ バージョン間でのテスト カバレッジを提供するために、最新の LTS バージョンと、最も一般的なバージョンに対してテストを行っています。
 
 * インストール ガイダンスまたはインストール パッケージを提供しています (該当する場合)。
 
@@ -142,7 +142,7 @@ Azure IoT device SDK の使用中に問題が発生した場合は、以下に�
 
 **Microsoft カスタマー サポート チーム** – [サポート プラン](https://azure.microsoft.com/support/plans/)に加入しているユーザーは、[Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) から新しいサポート要求を直接作成することで、Microsoft カスタマー サポート チームとやり取りすることができます。
 
-**機能の要望** – Azure IoT 機能の要望は、製品の[ユーザーの声のページ](https://feedback.azure.com/forums/321918-azure-iot)を介して追跡されます。
+**機能の要望** – Azure IoT 機能の要望は、製品の [ユーザーの声のページ](https://feedback.azure.com/forums/321918-azure-iot)を介して追跡されます。
 
 ## <a name="next-steps"></a>次のステップ
 

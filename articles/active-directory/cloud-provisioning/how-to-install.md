@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect クラウド プロビジョニング エージェントのインストール
-description: この記事では、Azure AD Connect クラウド プロビジョニング エージェントのインストール方法について説明します。
+description: Azure AD Connect クラウド プロビジョニング エージェントをインストールする方法や、Azure portal でこれを構成する方法について説明します。
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4ba11dabc8e805f3604afc2fc4388840ac67cf
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9553608fdd72d4dec4c1572e0d38cd460018a469
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348536"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584342"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Azure AD Connect クラウド プロビジョニング エージェントのインストール
 このドキュメントでは、Azure Active Directory (Azure AD) Connect プロビジョニング エージェントのインストール プロセスと、それを Azure portal で最初に構成する方法について説明します。

@@ -1,7 +1,7 @@
 ---
-title: AutoML 実験での特徴量化
+title: 自動機械学習による特徴量化
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で提供されている特徴量化の設定と、自動 ML 実験における特徴エンジニアリングのサポートについて説明します。
+description: Azure Machine Learning でのデータの特徴量化設定と、自動 ML の実験に合わせてこれらの特徴をカスタマイズする方法について説明します。
 author: nibaccam
 ms.author: nibaccam
 ms.reviewer: nibaccam
@@ -9,25 +9,24 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, automl
-ms.date: 05/28/2020
-ms.openlocfilehash: 658db1604895515525e5a4826a43c0b21d9698b1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.custom: how-to,automl,contperf-fy21q2
+ms.date: 12/18/2020
+ms.openlocfilehash: 526afe758063ce6c5f6bd86f8192f56d5f844a85
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359631"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693997"
 ---
-# <a name="featurization-in-automated-machine-learning"></a>自動機械学習での特徴量化
+# <a name="data-featurization-in-automated-machine-learning"></a>自動機械学習でのデータの特徴量化
 
 
 
-このガイドでは、以下のことについて説明します。
+Azure Machine Learning でのデータの特徴量化設定と、[自動 ML の実験](concept-automated-ml.md)に合わせてこれらの特徴をカスタマイズする方法について説明します。
 
-- Azure Machine Learning で提供されている特徴量化の設定。
-- [自動機械学習実験](concept-automated-ml.md)用にそれらの特徴をカスタマイズする方法。
+## <a name="feature-engineering-and-featurization"></a>特徴エンジニアリングと特徴量化
 
-" *特徴エンジニアリング* " は、データに関するドメインの知識を使用して、機械学習 (ML) アルゴリズムの学習を支援する特徴を作成するプロセスです。 Azure Machine Learning では、特徴エンジニアリングを容易にするために、データのスケーリングと正規化の手法が適用されます。 自動機械学習 ( *AutoML* ) の実験では、これらの手法と特徴エンジニアリングが、まとめて " *特徴量化* " と呼ばれています。
+"*特徴エンジニアリング*" は、データに関するドメインの知識を使用して、機械学習 (ML) アルゴリズムの学習を支援する特徴を作成するプロセスです。 Azure Machine Learning では、特徴エンジニアリングを容易にするために、データのスケーリングと正規化の手法が適用されます。 自動機械学習 (*autoML*) の実験では、これらの手法と特徴エンジニアリングが、まとめて "*特徴量化*" と呼ばれています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +37,7 @@ ms.locfileid: "93359631"
 
 ## <a name="configure-featurization"></a>特徴量化を構成する
 
-自動機械学習におけるあらゆる実験では、[自動スケーリングと正規化の手法](#featurization)が既定でデータに適用されます。 これらの手法は、さまざまなスケールの特徴に反応する " *特定* " のアルゴリズムを支援する特徴量化の一種です。 ただし、" *欠損値の補完* "、" *エンコード* "、" *変換* " などの特徴量化も追加で有効にできます。
+自動機械学習におけるあらゆる実験では、[自動スケーリングと正規化の手法](#featurization)が既定でデータに適用されます。 これらの手法は、さまざまなスケールの特徴に反応する "*特定*" のアルゴリズムを支援する特徴量化の一種です。 "*欠損値の補完*"、"*エンコード*"、"*変換*" などの特徴量化も追加で有効にできます。
 
 > [!NOTE]
 > 自動機械学習の特徴量化の手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 このモデルを予測に使用する場合、トレーニング中に適用されたのと同じ特徴量化の手順が入力データに自動的に適用されます。
@@ -49,7 +48,7 @@ Python SDK を使用して構成した実験では、特徴量化の設定を有
 
 |特徴量化の構成 | 説明|
 ------------- | ------------- |
-|`"featurization": 'auto'`| 前処理の一環として、[データ ガードレールと特徴量化の手順](#featurization)が自動的に実行されることを示します。 これは、既定の設定です。|
+|`"featurization": 'auto'`| 前処理の一環として、[データ ガードレール](#data-guardrails)と[特徴量化](#featurization)の手順が自動的に実行されることを示します。 これは、既定の設定です。|
 |`"featurization": 'off'`| 特徴量化手順が自動的に行われないことを指定します。|
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| カスタマイズした特徴量化手順を使用することを指定します。 [特徴付けをカスタマイズする方法の詳細](#customize-featurization)。|
 
@@ -76,12 +75,12 @@ Python SDK を使用して構成した実験では、特徴量化の設定を有
 
 ## <a name="data-guardrails"></a>データ ガードレール
 
-" *データ ガードレール* " は、データの潜在的な問題 (欠損値、 [クラスの不均衡](concept-manage-ml-pitfalls.md#identify-models-with-imbalanced-data)など) を特定するのに役立ちます。 また、改善された結果を得るために是正措置を取るのにも役立ちます。
+"*データ ガードレール*" は、データの潜在的な問題 (欠損値、[クラスの不均衡](concept-manage-ml-pitfalls.md#identify-models-with-imbalanced-data)など) を特定するのに役立ちます。 また、改善された結果を得るために是正措置を取るのにも役立ちます。
 
 データ ガードレールは次の場合に適用されます。
 
-- **SDK 実験の場合** : `AutoMLConfig` オブジェクトでパラメーター `"featurization": 'auto'` または `validation=auto` が指定されているとき。
-- **Studio 実験の場合** : 自動特徴量化が有効になっているとき。
+- **SDK 実験の場合**: `AutoMLConfig` オブジェクトでパラメーター `"featurization": 'auto'` または `validation=auto` が指定されているとき。
+- **Studio 実験の場合**: 自動特徴量化が有効になっているとき。
 
 実験に対するデータ ガードレールは、次のようにして確認できます。
 
@@ -107,7 +106,7 @@ Python SDK を使用して構成した実験では、特徴量化の設定を有
 ---|---|---
 **欠損特徴量値の補完** |Passed <br><br><br> 完了| トレーニング データで、不足している機能の値が検出されませんでした。 [不足している値の補完](./how-to-use-automated-ml-for-ml-models.md#customize-featurization)の詳細を確認してください。 <br><br> 不足している特徴の値が、トレーニング データで検出され、補完されました。
 **高カーディナリティの特徴量の処理** |Passed <br><br><br> 完了| 入力が分析され、高カーディナリティの特徴は検出されませんでした。 <br><br> 高カーディナリティの特徴が入力で検出され、処理されました。
-**検証分割処理** |完了| 検証構成は `'auto'` に設定されており、トレーニング データには " *20,000 行未満* " が含まれていました。 <br> トレーニング済みモデルの各イテレーションは、クロス検証を使用して検証されました。 [検証データ](./how-to-configure-auto-train.md#training-validation-and-test-data)の詳細を確認してください。 <br><br> 検証構成は `'auto'` に設定されており、トレーニング データには " *20,000 行超* " が含まれていました。 <br> 入力データはトレーニング データセットと検証データセットに分割され、モデルが検証されます。
+**検証分割処理** |完了| 検証構成は `'auto'` に設定されており、トレーニング データには "*20,000 行未満*" が含まれていました。 <br> トレーニング済みモデルの各イテレーションは、クロス検証を使用して検証されました。 [検証データ](./how-to-configure-auto-train.md#training-validation-and-test-data)の詳細を確認してください。 <br><br> 検証構成は `'auto'` に設定されており、トレーニング データには "*20,000 行超*" が含まれていました。 <br> 入力データはトレーニング データセットと検証データセットに分割され、モデルが検証されます。
 **クラス均衡の検出** |Passed <br><br><br><br>通知済み <br><br><br>完了 | 入力が分析され、すべてのクラスがトレーニング データ内で均衡が取られます。 サンプルの数と比率によって測定され、データセット内で各クラスに適正な表現がある場合、データセットは均衡が取れていると見なされます。 <br><br> 入力で、不均衡なクラスが検出されました。 モデルのバイアスを修正するには、バランスの問題を修正します。 [不均衡なデータ](./concept-manage-ml-pitfalls.md#identify-models-with-imbalanced-data)の詳細を確認してください。<br><br> 入力で不均衡なクラスが検出され、スイープ ロジックによって分散の適用が決定されました。
 **メモリの問題の検出** |Passed <br><br><br><br> 完了 |<br> 選択された値 (期間、ラグ、ローリング ウィンドウ) が分析され、潜在的なメモリ不足の問題は検出されませんでした。 時系列[予測構成](./how-to-auto-train-forecast.md#configuration-settings)の詳細を確認してください。 <br><br><br>選択された値 (期間、ラグ、ローリング ウィンドウ) が分析され、実験でメモリが不足する可能性があります。 ラグまたはローリング ウィンドウの構成がオフになっています。
 **頻度の検出** |Passed <br><br><br><br> 完了 |<br> 時系列が分析され、すべてのデータ ポイントが検出済みの頻度でアラインされます。 <br> <br> 時系列が分析され、検出された頻度にアラインしないデータ ポイントが検出されました。 このようなデータ ポイントはデータセットから削除されました。 [時系列予測のデータの準備](./how-to-auto-train-forecast.md#preparing-data)の詳細を確認してください。
@@ -123,7 +122,7 @@ ML モデルのトレーニングに使用されたデータと特徴から適�
 |カスタマイズ|定義|
 |--|--|
 |**列の目的の更新**|指定した列の自動検出された特徴の種類をオーバーライドします。|
-|**トランスフォーマー パラメーターの更新** |指定したトランスフォーマーのパラメーターを更新します。 現在、 *Imputer* (平均値、最頻値、中央値) と *HashOneHotEncoder* がサポートされています。|
+|**トランスフォーマー パラメーターの更新** |指定したトランスフォーマーのパラメーターを更新します。 現在、*Imputer* (平均値、最頻値、中央値) と *HashOneHotEncoder* がサポートされています。|
 |**列の削除** |特徴量化から削除する列を指定します。|
 |**ブロック トランスフォーマー**| 特徴量化プロセスで使用されるブロック トランスフォーマーを指定します。|
 
@@ -303,20 +302,22 @@ class_prob = fitted_model.predict_proba(X_test)
 
 基になるモデルが `predict_proba()` 関数をサポートしていない場合、または形式が正しくない場合は、モデル クラス固有の例外がスローされます。 さまざまな種類のモデルに対してこの関数を実装する方法の例については、[RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier.predict_proba) と [XGBoost](https://xgboost.readthedocs.io/en/latest/python/python_api.html) のリファレンス ドキュメントを参照してください。
 
-## <a name="bert-integration"></a>BERT 統合
+<a name="bert-integration"></a>
+
+## <a name="bert-integration-in-automated-ml"></a>自動 ML での BERT 統合
 
 [BERT](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657) は、AutoML の特徴量化層で使用されます。 この層では、列にフリー テキストやその他の種類のデータ (タイムスタンプや単純な数値など) が含まれている場合は、それに応じて特徴量化が適用されます。
 
 BERT の場合、モデルはユーザー指定のラベルを使用して微調整およびトレーニングされます。 ここから、ドキュメント埋め込みが、タイムスタンプベースの特徴 (曜日) などの他の特徴と同様に、特徴として出力されます。 
 
 
-### <a name="bert-steps"></a>BERT のステップ
+### <a name="steps-to-invoke-bert"></a>BERT を呼び出す手順
 
-BERT を呼び出すには、automl_settings に `enable_dnn: True` を設定し、GPU コンピューティング (例: `vm_size = "STANDARD_NC6"`、またはそれ以上の GPU) を使用する必要があります。 CPU コンピューティングを使用した場合、AutoML によって、BERT ではなく BiLSTM DNN 特徴抽出器が有効になります。
+BERT を呼び出すには、automl_settings に `enable_dnn: True` を設定し、GPU コンピューティング (`vm_size = "STANDARD_NC6"`、またはそれ以上の GPU) を使用します。 CPU コンピューティングを使用した場合、AutoML によって、BERT ではなく BiLSTM DNN 特徴抽出器が有効になります。
 
 BERT の場合は、AutoML で次の手順が行われます。 
 
-1. **すべてのテキスト列の前処理とトークン化** 。 たとえば、"StringCast" トランスフォーマーは、最終的なモデルの特徴量化の概要内にあります。 モデルの特徴量化の概要を生成する方法の例については、[こちらのノートブック](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)を参照してください。
+1. **すべてのテキスト列の前処理とトークン化**。 たとえば、"StringCast" トランスフォーマーは、最終的なモデルの特徴量化の概要内にあります。 モデルの特徴量化の概要を生成する方法の例については、[こちらのノートブック](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)を参照してください。
 
 2. **すべてのテキスト列を 1 つのテキスト列に連結** します。そのため、最終的なモデル内では `StringConcatTransformer` になります。 
 
@@ -327,9 +328,10 @@ BERT の場合は、AutoML で次の手順が行われます。
 BERT は通常、他の特徴抽出器よりも長く実行されます。 パフォーマンスを向上させるには、RDMA 機能に "STANDARD_NC24r" または "STANDARD_NC24rs_V3" を使用することをお勧めします。 
 
 AutoML によって、可能な場合、BERT トレーニングが複数のノードに分散されます (最大 8 ノードまで)。 これは、`AutoMLConfig` オブジェクトで `max_concurrent_iterations` パラメーターを 1 より大きく設定することによって、行うことができます。 
-### <a name="supported-languages"></a>サポートされている言語
 
-AutoML では現在約 100 の言語がサポートされており、データセットの言語に応じて、適切な BERT モデルが選択されます。 ドイツ語のデータの場合は、ドイツ語の BERT モデルが使用されます。 英語の場合は、英語の BERT モデルが使用されます。 その他のすべての言語では、多言語 BERT モデルが使用されます。
+## <a name="supported-languages-for-bert-in-automl"></a>autoML で BERT に対してサポートされている言語 
+
+autoML では現在約 100 の言語がサポートされており、データセットの言語に応じて、適切な BERT モデルが選択されます。 ドイツ語のデータの場合は、ドイツ語の BERT モデルが使用されます。 英語の場合は、英語の BERT モデルが使用されます。 その他のすべての言語では、多言語 BERT モデルが使用されます。
 
 次のコードでは、データセットの言語が `deu` ([ISO 分類](https://iso639-3.sil.org/code/deu)でドイツ語を示す 3 文字の言語コード) に指定されているため、ドイツ語の BERT モデルがトリガーされます。
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 12/02/2020
-ms.openlocfilehash: 57b4b6f3f49e9b82ada4b37c8e2de0697781e063
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.date: 12/17/2020
+ms.openlocfilehash: 5d291ad745122d929c4b664e9da5e4649e463529
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510592"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679110"
 ---
 # <a name="execute-r-script-module"></a>R スクリプトの実行モジュール
 
@@ -50,6 +50,9 @@ azureml_main <- function(dataframe1, dataframe2){
 
 > [!NOTE]
 > `install.packages("zoo",repos = "http://cran.us.r-project.org")` などのパッケージをインストールするときは、CRAN リポジトリを指定します。
+
+> [!WARNING]
+> R スクリプトの実行モジュールでは、JAVA を必要とする `qdap` パッケージや、C++ を必要とする `drc` パッケージなど、ネイティブ コンパイルを必要とするパッケージのインストールはサポートしていません。 これは、このモジュールが、管理者以外のアクセス許可でプレインストールされた環境で実行されるためです。
 
 このサンプルは、Zoo のインストール方法を示しています。
 ```R

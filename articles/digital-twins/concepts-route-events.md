@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6559de2b94879ac8643f4945fd5adcf4fc7e1045
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: aa3466456b99664b1b39bd415680a6a291f85acd
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350825"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049288"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure Digital Twins の内外でイベントをルーティングする
 
@@ -75,11 +75,7 @@ Azure Digital Twins データを送信する主なケースが 2 つあります
 
 次に示すのは、`CreateOrReplaceEventRouteAsync` [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 呼び出しを使用して、クライアント アプリケーション内でイベント ルートを作成する例です。 
 
-```csharp
-string eventFilter = "$eventType = 'DigitalTwinTelemetryMessages' or $eventType = 'DigitalTwinLifecycleNotification'";
-var er = new DigitalTwinsEventRoute("endpointName", eventFilter);
-await client.CreateOrReplaceEventRouteAsync("routeName", er);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/eventRoute_operations.cs" id="CreateEventRoute":::
 
 1. まず、`DigitalTwinsEventRoute` オブジェクトが作成され、コンストラクターはエンドポイントの名前を受け取ります。 この `endpointName` フィールドは、Event Hub、Event Grid、または Service Bus などのエンドポイントを識別します。 この登録呼び出しを行う前に、これらのエンドポイントをサブスクリプションに作成し、コントロール プレーン API を使用して Azure Digital Twins にアタッチする必要があります。
 
@@ -101,7 +97,7 @@ await client.CreateOrReplaceEventRouteAsync("routeName", er);
 
 いずれかの条件が満たされた場合、イベントは削除されるか、配信不能になります。 既定では、各エンドポイントは配信不能を有効に **しません**。 この処理を有効にするには、エンドポイントの作成時に、配信不能イベントを保持するようにストレージ アカウントを指定する必要があります。 その後で、このストレージ アカウントからイベントをプルして配信を解決できます。
 
-配信不能の場所を設定するには、コンテナーを含むストレージ アカウントが必要です。 エンドポイントの作成時に、このコンテナーの URL を指定します。 配信不能メッセージは、SAS トークンを含むコンテナーの URL として提供されます。 このトークンには、ストレージ アカウント内の送信先コンテナーに対する `write` アクセス許可のみが必要です。 正しい形式の URL は次の形式になります。`https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
+配信不能の場所を設定するには、コンテナーを含むストレージ アカウントが必要です。 エンドポイントの作成時に、このコンテナーの URL を指定します。 配信不能メッセージは、コンテナーの URL として、SAS トークンで提供されます。 このトークンには、ストレージ アカウント内の送信先コンテナーに対する `write` アクセス許可のみが必要です。 正しい形式の URL は次の形式になります。`https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
 SAS トークンの詳細については、以下を参照してください。[*Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する*](../storage/common/storage-sas-overview.md)
 

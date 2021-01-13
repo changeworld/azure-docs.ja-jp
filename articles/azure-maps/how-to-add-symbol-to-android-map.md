@@ -1,184 +1,150 @@
 ---
-title: Azure Maps Android SDK を使用してマップにシンボル レイヤーを追加する方法
-description: マップにマーカーを追加する方法について説明します。 データ ソースのポイントベースのデータを含むシンボル レイヤーを、Microsoft Azure Maps Android SDK を使用して追加する例を参照してください。
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 11/24/2020
-ms.topic: how-to
+title: Android マップにシンボル レイヤーを追加する | Microsoft Azure Maps
+description: マップにマーカーを追加する方法について説明します。 データ ソースのポイントベースのデータを含むシンボル レイヤーを、Azure Maps Android SDK を使用して追加する例を参照してください。
+author: rbrundritt
+ms.author: richbrun
+ms.date: 12/08/2020
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 300a7968b2072459d6d7709e4d89388e1bcf59f3
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+manager: cpendle
+ms.openlocfilehash: 040fcde35707074ffaf102ed6c224b2f47a084bb
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531209"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679355"
 ---
-# <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用してマップにシンボル レイヤーを追加する方法
+# <a name="add-a-symbol-layer-android-sdk"></a>シンボル レイヤーを追加する (Android SDK)
 
-この記事では、Azure Maps Android SDK を使用して、マップ上にデータ ソースからのポイント データをシンボル レイヤーとしてレンダリングする方法を示します。
+この記事では、Azure Maps Android SDK を使用して、マップ上にデータ ソースからのポイント データをシンボル レイヤーとしてレンダリングする方法を示します。 シンボル レイヤーは、ポイントを画像とテキストとしてマップ上にレンダリングします。
 
-## <a name="prerequisites"></a>前提条件
+> [!TIP]
+> シンボル レイヤーでは、既定ではデータ ソース内のすべてのジオメトリの座標がレンダリングされます。 ポイント ジオメトリ フィーチャーのみがレンダリングされるようにレイヤーを制限するには、レイヤーの `filter` オプションを `eq(geometryType(), "Point")` に設定します。 MultiPoint フィーチャーも含める場合は、レイヤーの `filter` オプションを `any(eq(geometryType(), "Point"), eq(geometryType(), "MultiPoint"))` に設定します。
 
-1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
-3. [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) をダウンロードしてインストールします。
+## <a name="prerequisites"></a>[前提条件]
+
+必ず、[クイック スタート:Android アプリの作成](quick-android-map.md)に関するドキュメントの手順を完了してください。 この記事のコード ブロックは、マップ `onReady` イベント ハンドラーに挿入できます。
 
 ## <a name="add-a-symbol-layer"></a>シンボル レイヤーを追加する
 
-シンボル レイヤーを使用してマップ上にマーカーを追加するには、次の手順に従います。
+マップにシンボル レイヤーを追加する前に、いくつかの手順を行う必要があります。 まず、データ ソースを作成してマップに追加します。 シンボル レイヤーを追加します。 次に、データ ソースからデータを取得するために、データ ソースをシンボル レイヤーに渡します。 最後に、データをデータ ソースに追加して、レンダリングするものが存在するようにします。
 
-1. **res** > **layout** > **activity_main.xml** を編集すると、次のような XML になります。
-    
-    ```XML
-    <?xml version="1.0" encoding="utf-8"?>
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+次のコードは、マップが読み込まれた後に、そこに追加する必要がある内容を示しています。 このサンプルでは、シンボル レイヤーを使用してマップ上に 1 つのポイントがレンダリングされます。
 
-        <com.microsoft.azure.maps.mapcontrol.MapControl
-            android:id="@+id/mapcontrol"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:mapcontrol_centerLat="47.64"
-            app:mapcontrol_centerLng="-122.33"
-            app:mapcontrol_zoom="12"
-            />
+```java
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
 
-    </FrameLayout>
-    ```
+//Create a point and add it to the data source.
+source.add(Point.fromLngLat(0, 0));
 
-2. 次のコード スニペットを **onCreate()** method of your `MainActivity.java` クラスにコピーします。
+//Create a symbol layer to render icons and/or text at points on the map.
+SymbolLayer layer = new SymbolLayer(source);
 
-    ```Java
-    mapControl.onReady(map -> {
-    
-        //Create a data source and add it to the map.
-        DataSource dataSource = new DataSource();
-        map.sources.add(dataSource);
-    
-        //Create a point feature and add it to the data source.
-        dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
-    
-        //Add a red custom image icon to the map resources.
-        map.images.add("my-icon", R.drawable.mapcontrol_marker_red);
-    
-        //Create a symbol layer and add it to the map.
-        map.layers.add(new SymbolLayer(dataSource,
-            iconImage("my-icon")));
-        });
-    
-    ```
-    
-    上記のコード スニペットを追加したら、`MainActivity.java` は次のようになります。
-    
-    ```Java
-    package com.example.myapplication;
-    
-    import android.app.Activity;
-    import android.os.Bundle;
-    import com.mapbox.geojson.Feature;
-    import com.mapbox.geojson.Point;
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-    import com.microsoft.azure.maps.mapcontrol.MapControl;
-    import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
-    import com.microsoft.azure.maps.mapcontrol.source.DataSource;
-    import static com.microsoft.azure.maps.mapcontrol.options.SymbolLayerOptions.iconImage;
-    public class MainActivity extends AppCompatActivity {
-        
-        static{
-                AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
-            }
-    
-        MapControl mapControl;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-    
-            mapControl = findViewById(R.id.mapcontrol);
-    
-            mapControl.onCreate(savedInstanceState);
-    
-            mapControl.onReady(map -> {
-    
-                //Create a data source and add it to the map.
-                DataSource dataSource = new DataSource();
-                map.sources.add(dataSource);
-            
-                //Create a point feature and add it to the data source.
-                dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
-            
-                //Add a custom image icon to the map resources.
-                map.images.add("my-icon", R.drawable.mapcontrol_marker_red);
-            
-                //Create a symbol layer and add it to the map.
-                map.layers.add(new SymbolLayer(dataSource,
-                    iconImage("my-icon")));
-            });
-        }
-    
-        @Override
-        public void onStart() {
-            super.onStart();
-            mapControl.onStart();
-        }
-    
-        @Override
-        public void onResume() {
-            super.onResume();
-            mapControl.onResume();
-        }
-    
-        @Override
-        public void onPause() {
-            super.onPause();
-            mapControl.onPause();
-        }
-    
-        @Override
-        public void onStop() {
-            super.onStop();
-            mapControl.onStop();
-        }
-    
-        @Override
-        public void onLowMemory() {
-            super.onLowMemory();
-            mapControl.onLowMemory();
-        }
-    
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            mapControl.onDestroy();
-        }
-    
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            super.onSaveInstanceState(outState);
-            mapControl.onSaveInstanceState(outState);
-        }
-    }
-    ```
+//Add the layer to the map.
+map.layers.add(layer);
+```
 
-アプリケーションを実行すると、次に示すようにマップ上にマーカーが表示されます。
+マップに追加できるポイント データには、次の 3 種類があります。
 
-![Android のマップ ピン](./media/how-to-add-symbol-to-android-map/android-map-pin.png)
+- GeoJSON Point ジオメトリ - このオブジェクトには、ポイントの座標だけが含まれ、それ以外は含まれません。 `Point.fromLngLat` 静的メソッドを使用すると、これらのオブジェクトを簡単に作成できます。
+- GeoJSON MultiPoint ジオメトリ - このオブジェクトには、複数のポイントの座標が含まれ、それ以外は含まれません。 ポイントの配列を `MultiPoint` クラスに渡して、これらのオブジェクトを作成します。
+- GeoJSON 機能 - このオブジェクトは、すべての GeoJSON ジオメトリと、ジオメトリに関連するメタデータを含むプロパティのセットで構成されます。
+
+データの作成とマップへの追加の詳細については、「[データ ソースを作成する](create-data-source-android-sdk.md)」のドキュメントをご覧ください。
+
+次のコード サンプルは、GeoJSON Point ジオメトリを作成して GeoJSON フィーチャーに渡し、`title` 値をそのプロパティに追加させます。 `title` プロパティは、マップ上のシンボル アイコンの上にテキストとして表示されます。
+
+```java
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
+
+//Create a point feature.
+Feature feature = Feature.fromGeometry(Point.fromLngLat(0, 0));
+
+//Add a property to the feature.
+feature.addStringProperty("title", "Hello World!");
+
+//Add the feature to the data source.
+source.add(feature);
+
+//Create a symbol layer to render icons and/or text at points on the map.
+SymbolLayer layer = new SymbolLayer(source, 
+    //Get the title property of the feature and display it on the map.
+    textField(get("title"))
+);
+
+//Add the layer to the map.
+map.layers.add(layer);
+```
+
+次のスクリーンショットでは、上記のコードにより、シンボル レイヤーでアイコンとテキスト ラベルを使ってポイント フィーチャーがレンダリングされた状態を示しています。
+
+![ポイント フィーチャーのアイコンとテキスト ラベルを表示したシンボル レイヤーを使用してポイントがレンダリングされたマップ](media/how-to-add-symbol-to-android-map/android-map-pin.png)
 
 > [!TIP]
-> 既定では、重なっているシンボルがシンボル レイヤーによって非表示になることで、シンボルのレンダリングが最適化されます。 拡大すると、非表示のシンボルが表示されるようになります。 この機能を無効にして、すべてのシンボルを常にレンダリングするには、`iconAllowOverlap` オプションを `true` に設定します。
+> 既定では、重なっているシンボルがシンボル レイヤーによって非表示になることで、シンボルのレンダリングが最適化されます。 拡大すると、非表示のシンボルが表示されるようになります。 この機能を無効にして、すべてのシンボルを常にレンダリングするには、`iconAllowOverlap` および `textAllowOverlap` オプションを `true` に設定します。
+
+## <a name="add-a-custom-icon-to-a-symbol-layer"></a>シンボル レイヤーにカスタム アイコンを追加する
+
+シンボル レイヤーは WebGL を使用してレンダリングされます。 このため、アイコンの画像などのすべてのリソースを WebGL コンテキストに読み込む必要があります。 このサンプルでは、マップ リソースにカスタム アイコンを追加する方法を示します。 このアイコンを使用して、ポイント データをカスタム シンボルでマップ上にレンダリングします。 シンボル レイヤーの `textField` プロパティに式を指定する必要があります。 ここでは、気温プロパティをレンダリングします。 気温は数値であるため、文字列に変換する必要があります。 加えて、そこに "°F" を追加したいと思います。 `concat(Expression.toString(get("temperature")), literal("°F"))` という式を使えば、この連結を実行できます。
+
+```java
+//Load a custom icon image into the image sprite of the map.
+map.images.add("my-custom-icon", R.drawable.showers);
+
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
+
+//Create a point feature.
+Feature feature = Feature.fromGeometry(Point.fromLngLat(-73.985708, 40.75773));
+
+//Add a property to the feature.
+feature.addNumberProperty("temperature", 64);
+
+//Add the feature to the data source.
+source.add(feature);
+
+//Create a symbol layer to render icons and/or text at points on the map.
+SymbolLayer layer = new SymbolLayer(source,
+    iconImage("my-custom-icon"),
+    iconSize(0.5f),
+
+    //Get the title property of the feature and display it on the map.
+    textField(concat(Expression.toString(get("temperature")), literal("°F"))),
+    textOffset(new Float[]{0f, -1.5f})
+);
+```
+
+このサンプルでは、次の画像がアプリのドローアブル フォルダーに読み込まれています。
+
+| ![にわか雨の天気アイコンの画像](media/how-to-add-symbol-to-android-map/showers.png)|
+|:-----------------------------------------------------------------------:|
+| showers.png                                                  |
+
+次のスクリーンショットでは、上記のコードにより、シンボル レイヤーでカスタム アイコンと書式設定されたテキスト ラベルを使ってポイント フィーチャーがレンダリングされた状態を示しています。
+
+![ポイント フィーチャーのカスタム アイコンと書式設定されたテキスト ラベルを表示したシンボル レイヤーを使用してポイントがレンダリングされたマップ](media/how-to-add-symbol-to-android-map/android-custom-symbol-layer.png)
+
+> [!TIP]
+> シンボル レイヤーを使用してテキストをレンダリングするだけの場合は、アイコンのオプションの `iconImage` プロパティを `"none"` に設定することでアイコンを非表示にすることができます。
 
 ## <a name="next-steps"></a>次のステップ
 
-マップにさらにデータを追加するには、以下を参照してください。
+マップに追加できる他のコード サンプルについては、次の記事をご覧ください。
 
 > [!div class="nextstepaction"]
-> [Android マップへの図形の追加](./how-to-add-shapes-to-android-map.md)
+> [データ ソースを作成する](create-data-source-android-sdk.md)
+
+> [!div class="nextstepaction"]
+> [バブル レイヤーを追加する](map-add-bubble-layer-android.md)
+
+> [!div class="nextstepaction"]
+> [データドリブンのスタイルの式を使用する](data-driven-style-expressions-android-sdk.md)
 
 > [!div class="nextstepaction"]
 > [フィーチャーの情報を表示する](display-feature-information-android.md)

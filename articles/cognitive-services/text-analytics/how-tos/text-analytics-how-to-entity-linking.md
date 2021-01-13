@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/15/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 9b90f177432de11f8281d03021b38bae647dadf2
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0b57629f5c21d933fc898258263199b5fc713fdb
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562533"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683360"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
@@ -35,8 +35,6 @@ PII 機能は NER の一部であり、電話番号、メール アドレス、�
 
 ## <a name="named-entity-recognition-features-and-versions"></a>固有表現認識の機能とバージョン
 
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
-
 | 機能                                                         | NER v3.0 | NER v3.1-preview.3 |
 |-----------------------------------------------------------------|--------|----------|
 | 単一要求およびバッチ要求のメソッド                          | X      | X        |
@@ -54,7 +52,7 @@ PII 機能は NER の一部であり、電話番号、メール アドレス、�
 * 機密性の高い医療情報 (`PHI`) を検出する省略可能な `domain=phi` パラメーター。
 * `/analyze` エンドポイントを使用した[非同期操作](text-analytics-how-to-call-api.md)。
 
-詳細については、[エンティティのカテゴリ](../named-entity-types.md)に関する記事と以下の「[要求エンドポイント](#request-endpoints)」セクションを参照してください。 
+詳細については、[エンティティのカテゴリ](../named-entity-types.md)に関する記事と以下の「[要求エンドポイント](#request-endpoints)」セクションを参照してください。 信頼度スコアの詳細については、[Text Analytics の透明性に関するメモ](/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context)をご覧ください。 
 
 ## <a name="sending-a-rest-api-request"></a>REST API 要求の送信
 

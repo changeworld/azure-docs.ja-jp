@@ -4,12 +4,12 @@ description: Linux VM に対する Azure Policy のゲスト構成ポリシー�
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1f6308250717d35dc725b097575bf3921646c6a0
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 705c12cff5f4377249674ef9db155d1ed321ce42
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302708"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755873"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux 用のゲスト構成ポリシーを作成する方法
 
@@ -329,10 +329,15 @@ Configuration AuditFilePathExists
 
 ## <a name="policy-lifecycle"></a>ポリシーのライフサイクル
 
-ポリシー定義の更新をリリースするには、注意が必要な 3 つのフィールドがあります。
+ポリシーの更新をリリースする場合は、ゲスト構成パッケージと Azure Policy 定義の詳細の両方に対して変更を行います。
 
 > [!NOTE]
 > ゲスト構成割り当ての `version` プロパティは、Microsoft によってホストされているパッケージにのみ影響します。 カスタム コンテンツのバージョン管理のベスト プラクティスは、ファイル名にバージョンを含めることです。
+
+まず、`New-GuestConfigurationPackage` を実行するときに、以前のバージョンと異なる一意のパッケージの名前を指定します。 名前には、`PackageName_1.0.0` などのバージョン番号を含めることができます。
+この例の番号は、パッケージを一意にするためにのみ使用されており、パッケージを他のパッケージよりも新しいまたは古いものとして見なすように指定するものではありません。
+
+次に、以下の各説明に従って、`New-GuestConfigurationPolicy` コマンドレットで使用するパラメーターを更新します。
 
 - **バージョン**:`New-GuestConfigurationPolicy` コマンドレットを実行するときは、現在発行されているバージョンより大きいバージョン番号を指定する必要があります。
 - **contentUri**: `New-GuestConfigurationPolicy` コマンドレットを実行するときは、パッケージの場所の URI を指定する必要があります。 ファイル名にパッケージのバージョンを含めると、各リリースでこのプロパティの値が変更されます。

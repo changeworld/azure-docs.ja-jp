@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 68d9a64e388d24f2067f47282945b9561d807535
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6a78b38bd71a2822d94e58834ab17824c9ef6ec6
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545929"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683105"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK の使用時の問題を診断しトラブルシューティングする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -53,6 +53,13 @@ ms.locfileid: "96545929"
 
 ### <a name="check-the-portal-metrics"></a>ポータルのメトリックを確認する
 [ポータルのメトリック](./monitor-cosmos-db.md)を確認すると、クライアント側の問題であるか、サービスに問題があるかの判断に役立ちます。 たとえば、要求が調整されていることを意味する、高いレートのレート制限された要求 (HTTP 状態コード 429) がメトリックに含まれていれば、"[要求率が大きすぎる](troubleshoot-request-rate-too-large.md)" に関するセクションを確認してください。 
+
+## <a name="retry-logic"></a>再試行ロジック <a id="retry-logics"></a>
+SDK での再試行が可能な場合、すべての IO エラーで Cosmos DB SDK は、失敗した操作の再試行を試みます。 エラーが発生した場合に再試行を行うことをお勧めしますが、特に書き込みエラーの処理と再試行は必要です。 再試行ロジックが継続的に改善されているため、最新の SDK を使用することをお勧めします。
+
+1. 読み取りおよびクエリ IO エラーは、エンド ユーザーにはわからないまま SDK によって再試行されます。
+2. 書き込み (Create、Upsert、Replace、Delete) はべき等では "なく"、したがって SDK は必ずしも無条件に、失敗した書き込み操作を再試行できるわけではありません。 エラーを処理して再試行するには、ユーザーのアプリケーション ロジックが必要です。
+3. [SDK の可用性のトラブルシューティング](troubleshoot-sdk-availability.md)に関するページでは、複数リージョンの Cosmos DB アカウントの再試行について説明しています。
 
 ## <a name="common-error-status-codes"></a>一般的なエラー状態コード <a id="error-codes"></a>
 

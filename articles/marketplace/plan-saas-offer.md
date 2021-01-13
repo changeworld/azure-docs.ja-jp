@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 5f7278a688147842b7dbfab79a20afea2b4a9288
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 5b39ccc365575853a4a74a471023989f34ebc577
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621605"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821487"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースの SaaS オファーを計画する方法
 
@@ -250,7 +250,7 @@ Microsoft を通じて販売される SaaS アプリ オファーでは、定額
 | Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います<br>`*` 対象の SaaS アプリの場合、Microsoft はライセンス コストの 90% を支払います| 1 か月あたり $80.00<br>``*`` 1 か月あたり $90.00 |
 |||
 
-**`*`マーケットプレース サービス料金の減額** - コマーシャル マーケットプレースで公開される特定の SaaS オファーについて、Microsoft では、マーケットプレース サービス料金を 20% (Microsoft 公開元契約の説明どおり) から 10% 減額します。 お客様のオファーが対象となるには、そのオファーが Microsoft によって Azure IP 共同販売インセンティブとして指定されている必要があります。 ある月に Marketplace サービス料金の減額を受け取るには、各カレンダー月の月末から少なくとも 5 営業日前に資格を満たす必要があります。 IP 共同販売の資格の詳細については、[共同販売の状態の要件](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)に関する記事を参照してください。 Marketplace サービス料金の減額は、Azure IP 共同販売インセンティブの VM やマネージド アプリのほか、コマーシャル マーケットプレースを通じて公開された正規の取引可能 IaaS オファーにも適用されます。
+**`*`マーケットプレース サービス料金の減額** - コマーシャル マーケットプレースで公開される特定の SaaS オファーについて、Microsoft では、マーケットプレース サービス料金を 20% (Microsoft 公開元契約の説明どおり) から 10% 減額します。 お客様のオファーが対象となるには、そのオファーが Microsoft によって Azure IP 共同販売インセンティブとして指定されている必要があります。 Marketplace サービス料金の減額を受け取るには、各カレンダー月の月末から少なくとも 5 営業日前に資格を満たす必要があります。 資格が満たされると、翌月の 1 日に有効なすべてのトランザクションについて、サービス料金の減額を受け、この適用は、Azure IP 共同販売インセンティブ対象の状態が失われるまで継続されます。 IP 共同販売の資格の詳細については、[共同販売の状態の要件](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)に関する記事を参照してください。 Marketplace サービス料金の減額は、Azure IP 共同販売インセンティブの VM やマネージド アプリのほか、コマーシャル マーケットプレースを通じて公開された正規の取引可能 IaaS オファーにも適用されます。
 
 ## <a name="additional-sales-opportunities"></a>その他の営業案件
 

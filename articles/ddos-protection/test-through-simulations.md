@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: eff738e24b3abce52e80291c55a3ae64c3c8c853
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 55692122461ef1b22b43b0def43e826ac7aeae30
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905019"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813787"
 ---
 # <a name="test-through-simulations"></a>シミュレーションを通じたテスト
 
@@ -41,7 +41,7 @@ Microsoft は、セルフサービスのトラフィック ジェネレーター
     |設定        |[値]                                              |
     |---------      |---------                                          |
     |ターゲット IP アドレス           | テストするパブリック IP アドレスのいずれかを入力します。                     |
-    |ポート番号   | 「 _443_ 」を入力します。                       |
+    |ポート番号   | 「_443_」を入力します。                       |
     |DDoS プロファイル | **[TCP SYN フラッド]** を選択します。|
     |テスト サイズ       | **[200K pps、100 Mbps、8 ソース IP]** を選択します。                                  |
     |テスト継続時間 | **[10 分]** を選択します。|
@@ -61,8 +61,12 @@ Microsoft は、セルフサービスのトラフィック ジェネレーター
 
 ![DDoS 攻撃シミュレーションの例: ポータル](./media/ddos-attack-simulation/ddos-attack-simulation-example-2.png)
 
+### <a name="breakingpoint-cloud-api-script"></a>BreakingPoint Cloud API スクリプト
+
+この [API スクリプト](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Breaking%20Point%20SDK)を使用すると、1 回実行するか cron を使用して定期的なテストをスケジュールすることで、DDoS テストを自動化できます。 これは、ログが適切に構成されていること、および検出と応答の手順が有効であることを検証するのに役立ちます。 スクリプトには、Linux OS (Ubuntu 18.04 LTS でテスト済み) と Python 3 が必要です。 付属のスクリプトを使用するか、[BreakingPoint Cloud](http://breakingpoint.cloud/) Web サイトのドキュメントを使用して、前提条件と API クライアントをインストールします。
+
 ## <a name="next-steps"></a>次のステップ
 
-- [DDoS 保護テレメトリを表示および構成する](telemetry-monitoring-alerting.md)方法を学習します。
-- [DDoS 攻撃の軽減策レポートとフロー ログを構成する](reports-and-flow-logs.md)方法を学習します。
+- [DDoS 保護テレメトリを表示および構成する](telemetry.md)方法を学習します。
+- [DDoS 診断ログを表示および構成する](diagnostic-logging.md)方法について説明します。
 - [DDoS Rapid Response (DRR) に参加する](ddos-rapid-response.md)方法を学習します。

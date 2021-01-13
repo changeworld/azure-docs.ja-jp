@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: aef332e54fa650e1abbebe671560238d7eb318de
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f2d55d1fcc92abdc629581d6e4d277ec0294dce0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492048"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858690"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows での Azure Files に関する問題のトラブルシューティング (SMB)
 
@@ -406,6 +406,8 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 5. CheckSidHasAadUser: ログオンしている AD ユーザーが Azure AD と同期されていることを確認します。 特定の AD ユーザーが Azure AD に同期されているかどうかを調べる場合は、入力パラメーターに -UserName と -Domain を指定します。 
 6. CheckGetKerberosTicket: ストレージ アカウントに接続するための Kerberos チケットの取得を試みます。 有効な Kerberos トークンがない場合、klist get cifs/storage-account-name.file.core.windows.net コマンドレットを実行し、エラー コードを調べ、チケット取得失敗の根本原因を探ります。
 7. CheckStorageAccountDomainJoined: AD 認証が有効になっており、アカウントの AD プロパティが設定されているかどうかを確認します。 有効になっていない場合、[こちら](./storage-files-identity-ad-ds-enable.md)の指示を参照し、Azure Files で AD DS 認証を有効にします。 
+8. CheckUserRbacAssignment:Azure Files にアクセスするための共有レベルのアクセス許可を付与するために、AD ユーザーに適切な RBAC ロールの割り当てがあるかどうかを確認します。 ない場合は、[こちら](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions)の指示を参照して、共有レベルのアクセス許可を構成してください。 (AzFilesHybrid バージョン 0.2.3 以降でサポートされています)
+9. CheckUserFileAccess:AD ユーザーに Azure Files にアクセスするための適切なディレクトリ/ファイル アクセス許可 (Windows ACL) があるかどうかを確認します。 ない場合は、[こちら](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-configure-permissions)の指示を参照して、ディレクトリ/ファイル レベルのアクセス許可を構成してください。 (AzFilesHybrid バージョン 0.2.3 以降でサポートされています)
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Windows エクスプローラーでディレクトリまたはファイル レベルのアクセス許可 (Windows ACL) を構成できない
 

@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
-ms.openlocfilehash: 5ffd688a60f793ffa497cd0d23ed88437e56a07c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 828dc99c6eb01d7cdbfdbdc9eec8a96eeef52d88
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022685"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821624"
 ---
 # <a name="troubleshoot-azure-hdinsight"></a>Azure HDInsight のトラブルシューティング
 
 | Apache ワークロード | よくある質問 |
 |---|---|
-|![HDInsight Apache HBase のアイコン](./media/hdinsight-troubleshoot-guide/hdinsight-apache-hbase.png)<br>[Apache HBase のトラブルシューティング]()|<br>[未割り当てリージョン](hbase/hbase-troubleshoot-unassigned-regions.md#scenario-unassigned-regions)<br><br>[Azure HDInsight での "hbase hbck" コマンド使用時のタイムアウト](hbase/hbase-troubleshoot-timeouts-hbase-hbck.md)<br><br>[Azure HDInsight の Apache Phoenix の接続に関する問題](hbase/hbase-troubleshoot-phoenix-connectivity.md)<br><br>[マスター サーバーの起動が失敗する原因](hbase/hbase-troubleshoot-start-fails.md)<br><br>[BindException - 既に使用されているアドレス](hbase/hbase-troubleshoot-bindexception-address-use.md)|
+|![HDInsight Apache HBase のアイコン](./media/hdinsight-troubleshoot-guide/hdinsight-apache-hbase.png)<br>[Apache HBase のトラブルシューティング]()|<br>[未割り当てリージョン](hbase/hbase-troubleshoot-unassigned-regions.md#scenario-unassigned-regions)<br><br>[Azure HDInsight での "hbase hbck" コマンド使用時のタイムアウト](hbase/hbase-troubleshoot-timeouts-hbase-hbck.md)<br><br>[Azure HDInsight の Apache Phoenix の接続に関する問題](hbase/hbase-troubleshoot-phoenix-connectivity.md)<br><br>[プライマリ サーバーの起動が失敗する原因](hbase/hbase-troubleshoot-start-fails.md)<br><br>[BindException - 既に使用されているアドレス](hbase/hbase-troubleshoot-bindexception-address-use.md)|
 |![HDInsight Apache HDFS のアイコン](./media/hdinsight-troubleshoot-guide/hdinsight-apache-hdfs.png)<br>[Apache Hadoop HDFS のトラブルシューティング](hdinsight-troubleshoot-hdfs.md)|<br>[クラスター内からローカルの HDFS にアクセスする方法](hdinsight-troubleshoot-hdfs.md#how-do-i-access-local-hdfs-from-inside-a-cluster)<br><br>[Azure HDInsight クラスター上のローカル HDFS がセーフ モードでスタックする](hadoop/hdinsight-hdfs-troubleshoot-safe-mode.md)|
 |![HDInsight Apache Hive のアイコン](./media/hdinsight-troubleshoot-guide/hdinsight-apache-hive.png)<br>[Apache Hive のトラブルシューティング](hdinsight-troubleshoot-hive.md)|<br>[Hive metastore をエクスポートして別のクラスターにインポートする方法](hdinsight-troubleshoot-hive.md#how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster)<br><br>[クラスターにある Apache Hive のログを特定する方法](hdinsight-troubleshoot-hive.md#how-do-i-locate-hive-logs-on-a-cluster)<br><br>[クラスターで特定の構成を使って Apache Hive シェルを起動する方法](hdinsight-troubleshoot-hive.md#how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster)<br><br>[クラスターのクリティカル パスで Apache Tez DAG データを分析する方法](hdinsight-troubleshoot-hive.md#how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path)<br><br>[クラスターから Apache Tez DAG データをダウンロードする方法](hdinsight-troubleshoot-hive.md#how-do-i-download-tez-dag-data-from-a-cluster)|
 |![HDInsight Apache Spark のアイコン](./media/hdinsight-troubleshoot-guide/hdinsight-apache-spark.png)<br>[Apache Spark のトラブルシューティング](./spark/apache-troubleshoot-spark.md)|<br>[クラスター上の Apache Ambari を使用して Apache Spark アプリケーションを構成する方法](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters)<br><br>[クラスター上の Jupyter Notebook を使用して Apache Spark アプリケーションを構成する方法](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters)<br><br>[クラスター上の Apache Livy を使用して Apache Spark アプリケーションを構成する方法](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters)<br><br>[クラスター上の spark-submit を使用して Apache Spark アプリケーションを構成する方法](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters)<br><br>[IntelliJ を使用して Apache Spark アプリケーションを構成する方法](spark/apache-spark-intellij-tool-plugin.md)<br><br>[Eclipse を使用して Apache Spark アプリケーションを構成する方法](spark/apache-spark-eclipse-tool-plugin.md)<br><br>[VSCode を使用して Apache Spark アプリケーションを構成する方法](hdinsight-for-vscode.md)<br><br>[Apache Spark の OutOfMemoryError 例外](spark/apache-spark-troubleshoot-outofmemory.md#scenario-outofmemoryerror-exception-for-apache-spark)|

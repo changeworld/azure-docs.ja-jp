@@ -10,16 +10,19 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 6a909b246e7cb3695533a75294c523d7c9aeaeda
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 7cefe75eefb746c150b051a7bd1f4513c103d205
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832944"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655860"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions のウォームアップ トリガー
 
-この記事では、Azure Functions でウォームアップ トリガーを使用する方法について説明します。 ウォームアップ トリガーは、[Premium プラン](functions-premium-plan.md)で実行されている関数アプリでのみサポートされています。 実行中の関数アプリをスケーリングするためにインスタンスが追加されると、ウォームアップ トリガーが呼び出されます。 ウォームアップ トリガーを使用して[事前ウォームアップ プロセス](./functions-premium-plan.md#pre-warmed-instances)の間にカスタムの依存関係を事前に読み込むと、関数がすぐに要求の処理を開始できるようになります。 
+この記事では、Azure Functions でウォームアップ トリガーを使用する方法について説明します。 実行中の関数アプリをスケーリングするためにインスタンスが追加されると、ウォームアップ トリガーが呼び出されます。 ウォームアップ トリガーを使用して[事前ウォームアップ プロセス](./functions-premium-plan.md#pre-warmed-instances)の間にカスタムの依存関係を事前に読み込むと、関数がすぐに要求の処理を開始できるようになります。 
+
+> [!NOTE]
+> ウォームアップ トリガーは、従量課金プランで実行されている関数アプリではサポートされていません。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 

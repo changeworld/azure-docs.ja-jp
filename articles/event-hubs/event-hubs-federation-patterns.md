@@ -3,12 +3,12 @@ title: イベント レプリケーション タスクのパターン - Azure Ev
 description: この記事では、特定のイベント レプリケーション タスクのパターンを実装するための詳細なガイダンスを提供します
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 7702b1987faabfce8d97e7b5c9b18766df72caad
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 494de442b636d535fa1ed6fdeeeda28db9783952
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803988"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861372"
 ---
 # <a name="event-replication-tasks-patterns"></a>イベント レプリケーション タスクのパターン
 
@@ -20,7 +20,7 @@ ms.locfileid: "97803988"
 
 レプリケーション パターンでは、あるイベント ハブから次のものへ、またはイベント ハブから、Service Bus キューなどの他の宛先にイベントをコピーします。 イベントは、イベント ペイロードを変更することなく転送されます。
 
-このパターンの実装は、[Event Hubs 間のイベント レプリケーション](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy)および [Event Hubs と Service Bus 間のイベント レプリケーション](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus)のサンプルの対象となります。
+このパターンの実装は、「[Event Hubs 間のイベント レプリケーション](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy)」および 「[Event Hubs と Service Bus 間のイベント レプリケーション](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus)」のサンプル、および Apache Kafka ブローカーから Event Hubs にデータをレプリケートする特定のケースについては、「[Event Hubs で Apache Kafka MirrorMaker を使用する](event-hubs-kafka-mirror-maker-tutorial.md)」のチュートリアルに記載されています。
 
 ### <a name="streams-and-order-preservation"></a>ストリームと順序の維持
 
@@ -124,7 +124,7 @@ DNS (具体的には [Azure DNS](../dns/dns-overview.md)) を使用する利点�
 
 切り替え元のイベント ハブのチェックポイント ストアに引き続きアクセスできる場合は、既に処理されているイベントをスキップし、最後に中断した場所から正確に再開するのに、前述の[伝達されたメタデータ](#service-assigned-metadata)が役立ちます。
 
-## <a name="merge"></a>マージする
+## <a name="merge"></a>Merge
 
 マージ パターンには、1 つのターゲットを指す 1 つまたは複数のレプリケーション タスクがあります。また、通常のプロデューサーと同時に、同じターゲットにイベントが送信される場合もあります。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 0435fe3946118d59d786dd3e6cec350a5ab4eee4
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 34af380d057ad47811e394da1e7a29198e102920
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046453"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672782"
 ---
 # <a name="iot-plug-and-play-bridge"></a>IoT プラグ アンド プレイ ブリッジ
 
@@ -29,63 +29,125 @@ IoT プラグ アンド プレイ ブリッジでは、次の種類の周辺機�
 
 |周辺装置|Windows|Linux|
 |---------|---------|---------|
-|[Bluetooth LE](https://aka.ms/iot-pnp-bridge-bluetooth)       |はい|いいえ|
-|[カメラ](https://aka.ms/iot-pnp-bridge-camera)               |はい|いいえ|
-|[Modbus](https://aka.ms/iot-pnp-bridge-modbus)                |はい|はい|
-|[MQTT](https://aka.ms/iot-pnp-bridge-mqtt)                    |はい|はい|
-|[シリアル](https://aka.ms/iot-pnp-bridge-serial)                |はい|はい|
-|[Windows USB 周辺機器](https://aka.ms/iot-pnp-bridge-usb)  |はい|適用しない|
+|[Bluetooth センサー アダプター](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/bluetooth_sensor_adapter.md)で、検出された Bluetooth Low Energy (BLE) 対応センサーを接続します。       |はい|いいえ|
+|[カメラ アダプター](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/camera_adapter.md)で、Windows 10 デバイスのカメラを接続します。               |はい|いいえ|
+|[Modbus アダプター](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/modbus_adapters.md)で、Modbus デバイスのセンサーを接続します。              |はい|はい|
+|[MQTT アダプター](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/mqtt_adapter.md)で、MQTT ブローカーを使用するデバイスを接続します。                  |はい|はい|
+|[SerialPnP アダプター](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/serialpnp/Readme.md)で、シリアル接続を介して通信するデバイスを接続します。               |はい|はい|
+|[Windows USB 周辺機器](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/coredevicehealth_adapter.md)では、アダプターでサポートされているデバイス インターフェイス クラスの一覧を使用して、特定のハードウェア ID を持つデバイスを接続します。  |はい|適用しない|
 
->[!Important]
->開発者は、IoT プラグ アンド プレイ ブリッジを拡張して、 **[ここにある IoT プラグ アンド プレイ ブリッジ開発者向けドキュメント](https://aka.ms/iot-pnp-bridge-dev-doc)** の手順に従って、追加のデバイス プロトコルをサポートすることができます。
-
-## <a name="prerequisites"></a>前提条件
-
-### <a name="os-platform"></a>OS プラットフォーム
-
-次の OS プラットフォームおよびバージョンがサポートされています。
-
-|プラットフォーム  |サポートされているバージョン  |
-|---------|---------|
-|Windows 10 |     すべての Windows SKU がサポートされています。 次に例を示します。IoT Enterprise、Server、Desktop、IoT Core。 "*カメラの正常性の監視機能については、20H1 以降のビルドをお勧めします。その他のすべての機能は、すべての Windows 10 ビルドで使用できます。* "  |
-|Linux     |Ubuntu 18.04 でテストおよびサポートされています。他のディストリビューションの機能はテストされていません。         |
-||
-
-### <a name="hardware"></a>ハードウェア
-
-- 上記の OS SKU およびバージョンをサポートできるすべてのハードウェア プラットフォーム。
-- シリアル、USB、Bluetooth、およびカメラの周辺機器およびセンサーは、ネイティブでサポートされています。 IoT プラグ アンド プレイ ブリッジは、任意のカスタム周辺機器またはセンサーをサポートするように拡張できます ([周辺機器に関する上記のセクションを参照](#iot-plug-and-play-bridge))。
-
-### <a name="development-environment"></a>開発環境
-
-IoT プラグ アンド プレイ ブリッジのビルド、拡張、開発を行うには、次のものが必要です。  
-
-- C++ のコンパイルをサポートする次のような開発環境: [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/): Visual Studio をインストールするときに、[C++ によるデスクトップ開発] ワークロードを必ず含めてください。
-- [CMake](https://cmake.org/download/): CMake をインストールするときに、`Add CMake to the system PATH` オプションを選択します。
-- Windows でビルドする場合は、Windows 17763 SDK もダウンロードする必要があります: [https://developer.microsoft.com/windows/downloads/windows-10-sdk](https://developer.microsoft.com/windows/downloads/windows-10-sdk)。
-- [Azure IoT Hub デバイス C SDK](https://github.com/Azure/azure-iot-sdk-c): このリポジトリに含まれているビルド スクリプトによって、必要な Azure IoT C SDK が自動的にクローンされます。
-
-### <a name="azure-iot-products-and-tools"></a>Azure IoT の製品とツール
-
-- **Azure IoT Hub**: Azure サブスクリプションには、デバイスを接続する [Azure IoT Hub](../iot-hub/index.yml) が必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。 IoT ハブがない場合は、[こちらの手順に従って作成します](../iot-hub/iot-hub-create-using-cli.md)。
-
-> [!Note]
-> 現在、IoT プラグ アンド プレイは、米国中部、北ヨーロッパ、東日本の各リージョンで作成された IoT ハブで利用できます。 IoT プラグ アンド プレイ サポートは、Basic レベルの IoT ハブには含まれていません。 IoT プラグ アンド プレイ デバイスを操作するには、Azure IoT エクスプローラー ツールを使用できます。 ご利用のオペレーティング システム用の [Azure IoT エクスプローラーの最新リリースをダウンロードしてインストール](./howto-use-iot-explorer.md)します。
+IoT プラグ アンド プレイ ブリッジを拡張して追加のデバイス プロトコルをサポートする方法については、「[IoT プラグ アンド プレイ ブリッジをビルド、デプロイ、拡張する](howto-build-deploy-extend-pnp-bridge.md)」をご覧ください。
 
 ## <a name="iot-plug-and-play-bridge-architecture"></a>IoT プラグ アンド プレイ ブリッジのアーキテクチャ
 
-:::image type="content" source="media/concepts-iot-pnp-bridge/iot-pnp-bridge-components.png" alt-text="左側には、IoT プラグ アンド プレイ ブリッジを含む Windows または Linux PC に接続されている既存のセンサー (有線とワイヤレスの両方) がいくつかあります。IoT プラグ アンド プレイ ブリッジは、右側の IoT ハブに接続されます":::
+:::image type="content" source="media/concepts-iot-pnp-bridge/iot-pnp-bridge-components.png" alt-text="左側には、IoT プラグ アンド プレイ ブリッジを含む Windows または Linux PC に接続されているさまざまな周辺機器を示すボックスがいくつかあります。上部には、ブリッジに対する構成ポイントとしてラベル付けされたボックスが表示されています。ブリッジは、図の右側にある IoT ハブに接続されます。":::
+
+### <a name="iot-plug-and-play-bridge-adapters"></a>IoT プラグ アンド プレイ ブリッジ アダプター
+
+IoT プラグ アンド プレイ ブリッジでは、さまざまな種類のデバイスに対する一連の IoT プラグ アンド プレイ ブリッジ アダプターがサポートされています。 *アダプター マニフェスト* では、ブリッジに対するアダプターを静的に定義します。
+
+ブリッジ アダプター マネージャーは、マニフェストを使用して、アダプター関数を識別し、呼び出します。 アダプター マネージャーは、構成ファイルに一覧表示されているインターフェイス コンポーネントに必要なブリッジ アダプターに対してのみ、create 関数を呼び出します。 各 IoT プラグ アンド プレイ コンポーネントに対して、アダプター インスタンスが作成されます。
+
+ブリッジ アダプターは、デジタル ツイン インターフェイス ハンドルを作成し、取得します。 アダプターは、このハンドルを使用して、デバイスの機能をデジタル ツインにバインドします。
+
+ブリッジ アダプターは、構成ファイルの情報を使用しながら、次の手法を使用して、ブリッジを介してデバイス全体でデジタル ツイン通信を行えるようにします。
+
+- 通信チャネルを直接確立します。
+- 通信チャネルが使用可能になるまで待機するデバイス ウォッチャーを作成します。
+
+### <a name="configuration-file"></a>構成ファイル
+
+IoT プラグ アンド プレイ ブリッジは、次の内容を指定する JSON ベースの構成ファイルを使用します。
+
+- IoT ハブまたは IoT Central アプリケーションに接続する方法:オプションには、接続文字列、認証パラメーター、または Device Provisioning Service (DPS) があります。
+- ブリッジが使用する IoT プラグ アンド プレイ機能モデルの場所。 このモデルでは、IoT プラグ アンド プレイ デバイスの機能が定義されており、静的で変更不可です。
+- IoT プラグ アンド プレイ インターフェイス コンポーネントと、各コンポーネントの次の情報の一覧:
+- インターフェイス ID とコンポーネント名。
+- コンポーネントとの対話に必要なブリッジ アダプター。
+- ブリッジ アダプターがデバイスとの通信を確立するために必要なデバイス情報。 たとえば、ハードウェア ID や、アダプター、インターフェイス、プロトコルに関する特定の情報などです。
+- アダプターが類似のデバイスとの複数の通信の種類をサポートしている場合は、オプションのブリッジ アダプターのサブタイプまたはインターフェイスの構成。 例では、Bluetooth センサー コンポーネントをどのように構成できるかを示します。
+
+    ```json
+    {
+      "_comment": "Component BLE sensor",
+      "pnp_bridge_component_name": "blesensor1",
+      "pnp_bridge_adapter_id": "bluetooth-sensor-pnp-adapter",
+      "pnp_bridge_adapter_config": {
+        "bluetooth_address": "267541100483311",
+        "blesensor_identity" : "Blesensor1"
+      }
+    }
+    ```
+
+- グローバル ブリッジ アダプター パラメーターの省略可能な一覧。 たとえば、Bluetooth センサー ブリッジ アダプターには、サポートされている構成の辞書があります。 Bluetooth センサー アダプターを必要とするインターフェイス コンポーネントは、次のいずれかの構成を `blesensor_identity` として選択できます。
+
+    ```json
+    {
+      "pnp_bridge_adapter_global_configs": {
+        "bluetooth-sensor-pnp-adapter": {
+          "Blesensor1" : {
+            "company_id": "0x499",
+            "endianness": "big",
+            "telemetry_descriptor": [
+              {
+                "telemetry_name": "humidity",
+                "data_parse_type": "uint8",
+                "data_offset": 1,
+                "conversion_bias": 0,
+                "conversion_coefficient": 0.5
+              },
+              {
+                "telemetry_name": "temperature",
+                "data_parse_type": "int8",
+                "data_offset": 2,
+                "conversion_bias": 0,
+                "conversion_coefficient": 1.0
+              },
+              {
+                "telemetry_name": "pressure",
+                "data_parse_type": "int16",
+                "data_offset": 4,
+                "conversion_bias": 0,
+                "conversion_coefficient": 1.0
+              },
+              {
+                "telemetry_name": "acceleration_x",
+                "data_parse_type": "int16",
+                "data_offset": 6,
+                "conversion_bias": 0,
+                "conversion_coefficient": 0.00980665
+              },
+              {
+                "telemetry_name": "acceleration_y",
+                "data_parse_type": "int16",
+                "data_offset": 8,
+                "conversion_bias": 0,
+                "conversion_coefficient": 0.00980665
+              },
+              {
+                "telemetry_name": "acceleration_z",
+                "data_parse_type": "int16",
+                "data_offset": 10,
+                "conversion_bias": 0,
+                "conversion_coefficient": 0.00980665
+              }
+            ]
+          }
+        }
+      }
+    }
+    ```
 
 ## <a name="download-iot-plug-and-play-bridge"></a>IoT プラグ アンド プレイ ブリッジをダウンロードする
 
-「[IoT プラグ アンド プレイ ブリッジのリリース](https://aka.ms/iot-pnp-bridge-releases)」で、サポートされているアダプターを含む事前ビルドされたバージョンのブリッジをダウンロードし、最新のリリースの資産の一覧を拡張することができます。 ご利用のオペレーティング システム用の最新バージョンのアプリケーションをダウンロードします。
+「[IoT プラグ アンド プレイ ブリッジのリリース](https://github.com/Azure/iot-plug-and-play-bridge/releases)」で、サポートされているアダプターを含む事前ビルドされたバージョンのブリッジをダウンロードし、最新のリリースの資産の一覧を拡張することができます。 ご利用のオペレーティング システム用の最新バージョンのアプリケーションをダウンロードします。
 
-[GitHub の IoT プラグ アンド プレイ ブリッジ](https://aka.ms/bridge)のソース コードをダウンロードして表示することもできます。
+[GitHub の IoT プラグ アンド プレイ ブリッジ](https://github.com/Azure/iot-plug-and-play-bridge)のソース コードをダウンロードして表示することもできます。
 
 ## <a name="next-steps"></a>次の手順
 
 ここでは、IoT プラグ アンド プレイ ブリッジのアーキテクチャの概要を示しました。次の手順では以下の詳細を参照してください。
 
 - [IoT プラグ アンド プレイ ブリッジの使用方法](./howto-use-iot-pnp-bridge.md)
-- [IoT プラグ アンド プレイ ブリッジの GitHub 開発者向けリファレンスを参照する](https://aka.ms/iot-pnp-bridge-dev-doc)
-- [GitHub の IoT プラグ アンド プレイ ブリッジ](https://aka.ms/iotplugandplaybridge)
+- [IoT プラグ アンド プレイ ブリッジをビルド、デプロイ、拡張する](howto-build-deploy-extend-pnp-bridge.md)
+- [GitHub の IoT プラグ アンド プレイ ブリッジ](https://github.com/Azure/iot-plug-and-play-bridge)

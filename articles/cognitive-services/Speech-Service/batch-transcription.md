@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 12/23/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 426cf78f6b87acf1d8c7551b0b0a6172a30167b1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 68a129f38e9a94a7e381d11ffa3c3d02791b025b
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621097"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755771"
 ---
 # <a name="how-to-use-batch-transcription"></a>バッチ文字起こしの使用方法
 
-バッチ文字起こしは、ストレージ内の大量のオーディオを文字起こしできる一連の REST API 操作です。 一般的な URI または Shared Access Signatures (SAS) URI を使用してオーディオ ファイルを示し、非同期に文字起こしの結果を受け取ることができます。 v3.0 API では、1 つ以上のオーディオ ファイルを文字起こしするか、またはストレージ コンテナー全体を処理することがきます。
+バッチ文字起こしは、ストレージ内の大量のオーディオを文字起こしできる一連の REST API 操作です。 一般的な URI または [Shared Access Signatures (SAS)](../../storage/common/storage-sas-overview.md) URI を使用してオーディオ ファイルを示し、非同期に文字起こしの結果を受け取ることができます。 v3.0 API では、1 つ以上のオーディオ ファイルを文字起こしするか、またはストレージ コンテナー全体を処理することがきます。
 
 バッチ文字起こし REST API を使用すると、次のメソッドを呼び出すことができます。
 
@@ -66,7 +66,7 @@ Speech Service の他の機能と同様に、[使用開始ガイド](overview.md
 
 ### <a name="configuration"></a>構成
 
-構成パラメーターは JSON として提供されます。
+構成パラメーターは JSON として提供されます。 
 
 **1 つ以上の個別のファイルを文字起こししています。** 複数のファイルを文字起こしする場合は、1 つの要求で複数のファイルを送信することをお勧めします。 次の例では、3 つのファイルを使用しています。
 
@@ -85,7 +85,7 @@ Speech Service の他の機能と同様に、[使用開始ガイド](overview.md
 }
 ```
 
-**ストレージ コンテナー全体の処理:**
+**ストレージ コンテナー全体の処理。** コンテナー [SAS](../../storage/common/storage-sas-overview.md) には、`r` (読み取り) と `l` (一覧) のアクセス許可が含まれている必要があります。
 
 ```json
 {
@@ -177,7 +177,7 @@ Speech Service の他の機能と同様に、[使用開始ガイド](overview.md
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      Azure の書き込み可能なコンテナーに対する[サービス アドホック SAS](../../storage/common/storage-sas-overview.md) のオプションの URL。 結果はこのコンテナーに格納されます。 保存されているアクセス ポリシーによる SAS は **サポートされていません**。 指定しない場合、Microsoft では、Microsoft が管理するストレージ コンテナーに結果を格納します。 [文字起こしの削除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)を呼び出して文字起こしを削除すると、結果データも削除されます。
+      Azure の書き込み可能なコンテナーに対する[アドホック SAS](../../storage/common/storage-sas-overview.md) のオプションの URL。 結果はこのコンテナーに格納されます。 保存されているアクセス ポリシーによる SAS は **サポートされていません**。 指定しない場合、Microsoft では、Microsoft が管理するストレージ コンテナーに結果を格納します。 [文字起こしの削除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)を呼び出して文字起こしを削除すると、結果データも削除されます。
 :::row-end:::
 
 ### <a name="storage"></a>ストレージ

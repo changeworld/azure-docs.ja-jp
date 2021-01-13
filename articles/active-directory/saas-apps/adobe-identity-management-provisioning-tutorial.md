@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: aafdbe631426b4b0c8c762a81457369bc474f479
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7b4dd01b74f81318338196a40949d339f13d16da
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181127"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673302"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために Adobe Identity Management を構成する
 
@@ -57,15 +57,15 @@ ms.locfileid: "96181127"
 
 2. **[Add Sync]\(同期の追加\)** をクリックします。
 
-      ![追加](media/adobe-identity-management-provisioning-tutorial/add-sync.png)
+    ![追加](media/adobe-identity-management-provisioning-tutorial/add-sync.png)
 
 3. **[Sync users from Microsoft Azure]\(Microsoft Azure からユーザーを同期する\)** を選択し、 **[Next]\(次へ\)** をクリックします。
 
-      ![同期](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
+    ![[Microsoft Azure Active Directory からユーザーを同期する] が選択されていることを示すスクリーンショット。](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
 
 4. **[Tenant URL]\(テナント URL\)** と **[Secret token]\(シークレット トークン\)** をコピーして保存します。 これらの値を、Azure portal の Adobe Identity Management アプリケーションの [プロビジョニング] タブの **[テナント URL]** と **[シークレット トークン]** フィールドに入力します。
 
-      ![同期](media/adobe-identity-management-provisioning-tutorial/token.png)
+    ![同期](media/adobe-identity-management-provisioning-tutorial/token.png)
 
 ## <a name="step-3-add-adobe-identity-management-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Adobe Identity Management を追加する
 

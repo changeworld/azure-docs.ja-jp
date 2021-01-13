@@ -644,34 +644,6 @@
       href: identity-videos.md
     - name: Microsoft の ID プラットフォーム開発者ブログ
       href: 'https://developer.microsoft.com/en-us/identity/blogs/'
-    - name: Azure portal のヘルプ記事
-      items:
-        - name: 独自に開発したアプリケーションのトークン有効期間の既定値
-          href: registration-config-change-token-lifetime-how-to.md
-        - name: エンドポイントを検出する
-          href: registration-config-how-to.md
-        - name: 指定の API のアクセス許可を選択する
-          href: perms-for-given-api.md
-        - name: 認証プロトコル
-          href: active-directory-authentication-protocols.md
-        - name: 委任されたアクセス許可とアプリケーションのアクセス許可の違い
-          href: delegated-and-app-perms.md
-        - name: アプリケーションの同意のしくみ
-          href: consent-framework-links.md
-        - name: 独自に開発したアプリケーションに必要な特定の API を見つける
-          href: api-find-an-api-how-to.md
-        - name: アプリ登録のリファレンス
-          href: active-directory-v2-registration-portal.md
-        - name: 独自に開発したアプリ用の Azure portal の登録フィールド
-          href: registration-config-specific-application-property-how-to.md
-        - name: 新しいマルチテナント アプリケーションを構成する
-          href: setup-multi-tenant-app.md
-        - name: Azure AD アプリケーション ギャラリーにマルチテナント アプリケーションを追加する
-          href: registration-config-multi-tenant-application-add-to-gallery-how-to.md
-        - name: Azure Active Directory との統合
-          href: active-directory-how-to-integrate.md
-        - name: アプリケーションのシングル サインオンを構成する
-          href: registration-config-sso-how-to.md
     - name: Azure AD BLOG
       href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: Azure のロードマップ

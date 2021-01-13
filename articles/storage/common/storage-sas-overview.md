@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: d435ced4c8ec56fae5081ede367b593d2b66ef0f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 8812ab091037bcb3144a7fed53a449c3f5de353a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936541"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802509"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する
 
@@ -112,7 +112,7 @@ SAS トークンは、クライアント側で生成する文字列であり、�
 
 クライアント アプリケーションから、要求の一部として SAS URI が Azure Storage に提供されます。 次に、サービスによって SAS パラメーターと署名がチェックされ、それが有効であることが確認されます。 サービスによって署名が有効であることが確認されると、要求が承認されます。 それ以外の場合、要求はエラー コード 403 (Forbidden) で拒否されます。
 
-リソース URI と その SAS トークンを示すサービス SAS URI の例は以下のようになります。
+リソース URI と その SAS トークンを示すサービス SAS URI の例は以下のようになります。 SAS トークンは URI クエリ文字列を構成しているので、リソース URI の後に疑問符に続けて SAS トークンを使用する必要があります。
 
 ![サービス SAS URI のコンポーネント](./media/storage-sas-overview/sas-storage-uri.png)
 

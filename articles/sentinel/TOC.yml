@@ -56,6 +56,8 @@
               href: connect-azure-active-directory.md
             - name: Office 365 (Teams も対象)
               href: connect-office-365.md
+            - name: Dynamics 365 (新規)
+              href: connect-dynamics-365.md
             - name: Cloud App Security
               href: connect-cloud-app-security.md
             - name: '[Azure Activity Log (Azure アクティビティ ログ)]'
@@ -72,16 +74,18 @@
               href: connect-azure-atp.md
             - name: Microsoft Defender for Office 365 (旧称 Office 365 ATP)
               href: connect-office-365-advanced-threat-protection.md
-            - name: Azure DDoS Protection
-              href: connect-azure-ddos-protection.md
-            - name: Azure Firewall
-              href: connect-azure-firewall.md
             - name: ASC からの Azure Defender アラート
               href: connect-azure-security-center.md
             - name: IoT 用 Azure Defender (旧称 ASC)
               href: connect-asc-iot.md
+            - name: Azure DDoS Protection
+              href: connect-azure-ddos-protection.md
+            - name: Azure Firewall
+              href: connect-azure-firewall.md
             - name: Azure Web アプリケーション ファイアウォール (WAF)
               href: connect-azure-waf.md
+            - name: Azure SQL データベース ログ
+              href: connect-azure-sql-logs.md
             - name: ドメイン ネーム サーバー
               href: connect-dns.md
             - name: Windows ファイアウォール

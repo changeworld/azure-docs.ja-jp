@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
 ms.author: anwigley
-ms.openlocfilehash: b733e90b69be4e2bd458be5486564747ed4cca78
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 448b3d93ed58e4cfc73da576f0c5871600400ac6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018873"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019841"
 ---
 # <a name="apply-devops-to-luis-app-development-using-github-actions"></a>GitHub Actions を使用して LUIS アプリ開発に DevOps を適用する
 
@@ -29,7 +29,7 @@ LUIS の DevOps およびソフトウェア エンジニアリングのベスト
 * **テンプレート リポジトリの複製** - テンプレートを独自の GitHub リポジトリにコピーします。
 * **LUIS リソースの構成** - 継続的インテグレーション ワークフローによって使用される [LUIS 作成と予測リソースを Azure](./luis-how-to-azure-subscription.md) で作成します。
 * **CI/CD ワークフローの構成** - CI/CD ワークフローのパラメーターを構成し、[GitHub シークレット](https://help.github.com/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)に保存します。
-* **["開発者の内部ループ"](https://mitchdenny.com/the-inner-loop/) の手順の確認** - 開発者は、開発ブランチで作業している間にサンプル LUIS アプリのアップデートを行い、アップデートをテストした後、変更を提案してレビューの承認を求めるための pull request を出します。
+* **["開発者の内部ループ"](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow) の手順の確認** - 開発者は、開発ブランチで作業している間にサンプル LUIS アプリのアップデートを行い、アップデートをテストした後、変更を提案してレビューの承認を求めるための pull request を出します。
 * **CI/CD ワークフローの実行** - [継続的インテグレーション ワークフローを実行し、GitHub アクションを使用して LUIS アプリをビルドしてテスト](luis-concept-devops-automation.md)します。
 * **自動テストの実行** - アプリの品質を評価するために、[LUIS アプリの自動バッチ テスト](luis-concept-devops-testing.md)を実行します。
 * **LUIS アプリの展開** - [継続的デリバリー (CD) ジョブ](luis-concept-devops-automation.md#continuous-delivery-cd)を実行して、LUIS アプリを公開します。

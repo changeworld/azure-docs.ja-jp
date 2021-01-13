@@ -1,30 +1,30 @@
 ---
-title: Python から Azure Queue storage を使用する方法 - Azure Storage
-description: Python から Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。
+title: Python から Azure Queue Storage を使用する方法 - Azure Storage
+description: Python から Azure Queue Storage を使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 08/25/2020
+ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.topic: how-to
-ms.reviewer: dineshm
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: ac75b89548d346945901d752672ef0f08601ccfb
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: e473bf5c2761010a6aeea94e6430d34ca34989fb
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345654"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588279"
 ---
-# <a name="how-to-use-azure-queue-storage-from-python"></a>Python から Azure Queue storage を使用する方法
+# <a name="how-to-use-azure-queue-storage-from-python"></a>Python から Azure Queue Storage を使用する方法
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 ## <a name="overview"></a>概要
 
-この記事では、Azure Queue ストレージ サービスを使用した一般的なシナリオについて説明します。 扱われるシナリオには、キュー メッセージの挿入、ピーク、取得、削除が含まれます。 キューを作成および削除するためのコードについても説明します。
+この記事では、Azure Queue Storage サービスを使用した一般的なシナリオについて説明します。 扱われるシナリオには、キュー メッセージの挿入、ピーク、取得、削除が含まれます。 キューを作成および削除するためのコードについても説明します。
 
-この記事のサンプルは Python で作成され、[Python パッケージ用 Azure Queue storage クライアント ライブラリ]を使用しています。 キューの詳細については、「[次のステップ](#next-steps)」のセクションを参照してください。
+この記事のサンプルは Python で作成され、[Python パッケージ用 Azure Queue Storage クライアント ライブラリ](https://github.com/Azure/Azure-SDK-for-Python/tree/master/sdk/storage/azure-storage-queue)を使用しています。 キューの詳細については、「[次のステップ](#next-steps)」のセクションを参照してください。
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "93345654"
 
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>Azure Storage SDK for Python をダウンロードしてインストールする
 
-[Azure Storage SDK for Python](https://github.com/azure/azure-storage-python) には、Python バージョン 2.7、3.3、またはそれ以降が必要です。
+[Azure Storage SDK for Python](https://github.com/azure/azure-storage-python) には、Python v2.7、v3.3、またはそれ以降が必要です。
 
 ### <a name="install-via-pypi"></a>PyPI でインストールする
 
@@ -53,23 +53,23 @@ pip install azure-storage-queue==2.1.0
 ---
 
 > [!NOTE]
-> Azure Storage SDK for Python 0.36 以前のバージョンからアップグレードする場合は、`pip uninstall azure-storage` を使用して以前の SDK をアンインストールしてから、最新のパッケージをインストールします。
+> Azure Storage SDK for Python v0.36 以前からアップグレードする場合は、`pip uninstall azure-storage` を使用して以前の SDK をアンインストールしてから、最新のパッケージをインストールします。
 
-別のインストール方法については、[Azure SDK for Python]をご覧ください。
+別のインストール方法については、[Azure SDK for Python](https://github.com/Azure/Azure-SDK-for-Python)をご覧ください。
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
-## <a name="configure-your-application-to-access-queue-storage"></a>キュー ストレージにアクセスするようにアプリケーションを構成する
+## <a name="configure-your-application-to-access-queue-storage"></a>Queue ストレージにアクセスするようにアプリケーションを構成する
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-[QueueClient](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient) オブジェクトを使用して、キューを操作できます。 プログラムを使用して Azure キューにアクセスするすべての Python ファイルの先頭付近に次のコードを追加します。
+[`QueueClient`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient) オブジェクトを使用して、キューを操作できます。 プログラムを使用して Azure キューにアクセスするすべての Python ファイルの先頭付近に次のコードを追加します。
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_ImportStatements":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-[QueueService](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2) オブジェクトを使用して、キューを操作できます。 次のコードでは、`QueueService` オブジェクトを作成します。 プログラムを使用して Azure Storage にアクセスするすべての Python ファイルの先頭付近に次のコードを追加します。
+[`QueueService`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2) オブジェクトを使用して、キューを操作できます。 次のコードでは、`QueueService` オブジェクトを作成します。 プログラムを使用して Azure Storage にアクセスするすべての Python ファイルの先頭付近に次のコードを追加します。
 
 ```python
 from azure.storage.queue import (
@@ -121,16 +121,16 @@ queue_service.create_queue(queue_name)
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-メッセージをキューに挿入するには、[send_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) メソッドを使用します。
+メッセージをキューに挿入するには、[`send_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) メソッドを使用します。
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_AddMessage":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-キューにメッセージを挿入するには、[put_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) メソッドを使用し、新しいメッセージを作成してキューに追加します。
+キューにメッセージを挿入するには、[`put_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) メソッドを使い、新しいメッセージを作成してキューに追加します。
 
 ```python
-message = u"Hello World"
+message = u"Hello, World"
 print("Adding message: " + message)
 queue_service.put_message(queue_name, message)
 ```
@@ -147,7 +147,7 @@ Azure のキュー メッセージはテキストとして格納されます。 
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-キュー サービス オブジェクトで Base64 エンコードおよびデコード関数を構成します。
+Queue Storage オブジェクトで Base64 エンコードおよびデコード関数を構成します。
 
 ```python
 # Setup Base64 encoding and decoding functions
@@ -161,13 +161,13 @@ queue_service.decode_function = QueueMessageFormat.binary_base64decode
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-[peek_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) メソッドを呼び出せば、メッセージをキューから削除せずにピークできます。 `peek_messages` の既定では、1 つのメッセージを対象としてピークします。
+[`peek_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) メソッドを呼び出せば、メッセージをキューから削除せずにピークできます。 既定では、このメソッドは 1 つのメッセージを対象としてピークします。
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_PeekMessage":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-[peek_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#peek-messages-queue-name--num-messages-none--timeout-none-) メソッドを呼び出せば、メッセージをキューから削除せずにピークできます。 `peek_messages` の既定では、1 つのメッセージを対象としてピークします。
+[`peek_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#peek-messages-queue-name--num-messages-none--timeout-none-) メソッドを呼び出せば、メッセージをキューから削除せずにピークできます。 既定では、このメソッドは 1 つのメッセージを対象としてピークします。
 
 ```python
 messages = queue_service.peek_messages(queue_name)
@@ -184,20 +184,20 @@ for peeked_message in messages:
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-次のコードでは、[update_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) メソッドを使用してメッセージを更新します。 表示のタイムアウトは 0 に設定されています。これは、メッセージが即時に表示され、コンテンツが更新されることを示します。
+次のコードでは、[`update_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) メソッドを使用してメッセージを更新します。 表示のタイムアウトは 0 に設定されています。これは、メッセージが即時に表示され、コンテンツが更新されることを示します。
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_ChangeMessage":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-次のコードでは、[update_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) メソッドを使用してメッセージを更新します。 表示のタイムアウトは 0 に設定されています。これは、メッセージが即時に表示され、コンテンツが更新されることを示します。
+次のコードでは、[`update_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) メソッドを使用してメッセージを更新します。 表示のタイムアウトは 0 に設定されています。これは、メッセージが即時に表示され、コンテンツが更新されることを示します。
 
 ```python
 messages = queue_service.get_messages(queue_name)
 
 for message in messages:
     queue_service.update_message(
-        queue_name, message.id, message.pop_receipt, 0, u"Hello World Again")
+        queue_name, message.id, message.pop_receipt, 0, u"Hello, World Again")
 ```
 
 ---
@@ -208,13 +208,13 @@ for message in messages:
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-[get_queue_properties](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#get-queue-properties---kwargs-) メソッドでは、`approximate_message_count` などのキューのプロパティを返すよう Queue サービスへの要求が行われます。
+[get_queue_properties](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#get-queue-properties---kwargs-) メソッドからは、`approximate_message_count` を含む、キューのプロパティが返されます。
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_GetQueueLength":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-[get_queue_metadata](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-queue-metadata-queue-name--timeout-none-) メソッドを使って、`approximate_message_count` などのキューについてのメタデータを返すように Queue サービスに要求します。
+[`get_queue_metadata`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-queue-metadata-queue-name--timeout-none-) メソッドからは、`approximate_message_count` を含む、キューのプロパティが返されます。
 
 ```python
 metadata = queue_service.get_queue_metadata(queue_name)
@@ -224,7 +224,7 @@ print("Message count: " + str(count))
 
 ---
 
-Queue サービスが要求に応答した後にメッセージが追加または削除される可能性があるため、取得される結果はおおよその数を示しているだけです。
+サービスが要求に応答した後にメッセージが追加または削除される可能性があるため、取得される結果はおおよその数を示しているだけです。
 
 ## <a name="dequeue-messages"></a>メッセージをデキューする
 
@@ -254,13 +254,13 @@ for message in messages:
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-次のコード例では、[receive_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) メソッドを使用して、メッセージをバッチで取得します。 次に、入れ子になった `for` ループを使用して、各バッチ内の各メッセージを処理します。 また、各メッセージの非表示タイムアウトを 5 分に設定します。
+次のコード例では、[`receive_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) メソッドを使用して、メッセージを一括して取得します。 次に、入れ子になった `for` ループを使用して、各バッチ内の各メッセージを処理します。 また、各メッセージの非表示タイムアウトを 5 分に設定します。
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_DequeueByPage":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-次のコード例では、[get_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-) メソッドを使用して、1 回の呼び出しで 16 個のメッセージを取得します。 その後、`for` ループを使用して、各メッセージを処理します。 また、各メッセージの非表示タイムアウトを 5 分に設定します。
+次のコード例では、[`get_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-) メソッドを使用して、1 回の呼び出しで 16 個のメッセージを取得します。 その後、`for` ループを使用して、各メッセージを処理します。 また、各メッセージの非表示タイムアウトを 5 分に設定します。
 
 ```python
 messages = queue_service.get_messages(queue_name, num_messages=16, visibility_timeout=5*60)
@@ -276,13 +276,13 @@ for message in messages:
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-キューおよびキューに含まれているすべてのメッセージを削除するには、[delete_queue](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) メソッドを呼び出します。
+キューおよびキューに含まれているすべてのメッセージを削除するには、[`delete_queue`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) メソッドを呼び出します。
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_DeleteQueue":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-キューおよびキューに含まれているすべてのメッセージを削除するには、[delete_queue](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#delete-queue-queue-name--fail-not-exist-false--timeout-none-) メソッドを呼び出します。
+キューおよびキューに含まれているすべてのメッセージを削除するには、[`delete_queue`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#delete-queue-queue-name--fail-not-exist-false--timeout-none-) メソッドを呼び出します。
 
 ```python
 print("Deleting queue: " + queue_name)
@@ -297,10 +297,6 @@ queue_service.delete_queue(queue_name)
 
 これで、Queue Storage の基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
-- [Azure キューの Python API リファレンス](/python/api/azure-storage-queue)
+- [Azure Queue Storage の Python API リファレンス](/python/api/azure-storage-queue)
 - [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)
-- [Azure Storage Services REST API (Azure Storage サービスの REST API)](/rest/api/storageservices/)
-
-[Python 用 Azure Queue storage クライアント ライブラリ]: https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue
-[Azure SDK for Python]: https://github.com/azure/azure-sdk-for-python
-[Azure Storage Team Blog]: https://techcommunity.microsoft.com/t5/azure-storage/bg-p/AzureStorageBlog
+- [Azure Storage REST API リファレンス](/rest/api/storageservices/)

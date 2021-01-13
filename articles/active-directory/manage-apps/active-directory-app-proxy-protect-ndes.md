@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 0682115727068c928418d97fbf92ed32897c39d4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0793547c4eafcad256664546240a07c1bcb0e628
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656753"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709012"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>ネットワーク デバイス登録サービス (NDES) サーバー上の Azure AD アプリケーション プロキシとの統合
 
@@ -81,7 +81,7 @@ Azure AD アプリケーション プロキシは Azure 上に構築されてい
 
 1. **[+追加]** をクリックして、アプリケーションを保存します。
 
-1. ステップ 10 でコピーしたリンクをブラウザーに貼り付けて、Azure AD アプリケーション プロキシを介して NDES サーバーにアクセスできるかどうかをテストします。 既定の IIS ウェルカム ページが表示されるはずです。
+1. ステップ 15 でコピーしたリンクをブラウザーに貼り付けて、Azure AD アプリケーション プロキシを介して NDES サーバーにアクセスできるかどうかをテストします。 既定の IIS ウェルカム ページが表示されるはずです。
 
 1. 最後のテストとして、前のステップで貼り付けた既存の URL に *mscep.dll* パスを追加します。
 

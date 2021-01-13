@@ -3,12 +3,12 @@ title: プライベート エンドポイント
 description: Azure Backup のプライベート エンドポイントを作成するプロセスと、プライベート エンドポイントを使用することでリソースのセキュリティが維持しやすくなるシナリオについて説明します。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 0ca4e7a83e18ac72e25131d320737ce9578b1cf3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ed71e49ebc550cb7bc2041e25aa6b9bde77b1ef
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184751"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629716"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイント
 
@@ -26,6 +26,7 @@ Azure Backup で[プライベート エンドポイント](../private-link/priva
 - Azure Active Directory では、現在、プライベート エンドポイントがサポートされていません。 したがって、Azure Active Directory がリージョンで機能するために必要な IP と FQDN には、Azure VM でのデータベースのバックアップおよび MARS エージェントを使用したバックアップを実行するときに、セキュリティで保護されたネットワークからの発信アクセスが許可される必要があります。 また、必要に応じて、NSG タグと Azure Firewall タグを使用して、Azure AD へのアクセスを許可することもできます。
 - ネットワーク ポリシーが適用されている仮想ネットワークは、プライベート エンドポイント用にサポートされません。 続行する前に、ネットワーク ポリシーを無効にする必要があります。
 - Recovery Services リソース プロバイダーをサブスクリプションに 2020 年 5 月 1 日より前に登録した場合は、再登録する必要があります。 プロバイダーを再登録するには、Azure portal のサブスクリプションに移動し、左側のナビゲーションバーで **[リソース プロバイダー]** に移動し、 **[Microsoft.RecoveryServices]** を選択し、 **[再登録]** を選択します。
+- コンテナーでプライベート エンドポイントが有効になっている場合、SQL および SAP HANA データベース バックアップの[リージョンをまたがる復元](backup-create-rs-vault.md#set-cross-region-restore)はサポートされていません。
 
 ## <a name="recommended-and-supported-scenarios"></a>推奨されるシナリオとサポートされるシナリオ
 

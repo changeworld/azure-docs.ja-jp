@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1c1a5a96742d380ce42c0aea8c77a199083df47f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cbc22f9b55f8d20880b43516a2a5bc8f55d389f5
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492252"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814501"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure DDoS Protection Standard 用の Azure セキュリティ ベースライン
 
@@ -38,7 +38,7 @@ ms.locfileid: "96492252"
 
 Azure アクティビティ ログの診断設定を有効にして、Log Analytics ワークスペース、Azure イベント ハブ、または Azure ストレージア カウントにログを送信してアーカイブします。 アクティビティ ログは、コントロール プレーン レベルで Azure Cache for Redis インスタンスで実行された操作に関する分析情報を提供します。 Azure アクティビティ ログのデータを使用すると、Azure DDoS Protection インスタンスのコントロール プレーン レベルで実行された書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを確認できます。
 
-- [DDoS Protection メトリックのアラートを構成する方法](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [DDoS 診断ログの表示と構成](../../ddos-protection/diagnostic-logging.md)
 
 - [Azure アクティビティ ログの診断設定を有効にする方法](../../azure-monitor/platform/activity-log.md)
 
@@ -60,7 +60,7 @@ Azure アクティビティ ログの診断設定を有効にして、Log Analyt
 
 **ガイダンス**: Azure アクティビティ ログの診断設定を有効にし、Log Analytics ワークスペースにログを送信します。 Log Analytics でクエリを実行して、用語の検索、傾向の特定、パターンの分析を行います。また、Recovery Services コンテナー用に収集された可能性があるアクティビティ ログ データに基づいて、多くの他の分析情報も提供されます。
 
-- [DDoS Protection 標準サービスのテレメトリ、ログ、および攻撃分析にアクセスする方法に関する情報](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [DDoS Protection 標準サービスのテレメトリ、ログ、および攻撃分析にアクセスする方法に関する情報](../../ddos-protection/telemetry.md)
 
 - [Azure アクティビティ ログの診断設定を有効にする方法](../../azure-monitor/platform/activity-log.md)
 
@@ -76,7 +76,7 @@ Azure アクティビティ ログの診断設定を有効にして、Log Analyt
 
 Log Analytics ワークスペースを Azure Sentinel にオンボードします。これは、セキュリティ オーケストレーション自動応答 (SOAR) ソリューションが提供されるためです。 これにより、プレイブック (自動化されたソリューション) を作成して、セキュリティの問題を修復するために使用できます。 また、Azure Monitor を使用して、Log Analytics ワークスペースでカスタムのログ アラートを作成することもできます。
 
-- [DDoS メトリックのアラートを構成する方法](https://azure.microsoft.com/blog/holiday-season-is-ddos-season/)
+- [DDoS メトリックのアラートを構成する方法](../../ddos-protection/alerts.md)
 
 - [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
@@ -384,7 +384,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
-**ガイダンス**:Azure Policy を使用して、Azure DDos Protection の標準的なセキュリティ構成を定義して実装します。 Recovery Services コンテナーの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Network" 名前空間で Azure Policy エイリアスを使用します。
+**ガイダンス**:Azure Policy を使用して、Azure DDoS Protection の標準的なセキュリティ構成を定義して実装します。 Recovery Services コンテナーの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Network" 名前空間で Azure Policy エイリアスを使用します。
 
 - [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
@@ -524,7 +524,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 Azure Monitor のアラート構成を使用すると、利用可能な DDoS Protection メトリックをどれでも選び、攻撃中に有効な軽減策がある場合にそのメトリックのアラートを受けることができます。 条件が満たされると、指定したアドレスにアラート メールが届きます
 
-- [DDoS Protection メトリックのアラートを構成する](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [DDoS Protection メトリックのアラートを構成する](../../ddos-protection/alerts.md)
 
 - [連続エクスポートを構成する方法](../../security-center/continuous-export.md)
 

@@ -9,12 +9,12 @@ ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0166a3b6031f9e1d364a37db99be5bc5a65267df
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 01065f9ac26599d26d6e2a6979eae1e559a82854
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95484612"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722965"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure Spatial Anchors に対する認証と承認
 
@@ -193,7 +193,7 @@ Azure AD アクセス トークンは、[MSAL](../../active-directory/develop/ms
 **コードで**
 
 >[!NOTE]
-> GitHub で入手できるサービス サンプルを使用できます。
+> [Spatial Anchors のサンプル アプリ](https://github.com/Azure/azure-spatial-anchors-samples)の一部として利用可能な[サービス サンプル](https://github.com/Azure/azure-spatial-anchors-samples/tree/master/Sharing/SharingServiceSample)を使用できます。
 
 1.    自分の Azure AD アプリケーションのアプリケーション ID、アプリケーション シークレット、およびリダイレクト URI を、MSAL の **client ID**、**secret**、および **RedirectUri** の各パラメーターとして使用することを確認します。
 2.    自分の Azure AD テナント ID に対する tenant ID を、MSAL の **authority** パラメーターに設定します。

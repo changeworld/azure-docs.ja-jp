@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用した VMware のディザスター リカ�
 description: Azure Site Recovery を使用してオンプレミスの VMware VM を Azure にディザスター リカバリーする場合のよくある質問に対する回答を確認します。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8f292e7f624b80e8e13514a714c5759d88fbe57c
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a272486eea111ab8c8e489556986f12f382e3f65
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379992"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587794"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションに関するよくある質問
 
@@ -146,6 +146,10 @@ VMware VM を Azure にレプリケートするときは、レプリケーショ
 ### <a name="can-i-extend-replication"></a>レプリケーションを拡張することはできますか?
 
 拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)でこの機能を要求してください。
+
+### <a name="how-can-i-track-progress-of-initial-replicationsynchronization"></a>どのようにすれば初期レプリケーションまたは同期の進捗状況を追跡できますか?
+
+この機能は最近、Site Recovery サービスに追加されました。 正確な詳細情報を取得するには、Site Recovery インフラストラクチャ (構成サーバー、スケールアウト プロセス サーバー) およびモビリティ エージェントをバージョン 9.36 以降に更新します。 進捗状況の追跡方法の詳細については [こちら](vmware-azure-enable-replication.md#monitor-initial-replication)をご覧ください。
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>オフラインの初期レプリケーションを行うことはできますか?
 

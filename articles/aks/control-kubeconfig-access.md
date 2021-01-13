@@ -4,12 +4,12 @@ description: クラスターの管理者とクラスターのユーザーを対�
 services: container-service
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 371628b02ebecee23697e996ee0d484688167875
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 77b9988557106ef460d3b222ef85eb29e08f31c8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684816"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693993"
 ---
 # <a name="use-azure-role-based-access-control-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Azure ロールベースのアクセス制御を使用して、Azure Kubernetes Service (AKS) 内の Kubernetes 構成ファイルへのアクセス権を定義する
 
@@ -69,6 +69,22 @@ az role assignment create \
     --scope $AKS_CLUSTER \
     --role "Azure Kubernetes Service Cluster Admin Role"
 ```
+
+> [!IMPORTANT]
+> アカウントの *user.name* が *userPrincipalName* とは異なる場合があります (たとえば、Azure AD guest ユーザーの場合)。
+>
+> ```output
+> $ az account show --query user.name -o tsv
+> user@contoso.com
+> $ az ad user list --query "[?contains(otherMails,'user@contoso.com')].{UPN:userPrincipalName}" -o tsv
+> user_contoso.com#EXT#@contoso.onmicrosoft.com
+> ```
+>
+> この場合は、*ACCOUNT_UPN* の値を Azure AD ユーザーの *userPrincipalName* に設定します。 たとえば、アカウント *user.name* が *user\@contoso.com* の場合、次のようになります。
+> 
+> ```azurecli-interactive
+> ACCOUNT_UPN=$(az ad user list --query "[?contains(otherMails,'user@contoso.com')].{UPN:userPrincipalName}" -o tsv)
+> ```
 
 > [!TIP]
 > Azure AD グループにアクセス許可を割り当てる場合は、*ユーザー* ではなく、*グループ* のオブジェクト ID を使用して、上の例で示した `--assignee` パラメーターを更新してください。 グループのオブジェクト ID を取得するには、[az ad group show][az-ad-group-show] コマンドを使用します。 次の例は、*appdev* という名前の Azure AD グループのオブジェクト ID を取得します。`az ad group show --group appdev --query objectId -o tsv`

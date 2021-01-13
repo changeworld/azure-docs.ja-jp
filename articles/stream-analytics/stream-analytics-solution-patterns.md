@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: b82dd4ea8a74c51606b7a388b8d6ede07b1057c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02276ebf8e8a2289db2a1f6eac506443cea61c31
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461546"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97682716"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics のソリューション パターン
 
@@ -20,7 +20,7 @@ Azure にある他の多くのサービスと同様、Stream Analytics は、他
 
 ## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>Stream Analytics ジョブを作成してリアルタイム ダッシュボード エクスペリエンスを強化する
 
-Azure Stream Analytics を使用して、リアルタイムのダッシュボードとアラートを簡単に構築することができます。 Event Hubs または IoT Hub からイベントを取り込み、[Power BI ダッシュボードにストリーミング データ セットをフィード](/power-bi/service-real-time-streaming)するシンプルなソリューションが挙げられます。 詳細については、「[Stream Analytics で通話データを分析し、Power BI ダッシュボードで結果を視覚化する](stream-analytics-manage-job.md)」という詳しいチュートリアルを参照してください。
+Azure Stream Analytics を使用して、リアルタイムのダッシュボードとアラートを簡単に構築することができます。 Event Hubs または IoT Hub からイベントを取り込み、[Power BI ダッシュボードにストリーミング データ セットをフィード](/power-bi/service-real-time-streaming)するシンプルなソリューションが挙げられます。 詳細については、「[Stream Analytics で不正な通話のデータを分析し、Power BI ダッシュボードで結果を視覚化する](stream-analytics-real-time-fraud-detection.md)」という詳しいチュートリアルを参照してください。
 
 ![ASA Power BI ダッシュボード](media/stream-analytics-solution-patterns/power-bi-dashboard.png)
 

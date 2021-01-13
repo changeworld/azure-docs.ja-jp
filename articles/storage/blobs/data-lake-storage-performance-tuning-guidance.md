@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 2011fa8e85f10f12ae914b02710bbd65f5700403
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f0f64d910d03e42008c5fe6fef28a5b9c0917abd
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913047"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814467"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>パフォーマンス用に Azure Data Lake Storage Gen2 を最適化する
 
@@ -21,11 +21,11 @@ Azure Data Lake Storage Gen2 は、I/O 集中型分析とデータ移動での�
 
 ![Data Lake Storage Gen2 のパフォーマンス](./media/data-lake-storage-performance-tuning-guidance/throughput.png)
 
-Data Lake Storage Gen2 は、あらゆる分析シナリオで必要とされるスループットを提供するようにスケーリングできます。 既定では、Data Lake Storage Gen2 アカウントは、広範なカテゴリのユース ケースのニーズを満たすのに十分なスループットを自動的に提供します。 お客様が既定の制限に達した場合、[Azure サポート](https://azure.microsoft.com/support/faq/)に連絡して、さらに高いスループットを提供するように Data Lake Storage Gen2 アカウントを構成することができます。
+Data Lake Storage Gen2 は、あらゆる分析シナリオで必要とされるスループットを提供するようにスケーリングできます。 既定では、Data Lake Storage Gen2 アカウントは、広範なカテゴリのユース ケースのニーズを満たすのに十分なスループットを既定の構成で提供します。 お客様が既定の制限に達した場合、[Azure サポート](https://azure.microsoft.com/support/faq/)に連絡して、さらに高いスループットを提供するように Data Lake Storage Gen2 アカウントを構成することができます。
 
 ## <a name="data-ingestion"></a>データ インジェスト
 
-ソース システムから Data Lake Storage Gen2 にデータを取り込む場合には、ソース ハードウェア、ソース ネットワーク ハードウェア、および Data Lake Storage Gen2 へのネットワークの接続性がボトルネックとなる可能性があることを考慮することが重要です。  
+ソース システムから Data Lake Storage Gen2 にデータを取り込む場合には、ソース ハードウェア、ソース ネットワーク ハードウェア、または Data Lake Storage Gen2 へのネットワークの接続性がボトルネックとなる可能性があることを考慮することが重要です。  
 
 ![ソース システムから Data Lake Storage Gen2 にデータを取り込むときに考慮すべき要素を示す図。](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
@@ -43,7 +43,7 @@ Data Lake Storage Gen2 は、あらゆる分析シナリオで必要とされる
 
 上記のソース ハードウェアとネットワーク接続性のボトルネックに対処したら、次はデータ インジェスト ツールを構成します。 次の表に、一般的なインジェスト ツールの主要な設定の概要と、それらのパフォーマンス チューニングに関する詳細な記事を示します。  ご自身のシナリオで使用すべきツールの詳細については、この[記事](data-lake-storage-data-scenarios.md)をご覧ください。
 
-| ツール               | 設定     | 詳細                                                                 |
+| ツール               | 設定 | 詳細                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (マッパー)   | [リンク](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [リンク](../../data-factory/copy-activity-performance.md)                          |

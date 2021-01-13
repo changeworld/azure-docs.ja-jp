@@ -1,14 +1,14 @@
 ---
 title: Connected Machine Windows エージェントの概要
 description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー エージェントの詳細な概要を提供します。
-ms.date: 12/15/2020
+ms.date: 12/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 531041b7d7439dd2a48fa9e06eb82796f470e9ed
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: bff76cbaa678ed82538eb6d75633aa94cdce30bf
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563026"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723271"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの概要
 
@@ -49,7 +49,7 @@ Windows および Linux 用の Azure Connected Machine エージェントは、�
 
 Azure Connected Machine エージェントでは、次のバージョンの Windows および Linux オペレーティング システムが正式にサポートされています。
 
-- Windows Server 2012 R2 以上 (Windows Server Core を含む)
+- Windows Server 2008 R2、Windows Server 2012 R2 以上 (Server Core を含む)
 - Ubuntu 16.04 および 18.04 LTS (x64)
 - CentOS Linux 7 (x64)
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
@@ -82,6 +82,10 @@ Azure に転送中のデータのセキュリティを確保するには、ト�
 
 Linux と Windows 用の Connected Machine エージェントは、TCP ポート 443 を介して安全に Azure Arc へのアウトバウンド通信を行います。 インターネット経由で通信するためにマシンがファイアウォールやプロキシ サーバーを介して接続されている場合は、次を確認してネットワーク構成の要件を把握してください。
 
+> [!NOTE]
+> Arc 対応サーバーでは、Connected Machine エージェントのプロキシとして [Log Analytics ゲートウェイ](../../azure-monitor/platform/gateway.md)を使用することはサポートされていません。
+>
+
 アウトバウンド接続がファイアウォールやプロキシ サーバーによって制限されている場合は、以下に示す URL がブロックされていないことを確認してください。 エージェントがサービスと通信するために必要な IP 範囲またはドメイン名のみを許可する場合は、次のサービス タグおよび URL へのアクセスを許可する必要があります。
 
 サービス タグ:
@@ -97,9 +101,11 @@ URL:
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
+|`login.microsoftonline.com`|Azure Active Directory|
 |`dc.services.visualstudio.com`|Application Insights|
 |`*.guestconfiguration.azure.com` |ゲスト構成|
 |`*.his.arc.azure.com`|ハイブリッド ID サービス|
+|`www.office.com`|Office 365|
 
 プレビュー エージェント (バージョン 0.11 以下) でも、次の URL へのアクセスが必要になります。
 
@@ -163,7 +169,7 @@ Windows 用 Connected Machine エージェントは、次の 3 つの方法の�
 * コマンド シェルから Windows インストーラー パッケージ `AzureConnectedMachineAgent.msi` を実行して手動で。
 * スクリプト化されたメソッドを使用して PowerShell セッションから。
 
-Windows 用 Connected Machine エージェントをインストールした後、次のシステム全体の構成の変更がさらに適用されます。
+Windows 用 Connected Machine エージェントをインストールした後、次のシステム全体の構成変更が適用されます。
 
 * 次のインストール フォルダーは、セットアップ中に作成されます。
 
@@ -215,7 +221,7 @@ Windows 用 Connected Machine エージェントをインストールした後�
 
 Linux 用の Connected Machine エージェントは、Microsoft [パッケージ リポジトリ](https://packages.microsoft.com/)でホストされたディストリビューション (.RPM または .DEB) に適したパッケージ形式で提供されます。 エージェントは、シェル スクリプト バンドルの [Install_linux_azcmagent.sh](https://aka.ms/azcmagent) を使用してインストールおよび構成されます。
 
-Linux 用 Connected Machine エージェントをインストールした後、次のシステム全体の構成変更がさらに適用されます。
+Linux 用 Connected Machine エージェントをインストールした後、次のシステム全体の構成変更が適用されます。
 
 * 次のインストール フォルダーは、セットアップ中に作成されます。
 

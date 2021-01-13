@@ -15,12 +15,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad3bd938355d138e660958e34d046d7af03e75c7
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: edb602e3d55ae07f49d5448283ae0d2b6da4b0cb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97370922"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694136"
 ---
 # <a name="manage-agent-registry-options"></a>エージェントのレジストリ オプションを管理する
 
@@ -63,6 +63,30 @@ System.DirectoryServices.Protocols.LdapException: The operation was aborted beca
     > ![参照の追跡](media/how-to-manage-registry-options/referral-chasing.png)
 1. "*サービス*" コンソールから Azure AD Connect プロビジョニング サービスを再開します。
 1. 複数のプロビジョニング エージェントを展開した場合は、このレジストリ変更をすべてのエージェントに適用して整合性を確保します。
+
+## <a name="skip-gmsa-configuration"></a>GMSA 構成をスキップする
+エージェントのバージョン 1.1.281.0+ を使用すると、既定では、エージェント構成ウィザードを実行するときに、[グループの管理されたサービス アカウント (GMSA)](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) をセットアップするように求められます。 このウィザードによる GMSA セットアップは、すべての同期およびプロビジョニング操作の実行時に使用されます。 
+
+以前のバージョンのエージェントからアップグレードするときに、Active Directory トポロジに固有の委任された OU レベルのアクセス許可を持つカスタム サービス アカウントをセットアップする場合は、GMSA 構成をスキップまたは延期して、この変更を計画することができます。 
+
+> [!NOTE]
+> このガイダンスは、具体的には、1.1.281.0 より前のバージョンのエージェントでの HR (Workday/SuccessFactors) 受信プロビジョニングを構成し、エージェント操作用のカスタム サービス アカウントを設定したお客様に適用されます。 長期的には、ベスト プラクティスとして GMSA に切り替えることをお勧めします。  
+
+このシナリオでは、次の手順に従って、引き続きエージェント バイナリをアップグレードし、GMSA 構成をスキップできます。 
+
+1. Azure AD Connect プロビジョニング エージェントを実行している Windows Server 上に管理者としてログオンします。
+1. エージェント インストーラーを実行して、新しいエージェント バイナリをインストールします。 エージェント構成ウィザードを閉じます。これは、インストールが正常に完了した後に自動的に起動します。 
+1. *[実行]* メニュー項目を使用して、レジストリ エディター (regedit.exe) を開きます 
+1. キー フォルダー **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure AD Connect Agents\Azure AD Connect Provisioning Agent** の場所を特定します
+1. 右クリックし、[新規] -> [DWORD 値] の順に選択します
+1. 次の名前を入力します: `UseCredentials`
+1. **[値の名前]** をダブルクリックし、値データを `1` として入力します。  
+    > [!div class="mx-imgBorder"]
+    > ![ユーザー資格情報](media/how-to-manage-registry-options/use-credentials.png)
+1. "*サービス*" コンソールから Azure AD Connect プロビジョニング サービスを再開します。
+1. 複数のプロビジョニング エージェントを展開した場合は、このレジストリ変更をすべてのエージェントに適用して整合性を確保します。
+1. デスクトップ ショートカットから、エージェントの構成ウィザードを実行します。 このウィザードでは、GMSA 構成がスキップされます。 
+
 
 > [!NOTE]
 > [詳細ログ](how-to-troubleshoot.md#log-files)を有効にすることで、レジストリ オプションが設定されていることを確認できます。 エージェントの起動時に生成されるログには、レジストリから選択された構成値が表示されます。 

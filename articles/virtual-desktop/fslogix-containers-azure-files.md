@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 669f4baa723b78b8933f3a75fc361c468f9e2df9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3bd667bc7fce8f9fb10b852cae7a6c4ad198d75
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002386"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797198"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix プロファイル コンテナーと Azure のファイル
 
@@ -87,7 +87,7 @@ Windows Virtual Desktop では、顧客が使用している VM のサイズ、�
 
 - Azure Files ストレージ アカウントをセッション ホスト VM と同じリージョンにする必要があります。
 - Azure Files のアクセス許可を、「[Requirements - Profile Containers](/fslogix/fslogix-storage-config-ht)」 (要件 - プロファイル コンテナー) に記載されているアクセス許可と一致させる必要があります。
-- 各ホストプールを、同じマスター イメージに基づいて同じ種類および同じサイズの VM で構築する必要があります。
+- 各ホスト プール VM を、同じマスター イメージに基づいて同じ種類および同じサイズの VM で構築する必要があります。
 - 管理、スケーリング、および更新を容易にするために各ホスト プール VM を同じリソースグループに含める必要があります。
 - 最適なパフォーマンスを得るには、ストレージ ソリューションと FSLogix プロファイル コンテナーを同じデータ センターの場所に置く必要があります。
 - マスター イメージを含むストレージ アカウントを、VM がプロビジョニングされるのと同じリージョンおよびサブスクリプションに置く必要があります。

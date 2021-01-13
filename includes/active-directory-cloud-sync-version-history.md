@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 3fc2475569765116d46a175629f25d9d49634942
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 77866fcb72515d5167d9f06b7d9ad91c59bc7945
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993953"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97700598"
 ---
 この記事では、これまでにリリースされた Azure Active Directory Connect プロビジョニング エージェントのバージョンと機能を一覧表示します。 Azure AD チームは、プロビジョニング エージェントを新機能で定期的に更新しています。 プロビジョニング エージェントは、新しいバージョンがリリースされると自動的に更新されます。 
 
@@ -28,6 +28,8 @@ Microsoft では、エージェントの最新バージョンと 1 つ前のバ�
 * スコープ内のオブジェクトのみに対する PHS フィルター処理のサポート (最初は、すべてのオブジェクトのパスワード ハッシュを同期していました)
 * エージェントのメモリ リークの問題を修正
 * プロビジョニング ログの強化
+* [LDAP 接続タイムアウト](../articles/active-directory/cloud-provisioning/how-to-manage-registry-options.md#configure-ldap-connection-timeout)を構成するためのサポート 
+* [参照の追跡](../articles/active-directory/cloud-provisioning/how-to-manage-registry-options.md#configure-referral-chasing)を構成するためのサポート 
 
 
 ## <a name="11960"></a>1.1.96.0

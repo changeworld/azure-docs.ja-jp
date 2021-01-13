@@ -3,12 +3,12 @@ title: Windows 用のゲスト構成ポリシーを作成する方法
 description: Windows に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: d01f4fff28debc3fabcfb32b32b02c5029ce7323
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 85ffda54d58db0544858ca8ab61335b61f18299e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755975"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881788"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows 用のゲスト構成ポリシーを作成する方法
 
@@ -138,9 +138,32 @@ class ResourceName : OMI_BaseResource
 };
 ```
 
+リソースに必須のプロパティがある場合は、`reasons` クラスと並行して `Get-TargetResource` によってそれらも返される必要があります。 `reasons` が含まれていない場合、サービスには、`Get-TargetResource` に入力された値と `Get-TargetResource` によって返された値を比較し、詳細な比較を `reasons` として提供する "キャッチオール" の動作が含まれます。
+
 ### <a name="configuration-requirements"></a>構成要件
 
 カスタム構成の名前は、すべての場所で一貫している必要があります。 コンテンツ パッケージの .zip ファイルの名前、MOF ファイル内の構成名、および Azure Resource Manager テンプレート (ARM テンプレート) 内のゲスト割り当て名は同じである必要があります。
+
+### <a name="policy-requirements"></a>ポリシーの要件
+
+ゲスト構成の割り当てのプロビジョニングとレポートを自動化するために、ポリシー定義 `metadata` セクションには、ゲスト構成サービスの 2 つのプロパティが含まれている必要があります。 `category` プロパティは "Guest Configuration" に設定する必要があります。また、`Guest Configuration` という名前のセクションには、ゲスト構成の割り当てに関する情報を含める必要があります。 このテキストは、`New-GuestConfigurationPolicy` コマンドレットによって自動的に作成されます。
+このページのステップバイステップの手順を参照してください。
+
+次の例は `metadata` セクションを示しています。
+
+```json
+    "metadata": {
+      "category": "Guest Configuration",
+      "guestConfiguration": {
+        "name": "test",
+        "version": "1.0.0",
+        "contentType": "Custom",
+        "contentUri": "CUSTOM-URI-HERE",
+        "contentHash": "CUSTOM-HASH-VALUE-HERE",
+        "configurationParameter": {}
+      }
+    },
+```
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>ゲスト構成プロジェクトのスキャフォールディング
 
@@ -494,7 +517,7 @@ New-GuestConfigurationPackage `
 ポリシーの更新をリリースする場合は、ゲスト構成パッケージと Azure Policy 定義の詳細の両方に対して変更を行います。
 
 > [!NOTE]
-> ゲスト構成割り当ての `version` プロパティは、Microsoft によってホストされているパッケージにのみ影響します。 カスタム コンテンツのバージョン管理のベストプラクティスは、ファイル名にバージョンを含めることです。
+> ゲスト構成割り当ての `version` プロパティは、Microsoft によってホストされているパッケージにのみ影響します。 カスタム コンテンツのバージョン管理のベスト プラクティスは、ファイル名にバージョンを含めることです。
 
 まず、`New-GuestConfigurationPackage` を実行するときに、以前のバージョンと異なる一意のパッケージの名前を指定します。 名前には、`PackageName_1.0.0` などのバージョン番号を含めることができます。
 この例の番号は、パッケージを一意にするためにのみ使用されており、パッケージを他のパッケージよりも新しいまたは古いものとして見なすように指定するものではありません。

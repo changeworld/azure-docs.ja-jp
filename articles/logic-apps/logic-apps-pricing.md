@@ -1,6 +1,6 @@
 ---
 title: 価格および課金モデル
-description: Azure Logic Apps の価格および課金モデルのしくみに関する概要
+description: Azure Logic Apps の価格および課金のしくみに関する概要
 services: logic-apps
 ms.suite: integration
 author: jonfancey
@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 520b4a0e87f27a90a604947ae0b558066b4ab82f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9243d089b4a000066ec03dbeeccd046db374f558
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937595"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673112"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps の価格モデル
 
@@ -65,11 +65,11 @@ ms.locfileid: "96937595"
 
   * **Developer** ISE SKU:単一の [Free レベル](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)の統合アカウント
 
-  SKU に関係なく、各 ISE では[統合アカウントの数が制限](logic-apps-limits-and-config.md#integration-account-limits)されることがあります。 追加コストを支払って、この制限を上げることができます。
+  コストを追加すれば、ISE の統合アカウントを[上限まで増やす](logic-apps-limits-and-config.md#integration-account-limits)ことができます。 
 
-  * **Premium** ISE SKU:最大 4 つの追加の Standard アカウント。 無料または Basic アカウントはありません。
+  * **Premium** ISE SKU:最大 19 個の追加の Standard アカウント。 Free または Basic アカウントは使用できません。
 
-  * **Developer** ISE SKU:最大 4 つの追加の Standard アカウント、または合計で最大 5 つの標準 Standard アカウント。 Basic アカウントはありません。
+  * **Developer** ISE SKU:無料アカウントを既にお持ちの場合は、Standard アカウントを最大 19 個追加でご利用いただくことができます。また、無料アカウントをお持ちでない場合は、Standard アカウントを合計 20 個までご利用いただけます。 Basic アカウントは使用できません。
 
   統合アカウントの制限については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)に関するページをご覧ください。 このトピックで後述する[統合アカウントのレベルとそれらの価格モデル](#integration-accounts)で詳細を確認できます。
 
@@ -118,7 +118,7 @@ Azure Logic Apps の [B2B および EDI 機能](logic-apps-enterprise-integratio
 
 Azure Logic Apps には、Free、Basic、Standard の統合アカウントが用意されています。 Basic および Standard レベルは、Logic Apps サービス レベル アグリーメント (SLA) によってサポートされますが、Free レベルは SLA でサポートされず、リージョンの可用性、スループット、および使用に制限があります。 Free レベルの統合アカウントを除いて、各 Azure リージョンで複数の統合アカウントを持つことができます。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。
 
-["*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) がある場合は、[SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) には関係なく、ISE で[統合アカウントの数を制限](logic-apps-limits-and-config.md#integration-account-limits)できますが、[追加コストを払ってこの制限を上げる](#fixed-pricing)ことが可能です。 ISE での固定価格モデルのしくみについては、このトピックの「[固定価格モデル](#fixed-pricing)」セクションを参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)に関する記事を参照してください。
+[*統合サービス環境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) がある場合、ISE では追加コストなしで 1 つの統合アカウントを使用できます。ただし、含まれるアカウントの種類は [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) によって異なります。 [コストを追加すれば](#fixed-pricing)、ISE の統合アカウントを[統合アカウントの上限まで増やす](logic-apps-limits-and-config.md#integration-account-limits)ことができます。 ISE での固定価格モデルのしくみについては、このトピックの「[固定価格モデル](#fixed-pricing)」セクションを参照してください。 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)に関する記事を参照してください。
 
 Free、Basic、または Standard の統合アカウントから選択するには、次のユース ケースの説明を確認してください。
 

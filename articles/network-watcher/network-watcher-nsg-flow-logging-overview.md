@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 79f442c5ab7db92e69f5396f3f9205212bdf4d4d
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d6b916ce03c6850f78217f1aac0b63048a6aff3b
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399249"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858503"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -353,6 +353,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 **ストレージ アカウントに関する考慮事項**: 
 
 - 場所:使用するストレージ アカウントは、NSG と同じリージョンに存在する必要があります。
+- パフォーマンス レベル:現在、Standard レベルのストレージ アカウントしかサポートされていません。
 - キー ローテーションの自己管理: アクセス キーをストレージ アカウントに変更/ローテーションすると、NSG フローログの動作が停止します。 この問題を修正するには、NSG フロー ログを無効にしてから再度有効にする必要があります。
 
 **フロー ログ記録のコスト**:NSG フロー ログ記録は、生成されたログの量に対して課金されます。 トラフィック量が多いと、フロー ログの量が大きくなり、それに関連してコストがかかる可能性があります。 NSG フロー ログの価格には、基礎となるストレージのコストは含まれていません。 保持ポリシー機能と NSG フロー ログ記録を併用すると、長期間にわたって個別のストレージ コストが発生します。 アイテム保持ポリシー機能が不要な場合は、この値を 0 に設定することをお勧めします。 詳細については、「[Network Watcher の価格](https://azure.microsoft.com/pricing/details/network-watcher/)」 と 「[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」 を参照してください。
@@ -361,7 +362,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **インターネット IP からパブリック IP のない VM へのインバウンド フローのログ記録**:インスタンスレベル パブリック IP として NIC に関連付けられているパブリック IP アドレス経由で割り当てられたパブリック IP アドレスがない VM、または基本的なロード バランサー バックエンド プールの一部である VM では、[既定の SNAT](../load-balancer/load-balancer-outbound-connections.md) が使用され、アウトバウンド接続を容易にするために Azure によって割り当てられた IP アドレスがあります。 その結果、フローが SNAT に割り当てられたポート範囲内のポートに向かう場合、インターネット IP アドレスからのフローのフロー ログ エントリが表示されることがあります。 Azure では VM へのこれらのフローは許可されませんが、試行はログに記録され、設計上、Network Watcher の NSG フロー ログに表示されます。 不要なインバウンド インターネット トラフィックは、NSG で明示的にブロックすることをお勧めします。
 
-**Application Gateway V2 サブネット NSG の問題**: Application Gateway V2 サブネット NSG のフロー ログは、現時点では[サポートされていません](https://docs.microsoft.com/azure/application-gateway/application-gateway-faq#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet)。 この問題は Application Gateway V1 には影響しません。
+**Application Gateway V2 サブネット NSG の問題**: Application Gateway V2 サブネット NSG のフロー ログは、現時点では [サポートされていません](https://docs.microsoft.com/azure/application-gateway/application-gateway-faq#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet)。 この問題は Application Gateway V1 には影響しません。
 
 **互換性のないサービス**:プラットフォームの現行の制約に起因し、一部の Azure サービスは NSG フロー ログでサポートされていません。 互換性のないサービスには現在、次が含まれます。
 - [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
@@ -374,7 +375,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 **リソースに接続されているすべての NSG 上で NSG フロー ログ記録を有効にする**:Azure のフロー ログ記録は NSG リソースに対して構成されています。 1 つのフローは 1 つの NSG ルールにのみ関連付けられます。 複数の NSG が利用されるシナリオでは、リソースのサブネットまたはネットワーク インターフェイスで適用されるすべての NSG で NSG フロー ログを有効にして、すべてのトラフィックを確実に記録することをお勧めします。 詳細については、「ネットワーク セキュリティ グループ」の「[トラフィックの評価方法](../virtual-network/network-security-group-how-it-works.md)」 をご覧ください。 
 
 一般的なシナリオは次のとおりです。
-1. **NIC で複数の NSG**: 複数の NSG が NIC に接続されている場合は、そのすべてでフロー ログを有効にする必要があります。
+1. **VM での複数の NIC**:複数の NIC が仮想マシンに接続されている場合は、そのすべてでフロー ログを有効にする必要があります
 1. **NIC とサブネット レベルの両方で NSG**: NIC およびサブネット レベルで NSG が構成されている場合は、両方の NSG でフロー ログを有効にする必要があります。 
 
 **ストレージのプロビジョニング**:ストレージは、想定されるフロー ログ ボリュームでチューニングする必要があります。

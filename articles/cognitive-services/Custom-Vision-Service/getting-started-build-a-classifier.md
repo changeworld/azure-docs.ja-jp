@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 画像認識、画像認識アプリ、Custom Vision
-ms.openlocfilehash: b57720b9d8fb05a605b9eace279b70b060c18450
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d644c323cb60e5ef9a89670cd9b828e3e9676299
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596864"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131697"
 ---
 # <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>クイックスタート: Custom Vision Web サイトで分類子を構築する
 
@@ -61,7 +61,7 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
     |__小売__|ショッピング カタログやショッピング Web サイトで見られる画像に最適化されています。 ドレス、ズボン、シャツを分類するときに高い精度が必要な場合に、このドメインを使用します。|
     |__コンパクト ドメイン__| モバイル デバイスでのリアルタイムの分類の制約に最適化されています。 コンパクト ドメインで生成されたモデルは、ローカルで実行するためにエクスポートできます。|
 
-1. 最後に、 __[プロジェクトの作成]__ を選択します。
+1. 最後に、__[プロジェクトの作成]__ を選択します。
 
 ## <a name="choose-training-images"></a>トレーニング画像を選択する
 
@@ -92,7 +92,7 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 ![Web ページのヘッダー ツールバーの右上にあるトレーニングのボタン](./media/getting-started-build-a-classifier/train01.png)
 
-トレーニング プロセスの所要時間は、わずか数分間のはずです。 この時間の間、 **[パフォーマンス]** タブにトレーニング プロセスに関する情報が表示されます。
+トレーニング プロセスの所要時間は、わずか数分間のはずです。 この時間の間、**[パフォーマンス]** タブにトレーニング プロセスに関する情報が表示されます。
 
 ![メイン セクションにトレーニング ダイアログが表示されたブラウザー ウィンドウ](./media/getting-started-build-a-classifier/train02.png)
 
@@ -100,8 +100,8 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 トレーニングが完了すると、モデルのパフォーマンスが推定され、表示されます。 Custom Vision Service は、[K-分割交差検証](https://en.wikipedia.org/wiki/Cross-validation_(statistics))と呼ばれるプロセスを使用して、トレーニング用に送信した画像を利用して精度と再現率を計算します。 精度と再現率は、分類子の有効性を表す 2 つの異なる測定値です。
 
-- **精度**は、正しかったと識別された分類の割合を示します。 たとえばあるモデルで、100 個の画像が犬として識別され、それらのうち 99 個が実際に犬であった場合、精度は 99% になります。
-- **再現率**は、正しく識別された実際の分類の割合を示します。 たとえば、実際にりんごである画像が 100 個あり、そのモデルで、80 個がりんごとして識別された場合、再現率は 80% になります。
+- **精度** は、正しかったと識別された分類の割合を示します。 たとえばあるモデルで、100 個の画像が犬として識別され、それらのうち 99 個が実際に犬であった場合、精度は 99% になります。
+- **再現率** は、正しく識別された実際の分類の割合を示します。 たとえば、実際にりんごである画像が 100 個あり、そのモデルで、80 個がりんごとして識別された場合、再現率は 80% になります。
 
 ![トレーニング結果には、全体的な精度および再現率と、分類子のタグごとの精度および再現率が表示されます。](./media/getting-started-build-a-classifier/train03.png)
 

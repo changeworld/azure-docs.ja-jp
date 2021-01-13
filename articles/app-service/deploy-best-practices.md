@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 37c1854aeb1a1fa3d9283c00b07c665b213b306c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74bd7bc159f7f5974452adf6b2f51148d869b4ed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708154"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589238"
 ---
 # <a name="deployment-best-practices"></a>デプロイのベスト プラクティス
 
@@ -45,9 +45,9 @@ Azure Pipelines、Jenkins、エディター プラグインなどのデプロイ
 
 テスト、QA、ステージング用に指定されたブランチがプロジェクトにある場合は、それらの各ブランチをステージング スロットに継続的にデプロイする必要があります。 (これは、[Gitflow 設計](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)と呼ばれています。)これにより、関係者は、デプロイされたブランチを簡単に評価してテストすることができます。 
 
-運用スロットに対しては継続的デプロイを有効にしないでください。 代わりに、運用ブランチ (多くの場合、マスター) を非運用スロットにデプロイします。 ベース ブランチをリリースする準備ができたら、それを運用スロットにスワップします。 運用環境にデプロイするのではなく、運用環境にスワップすると、ダウンタイムの発生が抑えられ、もう一度スワップすることで変更をロールバックすることができます。 
+運用スロットに対しては継続的デプロイを有効にしないでください。 代わりに、運用ブランチ (多くの場合、メイン) を非運用スロットにデプロイします。 ベース ブランチをリリースする準備ができたら、それを運用スロットにスワップします。 運用環境にデプロイするのではなく、運用環境にスワップすると、ダウンタイムの発生が抑えられ、もう一度スワップすることで変更をロールバックすることができます。 
 
-![Dev、ステージング、およびマスター ブランチ間のフローとそれらのデプロイ先のスロットを示す図。](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
+![Dev、ステージング、およびメイン ブランチ間のフローとそれらのデプロイ先のスロットを示す図。](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
 ### <a name="continuously-deploy-containers"></a>コンテナーを継続的にデプロイする
 
@@ -84,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
 
     -name: Authenticate using a Service Principal
       uses: azure/actions/login@v1

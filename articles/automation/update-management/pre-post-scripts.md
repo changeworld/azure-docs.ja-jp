@@ -3,14 +3,14 @@ title: Azure での Update Management のデプロイで事前スクリプトと
 description: この記事では、更新プログラムのデプロイのための事前スクリプトおよび事後スクリプトを構成および管理する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 05/17/2019
+ms.date: 12/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: bb2a272829374cfeba5c334ff87268c4928885f5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 4c37fe107d9256461e5aa632f859ae02c5dc42f5
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221678"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683407"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>事前スクリプトと事後スクリプトを管理する
 
@@ -146,7 +146,7 @@ foreach($summary in $finalStatus)
 * 実行アカウント
 * 実行する Runbook
 
-Azure マシンを操作するには、[Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0) コマンドレットを使用して、Azure VM を操作する必要があります。 この方法を示した例については、「[Update Management - Run Script with Run Command (更新管理 - スクリプトを実行コマンドで実行する)](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc)」にある Runbook の例を参照してください。
+Azure マシンを操作するには、[Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) コマンドレットを使用して、Azure VM を操作する必要があります。 この方法を示した例については、「[Update Management - Run Script with Run Command (更新管理 - スクリプトを実行コマンドで実行する)](https://github.com/azureautomation/update-management-run-script-with-run-command)」にある Runbook の例を参照してください。
 
 ### <a name="interact-with-non-azure-machines"></a>Azure 以外のマシンの操作
 
@@ -157,7 +157,7 @@ Azure マシンを操作するには、[Invoke-AzVMRunCommand](/powershell/modul
 * ローカルで実行する Runbook
 * 親 Runbook
 
-Azure 以外のマシンと対話するためには、親 Runbook が Azure コンテキストで実行されます。 この Runbook は、[Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) コマンドレットを使用して子 Runbook を呼び出します。 `RunOn` パラメーターを指定し、スクリプトを実行する Hybrid Runbook Worker の名前を指定する必要があります。 Runbook の例「[Update Management - スクリプトをローカルで実行する](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44)」を参照してください。
+Azure 以外のマシンと対話するためには、親 Runbook が Azure コンテキストで実行されます。 この Runbook は、[Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) コマンドレットを使用して子 Runbook を呼び出します。 `RunOn` パラメーターを指定し、スクリプトを実行する Hybrid Runbook Worker の名前を指定する必要があります。 Runbook の例「[Update Management - スクリプトをローカルで実行する](https://github.com/azureautomation/update-management-run-script-locally)」を参照してください。
 
 ## <a name="abort-patch-deployment"></a>修正プログラムのデプロイを中止する
 
@@ -173,7 +173,7 @@ if (<My custom error logic>)
 
 ## <a name="samples"></a>サンプル
 
-事前スクリプトと事後スクリプトのサンプルは[スクリプト センター ギャラリー](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell)と [PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22)にあります。または、Azure portal を使用してインポートできます。 Automation アカウントで、 **[プロセス オートメーション]** の下にある **[Runbook ギャラリー]** を選択することで、行うことができます。 フィルターに **[更新管理]** を使用します。
+事前スクリプトと事後スクリプトのサンプルは [Azure Automation の GitHub 組織](https://github.com/azureautomation)と [PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22)にあります。または、Azure portal を使用してインポートできます。 Automation アカウントで、 **[プロセス オートメーション]** の下にある **[Runbook ギャラリー]** を選択することで、行うことができます。 フィルターに **[更新管理]** を使用します。
 
 ![ギャラリーの一覧](./media/pre-post-scripts/runbook-gallery.png)
 
@@ -242,8 +242,8 @@ $variable = Get-AutomationVariable -Name $runId
 ```
 
 > [!NOTE]
-> 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](../automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。
+> 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](../automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 
-* Update Management の詳細については、「[VM の更新プログラムとパッチの管理](manage-updates-for-vm.md)」を参照してください。
+Update Management の詳細については、「[VM の更新プログラムとパッチの管理](manage-updates-for-vm.md)」を参照してください。

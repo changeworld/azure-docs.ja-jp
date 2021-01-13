@@ -127,7 +127,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: アラート
+    - name: 警告
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -226,8 +226,6 @@
               href: platform/service-providers.md
             - name: Dedicated クラスター
               href: log-query/logs-dedicated-clusters.md
-            - name: トラブルシューティング ログ
-              href: platform/azure-monitor-troubleshooting-logs.md
         - name: Log Analytics
           items:
             - name: 概要
@@ -701,7 +699,11 @@
                     - name: 構成オプション
                       href: app/java-standalone-config.md
                     - name: テレメトリ プロセッサ
-                      href: app/java-standalone-telemetry-processors.md
+                      items:
+                        - name: 概要
+                          href: app/java-standalone-telemetry-processors.md
+                        - name: 例
+                          href: app/java-standalone-telemetry-processors-examples.md
                     - name: JVM 引数の設定
                       href: app/java-standalone-arguments.md
                     - name: 2.x SDK からのアップグレード
@@ -1217,6 +1219,10 @@
               href: platform/workbooks-move-region.md
             - name: 別のリージョンへのブック テンプレートの移動
               href: platform/workbook-templates-move-region.md
+        - name: リンク
+          items:
+            - name: リンク アクション
+              href: platform/workbooks-link-actions.md
         - name: ビューからブックへの変換
           items:
             - name: 変換の概要

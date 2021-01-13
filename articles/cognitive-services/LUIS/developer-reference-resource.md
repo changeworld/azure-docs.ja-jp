@@ -4,14 +4,14 @@ description: SDK、REST API、CLI は、ご使用のプログラミング言語�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 05/19/2020
+ms.date: 01/12/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8641235fb754080303a9a463d0964e5655234ff2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0e8da4d490ef5c9afb2ac363b62f0f1a4fe66f5e
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024553"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133312"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Language Understanding (LUIS) 用の SDK、REST、CLI 開発者向けリソース
 
@@ -119,14 +119,10 @@ Language Understanding には、アプリケーションとそのモデルを JS
 Bot Framework は、さまざまな言語の [SDK](https://github.com/Microsoft/botframework) として、[Azure Bot Service](https://dev.botframework.com/) を使用するサービスとして使用できます。
 
 Bot Framework には、次のような Language Understanding に役立つ[いくつかのツール](https://github.com/microsoft/botbuilder-tools)が用意されています。
-
-* [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown) - マークダウン ファイルを使用して LUIS Language Understanding モデルを構築します
-* [LUIS CLI](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUIS) - LUIS.ai アプリケーションを作成および管理します
-* [Dispatch](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch) - 親アプリと子アプリを管理します
-* [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) - LUIS の意図とエンティティのバッキング C#/Typescript クラスを自動生成します。
 * [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) - ボット開発者が Bot Framework SDK を使用して構築されたボットをテストおよびデバッグできるデスクトップ アプリケーションです
 * [Bot Framework Composer](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) - 開発者およびさまざまな分野から成るチームが Microsoft Bot Framework を使用してボットや会話エクスペリエンスを作成できるようにするのための統合開発ツールです
 * [Bot Framework サンプル](https://github.com/microsoft/botbuilder-samples) - #C、JavaScript、TypeScript、Python
+
 ## <a name="next-steps"></a>次のステップ
 
 * 一般的な [HTTP エラー コード](luis-reference-response-codes.md)について学習します。

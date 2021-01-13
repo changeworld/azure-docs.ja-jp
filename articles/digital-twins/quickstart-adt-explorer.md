@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d42a32e236eb73f2aa9f2f61d9708314783564dd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f6bd6b13ab4a2e654bdabc86355f2c3388abed31
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187301"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050529"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>クイック スタート - ADT Explorer を使用して、Azure Digital Twins のサンプル シナリオを精査する
 
@@ -251,9 +251,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
 回答を得るためには、 **[QUERY EXPLORER]\(クエリ エクスプローラー\)** ボックスで次のクエリを実行します。
 
-```SQL
-SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
 
 先ほどツインのプロパティを確認したことを思い出してください。Room0 の温度は 70 度、Room1 の温度は 80 度です。 したがって、ここで結果として返されるのは Room1 のみです。
     
@@ -284,9 +282,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 グラフでの更新内容が Room0 の温度に正常に登録されたことを確認するには、先ほどのクエリを再実行して、温度が 75 度を超えるすべてのツインを環境から取得します。
 
-```SQL
-SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
 
 Room0 の温度が 70 度から 76 度に変更されたので、今度は、両方のツインが結果に表示されているはずです。
 

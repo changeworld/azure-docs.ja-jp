@@ -3,12 +3,12 @@ title: Advisor を使用して Azure アプリのパフォーマンスを向上�
 description: Azure Advisor のパフォーマンスに関する推奨事項を使用すると、ビジネスに不可欠なアプリケーションのスピードと応答性を向上させることができます。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 55f5ac6784bf613170fd10060799ab5ad1290a62
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8937272f8b6ef945d80076732ea38523f7b475a1
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183347"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802543"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -175,6 +175,11 @@ Windows Virtual Desktop (WVD) を使用して、お客様の VM はユーザー�
 このサブスクリプションのリソースに、古いバージョンのイマーシブ リーダー SDK が使用されていることがわかりました。 イマーシブ リーダー SDK の最新バージョンを使用すると、更新されたセキュリティ、パフォーマンス、および統合エクスペリエンスをカスタマイズおよび強化するための一連の拡張機能が提供されます。
 イマーシブ リーダー SDK の詳細については、[こちら](../cognitive-services/immersive-reader/index.yml)をご覧ください。
 
+## <a name="improve-vm-performance-by-changing-the-maximum-session-limit"></a>セッションの上限を変更して VM のパフォーマンスを向上させる
+
+Advisor は、深さ優先が負荷分散アルゴリズムとして設定されているホスト プールがあること、およびそのホスト プールのセッション上限が 99999 以上であることを検出します。 深さ優先の負荷分散では、最大セッション数を使用して、1 つのセッション ホストで同時セッションを持つことができるユーザーの最大数が決定されます。 最大セッション数が高すぎる場合、すべてのユーザー セッションは同じセッション ホストに送られるので、パフォーマンスと信頼性の問題が発生します。 そのため、ホスト プールを深さ優先で負荷分散するように設定する場合は、VM のデプロイと容量の構成に応じて、適切な最大セッション数を設定する必要があります。 
+
+Windows Virtual Desktop での負荷分散の詳細については、「[Windows 仮想デスクトップの負荷分散方法の構成](/azure/virtual-desktop/troubleshoot-set-up-overview)」を参照してください。
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Advisor のパフォーマンスに関する推奨事項にアクセスする方法
 

@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 12/04/2020
 ms.author: baanders
-ms.openlocfilehash: 5eafac1c1bc2e7dd28e0cae544dc178e5bdc601e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: e06e660a43aaa0ff5eb79bc00bd8a5d2c61c6580
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96748259"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045319"
 ---
 | フィルター名 | 説明 | フィルター テキスト スキーマ | サポート状況の値 | 
 | --- | --- | --- | --- |
@@ -25,15 +25,7 @@ ms.locfileid: "96748259"
 
 複数のフィルターは次のように要求に追加できます。 
 
-```json  
-{
-    "endpointName": "dt-endpoint", 
-    "filter": "true", 
-    "filter": "source = 'ADT-resource.api.wus2.digitaltwins.azure.net/myFloorID'", 
-    "filter": "type = 'Microsoft.DigitalTwins.Twin.Delete'", 
-    "filter": "specversion = '1.0'"
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/api-requests/filter-multiple.json":::
 
 上記のデータへの参照によって返される値としては、次のデータ型がサポートされています。
 

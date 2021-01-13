@@ -4,12 +4,12 @@ description: Azure Functions Tools for Visual Studio 2019 を使用して、Azur
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: c5164d0757de5011c112a9506979da19d9585790
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 877c82e375b0ea469071402b83fadbd634177f3f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167799"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655817"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
@@ -71,9 +71,9 @@ Visual Studio には、関数の開発時の利点として次のようなこと
 
 Azure Functions プロジェクトを作成した後、プロジェクト テンプレートを使用して C# プロジェクトを作成し、`Microsoft.NET.Sdk.Functions` NuGet パッケージをインストールし、ターゲット フレームワークを設定します。 新しいプロジェクトには次のファイルが含まれます。
 
-* **host.json** :Functions のホストを構成できます。 これらの設定は、ローカルでの実行時と Azure での実行時の両方に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
+* **host.json**:Functions のホストを構成できます。 これらの設定は、ローカルでの実行時と Azure での実行時の両方に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
 
-* **local.settings.json** :関数をローカルで実行するときに使用される設定を保持します。 Azure で実行している場合、これらの設定は使用されません。 詳細については、「[ローカル設定ファイル](#local-settings-file)」を参照してください。
+* **local.settings.json**:関数をローカルで実行するときに使用される設定を保持します。 Azure で実行している場合、これらの設定は使用されません。 詳細については、「[ローカル設定ファイル](#local-settings-file)」を参照してください。
 
     >[!IMPORTANT]
     >local.settings.json ファイルにはシークレットを含めることができるため、それをプロジェクト ソース管理から除外する必要があります。 このファイルの **[出力ディレクトリにコピー]** 設定が **[新しい場合はコピーする]** に設定されていることを確認します。 
@@ -85,6 +85,18 @@ Azure Functions プロジェクトを作成した後、プロジェクト テン
 プロジェクトを発行しても、Visual Studio では local.settings.json の設定が自動的にアップロードされません。 これらの設定が Azure の関数アプリにも確実に存在するようにするには、プロジェクトを発行した後にそれらをアップロードします。 詳細については、「[Function App の設定](#function-app-settings)」を参照してください。 `ConnectionStrings` コレクション内の値は発行されません。
 
 コードを使用して、関数アプリの設定値を環境変数として読み取ることもできます。 詳細については、「[環境変数](functions-dotnet-class-library.md#environment-variables)」を参照してください。
+
+## <a name="configure-your-build-output-settings"></a>ビルド出力設置を構成する
+
+Azure Functions プロジェクトをビルドするときに、Functions ランタイムと共有されているアセンブリのコピーが 1 つだけ保持されるように、ビルド ツールによって出力が最適化されます。 その結果、可能な限り多くの領域を節約できるようにビルドが最適化されます。 ただし、プロジェクト アセンブリのより新しいバージョンに移行する場合、これらのアセンブリを保持する必要があることが、ビルド ツールに認識されない可能性があります。 これらのアセンブリが最適化プロセス中に保持されるようにするには、プロジェクト (.csproj) ファイルの `FunctionsPreservedDependencies` 要素を使用してこれらのアセンブリを指定できます。
+
+```xml
+  <ItemGroup>
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.dll" />
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.Extensions.dll" />
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.Features.dll" />
+  </ItemGroup>
+```
 
 ## <a name="configure-the-project-for-local-development"></a>ローカル開発用のプロジェクトを構成する
 

@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 3218df4601ef7a5e1b1e04c20c89eefc367b720b
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 7753c6c118d763163e6bc8f69f5b4eee13fe2393
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746456"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588796"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Web アプリで Azure IoT Hub からのリアルタイム センサー データを視覚化する
 
@@ -202,10 +202,10 @@ Web アプリがブラウザー クライアントにブロードキャストし
    git remote add webapp <Git clone URL>
    ```
 
-8. App Service にコードをデプロイするには、コマンド ウィンドウで次のコマンドを入力します。 資格情報の入力を求められたら、手順 5 で作成したユーザー レベルのデプロイ資格情報を入力します。 必ず、App Service リモートの master ブランチにプッシュしてください。
+8. App Service にコードをデプロイするには、コマンド ウィンドウで次のコマンドを入力します。 資格情報の入力を求められたら、手順 5 で作成したユーザー レベルのデプロイ資格情報を入力します。 必ず、App Service リモートのメイン ブランチにプッシュしてください。
 
     ```cmd
-    git push webapp master:master
+    git push webapp main:main
     ```
 
 9. コマンド ウィンドウで、デプロイの進行状況が更新されます。 デプロイが成功すると、次の出力のような行で終了します。
@@ -216,7 +216,7 @@ Web アプリがブラウザー クライアントにブロードキャストし
     remote: Running post deployment command(s)...
     remote: Deployment successful.
     To https://contoso-web-app-3.scm.azurewebsites.net/contoso-web-app-3.git
-    6b132dd..7cbc994  master -> master
+    6b132dd..7cbc994  main -> main
     ```
 
 10. 次のコマンドを実行して、Web アプリの状態のクエリを実行し、それが実行中であることを確認します。

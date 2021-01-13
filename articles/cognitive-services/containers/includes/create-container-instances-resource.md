@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 09957461fd92114d1181a570550ee1a189edd8ea
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 874d44e3900b1edf24c2f6bee95d787c5fc3988d
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009868"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704860"
 ---
-## <a name="create-an-azure-container-instance-resource"></a>Azure コンテナー インスタンス リソースを作成する
+## <a name="create-an-azure-container-instance-resource-using-the-azure-portal"></a>Azure portal を使用して Azure コンテナー インスタンス リソースを作成する
 
 1. コンテナー インスタンスの[作成](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances)のページに移動します。
 
@@ -43,9 +43,9 @@ ms.locfileid: "96009868"
 
     | Key | 値 |
     |--|--|
-    |`apikey`|リソースの **[キー]** ページからコピーされます。 スペースやダッシュを含まない 32 文字の英数字文字列 (`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`) です。|
-    |`billing`|リソースの **[概要]** ページからコピーされます。|
-    |`eula`|`accept`|
+    |`ApiKey`|リソースの **[キーとエンドポイント]** ページからコピーされます。 スペースやダッシュを含まない 32 文字の英数字文字列 (`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`) です。|
+    |`Billing`| リソースの **[キーとエンドポイント]** ページからコピーされたエンドポイント URL。|
+    |`Eula`|`accept`|
 
 5. **[確認と作成]** をクリックします
 6. 検証に合格した後、 **[作成]** をクリックして作成プロセスを終了します

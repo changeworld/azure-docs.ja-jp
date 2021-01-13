@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 64d90b4d9dc3efbe877230bbc20780b1c4f2d213
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5773f7af3bb065976e8f05d7b54c58b90da2d3d2
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931538"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835127"
 ---
 # <a name="security-agent-reference-architecture"></a>セキュリティ エージェントの参照アーキテクチャ
 
@@ -45,11 +45,11 @@ Defender for IoT セキュリティ エージェントはオープン ソース 
 
 Defender for IoT では、32 ビットと 64 ビットの Windows のエージェントには異なるインストーラー、32 ビットと 64 ビットの Linux のエージェントには同じインストーラーが用意されています。 次の表に従って、ご使用のデバイスごとに適切なエージェント インストーラーがあることを確認してください。
 
-| Architecture | Linux | Windows |    詳細|
-|----------|----------------------------------------------|-------------|-------------------------------------------|
-| 32 ビット  | C  | C#  ||
-| 64 ビット  | C# または C           | C#      | デバイス リソースがさらに制限されているか少ないデバイスについては、C エージェントを使用することをお勧めします。|
-|
+| Architecture | Linux | Windows | 詳細 |
+|--|--|--|--|
+| 32 ビット | C | C# |  |
+| 64 ビット | C# または C | C# | デバイス リソースがさらに制限されているか少ないデバイスについては、C エージェントを使用することをお勧めします。 |
+
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -59,6 +59,6 @@ Defender for IoT のデプロイの概要について引き続き学習するに
 
 - [セキュリティ エージェントの認証方法](concept-security-agent-authentication-methods.md)を理解する
 - [セキュリティ エージェント](how-to-deploy-agent.md)を選択してデプロイする
-- Defender for IoT の[サービスの要件](service-prerequisites.md)を確認する
+- Defender for IoT の[システムの要件](quickstart-system-prerequisites.md)を確認する
 - [IoT Hub で Defender for IoT サービスを有効にする](quickstart-onboard-iot-hub.md)方法について確認する
 - [Defender for IoT についてよく寄せられる質問](resources-frequently-asked-questions.md)からサービスの詳細について確認する

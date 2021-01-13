@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e36b2d4576b43544bec89efd326363344b35be9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48b5260e883d85899953240f6ee4f83127681c9e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993253"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591304"
 ---
 # <a name="change-approval-and-requestor-information-preview-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの承認および要求元情報 (プレビュー) 設定を変更する
 
@@ -77,7 +77,7 @@ ms.locfileid: "90993253"
 
 ### <a name="single-stage-approval"></a>1 段階の承認
 
-1. **最初の承認者**を追加します。
+1. **最初の承認者** を追加します。
     
     ディレクトリ内のユーザーのアクセスを管理するようにポリシーが設定されている場合は、 **[承認者としてのマネージャー]** を選択できます。 または、ドロップダウン メニューから [特定の承認者の選択] を選択した後、 **[承認者の追加]** をクリックして特定のユーザーを追加します。
     
@@ -105,7 +105,7 @@ ms.locfileid: "90993253"
 
 2 段階の承認を選択した場合は、2 番目の承認者を追加する必要があります。
 
-1. **2 番目の承認者**を追加します。 
+1. **2 番目の承認者** を追加します。 
     
     ユーザーがディレクトリ内にいる場合は、[特定の承認者の選択] の下にある **[承認者の追加]** をクリックして、2 番目の承認者として特定のユーザーを追加します。
 
@@ -132,13 +132,15 @@ ms.locfileid: "90993253"
 
 1. 最初の承認者、2 番目の承認者、またはその両方で、 **[Show advanced request settings]\(詳細な要求の設定を表示する\)** をクリックします。
 
-    ![アクセス パッケージ - ポリシー - 要求の詳細設定](./media/entitlement-management-access-package-approval-policy/alternate-approvers-click-advanced-request.png)
+    :::image type="content" source="media/entitlement-management-access-package-approval-policy/alternate-approvers-click-advanced-request.png" alt-text="アクセス パッケージ - ポリシー - 要求の詳細設定":::
 
 1. **[アクションが実行されない場合は、別の承認者に転送しますか?]** トグルを **[はい]** に設定します。
 
 1. **[別の承認者の追加]** をクリックして、一覧から代理承認者を選択します。
 
     ![アクセス パッケージ - ポリシー - 別の承認者の追加](./media/entitlement-management-access-package-approval-policy/alternate-approvers-add.png)
+
+    [最初の承認者] に [承認者としてのマネージャー] を選択した場合、別の承認者フィールドで選択できる、 **[Second level manager as alternate approver]\(別の承認者としての第 2 レベルのマネージャー\)** の追加オプションがあります。 このオプションを選択した場合は、システムが第 2 レベルのマネージャーを見つけられない場合に、要求の転送先のフォールバック承認者を追加する必要があります。
 
 1. **[Forward to alternate approver(s) after how many days]\(別の承認者へ転送するまでの日数\)** ボックスに、承認者が要求を承認または拒否する必要がある日数を入力します。 要求期間内に承認者が要求を承認または拒否しなかった場合、要求の有効期限が切れ (タイムアウト)、ユーザーはアクセス パッケージに対する別の要求を送信する必要が生じます。 
 
@@ -168,21 +170,21 @@ ms.locfileid: "90993253"
 
 1. アクセス パッケージへのアクセスが必要になるユーザーのコミュニティの一部に共通の優先言語がない場合は、myaccess.microsoft.com で、アクセスを要求するユーザーのエクスペリエンスを向上させることができます。 エクスペリエンスを向上させるには、異なる言語に対して代わりの表示文字列を表示できます。 たとえば、ユーザーの Web ブラウザーがスペイン語に設定され、スペイン語の表示文字列が構成されている場合は、これらの文字列が要求するユーザーに表示されます。 要求のためのローカリゼーションを構成するには、 **[ローカリゼーションの追加]** をクリックします。
     1. **[質問のローカリゼーションの追加]** ペインで、質問をローカライズする言語の **[言語コード]** を選択します。
-    1. 構成した言語で、 **[ローカライズされたテキスト]** ボックスに質問を入力します。
-    1. 必要なすべローカリゼーションを追加したら、 **[保存]** をクリックします。
+    1. 構成した言語で、**Localized Text\(ローカライズされたテキスト)** ボックスに質問を入力します。
+    1. 必要なすべてのローカライズを追加したら、 **[保存]** をクリックします。
 
-    ![アクセス パッケージ - ポリシー - ローカライズされたテキストを構成する](./media/entitlement-management-access-package-approval-policy/add-localization-question.png)
+    ![アクセス パッケージ - ポリシー - ローカライズされたテキストの構成](./media/entitlement-management-access-package-approval-policy/add-localization-question.png)
 
-1. 要求元が回答する **[回答形式]** を選択します。 回答形式には、 *[短いテキスト]* 、 *[複数選択]* 、 *[長いテキスト]* が含まれています。
+1. 要求元が回答する **回答形式** を選択します。 回答形式には、"*短いテキスト*"、"*複数選択*"、および "*長いテキスト*" があります。
  
-    ![アクセス パッケージ - ポリシー - 複数選択の回答形式の表示と編集を選択する](./media/entitlement-management-access-package-approval-policy/answer-format-view-edit.png)
+    ![アクセス パッケージ - ポリシー - 複数選択の回答形式の表示と編集の選択](./media/entitlement-management-access-package-approval-policy/answer-format-view-edit.png)
  
-1. 複数選択を選択した場合は、 **[表示と編集]** ボタンをクリックして回答のオプションを構成します。
-    1. [表示と編集] を選択すると、 **[質問の表示と編集]** ペインが開きます。
-    1. 質問の回答時に要求元に指定する回答のオプションを、 **[回答値]** ボックスに入力します。
+1. 複数選択を選択した場合、 **[view and edit]\(表示と編集\)** ボタンをクリックして、回答のオプションを構成します。
+    1. [view and edit]\(表示と編集\) を選択すると、 **[View/edit question]\(質問の表示と編集\)** ペインが開きます。
+    1. 質問の回答時に要求元に指定する回答のオプションを、 **[Answer values]\(回答の値\)** ボックスに入力します。
     1. 必要な数の回答を入力し、 **[保存]** をクリックします。
     
-    ![アクセス パッケージ - ポリシー - 複数選択オプションを入力する](./media/entitlement-management-access-package-approval-policy/answer-multiple-choice.png)
+    ![アクセス パッケージ - ポリシー - 複数選択オプションの入力](./media/entitlement-management-access-package-approval-policy/answer-multiple-choice.png)
   
 1. アクセス パッケージへのアクセスの要求時に要求元にこの質問への回答を要求するには、 **[必須]** の下にあるチェック ボックスをオンにします。
 

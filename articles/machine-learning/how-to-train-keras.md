@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: a7d55c6e550000d2dd6c2930d95086ec433c246b
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: d9bad49b7c3d71304a33691cf5004c853228f8e8
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361099"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797232"
 ---
 # <a name="train-keras-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して Keras モデルを大規模にトレーニングする
 
@@ -38,7 +38,7 @@ Keras モデルを最初から開発しているか、または既存のモデ�
 - Azure Machine Learning コンピューティング インスタンス - ダウンロードやインストールは必要なし
 
      - 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
-    - ノートブック サーバー上の samples フォルダーで、 **how-to-use-azureml > ml-frameworks > keras > train-hyperparameter-tune-deploy-with-keras** の各フォルダーに移動して、完成した展開済みノートブックを見つけます。
+    - ノートブック サーバー上の samples フォルダーで、**how-to-use-azureml > ml-frameworks > keras > train-hyperparameter-tune-deploy-with-keras** の各フォルダーに移動して、完成した展開済みノートブックを見つけます。
 
  - 独自の Jupyter Notebook サーバー
 
@@ -143,7 +143,7 @@ dependencies:
   - matplotlib
 ```
 
-この Conda 環境仕様から Azure ML 環境を作成します。 環境は、実行時に Docker コンテナーにパッケージ化されます。
+この conda 環境仕様から Azure ML 環境を作成します。 環境は、実行時に Docker コンテナーにパッケージ化されます。
 
 ベース イメージが指定されていない場合、Azure ML では既定により CPU イメージ `azureml.core.environment.DEFAULT_CPU_IMAGE` がベース イメージとして使用されます。 この例では GPU クラスター上でトレーニングを実行するため、必要な GPU ドライバーと依存関係が含まれる GPU ベース イメージを指定する必要があります。 Azure ML では、Microsoft Container Registry (MCR) に公開された、お客様が使用できる 1 組のベース イメージを保持しています。詳細については、GitHub リポジトリ「[Azure/AzureML-Containers](https://github.com/Azure/AzureML-Containers)」を参照してください。
 
@@ -192,27 +192,27 @@ src = ScriptRunConfig(source_directory=script_folder,
 ScriptRunConfig を使用したジョブの構成の詳細については、[トレーニングの実行の構成と送信](how-to-set-up-training-targets.md)に関する記事をご覧ください。
 
 > [!WARNING]
-> 以前に TensorFlow 推定器 を使用して Keras トレーニング ジョブを構成していた場合は、Estimator が Azure ML SDK の将来のリリースで非推奨となる予定であることにご注意ください。 Azure ML SDK 1.15.0 以上では、DL フレームワークを使用するものを含めて、ScriptRunConfig がトレーニング ジョブを構成する場合に推奨される方法です。
+> 以前に TensorFlow Estimator を使用して Keras トレーニング ジョブを構成していた場合は、1.19.0 SDK のリリース以降では、Estimator が非推奨になっていることに注意してください。 Azure ML SDK 1.15.0 以降では、ディープ ラーニング フレームワークを使用するものを含めて、ScriptRunConfig がトレーニング ジョブを構成する場合に推奨される方法です。 移行に関する一般的な質問については、[Estimator から ScriptRunConfig への移行](how-to-migrate-from-estimators-to-scriptrunconfig.md)に関するガイドを参照してください。
 
 ### <a name="submit-your-run"></a>実行を送信する
 
 [実行オブジェクト](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)には、ジョブの実行中および完了後の実行履歴へのインターフェイスが用意されています。
 
 ```Python
-run = Experiment(workspace=ws, name='keras-mnist').submit(src)
+run = Experiment(workspace=ws, name='Tutorial-Keras-Minst').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
 ### <a name="what-happens-during-run-execution"></a>実行実施中の動作
 実行は、以下の段階を経て実施されます。
 
-- **準備** :Docker イメージは、定義されている環境に従って作成されます。 イメージはワークスペースのコンテナー レジストリにアップロードされ、後で実行するためにキャッシュされます。 ログは実行履歴にもストリーミングされ、進行状況を監視するために表示することができます。 代わりに、キュレーションされた環境が指定されている場合は、そのキュレーションされた環境を補足するキャッシュ済みのイメージが使用されます。
+- **準備**:Docker イメージは、定義されている環境に従って作成されます。 イメージはワークスペースのコンテナー レジストリにアップロードされ、後で実行するためにキャッシュされます。 ログは実行履歴にもストリーミングされ、進行状況を監視するために表示することができます。 代わりに、キュレーションされた環境が指定されている場合は、そのキュレーションされた環境を補足するキャッシュ済みのイメージが使用されます。
 
-- **拡大縮小** :Batch AI クラスターでの実行に現在使用可能な数より多くのノードが必要な場合、クラスターはスケールアップを試みます。
+- **拡大縮小**:Batch AI クラスターでの実行に現在使用可能な数より多くのノードが必要な場合、クラスターはスケールアップを試みます。
 
 - **[実行中]** : スクリプト フォルダー内のすべてのスクリプトがコンピューティング先にアップロードされ、データ ストアがマウントまたはコピーされて、`script` が実行されます。 stdout からの出力と **./logs** フォルダーが実行履歴にストリーミングされるので、実行の監視のために使用できます。
 
-- **後処理** :実行の **./outputs** フォルダーが実行履歴にコピーされます。
+- **後処理**:実行の **./outputs** フォルダーが実行履歴にコピーされます。
 
 ## <a name="register-the-model"></a>モデルを登録する
 

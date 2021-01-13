@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: c82fb9764b29119092bf313b2c10f00c983e8c03
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: cdb575d7b3884370e1a53f79f1184d40cd15d270
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710772"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732395"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft&reg; Smooth Streaming Client Porting Kit のライセンス
 
@@ -133,6 +133,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * KDDI Corporation
 * Mega Fame Electronics Co. Limited
 * MIRC Electronics Limited
+* MOKA INTERNATIONAL LIMITED
 * Nintendo Co., Ltd.
 * ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
 * Panasonic Corporation
@@ -153,6 +154,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * Technicolor Delivery Technologies, SAS
 * Top Victory Investments, Ltd.
 * UMC Poland sp. z .o.o.
+* Vizio, Inc.
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス

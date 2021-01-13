@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8f11f104e8d3d0a4f3a004ebe9f149cb4132d910
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f8ebbdf70836f3f2613183268f03dc43da1f0671
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501300"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590562"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>データ流出の防止が有効になっているワークスペースを作成する
 この記事では、データ流出の防止が有効になっているワークスペースを作成する方法と、このワークスペースに対して承認された Azure AD テナントを管理する方法について説明します。
@@ -33,7 +33,7 @@ ms.locfileid: "96501300"
 1. [Allow outbound data traffic only to approved targets]\(承認されたターゲットへの送信データ トラフィックのみを許可する\) オプションで [はい] を選択します。
 1. このワークスペースに対して承認された Azure AD テナントを選択します。
 1. 構成を確認して、ワークスペースを作成します。
-:::image type="content" source="./media/how-to-create-a-workspace-with-data-exfiltration-protection/workspace-creation-data-exfiltration-protection.png" alt-text="データ流出の防止機能を備えたワークスペースを作成する":::
+:::image type="content" source="./media/how-to-create-a-workspace-with-data-exfiltration-protection/workspace-creation-data-exfiltration-protection.png" alt-text="[マネージド仮想ネットワークの有効化] オプションが選択されている [Synapse ワークスペースを作成する] が表示されているスクリーンショット。":::
 
 ## <a name="manage-approved-azure-active-directory-tenants-for-the-workspace"></a>ワークスペースに対して承認された Azure Active Directory テナントを管理する
 1. ワークスペースの Azure portal から、[Approved Azure AD tenants]\(承認された Azure AD テナント\) に移動します。 ワークスペースに対して承認された Azure AD テナントの一覧がこちらに表示されます。 ワークスペースのテナントは既定で含まれているため、一覧にありません。

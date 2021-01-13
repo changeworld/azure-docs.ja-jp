@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: 4753f7c0b8b5e515d33da3f9df48a2cdd9d921cc
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d6b23a831426a3308a0b47946d5a82679e937bbe
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96017578"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683131"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>SQL API アカウントで Azure Cosmos DB Java SDK v4 を使用する場合の問題のトラブルシューティング
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,6 +38,13 @@ Azure Cosmos DB Java SDK v4 には、Azure Cosmos DB SQL API にアクセスす�
 * Azure Cosmos DB 中央リポジトリにある Java SDK を参照してください。これは、[GitHub のオープン ソース](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos)として利用可能です。 アクティブに監視されている[問題セクション](https://github.com/Azure/azure-sdk-for-java/issues)があります。 回避策が既に提出済みの同様の問題がないか確認します。 役に立つヒントの 1 つは、*cosmos:v4-item* タグによって問題をフィルター処理することです。
 * Azure Cosmos DB Java SDK v4 の[パフォーマンスに関するヒント](performance-tips-java-sdk-v4-sql.md)を確認し、推奨される方法に従います。
 * この記事の残りの部分を読みます。解決策が見つからない場合は、 [GitHub の問題](https://github.com/Azure/azure-sdk-for-java/issues)を提出します。 GitHub の問題にタグを追加するオプションがある場合は、*cosmos:v4-item* タグを追加します。
+
+### <a name="retry-logic"></a>再試行ロジック <a id="retry-logics"></a>
+SDK での再試行が可能な場合、すべての IO エラーで Cosmos DB SDK は、失敗した操作の再試行を試みます。 エラーが発生した場合に再試行を行うことをお勧めしますが、特に書き込みエラーの処理と再試行は必要です。 再試行ロジックが継続的に改善されているため、最新の SDK を使用することをお勧めします。
+
+1. 読み取りおよびクエリ IO エラーは、エンド ユーザーにはわからないまま SDK によって再試行されます。
+2. 書き込み (Create、Upsert、Replace、Delete) はべき等では "なく"、したがって SDK は必ずしも無条件に、失敗した書き込み操作を再試行できるわけではありません。 エラーを処理して再試行するには、ユーザーのアプリケーション ロジックが必要です。
+3. [SDK の可用性のトラブルシューティング](troubleshoot-sdk-availability.md)に関するページでは、複数リージョンの Cosmos DB アカウントの再試行について説明しています。
 
 ## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>一般的な問題と対処法
 
