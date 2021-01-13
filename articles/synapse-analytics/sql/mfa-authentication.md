@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: fb8aad52eeaef2366afe28aa71059b7f8f780501
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 511d5841652b1f7b6487a42341ec392cb86d2b3a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843300"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120378"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Synapse SQL で多要素 AAD 認証を使用する (MFA の SSMS サポート)
 
@@ -71,7 +71,7 @@ SSMS 18.x 以降を実行している場合、18.x 以降では自動的に認�
    ![mfa-tenant-ssms](./media/mfa-authentication/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD の企業間サポート   
-ゲスト ユーザーとして Azure AD B2B シナリオでサポートされている Azure AD ユーザー ([Azure B2B コラボレーションの概要](../../active-directory/b2b/what-is-b2b.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページを参照してください) は、Synapse SQL に、現在 Azure AD で作成されているグループのメンバーとしてのみ接続でき、特定のデータベース内の Transact-SQL `CREATE USER` ステートメントを使用して手動でマップされます。 
+ゲスト ユーザーとして Azure AD B2B シナリオでサポートされている Azure AD ユーザー ([Azure B2B コラボレーションの概要](../../active-directory/external-identities/what-is-b2b.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)に関するページを参照してください) は、Synapse SQL に、現在 Azure AD で作成されているグループのメンバーとしてのみ接続でき、特定のデータベース内の Transact-SQL `CREATE USER` ステートメントを使用して手動でマップされます。 
 
 たとえば、`steve@gmail.com` を Azure AD `contosotest` に招待 (Azure Ad ドメイン `contosotest.onmicrosoft.com` を使用) した場合、Azure AD グループ `usergroup` を、`steve@gmail.com` メンバーを含む Azure AD で作成する必要があります。 次に、このグループを、Azure AD SQL 管理者または Azure AD DBO が Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` ステートメントを実行することによって、特定のデータベース (すなわち、MyDatabase) に作成する必要があります。 
 
@@ -92,5 +92,4 @@ SSMS 18.x 以降を実行している場合、18.x 以降では自動的に認�
 - ユニバーサル認証用の Active Directory Authentication Library (ADAL) バージョンは、最新のリリース バージョン ADAL.dll 3.13.9 に更新されました。 「[Active Directory 認証ライブラリ 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)」を参照してください。  
 
 ## <a name="next-steps"></a>次のステップ
-詳細については、[SQL Server Management Studio を使用した Synapse SQL への接続](get-started-ssms.md)に関するページを参照してください。 
-
+詳細については、[SQL Server Management Studio を使用した Synapse SQL への接続](get-started-ssms.md)に関するページを参照してください。

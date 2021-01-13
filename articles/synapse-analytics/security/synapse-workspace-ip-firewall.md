@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3cbd9fd697bbae8779f5b2b9fa4ab817efce30ac
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 12966503bfa17030fc4ebcb4d790a2f4655142a2
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454638"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116536"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules"></a>Azure Synapse Analytics の IP ファイアウォール規則
 
@@ -43,7 +43,7 @@ Synapse Studio を使用して、Synapse ワークスペースに接続できま
 
 また、Synapse Studio に対して UDP ポート 53 での送信通信を許可する必要があります。 SSMS や Power BI などのツールを使用して接続するには、TCP ポート1433での送信通信を許可する必要があります。
 
-既定のリダイレクト接続ポリシー設定を使用している場合は、追加のポートで送信通信を許可することが必要になる場合があります。 接続ポリシーの詳細については、[こちら](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)を参照してください。
+既定のリダイレクト接続ポリシー設定を使用している場合は、追加のポートで送信通信を許可することが必要になる場合があります。 接続ポリシーの詳細については、[こちら](../../azure-sql/database/connectivity-architecture.md#connection-policy)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

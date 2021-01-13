@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6bb54cf6a5545a49b3c84df59a9ee1294b788846
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 629a063d80c9f1bb1a9ae3d56783e07491149f24
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462683"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118243"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL でサポートされる Transact-SQL 機能
 
@@ -43,7 +43,7 @@ Synapse SQL の消費モデルでは、さまざまなデータベース オブ�
 | **[テーブルのパーティション](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                     | はい | いいえ |
 | **[統計](develop-tables-statistics.md)**            | はい | はい |
 | **[ワークロード管理、リソース クラス、コンカレンシー制御](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | はい    | いいえ |
-| **コスト管理** | はい。スケールアップおよびスケールダウン アクションを使用。 | はい。[Azure portal または T-SQL プロシージャ](https://docs.microsoft.com/azure/synapse-analytics/sql/data-processed#cost-control)を使用。 |
+| **コスト管理** | はい。スケールアップおよびスケールダウン アクションを使用。 | はい。[Azure portal または T-SQL プロシージャ](./data-processed.md#cost-control)を使用。 |
 
 ## <a name="query-language"></a>クエリ言語
 
@@ -84,23 +84,23 @@ Synapse SQL では、組み込みのセキュリティ機能を使用し、デ�
 | **Storage の Azure Active Directory (Azure AD) パススルー認証** | はい | はい |
 | **Storage の SAS トークン認証** | いいえ | はい。[EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) またはインスタンスレベルの [CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) で [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用。 |
 | **Storage のアクセス キー認証** | はい。[EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) で [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用 | いいえ |
-| **Storage の [マネージド ID](../security/synapse-workspace-managed-identity.md) 認証** | はい。[マネージド サービス ID 資格情報](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)を使用 | はい。`Managed Identity` 資格情報を使用。 |
+| **Storage の [マネージド ID](../security/synapse-workspace-managed-identity.md) 認証** | はい。[マネージド サービス ID 資格情報](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&preserve-view=true&toc=%2fazure%2fsynapse-analytics%2ftoc.json&view=azure-sqldw-latest)を使用 | はい。`Managed Identity` 資格情報を使用。 |
 | **Storage のアプリケーション ID 認証** | [はい](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | いいえ |
 | **アクセス許可 - オブジェクトレベル** | はい。ユーザーへのアクセス許可の付与、拒否、取り消しを行う機能を含む | はい。サポートされているシステム オブジェクトでのユーザーまたはログインへのアクセス許可の付与、拒否、取り消しを行う機能を含む |
 | **アクセス許可 - スキーマレベル** | はい。スキーマでのユーザーまたはログインへのアクセス許可の付与、拒否、取り消しを行う機能を含む | はい。スキーマでのユーザーまたはログインへのアクセス許可の付与、拒否、取り消しを行う機能を含む |
 | **アクセス許可 - [データベースレベル](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)** | はい | はい |
 | **アクセス許可 - [サーバーレベル](/sql/relational-databases/security/authentication-access/server-level-roles)** | いいえ | はい。sysadmin とその他のサーバーロールがサポートされています |
-| **アクセス許可 - [列レベルのセキュリティ](/azure/synapse-analytics/sql-data-warehouse/column-level-security?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | はい | はい |
+| **アクセス許可 - [列レベルのセキュリティ](../sql-data-warehouse/column-level-security.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)** | はい | はい |
 | **ロールまたはグループ** | はい (データベース スコープ) | はい (サーバーとデータベースの両方のスコープ) |
 | **セキュリティと ID の関数** | 一部の Transact-SQL セキュリティ関数および演算子: `CURRENT_USER`、`HAS_DBACCESS`、`IS_MEMBER`、`IS_ROLEMEMBER`、`SESSION_USER`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS`、`OPEN/CLOSE MASTER KEY` | 一部の Transact-SQL セキュリティ関数および演算子: `CURRENT_USER`、`HAS_DBACCESS`、`HAS_PERMS_BY_NAME`、`IS_MEMBER', 'IS_ROLEMEMBER`、`IS_SRVROLEMEMBER`、`SESSION_USER`、`SESSION_CONTEXT`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS`、`REVERT`。 セキュリティ関数は、外部データのクエリを実行するために使用できません (クエリで使用できる変数に結果を格納します)。  |
 | **DATABASE SCOPED CREDENTIAL** | はい | はい |
 | **サーバー スコープの資格情報** | いいえ | はい |
-| **行レベルのセキュリティ** | [はい](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&view=sql-server-ver15) | いいえ |
-| **透過的なデータ暗号化 (TDE)** | [はい](/azure/sql-database/transparent-data-encryption-azure-sql?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&tabs=azure-portal) | いいえ | 
-| **データの検出と分類** | [はい](/azure/sql-database/sql-database-data-discovery-and-classification?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | いいえ |
-| **脆弱性評価** | [はい](/azure/sql-database/sql-vulnerability-assessment?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | いいえ |
-| **Advanced Threat Protection** | [はい](/azure/sql-database/sql-database-threat-detection-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-| **監査** | [はい](/azure/sql-database/sql-database-auditing?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | いいえ |
+| **行レベルのセキュリティ** | [はい](/sql/relational-databases/security/row-level-security?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json&view=sql-server-ver15) | いいえ |
+| **透過的なデータ暗号化 (TDE)** | [はい](../../azure-sql/database/transparent-data-encryption-tde-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&tabs=azure-portal&toc=%2fazure%2fsynapse-analytics%2ftoc.json) | いいえ | 
+| **データの検出と分類** | [はい](../../azure-sql/database/data-discovery-and-classification-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) | いいえ |
+| **脆弱性評価** | [はい](../../azure-sql/database/sql-vulnerability-assessment.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) | いいえ |
+| **Advanced Threat Protection** | [はい](../../azure-sql/database/threat-detection-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)
+| **監査** | [はい](../../azure-sql/database/auditing-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) | いいえ |
 | **[ファイアウォール規則](../security/synapse-workspace-ip-firewall.md)**| はい | はい |
 | **[プライベート エンドポイント](../security/synapse-workspace-managed-private-endpoints.md)**| はい | はい |
 
@@ -134,7 +134,7 @@ Synapse SQL では、組み込みのセキュリティ機能を使用し、デ�
 | **Azure Blob Storage** | はい | はい |
 | **Azure SQL (リモート)** | いいえ | いいえ |
 | **Azure CosmosDB トランザクション ストレージ** | いいえ | いいえ |
-| **Azure CosmosDB 分析ストレージ** | いいえ | はい。[Synapse Link (プレビュー)](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) を使用 ([パブリック プレビュー](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#limitations)) |
+| **Azure CosmosDB 分析ストレージ** | いいえ | はい。[Synapse Link (プレビュー)](../../cosmos-db/synapse-link.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) を使用 ([パブリック プレビュー](../../cosmos-db/synapse-link.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json#limitations)) |
 | **Apache Spark テーブル (ワークスペース内)** | いいえ | [メタデータ同期](develop-storage-files-spark-tables.md)を使用した PARQUET テーブルのみ |
 | **Apache Spark テーブル (リモート)** | いいえ | いいえ |
 | **Databricks テーブル (リモート)** | いいえ | いいえ |
@@ -153,7 +153,7 @@ Synapse SQL では、組み込みのセキュリティ機能を使用し、デ�
 | **JSON** | はい | [はい](query-json-files.md) |
 | **Avro** | いいえ | いいえ |
 | **[Delta-lake](https://delta.io/)** | いいえ | いいえ |
-| **[CDM](https://docs.microsoft.com/common-data-model/)** | いいえ | いいえ |
+| **[CDM](/common-data-model/)** | いいえ | いいえ |
 
 ## <a name="next-steps"></a>次のステップ
 専用 SQL プールとサーバーレス SQL プールのベスト プラクティスに関する追加情報については、次の記事を参照してください。

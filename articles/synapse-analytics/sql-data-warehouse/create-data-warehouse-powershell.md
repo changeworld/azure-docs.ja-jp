@@ -11,12 +11,12 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse    , devx-track-azurepowershell
-ms.openlocfilehash: 0ce94b62d67048896cdf7355043ec2dde7f2df79
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 18fba46e4e8de14d9b3ec43455ba2abcc4218dc1
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456592"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120191"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>クイックスタート: Azure PowerShell で専用 SQL プール (以前の SQL DW) を作成する
 
@@ -151,4 +151,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>次のステップ
 
-専用 SQL プール (以前の SQL DW) を作成し、ファイアウォール規則を作成して専用 SQL プールに接続しました。 理解をさらに深めるために、[専用 SQL プールへのデータの読み込み](load-data-from-azure-blob-storage-using-polybase.md)に関する記事に進んでください。
+専用 SQL プール (以前の SQL DW) を作成し、ファイアウォール規則を作成して専用 SQL プールに接続しました。 理解をさらに深めるために、[専用 SQL プールへのデータの読み込み](./load-data-from-azure-blob-storage-using-copy.md)に関する記事に進んでください。

@@ -5,12 +5,12 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: 9621f0a933c6102309286505f2c551c5256c5506
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: aa8657550c6475afd9f893acf8985c50cec0f199
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901557"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119460"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>Live Video Analytics on IoT Edge 1.0 から 2.0 へのアップグレード
 
@@ -21,7 +21,7 @@ ms.locfileid: "97901557"
 > [!div class="mx-tdCol4BreakAll"]
 > |タイトル|Live Video Analytics 1.0|Live Video Analytics 2.0|説明|
 > |-------------|----------|---------|---------|
-> |コンテナー イメージ|mcr.microsoft.com/media/live-video-analytics:1.0.0|mcr.microsoft.com/media/live-video-analytics:2.0.0|Azure IoT Edge の Live Video Analytics 用に Microsoft が公開した Docker イメージ|
+> |コンテナー イメージ|mcr.microsoft.com/media/live-video-analytics:1|mcr.microsoft.com/media/live-video-analytics:2|Azure IoT Edge の Live Video Analytics 用に Microsoft が公開した Docker イメージ|
 > |**MediaGraph ノード** |    |   |   |
 > |変換元|:::image type="icon" source="./././media/upgrading-lva/check.png"::: RTSP ソース </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: IoT Hub メッセージのソース |:::image type="icon" source="./././media/upgrading-lva/check.png"::: RTSP ソース </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: IoT Hub メッセージのソース | メディア インジェストとメッセージのソースとして機能する MediaGraph ノード。|
 > |[プロセッサ]|:::image type="icon" source="./././media/upgrading-lva/check.png"::: モーション検出プロセッサ </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: フレーム レート フィルター プロセッサ </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: HTTP 拡張プロセッサ </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: gRPC 拡張プロセッサ </br>:::image type="icon" source="./././media/upgrading-lva/check.png":::シグナル ゲート プロセッサ |:::image type="icon" source="./././media/upgrading-lva/check.png"::: モーション検出プロセッサ </br>:::image type="icon" source="./././media/upgrading-lva/remove.png"::: **フレーム レート フィルター プロセッサ**</br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: HTTP 拡張プロセッサ </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: gRPC 拡張プロセッサ </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: シグナル ゲート プロセッサ | AI 推論サーバーに送信する前に、メディアのフォーマットを有効にする MediaGraph ノード。|

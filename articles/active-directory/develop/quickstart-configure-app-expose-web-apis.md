@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 4ebae7e97f9128bb9302e9076e71dd3164f0c29e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: bf8b705aff8ac608d0eb3626026797f1d106414b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030962"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017754"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>クイック スタート:Web API を公開するようにアプリケーションを構成する
 
@@ -45,7 +45,7 @@ Web API を登録すると、スコープを追加する準備は完了です。
 
 まず、次の手順で `Employees.Read.All` という名前のスコープの例を作成します。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
 1. 複数のテナントにアクセスできる場合は、上部のメニューの **[ディレクトリ + サブスクリプション]** フィルター :::image type="icon" source="./media/quickstart-configure-app-expose-web-apis/portal-01-directory-subscription-filter.png" border="false"::: を使用して、クライアント アプリの登録を含むテナントを選択します。
 1. **[Azure Active Directory]**  >  **[アプリの登録]** を選択し、API のアプリの登録を選択します。
 1. **[API の公開]**  >  **[スコープの追加]** を選択します。

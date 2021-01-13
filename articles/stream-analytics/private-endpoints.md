@@ -3,17 +3,16 @@ title: Azure Stream Analytics クラスターでプライベート エンドポ�
 description: Azure Stream Analytics クラスターでプライベート エンドポイントを管理する方法について説明します。
 author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 36d26195e78c74ed7b976cfdd48e1e965bca872b
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: cff02bb4b7d0f7e969589a9977a89f89e2674ffc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95249786"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019416"
 ---
 # <a name="create-and-delete-private-endpoints-in-an-azure-stream-analytics-cluster"></a>Azure Stream Analytics クラスターでプライベート エンドポイントを作成および削除する
 
@@ -31,7 +30,7 @@ ms.locfileid: "95249786"
 
 1. **[プライベート エンドポイントを追加する]** を選択し、次の情報を入力して、プライベート エンドポイント経由で安全にアクセスするリソースを選択します。
 
-   |設定|値|
+   |設定|[値]|
    |---|---|
    |名前|プライベート エンドポイントの名前を入力します。 この名前を取得する場合は、一意の名前を作成します。|
    |接続方法|**[マイ ディレクトリ内の Azure リソースに接続します]** を選択します。<br><br>自分のリソースの 1 つを選択し、プライベート エンドポイントを使用して安全に接続したり、共有されているリソース ID または別名を使用して、他のユーザーのリソースに接続したりすることができます。|

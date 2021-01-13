@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 83b5804888379316b855c36f803f646cec102d9e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 939a74a2bbedf6b00159f0c33a50eeb93595cda4
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024587"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116077"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>クイック スタート:COPY ステートメントを使用してデータを一括読み込みする
 
-このクイックスタートでは、高スループットのデータ インジェストを実現する、シンプルで柔軟性のある [COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して、専用 SQL プールにデータを一括読み込みします。 COPY ステートメントは、次の機能を備えることによってシームレスかつフレキシブルにデータを読み込めることから推奨されている読み込みユーティリティです。
+このクイックスタートでは、高スループットのデータ インジェストを実現する、シンプルで柔軟性のある [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して、専用 SQL プールにデータを一括読み込みします。 COPY ステートメントは、次の機能を備えることによってシームレスかつフレキシブルにデータを読み込めることから推奨されている読み込みユーティリティです。
 
 - さほど権限の高くないユーザーでもデータの読み込みを実行できます。データ ウェアハウスに対する厳格な CONTROL アクセス許可は不要です。
 - 単一の T-SQL ステートメントのみを活用でき、別途データベース オブジェクトを作成する必要はありません。
@@ -138,5 +138,5 @@ GROUP BY r.[request_id]
 
 ## <a name="next-steps"></a>次のステップ
 
-- データ読み込みのベスト プラクティスについては、[データ読み込みのベスト プラクティス](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)に関するページを参照してください。
-- データ読み込みのリソースを管理する方法については、[ワークロードの分離](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql)に関するページを参照してください。 
+- データ読み込みのベスト プラクティスについては、[データ読み込みのベスト プラクティス](./guidance-for-loading-data.md)に関するページを参照してください。
+- データ読み込みのリソースを管理する方法については、[ワークロードの分離](./quickstart-configure-workload-isolation-tsql.md)に関するページを参照してください。

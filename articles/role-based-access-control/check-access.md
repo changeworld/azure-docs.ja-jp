@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 12/09/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 7cf4020ad38224b25ea8bb7dc7f0fdea7dd6f3b1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5e4f3314ba580dddbd995855bc0f0512b7597107
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034005"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115738"
 ---
 # <a name="quickstart-check-access-for-a-user-to-azure-resources"></a>クイックスタート: Azure リソースに対するユーザーのアクセス権を確認する
 
@@ -37,7 +37,7 @@ ms.locfileid: "97034005"
 
     リソース グループの例を次に示します。
 
-    ![リソース グループの概要](./media/check-access/rg-overview.png)
+    ![リソース グループの概要](./media/shared/rg-overview.png)
 
 ## <a name="step-2-check-access-for-a-user"></a>手順 2:ユーザーのアクセスを確認
 
@@ -47,7 +47,7 @@ ms.locfileid: "97034005"
 
     リソース グループの [アクセス制御 (IAM)] ページの例を次に示します。
 
-    ![リソース グループのアクセス制御 - [アクセスの確認] タブ](./media/check-access/rg-access-control.png)
+    ![リソース グループのアクセス制御 - [アクセスの確認] タブ](./media/shared/rg-access-control.png)
 
 1. **[アクセスの確認]** タブの **[検索]** の一覧で、アクセス権を確認するユーザー、グループ、サービス プリンシパル、またはマネージド ID を選択します。
 

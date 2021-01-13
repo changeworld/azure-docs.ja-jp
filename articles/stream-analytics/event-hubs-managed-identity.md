@@ -1,17 +1,17 @@
 ---
 title: Azure Stream Analytics ジョブからマネージド ID を使用してイベント ハブにアクセスする (プレビュー)
 description: この記事では、マネージド ID を使用して、Azure Event Hubs の入力と出力に対して Azure Stream Analytics ジョブの認証を行う方法について説明します。
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/04/2021
-ms.openlocfilehash: ca27df7188c5edd1da94fc41707f6c25eb4034bf
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 4dc718f21f2ef3beabc31821bd60b571ac07be05
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895140"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018753"
 ---
 # <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics ジョブからマネージド ID を使用してイベント ハブにアクセスする (プレビュー)
 

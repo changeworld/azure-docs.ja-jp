@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7d258243dae06461d21e9b5f0346e419f034eea9
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 567d5ae8b9d480003486362a7aa0ef69f9740d52
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109699"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120293"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>クイックスタート: Azure portal を使用して専用 SQL プールのコンピューティングを一時停止および再開する
 
@@ -98,5 +98,4 @@ Azure portal を使用して、専用 SQL プールのコンピューティン�
 
 ## <a name="next-steps"></a>次のステップ
 
-専用 SQL プールに対するコンピューティングの一時停止と再開を行いました。 [専用 SQL プールへのデータの読み込み](load-data-from-azure-blob-storage-using-polybase.md)の方法の詳細については、次の記事に進んでください。 コンピューティング機能の管理の詳細については、[コンピューティングの管理の概要](sql-data-warehouse-manage-compute-overview.md)に関する記事を参照してください。 
-
+専用 SQL プールに対するコンピューティングの一時停止と再開を行いました。 [専用 SQL プールへのデータの読み込み](./load-data-from-azure-blob-storage-using-copy.md)の方法の詳細については、次の記事に進んでください。 コンピューティング機能の管理の詳細については、[コンピューティングの管理の概要](sql-data-warehouse-manage-compute-overview.md)に関する記事を参照してください。

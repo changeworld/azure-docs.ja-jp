@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: b605c2c9f3c7468d0fe1f2cccd8c3602c556714b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 949b7e55569cc6fceacc37677ed06a28bb85d7c2
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501075"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116366"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure Synapse Analytics のマネージド仮想ネットワーク
 
@@ -41,7 +41,7 @@ Azure Synapse ワークスペースを作成するときに、そのワークス
 
 ## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-virtual-network"></a>マネージド ワークスペース仮想ネットワークを使用して Azure Synapse ワークスペースを作成する
 
-まだ登録していない場合、ネットワーク リソース プロバイダーを登録します。 リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。 [登録](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)時、リソース プロバイダーの一覧から *Microsoft.Network* を選択します。
+まだ登録していない場合、ネットワーク リソース プロバイダーを登録します。 リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。 [登録](../../azure-resource-manager/management/resource-providers-and-types.md)時、リソース プロバイダーの一覧から *Microsoft.Network* を選択します。
 
 マネージド ワークスペース仮想ネットワークが関連付けられた Azure Synapse ワークスペースを作成するには、Azure portal の **[Networking]\(ネットワーク\)** タブを選択し、 **[マネージド仮想ネットワークの有効化]** チェック ボックスをオンにします。
 

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: b8b0ac002cb52acdc043e4e8ca4fa91daae4e665
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 962e0e734abd73f5a66f9b9ee6067155dd839e5d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457984"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118287"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Azure Active Directory 認証を使用して Synapse SQL での認証を行う
 
@@ -129,8 +129,7 @@ Azure AD サーバー プリンシパル (ログイン) では、次の認証方
 
 ## <a name="next-steps"></a>次のステップ
 
-- Synapse SQL でのアクセスおよび制御の概要については、[Synapse SQL のアクセス制御](../sql/access-control.md)に関するページを参照してください。
+- Synapse SQL でのアクセスおよび制御の概要については、[Synapse SQL のアクセス制御](../security/synapse-workspace-access-control-overview.md)に関するページを参照してください。
 - データベース プリンシパルの詳細については、「[プリンシパル](/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
 - データベース ロールの詳細については、[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)に関するページを参照してください。
 
- 

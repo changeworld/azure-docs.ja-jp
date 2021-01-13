@@ -1,17 +1,17 @@
 ---
 title: クイックスタート - Visual Studio を使用して Azure Stream Analytics ジョブを作成する
 description: 作業を開始するためのこのクイック スタートでは、Visual Studio を使用して Stream Analytics ジョブを作成し、入力と出力を構成し、クエリを定義する方法を示します。
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: 034f1497cb6262ca86cd440b914f3ae67356eef9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 7a02d0914ae111d6e2e00493fe27613e27d836b1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124613"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012361"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>クイック スタート:Visual Studio を使用して Azure Stream Analytics ジョブを作成する
 
@@ -77,7 +77,7 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
    ![ストレージ アカウントの概要](./media/stream-analytics-quick-create-portal/blob-storage.png)
 
-4. **[Blob service]** ページで、 **[コンテナー]** を選択し、お客様のコンテナーに名前を付けます ( *container1* など)。 **[パブリック アクセス レベル]** を **[Private (no anonymous access)]\(プライベート (匿名アクセスなし)\)** のままにして、 **[OK]** を選択します。
+4. **[Blob service]** ページで、 **[コンテナー]** を選択し、お客様のコンテナーに名前を付けます (*container1* など)。 **[パブリック アクセス レベル]** を **[Private (no anonymous access)]\(プライベート (匿名アクセスなし)\)** のままにして、 **[OK]** を選択します。
 
    ![BLOB コンテナーを作成する](./media/stream-analytics-quick-create-portal/create-blob-container.png)
 
@@ -89,7 +89,7 @@ Stream Analytics ジョブを定義する前に、後でジョブの入力とし
 
 3. 左側のテンプレートの一覧で **[Stream Analytics]** を選択し、 **[Azure Stream Analytics アプリケーション]** を選択します。  
 
-4. プロジェクトの **名前** 、 **場所** 、および **ソリューション名** を入力し、 **[OK]** を選択します。
+4. プロジェクトの **名前**、**場所**、および **ソリューション名** を入力し、 **[OK]** を選択します。
 
    ![Stream Analytics プロジェクトを作成する](./media/stream-analytics-quick-create-vs/create-stream-analytics-project.png)
 
@@ -160,7 +160,7 @@ Azure Stream Analytics プロジェクトに含まれる要素に注目してく
 
 1. **クエリ エディター** で、スクリプト エディターの **[Azure に送信]** を選択します。
 
-2. **[新しい Azure Stream Analytics ジョブを作成する]** を選択し、 **ジョブ名** を入力します。 クイック スタートの最初に使用した **サブスクリプション** 、 **リソース グループ** 、および **場所** を選択します。
+2. **[新しい Azure Stream Analytics ジョブを作成する]** を選択し、**ジョブ名** を入力します。 クイック スタートの最初に使用した **サブスクリプション**、**リソース グループ**、および **場所** を選択します。
 
    ![ジョブを Azure に送信する](./media/stream-analytics-quick-create-vs/stream-analytics-job-to-azure.png)
 

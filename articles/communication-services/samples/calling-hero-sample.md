@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c872c2a2799eee3ae9e39653b0046b70ca5d7e8b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 44f23e4f5b3f65fb4f3c69b2ddc55af8c983aa23
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887537"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043729"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Group Calling Hero Sample を使ってみる
 
@@ -72,7 +72,7 @@ Azure Communication Services の **Group Calling Hero Sample** は、Communicati
 
 このサンプルをローカルでテストするには、通話の URL を使用して複数のブラウザー セッションを開き、マルチユーザー通話をシミュレートします。
 
-## <a name="before-running-the-sample-for-the-first-time"></a>サンプルを初めて実行する前に行う手順
+### <a name="before-running-the-sample-for-the-first-time"></a>サンプルを初めて実行する前に行う手順
 
 1. PowerShell、Windows ターミナル、コマンド プロンプト、またはそれと同等のインスタンスを開き、サンプルの複製先のディレクトリに移動します。
 2. `git clone https://github.com/Azure-Samples/communication-services-web-calling-hero.git`

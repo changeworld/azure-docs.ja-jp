@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 2630984d54134ca8fca94fdc1960265ba71935a6
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: fdaaf935dc458a6a5b2a87a81bb98a1392f1034a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031302"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012123"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>クイック スタート:Web API にアクセスするようにクライアント アプリケーションを構成する
 
@@ -42,7 +42,7 @@ ms.locfileid: "97031302"
 
 クライアント アプリと Web API の両方を登録し、スコープを作成して API を公開したら、次の手順に従って、API に対するクライアントのアクセス許可を構成できます。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
 1. 複数のテナントにアクセスできる場合は、上部のメニューの **[ディレクトリ + サブスクリプション]** フィルター :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: を使用して、クライアント アプリの登録を含むテナントを選択します。
 1. **[Azure Active Directory]**  >  **[アプリの登録]** を選択し、(Web API "*ではなく*") クライアント アプリケーションを選択します。
 1. **[API のアクセス許可]** 、 **[アクセス許可の追加]** 、 **[自分の API]** の順に選択します。
@@ -71,7 +71,7 @@ Microsoft Graph API に対する *User.Read* アクセス許可も表示され�
 
 Microsoft Graph に対する委任されたアクセス許可を構成することで、クライアント アプリケーションがログインしたユーザーの代わりに操作を実行できるようになり、たとえば、電子メールを読んだり、プロファイルを変更したりできます。 既定では、クライアント アプリのユーザーは、構成済みの委任されたアクセス許可への同意をログイン時に求められます。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
 1. 複数のテナントにアクセスできる場合は、上部のメニューの **[ディレクトリ + サブスクリプション]** フィルター :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: を使用して、クライアント アプリの登録を含むテナントを選択します。
 1. **[Azure Active Directory]**  >  **[アプリの登録]** を選択し、クライアント アプリケーションを選択します。
 1. **[API のアクセス許可]**  >  **[アクセス許可の追加]**  >  **[Microsoft Graph]** を選択します。
@@ -96,7 +96,7 @@ Microsoft Graph に対する委任されたアクセス許可を構成するこ�
 
 以下の手順では、例として、Microsoft Graph に *Files.Read.All* アクセス許可を付与します。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
 1. 複数のテナントにアクセスできる場合は、上部のメニューの **[ディレクトリ + サブスクリプション]** フィルター :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: を使用して、クライアント アプリの登録を含むテナントを選択します。
 1. **[Azure Active Directory]**  >  **[アプリの登録]** を選択し、クライアント アプリケーションを選択します。
 1. **[API のアクセス許可]**  >  **[アクセス許可の追加]**  >  **[Microsoft Graph]**  >  **[アプリケーションのアクセス許可]** を選択します。
