@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 11/25/2020
 ms.author: rolyon
-ms.openlocfilehash: c4082f7fc535807ec996034ba695549a51969a99
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6eadba7d778a632896529f3c7c53886619d96444
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182412"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901472"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する
 
@@ -28,6 +28,7 @@ ms.locfileid: "96182412"
 
 - `Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)や[所有者](built-in-roles.md#owner)など)
 - [Azure Cloud Shell の PowerShell](../cloud-shell/overview.md) または [Azure PowerShell](/powershell/azure/install-az-ps)
+- PowerShell コマンドの実行に使用するアカウントには、Microsoft Graph の `Directory.Read.All` のアクセス許可が必要です。
 
 ## <a name="steps-to-add-a-role-assignment"></a>ロールの割り当てを追加する手順
 
@@ -325,7 +326,7 @@ CanDelegate        : False
 
 #### <a name="add-role-assignment-for-an-application-at-a-resource-group-scope"></a>リソース グループをスコープとするアプリケーションのロールの割り当てを追加する
 
-*pharma-sales* リソース グループ スコープで、サービス プリンシパル オブジェクト ID が 77777777-7777-7777-7777-777777777777 のアプリケーションに[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを割り当てます。
+*pharma-sales* リソース グループ スコープで、サービス プリンシパル オブジェクト ID が 77777777-7777-7777-7777-777777777777 のアプリケーションに [仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールを割り当てます。
 
 ```azurepowershell
 PS C:\> New-AzRoleAssignment -ObjectId 77777777-7777-7777-7777-777777777777 `

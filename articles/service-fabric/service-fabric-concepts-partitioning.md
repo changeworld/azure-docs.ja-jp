@@ -1,18 +1,21 @@
 ---
 title: Service Fabric サービスのパーティション分割
-description: Service Fabric ステートフル サービスのパーティションの分割方法について説明します。 パーティション分割により、ローカル コンピューターにデータを保管し、データとコンピューティングのスケールを同時に調整できるようになります。
+description: Service Fabric ステートレスとステートフルのサービスをパーティション分割する方法について学習します。
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d33e7b5ee293cf9dfb49e509bec2e1950033a956
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 199ae9d9844149c1931da638633110f717fe0517
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005430"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915897"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services のパーティション分割
-この記事では、Azure Service Fabric Reliable Services のパーティション分割の基本概念について説明します。 この記事で使用するソース コードは、 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)にも掲載されています。
+この記事では、Azure Service Fabric Reliable Services のパーティション分割の基本概念について説明します。 パーティション分割により、ローカル コンピューターでデータ ストレージが有効にされるため、データとコンピューティングを一緒にスケーリングできます。
+
+> [!TIP]
+> この記事にあるコードの[完全なサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)は、GitHub で入手できます。
 
 ## <a name="partitioning"></a>パーティション分割
 パーティション分割は Service Fabric に固有のものではありません。 それは、スケーラブルなサービスの構築の中心的なパターンです。 パーティション分割とは、広義では状態 (データ) の分割に関する概念と考えることができます。計算してアクセスしやすい小さな単位に分割することで、スケーラビリティとパフォーマンスを改善できます。 よく知られているパーティション分割の形式として、シャーディングとも呼ばれる[データのパーティション分割][wikipartition]があります。
@@ -348,14 +351,14 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     
     ![ブラウザーのスクリーン ショット](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
-サンプルの完全なソース コードについては、 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)を参照してください。
+この記事で使用されているコードの完全なソリューションは、こちらで入手できます: https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions 。
 
 ## <a name="next-steps"></a>次のステップ
-Service Fabric の概念についての詳細は、次を参照してください。
+Service Fabric サービスの詳細については、以下を参照してください。
 
+* [Service Fabric のサービスとの接続と通信](service-fabric-connect-and-communicate-with-services.md)
 * [Service Fabric サービスの可用性](service-fabric-availability-services.md)
 * [Service Fabric サービスの拡張性](service-fabric-concepts-scalability.md)
-* [Service Fabric アプリケーションの容量計画](service-fabric-capacity-planning.md)
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 

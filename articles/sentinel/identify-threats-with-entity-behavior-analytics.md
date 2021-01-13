@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: a0a677342534cd92d5530199076e3d2e7084134d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 2326746d274c68225cd4c8569df6a20d6050ec1a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95494779"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900894"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel のユーザーとエンティティの行動分析 (UEBA) を使用して高度な脅威を特定する
 
@@ -177,6 +177,8 @@ Azure Sentinel は、セキュリティ アナリストが、ユーザーのベ�
 | **ActivityInsights**      | プロファイリングに基づくアクティビティのコンテキスト分析              |
 | **InvestigationPriority** | 0 ～ 10 の異常スコア (0=無害、10=きわめて異常)         |
 |
+
+**UsersInsights**、**DevicesInsights**、**ActivityInsights** で参照されるすべてのコンテキスト エンリッチメントについては、[UEBA エンリッチメントのリファレンス ドキュメント](ueba-enrichments.md)で確認できます。
 
 ### <a name="querying-behavior-analytics-data"></a>行動分析データへのクエリ実行
 

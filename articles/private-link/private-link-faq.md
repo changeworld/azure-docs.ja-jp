@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: 2e5edb0ccf20ab0dba14864487f2b2ddef7d57e7
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c074c29b7a37f49d5a4c7a5fab00b9a3e41c6893
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544209"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901540"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private Link のよく寄せられる質問 (FAQ)
 
@@ -43,8 +43,8 @@ ms.locfileid: "95544209"
 ### <a name="do-i-require-a-dedicated-subnet-for-private-endpoints"></a>プライベート エンドポイント専用のサブネットが必要ですか。 
 不正解です。 プライベート エンドポイント専用のサブネットは必要ありません。 対象のサービスがデプロイされている VNet 内にある任意のサブネットのプライベート エンドポイント IP を選択できます。  
  
-### <a name="can-private-endpoint-connect-to-private-link-service-across-azure-active-directory-tenants"></a>プライベート エンドポイントは、Azure Active Directory テナントをまたいで Private Link サービスに接続できますか。 
-はい。 プライベート エンドポイントは、AD テナントをまたいで Private Link サービスまたは Azure PaaS に接続できます。  
+### <a name="can-a-private-endpoint-connect-to-private-link-services-across-azure-active-directory-tenants"></a>プライベート エンドポイントから Azure Active Directory テナントをまたいで Private Link サービスに接続できますか? 
+はい。 プライベート エンドポイントでは、Azure Active Directory テナントをまたいで Private Link サービスまたは Azure PaaS に接続できます。 テナントをまたいで接続するプライベート エンドポイントには、手動による要求の承認が必要です。 
  
 ### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>プライベート エンドポイントは、Azure リージョンをまたいで Azure PaaS リソースに接続できますか。
 正解です。 プライベート エンドポイントは、Azure リージョンをまたいで Azure PaaS リソースに接続できます。
@@ -74,7 +74,7 @@ Private Link サービスは、次のいくつかの方法でスケーリング�
 - **[すべて]** - すべてのユーザーがサービスを見つけることができます。 
  
 ### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Basic Load Balancer で Private Link サービスを作成することはできますか。 
-不正解です。 Basic Load Balancer では Private Link サービスはサポートされていません。
+いいえ。 Basic Load Balancer では Private Link サービスはサポートされていません。
  
 ### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>Private Link サービスには専用サブネットが必要ですか。 
 不正解です。 Private Link サービスに専用サブネットは必要ありません。 対象のサービスがデプロイされている VNet 内の任意のサブネットを選択できます。   

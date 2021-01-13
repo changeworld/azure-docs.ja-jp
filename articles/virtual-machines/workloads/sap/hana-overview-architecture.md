@@ -11,15 +11,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2019
+ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0144c57549e374404d3dde0fe997ba41adc8606b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c06988bf9c3558f5ef82862bdbcd821dc42ca28a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967586"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97880989"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) とは
 
@@ -35,12 +35,14 @@ SAP HANA on Azure (L インスタンス) は、Azure 独自のソリューショ
 
 これらのベア メタル サーバー ユニットでは、SAP HANA の実行のみがサポートされます。 SAP アプリケーション層またはワークロードのミドルウェア層は仮想マシン内で実行されます。 SAP HANA on Azure (L インスタンス) のユニットを実行しているインフラストラクチャ スタンプは、Azure ネットワーク サービスのバックボーンに接続されています。 これにより、SAP HANA on Azure (L インスタンス) のユニットと仮想マシン間の低遅延の接続が実現されます。
 
-2019 年 7 月の時点では、HANA L インスタンス スタンプの 2 つの異なるリビジョンとデプロイの場所を区別しています。
+2021 年 1 月の時点では、HANA L インスタンス スタンプとデプロイの場所の異なる 2 つのリビジョンを区別しています。
 
 - "リビジョン 3" (Rev 3):2019 年 7 月より前にお客様がデプロイに使用できたスタンプ
 - "リビジョン 4" (Rev 4):Azure VM ホストに近接する場所にデプロイされる新しいスタンプ設計。これまでに次の Azure リージョンでリリースされています。
     -  米国西部 2 
-    -  米国東部 
+    -  米国東部
+    -  米国東部 2 (2 つの可用性ゾーン)
+    -  米国中南部 (2 つの可用性ゾーン)
     -  西ヨーロッパ
     -  北ヨーロッパ
 

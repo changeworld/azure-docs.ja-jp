@@ -3,12 +3,12 @@ title: Service Fabric クラスターでの X.509 証明書ベースの認証
 description: Service Fabric クラスターでの証明書ベースの認証と、証明書関連の問題を検出、軽減、および修正する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 4d81cb9d224bdc2e3002c621c86729df235e0d81
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 8af0246e0e576f9877c4c5e3b1f1a4314ae29827
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574770"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901251"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>Service Fabric クラスターでの X.509 証明書ベースの認証
 
@@ -170,7 +170,10 @@ Service Fabric クラスターのセキュリティ設定では、原則とし�
   </NodeTypes>
 ```
 
-どちらの種類の宣言でも、Service Fabric ノードでは起動時に構成が読み取られ、指定された証明書が検索されて読み込まれ、それらの NotAfter 属性の降順で並べ替えられます。期限切れの証明書は無視され、このノードによって試行された Service Fabric 接続に対して、クライアント資格情報として、リストの最初の要素が選択されます。 (実際には、Service Fabric では最も有効期限が遠い証明書が優先されます)。
+どちらの種類の宣言でも、Service Fabric ノードでは起動時に構成が読み取られ、指定された証明書が検索されて読み込まれ、それらの NotBefore 属性の降順で並べ替えられます。期限切れの証明書は無視され、このノードによって試行されたすべての Service Fabric 接続に対して、リストの最初の要素がクライアント資格情報として選択されます。 (実際には、Service Fabric では最後に発行された証明書が優先されます)。
+
+> [!NOTE]
+> バージョン 7.2.445 (7.2 CU4) より前では、Service Fabric によって、最も有効期限が遅い証明書 ('NotAfter' プロパティが最も遅い証明書) が選択されています
 
 共通名ベースのプレゼンテーション宣言では、大文字と小文字が区別される正確な文字列比較として、そのサブジェクトの共通名が、宣言の X509FindValue (または X509FindValueSecondary) フィールドに等しい場合、証明書が一致と見なされます。 これは、ワイルドカード照合や大文字と小文字が区別されない文字列比較をサポートする検証規則とは対照的です。  
 

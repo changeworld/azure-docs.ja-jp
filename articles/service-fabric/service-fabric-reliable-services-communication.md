@@ -4,12 +4,12 @@ description: サービスのリッスン開始、エンドポイントの解決�
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7dc10055633c8e6dd2c645f28b774d5d5f3ac3f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 3436d29446e963faea9bda47f5a5247b7de7d859
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574328"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912616"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Reliable Services 通信 API の使用方法
 プラットフォームとしての Azure Service Fabric は、サービス間の通信にまったく依存しません。 UDP から HTTP まで、あらゆるプロトコルとスタックに対応します。 サービスの通信方法の選択は、サービス開発者に委ねられています。 Reliable Services アプリケーション フレームワークには、組み込みの通信スタックと、カスタム通信コンポーネントの構築に使用できる API が用意されています。
@@ -288,7 +288,7 @@ public class MyCommunicationClient implements CommunicationClient {
 }
 ```
 
-クライアント ファクトリは、主に通信クライアントを作成する役割を担います。 HTTP クライアントなど、永続的な接続を維持しないクライアントの場合、ファクトリはクライアントを作成して返すだけで済みます。 一部のバイナリ プロトコルなど、永続的な接続を維持する他のプロトコルの場合、ファクトリはプロトコルを検証して接続を再作成する必要があるかどうかを確認する必要があります。  
+クライアント ファクトリは、主に通信クライアントを作成する役割を担います。 HTTP クライアントなど、永続的な接続を維持しないクライアントの場合、ファクトリはクライアントを作成して返すだけで済みます。 一部のバイナリ プロトコルなど、永続的な接続を維持する他のプロトコルの場合、接続を再作成する必要があるかどうかを決定するために、ファクトリによる検証も必要です (`ValidateClient(string endpoint, MyCommunicationClient client)`)。  
 
 ```csharp
 public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCommunicationClient>

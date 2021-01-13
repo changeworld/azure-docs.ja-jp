@@ -3,12 +3,12 @@ title: 概念 - ハブ アンド スポークのアーキテクチャで Azure V
 description: Azure のハブ アンド スポーク アーキテクチャで Azure VMware Solution のデプロイを統合する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 788ef9886e0d102a549e84cd01c658e9e4131c63
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0d511c8d6a96ffb6fa666bcb7c989764f398bdc9
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967450"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901387"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>ハブ アンド スポークのアーキテクチャで Azure VMware Solution を統合する
 
@@ -128,7 +128,7 @@ Azure Application Gateway V1 および V2 は、Azure VMware Solution VM 上で�
 
 Azure DNS の解決には、次の 2 つのオプションを使用できます。
 
--   ハブにデプロイされている Azure Active Directory (Azure AD) ドメイン コントローラーをネーム サーバーとして使用します (「[ID に関する考慮事項](#identity-considerations)」を参照)。
+-   ハブにデプロイされているドメイン コントローラーをネーム サーバーとして使用します (「[ID に関する考慮事項](#identity-considerations)」で説明されます)。
 
 -   Azure DNS プライベート ゾーンをデプロイして構成します。
 
@@ -136,7 +136,7 @@ Azure DNS の解決には、次の 2 つのオプションを使用できます�
 
 一般的な設計の推奨事項として、2 つ以上の Azure VM (ハブ仮想ネットワークにデプロイされており、DNS 設定で Azure DNS サーバーを使用するようにスポーク仮想ネットワークで構成されている) にデプロイされている既存の Azure DNS インフラストラクチャ (この場合は Active Directory 統合 DNS) を使用します。
 
-Azure プライベート DNS ゾーンが仮想ネットワークにリンクされる Azure プライベート DNS を使用できます。  DNS サーバーは顧客の Azure プライベート DNS インフラストラクチャを利用して DNS を実行しているオンプレミスまたは Azure VMware Solution への条件付き転送にハイブリッド リゾルバーとして使用されます。 
+Azure プライベート DNS ゾーンが仮想ネットワークにリンクされる Azure プライベート DNS を使用できます。  DNS サーバーは、顧客の Azure プライベート DNS インフラストラクチャを使用して DNS が実行されている、オンプレミスまたは Azure VMware Solution への条件付き転送にハイブリッド リゾルバーとして使用されます。 
 
 スポーク仮想ネットワーク内にデプロイされている VM に対して DNS レコードのライフサイクルを自動管理するには、自動登録を有効にします。 有効にすると、プライベート DNS ゾーンの最大数が 1 つのみになります。 無効にすると、最大数は 1000 です。
 
@@ -144,7 +144,7 @@ Azure プライベート DNS ゾーンが仮想ネットワークにリンクさ
 
 ## <a name="identity-considerations"></a>ID に関する考慮事項
 
-ID に関する理由により、ハブに少なくとも 1 つの AD ドメイン コントローラーをデプロイすることをお勧めします。 ゾーン分散方式または VM 可用性セットで 2 つの共有サービス サブネットを使用します。 オンプレミスの AD ドメインを Azure に拡張する方法については、[Azure アーキテクチャ センター](/azure/architecture/reference-architectures/identity/adds-extend-domain)に関する記事を参照してください。
+ID に関する理由により、ハブに少なくとも 1 つのドメイン コントローラーをデプロイすることをお勧めします。 ゾーン分散方式または VM 可用性セットで 2 つの共有サービス サブネットを使用します。 オンプレミスの Active Directory (AD) ドメインを Azure に拡張する方法の詳細については、[Azure アーキテクチャ センター](/azure/architecture/reference-architectures/identity/adds-extend-domain)に関するページを参照してください。
 
 さらに、vSphere 環境内で ID および DNS ソースとして機能するように、別のドメイン コントローラーを Azure VMware Solution 側にデプロイします。
 

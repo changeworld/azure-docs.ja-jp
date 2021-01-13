@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: 9f7bf41bd864f6780eee00938f35bb34d2336eb5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 81e52d4a6827492931179055d040b541d51228eb
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145754"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916662"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -29,6 +29,12 @@ ms.locfileid: "93145754"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+##  <a name="december-2020"></a>2020 年 12 月
+
+### <a name="video-indexer-deployed-in-the-switzerland-west-and-switzerland-north"></a>Video Indexer はスイス西部とスイス北部にデプロイ済み
+
+Video Indexer 有料アカウントをスイス西部とスイス北部リージョンで作成できるようになりました。
 
 ## <a name="october-2020"></a>2020 年 10 月
 
@@ -158,7 +164,7 @@ Video Indexer で、`ar-SY`、`en-UK`、および `en-AU` のカスタム言語�
  
 ### <a name="swagger-update"></a>Swagger の更新
 
-Video Indexer で、 **認証** と **操作** が単一の [Video Indexer OpenAPI 仕様 (swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson) に統合されました。 開発者は、[Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai/)で API を見つけることができます。
+Video Indexer で、**認証** と **操作** が単一の [Video Indexer OpenAPI 仕様 (swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson) に統合されました。 開発者は、[Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai/)で API を見つけることができます。
 
 ## <a name="december-2019"></a>2019 年 12 月
 

@@ -4,16 +4,16 @@ description: Azure portal を利用し、新規と既存のマネージド デ�
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 11/19/2020
+ms.date: 01/05/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: a868d5d236cf4c5a8d29f15490909c2f1a53546f
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 625fb1e3dd0b433da6b60f995aa6b380c23ec9ce
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "96016588"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901035"
 ---
 # <a name="change-your-performance-tier-using-the-azure-portal"></a>Azure portal を利用してパフォーマンス レベルを変更する
 
@@ -47,7 +47,7 @@ ms.locfileid: "96016588"
 1. VM の割り当てを解除するか、ディスクをデタッチします。
 1. ディスクを選択します
 1. **[Size + Performance]\(サイズおよびパフォーマンス\)** を選択します。
-1. **[パフォーマンス レベル]** ドロップダウンで、ディスクの現在のベースラインとは異なるレベルを選択します。
+1. **[パフォーマンス レベル]** ドロップダウンで、ディスクの現在のパフォーマンス レベル以外のレベルを選択します。
 1. **[サイズ変更]** を選択します。
 
 :::image type="content" source="media/disks-performance-tiers-portal/change-tier-existing-disk.png" alt-text="[Size + Performance]\(サイズおよびパフォーマンス\) ブレードのスクリーンショット。パフォーマンス レベルが強調表示されています。" lightbox="media/disks-performance-tiers-portal/performance-tier-settings.png":::

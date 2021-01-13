@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: fac26c616c977eedc466f004a9455297ec995fb8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9fe1b7a077142b00aaf2a8502faa0e166c4311c4
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352543"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915625"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Private Link を使用して Azure HDInsight クラスターを保護および分離する (プレビュー)
 
@@ -29,7 +29,7 @@ Azure Resource Manager (ARM) テンプレートで特定のネットワーク �
 
 既定の仮想ネットワーク アーキテクチャで使用される基本ロード バランサーでは、必要な送信依存関係 (HDInsight RP など) にアクセスするために、パブリック NAT (ネットワーク アドレス変換) が自動的に提供されます。 パブリック インターネットへの送信接続を制限する場合は、[ファイアウォールを構成](./hdinsight-restrict-outbound-traffic.md)できます。ただし、必須ではありません。
 
-`resourceProviderConnection` を [送信] に構成すると、プライベート エンドポイントを使用してクラスター固有のリソース (Azure Data Lake Storage Gen2 や外部メタストアなど) にアクセスすることもできます。 これらのリソースにプライベート エンドポイントを使用することは必須ではありませんが、これらのリソースでプライベート エンドポイントを使用する予定がある場合は、HDInsight クラスターを作成する前`before`にプライベート エンドポイントと DNS エントリを構成する必要があります。 クラスターの作成時は、必要な外部 SQL データベース (Apache Ranger、Ambari、Oozie、Hive メタストアなど) をすべて作成して、提供することが推奨されています。 これらのすべてのリソースが、独自のプライベート エンドポイントを介して、またはそれ以外の方法で、クラスター サブネット内からアクセスできる必要があることが要件です。
+`resourceProviderConnection` を [送信] に構成すると、プライベート エンドポイントを使用してクラスター固有のリソース (Azure Data Lake Storage Gen2 や外部メタストアなど) にアクセスすることもできます。 これらのリソースにプライベート エンドポイントを使用することは必須ではありませんが、これらのリソースでプライベート エンドポイントを使用する予定がある場合は、HDInsight クラスターを作成する前 `before` に、プライベート エンドポイントと DNS エントリを構成する必要があります。 クラスターの作成時は、必要な外部 SQL データベース (Apache Ranger、Ambari、Oozie、Hive メタストアなど) をすべて作成して、提供することが推奨されています。 これらのすべてのリソースが、独自のプライベート エンドポイントを介して、またはそれ以外の方法で、クラスター サブネット内からアクセスできる必要があることが要件です。
 
 Azure Key Vault のプライベート エンドポイントの使用はサポートされていません。 保存時の CMK 暗号化に Azure Key Vault を使用している場合は、プライベート エンドポイントを使用せずに、HDInsight サブネット内から Azure Key Vault エンドポイントにアクセスできる必要があります。
 

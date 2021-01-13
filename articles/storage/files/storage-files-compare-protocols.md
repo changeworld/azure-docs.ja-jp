@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 288d1740c1c4c67dd8756de5fc0652966ae89488
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: e914bcece9a30270d12d5c2cc09d3fd1014783c6
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620976"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916509"
 ---
 # <a name="azure-file-share-protocols"></a>Azure ファイル共有プロトコル
 
@@ -24,7 +24,7 @@ Azure Files には、Azure ファイル共有を接続してマウントする�
 |特徴量  |NFS (プレビュー)  |SMB  |
 |---------|---------|---------|
 |アクセス プロトコル     |NFS 4.1         |SMB 2.1、SMB 3.0         |
-|サポート対象 OS     |Linux カーネル バージョン 4.3 以降         |Windows 2008 R2 以降、Linux カーネル バージョン 4.11 以降         |
+|推奨される OS     |Linux カーネル バージョン 4.3 以降         |Windows 2008 R2 以降、Linux カーネル バージョン 4.11 以降         |
 |[使用できるレベル](storage-files-planning.md#storage-tiers)     |Premium Storage         |Premium Storage、トランザクション最適化、ホット、クール         |
 |[冗長性](storage-files-planning.md#redundancy)     |LRS、ZRS         |LRS、ZRS、GRS         |
 |認証     |ホストベースの認証のみ        |ID ベースの認証、ユーザーベースの認証         |
