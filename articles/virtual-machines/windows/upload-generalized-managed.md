@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 94db8ce46fc240a6c48c0919b6d2c2cd148522ac
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6e3333ac780cfca02a6ce4f28d2b0e312016f713
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976052"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131510"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>汎用化した VHD をアップロードして Azure で新しい VM を作成する
 
@@ -38,13 +38,15 @@ ms.locfileid: "91976052"
 > 
 
 1. Windows 仮想マシンへのサインイン
-2. 管理者としてコマンド プロンプト ウィンドウを開きます。 ディレクトリを `%windir%\system32\sysprep` に変更し、`sysprep.exe`を実行します。
-3. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、 **[一般化する]** チェック ボックスがオンになっていることを確認します。
-4. **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
-5. **[OK]** を選択します。
+1. 管理者としてコマンド プロンプト ウィンドウを開きます。 
+1. panther ディレクトリ (C:\Windows\Panther) を削除します。
+1. ディレクトリを `%windir%\system32\sysprep` に変更し、`sysprep.exe`を実行します。
+1. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、 **[一般化する]** チェック ボックスがオンになっていることを確認します。
+1. **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
+1. **[OK]** を選択します。
    
     ![Sysprep の開始](./media/upload-generalized-managed/sysprepgeneral.png)
-6. Sysprep は完了時に仮想マシンをシャットダウンします。 VM は再起動しないでください。
+1. Sysprep は完了時に仮想マシンをシャットダウンします。 VM は再起動しないでください。
 
 
 ## <a name="upload-the-vhd"></a>VHD をアップロードする 

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 8c9beaca0fb3ee7881559ffcc955f171bc2ddd7b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 7eb8010853ba370f4502b6bc155c6a098e64965b
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886449"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133448"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>実験でデータセットをバージョン管理して追跡する
 
@@ -166,9 +166,7 @@ Azure Machine Learning を使用すると、入力と出力のデータセット
 データが **出力データセット** として追跡されるシナリオを次に示します。  
 
 * 実験の実行を送信するときに、`outputs` または `arguments` のいずれかのパラメーターを使用して `OutputFileDatasetConfig` オブジェクトを渡す。 `OutputFileDatasetConfig` オブジェクトを使用して、パイプライン ステップ間でデータを保持することもできます。 [ML パイプラインのステップ間でのデータの移動](how-to-move-data-in-out-of-pipelines.md)に関するページを参照してください。
-    > [!TIP]
-    > [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) は、いつでも変更される可能性がある[試験的](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental)なプレビュー機能を含むパブリック プレビュー クラスです。
-
+  
 * スクリプトにデータセットを登録する。 このシナリオでは、ワークスペースに登録したときにデータセットに割り当てられた名前が表示されます。 次の例では、`training_ds` が表示される名前です。
 
     ```Python

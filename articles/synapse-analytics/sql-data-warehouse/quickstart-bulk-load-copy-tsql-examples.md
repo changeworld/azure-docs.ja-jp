@@ -9,16 +9,16 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: de446209104c113b10346645f79b461239c3efab
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 25c692ea9a2dce4723472f6812ac46d82b2b318d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901278"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120990"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Synapse SQL を使用してデータを安全に読み込む
 
-この記事では、[COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)のセキュリティで保護された認証メカニズムについて説明し、例を示します。 COPY ステートメントは、Synapse SQL でデータを一括読み込みするための最も柔軟で安全な方法です。
+この記事では、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)のセキュリティで保護された認証メカニズムについて説明し、例を示します。 COPY ステートメントは、Synapse SQL でデータを一括読み込みするための最も柔軟で安全な方法です。
 ## <a name="supported-authentication-mechanisms"></a>サポートされている認証メカニズム
 
 次の表は、サポートされている認証方法をファイルの種類別およびストレージ アカウント別にまとめたものです。 これはソース ストレージの場所とエラー ファイルの場所に適用されます。
@@ -136,7 +136,7 @@ WITH (
 
     ![読み込みのための Azure RBAC アクセス許可の付与](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
-2. 次の[ドキュメント](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server)を進め、Azure AD 認証を構成します。 
+2. 次の[ドキュメント](../../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell)を進め、Azure AD 認証を構成します。 
 
 3. Active Directory を使用し、SQL プールに接続します。そこでは資格情報を指定せずに COPY ステートメントを実行できます。
 
@@ -152,11 +152,11 @@ WITH (
 ## <a name="e-service-principal-authentication"></a>E. サービス プリンシパル認証
 #### <a name="steps"></a>手順
 
-1. [Azure Active Directory アプリケーションを作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
-2. [アプリケーション ID を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)
-3. [認証キーを取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret)
-4. [V1 OAuth 2.0 トークン エンドポイントを取得する](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
-5. ストレージ アカウントで [Azure AD アプリケーションに読み取り、書き込み、実行のアクセス許可を割り当てる](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder)
+1. [Azure Active Directory アプリケーションを作成する](../..//active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
+2. [アプリケーション ID を取得する](../..//active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)
+3. [認証キーを取得する](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)
+4. [V1 OAuth 2.0 トークン エンドポイントを取得する](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
+5. ストレージ アカウントで [Azure AD アプリケーションに読み取り、書き込み、実行のアクセス許可を割り当てる](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder)
 6. これで COPY ステートメントを実行できます。
 
     ```sql
@@ -176,5 +176,5 @@ WITH (
 
 ## <a name="next-steps"></a>次のステップ
 
-- 詳しい構文については、[COPY ステートメントに関する記事](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)をご覧ください
-- 読み込みのベスト プラクティスについては、[データ読み込みの概要](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading#what-is-elt)記事をご覧ください
+- 詳しい構文については、[COPY ステートメントに関する記事](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)をご覧ください
+- 読み込みのベスト プラクティスについては、[データ読み込みの概要](./design-elt-data-loading.md#what-is-elt)記事をご覧ください

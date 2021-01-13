@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 45c7f89f773095a102429c07f7441223de3c2dec
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c537d3109f770c1ce77be6495bdacd24270dad5f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448264"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119596"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-architecture-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プール (旧称 SQL DW) のアーキテクチャ
 
@@ -107,13 +107,13 @@ Azure Synapse Analytics は、エンタープライズ データ ウェアハウ
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Synapse の概要について学習したので、次は、すばやく[専用 SQL プール (旧称 SQL DW) を作成し](create-data-warehouse-portal.md)、[サンプル データを読み込む](load-data-from-azure-blob-storage-using-polybase.md)方法について学習します。 Azure に慣れていない場合に新しい用語を調べるには、 [Azure 用語集](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) が役立ちます。 または、次の Azure Synapse リソースも確認できます。  
+Azure Synapse の概要について学習したので、次は、すばやく[専用 SQL プール (旧称 SQL DW) を作成し](create-data-warehouse-portal.md)、[サンプル データを読み込む](./load-data-from-azure-blob-storage-using-copy.md)方法について学習します。 Azure に慣れていない場合に新しい用語を調べるには、 [Azure 用語集](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) が役立ちます。 または、次の Azure Synapse リソースも確認できます。  
 
 - [顧客の成功事例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [ブログ](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - [機能に関する要求](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 - [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [サポート チケットを作成する](sql-data-warehouse-get-started-create-support-ticket.md)
-- [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
+- [Microsoft Q&A 質問ページ](/answers/topics/azure-synapse-analytics.html)
 - [Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

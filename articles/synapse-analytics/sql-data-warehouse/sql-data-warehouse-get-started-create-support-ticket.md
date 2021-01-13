@@ -10,12 +10,12 @@ author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: de45e338b0b863dc2364af399a6991f56658b0e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6042b5be48144ce6730a9bf4f342d7735a262643
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212277"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118066"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>Azure Synapse Analytics のクォータの増加を要求し、サポートを受ける
 
@@ -36,9 +36,9 @@ Azure portal から Azure Synapse Analytics の新しいサポート要求を作
 
 1. お使いの [Azure サポート プラン](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/)を確認します。
 
-   * **課金、クォータ、サブスクリプション管理**のサポートは、すべてのサポート レベルでご利用いただけます。
-   * **障害対応**のサポートは、[Developer](https://azure.microsoft.com/support/plans/developer/)、[Standard](https://azure.microsoft.com/support/plans/standard/)、[Professional Direct](https://azure.microsoft.com/support/plans/prodirect/)、または [Premier](https://azure.microsoft.com/support/plans/premier/) サポートを通して提供されます。 障害対応のサポートとは、Azure のご利用に際して発生した、マイクロソフトが原因と想定される問題への対応です。
-   * **開発者支援**および**アドバイザリ サービス**は、[Professional Direct](https://azure.microsoft.com/support/plans/prodirect/) および [Premier](https://azure.microsoft.com/support/plans/premier/) サポート レベルでご利用いただけます。
+   * **課金、クォータ、サブスクリプション管理** のサポートは、すべてのサポート レベルでご利用いただけます。
+   * **障害対応** のサポートは、[Developer](https://azure.microsoft.com/support/plans/developer/)、[Standard](https://azure.microsoft.com/support/plans/standard/)、[Professional Direct](https://azure.microsoft.com/support/plans/prodirect/)、または [Premier](https://azure.microsoft.com/support/plans/premier/) サポートを通して提供されます。 障害対応のサポートとは、Azure のご利用に際して発生した、マイクロソフトが原因と想定される問題への対応です。
+   * **開発者支援** および **アドバイザリ サービス** は、[Professional Direct](https://azure.microsoft.com/support/plans/prodirect/) および [Premier](https://azure.microsoft.com/support/plans/premier/) サポート レベルでご利用いただけます。
 
    Premier サポート プランを使用している場合は、[Microsoft Premier オンライン ポータル](https://premier.microsoft.com/)で Azure Synapse Analytics 関連の問題を報告することもできます。 各種のサポート プランの詳細 (範囲、応答時間、価格などを含む) については、[Azure サポート プラン](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/)に関するページを参照してください。Azure サポートに関するよく寄せられる質問については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
 
@@ -137,5 +137,4 @@ Azure portal から Azure Synapse Analytics の新しいサポート要求を作
 
 ## <a name="other-resources"></a>その他のリソース
 
-[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) や [Azure Synapse Analytics の Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)で Azure Synapse Analytics のコミュニティとつながることもできます。
-
+[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) や [Azure Synapse Analytics の Microsoft Q&A 質問ページ](/answers/topics/azure-synapse-analytics.html)で Azure Synapse Analytics のコミュニティとつながることもできます。

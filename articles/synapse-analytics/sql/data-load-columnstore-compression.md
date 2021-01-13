@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e4656531f1424c3414ab00afbbe241a532738400
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4f98d00477b7dc8fbbbe7d17705e398a708ce2af
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462264"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120939"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>列ストア インデックスのパフォーマンスのために行グループの品質を最大化する
 
@@ -142,6 +142,5 @@ DWU のサイズとユーザー リソースのクラスによって、ユーザ
 
 ## <a name="next-steps"></a>次のステップ
 
-Synapse SQL でパフォーマンスを向上させるその他の方法については、[パフォーマンスの概要](../overview-cheat-sheet.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事を参照してください。
+Synapse SQL でパフォーマンスを向上させるその他の方法については、[パフォーマンスの概要](../overview-terminology.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)に関する記事を参照してください。
 
- 

@@ -6,14 +6,14 @@ ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.author: jushiman
-ms.openlocfilehash: 0b7d200ef39a6b4da6af33a0a9b9314635c3db33
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 01/12/2020
+ms.author: vikancha
+ms.openlocfilehash: 67780c725466707f347e9009a77099786cc64939
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586433"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133295"
 ---
 # <a name="nvv4-series"></a>NVv4 シリーズ 
 
@@ -26,7 +26,7 @@ NVv4 シリーズ仮想マシンは [AMD Radeon Instinct MI25](https://www.amd.c
 [Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
-[VM 世代サポート](generation-2.md): 第 1 世代<br>
+[VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 高速ネットワーク:サポートされています<br>
 <br>
 

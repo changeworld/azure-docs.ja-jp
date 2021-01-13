@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 53c68f44273b14658bd4d95ce7cf3cf847c077d0
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: f780d5404d99435a61c4e3f9e90b1acbd9539af9
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025954"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118440"
 ---
 # <a name="monitor-workload---azure-portal"></a>ワークロードを監視する - Azure portal
 
@@ -24,7 +24,7 @@ ms.locfileid: "93025954"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-- SQL プール:SQL プールのログを収集します。 SQL プールがプロビジョニングされていない場合は、[SQL プールの作成](load-data-from-azure-blob-storage-using-polybase.md)の手順を参照してください。
+- SQL プール:SQL プールのログを収集します。 SQL プールがプロビジョニングされていない場合は、[SQL プールの作成](./load-data-from-azure-blob-storage-using-copy.md)の手順を参照してください。
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics ワークスペースの作成
 
@@ -63,7 +63,7 @@ Azure Storage、Stream Analytics、または Log Analytics にログを出力で
 - ログ アラートを作成する
 - ダッシュ ボードにクエリ結果をピン留めする
 
-ログ クエリの機能の詳細については、次の[ドキュメント](../../azure-monitor/log-query/query-language.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を参照してください。
+ログ クエリの機能の詳細については、次の[ドキュメント](/azure/data-explorer/kusto/query/?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json)を参照してください。
 
 ![Log Analytics ワークスペース エディター](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_editor.png)
 

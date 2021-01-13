@@ -6,12 +6,12 @@ ms.date: 11/22/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6bdad71f0b36995abdeb3b1edb87cbef32df8b67
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 115e1ec347cdcd80904b47a0c8798206360d0dad
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919417"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131782"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>クイック スタート:Java Web プロジェクトで Application Insights を使う
 
@@ -56,7 +56,7 @@ Application Insights は、ライブ アプリケーションのパフォーマ�
         <artifactId>applicationinsights-web-auto</artifactId>
         <!-- or applicationinsights-web for manual web filter registration -->
         <!-- or applicationinsights-core for bare API -->
-        <version>2.5.0</version>
+        <version>2.6.2</version>
       </dependency>
     </dependencies>
 ```
@@ -69,15 +69,11 @@ Application Insights は、ライブ アプリケーションのパフォーマ�
 
 ```gradle
     dependencies {
-      compile group: 'com.microsoft.azure', name: 'applicationinsights-web-auto', version: '2.5.0'
+      compile group: 'com.microsoft.azure', name: 'applicationinsights-web-auto', version: '2.6.2'
       // or applicationinsights-web for manual web filter registration
       // or applicationinsights-core for bare API
     }
 ```
-
-# <a name="other-types"></a>[その他の型](#tab/other)
-
-[最新バージョン](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)をダウンロードし、必要なファイルをプロジェクトにコピーして、以前のバージョンを置き換えます。
 
 ---
 
@@ -88,10 +84,7 @@ Application Insights は、ライブ アプリケーションのパフォーマ�
   * `applicationinsights-core` は、ベア API のみを提供します (アプリケーションがサーブレット ベースでない場合など)。
   
 * *SDK を最新バージョンに更新するにはどうすればよいですか。*
-  * Gradle または Maven を使用している場合:
-    * 最新バージョンを指定するようにビルド ファイルを更新します。
-  * 依存関係を手動で管理している場合:
-    * 最新の [Application Insights SDK for Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) をダウンロードして、古いものと置き換えます。 変更は [SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)に記載されます。
+  * 2020 年 11 月以降、Java アプリケーションの監視には、Azure Monitor Application Insights Java 3.0 エージェントを使用した自動インストルメンテーションをお勧めします。 開始方法について詳しくは、「[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)」を参照してください。
 
 ## <a name="add-an-applicationinsightsxml-file"></a>*ApplicationInsights.xml* ファイルを追加する
 *ApplicationInsights.xml* をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイ クラス パスに追加されていることを確認します。 次の XML をファイルにコピーします。
@@ -168,10 +161,6 @@ HTTP 要求データが概要ブレードに表示されます (表示されな�
 任意のグラフをクリックして、より詳細な集計メトリックを表示します。
 
 ![チャート付きの Application Insights の [失敗] ペイン](./media/java-get-started/006-barcharts.png)
-
-<!--
-[TODO update image with 2.5.0 operation naming provided by agent]
--->
 
 ### <a name="instance-data"></a>インスタンス データ
 個々のインスタンスを表示するには、特定の要求の種類をクリックします。

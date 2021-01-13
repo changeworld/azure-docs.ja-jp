@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 60a995f78b9b696197d9bd45e04becb19e4129f0
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c91310d9d1e67dd77098ee13a87190ee6d411607
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653063"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120106"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールを使用したデータの読み込みのベスト プラクティス
 
@@ -47,7 +47,7 @@ ORC ファイル形式でデータをエクスポートすると、大きなテ�
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-専用 SQL プールに接続し、ユーザーを作成します。 次のコードは、mySampleDataWarehouse という名前のデータベースに接続していることを前提としています。 これは、loader と呼ばれるユーザーを作成し、テーブルを作成するためのユーザーのアクセス許可を付与した後、[COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して読み込む方法を示しています。 次に、このユーザーを最大のリソースを含む DataLoads ワークロード グループに分類します。 
+専用 SQL プールに接続し、ユーザーを作成します。 次のコードは、mySampleDataWarehouse という名前のデータベースに接続していることを前提としています。 これは、loader と呼ばれるユーザーを作成し、テーブルを作成するためのユーザーのアクセス許可を付与した後、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して読み込む方法を示しています。 次に、このユーザーを最大のリソースを含む DataLoads ワークロード グループに分類します。 
 
 ```sql
    -- Connect to the dedicated SQL pool
@@ -179,5 +179,5 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 ## <a name="next-steps"></a>次のステップ
 
 - 抽出、読み込み、変換 (ELT) プロセスを設計するときの COPY ステートメントまたは PolyBase の詳細については、[Azure Synapse Analytics の ELT の設計](design-elt-data-loading.md)に関するページを参照してください。
-- 読み込みのチュートリアルについては、[COPY ステートメントを使用した Azure BLOB ストレージから Synapse SQL へのデータの読み込み](load-data-from-azure-blob-storage-using-polybase.md)に関するページを参照してください。
+- 読み込みのチュートリアルについては、[COPY ステートメントを使用した Azure BLOB ストレージから Synapse SQL へのデータの読み込み](./load-data-from-azure-blob-storage-using-copy.md)に関するページを参照してください。
 - データの読み込みの監視については、「[DMV を利用してワークロードを監視する](sql-data-warehouse-manage-monitor.md)」を参照してください。

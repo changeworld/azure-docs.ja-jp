@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f8db19b209ddefebd4a297f18fb9b178fcf40f21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8826dff6d347f78625272a5620a1f168b8804db
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89457908"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120038"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Synapse SQL プール向けの開発に関するベスト プラクティス
 
@@ -55,7 +55,7 @@ ms.locfileid: "89457908"
 
 分散テーブルを読み込む場合は、受信データを分散キーで並べ替えないでください。読み込みが遅くなります。  以下の記事では、分散列を選択してパフォーマンスを向上させる方法と、CREATE TABLES ステートメントの WITH 句で分散テーブルを定義する方法について詳しく説明します。
 
-[テーブルの概要](sql-data-warehouse-tables-overview.md)、[テーブル分散](sql-data-warehouse-tables-distribute.md)、[テーブル分散の選択](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)、[CREATE TABLE](sql-data-warehouse-tables-overview.md)、[CREATE TABLE AS SELECT](sql-data-warehouse-develop-ctas.md) に関するページも参照してください。
+[テーブルの概要](sql-data-warehouse-tables-overview.md)、[テーブル分散](sql-data-warehouse-tables-distribute.md)、[テーブル分散の選択](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)、[CREATE TABLE](sql-data-warehouse-tables-overview.md)、[CREATE TABLE AS SELECT](sql-data-warehouse-develop-ctas.md) に関するページも参照してください。
 
 ## <a name="do-not-over-partition"></a>パーティション分割しすぎないようにする
 
@@ -120,7 +120,7 @@ DDL を定義するときに、データをサポートする最小のデータ�
 
 この記事で目的のトピックが見つからない場合は、ページの左側にある [Search for docs] を使用して、すべての Azure Synapse ドキュメントで検索を実行してみてください。  
 
-[Azure Synapse の Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)は、他のユーザーや Azure Synapse 製品グループに質問を投稿できる場所です。  Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  
+[Azure Synapse の Microsoft Q&A 質問ページ](/answers/topics/azure-synapse-analytics.html)は、他のユーザーや Azure Synapse 製品グループに質問を投稿できる場所です。  Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  
 
 Stack Overflow で質問したい方のために、[Azure Synapse Analytics Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)も用意しています。
 

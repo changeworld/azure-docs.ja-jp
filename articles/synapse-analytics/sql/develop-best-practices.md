@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a5e514602668c96d63562e45fb114cf9770a54a9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1fd7649cac6b636873ca529fe9780429d86697c6
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321485"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120905"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Synapse SQL 向けの開発に関するベスト プラクティス
 
@@ -53,7 +53,7 @@ ms.locfileid: "93321485"
 
 分散列を選択した場合にパフォーマンスが向上するしくみや、CREATE TABLE ステートメントの WITH 句で分散テーブルを定義する方法の詳細については、以下のリンクを参照してください。
 
-[テーブルの概要](develop-tables-overview.md)、[テーブル分散](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[テーブル分散の選択](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関するページも参照してください。
+[テーブルの概要](develop-tables-overview.md)、[テーブル分散](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[テーブル分散の選択](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関するページも参照してください。
 
 ### <a name="do-not-over-partition"></a>パーティション分割しすぎないようにする
 データをパーティション分割すると、パーティション切り替えを利用してデータを管理したり、パーティションを除外してスキャンを最適化したりできるため、有用ですが、パーティションが多すぎると、クエリの速度が低下する場合があります。  多くの場合、高い粒度でパーティション分割する戦略は、SQL Server では効果的ですが、専用 SQL プールでは効果的ではありません。  
@@ -109,7 +109,7 @@ DDL を定義するときに、データをサポートする最小のデータ�
 > [!TIP]
 > 6,000 万行未満のテーブルについては、列ストア インデックスを使用しても最適なソリューションを得られない可能性があります。  
 
-さらに、データをパーティション分割する場合は、クラスター化列ストア インデックスの恩恵を受けるには、各パーティションに 100 万行が必要なことを考慮に入れる必要があります。  テーブルに 100 個のパーティションがある場合に、クラスター化列ストアの恩恵を受けるには、少なくとも 60 億行必要です (60 個のディストリビューション " *100 個のパーティション* " 100 万行)。  
+さらに、データをパーティション分割する場合は、クラスター化列ストア インデックスの恩恵を受けるには、各パーティションに 100 万行が必要なことを考慮に入れる必要があります。  テーブルに 100 個のパーティションがある場合に、クラスター化列ストアの恩恵を受けるには、少なくとも 60 億行必要です (60 個のディストリビューション "*100 個のパーティション*" 100 万行)。  
 
 テーブルに 60 億行もない場合は、パーティションの数を減らすか、代わりにヒープ テーブルを使用することを検討してください。  列ストア テーブルの代わりに、ヒープ テーブルをセカンダリ インデックスとともに使用して、パフォーマンスが向上するかどうかを試してみる価値もあります。
 
@@ -167,7 +167,6 @@ CETAS によって Parquet ファイルが生成されると、最初のクエ�
 
 ### <a name="next-steps"></a>次のステップ
 
-この記事に記載されていない情報が必要な場合は、このページの左側にある **ドキュメントの検索** 機能を使用して、SQL プールのすべてのドキュメントを検索してください。  [Azure Synapse Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)は、他のユーザーや Azure Synapse Analytics 製品グループに質問を投稿できる場所です。 Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  
+この記事に記載されていない情報が必要な場合は、このページの左側にある **ドキュメントの検索** 機能を使用して、SQL プールのすべてのドキュメントを検索してください。  [Azure Synapse Analytics に関する Microsoft Q&A 質問ページ](/answers/topics/azure-synapse-analytics.html)は、他のユーザーや Azure Synapse Analytics 製品グループに質問を投稿できる場所です。 Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  
 
 Stack Overflow で質問したい方のために、[Azure Synapse Analytics Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)も用意しています。
- 

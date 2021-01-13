@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/01/2020
+ms.date: 01/12/2021
 ms.author: b-juche
-ms.openlocfilehash: cc046a27fec1b9e361ff840c7ae0f077e2987b67
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 0ae7e8f745a91e080d12a47271057ed90f9bc835
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91654088"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134332"
 ---
 # <a name="troubleshoot-dual-protocol-volumes"></a>デュアルプロトコル ボリュームのトラブルシューティング
 
@@ -30,7 +30,7 @@ ms.locfileid: "91654088"
 |     エラー条件    |     解像度    |
 |-|-|
 | デュアルプロトコル ボリュームの作成に失敗し、エラー `This Active Directory has no Server root CA Certificate` が発生します。    |     このエラーがデュアルプロトコル ボリュームの作成中に発生した場合は、お使いの NetApp アカウントでルート CA 証明書が アップロードされていることを確認してください。    |
-| デュアルプロトコル ボリュームの作成に失敗し、エラー `Failed to validate LDAP configuration, try again after correcting LDAP configuration` が発生します。    |  次の解決策を検討してください。   <ul><li>Active Directory (AD) で NetApp アカウントに参加するときに、必要なルート証明書が追加されていることを確認します。 「[Active Directory 証明機関の公開ルート証明書をアップロードする](create-volumes-dual-protocol.md#upload-active-directory-certificate-authority-public-root-certificate)」をご覧ください。   </li><li>AD ホスト マシンのポインター (PTR) レコードが DNS サーバーに存在しない可能性があります。 DNS サーバーに逆引き参照ゾーンを作成してから、その逆引き参照ゾーンに AD ホストマシンの PTR レコードを追加する必要があります。 <br> たとえば、AD マシンの IP アドレスが `1.1.1.1` であり、AD マシンのホスト名 (`hostname` コマンドを使用して確認されたもの) が `AD1` であり、ドメイン名が `myDomain.com` であるとします。  逆引き参照ゾーンに追加される PTR レコードは `1.1.1.1` -> `AD1.myDomain.com` になります。 </li></ul>  |
+| デュアルプロトコル ボリュームの作成に失敗し、エラー `Failed to validate LDAP configuration, try again after correcting LDAP configuration` が発生します。    |  AD ホスト マシンのポインター (PTR) レコードが DNS サーバーに存在しない可能性があります。 DNS サーバーに逆引き参照ゾーンを作成してから、その逆引き参照ゾーンに AD ホストマシンの PTR レコードを追加する必要があります。 <br> たとえば、AD マシンの IP アドレスが `1.1.1.1` であり、AD マシンのホスト名 (`hostname` コマンドを使用して確認されたもの) が `AD1` であり、ドメイン名が `contoso.com` であるとします。  逆引き参照ゾーンに追加される PTR レコードは `1.1.1.1` -> `contoso.com` になります。   |
 | デュアルプロトコル ボリュームの作成に失敗し、エラー `Failed to create the Active Directory machine account \\\"TESTAD-C8DD\\\". Reason: Kerberos Error: Pre-authentication information was invalid Details: Error: Machine account creation procedure failed\\n [ 434] Loaded the preliminary configuration.\\n [ 537] Successfully connected to ip 1.1.1.1, port 88 using TCP\\n**[ 950] FAILURE` が発生します。 |  このエラーは、NetApp アカウントで Active Directory に参加するときの AD パスワードが正しくないことを示しています。 正しいパスワードで AD 接続を更新してから、もう一度お試しください。 |
 | デュアルプロトコル ボリュームの作成に失敗し、エラー `Could not query DNS server. Verify that the network configuration is correct and that DNS servers are available` が発生します。 |   このエラーは、DNS に到達できないことを示しています。 DNS IP が正しくないか、ネットワークに関する問題が発生していることが原因である可能性があります。 AD 接続で入力された DNS IP を調べて、その IP が正しいことを確認します。 <br> また、AD とボリュームが同じリージョンにあり、さらに同じ VNet 内にあることを確認します。 それらが異なる VNet 内にある場合は、必ずその 2 つの VNet 間に VNet ピアリングが確立されているようにします。|
 | デュアルプロトコル ボリュームのマウント時に、アクセス許可が拒否されます。 | デュアルプロトコル ボリュームでは、NFS プロトコルと SMB プロトコルの両方がサポートされます。  UNIX システムのマウントされたボリュームにアクセスしようとすると、システムは使用している UNIX ユーザーを Windows ユーザーにマップしようとします。 マッピングが見つからない場合は、"アクセス許可が拒否されました" というエラーが発生します。 <br> この状況は、アクセスに ‘root’ ユーザーを使用する場合にも当てはまります。 <br> "アクセス許可が拒否されました" の問題を回避するには、マウント ポイントにアクセスする前に、Windows Active Directory に `pcuser` が含まれていることを確認します。 "アクセス許可が拒否されました" の問題が発生した後に `pcuser` を追加する場合は、キャッシュ エントリがクリアされるまで 24 時間待機してからアクセスを再試行してください。 |

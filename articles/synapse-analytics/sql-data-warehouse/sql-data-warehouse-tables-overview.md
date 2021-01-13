@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ec62724b7aedbad4111a4882dd89f86d116b2a96
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2a8cfbe75925ddc49f6fa3205fafdd1c2203b472
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448051"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115635"
 ---
 # <a name="design-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールを使用してテーブルを設計する
 
@@ -71,11 +71,11 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 外部テーブルは、Azure Storage BLOB または Azure Data Lake Store にあるデータを指します。 CREATE TABLE AS SELECT ステートメントと組み合わせて使用する場合は、外部テーブルから選択するとデータが専用 SQL プールにインポートされます。
 
-このため、外部テーブルはデータを読み込むのに役立ちます。 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)」をご覧ください。
+このため、外部テーブルはデータを読み込むのに役立ちます。 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](./load-data-from-azure-blob-storage-using-copy.md)」をご覧ください。
 
 ## <a name="data-types"></a>データ型
 
-専用 SQL プールを使用すると、一般的に使用されるほとんどのデータ型がサポートされます。 サポートされるデータ型の一覧については、CREATE TABLE ステートメントの「[data types in CREATE TABLE reference (CREATE TABLE 内のデータ型のリファレンス)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes)」を参照してください。 データ型の使用に関するガイダンスについては、「[データ型](sql-data-warehouse-tables-data-types.md)」を参照してください。
+専用 SQL プールでは、最も一般的に使用されるデータ型がサポートされています。 サポートされるデータ型の一覧については、CREATE TABLE ステートメントの「[data types in CREATE TABLE reference (CREATE TABLE 内のデータ型のリファレンス)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes)」を参照してください。 データ型の使用に関するガイダンスについては、「[データ型](sql-data-warehouse-tables-data-types.md)」を参照してください。
 
 ## <a name="distributed-tables"></a>分散テーブル
 

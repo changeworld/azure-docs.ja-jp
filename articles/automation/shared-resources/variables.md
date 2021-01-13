@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: d064eb0b748c361b76139b1a21d25cec8996e818
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 6db0c82c034aab97deee1be4aa8bdc54368521bc
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734778"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131527"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Azure Automation で変数を管理する
 
@@ -26,7 +26,7 @@ Automation 変数は、次のシナリオで役立ちます。
 
 Azure Automation では、変数が保存されるので、Runbook または DSC 構成が失敗した場合でも使用できます。 この動作により、ある Runbook または DSC 構成で設定した値を、別の Runbook で使用したり、次の実行時に同じ Runbook または DSC 構成で使用したりすることができます。
 
-Azure Automation では、暗号化された各変数を安全に保存します。 変数の作成時に、Azure Automation を使用して、セキュリティで保護された資産となるようにその変数の暗号化とストレージを指定できます。 変数を作成した後は、変数を再作成せずにその暗号化の状態を変更することはできません。 まだ暗号化されていない機密データが格納されている Automation アカウントの変数がある場合は、それらを削除し、暗号化された変数として再作成する必要があります。 Azure Security Center の推奨事項は、「[Automation アカウント変数は、暗号化する必要がある](../../security-center/recommendations-reference.md#recs-computeapp)」で説明されているように、すべての Azure Automation 変数を暗号化することです。 このセキュリティ推奨事項から除外する暗号化されていない変数がある場合は、「[推奨事項とセキュリティ スコアからリソースを除外する](../../security-center/exempt-resource.md)」を参照して、除外規則を作成してください。
+Azure Automation では、暗号化された各変数を安全に保存します。 変数の作成時に、Azure Automation を使用して、セキュリティで保護された資産となるようにその変数の暗号化とストレージを指定できます。 変数を作成した後は、変数を再作成せずにその暗号化の状態を変更することはできません。 まだ暗号化されていない機密データが格納されている Automation アカウントの変数がある場合は、それらを削除し、暗号化された変数として再作成する必要があります。 Azure Security Center の推奨事項は、「[Automation アカウント変数は、暗号化する必要がある](../../security-center/recommendations-reference.md#recs-compute)」で説明されているように、すべての Azure Automation 変数を暗号化することです。 このセキュリティ推奨事項から除外する暗号化されていない変数がある場合は、「[推奨事項とセキュリティ スコアからリソースを除外する](../../security-center/exempt-resource.md)」を参照して、除外規則を作成してください。
 
 >[!NOTE]
 >Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 Azure Automation では、キーはシステムによって管理される Key Vault に格納されます。 セキュリティで保護された資産を保存する前に、Automation によって Key Vault からキーが読み込まれ、それを使用して資産が暗号化されます。

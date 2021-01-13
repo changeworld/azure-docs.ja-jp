@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91f612ba7f19deb739dbb6004e275ea044a5a3d3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 45e1ae5b8a1084334b7596f62c272e16294c4c14
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462550"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118763"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用して Parquet および JSON ファイルで入れ子にされた型に対してクエリを実行する
 
@@ -24,7 +24,7 @@ ms.locfileid: "96462550"
 - 階層型の [JSON ファイル](query-json-files.md): 複雑な JSON ドキュメントを 1 つの列として読み取ることができます。
 - Azure Cosmos DB コレクション (現在はゲート付きパブリック プレビュー): すべてのドキュメントに複雑な入れ子になったプロパティを含めることができます。
 
-サーバーレス SQL プールでは、入れ子にされたすべての型が JSON オブジェクトと配列として書式設定されます。 そのため、[JSON 関数を使用して複雑なオブジェクトを抽出または変更する](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server)ことも、[OPENJSON 関数を使用して JSON データを解析する](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server)こともできます。 
+サーバーレス SQL プールでは、入れ子にされたすべての型が JSON オブジェクトと配列として書式設定されます。 そのため、[JSON 関数を使用して複雑なオブジェクトを抽出または変更する](/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server)ことも、[OPENJSON 関数を使用して JSON データを解析する](/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server)こともできます。 
 
 次に、入れ子になったオブジェクトを含む JSON ファイル [COVID-19 Open Research Dataset](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) からスカラー値とオブジェクト値を抽出するクエリの例を示します。 
 
@@ -121,7 +121,7 @@ FROM
 | --- | --- | --- | --- |
 | Supplementary Information An eco-epidemiolo... | Julien   | - Figure S1 :Phylogeny of... | `{    "paper_id": "000b7d1517ceebb34e1e3e817695b6de03e2fa78",    "metadata": {        "title": "Supplementary Information An eco-epidemiological study of Morbilli-related paramyxovirus infection in Madagascar bats reveals host-switching as the dominant macro-evolutionary mechanism",        "authors": [            {                "first": "Julien"` |
 
-JSON ファイルとは異なり、ほとんどの場合、複雑な JSON オブジェクトを含む 1 つの列が返されますが、Parquet ファイルには複数の複合列を含めることができます。 各列で `JSON_VALUE` 関数を使用して、入れ子になった列のプロパティを読み取ることができます。 `OPENROWSET` を使用すると、`WITH` 句で入れ子になったプロパティのパスを直接指定できます。 パスを列の名前として設定することも、列の型の後に [JSON パス式](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server)を追加することもできます。
+JSON ファイルとは異なり、ほとんどの場合、複雑な JSON オブジェクトを含む 1 つの列が返されますが、Parquet ファイルには複数の複合列を含めることができます。 各列で `JSON_VALUE` 関数を使用して、入れ子になった列のプロパティを読み取ることができます。 `OPENROWSET` を使用すると、`WITH` 句で入れ子になったプロパティのパスを直接指定できます。 パスを列の名前として設定することも、列の型の後に [JSON パス式](/sql/relational-databases/json/json-path-expressions-sql-server)を追加することもできます。
 
 次のクエリでは、structExample.parquet ファイルが読み取られ、入れ子にされた列の要素の表示方法が示されます。 入れ子にされた値を参照するには、次の 2 つの方法があります。
 - 型の指定の後に、入れ子にされた値のパス式を指定する。

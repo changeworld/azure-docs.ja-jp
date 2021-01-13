@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3d12e60e2aeee667b89d56589870d53366772014
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b58474758ac4d26b347dc72d84be401d15a3846b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459040"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119817"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Azure Cosmos DB 用の Azure Synapse Link でサポートされる機能
 
@@ -31,7 +31,7 @@ Azure Cosmos DB には、次の 2 種類のコンテナーがあります。
 
 Synapse Link を有効にしなくても、Azure Cosmos DB コンテナーに接続できます。 このシナリオでは、トランザクション ストアに対して読み取り/書き込みのみを行うことができます。 Azure Cosmos DB 用の Synapse Link 内で現時点でサポートされている機能の一覧を次に示します。 
 
-| カテゴリ              | 説明 |[Apache Spark プール](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [サーバーレス SQL プール](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
+| カテゴリ              | 説明 |[Apache Spark プール](../sql/on-demand-workspace-overview.md) | [サーバーレス SQL プール](../sql/on-demand-workspace-overview.md) |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
 | **ランタイム サポート** |Azure Cosmos DB にアクセスするためにサポートされている Azure Synapse ランタイム| ✓ | プレビュー |
 | **Azure Cosmos DB API サポート** | サポートされている Azure Cosmos DB API の種類 | SQL / MongoDB | SQL / MongoDB |

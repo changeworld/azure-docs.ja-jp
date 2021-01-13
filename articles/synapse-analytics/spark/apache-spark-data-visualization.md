@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: 73b18d15ad054f1c485d6f61cdefe54993148bc4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f11693b34048b11c02668e086561b9a6521a5213
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450536"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121527"
 ---
 # <a name="visualize-data"></a>データの視覚化
 Azure Synapse は、データ ウェアハウスやビッグ データ分析システム全体にわたって分析情報を取得する時間を早める統合分析サービスです。 データの視覚化は、ご利用のデータに関する分析情報を取得するうえで重要なコンポーネントです。 大規模および小規模のデータを、人間が理解しやすくするのに役立ちます。 また、データのグループ内のパターン、傾向、および外れ値を容易に検出できるようになります。 
@@ -227,7 +227,7 @@ plt.show()
 ## <a name="connect-to-power-bi-using-apache-spark--sql-on-demand"></a>Apache Spark および SQL オンデマンドを使用して Power BI に接続する
 Azure Synapse Analytics と Power BI は密に統合されるため、データ エンジニアは、分析ソリューションを構築することができます。
 
-Azure Synapse Analytics では、さまざまなワークスペース計算エンジンが、Spark プールとサーバーレス SQL プールの間でデータベースとテーブルを共有できます。 [共有メタデータ モデル](https://docs.microsoft.com/azure/synapse-analytics/metadata/overview)を使用すると、SQL オンデマンドにより Apache Spark テーブルに対してクエリを実行することができます。 完了したら、SQL オンデマンド エンドポイントを Power BI に接続することで、同期された Spark テーブルに対するクエリを容易に実行できるようになります。
+Azure Synapse Analytics では、さまざまなワークスペース計算エンジンが、Spark プールとサーバーレス SQL プールの間でデータベースとテーブルを共有できます。 [共有メタデータ モデル](../metadata/overview.md)を使用すると、SQL オンデマンドにより Apache Spark テーブルに対してクエリを実行することができます。 完了したら、SQL オンデマンド エンドポイントを Power BI に接続することで、同期された Spark テーブルに対するクエリを容易に実行できるようになります。
 
 
 ## <a name="next-steps"></a>次の手順

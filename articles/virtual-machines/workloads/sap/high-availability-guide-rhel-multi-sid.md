@@ -13,14 +13,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/16/2020
+ms.date: 01/11/2021
 ms.author: radeltch
-ms.openlocfilehash: b944ed37fe8df5fd4964342d8c0f52a040612ee4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 746cd6cbbb79cd1f35c9d703fe182abbd988d36f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486404"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117964"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Red Hat Enterprise Linux for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド
 
@@ -566,6 +566,8 @@ SAP 共有のアーキテクチャを決定したので、次に、対応する�
     # NW2 - ERS
     sudo firewall-cmd --zone=public --add-port=62112/tcp --permanent
     sudo firewall-cmd --zone=public --add-port=62112/tcp
+    sudo firewall-cmd --zone=public --add-port=3212/tcp --permanent
+    sudo firewall-cmd --zone=public --add-port=3212/tcp
     sudo firewall-cmd --zone=public --add-port=3312/tcp --permanent
     sudo firewall-cmd --zone=public --add-port=3312/tcp
     sudo firewall-cmd --zone=public --add-port=51213/tcp --permanent
@@ -594,6 +596,8 @@ SAP 共有のアーキテクチャを決定したので、次に、対応する�
     # NW3 - ERS
     sudo firewall-cmd --zone=public --add-port=62122/tcp --permanent
     sudo firewall-cmd --zone=public --add-port=62122/tcp
+    sudo firewall-cmd --zone=public --add-port=3222/tcp --permanent
+    sudo firewall-cmd --zone=public --add-port=3222/tcp
     sudo firewall-cmd --zone=public --add-port=3322/tcp --permanent
     sudo firewall-cmd --zone=public --add-port=3322/tcp
     sudo firewall-cmd --zone=public --add-port=52213/tcp --permanent

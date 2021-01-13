@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: b36f52fd97a9f7ff294f14ec394ff9a9f607b5b0
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3c0dd2b4e7e48eeb76d82c26eb52b89b61e9f668
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187155"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134111"
 ---
 # <a name="monitor-identity-and-access"></a>ID とアクセスを監視する
 
@@ -44,7 +44,7 @@ Azure Security Center には、組織の ID とセキュリティの要件を確
 - 非推奨のアカウントをサブスクリプションから削除する必要があります (非推奨のアカウントとは不要になったアカウントであり、Azure Active Directory によってサインインがブロックされます)
 
 > [!TIP]
-> これらの推奨事項とこれらのコントロールに関して表示されるその他の推奨事項については、「[ID とアクセスの推奨事項](recommendations-reference.md#recs-identity)」を参照してください。
+> これらの推奨事項とこれらのコントロールに関して表示されるその他の推奨事項については、「[ID とアクセスの推奨事項](recommendations-reference.md#recs-identityandaccess)」を参照してください。
 
 ### <a name="limitations"></a>制限事項
 

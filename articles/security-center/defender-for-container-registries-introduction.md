@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ad880b7c23c687530a79ca1123474e94c923e150
-ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
+ms.openlocfilehash: 79a428c322b65bfbb982be7a7e0c8b9fab7eed18
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96310393"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132734"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Azure Defender for container registries の概要
 
@@ -28,7 +28,7 @@ Security Center では、サブスクリプション内の Azure Resource Manage
 
 **コンテナー レジストリ用 Azure Defender** には、Azure Resource Manager ベースの Azure Container Registry レジストリ内のイメージをスキャンし、画像の脆弱性をより詳細に把握するための脆弱性スキャナーが含まれています。 統合されたスキャナーは、業界トップレベルの脆弱性スキャン ベンダーである Qualys を使用しています。
 
-Qualys または Security Center によって問題が見つかった場合は、Security Center ダッシュボードで通知されます。 Security Center には、すべての脆弱性について、実行可能な推奨事項、重大度の分類、および問題の修正方法に関するガイダンスが表示されます。 コンテナーの Security Center の推奨事項の詳細については、[推奨事項の参照リスト](recommendations-reference.md#recs-containers)を参照してください。
+Qualys または Security Center によって問題が見つかった場合は、Security Center ダッシュボードで通知されます。 Security Center には、すべての脆弱性について、実行可能な推奨事項、重大度の分類、および問題の修正方法に関するガイダンスが表示されます。 コンテナーの Security Center の推奨事項の詳細については、[推奨事項の参照リスト](recommendations-reference.md#recs-compute)を参照してください。
 
 Security Center では、スキャナーによる検出結果がフィルター処理および分類されます。 イメージが正常な場合、Security Center ではそのように示されます。 Security Center では、解決の必要な問題があるイメージに対してのみ、セキュリティに関する推奨事項が生成されます。 Security Center には、報告された各脆弱性の詳細と、重要度の分類が表示されます。 また、各イメージで検出された特定の脆弱性を修復する方法についてのガイダンスも提供されます。
 

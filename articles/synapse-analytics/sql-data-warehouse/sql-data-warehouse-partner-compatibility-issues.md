@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 11/18/2020
 ms.author: procha
 ms.reviewer: jrasnick
-ms.openlocfilehash: 861b963922d64926266b42a23f85e9dc30fda7a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a1031656eaa5125d07ae078773379270b26625e7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95903986"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121381"
 ---
 # <a name="compatibility-issues-with-third-party-applications-and-azure-synapse-analytics"></a>サードパーティ アプリケーションおよび Azure Synapse Analytics との互換性の問題
 
@@ -55,5 +55,5 @@ TDC ファイルの使用方法の詳細については、Tableau サポート�
 
 ## <a name="see-also"></a>関連項目
 
-* [Azure Synapse Analytics の専用 SQL プールの T-SQL 言語要素。](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-* [Azure Synapse Analytics の専用 SQL プール用にサポートされている T-SQL ステートメント。](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)
+* [Azure Synapse Analytics の専用 SQL プールの T-SQL 言語要素。](./sql-data-warehouse-reference-tsql-language-elements.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)
+* [Azure Synapse Analytics の専用 SQL プール用にサポートされている T-SQL ステートメント。](./sql-data-warehouse-reference-tsql-statements.md)

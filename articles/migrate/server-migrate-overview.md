@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 075f113975e5f340493fe33584d8072190be77c8
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 130fcaacedc8aaea7790f6aa9ca7463b4e378e02
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97896483"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070713"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware 移行オプションを選択する
 
@@ -32,7 +32,7 @@ Azure Migrate Server Migration ツールを使用して VMware VM を Azure に�
 **アプライアンスのデプロイ** | [Azure Migrate アプライアンス](migrate-appliance.md)がオンプレミスにデプロイされます。 | [Azure Migrate レプリケーション アプライアンス](migrate-replication-appliance.md)がオンプレミスにデプロイされます。
 **Site Recovery の互換性** | 互換性あり。 | Site Recovery を使用してコンピューターのレプリケーションを設定している場合は、Azure Migrate Server Migration を使用してレプリケートすることはできません。
 **ターゲット ディスク** | マネージド ディスク | マネージド ディスク
-**ディスクの制限** | OS ディスク:2 TB<br/><br/> データ ディスク:32 TB<br/><br/> 最大ディスク数:60 | OS ディスク:2 TB<br/><br/> データ ディスク:8 TB<br/><br/> 最大ディスク数:63
+**ディスクの制限** | OS ディスク:2 TB<br/><br/> データ ディスク:32 TB<br/><br/> 最大ディスク数:60 | OS ディスク:2 TB<br/><br/> データ ディスク:32 TB<br/><br/> 最大ディスク数:63
 **パススルー ディスク** | サポートされていません | サポートされています
 **UEFI ブート** | サポートされています。 | サポートされています。
 

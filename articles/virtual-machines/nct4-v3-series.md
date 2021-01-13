@@ -6,14 +6,14 @@ ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 01/05/2021
+ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: 6463e54fb7f0a2cc03ffa043c00048c1131899ce
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 41ab057bdbf31667e45a73b2c5ded4993e716a66
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913432"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131561"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 シリーズ 
 
@@ -26,7 +26,7 @@ NCasT4_v3 シリーズ仮想マシンは、[Nvidia Tesla T4](https://www.nvidia.
 [Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
-[VM 世代サポート](generation-2.md): 第 1 世代<br>
+[VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 高速ネットワーク:サポートされています<br>
 Nvidia NVLink Interconnect:サポートされていません<br>
 <br>

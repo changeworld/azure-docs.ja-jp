@@ -13,14 +13,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/22/2020
+ms.date: 01/11/2021
 ms.author: radeltch
-ms.openlocfilehash: 3b33351f840cb590d0adea42f9404917b2f30ca8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8fa51bec1918b8dce99c80a61da0160c9650d5e4
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484262"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116094"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性
 
@@ -742,6 +742,8 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    # Probe Port of ERS
    sudo firewall-cmd --zone=public --add-port=62101/tcp --permanent
    sudo firewall-cmd --zone=public --add-port=62101/tcp
+   sudo firewall-cmd --zone=public --add-port=3201/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=3201/tcp
    sudo firewall-cmd --zone=public --add-port=3301/tcp --permanent
    sudo firewall-cmd --zone=public --add-port=3301/tcp
    sudo firewall-cmd --zone=public --add-port=50113/tcp --permanent
@@ -1090,7 +1092,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    次のコマンドを root として実行して、メッセージ サーバーのプロセスを特定し、強制終了します。
 
    ```
-   [root@anftstsapcl1 ~]# pgrep ms.sapQAS | xargs kill -9
+   [root@anftstsapcl1 ~]# pgrep -f ms.sapQAS | xargs kill -9
    ```
 
    メッセージ サーバーは、1 回だけ強制終了しても、`sapstart` によって再起動されます。 強制終了を複数回実行すると、Pacemaker は最終的に ASCS インスタンスを他のノードに移動します。 テスト後に、次のコマンドを root として実行して、ASCS と ERS インスタンスのリソースの状態をクリーンアップします。
@@ -1137,7 +1139,10 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    ASCS インスタンスが実行されているノードで、次のコマンドを root として実行して、エンキュー サーバーを強制終了します。
 
    ```
-   [root@anftstsapcl2 ~]# pgrep en.sapQAS | xargs kill -9
+   #If using ENSA1
+   [root@anftstsapcl2 ~]# pgrep -f en.sapQAS | xargs kill -9
+   #If using ENSA2
+   [root@anftstsapcl2 ~]# pgrep -f enq.sapQAS | xargs kill -9
    ```
 
    ASCS インスタンスがすぐに他のノードにフェールオーバーします。 ASCS インスタンスの開始後に、ERS インスタンスもフェールオーバーします。 テスト後に、次のコマンドを root として実行して、ASCS と ERS インスタンスのリソースの状態をクリーンアップします。
@@ -1184,7 +1189,10 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    ERS インスタンスが実行されているノードで、次のコマンドを root として実行して、エンキュー レプリケーション サーバー プロセスを強制終了します。
 
    ```
-   [root@anftstsapcl2 ~]# pgrep er.sapQAS | xargs kill -9
+   #If using ENSA1
+   [root@anftstsapcl2 ~]# pgrep -f er.sapQAS | xargs kill -9
+   #If using ENSA2
+   [root@anftstsapcl2 ~]# pgrep -f enqr.sapQAS | xargs kill -9
    ```
 
    このコマンドを 1 回だけ実行しても、プロセスは `sapstart` によって再起動されます。 複数回実行すれば、`sapstart` によるプロセスの再起動はなくなり、リソースは停止状態になります。 テスト後に、次のコマンドを root として実行して、ERS インスタンスのリソースの状態をクリーンアップします。

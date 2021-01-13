@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e3daf89b80daf47049150b05ca392eede360bd3e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d778844fee8cad9359532ffa23e177bf7b13c4b8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673418"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117692"
 ---
 # <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールの容量制限
 
@@ -43,7 +43,7 @@ Azure Synapse Analytics の専用 SQL プールのさまざまなコンポーネ
 | テーブル |データベースごとのテーブル数 | 100,000 |
 | テーブル |テーブルごとの列数 |1,024 列 |
 | テーブル |列あたりのバイト数 |列の[データ型](sql-data-warehouse-tables-data-types.md)によって決まります。 上限は、char データ型では 8000 GB、nvarchar データ型では 4000 GB、MAX データ型では 2 GB です。 |
-| テーブル |行あたりのバイト数 (定義されたサイズ) |8060 バイト<br/><br/>行あたりのバイト数は、ページ圧縮を有効にした SQL Server の場合と同様に計算されます。 SQL Server と同様に、行オーバーフロー ストレージがサポートされるため、**可変長列** を行外にプッシュできます。 可変長行を行外にプッシュする場合、メイン レコードには 24 バイト ルートのみが格納されます。 詳細については、「[8 KB を超える場合の行オーバーフロー データ](https://msdn.microsoft.com/library/ms186981.aspx)」を参照してください。 |
+| テーブル |行あたりのバイト数 (定義されたサイズ) |8060 バイト<br/><br/>行あたりのバイト数は、ページ圧縮を有効にした SQL Server の場合と同様に計算されます。 SQL Server と同様に、行オーバーフロー ストレージがサポートされるため、**可変長列** を行外にプッシュできます。 可変長行を行外にプッシュする場合、メイン レコードには 24 バイト ルートのみが格納されます。 詳細については、「[8 KB を超える場合の行オーバーフロー データ](/previous-versions/sql/sql-server-2008-r2/ms186981(v=sql.105))」を参照してください。 |
 | テーブル |テーブルあたりのパーティション数 |15,000<br/><br/>高パフォーマンスを実現するには、ビジネス要件を満たしながら、必要なパーティション数を最小限に抑えることをお勧めします。 パーティションの数が増えるに従い、データ定義言語 (DDL) およびデータ操作言語 (DML) の操作のオーバーヘッドが拡大し、パフォーマンスの低下を引き起こします。 |
 | テーブル |パーティション境界値あたりの文字数 |4000 |
 | インデックス |テーブルあたりの非クラスター化インデックス数 |50<br/><br/>行ストア テーブルのみに適用されます。 |

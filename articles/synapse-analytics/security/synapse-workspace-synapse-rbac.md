@@ -8,16 +8,16 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7972f34bf0d2b93828899903e013c2e35bc997c0
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 2d9f3bfe6a273bfb0f3d314d1a4664806bd45ae2
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523305"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118814"
 ---
 # <a name="what-is-synapse-role-based-access-control-rbac"></a>Synapse ロールベースのアクセス制御 (RBAC) とは
 
-Synapse RBAC では、Synapse ワークスペースとそのコンテンツに合わせて [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) の機能が拡張されています。 
+Synapse RBAC では、Synapse ワークスペースとそのコンテンツに合わせて [Azure RBAC](../../role-based-access-control/overview.md) の機能が拡張されています。 
 
 Azure RBAC は、Synapse ワークスペースとその SQL プール、Apache Spark プール、統合ランタイムを作成、更新、または削除できるユーザーを管理するために使用されます。
 

@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4886cf6c24e7e96676b9ca5e74b431685cd5a8bb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4f881dcc0d26589c4029246019119fa0555dcd5d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452868"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117777"
 ---
 # <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールに Azure Data Lake Storage からデータを読み込む
 
-このガイドでは、[COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して Azure Data Lake Storage からデータを読み込む方法について説明します。 すべての認証方法で COPY ステートメントを使用する簡単な例については、[専用 SQL プールを使用してデータを安全に読み込む](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)に関する記事を参照してください。
+このガイドでは、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して Azure Data Lake Storage からデータを読み込む方法について説明します。 すべての認証方法で COPY ステートメントを使用する簡単な例については、[専用 SQL プールを使用してデータを安全に読み込む](./quickstart-bulk-load-copy-tsql-examples.md)に関する記事を参照してください。
 
 > [!NOTE]  
 > COPY ステートメントに関するご意見や問題の報告は、配布リストの sqldwcopypreview@service.microsoft.com までメールでお寄せください。
@@ -65,7 +65,7 @@ WITH
 
 ## <a name="create-the-copy-statement"></a>COPY ステートメントを作成する
 
-専用 SQL プールに接続して、COPY ステートメントを実行します。 例の完全な一覧については、[専用 SQL プールを使用してデータを安全に読み込む](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)に関する記事を参照してください。
+専用 SQL プールに接続して、COPY ステートメントを実行します。 例の完全な一覧については、[専用 SQL プールを使用してデータを安全に読み込む](./quickstart-bulk-load-copy-tsql-examples.md)に関する記事を参照してください。
 
 ```sql
 -- B: Create and execute the COPY statement
@@ -133,6 +133,6 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 > [データ ウェアハウス用のテーブルを開発する方法を学習する](sql-data-warehouse-tables-overview.md)
 
 読み込みの例とリファレンスに関する詳細については、次のドキュメントを確認してください。
-- [COPY ステートメントのリファレンス ドキュメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
-- [各認証方法での COPY の例](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)
-- [単一テーブルでの COPY に関するクイック スタート](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql)
+- [COPY ステートメントのリファレンス ドキュメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [各認証方法での COPY の例](./quickstart-bulk-load-copy-tsql-examples.md)
+- [単一テーブルでの COPY に関するクイック スタート](./quickstart-bulk-load-copy-tsql.md)

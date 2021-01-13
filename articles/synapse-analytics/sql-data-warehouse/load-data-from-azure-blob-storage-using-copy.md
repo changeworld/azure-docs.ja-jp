@@ -11,16 +11,16 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: bd5c56ef74fbe0c60a9d395a7b8a0fbc496e773c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ec577e2a70e2b354b8d2013fe259aa9ea622c50e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95534842"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120140"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>チュートリアル:ニューヨークのタクシー データセットを読み込む
 
-このチュートリアルでは、[COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して、Azure BLOB ストレージ アカウントからニューヨークのタクシー データセットを読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) を使って、次のことを行います。
+このチュートリアルでは、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用して、Azure BLOB ストレージ アカウントからニューヨークのタクシー データセットを読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) を使って、次のことを行います。
 
 > [!div class="checklist"]
 >
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) をダウンロードしてインストールします。  
 
-このチュートリアルでは、次の[チュートリアル](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/create-data-warehouse-portal#connect-to-the-server-as-server-admin)から SQL 専用プールを既に作成しているものと想定しています。
+このチュートリアルでは、次の[チュートリアル](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin)から SQL 専用プールを既に作成しているものと想定しています。
 
 ## <a name="create-a-user-for-loading-data"></a>データを読み込むためのユーザーを作成する
 
@@ -251,7 +251,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>データ ウェアハウスにデータを読み込む
 
-このセクションでは、Azure Storage Blob からサンプル データを[読み込むための COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用します。  
+このセクションでは、Azure Storage Blob からサンプル データを[読み込むための COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を使用します。  
 
 > [!NOTE]
 > このチュートリアルでは、最終テーブルにデータを直接読み込みます。 通常は、運用ワークロード用のステージング テーブルに読み込みます。 データがステージング テーブルにある間に、必要な変換を実行できます。 
@@ -393,7 +393,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、データ ウェアハウスを作成し、データを読み込むためのユーザーを作成する方法について学習しました。 シンプルな [COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#examples)を使って、データをデータ ウェアハウスに読み込みました。
+このチュートリアルでは、データ ウェアハウスを作成し、データを読み込むためのユーザーを作成する方法について学習しました。 シンプルな [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#examples)を使って、データをデータ ウェアハウスに読み込みました。
 
 以下のことを行いました。
 > [!div class="checklist"]
@@ -413,6 +413,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 読み込みの例とリファレンスに関する詳細については、次のドキュメントを確認してください。
 
-- [COPY ステートメントのリファレンス ドキュメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
-- [各認証方法での COPY の例](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)
-- [単一テーブルでの COPY に関するクイック スタート](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql)
+- [COPY ステートメントのリファレンス ドキュメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [各認証方法での COPY の例](./quickstart-bulk-load-copy-tsql-examples.md)
+- [単一テーブルでの COPY に関するクイック スタート](./quickstart-bulk-load-copy-tsql.md)

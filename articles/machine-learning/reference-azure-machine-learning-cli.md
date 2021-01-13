@@ -5,17 +5,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: a413cabf59fbd89cfe53b581d1018231c0e22e84
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e88fbaed77113896f818710497a544fbab486246
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323924"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072277"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Azure Machine Learning の CLI 拡張機能のインストールと使用
 
@@ -34,7 +33,7 @@ CLI は、Azure Machine Learning SDK に取って代わるものではありま�
 
 * CLI を使用するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
-* ご使用の **ローカル環境** からこのドキュメントの CLI コマンドを使用するには、 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) が必要です。
+* ご使用の **ローカル環境** からこのドキュメントの CLI コマンドを使用するには、[Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) が必要です。
 
     [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/) を使用する場合は、ブラウザーを使用してクラウド内に存在する CLI にアクセスします。
 

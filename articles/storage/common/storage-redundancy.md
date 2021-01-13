@@ -6,16 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/08/2021
 ms.author: tamram
-ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 04b0b20452264493a0045c5adb6a1c32df5c6191
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 60ae6eb3142f8898f760027d37881ded8261f571
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883131"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108094"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -156,6 +155,7 @@ RA-GRS または RA-GZRS を有効にした後はセカンダリ リージョン
 | 指定された 1 年間にわたるオブジェクトの持続性のパーセンテージ | 99.999999999% (イレブン ナイン) 以上 | 99.9999999999% (トゥエルブ ナイン) 以上 | 99.99999999999999% (シックスティーン ナイン) 以上 | 99.99999999999999% (シックスティーン ナイン) 以上 |
 | 読み取り要求の可用性 | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | GRS の場合、99.9% 以上 (クール アクセス層の場合、99%)<br /><br />RA-GRS の場合、99.99% 以上 (クール アクセス層の場合、99.9%) | GZRS の場合、99.9% 以上 (クール アクセス層の場合、99%)<br /><br />RA-GZRS の場合、99.99% 以上 (クール アクセス層の場合、99.9%) |
 | 書き込み要求の可用性 | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) |
+| 個別のノードで保持されるデータ コピーの数                             | 3   | 3   | 6   | 6      |
 
 ### <a name="durability-and-availability-by-outage-scenario"></a>障害のシナリオでの耐久性と可用性
 

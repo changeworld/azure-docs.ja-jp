@@ -1,15 +1,15 @@
 ---
 title: Azure Monitor でのメトリック アラートの機能
 description: メトリック アラートの用途と、Azure Monitor での機能の概要を理解します。
-ms.date: 09/30/2020
+ms.date: 01/11/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 066ffff5979e658a7c06fe10bd668a9fac839a14
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 424cc9db01f1eb6300c2915795f3e2c37b34449f
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460835"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071053"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -137,7 +137,7 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 
 | サービス | パブリック Azure | Government | 中国 |
 |:--------|:--------|:--------|:--------|
-| 仮想マシン<sup>1</sup>  | **はい** | いいえ | いいえ |
+| 仮想マシン<sup>1</sup>  | **はい** | **はい** | いいえ |
 | SQL Server データベース | **はい** | **はい** | **あり** |
 | SQL Server エラスティック プール | **はい** | **はい** | **あり** |
 | NetApp ファイル容量プール | **はい** | **あり** | **あり** |

@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a3e2dd1ac58c89060fc3e09e97617cb2a68d8ac
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 2dac4b461d4506015f0ef374eae37f67c445791d
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094575"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107873"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン:よく寄せられる質問
 
@@ -85,6 +85,7 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
 
    > [!NOTE]
    >次の手順を実行するには、ドメイン管理者とグローバル管理者の両方の資格情報が必要です。
+   >ドメイン管理者ではなく、ドメイン管理者によってアクセス許可が割り当てられた場合は、`Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount` を呼び出す必要があります
 
    **手順 1.シームレス SSO が有効になっている AD フォレストのリストの取得**
 
@@ -105,9 +106,6 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
    >使用するドメイン管理者アカウントは、保護されているユーザー グループのメンバーであってはなりません。 そうである場合、操作は失敗します。
 
    2. `Update-AzureADSSOForest -OnPremCredentials $creds` を呼び出します。 このコマンドは、この特定の AD フォレスト内で `AZUREADSSO` コンピューター アカウントの Kerberos 復号化キーを更新し、Azure AD 内でこのキーを更新します。
-   
-   >[!NOTE]
-   >ドメイン管理者ではなく、ドメイン管理者によってアクセス許可が割り当てられた場合は、`Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount` を呼び出す必要があります
    
    3. 機能が有効に設定されている AD フォレストごとに、上記の手順を繰り返します。
    

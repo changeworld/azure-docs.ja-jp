@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33eb5977ecb373a0dba87c26cacea247f541be8f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3778b6046c750bb131be1e51bf1afdc7b0df7184
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452732"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116791"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Azure Synapse Analytics での Synapse SQL を使用したテーブルの設計
 
@@ -102,7 +102,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 [外部テーブル](develop-tables-external-tables.md)は、Azure Storage BLOB または Azure Data Lake Store 内にあるデータを指します。
 
-データを外部テーブルから専用 SQL プールにインポートするには、[CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ステートメントを使用します。 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」をご覧ください。
+データを外部テーブルから専用 SQL プールにインポートするには、[CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ステートメントを使用します。 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)」をご覧ください。
 
 サーバーレス SQL プールでは、[CETAS](develop-tables-cetas.md) を使用してクエリの結果を Azure Storage 内の外部テーブルに保存できます。
 

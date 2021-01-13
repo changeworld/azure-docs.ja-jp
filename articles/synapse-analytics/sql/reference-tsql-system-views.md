@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4e4e6a1607fa42f4be07451f9aa0d8ff923d85d6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fc90ad8104cff7ead501470a883b56b67a86cf7c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317328"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121262"
 ---
 # <a name="system-views-supported-in-synapse-sql"></a>Synapse SQL でサポートされるシステム ビュー
 
@@ -72,7 +72,7 @@ Synapse SQL でサポートされている T-SQL ステートメントのドキ�
 
 ## <a name="sql-server-dmvs-applicable-to-dedicated-sql-pool"></a>専用 SQL プールに適用可能な SQL Server DMV
 
-次の DMV は専用 SQL プールに適用できますが、 **マスター** データベースに接続して実行する必要があります。
+次の DMV は専用 SQL プールに適用できますが、**マスター** データベースに接続して実行する必要があります。
 
 * [sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -225,7 +225,7 @@ SQL プールと、Analytics Platform System の Parallel Data Warehouse (PDW) �
 
 ## <a name="sql-server-2016-polybase-dmvs-available-in-dedicated-sql-pool"></a>専用 SQL プールで使用できる SQL Server 2016 PolyBase DMV
 
-次の DMV は専用 SQL プールに適用できますが、 **マスター** データベースに接続して実行する必要があります。
+次の DMV は専用 SQL プールに適用できますが、**マスター** データベースに接続して実行する必要があります。
 
 * [sys.dm_exec_compute_node_errors](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-errors-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_exec_compute_node_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-status-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -252,6 +252,5 @@ SQL プールと、Analytics Platform System の Parallel Data Warehouse (PDW) �
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[Synapse SQL の T-SQL ステートメント](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements)および [Synapse SQL の T-SQL 言語要素](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)に関するページを参照してください。
+詳細については、[Synapse SQL の T-SQL ステートメント](../sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements.md)および [Synapse SQL の T-SQL 言語要素](../sql-data-warehouse/sql-data-warehouse-reference-tsql-statements.md)に関するページを参照してください。
 
- 

@@ -1,25 +1,23 @@
 ---
 title: Azure Monitor と Azure Data Explorer 間のクロス サービス クエリ (プレビュー)
 description: Azure Log Analytics ツールを介して Azure Data Explorer のデータにクエリを実行したり、その逆を行うことで、すべてのデータを 1 か所で結合して分析することができます。
-author: orens
+author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 0af9111223bb16f1c5843223e7fe1661ce99c623
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: e60f77495cdb822a0c50be936c2b0d3ac31348f3
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749230"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116711"
 ---
 # <a name="cross-service-query---azure-monitor-and-azure-data-explorer-preview"></a>クロス サービス クエリ - Azure Monitor と Azure Data Explorer (プレビュー)
 [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/)、[Application Insights](/azure/azure-monitor/app/app-insights-overview)、[Log Analytics](/azure/azure-monitor/platform/data-platform-logs) の間でクロス サービス クエリを作成します。
 ## <a name="azure-monitor-and-azure-data-explorer-cross-service-querying"></a>Azure Monitor と Azure Data Explorer のクロス サービス クエリ
 [Azure Data Explorer と Azure Monitor の間でクロス サービス クエリを作成したり](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)、[Azure Monitor と Azure Data Explorer の間でクロス サービス クエリを作成したり](https://docs.microsoft.com/azure/azure-monitor/platform/azure-monitor-data-explorer-proxy)できます。
-
-:::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="Azure Data Explorer プロキシのフロー":::
 
 例 (Azure Data Explorer のクエリを Log Analytics から実行する):
 ```kusto

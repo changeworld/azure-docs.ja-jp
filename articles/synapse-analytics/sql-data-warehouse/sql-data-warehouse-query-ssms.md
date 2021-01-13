@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 950cb4c40a534f252ec8b0daa5a57eb87c098450
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b213954dde6ca4eaa0a69ddf0e40398fc09b9063
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450477"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115771"
 ---
 # <a name="connect-to-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) に接続する
 
 > [!div class="op_single_selector"]
 >
-> * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+> * [Power BI](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
@@ -79,4 +79,4 @@ SQL Server Management Studio (SSMS) を使用して専用 SQL プール (旧称 
 
 ## <a name="next-steps"></a>次のステップ
 
-これで接続してクエリを実行することができます。[Power BI でデータを視覚化](sql-data-warehouse-get-started-visualize-with-power-bi.md)してみてください。 Azure Active Directory 認証を使用するために環境を構成する方法については、[専用 SQL プールの認証](sql-data-warehouse-authentication.md)に関するページを参照してください。
+これで接続してクエリを実行することができます。[Power BI でデータを視覚化](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)してみてください。 Azure Active Directory 認証を使用するために環境を構成する方法については、[専用 SQL プールの認証](sql-data-warehouse-authentication.md)に関するページを参照してください。

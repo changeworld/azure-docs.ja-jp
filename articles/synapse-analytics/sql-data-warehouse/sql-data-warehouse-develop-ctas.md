@@ -11,12 +11,12 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: 3d9a842af5e1d3fac73515d96644bef250d7d0c4
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 95158193a978702392106c8aa3347de211fd1a3e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334571"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115448"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE AS SELECT (CTAS)
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-merge"></a>MERGE の ANSI 結合置換 
 
-Azure Synapse Analytics で、[MERGE](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver15) (プレビュー) と NOT MATCHED BY TARGET が必要とするのは、HASH 分散テーブルとしてのターゲットです。  ユーザーは、別のテーブルとの結合の結果に基づいてターゲット テーブル データを変更する回避策として、ANSI JOIN で [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) または [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql?view=sql-server-ver15) を使用できます。  次に例を示します。
+Azure Synapse Analytics で、[MERGE](/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver15) (プレビュー) と NOT MATCHED BY TARGET が必要とするのは、HASH 分散テーブルとしてのターゲットです。  ユーザーは、別のテーブルとの結合の結果に基づいてターゲット テーブル データを変更する回避策として、ANSI JOIN で [UPDATE](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) または [DELETE](/sql/t-sql/statements/delete-transact-sql?view=sql-server-ver15) を使用できます。  次に例を示します。
 
 ```sql
 CREATE TABLE dbo.Table1   

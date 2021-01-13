@@ -3,12 +3,12 @@ title: Azure Relay に関する FAQ | Microsoft Docs
 description: この記事では、Azure Relay サービスに関連する、よく寄せられる質問の一部の回答を示します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9d967d926c6ab59e027fe4d4cf98e8418a8ff9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77d3122942289654c0f651f9f648307123b23546
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299288"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131850"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay に関する FAQ
 
@@ -50,7 +50,6 @@ Relay の価格の詳細については、Service Bus の価格の詳細ペー�
     *   接続 B を経由して、1 か月で 6 GB のデータを送信します。
     *   合計料金は 10.50 ドルです。 内訳は、接続 A に 5 ドル、接続 B に 5 ドル、接続 B の 6 GB 目の料金として 0.50 ドルです。
 
-サンプルで使用された料金はハイブリッド接続のプレビュー期間にのみ適用されるものですので、ご注意ください。 価格はハイブリッド接続の一般公開時に変更されます。
 
 ### <a name="how-are-hours-calculated-for-relay"></a>Relay では、時間はどのように計算されますか?
 

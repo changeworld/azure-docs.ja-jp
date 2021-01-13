@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: emtehran
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bdb27c5c9f5ec8a7be433ab6e421ecabf5c8c254
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 88b63ce30000340a70811e9f623e4273ccbb272a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505581"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117284"
 ---
 # <a name="primary-key-foreign-key-and-unique-key-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics で専用 SQL プールを使用する主キー、外部キー、および一意キー
 
@@ -28,7 +28,7 @@ ms.locfileid: "97505581"
 - PRIMARY KEY は、NONCLUSTERED と NOT ENFORCED が両方とも使用されている場合にのみサポートされます。    
 - UNIQUE 制約は、NOT ENFORCED が使用されている場合にのみサポートされます。
 
-構文については、[ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) と [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse) をご覧ください。 
+構文については、[ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) と [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) をご覧ください。 
 
 FOREIGN KEY 制約は、専用 SQL プールではサポートされません。  
 

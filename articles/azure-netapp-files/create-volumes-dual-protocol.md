@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/05/2020
+ms.date: 01/12/2020
 ms.author: b-juche
-ms.openlocfilehash: d296f80d85bb5081c466b27e6a8624e8b3f2c924
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: c914ab007f482e4d2b560b1cb461e27d4f4442ec
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914997"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133159"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files のデュアルプロトコル (NFSv3 と SMB) ボリュームを作成する
 
@@ -39,7 +39,6 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュア�
 * DNS サーバーに逆引き参照ゾーンを作成してから、その逆引き参照ゾーンに AD ホストマシンのポインター (PTR) レコードを追加します。 そうしないと、デュアルプロトコル ボリュームの作成は失敗します。
 * NFS クライアントが最新であり、オペレーティング システムの最新の更新プログラムが実行されていることを確認します。
 * AD で Active Directory (AD) LDAP サーバーが稼働していることを確認します。 そのためには、AD マシンで [Active Directory ライトウェイト ディレクトリ サービス (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) ロールをインストールして構成します。
-* 自己署名ルート CA 証明書を生成してエクスポートするには、[Active Directory 証明書サービス (AD CS)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) ロールを使用して、AD に証明機関 (CA) が作成されていることを確認します。   
 * デュアル プロトコル ボリュームでは、現在 Azure Active Directory Domain Services (AADDS) はサポートされていません。  
 * デュアル プロトコル ボリュームで使用される NFS のバージョンは、NFSv3 です。 そのため、次の考慮事項が適用されます。
     * デュアル プロトコルは、NFS クライアントからの Windows ACL 拡張属性 `set/get` をサポートしていません。
@@ -105,9 +104,6 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュア�
 3. **[プロトコル]** をクリックし、次のアクションを実行します。  
     * ボリュームのプロトコルの種類として **[dual-protocol (NFSv3 and SMB)]\(デュアルプロトコル (NFSv3 と SMB)\)** を選択します。   
 
-    * ドロップダウン リストから **Active Directory** の接続を選択します。  
-    使用する Active Directory には、サーバー ルート CA 証明書が存在する必要があります。 
-
     * ボリュームの **ボリューム パス** を指定します。   
     このボリューム パスは、共有ボリュームの名前です。 名前は英字で始める必要があり、各サブスクリプションと各リージョン内で一意である必要があります。  
 
@@ -122,32 +118,6 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュア�
     作成したボリュームは [ボリューム] ページに表示されます。 
  
     ボリュームは、その容量プールから、サブスクリプション、リソース グループ、場所の各属性を継承します。 ボリュームのデプロイ状態を監視するには、[通知] タブを使用してください。
-
-## <a name="upload-active-directory-certificate-authority-public-root-certificate"></a>Active Directory 証明機関の公開ルート証明書をアップロードする  
-
-1.  「[証明機関をインストールする](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority)」に従って、ADDS 証明機関をインストールして構成します。 
-
-2.  「[MMC スナップインを使用して証明書を参照する](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)」に従って、MMC スナップインと証明書マネージャー ツールを使用します。  
-    証明書マネージャー スナップインを使用して、ローカル デバイスのルートまたは発行元の証明書を検索します。 証明書管理スナップイン コマンドは、次のいずれかの設定から実行する必要があります。  
-    * ドメインに参加し、ルート証明書がインストールされている Windows ベースのクライアント 
-    * ルート証明書を含むドメイン内の別のマシン  
-
-3. ルート CA 証明書をエクスポートします。  
-    次の例に示すように、ルート CA 証明書は、[個人用] または [信頼されたルート証明機関] ディレクトリからエクスポートできます。   
-    ![個人用証明書を示すスクリーンショット](../media/azure-netapp-files/personal-certificates.png)   
-    ![信頼されたルート証明機関を示すスクリーンショット](../media/azure-netapp-files/trusted-root-certification-authorities.png)    
-
-    証明書が Base 64 encoded x.509 (.CER) 形式でエクスポートされていることを確認します。 
-
-    ![証明書のエクスポート ウィザード](../media/azure-netapp-files/certificate-export-wizard.png)
-
-4. デュアルプロトコル ボリュームの NetApp アカウントにアクセスし、 **[Active Directory 接続]** をクリックして、 **[Active Directory に参加します]** ウィンドウを使用してルート CA 証明書をアップロードします。  
-
-    ![サーバー ルート CA 証明書](../media/azure-netapp-files/server-root-ca-certificate.png)
-
-    証明機関名が DNS で解決できることを確認します。 この名前は、証明書の [発行元] または [発行者] フィールドです。  
-
-    ![証明書情報](../media/azure-netapp-files/certificate-information.png)
 
 ## <a name="manage-ldap-posix-attributes"></a>LDAP POSIX 属性を管理する
 

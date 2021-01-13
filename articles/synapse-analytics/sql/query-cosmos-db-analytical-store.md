@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 22103ad580fa474f44eaf42c696d19bbbd137c8e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a0458264b6ea0c741244531fc104a7637108b06e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095102"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121347"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure Synapse Link プレビューでサーバーレス SQL プールを使用して Azure Cosmos DB データのクエリを実行する
 
@@ -222,7 +222,7 @@ FROM OPENROWSET(
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
-パフォーマンスに影響する可能性があるため、明示的に定義されたスキーマなしで `OPENROWSET` を使用しないでください。 列のサイズは可能な限り小さくしてください (たとえば、既定の VARCHAR(8000) ではなく VARCHAR(100))。 [UTF-8 の変換に関する問題](/azure/synapse-analytics/troubleshoot/reading-utf8-text)を回避するために、何らかの UTF-8 照合順序を既定のデータベース照合順序として使用するか、明示的な列の照合順序として設定する必要があります。 照合順序 `Latin1_General_100_BIN2_UTF8` は、文字列型の列を使用してデータをフィルター処理する場合に最も高いパフォーマンスを提供します。
+パフォーマンスに影響する可能性があるため、明示的に定義されたスキーマなしで `OPENROWSET` を使用しないでください。 列のサイズは可能な限り小さくしてください (たとえば、既定の VARCHAR(8000) ではなく VARCHAR(100))。 [UTF-8 の変換に関する問題](../troubleshoot/reading-utf8-text.md)を回避するために、何らかの UTF-8 照合順序を既定のデータベース照合順序として使用するか、明示的な列の照合順序として設定する必要があります。 照合順序 `Latin1_General_100_BIN2_UTF8` は、文字列型の列を使用してデータをフィルター処理する場合に最も高いパフォーマンスを提供します。
 
 ## <a name="query-nested-objects-and-arrays"></a>入れ子になったオブジェクトと配列のクエリ
 
@@ -268,8 +268,8 @@ WITH (  paper_id    varchar(8000),
 詳細については、[Azure Synapse Link での複雑なデータ型](../how-to-analyze-complex-schema.md)の分析に関するページと、[サーバーレス SQL プールでの入れ子構造](query-parquet-nested-types.md)の分析に関するページを参照してください。
 
 > [!IMPORTANT]
-> `Mélade` ではなく `MÃƒÂ©lade` のような予期しない文字がテキストで表示される場合は、データベースの照合順序が [UTF-8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) の照合順序に設定されていません。
-> `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` のような SQL ステートメントを使用して、UTF-8 照合順序に[データベースの照合順序を変更します](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation)。
+> `Mélade` ではなく `MÃƒÂ©lade` のような予期しない文字がテキストで表示される場合は、データベースの照合順序が [UTF-8](/sql/relational-databases/collations/collation-and-unicode-support#utf8) の照合順序に設定されていません。
+> `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` のような SQL ステートメントを使用して、UTF-8 照合順序に[データベースの照合順序を変更します](/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation)。
 
 ## <a name="flatten-nested-arrays"></a>入れ子になった配列のフラット化
 
@@ -325,7 +325,7 @@ Supplementary Information An eco-epidemi… | `[{"first":"Nicolas","last":"4#","
 | Supplementary Information An eco-epidemi… |   `[{"first":"Olivier","last":"Flores","suffix":"","affiliation":{"laboratory":"UMR C53 CIRAD, …` | Olivier | Flores |`{"laboratory":"UMR C53 CIRAD, …` |     
 
 > [!IMPORTANT]
-> `Mélade` ではなく `MÃƒÂ©lade` のような予期しない文字がテキストで表示される場合は、データベースの照合順序が [UTF-8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) の照合順序に設定されていません。 `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` のような SQL ステートメントを使用して、UTF-8 照合順序に[データベースの照合順序を変更します](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation)。
+> `Mélade` ではなく `MÃƒÂ©lade` のような予期しない文字がテキストで表示される場合は、データベースの照合順序が [UTF-8](/sql/relational-databases/collations/collation-and-unicode-support#utf8) の照合順序に設定されていません。 `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` のような SQL ステートメントを使用して、UTF-8 照合順序に[データベースの照合順序を変更します](/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation)。
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>Azure Cosmos DB から SQL 型へのマッピング
 

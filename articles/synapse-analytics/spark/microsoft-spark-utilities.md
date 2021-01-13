@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: fee7e244e26a59a773a5d5c9c74e23acd4113ee6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c681195a60329320b875cc06919e9440b65eb9e5
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446702"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120242"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark Utilities の概要
 
@@ -706,12 +706,12 @@ Env.Help()
 
 結果を取得します。
 ```
-getUserName(): returns user name
-getUserId(): returns unique user id
-getJobId(): returns job id
-getWorkspaceName(): returns workspace name
-getPoolName(): returns Spark pool name
-getClusterId(): returns cluster id
+GetUserName(): returns user name
+GetUserId(): returns unique user id
+GetJobId(): returns job id
+GetWorkspaceName(): returns workspace name
+GetPoolName(): returns Spark pool name
+GetClusterId(): returns cluster id
 ```
 
 ### <a name="get-user-name"></a>ユーザー名の取得
@@ -881,4 +881,4 @@ Env.GetClusterId()
 - [Synapse サンプル ノートブックをチェックアウトする](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
 - [クイック スタート:Web ツールを使用して Azure Synapse Analytics で Apache Spark プールを作成する](../quickstart-apache-spark-notebook.md)
 - [Azure Synapse Analytics の Apache Spark とは](apache-spark-overview.md)
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)

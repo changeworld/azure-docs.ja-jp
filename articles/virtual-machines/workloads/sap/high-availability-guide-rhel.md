@@ -13,14 +13,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/22/2020
+ms.date: 01/11/2021
 ms.author: radeltch
-ms.openlocfilehash: c275d3fc1bb2372b36a3a29ae3b72f3e5e9b758a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d30a9d0abf6984df502283f06b2745f8ee4b1966
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484228"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116298"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -623,6 +623,8 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
    # Probe Port of ERS
    sudo firewall-cmd --zone=public --add-port=621<b>02</b>/tcp --permanent
    sudo firewall-cmd --zone=public --add-port=621<b>02</b>/tcp
+   sudo firewall-cmd --zone=public --add-port=32<b>02</b>/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=32<b>02</b>/tcp
    sudo firewall-cmd --zone=public --add-port=33<b>02</b>/tcp --permanent
    sudo firewall-cmd --zone=public --add-port=33<b>02</b>/tcp
    sudo firewall-cmd --zone=public --add-port=5<b>02</b>13/tcp --permanent
@@ -896,7 +898,7 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
 
    次のコマンドを root として実行して、メッセージ サーバーのプロセスを特定し、強制終了します。
 
-   <pre><code>[root@nw1-cl-0 ~]# pgrep ms.sapNW1 | xargs kill -9
+   <pre><code>[root@nw1-cl-0 ~]# pgrep -f ms.sapNW1 | xargs kill -9
    </code></pre>
 
    メッセージ サーバーは、1 回だけ強制終了しても、`sapstart` によって再起動されます。 強制終了を複数回実行すると、Pacemaker は最終的に ASCS インスタンスを他のノードに移動します。 テスト後に、次のコマンドを root として実行して、ASCS と ERS インスタンスのリソースの状態をクリーンアップします。
@@ -939,7 +941,11 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
 
    ASCS インスタンスが実行されているノードで、次のコマンドを root として実行して、エンキュー サーバーを強制終了します。
 
-   <pre><code>[root@nw1-cl-1 ~]# pgrep en.sapNW1 | xargs kill -9
+   <pre><code>
+    #If using ENSA1 
+    [root@nw1-cl-1 ~]# pgrep -f en.sapNW1 | xargs kill -9
+    #If using ENSA2
+    [root@nw1-cl-1 ~]# pgrep -f enq.sapNW1 | xargs kill -9
    </code></pre>
 
    ASCS インスタンスがすぐに他のノードにフェールオーバーします。 ASCS インスタンスの開始後に、ERS インスタンスもフェールオーバーします。 テスト後に、次のコマンドを root として実行して、ASCS と ERS インスタンスのリソースの状態をクリーンアップします。
@@ -982,7 +988,11 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
 
    ERS インスタンスが実行されているノードで、次のコマンドを root として実行して、エンキュー レプリケーション サーバー プロセスを強制終了します。
 
-   <pre><code>[root@nw1-cl-1 ~]# pgrep er.sapNW1 | xargs kill -9
+   <pre><code>
+    #If using ENSA1
+    [root@nw1-cl-1 ~]# pgrep -f er.sapNW1 | xargs kill -9
+    #If using ENSA2
+    [root@nw1-cl-1 ~]# pgrep -f enqr.sapNW1 | xargs kill -9
    </code></pre>
 
    このコマンドを 1 回だけ実行しても、プロセスは `sapstart` によって再起動されます。 複数回実行すれば、`sapstart` によるプロセスの再起動はなくなり、リソースは停止状態になります。 テスト後に、次のコマンドを root として実行して、ERS インスタンスのリソースの状態をクリーンアップします。

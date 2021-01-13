@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 79a99ad37c526103fc3068562d62ed40defc983b
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 24dc41493ff48aeba362137347c44cbf0fd20c7a
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532382"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134213"
 ---
 # <a name="azure-security-baseline-for-azure-app-configuration"></a>Azure App Configuration の Azure セキュリティ ベースライン
 
@@ -78,7 +78,7 @@ Azure App Configuration は、Web アプリケーションを実行するため�
 
 - [Azure portal を使用した Azure DDoS Protection Standard の管理](../ddos-protection/manage-ddos-protection.md)
 
-- [Azure Security Center の推奨事項](../security-center/recommendations-reference.md#recs-network)
+- [Azure Security Center の推奨事項](../security-center/recommendations-reference.md#recs-networking)
 
 **Azure Security Center の監視**: 適用なし
 

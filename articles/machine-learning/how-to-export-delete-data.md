@@ -5,22 +5,19 @@ description: Azure Machine Learning Studio、CLI、SDK、および認証済み R
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
 ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 82e128ffdc215a084110a68170ac12accd8fca0e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c4f48acc2d6e57dea0a8db2a149d7ca2871c9f39
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308124"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072005"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning service のワークスペース データをエクスポートまたは削除する
-
-
 
 Azure Machine Learning では、ポータルのグラフィカル インターフェイスまたは Python SDK を使用して、ワークスペース データをエクスポートまたは削除できます。 この記事では、両方のオプションについて説明します。
 

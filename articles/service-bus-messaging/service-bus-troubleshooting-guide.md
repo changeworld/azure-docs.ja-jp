@@ -3,12 +3,12 @@ title: Azure Service Bus のトラブルシューティング ガイド | Micros
 description: Azure Service Bus の使用時に発生する可能性のあるいくつかの問題のトラブルシューティングに関するヒントと推奨事項について説明します。
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: aab7fa53b4af309c68cd91fdb1d25c5771f89828
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8c31d252d75a2ba75528cd12d3a94bad5bd9f677
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261126"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98126871"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure Service Bus のトラブルシューティング ガイド
 この記事では、Azure Service Bus の使用時に発生する可能性のあるいくつかの問題のトラブルシューティングに関するヒントと推奨事項について説明します。 
@@ -26,7 +26,7 @@ ms.locfileid: "91261126"
     
     失敗したエラー メッセージの例を次に示します。
 
-    ```json
+    ```xml
     <Error>
         <Code>400</Code>
         <Detail>

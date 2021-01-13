@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 59924c1f876d08aa504f19c5d6c86dca32fbd1e2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9c53ea5bad88eb79940274c409218045c06d7981
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173466"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064970"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>開発するモバイル アプリでシングル サインオンとアプリ保護ポリシーをサポートする
 
@@ -36,7 +36,7 @@ ms.locfileid: "96173466"
 
 アプリでシングル サインオンを利用できるようにするには、次のことをお勧めします。
 
-### <a name="use-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) を使用する
+### <a name="use-the-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) を使用する
 
 アプリケーションでシングル サインオンを実装する場合は、[Microsoft Authentication Library (MSAL)](msal-overview.md) を使用することをお勧めします。 MSAL を使用すると、最小限のコードおよび API 呼び出しでアプリに認証を追加し、[Microsoft ID プラットフォーム](./index.yml)のすべての機能を取得して、セキュリティで保護された認証ソリューションのメンテナンスを Microsoft で処理できるようにすることができます。 既定では、MSAL によってアプリケーションの SSO サポートが追加されます。 さらに、アプリ保護ポリシーも実装する場合は、MSAL の使用が必須となります。
 

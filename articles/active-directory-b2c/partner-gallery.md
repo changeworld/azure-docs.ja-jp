@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4592742b99d7c3e915c31ca5a202355d32e76d68
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 15b4b61fd250dfb7d68c563f9f42c7d288a0019c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356125"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070866"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C の ISV パートナー
 
@@ -54,7 +54,7 @@ Microsoft は、MFA とパスワードレス認証に関して次の ISV と提�
 | ![Nevis ロゴのスクリーンショット](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) を使用すると、パスワードレス認証が有効になり、強力な顧客認証と PSD2 のトランザクション要件に準拠するために、Nevis Access アプリによる、モバイルファーストの完全にブランド化されたエンド ユーザー エクスペリエンスが提供されます。 |
 | ![Trusona ロゴのスクリーンショット](./media/partner-gallery/trusona-logo.png) | [Trusona](./partner-trusona.md) 統合を使用すると、安全にサインインし、パスワードレス認証、MFA、およびデジタル ライセンス スキャンを有効にすることができます。 |
 | ![Twilio ロゴのスクリーンショット。](./media/partner-gallery/twilio-logo.png) | [Twilio Verify App](./partner-twilio.md) は、SMS ワンタイム パスワード (OTP)、時間ベースのワンタイム パスワード (TOTP)、およびプッシュ通知を使用して MFA を有効にしたり、PSD2 の SCA 要件に準拠したりするための複数のソリューションを提供しています。 |
-| ![TypingDNA ロゴのスクリーンショット](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-twilio.md) は、ユーザーの入力パターンを分析して、強力な顧客認証を実現します。 これは、企業がサイレント MFA を有効にし、PSD2 の SCA 要件に準拠するのに役立ちます。 |
+| ![TypingDNA ロゴのスクリーンショット](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) は、ユーザーの入力パターンを分析して、強力な顧客認証を実現します。 これは、企業がサイレント MFA を有効にし、PSD2 の SCA 要件に準拠するのに役立ちます。 |
 | ![WhoIAM ロゴのスクリーンショット](./media/partner-gallery/whoiam-logo.png) | [WhoIAM](./partner-whoiam.md) はブランド化された ID 管理システム (BRIMS) アプリケーションです。組織はこのアプリケーションを使用して、音声、SMS、および電子メールでユーザー ベースを確認できます。 |
 
 ## <a name="role-based-access-control"></a>ロール ベースのアクセス制御 

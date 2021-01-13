@@ -12,12 +12,12 @@ ms.topic: article
 ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 512775369bd7787c6228c6d452be0e236ddf5cc2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0ce07ff3ca5fbcc9776792129d3bfb4ef54efe7d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456344"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120123"
 ---
 # <a name="upgrade-your-dedicated-sql-pool-formerly-sql-dw-to-gen2"></a>専用 SQL プール (以前の SQL DW) を Gen2 にアップグレードする
 
@@ -133,4 +133,4 @@ Microsoft では、上記の利用可能表に基づいて、Gen1 インスタ�
 - [インプレース アップグレードと復元ポイントからのアップグレード](upgrade-to-latest-generation.md)
 - [ユーザー定義の復元ポイントの作成](sql-data-warehouse-restore-points.md)
 - [Gen2 に復元する方法](sql-data-warehouse-restore-active-paused-dw.md)
-- [Azure Synapse Analytics サポート リクエストを開く](https://go.microsoft.com/fwlink/?linkid=857950)
+- [Azure Synapse Analytics サポート リクエストを開く](./sql-data-warehouse-get-started-create-support-ticket.md)

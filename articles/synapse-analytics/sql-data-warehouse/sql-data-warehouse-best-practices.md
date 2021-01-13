@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9802e6553d553aae4f13194dc9951d1a17af6f66
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b17e47463ef3fe9a2cc959364825451468266f0e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462882"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120021"
 ---
 # <a name="best-practices-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プール (旧称 SQL DW) 用のベスト プラクティス
 
@@ -74,7 +74,7 @@ Azure Data Factory では PolyBase の読み込みもサポートされ、CTAS �
 > [!NOTE]
 > gzip テキスト ファイルを使用する場合にスループットを最大限引き上げるには、ファイルを 60 個以上に分割して、読み込みの並列処理を最大化してください。  全体のスループットを引き上げるには、データを同時に読み込むことを検討してください。
 
-[データの読み込み](design-elt-data-loading.md)、[PolyBase の使用ガイド](guidance-for-loading-data.md)、[専用 SQL プールの読み込みパターンと戦略](https://blogs.msdn.microsoft.com/sqlcat/20../../)、[Azure Data Factory を使用したデータの読み込み]( ../../data-factory/load-azure-sql-data-warehouse.md)、[Azure Data Factory を使用したデータ移動](../../data-factory/transform-data-using-machine-learning.md)、[CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[Create table as select (CTAS)](sql-data-warehouse-develop-ctas.md) に関するページも参照してください。
+[データの読み込み](design-elt-data-loading.md)、[PolyBase の使用ガイド](guidance-for-loading-data.md)、[専用 SQL プールの読み込みパターンと戦略](/archive/blogs/sqlcat/)、[Azure Data Factory を使用したデータの読み込み]( ../../data-factory/load-azure-sql-data-warehouse.md)、[Azure Data Factory を使用したデータ移動](../../data-factory/transform-data-using-machine-learning.md)、[CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[Create table as select (CTAS)](sql-data-warehouse-develop-ctas.md) に関するページも参照してください。
 
 ## <a name="load-then-query-external-tables"></a>外部テーブルを読み込んで、クエリを実行する
 
@@ -97,7 +97,7 @@ Azure Data Factory では PolyBase の読み込みもサポートされ、CTAS �
 
 分散列を選択した場合にパフォーマンスが向上するしくみや、CREATE TABLE ステートメントの WITH 句で分散テーブルを定義する方法の詳細については、次のリンクを参照してください。
 
-[テーブルの概要](sql-data-warehouse-tables-overview.md)、[テーブル分散](sql-data-warehouse-tables-distribute.md)、[テーブル分散の選択](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) に関するページも参照してください。
+[テーブルの概要](sql-data-warehouse-tables-overview.md)、[テーブル分散](sql-data-warehouse-tables-distribute.md)、[テーブル分散の選択](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) に関するページも参照してください。
 
 ## <a name="do-not-over-partition"></a>パーティション分割しすぎないようにする
 
@@ -180,7 +180,7 @@ DDL を定義するときに、データをサポートする最小のデータ�
 
 一般的な問題と解決方法については、 [トラブルシューティング](sql-data-warehouse-troubleshoot.md) に関する記事もご覧ください。
 
-この記事で目的のトピックが見つからなかった場合は、ページの左側にある [Search for docs] を使用して、すべての Azure Synapse ドキュメントで検索を実行してみてください。  [Azure Synapse の Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)は、他のユーザーや Azure Synapse 製品グループに質問を投稿できる場所です。 Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  
+この記事で目的のトピックが見つからなかった場合は、ページの左側にある [Search for docs] を使用して、すべての Azure Synapse ドキュメントで検索を実行してみてください。  [Azure Synapse の Microsoft Q&A 質問ページ](/answers/topics/azure-synapse-analytics.html)は、他のユーザーや Azure Synapse 製品グループに質問を投稿できる場所です。 Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  
 
 Stack Overflow で質問したい方のために、[Azure Synapse Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)も用意しています。
 

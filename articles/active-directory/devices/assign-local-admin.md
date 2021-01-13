@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfd7b5ac981fcb87d0fc929d944205dec9432b74
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d482f21955b76e6b90523afe3b4933378c91d36e
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575824"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107363"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイスのローカル管理者グループの管理方法
 
@@ -32,8 +32,7 @@ Azure AD 参加を使用して Windows デバイスを Azure AD に接続する�
 - Azure AD のデバイス管理者ロール 
 - Azure AD 参加を実行するユーザー   
 
-ローカル管理者グループに Azure AD ロールを追加すれば、デバイスに一切変更を加えることなく、デバイスの管理ユーザーを Azure AD でいつでも更新できます。 現時点では、管理者ロールにグループを割り当てることはできません。
-また、Azure AD では、最小権限の原則 (PoLP) をサポートするために、Azure AD のデバイス管理者ロールもローカル管理者グループに追加されます。 グローバル管理者だけでなく、デバイス管理者ロール *だけ* を割り当てられたユーザーにも、デバイスの管理を許可することができます。 
+ローカル管理者グループに Azure AD ロールを追加すれば、デバイスに一切変更を加えることなく、デバイスの管理ユーザーを Azure AD でいつでも更新できます。 また、Azure AD では、最小権限の原則 (PoLP) をサポートするために、Azure AD のデバイス管理者ロールもローカル管理者グループに追加されます。 グローバル管理者だけでなく、デバイス管理者ロール *だけ* を割り当てられたユーザーにも、デバイスの管理を許可することができます。 
 
 ## <a name="manage-the-global-administrators-role"></a>グローバル管理者ロールの管理
 

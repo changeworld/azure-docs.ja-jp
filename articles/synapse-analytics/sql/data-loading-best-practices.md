@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 7e706f12a251cd38c3525a48553743606ed199b6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 31014d336b5122251cf8be4a166520064776fce3
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024029"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118168"
 ---
 # <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>専用 SQL プール Azure Synapse Analytics にデータを読み込むためのベスト プラクティス
 
@@ -145,5 +145,5 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 ## <a name="next-steps"></a>次のステップ
 
 - PolyBase と、ELT (抽出、読み込み、および変換) 処理の設計の詳細については、[Azure Synapse Analytics の ELT の設計](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページをご覧ください。
-- 読み込みのチュートリアルについては、[PolyBase を使用した Azure Blob Storage から Azure Synapse Analytics へのデータの読み込み](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページをご覧ください。
+- 読み込みのチュートリアルについては、[PolyBase を使用した Azure Blob Storage から Azure Synapse Analytics へのデータの読み込み](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)に関するページをご覧ください。
 - データの読み込みの監視については、「[DMV を利用してワークロードを監視する](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。

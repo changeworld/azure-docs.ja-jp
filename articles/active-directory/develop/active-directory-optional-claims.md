@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 1/04/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e0185cc8786dc101375262ddfd187c5d8e7e054f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 6f95b4eca8dbaf6cfaa7546fddada7577a1541b3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509565"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916254"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>方法:アプリに省略可能な要求を提供する
 
@@ -66,7 +66,7 @@ ms.locfileid: "97509565"
 | `ztdid`                    | ゼロタッチ デプロイ ID | JWT | | [Windows AutoPilot](/windows/deployment/windows-autopilot/windows-10-autopilot) に使用されるデバイス ID |
 | `email`                    | このユーザーのアドレス指定可能なメール アドレス (ユーザーが持っている場合)。  | JWT、SAML | MSA、Azure AD | ユーザーがテナントのゲストである場合、この値は既定で含まれます。  マネージド ユーザー (テナント内のユーザー) の場合は、この省略可能な要求により、または OpenID スコープで (v2.0 の場合のみ)、それを要求する必要があります。  マネージド ユーザーの場合、メール アドレスは [Office 管理ポータル](https://portal.office.com/adminportal/home#/users)で設定する必要があります。|
 | `acct`                | テナント内のユーザー アカウントの状態 | JWT、SAML | | ユーザーがテナントのメンバーである場合、値は `0` です。 ユーザーがゲストの場合、値は `1` です。 |
-| `groups`| グループ要求の省略可能な形式 |JWT、SAML| |[アプリケーション マニフェスト](reference-app-manifest.md) の GroupMembershipClaims 設定と共に使用されます (こちらも設定する必要があります)。 詳細については、後述の[グループ要求](#configuring-groups-optional-claims)に関する説明を参照してください。 グループ要求の詳細については、[グループ要求の構成方法](../hybrid/how-to-connect-fed-group-claims.md)に関する記事を参照してください
+| `groups`| グループ要求の省略可能な形式 |JWT、SAML| |[アプリケーション マニフェスト](reference-app-manifest.md)の GroupMembershipClaims 設定と共に使用されます (こちらも設定する必要があります)。 詳細については、後述の[グループ要求](#configuring-groups-optional-claims)に関する説明を参照してください。 グループ要求の詳細については、[グループ要求の構成方法](../hybrid/how-to-connect-fed-group-claims.md)に関する記事を参照してください
 | `upn`                      | UserPrincipalName | JWT、SAML  |           | username_hint パラメーターで使用できるユーザーの識別子。  そのユーザーの持続的な識別子ではないため、ユーザー情報の一意な識別 (データベース キーとして、など) には使用しません。 代わりに、ユーザー オブジェクト ID (`oid`) をデータベース キーとして使用します。 [代替ログイン ID](../authentication/howto-authentication-use-email-signin.md) を使用してサインインするユーザーには、ユーザー プリンシパル名 (UPN) は表示されません。 代わりに、サインイン状態をユーザーに表示するには、ID トークン要求 (v1 トークンの場合は `preferred_username` または `unique_name`、v2 トークンの場合は `preferred_username`) を使用します。 この要求は自動的に含まれますが、省略可能な要求として、ゲスト ユーザーの場合に動作を変更するために追加のプロパティをアタッチする要求を指定することもできます。  |
 | `idtyp`                    | トークンの種類   | JWT のアクセス トークン | 特殊: アプリ専用アクセス トークンのみ |  トークンがアプリ専用トークンの場合、値は `app` です。 API を使用してトークンがアプリ トークンかアプリ + ユーザー トークンかを判断する場合、これが最も正確な方法です。|
 
@@ -85,7 +85,17 @@ ms.locfileid: "97509565"
 | `in_corp`     | 企業ネットワーク内        | クライアントが企業ネットワークからログインしている場合に通知します。 そうでない場合、この要求は含まれません。   |  MFA の[信頼できる IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) の設定に基づきます。    |
 | `family_name` | 姓                       | ユーザー オブジェクトで定義されたユーザーの姓を示します。 <br>"family_name":"Miller" | MSA と Azure AD でサポートされています。 `profile` スコープが必要です。   |
 | `given_name`  | 名                      | ユーザー オブジェクトに設定されたユーザーの名を示します。<br>"given_name":"Frank"                   | MSA と Azure AD でサポートされています。  `profile` スコープが必要です。 |
-| `upn`         | ユーザー プリンシパル名 | username_hint パラメーターで使用できるユーザーの識別子。  そのユーザーの持続的な識別子ではないため、ユーザー情報の一意な識別 (データベース キーとして、など) には使用しません。 代わりに、ユーザー オブジェクト ID (`oid`) をデータベース キーとして使用します。 [代替ログイン ID](../authentication/howto-authentication-use-email-signin.md) を使用してサインインするユーザーには、ユーザー プリンシパル名 (UPN) は表示されません。 代わりに、サインイン状態をユーザーに表示するには、ID トークン要求 (v1 トークンの場合は `preferred_username` または `unique_name`、v2 トークンの場合は `preferred_username`) を使用します。 | 要求の構成については、下の[追加のプロパティ](#additional-properties-of-optional-claims)を参照してください。 `profile` スコープが必要です。|
+| `upn`         | ユーザー プリンシパル名 | username_hint パラメーターで使用できるユーザーの識別子。  そのユーザーの持続的な識別子ではないため、ユーザー情報の一意な識別 (データベース キーとして、など) には使用しません。 代わりに、ユーザー オブジェクト ID (`oid`) をデータベース キーとして使用します。 [代替ログイン ID](../authentication/howto-authentication-use-email-signin.md) を使用してサインインするユーザーには、ユーザー プリンシパル名 (UPN) は表示されません。 代わりに、次の `preferred_username` 要求を使用して、ユーザーにサインイン状態を表示します。 | 要求の構成については、下の[追加のプロパティ](#additional-properties-of-optional-claims)を参照してください。 `profile` スコープが必要です。|
+
+
+**表 4: v1.0 のみの省略可能なクレーム**
+
+v2 トークン形式の機能強化の一部は、セキュリティと信頼性の向上に役立つため、v1 トークン形式を使用するアプリで利用できます。 これらは、v2 エンドポイントから要求された ID トークンにも、v2 トークン形式を使用する API 用のアクセス トークンにも適用されません。 
+
+| JWT の要求     | 名前                            | 説明 | Notes |
+|---------------|---------------------------------|-------------|-------|
+|`aud`          | 対象ユーザー | JWT には常に存在しますが、v1 アクセス トークンでは、さまざまな方法で出力される可能性があります。これにより、トークンの検証を実行するときに、コーディングが困難になる場合があります。  [この要求の追加のプロパティ](#additional-properties-of-optional-claims)を使用すると、常に v1 アクセス トークン内の GUID に確実に設定されるようにすることができます。 | v1 JWT アクセス トークンのみ|
+|`preferred_username` | 推奨ユーザー名        | v1 トークン内の優先ユーザー名要求を提供します。 これにより、トークンの種類に関係なく、アプリでユーザー名のヒントを提供したり、人間が判読できる表示名を表示したりするのが簡単になります。  `upn` や `unique_name` などを使用するのでなく、この省略可能な要求を使用することをお勧めします。 | v1 ID トークンとアクセス トークン |
 
 ### <a name="additional-properties-of-optional-claims"></a>省略可能な要求の追加のプロパティ
 
@@ -97,7 +107,9 @@ ms.locfileid: "97509565"
 |----------------|--------------------------|-------------|
 | `upn`          |                          | SAML 応答と JWT 応答の両方や、v1.0 および v2.0 トークンに使用できます。 |
 |                | `include_externally_authenticated_upn`  | リソース テナントに格納されているゲスト UPN が含まれます。 たとえば、`foo_hometenant.com#EXT#@resourcetenant.com` のように指定します。 |
-|                | `include_externally_authenticated_upn_without_hash` | ハッシュ マーク (`#`) がアンダースコア (`_`) に置き換えられる点を除き、上と同じです。例: `foo_hometenant.com_EXT_@resourcetenant.com` |
+|                | `include_externally_authenticated_upn_without_hash` | ハッシュ マーク (`#`) がアンダースコア (`_`) に置き換えられる点を除き、上と同じです。例: `foo_hometenant.com_EXT_@resourcetenant.com`|
+| `aud`          |                          | v1 アクセス トークンでは、これは `aud` 要求の形式を変更するために使用されます。  v2 トークンまたは ID トークンへの影響はありません。ここで、`aud` 要求は常にクライアント ID です。 これを使用すると、API による対象ユーザーの検証が確実により簡単になります。 リソースはアクセス トークンを所有しているので、要求内のリソースでは、アクセス トークンに影響を与えるすべての省略可能なクレームと同様に、この省略可能なクレームも設定する必要があります。|
+|                | `use_guid`               | リソース (API) のクライアント ID を、appid URI または GUID ではなく、`aud` 要求として GUID 形式で出力します。 そのため、リソースのクライアント ID が `bb0a297b-6a42-4a55-ac40-09a501456577` である場合、そのリソースのアクセス トークンを要求するいずれのアプリにも、`aud` : `bb0a297b-6a42-4a55-ac40-09a501456577` を含むアクセス トークンが送られてきます。|
 
 #### <a name="additional-properties-example"></a>追加のプロパティの例
 
@@ -187,7 +199,7 @@ UI またはアプリケーション マニフェストを使用して、アプ�
 
 **表 5:OptionalClaims 型のプロパティ**
 
-| 名前          | 種類                       | 説明                                           |
+| 名前          | Type                       | 説明                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | コレクション (OptionalClaim) | JWT ID トークンで返される省略可能な要求。     |
 | `accessToken` | コレクション (OptionalClaim) | JWT アクセス トークンで返される省略可能な要求。 |
@@ -200,7 +212,7 @@ UI またはアプリケーション マニフェストを使用して、アプ�
 
 **表 6:OptionalClaim 型のプロパティ**
 
-| 名前                   | 種類                    | 説明                                                                                                                                                                                                                                                                                                   |
+| 名前                   | Type                    | 説明                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | 省略可能な要求の名前。                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | 要求のソース (ディレクトリ オブジェクト)。 定義済みの要求と、拡張プロパティのユーザー定義の要求があります。 ソース値が null の場合、この要求は定義済みの省略可能な要求です。 ソース値が user の場合、name プロパティの値はユーザー オブジェクトの拡張プロパティです。 |

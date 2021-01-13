@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e1031df9f305015048de7f708123a51875776e1b
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 2ee4e313366bafdd2f6e3bd0e104abd9f11b7776
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760590"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108672"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する
 
@@ -195,7 +195,7 @@ Azure Blob Storage のドキュメントには、複数の言語のクイック 
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>Azure Storage Explorer を使用してお使いのローカル ストレージに接続する
 
-[Azure Storage Explorer](https://github.com/microsoft/AzureStorageExplorer/releases/tag/v1.14.2) を使用して、ご自身のローカル ストレージ アカウントに接続できます。
+[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、ご自身のローカル ストレージ アカウントに接続できます。
 
 1. Azure ストレージ エクスプローラーをダウンロードしてインストールします
 

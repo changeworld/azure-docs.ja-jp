@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 3144633f76d1c4738f2323f1e047d6f32329909f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607900"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133244"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Java SDK 用 Application Insights のトラブルシューティングおよび Q&A
 
@@ -23,7 +23,7 @@ ms.locfileid: "97607900"
 ## <a name="build-errors"></a>ビルド エラー
 **Eclipse または Intellij Idea で、Maven または Gradle を使用して Application Insights SDK を追加すると、ビルドまたはチェックサムの検証エラーが発生します。**
 
-* 依存 `<version>` 要素にワイルドカード文字を含むパターン (例:(Maven) `<version>[2.0,)</version>`、または (Gradle) `version:'2.0.+'`) を使用している場合、代わりに特定のバージョン (`2.0.1` など) を指定してみてください。 最新のバージョンの [リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java/releases) を参照してください。
+* 依存 `<version>` 要素にワイルドカード文字を含むパターン (例:(Maven) `<version>[2.0,)</version>`、または (Gradle) `version:'2.+'`) を使用している場合、代わりに特定のバージョン (`2.6.2` など) を指定してみてください。
 
 ## <a name="no-data"></a>データなし
 **Application Insights が正常に追加された後でアプリケーションを実行したところ、ポータルにデータが表示されません。**
@@ -36,7 +36,7 @@ ms.locfileid: "97607900"
 * プロジェクトのリソース フォルダーにある ApplicationInsights.xml ファイル内で、ルート ノードの下に `<SDKLogger />` 要素を追加して IDE コンソール ウィンドウへの[ログを有効にし](#debug-data-from-the-sdk)、AI:INFO/WARN/ERROR から始まるエントリに疑わしいログがないかを調べます。 
 * 正しい ApplicationInsights.xml ファイルが Java SDK によって正常に読み込まれたことを確認します。そのためには、コンソールの出力メッセージに「構成ファイルが正常に検出されました」というメッセージがあるかどうかを確認します。
 * 構成ファイルが見つからない場合、出力メッセージを確認して構成ファイルの検索範囲を確かめ、ApplicationInsights.xml がこれらの検索場所のいずれかに存在していることを確認します。 通例、構成ファイルは Application Insights SDK の JAR ファイルの近くに見つかります。 たとえば、Tomcat の場合は WEB-INF/classes フォルダーがこれに相当します。 開発時に、Web プロジェクトのリソース フォルダーに ApplicationInsights.xml を配置できます。
-* SDK の既知の問題については、[GitHub の問題に関するページ](https://github.com/Microsoft/ApplicationInsights-Java/issues)を参照してください。
+* SDK の既知の問題については、[GitHub の問題に関するページ](https://github.com/microsoft/ApplicationInsights-Java/issues)を参照してください。
 * バージョンの競合の問題を回避するには、同じバージョンの Application Insights のコア、Web、エージェント、およびログ アペンダーを使用していることを確認してください。
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>データが表示されていたのに停止しました。
@@ -194,7 +194,7 @@ Application Insights では `org.apache.http` が使用されます。 これは
 
 ## <a name="get-help"></a>ヘルプの参照
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
-* [GitHub に関する問題を報告する](https://github.com/Microsoft/ApplicationInsights-Java/issues)
+* [GitHub に関する問題を報告する](https://github.com/microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->
 

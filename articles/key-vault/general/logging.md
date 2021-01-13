@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d900659f3ca8a8688c1b1d3a66cd888f37521fc6
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 5fcb3226eebf39ab18fb3bb24f0521a0523748d4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883386"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134179"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 
@@ -182,6 +182,7 @@ Key Vault の概要については、「[Azure Key Vault とは](overview.md)」
 | **CertificatePendingDelete** |保留中の証明書を削除します |
 | **CertificateNearExpiryEventGridNotification** |有効期限が近づいている証明書イベントが公開されました |
 | **CertificateExpiredEventGridNotification** |期限切れの証明書イベントが公開されました |
+
 ---
 
 ## <a name="use-azure-monitor-logs"></a>Azure Monitor ログの使用

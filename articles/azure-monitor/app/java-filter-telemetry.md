@@ -6,12 +6,12 @@ ms.date: 3/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 1e37b38170fb32aa4f9bdb64318ac36767c4bf78
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 71858be97404344bad88ea20e31b17fa44f669a2
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653148"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131187"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Java Web アプリでのテレメトリのフィルター処理
 
@@ -83,7 +83,7 @@ ApplicationInsights.xml で、次の例のように `TelemetryProcessors` セク
 
 ```
 
-[すべてのビルトイン プロセッサを確認します](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal)。
+[すべてのビルトイン プロセッサを確認します](https://github.com/microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal)。
 
 ## <a name="built-in-filters"></a>ビルトイン フィルター
 

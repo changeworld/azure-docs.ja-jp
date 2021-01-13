@@ -7,21 +7,18 @@ ms.author: viviali
 ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: b84f1efd77ca757fd2ceaa8bb5605e3fc78297d0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.custom: contperf-fy21q1, contperf-fy21q3
+ms.openlocfilehash: 3079b8384a24642322d6f6eb86e2ca7f0927db15
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032373"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065390"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする
 
 > [!Note]
-> この記事では、IoT Central のデータ エクスポート機能について説明します。
->
-> - 従来のデータ エクスポート機能の詳細については、[データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする (レガシ)](./howto-export-data-legacy.md) に関するページを参照してください。
-> - データ エクスポートと従来のデータ エクスポート機能の違いについては、以下の[比較表](#comparison-of-legacy-data-export-and-data-export)を参照してください。
+> この記事では、IoT Central のデータ エクスポート機能について説明します。 従来のデータ エクスポート機能の詳細については、[データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする (レガシ)](./howto-export-data-legacy.md) に関するページを参照してください。
 
 この記事では、Azure IoT Central の新しいデータ エクスポート機能を使用する方法について説明します。 この機能を使用して、フィルター処理およびエンリッチ化された IoT データを IoT Central アプリケーションから連続エクスポートします。 データ エクスポートを使用すると、ウォーム パスの分析情報、分析、およびストレージ用に、クラウド ソリューションの他の部分にほぼリアルタイムで変更がプッシュされます。
 

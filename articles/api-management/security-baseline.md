@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 62b4629d258f8779dc53b4b8e00684d3b793291d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ab4ae6980af9556f973ece93634b614d01c615e9
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183755"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132666"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management 用の Azure セキュリティ ベースライン
 
@@ -381,7 +381,7 @@ Azure Security Center からの推奨事項に従って、管理者アカウン�
 
 * [PowerShell を使用して Azure AD でディレクトリ ロール定義を取得する方法](/powershell/module/az.resources/get-azroledefinition)
 
-* [Azure Security Center からの ID とアクセスの推奨事項について](../security-center/recommendations-reference.md#recs-identity)
+* [Azure Security Center からの ID とアクセスの推奨事項について](../security-center/recommendations-reference.md#recs-identityandaccess)
 
 **Azure Security Center の監視**: はい
 
@@ -462,7 +462,7 @@ Azure Security Center からの推奨事項に従って、管理者アカウン�
 
 * [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
+* [Azure AD のリスク検出について](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: はい
 

@@ -16,12 +16,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 846e1a83f3cba5f87210ae4f825b5fac4f1569c6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a18fc3e4851c2daf03c662cf40cef58cc7d9e77a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648380"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117709"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure portal を使用して外部ゲスト ユーザーの Azure ロール割り当てを追加または削除する
 
@@ -29,9 +29,7 @@ ms.locfileid: "94648380"
 
 ## <a name="prerequisites"></a>前提条件
 
-ロールの割り当てを追加または削除するには、以下が必要です。
-
-- `Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)や[所有者](built-in-roles.md#owner)など)
+[!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
 ## <a name="when-would-you-invite-guest-users"></a>ゲスト ユーザーを招待するタイミング
 

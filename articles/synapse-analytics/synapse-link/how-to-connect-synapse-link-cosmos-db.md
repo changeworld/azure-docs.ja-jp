@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e4bcc13a2eaddbf394d8468b29eeff475119e2d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5316f74ee38f597592ae4582aef31837f0f05fda
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459021"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119834"
 ---
 # <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB 用の Azure Synapse Link に接続する
 
@@ -24,8 +24,8 @@ ms.locfileid: "96459021"
 
 Azure Cosmos DB データベースをワークスペースに接続する前に、次が必要です。
 
-* 既存の Azure Cosmos DB データベース。または、[Azure Cosmos アカウントを管理する方法のクイックスタート](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account)の手順に従って新しいアカウントを作成します。
-* 既存の Azure Synapse ワークスペース。または、「[クイックスタート: Synapse ワークスペースを作成する](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)」の手順に従って新しいワークスペースを作成します。
+* 既存の Azure Cosmos DB データベース。または、[Azure Cosmos アカウントを管理する方法のクイックスタート](../../cosmos-db/how-to-manage-database-account.md)の手順に従って新しいアカウントを作成します。
+* 既存の Azure Synapse ワークスペース。または、「[クイックスタート: Synapse ワークスペースを作成する](../quickstart-create-workspace.md)」の手順に従って新しいワークスペースを作成します。
 
 > [!IMPORTANT]
 > 現時点では、Azure Synapse Link for Azure Cosmos DB は、マネージド仮想ネットワークが有効になっていないワークスペースでサポートされています。

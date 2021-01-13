@@ -3,12 +3,12 @@ title: セキュリティの概要
 description: Azure Arc 対応サーバーに関するセキュリティ情報。
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: be79be3030af76425b54fd683784d0e216ac2cf5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aa8653b783e7eb3e211b7514831604dd5642cfbe
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329042"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117029"
 ---
 # <a name="azure-arc-for-servers-security-overview"></a>Azure Arc for servers のセキュリティの概要
 
@@ -16,7 +16,7 @@ ms.locfileid: "91329042"
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-各 Azure Arc 対応サーバーは、Azure サブスクリプション内のリソース グループの一部としてマネージド ID を持ち、この ID はオンプレミスまたは他のクラウド環境を実行しているサーバーを表します。 このリソースへのアクセスは、標準の [Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md)によって制御されます。 Azure portal の [ **[Access Control (IAM)]** ](../../role-based-access-control/role-assignments-portal.md#access-control-iam) ページから、Azure Arc 対応サーバーにアクセスできるユーザーを確認できます。
+各 Azure Arc 対応サーバーは、Azure サブスクリプション内のリソース グループの一部としてマネージド ID を持ち、この ID はオンプレミスまたは他のクラウド環境を実行しているサーバーを表します。 このリソースへのアクセスは、標準の [Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md)によって制御されます。 Azure portal の [ **[Access Control (IAM)]**](../../role-based-access-control/role-assignments-portal.md) ページから、Azure Arc 対応サーバーにアクセスできるユーザーを確認できます。
 
 :::image type="content" source="./media/security-overview/access-control-page.png" alt-text="Azure Arc 対応サーバーのアクセス制御" border="false" lightbox="./media/security-overview/access-control-page.png":::
 
@@ -24,7 +24,7 @@ ms.locfileid: "91329042"
 
 **Azure Connected Machine のオンボード** ロールは、大規模なオンボードで使用でき、Azure での新しい Arc 対応サーバーの読み取りまたは作成のみが可能です。 既に登録済みのサーバーの削除や、拡張機能の管理には使用できません。 ベスト プラクティスとして、このロールは、大規模なマシンのオンボードに使用される Azure Active Directory (Azure AD) サービス プリンシパルのみに割り当てることをお勧めします。
 
-**Azure Connected Machine のリソース管理者**ロールのメンバーであるユーザーは、マシンの読み取り、変更、再オンボード、および削除を行うことができます。 このロールは、Arc 対応サーバーの管理をサポートするように設計されていますが、リソース グループまたはサブスクリプション内の他のリソースの管理はサポートしていません。
+**Azure Connected Machine のリソース管理者** ロールのメンバーであるユーザーは、マシンの読み取り、変更、再オンボード、および削除を行うことができます。 このロールは、Arc 対応サーバーの管理をサポートするように設計されていますが、リソース グループまたはサブスクリプション内の他のリソースの管理はサポートしていません。
 
 ## <a name="agent-security-and-permissions"></a>エージェントのセキュリティとアクセス許可
 
@@ -46,7 +46,7 @@ Azure Connected Machine エージェントは、お使いのマシンで実行�
 
 Hybrid Instance Metadata Service は、マシン上で実行されている任意のアプリケーションからアクセスできますが、承認されたアプリケーションのみがシステム割り当て ID の Azure AD トークンを要求できます。 トークン URI への最初のアクセス試行時に、信頼された呼び出し元のみが読み取ることができるファイル システム上の場所に、ランダムに生成された暗号 BLOB がサービスによって生成されます。 次に呼び出し元は、(適切なアクセス許可があることを証明するために) ファイルを読み取り、Authorization ヘッダー内のファイルの内容で要求を再試行して、Azure AD トークンを正常に取得する必要があります。
 
-* Windows では、呼び出し元は BLOB を読み取るために、ローカルの **Administrators** グループか、または**ハイブリッド エージェント拡張アプリケーション** グループのメンバーである必要があります。
+* Windows では、呼び出し元は BLOB を読み取るために、ローカルの **Administrators** グループか、または **ハイブリッド エージェント拡張アプリケーション** グループのメンバーである必要があります。
 
 * Linux では、呼び出し元は BLOB を読み取るために **HIMDS** グループのメンバーである必要があります。
 

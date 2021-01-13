@@ -8,12 +8,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: a96709c7538bda6d6b338c29dc512902e9ca2c87
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7d91001024ad547e52fe48ee30749fee9a4fb4a1
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445841"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116179"
 ---
 # <a name="azure-synapse-studio-troubleshooting"></a>Azure Synapse Studio のトラブルシューティング
 
@@ -102,4 +102,4 @@ URL 列が次のパターンに一致する項目を探します。
 ![タイムスタンプの表示](media/troubleshooting-synapse-studio/show-time-stamp.png)
 
 ## <a name="next-steps"></a>次のステップ
-前の手順で問題が解決しない場合は、[サポート チケットを作成](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)してください
+前の手順で問題が解決しない場合は、[サポート チケットを作成](../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)してください

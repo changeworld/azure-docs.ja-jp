@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 28d0d7b14c18a1d98be1872b1555930b2e1650c3
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 366a9a63e4577a9b8470faec68f8d4a25114dd48
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342452"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133703"
 ---
 # <a name="protect-your-network-resources"></a>ネットワーク リソースの保護
 Azure Security Center では、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
 
-ネットワークに関するすべての推奨事項の覧については、[ネットワークに関する推奨事項](recommendations-reference.md#recs-network)のページを参照してください。
+ネットワークに関するすべての推奨事項の覧については、[ネットワークに関する推奨事項](recommendations-reference.md#recs-networking)のページを参照してください。
 
 この記事では、ネットワーク セキュリティの観点から Azure リソースに適用される推奨事項について説明します。 ネットワークに関する推奨事項は、次世代ファイアウォール、ネットワーク セキュリティ グループ、JIT VM アクセス、過度に許容されるインバウンド トラフィック規則などが中心です。 ネットワークの推奨事項の一覧および修復アクションについては、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」をご覧ください。
 
-Security Center の**ネットワーク**機能は次のとおりです。 
+Security Center の **ネットワーク** 機能は次のとおりです。 
 
 - ネットワーク マップ (Azure Defender が必要)
 - [アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md) (Azure Defender が必要)
@@ -48,7 +48,7 @@ Security Center の**ネットワーク**機能は次のとおりです。
 
 1. Security Center のメニューから Azure Defender ダッシュボードを開き、 **[ネットワーク マップ]** を選択します。
 
-    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="資産インベントリのネットワーク リソースの種類" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Azure Defender ダッシュボードからネットワーク マップを開く" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
 
 1. **[レイヤー]** メニューを選択し、 **[トポロジ]** を選択します。
  

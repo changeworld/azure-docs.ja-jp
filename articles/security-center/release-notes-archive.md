@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2020
+ms.date: 01/07/2020
 ms.author: memildin
-ms.openlocfilehash: 854926c64b50cf4b8e7df9fa82da58b924ddbd83
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 835950cc68ca22ea3958d614d669d7a105fefe62
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510422"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132921"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Security Center の最新情報のアーカイブ
 
@@ -28,6 +28,122 @@ ms.locfileid: "96510422"
 - 新機能
 - バグの修正
 - 非推奨の機能
+
+
+## <a name="july-2020"></a>2020 年 7 月
+
+7 月の更新プログラムには次のものが含まれます。
+- [仮想マシンの脆弱性評価をマーケットプレース以外のイメージで使用可能に](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)
+- [Azure Files と Azure Data Lake Storage Gen2 を含むように拡張された Azure Storage の脅威の防止 (プレビュー)](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+- [脅威の防止機能を有効にするための 8 つの新しい推奨事項](#eight-new-recommendations-to-enable-threat-protection-features)
+- [コンテナーのセキュリティ強化 - レジストリのスキャンの高速化とドキュメントの更新](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
+- [新しい推奨事項とパス規則でのワイルドカードのサポートによって適応型アプリケーション制御を更新](#adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules)
+- [非推奨となった SQL の高度なデータ セキュリティの 6 つのポリシー](#six-policies-for-sql-advanced-data-security-deprecated)
+
+
+
+
+### <a name="vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images"></a>仮想マシンの脆弱性評価をマーケットプレース以外のイメージで使用可能に
+
+脆弱性評価ソリューションを展開する際、以前は展開前に Security Center によって検証チェックが実行されていました。 このチェックは、接続先の仮想マシンのマーケットプレース SKU を確認するために行われていました。 
+
+今回の更新プログラムから、このチェックは削除され、脆弱性評価ツールを 'カスタム' Windows および Linux マシンに展開できるようになりました。 カスタム イメージは、マーケットプレースの既定値からユーザーが変更したものです。
+
+統合された脆弱性評価拡張機能 (Qualys を使用) をより多くのマシンに展開できるようになりましたが、サポートは、「[統合された脆弱性スキャナーを Standard レベルの VM にデプロイする](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)」に記載されている OS を使用している場合にのみ受けることができます
+
+詳細については、[仮想マシン向けの統合された脆弱性スキャナー (Azure Defender が必要)](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner) に関するページを参照してください。
+
+Qualys または Rapid7 からプライベートにライセンス提供された独自の脆弱性評価ソリューションを使用する方法の詳細については、「[パートナーの脆弱性スキャン ソリューションをデプロイする](deploy-vulnerability-assessment-vm.md)」を参照してください。
+
+
+### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Azure Files と Azure Data Lake Storage Gen2 を含むように拡張された Azure Storage の脅威の防止 (プレビュー)
+
+Azure Storage の脅威の防止では、Azure Storage アカウント上の潜在的に有害なアクティビティを検出します。 Security Center では、ストレージ アカウントへのアクセスまたはストレージ アカウントの悪用の試行が検出されたときにアラートが表示されます。 
+
+BLOB コンテナー、ファイル共有、またはデータ レイクのいずれに格納されているデータでも保護できます。
+
+
+
+
+### <a name="eight-new-recommendations-to-enable-threat-protection-features"></a>脅威の防止機能を有効にするための 8 つの新しい推奨事項
+
+次のリソース タイプに対して Azure Security Center の脅威の防止機能を簡単に提供するため、新たに 8 つの推奨事項が追加されました: 仮想マシン、App Service プラン、Azure SQL Database サーバー、マシン上の SQL Server、Azure Storage アカウント、Azure Kubernetes Service クラスター、Azure Container Registry レジストリ、および Azure Key Vault ボールト。
+
+新しい推奨事項は次のとおりです。
+
+- **Azure SQL Database サーバーで Advanced Data Security を有効にする必要がある**
+- **マシン上の SQL サーバーで Advanced Data Security を有効にする必要がある**
+- **Azure App Service プランで Advanced Threat Protection を有効にする必要がある**
+- **Azure Container Registry レジストリで Advanced Threat Protection を有効にする必要がある**
+- **Azure Key Vault コンテナーで Advanced Threat Protection を有効にする必要がある**
+- **Azure Kubernetes Service クラスターで Advanced Threat Protection を有効にする必要がある**
+- **Azure Storage アカウントで Advanced Threat Protection を有効にする必要がある**
+- **仮想マシンで Advanced Threat Protection を有効にする必要がある**
+
+これらの新しい推奨事項は、 **[Azure Defender を有効にする]** セキュリティ コントロールに属しています。
+
+推奨事項には、クイック修正機能も含まれています。 
+
+> [!IMPORTANT]
+> これらの推奨事項を 1 つでも修復すると、関連するリソースを保護するための料金が発生します。 現在のサブスクリプションに関連するリソースがある場合、直ちに料金が発生します。 後で追加した場合は、後で行われます。
+> 
+> たとえば、サブスクリプションに Azure Kubernetes Service クラスターがない状態で脅威の防止を有効にした場合、料金は発生しません。 将来、同じサブスクリプションにクラスターを追加すると、そのクラスターは自動的に保護され、その時点で料金が発生します。
+
+各項目の詳細については、[セキュリティに関する推奨事項のリファレンス ページ](recommendations-reference.md)を参照してください。
+
+詳細については、「[Azure Security Center での脅威の防止](azure-defender.md)」を参照してください。
+
+
+
+
+### <a name="container-security-improvements---faster-registry-scanning-and-refreshed-documentation"></a>コンテナーのセキュリティ強化 - レジストリのスキャンの高速化とドキュメントの更新
+
+コンテナーのセキュリティ ドメインへの継続的な投資の一環として、Security Center では Azure Container Registry に保存されているコンテナー イメージの動的スキャンにおける大幅なパフォーマンス向上を実現しました。 スキャンは、通常約 2 分で完了するようになりました。 場合によっては、最大 15 分かかることがあります。
+
+Azure Security Center のコンテナーのセキュリティ機能に関する明確さとガイダンスを改善するために、コンテナーのセキュリティに関するドキュメントのページも更新しました。 
+
+Security Center でのコンテナー セキュリティの詳細については、次の記事を参照してください。
+
+- [Security Center のコンテナーのセキュリティ機能の概要](container-security.md)
+- [Azure Container Registry との統合の詳細](defender-for-container-registries-introduction.md)
+- [Azure Kubernetes Service との統合の詳細](defender-for-kubernetes-introduction.md)
+- [レジストリをスキャンして Docker ホストを強化する方法](container-security.md)
+- [Azure Kubernetes Service クラスターの脅威防止機能からのセキュリティ アラート](alerts-reference.md#alerts-akscluster)
+- [Azure Kubernetes Service ホストの脅威防止機能からのセキュリティ アラート](alerts-reference.md#alerts-containerhost)
+- [コンテナーに関するセキュリティの推奨事項](recommendations-reference.md#recs-compute)
+
+
+
+### <a name="adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules"></a>新しい推奨事項とパス規則でのワイルドカードのサポートによって適応型アプリケーション制御を更新
+
+適応型アプリケーション制御の機能に、2 つの重要な更新プログラムが適用されています。
+
+* 新しい推奨事項により、以前は許可されていなかった、正当である可能性のある動作が識別されます。 新しい推薦事項の「**適応型アプリケーション制御ポリシーの許可リスト ルールを更新する必要がある**」により、既存のポリシーに新しいルールを追加して、適応型アプリケーション制御違反アラートの擬陽性の数を減らすよう求めるメッセージが表示されます。
+
+* パス規則でワイルドカードがサポートされるようになっています。 この更新プログラムから、ワイルドカードの使用が許可されたパス規則を構成できます。 サポートされているシナリオは 2 つあります。
+
+    * パスの末尾でワイルドカードを使用し、そのフォルダーとサブフォルダー内のすべての実行可能ファイルを許可します
+
+    * パスの途中でワイルドカードを使用し、変化するフォルダー名を備えた既知の実行可能ファイルの名前 (既知の実行可能ファイルを含む個人ユーザー フォルダー、自動生成されたフォルダー名など) を有効にします。
+
+
+適応型アプリケーション制御の詳細については、[こちら](security-center-adaptive-application.md)をご覧ください。
+
+
+
+### <a name="six-policies-for-sql-advanced-data-security-deprecated"></a>非推奨となった SQL の高度なデータ セキュリティの 6 つのポリシー
+
+SQL マシンの高度なデータ セキュリティに関連する 6 つのポリシーが非推奨になります。
+
+- SQL マネージド インスタンスの高度なデータ セキュリティ設定で、Advanced Threat Protection の種類を [すべて] に設定する必要がある
+- SQL Server の高度なデータ セキュリティ設定で、Advanced Threat Protection の種類を [すべて] に設定する必要がある
+- SQL マネージド インスタンスの高度なデータ セキュリティ設定に、セキュリティ アラートを受信するためのメール アドレスが含まれている必要がある
+- SQL Server の高度なデータ セキュリティ設定に、セキュリティ アラートを受信するためのメール アドレスが含まれている必要がある
+- SQL マネージド インスタンスの Advanced Data Security 設定で管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある
+- SQL Server の Advanced Data Security 設定で、管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある
+
+詳細については、[組み込みのポリシー](./policy-reference.md)に関するページを参照してください。
+
 
 
 ## <a name="june-2020"></a>2020 年 6 月
@@ -79,7 +195,7 @@ Advanced Data Security では、SQL マシンに対して、場所によらず�
 
 推奨事項には、デプロイ プロセスを高速化するためのクイック修復機能も含まれています。 
 
-これら 2 つの新しい推奨事項の詳細については、「[コンピューティングとアプリの推奨事項](recommendations-reference.md#recs-computeapp)」テーブルを参照してください。
+これら 2 つの新しい推奨事項の詳細については、「[コンピューティングとアプリの推奨事項](recommendations-reference.md#recs-compute)」テーブルを参照してください。
 
 Azure Security Center でエージェントを使用する方法の詳細については、「[Log Analytics エージェントとは](faq-data-collection-agents.md#what-is-the-log-analytics-agent)」を参照してください。
 
@@ -116,7 +232,7 @@ Azure Security Center でエージェントを使用する方法の詳細につ�
 
 既存の推奨事項である「**インターネットに接続する仮想マシンは、ネットワーク セキュリティ グループを使用して保護する必要がある**」では、インターネットに接続された仮想マシンとインターネットに接続されていない仮想マシンが区別されていませんでした。 どちらの場合でも、VM がネットワーク セキュリティ グループに割り当てられていないと、重大度の高い推奨事項が生成されていました。 この新しい推奨事項では、インターネットに接続されていないマシンを分離することで擬陽性を減らし、不必要な重要度の高いアラートを回避します。
 
-詳細については、「[ネットワークの推奨事項](recommendations-reference.md#recs-network)」テーブルを参照してください。
+詳細については、「[ネットワークの推奨事項](recommendations-reference.md#recs-networking)」テーブルを参照してください。
 
 
 
@@ -316,7 +432,7 @@ ID とアクセスに関する推奨事項の例を次に示します。
 
 Free 価格レベルのサブスクリプションをお持ちのお客様は、ID とアクセスのセキュリティについて評価されることがなかったため、この変更により、セキュア スコアに影響が生じます。
 
-詳しくは、「[ID とアクセスの推奨事項](recommendations-reference.md#recs-identity)」を参照してください。
+詳しくは、「[ID とアクセスの推奨事項](recommendations-reference.md#recs-identityandaccess)」を参照してください。
 
 詳しくは、[ID とアクセスの監視](security-center-identity-access.md)に関するページを参照してください。
 
@@ -621,7 +737,7 @@ Security Center では、Azure Lighthouse の一部として、テナント間�
 
 Azure Security Center (ASC) で新しいネットワークの推奨事項が導入され、既存の推奨事項が改善されました。 Security Center を使用することで、リソースのネットワーク保護をさらに強化できます。 
 
-ネットワークの推奨事項の詳細については、[こちら](recommendations-reference.md#recs-network)をご覧ください。
+ネットワークの推奨事項の詳細については、[こちら](recommendations-reference.md#recs-networking)をご覧ください。
 
 
 ## <a name="june-2019"></a>2019 年 6 月

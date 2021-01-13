@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 64ba24eb0eab581310122908fc05d1d671ac1d40
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 1a988dba52b36b1d27407316200bfa6897de7cf5
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531575"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120157"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのデータ読み込み戦略
 
@@ -42,7 +42,7 @@ ELT を実装するための基本的な手順は次のとおりです。
 5. データを変換します。
 6. 運用環境テーブルにデータを挿入します。
 
-読み込みのチュートリアルについては、[ Azure Blob Storage からのデータの読み込み](load-data-from-azure-blob-storage-using-polybase.md)に関する記事をご覧ください。
+読み込みのチュートリアルについては、[ Azure Blob Storage からのデータの読み込み](./load-data-from-azure-blob-storage-using-copy.md)に関する記事をご覧ください。
 
 ## <a name="1-extract-the-source-data-into-text-files"></a>1.ソース データをテキスト ファイルに抽出する
 
@@ -123,7 +123,7 @@ Parquet ファイルを読み込む場合、次の SQL データ型マッピン�
 >- Parquet と SQL の間で型が一致しない場合、またはサポートされていない Parquet データ型がある場合は、次のエラーが発生する可能性があります。 **"HdfsBridge::recordReaderFillBuffer - Unexpected error encountered filling record reader buffer:ClassCastException: ..." (Hdfs Bridge::recordReaderFillBuffer - レコード リーダー バッファーの読み込み中に予期しないエラーが発生しました: ClassCastException: ...)**
 >- Parquet および ORC ファイル形式の tinyint 型の列に 0 ～ 127 の範囲外の値を読み込むことはサポートされていません。
 
-外部オブジェクトの作成の例については、[外部テーブルの作成](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool)に関する記事を参照してください。
+外部オブジェクトの作成の例については、[外部テーブルの作成](../sql/develop-tables-external-tables.md?tabs=sql-pool)に関する記事を参照してください。
 
 ### <a name="format-text-files"></a>テキスト ファイルの書式設定
 
@@ -142,11 +142,11 @@ PolyBase を使用する場合、定義する外部オブジェクトは、外�
 
 データを読み込むには、次のいずれかの読み込みオプションを使用できます。
 
-- [COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)は、シームレスかつ柔軟にデータを読み込むことができるため、推奨されている読み込みユーティリティです。 このステートメントには、PolyBase では提供されない追加の読み込み機能が多数あります。 
-- [T-SQL を使用したPolyBase](load-data-from-azure-blob-storage-using-polybase.md) では、外部データ オブジェクトを定義する必要があります。
+- [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)は、シームレスかつ柔軟にデータを読み込むことができるため、推奨されている読み込みユーティリティです。 このステートメントには、PolyBase では提供されない追加の読み込み機能が多数あります。 
+- [T-SQL を使用したPolyBase](./load-data-from-azure-blob-storage-using-copy.md) では、外部データ オブジェクトを定義する必要があります。
 - [Azure Data Factory (ADF) を使用した PolyBase および COPY ステートメント](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) - もう 1 つのオーケストレーション ツールです。  このツールはパイプラインを定義し、ジョブのスケジュールを設定します。
 - [SSIS を使用した PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) は、ソースデータが SQL Server にある場合に適しています。 SSIS は、移動元テーブルと移動先テーブルのマッピングを定義するほか、読み込みの調整も行います。 SSIS パッケージが既にある場合、そのパッケージが移動先の新しいデータ ウェアハウスで機能するように変更できます。
-- [Azure Databricks を使用した PolyBase](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) - PolyBase を使用して、テーブルから Databricks データ フレームにデータを転送することや、Databricks データ フレームからテーブルにデータを書き込むことができます。
+- [Azure Databricks を使用した PolyBase](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json) - PolyBase を使用して、テーブルから Databricks データ フレームにデータを転送することや、Databricks データ フレームからテーブルにデータを書き込むことができます。
 
 ### <a name="other-loading-options"></a>その他の読み込みオプション
 

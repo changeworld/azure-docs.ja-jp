@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 6a38b61ee03aa4853526586ca60542bd3641b66f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cd582c1175d6bff0aa18ee77dde8b7734b6acf25
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249401"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121024"
 ---
 # <a name="what-is-delta-lake"></a>Delta Lake とは
 
@@ -44,4 +44,4 @@ Azure Synapse に付属している Delta Lake の現在のバージョンは、
 ## <a name="next-steps"></a>次のステップ
 
 - [.NET for Apache Spark ドキュメント](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)

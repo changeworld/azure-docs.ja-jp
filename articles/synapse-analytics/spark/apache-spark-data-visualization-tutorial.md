@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 10/20/2020
 ms.author: midesa
-ms.openlocfilehash: 8735514b639cb0322a83ffb19d661027327c0f73
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8768b8f8c7bf70b184971abc6ce27e2193823dea
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458766"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121551"
 ---
 # <a name="analyze-data-with-apache-spark"></a>Apache Spark を使用してデータを分析する
 
@@ -25,7 +25,7 @@ ms.locfileid: "96458766"
 - [Apache Spark プールの作成チュートリアル](../articles/../quickstart-create-apache-spark-pool-studio.md)に従って、Apache Spark プールを作成します 
 
 ## <a name="download-and-prepare-the-data"></a>データのダウンロードと準備
-1. PySpark カーネルを使用してノートブックを作成します。 手順については、「[ノートブックを作成する](https://docs.microsoft.com/azure/synapse-analytics/quickstart-apache-spark-notebook#create-a-notebook)」を参照してください。 
+1. PySpark カーネルを使用してノートブックを作成します。 手順については、「[ノートブックを作成する](../quickstart-apache-spark-notebook.md#create-a-notebook)」を参照してください。 
    
 > [!Note]
 > 
@@ -180,5 +180,5 @@ plt.show()
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)
 - [Apache Spark 公式ドキュメント](https://spark.apache.org/docs/latest/)

@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 03a536e16a6ba12611ed704b404c1bd411f0c4c8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 242e5d042aa14e3b7bd92ebb37ae1be61b1b2c8f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322695"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120973"
 ---
 # <a name="best-practices-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プールのベスト プラクティス
 
@@ -61,7 +61,7 @@ Gzip テキスト ファイルを使用する場合にスループットを最�
 
 - [データの読み込み](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [PolyBase の使い方ガイド](data-loading-best-practices.md)
-- [Azure SQL プールの読み込みパターンと戦略](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)
+- [Azure SQL プールの読み込みパターンと戦略](/archive/blogs/sqlcat/azure-sql-data-warehouse-loading-patterns-and-strategies)
 - [Azure Data Factory を使用してデータを読み込む](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Data Factory を使用したデータ移動](../../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
@@ -88,7 +88,7 @@ Polybase はクエリには適していません。 専用 SQL プールの Poly
 
 - [テーブルの概要](develop-tables-overview.md)
 - [テーブルのディストリビューション](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [テーブル分散の選択](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)
+- [テーブル分散の選択](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)
 - [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 - [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
@@ -193,7 +193,7 @@ SQL プールには、クエリの実行を監視するために使用できる 
 
 一般的な問題と解決方法については、[トラブルシューティング](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事もご覧ください。
 
-この記事に記載されていない情報が必要な場合は、[Azure Synapse に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)を検索して、他のユーザーや SQL プール製品グループに質問することができます。  
+この記事に記載されていない情報が必要な場合は、[Azure Synapse に関する Microsoft Q&A 質問ページ](/answers/topics/azure-synapse-analytics.html)を検索して、他のユーザーや SQL プール製品グループに質問することができます。  
 
 Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  Stack Overflow で質問したい方のために、[Azure SQL プール Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)も用意しています。
 
