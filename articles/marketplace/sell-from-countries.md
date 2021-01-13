@@ -8,17 +8,17 @@ ms.custom: references_regions
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 09/02/2020
-ms.openlocfilehash: fd33ebebf35e0407f7ce39c609ee372a7d1d4a61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/04/2021
+ms.openlocfilehash: 48a0c3484b6cbeac4d71d3fbf383bb1c14466a9d
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250506"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897333"
 ---
 # <a name="supported-publisher-countries-and-regions"></a>サポートされている発行元の国と地域
 
-Microsoft の商用マーケットプレースにプランを発行するには、次の国または地域のいずれかに居住している必要があります。
+Microsoft コマーシャル マーケットプレースにプランを発行するには、会社の法的な所在地が次のいずれかの国または地域に存在する必要があります。
 
 - アフガニスタン
 - オーランド諸島
@@ -134,7 +134,6 @@ Microsoft の商用マーケットプレースにプランを発行するには�
 - カザフスタン
 - ケニア
 - キリバス
-- 韓国
 - コソボ
 - クウェート
 - キルギスタン
@@ -224,6 +223,7 @@ Microsoft の商用マーケットプレースにプランを発行するには�
 - ソマリア
 - 南アフリカ
 - サウスジョージア・サウスサンドウィッチ諸島
+- 韓国 (大韓民国)
 - 南スーダン
 - スペイン
 - スリランカ

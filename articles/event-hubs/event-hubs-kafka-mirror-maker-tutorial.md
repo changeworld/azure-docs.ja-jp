@@ -2,17 +2,17 @@
 title: Apache Kafka MirrorMaker を使用する - Azure Event Hubs | Microsoft Docs
 description: この記事では、Kafka MirrorMaker を使用して Azure Event Hubs で Kafka クラスターをミラーリングする方法について説明します。
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: f2e7ac6951c84adfd8fc313995724021640ee0ab
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.date: 01/04/2021
+ms.openlocfilehash: 654e9e19dfde0d0c58d00e41cf8ab0ba8e1484d7
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503201"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97860999"
 ---
-# <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Apache Kafka 用の Event Hubs で Kafka MirrorMaker を使用する
+# <a name="use-apache-kafka-mirrormaker-with-event-hubs"></a>Event Hubs で Apache Kafka MirrorMaker を使用する
 
-このチュートリアルでは、Kafka MirrorMaker を使用してイベント ハブ内の Kafka ブローカーをミラーリングする方法について説明します。
+このチュートリアルでは、Kafka MirrorMaker を使用して Azure Event Hub に Kafka ブローカーをミラーリングする方法について説明します。 CNCF Strimzi オペレーターを使用して Kubernetes で Apache Kafka をホストしている場合は、[こちらのブログ記事](https://strimzi.io/blog/2020/06/09/mirror-maker-2-eventhub/)に記載されているチュートリアルを参照してください。そこでは、Strimzi と Mirror Maker 2 を使用して Kafka を設定する方法について説明しています。 
 
    ![Kafka MirrorMaker とイベント ハブ](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
@@ -31,9 +31,11 @@ ms.locfileid: "97503201"
 > * Kafka MirrorMaker を実行する
 
 ## <a name="introduction"></a>はじめに
-最新のクラウド スケール アプリに関する 1 つの主要な考慮事項は、サービスを中断することなくインフラストラクチャを更新、強化、変更できることです。 このチュートリアルでは、イベント ハブと Kafka MirrorMaker を使用し、Kafka 入力ストリームを Event Hubs サービスに "ミラーリング" することで Azure に Kafka の既存のパイプラインを統合する方法について説明します。 
+このチュートリアルでは、イベント ハブと Kafka MirrorMaker を使用し、Kafka 入力ストリームを Event Hubs サービスに "ミラーリング" することで、Azure に既存の Kafka パイプラインを統合する方法について説明します。この方法により、いくつかの[フェデレーション パターン](event-hubs-federation-overview.md)を使用した、Apache Kafka ストリームの統合が可能になります。 
 
-Azure Event Hubs Kafka エンドポイントでは、Kafka プロトコル (つまり Kafka クライアント) を使って Azure Event Hubs に接続できます。 Kafka アプリケーションに最小限の変更を行うことで、Azure Event Hubs に接続し、Azure エコシステムの利点を活用することができます。 Event Hubs は現在、Kafka バージョン 1.0 以降をサポートしています。
+Azure Event Hubs Kafka エンドポイントでは、Kafka プロトコル (つまり Kafka クライアント) を使って Azure Event Hubs に接続できます。 Kafka アプリケーションに最小限の変更を行うことで、Azure Event Hubs に接続し、Azure エコシステムの利点を活用することができます。 Event Hubs は現在、Apache Kafka バージョン 1.0 以降のプロトコルをサポートしています。
+
+Apache Kafka の MirrorMaker 1 は、Apache Kafka から Event Hubs に一方向で使用することができます。 MirrorMaker 2 は双方向で使用できますが、[MirrorMaker 2 で構成可能な `MirrorCheckpointConnector` と `MirrorHeartbeatConnector`](https://cwiki.apache.org/confluence/display/KAFKA/KIP-382%3A+MirrorMaker+2.0) は、両方とも、Event Hubs ではなく、Apache Kafka ブローカーをポイントするように構成する必要があります。 このチュートリアルでは、MirrorMaker 1 の構成について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

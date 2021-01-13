@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: b71c6b834a6217007134b3be961a0ffa103e2706
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6d61a44e671c43754fa7cccbe8ea8fe54eeba387
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368045"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900418"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure 間の VM レプリケーションに関するエラーのトラブルシューティング
 
@@ -191,6 +191,9 @@ VM がカスタム DNS 設定を使用するかどうかを確認するには、
 
 仮想マシンから DNS サーバーにアクセスを試みます。 DNS サーバーにアクセスできない場合は、DNS サーバーをフェールオーバーするか、または DR ネットワークと DNS の間にサイトのラインを作成して、アクセスできるようにします。
 
+> [!NOTE]
+> プライベート エンドポイントを使用する場合は、確実に VM によるプライベート DNS レコードの解決が可能であるようにします。
+
 :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/custom_dns.png" alt-text="com-error。":::
 
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>問題 2:Site Recovery の構成に失敗しました (151196)
@@ -225,8 +228,8 @@ VM での発信ネットワーク接続の制御に Azure ネットワーク セ
 1. Mobility Service エージェントは、Windows では IE から、Linux では `/etc/environment` からプロキシ設定を検出します。
 1. プロキシを Mobility Service にのみ設定する場合は、次の場所にある _ProxyInfo.conf_ 内にプロキシの詳細を指定できます。
 
-   - **Linux** : `/usr/local/InMage/config/`
-   - **Windows** : `C:\ProgramData\Microsoft Azure Site Recovery\Config`
+   - **Linux**: `/usr/local/InMage/config/`
+   - **Windows**: `C:\ProgramData\Microsoft Azure Site Recovery\Config`
 
 1. _ProxyInfo.conf_ 内のプロキシ設定は、次の _INI_ 形式になっている必要があります。
 
@@ -237,7 +240,7 @@ VM での発信ネットワーク接続の制御に Azure ネットワーク セ
    ```
 
 > [!NOTE]
-> Mobility Service エージェントは、 **認証されていないプロキシ** のみをサポートします。
+> Mobility Service エージェントは、**認証されていないプロキシ** のみをサポートします。
 
 ### <a name="more-information"></a>詳細情報
 
@@ -260,8 +263,8 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 データ ディスクが初期化されていることを確認し、操作を再試行します。
 
-- **Windows** : [新しいディスクを接続し、初期化する](../virtual-machines/windows/attach-managed-disk-portal.md)。
-- **Linux** : [Linux で新しいデータ ディスクを初期化する](../virtual-machines/linux/add-disk.md)。
+- **Windows**:[新しいディスクを接続し、初期化する](../virtual-machines/windows/attach-managed-disk-portal.md)。
+- **Linux**:[Linux で新しいデータ ディスクを初期化する](../virtual-machines/linux/add-disk.md)。
 
 問題が解決しない場合は、サポートにお問い合わせください。
 
@@ -281,14 +284,14 @@ VM のレプリケーション状態をもう一度正常にするには、デ�
 1. **[レプリケートされたアイテム]**  >  _[VM 名]_  >  **[ディスク]** にアクセスします。
 1. 保護されていないディスクを選択し、 **[レプリケーションを有効にする]** を選択します。
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="com-error。":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="VM ディスクのレプリケーションを有効にする。":::
 
 #### <a name="to-dismiss-the-warning"></a>警告を無視するには、次の手順に従います。
 
 1. **[レプリケートされたアイテム]**  >  _[VM 名]_ に移動します。
 1. **[概要]** セクションで警告を選択し、 **[OK]** を選択します。
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="com-error。":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="新規ディスクの警告を無視する。":::
 
 ## <a name="vm-removed-from-vault-completed-with-information-error-code-150225"></a>VM がコンテナーから削除され、完了時に情報が表示された (エラー コード 150225)
 
@@ -300,7 +303,7 @@ Site Recovery によって仮想マシンが保護されると、ソース仮想
 > クリーンアップしないと、次のような事態が発生します。
 >
 > - Recovery Services コンテナーを使用してレプリケーションを有効にしたときに、仮想マシンが表示されません。
-> - **[仮想マシン]**  >  **[設定]**  >  **[ディザスター リカバリー]** を使用して VM を保護しようとすると、" **VM の既存のリソース リンクが古いため、レプリケーションを有効にすることはできません** " というエラー メッセージが表示されて操作が失敗します。
+> - **[仮想マシン]**  >  **[設定]**  >  **[ディザスター リカバリー]** を使用して VM を保護しようとすると、"**VM の既存のリソース リンクが古いため、レプリケーションを有効にすることはできません**" というエラー メッセージが表示されて操作が失敗します。
 
 ### <a name="fix-the-problem"></a>問題の解決
 
@@ -309,10 +312,10 @@ Site Recovery によって仮想マシンが保護されると、ソース仮想
 
 1. VM または VM リソース グループから、ロックを削除します。 たとえば次の図で、`MoveDemo` という名前の VM のリソース ロックを削除する必要があります。
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-error。":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="VM からロックを削除する。":::
 
 1. [古い Site Recovery 構成を削除する](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)ためのスクリプトをダウンロードします。
-1. _Cleanup-stale-asr-config-Azure-VM.ps1_ スクリプトを実行します。 パラメーターとして、 **サブスクリプション ID** 、 **VM リソース グループ** 、および **VM 名** を指定します。
+1. _Cleanup-stale-asr-config-Azure-VM.ps1_ スクリプトを実行します。 パラメーターとして、**サブスクリプション ID**、**VM リソース グループ**、および **VM 名** を指定します。
 1. Azure 資格情報の入力を求められたら、それを指定します。 次に、スクリプトがエラーを出さずに実行されることを確認します。
 
 ## <a name="replication-not-enabled-on-vm-with-stale-resources-error-code-150226"></a>古いリソースを含む VM でレプリケーションが有効にならない (エラー コード 150226)
@@ -334,10 +337,10 @@ Site Recovery を使用して Azure VM のレプリケーションを有効に�
 
 1. VM または VM リソース グループから、ロックを削除します。 たとえば次の図で、`MoveDemo` という名前の VM のリソース ロックを削除する必要があります。
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-error。":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="VM からロックを削除する。":::
 
 1. [古い Site Recovery 構成を削除する](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)ためのスクリプトをダウンロードします。
-1. _Cleanup-stale-asr-config-Azure-VM.ps1_ スクリプトを実行します。 パラメーターとして、 **サブスクリプション ID** 、 **VM リソース グループ** 、および **VM 名** を指定します。
+1. _Cleanup-stale-asr-config-Azure-VM.ps1_ スクリプトを実行します。 パラメーターとして、**サブスクリプション ID**、**VM リソース グループ**、および **VM 名** を指定します。
 1. Azure 資格情報の入力を求められたら、それを指定します。 次に、スクリプトがエラーを出さずに実行されることを確認します。
 
 ## <a name="cant-select-vm-or-resource-group-in-enable-replication-job"></a>レプリケーションの有効化ジョブで VM またはリソース グループを選択できない
@@ -367,10 +370,10 @@ Azure VM 上に古い Site Recovery 構成が存在する場合、レプリケ�
 
 1. VM または VM リソース グループにロックが設定されている場合、ロックを削除します。 たとえば次の図で、`MoveDemo` という名前の VM のリソース ロックを削除する必要があります。
 
-   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="com-error。":::
+   :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="VM からロックを削除する。":::
 
 1. [古い Site Recovery 構成を削除する](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)ためのスクリプトをダウンロードします。
-1. _Cleanup-stale-asr-config-Azure-VM.ps1_ スクリプトを実行します。 パラメーターとして、 **サブスクリプション ID** 、 **VM リソース グループ** 、および **VM 名** を指定します。
+1. _Cleanup-stale-asr-config-Azure-VM.ps1_ スクリプトを実行します。 パラメーターとして、**サブスクリプション ID**、**VM リソース グループ**、および **VM 名** を指定します。
 1. Azure 資格情報の入力を求められたら、それを指定します。 次に、スクリプトがエラーを出さずに実行されることを確認します。
 
 ## <a name="unable-to-select-a-vm-for-protection"></a>保護のために VM を選択できない
@@ -404,17 +407,17 @@ VM でレプリケーションを有効にするには、プロビジョニン�
 
 ディザスター リカバリー構成中に、ソース VM が仮想ネットワークの一部であり、かつ同じ仮想ネットワークの別の VM が既にターゲット リソース グループ内のネットワークにマップされている場合は、既定で [ネットワークの選択] ドロップダウン リスト ボックスを使用できません (淡色表示されます)。
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="com-error。":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="ネットワーク選択リストを使用できない。":::
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>問題 2:以前に VM を保護した後、レプリケーションを無効にした
 
 VM のレプリケーションを無効にしても、ネットワーク マッピングは削除されません。 VM が保護されていた Recovery Service コンテナーからマッピングを削除する必要があります。 **[Recovery Services コンテナー]** を選択し、 **[管理]**  >  **[Site Recovery インフラストラクチャ]**  >  **[For Azure virtual machines] (Azure 仮想マシンの場合)**  >  **[ネットワーク マッピング]** に移動します。
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="com-error。":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="ネットワーク マッピングの削除。":::
 
 ディザスター リカバリーのセットアップ中に構成されたターゲット ネットワークが、初期セットアップ後で、かつ VM が保護された後に変更される場合があります。 **ネットワーク マッピングを変更する** には、ネットワーク名を選択します。
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="com-error。":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="ネットワーク マッピングの変更。":::
 
 
 ## <a name="com-or-vss-error-code-151025"></a>COM+ または VSS (エラー コード 151025)
@@ -437,7 +440,7 @@ COM+ システム アプリケーションとボリューム シャドウ コピ
 1. Windows の "サービス" コンソールを開きます。
 1. COM+ システム アプリケーションとボリューム シャドウ コピー サービスの **[スタートアップの種類]** が **[無効]** に設定されていないことを確認します。
 
-   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="com-error。":::
+   :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/com-error.png" alt-text="COM+ システム アプリケーションとボリューム シャドウ コピー サービスのスタートアップの種類を確認する。":::
 
 ## <a name="unsupported-managed-disk-size-error-code-150172"></a>サポートされていないマネージド ディスクのサイズ (エラー コード 150172)
 
@@ -459,7 +462,7 @@ Protection couldn't be enabled for the virtual machine as it has <DiskName> with
 
 ### <a name="possible-causes"></a>考えられる原因
 
-Linux Grand Unified Bootloader (GRUB) 構成ファイル ( _/boot/grub/menu.lst_ 、 _/boot/grub/grub.cfg_ 、 _/boot/grub2/grub.cfg_ 、または _/etc/default/grub_ ) に、`root` と `resume` パラメーターに対してユニバーサル一意識別子 (UUID) の値ではなく実際のデバイス名が指定されている可能性があります。 デバイス名は変更できるため、Site Recovery には UUID が必要です。 再起動時のフェールオーバー時に VM が同じ名前で表示されず、問題が発生する可能性があります。
+Linux Grand Unified Bootloader (GRUB) 構成ファイル ( _/boot/grub/menu.lst_、 _/boot/grub/grub.cfg_、 _/boot/grub2/grub.cfg_、または _/etc/default/grub_) に、`root` と `resume` パラメーターに対してユニバーサル一意識別子 (UUID) の値ではなく実際のデバイス名が指定されている可能性があります。 デバイス名は変更できるため、Site Recovery には UUID が必要です。 再起動時のフェールオーバー時に VM が同じ名前で表示されず、問題が発生する可能性があります。
 
 次の例は、必要な UUID ではなくデバイス名が表示される、GRUB ファイルの行です。
 
@@ -494,7 +497,7 @@ Linux Grand Unified Bootloader (GRUB) 構成ファイル ( _/boot/grub/menu.lst_
 
 ### <a name="possible-cause"></a>考えられる原因
 
-GRUB 構成ファイル ( _/boot/grub/menu.lst_ 、 _/boot/grub/grub.cfg_ 、 _/boot/grub2/grub.cfg_ 、または _/etc/default/grub_ ) に、`rd.lvm.lv` または `rd_LVM_LV` というパラメーターが含まれている可能性があります。 これらのパラメーターは、起動時に検出される論理ボリューム マネージャ (LVM) デバイスを識別します。 これらの LVM デバイスが存在しない場合、保護されたシステム自体は起動せず、起動プロセスでスタックします。 フェールオーバー VM にも同じ問題が確認されます。 次に例をいくつか示します。
+GRUB 構成ファイル ( _/boot/grub/menu.lst_、 _/boot/grub/grub.cfg_、 _/boot/grub2/grub.cfg_、または _/etc/default/grub_) に、`rd.lvm.lv` または `rd_LVM_LV` というパラメーターが含まれている可能性があります。 これらのパラメーターは、起動時に検出される論理ボリューム マネージャ (LVM) デバイスを識別します。 これらの LVM デバイスが存在しない場合、保護されたシステム自体は起動せず、起動プロセスでスタックします。 フェールオーバー VM にも同じ問題が確認されます。 次に例をいくつか示します。
 
 - ファイル: _/boot/grub2/grub.cfg_ (RHEL7 の場合):
 

@@ -3,12 +3,12 @@ title: 一般的なエラーのトラブルシューティング
 description: ポリシー定義、さまざまな SDK、および Kubernetes のアドオンの作成に関する問題をトラブルシューティングする方法について説明します。
 ms.date: 12/01/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f3667988d527100507d308887338278e1200d454
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: b88d00575adb571c59b562d25067c4a1716fb50f
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511000"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882978"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Azure Policy を使用してエラーを解決する
 
@@ -36,7 +36,7 @@ Azure Policy が[エイリアス](../concepts/definition-structure.md#aliases)�
 
 #### <a name="resolution"></a>解決策
 
-まず、Resource Manager プロパティにエイリアスがあることを確認します。 [Visual Studio Code 用の Azure Policy 拡張機能](../how-to/extension-for-vscode.md)、[Azure Resource Graph](../../resource-graph/samples/starter.md#distinct-alias-values)、または SDK を使用して、使用可能なエイリアスを検索します。 Resource Manager プロパティのエイリアスが存在しない場合は、サポート チケットを作成します。
+まず、Resource Manager プロパティにエイリアスがあることを確認します。 [Visual Studio Code 用の Azure Policy 拡張機能](../how-to/extension-for-vscode.md)、または SDK を使用して、使用可能なエイリアスを検索します。 Resource Manager プロパティのエイリアスが存在しない場合は、サポート チケットを作成します。
 
 ### <a name="scenario-evaluation-details-not-up-to-date"></a>シナリオ:評価の詳細が最新ではない
 

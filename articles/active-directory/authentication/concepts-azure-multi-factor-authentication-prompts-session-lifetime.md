@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14a65b83195bff48934668ff029f925e13884bad
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8789015c239aae58ec25f0f644d4c497da477c2b
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743702"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881244"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>再認証プロンプトを最適化し、Azure AD Multi-Factor Authentication のセッションの有効期間について理解する
 
@@ -108,7 +108,7 @@ Azure AD Premium 1 のライセンスをお持ちの場合は、*永続ブラウ
 1. **[会社のブランド]** を選択してから、ロケールごとに **[サインインしたままにするオプションを表示する]** を選択します。
 1. *[はい]* を選択してから、 **[保存]** を選択します。
 
-Multi-Factor Authentication の設定を記憶するには、次の手順を実行します。
+信頼済みデバイスで Multi-Factor Authentication の設定を記憶するには、次の手順を実行します。
 
 1. Azure AD portal で、 *[Azure Active Directory]* を検索して選択します。
 1. **セキュリティ** を選択してから、**MFA** を選択します。

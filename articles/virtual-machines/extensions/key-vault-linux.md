@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c9b624a1efc72bebec8547e8ecf9f3bf9fc99863
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 0558513d88eb5ffb03484e9d3bd8e37b2c9a0dcf
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680652"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895021"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux 用の Key Vault 仮想マシン拡張機能
 
@@ -38,6 +38,21 @@ Key Vault VM 拡張機能では、次の Linux ディストリビューション
   - 証明書を持つ Key Vault インスタンス。 [Key Vault の作成](../../key-vault/general/quick-create-portal.md)に関するページを参照してください
   - VM/VMSS には [マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) が割り当てられている必要があります
   - Key Vault アクセス ポリシーは、シークレットの `get` および `list` アクセス許可を使用して、VM/VMSS マネージド ID が証明書の秘密の部分を取得できるように設定する必要があります。 [Key Vault に対して認証を行う方法](../../key-vault/general/authentication.md)に関するページと「[Key Vault アクセス ポリシーを割り当てる](../../key-vault/general/assign-access-policy-cli.md)」を参照してください。
+  -  VMSS には、次の ID 設定が必要です。` 
+  "identity": {
+  "type": "UserAssigned",
+  "userAssignedIdentities": {
+  "[parameters('userAssignedIdentityResourceId')]": {}
+  }
+  }
+  `
+  
+ - AKV 拡張機能には、次の設定が必要です。`
+                 "authenticationSettings": {
+                    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
+                    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
+                  }
+   `
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
@@ -138,6 +153,17 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
     }
 ```
 
+### <a name="extension-dependency-ordering"></a>拡張機能の依存関係の順序付け
+Key Vault VM 拡張機能は、構成されている場合に拡張機能の順序付けをサポートします。 既定では、拡張機能は、正常に起動したことを、ポーリングの開始直後に報告します。 ただし、証明書の完全な一覧が正常にダウンロードされた後に、正常な起動を報告するように構成することができます。 他の拡張機能が、起動する前に一連の証明書がすべてインストールされていることに依存している場合は、この設定を有効にすると、これらの拡張機能によって Key Vault 拡張機能に対する依存関係が宣言されるようになります。 これにより、依存先であるすべての証明書がインストールされるまで、これらの拡張機能を起動できなくなります。 拡張機能によって、最初のダウンロードが無期限に再試行され、`Transitioning` 状態のままとなります。
+
+これを有効にするには、次のように設定します。
+```
+"secretsManagementSettings": {
+    "requireInitialSync": true,
+    ...
+}
+```
+> [注] システム割り当て ID を作成し、その ID を使用して Key Vault アクセス ポリシーを更新する ARM テンプレートに対しては、この機能を使用することはできません。 それを行うと、すべての拡張機能が起動するまでコンテナーのアクセス ポリシーが更新されなくなり、デッドロックが発生することになります。 そうではなく、"*単一ユーザー割り当て MSI ID*" を使用し、その ID でコンテナーに事前 ACL を設定してからデプロイする必要があります。
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell でのデプロイ
 > [!WARNING]

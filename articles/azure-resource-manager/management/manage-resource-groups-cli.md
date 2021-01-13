@@ -3,15 +3,15 @@ title: リソース グループを管理する - Azure CLI
 description: Azure CLI を使用して、Azure Resource Manager 経由でリソース グループを管理します。 リソース グループを作成、一覧表示、および削除する方法を示します。
 author: mumian
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 01/05/2021
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4a9a4ed4ebba7f6f2470bb9e7000a899ebc26323
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: db4a938d2f773ed24d4c7a48d747dd5cc22c0bd2
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185812"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900282"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure CLI を使用した Azure Resource Manager リソース グループの管理
 
@@ -84,14 +84,14 @@ Resource Manager テンプレートを使用して、リソース グループ�
 
 ## <a name="lock-resource-groups"></a>リソース グループをロックする
 
-ロックすることで、組織内の他のユーザーが重要なリソース (Azure サブスクリプション、リソース グループ、リソースなど) を誤って削除または変更することを防ぎます。 
+ロックすることで、組織内の他のユーザーが重要なリソース (Azure サブスクリプション、リソース グループ、リソースなど) を誤って削除または変更することを防ぎます。
 
 次のスクリプトでは、リソース グループをロックして、そのリソース グループを削除できないようにします。
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resourceGroupName  
+az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resourceGroupName
 ```
 
 次のスクリプトでは、リソース グループのすべてのロックを取得します。
@@ -99,7 +99,7 @@ az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resou
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az lock list --resource-group $resourceGroupName  
+az lock list --resource-group $resourceGroupName
 ```
 
 次のスクリプトではロックを削除します。
@@ -125,13 +125,88 @@ az lock delete --name $lockName --resource-group $resourceGroupName
 - テンプレートに完全なインフラストラクチャが含まれているため、ソリューションの将来のデプロイを自動化します。
 - ソリューションを表す JavaScript Object Notation (JSON) を調べることで、テンプレートの構文を確認できます。
 
+リソース グループ内のすべてのリソースをエクスポートするには、[az group export](/cli/azure/group?view=azure-cli-latest#az_group_export&preserve-view=true) を使用して、リソース グループ名を指定します。
+
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az group export --name $resourceGroupName  
+az group export --name $resourceGroupName
 ```
 
-このスクリプトでは、コンソールにテンプレートを表示します。  JSON をコピーし、ファイルとして保存します。
+このスクリプトでは、コンソールにテンプレートを表示します。 JSON をコピーし、ファイルとして保存します。
+
+リソース グループ内のすべてのリソースをエクスポートする代わりに、どのリソースをエクスポートするかを選択できます。
+
+1 つのリソースをエクスポートするには、そのリソースの ID を渡します。
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+echo "Enter the storage account name:" &&
+read storageAccountName &&
+storageAccount=$(az resource show --resource-group $resourceGroupName --name $storageAccountName --resource-type Microsoft.Storage/storageAccounts --query id --output tsv) &&
+az group export --resource-group $resourceGroupName --resource-ids $storageAccount
+```
+
+複数のリソースをエクスポートするには、スペースで区切られたリソース ID を渡します。 すべてのリソースをエクスポートするには、この引数を指定したり、"*" を指定したりしないでください。
+
+```azurecli-interactive
+az group export --resource-group <resource-group-name> --resource-ids $storageAccount1 $storageAccount2
+```
+
+テンプレートをエクスポートするときには、テンプレート内でパラメーターを使用するかどうかを指定できます。 既定では、リソース名用のパラメーターが含められますが、既定値はありません。 そのパラメーターの値は、デプロイ時に渡す必要があります。
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "type": "String"
+  }
+}
+```
+
+リソース内では、パラメーターは名前用に使用されます。
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "[parameters('serverfarms_demoHostPlan_name')]",
+    ...
+  }
+]
+```
+
+テンプレートをエクスポートするときに `--include-parameter-default-value` パラメーターを使用する場合、テンプレート パラメーターには、現在の値に設定される既定値が含められます。 その既定値を使用することも、異なる値を渡して既定値を上書きすることもできます。
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "defaultValue": "demoHostPlan",
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "defaultValue": "webSite3bwt23ktvdo36",
+    "type": "String"
+  }
+}
+```
+
+テンプレートをエクスポートするときに `--skip-resource-name-params` パラメーターを使用する場合、リソース名用のパラメーターはテンプレートに含められません。 代わりに、リソース名はリソースに対して直接、現在の値に設定されます。 この名前はデプロイ時にカスタマイズすることはできません。
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "demoHostPlan",
+    ...
+  }
+]
+```
 
 テンプレートのエクスポート機能は、Azure Data Factory リソースのエクスポートをサポートしていません。 Data Factory リソースをエクスポートする方法については、「[Azure Data Factory のデータ ファクトリをコピーまたは複製する](../../data-factory/copy-clone-data-factory.md)」を参照してください。
 

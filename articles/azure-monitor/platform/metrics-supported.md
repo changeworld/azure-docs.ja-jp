@@ -4,15 +4,15 @@ description: Azure Monitor で使用できるメトリックの一覧 (リソー
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 12/09/2020
+ms.date: 01/04/2021
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 04f6cdae8a7601f94251516cf5c3c1fab07994a6
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 54ef00d32cea26a41581fc0bbd89d2be34919c02
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929108"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883029"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -618,8 +618,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|使用済みの CPU クレジット|はい|使用済みの CPU クレジット|Count|Average|仮想マシンによって消費されたクレジットの合計数|ディメンションなし|
-|未使用の CPU クレジット|はい|未使用の CPU クレジット|Count|Average|バーストに使用できるクレジットの合計|ディメンションなし|
+|使用済みの CPU クレジット|はい|使用済みの CPU クレジット|Count|Average|仮想マシンによって消費されたクレジットの合計数。 [B シリーズのバースト可能な VM](../../virtual-machines/sizes-b-series-burstable.md) でのみ使用できます。 解決方法については、 |ディメンションなし|
+|未使用の CPU クレジット|はい|未使用の CPU クレジット|Count|Average|バーストに使用できるクレジットの合計数。 [B シリーズのバースト可能な VM](../../virtual-machines/sizes-b-series-burstable.md) でのみ使用できます。|ディメンションなし|
 |データ ディスク帯域幅の消費率|はい|データ ディスク帯域幅の消費率|Percent|Average|1 分あたりに消費されたデータ ディスク帯域幅の割合|LUN|
 |[Data Disk IOPS Consumed Percentage]\(データ ディスク IOPS の消費率\)|はい|[Data Disk IOPS Consumed Percentage]\(データ ディスク IOPS の消費率\)|Percent|Average|1 分あたりに消費されたデータ ディスク I/O の割合|LUN|
 |データ ディスクのキューの深さ|はい|データ ディスクのキューの深さ (プレビュー)|Count|Average|データ ディスクのキューの深さ (またはキューの長さ)|LUN|
@@ -671,8 +671,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|使用済みの CPU クレジット|はい|使用済みの CPU クレジット|Count|Average|仮想マシンによって消費されたクレジットの合計数|ディメンションなし|
-|未使用の CPU クレジット|はい|未使用の CPU クレジット|Count|Average|バーストに使用できるクレジットの合計|ディメンションなし|
+|使用済みの CPU クレジット|はい|使用済みの CPU クレジット|Count|Average|仮想マシンによって消費されたクレジットの合計数。 [B シリーズのバースト可能な VM](../../virtual-machines/sizes-b-series-burstable.md) でのみ使用できます。|ディメンションなし|
+|未使用の CPU クレジット|はい|未使用の CPU クレジット|Count|Average|バーストに使用できるクレジットの合計数。 [B シリーズのバースト可能な VM](../../virtual-machines/sizes-b-series-burstable.md) でのみ使用できます。|ディメンションなし|
 |データ ディスクのキューの深さ|はい|データ ディスクのキューの深さ (プレビュー)|Count|Average|データ ディスクのキューの深さ (またはキューの長さ)|LUN、VMName|
 |データ ディスク読み取りバイト数/秒|はい|データ ディスク読み取りバイト数/秒 (プレビュー)|CountPerSecond|Average|監視期間中に 1 つのディスクから読み取られたバイト数/秒|LUN、VMName|
 |データ ディスク読み取り操作数/秒|はい|データ ディスク読み取り操作数/秒 (プレビュー)|CountPerSecond|Average|監視期間中の 1 つのディスクからの読み取り IOPS|LUN、VMName|

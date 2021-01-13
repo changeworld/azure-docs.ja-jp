@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70387717c15dade349a323e663ac0fd31935a15f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c48e23de6832999b262283c0bf6664b4dfe88ee7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859880"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881567"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
@@ -84,10 +84,11 @@ PowerShell コマンドを実行する前に、古いバージョンの Windows 
    ```powershell
    $Setting = $Template.CreateDirectorySetting()
    ```  
-4. その後、使用ガイドラインの値を更新します。
+4. その後、設定オブジェクトを新しい値で更新します。 次の 2 つの例では、使用ガイドラインの値を変更し、機密ラベルを有効にします。 必要に応じて、テンプレートのこれらの設定またはその他の設定を設定します。
   
    ```powershell
    $Setting["UsageGuidelinesUrl"] = "https://guideline.example.com"
+   $Setting["EnableMIPLabels"] = "True"
    ```  
 5. 次に設定を適用します。
   
@@ -118,7 +119,7 @@ PowerShell コマンドを実行する前に、古いバージョンの Windows 
    ```powershell
     Name                          Value
     ----                          -----
-    EnableMIPLabels               false
+    EnableMIPLabels               True
     CustomBlockedWordsList
     EnableMSStandardBlockedWords  False
     ClassificationDescriptions

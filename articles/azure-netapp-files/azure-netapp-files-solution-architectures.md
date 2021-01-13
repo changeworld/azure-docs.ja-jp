@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 01/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 2b567eba43cfec9af05ebea262b3f6bd61b00259
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 919a9831731a8f7c8065f2f1c496691ae33ba659
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562550"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861979"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files を使用したソリューション アーキテクチャ
 この記事では、Azure NetApp Files を使用するためのソリューション アーキテクチャを理解するうえで役立つベスト プラクティスへの参照を提供します。  
@@ -99,6 +99,7 @@ ms.locfileid: "97562550"
 * [Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する](../virtual-desktop/create-fslogix-profile-container.md)
 * [エンタープライズ規模の Windows Virtual Desktop](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
 * [エンタープライズ向け Microsoft FSLogix - Azure NetApp Files ベスト プラクティス](/azure/architecture/example-scenario/wvd/windows-virtual-desktop-fslogix#azure-netapp-files-best-practices)
+* [MSIX アプリのアタッチ用の Azure NetApp Files の設定](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/setting-up-azure-netapp-files-for-msix-app-attach-step-by-step/m-p/1990021)
 
 ## <a name="hpc-solutions"></a>HPC ソリューション
 

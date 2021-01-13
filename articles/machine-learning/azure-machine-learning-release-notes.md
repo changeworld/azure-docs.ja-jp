@@ -9,17 +9,29 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: b11b0b46e57247d09e576795079e20c679e519d5
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 695702c04e2eeb74ee27b7d4276a3be94d9d1cf7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760114"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881822"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の [**メインの SDK for Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) のリファレンス ページを参照してください。
 
+## <a name="2020-12-31"></a>2020-12-31
+### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Azure Machine Learning Studio のノートブック エクスペリエンス (12 月の更新)
++ **新機能**
+  + ユーザー ファイル名の検索。 ユーザーは、ワークスペースに保存されているすべてのファイルを検索できるようになりました。
+  + ノートブック セルごとでのマークダウンの横並びのサポート。 ノートブック セルで、ユーザーは、レンダリングされたマークダウンとマークダウン構文を横並びに表示できるようになりました。
+  + セルのステータス バー。 ステータス バーは、コード セルの状態、セルの実行が成功したかどうか、および実行にかかった時間を示します。 
+   
++ **バグの修正と機能強化**
+  + ページ読み込み時間の短縮
+  + パフォーマンスの向上 
+  + 高速化およびカーネルの信頼性の向上
+  
 ## <a name="2020-12-07"></a>2020-12-07
 
 ### <a name="azure-machine-learning-sdk-for-python-v1190"></a>Azure Machine Learning SDK for Python v1.19.0
@@ -83,7 +95,19 @@ ms.locfileid: "97760114"
     + PyTorchConfiguration を ScriptRunConfig と共に使用することを優先して、Estimator クラスの有効な入力の型として Nccl と Gloo を使用することは非推奨になりました。 
     + MpiConfiguration を ScriptRunConfig と共に使用することを優先して、Estimator クラスの有効な入力の型として Mpi を使用することは非推奨になりました。
 
+## <a name="2020-11-30"></a>2020-11-30
+### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure Machine Learning Studio のノートブック エクスペリエンス (11 月の更新)
++ **新機能**
+   + ネイティブ ターミナル。 ユーザーは、統合ターミナル、およびその[統合ターミナル](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal)を使用して Git 操作にもアクセスできるようになりました。
+  + フォルダーの複製 
+  + [Costing for Compute]\(コンピューティングのコスト計算\) ドロップダウン 
+  + オフライン コンピューティング Pylance 
 
++ **バグの修正と機能強化**
+  + ページ読み込み時間の短縮
+  + パフォーマンスの向上 
+  + 高速化およびカーネルの信頼性の向上
+  + 大きなファイルのアップロード。 95 MB を超えるファイルをアップロードできるようになりました
 
 ## <a name="2020-11-09"></a>2020-11-09
 

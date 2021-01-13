@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/15/2020
-ms.openlocfilehash: d6936d6c72855bc22e3fc9323028fd0b8cd0fb29
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 4ffe663c1a1651891af5f6e65ee231cbe3e8d650
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097577"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882307"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>仮想コア購入モデルを使用した単一データベースに対するリソース制限
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -227,9 +227,9 @@ ms.locfileid: "92097577"
 
 #### <a name="notes"></a>Notes
 
-**注 1** : Hyperscale は、個別のコンピューティングとストレージ コンポーネントを含む多層アーキテクチャです。 [Hyperscale サービス レベルのアーキテクチャ](service-tier-hyperscale.md#distributed-functions-architecture)
+**注 1**: Hyperscale は、個別のコンピューティングとストレージ コンポーネントを含む多層アーキテクチャです。[Hyperscale サービス レベルのアーキテクチャ](service-tier-hyperscale.md#distributed-functions-architecture)
 
-**注 2** : ローカル コンピューティング レプリカ SSD 上にあるデータの待機時間は 1 から 2 ミリ秒です。これにより、最も使用されているデータ ページがキャッシュされます。 ページ サーバーから取得したデータは、待機時間が長くなります。
+**注 2**: ローカル コンピューティング レプリカ SSD 上にあるデータの待機時間は 1 から 2 ミリ秒です。これにより、最も使用されているデータ ページがキャッシュされます。 ページ サーバーから取得したデータは、待機時間が長くなります。
 
 ## <a name="general-purpose---provisioned-compute---gen4"></a>General Purpose - プロビジョニング済みコンピューティング - Gen4
 
@@ -307,7 +307,7 @@ ms.locfileid: "92097577"
 |最大同時実行ワーカー (要求) 数|200|400|600|800|1000|1200|1400|
 |最大同時セッション数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |レプリカの数|1|1|1|1|1|1|1|
-|マルチ AZ|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
+|マルチ AZ|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |読み取りスケールアウト|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 
@@ -332,7 +332,7 @@ ms.locfileid: "92097577"
 |最大同時実行ワーカー (要求) 数|1600|1800|2000|2400|3200|4000|8000|
 |最大同時セッション数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |レプリカの数|1|1|1|1|1|1|1|
-|マルチ AZ|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
+|マルチ AZ|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[プレビューで利用可能](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |読み取りスケールアウト|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 

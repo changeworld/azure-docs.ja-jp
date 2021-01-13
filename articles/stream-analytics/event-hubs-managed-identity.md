@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 11/30/2020
-ms.openlocfilehash: c65833e5bf581c6326bf9362c7e5fc00a985d301
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 01/04/2021
+ms.openlocfilehash: ca27df7188c5edd1da94fc41707f6c25eb4034bf
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354909"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895140"
 ---
 # <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics ジョブからマネージド ID を使用してイベント ハブにアクセスする (プレビュー)
 
@@ -20,6 +20,9 @@ Azure Stream Analytics では、Azure Event Hubs の入力と出力の両方に�
 マネージド ID は、特定の Stream Analytics ジョブを表す、Azure Active Directory に登録済みのマネージド アプリケーションです。 ファイアウォールや仮想ネットワーク (VNet) の背後にある Event Hubs など、対象のリソースに対して認証を行うためにマネージド アプリケーションが使用されます。 ファイアウォールをバイパスする方法の詳細については、「[プライベート エンドポイント経由での Azure Event Hubs 名前空間へのアクセスを許可する](../event-hubs/private-link-service.md#trusted-microsoft-services)」を参照してください。
 
 この記事では、Azure portal を使用して、Stream Analytics ジョブの Event Hubs の入力または出力に対してマネージド ID を有効にする方法を示します。 マネージド ID を有効にする前に、まず Stream Analytics ジョブと イベント ハブ リソースを用意する必要があります。
+
+### <a name="limitation"></a>制限事項
+プレビュー期間中にマネージド ID 認証モードを使用すると、Azure portal にある Event Hubs からのサンプリング入力が機能しなくなります。
 
 ## <a name="create-a-managedidentity"></a>マネージド ID を作成する  
 

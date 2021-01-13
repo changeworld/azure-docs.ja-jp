@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 8bffe0c3871eae12f3b875a96301136d11dfc516
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4e87e99f16a89cab95f9bd07b75b80f1c13d47f1
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783795"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900656"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -23,7 +23,7 @@ Microsoft Azure Storage Explorer は、Windows、macOS、Linux での Azure Stor
 
 ## <a name="azure-rbac-permissions-issues"></a>Azure RBAC のアクセス許可に関する問題
 
-Azure のロールベースのアクセス制御 ( [Azure RBAC](../../role-based-access-control/overview.md)) を使用すると、アクセス許可のセットを " _ロール_ " に結び付けることで、Azure リソースの非常にきめ細かなアクセス管理が可能になります。 ここでは、Storage Explorer で Azure RBAC を最適に動作させる方法について説明します。
+Azure のロールベースのアクセス制御 ([Azure RBAC](../../role-based-access-control/overview.md)) を使用すると、アクセス許可のセットを "_ロール_" に結び付けることで、Azure リソースの非常にきめ細かなアクセス管理が可能になります。 ここでは、Storage Explorer で Azure RBAC を最適に動作させる方法について説明します。
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Storage Explorer で自分のリソースにアクセスするにはどうすればいいですか?
 
@@ -31,7 +31,7 @@ Azure RBAC を使用したストレージ リソースへのアクセスに問�
 
 #### <a name="read-listget-storage-accounts-permissions-issue"></a>"読み取り:ストレージ アカウントの一覧表示/取得" アクセス許可の問題
 
-ストレージ アカウントを一覧表示するためのアクセス許可が必要です。 このアクセス許可を取得するには、 _閲覧者_ ロールが割り当てられている必要があります。
+ストレージ アカウントを一覧表示するためのアクセス許可が必要です。 このアクセス許可を取得するには、_閲覧者_ ロールが割り当てられている必要があります。
 
 #### <a name="list-storage-account-keys"></a>ストレージ アカウント キーの一覧表示
 
@@ -46,7 +46,7 @@ Storage Explorer では、アカウント キーを使用して要求を認証�
 
 ### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>Storage Explorer でリソースを表示するには、管理レイヤーのロールが必要ですか?
 
-Azure Storage には、 _管理_ と _データ_ という 2 つのアクセスのレイヤーがあります。 サブスクリプションとストレージ アカウントには管理レイヤーを介してアクセスします。 コンテナー、BLOB、およびその他のデータ リソースには、データ レイヤーを介してアクセスします。 たとえば、Azure からストレージ アカウントの一覧を取得する場合は、管理エンドポイントに要求を送信します。 アカウント内の BLOB コンテナーの一覧が必要な場合は、適切なサービス エンドポイントに要求を送信します。
+Azure Storage には、_管理_ と _データ_ という 2 つのアクセスのレイヤーがあります。 サブスクリプションとストレージ アカウントには管理レイヤーを介してアクセスします。 コンテナー、BLOB、およびその他のデータ リソースには、データ レイヤーを介してアクセスします。 たとえば、Azure からストレージ アカウントの一覧を取得する場合は、管理エンドポイントに要求を送信します。 アカウント内の BLOB コンテナーの一覧が必要な場合は、適切なサービス エンドポイントに要求を送信します。
 
 Azure ロールでは、管理レイヤーまたはデータ レイヤーにアクセスするためのアクセス許可を与えることができます。 たとえば、閲覧者ロールは、管理レイヤー リソースへの読み取り専用アクセス権を付与します。
 
@@ -61,28 +61,31 @@ Storage Explorer を使用すると、Azure リソースに接続するために
 BLOB コンテナーまたはキューにアクセスする場合、Azure 資格情報を利用してそれらのリソースにアタッチできます。
 
 1. [接続] ダイアログを開きます。
-2. [Add a resource via Azure Active Directory (Azure AD)]\(Azure Active Directory (Azure AD) を使用してリソースを追加する\) を選択します。 [次へ] をクリックします。
-3. アタッチしているリソースに関連付けられているユーザー アカウントとテナントを選択します。 [次へ] をクリックします。
-4. リソースの種類を選択し、リソースの URL を入力し、接続の一意の表示名を入力します。 [次へ] をクリックします。 [接続] をクリックします。
+2. [Add a resource via Azure Active Directory (Azure AD)]\(Azure Active Directory (Azure AD) を使用してリソースを追加する\) を選択します。 [次へ] を選択します。
+3. アタッチしているリソースに関連付けられているユーザー アカウントとテナントを選択します。 [次へ] を選択します。
+4. リソースの種類を選択し、リソースの URL を入力し、接続の一意の表示名を入力します。 [次へ]、[接続] の順に選択します。
 
 その他のリソースの種類については現在、Azure RBAC 関連のソリューションはありません。 回避策として、SAS URI を要求して[リソースにアタッチ](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri)することができます。
 
 ### <a name="recommended-azure-built-in-roles"></a>推奨される Azure 組み込みロール
 
 Storage Explorer を使用するために必要なアクセス許可を提供できる Azure 組み込みロールがいくつかあります。 そうしたロールの一部を以下に示します。
-- [所有者](../../role-based-access-control/built-in-roles.md#owner):リソースへのアクセスを含め、すべてを管理します。 **注** : このロールでは、キー アクセスが付与されます。
-- [共同作成者](../../role-based-access-control/built-in-roles.md#contributor):リソースへのアクセスを除き、すべてを管理します。 **注** : このロールでは、キー アクセスが付与されます。
-- [閲覧者](../../role-based-access-control/built-in-roles.md#reader):リソースを読み取って一覧表示します。
-- [ストレージ アカウント共同作業者](../../role-based-access-control/built-in-roles.md#storage-account-contributor): ストレージ アカウントの完全な管理。 **注** : このロールでは、キー アクセスが付与されます。
-- [ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner):Azure Storage の BLOB コンテナーおよびデータに対するフル アクセス。
-- [ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor):Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。
-- [ストレージ BLOB データ閲覧者](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader):Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。
+- [所有者](/azure/role-based-access-control/built-in-roles#owner):リソースへのアクセスを含め、すべてを管理します。
+- [共同作成者](/azure/role-based-access-control/built-in-roles#contributor):リソースへのアクセスを除き、すべてを管理します。
+- [閲覧者](/azure/role-based-access-control/built-in-roles#reader):リソースを読み取って一覧表示します。
+- [ストレージ アカウント共同作業者](/azure/role-based-access-control/built-in-roles#storage-account-contributor): ストレージ アカウントの完全な管理。
+- [ストレージ BLOB データ所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner):Azure Storage の BLOB コンテナーおよびデータに対するフル アクセス。
+- [ストレージ BLOB データ共同作成者](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor):Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。
+- [ストレージ BLOB データ閲覧者](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader):Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。
+
+> [!NOTE]
+> アカウントキーへのアクセスは、所有者、共同作成者、ストレージ アカウント共同作成者の各ロールによって許可されます。
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>エラー:証明書チェーンの自己署名証明書 (および同様のエラー)
 
 証明書のエラーは、通常、次のいずれかの状況で発生します。
 
-- アプリは " _透過プロキシ_ " 経由で接続されます。 つまり、サーバー (会社のサーバーなど) は HTTPS トラフィックを傍受し、暗号化を解除した後、自己署名証明書を使用して暗号化します。
+- アプリは "_透過プロキシ_" 経由で接続されます。 つまり、サーバー (会社のサーバーなど) は HTTPS トラフィックを傍受し、暗号化を解除した後、自己署名証明書を使用して暗号化します。
 - 受信した HTTPS メッセージに自己署名 TLS/SSL 証明書を挿入するアプリケーションを実行しています。 証明書を挿入するアプリケーションの例としては、ウイルス対策およびネットワーク トラフィック検査ソフトウェアなどがあります。
 
 Storage Explorer は自己署名証明書または信頼されない証明書が表示されると、受信した HTTPS メッセージが変更されているかどうかを認識できなくなります。 自己署名証明書のコピーがある場合は、次の手順に従って、それを信頼するように Storage Explorer に指示できます。
@@ -98,7 +101,7 @@ Storage Explorer は自己署名証明書または信頼されない証明書が
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html):任意の Light バージョンで十分です。
     * Mac と Linux:お使いのオペレーティング システムに付属しているはずです。
 2. OpenSSL を実行します。
-    * Windows: インストール ディレクトリを開き、 **/bin/** を選択し、 **openssl.exe** をダブルクリックします。
+    * Windows: インストール ディレクトリを開き、 **/bin/** を選択し、**openssl.exe** をダブルクリックします。
     * Mac と Linux:ターミナルから `openssl` を実行します。
 3. `s_client -showcerts -connect microsoft.com:443` を実行します。
 4. 自己署名証明書を検索します。 どの証明書が自己署名かわからない場合は、Subject (発行先) `("s:")` と Issuer (発行元) `("i:")` が同じであるものをすべてメモします。
@@ -141,7 +144,7 @@ Storage Explorer によって使用される Azure AD ライブラリの制限�
 macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題を引き起こす状態になることがあります。 キーチェーンをこの状態から抜け出させるには、次の手順を実行します。
 
 1. Storage Explorer を閉じます。
-2. キーチェーンを開きます (コマンド キーと Space キーを押し、「 **keychain** 」と入力して、Enter キーを押す)。
+2. キーチェーンを開きます (コマンド キーと Space キーを押し、「**keychain**」と入力して、Enter キーを押す)。
 3. "ログイン" キーチェーンを選択します。
 4. 南京錠アイコンを選択してキーチェーンをロックします。 (南京錠は、プロセスの完了時にロックされているように見えます。 開いているアプリによっては、数秒かかることがあります。)
 
@@ -153,7 +156,7 @@ macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題
 
 ### <a name="general-sign-in-troubleshooting-steps"></a>サインインの一般的なトラブルシューティングの手順
 
-* macOS を使用しており、 **[Waiting for authentication]\(認証の完了を待機しています\)** ダイアログ ボックスの上にサインイン ウィンドウが表示されない場合は、 [この手順](#mac-keychain-errors)を試してください。
+* macOS を使用しており、 **[Waiting for authentication]\(認証の完了を待機しています\)** ダイアログ ボックスの上にサインイン ウィンドウが表示されない場合は、[この手順](#mac-keychain-errors)を試してください。
 * Storage Explorer を再起動します。
 * 認証ウィンドウが空白の場合は、認証ダイアログ ボックスを閉じる前に少なくとも 1 分待機します。
 * プロキシと証明書の設定が、使用中のマシンと Storage Explorer の両方で適切に構成されていることを確認します。
@@ -187,46 +190,62 @@ macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題
 
 ## <a name="proxy-issues"></a>プロキシの問題
 
-まず、入力した次の情報が正しいことを確認します。
+Storage Explorer では、プロキシ サーバーを経由した Azure Storage リソースへの接続がサポートされています。 プロキシを経由して Azure に接続する際に問題が発生した場合、推奨事項を以下に示します。
 
-* プロキシの URL とポート番号
-* プロキシで必要な場合はユーザー名とパスワード
+> [!NOTE]
+> Storage Explorer では、プロキシサーバーでの基本認証のみがサポートされています。 NTLM などの他の認証方法はサポートされていません。
 
 > [!NOTE]
 > Storage Explorer は、プロキシ設定を構成するためのプロキシ自動構成ファイルをサポートしていません。
 
-### <a name="common-solutions"></a>一般的な解決方法
+### <a name="verify-storage-explorer-proxy-settings"></a>Storage Explorer のプロキシ設定を確認する
 
-引き続き問題が発生する場合は、次のトラブルシューティング方法を試してください。
+**[アプリケーション] → [プロキシ] → [プロキシ構成]** 設定では、Storage Explorer によってどのソースからプロキシ構成を取得するかを決定します。
 
-* プロキシを使用せずにインターネットに接続できる場合は、プロキシの設定を有効にしなくても Storage Explorer が動作することを確認します。 動作する場合は、プロキシの設定に問題があると考えられます。 管理者と連携して問題を特定してください。
-* プロキシ サーバーを使用する他のアプリケーションが想定どおりに動作することを確認します。
-* 使用しようとしている Azure 環境のポータルに接続できることを確認します。
-* サービス エンドポイントからの応答を受信できるか確認します。 ブラウザーに、エンドポイント URL のいずれかを入力します。 接続できる場合は、InvalidQueryParameterValue または同様の XML の応答を受信するはずです。
-* プロキシ サーバーで Storage Explorer を使用しているユーザーが他にもいる場合は、それらのユーザーが接続できるかを確認します。 できる場合は、プロキシ サーバー管理者に連絡する必要があります。
+[環境変数を使用する] を選択する場合は、`HTTPS_PROXY` または `HTTP_PROXY` 環境変数を必ず設定してください (環境変数には大文字と小文字の区別があるため、必ず正しい変数を設定してください)。 これらの変数が定義されていないか無効である場合、プロキシは Storage Explorer で使用されません。 環境変数を変更したら、Storage Explorer を再起動します。
+
+[Use app proxy settings]\(アプリのプロキシ設定を使用する\) を選択する場合は、アプリ内プロキシ設定が正しいことを確認します。
+
+### <a name="steps-for-diagnosing-issues"></a>問題を診断するための手順
+
+引き続き問題が発生する場合は、次のトラブルシューティング方法をお試しください。
+
+1. プロキシを使用せずにインターネットに接続できる場合は、プロキシの設定を有効にしなくても Storage Explorer が動作することを確認します。 Storage Explorer が正常に接続されている場合は、ご利用のプロキシ サーバーに問題があるおそれがあります。 管理者と連携して問題を特定してください。
+2. プロキシ サーバーを使用する他のアプリケーションが想定どおりに動作することを確認します。
+3. 使用しようとしている Azure 環境のポータルに接続できることを確認します。
+4. サービス エンドポイントからの応答を受信できるか確認します。 ブラウザーに、エンドポイント URL のいずれかを入力します。 接続することができる場合は、`InvalidQueryParameterValue` または同様の XML の応答が送られてきます。
+5. 同じプロキシ サーバーで Storage Explorer を使用している他の誰かが接続できるかどうかを確認します。 できる場合は、プロキシ サーバー管理者に連絡する必要があります。
 
 ### <a name="tools-for-diagnosing-issues"></a>問題診断ツール
 
-ネットワーク ツール (Windows の場合の Fiddler など) がある場合は、次のように問題を診断できます。
+Fiddler などのネットワーク ツールを使用すると、問題の診断が容易になります。
 
-* プロキシ経由で作業する必要がある場合は、プロキシ経由で接続するようにネットワーク ツールを構成する必要があります。
-* ネットワーク ツールで使用されるポート番号を確認します。
-* Storage Explorer のプロキシ設定として、ローカル ホストの URL とネットワーク ツールのポート番号を入力します。 この操作を正しく行うと、お使いのネットワーク ツールは、Storage Explorer が管理エンドポイントとサービスエンドポイントに対して行ったネットワーク要求のログ記録を開始します。 たとえば、ブラウザーで BLOB エンドポイントに対して「`https://cawablobgrs.blob.core.windows.net/`」を入力すると、次のような応答が返されます。
+1. ネットワーク ツールを、ローカル ホスト上で実行されるプロキシ サーバーとして構成します。 実際のプロキシの内側で作業を続ける必要がある場合は、プロキシ経由で接続するようにネットワーク ツールを構成することが必要な場合があります。
+2. ネットワーク ツールで使用されるポート番号を確認します。
+3. ローカル ホストとネットワーク ツールのポート番号 ("localhost:8888" など) を使用するように Storage Explorer のプロキシ設定を構成します。
+ 
+設定が正しく行われると、Storage Explorer によって生成されたネットワーク要求が管理およびサービス エンドポイントにネットワーク ツールによってログされます。
+ 
+ネットワーク ツールによって Storage Explorer のトラフィックがログされていないようである場合は、そのツールを別のアプリケーションでテストしてみてください。 たとえば、ご利用のストレージ リソースのいずれかのエンドポイント URL (`https://contoso.blob.core.windows.net/` など) を入力すると、次のような応答が送られてきます。
 
   ![コード サンプル](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
-  この応答は、アクセスできなくても、リソースが存在することを示しています。
+  リソースにアクセスできなくても、この応答があれば、それが存在することになります。
+
+ネットワーク ツールに他のアプリケーションからのトラフィックしか表示されない場合、Storage Explorer のプロキシ設定を調整することが必要な場合があります。 それ以外の場合は、ツールの設定を調整することが必要なことがあります。
 
 ### <a name="contact-proxy-server-admin"></a>プロキシ サーバー管理者に問い合わせる
 
-プロキシの設定が正しい場合は、プロキシ サーバー管理者に連絡して次のことを行う必要があります。
+プロキシの設定が正しい場合、プロキシ サーバー管理者に連絡して次のことを行うことが必要な場合があります。
 
 * プロキシによって Azure の管理エンドポイントまたはリソース エンドポイントへのトラフィックがブロックされていないことを確認します。
-* プロキシ サーバーで使用されている認証プロトコルを確認します。 Storage Explorer は現在、NTLM プロキシをサポートしていません。
+* プロキシ サーバーで使用されている認証プロトコルを確認します。 Storage Explorer では、基本認証プロトコルのみがサポートされます。 Storage Explorer で NTLM プロキシはサポートされていません。
 
 ## <a name="unable-to-retrieve-children-error-message"></a>"子を取得できません" エラー メッセージ
 
-プロキシ経由で Azure に接続されている場合は、プロキシ設定が正しいことを確認します。 サブスクリプションまたはアカウントの所有者からリソースへのアクセス権が付与されている場合は、そのリソースへの読み取りまたは一覧表示のアクセス許可があることを確認してください。
+プロキシ経由で Azure に接続されている場合は、プロキシ設定が正しいことを確認します。
+
+サブスクリプションまたはアカウントの所有者からリソースへのアクセス権が付与されている場合は、該当するリソースの読み取りまたは一覧表示の権限があることを確認してください。
 
 ## <a name="connection-string-doesnt-have-complete-configuration-settings"></a>接続文字列に完全な構成設定が含まれていない
 

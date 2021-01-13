@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a4e8ec75d6610e19f241d2047518c3a43132a6e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 057ff064264485a9aea6fc2b31fe57ce37c805ce
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079021"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895616"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング 
 
@@ -44,6 +44,7 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 - オペレーティング システムの再インストールまたは手動の再登録なので、ユーザー情報タブでデバイスの複数のエントリを取得することもできます。
 - デバイスの初回登録/参加は、サインインまたはロック/ロック解除のいずれかのタイミングで試行するように構成されています。 タスク スケジューラのタスクによってトリガーされる 5 分間の待ち時間が生じる場合があります。 
 - Windows 7 SP1 または Windows Server 2008 R2 SP1 の場合、[KB4284842](https://support.microsoft.com/help/4284842) がインストールされていることを確認してください。 この更新によって、今後、パスワードの変更後、保護されているキーにお客様がアクセスできなくなったことによる認証エラーを防止できます。
+- ユーザーが UPN を変更した後に、シームレス SSO 認証プロセスが中断され、Hybrid Azure AD 参加が失敗する可能性があります。 参加プロセス中に、ブラウザー セッションのクッキーが消去されるか、ユーザーが明示的にサインアウトして古い UPN を削除しない限り、古い UPN が Azure AD に送信されていることが確認される可能性があります。
 
 ## <a name="step-1-retrieve-the-registration-status"></a>手順 1: 登録状態を取得する 
 
@@ -69,9 +70,9 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
     
    - Autoworkplace.exe が Azure AD または AD FS で自動的に認証できない場合。 これは、AD FS が見つからないか正しく構成されていない (フェデレーション ドメインの場合)、Azure AD シームレス シングル サインオンが見つからないか正しく構成されていない (マネージド ドメインの場合)、またはネットワークの問題によって発生する可能性があります。 
    - 多要素認証 (MFA) がユーザーに対して有効化/構成され、WIAORMULTIAUTHN が AD FS サーバーで構成されていない可能性があります。 
-   - また、ホーム領域検出 (HRD) ページがユーザーの操作を待っているため、 **autoworkplace.exe** では、トークンのサイレント要求ができなくなっていることも考えられます。
+   - また、ホーム領域検出 (HRD) ページがユーザーの操作を待っているため、**autoworkplace.exe** では、トークンのサイレント要求ができなくなっていることも考えられます。
    - AD FS と Azure AD の URL がクライアントの IE のイントラネット ゾーンにない可能性があります。
-   - ネットワーク接続の問題により、 **autoworkplace.exe** で AD FS または Azure AD の URL にアクセスできない場合があります。 
+   - ネットワーク接続の問題により、**autoworkplace.exe** で AD FS または Azure AD の URL にアクセスできない場合があります。 
    - **utoworkplace.exe** は、クライアントに、クライアントから組織のオンプレミスの AD ドメイン コントローラーまでの直接の見通し線があることを必要とします。つまり、ハイブリッド Azure AD 参加は、クライアントが組織のイントラネットに接続されている場合にのみ成功します。
    - 組織は Azure AD シームレス シングル サインオンを使用しており、デバイスの IE イントラネット設定には `https://autologon.microsoftazuread-sso.com` または `https://aadg.windows.net.nsatc.net` が存在せず、イントラネット ゾーンについて **[スクリプトを介したステータス バーの更新を許可する]** が有効にされていません。
 - ドメイン ユーザーとしてサインオンしていない
@@ -90,7 +91,7 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 
     :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/05.png" alt-text="[Workplace Join for Windows] ダイアログ ボックスのスクリーンショット。サーバーが応答しなかったことが原因でエラーが発生したことがテキストで報告されています。" border="false":::
 
-状態に関する情報は、 **Applications and Services Log\Microsoft-Workplace Join** のイベント ログで確認することもできます。
+状態に関する情報は、**Applications and Services Log\Microsoft-Workplace Join** のイベント ログで確認することもできます。
   
 **ハイブリッド Azure AD 参加に失敗する最も一般的な原因:** 
 

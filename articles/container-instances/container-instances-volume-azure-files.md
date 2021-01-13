@@ -4,12 +4,12 @@ description: Azure Files ボリュームをマウントして、Azure Container 
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 5ca619ac3ae93ee238d019b64ecccc975b7c8e3b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: afebdcdc9d9c5852d7fe66ed06ac457c1dbb0afb
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746873"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881805"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure Container Instances に Azure ファイル共有をマウントする
 
@@ -20,6 +20,9 @@ ms.locfileid: "92746873"
 >
 > Azure Files 共有をコンテナー インスタンスにマウントすることは、Docker の[バインド マウント](https://docs.docker.com/storage/bind-mounts/)に似ています。 ファイルまたはディレクトリが存在するコンテナー ディレクトリに共有をマウントする場合、これらのファイルまたはディレクトリはマウントによって隠され、コンテナーの実行中はアクセスできなくなることに注意してください。
 >
+
+> [!IMPORTANT]
+> Azure Virtual Network にコンテナー グループをデプロイする場合は、Azure ストレージ アカウントに[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を追加する必要があります。
 
 ## <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
 
@@ -235,7 +238,7 @@ az deployment group create --resource-group myResourceGroup --template-file depl
 
 コンテナー インスタンスに複数のボリュームをマウントするには、[Azure Resource Manager テンプレート](/azure/templates/microsoft.containerinstance/containergroups)、YAML ファイル、またはその他のプログラムによる方法を使用してデプロイを行う必要があります。 テンプレートまたは YAML ファイルを使用するには、ファイルの `properties` セクションで `volumes` 配列を設定することにより、共有の詳細を指定し、ボリュームを定義します。 
 
-たとえば、 *share1* および *share2* という 2 つの Azure Files 共有をストレージ アカウント *myStorageAccount* に作成した場合、Resource Manager テンプレート内の `volumes` 配列は次のようになります。
+たとえば、*share1* および *share2* という 2 つの Azure Files 共有をストレージ アカウント *myStorageAccount* に作成した場合、Resource Manager テンプレート内の `volumes` 配列は次のようになります。
 
 ```JSON
 "volumes": [{

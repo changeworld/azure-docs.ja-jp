@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 11/25/2020
 ms.author: rolyon
-ms.openlocfilehash: 6eadba7d778a632896529f3c7c53886619d96444
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 3bb09133ba6991554072b4bf68b5306c78f868a7
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901472"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964288"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] この記事では、Azure PowerShell を使用してロールを割り当てる方法について説明します。
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] この記事では、Azure PowerShell を使用してロールを割り当てる方法について説明します。
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 

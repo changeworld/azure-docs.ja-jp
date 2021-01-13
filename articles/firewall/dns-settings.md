@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 01/04/2021
 ms.author: victorh
-ms.openlocfilehash: 197d48a2f5368111ec194a18f86aedf5ad78e1b2
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 855c06b610fb8166f6f2dfcf37af34efb3713ffe
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565621"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883225"
 ---
 # <a name="azure-firewall-dns-settings"></a>Azure Firewall の DNS 設定
 
@@ -64,6 +64,9 @@ $azFw | Set-AzFirewall
 ## <a name="dns-proxy"></a>DNS プロキシ
 
 Azure Firewall が DNS プロキシとして機能するように構成できます。 DNS プロキシは、クライアント仮想マシンから DNS サーバーへの DNS 要求の仲介役です。 カスタム DNS サーバーを構成する場合は、DNS 解決の不一致を回避するために DNS プロキシを有効にして、ネットワーク ルールで FQDN (完全修飾ドメイン名) フィルタリングを有効にします。
+
+:::image type="content" source="media/dns-settings/dns-proxy-2.png" alt-text="カスタム DNS サーバーを使用した DNS プロキシ構成。":::
+
 
 DNS プロキシを有効にしない場合、クライアントからの DNS 要求については、別の時刻に DNS サーバーに移動することもあれば、ファイアウォールのものとは異なる応答が返されることもあります。 DNS プロキシでは、不整合を回避するために、クライアント要求のパスに Azure Firewall が配置されます。
 
