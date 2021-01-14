@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/15/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e73f11ec178c067941ee33e02f37c96605460ee0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 40e4a3d3a819280255ee931e5e12206f99ef28fe
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658589"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051515"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する
 
@@ -72,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 この VNet には 3 つのサブネットが含まれます。
 
 > [!NOTE]
-> AzureFirewallSubnet サブネットのサイズは /26 です。 サブネットのサイズの詳細については、「[Azure Firewall に関する FAQ](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)」を参照してください。
+> AzureFirewallSubnet サブネットのサイズは /26 です。 サブネットのサイズの詳細については、「[Azure Firewall に関する FAQ](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size)」を参照してください。
 
 1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。
 1. **[ネットワーク]**  >  **[仮想ネットワーク]** を選びます。
@@ -132,7 +132,7 @@ VNet にファイアウォールをデプロイします。
 3. **[ファイアウォール]** を選択し、 **[作成]** を選択します。
 4. **[ファイアウォールの作成]** ページで、次の表を使用してファイアウォールを構成します。
 
-   |設定  |値  |
+   |設定  |[値]  |
    |---------|---------|
    |サブスクリプション     |\<your subscription\>|
    |Resource group     |**Test-FW-RG** |

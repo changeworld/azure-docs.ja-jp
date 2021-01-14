@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 10/21/2020
-ms.openlocfilehash: 27cd35eba7320022ea9b137a7b8bb079a1226751
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1fc5653f08f8fc7916257dfdba570f451c0afa75
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427286"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131935"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>PowerShell を使用してエラスティック ジョブ エージェントを作成する (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -59,7 +59,7 @@ Import-Module Az.Sql
 Get-Module Az.Sql
 ```
 
-このチュートリアルには、 **Az.Sql** モジュールに加えて、 *SqlServer* PowerShell モジュールも必要です。 詳細については、「[SQL Server PowerShell モジュールのインストール](/sql/powershell/download-sql-server-ps-module)」を参照してください。
+このチュートリアルには、**Az.Sql** モジュールに加えて、*SqlServer* PowerShell モジュールも必要です。 詳細については、「[SQL Server PowerShell モジュールのインストール](/sql/powershell/download-sql-server-ps-module)」を参照してください。
 
 ## <a name="create-required-resources"></a>必要なリソースを作成する
 
@@ -123,19 +123,11 @@ $db2 = New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $targ
 $db2
 ```
 
-## <a name="use-elastic-jobs"></a>エラスティック ジョブを使用する
-
-エラスティック ジョブを使用するには、お使いの Azure サブスクリプションで次のコマンドを実行して、その機能を登録する必要があります。 エラスティック ジョブ エージェントのプロビジョニング先となるサブスクリプションごとに 1 回このコマンドを実行してください。 ジョブのターゲットとなるデータベースしか存在しないサブスクリプションは登録の必要はありません。
-
-```powershell
-Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
-```
-
 ### <a name="create-the-elastic-job-agent"></a>エラスティック ジョブ エージェントを作成する
 
 エラスティック ジョブ エージェントは、ジョブを作成、実行、および管理するための Azure リソースです。 エージェントは、スケジュールに基づいて、または 1 回だけのジョブとして、ジョブを実行します。
 
-**New-AzSqlElasticJobAgent** コマンドレットを実行するには、Azure SQL Database のデータベースが既に存在する必要があるため、 *resourceGroupName* 、 *serverName* 、および *databaseName* のすべてのパラメーターが既存のリソースを指している必要があります。
+**New-AzSqlElasticJobAgent** コマンドレットを実行するには、Azure SQL Database のデータベースが既に存在する必要があるため、*resourceGroupName*、*serverName*、および *databaseName* のすべてのパラメーターが既存のリソースを指している必要があります。
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -205,7 +197,7 @@ $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 [ターゲット グループ](job-automation-overview.md#target-group)は、ジョブ ステップによって実行される 1 つまたは複数のデータベースのセットを定義します。
 
-次のスニペットを実行すると、 *serverGroup* と *serverGroupExcludingDb2* の 2 つのターゲット グループが作成されます。 *serverGroup* では、実行時にサーバー上に存在するすべてのデータベースがターゲットになります。 *serverGroupExcludingDb2* では、 *targetDb2* を除くサーバー上のすべてのデータベースがターゲットになります。
+次のスニペットを実行すると、*serverGroup* と *serverGroupExcludingDb2* の 2 つのターゲット グループが作成されます。 *serverGroup* では、実行時にサーバー上に存在するすべてのデータベースがターゲットになります。*serverGroupExcludingDb2* では、*targetDb2* を除くサーバー上のすべてのデータベースがターゲットになります。
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -221,7 +213,7 @@ $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerNa
 
 ### <a name="create-a-job-and-steps"></a>ジョブとステップを作成する
 
-この例では、1 つのジョブと、そのジョブを実行するための 2 つのジョブ ステップを定義します。 最初のジョブ ステップ ( *step1* ) では、ターゲット グループ *ServerGroup* 内のすべてのデータベースに新しいテーブル ( *Step1Table* ) を作成します。 2 番目のジョブ ステップ ( *step2* ) では、 *TargetDb2* を除くすべてのデータベースに新しいテーブル ( *Step2Table* ) を作成します。これは、ターゲット グループの事前の定義によって除外することが指定されているためです。
+この例では、1 つのジョブと、そのジョブを実行するための 2 つのジョブ ステップを定義します。 最初のジョブ ステップ (*step1*) では、ターゲット グループ *ServerGroup* 内のすべてのデータベースに新しいテーブル (*Step1Table*) を作成します。 2 番目のジョブ ステップ (*step2*) では、*TargetDb2* を除くすべてのデータベースに新しいテーブル (*Step2Table*) を作成します。これは、ターゲット グループの事前の定義によって除外することが指定されているためです。
 
 ```powershell
 Write-Output "Creating a new job..."

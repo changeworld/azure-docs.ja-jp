@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/23/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c093dcff46676dc5f8a25974c3c38c74ae7666b7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a4c7612188043be070ead92c88838b567b22787d
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546689"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131272"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>チュートリアル: Linux VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする 
 
@@ -34,16 +34,13 @@ ms.locfileid: "92546689"
 > * Linux VM のマネージド ID に Azure Storage コンテナーへのアクセス権を付与します
 > * アクセス トークン取得し、それを使用して Azure Storage を呼び出す
 
-> [!NOTE]
-> Azure Storage の Azure Active Directory 認証は、パブリック プレビューの段階です。
-
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 このチュートリアルの CLI スクリプトの例を実行するには、次の 2 つの方法があります。
 
-- Azure Portal から、または各コード ブロックの右上隅にある **[試してみる]** ボタンを使用して、 [Azure Cloud Shell](~/articles/cloud-shell/overview.md) を使用します。
+- Azure Portal から、または各コード ブロックの右上隅にある **[試してみる]** ボタンを使用して、[Azure Cloud Shell](~/articles/cloud-shell/overview.md) を使用します。
 - ローカル CLI コンソールを使用する場合は、[CLI 2.0 の最新バージョン (2.0.23 以降) をインストール](/cli/azure/install-azure-cli)します。
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成 

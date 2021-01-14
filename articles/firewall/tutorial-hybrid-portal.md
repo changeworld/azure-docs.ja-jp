@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/17/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 78e934a90b8d4e8feccf18a5cada3ec4920e1642
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 86e27c190b269763d8dd2f562a207b3f2020da29
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734455"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051073"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
@@ -84,7 +84,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ここで、VNet を作成します。
 
 > [!NOTE]
-> AzureFirewallSubnet サブネットのサイズは /26 です。 サブネットのサイズの詳細については、「[Azure Firewall に関する FAQ](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)」を参照してください。
+> AzureFirewallSubnet サブネットのサイズは /26 です。 サブネットのサイズの詳細については、「[Azure Firewall に関する FAQ](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size)」を参照してください。
 
 1. Azure portal のホーム ページから **[リソースの作成]** を選択します。
 2. **[ネットワーク]** で、 **[仮想ネットワーク]** を選択します。
@@ -148,7 +148,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. 左側の列で **[Networking]\(ネットワーク\)** を選択してから、 **[ファイアウォール]** を検索して選択します。
 4. **[ファイアウォールの作成]** ページで、次の表を使用してファイアウォールを構成します。
 
-   |設定  |値  |
+   |設定  |[値]  |
    |---------|---------|
    |サブスクリプション     |\<your subscription\>|
    |Resource group     |**FW-Hybrid-Test** |

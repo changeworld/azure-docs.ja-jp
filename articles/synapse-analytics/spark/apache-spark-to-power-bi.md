@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 791cab369dcbf9cab8d1256377cfee4a433c21b9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 53fb256d3a0fba1cc10cafb239ff7f7bb21ac4eb
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450889"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121075"
 ---
 # <a name="tutorial-create-a-power-bi-report-using-apache-spark-and-azure-synapse-analytics"></a>チュートリアル:Apache Spark と Azure Synapse Analytics を使用して Power BI レポートを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "96450889"
 
 ## <a name="before-you-begin"></a>開始する前に
 - ADLS Gen2 ストレージ アカウントが既定のストレージとして構成されている [Azure Synapse Analytics ワークスペース](../quickstart-create-workspace.md)。 
-- データを可視化するための Power BI ワークスペースと Power BI Desktop。 詳細については、[Power BI ワークスペースの作成](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces)と [Power BI Desktop のインストール](https://powerbi.microsoft.com/downloads/)に関するページを参照してください。
+- データを可視化するための Power BI ワークスペースと Power BI Desktop。 詳細については、[Power BI ワークスペースの作成](/power-bi/service-create-the-new-workspaces)と [Power BI Desktop のインストール](https://powerbi.microsoft.com/downloads/)に関するページを参照してください。
 - Azure Synapse Analytics と Power BI ワークスペースを接続するためのリンクされたサービス。 詳細については、[Power BI ワークスペースにリンクする](../quickstart-power-bi.md)方法に関するページを参照してください。
 - Synapse Analytics ワークスペース内のサーバーレス Apache Spark プール。 詳細については、[サーバーレス Apache Spark プールを作成する](../quickstart-create-apache-spark-pool-studio.md)方法に関するページを参照してください。
   
@@ -89,7 +89,7 @@ Azure Synapse Analytics では、さまざまなワークスペース計算エ�
 次に、サーバーレス SQL プールを Power BI ワークスペースに接続します。 ワークスペースを接続したら、Azure Synapse Analytics (直接) と Power BI Desktop の両方で Power BI レポートを作成することができます。
 
 >[!Note]
-> 始める前に、[Power BI ワークスペース](../quickstart-power-bi.md)に対するリンクされたサービスを設定し、[Power BI Desktop](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces) をダウンロードする必要があります。  
+> 始める前に、[Power BI ワークスペース](../quickstart-power-bi.md)に対するリンクされたサービスを設定し、[Power BI Desktop](/power-bi/service-create-the-new-workspaces) をダウンロードする必要があります。  
 
 サーバーレス SQL プールを Power BI ワークスペースに接続するには:
 

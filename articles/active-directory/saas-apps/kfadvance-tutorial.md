@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 43e6495c0231d5b14d27eabc3b9b82ba791d7108
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 241e5abf8377bd2e2207d140e291b18592651ea6
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97364485"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179590"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kfadvance"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と KFAdvance の統合
 
@@ -76,13 +76,13 @@ KFAdvance に対して Azure AD SSO を構成してテストするには、次�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`https://api.kfadvance-<ENVIRONMENT>.com/<PARTNER_ID>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://api.kfadvance.com/<PARTNER_ID>` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://api.kfadvance-<ENVIRONMENT>.com/vn/account/partnerssocallback?partnerKey=<PARTNER_ID>` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://api.kfadvance-<ENVIRONMENT>.com/v1/account/partnerssocallback?partnerKey=<PARTNER_ID>` のパターンを使用して URL を入力します
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、`https://api.kfadvance-<ENVIRONMENT>.com/vn/account/partnerssologin?partnerKey=<PARTNER_ID>` という形式で URL を入力します。
+    **[サインオン URL]** ボックスに、`https://api.kfadvance.com/v1/account/partnerssologin?partnerKey=<PARTNER_ID>` という形式で URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[KFAdvance クライアント サポート チーム](mailto:support@kornferry.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

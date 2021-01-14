@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: fb85920b04e3cd457dc36d1ba1fd0f18dcd7abb6
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 1c7a9fd83131ea6282d2ef4860b744fa348153ed
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937061"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070919"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>カスタム コンテナーを使用して Linux で関数を作成する
 
@@ -356,7 +356,7 @@ Docker Hub は、イメージのホストとしてイメージ サービスと�
 
 - リソース グループ。関連リソースの論理コンテナーです。
 - Azure ストレージ アカウント。プロジェクトについての状態とその他の情報を保持します。
-- Azure 関数アプリ。関数コードを実行するための環境となります。 関数アプリは、ローカルの関数プロジェクトと対応関係にあります。これを使用すると、リソースの管理、デプロイ、共有を容易にするための論理ユニットとして関数をグループ化できます。
+- 関数アプリ。関数コードを実行するための環境となります。 関数アプリは、ローカルの関数プロジェクトと対応関係にあります。これを使用すると、リソースの管理、デプロイ、共有を容易にするための論理ユニットとして関数をグループ化できます。
 
 Azure CLI コマンドを使用して、これらの項目を作成しましょう。 それぞれのコマンドからは、完了時に JSON 出力が返されます。
 

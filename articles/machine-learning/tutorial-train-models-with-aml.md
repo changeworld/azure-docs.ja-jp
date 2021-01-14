@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: d1dbe51dd095290c296699bbb4bc6bd3a8caf7bf
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 6aa39709a82b01367463f0128af4223446710a1c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862430"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183644"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>チュートリアル:MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする 
 
@@ -98,7 +98,7 @@ print(ws.name, ws.location, ws.resource_group, sep='\t')
 
 ```python
 from azureml.core import Experiment
-experiment_name = 'sklearn-mnist'
+experiment_name = 'Tutorial-sklearn-mnist'
 
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
