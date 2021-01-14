@@ -4,15 +4,15 @@ description: ネットワークが Azure Defender for IoT アプライアンス�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/06/2020
+ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 3e9380f067b091c4473b8c29bda3d31bb93cbc6d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b5cb7d0e421657b84c365d8dca536191cafd4e72
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97837123"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861968"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Azure Defender for IoT のネットワーク設定について
 
@@ -54,7 +54,7 @@ Azure Defender for IoT では、継続的な ICS 脅威の監視とデバイス�
 
 - 構成ワークステーション。
 
-- SSL 証明書 (省略可能)。
+- SSL 証明書 (省略可能ですが推奨されます)。
 
 - SMTP 認証 (省略可能)。 認証で SMTP サーバーを使用するには、サーバーに必要な資格情報を準備します。
 
@@ -562,14 +562,14 @@ Wireshark アプリケーションを使用して、既に構成されている 
 
 産業用ネットワーク図の概要を使用して、Defender for IoT 機器の適切な場所を定義できます。
 
-1.  産業用 OT 環境のグローバル ネットワーク図を表示します。 例:
+1.  産業用 OT 環境のグローバル ネットワーク図を表示します。 次に例を示します。
 
     :::image type="content" source="media/how-to-set-up-your-network/ot-global-network-diagram.png" alt-text="グローバル ネットワークの産業用 OT 環境の図。":::
 
     > [!NOTE]
     > Defender for IoT アプライアンスは、スイッチのポート間のトラフィックを認識する下位レベルのスイッチに接続する必要があります。  
 
-2. ネットワーク内のデバイスのおおよその数を指定します (省略可能)。
+2. 監視するネットワーク デバイスの概数を指定します。 この情報は、Azure Defender for IoT ポータルへのサブスクリプションをオンボードするときに必要になります。 オンボード プロセス中に、デバイス数を 1,000 単位で入力するように求められます。
 
 3. 運用ネットワークのサブネットの一覧と説明 (省略可能) を用意します。 
 
@@ -604,7 +604,7 @@ Wireshark アプリケーションを使用して、既に構成されている 
 
     そのポリシーは何ですか? __________________________________ 
 
-    例:
+    次に例を示します。
 
     - Siemens
 
@@ -635,7 +635,7 @@ Wireshark アプリケーションを使用して、既に構成されている 
 |  項目               | アプライアンス 1 | アプライアンス 2 | アプライアンス 3 |
 | --------------- | ------------- | ------------- | ------------- |
 | アプライアンスの IP アドレス    |               |               |               |
-| Subnet          |               |               |               |
+| サブネット          |               |               |               |
 | デフォルト ゲートウェイ |               |               |               |
 | DNS             |               |               |               |
 | ホスト名       |               |               |               |
@@ -645,7 +645,7 @@ Wireshark アプリケーションを使用して、既に構成されている 
 |       項目          | アプライアンス 1 | アプライアンス 2 | アプライアンス 3 |
 | --------------- | ------------- | ------------- | ------------- |
 | アプライアンスの IP アドレス     |               |               |               |
-| Subnet          |               |               |               |
+| サブネット          |               |               |               |
 | デフォルト ゲートウェイ |               |               |               |
 | DNS             |               |               |               |
 
@@ -654,7 +654,7 @@ Wireshark アプリケーションを使用して、既に構成されている 
 |       項目          | アクティブ | パッシブ (HA を使用する場合) |
 | --------------- | ------ | ----------------------- |
 | IP アドレス             |        |                         |
-| Subnet          |        |                         |
+| サブネット          |        |                         |
 | デフォルト ゲートウェイ |        |                         |
 | DNS             |        |                         |
 

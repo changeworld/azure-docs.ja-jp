@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: tagore
-ms.openlocfilehash: c17ade2af751b80e612aa104a9af1a22c4325413
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: ff3e8916a6634c564aa98b21b7e8d7c89fa1b17e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695746"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897180"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細
 
@@ -150,7 +150,7 @@ Azure クラシック デプロイ モデルから、Azure Resource Manager デ�
 
 | クラシック表示 | Resource Manager の表示 | Notes |
 | --- | --- | --- |
-| クラウド サービス名 |DNS name |移行中、 `<cloudservicename>-migrated`の命名パターンで、すべてのクラウド サービスに新しいリソース グループが作成されます。 このリソース グループには、すべてのリソースが含まれています。 クラウド サービス名は、パブリック IP アドレスが関連付けられた DNS 名になります。 |
+| クラウド サービス名 (ホステッド サービス名) |DNS name |移行中、 `<cloudservicename>-migrated`の命名パターンで、すべてのクラウド サービスに新しいリソース グループが作成されます。 このリソース グループには、すべてのリソースが含まれています。 クラウド サービス名は、パブリック IP アドレスが関連付けられた DNS 名になります。 |
 | 仮想マシン |仮想マシン |VM 固有のプロパティはそのまま移行されます。 コンピューター名など、一部の osProfile 情報はクラシック デプロイ モデルに格納されておらず、移行後も空のままです。 |
 | VM に接続されているディスク リソース |VM に接続されている暗黙的なディスク |ディスクは、Resource Manager デプロイ モデルの最上位リソースとしてモデル化されません。 VM の下で暗黙的なディスクとして移行されます。 VM に接続されているディスクのみがサポートされています。 現在 Resource Manager VM ではクラシック デプロイ モデルのストレージ アカウントを使用できるため、更新がなくてもディスクを簡単に移行できます。 |
 | VM 拡張機能 |VM 拡張機能 |XML 拡張機能を除くすべてのリソース拡張機能が、クラシック デプロイ モデルから移行されます。 |
