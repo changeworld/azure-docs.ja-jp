@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
 ms.custom: devx-track-js
-ms.openlocfilehash: 261ffc97d12202b588e519502895d338453c4380
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 192af33c6f07d38daef3a183fa8d746ff082ce2b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097245"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018974"
 ---
 # <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータを管理する例 (Node.js)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -88,7 +88,7 @@ Azure Cosmos DB のリソースで CRUD 操作などの一般的な操作を実�
 
 ## <a name="indexing-examples"></a>インデックス作成のサンプル
 
-[IndexManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts) ファイルには、インデックスの管理方法が紹介されています。 以下のサンプルを実行する前に Azure Cosmos DB におけるインデックス作成について知るために、[インデックス作成ポリシー](index-policy.md)、[インデックスの種類](index-overview.md#index-kinds)、[インデックスのパス](index-policy.md#include-exclude-paths)に関する概念記事を参照してください。 
+[IndexManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts) ファイルには、インデックスの管理方法が紹介されています。 以下のサンプルを実行する前に Azure Cosmos DB におけるインデックス作成について知るために、[インデックス作成ポリシー](index-policy.md)、[インデックスの種類](index-overview.md#index-types)、[インデックスのパス](index-policy.md#include-exclude-paths)に関する概念記事を参照してください。 
 
 | タスク | API リファレンス |
 | --- | --- |

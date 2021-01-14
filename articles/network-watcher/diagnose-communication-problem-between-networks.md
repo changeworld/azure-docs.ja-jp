@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/27/2018
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 25c58f99f56a4328527d1dd970e3ade21eb51819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a556ea66bb54f994349ce9ba4d12fb486827edf
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987174"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013297"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してネットワーク間の通信に関する問題を診断する
 
@@ -97,7 +97,7 @@ VPN 診断を使用するには、既存の動作している VPN ゲートウ�
 
     VPN 診断では、 **[状態]** タブでどのような問題があるかが通知され、 **[アクション]** タブで、何が問題を引き起こしている可能性があるか、いくつかの候補が示されます。
 
-    テストしたゲートウェイが、「[前提条件](#prerequisites)」の[スクリプト](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)によってデプロイされたものの場合、 **[状態]** タブの問題と、 **[アクション]** タブの最初の 2 つの項目が実際の問題です。 スクリプトは、オンプレミスの VPN ゲートウェイ デバイスのために、プレース ホルダー IP アドレス 23.99.221.164 を構成します。
+    テストしたゲートウェイが、「[前提条件](#prerequisites)」の [スクリプト](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)によってデプロイされたものの場合、 **[状態]** タブの問題と、 **[アクション]** タブの最初の 2 つの項目が実際の問題です。 スクリプトは、オンプレミスの VPN ゲートウェイ デバイスのために、プレース ホルダー IP アドレス 23.99.221.164 を構成します。
 
     この問題を解決するには、オンプレミス VPN ゲートウェイが[正しく構成されている](../vpn-gateway/vpn-gateway-about-vpn-devices.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)ことを確認し、ローカル ネットワーク ゲートウェイのためにスクリプトによって構成された IP アドレスを、オンプレミス VPN ゲートウェイの実際のパブリック アドレスに変更する必要があります。
 

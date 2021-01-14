@@ -1,19 +1,18 @@
 ---
 title: チュートリアル - Visual Studio で Azure Stream Analytics ジョブ用の C# ユーザー定義関数を作成する (プレビュー)
 description: このチュートリアルでは、Visual Studio で Stream Analytics ジョブ用の C# ユーザー定義関数を作成する方法について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d53f13cb740b3feb39dc64ce012ff320afbb1db5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 851229e441aa2fbdf7b6eec05390c0ce2b149da2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130495"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020470"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>チュートリアル:Azure Stream Analytics ジョブの C# ユーザー定義関数を記述する (プレビュー)
 
@@ -31,7 +30,7 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
 始める前に、以下の前提条件が完了していることを確認してください。
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
-* [Visual Studio の Stream Analytics ツール](stream-analytics-tools-for-visual-studio-install.md)と、 **Azure 開発** ワークロードまたは **データの保存と処理** ワークロードをインストールします。
+* [Visual Studio の Stream Analytics ツール](stream-analytics-tools-for-visual-studio-install.md)と、**Azure 開発** ワークロードまたは **データの保存と処理** ワークロードをインストールします。
 * IoT Edge ジョブを構築している場合は、既存の [Stream Analytics Edge 開発ガイド](stream-analytics-tools-for-visual-studio-edge-jobs.md)を参照してください。
 
 ## <a name="create-a-container-in-your-azure-storage-account"></a>Azure ストレージ アカウントでコンテナーを作成する
@@ -46,13 +45,13 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
 
 3. 左側のテンプレートの一覧で **[Stream Analytics]** を選択し、 **[Azure Stream Analytics Edge アプリケーション]** または **[Azure Stream Analytics アプリケーション]** を選択します。
 
-4.  プロジェクトの **名前** 、 **場所** 、および **ソリューション名** を入力し、 **[OK]** を選択します。
+4.  プロジェクトの **名前**、**場所**、および **ソリューション名** を入力し、 **[OK]** を選択します。
 
     ![Visual Studio で Azure Stream Analytics Edge プロジェクトを作成する](./media/stream-analytics-edge-csharp-udf/stream-analytics-create-edge-app.png)
 
 ## <a name="configure-assembly-package-path"></a>アセンブリ パッケージのパスを構成する
 
-1. Visual Studio を開き、 **ソリューション エクスプローラー** に移動します。
+1. Visual Studio を開き、**ソリューション エクスプローラー** に移動します。
 
 2. ジョブ構成ファイル `EdgeJobConfig.json` をダブルクリックします。
 
@@ -71,7 +70,7 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
 ## <a name="write-a-c-udf-with-codebehind"></a>分離コードを使用して C# の UDF を作成する
 分離コード ファイルは、1 つの ASA クエリ スクリプトに関連付けられている C# ファイルです。 Visual Studio Tools は、自動的に分離コード ファイルを圧縮して、送信時に Azure ストレージ アカウントにアップロードします。 すべてのクラスを *public* として定義し、すべてのオブジェクトを *static public* として定義する必要があります。
 
-1. **ソリューション エクスプローラー** で **Script.asql** を展開し、 **Script.asaql.cs** 分離コード ファイルを探します。
+1. **ソリューション エクスプローラー** で **Script.asql** を展開し、**Script.asaql.cs** 分離コード ファイルを探します。
 
 2. コードを次のサンプルに置き換えます。
 
@@ -97,7 +96,7 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
 
 ## <a name="implement-the-udf"></a>UDF を実装する
 
-1. **ソリューション エクスプローラー** で、 **Script.asaql** ファイルを開きます。
+1. **ソリューション エクスプローラー** で、**Script.asaql** ファイルを開きます。
 
 2. 既存のクエリを次のクエリに置き換えます。
 
@@ -111,7 +110,7 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
 
 1. [温度シミュレーター サンプル データ ファイル](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Sample%20Data/TemperatureSampleData.json)をダウンロードします。
 
-2. **ソリューション エクスプローラー** で、 **[入力]** を展開し、 **Input.json** を右クリックして、 **[ローカル入力の追加]** を選択します。
+2. **ソリューション エクスプローラー** で、 **[入力]** を展開し、**Input.json** を右クリックして、 **[ローカル入力の追加]** を選択します。
 
    ![Visual Studio で Stream Analytics ジョブにローカル入力を追加する](./media/stream-analytics-edge-csharp-udf/stream-analytics-add-local-input.png)
 
