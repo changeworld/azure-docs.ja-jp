@@ -32,7 +32,7 @@ BYOL 仮想マシン デプロイ オプションで使用するために Fortin
 
 このドキュメントの執筆時点では、Fortinet FortiGate Azure VM には、SAML 認証に必要なファームウェア バージョンが付属していません。 最新バージョンを Fortinet から取得する必要があります。
 
-1. [https://ml.azure.com](https://support.fortinet.com/ ) でサインインします。
+1. https://support.fortinet.com/ でサインインします。
 2. **[Download]\(ダウンロード\)**  >  **[Firmware Images]\(ファームウェア イメージ\)** に移動します。
 3. **[Release Notes]\(リリース ノート\)** の右側にある **[Download]\(ダウンロード\)** を選択します。
 4. **[v6.00]**  >  **[6.4]**  >  **[6.4.2]** の順に選択します。
