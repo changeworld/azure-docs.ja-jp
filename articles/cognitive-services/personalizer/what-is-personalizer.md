@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: Personalizer, Azure Personalizer, 機械学習
-ms.openlocfilehash: 28aae130d062eaf57a66a9b90a6602c3874f1494
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 33c1770c5c8722a55d8f1df4aff9b1637d903977
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094150"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028779"
 ---
 # <a name="what-is-personalizer"></a>Personalizer とは
 
-Azure Personalizer は、最適なコンテンツ項目をアプリケーションが選択してユーザーに表示できるよう支援するクラウドベースのサービスです。 Personalizer サービスを使用すると、買い物客に提示すべき製品を判断したり、広告の最適な表示位置を見つけ出したりすることができます。 そのコンテンツがユーザーに表示されると、システムは、リアルタイムでユーザーの行動を監視し、Personalizer サービスに報酬スコアをレポート バックします。 そうすることで機械学習モデルは継続的に改善され、また受け取ったコンテキスト情報に基づいて最適なコンテンツ項目を選択する Personalizer の能力も継続的に改善されます。
+Azure Personalizer は、最適なコンテンツ項目をアプリケーションが選択してユーザーに表示できるよう支援するクラウドベースのサービスです。 Personalizer サービスを使用すると、買い物客に提示すべき製品を判断したり、広告の最適な表示位置を見つけ出したりすることができます。 そのコンテンツがユーザーに表示されると、アプリケーションは、ユーザーのリアクションを監視し、Personalizer サービスに報酬スコアをレポート バックします。 そうすることで機械学習モデルは継続的に改善され、また受け取ったコンテキスト情報に基づいて最適なコンテンツ項目を選択する Personalizer の能力も継続的に改善されます。
 
 > [!TIP]
 > コンテンツには、テキスト、画像、URL、メールなど、抽出してユーザーに表示するあらゆる情報単位が当てはまります。
@@ -65,7 +65,7 @@ Personalizer の **Reward** [API](https://westus2.dev.cognitive.microsoft.com/do
 
 Personalizer は、対象のコンテンツが次の条件を満たす場合に使用します。
 
-* 選択肢となる一連の項目数が限られている (最大約 50 個)。 リストがそれよりも大きい場合は、[レコメンデーション エンジンを使用](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution)して、項目を 50 個まで減らしてください。
+* 各パーソナル化イベントで、選択肢となる一連のアクションまたは項目数が限られている (最大約 50 個)。 リストがそれよりも大きい場合は、[レコメンデーション エンジンを使用](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution)して、Personalizer サービスで Rank を呼び出すたびに、項目を 50 個まで減らしてください。
 * ランク付けしたいコンテンツを説明する情報がある ("_アクションと特徴_" および "_コンテキストの特徴_")。
 * Personalizer で効果を発揮するために、コンテンツに関連したイベントが 1 日あたり少なくとも約 1,000 件発生する。 最低限必要なトラフィックが Personalizer に送信されなかった場合、このサービスでは、最適なコンテンツ項目を 1 つ割り出すために、さらに時間がかかります。
 

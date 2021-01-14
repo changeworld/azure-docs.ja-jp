@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 自動データ処理、ドキュメント処理、自動データ入力、フォーム処理
-ms.openlocfilehash: ed940622f72271ef3e606c5068babcb6366c31b6
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: e1e5a4abf8eab96af62b160e28f98d95cf527eaf
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845520"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044766"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
 
@@ -42,11 +42,11 @@ Form Recognizer サービスを試してみるには、オンラインのサン�
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 > [!div class="nextstepaction"]
-> [事前構築済みモデルを試す](https://fott.azurewebsites.net/)
+> [Form Recognizer を試す](https://fott.azurewebsites.net/)
 
 # <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1)
 > [!div class="nextstepaction"]
-> [事前構築済みモデルを試す](https://fott-preview.azurewebsites.net/)
+> [Form Recognizer を試す](https://fott-preview.azurewebsites.net/)
 
 ---
 
@@ -152,7 +152,18 @@ Form Recognizer には、固有のフォームの種類を持つ自動データ�
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Docker コンテナーを使用してオンプレミスにデプロイする
 
-[Form Recognizer コンテナー (プレビュー) を使用](form-recognizer-container-howto.md)して、API 機能をオンプレミスにデプロイします。 この Docker コンテナーを使用すると、コンプライアンス、セキュリティ、またはその他の運用上の理由により、データにより近いところでサービスを使用できます。
+[Form Recognizer コンテナー (プレビュー) を使用](form-recognizer-container-howto.md)して、API 機能をオンプレミスにデプロイします。 この Docker コンテナーを使用すると、コンプライアンス、セキュリティ、またはその他の運用上の理由により、データにより近いところでサービスを使用できます。 
+
+## <a name="service-availability-and-redundancy"></a>サービスの可用性と冗長性
+
+### <a name="is-form-recognizer-service-zone-resilient"></a>Form Recognizer サービスにゾーン回復性はありますか?
+
+はい。 Form Recognizer サービスには、ゾーン回復性が既定で備わっています。
+
+### <a name="how-do-i-configure-the-form-recognizer-service-to-be-zone-resilient"></a>Form Recognizer サービスにゾーン回復性を構成するにはどうすればよいですか?
+
+ゾーン回復性を有効にするために、顧客による構成は必要ありません。 Form Recognizer リソースのゾーン回復性は、既定で使用できるようになっており、サービス自体によって管理されます。
+
 
 ## <a name="data-privacy-and-security"></a>データのプライバシーとセキュリティ
 

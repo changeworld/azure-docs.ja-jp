@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 9762ca79f73b3333045d1c11376ab315aac2d55e
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: fb9d74da6030c430cce4a2a3c4c5e4299183ca15
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808659"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132307"
 ---
 > [!IMPORTANT]
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 以下のリファレンス ドキュメントを参照してください。 
@@ -100,8 +100,8 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 #### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
 
 * [クライアントを認証する](#authenticate-the-client)
-* [フォーム コンテンツを認識する](#recognize-form-content)
-* [領収書を認識する](#recognize-receipts)
+* [レイアウトを分析する](#analyze-layout)
+* [領収書を分析する](#analyze-receipts)
 * [カスタム モデルをトレーニングする](#train-a-custom-model)
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
 * [カスタム モデルを管理する](#manage-your-custom-models)
@@ -109,10 +109,10 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 #### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
 
 * [クライアントを認証する](#authenticate-the-client)
-* [フォーム コンテンツを認識する](#recognize-form-content)
-* [領収書を認識する](#recognize-receipts)
-* [名刺を認識する](#recognize-business-cards)
-* [請求書を認識する](#recognize-invoices)
+* [レイアウトを分析する](#analyze-layout)
+* [領収書を分析する](#analyze-receipts)
+* [名刺を分析する](#analyze-business-cards)
+* [請求書を分析する](#analyze-invoices)
 * [カスタム モデルをトレーニングする](#train-a-custom-model)
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
 * [カスタム モデルを管理する](#manage-your-custom-models)
@@ -137,7 +137,7 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 > [!NOTE]
 > このガイドのコード スニペットでは、URL でアクセスされるリモート フォームが使用されます。 ローカル フォーム ドキュメントを代わりに処理する場合は、[リファレンス ドキュメント](/python/api/azure-ai-formrecognizer)の関連するメソッドと[サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)を参照してください。
 
-## <a name="recognize-form-content"></a>フォーム コンテンツを認識する
+## <a name="analyze-layout"></a>レイアウトを分析する
 
 Form Recognizer を使用すると、ドキュメント内の表、行、および単語を認識できます。モデルをトレーニングする必要はありません。
 
@@ -171,7 +171,7 @@ Confidence score: 1.0
 
 ```
 
-## <a name="recognize-receipts"></a>領収書を認識する
+## <a name="analyze-receipts"></a>領収書を分析する
 
 このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国の領収書から共通フィールドを認識して抽出する方法を示します。 URL から領収書を認識するには、`begin_recognize_receipts_from_url` メソッドを使用します。 
 
@@ -203,7 +203,7 @@ Total: 1203.39 has confidence 0.774
 ```
 
 
-## <a name="recognize-business-cards"></a>名刺を認識する
+## <a name="analyze-business-cards"></a>名刺を分析する
 
 #### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
 
@@ -221,7 +221,7 @@ Total: 1203.39 has confidence 0.774
 
 ---
 
-## <a name="recognize-invoices"></a>請求書を認識する
+## <a name="analyze-invoices"></a>請求書を分析する
 
 #### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
 

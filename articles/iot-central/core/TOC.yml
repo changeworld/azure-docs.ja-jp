@@ -67,7 +67,7 @@
           href: /learn/modules/manage-iot-central-apps-with-rest-api/
 - name: 概念
   items:
-    - name: アーキテクチャ
+    - name: Architecture
       href: concepts-architecture.md
     - name: アプリケーション テンプレートとは
       href: concepts-app-templates.md
@@ -85,8 +85,14 @@
       items:
         - name: デバイス テンプレートを設定する
           href: howto-set-up-template.md
+        - name: デバイスの IoT への移動方法
+          href: how-to-move-device-to-iot.md
         - name: プロパティの使用方法
           href: howto-use-properties.md
+        - name: コマンドの使用方法
+          href: howto-use-commands.md
+        - name: 場所データの使用方法
+          href: howto-use-location-data.md
         - name: Azure Sphere DevKit を準備して接続する
           href: howto-connect-sphere.md
         - name: RuuviTag デバイスを準備して接続する

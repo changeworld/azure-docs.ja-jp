@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: a677623c030ff26567f14a4526f6d07bc6631a37
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 31e1a0d912c6623f57d4ea256968102604ce42ff
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97853720"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132344"
 ---
 > [!NOTE]
 > このガイドでは、cURL を使用して REST API 呼び出しを実行します。 また、[GitHub にはサンプル コード](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest)も用意されており、Python で REST API を呼び出す方法が示されています。
@@ -32,7 +32,7 @@ ms.locfileid: "97853720"
 * 請求書の画像の URL。 このクイックスタートでは、[サンプル ドキュメント](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf)を使用できます。
 
 
-## <a name="recognize-form-content"></a>フォーム コンテンツを認識する
+## <a name="analyze-layout"></a>レイアウトを分析する
 
 Form Recognizer を使用すると、ドキュメント内の表、行、単語を認識および抽出できます。モデルをトレーニングする必要はありません。 コマンドを実行する前に、次の変更を行います。
 
@@ -319,7 +319,7 @@ JSON コンテンツを含む `200 (success)` 応答が返されます。
 
 ---
 
-## <a name="recognize-receipts"></a>領収書を認識する
+## <a name="analyze-receipts"></a>領収書を分析する
 
 レシートの分析を開始するには、下の cURL コマンドを使用して **[Analyze Receipt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
@@ -699,7 +699,7 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
 }
 ```
 
-## <a name="recognize-business-cards"></a>名刺を認識する
+## <a name="analyze-business-cards"></a>名刺を分析する
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)  
 
@@ -861,7 +861,7 @@ JSON 出力で `200 (Success)` 応答を受信します。 `"readResults"` ノ�
 
 ---
 
-## <a name="recognize-invoices"></a>請求書を認識する
+## <a name="analyze-invoices"></a>請求書を分析する
 
 # <a name="version-20"></a>[バージョン 2.0](#tab/v2-0)
 

@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 45654d55ac07bc9056a41cacba6f8f5890c56580
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 6520c1e326dc95584030d3187fdaaaa7e06c498a
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808642"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132300"
 ---
 > [!IMPORTANT]
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 以下のリファレンス ドキュメントを参照してください。 
@@ -102,8 +102,8 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 これらのコード スニペットでは、JavaScript 用 Form Recognizer クライアント ライブラリを使用して次のタスクを実行する方法を示します。
 
 * [クライアントを認証する](#authenticate-the-client)
-* [フォーム コンテンツを認識する](#recognize-form-content)
-* [領収書を認識する](#recognize-receipts)
+* [レイアウトを分析する](#analyze-layout)
+* [領収書を分析する](#analyze-receipts)
 * [カスタム モデルをトレーニングする](#train-a-custom-model)
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
 * [カスタム モデルを管理する](#manage-your-custom-models)
@@ -126,7 +126,7 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 * 以下のサンプルに含まれるフォームや領収書のサンプル画像を使用します ([GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/test-assets) から入手することもできます)。または、上記の手順を使用して、Blob Storage 内の各ドキュメントの SAS URL を取得することもできます。 
 
 
-## <a name="recognize-form-content"></a>フォーム コンテンツを認識する
+## <a name="analyze-layout"></a>レイアウトを分析する
 
 Form Recognizer を使用すると、ドキュメント内の表、行、および単語を認識できます。モデルをトレーニングする必要はありません。 指定された URI にあるファイルの内容を認識するには、`beginRecognizeContentFromUrl` メソッドを使用します。
 
@@ -152,7 +152,7 @@ cell [1,3] has text $56,651.49
 cell [1,5] has text PT
 ```
 
-## <a name="recognize-receipts"></a>領収書を認識する
+## <a name="analyze-receipts"></a>領収書を分析する
 
 このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国の領収書から共通フィールドを認識して抽出する方法を示します。
 

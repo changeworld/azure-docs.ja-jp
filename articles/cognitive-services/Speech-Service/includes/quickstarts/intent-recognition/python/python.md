@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 44c4427540e1b94ebcaf00e6875723e0a654e9ef
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0cb27a8dc5685ce295c2ce30820734c4301e9dc6
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425184"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109409"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -70,6 +70,13 @@ Speech SDK では、既定で認識される言語が en-us です。ソース�
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=19-27)]
 
 この例では `add_intents()` 関数を使用して、明示的に定義された意図の一覧を追加します。 モデルのすべての意図を追加する場合は、`add_all_intents(model)` を使用し、モデルを渡します。
+
+> [!NOTE]
+> Speech SDK では、LUIS v2.0 エンドポイントのみがサポートされています。
+> V2.0 URL パターンを使用するには、例のクエリ フィールドにある v3.0 エンドポイントの URL を手動で変更する必要があります。
+> LUIS v2.0 エンドポイントは、常に次の 2 つのパターンのいずれかに従います。
+> * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+> * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 
 ## <a name="recognize-an-intent"></a>意図を認識する
 

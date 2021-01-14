@@ -37,6 +37,8 @@
       href: azure-netapp-files-cost-model.md
     - name: Azure NetApp Files のネットワーク計画のガイドライン
       href: azure-netapp-files-network-topologies.md
+    - name: Azure NetApp Files のスナップショットのしくみ
+      href: snapshots-introduction.md
     - name: 手動 QoS 容量プール
       href: manual-qos-capacity-pool-introduction.md
     - name: リージョン間レプリケーション

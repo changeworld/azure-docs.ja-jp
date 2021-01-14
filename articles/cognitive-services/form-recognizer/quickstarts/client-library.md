@@ -1,7 +1,7 @@
 ---
-title: クイックスタート:Form Recognizer クライアント ライブラリ
+title: 'クイックスタート: Form Recognizer クライアント ライブラリまたは REST API'
 titleSuffix: Azure Cognitive Services
-description: Form Recognizer クライアント ライブラリを使用して、カスタム ドキュメントからキーと値のペアとテーブル データを抽出するフォーム処理アプリを作成します。
+description: Form Recognizer クライアント ライブラリまたは REST API を使用して、カスタム ドキュメントからキーと値のペアとテーブル データを抽出するフォーム処理アプリを作成します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -13,23 +13,23 @@ ms.author: pafarley
 zone_pivot_groups: programming-languages-set-formre
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: フォーム処理, 自動データ処理
-ms.openlocfilehash: f01adc472f94d679366af50c136ddc020b79b811
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: c915e7753487eba284d89dbb480f9848e90c1ef1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808574"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132285"
 ---
-# <a name="quickstart-use-the-form-recognizer-client-library"></a>クイック スタート:Form Recognizer クライアント ライブラリを使用する
+# <a name="quickstart-use-the-form-recognizer-client-library-or-rest-api"></a>クイックスタート: Form Recognizer クライアント ライブラリまたは REST API を使用する
 
-好みの言語で Form Recognizer の使用を開始しましょう。 Azure Form Recognizer は、機械学習テクノロジを利用して自動データ処理ソフトウェアを構築ことを可能にするコグニティブ サービスです。 テキスト、キーと値のペア、テーブル データを特定し、form ドキュメントから抽出します。&mdash;元のファイルにおける関係を含む構造化データがこのサービスにより出力されます。 以下の手順に従って、SDK パッケージをインストールし、基本タスクのコード例を試してみましょう。 Form Recognizer クライアント ライブラリは現在、From Recognizer サービスの v2.0 を対象としています。
+好みの言語で Form Recognizer の使用を開始しましょう。 Azure Form Recognizer は、機械学習テクノロジを利用して自動データ処理ソフトウェアを構築ことを可能にするコグニティブ サービスです。 フォーム ドキュメントから、テキスト、キーと値のペア、選択マーク、テーブル データなどを特定して抽出します。このサービスによって、元のファイルにおけるリレーションシップを含む構造化データが出力されます。 Form Recognizer は、REST API または SDK を介して使用できます。 以下の手順に従って、SDK パッケージをインストールし、基本タスクのコード例を試してみましょう。 
 
-Form Recognizer クライアント ライブラリを使用して、次のことを行います。
+Form Recognizer の用途:
 
-* [フォーム コンテンツを認識する](#recognize-form-content)
-* [領収書を認識する](#recognize-receipts)
-* [名刺を認識する](#recognize-business-cards)
-* [請求書を認識する](#recognize-invoices)
+* [Analyze Layout](#analyze-layout)
+* [領収書を分析する](#analyze-receipts)
+* [名刺を分析する](#analyze-business-cards)
+* [請求書を分析する](#analyze-invoices)
 * [カスタム モデルをトレーニングする](#train-a-custom-model)
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
 * [カスタム モデルを管理する](#manage-your-custom-models)

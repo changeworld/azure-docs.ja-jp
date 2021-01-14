@@ -38,6 +38,9 @@
     - name: 共有クエリを作成する - Azure CLI
       displayName: 'extension, docker, queries'
       href: ./shared-query-azure-cli.md
+    - name: 共有クエリを作成する - Azure PowerShell
+      displayName: 'powershell, queries, Az.ResourceGraph'
+      href: ./shared-query-azure-powershell.md
     - name: 共有クエリをデプロイする - ARM テンプレート
       displayName: 'resource manager, queries'
       href: ./shared-query-template.md

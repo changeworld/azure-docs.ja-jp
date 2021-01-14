@@ -12,12 +12,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 画像認識、画像認識アプリ、Custom Vision
-ms.openlocfilehash: 8274ddd0e492d1a27ebc1579fc6efdcc8cc84955
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: b27864fc1fd1f94f99fccacd90a66120e6d044c4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912986"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132581"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>クイックスタート: クイックスタート: Custom Vision の Web サイトでオブジェクト検出器を構築する
 
@@ -107,6 +107,10 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 ### <a name="probability-threshold"></a>確率しきい値
 
 [!INCLUDE [probability threshold](includes/probability-threshold.md)]
+
+### <a name="overlap-threshold"></a>オーバーラップしきい値
+
+**[Overlap Threshold]\(重複しきい値\)** スライダーは、トレーニングにおいて、あるオブジェクトの予測がどの程度「正しい」と見なされるべきかを示します。 予測されるオブジェクトの境界ボックスと実際のユーザー入力の境界ボックスの間で許容される最小の重複を設定します。 境界ボックスの重複の程度がこれに及ばない場合、予測は正しいと見なされません。
 
 ## <a name="manage-training-iterations"></a>トレーニングのイテレーションを管理する
 

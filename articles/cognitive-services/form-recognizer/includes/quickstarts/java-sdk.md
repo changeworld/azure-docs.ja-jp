@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 6768f46f39920c975e7eccef72563fc0bb7e5180
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 93552d203508fb893bd2e85d27a3a991fc539472
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808591"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132329"
 ---
 > [!IMPORTANT]
 > この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。
@@ -156,8 +156,8 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 `FormRecognizerClient` には、以下を目的とした操作が用意されています。
 
 - カスタム フォームを認識するようトレーニングされたカスタム モデルを使用して、フォームのフィールドやコンテンツを認識する。  これらの値は、`RecognizedForm` オブジェクトのコレクションとして返されます。 [カスタム フォームを分析する](#analyze-forms-with-a-custom-model)例を参照してください。
-- モデルをトレーニングせずにフォームのコンテンツ (表、行、単語など) を認識する。  フォームのコンテンツは、`FormPage` オブジェクトのコレクションとして返されます。 [フォーム コンテンツを認識する](#recognize-form-content)例を参照してください。
-- Form Recognizer サービスの事前トレーニング済みの領収書モデルを使用して、米国の領収書から一般的なフィールドを認識する。  これらのフィールドとメタデータは、`RecognizedForm` オブジェクトのコレクションとして返されます。 [領収書を認識する](#recognize-receipts)例を参照してください。
+- モデルをトレーニングせずにフォームのコンテンツ (表、行、単語など) を認識する。  フォームのコンテンツは、`FormPage` オブジェクトのコレクションとして返されます。 [レイアウトを分析する](#analyze-layout)例を参照してください。
+- Form Recognizer サービスの事前トレーニング済みの領収書モデルを使用して、米国の領収書から一般的なフィールドを認識する。  これらのフィールドとメタデータは、`RecognizedForm` オブジェクトのコレクションとして返されます。 [領収書を分析する](#analyze-receipts)例を参照してください。
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
@@ -177,17 +177,17 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 #### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
 * [クライアントを認証する](#authenticate-the-client)
-* [フォーム コンテンツを認識する](#recognize-form-content)
-* [領収書を認識する](#recognize-receipts)
+* [レイアウトを分析する](#analyze-layout)
+* [領収書を分析する](#analyze-receipts)
 * [カスタム モデルをトレーニングする](#train-a-custom-model)
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
 * [カスタム モデルを管理する](#manage-your-custom-models)
 #### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
 * [クライアントを認証する](#authenticate-the-client)
-* [フォーム コンテンツを認識する](#recognize-form-content)
-* [領収書を認識する](#recognize-receipts)
-* [名刺を認識する](#recognize-business-cards)
-* [請求書を認識する](#recognize-invoices)
+* [レイアウトを分析する](#analyze-layout)
+* [領収書を分析する](#analyze-receipts)
+* [名刺を分析する](#analyze-business-cards)
+* [請求書を分析する](#analyze-invoices)
 * [カスタム モデルをトレーニングする](#train-a-custom-model)
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
 * [カスタム モデルを管理する](#manage-your-custom-models)
@@ -200,7 +200,7 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_auth)]
 
-## <a name="recognize-form-content"></a>フォーム コンテンツを認識する
+## <a name="analyze-layout"></a>レイアウトを分析する
 
 Form Recognizer を使用すると、ドキュメント内の表、行、および単語を認識できます。モデルをトレーニングする必要はありません。
 
@@ -233,7 +233,7 @@ Cell has text $89,024.34.
 Cell has text ET.
 ```
 
-## <a name="recognize-receipts"></a>領収書を認識する
+## <a name="analyze-receipts"></a>領収書を分析する
 
 このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国の領収書から共通フィールドを認識して抽出する方法を示します。
 
@@ -269,7 +269,7 @@ Quantity: null, confidence: 0.927s]
 Total Price: null, confidence: 0.93
 ```
 
-## <a name="recognize-business-cards"></a>名刺を認識する
+## <a name="analyze-business-cards"></a>名刺を分析する
 
 #### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
 
@@ -293,7 +293,7 @@ URL から名刺を認識するには、`beginRecognizeBusinessCardsFromUrl` メ
 
 ---
 
-## <a name="recognize-invoices"></a>請求書を認識する
+## <a name="analyze-invoices"></a>請求書を分析する
 
 #### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
 

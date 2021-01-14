@@ -70,8 +70,6 @@
       items:
         - name: 削除されたダッシュボードの復旧
           href: recover-shared-deleted-dashboard.md
-        - name: リージョンまたは SKU のサブスクリプションに関する問題のトラブルシューティング
-          href: supportability/sku-series-unavailable.md
         - name: トラブルシューティングを目的としたブラウザー トレースのキャプチャ
           href: capture-browser-trace.md
 - name: リファレンス

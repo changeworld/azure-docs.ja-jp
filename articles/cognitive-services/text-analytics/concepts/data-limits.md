@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: c60adb09da05ba945bcf6ccb55e71c395f064211
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2adca03a820d02731bca252dee99c76debc85e2e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965104"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028133"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Text Analytics API のデータとレートの制限
 <a name="data-limits"></a>
@@ -35,7 +35,15 @@ ms.locfileid: "94965104"
 | 1 つのドキュメントの最大サイズ (`/analyze` エンドポイント)  | [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements) によって計測された 125K 文字。 Text Analytics for Health には適用されません。 |
 | 要求全体の最大サイズ | 1 MB。 Text Analytics for Health にも適用されます。 |
 
-1 回の要求で送信できるドキュメントの最大数は、使用している API のバージョンと機能によって異なります。 ドキュメントが最大サイズ (125K 文字) を超えている場合は、`/analyze` エンドポイントによって要求全体が拒否されます。
+
+ドキュメントが文字数制限を超えている場合、使用しているエンドポイントに応じて、API の動作は異なります。
+
+* `/analyze` エンドポイント:
+  * いずれかのドキュメントが最大サイズを超えている場合、API は要求全体を拒否し、`400 bad request` エラーを返します。
+* その他のすべてのエンドポイント:  
+  * API は、最大サイズを超えるドキュメントの処理は行わず、無効なドキュメント エラーを返します。 API 要求に複数のドキュメントが含まれている場合、API は、それらが文字数制限内であれば処理を続行します。
+
+1 回の要求で送信できるドキュメントの最大数は、使用している API のバージョンと機能によって異なります（次の表を参照）。
 
 #### <a name="version-3"></a>[Version 3](#tab/version-3)
 

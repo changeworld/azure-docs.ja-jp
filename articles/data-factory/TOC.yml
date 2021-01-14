@@ -171,7 +171,7 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -584,7 +584,7 @@
           href: control-flow-system-variables.md
         - name: マッピング データ フローをパラメーター化する
           href: parameters-data-flow.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: データ移動のセキュリティに関する考慮事項
           href: data-movement-security-considerations.md
@@ -629,15 +629,19 @@
         - name: Azure 統合ランタイム
           href: create-azure-integration-runtime.md
         - name: セルフホステッド統合ランタイム
-          href: create-self-hosted-integration-runtime.md
+          items:
+            - name: セルフホステッド統合ランタイムを作成して構成する
+              href: create-self-hosted-integration-runtime.md
+            - name: セルフホステッド統合ランタイムの自動更新と期限切れ通知
+              href: self-hosted-integration-runtime-auto-update.md
+            - name: 共有のセルフホステッド統合ランタイム
+              href: create-shared-self-hosted-integration-runtime-powershell.md
+            - name: セルフホステッド統合ランタイムのオートメーション スクリプト
+              href: self-hosted-integration-runtime-automation-scripts.md
+            - name: Windows コンテナーでセルフホステッド統合ランタイムを実行する
+              href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
         - name: Azure-SSIS 統合ランタイム
           href: create-azure-ssis-integration-runtime.md
-        - name: 共有のセルフホステッド統合ランタイム
-          href: create-shared-self-hosted-integration-runtime-powershell.md
-        - name: セルフホステッド統合ランタイムのオートメーション スクリプト
-          href: self-hosted-integration-runtime-automation-scripts.md
-        - name: Windows コンテナーでセルフホステッド統合ランタイムを実行する
-          href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
     - name: Azure での SSIS パッケージの実行
       items:
         - name: SSDT からの Azure での SSIS パッケージの実行
