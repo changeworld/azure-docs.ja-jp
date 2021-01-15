@@ -1,6 +1,6 @@
 ---
 title: GitHub アクションを使用して CI/CD を構成する
-description: GitHub Actions を使用して CI/CD パイプラインからご自分のコードを Azure App Service にデプロイする方法について説明します。 ビルド タスクをカスタマイズし、複雑なデプロイを実行します。
+description: GitHub Actions を使用して CI/CD パイプラインからご自分のコードを Azure App Service にデプロイする方法について説明します。 Build タスクをカスタマイズし、複雑なデプロイを実行します。
 ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2020
@@ -37,9 +37,9 @@ ms.locfileid: "97604925"
 
 |Section  |タスク  |
 |---------|---------|
-|**認証** | 1.サービス プリンシパルまたは発行プロファイルを定義します。 <br /> 2.GitHub シークレットを作成します。 |
+|**Authentication** | 1.サービス プリンシパルまたは発行プロファイルを定義します。 <br /> 2.GitHub シークレットを作成します。 |
 |**ビルド** | 1.環境を設定します。 <br /> 2.Web アプリを作成します。 |
-|**展開** | 1.Web アプリをデプロイします。 |
+|**Deploy** | 1.Web アプリをデプロイします。 |
 
 ## <a name="use-the-deployment-center"></a>デプロイ センターを使用する
 

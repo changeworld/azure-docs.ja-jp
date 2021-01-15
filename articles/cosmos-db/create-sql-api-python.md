@@ -70,7 +70,7 @@ Azure portal でデータ エクスプローラー ツールを使用してデ�
     |---|---|---|
     |**データベース ID**|タスク|新しいデータベースの名前として *タスク* を入力します。 データベース名は 1 文字以上 255 文字以内にする必要があります。`/, \\, #, ?` は使えず、末尾にスペースを入れることもできません。 **[Provision database throughput]\(データベース スループットをプロビジョニングする\)** オプションをオンにすると、データベースにプロビジョニングされたスループットをデータベース内のすべてのコンテナーにわたって共有できます。 このオプションは、コストの削減にも役立ちます。 |
     |**スループット**|400|スループットを 400 要求ユニット/秒 (RU/秒) のままにします。 待ち時間を短縮する場合、後でスループットをスケールアップできます。| 
-    |**コンテナー ID**|アイテム|新しいコンテナーの名前として「 *項目* 」と入力します。 コンテナー ID には、データベース名と同じ文字要件があります。|
+    |**コンテナー ID**|アイテム|新しいコンテナーの名前として「*項目*」と入力します。 コンテナー ID には、データベース名と同じ文字要件があります。|
     |**パーティション キー**| /category| この記事で説明するサンプルでは、 */category* をパーティション キーとして使用します。|
     
     上記の設定に加え、必要に応じて、このコンテナー用に **一意なキー** を追加できます。 この例では、このフィールドを空のままにしましょう。 一意なキーを使用すると、開発者はデータベースにデータ整合性のレイヤーを追加できます。 コンテナーの作成中に一意キー ポリシーを作成すると、パーティション キーごとに 1 つ以上の値の一意性が保証されます。 詳細については、記事「[Azure Cosmos DB における一意なキー](unique-keys.md)」を参照してください。
@@ -116,7 +116,7 @@ Azure portal でデータ エクスプローラー ツールを使用してデ�
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、左側のナビゲーションから **[キー]** を選択します。 次の手順では、画面の右側のコピー ボタンを使用して、 **URI** と **プライマリ キー** を *cosmos_get_started.py* ファイルにコピーします。
+1. [Azure portal](https://portal.azure.com/) の Azure Cosmos DB アカウントで、左側のナビゲーションから **[キー]** を選択します。 次の手順では、画面の右側のコピー ボタンを使用して、**URI** と **プライマリ キー** を *cosmos_get_started.py* ファイルにコピーします。
 
     :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Azure portal でキー設定のアクセス キーと URI を取得する":::
 
@@ -126,7 +126,7 @@ Azure portal でデータ エクスプローラー ツールを使用してデ�
 
     `endpoint = 'https://FILLME.documents.azure.com',`
 
-4. 次に、ポータルから **PRIMARY KEY** 値をコピーし、 *cosmos_get_started.py* 内の **key** の値に設定します。 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
+4. 次に、ポータルから **PRIMARY KEY** 値をコピーし、*cosmos_get_started.py* 内の **key** の値に設定します。 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
 
     `key = 'FILLME'`
 
@@ -164,15 +164,15 @@ Azure portal でデータ エクスプローラー ツールを使用してデ�
    
 ## <a name="run-the-app"></a>アプリを実行する
 
-1. Visual Studio Code で、 **[ビュー]**  >  **[コマンド パレット]** の順に選択します。 
+1. Visual Studio Code で、 **[表示]**  >  **[コマンド パレット]** の順に選択します。 
 
-2. プロンプトで「 **Python: Select Interpreter** 」と入力し、使用する Python のバージョンを選択します。
+2. プロンプトで「**Python: Select Interpreter**」と入力し、使用する Python のバージョンを選択します。
 
     Visual Studio Code のフッターが、選択されているインタープリターを示すように更新されます。 
 
 3. **[表示]**  >  **[統合ターミナル]** の順に選択して、Visual Studio Code 統合ターミナルを開きます。
 
-4. 統合ターミナル ウィンドウで、 *azure-cosmos-db-python-getting-started* フォルダー内にいることを確認します。 そうでない場合は、次のコマンドを実行して、サンプル フォルダーに切り替えます。 
+4. 統合ターミナル ウィンドウで、*azure-cosmos-db-python-getting-started* フォルダー内にいることを確認します。 そうでない場合は、次のコマンドを実行して、サンプル フォルダーに切り替えます。 
 
     ```cmd
     cd "\git-samples\azure-cosmos-db-python-getting-started"`
