@@ -37,7 +37,7 @@ ms.locfileid: "96183931"
 
 ### <a name="how-many-concurrent-rdp-and-ssh-sessions-does-each-azure-bastion-support"></a><a name="limits"></a>各 Azure Bastion がサポートしている同時 RDP セッションと SSH セッションの数はいくつですか?
 
-RDP と SSH はどちらも使用量ベースのプロトコルです。 セッションの使用量が多いと、要塞ホストでサポートされるセッションの合計数が少なくなります。 以下の数値は、通常の日常のワークフローを想定しています。
+RDP と SSH はどちらも使用量ベースのプロトコルです。 セッションの使用量が多いと、bastion ホストでサポートされるセッションの合計数が少なくなります。 以下の数値は、通常の日常のワークフローを想定しています。
 
 [!INCLUDE [limits](bastion-limits.md)]
 
