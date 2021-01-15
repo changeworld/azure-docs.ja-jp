@@ -307,6 +307,8 @@
               href: ../common/storage-account-recover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: アカウントの種類と SKU 名の取得 (.NET)
               href: ../common/storage-account-get-info.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: ストレージ アカウントの既定のアクセス層を管理する
+              href: ../common/manage-account-default-access-tier.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: コンテナーの作成と管理
           items:
             - name: コンテナーの作成または削除 (.NET)
@@ -321,6 +323,8 @@
               href: storage-blobs-list.md
             - name: BLOB プロパティとメタデータの管理 (.NET)
               href: storage-blob-properties-metadata.md
+            - name: BLOB のアクセス層を管理する
+              href: manage-access-tier.md
             - name: BLOB のコピー (SDK)
               href: storage-blob-copy.md
             - name: BLOB インデックス タグの使用

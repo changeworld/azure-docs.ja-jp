@@ -26,7 +26,7 @@
           href: hana-operations-model.md
         - name: 互換性のあるオペレーティング システム
           href: os-compatibility-matrix-hana-large-instance.md
-    - name: Architecture
+    - name: アーキテクチャ
       items:
         - name: 全般的なアーキテクチャ
           href: hana-architecture.md
@@ -72,8 +72,6 @@
       items:
         - name: Azure portal を介した Azure HANA L インスタンスの制御
           href: hana-li-portal.md
-        - name: Azure portal を使用して BareMetal インスタンスを管理する
-          href: baremetal-infrastructure-portal.md
         - name: STONITH を使用した HA セットアップ
           href: ha-setup-with-stonith.md
         - name: Type II SKU 向けの OS バックアップ
@@ -87,7 +85,7 @@
         - name: HLI から Azure VM への移行
           href: hana-large-instance-virtual-machine-migration.md
         - name: SAP HANA Large Instances の予約の購入
-          href: ../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+          href: ../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md
 - name: Azure Virtual Machines 上の SAP HANA
   items:
     - name: Azure VM への SAP HANA のインストール
@@ -256,37 +254,37 @@
 - name: Azure AD と SAP アプリケーションの統合
   items:
     - name: SAP SuccessFactors から Active Directory へのユーザーのプロビジョニング
-      href: ../../../active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial.md
     - name: SAP SuccessFactors から Azure AD へのユーザーのプロビジョニング
-      href: ../../../active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md
     - name: Azure AD から SAP SuccessFactors へのユーザーの書き戻し
-      href: ../../../active-directory/saas-apps/sap-successfactors-writeback-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-successfactors-writeback-tutorial.md
     - name: SAP Cloud Platform Identity Authentication サービスへのユーザーのプロビジョニング
-      href: ../../../active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial.md
     - name: SAP Cloud Platform Identity Authentication サービスとの SSO の構成
-      href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md
     - name: SAP SuccessFactors との SSO の構成
-      href: ../../../active-directory/saas-apps/successfactors-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/successfactors-tutorial.md
     - name: SAP Analytics Cloud との SSO の構成
-      href: ../../../active-directory/saas-apps/sapboc-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sapboc-tutorial.md
     - name: SAP Fiori との SSO の構成
-      href: ../../../active-directory/saas-apps/sap-fiori-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-fiori-tutorial.md
     - name: SAP Qualtrics との SSO の構成
-      href: ../../../active-directory/saas-apps/qualtrics-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/qualtrics-tutorial.md
     - name: SAP Ariba との SSO の構成
-      href: ../../../active-directory/saas-apps/ariba-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/ariba-tutorial.md
     - name: SAP Concur Travel and Expense との SSO の構成
-      href: ../../../active-directory/saas-apps/concur-travel-and-expense-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/concur-travel-and-expense-tutorial.md
     - name: SAP Cloud Platform との SSO の構成
-      href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md
     - name: SAP NetWeaver との SSO の構成
-      href: ../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-netweaver-tutorial.md
     - name: SAP Business ByDesign との SSO の構成
-      href: ../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md
     - name: SAP HANA との SSO の構成
-      href: ../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/saphana-tutorial.md
     - name: SAP Cloud for Customer との SSO の構成
-      href: ../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+      href: ../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md
     - name: SAP Fiori Launchpad との SSO の構成
       href: 'https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad'
 - name: SAP への Azure サービスの統合

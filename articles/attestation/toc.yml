@@ -11,6 +11,10 @@
       href: quickstart-template.md
     - name: PowerShell
       href: quickstart-powershell.md
+    - name: ポータル
+      href: quickstart-portal.md
+    - name: CLI
+      href: quickstart-azure-cli.md
 - name: チュートリアル
   items:
     - name: 構成証明ポリシーの作成

@@ -197,7 +197,7 @@
             - name: VM の前払い
               href: ../prepay-reserved-vm-instances.md
             - name: 専用ホストの前払い
-              href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../prepay-dedicated-hosts-reserved-instances.md
             - name: Azure の予約とは
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/linux/toc.json
             - name: VM インスタンス サイズの柔軟性
@@ -232,7 +232,7 @@
         - name: 暗号化
           href: ../disk-encryption.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Disk Storage の予約
-          href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../cost-management-billing/reservations/understand-disk-reservations.md
         - name: 仮想マシンとディスクのパフォーマンス
           href: disk-performance-linux.md
         - name: 高パフォーマンス用の設計
@@ -329,7 +329,7 @@
         - name: CLI を使用して移行する
           href: ../migration-classic-resource-manager-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 移行の一般的なエラー
-          href: ../migration-classic-resource-manager-errors.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../migration-classic-resource-manager-errors.md
         - name: 移行用のコミュニティ ツール
           href: ../migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: よく寄せられる質問
@@ -502,7 +502,7 @@
             - name: Bastion ホストの作成
               items:
                 - name: ポータル
-                  href: ../../bastion/tutorial-create-host-portal.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+                  href: ../../bastion/tutorial-create-host-portal.md
                 - name: PowerShell
                   href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                 - name: CLI
@@ -746,13 +746,13 @@
                 - name: 監視の有効化の概要
                   href: ../../azure-monitor/insights/vminsights-enable-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                 - name: 単一の Azure VM での有効化
-                  href: ../../azure-monitor/insights/vminsights-enable-portal.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-portal.md
                 - name: Azure Policy を使用して有効にする
-                  href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-policy.md
                 - name: Azure PowerShell を使用して有効にする
-                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md
                 - name: ハイブリッド環境対応にする
-                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md
             - name: 依存関係のマップ
               href: ../../azure-monitor/insights/vminsights-maps.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: パフォーマンスの監視

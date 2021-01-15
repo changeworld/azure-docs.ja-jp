@@ -63,19 +63,8 @@
         - name: Teams 内で Azure Lab Services を使用する
           items:
             - name: 概要
+              displayName: labs within Teams
               href: lab-services-within-teams-overview.md
-            - name: Teams からラボを作成する
-              href: how-to-get-started-create-lab-within-teams.md
-            - name: ユーザー リストの管理
-              href: how-to-manage-user-lists-within-teams.md
-            - name: VM プールの管理
-              href: how-to-manage-vm-pool-within-teams.md
-            - name: ラボの削除
-              href: how-to-delete-lab-within-teams.md
-            - name: スケジュールと設定
-              href: how-to-create-schedules-within-teams.md
-            - name: VM へのアクセス (学生ビュー)
-              href: how-to-access-vm-for-students-within-teams.md
 - name: 操作方法ガイド
   items:
     - name: 管理者ガイド
@@ -164,6 +153,20 @@
           href: how-to-set-virtual-machine-passwords-student.md
         - name: サポート情報の表示 (学生)
           href: lab-user-support-information.md
+    - name: Teams 内でのラボの使用
+      items:
+        - name: Teams からラボを作成する
+          href: how-to-get-started-create-lab-within-teams.md
+        - name: ユーザー リストの管理
+          href: how-to-manage-user-lists-within-teams.md
+        - name: VM プールの管理
+          href: how-to-manage-vm-pool-within-teams.md
+        - name: ラボの削除
+          href: how-to-delete-lab-within-teams.md
+        - name: スケジュールと設定
+          href: how-to-create-schedules-within-teams.md
+        - name: VM へのアクセス (学生ビュー)
+          href: how-to-access-vm-for-students-within-teams.md
 - name: リファレンス
   items:
     - name: REST API

@@ -182,7 +182,7 @@
             - name: VM の前払い
               href: ../prepay-reserved-vm-instances.md
             - name: 専用ホストの前払い
-              href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../prepay-dedicated-hosts-reserved-instances.md
             - name: Azure の予約とは
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/windows/toc.json
             - name: VM インスタンス サイズの柔軟性
@@ -226,7 +226,7 @@
         - name: 暗号化
           href: ../disk-encryption.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Disk Storage の予約
-          href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../cost-management-billing/reservations/understand-disk-reservations.md
         - name: 仮想マシンとディスクのパフォーマンス
           href: disk-performance-windows.md
         - name: 高パフォーマンス用の設計
@@ -249,7 +249,7 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: インフラストラクチャの自動化
       href: ../infrastructure-automation.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティとポリシー
           href: ../security-policy.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -290,14 +290,14 @@
         - name: スポット VM のデプロイ
           items:
             - name: ポータル
-              href: ../spot-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../spot-portal.md
             - name: PowerShell
               href: spot-powershell.md
             - name: ARM テンプレート
               displayName: Azure Resource Manager
-              href: ../linux/spot-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../linux/spot-template.md
             - name: エラー コード
-              href: ../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../error-codes-spot.md
         - name: C# の使用
           href: ../../azure-resource-manager/templates/deploy-rest.md
         - name: 特殊化されたディスクを使用する
@@ -478,7 +478,7 @@
             - name: Bastion ホストの作成
               items:
                 - name: ポータル
-                  href: ../../bastion/tutorial-create-host-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../bastion/tutorial-create-host-portal.md
                 - name: PowerShell
                   href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: CLI
@@ -654,7 +654,7 @@
                     - name: バージョン履歴
                       href: ../../azure-monitor/platform/diagnostics-extension-versions.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: JSON Lines リソース ログの形式
-                      href: ../../azure-monitor/platform/resource-logs-blob-format.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                      href: ../../azure-monitor/platform/resource-logs-blob-format.md
                     - name: トラブルシューティング
                       href: ../../azure-monitor/platform/diagnostics-extension-troubleshooting.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Log Analytics エージェント
@@ -712,13 +712,13 @@
                 - name: 監視の有効化の概要
                   href: ../../azure-monitor/insights/vminsights-enable-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: 単一の Azure VM での有効化
-                  href: ../../azure-monitor/insights/vminsights-enable-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-portal.md
                 - name: Azure Policy を使用して有効にする
-                  href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-policy.md
                 - name: Azure PowerShell を使用して有効にする
-                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md
                 - name: ハイブリッド環境対応にする
-                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md
             - name: 依存関係のマップ
               href: ../../azure-monitor/insights/vminsights-maps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: パフォーマンスの監視

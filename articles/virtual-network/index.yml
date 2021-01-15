@@ -11,12 +11,12 @@ metadata:
   author: KumudD
   ms.author: kumud
   ms.date: 08/28/2019
-  ms.openlocfilehash: a6c0bee32fbeb50c1eef0a9625706bcee9e1ae17
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 7bf639fb7bc89ec218b280bcf7d02c76c7bde277
+  ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "82086472"
+  ms.lasthandoff: 01/14/2021
+  ms.locfileid: "98223603"
 landingContent:
 - title: Virtual Network について
   linkLists:
@@ -45,9 +45,9 @@ landingContent:
   - linkListType: concept
     links:
     - text: ネットワーク セキュリティ グループ
-      url: security-overview.md
+      url: ./network-security-groups-overview.md
     - text: アプリケーション セキュリティ グループ
-      url: security-overview.md#application-security-groups
+      url: ./network-security-groups-overview.md#application-security-groups
     - text: 仮想ネットワーク サービス エンドポイント
       url: virtual-network-service-endpoints-overview.md
     - text: 仮想ネットワークのセキュリティに関する FAQ
@@ -63,7 +63,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: Azure リソースへのアクセスをセキュリティで保護して分離する
-      url: https://docs.microsoft.com/learn/modules/secure-and-isolate-with-nsg-and-service-endpoints
+      url: /learn/modules/secure-and-isolate-with-nsg-and-service-endpoints
   - linkListType: video
     links:
     - text: Azure Private Link を使用して Azure PaaS リソースに安全にアクセスする
@@ -93,7 +93,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: ピアリングによる仮想ネットワーク間の通信
-      url: https://docs.microsoft.com/learn/modules/integrate-vnets-with-vnet-peering
+      url: /learn/modules/integrate-vnets-with-vnet-peering
 - title: ネットワーク トラフィックのルーティング
   linkLists:
   - linkListType: concept
@@ -109,7 +109,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: IP アドレスの種類と割り当て方法
-      url: virtual-network-ip-addresses-overview-arm.md
+      url: ./public-ip-addresses.md
   - linkListType: how-to-guide
     links:
     - text: パブリック IP アドレスの作成、変更、削除
@@ -151,7 +151,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: IP アドレスの種類と割り当て方法
-      url: virtual-network-ip-addresses-overview-arm.md
+      url: ./public-ip-addresses.md
     - text: Azure 仮想ネットワークの IPv6 とは
       url: ipv6-overview.md
     - text: パブリック IP アドレス プレフィックス
