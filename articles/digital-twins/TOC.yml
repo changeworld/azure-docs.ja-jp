@@ -227,7 +227,7 @@
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
         - name: SignalR 統合のサンプル
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
-        - name: Azure Digital Twins の Logic Apps コネクタ用カスタム Swagger
+        - name: Logic Apps コネクタ用のカスタム Swagger
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
     - name: Azure ツール
       items:
