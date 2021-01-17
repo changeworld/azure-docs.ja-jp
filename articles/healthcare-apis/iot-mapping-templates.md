@@ -342,13 +342,13 @@ CodeValueFhirTemplate は、FHIR マッピングで現在サポートされて�
 | --- | ---
 |**TypeName**| このテンプレートのバインド先となる測定の種類。 この種類を出力するデバイス マッピング テンプレートが少なくとも 1 つ存在する必要があります。
 |**PeriodInterval**|作成された観察が表す期間。 サポートされている値は、0 (1 インスタンス)、60 (1 時間)、1440 (1 日) です。
-|**カテゴリ**|作成される観察の種類を分類する任意の数の [CodeableConcepts](http://hl7.org/fhir/datatypes-definitions.html#codeableconcept)。
+|**Category**|作成される観察の種類を分類する任意の数の [CodeableConcepts](http://hl7.org/fhir/datatypes-definitions.html#codeableconcept)。
 |**Codes**|作成された観察に適用する 1 つ以上の [Codings](http://hl7.org/fhir/datatypes-definitions.html#coding)。
 |**Codes[].Code**|[Coding](http://hl7.org/fhir/datatypes-definitions.html#coding) のコード。
 |**Codes[].System**|[Coding](http://hl7.org/fhir/datatypes-definitions.html#coding) のシステム。
 |**Codes[].Display**|[Coding](http://hl7.org/fhir/datatypes-definitions.html#coding) の表示。
 |**Value**|観察で抽出して表す値。 詳細については、「[値の型テンプレート](#valuetypes)」を参照してください。
-|**コンポーネント**|*省略可能:* 観察に対して作成する 1 つ以上のコンポーネント。
+|**Components**|*省略可能:* 観察に対して作成する 1 つ以上のコンポーネント。
 |**Components[].Codes**|コンポーネントに適用する 1 つ以上の [Codings](http://hl7.org/fhir/datatypes-definitions.html#coding)。
 |**Components[].Value**|コンポーネントで抽出して表す値。 詳細については、「[値の型テンプレート](#valuetypes)」を参照してください。
 
@@ -360,23 +360,23 @@ CodeValueFhirTemplate は、FHIR マッピングで現在サポートされて�
 | プロパティ | 説明 
 | --- | ---
 |**DefaultPeriod**|使用する既定の時間 (ミリ秒単位)。 
-|**単位**|SampledData の原点に設定する単位。 
+|**Unit**|SampledData の原点に設定する単位。 
 
 #### <a name="quantity"></a>Quantity
 FHIR データ型の [Quantity](http://hl7.org/fhir/datatypes.html#Quantity) を表します。 グループ内に複数の値が存在する場合は、最初の値のみが使用されます。 同じ観察にマップされる新しい値が到着すると、古い値が上書きされます。
 
 | プロパティ | 説明 
 | --- | --- 
-|**単位**| 単位の表記。
-|**コード**| 単位のコード化された形式。
-|**システム**| コード化された単位の形式を定義するシステム。
+|**Unit**| 単位の表記。
+|**Code**| 単位のコード化された形式。
+|**System**| コード化された単位の形式を定義するシステム。
 
 ### <a name="codeableconcept"></a>CodeableConcept
 FHIR データ型 [CodeableConcept](http://hl7.org/fhir/datatypes.html#CodeableConcept) を表します。 実際の値は使用されません。
 
 | プロパティ | 説明 
 | --- | --- 
-|**[テキスト]**|プレーンテキスト表現。 
+|**Text**|プレーンテキスト表現。 
 |**Codes**|作成された観察に適用する 1 つ以上の [Codings](http://hl7.org/fhir/datatypes-definitions.html#coding)。
 |**Codes[].Code**|[Coding](http://hl7.org/fhir/datatypes-definitions.html#coding) のコード。
 |**Codes[].System**|[Coding](http://hl7.org/fhir/datatypes-definitions.html#coding) のシステム。
