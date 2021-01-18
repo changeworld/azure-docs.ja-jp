@@ -78,7 +78,7 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
 
 :::image type="content" source="./media/confirm-packages.png" alt-text="パッケージのインポートを確認する":::
 
-パッケージが読み込まれない場合は、Unity コンソールでエラーを確認してください。 エラーが発生していないのに、 **[Packages]\(パッケージ\)** フォルダーにパッケージが表示されない場合は、パッケージの表示トグル ボタンを確認します。
+パッケージが読み込まれない場合は、Unity コンソールでエラーを確認してください。 エラーが発生していないのに、 **[Packages]\(パッケージ\)** フォルダーにパッケージが表示されない場合は、パッケージの表示トグル ボタンを確認します。\
 ![パッケージ表示トグル ボタンを指し示す矢印を含むスクリーンショット。](./media/unity-package-visibility.png)
 
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>最新バージョンのパッケージがあることを確認する
@@ -87,10 +87,10 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
 
 1. Unity エディターの上部のメニューで、 *[Window]\(ウィンドウ\)、[Package Manager]\(パッケージ マネージャー\)* の順に開きます。
 1. **[Microsoft Azure Remote Rendering]** パッケージを選択します。
-1. **Microsoft Azure Remote Rendering** パッケージの [Package Manager]\(パッケージ マネージャー\) ページで、 **[Update]\(更新\)** ボタンを使用できるかどうかを確認します。 使用できる場合はクリックして、利用可能な最新バージョンにパッケージを更新します。
+1. **Microsoft Azure Remote Rendering** パッケージの [Package Manager]\(パッケージ マネージャー\) ページで、 **[Update]\(更新\)** ボタンを使用できるかどうかを確認します。 使用できる場合はクリックして、利用可能な最新バージョンにパッケージを更新します。\
 ![パッケージ マネージャーにおける ARR パッケージ](./media/package-manager.png)
 1. パッケージを更新すると、コンソール エラーが発生することがあります。 その場合は、プロジェクトを閉じてから再度開いてみてください。
-1. パッケージが最新の状態になると、パッケージ マネージャーには [更新] ボタンではなく **[Up to date]\(最新\)** が表示されます。
+1. パッケージが最新の状態になると、パッケージ マネージャーには [更新] ボタンではなく **[Up to date]\(最新\)** が表示されます。\
 ![最新のパッケージ](./media/package-up-to-date.png)
 ## <a name="configure-the-camera"></a>カメラを構成する
 
@@ -119,9 +119,9 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
     ![プロジェクトの品質設定を変更する](./media/settings-quality.png)
 
 1. 左側のリスト メニューから **[Graphics]\(グラフィックス\)** を選択します
-1. **[Scriptable Rendering Pipeline]\(スクリプト可能なレンダリング パイプライン\)** 設定を *[HybridRenderingPipeline]* に変更します。
+1. **[Scriptable Rendering Pipeline]\(スクリプト可能なレンダリング パイプライン\)** 設定を *[HybridRenderingPipeline]* に変更します。\
     ![[Scriptable Rendering Pipeline]\(スクリプト可能なレンダリング パイプライン\) 設定を HybridRenderingPipeline に変更する場所を示すスクリーンショット。](./media/settings-graphics-render-pipeline.png)\
-    場合によっては、この UI では、パッケージで使用できるパイプラインの種類の一覧が表示されないことがあります。 その場合は、手動で *HybridRenderingPipeline* アセットをフィールドにドラッグする必要があります。
+    場合によっては、この UI では、パッケージで使用できるパイプラインの種類の一覧が表示されないことがあります。 その場合は、手動で *HybridRenderingPipeline* アセットをフィールドにドラッグする必要があります。\
     ![プロジェクトのグラフィックス設定の変更](./media/hybrid-rendering-pipeline.png)
 
     > [!NOTE]
@@ -150,7 +150,7 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
 1. *[File]\(ファイル\)、[Build Settings]\(ビルド設定\)* の順に開きます
 1. **[Universal Windows Platform]\(ユニバーサル Windows プラットフォーム\)** を選択します
 1. 以下の内容と一致するように設定を構成します
-1. **[Switch Platform]\(プラットフォームの切り替え\)** ボタンを押します。
+1. **[Switch Platform]\(プラットフォームの切り替え\)** ボタンを押します。\
 ![ビルド設定](./media/build-settings.png)
 1. Unity でプラットフォームが変更されたら、ビルド パネルを閉じます。
 
@@ -545,7 +545,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 リモート レンダリング コーディネーターとこれに必要なスクリプト (*ARRServiceUnity*) はどちらも、シーン内の GameObject にアタッチする必要がある MonoBehaviours です。 *ARRServiceUnity* スクリプトは、リモート セッションに接続して管理するための ARR の機能の多くを公開する目的で、ARR によって提供されています。
 
 1. シーンに新しい GameObject を作成し (Ctrl + Shift + N キーを押すか、 *[GameObject]、[Create Empty]\(空の作成\)* の順に選択)、それに **RemoteRenderingCoordinator** という名前を付けます。
-1. *RemoteRenderingCoordinator* スクリプトを **RemoteRenderingCoordinator** GameObject に追加します。
+1. *RemoteRenderingCoordinator* スクリプトを **RemoteRenderingCoordinator** GameObject に追加します。\
 ![RemoteRenderingCoordinator コンポーネントを追加する](./media/add-coordinator-script.png)
 1. インスペクターで "*サービス*" として表示される *ARRServiceUnity* スクリプトが、自動的に GameObject に追加されていることを確認します。 判然としない場合は、**RemoteRenderingCoordinator** スクリプトの先頭に `[RequireComponent(typeof(ARRServiceUnity))]` が含まれていることを確認してください。
 1. Azure Remote Rendering の資格情報、アカウント認証ドメイン、アカウント ドメインをコーディネーター スクリプトに追加します。\
@@ -602,9 +602,9 @@ public async void InitializeSessionService()
 1. **RemoteRenderingCoordinator** GameObject を選択し、**RemoteRenderingCoordinator** コンポーネントのインスペクターで公開されている **OnRequestingAuthorization** Unity イベントを見つけます。
 
 1. 右下にある [+] を押して、新しいイベントを追加します。
-1. コンポーネントを独自のイベントにドラッグして、それ自体を参照するようにします。
+1. コンポーネントを独自のイベントにドラッグして、それ自体を参照するようにします。\
 ![認証をバイパスする](./media/bypass-authorization-add-event.png)\
-1. ドロップダウンで **[RemoteRenderingCoordinator]、[BypassAuthorization]** の順に選択します。
+1. ドロップダウンで **[RemoteRenderingCoordinator]、[BypassAuthorization]** の順に選択します。\
 ![選択された RemoteRenderingCoordinator.BypassAuthorization オプションを表示するスクリーンショット。](./media/bypass-authorization-event.png)
 
 ## <a name="create-or-join-a-remote-session"></a>リモート セッションの作成または参加を行う
