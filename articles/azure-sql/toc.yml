@@ -179,6 +179,8 @@
               href: database/performance-guidance.md
             - name: DMV を使用したパフォーマンスの監視
               href: database/monitoring-with-dmvs.md
+            - name: ブロッキングの説明と解決策
+              href: database/understand-resolve-blocking.md
             - name: 診断テレメトリをログに記録する
               href: database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md
             - name: インメモリ OLTP

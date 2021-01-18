@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: c3443abaa1157122f7bcd43277a0ae00a2cd4407
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 7af13147804fd1e50a033635985c08b9c62f76ba
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059094"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200993"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする
 
 NVIDIA GPU を動力源とする Azure N シリーズ VM の GPU 機能を利用するには、NVIDIA GPU ドライバーをインストールする必要があります。 [NVIDIA GPU ドライバー拡張機能](../extensions/hpccompute-gpu-linux.md)は、N シリーズ VM 上に適切な NVIDIA CUDA または GRID ドライバーをインストールします。 この拡張機能は、Azure Portal または Azure CLI や Azure Resource Manager テンプレートなどのツールを使用してインストールまたは管理します。 サポートされるディストリビューションおよびデプロイ手順については、[NVIDIA GPU ドライバー拡張機能のドキュメント](../extensions/hpccompute-gpu-linux.md)を参照してください。
 
-NVIDIA GPU ドライバーを手動でインストールすることを選択した場合、この記事では、サポートされるディストリビューション、ドライバー、インストールおよび検証手順について説明します。 手動でのドライバーのセットアップ情報は、[Windows VM](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) でも利用可能です。
+NVIDIA GPU ドライバーを手動でインストールすることを選択した場合、この記事では、サポートされるディストリビューション、ドライバー、インストールおよび検証手順について説明します。 手動でのドライバーのセットアップ情報は、[Windows VM](../windows/n-series-driver-setup.md) でも利用可能です。
 
 N シリーズ VM の仕様、ストレージの容量、およびディスクの詳細については、「[GPU Linux VM のサイズ](../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json)」を参照してください。 
 
@@ -388,4 +388,4 @@ fi
 
 ## <a name="next-steps"></a>次のステップ
 
-* NVIDIA ドライバーがインストールされている Linux VM のイメージをキャプチャするには、「[Linux 仮想マシンを一般化してキャプチャする方法](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+* NVIDIA ドライバーがインストールされている Linux VM のイメージをキャプチャするには、「[Linux 仮想マシンを一般化してキャプチャする方法](capture-image.md)」を参照してください。

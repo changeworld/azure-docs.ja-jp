@@ -201,6 +201,10 @@
       items:
         - name: Defender for IoT の API を操作する
           href: references-work-with-defender-for-iot-apis.md
+        - name: Horizon API
+          href: references-horizon-api.md
+        - name: Horizon SDK
+          href: references-horizon-sdk.md
         - name: Defender for IoT の CLI コマンドを操作する
           href: references-work-with-defender-for-iot-cli-commands.md
         - name: 独自のプロトコルを管理する (Horizon)

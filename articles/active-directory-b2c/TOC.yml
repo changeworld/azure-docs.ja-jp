@@ -123,6 +123,8 @@
       items:
         - name: サインアップまたはサインイン ポリシー
           href: add-sign-up-and-sign-in-policy.md
+        - name: サインイン ポリシー
+          href: add-sign-in-policy.md
         - name: パスワードのリセット ポリシー
           href: add-password-reset-policy.md
         - name: パスワードの変更ポリシー
@@ -148,6 +150,8 @@
           href: identity-provider-azure-ad-single-tenant.md
         - name: Azure AD (マルチテナント)
           href: identity-provider-azure-ad-multi-tenant.md
+        - name: Azure AD B2C
+          href: identity-provider-azure-ad-b2c.md
         - name: Facebook
           href: identity-provider-facebook.md
         - name: 汎用の ID プロバイダー

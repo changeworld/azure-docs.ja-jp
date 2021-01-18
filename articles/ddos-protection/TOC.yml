@@ -12,6 +12,9 @@
       href: manage-ddos-protection-powershell.md
     - name: DDoS 保護計画を作成する - CLI
       href: manage-ddos-protection-cli.md
+    - name: DDoS 保護計画を作成する - ARM テンプレート
+      displayName: Resource Manager
+      href: manage-ddos-protection-template.md
 - name: チュートリアル
   items:
     - name: DDoS 保護テレメトリの表示と構成
