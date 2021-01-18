@@ -8,6 +8,8 @@
       href: faq.md
     - name: 新機能
       href: whats-new.md
+    - name: Operations Manager からの移行
+      href: azure-monitor-operations-manager.md
 - name: クイックスタート
   items:
     - name: Azure リソースの監視
@@ -127,7 +129,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: 警告
+    - name: アラート
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -196,6 +198,8 @@
               href: platform/metric-chart-samples.md
             - name: メトリック グラフのトラブルシューティング
               href: platform/metrics-troubleshoot.md
+            - name: メトリックの集計について
+              href: platform/metrics-aggregation-explained.md
     - name: Azure Monitor ログ
       items:
         - name: 概要
@@ -664,6 +668,8 @@
                       href: app/javascript-react-native-plugin.md
                     - name: Angular プラグイン
                       href: app/javascript-angular-plugin.md
+                    - name: クリック分析自動収集プラグイン
+                      href: app/javascript-click-analytics-plugin.md
                 - name: トラブルシューティング
                   items:
                     - name: SDK 読み込みエラー

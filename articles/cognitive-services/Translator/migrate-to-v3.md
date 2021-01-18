@@ -10,19 +10,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: f22213bf192b12e046bab12346e5d5d83fb36b96
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: baaf907d2fafe23805e6b49582ecc7592ee05e0b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364277"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028235"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator V2 から V3 への移行
 
 > [!NOTE]
-> V2 は、2018 年 4 月 30 日に非推奨となりました。 V3 で独占的に使用できる新しい機能を活用するためにアプリケーションを V3 に移行してください。
-> 
-> Microsoft Translator Hub は、2019 年 5 月 17 日をもって廃止されます。 [重要な移行情報と日付を確認してください](https://www.microsoft.com/translator/business/hub/)。  
+> V2 は、2018 年 4 月 30 日に非推奨となりました。 V3 で独占的に使用できる新しい機能を活用するためにアプリケーションを V3 に移行してください。 V2 は 2021 年 5 月 24 日に廃止される予定です。 
 
 Microsoft Translator チームは Translator のバージョン 3 (V3) をリリースしました。 このリリースには、新しい機能、非推奨になったメソッド、Microsoft Translator Service との間でデータを送受信するための新しい形式が含まれています。 このドキュメントでは、V3 を使用するためにアプリケーションを変更する方法に関する情報を提供します。 
 
@@ -118,8 +116,8 @@ V3 テキスト API によるニューラル翻訳では、標準カテゴリ (S
 
 | Version | エンドポイント | GDPR のプロセッサ準拠 | Translator Hub の使用 | カスタム トランスレーター (プレビュー) の使用 |
 | :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
-|Translator バージョン 2|    api.microsofttranslator.com|    いいえ    |○    |いいえ|
-|Translator バージョン 3|    api.cognitive.microsofttranslator.com|    はい|    ×|    はい|
+|Translator バージョン 2|    api.microsofttranslator.com|    いいえ    |はい    |いいえ|
+|Translator バージョン 3|    api.cognitive.microsofttranslator.com|    はい|    いいえ|    はい|
 
 **Translator バージョン 3**
 * 一般提供されており完全にサポートされます。

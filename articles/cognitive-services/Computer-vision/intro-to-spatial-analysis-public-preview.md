@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: e017fac551e3122cc6586b32423ff166462ccad8
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 402ee6d5efdd489914cb7d283c7c46d4f7d175f6
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97513559"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968060"
 ---
 # <a name="introduction-to-computer-vision-spatial-analysis"></a>Computer Vision 空間分析の概要
 
@@ -23,7 +23,7 @@ Computer Vision 空間分析は、Azure Cognitive Services Computer Vision の�
 
 ## <a name="the-basics-of-spatial-analysis"></a>空間分析の基本
 
-現在、空間分析の中核となるスキルはすべて、ビデオを取り込み、ビデオ内のユーザーを検出し、時間の経過に伴って動き回るユーザーを追跡し、ユーザーが関心領域を操作したときにイベントを生成するパイプライン上に構築されています。
+現在、空間分析の中核となる操作はすべて、ビデオを取り込み、ビデオ内のユーザーを検出し、時間の経過に伴って動き回るユーザーを追跡し、ユーザーが関心領域を操作したときにイベントを生成するパイプライン上に構築されています。
 
 ## <a name="spatial-analysis-terms"></a>空間分析の用語
 

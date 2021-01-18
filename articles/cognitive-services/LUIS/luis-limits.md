@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: c855be6d31a1ee46434ecadbeae7a36dd6a3ff95
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 41423ce34a62dfdbd5b9a60f683a2366a94d1bfd
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018805"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976794"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS モデルとキーの制限
 LUIS にはいくつかの制限領域があります。 1 つは[モデルの制限](#model-limits)であり、これによって LUIS で意図、エンティティ、および機能が制御されます。 2 つ目の領域は、キーの種類に基づく[クォータ制限](#key-limits)です。 3 つ目の制限領域は、LUIS Web サイトを制御するための[キーボードの組み合わせ](#keyboard-controls)です。 4 つ目の領域は、LUIS オーサリング Web サイトと LUIS [エンドポイント](luis-glossary.md#endpoint) API の間の[世界リージョン マッピング](luis-reference-regions.md)です。
@@ -30,7 +30,7 @@ LUIS にはいくつかの制限領域があります。 1 つは[モデルの�
 | 外部エンティティ | 無制限 |
 | [意図][intents]|アプリケーションあたり 500:499 のカスタムの意図、および必須の意図 _なし_。<br>[ディスパッチ ベース](https://aka.ms/dispatch-tool) アプリケーションには対応するディスパッチ ソースが 500。|
 | [リスト エンティティ](./luis-concept-entity-types.md) | 親: 50、子: 20,000 項目。 Canonical 名は *既定の最大文字数。シノニム値は長さ制限なし。 |
-| [機械学習エンティティ + ロール](./luis-concept-entity-types.md):<br> 複合、<br>シンプル、<br>エンティティのロール|100 個の親エンティティの制限または 330 個のエンティティの制限のどちらかの、ユーザーが最初に達した制限。 ロールは、この制限の目的のためのエンティティとしてカウントされます。 例として、次のような 2 つのロールを持つシンプル エンティティで構成された複合があります。1 つの複合 + 1 つのシンプル + 2 つのロール = 330 エンティティのうちの 4 つ。<br>サブエンティティは 5 レベルまで入れ子にすることができます。|
+| [機械学習エンティティ + ロール](./luis-concept-entity-types.md):<br> 複合、<br>シンプル、<br>エンティティのロール|100 個の親エンティティの制限または 330 個のエンティティの制限のどちらかの、ユーザーが最初に達した制限。 ロールは、この制限の目的のためのエンティティとしてカウントされます。 例として、次のような 2 つのロールを持つシンプル エンティティで構成された複合があります。1 つの複合 + 1 つのシンプル + 2 つのロール = 330 エンティティのうちの 4 つ。<br>サブエンティティは 5 レベルまで入れ子にすることができ、レベルあたり最大 10 個の子を持つことができます。|
 |特徴量としてのモデル| 特定のモデルに対して特徴として使用できるモデルの最大数は、10 です。 特定のモデルに対して特徴として使用できるフレーズ リストの最大数は、10 です。|
 | [プレビュー - 動的なリスト エンティティ](./luis-migration-api-v3.md)|クエリ予測エンドポイント要求あたり最大 1K のうちの 2 つのリスト|
 | [パターン](luis-concept-patterns.md)|アプリケーションあたり 500 パターン。<br>パターンの最大文字数: 400 文字。<br>パターンあたり 3 Pattern.any エンティティ<br>パターン内の入れ子になった省略可能なテキストの最大数: 2|

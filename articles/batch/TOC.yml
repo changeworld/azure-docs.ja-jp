@@ -223,14 +223,12 @@
           items:
             - name: Azure を使用したレンダリング
               href: batch-rendering-service.md
-            - name: VM イメージのレンダリング
+            - name: VM イメージの Batch レンダリング
               href: batch-rendering-applications.md
             - name: Batch レンダリングの機能
               href: batch-rendering-functionality.md
             - name: Batch レンダリングの使用
               href: batch-rendering-using.md
-            - name: レンダー マネージャーの使用
-              href: batch-rendering-render-managers.md
             - name: レンダリング アプリケーション参照
               href: batch-rendering-application-reference.md
             - name: ストレージとデータの移動

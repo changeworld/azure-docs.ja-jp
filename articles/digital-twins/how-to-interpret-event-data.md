@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 22bedcf7921e3c8d4f2566a70515eef3e3b136b6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a0f2b971eae5d37e8fb0771e213075289af6c519
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461024"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045259"
 ---
 # <a name="understand-event-data"></a>イベント データについて
 
@@ -106,7 +106,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 | 名前 | 値 |
 | --- | --- |
 | `id` | サービスによって管理される UUID やカウンターなどの、通知の識別子。 `source` + `id` は、個別のイベントごとに一意です。 |
-| `source` | IoT ハブや Azure Digital Twins インスタンスの名前 ( *myhub.azure-devices.net* や *mydigitaltwins.westus2.azuredigitaltwins.net など)* |
+| `source` | IoT ハブや Azure Digital Twins インスタンスの名前 (*myhub.azure-devices.net* や *mydigitaltwins.westus2.azuredigitaltwins.net など)* |
 | `specversion` | *1.0*<br>メッセージは、[CloudEvents 標準](https://github.com/cloudevents/spec)のこのバージョンに準拠しています。 |
 | `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete` |
 | `datacontenttype` | `application/json` |
@@ -116,7 +116,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 
 #### <a name="body-details"></a>本文の詳細
 
-本文は、影響を受けるデジタル ツインで、JSON 形式で表されます。 このスキーマは、 *Digital Twins リソース 7.1* です。
+本文は、影響を受けるデジタル ツインで、JSON 形式で表されます。 このスキーマは、*Digital Twins リソース 7.1* です。
 
 作成イベントの場合、ペイロードには、リソースが作成された後のツインの状態が反映されます。したがって、`GET` 呼び出しと同様に、システムによって生成されたすべての要素を含める必要があります。
 
@@ -192,7 +192,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 | 名前    | 値 |
 | --- | --- |
 | `id` | サービスによって管理される UUID やカウンターなどの、通知の識別子。 `source` + `id` は個別のイベントごとに一意です |
-| `source` | Azure Digital Twins インスタンスの名前 ( *mydigitaltwins.westus2.azuredigitaltwins.net など)* |
+| `source` | Azure Digital Twins インスタンスの名前 (*mydigitaltwins.westus2.azuredigitaltwins.net など)* |
 | `specversion` | *1.0*<br>メッセージは、[CloudEvents 標準](https://github.com/cloudevents/spec)のこのバージョンに準拠しています。 |
 | `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`
 |`datacontenttype`| `application/json` |
@@ -248,7 +248,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 | 名前    | 値 |
 | --- | --- |
 | `id` | サービスによって管理される UUID やカウンターなどの、通知の識別子。 `source` + `id` は個別のイベントごとに一意です |
-| `source` | IoT ハブや Azure Digital Twins インスタンスの名前 ( *myhub.azure-devices.net* や *mydigitaltwins.westus2.azuredigitaltwins.net など)*
+| `source` | IoT ハブや Azure Digital Twins インスタンスの名前 (*myhub.azure-devices.net* や *mydigitaltwins.westus2.azuredigitaltwins.net など)*
 | `specversion` | *1.0*<br>メッセージは、[CloudEvents 標準](https://github.com/cloudevents/spec)のこのバージョンに準拠しています。 |
 | `type` | `Microsoft.DigitalTwins.Twin.Update` |
 | `datacontenttype` | `application/json` |
@@ -262,20 +262,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 
 たとえば、次のパッチを使用してデジタル ツインが更新されたとします。
 
-```json
-[
-    {
-        "op": "replace",
-        "value": 40,
-        "path": "/Temperature"
-    },
-    {
-        "op": "add",
-        "value": 30,
-        "path": "/comp1/prop1"
-    }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/patch-component-2.json":::
 
 対応する通知 (Azure Digital Twins によるデジタル ツインの更新など、サービスによって同期的に実行される場合) の本文は次のようになります。
 

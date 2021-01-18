@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0a38f9b8135fed08a95df68f108e44c34fec6325
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 599bb93e747acf504a4ebf43aaea771ed5064886
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955329"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131391"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins のツイン モデルについて
 
@@ -88,53 +88,7 @@ Azure Digital Twins では、プロパティまたはリレーションシップ
  
 惑星は衛星である **月** とも相互作用する可能性があり、**クレーター** が含まれる場合もあります。 次の例の `Planet` モデルでは、2 つの外部モデル `Moon` と `Crater` を参照することにより、これらの他のエンティティへの接続が表されています。 以下のコード例ではこれらのモデルも定義されていますが、主要な `Planet` の例から注目が逸れないように、非常に単純にされています。
 
-```json
-[
-  {
-    "@id": "dtmi:com:contoso:Planet;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2",
-    "displayName": "Planet",
-    "contents": [
-      {
-        "@type": "Property",
-        "name": "name",
-        "schema": "string"
-      },
-      {
-        "@type": "Property",
-        "name": "mass",
-        "schema": "double"
-      },
-      {
-        "@type": "Telemetry",
-        "name": "Temperature",
-        "schema": "double"
-      },
-      {
-        "@type": "Relationship",
-        "name": "satellites",
-        "target": "dtmi:com:contoso:Moon;1"
-      },
-      {
-        "@type": "Component",
-        "name": "deepestCrater",
-        "schema": "dtmi:com:contoso:Crater;1"
-      }
-    ]
-  },
-  {
-    "@id": "dtmi:com:contoso:Crater;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2"
-  },
-  {
-    "@id": "dtmi:com:contoso:Moon;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2"
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/Planet-Crater-Moon.json":::
 
 モデルのフィールドは次のとおりです。
 
@@ -166,57 +120,7 @@ DTDL によると、*Property* および *Telemetry* 属性のスキーマは、
 
 次の例では、*Planet* モデルを前の DTDL 例からより大きな *CelestialBody* モデルのサブタイプとして再イメージ化しています。 "親" モデルが先に定義され、次にフィールド `extends` を使用してその上に "子" モデルが構築されます。
 
-```json
-[
-  {
-    "@id": "dtmi:com:contoso:CelestialBody;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2",
-    "displayName": "Celestial body",
-    "contents": [
-      {
-        "@type": "Property",
-        "name": "name",
-        "schema": "string"
-      },
-      {
-        "@type": "Property",
-        "name": "mass",
-        "schema": "double"
-      },
-      {
-        "@type": "Telemetry",
-        "name": "temperature",
-        "schema": "double"
-      }
-    ]
-  },
-  {
-    "@id": "dtmi:com:contoso:Planet;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2",
-    "displayName": "Planet",
-    "extends": "dtmi:com:contoso:CelestialBody;1",
-    "contents": [
-      {
-        "@type": "Relationship",
-        "name": "satellites",
-        "target": "dtmi:com:contoso:Moon;1"
-      },
-      {
-        "@type": "Component",
-        "name": "deepestCrater",
-        "schema": "dtmi:com:contoso:Crater;1"
-      }
-    ]
-  },
-  {
-    "@id": "dtmi:com:contoso:Crater;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2"
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/CelestialBody-Planet-Crater.json":::
 
 この例では、*CelestialBody* によって *Planet* に名前、質量、および温度が提供されます。 `extends` セクションは、インターフェイス名、またはインターフェイス名の配列です (必要に応じて、拡張インターフェイスが複数の親モデルを継承できます)。
 
@@ -236,7 +140,7 @@ DTDL によると、*Property* および *Telemetry* 属性のスキーマは、
 
 業界標準に基づくモデルや、RDF または OWL などの標準的なオントロジー表現を使用するモデルを使用すると、Azure Digital Twins モデルを設計する場合に充実した出発点を利用できます。 業界モデルの利用は、標準化と情報共有にも役立ちます。
 
-Azure Digital Twins で使用するモデルは、JSON-LD ベースの [**Digital Twins Definition Language (DTDL)**](concepts-models.md) で表現する必要があります。 そのため、この記事では、既存の業界概念を DTDL セマンティクスと統合して、Azure Digital Twins で使用できるように、業界標準モデルを DTDL で表現する方法について説明します。 DTDL モデルは、その後、Azure Digital Twins 内で、モデルの信頼できるソースとして使用されます。
+Azure Digital Twins で使用するモデルは、JSON-LD ベースの [**Digital Twins Definition Language (DTDL)**](concepts-models.md) で表現する必要があります。 そのため、業界標準モデルを使用するには、まずそれを DTDL に変換して、Azure Digital Twins で使用できるようにする必要があります。 DTDL モデルは、その後、Azure Digital Twins 内で、モデルの信頼できるソースとして使用されます。
 
 業界標準モデルを DTDL と統合するには、状況によりますが、次の主要な 2 つのパスがあります。
 * モデルをまだ作成していない場合は、業界固有の言語を含む **既存のスターター DTDL オントロジー** に基づいて設計できます。

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 58d101bb93b4635e362c5ec78a03a659b71b63da
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: f776482c684004c8d661f69d8158ba9597c923b2
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495269"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127038"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure Digital Twins と Azure Time Series Insights を統合する
 
@@ -24,7 +24,7 @@ ms.locfileid: "92495269"
 
 Time Series Insights との関係を設定できるためには、事前に **Azure Digital Twins のインスタンス** が必要です。 Time Series Insights でデータが追跡されていることを確認するためにツイン情報を何回か更新する必要があるため、データに基づいてデジタル ツイン情報を更新できるようにこのインスタンスを設定する必要があります。 
 
-これをまだ設定していない場合、作成手順については Azure Digital Twins の " [*チュートリアル: エンドツーエンドのソリューションの接続*](./tutorial-end-to-end.md)" に関するページを参照してください。 そのチュートリアルでは、仮想 IoT デバイスで動作してデジタル ツインの更新をトリガーする Azure Digital Twins インスタンスを設定する手順が示されています。
+これをまだ設定していない場合、作成手順については Azure Digital Twins の "[*チュートリアル: エンドツーエンドのソリューションの接続*](./tutorial-end-to-end.md)" に関するページを参照してください。 そのチュートリアルでは、仮想 IoT デバイスで動作してデジタル ツインの更新をトリガーする Azure Digital Twins インスタンスを設定する手順が示されています。
 
 ## <a name="solution-architecture"></a>ソリューションのアーキテクチャ
 
@@ -42,9 +42,9 @@ Time Series Insights との関係を設定できるためには、事前に **Az
 
 ツインの状態が更新されるたびに、Azure Digital Twins インスタンスで[ツイン更新イベント](how-to-interpret-event-data.md)を生成できます。 このセクションでは、これらの更新イベントを後続の処理のために Azure [Event Hubs](../event-hubs/event-hubs-about.md) に転送する Azure Digital Twins の [**イベント ルート**](concepts-route-events.md)を作成します。
 
-Azure Digital Twins の " [*チュートリアル: エンドツーエンドのソリューションの接続*](./tutorial-end-to-end.md)" に関するページでは、温度計を使用して部屋を表すデジタル ツインの温度属性を更新するシナリオの手順が説明されています。 このパターンは、IoT デバイスからのテレメトリの転送ではなく、ツインの更新に依存しています。これにより、Time Series Insights のロジックを更新する必要なしに、基になるデータ ソースを柔軟に変更できます。
+Azure Digital Twins の "[*チュートリアル: エンドツーエンドのソリューションの接続*](./tutorial-end-to-end.md)" に関するページでは、温度計を使用して部屋を表すデジタル ツインの温度属性を更新するシナリオの手順が説明されています。 このパターンは、IoT デバイスからのテレメトリの転送ではなく、ツインの更新に依存しています。これにより、Time Series Insights のロジックを更新する必要なしに、基になるデータ ソースを柔軟に変更できます。
 
-1. 最初に、Azure Digital Twins インスタンスからイベントを受信するイベント ハブ名前空間を作成します。 以下の Azure CLI の手順を使用するか、Azure portal を使用することができます: 「 [*クイック スタート:Azure portal を使用したイベント ハブの作成*](../event-hubs/event-hubs-create.md)」。
+1. 最初に、Azure Digital Twins インスタンスからイベントを受信するイベント ハブ名前空間を作成します。 以下の Azure CLI の手順を使用するか、Azure portal を使用することができます: 「[*クイック スタート:Azure portal を使用したイベント ハブの作成*](../event-hubs/event-hubs-create.md)」。
 
     ```azurecli-interactive
     # Create an Event Hubs namespace. Specify a name for the Event Hubs namespace.
@@ -76,69 +76,25 @@ Azure Digital Twins の " [*チュートリアル: エンドツーエンドの�
     >[!NOTE]
     >Cloud Shell には現在、`az dt route`、`az dt model`、`az dt twin` の各コマンド グループに影響する **既知の問題** があります。
     >
-    >解決するには、コマンドを実行する前に Cloud Shell で `az login` を実行するか、Cloud Shell ではなく[ローカル CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) を使用します。 この件の詳細については、「 [*トラブルシューティング: Azure Digital Twins の既知の問題*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)」を参照してください。
+    >解決するには、コマンドを実行する前に Cloud Shell で `az login` を実行するか、Cloud Shell ではなく[ローカル CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) を使用します。 この件の詳細については、「[*トラブルシューティング: Azure Digital Twins の既知の問題*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)」を参照してください。
 
     ```azurecli-interactive
     az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
-この記事の後半で別のイベント ハブを作成するためにもう一度使用するので、先に進む前に、" *Event Hubs 名前空間* " と " *リソース グループ* " を記録しておきます。
+この記事の後半で別のイベント ハブを作成するためにもう一度使用するので、先に進む前に、"*Event Hubs 名前空間*" と "*リソース グループ*" を記録しておきます。
 
-## <a name="create-an-azure-function"></a>Azure 関数の作成 
+## <a name="create-a-function-in-azure"></a>Azure で関数を作成する
 
-次に、関数アプリ内に Event Hubs によってトリガーされる関数を作成します。 エンドツーエンドのチュートリアルで作成した関数アプリを使用することも (" [*チュートリアル: エンドツーエンドのソリューションの接続*](./tutorial-end-to-end.md)")、自分で作成することもできます。 
+次に、Azure Functions を使用して、関数アプリ内に Event Hubs によってトリガーされる関数を作成します。 エンドツーエンドのチュートリアルで作成した関数アプリを使用することも ("[*チュートリアル: エンドツーエンドのソリューションの接続*](./tutorial-end-to-end.md)")、自分で作成することもできます。 
 
 この関数を使用して、それらのツイン更新イベントを、JSON Patch ドキュメントとしての元の形式から、ツインから更新および追加される値だけが含まれる JSON オブジェクトに変換します。
 
-Azure Functions で Event Hubs を使用する方法の詳細については、" [*Azure Functions に対する Azure Event Hubs トリガー*](../azure-functions/functions-bindings-event-hubs-trigger.md)" に関するページを参照してください。
+Azure Functions で Event Hubs を使用する方法の詳細については、"[*Azure Functions に対する Azure Event Hubs トリガー*](../azure-functions/functions-bindings-event-hubs-trigger.md)" に関するページを参照してください。
 
 発行された関数アプリ内で、関数のコードを次のコードに置き換えます。
 
-```C#
-using Microsoft.Azure.EventHubs;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Threading.Tasks;
-using System.Text;
-using System.Collections.Generic;
-
-namespace SampleFunctionsApp
-{
-    public static class ProcessDTUpdatetoTSI
-    { 
-        [FunctionName("ProcessDTUpdatetoTSI")]
-        public static async Task Run(
-            [EventHubTrigger("twins-event-hub", Connection = "EventHubAppSetting-Twins")]EventData myEventHubMessage, 
-            [EventHub("tsi-event-hub", Connection = "EventHubAppSetting-TSI")]IAsyncCollector<string> outputEvents, 
-            ILogger log)
-        {
-            JObject message = (JObject)JsonConvert.DeserializeObject(Encoding.UTF8.GetString(myEventHubMessage.Body));
-            log.LogInformation("Reading event:" + message.ToString());
-
-            // Read values that are replaced or added
-            Dictionary<string, object> tsiUpdate = new Dictionary<string, object>();
-            foreach (var operation in message["patch"]) {
-                if (operation["op"].ToString() == "replace" || operation["op"].ToString() == "add")
-                {
-                    //Convert from JSON patch path to a flattened property for TSI
-                    //Example input: /Front/Temperature
-                    //        output: Front.Temperature
-                    string path = operation["path"].ToString().Substring(1);                    
-                    path = path.Replace("/", ".");                    
-                    tsiUpdate.Add(path, operation["value"]);
-                }
-            }
-            //Send an update if updates exist
-            if (tsiUpdate.Count>0){
-                tsiUpdate.Add("$dtId", myEventHubMessage.Properties["cloudEvents:subject"]);
-                await outputEvents.AddAsync(JsonConvert.SerializeObject(tsiUpdate));
-            }
-        }
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/updateTSI.cs":::
 
 ここからは、関数で作成した JSON オブジェクトを、Time Series Insights に接続されている 2 番目のイベント ハブに送信します。
 
@@ -150,9 +106,9 @@ namespace SampleFunctionsApp
 
 ### <a name="create-an-event-hub"></a>イベント ハブの作成
 
-2 番目のイベント ハブを作成するには、以下の Azure CLI の手順を使用するか、Azure portal を使用することができます: 「 [*クイック スタート:Azure portal を使用したイベント ハブの作成*](../event-hubs/event-hubs-create.md)」。
+2 番目のイベント ハブを作成するには、以下の Azure CLI の手順を使用するか、Azure portal を使用することができます: 「[*クイック スタート:Azure portal を使用したイベント ハブの作成*](../event-hubs/event-hubs-create.md)」。
 
-1. この記事の前半で説明したように、" *イベント ハブ名前空間* " と " *リソース グループ* " 名を準備します
+1. この記事の前半で説明したように、"*イベント ハブ名前空間*" と "*リソース グループ*" 名を準備します
 
 2. 新しいイベント ハブを作成します
     ```azurecli-interactive
@@ -199,23 +155,23 @@ namespace SampleFunctionsApp
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Azure Time Series Insights インスタンスを作成して接続する
 
-次に、2 番目のイベント ハブからデータを受信するように Time Series Insights インスタンスを設定します。 以下の手順のようにします。このプロセスの詳細については、" [*チュートリアル: Azure Time Series Insights Gen2 PAYG 環境の設定*](../time-series-insights/tutorials-set-up-tsi-environment.md)" に関するページを参照してください。
+次に、2 番目のイベント ハブからデータを受信するように Time Series Insights インスタンスを設定します。 以下の手順のようにします。このプロセスの詳細については、"[*チュートリアル: Azure Time Series Insights Gen2 PAYG 環境の設定*](../time-series-insights/tutorials-set-up-tsi-environment.md)" に関するページを参照してください。
 
 1. Azure portal で、Time Series Insights リソースの作成を始めます。 
-    1. **[PAYG (プレビュー)]** 価格レベルを選択します。
-    2. この環境に対する **時系列 ID** を選択する必要があります。 時系列 ID は、Time Series Insights でデータを検索するために使用し、最大 3 つの値を使用できます。 このチュートリアルでは、 **$dtId** を使用できます ID 値の選択について詳しくは、「 [*時系列 ID の選択のベスト プラクティス*](../time-series-insights/how-to-select-tsid.md)」を参照してください。
+    1. **Gen2 (L1)** 価格レベルを選択します。
+    2. この環境に対する **時系列 ID** を選択する必要があります。 時系列 ID は、Time Series Insights でデータを検索するために使用し、最大 3 つの値を使用できます。 このチュートリアルでは、 **$dtId** を使用できます ID 値の選択について詳しくは、「[*時系列 ID の選択のベスト プラクティス*](../time-series-insights/how-to-select-tsid.md)」を参照してください。
     
-        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Time Series Insights が強調して示されている、エンドツーエンドのシナリオでの Azure サービスのビュー":::
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Time Series Insights 環境用の作成ポータル UX。Gen2(L1) 価格レベルが選択されていて、時系列 ID プロパティの名前は $dtId である" lightbox="media/how-to-integrate-time-series-insights/create-twin-id.png":::
 
 2. **[Next:イベント ソース]** を選択し、上記の Event Hubs 情報を選択します。 新しい Event Hubs コンシューマー グループを作成する必要もあります。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="Time Series Insights が強調して示されている、エンドツーエンドのシナリオでの Azure サービスのビュー":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="Time Series Insights 環境イベント ソースの作成ポータル UX。上記のイベント ハブ情報を使用してイベント ソースを作成している。また、新しいコンシュー マーグループも作成している。" lightbox="media/how-to-integrate-time-series-insights/event-source-twins.png":::
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>Azure Digital Twins への IoT データの送信を始める
 
 Time Series Insights へのデータの送信を始めるには、Azure Digital Twins のデジタル ツイン プロパティの変化するデータ値での更新を始める必要があります。 [az dt twin update](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext-azure-iot-az-dt-twin-update) コマンドを使用します。
 
-エンドツーエンドのチュートリアル (「 [*チュートリアル: エンドツーエンドのソリューションの接続*](tutorial-end-to-end.md)」) を使用して環境をセットアップしている場合は、サンプルから *DeviceSimulator* プロジェクトを実行することにより、シミュレートされた IoT データの送信を開始できます。 手順については、チュートリアルの「 [*シミュレーションを構成して実行する*](tutorial-end-to-end.md#configure-and-run-the-simulation)」セクションを参照してください。
+エンドツーエンドのチュートリアル (「[*チュートリアル: エンドツーエンドのソリューションの接続*](tutorial-end-to-end.md)」) を使用して環境をセットアップしている場合は、サンプルから *DeviceSimulator* プロジェクトを実行することにより、シミュレートされた IoT データの送信を開始できます。 手順については、チュートリアルの「[*シミュレーションを構成して実行する*](tutorial-end-to-end.md#configure-and-run-the-simulation)」セクションを参照してください。
 
 ## <a name="visualize-your-data-in-time-series-insights"></a>Time Series Insights でデータを視覚化する
 
@@ -223,19 +179,19 @@ Time Series Insights へのデータの送信を始めるには、Azure Digital 
 
 1. [Azure portal](https://portal.azure.com) で、Time Series Insights インスタンスを開きます (ポータルの検索バーでインスタンスの名前を検索できます)。 インスタンスの概要で示されている *Time Series Insights Explorer URL* にアクセスします。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Time Series Insights が強調して示されている、エンドツーエンドのシナリオでの Azure サービスのビュー":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Time Series Insights 環境の概要タブで Time Series Insights Explorer の URL を選択する":::
 
-2. エクスプローラーの左側に、Azure Digital Twins からの 3 つのツインが表示されます。 _**thermostat67**_ を選択し、 **temperature** を選択して、 **[追加]** をクリックします。
+2. エクスプローラーの左側に、Azure Digital Twins からの 3 つのツインが表示されます。 _**thermostat67**_ を選択し、**temperature** を選択して、 **[追加]** をクリックします。
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Time Series Insights が強調して示されている、エンドツーエンドのシナリオでの Azure サービスのビュー":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="**thermostat67**、**temperature**、**[追加]** の順に選択する":::
 
 3. 次に示すように、サーモスタットからの初期温度の測定値が表示されます。 同じ温度の測定値が *room21* と *floor1* に対して更新され、それらのデータ ストリームを同時に見ることができます。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="Time Series Insights が強調して示されている、エンドツーエンドのシナリオでの Azure サービスのビュー":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="初期温度データが TSI Explorer でグラフ化される。68 から 85 までのランダムな値である":::
 
 4. シミュレーションを長時間実行させておくと、表示は次のようになります。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="Time Series Insights が強調して示されている、エンドツーエンドのシナリオでの Azure サービスのビュー":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="各ツインの気温データが、異なる色の 3 本の平行線でグラフ化される。":::
 
 ## <a name="next-steps"></a>次のステップ
 

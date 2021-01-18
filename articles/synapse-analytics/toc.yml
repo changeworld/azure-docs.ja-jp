@@ -1094,25 +1094,26 @@
     - name: チュートリアル
       items:
         - name: Apache Spark を使用したデータの視覚化
+          displayname: machine learning
           href: ./spark/apache-spark-data-visualization-tutorial.md
-          displayname: machine learning
         - name: 専用 SQL プール向けのスコアリング ウィザードを使用する
-          href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
+          href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
         - name: 自動 ML でコードが不要なモデルをトレーニングする
+          displayname: machine learning
           href: ./machine-learning/tutorial-automl.md
         - name: 自動 ML で Python のモデルをトレーニングする
+          displayname: machine learning
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
-          displayname: machine learning
         - name: Apache Spark MLlib でモデルを作成する
-          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           displayname: machine learning
+          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
+        - name: Azure Synapse 向けの Cognitive Services を構成する
+          href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
         - name: Cognitive Services を使用した感情分析
           href: ./machine-learning/tutorial-cognitive-services-sentiment.md
         - name: Cognitive Services を使用した異常検出
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
-        - name: Azure Synapse 向けの Cognitive Services を構成する
-          href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
 - name: Data Catalog とガバナンス
   items:
     - name: クイックスタート

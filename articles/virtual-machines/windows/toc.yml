@@ -228,7 +228,7 @@
         - name: Disk Storage の予約
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md
         - name: 仮想マシンとディスクのパフォーマンス
-          href: disk-performance-windows.md
+          href: ../disks-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 高パフォーマンス用の設計
           href: ../premium-storage-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: ディスク バースト
@@ -814,10 +814,8 @@
           href: snapshot-copy-managed-disk.md
         - name: Disk Storage の予約
           href: ../disks-reserved-capacity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: 増分スナップショットの作成 - PowerShell
-          href: disks-incremental-snapshots.md
-        - name: 増分スナップショットの作成 - ポータル
-          href: disks-incremental-snapshots-portal.md
+        - name: 増分スナップショットの作成
+          href: ../disks-incremental-snapshots.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 非管理対象ディスクのバックアップ
           href: incremental-snapshots.md
         - name: 暗号化
@@ -851,7 +849,7 @@
             - name: ウルトラ ディスクの使用
               href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: ディスクのベンチマークの実行
-              href: disks-benchmarks.md
+              href: ../disks-benchmarks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: アタッチされていないディスクの検出 - PowerShell
           href: find-unattached-disks.md
         - name: アタッチされていないディスクの検出 - ポータル

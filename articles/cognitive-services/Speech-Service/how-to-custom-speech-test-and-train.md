@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: af5ed0296ce99a4450fffec6b047285307ed0ff2
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: d24565522a75427be04cacfdc20347056a515847
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709301"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070764"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -50,7 +50,7 @@ ms.locfileid: "97709301"
 | [オーディオ + 人間というラベルが付いたトランスクリプト](#audio--human-labeled-transcript-data-for-testingtraining) | はい<br>精度を評価するために使用 | 0.5-5 時間のオーディオ | はい | 1 - 20 時間のオーディオ |
 | [関連するテキスト](#related-text-data-for-training) | いいえ | 該当なし | はい | 1 - 200 MB の関連テキスト |
 
-新しいモデルをトレーニングするときには、[関連テキスト](#related-text-data-for-training)から開始します。 このデータでは、特殊な用語や語句の認識が既に改善されています。
+新しいモデルをトレーニングするときには、[関連テキスト](#related-text-data-for-training)から開始します。 このデータでは、特殊な用語や語句の認識が既に改善されています。 テキストを使用したトレーニングは、オーディオによるトレーニングよりもはるかに高速です (分単位と日単位)。
 
 ファイルは、型別にデータセットにグループ化し、ZIP ファイルとしてアップロードする必要があります。 各データセットには、1 つのデータの種類のみを含めることができます。
 
@@ -138,7 +138,9 @@ ms.locfileid: "97709301"
 > [!div class="mx-imgBorder"]
 > ![Speech ポータルからオーディオを選択する](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
-Speech サービスのサブスクリプションで推奨されるリージョンの一覧については、「[Azure アカウントの設定](custom-speech-overview.md#set-up-your-azure-account)」をご覧ください。 これらのリージョンのいずれかで Speech サブスクリプションを設定すると、モデルのトレーニングにかかる時間が短縮されます。
+Speech サービスのサブスクリプションで推奨されるリージョンの一覧については、「[Azure アカウントの設定](custom-speech-overview.md#set-up-your-azure-account)」をご覧ください。 これらのリージョンのいずれかで Speech サブスクリプションを設定すると、モデルのトレーニングにかかる時間が短縮されます。 他のリージョンでトレーニングによって処理できるオーディオが 1 日 1 時間のみであるのに対し、これらのリージョンでは、1 日 10 時間程度のオーディオ処理を行うことができます。 1 週間以内にモデル トレーニングを完了できない場合、モデルは失敗とマークされます。
+
+すべての基本モデルでオーディオ データを使用したトレーニングがサポートされるわけではありません。 基本モデルでサポートされていない場合、サービスではオーディオが無視され、文字起こしされたテキストのみでトレーニングが行われます。 この場合、トレーニングは、関連するテキストを使用したトレーニングと同じになります。
 
 ## <a name="related-text-data-for-training"></a>トレーニング用の関連するテキスト データ
 
@@ -150,6 +152,8 @@ Speech サービスのサブスクリプションで推奨されるリージョ�
 | 発音 | 一般的でない用語、略語、またはその他の発音が定義されていない単語の発音を向上させることができます。 |
 
 発話は、1 つまたは複数のテキスト ファイルとして提供できます。 正確性を高めるには、読み上げられる発話に近いテキスト データを使用します。 発音は、1 つのテキスト ファイルとして指定する必要があります。 すべてを 1つの zip ファイルとしてパッケージ化し、<a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech ポータル <span class="docon docon-navigate-external x-hidden-focus"></span></a>にアップロードできます。
+
+通常、関連するテキストを使用したトレーニングは数分で完了します。
 
 ### <a name="guidelines-to-create-a-sentences-file"></a>発話ファイルを作成するためのガイドライン
 

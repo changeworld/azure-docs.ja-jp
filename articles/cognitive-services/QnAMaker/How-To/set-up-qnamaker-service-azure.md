@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 83917214705546b21553e997ccab11a7511f77fd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: af9087f0dd45212ec88b620dcd965c895b86bbce
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353308"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108194"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker のリソースを管理する
 
@@ -128,12 +128,18 @@ QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成
 詳しくは、App Service の[一般設定](../../../app-service/configure-common.md#configure-general-settings)を構成する方法をご覧ください。
 
 ### <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>QnA Maker App Service をホストするように App Service Environment を構成する
-App Service Environment を使用して、QnA Maker App Service をホストできます。 App Service Environment が内部の場合は、これらの手順を実行する必要があります。
-1. アプリ サービスと Azure Search サービスを作成します。
-2. アプリ サービスを公開し、QnA Maker の利用を次のように許可します。
-    * 一般公開 - 既定
-    * DNS サービス タグ: `CognitiveServicesManagement`
-3. Azure Resource Manager を使用して QnA Maker Cognitive Services インスタンス (Microsoft.CognitiveServices/accounts) を作成します。QnA Maker エンドポイントは App Service Environment に設定する必要があります。
+App Service Environment (ASE) を使用して、QnA Maker App Service をホストできます。 次の手順に従ってください。
+
+1. App Service Environment を作成し、"外部" としてマークします。 手順については、[チュートリアル](https://docs.microsoft.com/azure/app-service/environment/create-external-ase)を参照してください。
+2.  App Service Environment 内に App Service を作成します。
+    * App Service の構成を確認し、アプリケーション設定として "PrimaryEndpointKey" を追加します。 'PrimaryEndpointKey' の値は、“\<app-name\>-PrimaryEndpointKey” に設定されている必要があります。 アプリ名は、App Service の URL で定義されています。 たとえば、App Service の URL が "mywebsite.myase.p.azurewebsite.net" の場合、アプリ名は "mywebsite" になります。 この場合、'PrimaryEndpointKey' の値は “mywebsite-PrimaryEndpointKey” に設定されている必要があります。
+    * Azure Search サービスを作成します。
+    * Azure Search とアプリの設定が適切に構成されていることを確認します。 
+      この[チュートリアル](https://docs.microsoft.com/azure/cognitive-services/qnamaker/reference-app-service?tabs=v1#app-service)を参照してください。
+3.  App Service Environment に関連付けられているネットワーク セキュリティ グループを更新します。
+    * 事前に作成された受信セキュリティ規則を要件に従って更新します。
+    * ソースが 'Service Tag'、ソース サービス タグが 'CognitiveServicesManagement' の新しい受信セキュリティ規則を追加します。
+4.  Azure Resource Manager を使用して QnA Maker Cognitive Services インスタンス (Microsoft.CognitiveServices/accounts) を作成します。QnA Maker エンドポイントは上記で作成した App Service Environment (https:// mywebsite.myase.p.azurewebsite.net) に設定する必要があります。
 
 ### <a name="network-isolation-for-app-service"></a>App Service のためのネットワークの分離
 
@@ -329,7 +335,7 @@ QnA Maker リソースの作成中に検索インスタンスが作成される�
 1. エンドポイント接続 (データ) が "_プライベート_" に設定された新しい Cognitive Search リソースを作成します。 このリソースは、手順 1. で作成した QnA Maker リソースと同じリージョンに作成します。 [Cognitive Search リソースの作成](../../../search/search-create-service-portal.md)について理解を深めてから、こちらのリンクを使用して[リソースの作成ページ](https://ms.portal.azure.com/#create/Microsoft.Search)に直接移動します。
 1. 新しい[仮想ネットワーク リソース](https://ms.portal.azure.com/#create/Microsoft.VirtualNetwork-ARM)を作成します。
 1. この手順の手順 1. で作成した App Service リソース上に VNET を構成します。
-    1. 手順 2. で作成した新しい Cognitive Search リソース用に、Cognitive Search の IP アドレスへの新しい DNS エントリを VNET に作成します。 to the Cognitive Search IP address.
+    1. 手順 2. で作成した新しい Cognitive Search リソース用に、Cognitive Search の IP アドレスへの新しい DNS エントリを VNET に作成します。 。
 1. 手順 2. で作成した[新しい Cognitive Search リソースに App Service を関連付け](#configure-qna-maker-to-use-different-cognitive-search-resource)ます。 その後は、手順 1. で作成した元の Cognitive Search リソースを削除してかまいません。
 
 [QnA Maker ポータル](https://www.qnamaker.ai/)で、初めてのナレッジ ベースを作成します。

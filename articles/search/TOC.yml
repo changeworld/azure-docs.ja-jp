@@ -308,10 +308,10 @@
       items:
         - name: レベルの選択
           href: search-sku-tier.md
-        - name: 容量とコストの見積もり
-          href: search-sku-manage-costs.md
-        - name: 容量の調整
+        - name: 容量の見積もりと管理
           href: search-capacity-planning.md
+        - name: コストの見積もり
+          href: search-sku-manage-costs.md
         - name: サービスの制限
           href: search-limits-quotas-capacity.md
         - name: パフォーマンスのためのスケール

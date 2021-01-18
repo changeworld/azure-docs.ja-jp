@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: a78e18de1f495feb6234fa5bfd97162d8b80de4c
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: a6f75a80fd73844c975b332db8a0e8919cde9f0d
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857326"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072175"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>音声テキスト変換についてよく寄せられる質問
 
@@ -134,11 +134,13 @@ ms.locfileid: "97857326"
 
 **A**: はい。 ご自身で文字に起こすか、プロの文字起こしサービスを利用してください。 プロの筆記者を好むユーザーもいれば、クラウドソーシングを使用したり、または自分で文字起こししたりするユーザーもいます。
 
-**Q:カスタム モデル オーディオ データのトレーニングにはどのくらいの時間がかかりますか。**
+**Q:オーディオ データを使用したカスタム モデルのトレーニングにはどのくらいの時間がかかりますか。**
 
-**A**: オーディオ データを使用したモデルのトレーニングは、時間のかかるプロセスです。 データの量によっては、カスタム モデルの作成に数日かかる場合があります。 1 週間以内に完了できない場合、サービスはトレーニング操作を中止し、モデルを失敗として報告することがあります。 結果を最も早く得るには、トレーニングに専用のハードウェアを使用できる[リージョン](custom-speech-overview.md#set-up-your-azure-account)のいずれかを使用します。 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) を使用して、完全にトレーニングされたモデルを別のリージョンにコピーできます。 テキストだけでトレーニングを行う方がはるかに高速で、通常は数分で完了します。
+**A**: オーディオ データを使用したモデルのトレーニングには、時間がかかる可能性があります。 データの量によっては、カスタム モデルの作成に数日かかる場合があります。 1 週間以内に完了できない場合、サービスはトレーニング操作を中止し、モデルを失敗として報告することがあります。
 
-一部の基本モデルは、オーディオ データを使用してカスタマイズすることができません。 それらでは、サービスはトレーニングのために文字起こしのテキストのみを使用し、オーディオ データは破棄します。 このとき、トレーニングがはるかに高速に完了し、テキストだけのトレーニングと同じ結果になります。
+結果を最も早く得るには、トレーニングに専用のハードウェアを使用できる[リージョン](custom-speech-overview.md#set-up-your-azure-account)のいずれかを使用します。 一般には、このようなハードウェアが導入されているリージョンでは、1 日あたり約 10 時間のオーディオ データを処理しています。 他のリージョンでは、1 日当たり 1 時間程度のオーディオ データしか処理できません。 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) を使用して、完全にトレーニングされたモデルを別のリージョンにコピーできます。 テキストだけでトレーニングを行う方がはるかに高速で、通常は数分で完了します。
+
+一部の基本モデルは、オーディオ データを使用してカスタマイズすることができません。 それらでは、サービスはトレーニングのために文字起こしのテキストのみを使用し、オーディオ データは無視します。 このとき、トレーニングがはるかに高速に完了し、テキストだけのトレーニングと同じ結果になります。
 
 ## <a name="accuracy-testing"></a>正確性のテスト
 

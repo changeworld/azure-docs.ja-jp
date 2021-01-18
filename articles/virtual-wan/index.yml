@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: cherylmc
   ms.author: cherylmc
-  ms.date: 08/19/2020
-  ms.openlocfilehash: 772fa134eabc45dcbaa9e9b05c573aec493dd57b
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 01/15/2020
+  ms.openlocfilehash: 3aaf42935e292bda64d9227d01f498c83f4c9f7a
+  ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89438160"
+  ms.lasthandoff: 01/16/2021
+  ms.locfileid: "98250776"
 landingContent:
 - title: Virtual WAN について
   linkLists:
@@ -75,12 +75,14 @@ landingContent:
       url: about-virtual-hub-routing.md
     - text: シナリオ - NVA を経由するトラフィックのルーティング
       url: scenario-route-through-nva.md
-    - text: シナリオ - 任意の環境間
+    - text: シナリオ - 任意のスポークから任意のスポーク
       url: scenario-any-to-any.md
     - text: シナリオ - VNet の分離
       url: scenario-isolate-vnets.md
-    - text: シナリオ - 共有サービスの VNet
+    - text: シナリオ - 共有サービスの VNet へのルーティング
       url: scenario-shared-services-vnet.md
+    - text: シナリオ - Azure Firewall を使用したカスタム ルーティング
+      url: scenario-route-between-vnets-firewall.md
   - linkListType: how-to-guide
     links:
     - text: 仮想ハブのルーティングを構成する

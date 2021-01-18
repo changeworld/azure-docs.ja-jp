@@ -10,39 +10,43 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: ed57c496443c9d1541bfa9933e7718213da116d7
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 1fd4279cd35e54e2e04f88973c4a825218a75142
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845611"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131129"
 ---
-# <a name="business-card-concepts"></a>名刺の概念
+# <a name="form-recognizer-prebuilt-business-cards-model"></a>Form Recognizer の事前構築済みの名刺モデル 
 
-Azure Form Recognizer では、事前構築済みモデルの 1 つを使用して、名刺から連絡先情報を分析して抽出できます。 Business Card API は、強力な光学式文字認識 (OCR) 機能と名刺解釈モデルを組み合わせて、英語の名刺から重要な情報を抽出します。 抽出されるのは、個人の連絡先情報、会社名、役職などです。 Form Recognizer v2.1 プレビューで事前構築済み Business Card API が公開されています。 
+Azure Form Recognizer では、事前構築済みの名刺モデルを使用して、名刺から連絡先情報を分析して抽出できます。 これは、強力な光学式文字認識 (OCR) 機能と名刺解釈モデルを組み合わせて、英語の名刺から重要な情報を抽出します。 抽出されるのは、個人の連絡先情報、会社名、役職などです。 Form Recognizer v2.1 プレビューで事前構築済み Business Card API が公開されています。 
 
-## <a name="what-does-the-business-card-api-do"></a>Business Card API の機能
+## <a name="what-does-the-business-card-service-do"></a>名刺サービスにはどのような機能がありますか。
 
-Business Card API は、名刺からキー フィールドを抽出し、それを構成済みの JSON 応答で返します。
+事前構築済みの Business Card API は、名刺からキー フィールドを抽出し、それを構成済みの JSON 応答で返します。
 
-![FOTT + JSON 出力からの Contoso の明細画像](./media/business-card-english.jpg)
+![FOTT + JSON 出力からの Contoso の明細画像](./media/business-card-example.jpg)
+
+
 
 ### <a name="fields-extracted"></a>抽出されるフィールド:
 
-* 連絡先の名前 
-  * 名
-  * 姓
-* 会社名 
-* Departments 
-* 役職 
-* メール 
-* Websites 
-* アドレス 
-* 電話番号 
-  * 携帯電話 
-  * Fax 
-  * 勤務先の電話 
-  * その他の電話 
+|名前| Type | 説明 | Text | 
+|:-----|:----|:----|:----|
+| ContactNames | オブジェクトの配列 | 名刺から抽出された連絡先の名前 | [{ "FirstName":"John", "LastName":"Doe" }] |
+| FirstName | string | 連絡先の名 | "John" | 
+| LastName | string | 連絡先の姓 |   "Doe" | 
+| CompanyNames | 文字列の配列 | 名刺から抽出された会社名 | ["Contoso"] | 
+| Departments | 文字列の配列 | 連絡先の部署または組織 | ["R&D"] | 
+| JobTitles | 文字列の配列 | リストされている連絡先の役職 | ["Software Engineer"] | 
+| メール | 文字列の配列 | 名刺から抽出された連絡先のメールアドレス | ["johndoe@contoso.com"] | 
+| Websites | 文字列の配列 | 名刺から抽出された Web サイト | ["https://www.contoso.com"] | 
+| アドレス | 文字列の配列 | 名刺から抽出された住所 | ["123 Main Street, Redmond, WA 98052"] | 
+| MobilePhones | 電話番号の配列 | 名刺から抽出された携帯電話番号 | ["+19876543210"] |
+| Fax | 電話番号の配列 | 名刺から抽出された Fax 電話番号 | ["+19876543211"] |
+| WorkPhones | 電話番号の配列 | 名刺から抽出された勤務先電話番号 | ["+19876543231"] |
+| OtherPhones    | 電話番号の配列 | 名刺から抽出されたその他の電話番号 | ["+19876543233"] |
+
 
 また、Business Card API では、名刺から認識されたすべてのテキストを返すこともできます。 この OCR 出力は JSON 応答に含まれています。  
 

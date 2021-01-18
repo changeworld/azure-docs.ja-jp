@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
-ms.openlocfilehash: b3e9c1e8ad23ea0ebf540eddbd6d4a03b8a72fe2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 1a002b6efbe2603ae254c19f9e3cc7377198cea2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835076"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935820"
 ---
 # <a name="develop-custom-commands-applications"></a>Custom Commands アプリケーションを開発する
 
@@ -178,7 +178,7 @@ ms.locfileid: "97835076"
    1. **[Update]\(更新\)** を選択します。
 
        > [!div class="mx-imgBorder"]
-       > ![必須パラメーターの応答を作成する場所を示すスクリーンショット。](media/custom-commands/add-required-on-off-parameter-response.png)
+       > ![[Simple editor]\(シンプルなエディター\) タブが選択されている [Add response for a required parameter]\(必須パラメーターの応答追加\) セクションを示すスクリーンショット。](media/custom-commands/add-required-on-off-parameter-response.png)
    
    1. 次の表を使用して、パラメーターのプロパティを構成します。 コマンドのすべての構成プロパティの詳細については、「[カスタム コマンドの概念と定義](./custom-commands-references.md)」を参照してください。
       

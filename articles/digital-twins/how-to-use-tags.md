@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c2620b52c426871b0ec85e3db237be2d373d42f1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9a1a55bdf21b74116450ca32f66d891f1aa206d3
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458691"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045412"
 ---
 # <a name="add-tags-to-digital-twins"></a>デジタル ツインにタグを追加する 
 
@@ -32,23 +32,7 @@ ms.locfileid: "96458691"
 
 マーカー タグをプロパティとして実装するツイン モデルの抜粋を次に示します。
 
-```json
-{
-  "@type": "Property",
-  "name": "tags",
-  "schema": {
-    "@type": "Map",
-    "mapKey": {
-      "name": "tagName",
-      "schema": "string"
-    },
-    "mapValue": {
-      "name": "tagValue",
-      "schema": "boolean"
-    }
-  }
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/tags.json" range="2-16":::
 
 ### <a name="add-marker-tags-to-digital-twins"></a>デジタルツインにマーカー タグを追加する
 
@@ -56,11 +40,7 @@ ms.locfileid: "96458691"
 
 3 つのツインにマーカー `tags` を設定する例を次に示します。
 
-```csharp
-entity-01: "tags": { "red": true, "round": true } 
-entity-02: "tags": { "blue": true, "round": true } 
-entity-03: "tags": { "red": true, "large": true } 
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesMarker":::
 
 ### <a name="query-with-marker-tags"></a>マーカー タグを使用したクエリ
 
@@ -68,15 +48,11 @@ entity-03: "tags": { "red": true, "large": true }
 
 "Red" とタグ付けされているすべてのツインを取得するクエリを次に示します。 
 
-```sql
-SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
 さらに複雑なクエリの場合は、タグを組み合わせることもできます。 red ではなく、round であるすべてのツインを取得するクエリを次に示します。 
 
-```sql
-SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND is_defined(tags.round) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags2":::
 
 ## <a name="value-tags"></a>値タグ 
 
@@ -88,23 +64,7 @@ SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND is_defined(tags.ro
 
 値タグをプロパティとして実装するツイン モデルの抜粋を次に示します。
 
-```json
-{
-  "@type": "Property",
-  "name": "tags",
-  "schema": {
-    "@type": "Map",
-    "mapKey": {
-      "name": "tagName",
-      "schema": "string"
-    },
-    "mapValue": {
-      "name": "tagValue",
-      "schema": "string"
-    }
-  }
-} 
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/tags.json" range="17-31":::
 
 ### <a name="add-value-tags-to-digital-twins"></a>デジタル ツインに値タグを追加する
 
@@ -112,11 +72,7 @@ SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND is_defined(tags.ro
 
 3 つのツインに値 `tags` を設定する例を次に示します。
 
-```csharp
-entity-01: "tags": { "red": "", "size": "large" } 
-entity-02: "tags": { "purple": "", "size": "small" } 
-entity-03: "tags": { "red": "", "size": "small" } 
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesValue":::
 
 この例では、`red` と `purple` がマーカー タグとして使用されていることに注意してください。
 
@@ -124,17 +80,13 @@ entity-03: "tags": { "red": "", "size": "small" }
 
 マーカー タグの場合と同様に、値タグを使用してクエリでツインをフィルター処理できます。 値タグとマーカー タグを一緒に使用することもできます。
 
-上記の例では、`red` がマーカー タグとして使用されています。 "Red" とタグ付けされているすべてのツインを取得するクエリを次に示します。 
+上記の例では、`red` がマーカー タグとして使用されています。 これは、"red" とタグ付けされているすべてのツインを取得するクエリであることに注意してください。 
 
-```sql
-SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
 red ではなく、small (値タグ) であるすべてのエンティティを取得するクエリを次に示します。 
 
-```sql
-SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND tags.size = 'small' 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerValueTags":::
 
 ## <a name="next-steps"></a>次のステップ
 

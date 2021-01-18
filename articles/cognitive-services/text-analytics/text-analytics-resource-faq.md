@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 01/05/2021
 ms.author: aahi
-ms.openlocfilehash: ffa70afa0edf29181bc622cbef6ff8716134b1f7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9a4e179767cc38169cd794f4cd629604bdcdaab0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364940"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955044"
 ---
-# <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Text Analytics Cognitive Service に関してよく寄せられる質問 (FAQ)
+# <a name="frequently-asked-questions-faq-about-the-text-analytics-api"></a>Text Analytics API に関してよく寄せられる質問 (FAQ)
 
- Azure の Microsoft Cognitive Services Text Analytics API に関連する概念、コード、シナリオについてよく寄せられる質問に対する回答を示します。
+ Azure Cognitive Services の Text Analytics API に関連する概念、コード、およびシナリオについてよく寄せられる質問に対する回答を示します。
 
 ## <a name="can-text-analytics-identify-sarcasm"></a>テキスト分析では、皮肉を理解できますか。
 
@@ -47,11 +47,21 @@ ms.locfileid: "94364940"
 
 大きな変更が行われる場合、モデルとアルゴリズムの改良が告知されます。あるいは、重大な更新でなければ、告知されずにサービスに組み込まれます。 ある程度の時間が経過すると、同じテキストを入力したのに、感情スコアやキー フレーズ出力が異なることがあります。 クラウドで管理されている機械学習リソースを利用している結果であり、異常ではありません。
 
+## <a name="service-availability-and-redundancy"></a>サービスの可用性と冗長性
+
+### <a name="is-text-analytics-service-zone-resilient"></a>Text Analytics サービスにゾーン回復性はありますか。
+
+はい。 Text Analytics サービスには、ゾーン回復性が既定で備わっています。
+
+### <a name="how-do-i-configure-the-text-analytics-service-to-be-zone-resilient"></a>Text Analytics サービスにゾーン回復性を構成するにはどうすればよいですか。
+
+ゾーン回復性を有効にするために、顧客による構成は必要ありません。 Text Analytics リソースのゾーン回復性は、既定で使用できるようになっており、サービス自体によって管理されます。
+
 ## <a name="next-steps"></a>次のステップ
 
 不足している機能について質問がある場合は、 [UserVoice Web サイト](https://cognitive.uservoice.com/forums/555922-text-analytics)でご要望またはご投票ください。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
- [StackOverflow: Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ * [StackOverflow: Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ * [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

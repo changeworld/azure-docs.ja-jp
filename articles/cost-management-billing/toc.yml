@@ -188,16 +188,6 @@
               href: manage/pay-by-invoice.md
             - name: 追加のサブスクリプションを作成する
               href: manage/create-subscription.md
-            - name: プログラムによる EA サブスクリプションの作成
-              href: manage/programmatically-create-subscription-enterprise-agreement.md
-            - name: プログラムによる MCA サブスクリプションの作成
-              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
-            - name: プログラムによる MPA サブスクリプションの作成
-              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: サブスクリプションを作成する - ARM テンプレート
-              href: manage/create-subscription-template.md
-            - name: プログラムによるサブスクリプションの作成 - プレビュー
-              href: manage/programmatically-create-subscription-preview.md
             - name: EA サブスクリプションを作成するためのアクセスを許可する
               href: manage/grant-access-to-create-subscription.md
             - name: サブスクリプション情報のエクスポート
@@ -214,6 +204,20 @@
               href: manage/transfer-subscriptions-subscribers-csp.md
             - name: サブスクリプションを取り消す
               href: manage/cancel-azure-subscription.md
+        - name: プログラムによってサブスクリプションを作成する
+          items:
+            - name: プログラムによってサブスクリプションを作成する
+              href: manage/programmatically-create-subscription.md
+            - name: プログラムによる EA サブスクリプションの作成
+              href: manage/programmatically-create-subscription-enterprise-agreement.md
+            - name: プログラムによる MCA サブスクリプションの作成
+              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
+            - name: プログラムによる MPA サブスクリプションの作成
+              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
+            - name: サブスクリプションを作成する - ARM テンプレート
+              href: manage/create-subscription-template.md
+            - name: プログラムによるサブスクリプションの作成 - プレビュー API
+              href: manage/programmatically-create-subscription-preview.md
         - name: Enterprise Agreement サブスクリプションの管理
           items:
             - name: Azure における EA のロール

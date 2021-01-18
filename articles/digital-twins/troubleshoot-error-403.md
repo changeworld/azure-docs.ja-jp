@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: aeae1f1a99d1fa574df8202efd2405232855628b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1517c066fe20d478094f57d85d6e27f355a93601
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091805"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049815"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>サービス要求が失敗しました。 状態:403 (許可されていません)
 
@@ -25,7 +25,7 @@ ms.locfileid: "93091805"
 
 ### <a name="cause-1"></a>原因 #1
 
-多くの場合、このエラーは、サービスに対して Azure ロールベースのアクセス制御 (Azure RBAC) のアクセス許可が正しく設定されていないことを示しています。 Azure Digital Twins インスタンスの多くのアクションを行うには、 **管理しようとしているインスタンス** に対して、" *Azure Digital Twins データ所有者* " ロールを保持している必要があります。 
+多くの場合、このエラーは、サービスに対して Azure ロールベースのアクセス制御 (Azure RBAC) のアクセス許可が正しく設定されていないことを示しています。 Azure Digital Twins インスタンスの多くのアクションを行うには、**管理しようとしているインスタンス** に対して、"*Azure Digital Twins データ所有者*" ロールを保持している必要があります。 
 
 [!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
@@ -39,12 +39,12 @@ ms.locfileid: "93091805"
 
 ### <a name="solution-1"></a>解決策 #1
 
-1 つ目の解決策として、管理しようとしているインスタンスに対して、Azure ユーザーが " _**Azure Digital Twins データ所有者**_ " ロールを保持していることを確認します。 このロールがない場合は、設定します。
+1 つ目の解決策として、管理しようとしているインスタンスに対して、Azure ユーザーが "_**Azure Digital Twins データ所有者**_" ロールを保持していることを確認します。 このロールがない場合は、設定します。
 
 このロールは以下とは異なることに注意してください。
-* 以前、プレビュー期間中に付けられていたこのロールの名前 " *Azure Digital Twins 所有者 (プレビュー)* " (ロールは同じですが、名前が変更されています)
-* Azure サブスクリプション全体に対する " *所有者* " ロール。 " *Azure Digital Twins データ所有者* " は、Azure Digital Twins 内のロールであり、この個別の Azure Digital Twins インスタンスにスコープが設定されています。
-* Azure Digital Twins での " *所有者* " ロール。 これらは 2 つの個別の Azure Digital Twins 管理ロールであり、" *Azure Digital Twins データ所有者* " はプレビュー期間中の管理に使用する必要があるロールです。
+* 以前、プレビュー期間中に付けられていたこのロールの名前 "*Azure Digital Twins 所有者 (プレビュー)* " (ロールは同じですが、名前が変更されています)
+* Azure サブスクリプション全体に対する "*所有者*" ロール。 "*Azure Digital Twins データ所有者*" は、Azure Digital Twins 内のロールであり、この個別の Azure Digital Twins インスタンスにスコープが設定されています。
+* Azure Digital Twins での "*所有者*" ロール。 これらは 2 つの個別の Azure Digital Twins 管理ロールであり、"*Azure Digital Twins データ所有者*" は管理に使用する必要があるロールです。
 
 #### <a name="check-current-setup"></a>現在の設定を確認する
 
@@ -52,7 +52,7 @@ ms.locfileid: "93091805"
 
 #### <a name="fix-issues"></a>問題を修正する 
 
-このロールが割り当てられていない場合は、 **Azure サブスクリプション** 内で所有者ロールを保持するユーザーが次のコマンドを実行して、Azure ユーザーに **Azure Digital Twins インスタンス** 上での " *Azure Digital Twins データ所有者* " ロールを付与します。 
+このロールが割り当てられていない場合は、**Azure サブスクリプション** 内で所有者ロールを保持するユーザーが次のコマンドを実行して、Azure ユーザーに **Azure Digital Twins インスタンス** 上での "*Azure Digital Twins データ所有者*" ロールを付与します。 
 
 サブスクリプション上でご自身が所有者になっている場合は、このコマンドを自分で実行できます。 そうでない場合は、所有者に連絡して、このコマンドを代わりに実行してもらいます。
 
@@ -60,9 +60,9 @@ ms.locfileid: "93091805"
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
-このロールの要件と割り当てプロセスの詳細については、「 [*ユーザーのアクセス許可の設定* 」セクション](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)を参照してください。" *方法:インスタンスと認証を設定する (CLI またはポータル)* " に関するページに含まれています
+このロールの要件と割り当てプロセスの詳細については、「[*ユーザーのアクセス許可の設定*」セクション](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)を参照してください。"*方法:インスタンスと認証を設定する (CLI またはポータル)* " に関するページに含まれています
 
-このロールが既に割り当てられており、" *かつ* " クライアント アプリを認証するために Azure AD アプリ登録を使用しており、この解決策で 403 の問題が解決されなかった場合は、次の解決策に進むことができます。
+このロールが既に割り当てられており、"*かつ*" クライアント アプリを認証するために Azure AD アプリ登録を使用しており、この解決策で 403 の問題が解決されなかった場合は、次の解決策に進むことができます。
 
 ### <a name="solution-2"></a>解決策 #2
 
@@ -70,7 +70,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 #### <a name="check-current-setup"></a>現在の設定を確認する
 
-アクセス許可が正しく構成されたかどうかを確認するには、Azure portal の [Azure AD アプリ登録の概要ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)に移動します。 ポータルの検索バーで " *アプリの登録* " を検索することで、このページにアクセスできます。
+アクセス許可が正しく構成されたかどうかを確認するには、Azure portal の [Azure AD アプリ登録の概要ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)に移動します。 ポータルの検索バーで "*アプリの登録*" を検索することで、このページにアクセスできます。
 
 *[すべてのアプリケーション]* タブに切り替えると、サブスクリプションで作成されたすべてのアプリ登録が表示されます。
 
@@ -88,7 +88,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 #### <a name="fix-issues"></a>問題を修正する
 
-これが説明とは異なる表示になっている場合は、 [" *アプリ登録を作成する方法* "](how-to-create-app-registration.md) に関するページを参照して、アプリ登録を設定する方法の手順に従います。
+これが説明とは異なる表示になっている場合は、["*アプリ登録を作成する方法*"](how-to-create-app-registration.md) に関するページを参照して、アプリ登録を設定する方法の手順に従います。
 
 ## <a name="next-steps"></a>次のステップ
 
