@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 28e70a5d5a6ac4cd51f5ed3fc85afd47a5af68d8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: fa6cdeaa47c7fdf9e90cdab96397473d8498afa0
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033274"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108706"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
@@ -176,6 +176,39 @@ titanic_ds.take(3).to_pandas_dataframe()
 2|3|True|3|Heikkinen, Miss. Laina|female|26.0|0|0|STON/O2. 3101282|7.9250||S
 
 ワークスペースの実験間でデータセットを再利用および共有するには、[データセットを登録](#register-datasets)します。
+
+
+## <a name="explore-data"></a>データの探索
+
+データセットを作成して[登録](#register-datasets)したら、モデルのトレーニングの前に、データ探索用のノートブックにそれを読み込むことができます。 データ探索を実行する必要がない場合は、[データセットを使用したトレーニング](how-to-train-with-datasets.md)に関する記事に記載されている、ML 実験の送信用のトレーニング スクリプトでデータセットを使用する方法について参照してください。
+
+FileDatasets の場合は、データセットを **マウント** または **ダウンロード** して、データ探索に通常使用する python ライブラリを適用します。 [マウントとダウンロードの詳細情報](how-to-train-with-datasets.md#mount-vs-download)。
+
+```python
+# download the dataset 
+dataset.download(target_path='.', overwrite=False) 
+
+# mount dataset to the temp directory at `mounted_path`
+
+import tempfile
+mounted_path = tempfile.mkdtemp()
+mount_context = dataset.mount(mounted_path)
+
+mount_context.start()
+```
+
+TabularDatasets の場合は、[`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) メソッドを使用して、データフレーム内のデータを表示します。 
+
+```python
+# preview the first 3 rows of titanic_ds
+titanic_ds.take(3).to_pandas_dataframe()
+```
+
+|(インデックス)|PassengerId|Survived|Pclass|名前|Sex|Age|SibSp|Parch|Ticket|Fare|Cabin|Embarked
+-|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
+0|1|False|3|Braund, Mr. Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
+1|2|True|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|female|38.0|1|0|PC 17599|71.2833|C85|C
+2|3|True|3|Heikkinen, Miss. Laina|female|26.0|0|0|STON/O2. 3101282|7.9250||S
 
 ## <a name="create-a-dataset-from-pandas-dataframe"></a>Pandas データフレーム からデータセットを作成する
 

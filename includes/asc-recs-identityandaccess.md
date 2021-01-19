@@ -1,0 +1,34 @@
+---
+author: memildin
+ms.service: security-center
+ms.topic: include
+ms.date: 01/12/2021
+ms.author: memildin
+ms.custom: generated
+ms.openlocfilehash: 7b915a8ac22ab3b9393531c5130fd466e378e94c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133085"
+---
+このカテゴリには **15 個** の推奨事項があります。
+
+|推奨 |Description |重大度 |
+|---|---|---|
+|最大 3 人の所有者をサブスクリプションに対して指定する必要がある |セキュリティ侵害を受けた所有者アカウントによる侵害の可能性を低減するために、所有者アカウントの数を最大 3 つに制限することをお勧めします。<br />(関連ポリシー:[サブスクリプションには最大 3 人の所有者を指定する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4f11b553-d42e-4e3a-89be-32ca364cad4c)) |高 |
+|Azure Defender for Key Vault を有効にする必要がある |Azure Security Center には、Azure Defender for Key Vault が含まれており、セキュリティ インテリジェンスのレイヤーが追加されます。<br>Azure Defender for Key Vault によって、異常であり、害を及ぼす可能性のある、Key Vault アカウントに対するアクセスまたは悪用の試みが検出されます。<br><br>重要:この推奨事項の修復によって、キー コンテナーを保護するための料金が発生します。 このサブスクリプションにキー コンテナーがない場合、料金は発生しません。<br>今後、このサブスクリプションにキー コンテナーを作成すると、それらは自動的に保護され、その時点で料金が発生します。<br> <a href='https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault'>Azure Defender for Key Vault の詳細をご覧ください。</a><br />(関連ポリシー:[Azure Defender for Key Vault を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)) |高 |
+|非推奨のアカウントをサブスクリプションから削除する必要がある |サインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。<br>これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br />(関連ポリシー:[非推奨のアカウントをサブスクリプションから削除する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6b1cbf55-e8b6-442f-ba4c-7246b6381474)) |高 |
+|所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある |サインインがブロックされているユーザー アカウントは、サブスクリプションから削除する必要があります。<br>これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br />(関連ポリシー:[所有者アクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2febb62a0c-3560-49e1-89ed-27e074e9f8ad)) |高 |
+|Key Vault で診断ログを有効にする必要がある |ログを有効にし、それらを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡を再作成できます。<br />(関連ポリシー:[Key Vault における診断ログを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcf820ca0-f99e-4f3e-84fb-66e913812d21)) |低 |
+|所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある |所有者アクセス許可を持つ、ドメイン名が異なるアカウント (外部アカウント) は、サブスクリプションから削除する必要があります。 これにより、監視されていないアクセスを防止できます。 これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br />(関連ポリシー:[所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff8456c1c-aa66-4dfb-861a-25d127b775c9)) |高 |
+|読み取りアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある |読み取りアクセス許可を持つ、ドメイン名が異なるアカウント (外部アカウント) は、サブスクリプションから削除する必要があります。 これにより、監視されていないアクセスを防止できます。 これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br />(関連ポリシー:[読み取りアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5f76cf89-fbf2-47fd-a3f4-b891fa780b60)) |高 |
+|書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある |書き込みアクセス許可を持つ、ドメイン名が異なるアカウント (外部アカウント) は、サブスクリプションから削除する必要があります。 これにより、監視されていないアクセスを防止できます。 これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br />(関連ポリシー:[書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5c607a2e-c700-4744-8254-d77e7c9eb5e4)) |高 |
+|サブスクリプションで所有者アクセス許可を持つアカウントに対して MFA を有効にする必要がある |アカウントまたはリソースに対する侵害を防止するために、所有者としてのアクセス許可を持つすべてのサブスクリプション アカウントで多要素認証 (MFA) を有効にする必要があります。<br />(関連ポリシー:[サブスクリプションで所有者アクセス許可を持つアカウントに対して MFA を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2faa633080-8b72-40c4-a2d7-d00c03e80bed)) |高 |
+|サブスクリプションに対する読み取りアクセス許可を持つアカウントに対して MFA を有効にする必要がある |アカウントまたはリソースの侵害を防止するために、読み取り権限を持つすべてのサブスクリプション アカウントで多要素認証 (MFA) を有効にする必要があります。<br />(関連ポリシー:[サブスクリプションに対する読み取りアクセス許可を持つアカウントに対して MFA を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fe3576e28-8b17-4677-84c3-db2990658d64)) |高 |
+|サブスクリプションに対する書き込みアクセス許可を持つアカウントに対して MFA を有効にする必要がある |アカウントまたはリソースに対する侵害を防止するために、書き込み権限を持つすべてのサブスクリプション アカウントに対して 多要素認証 (MFA) を有効にする必要があります。<br />(関連ポリシー:[サブスクリプションに対する書き込みアクセス許可を持つアカウントに対して MFA を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f9297c21d-2ed6-4474-b48f-163f75654ce3)) |高 |
+|管理証明書の代わりにサブスクリプションを保護するために、サービス プリンシパルを使用する必要がある |管理証明書を使用すると、それを使用して認証するすべてのユーザーが、証明書に関連付けられているサブスクリプションを管理できます。 サブスクリプションをより安全に管理するには、証明書が侵害された場合に損害が及ぶ範囲を限定するため、Resource Manager でサービス プリンシパルを使用することをお勧めします。 これによってリソース管理も自動化されます。 <br />(関連ポリシー:[サブスクリプションを保護するために、管理証明書の代わりにサービス プリンシパルを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6646a0bd-e110-40ca-bb97-84fcee63c414)) |中 |
+|ストレージ アカウントのパブリック アクセスを禁止する必要がある |Azure Storage 内のコンテナーと BLOB への匿名パブリック読み取りアクセスは、データを共有するための便利な方法ですが、セキュリティ上のリスクが生じる場合があります。 好ましくない匿名アクセスによるデータ侵害を防ぐために、Microsoft では、シナリオで必要でない限り、ストレージ アカウントへのパブリック アクセスを禁止することをお勧めします。<br />(関連ポリシー:[ストレージ アカウントのパブリック アクセスを禁止する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f4fa4b6c0-31ca-4c0d-b10d-24b96f62a751)) |中 |
+|複数の所有者がサブスクリプションに割り当てられている必要がある |管理者アクセスの冗長性を確保するために、複数のサブスクリプション所有者を指定します。<br />(関連ポリシー:[サブスクリプションに複数の所有者が割り当てられている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f09024ccc-0c5f-475e-9457-b7c0d9ed487b)) |高 |
+|Azure Key Vault に保存されている証明書の有効期間は 12 か月以内にする必要がある |証明書の有効期間が 12 か月を超えていないことを確認します。<br />(関連ポリシー:[証明書には最長有効期間を指定する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0a075868-4c26-42ef-914c-5bc007359560)) |中 |
+|||

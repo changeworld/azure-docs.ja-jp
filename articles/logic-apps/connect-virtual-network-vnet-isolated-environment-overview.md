@@ -3,19 +3,19 @@ title: Azure Virtual Network にアクセスする
 description: 統合サービス環境 (ISE) を利用して、ロジック アプリから Azure の仮想ネットワーク (VNET) にアクセスする方法の概要
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 11/12/2020
-ms.openlocfilehash: 19c9ec39d85bfc56b118498aba62c3752d6d771c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/11/2021
+ms.openlocfilehash: 7bb9c8552f673587891fde12e25d4fb899726c22
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996323"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108570"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>統合サービス環境 (ISE) を使用して、Azure Logic Apps から Azure Virtual Network リソースにアクセスする
 
-ロジック アプリで、[Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内にある、または仮想ネットワークに接続されている、セキュリティで保護されたリソース (仮想マシン (VM) や他のシステムまたはサービスなど) へのアクセスが必要になる場合があります。 このアクセスを設定するために、["*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) を作成することができます。 ISE は、専用のリソースを使用し、"グローバル" なマルチテナント Logic Apps サービスとは別に実行される Logic Apps サービスのインスタンスです。
+ロジック アプリで、[Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内にある、または仮想ネットワークに接続されている、セキュリティで保護されたリソース (仮想マシン (VM) や他のシステムまたはサービスなど) へのアクセスが必要になる場合があります。 このアクセスを設定するために、["*統合サービス環境*" (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) を作成することができます。 ISE は、専用のリソースを使用し、"グローバル" なマルチテナント Logic Apps サービスとは別に実行される Logic Apps サービスのインスタンスです。 ISE 内のデータは、[その ISE を作成して展開するリージョンと同じ場所](https://azure.microsoft.com/global-infrastructure/data-residency/)にあります。
 
 たとえば、一部の Azure 仮想ネットワークでは、プライベート エンドポイント ([Azure Private Link](../private-link/private-link-overview.md) を通じて設定可能) を使用して、Azure Storage、Azure Cosmos DB などの Azure PaaS サービスや、Azure でホストされている Azure SQL Database、パートナー サービス、カスタマー サービスへのアクセスが提供されます。 ロジック アプリでプライベート エンドポイントを使用する仮想ネットワークにアクセスする必要がある場合は、ISE の内部でそれらのロジック アプリを作成、デプロイ、実行する必要があります。
 

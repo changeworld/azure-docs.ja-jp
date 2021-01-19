@@ -13,12 +13,12 @@ ms.date: 09/18/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 5ec419be5c7549553788d009f09fa3e0fb8655e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd836afd6b8574be71ad22d26d67f49971834a88
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258287"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064727"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>MSAL.NET を使用してクライアント アプリケーションを初期化する
 この記事では、.NET 用 Microsoft Authentication Library (MSAL.NET) を使用したパブリック クライアント アプリケーションと機密性の高いクライアント アプリケーションの初期化について説明します。  クライアント アプリケーションの種類とアプリケーションの構成オプションの詳細については、[概要](msal-client-applications.md)に関するページを参照してください。

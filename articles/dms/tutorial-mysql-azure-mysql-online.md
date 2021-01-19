@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 41c0bd23bbd2d69506a979c5a36ac40f73258f2c
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: ab03e0bdf7761e45a134ec90685955403fbc433b
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605515"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060386"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>チュートリアル:DMS を使用して MySQL をオンラインの Azure Database for MySQL に移行する
 
@@ -237,7 +237,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
     ![ターゲット データベースにマップする](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
    > [!NOTE] 
-   > この手順では複数のデータベースを選択できますが、Azure Database Migration Service の各インスタンスでは、同時移行のために最大 4 つのデータベースがサポートされます。 また、サブスクリプション内のリージョンごとの Azure Database Migration Service のインスタンスは、2 つに制限されています。 たとえば、移行するデータベースが 40 個ある場合、Azure Database Migration Service のインスタンスを 2 つ作成した場合にのみ、そのうち 8 個のみを同時に移行できます。
+   > この手順では複数のデータベースを選択できますが、Azure Database Migration Service の各インスタンスでサポートされるデータベースの同時移行数は最大 4 つまでです。 また、リージョンごとのサブスクリプションあたりの Azure Database Migration Service のインスタンス数は、10 に制限されています。 たとえば、移行するデータベースが 80 個ある場合、Azure Database Migration Service のインスタンスを 10 個作成した場合にのみ、そのうち 40 個を同時に同じリージョンに移行できます。
 
 3. **[保存]** を選択し、 **[移行の概要]** 画面で、 **[アクティビティ名]** テキスト ボックスに移行アクティビティの名前を指定します。概要を見直して、ソースとターゲットの詳細が先ほど指定した内容と一致していることを確認します。
 

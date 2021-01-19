@@ -6,15 +6,15 @@ author: vladvino
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
 ms.topic: include
-ms.date: 04/14/2020
+ms.date: 01/11/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: cf051d96651161658796689639b5d268230d4b5a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 78890c0596642b629482a6d24d17d83fb8ebc9a0
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95554738"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147656"
 ---
 | リソース | 制限 |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -33,7 +33,8 @@ ms.locfileid: "95554738"
 | 最大合計要求時間<sup>8</sup> | 30 秒 |
 | バッファー処理されたペイロードの最大サイズ<sup>8</sup> | 2 MiB |
 | 要求 URL の最大サイズ<sup>9</sup> | 4,096 バイト |
-| セルフホステッド ゲートウェイの最大数<sup>10</sup> | 25 |
+| URL パスのセグメントの最大長<sup>10</sup> | 260 文字 |
+| セルフホステッド ゲートウェイの最大数<sup>11</sup> | 25 |
 
 <sup>1</sup> スケーリングの制限は、価格レベルによって変わります。 価格レベルと、価格レベルのスケーリング制限については、「[API Management の価格](https://azure.microsoft.com/pricing/details/api-management/)」を参照してください。<br/>
 <sup>2</sup> ユニット キャッシュ サイズは、価格レベルによって変わります。 価格レベルと、価格レベルのスケーリング制限については、「[API Management の価格](https://azure.microsoft.com/pricing/details/api-management/)」を参照してください。<br/>
@@ -44,4 +45,5 @@ ms.locfileid: "95554738"
 <sup>7</sup>CA 証明書は従量課金レベルではサポートされていません。<br/>
 <sup>8</sup>この制限は、従量課金レベルにのみ適用されます。 他のレベルについては、これらのカテゴリに制限はありません。<br/>
 <sup>9</sup>従量課金レベルにのみ適用されます。 最大 2,048 バイト長のクエリ文字列を含みます。<br/>
-<sup>10</sup>セルフホステッド ゲートウェイは、Developer レベルと Premium レベルでのみサポートされます。 この制限は、[セルフホステッド ゲートウェイ リソース](/rest/api/apimanagement/2019-12-01/gateway)の数に適用されます。 この制限を引き上げるには、[サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 セルフホステッド ゲートウェイ リソースに関連付けられるノード (またはレプリカ) の数は、Premium レベルでは無制限であり、Developer レベルでは単一のノードに制限されることに注意してください。
+<sup>10</sup> この制限を引き上げるには、[サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。<br/>
+<sup>11</sup>セルフホステッド ゲートウェイは、Developer レベルと Premium レベルでのみサポートされています。 この制限は、[セルフホステッド ゲートウェイ リソース](/rest/api/apimanagement/2019-12-01/gateway)の数に適用されます。 この制限を引き上げるには、[サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 セルフホステッド ゲートウェイ リソースに関連付けられるノード (またはレプリカ) の数は、Premium レベルでは無制限であり、Developer レベルでは単一のノードに制限されることに注意してください。

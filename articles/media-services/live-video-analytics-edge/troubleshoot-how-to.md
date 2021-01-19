@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: 31cf89cb66dfbc404d65f8fc09b96c03e1be2f8f
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d49f048df7a624dc490acf7cb4c8e5f33aa5f1c6
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401323"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060233"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Live Video Analytics on IoT Edge のトラブルシューティング
 
@@ -65,6 +65,8 @@ Azure portal を使用して、ダイレクト メソッドを使用してメデ
     * 406 - IoT Edge デバイスがオフラインであるか、状態レポートを送信していません。
     * 500 - IoT Edge ランタイムでエラーが発生しました。
 
+    > [!TIP]
+    > お使いの環境で Azure IoT Edge モジュールを実行するときに問題が発生した場合は、トラブルシューティングと診断のガイドとして **[Azure IoT Edge の標準的な診断手順](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** に関する記事を参照してください。
 ### <a name="post-deployment-direct-method-error-code"></a>デプロイ後:ダイレクト メソッドのエラー コード
 1. 状態 `501 code` のコードが表示された場合は、ダイレクト メソッド名が正確であることを確認してください。 メソッド名と要求ペイロードが正確である場合は、成功コード = 200 と共に結果が返されます。 
 1. 要求ペイロードが不正確な場合は、状態 `400 code` と、ダイレクト メソッド呼び出しに関する問題の診断に役立つエラー コードとメッセージを示す応答ペイロードが表示されます。
@@ -93,6 +95,8 @@ Live Video Analytics は、IoT Edge デバイスに IoT Edge モジュールと�
 * [Live Video Analytics またはその他のカスタム IoT Edge モジュールがエッジ ハブへのメッセージ送信に 404 エラーで失敗する](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-fails-to-send-a-message-to-edgehub-with-404-error)。
 * [IoT Edge モジュールがデプロイに成功したのに、デバイスに表示されなくなる](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device)。
 
+    > [!TIP]
+    > お使いの環境で Azure IoT Edge モジュールを実行するときに問題が発生した場合は、トラブルシューティングと診断のガイドとして **[Azure IoT Edge の標準的な診断手順](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** に関する記事を参照してください。
 ### <a name="live-video-analytics-working-with-external-modules"></a>Live Video Analytics による外部モジュールの操作
 
 メディア グラフ拡張プロセッサ経由の Live Video Analytics では、メディア グラフを拡張し、他の IoT Edge モジュールに対して HTTP または gRPC プロトコルを使用してデータを送受信することができます。 [具体的な例](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)として、メディア グラフでは、Yolo v3 などの外部推論モジュールへビデオ フレームをイメージとして送信し、HTTP プロトコルを使用して JSON ベースの分析結果を受け取ることができます。 このようなトポロジでは、イベントの送信先は主に IoT ハブです。 ハブで推論イベントが表示されない場合は、次の点を確認します。
@@ -165,7 +169,7 @@ Assembly Initialization method Microsoft.Media.LiveVideoAnalytics.Test.Feature.E
 ```
 
 これは次のいずれかで行えます。
-* **Azure portal** で、Live Video Analytics モジュールのモジュール ID ツインのプロパティを更新します。[ ![モジュール ID ツインのプロパティ。](media/troubleshoot-how-to/module-twin.png) ](media/troubleshoot-how-to/module-twin.png#lightbox)    
+* **Azure portal** で、Live Video Analytics モジュールのモジュール ID ツインのプロパティを更新します。[ ![モジュール ID ツインのプロパティ。](media/troubleshoot-how-to/module-twin.png)](media/troubleshoot-how-to/module-twin.png#lightbox)    
 * または、**配置マニフェスト** ファイルで、Live Video Analytics モジュールのプロパティ ノードにこれらのエントリを追加できます
 
 ### <a name="use-the-support-bundle-command"></a>support-bundle コマンドを使用する

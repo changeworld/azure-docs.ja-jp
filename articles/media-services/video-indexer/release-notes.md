@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 10/30/2020
+ms.date: 01/06/2021
 ms.author: juliako
-ms.openlocfilehash: 81e52d4a6827492931179055d040b541d51228eb
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: b6e18e077b717da65ca8d70b9bda6a133dba1f5c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916662"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120089"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -44,12 +44,15 @@ Video Indexer では、Cognitive Services の Custom Vision との統合によ�
 
 ### <a name="planned-video-indexer-website-authenticatication-changes"></a>Video Indexer Web サイトの認証に予定されている変更
 
-2021 年 1 月 1 日以降、Facebook または LinkedIn を使用して [Video Indexer](https://www.videoindexer.ai/) Web サイト (無料試用版オファリング) にサインアップとサインインすることができなくなります。
+2021 年 3 月 1 日以降、Facebook または LinkedIn を使用して [Video Indexer Web サイト](https://www.videoindexer.ai/) [開発者ポータル](video-indexer-use-apis.md) にサインアップとサインインすることができなくなります。
 
 これらのいずれかのプロバイダーを使用して、サインアップとサインインができるようになります。Azure AD、Microsoft、Google。
 
 > [!NOTE]
-> LinkedIn と Facebook に接続されているアカウントは削除され、コンテンツにアクセスできなくなるため、2021 年 1 月 1 日より前にコンテンツをエクスポートすることをお勧めします。
+> LinkedIn と Facebook に接続されている Video Indexer アカウントには、2021 年 3 月 1 日以降アクセスできなくなります。 
+> 
+> 引き続きアクセスできるよう、所有している Azure AD、Microsoft、Google アカウントを Video Indexer アカウントに[招待](invite-users.md)してください。<br/>
+> あるいは、有料アカウントを作成し、データを移行できます。
 
 ## <a name="august-2020"></a>2020 年 8 月
 

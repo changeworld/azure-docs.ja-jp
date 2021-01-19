@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: 0b6a9d081d2b81124b0cae15e81e4b233f7824bb
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: ce95106c56e919fa0fcc7d7553a3f0cc0dc77f98
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629342"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121296"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Security Center の価格
 Azure Security Center は、Azure、オンプレミス、他のクラウドで実行されているワークロードの統合セキュリティ管理と高度な脅威保護を実現します。 ハイブリッド クラウド ワークロードの可視化と制御、脅威にさらされる機会を減らす積極的防御、急速に進化するサイバー リスクへの対応に役立つインテリジェント検出などの機能が提供されます。
@@ -72,6 +72,7 @@ Azure Defender を有効にするには、次の手順に従います。
 - [Security Center ではどのようなプランが提供されていますか?](#what-are-the-plans-offered-by-security-center)
 - [サブスクリプションで Azure Defender を有効にするにはどうすればよいですか?](#how-do-i-enable-azure-defender-for-my-subscription)
 - [サブスクリプションのサーバーのサブセットで、サーバーに対して Azure Defender を有効にすることはできますか?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
+- [Microsoft Defender for Endpoint のライセンスが既にある場合、Azure Defender の割引を受けることができますか?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
 - [私のサブスクリプションでは Azure Defender for servers が有効になっています。実行していないサーバーは課金されますか?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
 - [Log Analytics エージェントがインストールされていないマシンは課金されますか?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
 - [Log Analytics エージェントが複数のワークスペースにレポートする場合、二重に課金されるのですか?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
@@ -111,6 +112,10 @@ Security Center には 2 つのプランがあります。
 
 また、Log Analytics ワークスペース レベルでサーバー用 Azure Defender を有効にする方法もあります。 この場合、そのワークスペースにレポートするサーバーだけが保護され、課金されるようになります。 ただし、いくつかの機能が利用できなくなります。 それらの例としては、Just-in-Time VM アクセス、ネットワーク検出、規制コンプライアンス、アダプティブ ネットワークのセキュリティ強化機能、適応型アプリケーション制御などが挙げられます。 
 
+### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>Microsoft Defender for Endpoint のライセンスが既にある場合、Azure Defender の割引を受けることができますか?
+Microsoft Defender for Endpoint のライセンスを既に取得している場合は、Azure Defender ライセンスのその部分について料金を支払う必要はありません。
+
+割引を確認するには、Security Center のサポート チームに連絡し、関連するライセンスごとに、関連するワークスペース ID、リージョン、ライセンス情報を提示してください。
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>私のサブスクリプションでは Azure Defender for servers が有効になっています。実行していないサーバーは課金されますか? 
 いいえ。 サブスクリプションで[サーバー用 Azure Defender](defender-for-servers-introduction.md) を有効にすると、動作中のサーバーについてのみ時間単位で課金されます。 オフになっているサーバーについては (オフになっている間)、料金を請求されません。 

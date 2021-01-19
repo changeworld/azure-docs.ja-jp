@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
-ms.date: 10/01/2020
+ms.date: 01/12/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dbbde397ab235068ea90280da721e3e3dc38866a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ef2c42ae76dc5e1511494635904228a8b574d483
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792363"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132190"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Azure Key Vault の新機能
 
@@ -37,7 +37,7 @@ ms.locfileid: "92792363"
 
 ### <a name="soft-delete-on-by-default"></a>既定で有効になる論理的な削除
 
-2020 末までに、新規と既存両方の **すべてのキー コンテナーに対して論理的な削除が既定でオンになります** 。 この破壊的変更の可能性に関する詳細、および影響を受けるキー コンテナーを見つけて事前に更新する手順については、「[すべてのキー コンテナーでの論理的な削除の有効化](soft-delete-change.md)」を参照してください。
+新規および既存の **すべてのキー コンテナーに対して、論理的な削除を有効にする必要があります**。 今後数か月の間に、論理的な削除をオプトアウトする機能は非推奨になります。 この破壊的変更の可能性に関する詳細、および影響を受けるキー コンテナーを見つけて事前に更新する手順については、「[すべてのキー コンテナーでの論理的な削除の有効化](soft-delete-change.md)」を参照してください。
 
 ### <a name="azure-tls-certificate-changes"></a>Azure TLS 証明書の変更
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9ce2044f3ee0bff3335f46d8cf712e64394af2d3
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: f0dcd763240205bd396fc8cd0301c2046098473b
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628868"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070135"
 ---
 # <a name="what-is-azure-files"></a>Azure Files とは
 Azure Files では、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)または[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System)を介してアクセスできる、フル マネージドのファイル共有がクラウド上で提供されます。 Azure ファイル共有は、クラウドまたはオンプレミスのデプロイにより、同時にマウントできます。 Azure Files SMB ファイル共有には、Windows、Linux、および macOS クライアントからアクセスできます。 Azure Files NFS ファイル共有には、Linux または macOS クライアントからアクセスできます。 さらに、データが使用されている場所の近くから高速アクセスするため、Azure File Sync を使用して、Windows サーバーに Azure Files SMB ファイル共有をキャッシュできます。
@@ -51,7 +51,7 @@ Azure ファイル共有は、以下の作業に使用できます。
 ## <a name="key-benefits"></a>主な利点
 * **共有アクセス**。 Azure ファイル共有では、業界標準の SMB プロトコルおよび NFS プロトコルがサポートされています。そのため、アプリケーションの互換性を気にせずに、オンプレミスのファイル共有を Azure ファイル共有にシームレスに置き換えることができます。 複数のマシン、アプリケーション/インスタンスでファイル システムを共有できる Azure Files は、共有性を必要とするアプリケーションにとって、大きな利点になります。 
 * **フル マネージド**。 Azure ファイル共有は、ハードウェアまたは OS を管理することなく、作成できます。 つまり、重要なセキュリティ アップグレードの際にサーバー OS に修正プログラムを適用したり、故障したハード ディスクを交換したりする作業は必要ありません。
-* **スクリプトとツール**。 PowerShell コマンドレットと Azure CLI を使用して、Azure アプリケーションの管理の一環として Azure ファイル共有を作成、マウント、管理することができます。Azure ファイル共有の作成と管理には、Azure portal と Azure Storage Explorer を使用できます。 
+* **スクリプトとツール**。 PowerShell コマンドレットと Azure CLI を使用して、Azure アプリケーションの管理の一環として Azure ファイル共有を作成、マウント、管理できます。 Azure portal と Azure Storage Explorer を使用して、Azure ファイル共有を作成および管理できます。 
 * **回復性**。 Azure Files は、当初から、常に使用できることを目的にして構築されています。 オンプレミスのファイル共有を Azure Files に置き換えることで、ローカルの停電またはネットワークの問題に対処するために夜間に起き出す必要がなくなります。 
 * **慣れているプログラミング方法**。 Azure で実行されているアプリケーションは、ファイル [システム I/O API](/dotnet/api/system.io.file) を介して共有内のデータにアクセスできます。 そのため、開発者は、既存のコードとスキルを活用して、既存のアプリケーションを移行することができます。 システム IO API の他に、[Azure Storage クライアント ライブラリ](/previous-versions/azure/dn261237(v=azure.100))または [Azure Storage REST API](/rest/api/storageservices/file-service-rest-api) も使用できます。
 

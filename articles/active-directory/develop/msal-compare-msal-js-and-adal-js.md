@@ -13,14 +13,14 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5d91514af9aea3dd7ea13b94681fbb27c53772fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6894d84f489d3719f1106ba4de79cb85fa45c5ed
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88120900"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064952"
 ---
-# <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS と ADAL JS の相違点
+# <a name="differences-between-msaljs-and-adaljs"></a>MSAL.js と ADAL.js の相違点
 
 Azure AD エンティティを認証し、Azure AD からのトークンを要求する場合、Microsoft Authentication Library for JavaScript (MSAL.js) と Azure AD Authentication Library for JavaScript (ADAL.js) の両方が使用されます。 これまで、ほとんどの開発者は、開発者用の Azure AD (v1.0) で、ADAL を使用してトークンを要求することで、Azure AD ID (職場と学校のアカウント) を認証していました。 現在では、MSAL.js を使用して、より広範な Microsoft ID (Azure AD の ID と Microsoft アカウント、および Azure AD B2C 経由のソーシャル アカウントとローカル アカウント) を Microsoft ID プラットフォーム (v2.0) を介して認証することができます。
 

@@ -3,12 +3,12 @@ title: モーションの検出、Azure Media Services へのビデオの記録
 description: このクイックスタートでは、Live Video Analytics on IoT Edge を使用して、ライブ ビデオ ストリーム内のモーションを検出し、ビデオ クリップを Azure Media Services に記録する方法を示します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 8872c9aefa0ed748cbed93d0f7376586859be9df
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 33deabf27fe9b74fd01dba5d6fbe3883b54dda63
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511894"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060420"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>クイック スタート:モーションの検出、Media Services へのビデオの記録
 
@@ -24,12 +24,14 @@ ms.locfileid: "97511894"
     * [Azure リソースの設定](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [モジュールをデプロイする](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
     * [Visual Studio Code を構成する](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
-
+    > [!TIP]
+    > 作成された Azure リソースで問題が発生した場合は、 **[トラブルシューティング ガイド](troubleshoot-how-to.md#common-error-resolutions)** を参照して、よく発生する問題を解決してください。
 ## <a name="review-the-sample-video"></a>サンプル ビデオを確認する
 
 Azure リソースを設定する上記の手順の一部として、駐車場の (短い) ビデオが、IoT Edge デバイスとして使用されている Azure の Linux VM にコピーされます。 このビデオ ファイルは、このチュートリアルのライブ ストリームをシミュレートするために使用されます。
 
 [VLC プレーヤー](https://www.videolan.org/vlc/)などのアプリケーションを使用してこれを起動し、`Ctrl+N` を押して[駐車場のビデオ サンプル](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) リンクを貼り付けると再生を開始できます。 だいたい 5 秒の地点で、白の車が駐車場を通って移動します。
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
 
 次の手順を完了すると、Live Video Analytics on IoT Edge を使用してその車の動きを検出し、その 5 秒の地点前後で始まるビデオ クリップが録画されます。 次の図は、フロー全体を視覚的に表したものです。
 
@@ -194,7 +196,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 
 上記の JSON ペイロードを使用した場合、5 つのパラメーター (うち 4 つは既定値) を定義するグラフ トポロジが作成されます。 トポロジには、1 つのソース ノード ([RTSP ソース](media-graph-concept.md#rtsp-source))、2 つのプロセッサ ノード ([モーション検出プロセッサ](media-graph-concept.md#motion-detection-processor)と[シグナル ゲート プロセッサ](media-graph-concept.md#signal-gate-processor)、2 つのシンク ノード (IoT Hub シンクと[資産シンク](media-graph-concept.md#asset-sink)) があります。 トポロジの視覚的な表現を上に示します。
 
-数秒すると、次の応答が出力ウィンドウに表示されます。
+数秒すると、**出力** ウィンドウに次の応答が表示されます。
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologySet] to [lva-sample-device/lvaEdge] ...

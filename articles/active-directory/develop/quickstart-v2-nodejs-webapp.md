@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 643305057490cc550a5a8e39a892297b000cbc8e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c9aa73767fcb9d57ada11f5830fec00b10eee812
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169411"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017342"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>クイック スタート:OpenID Connect を使用したサインインを Node.js Web アプリに追加する
 
@@ -29,38 +29,29 @@ ms.locfileid: "96169411"
 - [Node.js](https://nodejs.org/en/download/)。
 
 ## <a name="register-your-application"></a>アプリケーションの登録
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
-1. アカウントが複数の Azure AD テナントに存在する場合:
-    - ページの右上隅にあるメニューからプロファイルを選択し、 **[ディレクトリの切り替え]** を選択します。
-    - アプリケーションを作成する Azure AD テナントにセッションを変更します。
 
-1. [[Azure Active Directory] > [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) に移動してアプリを登録します。
-
-1. **[新規登録]** を選択します。
-
-1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリの登録情報を入力します。
-    - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすい名前を入力します。 次に例を示します。MyWebApp
-    - **[サポートされているアカウントの種類]** セクションで、 **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** を選択します。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+1. アプリケーションの **名前** を入力します (例: `MyWebApp`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
+1. **[サポートされているアカウントの種類]** セクションで、 **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** を選択します。
 
     複数のリダイレクト URI がある場合は、アプリが正常に作成された後、 **[認証]** タブからこれらを追加する必要があります。
 
 1. **[登録]** を選択して、アプリを作成します。
-
 1. アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を見つけ、後で使用するために記録します。 この値は、このプロジェクトで後からアプリケーションを構成するために必要になります。
+1. **[管理]** で、 **[認証]** を選択します。
+1. **[プラットフォームの追加]**  >  **[Web]** の順に選択します 
+1. **[リダイレクト URI]** セクションで、「`http://localhost:3000/auth/openid/return`」と入力します。
+1. **[ログアウト URL]** に「`https://localhost:3000`」と入力します。
+1. このサンプルでは、ユーザーをサインインさせるために [暗黙的な許可のフロー](./v2-oauth2-implicit-grant-flow.md)が有効になっている必要があるため、暗黙的な許可セクションで **[ID トークン]** をオンにします。
+1. **[構成]** をクリックします。
+1. **[管理]** で、 **[Certificates & secrets]\(証明書およびシークレット\)**  >  **[新しいクライアント シークレット]** の順に選択します。
+1. キーの説明 (インスタンス アプリ シークレット用) を入力します。
+1. キーの有効期間として **[1 年]、[2 年]** 、または **[有効期限なし]** を選択します。
+1. **[追加]** を選択します。 キー値が表示されます。 キー値をコピーし、後で使用できるように安全な場所に保存します。
 
-1. アプリのページの一覧から **[認証]** を選択します。
-    - **[リダイレクト URI]** セクションで、コンボボックスの **[Web]** を選択し、リダイレクト URI の「`http://localhost:3000/auth/openid/return`」を入力します。
-    - **[詳細設定]** セクションの **[ログアウト URL]** を「`https://localhost:3000`」に設定します。
-    - このサンプルでは、ユーザーのサインインに [暗黙的な許可のフロー](./v2-oauth2-implicit-grant-flow.md)が有効になっている必要があるため、 **[詳細設定] > [暗黙の付与]** セクションで、 **[ID トークン]** をチェックします。
-
-1. **[保存]** を選択します。
-
-1. **[証明書とシークレット]** ページの **[クライアント シークレット]** セクションで、 **[新しいクライアント シークレット]** を選択します。
-    - キーの説明 (インスタンス アプリ シークレット用) を入力します。
-    - キーの有効期間として **[1 年]、[2 年]** 、または **[有効期限なし]** を選択します。
-    - **[追加]** ボタンをクリックすると、キーの値が表示されます。 キー値をコピーして安全な場所に保存します。
-
-    このキーは、後でアプリケーションを構成するために必要になります。 このキー値は、再度表示することも、その他の方法で取得することもできないため、Azure portal から参照できるようになったらすぐに記録してください。
 
 ## <a name="download-the-sample-application-and-modules"></a>サンプル アプリケーションとモジュールのダウンロード
 

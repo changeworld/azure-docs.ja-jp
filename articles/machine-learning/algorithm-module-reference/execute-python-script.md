@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 12/02/2020
-ms.openlocfilehash: d1e4ffa525c5628d0b6c9a3ca67f3e069c44e823
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.date: 01/02/2021
+ms.openlocfilehash: 7b5bc77375d684340116a21b7f95cf576d99dad2
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679199"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065356"
 ---
 # <a name="execute-python-script-module"></a>Python スクリプトの実行モジュール
 
@@ -60,7 +60,7 @@ if spec is None:
 > [!WARNING]
 > Python スクリプトの実行モジュールでは、Java、PyODBC などの "apt-get" のようなコマンドを使用して、追加のネイティブ ライブラリに依存するパッケージのインストールをサポートしていません。これは、このモジュールが、プレインストールされた Python のみの、管理者以外のアクセス許可を持つ単純な環境で実行されるためです。  
 
-## <a name="access-to-registered-datasets"></a>登録済みデータセットへのアクセス
+## <a name="access-to-current-workspace-and-registered-datasets"></a>現在のワークスペースと登録済みデータセットへのアクセス
 
 ワークスペースに[登録されているデータセット](../how-to-create-register-datasets.md)にアクセスするには、次のサンプル コードを参照してください。
 
@@ -71,8 +71,10 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     print(f'Input pandas.DataFrame #1: {dataframe1}')
     from azureml.core import Run
     run = Run.get_context(allow_offline=True)
+    #access to current workspace
     ws = run.experiment.workspace
 
+    #access to registered dataset of current workspace
     from azureml.core import Dataset
     dataset = Dataset.get_by_name(ws, name='test-register-tabular-in-designer')
     dataframe1 = dataset.to_pandas_dataframe()
@@ -219,7 +221,9 @@ Python スクリプトの実行モジュールには、出発点として利用�
 
 6. パイプラインを送信します。
 
-    すべてのデータおよびコードが仮想マシンに読み込まれ、指定した Python 環境を使用して実行されます。
+    このモジュールを完了したら、出力が想定どおりかどうかを確認します。
+
+    モジュールが失敗する場合は、何らかのトラブルシューティングを行う必要があります。 モジュールを選択し、右側のペインにある **[出力とログ]** を開きます。 **70_driver_log.txt** を開き、**in azureml_main** を検索すると、エラーの原因となった行を見つけることができます。 たとえば、"File "/tmp/tmp01_ID/user_script.py", line 17, in azureml_main" は、Python スクリプトの 17 行目でエラーが発生したことを示します。
 
 ## <a name="results"></a>結果
 

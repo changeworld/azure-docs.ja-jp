@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 8c51450fb6ce5c381784e6aaf9b1a66c3c4ff153
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 771cf97a5c938fb987c66555c92c23f42b302a10
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188549"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134230"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -84,10 +84,11 @@ Azure Cosmos DB の Cassandra API では、次の CQL 関数がサポートさ�
 | Token * | はい |
 | ttl | はい |
 | writetime | はい |
-| キャスト | いいえ |
+| cast ** | はい |
 
-> [!NOTE]
-> \* Cassandra API は、プロジェクション/セレクターとしてトークンをサポートし、where 句の左辺でのみ token(pk) を許可します。 たとえば、`WHERE token(pk) > 1024` はサポートされていますが、`WHERE token(pk) > token(100)` はサポートされて **いません**。
+> [!NOTE] 
+> \* Cassandra API は、プロジェクション/セレクターとしてトークンをサポートし、where 句の左辺でのみ token(pk) を許可します。 たとえば、`WHERE token(pk) > 1024` はサポートされていますが、`WHERE token(pk) > token(100)` はサポートされて **いません**。  
+> \*\*`cast()` 関数は、Cassandra API では入れ子にすることはできません。 たとえば、`SELECT cast(count as double) FROM myTable` はサポートされていますが、`SELECT avg(cast(count as double)) FROM myTable` はサポートされて **いません**。
 
 
 
@@ -183,6 +184,30 @@ Azure Cosmos DB は、Cassandra API アカウントで以下のデータベー�
 | UPDATE (IF 条件での軽量トランザクション)| いいえ |
 | TRUNCATE | いいえ |
 | USE | はい |
+
+## <a name="cql-shell-commands"></a>CQL シェル コマンド
+
+Azure Cosmos DB は、Cassandra API アカウントで以下のデータベース コマンドをサポートしています。
+
+|コマンド  |サポートされています |
+|---------|---------|
+| 取り込み | はい |
+| CLEAR | はい |
+| CONSISTENCY * | 該当なし |
+| COPY | いいえ |
+| DESCRIBE | はい |
+| cqlshExpand | いいえ |
+| EXIT | はい |
+| Login | 該当なし (CQL 関数 `USER` はサポートされていないため、`LOGIN` は冗長) |
+| PAGING | はい |
+| SERIAL CONSISTENCY * | 該当なし |
+| SHOW | はい |
+| 接続元 | はい |
+| TRACING | 該当なし (Cassandra API は Azure Cosmos DB によってサポートされている - トラブルシューティングに[診断ログ](cosmosdb-monitor-resource-logs.md)を使用) |
+
+> [!NOTE] 
+> \* Azure Cosmos DB では、整合性の機能が異なります。詳細については、[こちら](cassandra-consistency.md)をご覧ください。  
+
 
 ## <a name="json-support"></a>JSON のサポート
 |コマンド  |サポートされています |

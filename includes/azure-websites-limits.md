@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 6265a7cde8e276570409238cadfd5ebc777b4527
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 71782661fd960cae3248005a8b90944eff9bef45
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97532069"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024206"
 ---
 | リソース | Free | 共有 | Basic | Standard | Premium (v1 から v3) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -31,6 +31,7 @@ ms.locfileid: "97532069"
 | カスタム ドメインの [SSL サポート](../articles/app-service/configure-ssl-certificate.md) |サポートされない、デフォルトで使用可能な \*.azurewebsites.net のワイルドカード証明書|サポートされない、デフォルトで使用可能な \*.azurewebsites.net のワイルドカード証明書|SNI SSL 接続は無制限 |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる | 無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる|
 | Hybrid Connections (ハイブリッド接続) | | | プランあたり 5 | プランあたり 25 | アプリあたり 200 | アプリあたり 200 |
 | [Virtual Network 統合](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
+| [プライベート エンドポイント](../articles/app-service/networking/private-endpoint.md) | | |   |   |  アプリあたり 100  |    |
 | 統合 Load Balancer | |X |X |X |X |X<sup>10</sup> |
 | [アクセス制限](../articles/app-service/networking-features.md#access-restrictions) | アプリあたり 512 個のルール | アプリあたり 512 個のルール | アプリあたり 512 個のルール | アプリあたり 512 個のルール | アプリあたり 512 個のルール | アプリあたり 512 個のルール |
 | [Always On](../articles/app-service/configure-common.md) | | |X |X |X |X |

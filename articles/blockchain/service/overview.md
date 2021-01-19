@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain Service の概要
 description: Azure Blockchain Service の概要です
-ms.date: 05/22/2020
+ms.date: 01/04/2021
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: dc716b475fe85170d595463e0785743591e398c1
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 15d1126a98a4d3194a256ed07de3918cb066a4e2
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874561"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963880"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blockchain Service とは
 
@@ -83,6 +83,8 @@ Microsoft のエンジニアや Azure Blockchain コミュニティのエキス�
 
 まず最初に、クイック スタートを試すか、以下のリソースで詳細を確認してください。
 * [Azure portal を使用したブロックチェーン メンバーの作成](create-member.md)または [Azure CLI を使用したブロックチェーン メンバーの作成](create-member-cli.md)に関する記事
-* コストの比較と計算ツールについては、[価格のページ](https://azure.microsoft.com/pricing/details/blockchain-service)をご覧ください。
+* Microsoft Learn のパスに従って、[ブロックチェーンの開発を開始する](/learn/paths/ethereum-blockchain-development)
+* [ブロックチェーンの入門シリーズ](https://channel9.msdn.com/Series/Beginners-Series-to-Blockchain)を見る
+* コストの比較と計算ツールの詳細を、[価格のページ](https://azure.microsoft.com/pricing/details/blockchain-service)で確認する
 * [Azure Blockchain Development Kit](https://github.com/Azure-Samples/blockchain-devkit) を使用して最初のアプリを作成してください
 * Azure Blockchain VSCode 拡張機能の[ユーザー ガイド](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki)

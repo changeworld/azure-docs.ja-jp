@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-author: nabhishek
-ms.author: abnarain
-manager: anandsub
+author: lrtoyou1223
+ms.author: lle
+manager: shwang
 ms.custom: seo-lt-2019
-ms.date: 11/25/2020
-ms.openlocfilehash: 04efb7bcae11ef6cf377d821b49f9b07d41d347f
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.date: 12/25/2020
+ms.openlocfilehash: 76d53458154a7e66589c16f955373975bb04b25b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932593"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121640"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 
@@ -29,6 +29,54 @@ ms.locfileid: "96932593"
 この記事では、セルフホステッド IR を作成して構成する方法について説明します。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+
+## <a name="considerations-for-using-a-self-hosted-ir"></a>セルフホステッド IR の使用に関する注意点
+
+- 1 つのセルフホステッド統合ランタイムを複数のオンプレミス データ ソースで使用できます。 同じ Azure Active Directory (Azure AD) テナント内の別のデータ ファクトリと共有することもできます。 詳細については、[セルフホステッド統合ランタイムの共有](./create-shared-self-hosted-integration-runtime-powershell.md)に関するセクションを参照してください。
+- 単一コンピューター上にインストールできるセルフホステッド統合ランタイムのインスタンスは 1 つのみとなります。 オンプレミス データ ソースにアクセスする必要があるデータ ファクトリが 2 つある場合、[セルフホステッド IR 共有機能](./create-shared-self-hosted-integration-runtime-powershell.md)を使用してセルフホステッド IR を共有するか、またはデータ ファクトリごとに 2 つのオンプレミス コンピューターそれぞれにセルフホステッド IR をインストールします。  
+- セルフホステッド統合ランタイムは、データ ソースと同じコンピューター上に存在する必要はありません。 しかし、セルフホステッド統合ランタイムをデータ ソースの近くに配置することにより、セルフホステッド統合ランタイムからデータ ソースへの接続時間が短縮されます。 セルフホステッド統合ランタイムは、オンプレミス データ ソースをホストするコンピューターとは異なるコンピューターにインストールすることをお勧めします。 セルフホステッド統合ランタイムとデータ ソースが別のコンピューター上にある場合、セルフホステッド統合ランタイムではリソースのデータ ソースとの競合は発生しません。
+- 同じオンプレミス データ ソースに接続する異なるコンピューター上で、複数のセルフホステッド統合ランタイムを使用することができます。 たとえば、2 つのデータ ファクトリを提供する 2 つのセルフホステッド統合ランタイムがある場合、どちらのデータ ファクトリにも同じオンプレミス データ ソースを登録できます。
+- セルフホステッド統合ランタイムを使用して、Azure Virtual Network 内のデータ統合をサポートします。
+- Azure ExpressRoute を使用する場合でも、ファイアウォールの背後にあるオンプレミス データ ソースとしてデータ ソースを扱います。 セルフホステッド統合ランタイムを使用して、サービスをデータ ソースに接続します。
+- データ ストアがクラウド内の Azure IaaS (サービスとしてのインフラストラクチャ) 仮想マシン上にある場合でも、セルフホステッド統合ランタイムを使用します。
+- FIPS 準拠の暗号化が有効になっている Windows Server 上にインストールされているセルフホステッド統合ランタイムでは、タスクが失敗する可能性があります。 この問題を回避するには、資格情報/シークレット値を Azure Key Vault に保存するか、またはサーバーで FIPS 準拠の暗号化を無効にする 2 つのオプションがあります。 FIPS 準拠の暗号化を無効にするには、レジストリ サブキー `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` の値を 1 (有効) から 0 (無効) に変更します。 [セルフホステッド統合ランタイムを SSIS 統合ランタイムのプロキシとして](./self-hosted-integration-runtime-proxy-ssis.md)使用する場合、FIPS 準拠の暗号化を有効にすることができ、オンプレミスからステージング領域として Azure Blob Storage にデータを移動するときに使用されます。
+
+
+## <a name="command-flow-and-data-flow"></a>コマンド フローとデータ フロー
+
+オンプレミスとクラウドの間でデータを移動する場合、アクティビティではセルフホステッド統合ランタイムを使用して、オンプレミス データ ソースとクラウドの間でデータを転送します。
+
+セルフホステッド IR でコピーするデータ フロー手順の概要を以下に示します。
+
+![データ フローの大まかな概要](media/create-self-hosted-integration-runtime/high-level-overview.png)
+
+1. データ開発者は、PowerShell コマンドレットを使用して Azure Data Factory 内でセルフホステッド統合ランタイムを作成します。 現時点では、Azure ポータルはこの機能をサポートしていません。
+2. データ開発者は、オンプレミスのデータ ストアに使用するリンクされたサービスを作成します。 開発者は、データ ストアへの接続にサービスが使用するセルフホステッド統合ランタイムのインスタンスを指定することによって、この操作を行います。
+3. セルフホステッド統合ランタイム ノードでは、Windows DPAPI (Data Protection Application Programming Interface) を使用して資格情報を暗号化し、その資格情報をローカルに保存します。 高可用性を目的として複数ノードが設定されている場合、資格情報はさらに他のノード間で同期されます。 各ノードでは、DPAPI を使用して資格情報を暗号化し、それらをローカルに格納します。 資格情報の同期は、データ開発者に透過的であり、セルフホステッド IR によって処理されます。
+4. Azure Data Factory は、セルフホステッド統合ランタイムと通信して、ジョブのスケジュール設定と管理を行います。 通信は、[Azure Relay](../azure-relay/relay-what-is-it.md#wcf-relay) 共有接続を使用する制御チャネルを介して行われます。 アクティビティ ジョブを実行する必要がある場合、Data Factory はリクエストと資格情報をキューに入れます。 これは、セルフホステッド統合ランタイムに資格情報がまだ格納されていない場合に備えて行われます。 セルフホステッド統合ランタイムでは、そのキューをポーリングした後、ジョブを開始します。
+5. セルフホステッド統合ランタイムによって、オンプレミス ストアとクラウドとの間でデータがコピーされます。 コピーの方向は、データ パイプライン内でのコピー アクティビティの構成方法によって異なります。 この手順では、セルフホステッド統合ランタイムは、セキュリティで保護された HTTPS チャネルを使用して、クラウド ベースのストレージ サービス (Azure Blob Storage など) と直接通信を行います。
+
+
+## <a name="prerequisites"></a>前提条件
+
+- サポートされている Windows のバージョンは次のとおりです。
+  + Windows 8.1
+  + Windows 10
+  + Windows Server 2012
+  + Windows Server 2012 R2
+  + Windows Server 2016
+  + Windows Server 2019
+   
+セルフホステッド統合ランタイムのドメイン コントローラーへのインストールはサポートされていません。
+- セルフホステッド統合ランタイムには、.NET Framework 4.7.2 以降を含む 64 ビット オペレーティング システムが必要です。詳細については、「[.NET Framework のシステム要件](/dotnet/framework/get-started/system-requirements)」を参照してください。
+- セルフホステッド統合ランタイム コンピューターに推奨される最小構成は、4 コアの 2 GHz プロセッサ、8 GB の RAM、および 80 GB の使用可能なハード ドライブ領域です。 システム要件の詳細については、[ダウンロード](https://www.microsoft.com/download/details.aspx?id=39717)のページを参照してください。
+- ホスト コンピューターが休止状態の場合、セルフホステッド統合ランタイムはデータ要求に応答しません。 セルフホステッド統合ランタイムをインストールする前に、コンピューターに適切な電源プランを構成します。 コンピューターが休止状態に入るよう構成されている場合、セルフホステッド統合ランタイムのインストーラーによりメッセージが出力されます。
+- セルフホステッド統合ランタイムを正常にインストールして構成するには、コンピューターの管理者である必要があります。
+- コピー アクティビティは特定の頻度で実行されます。 コンピューター上のプロセッサおよび RAM の使用量は、ピーク時とアイドル時のある同じパターンに従います。 また、リソース使用量は、移動されるデータの量に大きく依存します。 複数のコピー ジョブが進行中のときには、ピーク時にリソース使用率が上昇します。
+- Parquet、ORC、または Avro 形式のデータの抽出中にタスクが失敗することがあります。 Parquet の詳細については、「[Azure Data Factory での Parquet 形式](./format-parquet.md#using-self-hosted-integration-runtime)」を参照してください。 ファイルの作成は、セルフホステッド統合コンピューターで実行されます。 予想どおりに動作するには、ファイルの作成に次の前提条件が必要です。
+    - [Visual C++ 2010 再領布](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe)パッケージ (x64)
+    - [Adopt OpenJDK](https://adoptopenjdk.net/) などの JRE プロバイダーの Java Runtime (JRE) バージョン 8。 `JAVA_HOME` 環境変数が設定されていることを確認します。
 
 ## <a name="setting-up-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムをセットアップする
 
@@ -126,84 +174,49 @@ dmgcmd ACTION args...
 |-ssa、<br/>-SwitchServiceAccount|"`<domain\user>`" ["`<password>`"]|DIAHostService を新しいアカウントとして実行するように設定します。 システム アカウントおよび仮想アカウントの場合は空のパスワード "" を使用します|
 
 
-## <a name="command-flow-and-data-flow"></a>コマンド フローとデータ フロー
-
-オンプレミスとクラウドの間でデータを移動する場合、アクティビティではセルフホステッド統合ランタイムを使用して、オンプレミス データ ソースとクラウドの間でデータを転送します。
-
-セルフホステッド IR でコピーするデータ フロー手順の概要を以下に示します。
-
-![データ フローの大まかな概要](media/create-self-hosted-integration-runtime/high-level-overview.png)
-
-1. データ開発者は、PowerShell コマンドレットを使用して Azure Data Factory 内でセルフホステッド統合ランタイムを作成します。 現時点では、Azure ポータルはこの機能をサポートしていません。
-1. データ開発者は、オンプレミスのデータ ストアに使用するリンクされたサービスを作成します。 開発者は、データ ストアへの接続にサービスが使用するセルフホステッド統合ランタイムのインスタンスを指定することによって、この操作を行います。
-1. セルフホステッド統合ランタイム ノードでは、Windows DPAPI (Data Protection Application Programming Interface) を使用して資格情報を暗号化し、その資格情報をローカルに保存します。 高可用性を目的として複数ノードが設定されている場合、資格情報はさらに他のノード間で同期されます。 各ノードでは、DPAPI を使用して資格情報を暗号化し、それらをローカルに格納します。 資格情報の同期は、データ開発者に透過的であり、セルフホステッド IR によって処理されます。
-1. Azure Data Factory は、セルフホステッド統合ランタイムと通信して、ジョブのスケジュール設定と管理を行います。 通信は、[Azure Service Bus Relay](../azure-relay/relay-what-is-it.md#wcf-relay) 共有接続を使用する制御チャネルを介して行われます。 アクティビティ ジョブを実行する必要がある場合、Data Factory はリクエストと資格情報をキューに入れます。 これは、セルフホステッド統合ランタイムに資格情報がまだ格納されていない場合に備えて行われます。 セルフホステッド統合ランタイムでは、そのキューをポーリングした後、ジョブを開始します。
-1. セルフホステッド統合ランタイムによって、オンプレミス ストアとクラウドとの間でデータがコピーされます。 コピーの方向は、データ パイプライン内でのコピー アクティビティの構成方法によって異なります。 この手順では、セルフホステッド統合ランタイムは、セキュリティで保護された HTTPS チャネルを使用して、クラウド ベースのストレージ サービス (Azure Blob Storage など) と直接通信を行います。
-
-## <a name="considerations-for-using-a-self-hosted-ir"></a>セルフホステッド IR の使用に関する注意点
-
-- 1 つのセルフホステッド統合ランタイムを複数のオンプレミス データ ソースで使用できます。 同じ Azure Active Directory (Azure AD) テナント内の別のデータ ファクトリと共有することもできます。 詳細については、[セルフホステッド統合ランタイムの共有](#create-a-shared-self-hosted-integration-runtime-in-azure-data-factory)に関するセクションを参照してください。
-- 単一コンピューター上にインストールできるセルフホステッド統合ランタイムのインスタンスは 1 つのみとなります。 オンプレミス データ ソースにアクセスする必要があるデータ ファクトリが 2 つある場合、[セルフホステッド IR 共有機能](#create-a-shared-self-hosted-integration-runtime-in-azure-data-factory)を使用してセルフホステッド IR を共有するか、またはデータ ファクトリごとに 2 つのオンプレミス コンピューターそれぞれにセルフホステッド IR をインストールします。  
-- セルフホステッド統合ランタイムは、データ ソースと同じコンピューター上に存在する必要はありません。 しかし、セルフホステッド統合ランタイムをデータ ソースの近くに配置することにより、セルフホステッド統合ランタイムからデータ ソースへの接続時間が短縮されます。 セルフホステッド統合ランタイムは、オンプレミス データ ソースをホストするコンピューターとは異なるコンピューターにインストールすることをお勧めします。 セルフホステッド統合ランタイムとデータ ソースが別のコンピューター上にある場合、セルフホステッド統合ランタイムではリソースのデータ ソースとの競合は発生しません。
-- 同じオンプレミス データ ソースに接続する異なるコンピューター上で、複数のセルフホステッド統合ランタイムを使用することができます。 たとえば、2 つのデータ ファクトリを提供する 2 つのセルフホステッド統合ランタイムがある場合、どちらのデータ ファクトリにも同じオンプレミス データ ソースを登録できます。
-- セルフホステッド統合ランタイムを使用して、Azure Virtual Network 内のデータ統合をサポートします。
-- Azure ExpressRoute を使用する場合でも、ファイアウォールの背後にあるオンプレミス データ ソースとしてデータ ソースを扱います。 セルフホステッド統合ランタイムを使用して、サービスをデータ ソースに接続します。
-- データ ストアがクラウド内の Azure IaaS (サービスとしてのインフラストラクチャ) 仮想マシン上にある場合でも、セルフホステッド統合ランタイムを使用します。
-- FIPS 準拠の暗号化が有効になっている Windows Server 上にインストールされているセルフホステッド統合ランタイムでは、タスクが失敗する可能性があります。 この問題を回避するには、資格情報/シークレット値を Azure Key Vault に保存するか、またはサーバーで FIPS 準拠の暗号化を無効にする 2 つのオプションがあります。 FIPS 準拠の暗号化を無効にするには、レジストリ サブキー `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` の値を 1 (有効) から 0 (無効) に変更します。 [セルフホステッド統合ランタイムを SSIS 統合ランタイムのプロキシとして](./self-hosted-integration-runtime-proxy-ssis.md)使用する場合、FIPS 準拠の暗号化を有効にすることができ、オンプレミスからステージング領域として Azure Blob Storage にデータを移動するときに使用されます。
-
-## <a name="prerequisites"></a>前提条件
-
-- サポートされている Windows のバージョンは次のとおりです。
-  + Windows 7 Service Pack 1
-  + Windows 8.1
-  + Windows 10
-  + Windows Server 2008 R2 SP1
-  + Windows Server 2012
-  + Windows Server 2012 R2
-  + Windows Server 2016
-  + Windows Server 2019
-   
-   セルフホステッド統合ランタイムのドメイン コントローラーへのインストールはサポートされていません。
-- .NET Framework 4.6.1 以降が必要です。 Windows 7 コンピューター上にセルフホステッド統合ランタイムをインストールする場合は、.NET Framework 4.6.1 以降をインストールします。 詳細については、「 [.NET Framework システム要件](/dotnet/framework/get-started/system-requirements) 」をご覧ください。
-- セルフホステッド統合ランタイム コンピューターに推奨される最小構成は、4 コアの 2 GHz プロセッサ、8 GB の RAM、および 80 GB の使用可能なハード ドライブ領域です。
-- ホスト コンピューターが休止状態の場合、セルフホステッド統合ランタイムはデータ要求に応答しません。 セルフホステッド統合ランタイムをインストールする前に、コンピューターに適切な電源プランを構成します。 コンピューターが休止状態に入るよう構成されている場合、セルフホステッド統合ランタイムのインストーラーによりメッセージが出力されます。
-- セルフホステッド統合ランタイムを正常にインストールして構成するには、コンピューターの管理者である必要があります。
-- コピー アクティビティは特定の頻度で実行されます。 コンピューター上のプロセッサおよび RAM の使用量は、ピーク時とアイドル時のある同じパターンに従います。 また、リソース使用量は、移動されるデータの量に大きく依存します。 複数のコピー ジョブが進行中のときには、ピーク時にリソース使用率が上昇します。
-- Parquet、ORC、または Avro 形式のデータの抽出中にタスクが失敗することがあります。 Parquet の詳細については、「[Azure Data Factory での Parquet 形式](./format-parquet.md#using-self-hosted-integration-runtime)」を参照してください。 ファイルの作成は、セルフホステッド統合コンピューターで実行されます。 予想どおりに動作するには、ファイルの作成に次の前提条件が必要です。
-    - [Visual C++ 2010 再領布](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe)パッケージ (x64)
-    - [Adopt OpenJDK](https://adoptopenjdk.net/) などの JRE プロバイダーの Java Runtime (JRE) バージョン 8。 `JAVA_HOME` 環境変数が設定されていることを確認します。
-
-## <a name="installation-best-practices"></a>インストールのベスト プラクティス
-
-セルフホステッド統合ランタイムのインストールは、マネージド ID セットアップ パッケージを [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)からダウンロードして実行できます。 詳細な手順については、[オンプレミスとクラウドの間でのデータ移動](tutorial-hybrid-copy-powershell.md)に関する記事を参照してください。
-
-- コンピューターが休止状態にならないように、セルフホステッド統合ランタイム用のホスト コンピューターの電源プランを構成します。 ホスト コンピューターが休止状態になると、セルフホステッド統合ランタイムはオフラインになります。
-- 定期的に、セルフホステッド統合ランタイムに関連付けられている資格情報をバックアップします。
-- セルフホステッド IR のセットアップ操作を自動化する方法については、[PowerShell を使用した既存のセルフホステッド IR のセットアップ](#setting-up-a-self-hosted-integration-runtime)に関するセクションを参照してください。  
-
 ## <a name="install-and-register-a-self-hosted-ir-from-microsoft-download-center"></a>Microsoft ダウンロード センターからセルフホステッド IR をインストールして登録する
 
 1. [Microsoft Integration Runtime のダウンロード ページ](https://www.microsoft.com/download/details.aspx?id=39717)に移動します。
-1. **[ダウンロード]** を選択し、64 ビット バージョンを選んでから **[次へ]** を選択します。 32ビット バージョンはサポートされていません。
-1. マネージド ID ファイルを直接実行するか、ハード ドライブに保存してから実行します。
-1. **[ようこそ]** ウィンドウで言語を選び、 **[次へ]** を選択します。
-1. マイクロソフト ソフトウェア ライセンス条項に同意して、 **[次へ]** を選択します。
-1. セルフホステッド統合ランタイムをインストールする **フォルダー** を選んで、 **[次へ]** を選択します。
-1. **[インストールの準備完了]** ページで **[インストール]** をクリックします。
-1. **[完了]** を選択してインストールを完了します。
-1. PowerShell を使用して認証キーを取得します。 認証キーを取得するための PowerShell の例を以下に示します。
+2. **[ダウンロード]** を選択し、64 ビット バージョンを選んでから **[次へ]** を選択します。 32ビット バージョンはサポートされていません。
+3. マネージド ID ファイルを直接実行するか、ハード ドライブに保存してから実行します。
+4. **[ようこそ]** ウィンドウで言語を選び、 **[次へ]** を選択します。
+5. マイクロソフト ソフトウェア ライセンス条項に同意して、 **[次へ]** を選択します。
+6. セルフホステッド統合ランタイムをインストールする **フォルダー** を選んで、 **[次へ]** を選択します。
+7. **[インストールの準備完了]** ページで **[インストール]** をクリックします。
+8. **[完了]** を選択してインストールを完了します。
+9. PowerShell を使用して認証キーを取得します。 認証キーを取得するための PowerShell の例を以下に示します。
 
     ```powershell
     Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
     ```
 
-1. ご利用のコンピューターで実行している Microsoft Integration Runtime 構成マネージャーの **[統合ランタイム (セルフホスト) の登録]** ウィンドウで、次の手順を行います。
+10. ご利用のコンピューターで実行している Microsoft Integration Runtime 構成マネージャーの **[統合ランタイム (セルフホスト) の登録]** ウィンドウで、次の手順を行います。
 
     1. 認証キーをテキスト領域に貼り付けます。
 
-    1. 必要に応じて、 **[認証キーの表示]** を選択してキー テキストを表示します。
+    2. 必要に応じて、 **[認証キーの表示]** を選択してキー テキストを表示します。
 
-    1. **[登録]** を選択します。
+    3. **[登録]** を選択します。
+
+## <a name="service-account-for-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムのサービス アカウント
+セルフホステッド統合ランタイムの既定のログオン サービス アカウントは、**NT SERVICE\DIAHostService** です。 これは **[サービス] -> [Integration Runtime サービス] -> [プロパティ] -> [ログオン]** で確認できます。
+
+![セルフホステッド統合ランタイムのサービス アカウント](media/create-self-hosted-integration-runtime/shir-service-account.png)
+
+アカウントにサービスとしてのログオンの権限があることを確認します。 そうでないと、セルフホステッド統合ランタイムを正常に開始できません。 アクセス許可は、 **[ローカル セキュリティ ポリシー] -> [セキュリティの設定] -> [ローカル ポリシー] -> [ユーザー権利の割り当て] -> [サービスとしてログオン]** で確認できます。
+
+![サービス アカウントのアクセス許可](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
+
+![サービス アカウントのアクセス許可](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
+
+
+## <a name="notification-area-icons-and-notifications"></a>通知領域のアイコンと通知
+
+通知領域のアイコンまたはメッセージの上にカーソルを移動すると、セルフホステッド統合ランタイムの状態の詳細が表示されます。
+
+![通知領域内の通知](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
+
+
 
 ## <a name="high-availability-and-scalability"></a>高可用性とスケーラビリティ
 
@@ -253,90 +266,6 @@ dmgcmd ACTION args...
 >
 > セルフホステッド IR から他のデータ ストアへの転送におけるデータ移動は、この証明書が設定されているかどうかに関係なく、常に暗号化チャネル内で行われます。
 
-## <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で共有のセルフホステッド統合ランタイムを作成する
-
-データ ファクトリに既に設定してある既存のセルフホステッド統合ランタイム インフラストラクチャを再利用することができます。 この再利用により、共有された既存のセルフホステッド IR を参照して、異なるデータ ファクトリにリンクされたセルフホステッド統合ランタイムを作成できます。
-
-この機能の概要とデモンストレーションを参照するには、以下の 12 分間の動画を視聴してください。
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Hybrid-data-movement-across-multiple-Azure-Data-Factories/player]
-
-### <a name="terminology"></a>用語
-
-- **共有された IR**:物理インフラストラクチャで実行されている元のセルフホステッド IR。  
-- **リンクされた IR**:別の共有された IR を参照する IR。 リンクされた IR は論理 IR であり、共有された別のセルフホステッド IR のインフラストラクチャを使用します。
-
-### <a name="methods-to-share-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを共有する方法
-
-複数のデータ ファクトリを使用してセルフホステッド統合ランタイムを共有するには、[共有されたセルフホステッド統合ランタイムの作成](create-shared-self-hosted-integration-runtime-powershell.md)に関する記事を参照してください。
-
-### <a name="monitoring"></a>監視
-
-#### <a name="shared-ir"></a>共有された IR:
-
-![共有された統合ランタイムを検索するための選択](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
-
-![共有された統合ランタイムを監視](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
-
-#### <a name="linked-ir"></a>リンクされた IR:
-
-![リンクされた統合ランタイムを検索するための選択](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
-
-![リンクされた統合ランタイムを監視](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
-
-### <a name="known-limitations-of-self-hosted-ir-sharing"></a>セルフホステッド IR の共有に関する既知の制限事項
-
-* リンクされた IR が作成されるデータ ファクトリには、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) が必要です。 既定で、Azure portal または PowerShell コマンドレットで作成されたデータ ファクトリには、暗黙的にマネージド ID が作成されます。 ただし、Azure Resource Manager テンプレートまたは SDK を使用してデータ ファクトリを作成する場合は、**ID** プロパティを明示的に設定する必要があります。 この設定により、Resource Manager ではマネージド ID を含むデータ ファクトリが作成されます。
-
-* この機能をサポートする Data Factory .NET SDK のバージョンは、1.1.0 以降である必要があります。
-
-* アクセス許可を付与するには、ユーザーには、共有 IR が存在するデータ ファクトリ内に所有者ロールまたは継承された所有者ロールが必要です。
-
-* 共有機能は、同じ Azure AD テナント内のデータ ファクトリに対してのみ機能します。
-
-* Azure AD の[ゲスト ユーザー](../active-directory/governance/manage-guest-access-with-access-reviews.md) の場合、UI の検索機能 (検索キーワードを使用するすべてのデータ ファクトリの一覧表示) が[動作しません](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits)。 ただし、ゲスト ユーザーがデータ ファクトリの所有者である限り、検索機能を使用せずに IR を共有できます。 IR を共有する必要があるデータ ファクトリのマネージド ID について、 **[アクセス許可の割り当て]** ボックスにそのマネージド ID を入力し、Data Factory UI で **[追加]** を選択します。
-
-  > [!NOTE]
-  > この機能は Data Factory V2 でのみ使用できます。
-
-## <a name="notification-area-icons-and-notifications"></a>通知領域のアイコンと通知
-
-通知領域のアイコンまたはメッセージの上にカーソルを移動すると、セルフホステッド統合ランタイムの状態の詳細が表示されます。
-
-![通知領域内の通知](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
-
-## <a name="ports-and-firewalls"></a>ポートとファイアウォール
-
-考慮すべきファイアウォールが 2 つあります。
-
-- 組織の中央ルーターで実行されている "*企業ファイアウォール*"
-- セルフホステッド統合ランタイムがインストールされているローカル コンピューターでデーモンとして実行されている "*Windows ファイアウォール*"
-
-![ファイアウォール](media/create-self-hosted-integration-runtime/firewall.png)
-
-企業ファイアウォール レベルでは、次のドメインと送信ポートを構成する必要があります。
-
-[!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
-
-
-Windows ファイアウォール レベル (コンピューター レベル) では、通常、これらの送信ポートが有効になっています。 有効になっていない場合は、セルフホステッド統合ランタイム コンピューターで、ドメインとポートを構成することができます。
-
-> [!NOTE]
-> お使いのソースやシンクに基づいて、追加のドメインと送信ポートを企業ファイアウォールまたは Windows ファイアウォールで許可しなければならない場合があります。
->
-> Azure SQL Database や Azure Data Lake などの一部のクラウド データベースでは、そのファイアウォール構成でセルフホステッド統合ランタイム コンピューターの IP アドレスを許可しなければならない場合があります。
-
-### <a name="copy-data-from-a-source-to-a-sink"></a>ソースからシンクへのデータのコピー
-
-ファイアウォール ルールを、企業ファイアウォール、セルフホステッド統合ランタイム コンピューター上の Windows ファイアウォール、およびデータ ストア自体に対して確実に正しく有効にします。 このルールを有効にすると、セルフホステッド統合ランタイムは、ソースとシンクの両方に正常に接続されます。 コピー操作に関連するデータ ストアごとにルールを有効にしてください。
-
-たとえば、 オンプレミスのデータ ストアから SQL Database シンクまたは Azure Synapse Analytics シンクにコピーするには、以下の手順を実行します。
-
-1. 送信 TCP 通信を、Windows ファイアウォールと企業ファイアウォールの両方に対して、ポート 1433 上で許可します。
-1. SQL Database のファイアウォール設定を、セルフホステッド統合ランタイム コンピューターの IP アドレスを許可された IP アドレスのリストに追加するように構成します。
-
-> [!NOTE]
-> ファイアウォールで送信ポート 1433 が許可されていない場合、セルフホステッド統合ランタイムで SQL データベースに直接アクセスすることはできません。 この場合、SQL Database と Azure Synapse Analytics に向けた[ステージング コピー](copy-activity-performance.md)を使用できます。 このシナリオでは、データ移動に HTTPS (ポート 443) のみが必要になります。
 
 ## <a name="proxy-server-considerations"></a>プロキシ サーバーに関する考慮事項
 
@@ -437,6 +366,66 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 ```
 
 セルフホステッド統合ランタイム コンピューター上でポート 8060 を開かない場合は、資格情報の設定アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成します。 たとえば、**New-AzDataFactoryV2LinkedServiceEncryptCredential** PowerShell コマンドレットを使用できます。
+
+
+## <a name="ports-and-firewalls"></a>ポートとファイアウォール
+
+考慮すべきファイアウォールが 2 つあります。
+
+- 組織の中央ルーターで実行されている "*企業ファイアウォール*"
+- セルフホステッド統合ランタイムがインストールされているローカル コンピューターでデーモンとして実行されている "*Windows ファイアウォール*"
+
+![ファイアウォール](media/create-self-hosted-integration-runtime/firewall.png)
+
+企業ファイアウォール レベルでは、次のドメインと送信ポートを構成する必要があります。
+
+[!INCLUDE [domain-and-outbound-port-requirements](./includes/domain-and-outbound-port-requirements-internal.md)]
+
+
+Windows ファイアウォール レベル (コンピューター レベル) では、通常、これらの送信ポートが有効になっています。 有効になっていない場合は、セルフホステッド統合ランタイム コンピューターで、ドメインとポートを構成することができます。
+
+> [!NOTE]
+> 現在 Azure Relay でサービス タグはサポートされていないので、Azure Relay との通信のためには、NSG ルールでサービス タグ **AzureCloud** または **Internet** を使用する必要があります。
+> Azure Data Factory との通信のためには、NSG ルールの設定でサービス タグ **DataFactoryManagement** を使用できます。
+
+お使いのソースやシンクに基づいて、追加のドメインと送信ポートを企業ファイアウォールまたは Windows ファイアウォールで許可しなければならない場合があります。
+
+[!INCLUDE [domain-and-outbound-port-requirements](./includes/domain-and-outbound-port-requirements-external.md)]
+
+Azure SQL Database や Azure Data Lake などの一部のクラウド データベースでは、そのファイアウォール構成でセルフホステッド統合ランタイム コンピューターの IP アドレスを許可しなければならない場合があります。
+
+### <a name="get-url-of-azure-relay"></a>Azure Relay の URL の取得
+ファイアウォールの許可リストに含める必要がある 1 つの必須ドメインとポートは、Azure Relay との通信用です。 それはセルフホステッド統合ランタイムによって、テスト接続、フォルダー リストやテーブル リストの参照、スキーマの取得、データのプレビューなどのインタラクティブな作成に使用されます。 **.servicebus.windows.net** を許可せずに、より具体的な URL を使用する必要がある場合は、セルフホステッド統合ランタイムに必要なすべての FQDN を ADF ポータルから取得できます。
+1. ADF ポータルにアクセスし、セルフホステッド統合ランタイムを選択します。
+2. [編集] ページで **[ノード]** を選択します。
+3. **[View Service URLs]\(サービスの URL を表示\)** をクリックしてすべての FQDN を取得します。
+
+![Azure Relay の URL](media/create-self-hosted-integration-runtime/Azure-relay-url.png)
+
+4. これらの FQDN をファイアウォール規則の許可リストに追加できます。
+
+### <a name="copy-data-from-a-source-to-a-sink"></a>ソースからシンクへのデータのコピー
+
+ファイアウォール ルールを、企業ファイアウォール、セルフホステッド統合ランタイム コンピューター上の Windows ファイアウォール、およびデータ ストア自体に対して確実に正しく有効にします。 このルールを有効にすると、セルフホステッド統合ランタイムは、ソースとシンクの両方に正常に接続されます。 コピー操作に関連するデータ ストアごとにルールを有効にしてください。
+
+たとえば、 オンプレミスのデータ ストアから SQL Database シンクまたは Azure Synapse Analytics シンクにコピーするには、以下の手順を実行します。
+
+1. 送信 TCP 通信を、Windows ファイアウォールと企業ファイアウォールの両方に対して、ポート 1433 上で許可します。
+2. SQL Database のファイアウォール設定を、セルフホステッド統合ランタイム コンピューターの IP アドレスを許可された IP アドレスのリストに追加するように構成します。
+
+> [!NOTE]
+> ファイアウォールで送信ポート 1433 が許可されていない場合、セルフホステッド統合ランタイムで SQL データベースに直接アクセスすることはできません。 この場合、SQL Database と Azure Synapse Analytics に向けた[ステージング コピー](copy-activity-performance.md)を使用できます。 このシナリオでは、データ移動に HTTPS (ポート 443) のみが必要になります。
+
+
+## <a name="installation-best-practices"></a>インストールのベスト プラクティス
+
+セルフホステッド統合ランタイムのインストールは、マネージド ID セットアップ パッケージを [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)からダウンロードして実行できます。 詳細な手順については、[オンプレミスとクラウドの間でのデータ移動](tutorial-hybrid-copy-powershell.md)に関する記事を参照してください。
+
+- コンピューターが休止状態にならないように、セルフホステッド統合ランタイム用のホスト コンピューターの電源プランを構成します。 ホスト コンピューターが休止状態になると、セルフホステッド統合ランタイムはオフラインになります。
+- 定期的に、セルフホステッド統合ランタイムに関連付けられている資格情報をバックアップします。
+- セルフホステッド IR のセットアップ操作を自動化する方法については、[PowerShell を使用した既存のセルフホステッド IR のセットアップ](#setting-up-a-self-hosted-integration-runtime)に関するセクションを参照してください。  
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

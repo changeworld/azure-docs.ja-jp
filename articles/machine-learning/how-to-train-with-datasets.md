@@ -12,19 +12,21 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 8b95c5a45992c895713e0be056856172b14b830d
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 52b52c4c19b22fb1afd76d1e8dfa4163326c0244
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740676"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108592"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning でデータセットを使用してトレーニングする
 
 
-この記事では、トレーニング実験で [Azure Machine Learning データセット](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)を使用する方法について説明します。  接続文字列やデータ パスを気にすることなく、ローカルまたはリモートのコンピューティング先でデータセットを使用することができます。
+この記事では、[Azure Machine Learning データセット](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)を使用して、機械学習モデルのトレーニングを行う方法について説明します。  接続文字列やデータ パスを気にすることなく、ローカルまたはリモートのコンピューティング先でデータセットを使用することができます。 
 
 Azure Machine Learning データセットにより、[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)、[HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py)、[Azure Machine Learning パイプライン](how-to-create-your-first-pipeline.md)などの Azure Machine Learning トレーニング機能とのシームレスな統合が提供されます。
+
+モデル トレーニングに向けてデータを使用できるようにする準備はできていないものの、データ探索用のノートブックにデータを読み込みたい場合は、[データセット内でデータを探索する](how-to-create-register-datasets.md#explore-data)方法に関する記事を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,7 +36,7 @@ Azure Machine Learning データセットにより、[ScriptRunConfig](/python/a
 
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
 
-* [Azure Machine Learning SDK for Python (1.13.0 以降) がインストール済み](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (これには azureml-datasets パッケージが含まれています)。
+* [Azure Machine Learning SDK for Python がインストール済み](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (1.13.0 以上) (これには `azureml-datasets` パッケージが含まれています)。
 
 > [!Note]
 > 一部の Dataset クラスは、[azureml-dataprep](/python/api/azureml-dataprep/?preserve-view=true&view=azure-ml-py) パッケージに依存しています。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux、Ubuntu、Fedora、および CentOS。
@@ -65,7 +67,7 @@ TabularDataset オブジェクトを使用すると、TabularDataset のデー�
 > [!Note]
 > 元のデータ ソースに NaN、空の文字列、または空白の値が含まれている場合、`to_pandas_dataframe()` を使用すると、それらの値は *Null* 値として置き換えられます。
 
-準備されたデータをイン メモリの pandas データ フレームから新しいデータセットに読み込む必要がある場合は、そのデータを parquet などのローカル ファイルに書き込み、そのファイルから新しいデータセットを作成します。 データストアのローカル ファイルまたはローカル パスからデータセットを作成することもできます。 [データセットを作成する方法](how-to-create-register-datasets.md)の詳細をご覧ください。
+準備されたデータをイン メモリの pandas データ フレームから新しいデータセットに読み込む必要がある場合は、そのデータを parquet などのローカル ファイルに書き込み、そのファイルから新しいデータセットを作成します。 [データセットを作成する方法](how-to-create-register-datasets.md)の詳細をご覧ください。
 
 ```Python
 %%writefile $script_folder/train_titanic.py

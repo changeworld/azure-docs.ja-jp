@@ -13,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: f43cb80a148f5dadb409f506f237cb1210a2000a
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 869b37aea823cf91dc59211b23fcaccd7646afb9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934001"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012021"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>クイック スタート:テナントを設定する
 
@@ -47,7 +47,7 @@ Azure AD テナントはそれぞれ異なり、その他の Azure AD とは分�
 
 多くの開発者は、Azure AD テナントに関連付けられたサービスまたはサブスクリプション (Microsoft 365 や Azure サブスクリプションなど) を通じてテナントを既に持っています。
 
-1. テナントを確認するには、アプリケーションの管理に使用したいアカウントで [Azure portal](https://portal.azure.com)にサインインします。
+1. テナントを確認するには、アプリケーションの管理に使用するアカウントで <a href="https://portal.azure.com/" target="_blank">Azure portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
 1. 右上隅を確認します。 テナントがある場合、自動的にそのテナントにログインされ、アカウント名のすぐ下でテナント名を確認できます。
    * Azure portal の右上のアカウント名をポイントすると、名前、電子メール、ディレクトリ/テナント ID (GUID)、ドメインが表示されます。
    * アカウントが複数のテナントに関連付けられている場合は、アカウント名を選択してメニューを開き、そこでテナントを切り替えることができます。 各テナントには独自の ID があります。

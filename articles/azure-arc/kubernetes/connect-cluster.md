@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Azure Arc 対応の Kubernetes クラスターを Azure Arc と接続する
 keywords: Kubernetes, Arc, Azure, K8s, コンテナー
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 7f402d86ac1287753bc2deab53b24bb796644992
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8155ed709045626dee44fb499304ff5244a61b54
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97583934"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060250"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc 対応の Kubernetes クラスターを接続する (プレビュー)
 
@@ -30,7 +30,7 @@ ms.locfileid: "97583934"
 * Arc 対応の Kubernetes エージェントをデプロイするには、クラスターとクラスター上のクラスター管理者ロールにアクセスするための kubeconfig ファイルが必要です。
 * `az login` および `az connectedk8s connect` コマンドで使用されるユーザーまたはサービス プリンシパルには、"Microsoft.Kubernetes/connectedclusters" リソースの種類に対する "読み取り" と "書き込み" のアクセス許可が必要です。 ユーザーまたはサービス プリンシパルに対するロールの割り当てには、これらのアクセス許可を持つ "Kubernetes クラスター - Azure Arc のオンボード" ロールを使用できます。
 * connectedk8s 拡張機能を使用してクラスターをオンボードするには、Helm 3 が必要です。 この要件を満たすには、[最新リリースの Helm 3 をインストール](https://helm.sh/docs/intro/install)してください。
-* Azure Arc 対応 Kubernetes CLI 拡張機能をインストールするには、Azure CLI バージョン2.3 以降が必要です。 [Azure CLI をインストール](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)するか、最新バージョンに更新して、Azure CLI バージョン 2.3 以降があるようにしてください。
+* Azure Arc 対応 Kubernetes CLI 拡張機能をインストールするには、Azure CLI バージョン 2.15 以降が必要です。 [Azure CLI をインストール](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)するか、最新バージョンに更新して、確実に Azure CLI バージョン 2.15 以降を保有しているようにします。
 * Arc 対応 Kubernetes CLI 拡張機能をインストールします。
   
   Kubernetes クラスターを Azure に接続するために必要な `connectedk8s` 拡張機能をインストールします。

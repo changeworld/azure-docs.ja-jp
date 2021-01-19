@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 1/04/2021
+ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6f95b4eca8dbaf6cfaa7546fddada7577a1541b3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 1debeab6e420d9021ebba1cecb2d551cf21c9fe2
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916254"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028473"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>方法:アプリに省略可能な要求を提供する
 
@@ -87,14 +87,16 @@ ms.locfileid: "97916254"
 | `given_name`  | 名                      | ユーザー オブジェクトに設定されたユーザーの名を示します。<br>"given_name":"Frank"                   | MSA と Azure AD でサポートされています。  `profile` スコープが必要です。 |
 | `upn`         | ユーザー プリンシパル名 | username_hint パラメーターで使用できるユーザーの識別子。  そのユーザーの持続的な識別子ではないため、ユーザー情報の一意な識別 (データベース キーとして、など) には使用しません。 代わりに、ユーザー オブジェクト ID (`oid`) をデータベース キーとして使用します。 [代替ログイン ID](../authentication/howto-authentication-use-email-signin.md) を使用してサインインするユーザーには、ユーザー プリンシパル名 (UPN) は表示されません。 代わりに、次の `preferred_username` 要求を使用して、ユーザーにサインイン状態を表示します。 | 要求の構成については、下の[追加のプロパティ](#additional-properties-of-optional-claims)を参照してください。 `profile` スコープが必要です。|
 
+## <a name="v10-specific-optional-claims-set"></a>v1.0 固有の省略可能な要求セット
+
+v2 トークン形式の機能強化の一部は、セキュリティと信頼性の向上に役立つため、v1 トークン形式を使用するアプリで利用できます。 これらは、v2 エンドポイントから要求された ID トークンにも、v2 トークン形式を使用する API 用のアクセス トークンにも適用されません。 これらは、JWT にのみ適用され、SAML トークンは対象外となります。 
 
 **表 4: v1.0 のみの省略可能なクレーム**
 
-v2 トークン形式の機能強化の一部は、セキュリティと信頼性の向上に役立つため、v1 トークン形式を使用するアプリで利用できます。 これらは、v2 エンドポイントから要求された ID トークンにも、v2 トークン形式を使用する API 用のアクセス トークンにも適用されません。 
 
 | JWT の要求     | 名前                            | 説明 | Notes |
 |---------------|---------------------------------|-------------|-------|
-|`aud`          | 対象ユーザー | JWT には常に存在しますが、v1 アクセス トークンでは、さまざまな方法で出力される可能性があります。これにより、トークンの検証を実行するときに、コーディングが困難になる場合があります。  [この要求の追加のプロパティ](#additional-properties-of-optional-claims)を使用すると、常に v1 アクセス トークン内の GUID に確実に設定されるようにすることができます。 | v1 JWT アクセス トークンのみ|
+|`aud`          | 対象ユーザー | JWT には常に存在しますが、v1 アクセス トークンでは、リソースのクライアント ID のほか、任意の appID URI、末尾にスラッシュがある場合とない場合など、さまざまな方法で出力することができます。 このランダム化は、トークンの検証を実行するときに、コーディングが困難になる場合があります。  [この要求の追加のプロパティ](#additional-properties-of-optional-claims)を使用すると、常に v1 アクセス トークン内のリソースのクライアント ID に確実に設定されるようにすることができます。 | v1 JWT アクセス トークンのみ|
 |`preferred_username` | 推奨ユーザー名        | v1 トークン内の優先ユーザー名要求を提供します。 これにより、トークンの種類に関係なく、アプリでユーザー名のヒントを提供したり、人間が判読できる表示名を表示したりするのが簡単になります。  `upn` や `unique_name` などを使用するのでなく、この省略可能な要求を使用することをお勧めします。 | v1 ID トークンとアクセス トークン |
 
 ### <a name="additional-properties-of-optional-claims"></a>省略可能な要求の追加のプロパティ
@@ -108,8 +110,8 @@ v2 トークン形式の機能強化の一部は、セキュリティと信頼�
 | `upn`          |                          | SAML 応答と JWT 応答の両方や、v1.0 および v2.0 トークンに使用できます。 |
 |                | `include_externally_authenticated_upn`  | リソース テナントに格納されているゲスト UPN が含まれます。 たとえば、`foo_hometenant.com#EXT#@resourcetenant.com` のように指定します。 |
 |                | `include_externally_authenticated_upn_without_hash` | ハッシュ マーク (`#`) がアンダースコア (`_`) に置き換えられる点を除き、上と同じです。例: `foo_hometenant.com_EXT_@resourcetenant.com`|
-| `aud`          |                          | v1 アクセス トークンでは、これは `aud` 要求の形式を変更するために使用されます。  v2 トークンまたは ID トークンへの影響はありません。ここで、`aud` 要求は常にクライアント ID です。 これを使用すると、API による対象ユーザーの検証が確実により簡単になります。 リソースはアクセス トークンを所有しているので、要求内のリソースでは、アクセス トークンに影響を与えるすべての省略可能なクレームと同様に、この省略可能なクレームも設定する必要があります。|
-|                | `use_guid`               | リソース (API) のクライアント ID を、appid URI または GUID ではなく、`aud` 要求として GUID 形式で出力します。 そのため、リソースのクライアント ID が `bb0a297b-6a42-4a55-ac40-09a501456577` である場合、そのリソースのアクセス トークンを要求するいずれのアプリにも、`aud` : `bb0a297b-6a42-4a55-ac40-09a501456577` を含むアクセス トークンが送られてきます。|
+| `aud`          |                          | v1 アクセス トークンでは、これは `aud` 要求の形式を変更するために使用されます。  v2 トークンまたはいずれかのバージョンの ID トークンへの影響はありません。ここで、`aud` 要求は常にクライアント ID です。 この構成を使用すると、API による対象ユーザーの検証が確実により簡単になります。 リソースはアクセス トークンを所有しているので、要求内のリソースでは、アクセス トークンに影響を与えるすべての省略可能なクレームと同様に、この省略可能なクレームも設定する必要があります。|
+|                | `use_guid`               | リソース (API) のクライアント ID を GUID 形式で `aud` 要求として常に生成します。これはランタイム依存ではありません。 たとえば、リソースによってこのフラグが設定され、そのクライアント ID が `bb0a297b-6a42-4a55-ac40-09a501456577` の場合、そのリソースのアクセス トークンを要求するすべてのアプリに、`aud` : `bb0a297b-6a42-4a55-ac40-09a501456577` を含むアクセス トークンが送られます。 </br></br> この要求が設定されていない場合、API では、`api://MyApi.com`、`api://MyApi.com/`、`api://myapi.com/AdditionalRegisteredField`、またはその API のアプリ ID URI として設定されたその他の値の `aud` 要求と、リソースのクライアント ID を使用してトークンが取得されます。 |
 
 #### <a name="additional-properties-example"></a>追加のプロパティの例
 
@@ -136,7 +138,7 @@ v2 トークン形式の機能強化の一部は、セキュリティと信頼�
 
 UI またはアプリケーション マニフェストを使用して、アプリケーションの省略可能な要求を構成できます。
 
-1. [Azure ポータル](https://portal.azure.com)にアクセスします。 
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にアクセスします。 
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** の **[アプリの登録]** を選択します。
 1. 省略可能な要求を構成するアプリケーションを一覧から選択します。
@@ -245,7 +247,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 
 **UI を使用したグループの省略可能な要求の構成：**
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
 1. 認証が完了したら、ページの右上隅から Azure AD テナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** の **[アプリの登録]** を選択します。
@@ -258,7 +260,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 
 **アプリケーション マニフェストを使用したグループの省略可能な要求の構成：**
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
 1. 認証が完了したら、ページの右上隅から Azure AD テナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. 省略可能な要求を構成するアプリケーションを一覧から選択します。
@@ -389,7 +391,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 
 **UI の構成：**
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
 1. 認証が完了したら、ページの右上隅から Azure AD テナントを選択します。
 
 1. **Azure Active Directory** を検索して選択します。
@@ -412,7 +414,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 
 **マニフェストの構成：**
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
 1. 認証が完了したら、ページの右上隅から Azure AD テナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. 省略可能な要求を構成するアプリケーションを一覧から探して選択します。

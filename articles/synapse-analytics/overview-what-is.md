@@ -9,18 +9,18 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c315dae7e5f02f112dfdfbec02e1ebaaa5e48a9f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e5b12632a60ad5580325fbcda294e1a600bb2b6b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445773"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121704"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Azure Synapse Analytics とは
 
 エンタープライズ分析では、生データ、洗練化されたデータ、高度にキュレーションされたデータなど、あらゆる種類のデータを大規模に処理する必要があります。 通常そのためには、企業は、ビッグ データとデータ ウェアハウジング テクノロジを、リレーショナル ストアとデータ レイク内のデータ間で機能する複雑なデータ パイプラインに結合する必要があります。 この種のソリューションは、構築、保守、およびセキュリティ保護が困難です。 この複雑さにより、企業が必要とする分析情報の提供が遅くなります。
 
-**Azure Synapse** は、データ ウェアハウスやビッグ データ システム全体にわたって分析情報を取得する時間を早める統合分析サービスです。 Azure Synapse は、エンタープライズ データ ウェアハウジングで使用される **SQL** テクノロジー、ビッグ データ用に使用される **Spark** テクノロジー、そしてデータ統合と ETL (または ELT) のための **パイプライン** の長所を組み合わせたものです。 **Synapse Studio** には、管理、監視、コーディング、セキュリティのための一元化されたエクスペリエンスが用意されています。 Synapse は、**Power BI**、**CosmosDB**、**AzureML** などの他の Azure サービスとの緊密な統合機能を備えています。
+**Azure Synapse** は、データ ウェアハウスやビッグ データ システム全体にわたって分析情報を取得する時間を早める統合分析サービスです。 Azure Synapse は、エンタープライズ データ ウェアハウスで使用される **SQL** テクノロジ、ビッグ データに使用される **Spark** テクノロジ、データ統合と ETL および ELT のための **パイプライン**、**Power BI**、**CosmosDB**、**AzureML** などの他の Azure サービスとの緊密な統合の長所を組み合わせたものです。
 
 ## <a name="key-features--benefits"></a>主な機能と利点
 

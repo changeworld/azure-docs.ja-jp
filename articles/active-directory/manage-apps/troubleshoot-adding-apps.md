@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: 714cbb06506cc3e0dffe74007712d9cbad072284
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f873608d07785e6b99bd8e0fcdadf64a8899d490
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655070"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108417"
 ---
 # <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>Azure Active Directory へのアプリケーションの追加または削除に関する一般的な問題のトラブルシューティング
 この記事は、Azure Active Directory にアプリを追加または削除するときに直面する一般的な問題について理解するのに役立ちます。
@@ -43,7 +43,7 @@ ms.locfileid: "94655070"
 
 - Microsoft のアプリケーションの場合は、ロールに関係なく UI から削除することはできません。
 
-- マネージ ID に対応する ServicePrincipal の場合。 マネージド ID のサービス プリンシパルは、エンタープライズ アプリ ブレードでは削除できません。 それを管理するには、Azure リソースにアクセスする必要があります。 [マネージド ID](../managed-identities-azure-resources/overview.md) の詳細を確認してください
+- マネージ ID に対応する ServicePrincipal の場合。 マネージド ID のサービス プリンシパルは、エンタープライズ アプリ ブレードでは削除できません。 それを管理するには、Azure リソースにアクセスする必要があります。 [マネージド ID に関する詳細情報](../managed-identities-azure-resources/overview.md)
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>ポータルの通知の詳細を確認する方法
 ポータルの通知の詳細を確認するには、次の手順に従います。

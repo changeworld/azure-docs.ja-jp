@@ -3,17 +3,17 @@ title: Windows Virtual Desktop の最新情報 - Azure
 description: Windows Virtual Desktop の新機能と製品の更新プログラム。
 author: Heidilohr
 ms.topic: overview
-ms.date: 12/02/2020
+ms.date: 01/06/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: e42e49f69a159bf3bfdc732d41dc66a9a707f42f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: df3dd8b5b18ec2997ee20ad4955ffd7bc1dc573d
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617359"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955010"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows Virtual Desktop の最新情報
 
@@ -25,6 +25,44 @@ Windows Virtual Desktop は定期的に更新されます。 この記事では�
 - バグの修正
 
 この記事は毎月更新されます。 こちらを頻繁に確認して、新しい更新プログラムに関する最新情報を入手してください。
+
+## <a name="december-2020"></a>2020 年 12 月
+
+2020 年 12 月における変更点は次のとおりです。 
+
+### <a name="azure-monitor-for-windows-virtual-desktop"></a>Windows Virtual Desktop 向けの Azure Monitor
+
+Windows Virtual Desktop 向けの Azure Monitor のパブリック プレビューが利用可能になりました。 この新機能には、Azure Monitor ブックを基盤とする堅牢なダッシュボードが含まれており、IT プロフェッショナルが Windows Virtual Desktop 環境を理解するうえで役立ちます。 詳細については、[ブログのお知らせ](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-public-preview/m-p/1946587)をご覧ください。 
+
+### <a name="azure-resource-manager-template-change"></a>Azure Resource Manager テンプレートの変更点 
+
+最新の更新プログラムでは、ホスト プールを作成およびプロビジョニングするための Azure Resource Manager テンプレートからすべてのパブリック IP アドレス パラメーターを削除しました。 デプロイを安全に保つために、Windows Virtual Desktop にはパブリック IP を使用しないことを強くお勧めします。 デプロイがパブリック IP に依存している場合は、代わりにプライベート IP を使用するように再構成する必要があります。そうしないと、デプロイが適切に機能しません。
+
+### <a name="msix-app-attach-public-preview"></a>MSIX アプリのアタッチのパブリック プレビュー 
+
+MSIX アプリのアタッチは、今月にパブリック プレビューが開始されたもう 1 つのサービスです。 MSIX アプリのアタッチは、Windows Virtual Desktop セッション ホスト VM に MSIX アプリケーションを動的に提供するサービスです。 詳細については、[ブログのお知らせ](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/msix-app-attach-azure-portal-integration-public-preview/m-p/1986231)をご覧ください。 
+
+### <a name="screen-capture-protection"></a>画面キャプチャ保護 
+
+今月は、画面キャプチャ保護のパブリック プレビューも開始されました。 この機能を使用することで、機密情報がクライアント エンドポイントでキャプチャされるのを防ぐことができます。 [このページ](https://aka.ms/WVDScreenCaptureProtection)に移動して、画面キャプチャ保護をお試しください。  
+
+### <a name="built-in-roles"></a>組み込みのロール
+
+管理者のアクセス許可を付与するための、Windows Virtual Desktop 用の新しい組み込みロールが追加されました。 詳細については、「[Windows Virtual Desktop の組み込みロール](rbac.md)」を参照してください。 
+
+### <a name="application-group-limit-increase"></a>アプリケーション グループの制限の引き上げ
+
+Azure Active Directory テナントあたりのアプリケーション グループの既定の上限値を 200 グループに増やしました。
+
+### <a name="client-updates-for-december-2020"></a>2020 年 12 月のクライアント更新
+
+次のクライアントの新しいバージョンがリリースされました。 
+
+- Android
+- macOS
+- Windows
+
+クライアントの更新の詳細については、「[クライアント更新](whats-new.md#client-updates)」をご覧ください。
 
 ## <a name="november-2020"></a>2020 年 11 月
 

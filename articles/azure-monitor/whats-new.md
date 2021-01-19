@@ -5,17 +5,75 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 12/04/2020
-ms.openlocfilehash: 91aa76fd3d9dbb54316f32fdb319e92ca2283b1d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 01/11/2021
+ms.openlocfilehash: 6347bd3710a4727b9d3f820072ffff21cb57752d
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745776"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071869"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
 この記事では、Azure Monitor に関して新たに執筆された記事または大幅に更新された記事を一覧で紹介しています。 毎月第 1 週目に更新され、前月から更新された記事が掲載されます。
+
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="general"></a>全般
+- [Azure Monitor のカスタマー マネージド キー](platform/customer-managed-keys.md) - エラー メッセージを追加しました。
+- [Azure Monitor と統合するパートナー](platform/partners.md) - イベント ハブ統合に関するセクションを追加しました。
+
+### <a name="agents"></a>エージェント
+- [Azure Monitor を使用した Azure Data Explorer のクロスリソース クエリ](platform/azure-monitor-data-explorer-proxy.md) - 新しい記事。
+- [Azure 監視エージェントの概要](platform/agents-overview.md) - Oracle 8 のサポートを追加しました。
+
+### <a name="alerts"></a>警告
+- [Azure メトリック アラートのトラブルシューティング](platform/alerts-troubleshoot-metric.md) - 動的しきい値のトラブルシューティングを追加しました。
+- [Log Analytics の IT Service Management Connector](platform/itsmc-definition.md) - 新しい記事。
+- [IT Service Management Connector 概要](platform/itsmc-overview.md) - トラブルシューティング情報を再構成しました。
+- [Cherwell を IT Service Management Connector に接続する](platform/itsmc-connections-cherwell.md) - 新しい記事。
+- [Provance を IT Service Management Connector に接続する](platform/itsmc-connections-provance.md) - 新しい記事。
+- [SCSM を IT Service Management Connector に接続する](platform/itsmc-connections-scsm.md) - 新しい記事。
+- [ServiceNow を IT Service Management Connector に接続する](platform/itsmc-connections-servicenow.md) - 新しい記事。
+- [ServiceNow の同期に関する問題を手動で修正する方法](platform/itsmc-resync-servicenow.md) - トラブルシューティング情報を再構成しました。
+
+
+
+
+### <a name="application-insights"></a>Application Insights
+- [JavaScript Web アプリのための Azure Application Insights](app/javascript.md) - 接続文字列の設定を追加しました。
+- [Azure Application Insights 標準メトリック](app/standard-metrics.md) - 新しい記事。
+- [Azure Monitor Application Insights Java](app/java-in-process-agent.md) - アプリケーションからのカスタム テレメトリの送信に関する情報を追加しました。
+- [Application Insights からのテレメトリの連続エクスポート](app/export-telemetry.md) - 診断設定ベースのエクスポートを追加しました。
+- [Azure Functions で .NET および .NET Core アプリのスナップショット デバッガーを有効にする](app/snapshot-debugger-function-app.md) - 新しい記事。
+- [Application Insights および Log Analytics によって使用される IP アドレス](app/ip-addresses.md) - Azure Government 用の IP アドレスを追加しました。
+- [Azure Application Insights Profiler に関する問題のトラブルシューティング](app/profiler-troubleshooting.md) - 診断サービスのサイト拡張機能の状態ページに関する情報を追加しました。
+- [Azure Application Insights 可用性テストのトラブルシューティング](app/troubleshoot-availability.md) - ping テストのトラブルシューティングに関する情報を更新しました。
+- [Azure Monitor Application Insights for Java のトラブルシューティング](app/java-standalone-troubleshoot.md) - 新しい記事。
+
+### <a name="containers"></a>コンテナー
+- [Azure Monitor for containers でのレポート](insights/container-insights-reports.md) - 新しい記事。
+
+### <a name="logs"></a>ログ
+- [Azure Monitor ログ専用クラスター](log-query/logs-dedicated-clusters.md) - 自動化されたコマンド、リンクを解除して削除する方法、トラブルシューティングを追加しました。
+- [Azure Monitor と Azure Data Explorer 間のクロス サービス クエリ (プレビュー)](platform/azure-data-explorer-monitor-cross-service-query.md) - 新しい記事。
+- [Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)](platform/logs-data-export.md) - ARM テンプレートを追加しました。
+
+### <a name="metrics"></a>メトリック
+- [Azure メトリックス エクスプローラーの高度な機能](platform/metrics-charts.md) - リソース スコープ ピッカーに関する情報を追加しました。
+- [メトリックス エクスプローラーでの複数のリソースの表示](platform/metrics-dynamic-scope.md) - 新しい記事。
+
+### <a name="networks"></a>ネットワーク
+- [Azure Monitor の Azure Networking Analytics ソリューション](insights/azure-networking-analytics.md) - Network Insights ブックに関する情報を追加しました。
+
+### <a name="virtual-machines"></a>Virtual Machines
+- [ハイブリッド環境向けに Azure Monitor を有効にする](insights/vminsights-enable-hybrid.md) - 依存関係エージェントの新しいバージョン。
+
+
+### <a name="visualizations"></a>視覚化
+- [Azure Monitor ブックのマップの視覚化](platform/workbooks-map-visualizations.md) - 新しい記事。
+- [Azure Monitor ブックで独自のストレージを使用する](platform/workbooks-bring-your-own-storage.md) - 新しい記事。
+
 
 ## <a name="november-2020"></a>2020 年 11 月
 

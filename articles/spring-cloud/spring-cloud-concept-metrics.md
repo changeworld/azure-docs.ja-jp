@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 015aadb791172f5033bf0198caad567c9bc03221
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0c4299bc41a656fd678c14d63ae1d4987dba327b
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95974665"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060641"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Azure Spring Cloud のメトリックについて
 
@@ -114,7 +114,7 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 >[!div class="mx-tdCol2BreakAll"]
 >| 名前 | Spring Actuator メトリック名 | ユニット | 詳細 |
 >|------|-----------------------------|------|---------|
->| CPU 使用率       | cpu-usage      | ミリ秒 | プロセスによって CPU が使用された時間の長さ。 |
+>| CPU 使用率       | cpu-usage      | Percent      | すべてのシステム CPU リソースに対するプロセスの CPU 使用率の割合 [0-100]。 |
 >| Working set     | working-set    | メガバイト    | プロセスによって使用されたワーキング セットの量。 |
 >| GC heap size    | gc-heap-size   | メガバイト    | ガベージ コレクターによって報告された合計ヒープ サイズ。 |
 >| Gen 0 GC count  | gen-0-gc-count | Count        | 1 秒あたりの第 0 世代のガベージ コレクション数。 |

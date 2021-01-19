@@ -1,27 +1,27 @@
 ---
-title: Kotlin と IntelliJ を使用して Azure 関数を作成する
-description: Kotlin と IntelliJ を使用して、単純な HTTP によってトリガーしたサーバーレス アプリを Azure で作成し公開する方法について説明します。
+title: IntelliJ を使用して Azure Functions に Kotlin 関数を作成する
+description: IntelliJ を使用して、HTTP によってトリガーされる単純な Kotlin 関数を作成する方法について説明します。この関数は後に、Azure のサーバーレス環境で実行できるように発行します。
 author: dglover
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: 09dd868dc9e05241943899654d7c8bb427a8f268
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 0207e4af9f845343866714ec207ca306cb327b36
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104837"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035174"
 ---
-# <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>クイック スタート:Kotlin と IntelliJ を使用して、HTTP によってトリガーされる最初の関数を作成する
+# <a name="create-your-first-kotlin-function-in-azure-using-intellij"></a>IntelliJ を使用して Azure で初めての Kotlin 関数を作成する
 
-この記事では、IntelliJ IDEA と Apache Maven を使用して[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)関数プロジェクトを作成する方法について説明します。 また、統合開発環境 (IDE) で関数コードをローカルにデバッグし、関数プロジェクトを Azure にデプロイする方法についても説明します。
+この記事では、IntelliJ IDEA プロジェクトで HTTP によってトリガーされる Java 関数を作成して、統合開発環境 (IDE) でこのプロジェクトを実行およびデバッグし、最後にこの関数プロジェクトを Azure の関数アプリにデプロイする方法について説明します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="set-up-your-development-environment"></a>開発環境を設定する
 
-Kotlin と IntelliJ で関数を開発するには、次のソフトウェアをインストールします。
+IntelliJ を使用して Kotlin 関数を作成し、Azure に発行するには、次のソフトウェアをインストールします。
 
 - [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK) バージョン 8
 - [Apache Maven](https://maven.apache.org) バージョン 3.0 以降
@@ -32,7 +32,7 @@ Kotlin と IntelliJ で関数を開発するには、次のソフトウェアを
 > [!IMPORTANT]
 > この記事の手順を行うには、JAVA_HOME 環境変数を JDK のインストール場所に設定する必要があります。
 
-## <a name="create-a-functions-project"></a>Functions プロジェクトを作成する
+## <a name="create-a-function-project"></a>関数プロジェクトを作成する
 
 1. IntelliJ IDEA で、 **[新しいプロジェクトの作成]** を選択します。  
 1. **[新しいプロジェクト]** ウィンドウの左ウィンドウで **[Maven]** を選択します。
@@ -47,10 +47,10 @@ Kotlin と IntelliJ で関数を開発するには、次のソフトウェアを
 
 Maven は、_ArtifactId_ 値と同じ名前で新しいフォルダーにプロジェクト ファイルを作成します。 生成されるプロジェクトのコードは、トリガーする HTTP 要求の本文をエコーする、[HTTP によってトリガーされる](./functions-bindings-http-webhook.md)単純な関数です。
 
-## <a name="run-functions-locally-in-the-ide"></a>IDE で関数をローカルで実行する
+## <a name="run-project-locally-in-the-ide"></a>IDE でプロジェクトをローカルに実行する
 
 > [!NOTE]
-> 関数をローカルで実行およびデバッグするには、[Azure Functions Core Tools、バージョン 2](functions-run-local.md#v2) をインストールしていることを確認してください。
+> プロジェクトをローカルで実行およびデバッグするには、[Azure Functions Core Tools、バージョン 2](functions-run-local.md#v2) がインストールされていることを確認してください。
 
 1. 変更を手動でインポートするか、[自動インポート](https://www.jetbrains.com/help/idea/creating-and-optimizing-imports.html)を有効にします。
 1. **[Maven Projects]** (Maven プロジェクト) ツールバーを開きます。
@@ -60,7 +60,7 @@ Maven は、_ArtifactId_ 値と同じ名前で新しいフォルダーにプロ�
 
 1. 関数のテストが終了したら、実行ダイアログ ボックスを閉じます。 アクティブにして同時にローカルで実行できる関数ホストは 1 つだけです。
 
-## <a name="debug-the-function-in-intellij"></a>IntelliJ で関数をデバッグする
+## <a name="debug-the-project-in-intellij"></a>IntelliJ でプロジェクトをデバッグする
 
 1. デバッグ モードで関数ホストを開始するには、関数の実行時に **-DenableDebug** を引数として追加します。 [maven goals](https://www.jetbrains.com/help/idea/maven-support.html#run_goal) で構成を変更することも、ターミナル ウィンドウで次のコマンドを実行することもできます。  
 
@@ -75,25 +75,25 @@ Maven は、_ArtifactId_ 値と同じ名前で新しいフォルダーにプロ�
 1. _[名前]_ および _[設定]_ フィールドに入力し、 **[OK]** を選択して構成を保存します。
 1. セットアップ後、 **[Debug < Remote Configuration Name >]** (<リモート構成名> のデバッグ) を選択するか、キーボードで Shift + F9 キーを押してデバッグを開始します。
 
-   ![IntelliJ での関数のデバッグ](media/functions-create-first-kotlin-intellij/debug-configuration-intellij.PNG)
+   ![IntelliJ でプロジェクトをデバッグする](media/functions-create-first-kotlin-intellij/debug-configuration-intellij.PNG)
 
 1. 完了したら、デバッガーと実行中のプロセスを停止します。 アクティブにして同時にローカルで実行できる関数ホストは 1 つだけです。
 
-## <a name="deploy-the-function-to-azure"></a>関数を Azure にデプロイする
+## <a name="deploy-the-project-to-azure"></a>Azure にプロジェクトをデプロイする
 
-1. 関数を Azure にデプロイする前に、[Azure CLI を使用してログイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)する必要があります。
+1. プロジェクトを Azure の関数アプリにデプロイする前に、[Azure CLI を使用してログイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)する必要があります。
 
    ``` azurecli
    az login
    ```
 
-1. `azure-functions:deploy` Maven ターゲットを使用して、新しい関数にコードをデプロイします。 [Maven Projects]\(Maven プロジェクト) ウィンドウで **azure-functions:deploy** オプションを選択することもできます。
+1. `azure-functions:deploy` Maven ターゲットを使用して、新しい関数アプリにコードをデプロイします。 [Maven Projects]\(Maven プロジェクト) ウィンドウで **azure-functions:deploy** オプションを選択することもできます。
 
    ```
    mvn azure-functions:deploy
    ```
 
-1. 関数が正常にデプロイされると、Azure CLI 出力に関数の URL が表示されます。
+1. 関数アプリが正常にデプロイされると、Azure CLI 出力に HTTP トリガー関数の URL が表示されます。
 
    ``` output
    [INFO] Successfully deployed Function App with package.
@@ -105,5 +105,5 @@ Maven は、_ArtifactId_ 値と同じ名前で新しいフォルダーにプロ�
 
 ## <a name="next-steps"></a>次のステップ
 
-これで、最初の Kotlin 関数を Azure にデプロイできました。Java と Kotlin の関数の開発について、[Java 関数の開発者ガイド](functions-reference-java.md)をご確認ください。
-- `azure-functions:add` Maven ターゲットを使って、異なるトリガーの新しい関数をプロジェクトに追加します。
+これで、最初の Kotlin 関数アプリを Azure にデプロイできました。Java と Kotlin の関数の開発については、「[Azure Functions の Java 開発者向けガイド](functions-reference-java.md)」をご確認ください。
+- `azure-functions:add` Maven ターゲットを使って、異なるトリガーの新しい関数アプリをプロジェクトに追加します。

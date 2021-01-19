@@ -7,19 +7,19 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 9e5f4fd14f56f0a2dff45dd2650ea552b07fecd7
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d4c099d29a843b4c354ffb218887dc7ffab51771
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987356"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065441"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする (レガシ)
 
 > [!Note]
 > この記事では、IoT Central の従来のデータ エクスポート機能について説明します。
 >
-> - 新しいプレビューのデータ エクスポート機能の詳細については、「[データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする](./howto-export-data.md)」を参照してください。
+> - 最新のデータ エクスポート機能の詳細については、「[データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする](./howto-export-data.md)」を参照してください。
 > - プレビューのデータ エクスポートと従来のデータ エクスポート機能の違いについては、[比較表](./howto-export-data.md#comparison-of-legacy-data-export-and-data-export)を参照してください。
 
 この記事では、Azure IoT Central のデータ エクスポート機能を使用する方法について説明します。 この機能を使用すると、データを **Azure Event Hubs**、**Azure Service Bus**、または **Azure Blob Storage** のインスタンスに継続的にエクスポートできます。 データ エクスポートでは JSON 形式が使用され、テレメトリ、デバイス情報、デバイス テンプレート情報を含めることができます。 エクスポートされたデータは次のことに使用します。

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 5fa8377b3cdddb2818c04c5a75e347ff73dc07d8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 40d2f957ce115b43a1dcc138b86e05ec9cc47384
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96509318"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060611"
 ---
 このチュートリアルでは、次の Azure リソースが必要です。
 
@@ -26,12 +26,15 @@ ms.locfileid: "96509318"
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-    スクリプトが正常に終了すれば、必要なすべてのリソースがご利用のサブスクリプションに表示されます。
+    スクリプトが正常に完了すると、必要なすべてのリソースがご利用のサブスクリプションに表示されます。
 1. スクリプトが完了したら、中かっこを選択してフォルダー構造を展開します。 *~/clouddrive/lva-sample* ディレクトリに、いくつかのファイルがあるのを確認できます。 このクイックスタートで注目するのは、次のものです。
 
      * * **~/clouddrive/lva-sample/edge-deployment/.env** - このファイルには、Visual Studio Code がエッジ デバイスにモジュールをデプロイする際に使用するプロパティが格納されています。
-     _ ***~/clouddrive/lva-sample/appsetting.json*** - Visual Studio Code は、このファイルを使用してサンプル コードを実行します。
+     _ * **~/clouddrive/lva-sample/appsetting.json** _ - Visual Studio Code では、このファイルを使用してサンプル コードが実行されます。
      
     これらのファイルは、次のセクションで Visual Studio Code に開発環境を設定するときに必要になります。 差し当たりローカル ファイルとしてコピーしておいてください。
     
     ![アプリケーション設定](../../../media/quickstarts/clouddrive.png)
+
+> [!TIP]
+> 作成された Azure リソースで問題が発生した場合は、_ *[トラブルシューティング ガイド](../../../troubleshoot-how-to.md#common-error-resolutions)* *を参照して、よく発生する問題を解決してください。

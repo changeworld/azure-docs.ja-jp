@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/25/2020
+ms.date: 01/11/2021
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: f8959904482bda8dc26e4df626377027e1ab4bd1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3da4fd26b3f985e034ca60039c09412e8237e965
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005548"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109275"
 ---
 Azure Portal で汎用 v2 ストレージ アカウントを作成するには、次の手順に従います。
 
@@ -26,8 +26,7 @@ Azure Portal で汎用 v2 ストレージ アカウントを作成するには�
 1. パフォーマンス レベルを選択します。 既定のレベルは *Standard* です。
 1. **[アカウントの種類]** フィールドで *[Storage V2 (汎用 v2)]* を設定します。
 1. ストレージ アカウントのレプリケート方法を指定します。 既定のレプリケート オプションは、 *[読み取りアクセス geo 冗長ストレージ (RA-GRS)]* です。 利用可能なレプリケーション オプションの詳細については、「[Azure Storage の冗長性](../articles/storage/common/storage-redundancy.md)」を参照してください。
-1. ストレージ アカウントの BLOB に対するアクセス レベルを指定します。 既定のレベルは "*ホット*" です。 アクセス レベルの詳細については、[BLOB のホット、クール、アーカイブ アクセス レベル](../articles/storage/blobs/storage-blob-storage-tiers.md)に関するページを参照してください。
-1. Azure Data Lake Storage を使用する予定がある場合は、 **[Advanced]\(詳細\)** タブを選択し、 **[階層型名前空間]** を **[Enabled]\(有効\)** に設定します。 詳細については、[Azure Data Lake Storage Gen2 の概要](../articles/storage/blobs/data-lake-storage-introduction.md)に関するページを参照してください。
+1. その他のオプションは、 **[ネットワーク]** 、 **[データ保護]** 、 **[詳細]** 、 **[タグ]** の各タブで利用できます。 Azure Data Lake Storage を使用する予定がある場合は、 **[Advanced]\(詳細\)** タブを選択し、 **[階層型名前空間]** を **[Enabled]\(有効\)** に設定します。 詳細については、[Azure Data Lake Storage Gen2 の概要](../articles/storage/blobs/data-lake-storage-introduction.md)に関するページを参照してください。
 1. **[確認および作成]** を選択して、ストレージ アカウントの設定を確認し、アカウントを作成します。
 1. **［作成］** を選択します
 

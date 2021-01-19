@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 07/21/2020
-ms.openlocfilehash: f0f352e2c803eb1f0638f2f517b97a931ebcc889
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ff9fc2baaf1563d4a02364db00344ffc0bc46a6a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996935"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060267"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>クイック スタート:Azure Portal を使用して Azure Database Migration Service のインスタンスを作成する
 
@@ -32,7 +32,7 @@ Web ブラウザーを開いて [Microsoft Azure Portal](https://portal.azure.co
 既定のビューはサービス ダッシュボードです。
 
 > [!NOTE]
-> サブスクリプションあたり最大 10 個の DMS インスタンスを作成できます。 それ以上のインスタンスが必要な場合は、サポート チケットを作成してください。
+> リージョンごとにサブスクリプションあたり最大 10 個の DMS インスタンスを作成できます。 それ以上のインスタンスが必要な場合は、サポート チケットを作成してください。
 
 ## <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
 

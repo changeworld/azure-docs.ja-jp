@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: dd8a30c60c81ef2761d5dc051d2dfeb300e1bac4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 90f89e72193c26b71859076b99c448a6e2d4c4c6
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792125"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060086"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,9 +33,9 @@ ALTER ANY EXTERNAL DATA SOURCE アクセス許可が必要です。 このアク
 
 ## <a name="create-the-sample-databases"></a>サンプル データベースの作成
 
-最初に、" **Customers** " と " **Orders** " という 2 つのデータベースを同じサーバーか異なるサーバーに作成する必要があります。
+最初に、"**Customers**" と "**Orders**" という 2 つのデータベースを同じサーバーか異なるサーバーに作成する必要があります。
 
-「 **Orders** 」データベースで次のクエリを実行し、「 **OrderInformation** 」テーブルを作成し、サンプル データを入力します。
+「**Orders**」データベースで次のクエリを実行し、「**OrderInformation**」テーブルを作成し、サンプル データを入力します。
 
 ```tsql
 CREATE TABLE [dbo].[OrderInformation](
@@ -49,7 +49,7 @@ INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1)
 INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8)
 ```
 
-次に、 **Customers** データベースで次のクエリを実行して、 **CustomerInformation** テーブルを作成し、サンプル データを入力します。
+次に、**Customers** データベースで次のクエリを実行して、**CustomerInformation** テーブルを作成し、サンプル データを入力します。
 
 ```tsql
 CREATE TABLE [dbo].[CustomerInformation](
@@ -77,6 +77,7 @@ INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]
     SECRET = '<password>';  
     ```
 
+    "master_key_password" は、接続の資格情報を暗号化するときに使用される、ユーザーが選択した強力なパスワードです。 
     "username" と "password" は Customers データベースのログインに使用するユーザー名とパスワードになります。
     Azure Active Directory とエラスティック クエリを使用した認証は、現時点ではサポートされていません。
 

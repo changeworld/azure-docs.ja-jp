@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: bb9efa3fde0ed840589b66db7b28392de67ee8dd
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 0ca1f1222881a2b4ca640fa31192bd1c151ebd9f
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635604"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028847"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API: サポートされる機能と構文
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -23,11 +23,14 @@ Azure Cosmos DB の MongoDB 用 API を使用すれば、使い慣れた MongoDB
 
 ## <a name="protocol-support"></a>プロトコルのサポート
 
-Azure Cosmos DB の MongoDB 用 API は、新しいアカウントでは、既定で MongoDB サーバー バージョン **3.6** と互換性があります。 以下に、サポートされている演算子およびすべての制限事項や例外の一覧を示します。 これらのプロトコルを認識するクライアント ドライバーはすべて、Azure Cosmos DB の MongoDB 用 API に接続できるはずです。 Azure Cosmos DB の MongoDB 用 API アカウントを使用する際は、3.6 バージョンのアカウントのエンドポイントが `*.mongo.cosmos.azure.com` 形式であるのに対し、3.2 バージョンのアカウントのエンドポイントが `*.documents.azure.com` 形式であることに注意してください。
+Azure Cosmos DB の MongoDB 用 API は、新しいアカウントでは、既定で MongoDB サーバー バージョン **3.6** と互換性があります。 以下に、サポートされている演算子およびすべての制限事項や例外の一覧を示します。 これらのプロトコルを認識するクライアント ドライバーはすべて、Azure Cosmos DB の MongoDB 用 API に接続できるはずです。 Azure Cosmos DB の MongoDB 用 API アカウントを使用するときは、3.6 バージョンのアカウントのエンドポイントが `*.mongo.cosmos.azure.com` という形式であるのに対し、3.2 バージョンのアカウントのエンドポイントは `*.documents.azure.com` という形式であることに注意してください。
 
 ## <a name="query-language-support"></a>クエリ言語のサポート
 
-Azure Cosmos DB の MongoDB 用 API では、MongoDB クエリ言語のコンストラクトが包括的にサポートされています。 以下に、現在サポートされている操作、演算子、ステージ、コマンド、およびオプションの詳細な一覧を示します。
+Azure Cosmos DB の MongoDB 用 API では、MongoDB クエリ言語のコンストラクトが包括的にサポートされています。 次のセクションでは、Azure Cosmos DB で現在サポートされているサーバー操作、演算子、ステージ、コマンド、およびオプションの詳細な一覧を示します。
+
+> [!NOTE]
+> この記事では、サポートされているサーバー コマンドの一覧のみを示し、クライアント側のラッパー関数については除外しています。 `deleteMany()` や `updateMany()` などのクライアント側のラッパー関数は、内部では `delete()` や `update()` といったサーバー コマンドを利用しています。 サポートされているサーバー コマンドを利用する関数は、Azure Cosmos DB の MongoDB 用 API と互換性があります。
 
 ## <a name="database-commands"></a>データベース コマンド
 
@@ -409,7 +412,7 @@ $regex クエリでは、左固定の式でインデックス検索が可能で�
 
 '$' または '|' を含める必要がある場合、2 つ (以上) の正規表現クエリを作成することをお勧めします。 たとえば、元のクエリとして ```find({x:{$regex: /^abc$/})``` がある場合、次のように変更する必要があります:
 
-```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```
+```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
 
 最初の部分では、インデックスを使用して検索を ^abc で始まるドキュメントに制限し、2 番目の部分で入力そのものを照合します。 バー演算子 '|' は "or" 関数として機能します。そのためクエリ ```find({x:{$regex: /^abc|^def/})``` は、フィールド 'x' の値が "abc" または "def" で始まるドキュメントに一致します。 インデックスを利用するには、```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })``` のように、クエリを 2 つの異なるクエリに分割し、$or 演算子で結合することをお勧めします。
 
@@ -592,7 +595,7 @@ Azure Cosmos DB は、自動のサーバー側シャーディングをサポー�
 
 ## <a name="sessions"></a>セッション
 
-Azure Cosmos DB では、サーバー側セッション コマンドはまだサポートされていません。
+Azure Cosmos DB では、サーバー側のセッション コマンドはまだサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

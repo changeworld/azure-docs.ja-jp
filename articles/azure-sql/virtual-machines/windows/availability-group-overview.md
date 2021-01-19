@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f39380e253d3fa9e86bfea3a8c436862738ff8e3
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 213b973bfc93cb2237473b6bc4c7f1e138457409
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359933"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131901"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 上の SQL Server の Always On 可用性グループ
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -62,7 +62,7 @@ Azure VM 上の SQL Server を使用する場合、可用性グループ リス�
 
 ### <a name="dnn-listener"></a>DNN リスナー
 
-SQL Server 2019 CU8 では、分散ネットワーク名 (DNN) リスナーのサポートが導入されています。 DNN リスナーは従来の可用性グループ リスナーに代わるもので、これにより、Azure ロード バランサーが Azure ネットワーク上でトラフィックをルーティングする必要がなくなります。 
+SQL Server 2019 CU8 では、分散ネットワーク名 (DNN) リスナーのサポートが導入されています。 DNN リスナーは、従来の可用性グループ リスナーに代わるものであり、Azure Load Balancer が Azure ネットワーク上でトラフィックをルーティングする必要性を排除します。 
 
 DNN リスナーは、デプロイの簡略化、メンテナンスとコストの削減、障害発生時のフェールオーバー時間の短縮を実現するため、Azure で推奨される HADR 接続ソリューションとなります。 
 

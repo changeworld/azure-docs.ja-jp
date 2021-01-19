@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: db36a77d93735b151ad893b7e25ba86f104e7b90
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 9bee391ddb0fa6c270c6d833fb7e81d5f4880497
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510466"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118644"
 ---
 # <a name="create-a-query-in-azure-cognitive-search"></a>Azure Cognitive Search でクエリを作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "97510466"
 | 手法 | 説明 |
 |-------------|-------------|
 | ポータル| [検索エクスプローラー (ポータル)](search-explorer.md) は、Azure portal のクエリ インターフェイスで、基になる検索サービスでインデックスに対してクエリを実行します。 このポータルでは、バックグラウンドで[ドキュメントの検索](/rest/api/searchservice/search-documents)操作に対して REST API 呼び出しを行いますが、オートコンプリート、提案、またはドキュメント検索を呼び出すことはできません。<br/><br/> プレビューを含む、任意のインデックスと REST API バージョンを選択できます。 クエリ文字列では、すべてのクエリ パラメーター (filter、select、searchFields など) をサポートする単純な構文または完全な構文を使用できます。 ポータルでは、インデックスを開くと、フィールド属性に簡単にアクセスできるように、横に並んだタブでインデックス JSON 定義と共に検索エクスプローラーを操作できます。 クエリのテスト中に、検索可能、並べ替え可能、フィルター可能、およびファセット可能の各フィールドを確認します。 <br/>早期調査、テスト、検証用に推奨されます。 [詳細情報。](search-explorer.md) |
-| Web テスト ツール| [Postman または Visual Studio Code](search-get-started-rest.md) は、[ドキュメントの検索](/rest/api/searchservice/search-documents)要求、およびその他の要求を REST で作成するための強力な選択肢です。 REST API は、Azure Cognitive Search での考えられるすべてのプログラム操作をサポートしており、Postman や Visual Studio Code などのツールを使用すると、要求を対話的に発行して、コードで使用する前にこの機能の動作を理解できます。 Azure portal で共同作成者または管理者の権限がない場合は、Web テストツールを選択することをお勧めします。 検索 URL とクエリ API キーがある限り、ツールを使用して既存のインデックスに対してクエリを実行できます。 |
+| Web テスト ツール| [Postman](search-get-started-rest.md) または [Visual Studio Code](search-get-started-vs-code.md) は、[ドキュメントの検索](/rest/api/searchservice/search-documents)要求、およびその他の要求を REST で作成するための強力な選択肢です。 REST API は、Azure Cognitive Search での考えられるすべてのプログラム操作をサポートしており、Postman や Visual Studio Code などのツールを使用すると、要求を対話的に発行して、コードで使用する前にこの機能の動作を理解できます。 Azure portal で共同作成者または管理者の権限がない場合は、Web テストツールを選択することをお勧めします。 検索 URL とクエリ API キーがある限り、ツールを使用して既存のインデックスに対してクエリを実行できます。 |
 | Azure SDK | コードを記述する準備ができたら、.NET、Python、JavaScript、または Java 用の Azure SDK 内の Azure.Search.Document クライアント ライブラリを使用できます。 各 SDK は独自のリリース スケジュールに基づいていますが、すべての SDK でインデックスを作成し、インデックスに対してクエリを実行できます。 <br/><br/>[SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) を使用すると、C# で検索インデックスのクエリを実行できます。  [詳細情報。](search-howto-dotnet-sdk.md)<br/><br/>[SearchClient (Python)](/dotnet/api/azure.search.documents.searchclient) を使用すると、Python で検索インデックスのクエリを実行できます。 [詳細情報。](search-get-started-python.md)<br/><br/>[SearchClient (JavaScript)](/dotnet/api/azure.search.documents.searchclient) を使用すると、JavaScript で検索インデックスのクエリを実行できます。 [詳細情報。](search-get-started-javascript.md) |
 
 ## <a name="set-up-a-search-client"></a>検索クライアントを設定する

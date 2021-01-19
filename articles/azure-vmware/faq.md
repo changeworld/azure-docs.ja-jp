@@ -3,12 +3,12 @@ title: よく寄せられる質問
 description: Azure VMware Solution についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
 ms.date: 1/4/2020
-ms.openlocfilehash: d0228739a6ee4eac20d2fa04e47cf86b6fddb84e
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 1420fba40492e1a5f45f4ad5e58da2caa29ae7e7
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881227"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107958"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware Solution についてよく寄せられる質問
 
@@ -29,6 +29,10 @@ ms.locfileid: "97881227"
 #### <a name="can-workloads-running-in-an-azure-vmware-solution-instance-consume-or-integrate-with-azure-services"></a>Azure VMware Solution インスタンスで実行されるワークロードで Azure サービスを使用できますか? また、このワークロードを Azure サービスと統合できますか?
 
 Azure VMware Solution のお客様はすべての Azure サービスを利用できるようになります。 特定のサービスのパフォーマンスと可用性の制限については、ケースバイケースで対処する必要があります。
+
+#### <a name="what-guest-operating-systems-are-compatible-with-azure-vmware-solution"></a>Azure VMware Solution と互換性のあるゲスト オペレーティング システムには、どのようなものがありますか?
+
+ゲスト オペレーティング システムと vSphere との互換性に関する情報については、「[VMware Compatibility Guide](https://www.vmware.com/resources/compatibility/search.php?deviceCategory=software&details=1&releases=485&page=1&display_interval=10&sortColumn=Partner&sortOrder=Asc&testConfig=16)」を参照してください。  Azure VMware Solution で実行されている vSphere のバージョンを特定するには、「[VMware ソフトウェアのバージョン](concepts-private-clouds-clusters.md#vmware-software-versions)」を参照してください。
 
 #### <a name="do-i-use-the-same-tools-that-i-use-now-to-manage-private-cloud-resources"></a>プライベート クラウドのリソースを管理するために現在使用しているのと同じツールを使用しますか?
 

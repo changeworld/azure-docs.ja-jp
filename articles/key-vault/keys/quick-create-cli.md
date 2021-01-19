@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3906de9cd94b4db3e675c2b822df2f061040c586
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 8da5e86362f41322102c3b5316df5743e0c2458f
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935293"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976991"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Key Vault との間でキーの設定と取得を行う
 
@@ -59,7 +59,7 @@ az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGrou
 
 キーをコンテナーに追加するには、いくつかの追加の手順を実行する必要があります。 このキーは、アプリケーションによって使用される可能性があります。 
 
-次のコマンドを入力して、呼び出される **ExampleKey** を作成します。
+次のコマンドを入力して、**ExampleKey** というキーを作成します。
 
 ```azurecli
 az keyvault key create --vault-name "Contoso-Vault2" -n ExampleKey --protection software

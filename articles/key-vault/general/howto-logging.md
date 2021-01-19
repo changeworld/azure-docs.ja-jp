@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5e0007f3b0dad8a68e9d81cebbe9fe24b5a7db3c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0e1ce841f6da8f15bd977437bca6b835a7b0d745
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285652"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108740"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Key Vault のログ記録を有効にする方法
 
@@ -25,20 +25,10 @@ ms.locfileid: "93285652"
 このチュートリアルを完了するには次の準備が必要です。
 
 * 使用している既存の Key Vault。  
-* Azure CLI または Azure PowerShell。
+* [Azure Cloud Shell](https://shell.azure.com) - Bash 環境
 * Azure 上に確保された Key Vault のログを格納するための十分なストレージ。
 
-CLI をローカルにインストールして使用することを選択する場合は、Azure CLI バージョン 2.0.4 以降が必要になります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 CLI を使用して Azure にサインインするには、次のように入力します。
-
-```azurecli-interactive
-az login
-```
-
-PowerShell をローカルにインストールして使用することを選択する場合は、Azure PowerShell モジュール バージョン 1.0.0 以降が必要になります。 バージョンを確認するには、「`$PSVersionTable.PSVersion`」と入力します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
-
-```powershell-interactive
-Connect-AzAccount
-```
+このガイド コマンドは、Bash を環境として [Cloud Shell](https://shell.azure.com) 用にフォーマットされています。
 
 ## <a name="connect-to-your-key-vault-subscription"></a>Key Vault サブスクリプションに接続する
 
@@ -118,7 +108,7 @@ Key Vault のログ記録を有効にするには、Azure CLI の [az monitor di
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
 ```
 
-Azure PowerShell では、 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) コマンドレットを使用し、 **-Enabled** フラグを **$true** に設定して、カテゴリを `AuditEvent` に設定します (Key Vault ログ記録の唯一のカテゴリ)。
+Azure PowerShell では、[Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) コマンドレットを使用し、 **-Enabled** フラグを **$true** に設定して、カテゴリを `AuditEvent` に設定します (Key Vault ログ記録の唯一のカテゴリ)。
 
 ```powershell-interactive
 Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category "AuditEvent"
@@ -162,7 +152,7 @@ az storage blob list --account-name "<your-unique-storage-account-name>" --conta
 Azure PowerShell では、[Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) を使用して、このコンテナー内のすべての BLOB を一覧表示します。次のように入力します。
 
 ```powershell
-Get-AzStorageBlob -Container $container -Context $sa.Context
+Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context
 ```
 
 Azure CLI コマンドまたは Azure PowerShell コマンドレットいずれかの出力からわかるように、BLOB の名前は `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json` という形式になっています。 日付と時刻の値には UTC が使用されます。
@@ -178,7 +168,7 @@ az storage blob download --container-name "insights-logs-auditevent" --file <pat
 Azure PowerShell では、[Gt-AzStorageBlobs](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) コマンドレットを使用して BLOB の一覧を取得してから、パイプを使用してそれを [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent?view=azps-4.7.0) コマンドレットに渡し、選択したパスにログをダウンロードします。
 
 ```powershell-interactive
-$blobs = Get-AzStorageBlob -Container $container -Context $sa.Context | Get-AzStorageBlobContent -Destination "<path-to-file>"
+$blobs = Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context | Get-AzStorageBlobContent -Destination "<path-to-file>"
 ```
 
 この 2 番目のコマンドレットを PowerShell で実行すると、BLOB 名に含まれる **/** 区切り記号によって、宛先フォルダーの下にフォルダー構造全体が作成されます。 この構造は、BLOB をファイルとしてダウンロードし、保存するために使用します。
@@ -188,19 +178,19 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 * 複数の Key Vault を持っている場合に、CONTOSOKEYVAULT3 という名前の Key Vault のみについてログをダウンロードするには、次のようにします。
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
   ```
 
 * 複数のリソース グループを持っている場合、1 つのリソース グループのみについてログをダウンロードするには、次のように `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`を使用します。
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
 * 2019 年 1 月のすべてのログをダウンロードする場合は、次のように `-Blob '*/year=2019/m=01/*'` を使用します。
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/year=2016/m=01/*'
   ```
 
 これで、ログの内容を検討する準備が整いました。 ただし、検討に移る前に、他の 2 つのコマンドを知っておく必要があります。

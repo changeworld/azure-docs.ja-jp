@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7f0ca83c194aae6f4a8d04d70c2d4f3746ad2ca5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 828f37030ae567cacbaad25849b7ba24c561c20c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446714"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132768"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Azure Synapse Analytics の用語
 
@@ -38,7 +38,7 @@ Synapse Studio 内で、**SQL スクリプト** を作成および実行する�
 
 ## <a name="apache-spark-for-synapse"></a>Synapse 用の Apache Spark
 
-Spark 分析を使用するには、Synapse ワークスペースで **サーバーレス Apache Spark プール** を作成し、使用します。 Spark プールの使用を開始すると、**Spark セッション** がワークスペースによって作成され、そのセッションに関連付けられているリソースが処理されます。 
+Spark 分析を使用するには、Synapse ワークスペースで **サーバーレス Apache Spark プール** を作成し、使用します。 Spark プールの使用を開始すると、ワークスペースによって **Spark セッション** が作成され、そのセッションに関連付けられているリソースが処理されます。 
 
 Synapse では、次の 2 とおりの方法で Spark を使用できます。
 * **Spark Notebooks**。データ サイエンスやエンジニアリングを行う用途で、Scala、PySpark、C#、SparkSQL が使用されます。

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 60e806be85a36c2e8a64d731c8794d806a4fcae4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d9e01ee8b1f6c1cd04e665ad9f7bc57155abfaab
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096531"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028983"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.2 バージョン) 用 API: サポートされる機能と構文
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -37,6 +37,9 @@ Azure Cosmos DB の MongoDB 用 API では、MongoDB クエリ言語のコンス
 ## <a name="database-commands"></a>データベース コマンド
 
 Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマンドがサポートされています。
+
+> [!NOTE]
+> この記事では、サポートされているサーバー コマンドの一覧のみを示し、クライアント側のラッパー関数については除外しています。 `deleteMany()` や `updateMany()` などのクライアント側のラッパー関数は、内部では `delete()` や `update()` といったサーバー コマンドを利用しています。 サポートされているサーバー コマンドを利用する関数は、Azure Cosmos DB の MongoDB 用 API と互換性があります。
 
 ### <a name="query-and-write-operation-commands"></a>クエリおよび書き込み操作コマンド
 
@@ -309,7 +312,7 @@ $polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon",
 
 `findOneAndUpdate` 操作を使用する場合、単一フィールドに対する並べ替え操作はサポートされていますが、複数フィールドに対する並べ替え操作はサポートされていません。
 
-## <a name="additional-operators"></a>その他の演算子
+## <a name="other-operators"></a>その他の演算子
 
 演算子 | 例 | Notes
 --- | --- | --- |

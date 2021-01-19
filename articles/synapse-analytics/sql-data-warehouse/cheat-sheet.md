@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a236cf99d3131e83619cfab06e8ec028938a87ba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: cc54ae66cda6bf8ecde07d1830448ec39a15cc29
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454598"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120225"
 ---
 # <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) のチート シート
 
@@ -37,7 +37,7 @@ ms.locfileid: "96454598"
 
 ## <a name="data-migration"></a>データ移行
 
-まず、データを [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) または Azure Blob Storage に読み込みます。 次に、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (プレビュー) を使用して、データをステージング テーブルに読み込みます。 次の構成を使用します。
+まず、データを [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) または Azure Blob Storage に読み込みます。 次に、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)を使用して、データをステージング テーブルに読み込みます。 次の構成を使用します。
 
 | デザイン | 推奨 |
 |:--- |:--- |
@@ -46,7 +46,7 @@ ms.locfileid: "96454598"
 | パーティション分割 | なし |
 | リソース クラス | largerc または xlargerc |
 
-[データ移行](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/)、[データ読み込み](design-elt-data-loading.md)、および[抽出、読み込み、および変換 (ELT) プロセス](design-elt-data-loading.md)の詳細を参照してください。
+[データ移行](/archive/blogs/sqlcat/migrating-data-to-azure-sql-data-warehouse-in-practice)、[データ読み込み](design-elt-data-loading.md)、および[抽出、読み込み、および変換 (ELT) プロセス](design-elt-data-loading.md)の詳細を参照してください。
 
 ## <a name="distributed-or-replicated-tables"></a>分散テーブルまたはレプリケート テーブル
 
@@ -137,7 +137,7 @@ Azure Functions では自動スケールを利用できます。
 
 SQL Database と Azure Analysis Services はハブとスポークのアーキテクチャにすることを検討するようお勧めします。 このソリューションは、異なるユーザー グループ間のワークロードを分離しながら、SQL Database と Azure Analysis Services の高度なセキュリティ機能も使用できます。 また、無制限のコンカレンシーをユーザーに提供することもできます。
 
-詳細については、[Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) を利用する一般的なアーキテクチャ](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/)に関するページを参照してください。
+詳細については、[Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) を利用する一般的なアーキテクチャ](/archive/blogs/sqlcat/common-isv-application-patterns-using-azure-sql-data-warehouse)に関するページを参照してください。
 
 専用 SQL プール (以前の SQL DW) から SQL データベースにスポークを 1 回のクリックでデプロイします。
 

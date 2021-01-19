@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 7e71058e1899cf83e712025b534e51a1be1f6bdb
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e6b4175f4f47c9dd378bec84da2575c079a2079f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591782"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014418"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>チュートリアル:Azure Active Directory と アマゾン ウェブ サービス (AWS) の統合 (従来のチュートリアル)
 
@@ -89,11 +89,11 @@ Amazon Web Services (AWS) で、Azure AD の **[ユーザー名]** の値を **[
 
 アマゾン ウェブ サービス (AWS) との Azure AD シングル サインオンを構成してテストするには、次の手順を行います。
 
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[アマゾン ウェブ サービス (AWS) シングル サインオンの構成](#configure-amazon-web-services-aws-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+2. **[アマゾン ウェブ サービス (AWS) の SSO の構成](#configure-amazon-web-services-aws-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 このセクションでは、Azure ポータルで Azure AD のシングル サインオンを有効にし、Amazon Web Services (AWS) アプリケーションへのシングル サインオンを構成します。
 
@@ -107,7 +107,7 @@ Amazon Web Services (AWS) で、Azure AD の **[ユーザー名]** の値を **[
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**鉛筆** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -143,11 +143,14 @@ Amazon Web Services (AWS) で、Azure AD の **[ユーザー名]** の値を **[
 
     g. **[保存]** をクリックします。
 
+    >[!NOTE]
+    >Azure AD でのロールの詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)を参照してください。
+
 7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして **フェデレーション メタデータ XML** をダウンロードし、コンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-### <a name="configure-amazon-web-services-aws-single-sign-on"></a>アマゾン ウェブ サービス (AWS) のシングル サインオンの構成
+### <a name="configure-amazon-web-services-aws-sso"></a>アマゾン ウェブ サービス (AWS) の SSO の構成
 
 1. 別の Web ブラウザーのウィンドウで、管理者として Amazon Web Services (AWS) 企業サイトにサインオンします。
 
@@ -231,7 +234,7 @@ Amazon Web Services (AWS) で、Azure AD の **[ユーザー名]** の値を **[
 
     ![AWS ウィンドウのどこにアカウント ID が表示されるかを示すスクリーンショット。](./media/aws-multi-accounts-tutorial/aws-accountid.png)
 
-1. ここで [Azure portal](https://portal.azure.com/) にサインインし、 **[グループ]** に移動します。
+1. ここで Azure portal にサインインし、 **[グループ]** に移動します。
 
 1. 前に作成した IAM ロールと同じ名前で新しいグループを作成し、これらの新しいグループの **オブジェクト ID** を書き留めます。
 
@@ -347,11 +350,11 @@ Amazon Web Services (AWS) で、Azure AD の **[ユーザー名]** の値を **[
     > [!Note]
     > 新しいロールを表示するには、Azure Portal でセッションを更新する必要があることに注意してください。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、マイ アプリを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Amazon Web Services (AWS)] タイルをクリックすると、Amazon Web Services (AWS) アプリケーション ページが表示され、ロールを選択するオプションが表示されます。
+マイ アプリで [Amazon Web Services (AWS)] タイルをクリックすると、Amazon Web Services (AWS) アプリケーション ページが表示され、ロールを選択するオプションが表示されます。
 
 ![シングル サインオンのテスト 1](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-screen.png)
 
@@ -359,7 +362,7 @@ SAML 応答を確認し、クレームとして渡されるロールを参照す
 
 ![シングル サインオンのテスト 2](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-saml.png)
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

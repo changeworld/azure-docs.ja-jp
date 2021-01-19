@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes Service (AKS) に Hyperledger Fabric コンソーシアムをデプロイする
 description: Azure Kubernetes Service に Hyperledger Fabric コンソーシアム ネットワークをデプロイして構成する方法
-ms.date: 08/06/2020
+ms.date: 01/08/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ab5b9fadfbb0f1c9c1cdf25ee319c7775a593ed
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651562"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060318"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Azure Kubernetes Service (AKS) に Hyperledger Fabric コンソーシアムをデプロイする
 
@@ -106,7 +106,7 @@ Hyperledger Fabric ネットワーク コンポーネントのデプロイを始
     - **[DNS プレフィックス]** : AKS クラスターのドメイン ネーム システム (DNS) 名のプレフィックスを入力します。 クラスターを作成した後でコンテナーを管理するときに、DNS を使用して Kubernetes API に接続します。
     - **[ノード サイズ]** : Kubernetes ノードのサイズは、Azure で利用可能な VM Stock Keeping Unit (SKU) の一覧から選択できます。 最適なパフォーマンスのため、Standard DS3 v2 をお勧めします。
     - **ノード数**:クラスターにデプロイする Kubernetes ノードの数を入力します。 このノードの数は、 **[ファブリックの設定]** タブで指定した Hyperledger Fabric ノードの数以上にすることをお勧めします。
-    - **[サービス プリンシパルのクライアント ID]** : 既存のサービス プリンシパルのクライアント ID を入力するか、新しく作成します。 AKS 認証にはサービス プリンシパルが必要です。 [サービス プリンシパルを作成する手順](/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)に関する記事を参照してください。
+    - **[サービス プリンシパルのクライアント ID]** : 既存のサービス プリンシパルのクライアント ID を入力するか、新しく作成します。 AKS 認証にはサービス プリンシパルが必要です。 [サービス プリンシパルを作成する手順](/powershell/azure/create-azure-service-principal-azureps#create-a-service-principal)に関する記事を参照してください。
     - **[サービス プリンシパルのクライアント シークレット]** : サービス プリンシパルのクライアント ID で指定したサービス プリンシパルのクライアント シークレットを入力します。
     - **[Confirm client secret]\(クライアント シークレットの確認\)** :サービス プリンシパルのクライアント シークレットを確認します。
     - **[コンテナーの監視を有効にする]** : AKS の監視を有効にする場合に選択します。これにより、指定した Log Analytics ワークスペースに AKS ログがプッシュされるようになります。
@@ -393,23 +393,35 @@ CHANNEL_NAME=<channelName>
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-次のコマンドを実行して、テンプレートのデプロイのバージョンを確認します。
+### <a name="find-deployed-version"></a>デプロイされているバージョンを検索する
 
-テンプレートがデプロイされているリソース グループに従って、環境変数を設定します。
-
-```bash
-
-SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
-AKS_CLUSTER_SUBSCRIPTION=<AKSClusterSubscriptionID>
-AKS_CLUSTER_RESOURCE_GROUP=<AKSClusterResourceGroup>
-AKS_CLUSTER_NAME=<AKSClusterName>
-```
-次のコマンドを実行して、テンプレートのバージョンを印刷します。
+次のコマンドを実行して、テンプレートのデプロイのバージョンを確認します。 テンプレートがデプロイされているリソース グループに従って、環境変数を設定します。
 
 ```bash
 SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER_SUBSCRIPTION
 kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
+```
 
+### <a name="patch-previous-version"></a>以前のバージョンにパッチを適用する
+
+v3.0.0 より前のテンプレート バージョンのデプロイに対してチェーンコードを実行するときに問題が発生する場合は、以下の手順に従って、ピア ノードに修正プログラムを適用してください。
+
+ピア デプロイ スクリプトをダウンロードします。
+
+```bash
+curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/scripts/patchPeerDeployment.sh -o patchPeerDeployment.sh; chmod 777 patchPeerDeployment.sh
+```
+
+次のコマンドを使用し、ピアのパラメーターを置き換えてスクリプトを実行します。
+
+```bash
+source patchPeerDeployment.sh <peerOrgSubscription> <peerOrgResourceGroup> <peerOrgAKSClusterName>
+```
+
+すべてのピア ノードに修正プログラムが適用されるまで待ちます。 シェルの別のインスタンスで次のコマンドを使用することで、ピア ノードの状態をいつでも確認できます。
+
+```bash
+kubectl get pods -n hlf
 ```
 
 ## <a name="support-and-feedback"></a>サポートとフィードバック

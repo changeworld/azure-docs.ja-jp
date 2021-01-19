@@ -4,16 +4,16 @@ description: 完全に管理されたサービスとしてのプラットフォ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 12/01/2020
+ms.date: 01/07/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: e70d02c02ba9a3f14d1659851919fbccf71776d1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c4a14ab1e5b52eb36a532c6d69713d588864d288
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487356"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019076"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -91,6 +91,7 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |米国中部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中部     |    S8v2、S9v2     |    1     |
 |米国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
+|米国中南部     |    S8v2、S9v2     |    1     |
 |米国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
 |米国西部     |    B1、B2、S0、S1、S2、S4、D1    |    7   |
 |米国西部     |    S8v2、S9v2   |    2  |
@@ -115,6 +116,7 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |オーストラリア東部     |    S8v2、S9v2    |    1     |
 |オーストラリア南東部     | B1、B2、S0、S1、S2、S4、D1       |    1     |
 |東日本     |   B1、B2、S0、S1、S2、S4、D1       |    1     |
+|東日本     |    S8v2、S9v2    |    1     |
 |東南アジア     |     B1、B2、S0、S1、S2、S4、D1     |   1      |
 |東南アジア     |     S8v2、S9v2     |   1      |
 |インド西部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
@@ -160,7 +162,7 @@ Azure Analysis Services の表形式モデルは、単純なテキスト ファ�
 
 ## <a name="your-data-is-secure"></a>データのセキュリティを確保
 
-Azure Analysis Services は、機微なデータを複数のレベルのセキュリティで保護します。 Azure サービスとして、Analysis Services は **Basic** レベルの分散型サービス拒否 (DDoS) 攻撃からの保護を提供します。これは、Azure プラットフォームの一部として自動的に有効にされます。 詳細については、「[Azure DDoS Protection Standard の概要](../ddos-protection/ddos-protection-overview.md)」を参照してください。 
+Azure Analysis Services は、機微なデータを複数のレベルのセキュリティで保護します。 Analysis Services は、分散型サービス拒否 (DDoS) 攻撃に対する **基本** レベルの保護を Azure サービスとして提供します。これは、Azure プラットフォームの一部として自動的に有効になります。 詳細については、「[Azure DDoS Protection Standard の概要](../ddos-protection/ddos-protection-overview.md)」を参照してください。 
 
 サーバー レベルでは、Analysis Services はファイアウォール、Azure 認証、サーバー管理者ロール、およびサーバー側暗号化を提供します。 データ モデル レベルでは、ユーザー ロール、行レベルとオブジェクトレベルのセキュリティによってデータの安全性が確保され、意図したユーザーのみにデータが表示されることが保証されます。
 

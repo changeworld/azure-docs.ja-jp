@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: b15849fb8fbfed5d55b9c224f51634047b7c75b2
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 222f6ebacb6139ca26a6f1cdd0f896270c9b2fc2
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914486"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034297"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps および Power Automate の式で関数を使用するためのリファレンス ガイド
 
@@ -1701,7 +1701,7 @@ div(<dividend>, <divisor>)
 
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
-| <*quotient-result*> | 整数または浮動小数点数 | 1 番目の数値を 2 番目の数値で除算した結果。 被除数または除数が float 型である場合、結果は float 型になります。 <p><p>**注**:float 結果を整数に変換するには、ロジック アプリから [Azure 関数 を作成して呼び出して](../logic-apps/logic-apps-azure-functions.md)みてください。 |
+| <*quotient-result*> | 整数または浮動小数点数 | 1 番目の数値を 2 番目の数値で除算した結果。 被除数または除数が float 型である場合、結果は float 型になります。 <p><p>**注**:float の結果を整数に変換するには、ロジック アプリから [Azure で関数を作成し、呼び出して](../logic-apps/logic-apps-azure-functions.md)みてください。 |
 ||||
 
 *例 1*

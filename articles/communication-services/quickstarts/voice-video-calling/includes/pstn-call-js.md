@@ -4,65 +4,77 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/11/2020
 ms.author: nikuklic
-ms.openlocfilehash: 009bd57fdb82b8463352da8dc63c9aeebceab09b
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 2f884a09e6b51b1c72034a62eaea601a4e69ecd2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779791"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024361"
 ---
 [!INCLUDE [Emergency Calling Notice](../../../includes/emergency-calling-notice-include.md)]
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
-- デプロイ済みの Communication Services リソース。 [Communication Services のリソースを作成する](../../create-communication-resource.md)。
+- デプロイ済みの Communication Services リソース。 [Communication Services リソースを作成します](../../create-communication-resource.md)。
 - Communication Services リソースで取得した電話番号。 [電話番号の取得方法](../../telephony-sms/get-phone-number.md)。
 - 通話クライアントを有効にするための `User Access Token`。 [`User Access Token` を取得する方法](../../access-tokens.md)についての詳細
-- [アプリケーションへの通話の追加の概要](../getting-started-with-calling.md)に関するクイックスタートを完了します
 
-### <a name="prerequisite-check"></a>前提条件のチェック
 
-- Communication Services リソースに関連付けられている電話番号を表示するには、[Azure portal](https://portal.azure.com/) にサインインし、Communication Services リソースを見つけて、左側のナビゲーション ペインから **[電話番号]** タブを開きます。
-- アプリの作成と実行には、JavaScript 用の Azure Communication Services 通話クライアント ライブラリを使用できます。
+[!INCLUDE [Calling with JavaScript](./get-started-javascript-setup.md)]
 
-```console
-npx webpack-dev-server --entry ./client.js --output bundle.js
-```
-
-## <a name="setting-up"></a>設定
-
-### <a name="add-pstn-functionality-to-your-app"></a>PSTN 機能をアプリに追加する
-
-電話のダイヤル操作を行うためのコントロールをレイアウトに追加して拡張します。
-
-**index.html** の `<body />` セクションの最後 (`<script />` タグの前) に次のコードを追加します。
+コードは次のとおりです。
 
 ```html
-<input 
-  id="callee-phone-input"
-  type="text"
-  placeholder="Phone number you would like to dial"
-  style="margin-bottom:1em; width: 230px;"
-/>
-<div>
-  <button id="call-phone-button" type="button">
-    Start Phone Call
-  </button>
-  &nbsp;
-  <button id="hang-up-phone-button" type="button" disabled="true">
-    Hang Up Phone Call
-  </button>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Communication Client - Calling Sample</title>
+  </head>
+  <body>
+    <h4>Azure Communication Services</h4>
+    <h1>Calling Quickstart</h1>
+    <input 
+      id="callee-phone-input"
+      type="text"
+      placeholder="Who would you like to call?"
+      style="margin-bottom:1em; width: 230px;"
+    />
+    <div>
+      <button id="call-phone-button" type="button">
+        Start Call
+      </button>
+      &nbsp;
+      <button id="hang-up-phone-button" type="button" disabled="true">
+        Hang Up
+      </button>
+    </div>
+    <script src="./bundle.js"></script>
+  </body>
+</html>
 ```
 
-テレフォニー機能でアプリケーション ロジックを拡張します。
-
-次のコードを **client.js** に追加します。
+このクイックスタートのアプリケーション ロジックを格納するために、**client.js** という名前のファイルを自分のプロジェクトのルート ディレクトリに作成します。 次のコードを追加して、通話クライアントをインポートし、ビジネス ロジックをアタッチできるように DOM 要素への参照を取得します。
 
 ```javascript
+import { CallClient, CallAgent } from "@azure/communication-calling";
+import { AzureCommunicationUserCredential } from '@azure/communication-common';
+
+let call;
+let callAgent;
+
 const calleePhoneInput = document.getElementById("callee-phone-input");
 const callPhoneButton = document.getElementById("call-phone-button");
 const hangUpPhoneButton = document.getElementById("hang-up-phone-button");
+
+async function init() {
+    const callClient = new CallClient();
+    const tokenCredential = new AzureCommunicationUserCredential('your-token-here');
+    callAgent = await callClient.createCallAgent(tokenCredential);
+  //  callButton.disabled = false;
+}
+
+init();
+
 ```
 
 ## <a name="start-a-call-to-phone"></a>電話の呼び出しを開始する
@@ -79,9 +91,8 @@ callPhoneButton.addEventListener("click", () => {
   // start a call to phone
   const phoneToCall = calleePhoneInput.value;
   call = callAgent.call(
-    [{phoneNumber: phoneToCall}], { alternateCallerId: {phoneNumber: '+18336528005'}
+    [{phoneNumber: phoneToCall}], { alternateCallerId: {phoneNumber: 'YOUR AZURE REGISTERED PHONE NUMBER HERE: +12223334444'}
   });
-
   // toggle button states
   hangUpPhoneButton.disabled = false;
   callPhoneButton.disabled = true;
@@ -118,8 +129,7 @@ npx webpack-dev-server --entry ./client.js --output bundle.js
 
 ブラウザーを開き、`http://localhost:8080/` に移動します。 次のように表示されます。
 
-
-![完成した JavaScript アプリケーションのスクリーンショット。](../media/javascript/pstn-calling-javascript-app.png)
+:::image type="content" source="../media/javascript/pstn-calling-javascript-app.png" alt-text="完成した JavaScript アプリケーションのスクリーンショット。":::
 
 追加したテキスト フィールドに電話番号を入力し、 **[Start Phone Call]\(通話を開始\)** ボタンをクリックすることによって、実際の電話番号を呼び出すことができます。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: c2b440413599ce07112231af17daa0bc14817b76
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9ac283721526488f587fcabc68348dafac1835db
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832779"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033355"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge デバイスにセキュリティ モジュールをデプロイする
 
@@ -51,13 +51,13 @@ ms.locfileid: "97832779"
 
 1. Azure portal から **Marketplace** を開きます。
 
-1. **[モノのインターネット]** を選択し、「**Defender for IoT**」を検索して選択します。
+1. **[モ ノのインターネット]** を選択し、 **[Azure Security Center for IoT]** を検索して選択します。
 
    :::image type="content" source="media/howto/edge-onboarding-8.png" alt-text="Defender for IoT を選択する":::
 
-1. **[作成]** をクリックして、デプロイを構成します。
+1. **[作成]** を選択してデプロイを構成します。
 
-1. ご使用の IoT Hub のAzure **サブスクリプション** を選択してから、ご使用の **IoT Hub** を選択します。<br>単一のデバイスをターゲットにするには **[デバイスへのデプロイ]** を選択し、複数のデバイスをターゲットにするには **[大規模にデプロイする]** を選択します。その後、 **[作成]** をクリックします。 大規模デプロイの詳細については、[デプロイ方法](../iot-edge/how-to-deploy-at-scale.md)に関する記事を参照してください。
+1. ご使用の IoT Hub のAzure **サブスクリプション** を選択してから、ご使用の **IoT Hub** を選択します。<br>単一のデバイスをターゲットにするには **[デバイスへのデプロイ]** を選択し、複数のデバイスをターゲットにするには **[大規模にデプロイする]** を選択します。その後、 **[作成]** を選択します。 大規模デプロイの詳細については、[デプロイ方法](../iot-edge/how-to-deploy-at-scale.md)に関する記事を参照してください。
 
     >[!Note]
     >**[大規模にデプロイする]** を選択した場合は、以下の手順にある **[モジュールの追加]** タブに進む前にデバイス名と詳細を追加してください。
@@ -68,7 +68,7 @@ ms.locfileid: "97832779"
 
 1. **AzureSecurityCenterforIoT** モジュールを選択します。
 1. **[モジュールの設定]** タブで、**名前** を **azureiotsecurity** に変更します。
-1. **[環境変数]** タブで、必要に応じて変数を追加します (デバッグ レベルなど)。
+1. **[環境変数]** タブで、必要に応じて変数を追加します (たとえば、*debug level* を追加し、次のいずれかの値に設定することができます: "致命的"、"エラー"、"警告"、または "情報")。
 1. **[コンテナーの作成オプション]** タブで、次の構成を追加します。
 
     ``` json
@@ -112,8 +112,12 @@ ms.locfileid: "97832779"
 #### <a name="step-2-runtime-settings"></a>手順 2:ランタイムの設定
 
 1. **[ランタイムの設定]** を選択します。
-1. **[Edge Hub]\(Edge ハブ\)** の下で、 **[イメージ]** を **mcr.microsoft.com/azureiotedge-hub:1.0.8.3** に変更します。
-1. **[作成オプション]** が次の構成に設定されていることを確認します。
+2. **[Edge Hub]\(Edge ハブ\)** の下で、 **[イメージ]** を **mcr.microsoft.com/azureiotedge-hub:1.0.8.3** に変更します。
+
+    >[!Note]
+    > 現在、バージョン 1.0.8.3 以前がサポートされています。
+
+3. **[作成オプション]** が次の構成に設定されていることを確認します。
 
     ``` json
     {
@@ -139,9 +143,9 @@ ms.locfileid: "97832779"
     }
     ```
 
-1. **[保存]** を選択します。
+4. **[保存]** を選択します。
 
-1. **[次へ]** を選択します。
+5. **[次へ]** を選択します。
 
 #### <a name="step-3-specify-routes"></a>手順 3:ルートを指定する
 

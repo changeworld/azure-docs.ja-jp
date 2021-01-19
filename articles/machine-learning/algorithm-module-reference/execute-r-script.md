@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/17/2020
-ms.openlocfilehash: 5d291ad745122d929c4b664e9da5e4649e463529
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: bdd7fd8e19bf2de6d0b3c6b2edd4515771fae237
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679110"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119019"
 ---
 # <a name="execute-r-script-module"></a>R スクリプトの実行モジュール
 
@@ -49,10 +49,12 @@ azureml_main <- function(dataframe1, dataframe2){
 追加の R パッケージをインストールするには、`install.packages()` メソッドを使用します。 パッケージは、R スクリプトの実行モジュールごとにインストールされます。 それらは他の R スクリプトの実行モジュール間で共有されません。
 
 > [!NOTE]
+> スクリプト バンドルから R パッケージをインストールすることは推奨されて **いません**。 スクリプト エディターで直接、パッケージをインストールすることをお勧めします。
 > `install.packages("zoo",repos = "http://cran.us.r-project.org")` などのパッケージをインストールするときは、CRAN リポジトリを指定します。
 
 > [!WARNING]
 > R スクリプトの実行モジュールでは、JAVA を必要とする `qdap` パッケージや、C++ を必要とする `drc` パッケージなど、ネイティブ コンパイルを必要とするパッケージのインストールはサポートしていません。 これは、このモジュールが、管理者以外のアクセス許可でプレインストールされた環境で実行されるためです。
+> デザイナー モジュールは Ubuntu で実行されるため、Windows で事前構築されているパッケージまたは Windows 用のパッケージはインストールしないでください。 パッケージが Windows で事前構築されているかを確認するには、[CRAN](https://cran.r-project.org/) に移動し、自分のパッケージを検索し、自分の OS に合わせてバイナリ ファイルを 1 つダウンロードし、**DESCRIPTION** ファイルの **Built:** 部分を確認します。 たとえば次のようになります。:::image type="content" source="media/module/r-package-description.png" alt-text="R パッケージの説明" lightbox="media/module/r-package-page.png":::
 
 このサンプルは、Zoo のインストール方法を示しています。
 ```R

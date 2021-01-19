@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: dd989d5925da864728e944e84962086c0cfb08ea
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 12841c747116cc9e14f348dfcf81acaa5da5e8c9
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462317"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165367"
 ---
 # <a name="store-query-results-to-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用してクエリの結果をストレージに格納する
 
@@ -74,6 +74,9 @@ FROM
 
 ```
 
+> [!NOTE]
+> このスクリプトを変更し、ターゲットの場所を変更して再度実行する必要があります。 データが既に存在する場所に外部テーブルを作成することはできません。
+
 ## <a name="use-the-external-table"></a>外部テーブルを使用する
 
 CETAS で作成した外部テーブルは、通常の外部テーブルと同じように使用できます。
@@ -93,6 +96,14 @@ WHERE
 ORDER BY
     [population] DESC;
 ```
+
+## <a name="remarks"></a>Remarks
+
+結果を格納したら、外部テーブルのデータを変更することはできません。 CETAS は前回の実行で作成された基になるデータを上書きしないため、このスクリプトを繰り返すことはできません。 実際のシナリオでこれらが必要な場合は、次のフィードバック項目に投票するか、Azure フィードバック サイトで新しいものを提案してください。
+- [外部テーブルへの新しいデータの挿入を有効にする](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/32981347-polybase-allow-insert-new-data-to-existing-exteran)
+- [外部テーブルからのデータの削除を有効にする](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/15158034-polybase-delete-from-external-tables)
+- [CETAS でパーティションを指定する](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/19520860-polybase-partitioned-by-functionality-when-creati)
+- [ファイルのサイズと数を指定する](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/42263617-cetas-specify-number-of-parquet-files-file-size)
 
 ## <a name="next-steps"></a>次のステップ
 

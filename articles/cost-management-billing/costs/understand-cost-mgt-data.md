@@ -3,18 +3,18 @@ title: Azure Cost Management のデータを理解する
 description: この記事では、Azure Cost Management に含まれるデータと、それが処理、収集、表示、およびクローズされる頻度について詳しく説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 01/06/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 97ae2ba26818bbc306da71af814d9b4f95858b6a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e6096c259ec1870a711a515bf02d5d00b4f75345
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032577"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964152"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -101,7 +101,7 @@ Cost Management に含まれるデータと含まれないデータを次の表�
 
 _<sup>**5**</sup> Azure サービスの使用状況は、予約および交渉済みの価格に基づきます。_
 
-_<sup>**6**</sup> マーケットプレースでの購入は、現時点では MSDN および Visual Studio プランではご利用いただけません。_
+" _<sup>**6**</sup> マーケットプレースでの購入は、現在、MSDN および Visual Studio プランではご利用いただけません。_ "
 
 _<sup>**7**</sup> 現時点では、エンタープライズ契約 (EA) アカウントおよび Microsoft 顧客契約アカウントでのみ予約購入をご利用いただけます。_
 
@@ -112,13 +112,13 @@ Azure Cost Management は、個々のサービスによって送信される各�
 - タグはリソースに直接適用される必要があり、親リソース グループから暗黙的に継承されることはありません。
 - リソース タグは、リソース グループにデプロイされたリソースでのみサポートされます。
 - デプロイされたリソースの中には、タグをサポートしていないものや、使用状況データにタグが含まれていないものもあります。
-- リソース タグは、タグの適用時に使用状況データにのみ含まれます。タグは履歴データには適用されません。
+- リソース タグは、タグが適用されている間、使用状況データにのみ含まれます。タグは履歴データには適用されません。
 - リソース タグは、データが更新された後に Cost Management でのみ使用できます。
-- リソース タグは、リソースがアクティブまたは実行中であり、使用状況レコードが生成されている場合 (たとえば、VM が割り当て解除されていない場合) に Cost Management でのみ使用できます。
+- リソース タグは、リソースがアクティブまたは実行中であり、使用状況レコードが生成されている場合にのみ Cost Management で使用できます。 たとえば、VM の割り当てが解除されている場合です。
 - タグを管理するには、各リソースに対する共同作成者のアクセス権が必要です。
 - タグ ポリシーを管理するには、管理グループ、サブスクリプション、またはリソース グループに対する所有者またはポリシーの共同作成者のアクセス権が必要です。
     
-Cost Management に特定のタグが表示されない場合は、次の点を考慮してください。
+Cost Management に特定のタグが表示されない場合は、次の質問について検討してください。
 
 - タグがリソースに直接適用されたか。
 - タグが 24 時間以上前に適用されたか。
@@ -137,10 +137,9 @@ Cost Management に特定のタグが表示されない場合は、次の点を�
     
 タグを使用するためのいくつかのヒントを次に示します。
 
-- 事前に計画してタグ付け方法を定義し、組織、アプリケーション、環境ごとなどにコストを分割します。
+- 事前に計画してタグ付け方法を定義し、組織、アプリケーション、環境などごとにコストを分割します。
 - Azure Policy を使用して、リソース グループのタグを個々のリソースにコピーし、タグ付け方法を適用します。
 - Tags API を Query または UsageDetails と共に使用して、現在のタグに基づいてすべてのコストを取得します。
-
 
 ## <a name="cost-and-usage-data-updates-and-retention"></a>コストと使用状況データの更新と保持
 
@@ -151,6 +150,7 @@ Cost Management に特定のタグが表示されない場合は、次の点を�
 - 現在の請求期間の見積もり料金は、使用量の増加に伴い変更される可能性があります。
 - 各更新は累積的であるため、すべての明細項目と、以前の更新からの情報が含まれます。
 - Azure では、現在の請求期間の終了後 72 時間 (3 カレンダー日) 以内に請求期間が確定 ("_クローズ_") します。
+- オープンしている (未請求) の月の期間中は、コスト管理データを見積もりに過ぎないと考える必要があります。 場合によっては、使用量が実際に発生した後に、まだシステムに到達していない料金が潜在している可能性があります。
 
 次の例は、請求期間が終了するタイミングを示しています。
 
@@ -161,7 +161,7 @@ Cost Management に特定のタグが表示されない場合は、次の点を�
 
 ### <a name="rerated-data"></a>データの再評価
 
-Cost Management API、Power BI、Azure portal のどの方法でデータを取得する場合でも、請求書がクローズされるまでは、現在の請求期間の料金が再評価され、その結果変更される可能性があります。
+Cost Management API シリーズ、Power BI、Azure portal のどの方法でデータを取得する場合でも、請求書がクローズされるまでは、現在の請求期間の料金が再評価され、その結果変更される可能性があります。
 
 ## <a name="cost-rounding"></a>コストの丸め
 
@@ -184,6 +184,6 @@ Cost Management に表示されるコストは丸められます。 クエリ AP
 - MSDN (MS-AZR-0062P)
 - Visual Studio (MS-AZR-0029P、MS-AZR-0059P、MS-AZR-0060P、MS-AZR-0063P、MS-AZR-0064P)
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 - Cost Management の最初のクイック スタートをまだ完了していない場合は、[コスト分析の開始](./quick-acm-cost-analysis.md)に関する記事をご覧ください。

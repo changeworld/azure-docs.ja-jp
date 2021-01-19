@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7265195f9614928a2150a56a780ea7b36bc2e266
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: ea66bb5bcdd6132809804632919a120f5c93353f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030868"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132718"
 ---
 # <a name="container-security-in-security-center"></a>Security Center のコンテナーのセキュリティ
 
@@ -48,7 +48,7 @@ Security Center では、次のコンテナー リソースの種類を保護で
 
 Azure Resource Manager ベースの Azure コンテナー レジストリ内のイメージを監視するには、[Azure Defender for container registries](defender-for-container-registries-introduction.md) を有効にします。 過去 30 日間にプルされたイメージ、レジストリにプッシュされたイメージ、またはインポートされたイメージが、Security Center によってスキャンされます。 統合されたスキャナーは、業界トップレベルの脆弱性スキャン ベンダー Qualys によって提供されます。
 
-Qualys または Security Center によって問題が見つかった場合は、[Azure Defender ダッシュボード](azure-defender-dashboard.md)で通知されます。 Security Center には、すべての脆弱性について、実行可能な推奨事項、重大度の分類、および問題の修正方法に関するガイダンスが表示されます。 コンテナーの Security Center の推奨事項の詳細については、[推奨事項の参照リスト](recommendations-reference.md#recs-containers)を参照してください。
+Qualys または Security Center によって問題が見つかった場合は、[Azure Defender ダッシュボード](azure-defender-dashboard.md)で通知されます。 Security Center には、すべての脆弱性について、実行可能な推奨事項、重大度の分類、および問題の修正方法に関するガイダンスが表示されます。 コンテナーの Security Center の推奨事項の詳細については、[推奨事項の参照リスト](recommendations-reference.md#recs-compute)を参照してください。
 
 Security Center では、スキャナーによる検出結果がフィルター処理および分類されます。 イメージが正常な場合、Security Center ではそのように示されます。 Security Center では、解決の必要な問題があるイメージに対してのみ、セキュリティに関する推奨事項が生成されます。 問題があるときにだけ通知することにより、Security Center では不要な情報アラートの可能性が減ります。
 
@@ -60,7 +60,7 @@ Azure Security Center では、IaaS Linux VM 上、または Docker コンテナ
 
 Security Center には CIS Docker Benchmark のルールセット全体が含まれており、コンテナーがいずれかのコントロールを満たしていない場合は警告が表示されます。 不適切な構成が検出されると、Security Center によってセキュリティの推奨事項が生成されます。 Security Center の **推奨事項ページ** を使用して、推奨事項を表示したり、問題を修復したりします。 CIS ベンチマーク チェックは、AKS マネージド インスタンスまたは Databricks マネージド VM では実行されません。
 
-この機能には関連する Security Center 推奨事項が表示されることがありますが、その詳細については、推奨事項参照テーブルの[コンテナー セクション](recommendations-reference.md#recs-containers)をご覧ください。
+この機能に表示される可能性がある、Security Center の関連する推奨事項の詳細については、推奨事項参照テーブルの[コンピューティング セクション](recommendations-reference.md#recs-compute)をご覧ください。
 
 VM のセキュリティ問題を調査している場合、Security Center にはマシン上のコンテナーに関する追加情報が表示されます。 こうした情報には、Docker のバージョンとホストで実行されているイメージの数が含まれます。 
 
@@ -74,7 +74,7 @@ AKS には、クラスターのセキュリティ体制をセキュリティで�
 * AKS クラスターの構成を常に監視する
 * 業界標準に合わせてセキュリティに関する推奨事項を生成する
 
-この機能には関連する Security Center 推奨事項が表示されることがありますが、その詳細については、推奨事項参照テーブルの[コンテナー セクション](recommendations-reference.md#recs-containers)をご覧ください。
+この機能に表示される可能性がある、Security Center の関連する推奨事項の詳細については、推奨事項参照テーブルの[コンピューティング セクション](recommendations-reference.md#recs-compute)をご覧ください。
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>Kubernetes 受付制御を使用したワークロード保護のベストプラクティス
 

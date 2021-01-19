@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 45c959bc3cb71a965f254867798ae32d86ba1e70
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cd3ff3fce80e66d7cd61636b4416cb2fc28f5e77
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97612612"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97956484"
 ---
 | リソース | 制限 |
 | --- | --- |
@@ -19,6 +19,7 @@ ms.locfileid: "97612612"
 | [サブスクリプション](https://azure.microsoft.com/pricing/)あたりのシリーズ (Dv2 や F など) ごとの VM のコア数 |リージョンあたり 20<sup>1</sup>。 制限を引き上げるには、サポートにお問い合わせください。 |
 | サブスクリプションあたりの[可用性セット](../articles/virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)数 |リージョンあたり 2,500。 |
 | 可用性セットあたりの仮想マシン数 | 200 |
+| [リソース グループ](../articles/azure-resource-manager/management/overview.md#resource-groups)あたりの[近接配置グループ数](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups-portal) | 800 | 
 | 可用性セットあたりの証明書数 | 199<sup>2</sup> |
 | サブスクリプションあたりの証明書数 |無制限<sup>3</sup> |
 

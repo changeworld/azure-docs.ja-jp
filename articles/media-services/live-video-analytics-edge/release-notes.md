@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge リリース ノート - Azure
 description: このトピックでは、Live Video Analytics on IoT Edge のリリース、機能強化、バグ修正、および既知の問題に関するリリース ノートを提供します。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 2800d41340e45867ea4126733cdb5968cf8b91c5
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 7f8957d1ec93259cf6defe7980f19298f782ea5e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400847"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121245"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Live Video Analytics on IoT Edge リリース ノート
 
@@ -23,6 +23,23 @@ ms.locfileid: "97400847"
 
 <hr width=100%>
 
+## <a name="january-12-2021"></a>2021 年 1 月 12 日
+
+このリリース タグは、モジュールの 2021 年 1 月の更新用です:
+
+```
+mcr.microsoft.com/media/live-video-analytics:2.0.1
+```
+
+> [!NOTE]
+> クイックスタートおよびチュートリアルでは、配置マニフェストで 2 のタグ (live-video-analytics:2) を使用します。 そのため、このようなマニフェストを再配置するだけで、エッジとデバイスでモジュールが更新されます。
+### <a name="bug-fixes"></a>バグの修正 
+
+* シグナル ゲート プロセッサの `ActivationSignalOffset`、`MinimumActivationTime`、`MaximumActivationTime` フィールドが間違って必須のプロパティとして設定されました。 これらは現在、**任意** のプロパティです。
+* 一部のリージョンにデプロイされたとき、IoT Edge モジュールで Live Video Analytics をクラッシュさせる使用バグを修正しました。
+
+<hr width=100%>
+
 ## <a name="december-14-2020"></a>2020 年 12 月 14 日
 このリリースは、Live Video Analytics on IoT Edge のパブリック プレビューの更新リリースです。 リリース タグは、次のとおりです。
 
@@ -33,7 +50,7 @@ ms.locfileid: "97400847"
 * 複数の HTTP 拡張プロセッサおよび gRPC 拡張機能プロセッサをグラフトポロジごとに使用するためのサポートが追加されました。
 * シンク ノードのディスク領域管理のサポートが追加されました。
 * `MediaGraphGrpcExtension` ノードで、1 つの gRPC サーバー内で複数の AI モデルを使用するための [extensionConfiguration](grpc-extension-protocol.md) プロパティがサポートされるようになりました。
-* [Prometheus 形式](https://prometheus.io/docs/practices/naming/)での Live Video Analytics モジュール メトリックの収集がサポートされるようになりました 
+* [Prometheus 形式](https://prometheus.io/docs/practices/naming/)で Live Video Analytics モジュール メトリックを収集できるようになりました。 [Azure Monitor でメトリックを収集し、表示する方法の詳細はこちらで](monitoring-logging.md#azure-monitor-collection-via-telegraf)ご覧ください。 
 * フレーム レート フィルター プロセッサは、**非推奨** となります。  
     * グラフ拡張機能のプロセッサ ノード自体でフレーム レート管理を使用できるようになりました。
 

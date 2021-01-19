@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-ms.date: 11/25/2020
+ms.date: 01/08/2021
 ms.author: sngun
-ms.openlocfilehash: 98b1db18b72aad0c68f2faee031cc040a2a1f369
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1cf3bf30b37a09b5dfe94bf1e754a7f8e9dcd82c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181239"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045667"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB の概要:テーブル API
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -20,7 +20,7 @@ ms.locfileid: "96181239"
 [Azure Cosmos DB](introduction.md) には、Azure Table Storage 向けに作成されたアプリケーションの中でも、以下に挙げたような特に高度な機能を必要とするアプリケーションのための Table API が用意されています。
 
 * [ターンキー グローバル分散](distribute-data-globally.md)。
-* 世界規模での[専用スループット](partitioning-overview.md)。
+* 世界規模での[専用スループット](partitioning-overview.md) (プロビジョニングされたスループットを使用している場合)。
 * 99 パーセンタイルで 10 ミリ秒未満の待ち時間。
 * 高可用性の保証。
 * 自動セカンダリ インデックス作成。
@@ -44,7 +44,7 @@ Azure Table Storage 用に作成されたアプリケーションについては
 | インデックス作成 | PartitionKey と RowKey のプライマリ インデックスのみ。 セカンダリ インデックスなし。 | 既定ではすべてのプロパティに対する自動および完全なインデックス作成。インデックス管理なし。 |
 | クエリ | クエリの実行では、プライマリ キーにインデックスを使用し、それ以外の場合はスキャンする。 | クエリは、クエリ時間の短縮のためにプロパティの自動インデックス作成を利用できる。 |
 | 一貫性 | プライマリ リージョン内では厳密な整合性。 セカンダリ リージョン内では最終的な整合性。 | アプリケーションのニーズに基づいて、可用性、待ち時間、スループット、および整合性のトレードオフを行う[明確に定義された 5 つの整合性レベル](consistency-levels.md)。 |
-| 価格 | ストレージ最適化。 | スループット最適化。 |
+| 価格 | 使用量ベース。 | [使用量ベース](serverless.md)と[プロビジョニング済みの容量](set-throughput.md)の両方のモードで使用できます。 |
 | SLA | レプリケーション戦略によっては、99.9% から 99.99% の可用性。 | 1 つのリージョンのアカウントでは、読み取り可用性が 99.999%、書き込みの可用性が 99.99% であり、複数リージョンのアカウントでは 99.999% の書き込み可用性。 可用性、待ち時間、スループット、および一貫性をカバーする[包括的な SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)。 |
 
 ## <a name="get-started"></a>はじめに
