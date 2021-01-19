@@ -4,19 +4,19 @@ description: Python を使用して、負荷時に適切にスケーリングさ
 ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3383ec322903d15c6090630890d14ce6d90bc96f
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: baa362f029678f266f154df912a9178a6626667d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97899384"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935871"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>Azure Functions で Python アプリのスループット パフォーマンスを向上させる
 
 Python を使用して Azure Functions 向けに開発する場合、関数がどのように実行され、そのパフォーマンスが関数アプリのスケーリング方法にどのように影響するかを理解する必要があります。 高パフォーマンスのアプリを設計するときには、この必要性がより重要になります。 関数アプリを設計、作成、構成するときに考慮すべき主な要素は、水平スケーリングとスループット パフォーマンスの構成です。
 
 ## <a name="horizontal-scaling"></a>水平スケーリング
-既定では、Azure Functions は、アプリケーションの負荷を自動的に監視し、必要に応じて Python 用に追加のホスト インスタンスを作成します。 Azure Functions では、さまざまなトリガーの種類の組み込みしきい値 (メッセージの経過時間や QueueTrigger のキュー サイズなど) を使用して、インスタンスを追加するタイミングを決定します。 これらのしきい値は、ユーザーが構成することはできません。 詳細については、「[従量課金プランと Premium プランのしくみ](functions-scale.md#how-the-consumption-and-premium-plans-work)」をご覧ください。
+既定では、Azure Functions は、アプリケーションの負荷を自動的に監視し、必要に応じて Python 用に追加のホスト インスタンスを作成します。 Azure Functions では、さまざまなトリガーの種類の組み込みしきい値 (メッセージの経過時間や QueueTrigger のキュー サイズなど) を使用して、インスタンスを追加するタイミングを決定します。 これらのしきい値は、ユーザーが構成することはできません。 詳細については、「[Azure Functions でのイベント ドリブン スケーリング](event-driven-scaling.md)」を参照してください。
 
 ## <a name="improving-throughput-performance"></a>スループットのパフォーマンスの向上
 
@@ -126,7 +126,7 @@ I/O にバインドされたアプリの場合、各呼び出しで動作する�
 
 asyncio 互換のサードパーティ製ライブラリを使用します。 ニーズを満たすサードパーティ製ライブラリがない場合は、Azure Functions でイベント ループを管理することもできます。 イベント ループを管理すると、コンピューティング リソース管理の柔軟性が向上します。また、同期 I/O ライブラリをコルーチンにラップすることも可能になります。
 
-組み込みの **asyncio** ライブラリを使用した[コルーチンとタスク](https://docs.python.org/3/library/asyncio-task.html)および[イベント ループ](https://docs.python.org/3.8/library/asyncio-eventloop.html)について説明している有用な Python 公式ドキュメントが多数あります。
+組み込みの **asyncio** ライブラリを使用した [コルーチンとタスク](https://docs.python.org/3/library/asyncio-task.html)および [イベント ループ](https://docs.python.org/3.8/library/asyncio-eventloop.html)について説明している有用な Python 公式ドキュメントが多数あります。
 
 例として、次の [requests](https://github.com/psf/requests) ライブラリを見てみましょう。このコード スニペットでは、**asyncio** ライブラリを使用して `requests.get()` メソッドをコルーチンにラップし、SAMPLE_URL への複数の Web 要求を同時に実行します。
 

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 01/11/2021
 ms.author: victorh
-ms.openlocfilehash: 43755b312a64c429b38a07c8c4fad8c85b08342a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51af9ff4972f5edef02426a6e81e8582123c9a7a
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89437855"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107856"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Azure Firewall を使用して Azure Kubernetes Service (AKS) のデプロイを保護する
 
@@ -47,7 +47,7 @@ Azure Firewall では、構成を簡略化するための AKS FQDN タグが提�
    - API サーバーと通信する必要があるアプリがある場合は、TCP [*IPAddrOfYourAPIServer*]:443 が必要です。 この変更は、クラスターの作成後に設定できます。
    - トンネル フロント ポッドが API サーバー上のトンネルの終端と通信するための TCP ポート 9000 と UDP ポート 1194。
 
-      具体的には、* *.hcp.<location>.azmk8s.io* と次の表のアドレスを参照してください。
+      具体的には、次の表のアドレスを参照してください。
 
    | 送信先エンドポイント                                                             | Protocol | Port    | 用途  |
    |----------------------------------------------------------------------------------|----------|---------|------|

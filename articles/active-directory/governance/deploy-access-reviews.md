@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2e670525840b801df874e3f8dcbdbadc0955a12
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746305"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932437"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory アクセス レビューのデプロイの計画
 
@@ -333,9 +333,9 @@ Azure AD ポータルで手動で、または Microsoft Graph 経由でスクリ
 > [!NOTE]
 > グループの所有権と、メンバーシップの定期的なレビューの説明責任を明確にするために、グループの作成方法を定義するビジネス ポリシーを定義することを推奨します。 
 
-### <a name="review-membership-of-exclusion-groups-in-ca-policies"></a>CA ポリシーの除外グループのメンバーシップのレビュー 
+### <a name="review-membership-of-exclusion-groups-in-conditional-access-policies"></a>条件付きアクセス ポリシーの除外グループのメンバーシップをレビューする 
 
-ネットワークを安全に保つために設計された条件付きアクセス (CA) ポリシーをすべてのユーザーに適用するのが適当でない場合があります。 たとえば、会社のネットワーク上にいる場合にのみユーザーのサインインを許可する CA ポリシーは、出張の多い営業チームには適当ではありません。 この場合、営業チームのメンバーをグループに入れて、そのグループを CA ポリシーから除外します。 
+ネットワークを安全な状態に維持するように設計された条件付きアクセス ポリシーをすべてのユーザーに適用すべきでない場合があります。 たとえば、ユーザーが企業ネットワーク上にいる場合にのみサインインできるようにする条件付きアクセス ポリシーを、出張の多い営業チームに適用することはできません。 その場合は、営業チームのメンバーを別のグループに配置し、そのグループを条件付きアクセス ポリシーから除外します。 
 
 除外するのが妥当でないメンバーが要件から除外される潜在的なリスクがあるため、このようなグループ メンバーシップを定期的にレビューしてください。
 

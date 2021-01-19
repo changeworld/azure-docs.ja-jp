@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2157a1cb96475209762e829c549d628f2c35fd91
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 49a350b77958901aae5e54e82d856e4f3772702e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97417487"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930788"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>MSIX アプリのアタッチ (プレビュー) 用にファイル共有を設定する
 
@@ -64,6 +64,12 @@ MSIX アプリのアタッチのパフォーマンスを最適化するために
 MSIX アプリのアタッチ ファイル共有の設定プロセスは、[FSLogix プロファイル ファイル共有の設定プロセス](create-host-pools-user-profile.md)とほぼ同じです。 ただし、ユーザーには異なるアクセス許可を割り当てる必要があります。 ファイル共有にアクセスするには、MSIX アプリのアタッチに、読み取り専用アクセス許可が必要です。
 
 MSIX アプリケーションを Azure Files に格納している場合は、セッション ホストに対して、ストレージ アカウントのロールベースのアクセス制御 (RBAC) とファイル共有の New Technology File System (NTFS) の共有に関するアクセス許可の両方を、すべてのセッションホスト VM に割り当てる必要があります。
+
+| Azure オブジェクト                      | 必要なロール                                     | ロール関数                                  |
+|-----------------------------------|--------------------------------------------------|-----------------------------------------------|
+| セッション ホスト (VM コンピューター オブジェクト)| 記憶域ファイル データの SMB 共有の共同作成者          | 読み取りと実行、読み取り、フォルダー内容の一覧表示  |
+| ファイル共有上の管理者              | 記憶域ファイル データの SMB 共有の管理者特権共同作成者 | フル コントロール                                  |
+| ファイル共有上のユーザー               | 記憶域ファイル データの SMB 共有の共同作成者          | 読み取りと実行、読み取り、フォルダー内容の一覧表示  |
 
 セッション ホスト VM にストレージ アカウントおよびファイル共有のアクセス許可を割り当てるには:
 

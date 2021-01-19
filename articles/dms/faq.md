@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: bf6e61ef3dfb1c50166cf17168b4deeb21e958d7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 460380d9435528dcd8cbb3f877c8034fdc34f50c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962911"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134150"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Azure Database Migration Service の使用に関する FAQ。
 
@@ -50,6 +50,9 @@ Azure Database Migration Service は、Microsoft Azure への大規模なデー�
 
 **Q.Azure Database Migration Service と Azure Migrate サービスはどのような点が違いますか。**
 Azure Migrate は、オンプレミスの仮想マシンから Azure IaaS への移行を支援します。 このサービスは、移行の適合性を評価し、パフォーマンスに基づくサイズを評価して、オンプレミスの仮想マシンを Azure で実行するためのコストを見積もることができます。 Azure Migrate は、オンプレミスの VM ベースのワークロードを Azure IaaS VM にリフトアンドシフト移行する場合に便利です。 ただし、Azure Database Migration Service とは異なり、Azure Migrate は、Azure PaaS リレーショナル データベース プラットフォーム (Azure SQL Database、Azure SQL Managed Instance など) 用に特化したデータベース移行サービスではありません。
+
+**Q.Database Migration Service では顧客データを格納しますか?**
+いいえ。 Database Migration Service では顧客データを格納しません。
 
 ## <a name="setup"></a>セットアップ
 
@@ -106,7 +109,7 @@ SQL Server エラー ログに対して次のクエリを実行して、SQL Serv
 ## <a name="troubleshooting-and-optimization"></a>トラブルシューティングと最適化
 
 **Q.DMS で移行プロジェクトをセットアップしていますが、ソース データベースへの接続で問題が発生しています。どうすればよいですか。**
-移行作業中にソース データベース システムへの接続に問題が発生した場合、DMS インスタンスを設定する仮想ネットワークに仮想マシンを作成します。 その仮想マシンでは、UDL ファイルを使用して SQL Server への接続をテストする、または Robo 3T をダウンロードして MongoDB の接続をテストするなど、接続テストを実行できるはずです。 接続テストに成功した場合、ソース データベースへの接続に問題はありません。 接続テストが成功しなかった場合は、ネットワーク管理者に問い合わせてください。
+移行作業中にソース データベース システムへの接続で問題が発生した場合は、DMS インスタンスを設定するために使用する仮想ネットワークの同じサブネット内に仮想マシンを作成します。 その仮想マシンでは、UDL ファイルを使用して SQL Server への接続をテストする、または Robo 3T をダウンロードして MongoDB の接続をテストするなど、接続テストを実行できるはずです。 接続テストに成功した場合、ソース データベースへの接続に問題はありません。 接続テストが成功しなかった場合は、ネットワーク管理者に問い合わせてください。
 
 **Q.Azure Database Migration Service が利用できないか停止しています。なぜですか。**
 ユーザーが明示的に Azure Database Migration Service (DMS) を停止した場合、またはサービスが 24 時間非アクティブ状態になった場合、サービスは停止状態または自動一時停止状態になります。 いずれの場合も、サービスは利用できなくなり、停止状態になります。  アクティブな移行を再開するには、サービスを再起動します。

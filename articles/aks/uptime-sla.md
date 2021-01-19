@@ -3,14 +3,14 @@ title: Azure Kubernetes Service (AKS) とアップタイム SLA
 description: Azure Kubernetes Service (AKS) API サーバーのオプションのアップタイム SLA オファリングについて説明します。
 services: container-service
 ms.topic: conceptual
-ms.date: 06/24/2020
+ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: d9d22b54ef2534cf0adb205175fdc3f1c57205fb
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 95728ca14b96adf7396ca13888107477d953b2a9
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607341"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033338"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS) のアップタイム SLA
 
@@ -26,7 +26,7 @@ ms.locfileid: "97607341"
 ## <a name="region-availability"></a>利用可能なリージョン
 
 * アップタイム SLA は、[AKS がサポートされている](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)パブリック リージョンおよび Azure Government リージョンで利用できます。
-* AKS がサポートされているあらゆるリージョンにおいて、[プライベート AKS クラスター][private-clusters]のアップタイム SLA を利用できます。
+* アップタイム SLA は、AKS がサポートされているすべてのパブリック リージョン内の[プライベート AKS クラスター][private-clusters]に対して使用できます。
 
 ## <a name="sla-terms-and-conditions"></a>SLA の使用条件
 

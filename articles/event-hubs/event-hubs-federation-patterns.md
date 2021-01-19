@@ -3,12 +3,12 @@ title: イベント レプリケーション タスクのパターン - Azure Ev
 description: この記事では、特定のイベント レプリケーション タスクのパターンを実装するための詳細なガイダンスを提供します
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 494de442b636d535fa1ed6fdeeeda28db9783952
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 438964c228f060dede93abf582c9504b698db8b0
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861372"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934613"
 ---
 # <a name="event-replication-tasks-patterns"></a>イベント レプリケーション タスクのパターン
 
@@ -34,7 +34,7 @@ Azure Functions または Azure Stream Analytics を使用するレプリケー�
 > - *EventPosition.FromEnd()* - 接続の時点からすべての新しいデータを読み取ります。
 > - *EventPosition.FromEnqueuedTime(dateTime)* - 指定した日付と時刻から始まるすべてのデータ。
 >
-> EventProcessor では、EventProcessorOptions で InitialOffsetProvider を使用して位置を設定します。 他のレシーバーの API では、コンストラクターを介して位置が渡されます。 
+> EventProcessor では、EventProcessorOptions で InitialOffsetProvider を使用して位置を設定します。 他のレシーバー API では、位置がコンストラクター経由で渡されます。 
 
 
 事前に構築されたレプリケーション関数のヘルパー (Azure Functions ベースのガイダンスで使用される[サンプルとして提供](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication)) により、ソース パーティションから取得された同じパーティション キーを持つイベント ストリームが、同じパーティション キーで元のストリームのバッチとしてターゲット イベント ハブに送信されることが保証されます。

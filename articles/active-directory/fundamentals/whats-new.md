@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d40e460c150fa616144180d4f677fe0211143e5
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b6da9f27e25fa5543f949716824f54af2b9f1ad1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862424"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132547"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -107,8 +107,6 @@ Azure China クラウドのすべてのテナントで、エンタイトルメ�
 自動化されたユーザー アカウント プロビジョニングを使用して組織をより適切にセキュリティ保護する方法の詳細については、[Azure AD による SaaS アプリケーションへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)に関するページをご覧ください。
  
 ---
- 
-[1233182](https://identitydivision.visualstudio.com/IAM/IXR/_queries?id=1233182&triage=true&fullScreen=false&_a=edit)
 
 ### <a name="new-federated-apps-available-in-azure-ad-application-gallery---december-2020"></a>Azure AD アプリケーション ギャラリーで新しいフェデレーション アプリが利用できるようになりました - 2020 年 12 月
 
@@ -123,6 +121,29 @@ Azure China クラウドのすべてのテナントで、エンタイトルメ�
 すべてのアプリケーションのドキュメントについては、こちら (https://aka.ms/AppsTutorial ) をご覧ください
 
 Azure AD アプリ ギャラリーにアプリケーションを公開する場合は、こちらの詳細 (https://aka.ms/AzureADAppRequest ) をお読みください
+
+---
+
+### <a name="navigate-to-teams-directly-from-my-access-portal"></a>マイ アクセス ポータルから直接 Teams に移動する
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** ユーザー アクセス管理 **製品の機能:** エンタイトルメント管理
+
+マイ アクセス ポータルから直接 Teams を起動できるようになりました。 それを行うには、[[マイ アクセス]](https://myaccess.microsoft.com/) にサインインし、 **[アクセス パッケージ]** に移動します。次に、 **[アクティブ]** タブに移動して、既にアクセス権があるすべてのアクセス パッケージを表示します。 アクセス パッケージを展開して Teams をマウスでポイントすると、 **[開く]** ボタンをクリックして起動できるようになります。 
+
+マイ アクセス ポータルの使用の詳細については、[Azure AD エンタイトルメント管理でのアクセス パッケージへのアクセスの要求](../governance/entitlement-management-request-access.md#sign-in-to-the-my-access-portal)に関するページに移動してください。
+
+---
+
+### <a name="public-preview---second-level-manager-can-be-set-as-alternate-approver"></a>パブリック プレビュー - 別の承認者として第 2 レベルのマネージャーを設定できる
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** ユーザー アクセス管理  
+**製品の機能:** エンタイトルメント管理
+
+エンタイトルメント管理の承認プロセスで追加オプションを使用できるようになりました。 [最初の承認者] として [承認者としてのマネージャー] を選択した場合は、別の承認者フィールドで選択できる追加オプション [別の承認者としての第 2 レベルのマネージャー] を使用できます。 このオプションを選択した場合は、システムが第 2 レベルのマネージャーを見つけられない場合に、要求の転送先のフォールバック承認者を追加する必要があります。
+
+詳細については、[Azure AD エンタイトルメント管理でのアクセス パッケージの承認設定の変更](../governance/entitlement-management-access-package-approval-policy.md#alternate-approvers)に関するページに移動してください。
 
 --- 
 
@@ -188,7 +209,7 @@ Azure AD アプリ ギャラリーにアプリケーションを公開する場�
 
 ---
 
-### <a name="azure-ad-application-proxy-natively-supports-single-sign-on-access-to-applications-that-use-headers-for-authentication"></a>Azure AD アプリケーション プロキシでは、認証のためにヘッダーを使用するアプリケーションに対するシングル サインオン アクセスがネイティブにサポートされます
+### <a name="public-preview---azure-ad-application-proxy-natively-supports-single-sign-on-access-to-applications-that-use-headers-for-authentication"></a>パブリック プレビュー - Azure AD アプリケーション プロキシでは、認証のためにヘッダーを使用するアプリケーションへのシングル サインオン アクセスがネイティブにサポートされる
 
 **種類:** 新機能  
 **サービス カテゴリ:** アプリ プロキシ  

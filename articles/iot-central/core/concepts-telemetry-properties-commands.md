@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: c29af68433f29d7bdd363bedfa6d36316b952f4c
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 5a9f6fa79da59425e4972dddd21ffdea15af73e7
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795345"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127908"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>テレメトリ、プロパティ、およびコマンドのペイロード
 
@@ -187,6 +187,9 @@ IoT Central では、デバイスからアプリケーションに送信され�
   "schema": "geopoint"
 }
 ```
+
+> [!NOTE]
+> **geopoint** のスキーマの種類は、[Digital Twins Definition Language の仕様](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)に含まれていません。 IoT Central では現在、**geopoint** のスキーマの種類と **location** のセマンティックの種類を下位互換性のためにサポートしています。
 
 デバイス クライアントは、次の例のようなテレメトリを JSON として送信する必要があります。 IoT Central では、値は地図上のピンとして表示されます。
 
@@ -576,6 +579,9 @@ IoT Central では、デバイスからアプリケーションに送信され�
 }
 ```
 
+> [!NOTE]
+> **geopoint** のスキーマの種類は、[Digital Twins Definition Language の仕様](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)に含まれていません。 IoT Central では現在、**geopoint** のスキーマの種類と **location** のセマンティックの種類を下位互換性のためにサポートしています。
+
 デバイス クライアントは、次の例のような JSON ペイロードを、デバイス ツインの reported プロパティとして送信する必要があります。
 
 ```json
@@ -721,7 +727,7 @@ IoT Central では、デバイスからは、書き込み可能なプロパテ�
 | ----- | ----- | ----------- |
 | `'ac': 200` | 完了 | プロパティの変更操作が正常に完了しました。 |
 | `'ac': 202` または `'ac': 201` | 保留中 | プロパティの変更操作が保留中または進行中です |
-| `'ac': 4xx` | エラー | 要求されたプロパティの変更は、有効でなかったか、エラーが発生しました |
+| `'ac': 4xx` | エラー | 要求されたプロパティ変更が有効でなかったか、またはエラーを含んでいました。 |
 | `'ac': 5xx` | エラー | 要求された変更の処理中に、デバイスで予期しないエラーが発生しました。 |
 
 `av` は、デバイスに送信されるバージョン番号です。
@@ -828,9 +834,6 @@ IoT Central では、デバイスからは、書き込み可能なプロパテ�
 ```
 
 ## <a name="commands"></a>コマンド
-
-> [!NOTE]
-> IoT Central Web UI では、コマンドに **[オフラインの場合にキューに入れる]** オプションを選択できます。 この設定は、デバイス テンプレートからモデルまたはインターフェイスをエクスポートする場合は含まれません。
 
 デバイス モデルの次のスニペットは、パラメーターがなく、デバイスが何かを返すことを想定していないコマンドの定義を示しています。
 
@@ -999,6 +1002,91 @@ IoT Central では、デバイスからは、書き込み可能なプロパテ�
   }
 }
 ```
+
+### <a name="offline-commands"></a>オフライン コマンド
+
+IoT Central Web UI では、コマンドに **[オフラインの場合にキューに入れる]** オプションを選択できます。 オフライン コマンドは、デバイスが接続するとすぐに配信される、ユーザーのソリューションからデバイスへの一方向の通知です。 オフライン コマンドは、要求パラメーターを使用できますが、応答を返すことはできません。
+
+**[オフラインの場合にキューに入れる]** 設定は、デバイス テンプレートからモデルまたはインターフェイスをエクスポートする場合は含まれません。 エクスポートされたモデルまたはインターフェイス JSON を見ても、コマンドがオフライン コマンドであることはわかりません。
+
+オフライン コマンドは、[IoT Hub のクラウドからデバイスへのメッセージ](../../iot-hub/iot-hub-devguide-messages-c2d.md)を使用して、コマンドとペイロードをデバイスに送信します。
+
+デバイス モデルの次のスニペットは、コマンドの定義を示しています。 このコマンドには、datetime フィールドと列挙型を持つオブジェクト パラメーターが含まれています。
+
+```json
+{
+  "@type": "Command",
+  "displayName": {
+    "en": "Generate Diagnostics"
+  },
+  "name": "GenerateDiagnostics",
+  "request": {
+    "@type": "CommandPayload",
+    "displayName": {
+      "en": "Payload"
+    },
+    "name": "Payload",
+    "schema": {
+      "@type": "Object",
+      "displayName": {
+        "en": "Object"
+      },
+      "fields": [
+        {
+          "displayName": {
+            "en": "StartTime"
+          },
+          "name": "StartTime",
+          "schema": "dateTime"
+        },
+        {
+          "displayName": {
+            "en": "Bank"
+          },
+          "name": "Bank",
+          "schema": {
+            "@type": "Enum",
+            "displayName": {
+              "en": "Enum"
+            },
+            "enumValues": [
+              {
+                "displayName": {
+                  "en": "Bank 1"
+                },
+                "enumValue": 1,
+                "name": "Bank1"
+              },
+              {
+                "displayName": {
+                  "en": "Bank2"
+                },
+                "enumValue": 2,
+                "name": "Bank2"
+              },
+              {
+                "displayName": {
+                  "en": "Bank3"
+                },
+                "enumValue": 2,
+                "name": "Bank3"
+              }
+            ],
+            "valueSchema": "integer"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+前のスニペットにあるコマンドのデバイス テンプレート UI で **[オフラインの場合にキューに入れる]** オプションを有効にした場合、デバイスが受信するメッセージには次のプロパティが含まれます。
+
+| プロパティ名 | 値の例 |
+| ---------- | ----- |
+| `custom_properties` | `{'method-name': 'GenerateDiagnostics'}` |
+| `data` | `{"StartTime":"2021-01-05T08:00:00.000Z","Bank":2}` |
 
 ## <a name="next-steps"></a>次のステップ
 

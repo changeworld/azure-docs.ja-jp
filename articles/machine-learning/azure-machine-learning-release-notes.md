@@ -6,19 +6,37 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-ms.author: jmartens
-author: j-martens
+ms.author: larryfr
+author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 695702c04e2eeb74ee27b7d4276a3be94d9d1cf7
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 4ba06af98714004e4429fe802a206acdfa8fb148
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881822"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127619"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の [**メインの SDK for Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) のリファレンス ページを参照してください。
+
+
+ ## <a name="2021-01-11"></a>2021-01-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1200"></a>Azure Machine Learning SDK for Python v1.20.0
++ **バグの修正と機能強化**
+  + **azure-cli-ml**
+    + OptimizationConfig に framework_version が追加されました。 これは、モデルがフレームワーク MULTI に登録されるときに使用されます。
+  + **azureml-contrib-optimization**
+    + OptimizationConfig に framework_version が追加されました。 これは、モデルがフレームワーク MULTI に登録されるときに使用されます。
+  + **azureml-pipeline-steps**
+    + 処理するコマンドを受け取る CommandStep の導入。 コマンドには、実行可能ファイル、シェル コマンド、スクリプトなどを含めることができます。
+  + **azureml-core**
+    + ワークスペースの作成で、ユーザー割り当て ID がサポートされるようになりました。 SDK/CLI からの UAI サポートの追加。
+    + ローカル デプロイで score.py に関する変更を取得するために、service.reload() での問題が修正されました。
+    + `run.get_details()` には、この実行の作成者の名前を表示する "submittedBy" という名前の追加のフィールドがあります。
+    + 実行から直接モデルを登録する方法を説明するために、Model.register メソッドのドキュメントが編集されました。
+   
 
 ## <a name="2020-12-31"></a>2020-12-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Azure Machine Learning Studio のノートブック エクスペリエンス (12 月の更新)
@@ -31,6 +49,7 @@ ms.locfileid: "97881822"
   + ページ読み込み時間の短縮
   + パフォーマンスの向上 
   + 高速化およびカーネルの信頼性の向上
+
   
 ## <a name="2020-12-07"></a>2020-12-07
 

@@ -7,19 +7,19 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 01/12/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 5be3652d7fca62a0740888ad458f8564f555169e
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 55c4fa00cfd20a83e65a3d57c6020991734f9d9f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518908"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132479"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>BLOB ストレージのセキュリティに関する推奨事項
 
-この記事には、BLOB ストレージのセキュリティに関する推奨事項が含まれています。 これらの推奨事項を実装することにより、共有責任モデルに記載されたセキュリティに関する義務を果たすのに役立ちます。 サービス プロバイダーとしての責任を果たすための Microsoft の取り組みについて詳しくは、「[クラウド コンピューティングについての共有責任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf)」を参照してください。
+この記事には、BLOB ストレージのセキュリティに関する推奨事項が含まれています。 これらの推奨事項を実装することにより、共有責任モデルに記載されたセキュリティに関する義務を果たすのに役立ちます。 サービス プロバイダーとしての責任を果たすための Microsoft の取り組みの詳細については、「[クラウド コンピューティングについての責任共有](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf)」を参照してください。
 
 この記事に記載されているいくつかの推奨事項は、Azure Security Center によって自動的に監視できます。 Azure Security Center は、Azure のリソースを保護するための防御の最前線です。 Azure Security Center については、「[Azure Security Center とは](../../security-center/security-center-introduction.md)」を参照してください。
 
@@ -31,9 +31,11 @@ Azure Security Center では、Azure リソースのセキュリティの状態�
 |-|----|--|
 | Azure Resource Manager デプロイ モデルを使用する | 重要なセキュリティ強化のために、Azure Resource Manager デプロイ モデルを使用して新しいストレージ アカウントを作成します。これには、Azure ロールベースの優れたアクセス制御 (Azure RBAC) と監査、Resource Manager ベースのデプロイとガバナンス、マネージド ID へのアクセス、シークレットのための Azure Key Vault へのアクセス、Azure Storage データおよびリソースにアクセスするための Azure AD に基づく認証と承認などが含まれます。 可能であれば、クラシック デプロイ モデルを使用する既存のストレージ アカウントを移行して、Azure Resource Manager を使用するようにします。 Azure Resource Manager の詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」を参照してください。 | - |
 | すべてのストレージ アカウントに Azure Defender を有効にする | Azure Defender for Azure Storage では、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンス レイヤーが追加されます。 アクティビティに異常が発生すると、Azure Security Center でセキュリティ アラートがトリガーされます。さらに、これらのアラートは、不審なアクティビティの詳細と、脅威の調査や修復の方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。 詳細については、[Azure Defender for Azure Storage の構成](../common/azure-defender-storage-configure.md)に関するページを参照してください。 | [はい](../../security-center/security-center-sql-service-recommendations.md) |
-| BLOB データの論理的な削除を有効にする | 論理的な削除を有効にすると、BLOB データが削除された後でも復旧することができます。 論理的な削除の詳細については、「[Azure Storage Blob の論理的な削除](./soft-delete-blob-overview.md)」を参照してください。 | - |
-| ストレージ アカウントをロックして誤削除を防止する | サブスクリプション、リソース グループ、またはリソースにロックを適用し、組織の他のユーザーが誤って削除したり変更したりするのを防止できます。 詳細については、「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」を参照してください。
+| BLOB の論理的な削除を有効にする | BLOB の論理的な削除を使用すると、削除されてしまった BLOB データを回復できます。 BLOB の論理的な削除の詳細については、[Azure Storage BLOB の論理的な削除](./soft-delete-blob-overview.md)に関するページを参照してください。 | - |
+| コンテナーの論理的な削除を有効にする | コンテナーの論理的な削除を使用すると、削除されてしまったコンテナーを回復できます。 コンテナーの論理的な削除の詳細については、「[コンテナーの論理的な削除 (プレビュー)](./soft-delete-container-overview.md)」を参照してください。 | - |
+| アカウントの誤った削除を防止するためにストレージ アカウントをロックする | 組織内の他のユーザーによって誤って削除または変更されないようにするために、Azure Resource Manager リソース (サブスクリプション、リソース グループ、ストレージ アカウントなど) をロックできます。 ストレージ アカウントをロックしても、そのアカウント内のデータが削除されなくなるわけではありません。 そのアカウント自体が削除されなくなるだけです。 詳細については、「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」を参照してください。
 | ビジネスに不可欠なデータを不変 BLOB に保存する | BLOB データを WORM (Write Once, Read Many) 状態で保存するように、訴訟ホールドと時間ベースの保持ポリシーを構成します。 保持期間中は、不変の状態で保存された BLOB を読み取ることはできますが、変更や削除を行うことはできません。 詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](storage-blob-immutable-storage.md)」を参照してください。 | - |
+| ストレージ アカウントへの安全な転送 (HTTPS) を必須とする | ??? | - |
 | Shared Access Signature (SAS) トークンを HTTPS 接続のみに制限する | クライアントが SAS トークンを使用して BLOB データにアクセスするときに HTTPS を要求することで、盗聴のリスクを最小限に抑えることができます。 詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../common/storage-sas-overview.md)」を参照してください。 | - |
 
 ## <a name="identity-and-access-management"></a>ID 管理とアクセス管理

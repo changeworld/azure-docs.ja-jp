@@ -11,12 +11,12 @@ author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 11/18/2020
-ms.openlocfilehash: c6754e6f0e3f0d6208bd34c96c8bc473429c943c
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: e4917d03e3c0fb8109f9ad9bdcea9e7c1cdcd5df
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917904"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108060"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動バックアップ - Azure SQL Database および SQL Managed Instance
 
@@ -122,7 +122,7 @@ SQL Database と SQL Managed Instance では、使用されたバックアップ
 
 ## <a name="backup-retention"></a>バックアップ保有期間
 
-新しいデータベース、復元されたデータベース、コピーされたデータベースのすべてについて、Azure SQL Database と Azure SQL Managed Instance では、既定で、過去 7 日間の PITR が可能な十分なバックアップが保持されます。 Hyperscale データベースを除き、1 から 35 日の範囲で、アクティブなデータベースごとに[バックアップの保持期間を変更する](#change-the-pitr-backup-retention-period)ことができます。 「[バックアップ ストレージ消費量](#backup-storage-consumption)」で説明されているように、PITR を有効にするために保存されているバックアップは、保有期間より古い場合があります。 Azure SQL Managed Instance のみの場合、データベースを削除した後で、PITR バックアップ保持率を 0 から 35 日の範囲で設定できます。 
+新しいデータベース、復元されたデータベース、コピーされたデータベースのすべてについて、Azure SQL Database と Azure SQL Managed Instance では、既定で、過去 7 日間の PITR が可能な十分なバックアップが保持されます。 Hyperscale データベースと Basic レベルのデータベースを除き、1 から 35 日の範囲で、アクティブな各データベースごとに[バックアップの保持期間を変更](#change-the-pitr-backup-retention-period)できます。 「[バックアップ ストレージ消費量](#backup-storage-consumption)」で説明されているように、PITR を有効にするために保存されているバックアップは、保有期間より古い場合があります。 Azure SQL Managed Instance のみの場合、データベースを削除した後で、PITR バックアップ保持率を 0 から 35 日の範囲で設定できます。 
 
 データベースを削除した場合、システムでは、オンライン データベースと同じ方法で、特定の保有期間のバックアップが保持されます。 削除されたデータベースのバックアップ保有期間を変更することはできません。
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 5a666d265550de6e24d791db6daa954d50ddde38
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: cefbdce88d49598998e8f985821088778eee3ae8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094184"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117658"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -32,9 +32,9 @@ Data Factory ソリューションでは、1 つ以上のデータ [パイプラ
 
 Data Factory を利用できるのは少数のリージョンだけですが、データ移動サービスはデータのコンプライアンス、効率性、ネットワーク送信コスト削減のために[グローバルに利用できます](concepts-integration-runtime.md#integration-runtime-location)。 
 
-Integration Runtime を含む Azure Data Factory は、クラウド データ ストアのリンクされたサービス資格情報以外のデータを格納しません。その資格情報は証明書を使用して暗号化されます。 Azure Data Factory を使用すると、データドリブン ワークフローを作成し、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)間でのデータ移動と、他のリージョンまたはオンプレミスの環境にある[コンピューティング サービス](compute-linked-services.md)を使用したデータ処理を調整できます。 また、SDK と Azure Monitor を使用して、ワークフローを監視および管理することもできます。
+Azure 統合ランタイムとセルフホステッド統合ランタイムを含む Azure Data Factory では、クラウド データ ストアのリンクされたサービスの資格情報 (証明書を使用して暗号化されます) を除き、どの一時データ、キャッシュ データ、またはログも格納されません。 Azure Data Factory を使用すると、データドリブン ワークフローを作成し、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)間でのデータ移動と、他のリージョンまたはオンプレミスの環境にある[コンピューティング サービス](compute-linked-services.md)を使用したデータ処理を調整できます。 また、SDK と Azure Monitor を使用して、ワークフローを監視および管理することもできます。
 
-Data Factory は、次の認証を取得しています。
+Data Factory は、次の認証を取得しています。 
 
 | **[CSA STAR 認証](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 12c9fd43933f9f54e013752c5fe482ce31650536
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 52a43874060748479beebc994bf0a9b663cde9dc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95238396"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020181"
 ---
 # <a name="create-an-app-service-environment"></a>App Service Environment を作成する
 
@@ -20,10 +20,9 @@ ms.locfileid: "95238396"
 > この記事では、App Service Environment v3 (プレビュー) について説明します。
 > 
 
-[App Service Environment (ASE)][Intro] は、ご使用の Azure 仮想ネットワーク (VNet) に導入される App Service のシングル テナント デプロイです。  ASEv3 でサポートされているのは、Vnet 内のプライベート アドレスでのアプリの公開のみです。 プレビュー期間中に ASEv3 を作成すると、3 つのリソースがサブスクリプションに追加されます。
+[App Service Environment (ASE)][Intro] は、ご使用の Azure 仮想ネットワーク (VNet) に導入される App Service のシングル テナント デプロイです。  ASEv3 でサポートされているのは、Vnet 内のプライベート アドレスでのアプリの公開のみです。 ASEv3 がプレビュー期間中に作成されると、次のリソースがサブスクリプションに追加されます。
 
 - App Service 環境
-- Azure DNS プライベート ゾーン
 - プライベート エンドポイント
 
 ASE のデプロイには 2 つのサブネットを使用する必要があります。  一方のサブネットでプライベート エンドポイントを保持します。  このサブネットは、VM などの他の用途に使用できます。  もう一方のサブネットは、ASE からの送信呼び出しに使用されます。  このサブネットは、ASE 以外には使用できません。 

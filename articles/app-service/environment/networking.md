@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 61059c3e0f9737df6ace338f4252a338ea1f200c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 680b1f3b6af186eba27a4dd926016a04cd863760
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663329"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013492"
 ---
 # <a name="app-service-environment-networking"></a>App Service Environment のネットワーク
 
@@ -34,7 +34,11 @@ ASE には、作成時に次のアドレスがあります。
 | Windows 送信アドレス | この ASE の Windows アプリでは、インターネットへの送信呼び出しを行うときに、既定でこのアドレスが使用されます。 |
 | Linux 送信アドレス | この ASE の Linux アプリでは、インターネットへの送信呼び出しを行うときに、既定でこのアドレスが使用されます。 |
 
-ASE によって使用されるプライベート エンドポイントを削除すると、ご使用の ASE 内のアプリに接続できなくなります。 ASE に関連付けられている Azure DNS プライベート ゾーンは削除しないでください。  
+ASEv3 では、ASE ポータルの **[IP アドレス]** 部分に ASE によって使用されるアドレスに関する詳細が含まれています。
+
+![ASE アドレスの UI](./media/networking/networking-ip-addresses.png)
+
+ASE によって使用されるプライベート エンドポイントを削除すると、ご使用の ASE 内のアプリに接続できなくなります。  
 
 ASE では、ASE で使用されるインフラストラクチャをサポートするために、送信サブネットのアドレスが使用されます。 ASE で App Service プランをスケーリングする際は、さらに多くのアドレスを使用します。 ASE 内のアプリには、送信サブネットに専用のアドレスがありません。 アプリによって送信サブネットで使用されるアドレスは、時間の経過と共に変化します。
 
@@ -48,7 +52,7 @@ ASEv2 とは異なり、ASEv3 では、必要に応じて制限なしに、ネ�
 
 ## <a name="dns"></a>DNS
 
-ASE 内のアプリでは、VNet の構成で使用されている DNS が使用されます。 一部のアプリで別の DNS サーバーを使用する場合は、アプリの設定 WEBSITE_DNS_SERVER と WEBSITE_DNS_ALT_SERVER を使用して、アプリごとに手動で設定できます。 アプリの設定 WEBSITE_DNS_ALT_SERVER により、セカンダリ DNS サーバーが構成されます。 セカンダリ DNS サーバーは、プライマリ DNS サーバーからの応答がない場合にのみ使用されます。 
+ASE 内のアプリでは、VNet の構成で使用されている DNS が使用されます。 ASE を指すように DNS サーバーを構成するには、「[App Service Environment の使用](https://docs.microsoft.com/azure/app-service/environment/using#dns-configuration)」の手順に従います。 一部のアプリで、VNet が構成されているものとは異なる DNS サーバーを使用するようにしたい場合は、アプリ設定 WEBSITE_DNS_SERVER と WEBSITE_DNS_ALT_SERVER を使用して、アプリごとに手動でそれを設定できます。 アプリの設定 WEBSITE_DNS_ALT_SERVER により、セカンダリ DNS サーバーが構成されます。 セカンダリ DNS サーバーは、プライマリ DNS サーバーからの応答がない場合にのみ使用されます。 
 
 ## <a name="preview-limitation"></a>プレビューでの制限事項
 

@@ -3,21 +3,21 @@ title: PowerShell ギャラリーの Azure Automation Runbook とモジュール
 description: この記事では、PowerShell ギャラリーにある Microsoft およびコミュニティからの Runbook とモジュールを使用する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 12/17/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 26dfedf1961cf39645c3bcf3ce5fa2db6c14119e
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 590220782a7f43e785cc7885e68eefa99afb7d1d
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97682760"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049118"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>PowerShell ギャラリーの Runbook とモジュールを使用する
 
 Azure Automation で独自の Runbook およびモジュールを作成するのではなく、マイクロソフトやコミュニティによって既に作成されているシナリオにアクセスできます。 PowerShell Runbook と[モジュール](#modules-in-powershell-gallery) は PowerShell ギャラリーから、[Python Runbook](#use-python-runbooks) は Azure Automation GitHub 組織から取得できます。 [開発したシナリオ](#add-a-powershell-runbook-to-the-gallery)を共有することにより、コミュニティに貢献することもできます。
 
 > [!NOTE]
-> TechNet スクリプト センターは廃止されています。 Runbook ギャラリーのスクリプト センターにあるすべての Runbook が、[Automation GitHub 組織](https://github.com/azureautomation)に移動しました。
+> TechNet スクリプト センターは廃止されています。 Runbook ギャラリーのスクリプト センターにあるすべての Runbook が [Automation GitHub 組織](https://github.com/azureautomation)に移動されました。詳細については、[ここ](https://techcommunity.microsoft.com/t5/azure-governance-and-management/azure-automation-runbooks-moving-to-github/ba-p/2039337)を参照してください。
 
 ## <a name="runbooks-in-powershell-gallery"></a>PowerShell ギャラリーの Runbook
 

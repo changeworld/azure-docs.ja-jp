@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
 ms.openlocfilehash: 9bb787138267fd8a9fab4dea233c1c828b457d67
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 01/08/2021
 ms.locfileid: "92109189"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Sqoop を使用して Data Lake Storage Gen1 と Azure SQL Database の間でデータをコピーする
@@ -121,29 +121,29 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
     -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
     ```
 
-   各 **part-m-*** ファイルは、ソース テーブル **Table1** 内の行に対応します。
+   各 **part-m-** _ ファイルは、ソース テーブル _ *Table1** 内の行に対応します。検証する part-m-* ファイルのコンテンツを表示できます。
 
-### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>検証する part-m-* ファイルのコンテンツを表示できます。
+### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Data Lake Storage Gen1 から Azure SQL Database にデータをエクスポートする
 
-1. Data Lake Storage Gen1 から Azure SQL Database にデータをエクスポートする Data Lake Storage Gen1 アカウントから Azure SQL Database 内の空のテーブル **Table2** にデータをエクスポートします。
+1. Data Lake Storage Gen1 アカウントから Azure SQL Database 内の空のテーブル **Table2** にデータをエクスポートします。 次の構文を使用します。
 
     ```console
     sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
     ```
 
-   次の構文を使用します。
+   たとえば、次のように入力します。
 
     ```console
     sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=user1@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
     ```
 
-1. たとえば、次のように入力します。 SQL Database テーブルにデータがアップロードされていることを確認します。
+1. SQL Database テーブルにデータがアップロードされていることを確認します。 [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) または Visual Studio を使用して、Azure SQL Database に接続してから次のクエリを実行します。
 
     ```tsql
     SELECT * FROM TABLE2
     ```
 
-   [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) または Visual Studio を使用して、Azure SQL Database に接続してから次のクエリを実行します。
+   このコマンドの出力は次のようになります。
 
     ```output
      ID  FName    LName
@@ -154,13 +154,13 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
     4    Annette  Simpson
     ```
 
-## <a name="performance-considerations-while-using-sqoop"></a>このコマンドの出力は次のようになります。
+## <a name="performance-considerations-while-using-sqoop"></a>Sqoop を使用するときのパフォーマンスに関する考慮事項
 
-Sqoop を使用するときのパフォーマンスに関する考慮事項
+Data Lake Storage Gen1 にデータをコピーする Sqoop ジョブのパフォーマンス調整の詳細については、[Sqoop のパフォーマンスに関するブログ記事](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)を参照してください。
 
-## <a name="next-steps"></a>Data Lake Storage Gen1 にデータをコピーする Sqoop ジョブのパフォーマンス調整の詳細については、[Sqoop のパフォーマンスに関するブログ記事](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)を参照してください。
+## <a name="next-steps"></a>次のステップ
 
-* 次のステップ
 * [Azure Storage Blob から Data Lake Storage Gen1 へのデータのコピー](data-lake-store-copy-data-azure-storage-blob.md)
 * [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)
 * [Data Lake Storage Gen1 で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Data Lake Storage Gen1 で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)

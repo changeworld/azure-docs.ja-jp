@@ -13,16 +13,16 @@ ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: d7cad0592c5c4c0487f582ce5405c275b94b7bd0
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 018b5396563ac3a4b92b371d396c38afa3d2962f
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444029"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064268"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>モバイル アプリから Web API を呼び出す
 
-アプリがユーザーにサインインして、トークンを受信すると、ユーザーとユーザーの環境、および発行されたトークンに関する情報が Microsoft Authentication Library (MSAL) によって公開されます。 アプリではこれらの値が使用され、Web API を呼び出したり、ウェルカム メッセージをユーザーに表示したりすることができます。
+アプリがユーザーをサインインさせ、トークンを受信すると、Microsoft Authentication Library (MSAL) では、ユーザー、ユーザーの環境、発行されたトークンに関する情報を公開します。 アプリではこれらの値が使用され、Web API を呼び出したり、ウェルカム メッセージをユーザーに表示したりすることができます。
 
 この記事では、最初に MSAL の結果を確認します。 次に、`AuthenticationResult` または `result` からのアクセス トークンを使用して保護された Web API を呼び出す方法を説明します。
 

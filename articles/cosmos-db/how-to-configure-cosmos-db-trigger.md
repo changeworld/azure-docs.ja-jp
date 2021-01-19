@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: maquaran
-ms.openlocfilehash: c47d18726d9581b1b03aa2e676a71d6ca1bc1b7d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f753010eb994c9f3c286ad6eca6392ca7b643075
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086468"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932913"
 ---
 # <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB 用 Azure Functions トリガーによるログと接続を構成する方法
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,7 @@ Cosmos DB 用 Azure Functions トリガーの使用時にログ記録を有効�
 }
 ```
 
-更新した構成で Azure Function をデプロイした後は、トレースの一部として Cosmos DB 用 Azure Functions トリガーのログが表示されるようになります。 構成済みログ プロバイダーでのログは、" *カテゴリ"* `Host.Triggers.CosmosDB` で見ることができます。
+更新した構成で Azure Function をデプロイした後は、トレースの一部として Cosmos DB 用 Azure Functions トリガーのログが表示されるようになります。 構成済みログ プロバイダーでのログは、"*カテゴリ"* `Host.Triggers.CosmosDB` で見ることができます。
 
 ### <a name="query-the-logs"></a>ログのクエリを実行する
 
@@ -53,11 +53,11 @@ traces
 
 ## <a name="configuring-the-connection-policy"></a>接続ポリシーの構成
 
-接続モードには、直接モードとゲートウェイ モードの 2 つがあります。 これらの接続モードの詳細については、[接続モード](sql-sdk-connection-modes.md)に関する記事を参照してください。 既定では、Cosmos DB 用 Azure Functions トリガーにおけるすべての接続の確立に、 **ゲートウェイ** が使用されます。 ただしこれは、パフォーマンス重視のシナリオでは最適な選択肢ではない可能性があります。
+接続モードには、直接モードとゲートウェイ モードの 2 つがあります。 これらの接続モードの詳細については、[接続モード](sql-sdk-connection-modes.md)に関する記事を参照してください。 既定では、Cosmos DB 用 Azure Functions トリガーにおけるすべての接続の確立に、**ゲートウェイ** が使用されます。 ただしこれは、パフォーマンス重視のシナリオでは最適な選択肢ではない可能性があります。
 
 ### <a name="changing-the-connection-mode-and-protocol"></a>接続のモードとプロトコルの変更
 
-クライアントの接続ポリシーを構成するために使用できる 2 つの主要な構成設定として、 **接続モード** と **接続プロトコル** があります。 Cosmos DB 用 Azure Functions トリガーとすべての [Azure Cosmos DB バインディング](../azure-functions/functions-bindings-cosmosdb-v2-output.md)で使用される既定の接続モードおよびプロトコルは、変更することができます。 既定の設定を変更するには、Azure Functions プロジェクトまたは Azure Functions アプリ内で `host.json` ファイルを見つけて、次の[追加設定](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)を行います。
+クライアントの接続ポリシーを構成するために使用できる 2 つの主要な構成設定として、**接続モード** と **接続プロトコル** があります。 Cosmos DB 用 Azure Functions トリガーとすべての [Azure Cosmos DB バインディング](../azure-functions/functions-bindings-cosmosdb-v2-output.md)で使用される既定の接続モードおよびプロトコルは、変更することができます。 既定の設定を変更するには、Azure Functions プロジェクトまたは Azure Functions アプリ内で `host.json` ファイルを見つけて、次の[追加設定](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)を行います。
 
 ```js
 {
@@ -82,7 +82,7 @@ traces
 ```
 
 > [!NOTE]
-> Azure Functions の従量課金プランをホスティング プランとして使用している場合、各インスタンスで維持できるソケット接続量には制限があります。 直接および TCP モードを使用している場合は、設計上、より多くの接続が作成されて[従量課金プランの制限](../azure-functions/manage-connections.md#connection-limit)に達する可能性があります。この場合、ゲートウェイ モードを使用するか、または [App Service モード](../azure-functions/functions-scale.md#app-service-plan)で Azure 関数を実行することができます。
+> 従量課金プランで関数アプリをホストしている場合は、各インスタンスで保持できるソケット接続の量に制限があります。 直接または TCP モードで操作している場合は、設計上、より多くの接続が作成されるため、[従量課金プランの制限](../azure-functions/manage-connections.md#connection-limit)に達する可能性があります。この場合は、ゲートウェイ モードを使用するか、または代わりに [Premium プラン](../azure-functions/functions-premium-plan.md)または[専用 (App Service) プラン](../azure-functions/dedicated-plan.md)のどちらかで関数アプリをホストできます。
 
 ## <a name="next-steps"></a>次の手順
 

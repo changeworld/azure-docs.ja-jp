@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: ba1542d1bb10933edb34b697f1c81cc5e3e7f1c9
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 88a7a0240a4711bebad0ea9007caf6590436e371
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705372"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049781"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>Azure HDInsight での転送中の IPSec 暗号化
 
@@ -24,7 +24,7 @@ Azure HDInsight には、エンタープライズ データをセキュリティ
 
 保存時の暗号化は、Azure ストレージ アカウントでのサーバー側暗号化と、HDInsight クラスターの一部である Azure VM でのディスク暗号化によってカバーされます。
 
-HDInsight での転送中データの暗号化は、クラスター ゲートウェイにアクセスするための[トランスポート層セキュリティ (TLS)](../transport-layer-security.md) と、クラスター ノード間の[インターネット プロトコル セキュリティ (IPSec)](https://wikipedia.org/wiki/IPsec) を使用して実現されます。 IPSec は、すべてのヘッド ノード、ワーカー ノード、エッジ ノード、および Zookeeper ノード間で、オプションで有効化できます。 クラスター内の Windows ベースの VM と他の Linux ベースのノードである、ゲートウェイまたは [ID ブローカー](./identity-broker.md)間のトラフィックに対しては、有効にはなりません。
+HDInsight での転送中データの暗号化は、クラスター ゲートウェイにアクセスするための[トランスポート層セキュリティ (TLS)](../transport-layer-security.md) と、クラスター ノード間の[インターネット プロトコル セキュリティ (IPSec)](https://wikipedia.org/wiki/IPsec) を使用して実現されます。 IPSec は、すべてのヘッド ノード、ワーカー ノード、エッジ ノード、Zookeeper ノードのほか、ゲートウェイや [ID ブローカー](./identity-broker.md) ノードの間で、オプションで有効にすることができます。
 
 ## <a name="enable-encryption-in-transit"></a>転送中の暗号化を有効にする
 

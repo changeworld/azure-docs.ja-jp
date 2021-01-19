@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: c45445415f3eaa7cb0f9069dd5f64b57c19e5836
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b24ea79737c9e1f64abb7f62807352dbd9573695
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437152"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018073"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>数百テラバイトのデータを Azure Cosmos DB に移行する 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ Azure Cosmos DB にデータを移行するための既存のツールには、�
 
 このカスタム ツールでは、Bulk Executor ライブラリを使用して複数のクライアント間でのスケールアウトをサポートし、取り込みプロセス中のエラーを追跡します。 このツールを使用するには、Azure Data Lake Storage (ADLS) でソース データを個別のファイルにパーティション分割して、異なる移行ワーカーが各ファイルを取得して Azure Cosmos DB に取り込めるようにする必要があります。 カスタム ツールでは、個別のコレクションが使用されます。それには ADLS 内の個々のソース ファイルの移行の進行状況に関するメタデータが格納されており、それらに関連したエラーが追跡されています。  
 
-次の図は、このカスタム ツールを使用した移行プロセスについて説明しています。 このツールは一連の仮想マシンで実行されており、各仮想マシンは Azure Cosmos DB の追跡コレクションに対してクエリを実行し、いずれかのソース データ パーティションでリースを取得します。 この処理が完了すると、ソース データ パーティションはツールによって読み取られ、Bulk Executor ライブラリを使用して Azure Cosmos DB に取り込まれます。 次に、追跡コレクションが更新されて、データ インジェストの進行状況と発生したエラーが記録されます。 データ パーティションが処理された後、ツールは次に使用可能なソース パーティションを照会しようとします。 すべてのデータが移行されるまで、次のソース パーティションの処理が続行されます。 ツールのソース コードは、[こちら](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion)から入手できます。  
+次の図は、このカスタム ツールを使用した移行プロセスについて説明しています。 このツールは一連の仮想マシンで実行されており、各仮想マシンは Azure Cosmos DB の追跡コレクションに対してクエリを実行し、いずれかのソース データ パーティションでリースを取得します。 この処理が完了すると、ソース データ パーティションはツールによって読み取られ、Bulk Executor ライブラリを使用して Azure Cosmos DB に取り込まれます。 次に、追跡コレクションが更新されて、データ インジェストの進行状況と発生したエラーが記録されます。 データ パーティションが処理された後、ツールは次に使用可能なソース パーティションを照会しようとします。 すべてのデータが移行されるまで、次のソース パーティションの処理が続行されます。 このツールのソース コードは、[Azure Cosmos DB 一括インジェスト](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion) リポジトリで入手できます。  
 
  
 :::image type="content" source="./media/migrate-cosmosdb-data/migrationsetup.png" alt-text="移行ツールの設定" border="false":::

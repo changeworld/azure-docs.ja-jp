@@ -11,16 +11,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: dcfce06bb158888b56483a73ededd354c229a99b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3acaaba86c9a546a0bd45b5386287908168d50d0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696321"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955622"
 ---
-# <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>リソース正常性、フロントエンド、およびバックエンドの可用性に関する問題のトラブルシューティング 
+# <a name="troubleshoot-resource-health-and-inbound-availability-issues"></a>リソース正常性と受信の可用性に関する問題をトラブルシューティングする 
 
 この記事は、ロードバランサーのフロントエンド IP とバックエンド リソースの可用性に影響を与える問題を調査するためのガイドです。 
+
+ロード バランサーのリソース正常性チェック (RHC) は、ロード バランサーの正常性を判定するために使用されます。 データ パスの可用性メトリックを **2 分** の間隔で分析して、負荷分散エンドポイント、フロントエンド IP、フロントエンド ポートの負荷分散規則との組み合わせが使用可能かどうかを判定します。
+
+次の表では、ロード バランサーの正常性状態を判定するために使用される RHC ロジックについて説明します。
+
+| リソースの正常性状態 | 説明 |
+| --- | --- |
+| 利用可能 | ご利用の Standard Load Balancer リソースは正常であり、使用可能です。 |
+| 低下しています | Standard Load Balancer のプラットフォームやユーザーが開始したイベントのパフォーマンスが影響を受けます。 [データパスの可用性] メトリックでは、少なくとも 2 分間に 90% を下回るが、25% を上回る正常性が報告されました。 パフォーマンスは、中から重大までの影響を受けます。 
+| 使用不可 | ご利用の Standard Load Balancer リソースは正常ではありません。 [データパスの可用性] メトリックでは、少なくとも 2 分間に 25% を下回る正常性が報告されました。 パフォーマンスが大きな影響を受けたり、受信接続の可用性が不足したりします。 ユーザーまたはプラットフォーム イベントによって可用性が失われる可能性もあります。 |
+| Unknown | Standard Load Balancer リソースのリソース正常性状態がまだ更新されていないか、過去 10 分間にデータパスの可用性情報が受信されていません。 これは一時的な状態であり、データが受信されれば、すぐに正しい状態が反映されます。 |
+
 
 ## <a name="about-the-metrics-well-use"></a>使用するメトリックについて
 使用する 2 つのメトリックは、"*データ パスの可用性*" と "*正常性プローブの状態*" で、適切な洞察を得るためにはこれらの意味を理解しておくことが重要です。 

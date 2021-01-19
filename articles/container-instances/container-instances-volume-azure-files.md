@@ -4,16 +4,16 @@ description: Azure Files ボリュームをマウントして、Azure Container 
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: afebdcdc9d9c5852d7fe66ed06ac457c1dbb0afb
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d52ad8ad02735c98b29a83d8ca69cdea8c6af7d8
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881805"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954976"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure Container Instances に Azure ファイル共有をマウントする
 
-既定では、Azure Container Instances はステートレスです。 コンテナーがクラッシュまたは停止すると、すべての状態が失われます。 コンテナーの有効期間後も状態を保持するには、外部ストアからボリュームをマウントする必要があります。 この記事に示すように、Azure Container Instances では [Azure Files](../storage/files/storage-files-introduction.md) で作成された Azure ファイル共有をマウントすることができます。 Azure Files は、Azure Storage でホストされ、業界標準の Server Message Block (SMB) プロトコルを介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure Container Instances で Azure ファイル共有を使用することで、 Azure 仮想マシンで Azure ファイル共有を使用するのと同様のファイル共有機能を提供します。
+既定では、Azure Container Instances はステートレスです。 コンテナーが再起動されるか、クラッシュまたは停止すると、そのすべての状態が失われます。 コンテナーの有効期間後も状態を保持するには、外部ストアからボリュームをマウントする必要があります。 この記事に示すように、Azure Container Instances では [Azure Files](../storage/files/storage-files-introduction.md) で作成された Azure ファイル共有をマウントすることができます。 Azure Files は、Azure Storage でホストされ、業界標準の Server Message Block (SMB) プロトコルを介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure Container Instances で Azure ファイル共有を使用することで、 Azure 仮想マシンで Azure ファイル共有を使用するのと同様のファイル共有機能を提供します。
 
 > [!NOTE]
 > Azure ファイル共有のマウントは現在、Linux コンテナーに限定されています。 現在のプラットフォームの違いについては[概要](container-instances-overview.md#linux-and-windows-containers)を参照してください。

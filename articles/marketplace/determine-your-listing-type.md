@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 11/16/2020
-ms.openlocfilehash: aaf0374bcafdb91f316b7133de1c2d019b12b285
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.date: 12/18/2020
+ms.openlocfilehash: 091af70383eb3cab32a0453d7f7542d8a4395d0b
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302860"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107397"
 ---
 # <a name="introduction-to-listing-options"></a>登録情報オプションの概要
 
@@ -26,21 +26,23 @@ ms.locfileid: "96302860"
 
 次の表は、オファーの種類ごとに使用できる登録情報オプションを示しています。
 
-| プランの種類 | 無料試用版 | 体験版 | お問い合わせ | 今すぐ入手する (取引可能) |
+| プランの種類 | 無料試用版 | 体験版 | お問い合わせ | 今すぐ入手する `*` |
 | ------------ | ------------- | ------------- | ------------- | ------------- |
 | Azure アプリケーション (マネージド アプリ) |   | &#10004; |   | &#10004; |
-| Azure アプリケーション (ソリューション テンプレート) |  |  |  |  |
+| Azure アプリケーション (ソリューション テンプレート) |  |  |  | &#10004; |
 | コンサルティング サービス |  |  | &#10004; |  |
-| Azure Container |  |  |  |  |
-| Dynamics 365 Business Central | &#10004; | &#10004; | &#10004; |  |
-| Dynamics 365 Customer Engagement および PowerApps | &#10004; | &#10004; | &#10004; |  |
-| Dynamics 365 for Operations | &#10004; | &#10004; | &#10004; |  |
-| IoT Edge モジュール |  |  |  |  |
-| マネージド サービス |  |  |  |  |
-| Power BI アプリ |  |  |  |  |
+| Azure Container |  |  |  | &#10004; |
+| Dynamics 365 Business Central | &#10004; | &#10004; | &#10004; | &#10004; |
+| Dynamics 365 Customer Engagement および PowerApps | &#10004; | &#10004; | &#10004; | &#10004; |
+| Dynamics 365 for Operations | &#10004; | &#10004; | &#10004; | &#10004; |
+| IoT Edge モジュール |  |  |  | &#10004; |
+| マネージド サービス |  |  |  | &#10004; |
+| Power BI アプリ |  |  |  | &#10004; |
 | Azure Virtual Machine | &#10004; | &#10004; |  | &#10004; |
 | サービスとしてのソフトウェア | &#10004; | &#10004; | &#10004; | &#10004; |
 ||||||
+
+`*` [今すぐ入手する] リスト オプションには、[今すぐ入手する (無料)]、[ライセンス持ち込み (BYOL)]、[サブスクリプション]、[使用量ベースの価格] が含まれています。 詳細については、「[今すぐ入手する](#get-it-now)」を参照してください。
 
 ### <a name="free-trial"></a>無料試用版
 

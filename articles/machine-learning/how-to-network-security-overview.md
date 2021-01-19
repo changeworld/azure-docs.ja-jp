@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: dd24c4f20fa3a56d25ef142947268b2d2b75474a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 664264f2cd810f232b967f5af78ba3d522f0a41f
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029602"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060012"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>仮想ネットワークの分離とプライバシーの概要
 
@@ -152,7 +152,8 @@ ms.locfileid: "97029602"
 VNet 内部ですべての Studio 機能を有効にするには、「[Azure 仮想ネットワークで Azure Machine Learning Studio を使用する](how-to-enable-studio-virtual-network.md#configure-data-access-in-the-studio)」を参照してください。 Studio は、サービス エンドポイントまたはプライベート エンドポイントを使用するストレージ アカウントをサポートしています。
 
 ### <a name="limitations"></a>制限事項
-- [ML によるデータのラベル付け](how-to-create-labeling-projects.md#use-ml-assisted-labeling)は、仮想ネットワークの背後でセキュリティ保護された既定のストレージ アカウントをサポートしていません。 ML によるデータのラベル付けには、既定以外のストレージ アカウントを使用する必要があります。 既定以外のストレージ アカウントは、仮想ネットワークの背後でのセキュリティ保護が可能です。 
+
+[ML によるデータのラベル付け](how-to-create-labeling-projects.md#use-ml-assisted-data-labeling)は、仮想ネットワークの背後でセキュリティ保護された既定のストレージ アカウントをサポートしていません。 ML によるデータのラベル付けには、既定以外のストレージ アカウントを使用する必要があります。 既定以外のストレージ アカウントは、仮想ネットワークの背後でのセキュリティ保護が可能です。 
 
 ## <a name="configure-firewall-settings"></a>ファイアウォール設定を構成する
 
