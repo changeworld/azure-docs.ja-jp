@@ -8,18 +8,24 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 53b8d74d6eb35347d6ac5b27d12fa5b5eaed2582
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 62979a2cbe2a5912476ca65327a06eef9c36c1cb
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566369"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127891"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure Virtual WAN のログとメトリック
 
-Azure Monitor を使用して、Azure Virtual WAN を監視できます。 Virtual WAN は、ネットワーク、セキュリティ、およびルーティングのさまざまな機能をまとめて、1 つの運用インターフェイスを提供するネットワーク サービスです。 Virtual WAN VPN ゲートウェイ、ExpressRoute ゲートウェイ、および Azure Firewall には、Azure Monitor 経由で利用可能なログ記録とメトリックがあります。 Azure Firewall については、「[Azure Firewall のログとメトリック](../firewall/logs-and-metrics.md)」を参照してください。
+Azure Monitor を使用して、Azure Virtual WAN を監視できます。 Virtual WAN は、ネットワーク、セキュリティ、およびルーティングのさまざまな機能をまとめて、1 つの運用インターフェイスを提供するネットワーク サービスです。 Virtual WAN VPN ゲートウェイ、ExpressRoute ゲートウェイ、および Azure Firewall には、Azure Monitor 経由で利用可能なログ記録とメトリックがあります。
 
 この記事では、ポータル経由で利用可能なメトリックと診断について取り上げます。 メトリックは軽量で、ほぼリアルタイムのシナリオをサポートできるため、アラートや迅速な問題の検出に役立ちます。
+
+## <a name="monitoring-secured-hub-azure-firewall"></a>セキュリティ保護付きハブの監視 (Azure Firewall) 
+
+Azure Firewall のログを使用して、セキュリティ保護付きハブを監視できます。 また、アクティビティ ログを使用して、Azure Firewall リソースに対する操作を監査することもできます。
+
+Azure Firewall を使用して仮想ハブをセキュリティで保護することを選択した場合、関連するログとメトリックはこちらで入手できます。[Azure Firewall のログとメトリック](../firewall/logs-and-metrics.md)。
 
 ## <a name="metrics"></a>メトリック
 
