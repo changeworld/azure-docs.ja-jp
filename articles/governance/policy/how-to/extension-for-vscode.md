@@ -1,22 +1,22 @@
 ---
 title: Visual Studio Code 用の Azure Policy 拡張機能
 description: Visual Studio Code 用の Azure Policy 拡張機能を使用して Azure Resource Manager エイリアスを検索する方法について説明します。
-ms.date: 10/20/2020
+ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 8c7357d70323fa74ec77cf43bd11f149a2f99154
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 4c4ba0eeb0506179ff92ead0ee86f048600d157e
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906303"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107941"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code 用の Azure Policy 拡張機能を使用する
 
-> Azure Policy 拡張機能のバージョン **0.1.0** 以降に適用されます
+> Azure Policy 拡張機能のバージョン **0.1.1** 以降に適用されます
 
 Visual Studio Code 用の Azure Policy 拡張機能を使用して[エイリアス](../concepts/definition-structure.md#aliases)を検索し、リソースとポリシーを確認し、オブジェクトをエクスポートし、ポリシー定義を評価する方法について説明します。 最初に、Visual Studio Code で Azure Policy 拡張機能をインストールする方法を説明します。 次に、エイリアスを検索する方法について説明します。
 
-Visual Studio Code 用の Azure Policy 拡張機能は、Visual Studio Code でサポートされているプラットフォームにインストールできます。 このサポートには、Windows、Linux、macOS が含まれます。
+Visual Studio Code 用の Azure Policy 拡張機能は Windows にインストールできます。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -3,12 +3,12 @@ title: PowerShell とテンプレートを使用してリソースをデプロ�
 description: Azure Resource Manager と Azure PowerShell を使用してリソースを Azure にデプロイします。 リソースは Resource Manager テンプレートで定義されます。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 5266aa51422dce6dfa4b82238e905f4f630ccf48
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 40ee659f5892c983f84409a10634c6a8d6d78cc5
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668561"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028491"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ
 
@@ -16,26 +16,26 @@ ms.locfileid: "92668561"
 
 ## <a name="prerequisites"></a>前提条件
 
-デプロイするテンプレートが必要です。 デプロイするテンプレートがない場合は、Azure クイック スタート テンプレート リポジトリから[サンプル テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)を保存します。 この記事で使用されているローカル ファイル名は、 **c:\MyTemplates\azuredeploy.json** です。
+デプロイするテンプレートが必要です。 デプロイするテンプレートがない場合は、Azure クイック スタート テンプレート リポジトリから[サンプル テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)を保存します。 この記事で使用されているローカル ファイル名は、_C:\MyTemplates\azuredeploy.json_ です。
 
 Azure PowerShell をインストールし、Azure に接続する必要があります。
 
 - **ローカル コンピューターに Azure PowerShell コマンドレットをインストールします。** 詳細については、[Azure PowerShell の概要](/powershell/azure/get-started-azureps)に関するページを参照してください。
 - **[Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount)** を使用して、Azure に接続します。 Azure サブスクリプションが複数ある場合は、[Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) を実行する必要が生じることもあります。 詳しくは、「[Use multiple Azure subscriptions (複数の Azure サブスクリプションを使用する)](/powershell/azure/manage-subscriptions-azureps)」をご覧ください。
 
-PowerShell がインストールされていない場合は、Cloud Shell を使用できます。 詳細については、「[Cloud Shell から ARM テンプレートをデプロイする](deploy-cloud-shell.md)」を参照してください。
+PowerShell がインストールされていない場合は、Azure Cloud Shell を使用できます。 詳細については、「[Azure Cloud Shell から ARM テンプレートをデプロイする](deploy-cloud-shell.md)」を参照してください。
 
 ## <a name="deployment-scope"></a>デプロイのスコープ
 
 リソース グループ、サブスクリプション、管理グループ、またはテナントをデプロイのターゲットにすることができます。 使用するコマンドは、デプロイのスコープに応じて異なります。
 
-* **リソース グループ** にデプロイするには、 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) を使用します。
+- **リソース グループ** にデプロイするには、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) を使用します。
 
   ```azurepowershell
   New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
   ```
 
-* **サブスクリプション** にデプロイするには、New-AzResourceGroupDeployment を使用します。
+- **サブスクリプション** にデプロイするには、`New-AzDeployment` コマンドレットの別名である [New-AzSubscriptionDeployment](/powershell/module/az.resources/new-azdeployment) を使用します。
 
   ```azurepowershell
   New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
@@ -43,7 +43,7 @@ PowerShell がインストールされていない場合は、Cloud Shell を使
 
   サブスクリプション レベルでのデプロイの詳細については、「[サブスクリプション レベルでリソース グループとリソースを作成する](deploy-to-subscription.md)」を参照してください。
 
-* **管理グループ** にデプロイするには、 [新しい AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment)を使用します。
+- **管理グループ** にデプロイするには、[新しい AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment)を使用します。
 
   ```azurepowershell
   New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
@@ -51,7 +51,7 @@ PowerShell がインストールされていない場合は、Cloud Shell を使
 
   管理グループ レベルでのデプロイの詳細については、「[管理グループ レベルでリソースを作成する](deploy-to-management-group.md)」を参照してください。
 
-* **テナント** にデプロイするには、 [新しい AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment) を使用します。
+- **テナント** にデプロイするには、[新しい AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment) を使用します。
 
   ```azurepowershell
   New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
@@ -63,9 +63,9 @@ PowerShell がインストールされていない場合は、Cloud Shell を使
 
 ## <a name="deploy-local-template"></a>ローカル テンプレートのデプロイ
 
-ローカル コンピューターからのテンプレートまたは外部に格納されているものをデプロイできます。 このセクションでは、ローカル テンプレートのデプロイについて説明します。
+ローカル コンピューターから、または外部に格納されているテンプレートを使用して、テンプレートをデプロイできます。 ここでは、ローカル テンプレートのデプロイについて説明します。
 
-存在しないリソース グループにデプロイする場合は、リソース グループを作成します。 リソース グループ名には、英数字、ピリオド、アンダースコア、ハイフン、かっこのみを含めることができます。 最大長は 90 文字です。 名前の末尾をピリオドにすることはできません。
+存在しないリソース グループにデプロイする場合、リソース グループを作成する必要があります。 リソース グループ名には、英数字、ピリオド、アンダースコア、ハイフン、かっこのみを含めることができます。 最大長は 90 文字です。 名前の末尾をピリオドにすることはできません。
 
 ```azurepowershell
 New-AzResourceGroup -Name ExampleGroup -Location "Central US"
@@ -86,7 +86,7 @@ New-AzResourceGroupDeployment `
 
 ARM テンプレートをローカル コンピューターに格納する代わりに、外部の場所に格納することもできます。 ソース管理リポジトリ (GitHub など) にテンプレートを格納できます。 または、組織内の共有アクセス用の Azure ストレージ アカウントに格納することができます。
 
-存在しないリソース グループにデプロイする場合は、リソース グループを作成します。 リソース グループ名には、英数字、ピリオド、アンダースコア、ハイフン、かっこのみを含めることができます。 最大長は 90 文字です。 名前の末尾をピリオドにすることはできません。
+存在しないリソース グループにデプロイする場合、リソース グループを作成する必要があります。 リソース グループ名には、英数字、ピリオド、アンダースコア、ハイフン、かっこのみを含めることができます。 最大長は 90 文字です。 名前の末尾をピリオドにすることはできません。
 
 ```azurepowershell
 New-AzResourceGroup -Name ExampleGroup -Location "Central US"
@@ -209,7 +209,7 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
 
 パラメーター ファイルの詳細については、「[Resource Manager パラメーター ファイルを作成する](parameter-files.md)」を参照してください。
 
-ローカル パラメーター ファイルを渡すには、 **TemplateParameterFile** パラメーターを使用します。
+ローカル パラメーター ファイルを渡すには、`TemplateParameterFile` パラメーターを使用します。
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -217,7 +217,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 
-外部パラメーター ファイルを渡すには、 **TemplateParameterUri** パラメーターを使用します。
+外部パラメーター ファイルを渡すには、`TemplateParameterUri` パラメーターを使用します。
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -229,5 +229,5 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 
 - エラーが発生したときに正常なデプロイにロールバックするには、「[エラー発生時に正常なデプロイにロールバックする](rollback-on-error.md)」を参照してください。
 - リソース グループに存在するが、テンプレートで定義されていないリソースの処理方法を指定するには、「[Azure Resource Manager のデプロイ モード](deployment-modes.md)」を参照してください。
-- テンプレートでパラメーターを定義する方法については、「[ARM テンプレートの構造と構文を理解する](template-syntax.md)」を参照してください。
-- SAS トークンを必要とするテンプレートをデプロイする方法については、「[Deploy private template with SAS token (SAS トークンを使用したプライベート テンプレートのデプロイ)](secure-template-with-sas-token.md)」を参照してください。
+- テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
+- SAS トークンを必要とするテンプレートをデプロイする方法については、「[SAS トークンを使用してプライベート ARM テンプレートをデプロイする](secure-template-with-sas-token.md)」を参照してください。

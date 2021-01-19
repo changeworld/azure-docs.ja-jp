@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/08/2020
-ms.openlocfilehash: cdaa054559be9db52eeef6f3aaa0f86ccf84206f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/09/2020
+ms.openlocfilehash: 5ad01e31cb9af18fa018d99424b25dee338981d7
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922949"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034511"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -308,12 +308,13 @@ Azure portal でロジック アプリの Azure AD OAuth を有効にするに�
 
 Shared Access Signature (SAS) と共に、ロジック アプリを呼び出すことができるクライアントを明確に制限したい場合があります。 たとえば、[Azure API Management](../api-management/api-management-key-concepts.md) を使用して要求エンドポイントを管理する場合は、[作成した API Management サービス インスタンス](../api-management/get-started-create-service-instance.md)の IP アドレスからの要求のみを受け入れるようお使いのロジック アプリを制限できます。
 
-> [!NOTE]
-> 指定する IP アドレスに関わらず、[Logic Apps REST API: Workflow Triggers - Run](/rest/api/logic/workflowtriggers/run) 要求または API Management を使用することで、要求ベースのトリガーを備えたロジック アプリを引き続き実行できます。 ただし、このシナリオでも Azure REST API に対する[認証](../active-directory/develop/authentication-vs-authorization.md)が必要です。 すべてのイベントが Azure の監査ログに表示されます。 アクセス制御ポリシーを適切に設定するようにしてください。
+指定する IP アドレスに関わらず、[Logic Apps REST API: Workflow Triggers - Run](/rest/api/logic/workflowtriggers/run) 要求または API Management を使用することで、要求ベースのトリガーを備えたロジック アプリを引き続き実行できます。 ただし、このシナリオでも Azure REST API に対する[認証](../active-directory/develop/authentication-vs-authorization.md)が必要です。 すべてのイベントが Azure の監査ログに表示されます。 アクセス制御ポリシーを適切に設定するようにしてください。
 
 <a name="restrict-inbound-ip-portal"></a>
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-portal"></a>Azure portal で受信 IP 範囲を制限する
+
+ポータルを使用してロジック アプリの受信 IP アドレスを制限すると、これらの制限は、ポータルの **[許可された着信 IP アドレス]** 下にある説明にかかわらず、トリガー "*およｂ*" アクションの両方に影響します。 アクションとは別にトリガーに対する制限を設定するには、[ロジック アプリの Azure Resource Manager テンプレートの `accessControl` オブジェクト](#restrict-inbound-ip-template) または次を使用します: [Logic Apps REST API:[Workflow - Create Or Update]\(ワークフロー - 作成または更新\) 操作](/rest/api/logic/workflows/createorupdate)。
 
 1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
@@ -1082,7 +1083,7 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
 
 1. ロジック アプリでマネージド ID を使用するには、その前に「[Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする](../logic-apps/create-managed-service-identity.md)」の手順に従います。 これらの手順により、ロジック アプリでマネージド ID が有効になり、ターゲットの Azure リソースに対するその ID のアクセスが設定されます。
 
-1. Azure 関数でマネージド ID を使用できるようにするには、先に [Azure Functions の認証を有効](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions)にします。
+1. Azure 関数でマネージド ID を使用できるようにするには、先に [Azure Functions の認証を有効](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-functions)にします。
 
 1. マネージド ID を使用するトリガーまたはアクションで、次のプロパティ値を指定します。
 
@@ -1125,7 +1126,7 @@ Azure Logic Apps でコネクタを使用して特定のリソースに接続す
 
 * 独自のコードを実行したり、XML 変換を実行したりするには、それぞれ[インライン コード機能](../logic-apps/logic-apps-add-run-inline-code.md)を使用したり、[マップとして使用するアセンブリ](../logic-apps/logic-apps-enterprise-integration-maps.md)を提供したりするのではなく、[Azure 関数を作成して呼び出します](../logic-apps/logic-apps-azure-functions.md)。 また、分離要件に準拠するように、関数アプリのホスティング環境を設定します。
 
-  たとえば、影響レベル 5 の要件を満たすには、[**Isolated** 価格レベル](../app-service/overview-hosting-plans.md) と共にやはり **Isolated** 価格レベルである [App Service Environment (ASE)](../app-service/environment/intro.md) を使用する [App Service プラン](../azure-functions/functions-scale.md#app-service-plan)で関数アプリを作成します。 この環境では、関数アプリは専用の Azure 仮想マシンと専用の Azure 仮想ネットワーク上で実行されます。これにより、アプリに対するコンピューティング分離の上でのネットワークの分離と、最大のスケールアウト機能が提供されます。 詳細については、[Azure Government 影響レベル 5 分離ガイダンス - Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions) に関するページを参照してください。
+  たとえば、影響レベル 5 の要件を満たすには、[**Isolated** 価格レベル](../app-service/overview-hosting-plans.md) と共にやはり **Isolated** 価格レベルである [App Service Environment (ASE)](../app-service/environment/intro.md) を使用する [App Service プラン](../azure-functions/dedicated-plan.md)で関数アプリを作成します。 この環境では、関数アプリは専用の Azure 仮想マシンと専用の Azure 仮想ネットワーク上で実行されます。これにより、アプリに対するコンピューティング分離の上でのネットワークの分離と、最大のスケールアウト機能が提供されます。 詳細については、[Azure Government 影響レベル 5 分離ガイダンス - Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions) に関するページを参照してください。
 
   詳細については、以下のトピックを参照してください。<p>
 

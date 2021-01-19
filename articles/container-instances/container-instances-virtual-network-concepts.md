@@ -3,12 +3,12 @@ title: 仮想ネットワークを使用するシナリオ
 description: コンテナー グループを Azure 仮想ネットワークにデプロイするシナリオ、リソース、制限。
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 2fb468a6a860bcc076043c30606922f43fbdb1ad
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 65d7fa46ebbb9b072b50731bff68b9b88809075d
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882434"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033831"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>仮想ネットワークのシナリオとリソース
 
@@ -33,6 +33,7 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 * **Azure Load Balancer** - ネットワーク接続されたコンテナー グループ内のコンテナー インスタンスの前に Azure Load Balancer を配置することはサポートされていません
 * **グローバル仮想ネットワーク ピアリング** - グローバル ピアリング (Azure リージョンをまたぐ仮想ネットワークの接続) はサポートされていません
 * **パブリック IP または DNS ラベル** - 仮想ネットワークにデプロイされたコンテナー グループでは現在、パブリック IP アドレスまたは完全修飾ドメイン名を使用してコンテナーをインターネットに直接公開することはサポートされていません
+* **Virtual Network NAT** - 仮想ネットワークにデプロイされたコンテナー グループでは、現在、送信インターネット接続に NAT ゲートウェイ リソースを使用することはサポートされていません。
 
 ## <a name="other-limitations"></a>その他の制限事項
 

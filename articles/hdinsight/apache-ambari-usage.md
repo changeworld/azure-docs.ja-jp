@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.openlocfilehash: cfb83c4ec9972fda3813d414583bc73edeef3229
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.date: 01/12/2021
+ms.openlocfilehash: ff83e559919a836208faae4eae4a5f992534b6cb
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285963"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134162"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Azure HDInsight での Apache Ambari の使用法
 
@@ -65,6 +65,15 @@ HDInsight は、Ambari サーバーのデータベースとして機能するデ
 問題を回避するためにサービスを再起動しようとしている場合を除き、ambari-server または ambari-agent サービスを手動で開始/停止しないでください。 フェールオーバーを強制するには、アクティブなヘッド ノードを再起動します。
 
 クラスター ノード上の構成ファイルはいずれも手動で変更しないでください。その操作は、Ambari UI が自動的に実行します。
+
+## <a name="property-values-in-esp-clusters"></a>ESP クラスターのプロパティ値
+
+HDInsight 4.0 Enterprise セキュリティ パッケージ クラスターでは、変数の区切り記号としてコンマではなくパイプ (`|`) を使用します。 例を次に示します。
+
+```
+Property Key: hive.security.authorization.sqlstd.confwhitelist.append
+Property Value: environment|env|dl_data_dt
+```
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.openlocfilehash: 56b6638462acaf43b6353787495e5b7993acb413
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e746c7d09bb568d457ab1037b56c7c2973b29ad7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648278"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117250"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>ロールの割り当てを追加する手順
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] この記事では、[Azure portal](role-assignments-portal.md)、[Azure PowerShell](role-assignments-powershell.md)、[Azure CLI](role-assignments-cli.md)、または [REST API](role-assignments-rest.md)を使用して、ロールの割り当てを追加する手順の概要について説明します。
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] この記事では、[Azure portal](role-assignments-portal.md)、[Azure PowerShell](role-assignments-powershell.md)、[Azure CLI](role-assignments-cli.md)、または [REST API](role-assignments-rest.md)を使用して、ロールの割り当てを追加する手順の概要について説明します。
 
 ## <a name="step-1-determine-who-needs-access"></a>手順 1:アクセスが必要なユーザーを決定する
 
@@ -31,7 +31,7 @@ ms.locfileid: "94648278"
 - サービス プリンシパル - 特定の Azure リソースにアクセスするためにアプリケーションまたはサービスによって使用されるセキュリティ ID です。 アプリケーションに対する "*ユーザー ID*" (ユーザー名とパスワード、または証明書) と考えることができます。
 - マネージド ID - Azure によって自動的に管理される Azure Active Directory 内の ID。 通常、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、Azure サービスに対する認証を受けるための資格情報を管理するクラウド アプリケーションを開発するときに使用します。
 
-## <a name="step-2-find-the-appropriate-role"></a>手順 2:適切なロールを見つける
+## <a name="step-2-select-the-appropriate-role"></a>手順 2:適切なロールを選択する
 
 アクセス許可は"*ロールの定義*"でまとめてグループ化されます。 通常は単に "*ロール*" と呼ばれます。 いくつかの組み込みロールの一覧から選択できます。 組み込みロールが組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。
 

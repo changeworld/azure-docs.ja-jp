@@ -1,7 +1,7 @@
 ---
 title: MSAL の概要 | Azure
 titleSuffix: Microsoft identity platform
-description: Microsoft Authentication Library (MSAL) を使用すると、アプリケーション開発者はセキュリティで保護された Web API を呼び出すためにトークンを取得することができます。 これらの Web API には、Microsoft Graph、その他の Microsoft API、サード パーティの Web API、または、独自の Web API が含まれます。 MSAL は、複数のアプリケーション アーキテクチャとプラットフォームをサポートします。
+description: Microsoft Authentication Library (MSAL) を使用すると、アプリケーション開発者はセキュリティで保護された Web API を呼び出すためにトークンを取得できます。 これらの Web API には、Microsoft Graph、その他の Microsoft API、サード パーティの Web API、または、独自の Web API が含まれます。 MSAL は、複数のアプリケーション アーキテクチャとプラットフォームをサポートします。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 8fbcacf4e3c26f117be4ab5b64b35f670435e6b6
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 2b6266f308fce75f136aa4a2482c5b1be6eedb8e
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092751"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063367"
 ---
-# <a name="overview-of-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) の概要
+# <a name="overview-of-the-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) の概要
 Microsoft Authentication Library (MSAL) を使用すると、ユーザーを認証し、セキュリティで保護された Web API にアクセスする目的で、開発者は Microsoft ID プラットフォーム エンドポイントから[トークン](developer-glossary.md#security-token)を取得できます。 これは、Microsoft Graph、その他の Microsoft API、サード パーティの Web API、または、独自の Web API へのセキュリティで保護されたアクセスを提供するために使用できます。 MSAL は、.NET、JavaScript、Java、Python、Android、iOS などの、さまざまなアプリケーション アーキテクチャとプラットフォームをサポートします。
 
 MSAL では、多くのプラットフォームで API に一貫性があり、さまざまな方法でトークンを取得できます。 MSAL の使用には次のような利点があります。

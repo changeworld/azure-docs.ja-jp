@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 11/25/2020
-ms.openlocfilehash: 846c5519dced06ed16f5a0d12b0bb25443961f93
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: b917e3fc93c59de85c5236c18e31d7bbc9d891f0
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753911"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065475"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>デザイナーの例外とエラー コード
 
@@ -1532,3 +1532,8 @@ Exception occurs when label column is missing or has insufficient number of labe
 |Library exception. (ライブラリ例外。)|
 |Library exception: {exception}. (ライブラリの例外: {exception}。)|
 |Unknown library exception: {exception}. (不明なライブラリの例外: {exception}。) {customer_support_guidance}。|
+
+
+## <a name="execute-python-script-module"></a>Execute Python Script モジュール
+
+**Execute Python Script モジュール** の **70_driver_logs** で **azureml_main** を検索すると、エラーが発生した行を見つけることができます。 たとえば、"azureml_main の File "/tmp/tmp01_ID/user_script.py", line 17" は、Python スクリプトの 17 行目でエラーが発生したことを示します。

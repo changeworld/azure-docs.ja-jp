@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 05258e201c65138e53e861f0631eb33e08c9c199
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 2c03e6940d392e3e2c03bf6508de41a7a19aef3b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673595"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063775"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>暗黙的な許可から承認ワークフロー フローに JavaScript のシングルページ アプリを移行する
 
-Microsoft Authentication Library for JavaScript (MSAL.js) v2.0 では、Microsoft ID プラットフォームでのシングルページ アプリケーションに対する、PKCE、CORS を使用した承認コード フローがサポートされます。 以降のセクションの手順に従い、暗黙的な許可を使用する MSAL.js 1.x アプリケーションを、MSAL.js 2.0+ (以下 *2.x* ) と承認コード フローに移行します。
+Microsoft Authentication Library for JavaScript (MSAL.js) v2.0 では、Microsoft ID プラットフォームでのシングルページ アプリケーションに対する、PKCE、CORS を使用した承認コード フローがサポートされます。 以降のセクションの手順に従い、暗黙的な許可を使用する MSAL.js 1.x アプリケーションを、MSAL.js 2.0+ (以下 *2.x*) と承認コード フローに移行します。
 
-MSAL.js 2.x は、ブラウザーで暗黙的な許可のフローではなく承認コード フローをサポートすることで、MSAL.js 1.x よりも強化されています。 MSAL.js 2.x では、暗黙的フローはサポートされて **いません** 。
+MSAL.js 2.x は、ブラウザーで暗黙的な許可のフローではなく承認コード フローをサポートすることで、MSAL.js 1.x よりも強化されています。 MSAL.js 2.x では、暗黙的フローはサポートされて **いません**。
 
 ## <a name="migration-steps"></a>移行の手順
 
@@ -41,20 +41,18 @@ MSAL.js 2.x と承認コード フローにアプリケーションを更新す�
 
 **Web** プラットフォーム リダイレクト URI で現在構成されているアプリ登録には、以下の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、 **Azure Active Directory** を選択します。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインし、**Azure Active Directory** テナントを選択します。
 1. **[アプリの登録]** でアプリケーションを選択し、 **[認証]** を選択します。
 1. **[Web]** プラットフォーム タイルの **[リダイレクト URI]** で、URI を移行する必要があることを示す警告バナーを選択します。
 
-    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Azure portal の Web アプリ タイルの暗黙的なフロー警告バナー&quot;:::
-1. アプリケーションで MSAL.js 2.x が使用されているリダイレクト URI &quot; *のみ* " を選択し、 **[構成]** を選択します。
+    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Azure portal の Web アプリ タイルの暗黙的なフロー警告バナー":::
+1. アプリケーションで MSAL.js 2.x が使用されているリダイレクト URI "*のみ*" を選択し、 **[構成]** を選択します。
 
-    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Azure portal の Web アプリ タイルの暗黙的なフロー警告バナー&quot;:::
-1. アプリケーションで MSAL.js 2.x が使用されているリダイレクト URI &quot; *のみ* ":::
+    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Azure portal の SPA ペインで [リダイレクト URI] ペインを選択する":::
 
 これらのリダイレクト URI が **[シングルページ アプリケーション]** プラットフォーム タイルに表示され、承認コード フローで CORS がサポートされ、これらの URI で PKCE が有効になっていることが示されるはずです。
 
-:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Azure portal の Web アプリ タイルの暗黙的なフロー警告バナー&quot;:::
-1. アプリケーションで MSAL.js 2.x が使用されているリダイレクト URI &quot; *のみ* ":::
+:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Azure portal のアプリ登録のシングルページ アプリケーション タイル":::
 
 既存の登録でリダイレクト URI を更新する代わりに、[新しいアプリ登録を作成する](scenario-spa-app-registration.md)こともできます。
 
@@ -88,7 +86,7 @@ MSAL 2.x をアプリケーションに追加する方法の完全なチュー�
 
 アプリ登録で暗黙的な許可設定のチェックマークをオフにすると、登録とそのクライアント ID を利用するすべてのアプリケーションに対して暗黙的フローが無効になります。
 
-すべてのアプリケーションを MSAL.js 2.x と [PublicClientApplication][msal-js-publicclientapplication] に更新するまで、暗黙的な許可フローを無効に **しないでください** 。
+すべてのアプリケーションを MSAL.js 2.x と [PublicClientApplication][msal-js-publicclientapplication] に更新するまで、暗黙的な許可フローを無効に **しないでください**。
 
 ## <a name="next-steps"></a>次のステップ
 

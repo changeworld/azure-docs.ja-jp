@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 971bac8a0b0951d4e07e139aea6c465a9159b8db
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 43a483f49a9e9004a4f487e82195198f2600a919
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96570962"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071155"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>チュートリアル:"Hello world!" Python スクリプトを実行する (パート 2/4) Python script (part 2 of 4)
 
@@ -36,9 +36,6 @@ ms.locfileid: "96570962"
 ## <a name="prerequisites"></a>前提条件
 
 - まだ Azure Machine Learning ワークスペースがない場合は、[第 1 部](tutorial-1st-experiment-sdk-setup-local.md)を完了してください。
-- Python 言語と機械学習ワークフローの基礎知識。
-- Visual Studio Code、Jupyter、PyCharm などのローカル開発環境。
-- Python (バージョン 3.5 から 3.7)。
 
 ## <a name="create-and-run-a-python-script-locally"></a>Python スクリプトをローカルに作成して実行する
 
@@ -64,7 +61,7 @@ tutorial
 
 ### <a name="test-your-script-locally"></a><a name="test"></a>スクリプトをローカルでテストする
 
-コードは、好みの IDE またはターミナルを使用してローカルで実行できます。 コードのローカル実行には、コードの対話型デバッグができるというメリットがあります。
+コードは、好みの IDE またはターミナルを使用してローカルで実行できます。 コードのローカル実行には、コードの対話型デバッグができるというメリットがあります。  アクティブになった *tutorial1* Conda 環境が表示されているウィンドウで、次の Python ファイルを実行します。
 
 ```bash
 cd <path/to/tutorial>
@@ -93,8 +90,6 @@ run = experiment.submit(config)
 aml_url = run.get_portal_url()
 print(aml_url)
 ```
-
-
 
 ### <a name="understand-the-code"></a>コードの理解
 
@@ -148,13 +143,6 @@ print(aml_url)
 
 コントロール スクリプトを実行します。そうすると、[セットアップ チュートリアル](tutorial-1st-experiment-sdk-setup-local.md)で作成したコンピューティング クラスター上で `hello.py` が順に実行されます。
 
-最初の実行は、完了までに 5 分から 10 分かかります。 これは、以下のことが行われるためです。
-
-* クラウドで Docker イメージが構築されます
-* コンピューティング クラスターのサイズが 0 ノードから 1 ノードに変更されます
-* Docker イメージがコンピューティングにダウンロードされます。 
-
-Docker イメージがコンピューティングにキャッシュされるため、それ以降の実行にかかる時間は大幅に短くなります (15 秒以内)。これをテストするには、最初の実行が完了した後に、以下のコードを再送信します。
 
 ```bash
 python 03-run-hello.py
@@ -168,9 +156,17 @@ python 03-run-hello.py
 
 ## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>スタジオを使用してクラウドでコードを監視する
 
-出力には、`https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` のようなスタジオへのリンクが含まれています。
+スクリプトからの出力には、`https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` のようなスタジオへのリンクが含まれています。
 
-リンクをたどって **[出力とログ]** タブに移動します。次のような `70_driver_log.txt` ファイルが表示されます。
+リンク先に移動します。  最初は、状態が "**Preparing (準備中)** " と表示されます。  最初の実行は、完了までに 5 分から 10 分かかります。 これは、以下のことが行われるためです。
+
+* クラウドで Docker イメージが構築されます
+* コンピューティング クラスターのサイズが 0 ノードから 1 ノードに変更されます
+* Docker イメージがコンピューティングにダウンロードされます。 
+
+Docker イメージがコンピューティングにキャッシュされるため、それ以降の実行にかかる時間は大幅に短縮されます (約 15 秒)。 これをテストするには、最初の実行が完了した後に、以下のコードを再送信します。
+
+ジョブが完了したら、 **[出力 + ログ]** タブに移動します。次のような `70_driver_log.txt` ファイルが表示されます。
 
 ```txt
  1: [2020-08-04T22:15:44.407305] Entering context manager injector.

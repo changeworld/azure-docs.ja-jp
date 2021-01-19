@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f70005f2c7f53833163dcd5f0d2ee89b3db37c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: d7e4d0c41990fcc23dd19b5682997f6381bfdb20
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861291"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937095"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory で回復性があるアクセス制御管理戦略を作成する
 
@@ -38,8 +38,8 @@ ms.locfileid: "96861291"
 このドキュメントで重要なことは次の 4 つです。
 
 * 緊急アクセス用アカウントを使用して、管理者のロックアウトを回避する。
-* ユーザーごとの MFA ではなく条件付きアクセス (CA) を使用して、MFA を実装する。
-* 複数の条件付きアクセス (CA) 制御を使用して、ユーザーのロックアウトを軽減する。
+* ユーザーごとの MFA ではなく条件付きアクセスを使用して、MFA を実装する。
+* 複数の条件付きアクセス制御を使用して、ユーザーのロックアウトを軽減する。
 * 複数の認証方法または同等の手段をユーザーごとにプロビジョニングして、ユーザーのロックアウトを軽減する。
 
 ## <a name="before-a-disruption"></a>中断する前
@@ -138,9 +138,9 @@ ms.locfileid: "96861291"
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-次に例を示します。**例 A - ミッション クリティカルなコラボレーション アプリへのアクセスを復元するコンティンジェンシー CA ポリシー** は、企業の一般的なコンティンジェンシーです。 このシナリオの組織では、一般に、すべての Exchange Online と SharePoint Online に対して MFA が必要であり、このケースでの中断は顧客に対する MFA プロバイダーの停止です (Azure AD MFA、オンプレミス MFA プロバイダー、サード パーティ MFA にかかわらず)。 このポリシーでは、信頼された Windows デバイスからアプリに対する特定の対象ユーザーのアクセスを、信頼された企業ネットワークからアプリにアクセスしている場合にのみ許可することによって、この停止を軽減します。 また、緊急アカウントとコア管理者はこれらの制限から除外されます。 これにより、対象ユーザーは Exchange Online と SharePoint Online へのアクセスが許可されますが、その他のユーザーは障害のためにアプリにまだアクセスできません。 この例では、名前付きのネットワークの場所 **CorpNetwork**、対象ユーザーを含むセキュリティ グループ **ContingencyAccess**、コア管理者を含むグループ **CoreAdmins**、緊急アクセス用管理者アカウントを含むグループ **EmergencyAccess** が必要です。 コンティンジェンシーでは、必要なアクセスを提供するために 4 つのポリシーが必要です。 
+次に例を示します。**例 A - ミッション クリティカルなコラボレーション アプリへのアクセスを復元するコンティンジェンシー条件付きアクセス ポリシー** は、企業の一般的なコンティンジェンシーです。 このシナリオの組織では、一般に、すべての Exchange Online と SharePoint Online に対して MFA が必要であり、このケースでの中断は顧客に対する MFA プロバイダーの停止です (Azure AD MFA、オンプレミス MFA プロバイダー、サード パーティ MFA にかかわらず)。 このポリシーでは、信頼された Windows デバイスからアプリに対する特定の対象ユーザーのアクセスを、信頼された企業ネットワークからアプリにアクセスしている場合にのみ許可することによって、この停止を軽減します。 また、緊急アカウントとコア管理者はこれらの制限から除外されます。 これにより、対象ユーザーは Exchange Online と SharePoint Online へのアクセスが許可されますが、その他のユーザーは障害のためにアプリにまだアクセスできません。 この例では、名前付きのネットワークの場所 **CorpNetwork**、対象ユーザーを含むセキュリティ グループ **ContingencyAccess**、コア管理者を含むグループ **CoreAdmins**、緊急アクセス用管理者アカウントを含むグループ **EmergencyAccess** が必要です。 コンティンジェンシーでは、必要なアクセスを提供するために 4 つのポリシーが必要です。 
 
-**例 A - ミッション クリティカルなコラボレーション アプリへのアクセスを復元するコンティンジェンシー CA ポリシー:**
+**例 A - ミッション クリティカルなコラボレーション アプリへのアクセスを復元するコンティンジェンシー条件付きアクセス ポリシー:**
 
 * ポリシー 1:Exchange と SharePoint に対するドメイン参加済みデバイスが必要
   * 名前:EM001 - ENABLE IN EMERGENCY:MFA Disruption[1/4] - Exchange SharePoint - Require Hybrid Azure AD Join
@@ -180,9 +180,9 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 5. ポリシー 4 を有効にします:すべてのユーザーが、モバイル デバイス上のネイティブ メール アプリケーションから Exchange Online にアクセスできないことを確認します。
 6. SharePoint Online と Exchange Online に対する既存の MFA ポリシーを無効にします。
 
-次の例、**例 B - Salesforce へのモバイル アクセスを許可するコンティンジェンシー CA ポリシー** では、ビジネス アプリのアクセスを復元します。 このシナリオの顧客は、通常、営業社員に対し、準拠しているモバイル デバイスから (Azure AD でシングル サインオンを構成された) Salesforce へのアクセスのみを許可する必要があります。 このケースでの中断はデバイスのコンプライアンスの評価に関する問題であり、販売チームが取引成立のために Salesforce にアクセスする必要がある微妙なときに障害が発生します。 以下のコンティンジェンシー ポリシーでは、取引を続けることができてビジネスが中断しないように、モバイル デバイスから Salesforce へのクリティカルなユーザー アクセスが許可されます。 この例では、**SalesforceContingency** にアクセスを維持する必要があるすべての営業社員が含まれ、**SalesAdmins** に Salesforce の必要な管理者が含まれます。
+次の例、**例 B - Salesforce へのモバイル アクセスを許可するコンティンジェンシー条件付きアクセス ポリシー** では、ビジネス アプリのアクセスを復元します。 このシナリオの顧客は、通常、営業社員に対し、準拠しているモバイル デバイスから (Azure AD でシングル サインオンを構成された) Salesforce へのアクセスのみを許可する必要があります。 このケースでの中断はデバイスのコンプライアンスの評価に関する問題であり、販売チームが取引成立のために Salesforce にアクセスする必要がある微妙なときに障害が発生します。 以下のコンティンジェンシー ポリシーでは、取引を続けることができてビジネスが中断しないように、モバイル デバイスから Salesforce へのクリティカルなユーザー アクセスが許可されます。 この例では、**SalesforceContingency** にアクセスを維持する必要があるすべての営業社員が含まれ、**SalesAdmins** に Salesforce の必要な管理者が含まれます。
 
-**例 B - コンティンジェンシー CA ポリシー:**
+**例 B - コンティンジェンシー条件付きアクセス ポリシー:**
 
 * ポリシー 1:SalesContingency チームに含まれないすべてのユーザーをブロックする
   * 名前:EM001 - ENABLE IN EMERGENCY:Device Compliance Disruption[1/2] - Salesforce - Block All users except SalesforceContingency

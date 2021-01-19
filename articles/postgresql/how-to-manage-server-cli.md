@@ -3,15 +3,15 @@ title: サーバーを管理する - Azure CLI - Azure Database for PostgreSQL
 description: Azure CLI から Azure Database for PostgreSQL サーバーを管理する方法について説明します。
 author: ajlam
 ms.author: andrela
-ms.service: mysql
+ms.service: postgresql
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: d99634388b9c4db99c996cfccb9bb5f12682f217
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2ea07e2bc12e6fc0d62abd462b8537c6a93689f9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490120"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935803"
 ---
 # <a name="manage-an-azure-database-for-postgresql-single-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL 単一サーバーを管理する
 
@@ -27,7 +27,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 az login
 ```
 
-[az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプションを選択します。 コマンドの **subscription** 引数の値として使用する、 **az login** 出力の **id** 値をメモしておきます。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 すべてのサブスクリプションを取得するには、[az account list](/cli/azure/account#az-account-list) を使用します。
+[az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプションを選択します。 コマンドの **subscription** 引数の値として使用する、**az login** 出力の **id** 値をメモしておきます。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 すべてのサブスクリプションを取得するには、[az account list](/cli/azure/account#az-account-list) を使用します。
 
 ```azurecli
 az account set --subscription <subscription id>

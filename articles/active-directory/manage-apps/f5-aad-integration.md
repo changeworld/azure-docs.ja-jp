@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e011417b936ed83b4658e6dad25bf8e8ee88aed
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: b5c960c7fbcc29d0aaea7511ba2187c916e84ab3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317627"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935242"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>F5 BIG-IP Access Policy Manager と Azure Active Directory の統合による、安全なハイブリッド アクセス
 
@@ -71,7 +71,7 @@ BIG-IP と Azure AD の統合によって、従来のサービスや非 Azure AD
 |:------|:-----------|
 | 1. | ユーザーがポータルでアプリケーション アイコンを選択し、URL が SAML SP (BIG IP) に解決される |
 | 2. | BIG-IP が、事前認証のためにユーザーを SAML IDP (Azure AD) にリダイレクトする|
-| 3. | Azure AD が、承認のために CA ポリシーと[セッション制御](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session)を処理する|
+| 3. | Azure AD が、承認のために条件付きアクセス ポリシーと[セッション制御](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session)を処理する|
 | 4. | ユーザーが、Azure AD によって発行された SAML 要求を提示して、BIG-IP にリダイレクトされる |
 | 5. | BIG-IP が、公開済みサービスへの [SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) および[ロールベースのアクセス制御l (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) に含める、追加のセッション情報を要求する |
 | 6. | BIG-IP が、クライアント要求をバックエンド サービスに転送する

@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/10/2020
+ms.date: 01/07/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cdba4ce36322f9c3fb0f898cb7eb1d1185ed1dc6
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: fcd194e2503610db314f6a975a4afb1d27962f8c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636947"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028222"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>チュートリアル:Video Indexer API の使用
 
@@ -29,8 +29,10 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 ## <a name="subscribe-to-the-api"></a>API にサブスクライブする
 
 1. [Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai/)にサインインします。
+
+    [ログイン情報](release-notes.md#october-2020)に関するリリース ノートを確認します。
     
-    ![Video Indexer 開発者ポータルにサインインする](./media/video-indexer-use-apis/video-indexer-api01.png)
+     ![Video Indexer 開発者ポータルにサインインする](./media/video-indexer-use-apis/sign-in.png)
 
    > [!Important]
    > * Video Indexer へのサインアップ時と同じプロバイダーを使用する必要があります。
@@ -40,14 +42,14 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 
     [[製品]](https://api-portal.videoindexer.ai/products) タブを選択します。次に、[承認] を選択し、サブスクライブします。
     
-    ![Video Indexer 開発者ポータルの [製品] タブ](./media/video-indexer-use-apis/video-indexer-api02.png)
+    ![Video Indexer 開発者ポータルの [製品] タブ](./media/video-indexer-use-apis/authorization.png)
 
     > [!NOTE]
     > 新しいユーザーは自動的に Authorization にサブスクライブされます。
     
     サブスクライブした後は、 **[製品]**  ->  **[承認]** の下にサブスクリプションが表示されます。 サブスクリプションのページには、プライマリとセカンダリ キーが表示されます。 キーは保護する必要があります。 キーはサーバー コードでのみ使用してください。 クライアント側 (.js、.html など) では使用できないようにします。
 
-    ![Video Indexer 開発者ポータルでのサブスクリプションとキー](./media/video-indexer-use-apis/video-indexer-api03.png)
+    ![Video Indexer 開発者ポータルでのサブスクリプションとキー](./media/video-indexer-use-apis/subscriptions.png)
 
 > [!TIP]
 > Video Indexer ユーザーは、単一のサブスクリプション キーを使用して複数の Video Indexer アカウントに接続することができます。 さらに、それらの Video Indexer アカウントを異なる Media Services アカウントにリンクさせることができます。

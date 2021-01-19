@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: laobri
 author: lobrien
 manager: cgronlun
-ms.date: 08/26/2020
+ms.date: 12/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl
-ms.openlocfilehash: 4cbe43f224ddf349db6b182feb3a717bb2bfd32e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 1b9d515c197b56f7e0520539b23be60504059675
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358832"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131255"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python の Azure Machine Learning パイプラインで自動 ML を使用する
 
@@ -37,11 +37,7 @@ Azure Machine Learning の自動 ML 機能は、考えられる方法をすべ�
 
 `PipelineStep` にはいくつかのサブクラスがあります。 `AutoMLStep` に加え、この記事では、データ準備用とモデルの登録用の `PythonScriptStep` を示します。
 
-データを ML パイプライン " _に_ " 最初に移動する場合は、`Dataset` オブジェクトを使用することをお勧めします。 ステップ " _間_ " でデータを移動する場合は、`PipelineData` オブジェクトを使用することをお勧めします。 `AutoMLStep` で使用するには、`PipelineData` オブジェクトを `PipelineOutputTabularDataset` オブジェクトに変換する必要があります。 詳細については、[ML パイプラインからのデータの入力と出力](how-to-move-data-in-out-of-pipelines.md)に関するページを参照してください。
-
-
-> [!TIP]
-> パイプライン ステップ間で一時データを渡すためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) と [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) で使用できます。  これらのクラスは[試験段階の](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental)プレビュー機能であり、いつでも変更される可能性があります。
+データを ML パイプライン "_に_" 最初に移動する場合は、`Dataset` オブジェクトを使用することをお勧めします。 ステップ "_間_" でデータを移動し、場合によっては実行からデータ出力を保存するために、[`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) および [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) オブジェクトを使用することをお勧めします。 `AutoMLStep` で使用するには、`PipelineData` オブジェクトを `PipelineOutputTabularDataset` オブジェクトに変換する必要があります。 詳細については、[ML パイプラインからのデータの入力と出力](how-to-move-data-in-out-of-pipelines.md)に関するページを参照してください。
 
 `AutoMLStep` は `AutoMLConfig` オブジェクトを通じて構成されます。 「[Python で自動 ML の実験を構成する](./how-to-configure-auto-train.md#configure-your-experiment-settings)」で説明されているように、`AutoMLConfig` は柔軟なクラスです。 
 
@@ -73,7 +69,7 @@ if not 'titanic_ds' in ws.datasets.keys() :
 titanic_ds = Dataset.get_by_name(ws, 'titanic_ds')
 ```
 
-このコードでは、まず、 **config.json** で定義されている Azure Machine Learning ワークスペースにログインします (説明については、「 [ワークスペース構成ファイルを作成する](how-to-configure-environment.md#workspace)」を参照してください)。 `'titanic_ds'` という名前のデータセットがまだ登録されていない場合は、1 つ作成されます。 このコードでは、Web から CSV データをダウンロードし、それらを使用して `TabularDataset` をインスタンス化してから、ワークスペースにデータセットを登録します。 最後に、関数 `Dataset.get_by_name()` で `Dataset` を `titanic_ds` に割り当てます。 
+このコードでは、まず、**config.json** で定義されている Azure Machine Learning ワークスペースにログインします (説明については、「[ワークスペース構成ファイルを作成する](how-to-configure-environment.md#workspace)」を参照してください)。 `'titanic_ds'` という名前のデータセットがまだ登録されていない場合は、1 つ作成されます。 このコードでは、Web から CSV データをダウンロードし、それらを使用して `TabularDataset` をインスタンス化してから、ワークスペースにデータセットを登録します。 最後に、関数 `Dataset.get_by_name()` で `Dataset` を `titanic_ds` に割り当てます。 
 
 ### <a name="configure-your-storage-and-compute-target"></a>ストレージおよびコンピューティング ターゲットを構成する
 
@@ -149,8 +145,7 @@ else:
 - カテゴリ データを整数に変換する
 - 使用する予定のない列を削除する
 - データをトレーニングおよびテスト セットに分割する
-- 変換されたデータを次のいずれかに書き込む
-    - `PipelineData` の出力パス
+- 変換後のデータを `OutputFileDatasetConfig` 出力パスに書き込む
 
 ```python
 %%writefile dataprep.py
@@ -220,38 +215,35 @@ print(f"Wrote test to {args.output_path} and train to {args.output_path}")
 
 上記のスニペットのさまざまな `prepare_` 関数では、入力データセット内の関連する列を変更します。 これらの関数は、Pandas の `DataFrame` オブジェクトに変更されたデータで動作します。 いずれの場合も、欠落しているデータは、代表的なランダム データ、または "不明" を示すカテゴリ データを使用して入力されます。 テキストベースのカテゴリ データは整数にマップされます。 不要な列は上書きまたは削除されます。 
 
-コードでは、データ準備関数を定義した後、入力引数を解析します。これは、データの書き込み先のパスです (これらの値は、次のステップで説明する `PipelineData` オブジェクトによって決まります)。このコードでは、登録済みの `'titanic_cs'` `Dataset` を取得し、それを Pandas `DataFrame` に変換して、さまざまなデータ準備関数を呼び出します。 
+コードでは、データ準備関数を定義した後、入力引数を解析します。これは、データの書き込み先のパスです  (これらの値は、次のステップで説明する `OutputFileDatasetConfig` オブジェクトによって決まります)。このコードでは、登録済みの `'titanic_cs'` `Dataset` を取得し、それを Pandas `DataFrame` に変換して、さまざまなデータ準備関数を呼び出します。 
 
-`output_path` は完全修飾されているため、ディレクトリ構造の準備には関数 `os.makedirs()` が使用されます。 この時点で、`DataFrame.to_csv()` を使用して出力データを書き込むことはできますが、Parquet ファイルの方が効率的です。 このような小さなデータセットでは、この効率性は重要ではないと思われますが、 **PyArrow** パッケージの `from_pandas()` と `write_table()` 関数を使用すると、`to_csv()` の場合よりもキーストロークがわずかに多くなります。
+`output_path` は完全修飾されているため、ディレクトリ構造の準備には関数 `os.makedirs()` が使用されます。 この時点で、`DataFrame.to_csv()` を使用して出力データを書き込むことはできますが、Parquet ファイルの方が効率的です。 このような小さなデータセットでは、この効率性は重要ではないと思われますが、**PyArrow** パッケージの `from_pandas()` と `write_table()` 関数を使用すると、`to_csv()` の場合よりもキーストロークがわずかに多くなります。
 
 Parquet ファイルは、以下で説明する自動 ML ステップでネイティブにサポートされているため、それらを使用するのに特別な処理は必要ありません。 
 
 ### <a name="write-the-data-preparation-pipeline-step-pythonscriptstep"></a>データ準備パイプライン ステップ (`PythonScriptStep`) を書き込む
 
-パイプラインで使用するには、上記で説明したデータ準備コードを `PythonScripStep` オブジェクトに関連付ける必要があります。 Parquet データ準備出力の書き込み先のパスは、`PipelineData` オブジェクトによって生成されます。 `ComputeTarget`、`RunConfig`、`'titanic_ds' Dataset` など、事前に準備されたリソースを使用して指定を完了します。
+パイプラインで使用するには、上記で説明したデータ準備コードを `PythonScripStep` オブジェクトに関連付ける必要があります。 Parquet データ準備出力の書き込み先のパスは、`OutputFileDatasetConfig` オブジェクトによって生成されます。 `ComputeTarget`、`RunConfig`、`'titanic_ds' Dataset` など、事前に準備されたリソースを使用して指定を完了します。
 
 PipelineData ユーザー
 ```python
-from azureml.pipeline.core import PipelineData
-
+from azureml.data import OutputFileDatasetConfig
 from azureml.pipeline.steps import PythonScriptStep
-prepped_data_path = PipelineData("titanic_train", datastore).as_dataset()
+
+prepped_data_path = OutputFileDatasetConfig(name="titanic_train", (destination=(datastore, 'outputdataset')))
 
 dataprep_step = PythonScriptStep(
     name="dataprep", 
     script_name="dataprep.py", 
     compute_target=compute_target, 
     runconfig=aml_run_config,
-    arguments=["--output_path", prepped_data_path],
+    arguments=[titanic_ds.as_named_input('titanic_ds').as_mount(), prepped_data_path],
     inputs=[titanic_ds.as_named_input("titanic_ds")],
     outputs=[prepped_data_path],
     allow_reuse=True
 )
 ```
-`prepped_data_path` オブジェクトの型は `PipelineOutputFileDataset` です。 `arguments` および `outputs` 引数の両方で指定されていることに注意してください。 前のステップを確認すると、データ準備コード内で、引数 `'--output_path'` の値が、Parquet ファイルが書き込まれたファイル パスであることがわかります。 
-
-> [!TIP]
-> パイプライン ステップ間で中間データを渡すためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) で使用できます。 `OutputFileDatasetConfig` クラスを使用したコード例については、[2 ステップの ML パイプラインを構築する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)方法を参照してください。
+`prepped_data_path` オブジェクトは、ディレクトリを指す `OutputFileDatasetConfig` 型です。  `arguments` パラメーターで指定されていることに注意してください。 前のステップを確認すると、データ準備コード内で、引数 `'--output_path'` の値が、Parquet ファイルが書き込まれたファイル パスであることがわかります。 
 
 ## <a name="train-with-automlstep"></a>AutoMLStep でトレーニングする
 
@@ -259,18 +251,13 @@ dataprep_step = PythonScriptStep(
 
 ### <a name="send-data-to-automlstep"></a>データを `AutoMLStep` に送信する
 
-ML パイプラインでは、入力データは `Dataset` オブジェクトである必要があります。 パフォーマンスが最も高い方法は、`PipelineOutputTabularDataset` オブジェクトの形式で入力データを提供することです。 `prepped_data_path` オブジェクトなど、その型のオブジェクトを作成するには、`PipelineOutputFileDataset` で `parse_parquet_files()` または `parse_delimited_files()` を使用します。
+ML パイプラインでは、入力データは `Dataset` オブジェクトである必要があります。 パフォーマンスが最も高い方法は、`OutputTabularDatasetConfig` オブジェクトの形式で入力データを提供することです。 `prepped_data_path`、`prepped_data_path` オブジェクトなど、その型のオブジェクトを作成するには、`OutputFileDatasetConfig` で `read_delimited_files()` を使用します。
 
 ```python
-# type(prepped_data_path) == PipelineOutputFileDataset
-# type(prepped_data) == PipelineOutputTabularDataset
-prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
+# type(prepped_data_path) == OutputFileDatasetConfig
+# type(prepped_data) == OutputTabularDatasetConfig
+prepped_data = prepped_data_path.read_delimited_files()
 ```
-
-上記のスニペットでは、データ準備ステップの `PipelineOutputFileDataset` 出力から高パフォーマンスの `PipelineOutputTabularDataset` を作成します。
-
-> [!TIP]
-> パブリック プレビュー クラス [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) には、`OutputFileDatasetConfig` を AutoML 実行での消費のために [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) に変換する [read_delimited_files()](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) メソッドが含まれています。
 
 ワークスペースに登録されている `Dataset` オブジェクトを使用することもできます。
 
@@ -282,10 +269,10 @@ prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
 
 | 手法 | 利点と欠点 | 
 |-|-|
-|`PipelineOutputTabularDataset`| パフォーマンスが高い | 
+|`OutputTabularDatasetConfig`| パフォーマンスが高い | 
 || `PipelineData` からの自然なルート | 
 || パイプラインの実行後にデータが永続化されない |
-|| [`PipelineOutputTabularDataset` 手法を示す Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
+|| [`OutputTabularDatasetConfig` 手法を示す Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
 | 登録済み `Dataset` | パフォーマンスが低い |
 | | さまざまな方法で生成できる | 
 | | データが永続化され、ワークスペース全体で表示される |
@@ -294,7 +281,7 @@ prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
 
 ### <a name="specify-automated-ml-outputs"></a>自動 ML 出力を指定する
 
-`AutoMLStep` の出力は、高パフォーマンス モデルとそのモデル自体の最終的なメトリック スコアです。 これらの出力を以降のパイプライン ステップで使用するには、それらを受け取るように `PipelineData` オブジェクトを準備します。
+`AutoMLStep` の出力は、高パフォーマンス モデルとそのモデル自体の最終的なメトリック スコアです。 これらの出力を以降のパイプライン ステップで使用するには、それらを受け取るように `OutputFileDatasetConfig` オブジェクトを準備します。
 
 ```python
 

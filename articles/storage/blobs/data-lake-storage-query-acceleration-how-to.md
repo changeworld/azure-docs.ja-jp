@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b02f5a7c390c5594a7c5692798a0691c8d9a42d0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cc63a9787a3611f28e6466564735d029bf65b757
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912775"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968400"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Azure Data Lake Storage のクエリ アクセラレーションを使用してデータをフィルター処理する
 
@@ -437,7 +437,7 @@ def dump_query_csv(blob: BlobClient, query: str, headers: bool):
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-この例では、クエリがクエリ アクセラレーション API に送信され、結果が戻されています。
+この例では、クエリがクエリ アクセラレーション API に送信され、結果が戻されています。 `queryHemingway` ヘルパー関数に渡される `blob` オブジェクトは [BlockBlobClient](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient) 型です。 [BlockBlobClient](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient) オブジェクトを取得する方法の詳細については、「[クイック スタート:Node.js の JavaScript v12 SDK を使用して BLOB を管理する](storage-quickstart-blobs-nodejs.md)」を参照してください。
 
 ```javascript
 async function queryHemingway(blob)

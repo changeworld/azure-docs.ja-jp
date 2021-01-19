@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 21f29135cc3b94e5b8c2dfc99b0f7be26b37d123
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c6049bf55e379a2629e8cd4ef1427f91fc31d2cd
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995201"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063605"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 

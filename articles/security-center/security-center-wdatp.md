@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 10fa47a8f613218b1331259040be77df867ade95
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 553151aebeadf4ad4764e747b1bf6dcd8c552721
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854844"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98126854"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Security Center の統合 EDR ソリューションを使用してエンドポイントを保護する: Microsoft Defender for Endpoint
 
@@ -71,7 +71,7 @@ Defender for Endpoint を Security Center と統合すると、次の追加機�
 
 Azure Security Center を使用してサーバーを監視すると、Microsoft Defender for Endpoint テナントが自動的に作成されます。 Defender for Endpoint によって収集されたデータは、プロビジョニング時に識別されたテナントの地理的な場所に格納されます。 偽名フォームの顧客データは、米国の中央のストレージおよび処理システムにも格納される可能性があります。 
 
-場所を構成した後は、その場所を変更することはできません。 データを別の場所に移動する必要がある場合は、Microsoft サポートに連絡してテナントをリセットしてください。
+場所を構成した後は、その場所を変更することはできません。 Microsoft Defender for Endpoint のライセンスを所有していて、データを別の場所に移動する必要がある場合は、Microsoft サポートに連絡してテナントをリセットしてください。
 
 
 ## <a name="enabling-the-microsoft-defender-for-endpoint-integration"></a>Microsoft Defender for Endpoint 統合を有効にする
@@ -121,13 +121,19 @@ Microsoft Defender for Endpoint で無害なテスト アラートを生成す�
 
 ## <a name="faq-for-security-centers-integrated-microsoft-defender-for-endpoint"></a>Security Center の統合された Microsoft Defender for Endpoint に関してよくあるご質問
 
-### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Microsoft Defender for Endpoint のライセンス要件はどのようなものですか?
+- [Microsoft Defender for Endpoint のライセンス要件はどのようなものですか?](#what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint)
+- [Microsoft Defender for Endpoint のライセンスが既にある場合、Azure Defender の割引を受けることができますか?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
+- [サードパーティ製の EDR ツールから切り替える方法は?](#how-do-i-switch-from-a-third-party-edr-tool)
 
+### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Microsoft Defender for Endpoint のライセンス要件はどのようなものですか?
 Defender for Endpoint は、**Azure Defender for server** に追加料金なしで含まれています。 別の方法として、50 台以上のマシンに対して個別に購入することもできます。
 
+### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>Microsoft Defender for Endpoint のライセンスが既にある場合、Azure Defender の割引を受けることができますか?
+Microsoft Defender for Endpoint のライセンスを既に取得している場合は、Azure Defender ライセンスのその部分について料金をお支払いいただく必要はありません。
+
+割引を確認するには、Security Center のサポート チームに連絡し、関連するライセンスごとに、関連するワークスペース ID、リージョン、ライセンス情報を提示してください。
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>サードパーティ製の EDR ツールから切り替える方法は?
-
 Microsoft 以外のエンドポイント ソリューションからの切り替えの詳しい手順については、Microsoft Defender for Endpoint の[移行の概要](/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration)に関するドキュメントを参照してください。
   
 

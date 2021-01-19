@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 14195ad4638c724cf0c8dd46945a0da79ec0e4ec
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 08b08e3e799ff7b579889a62ecec70677a3cbce9
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509702"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059060"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーでセルフ アサート技術プロファイルを定義します。
 
@@ -208,7 +208,7 @@ PersistedClaims 要素は使用されません。 セルフ アサート技術�
 | setting.showCancelButton | いいえ | [キャンセル] ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
 | setting.showContinueButton | いいえ | [続行する] ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
 | setting.showSignupLink <sup>2</sup>| いいえ | サインアップ ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
-| setting.forgotPasswordLinkLocation <sup>2</sup>| いいえ| パスワードを忘れた場合のリンクを表示します。 使用可能な値: `AfterInput` (既定) ではリンクがページ下部に表示される、`None` ではパスワードを忘れた場合のリンクが削除される。|
+| setting.forgotPasswordLinkLocation <sup>2</sup>| いいえ| パスワードを忘れた場合のリンクを表示します。 使用可能な値: `AfterLabel` (既定) では、ラベルの直後にリンクが表示されます。ラベルがない場合はパスワード入力フィールドの後にリンクが表示されます。`AfterInput` では、パスワード入力フィールドの後にリンクが表示されます。`AfterButtons` では、フォーム下部のボタンの後にリンクが表示されます。`None` では、パスワードを忘れた場合のリンクは削除されます。|
 | setting.enableRememberMe <sup>2</sup>| いいえ| [[サインインしたままにする]](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) チェックボックスを表示します。 指定できる値: `true` または `false` (既定値)。 |
 | setting.inputVerificationDelayTimeInMilliseconds <sup>3</sup>| いいえ| ユーザーが入力を停止するのを待って、値を検証することで、ユーザー エクスペリエンスを向上させます。 既定値は、2000 ミリ秒です。 |
 | IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |

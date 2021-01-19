@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/18/2020
-ms.openlocfilehash: f715a51367a82f190d394ecb8e10dea24ca70e97
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.date: 01/06/2021
+ms.openlocfilehash: d0bebf030a35d5e0cec7e5f9364fddbf090ee1c7
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706917"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072260"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>マッピング データ フローでのデータ変換式
 
@@ -61,14 +61,6 @@ ___
 論理 AND 演算子です。 && と同じです。  
 * ``and(true, false) -> false``  
 * ``true && false -> false``  
-___
-### <code>array</code>
-<code><b>array([<i>&lt;value1&gt;</i> : any], ...) => array</b></code><br/><br/>
-項目の配列を作成します。 すべての項目は同じ型になっている必要があります。 項目が指定されていない場合、既定値は空の文字列配列です。 [] 作成演算子と同じです。  
-* ``array('Seattle', 'Washington')``
-* ``['Seattle', 'Washington']``
-* ``['Seattle', 'Washington'][1]``
-* ``'Washington'``
 ___
 ### <code>asin</code>
 <code><b>asin(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
@@ -251,6 +243,765 @@ ___
 * ``(10 + 20 > 30) -> false``  
 * ``(10 + 20 > 30) -> false()``
 ___
+### <code>floor</code>
+<code><b>floor(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
+特定の数値以下の最大の整数を返します。  
+* ``floor(-0.1) -> -1``  
+___
+### <code>fromBase64</code>
+<code><b>fromBase64(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
+指定された文字列を base64 でエンコードします。  
+* ``fromBase64('Z3VuY2h1cw==') -> 'gunchus'``  
+___
+### <code>fromUTC</code>
+<code><b>fromUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
+UTC からタイムスタンプに変換します。 必要に応じて、タイムゾーンを "GMT"、"PST"、"UTC"、"America/Cayman" の形式で渡すことができます。 既定値は現在のタイムゾーンです。 使用可能な形式については、Java の `SimpleDateFormat` クラスを参照してください。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+* ``fromUTC(currentTimestamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
+* ``fromUTC(currentTimestamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
+___
+### <code>greater</code>
+<code><b>greater(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
+比較超過演算子。 > 演算子と同じです。  
+* ``greater(12, 24) -> false``  
+* ``('dumbo' > 'dum') -> true``  
+* ``(toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS') > toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> true``  
+___
+### <code>greaterOrEqual</code>
+<code><b>greaterOrEqual(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
+比較 (以上) 演算子。 >= 演算子と同じです。  
+* ``greaterOrEqual(12, 12) -> true``  
+* ``('dumbo' >= 'dum') -> true``  
+___
+### <code>greatest</code>
+<code><b>greatest(<i>&lt;value1&gt;</i> : any, ...) => any</b></code><br/><br/>
+null 値をスキップした入力値のリストの中の最大値を返します。 すべての入力が null の場合は null を返します。  
+* ``greatest(10, 30, 15, 20) -> 30``  
+* ``greatest(10, toInteger(null), 20) -> 20``  
+* ``greatest(toDate('2010-12-12'), toDate('2011-12-12'), toDate('2000-12-12')) -> toDate('2011-12-12')``  
+* ``greatest(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS'), toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS')) -> toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS')``  
+___
+### <code>hasColumn</code>
+<code><b>hasColumn(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => boolean</b></code><br/><br/>
+ストリームでの名前で列の値をチェックします。 省略可能なストリーム名を 2 番目の引数として渡すことができます。 設計時にわかっている列名は、その名前だけで処理する必要があります。 計算入力はサポートされていませんが、パラメーター置換を使用することができます。  
+* ``hasColumn('parent')``  
+___
+### <code>hour</code>
+<code><b>hour(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
+タイムスタンプから時間の値を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。 使用可能な形式については、Java の `SimpleDateFormat` クラスを参照してください。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+* ``hour(toTimestamp('2009-07-30 12:58:59')) -> 12``  
+* ``hour(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 12``  
+___
+### <code>hours</code>
+<code><b>hours(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
+ミリ秒単位での時間数の期間。  
+* ``hours(2) -> 7200000L``  
+___
+### <code>iif</code>
+<code><b>iif(<i>&lt;condition&gt;</i> : boolean, <i>&lt;true_expression&gt;</i> : any, [<i>&lt;false_expression&gt;</i> : any]) => any</b></code><br/><br/>
+条件に基づいて、2 つの値のいずれかを適用します。 その他が指定されていない場合は、NULL と見なされます。 両方の値は互換性がなければなりません (数値、文字列...)。* ``iif(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``  
+* ``iif(10 > 30, 'dumbo', 'gumbo') -> 'gumbo'``  
+* ``iif(month(toDate('2018-12-01')) == 12, 345.12, 102.67) -> 345.12``  
+___
+### <code>iifNull</code>
+<code><b>iifNull(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : any], ...) => any</b></code><br/><br/>
+最初のパラメーターが null かどうかを確認します。 null 以外の場合は、最初のパラメーターが返されます。 null の場合は、2 番目のパラメーターが返されます。 3 つのパラメーターが指定されている場合、動作は iif(isNull(value1), value2, value3) と同じであり、最初の値が null でない場合は 3 番目のパラメーターが返されます。  
+* ``iifNull(10, 20) -> 10``  
+* ``iifNull(null, 20, 40) -> 20``  
+* ``iifNull('azure', 'data', 'factory') -> 'factory'``  
+* ``iifNull(null, 'data', 'factory') -> 'data'``  
+___
+### <code>in</code>
+<code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></code><br/><br/>
+項目が配列内にあるかどうかをチェックします。  
+* ``in([10, 20, 30], 10) -> true``  
+* ``in(['good', 'kid'], 'bad') -> false``  
+___
+### <code>initCap</code>
+<code><b>initCap(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
+すべての単語の最初の文字を大文字に変換します。 単語は、空白文字で区切られているものとして識別されます。  
+* ``initCap('cool iceCREAM') -> 'Cool Icecream'``  
+___
+### <code>instr</code>
+<code><b>instr(<i>&lt;string&gt;</i> : string, <i>&lt;substring to find&gt;</i> : string) => integer</b></code><br/><br/>
+文字列内の部分文字列の位置 (1 を基準とする) を見つけます。 見つからない場合は 0 が返されます。  
+* ``instr('dumbo', 'mbo') -> 3``  
+* ``instr('microsoft', 'o') -> 5``  
+* ``instr('good', 'bad') -> 0``  
+___
+### <code>isDelete</code>
+<code><b>isDelete([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
+行が削除用にマークされているかどうかをチェックします。 1 つ以上の入力ストリームを取る変換は、ストリームの (1 から始まる) インデックスを渡すことができます。 ストリーム インデックスは 1 または 2 のいずれかである必要があり、既定値は 1 です。  
+* ``isDelete()``  
+* ``isDelete(1)``  
+___
+### <code>isError</code>
+<code><b>isError([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
+行がエラーとしてマークされているかどうかをチェックします。 1 つ以上の入力ストリームを取る変換は、ストリームの (1 から始まる) インデックスを渡すことができます。 ストリーム インデックスは 1 または 2 のいずれかである必要があり、既定値は 1 です。  
+* ``isError()``  
+* ``isError(1)``  
+___
+### <code>isIgnore</code>
+<code><b>isIgnore([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
+行を無視するようにマークされているかどうかをチェックします。 1 つ以上の入力ストリームを取る変換は、ストリームの (1 から始まる) インデックスを渡すことができます。 ストリーム インデックスは 1 または 2 のいずれかである必要があり、既定値は 1 です。  
+* ``isIgnore()``  
+* ``isIgnore(1)``  
+___
+### <code>isInsert</code>
+<code><b>isInsert([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
+行が挿入用にマークされているかどうかをチェックします。 1 つ以上の入力ストリームを取る変換は、ストリームの (1 から始まる) インデックスを渡すことができます。 ストリーム インデックスは 1 または 2 のいずれかである必要があり、既定値は 1 です。  
+* ``isInsert()``  
+* ``isInsert(1)``  
+___
+### <code>isMatch</code>
+<code><b>isMatch([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
+行がルックアップで一致するかどうかをチェックします。 1 つ以上の入力ストリームを取る変換は、ストリームの (1 から始まる) インデックスを渡すことができます。 ストリーム インデックスは 1 または 2 のいずれかである必要があり、既定値は 1 です。  
+* ``isMatch()``  
+* ``isMatch(1)``  
+___
+### <code>isNull</code>
+<code><b>isNull(<i>&lt;value1&gt;</i> : any) => boolean</b></code><br/><br/>
+値が NULL かどうかをチェックします。  
+* ``isNull(NULL()) -> true``  
+* ``isNull('') -> false``  
+___
+### <code>isUpdate</code>
+<code><b>isUpdate([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
+行が更新用にマークされているかどうかをチェックします。 1 つ以上の入力ストリームを取る変換は、ストリームの (1 から始まる) インデックスを渡すことができます。 ストリーム インデックスは 1 または 2 のいずれかである必要があり、既定値は 1 です。  
+* ``isUpdate()``  
+* ``isUpdate(1)``  
+___
+### <code>isUpsert</code>
+<code><b>isUpsert([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
+行が挿入用にマークされているかどうかをチェックします。 1 つ以上の入力ストリームを取る変換は、ストリームの (1 から始まる) インデックスを渡すことができます。 ストリーム インデックスは 1 または 2 のいずれかである必要があり、既定値は 1 です。  
+* ``isUpsert()``  
+* ``isUpsert(1)``  
+___
+### <code>lastDayOfMonth</code>
+<code><b>lastDayOfMonth(<i>&lt;value1&gt;</i> : datetime) => date</b></code><br/><br/>
+指定した日付から、その月の最後の日を取得します。  
+* ``lastDayOfMonth(toDate('2009-01-12')) -> toDate('2009-01-31')``  
+___
+### <code>least</code>
+<code><b>least(<i>&lt;value1&gt;</i> : any, ...) => any</b></code><br/><br/>
+比較 (以下) 演算子。 <= 演算子と同じです。  
+* ``least(10, 30, 15, 20) -> 10``  
+* ``least(toDate('2010-12-12'), toDate('2011-12-12'), toDate('2000-12-12')) -> toDate('2000-12-12')``  
+___
+### <code>left</code>
+<code><b>left(<i>&lt;string to subset&gt;</i> : string, <i>&lt;number of characters&gt;</i> : integral) => string</b></code><br/><br/>
+インデックス 1 から開始して指定した文字数の部分文字列を抽出します。 SUBSTRING(str, 1, n) と同じです。  
+* ``left('bojjus', 2) -> 'bo'``  
+* ``left('bojjus', 20) -> 'bojjus'``  
+___
+### <code>length</code>
+<code><b>length(<i>&lt;value1&gt;</i> : string) => integer</b></code><br/><br/>
+文字列の長さを返します。  
+* ``length('dumbo') -> 5``  
+___
+### <code>lesser</code>
+<code><b>lesser(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
+比較未満演算子。 < 演算子と同じです。  
+* ``lesser(12, 24) -> true``  
+* ``('abcd' < 'abc') -> false``  
+* ``(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS') < toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS')) -> true``  
+___
+### <code>lesserOrEqual</code>
+<code><b>lesserOrEqual(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
+比較 (以下) 演算子。 <= 演算子と同じです。  
+* ``lesserOrEqual(12, 12) -> true``  
+* ``('dumbo' <= 'dum') -> false``  
+___
+### <code>levenshtein</code>
+<code><b>levenshtein(<i>&lt;from string&gt;</i> : string, <i>&lt;to string&gt;</i> : string) => integer</b></code><br/><br/>
+2 つの文字列の間のレーベンシュタイン距離を取得します。  
+* ``levenshtein('boys', 'girls') -> 4``  
+___
+### <code>like</code>
+<code><b>like(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></code><br/><br/>
+パターンは文字通り一致する文字列です。 次の特殊文字は例外です。_ は入力内の任意の 1 文字と一致します (posix 正規表現の . に 類似 (```posix```))、% は入力内の 0 文字以上と一致します (```posix``` 正規表現の * に類似)。
+エスケープ文字は '' です。 エスケープ文字の前に特殊記号または別のエスケープ文字がある場合、その次の文字が文字通り照合されます。 その他の文字をエスケープするのは無効です。  
+* ``like('icecream', 'ice%') -> true``  
+___
+### <code>locate</code>
+<code><b>locate(<i>&lt;substring to find&gt;</i> : string, <i>&lt;string&gt;</i> : string, [<i>&lt;from index - 1-based&gt;</i> : integral]) => integer</b></code><br/><br/>
+特定の位置から開始して、文字列内の部分文字列の位置 (1 を基準とする) を見つけます。 位置を省略すると、文字列の最初からとみなされます。 見つからない場合は 0 が返されます。  
+* ``locate('mbo', 'dumbo') -> 3``  
+* ``locate('o', 'microsoft', 6) -> 7``  
+* ``locate('bad', 'good') -> 0``  
+___
+### <code>log</code>
+<code><b>log(<i>&lt;value1&gt;</i> : number, [<i>&lt;value2&gt;</i> : number]) => double</b></code><br/><br/>
+対数の値を計算します。 省略可能な底を指定できます。省略すると、オイラー数を返します (使用される場合)。  
+* ``log(100, 10) -> 2``  
+___
+### <code>log10</code>
+<code><b>log10(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
+10 を底とする対数の値を計算します。  
+* ``log10(100) -> 2``  
+___
+### <code>lower</code>
+<code><b>lower(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
+文字列を小文字にします。  
+* ``lower('GunChus') -> 'gunchus'``  
+___
+### <code>lpad</code>
+<code><b>lpad(<i>&lt;string to pad&gt;</i> : string, <i>&lt;final padded length&gt;</i> : integral, <i>&lt;padding&gt;</i> : string) => string</b></code><br/><br/>
+特定の長さになるまで、指定した埋め込み文字で文字列の左側を埋め込みます。 文字列が指定された長さ以上の場合は、その長さまで削除されます。  
+* ``lpad('dumbo', 10, '-') -> '-----dumbo'``  
+* ``lpad('dumbo', 4, '-') -> 'dumb'``  
+* ``lpad('dumbo', 8, '<>') -> '<><dumbo'``  
+___
+### <code>ltrim</code>
+<code><b>ltrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
+文字列の先頭文字を左から削除します。 2 番目のパラメーターを指定しない場合、空白文字を削除します。 それ以外の場合は、2 番目のパラメーターに指定した任意の文字を削除します。  
+* ``ltrim('  dumbo  ') -> 'dumbo  '``  
+* ``ltrim('!--!du!mbo!', '-!') -> 'du!mbo!'``  
+___
+### <code>md5</code>
+<code><b>md5(<i>&lt;value1&gt;</i> : any, ...) => string</b></code><br/><br/>
+さまざまなプリミティブ データ型の列セットの MD5 ハッシュを計算し、32 文字の16 進数の文字列を返します。 行のフィンガープリントを計算するために使用できます。  
+* ``md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '4ce8a880bd621a1ffad0bca905e1bc5a'``  
+___
+### <code>millisecond</code>
+<code><b>millisecond(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
+日付のミリ秒の値を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。 使用可能な形式については、Java の `SimpleDateFormat` クラスを参照してください。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+* ``millisecond(toTimestamp('2009-07-30 12:58:59.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``  
+___
+### <code>milliseconds</code>
+<code><b>milliseconds(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
+ミリ秒単位でのミリ秒数の期間。  
+* ``milliseconds(2) -> 2L``  
+___
+### <code>minus</code>
+<code><b>minus(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
+数値を減算します。 日付から日数を減算します。 タイムスタンプから期間を減算します。 2 つのタイムスタンプを減算して、ミリ秒単位での差を取得します。 \- 演算子と同じです。  
+* ``minus(20, 10) -> 10``  
+* ``20 - 10 -> 10``  
+* ``minus(toDate('2012-12-15'), 3) -> toDate('2012-12-12')``  
+* ``toDate('2012-12-15') - 3 -> toDate('2012-12-12')``  
+* ``toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS') + (days(1) + hours(2) - seconds(10)) -> toTimestamp('2019-02-04 07:19:18.871', 'yyyy-MM-dd HH:mm:ss.SSS')``  
+* ``toTimestamp('2019-02-03 05:21:34.851', 'yyyy-MM-dd HH:mm:ss.SSS') - toTimestamp('2019-02-03 05:21:36.923', 'yyyy-MM-dd HH:mm:ss.SSS') -> -2072``  
+___
+### <code>minute</code>
+<code><b>minute(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
+タイムスタンプから分の値を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。 使用可能な形式については、Java の `SimpleDateFormat` クラスを参照してください。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+* ``minute(toTimestamp('2009-07-30 12:58:59')) -> 58``  
+* ``minute(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 58``  
+___
+### <code>minutes</code>
+<code><b>minutes(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
+ミリ秒単位での分数の期間。  
+* ``minutes(2) -> 120000L``  
+___
+### <code>mod</code>
+<code><b>mod(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
+数値のペアの剰余です。 % 演算子と同じです。  
+* ``mod(20, 8) -> 4``  
+* ``20 % 8 -> 4``  
+___
+### <code>month</code>
+<code><b>month(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
+日付またはタイムスタンプから月の値を取得します。  
+* ``month(toDate('2012-8-8')) -> 8``  
+___
+### <code>monthsBetween</code>
+<code><b>monthsBetween(<i>&lt;from date/timestamp&gt;</i> : datetime, <i>&lt;to date/timestamp&gt;</i> : datetime, [<i>&lt;roundoff&gt;</i> : boolean], [<i>&lt;time zone&gt;</i> : string]) => double</b></code><br/><br/>
+2 つの日付の間の月数を取得します。 計算を丸めることができいます。省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。 使用可能な形式については、Java の `SimpleDateFormat` クラスを参照してください。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+* ``monthsBetween(toTimestamp('1997-02-28 10:30:00'), toDate('1996-10-30')) -> 3.94959677``  
+___
+### <code>multiply</code>
+<code><b>multiply(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
+数値のペアを乗算します。 \* 演算子と同じです。  
+* ``multiply(20, 10) -> 200``  
+* ``20 * 10 -> 200``  
+___
+### <code>negate</code>
+<code><b>negate(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
+数値の符号を反転します。 正の数値を負の数値 (または、その逆) に変換します。  
+* ``negate(13) -> -13``  
+___
+### <code>nextSequence</code>
+<code><b>nextSequence() => long</b></code><br/><br/>
+次の固有なシーケンスを返します。 数値は、パーティション内でのみ連続し、プレフィックスとして partitionId が付加されます。  
+* ``nextSequence() == 12313112 -> false``  
+___
+### <code>normalize</code>
+<code><b>normalize(<i>&lt;String to normalize&gt;</i> : string) => string</b></code><br/><br/>
+文字列値を個別にアクセント記号が付いた Unicode 文字に正規化します。  
+* ``regexReplace(normalize('bo²s'), `\p{M}`, '') -> 'boys'``  
+___
+### <code>not</code>
+<code><b>not(<i>&lt;value1&gt;</i> : boolean) => boolean</b></code><br/><br/>
+論理否定演算子。  
+* ``not(true) -> false``  
+* ``not(10 == 20) -> true``  
+___
+### <code>notEquals</code>
+<code><b>notEquals(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
+比較不等価演算子。 != 演算子と同じです。  
+* ``12 != 24 -> true``  
+* ``'bojjus' != 'bo' + 'jjus' -> false``  
+___
+### <code>notNull</code>
+<code><b>notNull(<i>&lt;value1&gt;</i> : any) => boolean</b></code><br/><br/>
+値が NULL 以外であるかどうかをチェックします。  
+* ``notNull(NULL()) -> false``  
+* ``notNull('') -> true``  
+___
+### <code>null</code>
+<code><b>null() => null</b></code><br/><br/>
+NULL 値を返します。 "null" という名前の列がある場合は、関数 `syntax(null())` を使用します。 これを使用する操作はすべて NULL になります。  
+* ``isNull('dumbo' + null) -> true``  
+* ``isNull(10 * null) -> true``  
+* ``isNull('') -> false``  
+* ``isNull(10 + 20) -> false``  
+* ``isNull(10/0) -> true``  
+___
+### <code>or</code>
+<code><b>or(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
+論理 OR 演算子です。 || と同じです。  
+* ``or(true, false) -> true``  
+* ``true || false -> true``  
+___
+### <code>pMod</code>
+<code><b>pMod(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
+数値のペアの正の剰余です。  
+* ``pmod(-20, 8) -> 4``  
+___
+### <code>partitionId</code>
+<code><b>partitionId() => integer</b></code><br/><br/>
+入力行が含まれている現在のパーティション ID を返します。  
+* ``partitionId()``  
+___
+### <code>power</code>
+<code><b>power(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
+数値を別の数値でべき乗します。  
+* ``power(10, 2) -> 100``  
+___
+### <code>random</code>
+<code><b>random(<i>&lt;value1&gt;</i> : integral) => long</b></code><br/><br/>
+パーティション内に省略可能なシード値を指定すると、乱数を返します。 シード値は固定値である必要があり、乱数値を生成するために partitionId と組み合わせて使用されます。* ``random(1) == 1 -> false``
+___
+### <code>regexExtract</code>
+<code><b>regexExtract(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, [<i>&lt;match group 1-based index&gt;</i> : integral]) => string</b></code><br/><br/>
+指定された正規表現パターンに一致する部分文字列を抽出します。 最後のパラメーターは、一致グループを識別し、省略すると既定値として 1 が使用されます。 エスケープせずに文字列を照合するには、`<regex>` (バック クォート) を使用します。  
+* ``regexExtract('Cost is between 600 and 800 dollars', '(\\d+) and (\\d+)', 2) -> '800'``  
+* ``regexExtract('Cost is between 600 and 800 dollars', `(\d+) and (\d+)`, 2) -> '800'``  
+___
+### <code>regexMatch</code>
+<code><b>regexMatch(<i>&lt;string&gt;</i> : string, <i>&lt;regex to match&gt;</i> : string) => boolean</b></code><br/><br/>
+指定された正規表現パターンに文字列が一致するかどうかをチェックします。 エスケープせずに文字列を照合するには、`<regex>` (バック クォート) を使用します。  
+* ``regexMatch('200.50', '(\\d+).(\\d+)') -> true``  
+* ``regexMatch('200.50', `(\d+).(\d+)`) -> true``  
+___
+### <code>regexReplace</code>
+<code><b>regexReplace(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, <i>&lt;substring to replace&gt;</i> : string) => string</b></code><br/><br/>
+指定の文字列内の正規表現パターンのすべての出現を別の部分文字列に置換します。エスケープせずに文字列を照合するには、`<regex>` (バック クォート) を使用します。  
+* ``regexReplace('100 and 200', '(\\d+)', 'bojjus') -> 'bojjus and bojjus'``  
+* ``regexReplace('100 and 200', `(\d+)`, 'gunchus') -> 'gunchus and gunchus'``  
+___
+### <code>regexSplit</code>
+<code><b>regexSplit(<i>&lt;string to split&gt;</i> : string, <i>&lt;regex expression&gt;</i> : string) => array</b></code><br/><br/>
+文字列を正規表現に基づく区切り文字に基づいて分割し、文字列の配列を返します。  
+* ``regexSplit('bojjusAgunchusBdumbo', `[CAB]`) -> ['bojjus', 'gunchus', 'dumbo']``  
+* ``regexSplit('bojjusAgunchusBdumboC', `[CAB]`) -> ['bojjus', 'gunchus', 'dumbo', '']``  
+* ``(regexSplit('bojjusAgunchusBdumboC', `[CAB]`)[1]) -> 'bojjus'``  
+* ``isNull(regexSplit('bojjusAgunchusBdumboC', `[CAB]`)[20]) -> true``  
+___
+### <code>replace</code>
+<code><b>replace(<i>&lt;string&gt;</i> : string, <i>&lt;substring to find&gt;</i> : string, [<i>&lt;substring to replace&gt;</i> : string]) => string</b></code><br/><br/>
+指定された文字列内の substring のすべての出現を別の substring に置換します。 最後のパラメーターを省略すると、既定値は空の文字列になります。  
+* ``replace('doggie dog', 'dog', 'cat') -> 'catgie cat'``  
+* ``replace('doggie dog', 'dog', '') -> 'gie '``  
+* ``replace('doggie dog', 'dog') -> 'gie '``  
+___
+### <code>reverse</code>
+<code><b>reverse(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
+文字列を反転します。  
+* ``reverse('gunchus') -> 'suhcnug'``  
+___
+### <code>right</code>
+<code><b>right(<i>&lt;string to subset&gt;</i> : string, <i>&lt;number of characters&gt;</i> : integral) => string</b></code><br/><br/>
+指定した文字数の部分文字列を右から抽出します。 SUBSTRING(str, LENGTH(str) - n, n) と同じです。  
+* ``right('bojjus', 2) -> 'us'``  
+* ``right('bojjus', 20) -> 'bojjus'``  
+___
+### <code>rlike</code>
+<code><b>rlike(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></code><br/><br/>
+指定された正規表現パターンに文字列が一致するかどうかをチェックします。  
+* ``rlike('200.50', `(\d+).(\d+)`) -> true``  
+* ``rlike('bogus', `M[0-9]+.*`) -> false``  
+___
+### <code>round</code>
+<code><b>round(<i>&lt;number&gt;</i> : number, [<i>&lt;scale to round&gt;</i> : number], [<i>&lt;rounding option&gt;</i> : integral]) => double</b></code><br/><br/>
+省略可能な桁数と省略可能な丸めモードで数値を丸めます。 桁数を省略すると、既定値の 0 が使用されます。 モードを省略すると、既定値は ROUND_HALF_UP(5) になります。 丸めの値には、1 - ROUND_UP、2 - ROUND_DOWN、3 - ROUND_CEILING、4 - ROUND_FLOOR、5 - ROUND_HALF_UP、6 - ROUND_HALF_DOWN、7 - ROUND_HALF_EVEN、8 - ROUND_UNNECESSARY があります。  
+* ``round(100.123) -> 100.0``  
+* ``round(2.5, 0) -> 3.0``  
+* ``round(5.3999999999999995, 2, 7) -> 5.40``  
+___
+### <code>rpad</code>
+<code><b>rpad(<i>&lt;string to pad&gt;</i> : string, <i>&lt;final padded length&gt;</i> : integral, <i>&lt;padding&gt;</i> : string) => string</b></code><br/><br/>
+特定の長さになるまで、指定した埋め込み文字で文字列の右側を埋め込みます。 文字列が指定された長さ以上の場合は、その長さまで削除されます。  
+* ``rpad('dumbo', 10, '-') -> 'dumbo-----'``  
+* ``rpad('dumbo', 4, '-') -> 'dumb'``  
+* ``rpad('dumbo', 8, '<>') -> 'dumbo<><'``  
+___
+### <code>rtrim</code>rtrim</code>
+<code><b>rtrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
+文字列の末尾文字を右から削除します。 2 番目のパラメーターを指定しない場合、空白文字を削除します。 それ以外の場合は、2 番目のパラメーターに指定した任意の文字を削除します。  
+* ``rtrim('  dumbo  ') -> '  dumbo'``  
+* ``rtrim('!--!du!mbo!', '-!') -> '!--!du!mbo'``  
+___
+### <code>second</code>
+<code><b>second(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
+日付の秒の値を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。 使用可能な形式については、Java の `SimpleDateFormat` クラスを参照してください。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
+* ``second(toTimestamp('2009-07-30 12:58:59')) -> 59``  
+___
+### <code>seconds</code>
+<code><b>seconds(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
+ミリ秒単位での秒数の期間。  
+* ``seconds(2) -> 2000L``  
+___
+### <code>sha1</code>
+<code><b>sha1(<i>&lt;value1&gt;</i> : any, ...) => string</b></code><br/><br/>
+さまざまなプリミティブ データ型の列セットの SHA-1 ハッシュを計算し、40 文字の16 進数の文字列を返します。 行のフィンガープリントを計算するために使用できます。  
+* ``sha1(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '46d3b478e8ec4e1f3b453ac3d8e59d5854e282bb'``  
+___
+### <code>sha2</code>
+<code><b>sha2(<i>&lt;value1&gt;</i> : integer, <i>&lt;value2&gt;</i> : any, ...) => string</b></code><br/><br/>
+さまざまなプリミティブ データ型の列セットの SHA-2 ハッシュを指定のビット長で計算します。ビット長として指定できるのは、0(256)、224、256、384、512 の値のみです。 行のフィンガープリントを計算するために使用できます。  
+* ``sha2(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> 'afe8a553b1761c67d76f8c31ceef7f71b66a1ee6f4e6d3b5478bf68b47d06bd3'``  
+___
+### <code>sin</code>
+<code><b>sin(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
+サイン値を計算します。  
+* ``sin(2) -> 0.9092974268256817``  
+___
+### <code>sinh</code>
+<code><b>sinh(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
+双曲線サイン値を計算します。  
+* ``sinh(0) -> 0.0``  
+___
+### <code>soundex</code>
+<code><b>soundex(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
+文字列の ```soundex``` コードを取得します。  
+* ``soundex('genius') -> 'G520'``  
+___
+### <code>split</code>
+<code><b>split(<i>&lt;string to split&gt;</i> : string, <i>&lt;split characters&gt;</i> : string) => array</b></code><br/><br/>
+文字列を区切り文字に基づいて分割し、文字列の配列を返します。  
+* ``split('bojjus,guchus,dumbo', ',') -> ['bojjus', 'guchus', 'dumbo']``  
+* ``split('bojjus,guchus,dumbo', '|') -> ['bojjus,guchus,dumbo']``  
+* ``split('bojjus, guchus, dumbo', ', ') -> ['bojjus', 'guchus', 'dumbo']``  
+* ``split('bojjus, guchus, dumbo', ', ')[1] -> 'bojjus'``  
+* ``isNull(split('bojjus, guchus, dumbo', ', ')[0]) -> true``  
+* ``isNull(split('bojjus, guchus, dumbo', ', ')[20]) -> true``  
+* ``split('bojjusguchusdumbo', ',') -> ['bojjusguchusdumbo']``  
+___
+### <code>sqrt</code>
+<code><b>sqrt(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
+数値の平方根を計算します。  
+* ``sqrt(9) -> 3``  
+___
+### <code>startsWith</code>
+<code><b>startsWith(<i>&lt;string&gt;</i> : string, <i>&lt;substring to check&gt;</i> : string) => boolean</b></code><br/><br/>
+文字列が指定した文字列で開始しているかどうかをチェックします。  
+* ``startsWith('dumbo', 'du') -> true``  
+___
+### <code>subDays</code>
+<code><b>subDays(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;days to subtract&gt;</i> : integral) => datetime</b></code><br/><br/>
+日付またはタイムスタンプから日数を減算します。 日付に対する - 演算子と同じです。  
+* ``subDays(toDate('2016-08-08'), 1) -> toDate('2016-08-07')``  
+___
+### <code>subMonths</code>
+<code><b>subMonths(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;months to subtract&gt;</i> : integral) => datetime</b></code><br/><br/>
+日付またはタイムスタンプから月数を減算します。  
+* ``subMonths(toDate('2016-09-30'), 1) -> toDate('2016-08-31')``  
+___
+### <code>substring</code>
+<code><b>substring(<i>&lt;string to subset&gt;</i> : string, <i>&lt;from 1-based index&gt;</i> : integral, [<i>&lt;number of characters&gt;</i> : integral]) => string</b></code><br/><br/>
+ある位置から特定の長さの部分文字列を抽出します。 位置は 1 から始まります。 長さを省略すると、既定値は文字列の最後になります。  
+* ``substring('Cat in the hat', 5, 2) -> 'in'``  
+* ``substring('Cat in the hat', 5, 100) -> 'in the hat'``  
+* ``substring('Cat in the hat', 5) -> 'in the hat'``  
+* ``substring('Cat in the hat', 100, 100) -> ''``  
+___
+### <code>tan</code>
+<code><b>tan(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
+タンジェント値を計算します。  
+* ``tan(0) -> 0.0``  
+___
+### <code>tanh</code>
+<code><b>tanh(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
+双曲線タンジェント値を計算します。  
+* ``tanh(0) -> 0.0``  
+___
+### <code>translate</code>
+<code><b>translate(<i>&lt;string to translate&gt;</i> : string, <i>&lt;lookup characters&gt;</i> : string, <i>&lt;replace characters&gt;</i> : string) => string</b></code><br/><br/>
+文字列内のある文字セットを別の文字セットで置換します。 文字の置換は 1 対 1 で行われます。  
+* ``translate('(bojjus)', '()', '[]') -> '[bojjus]'``  
+* ``translate('(gunchus)', '()', '[') -> '[gunchus'``  
+___
+### <code>trim</code>
+<code><b>trim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
+文字列の先頭文字と末尾文字を削除します。 2 番目のパラメーターを指定しない場合、空白文字を削除します。 それ以外の場合は、2 番目のパラメーターに指定した任意の文字を削除します。  
+* ``trim('  dumbo  ') -> 'dumbo'``  
+* ``trim('!--!du!mbo!', '-!') -> 'du!mbo'``  
+___
+### <code>true</code>
+<code><b>true() => boolean</b></code><br/><br/>
+常に true 値を返します。 "true" という名前の列がある場合は、関数 `syntax(true())` を使用します。  
+* ``(10 + 20 == 30) -> true``  
+* ``(10 + 20 == 30) -> true()``  
+___
+### <code>typeMatch</code>
+<code><b>typeMatch(<i>&lt;type&gt;</i> : string, <i>&lt;base type&gt;</i> : string) => boolean</b></code><br/><br/>
+列の型を照合します。 パターン式でのみ使用できます。数値は short、integer、long、double、float、または decimal 型に一致し、整数は short、integer、long 型に一致し、小数は double、float、decimal 型に一致し、日時は date または timestamp 型に一致します。  
+* ``typeMatch(type, 'number')``  
+* ``typeMatch('date', 'datetime')``  
+___
+### <code>upper</code>
+<code><b>upper(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
+文字列を大文字にします。  
+* ``upper('bojjus') -> 'BOJJUS'``  
+___
+### <code>uuid</code>
+<code><b>uuid() => string</b></code><br/><br/>
+生成された UUID を返します。  
+* ``uuid()``  
+___
+### <code>weekOfYear</code>
+<code><b>weekOfYear(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
+指定した日付から、その年の何週目かを取得します。  
+* ``weekOfYear(toDate('2008-02-20')) -> 8``  
+___
+### <code>weeks</code>
+<code><b>weeks(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
+ミリ秒単位での週数の期間。  
+* ``weeks(2) -> 1209600000L``  
+___
+### <code>xor</code>
+<code><b>xor(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
+XOR 論理演算子。 ^ 演算子と同じです。  
+* ``xor(true, false) -> true``  
+* ``xor(true, true) -> false``  
+* ``true ^ false -> true``  
+___
+### <code>year</code>
+<code><b>year(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
+日付の年の値を取得します。  
+* ``year(toDate('2012-8-8')) -> 2012``  
+
+## <a name="aggregate-functions"></a>集計関数
+次の関数は、集計、ピボット、ピボット解除、ウィンドウ変換でのみ使用できます。
+___
+### <code>avg</code>
+<code><b>avg(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
+列の値の平均を取得します。  
+* ``avg(sales)``  
+___
+### <code>avgIf</code>
+<code><b>avgIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/>
+条件に基づいて、列の値の平均を取得します。  
+* ``avgIf(region == 'West', sales)``  
+___
+### <code>count</code>
+<code><b>count([<i>&lt;value1&gt;</i> : any]) => long</b></code><br/><br/>
+値の集計カウントを取得します。 省略可能な列を指定すると、カウントの NULL 値が無視されます。  
+* ``count(custId)``  
+* ``count(custId, custName)``  
+* ``count()``  
+* ``count(iif(isNull(custId), 1, NULL))``  
+___
+### <code>countDistinct</code>
+<code><b>countDistinct(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : any], ...) => long</b></code><br/><br/>
+列セットの個別値の集計カウントを取得します。  
+* ``countDistinct(custId, custName)``  
+___
+### <code>countIf</code>
+<code><b>countIf(<i>&lt;value1&gt;</i> : boolean, [<i>&lt;value2&gt;</i> : any]) => long</b></code><br/><br/>
+条件に基づいて、値の集計カウントを取得します。 省略可能な列を指定すると、カウントの NULL 値が無視されます。  
+* ``countIf(state == 'CA' && commission < 10000, name)``  
+___
+### <code>covariancePopulation</code>
+<code><b>covariancePopulation(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
+2 つの列の間の母共分散を取得します。  
+* ``covariancePopulation(sales, profit)``  
+___
+### <code>covariancePopulationIf</code>
+<code><b>covariancePopulationIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number, <i>&lt;value3&gt;</i> : number) => double</b></code><br/><br/>
+条件に基づいて、2 つの列の間の母共分散を取得します。  
+* ``covariancePopulationIf(region == 'West', sales)``  
+___
+### <code>covarianceSample</code>
+<code><b>covarianceSample(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
+2 つの列の標本共分散を取得します。  
+* ``covarianceSample(sales, profit)``  
+___
+### <code>covarianceSampleIf</code>
+<code><b>covarianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number, <i>&lt;value3&gt;</i> : number) => double</b></code><br/><br/>
+条件に基づいて、2 つの列の標本共分散を取得します。  
+* ``covarianceSampleIf(region == 'West', sales, profit)``  
+___
+### <code>first</code>
+<code><b>first(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : boolean]) => any</b></code><br/><br/>
+列グループの最初の値を取得します。 2 番目のパラメーター ignoreNulls を省略すると、false であると見なされます。  
+* ``first(sales)``  
+* ``first(sales, false)``  
+___
+### <code>kurtosis</code>
+<code><b>kurtosis(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
+列の尖度を取得します。  
+* ``kurtosis(sales)``  
+___
+### <code>kurtosisIf</code>
+<code><b>kurtosisIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
+条件に基づいて、列の尖度を取得します。  
+* ``kurtosisIf(region == 'West', sales)``  
+___
+### <code>last</code>
+<code><b>last(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : boolean]) => any</b></code><br/><br/>
+列グループの最後の値を取得します。 2 番目のパラメーター ignoreNulls を省略すると、false であると見なされます。  
+* ``last(sales)``  
+* ``last(sales, false)``  
+___
+### <code>max</code>
+<code><b>max(<i>&lt;value1&gt;</i> : any) => any</b></code><br/><br/>
+列の最大値を取得します。  
+* ``max(sales)``  
+___
+### <code>maxIf</code>
+<code><b>maxIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
+条件に基づいて、列の値の最大値を取得します。  
+* ``maxIf(region == 'West', sales)``  
+___
+### <code>mean</code>
+<code><b>mean(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
+列の値の平均を取得します。 AVG と同じです。  
+* ``mean(sales)``  
+___
+### <code>meanIf</code>
+<code><b>meanIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/>
+条件に基づいて、列の値の平均を取得します。 avgIf と同じです。  
+* ``meanIf(region == 'West', sales)``  
+___
+### <code>min</code>
+<code><b>min(<i>&lt;value1&gt;</i> : any) => any</b></code><br/><br/>
+列の最小値を取得します。  
+* ``min(sales)``  
+___
+### <code>minIf</code>
+<code><b>minIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
+条件に基づいて、列の値の最小値を取得します。  
+* ``minIf(region == 'West', sales)``  
+___
+### <code>skewness</code>
+<code><b>skewness(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
+列の歪度を取得します。  
+* ``skewness(sales)``  
+___
+### <code>skewnessIf</code>
+<code><b>skewnessIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
+条件に基づいて、列の歪度を取得します。  
+* ``skewnessIf(region == 'West', sales)``  
+___
+### <code>stddev</code>
+<code><b>stddev(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
+列の標準偏差を取得します。  
+* ``stdDev(sales)``  
+___
+### <code>stddevIf</code>
+<code><b>stddevIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
+条件に基づいて、列の標準偏差を取得します。  
+* ``stddevIf(region == 'West', sales)``  
+___
+### <code>stddevPopulation</code>
+<code><b>stddevPopulation(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
+列の母標準偏差を取得します。  
+* ``stddevPopulation(sales)``  
+___
+### <code>stddevPopulationIf</code>
+<code><b>stddevPopulationIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
+条件に基づいて、列の母標準偏差を取得します。  
+* ``stddevPopulationIf(region == 'West', sales)``  
+___
+### <code>stddevSample</code>
+<code><b>stddevSample(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
+列の標本標準偏差を取得します。  
+* ``stddevSample(sales)``  
+___
+### <code>stddevSampleIf</code>
+<code><b>stddevSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
+条件に基づいて、列の標本標準偏差を取得します。  
+* ``stddevSampleIf(region == 'West', sales)``  
+___
+### <code>sum</code>
+<code><b>sum(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
+数値列の集計を取得します。  
+* ``sum(col)``  
+___
+### <code>sumDistinct</code>
+<code><b>sumDistinct(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
+数値列の個別値の集計を取得します。  
+* ``sumDistinct(col)``  
+___
+### <code>sumDistinctIf</code>
+<code><b>sumDistinctIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/>
+条件に基づいて、数値列の集計を取得します。 条件は、任意の列に基づくことができます。  
+* ``sumDistinctIf(state == 'CA' && commission < 10000, sales)``  
+* ``sumDistinctIf(true, sales)``  
+___
+### <code>sumIf</code>
+<code><b>sumIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/>
+条件に基づいて、数値列の集計を取得します。 条件は、任意の列に基づくことができます。  
+* ``sumIf(state == 'CA' && commission < 10000, sales)``  
+* ``sumIf(true, sales)``  
+___
+### <code>variance</code>
+<code><b>variance(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
+列の分散を取得します。  
+* ``variance(sales)``  
+___
+### <code>varianceIf</code>
+<code><b>varianceIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
+条件に基づいて、列の分散を取得します。  
+* ``varianceIf(region == 'West', sales)``  
+___
+### <code>variancePopulation</code>
+<code><b>variancePopulation(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
+列の母分散を取得します。  
+* ``variancePopulation(sales)``  
+___
+### <code>variancePopulationIf</code>
+<code><b>variancePopulationIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
+条件に基づいて、列の母分散を取得します。  
+* ``variancePopulationIf(region == 'West', sales)``  
+___
+### <code>varianceSample</code>
+<code><b>varianceSample(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
+列の不偏分散を取得します。  
+* ``varianceSample(sales)``  
+___
+### <code>varianceSampleIf</code>
+<code><b>varianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
+条件に基づいて、列の不偏分散を取得します。  
+* ``varianceSampleIf(region == 'West', sales)``  
+
+## <a name="array-functions"></a>配列関数
+配列関数は、配列であるデータ構造体に対して変換を実行します。 これらには、配列の要素とインデックスをアドレス指定するための特殊なキーワードが含まれます。
+
+* ```#acc``` は、配列を縮小するときに 1 つの出力に含める値を表します。
+* ```#index``` は、配列のインデックス番号 ```#index2, #index3 ...``` と共に、現在の配列のインデックスを表します。
+* ```#item``` は、配列内の現在の要素の値を表します。
+
+### <code>array</code>
+<code><b>array([<i>&lt;value1&gt;</i> : any], ...) => array</b></code><br/><br/>
+項目の配列を作成します。 すべての項目は同じ型になっている必要があります。 項目が指定されていない場合、既定値は空の文字列配列です。 [] 作成演算子と同じです。  
+* ``array('Seattle', 'Washington')``
+* ``['Seattle', 'Washington']``
+* ``['Seattle', 'Washington'][1]``
+* ``'Washington'``
+___
 ### <code>filter</code>
 <code><b>filter(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => array</b></code><br/><br/>
 指定された述語を満たさない要素を配列から除外します。 filter は、述語関数の 1 つの要素への参照を #item として予期します。  
@@ -290,183 +1041,6 @@ ___
       )
     ``  
 ___
-### <code>floor</code>
-<code><b>floor(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/> 特定の数値以下の最大の整数を返します。than the number.  
-* ``floor(-0.1) -> -1``  
-___
-### <code>fromBase64</code>
-<code><b>fromBase64(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/> 指定された文字列を base64 でエンコードします。tring in base64.  
-* ``fromBase64('Z3VuY2h1cw==') -> 'gunchus'``  
-___
-### <code>fromUTC</code>
-<code><b>fromUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/> UTC からタイムスタンプに変換します。 必要に応じて、タイムゾーンを "GMT"、"PST"、"UTC"、"America/Cayman" の形式で渡すことができます。 既定値は現在のタイムゾーンです。使用可能な形式については、Java の 'SimpleDateFormat' クラスを参照してください。ne. Refer Java's `Si https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``fromUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
-* ``fromUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
-___
-### <code>greater</code>
-<code><b>greater(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/> 比較超過演算子。 > 演算子と同じです。e as > operator.  
-* ``greater(12, 24) -> false``  
-* ``('dumbo' > 'dum') -> true``  
-* ``(toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS') > toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> true``  
-___
-### <code>greaterOrEqual</code>
-<code><b>greaterOrEqual(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/> 比較 (以上) 演算子。 >= 演算子と同じです。as >= operator.  
-* ``greaterOrEqual(12, 12) -> true``  
-* ``('dumbo' >= 'dum') -> true``  
-___
-### <code>greatest</code>
-<code><b>greatest(<i>&lt;value1&gt;</i> : any, ...) => any</b></code><br/><br/> null 値をスキップした入力値のリストの中の最大値を返します。 すべての入力が null の場合は null を返します。inputs are null.  
-* ``greatest(10, 30, 15, 20) -> 30``  
-* ``greatest(10, toInteger(null), 20) -> 20``  
-* ``greatest(toDate('2010-12-12'), toDate('2011-12-12'), toDate('2000-12-12')) -> toDate('2011-12-12')``  
-* ``greatest(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS'), toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS')) -> toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS')``  
-___
-### <code>hasColumn</code>
-<code><b>hasColumn(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => boolean</b></code><br/><br/> ストリームでの名前で列の値をチェックします。 省略可能なストリーム名を 2 番目の引数として渡すことができます。 設計時にわかっている列名は、その名前だけで処理する必要があります。 計算入力はサポートされていませんが、パラメーター置換を使用することができます。r substitutions.  
-* ``hasColumn('parent')``  
-___
-### <code>hour</code>
-<code><b>hour(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/> タイムスタンプから時間の値を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカルのタイムゾーンが既定値として使用されます。使用可能な形式については、Java の 'SimpleDateFormat' クラスを参照してください。lt. Refer Java's `Si https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``hour(toTimestamp('2009-07-30 12:58:59')) -> 12``  
-* ``hour(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 12``  
-___
-### <code>hours</code>
-<code><b>hours(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/> ミリ秒単位での時間数の期間。number of hours.  
-* ``hours(2) -> 7200000L``  
-___
-### <code>iif</code>
-<code><b>iif(<i>&lt;condition&gt;</i> : boolean, <i>&lt;true_expression&gt;</i> : any, [<i>&lt;false_expression&gt;</i> : any]) => any</b></code><br/><br/> 条件に基づいて、2 つの値のいずれかを適用します。 その他が指定されていない場合は、NULL と見なされます。 両方の値は互換性がなければなりません (数値、文字列...)。ric, string...).  
-* ``iif(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``  
-* ``iif(10 > 30, 'dumbo', 'gumbo') -> 'gumbo'``  
-* ``iif(month(toDate('2018-12-01')) == 12, 345.12, 102.67) -> 345.12``  
-___
-### <code>iifNull</code>
-<code><b>iifNull(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : any], ...) => any</b></code><br/><br/> 最初のパラメーターが null かどうかを確認します。 null 以外の場合は、最初のパラメーターが返されます。 null の場合は、2 番目のパラメーターが返されます。 3 つのパラメーターが指定されている場合、動作は iif(isNull(value1), value2, value3) と同じであり、最初の値が null でない場合は 3 番目のパラメーターが返されます。lue is not null.  
-* ``iifNull(10, 20) -> 10``  
-* ``iifNull(null, 20, 40) -> 20``  
-* ``iifNull('azure', 'data', 'factory') -> 'factory'``  
-* ``iifNull(null, 'data', 'factory') -> 'data'``  
-___
-### <code>in</code>
-<code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></code><br/><br/> 項目が配列内にあるかどうかをチェックします。is in the array.  
-* ``in([10, 20, 30], 10) -> true``  
-* ``in(['good', 'kid'], 'bad') -> false``  
-___
-### <code>initCap</code>
-<code><b>initCap(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/> すべての単語の最初の文字を大文字に変換します。 単語は、空白文字で区切られているものとして識別されます。d by whitespace.  
-* ``initCap('cool iceCREAM') -> 'Cool Icecream'``  
-___
-### <code>instr</code>
-<code><b>instr(<i>&lt;string&gt;</i> : string, <i>&lt;substring to find&gt;</i> : string) => integer</b></code><br/><br/> 文字列内の部分文字列の位置 (1 を基準とする) を見つけます。 見つからない場合は 0 が返されます。ed if not found.  
-* ``instr('dumbo', 'mbo') -> 3``  
-* ``instr('microsoft', 'o') -> 5``  
-* ``instr('good', 'bad') -> 0``  
-___
-### <code>isDelete</code>
-<code><b>isDelete([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/> 行が削除用にマークされているかどうかをチェックします。 1 つ以上の入力ストリームを取る変換は、ストリームの (1 から始まる) インデックスを渡すことができます。 ストリーム インデックスは 1 または 2 のいずれかである必要があり、既定値は 1 です。ault value is 1.  
-* ``isDelete()``  
-* ``isDelete(1)``  
-___
-### <code>isError</code>
-<code><b>isError([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/> 行がエラーとしてマークされているかどうかをチェックします。 1 つ以上の入力ストリームを取る変換は、ストリームの (1 から始まる) インデックスを渡すことができます。 ストリーム インデックスは 1 または 2 のいずれかである必要があり、既定値は 1 です。ault value is 1.  
-* ``isError()``  
-* ``isError(1)``  
-___
-### <code>isIgnore</code>
-<code><b>isIgnore([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/> 行を無視するようにマークされているかどうかをチェックします。 1 つ以上の入力ストリームを取る変換は、ストリームの (1 から始まる) インデックスを渡すことができます。 ストリーム インデックスは 1 または 2 のいずれかである必要があり、既定値は 1 です。ault value is 1.  
-* ``isIgnore()``  
-* ``isIgnore(1)``  
-___
-### <code>isInsert</code>
-<code><b>isInsert([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/> 行が挿入用にマークされているかどうかをチェックします。 1 つ以上の入力ストリームを取る変換は、ストリームの (1 から始まる) インデックスを渡すことができます。 ストリーム インデックスは 1 または 2 のいずれかである必要があり、既定値は 1 です。ault value is 1.  
-* ``isInsert()``  
-* ``isInsert(1)``  
-___
-### <code>isMatch</code>
-<code><b>isMatch([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/> 行がルックアップで一致するかどうかをチェックします。 1 つ以上の入力ストリームを取る変換は、ストリームの (1 から始まる) インデックスを渡すことができます。 ストリーム インデックスは 1 または 2 のいずれかである必要があり、既定値は 1 です。ault value is 1.  
-* ``isMatch()``  
-* ``isMatch(1)``  
-___
-### <code>isNull</code>
-<code><b>isNull(<i>&lt;value1&gt;</i> : any) => boolean</b></code><br/><br/> 値が NULL かどうかをチェックします。e value is NULL.  
-* ``isNull(NULL()) -> true``  
-* ``isNull('') -> false``  
-___
-### <code>isUpdate</code>
-<code><b>isUpdate([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/> 行が更新用にマークされているかどうかをチェックします。 1 つ以上の入力ストリームを取る変換は、ストリームの (1 から始まる) インデックスを渡すことができます。 ストリーム インデックスは 1 または 2 のいずれかである必要があり、既定値は 1 です。ault value is 1.  
-* ``isUpdate()``  
-* ``isUpdate(1)``  
-___
-### <code>isUpsert</code>
-<code><b>isUpsert([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/> 行が挿入用にマークされているかどうかをチェックします。 1 つ以上の入力ストリームを取る変換は、ストリームの (1 から始まる) インデックスを渡すことができます。 ストリーム インデックスは 1 または 2 のいずれかである必要があり、既定値は 1 です。ault value is 1.  
-* ``isUpsert()``  
-* ``isUpsert(1)``  
-___
-### <code>lastDayOfMonth</code>
-<code><b>lastDayOfMonth(<i>&lt;value1&gt;</i> : datetime) => date</b></code><br/><br/> 指定した日付から、その月の最後の日を取得します。th given a date.  
-* ``lastDayOfMonth(toDate('2009-01-12')) -> toDate('2009-01-31')``  
-___
-### <code>least</code>
-<code><b>least(<i>&lt;value1&gt;</i> : any, ...) => any</b></code><br/><br/> 比較 (以下) 演算子。 <= 演算子と同じです。as <= operator.  
-* ``least(10, 30, 15, 20) -> 10``  
-* ``least(toDate('2010-12-12'), toDate('2011-12-12'), toDate('2000-12-12')) -> toDate('2000-12-12')``  
-___
-### <code>left</code>
-<code><b>left(<i>&lt;string to subset&gt;</i> : string, <i>&lt;number of characters&gt;</i> : integral) => string</b></code><br/><br/> インデックス 1 から開始して指定した文字数の部分文字列を抽出します。 SUBSTRING(str, 1, n) と同じです。RING(str, 1, n).  
-* ``left('bojjus', 2) -> 'bo'``  
-* ``left('bojjus', 20) -> 'bojjus'``  
-___
-### <code>length</code>
-<code><b>length(<i>&lt;value1&gt;</i> : string) => integer</b></code><br/><br/> 文字列の長さを返します。h of the string.  
-* ``length('dumbo') -> 5``  
-___
-### <code>lesser</code>
-<code><b>lesser(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/> 比較未満演算子。 < 演算子と同じです。e as < operator.  
-* ``lesser(12, 24) -> true``  
-* ``('abcd' < 'abc') -> false``  
-* ``(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS') < toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS')) -> true``  
-___
-### <code>lesserOrEqual</code>
-<code><b>lesserOrEqual(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/> 比較 (以下) 演算子。 <= 演算子と同じです。as <= operator.  
-* ``lesserOrEqual(12, 12) -> true``  
-* ``('dumbo' <= 'dum') -> false``  
-___
-### <code>levenshtein</code>
-<code><b>levenshtein(<i>&lt;from string&gt;</i> : string, <i>&lt;to string&gt;</i> : string) => integer</b></code><br/><br/> 2 つの文字列の間のレーベンシュタイン距離を取得します。een two strings.  
-* ``levenshtein('boys', 'girls') -> 4``  
-___
-### <code>like</code>
-<code><b>like(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></code><br/><br/> パターンは文字通り一致する文字列です。 例外として次の特殊記号があります。_ は、入力内の任意の 1 文字と一致します (posix 正規表現の . と同様)。 % は、入力内のゼロ以上の文字と一致します (posix 正規表現の .* と同様)。(similar to .larsimilar to .*ar
-エスケープ文字は '' です。 エスケープ文字の前に特殊記号または別のエスケープ文字がある場合、その次の文字が文字通り照合されます。 その他の文字をエスケープするのは無効です。other character.  
-* ``like('icecream', 'ice%') -> true``  
-___
-### <code>locate</code>
-<code><b>locate(<i>&lt;substring to find&gt;</i> : string, <i>&lt;string&gt;</i> : string, [<i>&lt;from index - 1-based&gt;</i> : integral]) => integer</b></code><br/><br/> 特定の位置から開始して、文字列内の部分文字列の位置 (1 を基準とする) を見つけます。 位置を省略すると、文字列の最初からとみなされます。 見つからない場合は 0 が返されます。ed if not found.  
-* ``locate('mbo', 'dumbo') -> 3``  
-* ``locate('o', 'microsoft', 6) -> 7``  
-* ``locate('bad', 'good') -> 0``  
-___
-### <code>log</code>
-<code><b>log(<i>&lt;value1&gt;</i> : number, [<i>&lt;value2&gt;</i> : number]) => double</b></code><br/><br/> 対数の値を計算します。 省略可能な底を指定できます。省略すると、オイラー数を返します (使用される場合)。number if used.  
-* ``log(100, 10) -> 2``  
-___
-### <code>log10</code>
-<code><b>log10(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/> 10 を底とする対数の値を計算します。ased on 10 base.  
-* ``log10(100) -> 2``  
-___
-### <code>lower</code>
-<code><b>lower(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/> 文字列を小文字にします。rcases a string.  
-* ``lower('GunChus') -> 'gunchus'``  
-___
-### <code>lpad</code>
-<code><b>lpad(<i>&lt;string to pad&gt;</i> : string, <i>&lt;final padded length&gt;</i> : integral, <i>&lt;padding&gt;</i> : string) => string</b></code><br/><br/> 特定の長さになるまで、指定した埋め込み文字で文字列の左側を埋め込みます。 文字列が指定された長さ以上の場合は、その長さまで削除されます。d to the length.  
-* ``lpad('dumbo', 10, '-') -> '-----dumbo'``  
-* ``lpad('dumbo', 4, '-') -> 'dumb'`` * ``lpad('dumbo', 8, '<>') -> '<><dumbo'``  ___
-### <code>ltrim</code>
-<code><b>ltrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/> 文字列の先頭文字を左から削除します。 2 番目のパラメーターを指定しない場合、空白文字を削除します。 それ以外の場合は、2 番目のパラメーターに指定した任意の文字を削除します。econd parameter.  
-* ``ltrim('  dumbo  ') -> 'dumbo  '``  
-* ``ltrim('!--!du!mbo!', '-!') -> 'du!mbo!'``  
-___
 ### <code>map</code>
 <code><b>map(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => any</b></code><br/><br/> 指定された式を使用して、配列の各要素を新しい要素にマップします。 map は、式関数の 1 つの要素への参照を #item として予期します。nction as #item.  
 * ``map([1, 2, 3, 4], #item + 2) -> [3, 4, 5, 6]``  
@@ -476,195 +1050,9 @@ ___
 <code><b>mapIndex(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => any</b></code><br/><br/> 指定された式を使用して、配列の各要素を新しい要素にマップします。 map は、式関数の 1 つの要素への参照を #item として予期し、要素インデックスへの参照を #index として予期します。index as #index.  
 * ``mapIndex([1, 2, 3, 4], #item + 2 + #index) -> [4, 6, 8, 10]``  
 ___
-### <code>md5</code>
-<code><b>md5(<i>&lt;value1&gt;</i> : any, ...) => string</b></code><br/><br/> さまざまなプリミティブ データ型の列セットの MD5 ハッシュを計算し、32 文字の16 進数の文字列を返します。 行のフィンガープリントを計算するために使用できます。print for a row.  
-* ``md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '4ce8a880bd621a1ffad0bca905e1bc5a'``  
-___
-### <code>millisecond</code>
-<code><b>millisecond(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/> 日付のミリ秒の値を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカルのタイムゾーンが既定値として使用されます。使用可能な形式については、Java の 'SimpleDateFormat' クラスを参照してください。lt. Refer Java's `Si https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``millisecond(toTimestamp('2009-07-30 12:58:59.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``  
-___
-### <code>milliseconds</code>
-<code><b>milliseconds(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/> ミリ秒単位でのミリ秒数の期間。of milliseconds.  
-* ``milliseconds(2) -> 2L``  
-___
-### <code>minus</code>
-<code><b>minus(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/> 数値を減算します。 日付から日数を減算します。 タイムスタンプから期間を減算します。 2 つのタイムスタンプを減算して、ミリ秒単位での差を取得します。 \- 演算子と同じです。the - operator.  
-* ``minus(20, 10) -> 10``  
-* ``20 - 10 -> 10``  
-* ``minus(toDate('2012-12-15'), 3) -> toDate('2012-12-12')``  
-* ``toDate('2012-12-15') - 3 -> toDate('2012-12-12')``  
-* ``toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS') + (days(1) + hours(2) - seconds(10)) -> toTimestamp('2019-02-04 07:19:18.871', 'yyyy-MM-dd HH:mm:ss.SSS')``  
-* ``toTimestamp('2019-02-03 05:21:34.851', 'yyyy-MM-dd HH:mm:ss.SSS') - toTimestamp('2019-02-03 05:21:36.923', 'yyyy-MM-dd HH:mm:ss.SSS') -> -2072``  
-___
-### <code>minute</code>
-<code><b>minute(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/> タイムスタンプから分の値を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカルのタイムゾーンが既定値として使用されます。使用可能な形式については、Java の 'SimpleDateFormat' クラスを参照してください。lt. Refer Java's `Si https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``minute(toTimestamp('2009-07-30 12:58:59')) -> 58``  
-* ``minute(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 58``  
-___
-### <code>minutes</code>
-<code><b>minutes(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/> ミリ秒単位での分数の期間。mber of minutes.  
-* ``minutes(2) -> 120000L``  
-___
-### <code>mod</code>
-<code><b>mod(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/> 数値のペアの剰余です。 % 演算子と同じです。the % operator.  
-* ``mod(20, 8) -> 4``  
-* ``20 % 8 -> 4``  
-___
-### <code>month</code>
-<code><b>month(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/> 日付またはタイムスタンプから月の値を取得します。te or timestamp.  
-* ``month(toDate('2012-8-8')) -> 8``  
-___
-### <code>monthsBetween</code>
-<code><b>monthsBetween(<i>&lt;from date/timestamp&gt;</i> : datetime, <i>&lt;to date/timestamp&gt;</i> : datetime, [<i>&lt;roundoff&gt;</i> : boolean], [<i>&lt;time zone&gt;</i> : string]) => double</b></code><br/><br/> 2 つの日付の間の月数を取得します。 計算を丸めることができいます。省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカルのタイムゾーンが既定値として使用されます。使用可能な形式については、Java の 'SimpleDateFormat' クラスを参照してください。lt. Refer Java's `Si https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``monthsBetween(toTimestamp('1997-02-28 10:30:00'), toDate('1996-10-30')) -> 3.94959677``  
-___
-### <code>multiply</code>
-<code><b>multiply(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/> 数値のペアを乗算します。 \* 演算子と同じです。the * operator.  
-* ``multiply(20, 10) -> 200``  
-* ``20 * 10 -> 200``  
-___
-### <code>negate</code>
-<code><b>negate(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/> 数値の符号を反転します。 正の数値を負の数値 (または、その逆) に変換します。and vice versa.  
-* ``negate(13) -> -13``  
-___
-### <code>nextSequence</code>
-<code><b>nextSequence() => long</b></code><br/><br/> 次の固有なシーケンスを返します。 数値は、パーティション内でのみ連続し、プレフィックスとして partitionId が付加されます。the partitionId.  
-* ``nextSequence() == 12313112 -> false``  
-___
-### <code>normalize</code>
-<code><b>normalize(<i>&lt;String to normalize&gt;</i> : string) => string</b></code><br/><br/> 文字列値を個別にアクセント記号が付いた Unicode 文字に正規化します。code characters.  
-* ``regexReplace(normalize('bo²s'), `\p{M}`, '') -> 'boys'``  
-___
-### <code>not</code>
-<code><b>not(<i>&lt;value1&gt;</i> : boolean) => boolean</b></code><br/><br/> 論理否定演算子。gation operator.  
-* ``not(true) -> false``  
-* ``not(10 == 20) -> true``  
-___
-### <code>notEquals</code>
-<code><b>notEquals(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/> 比較不等価演算子。 != 演算子と同じです。as != operator.  
-* ``12 != 24 -> true``  
-* ``'bojjus' != 'bo' + 'jjus' -> false``  
-___
-### <code>notNull</code>
-<code><b>notNull(<i>&lt;value1&gt;</i> : any) => boolean</b></code><br/><br/> 値が NULL 以外であるかどうかをチェックします。lue is not NULL.  
-* ``notNull(NULL()) -> false``  
-* ``notNull('') -> true``  
-___
-### <code>null</code>
-<code><b>null() => null</b></code><br/><br/> NULL 値を返します。 'null' という名前の列がある場合は関数 'syntax(null())' を使用してください。Use the function ` これを使用する操作はすべて NULL になります。esult in a NULL.  
-* ``isNull('dumbo' + null) -> true``  
-* ``isNull(10 * null) -> true``  
-* ``isNull('') -> false``  
-* ``isNull(10 + 20) -> false``  
-* ``isNull(10/0) -> true``  
-___
-### <code>or</code>
-<code><b>or(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/> 論理 OR 演算子です。tor. Same as ||.  
-* ``or(true, false) -> true``  
-* ``true || false -> true``  
-___
-### <code>pMod</code>
-<code><b>pMod(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/> 数値のペアの正の剰余です。pair of numbers.  
-* ``pmod(-20, 8) -> 4``  
-___
-### <code>partitionId</code>
-<code><b>partitionId() => integer</b></code><br/><br/> 入力行が含まれている現在のパーティション ID を返します。input row is in.  
-* ``partitionId()``  
-___
-### <code>power</code>
-<code><b>power(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/> 数値を別の数値でべき乗します。ower of another.  
-* ``power(10, 2) -> 100``  
-___
-### <code>random</code>
-<code><b>random(<i>&lt;value1&gt;</i> : integral) => long</b></code><br/><br/> パーティション内に省略可能なシード値を指定すると、乱数を返します。 シード値は固定値である必要があり、乱数を生成するために partitionId と組み合わせて使用されます。ce random values  
-* ``random(1) == 1 -> false``
-___
 ### <code>reduce</code>
 <code><b>reduce(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : any, <i>&lt;value3&gt;</i> : binaryfunction, <i>&lt;value4&gt;</i> : unaryfunction) => any</b></code><br/><br/> 配列内の要素を累積します。 reduce は、最初の式関数内のアキュムレータと 1 つの要素への参照を #acc および #item として予期し、結果の値を 2 番目の式関数に使用される #result として予期します。ession function.  
 * ``toString(reduce(['1', '2', '3', '4'], '0', #acc + #item, #result)) -> '01234'``  
-___
-### <code>regexExtract</code>
-<code><b>regexExtract(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, [<i>&lt;match group 1-based index&gt;</i> : integral]) => string</b></code><br/><br/> 指定された正規表現パターンに一致する部分文字列を抽出します。 最後のパラメーターは、一致グループを識別し、省略すると既定値として 1 がf omitt使用されます。 エスケープせずに文字列を照合するには、`<regex>` (バック クォート) を使用します。ithout escaping.  
-* ``regexExtract('Cost is between 600 and 800 dollars', '(\\d+) and (\\d+)', 2) -> '800'``  
-* ``regexExtract('Cost is between 600 and 800 dollars', `(\d+) and (\d+)`, 2) -> '800'``  
-___
-### <code>regexMatch</code>
-<code><b>regexMatch(<i>&lt;string&gt;</i> : string, <i>&lt;regex to match&gt;</i> : string) => boolean</b></code><br/><br/> 指定された正規表現パターンに文字列が一致するかどうかをチェックx patteします。 エスケープせずに文字列を照合するには、`<regex>` (バック クォート) を使用します。ithout escaping.  
-* ``regexMatch('200.50', '(\\d+).(\\d+)') -> true``  
-* ``regexMatch('200.50', `(\d+).(\d+)`) -> true``  
-___
-### <code>regexReplace</code>
-<code><b>regexReplace(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, <i>&lt;substring to replace&gt;</i> : string) => string</b></code><br/><br/> 指定の文字列内の正規表現パターンのすべての出現を別の部分文字列に置換します。ven strエスケープせずに文字列を照合するには、`<regex>` (バック クォート) を使用します。ithout escaping.  
-* ``regexReplace('100 and 200', '(\\d+)', 'bojjus') -> 'bojjus and bojjus'``  
-* ``regexReplace('100 and 200', `(\d+)`, 'gunchus') -> 'gunchus and gunchus'``  
-___
-### <code>regexSplit</code>
-<code><b>regexSplit(<i>&lt;string to split&gt;</i> : string, <i>&lt;regex expression&gt;</i> : string) => array</b></code><br/><br/> 文字列を正規表現に基づく区切り文字に基づいて分割し、文字列の配列を返します。rray of strings.  
-* ``regexSplit('bojjusAgunchusBdumbo', `[CAB]`) -> ['bojjus', 'gunchus', 'dumbo']``  
-* ``regexSplit('bojjusAgunchusBdumboC', `[CAB]`) -> ['bojjus', 'gunchus', 'dumbo', '']``  
-* ``(regexSplit('bojjusAgunchusBdumboC', `[CAB]`)[1]) -> 'bojjus'``  
-* ``isNull(regexSplit('bojjusAgunchusBdumboC', `[CAB]`)[20]) -> true``  
-___
-### <code>replace</code>
-<code><b>replace(<i>&lt;string&gt;</i> : string, <i>&lt;substring to find&gt;</i> : string, [<i>&lt;substring to replace&gt;</i> : string]) => string</b></code><br/><br/> 指定された文字列内の部分文字列のすべての出現を別の部分文字列に置換します。 最後のパラメーターを省略すると、既定値は空の文字列になります。to empty string.  
-* ``replace('doggie dog', 'dog', 'cat') -> 'catgie cat'``  
-* ``replace('doggie dog', 'dog', '') -> 'gie '``  
-* ``replace('doggie dog', 'dog') -> 'gie '``  
-___
-### <code>reverse</code>
-<code><b>reverse(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/> 文字列を反転します。verses a string.  
-* ``reverse('gunchus') -> 'suhcnug'``  
-___
-### <code>right</code>
-<code><b>right(<i>&lt;string to subset&gt;</i> : string, <i>&lt;number of characters&gt;</i> : integral) => string</b></code><br/><br/> 指定した文字数の部分文字列を右から抽出します。 SUBSTRING(str, LENGTH(str) - n, n) と同じです。TH(str) - n, n).  
-* ``right('bojjus', 2) -> 'us'``  
-* ``right('bojjus', 20) -> 'bojjus'``  
-___
-### <code>rlike</code>
-<code><b>rlike(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></code><br/><br/> 指定された正規表現パターンに文字列が一致するかどうかをチェックします。n regex pattern.  
-* ``rlike('200.50', `(\d+).(\d+)`) -> true``  
-* ``rlike('bogus', `M[0-9]+.*`) -> false``  
-___
-### <code>round</code>
-<code><b>round(<i>&lt;number&gt;</i> : number, [<i>&lt;scale to round&gt;</i> : number], [<i>&lt;rounding option&gt;</i> : integral]) => double</b></code><br/><br/> 省略可能な桁数と省略可能な丸めモードで数値を丸めます。 桁数を省略すると、既定値の 0 が使用されます。 モードを省略すると、既定値は ROUND_HALF_UP(5) になります。 丸めの値には、1 - ROUND_UP、2 - ROUND_DOWN、3 - ROUND_CEILING、4 - ROUND_FLOOR、5 - ROUND_HALF_UP、6 - ROUND_HALF_DOWN、7 - ROUND_HALF_EVEN、8 - ROUND_UNNECESSARY があります。ruPUND_UNNECESSARY.  
-* ``round(100.123) -> 100.0``  
-* ``round(2.5, 0) -> 3.0``  
-* ``round(5.3999999999999995, 2, 7) -> 5.40``  
-___
-### <code>rpad</code>
-<code><b>rpad(<i>&lt;string to pad&gt;</i> : string, <i>&lt;final padded length&gt;</i> : integral, <i>&lt;padding&gt;</i> : string) => string</b></code><br/><br/> 特定の長さになるまで、指定した埋め込み文字で文字列の右側を埋め込みます。 文字列が指定された長さ以上の場合は、その長さまで削除されます。d to the length.  
-* ``rpad('dumbo', 10, '-') -> 'dumbo-----'``  
-* ``rpad('dumbo', 4, '-') -> 'dumb'``  
-* ``rpad('dumbo', 8, '<>') -> 'dumbo<><'``  ___
-### <code>rtrim</code>
-<code><b>rtrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/> 文字列の末尾文字を右から削除します。 2 番目のパラメーターを指定しない場合、空白文字を削除します。 それ以外の場合は、2 番目のパラメーターに指定した任意の文字を削除します。econd parameter.  
-* ``rtrim('  dumbo  ') -> '  dumbo'``  
-* ``rtrim('!--!du!mbo!', '-!') -> '!--!du!mbo'``  
-___
-### <code>second</code>
-<code><b>second(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/> 日付の秒の値を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカルのタイムゾーンが既定値として使用されます。使用可能な形式については、Java の 'SimpleDateFormat' クラスを参照してください。lt. Refer Java's `Si https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``second(toTimestamp('2009-07-30 12:58:59')) -> 59``  
-___
-### <code>seconds</code>
-<code><b>seconds(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/> ミリ秒単位での秒数の期間。mber of seconds.  
-* ``seconds(2) -> 2000L``  
-___
-### <code>sha1</code>
-<code><b>sha1(<i>&lt;value1&gt;</i> : any, ...) => string</b></code><br/><br/> さまざまなプリミティブ データ型の列セットの SHA-1 ハッシュを計算し、40 文字の16 進数の文字列を返します。 行のフィンガープリントを計算するために使用できます。print for a row.  
-* ``sha1(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '46d3b478e8ec4e1f3b453ac3d8e59d5854e282bb'``  
-___
-### <code>sha2</code>
-<code><b>sha2(<i>&lt;value1&gt;</i> : integer, <i>&lt;value2&gt;</i> : any, ...) => string</b></code><br/><br/> さまざまなプリミティブ データ型の列セットの SHA-2 ハッシュを指定のビット長で計算します。ビット長として指定できるのは、0 (256)、224、256、384、512 の値のみです。 行のフィンガープリントを計算するために使用できます。print for a row.  
-* ``sha2(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> 'afe8a553b1761c67d76f8c31ceef7f71b66a1ee6f4e6d3b5478bf68b47d06bd3'``  
-___
-### <code>sin</code>
-<code><b>sin(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/> サイン値を計算します。es a sine value.  
-* ``sin(2) -> 0.9092974268256817``  
-___
-### <code>sinh</code>
-<code><b>sinh(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/> 双曲線サイン値を計算します。olic sine value.  
-* ``sinh(0) -> 0.0``  
 ___
 ### <code>size</code>
 <code><b>size(<i>&lt;value1&gt;</i> : any) => integer</b></code><br/><br/> 配列型またはマップ型のサイズを検索します。rray or map type  
@@ -683,253 +1071,7 @@ ___
 ### <code>sort</code>
 <code><b>sort(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => array</b></code><br/><br/> 指定された述語関数を使用して配列を並べ替えます。 sort は、式関数の 2 つの連続する要素への参照を #item1 および #item2 として予期します。tem1 and #item2.  
 * ``sort([4, 8, 2, 3], compare(#item1, #item2)) -> [2, 3, 4, 8]``  
-* ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a3']``  
-___
-### <code>soundex</code>
-<code><b>soundex(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-Gets the ```soundex``` code for the string.  
-* ``soundex('genius') -> 'G5ストリングの soundex コードを取得します。20'``  
-___
-### <code>split</code>
-<code><b>split(<i>&lt;string to split&gt;</i> : string, <i>&lt;split characters&gt;</i> : string) => array</b></code><br/><br/> 文字列を区切り文字に基づいて分割し、文字列の配列を返します。rray of strings.  
-* ``split('bojjus,guchus,dumbo', ',') -> ['bojjus', 'guchus', 'dumbo']``  
-* ``split('bojjus,guchus,dumbo', '|') -> ['bojjus,guchus,dumbo']``  
-* ``split('bojjus, guchus, dumbo', ', ') -> ['bojjus', 'guchus', 'dumbo']``  
-* ``split('bojjus, guchus, dumbo', ', ')[1] -> 'bojjus'``  
-* ``isNull(split('bojjus, guchus, dumbo', ', ')[0]) -> true``  
-* ``isNull(split('bojjus, guchus, dumbo', ', ')[20]) -> true``  
-* ``split('bojjusguchusdumbo', ',') -> ['bojjusguchusdumbo']``  
-___
-### <code>sqrt</code>
-<code><b>sqrt(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/> 数値の平方根を計算します。oot of a number.  
-* ``sqrt(9) -> 3``  
-___
-### <code>startsWith</code>
-<code><b>startsWith(<i>&lt;string&gt;</i> : string, <i>&lt;substring to check&gt;</i> : string) => boolean</b></code><br/><br/> 文字列が指定した文字列で開始しているかどうかをチェックします。supplied string.  
-* ``startsWith('dumbo', 'du') -> true``  
-___
-### <code>subDays</code>
-<code><b>subDays(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;days to subtract&gt;</i> : integral) => datetime</b></code><br/><br/> 日付またはタイムスタンプから日数を減算します。 日付に対する - 演算子と同じです。erator for date.  
-* ``subDays(toDate('2016-08-08'), 1) -> toDate('2016-08-07')``  
-___
-### <code>subMonths</code>
-<code><b>subMonths(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;months to subtract&gt;</i> : integral) => datetime</b></code><br/><br/> 日付またはタイムスタンプから月数を減算します。te or timestamp.  
-* ``subMonths(toDate('2016-09-30'), 1) -> toDate('2016-08-31')``  
-___
-### <code>substring</code>
-<code><b>substring(<i>&lt;string to subset&gt;</i> : string, <i>&lt;from 1-based index&gt;</i> : integral, [<i>&lt;number of characters&gt;</i> : integral]) => string</b></code><br/><br/> ある位置から特定の長さの部分文字列を抽出します。 位置は 1 から始まります。 長さを省略すると、既定値は文字列の最後になります。d of the string.  
-* ``substring('Cat in the hat', 5, 2) -> 'in'``  
-* ``substring('Cat in the hat', 5, 100) -> 'in the hat'``  
-* ``substring('Cat in the hat', 5) -> 'in the hat'``  
-* ``substring('Cat in the hat', 100, 100) -> ''``  
-___
-### <code>tan</code>
-<code><b>tan(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/> タンジェント値を計算します。a tangent value.  
-* ``tan(0) -> 0.0``  
-___
-### <code>tanh</code>
-<code><b>tanh(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/> 双曲線タンジェント値を計算します。c tangent value.  
-* ``tanh(0) -> 0.0``  
-___
-### <code>translate</code>
-<code><b>translate(<i>&lt;string to translate&gt;</i> : string, <i>&lt;lookup characters&gt;</i> : string, <i>&lt;replace characters&gt;</i> : string) => string</b></code><br/><br/> 文字列内のある文字セットを別の文字セットで置換します。 文字の置換は 1 対 1 で行われます。o 1 replacement.  
-* ``translate('(bojjus)', '()', '[]')-> '[bojjus]'``  
-* ``translate('(gunchus)', '()', '[') -> '[gunchus'``  
-___
-### <code>trim</code>
-<code><b>trim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/> 文字列の先頭文字と末尾文字を削除します。 2 番目のパラメーターを指定しない場合、空白文字を削除します。 それ以外の場合は、2 番目のパラメーターに指定した任意の文字を削除します。econd parameter.  
-* ``trim('  dumbo  ') -> 'dumbo'``  
-* ``trim('!--!du!mbo!', '-!') -> 'du!mbo'``  
-___
-### <code>true</code>
-<code><b>true() => boolean</b></code><br/><br/> 常に true 値を返します。 'true' という名前の列がある場合は、関数 'syntax(true())' を使用します。Use the function `mn named 'true'.  
-* ``(10 + 20 == 30) -> true``  
-* ``(10 + 20 == 30) -> true()``  
-___
-### <code>typeMatch</code>
-<code><b>typeMatch(<i>&lt;type&gt;</i> : string, <i>&lt;base type&gt;</i> : string) => boolean</b></code><br/><br/> 列の型を照合します。 パターン式でのみ使用できます。数値は short、integer、long、double、float、または decimal 型に一致し、整数は short、integer、long 型に一致し、小数は double、float、decimal 型に一致し、日時は date または timestamp 型に一致します。timestamp type.  
-* ``typeMatch(type, 'number')``  
-* ``typeMatch('date', 'datetime')``  
-___
-### <code>upper</code>
-<code><b>upper(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/> 文字列を大文字にします。rcases a string.  
-* ``upper('bojjus') -> 'BOJJUS'``  
-___
-### <code>uuid</code>
-<code><b>uuid() => string</b></code><br/><br/> 生成された UUID を返します。generated UUID.  
-* ``uuid()``  
-___
-### <code>weekOfYear</code>
-<code><b>weekOfYear(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/> 指定した日付から、その年の何週目かを取得します。ar given a date.  
-* ``weekOfYear(toDate('2008-02-20')) -> 8``  
-___
-### <code>weeks</code>
-<code><b>weeks(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/> ミリ秒単位での週数の期間。number of weeks.  
-* ``weeks(2) -> 1209600000L``  
-___
-### <code>xor</code>
-<code><b>xor(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/> XOR 論理演算子。 ^ 演算子と同じです。e as ^ operator.  
-* ``xor(true, false) -> true``  
-* ``xor(true, true) -> false``  
-* ``true ^ false -> true``  
-___
-### <code>year</code>
-<code><b>year(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/> 日付の年の値を取得します。value of a date.  
-* ``year(toDate('2012-8-8')) -> 2012`` ## 集計関数 次の関数は、集計、ピボット、ピボット解除、およびウィンドウ変換でのみ使用できます。rtransformations.
-___
-### <code>avg</code>
-<code><b>avg(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/> 列の値の平均を取得します。ues of a column.  
-* ``avg(sales)``  
-___
-### <code>avgIf</code>
-<code><b>avgIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/> 条件に基づいて、列の値の平均を取得します。ues of a column.  
-* ``avgIf(region == 'West', sales)``  
-___
-### <code>count</code>
-<code><b>count([<i>&lt;value1&gt;</i> : any]) => long</b></code><br/><br/> 値の集計カウントを取得します。 省略可能な列を指定すると、カウントの NULL 値が無視されます。es in the count.  
-* ``count(custId)``  
-* ``count(custId, custName)`` * ``count()``  
-* ``count(iif(isNull(custId), 1, NULL))``  
-___
-### <code>countDistinct</code>
-<code><b>countDistinct(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : any], ...) => long</b></code><br/><br/> 列セットの個別値の集計カウントを取得します。set of columns.  
-* ``countDistinct(custId, custName)``  
-___
-### <code>countIf</code>
-<code><b>countIf(<i>&lt;value1&gt;</i> : boolean, [<i>&lt;value2&gt;</i> : any]) => long</b></code><br/><br/> 条件に基づいて、値の集計カウントを取得します。 省略可能な列を指定すると、カウントの NULL 値が無視されます。es in the count.  
-* ``countIf(state == 'CA' && commission < 10000, name)``  
-___
-### <code>covariancePopulation</code>
-<code><b>covariancePopulation(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/> 2 つの列の間の母共分散を取得します。een two columns.  
-* ``covariancePopulation(sales, profit)``  
-___
-### <code>covariancePopulationIf</code>
-<code><b>covariancePopulationIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number, <i>&lt;value3&gt;</i> : number) => double</b></code><br/><br/> 条件に基づいて、2 つの列の間の母共分散を取得します。of two columns.  
-* ``covariancePopulationIf(region == 'West', sales)``  
-___
-### <code>covarianceSample</code>
-<code><b>covarianceSample(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/> 2 つの列の標本共分散を取得します。of two columns.  
-* ``covarianceSample(sales, profit)``  
-___
-### <code>covarianceSampleIf</code>
-<code><b>covarianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number, <i>&lt;value3&gt;</i> : number) => double</b></code><br/><br/> 条件に基づいて、2 つの列の標本共分散を取得します。of two columns.  
-* ``covarianceSampleIf(region == 'West', sales, profit)``  
-___
-### <code>first</code>
-<code><b>first(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : boolean]) => any</b></code><br/><br/> 列グループの最初の値を取得します。 2 番目のパラメーター ignoreNulls を省略すると、false であると見なされます。s assumed false.  
-* ``first(sales)``  
-* ``first(sales, false)``  
-___
-### <code>kurtosis</code>
-<code><b>kurtosis(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/> 列の尖度を取得します。sis of a column.  
-* ``kurtosis(sales)``  
-___
-### <code>kurtosisIf</code>
-<code><b>kurtosisIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/> 条件に基づいて、列の尖度を取得します。sis of a column.  
-* ``kurtosisIf(region == 'West', sales)``  
-___
-### <code>last</code>
-<code><b>last(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : boolean]) => any</b></code><br/><br/> 列グループの最後の値を取得します。 2 番目のパラメーター ignoreNulls を省略すると、false であると見なされます。s assumed false.  
-* ``last(sales)``  
-* ``last(sales, false)``  
-___
-### <code>max</code>
-<code><b>max(<i>&lt;value1&gt;</i> : any) => any</b></code><br/><br/> 列の最大値を取得します。lue of a column.  
-* ``max(sales)``  
-___
-### <code>maxIf</code>
-<code><b>maxIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/> 条件に基づいて、列の値の最大値を取得します。lue of a column.  
-* ``maxIf(region == 'West', sales)``  
-___
-### <code>mean</code>
-<code><b>mean(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/> 列の値の平均を取得します。mn. Same as AVG.  
-* ``mean(sales)``  
-___
-### <code>meanIf</code>
-<code><b>meanIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/> 条件に基づいて、列の値の平均を取得します。avgIf と同じです。. Same as avgIf.  
-* ``meanIf(region == 'West', sales)``  
-___
-### <code>min</code>
-<code><b>min(<i>&lt;value1&gt;</i> : any) => any</b></code><br/><br/> 列の最小値を取得します。lue of a column.  
-* ``min(sales)``  
-___
-### <code>minIf</code>
-<code><b>minIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/> 条件に基づいて、列の値の最小値を取得します。lue of a column.  
-* ``minIf(region == 'West', sales)``  
-___
-### <code>skewness</code>
-<code><b>skewness(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/> 列の歪度を取得します。ess of a column.  
-* ``skewness(sales)``  
-___
-### <code>skewnessIf</code>
-<code><b>skewnessIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/> 条件に基づいて、列の歪度を取得します。ess of a column.  
-* ``skewnessIf(region == 'West', sales)``  
-___
-### <code>stddev</code>
-<code><b>stddev(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/> 列の標準偏差を取得します。ion of a column.  
-* ``stdDev(sales)``  
-___
-### <code>stddevIf</code>
-<code><b>stddevIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/> 条件に基づいて、列の標準偏差を取得します。ion of a column.  
-* ``stddevIf(region == 'West', sales)``  
-___
-### <code>stddevPopulation</code>
-<code><b>stddevPopulation(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/> 列の母標準偏差を取得します。ion of a column.  
-* ``stddevPopulation(sales)``  
-___
-### <code>stddevPopulationIf</code>
-<code><b>stddevPopulationIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/> 条件に基づいて、列の母標準偏差を取得します。ion of a column.  
-* ``stddevPopulationIf(region == 'West', sales)``  
-___
-### <code>stddevSample</code>
-<code><b>stddevSample(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/> 列の標本標準偏差を取得します。ion of a column.  
-* ``stddevSample(sales)``  
-___
-### <code>stddevSampleIf</code>
-<code><b>stddevSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/> 条件に基づいて、列の標本標準偏差を取得します。ion of a column.  
-* ``stddevSampleIf(region == 'West', sales)``  
-___
-### <code>sum</code>
-<code><b>sum(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/> 数値列の集計を取得します。numeric column.  
-* ``sum(col)``  
-___
-### <code>sumDistinct</code>
-<code><b>sumDistinct(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/> 数値列の個別値の集計を取得します。numeric column.  
-* ``sumDistinct(col)``  
-___
-### <code>sumDistinctIf</code>
-<code><b>sumDistinctIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/> 条件に基づいて、数値列の集計を取得します。 条件は、任意の列に基づくことができます。d on any column.  
-* ``sumDistinctIf(state == 'CA' && commission < 10000, sales)``  
-* ``sumDistinctIf(true, sales)``  
-___
-### <code>sumIf</code>
-<code><b>sumIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/> 条件に基づいて、数値列の集計を取得します。 条件は、任意の列に基づくことができます。d on any column.  
-* ``sumIf(state == 'CA' && commission < 10000, sales)``  
-* ``sumIf(true, sales)``  
-___
-### <code>variance</code>
-<code><b>variance(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/> 列の分散を取得します。nce of a column.  
-* ``variance(sales)``  
-___
-### <code>varianceIf</code>
-<code><b>varianceIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/> 条件に基づいて、列の分散を取得します。nce of a column.  
-* ``varianceIf(region == 'West', sales)``  
-___
-### <code>variancePopulation</code>
-<code><b>variancePopulation(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/> 列の母分散を取得します。nce of a column.  
-* ``variancePopulation(sales)``  
-___
-### <code>variancePopulationIf</code>
-<code><b>variancePopulationIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/> 条件に基づいて、列の母分散を取得します。nce of a column.  
-* ``variancePopulationIf(region == 'West', sales)``  
-___
-### <code>varianceSample</code>
-<code><b>varianceSample(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/> 列の不偏分散を取得します。nce of a column.  
-* ``varianceSample(sales)``  
-___
-### <code>varianceSampleIf</code>
-<code><b>varianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/> Based on a criteria, gets the unbiased variance of a column.  
-* ``varianceSampleIf(region == 'West', sales)``* ``
+* ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a3']``* ``
  @(
        name = 'Mark',
        types = [
@@ -938,222 +1080,6 @@ ___
                ]
   )
 ``  
-___
-### <code>floor</code>
-<code><b>floor(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-Returns the largest integer not greater than the number.  
-* ``floor(-0.1) -> -1``  
-___
-### <code>fromBase64</code>
-<code><b>fromBase64(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-Encodes the given string in base64.  
-* ``fromBase64('Z3VuY2h1cw==') -> 'gunchus'``  
-___
-### <code>fromUTC</code>
-<code><b>fromUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Converts to the timestamp from UTC. You can optionally pass the timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. It is defaulted to the current timezone. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``fromUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
-* ``fromUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
-___
-### <code>greater</code>
-<code><b>greater(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
-Comparison greater operator. Same as > operator.  
-* ``greater(12, 24) -> false``  
-* ``('dumbo' > 'dum') -> true``  
-* ``(toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS') > toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> true``  
-___
-### <code>greaterOrEqual</code>
-<code><b>greaterOrEqual(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
-Comparison greater than or equal operator. Same as >= operator.  
-* ``greaterOrEqual(12, 12) -> true``  
-* ``('dumbo' >= 'dum') -> true``  
-___
-### <code>greatest</code>
-<code><b>greatest(<i>&lt;value1&gt;</i> : any, ...) => any</b></code><br/><br/>
-Returns the greatest value among the list of values as input skipping null values. Returns null if all inputs are null.  
-* ``greatest(10, 30, 15, 20) -> 30``  
-* ``greatest(10, toInteger(null), 20) -> 20``  
-* ``greatest(toDate('2010-12-12'), toDate('2011-12-12'), toDate('2000-12-12')) -> toDate('2011-12-12')``  
-* ``greatest(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS'), toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS')) -> toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS')``  
-___
-### <code>hasColumn</code>
-<code><b>hasColumn(<i>&lt;column name&gt;</i> : string, [<i>&lt;stream name&gt;</i> : string]) => boolean</b></code><br/><br/>
-Checks for a column value by name in the stream. You can pass a optional stream name as the second argument. Column names known at design time should be addressed just by their name. Computed inputs are not supported but you can use parameter substitutions.  
-* ``hasColumn('parent')``  
-___
-### <code>hour</code>
-<code><b>hour(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-Gets the hour value of a timestamp. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. The local timezone is used as the default. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``hour(toTimestamp('2009-07-30 12:58:59')) -> 12``  
-* ``hour(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 12``  
-___
-### <code>hours</code>
-<code><b>hours(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
-Duration in milliseconds for number of hours.  
-* ``hours(2) -> 7200000L``  
-___
-### <code>iif</code>
-<code><b>iif(<i>&lt;condition&gt;</i> : boolean, <i>&lt;true_expression&gt;</i> : any, [<i>&lt;false_expression&gt;</i> : any]) => any</b></code><br/><br/>
-Based on a condition applies one value or the other. If other is unspecified it is considered NULL. Both the values must be compatible(numeric, string...).  
-* ``iif(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``  
-* ``iif(10 > 30, 'dumbo', 'gumbo') -> 'gumbo'``  
-* ``iif(month(toDate('2018-12-01')) == 12, 345.12, 102.67) -> 345.12``  
-___
-### <code>iifNull</code>
-<code><b>iifNull(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : any], ...) => any</b></code><br/><br/>
-Checks if the first parameter is null. If not null, the first parameter is returned. If null, the second parameter is returned. If three parameters are specified, the behavior is the same as iif(isNull(value1), value2, value3) and the third parameter is returned if the first value is not null.  
-* ``iifNull(10, 20) -> 10``  
-* ``iifNull(null, 20, 40) -> 20``  
-* ``iifNull('azure', 'data', 'factory') -> 'factory'``  
-* ``iifNull(null, 'data', 'factory') -> 'data'``  
-___
-### <code>in</code>
-<code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></code><br/><br/>
-Checks if an item is in the array.  
-* ``in([10, 20, 30], 10) -> true``  
-* ``in(['good', 'kid'], 'bad') -> false``  
-___
-### <code>initCap</code>
-<code><b>initCap(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-Converts the first letter of every word to uppercase. Words are identified as separated by whitespace.  
-* ``initCap('cool iceCREAM') -> 'Cool Icecream'``  
-___
-### <code>instr</code>
-<code><b>instr(<i>&lt;string&gt;</i> : string, <i>&lt;substring to find&gt;</i> : string) => integer</b></code><br/><br/>
-Finds the position(1 based) of the substring within a string. 0 is returned if not found.  
-* ``instr('dumbo', 'mbo') -> 3``  
-* ``instr('microsoft', 'o') -> 5``  
-* ``instr('good', 'bad') -> 0``  
-___
-### <code>isDelete</code>
-<code><b>isDelete([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-Checks if the row is marked for delete. For transformations taking more than one input stream you can pass the (1-based) index of the stream. The stream index should be either 1 or 2 and the default value is 1.  
-* ``isDelete()``  
-* ``isDelete(1)``  
-___
-### <code>isError</code>
-<code><b>isError([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-Checks if the row is marked as error. For transformations taking more than one input stream you can pass the (1-based) index of the stream. The stream index should be either 1 or 2 and the default value is 1.  
-* ``isError()``  
-* ``isError(1)``  
-___
-### <code>isIgnore</code>
-<code><b>isIgnore([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-Checks if the row is marked to be ignored. For transformations taking more than one input stream you can pass the (1-based) index of the stream. The stream index should be either 1 or 2 and the default value is 1.  
-* ``isIgnore()``  
-* ``isIgnore(1)``  
-___
-### <code>isInsert</code>
-<code><b>isInsert([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-Checks if the row is marked for insert. For transformations taking more than one input stream you can pass the (1-based) index of the stream. The stream index should be either 1 or 2 and the default value is 1.  
-* ``isInsert()``  
-* ``isInsert(1)``  
-___
-### <code>isMatch</code>
-<code><b>isMatch([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-Checks if the row is matched at lookup. For transformations taking more than one input stream you can pass the (1-based) index of the stream. The stream index should be either 1 or 2 and the default value is 1.  
-* ``isMatch()``  
-* ``isMatch(1)``  
-___
-### <code>isNull</code>
-<code><b>isNull(<i>&lt;value1&gt;</i> : any) => boolean</b></code><br/><br/>
-Checks if the value is NULL.  
-* ``isNull(NULL()) -> true``  
-* ``isNull('') -> false``  
-___
-### <code>isUpdate</code>
-<code><b>isUpdate([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-Checks if the row is marked for update. For transformations taking more than one input stream you can pass the (1-based) index of the stream. The stream index should be either 1 or 2 and the default value is 1.  
-* ``isUpdate()``  
-* ``isUpdate(1)``  
-___
-### <code>isUpsert</code>
-<code><b>isUpsert([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-Checks if the row is marked for insert. For transformations taking more than one input stream you can pass the (1-based) index of the stream. The stream index should be either 1 or 2 and the default value is 1.  
-* ``isUpsert()``  
-* ``isUpsert(1)``  
-___
-### <code>lastDayOfMonth</code>
-<code><b>lastDayOfMonth(<i>&lt;value1&gt;</i> : datetime) => date</b></code><br/><br/>
-Gets the last date of the month given a date.  
-* ``lastDayOfMonth(toDate('2009-01-12')) -> toDate('2009-01-31')``  
-___
-### <code>least</code>
-<code><b>least(<i>&lt;value1&gt;</i> : any, ...) => any</b></code><br/><br/>
-Comparison lesser than or equal operator. Same as <= operator.  
-* ``least(10, 30, 15, 20) -> 10``  
-* ``least(toDate('2010-12-12'), toDate('2011-12-12'), toDate('2000-12-12')) -> toDate('2000-12-12')``  
-___
-### <code>left</code>
-<code><b>left(<i>&lt;string to subset&gt;</i> : string, <i>&lt;number of characters&gt;</i> : integral) => string</b></code><br/><br/>
-Extracts a substring start at index 1 with number of characters. Same as SUBSTRING(str, 1, n).  
-* ``left('bojjus', 2) -> 'bo'``  
-* ``left('bojjus', 20) -> 'bojjus'``  
-___
-### <code>length</code>
-<code><b>length(<i>&lt;value1&gt;</i> : string) => integer</b></code><br/><br/>
-Returns the length of the string.  
-* ``length('dumbo') -> 5``  
-___
-### <code>lesser</code>
-<code><b>lesser(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
-Comparison less operator. Same as < operator.  
-* ``lesser(12, 24) -> true``  
-* ``('abcd' < 'abc') -> false``  
-* ``(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS') < toTimestamp('2019-02-05 08:21:34.890', 'yyyy-MM-dd HH:mm:ss.SSS')) -> true``  
-___
-### <code>lesserOrEqual</code>
-<code><b>lesserOrEqual(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
-Comparison lesser than or equal operator. Same as <= operator.  
-* ``lesserOrEqual(12, 12) -> true``  
-* ``('dumbo' <= 'dum') -> false``  
-___
-### <code>levenshtein</code>
-<code><b>levenshtein(<i>&lt;from string&gt;</i> : string, <i>&lt;to string&gt;</i> : string) => integer</b></code><br/><br/>
-Gets the levenshtein distance between two strings.  
-* ``levenshtein('boys', 'girls') -> 4``  
-___
-### <code>like</code>
-<code><b>like(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></code><br/><br/>
-The pattern is a string that is matched literally. The exceptions are the following special symbols:  _ matches any one character in the input (similar to . in ```posix``` regular expressions)
-  % matches zero or more characters in the input (similar to .* in ```posix``` regular expressions).
-  The escape character is ''. If an escape character precedes a special symbol or another escape character, the following character is matched literally. It is invalid to escape any other character.  
-* ``like('icecream', 'ice%') -> true``  
-___
-### <code>locate</code>
-<code><b>locate(<i>&lt;substring to find&gt;</i> : string, <i>&lt;string&gt;</i> : string, [<i>&lt;from index - 1-based&gt;</i> : integral]) => integer</b></code><br/><br/>
-Finds the position(1 based) of the substring within a string starting a certain position. If the position is omitted it is considered from the beginning of the string. 0 is returned if not found.  
-* ``locate('mbo', 'dumbo') -> 3``  
-* ``locate('o', 'microsoft', 6) -> 7``  
-* ``locate('bad', 'good') -> 0``  
-___
-### <code>log</code>
-<code><b>log(<i>&lt;value1&gt;</i> : number, [<i>&lt;value2&gt;</i> : number]) => double</b></code><br/><br/>
-Calculates log value. An optional base can be supplied else a Euler number if used.  
-* ``log(100, 10) -> 2``  
-___
-### <code>log10</code>
-<code><b>log10(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-Calculates log value based on 10 base.  
-* ``log10(100) -> 2``  
-___
-### <code>lower</code>
-<code><b>lower(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-Lowercases a string.  
-* ``lower('GunChus') -> 'gunchus'``  
-___
-### <code>lpad</code>
-<code><b>lpad(<i>&lt;string to pad&gt;</i> : string, <i>&lt;final padded length&gt;</i> : integral, <i>&lt;padding&gt;</i> : string) => string</b></code><br/><br/>
-Left pads the string by the supplied padding until it is of a certain length. If the string is equal to or greater than the length, then it is trimmed to the length.  
-* ``lpad('dumbo', 10, '-') -> '-----dumbo'``  
-* ``lpad('dumbo', 4, '-') -> 'dumb'``  
-* ``lpad('dumbo', 8, '<>') -> '<><dumbo'``  
-___
-### <code>ltrim</code>
-<code><b>ltrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
-Left trims a string of leading characters. If second parameter is unspecified, it trims whitespace. Else it trims any character specified in the second parameter.  
-* ``ltrim('  dumbo  ') -> 'dumbo  '``  
-* ``ltrim('!--!du!mbo!', '-!') -> 'du!mbo!'``  
 ___
 ### <code>map</code>
 <code><b>map(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => any</b></code><br/><br/>
@@ -1166,244 +1092,10 @@ ___
 Maps each element of the array to a new element using the provided expression. Map expects a reference to one element in the expression function as #item and a reference to the element index as #index.  
 * ``mapIndex([1, 2, 3, 4], #item + 2 + #index) -> [4, 6, 8, 10]``  
 ___
-### <code>md5</code>
-<code><b>md5(<i>&lt;value1&gt;</i> : any, ...) => string</b></code><br/><br/>
-Calculates the MD5 digest of set of column of varying primitive datatypes and returns a 32 character hex string. It can be used to calculate a fingerprint for a row.  
-* ``md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '4ce8a880bd621a1ffad0bca905e1bc5a'``  
-___
-### <code>millisecond</code>
-<code><b>millisecond(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-Gets the millisecond value of a date. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. The local timezone is used as the default. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``millisecond(toTimestamp('2009-07-30 12:58:59.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``  
-___
-### <code>milliseconds</code>
-<code><b>milliseconds(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
-Duration in milliseconds for number of milliseconds.  
-* ``milliseconds(2) -> 2L``  
-___
-### <code>minus</code>
-<code><b>minus(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-Subtracts numbers. Subtract number of days from a date. Subtract duration from a timestamp. Subtract two timestamps to get difference in milliseconds. Same as the - operator.  
-* ``minus(20, 10) -> 10``  
-* ``20 - 10 -> 10``  
-* ``minus(toDate('2012-12-15'), 3) -> toDate('2012-12-12')``  
-* ``toDate('2012-12-15') - 3 -> toDate('2012-12-12')``  
-* ``toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS') + (days(1) + hours(2) - seconds(10)) -> toTimestamp('2019-02-04 07:19:18.871', 'yyyy-MM-dd HH:mm:ss.SSS')``  
-* ``toTimestamp('2019-02-03 05:21:34.851', 'yyyy-MM-dd HH:mm:ss.SSS') - toTimestamp('2019-02-03 05:21:36.923', 'yyyy-MM-dd HH:mm:ss.SSS') -> -2072``  
-___
-### <code>minute</code>
-<code><b>minute(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-Gets the minute value of a timestamp. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. The local timezone is used as the default. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``minute(toTimestamp('2009-07-30 12:58:59')) -> 58``  
-* ``minute(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 58``  
-___
-### <code>minutes</code>
-<code><b>minutes(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
-Duration in milliseconds for number of minutes.  
-* ``minutes(2) -> 120000L``  
-___
-### <code>mod</code>
-<code><b>mod(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-Modulus of pair of numbers. Same as the % operator.  
-* ``mod(20, 8) -> 4``  
-* ``20 % 8 -> 4``  
-___
-### <code>month</code>
-<code><b>month(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
-Gets the month value of a date or timestamp.  
-* ``month(toDate('2012-8-8')) -> 8``  
-___
-### <code>monthsBetween</code>
-<code><b>monthsBetween(<i>&lt;from date/timestamp&gt;</i> : datetime, <i>&lt;to date/timestamp&gt;</i> : datetime, [<i>&lt;roundoff&gt;</i> : boolean], [<i>&lt;time zone&gt;</i> : string]) => double</b></code><br/><br/>
-Gets the number of months between two dates. You can round off the calculation.You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. The local timezone is used as the default. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``monthsBetween(toTimestamp('1997-02-28 10:30:00'), toDate('1996-10-30')) -> 3.94959677``  
-___
-### <code>multiply</code>
-<code><b>multiply(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-Multiplies pair of numbers. Same as the * operator.  
-* ``multiply(20, 10) -> 200``  
-* ``20 * 10 -> 200``  
-___
-### <code>negate</code>
-<code><b>negate(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-Negates a number. Turns positive numbers to negative and vice versa.  
-* ``negate(13) -> -13``  
-___
-### <code>nextSequence</code>
-<code><b>nextSequence() => long</b></code><br/><br/>
-Returns the next unique sequence. The number is consecutive only within a partition and is prefixed by the partitionId.  
-* ``nextSequence() == 12313112 -> false``  
-___
-### <code>normalize</code>
-<code><b>normalize(<i>&lt;String to normalize&gt;</i> : string) => string</b></code><br/><br/>
-Normalizes the string value to separate accented unicode characters.  
-* ``regexReplace(normalize('bo²s'), `\p{M}`, '') -> 'boys'``  
-___
-### <code>not</code>
-<code><b>not(<i>&lt;value1&gt;</i> : boolean) => boolean</b></code><br/><br/>
-Logical negation operator.  
-* ``not(true) -> false``  
-* ``not(10 == 20) -> true``  
-___
-### <code>notEquals</code>
-<code><b>notEquals(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
-Comparison not equals operator. Same as != operator.  
-* ``12 != 24 -> true``  
-* ``'bojjus' != 'bo' + 'jjus' -> false``  
-___
-### <code>notNull</code>
-<code><b>notNull(<i>&lt;value1&gt;</i> : any) => boolean</b></code><br/><br/>
-Checks if the value is not NULL.  
-* ``notNull(NULL()) -> false``  
-* ``notNull('') -> true``  
-___
-### <code>null</code>
-<code><b>null() => null</b></code><br/><br/>
-Returns a NULL value. Use the function `syntax(null())` if there is a column named 'null'. Any operation that uses will result in a NULL.  
-* ``isNull('dumbo' + null) -> true``  
-* ``isNull(10 * null) -> true``  
-* ``isNull('') -> false``  
-* ``isNull(10 + 20) -> false``  
-* ``isNull(10/0) -> true``  
-___
-### <code>or</code>
-<code><b>or(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
-Logical OR operator. Same as ||.  
-* ``or(true, false) -> true``  
-* ``true || false -> true``  
-___
-### <code>pMod</code>
-<code><b>pMod(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-Positive Modulus of pair of numbers.  
-* ``pmod(-20, 8) -> 4``  
-___
-### <code>partitionId</code>
-<code><b>partitionId() => integer</b></code><br/><br/>
-Returns the current partition id the input row is in.  
-* ``partitionId()``  
-___
-### <code>power</code>
-<code><b>power(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-Raises one number to the power of another.  
-* ``power(10, 2) -> 100``  
-___
-### <code>random</code>
-<code><b>random(<i>&lt;value1&gt;</i> : integral) => long</b></code><br/><br/>
-Returns a random number given an optional seed within a partition. The seed should be a fixed value and is used in conjunction with the partitionId to produce random values  
-* ``random(1) == 1 -> false``
-___
 ### <code>reduce</code>
 <code><b>reduce(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : any, <i>&lt;value3&gt;</i> : binaryfunction, <i>&lt;value4&gt;</i> : unaryfunction) => any</b></code><br/><br/>
 Accumulates elements in an array. Reduce expects a reference to an accumulator and one element in the first expression function as #acc and #item and it expects the resulting value as #result to be used in the second expression function.  
 * ``toString(reduce(['1', '2', '3', '4'], '0', #acc + #item, #result)) -> '01234'``  
-___
-### <code>regexExtract</code>
-<code><b>regexExtract(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, [<i>&lt;match group 1-based index&gt;</i> : integral]) => string</b></code><br/><br/>
-Extract a matching substring for a given regex pattern. The last parameter identifies the match group and is defaulted to 1 if omitted. Use `<regex>`(back quote) to match a string without escaping.  
-* ``regexExtract('Cost is between 600 and 800 dollars', '(\\d+) and (\\d+)', 2) -> '800'``  
-* ``regexExtract('Cost is between 600 and 800 dollars', `(\d+) and (\d+)`, 2) -> '800'``  
-___
-### <code>regexMatch</code>
-<code><b>regexMatch(<i>&lt;string&gt;</i> : string, <i>&lt;regex to match&gt;</i> : string) => boolean</b></code><br/><br/>
-Checks if the string matches the given regex pattern. Use `<regex>`(back quote) to match a string without escaping.  
-* ``regexMatch('200.50', '(\\d+).(\\d+)') -> true``  
-* ``regexMatch('200.50', `(\d+).(\d+)`) -> true``  
-___
-### <code>regexReplace</code>
-<code><b>regexReplace(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, <i>&lt;substring to replace&gt;</i> : string) => string</b></code><br/><br/>
-Replace all occurrences of a regex pattern with another substring in the given string Use `<regex>`(back quote) to match a string without escaping.  
-* ``regexReplace('100 and 200', '(\\d+)', 'bojjus') -> 'bojjus and bojjus'``  
-* ``regexReplace('100 and 200', `(\d+)`, 'gunchus') -> 'gunchus and gunchus'``  
-___
-### <code>regexSplit</code>
-<code><b>regexSplit(<i>&lt;string to split&gt;</i> : string, <i>&lt;regex expression&gt;</i> : string) => array</b></code><br/><br/>
-Splits a string based on a delimiter based on regex and returns an array of strings.  
-* ``regexSplit('bojjusAgunchusBdumbo', `[CAB]`) -> ['bojjus', 'gunchus', 'dumbo']``  
-* ``regexSplit('bojjusAgunchusBdumboC', `[CAB]`) -> ['bojjus', 'gunchus', 'dumbo', '']``  
-* ``(regexSplit('bojjusAgunchusBdumboC', `[CAB]`)[1]) -> 'bojjus'``  
-* ``isNull(regexSplit('bojjusAgunchusBdumboC', `[CAB]`)[20]) -> true``  
-___
-### <code>replace</code>
-<code><b>replace(<i>&lt;string&gt;</i> : string, <i>&lt;substring to find&gt;</i> : string, [<i>&lt;substring to replace&gt;</i> : string]) => string</b></code><br/><br/>
-Replace all occurrences of a substring with another substring in the given string. If the last parameter is omitted, it is default to empty string.  
-* ``replace('doggie dog', 'dog', 'cat') -> 'catgie cat'``  
-* ``replace('doggie dog', 'dog', '') -> 'gie '``  
-* ``replace('doggie dog', 'dog') -> 'gie '``  
-___
-### <code>reverse</code>
-<code><b>reverse(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-Reverses a string.  
-* ``reverse('gunchus') -> 'suhcnug'``  
-___
-### <code>right</code>
-<code><b>right(<i>&lt;string to subset&gt;</i> : string, <i>&lt;number of characters&gt;</i> : integral) => string</b></code><br/><br/>
-Extracts a substring with number of characters from the right. Same as SUBSTRING(str, LENGTH(str) - n, n).  
-* ``right('bojjus', 2) -> 'us'``  
-* ``right('bojjus', 20) -> 'bojjus'``  
-___
-### <code>rlike</code>
-<code><b>rlike(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></code><br/><br/>
-Checks if the string matches the given regex pattern.  
-* ``rlike('200.50', `(\d+).(\d+)`) -> true``  
-* ``rlike('bogus', `M[0-9]+.*`) -> false``  
-___
-### <code>round</code>
-<code><b>round(<i>&lt;number&gt;</i> : number, [<i>&lt;scale to round&gt;</i> : number], [<i>&lt;rounding option&gt;</i> : integral]) => double</b></code><br/><br/>
-Rounds a number given an optional scale and an optional rounding mode. If the scale is omitted, it is defaulted to 0. If the mode is omitted, it is defaulted to ROUND_HALF_UP(5). The values for rounding include
-1 - ROUND_UP
-2 - ROUND_DOWN
-3 - ROUND_CEILING
-4 - ROUND_FLOOR
-5 - ROUND_HALF_UP
-6 - ROUND_HALF_DOWN
-7 - ROUND_HALF_EVEN
-8 - ROUND_UNNECESSARY.  
-* ``round(100.123) -> 100.0``  
-* ``round(2.5, 0) -> 3.0``  
-* ``round(5.3999999999999995, 2, 7) -> 5.40``  
-___
-### <code>rpad</code>
-<code><b>rpad(<i>&lt;string to pad&gt;</i> : string, <i>&lt;final padded length&gt;</i> : integral, <i>&lt;padding&gt;</i> : string) => string</b></code><br/><br/>
-Right pads the string by the supplied padding until it is of a certain length. If the string is equal to or greater than the length, then it is trimmed to the length.  
-* ``rpad('dumbo', 10, '-') -> 'dumbo-----'``  
-* ``rpad('dumbo', 4, '-') -> 'dumb'``  
-* ``rpad('dumbo', 8, '<>') -> 'dumbo<><'``  
-___
-### <code>rtrim</code>
-<code><b>rtrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
-Right trims a string of trailing characters. If second parameter is unspecified, it trims whitespace. Else it trims any character specified in the second parameter.  
-* ``rtrim('  dumbo  ') -> '  dumbo'``  
-* ``rtrim('!--!du!mbo!', '-!') -> '!--!du!mbo'``  
-___
-### <code>second</code>
-<code><b>second(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-Gets the second value of a date. You can pass an optional timezone in the form of 'GMT', 'PST', 'UTC', 'America/Cayman'. The local timezone is used as the default. Refer Java's `SimpleDateFormat` class for available formats. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``second(toTimestamp('2009-07-30 12:58:59')) -> 59``  
-___
-### <code>seconds</code>
-<code><b>seconds(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
-Duration in milliseconds for number of seconds.  
-* ``seconds(2) -> 2000L``  
-___
-### <code>sha1</code>
-<code><b>sha1(<i>&lt;value1&gt;</i> : any, ...) => string</b></code><br/><br/>
-Calculates the SHA-1 digest of set of column of varying primitive datatypes and returns a 40 character hex string. It can be used to calculate a fingerprint for a row.  
-* ``sha1(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '46d3b478e8ec4e1f3b453ac3d8e59d5854e282bb'``  
-___
-### <code>sha2</code>
-<code><b>sha2(<i>&lt;value1&gt;</i> : integer, <i>&lt;value2&gt;</i> : any, ...) => string</b></code><br/><br/>
-Calculates the SHA-2 digest of set of column of varying primitive datatypes given a bit length which can only be of values 0(256), 224, 256, 384, 512. It can be used to calculate a fingerprint for a row.  
-* ``sha2(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> 'afe8a553b1761c67d76f8c31ceef7f71b66a1ee6f4e6d3b5478bf68b47d06bd3'``  
-___
-### <code>sin</code>
-<code><b>sin(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-Calculates a sine value.  
-* ``sin(2) -> 0.9092974268256817``  
-___
-### <code>sinh</code>
-<code><b>sinh(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-Calculates a hyperbolic sine value.  
-* ``sinh(0) -> 0.0``  
 ___
 ### <code>size</code>
 <code><b>size(<i>&lt;value1&gt;</i> : any) => integer</b></code><br/><br/>
@@ -1426,310 +1118,7 @@ ___
 Sorts the array using the provided predicate function. Sort expects a reference to two consecutive elements in the expression function as #item1 and #item2.  
 * ``sort([4, 8, 2, 3], compare(#item1, #item2)) -> [2, 3, 4, 8]``  
 * ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a3']``  
-___
-### <code>soundex</code>
-<code><b>soundex(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-Gets the ```soundex``` code for the string.  
-* ``soundex('genius') -> 'G520'``  
-___
-### <code>split</code>
-<code><b>split(<i>&lt;string to split&gt;</i> : string, <i>&lt;split characters&gt;</i> : string) => array</b></code><br/><br/>
-Splits a string based on a delimiter and returns an array of strings.  
-* ``split('bojjus,guchus,dumbo', ',') -> ['bojjus', 'guchus', 'dumbo']``  
-* ``split('bojjus,guchus,dumbo', '|') -> ['bojjus,guchus,dumbo']``  
-* ``split('bojjus, guchus, dumbo', ', ') -> ['bojjus', 'guchus', 'dumbo']``  
-* ``split('bojjus, guchus, dumbo', ', ')[1] -> 'bojjus'``  
-* ``isNull(split('bojjus, guchus, dumbo', ', ')[0]) -> true``  
-* ``isNull(split('bojjus, guchus, dumbo', ', ')[20]) -> true``  
-* ``split('bojjusguchusdumbo', ',') -> ['bojjusguchusdumbo']``  
-___
-### <code>sqrt</code>
-<code><b>sqrt(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-Calculates the square root of a number.  
-* ``sqrt(9) -> 3``  
-___
-### <code>startsWith</code>
-<code><b>startsWith(<i>&lt;string&gt;</i> : string, <i>&lt;substring to check&gt;</i> : string) => boolean</b></code><br/><br/>
-Checks if the string starts with the supplied string.  
-* ``startsWith('dumbo', 'du') -> true``  
-___
-### <code>subDays</code>
-<code><b>subDays(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;days to subtract&gt;</i> : integral) => datetime</b></code><br/><br/>
-Subtract days from a date or timestamp. Same as the - operator for date.  
-* ``subDays(toDate('2016-08-08'), 1) -> toDate('2016-08-07')``  
-___
-### <code>subMonths</code>
-<code><b>subMonths(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;months to subtract&gt;</i> : integral) => datetime</b></code><br/><br/>
-Subtract months from a date or timestamp.  
-* ``subMonths(toDate('2016-09-30'), 1) -> toDate('2016-08-31')``  
-___
-### <code>substring</code>
-<code><b>substring(<i>&lt;string to subset&gt;</i> : string, <i>&lt;from 1-based index&gt;</i> : integral, [<i>&lt;number of characters&gt;</i> : integral]) => string</b></code><br/><br/>
-Extracts a substring of a certain length from a position. Position is 1 based. If the length is omitted, it is defaulted to end of the string.  
-* ``substring('Cat in the hat', 5, 2) -> 'in'``  
-* ``substring('Cat in the hat', 5, 100) -> 'in the hat'``  
-* ``substring('Cat in the hat', 5) -> 'in the hat'``  
-* ``substring('Cat in the hat', 100, 100) -> ''``  
-___
-### <code>tan</code>
-<code><b>tan(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-Calculates a tangent value.  
-* ``tan(0) -> 0.0``  
-___
-### <code>tanh</code>
-<code><b>tanh(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-Calculates a hyperbolic tangent value.  
-* ``tanh(0) -> 0.0``  
-___
-### <code>translate</code>
-<code><b>translate(<i>&lt;string to translate&gt;</i> : string, <i>&lt;lookup characters&gt;</i> : string, <i>&lt;replace characters&gt;</i> : string) => string</b></code><br/><br/>
-Replace one set of characters by another set of characters in the string. Characters have 1 to 1 replacement.  
-* ``translate('(bojjus)', '()', '[]') -> '[bojjus]'``  
-* ``translate('(gunchus)', '()', '[') -> '[gunchus'``  
-___
-### <code>trim</code>
-<code><b>trim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
-Trims a string of leading and trailing characters. If second parameter is unspecified, it trims whitespace. Else it trims any character specified in the second parameter.  
-* ``trim('  dumbo  ') -> 'dumbo'``  
-* ``trim('!--!du!mbo!', '-!') -> 'du!mbo'``  
-___
-### <code>true</code>
-<code><b>true() => boolean</b></code><br/><br/>
-Always returns a true value. Use the function `syntax(true())` if there is a column named 'true'.  
-* ``(10 + 20 == 30) -> true``  
-* ``(10 + 20 == 30) -> true()``  
-___
-### <code>typeMatch</code>
-<code><b>typeMatch(<i>&lt;type&gt;</i> : string, <i>&lt;base type&gt;</i> : string) => boolean</b></code><br/><br/>
-Matches the type of the column. Can only be used in pattern expressions.number matches short, integer, long, double, float or decimal, integral matches short, integer, long, fractional matches double, float, decimal and datetime matches date or timestamp type.  
-* ``typeMatch(type, 'number')``  
-* ``typeMatch('date', 'datetime')``  
-___
-### <code>upper</code>
-<code><b>upper(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-Uppercases a string.  
-* ``upper('bojjus') -> 'BOJJUS'``  
-___
-### <code>uuid</code>
-<code><b>uuid() => string</b></code><br/><br/>
-Returns the generated UUID.  
-* ``uuid()``  
-___
-### <code>weekOfYear</code>
-<code><b>weekOfYear(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
-Gets the week of the year given a date.  
-* ``weekOfYear(toDate('2008-02-20')) -> 8``  
-___
-### <code>weeks</code>
-<code><b>weeks(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
-Duration in milliseconds for number of weeks.  
-* ``weeks(2) -> 1209600000L``  
-___
-### <code>xor</code>
-<code><b>xor(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
-Logical XOR operator. Same as ^ operator.  
-* ``xor(true, false) -> true``  
-* ``xor(true, true) -> false``  
-* ``true ^ false -> true``  
-___
-### <code>year</code>
-<code><b>year(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
-Gets the year value of a date.  
-* ``year(toDate('2012-8-8')) -> 2012``  
-## Aggregate functions
-The following functions are only available in aggregate, pivot, unpivot, and window transformations.
-___
-### <code>avg</code>
-<code><b>avg(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-Gets the average of values of a column.  
-* ``avg(sales)``  
-___
-### <code>avgIf</code>
-<code><b>avgIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/>
-Based on a criteria gets the average of values of a column.  
-* ``avgIf(region == 'West', sales)``  
-___
-### <code>count</code>
-<code><b>count([<i>&lt;value1&gt;</i> : any]) => long</b></code><br/><br/>
-Gets the aggregate count of values. If the optional column(s) is specified, it ignores NULL values in the count.  
-* ``count(custId)``  
-* ``count(custId, custName)``  
-* ``count()``  
-* ``count(iif(isNull(custId), 1, NULL))``  
-___
-### <code>countDistinct</code>
-<code><b>countDistinct(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : any], ...) => long</b></code><br/><br/>
-Gets the aggregate count of distinct values of a set of columns.  
-* ``countDistinct(custId, custName)``  
-___
-### <code>countIf</code>
-<code><b>countIf(<i>&lt;value1&gt;</i> : boolean, [<i>&lt;value2&gt;</i> : any]) => long</b></code><br/><br/>
-Based on a criteria gets the aggregate count of values. If the optional column is specified, it ignores NULL values in the count.  
-* ``countIf(state == 'CA' && commission < 10000, name)``  
-___
-### <code>covariancePopulation</code>
-<code><b>covariancePopulation(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-Gets the population covariance between two columns.  
-* ``covariancePopulation(sales, profit)``  
-___
-### <code>covariancePopulationIf</code>
-<code><b>covariancePopulationIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number, <i>&lt;value3&gt;</i> : number) => double</b></code><br/><br/>
-Based on a criteria, gets the population covariance of two columns.  
-* ``covariancePopulationIf(region == 'West', sales)``  
-___
-### <code>covarianceSample</code>
-<code><b>covarianceSample(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-Gets the sample covariance of two columns.  
-* ``covarianceSample(sales, profit)``  
-___
-### <code>covarianceSampleIf</code>
-<code><b>covarianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number, <i>&lt;value3&gt;</i> : number) => double</b></code><br/><br/>
-Based on a criteria, gets the sample covariance of two columns.  
-* ``covarianceSampleIf(region == 'West', sales, profit)``  
-___
-### <code>first</code>
-<code><b>first(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : boolean]) => any</b></code><br/><br/>
-Gets the first value of a column group. If the second parameter ignoreNulls is omitted, it is assumed false.  
-* ``first(sales)``  
-* ``first(sales, false)``  
-___
-### <code>kurtosis</code>
-<code><b>kurtosis(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-Gets the kurtosis of a column.  
-* ``kurtosis(sales)``  
-___
-### <code>kurtosisIf</code>
-<code><b>kurtosisIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-Based on a criteria, gets the kurtosis of a column.  
-* ``kurtosisIf(region == 'West', sales)``  
-___
-### <code>last</code>
-<code><b>last(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : boolean]) => any</b></code><br/><br/>
-Gets the last value of a column group. If the second parameter ignoreNulls is omitted, it is assumed false.  
-* ``last(sales)``  
-* ``last(sales, false)``  
-___
-### <code>max</code>
-<code><b>max(<i>&lt;value1&gt;</i> : any) => any</b></code><br/><br/>
-Gets the maximum value of a column.  
-* ``max(sales)``  
-___
-### <code>maxIf</code>
-<code><b>maxIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-Based on a criteria, gets the maximum value of a column.  
-* ``maxIf(region == 'West', sales)``  
-___
-### <code>mean</code>
-<code><b>mean(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-Gets the mean of values of a column. Same as AVG.  
-* ``mean(sales)``  
-___
-### <code>meanIf</code>
-<code><b>meanIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/>
-Based on a criteria gets the mean of values of a column. Same as avgIf.  
-* ``meanIf(region == 'West', sales)``  
-___
-### <code>min</code>
-<code><b>min(<i>&lt;value1&gt;</i> : any) => any</b></code><br/><br/>
-Gets the minimum value of a column.  
-* ``min(sales)``  
-___
-### <code>minIf</code>
-<code><b>minIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-Based on a criteria, gets the minimum value of a column.  
-* ``minIf(region == 'West', sales)``  
-___
-### <code>skewness</code>
-<code><b>skewness(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-Gets the skewness of a column.  
-* ``skewness(sales)``  
-___
-### <code>skewnessIf</code>
-<code><b>skewnessIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-Based on a criteria, gets the skewness of a column.  
-* ``skewnessIf(region == 'West', sales)``  
-___
-### <code>stddev</code>
-<code><b>stddev(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-Gets the standard deviation of a column.  
-* ``stdDev(sales)``  
-___
-### <code>stddevIf</code>
-<code><b>stddevIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-Based on a criteria, gets the standard deviation of a column.  
-* ``stddevIf(region == 'West', sales)``  
-___
-### <code>stddevPopulation</code>
-<code><b>stddevPopulation(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-Gets the population standard deviation of a column.  
-* ``stddevPopulation(sales)``  
-___
-### <code>stddevPopulationIf</code>
-<code><b>stddevPopulationIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-Based on a criteria, gets the population standard deviation of a column.  
-* ``stddevPopulationIf(region == 'West', sales)``  
-___
-### <code>stddevSample</code>
-<code><b>stddevSample(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-Gets the sample standard deviation of a column.  
-* ``stddevSample(sales)``  
-___
-### <code>stddevSampleIf</code>
-<code><b>stddevSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-Based on a criteria, gets the sample standard deviation of a column.  
-* ``stddevSampleIf(region == 'West', sales)``  
-___
-### <code>sum</code>
-<code><b>sum(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-Gets the aggregate sum of a numeric column.  
-* ``sum(col)``  
-___
-### <code>sumDistinct</code>
-<code><b>sumDistinct(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-Gets the aggregate sum of distinct values of a numeric column.  
-* ``sumDistinct(col)``  
-___
-### <code>sumDistinctIf</code>
-<code><b>sumDistinctIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/>
-Based on criteria gets the aggregate sum of a numeric column. The condition can be based on any column.  
-* ``sumDistinctIf(state == 'CA' && commission < 10000, sales)``  
-* ``sumDistinctIf(true, sales)``  
-___
-### <code>sumIf</code>
-<code><b>sumIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/>
-Based on criteria gets the aggregate sum of a numeric column. The condition can be based on any column.  
-* ``sumIf(state == 'CA' && commission < 10000, sales)``  
-* ``sumIf(true, sales)``  
-___
-### <code>variance</code>
-<code><b>variance(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-Gets the variance of a column.  
-* ``variance(sales)``  
-___
-### <code>varianceIf</code>
-<code><b>varianceIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-Based on a criteria, gets the variance of a column.  
-* ``varianceIf(region == 'West', sales)``  
-___
-### <code>variancePopulation</code>
-<code><b>variancePopulation(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-Gets the population variance of a column.  
-* ``variancePopulation(sales)``  
-___
-### <code>variancePopulationIf</code>
-<code><b>variancePopulationIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-Based on a criteria, gets the population variance of a column.  
-* ``variancePopulationIf(region == 'West', sales)``  
-___
-### <code>varianceSample</code>
-<code><b>varianceSample(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-Gets the unbiased variance of a column.  
-* ``varianceSample(sales)``  
-___
-### <code>varianceSampleIf</code>
-<code><b>varianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-Based on a criteria, gets the unbiased variance of a column.  
-* ``varianceSampleIf(region == 'West', sales)``  
+
 
 ## <a name="conversion-functions"></a>変換関数
 
@@ -1835,8 +1224,8 @@ ___
 ### <code>toUTC</code>
 <code><b>toUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
 タイムスタンプを UTC に変換します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 既定値は現在のタイムゾーンです。 使用可能な形式については、Java の `SimpleDateFormat` クラスを参照してください。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html.  
-* ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
-* ``toUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
+* ``toUTC(currentTimestamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
+* ``toUTC(currentTimestamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
 
 ## <a name="metafunctions"></a>メタ関数
 

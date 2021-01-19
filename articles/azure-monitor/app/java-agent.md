@@ -6,12 +6,12 @@ ms.date: 01/10/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 299e9010b74c8363cacd1c20044d183dc1def6a6
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 50c5a8a0c1e7c5d554e19ffcbc9a78bc0a385a5c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601290"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131731"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java Web アプリでの依存関係、キャッチされた例外、メソッド実行時間の監視
 
@@ -37,7 +37,7 @@ ms.locfileid: "96601290"
 Java エージェントを使用するには、これをサーバーにインストールします。 Web アプリを [Application Insights Java SDK][java] を使用してインストルメント化する必要があります。 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>Jave 用の Application Insights エージェントのインストール
-1. Java サーバーを実行しているコンピューターで [エージェントをダウンロード](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)します。 Application Insights の Java SDK コアおよび Web パッケージと同じバージョンの Java エージェントをダウンロードするようにしてください。
+1. Java サーバーを実行しているコンピューターで [2.x エージェントをダウンロード](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/2.6.2)します。 使用する 2.x Java エージェントのバージョンが、使用する 2.x Application Insights Java SDK のバージョンと一致していることを確認してください。
 2. アプリケーション サーバーのスタートアップ スクリプトを編集し、次の JVM 引数を追加します。
    
     `-javaagent:<full path to the agent JAR file>`
@@ -89,10 +89,7 @@ Azure App Services については、次のようにします。
 * [設定]、[アプリケーションの設定] の順に選択します
 * [アプリ設定] で、新しいキー値ペアを追加します。
 
-キー:`JAVA_OPTS`値:`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
-
-Java の最新バージョンについては、[ここ](https://github.com/Microsoft/ApplicationInsights-Java/releases
-)でリリースを確認してください。 
+キー:`JAVA_OPTS`値:`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.6.2.jar`
 
 エージェントは、D:/home/site/wwwroot/ directory で終わるようにプロジェクト内でリソースとしてパッケージ化する必要があります。 **[開発ツール]**  >  **[高度なツール]**  >  **[デバッグ コンソール]** に進み、サイト ディレクトリの内容を調べることで、エージェントが正しい App Service ディレクトリにあることを確認できます。    
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 739e59ea8e5737abbc6f0f0799129be5f59fb9b0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 3bf3ecefb17f4c9fda6405da7fb2bdc2650f5324
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674499"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131476"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -236,14 +236,14 @@ Windows Server で Azure File Sync エージェントをインストールして
 ### <a name="improvements-and-issues-that-are-fixed"></a>機能強化と修正された問題
 
 - セルフサービス復元のサポート
-    - 以前のバージョンの機能を使用して、ユーザーが自分のファイルを復元できるようになりました。 V9 リリースより前のバージョンでは、クラウドの階層化が有効になっているボリュームで以前のバージョンの機能はサポートされていませんでした。 この機能は、クラウドの階層化が有効になっているエンドポイントが存在する各ボリュームに対して個別に有効にする必要があります。 詳細については、次を参照してください。  
+    - ユーザーは、セルフサービス復元機能をボリューム上で有効にした後に作成された VSS スナップショットから、以前のバージョンの機能を使用することで、階層化されたファイル (とディスク上のファイル) を復元できるようにもなりました。 v9 リリースより前では、以前のバージョンの機能は階層化されたファイルでサポートされていませんでした。 この機能は、クラウドの階層化が有効になっているエンドポイントが存在する各ボリュームに対して個別に有効にする必要があります。 詳細については、次を参照してください。  
 [以前のバージョンおよび VSS (ボリューム シャドウ コピー サービス) を使用するセルフサービス復元](./storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service)。 
  
 - ファイル共有のより大きなサイズのサポート 
     - Azure File Sync では、1 つの同期名前空間で最大 64 TiB、1 億ファイルがサポートされるようになりました。  
  
 - Server 2019 におけるデータ重複除去のサポート 
-    - データ重複除去は、クラウドを使った階層化が有効になっている Windows Server 2019 でサポートされるようになりました。 クラウドの階層化を使用するボリュームでデータ重複除去をサポートするには、Windows update [KB4520062](https://support.microsoft.com/help/4520062) をインストールする必要があります。 
+    - Windows Server 2016 と Windows Server 2019 で (ボリューム上の 1 つまたは複数のサーバー エンドポイントでクラウドを使った階層化が有効になっているか、無効になっているかに関係なく) データの重複を除去できるようになりました。 Server 2019 で、クラウドを使った階層化を使用するボリュームでデータ重複除去をサポートするには、Windows update [KB4520062](https://support.microsoft.com/help/4520062) をインストールする必要があります。 
  
 - 階層化するファイルの最小ファイル サイズの改善 
     - 階層化するファイルの最小ファイル サイズは、ファイル システムのクラスター サイズ (ファイル システムのクラスター サイズの 2 倍) に基づいています。 たとえば、既定では、NTFS ファイル システムのクラスター サイズは 4 KB です。その結果、ファイルの最小ファイル サイズは 8 KB になります。 

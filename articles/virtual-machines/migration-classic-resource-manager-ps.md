@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 07b511182950095c356887d72ffde75ac098674d
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 82eaa597796bf3772faa90a9dbc4151da935c46a
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904641"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027725"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
 
@@ -265,7 +265,7 @@ Azure PowerShell または Azure Portal のどちらかを使用して、準備�
 仮想マシンの移行が完了したら、ストレージ アカウントを移行する前に、次の前提条件チェックを行います。
 
 > [!NOTE]
-> ストレージ アカウントに関連付けられたディスクまたは VM データがない場合は、「ストレージ アカウントを検証して移行を開始する」セクションに進むことができます。
+> ストレージ アカウントに関連付けられたディスクまたは VM データがない場合は、「ストレージ アカウントを検証して移行を開始する」セクションに進むことができます。 また、クラシック ディスク、VM イメージ、または OS イメージを削除しても、ストレージ アカウント内のソース VHD ファイルは削除されないことに注意してください。 ただし、それらの VHD ファイルのリースは解除されるため、移行後に ARM ディスクまたはイメージを作成するために再利用できます。
 
 * VM を移行したか、ストレージ アカウントにディスク リソースがあるかどうかの前提条件のチェック:
     * ディスクがストレージ アカウントに格納されている仮想マシンを移行する。

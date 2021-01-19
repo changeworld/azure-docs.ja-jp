@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-ms.date: 12/16/2020
+ms.date: 01/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 111e5310f1dac01053eebc6592d7b56105358c41
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: a550655b8076a1e3946ff015239715ddf0712236
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630090"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131765"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -97,7 +97,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 
 - すべてのサブスクリプションにわたるアラートを表示する機能を使って、委任されたサブスクリプションに対するアラートを表示および更新する
 - 委任されたサブスクリプションのアクティビティ ログの詳細を表示する
-- ログ分析: 複数のテナントにあるリモートのワークスペースからデータを照会する
+- ログ分析: 複数のテナントにあるリモートのワークスペースからデータを照会する (顧客テナントのワークスペースからデータにアクセスするために使用される Automation アカウントは、同じテナント内に作成する必要があることに注意してください)
 - 顧客のテナント内に、Webhook を使用して管理側テナントで Azure Automation Runbook や Azure Functions などの自動化をトリガーするアラートを作成する
 - 顧客テナント内で[診断設定](../..//azure-monitor/platform/diagnostic-settings.md)を作成して、管理テナント内のワークスペースにリソース ログを送信する
 - SAP ワークロードに対しては、[顧客のテナント全体で集計されたビューを使って SAP ソリューションのメトリックを監視する](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)

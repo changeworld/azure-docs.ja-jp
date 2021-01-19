@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 754ca10e72ca2274607e954748bfa8cb5286c6ab
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 3289db9b0f27aa528e027ab2e355852947187e76
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954526"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98187415"
 ---
 1. Azure portal メニューまたは **[ホーム]** ページで、 **[リソースの作成]** を選択します。
 
@@ -27,29 +27,23 @@ ms.locfileid: "97954526"
     | **[リソース グループ](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Function App を作成するための新しいリソース グループの名前。 |
     | **関数アプリ名** | グローバルに一意の名前 | 新しい Function App を識別する名前。 有効な文字は、`a-z` (大文字と小文字の区別をしない)、`0-9`、および `-`です。  |
     |**発行**| コード | コード ファイルまたは Docker コンテナーの発行オプション。 |
-    | **ランタイム スタック** | 優先言語 | お気に入りの関数プログラミング言語をサポートするランタイムを選択します。 C# 関数および F# 関数の場合は、 **[.NET Core]** を選択します。 |
-    |**Version**| バージョン番号 | インストールされているランタイムのバージョンを選択します。  |
+    | **ランタイム スタック** | 優先言語 | お気に入りの関数プログラミング言語をサポートするランタイムを選択します。 ポータルでの編集は現在、[Python 開発](../articles/azure-functions/functions-reference-python.md)ではサポートされません。 |
+    |**Version**| バージョン番号 | インストールされているランタイムのバージョンを選択します。 |
     |**リージョン**| 優先リージョン | ユーザーに近い[リージョン](https://azure.microsoft.com/regions/)、または関数がアクセスする他のサービスの近くのリージョンを選択します。 |
-
-    ![基本](./media/functions-create-function-app-portal/function-app-create-basics.png)
 
 1. **[次へ :ホスティング]** を選択します。 **[ホスティング]** ページで、次の設定を入力します。
 
     | 設定      | 推奨値  | 説明 |
     | ------------ | ---------------- | ----------- |
     | **[ストレージ アカウント](../articles/storage/common/storage-account-create.md)** |  グローバルに一意の名前 |  Function App で使用されるストレージ アカウントを作成します。 ストレージ アカウント名は、3 文字から 24 文字までの長さにし、数字と小文字のみを使用する必要があります。 既存のアカウントを使用することもできますが、[ストレージ アカウントの要件](../articles/azure-functions/storage-considerations.md#storage-account-requirements)を満たしている必要があります。 |
-    |**オペレーティング システム**| 優先オペレーティング システム | オペレーティング システムは、ランタイム スタックの選択に基づいてあらかじめ選択されますが、必要に応じて設定を変更できます。 |
+    |**オペレーティング システム**| Windows | オペレーティング システムは、ランタイム スタックの選択に基づいてあらかじめ選択されますが、必要に応じて設定を変更できます。 ポータルでの編集は Windows でのみサポートされます。 |
     | **[プラン](../articles/azure-functions/functions-scale.md)** | **従量課金プラン (サーバーレス)** | Function App にどのようにリソースが割り当てられるかを定義するホスティング プラン。 既定の **[従量課金プラン]** では、リソースは関数の必要に応じて動的に追加されます。 この[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)のホスティングでは、関数が実行された時間にのみ課金されます。 App Service プランで実行する場合は、[関数アプリのスケーリング](../articles/azure-functions/functions-scale.md)を管理する必要があります。  |
-
-    ![Hosting](./media/functions-create-function-app-portal/function-app-create-hosting.png)
 
 1. **[次へ :監視]** を選択します。 **[監視]** ページで、次の設定を入力します。
 
     | 設定      | 推奨値  | 説明 |
     | ------------ | ---------------- | ----------- |
     | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | Default | 最も近いサポートされているリージョン内に同じ *アプリ名* の Application Insights リソースを作成します。 この設定を展開するか、 **[新規作成]** を選択することによって、Application Insights 名を変更するか、データを格納する [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)内の別のリージョンを選択することができます。 |
-
-    ![監視](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
 
 1. **[確認および作成]** を選択して、アプリ構成の選択内容を確認します。
 

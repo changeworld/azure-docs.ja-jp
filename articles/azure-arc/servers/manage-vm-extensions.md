@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 対応サーバーを使用した VM 拡張機能の管理
 description: Azure Arc 対応サーバーを使用すると、Azure 以外の VM でのデプロイ後構成と自動化タスクを提供する仮想マシン拡張機能のデプロイを管理できます。
-ms.date: 12/14/2020
+ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 55e21f9c6bcd2dfe5f995093034773f2a87d9b03
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 5430b1c1318747cccfb95f031700fddaad716284
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504510"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020623"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーを使用した仮想マシン拡張機能の管理
 
@@ -43,20 +43,31 @@ VM 拡張機能は、[サポートされているリージョン](overview.md#su
 
 このリリースでは、Windows および Linux マシンで次の VM 拡張機能がサポートされています。
 
-|拡張機能 |OS |Publisher |関連情報 |
-|----------|---|----------|-----------------------|
-|CustomScriptExtension |Windows |Microsoft.Compute |[Windows カスタム スクリプト拡張機能](../../virtual-machines/extensions/custom-script-windows.md)|
-|DSC |Windows |Microsoft.PowerShell|[Windows PowerShell DSC 拡張機能](../../virtual-machines/extensions/dsc-windows.md)|
-|Log Analytics エージェント |Windows |Microsoft.EnterpriseCloud.Monitoring |[Windows 用 Log Analytics VM 拡張機能](../../virtual-machines/extensions/oms-windows.md)|
-|Microsoft Dependency Agent | Windows |Microsoft.Compute | [Windows 用 Dependency Agent 仮想マシン拡張機能](../../virtual-machines/extensions/agent-dependency-windows.md)|
-|Key Vault | Windows | Microsoft.Compute | [Windows 用の Key Vault 仮想マシン拡張機能](../../virtual-machines/extensions/key-vault-windows.md) |
-|CustomScript|Linux |Microsoft.Azure.Extension |[Linux カスタム スクリプト拡張機能バージョン 2](../../virtual-machines/extensions/custom-script-linux.md) |
-|DSC |Linux |Microsoft.OSTCExtensions |[Linux 用 PowerShell DSC 拡張機能](../../virtual-machines/extensions/dsc-linux.md) |
-|Log Analytics エージェント |Linux |Microsoft.EnterpriseCloud.Monitoring |[Linux 用 Log Analytics VM 拡張機能](../../virtual-machines/extensions/oms-linux.md) |
-|Microsoft Dependency Agent | Linux |Microsoft.Compute | [Linux 用 Dependency Agent 仮想マシン拡張機能](../../virtual-machines/extensions/agent-dependency-linux.md) |
-|Key Vault | Linux | Microsoft.Compute | [Linux 用の Key Vault 仮想マシン拡張機能](../../virtual-machines/extensions/key-vault-linux.md) |
-
 Azure Connected Machine エージェント パッケージと拡張機能エージェント コンポーネントの詳細については、[エージェントの概要](agent-overview.md#agent-component-details)に関する記事を参照してください。
+
+### <a name="windows-extensions"></a>Windows の拡張機能
+
+|拡張子 |Publisher |Type |追加情報 |
+|----------|----------|-----|-----------------------|
+|Azure Defender が統合された脆弱性スキャナー |Qualys |WindowsAgent.AzureSecurityCenter |[Azure およびハイブリッドのマシンに対する Azure Defender の統合された脆弱性評価ソリューション](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|カスタム スクリプト拡張機能 |Microsoft.Compute | CustomScriptExtension |[Windows カスタム スクリプト拡張機能](../../virtual-machines/extensions/custom-script-windows.md)|
+|PowerShell DSC |Microsoft.PowerShell |DSC |[Windows PowerShell DSC 拡張機能](../../virtual-machines/extensions/dsc-windows.md)|
+|Log Analytics エージェント |Microsoft.EnterpriseCloud.Monitoring |MicrosoftMonitoringAgent |[Windows 用 Log Analytics VM 拡張機能](../../virtual-machines/extensions/oms-windows.md)|
+|Azure Monitor for VMs (分析情報) |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentWindows | [Windows 用 Dependency Agent 仮想マシン拡張機能](../../virtual-machines/extensions/agent-dependency-windows.md)|
+|Azure Key Vault 証明書の同期 | Microsoft.Azure.Key.Vault |KeyVaultForWindows | [Windows 用の Key Vault 仮想マシン拡張機能](../../virtual-machines/extensions/key-vault-windows.md) |
+|Azure Monitor エージェント |Microsoft.Azure.Monitor |AzureMonitorWindowsAgent |[Azure Monitor エージェントをインストールする (プレビュー)](../../azure-monitor/platform/azure-monitor-agent-install.md) |
+
+### <a name="linux-extensions"></a>Linux の拡張機能
+
+|拡張子 |Publisher |Type |追加情報 |
+|----------|----------|-----|-----------------------|
+|Azure Defender が統合された脆弱性スキャナー |Qualys |LinuxAgent.AzureSecurityCenter |[Azure およびハイブリッドのマシンに対する Azure Defender の統合された脆弱性評価ソリューション](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|カスタム スクリプト拡張機能 |Microsoft.Azure.Extensions |CustomScript |[Linux カスタム スクリプト拡張機能バージョン 2](../../virtual-machines/extensions/custom-script-linux.md) |
+|PowerShell DSC |Microsoft.OSTCExtensions |DSCForLinux |[Linux 用 PowerShell DSC 拡張機能](../../virtual-machines/extensions/dsc-linux.md) |
+|Log Analytics エージェント |Microsoft.EnterpriseCloud.Monitoring |OmsAgentForLinux |[Linux 用 Log Analytics VM 拡張機能](../../virtual-machines/extensions/oms-linux.md) |
+|Azure Monitor for VMs (分析情報) |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentLinux |[Linux 用 Dependency Agent 仮想マシン拡張機能](../../virtual-machines/extensions/agent-dependency-linux.md) |
+|Azure Key Vault 証明書の同期 | Microsoft.Azure.Key.Vault |KeyVaultForLinux | [Linux 用の Key Vault 仮想マシン拡張機能](../../virtual-machines/extensions/key-vault-linux.md) |
+|Azure Monitor エージェント |Microsoft.Azure.Monitor |AzureMonitorLinuxAgent |[Azure Monitor エージェントをインストールする (プレビュー)](../../azure-monitor/platform/azure-monitor-agent-install.md) |
 
 ## <a name="prerequisites"></a>前提条件
 

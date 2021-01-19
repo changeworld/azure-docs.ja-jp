@@ -4,12 +4,12 @@ description: この記事では、Azure Backup を使用して Azure VM 上の S
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: cb7f31986b9ebd91c631d2b896600039c93084de
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 7f287206c40e4556db2ee4b38bb46ef8e5352102
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607094"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072192"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM 上の SAP HANA データベースのバックアップに関するサポート マトリックス
 
@@ -27,7 +27,7 @@ Azure Backup では、Azure への SAP HANA データベースのバックアッ
 | **OS のバージョン**            | SLES 12 SP2、SP3、SP4、SP5、SLES 15 SP0、SP1、SP2 <br><br>  2020 年 8 月 1 日の時点で、RHEL (7.4、7.6、7.7、8.1) 用の SAP HANA バックアップは一般提供されています。                |                                             |
 | **HANA のバージョン**          | HANA 1.x の場合は SDC、HANA 2.x の SPS04 Rev 48、SPS05 以下の場合は MDC (暗号化が有効なシナリオではまだ検証されていません)      |                                                            |
 | **HANA のデプロイメント**       | 単一の Azure VM 上の SAP HANA - スケールアップのみ。 <br><br> 高可用性のデプロイでは、2 つの異なるマシン上の両方のノードが、個別のデータ チェーンを持つ個々のノードとして扱われます。               | スケールアウト <br><br> 高可用性のデプロイでは、バックアップはセカンダリ ノードに自動的にフェールオーバーされません。 バックアップの構成は、ノードごとに個別に行う必要があります。                                           |
-| **HANA インスタンス**         | 単一の Azure VM 上の単一の SAP HANA インスタンス – スケールアップのみ | 単一の VM 上の複数の SAP HANA インスタンス                  |
+| **HANA インスタンス**         | 単一の Azure VM 上の単一の SAP HANA インスタンス – スケールアップのみ | 単一の VM 上の複数の SAP HANA インスタンス。 これらの複数のインスタンスは一度に 1 つしか保護できません。                  |
 | **HANA データベースの種類**    | 1\.x の場合は SDC (Single Database Container)、2.x の場合は MDC (Multi-Database Container) | HANA 1.x での MDC                                              |
 | **HANA データベースのサイズ**     | HANA データベースのサイズ <= 2 TB (これは HANA システムのメモリ サイズではありません)               |                                                              |
 | **バックアップの種類**           | 完全バックアップ、差分バックアップ、増分バックアップ (プレビュー)、ログ バックアップ                          |  スナップショット                                       |

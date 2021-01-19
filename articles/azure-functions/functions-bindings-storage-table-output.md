@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: ec857db64529a27db7412c61f8f09c66f8a76363
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 4af29df27a109a9e1e26a720c190ab9d119fc4d1
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92098148"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033797"
 ---
 # <a name="azure-table-storage-output-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage の出力バインド
 
@@ -48,7 +48,7 @@ public class TableStorage
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
-次の例は、 *function.json* ファイルのテーブル出力バインドと、バインドを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 この関数は複数のテーブル エンティティを書き込みます。
+次の例は、*function.json* ファイルのテーブル出力バインドと、バインドを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 この関数は複数のテーブル エンティティを書き込みます。
 
 *function.json* ファイルを次に示します。
 
@@ -99,112 +99,6 @@ public class Person
     public string Name { get; set; }
 }
 
-```
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-次の例は、 *function.json* ファイルのテーブル出力バインドと、バインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は複数のテーブル エンティティを書き込みます。
-
-*function.json* ファイルを次に示します。
-
-```json
-{
-  "bindings": [
-    {
-      "name": "input",
-      "type": "manualTrigger",
-      "direction": "in"
-    },
-    {
-      "tableName": "Person",
-      "connection": "MyStorageConnectionAppSetting",
-      "name": "tableBinding",
-      "type": "table",
-      "direction": "out"
-    }
-  ],
-  "disabled": false
-}
-```
-
-これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
-
-JavaScript コードを次に示します。
-
-```javascript
-module.exports = function (context) {
-
-    context.bindings.tableBinding = [];
-
-    for (var i = 1; i < 10; i++) {
-        context.bindings.tableBinding.push({
-            PartitionKey: "Test",
-            RowKey: i.toString(),
-            Name: "Name " + i
-        });
-    }
-
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-次の例では、Table Storage の出力バインドを使用する方法を示します。 `table` バインドは、値を `name`、`tableName`、`partitionKey`、`connection` に割り当てて *function.json* で構成されます。
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "name": "message",
-      "type": "table",
-      "tableName": "messages",
-      "partitionKey": "message",
-      "connection": "AzureWebJobsStorage",
-      "direction": "out"
-    },
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    }
-  ]
-}
-```
-
-次の関数は、`rowKey` 値に対して一意の UUI を生成し、メッセージを Table Storage に保持します。
-
-```python
-import logging
-import uuid
-import json
-
-import azure.functions as func
-
-def main(req: func.HttpRequest, message: func.Out[str]) -> func.HttpResponse:
-
-    rowKey = str(uuid.uuid4())
-
-    data = {
-        "Name": "Output binding message",
-        "PartitionKey": "message",
-        "RowKey": rowKey
-    }
-
-    message.set(json.dumps(data))
-
-    return func.HttpResponse(f"Message created with the rowKey: {rowKey}")
 ```
 
 # <a name="java"></a>[Java](#tab/java)
@@ -284,6 +178,152 @@ public class AddPersons {
 }
 ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+次の例は、*function.json* ファイルのテーブル出力バインドと、バインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は複数のテーブル エンティティを書き込みます。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "input",
+      "type": "manualTrigger",
+      "direction": "in"
+    },
+    {
+      "tableName": "Person",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "tableBinding",
+      "type": "table",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
+
+JavaScript コードを次に示します。
+
+```javascript
+module.exports = function (context) {
+
+    context.bindings.tableBinding = [];
+
+    for (var i = 1; i < 10; i++) {
+        context.bindings.tableBinding.push({
+            PartitionKey: "Test",
+            RowKey: i.toString(),
+            Name: "Name " + i
+        });
+    }
+
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+次の例は、関数からテーブルに複数のエンティティを書き込む方法を示しています。
+
+_function.json_ のバインド構成:
+
+```json
+{
+  "bindings": [
+    {
+      "name": "InputData",
+      "type": "manualTrigger",
+      "direction": "in"
+    },
+    {
+      "tableName": "Person",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "TableBinding",
+      "type": "table",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+_run.ps1_ の PowerShell コード:
+
+```powershell
+param($InputData, $TriggerMetadata)
+  
+foreach ($i in 1..10) {
+    Push-OutputBinding -Name TableBinding -Value @{
+        PartitionKey = 'Test'
+        RowKey = "$i"
+        Name = "Name $i"
+    }
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+次の例では、Table Storage の出力バインドを使用する方法を示します。 `table` バインドは、値を `name`、`tableName`、`partitionKey`、`connection` に割り当てて *function.json* で構成されます。
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "message",
+      "type": "table",
+      "tableName": "messages",
+      "partitionKey": "message",
+      "connection": "AzureWebJobsStorage",
+      "direction": "out"
+    },
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
+```
+
+次の関数は、`rowKey` 値に対して一意の UUI を生成し、メッセージを Table Storage に保持します。
+
+```python
+import logging
+import uuid
+import json
+
+import azure.functions as func
+
+def main(req: func.HttpRequest, message: func.Out[str]) -> func.HttpResponse:
+
+    rowKey = str(uuid.uuid4())
+
+    data = {
+        "Name": "Output binding message",
+        "PartitionKey": "message",
+        "RowKey": rowKey
+    }
+
+    message.set(json.dumps(data))
+
+    return func.HttpResponse(f"Message created with the rowKey: {rowKey}")
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>属性と注釈
@@ -326,25 +366,29 @@ public static MyPoco TableOutput(
 
 属性は、C# スクリプトではサポートされていません。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-属性は、JavaScript ではサポートされていません。
-
-# <a name="python"></a>[Python](#tab/python)
-
-属性は、Python ではサポートされていません。
-
 # <a name="java"></a>[Java](#tab/java)
 
 [Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、パラメーターで [TableOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/TableOutput.java/) 注釈を使用し、テーブル ストレージに値を書き込みます。
 
 詳細については、[例を参照してください](#example)。
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+属性は、JavaScript ではサポートされていません。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+属性は、PowerShell ではサポートされていません。
+
+# <a name="python"></a>[Python](#tab/python)
+
+属性は、Python ではサポートされていません。
+
 ---
 
 ## <a name="configuration"></a>構成
 
-次の表は、 *function.json* ファイルと `Table` 属性で設定したバインド構成のプロパティを説明しています。
+次の表は、*function.json* ファイルと `Table` 属性で設定したバインド構成のプロパティを説明しています。
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
@@ -372,25 +416,29 @@ public static MyPoco TableOutput(
 
 代わりに、Azure Storage SDK で `CloudTable` メソッド パラメーターを使用してテーブルに書き込みます。 `CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](./functions-bindings-storage-table.md#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
+# <a name="java"></a>[Java](#tab/java)
+
+[TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet&preserve-view=true) 注釈を使用して関数から Table Storage 行を出力するには、次の 2 つのオプションがあります。
+
+- **戻り値**:関数自体に注釈を適用すると、関数の戻り値が Table Storage 行として永続化されます。
+
+- **命令型**:メッセージ値を明示的に設定するには、[`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) 型の特定のパラメーターに注釈を適用します。この場合、`T` には `PartitionKey` と `RowKey` のプロパティが含まれます。 多くの場合、これらのプロパティには `ITableEntity` の実装や `TableEntity` の継承が伴います。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `context.bindings.<name>` を使用して出力イベントにアクセスします。`<name>` は *function.json* の `name` プロパティで指定された値です。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+テーブル データに書き込むには、`Push-OutputBinding` コマンドレットを使用して、`-Name TableBinding` パラメーターと、行データに等しい `-Value` パラメーターを設定します。 詳細については、[PowerShell の例](#example)を参照してください。
 
 # <a name="python"></a>[Python](#tab/python)
 
 関数から Table Storage 行メッセージを出力するには、次の 2 つのオプションがあります。
 
-- **戻り値** : *function.json* 内の `name` プロパティを `$return` に設定します。 この構成では、関数の戻り値は Table Storage 行として永続化されます。
+- **戻り値**:*function.json* 内の `name` プロパティを `$return` に設定します。 この構成では、関数の戻り値は Table Storage 行として永続化されます。
 
-- **命令型** : [Out](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) 型として宣言されたパラメーターの [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none) メソッドに値を渡します。 `set` に渡された値は、イベント ハブ メッセージとして永続化されます。
-
-# <a name="java"></a>[Java](#tab/java)
-
-[TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet&preserve-view=true) 注釈を使用して関数から Table Storage 行を出力するには、次の 2 つのオプションがあります。
-
-- **戻り値** :関数自体に注釈を適用すると、関数の戻り値が Table Storage 行として永続化されます。
-
-- **命令型** :メッセージ値を明示的に設定するには、 [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) 型の特定のパラメーターに注釈を適用します。この場合、`T` には `PartitionKey` と `RowKey` のプロパティが含まれます。 多くの場合、これらのプロパティには `ITableEntity` の実装や `TableEntity` の継承が伴います。
+- **命令型**:[Out](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) 型として宣言されたパラメーターの [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none) メソッドに値を渡します。 `set` に渡された値は、イベント ハブ メッセージとして永続化されます。
 
 ---
 

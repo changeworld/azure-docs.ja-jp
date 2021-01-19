@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/03/2020
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: b55e66eaf4bda06369711e389629b6a20765271d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 18d75d5c49eecb0fe198ce2afc432870fb3783e6
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522208"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969046"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>チュートリアル:Qlik Sense Enterprise と Azure Active Directory の統合
 
@@ -26,7 +26,6 @@ ms.locfileid: "92522208"
 * ユーザーが自分の Azure AD アカウントを使用して Qlik Sense Enterprise に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,42 +37,40 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 
-* Qlik Sense Enterprise では、 **SP** によって開始される SSO がサポートされます。
-* Qlik Sense Enterprise では、 **ジャストインタイム プロビジョニング** がサポートされます。
-
-* Qlik Sense Enterprise を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* Qlik Sense Enterprise では、**SP** によって開始される SSO がサポートされます。
+* Qlik Sense Enterprise では、**ジャストインタイム プロビジョニング** がサポートされます。
 
 ## <a name="adding-qlik-sense-enterprise-from-the-gallery"></a>ギャラリーからの Qlik Sense Enterprise の追加
 
 Azure AD への Qlik Sense Enterprise の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Qlik Sense Enterprise を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Qlik Sense Enterprise** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Qlik Sense Enterprise**」と入力します。
 1. 結果のパネルから **[Qlik Sense Enterprise]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-qlik-sense-enterprise"></a>Qlik Sense Enterprise の Azure AD SSO の構成とテスト
 
 **Britta Simon** というテスト ユーザーを使用して、Qlik Sense Enterprise に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと Qlik Sense Enterprise の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Qlik Sense Enterprise で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+Qlik Sense Enterprise に対する Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[Qlik Sense Enterprise SSO の構成](#configure-qlik-sense-enterprise-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    * **[Qlik Sense Enterprise のテスト ユーザーの作成](#create-qlik-sense-enterprise-test-user)** - Qlik Sense Enterprise で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+    1. **[Qlik Sense Enterprise のテスト ユーザーの作成](#create-qlik-sense-enterprise-test-user)** - Qlik Sense Enterprise で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Qlik Sense Enterprise** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Qlik Sense Enterprise** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -83,12 +80,14 @@ Qlik Sense Enterprise で Azure AD SSO を構成してテストするには、�
 
     b. **[識別子]** ボックスに、次のいずれかのパターンで URL を入力します。
 
-    ```http
-    https://<Fully Qualified Domain Name>.qlikpoc.com
-    https://<Fully Qualified Domain Name>.qliksense.com
-    ```
+    | 識別子 |
+    |-------------|
+    | `https://<Fully Qualified Domain Name>.qlikpoc.com` |
+    | `https://<Fully Qualified Domain Name>.qliksense.com` |
+    |
+   
 
-    c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+    c. **[応答 URL]** ボックスに、 のパターンを使用して URL を入力します。
 
     `https://<Fully Qualified Domain Name>:443{/virtualproxyprefix}/samlauthn/`
 
@@ -118,15 +117,9 @@ Qlik Sense Enterprise で Azure AD SSO を構成してテストするには、�
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で、 **[Qlik Sense Enterprise]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **Britta Simon** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-qlik-sense-enterprise-sso"></a>Qlik Sense Enterprise SSO の構成
@@ -184,7 +177,7 @@ Qlik Sense Enterprise で Azure AD SSO を構成してテストするには、�
 
     d. **[SAML entity ID]** に、[SAML host URI] フィールドに入力したのと同じ値を入力します。
 
-    e. **[SAML IdP metadata]** に、以前に **Azure AD 構成からのフェデレーション メタデータの編集** に関するセクションで編集したファイルを指定します。  **IdP メタデータをアップロードする前に、このファイルを編集する必要があります** 。Azure AD と Qlik Sense サーバーの間で処理が正しく行われるように、ファイルの情報を削除してください。  **まだファイルを編集していない場合は、上記の手順に従ってください。**  ファイルを編集済みの場合は、[Browse (参照)] ボタンをクリックし、編集したメタデータ ファイルを選択して、仮想プロキシ構成にアップロードします。
+    e. **[SAML IdP metadata]** に、以前に **Azure AD 構成からのフェデレーション メタデータの編集** に関するセクションで編集したファイルを指定します。  **IdP メタデータをアップロードする前に、このファイルを編集する必要があります**。Azure AD と Qlik Sense サーバーの間で処理が正しく行われるように、ファイルの情報を削除してください。  **まだファイルを編集していない場合は、上記の手順に従ってください。**  ファイルを編集済みの場合は、[Browse (参照)] ボタンをクリックし、編集したメタデータ ファイルを選択して、仮想プロキシ構成にアップロードします。
 
     f. これらは Azure AD が Qlik Sense サーバーに送信する **UserID** を表します。  スキーマ リファレンス情報は、構成が終了した後に Azure アプリの画面から取得できます。  名前属性を使用するには、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
 
@@ -242,7 +235,7 @@ Qlik Sense Enterprise で Azure AD SSO を構成してテストするには、�
 
     ![[Download S P metadata]\(S P メタデータのダウンロード\) ボタンのスクリーンショット。][qs52]
 
-19. SP メタデータ ファイルを開きます。  **entityID** エントリと **AssertionConsumerService** エントリを確認します。  これらの値は、Azure AD アプリケーション構成の **識別子** 、 **サインオン URL** 、 **応答 URL** に対応しています。 一致しない場合は Azure AD アプリケーションの構成の **[Qlik Sense Enterprise のドメインと URL]** セクションにこれらの値を貼り付けて、Azure AD アプリケーションの構成ウィザードで置換する必要があります。
+19. SP メタデータ ファイルを開きます。  **entityID** エントリと **AssertionConsumerService** エントリを確認します。  これらの値は、Azure AD アプリケーション構成の **識別子**、**サインオン URL**、**応答 URL** に対応しています。 一致しない場合は Azure AD アプリケーションの構成の **[Qlik Sense Enterprise のドメインと URL]** セクションにこれらの値を貼り付けて、Azure AD アプリケーションの構成ウィザードで置換する必要があります。
 
     ![EntityDescriptor が表示されたプレーンテキスト エディターのスクリーンショット。entityID と AssertionConsumerService が強調表示されている。][qs53]
 
@@ -252,17 +245,18 @@ Qlik Sense Enterprise は **ジャストインタイム プロビジョニング
 
 ### <a name="test-sso"></a>SSO のテスト
 
-アクセス パネル上で [Qlik Sense Enterprise] タイルを選択すると、SSO を設定した Qlik Sense Enterprise に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-## <a name="additional-resources"></a>その他のリソース
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Qlik Sense Enterprise のサインオン URL にリダイレクトされます。 
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* Qlik Sense Enterprise のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Qlik Sense Enterprise] タイルをクリックすると、Qlik Sense Enterprise のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>次のステップ
+
+Qlik Sense Enterprise を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 <!--Image references-->
 

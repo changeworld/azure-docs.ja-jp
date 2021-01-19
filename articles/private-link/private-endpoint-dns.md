@@ -5,14 +5,14 @@ services: private-link
 author: mblanco77
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 01/12/2021
 ms.author: allensu
-ms.openlocfilehash: 1c296b157fbac1e4c8d3fefb2b8cc09ff2ccc7a8
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 859768345c2b88e38e09d897391ac8a3501fd901
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620598"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134077"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure プライベート エンドポイントの DNS 構成
 
@@ -68,7 +68,7 @@ Azure サービスについては、次の表に示すように、推奨され�
 | Azure Backup (Microsoft.RecoveryServices/vaults)/コンテナー | privatelink.{region}.backup.windowsazure.com | {region}.backup.windowsazure.com |
 | Azure Event Hubs (Microsoft.EventHub/namespaces)/名前空間 | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Service Bus (Microsoft.ServiceBus/namespaces)/名前空間 | privatelink.servicebus.windows.net | servicebus.windows.net |
-| Azure IoT Hub (Microsoft.Devices/IotHubs)/iotHub | privatelink.azure-devices.net | azure-devices.net |
+| Azure IoT Hub (Microsoft.Devices/IotHubs)/iotHub | privatelink.azure-devices.net<br/>privatelink.servicebus.windows.net<sup>1</sup> | azure-devices.net<br/>servicebus.windows.net |
 | Azure Relay (Microsoft.Relay/namespaces)/名前空間 | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Event Grid (Microsoft.EventGrid/topics)/トピック | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure Event Grid (Microsoft.EventGrid/domains)/ドメイン | privatelink.eventgrid.azure.net | eventgrid.azure.net |
@@ -83,6 +83,7 @@ Azure サービスについては、次の表に示すように、推奨され�
 | Azure Data Factory (Microsoft.DataFactory/factories ) / portal |  privatelink.azure.com  |  azure.com  |
 | Azure Cache for Redis (Microsoft.Cache/Redis) / redisCache | privatelink.redis.cache.windows.net | redis.cache.windows.net |
 
+<sup>1</sup>IoT Hub の組み込みのイベント ハブ互換エンドポイントで使用します。 詳細については、[IoT Hub の組み込みエンドポイントに対するプライベート リンクのサポート](../iot-hub/virtual-network-support.md#built-in-event-hub-compatible-endpoint)に関するページを参照してください。
  
 ## <a name="dns-configuration-scenarios"></a>DNS の構成シナリオ
 

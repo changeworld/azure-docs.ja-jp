@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: dec41a5e05d22891aae9d16280ebb6b0c8da3f20
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 49762b1844aec85ff55ae2a16243a231414b263f
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185115"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071580"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 以降に対する Azure Cosmos DB の入力バインド
 
@@ -300,7 +300,7 @@ namespace CosmosDBSamplesV2
 次の例は、ドキュメントの一覧を取得する [C# 関数](functions-dotnet-class-library.md)を示しています。 関数は、HTTP 要求によってトリガーされます。 コードでは、Azure Cosmos DB バインドによって提供される `DocumentClient` インスタンスを使用して、ドキュメントの一覧を読み取ります。 また、`DocumentClient` インスタンスは、書き込み操作に使用できます。
 
 > [!NOTE]
-> [IDocumentClient](/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet) インターフェイスを使用してテストを容易にすることもできます。
+> [IDocumentClient](/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet&preserve-view=true) インターフェイスを使用してテストを容易にすることもできます。
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -721,421 +721,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-このセクションには、次の例が含まれています。各例では、さまざまなソースから ID 値を指定して単一のドキュメントを読み取ります。
-
-* [キュー トリガー、JSON からの ID の検索](#queue-trigger-look-up-id-from-json-javascript)
-* [HTTP トリガー、クエリ文字列からの ID の検索](#http-trigger-look-up-id-from-query-string-javascript)
-* [HTTP トリガー、ルート データからの ID の検索](#http-trigger-look-up-id-from-route-data-javascript)
-* [キュー トリガー、SqlQuery を使用した複数のドキュメントの取得](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
-
-<a id="queue-trigger-look-up-id-from-json-javascript"></a>
-
-### <a name="queue-trigger-look-up-id-from-json"></a>キュー トリガー、JSON からの ID の検索
-
-次の例は、*function.json* ファイルの Cosmos DB 入力バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、1 つのドキュメントを読み取って、そのドキュメントのテキスト値を更新します。
-
-*function.json* ファイルのバインディング データを次に示します。
-
-```json
-{
-    "name": "inputDocumentIn",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "id" : "{queueTrigger_payload_property}",
-    "partitionKey": "{queueTrigger_payload_property}",
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "in"
-},
-{
-    "name": "inputDocumentOut",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "createIfNotExists": false,
-    "partitionKey": "{queueTrigger_payload_property}",
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "out"
-}
-```
-
-これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
-
-JavaScript コードを次に示します。
-
-```javascript
-    // Change input document contents using Azure Cosmos DB input binding, using context.bindings.inputDocumentOut
-    module.exports = function (context) {
-    context.bindings.inputDocumentOut = context.bindings.inputDocumentIn;
-    context.bindings.inputDocumentOut.text = "This was updated!";
-    context.done();
-    };
-```
-
-<a id="http-trigger-look-up-id-from-query-string-javascript"></a>
-
-### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP トリガー、クエリ文字列からの ID の検索
-
-次の例は、単一のドキュメントを取得する [JavaScript 関数](functions-reference-node.md)を示しています。 関数は、クエリ文字列を使用して検索のための ID とパーティション キー値を指定する HTTP 要求によってトリガーされます。 その ID とパーティション キー値は、指定されたデータベースとコレクションから `ToDoItem` ドキュメントを取得するために使用されます。
-
-*function.json* ファイルを次に示します。
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "name": "req",
-      "type": "httpTrigger",
-      "direction": "in",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "name": "$return",
-      "type": "http",
-      "direction": "out"
-    },
-    {
-      "type": "cosmosDB",
-      "name": "toDoItem",
-      "databaseName": "ToDoItems",
-      "collectionName": "Items",
-      "connectionStringSetting": "CosmosDBConnection",
-      "direction": "in",
-      "Id": "{Query.id}",
-      "PartitionKey": "{Query.partitionKeyValue}"
-    }
-  ],
-  "disabled": false
-}
-```
-
-JavaScript コードを次に示します。
-
-```javascript
-module.exports = function (context, req, toDoItem) {
-    context.log('JavaScript queue trigger function processed work item');
-    if (!toDoItem)
-    {
-        context.log("ToDo item not found");
-    }
-    else
-    {
-        context.log("Found ToDo item, Description=" + toDoItem.Description);
-    }
-
-    context.done();
-};
-```
-
-<a id="http-trigger-look-up-id-from-route-data-javascript"></a>
-
-### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP トリガー、ルート データからの ID の検索
-
-次の例は、単一のドキュメントを取得する [JavaScript 関数](functions-reference-node.md)を示しています。 関数は、ルート データを使用して検索のための ID とパーティション キー値を指定する HTTP 要求によってトリガーされます。 その ID とパーティション キー値は、指定されたデータベースとコレクションから `ToDoItem` ドキュメントを取得するために使用されます。
-
-*function.json* ファイルを次に示します。
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "name": "req",
-      "type": "httpTrigger",
-      "direction": "in",
-      "methods": [
-        "get",
-        "post"
-      ],
-      "route":"todoitems/{partitionKeyValue}/{id}"
-    },
-    {
-      "name": "$return",
-      "type": "http",
-      "direction": "out"
-    },
-    {
-      "type": "cosmosDB",
-      "name": "toDoItem",
-      "databaseName": "ToDoItems",
-      "collectionName": "Items",
-      "connectionStringSetting": "CosmosDBConnection",
-      "direction": "in",
-      "Id": "{id}",
-      "PartitionKey": "{partitionKeyValue}"
-    }
-  ],
-  "disabled": false
-}
-```
-
-JavaScript コードを次に示します。
-
-```javascript
-module.exports = function (context, req, toDoItem) {
-    context.log('JavaScript queue trigger function processed work item');
-    if (!toDoItem)
-    {
-        context.log("ToDo item not found");
-    }
-    else
-    {
-        context.log("Found ToDo item, Description=" + toDoItem.Description);
-    }
-
-    context.done();
-};
-```
-
-<a id="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>
-
-### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>キュー トリガー、SqlQuery を使用した複数のドキュメントの取得
-
-次の例は、*function.json* ファイルの Azure Cosmos DB 入力バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、SQL クエリで指定されている複数のドキュメントを、キュー トリガーを使用してクエリ パラメーターをカスタマイズすることで取得します。
-
-キュー トリガーがパラメーター `departmentId` を提供します。 `{ "departmentId" : "Finance" }` のキュー メッセージは、金融部門のすべてのレコードを返します。
-
-*function.json* ファイルのバインディング データを次に示します。
-
-```json
-{
-    "name": "documents",
-    "type": "cosmosDB",
-    "direction": "in",
-    "databaseName": "MyDb",
-    "collectionName": "MyCollection",
-    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
-    "connectionStringSetting": "CosmosDBConnection"
-}
-```
-
-これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
-
-JavaScript コードを次に示します。
-
-```javascript
-    module.exports = function (context, input) {
-        var documents = context.bindings.documents;
-        for (var i = 0; i < documents.length; i++) {
-            var document = documents[i];
-            // operate on each document
-        }
-        context.done();
-    };
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-このセクションには、次の例が含まれています。各例では、さまざまなソースから ID 値を指定して単一のドキュメントを読み取ります。
-
-* [キュー トリガー、JSON からの ID の検索](#queue-trigger-look-up-id-from-json-python)
-* [HTTP トリガー、クエリ文字列からの ID の検索](#http-trigger-look-up-id-from-query-string-python)
-* [HTTP トリガー、ルート データからの ID の検索](#http-trigger-look-up-id-from-route-data-python)
-* [キュー トリガー、SqlQuery を使用した複数のドキュメントの取得](#queue-trigger-get-multiple-docs-using-sqlquery-python)
-
-<a id="queue-trigger-look-up-id-from-json-python"></a>
-
-### <a name="queue-trigger-look-up-id-from-json"></a>キュー トリガー、JSON からの ID の検索
-
-次の例は、*function.json* ファイルの Cosmos DB 入力バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。 この関数は、1 つのドキュメントを読み取って、そのドキュメントのテキスト値を更新します。
-
-*function.json* ファイルのバインディング データを次に示します。
-
-```json
-{
-    "name": "documents",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "id" : "{queueTrigger_payload_property}",
-    "partitionKey": "{queueTrigger_payload_property}",
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "in"
-},
-{
-    "name": "$return",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "createIfNotExists": false,
-    "partitionKey": "{queueTrigger_payload_property}",
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "out"
-}
-```
-
-これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
-
-Python コードを次に示します。
-
-```python
-import azure.functions as func
-
-
-def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Document:
-    if documents:
-        document = documents[0]
-        document['text'] = 'This was updated!'
-        return document
-```
-
-<a id="http-trigger-look-up-id-from-query-string-python"></a>
-
-### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP トリガー、クエリ文字列からの ID の検索
-
-次の例は、単一のドキュメントを取得する [Python 関数](functions-reference-python.md)を示しています。 関数は、クエリ文字列を使用して検索のための ID とパーティション キー値を指定する HTTP 要求によってトリガーされます。 その ID とパーティション キー値は、指定されたデータベースとコレクションから `ToDoItem` ドキュメントを取得するために使用されます。
-
-*function.json* ファイルを次に示します。
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "name": "req",
-      "type": "httpTrigger",
-      "direction": "in",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "name": "$return",
-      "type": "http",
-      "direction": "out"
-    },
-    {
-      "type": "cosmosDB",
-      "name": "todoitems",
-      "databaseName": "ToDoItems",
-      "collectionName": "Items",
-      "connectionStringSetting": "CosmosDBConnection",
-      "direction": "in",
-      "Id": "{Query.id}",
-      "PartitionKey": "{Query.partitionKeyValue}"
-    }
-  ],
-  "scriptFile": "__init__.py"
-}
-```
-
-Python コードを次に示します。
-
-```python
-import logging
-import azure.functions as func
-
-
-def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
-    if not todoitems:
-        logging.warning("ToDo item not found")
-    else:
-        logging.info("Found ToDo item, Description=%s",
-                     todoitems[0]['description'])
-
-    return 'OK'
-```
-
-<a id="http-trigger-look-up-id-from-route-data-python"></a>
-
-### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP トリガー、ルート データからの ID の検索
-
-次の例は、単一のドキュメントを取得する [Python 関数](functions-reference-python.md)を示しています。 関数は、ルート データを使用して検索のための ID とパーティション キー値を指定する HTTP 要求によってトリガーされます。 その ID とパーティション キー値は、指定されたデータベースとコレクションから `ToDoItem` ドキュメントを取得するために使用されます。
-
-*function.json* ファイルを次に示します。
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "name": "req",
-      "type": "httpTrigger",
-      "direction": "in",
-      "methods": [
-        "get",
-        "post"
-      ],
-      "route":"todoitems/{partitionKeyValue}/{id}"
-    },
-    {
-      "name": "$return",
-      "type": "http",
-      "direction": "out"
-    },
-    {
-      "type": "cosmosDB",
-      "name": "todoitems",
-      "databaseName": "ToDoItems",
-      "collectionName": "Items",
-      "connection": "CosmosDBConnection",
-      "direction": "in",
-      "Id": "{id}",
-      "PartitionKey": "{partitionKeyValue}"
-    }
-  ],
-  "disabled": false,
-  "scriptFile": "__init__.py"
-}
-```
-
-Python コードを次に示します。
-
-```python
-import logging
-import azure.functions as func
-
-
-def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
-    if not todoitems:
-        logging.warning("ToDo item not found")
-    else:
-        logging.info("Found ToDo item, Description=%s",
-                     todoitems[0]['description'])
-    return 'OK'
-```
-
-<a id="queue-trigger-get-multiple-docs-using-sqlquery-python"></a>
-
-### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>キュー トリガー、SqlQuery を使用した複数のドキュメントの取得
-
-次の例は、*function.json* ファイルの Azure Cosmos DB 入力バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。 この関数は、SQL クエリで指定されている複数のドキュメントを、キュー トリガーを使用してクエリ パラメーターをカスタマイズすることで取得します。
-
-キュー トリガーがパラメーター `departmentId` を提供します。 `{ "departmentId" : "Finance" }` のキュー メッセージは、金融部門のすべてのレコードを返します。
-
-*function.json* ファイルのバインディング データを次に示します。
-
-```json
-{
-    "name": "documents",
-    "type": "cosmosDB",
-    "direction": "in",
-    "databaseName": "MyDb",
-    "collectionName": "MyCollection",
-    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
-    "connectionStringSetting": "CosmosDBConnection"
-}
-```
-
-これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
-
-Python コードを次に示します。
-
-```python
-import azure.functions as func
-
-def main(queuemsg: func.QueueMessage, documents: func.DocumentList):
-    for document in documents:
-        # operate on each document
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 このセクションには、次の例が含まれています。
@@ -1400,6 +985,636 @@ public class DocsFromRouteSqlQuery {
 }
  ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+このセクションには、次の例が含まれています。各例では、さまざまなソースから ID 値を指定して単一のドキュメントを読み取ります。
+
+* [キュー トリガー、JSON からの ID の検索](#queue-trigger-look-up-id-from-json-javascript)
+* [HTTP トリガー、クエリ文字列からの ID の検索](#http-trigger-look-up-id-from-query-string-javascript)
+* [HTTP トリガー、ルート データからの ID の検索](#http-trigger-look-up-id-from-route-data-javascript)
+* [キュー トリガー、SqlQuery を使用した複数のドキュメントの取得](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
+
+<a id="queue-trigger-look-up-id-from-json-javascript"></a>
+
+### <a name="queue-trigger-look-up-id-from-json"></a>キュー トリガー、JSON からの ID の検索
+
+次の例は、*function.json* ファイルの Cosmos DB 入力バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、1 つのドキュメントを読み取って、そのドキュメントのテキスト値を更新します。
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+    "name": "inputDocumentIn",
+    "type": "cosmosDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "id" : "{queueTrigger_payload_property}",
+    "partitionKey": "{queueTrigger_payload_property}",
+    "connectionStringSetting": "MyAccount_COSMOSDB",
+    "direction": "in"
+},
+{
+    "name": "inputDocumentOut",
+    "type": "cosmosDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "createIfNotExists": false,
+    "partitionKey": "{queueTrigger_payload_property}",
+    "connectionStringSetting": "MyAccount_COSMOSDB",
+    "direction": "out"
+}
+```
+
+これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
+
+JavaScript コードを次に示します。
+
+```javascript
+    // Change input document contents using Azure Cosmos DB input binding, using context.bindings.inputDocumentOut
+    module.exports = function (context) {
+    context.bindings.inputDocumentOut = context.bindings.inputDocumentIn;
+    context.bindings.inputDocumentOut.text = "This was updated!";
+    context.done();
+    };
+```
+
+<a id="http-trigger-look-up-id-from-query-string-javascript"></a>
+
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP トリガー、クエリ文字列からの ID の検索
+
+次の例は、単一のドキュメントを取得する [JavaScript 関数](functions-reference-node.md)を示しています。 関数は、クエリ文字列を使用して検索のための ID とパーティション キー値を指定する HTTP 要求によってトリガーされます。 その ID とパーティション キー値は、指定されたデータベースとコレクションから `ToDoItem` ドキュメントを取得するために使用されます。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "toDoItem",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connectionStringSetting": "CosmosDBConnection",
+      "direction": "in",
+      "Id": "{Query.id}",
+      "PartitionKey": "{Query.partitionKeyValue}"
+    }
+  ],
+  "disabled": false
+}
+```
+
+JavaScript コードを次に示します。
+
+```javascript
+module.exports = function (context, req, toDoItem) {
+    context.log('JavaScript queue trigger function processed work item');
+    if (!toDoItem)
+    {
+        context.log("ToDo item not found");
+    }
+    else
+    {
+        context.log("Found ToDo item, Description=" + toDoItem.Description);
+    }
+
+    context.done();
+};
+```
+
+<a id="http-trigger-look-up-id-from-route-data-javascript"></a>
+
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP トリガー、ルート データからの ID の検索
+
+次の例は、単一のドキュメントを取得する [JavaScript 関数](functions-reference-node.md)を示しています。 関数は、ルート データを使用して検索のための ID とパーティション キー値を指定する HTTP 要求によってトリガーされます。 その ID とパーティション キー値は、指定されたデータベースとコレクションから `ToDoItem` ドキュメントを取得するために使用されます。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ],
+      "route":"todoitems/{partitionKeyValue}/{id}"
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "toDoItem",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connectionStringSetting": "CosmosDBConnection",
+      "direction": "in",
+      "Id": "{id}",
+      "PartitionKey": "{partitionKeyValue}"
+    }
+  ],
+  "disabled": false
+}
+```
+
+JavaScript コードを次に示します。
+
+```javascript
+module.exports = function (context, req, toDoItem) {
+    context.log('JavaScript queue trigger function processed work item');
+    if (!toDoItem)
+    {
+        context.log("ToDo item not found");
+    }
+    else
+    {
+        context.log("Found ToDo item, Description=" + toDoItem.Description);
+    }
+
+    context.done();
+};
+```
+
+<a id="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>
+
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>キュー トリガー、SqlQuery を使用した複数のドキュメントの取得
+
+次の例は、*function.json* ファイルの Azure Cosmos DB 入力バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、SQL クエリで指定されている複数のドキュメントを、キュー トリガーを使用してクエリ パラメーターをカスタマイズすることで取得します。
+
+キュー トリガーがパラメーター `departmentId` を提供します。 `{ "departmentId" : "Finance" }` のキュー メッセージは、金融部門のすべてのレコードを返します。
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+    "name": "documents",
+    "type": "cosmosDB",
+    "direction": "in",
+    "databaseName": "MyDb",
+    "collectionName": "MyCollection",
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
+    "connectionStringSetting": "CosmosDBConnection"
+}
+```
+
+これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
+
+JavaScript コードを次に示します。
+
+```javascript
+module.exports = function (context, input) {
+  var documents = context.bindings.documents;
+  for (var i = 0; i < documents.length; i++) {
+    var document = documents[i];
+    // operate on each document
+  }
+  context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+* [キュー トリガー、JSON からの ID の検索](#queue-trigger-look-up-id-from-json-ps)
+* [HTTP トリガー、クエリ文字列からの ID の検索](#http-trigger-id-query-string-ps)
+* [HTTP トリガー、ルート データからの ID の検索](#http-trigger-id-route-data-ps)
+* [キュー トリガー、SqlQuery を使用した複数のドキュメントの取得](#queue-trigger-multiple-docs-sqlquery-ps)
+
+### <a name="queue-trigger-look-up-id-from-json"></a>キュー トリガー、JSON からの ID の検索
+
+次の例は、1つの Cosmos DB ドキュメントを読み取り、更新する方法を示しています。 ドキュメントの一意識別子は、キュー メッセージの JSON 値によって提供されます。
+
+Cosmos DB 入力バインドは、関数の構成ファイル (_function.json_) で見つかったバインドの一覧の先頭に表示されます。
+
+<a name="queue-trigger-look-up-id-from-json-ps"></a>
+
+```json
+{
+  "name": "InputDocumentIn",
+  "type": "cosmosDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "id" : "{queueTrigger_payload_property}",
+  "partitionKey": "{queueTrigger_payload_property}",
+  "connectionStringSetting": "CosmosDBConnection",
+  "direction": "in"
+},
+{
+  "name": "InputDocumentOut",
+  "type": "cosmosDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "createIfNotExists": false,
+  "partitionKey": "{queueTrigger_payload_property}",
+  "connectionStringSetting": "CosmosDBConnection",
+  "direction": "out"
+}
+```
+
+_run.ps1_ ファイルには、受信ドキュメントを読み取り、変更を出力する PowerShell コードが含まれます。
+
+```powershell
+param($QueueItem, $InputDocumentIn, $TriggerMetadata) 
+
+$Document = $InputDocumentIn 
+$Document.text = 'This was updated!' 
+
+Push-OutputBinding -Name InputDocumentOut -Value $Document  
+```
+
+<a name="http-trigger-id-query-string-ps"></a>
+
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP トリガー、クエリ文字列からの ID の検索
+
+次の例は、Web API から 1つの Cosmos DB ドキュメントを読み取り、更新する方法を示しています。 ドキュメントの一意識別子は、バインドの `"Id": "{Query.Id}"` プロパティで定義されているように、HTTP 要求の querystring パラメーターを通じて提供されます。
+
+Cosmos DB 入力バインドは、関数の構成ファイル (_function.json_) で見つかったバインドの一覧の先頭に表示されます。
+
+```json
+{ 
+  "bindings": [ 
+    { 
+      "type": "cosmosDB", 
+      "name": "ToDoItem", 
+      "databaseName": "ToDoItems", 
+      "collectionName": "Items", 
+      "connectionStringSetting": "CosmosDBConnection", 
+      "direction": "in", 
+      "Id": "{Query.id}", 
+      "PartitionKey": "{Query.partitionKeyValue}" 
+    },
+    { 
+      "authLevel": "anonymous", 
+      "name": "Request", 
+      "type": "httpTrigger", 
+      "direction": "in", 
+      "methods": [ 
+        "get", 
+        "post" 
+      ] 
+    }, 
+    { 
+      "name": "Response", 
+      "type": "http", 
+      "direction": "out" 
+    },
+  ], 
+  "disabled": false 
+} 
+```
+  
+_run.ps1_ ファイルには、受信ドキュメントを読み取り、変更を出力する PowerShell コードが含まれます。
+
+```powershell
+using namespace System.Net 
+
+param($Request, $ToDoItem, $TriggerMetadata) 
+
+Write-Host 'PowerShell HTTP trigger function processed a request' 
+
+if (-not $ToDoItem) { 
+    Write-Host 'ToDo item not found' 
+
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::NotFound 
+        Body = $ToDoItem.Description 
+    }) 
+
+} else { 
+
+    Write-Host "Found ToDo item, Description=$($ToDoItem.Description)" 
+ 
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::OK 
+        Body = $ToDoItem.Description 
+    }) 
+}
+```
+
+<a name="http-trigger-id-route-data-ps"></a>
+
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP トリガー、ルート データからの ID の検索
+
+次の例は、Web API から 1つの Cosmos DB ドキュメントを読み取り、更新する方法を示しています。 ドキュメントの一意識別子は、route パラメーターを通じて提供されます。 route パラメーターは、HTTP 要求バインドの `route` プロパティで定義され、Cosmos DB `"Id": "{Id}"` バインド プロパティで参照されます。
+
+Cosmos DB 入力バインドは、関数の構成ファイル (_function.json_) で見つかったバインドの一覧の先頭に表示されます。
+
+```json
+{ 
+  "bindings": [ 
+    { 
+      "type": "cosmosDB", 
+      "name": "ToDoItem", 
+      "databaseName": "ToDoItems", 
+      "collectionName": "Items", 
+      "connectionStringSetting": "CosmosDBConnection", 
+      "direction": "in", 
+      "Id": "{id}", 
+      "PartitionKey": "{partitionKeyValue}" 
+    },
+    { 
+      "authLevel": "anonymous", 
+      "name": "Request", 
+      "type": "httpTrigger", 
+      "direction": "in", 
+      "methods": [ 
+        "get", 
+        "post" 
+      ], 
+      "route": "todoitems/{partitionKeyValue}/{id}" 
+    }, 
+    { 
+      "name": "Response", 
+      "type": "http", 
+      "direction": "out" 
+    }
+  ], 
+  "disabled": false 
+} 
+```
+
+_run.ps1_ ファイルには、受信ドキュメントを読み取り、変更を出力する PowerShell コードが含まれます。
+
+```powershell
+using namespace System.Net 
+
+param($Request, $ToDoItem, $TriggerMetadata) 
+
+Write-Host 'PowerShell HTTP trigger function processed a request' 
+
+if (-not $ToDoItem) { 
+    Write-Host 'ToDo item not found' 
+
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::NotFound 
+        Body = $ToDoItem.Description 
+    }) 
+
+} else { 
+    Write-Host "Found ToDo item, Description=$($ToDoItem.Description)" 
+  
+    Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{ 
+        StatusCode = [HttpStatusCode]::OK 
+        Body = $ToDoItem.Description 
+    }) 
+} 
+```
+
+<a name="queue-trigger-multiple-docs-sqlquery-ps"></a>
+
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>キュー トリガー、SqlQuery を使用した複数のドキュメントの取得
+
+次の例は、複数の Cosmos DB ドキュメントを読み取る方法を示しています。 関数の構成ファイル (_function.json_) によって、`sqlQuery` を含むバインド プロパティが定義されます。 `sqlQuery` プロパティに指定された SQL ステートメントによって、関数に提供されるドキュメントのセットが選択されます。
+
+```json
+{ 
+  "name": "Documents", 
+  "type": "cosmosDB", 
+  "direction": "in", 
+  "databaseName": "MyDb", 
+  "collectionName": "MyCollection", 
+  "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}", 
+  "connectionStringSetting": "CosmosDBConnection" 
+} 
+```
+
+_run1.ps_ ファイルには、受信ドキュメントを読み取る PowerShell コードが含まれます。
+
+```powershell
+param($QueueItem, $Documents, $TriggerMetadata) 
+
+foreach ($Document in $Documents) { 
+    # operate on each document 
+} 
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+このセクションには、次の例が含まれています。各例では、さまざまなソースから ID 値を指定して単一のドキュメントを読み取ります。
+
+* [キュー トリガー、JSON からの ID の検索](#queue-trigger-look-up-id-from-json-python)
+* [HTTP トリガー、クエリ文字列からの ID の検索](#http-trigger-look-up-id-from-query-string-python)
+* [HTTP トリガー、ルート データからの ID の検索](#http-trigger-look-up-id-from-route-data-python)
+* [キュー トリガー、SqlQuery を使用した複数のドキュメントの取得](#queue-trigger-get-multiple-docs-using-sqlquery-python)
+
+<a id="queue-trigger-look-up-id-from-json-python"></a>
+
+### <a name="queue-trigger-look-up-id-from-json"></a>キュー トリガー、JSON からの ID の検索
+
+次の例は、*function.json* ファイルの Cosmos DB 入力バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。 この関数は、1 つのドキュメントを読み取って、そのドキュメントのテキスト値を更新します。
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+    "name": "documents",
+    "type": "cosmosDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "id" : "{queueTrigger_payload_property}",
+    "partitionKey": "{queueTrigger_payload_property}",
+    "connectionStringSetting": "MyAccount_COSMOSDB",
+    "direction": "in"
+},
+{
+    "name": "$return",
+    "type": "cosmosDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "createIfNotExists": false,
+    "partitionKey": "{queueTrigger_payload_property}",
+    "connectionStringSetting": "MyAccount_COSMOSDB",
+    "direction": "out"
+}
+```
+
+これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
+
+Python コードを次に示します。
+
+```python
+import azure.functions as func
+
+
+def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Document:
+    if documents:
+        document = documents[0]
+        document['text'] = 'This was updated!'
+        return document
+```
+
+<a id="http-trigger-look-up-id-from-query-string-python"></a>
+
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP トリガー、クエリ文字列からの ID の検索
+
+次の例は、単一のドキュメントを取得する [Python 関数](functions-reference-python.md)を示しています。 関数は、クエリ文字列を使用して検索のための ID とパーティション キー値を指定する HTTP 要求によってトリガーされます。 その ID とパーティション キー値は、指定されたデータベースとコレクションから `ToDoItem` ドキュメントを取得するために使用されます。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "todoitems",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connectionStringSetting": "CosmosDBConnection",
+      "direction": "in",
+      "Id": "{Query.id}",
+      "PartitionKey": "{Query.partitionKeyValue}"
+    }
+  ],
+  "scriptFile": "__init__.py"
+}
+```
+
+Python コードを次に示します。
+
+```python
+import logging
+import azure.functions as func
+
+
+def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
+    if not todoitems:
+        logging.warning("ToDo item not found")
+    else:
+        logging.info("Found ToDo item, Description=%s",
+                     todoitems[0]['description'])
+
+    return 'OK'
+```
+
+<a id="http-trigger-look-up-id-from-route-data-python"></a>
+
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP トリガー、ルート データからの ID の検索
+
+次の例は、単一のドキュメントを取得する [Python 関数](functions-reference-python.md)を示しています。 関数は、ルート データを使用して検索のための ID とパーティション キー値を指定する HTTP 要求によってトリガーされます。 その ID とパーティション キー値は、指定されたデータベースとコレクションから `ToDoItem` ドキュメントを取得するために使用されます。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ],
+      "route":"todoitems/{partitionKeyValue}/{id}"
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "todoitems",
+      "databaseName": "ToDoItems",
+      "collectionName": "Items",
+      "connection": "CosmosDBConnection",
+      "direction": "in",
+      "Id": "{id}",
+      "PartitionKey": "{partitionKeyValue}"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "__init__.py"
+}
+```
+
+Python コードを次に示します。
+
+```python
+import logging
+import azure.functions as func
+
+
+def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
+    if not todoitems:
+        logging.warning("ToDo item not found")
+    else:
+        logging.info("Found ToDo item, Description=%s",
+                     todoitems[0]['description'])
+    return 'OK'
+```
+
+<a id="queue-trigger-get-multiple-docs-using-sqlquery-python"></a>
+
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>キュー トリガー、SqlQuery を使用した複数のドキュメントの取得
+
+次の例は、*function.json* ファイルの Azure Cosmos DB 入力バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。 この関数は、SQL クエリで指定されている複数のドキュメントを、キュー トリガーを使用してクエリ パラメーターをカスタマイズすることで取得します。
+
+キュー トリガーがパラメーター `departmentId` を提供します。 `{ "departmentId" : "Finance" }` のキュー メッセージは、金融部門のすべてのレコードを返します。
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+    "name": "documents",
+    "type": "cosmosDB",
+    "direction": "in",
+    "databaseName": "MyDb",
+    "collectionName": "MyCollection",
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
+    "connectionStringSetting": "CosmosDBConnection"
+}
+```
+
+これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
+
+Python コードを次に示します。
+
+```python
+import azure.functions as func
+
+def main(queuemsg: func.QueueMessage, documents: func.DocumentList):
+    for document in documents:
+        # operate on each document
+```
+
  ---
 
 ## <a name="attributes-and-annotations"></a>属性と注釈
@@ -1414,17 +1629,21 @@ public class DocsFromRouteSqlQuery {
 
 属性は、C# スクリプトではサポートされていません。
 
+# <a name="java"></a>[Java](#tab/java)
+
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)から、Cosmos DB に書き込むパラメーターに `@CosmosDBOutput` 注釈を使用します。 注釈パラメーターの型は `OutputBinding<T>` にするようにします。ここで、`T` は Java のネイティブ型または POJO のどちらかです。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 属性は、JavaScript ではサポートされていません。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+属性は、PowerShell ではサポートされていません。
+
 # <a name="python"></a>[Python](#tab/python)
 
 属性は、Python ではサポートされていません。
-
-# <a name="java"></a>[Java](#tab/java)
-
-[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)から、Cosmos DB に書き込むパラメーターに `@CosmosDBOutput` 注釈を使用します。 注釈パラメーターの型は `OutputBinding<T>` にするようにします。ここで、`T` は Java のネイティブ型または POJO のどちらかです。
 
 ---
 
@@ -1457,17 +1676,21 @@ public class DocsFromRouteSqlQuery {
 
 関数が正常に終了したときに、名前付き入力パラメーターを介した入力ドキュメントへの変更がすべて自動的に保持されます。
 
+# <a name="java"></a>[Java](#tab/java)
+
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)の [@CosmosDBInput](/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) 注釈によって Cosmos DB データは関数に公開されます。 この注釈は、Java のネイティブ型、POJO、または `Optional<T>` を使用した null 許容値で使用できます。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-関数の終了時に更新が自動的に行われることはありません。 代わりに、`context.bindings.<documentName>In` と `context.bindings.<documentName>Out` を使用して、更新を行います。 JavaScript の例を参照してください。
+関数の終了時に更新が自動的に行われることはありません。 代わりに、`context.bindings.<documentName>In` と `context.bindings.<documentName>Out` を使用して、更新を行います。 詳細については、「[JavaScript の例](#example)」を参照してください。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+関数の終了時にドキュメントへの更新が自動的に行われることはありません。 関数でドキュメントを更新するには、[出力バインド](./functions-bindings-cosmosdb-v2-input.md)を使用します。 詳細については、「[PowerShell の例](#example)」を参照してください。
 
 # <a name="python"></a>[Python](#tab/python)
 
 データは、`DocumentList` パラメーターを介して関数から使用できるようになります。 ドキュメントに加えられた変更は、自動的には保存されません。
-
-# <a name="java"></a>[Java](#tab/java)
-
-[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)の [@CosmosDBInput](/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) 注釈によって Cosmos DB データは関数に公開されます。 この注釈は、Java のネイティブ型、POJO、または `Optional<T>` を使用した null 許容値で使用できます。
 
 ---
 

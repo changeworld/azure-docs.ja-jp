@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9d3a00491bc0628244a5a7907f0dee03a5f8d3c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fdff7e62753e75a14d6711b77dd451603353dae5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744195"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012837"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory の認証方法 - 電話オプション
 
@@ -58,6 +58,8 @@ Azure AD の電話認証で問題が発生した場合は、次のトラブル�
 
 * サインイン中の [You've hit our limit on verification calls]\(確認呼び出しの上限に達しました\) エラー メッセージまたは [You've hit our limit on text verification codes]\(テキスト確認コードの上限に達しました\) エラー メッセージ
    * Microsoft は、同じユーザーが短時間に認証の試行を繰り返し行うことを制限する場合があります。 この制限は、Microsoft Authenticator または確認コードには適用されません。 これらの制限に達した場合は、Authenticator アプリまたは確認コードを使用するか、数分後にもう一度サインインを試行することができます。
+* サインイン中に「申し訳ありませんが、アカウントの確認に問題が生じています」というエラー メッセージ
+   * Microsoft では、音声または SMS 認証の失敗した試行回数が多いことが原因で、同じユーザー、電話番号、または組織によって実行される音声または SMS 認証の試行を制限したりブロックしたりすることがあります。 このエラーが発生した場合は、Authenticator アプリや確認コードなどの別の方法を試したり、管理者に連絡してサポートを受けたりすることができます。
 * 1 つのデバイスで発信者 ID がブロックされる。
    * デバイスで構成されているすべてのブロック済み番号を確認します。
 * 電話番号が間違っているか、国/地域コードが正しくない。または、個人の電話番号と勤務先の電話番号を混同している。

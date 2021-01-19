@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 5841af4225f88b36fe727b60a597af208ac830f5
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: 92d0dad86b3f048eb96dd7b17ed09f6e20d7cde2
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827174"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063299"
 ---
 # <a name="microsoft-identity-platform-token-exchange-scenarios-with-saml-and-oidcoauth"></a>SAML と OIDC または OAuth を使用した Microsoft ID プラットフォーム のトークン交換のシナリオ
 
@@ -30,7 +30,7 @@ SAML と OpenID Connect (OIDC) または OAuth は、シングル サインオ�
 一般的な方法は、OIDC/OAuth スタックをアプリに追加することです。 両方の標準が実装されているアプリでは、セッション Cookie を使用できます。 トークンを明示的に交換しません。 SAML を使用してユーザーをログインさせます。これにより、セッション Cookie が生成されます。 Graph API により OAuth フローが呼び出されたときに、そのセッション Cookie を使用して認証を行います。 この方法で条件付きアクセスチェックに合格したと見なされ、ユーザーが承認されます。
 
 > [!NOTE]
-> OIDC または OAuth 動作の追加に推奨されるライブラリは、Microsoft Authentication Library (MSAL) です。 MSAL の詳細については、「[Microsoft Authentication Library (MSAL) の概要](msal-overview.md)」を参照してください。 以前のライブラリは Active Directory 認証ライブラリ (ADAL) と呼ばれていましたが、MSAL がその後継であるため、推奨されません。
+> OIDC または OAuth 動作の追加に推奨されるライブラリは、Microsoft Authentication Library (MSAL) です。 MSAL の詳細については、[Microsoft Authentication Library (MSAL) の概要](msal-overview.md)に関するページを参照してください。 以前のライブラリは Active Directory 認証ライブラリ (ADAL) と呼ばれていましたが、MSAL がその後継であるため、推奨されません。
 
 ## <a name="next-steps"></a>次のステップ
 - [認証フローとアプリケーションのシナリオ](authentication-flows-app-scenarios.md)

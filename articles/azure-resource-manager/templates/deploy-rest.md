@@ -3,12 +3,12 @@ title: REST API とテンプレートを使用してリソースをデプロイ�
 description: Azure Resource Manager と Resource Manager REST API を使用してリソースを Azure にデプロイします。 リソースは Resource Manager テンプレートで定義されます。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: d1c8a365153007d3337d922bc163ba3767eeddc9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 77192aff9ed4fe33269b5e11891c30e15bc312dd
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675403"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028966"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-resource-manager-rest-api"></a>ARM テンプレートと Azure Resource Manager REST API を使用してリソースをデプロイする
 
@@ -20,13 +20,13 @@ ms.locfileid: "92675403"
 
 リソース グループ、Azure サブスクリプション、管理グループ、またはテナントをデプロイのターゲットにすることができます。 使用するコマンドは、デプロイのスコープに応じて異なります。
 
-* **リソース グループ** にデプロイするには、 [デプロイ - 作成](/rest/api/resources/deployments/createorupdate)に関するページのコマンドを使用します。 要求は以下に送信されます。
+- **リソース グループ** にデプロイするには、[デプロイ - 作成](/rest/api/resources/deployments/createorupdate)に関するページのコマンドを使用します。 要求は以下に送信されます。
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
-* **サブスクリプション** にデプロイするには、 [デプロイ - サブスクリプション スコープで作成](/rest/api/resources/deployments/createorupdateatsubscriptionscope)に関するページのコマンドを使用します。 要求は以下に送信されます。
+- **サブスクリプション** にデプロイするには、[デプロイ - サブスクリプション スコープで作成](/rest/api/resources/deployments/createorupdateatsubscriptionscope)に関するページのコマンドを使用します。 要求は以下に送信されます。
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -34,7 +34,7 @@ ms.locfileid: "92675403"
 
   サブスクリプション レベルでのデプロイの詳細については、「[サブスクリプション レベルでリソース グループとリソースを作成する](deploy-to-subscription.md)」を参照してください。
 
-* **管理グループ** にデプロイするには、 [デプロイ - 管理グループ スコープで作成](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)に関するページを参照してください。 要求は以下に送信されます。
+- **管理グループ** にデプロイするには、[デプロイ - 管理グループ スコープで作成](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)に関するページを参照してください。 要求は以下に送信されます。
 
   ```HTTP
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -42,7 +42,7 @@ ms.locfileid: "92675403"
 
   管理グループ レベルでのデプロイの詳細については、「[管理グループ レベルでリソースを作成する](deploy-to-management-group.md)」を参照してください。
 
-* **テナント** にデプロイするには [デプロイ - テナントのスコープでの作成または更新](/rest/api/resources/deployments/createorupdateattenantscope)に関するページを使用します。 要求は以下に送信されます。
+- **テナント** にデプロイするには [デプロイ - テナントのスコープでの作成または更新](/rest/api/resources/deployments/createorupdateattenantscope)に関するページを使用します。 要求は以下に送信されます。
 
   ```HTTP
   PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -83,7 +83,7 @@ ms.locfileid: "92675403"
 
    要求の本文に、テンプレートとパラメーター ファイルへのリンクを指定します。 パラメーター ファイルの詳細については、「[Resource Manager パラメーター ファイルを作成する](parameter-files.md)」を参照してください。
 
-   **[モード]** が **[増分]** に設定されていることに注意してください。 完全デプロイメントを実行するには、 **[モード]** を **[完全]** に設定します。 テンプレートにないリソースを誤って削除する可能性があるため、完全モードを使用する際は注意してください。
+   `mode` が **[増分]** に設定されていることに注意してください。 完全デプロイメントを実行するには、 `mode` を **[完全]** に設定します。 テンプレートにないリソースを誤って削除する可能性があるため、完全モードを使用する際は注意してください。
 
    ```json
    {
@@ -122,9 +122,9 @@ ms.locfileid: "92675403"
    }
    ```
 
-    ストレージ アカウントを設定して、Shared Access Signature (SAS) トークンを使用することができます。 詳細については、「[Delegating Access with a Shared Access Signature (Shared Access Signature を使用したアクセスの委任)](/rest/api/storageservices/delegating-access-with-a-shared-access-signature)」を参照してください。
+    ストレージ アカウントを設定して、Shared Access Signature (SAS) トークンを使用することができます。 詳細については、[Shared Access Signature (SAS) を使用したアクセスの委任](/rest/api/storageservices/delegate-access-with-shared-access-signature)に関するページを参照してください。
 
-    パラメーターに機密性の高い値(パスワードなど) を提供する必要がある場合は、その値を Key Vault に追加します。 前の例で示したように、デプロイ中に Key Vault を取得します。 詳細については、「[デプロイメント時にセキュリティで保護された値を渡す](key-vault-parameter.md)」を参照してください。
+    パラメーターに機密性の高い値(パスワードなど) を提供する必要がある場合は、その値を Key Vault に追加します。 前の例で示したように、デプロイ中に Key Vault を取得します。 詳細については、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](key-vault-parameter.md)」を参照してください
 
 1. テンプレートとパラメーターのファイルにリンクするのではなく、それらを要求本文に含めることができます。 次の例は、テンプレートとパラメーターをインラインにした要求の本文を示しています。
 
@@ -217,4 +217,3 @@ ms.locfileid: "92675403"
 - リソース グループに存在するが、テンプレートで定義されていないリソースの処理方法を指定するには、「[Azure Resource Manager のデプロイ モード](deployment-modes.md)」を参照してください。
 - 非同期 REST 操作の処理の詳細については、「[Track asynchronous Azure operations (非同期の Azure 操作の追跡)](../management/async-operations.md)」を参照してください。
 - テンプレートの詳細については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
-

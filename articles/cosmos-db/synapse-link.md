@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d083bc0b7726a284dcfd03e49d47c2a342db023c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ed909cf3feb17930b045dee1031ed5a6209b63d2
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461815"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98029017"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB とは
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -117,13 +117,15 @@ Synapse Link は、次の場合にお勧めします。
 
 ## <a name="limitations"></a>制限事項
 
-* 現在 Azure Synapse Link for Azure Cosmos DB は、SQL API および Azure Cosmos DB の MongoDB 用 API に対してサポートされています。 Gremlin API と Table API に対してはサポートされていません。 Cassandra API のサポートはプライベート プレビュー段階にあります。詳細については、[Azure Synapse Link チーム](mailto:cosmosdbsynapselink@microsoft.com)にお問い合わせください。  
+* Azure Synapse Link for Azure Cosmos DB は、SQL API および Azure Cosmos DB の MongoDB 用 API に対してサポートされています。 Gremlin API、Cassandra API、および Table API に対してはサポートされていません。 
 
-* 現時点では、分析ストアは新しいコンテナーに対してのみ有効にすることができます。 既存のコンテナーに分析ストアを使用するには、[Azure Cosmos DB 移行ツール](cosmosdb-migrationchoices.md)を使用して、既存のコンテナーから新しいコンテナーにデータを移行します。 新規および既存の Azure Cosmos DB アカウントで Synapse Link を有効にすることができます。
+* 分析ストアは、新しいコンテナーに対してのみ有効にできます。 既存のコンテナーに分析ストアを使用するには、[Azure Cosmos DB 移行ツール](cosmosdb-migrationchoices.md)を使用して、既存のコンテナーから新しいコンテナーにデータを移行します。 新規および既存の Azure Cosmos DB アカウントで Synapse Link を有効にすることができます。
 
 * 分析ストアが有効になっているコンテナーの場合、現時点では分析ストアでのデータの自動バックアップと復元がサポートされていません。 データベース アカウントで Synapse Link が有効になっている場合、Azure Cosmos DB によって、コンテナーのトランザクション ストア (のみ) のデータをスケジュールされたバックアップ間隔で引き続き自動[バックアップ](./online-backup-and-restore.md)されます。 分析ストアが有効になっているコンテナーを新しいアカウントに復元すると、トランザクション ストアのみが有効な状態 (つまり分析ストアは有効でない状態) でコンテナーが復元されるので注意してください。 
 
 * プロビジョニングされた Synapse SQL での Azure Cosmos DB 分析ストアへのアクセスは、現在使用できません。
+
+* Azure Synapse Analytics のマネージド プライベート エンドポイントを使用した Azure Cosmso DB 分析ストアのネットワーク分離は、現在サポートされていません。
 
 ## <a name="pricing"></a>価格
 

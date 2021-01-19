@@ -13,16 +13,16 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 85d1880479a514ffb002e4894066734690480457
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 946908bf28a50bc8b523c4efd853e8720b115c7b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443128"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063078"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Web API を呼び出すモバイル アプリ トークンを取得する
 
-保護された Web API をアプリから呼び出すには、アクセス トークンが必要です。 この記事では、Microsoft Authentication Library (MSAL) を使用してトークンを取得するためのプロセスについて説明します。
+保護された Web API をアプリから呼び出すには、アクセス トークンが必要です。 この記事では、Microsoft Authentication Library (MSAL) を使用してトークンを取得するプロセスについて説明します。
 
 ## <a name="define-a-scope"></a>スコープの定義
 
@@ -255,7 +255,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 ##### <a name="other-optional-parameters"></a>その他の省略可能なパラメーター
 
-`AcquireTokenInteractive` のその他の省略可能なパラメーターの詳細については、[AcquireTokenInteractiveParameterBuilder の参照ドキュメント](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)をご覧ください。
+`AcquireTokenInteractive` のその他の省略可能なパラメーターの詳細については、[AcquireTokenInteractiveParameterBuilder の参照ドキュメント](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder#methods)をご覧ください。
 
 ### <a name="acquire-tokens-via-the-protocol"></a>プロトコルを使用してトークンを取得する
 

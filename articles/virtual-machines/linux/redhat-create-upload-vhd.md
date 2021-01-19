@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 065b4348675fcd48088fd26db0e0293eb2d7a387
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 751d447c164c602b9b1524d4945d61556bf71932
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97896466"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127296"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure 用の Red Hat ベースの仮想マシンの準備
 この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。 この記事で取り上げる RHEL のバージョンは 6.7+ と 7.1+ で、 準備対象のハイパーバイザーは Hyper-V、Kernel-based Virtual Machine (KVM)、VMware です。 Red Hat の Cloud Access プログラムに参加するための資格要件の詳細については、[Red Hat の Cloud Access Web サイト](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)と [Azure での RHEL の実行](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)に関するページを参照してください。 RHEL イメージの作成を自動化する方法については、[Azure Image Builder](./image-builder-overview.md) を参照してください。
@@ -200,11 +200,14 @@ ms.locfileid: "97896466"
 
 1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 次に例を示します。
 
+    
     ```config-grub
-    GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_CMDLINE_LINUX="rootdelay=300 console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_TERMINAL_OUTPUT="serial console"
+    GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1
     ```
    
-   これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。 NIC の新しい RHEL 7 名前付け規則もオフになります。 上記の他に、次のパラメーターを削除することをお勧めします。
+    これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、シリアル コンソールとの対話が可能になります。こうすることで、Azure での問題のデバッグが支援されます。 NIC の新しい RHEL 7 名前付け規則もオフになります。
 
     ```config
     rhgb quiet crashkernel=auto
@@ -217,6 +220,8 @@ ms.locfileid: "97896466"
     ```console
     # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
+    > [!NOTE]
+    > UEFI 対応 VM をアップロードする場合、GRUB を更新するコマンドは `grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg` です。
 
 1. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常は、既定でそのように構成されています。 `/etc/ssh/sshd_config` を変更して、次の行を含めます。
 
@@ -230,31 +235,40 @@ ms.locfileid: "97896466"
     # subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
-1. 次のコマンドを実行して Azure Linux エージェントをインストールします。
+1. 次のコマンドを実行して、Azure Linux エージェント、cloud-init、その他の必要なユーティリティをインストールします。
 
     ```console
-    # sudo yum install WALinuxAgent
+    # sudo yum install -y WALinuxAgent cloud-init cloud-utils-growpart gdisk hyperv-daemons
 
     # sudo systemctl enable waagent.service
+    # sudo systemctl enable cloud-init.service
     ```
 
-1. プロビジョニングを処理する cloud-init をインストールします。
+1. プロビジョニングを処理するように cloud-init を構成します。
+
+    1. cloud-init に対して waagent を構成します。
 
     ```console
-    yum install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
-
-    # Configure waagent for cloud-init
-    sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
-    sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+    sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=cloud-init/g' /etc/waagent.conf
     sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
     sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+    ```
+    > [!NOTE]
+    > 特定の仮想マシンを移行する際に、一般化されたイメージを作成しない場合は、`/etc/waagent.conf` 構成で `Provisioning.Agent=disabled` を設定します。
+    
+    1. マウントを構成します。
 
+    ```console
     echo "Adding mounts and disk_setup to init stage"
     sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
     sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
     sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
     sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+    ```
+    
+    1. Azure データソースを構成します。
 
+    ```console
     echo "Allow only Azure datasource, disable fetching network setting via IMDS"
     cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
     datasource_list: [ Azure ]
@@ -262,13 +276,206 @@ ms.locfileid: "97896466"
     Azure:
         apply_network_config: False
     EOF
+    ```
 
+    1. 既存の swapfile が構成されている場合は削除します。
+
+    ```console
     if [[ -f /mnt/resource/swapfile ]]; then
-    echo Removing swapfile - RHEL uses a swapfile by default
+    echo "Removing swapfile" #RHEL uses a swapfile by defaul
     swapoff /mnt/resource/swapfile
     rm /mnt/resource/swapfile -f
     fi
+    ```
+    1. cloud-init のログを構成します。
+    ```console
+    echo "Add console log file"
+    cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
 
+    # This tells cloud-init to redirect its stdout and stderr to
+    # 'tee -a /var/log/cloud-init-output.log' so the user can see output
+    # there without needing to look on the console.
+    output: {all: '| tee -a /var/log/cloud-init-output.log'}
+    EOF
+
+    ```
+
+1. スワップの構成: オペレーティング システム ディスクにスワップ領域を作成しないでください。
+
+    以前は、Azure で仮想マシンがプロビジョニングされた後に、仮想マシンに接続されたローカル リソース ディスクを使用してスワップ領域を自動的に構成するために Azure Linux エージェントが使用されていました。 しかし、これは cloud-init によって処理されるようになったので、Linux エージェントを使用して、スワップ ファイルを作成するリソース ディスクをフォーマット **しないでください**。`/etc/waagent.conf` で次のパラメーターを適切に変更します。
+
+    ```console
+    ResourceDisk.Format=n
+    ResourceDisk.EnableSwap=n
+    ```
+
+    スワップをマウント、フォーマット、作成する場合は、次のいずれかの方法を使用できます。
+    * VM を作成するたびに、cloud-init 構成としてこれを渡す
+    * VM が作成されるたびにこれを実行する、イメージに組み込まれている cloud-init ディレクティブを使用する
+
+        ```console
+        cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
+        #cloud-config
+        # Generated by Azure cloud image build
+        disk_setup:
+          ephemeral0:
+            table_type: mbr
+            layout: [66, [33, 82]]
+            overwrite: True
+        fs_setup:
+          - device: ephemeral0.1
+            filesystem: ext4
+          - device: ephemeral0.2
+            filesystem: swap
+        mounts:
+          - ["ephemeral0.1", "/mnt"]
+          - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
+        EOF
+        ```
+1. サブスクリプションを登録解除する場合は、次のコマンドを実行します。
+
+    ```console
+    # sudo subscription-manager unregister
+    ```
+
+1. プロビジョニング解除
+
+    次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
+
+    > [!CAUTION]
+    > 特定の仮想マシンを移行する際に、一般化されたイメージを作成しない場合は、プロビジョニング解除手順はスキップしてください。 コマンド `waagent -force -deprovision` を実行すると、ソース マシンが使用できなくなります。この手順は一般化されたイメージを作成することのみを目的としています。
+    ```console
+    # sudo waagent -force -deprovision
+
+    # export HISTSIZE=0
+
+    # logout
+    ```
+    
+
+1. Hyper-V マネージャーで **[アクション]**  >  **[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
+
+### <a name="rhel-8-using-hyper-v-manager"></a>Hyper-V マネージャーを使用した RHEL 8
+
+1. Hyper-V マネージャーで仮想マシンを選択します。
+
+1. **[接続]** をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
+
+1. 次のコマンドを実行して、起動時にネットワーク マネージャー サービスが開始されるようにします。
+
+    ```console
+    # sudo systemctl enable NetworkManager.service
+    ```
+
+1. ネットワーク インターフェイスが起動時に自動的に開始し、DHCP を使用するように構成します。
+
+    ```console
+    # nmcli con mod eth0 connection.autoconnect yes ipv4.method auto
+    ```
+
+
+1. RHEL リポジトリからパッケージをインストールできるように、次のコマンドを実行して Red Hat のサブスクリプションを登録します。
+
+    ```console
+    # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```
+
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含め、シリアル コンソールを有効にします。 
+
+    1. 現在の GRUB パラメーターを削除します。
+    ```console
+    # grub2-editenv - unset kernelopts
+    ```
+
+    1. テキスト エディターで `/etc/default/grub` を編集し、次のパラメーターを追加します。
+
+    ```config-grub
+    GRUB_CMDLINE_LINUX="rootdelay=300 console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_TERMINAL_OUTPUT="serial console"
+    GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
+    ```
+   
+   これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、シリアル コンソールとの対話が可能になります。こうすることで、Azure での問題のデバッグが支援されます。 NIC の新しい RHEL 7 名前付け規則もオフになります。
+   
+   1. また、次のパラメーターを削除することをお勧めします。
+
+    ```config
+    rhgb quiet crashkernel=auto
+    ```
+   
+    クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。 `crashkernel` オプションの構成は、必要であればそのままにしてかまいません。 ただし、このパラメーターにより、仮想マシン内の使用可能なメモリ量が 128 MB 以上減少します。仮想マシンのサイズが小さいと、このことが問題になる可能性があります。
+
+1. `/etc/default/grub`の編集を終了したら、次のコマンドを実行して GRUB 構成を再構築します。
+
+    ```console
+    # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
+    UEFI 対応 VM の場合は、次のコマンドを実行します。
+
+    ```console
+    # sudo grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+    ```
+
+1. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常は、既定でそのように構成されています。 `/etc/ssh/sshd_config` を変更して、次の行を含めます。
+
+    ```config
+    ClientAliveInterval 180
+    ```
+
+1. 次のコマンドを実行して、Azure Linux エージェント、cloud-init、その他の必要なユーティリティをインストールします。
+
+    ```console
+    # sudo yum install -y WALinuxAgent cloud-init cloud-utils-growpart gdisk hyperv-daemons
+
+    # sudo systemctl enable waagent.service
+    # sudo systemctl enable cloud-init.service
+    ```
+
+1. プロビジョニングを処理するように cloud-init を構成します。
+
+    1. cloud-init に対して waagent を構成します。
+
+    ```console
+    sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=cloud-init/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+    ```
+    > [!NOTE]
+    > 特定の仮想マシンを移行する際に、一般化されたイメージを作成しない場合は、`/etc/waagent.conf` 構成で `Provisioning.Agent=disabled` を設定します。
+    
+    1. マウントを構成します。
+
+    ```console
+    echo "Adding mounts and disk_setup to init stage"
+    sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
+    sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+    ```
+    
+    1. Azure データソースを構成します。
+
+    ```console
+    echo "Allow only Azure datasource, disable fetching network setting via IMDS"
+    cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
+    datasource_list: [ Azure ]
+    datasource:
+    Azure:
+        apply_network_config: False
+    EOF
+    ```
+
+    1. 既存の swapfile が構成されている場合は削除します。
+
+    ```console
+    if [[ -f /mnt/resource/swapfile ]]; then
+    echo "Removing swapfile" #RHEL uses a swapfile by defaul
+    swapoff /mnt/resource/swapfile
+    rm /mnt/resource/swapfile -f
+    fi
+    ```
+    1. cloud-init のログを構成します。
+    ```console
     echo "Add console log file"
     cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
 
@@ -323,14 +530,15 @@ ms.locfileid: "97896466"
     次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
     ```console
-    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
-    # skip the deprovision step
     # sudo waagent -force -deprovision
 
     # export HISTSIZE=0
 
     # logout
     ```
+    > [!CAUTION]
+    > 特定の仮想マシンを移行する際に、一般化されたイメージを作成しない場合は、プロビジョニング解除手順はスキップしてください。 コマンド `waagent -force -deprovision` を実行すると、ソース マシンが使用できなくなります。この手順は一般化されたイメージを作成することのみを目的としています。
+
 
 1. Hyper-V マネージャーで **[アクション]**  >  **[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 

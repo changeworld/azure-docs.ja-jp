@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: jeedes
-ms.openlocfilehash: b2a6b902f1c6b7e06b1a72b183007fbb9fe05c3c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5577b0cb480b372b64a9cb25f52617edfca3f2e0
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515952"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108162"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-single-sign-on-for-skytap"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Single Sign-on for Skytap の統合
 
@@ -50,7 +50,7 @@ Azure AD への Single Sign-on for Skytap の統合を構成するには、ギ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Single Sign-on for Skytap** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Single Sign-on for Skytap**」と入力します。
 1. 結果のパネルから **[Single Sign-on for Skytap]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-single-sign-on-for-skytap"></a>Single Sign-on for Skytap の Azure AD シングル サインオンの構成とテスト
@@ -85,7 +85,7 @@ Single Sign-on for Skytap で Azure AD SSO を構成してテストする一般�
 
     b. **[応答 URL]** ボックスに、次のパターンを使用する URL を入力します: `https://sso.connect.pingidentity.com/sso/sp/ACS.saml2`。
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** を選択して次の手順を実行します。
+1. 必要に応じて、 **[追加の URL を設定します]** を選択し、次の手順を実行することにより、**SP** Initiated モードでアプリケーションを構成することができます。
 
     a. **[サインオン URL]** ボックスに、`https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>` という形式で URL を入力します。
 

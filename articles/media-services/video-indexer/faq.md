@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: 721af069a76497576b92c4203a93656d19c283aa
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 0fc28a1f808eeb2977b1dcca5046ed29933b8aa8
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217730"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028796"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer に関してよく寄せられる質問
 
@@ -197,7 +197,7 @@ Video Indexer API には Authorization API (承認 API) と Operations API (操�
 
 ### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>Video Indexer の開発者ポータルにはどのようなログイン オプションがありますか?
 
-Azure AD、Microsoft アカウント、Google アカウント、または Facebook アカウントを使用してログインできます。 
+[ログイン情報](release-notes.md#october-2020)に関するリリース ノートを参照してください。
 
 ID プロバイダーを使用して電子メール アカウントを登録した後は、この電子メール アカウントを別の ID プロバイダーで使用することはできません。
 

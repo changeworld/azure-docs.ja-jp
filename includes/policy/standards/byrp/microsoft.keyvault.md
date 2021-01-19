@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: ad235ed20b1e2b839bc4d6d222a6a0dc25ac3d90
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 82efa913f1081cd6d494b34db0538487d1d426f1
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987023"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98047830"
 ---
 ## <a name="azure-security-benchmark"></a>Azure セキュリティ ベンチマーク
 
@@ -22,8 +22,8 @@ ms.locfileid: "94987023"
 |---|---|---|---|---|
 |ネットワークのセキュリティ |1.1 |Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する |[Key Vault は仮想ネットワーク サービス エンドポイントを使用する必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea4d6841-2173-4317-9747-ff522a45120f) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_KeyVault_Audit.json) |
 |ログ記録と監視 |2.3 |Azure リソースの監査ログ記録を有効にする |[Key Vault で診断ログを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
-|セキュリティで保護された構成 |7.11 |Azure シークレットを安全に管理する |[キー コンテナーで消去保護が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
-|データの復旧 |9.4 |バックアップとカスタマー マネージド キーの保護を確保する |[キー コンテナーで消去保護が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
+|セキュリティで保護された構成 |7.11 |Azure シークレットを安全に管理する |[キー コンテナーで消去保護が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |[1.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
+|データの復旧 |9.4 |バックアップとカスタマー マネージド キーの保護を確保する |[キー コンテナーで消去保護が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |[1.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
 
 ## <a name="cis-microsoft-azure-foundations-benchmark"></a>CIS Microsoft Azure Foundations Benchmark
 
@@ -33,7 +33,7 @@ ms.locfileid: "94987023"
 |Domain |コントロール ID |コントロールのタイトル |ポリシー<br /><sub>(Azure portal)</sub> |ポリシーのバージョン<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
 |ログ記録と監視 |5.1.7 |Azure KeyVault のログ記録が [有効] になっていることを確認する |[Key Vault で診断ログを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
-|その他のセキュリティの考慮事項 |8.4 |キー コンテナーが回復可能であることを確認する |[キー コンテナーで消去保護が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
+|その他のセキュリティの考慮事項 |8.4 |キー コンテナーが回復可能であることを確認する |[キー コンテナーで消去保護が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |[1.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
 
 ## <a name="hipaa-hitrust-92"></a>HIPAA HITRUST 9.2
 
@@ -47,5 +47,5 @@ ms.locfileid: "94987023"
 |ネットワークでの分離 |0894.01m2Organizational.7 - 01.m |物理サーバー、アプリケーション、またはデータを仮想化されたサーバーに移行するとき、ネットワークは運用レベルのネットワークから分離されます。 |[Key Vault は仮想ネットワーク サービス エンドポイントを使用する必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea4d6841-2173-4317-9747-ff522a45120f) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_KeyVault_Audit.json) |
 |監査ログ |1211.09aa3System.4 - 09.aa |組織は、90 日ごとに、記録された対象情報の各抽出で、データが消去されていること、またはその使用が依然として必要であることを検証します。 |[Key Vault で診断ログを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
 |ネットワーク コントロール |0865.09m2Organizational.13 - 09.m |組織は、(i) 相互接続セキュリティ契約またはその他の正式な契約を使用して、情報システムから組織外の他の情報システムへの接続を承認し、(ii) 各接続、インターフェイスの特性、セキュリティ要件、伝達される情報の性質を文書化し、(iii) "すべて拒否、例外的に許可" ポリシーを使用して情報システムから組織外の他の情報システムへの接続を許可し、(iv) 明示的に許可されているサービスとポートを除き、ホスト ベースのファイアウォールまたはエンドポイント (ワークステーション、サーバーなど) のポート フィルター ツールを経由するすべてのトラフィックを削除する "既定で拒否" 規則を適用します。 |[Key Vault は仮想ネットワーク サービス エンドポイントを使用する必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea4d6841-2173-4317-9747-ff522a45120f) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_KeyVault_Audit.json) |
-|ビジネス継続性とリスク評価 |1635.12b1Organizational.2 - 12.b |ビジネス継続性に関する情報セキュリティの側面は、(i) 組織の重要なビジネス プロセスが中断される可能性のあるイベント (またはイベントのシーケンス) (機器の障害、人的エラー、盗難、火災、自然災害など) に基づき、(ii) その後で、リスク評価によって、時間、損害規模、復旧期間に関してこのような中断の確率と影響が判断され、(iii) リスク評価の結果に基づいて、ビジネス継続性戦略を策定して、ビジネス継続性に対する全体的なアプローチが明らかにされ、(iv) この戦略が作成されたら、管理者によって承認されて、この戦略を実装するための計画が作成されて承認されます。 |[キー コンテナーで消去保護が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
+|ビジネス継続性とリスク評価 |1635.12b1Organizational.2 - 12.b |ビジネス継続性に関する情報セキュリティの側面は、(i) 組織の重要なビジネス プロセスが中断される可能性のあるイベント (またはイベントのシーケンス) (機器の障害、人的エラー、盗難、火災、自然災害など) に基づき、(ii) その後で、リスク評価によって、時間、損害規模、復旧期間に関してこのような中断の確率と影響が判断され、(iii) リスク評価の結果に基づいて、ビジネス継続性戦略を策定して、ビジネス継続性に対する全体的なアプローチが明らかにされ、(iv) この戦略が作成されたら、管理者によって承認されて、この戦略を実装するための計画が作成されて承認されます。 |[キー コンテナーで消去保護が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |[1.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
 

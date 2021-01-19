@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 12/06/2019
-ms.openlocfilehash: f7cac8ef41ff49f2d623e2b86dff271adcd71ff1
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.date: 01/12/2021
+ms.openlocfilehash: 43e46c1b5e720e4f9f46f8d3198fea7124d8f5ba
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821419"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132207"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight での Apache Spark クラスターのリソースの管理
 
@@ -85,6 +85,9 @@ spark-submit --class <the application class to execute> --executor-memory 3072M 
 curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
 ```
 
+> [!Note]
+> JAR ファイルをご自分のクラスター ストレージ アカウントにコピーします。 JAR ファイルをヘッド ノードに直接コピーしないでください。
+
 ### <a name="change-these-parameters-on-a-spark-thrift-server"></a>これらのパラメーターを Spark Thrift サーバーで変更する
 
 Spark Thrift サーバーを使用すると、Spark クラスターに JDBC/ODBC でアクセスし、Spark SQL クエリを実行することができます。 Power BI や Tableau などのツールは、ODBC プロトコルを使用して Spark Thrift サーバーとやり取りし、Spark アプリケーションとして Spark SQL クエリを実行します。 Spark クラスターを作成すると、Spark Thrift サーバーの 2 つのインスタンスが起動されます (ヘッド ノードごとに 1 つ)。 YARN UI には、各 Spark Thrift サーバーが Spark アプリケーションとして表示されます。
@@ -153,7 +156,7 @@ Spark の動的割り当てにより、Thrift サーバーから利用できる�
 ### <a name="for-data-analysts"></a>データ アナリスト向け
 
 * [Apache Spark と Machine Learning: HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark と Machine Learning: HDInsight 上で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 * [HDInsight での Apache Spark を使用した Application Insight テレメトリ データ分析](apache-spark-analyze-application-insight-logs.md)
 

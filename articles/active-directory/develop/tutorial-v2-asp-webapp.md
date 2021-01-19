@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: f0620c4d373ee96c87b575ae7eb173b2f16eecb2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: dcb8675350442274418920bb9439b65643f1b046
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013653"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178247"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>チュートリアル:ASP.NET Web アプリに Microsoft へのサインインを追加する
 
@@ -361,7 +361,7 @@ Visual Studio で、Web ページでユーザー要求を表示するための�
 
 アプリケーションをすばやく登録するには、次の手順に従います。
 
-1. 新しい [Azure portal の [アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) ウィンドウに移動します。
+1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録<span class="docon docon-navigate-external x-hidden-focus"></span></a>クイックスタート エクスペリエンスに移動します。  
 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 1. 指示に従ってダウンロードすると、1 回のクリックで、新しいアプリケーションが自動的に構成されます。
 

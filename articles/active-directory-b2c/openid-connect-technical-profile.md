@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8364e67e71143729e97c5253f0dfd7b30a1e5c2f
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 42880eed3c694029ef70ee29a00a9ade7f1d398f
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559822"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058992"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OpenID Connect 技術プロファイルを定義する
 
@@ -88,12 +88,13 @@ Azure Active Directory B2C (Azure AD B2C) では、[OpenID Connect](https://open
 | scope | いいえ | OpenID Connect Core 1.0 の仕様に従って定義される、要求の範囲。 たとえば、`openid`、`profile`、`email` などです。 |
 | HttpBinding | いいえ | アクセス トークンと要求トークンのエンドポイントに予期される HTTP バインド。 指定できる値: `GET` または `POST`。  |
 | ValidTokenIssuerPrefixes | いいえ | Azure Active Directory などのマルチテナント ID プロバイダーを使用するときに、各テナントにサインインするために使用できるキー。 |
-| UsePolicyInRedirectUri | いいえ | リダイレクト URI を構築するときにポリシーを使用するかどうかを示します。 ID プロバイダーでアプリケーションを構成するときは、リダイレクト URI を指定する必要があります。 リダイレクト URI は Azure AD B2C を指します (`https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`)。  `false` を指定した場合は、使用するポリシーごとにリダイレクト URI を追加する必要があります。 (例: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`)。 |
+| UsePolicyInRedirectUri | いいえ | リダイレクト URI を構築するときにポリシーを使用するかどうかを示します。 ID プロバイダーでアプリケーションを構成するときは、リダイレクト URI を指定する必要があります。 リダイレクト URI は Azure AD B2C を指します (`https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`)。  `true` を指定した場合は、使用するポリシーごとにリダイレクト URI を追加する必要があります。 (例: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`)。 |
 | MarkAsFailureOnStatusCode5xx | いいえ | Http 状態コードが 5xx の範囲にある場合、外部サービスへの要求を失敗としてマークする必要があるかどうかを示します。 既定では、 `false`です。 |
 | DiscoverMetadataByTokenIssuer | いいえ | JWT トークンで発行者を使用して OIDC メタデータを検出する必要があるかどうかを示します。 |
 | IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
-|token_endpoint_auth_method| No| Azure AD B2C からトークン エンドポイントに認証ヘッダーを送信する方法を指定します。 指定できる値は、`client_secret_post` (既定値)、`private_key_jwt` (パブリック プレビュー)、`client_secret_basic` (パブリック プレビュー) です。 詳細については、[OpenID Connect クライアント認証](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)に関するセクションをご覧ください。 |
-|SingleLogoutEnabled| いいえ| サインイン中に技術プロファイルがフェデレーション ID プロバイダーからサインアウトを試行しているかどうかを示します。 詳しくは、[Azure AD B2C のセッション サインアウト](session-behavior.md#sign-out)に関する記事をご覧ください。指定できる値は `true`(既定値) または`false`です。|
+| token_endpoint_auth_method | No | Azure AD B2C からトークン エンドポイントに認証ヘッダーを送信する方法を指定します。 指定できる値は、`client_secret_post` (既定値) と `client_secret_basic` (パブリック プレビュー) です。 詳細については、[OpenID Connect クライアント認証](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)に関するセクションをご覧ください。 |
+| token_signing_algorithm | いいえ | **token_endpoint_auth_method** メタデータが `private_key_jwt` に設定されている場合にクライアント アサーションに使用される署名アルゴリズム。 指定できる値: `RS256` (既定)。 |
+| SingleLogoutEnabled | いいえ | サインイン中に技術プロファイルがフェデレーション ID プロバイダーからサインアウトを試行しているかどうかを示します。 詳しくは、[Azure AD B2C のセッション サインアウト](session-overview.md#sign-out)に関する記事をご覧ください。指定できる値は `true`(既定値) または`false`です。 |
 
 ```xml
 <Metadata>
@@ -124,7 +125,8 @@ Azure Active Directory B2C (Azure AD B2C) では、[OpenID Connect](https://open
 
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 **response_types** メタデータが `code` に設定されている場合にのみ、暗号化キーが必要です。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。  |
+| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。 この暗号化キーが必要になるのは、**response_types** メタデータが `code` に設定されていて、かつ **token_endpoint_auth_method** が `client_secret_post` または `client_secret_basic` に設定されている場合のみです。 この場合、Azure AD B2C は、アクセス トークンの認証コードを交換するために、別の呼び出しを行います。 メタデータが `id_token` に設定されている場合は、暗号化キーを省略できます。  |
+| assertion_signing_key | はい | クライアント アサーションに署名するために使用される RSA 秘密キー。 この暗号化キーが必要になるのは、**token_endpoint_auth_method** メタデータが `private_key_jwt` に設定されている場合のみです。 |
 
 ## <a name="redirect-uri"></a>リダイレクト URI
 

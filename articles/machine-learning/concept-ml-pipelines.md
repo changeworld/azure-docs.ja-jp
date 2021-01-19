@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 08/17/2020
+ms.date: 01/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: c29ee87ab177357f4289134bb39353c764a0d75b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ee3d7d1cf285573db894d64549cf79babb517d95
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535301"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131289"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning パイプラインとは
 
@@ -41,7 +41,7 @@ Azure クラウドでは、目的が異なるさまざまなパイプライン�
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
 | モデル オーケストレーション (機械学習) | データ サイエンティスト | Azure Machine Learning パイプライン | Kubeflow パイプライン | データ -> モデル | 分散、キャッシュ、コード優先、再利用 | 
 | データのオーケストレーション (データ準備) | データ エンジニア | [Azure Data Factory のパイプライン](../data-factory/concepts-pipelines-activities.md) | Apache Airflow | データ -> データ | 厳密に型指定された移動、データ中心のアクティビティ |
-| コードとアプリのオーケストレーション (CI/CD) | アプリ開発者/Ops | [Azure DevOps Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | コード + モデル -> アプリとサービス | ほとんどのオープンで柔軟なアクティビティのサポート、承認キュー、ゲートを使用したフェーズ | 
+| コードとアプリのオーケストレーション (CI/CD) | アプリ開発者/Ops | [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | コード + モデル -> アプリとサービス | ほとんどのオープンで柔軟なアクティビティのサポート、承認キュー、ゲートを使用したフェーズ | 
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Azure ML パイプラインでできること
 
@@ -107,15 +107,18 @@ experiment = Experiment(ws, 'MyExperiment')
 input_data = Dataset.File.from_files(
     DataPath(datastore, '20newsgroups/20news.pkl'))
 
-output_data = PipelineData("output_data", datastore=blob_store)
-
+dataprep_step = PythonScriptStep(
+    name="prep_data",
+    script_name="dataprep.py",
+    compute_target=cluster,
+    arguments=[input_dataset.as_named_input('raw_data').as_mount(), dataprep_output]
+    )
+output_data = OutputFileDatasetConfig()
 input_named = input_data.as_named_input('input')
 
 steps = [ PythonScriptStep(
     script_name="train.py",
     arguments=["--input", input_named.as_download(), "--output", output_data],
-    inputs=[input_data],
-    outputs=[output_data],
     compute_target=compute_target,
     source_directory="myfolder"
 ) ]
@@ -126,7 +129,9 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-スニペットは、共通の Azure Machine Learning オブジェクト、`Workspace`、`Datastore`、[ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)、および `Experiment` で開始されます。 次に、コードによって `input_data` と `output_data` を保持するオブジェクトが作成されます。 配列 `steps` には、1 つの要素 (データ オブジェクトを使用して `compute_target` 上で実行する `PythonScriptStep`) が保持されます。 次に、このコードによって `Pipeline` オブジェクト自体がインスタンス化され、ワークスペースとステップの配列が渡されます。 `experiment.submit(pipeline)` を呼び出すと、Azure ML パイプラインの実行が開始されます。 `wait_for_completion()` を呼び出すと、パイプラインが終了するまでブロックされます。 
+スニペットは、共通の Azure Machine Learning オブジェクト、`Workspace`、`Datastore`、[ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)、および `Experiment` で開始されます。 次に、コードによって `input_data` と `output_data` を保持するオブジェクトが作成されます。 `input_data` は [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true) のインスタンスであり、`output_data` は [OutputFileDatasetConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) のインスタンスです。 `OutputFileDatasetConfig` の場合、既定の動作はパス `/dataset/{run-id}/{output-name}` の下で `workspaceblobstore` データストアに出力をコピーすることです。`run-id` は実行の ID であり、`output-name` は、開発者が指定していない場合、自動生成された値です。
+
+配列 `steps` には、1 つの要素 (データ オブジェクトを使用して `compute_target` 上で実行する `PythonScriptStep`) が保持されます。 次に、このコードによって `Pipeline` オブジェクト自体がインスタンス化され、ワークスペースとステップの配列が渡されます。 `experiment.submit(pipeline)` を呼び出すと、Azure ML パイプラインの実行が開始されます。 `wait_for_completion()` を呼び出すと、パイプラインが終了するまでブロックされます。 
 
 パイプラインをデータに接続する方法の詳細については、[Azure Machine Learning でのデータ アクセス](concept-data.md)と [ML パイプライン ステップでのデータの移動 (Python)](how-to-move-data-in-out-of-pipelines.md)に関するページを参照してください。 
 

@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/01/2020
-ms.openlocfilehash: a77f9c8f7e37d2c5a040a48b6bd96bef11d51f14
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 183d8b415ccb35d22dcc23ccf11d0707ad0778dd
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533482"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963657"
 ---
 # <a name="monitor-azure-machine-learning"></a>Azure Machine Learning の監視
 
@@ -91,6 +91,8 @@ Azure Machine Learning のすべてのメトリックは、**Machine Learning Se
 
 参考のために、[Azure Monitor でサポートされているすべてのリソース メトリック](../azure-monitor/platform/metrics-supported.md)の一覧を確認できます。
 
+> [!TIP]
+> Azure Monitor のメトリック データは 90 日分利用できます。 ただし、グラフを作成するときは、30 日分だけ視覚化できます。 たとえば、90 日間の期間を視覚化する場合は、90 日間の期間内で 30 日間の 3 つのグラフに分割する必要があります。
 ### <a name="filtering-and-splitting"></a>フィルター処理と分割
 
 ディメンションをサポートするメトリックについては、ディメンション値を使用してフィルターを適用できます。 たとえば、`cpu-cluster`という **クラスター名** の **アクティブ コア** をフィルター処理します。 

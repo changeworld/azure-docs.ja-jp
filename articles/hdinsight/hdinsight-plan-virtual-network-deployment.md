@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 05/04/2020
-ms.openlocfilehash: 2d6d18cc73c02d3139074555fdd22a40c797ce40
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 01/12/2021
+ms.openlocfilehash: 429f0b2ffe486279a1c429fc7a153e6528642f54
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825136"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131663"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight 用の仮想ネットワークを計画する
 
@@ -51,7 +51,8 @@ Azure Virtual Network を使用すると、次のシナリオが可能になり�
 このセクションの手順を使用して、新しい HDInsight を既存の Azure Virtual Network に追加する方法をご確認ください。
 
 > [!NOTE]  
-> 仮想ネットワークに既存の HDInsight クラスターを追加することはできません。
+> - 仮想ネットワークに既存の HDInsight クラスターを追加することはできません。
+> - VNET と、作成されるクラスターは、同じサブスクリプション内に存在する必要があります。
 
 1. 使用中の仮想ネットワークは、クラシック デプロイ モデルですか、Resource Manager デプロイ モデルですか。
 

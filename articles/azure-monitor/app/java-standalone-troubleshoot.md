@@ -4,12 +4,12 @@ description: Azure Monitor Application Insights の Java エージェントの�
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 14644f76b7de53b2b6ee3f04131daaf59267a5ff
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 54bf2440dff20fc757f37e3f31a53c57ebd59120
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507644"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133193"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>トラブルシューティング ガイド:Azure Monitor Application Insights for Java
 
@@ -20,6 +20,10 @@ ms.locfileid: "97507644"
 既定では、Application Insights の Java 3.0 エージェントにより、`applicationinsights-agent-3.0.0.jar` ファイルが保持されているディレクトリに `applicationinsights.log` という名前のログ ファイルが生成されます。
 
 このログ ファイルは、発生している問題に関するヒントを得るために最初に確認する場所です。
+
+## <a name="jvm-fails-to-start"></a>JVM を起動できない
+
+"zip ファイルを開くときのエラーまたは JAR マニフェストの欠落" が原因で JVM を起動できない場合は、エージェントの jar ファイルがファイル転送中に破損した可能性があるため、これを再ダウンロードしてみてください。
 
 ## <a name="upgrade-from-the-application-insights-java-2x-sdk"></a>Application Insights Java 2.x SDK からアップグレードする
 

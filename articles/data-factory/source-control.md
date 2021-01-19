@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: e839b8a22da50ce172043f57a4467219a1771175
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 27f14834e45dd32bdf3a26d22d38ab250aa1bcbe
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584203"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127738"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -25,6 +25,7 @@ ms.locfileid: "97584203"
 
 - Data Factory サービスには、変更について JSON エンティティを格納するためのリポジトリが含まれていません。 変更を保存する唯一の方法は **[すべて公開]** ボタンを使用することであり、変更内容はすべて、Data Factory サービスに直接公開されます。
 - Data Factory サービスは、コラボレーションとバージョン管理で最適化されていません。
+- Data Factory 自体をデプロイするために必要な Azure Resource Manager テンプレートは含まれていません。
 
 効率的に作成できるよう、Azure Data Factory では、Azure Repos または GitHub のいずれかで Git リポジトリを構成することができます。 Git はバージョン管理システムであり、変更追跡や共同作業を簡単にします。 この記事では、Git リポジトリを構成し、そこで作業する方法を簡単に説明し、ベスト プラクティスとトラブルシューティング ガイドを提示します。
 

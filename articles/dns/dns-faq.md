@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 6/15/2019
+ms.date: 01/11/2021
 ms.author: rohink
-ms.openlocfilehash: 2f7e4eadc25028db4668db8d245803c7ddba8688
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c468b1216670ce7e6b5d252a7f7fee807199d20c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968249"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131493"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS に関する FAQ
 
@@ -194,6 +194,10 @@ Azure DNS の管理は、Azure Resource Manager を使用して行われます�
 国際化ドメイン名 (IDN) は、[punycode](https://en.wikipedia.org/wiki/Punycode) を使用して各 DNS 名をエンコードします。 このような punycode エンコード名を使用して、DNS クエリが作成されます。
 
 Azure DNS に IDN を構成するには、ゾーン名またはレコード セット名を punycode に変換します。 現在、Azure DNS では punycode に対する組み込みの変換機能はサポートされていません。
+
+### <a name="does-azure-dns-private-zones-store-any-customer-content"></a>Azure DNS プライベート ゾーンには顧客のコンテンツが保存されますか。
+
+いいえ。Azure DNS プライベート ゾーンには顧客のコンテンツは保存されません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,12 +3,12 @@ title: Azure Service Bus の認証と承認 | Microsoft Docs
 description: Shared Access Signature (SAS) 認証を使用して、アプリケーションを Service Bus に対して認証します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a71cef6aad973f3c39ef61a8dbab313ebfca44ef
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7b287b209fbcd5bc2782505095aeae4390107803
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517282"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060216"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus の認証と承認
 Azure Service Bus リソースへのアクセスを認証して承認する方法は 2 つあります。Azure Activity Directory (Azure AD) と Shared Access Signature (SAS) です。 この記事では、この 2 種類のセキュリティ メカニズムの使用について詳しく説明します。 
@@ -34,10 +34,10 @@ SAS のキーは Service Bus 名前空間で構成できます。 このキー�
 
 SAS を使用するには、名前空間、キュー、トピックで [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) オブジェクトを構成します。 この規則は次の要素で構成されます。
 
-* *KeyName* : ルールを識別します。
-* *PrimaryKey* : SAS トークンの署名または検証に使用される暗号化キー。
-* *SecondaryKey* : SAS トークンの署名または検証に使用される暗号化キー。
-* *Rights* : 付与されている **リッスン** 、 **送信、** 、または **管理** 権限を表します。
+* *KeyName*: ルールを識別します。
+* *PrimaryKey*: SAS トークンの署名または検証に使用される暗号化キー。
+* *SecondaryKey*: SAS トークンの署名または検証に使用される暗号化キー。
+* *Rights*: 付与されている **リッスン**、**送信、** 、または **管理** 権限を表します。
 
 名前空間レベルで構成された承認規則では、対応するキーを使用して署名されたトークンによって、クライアントの名前空間内のすべてのエンティティへのアクセス権を付与できます。 Service Bus の名前空間、キュー、またはトピックでは、このような承認規則を最大 12 個構成できます。 既定では、すべての権限を持つ [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) は、最初にプロビジョニングするときに、各名前空間用に構成されます。
 

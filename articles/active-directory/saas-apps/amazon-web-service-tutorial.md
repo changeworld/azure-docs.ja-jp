@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 237ed71f058ae099f19924481eb4dbeb2e2aba05
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 3db6fd2e6df96590d7d405157cbb33900c7d8531
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589442"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127806"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) とアマゾン ウェブ サービス (AWS) の統合
 
@@ -388,7 +388,11 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 * AWS から Azure AD へのインポート対象となるロールは、次の要件を満たす必要があります。
 
   * ロールには、AWS で SAML プロバイダーが 1 つだけ定義されている必要があります。
-  * ロールの ARN (Amazon Resource Name) と、関連付けられている SAML プロバイダーの ARN を組み合わせた長さが 120 文字未満である必要があります。
+  * ロールの ARN (Amazon Resource Name) と、関連付けられている SAML プロバイダーの ARN を組み合わせた長さが 240 文字未満である必要があります。
+
+## <a name="change-log"></a>ログの変更
+
+* 01/12/2020 - ロールの長さの上限が 119 文字から 239 文字に増加。 
 
 ## <a name="next-steps"></a>次の手順
 

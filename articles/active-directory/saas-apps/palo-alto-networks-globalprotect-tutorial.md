@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: a0b76c21ee76731f78ecd7f482472908fe93a9ee
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 72072feebfcf8dba249d2045a399e09714177698
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92513332"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963691"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-palo-alto-networks---globalprotect"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Palo Alto Networks - GlobalProtect の統合
 
@@ -37,8 +37,8 @@ ms.locfileid: "92513332"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Palo Alto Networks - GlobalProtect では、 **SP** によって開始される SSO がサポートされます
-* Palo Alto Networks - GlobalProtect では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Palo Alto Networks - GlobalProtect では、**SP** によって開始される SSO がサポートされます
+* Palo Alto Networks - GlobalProtect では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-palo-alto-networks---globalprotect-from-the-gallery"></a>ギャラリーからの Palo Alto Networks - GlobalProtect の追加
 
@@ -48,7 +48,7 @@ Azure AD への Palo Alto Networks - GlobalProtect の統合を構成するに�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Palo Alto Networks - GlobalProtect** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Palo Alto Networks - GlobalProtect**」と入力します。
 1. 結果パネルで **[Palo Alto Networks - GlobalProtect]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-palo-alto-networks---globalprotect"></a>Palo Alto Networks - GlobalProtect の Azure AD SSO の構成とテスト
@@ -70,7 +70,7 @@ Palo Alto Networks - GlobalProtect に対して Azure AD SSO を構成してテ�
 
 1. Azure portal の **Palo Alto Networks - GlobalProtect** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -145,12 +145,12 @@ Palo Alto Networks - GlobalProtect に対して Azure AD SSO を構成してテ�
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Palo Alto Networks - GlobalProtect のサインオン URL にリダイレクトされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Palo Alto Networks - GlobalProtect のサインオン URL にリダイレクトされます。 
 
-2. Palo Alto Networks - GlobalProtect のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Palo Alto Networks - GlobalProtect のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [Palo Alto Networks - GlobalProtect] タイルをクリックすると、SSO を設定した Palo Alto Networks - GlobalProtect に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Palo Alto Networks - GlobalProtect] タイルをクリックすると、SSO を設定した Palo Alto Networks - GlobalProtect に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Palo Alto Networks - GlobalProtect を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

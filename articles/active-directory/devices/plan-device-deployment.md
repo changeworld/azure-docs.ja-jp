@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf30570f10f176c47aed0f99127e03a027eff775
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: fc631e4329c1df2cdcbfe57c2b43ccccf14afa85
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093091"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936449"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Azure Active Directory デバイスのデプロイを計画する
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) を使用すると、組織では、デバイ�
 
 * 生産性の向上 – Azure AD では、ユーザーがオンプレミスとクラウドのリソースに[シームレスなサインオン (SSO)](./azuread-join-sso.md) を実行でき、これにより、どこにいても生産性を高めることができます。
 
-* セキュリティの強化 – Azure AD デバイスを使用すると、デバイスまたはユーザーの ID に基づいて、リソースに[条件付きアクセス (CA) ポリシー](../conditional-access/require-managed-devices.md)を適用できます。 CA ポリシーでは、[Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) を使用した追加の保護を提供できます。 デバイスを Azure AD に参加させることは、[パスワードレス認証](../authentication/concept-authentication-passwordless.md)戦略を使用してセキュリティを強化するための前提条件です。
+* セキュリティの強化 – Azure AD デバイスを使用すると、デバイスまたはユーザーの ID に基づいて、リソースに[条件付きアクセス ポリシー](../conditional-access/require-managed-devices.md)を適用できます。 条件付きアクセス ポリシーでは、[Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) を使用した追加の保護を提供できます。 デバイスを Azure AD に参加させることは、[パスワードレス認証](../authentication/concept-authentication-passwordless.md)戦略を使用してセキュリティを強化するための前提条件です。
 
 * ユーザー エクスペリエンスの向上 – Azure AD のデバイス ID を使用すると、ユーザーが個人のデバイスと会社のデバイスの両方から組織のクラウドベースのリソースに簡単にアクセスできます。 管理者は、すべての Windows デバイスで統一されたエクスペリエンスを実現するために [Enterprise State Roaming](enterprise-state-roaming-overview.md) を有効にすることができます。
 
@@ -129,7 +129,7 @@ iOS および Android デバイスは Azure AD 登録のみが可能です。 �
 
 登録されたデバイスは、多くの場合 [Microsoft Intune](/mem/intune/enrollment/device-enrollment) で管理されます。 デバイスは、オペレーティング システムに応じて、さまざまな方法で Intune に登録されます。 
 
-Azure AD 登録済みデバイスでは、持ち込みのデバイス (BYOD) と会社所有のデバイスによるクラウド リソースへの SSO がサポートされています。 リソースへのアクセスは、デバイスとユーザーに適用された Azure AD の [CA ポリシー](../conditional-access/require-managed-devices.md)に基づいています。
+Azure AD 登録済みデバイスでは、持ち込みのデバイス (BYOD) と会社所有のデバイスによるクラウド リソースへの SSO がサポートされています。 リソースへのアクセスは、デバイスとユーザーに適用された Azure AD の[条件付きアクセス ポリシー](../conditional-access/require-managed-devices.md)に基づいています。
 
 ### <a name="registering-devices"></a>デバイスの登録
 

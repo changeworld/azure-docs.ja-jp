@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8295e619cfda0d4b83a7356d5fd21d4b80f83849
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 6b1079797f1a753fa8362d6e920f3394087d7e9f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530886"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119290"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Azure Cognitive Search のデータ暗号化のためにカスタマー マネージド キーを構成する
 
@@ -52,7 +52,7 @@ Azure Cognitive Search では、インデックス付きコンテンツの保存
 暗号化されたオブジェクトを作成できる検索アプリケーションが必要です。 このコード内では、キー コンテナー キーと Active Directory 登録情報を参照します。 このコードは、動作しているアプリや、[C# コードサンプル DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK) などのプロトタイプ コードなどになります。
 
 > [!TIP]
-> [Postman か Visual Studio Code](search-get-started-rest.md)、または [Azure PowerShell](./search-get-started-powershell.md) を使用して、暗号化キー パラメーターを含むインデックス、およびシノニム マップを作成する REST API を呼び出すことができます。 現在のところ、ポータルでは、インデックスまたはシノニム マップへのキーの追加はサポートされていません。
+> [Postman](search-get-started-rest.md)、[Visual Studio Code](search-get-started-vs-code.md)、または [Azure PowerShell](./search-get-started-powershell.md) を使用して、暗号化キー パラメーターを含むインデックスおよびシノニム マップを作成する REST API を呼び出すことができます。 現在のところ、ポータルでは、インデックスまたはシノニム マップへのキーの追加はサポートされていません。
 
 ## <a name="1---enable-key-recovery"></a>1 - キーの回復の有効化
 

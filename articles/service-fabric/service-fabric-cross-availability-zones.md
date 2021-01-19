@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 73a3be62e57991b63525372f008e15d8e4f36a74
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: f729c00d3b78631a32013ec9453302584cecbd16
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401731"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962433"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Availability Zones をまたがる Azure Service Fabric クラスターのデプロイ
 Azure の Availability Zones は高可用性を備えたサービスで、アプリケーションとデータをデータセンターの障害から保護します。 可用性ゾーンは、Azure リージョン内に独立した電源、冷却手段、ネットワークを備えた一意の物理的な場所です。
@@ -35,7 +35,7 @@ Availability Zones 間で分散された Service Fabric クラスターでは、
 >[!NOTE]
 > Service Fabric ではゾーンをまたがる単一の仮想マシン スケール セットがサポートされないため、仮想マシン スケール セットの単一の配置グループ プロパティが true に設定されている必要があります。
 
- ![Azure Service Fabric 可用性ゾーンのアーキテクチャ][sf-architecture]
+ ![Azure Service Fabric 可用性ゾーンのアーキテクチャを示す図。][sf-architecture]
 
 ## <a name="networking-requirements"></a>ネットワーク要件
 ### <a name="public-ip-and-load-balancer-resource"></a>パブリック IP とロード バランサーのリソース
@@ -344,7 +344,7 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 仮想マシン スケール セットでゾーンを有効にするには、仮想マシン スケール セット リソースに次の 3 つの値を含める必要があります。
 
 * 最初の値は、**zones** プロパティで、仮想マシン スケール セットに存在する Availability Zones を指定します。
-* 2 つ目の値は、"singlePlacementGroup" プロパティで、true に設定する必要があります。
+* 2 つ目の値は、"singlePlacementGroup" プロパティで、true に設定する必要があります。 **3 つの AZ にまたがるスケールセットでは、"singlePlacementGroup = true" の場合でも、最大 300 VM までスケールアップできます。**
 * 3 つ目の値は、"zoneBalance" であり、省略可能です。true に設定されている場合、厳密なゾーン バランシングが有効になります。 [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing) について確認します。
 * FaultDomain と UpgradeDomain のオーバーライドは、構成する必要はありません。
 

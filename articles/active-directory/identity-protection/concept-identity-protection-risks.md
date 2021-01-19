@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 01/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10d8a94be53780f732112c012600a7fb840642b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 18e504579c750caf452ef74844c4a388ec96448a
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180644"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954487"
 ---
 # <a name="what-is-risk"></a>リスクとは
 
@@ -63,6 +63,9 @@ Identity Protection を使用すると、組織は、強力なリソースにア
 | 受信トレイに対する疑わしい操作ルール | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules) によって検出されます。 ユーザーの受信トレイでメッセージまたはフォルダーを削除または移動する疑わしいルールが設定されている場合、この検出によって環境がプロファイルされ、アラートがトリガーされます。 この検出は、ユーザー アカウントが侵害されていること、メッセージが意図的に非表示にされていること、組織内でスパムまたはマルウェアを配信するためにメールボックスが使用されていることを示唆している可能性があります。 |
 | パスワード スプレー | オフライン | パスワード スプレー攻撃とは、複数のユーザー名に対し、よく使われるパスワードを片っ端から試して不正アクセスしようとする攻撃です。 このリスク検出は、パスワード スプレー攻撃が実行されたときにトリガーされます。 |
 | あり得ない移動 | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel) によって検出されます。 この検出は、(1 つまたは複数のセッションにおける) 2 つのユーザー アクティビティが地理的に離れている場所で、最初の場所から 2 回目の場所にユーザーが移動するのに要する時間より短い時間内に発生したことを示します。これは、別のユーザーが同じ資格情報を使用していることを示唆します。 |
+| 初めての国 | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country) によって検出されます。 この検出では、新しい場所や頻度の低い場所を判断する際に、過去にアクティビティが発生した場所が考慮されます。 異常検出エンジンにより、組織内のユーザーが以前に使用したことのある場所に関する情報が格納されます。 |
+| 匿名 IP アドレスからのアクティビティ | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses) によって検出されます。 この検出は、匿名プロキシ IP アドレスとして識別された IP アドレスからユーザーがアクティブだったことを示します。 |
+| 受信トレイからの疑わしい転送 | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding) によって検出されます。 この検出は、ユーザーがすべてのメールのコピーを外部のアドレスに転送する受信トレイ ルールを作成した場合などの疑わしいメール転送ルールを探します。 |
 
 ### <a name="other-risk-detections"></a>その他のリスク検出
 

@@ -6,68 +6,77 @@ author: jifems
 ms.author: jife
 ms.topic: conceptual
 ms.date: 12/16/2020
-ms.openlocfilehash: d45d9a29f671e66c6caba689f49e1748780545e0
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 852c44f5edc5c0b0f5f655f63ab040927bd9bc7b
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616747"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963681"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Data Share でサポートされているデータ ストア
 
 Azure Data Share は、さまざまなデータ ストアとの間で共有する機能など、オープンで柔軟なデータ共有を提供します。 データ プロバイダーは、1 つの種類のデータ ストアからデータを共有できます。また、データ コンシューマーは、データを受信するデータ ストアを選択できます。 
 
-この記事では、Azure Data Share でサポートされている Azure データ ストアの豊富なセットについて説明します。 また、データ プロバイダーとデータ コンシューマーが活用できるデータ ストアの組み合わせに関する情報も確認できます。 
+この記事では、Azure Data Share でサポートされている Azure データ ストアの豊富なセットについて説明します。 また、データ プロバイダーとデータ コンシューマーがさまざまなデータ ストアを組み合わせる方法についても説明します。 
 
-## <a name="what-data-stores-are-supported-in-azure-data-share"></a>Azure Data Share でサポートされているデータ ストア 
+## <a name="supported-data-stores"></a>サポートされているデータ ストア 
 
-次の表は、Azure Data Share でサポートされているデータ ソースの詳細を示しています。 
+次の表では、Azure Data Share でサポートされるデータ ストアについて説明します。 
 
-| データ ストア | スナップショットベースの共有 (完全なスナップショット) | スナップショットベースの共有 (増分スナップショット) | インプレース共有 
+| データ ストア | 完全なスナップショットに基づく共有 | 増分スナップショットに基づく共有 | 場所に基づく共有 
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| Azure BLOB ストレージ |✓ |✓ | |
+| Azure Blob Storage |✓ |✓ | |
 | Azure Data Lake Storage Gen1 |✓ |✓ | |
 | Azure Data Lake Storage Gen2 |✓ |✓ ||
 | Azure SQL データベース |✓ | | |
-| Azure Synapse Analytics (以前の Azure SQL DW) |✓ | | |
+| Azure Synapse Analytics (旧称 Azure SQL Data Warehouse) |✓ | | |
 | Azure Synapse Analytics (ワークスペース) の専用 SQL プール |✓ | | |
 | Azure Data Explorer | | |✓ |
 
 ## <a name="data-store-support-matrix"></a>データ ストアのサポート マトリックス
 
-Azure Data Share では、データ コンシューマーがデータを受け入れるデータ ストアを柔軟に決定できます。 たとえば、Azure SQL Database から共有されているデータは、Azure Data Lake Store Gen2、Azure SQL Database、または Azure Synapse Analytics に受信できます。 お客様は、受信したデータ共有を構成するときに、データを受信する形式を選択できます。 
+Azure Data Share を使用すると、データ コンシューマーはデータを受け入れるデータ ストアを選択できます。 たとえば、Azure SQL Database から共有されているデータは、Azure Data Lake Storage Gen2、Azure SQL Database、または Azure Synapse Analytics で受信できます。 顧客は、受信先のデータ共有を設定するときに、データを受信する形式を選択できます。 
 
-次の表では、データ共有を受け入れて構成する際にデータ コンシューマーが利用できるさまざまな組み合わせと選択肢の詳細を示しています。 データセット マッピングを構成する方法の詳細については、「[データセット マッピングを構成する方法](how-to-configure-mapping.md)」を参照してください。
+次の表では、データ コンシューマーがデータ共有の受け入れと構成を行うときに選択できる組み合わせとオプションについて説明します。 詳細については、[データ セットのマッピングの構成](how-to-configure-mapping.md)に関するページを参照してください。
 
-| データ ストア | Azure Blob Storage | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL データベース | Azure Synapse Analytics (以前の Azure SQL DW) | Azure Synapse Analytics (ワークスペース) の専用 SQL プール | Azure Data Explorer
+| データ ストア | Blob Storage | Data Lake Storage Gen1 | Data Lake Storage Gen2 | SQL Database | Synapse Analytics (旧称 SQL Data Warehouse) | Synapse Analytics (ワークスペース) の専用 SQL プール | Data Explorer
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- | :--- |
-| Azure BLOB ストレージ | ✓ || ✓ |||
-| Azure Data Lake Storage Gen1 | ✓ | | ✓ |||
-| Azure Data Lake Storage Gen2 | ✓ | | ✓ |||
-| Azure SQL データベース | ✓ | | ✓ | ✓ | ✓ | ✓ ||
-| Azure Synapse Analytics (以前の Azure SQL DW) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
-| Azure Synapse Analytics (ワークスペース) の専用 SQL プール | ✓ | | ✓ | ✓ | ✓ | ✓ ||
-| Azure Data Explorer ||||||| ✓ |
+| Blob Storage | ✓ || ✓ |||
+| Data Lake Storage Gen1 | ✓ | | ✓ |||
+| Data Lake Storage Gen2 | ✓ | | ✓ |||
+| SQL Database | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Synapse Analytics (旧称 SQL Data Warehouse) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Synapse Analytics (ワークスペース) の専用 SQL プール | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Data Explorer ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>ストレージ アカウントからの共有
-Azure Data Share では、Azure Data Lake Gen1 および Azure Data Lake Gen2 からのファイル、フォルダー、ファイル システムの共有がサポートされています。 また、Azure Blob Storage からの BLOB、フォルダー、コンテナーの共有もサポートされています。 現時点では、ブロック BLOB のみがサポートされています。 スナップショット ベースの共有でファイル システム、コンテナー、またはフォルダーが共有されている場合、データ コンシューマーは、共有データの完全なコピーを作成するか、増分スナップショット機能を利用して新規または更新されたファイルのみをコピーするかを選択できます。 増分スナップショットは、ファイルの最終更新時刻に基づいています。 同じ名前の既存のファイルは、スナップショット中に上書きされます。 ソースから削除されたファイルは、ターゲットで削除されません。 
+Azure Data Share では、Azure Data Lake Storage Gen1 および Azure Data Lake Storage Gen2 からのファイル、フォルダー、ファイル システムの共有がサポートされています。 また、Azure Blob Storage からの BLOB、フォルダー、コンテナーの共有もサポートされています。 現時点では、ブロック BLOB のみがサポートされています。 
 
-詳しくは、「[Azure Blob Storage と Azure Data Lake Storage からデータを共有および受信する](how-to-share-from-storage.md)」をご覧ください。
+ファイル システム、コンテナー、またはフォルダーがスナップショットベースの共有で共有されている場合、データ コンシューマーは共有データの完全なコピーを作成することを選択できます。 または、増分スナップショット機能を使用して、新しいファイルまたは更新されたファイルのみをコピーすることもできます。 
+
+増分スナップショットは、ファイルの最終更新時刻に基づいています。 受信したデータ内のファイルと同じ名前を持つ既存のファイルは、スナップショットで上書きされます。 ソースから削除されたファイルは、ターゲットで削除されません。 
+
+詳しくは、「[Azure Blob Storage と Azure Data Lake Storage からデータを共有および受信する](how-to-share-from-storage.md)」を参照してください。
 
 ## <a name="share-from-a-sql-based-source"></a>SQL ベースのソースからの共有
-Azure Data Share は、Azure SQL Database と Azure Synapse Analytics (旧称 Azure SQL DW) からのテーブルとビュー両方の共有、および Azure Synapse Analytics (ワークスペース) 専用 SQL プールからのテーブルの共有をサポートしています。 Azure Synapse Analytics (ワークスペース) サーバーレス SQL プールからの共有は、現在サポートされていません。 データ コンシューマーは、データを Azure Data Lake Storage Gen2 または Azure Blob Storage に csv または parquet ファイルとして受け入れたり、Azure SQL Database と Azure Synapse Analytics にテーブルとして受け入れたりすることができます。
+Azure Data Share では、Azure SQL Database および Azure Synapse Analytics (旧称 Azure SQL Data Warehouse) からのテーブルとビューの両方の共有がサポートされています。 Azure Synapse Analytics (ワークスペース) の専用 SQL プールからのテーブルの共有がサポートされています。 Azure Synapse Analytics (ワークスペース) サーバーレス SQL プールからの共有は、現在サポートされていません。 
 
-データを Azure Data Lake Store Gen2 または Azure Blob Storage に受け入れると、完全なスナップショットによってターゲット ファイル (存在する場合) の内容が上書きされます。
-データがテーブルに受け入れられるときにターゲット テーブルがまだ存在しない場合は、Azure Data Share によってソース スキーマで SQL テーブルが作成されます。 同じ名前を持つターゲット テーブルが既に存在する場合、それは削除され、最新の完全なスナップショットで上書きされます。 増分スナップショットは現在はサポートされていません。
+データ コンシューマーは、データを Azure Data Lake Storage Gen2 または Azure Blob Storage に、CSV ファイルまたは parquet ファイルとして受け入れることができます。 また、データをテーブルとして Azure SQL Database と Azure Synapse Analytics に受け入れることもできます。
 
-詳しくは、[Azure SQL Database と Azure Synapse Analytics からのデータの共有および受信](how-to-share-from-sql.md)に関する記事をご覧ください。
+コンシューマーがデータを Azure Data Lake Storage Gen2 または Azure Blob Storage に受け入れると、完全なスナップショットによってターゲット ファイル (存在する場合) の内容が上書きされます。 データがテーブルに受け入れられるときにターゲット テーブルがまだ存在しない場合は、Azure Data Share によってソース スキーマを使用して SQL テーブルが作成されます。 ターゲット テーブルが既に存在して同じ名前を持つ場合、それは削除され、最新の完全なスナップショットで上書きされます。 増分スナップショットは現在はサポートされていません。
 
-## <a name="share-from-azure-data-explorer"></a>Azure Data Explorer からの共有
-Azure Data Share では、Azure Data Explorer クラスターからデータベースをインプレース共有する機能がサポートされています。 データ プロバイダーは、データベース レベルまたはクラスター レベルで共有することができます。 データベース レベルで共有された場合、データ コンシューマーは、データ プロバイダーが共有した特定のデータベースにのみアクセスできます。 クラスター レベルで共有された場合、データ コンシューマーは、データ プロバイダーが今後作成するデータベースも含めて、プロバイダーのクラスターからすべてのデータベースにアクセスできます。
+詳細については、「[Azure SQL Database と Azure Synapse Analytics からのデータの共有と受信](how-to-share-from-sql.md)」を参照してください。
 
-共有データベースにアクセスするには、データ コンシューマーが独自の Azure Data Explorer クラスターを持っている必要があります。 データ コンシューマーの Azure Data Explorer クラスターは、データ プロバイダーの Azure Data Explorer クラスターと同じ Azure データ センターに配置されている必要があります。 共有関係が確立されると、Azure Data Share によって、プロバイダーとコンシューマーの Azure Data Explorer クラスターの間にシンボリック リンクが作成されます。 ソースの Azure Data Explorer クラスターにバッチ モードを使用して取り込まれたデータは、数秒から数分以内にターゲット クラスターに表示されます。
+## <a name="share-from-data-explorer"></a>Data Explorer からの共有
+Azure Data Share では、Azure Data Explorer クラスターからデータベースをインプレース共有する機能がサポートされています。 データ プロバイダーは、データベースまたはクラスターのレベルで共有することができます。 
 
-詳しくは、[Azure Data Explorer からのデータの共有および受信](/azure/data-explorer/data-share)に関する記事をご覧ください。 
+データがデータベース レベルで共有されている場合、データ コンシューマーは、データ プロバイダーが共有したデータベースにのみアクセスできます。 プロバイダーがデータをクラスター レベルで共有した場合、データ コンシューマーは、データ プロバイダーが今後作成するデータベースも含めて、プロバイダーのクラスターからすべてのデータベースにアクセスできます。
+
+共有データベースにアクセスするには、データ コンシューマーには独自の Azure Data Explorer クラスターが必要です。 これらのクラスターは、データ プロバイダーの Azure Data Explorer クラスターと同じ Azure データ センター内に存在する必要があります。 
+
+共有関係が確立されると、Azure Data Share によって、プロバイダーのクラスターとコンシューマーのクラスターの間にシンボリック リンクが作成されます。 バッチ モードを使用してソース クラスターに取り込まれたデータは、数分以内にターゲット クラスターに表示されます。
+
+詳細については、[Azure Data Explorer からのデータの共有および受信](/azure/data-explorer/data-share)に関する記事をご覧ください。 
 
 ## <a name="next-steps"></a>次のステップ
 

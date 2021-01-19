@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 7b66ef40dd59a8f80cc273fa22b76ddb533dc61d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 280b45bf4fd13eb2132aa053a091cf6830fe5280
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990065"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046646"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -54,6 +54,7 @@ ms.locfileid: "94990065"
 |[Linux マシンでは、Azure セキュリティ ベースラインの要件を満たしている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc9b3da7-8347-4380-8e70-0a0361d8dedd) |前提条件がポリシーの割り当てスコープにデプロイされていることが要求されます。 詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) を参照してください。 Linux マシンで Azure セキュリティ ベースラインの要件を満たしている必要がある場合、マシンは非準拠です |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AzureLinuxBaseline_AINE.json) |
 |[Log Analytics エージェントは Linux Azure Arc マシンにインストールする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F842c54e8-c2f9-4d79-ae8d-38d8b8019373) |このポリシーでは、Log Analytics エージェントがインストールされていない場合に、Linux Azure Arc マシンを監査します。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Arc_Linux_LogAnalytics_Audit.json) |
 |[Log Analytics エージェントは Windows Azure Arc マシンにインストールする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd69b1763-b96d-40b8-a2d9-ca31e9fd0d3e) |このポリシーでは、Log Analytics エージェントがインストールされていない場合に、Windows Azure Arc マシンを監査します。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Arc_Windows_LogAnalytics_Audit.json) |
+|[マシン上の SQL サーバーの脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6ba6d016-e7c3-4842-b8f2-4992ebc0d72d) |SQL の脆弱性評価では、データベースのセキュリティの脆弱性をスキャンすることで、構成の誤り、過剰なアクセス許可、機密データの未保護など、ベスト プラクティスからの逸脱をすべて明らかにします。 見つかった脆弱性を解決すると、データベースのセキュリティ態勢が大幅に向上する可能性があります。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerSQLVulnerabilityAssessment_Audit.json) |
 |[Windows マシンは [管理用テンプレート - コントロール パネル] の要件を満たしている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3aa2661b-02d7-4ba6-99bc-dc36b10489fd) |Windows マシンには、入力の個人用設定とロック画面の有効化防止について、カテゴリ [管理用テンプレート - コントロール パネル] で指定されたグループ ポリシー設定が必要です。 このポリシーでは、ゲスト構成の前提条件がポリシーの割り当てスコープにデプロイされていることが要求されます。 詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) を参照してください。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministrativeTemplatesControlPanel_AINE.json) |
 |[Windows マシンは [管理用テンプレート - MSS (レガシ)] の要件を満たしている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe0a7e899-2ce2-4253-8a13-d808fdeb75af) |Windows マシンには、自動ログオン、スクリーン セーバー、ネットワークの動作、安全な DLL、イベント ログについて、カテゴリ [管理用テンプレート - MSS (レガシ)] で指定されたグループ ポリシー設定が必要です。 このポリシーでは、ゲスト構成の前提条件がポリシーの割り当てスコープにデプロイされていることが要求されます。 詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) を参照してください。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministrativeTemplatesMSSLegacy_AINE.json) |
 |[Windows マシンは [管理用テンプレート - ネットワーク] の要件を満たしている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F67e010c1-640d-438e-a3a5-feaccb533a98) |Windows マシンには、ゲスト ログオン、同時接続、ネットワーク ブリッジ、ICS、マルチキャスト名前解決について、カテゴリ [管理用テンプレート - ネットワーク] で指定されたグループ ポリシー設定が必要です。 このポリシーでは、ゲスト構成の前提条件がポリシーの割り当てスコープにデプロイされていることが要求されます。 詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) を参照してください。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministrativeTemplatesNetwork_AINE.json) |

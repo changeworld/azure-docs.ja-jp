@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 8ef3ff20c67eefa2091ffb1732ced813b169e596
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d6b3d60a44725869d68dd9f1158d2279f3cf3e86
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929754"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963982"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>マネージド ID を使用して App Configuration にアクセスする
 
@@ -102,7 +102,7 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
     using Azure.Identity;
     ```
 
-1. App Configuration に直接格納されている値にのみアクセスしたい場合は、`config.AddAzureAppConfiguration()` メソッドを置換して `CreateWebHostBuilder` メソッドを更新します。
+1. App Configuration に直接格納されている値にのみアクセスしたい場合は、`config.AddAzureAppConfiguration()` メソッド (`Microsoft.Azure.AppConfiguration.AspNetCore` パッケージにあります) を置換して `CreateWebHostBuilder` メソッドを更新します。
 
     > [!IMPORTANT]
     > `CreateHostBuilder` により、.NET Core 3.0 の `CreateWebHostBuilder` が置き換えられます。  お使いの環境に応じて適切な構文を選択します。

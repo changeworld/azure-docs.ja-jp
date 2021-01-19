@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 78ce6466521c7903187798d902056948c659653c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 624cf4012316b832e507518aa7e0f0874f517971
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509854"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059134"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth2 技術プロファイルを定義する
 
@@ -87,7 +87,7 @@ Azure Active Directory B2C (Azure AD B2C) では、OAuth2 プロトコルの ID 
 | end_session_endpoint | はい | RFC 6749 に準拠したセッションの終了エンドポイントの URL。 |
 | AccessTokenResponseFormat | いいえ | アクセス トークン エンドポイント呼び出しの形式。 たとえば、Facebook では HTTP GET メソッドが必要ですが、アクセス トークン応答は JSON 形式です。 |
 | AdditionalRequestQueryParameters | いいえ | 追加要求クエリ パラメーター。 たとえば、追加のパラメーターを ID プロバイダーに送信する場合があります。 コンマ区切り記号を使用して、複数のパラメーターを列挙できます。 |
-| ClaimsEndpointAccessTokenName | いいえ | アクセス トークンのクエリ文字列パラメーターの名前。 一部の ID プロバイダーの要求エンドポイントでは、GET HTTP 要求をサポートしています。 この場合は、ベアラー トークンは、authorization ヘッダーの代わりに、クエリ文字列パラメーターを使用して送信されます。 |
+| ClaimsEndpointAccessTokenName | いいえ | アクセス トークンのクエリ文字列パラメーターの名前。 一部の ID プロバイダーの要求エンドポイントでは、GET HTTP 要求をサポートしています。 この場合は、ベアラー トークンは、authorization ヘッダーの代わりに、クエリ文字列パラメーターを使用して送信されます。 既定値: `access_token`。 |
 | ClaimsEndpointFormatName | いいえ | 形式のクエリ文字列パラメーターの名前。 たとえば、LinkedIn 要求エンドポイント `https://api.linkedin.com/v1/people/~?format=json` では、名前を `format` として設定できます。 |
 | ClaimsEndpointFormat | いいえ | 形式のクエリ文字列パラメーターの値。 たとえば、LinkedIn 要求エンドポイント `https://api.linkedin.com/v1/people/~?format=json` では、値を `json` として設定できます。 |
 | ProviderName | いいえ | ID プロバイダーの名前。 |
@@ -101,6 +101,7 @@ Azure Active Directory B2C (Azure AD B2C) では、OAuth2 プロトコルの ID 
 | ResolveJsonPathsInJsonTokens  | いいえ | 技術プロファイルが JSON パスを解決するかどうかを示します。 指定できる値: `true` または `false` (既定値)。 このメタデータを使用して、入れ子になった JSON 要素からデータを読み取ります。 [OutputClaim](technicalprofiles.md#output-claims) で、`PartnerClaimType` を、出力する JSON パス要素に設定します。 例: `firstName.localized`、または `data.0.to.0.email`。|
 |token_endpoint_auth_method| No| Azure AD B2C からトークン エンドポイントに認証ヘッダーを送信する方法を指定します。 指定できる値は、`client_secret_post` (既定値) と `client_secret_basic` (パブリック プレビュー) です。 詳細については、[OpenID Connect クライアント認証](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)に関するセクションをご覧ください。 |
 |SingleLogoutEnabled| いいえ| サインイン中に技術プロファイルがフェデレーション ID プロバイダーからサインアウトを試行しているかどうかを示します。 詳しくは、[Azure AD B2C のセッション サインアウト](session-behavior.md#sign-out)に関する記事をご覧ください。指定できる値は `true`(既定値) または`false`です。|
+| UsePolicyInRedirectUri | いいえ | リダイレクト URI を構築するときにポリシーを使用するかどうかを示します。 ID プロバイダーでアプリケーションを構成するときは、リダイレクト URI を指定する必要があります。 リダイレクト URI は Azure AD B2C を指します (`https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`)。 `true` を指定した場合は、使用するポリシーごとにリダイレクト URI を追加する必要があります。 (例: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`)。 |
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 

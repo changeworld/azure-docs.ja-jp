@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 60aab2c77a5ccf59e129b21deab34daf756b2e23
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: f2170aad9bc0218d39244d08f5cc838235f8fee9
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827429"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134366"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
@@ -157,7 +157,6 @@ dataset = Dataset.Tabular.from_delimited_files(data)
     time_series_settings = {
         'time_column_name': time_column_name,
         'time_series_id_column_names': time_series_id_column_names,
-        'drop_column_names': ['logQuantity'],
         'forecast_horizon': n_test_periods
     }
     
@@ -468,15 +467,17 @@ Web サービスにデプロイするためのモデルをダウンロードま�
   2. `pip freeze` を入力して `tensorflow`を探します。見つかった場合は、表示されるバージョンは 1.13 未満になるはずです。
   3. 表示されているバージョンがサポート対象のバージョンでない場合は、コマンド シェルで `pip uninstall tensorflow` を入力し、確認のために「y」を入力します。
   
- * **実行が `jwt.exceptions.DecodeError` で失敗する**:正確なエラー メッセージ: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()`。 
- 
-    最新バージョンの AutoML SDK へのアップグレードを検討してください: `pip install -U azureml-sdk[automl]`。 
-    
-    それが不可能な場合は、PyJWT のバージョンを確認してください。 サポートされているバージョンは、2.0.0 未満です。 バージョンが 2.0.0 以降の場合は、環境から PyJWT をアンインストールします。 PyJWT のバージョンを確認し、アンインストールして適切なバージョンをインストールするには、次のようにします。
+ * **実行が `jwt.exceptions.DecodeError` で失敗する**:正確なエラー メッセージ: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()`。
+
+    SDK のバージョンが 1.17.0 以前の場合、インストールによってサポートされていないバージョンの PyJWT がインストールされる可能性があります。 自動 ML Conda 環境で PyJWT のバージョンを確認します。 サポートされているバージョンは、2.0.0 未満です。 PyJWT のバージョンは次のようにして確認できます。
     1. コマンド シェルを起動し、自動 ML パッケージがインストールされている Conda 環境をアクティブにします。
     2. `pip freeze` を入力して `PyJWT`を探します。見つかった場合は、表示されるバージョンは 2.0.0 未満になるはずです。
-    3. 表示されているバージョンがサポート対象のバージョンでない場合は、コマンド シェルで `pip uninstall PyJWT` を入力し、確認のために「y」を入力します。
-    4. `pip install 'PyJWT<2.0.0'` を使用してインストールします。
+
+    表示されているバージョンがサポートされているバージョンでない場合:
+    1. 最新バージョンの AutoML SDK へのアップグレードを検討してください: `pip install -U azureml-sdk[automl]`。
+    2. それが実行できない場合は、次のように環境から PyJWT をアンインストールし、適切なバージョンをインストールします。
+        - コマンド シェルで `pip uninstall PyJWT` を実行し、確認のために「`y`」を入力します。
+        - `pip install 'PyJWT<2.0.0'` を使用してインストールします。
 
 ## <a name="next-steps"></a>次のステップ
 

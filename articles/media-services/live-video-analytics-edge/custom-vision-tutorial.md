@@ -4,12 +4,12 @@ description: Azure Custom Vision を使用して、おもちゃのトラック�
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 614c4e401579eda68d8030dc2d2a42b2c4736031
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: de788c337ce8030b73538565e4f374ffc7db55b8
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401697"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060521"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>チュートリアル:Live Video Analytics on IoT Edge と Azure Custom Vision でライブ ビデオを分析する
 
@@ -61,8 +61,11 @@ ms.locfileid: "97401697"
 ::: zone-end
 ## <a name="review-the-sample-video"></a>サンプル ビデオを確認する
 
+このチュートリアルでは、[おもちゃの車の推論ビデオ](https://lvamedia.blob.core.windows.net/public/t2.mkv) ファイルを使用してライブ ストリームをシミュレートします。 このビデオは、[VLC media player](https://www.videolan.org/vlc/) などのアプリケーションを使用して確認できます。 [Ctrl+N](https://lvamedia.blob.core.windows.net/public/t2.mkv) キーを押し、**おもちゃの車の推論ビデオ** へのリンクを貼り付けて、再生を開始します。 ビデオを見ると、36 秒の時点でおもちゃのトラックがビデオに出てくることがわかります。 このカスタム モデルは、この特定のおもちゃのトラックを検出するようにトレーニングされています。 
 
-このチュートリアルでは、[おもちゃの車の推論ビデオ](https://lvamedia.blob.core.windows.net/public/t2.mkv) ファイルを使用してライブ ストリームをシミュレートします。 このビデオは、[VLC media player](https://www.videolan.org/vlc/) などのアプリケーションを使用して確認できます。 [Ctrl+N](https://lvamedia.blob.core.windows.net/public/t2.mkv) キーを押し、**おもちゃの車の推論ビデオ** へのリンクを貼り付けて、再生を開始します。 ビデオを見ると、36 秒の時点でおもちゃのトラックがビデオに出てくることがわかります。 このカスタム モデルは、この特定のおもちゃのトラックを検出するようにトレーニングされています。 このチュートリアルでは、Live Video Analytics on IoT Edge を使用して、このようなおもちゃのトラックを検出し、関連付けられた推論イベントを IoT Edge ハブに発行します。
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LPwK]
+
+このチュートリアルでは、Live Video Analytics on IoT Edge を使用して、このようなおもちゃのトラックを検出し、関連付けられた推論イベントを IoT Edge ハブに発行します。
 
 ## <a name="overview"></a>概要
 
@@ -127,7 +130,6 @@ Custom Vision という名前が示唆するように、これを使用して、
 
 ## <a name="examine-the-sample-files"></a>サンプル ファイルを詳しく調べる
 
-
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [examine-sample-files](includes/custom-vision-tutorial/csharp/examine-sample-files.md)]
 ::: zone-end
@@ -140,7 +142,7 @@ Custom Vision という名前が示唆するように、これを使用して、
 
 1. Visual Studio Code で、src/cloud-to-device-console-app/operations.json に移動します。
 
-1. `GraphTopologySet` で、次に該当することを確認します。<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
+1. `GraphTopologySet` で、次に該当することを確認します。<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/2.0/topology.json"`
 1. `GraphInstanceSet` で、以下を確認します。
     1. `"topologyName" : "InferencingWithHttpExtension"`
     1. パラメーター配列の先頭に `{"name": "inferencingUrl","value": "http://cv:80/image"},` を追加します。
@@ -261,7 +263,7 @@ Live Video Analytics デバイスを右クリックし、 **[組み込みイベ�
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished イベント
 
-メディア グラフがインスタンス化されると、RTSP ソース ノードは、rtspsim-live555 コンテナーで実行されている RTSP サーバーへの接続を試みます。 接続に成功すると、次のイベントが出力されます。 イベントの種類は `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished` です。
+メディア グラフがインスタンス化されると、RTSP ソース ノードは、rtspsim-live555 コンテナーで実行されている RTSP サーバーへの接続を試みます。 接続に成功すると、次のイベントが出力されます。 イベントの種類は、**Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished** です。
 
 ```
 {

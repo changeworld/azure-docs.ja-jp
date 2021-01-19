@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 66e363b43bf9028e3075efa0f5a1f54e6bda190d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 0e16cb3d24f9dd33b156bca72ce1c99e7aae957a
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92512690"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963606"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>チュートリアル:Azure Active Directory と Palo Alto Networks Captive Portal の統合
 
@@ -38,8 +38,8 @@ Azure AD と Palo Alto Networks Captive Portal を統合するには、次のも
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Palo Alto Networks Captive Portal では、 **IDP** によって開始される SSO がサポートされます
-* Palo Alto Networks Captive Portal では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Palo Alto Networks Captive Portal では、**IDP** によって開始される SSO がサポートされます
+* Palo Alto Networks Captive Portal では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-palo-alto-networks-captive-portal-from-the-gallery"></a>ギャラリーからの Palo Alto Networks Captive Portal の追加
 
@@ -49,12 +49,12 @@ Azure AD への Palo Alto Networks Captive Portal の統合を構成するには
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Palo Alto Networks Captive Portal** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Palo Alto Networks Captive Portal**」と入力します。
 1. 結果パネルで **[Palo Alto Networks Captive Portal]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
-このセクションでは、 **B.Simon** というテスト ユーザーに基づいて、Palo Alto Networks Captive Portal で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**B.Simon** というテスト ユーザーに基づいて、Palo Alto Networks Captive Portal で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Palo Alto Networks Captive Portal 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Palo Alto Networks Captive Portal で Azure AD シングル サインオンを構成してテストするには、次の手順を実行します。
@@ -72,7 +72,7 @@ Palo Alto Networks Captive Portal で Azure AD シングル サインオンを�
 
 1. Azure portal の **Palo Alto Networks Captive Portal** アプリケーション統合ページで、 **[管理]** セクションを探し、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -131,7 +131,7 @@ Palo Alto Networks Captive Portal で Azure AD シングル サインオンを�
 
     ![Palo Alto Networks のシングル サインオンの構成](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin3.png)
 
-    1. **[Profile Name]\(プロファイル名\)** に、 **AzureAD-CaptivePortal** のような名前を入力します。
+    1. **[Profile Name]\(プロファイル名\)** に、**AzureAD-CaptivePortal** のような名前を入力します。
     
     2. **[Identity Provider Metadata]\(ID プロバイダーのメタデータ\)** の隣にある **[Browse]\(参照\)** を選択します。 Azure portal からダウンロードした metadata.xml ファイルを選択します。
     
@@ -148,10 +148,11 @@ Palo Alto Networks Captive Portal で Azure AD シングル サインオンを�
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Palo Alto Networks Captive Portal に自動的にサインインされます
+* Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Palo Alto Networks Captive Portal に自動的にサインインされます
 
-Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Palo Alto Networks Captive Portal] タイルをクリックすると、SSO を設定した Palo Alto Networks Captive Portal に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Palo Alto Networks Captive Portal] タイルをクリックすると、SSO を設定した Palo Alto Networks Captive Portal に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+
+## <a name="next-steps"></a>次のステップ
 
 Palo Alto Networks Captive Portal を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: c8be18049e6ae74a198f5885a46b70df581e0cd7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7496a7a40df49fa1b9f8410526cb9ec00c10478b
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187461"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108774"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>ストリーミング インジェストのスループットの制限
 
@@ -34,7 +34,7 @@ Azure Time Series Insights Gen2 のストリーミング データのイング�
 
 > [!TIP]
 >
-> * 要求により、環境でサポートされる取り込み速度を最大 8 MBps に指定できます。
+> * リクエストにより、環境でサポートされる取り込み速度を最大 2 MBps に指定できます。
 > * より高いスループットが必要な場合は、Azure portal からサポート チケットを送信してお問い合わせください。
 
 * **例 1:**
@@ -47,10 +47,10 @@ Azure Time Series Insights Gen2 のストリーミング データのイング�
 
 * **例 2:**
 
-    Contoso Fleet Analytics には、毎秒 1 つのイベントを発生させる 40,000 個のデバイスがあります。 それらは、2 つのパーティションを持つイベント ハブを Azure Time Series Insights Gen2 イベント ソースとして使用しています。 1 つのイベントのサイズは 200 バイトです。
+    Contoso Fleet Analytics には、毎秒 1 つのイベントを発生させる 10,000 個のデバイスがあります。 それらは、2 つのパーティションを持つイベント ハブを Azure Time Series Insights Gen2 イベント ソースとして使用しています。 1 つのイベントのサイズは 200 バイトです。
 
-  * 環境のインジェスト率は次のようになります。**40,000 デバイス * 200 バイト/イベント * 1 イベント/秒 = 8 MBps**。
-    * パーティションのバランスが取れているとすると、パーティションあたりの率は 4 MBps になります。
+  * 環境のインジェスト率は次のようになります。**10,000 デバイス * 200 バイト/イベント * 1 イベント/秒 = 2 MBps**。
+    * パーティションのバランスが取れているとすると、パーティションあたりの率は 1 MBps になります。
     * Contoso Fleet Analytics のインジェスト率は、環境とパーティションの制限を超えています。 Azure portal で Azure Time Series Insights Gen2 に要求を送信して、環境のインジェスト率を上げることができます。また、制限内に収まるように、より多くのパーティションを備えたイベント ハブを作成することもできます。
 
 ## <a name="hub-partitions-and-per-partition-limits"></a>ハブのパーティションとパーティションごとの制限

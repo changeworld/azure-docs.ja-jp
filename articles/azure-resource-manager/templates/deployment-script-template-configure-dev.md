@@ -1,26 +1,26 @@
 ---
 title: テンプレートでデプロイ スクリプトの開発環境を構成する | Microsoft Docs
-description: Azure Resource Manager テンプレートでデプロイ スクリプトの開発環境を構成します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) でデプロイ スクリプトの開発環境を構成します。
 services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: d12ec5e3fef45429741fff1665f435d68e6c83f6
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 13dc072e31f0d27768de8d9a62ea942d55460713
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734183"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936398"
 ---
-# <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>テンプレートでデプロイ スクリプトの開発環境を構成する
+# <a name="configure-development-environment-for-deployment-scripts-in-arm-templates"></a>ARM テンプレートでデプロイ スクリプトの開発環境を構成する
 
 デプロイ スクリプト イメージを使用してデプロイ スクリプトを開発およびテストするための開発環境を作成する方法について説明します。 [Azure Container Instance](../../container-instances/container-instances-overview.md) を作成することも、[Docker](https://docs.docker.com/get-docker/) を使用することもできます。 この記事では、この両方について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-デプロイ スクリプトがない場合は、次の内容で **hello.ps1** ファイルを作成してください。
+デプロイ スクリプトがない場合は、次の内容で _hello.ps1_ ファイルを作成してください。
 
 ```powershell
 param([string] $name)
@@ -39,11 +39,11 @@ $DeploymentScriptOutputs['text'] = $output
 
 ### <a name="create-an-azure-container-instance"></a>Azure Container Instance を作成する
 
-次の ARM テンプレートは、コンテナー インスタンスとファイル共有を作成し、ファイル共有をコンテナー イメージにマウントします。
+次の Azure Resource Manager テンプレート (ARM テンプレート) は、コンテナー インスタンスとファイル共有を作成し、ファイル共有をコンテナー イメージにマウントします。
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "projectName": {
@@ -153,9 +153,10 @@ $DeploymentScriptOutputs['text'] = $output
   ]
 }
 ```
-マウント パスの既定値は **deploymentScript** です。  これは、ファイル共有にマウントされるコンテナー インスタンス内のパスです。
 
-テンプレートに指定されている既定のコンテナー イメージは **mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3** です。   [サポートされている Azure PowerShell バージョン](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)の一覧を参照してください。 [サポートされている Azure CLI バージョン](https://mcr.microsoft.com/v2/azure-cli/tags/list)の一覧を参照してください。
+マウント パスの既定値は `deploymentScript` です。 これは、ファイル共有にマウントされるコンテナー インスタンス内のパスです。
+
+テンプレートに指定されている既定のコンテナー イメージは `mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3` です。 [サポートされている Azure PowerShell バージョン](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)の一覧を参照してください。 [サポートされている Azure CLI バージョン](https://mcr.microsoft.com/v2/azure-cli/tags/list)の一覧を参照してください。
 
   >[!IMPORTANT]
   > デプロイ スクリプトでは、Microsoft Container Registry (MCR) から入手可能な CLI イメージが使用されます。 デプロイ スクリプトに対する CLI イメージの認定には、1 か月ほどかかります。 30 日以内にリリースされた CLI バージョンは使用しないでください。 イメージのリリース日を確認するには、「[Azure CLI リリース ノート](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true)」を参照してください。 サポートされていないバージョンが使用されている場合、サポートされているバージョンがエラー メッセージに一覧表示されます。
@@ -196,7 +197,7 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
 
 1. Azure portal から、コンテナー インスタンスとストレージ アカウントをデプロイしたリソース グループを開きます。
 1. コンテナー グループを開きます。 既定のコンテナー グループ名は、プロジェクト名に **cg** が追加されたものです。 コンテナー インスタンスが **実行** 状態であることがわかります。
-1. 左側のメニューから **[コンテナー]** を選択します。 コンテナー インスタンスが表示されます。  コンテナー インスタンス名は、プロジェクト名に **container** が追加されたものです。
+1. 左側のメニューから **[コンテナー]** を選択します。 コンテナー インスタンスが表示されます。 コンテナー インスタンス名は、プロジェクト名に **container** が追加されたものです。
 
     ![デプロイ スクリプト、コンテナー インスタンスへの接続](./media/deployment-script-template-configure-dev/deployment-script-container-instance-connect.png)
 
@@ -248,7 +249,7 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
     docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
     ```
 
-    **&lt;host driver letter>** および **&lt;host directory name>** を、共有ドライブ上の既存のフォルダーに置き換えます。  このフォルダーは、コンテナー内の **/data** フォルダーにマップされます。 D:\docker をマップする例を次に示します。
+    **&lt;host driver letter>** および **&lt;host directory name>** を、共有ドライブ上の既存のフォルダーに置き換えます。 このフォルダーは、コンテナー内の _/data_ フォルダーにマップされます。 _D:\docker_ をマップする例を次に示します。
 
     ```command
     docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
@@ -262,7 +263,7 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
     docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
     ```
 
-1. 次のスクリーンショットは、共有ドライブに helloworld.ps1 ファイルがある場合に、PowerShell スクリプトを実行する方法を示しています。
+1. 次のスクリーンショットは、共有ドライブに _helloworld.ps1_ ファイルがある場合に、PowerShell スクリプトを実行する方法を示しています。
 
     ![Resource Manager テンプレートのデプロイ スクリプト Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
@@ -273,4 +274,4 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
 この記事では、デプロイ スクリプトの使用方法について学習しました。 デプロイ スクリプトのチュートリアルを詳しく見るには、次を確認してください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Azure Resource Manager テンプレートでデプロイ スクリプトを使用する](./template-tutorial-deployment-script.md)
+> [チュートリアル: ARM テンプレートでデプロイ スクリプトを使用する](./template-tutorial-deployment-script.md)

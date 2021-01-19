@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1bbc3b3cd755aabd348a238ad65cda132b9a7547
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: c32f90221a73d04fd6c54c8332826232d0e6a6f3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746611"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968536"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Spark & Hive Tools for Visual Studio Code を使用する
 
@@ -269,7 +269,7 @@ PySpark Interactive コマンドを使用してクエリを送信するには、
 
 > [!NOTE]
 >
-> ["この拡張では 2020.5.78807 バージョン以降の ms-python はサポートされていません"](#issues-changed) は解決されました。 現在は、最新の ms-python バージョンを使用できます。
+> ["この拡張では 2020.5.78807 バージョン以降の ms-python はサポートされていません"](#issues-changed) は解決されました。 **ms-python** を **最新バージョン** に更新してください。
 
 ## <a name="submit-pyspark-batch-job"></a>PySpark バッチ ジョブを送信する
 
@@ -491,7 +491,7 @@ Data Lake Storage Gen2 を使用して HDInsight クラスターにジョブを�
 
 ## <a name="issues-changed"></a>問題の変更
 
-この問題 ("この拡張では 2020.5.78807 バージョン以降の ms-python はサポートされていません") は解決されたので、現在は **最新の ms-python バージョン** を使用できます。
+この問題 ("この拡張では 2020.5.78807 バージョン以降の ms-python はサポートされていません") は解決されたので、**ms-python** を **最新バージョン** に更新してください。
 
 
 ## <a name="next-steps"></a>次のステップ

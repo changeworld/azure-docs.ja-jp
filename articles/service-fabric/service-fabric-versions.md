@@ -3,12 +3,12 @@ title: Azure Service Fabric でサポートされているクラスターのバ�
 description: Service Fabric チーム ブログからの最新リリースへのリンクなど、Azure Service Fabric のクラスターのバージョンについて説明します。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 5770aa072666f89a574da9d1f2584ab33b612330
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: abf9900e9749a1b21d927e0315076b38848bea10
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862174"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132649"
 ---
 # <a name="supported-service-fabric-versions"></a>サポートされている Service Fabric のバージョン
 
@@ -25,25 +25,57 @@ Service Fabric ランタイムの特定のバージョンでは、指定され�
 ## <a name="unsupported-versions"></a>サポートされていないバージョン
 
 ### <a name="upgrade-alert-for-versions-between-57-and-below-6363"></a>バージョン 5.7 から 6.3.63.* のアップグレードの警告
+Azure インフラストラクチャではセキュリティと可用性を向上させるための変更を行います。これは、Service Fabric をご使用のお客様に影響を与える可能性があります。 **サポートされていない 5.7 から 6.3. までのバージョン上の Service Fabric クラスターはすべて影響を受けます**。 変更に対処するには、Service Fabric ランタイムを更新する必要があります。これは、サポートされているすべての Service Fabric バージョンについては、すべてのリージョンで既に入手できます。
 
-***サポートされていないバージョン 5.7 から 6.3.63.* のすべての Service Fabric クラスターは、 2021 年 1 月 7 日*** に Azure でロールアウトされるセキュリティの破壊的変更の影響を受けます。
- 
- 重大なサービス中断 (クラスターが起動しないなど) を回避するには、セキュリティの問題の修正プログラムが含まれた、Service Fabric ランタイムの下記のサポートされているバージョンのいずれかにクラスターをできるだけ早くアップグレードする必要があります。 影響を受けるお客様には、ガイダンスをお送りしました。 サポート プランをお持ちで、技術的な支援が必要な場合は、サポート リクエストを開き、サポート チケットにこのコンテキストを記載して、[Azure サポート チャネル](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)を介してご連絡ください。 
- 
-  #### <a name="supported-service-fabric-runtime-versions-including-the-fix-for-the-security-breaking-change"></a>セキュリティの破壊的変更に対応する修正プログラムを含む、サポートされている Service Fabric ランタイムのバージョン 
-   セキュリティの破壊的変更の影響を受ける、サポートされていない古いバージョンで実行されている Service Fabric クラスターを、次のサポートされているバージョンのいずれかにアップグレードしてください。
+サービスの中断を回避するために、**2021 年 1 月 19 日** までに、サポートされている最新バージョンにアップグレードするための措置が必要であり、これを推奨します。サポート プランがあり、技術的なサポートが必要な場合は、Azure Service Fabric のサポート リクエストを開き、この状況をサポート チケットに記載し、Azure サポート チャネルを通じてお問い合わせください。
 
+#### <a name="impact-if-not-upgraded-to-supported-versions"></a>サポートされているバージョンにアップグレードしない場合の影響
+
+2021 年 1 月 19 日までに、以下のサポートされているバージョンのいずれかにアップグレードしない場合、**サポートされていない 5.7 から 6.3.63.\* までのバージョンで実行される Azure Service Fabric クラスターは、起動できず、使用できなくなります**。
+
+#### <a name="required-action"></a>必要な操作
+この変更に関連するダウンタイムや機能の消失を防ぐために、以下にリストする、サポートされている Service Fabric バージョンにアップグレードしてください。 環境内での問題を防ぐために、これらのバージョン以上でクラスターを実行するようにしてください。
+
+  ###### <a name="supported-service-fabric-runtime-versions"></a>サポートされている Service Fabric ランタイムのバージョン
+   以下にリストするサポートされているバージョンの Service Fabric を使用していない場合、クラスターのダウンタイムを防ぐために、必要な変更が既に含まれているこれらのバージョンのいずれかにアップグレードしてください。  
+  
   | OS | クラスター内の現在の Service Fabric ランタイム | CU/パッチ リリース  | 
   | --- | --- |--- | 
   | Windows | 7.0.* | 7.0.478.9590 |
   | Windows | 7.1.* | 7.1.503.9590 |
   | Windows | 7.2.* | 7.2.445.9590 |
   | Ubuntu 16 | 7.0.* | 7.0.472.1  |
-  | Ubuntu 16 | 7.1.* | 7.1.455.1  |
-  | Ubuntu 1804 | 7.1.* | 7.1.455.1804 |
-  | Ubuntu 16 | 7.2.* | 7.2.447.1 |
-  | Ubuntu 1804 | 7.2.* | 7.2.447.1804 |
+  | Linux Ubuntu 16.04 | 7.1.* | 7.1.455.1  |
+  | Linux Ubuntu 18.04 | 7.1.* | 7.1.455.1804 |
+  | Linux Ubuntu 16.04 | 7.2.* | 7.2.447.1 |
+  | Linux Ubuntu 18.04 | 7.2.* | 7.2.447.1804 |
  
+### <a name="upgrade-alert-for-versions-greater-than-63"></a>6\.3 以降のバージョンに関するアップグレード通知 
+Azure インフラストラクチャではセキュリティと可用性を向上させるための変更を行います。これは、Service Fabric をご使用のお客様に影響を与える可能性があります。 **[コンテナーの Open ネットワーク機能](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)を使用し、6.3 から 7.0 までのサポートされていないバージョンで実行されており、7.0 以上のサポートされているバージョンと互換性がない Service Fabric クラスターはすべて影響を受けます**。 変更に対処するには、Service Fabric ランタイムを更新する必要があります。これは、サポートされているすべての Service Fabric バージョンについては、すべてのリージョンで既に入手できます。
+
+ #### <a name="impact-if-not-upgraded-to-supported-versions"></a>サポートされているバージョンにアップグレードしない場合の影響
+  **2021 年 1 月 19 日** までに、以下のサポートされているバージョンのいずれかにアップグレードしない場合、**コンテナーの [Open ネットワーク機能](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)を使用し、変更を含まない 6.3 以上のバージョンで実行されている** Azure Service Fabric クラスターでは、機能の消失やサービスの中断が発生します。
+ 
+  - **クラスターが、6.3 以上のバージョンの Service Fabric を実行し、Open ネットワーク機能を使用していない場合**、クラスターは起動しますが、コンテナー クラスターの Open ネットワーク機能は機能しなくなり、ワークロードのサービス中断を招く可能性があります。
+
+ - **クラスターが、6.3 以上のバージョンの Service Fabric を実行し、[コンテナーの Open ネットワーク機能](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)を使用している場合**、クラスターは起動しますが、機能しなくなり、ワークロードのサービス中断を招く可能性があります。
+  
+#### <a name="required-action"></a>必要な操作
+この変更に関連するダウンタイムや機能の消失を防ぐために、以下にリストする、サポートされている Service Fabric バージョンにアップグレードしてください。 環境内での問題を防ぐために、これらのバージョン以上でクラスターを実行するようにしてください。 
+ 
+ ###### <a name="supported-service-fabric-runtime-versions"></a>サポートされている Service Fabric ランタイムのバージョン
+ 以下にリストするサポートされているバージョンの Service Fabric を使用していない場合、機能の消失を防ぐために、必要な変更が既に含まれているこれらのバージョンのいずれかにアップグレードしてください。  
+ 
+  | OS | クラスター内の現在の Service Fabric ランタイム | CU/パッチ リリース  | 
+  | --- | --- |--- | 
+  | Windows | 7.0.* | 7.0.478.9590 |
+  | Windows | 7.1.* | 7.1.503.9590 |
+  | Windows | 7.2.* | 7.2.445.9590 |
+  | Linux Ubuntu 16.04 | 7.0.* | 7.0.472.1  |
+  | Linux Ubuntu 16.04 | 7.1.* | 7.1.455.1  |
+  | Linux Ubuntu 18.04 | 7.1.* | 7.1.455.1804 |
+  | Linux Ubuntu 16.04 | 7.2.* | 7.2.447.1 |
+  | Linux Ubuntu 18.04 | 7.2.* | 7.2.447.1804 |
 
 ## <a name="supported-versions"></a>サポートされているバージョン
 次の表に、Service Fabric のバージョンとサポート終了日の一覧を示します。

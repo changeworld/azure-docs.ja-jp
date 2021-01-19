@@ -5,25 +5,25 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 01/07/2021
 ms.author: duau
-ms.openlocfilehash: 4b57dec32a3a008cadf68c19ea52353a23fb2cd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae0a39d65bf0f1bc5221cd5e46493c489f7630f8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397496"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012667"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>NAT をセットアップして管理するためのルーター構成のサンプル
 
-このページでは、ExpressRoute を使用する場合の Cisco ASA と Juniper SRX シリーズ ルーターの NAT 構成のサンプルを示します。 これらはガイダンスとしてのみ使用することを目的としたサンプルであり、現状のまま使用することはできません。 ベンダーと協力して、ネットワークに適した構成を考えてください。
+この記事では、ExpressRoute を使用する場合の Cisco ASA と Juniper SRX シリーズ ルーターの NAT 構成のサンプルを示します。 これらのルーター構成はガイダンスとしてのみ使用することを目的としたサンプルであり、現状のまま使用することはできません。 ベンダーと協力して、お使いのネットワークに適した構成を考えてください。
 
 > [!IMPORTANT]
 > このページのサンプルは、ガイダンスとしてのみ使用することを目的としています。 ベンダーの販売/技術チームおよび自社のネットワーク チームと協力して、ニーズに対応する適切な構成を考える必要があります。 Microsoft では、このページに示す構成に関連する問題には対応できません。 サポートの問題については、デバイス ベンダーに問い合わせる必要があります。
 > 
 > 
 
-* 次のルーター構成のサンプルは、Azure パブリック ピアリングと Microsoft ピアリングに適用されます。 Azure プライベート ピアリングの NAT は構成しないでください。 詳細については、「[ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」および「[ExpressRoute NAT の要件](expressroute-nat.md)」を参照してください。
+* 次のルーター構成のサンプルは、Azure パブリック ピアリングと Microsoft ピアリングに適用されます。 Azure プライベート ピアリングの NAT は構成しません。 詳細については、「[ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」および「[ExpressRoute NAT の要件](expressroute-nat.md)」を参照してください。
 
 * インターネットと ExpressRoute への接続には個別の NAT IP プールを使用する必要があります。 インターネットと ExpressRoute で同じ NAT IP プールを使用すると、非対称ルーティングになり、接続が失われます。
 
@@ -361,5 +361,5 @@ nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT dest
 ```
 
 ## <a name="next-steps"></a>次のステップ
-詳細については、 [ExpressRoute の FAQ](expressroute-faqs.md) を参照してください。
+詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 35bb05eb019a1284a8a418df0197960130e8d013
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ab21c6dc95ef39e6273dac405ba58e748890fc1a
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897298"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968434"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SAP Fiori の統合
 
@@ -26,7 +26,6 @@ ms.locfileid: "92897298"
 * ユーザーが自分の Azure AD アカウントを使用して SAP Fiori に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,27 +38,27 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SAP Fiori では、 **SP** Initiated SSO がサポートされます
+* SAP Fiori では、**SP** Initiated SSO がサポートされます
 
 > [!NOTE]
-> SAP Fiori から開始される iFrame 認証では、サイレント認証の SAML AuthnRequest に **IsPassive** パラメーターを使用することをお勧めします。 **IsPassive** パラメーターの詳細については、 [Azure AD SAML シングル サインオン](../develop/single-sign-on-saml-protocol.md)情報を参照してください。
+> SAP Fiori から開始される iFrame 認証では、サイレント認証の SAML AuthnRequest に **IsPassive** パラメーターを使用することをお勧めします。 **IsPassive** パラメーターの詳細については、[Azure AD SAML シングル サインオン](../develop/single-sign-on-saml-protocol.md)情報を参照してください。
 
 ## <a name="adding-sap-fiori-from-the-gallery"></a>ギャラリーからの SAP Fiori の追加
 
 Azure AD への SAP Fiori の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に SAP Fiori を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **SAP Fiori** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**SAP Fiori**」と入力します。
 1. 結果のパネルから **[SAP Fiori]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-fiori"></a>SAP Fiori の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-sap-fiori"></a>SAP Fiori の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、SAP Fiori に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと SAP Fiori の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-SAP Fiori で Azure AD SSO を構成してテストするには、次の構成要素を完了する必要があります。
+SAP Fiori に対する Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -131,13 +130,13 @@ SAP Fiori で Azure AD SSO を構成してテストするには、次の構成�
 
     ![SAP の [SAML 2.0 Metadata]\(SAML 2.0 メタデータ\) ダイアログ ボックスの [Download Metadata]\(メタデータのダウンロード\) リンク](./media/sapfiori-tutorial/tutorial-sapnetweaver-generatesp.png)
 
-1. [Azure portal](https://portal.azure.com/) の **SAP Fiori** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **SAP Fiori** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、 **サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
+1. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
@@ -166,9 +165,9 @@ SAP Fiori で Azure AD SSO を構成してテストするには、次の構成�
 
     1. **[編集]** を選択し、 **[ユーザー要求の管理]** ウィンドウを開きます。
 
-    1. **[変換]** の一覧で、 **ExtractMailPrefix()** を選択します。
+    1. **[変換]** の一覧で、**ExtractMailPrefix()** を選択します。
 
-    1. **[パラメーター 1]** の一覧で、 **user.userprincipalname** を選択します。
+    1. **[パラメーター 1]** の一覧で、**user.userprincipalname** を選択します。
 
     1. **[保存]** を選択します。
 
@@ -203,15 +202,9 @@ SAP Fiori で Azure AD SSO を構成してテストするには、次の構成�
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[SAP Fiori]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-sap-fiori-sso"></a>SAP Fiori の SSO の構成
@@ -230,7 +223,7 @@ SAP Fiori で Azure AD SSO を構成してテストするには、次の構成�
 
     ![SAP でアップロードするメタデータ ファイルを選択する](./media/sapfiori-tutorial/tutorial-sapnetweaver-metadatafile.png)
 
-1. 次のページの **[Alias]\(エイリアス\)** ボックスに、エイリアス名を入力します。 たとえば、「 **aadsts** 」と入力します。 **[次へ]** を選択します。
+1. 次のページの **[Alias]\(エイリアス\)** ボックスに、エイリアス名を入力します。 たとえば、「**aadsts**」と入力します。 **[次へ]** を選択します。
 
     ![SAP の [Alias]\(エイリアス\) ボックス](./media/sapfiori-tutorial/tutorial-sapnetweaver-aliasname.png)
 
@@ -268,7 +261,7 @@ SAP Fiori で Azure AD SSO を構成してテストするには、次の構成�
 
     **[User ID Source]\(ユーザー ID ソース\)** と **[User ID Mapping Mode]\(ユーザー ID マッピング モード\)** の値によって、SAP ユーザーと Azure AD 要求の間のリンクが決まります。  
 
-    **シナリオ 1** : SAP ユーザーから Azure AD ユーザーへのマッピング
+    **シナリオ 1**: SAP ユーザーから Azure AD ユーザーへのマッピング
 
     1. SAP で、 **[Details of NameID Format "Unspecified"]\(NameID 形式 "未指定" の詳細\)** の詳細を書き留めます。
 
@@ -278,7 +271,7 @@ SAP Fiori で Azure AD SSO を構成してテストするには、次の構成�
 
         ![[ユーザー属性とクレーム] ダイアログ ボックスを示すスクリーンショット。](./media/sapfiori-tutorial/claimsaad1.png)
 
-    **シナリオ 2** : SU01 で構成したメール アドレスに基づいて、SAP ユーザー ID を選択します。 このケースでは、SSO を必要とする各ユーザーに対して、SU01 でメール ID を構成する必要があります。
+    **シナリオ 2**: SU01 で構成したメール アドレスに基づいて、SAP ユーザー ID を選択します。 このケースでは、SSO を必要とする各ユーザーに対して、SU01 でメール ID を構成する必要があります。
 
     1.  SAP で、 **[Details of NameID Format "Unspecified"]\(NameID 形式 "未指定" の詳細\)** の詳細を書き留めます。
 
@@ -316,12 +309,6 @@ SAP Fiori で Azure AD SSO を構成してテストするには、次の構成�
 
 1. ユーザー名とパスワードの入力が求められる場合は、トレースを有効にして、問題の診断に役立てます。 トレースには、https:\//\<sapurl\>/sap/bc/webdynpro/sap/sec_diag_tool?sap-client=122&sap-language=EN# という URL を使用します。
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="next-steps"></a>次のステップ
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
-
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
-
-- [Azure AD で SAP Fiori を試す](https://aad.portal.azure.com/)
+SAP Fiori を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

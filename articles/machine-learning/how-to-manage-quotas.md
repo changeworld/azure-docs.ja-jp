@@ -5,18 +5,17 @@ description: Azure Machine Learning のリソースにおけるクォータと�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 58dacc9e65da6502d083446cb7202c222cb7e795
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 3f08f401f24d95431bcd3bba48976641cebb28e9
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034039"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072209"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning を使用するリソースのクォータの管理と引き上げ
 
@@ -29,7 +28,7 @@ Azure では、不正による予算超過を防ぎ、Azure の容量の制約�
 > + クォータの引き上げを依頼する。
 > + プライベート エンドポイントと DNS クォータ。
 
-クォータの管理に加えて、[Azure Machine Learning のコストを計画して管理する](concept-plan-manage-cost.md)方法について説明します。
+クォータの管理に加えて、[Azure Machine Learning のコストを計画して管理する](concept-plan-manage-cost.md)方法や、[Azure Machine Learning のサービスの制限値](resource-limits-quotas-capacity.md)について説明します。
 
 ## <a name="special-considerations"></a>特別な考慮事項
 
@@ -53,7 +52,9 @@ Azure では、不正による予算超過を防ぎ、Azure の容量の制約�
 + Azure Storage
 
 > [!IMPORTANT]
-> 制限は変更されることがあります。 最新情報については、Azure 全体に関する「[Azure のサブスクリプションとサービスの制限、クォータ、および制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」を参照してください。
+> 制限は変更されることがあります。 最新の情報については、「[Azure Machine Learning のサービスの制限値](resource-limits-quotas-capacity.md)」を参照してください。
+
+
 
 ### <a name="azure-machine-learning-assets"></a>Azure Machine Learning 資産
 資産に関する次の制限は、ワークスペースごとに適用されます。 
@@ -210,3 +211,4 @@ Azure Machine Learning の場合、(お客様の) サブスクリプションで
 ## <a name="next-steps"></a>次のステップ
 
 + [Azure Machine Learning のコストを計画して管理する](concept-plan-manage-cost.md)
++ [Azure Machine Learning のサービスの制限値](resource-limits-quotas-capacity.md)

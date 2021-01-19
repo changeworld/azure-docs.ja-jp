@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/20/2019
+ms.date: 01/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 0d93edbefb61cb8ded09f6402ca1e1661429efe1
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: ebf967fe02ab6424b9952bb0315b70fadb547fe3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952150"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967832"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro でコンピューティングを管理する
 
@@ -38,7 +38,7 @@ ms.locfileid: "91952150"
 
 トリガーを作成するには、Azure portal で次の手順を実行します。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[Edge コンピューティング] > [トリガー]** に移動します。 コマンド バーの **[+ トリガーの追加]** を選択します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[IoT Edge] > [トリガー]** に移動します。 コマンド バーの **[+ トリガーの追加]** を選択します。
 
     ![[トリガーの追加] の選択](media/azure-stack-edge-manage-compute/add-trigger-1.png)
 
@@ -68,15 +68,15 @@ ms.locfileid: "91952150"
 
 1. トリガーの一覧から、削除するトリガーを選択します。
 
-    ![トリガーの選択](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![トリガーの選択](media/azure-stack-edge-manage-compute/delete-trigger-1.png)
 
 2. 右クリックしてから、 **[削除]** を選択します。
 
-    ![[削除] の選択](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![[削除] の選択](media/azure-stack-edge-manage-compute/delete-trigger-2.png)
 
 3. 確認を求められたら、 **[はい]** をクリックします。
 
-    ![削除の確定](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![削除の確定](media/azure-stack-edge-manage-compute/delete-trigger-3.png)
 
 トリガーの一覧が更新され、削除が反映されます。
 
@@ -88,11 +88,11 @@ Azure portal を使用して、Azure Stack Edge Pro のコンピューティン�
 
 デバイスのコンピューティング構成を表示するには、Azure portal で次の手順を実行します。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[Edge コンピューティング] > [モジュール]** に移動します。 コマンド バーの **[View compute]\(コンピューティングの表示\)** を選択します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[IoT Edge] > [概要]** に移動します。 
 
     ![[View compute]\(コンピューティングの表示\) の選択](media/azure-stack-edge-manage-compute/view-compute-1.png)
 
-2. デバイスのコンピューティング構成をメモします。 コンピューティングを構成したときに、IoT Hub リソースを作成しました。 その IoT Hub リソースの下に、IoT デバイスと IoT Edge デバイスが構成されています。 IoT Edge デバイスでの実行がサポートされているのは Linux モジュールのみです。
+2. **[プロパティ]** ページに移動します。 デバイスのコンピューティング構成をメモします。 コンピューティングを構成したときに、IoT Hub リソースを作成しました。 その IoT Hub リソースの下に、IoT デバイスと IoT Edge デバイスが構成されています。 IoT Edge デバイスでの実行がサポートされているのは Linux モジュールのみです。
 
     ![構成の表示](media/azure-stack-edge-manage-compute/view-compute-2.png)
 
@@ -101,7 +101,7 @@ Azure portal を使用して、Azure Stack Edge Pro のコンピューティン�
 
 デバイスの既存の Edge コンピューティング構成を削除するには、Azure portal で次の手順を実行します。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[Edge コンピューティング] > [開始する]** に移動します。 コマンド バーの **[Remove compute]\(コンピューティングの削除\)** を選択します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[IoT Edge] > [概要]** に移動します。 コマンド バーの **[削除]** を選択します。
 
     ![[Remove compute]\(コンピューティングの削除\) の選択](media/azure-stack-edge-manage-compute/remove-compute-1.png)
 
@@ -119,7 +119,7 @@ IoT デバイスと IoT Edge デバイスのキーをローテーションした
 
 デバイスのアクセス キーを同期するには、Azure portal で次の手順を実行します。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[Edge コンピューティング] > [開始する]** に移動します。 コマンド バーの **[構成の更新]** を選択します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[IoT Edge] > [概要]** に移動します。 コマンド バーの **[構成の更新]** を選択します。
 
     ![[構成の更新] を選択](media/azure-stack-edge-manage-compute/refresh-configuration-1.png)
 

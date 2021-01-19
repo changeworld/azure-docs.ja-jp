@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7ba15e66cca7baefdf8cca5cabd5e5d5b1e2c7f7
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 1282c27378e6a088a600a3ab3105f3f548984d03
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507814"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063146"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>チュートリアル:Android アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す
 
@@ -71,11 +71,11 @@ Android アプリケーションがまだない場合は、次の手順に従っ
 6. **[Minimum API level]\(最低 API レベル\)** を **API 19** 以上に設定し、**[Finish]\(完了\)** をクリックします。
 7. プロジェクト ビューのドロップダウンで **[Project]\(プロジェクト\)** を選択して、ソースとソース以外のプロジェクト ファイルを表示し、**app/build.gradle** を開いて、`targetSdkVersion` を `28` に設定します。
 
-## <a name="integrate-with-microsoft-authentication-library"></a>Microsoft Authentication Library と統合する
+## <a name="integrate-with-the-microsoft-authentication-library"></a>Microsoft Authentication Library と統合する
 
 ### <a name="register-your-application"></a>アプリケーションの登録
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。

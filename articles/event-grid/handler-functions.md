@@ -1,31 +1,31 @@
 ---
-title: Azure Event Grid イベントに対するイベント ハンドラーとしての Azure 関数
-description: Event Grid イベントのイベント ハンドラーとして Azure Functions を使用する方法について説明します。
+title: Azure Event Grid イベントのイベント ハンドラーとして Azure の関数を使用する
+description: Azure Functions 内で作成されてホストされる関数を、Event Grid イベントのイベント ハンドラーとして使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 9e04fd3e04dab7a50940c2a4a799a56d447fbb6e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5a1ec575b58829a422e4d263ae0324e0343d5ad3
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145762"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034970"
 ---
-# <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Event Grid イベントに対するイベント ハンドラーとしての Azure 関数
+# <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>Event Grid イベントのイベント ハンドラーとして関数を使用する
 
 イベント ハンドラーは、イベントの送信先となる場所です。 ハンドラーでは、イベントを処理するアクションが実行されます。 一部の Azure サービスは、イベントを処理するように自動的に構成されます。**Azure Functions** はその 1 つです。 
 
 
-Azure 関数をイベントのハンドラーとして使用するには、次のいずれかの方法に従います。 
+Azure の関数をイベントのハンドラーとして使用するには、次のいずれかの方法に従います。 
 
--   [Event Grid トリガー](../azure-functions/functions-bindings-event-grid-trigger.md)を使用する。  **エンドポイントのタイプ**として **Azure 関数**を指定します。 さらに、Azure 関数アプリとイベントを処理する関数を指定します。 
--   [HTTP トリガー](../azure-functions/functions-bindings-http-webhook.md)を使用する。  **エンドポイントのタイプ**として **Webhook** を指定します。 さらに、イベントを処理する Azure 関数の URL を指定します。 
+-   [Event Grid トリガー](../azure-functions/functions-bindings-event-grid-trigger.md)を使用する。  **エンドポイントのタイプ** として **Azure 関数** を指定します。 さらに、関数アプリと、イベントを処理する関数を指定します。 
+-   [HTTP トリガー](../azure-functions/functions-bindings-http-webhook.md)を使用する。  **エンドポイントのタイプ** として **Webhook** を指定します。 さらに、イベントを処理する関数の URL を指定します。 
 
 お勧めするのは最初の方法 (Event Grid トリガー) です。この方法には、2 番目の方法と比較して次の利点があります。
 -   Event Grid では、Event Grid トリガーが自動的に検証されます。 汎用 HTTP トリガーの場合は、[検証応答](webhook-event-delivery.md)を開発者自身が実装する必要があります。
 -   Event Grid は、Event Grid イベントによってトリガーされる関数にイベントを配信する速度を、その関数がイベントを処理できるとみなされた速度に基づいて自動的に調整します。 この速度調整機能により、関数のイベント処理速度の経時的な変化が原因で関数がイベントを処理できなくなるために生じる配信エラーを防止できます。 スループットを高めて効率を向上させるには、イベント サブスクリプションでのバッチ処理を有効にします。 詳細については、「[バッチ処理を有効にする](#enable-batching)」をご覧ください。
 
     > [!NOTE]
-    > 現時点では、**CloudEvents スキーマ**でイベントを配信する際に、Azure Functions アプリの Event Grid トリガーを使用することはできません。 代わりに、HTTP トリガーを使用してください。
+    > 現時点では、**CloudEvents** スキーマでイベントが配信される場合に、関数アプリに対して Event Grid トリガーを使用できません。 代わりに、HTTP トリガーを使用してください。
 
 ## <a name="tutorials"></a>チュートリアル
 
@@ -69,7 +69,7 @@ UI でサブスクリプションを作成するときに、 **[イベント サ
 
 既存のサブスクリプションについては、 **[Event Grid トピック]** ページの **[機能]** タブでこれらの値を更新できます。 
 
-:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="サブスクリプション作成時にバッチ処理を有効にする":::
+:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="作成後にバッチ処理を有効にする":::
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 Azure Resource Manager テンプレートで **maxEventsPerBatch** と **preferredBatchSizeInKilobytes** を設定できます。 詳細については、[Microsoft.EventGrid eventSubscriptions テンプレートのリファレンス](/azure/templates/microsoft.eventgrid/eventsubscriptions)をご覧ください。

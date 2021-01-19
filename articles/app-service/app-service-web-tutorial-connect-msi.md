@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 1f6757a9f78e3c400d92fd65a0795ceae7570c99
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: f043f7ed63353dcb9cf9fd26690da97b902f32a6
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347576"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108621"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>チュートリアル:マネージド ID を使用した App Service からの Azure SQL Database 接続のセキュリティ保護
 
@@ -229,6 +229,9 @@ GO
 > [!NOTE]
 > マネージド ID のバックエンド サービスは、[トークン キャッシュも管理](overview-managed-identity.md#obtain-tokens-for-azure-resources)します。トークン キャッシュでは、有効期限が切れたときにのみターゲット リソースのトークンが更新されます。 SQL Database のアクセス許可に設定ミスがあり、アプリでトークンを取得しようとした "*後に*" アクセス許可に変更を加えようとしても、実際には、キャッシュされたトークンの有効期限が切れるまで、更新されたアクセス許可で新しいトークンを取得することはできません。
 
+> [!NOTE]
+> AAD は、オンプレミス SQL Server ではサポートされません。これには MSI が含まれます。 
+
 ### <a name="modify-connection-string"></a>接続文字列を変更する
 
 *Web.config* または *appsettings.json* 内で行ったのと同じ変更をマネージド ID に対して使用できるため、必要な作業は App Service 内の既存の接続文字列 (ご自分のアプリを初めてデプロイすると Visual Studio によって作成されます) を削除することだけである点に注意してください。 次のコマンドを使用しますが、 *\<app-name>* はご自分のアプリの名前に置き換えます。
@@ -251,7 +254,7 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 
 ```bash
 git commit -am "configure managed identity"
-git push azure master
+git push azure main
 ```
 
 新しい Web ページに To-Do リストを表示するとき、アプリはマネージド ID を使用してデータベースに接続しています。

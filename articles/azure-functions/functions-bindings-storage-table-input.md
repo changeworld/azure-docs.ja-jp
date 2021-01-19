@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 20dc6cde9cce6a9d57047940a38adb5cf004ae6a
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 4fc2426189384856d2d2e95887cdabd2f9e9ebea
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347678"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033780"
 ---
 # <a name="azure-table-storage-input-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage の入力バインド
 
@@ -296,97 +296,6 @@ public class Person : TableEntity
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-次の例は、*function.json* ファイルのテーブル入力バインドと、バインドを使用する [JavaScript コード](functions-reference-node.md)を示しています。 この関数は、キュー トリガーを使用して単一のテーブル行を読み取ります。 
-
-*function.json* ファイルには `partitionKey` と `rowKey` が指定されています。 `rowKey` 値 "{queueTrigger}" は、行キーがキュー メッセージ文字列から取得されることを示します。
-
-```json
-{
-  "bindings": [
-    {
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnectionAppSetting",
-      "name": "myQueueItem",
-      "type": "queueTrigger",
-      "direction": "in"
-    },
-    {
-      "name": "personEntity",
-      "type": "table",
-      "tableName": "Person",
-      "partitionKey": "Test",
-      "rowKey": "{queueTrigger}",
-      "connection": "MyStorageConnectionAppSetting",
-      "direction": "in"
-    }
-  ],
-  "disabled": false
-}
-```
-
-これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
-
-JavaScript コードを次に示します。
-
-```javascript
-module.exports = function (context, myQueueItem) {
-    context.log('Node.js queue trigger function processed work item', myQueueItem);
-    context.log('Person entity name: ' + context.bindings.personEntity.Name);
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-1 つのテーブル行 
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "name": "messageJSON",
-      "type": "table",
-      "tableName": "messages",
-      "partitionKey": "message",
-      "rowKey": "{id}",
-      "connection": "AzureWebJobsStorage",
-      "direction": "in"
-    },
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ],
-      "route": "messages/{id}"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    }
-  ],
-  "disabled": false
-}
-```
-
-```python
-import json
-
-import azure.functions as func
-
-def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
-
-    message = json.loads(messageJSON)
-    return func.HttpResponse(f"Table row: {messageJSON}")
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 次の例では、テーブル ストレージ内の指定したパーティション内にある person オブジェクトの一覧を返す、HTTP によってトリガーされる関数を示します。 この例では、パーティション キーは http ルートから抽出され、tableName と connection は関数の設定からのものです。 
@@ -440,7 +349,7 @@ public HttpResponseMessage get(
 }
 ```
 
-次の例では、フィルターを使用して、Azure テーブル内の特定の名前を持つ人物を照会し、一致候補の数を 10 件の結果に制限しています。
+次の例では、フィルターを使用して、Azure テーブル内の特定の名前を持つ人物についてクエリを実行し、一致候補の数を 10 件の結果に制限しています。
 
 ```java
 @FunctionName("getPersonsByName")
@@ -454,6 +363,143 @@ public Person[] get(
 
     return persons;
 }
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+次の例は、*function.json* ファイルのテーブル入力バインドと、バインドを使用する [JavaScript コード](functions-reference-node.md)を示しています。 この関数は、キュー トリガーを使用して単一のテーブル行を読み取ります。 
+
+*function.json* ファイルには `partitionKey` と `rowKey` が指定されています。 `rowKey` 値 "{queueTrigger}" は、行キーがキュー メッセージ文字列から取得されることを示します。
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "personEntity",
+      "type": "table",
+      "tableName": "Person",
+      "partitionKey": "Test",
+      "rowKey": "{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
+
+JavaScript コードを次に示します。
+
+```javascript
+module.exports = function (context, myQueueItem) {
+    context.log('Node.js queue trigger function processed work item', myQueueItem);
+    context.log('Person entity name: ' + context.bindings.personEntity.Name);
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+次の関数では、キュー トリガーを使用して、関数への入力として 1 つのテーブル行を読み取ります。
+
+この例では、バインド構成によってテーブルの `partitionKey` に明示的な値が指定され、式を使用して `rowKey` に渡しています。 `rowKey` 式の `{queueTrigger}` は、行キーがキュー メッセージ文字列から取得されることを示します。
+
+_function.json_ のバインド構成:
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "MyQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "PersonEntity",
+      "type": "table",
+      "tableName": "Person",
+      "partitionKey": "Test",
+      "rowKey": "{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+_run.ps1_ の PowerShell コード:
+
+```powershell
+param($MyQueueItem, $PersonEntity, $TriggerMetadata)
+Write-Host "PowerShell queue trigger function processed work item: $MyQueueItem"
+Write-Host "Person entity name: $($PersonEntity.Name)"
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+次の関数では、キュー トリガーを使用して、関数への入力として 1 つのテーブル行を読み取ります。
+
+この例では、バインド構成によってテーブルの `partitionKey` に明示的な値が指定され、式を使用して `rowKey` に渡しています。 `rowKey` 式の `{id}` は、行キーがキュー メッセージ文字列から取得されることを示します。
+
+_function.json_ ファイルのバインド構成:
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "messageJSON",
+      "type": "table",
+      "tableName": "messages",
+      "partitionKey": "message",
+      "rowKey": "{id}",
+      "connection": "AzureWebJobsStorage",
+      "direction": "in"
+    },
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ],
+      "route": "messages/{id}"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ],
+  "disabled": false
+}
+```
+
+*\_\_init\_\_.py* ファイルの Python コード:
+
+```python
+import json
+
+import azure.functions as func
+
+def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
+
+    message = json.loads(messageJSON)
+    return func.HttpResponse(f"Table row: {messageJSON}")
 ```
 
 ---
@@ -522,17 +568,21 @@ public Person[] get(
 
 属性は、C# スクリプトではサポートされていません。
 
+# <a name="java"></a>[Java](#tab/java)
+
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値がテーブル ストレージに由来するパラメーターで `@TableInput` 注釈を使用します。  この注釈は、Java のネイティブ型、POJO、または `Optional<T>` を使用した null 許容値で使用できます。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 属性は、JavaScript ではサポートされていません。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+属性は、PowerShell ではサポートされていません。
+
 # <a name="python"></a>[Python](#tab/python)
 
 属性は、Python ではサポートされていません。
-
-# <a name="java"></a>[Java](#tab/java)
-
-[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値がテーブル ストレージに由来するパラメーターで `@TableInput` 注釈を使用します。  この注釈は、Java のネイティブ型、POJO、または `Optional<T>` を使用した null 許容値で使用できます。
 
 ---
 
@@ -582,17 +632,21 @@ public Person[] get(
   > [!NOTE]
   > `IQueryable` は [Functions v2 ランタイム](functions-versions.md)ではサポートされていません。 代わりに、Azure Storage SDK で [CloudTable paramName メソッド パラメーターを使用](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)して、テーブルを読み取ります。 `CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](./functions-bindings-storage-table.md#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
+# <a name="java"></a>[Java](#tab/java)
+
+[TableInput](/java/api/com.microsoft.azure.functions.annotation.tableinput) 属性を使用すると、関数をトリガーしたテーブル行にアクセスできます。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `filter` と `take` プロパティを設定します。 `partitionKey` と `rowKey` は設定しません。 `context.bindings.<BINDING_NAME>` を使用して入力テーブルの単一のエンティティ (または複数のエンティティ) にアクセスします。 逆シリアル化されたオブジェクトには `RowKey` プロパティと `PartitionKey` プロパティがあります。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+データは、*function.json* ファイルの `name` キーによって指定された入力パラメーターに渡されます。 `partitionKey` と `rowKey` を指定すると、特定のレコードをフィルター処理できます。 詳細については、[PowerShell の例](#example)を参照してください。
+
 # <a name="python"></a>[Python](#tab/python)
 
 テーブル データは、JSON 文字列として関数に渡されます。 入力[例](#example)に示されているように `json.loads` を呼び出してメッセージを逆シリアル化します。
-
-# <a name="java"></a>[Java](#tab/java)
-
-[TableInput](/java/api/com.microsoft.azure.functions.annotation.tableinput) 属性を使用すると、関数をトリガーしたテーブル行にアクセスできます。
 
 ---
 

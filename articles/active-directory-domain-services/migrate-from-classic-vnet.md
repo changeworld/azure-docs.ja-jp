@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: justinha
-ms.openlocfilehash: 1fcd46870a4f85d1b88d22d77de5c201404c3a09
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 694ed5304e838057141b7df043565d58188fc870
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619370"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013041"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>クラシック仮想ネットワーク モデルから Resource Manager への Azure Active Directory Domain Services の移行
 
@@ -155,8 +155,8 @@ Resource Manager のデプロイ モデルと仮想ネットワークへの移�
 |---------|--------------------|-----------------|-----------|-------------------|
 | [手順 1 - 新しい仮想ネットワークを更新して検索する](#update-and-verify-virtual-network-settings) | Azure portal | 約 15 分 | ダウンタイムは必要ありません | 該当なし |
 | [手順 2 - マネージド ドメインを移行用に準備する](#prepare-the-managed-domain-for-migration) | PowerShell | 平均 15 から 30 分 | このコマンドが完了すると、Azure AD DS のダウンタイムが開始されます。 | ロールバックと復元を使用できます。 |
-| [手順 3 - マネージド ドメインを既存の仮想ネットワークに移動する](#migrate-the-managed-domain) | PowerShell | 平均 1 から 3 時間 | このコマンドが完了すると、1 つのドメイン コントローラーを使用できます。ダウンタイムは終了します。 | 失敗した場合は、ロールバック (セルフサービス) と復元の両方を使用できます。 |
-| [手順 4 - レプリカ ドメイン コントローラーをテストして待機する](#test-and-verify-connectivity-after-the-migration)| PowerShell と Azure portal | コアの数に応じて 1 時間またはそれ以上 | 両方のドメイン コントローラーが使用可能で、正常に機能します。 | 該当なし。 最初の VM が正常に移行された後では、ロールバックまたは復元のオプションはありません。 |
+| [手順 3 - マネージド ドメインを既存の仮想ネットワークに移動する](#migrate-the-managed-domain) | PowerShell | 平均 1 から 3 時間 | このコマンドが完了すると、1 つのドメイン コントローラーを使用できるようになります。 | 失敗した場合は、ロールバック (セルフサービス) と復元の両方を使用できます。 |
+| [手順 4 - レプリカ ドメイン コントローラーをテストして待機する](#test-and-verify-connectivity-after-the-migration)| PowerShell と Azure portal | コアの数に応じて 1 時間またはそれ以上 | 両方のドメイン コントローラーが使用可能で、正常に機能します。ダウンタイムが終了します。 | 該当なし。 最初の VM が正常に移行された後では、ロールバックまたは復元のオプションはありません。 |
 | [手順 5 - オプションの構成手順](#optional-post-migration-configuration-steps) | Azure portal と VM | 該当なし | ダウンタイムは必要ありません | 該当なし |
 
 > [!IMPORTANT]
@@ -262,16 +262,14 @@ PowerShell スクリプトを閉じても、移行プロセスは引き続き実
 
 ## <a name="test-and-verify-connectivity-after-the-migration"></a>移行後に接続をテストして検証する
 
-2 番目のドメイン コントローラーが正常にデプロイされ、マネージド ドメインで使用できるようになるまで、時間がかかることがあります。
+2 番目のドメイン コントローラーが正常にデプロイされ、マネージド ドメインで使用できるようになるまで、時間がかかることがあります。 2 番目のドメイン コントローラーは、移行コマンドレットの完了後 1 時間から 2 時間で使用可能になります。 Resource Manager デプロイ モデルでは、マネージド ドメインのネットワーク リソースが Azure portal または Azure PowerShell に表示されます。 2 番目のドメイン コントローラーが使用可能かどうかをチェックするには、Azure portal でマネージド ドメインの **[プロパティ]** ページを確認します。 IP アドレスが 2 つ表示されている場合は、2 番目のドメイン コントローラーの準備ができています。
 
-Resource Manager デプロイ モデルでは、マネージド ドメインのネットワーク リソースが Azure portal または Azure PowerShell に表示されます。 これらのネットワーク リソースが何であり、何を行うのかの詳細については、「[Azure AD DS によって使用されるネットワーク リソース][network-resources]」を参照してください。
-
-少なくとも 1 つのドメイン コントローラーが使用可能なときに、VM とのネットワーク接続について次の構成手順を行います。
+2 番目のドメイン コントローラーが使用可能になったら、VM とのネットワーク接続に関する次の構成手順を実行します。
 
 * **DNS サーバー設定の更新** - Resource Manager 仮想ネットワーク上の他のリソースでマネージド ドメインを解決して使用できるようにするには、新しいドメイン コントローラーの IP アドレスを使用して DNS 設定を更新します。 これらの設定は、Azure portal によって自動的に構成されます。
 
     Resource Manager 仮想ネットワークを構成する方法の詳細については、「[Azure 仮想ネットワークの DNS 設定を更新する][update-dns]」を参照してください。
-* **ドメインに参加している VM の再起動** - Azure AD DS ドメイン コントローラーの DNS サーバー IP アドレスが変わったため、ドメインに参加している VM を再起動します。これにより、それらの VM で新しい DNS サーバーの設定が使用されるようになります。 アプリケーションまたは VM の DNS 設定が手動で構成されている場合は、Azure portal に表示されるドメイン コントローラーの新しい DNS サーバー IP アドレスに手動で更新します。
+* **ドメインに参加している VM の再起動 (省略可能)** - Azure AD DS ドメイン コントローラーの DNS サーバー IP アドレスが変わったため、ドメインに参加している任意の VM を再起動できます。これにより、新しい DNS サーバー設定が使用されるようになります。 アプリケーションまたは VM の DNS 設定が手動で構成されている場合は、Azure portal に表示されるドメイン コントローラーの新しい DNS サーバー IP アドレスに手動で更新します。 ドメインに参加している VM を再起動すると、更新されない IP アドレスによって発生する接続の問題を回避できます。
 
 次に、仮想ネットワーク接続と名前解決をテストします。 Resource Manager 仮想ネットワークに接続またはピアリングされている VM で、次のネットワーク通信テストを行います。
 
@@ -280,7 +278,7 @@ Resource Manager デプロイ モデルでは、マネージド ドメインの�
 1. `nslookup aaddscontoso.com` のように、マネージド ドメインの名前解決を確認します。
     * ご自身のマネージド ドメインの DNS 名を指定して、DNS 設定が正しいことと解決されることを確認します。
 
-2 番目のドメイン コントローラーは、移行コマンドレットの完了後 1 時間から 2 時間で使用可能になります。 2 番目のドメイン コントローラーが使用可能かどうかをチェックするには、Azure portal でマネージド ドメインの **[プロパティ]** ページを確認します。 IP アドレスが 2 つ表示されている場合は、2 番目のドメイン コントローラーの準備ができています。
+他のネットワーク リソースの詳細については、「[Azure AD DS によって使用されるネットワーク リソース][network-resources]」を参照してください。
 
 ## <a name="optional-post-migration-configuration-steps"></a>移行後のオプションの構成手順
 

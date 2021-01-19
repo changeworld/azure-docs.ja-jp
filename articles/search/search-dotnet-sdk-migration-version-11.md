@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/07/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 260df85f3e380e40d153fc17ce77bd56ca068982
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c5f070f59df69bb186041af450e6ca922469d960
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532824"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043746"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Azure Cognitive Search .NET SDK バージョン 11 へのアップグレード
 
@@ -30,8 +30,7 @@ ms.locfileid: "96532824"
 + 2 つではなく 3 つのクライアント: `SearchClient`、`SearchIndexClient`、`SearchIndexerClient`
 + さまざまな API 全体の名前付けの違いと、一部のタスクを簡略化する細かい構造の違い
 
-> [!NOTE]
-> .NET SDK バージョン 11 の項目別一覧については、[**変更ログ**](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)を確認してください。
+この記事に加えて、.NET SDK バージョン 11 の変更内容の項目別一覧について[変更ログ](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)を確認できます。
 
 ## <a name="package-and-library-consolidation"></a>パッケージとライブラリの統合
 
@@ -109,6 +108,41 @@ ms.locfileid: "96532824"
 | [DocumentSearchResult](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) | 結果のドキュメントが 1 つか複数かに応じて、[SearchResult](/dotnet/api/azure.search.documents.models.searchresult-1) または [SearchResults](/dotnet/api/azure.search.documents.models.searchresults-1)。 |
 | [DocumentSuggestResult](/dotnet/api/microsoft.azure.search.models.documentsuggestresult-1) | [SuggestResults](/dotnet/api/azure.search.documents.models.suggestresults-1) |
 | [SearchParameters](/dotnet/api/microsoft.azure.search.models.searchparameters) |  [SearchOptions](/dotnet/api/azure.search.documents.searchoptions)  |
+
+### <a name="json-serialization"></a>JSON シリアル化
+
+既定では、Azure SDK は、JSON のシリアル化に [System.Text.Json](/dotnet/api/system.text.json) を使用します。これらの API の機能を使用して、新しいライブラリに対応するものがないネイティブ [SerializePropertyNamesAsCamelCaseAttribute](/dotnet/api/microsoft.azure.search.models.serializepropertynamesascamelcaseattribute) クラスを介して以前に実装されたテキスト変換を処理します。
+
+プロパティ名を camelCase にシリアル化するには、[JsonPropertyNameAttribute](/dotnet/api/system.text.json.serialization.jsonpropertynameattribute) を使用します ([こちらの例](https://github.com/Azure/azure-sdk-for-net/tree/d263f23aa3a28ff4fc4366b8dee144d4c0c3ab10/sdk/search/Azure.Search.Documents#use-c-types-for-search-results)に類似)。
+
+または、[JsonSerializerOptions](/dotnet/api/system.text.json.jsonserializeroptions) で提供されている [JsonNamingPolicy](/dotnet/api/system.text.json.jsonnamingpolicy) を設定することもできます。 次の System.Text.Json のコード例 ([Microsoft.Azure.Core.Spatial の README](https://github.com/Azure/azure-sdk-for-net/blob/259df3985d9710507e2454e1591811f8b3a7ad5d/sdk/core/Microsoft.Azure.Core.Spatial/README.md#deserializing-documents) から取得) は、個々のプロパティに割り当てることなく camelCase を使用する方法を示しています。
+
+```csharp
+// Get the Azure Cognitive Search endpoint and read-only API key.
+Uri endpoint = new Uri(Environment.GetEnvironmentVariable("SEARCH_ENDPOINT"));
+AzureKeyCredential credential = new AzureKeyCredential(Environment.GetEnvironmentVariable("SEARCH_API_KEY"));
+
+// Create serializer options with our converter to deserialize geographic points.
+JsonSerializerOptions serializerOptions = new JsonSerializerOptions
+{
+    Converters =
+    {
+        new MicrosoftSpatialGeoJsonConverter()
+    },
+    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+};
+
+SearchClientOptions clientOptions = new SearchClientOptions
+{
+    Serializer = new JsonObjectSerializer(serializerOptions)
+};
+
+SearchClient client = new SearchClient(endpoint, "mountains", credential, clientOptions);
+Response<SearchResults<Mountain>> results = client.Search<Mountain>("Rainier");
+```
+
+JSON シリアル化に Newtonsoft.Json を使用している場合は、同様の属性を使用するか、[JsonSerializerSettings](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonSerializerSettings.htm) のプロパティを使用して、グローバル名前付けポリシーを渡すことができます。 上記と同等の例については、Newtonsoft.Json の README の [ドキュメントの逆シリアル化の例](https://github.com/Azure/azure-sdk-for-net/blob/259df3985d9710507e2454e1591811f8b3a7ad5d/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md)を参照してください。
+
 
 <a name="WhatsNew"></a>
 
@@ -202,7 +236,7 @@ Azure Cognitive Search クライアント ライブラリの各バージョン�
 
 <a name="ListOfChanges"></a>
 
-## <a name="breaking-changes-in-version-11"></a>バージョン 11 における破壊的変更
+## <a name="breaking-changes"></a>重大な変更
 
 ライブラリと API に加えられた全面的な変更を考えると、バージョン 11 へのアップグレードは重大であり、コードがバージョン 10 以前との下位互換性を失うという点で、破壊的変更に相当します。 違いの詳細については、`Azure.Search.Documents` の[変更ログ](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) を参照してください。
 

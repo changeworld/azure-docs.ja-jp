@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 454ac9a377800bd11a53250569c3e7b65bac713a
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 779b66412319ec8422977a7e56570a4d16f89aa9
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558795"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071546"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 以降に対する Azure Cosmos DB の出力バインド
 
@@ -248,136 +248,6 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-次の例は、*function.json* ファイルの Azure Cosmos DB 出力バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、次の形式で JSON を受信するキューのキュー入力バインドを使用します。
-
-```json
-{
-    "name": "John Henry",
-    "employeeId": "123456",
-    "address": "A town nearby"
-}
-```
-
-この関数は、各レコードに対して次の形式の Azure Cosmos DB ドキュメントを作成します。
-
-```json
-{
-    "id": "John Henry-123456",
-    "name": "John Henry",
-    "employeeId": "123456",
-    "address": "A town nearby"
-}
-```
-
-*function.json* ファイルのバインディング データを次に示します。
-
-```json
-{
-    "name": "employeeDocument",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "createIfNotExists": true,
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "out"
-}
-```
-
-これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
-
-JavaScript コードを次に示します。
-
-```javascript
-    module.exports = function (context) {
-
-      context.bindings.employeeDocument = JSON.stringify({
-        id: context.bindings.myQueueItem.name + "-" + context.bindings.myQueueItem.employeeId,
-        name: context.bindings.myQueueItem.name,
-        employeeId: context.bindings.myQueueItem.employeeId,
-        address: context.bindings.myQueueItem.address
-      });
-
-      context.done();
-    };
-```
-
-一括挿入の場合は、オブジェクトを最初に作成してから、stringify 関数を実行します。 JavaScript コードを次に示します。
-
-```javascript
-    module.exports = function (context) {
-    
-        context.bindings.employeeDocument = JSON.stringify([
-        {
-            "id": "John Henry-123456",
-            "name": "John Henry",
-            "employeeId": "123456",
-            "address": "A town nearby"
-        },
-        {
-            "id": "John Doe-123457",
-            "name": "John Doe",
-            "employeeId": "123457",
-            "address": "A town far away"
-        }]);
-    
-      context.done();
-    };
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-次の例は、関数の出力としてドキュメントを Azure CosmosDB データベースに書き込む方法を示しています。
-
-バインディング定義は *function.json* で定義され、そこで *type* は `cosmosDB` に設定されます。
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "cosmosDB",
-      "direction": "out",
-      "name": "doc",
-      "databaseName": "demodb",
-      "collectionName": "data",
-      "createIfNotExists": "true",
-      "connectionStringSetting": "AzureCosmosDBConnectionString"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    }
-  ]
-}
-```
-
-データベースに書き込むには、ドキュメント オブジェクトをデータベース パラメーターの `set` メソッドのに渡します。
-
-```python
-import azure.functions as func
-
-def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpResponse:
-
-    request_body = req.get_body()
-
-    doc.set(func.Document.from_json(request_body))
-
-    return 'OK'
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 * [キュー トリガー、戻り値を使用したメッセージのデータベースへの保存](#queue-trigger-save-message-to-database-via-return-value-java)
@@ -545,6 +415,165 @@ public String cosmosDbQueryById(
 
 [Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Cosmos DB に書き込まれるパラメーター上で `@CosmosDBOutput` 注釈を使用します。  注釈パラメーターの型は ```OutputBinding<T>``` である必要があります。ここで、T は Java のネイティブ型または POJO のどちらかです。
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+次の例は、*function.json* ファイルの Azure Cosmos DB 出力バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、次の形式で JSON を受信するキューのキュー入力バインドを使用します。
+
+```json
+{
+    "name": "John Henry",
+    "employeeId": "123456",
+    "address": "A town nearby"
+}
+```
+
+この関数は、各レコードに対して次の形式の Azure Cosmos DB ドキュメントを作成します。
+
+```json
+{
+    "id": "John Henry-123456",
+    "name": "John Henry",
+    "employeeId": "123456",
+    "address": "A town nearby"
+}
+```
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+    "name": "employeeDocument",
+    "type": "cosmosDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "createIfNotExists": true,
+    "connectionStringSetting": "MyAccount_COSMOSDB",
+    "direction": "out"
+}
+```
+
+これらのプロパティについては、「[構成](#configuration)」セクションを参照してください。
+
+JavaScript コードを次に示します。
+
+```javascript
+    module.exports = function (context) {
+
+      context.bindings.employeeDocument = JSON.stringify({
+        id: context.bindings.myQueueItem.name + "-" + context.bindings.myQueueItem.employeeId,
+        name: context.bindings.myQueueItem.name,
+        employeeId: context.bindings.myQueueItem.employeeId,
+        address: context.bindings.myQueueItem.address
+      });
+
+      context.done();
+    };
+```
+
+一括挿入の場合は、オブジェクトを最初に作成してから、stringify 関数を実行します。 JavaScript コードを次に示します。
+
+```javascript
+    module.exports = function (context) {
+    
+        context.bindings.employeeDocument = JSON.stringify([
+        {
+            "id": "John Henry-123456",
+            "name": "John Henry",
+            "employeeId": "123456",
+            "address": "A town nearby"
+        },
+        {
+            "id": "John Doe-123457",
+            "name": "John Doe",
+            "employeeId": "123457",
+            "address": "A town far away"
+        }]);
+    
+      context.done();
+    };
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+次の例は、出力バインドを使用して Cosmos DB にデータを書き込む方法を示しています。 バインドは、関数の構成ファイル (_functions.json_) で宣言され、キュー メッセージからデータを取得して Cosmos DB ドキュメントに書き込みます。
+
+```json
+{ 
+  "name": "EmployeeDocument",
+  "type": "cosmosDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "createIfNotExists": true,
+  "connectionStringSetting": "MyStorageConnectionAppSetting",
+  "direction": "out" 
+} 
+```
+
+_run.ps1_ ファイルで、関数から返されるオブジェクトは、データベース内で保持されている `EmployeeDocument` オブジェクトにマップされます。
+
+```powershell
+param($QueueItem, $TriggerMetadata) 
+
+Push-OutputBinding -Name EmployeeDocument -Value @{ 
+    id = $QueueItem.name + '-' + $QueueItem.employeeId 
+    name = $QueueItem.name 
+    employeeId = $QueueItem.employeeId 
+    address = $QueueItem.address 
+} 
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+次の例は、関数の出力としてドキュメントを Azure CosmosDB データベースに書き込む方法を示しています。
+
+バインディング定義は *function.json* で定義され、そこで *type* は `cosmosDB` に設定されます。
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "doc",
+      "databaseName": "demodb",
+      "collectionName": "data",
+      "createIfNotExists": "true",
+      "connectionStringSetting": "AzureCosmosDBConnectionString"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
+```
+
+データベースに書き込むには、ドキュメント オブジェクトをデータベース パラメーターの `set` メソッドのに渡します。
+
+```python
+import azure.functions as func
+
+def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpResponse:
+
+    request_body = req.get_body()
+
+    doc.set(func.Document.from_json(request_body))
+
+    return 'OK'
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>属性と注釈
@@ -569,17 +598,21 @@ public String cosmosDbQueryById(
 
 属性は、C# スクリプトではサポートされていません。
 
+# <a name="java"></a>[Java](#tab/java)
+
+`CosmosDBOutput` 注釈は、Cosmos DB にデータを書き込むために使用できます。 関数または個々の関数パラメーターに注釈を適用できます。 関数のメソッドで使用する場合、関数の戻り値は Cosmos DB に書き込まれるものです。 パラメーターで注釈を使用する場合、パラメーターの型は `OutputBinding<T>` として宣言する必要があります。ここで `T` はネイティブ Java 型または POJO です。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 属性は、JavaScript ではサポートされていません。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+属性は、PowerShell ではサポートされていません。
+
 # <a name="python"></a>[Python](#tab/python)
 
 属性は、Python ではサポートされていません。
-
-# <a name="java"></a>[Java](#tab/java)
-
-`CosmosDBOutput` 注釈は、Cosmos DB にデータを書き込むために使用できます。 関数または個々の関数パラメーターに注釈を適用できます。 関数のメソッドで使用する場合、関数の戻り値は Cosmos DB に書き込まれるものです。 パラメーターで注釈を使用する場合、パラメーターの型は `OutputBinding<T>` として宣言する必要があります。ここで `T` はネイティブ Java 型または POJO です。
 
 ---
 

@@ -1,16 +1,16 @@
 ---
-title: Azure での関数アプリの設定の構成
-description: Azure Function App の設定を構成する方法について説明します。
+title: Azure Functions で関数アプリの設定を構成する
+description: Azure Functions で関数アプリの設定を構成する方法について説明します。
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: f597e58c70d6ac9daff753f5c0a54199c2383c42
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2526fd60d6e07ecf43864945f2b05858b41ca567
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019509"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035208"
 ---
 # <a name="manage-your-function-app"></a>お使いの関数アプリの管理 
 
@@ -35,7 +35,7 @@ Azure Functions では、関数アプリに個々の関数の実行コンテキ�
 
 関数アプリの管理に必要なすべての機能には、概要ページからアクセスできます (特に **[[アプリケーションの設定]](#settings)** と **[[プラットフォーム機能]](#platform-features)** )。
 
-## <a name="application-settings"></a><a name="settings"></a>アプリケーションの設定
+## <a name="work-with-application-settings"></a><a name="settings"></a>アプリケーション設定を操作する
 
 **[アプリケーションの設定]** タブでは、関数アプリに使用される設定を管理します。 これらの設定は暗号化されて格納されているため、ポータルで値を表示するには **[値を表示する]** を選択する必要があります。 また、Azure CLI を使用してアプリケーション設定にアクセスすることもできます。
 
@@ -68,6 +68,56 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
 ローカルで関数アプリを開発する場合、これらの値を、local.settings.json プロジェクト ファイルにローカルのコピーとして保持する必要があります。 詳細については、[ローカルの設定ファイル](functions-run-local.md#local-settings-file)に関するページを参照してください。
+
+## <a name="hosting-plan-type"></a>ホスティング プランの種類
+
+関数アプリを作成するときに、アプリが実行される App Service ホスティング プランも作成します。 プランには、1 つ以上の関数アプリを含めることができます。 関数の機能、スケーリング、価格は、プランの種類によって異なります。 詳細については、「[Azure Functions の価格](https://azure.microsoft.com/pricing/details/functions/)」ページを参照してください。
+
+自分の関数アプリで使用されているプランの種類は、Azure portal、Azure CLI、または Azure PowerShell API を使用して確認できます。 
+
+次の値は、プランの種類を示します。
+
+| プランの種類 | ポータル | Azure CLI または PowerShell |
+| --- | --- | --- |
+| [従量課金プラン](consumption-plan.md) | **従量課金プラン** | `Dynamic` |
+| [Premium](functions-premium-plan.md) | **ElasticPremium** | `ElasticPremium` |
+| [専用 (App Service) プラン](dedicated-plan.md) | 各種 | 各種 |
+
+# <a name="portal"></a>[ポータル](#tab/portal)
+
+自分の関数アプリで使用されるプランの種類を確認するには、[Azure portal](https://portal.azure.com) でその関数アプリの **[概要]** タブの **[App Service プラン]** を参照します。 価格レベルを表示するには、 **[App Service プラン]** の名前を選択し、左側のウィンドウから **[プロパティ]** を選択します。
+
+![ポータルでのスケーリング プランの表示](./media/functions-scale/function-app-overview-portal.png)
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+次の Azure CLI コマンドを実行して、ホスティング プランの種類を取得します。
+
+```azurecli-interactive
+functionApp=<FUNCTION_APP_NAME>
+resourceGroup=FunctionMonitoringExamples
+appServicePlanId=$(az functionapp show --name $functionApp --resource-group $resourceGroup --query appServicePlanId --output tsv)
+az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
+
+```  
+
+前の例で、`<RESOURCE_GROUP>` と `<FUNCTION_APP_NAME>` はリソース グループと関数アプリの名前にそれぞれ置き換えてください。 
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+次の Azure PowerShell コマンドを実行して、ホスティング プランの種類を取得します。
+
+```azurepowershell-interactive
+$FunctionApp = '<FUNCTION_APP_NAME>'
+$ResourceGroup = '<RESOURCE_GROUP>'
+
+$PlanID = (Get-AzFunctionApp -ResourceGroupName $ResourceGroup -Name $FunctionApp).AppServicePlan
+(Get-AzFunctionAppPlan -Name $PlanID -ResourceGroupName $ResourceGroup).SkuTier
+```
+前の例で、`<RESOURCE_GROUP>` と `<FUNCTION_APP_NAME>` はリソース グループと関数アプリの名前にそれぞれ置き換えてください。 
+
+---
+
 
 ## <a name="platform-features"></a>プラットフォーム機能
 

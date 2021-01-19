@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: dc6412a85beba67551e7683c8127a65730f9218f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4c703fc1ddac4af2e3cf8716764a21da7e870b19
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535469"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048676"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>ファイアウォールを使用して Azure HDInsight クラスターのアウトバウンド ネットワーク トラフィックを構成する
 
@@ -45,13 +45,13 @@ Azure Firewall を使用して既存の HDInsight からのエグレスをロッ
 
 ### <a name="create-a-new-firewall-for-your-cluster"></a>クラスター用の新しいファイアウォールを作成します
 
-「 **ファイアウォールをデプロイする** 」の手順に従って、 **Test-FW01** という名前のファイアウォールを作成します。「 [Tutorial: Deploy and configure Azure Firewall using the Azure portal (チュートリアル: Azure portal を使用して Azure Firewall のデプロイと構成を行う)](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall)」を参照してください。
+「**ファイアウォールをデプロイする**」の手順に従って、**Test-FW01** という名前のファイアウォールを作成します。「[Tutorial: Deploy and configure Azure Firewall using the Azure portal (チュートリアル: Azure portal を使用して Azure Firewall のデプロイと構成を行う)](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall)」を参照してください。
 
 ### <a name="configure-the-firewall-with-application-rules"></a>アプリケーション ルールを使用してファイアウォールを構成する
 
 クラスターで重要な通信を送受信できるようにするアプリケーション ルール コレクションを作成します。
 
-1. Azure portal で新しいファイアウォール「 **Test-FW01** 」を選択します。
+1. Azure portal で新しいファイアウォール「**Test-FW01**」を選択します。
 
 1. **[設定]**  >  **[ルール]**  >  **[アプリケーション ルール コレクション]**  >  **[+ アプリケーション ルール コレクションの追加]** の順に移動します。
 
@@ -61,7 +61,7 @@ Azure Firewall を使用して既存の HDInsight からのエグレスをロッ
 
     **一番上のセクション**
 
-    | プロパティ|  値|
+    | プロパティ|  [値]|
     |---|---|
     |名前| FwAppRule|
     |Priority|200|
@@ -95,7 +95,7 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
 
     **一番上のセクション**
 
-    | プロパティ|  値|
+    | プロパティ|  [値]|
     |---|---|
     |名前| FwNetRule|
     |Priority|200|
@@ -105,7 +105,7 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
 
     | 名前 | Protocol | ソース アドレス | サービス タグ | ターゲット ポート | Notes |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_5 | TCP | * | SQL | 1433 | HDInsight によって提供される既定の SQL Server を使用している場合は、SQL の [サービス タグ] セクションで、SQL トラフィックのログを記録して監査するためのネットワーク ルールを構成します。 HDInsight サブネットで SQL Server 用にサービス エンドポイントを構成していない限り、ファイアウォールはバイパスされます。 Ambari、Oozie、Ranger、Hive などのメタストアにカスタム SQL Server を使用している場合は、独自のカスタム SQL Server へのトラフィックの許可のみが必要になります。|
+    | Rule_5 | TCP | * | SQL | 1433 | HDInsight によって提供される既定の SQL Server を使用している場合は、SQL の [サービス タグ] セクションで、SQL トラフィックのログを記録して監査するためのネットワーク ルールを構成します。 HDInsight サブネットで SQL Server 用にサービス エンドポイントを構成していない限り、ファイアウォールはバイパスされます。 Ambari、Oozie、Ranger、および Hive のメタストアにカスタム SQL サーバーを使用している場合は、独自のカスタム SQL サーバーへのトラフィックの許可のみが必要になります。|
     | Rule_6 | TCP | * | Azure Monitor | * | (省略可能) 自動スケール機能を使用する予定のお客様は、このルールを追加する必要があります。 |
     
    ![タイトル:アプリケーション ルール コレクションを入力する](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
@@ -116,13 +116,13 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
 
 次のエントリを使用してルート テーブルを作成します。
 
-* 「 [正常性サービスと管理サービス](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions)」に記載された IP アドレスのうち、次ホップの種類が **[インターネット]** であるすべての IP アドレス。 これには、汎用リージョンの 4 つの IP と、特定のリージョンの 2 つの IP が含まれている必要があります。 このルールは、ResourceProviderConnection が " *受信* " に設定されている場合にのみ必要です。 ResourceProviderConnection が " *送信* " に設定されている場合、これらの IP は UDR では必要ありません。 
+* 「[正常性サービスと管理サービス](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions)」に記載された IP アドレスのうち、次ホップの種類が **[インターネット]** であるすべての IP アドレス。 これには、汎用リージョンの 4 つの IP と、特定のリージョンの 2 つの IP が含まれている必要があります。 このルールは、ResourceProviderConnection が "*受信*" に設定されている場合にのみ必要です。 ResourceProviderConnection が "*送信*" に設定されている場合、これらの IP は UDR では必要ありません。 
 
 * 次ホップが Azure Firewall プライベート IP アドレスである、IP アドレス 0.0.0.0/0 の 1 つの仮想アプライアンス ルート。
 
 たとえば、"米国東部" の米国リージョンに作成したクラスターのルート テーブルを構成するには、次の手順を使用します。
 
-1. Azure ファイアウォール「 **Test-FW01** 」を選択します。 **[概要]** ページに表示されている **[プライベート IP アドレス]** をコピーします。 この例では、 **サンプル アドレス 10.0.2.4** を使用します。
+1. Azure ファイアウォール「**Test-FW01**」を選択します。 **[概要]** ページに表示されている **[プライベート IP アドレス]** をコピーします。 この例では、**サンプル アドレス 10.0.2.4** を使用します。
 
 1. その後、 **[すべてのサービス]**  >  **[ネットワーク]**  >  **[ルート テーブル]** の順に移動し、 **[ルート テーブルの作成]** に移動します。
 
@@ -170,7 +170,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 アプリケーションを初めて使用する際には、Azure Firewall と Azure Monitor ログを統合すると便利です。 特に、アプリケーションの依存関係をすべては把握していない場合に便利です。 Azure Monitor ログについて詳しくは、「[Azure Monitor でログ データを分析する](../azure-monitor/log-query/log-query-overview.md)」をご覧ください
 
-Azure Firewall のスケールの制限と要求の増加については、[こちら](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)のドキュメント、または [FAQ](../firewall/firewall-faq.md) を参照してください。
+Azure Firewall のスケールの制限と要求の増加については、[こちら](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)のドキュメント、または [FAQ](../firewall/firewall-faq.yml) を参照してください。
 
 ## <a name="access-to-the-cluster"></a>クラスターへのアクセス
 

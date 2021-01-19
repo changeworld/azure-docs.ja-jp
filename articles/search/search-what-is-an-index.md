@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: aa7c06c3bad59bad11fa288631042cca86109706
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3d5663177bb087e936a49dd7289659b684d85860
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701135"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116196"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Azure Cognitive Search で基本検索インデックスを作成する
 
@@ -70,7 +70,7 @@ Azure Cognitive Search では、フルテキストクエリおよびフィルタ
 開発時に、頻繁な再構築を計画します。 物理構造はサービス内で作成されるため、既存のフィールド定義への変更のほとんどにおいて[インデックスの削除と再作成](search-howto-reindex.md)が必要です。 リビルドを高速化するために、データのサブセットを使って作業することを検討してもよいでしょう。 
 
 > [!Tip]
-> インデックスの設計とデータのインポートを同時に行う場合は、ポータル アプローチではなくコードを使用することをお勧めします。 開発プロジェクトがまだ初期段階の場合、代わりに [Postman や Visual Studio Code](search-get-started-rest.md) などのツールを使用すると、概念実証テストに役立ちます。 要求本文のインデックス定義に増分的変更を加えてから要求をサービスに送信し、更新されたスキーマを使用してインデックスを再作成できます。
+> インデックスの設計とデータのインポートを同時に行う場合は、ポータル アプローチではなくコードを使用することをお勧めします。 開発プロジェクトがまだ初期段階の場合、代わりに [Postman](search-get-started-rest.md) や [Visual Studio Code](search-get-started-vs-code.md) などのツールを使用すると、概念実証テストに役立ちます。 要求本文のインデックス定義に増分的変更を加えてから要求をサービスに送信し、更新されたスキーマを使用してインデックスを再作成できます。
 
 ## <a name="index-schema"></a>インデックス スキーマ
 

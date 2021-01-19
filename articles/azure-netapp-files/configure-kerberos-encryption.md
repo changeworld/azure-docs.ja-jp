@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 1ffbcc24a2ee386be1a8ce50b55375d5bd458df1
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 69168060cbce4a904c53d7f79895e909c8c42e01
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410098"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935225"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Azure NetApp Files の NFSv4.1 の Kerberos 暗号化を構成する
 
@@ -59,7 +59,7 @@ NFSv4.1 クライアントの暗号化には、次の要件が適用されます
 
 1.  「[Active Directory 接続を作成する](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)」の手順に従います。  
 
-    Kerberos では、Active Directory に少なくとも 1 つのマシン アカウントを作成する必要があります。 指定したアカウント情報は、SMB " *と* " NFSv4.1 Kerberos の両方のボリュームのアカウントを作成するために使用されます。 このマシン アカウントは、ボリュームの作成時に自動的に作成されます。
+    Kerberos では、Active Directory に少なくとも 1 つのマシン アカウントを作成する必要があります。 指定したアカウント情報は、SMB "*と*" NFSv4.1 Kerberos の両方のボリュームのアカウントを作成するために使用されます。 このマシン アカウントは、ボリュームの作成時に自動的に作成されます。
 
 2.  **[Kerberos 領域]** で、 **[AD サーバー名]** と **[KDC IP]** アドレスを入力します。
 
@@ -172,6 +172,7 @@ krb5p のパフォーマンに対する影響:
 
 ## <a name="next-steps"></a>次のステップ  
 
+* [NFSv4.1 Kerberos ボリュームの問題のトラブルシューティング](troubleshoot-nfsv41-kerberos-volumes.md)
 * [Azure NetApp Files についての FAQ](azure-netapp-files-faqs.md)
 * [Azure NetApp Files の NFS ボリュームを作成する](azure-netapp-files-create-volumes.md)
 * [Active Directory 接続を作成する](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: ef79844cf2f90ce97ea30a1948a441f909255f98
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1e46cf78c76e873bcb78af4942f42a5c4be45391
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169936"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955588"
 ---
 # <a name="public-ip-addresses"></a>パブリック IP アドレス
 
@@ -55,6 +55,7 @@ Standard SKU のパブリック IP アドレス:
 - 既定でセキュリティ保護され、受信トラフィックに対して閉じられています。 [ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)を使用した受信トラフィックの一覧表示を許可します。
 - ネットワーク インターフェイス、Standard パブリック ロード バランサー、またはアプリケーション ゲートウェイに割り当てられます。 Standard Load Balancer の詳細については、[Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照してください。
 - ゾーン冗長 (3 つすべてのゾーンからアドバタイズ)、またはゾーン (ゾーンとして作成でき、特定の可用性ゾーンで保証できます) にすることができます。 可用性ゾーンに関する詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページと「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 **ゾーン冗長 IP は、[3 つの可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-region)が有効になっているリージョンでのみ作成できます。** ゾーンが有効になる前に作成された IP は、ゾーン冗長にはなりません。
+- [リージョン間ロード バランサー ](https://docs.microsoft.com/azure/load-balancer/cross-region-overview)(プレビュー機能) のためのエニーキャスト フロントエンド IP として使用できます。
  
 > [!NOTE]
 > [ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)を作成して関連付け、目的のインバウンド トラフィックを明示的に許可するまで、Standard SKU リソースとのインバウンド通信は失敗します。

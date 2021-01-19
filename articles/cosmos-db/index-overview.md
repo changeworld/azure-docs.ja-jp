@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 4211f13324b9fda0b0823b2d035eb03863cb686d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b7349a08b93810dcc3befd6058302d6c4573ab8d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339758"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019331"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のインデックス作成 - 概要
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -64,13 +64,13 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 
 項目が書き込まれると、Azure Cosmos DB は各プロパティのパスとそれに対応する値のインデックスを効果的に作成します。
 
-## <a name="index-kinds"></a>インデックスの種類
+## <a name="types-of-indexes"></a><a id="index-types"></a>インデックスのタイプ
 
-現在、Azure Cosmos DB では 3 種類のインデックスがサポートされています。
+現在、Azure Cosmos DB では 3 種類のインデックスがサポートされています。 インデックス作成ポリシーを定義するときに、これらのインデックスのタイプを構成できます。
 
 ### <a name="range-index"></a>範囲インデックス
 
-**範囲** インデックスは、順序付けされたツリーのような構造に基づいています。 範囲インデックスの種類は、以下のために使用されます。
+**範囲** インデックスは、順序付けされたツリーのような構造に基づいています。 範囲インデックス タイプは、次のために使用されます。
 
 - 等値クエリ:
 
@@ -122,11 +122,11 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
    ```
 
-範囲インデックスは、スカラー値 (文字列または数値) に使用できます。
+範囲インデックスは、スカラー値 (文字列または数値) に使用できます。 新しく作成したコンテナーの既定のインデックス作成ポリシーでは、文字列または数値に範囲インデックスが適用されます。 範囲インデックスを構成する方法については、[範囲インデックス作成ポリシーの例](how-to-manage-indexing-policy.md#range-index)に関する記事を参照してください。
 
 ### <a name="spatial-index"></a>空間インデックス
 
-**空間** インデックスを使用すると、点、線、多角形、複数の多角形などの地理空間オブジェクトに対して、効率的なクエリを行うことができます。 これらのクエリでは、ST_DISTANCE、ST_WITHIN、ST_INTERSECTS の各キーワードを使用します。 空間インデックスの種類を使用するいくつかの例を次に示します。
+**空間** インデックスを使用すると、点、線、多角形、複数の多角形などの地理空間オブジェクトに対して、効率的なクエリを行うことができます。 これらのクエリでは、ST_DISTANCE、ST_WITHIN、ST_INTERSECTS の各キーワードを使用します。 空間インデックス タイプを使用するいくつかの例を次に示します。
 
 - 地理空間距離クエリ:
 
@@ -146,11 +146,11 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
    SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
    ```
 
-空間インデックスは、正しい形式の [GeoJSON](./sql-query-geospatial-intro.md) オブジェクトに対して使用できます。 現在、Points、LineStrings、Polygons、MultiPolygons がサポートされています。
+空間インデックスは、正しい形式の [GeoJSON](./sql-query-geospatial-intro.md) オブジェクトに対して使用できます。 現在、Points、LineStrings、Polygons、MultiPolygons がサポートされています。 このインデックス タイプを使用するには、インデックス作成ポリシーを構成するときに `"kind": "Range"` プロパティを使用して設定します。 空間インデックスを構成する方法については、[空間インデックス作成ポリシーの例](how-to-manage-indexing-policy.md#spatial-index)に関する記事を参照してください。
 
 ### <a name="composite-indexes"></a>複合インデックス
 
-**複合** インデックスを使用すると、複数のフィールドに対して操作を実行するときの効率が向上します。 複合のインデックスの種類は、次のために使用されます。
+**複合** インデックスを使用すると、複数のフィールドに対して操作を実行するときの効率が向上します。 複合インデックス タイプは、次のために使用されます。
 
 - 複数のプロパティに対する `ORDER BY` クエリ:
 
@@ -170,11 +170,13 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
-1 つのフィルター述語でインデックスの種類の 1 つが使用されている限り、クエリ エンジンでは、残りの部分をスキャンする前に最初にそれが評価されます。 たとえば、次のような SQL クエリがあるとします: `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+1 つのフィルター述語でいずれかのインデックス タイプが使用されている限り、クエリ エンジンでは、残りの部分をスキャンする前に最初にそれが評価されます。 たとえば、次のような SQL クエリがあるとします: `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
 
 * 上のクエリでは、最初にインデックスを使用して firstName = "Andrew" のエントリがフィルター処理されます。 次に、すべての firstName = "Andrew" エントリが後続のパイプラインを通過して、CONTAINS フィルター述語が評価されます。
 
 * インデックスを使用するフィルター述語を追加することによって、インデックスを使用しない関数 (CONTAINS など) を使用するときの、クエリを高速化し、完全なコンテナー スキャンを回避できます。 フィルター句の順序は重要ではありません。 クエリ エンジンでは、どの述語がより選択的であるかが判断され、それに応じてクエリが実行されます。
+
+複合インデックスを構成する方法については、[複合インデックス作成ポリシーの例](how-to-manage-indexing-policy.md#composite-index)に関する記事を参照してください。
 
 ## <a name="querying-with-indexes"></a>インデックスを使用してクエリを実行する
 
@@ -185,7 +187,7 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 :::image type="content" source="./media/index-overview/matching-path.png" alt-text="ツリー内の特定のパスとの照合" border="false":::
 
 > [!NOTE]
-> 1 つのプロパティで並べ替える `ORDER BY` 句には *常に* 範囲インデックスが必要であり、その句が参照するパスにこのインデックスが存在しない場合は失敗します。 同様に、複数のプロパティで並べ替える `ORDER BY` クエリには、 *常に* 複合インデックスが必要です。
+> 1 つのプロパティで並べ替える `ORDER BY` 句には *常に* 範囲インデックスが必要であり、その句が参照するパスにこのインデックスが存在しない場合は失敗します。 同様に、複数のプロパティで並べ替える `ORDER BY` クエリには、*常に* 複合インデックスが必要です。
 
 ## <a name="next-steps"></a>次のステップ
 

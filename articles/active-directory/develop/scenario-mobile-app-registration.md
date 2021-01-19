@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 2af79efa2bd1685d0e7bd621e2ddb8930425dee1
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: cdd32185d1ffddb4c6bc3d62b91690f68dec17ca
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614899"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014724"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Web API を呼び出すモバイル アプリを登録する
 
@@ -83,7 +83,7 @@ B2C の機関およびポリシーを渡すソーシャル ID を使用してユ
 
 ただし、アプリケーションをパブリック クライアント アプリケーションとして識別する必要があります。 そのためには次を行います。
 
-1. 引き続き [Azure portal](https://portal.azure.com) の **[アプリの登録]** でアプリを選択し、 **[認証]** を選択します。
+1. 引き続き <a href="https://portal.azure.com/" target="_blank">Azure portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> の **[アプリの登録]** でアプリを選択し、 **[認証]** を選択します。
 1. **[詳細設定]**  >  **[Allow public client flows]\(パブリック クライアント フローを許可する\)**  >  **[Enable the following mobile and desktop flows:]\(次のモバイルとデスクトップのフローを有効にする\)** で **[はい]** を選択します。
 
    :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Azure portal の [認証] ウィンドウでパブリック クライアント設定を有効にする":::

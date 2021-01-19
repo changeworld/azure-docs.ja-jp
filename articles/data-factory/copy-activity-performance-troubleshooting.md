@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: d22d040b0001ee30e29c551e686a7cb6bc47c2af
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/07/2021
+ms.openlocfilehash: ee6105376f5e8dc884f13e04db51126c039328e9
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921928"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968893"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>コピー アクティビティのパフォーマンスのトラブルシューティング
 
@@ -172,6 +172,60 @@ ms.locfileid: "96921928"
 
   - [並列コピー](copy-activity-performance-features.md) を徐々に調整することを検討してください。並列コピーの数が多すぎると、パフォーマンスが低下する可能性があることに注意してください。
 
+
+## <a name="connector-and-ir-performance"></a>コネクタと IR のパフォーマンス
+
+このセクションでは、特定のコネクタの種類または統合ランタイムに関するパフォーマンスのトラブルシューティング ガイドをいくつか紹介します。
+
+### <a name="activity-execution-time-varies-using-azure-ir-vs-azure-vnet-ir"></a>アクティビティの実行時間が Azure IR と Azure VNet IR のどちらを使用しているかで異なる
+
+データセットが異なる統合ランタイムに基づいている場合、アクティビティの実行時間は異なります。
+
+- **現象**:データセット内で [リンクされたサービス] ドロップダウンを切り替えるだけで、同じパイプライン アクティビティが実行されますが、実行時間は大幅に異なります。 データセットがマネージド仮想ネットワークの統合ランタイムに基づいている場合、実行が完了するまでに平均 2 分以上かかりますが、既定の統合ランタイムに基づいている場合は、約 20 秒で完了します。
+
+- **原因**:パイプライン実行の詳細を確認すると、低速のパイプラインはマネージド VNet (Virtual Network) IR で実行されている一方、通常のパイプラインは Azure IR で実行されていることがわかります。 設計上、データ ファクトリごとに 1 つの計算ノードを予約していないため、マネージド VNet IR は Azure IR よりもキュー時間が長く、各コピー アクティビティが開始するまでにウォームアップとして約 2 分間かかります。これは、Azure IR ではなく、主に VNet 参加で発生します。
+
+    
+### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>データを Azure SQL Database に読み込むときにパフォーマンスが低下する
+
+- **現象**:Azure SQL Database にデータをコピーすると、低速になります。
+
+- **原因**:問題の根本原因は、ほとんどの場合、Azure SQL Database 側のボトルネックによってトリガーされます。 以下のいくつかの原因が考えられます。
+
+    - Azure SQL Database のレベルが十分ではありません。
+
+    - Azure SQL Database の DTU の使用率が 100% に近づいています。 [パフォーマンスを監視](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview)して、Azure SQL Database のレベルをアップグレードすることを検討できます。
+
+    - インデックスが正しく設定されていません。 データが読み込まれる前にすべてのインデックスを削除し、読み込みの完了後に再作成します。
+
+    - WriteBatchSize は、スキーマ行のサイズに適合するのに十分な大きさではありません。 問題のプロパティを拡大してみてください。
+
+    - 一括埋め込みではなく、ストアド プロシージャが使用されているため、パフォーマンスが低下することが予想されます。 
+
+- **解決方法**:「[コピー アクティビティのパフォーマンスのトラブルシューティング](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)」を参照してください。
+
+### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>大きな Excel ファイルを解析するときのタイムアウトまたはパフォーマンスの低下
+
+- **現象**:
+
+    - Excel データセットの作成、接続またはストアからのスキーマのインポート、データのプレビュー、ワークシートの一覧表示または更新を行う際、Excel ファイルのサイズが大きい場合は、タイムアウト エラーが発生することがあります。
+
+    - コピー アクティビティを使用して、サイズの大きい Excel ファイル (>= 100 MB) から他のデータ ストアにデータをコピーすると、パフォーマンスが低下したり、OOM 問題が発生したりする可能性があります。
+
+- **原因**: 
+
+    - スキーマのインポート、データのプレビュー、Excel データセットでのワークシートの一覧表示などの操作では、タイムアウトは 100 秒で静的です。 大きな Excel ファイルでは、これらの操作がタイムアウト値内で完了しないことがあります。
+
+    - ADF コピー アクティビティは、Excel ファイル全体をメモリに読み込み、データを読み取る指定されたワークシートとセルを検索します。 ADF が使用する基盤となる SDK のために、このような動作になります。
+
+- **解決方法**: 
+
+    - スキーマをインポートする場合は、元のファイルのサブセットとなるより小さいサンプル ファイルを生成し、[接続/ストアからスキーマをインポートする] ではなく、[サンプル ファイルからスキーマをインポートする] を選択します。
+
+    - ワークシートを一覧表示する場合は、ワークシートのドロップダウンで [編集] をクリックし、シート名/インデックスを入力します。
+
+    - 大きな Excel ファイル (> 100 MB) を他のストアにコピーするには、Data Flow Excel ソースを使用します。これにより、ストリーミングの読み取りとパフォーマンスが向上します。
+    
 ## <a name="other-references"></a>その他のリファレンス
 
 ここでは、サポートされているいくつかのデータ ストアについて、パフォーマンスの監視とチューニングに関するリファレンス情報を示します。

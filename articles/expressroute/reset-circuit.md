@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 11/28/2018
+ms.date: 01/07/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 7df96f34ee408c0a6d26b27adbac7351c9ab937f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84c8275b7a7257530a735e8612047ef42e2f8a7c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89393090"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011341"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>障害が発生した ExpressRoute 回線のリセット
 
@@ -52,4 +52,4 @@ ExpressRoute 回線での操作が正常に完了しないと、回線が "障�
 
 ## <a name="next-steps"></a>次のステップ
 
-問題が解消しない場合は [Microsoft サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) にサポート チケットを申請する
+それでも問題が解決されない場合は、[Microsoft サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)でサポート チケットを開いてください。

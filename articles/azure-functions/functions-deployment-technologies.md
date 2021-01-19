@@ -4,12 +4,12 @@ description: Azure Functions にコードをデプロイするさまざまな方
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 7a75408008a90a2c40553b1f6c5c196775a48e61
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 04d96a09d41ace64bed5667bb9f0fa6e4beed244
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168102"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936959"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions のデプロイ テクノロジ
 
@@ -25,7 +25,7 @@ ms.locfileid: "96168102"
 | -- | -- | -- |
 | ツールベース | &bull;&nbsp;[Visual&nbsp;Studio&nbsp;Code&nbsp;による発行](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio による発行](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[Core Tools による発行](functions-run-local.md#publish) | 開発中のデプロイ、およびその他のアドホック デプロイ。 デプロイはツールによってローカルで管理されます。 | 
 | App Service マネージド| &bull;&nbsp;[Deployment&nbsp;Center&nbsp;(CI/CD)](functions-continuous-deployment.md)<br/>&bull;&nbsp;[コンテナーの&nbsp;デプロイ](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |  ソース管理またはコンテナー レジストリからの継続的配置 (CI/CD)。 デプロイは、App Service プラットフォーム (Kudu) によって管理されます。|
-| 外部パイプライン|&bull;&nbsp;[DevOps パイプライン](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub Actions](functions-how-to-github-actions.md) | 追加の検証、テスト、およびその他のアクションを含む運用および DevOps パイプラインは、自動デプロイの一部として実行されます。 デプロイはパイプラインによって管理されます。 |
+| 外部パイプライン|&bull;&nbsp;[Azure Pipelines](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub Actions](functions-how-to-github-actions.md) | 追加の検証、テスト、およびその他のアクションを含む運用および DevOps パイプラインは、自動デプロイの一部として実行されます。 デプロイはパイプラインによって管理されます。 |
 
 特定の関数のデプロイでは、そのコンテキストに基づいて最適なテクノロジが使用されますが、ほとんどのデプロイ方法は [zip デプロイ](#zip-deploy)に基づいています。
 
@@ -33,9 +33,9 @@ ms.locfileid: "96168102"
 
 Azure Functions は、クロス プラットフォームのローカル開発と、Windows と Linux でのホスティングをサポートしています。 現時点では、次の 3 つのホスティング プランを利用できます。
 
-+ [従量課金プラン](functions-scale.md#consumption-plan)
-+ [Premium](functions-scale.md#premium-plan)
-+ [専用 (App Service) プラン](functions-scale.md#app-service-plan)
++ [従量課金プラン](consumption-plan.md)
++ [Premium](functions-premium-plan.md)
++ [専用 (App Service) プラン](dedicated-plan.md)
 
 各プランの動作は異なります。 各種の Azure Functions に対してすべてのデプロイ テクノロジが使用できるわけではありません。 次の表は、オペレーティング システムとホスティング プランの各組み合わせでサポートされるデプロイ テクノロジを示しています。
 
@@ -96,7 +96,7 @@ Linux 上でリモートでビルドされたアプリは、[デプロイ パッ
 
 ##### <a name="dedicated-and-premium-plans"></a>専用プランと Premium プラン
 
-[専用 (App Service) プラン](functions-scale.md#app-service-plan)と [Premium プラン](functions-scale.md#premium-plan)で実行されている Linux 上の関数アプリには、制限された SCM/Kudu サイトがあります。
+[専用 (App Service) プラン](dedicated-plan.md)と [Premium プラン](functions-premium-plan.md)で実行されている Linux 上の関数アプリには、制限された SCM/Kudu サイトがあります。
 
 ## <a name="deployment-technology-details"></a>デプロイ テクノロジの詳細
 

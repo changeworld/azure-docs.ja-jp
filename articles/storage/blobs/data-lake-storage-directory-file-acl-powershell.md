@@ -6,16 +6,16 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eaa34da7dbdf8d315cf60d84cf15ef428f4c7900
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb715840ec3b3b1d5e65f17d4c18eb719e6acf80
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913353"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043576"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>PowerShell を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
@@ -51,35 +51,36 @@ ms.locfileid: "95913353"
 
 ## <a name="connect-to-the-account"></a>アカウントに接続する
 
-Windows PowerShell コマンド ウィンドウを開き、`Connect-AzAccount` コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
-
-```powershell
-Connect-AzAccount
-```
-
-自分の ID が複数のサブスクリプションに関連付けられている場合は、アクティブなサブスクリプションを、ディレクトリを作成して管理するストレージ アカウントのサブスクリプションに設定します。 この例では、`<subscription-id>` プレースホルダーの値をサブスクリプションの ID に置き換えます。
-
-```powershell
-Select-AzSubscription -SubscriptionId <subscription-id>
-```
-
-次に、コマンドでストレージ アカウントに対する承認を取得する方法を選択します。 
+コマンドでストレージ アカウントに対する承認を取得する方法を選択します。 
 
 ### <a name="option-1-obtain-authorization-by-using-azure-active-directory-ad"></a>オプション 1: Azure Active Directory (AD) を使用して承認を取得する
 
-この方法を使用すると、ご利用のユーザー アカウントに、適切な Azure ロールベースのアクセス制御 (Azure RBAC) の割り当てと ACL のアクセス許可がシステムによって確実に付与されます。 
+この方法を使用すると、ご利用のユーザー アカウントに、適切な Azure ロールベースのアクセス制御 (Azure RBAC) の割り当てと ACL のアクセス許可がシステムによって確実に付与されます。
 
-```powershell
-$ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseConnectedAccount
-```
+1. Windows PowerShell コマンド ウィンドウを開き、`Connect-AzAccount` コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
+
+   ```powershell
+   Connect-AzAccount
+   ```
+
+2. 自分の ID が複数のサブスクリプションに関連付けられている場合は、アクティブなサブスクリプションを、ディレクトリを作成して管理するストレージ アカウントのサブスクリプションに設定します。 この例では、`<subscription-id>` プレースホルダーの値をサブスクリプションの ID に置き換えます。
+
+   ```powershell
+   Select-AzSubscription -SubscriptionId <subscription-id>
+   ``` 
+
+3. ストレージ アカウント コンテキストを取得します。
+
+   ```powershell
+   $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseConnectedAccount
+   ```
 
 ### <a name="option-2-obtain-authorization-by-using-the-storage-account-key"></a>オプション 2:ストレージ アカウント キーを使用して承認を取得する
 
-この方法を使用する場合、Azure RBAC アクセス許可も、ACL アクセス許可もシステムによってチェックされません。
+この方法を使用する場合、Azure RBAC アクセス許可も、ACL アクセス許可もシステムによってチェックされません。 アカウント キーを使用して、ストレージ アカウント コンテキストを取得します。
 
 ```powershell
-$storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
-$ctx = $storageAccount.Context
+$ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -StorageAccountKey '<storage-account-key>'
 ```
 
 ## <a name="create-a-container"></a>コンテナーを作成する
@@ -336,6 +337,10 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 $dir = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
 $dir.ACL
 ```
+
+> [!NOTE]
+> **既定の** ACL エントリを設定する場合は、**Set-AzDataLakeGen2ItemAclObject** コマンドを実行するときに **-DefaultScope** パラメーターを使用します。 (例: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`)。
+
 この例では、所有ユーザー、所有グループ、または他のユーザーの **ファイル** に ACL を設定し、その ACL をコンソールに出力します。
 
 ```powershell
@@ -348,6 +353,8 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $fileP
 $file = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $filePath
 $file.ACL
 ```
+> [!NOTE]
+> **既定の** ACL エントリを設定する場合は、**Set-AzDataLakeGen2ItemAclObject** コマンドを実行するときに **-DefaultScope** パラメーターを使用します。 (例: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`)。
 
 次の画像は、ファイルの ACL を設定した後の出力を示しています。
 
@@ -368,6 +375,9 @@ $acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityID xxxxxxxx-xxxx-xxxxxxxxxxx -Permission r-x -InputObject $acl 
 Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
 ```
+
+> [!NOTE]
+> **既定の** ACL エントリを更新する場合は、**Set-AzDataLakeGen2ItemAclObject** コマンドを実行するときに **-DefaultScope** パラメーターを使用します。 (例: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityID xxxxxxxx-xxxx-xxxxxxxxxxx -Permission r-x -DefaultScope`)。
 
 ### <a name="remove-an-acl-entry"></a>ACL エントリを削除する
 

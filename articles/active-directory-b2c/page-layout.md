@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: beb38be985457ea36b2cea9a6dc337ba305d503f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 4237aba81a01423a3356a30879fbd27450c876bd
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108503"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976505"
 ---
 # <a name="page-layout-versions"></a>ページ レイアウト バージョン
 
@@ -51,7 +51,7 @@ ms.locfileid: "97108503"
 - 電子メールが検証された後、パスワード フィールドにフォーカスが設定されるようになりました。
 - チェックボックス コントロールから `autofocus` を削除しました。 
 - 電話番号の検証のための表示コントロールのサポートを追加しました。
-- [HTML タグに](customize-ui-with-html.md#guidelines-for-using-custom-page-content) `data-preload="true"` 属性を追加できるようになりました。
+- `data-preload="true"` 属性を [HTML タグに](customize-ui-with-html.md#guidelines-for-using-custom-page-content)追加できるようになりました。
   - HTML テンプレートと同時にリンクされた CSS ファイルを読み込みます。これにより、ファイルの読み込みの間に "ちらつき" が発生しなくなります。
   - ページの読み込み前に `script` タグをフェッチして実行する順序を制御します。
 - メール フィールドは `type=email` になり、モバイル キーボードで正しい候補が提供されるようになりました。

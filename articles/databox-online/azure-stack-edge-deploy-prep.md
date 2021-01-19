@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 11/11/2020
+ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 3943caba5249432b3a0a4b7c2e63b2b818e2b7a1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: aabc141666fe5c9fb52a3eac5ee1866f390e4551
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575705"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968500"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro の配置を準備する  
 
@@ -150,11 +150,11 @@ Microsoft は受け取った注文を確認し、発送の詳細と共にお客�
 
 Azure Stack Edge リソースが起動して実行中になったら、アクティブ化キーを取得する必要があります。 このキーを使用して、Azure Stack Edge Pro デバイスのアクティブ化とリソースへの接続を行います。 このキーは Azure portal ですぐに入手できます。
 
-1. 作成したリソースを選択します。 **[概要]** を選択し、 **[デバイスの設定]** を選択します。
+1. 自分が作成したリソースに移動して、 **[概要]** を選択します。 注文の処理結果に関する通知が表示されます。
 
-    ![[デバイスの設定] を選択する](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
+    ![[概要] を選択する](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
 
-2. **[Activate]\(アクティブ化\)** タイルの **[キーの生成]** を選択してアクティブ化キーを作成します。 コピー アイコンを選択してキーをコピーし、後で使用できるように保存します。
+2. 注文が処理されてデバイスが配送されると、 **[概要]** の情報が更新されます。 既定の **Azure Key Vault 名** をそのまま使用するか、新しい名前を入力します。 **[アクティブ化キーの生成]** を選択します。 コピー アイコンを選択してキーをコピーし、後で使用できるように保存します。
 
     ![アクティブ化キーの取得](media/azure-stack-edge-deploy-prep/get-activation-key.png)
 
@@ -165,14 +165,14 @@ Azure Stack Edge リソースが起動して実行中になったら、アクテ
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Stack Edge Pro に関する次のトピックについて説明しました。
+このチュートリアルでは、Azure Stack Edge Pro に関する次のようなトピックについて説明しました。
 
 > [!div class="checklist"]
 >
 > * 新しいリソースを作成
 > * アクティブ化キーの取得
 
-次のチュートリアルに進み、Azure Stack Edge Pro を設置する方法を確認してください。
+次のチュートリアルに進んで、Azure Stack Edge Pro を設置する方法を確認してください。
 
 > [!div class="nextstepaction"]
 > [Azure Stack Edge Pro を設置する](./azure-stack-edge-deploy-install.md)

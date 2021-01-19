@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 08/20/2020
+ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 8a5663df590e0f617f8049f0201e6e508351c755
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7285ab338e978f0de467f79bbce1d41409683b1e
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027579"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132955"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML パイプラインのステップ間でのデータの移動 (Python)
 
@@ -28,13 +28,9 @@ ms.locfileid: "97027579"
 - 既存のデータに `Dataset` オブジェクトを使用する
 - ステップ内でデータにアクセスする
 - トレーニングや検証のサブセットなど、`Dataset` データをサブセットに分割する
-- 次のパイプライン ステップにデータを転送する `PipelineData` オブジェクトを作成する
-- パイプライン ステップへの入力として `PipelineData` オブジェクトを使用する
-- 永続化する `PipelineData` から新しい `Dataset` オブジェクトを作成する
-
-> [!TIP]
-> パイプライン ステップ間で一時データを渡したり、パイプラインの実行後にデータを保持したりするためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) と [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) で使用できます。  これらのクラスは[試験段階の](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental)プレビュー機能であり、いつでも変更される可能性があります。
-
+- 次のパイプライン ステップにデータを転送する `OutputFileDatasetConfig` オブジェクトを作成する
+- パイプライン ステップへの入力として `OutputFileDatasetConfig` オブジェクトを使用する
+- 永続化する `OutputFileDatasetConfig` から新しい `Dataset` オブジェクトを作成する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -156,71 +152,71 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 > [!NOTE]
 > 前のスニペットは、呼び出しの形式を示しており、Microsoft のサンプルには含まれていません。 さまざまな引数を、自分のプロジェクトの値に置き換える必要があります。
 
-## <a name="use-pipelinedata-for-intermediate-data"></a>中間データに `PipelineData` を使用する
+## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>中間データに `OutputFileDatasetConfig` を使用する
 
-`Dataset` オブジェクトは永続データを表しますが、パイプラインのステップから出力される一時的なデータには [PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) オブジェクトが使用されます。 `PipelineData` オブジェクトの有効期間は 1 つのパイプライン ステップより長くなるため、それらをパイプライン定義スクリプトで定義します。 `PipelineData` オブジェクトを作成するときは、名前と、データを格納するデータストアを指定する必要があります。 `arguments` と `outputs` の "_両方_" の引数を使用して、`PipelineData` オブジェクトを `PythonScriptStep` に渡します。
+`Dataset` オブジェクトは永続データを表しますが、[`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) オブジェクトはパイプライン ステップから出力される一時的なデータ **および** 永続出力データに使用できます。 `OutputFileDatasetConfig` は、BLOB ストレージ、ファイル共有、adlsgen1、または adlsgen2 へのデータの書き込みをサポートしています。 マウント モードとアップロード モードの両方をサポートしています。 マウント モードでは、マウントされたディレクトリに書き込まれたファイルは、ファイルを閉じたときに永続的に保存されます。 アップロード モードでは、出力ディレクトリに書き込まれたファイルがジョブの最後にアップロードされます。 ジョブが失敗した場合、または取り消された場合、出力ディレクトリはアップロードされません。
+
+ `OutputFileDatasetConfig` オブジェクトの既定の動作では、ワークスペースの既定のデータストアに書き込みます。 `arguments` パラメーターを使用して `OutputFileDatasetConfig` オブジェクトを `PythonScriptStep` に渡します。
 
 ```python
-
-default_datastore = workspace.get_default_datastore()
-dataprep_output = PipelineData("clean_data", datastore=default_datastore)
+from azureml.data import OutputFileDatasetConfig
+dataprep_output = OutputFileDatasetConfig()
+input_dataset = Dataset.get_by_name(workspace, 'raw_data')
 
 dataprep_step = PythonScriptStep(
     name="prep_data",
     script_name="dataprep.py",
     compute_target=cluster,
-    arguments=["--output-path", dataprep_output]
-    inputs=[Dataset.get_by_name(workspace, 'raw_data')],
-    outputs=[dataprep_output]
-)
-
+    arguments=[input_dataset.as_named_input('raw_data').as_mount(), dataprep_output]
+    )
 ```
 
-即時アップロードを提供するアクセス モードを使用して、`PipelineData` オブジェクトを作成することもできます。 その場合は、`PipelineData` を作成するときに、`upload_mode` を `"upload"` に設定し、`output_path_on_compute` 引数を使用して、データの書き込み先のパスを指定します。
+実行の終わりに `OutputFileDatasetConfig` オブジェクトのコンテンツをアップロードすることを選択できます。 その場合、`OutputFileDatasetConfig` オブジェクトと共に `as_upload()` 関数を使用し、アップロード先で既存のファイルを上書きするかどうかを指定します。 
 
 ```python
-PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", output_path_on_compute="clean_data_output/")
+#get blob datastore already registered with the workspace
+blob_store= ws.datastores['my_blob_store']
+OutputFileDatasetConfig(name="clean_data", destination=blob_store).as_upload(overwrite=False)
 ```
 
 > [!NOTE]
-> 前のスニペットは、呼び出しの形式を示しており、Microsoft のサンプルには含まれていません。 さまざまな引数を、自分のプロジェクトの値に置き換える必要があります。
+> `OutputFileDatasetConfig` への同時書き込みは失敗します。 1 つの `OutputFileDatasetConfig` を同時に使用しないようにしてください。 分散トレーニングを使用する場合など、マルチプロセッシングの状況では、1 つの `OutputFileDatasetConfig` を共有しないでください。 
 
-> [!TIP]
-> パイプライン ステップ間で中間データを渡すためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) で使用できます。 `OutputFileDatasetConfig` を使用したコード例については、[2 ステップの ML パイプラインを構築する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)方法を参照してください。
+### <a name="use-outputfiledatasetconfig-as-outputs-of-a-training-step"></a>トレーニング ステップの出力として `OutputFileDatasetConfig` を使用する
 
-
-### <a name="use-pipelinedata-as-outputs-of-a-training-step"></a>トレーニング ステップの出力として `PipelineData` を使用する
-パイプラインの `PythonScriptStep` 内で、プログラムの引数を使用して、使用可能な出力パスを取得できます。 このステップが最初のものであり、出力データを初期化する場合は、指定されたパスにディレクトリを作成する必要があります。 その後、`PipelineData` に含める任意のファイルを書き込むことができます。
+パイプラインの `PythonScriptStep` 内で、プログラムの引数を使用して、使用可能な出力パスを取得できます。 このステップが最初のものであり、出力データを初期化する場合は、指定されたパスにディレクトリを作成する必要があります。 その後、`OutputFileDatasetConfig` に含める任意のファイルを書き込むことができます。
 
 ```python
 parser = argparse.ArgumentParser()
 parser.add_argument('--output_path', dest='output_path', required=True)
 args = parser.parse_args()
+
 # Make directory for file
 os.makedirs(os.path.dirname(args.output_path), exist_ok=True)
 with open(args.output_path, 'w') as f:
     f.write("Step 1's output")
 ```
 
-`is_directory` 引数を `True` に設定して `PipelineData` を作成した場合、`os.makedirs()` の呼び出しを実行するだけで十分であり、その後、パスに任意のファイルを自由に書き込むことができます。 詳しくは、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) のリファレンス ドキュメントをご覧ください。
+### <a name="read-outputfiledatasetconfig-as-inputs-to-non-initial-steps"></a>最初以外のステップへの入力として `OutputFileDatasetConfig` を読み取る
 
+最初のパイプライン ステップで `OutputFileDatasetConfig` パスにデータが書き込まれ、それがその最初のステップの出力になった場合、それを後のステップへの入力として使用できます。 
 
-### <a name="read-pipelinedata-as-inputs-to-non-initial-steps"></a>最初以外のステップへの入力として `PipelineData` を読み取る
+次のコードで、 
 
-最初のパイプライン ステップで `PipelineData` パスにデータが書き込まれ、それがその最初のステップの出力になった場合、それを後のステップへの入力として使用できます。
+* `step1_output_data` は、PythonScriptStep の出力である `step1` が、アップロード アクセス モードで、ADLS Gen 2 データストア `my_adlsgen2` に書き込まれることを示します。 ADLS Gen 2 データストアにデータを書き戻すには、[ロールのアクセス許可を設定する](how-to-access-data.md#azure-data-lake-storage-generation-2)方法を参照してください。 
+
+* `step1` が完了し、`step1_output_data` によって示される書き込み先に出力が書き込まれると、手順 2 で入力として `step1_output_data` を使用する準備ができます。 
 
 ```python
-step1_output_data = PipelineData("processed_data", datastore=def_blob_store, output_mode="upload")
 # get adls gen 2 datastore already registered with the workspace
 datastore = workspace.datastores['my_adlsgen2']
+step1_output_data = OutputFileDatasetConfig(name="processed_data", destination=datastore).as_upload()
 
 step1 = PythonScriptStep(
     name="generate_data",
     script_name="step1.py",
     runconfig = aml_run_config,
-    arguments = ["--output_path", step1_output_data],
-    inputs=[],
-    outputs=[step1_output_data]
+    arguments = ["--output_path", step1_output_data]
 )
 
 step2 = PythonScriptStep(
@@ -228,41 +224,22 @@ step2 = PythonScriptStep(
     script_name="step2.py",
     compute_target=compute,
     runconfig = aml_run_config,
-    arguments = ["--pd", step1_output_data],
-    inputs=[step1_output_data]
+    arguments = ["--pd", step1_output_data.as_input]
+
 )
+
 pipeline = Pipeline(workspace=ws, steps=[step1, step2])
 ```
 
-`PipelineData` 入力の値は、前の出力へのパスです。 
+## <a name="register-outputfiledatasetconfig-objects-for-reuse"></a>再利用のために `OutputFileDatasetConfig` オブジェクトを登録する
 
-> [!NOTE]
-> 前のスニペットは、呼び出しの形式を示しており、Microsoft のサンプルには含まれていません。 さまざまな引数を、自分のプロジェクトの値に置き換える必要があります。
-
-> [!TIP]
-> パイプライン ステップ間で中間データを渡すためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) で使用できます。 `OutputFileDatasetConfig` を使用したコード例については、[2 ステップの ML パイプラインを構築する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)方法を参照してください。
-
-前に示したように、最初のステップで 1 つのファイルを書き込んだ場合、それは次のように使用されます。 
+実験期間より長く `OutputFileDatasetConfig` を利用できるようにする場合、ワークスペースにそれを登録し、実験間で共有し、再利用します。
 
 ```python
-parser = argparse.ArgumentParser()
-parser.add_argument('--pd', dest='pd', required=True)
-args = parser.parse_args()
-with open(args.pd) as f:
-    print(f.read())
+step1_output_ds = step1_output_data.register_on_complete(name='processed_data', 
+                                                         description = 'files from step1`)
 ```
 
-## <a name="convert-pipelinedata-objects-to-datasets"></a>`PipelineData` オブジェクトを `Dataset` に変換する
-
-`PipelineData` を実行時間よりも長く使用できるようにする場合は、`as_dataset()` 関数を使用して、それを `Dataset` に変換します。 その後、`Dataset` を登録し、それをワークスペース内の第一級オブジェクトにすることができます。 `PipelineData` オブジェクトのパスは、パイプラインを実行するたびに異なるため、`PipelineData` オブジェクトから作成された `Dataset` を登録する場合は、`create_new_version` を `True` に設定することを強くお勧めします。
-
-```python
-step1_output_ds = step1_output_data.as_dataset()
-step1_output_ds.register(name="processed_data", create_new_version=True)
-
-```
-> [!TIP]
-> パイプライン実行の外部に中間データを保持するためのエクスペリエンスの向上は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) で使用できます。 `OutputFileDatasetConfig` を使用したコード例については、[2 ステップの ML パイプラインを構築する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)方法を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 0018b7bafa8ff2ecd328a150df752082c85484e2
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: bc80a4f5c6c2919f0cb3faa15958fb75eed70270
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608512"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035225"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub Actions を使用した継続的デリバリー
 
-[GitHub Actions](https://github.com/features/actions) を使用して、コードを自動的にビルドして Azure Functions アプリにデプロイするワークフローを定義します。 
+[GitHub Actions](https://github.com/features/actions) を使用して、Azure Functions でコードを自動的にビルドして関数アプリにデプロイするワークフローを定義します。 
 
-GitHub Actions の[ワークフロー](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions)とは、お使いの GitHub リポジトリに定義する自動化されたプロセスです。 このプロセスによって、GitHub 上にお使いの関数アプリ プロジェクトをビルドしてデプロイする方法が GitHub に対して指示されます。 
+GitHub Actions の[ワークフロー](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions)とは、お使いの GitHub リポジトリに定義する自動化されたプロセスです。 このプロセスによって、GitHub でお使いの関数アプリ プロジェクトをビルドしてデプロイする方法が GitHub に対して指示されます。 
 
 ワークフローは、お使いのリポジトリの `/.github/workflows/` パスの YAML (.yml) ファイルに定義されます。 この定義には、ワークフローを構成するさまざまな手順とパラメーターが含まれます。 
 
@@ -187,6 +187,7 @@ Python では、`actions/setup-python` アクションを使用します。
 ---
 
 ## <a name="deploy-the-function-app"></a>関数アプリをデプロイする
+
 `Azure/functions-action` アクションを使用して、コードを関数アプリにデプロイします。 このアクションには 3 つのパラメーターがあります。
 
 |パラメーター |説明  |
@@ -202,7 +203,7 @@ Python では、`actions/setup-python` アクションを使用します。
 発行プロファイルを使用する .NET Linux ワークフローを設定します。
 
 ```yaml
-name: Deploy DotNet project to Azure function app with a Linux environment
+name: Deploy DotNet project to function app with a Linux environment
 
 on:
   [push]
@@ -241,7 +242,7 @@ jobs:
 発行プロファイルを使用する .NET Windows ワークフローを設定します。
 
 ```yaml
-name: Deploy DotNet project to Azure function app with a Windows environment
+name: Deploy DotNet project to function app with a Windows environment
 
 on:
   [push]
@@ -283,7 +284,7 @@ jobs:
 発行プロファイルを使用する Java Linux ワークフローを設定します。
 
 ```yaml
-name: Deploy Java project to Azure Function App
+name: Deploy Java project to function app
 
 on:
   [push]
@@ -325,7 +326,7 @@ jobs:
 発行プロファイルを使用する Java Windows ワークフローを設定します。
 
 ```yaml
-name: Deploy Java project to Azure Function App
+name: Deploy Java project to function app
 
 on:
   [push]
@@ -369,7 +370,7 @@ jobs:
 発行プロファイルを使用する Node.JS Linux ワークフローを設定します。
 
 ```yaml
-name: Deploy Node.js project to Azure Function App
+name: Deploy Node.js project to function app
 
 on:
   [push]
@@ -411,7 +412,7 @@ jobs:
 発行プロファイルを使用する Node.JS Windows ワークフローを設定します。
 
 ```yaml
-name: Deploy Node.js project to Azure Function App
+name: Deploy Node.js project to function app
 
 on:
   [push]
@@ -455,7 +456,7 @@ jobs:
 発行プロファイルを使用する Python Linux ワークフローを設定します。
 
 ```yaml
-name: Deploy Python project to Azure Function App
+name: Deploy Python project to function app
 
 on:
   [push]

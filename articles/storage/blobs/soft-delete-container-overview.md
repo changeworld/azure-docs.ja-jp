@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 01/06/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 1ebfa137357e60a1f462ef90c6430cbf0cb5b968
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: references_regions
+ms.openlocfilehash: 85d880966c4c3864206c7e92256eb8e705812f20
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746595"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962178"
 ---
 # <a name="soft-delete-for-containers-preview"></a>コンテナーの論理的な削除 (プレビュー)
 
@@ -32,7 +32,7 @@ BLOB データのエンド ツー エンド保護では、次のデータ保護�
 
 ## <a name="how-container-soft-delete-works"></a>コンテナーの論理的な削除のしくみ
 
-コンテナーの論理的な削除を有効にすると、削除されたコンテナーの保持期間を 1 - 365 日の範囲で指定できます。 既定の保有期間は 7 日です。 保持期間中は、 **コンテナーの削除の取り消し** 操作を呼び出せば、削除されたコンテナーを復旧することができます。
+コンテナーの論理的な削除を有効にすると、削除されたコンテナーの保持期間を 1 - 365 日の範囲で指定できます。 既定の保有期間は 7 日です。 保持期間中は、**コンテナーの削除の取り消し** 操作を呼び出せば、削除されたコンテナーを復旧することができます。
 
 コンテナーを復元するときに、元の名前が再利用されていない場合は、その名前で復元することができます。 元のコンテナー名が使用されている場合は、新しい名前でコンテナーを復元できます。
 
@@ -53,11 +53,9 @@ BLOB データのエンド ツー エンド保護では、次のデータ保護�
 
 コンテナーの論理的な削除は、次の種類のストレージ アカウントで使用できます。
 
-- 汎用 v2 ストレージ アカウント
+- 汎用 v2 および v1 ストレージ アカウント
 - ブロック BLOB ストレージ アカウント
 - BLOB ストレージ アカウント
-
-ストレージ アカウントが汎用 v1 アカウントの場合は、Azure portal を使用して、汎用 v2 アカウントにアップグレードします。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。
 
 階層型名前空間が Azure Data Lake Storage Gen2 で使用可能になっているストレージ アカウントもサポートされています。
 

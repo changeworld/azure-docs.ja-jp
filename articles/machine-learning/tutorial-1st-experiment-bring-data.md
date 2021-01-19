@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: de89f9d87b010dc3710e7d82f4d846de12303905
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: ab497dee35afdd60247d156d0f30bbf003ea1210
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739435"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072158"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>チュートリアル:独自のデータを使用する (4 部構成中の第 4 部)
 
@@ -40,9 +40,6 @@ ms.locfileid: "97739435"
 ## <a name="prerequisites"></a>前提条件
 
 * このシリーズの[第 3 部](tutorial-1st-experiment-sdk-train.md)を完了している。
-* Python 言語と機械学習のワークフローに関する基礎知識。
-* Visual Studio Code、Jupyter、PyCharm などのローカル開発環境。
-* Python (バージョン 3.5 から 3.7)。
 
 ## <a name="adjust-the-training-script"></a>トレーニング スクリプトを調整する
 
@@ -130,7 +127,7 @@ python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
 >[!TIP] 
 > Azure Machine Learning を使用してデータをアップロードしながら、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用してアドホック ファイルをアップロードできます。 ETL ツールが必要な場合は、[Azure Data Factory](../data-factory/introduction.md) を使用して、データを Azure に取り込むことができます。
 
-Python ファイルを実行してデータをアップロードします (アップロードは 60 秒未満で迅速に行われます)。
+アクティブになった *tutorial1* Conda 環境が表示されているウィンドウで、次の Python ファイルを実行して、データをアップロードします。 (アップロードは 60 秒未満で迅速に行われます)。
 
 ```bash
 python 05-upload-data.py

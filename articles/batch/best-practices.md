@@ -3,12 +3,12 @@ title: ベスト プラクティス
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
 ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5c3521a3b5fe0dd9c2d1534f6e2a6864647f5da3
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 7e2a49c8307af89fb3898f5f2513fb493d0f5d90
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694168"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934290"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
@@ -24,6 +24,9 @@ ms.locfileid: "97694168"
 ### <a name="pool-configuration-and-naming"></a>プールの構成と名前指定
 
 - **プール割り当てモード** Batch アカウントの作成時に、**Batch サービス** または **ユーザー サブスクリプション** の 2 つのプール割り当てモードのいずれかを選択できます。 ほとんどの場合、既定の Batch サービス モードを選択することになります。このモードでは、Batch で管理されているサブスクリプションにバックグラウンドでプールが割り当てられます。 もう一方のユーザー サブスクリプション モードでは、プールの作成時に Batch VM などのリソースがサブスクリプションに直接作成されます。 ユーザー サブスクリプション アカウントは主に、重要であるが小規模なシナリオのサブセットを有効にするために使用されます。 ユーザー サブスクリプション モードの詳細については、「[ユーザー サブスクリプション モードのための追加構成](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)」を参照してください。
+
+- **"cloudServiceConfiguration" または "virtualMachineConfiguration"。**
+    "virtualMachineConfiguration" を使用する必要があります。 すべての Batch 機能は、"virtualMachineConfiguration" プールによってサポートされています。 一部の機能は "cloudServiceConfiguration" プールでサポートされておらず、新しい機能は計画されていません。
 
 - **ジョブからプールへのマッピングを決定するときに、ジョブとタスクの実行時間を考慮します。**
     ジョブが主に実行時間の短いタスクで構成されていて、かつ予想されるタスクの総数が少ないため、ジョブで予想される全体的な実行時間が長くない場合は、ジョブごとに新しいプールを割り当てないでください。 ノードの割り当て時間により、ジョブの実行時間が減少します。

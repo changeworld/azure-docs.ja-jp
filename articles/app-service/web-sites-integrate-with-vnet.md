@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cbae833c1b207669e35b467707f946e9bafe31d2
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 077d200dcaf957f636acecebb441ff99a68eb96f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854946"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963589"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>アプリを Azure 仮想ネットワークと統合する
 
@@ -130,6 +130,12 @@ App Service プランの VNet 統合の UI には、App Service プラン内の�
 
 * **ネットワークを同期する**: ネットワーク同期操作は、ゲートウェイに依存する VNet 統合機能に対してのみ使用されます。 ネットワーク同期操作を実行すると、証明書とネットワークの情報が確実に同期されるようになります。VNet の DNS を追加または変更する場合は、ネットワーク同期操作を実行する必要があります。 この操作では、この VNet を使用するすべてのアプリが再起動されます。 この操作は、使用しているアプリと VNet が異なるサブスクリプションに属している場合は機能しません。
 * **ルートを追加する**: ルートを追加すると、送信トラフィックが VNet に転送されます。
+
+インスタンスに割り当てられたプライベート IP は、環境変数 **WEBSITE_PRIVATE_IP** によって公開されます。 Kudu コンソールの UI には、Web アプリで使用できる環境変数の一覧も表示されます。 この IP は、統合されたサブネットのアドレス範囲から割り当てられます。 リージョン VNet 統合の場合、WEBSITE_PRIVATE_IP の値は委任されたサブネットのアドレス範囲の IP になります。また、ゲートウェイが必要な VNet 統合では、この値は Virtual Network ゲートウェイに構成されているポイント対サイトのアドレス プールのアドレス範囲の IP になります。 これは、Web アプリが Virtual Network を通じてリソースに接続するために使用する IP です。 
+
+> [!NOTE]
+> WEBSITE_PRIVATE_IP の値は、必ず変更されます。 ただし、これは統合サブネットまたはポイント対サイトのアドレス範囲内の IP であるため、アドレス範囲全体からのアクセスを許可する必要があります。
+>
 
 ### <a name="gateway-required-vnet-integration-routing"></a>ゲートウェイが必要な VNET 統合のルーティング
 VNet で定義されているルートが、アプリから VNet にトラフィックを転送するために使用されます。 VNet に追加の送信トラフィックを送信するには、ここでそれらのアドレス ブロックを追加します。 この機能は、ゲートウェイが必要な VNet 統合でのみ動作します。 ゲートウェイが必要な VNet 統合を使用すると、リージョン VNet 統合の場合とは異なり、ルート テーブルによるアプリのトラフィックへの影響はありません。

@@ -3,12 +3,12 @@ title: テンプレートの構造と構文
 description: 宣言型 JSON 構文を使用した Azure Resource Manager テンプレート (ARM テンプレート) の構造とプロパティについて説明します。
 ms.topic: conceptual
 ms.date: 12/17/2020
-ms.openlocfilehash: 698309c5aa0817c4b758ec81133d4c98061aa355
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 4c08612325d2776f8f1a7fe4486e6f592ca474a0
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653131"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934698"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>ARM テンプレートの構造と構文について
 
@@ -35,7 +35,7 @@ ms.locfileid: "97653131"
 
 | 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
-| $schema |はい |テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所。 使用するバージョン番号は、デプロイのスコープと JSON エディターによって異なります。<br><br>[VS Code を Azure Resource Manager ツール拡張機能](quickstart-create-templates-use-visual-studio-code.md)と共に使用している場合は、リソース グループのデプロイの最新バージョンを使用します。<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>他のエディター (Visual Studio を含む) では、このスキーマを処理できない場合があります。 そうしたエディターの場合、次を使用します。<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>サブスクリプション デプロイの場合、次を使用します。<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>管理グループのデプロイの場合、次を使用します。<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>テナントのデプロイの場合、次を使用します。<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
+| $schema |はい |テンプレート言語のバージョンが記述されている JSON (JavaScript Object Notation) スキーマ ファイルの場所。 使用するバージョン番号は、デプロイのスコープと JSON エディターによって異なります。<br><br>[Visual Studio Code を Azure Resource Manager ツール拡張機能](quickstart-create-templates-use-visual-studio-code.md)と共に使用している場合は、リソース グループのデプロイの最新バージョンを使用します。<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>他のエディター (Visual Studio を含む) では、このスキーマを処理できない場合があります。 そうしたエディターの場合、次を使用します。<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>サブスクリプション デプロイの場合、次を使用します。<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>管理グループのデプロイの場合、次を使用します。<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>テナントのデプロイの場合、次を使用します。<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
 | contentVersion |はい |テンプレートのバージョン (1.0.0.0 など)。 この要素には任意の値を指定できます。 この値を使用し、テンプレートの大きな変更を記述します。 テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。 |
 | apiProfile |いいえ | リソースの種類に対する API のバージョンのコレクションとして機能する API バージョン。 この値を使用すると、テンプレートのリソースごとに API バージョンを指定しなくて済みます。 API プロファイルのバージョンを指定し、リソースの種類の API バージョンを指定しないと、Resource Manager では、プロファイルでそのリソースの種類に対して定義されている API バージョンが使用されます。<br><br>API プロファイル プロパティは、Azure Stack やグローバルな Azure など、さまざまな環境にテンプレートをデプロイする場合に特に便利です。 API プロファイルのバージョンを使用し、両方の環境でサポートされているバージョンがテンプレートで自動的に使用されるようにします。 現在の API プロファイルのバージョンおよびリソース プロファイルで定義されている API バージョンの一覧については、「[API Profile (API プロファイル)](https://github.com/Azure/azure-rest-api-specs/tree/master/profile)」をご覧ください。<br><br>詳しくは、「[API プロファイルを使用してバージョンを追跡する](templates-cloud-consistency.md#track-versions-using-api-profiles)」をご覧ください。 |
 | [parameters](#parameters) |いいえ |リソースのデプロイをカスタマイズするのにはデプロイを実行すると、提供されている値です。 |
@@ -98,13 +98,13 @@ ARM テンプレート内では、次のデータ型を使用できます。
 
 インライン パラメーターとして渡される整数の場合、値の範囲はデプロイに使用する SDK またはコマンドライン ツールによって制限されることがあります。 たとえば、PowerShell を使用してテンプレートをデプロイする場合、整数型は -2147483648 から 2147483647 の範囲で指定できます。 この制限を回避するには、[パラメーター ファイル](parameter-files.md)で大きな整数値を指定します。 リソースの種類によって、整数プロパティに独自の制限が適用されます。
 
-テンプレートでブール値と整数値を指定する場合は、値を引用符で囲まないでください。 文字列値は二重引用符で始めて終わります。
+テンプレートでブール値と整数値を指定する場合は、値を引用符で囲まないでください。 文字列値は二重引用符で始めて終わります (`"string value"`)。
 
-オブジェクトは左中かっこで始めて、右中かっこで終わります。 配列は左大かっこで始めて、右大かっこで終わります。
+オブジェクトは左中かっこ (`{`) で始めて、右中かっこ (`}`) で終わります。 配列は左大かっこ (`[`) で始めて、右大かっこ (`]`) で終わります。
 
 ## <a name="parameters"></a>パラメーター
 
-テンプレートの parameters セクションでは、リソースをデプロイするときにどのような値を入力できるかを指定します。 テンプレートではパラメーターが 256 個に制限されます。 複数のプロパティを含むオブジェクトを使用すると、パラメーター数を減らすことができます。
+テンプレートの `parameters` セクションでは、リソースをデプロイするときにどのような値を入力できるかを指定します。 テンプレートではパラメーターが 256 個に制限されます。 複数のプロパティを含むオブジェクトを使用すると、パラメーター数を減らすことができます。
 
 パラメーターで使用可能なプロパティは次のとおりです。
 
@@ -141,7 +141,7 @@ ARM テンプレート内では、次のデータ型を使用できます。
 
 ## <a name="variables"></a>変数
 
-テンプレート内で使用できる値は、variables セクションで構築します。 必ずしも変数を定義する必要はありませんが、変数を定義することによって複雑な式が減り、テンプレートが単純化されることはよくあります。 各変数の形式は、いずれかの[データ型](#data-types)に一致します。
+テンプレート内で使用できる値は、`variables` セクションで作成します。 必ずしも変数を定義する必要はありませんが、変数を定義することによって複雑な式が減り、テンプレートが単純化されることはよくあります。 各変数の形式は、いずれかの[データ型](#data-types)に一致します。
 
 次の例では、変数の定義に使用できるオプションを示します。
 
@@ -211,7 +211,7 @@ ARM テンプレート内では、次のデータ型を使用できます。
 | 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | namespace |はい |カスタム関数の名前空間。 テンプレート関数との名前の競合を回避するために使用します。 |
-| function-name |はい |カスタム関数の名前。 関数を呼び出すときに、関数名と名前空間を組み合わせます。 たとえば、uniqueName という名前の関数を名前空間 contoso で呼び出すには、`"[contoso.uniqueName()]"` を使用します。 |
+| function-name |はい |カスタム関数の名前。 関数を呼び出すときに、関数名と名前空間を組み合わせます。 たとえば、`uniqueName` という名前の関数を名前空間 contoso で呼び出すには、`"[contoso.uniqueName()]"` を使用します。 |
 | parameter-name |いいえ |カスタム関数内で使用されるパラメーターの名前。 |
 | parameter-value |いいえ |パラメーター値の型。 使用できる型および値は、**string**、**securestring**、**int**、**bool**、**object**、**secureObject**、**array** です。 |
 | output-type |はい |出力値の型。 出力値では、関数入力パラメーターと同じ型がサポートされています。 |
@@ -221,7 +221,7 @@ ARM テンプレート内では、次のデータ型を使用できます。
 
 ## <a name="resources"></a>リソース
 
-resources セクションでは、デプロイまたは更新されるリソースを定義します。
+`resources` セクションでは、デプロイまたは更新されるリソースを定義します。
 
 リソースは、次の構造で定義します。
 
@@ -282,7 +282,7 @@ resources セクションでは、デプロイまたは更新されるリソー�
 | 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | condition | いいえ | このデプロイの間にリソースがプロビジョニングされるかどうかを示すブール値。 `true` の場合、デプロイ時にリソースが作成されます。 `false` の場合、このデプロイでは、リソースはスキップされます。 [条件](conditional-resource-deployment.md)をご覧ください。 |
-| type |はい |リソースの種類。 この値は、リソース プロバイダーの名前空間と、リソースの種類の組み合わせです (例: **Microsoft.Storage/storageAccounts**)。 使用可能な値を確認するには、[テンプレートのリファレンス](/azure/templates/)に関する記事をご覧ください。 子リソースの場合、type の形式は、親リソース内に入れ子にされているか、親リソースの外側で定義されているかによって変わります。 [子リソースの名前と種類の設定](child-resource-name-type.md)に関する記事を参照してください。 |
+| type |はい |リソースの種類。 この値は、リソース プロバイダーの名前空間とリソースの種類を組み合わせたものです (例: `Microsoft.Storage/storageAccounts`)。 使用可能な値を確認するには、[テンプレートのリファレンス](/azure/templates/)に関する記事をご覧ください。 子リソースの場合、type の形式は、親リソース内に入れ子にされているか、親リソースの外側で定義されているかによって変わります。 [子リソースの名前と種類の設定](child-resource-name-type.md)に関する記事を参照してください。 |
 | apiVersion |はい |リソースの作成に使用する REST API バージョン。 新しいテンプレートを作成するときは、デプロイするリソースの最新バージョンをこの値に設定します。 テンプレートが必要に応じて動作する限り、同じ API バージョンを使用し続けてください。 同じ API バージョンを使用し続けることで、新しい API バージョンにより、テンプレートの動作方法が変更されるリスクを最小限に抑えることができます。 新しいバージョンで導入された新機能を使用する場合にのみ、API バージョンを更新することを検討してください。 使用可能な値を確認するには、[テンプレートのリファレンス](/azure/templates/)に関する記事をご覧ください。 |
 | name |はい |リソースの名前。 この名前は、RFC3986 で定義されている URI コンポーネントの制限に準拠する必要があります。 リソース名を外部に公開する Azure サービスでは、名前が別の ID になりすますことがないように、その名前を検証します。 子リソースの場合、name の形式は、親リソース内に入れ子にされているか、親リソースの外側で定義されているかによって変わります。 [子リソースの名前と種類の設定](child-resource-name-type.md)に関する記事を参照してください。 |
 | comments |いいえ |テンプレート内にドキュメント化するリソースについてのメモ。 詳しくは、[テンプレート内のコメント](template-syntax.md#comments)に関するページをご覧ください。 |
@@ -298,7 +298,7 @@ resources セクションでは、デプロイまたは更新されるリソー�
 
 ## <a name="outputs"></a>出力
 
-[出力] セクションではデプロイから返される値を指定します。 通常は、デプロイされたリソースからの値を返します。
+`outputs` セクションではデプロイから返される値を指定します。 通常は、デプロイされたリソースからの値を返します。
 
 次の例では、出力の定義の構造を示します。
 
@@ -351,7 +351,7 @@ resources セクションでは、デプロイまたは更新されるリソー�
   ],
 ```
 
-Visual Studio Code では、[Azure Resource Manager ツール拡張機能](quickstart-create-templates-use-visual-studio-code.md)により、ARM テンプレートが自動的に検出され、言語モードが変更されます。 VS Code の右下隅に **[Azure Resource Manager テンプレート]** が表示されている場合は、インライン コメントを使用できます。 インライン コメントは無効としてマークされなくなります。
+Visual Studio Code では、[Azure Resource Manager ツール拡張機能](quickstart-create-templates-use-visual-studio-code.md)により、ARM テンプレートが自動的に検出され、言語モードが変更されます。 Visual Studio Code の右下隅に **[Azure Resource Manager テンプレート]** が表示されている場合は、インライン コメントを使用できます。 インライン コメントは無効としてマークされなくなります。
 
 ![Visual Studio Code での Azure Resource Manager テンプレート モード](./media/template-syntax/resource-manager-template-editor-mode.png)
 
@@ -369,7 +369,7 @@ Visual Studio Code では、[Azure Resource Manager ツール拡張機能](quick
   },
 ```
 
-**パラメーター** の場合、`description` プロパティを使って `metadata` オブジェクトを追加します。
+`parameters`の場合、`description` プロパティを使って `metadata` オブジェクトを追加します。
 
 ```json
 "parameters": {
@@ -385,7 +385,7 @@ Visual Studio Code では、[Azure Resource Manager ツール拡張機能](quick
 
 ![パラメーター ヒントの表示](./media/template-syntax/show-parameter-tip.png)
 
-**リソース** の場合、`comments` 要素またはメタデータ オブジェクトを追加します。 次の例は、コメント要素とメタデータ オブジェクトの両方を示しています。
+`resources` の場合、`comments` 要素または `metadata` オブジェクトを追加します。 次の例は、`comments` 要素と `metadata` オブジェクトの両方を示しています。
 
 ```json
 "resources": [
@@ -411,7 +411,7 @@ Visual Studio Code では、[Azure Resource Manager ツール拡張機能](quick
 ]
 ```
 
-**出力** の場合、メタデータ オブジェクトを出力値に追加します。
+`outputs` の場合、`metadata` オブジェクトを出力値に追加します。
 
 ```json
 "outputs": {
@@ -424,11 +424,11 @@ Visual Studio Code では、[Azure Resource Manager ツール拡張機能](quick
   },
 ```
 
-メタデータ オブジェクトをユーザー定義関数に追加することはできません。
+`metadata` オブジェクトをユーザー定義関数に追加することはできません。
 
 ## <a name="multi-line-strings"></a>複数行の文字列
 
-文字列を複数の行に分割することができます。 例として、次の JSON の例の location プロパティといずれかのコメントを参照してください。
+文字列を複数の行に分割することができます。 例として、次の JSON の例の `location` プロパティといずれかのコメントを参照してください。
 
 ```json
 {
@@ -448,7 +448,8 @@ Visual Studio Code では、[Azure Resource Manager ツール拡張機能](quick
   ],
 ```
 
-2\.3.0 以前のバージョンの Azure CLI を使用して複数行の文字列が含まれるテンプレートをデプロイするには、`--handle-extended-json-format` スイッチを使用する必要があります。
+> [!NOTE]
+> 2\.3.0 以前のバージョンの Azure CLI を使用して複数行の文字列が含まれるテンプレートをデプロイするには、`--handle-extended-json-format` スイッチを使用する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

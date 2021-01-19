@@ -9,26 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/22/2019
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 956b57d7215a439c1e3df71c1d3441534fc25723
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8afbf80fb6fa57db9de57122d7a4bfdb64e456bc
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459528"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185514"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Azure Active Directory と JIRA SAML SSO by Microsoft (V5.2) の統合
 
-このチュートリアルでは、JIRA SAML SSO by Microsoft (V5.2) と Azure Active Directory (Azure AD) を統合する方法について説明します。
-JIRA SAML SSO by Microsoft (V5.2) と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、JIRA SAML SSO by Microsoft (V5.2) と Azure Active Directory (Azure AD) を統合する方法について説明します。 JIRA SAML SSO by Microsoft (V5.2) と Azure AD を統合すると、次のことができます。
 
-* JIRA SAML SSO by Microsoft (V5.2) にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して JIRA SAML SSO by Microsoft (V5.2) に自動的にサインイン (シングル サインオン) できるようにすることができます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+* JIRA SAML SSO by Microsoft (V5.2) にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントで自動的に JIRA SAML SSO by Microsoft (V5.2) にサインインできるように設定できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="description"></a>説明
 
@@ -61,71 +57,47 @@ JIRA SAML SSO by Microsoft (V5.2) と Azure AD の統合を構成するには、
 * JIRA では、6.0 から 7.12 もサポートされています。 詳細については、[JIRA SAML SSO by Microsoft](jiramicrosoft-tutorial.md) をクリックしてください。
 
 > [!NOTE]
-> JIRA プラグインは、Ubuntu Version 16.04 でも動作することに注意してください
+> JIRA プラグインは、Ubuntu Version 16.04 でも動作することに注意してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* JIRA SAML SSO by Microsoft (V5.2) では、 **SP** によって開始される SSO がサポートされます
+* JIRA SAML SSO by Microsoft (V5.2) では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-jira-saml-sso-by-microsoft-v52-from-the-gallery"></a>ギャラリーからの JIRA SAML SSO by Microsoft (V5.2) の追加
 
 Azure AD への JIRA SAML SSO by Microsoft (V5.2) の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に JIRA SAML SSO by Microsoft (V5.2) を追加する必要があります。
 
-**ギャラリーから JIRA SAML SSO by Microsoft (V5.2) を追加するには、次の手順を実行します。**
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**JIRA SAML SSO by Microsoft (V5.2)** 」と入力します。
+1. 結果のパネルから **[JIRA SAML SSO by Microsoft (V5.2)]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
+## <a name="configure-and-test-azure-ad-sso-for-jira-saml-sso-by-microsoft-v52"></a>JIRA SAML SSO by Microsoft (V5.2) の Azure AD SSO の構成とテスト
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、JIRA SAML SSO by Microsoft (V5.2) で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと JIRA SAML SSO by Microsoft (V5.2) 内の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
+JIRA SAML SSO by Microsoft (V5.2) で Azure AD シングル サインオンを構成してテストするには、次の手順を実行します。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+2. **[JIRA SAML SSO by Microsoft (V5.2) の SSO の構成](#configure-jira-saml-sso-by-microsoft-v52-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[JIRA SAML SSO by Microsoft (V5.2) テスト ユーザーの作成](#create-jira-saml-sso-by-microsoft-v52-test-user)** - JIRA SAML SSO by Microsoft (V5.2) で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+1. Azure portal の **JIRA SAML SSO by Microsoft (V5.2)** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
-4. 検索ボックスに「 **JIRA SAML SSO by Microsoft (V5.2)** 」と入力し、結果パネルで **[JIRA SAML SSO by Microsoft (V5.2)]** を選び、 **[追加]** をクリックしてアプリケーションを追加します。
-
-    ![結果リストの JIRA SAML SSO by Microsoft (V5.2)](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、JIRA SAML SSO by Microsoft (V5.2) で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと JIRA SAML SSO by Microsoft (V5.2) 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
-
-JIRA SAML SSO by Microsoft (V5.2) で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
-
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[JIRA SAML SSO by Microsoft (V5.2) のシングル サインオンの構成](#configure-jira-saml-sso-by-microsoft-v52-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[JIRA SAML SSO by Microsoft (V5.2) テスト ユーザーの作成](#create-jira-saml-sso-by-microsoft-v52-test-user)** - JIRA SAML SSO by Microsoft (V5.2) で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-
-このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
-
-JIRA SAML SSO by Microsoft (V5.2) で Azure AD シングル サインオンを構成するには、次の手順を実行します。
-
-1. [Azure portal](https://portal.azure.com/) の **JIRA SAML SSO by Microsoft (V5.2)** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
-
-    ![シングル サインオン構成のリンク](common/select-sso.png)
-
-2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
-
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
-
-    ![[JIRA SAML SSO by Microsoft (V5.2) のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
     a. **[サインオン URL]** ボックスに、`https://<domain:port>/plugins/servlet/saml/auth` という形式で URL を入力します。
 
@@ -140,7 +112,31 @@ JIRA SAML SSO by Microsoft (V5.2) で Azure AD シングル サインオンを�
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
 
-### <a name="configure-jira-saml-sso-by-microsoft-v52-single-sign-on"></a>JIRA SAML SSO by Microsoft (V5.2) のシングル サインオンの構成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
+
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+    1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+    1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+    1. **Create** をクリックしてください。
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+
+このセクションでは、B.Simon に JIRA SAML SSO by Microsoft (V5.2) へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で、 **[JIRA SAML SSO by Microsoft (V5.2)]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+## <a name="configure-jira-saml-sso-by-microsoft-v52-sso"></a>JIRA SAML SSO by Microsoft (V5.2) の SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、JIRA インスタンスに管理者としてサインインします。
 
@@ -189,57 +185,7 @@ JIRA SAML SSO by Microsoft (V5.2) で Azure AD シングル サインオンを�
     i. **[Save (保存)]** ボタンをクリックして、設定を保存します。
 
     > [!NOTE]
-    > インストールとトラブルシューティングについて詳しくは、[MS JIRA SSO コネクタ管理者ガイド](./ms-confluence-jira-plugin-adminguide.md)のページをご覧ください。[よくあるご質問](./ms-confluence-jira-plugin-adminguide.md)も役立ちます。
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
-
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. [ユーザーのプロパティ] で、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[ユーザー名]** フィールドに「`brittasimon\@yourcompanydomain.extension`」と入力します。 たとえば、「 BrittaSimon@contoso.com 」のように入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、Britta Simon に JIRA SAML SSO by Microsoft (V5.2) へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
-
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[JIRA SAML SSO by Microsoft (V5.2)]** を選択します。
-
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-2. アプリケーションの一覧で、 **[JIRA SAML SSO by Microsoft (V5.2)]** を選択します。
-
-    ![アプリケーションの一覧の [JIRA SAML SSO by Microsoft (V5.2)] リンク](common/all-applications.png)
-
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-
-6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
-
-7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
+    > インストールとトラブルシューティングについて詳しくは、[MS JIRA SSO コネクタ管理者ガイド](./ms-confluence-jira-plugin-adminguide.md)のページを参照してください。[よくあるご質問](./ms-confluence-jira-plugin-adminguide.md)も役立ちます。
 
 ### <a name="create-jira-saml-sso-by-microsoft-v52-test-user"></a>JIRA SAML SSO by Microsoft (V5.2) テスト ユーザーの作成
 
@@ -253,7 +199,7 @@ Azure AD ユーザーが JIRA オンプレミス サーバーにサインイン�
 
     ![[Settings]\(設定\) メニューの [User management]\(ユーザー管理\) が選択されているスクリーンショット。](./media/jira52microsoft-tutorial/user1.png)
 
-3. [Administrator Access]\(管理者アクセス\) のページにリダイレクトされるので、 **パスワード** を入力し、 **[Confirm]\(確認\)** ボタンをクリックします。
+3. [Administrator Access]\(管理者アクセス\) のページにリダイレクトされるので、**パスワード** を入力し、 **[Confirm]\(確認\)** ボタンをクリックします。
 
     ![資格情報を入力する [Administrator Access]\(管理者アクセス\) ページを示すスクリーンショット。](./media/jira52microsoft-tutorial/user2.png)
 
@@ -275,16 +221,17 @@ Azure AD ユーザーが JIRA オンプレミス サーバーにサインイン�
 
     e. **[Create user]\(ユーザーの作成\)** をクリックします。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+## <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルで [JIRA SAML SSO by Microsoft (V5.2)] タイルをクリックすると、SSO を設定した JIRA SAML SSO by Microsoft (V5.2) に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる JIRA SAML SSO by Microsoft (V5.2) のサインオン URL にリダイレクトされます。 
 
-## <a name="additional-resources"></a>その他のリソース
+* JIRA SAML SSO by Microsoft (V5.2) のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* Microsoft マイ アプリを使用することができます。 マイ アプリの [JIRA SAML SSO by Microsoft (V5.2)] タイルをクリックすると、JIRA SAML SSO by Microsoft (V5.2) のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+## <a name="next-steps"></a>次のステップ
+
+JIRA SAML SSO by Microsoft (V5.2) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

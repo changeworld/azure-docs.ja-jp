@@ -4,12 +4,12 @@ description: Azure Site Recovery を使用したセカンダリ リージョン�
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: a6a5d78385cc61838a606a3f3d2a7277f6b66a4d
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 9670178a9c9d772d8966413371f998aa1f0cf5f3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858537"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968302"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure リージョン間での Azure VM ディザスター リカバリーに関するサポート マトリックス
 
@@ -198,6 +198,7 @@ Site Recovery を使用して移行された VM | サポートされています
 Azure RBAC ポリシー | サポートされていません | VM での Azure ロールベースのアクセス制御 (Azure RBAC) ポリシーは、ターゲット リージョンのフェールオーバー VM にレプリケートされません。
 拡張機能 | サポートされていません | 拡張機能は、ターゲット リージョン内のフェールオーバー VM にはレプリケートされません。 これはフェールオーバー後に手動でインストールする必要があります。
 近接配置グループ | サポートされています | 近接配置グループ内にある仮想マシンは、Site Recovery を使用して保護できます。
+Tags  | サポートされています | ソース仮想マシンに適用されたユーザー生成タグは、テスト フェールオーバーまたはフェールオーバー後にターゲット仮想マシンに引き継がれます。
 
 
 ## <a name="replicated-machines---disk-actions"></a>レプリケートされるマシン - ディスクのアクション
@@ -256,6 +257,7 @@ NVMe ディスク | サポートされていません
 Azure 共有ディスク | サポートされていません
 転送オプションのセキュリティ保護 | サポートされています
 書き込みアクセラレータが有効になっているディスク | サポートされていません
+Tags  | ユーザー生成タグは、24 時間ごとにレプリケートされます。
 
 >[!IMPORTANT]
 > パフォーマンスの問題を回避するには、[Linux](../virtual-machines/linux/disk-scalability-targets.md) または [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM に対する VM ディスクのスケーラビリティとパフォーマンスのターゲットに従っていることを確認します。 既定の設定を使用する場合は、ソースの構成に基づいて、必要なディスクとストレージ アカウントが Site Recovery によって作成されます。 設定をカスタマイズして独自の設定を選択する場合は、ソース VM のディスクのスケーラビリティおよびパフォーマンスのターゲットに従います。
@@ -302,6 +304,7 @@ Accelerated Networking | サポートされています | 高速ネットワー�
 Palo Alto Network アプライアンス | サポートされていません | サード パーティ製のアプライアンスでは、多くの場合、仮想マシン内のプロバイダーによって課せられる制限があります。 Azure Site Recovery では、エージェント、拡張機能、送信接続を利用できるようにする必要があります。 ただし、アプライアンスでは、仮想マシン内で送信アクティビティを構成することはできません。
 IPv6  | サポートされていません | IPv4 と IPv6 の両方を含む混合構成もサポートされていません。 Site Recovery 操作の前に、IPv6 の範囲のサブネットを解放してください。
 Site Recovery サービスへの Private Link アクセス | サポートされています | [詳細情報](azure-to-azure-how-to-enable-replication-private-endpoints.md)
+Tags  | サポートされています | NIC 上のユーザー生成タグは、24 時間ごとにレプリケートされます。
 
 
 

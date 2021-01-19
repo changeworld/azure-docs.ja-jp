@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: e7a8f54abbadb63c870c4d92843699c67f59752c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 393d0c69201f87ad7c96bd2f9a1f9f57df512e31
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505632"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964526"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>SQL Server VM を SQL IaaS Agent 拡張機能に登録する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -188,6 +188,9 @@ $sqlvm.SqlManagementType
 ## <a name="upgrade-to-full"></a>フルへのアップグレード  
 
 "*軽量*" モードで拡張機能に登録された SQL Server VM は、Azure portal、Azure CLI、または Azure PowerShell を使用して "_フル_" にアップグレードできます。 "_No-Agent_" モードの SQL Server VM は、OS が Windows 2008 R2 以上にアップグレードされた後、"_フル_" にアップグレードできます。 ダウングレードすることはできません。それを行うには、SQL Server VM を SQL IaaS Agent 拡張機能から[登録解除](#unregister-from-extension)する必要があります。 それにより、**SQL 仮想マシン** の "_リソース_" が削除されますが、実際の仮想マシンは削除されません。 
+
+> [!NOTE]
+> SQL IaaS 拡張機能の管理モードをフルにアップグレードすると、SQL Server サービスが再起動されます。 場合によっては、再起動によって、SQL Server サービスに関連付けられたサービス プリンシパル名 (SPN) が間違ったユーザー アカウントに変更されることがあります。 管理モードをフルにアップグレードした後に接続の問題が発生した場合は、[SPN を登録解除してから再登録してください](/sql/database-engine/configure-windows/register-a-service-principal-name-for-kerberos-connections)。
 
 
 ### <a name="azure-portal"></a>Azure portal

@@ -13,12 +13,12 @@ ms.date: 09/09/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 70ab4a151fe73b59663fd8fa16170b2e507c2511
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 62eb4ab9eb6e4b0e7be0f7aadae1173950d21615
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258061"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064489"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>MSAL.NET と共に Xamarin iOS を使用する際の考慮事項
 
@@ -130,7 +130,7 @@ Xcode 11 を使用してビルドし、iOS ブローカーまたは `ASWebAuthen
 
 ### <a name="additional-requirements"></a>その他の要件
 
-- 最新の MSAL ライブラリを使用する場合は、**Microsoft Authenticator バージョン 6.3.19 以降**がデバイスにインストールされていることを確認します。
+- 最新の MSAL ライブラリを使用する場合は、**Microsoft Authenticator バージョン 6.3.19 以降** がデバイスにインストールされていることを確認します。
 - MSAL.NET 4.4.0 以降に更新する場合は、*Info.plist* ファイルの `LSApplicationQueriesSchemes` を更新し、`msauthv3` を追加します。
 
     ```xml

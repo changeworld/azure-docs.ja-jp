@@ -4,14 +4,14 @@ description: Azure Monitor のメトリック警告に関する一般的な問�
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/03/2021
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 9a05fe509e032681a0bf5ed989595a25f66d33c6
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: e4e876b58c82605df0c005b225dcf2cdbcda1b34
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857343"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070731"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor のメトリック警告に関する問題のトラブルシューティング 
 
@@ -91,9 +91,9 @@ Azure Monitor のアラートは、監視データで重要な状態が見つか
 [メトリックの特定のディメンション値](./alerts-metric-overview.md#using-dimensions)についてアラートを作成しようとしているが、これらの値が見つからない場合は、次の点に注意してください。
 
 1. ディメンション値が **ディメンション値** 一覧に表示されるまでに数分かかる場合があります。
-1. 表示されるディメンション値は、過去 3 日間に収集されたメトリック データに基づいています
-1. ディメンションの値がまだ生成されていない場合は、[+] 記号をクリックしてカスタム値を追加します
-1. ディメンションのすべての可能な値 (将来の値を含む) について警告を生成する場合は、[Select *] チェック ボックスをオンにします
+1. 表示されるディメンション値は、過去 1 日間に収集されたメトリック データに基づいています
+1. ディメンション値がまだ生成されていない場合、または表示されない場合は、[カスタム値を追加] オプションを使用してカスタム ディメンション値を追加できます
+1. ディメンションのすべての可能な値 (将来の値を含む) について警告を生成する場合は、[現在および将来の値をすべて選択する] オプションを選択します
 
 ## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>削除されたリソースに対してメトリック警告ルールがまだ定義されている 
 

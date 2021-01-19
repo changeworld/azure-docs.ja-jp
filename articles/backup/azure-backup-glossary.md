@@ -3,12 +3,12 @@ title: Azure Backup 用語集
 description: この記事では、Azure Backup を使用する際に役立つ用語を定義します。
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 8baa47667e86b99ebbbf273610809814e768c077
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 1e28f0c2ad5d14ea2a8dc6ce8d5fa2b21c7e65ac
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733259"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935072"
 ---
 # <a name="azure-backup-glossary"></a>Azure Backup 用語集
 
@@ -172,7 +172,7 @@ GFS (Grandfather-father-son) バックアップ ポリシーは、毎日のバ�
 
 ## <a name="instant-restore"></a>インスタント復元
 
-インスタント復元では、コンテナー内のスナップショットのコピーからではなく、バックアップ スナップショットから直接マシンが復元されます。 インスタント復元は、コンテナーからの復元よりも高速です。 使用できるインスタント復元ポイントの数は、スナップショット用に構成された保持期間によって異なります。
+(ワークロード固有の用語) インスタント復元では、コンテナー内のスナップショットのコピーからではなく、バックアップ スナップショットから直接マシンが復元されます。 インスタント復元は、コンテナーからの復元よりも高速です。 使用できるインスタント復元ポイントの数は、スナップショット用に構成された保持期間によって異なります。 現時点では、Azure VM のバックアップにのみ適用されます。
 
 ## <a name="iops"></a>IOPS
 
@@ -226,23 +226,19 @@ MARS エージェントは、**Azure Backup エージェント** や **Recovery 
 
 パスフレーズは、MARS エージェントを使用して Azure との間でオンプレミスまたはローカル マシンをバックアップまたは復元するときに、データを暗号化および復号化するために使用されます。
 
-## <a name="point-in-time-restore"></a>ポイントインタイム リストア
-
-特定の時点 (PIT) の状態への項目の復元。
-
 ## <a name="private-endpoint"></a>プライベート エンドポイント
 
 [プライベート エンドポイントのドキュメント](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)を参照してください。
 
 ## <a name="protected-instance"></a>保護されたインスタンス
 
-保護されたインスタンスとは、Azure へのバックアップを構成するために使用するコンピューター、物理または仮想サーバーを指します。  **課金の観点** からは、マシンの保護されたインスタンスの数はそのフロントエンドのサイズと相関しています。 [詳細については、こちらを参照してください](https://azure.microsoft.com/pricing/details/backup/)。
+保護されたインスタンスとは、Azure へのバックアップを構成するために使用するコンピューター、物理または仮想サーバーを指します。  **課金の観点** からは、マシンの保護されたインスタンスの数はそのフロントエンドのサイズと相関しています。 このため、1 つのバックアップ インスタンス (Azure にバックアップされた VM など) が、フロントエンドのサイズに応じて、複数の保護されたインスタンスに対応する可能性があります。 [詳細については、こちらを参照してください](https://azure.microsoft.com/pricing/details/backup/)。
 
 ## <a name="rbac-role-based-access-control"></a>RBAC (ロールベースのアクセス制御)
 
 [RBAC のドキュメント](https://docs.microsoft.com/azure/role-based-access-control/overview)を参照してください。
 
-## <a name="recovery-point-restore-point-retention-point"></a>復旧ポイント/復元ポイント/保有ポイント
+## <a name="recovery-point-restore-point-retention-point--point-in-time-pit"></a>復旧ポイント/復元ポイント/保有ポイント/ポイントインタイム (PIT)
 
 バックアップされている元のデータのコピーです。 保有ポイントはタイムスタンプに関連付けられているので、これを使用して特定の時点に項目を復元できます。
 
@@ -264,11 +260,11 @@ MARS エージェントは、**Azure Backup エージェント** や **Recovery 
 
 ## <a name="rpo-recovery-point-objective"></a>RPO (復旧ポイントの目標)
 
-RPO は、データ損失のシナリオで許容されるデータ損失の最大値を示します。 これは、バックアップの頻度によって決まります。
+RPO は、データ損失のシナリオで想定されるデータ損失の最大値を示します。 これは、バックアップの頻度によって決まります。
 
 ## <a name="rto-recovery-time-objective"></a>RTO (目標復旧時間)
 
-RTO は、データ損失シナリオの後、最後の使用可能な時点にデータが復元されるまでに許容される最大時間を示します。
+RTO は、データ損失シナリオの後、最後の使用可能な時点にデータが復元されるまでに想定される最大時間を示します。
 
 ## <a name="scheduled-backup"></a>スケジュールされたバックアップ
 
@@ -284,7 +280,7 @@ RTO は、データ損失シナリオの後、最後の使用可能な時点に�
 
 ## <a name="snapshot"></a>スナップショット
 
-スナップショットは、仮想ハード ドライブ (VHD) の完全な読み取り専用コピーです。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)。
+スナップショットは、仮想ハード ドライブ (VHD) または Azure ファイル共有の完全な読み取り専用コピーです。 [ディスク スナップショット](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)および[ファイル スナップショット](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)に関する詳細情報を参照してください。
 
 ## <a name="storage-account"></a>ストレージ アカウント
 
@@ -314,7 +310,7 @@ Azure サブスクリプションは、Azure でリソースをプロビジョ�
 
 ## <a name="vault-credentials"></a>コンテナー資格情報
 
-コンテナー資格情報ファイルは、コンテナーごとにポータルによって生成される証明書です。 これは、サーバーをコンテナーに登録するときに使用されます。 [詳細については、こちらを参照してください](backup-azure-dpm-introduction.md)。
+コンテナー資格情報ファイルは、コンテナーごとにポータルによって生成される証明書です。 これは、オンプレミス　サーバーをコンテナーに登録するときに使用されます。 [詳細については、こちらを参照してください](backup-azure-dpm-introduction.md)。
 
 ## <a name="vnet-virtual-network"></a>VNET (Virtual Network)
 

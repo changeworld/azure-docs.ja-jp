@@ -11,16 +11,14 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperf-fy20q4, devx-track-python
-ms.openlocfilehash: b0b415cce37e464abcba9fab5ad4c1196b1b2e1b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 8222f88f5118c4ac8f489bb05ee5ca2724dbf067
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033478"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184086"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>チュートリアル:バッチ スコアリング用の Azure Machine Learning パイプラインを作成する
-
-
 
 この高度なチュートリアルでは、[Azure Machine Learning パイプライン](concept-ml-pipelines.md)を作成して、バッチ スコアリング ジョブを実行する方法について説明します。 機械学習パイプラインは、速度、移植性、再利用によってワークフローを最適化します。これにより、ユーザーはインフラストラクチャや自動化にではなく、機械学習に専念することができます。 パイプラインを作成して発行したら、REST エンドポイントを構成します。それを使用して、任意のプラットフォームで任意の HTTP ライブラリからパイプラインをトリガーできます。 
 
@@ -79,26 +77,24 @@ def_data_store = ws.get_default_datastore()
 
 ## <a name="create-dataset-objects"></a>データセット オブジェクトを作成する
 
-パイプラインを作成する際、ワークスペースのデータストアからデータを読み取るために `Dataset` オブジェクトを、またパイプライン ステップ間で中間データを転送するために `PipelineData` オブジェクトを使用します。
+パイプラインを作成する際、ワークスペースのデータストアからデータを読み取るために `Dataset` オブジェクトを、またパイプライン ステップ間で中間データを転送するために `OutputFileDatasetConfig` オブジェクトを使用します。
 
 > [!Important]
 > このチュートリアルのバッチ スコアリングの例で使用するパイプライン ステップは 1 つだけです。 複数のステップを使用したユースケースでは、標準的なフローにこれらのステップが含まれます。
 >
-> 1. `Dataset` オブジェクトを "*入力*" に使用して生データを取り込み、なんらかの変換を実行した後、`PipelineData` オブジェクトを "*出力*" します。
+> 1. `Dataset` オブジェクトを "*入力*" に使用して生データを取り込み、なんらかの変換を実行した後、`OutputFileDatasetConfig` オブジェクトで "*出力*" します。
 >
-> 2. 前のステップの `PipelineData` "*出力オブジェクト*" を "*入力オブジェクト*" として使用します。 後続のステップに対して処理を繰り返します。
+> 2. 前のステップの `OutputFileDatasetConfig` "*出力オブジェクト*" を "*入力オブジェクト*" として使用します。 後続のステップに対して処理を繰り返します。
 
-このシナリオでは、入力画像と分類ラベル (y 検定値) の両方について、データストアのディレクトリに対応する `Dataset` オブジェクトを作成します。 バッチ スコアリングの出力データ用の `PipelineData` オブジェクトも作成します。
+このシナリオでは、入力画像と分類ラベル (y 検定値) の両方について、データストアのディレクトリに対応する `Dataset` オブジェクトを作成します。 バッチ スコアリングの出力データ用の `OutputFileDatasetConfig` オブジェクトも作成します。
 
 ```python
 from azureml.core.dataset import Dataset
-from azureml.pipeline.core import PipelineData
+from azureml.data import OutputFileDatasetConfig
 
 input_images = Dataset.File.from_files((batchscore_blob, "batchscoring/images/"))
 label_ds = Dataset.File.from_files((batchscore_blob, "batchscoring/labels/"))
-output_dir = PipelineData(name="scores", 
-                          datastore=def_data_store, 
-                          output_path_on_compute="batchscoring/results")
+output_dir = OutputFileDatasetConfig(name="scores")
 ```
 
 後で再利用する場合、ワークスペースにデータセットを登録します。 この手順は省略可能です。
@@ -345,7 +341,7 @@ from azureml.core import Experiment
 from azureml.pipeline.core import Pipeline
 
 pipeline = Pipeline(workspace=ws, steps=[batch_score_step])
-pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline)
+pipeline_run = Experiment(ws, 'Tutorial-Batch-Scoring').submit(pipeline)
 pipeline_run.wait_for_completion(show_output=True)
 ```
 
@@ -409,7 +405,7 @@ import requests
 rest_endpoint = published_pipeline.endpoint
 response = requests.post(rest_endpoint, 
                          headers=auth_header, 
-                         json={"ExperimentName": "batch_scoring",
+                         json={"ExperimentName": "Tutorial-Batch-Scoring",
                                "ParameterAssignments": {"process_count_per_node": 6}})
 run_id = response.json()["Id"]
 ```
@@ -422,7 +418,7 @@ run_id = response.json()["Id"]
 from azureml.pipeline.core.run import PipelineRun
 from azureml.widgets import RunDetails
 
-published_pipeline_run = PipelineRun(ws.experiments["batch_scoring"], run_id)
+published_pipeline_run = PipelineRun(ws.experiments["Tutorial-Batch-Scoring"], run_id)
 RunDetails(published_pipeline_run).show()
 ```
 

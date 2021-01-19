@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 0e174f9b78606e0bea5cded3a176f4207745bb5c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7a52d3971e4ec0cb8ec104a57ba7fb4057c23b72
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077305"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964645"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Azure Virtual WAN ハブでネットワーク仮想アプライアンスを作成する方法 (プレビュー)
 
@@ -21,7 +21,7 @@ ms.locfileid: "92077305"
 
 この記事のステップは、Virtual WAN ハブで **Barracuda CloudGen WAN** ネットワーク仮想アプライアンスを作成する際に役立ちます。 この演習を完了するには、開始する前に、Barracuda Cloud Premise Device (CPE) と、ハブにデプロイする Barracuda CloudGen WAN アプライアンスのライセンスが必要です。
 
-Azure Virtual WAN 内の **Cisco SD-WAN** のデプロイに関するドキュメントについては、次のメール アドレスを使用して Cisco 宛てにメールを送信してください: vwan_public_preview@external.cisco.com
+Azure Virtual WAN 内の **Cisco SD-WAN** のデプロイに関するドキュメントについては、「[Cisco Cloud OnRamp for Multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701)」を参照してください。 アカウントを登録し、必要な Cisco SD-WAN ライセンスを取得するには、Cisco に電子メールを送信してください。電子メール アドレスは次のとおりです。vwan_public_preview@external.cisco.com
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -66,14 +66,14 @@ Azure Virtual WAN 内の **Cisco SD-WAN** のデプロイに関するドキュ�
 
 1. 前のステップで作成した Virtual WAN ハブを見つけて開きます。
 
-   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="基本操作":::
+   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="仮想ハブ":::
 1. [ネットワーク仮想アプライアンス] タイルを見つけて、 **[作成]** リンクを選択します。
 1. **[ネットワーク仮想アプライアンス]** ブレードで **[Barracuda CloudGen WAN]** を選択し、 **[作成]** ボタンを選択します。
 
-   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="基本操作":::
+   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="NVA を選択する":::
 1. これにより、Barracuda CloudGen WAN ゲートウェイ向けの Azure Marketplace オファーが表示されます。 ご契約条件を読み、準備ができたら **[作成]** ボタンを選択します。
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="基本操作":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="Barracuda NVA 基本":::
 1. **[基本]** ページでは、次の情報を指定する必要があります。
 
    * **[サブスクリプション]** - Virtual WAN とハブをデプロイするために使用したサブスクリプションを選択します。
@@ -83,7 +83,7 @@ Azure Virtual WAN 内の **Cisco SD-WAN** のデプロイに関するドキュ�
    * **[管理対象リソース グループ]** - Barracuda で管理されているリソースをデプロイする管理対象リソース グループの名前です。 この名前は事前に設定されている必要があります。
 1. ページの下部にある **[次へ: CloudGen WAN ゲートウェイ]** ボタンを選択します。
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="基本操作":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="CloudGen WAN ゲートウェイ":::
 1. ここでは、次の情報を指定します。
 
    * **[Virtual WAN ハブ]** - この NVA をデプロイする Virtual WAN ハブです。

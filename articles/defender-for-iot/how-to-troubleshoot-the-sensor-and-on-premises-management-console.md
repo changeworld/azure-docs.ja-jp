@@ -4,15 +4,15 @@ description: センサーとオンプレミスの管理コンソールをトラ�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/12/2020
+ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: a57db4f88de4a3b32b4fb315fb331500f955d501
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b91827fc0a6fb8380c9f8aa87a3def3bc1819523
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97837050"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955435"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>センサーとオンプレミスの管理コンソールのトラブルシューティング
 
@@ -28,22 +28,33 @@ ms.locfileid: "97837050"
 
 ### <a name="investigate-password-failure-at-initial-sign-in"></a>初回サインイン時にパスワード エラーを調査する
 
-構成済みの Arrow センサーに初めてサインインするときは、次のパスワードの回復を実行する必要があります。
+構成済みの Arrow センサーに初めてサインインするときは、パスワードの復元を実行する必要があります。
 
-1. Defender for IoT のサインイン画面で、 **[パスワードの回復]** オプションを選択します。 
+パスワードを復元するには、次のようにします。
 
-   **[パスワードの回復]** 画面が開きます。 ここで、ユーザーとサブスクリプションを選択するよう求められ、一意の識別子が付与されます。
+1. Defender for IoT のサインイン画面で、 **[パスワードの復元]** を選択します。 **[パスワードの復元]** 画面が開きます。
 
-1. Defender for IoT の **[サイトとセンサー]** ページに移動し、 **[パスワードの回復]** タブを選択します。
+1. **[CyberX]** または **[サポート]** を選択し、一意識別子をコピーします。
 
-1. **[パスワードの回復]** 画面で受信した一意の識別子を入力し、 **[回復]** を選択します。 `password_recovery.zip` ファイルがダウンロードされます。
+1. Azure portal に移動し、 **[Sites and Sensors]\(サイトとセンサー\)** を選択します。  
 
-   > [!NOTE]
-   > アクティブ化ファイルを変更しないでください。 これは署名されたファイルであり、改ざんすると機能しません。
+1. **[Recover on-premises management console password]\(オンプレミス管理コンソールのパスワードを復元\)** タブを選択します。
 
-1. **[パスワードの回復]** 画面で、`password_recovery.zip` ファイルをアップロードし、 **[次へ]** を選択します。
+   :::image type="content" source="media/password-recovery-images/recover-button.png" alt-text="オンプレミス管理を復元するボタンを選択して、復元ファイルをダウンロードします。":::
 
-その後、システムによって生成された、管理コンソールのパスワードを受け取ります。 
+1. **[パスワードの復元]** 画面で受信した一意識別子を入力し、 **[復元]** を選択します。 `password_recovery.zip` ファイルがダウンロードされます。
+
+    > [!NOTE]
+    > パスワードの復元ファイルは変更しないでください。 これは署名されたファイルであり、改ざんすると機能しません。
+
+1. **[パスワードの復元]** 画面で **[アップロード]** を選択します。 **[Upload Password Recovery File]\(パスワード復元ファイルのアップロード\)** ウィンドウが開きます。
+
+1. **[参照]** を選択して `password_recovery.zip` ファイルを見つけるか、`password_recovery.zip` をウィンドウにドラッグします。
+
+1. **[次へ]** を選択すると、管理コンソールのユーザーとシステムが生成したパスワードが表示されます。
+
+    > [!NOTE]
+    > センサーまたはオンプレミスの管理コンソールに初めてサインインすると、接続先のサブスクリプションにリンクされます。 CyberX またはサポート ユーザーのパスワードをリセットする必要がある場合は、そのサブスクリプションを選択する必要があります。 CyberX またはサポート ユーザーのパスワードを復元する方法の詳細については、「[センサーまたはオンプレミスの管理コンソールのユーザー パスワードをリセットする](how-to-create-and-manage-users.md#resetting-a-users-password-for-the-sensor-or-on-premises-management-console)」を参照してください。
 
 ### <a name="investigate-a-lack-of-traffic"></a>トラフィックの欠落を調査する
 
@@ -65,35 +76,35 @@ ms.locfileid: "97837050"
 
    :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/dashboard-view-v2.png" alt-text="サンプル ダッシュボードのスクリーンショット。"::: 
 
-2. サイド メニューから、 **[デバイス]** を選択します。
+1. サイド メニューから、 **[デバイス]** を選択します。
 
-3. **[デバイス]** ウィンドウで、デバイスが検出されていることを確認します。
+1. **[デバイス]** ウィンドウで、デバイスが検出されていることを確認します。
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/discovered-devices.png" alt-text="デバイスが検出されていることを確認します。":::
 
-4. サイド メニューから、 **[データ マイニング]** を選択します。
+1. サイド メニューから、 **[データ マイニング]** を選択します。
 
-5. **[データ マイニング]** ウィンドウで、 **[すべて]** を選択し、レポートを生成します。
+1. **[データ マイニング]** ウィンドウで、 **[すべて]** を選択し、レポートを生成します。
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/new-report-generated.png" alt-text="データ マイニングを使用して新しいレポートを生成します。":::
 
-6. レポートにデータが含まれていることを確認します。
+1. レポートにデータが含まれていることを確認します。
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/new-report-generated.png" alt-text="レポートにデータが含まれていることを確認します。":::
 
-7. サイド メニューから、 **[傾向と統計]** を選択します。
+1. サイド メニューから、 **[傾向と統計]** を選択します。
 
-8. **[傾向と統計]** ウィンドウで、 **[ウィジェットの追加]** を選択します。
+1. **[傾向と統計]** ウィンドウで、 **[ウィジェットの追加]** を選択します。
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/add-widget.png" alt-text="ウィジェットを選択して追加します。":::
 
-9. ウィジェットを追加し、データが表示されていることを確認します。
+1. ウィジェットを追加し、データが表示されていることを確認します。
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/widget-data.png" alt-text="ウィジェットにデータが表示されていることを確認します。":::
 
-10. サイド メニューから、 **[アラート]** を選択します。 **[アラート]** ウィンドウが表示されます。
+1. サイド メニューから、 **[アラート]** を選択します。 **[アラート]** ウィンドウが表示されます。
 
-11. アラートが作成されたことを確認します。
+1. アラートが作成されたことを確認します。
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/alerts-created.png" alt-text="アラートが作成されたことを確認します。":::
 
@@ -154,9 +165,9 @@ ICS デバイスは、外部 IP アドレスを使用して構成される場合
 
 1. デバイス マップのクラウド アイコンを右クリックし、 **[IP アドレスのエクスポート]** を選択します。 プライベートであるパブリック範囲をコピーし、サブネットの一覧に追加します。 詳細については、「[サブネットを構成する](how-to-control-what-traffic-is-monitored.md#configure-subnets)」を参照してください。
 
-2. インターネット接続の新しいデータマイニング レポートを生成します。
+1. インターネット接続の新しいデータマイニング レポートを生成します。
 
-3. データマイニング レポートで、:::image type="icon" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/administrator-mode.png" border="false"::: を選択して管理者モードに移行し、ICS デバイスの IP アドレスを削除します。
+1. データマイニング レポートで、:::image type="icon" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/administrator-mode.png" border="false"::: を選択して管理者モードに移行し、ICS デバイスの IP アドレスを削除します。
 
 ### <a name="tweak-the-sensors-quality-of-service"></a>センサーのサービス品質を調整する
 
@@ -179,7 +190,7 @@ ICS デバイスは、外部 IP アドレスを使用して構成される場合
    > [!NOTE]
    > 物理アプライアンスの場合は、em1 インターフェイスを使用します。
 
-2. インターフェイス制限をクリアするには、「`sudo cyberx-xsense-limit-interface -i eth0 -l 1mbps -c`」と入力します。
+1. インターフェイス制限をクリアするには、「`sudo cyberx-xsense-limit-interface -i eth0 -l 1mbps -c`」と入力します。
 
 ## <a name="on-premises-management-console-troubleshooting-tools"></a>オンプレミスの管理コンソールのトラブルシューティング ツール
 
@@ -203,7 +214,7 @@ ICS デバイスは、外部 IP アドレスを使用して構成される場合
 
 1. Defender for IoT ユーザーとしてサインインします。 
 
-2. 既定値を確認します。
+1. 既定値を確認します。
 
    ```bash
    grep \"notifications\" /var/cyberx/properties/management.properties
@@ -216,20 +227,20 @@ ICS デバイスは、外部 IP アドレスを使用して構成される場合
    notifications.max_time_to_report=10 (seconds)
    ```
 
-3. 既定の設定を編集します。
+1. 既定の設定を編集します。
 
    ```bash
    sudo nano /var/cyberx/properties/management.properties
    ```
 
-4. 次の行の設定を編集します。
+1. 次の行の設定を編集します。
 
    ```bash
    notifications.max_number_to_report=50
    notifications.max_time_to_report=10 (seconds)
    ```
 
-5. 変更を保存します。 再起動は必要はありません。
+1. 変更を保存します。 再起動は必要はありません。
 
 ## <a name="export-information-for-troubleshooting"></a>トラブルシューティングのために情報をエクスポートする
 
@@ -239,13 +250,13 @@ ICS デバイスは、外部 IP アドレスを使用して構成される場合
 
 1. 左側のペインで、 **[システム設定]** を選択します。
 
-2. **[ログのエクスポート]** を選択します。
+1. **[ログのエクスポート]** を選択します。
 
     :::image type="content" source="media/how-to-export-information-for-troubleshooting/export-a-log.png" alt-text="ログをシステム サポートにエクスポートします。":::
 
-3. **[ファイル名]** ボックスに、ログのエクスポートに使用するファイル名を入力します。 既定値は現在の日付です。
+1. **[ファイル名]** ボックスに、ログのエクスポートに使用するファイル名を入力します。 既定値は現在の日付です。
 
-4. エクスポートするデータを定義するには、データのカテゴリを選択します。  
+1. エクスポートするデータを定義するには、データのカテゴリを選択します。  
 
     | エクスポートのカテゴリ | [説明] |
     |--|--|
@@ -264,9 +275,9 @@ ICS デバイスは、外部 IP アドレスを使用して構成される場合
     | **データベース ログ** | システム データベースからログをエクスポートするには、このオプションを選択します。 システム ログを調査することで、システムの問題を特定するのに役立ちます。 |
     | **構成** | すべてが正しく構成されていることを確認するために構成可能なすべてのパラメーターに関する情報をエクスポートするには、このオプションを選択します。 |
 
-5. すべてのオプションを選択するには、 **[カテゴリの選択]** の横にある **[すべて選択]** を選択します。
+1. すべてのオプションを選択するには、 **[カテゴリの選択]** の横にある **[すべて選択]** を選択します。
 
-6. **[ログのエクスポート]** を選択します。
+1. **[ログのエクスポート]** を選択します。
 
 エクスポートされたログは **[アーカイブ済みログ]** 一覧に追加されます。 エクスポートされたログとは別のメッセージとメディアで、OTP をサポート チームに送信します。 サポート チームは、ログの暗号化に使用される一意の OTP を使用した場合のみ、エクスポートされたログを抽出できます。
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 943f1361a2a9d6bf8d891f8b4f2137b8738f0836
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 31216db98cc02724ac3625eb1a8fa18b0f75c6ee
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450753"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955027"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析での [注文] ダッシュボード
 
@@ -109,14 +109,13 @@ SaaS オファーでは、各プランで 2 つの料金モデル、つまり、
 - レコード数が 1,000 件未満の場合は、.CSV または .TSV ファイルにデータを抽出できます。
 - レコード数が 1,000 件を超える場合、エクスポートされたデータは今後 30 日間、ダウンロード ページに非同期で配置されます。
 - **[注文の詳細]** テーブルにフィルターを適用すると、目的のデータのみ表示されます。 国および地域、Azure ライセンスの種類、コマーシャル マーケットプレース ライセンスの種類、オファーの種類、注文の状態、無料評価版、コマーシャル マーケットプレース サブスクリプション ID、顧客 ID、および会社名でフィルター処理します。
-- Azure Marketplace または Microsoft AppSource から購入した SaaS オファーは Azure サブスクリプションを必要としないため、Marketplace サブスクリプション ID は **[詳細な注文データ]** セクションに 00000000-0000-0000-0000-000000000000 という形式で表示されます。
 - 保護された顧客が注文を行った場合、 **[Orders Detailed Data]\(注文の詳細データ\)** 内の情報はマスクされます (************)。
 
 **_表 1: データ用語の辞書_* _
 
 | 列名 | 属性名 | 定義 |
 | ------------ | ------------- | ------------- |
-| Marketplace サブスクリプション ID | Marketplace サブスクリプション ID | 顧客がコマーシャル マーケットプレース オファーを購入するときに使用した Azure サブスクリプションに関連付けられている一意識別子。 ID は以前は Azure サブスクリプション GUID でした。 |
+| Marketplace サブスクリプション ID | Marketplace サブスクリプション ID | 顧客がコマーシャル マーケットプレース オファーを購入するときに使用した Azure サブスクリプションに関連付けられている一意識別子。 インフラストラクチャ オファーの場合、これは顧客の Azure サブスクリプション GUID です。 SaaS オファーでは、SaaS の購入に Azure サブスクリプションが必要ないため、これはゼロとして表示されます。 |
 | MonthStartDate | 月の開始日 | 月の開始日は、購入の月を表します。 |
 | プランの種類 | プランの種類 | コマーシャル マーケットプレース オファリングの種類。 |
 | Azure ライセンスの種類 | Azure ライセンスの種類 | Azure を購入した顧客が使用するライセンス契約の種類。 チャネルとも呼ばれます。 設定できる値は次のとおりです。<ul><li>クラウド ソリューション プロバイダー</li><li>エンタープライズ</li><li>リセラーを通じたエンタープライズ</li><li>従量課金制</li></ul> |

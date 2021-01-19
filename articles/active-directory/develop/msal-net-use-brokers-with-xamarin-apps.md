@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 7fa13a328a55b0e9eaa546e70bf0711f4f011cf1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 73fbda9a3356e2877617391430a7f2b555b1a0e5
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173432"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063486"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Xamarin アプリケーションで Microsoft Authenticator または Intune ポータル サイトを使用する
 
@@ -183,7 +183,7 @@ public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
 
 **リダイレクト URI を生成するには:**
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
 1. **[Azure Active Directory]**  >  **[アプリの登録]** を選択し、登録したアプリを選択します
 1. **[認証]**  >  **[プラットフォームを追加]**  >  **[iOS/macOS]** を選択します
 1. バンドル ID を入力した後、 **[構成]** を選択します。

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: c1d448fe9da72654ac1600009e66c88c5e7b93b4
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 5f2560cdc062edb41ecda935eb9b8efe630949dc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509429"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015948"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>チュートリアル:Microsoft ID プラットフォームを使用したマルチテナント デーモンを作成する
 
@@ -93,7 +93,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 ### <a name="choose-the-azure-ad-tenant"></a>Azure AD テナントを選択する
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 
 
@@ -203,7 +203,7 @@ Visual Studio でソリューションを開いて、プロジェクトを構成
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>dotnet-web-daemon-v2 を作成し、Azure Web サイトに発行する
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
 1. 左上隅にある **[リソースの作成]** を選びます。
 1. **[Web]**  >  **[Web アプリ]** の順に選択し、Web サイトに名前を付けます。 たとえば、**dotnet-web-daemon-v2-contoso.azurewebsites.net** という名前を付けます。
 1. **サブスクリプション**、**リソース グループ**、**アプリ サービスのプランと場所** に関する情報を選択します。 **[OS]** は **[Windows]** 、 **[発行]** は **[コード]** とします。
@@ -224,7 +224,7 @@ Visual Studio によってプロジェクトが発行され、ブラウザーで
 
 ### <a name="update-the-azure-ad-tenant-application-registration-for-dotnet-web-daemon-v2"></a>dotnet-web-daemon-v2 用に Azure AD テナント アプリケーションの登録を更新する
 
-1. [Azure Portal](https://portal.azure.com) に戻ります。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> に戻ります。
 1. 左側のペインで、 **[Azure Active Directory]** サービス、 **[アプリの登録]** の順に選択します。
 1. **dotnet-web-daemon-v2** アプリケーションを選択します。
 1. アプリケーションの **[認証]** ページで、 **[ログアウト URL]** フィールドをサービスのアドレスに更新します。 たとえば、 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`を使用します。

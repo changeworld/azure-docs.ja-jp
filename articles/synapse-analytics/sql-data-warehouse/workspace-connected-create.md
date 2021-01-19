@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/25/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: a1fbc6eede6c82020b765185602c672c1162fdf8
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 769ca4cf0ecbdba5fd80d977eb69c8a4f58df55f
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548190"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071189"
 ---
 # <a name="enabling-synapse-workspace-features-for-a-dedicated-sql-pool-formerly-sql-dw"></a>専用 SQL プール (以前の SQL DW) 上で Synapse ワークスペース機能を有効にする
 
@@ -57,6 +57,9 @@ SQL データ ウェアハウスのすべてのユーザーが、Synapse Studio 
 4. 論理サーバー上でホストされている専用 SQL プール (以前の SQL DW) インスタンスのいずれかを選択します。 [概要] ページで、 **[Synapse Studio の起動]** を選択するか、または [[Synapse Studio にサインイン]](https://web.azuresynapse.net) にアクセスして、使用するワークスペースにサインインします。
 
 5. **[データ ハブ]** を開き、オブジェクト エクスプローラーで専用 SQL プールを展開します。これにより、データ ウェアハウスにアクセスしていてクエリを確実に実行できます。
+
+    > [!NOTE] 
+    > 接続済みワークスペースはいつでも削除できます。 ワークスペースを削除しても、接続されている専用 SQL プール (以前の SQL DW) は削除されません。 削除操作が完了したら、専用 SQL プール (以前の SQL DW) でワークスペース機能を再有効化できます。
 
 ## <a name="next-steps"></a>次のステップ
 [Synapse ワークスペースと Studio](../get-started.md) の概要。

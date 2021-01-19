@@ -3,12 +3,12 @@ title: Azure Kubernetes Service (AKS) についてよく寄せられる質問
 description: Azure Kubernetes Service (AKS) についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 94cbaf417413b3e11071fb8c7237cbb3ac7b9a37
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 7fc348ae7b3edb79e75aa1acd08941fec447da6f
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780350"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127636"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -146,7 +146,7 @@ AKS エージェント ノードは、標準の Azure 仮想マシンとして�
 
 サブスクリプション間でのクラスターの移動は現在サポートされていません。
 
-## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>AKS クラスターを現在の Azure サブスクリプションから別のサブスクリプションへ移動することはできますか? 
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>AKS クラスターを現在の Azure サブスクリプションから別のサブスクリプションへ移動することはできますか?
 
 Azure サブスクリプション間での AKS クラスターおよびその関連リソースの移動はサポートされていません。
 
@@ -154,7 +154,7 @@ Azure サブスクリプション間での AKS クラスターおよびその関
 
 AKS クラスターやその関連リソースの移動と名前変更はサポートされていません。
 
-## <a name="why-is-my-cluster-delete-taking-so-long"></a>クラスターの削除に時間がかかるのはなぜですか? 
+## <a name="why-is-my-cluster-delete-taking-so-long"></a>クラスターの削除に時間がかかるのはなぜですか?
 
 ほとんどのクラスターはユーザーの要求に応じて削除されます。場合によっては、特に顧客が独自のリソース グループを持ち込んでいたり、リソース グループ間のタスクの削除を行っている場合に、さらに時間がかかったり、失敗することがあります。 削除に関する問題が発生した場合は、リソース グループをロックしていないこと、リソース グループ外のリソースのリソース グループとの関連付けが解除されていることなどを再確認してください。
 
@@ -166,7 +166,7 @@ AKS クラスターやその関連リソースの移動と名前変更はサポ�
 
 いいえ。エラー状態や、それ以外にクラスターから取り除かれているノードはすべて、アップグレード前に削除または除去してください。
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>クラスターの削除を実行しましたが、`[Errno 11001] getaddrinfo failed` のエラーが表示されます 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>クラスターの削除を実行しましたが、`[Errno 11001] getaddrinfo failed` のエラーが表示されます
 
 最も一般的な原因は、まだ使用中でクラスターに関連付けられている 1 つ以上のネットワーク セキュリティ グループ (NSG) をユーザーが保持していることです。  これらを取り除いてから、もう一度削除を試してください。
 
@@ -174,7 +174,7 @@ AKS クラスターやその関連リソースの移動と名前変更はサポ�
 
 サービス プリンシパルの有効期限が切れていないことを確認してください。  参照:[AKS サービス プリンシパル](./kubernetes-service-principal.md)と [AKS の資格情報の更新](./update-credentials.md)に関するページを参照してください。
 
-## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>クラスターは動作していましたが、突然、LoadBalancers のプロビジョニングや PVC のマウントなどができなくなりました。 
+## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>クラスターは動作していましたが、突然、LoadBalancers のプロビジョニングや PVC のマウントなどができなくなりました。
 
 サービス プリンシパルの有効期限が切れていないことを確認してください。  参照:[AKS サービス プリンシパル](./kubernetes-service-principal.md)と [AKS の資格情報の更新](./update-credentials.md)に関するページを参照してください。
 
@@ -254,6 +254,25 @@ root@k8s-agentpool1-20465682-1:/#
 - ブリッジ モードでのやっかいなケースの 1 つは、ユーザーが VNET または NIC に追加するカスタム DNS サーバーの一覧を Azure CNI で更新し続けることができないことです。 この結果、CNI は DNS サーバーの一覧の最初のインスタンスのみを取得します。 透過モードでは解決されました。どの eth0 プロパティも CNI で変更されないためです。 詳細については、[こちら](https://github.com/Azure/azure-container-networking/issues/713)を参照してください。
 - ARP がタイムアウトになったときに、UDP トラフィックをより適切に処理し、UDP フラッド ストームの軽減策を提供します。ブリッジ モードでは、ブリッジが VM 内ポッド間通信で送信先ポッドの MAC アドレスを認識しない場合、設計上、すべてのポートに大量のパケットが送信されます。 透過モードでは解決されました。パスに L2 デバイスがないためです。 詳細については、[こちら](https://github.com/Azure/azure-container-networking/issues/704)を参照してください。
 - 透過モードは、ブリッジ モードと比較した場合、スループットと待機時間の観点から VM 内ポッド間通信においてより優れたパフォーマンスを提供します。
+
+## <a name="how-to-avoid-permission-ownership-setting-slow-issues-when-the-volume-has-a-lot-of-files"></a>ボリュームに大量のファイルがある場合に、権限の所有権の設定による低速化の問題を回避するには、どのようにしますか?
+
+従来、ポッドが root 以外のユーザーとして実行される場合 (この場合)、ポッドによるボリュームの読み取りと書き込みを可能にするために、ポッドのセキュリティ コンテキスト内で `fsGroup` を指定する必要があります。 この要件の詳細については、[こちら](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)を参照してください。
+
+しかし、`fsGroup` を設定することの副作用の 1 つとして、ボリュームがマウントされるたびに、Kubernetes では、下に示すいくつかの例外を除き、ボリューム内のすべてのファイルとディレクトリに対して `chown()` と `chmod()` を再帰的に実行する必要があるということがあります。 これは、ボリュームのグループ所有権が要求した `fsGroup` と既に一致している場合でも発生し、小さいファイルが多数ある大容量のボリュームでは、ポッドの起動時間が長くなり、コストが非常に高くなる可能性があります。 このシナリオは v1.20 より前の既知の問題であり、回避策はポッドが root として実行されるように設定することです。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 0
+    fsGroup: 0
+```
+
+この問題は Kubernetes v1.20 で解決されました。詳細については、[Kubernetes 1.20:ボリュームの権限変更の詳細制御](https://kubernetes.io/blog/2020/12/14/kubernetes-release-1.20-fsgroupchangepolicy-fsgrouppolicy/)に関するページを参照してください。
 
 
 <!-- LINKS - internal -->

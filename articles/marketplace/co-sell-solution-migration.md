@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/07/2020
-ms.openlocfilehash: 6ad58283ad9078088f241a67426657eb7a538e10
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 0114c75d99d79041631e5078deb33f77863dc35a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781132"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043780"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>OCP GTM からコマーシャル マーケットプレースへの共同販売ソリューションの移行
 
@@ -45,7 +45,7 @@ Microsoft Partner Network のアクティブなメンバーシップを持って
 ソリューションを OCP GTM からインポートする前に、こちらの手順を実行してください。
 
 1. 会社の[発行元リスト](https://partner.microsoft.com/dashboard/account/v3/publishers/list)にアクセスします。 これには、発行アクセス権を持つアカウント所有者、マネージャー、および開発者が含まれています。 パートナー センターのユーザー ロールの詳細については、[こちら](/azure/marketplace/partner-center-portal/manage-account#define-user-roles-and-permissions)を参照してください。
-2. リストに記載されているいずれかの連絡先に連絡し、"*マネージャー*" または "*開発者*" としてコマーシャル マーケットプレースに[ユーザーを追加](https://partner.microsoft.com/dashboard/account/usermanagement)するように依頼します。これは、ソリューションを編集したり発行したりできるのはこれらのロールだけだからです。
+2. リストに記載されているいずれかの連絡先に連絡し、"*マネージャー*" または "*開発者*" としてコマーシャル マーケットプレースに [ユーザーを追加](https://partner.microsoft.com/dashboard/account/usermanagement)するように依頼します。これは、ソリューションを編集したり発行したりできるのはこれらのロールだけだからです。
 3. 開発者と協力して、ソリューションを OCP GTM アカウントからコマーシャル マーケットプレースに移動します。
 4. 次のうちどれを実行するかを決定します。
     1. このソリューションを、コマーシャル マーケットプレースにある同様のオファーにマージする。
@@ -96,7 +96,7 @@ Microsoft Partner Network のアクティブなメンバーシップを持って
 
     [![移行プロセスの [アクション 1] タブ。](media/co-sell-migrate/action-1-migrate.png)](media/co-sell-migrate/action-1-migrate.png#lightbox)
 
-1. **[アクション 2]** タブで、表示された一覧から[発行元プロファイル](partner-center-portal/create-account.md)を選択します。 発行元アカウントがない場合は、[パートナー センター](https://partner.microsoft.com/solutions/migration)で作成し、こちらで選択します。
+1. **[アクション 2]** タブで、表示された一覧から [発行元プロファイル](partner-center-portal/create-account.md)を選択します。 発行元アカウントがない場合は、[パートナー センター](https://partner.microsoft.com/solutions/migration)で作成し、こちらで選択します。
 
     [![移行プロセスの [アクション 2] タブ。](media/co-sell-migrate/action-2-migrate.png)](media/co-sell-migrate/action-2-migrate.png#lightbox)
 
@@ -136,7 +136,7 @@ OCP GTM ソリューション内のソリューションがもう関連しなく
 
     :::image type="content" source="media/co-sell-migrate/offer-setup.png" alt-text="パートナー センター内にあるオファーの概要設定のタブ。":::
 
-3. Microsoft 販売者向けの詳細情報の一部が、OCP GTM ソリューションからコピーされました。 **[Microsoft との共同販売]** タブで残りの必要情報を入力して、オファーを共同販売できるようにします。 完了したら、 **[レビューと公開]** を選択します。
+3. Microsoft 販売者向けの詳細情報の一部が、OCP GTM ソリューションからコピーされました。 **[Microsoft との共同販売]** タブで残りの必要情報を入力して、オファーを共同販売できるようにします。 完了したら、 **[レビューと公開]** を選択します。 詳細については、「[パートナー センターで共同販売資料を送信する方法](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)」を参照してください。
 
     :::image type="content" source="media/co-sell-migrate/co-sell-page.png" alt-text="パートナー センター内にあるオファーの共同販売のタブ。":::
 
@@ -154,4 +154,6 @@ OCP GTM ソリューション内のソリューションがもう関連しなく
 ## <a name="next-steps"></a>次のステップ
 
 - [CSP パートナーによる再販](cloud-solution-providers.md)
+- [パートナー センターで共同販売資料を送信する方法](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)
 - これらの [FAQ](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) (PDF) を表示する
+

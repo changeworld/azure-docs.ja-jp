@@ -3,12 +3,12 @@ title: 空間分析用の Computer Vision でライブ ビデオを分析する 
 description: このチュートリアルでは、Live Video Analytics を Azure Cognitive Services の Computer Vision 空間分析 AI 機能と共に使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5cebedec11b91f5b0b94df25a860da3d517bb997
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 5b979bfeb6961b285cfeb2287888d8f157608d96
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400516"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060182"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>空間分析用の Computer Vision でライブ ビデオを分析する (プレビュー)
 
@@ -166,7 +166,7 @@ spatial-analysis コンテナーなど、すべての Cognitive Services のコ�
 マニフェストをテンプレート ファイルから生成して、エッジ デバイスにデプロイするには、これらの手順に従います。
 
 1. Visual Studio Code を開きます。
-1. [Azure IoT Hub] ペインの横にある [その他のアクション] アイコンを選択して、IoT Hub 接続文字列を設定します。 この文字列は、src/cloud-to-device-console-app/appsettings.json ファイルからコピーすることができます。
+1. [Azure IoT Hub] ペインの横にある [その他のアクション] アイコンを選択して、IoT Hub 接続文字列を設定します。 この文字列は、`src/cloud-to-device-console-app/appsettings.json` ファイルからコピーできます。
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="空間分析: 接続文字列":::
@@ -222,13 +222,13 @@ src/cloud-to-device-console-app/operations.json のダイレクト メソッド�
 
 operations.json で、次のようにします。
 
-* 次のようなトポロジを設定します (ローカル トポロジの場合は topologyFile、オンライン トポロジの場合は topologyUrl)。
+* 次のようにトポロジを設定します。
 
 ```json
 {
     "opName": "GraphTopologySet",
     "opParams": {
-        "topologyFile": "../edge/spatialAnalysisTopology.json"
+        "topologyUrl": "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/2.0/topology.json"
     }
 },
 ```
@@ -261,17 +261,6 @@ operations.json で、次のようにします。
     }
 },
 ```
-* グラフ トポロジへのリンクを変更します。
-
-`topologyUrl` : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/topology.json"
-
-**GraphInstanceSet** で、前のリンクの値と一致するようにグラフ トポロジの名前を編集します。
-
-`topologyName`: InferencingWithCVExtension
-
-**GraphTopologyDelete** で、名前を編集します。
-
-`name`: InferencingWithCVExtension
 
 >[!Note]
 MediaGraphRealTimeComputerVisionExtension を使用した spatial-analysis モジュールとの接続を確認します。 ${grpcUrl} を **tcp://spatialAnalysis:<PORT_NUMBER>** に設定します (例: tcp://spatialAnalysis:50051)。
@@ -281,40 +270,51 @@ MediaGraphRealTimeComputerVisionExtension を使用した spatial-analysis モ�
     "@type": "#Microsoft.Media.MediaGraphCognitiveServicesVisionExtension",
     "name": "computerVisionExtension",
     "endpoint": {
-    "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
-    "url": "${grpcUrl}",
-    "credentials": {
-        "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
-        "username": "${spatialanalysisusername}",
-        "password": "${spatialanalysispassword}"
-    }
+        "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
+        "url": "${grpcUrl}",
+        "credentials": {
+            "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
+            "username": "${spatialanalysisusername}",
+            "password": "${spatialanalysispassword}"
+        }
     },
     "image": {
-    "scale": {
-        "mode": "pad",
-        "width": "1408",
-        "height": "786"
+        "scale": {
+            "mode": "pad",
+            "width": "1408",
+            "height": "786"
+        },
+        "format": {
+            "@type": "#Microsoft.Media.MediaGraphImageFormatRaw",
+            "pixelFormat": "bgr24"
+        }
     },
-    "format": {
-        "@type": "#Microsoft.Media.MediaGraphImageFormatRaw",
-        "pixelFormat": "bgr24"
-    }
+    "samplingOptions": {
+        "skipSamplesWithoutAnnotation": "false",
+        "maximumSamplesPerSecond": "20"
     },
     "inputs": [
-    {
-        "nodeName": "frameRateFilter"
-    }
+        {
+            "nodeName": "rtspSource",
+            "outputSelectors": [
+                {
+                    "property": "mediaType",
+                    "operator": "is",
+                    "value": "video"
+                }
+            ]
+        }
     ]
 }
 ```
 
-デバッグ セッションを実行し、ターミナルの指示に従って、トポロジの設定、グラフ インスタンスの設定、グラフ インスタンスのアクティブ化を行い、最後にリソースの削除を行います。
+デバッグ セッションを実行し、**ターミナル** の指示に従って、トポロジの設定、グラフ インスタンスの設定、グラフ インスタンスのアクティブ化を行い、最後にリソースの削除を行います。
 
 ## <a name="interpret-results"></a>結果を解釈する
 
 メディア グラフのインスタンスが作成されると、"MediaSessionEstablished" イベントが表示されます。ここでは、[サンプルの MediaSessionEstablished イベント](detect-motion-emit-events-quickstart.md#mediasessionestablished-event)です。
 
-また、spatial-analysis モジュールは、AI 分析情報イベントを Live Video Analytics に送信した後、IoTHub に送信し、出力にも表示します。 ENTITY は検出オブジェクトであり、EVENT はスペース分析イベントです。 この出力は、Live Video Analytics に渡されます。
+また、spatial-analysis モジュールは、AI 分析情報イベントを Live Video Analytics に送信した後、IoTHub に送信し、**出力** にも表示します。 ENTITY は検出オブジェクトであり、EVENT はスペース分析イベントです。 この出力は、Live Video Analytics に渡されます。
 
 personZoneEvent のサンプル出力 (cognitiveservices.vision.spatialanalysis-personcrossingpolygon.livevideoanalytics 操作から):
 

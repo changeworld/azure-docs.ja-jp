@@ -11,12 +11,12 @@ ms.devlang: na
 ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7eda805a5fdf24a7a55b9296a0f0a1c9a5bfc576
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 36fb54b4b6521d87c7461936c84a644bf22f7e31
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683495"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963965"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>チュートリアル:デプロイ スクリプトを使用して自己署名証明書を作成する
 
@@ -329,13 +329,13 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
 
     ![Resource Manager テンプレートのデプロイ スクリプト リソース](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
 
-    どちらのファイルにも **azscripts** というサフィックスが付いています。 1 つはストレージ アカウントで、もう 1 つはコンテナー インスタンスです。
+    どちらのファイルにも _azscripts_ というサフィックスが付いています。 1 つはストレージ アカウントで、もう 1 つはコンテナー インスタンスです。
 
     **[非表示の型の表示]** を選択して、`deploymentScripts` リソースの一覧を表示します。
 
-1. **azscripts** サフィックスの付いたストレージ アカウントを選択します。
-1. **[ファイル共有]** タイルを選択します。 **azscripts** フォルダーが表示されます。 そのフォルダーには、デプロイ スクリプトの実行ファイルが含まれています。
-1. **azscripts** を選択します。 **azscriptinput** および **azscriptoutput** という 2 つのフォルダーが表示されます。 入力フォルダーには、システム用 PowerShell スクリプト ファイルとユーザー用デプロイ スクリプト ファイルが含まれています。 出力フォルダーには、_executionresult.json_ とスクリプトの出力ファイルが含まれています。 エラー メッセージは、_executionresult.json_ で確認できます。 実行が失敗したため、出力ファイルはありません。
+1. _azscripts_ サフィックスの付いたストレージ アカウントを選択します。
+1. **[ファイル共有]** タイルを選択します。 デプロイ スクリプトの実行ファイルが格納される _azscripts_ フォルダーが表示されます。
+1. _azscripts_ を選択します。 _azscriptinput_ および _azscriptoutput_ という 2 つのフォルダーが表示されます。 入力フォルダーには、システム用 PowerShell スクリプト ファイルとユーザー用デプロイ スクリプト ファイルが含まれています。 出力フォルダーには、_executionresult.json_ とスクリプトの出力ファイルが含まれています。 エラー メッセージは、_executionresult.json_ で確認できます。 実行が失敗したため、出力ファイルはありません。
 
 `Write-Output1` の行を削除して、テンプレートを再デプロイします。
 

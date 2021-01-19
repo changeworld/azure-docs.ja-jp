@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 8b9f1180639f638e72fdea2f87958628a2e9e86b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d172ce98ba93360c621a91fb0e2a55d022470943
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891459"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935562"
 ---
 # <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイス上の GPU でモジュールを構成して実行する
 
@@ -30,45 +30,58 @@ Azure Stack Edge Pro デバイスには、1 つ以上のグラフィックス処
 
 ## <a name="configure-module-to-use-gpu"></a>GPU を使用するようにモジュールを構成する
 
-Azure Stack Edge Pro デバイス上の GPU を使用するようにモジュールを構成して、モジュールを実行するには、次の手順に従います。
+Azure Stack Edge Pro デバイス上の GPU を使用するようにモジュールを構成して、モジュールを実行するには、<!--Can it be simplified? "To configure a module to be run by the GPU on your Azure Stack Edge Pro device,"?--> 次の手順に従います。
 
-1. Azure portal で、デバイスに関連付けられているリソースに移動します。 
+1. Azure portal で、デバイスに関連付けられているリソースに移動します。
 
-2. **[Edge コンピューティング]、[開始]** の順に移動します。 **[Edge コンピューティングの構成]** タイルで、[構成] を選択します。
+2. **[概要]** で、 **[IoT Edge]** を選択します。
 
     ![GPU を使用するようにモジュールを構成する 1](media/azure-stack-edge-j-series-configure-gpu-modules/configure-compute-1.png)
 
-3. **[Edge コンピューティングの構成]** ブレードで以下を行います。
+3. **[IoT Edge サービスを有効にする]** の **[追加]** を選択します。
 
-    1. **[IoT Hub]** には、 **[新規作成]** を選択します。
-    2. そのデバイス用に作成する IoT Hub リソースの名前を指定します。 Free レベルを使用するには、既存のリソースを選択します。 
-    3. その IoT Hub リソースで作成される IoT Edge デバイスと IoT ゲートウェイ デバイスをメモしておきます。 後の手順でこの情報を使用することになります。
+   ![GPU を使用するようにモジュールを構成する 2](media/azure-stack-edge-j-series-configure-gpu-modules/configure-compute-2.png)
 
-    ![GPU を使用するようにモジュールを構成する 2](media/azure-stack-edge-j-series-configure-gpu-modules/configure-compute-2.png)
+4. **[IoT Edge サービスの作成]** に、自分の IoT Hub リソースの設定を入力します。
 
-4. IoT Hub リソースの作成には数分かかります。 リソースが作成されたら、 **[Edge コンピューティングの構成]** タイルで **[構成の表示]** を選択し、IoT Hub リソースの詳細を表示します。
+   |フィールド   |値    |
+   |--------|---------|
+   |サブスクリプション      | Azure Stack Edge リソースによって使用されるサブスクリプション。 |
+   |Resource group    | Azure Stack Edge リソースによって使用されるリソース グループ。 |
+   |IoT Hub           | **[新規作成]** または **[既存のデータを使用する]** を選択します。 <br> 既定では、IoT リソースの作成には Standard レベル (S1) が使用されます。 Free レベルの IoT リソースを使用するには、それを作成してから既存のリソースを選択します。 <br> いずれの場合も、IoT Hub リソースでは、Azure Stack Edge リソースによって使用されるのと同じサブスクリプションとリソース グループが使用されます。     |
+   |名前              | 新しい IoT Hub リソースに既定の名前を使用したくない場合は、別の名前を入力します。 |
 
-    ![GPU を使用するようにモジュールを構成する 4](media/azure-stack-edge-j-series-configure-gpu-modules/configure-compute-4.png)
+   設定が完了したら、 **[確認および作成]** を選択します。 IoT Hub リソースの設定を確認し、 **[作成]** を選択します。
 
-5. **[デバイスの自動管理] > [IoT Edge]** の順に移動します。
+   ![コンピューティングの開始 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
-    ![GPU を使用するようにモジュールを構成する 6](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-2.png)
+   IoT Hub リソースの作成には数分かかります。 リソースの作成後、IoT Edge サービスが実行中であることが **[概要]** に示されます。
 
-    右側のウィンドウに、Azure Stack Edge Pro デバイスに関連付けられている IoT Edge デバイスが表示されます。 これは、前の手順で IoT Hub リソースを作成するときに作成した IoT Edge デバイスに対応しています。 
-    
-6. この IoT Edge デバイスを選択します。
+   ![コンピューティングの開始 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
+
+5. Edge コンピューティング ロールが構成されたことを確認するには、 **[プロパティ]** を選択します。
+
+   ![コンピューティングの開始 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+
+6. **[プロパティ]** で、 **[IoT Edge デバイス]** のリンクを選択します。
+
+   ![GPU を使用するようにモジュールを構成する 6](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-2.png)
+
+   右側のウィンドウに、Azure Stack Edge Pro デバイスに関連付けられている IoT Edge デバイスが表示されます。 このデバイスは、IoT Hub リソースを作成するときに作成した IoT Edge デバイスに対応しています。
+ 
+7. この IoT Edge デバイスを選択します。
 
    ![GPU を使用するようにモジュールを構成する 7](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-3.png)
 
-7.  **[Set modules]\(モジュールの設定\)** を選びます。
+8. **[Set modules]\(モジュールの設定\)** を選びます。
 
-    ![GPU を使用するようにモジュールを構成する 8](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-4.png)
+   ![GPU を使用するようにモジュールを構成する 8](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-4.png)
 
-8. **[+ 追加]** を選択し、 **[+ IoT Edge モジュール]** を選択します。 
+9. **[+ 追加]** を選択し、 **[+ IoT Edge モジュール]** を選択します。 
 
     ![GPU を使用するようにモジュールを構成する 9](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-5.png)
 
-9. **[IoT Edge モジュールを追加する]** タブで以下を行います。
+10. **[IoT Edge モジュールを追加する]** タブで以下を行います。
 
     1. **[イメージの URI]** を指定します。 ここでは、一般公開されている Nvidia モジュールの **Digits** を使用します。 
     
@@ -78,32 +91,32 @@ Azure Stack Edge Pro デバイス上の GPU を使用するようにモジュー
     
     ![GPU を使用するようにモジュールを構成する 10](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-6.png)
 
-10. **[環境変数]** タブで、変数の名前と対応する値を指定します。 
+11. **[環境変数]** タブで、変数の名前と対応する値を指定します。 
 
     1. 現在のモジュールがこのデバイス上の GPU の 1 つを使用するようにするため、NVIDIA_VISIBLE_DEVICES を使用します。 
 
-    2. 値を 0 または 1 に設定します。 これにより、少なくとも 1 つの GPU がこのモジュールのためにデバイスによって使用されます。 値を「0, 1」に設定すると、デバイス上の両方の GPU がこのモジュールによって使用されていることを意味します。
+    2. 値を 0 または 1 に設定します。 0 または 1 の値により、少なくとも 1 つの GPU がこのモジュールのためにデバイスによって使用されます。 値を「0, 1」に設定すると、デバイス上の両方の GPU がこのモジュールによって使用されていることを意味します。
 
-        ![GPU を使用するようにモジュールを構成する 11](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-7.png)
+       ![GPU を使用するようにモジュールを構成する 11](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-7.png)
 
-        Nvidia GPU で使用できる環境変数の詳細については、[nVidia コンテナー ランタイム](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec)に関するセクションを参照してください。
+       Nvidia GPU で使用できる環境変数の詳細については、[nVidia コンテナー ランタイム](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec)に関するセクションを参照してください。
 
     > [!NOTE]
-    > GPU は 1 つのモジュールにのみマップできます。 ただし、モジュールは、1 つの GPU を使用することも両方の GPU を使用することもできますし、GPU を使用しないこともできます。 
+    > GPU は 1 つのモジュールにのみマップできます。 ただし、モジュールは、1 つの GPU を使用することも両方の GPU を使用することもできますし、GPU を使用しないこともできます。
 
-11. モジュールの名前を入力します。 ここで、コンテナーの作成オプションを指定したり、モジュール ツインの設定を変更したりするように選択できます。完了したら、 **[追加]** を選択します。 
+12. モジュールの名前を入力します。 ここで、コンテナーの作成オプションを指定したり、モジュール ツインの設定を変更したりするように選択できます。完了したら、 **[追加]** を選択します。 
 
     ![GPU を使用するようにモジュールを構成する 12](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-8.png)
 
-12. モジュールが実行されていることを確認し、 **[確認および作成]** を選択します。    
+13. モジュールが実行されていることを確認し、 **[確認および作成]** を選択します。
 
     ![GPU を使用するようにモジュールを構成する 13](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-9.png)
 
-13. **[確認および作成]** タブに、選択したデプロイ オプションが表示されます。 オプションを確認し、 **[作成]** を選択します。
+14. **[確認および作成]** タブに、選択したデプロイ オプションが表示されます。 オプションを確認し、 **[作成]** を選択します。
     
     ![GPU を使用するようにモジュールを構成する 14](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-10.png)
 
-14. モジュールの **[ランタイムの状態]** をメモします。 
+15. モジュールの **[ランタイムの状態]** をメモします。
     
     ![GPU を使用するようにモジュールを構成する 15](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-11.png)
 

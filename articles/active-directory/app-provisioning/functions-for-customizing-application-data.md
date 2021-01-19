@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: fe18513bbfc69fb63f8b1b248b7cf02ad55b467d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 462f60bbae9fd7b61993a2ccccd40fa5ca4ccc28
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027375"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012969"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Azure AD で属性マッピングの式を記述するためのリファレンス
 
@@ -327,7 +327,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 | **インデックス** |必須 |Integer | 複数値の文字列内の項目のインデックス|
 
 **例:** 
-`Item([proxyAddresses], 1)`
+`Item([proxyAddresses], 1)` は、複数値属性の 2 番目の項目を返します。
 
 ---
 ### <a name="join"></a>Join

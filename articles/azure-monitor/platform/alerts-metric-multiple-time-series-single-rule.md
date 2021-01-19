@@ -4,14 +4,14 @@ description: 複数の時系列に対して 1 つのアラート ルールを使
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 66987a28acc8a2c9ae71d89ff5760fa508e32963
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 47a2fb9240f6826ed862f7a857264c09b79de9bc
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566505"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071087"
 ---
 # <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>1 つのメトリック アラート ルールで複数の時系列を監視する
 
@@ -162,7 +162,7 @@ ms.locfileid: "94566505"
 
 1.  **現在および将来のすべての次元の選択** – 将来の値を含め、次元の使用できるすべての値を監視するように選択できます。 このようなアラート ルールは、次元値が追加または削除されるたびにアラート ルールを変更することなく、次元のすべての値を監視するために自動的にスケーリングされます。
 2.  **次元の除外** – 次元値に対して '≠' (除外) 演算子を選択することは、将来の値を含め、その次元の他のすべての値を選択することと同じです。
-3.  **新規およびカスタム次元** – Azure portal に表示される次元値は、過去 3 日間に収集されたメトリック データに基づいています。 探している次元値がまだ生成されていない場合は、カスタム次元値を追加できます。
+3.  **新規およびカスタム次元** – Azure portal に表示される次元値は、過去 1 日間に収集されたメトリック データに基づいています。 探している次元値がまだ生成されていない場合は、カスタム次元値を追加できます。
 4. **プレフィックスとディメンションの照合** -'Starts with' 演算子を選択してカスタム プレフィックスを入力することにより、特定のパターンで始まるすべてのディメンション値を監視することができます。
 
 ![高度な多次元機能](media/alerts-metric-multiple-time-series-single-rule/advanced-features.png)

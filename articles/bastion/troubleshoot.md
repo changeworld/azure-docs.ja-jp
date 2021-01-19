@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: d4f5d4b7fed8f14f048794616ee272342d1e8343
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 23b7a66afcc91cf1cf4a5dd9f720aad24ad40071
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915557"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133992"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion のトラブルシューティング
 
@@ -22,11 +22,7 @@ ms.locfileid: "97915557"
 
 **質問:** Azure Bastion サブネット上で NSG を作成しようとすると、次のエラーを受け取ります。 *"Network security group <NSG name> does not have necessary rules for Azure Bastion Subnet AzureBastionSubnet" (ネットワーク セキュリティ グループには Azure Bastion Subnet AzureBastionSubnet に必要な規則がありません)* 。
 
-**A:** NSG を作成して *AzureBastionSubnet* に適用する場合は、NSG に次の規則を追加済みであることを確認してください。 これらの規則を追加しないと、NSG の作成/更新は失敗します。
-
-1. コントロール プレーンの接続 - GatewayManager からの 443 での受信
-2. 診断ログなど - 443 での AzureCloud への送信 (このサービス タグ内のリージョン タグはまだサポートされていません)。
-3. ターゲット VM - 3389 および 22 での VirtualNetwork への送信
+**A:** NSG を作成して *AzureBastionSubnet* に適用する場合は、NSG に必要な規則を追加済みであることを確認してください。 必要な規則の一覧については、「[NSG アクセスと Azure Bastion を使用する](./bastion-nsg.md)」を参照してください。 これらの規則を追加しないと、NSG の作成/更新は失敗します。
 
 NSG 規則の例については、[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)を参照してください。
 詳細については、[Azure Bastion の NSG のガイダンス](bastion-nsg.md)に関する記事を参照してください。

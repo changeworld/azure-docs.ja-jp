@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/11/2020
 ms.author: juliako
-ms.openlocfilehash: b327facc2ac9ad64cf5237ecddc3e4024f75daa6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b5a228c12cfc874673dda854de6d4dcc25f28c1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052139"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014537"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Azure Media Services Video Indexer とは
 
@@ -76,7 +76,7 @@ Video Indexer の分析情報は、次のような多くのシナリオに適用
 
 * **音声の文字起こし**:12 の言語で音声をテキストに変換します。拡張機能を使用できます。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (北京)、日本語、アラビア語、ロシア語、ポルトガル語、ヒンディー語、韓国語などの言語がサポートされています。
 * **自動言語検出**:主な音声言語を自動的に識別します。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (北京)、日本語、ロシア語、ポルトガル語などの言語がサポートされています。 言語を確実に識別できない場合、Video Indexer では音声言語が英語と想定されます。 詳細については、[言語識別モデル](language-identification-model.md)に関する記事を参照してください。
-* **複数言語の音声識別と文字起こし** (プレビュー):音声から異なるセグメントにある音声言語を自動的に識別します。 書き起こされるようにメディア ファイルの各セグメントを送信した後、文字起こしが 1 つの統合された文字起こしに結合されます。 詳細については、「[複数言語のコンテンツを自動的に識別および文字起こしする](multi-language-identification-transcription.md)」を参照してください。
+* **複数言語の音声識別と文字起こし**: 音声から異なるセグメントにある音声言語を自動的に識別します。 書き起こされるようにメディア ファイルの各セグメントを送信した後、文字起こしが 1 つの統合された文字起こしに結合されます。 詳細については、「[複数言語のコンテンツを自動的に識別および文字起こしする](multi-language-identification-transcription.md)」を参照してください。
 * **字幕**:VTT、TML、SRT という 3 つの形式で字幕を作成します。
 * **2 チャネル処理**:個別のトランスクリプトを自動検出し、1 つのタイムラインに結合します。
 * **ノイズリダクション**:(Skype フィルターに基づいて) テレフォニー音声やノイズの多い録音を明瞭にします。

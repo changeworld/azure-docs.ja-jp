@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81f4407ee7721332a4143952d1720151bb70d8c9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 61f655d459592022a2e34b87adc50e3d49b03dc9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837540"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935769"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>条件付きアクセス:セキュリティ情報登録のセキュリティ保護
 
@@ -61,7 +61,7 @@ Azure AD Multi-Factor Authentication とセルフサービス パスワード �
 
 > [!WARNING]
 > ポリシー内で条件としてデバイスの状態を使用すると、ディレクトリのゲスト ユーザーに影響を与える可能性があります。 [レポート専用モード](concept-conditional-access-report-only.md)は、ポリシーの決定の影響を判断するのに役立ちます。
-> "ユーザー アクション" を範囲とする CA ポリシーにはレポート専用モードは該当しないことにご留意ください。
+> "ユーザー アクション" を範囲とする条件付きアクセス ポリシーにはレポート専用モードは適用されないことに注意してください。
 
 ## <a name="next-steps"></a>次のステップ
 

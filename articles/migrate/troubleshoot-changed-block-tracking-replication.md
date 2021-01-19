@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: e19c5064dd69538dfc025b0d244baf4fa74706b2
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 33e2bf641b75a5dd360498478f1ea70c7614fb38
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753537"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071376"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>エージェントレスの VMware VM 移行におけるレプリケーションの問題のトラブルシューティング
 
@@ -297,6 +297,24 @@ _エラー メッセージ:An internal error occurred. [Error message] (内部�
 ### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>エラー メッセージ:An internal error occurred. [Memory allocation failed. Out of memory.] (内部エラーが発生しました。[メモリの割り当てが失敗しました。 メモリ不足です。])
 
 これは、NFC ホスト バッファーのメモリが不足している場合に発生します。 この問題を解決するには、空きリソースがある別のホストに VM (コンピューティング vMotion) を移動する必要があります。
+
+## <a name="replication-cycle-failed"></a>レプリケーション サイクルが失敗した
+
+**エラー ID:** 181008
+
+**エラー メッセージ:** VM:"VMName"。 エラー:[No disksnapshots were found for the snapshot replication with snapshot Id :'SnapshotID'.]\(スナップショット ID が "SnapshotID" のスナップショット レプリケーションで、ディスク スナップショットが見つかりません。\)
+
+**考えられる原因:**
+
+次のような原因が考えられます。
+1. ストレージ vMotion が原因で、含まれている 1 つ以上のディスクのパスが変更されています。
+2. 含まれている 1 つ以上のディスクが VM に接続されていません。
+      
+**推奨事項:**
+
+推奨事項を次に示します
+1. ストレージ vMotion を使用して、含まれているディスクを元のパスに復元し、その後ストレージ vMotion を無効にします。
+2. ストレージ vMotion が有効になっている場合は無効にし、仮想マシンのレプリケーションを停止し、その後、仮想マシンをもう一度レプリケートします。 問題が解決しない場合は、サポートにお問い合わせください。
 
 ## <a name="next-steps"></a>次の手順
 

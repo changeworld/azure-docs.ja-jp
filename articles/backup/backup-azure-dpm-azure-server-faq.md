@@ -4,12 +4,12 @@ description: この記事では、Microsoft Azure Backup Server (MABS) と DPM (
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: cd974181c78586f915dad6cc6ed39d9255a1456b
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1663a842b7e00c611543451d4caef96b5b5a913f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172578"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954993"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server と DPM - FAQ
 
@@ -35,7 +35,7 @@ ms.locfileid: "92172578"
 
 ### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>UR7 と最新の Azure Backup エージェントをインストールしましたが、外部 DPM サーバーを追加できません。なぜですか。
 
-ロールアップ 7 以前の更新プログラム ロールアップを利用して、データ ソースがクラウドに保護されている DPM サーバーの場合、UR7 と最新の Azure Backup エージェントをインストールした後、少なくとも 1 日待ってから**外部 DPM サーバーの追加**を開始する必要があります。 1 日の期間は、DPM 保護グループのメタデータを Azure にアップロードするために必要です。 保護グループ メタデータは、夜間ジョブを通じて、1 回目のアップロードが行われます。
+ロールアップ 7 以前の更新プログラム ロールアップを利用して、データ ソースがクラウドに保護されている DPM サーバーの場合、UR7 と最新の Azure Backup エージェントをインストールした後、少なくとも 1 日待ってから **外部 DPM サーバーの追加** を開始する必要があります。 1 日の期間は、DPM 保護グループのメタデータを Azure にアップロードするために必要です。 保護グループ メタデータは、夜間ジョブを通じて、1 回目のアップロードが行われます。
 
 ### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>ウイルス対策ソフトウェアの除外を構成するための推奨事項はありますか。
 
@@ -56,6 +56,10 @@ VMware/Hyper-V を保護するために個別のライセンスは必要あり�
 
 - System Center のお客様は、System Center Data Protection Manager (DPM) を使用して VMware VM を保護できます。
 - System Center のお客様でない場合、VMware VM を保護するには、Azure Backup Server (従量課金制) を使用できます。
+
+### <a name="can-i-restore-a-backup-of-a-hyper-v-or-vmware-vm-stored-in-azure-to-azure-as-an-azure-vm"></a>Azure に格納されている Hyper-V または VMware VM のバックアップを Azure VM として Azure に復元することはできますか?
+
+いいえ、これは現時点ではできません。 オンプレミスのホストにのみ復元できます。
 
 ## <a name="sharepoint"></a>SharePoint
 

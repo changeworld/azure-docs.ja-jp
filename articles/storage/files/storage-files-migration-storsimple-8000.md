@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 1e45c39a8f562ca6264ab631dfadc84315b58030
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 08ed07adbfe0fc4b22d8a3d0afcfc9ab1312dba4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723980"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134349"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 および 8600 から Azure File Sync への移行
 
@@ -441,6 +441,9 @@ Windows Server インスタンスのイベント ビューアーを使用して�
 1. 無効な文字があるため、一部のファイルがデータ変換ジョブによって残されている可能性があります。 その場合は、Azure File Sync が有効になっている Windows Server インスタンスにコピーします。 これらは、後で同期するように調整できます。特定の共有に Azure File Sync を使用していない場合は、StorSimple ボリュームで無効な文字を使用してファイルの名前を変更することをお勧めします。 次に、Azure ファイル共有に対して RoboCopy を直接実行します。
 
 > [!WARNING]
+> Windows Server 2019 の Robocopy では、現在、Robocopy の/MIR 関数を使用すると、ターゲット サーバー上の Azure File Sync によって階層化されたファイルがソースから再コピーされ、Azure に再アップロードされる問題が発生しています。 2019 以外の Windows Server では、Robocopy を使用する必要があります。 Windows Server 2016 を選択することをお勧めします。 このメモは、Windows Update を通じてこの問題が解決されると更新されます。
+
+> [!WARNING]
 > サーバーに Azure ファイル共有の名前空間が完全にダウンロードされる前に、RoboCopy を開始することは "*できません*"。 詳細については、「[名前空間がサーバーに完全に同期されたことを確認する](#determine-when-your-namespace-has-fully-synced-to-your-server)」を参照してください。
 
  移行ジョブが最後に実行されてから変更されたファイルと、前にこれらのジョブで移動されていないファイルをコピーするだけです。 移行が完了した後で、サーバーに移動されなかった問題を解決できます。 詳細については、[Azure File Sync のトラブルシューティング](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)に関する記事を参照してください。
@@ -448,7 +451,7 @@ Windows Server インスタンスのイベント ビューアーを使用して�
 RoboCopy にはいくつかのパラメーターがあります。 以下の例では、完全なコマンドと、これらのパラメーターを選択する理由の一覧を示します。
 
 ```console
-Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /IT /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
 背景:
@@ -499,6 +502,14 @@ Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /COPYALL /DCOPY:DAT <Source
    :::column-end:::
    :::column span="1":::
       RoboCopy がソース (StorSimple アプライアンス) とターゲット (Windows Server ディレクトリ) 間の差分のみを考慮できるようにします。
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /IT
+   :::column-end:::
+   :::column span="1":::
+      特定のミラー シナリオで、忠実性が維持されることを保証します。</br>例:2 回の Robocopy の実行の間に、ファイルには ACL の変更と属性の更新が行われます。また、たとえば、"*非表示*" とマークされます。 /IT を使用しない場合、ACL の変更が Robocopy で見逃される可能性があるため、ターゲットの場所に転送されません。
    :::column-end:::
 :::row-end:::
 :::row:::

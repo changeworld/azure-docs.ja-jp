@@ -1,24 +1,24 @@
 ---
 title: リソースにデプロイ順序を設定する
-description: デプロイ時に、あるリソースが別のリソースに依存するように設定する方法について説明します。 依存関係によって、リソースが適切な順序でデプロイされます。
+description: デプロイ時に、ある Azure リソースが別のリソースに依存するように設定する方法について説明します。 依存関係によって、リソースが適切な順序でデプロイされます。
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: a96dca0ab30d0baee2688427d78867ea128e673a
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: f6b63b066da06a17c3a2e51ab0f3ab9bf521a144
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722013"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934749"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>ARM テンプレートでのリソース デプロイ順序の定義
 
-リソースをデプロイするときに、一部のリソースが他のリソースの前に存在することを確認しなければならない場合があります。 たとえば、データベースをデプロイする前に論理 SQL サーバーが必要です。 このリレーションシップは、あるリソースが他のリソースに依存しているとマークすることで確立します。 明示的な依存関係を定義するには、**dependsOn** 要素を使用します。 暗黙的な依存関係を定義するには、**reference** または **list** 関数を使用します。
+リソースをデプロイするときに、一部のリソースが他のリソースの前に存在することを確認しなければならない場合があります。 たとえば、データベースをデプロイする前に論理 SQL サーバーが必要です。 このリレーションシップは、あるリソースが他のリソースに依存しているとマークすることで確立します。 明示的な依存関係を定義するには、`dependsOn` 要素を使用します。 暗黙的な依存関係を定義するには、**reference** または **list** 関数を使用します。
 
-Resource Manager により、リソース間の依存関係が評価され、リソースは依存する順にデプロイされます。 相互依存していないリソースは、平行してデプロイされます。 同じテンプレートでデプロイされるリソースの依存関係だけを定義する必要があります。
+Azure Resource Manager により、リソース間の依存関係が評価され、リソースは依存する順にデプロイされます。 相互依存していないリソースは、平行してデプロイされます。 同じテンプレートでデプロイされるリソースの依存関係だけを定義する必要があります。
 
 ## <a name="dependson"></a>dependsOn
 
-テンプレート内で dependsOn 要素を使用すると、1 つのリソースが 1 つ以上のリソースに依存していることを定義できます。 その値は文字列の JSON 配列であり、それぞれがリソース名または ID です。 配列には、[条件付きでデプロイされた](conditional-resource-deployment.md)リソースを含めることができます。 条件付きリソースがデプロイされていない場合、Azure Resource Manager によって必要な依存関係からそれが自動的に削除されます。
+Azure Resource Manager テンプレート (ARM テンプレート) 内で、`dependsOn` 要素を使用すると、1 つのリソースが 1 つ以上のリソースに依存していることを定義できます。 その値は文字列の JSON (JavaScript Object Notation) 配列であり、それぞれがリソース名または ID です。 配列には、[条件付きでデプロイされた](conditional-resource-deployment.md)リソースを含めることができます。 条件付きリソースがデプロイされていない場合、Azure Resource Manager によって必要な依存関係からそれが自動的に削除されます。
 
 次の例は、仮想ネットワーク、ネットワーク セキュリティ グループ、およびパブリック IP アドレスに依存するネットワーク インターフェイスを示しています。 完全なテンプレートについては、[Linux VM 用のクイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-simple-linux/azuredeploy.json)を参照してください。
 
@@ -37,11 +37,11 @@ Resource Manager により、リソース間の依存関係が評価され、リ
 }
 ```
 
-dependsOn を使用してリソース間のリレーションシップをマップする傾向があるものの、重要なのは、その操作を行う理由を理解することです。 たとえば、リソースが相互にどのように接続されているかをドキュメント化するには、dependsOn は適切な方法ではありません。 どのリソースが dependsOn 要素で定義されたかを、デプロイ後に照会することはできません。 Resource Manager ではこれらのリソースを並行してデプロイすることはできないため、不要な依存関係を設定するとデプロイ時間が遅くなります。
+`dependsOn` を使用してリソース間のリレーションシップをマップする傾向があるものの、重要なのは、その操作を行う理由を理解することです。 たとえば、リソースが相互にどのように接続されているかをドキュメント化するには、`dependsOn` は適切な方法ではありません。 どのリソースが `dependsOn` 要素で定義されたかを、デプロイ後に照会することはできません。 Resource Manager ではこれらのリソースを並行してデプロイすることはできないため、不要な依存関係を設定するとデプロイ時間が遅くなります。
 
 ## <a name="child-resources"></a>子リソース
 
-[子リソース](child-resource-name-type.md)と親リソースの間に、デプロイの暗黙的な依存関係が自動的に作成されることはありません。 親リソースの後に子リソースをデプロイする必要がある場合は、dependsOn プロパティを設定します。
+[子リソース](child-resource-name-type.md)と親リソースの間に、デプロイの暗黙的な依存関係が自動的に作成されることはありません。 親リソースの後に子リソースをデプロイする必要がある場合は、`dependsOn` プロパティを設定します。
 
 次の例では、論理 SQL サーバーとデータベースを示します。 データベースがサーバーの子である場合でも、データベースとサーバーの間に明示的な依存関係が定義されることに注目してください。
 
@@ -85,13 +85,13 @@ reference 式と list 式では、あるリソースが別のリソースに依�
 
 暗黙的な依存関係を適用するには、リソースをリソース ID ではなく名前で参照します。 reference 関数または list 関数にリソース ID を渡す場合は、暗黙的な参照は作成されません。
 
-reference 関数の一般的な形式は次のとおりです。
+`reference` 関数の一般的な形式は次のとおりです。
 
 ```json
 reference('resourceName').propertyPath
 ```
 
-listKeys 関数の一般的な形式は次のとおりです。
+`listKeys` 関数の一般的な形式は次のとおりです。
 
 ```json
 listKeys('resourceName', 'yyyy-mm-dd')
@@ -165,7 +165,7 @@ listKeys('resourceName', 'yyyy-mm-dd')
 }
 ```
 
-次の例では、仮想マシンをデプロイする前に 3 つのストレージ アカウントをデプロイする方法を示します。 コピー要素の name が `storagecopy` に設定され、Virtual Machines の dependsOn 要素が `storagecopy` に設定されるよう注意してください。
+次の例では、仮想マシンをデプロイする前に 3 つのストレージ アカウントをデプロイする方法を示します。 `copy` 要素の `name` が `storagecopy` に設定され、仮想マシンの `dependsOn` 要素が `storagecopy` に設定されるよう注意してください。
 
 ```json
 {
@@ -213,10 +213,9 @@ Resource Manager では、テンプレートの検証中に循環依存関係を
 
 ## <a name="next-steps"></a>次のステップ
 
-* チュートリアルについては、「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](template-tutorial-create-templates-with-dependent-resources.md)」を参照してください。
+* チュートリアルについては、「[チュートリアル:依存リソースを含む ARM テンプレートを作成する](template-tutorial-create-templates-with-dependent-resources.md)」の「テンプレートのデプロイ」セクションを参照してください。
 * リソースの依存関係について取り上げた Microsoft Learn モジュールについては、「[高度な ARM テンプレート機能を使用して複雑なクラウド デプロイを管理する](/learn/modules/manage-deployments-advanced-arm-template-features/)」を参照してください。
-* 依存関係を設定する際の推奨事項については、「[Azure Resource Manager テンプレートのベスト プラクティス](template-best-practices.md)」をご覧ください。
+* 依存関係を設定する際の推奨事項については、「[ARM テンプレートのベスト プラクティス](template-best-practices.md)」をご覧ください。
 * デプロイ中の依存関係のトラブルシューティングについては、「[Troubleshoot common Azure deployment errors with Azure Resource Manager (Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング)](common-deployment-errors.md)」を参照してください。
-* Azure リソース マネージャーのテンプレートの作成の詳細については、 [テンプレートの作成](template-syntax.md)に関するページを参照してください。
-* テンプレートで使用可能な関数の一覧については、 [テンプレートの関数](template-functions.md)に関するページを参照してください。
-
+* Azure Resource Manager テンプレートの作成については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
+* テンプレートで使用可能な関数の一覧については、「[ARM テンプレート関数](template-functions.md)」を参照してください。

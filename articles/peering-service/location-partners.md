@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 11/06/2020
 ms.author: derekol
-ms.openlocfilehash: c2c16e6b5be4e187a776f75454ecf9377da911e3
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: da6c53675378fcf9d395debe750bb97738763a09
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763180"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059519"
 ---
 # <a name="peering-service-partners"></a>Peering Service パートナー
 
@@ -44,6 +44,8 @@ Microsoft は、世界中のインターネット サービス プロバイダ�
 | [Singtel](https://www.singtel.com/business/campaign/singnet-cloud-connect-microsoft-direct) |アジア |
 | [NAP アフリカ](https://www.napafrica.net/technical/microsoft-azure-peering-service/) |アフリカ|
 | [Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/wireline/ip-plus.html) |ヨーロッパ|
+| [CMC Networks](https://www.cmcnetworks.net/products/microsoft-azure-peering-services.html) |アフリカ|
+| [MainOne](https://www.mainone.net/connectivity-services/microsoft-azure-peering-service/) |アフリカ|
 
 > [!NOTE]
 >Peering Service パートナー プログラムへの参加の詳細については、peeringservice@microsoft.com にアクセスしてください。

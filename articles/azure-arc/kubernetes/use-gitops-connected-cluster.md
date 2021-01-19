@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: GitOps を使用して Azure Arc 対応の Kubernetes クラスターを構成する (プレビュー)
 keywords: GitOps、Kubernetes、K8s、Azure、Arc、Azure Kubernetes Service、AKS、コンテナー
-ms.openlocfilehash: 85771824a6cecd10346937220e400028a4570377
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 906021377cbfd6960769f98f9dbd15a5c430c71f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653454"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955333"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Arc 対応 Kubernetes クラスターに対して GitOps を使用して構成をデプロイする (プレビュー)
 
@@ -150,7 +150,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 `--helm-operator-chart-version`:*省略可能*: Helm 演算子 (有効な場合) のグラフのバージョン。 既定値は1.2.0 です。
 
-`--operator-namespace`:*省略可能*: オペレーターの名前空間の名前。 既定値: 'default'
+`--operator-namespace`:*省略可能*: オペレーターの名前空間の名前。 既定値は 'default' です。 最大 23 文字。
 
 `--operator-params`:*省略可能*: オペレーターのパラメーター。 単一引用符で囲む必要があります。 たとえば、```--operator-params='--git-readonly --git-path=releases --sync-garbage-collection' ``` のように指定します。
 
@@ -169,12 +169,6 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 | --git-email  | Git コミットに使用するメール アドレス。 |
 
 * '--git-user' または '--git-email' が設定されていない場合 (つまり、Flux を使用してリポジトリに書き込みたくない場合)、--git-readonly が自動的に設定されます (まだ設定していない場合)。
-
-* enableHelmOperator が true の場合、operatorInstanceName + operatorNamespace の文字列の合計を 47 文字以下にする必要があります。  この制限に従わないと、次のエラーが発生します。
-
-   ```console
-   {"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
-   ```
 
 詳細については、[Flux のドキュメント](https://aka.ms/FluxcdReadme)を参照してください。
 
@@ -251,7 +245,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>プライベート Git リポジトリから構成を適用する
 
-プライベート Git リポジトリを使用している場合は、リポジトリで SSH 公開キーを構成する必要があります。 公開キーは、Git リポジトリで構成するか、リポジトリにアクセスできる Git ユーザーが構成します。 SSH 公開キーは、自分で指定するか、または Flux によって生成されます。
+プライベート Git リポジトリを使用している場合は、リポジトリで SSH 公開キーを構成する必要があります。 公開キーは、特定の Git リポジトリで構成するか、リポジトリにアクセスできる Git ユーザーが構成します。 SSH 公開キーは、自分で指定するか、または Flux によって生成されます。
 
 **独自の公開キーを取得する**
 
@@ -260,7 +254,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 **Azure CLI を使用して公開キーを取得する (Flux によってキーが生成される場合に便利)**
 
 ```console
-$ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --query 'repositoryPublicKey'
+$ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --cluster-type connectedClusters --query 'repositoryPublicKey' 
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAREDACTED"
 ```

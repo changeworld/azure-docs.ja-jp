@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a9a2f9d999a51f2b4600e8379d4a8913675b338
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 33233e8a6aa54e65094e0cc6130e804241d7201c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360018"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044290"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>チュートリアル:Azure Virtual Machines 上の SQL Server に可用性グループを作成するための前提条件
 
@@ -539,7 +539,7 @@ SQL Server 可用性グループでは、各 SQL Server VM をドメイン ア�
 
 ### <a name="tuning-failover-cluster-network-thresholds"></a>フェールオーバー クラスター ネットワークのしきい値の調整
 
-SQL Server AlwaysOn を使用して Azure VM で Windows フェールオーバー クラスター ノードを実行する場合は、クラスター設定をより緩やかな監視状態に変更することをお勧めします。  これにより、クラスターの安定性と信頼性が大幅に向上します。  この詳細については、「[IaaS と SQL AlwaysOn - フェールオーバー クラスター ネットワークのしきい値の調整](/windows-server/troubleshoot/iaas-sql-failover-cluster)」を参照してください。
+SQL Server 可用性グループを使用して Azure VM で Windows フェールオーバー クラスター ノードを実行する場合は、クラスター設定をより緩やかな監視状態に変更してください。  これにより、クラスターの安定性と信頼性が大幅に向上します。  この詳細については、「[IaaS と SQL Server - フェールオーバー クラスター ネットワークのしきい値の調整](/windows-server/troubleshoot/iaas-sql-failover-cluster)」を参照してください。
 
 
 ## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> 各 SQL Server VM でファイアウォールを構成する

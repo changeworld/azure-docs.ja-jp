@@ -1,7 +1,7 @@
 ---
-title: モデルに合わせてハイパーパラメーターを調整する
+title: モデルのハイパーパラメーター調整
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning を使用して、ディープ ラーニングおよび機械学習モデルのハイパーパラメーターを効率的に調整します。
+description: Azure Machine Learning を使用して、ディープ ラーニングおよび機械学習モデルのハイパーパラメーター調整を自動化します。
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,14 +11,14 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a1a0b89dee5a6d57e6f317c5f6c8b61ffeda3c33
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e9f9f73a8e0dbc851efdba07bf1e103f58ae9e75
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029075"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133863"
 ---
-# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Azure Machine Learning でモデルのハイパーパラメーターを調整する
+# <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Azure Machine Learning を使用したモデルのハイパーパラメーター調整
 
 
 Azure Machine Learning の [HyperDrive パッケージ](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py)を使用して、効率的なハイパーパラメーター調整を自動化します。 [Azure Machine Learning SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) を使用してハイパーパラメーターを調整するために必要な手順を実行する方法について説明します。
@@ -31,11 +31,11 @@ Azure Machine Learning の [HyperDrive パッケージ](/python/api/azureml-trai
 1. トレーニングの実行を視覚化する
 1. モデルに最適な構成を選択する
 
-## <a name="what-are-hyperparameters"></a>ハイパーパラメーターとは
+## <a name="what-is-hyperparameter-tuning"></a>ハイパーパラメーター調整とは
 
 **ハイパーパラメーター** は、モデルのトレーニング プロセスを制御できるようにする調整可能なパラメーターです。 たとえば、ニューラル ネットワークでは、隠れ層の数と各層内のノードの数を決定します。 モデルのパフォーマンスは、ハイパーパラメーターに大きく依存します。
 
- **ハイパーパラメーターの調整** は、最適なパフォーマンスを得られるハイパーパラメーターの構成を見つけるプロセスです。 通常、このプロセスは計算負荷が高く、手動で行われます。
+ **ハイパーパラメーター調整** (**別名、ハイパーパラメーターの最適化**) は、最適なパフォーマンスを得られるハイパーパラメーターの構成を見つけるプロセスです。 通常、このプロセスは計算負荷が高く、手動で行われます。
 
 Azure Machine Learning を使用すると、ハイパーパラメーターの調整を自動化し、実験を並行して行ってハイパーパラメーターを効率的に最適化できます。
 
@@ -46,7 +46,7 @@ Azure Machine Learning を使用すると、ハイパーパラメーターの調
 
 ハイパーパラメーターは、不連続値でも連続値でもよく、[パラメーター式](/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?preserve-view=true&view=azure-ml-py)で記述された値の分布になります。
 
-### <a name="discrete-hyperparameters"></a>不連続ハイパーパラメーター 
+### <a name="discrete-hyperparameters"></a>不連続ハイパーパラメーター
 
 不連続ハイパーパラメーターは、不連続値の中の `choice` として指定します。 `choice` には次のものを指定できます。
 
@@ -296,7 +296,7 @@ max_concurrent_runs=4
 
 このコードでは、ハイパーパラメーター調整実験は、一度に 4 つの構成を実行して合計で最大 20 回の実行を使用するように構成されます。
 
-## <a name="configure-experiment"></a>実験を構成する
+## <a name="configure-hyperparameter-tuning-experiment"></a>ハイパーパラメーター調整実験を構成する
 
 [ハイパーパラメーター調整実験を構成](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?preserve-view=true&view=azure-ml-py)するには、以下を指定します。
 * 定義済みのハイパーパラメーター検索空間
@@ -323,7 +323,7 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_concurrent_runs=4)
 ```
 
-## <a name="submit-experiment"></a>実験を送信する
+## <a name="submit-hyperparameter-tuning-experiment"></a>ハイパーパラメーター調整実験を送信する
 
 ハイパーパラメーター調整構成を定義したら、[実験を送信します](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-)。
 
@@ -333,7 +333,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hd_config)
 ```
 
-## <a name="warm-start-your-hyperparameter-tuning-experiment-optional"></a>ハイパーパラメーター調整実験をウォーム スタートする (省略可能)
+## <a name="warm-start-hyperparameter-tuning-optional"></a>ハイパーパラメーター調整をウォーム スタートする (省略可能)
 
 モデルに最適なハイパーパラメーター値を見つけることは、反復的なプロセスになる場合があります。 前の 5 回の実行で得た知識を再利用して、ハイパーパラメーターの調整を迅速化できます。
 
@@ -380,7 +380,7 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_concurrent_runs=4)
 ```
 
-## <a name="visualize-experiment"></a>実験を視覚化する
+## <a name="visualize-hyperparameter-tuning-runs"></a>ハイパーパラメーター調整の実行を視覚化する
 
 [Notebook ウイジェット](/python/api/azureml-widgets/azureml.widgets.rundetails?preserve-view=true&view=azure-ml-py)を使用して、トレーニングの実行の進行状況を視覚化します。 次のスニペットを使用すると、すべてのハイパーパラメーター調整実行が Jupyter Notebook の 1 か所で視覚化されます。
 
@@ -391,15 +391,15 @@ RunDetails(hyperdrive_run).show()
 
 このコードにより、各ハイパーパラメーター構成のトレーニング実行に関する詳細情報が表に示されます。
 
-![ハイパーパラメーター調整表](./media/how-to-tune-hyperparameters/HyperparameterTuningTable.png)
+![ハイパーパラメーター調整表](./media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png)
 
 トレーニングの進行に合わせて、各実行のパフォーマンスを視覚化することもできます。 
 
-![ハイパーパラメーター調整プロット](./media/how-to-tune-hyperparameters/HyperparameterTuningPlot.png)
+![ハイパーパラメーター調整プロット](./media/how-to-tune-hyperparameters/hyperparameter-tuning-plot.png)
 
 並行座標プロットを使用して、個々のハイパーパラメーターのパフォーマンスと値の間の相関関係を視覚的に特定できます。 
 
-[![ハイパーパラメーター調整の並行座標](./media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
+[![ハイパーパラメーター調整の並行座標](./media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
 Azure Web ポータルでもすべてのハイパーパラメーター調整実行を視覚化できます。 ポータルで実験を表示する方法について詳しくは、[実験の追跡方法](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)に関するページをご覧ください。
 
@@ -420,6 +420,7 @@ print('\n batch size:',parameter_values[7])
 ```
 
 ## <a name="sample-notebook"></a>サンプル ノートブック
+
 このフォルダーにある train-hyperparameter-* notebooks を参照してください。
 * [how-to-use-azureml/ml-frameworks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks)
 

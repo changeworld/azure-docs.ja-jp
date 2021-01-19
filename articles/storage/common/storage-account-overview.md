@@ -1,20 +1,20 @@
 ---
 title: ストレージ アカウントの概要
 titleSuffix: Azure Storage
-description: Azure Storage のストレージ アカウントの概要を確認します。 アカウントの名前付け、パフォーマンス レベル、アクセス層、冗長性、暗号化、エンドポイントなどについて確認します。
+description: Azure Storage のさまざまな種類のストレージ アカウントについて説明します。 アカウントの名前付け、パフォーマンス レベル、アクセス層、冗長性、暗号化、エンドポイントなどについて確認します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 01/08/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2c9c4cd643e2e4b89f9a7d8f44a6569d0dde2b37
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 5cf43310c68c8446b9465a39d85f84c8273a68d8
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357383"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051226"
 ---
 # <a name="storage-account-overview"></a>ストレージ アカウントの概要
 
@@ -24,7 +24,40 @@ Azure ストレージ アカウントの作成方法については、「[スト
 
 ## <a name="types-of-storage-accounts"></a>ストレージ アカウントの種類
 
-[!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
+Azure Storage では、数種類のストレージ アカウントが提供されています。 各種類は異なる機能をサポートし、独自の価格モデルがあります。 アプリケーションに最適な種類を判断するために、ストレージ アカウントを作成する前にこれらの違いを検討してください。 ストレージ アカウントには、次の種類があります。
+
+- **汎用 v2 アカウント**:BLOB、ファイル、キュー、およびテーブル用の基本的なストレージ アカウントの種類。 Azure Storage を使用するほとんどのシナリオにお勧めします。
+- **汎用 v1 アカウント**:BLOB、ファイル、キュー、およびテーブル用の従来のアカウントの種類。 可能な場合は汎用 v2 アカウントを代わりに使用してください。
+- **BlockBlobStorage アカウント**:ブロック BLOB と追加 BLOB の Premium パフォーマンス特性を持つストレージ アカウント。 トランザクション レートが高く、比較的小さなオブジェクトが使用されるシナリオ、またはストレージ待ち時間が一貫して短いことが要求されるシナリオに推奨されます。
+- **FileStorage アカウント**:Premium パフォーマンスの特徴を持つファイル専用ストレージ アカウント。 エンタープライズまたはハイ パフォーマンス スケール アプリケーションにお勧めします。
+- **BlobStorage アカウント**:従来の BLOB 専用ストレージ アカウント。 可能な場合は汎用 v2 アカウントを代わりに使用してください。
+
+次の表では、ストレージ アカウントの種類、サポートするサービス、および各アカウントの種類でサポートされているデプロイ モデルについて説明します。
+
+| ストレージ アカウントの種類 | サポートされているサービス | 冗長オプション | デプロイ モデル<sup>1</sup> |
+|--|--|--|--|
+| 汎用 v2 | BLOB、ファイル、キュー、テーブル、ディスク、および Data Lake Gen2<sup>2</sup> | LRS、GRS、RA-GRS、ZRS、GZRS、RA-GZRS<sup>3</sup> | リソース マネージャー |
+| 汎用 v1 | BLOB、ファイル、キュー、テーブル、およびディスク | LRS、GRS、RA-GRS | Resource Manager、クラシック |
+| BlockBlobStorage | BLOB (ブロック BLOB と追加 BLOB のみ) | LRS、ZRS<sup>3</sup> | リソース マネージャー |
+| FileStorage | ファイルのみ | LRS、ZRS<sup>3</sup> | リソース マネージャー |
+| BlobStorage | BLOB (ブロック BLOB と追加 BLOB のみ) | LRS、GRS、RA-GRS | リソース マネージャー |
+
+<sup>1</sup> Azure Resource Manager デプロイ モデルが推奨されます。 一部の場所では、クラシック デプロイ モデルを使用するストレージ アカウントを引き続き作成でき、既存のクラシック アカウントもサポートされます。 詳細については、「[Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について](../../azure-resource-manager/management/deployment-models.md)」を参照してください。
+
+<sup>2</sup> Azure Data Lake Storage Gen2 は、Azure Blob Storage をベースに構築された、ビッグ データ分析専用の一連の機能です。 Data Lake Storage Gen2 は、階層型名前空間が有効になった汎用の V2 ストレージ アカウントでのみサポートされています。 Data Lake Storage Gen2 の詳細については、「[Azure Data Lake Storage Gen2 の概要](../blobs/data-lake-storage-introduction.md)」を参照してください。
+
+<sup>3</sup> ゾーン冗長ストレージ (ZRS) および geo ゾーン冗長ストレージ (GZRS と RA-GZRS) は、特定のリージョンの Standard 汎用 V2、BlockBlobStorage、FileStorage の各アカウントでのみ使用できます。 Azure Storage の冗長オプションの詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」を参照してください。
+
+### <a name="storage-account-redundancy"></a>ストレージ アカウントの冗長性
+
+ストレージ アカウントの冗長オプションには、次のようなものがあります。
+
+- **ローカル冗長ストレージ (LRS)** : シンプルな低コストの冗長戦略。 データは、プライマリ リージョンの 1 つの物理的な場所内で、同期的に 3 回コピーされます。
+- **ゾーン冗長ストレージ (ZRS)** : 高可用性を必要とするシナリオ向けの冗長性。 データは、プライマリ リージョンの 3 つの Azure 可用性ゾーン間で同期的にコピーされます。
+- **geo 冗長ストレージ (GRS)** :リージョン障害から保護するためのリージョン間冗長。 データは、プライマリ リージョンで 3 回、同期的にコピーされた後、セカンダリ リージョンに非同期的にコピーされます。 セカンダリ リージョンのデータへの読み取りアクセスのために、読み取りアクセス geo 冗長ストレージ (RA-GRS) を有効にします。
+- **geo ゾーン冗長ストレージ (GZRS)** :高可用性と最大限の持続性の両方を必要とするシナリオ向けの冗長性。 データは、プライマリ リージョンの 3 つの Azure 可用性ゾーン間で同期的にコピーされた後、セカンダリ リージョンに非同期的にコピーされます。 セカンダリ リージョンのデータへの読み取りアクセスのために、読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) を有効にします。
+
+Azure Storage の冗長オプションの詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」を参照してください。
 
 ### <a name="general-purpose-v2-accounts"></a>汎用 v2 アカウント
 
@@ -83,7 +116,17 @@ FileStorage ストレージ アカウントでは、IOPS バーストなど、�
 
 ## <a name="performance-tiers"></a>パフォーマンス レベル
 
-作成するストレージ アカウントの種類に応じて、Standard と Premium のパフォーマンス レベルから選択できます。
+作成するストレージ アカウントの種類に応じて、Standard と Premium のパフォーマンス レベルから選択できます。 次の表に、どの種類のストレージ アカウントでどのパフォーマンス レベルが使用できるかをまとめています。
+
+| ストレージ アカウントの種類 | サポートされているパフォーマンス レベル |
+|--|--|
+| 汎用 v2 | Standard、Premium<sup>1</sup> |
+| 汎用 v1 | Standard、Premium<sup>1</sup> |
+| BlockBlobStorage | Premium |
+| FileStorage | Premium |
+| BlobStorage | Standard |
+
+<sup>1</sup>汎用 v2 および汎用 v1 アカウント用の Premium パフォーマンスは、ディスクとページ BLOB のみで利用できます。 ブロックまたは BLOB の追加用の Premium パフォーマンスは、BlockBlobStorage アカウントでのみ使用できます。 ファイル用の Premium パフォーマンスは、FileStorage アカウントでのみ使用できます。
 
 ### <a name="general-purpose-storage-accounts"></a>汎用ストレージ アカウント
 
@@ -112,12 +155,20 @@ Azure Storage では、使用パターンに基づいて、ブロック BLOB デ
 
 データの使用パターンが変化した場合は、いつでもこれらのアクセス層を切り替えできます。 アクセス層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](../blobs/storage-blob-storage-tiers.md)」を参照してください。
 
+次の表に、ストレージ アカウントの種類ごとに BLOB で使用できるアクセス層を示します。
+
+| ストレージ アカウントの種類 | サポートされているアクセス層 |
+|--|--|
+| 汎用 v2 | ホット、クール、アーカイブ<sup>1</sup> |
+| 汎用 v1 | 該当なし |
+| BlockBlobStorage | 該当なし |
+| FileStorage | 該当なし |
+| BlobStorage | ホット、クール、アーカイブ<sup>1</sup> |
+
+<sup>1</sup> アーカイブ ストレージと BLOB レベルの階層制御では、ブロック BLOB のみがサポートされます。 アーカイブ層は、個々の BLOB のレベルでのみ利用でき、ストレージ アカウント レベルでは利用できません。 詳細については、「[Azure Blob Storage のアクセス層 - ホット、クール、およびアーカイブ](../blobs/storage-blob-storage-tiers.md)」を参照してください。
+
 > [!IMPORTANT]
-> 既存のストレージ アカウントまたは BLOB のアクセス レベルを変更すると、追加料金が発生する場合があります。 詳しくは、「[ストレージ アカウントの課金](#storage-account-billing)」セクションをご覧ください。
-
-## <a name="redundancy"></a>冗長性
-
-[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
+> 既存のストレージ アカウントまたは BLOB のアクセス レベルを変更すると、追加料金が発生する場合があります。 詳細については、「[ストレージ アカウントの課金](#storage-account-billing)」を参照してください。
 
 ## <a name="encryption"></a>暗号化
 
@@ -127,13 +178,15 @@ Azure Storage では、使用パターンに基づいて、ブロック BLOB デ
 
 ストレージ アカウントは、データ用の一意の名前空間を Azure 内に用意します。 Azure Storage 内に格納されるすべてのオブジェクトには、一意のアカウント名を含むアドレスが割り当てられます。 アカウント名と Azure Storage サービス エンドポイントの組み合わせによって、ストレージ アカウント用のエンドポイントが形成されます。
 
-たとえば、汎用ストレージ アカウントの名前が *mystorageaccount* の場合、そのアカウントの既定のエンドポイントは次のようになります。
+次の表に、各 Azure Storage サービスのエンドポイントの一覧を示します。
 
-- BLOB ストレージ: `https://*mystorageaccount*.blob.core.windows.net`
-- テーブル ストレージ: `https://*mystorageaccount*.table.core.windows.net`
-- キュー ストレージ: `https://*mystorageaccount*.queue.core.windows.net`
-- Azure Files: `https://*mystorageaccount*.file.core.windows.net`
-- Azure Data Lake Storage Gen2:`https://*mystorageaccount*.dfs.core.windows.net` ([特にビッグ データのために最適化されている ABFS ドライバー](../blobs/data-lake-storage-introduction.md#key-features-of-data-lake-storage-gen2)を使用します。)
+| ストレージ サービス | エンドポイント |
+|--|--|
+| BLOB ストレージ | `https://<storage-account>.blob.core.windows.net` |
+| Azure Data Lake Storage Gen2 | `https://<storage-account>.dfs.core.windows.net` |
+| Azure Files | `https://<storage-account>.file.core.windows.net` |
+| ストレージ | `https://<storage-account>.queue.core.windows.net` |
+| テーブル ストレージ | `https://<storage-account>.table.core.windows.net` |
 
 > [!NOTE]
 > ブロック BLOB および BLOB ストレージ アカウントは、Blob service エンドポイントのみを公開します。
@@ -184,7 +237,17 @@ Azure Storage REST API の詳細については、「[Azure Storage Services RES
 
 ## <a name="storage-account-billing"></a>ストレージ アカウントの課金
 
-[!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
+Azure Storage では、ストレージ アカウントの使用に基づいて請求されます。 ストレージ アカウント内のすべてのオブジェクトは、グループとしてまとめて課金されます。 ストレージ コストは次の要素に基づいて計算されます。
+
+- **リージョン** とは、自分のアカウントがベースとしている地理的領域を指します。
+- **アカウントの種類** とは、使用するストレージ アカウントの種類を指します。
+- **アクセス層** とは、汎用 v2 または BLOB ストレージ アカウント用に指定したデータの使用状況パターンを指します。
+- **容量** とは、データの保存に使用しているストレージ アカウントの割り当て量を指します。
+- **レプリケーション** は、1 回に保持するデータのコピー数とデータの場所を決定します。
+- **トランザクション** とは、Azure Storage に対するすべての読み取り操作と書き込み操作を指します。
+- **データ転送** とは、Azure リージョンから転送されるデータを指します。 他のリージョンで動作しているアプリケーションがストレージ アカウント内のデータにアクセスした場合は、エグレス データ転送として課金されます  リソース グループを使用してデータとサービスを同じリージョンにグループ化してエグレス料金を制限する方法については、「[Azure リソース グループとは](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management#what-is-an-azure-resource-group)」を参照してください。
+
+アカウントの種類、ストレージ容量、レプリケーション、およびトランザクションに基づく詳細な料金情報については、「 [Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/) 」ページを参照してください。 送信データ転送の価格の詳細については、「 [データ転送の価格の詳細](https://azure.microsoft.com/pricing/details/data-transfers/) 」を参照してください。 コストの見積には、 [計算ツール](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) をご利用ください。
 
 [!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 

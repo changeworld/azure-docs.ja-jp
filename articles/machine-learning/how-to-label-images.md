@@ -9,16 +9,16 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: f14e120fb7373cc80b9d6e23f155dd964b37a551
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: eb8c69a6bf009543e104a472469c243638726f60
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347967"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060369"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>ラベル付けプロジェクトで画像にタグを付ける 
 
-プロジェクト管理者によって Azure Machine Learning で[ラベル付けプロジェクトが作成](./how-to-create-labeling-projects.md#create-a-labeling-project)されたら、ラベル付けツールを使用してすぐに Machine Learning プロジェクト用のデータを準備できます。 この記事では、次の内容について説明します。
+プロジェクト管理者によって Azure Machine Learning で[データのラベル付けプロジェクトが作成](./how-to-create-labeling-projects.md#create-a-data-labeling-project)されたら、ラベル付けツールを使用してすぐに Machine Learning プロジェクト用のデータを準備できます。 この記事では、次の内容について説明します。
 
 > [!div class="checklist"]
 > * ラベル付けプロジェクトにアクセスする方法

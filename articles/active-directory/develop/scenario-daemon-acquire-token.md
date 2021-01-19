@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c13b6ed991403e65c4c4d71c964f1f7f4d1ffe7b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 9416005c708cafe5adbad2b09ce70c41fae66fd7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443315"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936024"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API を呼び出すデーモン アプリ - トークンを取得する
 
@@ -91,6 +91,10 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
     // Mitigation: Change the scope to be as expected.
 }
 ```
+
+### <a name="acquiretokenforclient-uses-the-application-token-cache"></a>AcquireTokenForClient によるアプリケーション トークン キャッシュの使用
+
+MSAL.NET では、`AcquireTokenForClient` によってアプリケーション トークン キャッシュが使用されます (他のすべての AcquireToken *XX* メソッドでは、ユーザー トークン キャッシュが使用されます)。`AcquireTokenSilent` は "*ユーザー*" トークン キャッシュを使用するため、`AcquireTokenForClient` を呼び出す前に `AcquireTokenSilent` を呼び出さないでください。 `AcquireTokenForClient` は *アプリケーション* トークン キャッシュそのものをチェックして、更新します。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -200,10 +204,6 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 詳細については、プロトコルのドキュメント:[Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー](v2-oauth2-client-creds-grant-flow.md)。
 
-## <a name="application-token-cache"></a>アプリケーション トークン キャッシュ
-
-MSAL.NET では、`AcquireTokenForClient` によってアプリケーション トークン キャッシュが使用されます (他のすべての AcquireToken *XX* メソッドでは、ユーザー トークン キャッシュが使用されます)。`AcquireTokenSilent` は "*ユーザー*" トークン キャッシュを使用するため、`AcquireTokenForClient` を呼び出す前に `AcquireTokenSilent` を呼び出さないでください。 `AcquireTokenForClient` は *アプリケーション* トークン キャッシュそのものをチェックして、更新します。
-
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>リソース/.default スコープを使用しましたか?
@@ -228,6 +228,12 @@ Content: {
   }
 }
 ```
+
+### <a name="are-you-calling-your-own-api"></a>独自の API を呼び出している場合
+
+デーモン アプリのアプリ登録にアプリのアクセス許可を追加できなかった場合に、独自の Web API を呼び出す場合は、Web API でアプリ ロールが公開されていますか?
+
+詳細については、「[アプリケーションのアクセス許可 (アプリ ロール) の公開](scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles)」を参照してください。特に、「[Azure AD で、許可されたクライアントのみに Web API のトークンが発行されることを確認する](scenario-protected-web-api-app-registration.md#ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

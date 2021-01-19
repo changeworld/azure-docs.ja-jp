@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: bca826cda8dfe47c341886faaf4a0d66f09d37d2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b8b7a03d5176f5dbd8500b5ff9044c2f22ecbfc0
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966345"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127143"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 拡張機能のエラーのトラブルシューティング
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -78,26 +78,30 @@ Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomS
 
 ### <a name="trigger-a-new-goalstate-to-the-vm"></a>新しい GoalState を VM にトリガーする
 拡張機能が実行されていないか、"Windows Azure CRP Certificate Generator" がないために実行できないことに気づくことがあります (この証明書は、拡張機能の保護された設定の転送をセキュリティで保護するために使用されます)。
-この証明書は、仮想マシン内から Windows ゲスト エージェントを再起動することで自動的に再生成されます。
+その証明書は、仮想マシン内から Windows ゲスト エージェントを再起動することで自動的に再生成されます。
 - タスク マネージャーを開く
 - [詳細] タブに移動する
 - WindowsAzureGuestAgent.exe プロセスを見つける
 - 右クリックして [タスクの終了] を選択する。 プロセスは自動的に再起動されます
 
 
-"空の更新" を実行して、VM に新しい GoalState をトリガーすることもできます。
+"VM の再適用" を実行して、VM に新しい GoalState をトリガーすることもできます。 VM の[再適用](https://docs.microsoft.com/rest/api/compute/virtualmachines/reapply)は、2020 年に導入された API であり、VM の状態を再適用します。 VM の短時間のダウンタイムを許容できるタイミングでこれを行うことをお勧めします。 再適用自体では VM は再起動されず、また再適用を呼び出しても大抵の場合は VM が再起動されることはありませんが、再適用によって新しい目標状態がトリガーされたときに VM モデルに対する他の一部の保留中の更新が適用され、他の変更で再起動が必要になるという非常に小さなリスクがあります。 
 
-Azure PowerShell:
+Azure portal:
+
+ポータルで VM を選択し、左ペインの **[サポート + トラブルシューティング]** で、 **[Redeploy + reapply]\(再デプロイ + 再適用\)** を選択し、続いて **[再適用]** を選択します。
+
+
+Azure PowerShell *(RG 名と VM 名を実際の値に置き換えてください)* :
 
 ```azurepowershell
-$vm = Get-AzureRMVM -ResourceGroupName <RGName> -Name <VMName>  
-Update-AzureRmVM -ResourceGroupName <RGName> -VM $vm  
+Set-AzVM -ResourceGroupName <RG Name> -Name <VM Name> -Reapply
 ```
 
-Azure CLI:
+Azure CLI *(RG 名と VM 名を実際の値に置き換えてください)* :
 
 ```azurecli
-az vm update -g <rgname> -n <vmname>
+az vm reapply -g <RG Name> -n <VM Name>
 ```
 
-"空の更新" が機能しなかった場合は、Microsoft Azure の管理ポータルから VM に新しい空のデータ ディスクを追加し、証明書が再び追加された後で削除することができます。
+"VM の再適用" が機能しなかった場合は、Azure の管理ポータルから VM に新しい空のデータ ディスクを追加し、証明書が再び追加された後でそれを削除できます。

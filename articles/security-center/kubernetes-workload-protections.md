@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 08bcb74fd50be0eeb7a73c0743db2c4f3a57be32
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: dfa562be4561e8aaec66d4bff51aadeba77cf35f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030851"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131340"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes ワークロードを保護する
 
@@ -27,7 +27,7 @@ Azure Defender を有効にすると、Security Center でより多くのコン�
 - [Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md) を使用して、K8s クラスターのリアルタイムの脅威検出アラートを取得する
 
 > [!TIP]
-> 表示される可能性がある、Kubernetes クラスターおよびノードに関する "*すべての*" セキュリティの推奨事項の一覧については、推奨事項リファレンス表の [コンテナー セクション](recommendations-reference.md#recs-containers)をご覧ください。
+> 表示される可能性がある、Kubernetes クラスターおよびノードに関する "*すべての*" セキュリティの推奨事項の一覧については、推奨事項リファレンス表の[コンピューティング セクション](recommendations-reference.md#recs-compute)をご覧ください。
 
 
 
@@ -251,6 +251,6 @@ spec:
 
 その他の関連資料については、次のページを参照してください。 
 
-- [コンテナーに関する Security Center の推奨事項](recommendations-reference.md#recs-containers)
+- [コンピューティングに関する Security Center の推奨事項](recommendations-reference.md#recs-compute)
 - [AKS クラスター レベルのアラート](alerts-reference.md#alerts-akscluster)
 - [コンテナー ホスト レベルのアラート](alerts-reference.md#alerts-containerhost)

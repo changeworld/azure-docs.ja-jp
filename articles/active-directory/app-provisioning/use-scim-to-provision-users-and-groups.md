@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2cdd02ef6ff67f14dbf99e40a254f2c214e23afb
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 646c47920d87fe1d11bc991838ba767b8569a6c9
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165418"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246759"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>チュートリアル - SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成
 
@@ -790,6 +790,7 @@ SCIM サービスには、HTTP アドレスと、ルート証明機関が次の�
 * Go Daddy
 * VeriSign
 * WoSign
+* DST Root CA X3
 
 .NET Core SDK には、開発時に使用できる HTTPS 開発証明書が含まれています。この証明書は、最初の実行エクスペリエンスの一部としてインストールされます。 ASP.NET Core Web アプリケーションの実行方法に応じて、異なるポートがリッスンされます。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: b5b6a697e6a5cae064a6a48419246dc12e8d048c
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 72caeb60fc058b88158979d211a0bc38985975c7
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695825"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968859"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 
@@ -318,7 +318,11 @@ Write-Host $myApp.AppRoles
 ### <a name="webhook"></a>Webhook
 
 > [!NOTE]
-> Webhook アクションを使用するには、ターゲット Webhook エンドポイントにおいてアラートの細部が正常に機能する必要がないか、POST 操作の一環として与えられるアラート コンテキスト情報を解析できることが求められます。 Webhook エンドポイント自体でアラート コンテキスト情報を処理できない場合、アラート コンテキスト情報のカスタム操作のための [Logic App アクション](./action-groups-logic-app.md)などのソリューションを利用し、Webhook で求められるデータ形式に一致させることができます。
+> Webhook アクションを使用するには、ターゲット Webhook エンドポイントにおいてアラートの細部が正常に機能する必要がないか、POST 操作の一環として与えられるアラート コンテキスト情報を解析できることが求められます。 
+
+> セキュリティに違反しないようにするために、ユーザーは Webhook サービス プリンシパルの **所有者** である必要があります。 Azure のすべてのお客様は、所有者を確認せずに、ポータルを通じてすべてのオブジェクト ID にアクセスできるため、すべてのユーザーが、セキュリティに違反する Azure Monitor アラート通知用の独自のアクション グループに対して、セキュリティで保護された Webhook を追加できます。
+
+> Webhook エンドポイント自体でアラート コンテキスト情報を処理できない場合、アラート コンテキスト情報のカスタム操作のための [Logic App アクション](./action-groups-logic-app.md)などのソリューションを利用し、Webhook で求められるデータ形式に一致させることができます。
 
 Webhook は、次のルールを使用して再処理されます。
 - Webhook 呼び出しは、最大 3 回試行されます。

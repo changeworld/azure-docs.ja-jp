@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: e88a721d500ea1c17c768e9f28835248711bd361
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 10b61dd4b6cc3a99b8eecf86cb5ba7e718d64743
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584444"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015115"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
 ## <a name="create-roles-for-an-application"></a>アプリケーションのロールを作成する
 
-1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、**Azure Active Directory** アイコンを選択します。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> の左側のペインで、**Azure Active Directory** アイコンを選択します。
 
     ![Azure Active Directory のアイコン][1]
 

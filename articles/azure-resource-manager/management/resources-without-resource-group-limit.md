@@ -2,20 +2,19 @@
 title: 数が 800 に制限されないリソース
 description: リソース グループ内に 800 より多くのインスタンスを作成できる Azure リソースの種類の一覧を示します。
 ms.topic: conceptual
-ms.date: 10/28/2020
-ms.openlocfilehash: c2d5797a7ec354f41d510ec6e884968bf9dbdbcd
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.date: 01/08/2021
+ms.openlocfilehash: 6a63fd7e41c03b542f4a43b483243702c5be5f14
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672366"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034936"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>リソース グループあたり 800 インスタンスに制限されないリソース
 
 既定では、各リソース グループにはリソースの種類のインスタンスを最大 800 個までデプロイできます。 ただし、一部のリソースの種類は、800 インスタンスの制限から除外されています。 この記事では、リソース グループ内に 800 より多くのインスタンスを作成できる Azure リソースの種類の一覧を示します。 他のすべてのリソースの種類は、800 インスタンスに制限されます。
 
 リソースの種類によっては、800 インスタンスの制限を解除するためにサポートに連絡する必要があります。 この記事では、それらのリソースの種類について注記されています。
-
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -105,6 +104,11 @@ ms.locfileid: "97672366"
 * software
 * softwareUpdateProfile
 * softwareUpdates
+
+## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
+
+* machines - 最大 5,000 インスタンスをサポートします
+* extensions - 無制限の数の VM 拡張機能インスタンスをサポートします
 
 ## <a name="microsoftinsights"></a>microsoft.insights
 

@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 7e63f770763d1960148dfdfa184d0b4e2b76754c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2c4fbefc1bb801ab4a9387054ac91e5fca14ec18
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427081"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185599"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>チュートリアル:Azure App Service on Linux と Azure Cosmos DB を使用して Java Spring Boot Web アプリを構築する
 
@@ -57,21 +57,21 @@ yes | cp -rf .prep/* .
 
 1. Azure CLI にログインして、ログイン資格情報に接続されるサブスクリプションが複数ある場合は、必要に応じてサブスクリプションを設定します。
 
-    ```bash
+    ```azurecli
     az login
     az account set -s <your-subscription-id>
     ```   
 
 2. Azure リソース グループを作成して、そのリソース グループの名前をメモします。
 
-    ```bash
+    ```azurecli
     az group create -n <your-azure-group-name> \
         -l <your-resource-group-region>
     ```
 
 3. 種類が `GlobalDocumentDB` の Azure Cosmos DB を作成します。 Cosmos DB の名前には小文字のみを使用する必要があります。 コマンドからの応答内の `documentEndpoint` フィールドをメモします。
 
-    ```bash
+    ```azurecli
     az cosmosdb create --kind GlobalDocumentDB \
         -g <your-azure-group-name> \
         -n <your-azure-COSMOS-DB-name-in-lower-case-letters>
@@ -79,7 +79,7 @@ yes | cp -rf .prep/* .
 
 4. アプリに接続するための Azure Cosmos DB キーを取得します。 `primaryMasterKey` と `documentEndpoint` は、次の手順で必要になるため、近くに保管しておきます。
 
-    ```bash
+    ```azurecli
     az cosmosdb list-keys -g <your-azure-group-name> -n <your-azure-COSMOSDB-name>
     ```
 
@@ -146,7 +146,7 @@ mvn package spring-boot:run
 
 出力は次のようになります。
 
-```bash
+```output
 bash-3.2$ mvn package spring-boot:run
 [INFO] Scanning for projects...
 [INFO] 
@@ -291,7 +291,7 @@ curl https://spring-todo-app.azurewebsites.net
 
 別のワーカーを追加することで、アプリケーションをスケールアウトします。
 
-```bash
+```azurecli
 az appservice plan update --number-of-workers 2 \
    --name ${WEBAPP_PLAN_NAME} \
    --resource-group <your-azure-group-name>
@@ -301,7 +301,7 @@ az appservice plan update --number-of-workers 2 \
 
 これらのリソースが別のチュートリアルで不要である場合 (「[次のステップ](#next)」を参照)、Cloud Shell で次のコマンドを実行して削除することができます。 
   
-```bash
+```azurecli
 az group delete --name <your-azure-group-name>
 ```
 

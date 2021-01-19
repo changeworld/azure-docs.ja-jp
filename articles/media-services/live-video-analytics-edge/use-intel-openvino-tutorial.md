@@ -4,12 +4,12 @@ description: このチュートリアルでは、Intel が提供する AI モデ
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 82906111e64bd278d4371d1c3497fefc4510bbbd
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9fb2f533d433c89d13ee0c29058f87aab3521a78
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401213"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060199"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>チュートリアル:Intel の AI 拡張機能 OpenVINO™ モデル サーバーを使用してライブ ビデオを分析する 
 
@@ -37,6 +37,8 @@ ms.locfileid: "97401213"
 Azure リソースを設定する際に、駐車場の短いビデオが、IoT Edge デバイスとして使用している、Azure の Linux VM にコピーされます。 このクイックスタートでは、このビデオ ファイルを使用してライブ ストリームをシミュレートします。
 
 [VLC メディア プレーヤー](https://www.videolan.org/vlc/)などのアプリケーションを開きます。 Ctrl キーを押しながら N キーを押し、リンクを[ビデオ](https://lvamedia.blob.core.windows.net/public/lots_015.mkv)に貼り付けて、再生を開始します。 駐車場にある車両の映像が表示されます。ほどんどの車両は停車していますが、1 台は動いています。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
 
 このクイックスタートでは、Intel の AI 拡張機能 OpenVINO™ モデル サーバーと共に Live Video Analytics on IoT Edge を使用して、車両などの物体を検出したりそれらを分類したりします。 その結果として得られた推論イベントを IoT Edge ハブに発行します。
 
@@ -97,7 +99,7 @@ Intel® のディストリビューション [OpenVINO™ ツールキット](ht
 1. *operations.json* ファイルを編集します。
     * グラフ トポロジへのリンクを変更します。
 
-        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtensionOpenVINO/topology.json"`
+        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtensionOpenVINO/2.0/topology.json"`
 
     * `GraphInstanceSet` で、前のリンクの値と一致するようにグラフ トポロジの名前を編集します。
 
@@ -160,7 +162,7 @@ Live Video Analytics デバイスを右クリックし、 **[組み込みイベ�
 
          ```
          {
-           "@apiVersion": "1.0",
+           "@apiVersion": "2.0",
            "name": "Sample-Graph-1",
            "properties": {
              "topologyName": "InferencingWithOpenVINO",
@@ -203,7 +205,7 @@ Live Video Analytics デバイスを右クリックし、 **[組み込みイベ�
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished イベント
 
-メディア グラフがインスタンス化されると、RTSP ソース ノードは、rtspsim-live555 コンテナーで実行されている RTSP サーバーへの接続を試みます。 接続に成功すると、次のイベントが出力されます。 イベントの種類は `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished` です。
+メディア グラフがインスタンス化されると、RTSP ソース ノードは、rtspsim-live555 コンテナーで実行されている RTSP サーバーへの接続を試みます。 接続に成功すると、次のイベントが出力されます。 イベントの種類は、**Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished** です。
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:

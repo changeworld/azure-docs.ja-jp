@@ -1,14 +1,14 @@
 ---
 title: 委任されたリソースを大規模に監視する
 description: 管理下にある顧客テナント全体を対象に、スケーラブルな方法で効率よく Azure Monitor ログを使用する方法について説明します。
-ms.date: 12/14/2020
+ms.date: 01/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 6c1cbde696ccf9131797a05db33553b8505216a4
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 797a6159d310f85c35c7eb550f05ff152526b3e8
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509276"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131153"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>委任されたリソースを大規模に監視する
 
@@ -24,6 +24,9 @@ ms.locfileid: "97509276"
 データを収集するには、Log Analytics ワークスペースを作成する必要があります。 これらの Log Analytics ワークスペースは、Azure Monitor によって収集されたデータのための特別な環境です。 各ワークスペースには、独自のデータ リポジトリと構成があり、データ ソースとソリューションは、特定のワークスペースにデータを格納するように構成されます。
 
 これらのワークスペースは、直接顧客テナントに作成することをお勧めします。 そうすることで、データを自分の環境にエクスポートするのではなく、各顧客のテナント内に留めることができます。 また、Log Analytics でサポートされるリソースまたはサービスの監視を一元化し、監視対象となるデータの種類について、より柔軟な運用が可能となります。
+
+> [!TIP]
+> Log Analytics ワークスペースからデータにアクセスする目的で使用される Automation アカウントは、ワークスペースと同じテナントで作成する必要があります。
 
 Log Analytics ワークスペースは、[Azure portal](../../azure-monitor/learn/quick-create-workspace.md)、[Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)、[Azure PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) のいずれかを使用して作成できます。
 

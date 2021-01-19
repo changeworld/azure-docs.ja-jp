@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: d4df373f78a9c74584d0e4046f7532a2190f3a3f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ba3ca140abe36a31ffa03422420ea537bbe4f39a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370969"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935752"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory ガバナンス運用リファレンス ガイド
 
@@ -59,7 +59,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 | シナリオ| 推奨 |
 |-|-|
 |認証の種類をフェデレーションから PHS/PTA に、またはその逆に変更する| [段階的ロールアウト](../hybrid/how-to-connect-staged-rollout.md)を使用して、認証の種類を変更した場合の影響をテストします。|
-|新しい条件付きアクセス (CA) ポリシーまたは ID 保護ポリシーを展開する|新しい CA ポリシーを作成し、テスト ユーザーに割り当てます。|
+|新しい条件付きアクセス (CA) ポリシーまたは ID 保護ポリシーを展開する|新しい条件付きアクセス ポリシーを作成し、テスト ユーザーに割り当てます。|
 |アプリケーションのテスト環境のオンボード|アプリケーションを運用環境に追加し、MyApps パネルで非表示にして、品質保証 (QA) フェーズでテスト ユーザーに割り当てます。|
 |同期規則の変更|現在運用環境にあるものと同じ構成 (ステージング モードとも呼ばれます) を使用して、テスト Azure AD Connect で変更を実行し、CSExport の結果を分析します。 問題がなく、準備ができたら運用環境にスワップします。|
 |ブランド化の変更|別のテスト テナントでテストします。|

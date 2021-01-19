@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9ad96bdb632e134cf3e3a0f82bb97f88c87e72e9
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 937b5ebb13bfbf27ff04b6944f2de7e32e7e656c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033444"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185854"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Azure Machine Learning Visual Studio Code 拡張機能 (プレビュー) を使用して画像分類 TensorFlow モデルをトレーニングおよびデプロイする
 
@@ -78,7 +78,7 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
     > [!div class="mx-imgBorder"]
     > ![実験を作成する](./media/tutorial-train-deploy-image-classification-model-vscode/create-experiment.png)
 
-1. 実験に「MNIST」という名前を付け、**Enter** キーを押して新しい実験を作成します。 
+1. 実験に「Tutorial-VSCode-MNIST」という名前を付け、**Enter** キーを押して新しい実験を作成します。 
 
 ワークスペースと同様、指定した構成で実験を作成するための要求が Azure に送信されます。 数分後、ワークスペースの *[実験]* ノードに新しい実験が表示されます。 
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 878fa181ff09d547ef6594a238e9c1d883cc89b7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c98b47507a7543002f00aae82370f5ea0043510d
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460483"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954279"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析での [顧客] ダッシュボード
 
@@ -144,7 +144,7 @@ _**表 1: データ用語の辞書**_
 
 | 列名 | 属性名 | 定義 |
 | ------------ | ------------- | ------------- |
-| Marketplace サブスクリプション ID | Marketplace サブスクリプション ID | 顧客がコマーシャル マーケットプレース オファーを購入するときに使用した Azure サブスクリプションに関連付けられている一意識別子。 ID は以前は Azure サブスクリプション GUID でした。 |
+| Marketplace サブスクリプション ID | Marketplace サブスクリプション ID | 顧客がコマーシャル マーケットプレース オファーを購入するときに使用した Azure サブスクリプションに関連付けられている一意識別子。 インフラストラクチャ オファーの場合、これは顧客の Azure サブスクリプション GUID です。 Saas オファーでは、SaaS の購入に Azure サブスクリプションが必要ないため、これはゼロとして表示されます。 |
 | DateAcquired | 取得日 | 公開したいずれかのプランを顧客が最初に購入した日付。 |
 | DateLost | 取消日 | 顧客が以前の購入した最後のすべてのプランを取り消した最後の日付。 |
 | プロバイダー名 | プロバイダー名 | Microsoft と顧客との間の関係に関与するプロバイダーの名前。 顧客がリセラーを通じたエンタープライズの場合は、これはリセラーとなります。 クラウド ソリューション プロバイダー (CSP) が関係している場合、これは CSP となります。 |

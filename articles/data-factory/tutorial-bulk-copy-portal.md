@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: 16b924f486215d972477e93c4e199e7076a0a531
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.date: 01/12/2021
+ms.openlocfilehash: 2fcb8f6d22e93f3a95be26b7bc61f3b5226ba090
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508885"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117128"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Azure portal で Azure Data Factory を使用して複数のテーブルを一括コピーする
 
@@ -51,20 +51,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 * **Azure Storage アカウント**。 この Azure ストレージ アカウントは、一括コピー操作のステージング BLOB ストレージとして使用されます。 
-* **Azure SQL データベース**。 ソース データが格納されているデータベースです。 
-* **Azure Synapse Analytics**。 SQL データベースからコピーされたデータは、このデータ ウェアハウスに格納されます。 
-
-### <a name="prepare-sql-database-and-azure-synapse-analytics"></a>SQL Database と Azure Synapse Analytics を準備する 
-
-**ソース Azure SQL Database の準備**:
-
-[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事に従い、Adventure Works LT サンプル データを使って SQL Database にデータベースを作成します。 このチュートリアルでは、このサンプル データベースからすべてのテーブルを Azure Synapse Analytics にコピーします。
-
-**シンク Azure Synapse Analytics を準備する**:
-
-1. Azure Synapse Analytics ワークスペースがない場合は、「[Azure Synapse Analytics の使用を開始する](..\synapse-analytics\get-started.md)」の記事の作成手順を参照してください。
-
-1. 対応するテーブル スキーマを Azure Synapse Analytics に作成します。 データの移行/コピーは、後続の手順で Azure Data Factory を使用して行います。
+* **Azure SQL データベース**。 ソース データが格納されているデータベースです。 [Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事に従い、Adventure Works LT サンプル データを使って SQL Database にデータベースを作成します。 このチュートリアルでは、このサンプル データベースからすべてのテーブルを Azure Synapse Analytics にコピーします。
+* **Azure Synapse Analytics**。 SQL データベースからコピーされたデータは、このデータ ウェアハウスに格納されます。 Azure Synapse Analytics ワークスペースがない場合は、「[Azure Synapse Analytics の使用を開始する](..\synapse-analytics\get-started.md)」の記事の作成手順を参照してください。
 
 ## <a name="azure-services-to-access-sql-server"></a>SQL サーバーにアクセスするための Azure サービス
 
@@ -241,6 +229,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
     ![ForEach パラメーター ビルダー](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     
     d. **[アクティビティ]** タブに切り替えて **鉛筆アイコン** をクリックし、子アクティビティを **ForEach** アクティビティに追加します。
+    
     ![ForEach アクティビティ ビルダー](./media/tutorial-bulk-copy-portal/for-each-activity-builder.png)
 
 1. **[アクティビティ]** ツールボックスで **[Move & Transfer]\(移動および転送\)** を展開し、 **[データのコピー]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 ウィンドウの上部に階層リンク メニューがあります。 **IterateAndCopySQLTable** はパイプライン名で、**IterateSQLTables** は ForEach アクティビティ名です。 現在のデザイナー画面には、アクティビティの範囲が表示されています。 ForEach エディターからパイプライン エディターにデザイナー画面を切り替えるには、階層リンク メニューのリンクをクリックできます。 
@@ -257,7 +246,6 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
         SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ``` 
 
-
 1. **[シンク]** タブに切り替えて、次の手順を実行します。 
 
     1. **[Sink Dataset]\(シンク データセット\)** で「**AzureSqlDWDataset**」を選択します。
@@ -265,6 +253,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
     1. DWSchema パラメーターの [値] の入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、`@item().TABLE_SCHEMA` 式をスクリプトとして入力して、 **[完了]** を選択します。
     1. [Copy method]\(コピー メソッド\) で **[PolyBase]** を選択します。 
     1. **[使用型の既定]** オプションをオフにします。 
+    1. [Table option]\(テーブル オプション\) の既定の設定は [None]\(なし\) です。 まだシンク Azure Synapse Analytics にテーブルを作成していない場合は、 **[テーブルの自動作成]** オプションを有効にしてください。コピー アクティビティにより、ソース データに基づいて自動的にテーブルが作成されます。 詳細については、「[シンク テーブルの自動作成](copy-activity-overview.md#auto-create-sink-tables)」を参照してください。 
     1. **[Pre-copy Script]\(コピー前スクリプト\)** 入力ボックスをクリックして、下の **[動的なコンテンツの追加]** を選択します。次に、以下の式をスクリプトとして入力し、 **[完了]** を選択します。 
 
         ```sql
@@ -272,6 +261,8 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
         ```
 
         ![コピー シンクの設定](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
+
+
 1. **[設定]** タブに切り替えて、次の手順を実行します。 
 
     1. **[Enable Staging]** \(ステージングを有効にする\) のチェック ボックスをオンにします。

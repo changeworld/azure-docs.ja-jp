@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
-ms.date: 01/22/2020
-ms.openlocfilehash: 0eb9afc179f1dd2559f0db7b212f6b3a1da15824
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/12/2021
+ms.openlocfilehash: 2478148f946ddc88e571b76396544b028455ec75
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998755"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132107"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Azure HDInsight で InvalidNetworkConfigurationErrorCode を使用したクラスターの作成が失敗する
 
@@ -147,6 +147,13 @@ hostname -f
 nslookup <headnode_fqdn> (e.g.nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
 dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
 ```
+### <a name="cause"></a>原因
+
+この `InvalidNetworkConfigurationErrorCode` エラー コードのもう 1 つの原因として、PowerShell または Azure Runbook で非推奨のパラメーター `EnableVmProtection` を使用することが考えられます。
+
+### <a name="resolution"></a>解決方法
+
+[Az PowerShell SDK](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-5.3.0&viewFallbackFrom=azps-4.2.0) に記載されているように、`Get-AzVirtualNetwork` の有効なパラメーターを使用します。
 
 ---
 

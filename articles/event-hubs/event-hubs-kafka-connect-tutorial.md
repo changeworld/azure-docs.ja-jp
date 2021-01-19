@@ -2,16 +2,25 @@
 title: Apache Kafka Connect との統合 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Kafka 用 Azure Event Hubs で Kafka Connect を使用する方法について説明します。
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: d37d2465d9389a0bcfaabdec32bad0c86846cfb2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 01/06/2021
+ms.openlocfilehash: f82dcdafa7921f4a994361371536b2f1ace7cbc5
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369541"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935157"
 ---
-# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Azure Event Hubs で Apache Kafka Connect のサポートを統合する (プレビュー)
-ビジネス ニーズに応じたインジェストが増えるにつれて、外部のさまざまなソースとシンクの取り込み要件も増してきています。 [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) は、Kafka クラスターを通じて、MySQL や HDFS、ファイル システムなどの外部システムに接続し、それらとの間でデータをインポート/エクスポートするためのフレームワークとなります。 このチュートリアルでは、Event Hubs と共に Kafka Connect フレームワークを使用する方法について説明します。
+# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs"></a>Azure Event Hubs で Apache Kafka Connect のサポートを統合する
+[Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) は、Kafka クラスターを通じて、MySQL や HDFS、ファイル システムなどの外部システムに接続し、それらとの間でデータをインポート/エクスポートするためのフレームワークです。 このチュートリアルでは、Event Hubs と共に Kafka Connect フレームワークを使用する方法について説明します。
+
+> [!WARNING]
+> Apache Kafka Connect フレームワークおよびそのコネクタを共に使用することは、**Microsoft Azure 経由の製品サポートの対象外です**。
+>
+> Apache Kafka Connect では、その動的構成が、通常であれば無制限の保持期間を持つ圧縮されたトピックに保持されていることを前提としています。 Azure Event Hubs では[圧縮がブローカー機能として実装されていないため](event-hubs-federation-overview.md#log-projections)、保持されるイベントに時間ベースの保持期間の制限が常に課されます。これは、Azure Event Hubs が長期間のデータまたは構成ストアではなく、リアルタイムのイベント ストリーミング エンジンであるという原則から来ています。
+>
+> Apache Kafka プロジェクトではこれらの役割が混同されていても問題ないかもしれませんが、Azure では、このような情報は適切なデータベースまたは構成ストアで管理するのが最適であると考えられています。
+>
+> Apache Kafka Connect のシナリオの多くは正常に機能しますが、Apache Kafka と Azure Event Hubs の保持モデル間のこれらの概念的な違いのために、特定の構成が期待どおりに機能しなくなる可能性があります。 
 
 このチュートリアルでは、イベント ハブに Kafka Connect を統合し、基本的な FileStreamSource および FileStreamSink コネクタをデプロイする方法について説明します。 現在、この機能はプレビュー段階にあります。 これらのコネクタは運用環境での使用を想定したものではありませんが、Azure Event Hubs が Kafka ブローカーとして機能する Kafka Connect のシナリオをエンド ツー エンドで示しています。
 
@@ -106,7 +115,7 @@ plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka
 > [!NOTE]
 > Kafka Connect は、Kafka AdminClient API を使用して、圧縮などの推奨される構成を含むトピックを自動的に作成します。 Azure portal で名前空間をざっとチェックすると、Connect ワーカーの内部的なトピックが自動的に作成されていることがわかります。
 >
->Kafka Connect の内部トピックでは、 **圧縮を使用する必要があります** 。  Connect の内部トピックが正しく構成されていない場合、Event Hubs チームでは不適切な構成を修正する責任を負いません。
+>Kafka Connect の内部トピックでは、**圧縮を使用する必要があります**。  Connect の内部トピックが正しく構成されていない場合、Event Hubs チームでは不適切な構成を修正する責任を負いません。
 
 ### <a name="create-connectors"></a>コネクタを作成する
 このセクションでは、FileStreamSource コネクタと FileStreamSink コネクタを立ち上げる方法について説明します。 

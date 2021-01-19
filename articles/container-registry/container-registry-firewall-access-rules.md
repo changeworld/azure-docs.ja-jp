@@ -1,14 +1,14 @@
 ---
 title: ファイアウォール アクセス規則
-description: ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成します。これには、("ホワイトリスト登録") REST API およびデータ エンドポイントのドメイン名またはサービス固有の IP アドレス範囲へのアクセスを許可します。
+description: ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成します。これには、REST API およびデータ エンドポイントのドメイン名またはサービス固有の IP アドレス範囲へのアクセスを許可します。
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: b9ecd5f802176cdc6881294f5dedefd3dd467244
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 548d64632c1d726111770dfb49f705d31f5ca714
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148519"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935990"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "92148519"
 アクセスを許可する必要がある ACR REST エンドポイントの IP 範囲を検索するには、JSON ファイル内で **AzureContainerRegistry** を検索します。
 
 > [!IMPORTANT]
-> Azure サービスの IP アドレス範囲は変更でき、更新は毎週公開されます。 JSON ファイルを定期的にダウンロードし、アクセス規則で必要な更新を行います。 実際のシナリオで、Azure 仮想ネットワークでネットワーク セキュリティ グループの規則を構成する必要がある場合、または Azure Firewall を使用する場合、代わりに **AzureContainerRegistry** の[サービス タグ](#allow-access-by-service-tag)を使用します。
+> Azure サービスの IP アドレス範囲は変更でき、更新は毎週公開されます。 JSON ファイルを定期的にダウンロードし、アクセス規則で必要な更新を行います。 実際のシナリオで、Azure 仮想ネットワークでネットワーク セキュリティ グループの規則を構成する必要がある場合、または Azure Firewall を使用する場合、代わりに **AzureContainerRegistry** の [サービス タグ](#allow-access-by-service-tag)を使用します。
 >
 
 ### <a name="rest-ip-addresses-for-all-regions"></a>すべてのリージョンの REST IP アドレス
@@ -113,7 +113,7 @@ ms.locfileid: "92148519"
 
 ## <a name="allow-access-by-service-tag"></a>サービス タグによるアクセスを許可する
 
-Azure 仮想ネットワークでは、ネットワーク セキュリティ規則を使用して、仮想マシンなどのリソースからコンテナー レジストリへのトラフィックをフィルター処理します。 Azure ネットワーク規則の作成を簡略化するには、**AzureContainerRegistry** の[サービス タグ](../virtual-network/network-security-groups-overview.md#service-tags)を使用します。 サービス タグは、グローバルまたは Azure リージョンごとに Azure サービスにアクセスするための IP アドレス プレフィックスのグループを表します。 アドレスが変更されると、タグは自動的に更新されます。 
+Azure 仮想ネットワークでは、ネットワーク セキュリティ規則を使用して、仮想マシンなどのリソースからコンテナー レジストリへのトラフィックをフィルター処理します。 Azure ネットワーク規則の作成を簡略化するには、**AzureContainerRegistry** の [サービス タグ](../virtual-network/network-security-groups-overview.md#service-tags)を使用します。 サービス タグは、グローバルまたは Azure リージョンごとに Azure サービスにアクセスするための IP アドレス プレフィックスのグループを表します。 アドレスが変更されると、タグは自動的に更新されます。 
 
 たとえば、Azure コンテナー レジストリへのトラフィックを許可するために、宛先が **AzureContainerRegistry** の送信ネットワーク セキュリティ グループの規則を作成します。 特定のリージョンでのみサービス タグへのアクセスを許可するには、次の形式でリージョンを指定します。**AzureContainerRegistry**.[*リージョン名*]
 

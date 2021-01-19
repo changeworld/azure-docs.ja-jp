@@ -4,12 +4,12 @@ description: プライベート Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 696ba785abb317a29de38160440dc06487ff5bca
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 87966a9bd2f83916998a724fc6c1c26a91609665
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673887"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133397"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -68,17 +68,21 @@ az aks create \
 
 ### <a name="configure-private-dns-zone"></a>プライベート DNS ゾーンを構成する
 
---private-dns-zone 引数が省略されている場合の既定値は "system" です。 AKS によって、ノード リソース グループにプライベート DNS ゾーンが作成されます。 "none" パラメーターを渡すことは、AKS によってプライベート DNS ゾーンを作成しないことを意味します。  これは、独自の DNS サーバーと、プライベート FQDN の DNS 解決の構成に依存します。  DNS 解決を構成しない場合、エージェント ノード内でのみ DNS の解決が可能になり、デプロイ後にクラスターの問題が発生します。
+次のパラメーターを使用してプライベート DNS ゾーンを構成できます。
+
+1. 既定値は "System" です。 --private-dns-zone 引数を省略すると、AKS によって、ノード リソース グループにプライベート DNS ゾーンが作成されます。
+2. "None" は、AKS によってプライベート DNS ゾーンが作成されないことを意味します。  この場合、独自の DNS サーバーを使用し、プライベート FQDN の DNS 解決を構成する必要があります。  DNS 解決を構成しない場合、エージェント ノード内でのみ DNS の解決が可能になり、デプロイ後にクラスターの問題が発生します。
+3. "Custom private dns zone name" は、Azure グローバル クラウドの形式 (`privatelink.<region>.azmk8s.io`) である必要があります。 ユーザー割り当て ID またはサービス プリンシパルには、少なくともカスタム プライベート DNS ゾーンに対する `private dns zone contributor` ロールを付与する必要があります。
 
 ## <a name="no-private-dns-zone-prerequisites"></a>プライベート DNS ゾーンには前提条件が ない
-PrivateDNSZone なし
-* Azure CLI バージョン 0.4.67 以降
+
+* Azure CLI バージョン 0.4.71 以降
 * API バージョン 2020-11-01 以降
 
 ## <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system]
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system|custom private dns zone]
 ```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>プライベート クラスターに接続するための選択肢
 

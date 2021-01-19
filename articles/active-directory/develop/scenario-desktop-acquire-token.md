@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: fd341a4f6e2402ce934bdffd4f024e0ef569eec1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: d5f5e1098b688fc307bae5ea3538c818cb529b0a
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340919"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962399"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ:トークンを取得する
 
@@ -949,7 +949,7 @@ Azure AD による対話型認証には Web ブラウザーが必要です。 �
 
   ![DeviceCodeResult のプロパティ](https://user-images.githubusercontent.com/13203188/56024968-7af1b980-5d11-11e9-84c2-5be2ef306dc5.png)
 
-次のサンプル コードは、最新のケース (および取得可能な例外の種類の説明とその軽減策) を示しています。
+次のサンプル コードは、最新のケースの概要 (および取得可能な例外の種類の説明とその軽減策) を示しています。 完全に機能するコード サンプルについては、GitHub の「[active-directory-dotnetcore-devicecodeflow-v2](https://github.com/azure-samples/active-directory-dotnetcore-devicecodeflow-v2)」を参照してください。
 
 ```csharp
 private const string ClientId = "<client_guid>";
@@ -981,7 +981,7 @@ static async Task<AuthenticationResult> GetATokenForGraph()
     }
 }
 
-private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientApplication pca)
+private static async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientApplication pca)
 {
     try
     {
@@ -1005,6 +1005,7 @@ private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientA
         Console.WriteLine(result.Account.Username);
         return result;
     }
+
     // TODO: handle or throw all these exceptions depending on your app
     catch (MsalServiceException ex)
     {
@@ -1038,6 +1039,7 @@ private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientA
     }
 }
 ```
+
 # <a name="java"></a>[Java](#tab/java)
 
 この抜粋は、[MSAL Java dev サンプル](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)から取得したものです。
@@ -1180,7 +1182,7 @@ ADAL.NET 3.x、ADAL.NET 5.x、および MSAL.NET の間で SSO 状態を共有�
 
 ### <a name="simple-token-cache-serialization-msal-only"></a>トークン キャッシュの単純なシリアル化 (MSAL のみ)
 
-次の例では、デスクトップ アプリケーション用のトークン キャッシュについて、カスタムのシリアル化の単純な実装を示します。 ここでは、ユーザーのトークン キャッシュは、アプリケーションと同じフォルダー内のファイルにあります。
+次の例では、デスクトップ アプリケーション用のトークン キャッシュについて、カスタムのシリアル化の単純な実装を示します。 ここでは、ユーザーのトークン キャッシュは、アプリケーションと同じフォルダー内のファイルに格納されているか、アプリが[パッケージ化されたデスクトップ アプリケーション](https://docs.microsoft.com/windows/msix/desktop/desktop-to-uwp-behind-the-scenes)である場合はユーザー別にアプリ フォルダーごとに存在します。 完全なコードについては、「[active-directory-dotnet-desktop-msgraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2)」のサンプルを参照してください。
 
 アプリケーションをビルドした後、``TokenCacheHelper.EnableSerialization()`` を呼び出し、アプリケーションに `UserTokenCache` を渡すことで、シリアル化を有効にします。
 
@@ -1199,15 +1201,27 @@ static class TokenCacheHelper
   {
    tokenCache.SetBeforeAccess(BeforeAccessNotification);
    tokenCache.SetAfterAccess(AfterAccessNotification);
+   try
+   {
+    // For packaged desktop apps (MSIX packages) the executing assembly folder is read-only. 
+    // In that case we need to use Windows.Storage.ApplicationData.Current.LocalCacheFolder.Path + "\msalcache.bin" 
+    // which is a per-app read/write folder for packaged apps.
+    // See https://docs.microsoft.com/windows/msix/desktop/desktop-to-uwp-behind-the-scenes
+    CacheFilePath = System.IO.Path.Combine(Windows.Storage.ApplicationData.Current.LocalCacheFolder.Path, "msalcache.bin3");
+   }
+   catch (System.InvalidOperationException)
+   {
+    // Fall back for an un-packaged desktop app
+    CacheFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location + ".msalcache.bin";
+   }
   }
 
   /// <summary>
   /// Path to the token cache
   /// </summary>
-  public static readonly string CacheFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location + ".msalcache.bin3";
+  public static string CacheFilePath { get; private set; }
 
   private static readonly object FileLock = new object();
-
 
   private static void BeforeAccessNotification(TokenCacheNotificationArgs args)
   {

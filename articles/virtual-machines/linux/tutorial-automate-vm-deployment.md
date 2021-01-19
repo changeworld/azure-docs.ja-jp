@@ -5,21 +5,18 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 456c42dc0b25e168744ce283cddbd63b877813ab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ebff49db895468549a7abd420e7b74292b742eab
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747157"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108638"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>チュートリアル - Azure での Linux 仮想マシンの初回の起動時に cloud-init を使用してカスタマイズする方法
 
@@ -39,23 +36,13 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 cloud-init はディストリビューション全体でも有効です。 たとえば、パッケージをインストールするときに **apt-get install** や **yum install** は使用しません。 代わりに、cloud-init ではインストールするパッケージの一覧をユーザーが定義できます。 cloud-init によって、選択したディストリビューションに対してネイティブのパッケージ管理ツールが自動的に使用されます。
 
-Microsoft ではパートナーと協力して、パートナーから Azure に提供されたイメージに cloud-init を含めて、使用できるようにしています。 次の表は、Azure プラットフォーム イメージでの最新の cloud-init の可用性の概要を示しています。
-
-| Publisher | プラン | SKU | Version | cloud-init 対応 |
-|:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18.04-LTS |latest |はい | 
-|Canonical |UbuntuServer |16.04 LTS |latest |はい | 
-|Canonical |UbuntuServer |14.04.5-LTS |latest |はい |
-|CoreOS |CoreOS |Stable |latest |はい |
-|OpenLogic 7.6 |CentOS |7-CI |latest |preview |
-|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |はい |
-|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
+Microsoft ではパートナーと協力して、パートナーから Azure に提供されたイメージに cloud-init を含めて、使用できるようにしています。 ディストリビューションごとの cloud-init のサポートに関する詳しい情報については、[Azure での VM に対する cloud-init のサポート](using-cloud-init.md)に関する記事を参照してください。
 
 
 ## <a name="create-cloud-init-config-file"></a>cloud-init 構成ファイルを作成する
 cloud-init が動作していることを確認するには、NGINX をインストールして単純な "Hello World" Node.js アプリを実行する VM を作成します。 次の cloud-init 構成によって、必要なパッケージのインストール、Node.js アプリの作成、アプリの初期化と起動が行われます。
 
-Bash プロンプトまたは Cloud Shell で、 *cloud-init.txt* という名前のファイルを作成し、次の構成を貼り付けます。 たとえば、「`sensible-editor cloud-init.txt`」と入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
+Bash プロンプトまたは Cloud Shell で、*cloud-init.txt* という名前のファイルを作成し、次の構成を貼り付けます。 たとえば、「`sensible-editor cloud-init.txt`」と入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
 
 ```yaml
 #cloud-config
@@ -102,13 +89,13 @@ runcmd:
 cloud-init 構成オプションの詳細については、[cloud-init の構成例](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)に関するページを参照してください。
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
-VM を作成する前に、[az group create](/cli/azure/group#az-group-create) を使用してリソース グループを作成します。 次の例では、 *myResourceGroupAutomate* という名前のリソース グループを場所 *eastus* に作成します。
+VM を作成する前に、[az group create](/cli/azure/group#az-group-create) を使用してリソース グループを作成します。 次の例では、*myResourceGroupAutomate* という名前のリソース グループを場所 *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroupAutomate --location eastus
 ```
 
-ここで [az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。 `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に構成ファイル *cloud-init.txt* を保存していた場合には、このファイルの完全パスを指定します。 次の例では、 *myVM* という名前の VM を作成します。
+ここで [az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。 `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に構成ファイル *cloud-init.txt* を保存していた場合には、このファイルの完全パスを指定します。 次の例では、*myVM* という名前の VM を作成します。
 
 ```azurecli-interactive
 az vm create \
@@ -129,7 +116,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAuto
 ```
 
 ## <a name="test-web-app"></a>Web アプリのテスト
-Web ブラウザーを開き、アドレス バーに「 *http:\/\/\<publicIpAddress>* 」と入力できるようになりました。 VM 作成処理で取得した独自のパブリック IP アドレスを指定します。 Node.js アプリは次の例のように表示されます。
+Web ブラウザーを開き、アドレス バーに「*http:\/\/\<publicIpAddress>* 」と入力できるようになりました。 VM 作成処理で取得した独自のパブリック IP アドレスを指定します。 Node.js アプリは次の例のように表示されます。
 
 ![実行中の NGINX サイトの表示](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -147,7 +134,7 @@ Azure Key Vault では、証明書やパスワードなどの暗号化キーと�
 - VM を作成して証明書を挿入する
 
 ### <a name="create-an-azure-key-vault"></a>Azure Key Vault を作成する
-最初に、[az keyvault create](/cli/azure/keyvault#az-keyvault-create) を使用して Key Vault を作成し、VM をデプロイするときに使用できるようにします。 各 Key Vault には一意の名前が必要であり、その名前はすべて小文字にする必要があります。 次の例の *mykeyvault* は一意の Key Vault 名で置き換えてください。
+最初に、[az keyvault create](/cli/azure/keyvault#az-keyvault-create) を使用して Key Vault を作成し、VM をデプロイするときに使用できるようにします。 各 Key Vault には一意の名前が必要であり、その名前はすべて小文字にする必要があります。 次の例の `mykeyvault` は一意の Key Vault 名で置き換えてください。
 
 ```azurecli-interactive
 keyvault_name=mykeyvault
@@ -260,7 +247,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>セキュリティで保護された Web アプリをテストする
-Web ブラウザーを開き、アドレス バーに「 *https:\/\/\<publicIpAddress>* 」と入力できるようになりました。 前の VM 作成プロセスの出力で示されているように、独自のパブリック IP アドレスを提供します。 自己署名証明書を使用した場合は、セキュリティ警告を受け入れます。
+Web ブラウザーを開き、アドレス バーに「*https:\/\/\<publicIpAddress>* 」と入力できるようになりました。 前の VM 作成プロセスの出力で示されているように、独自のパブリック IP アドレスを提供します。 自己署名証明書を使用した場合は、セキュリティ警告を受け入れます。
 
 ![Web ブラウザーのセキュリティ警告を受け入れる](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

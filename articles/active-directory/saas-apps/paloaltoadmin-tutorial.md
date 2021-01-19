@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 612576698d9eb40807b90e9d70f401aa6e9b864e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 57b1d47fa40c0af4bced1e4169fe60cd759ee2f3
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92512907"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963640"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>チュートリアル:Azure Active Directory と Palo Alto Networks - Admin UI の統合
 
@@ -38,8 +38,8 @@ Azure AD と Palo Alto Networks - Admin UI の統合を構成するには、次�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Palo Alto Networks - Admin UI では、 **SP** によって開始される SSO がサポートされます
-* Palo Alto Networks - Admin UI では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Palo Alto Networks - Admin UI では、**SP** によって開始される SSO がサポートされます
+* Palo Alto Networks - Admin UI では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-palo-alto-networks---admin-ui-from-the-gallery"></a>ギャラリーからの Palo Alto Networks - Admin UI の追加
 
@@ -49,12 +49,12 @@ Azure AD への Palo Alto Networks - Admin UI の統合を構成するには、�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Palo Alto Networks - Admin UI** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Palo Alto Networks - Admin UI**」と入力します。
 1. 結果パネルで **[Palo Alto Networks - Admin UI]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
-このセクションでは、 **B.Simon** というテスト ユーザーに基づいて、Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**B.Simon** というテスト ユーザーに基づいて、Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Palo Alto Networks - Admin UI 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Palo Alto Networks - Admin UI で Azure AD シングル サインオンを構成し、テストするには、次の手順に従います。
@@ -72,7 +72,7 @@ Palo Alto Networks - Admin UI で Azure AD シングル サインオンを構成
 
 1. Azure portal の **Palo Alto Networks - Admin UI** アプリケーション統合ページで、 **[管理]** セクションを探し、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -96,7 +96,7 @@ Palo Alto Networks - Admin UI で Azure AD シングル サインオンを構成
     ![image](common/default-attributes.png)
 
    > [!NOTE]
-   > 属性の値はサンプルです。 *username* と *adminrole* には適切な値をマップしてください。 さらにもう 1 つ、省略可能な属性 *accessdomain* があります。この属性は、ファイアウォールで特定の仮想システムへの管理アクセスを制限する目的で使用します。
+   > 属性の値はサンプルです。*username* と *adminrole* には適切な値をマップしてください。 さらにもう 1 つ、省略可能な属性 *accessdomain* があります。この属性は、ファイアウォールで特定の仮想システムへの管理アクセスを制限する目的で使用します。
 
 1. その他に、Palo Alto Networks - Admin UI アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
@@ -107,7 +107,7 @@ Palo Alto Networks - Admin UI で Azure AD シングル サインオンを構成
     | | |
 
     > [!NOTE]
-    > _adminrole_ 値は、手順 9 で説明したように、 **Palo Alto Networks** で構成されているロール名と同じにする必要があります。 
+    > _adminrole_ 値は、手順 9 で説明したように、**Palo Alto Networks** で構成されているロール名と同じにする必要があります。 
 
     > [!NOTE]
     > これらの属性の詳細については、次の記事を参照してください。
@@ -163,7 +163,7 @@ Palo Alto Networks - Admin UI で Azure AD シングル サインオンを構成
 
     ![[SAML Identify Provider Server Profile Import]\(SAML ID プロバイダー サーバー プロファイル インポート\) ウィンドウ](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp.png)
 
-    a. **[Profile Name]\(プロファイル名\)** ボックスに名前 (「 **AzureAD Admin UI** 」など) を入力します。
+    a. **[Profile Name]\(プロファイル名\)** ボックスに名前 (「**AzureAD Admin UI**」など) を入力します。
 
     b. **[Identity Provider Metadata]\(ID プロバイダー メタデータ\)** の下で **[Browse]\(参照\)** を選択して、前の手順で Azure Portal からダウンロードした metadata.xml ファイルを選択ます。
 
@@ -189,7 +189,7 @@ Palo Alto Networks - Admin UI で Azure AD シングル サインオンを構成
 
 8. **[追加]** ボタンを選びます。
 
-9. **[Admin Role Profile]\(管理者ロール プロファイル\)** ウィンドウの **[名前]** ボックスに管理者ロールの名前 (たとえば **fwadmin** ) を入力します。 この管理者ロール名は、ID プロバイダーから送信された SAML 管理者ロール属性名と一致する必要があります。 管理者ロールの名前と値は、Azure portal の **[ユーザー属性]** セクションで作成されています。
+9. **[Admin Role Profile]\(管理者ロール プロファイル\)** ウィンドウの **[名前]** ボックスに管理者ロールの名前 (たとえば **fwadmin**) を入力します。 この管理者ロール名は、ID プロバイダーから送信された SAML 管理者ロール属性名と一致する必要があります。 管理者ロールの名前と値は、Azure portal の **[ユーザー属性]** セクションで作成されています。
 
     ![Palo Alto Networks の管理者ロールの構成](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_adminrole.png)
   
@@ -201,7 +201,7 @@ Palo Alto Networks - Admin UI で Azure AD シングル サインオンを構成
 
     ![[Authentication Profile]\(認証プロファイル\) ウィンドウ](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authentication_profile.png)
 
-    a. **[Name]\(名前\)** ボックスに名前 (「 **AzureSAML_Admin_AuthProfile** 」など) を入力します。
+    a. **[Name]\(名前\)** ボックスに名前 (「**AzureSAML_Admin_AuthProfile**」など) を入力します。
 
     b. **[Type]\(種類\)** ドロップダウン リストで、 **[SAML]** を選択します。 
 
@@ -209,7 +209,7 @@ Palo Alto Networks - Admin UI で Azure AD シングル サインオンを構成
 
     c. **[Enable Single Logout]\(シングル ログアウトを有効にする\)** チェック ボックスをオンにします
 
-    d. **[Admin Role Attribute]\(管理者ロール属性\)** ボックスに属性名 (「 **adminrole** 」など) を入力します。
+    d. **[Admin Role Attribute]\(管理者ロール属性\)** ボックスに属性名 (「**adminrole**」など) を入力します。
 
     e. **[Advanced]\(詳細設定\)** タブを選択してから、 **[Allow List]\(許可リスト\)** で **[Add]\(追加\)** を選択します。
 
@@ -224,7 +224,7 @@ Palo Alto Networks - Admin UI で Azure AD シングル サインオンを構成
 
     ![[設定] ボタン](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsetup.png)
 
-14. [Authentication Profile]\(認証プロファイル\) ウィンドウで作成した SAML 認証プロファイル (たとえば、 **AzureSAML_Admin_AuthProfile** ) を選択します。
+14. [Authentication Profile]\(認証プロファイル\) ウィンドウで作成した SAML 認証プロファイル (たとえば、**AzureSAML_Admin_AuthProfile**) を選択します。
 
     ![[Authentication Profile]\(認証プロファイル\) フィールド](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsettings.png)
 
@@ -240,13 +240,13 @@ Palo Alto Networks - Admin UI では、Just-In-Time ユーザー プロビジョ
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Palo Alto Networks - Admin UI のサインオン URL にリダイレクトされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Palo Alto Networks - Admin UI のサインオン URL にリダイレクトされます。 
 
-2. Palo Alto Networks - Admin UI のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Palo Alto Networks - Admin UI のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [Palo Alto Networks - Admin UI] タイルをクリックすると、SSO を設定した Palo Alto Networks - Admin UI に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Palo Alto Networks - Admin UI] タイルをクリックすると、SSO を設定した Palo Alto Networks - Admin UI に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Palo Alto Networks - Admin UI を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

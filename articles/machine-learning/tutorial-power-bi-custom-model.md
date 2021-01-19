@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:ノートブックを使用して予測モデルを作成する (パート 1/2)
 titleSuffix: Azure Machine Learning
-description: Jupyter Notebook でコードを使用して、機械学習モデルを構築およびデプロイする方法を学習します。 Microsoft Power BI でそのモデルを使用して結果を予測できます。
+description: Jupyter Notebook でコードを使用して、機械学習モデルを構築およびデプロイする方法を学習します。 また、Microsoft Power BI に統合しやすいよう、入力と出力を定義するスコアリング スクリプトを作成します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: 1dfee56f90011d3c532767e136b383e4eb95c234
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 29b340448f3ce3e18a649065bdcd0b335bab8b73
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814773"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108247"
 ---
-# <a name="tutorial-power-bi-integration---create-the-predictive-model-by-using-a-jupyter-notebook-part-1-of-2"></a>チュートリアル:Power BI 統合 - Jupyter Notebook を使用して予測モデルを作成する (パート 1/2)
+# <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-jupyter-notebook-part-1-of-2"></a>チュートリアル:Power BI 統合 - Jupyter Notebook を使用して予測モデルを作成する (パート 1/2)
 
-このチュートリアルのパート 1 では、Jupyter Notebook でコードを使用して予測機械学習モデルをトレーニングおよびデプロイします。 パート 2 では、Microsoft Power BI でそのモデルを使用して結果を予測します。
+このチュートリアルのパート 1 では、Jupyter Notebook でコードを使用して予測機械学習モデルをトレーニングおよびデプロイします。 また、Power BI への統合を視野に、モデルの入力スキーマと出力スキーマを定義するスコアリング スクリプトを作成します。  パート 2 では、Microsoft Power BI でそのモデルを使用して結果を予測します。
 
 このチュートリアルでは、次の作業を行いました。
 
@@ -27,6 +27,7 @@ ms.locfileid: "97814773"
 > * Jupyter Notebook を作成する
 > * Azure Machine Learning コンピューティング インスタンスを作成する。
 > * Scikit-learn を使用して回帰モデルをトレーニングする。
+> * Microsoft Power BI に統合しやすいよう、入力と出力を定義するスコアリング スクリプトを作成する。
 > * リアルタイム スコアリング エンドポイントにモデルをデプロイする。
 
 Power BI で使用するモデルは、3 とおりの方法で作成してデプロイすることができます。  この記事では、"オプション A: ノートブックを使用してモデルをトレーニングおよびデプロイする" について説明します。  このオプションは、コード優先の作成エクスペリエンスです。 Azure Machine Learning スタジオでホストされている Jupyter Notebook を使用します。 
@@ -157,7 +158,7 @@ Azure Machine Learning スタジオでモデルを表示することもできま
 
 :::image type="content" source="media/tutorial-power-bi/model.png" alt-text="モデルの表示方法を示すスクリーンショット。":::
 
-### <a name="define-the-scoring-script"></a>スコアリング スクリプトを定義する
+## <a name="define-the-scoring-script"></a>スコアリング スクリプトを定義する
 
 Power BI に統合するモデルをデプロイする際は、Python の "*スコアリング スクリプト*" とカスタム環境を定義する必要があります。 スコアリング スクリプトには、次の 2 つの関数が含まれます。
 
@@ -165,7 +166,7 @@ Power BI に統合するモデルをデプロイする際は、Python の "*ス�
 - `run(data)` 関数は、スコア付けが必要な入力データがサービスの呼び出しに含まれている場合に実行されます。 
 
 >[!NOTE]
-> この記事では、Python デコレーターを使用して、入力と出力のデータのスキーマを定義します。 このセットアップは、Power BI 統合にとって重要です。
+> 以下のコードにある Python デコレーターは、入力データと出力データのスキーマを定義するものです。Power BI に統合するためには、これが重要となります。
 
 次のコードをコピーしてご自分のノートブックの新しい "*コード セル*" に貼り付けます。 次のコード スニペットには、*score.py* という名前のファイルにコードを書き込むセル マジックが記述されています。
 

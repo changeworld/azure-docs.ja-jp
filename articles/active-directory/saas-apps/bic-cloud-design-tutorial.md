@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/07/2020
+ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 08e96fbf422d734b34af63cfbc42479c059e3866
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6ac9dea5f77a47926e8dec5bda0befc66e4e675b
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457159"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963846"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bic-cloud-design"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BIC Cloud Design の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "92457159"
 * BIC Cloud Design にアクセスできるユーザーを Azure AD で制御します。
 * ユーザーが自分の Azure AD アカウントを使用して BIC Cloud Design に自動的にサインインできるようにします。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,26 +40,25 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* BIC Cloud Design では、 **SP** によって開始される SSO がサポートされます
-* BIC Cloud Design を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* BIC Cloud Design では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-bic-cloud-design-from-the-gallery"></a>ギャラリーからの BIC Cloud Design の追加
 
 BIC Cloud Design の Azure AD への統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に、BIC Cloud Design を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **BIC Cloud Design** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**BIC Cloud Design**」と入力します。
 1. 結果のパネルから **[BIC Cloud Design]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-bic-cloud-design"></a>BIC Cloud Design の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-bic-cloud-design"></a>BIC Cloud Design の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、BIC Cloud Design に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと BIC Cloud Design の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-BIC Cloud Design に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+BIC Cloud Design に対する Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -74,13 +71,13 @@ BIC Cloud Design に対する Azure AD SSO を構成してテストするには�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **BIC Cloud Design** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. Azure portal の **BIC Cloud Design** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、 **サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
+1. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
@@ -90,7 +87,7 @@ BIC Cloud Design に対する Azure AD SSO を構成してテストするには�
 
     ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、 **識別子** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、**識別子** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
 
     ![[BIC Cloud Design のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
@@ -141,15 +138,9 @@ BIC Cloud Design に対する Azure AD SSO を構成してテストするには�
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[BIC Cloud Design]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-bic-cloud-design-sso"></a>BIC Cloud Design SSO の構成
@@ -162,16 +153,15 @@ BIC Cloud Design に対する Azure AD SSO を構成してテストするには�
 
 ## <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルで [BIC Cloud Design] タイルをクリックすると、SSO を設定した BIC Cloud Design に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる BIC Cloud Design のサインオン URL にリダイレクトされます。 
 
-## <a name="additional-resources"></a>その他のリソース
+* BIC Cloud Design のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [BIC Cloud Design] タイルをクリックすると、BIC Cloud Design のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+## <a name="next-steps"></a>次のステップ
 
-- [Azure AD で BIC Cloud Design を試す](https://aad.portal.azure.com/)
+BIC Cloud Design を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 10/07/2020
+ms.date: 01/07/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb63a4a0b7b7fdefd636d3460b182f8d907dd36
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 0d80b8f41e11f2fffa86dc7597fdf44dd27825fc
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558931"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028898"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory Identity Protection についてよく寄せられる質問
 
@@ -35,7 +35,7 @@ Identity Protection で **ユーザー リスクを無視する** と、Identity
 
 Azure AD Identity Protection のお客様であれば、[危険なユーザー](howto-identity-protection-investigate-risk.md#risky-users)のビューにアクセスして、危険度の高いユーザーをクリックしてください。 下部のドロワーの [リスクの履歴] タブに、ユーザー リスクが変化する原因となったすべてのイベントが表示されます。 そのユーザーの危険なサインインをすべて表示するには、[ユーザーの危険なサインイン] をクリックします。 このユーザーの危険の検出をすべて表示するには、[ユーザーのリスクの検出] をクリックします。
 
-## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>サインインがブロックされたのに、Identity Protection でリスクの検出が生成されなかったのはなぜですか?
+### <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>サインインがブロックされたのに、Identity Protection でリスクの検出が生成されなかったのはなぜですか?
 サインインはいくつかの理由でブロックされる可能性があります。 Identity Protection を使用すると、認証要求で正しい資格情報が使用されたときのリスクの検出だけが生成されることに注意してください。 ユーザーが正しくない資格情報を使用した場合は、不正なアクターによって正しい資格情報が使用されているのでない限り、資格情報の侵害のリスクがないため、Identity Protection によってフラグは設定されません。 ユーザーがサインインをブロックされても Identity Protection の検出が生成されない場合に可能性がある理由としては、次のようなものがあります。
 * IP アドレスからの悪意のあるアクティビティのため、**IP がブロックされる可能性があります**。 IP ブロック メッセージを見ても、資格情報が正しかったかどうかはわかりません。 IP がブロックされていて、正しい資格情報が使用されていない場合、Identity Protection の検出は生成されません。
 * **[スマート ロックアウト](../authentication/howto-password-smart-lockout.md)** により、複数回失敗した後でアカウントのサインインがブロックされることがあります
@@ -96,3 +96,7 @@ IP の地理的位置情報のマッピングについては、業界全体の�
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>サインインに関連付けられている検出のリスクが低または中の場合に、サインインの「サインイン リスク (集計)」スコアが「高」になるのはなぜですか?
 
 集計リスク スコアが高であるのは、サインインの他の特徴、またはそのサインインに対して複数の検出が行われたという事実に基づく可能性があります。 逆に、サインインに関連付けられている検出のリスクが「高」の場合でも、サインインのサインイン リスク (集計) が「中」になることがあります。
+
+### <a name="what-is-the-difference-between-the-activity-from-anonymous-ip-address-and-anonymous-ip-address-detections"></a>"匿名 IP アドレスからのアクティビティ" と "匿名 IP アドレス" 検出の違いは何ですか?
+
+"匿名 IP アドレス" 検出のソースは Azure AD Identity Protection ですが、"匿名 IP アドレスからのアクティビティ" 検出は MCAS (Microsoft Cloud App Security) から統合されています。 非常に類似した名前が付いており、これらのシグナルが重複している思われる可能性がありますが、これらは異なるバックエンド検出です。

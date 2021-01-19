@@ -1,14 +1,14 @@
 ---
 title: Connected Machine Windows エージェントの概要
 description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー エージェントの詳細な概要を提供します。
-ms.date: 12/21/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: bff76cbaa678ed82538eb6d75633aa94cdce30bf
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 86d524665b70725108324b1d88521a4c3cb8ff05
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723271"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033967"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの概要
 
@@ -68,6 +68,8 @@ Azure Connected Machine エージェントでは、次のバージョンの Wind
 ### <a name="azure-subscription-and-service-limits"></a>Azure サブスクリプションとサービスの制限
 
 Azure Arc 対応サーバーでコンピューターを構成する前に、Azure Resource Manager の[サブスクリプションの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)と[リソース グループの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)を確認して、接続されるコンピューターの数を計画してください。
+
+Azure Arc 対応サーバーでは、1 つのリソース グループで最大 5, 000 個のマシン インスタンスがサポートされます。
 
 ### <a name="transport-layer-security-12-protocol"></a>トランスポート層セキュリティ 1.2 プロトコル
 

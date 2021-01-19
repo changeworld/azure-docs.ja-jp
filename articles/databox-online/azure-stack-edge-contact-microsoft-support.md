@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/07/2021
 ms.author: alkohli
-ms.openlocfilehash: a457c2816d4075190a2174339f7e52a2ea41730a
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 5bbd02f9e15a4ee29e244b2a0307accd151ba487
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696025"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033950"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Azure Stack Edge Pro と Azure Data Box Gateway のサポート チケットを開く
 
@@ -78,7 +78,7 @@ ms.locfileid: "97696025"
     * 故障したハードウェア パーツのフィールド交換ユニット (FRU) が送信されます。 現時点でサポートされている FRU は、電源装置およびソリッドステート ドライブのみです。
     * FRU のみは翌営業日に交換され、それ以外はすべてフル システム交換 (FSR) の発送が必要です。
 
-3. 現地時間で午後 4:30 (月曜日から金曜日) 前にサポート チケットが発行された場合は、翌営業日にオンサイトの技術者がお客様の所在地に派遣され、FRU 交換が行われます。 部品は当社の工場から出荷され、輸送や通関の待機時間が発生する可能性があるため、システム全体の交換には通常、はるかに長い時間がかかります。
+3. 現地時間で (月曜日から金曜日の) 午後 1 時までに FRU の交換が必要であると判断された場合は、翌営業日にオンサイトの技術者がお客様の所在地に派遣され、FRU 交換を行います。 部品は当社の工場から出荷され、輸送や通関の待機時間が発生する可能性があるため、システム全体の交換には通常、はるかに長い時間がかかります。
 
 ## <a name="manage-a-support-request"></a>サポート要求を管理する
 

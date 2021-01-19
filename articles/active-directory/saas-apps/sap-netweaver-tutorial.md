@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/11/2020
 ms.author: jeedes
-ms.openlocfilehash: a282e1be019c697ad15d86df56ad191043ab4ae9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b6b8dab3472473082562f1e4c0216886191e4a59
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935846"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962807"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>チュートリアル:SAP NetWeaver と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -138,7 +138,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
 1. Azure portal の **SAP NetWeaver** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -206,7 +206,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-sap-netweaver-using-saml"></a>SAML を使用した SAP NetWeaver の構成
@@ -348,7 +348,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 2. OAuth クライアントを登録する際は、`SAML Bearer Grant type` を使用します。
 
     >[!NOTE]
-    >詳細については、[こちら](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type)の「SAML ベアラー付与タイプでの OAuth 2.0 クライアントの登録」を参照してください
+    >詳細については、[こちら](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type)の「SAML ベアラー付与タイプでの OAuth 2.0 クライアントの登録」を参照してください。
 
 3. tcod: SU01 で、CLIENT1 というユーザーを `System type` として作成してパスワードを割り当て、保存します。必要に応じてその資格情報を API プログラマに提供します。API プログラマはそれをユーザー名と共に、呼び出し元のコードに書き込む必要があります。 プロファイルやロールを割り当てる必要はありません。
 

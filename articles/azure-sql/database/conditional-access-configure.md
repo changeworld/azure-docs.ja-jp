@@ -12,12 +12,12 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
-ms.openlocfilehash: eae7d0a34d6bd76dae5998f05f9d64e0d40f7d9b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c18d235977f1256a10e813fa8e02aa3590366fe1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321606"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936415"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics での条件付きアクセス
 
@@ -25,7 +25,7 @@ ms.locfileid: "93321606"
 
 [Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、および [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) では、Microsoft の条件付きアクセスがサポートされています。
 
-次の手順では、条件付きアクセス (CA) ポリシーを適用するように Azure SQL Database、SQL Managed Instance、または Azure Synapse を構成する方法を示します。  
+次の手順では、条件付きアクセス ポリシーを適用するように Azure SQL Database、SQL Managed Instance、または Azure Synapse を構成する方法を示します。  
 
 ## <a name="prerequisites"></a>前提条件
 

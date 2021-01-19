@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d634978333e2b833324228fb0908cfba61a786d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 568584b849b2c5977d4bbb6216697dce3c498cfd
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919754"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107924"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -87,6 +87,14 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 >* グループ メンバーシップを管理できるセキュリティ グループと Microsoft 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
 >* Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
 >* 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
+
+### <a name="attack-payload-author"></a>[攻撃のペイロードの作成者](#attack-payload-author-permissions)
+
+このロールのユーザーは、攻撃のペイロードを作成することはできますが、それらを実際に起動することやスケジュールすることはできません。 攻撃のペイロードは、それらを使用してシミュレーション作成できるテナントの管理者全員が利用できます。
+
+### <a name="attack-simulation-administrator"></a>[攻撃のシミュレーションの管理者](#attack-simulation-administrator-permissions)
+
+このロールのユーザーは、攻撃シミュレーションの作成、シミュレーションの開始とスケジューリング、シミュレーション結果の確認のすべての側面を作成および管理できます。 このロールのメンバーは、テナント内のすべてのシミュレーションに対してこのアクセス権を所有します。
 
 ### <a name="azure-devops-administrator"></a>[Azure DevOps 管理者](#azure-devops-administrator-permissions)
 
@@ -489,6 +497,10 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 
 このロールのユーザーは、Microsoft Teams および Skype for Business の管理センターと、対応する PowerShell モジュールを使用して、Microsoft Teams のワークロードの全側面を管理できます。 これにはその他の領域の、テレフォニー、メッセージング、会議、およびチーム自体に関連するすべての管理ツールが含まれます。 このロールはさらに、すべての Microsoft 365 グループの作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。
 
+### <a name="usage-summary-reports-reader"></a>[使用状況の概要のレポート閲覧者](#usage-summary-reports-reader-permissions)
+
+このロールのユーザーは、使用状況と生産性スコアについて、Microsoft 365 管理センターでテナント レベルの集計データと関連する分析情報にアクセスできますが、ユーザー レベルの詳細や分析情報にはアクセスできません。 2 つのレポートについて、Microsoft 365 管理センターでは、テナント レベルの集計データとユーザー レベルの詳細が区別されます。 このロールは、顧客と法務チームの両方によって求められた個々のユーザーの識別可能データに対して追加の保護レイヤーを提供します。 
+
 ### <a name="user-administrator"></a>[ユーザー管理者](#user-administrator-permissions)
 
 このロールが割り当てられたユーザーは、ユーザーを作成し、いくつか制限はありますがユーザーのすべての側面を管理できる (表参照) ほか、パスワードの有効期限ポリシーを更新できます。 また、このロールのユーザーは、グループを作成し、すべてのグループを管理することができます。 このロールでは、ユーザー ビューを作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。 ユーザー管理者には、ほとんどの管理者ロールのユーザーについて、一部のユーザー プロパティを管理するためのアクセス許可が与えられません。 このロールのユーザーには、MFA を管理するためのアクセス許可がありません。 この制限の例外に相当するロールを次の表にまとめています。
@@ -591,6 +603,25 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 | microsoft.office365.serviceHealth/allEntities/allTasks | Microsoft 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 | microsoft.directory/users/password/update | Microsoft 365 組織内のすべてのユーザーのパスワードの更新。 詳細については、オンライン ドキュメントを参照してください。 |
+
+### <a name="attack-payload-author-permissions"></a>攻撃のペイロードの作成者のアクセス許可
+
+管理者が後でデプロイできる攻撃のペイロードを作成できます。
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.office365.protectionCenter/attackSimulator/payload/allProperties/allTasks | 攻撃シミュレーターでの攻撃ペイロードの作成と管理。 |
+| microsoft.office365.protectionCenter/attackSimulator/reports/allProperties/read | 攻撃のシミュレーション、応答、関連付けられているトレーニングのレポートの読み取り。 |
+
+### <a name="attack-simulation-administrator-permissions"></a>攻撃のシミュレーションの管理者のアクセス許可
+
+攻撃のシミュレーション キャンペーンのすべての側面を作成および管理できます。
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.office365.protectionCenter/attackSimulator/payload/allProperties/allTasks | 攻撃シミュレーターでの攻撃ペイロードの作成と管理。 |
+| microsoft.office365.protectionCenter/attackSimulator/reports/allProperties/read | 攻撃のシミュレーション、応答、関連付けられているトレーニングのレポートの読み取り。 |
+| microsoft.office365.protectionCenter/attackSimulator/simulation/allProperties/allTasks | 攻撃シミュレーターでの攻撃のシミュレーション テンプレートの作成および管理。 |
 
 ### <a name="azure-devops-administrator-permissions"></a>Azure DevOps 管理者のアクセス許可
 
@@ -739,6 +770,7 @@ Azure AD のすべての側面と、Azure AD の ID が使用される Microsoft
 | microsoft.directory/directoryRoles/allProperties/allTasks | Azure Active Directory での directoryRoles の作成と削除、およびすべてのプロパティの読み取りと更新。 |
 | microsoft.directory/directoryRoleTemplates/allProperties/allTasks | Azure Active Directory での directoryRoleTemplates の作成と削除、およびすべてのプロパティの読み取りと更新。 |
 | microsoft.directory/domains/allProperties/allTasks | Azure Active Directory での domains の作成と削除、およびすべてのプロパティの読み取りと更新。 |
+| microsoft.directory/entitlementManagement/allProperties/allTasks | Azure AD エンタイトルメント管理でのリソースの作成と削除、およびすべてのプロパティの読み取りと更新。 |
 | microsoft.directory/groups/allProperties/allTasks | Azure Active Directory での groups の作成と削除、およびすべてのプロパティの読み取りと更新。 |
 | microsoft.directory/groupsAssignableToRoles/allProperties/update | Azure Active Directory での isAssignableToRole プロパティが true に設定されているグループの更新。 |
 | microsoft.directory/groupsAssignableToRoles/create | Azure Active Directory での isAssignableToRole プロパティが true に設定されているグループの作成。 |
@@ -800,6 +832,7 @@ Azure AD および Microsoft 365 のコンプライアンスの構成とレポ�
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | ディレクトリレベル サービスの Azure サポート チケットの作成と管理。 |
+| microsoft.directory/entitlementManagement/allProperties/read | Azure AD エンタイトルメント管理でのすべてのプロパティの読み取り。 |
 | microsoft.office365.complianceManager/allEntities/allTasks | Office 365 コンプライアンス マネージャーの全側面の管理 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Microsoft 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
@@ -1102,6 +1135,7 @@ Exchange 製品のすべての側面を管理できます。
 | microsoft.directory/directoryRoles/eligibleMembers/read    | Azure Active Directory での directoryRoles.eligibleMembers プロパティの読み取り。 |
 | microsoft.directory/directoryRoles/members/read    | Azure Active Directory での directoryRoles.members プロパティの読み取り。 |
 | microsoft.directory/domains/basic/read    | Azure Active Directory での domains の基本プロパティの読み取り。 |
+| microsoft.directory/entitlementManagement/allProperties/read | Azure AD エンタイトルメント管理でのすべてのプロパティの読み取り。 |
 | microsoft.directory/groups/appRoleAssignments/read    | Azure Active Directory での groups.appRoleAssignments プロパティの読み取り。 |
 | microsoft.directory/groups/basic/read    | Azure Active Directory での groups の基本プロパティの読み取り。 |
 | microsoft.directory/groups/hiddenMembers/read    | Azure Active Directory での groups.hiddenMembers プロパティの読み取り。 |
@@ -1200,7 +1234,7 @@ Exchange 製品のすべての側面を管理できます。
 
 ### <a name="hybrid-identity-administrator-permissions"></a>ハイブリッド ID の管理者のアクセス許可
 
-クラウド プロビジョニング サービスと認証サービスの有効化、デプロイ、構成、管理、監視、トラブルシューティングを行うことができます。 
+AD から Azure AD へのクラウド プロビジョニングとフェデレーションの設定を管理できます。 
 
 | **アクション** | **説明** |
 | --- | --- |
@@ -1218,8 +1252,10 @@ Exchange 製品のすべての側面を管理できます。
 | microsoft.directory/applicationTemplates/instantiate | アプリケーション テンプレートからギャラリー アプリケーションのインスタンス化。 |
 | microsoft.directory/auditLogs/allProperties/read | Azure Active Directory での auditLogs 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
 | microsoft.directory/cloudProvisioning/allProperties/allTasks | Azure AD クラウド プロビジョニング サービスのすべてのプロパティを読み取りと構成。 |
-| microsoft.directory/federatedAuthentication/allProperties/allTasks | Azure AD で Active Directory フェデレーション サービス (ADFS) またはサードパーティのフェデレーション プロバイダーのすべての側面の管理。 |
+| microsoft.directory/domains/allProperties/read | ドメインのすべてのプロパティの読み取り。 |
+| microsoft.directory/domains/federation/update | ドメインのフェデレーション プロパティの更新。 |
 | microsoft.directory/organization/dirSync/update | Azure Active Directory での organization.dirSync プロパティの更新。 |
+| microsoft.directory/provisioningLogs/allProperties/read | プロビジョニング ログのすべてのプロパティの読み取り。 |
 | microsoft.directory/servicePrincipals/audience/update | Azure Active Directory での servicePrincipals.audience プロパティの更新。 |
 | microsoft.directory/servicePrincipals/authentication/update | Azure Active Directory での servicePrincipals.authentication プロパティの更新。 |
 | microsoft.directory/servicePrincipals/basic/update | Azure Active Directory での servicePrincipals の基本プロパティの更新。 |
@@ -1434,6 +1470,14 @@ Office アプリのクラウド サービスを管理すること (ポリシー�
 
 | **アクション** | **説明** |
 | --- | --- |
+| microsoft.directory/applications/appRoles/update | アプリ ロールの管理とアプリケーションの委任されたアクセス許可の要求。 |
+| microsoft.directory/applications/audience/update | すべての種類のアプリケーションでのオーディエンスの更新。 |
+| microsoft.directory/applications/authentication/update | すべての種類のアプリケーションでの認証の更新。 |
+| microsoft.directory/applications/basic/update | すべての種類のアプリケーションでの基本プロパティの更新。 |
+| microsoft.directory/applications/credentials/update | すべての種類のアプリケーションでの資格情報の更新。 |
+| microsoft.directory/applications/owners/update | すべての種類のアプリケーションでの所有者の更新。 |
+| microsoft.directory/applications/permissions/update | すべての種類のアプリケーションでの、公開されたアクセス許可と必要なアクセス許可の更新。 |
+| microsoft.directory/applications/policies/update | Azure Active Directory での applications.policies プロパティの更新。 |
 | microsoft.directory/contacts/basic/update | Azure Active Directory での contacts の基本プロパティの更新。 |
 | microsoft.directory/contacts/create | Azure Active Directory での contacts の作成。 |
 | microsoft.directory/contacts/delete | Azure Active Directory での contacts の削除。 |
@@ -1467,6 +1511,14 @@ Office アプリのクラウド サービスを管理すること (ポリシー�
 
 | **アクション** | **説明** |
 | --- | --- |
+| microsoft.directory/applications/appRoles/update | アプリ ロールの管理とアプリケーションの委任されたアクセス許可の要求。 |
+| microsoft.directory/applications/audience/update | すべての種類のアプリケーションでのオーディエンスの更新。 |
+| microsoft.directory/applications/authentication/update | すべての種類のアプリケーションでの認証の更新。 |
+| microsoft.directory/applications/basic/update | すべての種類のアプリケーションでの基本プロパティの更新。 |
+| microsoft.directory/applications/credentials/update | すべての種類のアプリケーションでの資格情報の更新。 |
+| microsoft.directory/applications/owners/update | すべての種類のアプリケーションでの所有者の更新。 |
+| microsoft.directory/applications/permissions/update | すべての種類のアプリケーションでの、公開されたアクセス許可と必要なアクセス許可の更新。 |
+| microsoft.directory/applications/policies/update | Azure Active Directory での applications.policies プロパティの更新。 |
 | microsoft.directory/contacts/basic/update | Azure Active Directory での contacts の基本プロパティの更新。 |
 | microsoft.directory/contacts/create | Azure Active Directory での contacts の作成。 |
 | microsoft.directory/contacts/delete | Azure Active Directory での contacts の削除。 |
@@ -1661,9 +1713,10 @@ Microsoft Search 設定のすべての側面を作成および管理できます
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | ディレクトリレベル サービスの Azure サポート チケットの作成と管理。 |
-| microsoft.directory/bitlockerKeys/key/read | Azure Active Directory での bitlocker キー オブジェクトおよびプロパティ (回復キーを含む) の読み取り。 |
 | microsoft.directory/applications/policies/update | Azure Active Directory での applications.policies プロパティの更新。 |
 | microsoft.directory/auditLogs/allProperties/read | Azure Active Directory での auditLogs 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
+| microsoft.directory/bitlockerKeys/key/read | Azure Active Directory での bitlocker キー オブジェクトおよびプロパティ (回復キーを含む) の読み取り。 |
+| microsoft.directory/entitlementManagement/allProperties/read | Azure AD エンタイトルメント管理でのすべてのプロパティの読み取り。 |
 | microsoft.directory/identityProtection/allProperties/read | microsoft.aad.identityProtection でのすべてのリソースの読み取り。 |
 | microsoft.directory/identityProtection/allProperties/update | microsoft.aad.identityProtection でのすべてのリソースの更新。 |
 | microsoft.directory/policies/basic/update | Azure Active Directory での policies の基本プロパティの更新。 |
@@ -1714,6 +1767,7 @@ Azure AD と Microsoft 365 のセキュリティ情報とレポートを読み�
 | --- | --- |
 | microsoft.directory/auditLogs/allProperties/read | Azure Active Directory での auditLogs 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
 | microsoft.directory/bitlockerKeys/key/read | Azure Active Directory での bitlocker キー オブジェクトおよびプロパティ (回復キーを含む) の読み取り。 |
+| microsoft.directory/entitlementManagement/allProperties/read | Azure AD エンタイトルメント管理でのすべてのプロパティの読み取り。 |
 | microsoft.directory/policies/conditionalAccess/basic/read | Azure Active Directory での policies.conditionalAccess プロパティの読み取り。 |
 | microsoft.directory/signInReports/allProperties/read | Azure Active Directory での signInReports 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
 | microsoft.aad.identityProtection/allEntities/read | microsoft.aad.identityProtection でのすべてのリソースの読み取り。 |
@@ -1860,6 +1914,14 @@ Microsoft Teams サービスを管理できます。
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 | microsoft.teams/allEntities/allProperties/allTasks | Teams 内のすべてのリソースの管理。 |
 
+### <a name="usage-summary-reports-reader-permissions"></a>使用状況の概要のレポート閲覧者のアクセス許可
+M365 利用状況分析および生産性スコアのテナント レベルの集計のみを表示できます。
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.office365.usageReports/allEntities/standard/read | テナント レベルの集計された Office 365 利用状況レポートの読み取り。 |
+| microsoft.office365.webPortal/allEntities/standard/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。|
+
 ### <a name="user-administrator-permissions"></a>ユーザー管理者のアクセス許可
 ユーザーとグループのすべての側面を、制限付きの管理者のパスワードをリセットすることも含めて、管理できます。
 
@@ -1871,6 +1933,7 @@ Microsoft Teams サービスを管理できます。
 | microsoft.directory/contacts/basic/update | Azure Active Directory での contacts の基本プロパティの更新。 |
 | microsoft.directory/contacts/create | Azure Active Directory での contacts の作成。 |
 | microsoft.directory/contacts/delete | Azure Active Directory での contacts の削除。 |
+| microsoft.directory/entitlementManagement/allProperties/allTasks | Azure AD エンタイトルメント管理でのリソースの作成と削除、およびすべてのプロパティの読み取りと更新。 |
 | microsoft.directory/groups/appRoleAssignments/update | Azure Active Directory での groups.appRoleAssignments プロパティの更新。 |
 | microsoft.directory/groups/basic/update | Azure Active Directory での groups の基本プロパティの更新。 |
 | microsoft.directory/groups/create | Azure Active Directory での groups の作成。 |
@@ -1906,6 +1969,8 @@ Microsoft Teams サービスを管理できます。
 アプリケーション管理者 | アプリケーション管理者 | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 アプリケーション開発者 | アプリケーション開発者 | CF1C38E5-3621-4004-A7CB-879624DCED7C
 認証管理者 | 認証管理者 | c4e39bd9-1100-46d3-8c65-fb160da0071f
+攻撃のペイロードの作成者 | 攻撃のペイロードの作成者 | 9c6df0f2-1e7c-4dc3-b195-66dfbd24aa8f
+攻撃のシミュレーションの管理者 | 攻撃のシミュレーションの管理者 | c430b396-e693-46cc-96f3-db01bf8bb62a
 Azure DevOps 管理者 | Azure DevOps 管理者 | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection 管理者 | Azure Information Protection 管理者 | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C IEF キーセット管理者 | B2C IEF キーセット管理者 | aaf43236-0c0d-4d5f-883a-6955382ac081
@@ -1969,6 +2034,7 @@ Teams 通信サポート エンジニア | Teams 通信サポート エンジニ
 Teams 通信サポート スペシャリスト | Teams 通信サポート スペシャリスト | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Teams デバイス管理者 | Teams デバイス管理者 | 3d762c5a-1b6c-493f-843e-55a3b42923d4
 Teams サービス管理者 | Teams サービス管理者 | 69091246-20e8-4a56-aa4d-066075b2a7a8
+使用状況の概要のレポート閲覧者 | 使用状況の概要のレポート閲覧者 | 75934031-6c7e-415a-99d7-48dbd49e875e
 User | 使用できないため、表示されません | a0b1b346-4d3e-4e8b-98f8-753987be4970
 ユーザー アカウント管理者 | ユーザー管理者 | fe930be7-5e62-47db-91af-98c3a49a38b1
 デバイスの社内参加 | 非推奨 | c34f683f-4d5a-4403-affd-6615e00e3a7f

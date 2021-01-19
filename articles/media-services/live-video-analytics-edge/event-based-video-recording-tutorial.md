@@ -3,12 +3,12 @@ title: クラウドへのイベントベースのビデオ記録とクラウド�
 description: このチュートリアルでは、Azure Live Video Analytics on Azure IoT Edge を使用して、イベントベースのビデオ録画をクラウドに記録し、これをクラウドから再生する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 8f3ecdf7e4260d700f31663852abbb39474cd474
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: cfb4648d991565470133d603194c07b797f89311
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401673"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060437"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>チュートリアル:クラウドへのイベントベースのビデオ記録とクラウドからの再生
 
@@ -53,6 +53,9 @@ ms.locfileid: "97401673"
 * Azure ストレージ アカウント
 * Azure Media Services アカウント
 * Azure 内の Linux VM ([IoT Edge ランタイム](../../iot-edge/how-to-install-iot-edge.md)がインストール済み)
+
+> [!TIP]
+> 作成された Azure リソースで問題が発生した場合は、 **[トラブルシューティング ガイド](troubleshoot-how-to.md#common-error-resolutions)** を参照して、よく発生する問題を解決してください。
 
 ## <a name="concepts"></a>概念
 
@@ -230,7 +233,7 @@ objectCounter モジュールおよび Live Video Analytics on IoT Edge モジ�
      
         ```
         {
-          "@apiVersion": "1.0",
+          "@apiVersion": "2.0",
           "name": "Sample-Graph-1",
           "properties": {
             "topologyName": "EVRtoAssetsOnObjDetect",
@@ -277,7 +280,7 @@ objectCounter モジュールおよび Live Video Analytics on IoT Edge モジ�
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished イベント 
 
-メディア グラフがインスタンス化されると、RTSP ソース ノードは、RTSP シミュレーター コンテナーで実行されている RTSP サーバーへの接続を試みます。 成功した場合、このイベントが出力されます。 イベントの種類は、Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished です。
+メディア グラフがインスタンス化されると、RTSP ソース ノードは、RTSP シミュレーター コンテナーで実行されている RTSP サーバーへの接続を試みます。 成功した場合、このイベントが出力されます。 イベントの種類は、**Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished** です。
 
 ```
 [IoTHubMonitor] [5:53:17 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -325,7 +328,7 @@ applicationProperties セクションには、イベントの時刻が含まれ�
 
 ### <a name="recordingstarted-event"></a>RecordingStarted イベント
 
-オブジェクト カウンターからイベントが送信されると、そのほぼ直後に種類が Microsoft.Media.Graph.Operational.RecordingStarted のイベントが次のように表示されます。
+オブジェクト カウンターからイベントが送信されると、そのほぼ直後に種類が **Microsoft.Media.Graph.Operational.RecordingStarted** のイベントが次のように表示されます。
 
 ```
 [IoTHubMonitor] [5:53:46 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -348,7 +351,7 @@ applicationProperties の subject セクションが、このメッセージの�
 
 ### <a name="recordingavailable-event"></a>RecordingAvailable イベント
 
-資産シンク ノードがビデオを資産にアップロードすると、種類が Microsoft.Media.Graph.Operational.RecordingAvailable のイベントが次のように出力されます。
+資産シンク ノードがビデオを資産にアップロードすると、種類が **Microsoft.Media.Graph.Operational.RecordingAvailable** のイベントが次のように出力されます。
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -371,7 +374,7 @@ applicationProperties の subject セクションが、このメッセージの�
 
 ### <a name="recordingstopped-event"></a>RecordingStopped イベント
 
-[トポロジ](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)内のシグナル ゲート プロセッサ ノードのアクティブ化設定 (maximumActivationTime) を確認すると、ビデオが 30 秒間送信された後にゲートが閉じるように設定されていることがわかります。 RecordingStarted イベントの約 30 秒後に、種類が Microsoft.Media.Graph.Operational.RecordingStopped のイベントが表示されます。 このイベントは、資産シンク ノードが資産へのビデオ記録を停止したことを示します。
+[トポロジ](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)内のシグナル ゲート プロセッサ ノードのアクティブ化設定 (maximumActivationTime) を確認すると、ビデオが 30 秒間送信された後にゲートが閉じるように設定されていることがわかります。 RecordingStarted イベントの約 30 秒後に、種類が **Microsoft.Media.Graph.Operational.RecordingStopped** のイベントが表示されます。 このイベントは、資産シンク ノードが資産へのビデオ記録を停止したことを示します。
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:

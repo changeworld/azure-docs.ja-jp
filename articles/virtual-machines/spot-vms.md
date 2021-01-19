@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: b8e5c6b6b755134772cc8eaea3dab3af7f5346c9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e1666b7e74ceefd7e7e4fe6e499667b09efa0ac7
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963365"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963795"
 ---
 # <a name="use-spot-vms-in-azure"></a>Azure でスポット VM を使用する
 
@@ -81,7 +81,7 @@ VM が排除されるときに、VM を削除したい場合は、排除ポリ�
 
 **テーブル**:
 
-:::image type="content" source="./media/spot-table.png" alt-text="リージョン オプションのスクリーンショット。グラフの価格と削除率に違いがあります。":::
+:::image type="content" source="./media/spot-table.png" alt-text="リージョン オプションのスクリーンショット。テーブルの価格と削除率に違いがあります。":::
 
 
 
@@ -110,6 +110,11 @@ VM が排除されるときに、VM を削除したい場合は、排除ポリ�
 **質問:** どこで質問を投稿できますか。
 
 **A:** [Q&A](/answers/topics/azure-spot.html) で質問を投稿し、`azure-spot` のタグを付けることができます。 
+
+
+**質問:** スポット VM の最大価格を変更する方法はありますか。
+
+**A:** 最大価格を変更する前に、VM の割り当てを解除する必要があります。 その後、VM の **[Configuration]\(構成\)** セクションで、ポータルの最大価格を変更できます。 
 
 ## <a name="next-steps"></a>次のステップ
 [CLI](./linux/spot-cli.md)、[ポータル](spot-portal.md)、[ARM テンプレート](./linux/spot-template.md)、または [PowerShell](./windows/spot-powershell.md) を使用して、スポット VM をデプロイします。

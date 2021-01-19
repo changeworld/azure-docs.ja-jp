@@ -3,12 +3,12 @@ title: コンテナー グループの静的 IP アドレス
 description: 仮想ネットワーク内にコンテナー グループを作成し、Azure アプリケーション ゲートウェイを使用して、コンテナー化された Web アプリに静的フロントエンド IP アドレスを公開します
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: bc128da0f4c2e92af98781cef45f48f9e8aeab31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0131780fdb04a71837d5ae9bf5498bf2bd499f8a
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260789"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035055"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>コンテナー グループの静的 IP アドレスの公開
 
@@ -100,6 +100,9 @@ ACI_IP=$(az container show \
   --resource-group myResourceGroup \
   --query ipAddress.ip --output tsv)
 ```
+
+> [!IMPORTANT]
+> コンテナー グループが停止、開始、または再起動された場合、コンテナー グループのプライベート IP が変更される可能性があります。 これが発生した場合は、アプリケーション ゲートウェイの構成を更新する必要があります。
 
 ## <a name="create-application-gateway"></a>アプリケーション ゲートウェイの作成
 

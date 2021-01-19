@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f2d55d1fcc92abdc629581d6e4d277ec0294dce0
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 8e657386c417ce3407aea9b3765419e1d2b70bb9
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858690"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962450"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows での Azure Files に関する問題のトラブルシューティング (SMB)
 
@@ -126,7 +126,7 @@ Azure Files は、SMB だけでなく、REST もサポートしています。 R
 
 クライアント側で NTLMv1 通信が有効になっていると、システム エラー 53 またはシステム エラー 87 が発生することがあります。 Azure Files では、NTLMv2 認証のみがサポートされています。 NTLMv1 が有効になっていると、クライアントの安全性が低下します。 そのため、Azure Files に対する通信がブロックされます。 
 
-これがエラーの原因であるかどうかを確認するには、次のレジストリ サブキーで値が 3 に設定されていることを確認します。
+これがエラーの原因であるかどうかを確認するには、次のレジストリ サブキが 3 未満の値に設定されていないことを確認します。
 
 **HKLM\SYSTEM\CurrentControlSet\Control\Lsa > LmCompatibilityLevel**
 

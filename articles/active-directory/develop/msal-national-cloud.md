@@ -1,7 +1,7 @@
 ---
 title: 各国のクラウドアプリで MSAL を使用する | Azure
 titleSuffix: Microsoft identity platform
-description: Microsoft Authentication Library (MSAL) を使用すると、アプリケーション開発者はセキュリティで保護された Web API を呼び出すためにトークンを取得することができます。 これらの Web API には、Microsoft Graph、その他の Microsoft API、パートナーの Web API、または自分の Web API が可能です。 MSAL は、複数のアプリケーション アーキテクチャとプラットフォームをサポートします。
+description: Microsoft Authentication Library (MSAL) を使用すると、アプリケーション開発者はセキュリティで保護された Web API を呼び出すためにトークンを取得できます。 これらの Web API には、Microsoft Graph、その他の Microsoft API、パートナーの Web API、または自分の Web API が可能です。 MSAL は、複数のアプリケーション アーキテクチャとプラットフォームをサポートします。
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2f631ad650b20110084ff902043447f26c2d4ab3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 22b3ea9eb0e4c3379438b6c3fb58ccfb13b4ed32
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453598"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064795"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>国内クラウド環境で MSAL を使用する
 

@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: e7b5dfe9380612d56e591c3f619dfcb8582f8dee
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 016ad0e11f3378dba887e0a235f235fa91e3aa03
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95555606"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109336"
 ---
 ### <a name="property-limits"></a>プロパティの制限
 
@@ -32,7 +32,7 @@ Azure Time Series Insights プロパティの制限が、ウォーム ストレ�
 
 * イベント ソースのベストプラクティスと一般的なガイダンスについては、[こちら](../articles/time-series-insights/concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices)を参照してください
 
-* 既定では、Azure Time Series Insights Gen2 では **Azure Time Series Insights Gen2 環境ごとに最大 1 MB/秒 (MBps)** の速度で受信データを取り込むことができます。 [ハブのパーティションごとに](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits)追加の制限があります。 Azure portal を介してサポート チケットを提出することで、最大 8 MBps の速度が提供されます。 詳細については、「[ストリーミング インジェストのスループットの制限](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md)」を参照してください。
+* 既定では、Azure Time Series Insights Gen2 では **Azure Time Series Insights Gen2 環境ごとに最大 1 MB/秒 (MBps)** の速度で受信データを取り込むことができます。 [ハブのパーティションごとに](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits)追加の制限があります。 Azure portal を介してサポート チケットを提出することで、最大 2 MBps の速度が提供されます。 詳細については、「[ストリーミング インジェストのスループットの制限](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md)」を参照してください。
 
 ### <a name="api-limits"></a>API の制限
 

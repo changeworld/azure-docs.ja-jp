@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 内のリソースへの外部アクセスをセキュリティで保護する
+title: Azure Active Directory での外部コラボレーションのセキュリティ保護
 description: 内部リソースへの外部アクセスをセキュリティで保護するためのアーキテクトと IT 管理者向けのガイド
 services: active-directory
 author: BarbaraSelden
@@ -13,14 +13,14 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39300c887245a99dce2913661f6492c85a1e6722
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7f09d2050617cbda539eee9fcda1ecfb204a015a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743745"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059281"
 ---
-# <a name="securing-external-access-to-resources"></a>リソースへの外部アクセスをセキュリティで保護する
+# <a name="securing-external-collaboration-in-azure-active-directory-and-microsoft-365"></a>Azure Active Directory と Microsoft 365 での外部コラボレーションのセキュリティ保護
 
 外部パートナーとのコラボレーションをセキュリティで保護することによって、適切な外部パートナーが適切な時間内に内部リソースに適切にアクセスできるようになります。 総合的なガバナンス アプローチにより、セキュリティ リスクを軽減し、コンプライアンス目標を達成し、アクセス権を持つユーザーを把握することができます。
 
@@ -43,7 +43,7 @@ Microsoft では、外部アクセスをセキュリティで保護するため�
 リソースへの外部アクセスをセキュリティで保護する方法については、次の記事を参照してください。 アクションは、表示されている順序で実行することをお勧めします。
 
 
-1. [外部アクセスに必要なセキュリティ体制を決定する](1-secure-access-posture.md)
+1. [外部アクセスに対するセキュリティ体制を決定する](1-secure-access-posture.md)
 
 2. [現在の状態を理解する](2-secure-access-current-state.md)
 

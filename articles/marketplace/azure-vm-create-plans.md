@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 023dc877158c7074f46945893d40291e94ab2f09
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e5fb425afdd4b212a0b28ce91418eb0ee9e3632f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629558"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964433"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>仮想マシン オファーのプラン作成する方法
 
@@ -191,7 +191,7 @@ VM が **高速ネットワークをサポートしている** かどうかを�
 
 1. 新しいオファーを作成するときに、 **[Generation type]\(世代\)** を選択し、要求された詳細を入力します。
 
-    :::image type="content" source="./media/create-vm/azure-vm-generations-image-details-1.png" alt-text="[Generation]\(世代\) ドロップダウン ボックスの表示。":::
+    :::image type="content" source="./media/create-vm/azure-vm-generations-image-details-1.png" alt-text="パートナー センターの [Generation]\(世代\) の詳細セクションのビュー。":::
 
 2. プランに別の世代を追加するには、 **[Add generation]\(世代の追加\)** を選択します。
 
@@ -204,8 +204,6 @@ VM が **高速ネットワークをサポートしている** かどうかを�
 <!--    The **Generation ID** you choose will be visible to customers in places such as product URLs and ARM templates (if applicable). Use only lowercase, alphanumeric characters, dashes, or underscores; it cannot be modified once published.
 -->
 3. 第 1 世代が既に発行されている既存の VM を更新するには、この **[技術的な構成]** ページで詳細を編集します。
-
-    :::image type="content" source="./media/create-vm/azure-vm-generations-updating.png" alt-text="プランの [技術的な構成] ページの表示。":::
 
 第 1 世代と第 2 世代の機能の違いの詳細については、「[Azure での第 2 世代 VM のサポート](../virtual-machines/generation-2.md)」を参照してください。
 

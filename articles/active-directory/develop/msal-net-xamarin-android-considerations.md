@@ -13,12 +13,12 @@ ms.date: 08/28/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 320d48535c4792a4d610888c6a7030568ccf16bc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 34f2b146dda6e739f977c4894b5ec333c79d74d4
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995184"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063435"
 ---
 # <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>MSAL.NET を使用した Xamarin Android の構成要件とトラブルシューティングのヒント
 

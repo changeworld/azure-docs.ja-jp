@@ -128,6 +128,8 @@
       href: authentication.md
     - name: Windows Virtual Desktop の環境
       href: environment-setup.md
+    - name: Windows Virtual Desktop エージェント
+      href: agent-overview.md
     - name: ネットワーク接続
       items:
         - name: ネットワーク接続について
@@ -180,6 +182,8 @@
       href: troubleshoot-vm-configuration.md
     - name: リモート デスクトップ サービスの接続
       href: troubleshoot-service-connection.md
+    - name: Windows Virtual Desktop エージェント
+      href: troubleshoot-agent.md
     - name: リモート デスクトップ クライアントの問題
       href: troubleshoot-client.md
     - name: Windows Virtual Desktop PowerShell

@@ -3,7 +3,7 @@ title: Azure AD Connect Health - 重複する属性の同期エラーの診断 |
 description: このドキュメントでは、重複属性同期エラーの診断プロセスと、孤立したオブジェクトのシナリオを Azure portal から直接修正できる可能性について説明します。
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: maheshu
 editor: billmath
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2bd2e72b05cc01b1a351880d565323662635364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5942d208fa3859d0a4a80de5f072f2e798fe040f
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89278685"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028932"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>重複属性同期エラーを診断して修正する
 
@@ -34,16 +34,16 @@ Azure AD の詳細については、「[ID 同期と重複属性の回復性](ho
 
 ## <a name="problems"></a>問題が発生した場合
 ### <a name="a-common-scenario"></a>一般的なシナリオ
-**QuarantinedAttributeValueMustBeUnique** および **AttributeValueMustBeUnique** 同期エラーが発生した場合、一般的には、**UserPrincipalName** または**プロキシ アドレス**の競合を Azure AD で確認します。 オンプレミス側から競合するソース オブジェクトを更新することで、同期エラーを解決できる可能性があります。 同期エラーは、次の同期の後に解決されます。たとえば、次の図は 2 人のユーザーの **UserPrincipalName** が競合していることを示しています。 両方とも **Joe.J\@contoso.com** です。 競合するオブジェクトは、Azure AD で検査されます。
+**QuarantinedAttributeValueMustBeUnique** および **AttributeValueMustBeUnique** 同期エラーが発生した場合、一般的には、**UserPrincipalName** または **プロキシ アドレス** の競合を Azure AD で確認します。 オンプレミス側から競合するソース オブジェクトを更新することで、同期エラーを解決できる可能性があります。 同期エラーは、次の同期の後に解決されます。たとえば、次の図は 2 人のユーザーの **UserPrincipalName** が競合していることを示しています。 両方とも **Joe.J\@contoso.com** です。 競合するオブジェクトは、Azure AD で検査されます。
 
 ![同期エラーの一般的なシナリオを診断する](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
 ### <a name="orphaned-object-scenario"></a>孤立したオブジェクトのシナリオ
-既存のユーザーの**ソース アンカー**が失われていることに気付く場合があります。 オンプレミスの Active Directory で、ソース オブジェクトの削除が発生しました。 しかし、削除信号の変更が Azure AD に同期されませんでした。 このような喪失は、同期エンジンの問題やドメインの移行などの理由で発生します。 同じオブジェクトが復元されたり再作成されたりするとき、論理的には、既存のユーザーが**ソース アンカー**から同期するユーザーである必要があります。 
+既存のユーザーの **ソース アンカー** が失われていることに気付く場合があります。 オンプレミスの Active Directory で、ソース オブジェクトの削除が発生しました。 しかし、削除信号の変更が Azure AD に同期されませんでした。 このような喪失は、同期エンジンの問題やドメインの移行などの理由で発生します。 同じオブジェクトが復元されたり再作成されたりするとき、論理的には、既存のユーザーが **ソース アンカー** から同期するユーザーである必要があります。 
 
-既存のユーザーがクラウドのみのオブジェクトである場合、競合しているユーザーが Azure AD に同期されることもあります。 ユーザーを既存のオブジェクトに同期して一致させることはできません。 **ソース アンカー**を再マップする直接的な方法はありません。 詳細については、[既存のサポート技術情報](https://support.microsoft.com/help/2647098)をご覧ください。 
+既存のユーザーがクラウドのみのオブジェクトである場合、競合しているユーザーが Azure AD に同期されることもあります。 ユーザーを既存のオブジェクトに同期して一致させることはできません。 **ソース アンカー** を再マップする直接的な方法はありません。 詳細については、[既存のサポート技術情報](https://support.microsoft.com/help/2647098)をご覧ください。 
 
-たとえば、Azure AD の既存のオブジェクトが、Joe のライセンスを保持しているものとします。 異なる**ソース アンカー**のオブジェクトが新しく同期されると、Azure AD 内で重複属性状態が発生します。 オンプレミスの Active Directory での Joe の変更は、Azure AD での Joe の元のユーザー (既存のオブジェクト) には適用されません。  
+たとえば、Azure AD の既存のオブジェクトが、Joe のライセンスを保持しているものとします。 異なる **ソース アンカー** のオブジェクトが新しく同期されると、Azure AD 内で重複属性状態が発生します。 オンプレミスの Active Directory での Joe の変更は、Azure AD での Joe の元のユーザー (既存のオブジェクト) には適用されません。  
 
 ![同期エラーで孤立したオブジェクトのシナリオを診断する](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
 
@@ -58,7 +58,7 @@ Azure AD の詳細については、「[ID 同期と重複属性の回復性](ho
 | OnPremiseSecurityIdentifier |  AttributeValueMustBeUnique |
 
 >[!IMPORTANT]
-> この機能にアクセスするには、**全体管理者**のアクセス許可、または Azure RBAC の**共同作成者**のアクセス許可が必要です。
+> この機能にアクセスするには、**全体管理者** のアクセス許可、または Azure RBAC の **共同作成者** のアクセス許可が必要です。
 >
 
 同期エラーの詳細を絞り込み、さらに具体的な解決策を表示するには、Azure portal から次の手順のようにします。
@@ -97,11 +97,11 @@ Azure portal から次の手順を実行して、修正可能な固有のシナ�
    - オブジェクトが見つからない場合は、 **[はい]** と回答します。
 
 これらの例の質問は、オンプレミスの Active Directory に **Joe Jackson** がまだ存在するかどうかを確認しようとしています。
-**一般的なシナリオ**では、**Joe Johnson** と **Joe Jackson** 両方のユーザーがオンプレミスの Active Directory に存在します。 検査されているオブジェクトは、2 つの異なるユーザーです。
+**一般的なシナリオ** では、**Joe Johnson** と **Joe Jackson** 両方のユーザーがオンプレミスの Active Directory に存在します。 検査されているオブジェクトは、2 つの異なるユーザーです。
 
 ![同期エラーの一般的なシナリオを診断する](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
-**孤立したオブジェクトのシナリオ**では、オンプレミスの Active Directory から単一のユーザーのみ (**Joe Johnson**) が表示されます。
+**孤立したオブジェクトのシナリオ** では、オンプレミスの Active Directory から単一のユーザーのみ (**Joe Johnson**) が表示されます。
 
 ![同期エラーの孤立ユーザー オブジェクトが "存在する" シナリオを診断する](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
 
@@ -119,8 +119,8 @@ Azure portal から次の手順を実行して、修正可能な固有のシナ�
 
 
 ## <a name="what-happens-after-the-fix-is-applied-in-the-orphaned-object-scenario"></a>孤立したオブジェクトのシナリオで修正の適用後に発生する処理
-前の質問への回答に基づいて、Azure AD から使用可能な修正がある場合は、 **[修正の適用]** ボタンが表示されます。 このケースでは、オンプレミスのオブジェクトが予期しない Azure AD オブジェクトと同期しています。 2 つのオブジェクトは、**ソース アンカー**を使用してマップされます。 **[修正の適用]** の変更は、次の手順または同様の手順で行われます。
-1. Azure AD で適切なオブジェクトへの**ソース アンカー**を更新します。
+前の質問への回答に基づいて、Azure AD から使用可能な修正がある場合は、 **[修正の適用]** ボタンが表示されます。 このケースでは、オンプレミスのオブジェクトが予期しない Azure AD オブジェクトと同期しています。 2 つのオブジェクトは、**ソース アンカー** を使用してマップされます。 **[修正の適用]** の変更は、次の手順または同様の手順で行われます。
+1. Azure AD で適切なオブジェクトへの **ソース アンカー** を更新します。
 2. 存在する場合、Azure AD で競合するオブジェクトを削除します。
 
 ![修正後に同期エラーを診断する](./media/how-to-connect-health-diagnose-sync-errors/IIdFixAfterFix.png)
@@ -138,17 +138,20 @@ Azure AD で競合する属性を持つユーザーは、修正プログラム�
 **Updating source anchor to cloud-based user in your tenant is not supported.** (ソース アンカーのテナント内のクラウド ベースのユーザーへの更新は、サポートされていません。)  
 Azure AD のクラウド ベースのユーザーは、ソース アンカーを持つことはできません。 この場合、ソース アンカーの更新はサポートされていません。 オンプレミスから手動で修正する必要があります。 
 
+**修正プロセスで値を更新できませんでした。**
+[UserWriteback in Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-preview#user-writeback) などの特定の設定はサポートされていません。 この設定を無効にしてください。 
+
 ## <a name="faq"></a>よく寄せられる質問
 **Q.** **[修正の適用]** の実行が失敗した場合はどうなりますか。  
 **A.** 実行が失敗した場合、Azure AD Connect はエクスポート エラーになっている可能性があります。 次の同期の後に、ポータル ページを更新して再試行してください。既定の同期サイクルは 30 分です。 
 
 
-**Q.** **既存のオブジェクト**が、削除する必要があるオブジェクトの場合はどうなりますか。  
-**A.** **既存オブジェクト**を削除する必要がある場合、プロセスでは**ソース アンカー**の変更は行われません。 通常は、オンプレミスの Active Directory から修正することができます。 
+**Q.** **既存のオブジェクト** が、削除する必要があるオブジェクトの場合はどうなりますか。  
+**A.** **既存オブジェクト** を削除する必要がある場合、プロセスでは **ソース アンカー** の変更は行われません。 通常は、オンプレミスの Active Directory から修正することができます。 
 
 
 **Q.** 修正を適用するには、ユーザーにどのようなアクセス許可が必要ですか。  
-**A.** **全体管理者**、または RBAC の**共同作成者**には、診断とトラブルシューティングのプロセスにアクセスするためのアクセス許可があります。
+**A.** **全体管理者**、または RBAC の **共同作成者** には、診断とトラブルシューティングのプロセスにアクセスするためのアクセス許可があります。
 
 
 **Q.** Azure AD Connect を構成するか、またはこの機能の Azure AD Connect Health エージェントを更新する必要はありますか。  
@@ -156,4 +159,4 @@ Azure AD のクラウド ベースのユーザーは、ソース アンカーを
 
 
 **Q.** 既存のオブジェクトが論理的に削除された場合、診断プロセスはオブジェクトを再度アクティブにしますか。  
-**A.** いいえ、修正では、**ソース アンカー**以外のオブジェクト属性を更新しません。
+**A.** いいえ、修正では、**ソース アンカー** 以外のオブジェクト属性を更新しません。

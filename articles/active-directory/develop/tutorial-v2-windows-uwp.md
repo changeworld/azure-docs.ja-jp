@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: dce2cd0d77ff0a98d4d68e1c99edb472e61ce8a5
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 63d56d8afc584a760f4b31c6021d4c764afd52b3
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509463"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064421"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>チュートリアル:ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
@@ -50,7 +50,7 @@ ms.locfileid: "97509463"
 
 |ライブラリ|説明|
 |---|---|
-|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
+|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)| Microsoft Authentication Library|
 |[Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph のクライアント ライブラリ|
 
 ## <a name="set-up-your-project"></a>プロジェクトの設定
@@ -71,7 +71,7 @@ ms.locfileid: "97509463"
 
    ![最小バージョンとターゲット バージョン](./media/tutorial-v2-windows-uwp/select-uwp-target-minimum.png)
 
-### <a name="add-microsoft-authentication-library-to-your-project"></a>プロジェクトへの Microsoft Authentication Library の追加
+### <a name="add-the-microsoft-authentication-library-to-your-project"></a>プロジェクトへの Microsoft Authentication Library の追加
 
 1. Visual Studio で、 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に選択します。
 1. 以下のコマンドをコピーして、**パッケージ マネージャー コンソール** のウィンドウに貼り付けます。
@@ -82,7 +82,7 @@ ms.locfileid: "97509463"
     ```
 
    > [!NOTE]
-   > 1 つ目のコマンドでは、[Microsoft Authentication Library(MSAL.NET)](https://aka.ms/msal-net) がインストールされます。 Microsoft ID プラットフォームにより保護された API にアクセスするユーザー トークンは、MSAL.NET によって取得、キャッシュ、更新されます。 2 つ目のコマンドでは、Microsoft Graph に対する要求を認証してサービスを呼び出す [Microsoft Graph .NET クライアント ライブラリ](https://github.com/microsoftgraph/msgraph-sdk-dotnet)がインストールされます。
+   > 1 つ目のコマンドでは、[Microsoft Authentication Library (MSAL.NET)](https://aka.ms/msal-net) がインストールされます。 Microsoft ID プラットフォームにより保護された API にアクセスするユーザー トークンは、MSAL.NET によって取得、キャッシュ、更新されます。 2 つ目のコマンドでは、Microsoft Graph に対する要求を認証してサービスを呼び出す [Microsoft Graph .NET クライアント ライブラリ](https://github.com/microsoftgraph/msgraph-sdk-dotnet)がインストールされます。
 
 ### <a name="create-your-applications-ui"></a>アプリケーションの UI の作成
 
@@ -103,7 +103,7 @@ Visual Studio では、プロジェクト テンプレートの一部として *
 </Grid>
 ```
 
-### <a name="use-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>Microsoft Authentication Library を使用して Microsoft Graph API のトークンを取得する
+### <a name="use-the-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>Microsoft Authentication Library を使用して Microsoft Graph API のトークンを取得する
 
 このセクションでは、Microsoft Authentication Library を使用して Microsoft Graph API のトークンを取得する方法について説明します。 *MainPage.xaml.cs* ファイルに変更を加えます。
 
@@ -346,7 +346,7 @@ private async Task DisplayMessageAsync(string message)
 
 ここで、アプリケーションを登録する必要があります。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
@@ -357,7 +357,7 @@ private async Task DisplayMessageAsync(string message)
 
 アプリケーションの認証を構成します。
 
-1. [Azure portal](https://portal.azure.com) に戻り、 **[管理]** で **[認証]**  >  **[プラットフォームを追加]** の順に選択し、 **[モバイル アプリケーションとデスクトップ アプリケーション]** を選択します。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> に戻り、 **[管理]** で **[認証]**  >  **[プラットフォームを追加]** の順に選択し、 **[モバイル アプリケーションとデスクトップ アプリケーション]** を選択します。
 1. **[リダイレクト URI]** セクションで、 **https://login.microsoftonline.com/common/oauth2/nativeclient** を確認します。
 1. **[構成]** をクリックします。
 

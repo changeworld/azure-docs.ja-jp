@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/18/2020
-ms.openlocfilehash: 68f536e06ec5a40083d96745f5b72e511e423f64
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.date: 01/11/2021
+ms.openlocfilehash: a411f4ce261ee6d203e274efe3cf23ca23203453
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695169"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070901"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics のデータをコピーおよび変換する
 
@@ -391,7 +391,7 @@ Azure Synapse Analytics にデータをコピーするには、コピー アク�
 | writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/><br/>使用可能な値は **timespan** です。 例:"00:30:00" (30 分)。 | いいえ。<br/>一括挿入を使用する場合に適用します。        |
 | preCopyScript     | コピー アクティビティの毎回の実行で、データを Azure Synapse Analytics に書き込む前に実行する SQL クエリを指定します。 前に読み込まれたデータをクリーンアップするには、このプロパティを使います。 | いいえ                                            |
 | tableOption | ソースのスキーマに基づいて[自動的にシンク テーブルを作成する](copy-activity-overview.md#auto-create-sink-tables)かどうかを指定します (存在しない場合)。 使用できる値は `none` (既定値)、`autoCreate` です。 |いいえ |
-| disableMetricsCollection | Data Factory では、コピーのパフォーマンスの最適化とレコメンデーションのために、Azure Synapse Analytics DWU などのメトリックが収集されます。 この動作に不安がある場合は、`true` を指定してオフにします。 | いいえ (既定値は `false`) |
+| disableMetricsCollection | Data Factory では、コピーのパフォーマンスの最適化とレコメンデーションのために、Azure Synapse Analytics DWU などのメトリックが収集されます。これにより、マスター DB への追加アクセスが発生します。 この動作に不安がある場合は、`true` を指定してオフにします。 | いいえ (既定値は `false`) |
 
 #### <a name="azure-synapse-analytics-sink-example"></a>Azure Synapse Analytics シンクの例
 

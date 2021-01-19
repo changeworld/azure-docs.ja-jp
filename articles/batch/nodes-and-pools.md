@@ -3,12 +3,12 @@ title: Azure Batch のノードとプール
 description: コンピューティング ノードとプールについて、およびそれらが Azure Batch ワークフローで開発の観点からどのように使用されるかについて説明します。
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: 880a956a2d839483c59578afad1b62146799578a
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: c229381ba1019a5a40a4ca6b7db88f534f57de29
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243071"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934647"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch のノードとプール
 
@@ -63,6 +63,9 @@ Batch プールを作成するときに、Azure 仮想マシン構成と、プ�
 ## <a name="configurations"></a>構成
 
 Batch で使用できるプール構成には、次の 2 種類があります。
+
+> [!IMPORTANT]
+> プールは、"Cloud Services の構成" ではなく、"仮想マシンの構成" を使用して構成する必要があります。 すべての Batch 機能は "仮想マシンの構成" プールによってサポートされており、新しい機能が追加されています。 "Cloud Services の構成" プールでは、すべての機能はサポートされず、新しい機能は計画されていません。
 
 ### <a name="virtual-machine-configuration"></a>仮想マシンの構成
 

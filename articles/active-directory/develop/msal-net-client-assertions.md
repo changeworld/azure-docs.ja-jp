@@ -1,7 +1,7 @@
 ---
 title: クライアント アサーション (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: .NET 用の Microsoft Authentication Library (MSAL.NET) での機密クライアント アプリケーションに対する署名付きクライアント アサーションのサポートについて説明します。
+description: Microsoft Authentication Library for .NET (MSAL.NET) での機密クライアント アプリケーションに対する署名付きクライアント アサーションのサポートについて説明します。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 9/30/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: bb1ce0a8ba568dc651accdc5f8c84e9c2c980e73
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: f1ff679bddf2afc355516f2a04b3307d4a260a5c
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91612814"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063622"
 ---
 # <a name="confidential-client-assertions"></a>機密クライアント アサーション
 

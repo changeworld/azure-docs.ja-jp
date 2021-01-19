@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: eca2009ee0470dec9c9ce60d8754f8f7a71619d3
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: d9dd07e3a35d83ff6bd9c7c493768d1197667c39
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740540"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108791"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2 環境の診断とトラブルシューティングの方法
 
@@ -71,7 +71,7 @@ ms.locfileid: "97740540"
 - この問題は、お使いの環境が調整されているために発生する可能性があります。
 
     > [!NOTE]
-    > 現時点では、Time Series Insights でサポートされる最大インジェスト速度は 6 Mbps です。
+    > 現時点では、Time Series Insights でサポートされる最大インジェスト速度は 1 Mbps です。
 
 ## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>問題: データは表示されたがインジェストが停止した
 

@@ -2,20 +2,21 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: dc4ec31a307d559fad84392522e6847aab1e3873
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 3b537ad0100e285fe02f557b92d67e09ae615def
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986970"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046461"
 ---
 |名前 |説明 |ポリシー |Version |
 |---|---|---|---|
 |[Australian Government ISM PROTECTED](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRAP_Audit.json) |このイニシアチブには、Australian Government Information Security Manual (ISM) のコントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/AustralianGovernmentISM-blueprint](https://aka.ms/AustralianGovernmentISM-blueprint) を参照してください。 |62 |3.0.0-preview |
-|[Azure セキュリティ ベンチマーク](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |このイニシアチブには、Azure セキュリティ ベンチマークの推奨事項のサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/azsecbm](https://aka.ms/azsecbm) を参照してください。 |136 |6.1.0-preview |
+|[Azure セキュリティ ベンチマーク v1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |このイニシアチブには、Azure セキュリティ ベンチマーク v1 の推奨事項のサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/azsecbm](https://aka.ms/azsecbm) を参照してください。 |136 |6.1.1-プレビュー |
+|[Azure セキュリティ ベンチマーク v2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_v2.json) |このイニシアチブには、Azure セキュリティ ベンチマーク v2 の推奨事項のサブセットに対応するポリシーが含まれています。 今後のリリースでさらにポリシーが追加される可能性があります。 詳細については、[https://aka.ms/azsecbm](https://aka.ms/azsecbm) を参照してください。 |181 |1.0.0-preview |
 |[カナダ連邦の PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |このイニシアチブには、カナダ連邦 PBMM コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint) を参照してください。 |60 |3.0.0 |
 |[CIS Microsoft Azure Foundations Benchmark 1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) |このイニシアチブには、CIS Microsoft Azure Foundations Benchmark の推奨事項のサブセットに対応する監査ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/cisazure-blueprint](https://aka.ms/cisazure-blueprint) を参照してください。 |87 |7.1.0 |
 |[FedRAMP High](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |このイニシアチブには、FedRAMP H コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/fedramph-blueprint](https://aka.ms/fedramph-blueprint) を参照してください。 |72 |3.0.1 |

@@ -1122,6 +1122,10 @@
           href: find-request-unit-charge-mongodb.md
         - name: クエリ パフォーマンスのトラブルシューティング
           href: mongodb-troubleshoot-query.md
+        - name: 一般的な問題のトラブルシューティング
+          href: mongodb-troubleshoot.md
+        - name: レート制限エラーの防止
+          href: prevent-rate-limiting-errors.md
         - name: Spring Data の格納と管理
           href: /azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
         - name: MongoDB 拡張コマンド
@@ -1134,8 +1138,6 @@
           href: powershell-samples-mongodb.md
         - name: Azure CLI を使用して管理する
           href: cli-samples-mongodb.md
-        - name: 一般的な問題のトラブルシューティング
-          href: mongodb-troubleshoot.md
     - name: リファレンス
       items:
         - name: REST リソース プロバイダー

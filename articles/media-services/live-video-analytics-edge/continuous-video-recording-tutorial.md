@@ -3,12 +3,12 @@ title: クラウドでの継続的なビデオ記録と再生に関するチュ�
 description: このチュートリアルでは、Azure Live Video Analytics on Azure IoT Edge を使用して、クラウドにビデオを継続的に記録し、Azure Media Services を使用してそのビデオの任意の部分をストリーム配信する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: c38ab1f32d1ef4e54cd8568ff17d325fabdefc31
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8fa2b65416499e58235fa312ffdcd2d71c3cfb39
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498372"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060148"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>チュートリアル:クラウドでの継続的なビデオ記録と再生
 
@@ -51,6 +51,9 @@ ms.locfileid: "96498372"
 * Azure Media Services アカウント
 * Azure 上の Linux VM ([IoT Edge ランタイム](../../iot-edge/how-to-install-iot-edge.md)がインストール済み)
 
+> [!TIP]
+> 作成された Azure リソースで問題が発生した場合は、 **[トラブルシューティング ガイド](troubleshoot-how-to.md#common-error-resolutions)** を参照して、よく発生する問題を解決してください。
+
 ## <a name="concepts"></a>概念
 
 [メディア グラフの概念](media-graph-concept.md)に関するページで説明されているように、メディア グラフでは次のことを定義できます。
@@ -64,7 +67,9 @@ ms.locfileid: "96498372"
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/continuous-video-recording-tutorial/continuous-video-recording-overview.svg" alt-text="メディア グラフ":::
 
-このチュートリアルでは、[Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) を使用して構築された 1 つのエッジ モジュールを使用して、RTSP カメラをシミュレートします。 メディア グラフ内で [RTSP ソース](media-graph-concept.md#rtsp-source) ノードを使用してライブ フィードを取得し、そのビデオを[資産シンク ノード](media-graph-concept.md#asset-sink)に送信します。これにより、ビデオが資産に記録されます。
+このチュートリアルでは、[Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) を使用して構築された 1 つのエッジ モジュールを使用して、RTSP カメラをシミュレートします。 メディア グラフ内で [RTSP ソース](media-graph-concept.md#rtsp-source) ノードを使用してライブ フィードを取得し、そのビデオを[資産シンク ノード](media-graph-concept.md#asset-sink)に送信します。これにより、ビデオが資産に記録されます。 このチュートリアルで使用するビデオは、[幹線道路の交差点のサンプル ビデオ](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv)です。
+<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 
 ## <a name="set-up-your-development-environment"></a>開発環境を設定する
 
@@ -90,7 +95,7 @@ ms.locfileid: "96498372"
         "moduleId" : "lvaEdge"  
     }
     ```
-    IoT Hub 接続文字列を設定すると、Visual Studio Code を使用して Azure IoT Hub 経由でエッジ モジュールにコマンドを送信できます。
+    IoT Hub 接続文字列を使用すると、Visual Studio Code を使用して Azure IoT Hub 経由でエッジ モジュールにコマンドを送信できます。
     
 1. 次に、src/edge フォルダーに移動して、 **.env** という名前のファイルを作成します。
 1. ~/clouddrive/lva-sample/edge-deployment/.env ファイルの内容をコピーします。 このテキストは次のようになっています。
@@ -169,14 +174,14 @@ Live Video Analytics on IoT Edge モジュールを使用して、ライブ ビ�
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="詳細メッセージの表示":::
-1. <!--In Visual Studio Code, go-->src/cloud-to-device-console-app/operations.js に移動します。
+1. src/cloud-to-device-console-app/operations.js に移動します。
 1. **GraphTopologySet** ノードで、次を編集します。
 
     `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
 1. 次に、**GraphInstanceSet** および **GraphTopologyDelete** のノードで、**topologyName** の値が、前のグラフ トポロジの **name** プロパティの値と一致していることを確認します。
 
     `"topologyName" : "CVRToAMSAsset"`  
-1. ブラウザーでその[トポロジ](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json)を開き、assetNamePattern を確認します。 資産の名前を確実に一意にするために、operations.json ファイル内でグラフ インスタンスの名前を (既定値の "Sample-Graph-1" から) 変更することをお勧めします。
+1. ブラウザーでその[トポロジ](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/2.0/topology.json)を開き、assetNamePattern を確認します。 資産の名前を確実に一意にするために、operations.json ファイル内でグラフ インスタンスの名前を (既定値の "Sample-Graph-1" から) 変更することをお勧めします。
 
     `"assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}"`    
 1. F5 キーを押して、デバッグ セッションを開始します。 **[ターミナル]** ウィンドウにいくつかのメッセージが出力されます。
@@ -187,7 +192,7 @@ Live Video Analytics on IoT Edge モジュールを使用して、ライブ ビ�
     Executing operation GraphTopologyList
     -----------------------  Request: GraphTopologyList  --------------------------------------------------
     {
-      "@apiVersion": "1.0"
+      "@apiVersion": "2.0"
     }
     ---------------  Response: GraphTopologyList - Status: 200  ---------------
     {
@@ -204,7 +209,7 @@ Live Video Analytics on IoT Edge モジュールを使用して、ライブ ビ�
      
      ```
      {
-       "@apiVersion": "1.0",
+       "@apiVersion": "2.0",
        "name": "Sample-Graph-1",
        "properties": {
          "topologyName": "CVRToAMSAsset",
@@ -277,7 +282,7 @@ Live Video Analytics on IoT Edge モジュールを使用して、ライブ ビ�
 
 ### <a name="recordingstarted-event"></a>RecordingStarted イベント
 
-資産シンク ノードがビデオの記録を開始すると、種類が Microsoft.Media.Graph.Operational.RecordingStarted のこのイベントが出力されます。
+資産シンク ノードがビデオの記録を開始すると、種類が **Microsoft.Media.Graph.Operational.RecordingStarted** のこのイベントが出力されます。
 
 ```
 [IoTHubMonitor] [9:42:38 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -302,7 +307,7 @@ body セクションには、出力場所に関する情報が含まれていま
 
 ### <a name="recordingavailable-event"></a>RecordingAvailable イベント
 
-名前が示すように、RecordingStarted イベントは記録が開始されると送信されますが、ビデオ データがまだ資産にアップロードされていない可能性があります。 資産シンク ノードがビデオ データを資産にアップロードすると、種類が Microsoft.Media.Graph.Operational.RecordingAvailable のこのイベントが出力されます。
+名前が示すように、RecordingStarted イベントは記録が開始されると送信されますが、ビデオ データがまだ資産にアップロードされていない可能性があります。 資産シンク ノードがビデオ データを資産にアップロードすると、種類が **Microsoft.Media.Graph.Operational.RecordingAvailable** のこのイベントが出力されます。
 
 ```
 [IoTHubMonitor] [[9:43:38 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -329,7 +334,7 @@ body セクションには、出力場所に関する情報が含まれていま
 
 ### <a name="recordingstopped-event"></a>RecordingStopped イベント
 
-グラフ インスタンスを非アクティブ化すると、資産シンク ノードは資産へのビデオの記録を停止します。 それにより、種類が Microsoft.Media.Graph.Operational.RecordingStopped のこのイベントが出力されます。
+グラフ インスタンスを非アクティブ化すると、資産シンク ノードは資産へのビデオの記録を停止します。 それにより、種類が **Microsoft.Media.Graph.Operational.RecordingStopped** のこのイベントが出力されます。
 
 ```
 [IoTHubMonitor] [11:33:31 PM] Message received from [lva-sample-device/lvaEdge]:

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 75df985377e6ed1764985f8d0b6b44323f249b8a
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 04103de47e82764f7ec4effa84a9b2b7b90b9363
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632011"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034630"
 ---
 # <a name="monitoring-azure-cosmos-db-data-reference"></a>Azure Cosmos DB データの監視のリファレンス
 
@@ -81,7 +81,7 @@ Azure Cosmos DB に対応するすべてのメトリックは、**Cosmos DB 標�
 | --- | --- | --- |
 | **time** | **TimeGenerated** | 操作が発生した日時 (UTC)。 |
 | **resourceId** | **リソース** | ログが有効になっている Azure Cosmos DB アカウント。|
-| **category** | **カテゴリ** | Azure Cosmos DB の場合、利用できるログの種類には **DataPlaneRequests**、**MongoRequests**、**QueryRuntimeStatistics**、**PartitionKeyStatistics**、**PartitionKeyRUConsumption**、**ControlPlaneRequests** があります。 |
+| **category** | **カテゴリ** | Azure Cosmos DB の場合、利用できるログの種類には **DataPlaneRequests**、**MongoRequests**、**QueryRuntimeStatistics**、**PartitionKeyStatistics**、**PartitionKeyRUConsumption**、**ControlPlaneRequests**、**CassandraRequests**、**GremlinRequests** があります。 |
 | **operationName** | **OperationName** | 操作の名前。 操作名は、`Create`、`Update`、`Read`、`ReadFeed`、`Delete`、`Replace`、`Execute`、`SqlQuery`、`Query`、`JSQuery`、`Head`、`HeadFeed`、`Upsert` のいずれかです。   |
 | **properties** | 該当なし | このフィールドの内容については、以下の行を参照してください。 |
 | **activityId** | **activityId_g** | ログに記録された操作の一意の GUID。 |

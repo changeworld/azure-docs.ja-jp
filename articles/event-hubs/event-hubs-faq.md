@@ -3,12 +3,12 @@ title: よく寄せられる質問 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs に関するよく寄せられる質問 (FAQ) とその回答の一覧を示します。
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: c756d0bccd9b2ad303bd97d3bfb7aed8b0b82b09
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e7a34fe0f2ef04fffeeddc5615d3ac1749467902
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96002794"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955418"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -153,7 +153,7 @@ Event Hubs Dedicated クラスターは、最も要求の厳しい要件を持�
 ## <a name="partitions"></a>メジャー グループ
 
 ### <a name="how-many-partitions-do-i-need"></a>パーティションはいくつ必要ですか。
-パーティションの数は作成時に 1 - 32 の間で指定する必要があります。 パーティション数は変更できないため、パーティション数を設定する際には、長期的な規模を考慮する必要があります。 パーティションはデータ編成メカニズムであり、コンシューマー アプリケーションで必要とされるダウンストリーム並列処理に関連します。 イベント ハブでのパーティションの数は、予想される同時接続のリーダー数に直接関連します。 パーティションの詳細については、[パーティション](event-hubs-features.md#partitions)に関するページをご覧ください。
+パーティションの数は作成時に 1 - 32 の間で指定する必要があります。 パーティション数は[専用レベル](event-hubs-dedicated-overview.md)以外のすべてのレベルで変更できないため、パーティション数を設定する際には、長期的な規模を考慮する必要があります。 パーティションはデータ編成メカニズムであり、コンシューマー アプリケーションで必要とされるダウンストリーム並列処理に関連します。 イベント ハブでのパーティションの数は、予想される同時接続のリーダー数に直接関連します。 パーティションの詳細については、[パーティション](event-hubs-features.md#partitions)に関するページをご覧ください。
 
 作成時点では、選択可能な最大値 (32) に設定しておくとよいでしょう。 複数のパーティションがある場合、イベントは、その順序を維持せずに、複数のパーティションに送信されることに注意してください (ただし、32 個中 1 つのパーティションにのみ送信し、残りの 31 個を冗長パーティションとするように送信側を構成した場合を除く)。 前者の場合、32 個のパーティションすべてにわたってイベントを読み取る必要があります。 後者の場合は、イベント プロセッサ ホストで行う必用のある構成が生じること以外、特別な追加コストは発生しません。
 

@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: c3f1209c2c903399617bd60258cc152a6ce90b80
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ece76f0017a72484f5c4e66b2ab8c7e71d32f1a7
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462064"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132051"
 ---
 # <a name="data-discovery--classification"></a>データの検出と分類
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "96462064"
 最も機密性の高いデータには、ビジネス、財務、医療、個人情報などが含まれる場合があります。 このようなデータの検出と分類は、組織の情報保護アプローチにおいて極めて重要な役割を果たすことができます。 次のような場合にインフラストラクチャとして使用できます。
 
 - データのプライバシーと規制コンプライアンスの要件への基準を満たすための支援。
-- さまざまなセキュリティ シナリオ (機微なデータに対する異常なアクセスの監視 (監査) とアラートなど)。
+- さまざまなセキュリティ シナリオ (機密データに対するアクセスの監視 (監査) など)。
 - 機密性の高いデータを含むデータベースへのアクセスの制御と、セキュリティの強化。
 
 > [!NOTE]

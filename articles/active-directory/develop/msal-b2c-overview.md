@@ -13,16 +13,16 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: ef1c0003978251dd2637915e56dc396e85f4438f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 53294a30b38bed7ab7516443277cac24e4fef4c1
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107874"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063724"
 ---
-# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>JavaScript 用 Microsoft Authentication Library を使用して Azure AD B2C と連携する
+# <a name="use-the-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>JavaScript 用 Microsoft Authentication Library を使用して Azure AD B2C と連携する
 
-[JavaScript 用 Microsoft Authentication Library (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) を使用すると、JavaScript 開発者は [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md) を使用して、ソーシャルおよびローカル ID でユーザーを認証できます。
+[JavaScript 用 Microsoft Authentication Library (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) を使用すると、JavaScript 開発者は [Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure AD B2C) を使用して、ソーシャルおよびローカル ID でユーザーを認証できます。
 
 ID 管理サービスとして Azure AD B2C を使用すると、顧客がアプリケーションを使用するときにサインアップ、サインイン、自分のプロファイルの管理を行う方法をカスタマイズして制御できます。 Azure AD B2C では、認証プロセス中にアプリケーションで表示される UI をブランド化し、カスタマイズすることもできます。
 

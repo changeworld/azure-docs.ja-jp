@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 18cedad34a6ca7d9a0ba18cd01c082f2878380a8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 7600d8aa2f78e06ea4046273635fdbba18042010
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339820"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028864"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB では、統合された JavaScript 言語によるトランザクション実行が可能なため、開発者は、 **ストアド プロシージャ** 、 **トリガー** 、 **ユーザー定義関数 (UDF)** を記述できます。 Azure Cosmos DB で SQL API を使用するとき、ストアド プロシージャ、トリガー、および UDF を JavaScript 言語で定義できます。 JavaScript でロジックを記述し、データベース エンジン内でロジックを実行することができます。 トリガー、ストアド プロシージャ、および UDF は、[Azure portal](https://portal.azure.com/)、[Azure Cosmos DB のJavaScript 言語統合クエリ API](javascript-query-api.md)、[Cosmos DB SQL API クライアント SDK](sql-api-dotnet-samples.md) を使用して作成および実行できます。 
+Azure Cosmos DB では、統合された JavaScript 言語によるトランザクション実行が可能なため、開発者は、**ストアド プロシージャ**、**トリガー**、**ユーザー定義関数 (UDF)** を記述できます。 Azure Cosmos DB で SQL API を使用するとき、ストアド プロシージャ、トリガー、および UDF を JavaScript 言語で定義できます。 JavaScript でロジックを記述し、データベース エンジン内でロジックを実行することができます。 トリガー、ストアド プロシージャ、および UDF は、[Azure portal](https://portal.azure.com/)、[Azure Cosmos DB のJavaScript 言語統合クエリ API](javascript-query-api.md)、[Cosmos DB SQL API クライアント SDK](sql-api-dotnet-samples.md) を使用して作成および実行できます。 
 
 ストアド プロシージャ、トリガー、およびユーザー定義関数を呼び出すには、これを登録する必要があります。 詳細については、[Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を操作する方法](how-to-use-stored-procedures-triggers-udfs.md)に関する記事を参照してください。
 
@@ -284,7 +284,7 @@ function async_sample() {
 
 ## <a name="how-to-write-triggers"></a><a id="triggers"></a>トリガーを書き込む方法
 
-Azure Cosmos DB は、プリトリガーとポストトリガーをサポートします。 プリトリガーはデータベース項目の変更前に実行され、ポストトリガーはデータベース項目の変更後に実行されます。
+Azure Cosmos DB は、プリトリガーとポストトリガーをサポートします。 プリトリガーはデータベース項目の変更前に実行され、ポストトリガーはデータベース項目の変更後に実行されます。 トリガーは自動的に実行されません。それらを実行する各データベース操作に対して指定する必要があります。 トリガーを定義した後は、Azure Cosmos DB SDK を使用して[プリトリガーを登録して呼び出す](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)必要があります。
 
 ### <a name="pre-triggers"></a><a id="pre-triggers"></a>プリトリガー
 

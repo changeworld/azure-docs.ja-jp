@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と FortiGate SSL VPN の統合 | Microsoft Docs
 description: FortiGate SSL VPN と Azure Active Directory (Azure AD) を統合するために必要な手順について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 18a3d9d5-d81c-478c-be7e-ef38b574cb88
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 08/11/2020
+ms.date: 12/26/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 021550598452516d45ae67c1139c2f891629a875
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: b9a22025f124e7639aa1b9a157dbbd020e2ff966
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296575"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020266"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と FortiGate SSL VPN の統合
 
@@ -29,8 +25,6 @@ ms.locfileid: "96296575"
 * Azure AD を使用して、FortiGate SSL VPN にアクセスできるユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して FortiGate SSL VPN に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,13 +39,12 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 FortiGate SSL VPN では、SP Initiated SSO がサポートされます。
 
-FortiGate SSL VPN を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="add-fortigate-ssl-vpn-from-the-gallery"></a>ギャラリーからの FortiGate SSL VPN の追加
 
 Azure AD への FortiGate SSL VPN の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に FortiGate SSL VPN を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左ウィンドウで、 **[Azure Active Directory]** を選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
@@ -69,13 +62,13 @@ FortiGate SSL VPN で Azure AD SSO を構成してテストするには、これ
     1. **[テスト ユーザーにアクセス権を付与](#grant-access-to-the-test-user)** して、そのユーザーに対して Azure AD シングル サインオンを有効にします。
 1. アプリケーション側で **[FortiGate SSL VPN SSO を構成](#configure-fortigate-ssl-vpn-sso)** します。
     1. Azure AD のユーザーに対応するユーザーとして、**FortiGate SSL VPN テスト ユーザーを作成** します。
-1. **[SSO をテスト](#test-single-sign-on)** して、構成が正しく機能することを確認します。
+1. **[SSO をテスト](#test-sso)** して、構成が正しく機能することを確認します。
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **FortiGate SSL VPN** アプリケーション統合ページで、 **[管理]** セクションの **[シングル サインオン]** を選択します。
+1. Azure portal の **FortiGate SSL VPN** アプリケーション統合ページで、 **[管理]** セクションの **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の鉛筆ボタンを選択して設定を編集します。
 
@@ -106,17 +99,26 @@ FortiGate SSL VPN で Azure AD SSO を構成してテストするには、これ
    | group | user.groups |
    
    これらの追加の要求を作成するには、次の操作を実行します。
+
+   a. **[ユーザー属性と要求]** の横にある **[編集]** を選択します。
+
+   b. **[新しい要求の追加]** を選択します。
+
+   c. **[名前]** で、**ユーザー名** を入力します。
+
+   d. **[ソース属性]** で、**user.userprincipalname** を選択します。
+
+   e. **[保存]** を選択します。
+
+   f. **[グループ要求を追加する]** を選択します。
+
+   g. **[すべてのグループ]** を選択します。
+
+   h. **[グループ要求の名前をカスタマイズする]** チェック ボックスをオンにします。
+
+   i. **[名前]** で、**グループ** を入力します。
    
-   1. **[ユーザー属性と要求]** の横にある **[編集]** を選択します。
-   1. **[新しい要求の追加]** を選択します。
-   1. **[名前]** で、**ユーザー名** を入力します。
-   1. **[ソース属性]** で、**user.userprincipalname** を選択します。
-   1. **[保存]** を選択します。
-   1. **[グループ要求を追加する]** を選択します。
-   1. **[すべてのグループ]** を選択します。
-   1. **[グループ要求の名前をカスタマイズする]** チェック ボックスをオンにします。
-   1. **[名前]** で、**グループ** を入力します。
-   1. **[保存]** を選択します。   
+   j. **[保存]** を選択します。   
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** の横にある **[ダウンロード]** リンクを選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -145,13 +147,7 @@ FortiGate SSL VPN で Azure AD SSO を構成してテストするには、これ
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[FortiGate SSL VPN]** を選択します。
 1. アプリの概要ページの **[管理]** セクションで、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] オプションを示すスクリーンショット。](common/users-groups-blade.png)
-
-1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] ボタンを示すスクリーンショット。](common/add-assign-user.png)
-
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 1. **[ユーザーとグループ]** ダイアログ ボックスで、**ユーザー** の一覧で **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. SAML アサーション内にロール値が必要な場合、 **[ロールの選択]** ダイアログ ボックスで、一覧からユーザーに適したロールを選択します。 画面の下部にある **[選択]** ボタンをクリックします。
 1. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
@@ -256,22 +252,17 @@ FortiGate SSL VPN で Azure AD SSO を構成してテストするには、これ
 
 [FortiGate サポート チーム](mailto:tac_amer@fortinet.com)と連携して、VPN ポータルとファイアウォール ポリシーを FortiGate VPN プラットフォームに追加してください。 シングル サインオンを使用する前に、この手順を完了する必要があります。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
+## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルで [FortiGate SSL VPN] タイルを選択すると、SSO を設定した FortiGate SSL VPN に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる FortiGate VPN のサインオン URL にリダイレクトされます。 
 
-Microsoft と FortiGate では、最適なエンドユーザー エクスペリエンスを実現するために、Fortinet VPN クライアントである FortiClient を使用することをお勧めしています。
+* FortiGate VPN のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-## <a name="additional-resources"></a>その他のリソース
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [FortiGate VPN] タイルをクリックすると、FortiGate VPN のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアル](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
-
-- [Azure AD で FortiGate SSL VPN を試す](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+FortiGate VPN を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

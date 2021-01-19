@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: a3c44d667b6baaf16e109dfb88c22c16a1ea2ce1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 1fc6c7086917f2bcd6e4991d2dac37ea24cbfa83
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697205"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116383"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search で BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法
 
@@ -108,7 +108,7 @@ REST API を使用して、Azure Cognitive Search のすべてのインデクサ
 
 このセクションの最後にある [REST サンプル コード](#rest-example)で、3 つのオブジェクトをすべて作成する方法を確認できます。 このセクションには、[JSON 解析モード](#parsing-modes)、[単一 BLOB](#parsing-single-blobs)、[JSON 配列](#parsing-arrays)、および[入れ子になった配列](#nested-json-arrays)の詳細も含まれています。
 
-コードベースの JSON インデックスを作成するには、[Visual Studio Code または Postman](search-get-started-rest.md) と REST API を使用して、次のオブジェクトを作成します。
+コードベースの JSON インデックスを作成するには、[Postman](search-get-started-rest.md) または [Visual Studio Code](search-get-started-vs-code.md) と REST API を使用して、これらのオブジェクトを作成します。
 
 + [インデックス](/rest/api/searchservice/create-index)
 + [データ ソース](/rest/api/searchservice/create-data-source)
