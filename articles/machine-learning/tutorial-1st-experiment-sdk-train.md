@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: df511e79b73256833ec54c5906bb6acbc852bc46
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: b1fa4d3e6c017232922e500352558e34726b90cc
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739622"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183083"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>チュートリアル:初めての機械学習モデルをトレーニングする (パート 3/4)
 
@@ -40,10 +40,8 @@ ms.locfileid: "97739622"
 
 ## <a name="prerequisites"></a>前提条件
 
-* このシリーズの[第 2 部](tutorial-1st-experiment-hello-world.md)を完了している。
-* Python 言語と機械学習ワークフローの基礎知識。
-* Visual Studio Code、Jupyter、PyCharm などのローカル開発環境。
-* Python (バージョン 3.5 から 3.7)。
+- Python の仮想環境を管理してパッケージをインストールするための [Anaconda](https://www.anaconda.com/download/) または [Miniconda](https://www.anaconda.com/download/)。
+- このシリーズの[第 1 部](tutorial-1st-experiment-sdk-setup-local.md)と[第 2 部](tutorial-1st-experiment-hello-world.md)を完了している。
 
 ## <a name="create-training-scripts"></a>トレーニング スクリプトを作成する
 
@@ -77,9 +75,7 @@ tutorial
 > [!div class="nextstepaction"]
 > [トレーニング スクリプトを作成しました](?success=create-scripts#environment) [問題が発生しました](https://www.research.net/r/7CTJQQN?issue=create-scripts)
 
-## <a name="create-a-python-environment"></a><a name="environment"></a> Python 環境を作成する
-
-デモンストレーション目的で、Conda 環境を使用します。 (pip 仮想環境のステップはほぼ同じです。)
+## <a name="create-a-new-python-environment"></a><a name="environment"></a> 新しい Python 環境を作成する
 
 隠しディレクトリ `.azureml` に `pytorch-env.yml` という名前のファイルを作成します。
 
@@ -92,18 +88,19 @@ tutorial
 
 ## <a name="test-locally"></a><a name="test-local"></a> ローカルでテストする
 
-この環境で次のコードを使用し、スクリプトの実行をローカルでテストします。
+ターミナルまたは Anaconda プロンプト ウィンドウから次のコードを使用して、新しい環境のローカルでスクリプトをテストします。  
 
 ```bash
-conda env create -f .azureml/pytorch-env.yml    # create conda environment
-conda activate pytorch-env                      # activate conda environment
+conda deactivate                                # If you are still using the tutorial environment, exit it
+conda env create -f .azureml/pytorch-env.yml    # create the new Conda environment
+conda activate pytorch-env                      # activate new Conda environment
 python src/train.py                             # train model
 ```
 
 このスクリプトを実行すると、`tutorial/data` という名前のディレクトリにダウンロードされたデータが表示されます。
 
 > [!div class="nextstepaction"]
-> [環境ファイルを作成しました](?success=test-local#create-local) [問題が発生しました](https://www.research.net/r/7CTJQQN?issue=test-local)
+> [コードをローカルで実行しました](?success=test-local#create-local) [問題が発生しました](https://www.research.net/r/7CTJQQN?issue=test-local)
 
 ## <a name="create-the-control-script"></a><a name="create-local"></a> コントロール スクリプトを作成する
 
@@ -163,11 +160,11 @@ if __name__ == "__main__":
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> Azure Machine Learning に実行を送信する
 
-ローカル環境を切り替えた場合は、必ず Azure Machine Learning SDK for Python がインストールされている環境に再び切り替えてください。
-
-次に、次のコマンドを実行します。
+Azure Machine Learning SDK for Python がインストールされている *tutorial* 環境に再び切り替えてください。 トレーニング コードが自分のコンピューターで実行されるわけではないので、PyTorch をインストールする必要はありません。  ただし、*tutorial* 環境に含まれている `azureml-sdk` は必要です。
 
 ```bash
+conda deactivate
+conda activate tutorial
 python 04-run-pytorch.py
 ```
 
