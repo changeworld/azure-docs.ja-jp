@@ -26,7 +26,7 @@ ms.locfileid: "88205506"
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Azure API Management、Event Hubs、Moesif を使用した API の監視
 [API Management サービス](api-management-key-concepts.md) は、HTTP API に送信された HTTP 要求の処理を強化する多くの機能を提供します。 しかし、要求と応答の存在は一時的なものです。 要求は、発行されると、API Management サービスを経由してバックエンド API に渡されます。 API によって要求が処理されると、応答が API コンシューマーに返されます。 API Management サービスでは Azure Portal ダッシュボードへの表示用に API に関するいくつかの重要な統計情報が保持されますが、それ以上の詳細は失われます。
 
-API Management サービスで log-to-eventhub ポリシーを使用することにより、要求から応答まですべての詳細を [Azure イベント ハブ](../event-hubs/event-hubs-about.md)に送信できます。 API に送信される HTTP メッセージからイベントを生成するのにはさまざまな理由があります。 たとえば、更新プログラム、利用状況分析、例外のアラート、サード パーティの統合の監査証跡が該当します。
+API Management サービスで log-to-eventhub ポリシーを使用することにより、要求から応答まですべての詳細を [Azure Event Hub](../event-hubs/event-hubs-about.md)に送信できます。 API に送信される HTTP メッセージからイベントを生成するのにはさまざまな理由があります。 たとえば、更新プログラム、利用状況分析、例外のアラート、サード パーティの統合の監査証跡が該当します。
 
 この記事では、HTTP 要求と応答メッセージ全体をキャプチャしてイベント ハブに送信した後、HTTP ログと監視サービスを提供するサード パーティのサービスにそのメッセージをリレーする方法を示します。
 
@@ -212,7 +212,7 @@ public class HttpMessage
 `HttpMessage` インスタンスには、HTTP 要求を対応する HTTP 応答に関連付けるための `MessageId` GUID と、オブジェクトに HttpRequestMessage と HttpResponseMessage のインスタンスが含まれるかどうかを示すブール値が格納されます。 `System.Net.Http` の組み込みの HTTP クラスを使用することで、`System.Net.Http.Formatting` に含まれている `application/http` 解析コードを使用することができました。  
 
 ### <a name="ihttpmessageprocessor"></a>IHttpMessageProcessor
-次に、`HttpMessage` インスタンスは、`IHttpMessageProcessor` の実装に転送されます。これは、Azure イベント ハブからのイベントの受信および解釈と実際のイベントの処理を分離するために作成したインターフェイスです。
+次に、`HttpMessage` インスタンスは、`IHttpMessageProcessor` の実装に転送されます。これは、Azure Event Hub からのイベントの受信および解釈と実際のイベントの処理を分離するために作成したインターフェイスです。
 
 ## <a name="forwarding-the-http-message"></a>HTTP メッセージの転送
 このサンプルでは、少しひねって HTTP 要求を [Moesif API Analytics](https://www.moesif.com) にプッシュ送信しました。 Moesif は、HTTP の分析とデバッグに特化したクラウド ベースのサービスです。 Runscope には Free レベルが用意されているため、簡単に試すことができます。これを使用すると、API Management サービスを通過する HTTP 要求をリアルタイムで確認することができます。
