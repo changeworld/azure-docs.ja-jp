@@ -7,18 +7,17 @@ author: vladvino
 manager: erikre
 editor: ''
 ms.service: api-management
-ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: e36f7c6085908630d5e7aa2593fe4d57202d6ee7
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: d0d5434de747b48464df1c07f8c7b6a7e785c858
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107653"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070946"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関する記事を参照してください。
@@ -147,6 +146,9 @@ API Management サービスを Virtual Network にデプロイするときに発
   > 上記クラスターの DNS ゾーン **.nsatc.net** の **.microsoftmetrics.com** への変更は、ほとんどの場合、DNS の変更です。 クラスターの IP アドレスは変更されません。
 
 + **リージョン サービス タグ**:Storage、SQL、Event Hubs サービス タグへの送信接続を許可する NSG 規則は、API Management インスタンスを含むリージョンに対応するこれらのタグのリージョン バージョンを使用できます (たとえば、米国西部リージョンの API 管理インスタンスに対する Storage.WestUS など)。 複数リージョンのデプロイでは、各リージョンの NSG は、そのリージョンとプライマリ リージョンのサービス タグへのトラフィックを許可する必要があります。
+
+    > [!IMPORTANT]
+    > 仮想ネットワーク内の API Management インスタンスに対して[開発者ポータル](api-management-howto-developer-portal.md)の発行を有効にするには、米国西部リージョンの Blob Storage への送信接続も許可していることを確認してください。 たとえば、NSG ルールで **Storage.WestUS** サービス タグを使用します。 現在、米国西部リージョンでの Blob Storage への接続は、API Management インスタンスの開発者ポータルを発行するために必要です。
 
 + **SMTP リレー**:SMTP リレー用の送信ネットワーク接続。`smtpi-co1.msn.com`、`smtpi-ch1.msn.com`、`smtpi-db3.msn.com`、`smtpi-sin.msn.com`、`ies.global.microsoft.com` の各ホストで解決されます。
 

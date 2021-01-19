@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e90adcb5312df6e1dfe6d4b58407edeb924a8809
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 6e561a0e05cf1a0870d85369867caba6c4d6bf12
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862444"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932420"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -3733,7 +3733,7 @@ Azure AD アクティビティ ログ (サインイン ログと監査ログを�
 
 **種類:** 新機能 **サービス カテゴリ:** その他 **製品の機能:** ディレクトリ
 
-Azure Active Directory (Azure AD) のデプロイ方法に関する新しいステップ バイ ステップ ガイド。セルフサービス パスワード リセット (SSPR)、シングル サインオン (SSO)、条件付きアクセス (CA)、アプリ プロキシ、ユーザー プロビジョニング、パススルー認証 (PTA) に対する Active Directory フェデレーション サービス (ADFS)、およびパスワード ハッシュの同期 (PHS) に対する ADFS が含まれます。
+Azure Active Directory (Azure AD) のデプロイ方法に関する新しいステップ バイ ステップ ガイド。セルフサービス パスワード リセット (SSPR)、シングル サインオン (SSO)、条件付きアクセス、アプリ プロキシ、ユーザー プロビジョニング、パススルー認証 (PTA) に対する Active Directory フェデレーション サービス (AD FS)、およびパスワード ハッシュの同期 (PHS) に対する ADFS が含まれます。
 
 デプロイ ガイドを表示するには、GitHub の [Identity Deployment Guides](./active-directory-deployment-plans.md) (ID デプロイ ガイド) リポジトリに移動します。 デプロイ ガイドに関するフィードバックを提出するには、[Deployment Plan Feedback (デプロイ プランに関するフィードバック) フォーム](https://aka.ms/deploymentplanfeedback)を使用してください。 デプロイ ガイドに関する質問がある場合は、[IDGitDeploy](mailto:idgitdeploy@microsoft.com) までお問い合わせください。
 

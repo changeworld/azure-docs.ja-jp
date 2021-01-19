@@ -3,12 +3,12 @@ title: テンプレートにおける変数
 description: Azure Resource Manager テンプレート (ARM テンプレート) で変数を定義する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 5d9b58d63e96656c45d3494d24099bbeadc46b11
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7f782f9c7d3107472a74fcab73290c4cebf73693
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353461"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934664"
 ---
 # <a name="variables-in-arm-template"></a>ARM テンプレートでの変数
 
@@ -28,7 +28,7 @@ Resource Manager は、デプロイ操作を開始する前に変数を解決し
 },
 ```
 
-変数セクションでは、[reference](template-functions-resource.md#reference) 関数も、いずれの [list](template-functions-resource.md#list) 関数も使用できません。 これらの関数は、リソースのランタイム状態を取得します。これらの関数は、変数が解決されるときに、デプロイ前に実行することはできません。
+`variables` セクションでは、[reference](template-functions-resource.md#reference) 関数も、いずれの [list](template-functions-resource.md#list) 関数も使用できません。 これらの関数は、リソースのランタイム状態を取得します。これらの関数は、変数が解決されるときに、デプロイ前に実行することはできません。
 
 ## <a name="use-variable"></a>変数を使用する
 
@@ -63,7 +63,7 @@ Resource Manager は、デプロイ操作を開始する前に変数を解決し
 },
 ```
 
-パラメーターで、使用する構成の値を示す値を作成します。
+`parameters` で、使用する構成値を示す値を作成します。
 
 ```json
 "parameters": {

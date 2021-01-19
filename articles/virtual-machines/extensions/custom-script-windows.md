@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: aa95d6792f2f5754a237c7bf5e90a11e2e011ede
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b0502fb05043a54d81d768a7809d19b108cc6248
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861782"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976845"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -50,6 +50,8 @@ Azure Blob ストレージの資格情報を使用して Azure Blob Storage に�
 ### <a name="internet-connectivity"></a>インターネット接続
 
 GitHub または Azure Storage などからスクリプトを外部でダウンロードする必要がある場合は、ファイアウォールやネットワーク セキュリティ グループのポートを追加で開く必要があります。 たとえば、スクリプトが Azure Storage にある場合、[ストレージ](../../virtual-network/network-security-groups-overview.md#service-tags)に Azure NSG サービス タグを使用することでアクセスを許可できます。
+
+CustomScript 拡張機能には、証明書の検証を省略する方法がないことに注意してください。 たとえば、セキュリティで保護された場所から 自己署名証明書などをダウンロードするときに、"*検証プロシージャによると、リモート証明書は無効です*" のようなエラーが発生する可能性があります。 証明書が、仮想マシンの *"信頼されたルート証明機関"* ストアに正しくインストールされていることを確認してください。
 
 スクリプトがローカル サーバー上にあるとき、場合によっては、ファイアウォールを追加し、ネットワーク セキュリティ グループ ポートを開く必要があります。
 

@@ -1,7 +1,7 @@
 ---
 title: 構成可能なトークンの有効期間
 titleSuffix: Microsoft identity platform
-description: Microsoft ID プラットフォームによって発行されたトークンの有効期間を設定する方法について説明します。
+description: Microsoft ID プラットフォームによって発行されたアクセス トークン、SAML トークン、および ID トークンの有効期間を設定する方法について説明します。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -9,65 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: f73186612fe79af88e84956bb4d0f0b374f4c986
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0b3c2f74edff661326e97da7b06860914468c43b
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507797"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059349"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft ID プラットフォームでの構成可能なトークンの有効期間 (プレビュー)
 
-> [!IMPORTANT]
-> 2020 年 5 月以降、テナントで更新およびセッション トークンの有効期間を構成できなくなります。  2021 年 1 月 30 日以降は、Azure Active Directory でポリシー内の既存の更新およびセッション トークンの構成が考慮されなくなります。 非推奨となった後も、アクセス トークンの有効期間を構成することはできます。
->
-> ユーザーが再度サインインするように求められるまでの時間を定義し続ける必要がある場合は、条件付きアクセスでサインインの頻度を構成します。 条件付きアクセスの詳細については、「[条件付きアクセスを使用して認証セッション管理を構成する](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)」を参照してください。
->
-> 廃止日以降に条件付きアクセスを使用しないテナントの場合、次のセクションで説明する既定の構成が Azure AD に使用されることを想定できます。
-
-## <a name="configurable-token-lifetime-properties-after-the-retirement"></a>廃止後に構成可能なトークンの有効期間プロパティ
-更新とセッション トークンの構成は、次のプロパティとそれぞれの設定値の影響を受けます。 更新とセッション トークンの構成が廃止された後、ポリシーにカスタム値が構成されているかどうかに関係なく、Azure AD では以下に説明する既定値のみが有効になります。 廃止後も、アクセス トークンの有効期間を構成することはできます。 
-
-|プロパティ   |ポリシーのプロパティ文字列    |影響 |Default |
-|----------|-----------|------------|------------|
-|更新トークンの最大非アクティブ時間 |MaxInactiveTime  |更新トークン |90 日間  |
-|単一要素更新トークンの最長有効期間  |MaxAgeSingleFactor  |更新トークン (すべてのユーザー向け)  |Until-revoked  |
-|多要素更新トークンの最長有効期間  |MaxAgeMultiFactor  |更新トークン (すべてのユーザー向け) |180 日  |
-|単一要素セッション トークンの最長有効期間  |MaxAgeSessionSingleFactor |セッション トークン (永続的および非永続的)  |Until-revoked |
-|多要素セッション トークンの最長有効期間  |MaxAgeSessionMultiFactor  |セッション トークン (永続的および非永続的)  |180 日 |
-
-## <a name="identify-configuration-in-scope-of-retirement"></a>廃止の範囲内の構成を特定する
-
-使用を開始するには、次の手順を実行します。
-
-1. 最新版の [Azure AD PowerShell モジュール パブリック プレビュー リリース](https://www.powershellgallery.com/packages/AzureADPreview)をダウンロードします。
-1. `Connect` コマンドを実行して、Azure AD 管理者アカウントにサインインします。 新しいセッションを開始するたびにこのコマンドを実行します。
-
-    ```powershell
-    Connect-AzureAD -Confirm
-    ```
-
-1. 組織で作成されたすべてのポリシーを表示するには、[Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを実行します。  上記の既定値と異なる定義されたプロパティ値が含まれる結果は、廃止の範囲内にあります。
-
-    ```powershell
-    Get-AzureADPolicy -All
-    ```
-
-1. 特定のポリシーにリンクされているアプリとサービス プリンシパルを確認するには、**1a37dad8-5da7-4cc8-87c7-efbc0326cf20** を独自のポリシー ID に置き換えて、次の [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを実行します。 その後、条件付きアクセスのサインイン頻度を構成するか、Azure AD の既定値をそのまま使用するかを決定できます。
-
-    ```powershell
-    Get-AzureADPolicyAppliedObject -id 1a37dad8-5da7-4cc8-87c7-efbc0326cf20
-    ```
-
-更新およびセッション トークン構成プロパティのカスタム値を定義するポリシーがテナントにある場合、Microsoft は、これらのポリシーを上記の既定値を反映する値に更新することをお勧めします。 変更が加えられていない場合、Azure AD によって自動的に既定値が使用されます。  
-
-## <a name="overview"></a>概要
-
-Microsoft ID プラットフォームによって発行されたトークンの有効期間を指定できます。 組織のすべてのアプリ、マルチテナント (複数の組織) アプリケーション、または組織の特定のサービス プリンシパルに対して、トークンの有効期間を設定できます。 ただし、現時点では、[マネージド ID サービス プリンシパル](../managed-identities-azure-resources/overview.md)のトークン有効期間の構成はサポートされていません。
+Microsoft ID プラットフォームによって発行されたアクセス トークン、ID トークン、または SAML トークンの有効期間を指定できます。 組織のすべてのアプリ、マルチテナント (複数の組織) アプリケーション、または組織の特定のサービス プリンシパルに対して、トークンの有効期間を設定できます。 ただし、現時点では、[マネージド ID サービス プリンシパル](../managed-identities-azure-resources/overview.md)のトークン有効期間の構成はサポートされていません。
 
 Azure AD では、ポリシー オブジェクトは、組織の個々のアプリケーションまたはすべてのアプリケーションに適用される規則のセットを表します。 それぞれのポリシーの種類は、割り当てられているオブジェクトに適用されるプロパティのセットを含む一意の構造体を持ちます。
 
@@ -79,13 +34,19 @@ Azure AD では、ポリシー オブジェクトは、組織の個々のアプ�
 > 構成可能なトークン ライフタイム ポリシーは、SharePoint Online リソースと OneDrive for Business リソースにアクセスするモバイル クライアントとデスクトップ クライアントにのみ適用され、Web ブラウザー セッションには適用されません。
 > SharePoint Online と OneDrive for Business の Web ブラウザー セッションのライフタイムを管理するには、[条件付きアクセス セッション ライフタイム](../conditional-access/howto-conditional-access-session-lifetime.md)機能を使用します。 アイドル状態のセッションのタイムアウトの構成に関する詳細については、[SharePoint Online のブログ](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208)を参照してください。
 
-## <a name="token-types"></a>トークンの種類
+## <a name="license-requirements"></a>ライセンスの要件
 
-更新トークン、アクセス トークン、SAML トークン、セッション トークン、および ID トークンにトークンの有効期間ポリシーを設定できます。
+この機能を使用するには、Azure AD Premium P1 ライセンスが必要です。 ご自分の要件に対して適切なライセンスを探すには、[一般公開されている Free および Premium エディションの機能比較](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。
+
+[Microsoft 365 Business ライセンス](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)をお持ちのお客様も、条件付きアクセス機能にアクセスできます。
+
+## <a name="token-lifetime-policies-for-access-saml-and-id-tokens"></a>アクセス トークン、SAML トークン、および ID トークンのトークン有効期間ポリシー
+
+アクセス トークン、SAML トークン、および ID トークンにトークン有効期間ポリシーを設定できます。 
 
 ### <a name="access-tokens"></a>アクセス トークン
 
-クライアントは保護されたリソースにアクセスするためにアクセス トークンを使用します。 アクセス トークンは、ユーザー、クライアント、およびリソースの特定の組み合わせに対してのみ使用できます。 アクセス トークンは取り消すことはできず、有効期限まで有効です。 悪意のあるアクターがアクセス トークンを取得した場合は、その有効期間にわたって使用される可能性があります。 アクセス トークンの有効期間の調整は、システム パフォーマンスの向上と、ユーザーのアカウントが無効になった後にクライアントがアクセスを保持する時間の増加との間で、トレードオフとなります。 システム パフォーマンスの向上は、クライアントが新しいアクセス トークンを取得しなければならない回数を減らすことで実現されます。  既定値は 1 時間です。この場合、クライアントは 1 時間後に更新トークンを使用して、新しい更新トークンとアクセス トークンを (通常は自動で) 取得する必要があります。 
+クライアントは保護されたリソースにアクセスするためにアクセス トークンを使用します。 アクセス トークンは、ユーザー、クライアント、およびリソースの特定の組み合わせに対してのみ使用できます。 アクセス トークンは取り消すことはできず、有効期限まで有効です。 悪意のあるアクターがアクセス トークンを取得した場合は、その有効期間にわたって使用される可能性があります。 アクセス トークンの有効期間の調整は、システム パフォーマンスの向上と、ユーザーのアカウントが無効になった後にクライアントがアクセスを保持する時間の増加との間で、トレードオフとなります。 システム パフォーマンスの向上は、クライアントが新しいアクセス トークンを取得しなければならない回数を減らすことで実現されます。  既定値は 1 時間です。この場合、クライアントは 1 時間後に更新トークンを使用して、新しい更新トークンとアクセス トークンを (通常は自動で) 取得する必要があります。
 
 ### <a name="saml-tokens"></a>SAML トークン
 
@@ -94,6 +55,38 @@ SAML トークンは、Web ベースの SAAS アプリケーションの多く�
 NotOnOrAfter の値は、`TokenLifetimePolicy` 内の `AccessTokenLifetime` パラメーターを使用して変更できます。 この値は、ポリシーで構成されている有効期間に設定され (構成されている場合)、クロック スキュー係数が 5 分になります。
 
 `<SubjectConfirmationData>` 要素で指定されているサブジェクト確認 NotOnOrAfter は、トークンの有効期間の構成には影響されません。 
+
+### <a name="id-tokens"></a>ID トークン
+
+ID トークンは、Web サイトとネイティブ クライアントに渡されます。 ID トークンは、ユーザーに関するプロファイル情報を格納します。 ID トークンは、ユーザーとクライアントの特定の組み合わせにバインドされます。 ID トークンは、それらの有効期限まで有効とみなされます。 通常、Web アプリケーションは、アプリケーションにおけるユーザーのセッションの有効期間と、ユーザーに対して発行された ID トークンの有効期間を照合します。 ID トークンの有効期間を調整して、Web アプリケーションでアプリケーション セッションが期限切れになる頻度、および Microsoft ID プラットフォームでユーザーの再認証 (自動的にまたは対話形式で) が要求される頻度を制御できます。
+
+### <a name="token-lifetime-policy-properties"></a>トークンの有効期間ポリシーのプロパティ
+
+トークンの有効期間ポリシーとは、トークンの有効期間の規則が含まれる一種のポリシー オブジェクトです。 このポリシーは、このリソースのアクセス トークン、SAML トークン、および ID トークンが有効とみなされる期間を制御します。 ポリシーが設定されていない場合は、既定の有効期間の値が適用されます。 
+
+Access Token Lifetime プロパティを減らすと、悪意のあるアクターによって、長時間にわたってアクセス トークンや ID トークンが使用されるリスクが軽減します (これらのトークンは取り消しできません)。このトレードオフは、トークンを頻繁に交換する必要があるため、パフォーマンスが影響を受けることです。
+
+例については、「[Web サインインのポリシーを作成する](configure-token-lifetimes.md#create-a-policy-for-web-sign-in)」を参照してください。
+
+| プロパティ | ポリシーのプロパティ文字列 | 影響 | Default | 最小値 | 最大値 |
+| --- | --- | --- | --- | --- | --- |
+| アクセス トークンの有効期間 |AccessTokenLifetime |アクセス トークン、ID トークン、SAML2 トークン |1 時間 |10 分 |1 日 |
+
+> [!NOTE]
+> Microsoft Teams Web クライアントを確実に機能させるには、Microsoft Teams に対して AccessTokenLifetime が常に 15 分より大きい値に維持されるようにしておくことをお勧めします。
+
+## <a name="token-lifetime-policies-for-refresh-tokens-and-session-tokens"></a>更新トークンとセッション トークンのトークン有効期間ポリシー
+
+更新トークンおよびセッション トークンにトークン有効期間ポリシーを設定できます。
+
+> [!IMPORTANT]
+> 2020 年 5 月時点で、新しいテナントでは更新トークンとセッション トークンの有効期間を構成できません。  既に構成されているテナントでは、2021 年 1 月 30 日まで、更新トークンとセッション トークンのポリシーを変更できます。   2021 年 1 月 30 日以降は、Azure Active Directory でポリシー内の既存の更新とセッション トークンの構成が考慮されなくなります。 廃止後も、アクセス トークン、SAML トークン、ID トークンの有効期間を構成することはできます。
+>
+> ユーザーが再度サインインするように求められるまでの時間を定義し続ける必要がある場合は、条件付きアクセスでサインインの頻度を構成します。 条件付きアクセスの詳細については、「[条件付きアクセスを使用して認証セッション管理を構成する](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)」をお読みください。
+>
+> 廃止後に条件付きアクセスを使用しない場合、更新トークンとセッション トークンは廃止日の[既定の構成](#configurable-token-lifetime-properties-after-the-retirement)に設定され、有効期間を変更することはできなくなります。
+
+:::image type="content" source="./media/active-directory-configurable-token-lifetimes/roadmap.svg" alt-text="廃止に関する情報":::
 
 ### <a name="refresh-tokens"></a>更新トークン
 
@@ -111,9 +104,6 @@ Confidential クライアントは、クライアント パスワード (シー�
 > [!NOTE]
 > Max Age プロパティは、1 つのトークンを使用できる期間です。 
 
-### <a name="id-tokens"></a>ID トークン
-ID トークンは、Web サイトとネイティブ クライアントに渡されます。 ID トークンは、ユーザーに関するプロファイル情報を格納します。 ID トークンは、ユーザーとクライアントの特定の組み合わせにバインドされます。 ID トークンは、それらの有効期限まで有効とみなされます。 通常、Web アプリケーションは、アプリケーションにおけるユーザーのセッションの有効期間と、ユーザーに対して発行された ID トークンの有効期間を照合します。 ID トークンの有効期間を調整して、Web アプリケーションでアプリケーション セッションが期限切れになる頻度、および Microsoft ID プラットフォームでユーザーの再認証 (自動的にまたは対話形式で) が要求される頻度を制御できます。
-
 ### <a name="single-sign-on-session-tokens"></a>シングル サインオン セッション トークン
 ユーザーが Microsoft ID プラットフォームで認証を行うと、ユーザーのブラウザーと Microsoft ID プラットフォームでシングル サインオン (SSO) セッションが確立されます。 SSO トークンは、Cookie の形式でこのセッションを表します。 SSO セッション トークンは特定のリソース/クライアント アプリケーションにバインドされていません。 SSO セッション トークンは失効させることができ、使用時に必ず有効性がチェックされます。
 
@@ -123,23 +113,21 @@ Microsoft ID プラットフォームでは、永続的と非永続的の 2 種�
 
 ポリシーを使用して最初のセッション トークンが発行された後の時間を設定し、それを超えるとセッションのトークンを受け付けないようにすることができます (これを行うには、Session Token Max Age プロパティを使用します)。セッション トークンの有効期間を調整して、Web アプリケーションの使用時に、ユーザーが自動的に再認証されるのではなく、資格情報を再入力する必要があるタイミングと頻度を制御できます。
 
-### <a name="token-lifetime-policy-properties"></a>トークンの有効期間ポリシーのプロパティ
+### <a name="refresh-and-session-token-lifetime-policy-properties"></a>更新トークンとセッション トークンの有効期間ポリシーのプロパティ
 トークンの有効期間ポリシーとは、トークンの有効期間の規則が含まれる一種のポリシー オブジェクトです。 ポリシーのプロパティは、指定したトークンの有効期間の制御に使用します。 ポリシーが設定されていない場合は、既定の有効期間の値が適用されます。
 
-### <a name="configurable-token-lifetime-properties"></a>構成可能なトークンの有効期間のプロパティ
+#### <a name="configurable-token-lifetime-properties"></a>構成可能なトークンの有効期間のプロパティ
 | プロパティ | ポリシーのプロパティ文字列 | 影響 | Default | 最小値 | 最大値 |
 | --- | --- | --- | --- | --- | --- |
-| アクセス トークンの有効期間 |AccessTokenLifetime<sup>2</sup> |アクセス トークン、ID トークン、SAML2 トークン |1 時間 |10 分 |1 日 |
 | 更新トークンの最大非アクティブ時間 |MaxInactiveTime |更新トークン |90 日間 |10 分 |90 日間 |
 | 単一要素更新トークンの最長有効期間 |MaxAgeSingleFactor |更新トークン (すべてのユーザー向け) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
-| 多要素更新トークンの最長有効期間 |MaxAgeMultiFactor |更新トークン (すべてのユーザー向け) | 180 日 |10 分 |180 日<sup>1</sup> |
+| 多要素更新トークンの最長有効期間 |MaxAgeMultiFactor |更新トークン (すべてのユーザー向け) | Until-revoked |10 分 |180 日<sup>1</sup> |
 | 単一要素セッション トークンの最長有効期間 |MaxAgeSessionSingleFactor |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
-| 多要素セッション トークンの最長有効期間 |MaxAgeSessionMultiFactor |セッション トークン (永続的および非永続的) | 180 日 |10 分 | 180 日<sup>1</sup> |
+| 多要素セッション トークンの最長有効期間 |MaxAgeSessionMultiFactor |セッション トークン (永続的および非永続的) | Until-revoked |10 分 | 180 日<sup>1</sup> |
 
 * <sup>1</sup>これらの属性に対して明示的に設定できる最大期間は 365 日です。
-* <sup>2</sup>Microsoft Teams Web クライアントを確実に機能させるには、Microsoft Teams に対して AccessTokenLifetime が常に 15 分より大きい値に維持されるようにしておくことをお勧めします。
 
-### <a name="exceptions"></a>例外
+#### <a name="exceptions"></a>例外
 | プロパティ | 影響 | Default |
 | --- | --- | --- |
 | Refresh Token Max Age (失効情報が不十分なフェデレーション ユーザーに発行<sup>1</sup>) |Refresh Token (失効情報が不十分なフェデレーション ユーザーに発行<sup>1</sup>) |12 時間 |
@@ -148,52 +136,9 @@ Microsoft ID プラットフォームでは、永続的と非永続的の 2 種�
 
 * <sup>1</sup> 失効情報が不十分なフェデレーション ユーザーには、"LastPasswordChangeTimestamp" 属性が同期されないすべてのユーザーが含まれます。 これらのユーザーにはこの短い Max Age が与えられます。その理由は、Azure Active Directory は、古い資格情報 (変更済みのパスワードなど) に関連付けられたトークンを取り消すタイミングを確認できず、ユーザーおよび関連付けられているトークンがまだ良好であることをより頻繁に確認する必要があるためです。 このエクスペリエンスを向上させるには、テナント管理者は、"LastPasswordChangeTimestamp" 属性 (PowerShell または AADSync を使用してユーザー オブジェクトに設定できる) が同期されていることを確認する必要があります。
 
-### <a name="policy-evaluation-and-prioritization"></a>ポリシーの評価と優先順位付け
-トークン有効期間ポリシーを作成して、特定のアプリケーション、組織、およびサービス プリンシパルに割り当てることができます。 複数のポリシーを、特定のアプリケーションに適用できます。 有効なトークン有効期間ポリシーは、次の規則に従います。
+### <a name="configurable-policy-property-details"></a>構成可能なポリシーのプロパティの詳細
 
-* ポリシーが明示的にサービス プリンシパルに割り当てられている場合は、そのポリシーが適用されます。
-* 明示的にサービス プリンシパルに割り当てられているポリシーがない場合は、サービス プリンシパルの親組織に明示的に割り当てられているポリシーが適用されます。
-* サービス プリンシパルまたは組織に明示的に割り当てられているポリシーがない場合、アプリケーションに割り当てられているポリシーが適用されます。
-* サービス プリンシパル、組織、またはアプリケーション オブジェクトに割り当てられているポリシーがない場合は、既定値が適用されます。 ([構成可能なトークンの有効期間のプロパティ](#configurable-token-lifetime-properties)の表を参照してください)。
-
-アプリケーション オブジェクトとサービス プリンシパル オブジェクトの関係の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)」を参照してください。
-
-トークンの有効性は、トークンの使用時に評価されます。 アクセスされているアプリケーションに対して、最も優先度が高いポリシーが有効になります。
-
-ここで使用されるすべての時間帯は、C# [TimeSpan](/dotnet/api/system.timespan) オブジェクト (D.HH:MM:SS) 形式に従って書式設定されます。  つまり、80 日と 30 分は `80.00:30:00` になります。  0 の場合、先頭の D を削除することができますので 90 分は `00:90:00` になります。  
-
-> [!NOTE]
-> シナリオの例を次に示します。
->
-> ユーザーは次の 2 つの Web アプリケーションに接続したいものとします:Web アプリケーション A と Web アプリケーション B。
-> 
-> 考慮すべき要素:
-> * 両方の Web アプリケーションとも、同じ親組織にあります。
-> * Session Token Max Age を 8 時間に設定したトークンの有効期間ポリシー 1 が、親組織の既定値として設定されています。
-> * Web アプリケーション A は、日常的に使用する Web アプリケーションで、どのポリシーにもリンクされていません。
-> * Web アプリケーション B は、機密性の高いプロセスに使用されます。 そのサービス プリンシパルは、30 分の　Session Token Max Age が設定されているトークンの有効期間ポリシー 2 にリンクされています。
->
-> 正午に、ユーザーは新しいブラウザー セッションを開始し、Web アプリケーション A へのアクセスを試みます。ユーザーは Microsoft ID プラットフォームにリダイレクトされ、サインインするよう指示されます。 これによって、ブラウザーにセッション トークンを含む Cookie が作成されます。 ユーザーは、Web アプリケーション A にアクセスするための ID トークンによって、Web アプリケーション A にリダイレクトされます。
->
-> 午後 0 時 15 分に、ユーザーは Web アプリケーション B へのアクセスを試みます。ブラウザーは Microsoft ID プラットフォームにリダイレクトされ、そこでセッション Cookie が検出されます。 Web アプリケーション B のサービス プリンシパルは、トークンの有効期間ポリシー 2 にリンクされているだけでなく、既定のトークンの有効期間ポリシー 1 が設定されている親組織の一部にもなっています。 サービス プリンシパルにリンクされているポリシーは、組織の既定のポリシーより優先順位が高いため、トークンの有効期間ポリシー 2 が有効になります。 セッション トークンが最初に発行されたのは、過去 30 分以内であるため、このトークンは有効とみなされます。 ユーザーは、アクセス権限を与える ID トークンによって Web アプリケーション B にリダイレクトされます。
->
-> 午後 1 時に、ユーザーは Web アプリケーション A へのアクセスを試みます。ユーザーは、Microsoft ID プラットフォームにリダイレクトされます。 Web アプリケーション A は、どのポリシーにもリンクされていませんが、既定のトークンの有効期間ポリシー 1 が設定された組織内にあるため、そのポリシーが有効になります。 過去 8 時間以内で最初に発行されたセッション Cookie が検出されます。 ユーザーは自動的に新しい ID トークンで Web アプリケーション A にリダイレクトされます。 ユーザーは認証する必要がありません。
->
-> その後直ちにユーザーは Web アプリケーション B へのアクセスを試みます。ユーザーは、Microsoft ID プラットフォームにリダイレクトされます。 以前と同様、トークンの有効期間ポリシー 2 が有効になります。 トークンは 30 分以上前に発行されたため、ユーザーはサインイン資格情報を再入力するように求められます。 新しいセッション トークンと ID トークンが発行されます。 これで、ユーザーは Web アプリケーション B にアクセスできます。
->
->
-
-## <a name="configurable-policy-property-details"></a>構成可能なポリシーのプロパティの詳細
-### <a name="access-token-lifetime"></a>アクセス トークンの有効期間
-**文字列:** AccessTokenLifetime
-
-**影響:** アクセス トークン、ID トークン、SAML トークン
-
-**概要:** このポリシーは、このリソースのアクセス トークンと ID トークンが有効とみなされる期間を制御します。 Access Token Lifetime プロパティを減らすと、悪意のあるアクターによって、長時間にわたってアクセス トークンや ID トークンが使用されるリスクが軽減します (これらのトークンは取り消しできません)。このトレードオフは、トークンを頻繁に交換する必要があるため、パフォーマンスが影響を受けることです。
-
-例については、「[Web サインインのポリシーを作成する](configure-token-lifetimes.md#create-a-policy-for-web-sign-in)」を参照してください。
-
-### <a name="refresh-token-max-inactive-time"></a>更新トークンの最大非アクティブ時間
+#### <a name="refresh-token-max-inactive-time"></a>更新トークンの最大非アクティブ時間
 **文字列:** MaxInactiveTime
 
 **影響:** 更新トークン
@@ -206,7 +151,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
 
 例については、「[Web API を呼び出すネイティブ アプリケーションのポリシーを作成する](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api)」を参照してください。
 
-### <a name="single-factor-refresh-token-max-age"></a>単一要素更新トークンの最長有効期間
+#### <a name="single-factor-refresh-token-max-age"></a>単一要素更新トークンの最長有効期間
 **文字列:** MaxAgeSingleFactor
 
 **影響:** 更新トークン
@@ -217,7 +162,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
 
 例については、「[Web API を呼び出すネイティブ アプリケーションのポリシーを作成する](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api)」を参照してください。
 
-### <a name="multi-factor-refresh-token-max-age"></a>多要素更新トークンの最長有効期間
+#### <a name="multi-factor-refresh-token-max-age"></a>多要素更新トークンの最長有効期間
 **文字列:** MaxAgeMultiFactor
 
 **影響:** 更新トークン
@@ -228,7 +173,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
 
 例については、「[Web API を呼び出すネイティブ アプリケーションのポリシーを作成する](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api)」を参照してください。
 
-### <a name="single-factor-session-token-max-age"></a>単一要素セッション トークンの最長有効期間
+#### <a name="single-factor-session-token-max-age"></a>単一要素セッション トークンの最長有効期間
 **文字列:** MaxAgeSessionSingleFactor
 
 **影響:** セッション トークン (永続的および非永続的)
@@ -239,7 +184,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
 
 例については、「[Web サインインのポリシーを作成する](configure-token-lifetimes.md#create-a-policy-for-web-sign-in)」を参照してください。
 
-### <a name="multi-factor-session-token-max-age"></a>多要素セッション トークンの最長有効期間
+#### <a name="multi-factor-session-token-max-age"></a>多要素セッション トークンの最長有効期間
 **文字列:** MaxAgeSessionMultiFactor
 
 **影響:** セッション トークン (永続的および非永続的)
@@ -247,6 +192,52 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
 **概要:** このポリシーは、ユーザーが前回多要素で認証に成功した後に、新しい ID とセッション トークンを取得するためにセッショントークンを使用できる期間を制御します。 ユーザーが認証し、新しいセッション トークンを受け取ると、ユーザーは、指定した期間のあいだセッション トークン フローを使用できます (これは、現在のセッション トークンが失効しておらず、有効期限が切れていない場合にあてはまります)。指定した期間の後、ユーザーは新しいセッション トークンを受け取るために再認証が強制されます。
 
 最長有効期間を短くすると、ユーザーに認証を強制する回数が多くなります。 単一要素認証は多要素認証より安全性が低いと考えられるため、このプロパティは、Single-Factor Session Token Max Age プロパティ以上の値に設定することをお勧めします。
+
+## <a name="configurable-token-lifetime-properties-after-the-retirement"></a>廃止後に構成可能なトークンの有効期間プロパティ
+更新とセッション トークンの構成は、次のプロパティとそれぞれの設定値の影響を受けます。 2021 年 1 月 30 日に更新トークンとセッション トークンの構成が廃止された後、Azure AD では、以下に説明する既定値のみを受け入れます。 廃止後に、サインイン頻度を管理するための条件付きアクセスを使用しない場合、更新トークンとセッション トークンは廃止日の既定の構成に設定され、有効期間を変更することはできなくなります。  
+
+|プロパティ   |ポリシーのプロパティ文字列    |影響 |Default |
+|----------|-----------|------------|------------|
+|アクセス トークンの有効期間 |AccessTokenLifetime |アクセス トークン、ID トークン、SAML2 トークン |1 時間 |
+|更新トークンの最大非アクティブ時間 |MaxInactiveTime  |更新トークン |90 日間  |
+|単一要素更新トークンの最長有効期間  |MaxAgeSingleFactor  |更新トークン (すべてのユーザー向け)  |Until-revoked  |
+|多要素更新トークンの最長有効期間  |MaxAgeMultiFactor  |更新トークン (すべてのユーザー向け) |Until-revoked  |
+|単一要素セッション トークンの最長有効期間  |MaxAgeSessionSingleFactor |セッション トークン (永続的および非永続的)  |Until-revoked |
+|多要素セッション トークンの最長有効期間  |MaxAgeSessionMultiFactor  |セッション トークン (永続的および非永続的)  |Until-revoked |
+
+PowerShell を使用すると、廃止の影響を受けるポリシーを特定できます。  [PowerShell コマンドレット](configure-token-lifetimes.md#get-started)を使用すると、組織で作成されたすべてのポリシーを確認したり、特定のポリシーにリンクされているアプリとサービス プリンシパルを検索したりできます。
+
+## <a name="policy-evaluation-and-prioritization"></a>ポリシーの評価と優先順位付け
+トークン有効期間ポリシーを作成して、特定のアプリケーション、組織、およびサービス プリンシパルに割り当てることができます。 複数のポリシーを、特定のアプリケーションに適用できます。 有効なトークン有効期間ポリシーは、次の規則に従います。
+
+* ポリシーが明示的にサービス プリンシパルに割り当てられている場合は、そのポリシーが適用されます。
+* 明示的にサービス プリンシパルに割り当てられているポリシーがない場合は、サービス プリンシパルの親組織に明示的に割り当てられているポリシーが適用されます。
+* サービス プリンシパルまたは組織に明示的に割り当てられているポリシーがない場合、アプリケーションに割り当てられているポリシーが適用されます。
+* サービス プリンシパル、組織、またはアプリケーション オブジェクトに割り当てられているポリシーがない場合は、既定値が適用されます。 ([構成可能なトークンの有効期間のプロパティ](#configurable-token-lifetime-properties-after-the-retirement)の表を参照してください)。
+
+アプリケーション オブジェクトとサービス プリンシパル オブジェクトの関係の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)」を参照してください。
+
+トークンの有効性は、トークンの使用時に評価されます。 アクセスされているアプリケーションに対して、最も優先度が高いポリシーが有効になります。
+
+ここで使用されるすべての時間帯は、C# [TimeSpan](/dotnet/api/system.timespan) オブジェクト (D.HH:MM:SS) 形式に従って書式設定されます。  つまり、80 日と 30 分は `80.00:30:00` になります。  0 の場合、先頭の D を削除することができますので 90 分は `00:90:00` になります。  
+
+### <a name="example-scenario"></a>シナリオ例
+
+ユーザーは次の 2 つの Web アプリケーションに接続したいものとします:Web アプリケーション A と Web アプリケーション B。
+
+考慮すべき要素:
+* 両方の Web アプリケーションとも、同じ親組織にあります。
+* Session Token Max Age を 8 時間に設定したトークンの有効期間ポリシー 1 が、親組織の既定値として設定されています。
+* Web アプリケーション A は、日常的に使用する Web アプリケーションで、どのポリシーにもリンクされていません。
+* Web アプリケーション B は、機密性の高いプロセスに使用されます。 そのサービス プリンシパルは、30 分の　Session Token Max Age が設定されているトークンの有効期間ポリシー 2 にリンクされています。
+
+正午に、ユーザーは新しいブラウザー セッションを開始し、Web アプリケーション A へのアクセスを試みます。ユーザーは Microsoft ID プラットフォームにリダイレクトされ、サインインするよう指示されます。 これによって、ブラウザーにセッション トークンを含む Cookie が作成されます。 ユーザーは、Web アプリケーション A にアクセスするための ID トークンによって、Web アプリケーション A にリダイレクトされます。
+
+午後 0 時 15 分に、ユーザーは Web アプリケーション B へのアクセスを試みます。ブラウザーは Microsoft ID プラットフォームにリダイレクトされ、そこでセッション Cookie が検出されます。 Web アプリケーション B のサービス プリンシパルは、トークンの有効期間ポリシー 2 にリンクされているだけでなく、既定のトークンの有効期間ポリシー 1 が設定されている親組織の一部にもなっています。 サービス プリンシパルにリンクされているポリシーは、組織の既定のポリシーより優先順位が高いため、トークンの有効期間ポリシー 2 が有効になります。 セッション トークンが最初に発行されたのは、過去 30 分以内であるため、このトークンは有効とみなされます。 ユーザーは、アクセス権限を与える ID トークンによって Web アプリケーション B にリダイレクトされます。
+
+午後 1 時に、ユーザーは Web アプリケーション A へのアクセスを試みます。ユーザーは、Microsoft ID プラットフォームにリダイレクトされます。 Web アプリケーション A は、どのポリシーにもリンクされていませんが、既定のトークンの有効期間ポリシー 1 が設定された組織内にあるため、そのポリシーが有効になります。 過去 8 時間以内で最初に発行されたセッション Cookie が検出されます。 ユーザーは自動的に新しい ID トークンで Web アプリケーション A にリダイレクトされます。 ユーザーは認証する必要がありません。
+
+その後直ちにユーザーは Web アプリケーション B へのアクセスを試みます。ユーザーは、Microsoft ID プラットフォームにリダイレクトされます。 以前と同様、トークンの有効期間ポリシー 2 が有効になります。 トークンは 30 分以上前に発行されたため、ユーザーはサインイン資格情報を再入力するように求められます。 新しいセッション トークンと ID トークンが発行されます。 これで、ユーザーは Web アプリケーション B にアクセスできます。
 
 ## <a name="cmdlet-reference"></a>コマンドレット リファレンス
 
@@ -281,12 +272,6 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
 | [Add-AzureADServicePrincipalPolicy](/powershell/module/azuread/add-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | 指定したポリシーをサービス プリンシパルにリンクします。 |
 | [Get-AzureADServicePrincipalPolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | 指定したサービス プリンシパルにリンクされている任意のポリシーを取得します。|
 | [Remove-AzureADServicePrincipalPolicy](/powershell/module/azuread/remove-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | 指定したサービス プリンシパルからポリシーを削除します。|
-
-## <a name="license-requirements"></a>ライセンスの要件
-
-この機能を使用するには、Azure AD Premium P1 ライセンスが必要です。 ご自分の要件に対して適切なライセンスを探すには、[一般公開されている Free および Premium エディションの機能比較](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。
-
-[Microsoft 365 Business ライセンス](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)をお持ちのお客様も、条件付きアクセス機能にアクセスできます。
 
 ## <a name="next-steps"></a>次のステップ
 

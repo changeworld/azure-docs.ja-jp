@@ -7,21 +7,21 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 052fd0ea7619d566e78806580ee7b39e49cc85d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d14ae86d41caec3c1bd897c2c81bee748dcc312c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448615"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050886"
 ---
-# <a name="azure-monitor-insights-for-virtual-wan-preview"></a>Virtual WAN に関する Azure Monitor の分析情報 (プレビュー)
+# <a name="azure-monitor-insights-for-virtual-wan"></a>Virtual WAN に関する Azure Monitor の分析情報
 
 Azure Virtual WAN に関する [Azure Monitor の分析情報](../azure-monitor/insights/network-insights-overview.md)を使用すると、ユーザーやオペレーターは、自動検出されたトポロジ マップを通じて仮想 WAN の状態とステータスを確認できます。 リソースの状態とステータスがマップに重ねて表示され、仮想 WAN の全体的な正常性のスナップショット ビューが提供されます。 Virtual WAN ポータルのリソース構成ページにワンクリックでアクセスすることで、マップのリソースにナビゲーションすることができます。
 
 Virtual WAN リソースレベルのメトリックは、事前にパッケージ化された Virtual WAN メトリック ブックを使用して収集および提示されます。 このブックには、仮想 WAN、ハブ、ゲートウェイ、接続レベルのメトリックが表示されます。 この記事では、Virtual WAN に関する Azure Monitor の分析情報を使用して、Virtual WAN のトポロジとメトリックのすべてを 1 か所で表示する手順について説明します。
 
 > [!NOTE]
-> Virtual WAN ポータルの **[分析情報]** メニュー オプションは、現在ロール アウト中です。このメニューはロールアウト中ですが、Azure Monitor for Networks を使用して、Virtual WAN トポロジとメトリック ブックにアクセスすることができます。 詳細については、「[Azure Monitor for Networks](../azure-monitor/insights/network-insights-overview.md)」を参照してください。 
+> **[インサイト]** メニュー オプションは、Virtual WAN ポータルの **[監視]** にあります。 Azure Monitor for Networks を使用して、Virtual WAN トポロジとメトリック ブックにアクセスすることができます。 詳細については、「[Azure Monitor for Networks](../azure-monitor/insights/network-insights-overview.md)」を参照してください。 
 >
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -45,7 +45,7 @@ Virtual WAN リソースレベルのメトリックは、事前にパッケー�
 
 "**図 2:[分析情報] ビュー**
 
-:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="[分析情報 (プレビュー)] ビューを示すスクリーンショット。" lightbox="./media/azure-monitor-insights/insights-view.png":::
+:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="[分析情報] ビューを示すスクリーンショット。" lightbox="./media/azure-monitor-insights/insights-view.png":::
 
 ## <a name="dependency-view"></a><a name="dependency"></a>[依存関係] ビュー
 
@@ -53,7 +53,7 @@ Virtual WAN の **[依存関係]** ビューによって、ハブ アンド ス�
 
 "**図 3:VWAN の [依存関係] ビュー**
 
-:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="[分析情報 (プレビュー)] ビューを示すスクリーンショット。" lightbox="./media/azure-monitor-insights/dependency-map.png":::
+:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="[依存関係] ビューを示すスクリーンショット。" lightbox="./media/azure-monitor-insights/dependency-map.png":::
 
 **[依存関係]** ビュー マップには、接続されたグラフとして次のリソースが表示されます。
 
@@ -69,13 +69,13 @@ Virtual WAN の **[依存関係]** ビューによって、ハブ アンド ス�
 
 "**図 4:リソース固有の情報に移動する**
 
-:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="[分析情報 (プレビュー)] ビューを示すスクリーンショット。":::
+:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="リソース固有の情報に移動する方法を示すスクリーンショット。":::
 
 **[依存関係]** ビューの検索とフィルター バーを使用すると、グラフ全体を簡単に検索することができます。 さまざまなフィルターが、検索を特定のパスや状態に絞り込むのに役立ちます。
 
 **図 5:検索とフィルター処理**
 
-:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="[分析情報 (プレビュー)] ビューを示すスクリーンショット。" lightbox="./media/azure-monitor-insights/search-filter.png":::
+:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="検索とフィルター バーを示すスクリーンショット。" lightbox="./media/azure-monitor-insights/search-filter.png":::
 
 ## <a name="detailed-metrics"></a><a name="detailed"></a>詳細メトリック
 
@@ -83,7 +83,7 @@ Virtual WAN の **[依存関係]** ビューによって、ハブ アンド ス�
 
 **図 6:詳細メトリック ダッシュボード**
 
-:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="[分析情報 (プレビュー)] ビューを示すスクリーンショット。" lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
+:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="詳細メトリック ダッシュボードを示すスクリーンショット。" lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
 
 ## <a name="next-steps"></a>次のステップ
 

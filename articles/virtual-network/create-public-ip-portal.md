@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: add763b713b93604e089d7aec586876fecd2887c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bd35d3288591a01c14e306960601eef6dea7e761
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895640"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954143"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してパブリック IP アドレスを作成する
 
@@ -36,6 +36,7 @@ ms.locfileid: "95895640"
     | ---                     | ---                         |
     | IP バージョン              | [IPv4] を選択します。                 |    
     | SKU                     | **[Standard]** を選択します。         |
+    | 層 (表示されている場合*)                  | **[地域]** を選択します。         |
     | 名前                    | 「*myStandardZRPublicIP*」と入力します。          |
     | IP アドレスの割り当て   | これは "静的" としてロックされることに注意してください。                                        |
     | アイドル タイムアウト (分)  | 値は 4 のままにします。        |
@@ -46,6 +47,8 @@ ms.locfileid: "95895640"
     | 可用性ゾーン       | **[ゾーン冗長]** を選択するか、特定のゾーンを選択します (下記の注を参照)。 |
 
 これらは、[Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) が利用できるリージョンでのみ有効な選択であることに注意してください。  (これらのリージョンでは特定のゾーンも選択できますが、ゾーン障害に対する回復性はありません。)
+
+\* = 層は、[リージョン間ロード バランサー](https://docs.microsoft.com/azure/load-balancer/cross-region-overview)機能 (現在はプレビュー) に関連しています。
 
 # <a name="basic-sku"></a>[**Basic SKU**](#tab/option-create-public-ip-basic)
 

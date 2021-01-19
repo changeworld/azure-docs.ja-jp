@@ -1,14 +1,14 @@
 ---
 title: Registry サービス階層と機能
-description: Azure Container Registry の Basic、Standard、および Premium サービス階層 (SKU) の機能と制限について説明します。
+description: Azure Container Registry の Basic、Standard、および Premium サービス階層 (SKU) の機能と制限 (クォータ) について説明します。
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: e2a5ad52775e9000aa0beb0a926d809da1c5a0e0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b55fc16dcd6dcb544ed4597ce4bdc6ba17b52646
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048476"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015668"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry サービス階層
 
@@ -31,6 +31,8 @@ Basic、Standard、および Premium 階層は、すべて同じプログラム�
 ## <a name="changing-tiers"></a>階層の変更
 
 レジストリのサービス階層の変更は、Azure CLI または Azure portal で行うことができます。 切り替え先の階層が最大記憶域容量の要件を満たしていれば、階層間で自由に切り替えを行うことができます。 
+
+サービス階層間を移動しても、レジストリのダウンタイムやレジストリ操作への影響はありません。
 
 ### <a name="azure-cli"></a>Azure CLI
 

@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/30/2020
+ms.date: 01/07/2021
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: e6591762ed6a7e2b462a209730276f3198d86ae8
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 68547b8fb673cd54b7c21963ede122553bbbc390
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821470"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967125"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory コネクタのトラブルシューティング
 
@@ -458,34 +458,15 @@ ms.locfileid: "97821470"
 - **原因**:Azure Synapse Analytics では、Azure Storage 内の外部テーブルに対するクエリに関する問題が発生しています。
 
 - **解決方法**:SSMS で同じクエリを実行し、同じ結果が表示されるかどうかを確認します。 表示される場合は、Azure Synapse Analytics に対するサポート チケットを作成し、ご利用の Azure Synapse Analytics サーバーとデータベース名を入力してさらにトラブルシューティングを行います。
-            
-
-### <a name="low-performance-when-load-data-into-azure-sql"></a>データを Azure SQL に読み込むときにパフォーマンスが低下します
-
-- **現象**:Azure SQL にデータをコピーすると、低速になります。
-
-- **原因**:問題の根本原因は、ほとんどの場合、Azure SQL 側のボトルネックによってトリガーされます。 以下のいくつかの原因が考えられます。
-
-    - Azure DB 層が十分高くありません。
-
-    - Azure DB の DTU 使用率はほぼ 100% です。 [パフォーマンスを監視](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview)して、DB 層をアップグレードすることを検討できます。
-
-    - インデックスが正しく設定されていません。 データが読み込まれる前にすべてのインデックスを削除し、読み込みの完了後に再作成します。
-
-    - WriteBatchSize は、スキーマ行のサイズに適合するのに十分な大きさではありません。 問題のプロパティを拡大してみてください。
-
-    - 一括埋め込みではなく、ストアド プロシージャが使用されているため、パフォーマンスが低下することが予想されます。 
-
-- **解決方法**:[コピー アクティビティのパフォーマンス](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)については、TSG を参照してください
 
 
 ### <a name="performance-tier-is-low-and-leads-to-copy-failure"></a>パフォーマンス レベルが低いため、コピーに失敗します
 
-- **現象**:Azure SQL にデータをコピーするときに、次のエラー メッセージが表示されます: `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
+- **現象**:Azure SQL Database にデータをコピーするときに、次のエラー メッセージが表示されます: `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
 
-- **原因**:Azure SQL s1 が使用されており、この場合、IO 限度に達しています。
+- **原因**:Azure SQL Database s1 が使用されており、この場合、IO 限度に達しています。
 
-- **解決方法**:問題を修正するには、Azure SQL のパフォーマンス レベルをアップグレードします。 
+- **解決方法**:問題を修正するには、Azure SQL Database のパフォーマンス レベルをアップグレードします。 
 
 
 ### <a name="sql-table-cannot-be-found"></a>SQL テーブルが見つかりません 
@@ -619,31 +600,6 @@ ms.locfileid: "97821470"
 - **原因**:Dynamics サーバーが不安定であるか、またはアクセスできません。または、ネットワークで問題が発生しています。
 
 - **推奨事項**:ネットワーク接続を確認してください。詳細については、Dynamics サーバーのログを確認してください。 さらに支援が必要な場合は、Dynamics サポートにお問い合わせください。
-
-
-## <a name="excel-format"></a>Excel 形式
-
-### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>大きな Excel ファイルを解析するときのタイムアウトまたはパフォーマンスの低下
-
-- **現象**:
-
-    - Excel データセットの作成、接続またはストアからのスキーマのインポート、データのプレビュー、ワークシートの一覧表示または更新を行う際、Excel ファイルのサイズが大きい場合は、タイムアウト エラーが発生することがあります。
-
-    - コピー アクティビティを使用して、サイズの大きい Excel ファイル (>= 100 MB) から他のデータ ストアにデータをコピーすると、パフォーマンスが低下したり、OOM 問題が発生したりする可能性があります。
-
-- **原因**: 
-
-    - スキーマのインポート、データのプレビュー、Excel データセットでのワークシートの一覧表示などの操作では、タイムアウトは 100 秒で静的です。 大きな Excel ファイルでは、これらの操作がタイムアウト値内で完了しないことがあります。
-
-    - ADF コピー アクティビティは、Excel ファイル全体をメモリに読み込み、データを読み取る指定されたワークシートとセルを検索します。 ADF が使用する基盤となる SDK のために、このような動作になります。
-
-- **解決方法**: 
-
-    - スキーマをインポートする場合は、元のファイルのサブセットとなるより小さいサンプル ファイルを生成し、[接続/ストアからスキーマをインポートする] ではなく、[サンプル ファイルからスキーマをインポートする] を選択します。
-
-    - ワークシートを一覧表示する場合は、ワークシートのドロップダウンで [編集] をクリックし、シート名/インデックスを入力します。
-
-    - 大きな Excel ファイル (> 100 MB) を他のストアにコピーするには、Data Flow Excel ソースを使用します。これにより、ストリーミングの読み取りとパフォーマンスが向上します。
     
 
 ## <a name="ftp"></a>FTP
@@ -862,7 +818,7 @@ ms.locfileid: "97821470"
 
     この問題は、Parquet がこのような形式をサポートしていないため、列名に空白またはサポートされていない文字 (,;{}()\n\t= など) が含まれていることが原因で発生する可能性があります。 
 
-    たとえば、*contoso(test)* のような列名は[コード](https://github.com/apache/parquet-mr/blob/master/parquet-column/src/main/java/org/apache/parquet/schema/MessageTypeParser.java) `Tokenizer st = new Tokenizer(schemaString, " ;{}()\n\t");` の丸かっこで囲まれた型を解析します。 このような "test" 型が存在しないため、エラーが発生します。
+    たとえば、*contoso(test)* のような列名は [コード](https://github.com/apache/parquet-mr/blob/master/parquet-column/src/main/java/org/apache/parquet/schema/MessageTypeParser.java) `Tokenizer st = new Tokenizer(schemaString, " ;{}()\n\t");` の丸かっこで囲まれた型を解析します。 このような "test" 型が存在しないため、エラーが発生します。
 
     サポートされている型を確認するには、[ここで](https://github.com/apache/parquet-mr/blob/master/parquet-column/src/main/java/org/apache/parquet/schema/OriginalType.java)これらを確認できます。
 

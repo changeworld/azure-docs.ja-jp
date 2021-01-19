@@ -8,15 +8,15 @@ ms.author: keli19
 ms.reviewer: peterlu
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 11/25/2020
+ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: designer
-ms.openlocfilehash: 29d83f4acddfce6294457f87519d62e35f52bf15
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: b940f5c9bd14bcec404827daaef666da802d969b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709420"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065254"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Azure Machine Learning デザイナー パイプラインでログ記録を有効にする
 
@@ -27,7 +27,7 @@ SDK 作成エクスペリエンスを使用したメトリックのログ記録�
 
 ## <a name="enable-logging-with-execute-python-script"></a>Execute Python Script を使用してログ記録を有効にする
 
-__Execute Python Script__ モジュールを使用して、デザイナー パイプラインでログ記録を有効にします。 このワークフローを使用して任意の値をログに記録することができますが、__Evaluate Model__ モジュールからメトリックをログに記録し、複数の実行にわたってモデルのパフォーマンスを追跡する場合に特に便利です。
+[Execute Python Script](./algorithm-module-reference/execute-python-script.md) モジュールを使用して、デザイナー パイプラインでログ記録を有効にします。 このワークフローを使用して任意の値をログに記録することができますが、__Evaluate Model__ モジュールからメトリックをログに記録し、複数の実行にわたってモデルのパフォーマンスを追跡する場合に特に便利です。
 
 次の例では、Evaluate Model モジュールと Execute Python Script モジュールを使用して、トレーニングされた 2 つのモデルの平均二乗誤差をログに記録する方法を示します。
 
@@ -53,7 +53,7 @@ __Execute Python Script__ モジュールを使用して、デザイナー パ�
         
         # Log left output port result of Evaluate Model. This also works when evaluate only 1 model.
         parent_run.log(name='Mean_Absolute_Error (left port)', value=dataframe1['Mean_Absolute_Error'][0])
-        # Log right output port result of Evaluate Model.
+        # Log right output port result of Evaluate Model. The following line should be deleted if you only connect one Score Module to the` left port of Evaluate Model module.
         parent_run.log(name='Mean_Absolute_Error (right port)', value=dataframe1['Mean_Absolute_Error'][1])
 
         return dataframe1,
@@ -81,3 +81,4 @@ Python SDK を使用して値をログに記録する方法の詳細について
 
 * デザイナー パイプラインのトラブルシューティング方法については、[ML パイプラインのデバッグとトラブルシューティング](how-to-debug-pipelines.md#azure-machine-learning-designer)に関する記事を参照してください。
 * Python SDK を使用して SDK 作成エクスペリエンスのメトリックをログに記録する方法については、「[Azure ML のトレーニングの実行でログ記録を有効にする](how-to-track-experiments.md)」を参照してください。
+* デザイナーで [Python スクリプトの実行](./algorithm-module-reference/execute-python-script.md)を使用する方法をご覧ください。

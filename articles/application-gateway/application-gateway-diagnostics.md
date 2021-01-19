@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 9d2fba48762e11a92f6f3925c969b01aebbe3630
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: e18267d5a810826e41e05eb3dde3cd82a8eb9197
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347593"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065322"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway のバックエンドの正常性および診断ログ
 
@@ -222,7 +222,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 |serverRouted| アプリケーション ゲートウェイから要求がルーティングされる先のバックエンド サーバー。|
 |serverStatus| バックエンド サーバーの HTTP 状態コード。|
 |serverResponseLatency| バックエンド サーバーからの応答の待機時間。|
-|host| 要求のホスト ヘッダーに表示されているアドレス。 書き換えられた場合、このフィールドには更新されたホスト名が含まれます|
+|host| 要求のホスト ヘッダーに表示されているアドレス。 ヘッダーの書き換えによって書き換えられた場合、このフィールドには更新されたホスト名が含まれます|
 |originalRequestUriWithArgs| このフィールドには元の要求 URL が含まれています |
 |requestUri| このフィールドには、Application Gateway での書き換え操作後の URL が含まれています |
 |originalHost| このフィールドには、元の要求ホスト名が含まれています

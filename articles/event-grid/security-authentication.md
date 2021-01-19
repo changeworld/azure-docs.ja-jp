@@ -2,13 +2,13 @@
 title: イベンド ハンドラーへのイベント配信の認証 (Azure Event Grid)
 description: この記事では、Azure Event Grid のイベント ハンドラーへの配信を認証するさまざまな方法について説明します。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: abe16c9598c8c10caa832150aafac997dd7f1624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/07/2021
+ms.openlocfilehash: 8360aa49e3d83879499af79448ff9f85082f47ac
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87460645"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015540"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>イベンド ハンドラーへのイベント配信の認証 (Azure Event Grid)
 この記事では、イベント ハンドラーへのイベント配信の認証について説明します。 また、Azure Active Directory (Azure AD) または共有シークレットを使用して、Event Grid からイベントを受信するために使用される Webhook エンドポイントをセキュリティで保護する方法も示します。
@@ -41,6 +41,9 @@ Webhook へのイベント配信の詳細については、「[Webhook のイベ
 
 > [!IMPORTANT]
 Azure Event Grid は、**HTTPS** Webhook エンドポイントのみをサポートします。 
+
+## <a name="endpoint-validation-with-cloudevents-v10"></a>CloudEvents v1.0 を使用したエンドポイントの検証
+Event Grid を既に使い慣れている場合、不正使用を防ぐためのエンドポイント検証ハンドシェイクをご存じかもしれません。 CloudEvents v1.0 では、**HTTP OPTIONS** メソッドを使用することで、独自の[不正使用防止のセマンティクス](webhook-event-delivery.md)が実装されます。 詳細については、[イベント配信用の HTTP 1.1 Web Hooks (バージョン 1.0)](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection) を参照してください。 出力に CloudEvents スキーマを使用すると、Event Grid では、Event Grid の検証イベント メカニズムではなく CloudEvents v1.0 の不正使用防止が使用されます。 詳細については、「[Event Grid に CloudEvents v1.0 スキーマを使用する](cloudevents-schema.md)」を参照してください。 
 
 
 ## <a name="next-steps"></a>次のステップ

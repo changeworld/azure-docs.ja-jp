@@ -3,16 +3,16 @@ title: SQL Server、Azure SQL Database、または Azure SQL Managed Instance �
 description: Azure Logic Apps を使用して、オン プレミスまたはクラウド内の SQL データベースに関するタスクを自動化します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 01/07/2021
 tags: connectors
-ms.openlocfilehash: ce7679fff86d2c96588cf2b704d44238535963b3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 75c657236b6e06a7e0f6c717d746bcc8c034d423
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130937"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013449"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SQL データベースのワークフローを自動化する
 
@@ -80,7 +80,7 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
    | [**SQL Server 認証**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | - 非 ISE と ISE 両方の SQL Server コネクタをサポートします。 <p><p>- 作成されてデータベースに格納されている有効なユーザー名と強力なパスワードが必要です。 <p>詳細については、以下のトピックを参照してください。 <p>- [Azure SQL セキュリティの概要 - 認証](../azure-sql/database/security-overview.md#authentication) <br>- [Azure SQL へのデータベース アクセスを承認する - 認証と承認](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
-   この例では、 **Azure AD 統合** を使用します。
+   この例では、**Azure AD 統合** を使用します。
 
    ![[SQL Server] の接続ウィンドウを示すスクリーンショット。[認証の種類] の一覧が表示され、[AZURE AD 統合] が選択されています。](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
 
@@ -129,7 +129,7 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
    | [**SQL Server 認証**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | - 非 ISE と ISE 両方の SQL Server コネクタをサポートします。 <p><p>- SQL Server で作成されて格納されている有効なユーザー名と強力なパスワードが必要です。 <p>詳細については、[SQL Server 認証](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)に関する記事を参照してください。 |
    |||
 
-   この例では、 **Windows 認証** を使用します。
+   この例では、**Windows 認証** を使用します。
 
    ![使用する認証の種類を選択する](./media/connectors-create-api-sqlazure/select-windows-authentication.png)
 
@@ -142,7 +142,7 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
    | **ユーザー名** | はい | SQL サーバーおよびデータベースのユーザー名 |
    | **パスワード** | はい | SQL サーバーおよびデータベースのパスワード |
    | **サブスクリプション** |  はい (Windows 認証の場合) | Azure で前に作成したデータ ゲートウェイ リソースの Azure サブスクリプション |
-   | **接続ゲートウェイ** | はい (Windows 認証の場合) | Azure で前に作成したデータ ゲートウェイ リソースの名前 <p><p>**ヒント** :ゲートウェイが一覧に表示されない場合は、正しく [ゲートウェイを設定](../logic-apps/logic-apps-gateway-connection.md)していることを確認します。 |
+   | **接続ゲートウェイ** | はい (Windows 認証の場合) | Azure で前に作成したデータ ゲートウェイ リソースの名前 <p><p>**ヒント**:ゲートウェイが一覧に表示されない場合は、正しく [ゲートウェイを設定](../logic-apps/logic-apps-gateway-connection.md)していることを確認します。 |
    |||
 
    > [!TIP]
@@ -178,12 +178,18 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
 1. このトリガーで使用可能な他のプロパティを追加するには、 **[新しいパラメーターの追加]** の一覧を開きます。
 
    このトリガーでは、選択したテーブルから 1 行のみが返され、それ以外には何も返されません。 他のタスクを実行するには、ロジック アプリ ワークフローで必要な次のタスクを実行する [SQL コネクタ アクション](#add-sql-action)または[別のアクション](../connectors/apis-list.md)を追加することで続けます。
-   
+
    たとえば、この行のデータを表示するには、返された行のフィールドを含むファイルを作成する他のアクションを追加し、電子メール通知を送信します。 このコネクタで使用できるその他のアクションの詳細については、[コネクタのリファレンス ページ](/connectors/sql/)を参照してください。
 
 1. デザイナーのツール バーで、 **[保存]** を選択します。
 
    このステップでは、Azure でライブ状態のロジック アプリが自動的に有効にされて発行されますが、ロジック アプリで現在実行されているアクションは、指定した間隔と頻度に基づくデータベースのチェックだけです。
+
+<a name="trigger-recurrence-shift-drift"></a>
+
+### <a name="trigger-recurrence-shift-and-drift"></a>トリガーの繰り返しのシフトやずれ
+
+最初に接続を作成する必要がある接続ベースのトリガー (SQL トリガーなど) は、Azure Logic Apps でネイティブに実行される組み込みトリガー ([繰り返しトリガー](../connectors/connectors-native-recurrence.md)など) とは異なります。 繰り返し発生する接続ベースのトリガーでは、繰り返しスケジュールだけが実行を制御するわけではなく、タイム ゾーンによって最初の開始時刻のみが決定されます。 それ以降の実行は、繰り返しスケジュール、最後のトリガー実行、"*さらには*" 実行時間をずらしたり、予期しない動作を発生させたりする可能性があるその他の要因に依存します。たとえば、夏時間 (DST) の開始または終了時に、指定されたスケジュールが保持されないという要因があります。 DST が有効になったときに繰り返し時刻がシフトされないようにするには、ロジック アプリが引き続き予期された時刻に実行されるように、繰り返しを手動で調整します。 そうしないと、開始時刻が DST の開始時には 1 時間先に、DST の終了時には 1 時間前にシフトされます。 詳細については、[接続ベースのトリガーの繰り返し](../connectors/apis-list.md#recurrence-connection-based)に関するページを参照してください。
 
 <a name="add-sql-action"></a>
 
@@ -221,13 +227,13 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
 
 サイズが大きすぎてコネクタが同時にすべての結果を返さない結果セットを操作する必要がある場合、または、結果セットのサイズと構造を詳細に制御したい場合があります。 このような大きな結果セットを処理する方法は、いくつかあります。
 
-* 結果を、より小さなセットとして管理しやすくするには、 *改ページ位置の自動修正* をオンします。 詳細は、「[Get bulk data, records, and items by using pagination](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)」(改ページ位置の自動修正を使用した一括データ、レコードおよび項目) を参照してください。 詳細については、「[Logic Apps での一括データ転送に対する SQL の改ページ処理](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)」を参照してください。
+* 結果を、より小さなセットとして管理しやすくするには、*改ページ位置の自動修正* をオンします。 詳細は、「[Get bulk data, records, and items by using pagination](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)」(改ページ位置の自動修正を使用した一括データ、レコードおよび項目) を参照してください。 詳細については、「[Logic Apps での一括データ転送に対する SQL の改ページ処理](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)」を参照してください。
 
-* 希望どおりの結果を編成する " [*ストアド プロシージャ*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine)" を作成します。 SQL データベース テーブルを操作するビジネス タスクをより簡単に自動化できるように、SQL コネクタには、Azure Logic Apps を使用してアクセスできる多数のバックエンド機能が用意されています。
+* 希望どおりの結果を編成する "[*ストアド プロシージャ*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine)" を作成します。 SQL データベース テーブルを操作するビジネス タスクをより簡単に自動化できるように、SQL コネクタには、Azure Logic Apps を使用してアクセスできる多数のバックエンド機能が用意されています。
 
-  複数の行を取得または挿入する場合、ロジック アプリは、こちらの [制限](../logic-apps/logic-apps-limits-and-config.md)の中で " [*until ループ*](../logic-apps/logic-apps-control-flow-loops.md#until-loop)" を使用することで、行を反復処理できます。 ただし、ロジック アプリは、数千から数百万の行がある非常に大きなレコード セットを処理する場合があります。このような場合は、データベースへの呼び出しコストを最小限にする必要があります。
+  複数の行を取得または挿入する場合、ロジック アプリは、こちらの [制限](../logic-apps/logic-apps-limits-and-config.md)の中で "[*until ループ*](../logic-apps/logic-apps-control-flow-loops.md#until-loop)" を使用することで、行を反復処理できます。 ただし、ロジック アプリは、数千から数百万の行がある非常に大きなレコード セットを処理する場合があります。このような場合は、データベースへの呼び出しコストを最小限にする必要があります。
 
-  代わりに、SQL インスタンスで実行され、SELECT - ORDER BYステートメントを使用して、望みどおりの方法で結果を整理する " **ストアド プロシージャ** " を作成できます。 このソリューションでは、結果のサイズと構造を詳細に制御できます。 ロジック アプリは、SQL Server コネクタの **［ストアド プロシージャの実行］** アクションを使用して、ストアド プロシージャを呼び出します。 詳細については、「[SELECT - ORDER BY 句](/sql/t-sql/queries/select-order-by-clause-transact-sql)」を参照してください。
+  代わりに、SQL インスタンスで実行され、SELECT - ORDER BYステートメントを使用して、望みどおりの方法で結果を整理する "**ストアド プロシージャ**" を作成できます。 このソリューションでは、結果のサイズと構造を詳細に制御できます。 ロジック アプリは、SQL Server コネクタの **［ストアド プロシージャの実行］** アクションを使用して、ストアド プロシージャを呼び出します。 詳細については、「[SELECT - ORDER BY 句](/sql/t-sql/queries/select-order-by-clause-transact-sql)」を参照してください。
 
   > [!NOTE]
   > SQL コネクタには、[2 分未満](/connectors/sql/#known-issues-and-limitations)のストアド プロシージャのタイムアウト上限があります。 一部のストアド プロシージャでは、この上限を超えることがあり、`504 Timeout` エラーが発生します。 この問題を回避するには、SQL 完了トリガー、ネイティブ SQL パススルー クエリ、状態テーブル、およびサーバー側ジョブを使用します。
@@ -244,7 +250,7 @@ SQL Server コネクタを使用してストアド プロシージャを呼び�
 
 1. デザイナーで、ストアド プロシージャを呼び出す操作の下にある **[新しいステップ]** を選択します。
 
-1. **[アクションの選択]** で、 [ **[JSON の解析]**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) アクションを探して選択します。
+1. **[アクションの選択]** で、[ **[JSON の解析]**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) アクションを探して選択します。
 
 1. **[JSON の解析]** アクションで、 **[サンプルのペイロードを使用してスキーマを生成する]** を選択します。
 
@@ -259,13 +265,17 @@ SQL Server コネクタを使用してストアド プロシージャを呼び�
 
 ## <a name="troubleshoot-problems"></a>問題のトラブルシューティング
 
-* 接続の問題は普通に発生する可能性があるため、このような問題をトラブルシューティングして解決するには、「[SQL Server への接続エラーの解決](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)」を確認してください。 次に例をいくつか示します。
+<a name="connection-problems"></a>
 
-  * `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+### <a name="connection-problems"></a>接続の問題
 
-  * `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+接続の問題は普通に発生する可能性があるため、このような問題をトラブルシューティングして解決するには、「[SQL Server への接続エラーの解決](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)」を確認してください。 次に例をいくつか示します。
 
-  * `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+* `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+
+* `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+
+* `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
 
 ## <a name="connector-specific-details"></a>コネクタ固有の詳細
 

@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 1c88b9f77513021609b99c81ea572c2b5b3d365b
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9fb5e229882532fed076f2e0d800f32acfcdbf4c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936796"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013789"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
@@ -81,7 +81,7 @@ SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した�
 
 また、Azure AD で定義したあらゆるクレームに定数 (静的) 値を割り当てることができます。 定数値は次の手順で割り当ててください。
 
-1. [Azure portal](https://portal.azure.com/) の **[User Attributes & Claims]\(ユーザー属性とクレーム\)** セクションで、**編集** アイコンをクリックしてクレームを編集ます。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> の **[ユーザー属性とクレーム]** セクションで、**編集** アイコンをクリックしてクレームを編集します。
 
 1. 変更する必要があるクレームをクリックします。
 
@@ -135,7 +135,7 @@ SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した�
 | **StartWith()** | 入力が指定した値で始まっている場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、country/region が "US" で始まっている場合はユーザーの従業員 ID を値とする要求を出力し、それ以外の場合は拡張属性を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)* : user.country<br/>*値*: "US"<br/>Parameter 2 (出力): user.employeeid<br/>Parameter 3 (一致しない場合の出力): user.extensionattribute1 |
 | **Extract() - 一致の後** | 指定した値との一致より後の部分文字列を返します。<br/>たとえば、入力の値が "Finance_BSimon" で、一致する値が "Finance_" の場合、要求の出力は "BSimon" です。 |
 | **Extract() - 一致の前** | 指定した値との一致より前の部分文字列を返します。<br/>たとえば、入力の値が "BSimon_US" で、一致する値が "_US" の場合、要求の出力は "BSimon" です。 |
-| **Extract() - 一致の間** | 指定した値との一致より前の部分文字列を返します。<br/>たとえば、入力の値が "Finance_BSimon_US" で、1 番目の一致する値が "Finance_"、2 番目の一致する値が "_US" である場合、要求の出力は "BSimon" です。 |
+| **Extract() - 一致の間** | 指定した値との一致より前の部分文字列を返します。<br/>たとえば、入力の値が "Finance_BSimon_US" で、1 番目の一致する値が "Finance\_"、2 番目の一致する値が "\_US" である場合、要求の出力は "BSimon" です。 |
 | **ExtractAlpha() - プレフィックス** | 文字列のプレフィックスのアルファベット部分を返します。<br/>たとえば、入力の値が "BSimon_123" の場合は、"BSimon" を返します。 |
 | **ExtractAlpha() - サフィックス** | 文字列のサフィックスのアルファベット部分を返します。<br/>たとえば、入力の値が "123_Simon" の場合は、"Simon" を返します。 |
 | **ExtractNumeric() - プレフィックス** | 文字列のプレフィックスの数字部分を返します。<br/>たとえば、入力の値が "123_BSimon" の場合は、"123" を返します。 |

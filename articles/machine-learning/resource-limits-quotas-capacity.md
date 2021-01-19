@@ -10,16 +10,16 @@ ms.topic: reference
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 12/21/2020
-ms.openlocfilehash: 132c4b223b99f7110cd4553bb0dd93f1e58f4cdd
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: b675e72df4f128d0ce096b3ac398fab63c20557e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733232"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930805"
 ---
 # <a name="service-limits-in-azure-machine-learning"></a>Azure Machine Learning のサービスの制限値
 
-ここでは、Azure Machine Learning の基本的なクォータとスロットルのしきい値について説明します。
+ここでは、Azure Machine Learning の基本的なクォータとスロットルのしきい値について説明します。 リソースのクォータを引き上げる方法については、[クォータの管理と引き上げ](how-to-manage-quotas.md)に関するページを参照してください。
 
 ## <a name="workspaces"></a>Workspaces
 | 制限 | 値 |
@@ -73,3 +73,5 @@ ms.locfileid: "97733232"
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Machine Learning 環境の構成](how-to-configure-environment.md)
+- リソースのクォータを引き上げる方法については、[リソースのクォータの管理と引き上げ](how-to-manage-quotas.md)に関するページを参照してください。
+

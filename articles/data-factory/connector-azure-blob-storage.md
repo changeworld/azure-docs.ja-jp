@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/08/2020
-ms.openlocfilehash: 327ab63a048e08328cd5b1334b0a697a61ced6c8
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 85600bbee15dadcce7315300ffde481cbfc2e255
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346335"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034715"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB ストレージのデータをコピーおよび変換する
 
@@ -433,6 +433,9 @@ Azure BLOB ストレージでは、形式ベースのコピー ソースの `sto
     }
 ]
 ```
+
+> [!NOTE]
+> `$logs` コンテナーは、あるストレージ アカウントに対して Storage Analytics が有効になったときに自動的に作成されますが、Data Factory UI でコンテナーの一覧表示操作を実行するときには表示されません。 `$logs` コンテナーからファイルを使用するため、Data Factory にはファイル パスを直接指定する必要があります。
 
 ### <a name="blob-storage-as-a-sink-type"></a>シンクの種類として Blob Storage を設定する
 

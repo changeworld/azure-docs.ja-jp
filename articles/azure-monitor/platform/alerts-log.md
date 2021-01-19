@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: a8dbadd3af9dc21ced54af151e4de705f854e011
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 950482a96604165a8f1ff20cab9e3eafe1224c90
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696063"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98029000"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する
 
@@ -33,7 +33,7 @@ Azure Resource Manager テンプレートを使用してログ アラート ル�
 
 アラートのクエリの記述を開始するための手順は次のとおりです。
 
-1. アラートを作成するリソースにアクセスします。
+1. アラートを作成するリソースにアクセスします。 可能な場合は、サブスクリプションまたはリソース グループの範囲を選択して、複数のリソースにアラート ルールを設定することを検討してください。 複数のリソースに対してアラートを生成すると、コストが削減され、複数のアラート ルールを管理する必要がなくなります。
 1. **[モニター]** で、 **[ログ]** を選択します。
 1. 問題を示している可能性のあるログ データのクエリを実行します。 検出できることや、[独自のクエリを記述する方法の概要](../log-query/log-analytics-tutorial.md)を理解するには、[アラートのクエリ例に関するトピック](../log-query/example-queries.md)を使用してください。 また、[最適化されたアラート クエリを作成する方法について確認してください](alerts-log-query.md)。
 1. [+ 新しいアラート ルール] ボタンを押して、アラート作成フローを開始します。

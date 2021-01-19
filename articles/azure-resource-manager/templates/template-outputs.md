@@ -3,16 +3,16 @@ title: テンプレート内の出力
 description: Azure Resource Manager テンプレート (ARM テンプレート) で出力値を定義する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 6a375dfbc767bcbbfd8ec6b7f8cb9e942e275582
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f8f13b6caf063cea79dc71775fb936f406a3ee6c
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353529"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964016"
 ---
 # <a name="outputs-in-arm-templates"></a>ARM テンプレート内の出力
 
-この記事では、Azure Resource Manager テンプレート (ARM テンプレート) で出力値を定義する方法について説明します。 デプロイされたリソースから値を返す必要がある場合に出力を使用します。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) で出力値を定義する方法について説明します。 デプロイされたリソースから値を返す必要がある場合は `outputs` を使用します。
 
 各出力値の形式は、いずれかの[データ型](template-syntax.md#data-types)と一致している必要があります。
 
@@ -31,7 +31,7 @@ ms.locfileid: "96353529"
 
 ## <a name="conditional-output"></a>条件付き出力
 
-outputs セクションでは、値を条件付きで返すことができます。 通常、リソースを[条件付きでデプロイ](conditional-resource-deployment.md)した場合に出力で条件を使用します。 次の例は、新しくデプロイされたかどうかに基づいて、パブリック IP アドレスのリソース ID を条件付きで返す方法を示しています。
+`outputs` セクションでは、値を条件付きで返すことができます。 通常、リソースを[条件付きでデプロイ](conditional-resource-deployment.md)した場合は `outputs` で `condition` を使用します。 次の例は、新しくデプロイされたかどうかに基づいて、パブリック IP アドレスのリソース ID を条件付きで返す方法を示しています。
 
 ```json
 "outputs": {
@@ -47,7 +47,7 @@ outputs セクションでは、値を条件付きで返すことができます
 
 ## <a name="dynamic-number-of-outputs"></a>動的な出力の数
 
-場合により、テンプレートの作成時に、返す必要がある値のインスタンスの数が不明なシナリオもあります。 **copy** 要素を使用することで、可変数の値を返すことができます。
+場合により、テンプレートの作成時に、返す必要がある値のインスタンスの数が不明なシナリオもあります。 `copy` 要素を使用することで、可変数の値を返すことができます。
 
 ```json
 "outputs": {
@@ -61,7 +61,7 @@ outputs セクションでは、値を条件付きで返すことができます
 }
 ```
 
-詳細については、「[Azure Resource Manager テンプレートでの出力の反復](copy-outputs.md)」を参照してください。
+詳細については、「[ARM テンプレートでの出力の反復処理](copy-outputs.md)」を参照してください。
 
 ## <a name="linked-templates"></a>リンク済みテンプレート
 

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75839893d0048841440f2c790df7d23ad825d962
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 8acc547552cecaebb60888bb7b9777f6279b9b7c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093470"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015761"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>内部ユーザーを B2B コラボレーションに招待する
 
@@ -44,8 +44,7 @@ Azure AD B2B コラボレーションが利用できるようになる前は、�
 
 PowerShell または招待 API を使用して、B2B 招待を内部ユーザーに送信できます。 招待に使用する電子メール アドレスが、内部ユーザー オブジェクトで外部電子メール アドレスとして設定されていることを確認します。
 
-- クラウド専用ユーザーの場合は、招待の User.OtherMails プロパティの電子メール アドレスを使用します。
-- オンプレミスの同期されたユーザーについては、招待の User.Mail プロパティの値を使用する必要があります。
+- 招待には、User.Mail プロパティのメール アドレスを使用必要があります。
 - ユーザーの Mail プロパティのドメインは、サインインに使用しているアカウントと一致している必要があります。 そうしないと、Teams などの一部のサービスがユーザーを認証できなくなります。
 
 既定では、招待により、招待されたことを知らせる電子メールがユーザーに送信されますが、この電子メールを使用せず、代わりに独自のものを送信することもできます。

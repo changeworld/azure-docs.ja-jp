@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7c0623d58bf88b8bcc5f19665a081ce012b560b6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 08e07ac3a8079d725611f9b072e8d21dabb32867
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614875"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011562"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API を呼び出すデスクトップ アプリ:アプリの登録
 
@@ -48,7 +48,7 @@ ms.locfileid: "97614875"
 - アプリで統合 Windows 認証またはユーザー名とパスワードのみを使用する場合は、アプリケーションのリダイレクト URI を登録する必要はありません。 これらのフローは、Microsoft ID プラットフォーム v2.0 エンドポイントへのラウンドトリップを実行します。 アプリケーションが特定の URI でコールバックされることはありません。
 - [デバイス コード フロー](scenario-desktop-acquire-token.md#device-code-flow)、[統合 Windows 認証](scenario-desktop-acquire-token.md#integrated-windows-authentication)、[ユーザー名とパスワード](scenario-desktop-acquire-token.md#username-and-password)を、リダイレクト URI を必要としない[デーモン アプリケーション](scenario-daemon-overview.md)で使用されるクライアント資格証明フローを使用する機密クライアント アプリケーションと区別するには、そのアプリケーションをパブリック クライアント アプリケーションとして構成する必要があります。 この構成を実現するには:
 
-    1. [Azure portal](https://portal.azure.com) の **[アプリの登録]** でアプリを選択し、 **[認証]** を選択します。
+    1. <a href="https://portal.azure.com/" target="_blank">Azure portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> の **[アプリの登録]** でアプリを選択し、 **[認証]** を選択します。
     1. **[詳細設定]**  >  **[Allow public client flows]\(パブリック クライアント フローを許可する\)**  >  **[Enable the following mobile and desktop flows:]\(次のモバイルとデスクトップのフローを有効にする\)** で **[はい]** を選択します。
 
         :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Azure portal の [認証] ウィンドウでパブリック クライアント設定を有効にする":::

@@ -3,12 +3,12 @@ title: Azure CLI とテンプレートを使用してリソースをデプロイ
 description: Azure Resource Manager と Azure CLI を使用してリソースを Azure にデプロイします。 リソースは Resource Manager テンプレートで定義されます。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 7b1639f31b696f300177d05107a98effc3f3ae23
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a2caea70a51a737bfa433a089c03b43f252b5d6e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676189"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028150"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM テンプレートと Azure CLI でリソースをデプロイする
 
@@ -18,19 +18,19 @@ ms.locfileid: "92676189"
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-Azure CLI がインストールされていない場合は、Cloud Shell を使用できます。 詳細については、「[Cloud Shell から ARM テンプレートをデプロイする](deploy-cloud-shell.md)」を参照してください。
+Azure CLI がインストールされていない場合は、Azure Cloud Shell を使用できます。 詳細については、「[Azure Cloud Shell から ARM テンプレートをデプロイする](deploy-cloud-shell.md)」を参照してください。
 
 ## <a name="deployment-scope"></a>デプロイのスコープ
 
 リソース グループ、サブスクリプション、管理グループ、またはテナントをデプロイのターゲットにすることができます。 使用するコマンドは、デプロイのスコープに応じて異なります。
 
-* **リソース グループ** にデプロイするには、 [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create) を使用します。
+* **リソース グループ** にデプロイするには、[az deployment group create](/cli/azure/deployment/group#az-deployment-group-create) を使用します。
 
   ```azurecli-interactive
   az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
   ```
 
-* **サブスクリプション** にデプロイするには、 [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create) を使用します。
+* **サブスクリプション** にデプロイするには、[az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create) を使用します。
 
   ```azurecli-interactive
   az deployment sub create --location <location> --template-file <path-to-template>
@@ -38,7 +38,7 @@ Azure CLI がインストールされていない場合は、Cloud Shell を使�
 
   サブスクリプション レベルでのデプロイの詳細については、「[サブスクリプション レベルでリソース グループとリソースを作成する](deploy-to-subscription.md)」を参照してください。
 
-* **管理グループ** にデプロイするには、 [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create) を使用します。
+* **管理グループ** にデプロイするには、[az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create) を使用します。
 
   ```azurecli-interactive
   az deployment mg create --location <location> --template-file <path-to-template>
@@ -46,7 +46,7 @@ Azure CLI がインストールされていない場合は、Cloud Shell を使�
 
   管理グループ レベルでのデプロイの詳細については、「[管理グループ レベルでリソースを作成する](deploy-to-management-group.md)」を参照してください。
 
-* **テナント** にデプロイするには、 [az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create) を使用します。
+* **テナント** にデプロイするには、[az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create) を使用します。
 
   ```azurecli-interactive
   az deployment tenant create --location <location> --template-file <path-to-template>
@@ -191,7 +191,7 @@ az deployment group create \
 
 ファイルからのパラメーター値の取得は、構成値を指定する必要がある場合に便利です。 たとえば、[Linux 仮想マシン用の cloud-init の値](../../virtual-machines/linux/using-cloud-init.md)を指定できます。
 
-arrayContent.json 形式は次のようになります。
+_arrayContent.json_ 形式は次のようになります。
 
 ```json
 [
@@ -228,7 +228,7 @@ az deployment group create --name addstorage  --resource-group myResourceGroup \
 
 パラメーター ファイルの詳細については、「[Resource Manager パラメーター ファイルを作成する](parameter-files.md)」を参照してください。
 
-ローカル パラメーター ファイルを渡すには、`@` を使用して storage.parameters.json という名前のローカル ファイルを指定します。
+ローカル パラメーター ファイルを渡すには、`@` を使用して _storage.parameters.json_ という名前のローカル ファイルを指定します。
 
 ```azurecli-interactive
 az deployment group create \

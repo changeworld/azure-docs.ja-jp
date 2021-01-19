@@ -1,18 +1,18 @@
 ---
 title: Cloud Shell を使用したテンプレートのデプロイ
-description: Azure Resource Manager と Cloud Shell を使用してリソースを Azure にデプロイします。 リソースは Azure Resource Manager テンプレートで定義されます。
+description: Azure Resource Manager と Azure Cloud Shell を使用してリソースを Azure にデプロイします。 リソースは Azure Resource Manager テンプレート (ARM テンプレート) で定義されます。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: d0b519955cb877f5fb9640cc0cf95a898e1743ef
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c67251a33b6197603be27086bcc6cd047e0c414b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681290"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028609"
 ---
-# <a name="deploy-arm-templates-from-cloud-shell"></a>Cloud Shell から ARM テンプレートをデプロイする
+# <a name="deploy-arm-templates-from-azure-cloud-shell"></a>Azure Cloud Shell から ARM テンプレートをデプロイする
 
-[Cloud Shell](../../cloud-shell/overview.md) を使用して、Azure Resource Manager テンプレート (ARM テンプレート) をデプロイできます。 リモートに格納されている ARM テンプレートをデプロイするか、Cloud Shell のローカル ストレージ アカウントに格納されている ARM テンプレートをデプロイできます。
+[Azure Cloud Shell](../../cloud-shell/overview.md) を使用して、Azure Resource Manager テンプレート (ARM テンプレート) をデプロイできます。 リモートに格納されている ARM テンプレートをデプロイするか、Cloud Shell のローカル ストレージ アカウントに格納されている ARM テンプレートをデプロイできます。
 
 任意のスコープにデプロイできます。 この記事では、リソース グループへのデプロイについて説明します。
 

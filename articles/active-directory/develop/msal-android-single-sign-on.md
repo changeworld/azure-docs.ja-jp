@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: 3f5791bfcf6547b7fc4e84bee3d4c1c49453af9c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c4c98ad377100c35b0c364607bfd3803d07a95a7
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169496"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015931"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>方法:Android で MSAL を使用してクロスアプリ SSO を有効にする
 
@@ -119,7 +119,7 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 
 *keytool* で署名ハッシュを生成したら、Azure portal を使用してリダイレクト URI を生成します。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、 **[アプリの登録]** で Android アプリを選択します。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインし、 **[アプリの登録]** で Android アプリを選択します。
 1. **[認証]**  >  **[プラットフォームを追加]**  >  **[Android]** を選択します。
 1. **[お使いの Android アプリを構成する]** ウィンドウが開いたら、先ほど生成した **署名ハッシュ** と **パッケージ名** を入力します。
 1. **[構成]** ボタンを選択します。

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3679bf9d55ddccefddb4bf3b2a96ec1b427315af
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c0ceae8727681c045c3bbf3e6626937633b38997
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663281"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013534"
 ---
 # <a name="using-an-app-service-environment"></a>App Service Environment の使用
 
@@ -78,13 +78,20 @@ SCM URL は、Kudu コンソールにアクセスしたり、Web デプロイを
 
 ### <a name="dns-configuration"></a>DNS の構成 
 
-ASE は、受信トラフィックにプライベート エンドポイントを使用し、Azure DNS プライベート ゾーンを使用して自動的に構成されます。 独自の DNS サーバーを使用する場合は、以下のレコードを追加する必要があります。
+ASE は、受信トラフィックにプライベート エンドポイントを使用します。 Azure DNS プライベート ゾーンで自動的に構成されることはありません。 独自の DNS サーバーを使用する場合は、以下のレコードを追加する必要があります。
 
 1. &lt;ASE 名&gt;.appserviceenvironment.net 用のゾーンを作成する
 1. そのゾーン内で、* に ASE プライベート エンドポイントで使用される受信 IP アドレスを指し示す A レコードを作成する
 1. そのゾーン内で、@ に ASE プライベート エンドポイントで使用される受信 IP アドレスを指し示す A レコードを作成する
 1. &lt;ASE 名&gt;.appserviceenvironment.net に scm という名前のゾーンを作成する
 1. scm ゾーン内で、* に ASE プライベート エンドポイントで使用される IP アドレスを指し示す A レコードを作成する
+
+Azure DNS プライベート ゾーンで DNS を構成するには、次の操作を行ってください。
+
+1. <ASE name>.appserviceenvironment.net という名前の Azure DNS プライベート ゾーンを作成する
+1. そのゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する
+1. そのゾーンに、ILB の IP アドレスに @ を指定する A レコードを作成する
+1. そのゾーンに、ILB の IP アドレスに *.scm を指定する A レコードを作成する
 
 ASE の既定のドメイン サフィックスの DNS 設定では、それらの名前によってのみアプリにアクセスできるよう制限されません。 ASE では、アプリの検証なしでカスタム ドメイン名を設定できます。 その後、*contoso.net* という名前のゾーンを作成する場合はそれを行って、受信 IP アドレスを指すようにすることができます。 カスタム ドメイン名はアプリ要求に対して機能しますが、scm サイトでは使用できません。 scm サイトは、 *&lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net* でのみ使用できます。 
 

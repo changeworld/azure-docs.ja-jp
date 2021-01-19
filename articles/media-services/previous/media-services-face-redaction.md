@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1a7bd36a6e3f3cc5b785745fc51f0aede3b47b74
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 2029ec2d0b0f27d7078f381880cf7ca177d24ca0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803308"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020205"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics で顔を編集する
 
@@ -36,6 +36,9 @@ ms.locfileid: "97803308"
 顔編集は、ビデオのフレームごとに顔を検出し、その顔オブジェクトを時間軸の前後にわたって追跡することで、同一の人間を他の角度からも処理します。 自動修正のプロセスは複雑で、常に 100% 満足のいく結果になるとは限りません。そのため、Media Analytics には最終的なアウトプットを変更する方法がいくつか用意されています。
 
 完全な自動モードに加え、2 パス ワークフローというものがあり、これによって、検出された顔を ID リストを使って選択または選択解除することができます。 また、任意のフレームごとの調整をするには、JSON 形式でメタデータ ファイルを使用します。 このワークフローは、**分析** モードと **編集** モードに分かれています。 単一のパスに 2 つのモードを結合して、両方のタスクを 1 つのジョブで実行します。このモードは **結合** と呼ばれます。
+
+   > [!NOTE]
+   > Face Detector Media Processor は、2020 年 6 月に [Azure Media Services のレガシ コンポーネント](./legacy-components.md)として非推奨となりました。 Azure Media Services v3 API の使用をご検討ください。
 
 ### <a name="combined-mode"></a>結合モード
 

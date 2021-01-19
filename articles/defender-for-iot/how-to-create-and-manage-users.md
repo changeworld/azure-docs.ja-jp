@@ -4,15 +4,15 @@ description: センサーとオンプレミス管理コンソールのユーザ�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/21/2020
+ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: c3a9e1c7e96d0392e1f94b71549f612738622dea
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: c33b3e5fee19edc5d4ac85284e507b53e96234a0
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97837183"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977015"
 ---
 # <a name="about-defender-for-iot-console-users"></a>About Defender for IoT コンソール ユーザーについて
 
@@ -20,7 +20,7 @@ ms.locfileid: "97837183"
 
 ユーザー アクティビティを追跡したり Active Directory サインインを有効にしたりするための機能も使用できます。
 
-既定では、各センサーおよびオンプレミス管理コンソールのインストールには、"*cyberx およびサポート*" ユーザーが使用されます。 これらのユーザーは、トラブルシューティングやセットアップのための高度なツールにアクセスできます。 管理者ユーザーは、これらのユーザー資格情報を使用してサインインし、管理者ユーザーを作成してから、セキュリティ アナリストおよび読み取り専用ユーザー用に追加のユーザーを作成する必要があります。
+既定では、各センサーおよびオンプレミス管理コンソールのインストールには、"*cyberx およびサポート*" ユーザーが使用されます。 これらのユーザーは、トラブルシューティングやセットアップのための高度なツールにアクセスできます。 管理者ユーザーは、これらのユーザー資格情報を使用してサインインし、管理者ユーザーを作成してから、セキュリティ アナリストおよび読み取り専用ユーザー用に別のユーザーを作成する必要があります。
 
 ## <a name="role-based-permissions"></a>ロール ベース アクセス許可
 次のユーザー ロールを使用できます。
@@ -89,8 +89,8 @@ ms.locfileid: "97837183"
 ユーザーを定義するには:
 
 1. センサーまたはオンプレミス管理コンソールの左側のウィンドウで、 **[ユーザー]** を選択します。
-2. **[ユーザー]** ウィンドウで、 **[ユーザーの作成]** を選択します。
-3. **[ユーザーの作成]** ウィンドウで、次のパラメーターを定義します。
+1. **[ユーザー]** ウィンドウで、 **[ユーザーの作成]** を選択します。
+1. **[ユーザーの作成]** ウィンドウで、次のパラメーターを定義します。
 
    - **[ユーザー名]** : ユーザー名を入力します。
    - **電子メール**: ユーザーの電子メール アドレスを入力します。
@@ -122,7 +122,7 @@ ms.locfileid: "97837183"
 
 1. Defender for IoT の管理者資格情報を使用して、センサーまたはオンプレミス管理コンソールの CLI にサインインします。
 
-2. 「`sudo nano /var/cyberx/properties/authentication`」と入力します。
+1. 「`sudo nano /var/cyberx/properties/authentication`」と入力します。
 
 ```azurecli-interactive
     infinity_session_expiration = true
@@ -138,7 +138,6 @@ ms.locfileid: "97837183"
 機能を無効にするには、`infinity_session_expiration = true` を `infinity_session_expiration = false` に変更します。
 
 サインアウト カウント期間を更新するには、`= <number>` 値を必要な時間に調整します。
-
 
 ## <a name="track-user-activity"></a>ユーザー アクティビティを追跡する 
 
@@ -171,11 +170,11 @@ Active Directory を構成するには:
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-system-settings-v2.png" alt-text="Active Directory のシステム設定を表示します。":::
 
-2. **[システム設定]** ペインで、 **[Active Directory]** を選択します。
+1. **[システム設定]** ペインで、 **[Active Directory]** を選択します。
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-configurations-v2.png" alt-text="Active Directory 構成を編集します。":::
 
-3. **[Edit Active Directory Configuration]\(Active Directory 構成の編集\)** ダイアログ ボックスで、 **[Active Directory Integration Enabled]\(Active Directory 統合の有効化\)**  >  **[保存]** を選択します。 **[Edit Active Directory Configuration]\(Active Directory 構成の編集\)** ダイアログ ボックスが展開され、Active Directory を構成するためのパラメーターを入力できるようになります。
+1. **[Edit Active Directory Configuration]\(Active Directory 構成の編集\)** ダイアログ ボックスで、 **[Active Directory Integration Enabled]\(Active Directory 統合の有効化\)**  >  **[保存]** を選択します。 **[Edit Active Directory Configuration]\(Active Directory 構成の編集\)** ダイアログ ボックスが展開され、Active Directory を構成するためのパラメーターを入力できるようになります。
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-integration-enabled-v2.png" alt-text="Active Directory を構成するためのパラメーターを入力します。":::
 
@@ -184,7 +183,7 @@ Active Directory を構成するには:
     > - すべての Active Directory パラメーターには、小文字のみを使用します。 Active Directory の構成で大文字が使用されている場合でも、小文字を使用します。
     > - 同じドメインに対して、LDAP と LDAPS の両方を構成することはできません。 ただし、別のドメインに対しては、これらの両方を同時に使用できます。
 
-4. 次の Active Directory サーバーのパラメーターを設定します。
+1. 次の Active Directory サーバーのパラメーターを設定します。
 
    | サーバー パラメーター | [説明] |
    |--|--|
@@ -194,9 +193,77 @@ Active Directory を構成するには:
    | Active Directory グループ | LDAP サーバーの Active Directory の構成で定義されているグループ名を入力します。 |
    | 信頼されたドメイン | 信頼されたドメインを追加するには、信頼されたドメインのドメイン名と接続の種類を追加します。 <br />信頼されたドメインは、[ユーザー] の下で定義されたユーザーに対してのみ構成できます。 |
 
-5. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
-6. 信頼されたサーバーを追加するには、 **[サーバーの追加]** を選択し、別のサーバーを構成します。
+1. 信頼されたサーバーを追加するには、 **[サーバーの追加]** を選択し、別のサーバーを構成します。
+
+## <a name="resetting-a-users-password-for-the-sensor-or-on-premises-management-console"></a>センサーまたはオンプレミスの管理コンソールのユーザー パスワードをリセットする
+
+### <a name="cyberx-or-support-user"></a>CyberX またはサポート ユーザー
+
+**パスワードの復元** 機能にアクセスできるのは、**CyberX** と **サポート** ユーザーのみです。 **CyberX** または **サポート** ユーザーがパスワードを忘れた場合は、Defender for IoT のサインイン ページで **[パスワードの復元]** オプションを使用してパスワードをリセットできます。
+
+CyberX またはサポート ユーザーのパスワードをリセットするには、次の手順を実行します。
+
+1. Defender for IoT のサインイン画面で、 **[パスワードの復元]** オプションを選択します。 **[パスワードの復元]** 画面が開きます。
+
+1. **CyberX** または **サポート** を選択し、一意の識別子をコピーします。
+
+1. Azure portal に移動し、 **[Sites and Sensors]\(サイトとセンサー\)** を選択します。  
+
+1. 上部のツールバーにある **[サブスクリプション フィルター]** アイコン :::image type="icon" source="media/password-recovery-images/subscription-icon.png" border="false"::: を選択し、センサーが接続されているサブスクリプションを選択します。
+
+1. **[Recover on-premises management console password]\(オンプレミス管理コンソールのパスワードを復元\)** タブを選択します。
+
+   :::image type="content" source="media/password-recovery-images/recover-button.png" alt-text="オンプレミス管理を復元するボタンを選択して、復元ファイルをダウンロードします。":::
+
+1. **[パスワードの復元]** 画面で受信した一意の識別子を入力し、 **[復元]** を選択します。 `password_recovery.zip` ファイルがダウンロードされます。
+
+    > [!NOTE]
+    > パスワードの復元ファイルは変更しないでください。 これは署名されたファイルであり、改ざんすると機能しません。
+
+1. **[パスワードの復元]** 画面で **[アップロード]** を選択します。 **[Upload Password Recovery File]\(パスワード復元ファイルのアップロード\)** ウィンドウが開きます。
+
+1. **[参照]** を選択して `password_recovery.zip` ファイルを見つけるか、`password_recovery.zip` をウィンドウにドラッグします。
+
+    > [!NOTE]
+    > ファイルが無効であることを示すエラーメッセージが表示される場合があります。 このエラー メッセージを解決するには、`password_recovery.zip` をダウンロードしてからもう一度ダウンロードする前に、適切なサブスクリプションを選択していることを確認します。  
+
+1. **[次へ]** を選択すると、管理コンソールのユーザーとシステムが生成したパスワードが表示されます。
+
+### <a name="administrator-security-analyst-and-read-only-user"></a>管理者、セキュリティ アナリスト、読み取り専用ユーザー
+
+読み取り専用ユーザーとセキュリティ アナリストは、自分のパスワードをリセットできません。パスワードをリセットするには、管理者、サポート、または CyberX のいずれかのロールを持つユーザーに問い合わせる必要があります。 管理者ユーザーがこれらのパスワードをリセットする場合は、**CyberX** または **サポート** ユーザーに問い合わせる必要があります。
+
+センサーでユーザーのパスワードをリセットするには、次の手順を実行します。
+
+1. 管理者、サポート、または CyberX ロールのユーザーは、センサーにサインインする必要があります。
+
+1. 左側のパネルで **[ユーザー]** を選択します。
+
+   :::image type="content" source="media/password-recovery-images/sensor-page.png" alt-text="左側のペインで [ユーザー] オプションを選択します。":::
+
+1. ユーザーを見つけ、 **[操作]** ドロップダウン メニューから **[編集]** を選択します。
+
+   :::image type="content" source="media/password-recovery-images/edit.png" alt-text="[操作] ドロップダウン メニューから [編集] を選択します。":::
+
+1. **[新しいパスワード]** フィールドと **[新しいパスワードの確認]** フィールドに新しいパスワードを入力します。
+
+1. **[更新]** を選択します。
+
+オンプレミス管理コンソールでユーザーのパスワードをリセットするには、次の手順を実行します。
+
+1. 管理者、サポート、または CyberX ロールのユーザーは、センサーにサインインする必要があります。
+
+1. 左側のパネルで **[ユーザー]** を選択します。
+
+   :::image type="content" source="media/password-recovery-images/console-page.png" alt-text="左側のパネルでユーザーのオプションを選択します。":::
+
+1. ユーザーを見つけて、編集アイコン :::image type="icon" source="media/password-recovery-images/edit-icon.png" border="false"::: を選択します。
+
+1. **[新しいパスワード]** フィールドと **[新しいパスワードの確認]** フィールドに新しいパスワードを入力します。
+
+1. **[更新]** を選択します。
 
 ## <a name="see-also"></a>関連項目
 

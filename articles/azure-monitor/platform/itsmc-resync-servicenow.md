@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 01e492072bd75af9f80656b71d2cc1c473d64263
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: cea4503c4e3b9dd58cc475aaec355a2bb2e0bd29
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803801"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065187"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>ITSM Connector での問題のトラブルシューティング
 
@@ -23,13 +23,38 @@ ITSM には、ServiceNow などの外部のチケット発行システムにア�
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>インシデントと変更要求データを視覚化および分析する
 
-ITSMC では、接続を設定したときの構成に応じて、最大 120 日分のインシデントと変更要求データを同期できます。 このデータのログ レコードのスキーマについては、この記事の[追加情報のセクション](./itsmc-overview.md)をご覧ください。
+ITSMC では、接続を設定したときの構成に応じて、最大 120 日分のインシデントと変更要求データを同期できます。 このデータのログ レコードのスキーマについては、この記事の[追加情報のセクション](./itsmc-synced-data.md)をご覧ください。
 
 インシデントと変更要求データは、ITSMC ダッシュボードを使用して視覚化できます。
 
 ![ITSMC ダッシュボードを示すスクリーンショット。](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 ダッシュボードでは、コネクタの状態に関する情報も提供されます。これは、接続の問題を分析する際の開始点として利用できます。
+
+### <a name="error-investigation-using-the-dashboard"></a>ダッシュボードを使用したエラー調査
+
+ダッシュボードにエラーを表示するには、次の手順に従います。
+
+1. **[すべてのリソース]** で、**ServiceDesk( *<実際のワークスペース名>* )** を探します。
+
+   ![Azure portal の最新のリソースを示すスクリーンショット。](media/itsmc-definition/create-new-connection-from-resource.png)
+
+2. 左側のウィンドウの **[ワークスペースのデータ ソース]** で、 **[ITSM 接続]** を選択します。
+
+   ![[ITSM 接続] メニュー項目を示すスクリーンショット。](media/itsmc-overview/add-new-itsm-connection.png)
+
+3. 左側のボックス **[IT Service Management Connector]** の **[概要]** で **[概要の表示]** を選択します。
+
+    ![[概要の表示] を示すスクリーンショット。](media/itsmc-resync-servicenow/dashboard-view-summary.png)
+
+4. 左側のボックス **[IT Service Management Connector]** の **[概要]** でグラフをクリックします。
+
+    ![グラフのクリックを示すスクリーンショット。](media/itsmc-resync-servicenow/dashboard-graph-click.png)
+
+5. このダッシュボードを使用すると、コネクタの状態とエラーを確認できます。
+    ![コネクタの状態を示すスクリーンショット。](media/itsmc-resync-servicenow/connector-dashboard.png)
+
+### <a name="service-map"></a>Service Map
 
 Service Map で、影響を受けたコンピューターに対して同期されたインシデントを視覚化することもできます。
 

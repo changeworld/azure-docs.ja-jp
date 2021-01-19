@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 2b54ee29b1b03bab5af8410a3fae06438180299d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ce7c0cba4a231fbdb33679f8cdac7d57c79845f5
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507525"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968876"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>コピー アクティビティでのスキーマとデータ型のマッピング
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
