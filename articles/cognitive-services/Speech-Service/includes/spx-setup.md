@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 327dce053c38fdb7b03e7ceb0d7a62ec8b8e7248
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 87af99d5136a8bed93854e9396895cddeb22549a
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96993067"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98540479"
 ---
 ## <a name="download-and-install"></a>ダウンロードしてインストールする
 
@@ -59,11 +59,11 @@ Docker コンテナー内に Speech CLI をインストールするには、次�
 
 1. プラットフォームにインストールされていない場合、<a href="https://www.docker.com/get-started" target="_blank">Docker Desktop をインストール<span class="docon docon-navigate-external x-hidden-focus"></span></a>します。
 2. 新しいコマンド プロンプトまたはターミナルで、次のコマンドを入力します: 
-   ```shell   
+   ```console   
    docker pull msftspeech/spx
    ```
 3. 次のコマンドを入力します。 Speech CLI のヘルプ情報が表示されます: 
-   ```shell 
+   ```console 
    docker run -it --rm msftspeech/spx help
    ```
 
@@ -93,27 +93,27 @@ Docker コンテナーで `spx` コマンドを呼び出す場合は、Speech CL
 
 Windows の場合、コマンドは次のように始まります。
 
-```shell
+```console
 docker run -it -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
 Linux または macOS の場合、コマンドは以下の例のようになります。 `ABSOLUTE_PATH` をマウントされたディレクトリの絶対パスに置き換えます。 このパスは、前のセクションの `pwd` コマンドによって返されました。 
 
 キーとリージョンを設定する前にこのコマンドを実行すると、キーとリージョンを設定するよう求めるエラーが表示されます。
-```shell   
+```console   
 sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
 ```
 
 コンテナーにインストールされている `spx` コマンドを使用するには、必ず上記の完全なコマンドを入力し、その後に要求のパラメーターを入力します。
 たとえば、Windows では、次のコマンドによってキーが設定されます。
 
-```shell
+```console
 docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
 ```
 
 コマンド ライン ツールとのより拡張された操作については、entrypoint パラメーターを追加することで、対話型の bash シェルでコンテナーを開始できます。
 Windows では、このコマンドを入力して、対話型のコマンド ライン インターフェイスを公開するコンテナーを起動します。ここでは、複数の `spx` コマンドを入力できます。
-```shell
+```console
 docker run -it --entrypoint=/bin/bash -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
@@ -160,7 +160,7 @@ Follow these instructions to create a shortcut:
 Speech CLI の使用を開始するには、Speech サブスクリプション キーとリージョン識別子を入力する必要があります。 「[Speech Service を無料で試す](../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。
 サブスクリプション キーとリージョン識別子 (たとえば、 `eastus`、`westus`) を入手したら、次のコマンドを実行します。
 
-```shell
+```console
 spx config @key --set SUBSCRIPTION-KEY
 spx config @region --set REGION
 ```

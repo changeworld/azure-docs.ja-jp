@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
 Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
-ms.openlocfilehash: 1e4b8a2d801d7d7eccfaf558c3926ead1ab0a953
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 365ed60e73be9bb2098022fa767f4ae54b93c37c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313775"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028082"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Azure Virtual WAN ハブのネットワーク仮想アプライアンスについて (プレビュー)
 
 Azure Virtual WAN は、ネットワーク パートナーと協力して、仮想ハブ内の Azure VPN ゲートウェイに顧客構内設備 (CPE) を簡単に接続できる自動化を構築しました。 Azure は厳選したネットワーク パートナーと協力して、お客様がサード パーティのネットワーク仮想アプライアンス (NVA) を仮想ハブに直接デプロイできるように取り組んでいます。 これにより、ブランチ CPE を仮想ハブにある同じブランドの NVA に接続したいお客様は、独自のエンドツーエンド SD-WAN 機能を活用できるようになります。
 
-Barracuda Networks は、[Barracuda CloudGen WAN](https://www.barracuda.com/products/cloudgenwan) 製品により Virtual WAN ハブに直接デプロイできる NVA オファリングを提供した最初のパートナーです。 Azure はさらに多くのパートナーと協力しているため、他のオファリングが続く予定です。
+Barracuda Networks と Cisco Systems は、Virtual WAN ハブに直接デプロイできる NVA を提供する最初のパートナーです。  それぞれの製品ドキュメントについては、「[Barracuda CloudGen WAN](https://www.barracuda.com/products/cloudgenwan)」と「[Cisco Cloud OnRamp for Multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701)」を参照してください。 Azure ではさらに多くのパートナーとの連携を行っているため、今後他のオファリングもご提供できる予定です。
 
 > [!NOTE]
 > Virtual WAN ハブにデプロイできるのは、Virtual WAN ハブへのデプロイが可能な NVA オファーのみです。 Azure の任意の仮想ネットワークにデプロイすることはできません。
@@ -38,7 +38,7 @@ Azure Virtual WAN ハブに直接デプロイできる NVA は、仮想ハブで
 
 ### <a name="managed-application"></a><a name="managed"></a>マネージド アプリケーション
 
-Virtual WAN ハブにデプロイできるすべての NVA サービスには、Azure Marketplace で入手できる**マネージド アプリケーション**があります。 パートナーは、マネージド アプリケーションで次のことを行うことができます。
+Virtual WAN ハブにデプロイできるすべての NVA サービスには、Azure Marketplace で入手できる **マネージド アプリケーション** があります。 パートナーは、マネージド アプリケーションで次のことを行うことができます。
 
 * NVA のカスタム デプロイ エクスペリエンスを構築。
 * 専用の Resource Manager テンプレートを指定して、Virtual WAN ハブで直接 NVA を作成。
@@ -50,11 +50,11 @@ NVA パートナーは、アプライアンスのデプロイ、構成のライ�
 * **カスタマー リソース グループ** - これには、マネージド アプリケーションのアプリケーション プレースホルダーが含まれます。 パートナーはこれを使用して、ここで選択したカスタマー プロパティを公開できます。
 * **管理対象リソース グループ** - このリソース グループ内のリソースは、マネージド アプリケーションの公開元によって制御されるため、ユーザーが構成したり変更したりすることはできません。 このリソース グループには、**NetworkVirtualAppliances** リソースが含まれます。
 
-:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="プロセスの概要":::
+:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="マネージド アプリケーション リソース グループ":::
 
 ### <a name="nva-infrastructure-units"></a><a name="units"></a>NVA インフラストラクチャ ユニット
 
-Virtual WAN ハブで NVA を作成する場合は、デプロイに使用する NVA インフラストラクチャ ユニットの数を選択する必要があります。 **NVA インフラストラクチャ ユニット**は、Virtual WAN ハブの NVA の集計帯域幅容量の単位です。 **NVA インフラストラクチャ ユニット**は、容量やサイズに関する考え方の点において、VPN [スケール ユニット](pricing-concepts.md#scale-unit)に似ています。
+Virtual WAN ハブで NVA を作成する場合は、デプロイに使用する NVA インフラストラクチャ ユニットの数を選択する必要があります。 **NVA インフラストラクチャ ユニット** は、Virtual WAN ハブの NVA の集計帯域幅容量の単位です。 **NVA インフラストラクチャ ユニット** は、容量やサイズに関する考え方の点において、VPN [スケール ユニット](pricing-concepts.md#scale-unit)に似ています。
 
 * 1 NVA インフラストラクチャ ユニットは、この NVA に入ってくるすべてのブランチ サイト接続の総帯域幅 (500 Mbps) を、1 時間あたり $0.25 のコストで表します。
 * Azure では、特定の NVA 仮想ハブ デプロイに対して 1-80 NVA インフラストラクチャ ユニットがサポートされています。
@@ -68,7 +68,7 @@ VPN スケール ユニットと同様に、*1 NVA インフラストラクチ�
 
 ## <a name="site-and-connection-resources-with-nvas"></a><a name="resources"></a>NVA を使用したサイト リソースと接続リソース
 
-Azure VPN Gateway 構成とは異なり、ブランチ サイトを Virtual WAN ハブの NVA に接続する際に**サイト** リソース、**サイト間接続**リソース、または**ポイント対サイト接続**リソースを作成する必要はありません。 これはすべて NVA パートナーを通じて管理されます。
+Azure VPN Gateway 構成とは異なり、ブランチ サイトを Virtual WAN ハブの NVA に接続する際に **サイト** リソース、**サイト間接続** リソース、または **ポイント対サイト接続** リソースを作成する必要はありません。 これはすべて NVA パートナーを通じて管理されます。
 
 Virtual WAN ハブを Azure 仮想ネットワークに接続するためには、今後も Hub-to-VNet 接続を作成する必要があります。
 
@@ -93,11 +93,11 @@ Virtual WAN ハブを Azure 仮想ネットワークに接続するためには�
 
 ### <a name="can-i-deploy-any-nva-from-azure-marketplace-into-the-virtual-wan-hub"></a>Azure Marketplace から Virtual WAN ハブに任意の NVA をデプロイすることはできますか?
 
-いいえ。 現時点で Virtual WAN ハブにデプロイできるのは、[Barracuda CloudGen WAN](https://aka.ms/BarracudaMarketPlaceOffer) のみです。
+現時点で Virtual WAN ハブにデプロイできるのは、[Barracuda CloudGen WAN](https://aka.ms/BarracudaMarketPlaceOffer) と [Cisco Cloud vWAN Application](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cisco.cisco_cloud_vwan_app?tab=Overview) のみになります。
 
 ### <a name="what-is-the-cost-of-the-nva"></a>NVA のコストはいくらですか?
 
-Barracuda CloudGen WAN NVA のライセンスを、Barracuda から購入する必要があります。 ライセンスの詳細については、[Barracuda の CloudGen WAN ページ](https://www.barracuda.com/products/cloudgenwan)を参照してください。 また、Microsoft からは消費した NVA インフラストラクチャ ユニットと、使用したその他のリソースについても料金が発生します。 詳細については、[価格の概念](pricing-concepts.md)に関するページを参照してください。
+NVA ベンダーから NVA のライセンスを購入する必要があります。  Barracuda ライセンスの Barracuda CloudGen WAN NVA については、[Barracuda の CloudGen WAN のページ](https://www.barracuda.com/products/cloudgenwan)を参照してください。 現在 Cisco では、CISCO から直性購入する必要がある BYOL (ライセンス持ち込み) のライセンス モデルのみが提供されています。 また、Microsoft からは消費した NVA インフラストラクチャ ユニットと、使用したその他のリソースについても料金が発生します。 詳細については、[価格の概念](pricing-concepts.md)に関するページを参照してください。
 
 ### <a name="can-i-deploy-an-nva-to-a-basic-hub"></a>NVA を Basic ハブにデプロイすることはできますか?
 
@@ -109,7 +109,7 @@ Barracuda CloudGen WAN NVA のライセンスを、Barracuda から購入する�
 
 ### <a name="can-i-connect-any-cpe-device-in-my-branch-office-to-barracuda-cloudgen-wan-nva-in-the-hub"></a>ブランチ オフィス内のすべての Barracuda デバイスをハブの CloudGen WAN NVA に接続することはできますか?
 
-いいえ。 Barracuda CloudGen WAN は、Barracuda CPE デバイスのみと互換性があります。 CloudGen WAN の要件の詳細については、[Barracuda の CloudGen WAN のページ](https://www.barracuda.com/products/cloudgenwan)を参照してください。
+いいえ。 Barracuda CloudGen WAN は、Barracuda CPE デバイスのみと互換性があります。 CloudGen WAN の要件の詳細については、[Barracuda の CloudGen WAN のページ](https://www.barracuda.com/products/cloudgenwan)を参照してください。 Cisco の場合、互換性がある SD-WAN デバイスがいくつかあります。 互換性がある CPI については、[Cisco Cloud OnRamp for Multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) のドキュメントを参照してください。
 
 ### <a name="what-routing-scenarios-are-supported-with-nva-in-the-hub"></a>ハブの NVA ではどのようなルーティング シナリオがサポートされていますか?
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2020
 ms.author: terrylan
-ms.openlocfilehash: af61b6ee1e69d175f47170df30f75832033d61d5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 84229ce3562f9cdcc4b55704eaa4f3b891a43d75
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489719"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968944"
 ---
 # <a name="penetration-testing"></a>侵入テスト
 
@@ -46,7 +46,7 @@ Microsoft が [Azure 環境の侵入テスト](https://gallery.technet.microsoft
 実行できない侵入テストの種類の 1 つは、[サービス拒否 (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) 攻撃です。 このテストには、DoS 攻撃自体を開始したり、DoS 攻撃の種類の判断、デモンストレーション、またはシミュレートを実行する可能性がある関連テストを実行したりすることも含まれます。
 
 >[!Note]
->Microsoft は BreakingPoint Cloud と提携して、シミュレーションのために DDoS Protection を有効にしたパブリック IP アドレスに対してトラフィックを生成できるインターフェイスを構築しました。 BreakPoint Cloud のシミュレーションの詳細については、「[DDoS 検出を検証する](../../ddos-protection/manage-ddos-protection.md#validate-and-test)」を参照してください。
+>Microsoft は BreakingPoint Cloud と提携して、シミュレーションのために DDoS Protection を有効にしたパブリック IP アドレスに対してトラフィックを生成できるインターフェイスを構築しました。 BreakingPoint Cloud のシミュレーションの詳細については、「[シミュレーションを通じたテスト](../../ddos-protection/test-through-simulations.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
