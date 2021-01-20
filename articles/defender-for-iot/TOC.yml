@@ -159,6 +159,20 @@
           href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
         - name: SNMP MIB の監視を設定する
           href: how-to-set-up-snmp-mib-monitoring.md
+        - name: パートナーとの統合
+          items:
+            - name: Cisco ISE pxGrid の統合
+              href: integration-cisco-ise-pxgrid.md
+            - name: Forescout の統合
+              href: integration-forescout.md
+            - name: Fortinet の統合
+              href: integration-fortinet.md
+            - name: Palo Alto の統合
+              href: integration-palo-alto.md
+            - name: ServiceNow の統合
+              href: integration-servicenow.md
+            - name: Splunk の統合
+              href: integration-splunk.md
     - name: デバイス ビルダー向けのエージェントベースのソリューション
       items:
         - name: Azure RTOS 用のセキュリティ モジュールを操作する
