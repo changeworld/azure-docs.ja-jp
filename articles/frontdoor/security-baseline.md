@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 53324709e2d3dd11160ee0b7837d86d9e9594571
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 77fccf8b2480232debb88136394013941af796c8
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763929"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197270"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Azure Front Door 用の Azure セキュリティ ベースライン
 
@@ -86,7 +86,7 @@ Active Directory ドメイン コントローラー、セキュリティ ツー�
 
 高度にセキュリティ保護されたユーザー ワークステーションを Azure Bastion と一緒に管理タスクに使用します。 Azure Active Directory (Azure AD)、Microsoft Defender Advanced Threat Protection (ATP)、および Microsoft Intune を選択して、管理タスクのためにセキュリティで保護されたマネージド ユーザー ワークステーションを展開します。 セキュリティで保護されたワークステーションを一元管理して、強力な認証、ソフトウェアとハードウェアのベースライン、制限された論理アクセスとネットワーク アクセスなどのセキュリティで保護された構成を実施する必要があります。
 
-- [特権アクセス ワークステーションを理解する](../active-directory/devices/concept-azure-managed-workstation.md) 
+- [特権アクセス ワークステーションを理解する](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
 - [特権アクセス ワークステーションを展開する](../active-directory/devices/howto-azure-managed-workstation.md)
 

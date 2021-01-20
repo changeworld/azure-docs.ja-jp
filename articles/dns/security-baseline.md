@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6ad91b7cf8cd8a79654774b1b5463bc661a981d5
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bdfdba3bb9ad6d393e55e6070b2435c72254668a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348179"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201299"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>Azure DNS 用の Azure セキュリティ ベースライン
 
@@ -152,7 +152,7 @@ Azure DNS には、DNS ゾーンの共同作成者ロール、およびゾーン
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
-**ガイダンス**: Azure Active Directory Multi-Factor Authentication を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
+**ガイダンス**:Azure Active Directory Multi-Factor Authentication を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
 
 - [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -166,7 +166,7 @@ Azure DNS には、DNS ゾーンの共同作成者ロール、およびゾーン
 
 **ガイダンス**:高度な特権を必要とする管理タスクには、セキュリティで保護された Azure マネージド ワークステーション (特権アクセス ワークステーション (PAW) とも呼ばれます) を使用します。
 
-- [セキュリティで保護された Azure マネージド ワークステーションを理解する](../active-directory/devices/concept-azure-managed-workstation.md)
+- [セキュリティで保護された Azure マネージド ワークステーションを理解する](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 

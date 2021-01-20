@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
-ms.openlocfilehash: f080f5011311101ed8f9faa2ee807c030a048409
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 5a0de772598877029649f8a985c79e28f5264535
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653045"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186177"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Traffic Manager のパフォーマンスに関する考慮事項
 
@@ -80,7 +80,6 @@ Traffic Manager プロファイルの動作とパフォーマンスを理解す�
 
 [Traffic Manager の設定のテスト](traffic-manager-testing-settings.md)
 
-[Traffic Manager の操作 (REST API リファレンス)](https://go.microsoft.com/fwlink/?LinkId=313584)
+[Traffic Manager の操作 (REST API リファレンス)](/previous-versions/azure/reference/hh758255(v=azure.100))
 
-[Azure Traffic Manager コマンドレット](https://docs.microsoft.com/powershell/module/az.trafficmanager)
-
+[Azure Traffic Manager コマンドレット](/powershell/module/az.trafficmanager)

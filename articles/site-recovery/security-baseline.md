@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 860bc9440547a4c62336ccc573859ec56b3400b5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c3e2245ae47504e058921c532ed40a220e95423d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533861"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197576"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Site Recovery 用の Azure セキュリティ ベースライン
 
@@ -222,7 +222,7 @@ Log Analytics でクエリを実行して、用語の検索し、傾向の特定
 
 **ガイダンス**:セキュリティで保護された、Azure で管理されているワークステーション (特権アクセス ワークステーション (PAW) とも呼ばれる) を Azure 多要素認証と共に使用して管理タスクを実行し、Site Recovery リソースに対して特権操作を実行します。
 
-- [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations) (Privileged Access Workstation)
+- [Privileged Access Workstations](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) (Privileged Access Workstation)
 
 - [クラウドベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
 

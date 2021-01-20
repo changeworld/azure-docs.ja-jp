@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 45f6d374ed3782ab0e001631264adf977a762ca4
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: f544d2266f9b479f06ffed130592ecd44bfec80f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060352"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195928"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>Azure Application Gateway 用の Azure セキュリティ ベースライン
 
@@ -407,7 +407,7 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**: MFA が構成されている PAW (特権アクセス ワークステーション) を使用して Azure リソースにログインし、構成します。
 
-* [特権アクセス ワークステーションについて](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 

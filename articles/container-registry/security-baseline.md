@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3fcbc386c60611493912fdfb17226490549cdc53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52cc67b1160ae8c9a0120a0a10d0131b167d5776
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89396813"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202676"
 ---
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Azure Container Registry 用の Azure セキュリティ ベースライン
 
@@ -366,7 +366,7 @@ Azure Security Center で ID とアクセスを監視する方法: https://docs.
 
 **ガイダンス**: MFA が構成されている PAW (特権アクセス ワークステーション) を使用して Azure リソースにログインし、構成します。
 
-特権アクセス ワークステーションについて:  https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+特権アクセス ワークステーションについて:  https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/
 
 Azure で MFA を有効にする方法: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 

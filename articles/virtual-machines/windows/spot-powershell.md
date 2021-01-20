@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 44d23710db169fa27aaba8928d421918bef93fec
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 0ca3c99aed8160161c125a89da3cb176c6e745f6
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825137"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202064"
 ---
 # <a name="deploy-spot-vms-using-azure-powershell"></a>Azure PowerShell を使用してスポット VM をデプロイする
 
@@ -94,4 +94,4 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 スポットの価格についての情報が記載されている [Azure 小売価格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) に関する記事を参照して、現在の価格情報を照会してください。 `meterName` と `skuName` の両方に `Spot` が含まれています。
 
-エラーが発生した場合は、[エラー コード](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を参照してください。
+エラーが発生した場合は、[エラー コード](../error-codes-spot.md)を参照してください。

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 33ba816227db4cf958fd30c9dac1a0745505c504
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a6971bce2ba4cb3e18455aad34e2d10b73dc066
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87513691"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203424"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する
 
@@ -47,9 +47,9 @@ az vm create --name VMname --resource-group RGname --image UbuntuLTS --generate-
 
 認証するために SSH キーを使用する Linux VM を作成するには、Azure portal、Azure CLI、Azure Resource Manager テンプレート、またはその他の方法を使用して VM を作成するときに SSH 公開キーを指定します。
 
-* [Azure Portal で Linux 仮想マシンを作成する](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Azure CLI で Linux 仮想マシンを作成する](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Azure テンプレートを使用して Linux VM を作成する](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure Portal で Linux 仮想マシンを作成する](quick-create-portal.md)
+* [Azure CLI で Linux 仮想マシンを作成する](quick-create-cli.md)
+* [Azure テンプレートを使用して Linux VM を作成する](create-ssh-secured-vm-from-template.md)
 
 SSH 公開キーの形式になじみのない場合は、次の `cat` コマンドでご利用の公開キーを表示できます。必要に応じて、`~/.ssh/id_rsa.pub` を独自の公開キー ファイルのパスとファイル名に置き換えます。
 

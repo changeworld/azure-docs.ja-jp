@@ -9,12 +9,12 @@ ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: carmonm
-ms.openlocfilehash: 2388d4be0f7d51f9d5897998049b445595648c0a
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: eac6201f45b11cae223e2293644bd9d0144e6e31
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763980"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203356"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する
 
@@ -65,7 +65,7 @@ The entity was not found in this Azure location
 
 ## <a name="azure-cli"></a>Azure CLI
 
-次の例は、[az vm run-command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) コマンドを使用して Azure Windows VM 上でシェル スクリプトを実行します。
+次の例は、[az vm run-command](/cli/azure/vm/run-command#az-vm-run-command-invoke) コマンドを使用して Azure Windows VM 上でシェル スクリプトを実行します。
 
 ```azurecli-interactive
 # script.ps1

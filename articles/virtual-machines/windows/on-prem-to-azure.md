@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 32cbfbcc8feeff66101ab5e2c95f476a4a4215e9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 55f7c68df1e339f0f9eda809bbb0acbb2e9131b5
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973905"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200891"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>アマゾン ウェブ サービス (AWS) やその他のプラットフォームから Azure の Managed Disks に移行する
 
@@ -26,7 +26,7 @@ AWS やオンプレミスの仮想化ソリューションから Azure に VHD �
 - **特殊化された VHD**: ユーザー アカウント、アプリケーション、その他の状態データが元の VM から保持されます。 
 
 > [!IMPORTANT]
-> VHD を Azure にアップロードする前に、「[Windows VHD の Azure へのアップロードの準備](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」に従う必要があります
+> VHD を Azure にアップロードする前に、「[Windows VHD の Azure へのアップロードの準備](prepare-for-upload-vhd-image.md)」に従う必要があります
 >
 >
 
@@ -64,20 +64,20 @@ Premium Storage で動作する仮想マシンのパフォーマンス特性を�
 
 VM で使える Premium マネージド ディスクには 7 種類あり、それぞれに特定の IOPS とスループットの制限があります。 VM のディスクの種類として Premium を選択する場合は、容量、パフォーマンス、スケーラビリティ、ピーク負荷に関するアプリケーションのニーズを踏まえると共に、これらの制限も考慮してください。
 
-| Premium ディスクの種類  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
+| Premium ディスクの種類  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
-| ディスク サイズ           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| ディスクあたりの IOPS       | 120   | 240   | 500   | 1100  |2300              | 5000              | 7500              | 7500              | 
-| ディスクあたりのスループット | 25 MB/秒  | 50 MB/秒  | 100 MB/秒 | 125 MB/秒 |150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 |
+| ディスク サイズ           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| ディスクあたりの IOPS       | 120   | 240   | 500   | 1100  |2300              | 5000              | 7500              | 7500              | 
+| ディスクあたりのスループット | 25 MB/秒  | 50 MB/秒  | 100 MB/秒 | 125 MB/秒 |150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 |
 
 **Standard Managed Disks**
 
 VM で使用できる Standard マネージド ディスクは 7 種類あります。 それぞれ容量は異なりますが、IOPS とスループットの制限は同じです。 アプリケーションの容量のニーズに基づいて Standard マネージド ディスクの種類を選択してください。
 
-| Standard ディスクの種類  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
+| Standard ディスクの種類  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
 |---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------| 
-| ディスク サイズ           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
-| ディスクあたりの IOPS       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
+| ディスク サイズ           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
+| ディスクあたりの IOPS       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
 | ディスクあたりのスループット | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 |60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 
 
 ### <a name="disk-caching-policy"></a>ディスク キャッシュ ポリシー 
@@ -93,4 +93,4 @@ VM で使用できる Standard マネージド ディスクは 7 種類ありま
 
 ## <a name="next-steps"></a>次の手順
 
-- VHD を Azure にアップロードする前に、「[Windows VHD の Azure へのアップロードの準備](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」に従う必要があります
+- VHD を Azure にアップロードする前に、「[Windows VHD の Azure へのアップロードの準備](prepare-for-upload-vhd-image.md)」に従う必要があります

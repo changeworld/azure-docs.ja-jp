@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 01bd3b1e945ee7c9ac16af7048536c0a9e2d731a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 502533b69058eacd4ad18a3b29a33fbc4a3715a5
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401590"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183780"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Azure Powershell を使用した Traffic Manager サブネットのオーバーライド
 
@@ -43,7 +43,7 @@ Traffic Manager サブネットのオーバーライドを作成するには、A
 
 1. **Traffic Manager エンドポイントを取得する:**
 
-    サブネットのオーバーライドを有効にするには、[Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0) を使用してオーバーライドを追加するエンドポイントを取得し、変数に格納します。
+    サブネットのオーバーライドを有効にするには、[Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0) を使用してオーバーライドを追加するエンドポイントを取得し、変数に格納します。
 
     Name、ProfileName、および ResourceGroupName を、変更するエンドポイントの値に置き換えます。
 
@@ -54,7 +54,7 @@ Traffic Manager サブネットのオーバーライドを作成するには、A
     ```
 2. **IP アドレスの範囲をエンドポイントに追加する:**
     
-    エンドポイントに IP アドレス範囲を追加するには、[Add-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) を使用して範囲を追加します。
+    エンドポイントに IP アドレス範囲を追加するには、[Add-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) を使用して範囲を追加します。
 
     ```powershell
 
@@ -68,18 +68,18 @@ Traffic Manager サブネットのオーバーライドを作成するには、A
     Add-AzTrafficManagerIPAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
  
     ```
-    範囲が追加されたら、[Set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) を使用してエンドポイントを更新します。
+    範囲が追加されたら、[Set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) を使用してエンドポイントを更新します。
 
     ```powershell
 
     Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $TrafficManagerEndpoint
 
     ```
-[Remove-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0) を使用して IP アドレスの範囲の削除を完了できます。
+[Remove-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0) を使用して IP アドレスの範囲の削除を完了できます。
 
 1.  **Traffic Manager エンドポイントを取得する:**
 
-    サブネットのオーバーライドを有効にするには、[Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0) を使用してオーバーライドを追加するエンドポイントを取得し、変数に格納します。
+    サブネットのオーバーライドを有効にするには、[Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0) を使用してオーバーライドを追加するエンドポイントを取得し、変数に格納します。
 
     Name、ProfileName、および ResourceGroupName を、変更するエンドポイントの値に置き換えます。
 
@@ -102,7 +102,7 @@ Traffic Manager サブネットのオーバーライドを作成するには、A
     Remove-AzTrafficManagerIpAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
 
     ```
-     範囲が削除されたら、[Set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) を使用してエンドポイントを更新します。
+     範囲が削除されたら、[Set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) を使用してエンドポイントを更新します。
 
     ```powershell
 
@@ -113,4 +113,4 @@ Traffic Manager サブネットのオーバーライドを作成するには、A
 ## <a name="next-steps"></a>次のステップ
 Traffic Manager の [トラフィック ルーティング方法](traffic-manager-routing-methods.md)の詳細を確認する。
 
-[サブネット トラフィックのルーティング方法](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)の詳細を確認する
+[サブネット トラフィックのルーティング方法](./traffic-manager-routing-methods.md#subnet-traffic-routing-method)の詳細を確認する

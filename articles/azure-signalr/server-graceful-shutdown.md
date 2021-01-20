@@ -6,12 +6,12 @@ ms.author: tefa
 ms.date: 11/12/2020
 ms.service: signalr
 ms.topic: conceptual
-ms.openlocfilehash: 06aa91ff414e5575f7b1a743d2cc17765437ef72
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: d9dd7ce9cf321628598a7bb866c5d1b1a6fb0e1e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797410"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201673"
 ---
 # <a name="server-graceful-shutdown"></a>サーバーのグレースフル シャットダウン
 Microsoft Azure SignalR Service には、サーバーを正常にシャットダウンするためのモードが 2 つあります。 
@@ -43,7 +43,7 @@ Microsoft Azure SignalR Service には、サーバーを正常にシャットダ
 
     場合によっては、終了メッセージをすべてのクライアントに配信するなど、手段を設計し、自動的に閉じるか再接続するタイミングをクライアントに決定させる必要があります。
 
-    使用例については [ChatSample](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample) をお読みください。このサンプルでは、シャットダウン フックでクライアント終了をトリガーする "exit" メッセージを配信します。
+    使用例については [ChatSample](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample) をお読みください。このサンプルでは、シャットダウン フックでクライアント終了をトリガーする "exit" メッセージを配信します。
 
     **MigrateClients に設定されたモード**
 

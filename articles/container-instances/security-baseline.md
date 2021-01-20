@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e0cf0f30d1110a58ff8087fd348c4916c34e4603
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0f0c771b11dfc029f18681e7a4c11b8ee271252c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351812"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197695"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Container Instances の Azure セキュリティ ベースライン
 
@@ -385,7 +385,7 @@ Azure コンテナー レジストリを Azure Container Instances と共に使�
 
 **ガイダンス**: MFA が構成されている PAW (特権アクセス ワークステーション) を使用して Azure リソースにログインし、構成します。
 
-* [特権アクセス ワークステーションについて](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 

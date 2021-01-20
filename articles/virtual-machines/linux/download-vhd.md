@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: 897cae53e589f4058e5499c0e6e941d4f1d9bb2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0c5e51665b4b1d31e7d2b3e25e7be31b481d0d9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87761062"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203169"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure から Linux VHD をダウンロードする
 
@@ -42,11 +42,11 @@ VHD ファイルをダウンロードするには、[Shared Access Signature (SA
 
 1.  生成された URL の下にある **[VHD ファイルのダウンロード]** を選択します。
 
-    :::image type="content" source="./media/download-vhd/export-download.PNG" alt-text="VM を停止するためのメニュー ボタンを示す。":::
+    :::image type="content" source="./media/download-vhd/export-download.PNG" alt-text="VHD をダウンロードするボタンを示す。":::
 
 2.  ブラウザーで **[保存]** を選択しないと、ダウンロードが開始されない場合があります。 VHD ファイルの既定の名前は *abcd* です。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure CLI を使用してカスタム ディスクをアップロードし、Linux VM を作成する](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)方法を学習します。 
-- [Azure CLI を使用した Azure ディスクの管理](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+- [Azure CLI を使用してカスタム ディスクをアップロードし、Linux VM を作成する](upload-vhd.md)方法を学習します。 
+- [Azure CLI を使用した Azure ディスクの管理](tutorial-manage-disks.md)。

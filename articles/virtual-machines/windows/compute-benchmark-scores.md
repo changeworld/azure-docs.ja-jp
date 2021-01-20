@@ -9,15 +9,15 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: ccaf44f733958bff461e954c78196f7376a59771
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b354f6f121e6a055e7db07a587936f3eaff94c33
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836209"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201571"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM のコンピューティング ベンチマーク スコア
-次の SPECInt ベンチマーク スコアは、Windows Server を実行している Azure VM の計算性能を示します。 コンピューティング ベンチマーク スコアは [Linux VM](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)にも利用できます。
+次の SPECInt ベンチマーク スコアは、Windows Server を実行している Azure VM の計算性能を示します。 コンピューティング ベンチマーク スコアは [Linux VM](../linux/compute-benchmark-scores.md)にも利用できます。
 
 
 ## <a name="av2---general-compute"></a>Av2 - 一般コンピューティング
@@ -65,9 +65,9 @@ ms.locfileid: "87836209"
 | Standard_B4ms | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 43 | 28.3 | 0.7 | 
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 3 | 42.0 | 0.0 | 
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 25 | 41.4 | 0.9 | 
-| Standard_B12ms | 12 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 19 | 58.9 | 2.3 |
-| Standard_B16ms | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 18 | 75.4 | 2.1 |
-| Standard_B20ms | 20 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 または v4| 2 | 90.6 | 1.3 |
+| Standard_B12ms | 12 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 19 | 58.9 | 2.3 |
+| Standard_B16ms | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 18 | 75.4 | 2.1 |
+| Standard_B20ms | 20 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 または v4| 2 | 90.6 | 1.3 |
 
 
 >[!NOTE]
@@ -91,12 +91,12 @@ ms.locfileid: "87836209"
 | Standard_D16s_v3 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 38 | 298.2 | 4.4. | 
 | Standard_D32s_v3 | 32 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 24 | 545.8 | 10.5 | 
 | Standard_D32s_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 9 | 535.6 | 12.6 | 
-| Standard_D32-8s_v3 | 8 |  | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 6 | 166.0 | 8.8 |
-| Standard_D32-16s_v3 | 16 |  | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 4 | 300.8 | 6.4 |
-| Standard_D48s_v3 | 48 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 1 | 838.0 | 0.0 |
+| Standard_D32-8s_v3 | 8 |  | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 6 | 166.0 | 8.8 |
+| Standard_D32-16s_v3 | 16 |  | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 4 | 300.8 | 6.4 |
+| Standard_D48s_v3 | 48 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 1 | 838.0 | 0.0 |
 | Standard_D64s_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 35 | 1070.6 | 2.4 | 
-| Standard_D64-16s_v3 | 16 |  | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 4 | 340.0 | 21.4 |
-| Standard_D64-32s_v3 | 32 |  | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 3 | 592.3 | 1.5 |
+| Standard_D64-16s_v3 | 16 |  | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 4 | 340.0 | 21.4 |
+| Standard_D64-32s_v3 | 32 |  | Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 3 | 592.3 | 1.5 |
 
 ## <a name="dv3---general-compute"></a>Dv3 - 一般コンピューティング
 
@@ -114,7 +114,7 @@ ms.locfileid: "87836209"
 | Standard_D16_v3 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 32 | 300.7 | 8.8 | 
 | Standard_D32_v3 | 32 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 24 | 549.3 | 11.1 | 
 | Standard_D32_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 7 | 538.6 | 9.4 | 
-| Standard_D48_v3 | 48 |  |  Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 3 | 839.7 | 14.4 |
+| Standard_D48_v3 | 48 |  |  Intel(R) Xeon(R) CPU E5-2673 v3 または v4 | 3 | 839.7 | 14.4 |
 | Standard_D64_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 32 | 1070.6 | 12.4 | 
 
 ## <a name="dsv2---storage-optimized"></a>DSv2 - ストレージ最適化
@@ -389,4 +389,4 @@ ms.locfileid: "87836209"
 Windows の数値は、Windows Server 上で [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) を実行して計算しました。 SPECint は、vCPU あたり 1 つのコピーを使用し、ベース レート オプション (SPECint_rate2006) を使用して実行しました。 SPECint は 12 個の個別のテストで構成され、それぞれを 3 回実行します。各テストの中央値を採用し、重み付けして複合スコアを割り出します。 これらのテストが複数の VM にわたって実行され、ご覧の平均スコアが算出されました。
 
 ## <a name="next-steps"></a>次のステップ
-* ストレージの容量、ディスクの詳細、VM のサイズを選択する際のその他の考慮事項については、 [仮想マシンのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
+* ストレージの容量、ディスクの詳細、VM のサイズを選択する際のその他の考慮事項については、 [仮想マシンのサイズ](../sizes.md)に関するページをご覧ください。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: bfd3b2351a280f423ba0ef0b15318449554b5e3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3db1c3cdfc87cedc0ba24fadc0271a8af44a279
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595936"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201911"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Azure 仮想マシンの修復コマンドを使用して Linux VM を修復する
 
@@ -59,7 +59,7 @@ Azure 仮想マシンの修復コマンドを使用して VM の OS ディスク
 
    CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.30 以降が必要です。 バージョンを確認するには、``az --version`` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
    
-   現在 Azure portal にログインしているアカウントとは別のアカウントを使用して Cloud Shell にログインする必要がある場合は、``az login`` [az login reference](/cli/azure/reference-index?view=azure-cli-latest#az-login&preserve-view=true) を使用できます。  アカウントに関連付けられているサブスクリプションを切り替えるには、``az account set --subscription`` [az account set reference](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) を使用できます。
+   現在 Azure portal にログインしているアカウントとは別のアカウントを使用して Cloud Shell にログインする必要がある場合は、``az login`` [az login reference](/cli/azure/reference-index#az-login&preserve-view=true) を使用できます。  アカウントに関連付けられているサブスクリプションを切り替えるには、``az account set --subscription`` [az account set reference](/cli/azure/account#az-account-set&preserve-view=true) を使用できます。
 
 2. `az vm repair` コマンドを初めて使用する場合は、VM 修復 CLI 拡張機能を追加します。
 

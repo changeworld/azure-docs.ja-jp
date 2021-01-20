@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0a0756c0beeb752e69703119a300bf4cc85f621b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c1e61e9434d96148fbce840f4bad7f6a3b2ecb6b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485180"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202727"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Stream Analytics 用の Azure セキュリティ ベースライン
 
@@ -292,7 +292,7 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**: 多要素認証 (MFA) が構成された PAW (特権アクセス ワークステーション) を使用してログインし、Stream Analytics リソースを構成します。
 
-* [特権アクセス ワークステーションについて](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 

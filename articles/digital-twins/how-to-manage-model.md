@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a8b2fdf99b33df3322748b7e073cc4ab18957c84
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 00e6802f37ec60467edbea98038dd23fcba1239a
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045242"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185497"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Twins のモデルを管理する
 
@@ -52,9 +53,6 @@ Azure Digital Twins のモデルは DTDL で記述され、 *.json* ファイル
 ## <a name="upload-models"></a>モデルのアップロード
 
 モデルを作成したら、Azure Digital Twins インスタンスにアップロードできます。
-
-> [!TIP]
-> ご自分のモデルは、ご自分の Azure Digital Twins インスタンスにアップロードする前に、オフラインで検証することをお勧めします。 モデルをサービスにアップロードする前に、[DTDL クライアント側パーサー ライブラリ](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)と [DTDL 検証ツールのサンプル](/samples/azure-samples/dtdl-validator/dtdl-validator)を使用して ([*方法:モデルの解析と検証*](how-to-parse-models.md)に関する記事を参照)、モデルを確認できます。
 
 モデルをアップロードする準備が整ったら、次のコード スニペットを使用できます。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 636bc3c64dcd15ead36a9a4e969e802d49895dca
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b38d86402f418e5c2b484bb9101e2b4cc3575d6e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522245"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196624"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Azure Private Link の Azure セキュリティ ベースライン
 
@@ -176,7 +176,7 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 **ガイダンス**: 多要素認証が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure ネットワーク リソースを構成します。
 
-- [特権アクセス ワークステーションについて](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 

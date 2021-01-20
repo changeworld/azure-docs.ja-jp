@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/05/2021
 ms.author: abhishgu
 ms.reviewer: abhishgu
-ms.openlocfilehash: 24714b185b0f666770b306a7e80a97a3f8f868a3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 0038219ee8c1721ff5ab2be76231d33d2bd9064d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98052610"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203067"
 ---
 # <a name="migrate-data-from-postgresql-to-azure-cosmos-db-cassandra-api-account-using-apache-kafka"></a>Apache Kafka を使用して PostgreSQL から Azure Cosmos DB Cassandra API アカウントにデータを移行する
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -107,7 +107,7 @@ bin/kafka-server-start.sh config/server.properties
 
 ### <a name="setup-connectors"></a>コネクタを設定する
 
-Debezium PostgreSQL および DataStax Apache Kafka のコネクタをインストールします。 Debezium PostgreSQL コネクタのプラグイン アーカイブをダウンロードします。 たとえば、(執筆時点で最新の) バージョン 1.3.0 のコネクタをダウンロードするには、[こちらのリンク](https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.3.0.Final/debezium-connector-postgres-1.2.0.Final-plugin.tar.gz)を使用します。 DataStax Apache Kafka コネクタは、[こちらのリンク](https://downloads.datastax.com/#akc)からダウンロードします。
+Debezium PostgreSQL および DataStax Apache Kafka のコネクタをインストールします。 Debezium PostgreSQL コネクタのプラグイン アーカイブをダウンロードします。 たとえば、(執筆時点で最新の) バージョン 1.3.0 のコネクタをダウンロードするには、[こちらのリンク](https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.3.0.Final/debezium-connector-postgres-1.3.0.Final-plugin.tar.gz)を使用します。 DataStax Apache Kafka コネクタは、[こちらのリンク](https://downloads.datastax.com/#akc)からダウンロードします。
 
 両方のコネクタ アーカイブを解凍し、JAR ファイルを [Kafka Connect plugin.path](https://kafka.apache.org/documentation/#connectconfigs) にコピーします。
 

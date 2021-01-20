@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f3e4c411223a3e8fc0602602cd941a00f7a19cca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 808443cb805b2dee2426198f9cd4f7ba502d8999
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87028245"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197508"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure の Windows VM に対する特定の RDP エラー メッセージのトラブルシューティング
 Azure の Windows 仮想マシン (VM) に対してリモート デスクトップ接続を使用すると、特定のエラー メッセージが表示される場合があります。 この記事では、よく発生するエラー メッセージのいくつかと、それを解決するためのトラブルシューティング手順について詳しく説明します。 RDP を使用した VM への接続で問題が発生していても、特定のエラー メッセージが表示されない場合は、[リモート デスクトップのトラブルシューティング ガイド](troubleshoot-rdp-connection.md)を参照してください。
@@ -109,7 +109,7 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 接続するために使用しているアカウントに、リモート デスクトップ サインイン権限があることを確認してください。 回避策として、ドメインまたはローカル管理者アカウントを使用して、リモート デスクトップで接続します。 目的のアカウントをリモート デスクトップ ユーザーのローカル グループに追加するには、Microsoft 管理コンソール スナップイン ( **[システム ツール]、[ローカル ユーザーとグループ]、[グループ]、[Remote Desktop Users]** の順に選択します) を使用します。
 
 ## <a name="next-steps"></a>次のステップ
-上記のエラーのいずれも発生せず、RDP を使用した接続で不明な問題が発生している場合は、[リモート デスクトップのトラブルシューティング ガイド](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を参照してください。
+上記のエラーのいずれも発生せず、RDP を使用した接続で不明な問題が発生している場合は、[リモート デスクトップのトラブルシューティング ガイド](troubleshoot-rdp-connection.md)を参照してください。
 
 * VM で実行されているアプリケーションへのアクセスにおけるトラブルシューティング手順については、[Azure VM で実行されているアプリケーションへのアクセスのトラブルシューティング](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json)に関する記事をご覧ください。
 * Secure Shell (SSH) を使用した Azure の Linux VM への接続で問題が発生している場合は、[Azure の Linux VM への SSH 接続のトラブルシューティング](./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)に関する記事をご覧ください。

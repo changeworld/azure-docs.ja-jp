@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7d116010d5e6fea5e1ba8a66431b874194506283
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ad47ac7d51de6ab497d7061961c14b5324fab931
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843453"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202455"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Key Vault 用の Azure セキュリティ ベースライン
 
@@ -399,7 +399,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **ガイダンス**:Azure AD Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Key Vault 対応リソースを構成します。 
 
-特権アクセス ワークステーション: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
+特権アクセス ワークステーション: https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/ 
 
 クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 

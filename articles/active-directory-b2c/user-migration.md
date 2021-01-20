@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5d680da7a5f09a55bec5d791642b80fd76c6088e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: fea8d93121fcb5622f86257febcc7d834b444098
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509616"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178808"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>ユーザーを Azure AD B2C に移行する
 
@@ -97,7 +97,7 @@ ms.locfileid: "97509616"
 
 ### <a name="password-policy"></a>パスワード ポリシー
 
-移行するアカウントのパスワード強度が Azure AD B2C によって適用される[強力なパスワード強度](../active-directory/authentication/concept-sspr-policy.md)より弱い場合は、強力なパスワードという要件を無効にすることができます。 詳細については、「[パスワード ポリシー プロパティ](manage-user-accounts-graph-api.md#password-policy-property)」をご参照ください。
+移行するアカウントのパスワード強度が Azure AD B2C によって適用される[強力なパスワード強度](../active-directory/authentication/concept-sspr-policy.md)より弱い場合は、強力なパスワードという要件を無効にすることができます。 詳細については、「[パスワード ポリシー プロパティ](user-profile-attributes.md#password-policy-attribute)」をご参照ください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e7be42b2a6e9f2cdc1aa0258f218fea9fd963093
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c27ef1af3e439b22f00f9247b5270118bbe9ca89
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532035"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197712"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Batch 用の Azure セキュリティ ベースライン
 
@@ -312,7 +312,7 @@ Azure Batch リソース レベルの監視では、Azure Batch API を使用し
 
 **ガイダンス**:多要素認証が構成された PAW (特権アクセス ワークステーション) を使用してログインし、Azure Batch リソースを構成します。
 
-- [特権アクセス ワークステーションについて](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Azure で多要素認証を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -982,7 +982,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
-**ガイダンス**: - [Microsoft の実施ルールに従って、侵入テストが Microsoft のポリシーに違反しないようにしてください ](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.)
+**ガイダンス**: - [Microsoft の実施ルールに従って、侵入テストが Microsoft のポリシーに違反しないようにしてください](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.)
 
 Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施の詳細については、以下を参照してください。 
 

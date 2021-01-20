@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: duau
-ms.openlocfilehash: 431eaff9da95063648d3e80acb54be9cc5c25bc5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eaf50f3bdacaf5680bc5ecb1379faff20133b5ce
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021692"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184375"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Azure で負荷分散サービスを使用する
 
@@ -92,11 +92,11 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 4. Application Gateway の仮想ネットワーク、サブネット、フロントエンド IP、およびリスナーの構成を定義します。 このシナリオでは、フロント エンド IP アドレスは **[パブリック]** に設定されているため、後で Traffic Manager プロファイルにエンドポイントとして追加できます。
 5. 次のいずれかのオプションでリスナーを構成します。
     * HTTP を使用する場合は、構成する必要はありません。 **[OK]** をクリックします。
-    * HTTPS を使用する場合は、さらに構成が必要になります。 [Application Gateway の作成](../application-gateway/application-gateway-create-gateway-portal.md)に関するページの手順 9.以降を参照してください。 構成が完了したら、 **[OK]** をクリックします。
+    * HTTPS を使用する場合は、さらに構成が必要になります。 [Application Gateway の作成](../application-gateway/quick-create-portal.md)に関するページの手順 9.以降を参照してください。 構成が完了したら、 **[OK]** をクリックします。
 
 #### <a name="configure-url-routing-for-application-gateways"></a>Application Gateway の URL ルーティングを構成する
 
-バックエンド プールを選択するときは、パスベースの規則で構成される Application Gateway では、ラウンド ロビン分散だけでなく、要求 URL のパスのパターンを使用します。 このシナリオでは、"/images/\*" 含む URL をイメージ サーバー プールに誘導するための、パス ベースの規制を追加します。 Application Gateway のパス ベースの URL ルーティングの詳細については、[Application Gateway のパスベース ルールの作成](../application-gateway/application-gateway-create-url-route-portal.md)に関するページをご覧ください。
+バックエンド プールを選択するときは、パスベースの規則で構成される Application Gateway では、ラウンド ロビン分散だけでなく、要求 URL のパスのパターンを使用します。 このシナリオでは、"/images/\*" 含む URL をイメージ サーバー プールに誘導するための、パス ベースの規制を追加します。 Application Gateway のパス ベースの URL ルーティングの詳細については、[Application Gateway のパスベース ルールの作成](../application-gateway/create-url-route-portal.md)に関するページをご覧ください。
 
 ![Application Gateway の Web 層の図](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
@@ -156,7 +156,7 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 
 高可用性データベース クラスターが SQL Server AlwaysOn を使用している場合は、1 つまたは複数の [Always On 可用性グループ リスナーを構成する方法](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md)をご覧ください。
 
-内部ロード バランサーの構成方法について詳しくは、「[Azure Portal での内部ロード バランサーの作成](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)」をご覧ください。
+内部ロード バランサーの構成方法について詳しくは、「[Azure Portal での内部ロード バランサーの作成](../load-balancer/quickstart-load-balancer-standard-internal-portal.md)」をご覧ください。
 
 1. Azure Portal の左側のウィンドウで、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[ロード バランサー]** の順にクリックします。
 2. ロード バランサーの名前を選択します。
@@ -210,5 +210,5 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 ## <a name="next-steps"></a>次のステップ
 
 * [Traffic Manager の概要](traffic-manager-overview.md)
-* [Application Gateway の概要](../application-gateway/application-gateway-introduction.md)
+* [Application Gateway の概要](../application-gateway/overview.md)
 * [Azure Load Balancer の概要](../load-balancer/load-balancer-overview.md)

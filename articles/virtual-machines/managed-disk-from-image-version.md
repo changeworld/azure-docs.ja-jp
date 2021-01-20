@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 40d3ff736194c4634b949af52ee7b09db20dd06d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 84ec5ecbfdc2aab2445d050cc51d2b56acb7f3fd
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026133"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202557"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>イメージ バージョンからマネージド ディスクを作成する
 
@@ -33,7 +33,7 @@ az sig image-version list \
    -o table
 ```
 
-`source` 変数をイメージ バージョンの ID に設定してから、[az disk create](/cli/azure/disk?view=azure-cli-latest#az_disk_create) を使用してマネージド ディスクを作成します。 
+`source` 変数をイメージ バージョンの ID に設定してから、[az disk create](/cli/azure/disk#az_disk_create) を使用してマネージド ディスクを作成します。 
 
 この例では、イメージ バージョンの OS ディスクをエクスポートすることで、*myManagedOSDisk* という名前のマネージド ディスクを、*EastUS* リージョンの *myResourceGroup* という名前のリソース グループ内に作成します。 
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71d64552520db28b3fe38cc354a30ee5470ee091
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 97893dece068dfdde85159f734095401288231d2
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060684"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201350"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>オンプレミスの攻撃から Microsoft 365 を保護する
 
@@ -131,7 +131,7 @@ Azure AD では、管理者などの特権ロールを持つユーザーが、�
 
    *  ディレクトリ内の参照グループおよびその他のプロパティへのゲスト アクセスを制限します。 外部コラボレーション設定を使用して、ゲストが所属していないグループを読み取る機能を制限します。 
 
-    *   Azure portal へのアクセスをブロックします。 まれに必要となる例外を作成できます。  すべてのゲストと外部ユーザーを含む条件付きアクセス ポリシーを作成してから、[アクセスをブロックするポリシーを実装します](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management.md)。 
+    *   Azure portal へのアクセスをブロックします。 まれに必要となる例外を作成できます。  すべてのゲストと外部ユーザーを含む条件付きアクセス ポリシーを作成してから、[アクセスをブロックするポリシーを実装します](/azure/role-based-access-control/conditional-access-azure-management)。 
 
 * **切断されたフォレスト:** [Azure AD クラウド プロビジョニング](../cloud-provisioning/what-is-cloud-provisioning.md)を使用します。 これにより、切断されたフォレストに接続できるようになり、オンプレミスの侵害の影響を広げるおそれがあるフォレスト間の接続や信頼関係を確立する必要がなくなります。 * 
  

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: bf593eab54233ab65435585485dd8e3940f5addb
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d2abc357a5a636aa15909a3645e284c978fb903f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489821"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197593"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -275,7 +275,7 @@ Azure RBAC などの機能を使用したデータ アクセス制御を適用�
 **詳細**: 管理ワークステーションを使用します。 ワークステーションのセキュリティのレベルを選択します。
 
 - 安全性の高い生産性デバイスでは、閲覧や他の生産性タスクに対する高度なセキュリティが提供されます。
-- [Privileged Access Workstation (PAW)](/windows-server/identity/securing-privileged-access/privileged-access-workstations) には、機密性の高いタスクに専用のオペレーティング システムが用意されており、インターネット上の攻撃や脅威ベクトルから保護されます。
+- [Privileged Access Workstation (PAW)](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) には、機密性の高いタスクに専用のオペレーティング システムが用意されており、インターネット上の攻撃や脅威ベクトルから保護されます。
 
 **ベスト プラクティス**: 従業員が組織を離れるときは、管理者アカウントをプロビジョニング解除します。
 **詳細**: 従業員が組織を離れるときに管理者アカウントを無効化または削除するプロセスを設けます。

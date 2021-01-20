@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 'Azure Arc 対応オンボード サービス プリンシパルを作成します '
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.openlocfilehash: 02689dba32c8cc91e4a4a4de4dee98bc990b4dd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eb38dbc04d964c0ab4869e801099ee9420d6ac2
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050072"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184698"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Azure Arc 対応オンボード サービス プリンシパルの作成 (プレビュー)
 
@@ -54,7 +54,7 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onb
 | リソース  | `scope` 引数| 結果 |
 | ------------- | ------------- | ------------- |
 | サブスクリプション | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | サービス プリンシパルは、指定されたサブスクリプションの既存のリソース グループに任意のクラスターを登録できます。 |
-| リソース グループ | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | サービス プリンシパルは、リソース グループ `myGroup` に__のみ__、クラスターを登録できます。 |
+| リソース グループ | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | サービス プリンシパルは、リソース グループ `myGroup` に __のみ__、クラスターを登録できます。 |
 
 ```console
 az role assignment create \
@@ -82,7 +82,7 @@ az role assignment create \
 
 新しく作成したサービス プリンシパルを参照します。
 
-```console
+```azurecli
 az login --service-principal -u mySpnClientId -p mySpnClientSecret --tenant myTenantID
 az connectedk8s connect -n myConnectedClusterName -g myResoureGroupName
 ```

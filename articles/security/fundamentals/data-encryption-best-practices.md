@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: c88a2cf33cf1149a17af4a82dcf2858822f0c6d4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3808da24c1baf6dd6e3332d4bd26fd176b761c65
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696151"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196080"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure のデータ セキュリティと暗号化のベスト プラクティス
 この記事では、データ セキュリティと暗号化のベスト プラクティスについて説明します。
@@ -74,7 +74,7 @@ Azure RBAC を使用して、ユーザーが所有するアクセス権を制御
 ほとんどの攻撃はエンド ユーザーを標的としているため、エンドポイントが主要な攻撃目標の 1 つとなっています。 エンドポイントをセキュリティ侵害する攻撃者は、ユーザーの資格情報を悪用して組織のデータにアクセスする可能性があります。 ほとんどのエンドポイント攻撃は、ユーザーがローカル ワークステーションの管理者であるという事実を悪用しています。
 
 **ベスト プラクティス**: セキュリティで保護された管理ワークステーションを使用して、機微なアカウント、タスク、およびデータを保護する。   
-**詳細**: ワークステーションの攻撃対象領域を減らすために、[特権アクセスを提供するワークステーション](/windows-server/identity/securing-privileged-access/privileged-access-workstations)を使用します。 このようなセキュリティで保護された管理ワークステーションを使用することで、攻撃を受ける可能性を減らし、データの安全性を高めることができます。
+**詳細**: ワークステーションの攻撃対象領域を減らすために、[特権アクセスを提供するワークステーション](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)を使用します。 このようなセキュリティで保護された管理ワークステーションを使用することで、攻撃を受ける可能性を減らし、データの安全性を高めることができます。
 
 **ベスト プラクティス**: エンドポイントが保護されていることを保証する。   
 **詳細**: データの保存先 (クラウドまたはオンプレミス) に関わらず、データを利用するすべてのデバイスにセキュリティ ポリシーを必ず適用します。

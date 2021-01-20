@@ -6,13 +6,13 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: db29fbda404900c29f85fa876e9427994ee9a093
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 118b869cb97a7dd3ce65566a994a27d2a65a7402
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915914"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184936"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure Digital Twins の既知の問題
 
@@ -29,7 +29,7 @@ ms.locfileid: "97915914"
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>スクリプトを使用したセットアップ後にロールの割り当てが存在しない
 
-**問題の説明:** ユーザーによっては、[*方法: インスタンスと認証の設定 (スクリプト化) に関する記事のロールの割り当て部分で問題が発生することがあります。インスタンスと認証の設定 (スクリプト化)* ](how-to-set-up-instance-scripted.md) に関するページを参照してください。 このスクリプトには失敗と示されてはいませんが、"*Azure Digital Twins データ所有者*" ロールがユーザーに正常に割り当てられておらず、この問題は、今後その他のリソースを作成する機能に影響します。
+**問題の説明:** ユーザーによっては、[*方法: インスタンスと認証の設定 (スクリプト化) に関する記事のロールの割り当て部分で問題が発生することがあります。インスタンスと認証の設定 (スクリプト化)*](how-to-set-up-instance-scripted.md) に関するページを参照してください。 このスクリプトには失敗と示されてはいませんが、"*Azure Digital Twins データ所有者*" ロールがユーザーに正常に割り当てられておらず、この問題は、今後その他のリソースを作成する機能に影響します。
 
 [!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 

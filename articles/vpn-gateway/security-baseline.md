@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 68299bae559d25155dda04a58aa1e4826a188b7f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8221e814b4555a75d596cec3ab00aa3b63e41a14
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657841"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197406"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>VPN Gateway に対する Azure セキュリティ ベースライン
 
@@ -226,7 +226,7 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 **ガイダンス**:高度な特権を必要とする管理タスクには、セキュリティで保護された Azure マネージド ワークステーション (特権アクセス ワークステーション (PAW) とも呼ばれます) を使用します。
 
-- [セキュリティで保護された Azure マネージド ワークステーションを理解する](../active-directory/devices/concept-azure-managed-workstation.md)
+- [セキュリティで保護された Azure マネージド ワークステーションを理解する](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Azure AD MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 

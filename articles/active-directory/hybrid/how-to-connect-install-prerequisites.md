@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edace0298514d1fc3cfd3afcff73fa0d29e18f0c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 73376994e01ed89891726a8f6e1b727f89dab2fb
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858775"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201724"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 この記事では、Azure Active Directory (Azure AD) Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -83,7 +83,7 @@ Azure AD Connect サーバーを強化して、お客様の IT 環境に含ま�
 - 「[特権アクセスの保護](/windows-server/identity/securing-privileged-access/securing-privileged-access)」に記載されているガイダンスに従ってください。 
 - AADConnect サーバーでの NTLM 認証の使用を拒否します。 これを行うには、次の方法があります。[AADConnect サーバーで NTLM を制限](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers)し、[ドメインで NTLM を制限](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)する
 - すべてのマシンに一意のローカル管理者パスワードが構成されていることを確認します。 詳細については、[ローカル管理者パスワード ソリューション (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) に関する記事を参照してください。これを使用することで、ワークステーションおよびサーバーごとに一意のランダム パスワードを構成し、ACL によって保護された Active Directory に保存することができます。 資格のある許可されているユーザーのみが、これらのローカル管理者アカウントのパスワードの読み取りまたはリセットの要求を行うことができます。 [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=46899)から、ワークステーションとサーバーで使用する LAPS を取得できます。 LAPS と 特権アクセス ワークステーション (PAW) を使用して環境を運用するための追加のガイダンスについては、「[クリーン ソースの原則に基づく運用基準](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)」を参照してください。 
-- 組織の情報システムへの特権アクセスを持つすべての担当者に対して、専用の[特権アクセス ワークステーション](/windows-server/identity/securing-privileged-access/privileged-access-workstations)を実装します。 
+- 組織の情報システムへの特権アクセスを持つすべての担当者に対して、専用の[特権アクセス ワークステーション](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)を実装します。 
 - Active Directory 環境の攻撃面を減らすには、これらの[追加のガイドライン](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)に従います。
 
 

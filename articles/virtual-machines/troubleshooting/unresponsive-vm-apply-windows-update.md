@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 76c3f729a8520c7bff7b49a1d2200d7950f8a9f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55dcd65e901a5ce8665ef8d3a2a29d7943581df9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074306"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200721"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>Windows Update の適用時に、Azure VM が C01A001D エラー でて応答しません。
 
@@ -56,7 +56,7 @@ VM のスクリーンショットを見るために [ブート診断](./boot-dia
 
 ディスクが 1 TB になっていない場合には、サイズを変更する必要があります。 ディスクが 1 TB になったら、ディスクのクリーンアップとドライブの最適化を実行します。
 
-1. ディスクがいっぱいかどうかを確認します。 ディスクが 1 TB 未満の場合は、[PowerShell を使用して最大 1 TB にまで拡張します](../windows/expand-os-disk.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)。
+1. ディスクがいっぱいかどうかを確認します。 ディスクが 1 TB 未満の場合は、[PowerShell を使用して最大 1 TB にまで拡張します](../windows/expand-os-disk.md)。
 2. ディスクが 1 TB になったら、ディスクのクリーンアップを実行します。
     - [破損した VM からデータ ディスクをデタッチします](../windows/detach-disk.md)。
     - [データ ディスクを、機能している VM に接続します](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)。

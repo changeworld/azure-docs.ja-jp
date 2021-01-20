@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: fdde7613627c9fec0694f3985f78cf10e52f59c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4052a9c8614a17c3b5cdd871ad78be8cc3258c5a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397098"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202591"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Azure での PostgreSQL のインストールと構成
 PostgreSQL は、Oracle や DB2 に似た高機能のオープン ソース データベースです。 PostgreSQL には、完全な ACID 準拠、信頼性の高いトランザクション処理、複数バージョンのコンカレンシー制御など、エンタープライズ対応の機能が含まれます。 また、ANSI SQL や SQL/MED などの標準をサポートします (Oracle、MySQL、MongoDB、その他多くの外部データ ラッパーを含みます). 12 を超える手続き型言語、GIN および GIST のインデックス、空間データ、および JSON またはキーと値に基づくアプリケーションに対する NoSQL に似た複数の機能などのサポートにより、高度な拡張を行えます。
@@ -24,13 +24,13 @@ PostgreSQL は、Oracle や DB2 に似た高機能のオープン ソース デ�
 
 ## <a name="install-postgresql"></a>PostgreSQL のインストール
 > [!NOTE]
-> このチュートリアルを実行するには、Linux を実行する Azure Virtual Machines が既に存在している必要があります。 続行する前に、[Azure Linux VM チュートリアル](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を見て Linux VM を作成およびセットアップしてください。
+> このチュートリアルを実行するには、Linux を実行する Azure Virtual Machines が既に存在している必要があります。 続行する前に、[Azure Linux VM チュートリアル](quick-create-cli.md)を見て Linux VM を作成およびセットアップしてください。
 > 
 > 
 
 この例では、PostgreSQL ポートとしてポート 1999 を使用します。  
 
-PuTTY を使用して作成した Linux VM に接続します。 Azure Linux VM を初めて使用する場合は、「[Azure 上の Linux における SSH の使用方法](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照し、PuTTY を使用して Linux VM に接続する方法を確認してください。
+PuTTY を使用して作成した Linux VM に接続します。 Azure Linux VM を初めて使用する場合は、「[Azure 上の Linux における SSH の使用方法](mac-create-ssh-keys.md)」を参照し、PuTTY を使用して Linux VM に接続する方法を確認してください。
 
 1. 次のコマンドを実行して、ルート (admin) に切り替えます。
 
@@ -177,7 +177,7 @@ PuTTY を使用して作成した Linux VM に接続します。 Azure Linux VM 
 # cp linux /etc/init.d/postgresql
 ```
 
-/etc/init.d/postgresql ファイルの 2 つの変数を変更します。 prefix には、PostgreSQL のインストール パス **/opt/pgsql**を設定します。 PGDATA には、PostgreSQL のデータ ストレージ パス **/opt/pgsql_data** を設定します。
+/etc/init.d/postgresql ファイルの 2 つの変数を変更します。 prefix には、PostgreSQL のインストール パス **/opt/pgsql** を設定します。 PGDATA には、PostgreSQL のデータ ストレージ パス **/opt/pgsql_data** を設定します。
 
 ```config
 # sed -i '32s#usr/local#opt#' /etc/init.d/postgresql

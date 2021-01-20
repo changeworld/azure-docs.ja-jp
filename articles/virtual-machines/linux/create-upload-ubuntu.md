@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 06/06/2020
 ms.author: danis
-ms.openlocfilehash: d3bdc3d0705bd8edc70f55b8372818e60859eedd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ca1aae3e819d58ea32453f2549d162bbfc9c91ae
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500565"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203220"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Azure 用の Ubuntu 仮想マシンの準備
 
@@ -28,7 +28,7 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud
 
 * Azure で Linux を準備する際のその他のヒントについては、「 [Linux のインストールに関する注記](create-upload-generic.md#general-linux-installation-notes) 」も参照してください。
 * VHDX 形式は Azure ではサポートされていません。サポートされるのは **固定 VHD** のみです。  Hyper-V マネージャーまたは `Convert-VHD` コマンドレットを使用して、ディスクを VHD 形式に変換できます。
-* Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。 必要な場合は、[LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をデータ ディスク上で使用できます。
+* Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。 必要な場合は、[LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) または [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) をデータ ディスク上で使用できます。
 * OS ディスクにスワップ パーティションまたはスワップ ファイルを構成しないでください。 cloud-init プロビジョニング エージェントを構成して、一時リソース ディスク上にスワップ ファイルまたはスワップ パーティションを作成できます。 このことに関する詳細については、次の手順を参照してください。
 * Azure の VHD の仮想サイズはすべて、1 MB にアラインメントさせる必要があります。 未フォーマット ディスクから VHD に変換するときに、変換する前の未フォーマット ディスクのサイズが 1 MB の倍数であることを確認する必要があります。 詳細については、[Linux のインストールに関する注記](create-upload-generic.md#general-linux-installation-notes)のセクションを参照してください。
 
@@ -176,7 +176,7 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud
 
 13. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。
 
-14. Azure では、固定サイズの VHD のみが許容されます。 VM の OS ディスクが固定サイズの VHD でない場合は、`Convert-VHD` PowerShell コマンドレットを使用して `-VHDType Fixed` オプションを指定します。 `Convert-VHD` については、次のドキュメントを参照してください:「[Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps)」。
+14. Azure では、固定サイズの VHD のみが許容されます。 VM の OS ディスクが固定サイズの VHD でない場合は、`Convert-VHD` PowerShell コマンドレットを使用して `-VHDType Fixed` オプションを指定します。 `Convert-VHD` については、次のドキュメントを参照してください:「[Convert-VHD](/powershell/module/hyper-v/convert-vhd)」。
 
 
 ## <a name="next-steps"></a>次のステップ

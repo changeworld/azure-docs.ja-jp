@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 236390529ddaf84416448138d7b5bdf31caf681b
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: fa133e7c62b7970a1c48c7fd86c877bcf699e034
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827497"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201605"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>ブート診断を使用して、Azure 内の仮想マシンをトラブルシューティングする方法
 
@@ -94,4 +94,4 @@ Azure Resource Manager テンプレートからデプロイする場合は、ご
 
 ### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>Azure CLI を使用してブート診断を有効にする
 
-Azure CLI を使用して、既存の Azure 仮想マシンでブート診断を有効にすることができます。 詳細については、[az vm boot-diagnostics](/cli/azure/vm/boot-diagnostics?view=azure-cli-latest) を参照してください。
+Azure CLI を使用して、既存の Azure 仮想マシンでブート診断を有効にすることができます。 詳細については、[az vm boot-diagnostics](/cli/azure/vm/boot-diagnostics) を参照してください。

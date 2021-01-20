@@ -6,23 +6,23 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: ef4175d24cfd02bb5cb6470b6334fea190b5bec2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9888cde8bca9fb0646dbdc8bb601b0887908ad1d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500599"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203237"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>動作保証外のディストリビューションに関する情報
 
-Azure プラットフォームの SLA は、[動作保証済みディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のいずれか 1 つを使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。 このような動作保証済みディストリビューションの場合、事前構成済みの Linux イメージが Azure Marketplace で提供されています。
+Azure プラットフォームの SLA は、[動作保証済みディストリビューション](endorsed-distros.md)のいずれか 1 つを使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。 このような動作保証済みディストリビューションの場合、事前構成済みの Linux イメージが Azure Marketplace で提供されています。
 
-* [Azure での動作保証済み Linux ディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure での動作保証済み Linux ディストリビューション](endorsed-distros.md)
 * [Microsoft Azure での Linux イメージのサポート](https://support.microsoft.com/kb/2941892)
 
 Azure で実行されているすべてのディストリビューションには、さまざまな前提条件があります。 ディストリビューションはそれぞれ異なるため、この記事ですべてを網羅することはできません。 次のすべての条件を満たしていても、正常動作を実現するために、Linux システムを微調整する必要が生じる場合があります。
 
-[Linux on Azure 動作保証済みディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のいずれかで始めることをお勧めします。 次の記事では、Azure でサポートされる以下のさまざまな動作保証済み Linux ディストリビューションを準備する方法について説明します。
+[Linux on Azure 動作保証済みディストリビューション](endorsed-distros.md)のいずれかで始めることをお勧めします。 次の記事では、Azure でサポートされる以下のさまざまな動作保証済み Linux ディストリビューションを準備する方法について説明します。
 
 - [CentOS ベースのディストリビューション](create-upload-centos.md)
 - [Debian Linux](debian-create-upload-vhd.md)
@@ -38,7 +38,7 @@ Azure で実行されているすべてのディストリビューションに�
 * Hyper-V 仮想ハード ディスク (VHDX) 形式は Azure ではサポートされていません。サポートされているのは *固定 VHD* のみです。  Hyper-V マネージャーまたは [Convert-VHD](/powershell/module/hyper-v/convert-vhd) コマンドレットを使用して、ディスクを VHD 形式に変換できます。 VirtualBox を使用する場合は、ディスクの作成時に、既定 (動的に割り当てられるサイズ) ではなく、**固定サイズ** を選択します。
 * Azure では、Gen1 (BIOS ブート) および Gen2 (UEFI ブート) 仮想マシンがサポートされています。
 * VHD のサイズの上限は、1,023 GB です。
-* Linux システムをインストールする場合は、Logical Volume Manager (LVM) (多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 標準パーティションを使用することにより、特に OS ディスクをトラブルシューティングのために別の同じ VM に接続する場合に、LVM 名と複製された VM の競合が回避されます。 [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をデータ ディスク上で使用できます。
+* Linux システムをインストールする場合は、Logical Volume Manager (LVM) (多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 標準パーティションを使用することにより、特に OS ディスクをトラブルシューティングのために別の同じ VM に接続する場合に、LVM 名と複製された VM の競合が回避されます。 [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) または [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) をデータ ディスク上で使用できます。
 * UDF ファイル システムをマウントするためのカーネル サポートが必要です。 Azure での最初の起動時に、ゲストに接続されている UDF でフォーマットされたメディアを使用して、プロビジョニング構成が Linux VM に渡されます。 Azure Linux エージェントは、その構成を読み取り、VM をプロビジョニングする UDF ファイル システムをマウントする必要があります。
 * 2\.6.37 未満の Linux カーネル バージョンは、HYPER-V で大きい VM サイズの NUMA をサポートできません。 この問題は、主に、アップストリームの Red Hat 2.6.32 カーネルを使用した古いディストリビューションに影響し、Red Hat Enterprise Linux (RHEL) 6.6 (kernel-2.6.32-504) で修正されました。 2\.6.37 より古いカスタム カーネルまたは2.6.32-504 より古い RHEL ベースのカーネルを実行しているシステムでは、grub.conf のカーネル コマンドラインで、ブート パラメーター `numa=off` を設定する必要があります。 詳細については、[Red Hat KB 436883](https://access.redhat.com/solutions/436883) を参照してください。
 * OS ディスクにスワップ パーティションを構成しないでください。 次の手順で説明するように、Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。
@@ -67,7 +67,7 @@ Azure の VHD イメージは、1 MB に整列された仮想サイズが必要�
 
 * VHD http:\//\<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd の仮想サイズ (21475270656 バイト) がサポートされていません。 The size must be a whole number (in MBs) (サイズは整数 (MB) である必要があります)。
 
-この場合、HYPER-V マネージャー コンソールまたは [Resize-VHD](/powershell/module/hyper-v/resize-vhd?view=win10-ps) PowerShell コマンドレットを使用して、VM のサイズを変更できます。  Windows 環境で実行していない場合は、`qemu-img` を使用して変換し (必要な場合)、VHD のサイズを変更することをお勧めします。
+この場合、HYPER-V マネージャー コンソールまたは [Resize-VHD](/powershell/module/hyper-v/resize-vhd) PowerShell コマンドレットを使用して、VM のサイズを変更できます。  Windows 環境で実行していない場合は、`qemu-img` を使用して変換し (必要な場合)、VHD のサイズを変更することをお勧めします。
 
 > [!NOTE]
 > qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないという[バグ](https://bugs.launchpad.net/qemu/+bug/1490611)があることがわかっています。 この問題は QEMU 2.6 で修正されています。 バージョン 2.2.0 以前またはバージョン 2.6 以降のいずれかの `qemu-img` を使用することをお勧めします。
@@ -114,7 +114,7 @@ Azure の VHD イメージは、1 MB に整列された仮想サイズが必要�
 
 ## <a name="linux-kernel-requirements"></a>Linux カーネルの要件
 
-Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、アップストリームの Linux カーネルに直接提供されています。 最新の Linux カーネル バージョン (3.x など) を含む多くのディストリビューションでこれらのドライバーが含まれています。含まれていない場合は、これらのドライバーのバックポートされたバージョンがカーネルと共に提供されます。  これらのドライバーは、アップストリームのカーネル内で新しい修正と機能を含んだ形で常に更新されているため、可能な場合は、これらの修正と更新を含む[動作保証済みディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を実行することをお勧めします。
+Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、アップストリームの Linux カーネルに直接提供されています。 最新の Linux カーネル バージョン (3.x など) を含む多くのディストリビューションでこれらのドライバーが含まれています。含まれていない場合は、これらのドライバーのバックポートされたバージョンがカーネルと共に提供されます。  これらのドライバーは、アップストリームのカーネル内で新しい修正と機能を含んだ形で常に更新されているため、可能な場合は、これらの修正と更新を含む[動作保証済みディストリビューション](endorsed-distros.md)を実行することをお勧めします。
 
 Red Hat Enterprise Linux バージョン 6.0 ～ 6.3 のバリアントを実行する場合は、[Hyper-V 用の最新の LIS ドライバー](https://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409)をインストールする必要があります。 RHEL 6.4 以降 (および派生版) では、LIS ドライバーは既にカーネルに含まれているため、追加のインストール パッケージは必要ありません。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e07e9035dc55f77a2e76b4f4ee306deab829980a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1626ee074d51048dbf45c629f261a550822d746c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182752"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200840"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Automation 用の Azure セキュリティ ベースライン
 
@@ -162,7 +162,7 @@ Azure Blueprints を使用して、Azure Resource Manager テンプレート、A
 
 **ガイダンス**: ネットワークのセキュリティおよびトラフィック フローに関連する NSG およびその他のリソースにタグを使用します。 個々の NSG 規則については、[説明] フィールドを使用して、ネットワークとの間のトラフィックを許可する規則のビジネス ニーズや期間 (など) を指定します。
 
-すべてのリソースが確実にタグ付きで作成され、既存のタグ付けされていないリソースがユーザーに通知されるようにするには、タグ付けに関連したいずれかの組み込みの Azure Policy 定義 ("タグとその値が必要" など) を使用します。
+すべてのリソースが確実にタグ付きで作成され、既存のタグ付けされていないリソースがユーザーに通知されるようにするには、タグ付けに関連したいずれかの組み込みの Azure Policy 定義 ([タグとその値が必要] など) を使用します。
 
 Azure PowerShell または Azure CLI を使用して、タグに基づいてリソースを検索したり、リソースに対するアクションを実行したりすることもできます。
 
@@ -402,7 +402,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 **ガイダンス**: 多要素認証が構成されている PAW を使用して、運用環境で Azure Automation アカウント リソースにログインして構成します。
 
-* [特権アクセス ワークステーションについて](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -556,7 +556,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 * [Azure での転送中の暗号化の概要](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Azure Automation の TLS 1.2 の適用](https://azure.microsoft.com/updates/azure-automation-tls12-enforcement/)
+* [Azure Automation の TLS 1.2 の適用](/azure/active-directory/hybrid/reference-connect-tls-enforcement)
 
 **Azure Security Center の監視**: はい
 

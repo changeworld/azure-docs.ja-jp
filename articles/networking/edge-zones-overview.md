@@ -2,17 +2,17 @@
 title: Azure Edge Zone プレビューについて
 description: 'Microsoft の次のエッジ コンピューティング オファリングについて説明します: Azure Edge Zone。'
 services: vnf-manager
-author: ganesr
+author: cherylmc
 ms.service: vnf-manager
 ms.topic: article
-ms.date: 07/07/2020
-ms.author: ganesr
-ms.openlocfilehash: 68aa3342ab09be73a82f4f896ffdff99d15a5350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/13/2021
+ms.author: cherylmc
+ms.openlocfilehash: 04555303d5128db6c183d27a0c5fcb69063fdc28
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329576"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185412"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Azure Edge Zone プレビューについて
 
@@ -38,7 +38,7 @@ Edge Zone の一般的なユース ケース シナリオは次のとおりで�
 
 ![Azure Edge Zone](./media/edge-zones-overview/edge-zones.png "Azure Edge Zone")
 
-Azure Edge Zone は、Azure リージョンから遠く離れた人口密集地に配置される、占有領域の小さい Azure の拡張機能です。 Azure Edge Zone では、VM、コンテナー、選択された Azure サービスのセットがサポートされ、待機時間の影響を受けやすくスループットの大きいアプリケーションをエンド ユーザーの近くで実行できます。 Azure Edge Zone は、Microsoft のグローバル ネットワークの一部です。 ユーザーに近いエッジゾーンで実行されるアプリケーション間に、セキュリティで保護された信頼性の高い高帯域幅の接続が提供されます。 また、Azure リージョン内で実行されている Azure サービスの完全なセットが提供されます。 Azure Edge Zone は、Microsoft によって所有および運営されています。 同じ Azure ツールのセットおよび同じポータルを使用して、Edge Zone を管理し、Edge Zone にサービスをデプロイすることができます。
+Azure Edge Zone は、Azure リージョンから遠く離れた人口密集地に配置される、占有領域の小さい Azure の拡張機能です。 Azure Edge Zone では、VM、コンテナー、選択された Azure サービスのセットがサポートされ、待機時間の影響を受けやすくスループットの大きいアプリケーションをエンド ユーザーの近くで実行できます。 Azure Edge Zone は、Microsoft のグローバル ネットワークの一部です。 ユーザーに近いエッジゾーンで実行されるアプリケーション間に、セキュリティで保護された信頼性の高い高帯域幅の接続が提供されます。 Azure Edge Zone は、Microsoft によって所有および運営されています。 同じ Azure ツールのセットおよび同じポータルを使用して、Edge Zone を管理し、Edge Zone にサービスをデプロイすることができます。
 
 一般的なユース ケースは次のとおりです。
 
@@ -61,7 +61,7 @@ Azure Edge Zone は次の都市部で利用することができます。
 
 Azure Edge Zone with Carrier は、人口密集地にある携帯電話会社のデータセンター内に配置される、占有領域の小さい Azure の拡張機能です。 Azure Edge Zone with Carrier のインフラストラクチャは、携帯電話会社の 5G ネットワークから 1 ホップ離れた場所に配置されます。 この配置により、モバイル デバイスからアプリケーションに対して 10 ミリ秒未満の待機時間が実現されます。
 
-Azure Edge Zone with Carrier は携帯電話会社のデータセンターにデプロイされ、Microsoft のグローバル ネットワークに接続されます。 ユーザーの近くで実行されるアプリケーション間に、セキュリティで保護された信頼性の高い高帯域幅の接続が提供されます。 また、Azure リージョン内で実行されている Azure サービスの完全なセットが提供されます。 開発者は使い慣れた同じツール セットを使用してサービスを構築し、Edge Zone にデプロイすることができます。
+Azure Edge Zone with Carrier は携帯電話会社のデータセンターにデプロイされ、Microsoft のグローバル ネットワークに接続されます。 ユーザーの近くで実行されるアプリケーション間に、セキュリティで保護された信頼性の高い高帯域幅の接続が提供されます。 開発者は使い慣れた同じツール セットを使用してサービスを構築し、Edge Zone にデプロイすることができます。
 
 一般的なユース ケースは次のとおりです。
 

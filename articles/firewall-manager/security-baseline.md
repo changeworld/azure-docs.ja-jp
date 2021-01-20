@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d25fc8e0a42c8b79a5b1bfaa0d842c9927f58e43
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: eca243a9a83ad5d2bfa006b46499470cf06e808a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602803"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203033"
 ---
 # <a name="azure-security-baseline-for-azure-firewall-manager"></a>Azure Firewall Manager 用の Azure セキュリティ ベースライン
 
@@ -210,7 +210,7 @@ Azure Privileged Identity Management (PIM) を使用して、Azure リソース�
 
 **ガイダンス**:セキュリティで保護された分離したワークステーションは、管理者、開発者、重要なサービス オペレーターのような機密性の高い役割のセキュリティには非常に重要です。 運用環境の Azure Firewall Manager リソースに関する管理タスクを実行するために、高度なセキュリティで保護されたユーザー ワークステーションを使用します。 Azure Active Directory、Microsoft Defender Advanced Threat Protection (ATP)、または Microsoft Intune を使用して、管理タスクのためにセキュリティで保護されたマネージド ユーザー ワークステーションを展開します。 セキュリティで保護されたワークステーションを一元管理して、強力な認証、ソフトウェアとハードウェアのベースライン、制限された論理アクセスとネットワーク アクセスなどのセキュリティで保護された構成を実施できます。
 
-- [特権アクセス ワークステーションを理解する](../active-directory/devices/concept-azure-managed-workstation.md)
+- [特権アクセス ワークステーションを理解する](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [特権アクセス ワークステーションを展開する](../active-directory/devices/howto-azure-managed-workstation.md)
 

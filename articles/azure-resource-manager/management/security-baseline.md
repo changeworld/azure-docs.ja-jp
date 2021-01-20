@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d841d3b922a5edd0257934566207187ae031c1b5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: b4f0c64abf150165e3239e78e8cf9b824b34eed6
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532178"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202370"
 ---
 # <a name="azure-security-baseline-for-azure-resource-manager"></a>Azure Resource Manager 用の Azure セキュリティ ベースライン
 
@@ -131,7 +131,7 @@ ms.locfileid: "96532178"
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
-**ガイダンス**: Azure Active Directory Multi-Factor Authentication を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
+**ガイダンス**:Azure Active Directory Multi-Factor Authentication を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
 
 - [Azure で MFA を有効にする方法](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -145,7 +145,7 @@ ms.locfileid: "96532178"
 
 **ガイダンス**:高度な特権を必要とする管理タスクには、セキュリティで保護された Azure マネージド ワークステーション (特権アクセス ワークステーション (PAW) とも呼ばれます) を使用します。
 
-- [セキュリティで保護された Azure マネージド ワークステーションを理解する](../../active-directory/devices/concept-azure-managed-workstation.md)
+- [セキュリティで保護された Azure マネージド ワークステーションを理解する](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Azure AD MFA を有効にする方法](../../active-directory/authentication/howto-mfa-getstarted.md)
 

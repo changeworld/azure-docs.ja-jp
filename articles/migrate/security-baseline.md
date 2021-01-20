@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 271812320b60daa8f975ed31b328fa143ec0feb3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: ab4aa149672e77c3d67eef50b3814d61cd67c0bc
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094235"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202421"
 ---
 # <a name="azure-security-baseline-for-azure-migrate"></a>Azure Migrate の Azure セキュリティ ベースライン
 
@@ -180,7 +180,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 **ガイダンス**:セキュリティで保護された分離したワークステーションは、管理者、開発者、重要なサービス オペレーターのような機密性の高い役割のセキュリティには非常に重要です。 管理タスクに高度にセキュリティ保護されたユーザー ワークステーションや Azure Bastion を使用します。 Azure Active Directory、Microsoft Defender Advanced Threat Protection (ATP)、または Microsoft Intune を使用して、管理タスクのためにセキュリティで保護されたマネージド ユーザー ワークステーションを展開します。 セキュリティで保護されたワークステーションを一元管理して、強力な認証、ソフトウェアとハードウェアのベースライン、制限された論理アクセスとネットワーク アクセスなどのセキュリティで保護された構成を実施できます。
 
-- [特権アクセス ワークステーションを理解する](../active-directory/devices/concept-azure-managed-workstation.md) 
+- [特権アクセス ワークステーションを理解する](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
 - [特権アクセス ワークステーションを展開する](../active-directory/devices/howto-azure-managed-workstation.md)
 

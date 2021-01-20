@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
 ms.custom: devx-track-js
-ms.openlocfilehash: c49672ad38ac8cf80214d03870b5876d741e76ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f9e8cdd3eb5c9f441444683fb5efaccc880b2757
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994878"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184613"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Visual Studio Mobile Center で Real User Measurements を Traffic Manager に送信する方法
 
@@ -52,7 +52,7 @@ Azure Portal を使用して RUM キーを取得するには、次の手順を�
 
 ## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>手順 2: Mobile Center SDK の RUM パッケージでアプリをインストルメント化する
 
-Visual Studio Mobile Center を初めてご利用になる場合は、[Web サイト](https://mobile.azure.com)を参照してください。 SDK 統合手順の詳細については、「[Getting Started with the Android SDK (Android SDK の概要)](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android)」を参照してください。
+Visual Studio Mobile Center を初めてご利用になる場合は、[Web サイト](https://mobile.azure.com)を参照してください。 SDK 統合手順の詳細については、「[Getting Started with the Android SDK (Android SDK の概要)](/mobile-center/sdk/getting-started/Android)」を参照してください。
 
 Real User Measurements を使用するには、次の手順を実行します。
 
@@ -98,8 +98,7 @@ Real User Measurements を使用するには、次の手順を実行します。
 ## <a name="next-steps"></a>次のステップ
 - [Real User Measurements](traffic-manager-rum-overview.md) について確認する
 - [Traffic Manager のしくみ](traffic-manager-overview.md)
-- [Mobile Center](https://docs.microsoft.com/mobile-center/) について確認する
+- [Mobile Center](/mobile-center/) について確認する
 - Mobile Center に[サインアップ](https://mobile.azure.com)する
 - Traffic Manager でサポートされている [トラフィック ルーティング方法](traffic-manager-routing-methods.md) の詳細を確認する。
-- [Traffic Manager プロファイルの作成](traffic-manager-create-profile.md)
-
+- [Traffic Manager プロファイルの作成](./quickstart-create-traffic-manager-profile.md)

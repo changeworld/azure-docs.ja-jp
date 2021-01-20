@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bf249046a30e023a2d7b596fb6424c7005c2a875
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 997e2c6fc92fd1c6b08b1b4d35eacd894f63d822
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841939"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202761"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Azure Sentinel の Azure セキュリティ ベースライン
 
@@ -165,9 +165,9 @@ ms.locfileid: "94841939"
 
 **ガイダンス**:Azure AD Multi-Factor Authentication (MFA) が有効な特権アクセス ワークステーション (PAW) を使用してログインし、Azure Sentinel 対応リソースを構成します。 
 
-- [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations) (Privileged Access Workstation)
+- [Privileged Access Workstations](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) (Privileged Access Workstation)
 
-- [クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
+- [クラウドベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -181,7 +181,7 @@ ms.locfileid: "94841939"
 
 - [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
+- [Azure AD のリスク検出について](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: はい
 

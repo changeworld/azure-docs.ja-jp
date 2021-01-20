@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a23a177945316bca89aa5cbcc46f840213dbe832
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cd81139c15e6bba65fe9b9a53a2e8e950ebd754b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964815"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201758"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>Azure の SAP HANA (L インスタンス) のアーキテクチャ
 
@@ -43,7 +43,7 @@ SAP HANA on Azure (L インスタンス) の全体的なアーキテクチャで
    Azure での実行がサポートされている SAP NetWeaver アプリケーションおよびデータベースについては、次を参照してください。「[SAP Support Note #1928533 – SAP applications on Azure: Supported products and Azure VM types (SAP サポート ノート #1928533 - Azure 上の SAP アプリケーション: サポート対象の製品と Azure VM の種類)](https://launchpad.support.sap.com/#/notes/1928533)」。 Azure で SAP ソリューションをデプロイする方法については、次のドキュメントをご覧ください。
 
   -  [Windows 仮想マシンにおける SAP の使用](./get-started.md?toc=/azure/virtual-machines/linux/toc.json)
-  -  [Azure 仮想マシンにおける SAP ソリューションの使用](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  -  [Azure 仮想マシンにおける SAP ソリューションの使用](get-started.md)
 
 - **左**: Azure L インスタンス スタンプの SAP HANA TDI 認定ハードウェアを示します。 HANA L インスタンス ユニットは、オンプレミスから Azure への接続と同じテクノロジを使用して、Azure サブスクリプションの仮想ネットワークに接続されます。 2019 年 5 月の時点では、ExpressRoute ゲートウェイの関与なしに HANA L インスタンス ユニットと Azure VM の間の通信を可能にする最適化が導入されています。 ExpressRoute Fast Path と呼ばれるこの最適化は、このアーキテクチャに表示されています (赤い線)。 
 

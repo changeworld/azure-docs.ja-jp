@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: acdddcd95883d13393838a47281fb888ac2f9274
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 26ef07269c9451c2e9d05d42e2247fbfcdae4844
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500395"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201962"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンス用に設計する
 
@@ -230,7 +230,7 @@ IOPS の上限は、VM あたりとディスクあたりで異なり、互いに
 
 *Linux ディストリビューション*  
 
-Azure Premium Storage を使用すると、Windows を実行する VM と Linux を実行する VM で同レベルのパフォーマンスが得られます。 さまざまな Linux ディストリビューションがサポートされています。リストについては、[こちら](linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。 ワークロードの種類によって、適しているディストリビューションが異なることに注意してください。 パフォーマンスのレベルは、ワークロードが実行されるディストリビューションによって異なります。 アプリケーションで Linux ディストリビューションをテストし、最適なディストリビューションを選択します。
+Azure Premium Storage を使用すると、Windows を実行する VM と Linux を実行する VM で同レベルのパフォーマンスが得られます。 さまざまな Linux ディストリビューションがサポートされています。リストについては、[こちら](linux/endorsed-distros.md)をご覧ください。 ワークロードの種類によって、適しているディストリビューションが異なることに注意してください。 パフォーマンスのレベルは、ワークロードが実行されるディストリビューションによって異なります。 アプリケーションで Linux ディストリビューションをテストし、最適なディストリビューションを選択します。
 
 Premium Storage で Linux を実行するときは、高パフォーマンスを確保するために、必要なドライバーについて最新の更新プログラムを確認してください。
 

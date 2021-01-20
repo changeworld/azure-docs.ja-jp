@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f56118750fc980c249c88b796728f4ecb2641a88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83c054a9e2dd829dbfb34a3873f06332e504b832
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86510958"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201197"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>SCP を使用して Linux VM とファイルをやり取りする
 
 この記事では、Secure Copy (SCP) を使用して、ワークステーションと Azure Linux VM 間でファイルをやり取りする方法を説明します。 Azure インフラストラクチャの管理においては、ワークステーションと Linux VM の間でファイルを安全かつ迅速にやり取りできることが重要です。 
 
-この記事では、[SSH の公開キー ファイルおよび秘密キー ファイル](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して Azure にデプロイされた Linux VM が必要です。 また、ローカル コンピューター用の SCP クライアントも必要です。 SSH 上に構築されており、ほとんどの Linux および Mac のコンピューターの既定の Bash シェルと、一部の Windows シェルに含まれています。
+この記事では、[SSH の公開キー ファイルおよび秘密キー ファイル](mac-create-ssh-keys.md)を使用して Azure にデプロイされた Linux VM が必要です。 また、ローカル コンピューター用の SCP クライアントも必要です。 SSH 上に構築されており、ほとんどの Linux および Mac のコンピューターの既定の Bash シェルと、一部の Windows シェルに含まれています。
 
 ## <a name="quick-commands"></a>クイック コマンド
 
@@ -43,7 +43,7 @@ scp azureuser@azurehost:directory/file targetfile
 
 SCP は、トランスポート層に SSH を使用します。 SSH は転送先のホストで認証を処理し、SSH に既定で備わっている暗号化されたトンネルでファイルを移動します。 SSH 認証に、ユーザー名とパスワードを使用できます。 ただし、セキュリティのベスト プラクティスとして、SSH 公開キー認証および秘密キー認証をお勧めします。 SSH によって接続が認証されると、SCP がファイルのコピーを開始します。 適切に構成された `~/.ssh/config` と SSH 公開キーおよび秘密キーを使用することによって、(IP アドレスの) サーバー名のみを使用して SCP 接続を確立できます。 SSH キーが 1 つしかない場合は、SCP が `~/.ssh/` ディレクトリでキーを探し、既定で VM へのログインに使用します。
 
-`~/.ssh/config` と SSH 公開キーと秘密キーの構成方法について詳しくは、[SSH キーの作成](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
+`~/.ssh/config` と SSH 公開キーと秘密キーの構成方法について詳しくは、[SSH キーの作成](mac-create-ssh-keys.md)に関する記事をご覧ください。
 
 ## <a name="scp-a-file-to-a-linux-vm"></a>Linux VM へのファイルの SCP
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 043a2481647076abb5a6e242ffa2ea8b3f282c4d
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 99c02644649e133a7634418a5edaaf228d52f0d3
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637168"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201282"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 用の Azure セキュリティ ベースライン
 
@@ -352,7 +352,7 @@ Azure Security Center 内で ID とアクセスを監視する方法: https://do
 
 **ガイダンス**: MFA が構成されている PAW (特権アクセス ワークステーション) を使用して Azure リソースにログインし、構成します。
 
-特権アクセス ワークステーションについて: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+特権アクセス ワークステーションについて: https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/
 
 Azure で MFA を有効にする方法: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
@@ -876,7 +876,7 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11:Azure シークレットを安全に管理する
 
-**ガイダンス**: Azure Database for MariaDB サーバーへのアクセスに使用される Azure App Service で実行されている Azure Virtual Machines または Web アプリケーションの場合は、マネージド サービス ID を Azure Key Vault と組み合わせて使用して、Azure Database for MariaDB サーバー シークレットの管理を簡素化およびセキュリティで保護します。 Key Vault の論理的な削除を確実に有効にします。
+**ガイダンス**: Azure Database for MariaDB サーバーへのアクセスに使用される Azure App Service で実行されている Azure Virtual Machines または Web アプリケーションの場合は、マネージド サービス ID を Azure Key Vault と組み合わせて使用して、Azure Database for MariaDB サーバー シークレットの管理を簡素化およびセキュリティで保護します。 Key Vault の論理的な削除が有効になっていることを確認します。
 
 Azure マネージド ID と統合する方法: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 

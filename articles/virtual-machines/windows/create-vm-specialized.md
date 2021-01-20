@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: cddc7f4f453f22b0cb36b1d3a1e9c2fba2dcabaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 577b8527d95a6410deca8002cddfaae31be1fc97
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455100"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197491"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>PowerShell を使用して特殊化されたディスクから Windows VM を作成する
 
@@ -54,7 +54,7 @@ Hyper-V などのオンプレミスの仮想化ツールを使用して作成さ
 ### <a name="prepare-the-vm"></a>VM を準備する
 VHD をそのまま使用して新しい VM を作成します。 
   
-  * [Windows VHD の Azure へのアップロードの準備](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 Sysprep を使用して VM を一般化 **しないでください**。
+  * [Windows VHD の Azure へのアップロードの準備](prepare-for-upload-vhd-image.md)。 Sysprep を使用して VM を一般化 **しないでください**。
   * VM にインストールされたゲストの仮想化ツールやエージェント (VMware ツールなど) を削除します。
   * IP アドレスと DNS 設定を DHCP から取得するように VM が構成されていることを確認します。 これにより、サーバーが起動時に仮想ネットワーク内の IP アドレスを確実に取得します。 
 
@@ -193,7 +193,7 @@ $nsg = New-AzNetworkSecurityGroup `
     
 ```
 
-エンドポイントと NSG 規則の詳細については、[PowerShell を使用した Azure の VM へのポートの開放](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+エンドポイントと NSG 規則の詳細については、[PowerShell を使用した Azure の VM へのポートの開放](nsg-quickstart-powershell.md)に関するページを参照してください。
 
 ### <a name="create-a-public-ip-address-and-nic"></a>パブリック IP アドレスと NIC の作成
 仮想ネットワークでの仮想マシンとの通信を有効にするには、[パブリック IP アドレス](../../virtual-network/public-ip-addresses.md)とネットワーク インターフェイスが必要です。

@@ -3,15 +3,15 @@ title: Azure Monitor のコンテナー監視ソリューション | Microsoft D
 description: Azure Monitor のコンテナー監視ソリューションを使用すると、Docker と Windows のコンテナー ホストを 1 か所で表示して管理できます。
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 07/06/2020
-ms.openlocfilehash: a02ea022bedd92e9deaa0730cc1be051a9d20c88
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 483113fc508800eb126ee39f146c1fa34e5dba5e
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145686"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165707"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Monitor のコンテナー監視ソリューション
 
@@ -116,7 +116,7 @@ Windows を実行しているコンピューターに Docker エンジンをイ�
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Linux コンテナー ホストをインストールして構成する
 
-Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 まず、Log Analytics のワークスペース ID とキーが必要です。これらは Azure Portal 上で見つけることができます。 ワークスペースで **[クイック スタート]**  >  **[コンピューター]** をクリックして、 **ワークスペース ID** と **主キー** を表示します。  両方をコピーしてお使いのエディターに貼り付けます。
+Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 まず、Log Analytics のワークスペース ID とキーが必要です。これらは Azure Portal 上で見つけることができます。 ワークスペースで **[クイック スタート]**  >  **[コンピューター]** をクリックして、**ワークスペース ID** と **主キー** を表示します。  両方をコピーしてお使いのエディターに貼り付けます。
 
 **CoreOS を除くすべての Linux コンテナー ホスト**
 
@@ -513,7 +513,7 @@ Windows および Hyper-V コンテナーの監視を有効にするには、コ
 
 Service Fabric で実行されている Windows コンテナーを監視できます。 ただし、現在 Service Fabric でサポートされているのは、[Azure で実行される仮想マシン](../learn/quick-collect-azurevm.md)と[オンプレミス環境で Windows を実行するコンピューター](../platform/agent-windows.md)のみです。
 
-Windows でコンテナー監視ソリューションが正しく設定されていることを確認できます。 管理パックが正常にダウンロードされているかどうかを確認するには、 *ContainerManagement.xxx* を探します。 ファイルは C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs フォルダーにあります。
+Windows でコンテナー監視ソリューションが正しく設定されていることを確認できます。 管理パックが正常にダウンロードされているかどうかを確認するには、*ContainerManagement.xxx* を探します。 ファイルは C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs フォルダーにあります。
 
 ## <a name="solution-components"></a>ソリューションのコンポーネント
 
@@ -620,7 +620,7 @@ Log Analytics が開き、コンテナーの状態に関する情報が表示さ
 
 ### <a name="to-query-logs-for-container-data"></a>コンテナー データのログをクエリするには
 
-* 最近失敗したことがわかっているイメージを選択し、そのエラー ログを見つけます。 まず、 **ContainerInventory** 検索で、そのイメージを実行しているコンテナー名を特定します。 たとえば、`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"` を検索します。  
+* 最近失敗したことがわかっているイメージを選択し、そのエラー ログを見つけます。 まず、**ContainerInventory** 検索で、そのイメージを実行しているコンテナー名を特定します。 たとえば、`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"` を検索します。  
     ![Ubuntu コンテナーの検索](./media/containers/search-ubuntu.png)
 
   結果内の任意の行を展開すると、そのコンテナーの詳細が表示されます。

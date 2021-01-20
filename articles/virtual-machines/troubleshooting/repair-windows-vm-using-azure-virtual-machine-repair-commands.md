@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 82bebcbda3110d51ae72df1fb4b18fedaa6c2f4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7763c1d856a09acf2523a7073c3d300be6b70b37
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597702"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200704"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Azure 仮想マシンの修復コマンドを使用して Windows VM を修復する
 
@@ -60,7 +60,7 @@ Azure VM の修復コマンドを使用して VM の OS ディスクを変更で
 
    CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.30 以降が必要です。 バージョンを確認するには、``az --version`` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
    
-   現在 Azure portal にログインしているアカウントとは別のアカウントを使用して Cloud Shell にログインする必要がある場合は、``az login`` [az login reference](/cli/azure/reference-index?view=azure-cli-latest#az-login&preserve-view=true) を使用できます。  アカウントに関連付けられているサブスクリプションを切り替えるには、``az account set --subscription`` [az account set reference](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) を使用できます。
+   現在 Azure portal にログインしているアカウントとは別のアカウントを使用して Cloud Shell にログインする必要がある場合は、``az login`` [az login reference](/cli/azure/reference-index#az-login&preserve-view=true) を使用できます。  アカウントに関連付けられているサブスクリプションを切り替えるには、``az account set --subscription`` [az account set reference](/cli/azure/account#az-account-set&preserve-view=true) を使用できます。
 
 2. `az vm repair` コマンドを初めて使用する場合は、VM 修復 CLI 拡張機能を追加します。
 
@@ -86,7 +86,7 @@ Azure VM の修復コマンドを使用して VM の OS ディスクを変更で
    az vm repair run -g MyResourceGroup -n MyVM --run-on-repair --run-id win-hello-world --verbose
    ```
    
-   必要に応じて、修復 VM を使用して必要な手動のリスク軽減ステップを実行してから、手順 5. に進みます。
+   必要に応じて、修復 VM を使用して必要な手動のリスク軽減ステップを実行してから、手順 5 に進みます。
 
 5. `az vm repair restore` を実行します。 このコマンドでは、修復された OS ディスクが VM の元の OS ディスクとスワップされます。 ここで使用されるリソース グループと VM の名前は、手順 3 で使用された機能していない VM 用です。
 
