@@ -59,7 +59,7 @@
       items:
         - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: Visual Studio
+        - name: "Visual\_Studio"
           href: functions-add-output-binding-storage-queue-vs.md
         - name: コマンド ライン
           href: functions-add-output-binding-storage-queue-cli.md
@@ -413,8 +413,6 @@
           href: ./functions-create-vnet.md
         - name: Open API 2.0 定義の作成
           href: ./functions-openapi-definition.md
-        - name: PowerApps および Microsoft Flow にエクスポートする
-          href: app-service-export-api-to-powerapps-and-flow.md
         - name: マネージド ID の使用
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: HTTP 関数エンドポイントのカスタマイズ

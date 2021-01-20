@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6c4f23406c97d647002fbb3ab4a3544866303cf4
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 6f74f973abc33d809624bd8abd5a514a52ccfe70
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051345"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602698"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>データを処理するために Azure の関数アプリを接続する
 
@@ -63,24 +63,20 @@ SDK を使用するには、次のパッケージをプロジェクトに含め�
 これを行うには、プロジェクトを右クリックし、一覧から _[NuGet パッケージの管理]_ を選択します。 次に、開いたウィンドウで _[参照]_ タブを選択し、次のパッケージを検索します。 _[インストール]_ を選択し、使用許諾契約に "_同意_" してパッケージをインストールします。
 
 * `Azure.DigitalTwins.Core`
-* `Azure.Identity` 
-
-Azure Functions が適切に設定されるように Azure SDK パイプラインを構成するには、以下のパッケージも必要です。 上記と同じ手順を繰り返して、すべてのパッケージをインストールします。
-
+* `Azure.Identity`
 * `System.Net.Http`
-* `Azure.Core.Pipeline`
+* `Azure.Core`
 
 **オプション 2: `dotnet` コマンドライン ツールを使用してパッケージを追加する:**
 
 または、コマンド ライン ツールで次の `dotnet add` コマンドを使用することもできます。
-```cmd/sh
-dotnet add package System.Net.Http
-dotnet add package Azure.Core.Pipeline
-```
 
-次に、Azure Digital Twins を操作するために必要な依存関係をさらに 2 つプロジェクトに追加します。 以下のリンクを使用すると、NuGet のパッケージに移動できます。そこでコンソール コマンド (.NET CLI を含む) を見つけて、それぞれの最新バージョンをプロジェクトに追加できます。
- * [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core)。 これは、[.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) のパッケージです。
- * [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity)。 このライブラリでは、Azure に対する認証を支援するツールが提供されます。
+```cmd/sh
+dotnet add package Azure.DigitalTwins.Core
+dotnet add package Azure.Identity
+dotnet add package System.Net.Http
+dotnet add package Azure.Core
+```
 
 次に、Visual Studio のソリューション エクスプローラーで、サンプル コードが含まれる _function.cs_ ファイルを開きます。その関数に _using_ ステートメントを追加します。 
 

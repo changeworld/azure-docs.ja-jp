@@ -1,5 +1,5 @@
 ---
-title: VM からイメージを作成する (プレビュー)
+title: VM からイメージを作成する
 description: Azure PowerShell を使用し、Azure の既存 VM から Shared Image Gallery にイメージを作成する方法について説明します。
 author: cynthn
 ms.topic: how-to
@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3a7ca8236307bbf8a419d2988e1a6dc1e4c40597
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1a0bfb79b03b778696faef29597cabbcff47e6df
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964866"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601664"
 ---
-# <a name="preview-create-an-image-from-a-vm"></a>プレビュー:VM からイメージを作成する
+# <a name="create-an-image-from-a-vm"></a>VM からイメージを作成する
 
 既存の VM を使用し、同じ VM を複数作成する場合、Azure PowerShell を利用し、その VM から Shared Image Gallery にイメージを作成できます。 [Azure CLI](image-version-vm-cli.md) を利用して VM からイメージを作成することもできます。
 

@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
-ms.openlocfilehash: c5f8be87e7ee95e1deff12cce09204b5fe8a0bb7
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 2cc37cc66c06dc9e6997c6a031a9c60ad050c01a
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694189"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601767"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>カスタム コマンドを使用して音声アシスタントを作成する
 
-このクイックスタートでは、Speech Studio を使用して基本的なカスタム コマンド アプリケーションを作成してテストします。 また、Windows クライアント アプリからこのアプリケーションにアクセスすることもできます。 **カスタム コマンド** を使用すると、音声優先の対話操作を行うために最適化された、リッチな音声コマンド処理アプリを簡単に構築できます。 これにより、統一された作成エクスペリエンス、自動ホスティング モデル、比較的低い複雑性が実現し、音声コマンドのシナリオに最適なソリューションの構築に専念できるようになります。
+このクイックスタートでは、Speech Studio を使用して基本的なカスタム コマンド アプリケーションを作成してテストします。 また、Windows クライアント アプリからこのアプリケーションにアクセスすることもできます。
 
 ## <a name="region-availability"></a>利用可能なリージョン
 現時点では、カスタム コマンドは、次のリージョンで作成された音声サブスクリプションをサポートしています。

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: e50d7aba5cc5b3d5d620d844cc9ad169ad8b3bf6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6f2dfdbb5833b34441b4abba7359ad70c4717d1d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025893"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602151"
 ---
 # <a name="set-up-web-endpoints"></a>Web エンドポイントを設定する
 
@@ -23,7 +23,7 @@ ms.locfileid: "95025893"
 
 - カスタム コマンド アプリケーションで Web エンドポイントを設定する
 - カスタム コマンド アプリケーションで Web エンドポイントを呼び出す
-- Web エンドポイントの応答を受信する 
+- Web エンドポイントの応答を受信する
 - Web エンドポイントの応答をカスタム JSON ペイロードに統合し、C# UWP Speech SDK クライアント アプリケーションからそれを送信して視覚化する
 
 ## <a name="prerequisites"></a>前提条件
@@ -35,7 +35,7 @@ ms.locfileid: "95025893"
 
 ## <a name="setup-web-endpoints"></a>Web エンドポイントを設定する
 
-1. 前に作成したカスタム コマンド アプリケーションを開きます。 
+1. 前に作成したカスタム コマンド アプリケーションを開きます。
 1. [Web エンドポイント] に移動し、[New web endpoint]\(新しい Web エンドポイント\) をクリックします。
 
    > [!div class="mx-imgBorder"]
@@ -61,7 +61,7 @@ ms.locfileid: "95025893"
 1. **TurnOnOff** コマンドにアクセスし、完了ルールの **[ConfirmationResponse]** を選択してから、 **[アクションの追加]** を選択します。
 1. **[新しいアクションの種類]** で、 **[Call Web Endpoint]\(Web エンドポイントの呼び出し\)** を選択します。
 1. **[アクションの編集] - [エンドポイント]** で、作成済みの Web エンドポイントである **[UpdateDeviceState]** を選択します。  
-1. **[構成]** で、次の値を入力します。 
+1. **[構成]** で、次の値を入力します。
    > [!div class="mx-imgBorder"]
    > ![Web エンドポイント アクション パラメーターの呼び出し](media/custom-commands/setup-web-endpoint-edit-action-parameters.png)
 
@@ -75,16 +75,16 @@ ms.locfileid: "95025893"
     > - 提案されたクエリ パラメーターは、エンドポイントの例にのみ必要です
 
 1. **[成功時] - [実行するアクション]** で、 **[Send speech response]\(音声応答の送信\)** を選択します。
-    
+
     **[シンプルなエディター]** に「`{SubjectDevice} is {OnOff}`」と入力します。
-   
+
    > [!div class="mx-imgBorder"]
    > ![[成功時] - [実行するアクション] 画面を示すスクリーンショット。](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
    | 設定 | 推奨値 | 説明 |
    | ------- | --------------- | ----------- |
    | 実行するアクション | Send speech response (音声応答の送信) | Web エンドポイントへの要求が成功した場合に実行するアクション |
-   
+
    > [!NOTE]
    > - `{YourWebEndpointName.FieldName}` を使用すれば、http 応答内のフィールドに直接アクセスすることもできます。 例: `{UpdateDeviceState.TV}`
 
@@ -101,7 +101,7 @@ ms.locfileid: "95025893"
 
    > [!NOTE]
    > - `{WebEndpointErrorMessage}` はオプションです。 これは、エラー メッセージを公開したくない場合、自由に削除できます。
-   > - このエンドポイントの例では、ヘッダー パラメーターの欠落などの一般的なエラーの場合、詳細なエラー メッセージと共に http 応答を返送します。 
+   > - このエンドポイントの例では、ヘッダー パラメーターの欠落などの一般的なエラーの場合、詳細なエラー メッセージと共に http 応答を返送します。
 
 ### <a name="try-it-out-in-test-portal"></a>テスト ポータルで試してみる
 - 成功時の応答\
@@ -119,7 +119,7 @@ ms.locfileid: "95025893"
 ただし、ほとんどの場合、クライアント アプリケーションにアクティビティを送信する必要があるのは、Web エンドポイントへの呼び出しが成功したときのみです。 この例で、それはデバイスの状態が正常に更新されたときとなります。
 
 1. 前に追加した **[クライアントへのアクティビティの送信]** アクションを削除します。
-1. Web エンドポイントの呼び出しを次のように編集します。 
+1. Web エンドポイントの呼び出しを次のように編集します。
     1. **[構成]** で、 **[クエリ パラメーター]** が `item={SubjectDevice}&&value={OnOff}` になっていることを確認する
     1. **[成功時]** の **[実行するアクション]** を **[クライアントへのアクティビティの送信]** に変更する
     1. 以下の JSON を **[Activity Content]\(アクティビティ コンテンツ\)** にコピーする
@@ -133,7 +133,6 @@ ms.locfileid: "95025893"
       }
     }
    ```
-   
 これで、Web エンドポイントへの要求が成功した場合にのみ、アクティビティをクライアントに送信することになります。
 
 ### <a name="create-visuals-for-syncing-device-state"></a>デバイスの状態を同期するためのビジュアルを作成する
@@ -147,7 +146,7 @@ ms.locfileid: "95025893"
         .........../>
 ```
 
-### <a name="sync-device-state"></a>デバイスの状態の同期 
+### <a name="sync-device-state"></a>デバイスの状態の同期
 
 `MainPage.xaml.cs` 内に、参照 `using Windows.Web.Http;` を追加します。 次のコードを `MainPage` クラスに追加します。 このメソッドでは、エンドポイントの例に GET 要求が送信され、ご利用のアプリに対する現在のデバイス状態が抽出されます。 `<your_app_name>` を必ず、カスタム コマンド Web エンドポイントの **ヘッダー** で使用したものに変更してください。
 
@@ -157,7 +156,7 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
     //Create an HTTP client object
     var httpClient = new HttpClient();
 
-    //Add a user-agent header to the GET request. 
+    //Add a user-agent header to the GET request.
     var your_app_name = "<your-app-name>";
 
     Uri endpoint = new Uri("https://webendpointexample.azurewebsites.net/api/DeviceState");
