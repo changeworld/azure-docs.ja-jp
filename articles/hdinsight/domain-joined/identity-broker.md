@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: c6bc5ca748a35b17c61d314e96f7284d30e7fc3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b8dfe9a23e5c6697323142212156006cb65d2f9b
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338131"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556530"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID ブローカー (HIB)
 
@@ -126,9 +126,9 @@ HDInsight ツールは、OAuth をネイティブにサポートするように�
 
 HDInsight ID ブローカーのセットアップでは、ゲートウェイに接続するカスタム アプリやクライアントを、必要な OAuth トークンを最初に取得するように更新できます。 [こちらのドキュメント](../../storage/common/storage-auth-aad-app.md)の手順に従って、次の情報を含むトークンを取得します。
 
-*   OAuth リソース URI: `https://hib.azurehdinsight.net` 
+*    OAuth リソース URI: `https://hib.azurehdinsight.net` 
 *   アプリID: 7865c1d2-f040-46cc-875f-831a1ef6a28a
-*   アクセス許可: (名前: Cluster.ReadWrite、ID:8f89faa0-ffef-4007-974d-4989b39ad77d)
+*    アクセス許可: (名前: Cluster.ReadWrite、ID:8f89faa0-ffef-4007-974d-4989b39ad77d)
 
 OAuth トークンを取得した後、クラスター ゲートウェイへの HTTP 要求の Authorization ヘッダーでそれを使用します (例: https://<clustername>-int.azurehdinsight.net)。 Apache Livy API へのサンプル curl コマンドは次のようになります。
     
@@ -146,7 +146,7 @@ Beeline と Livy を使用する場合は、[こちら](https://github.com/Azure
 AAD では、ユーザーを認証したり、データにアクセスしたりする前に、すべてのサード パーティのアプリケーションに同意を求めます。
 
 ### <a name="can-the-consent-be-approved-programatically"></a>同意はプログラムによって承認できますか?
-Microsoft Graph API を使用すると、同意を自動化できます。[API のドキュメント](/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0)を参照してください。同意を自動化する順序は、以下のとおりです。
+Microsoft Graph API を使用すると、同意を自動化できます。[API のドキュメント](/graph/api/resources/oauth2permissiongrant)を参照してください。同意を自動化する順序は、以下のとおりです。
 
 * アプリを登録し、Microsoft Graph にアクセスするための Application.ReadWrite.All アクセス許可をそのアプリに付与します
 * クラスターが作成されたら、識別子 URI に基づいてクラスター アプリを照会します

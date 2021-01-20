@@ -4,16 +4,16 @@ description: オブジェクト (BLOB) ストレージ内にストレージ ア�
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 39b5a812c5f9b8e148b5180569af110c72e2c75b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b3bb8736eb7a8e24f47812fc4feecbf96628dfb6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544600"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599812"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>クイック スタート:Java v8 SDK で BLOB を管理する
 
@@ -201,5 +201,5 @@ sourceFile.deleteOnExit();
 この記事では、Java を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Java の使用方法の詳細については、GitHub のソース コード リポジトリを参照してください。
 
 > [!div class="nextstepaction"]
-> [Java API リファレンス](/java/api/overview/azure/storage?view=azure-java-legacy)
+> [Java API リファレンス](/java/api/overview/azure/storage?view=azure-java-legacy&preserve-view=true)
 > [Java 用のコード サンプル](../common/storage-samples-java.md)

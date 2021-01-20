@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/06/2020
+ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: a07898692c8af70fab0d2634ed1513f0f3666a4d
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 759759b67582b241d0bab1e043dd15e54a804faf
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505462"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251541"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>容量プールに関する問題のトラブルシューティング
 
@@ -34,9 +34,6 @@ ms.locfileid: "97505462"
 | ボリュームの作成または変更が `Requested throughput not available` エラーで失敗する | 1 つのボリュームで使用可能なスループットは、容量プールのサイズとサービス レベルによって決まります。 十分なスループットがない場合は、プール サイズを増やすか、既存のボリュームのスループットを調整する必要があります。 | 
 
 ## <a name="issues-when-changing-the-capacity-pool-of-a-volume"></a>ボリュームの容量プールを変更するときの問題 
-
-> [!IMPORTANT] 
-> 「[ボリュームのサービス レベルを動的に変更する](dynamic-change-volume-service-level.md)」のパブリック プレビュー登録は、通知があるまで保留中です。
 
 |     エラー状態    |     解像度    |
 |-|-|

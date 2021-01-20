@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 35d2073dca21b4a0d48a43bed9933bb7549cf8f3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d1325ac1afbca8b30cc640f1f22cb598506a5c91
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497896"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555714"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Azure Monitor を使用してデータ ファクトリの監視とアラート送信を行う
 
@@ -583,7 +583,7 @@ SSIS IR の開始/停止/メンテナンス操作のログの属性を次に示�
 
 #### <a name="ssis-event-message-context-log-attributes"></a>SSIS イベント メッセージ コンテキスト ログの属性
 
-SSIS IR での SSIS パッケージ実行により生成されるイベント メッセージに関連する条件のログの属性を次に示します。 これらは、多くの SSIS パッケージのプロパティの実行時の値を示す [SSIS カタログ (SSISDB) イベント メッセージ コンテキスト テーブルまたはビュー](/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`Basic/Verbose` ログ レベルを選択するときに生成されるもので、デバッグやコンプライアンス チェックに役立ちます。
+SSIS IR での SSIS パッケージ実行により生成されるイベント メッセージに関連する条件のログの属性を次に示します。 これらは、多くの SSIS パッケージのプロパティの実行時の値を示す [SSIS カタログ (SSISDB) イベント メッセージ コンテキスト テーブルまたはビュー](/sql/integration-services/system-views/catalog-event-message-context)と類似の情報を伝えます。 これらは、`Basic/Verbose` ログ レベルを選択するときに生成されるもので、デバッグやコンプライアンス チェックに役立ちます。
 
 ```json
 {
@@ -620,7 +620,7 @@ SSIS IR での SSIS パッケージ実行により生成されるイベント �
 | **operationId**            | String | SSISDB での特定の操作を追跡するための一意の ID          | `1` (1 は、SSISDB への格納/T-SQL による呼び出しが行われて **いない** パッケージに関連する操作を示します) |
 | **contextDepth**           | String | イベント メッセージ コンテキストの深さ                              | `0` (0 はパッケージの実行が開始される前のコンテキストを示し、1 はエラーが発生したときのコンテキストを示します。これは、コンテキストがエラーから離れていくにつれて増加します) |
 | **packagePath**            | String | イベント メッセージ コンテキストのソースとしてのパッケージ オブジェクトのパス      | `\Package` |
-| **contextType**            | String | イベント メッセージ コンテキストのソースとしてのパッケージ オブジェクトの種類      | `60`([その他のコンテキストの種類](/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)を参照) |
+| **contextType**            | String | イベント メッセージ コンテキストのソースとしてのパッケージ オブジェクトの種類      | `60`([その他のコンテキストの種類](/sql/integration-services/system-views/catalog-event-message-context#remarks)を参照) |
 | **contextSourceName**      | String | イベント メッセージ コンテキストのソースとしてのパッケージ オブジェクトの名前      | `MyPackage` |
 | **contextSourceId**        | String | イベント メッセージ コンテキストのソースとしてのパッケージ オブジェクトの一意の ID | `{E2CF27FB-EA48-41E9-AF6F-3FE938B4ADE1}` |
 | **propertyName**           | String | イベント メッセージ コンテキストのソースのパッケージ プロパティの名前   | `DelayValidation` |
@@ -629,7 +629,7 @@ SSIS IR での SSIS パッケージ実行により生成されるイベント �
 
 #### <a name="ssis-event-messages-log-attributes"></a>SSIS イベント メッセージ ログの属性
 
-SSIS IR での SSIS パッケージ実行により生成されるイベント メッセージのログの属性を次に示します。 これらは、イベント メッセージの詳細なテキスト/メタデータを示す [SSISDB イベント メッセージ テーブルまたはビュー](/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`None` 以外のすべてのログ レベルで生成されます。
+SSIS IR での SSIS パッケージ実行により生成されるイベント メッセージのログの属性を次に示します。 これらは、イベント メッセージの詳細なテキスト/メタデータを示す [SSISDB イベント メッセージ テーブルまたはビュー](/sql/integration-services/system-views/catalog-event-messages)と類似の情報を伝えます。 これらは、`None` 以外のすべてのログ レベルで生成されます。
 
 ```json
 {
@@ -669,8 +669,8 @@ SSIS IR での SSIS パッケージ実行により生成されるイベント �
 | **level**                  | String | 診断ログのレベル                                       | `Informational` |
 | **operationId**            | String | SSISDB での特定の操作を追跡するための一意の ID        | `1` (1 は、SSISDB への格納/T-SQL による呼び出しが行われて **いない** パッケージに関連する操作を示します) |
 | **messageTime**            | String | イベントメッセージが作成された時刻 (UTC 形式)          | `2017-06-28T21:00:27.3534352Z` |
-| **messageType**            | String | イベント メッセージの種類                                     | `70`([その他のメッセージ型](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)を参照) |
-| **messageSourceType**      | String | イベント メッセージ ソースの種類                              | `20`([その他のメッセージ ソースの種類](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)を参照) |
+| **messageType**            | String | イベント メッセージの種類                                     | `70`([その他のメッセージ型](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)を参照) |
+| **messageSourceType**      | String | イベント メッセージ ソースの種類                              | `20`([その他のメッセージ ソースの種類](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)を参照) |
 | **message**                | String | イベント メッセージのテキスト                                     | `MyPackage:Validation has started.` |
 | **packageName**            | String | 実行されたパッケージ ファイルの名前                             | `MyPackage.dtsx` |
 | **eventName**              | String | 関連する実行時イベントの名前                                 | `OnPreValidate` |
@@ -683,7 +683,7 @@ SSIS IR での SSIS パッケージ実行により生成されるイベント �
 
 #### <a name="ssis-executable-statistics-log-attributes"></a>SSIS 実行可能ファイル統計ログの属性
 
-SSIS IR での SSIS パッケージ実行により生成される実行可能ファイル統計ログの属性を次に示します。この場合の実行可能ファイルは、パッケージ制御フローのコンテナーまたはタスクです。 これらは、実行中の各実行可能ファイルとその繰り返しを 1 行で表示する [SSISDB 実行可能ファイル統計テーブルまたはビュー](/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`None` 以外のすべてのログ レベルで生成され、タスク レベルのボトルネックや障害を特定するのに役立ちます。
+SSIS IR での SSIS パッケージ実行により生成される実行可能ファイル統計ログの属性を次に示します。この場合の実行可能ファイルは、パッケージ制御フローのコンテナーまたはタスクです。 これらは、実行中の各実行可能ファイルとその繰り返しを 1 行で表示する [SSISDB 実行可能ファイル統計テーブルまたはビュー](/sql/integration-services/system-views/catalog-executable-statistics)と類似の情報を伝えます。 これらは、`None` 以外のすべてのログ レベルで生成され、タスク レベルのボトルネックや障害を特定するのに役立ちます。
 
 ```json
 {
@@ -727,7 +727,7 @@ SSIS IR での SSIS パッケージ実行により生成される実行可能フ
 
 #### <a name="ssis-execution-component-phases-log-attributes"></a>SSIS 実行コンポーネントのフェーズに関するログの属性
 
-SSIS IR での SSIS パッケージ実行により生成されるデータ フロー コンポーネントの実行時の統計情報に関するログの属性を次に示します。 これらは、すべての実行フェーズでデータ フロー コンポーネントによって費やされた時間を示す [SSISDB 実行コンポーネントのフェーズ テーブルまたはビュー](/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`Performance/Verbose` ログ レベルを選択するときに生成されるもので、データ フロー実行の統計情報をキャプチャするのに役立ちます。
+SSIS IR での SSIS パッケージ実行により生成されるデータ フロー コンポーネントの実行時の統計情報に関するログの属性を次に示します。 これらは、すべての実行フェーズでデータ フロー コンポーネントによって費やされた時間を示す [SSISDB 実行コンポーネントのフェーズ テーブルまたはビュー](/sql/integration-services/system-views/catalog-execution-component-phases)と類似の情報を伝えます。 これらは、`Performance/Verbose` ログ レベルを選択するときに生成されるもので、データ フロー実行の統計情報をキャプチャするのに役立ちます。
 
 ```json
 {
@@ -773,7 +773,7 @@ SSIS IR での SSIS パッケージ実行により生成されるデータ フ�
 
 #### <a name="ssis-execution-data-statistics-log-attributes"></a>SSIS 実行データの統計情報に関するログの属性
 
-データ フロー パイプラインの各区間を経由して上流から下流のコンポーネントに移動する、SSIS IR での SSIS パッケージ実行により生成されるデータ移動に関するログの属性を次に示します。 これらは、データ フロー タスクで移動されたデータの行数を示す [SSISDB 実行データの統計情報テーブルまたはビュー](/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`Verbose` ログ レベルを選択するときに生成されるもので、データ フロー スループットを計算するのに役立ちます。
+データ フロー パイプラインの各区間を経由して上流から下流のコンポーネントに移動する、SSIS IR での SSIS パッケージ実行により生成されるデータ移動に関するログの属性を次に示します。 これらは、データ フロー タスクで移動されたデータの行数を示す [SSISDB 実行データの統計情報テーブルまたはビュー](/sql/integration-services/system-views/catalog-execution-data-statistics)と類似の情報を伝えます。 これらは、`Verbose` ログ レベルを選択するときに生成されるもので、データ フロー スループットを計算するのに役立ちます。
 
 ```json
 {

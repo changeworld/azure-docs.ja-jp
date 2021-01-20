@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: fb0e56c5eeebb4f3a869feacb996d690ea7dde86
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e003d0121721838bd5ae038a3a8b4d1b8cd9d1eb
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124171"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573192"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk の制限
 
@@ -50,7 +50,7 @@ Azure Storage サービスの制限と共有、コンテナー、およびファ
 - *BlockBlob* 共有と *PageBlob* 共有に書き込まれる各ファイルは、それぞれブロック BLOB およびページ BLOB としてアップロードされます。
 - *BlockBlob* フォルダーと *PageBlob* フォルダーの下に作成される空のディレクトリ階層 (ファイルを含まない) はアップロードされません。
 - Azure へのデータのアップロード時にエラーが発生した場合は、ターゲット ストレージ アカウントにエラー ログが作成されます。 このエラー ログへのパスは、アップロードが完了するとポータルに表示されます。ログを確認して、是正措置を行うことができます。 アップロードしたデータを確認せずにソースからデータを削除しないでください。
-- データが Azure Files にアップロードされた場合、ファイル メタデータと NTFS のアクセス許可は保持されません。 たとえば、ファイルの*最後に変更された属性*は、データがコピーされるときに保持されません。
+- データが Azure Files にアップロードされた場合、ファイル メタデータと NTFS のアクセス許可は保持されません。 たとえば、ファイルの *最後に変更された属性* は、データがコピーされるときに保持されません。
 - マネージド ディスクを順に指定した場合は、以下の追加の考慮事項を確認してください。
 
     - 事前に作成されたすべてのフォルダーにわたり、また、すべての Data Box Disk にわたって 1 つのリソース グループ内で特定の名前を持つマネージド ディスクを 1 つだけ保持できます。 これは、事前に作成されたフォルダーにアップロードされた VHD は一意の名前でなければならないことを意味します。 指定した名前が、リソース グループ内の既存のマネージド ディスクと一致しないようにしてください。 VHD の名前が同じである場合、1 つの VHD のみがその名前を持つマネージド ディスクに変換されます。 その他の VHD は、ステージング ストレージ アカウントにページ BLOB としてアップロードされます。
@@ -76,7 +76,7 @@ Azure Storage サービスの制限と共有、コンテナー、およびファ
 | ブロック BLOB        | ~ 4.75 TiB                                                 |
 | ページ BLOB         | 8 TiB <br> (ページ BLOB 形式でアップロードするファイルには 512 バイトをアラインする必要があります。さもないと、アップロードは失敗します。 <br> VHD と VHDX の両方には 512 バイトがアラインされます。) |
 |Azure Files        | 1 TiB <br> 最大 共有のサイズは 5 TiB     |
-| マネージド ディスク     |4 TiB <br> サイズと制限の詳細については、以下をご覧ください。 <li>[マネージド ディスクのスケーラビリティ ターゲット](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
+| マネージド ディスク     |4 TiB <br> サイズと制限の詳細については、以下をご覧ください。 <li>[マネージド ディスクのスケーラビリティ ターゲット](../virtual-machines/disks-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 
 ## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure ブロック BLOB、ページ BLOB およびファイルの名前付け規則

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 86bff161e29384b10030ed3d524301f6dea6037e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: fb622bdb1d7aa485c421122cdfbd2493a32cf5db
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634166"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555664"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure Data Factory 内で SQL Server Integration Services (SSIS) と共に Azure SQL Managed Instance を使用する
 
@@ -41,7 +41,7 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
     - プライベート エンドポイント経由 (優先)
 
         1. Azure-SSIS IR が参加する仮想ネットワークを選択します。
-            - **サブネットが異なる** 、マネージド インスタンスと同じ仮想ネットワーク内部。
+            - **サブネットが異なる**、マネージド インスタンスと同じ仮想ネットワーク内部。
             - 仮想ネットワーク ピアリング経由 (グローバル VNet ピアリング制約のために同じリージョンに制限)、または仮想ネットワークと仮想ネットワークの間の接続を介した、マネージド インスタンスとは異なる仮想ネットワーク内部。
 
             SQL Managed Instance 接続の詳細については、[Azure SQL Managed Instance へのご自分のアプリケーションの接続](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app)に関するページをご覧ください。
@@ -54,7 +54,7 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
 
         - Azure-SSIS IR が仮想ネットワーク内にない場合 (優先)
 
-            Azure-SSIS IR からの受信トラフィックを許可するための **SQL Managed Instance の受信要件** 。
+            Azure-SSIS IR からの受信トラフィックを許可するための **SQL Managed Instance の受信要件**。
 
             | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 | Destination port range |
             |---|---|---|---|---|
@@ -64,15 +64,15 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
 
         - Azure-SSIS IR が仮想ネットワーク内部にある場合
 
-            SQL Managed Instance が Azure-SSIS IR でサポートされていないリージョンにあり、グローバル VNet ピアリングの制限のために VNet ピアリングを使用しない Azure-SSIS IR が仮想ネットワーク内部にあるという特別なシナリオがあります。 このシナリオでは、 **仮想ネットワーク内の Azure-SSIS IR** は、 **パブリック エンドポイント経由** で SQL Managed Instance に接続します。 以下のネットワーク セキュリティ グループ (NSG) ルールを使用して、SQL Managed Instance と Azure-SSIS IR 間のトラフィックを許可します。
+            SQL Managed Instance が Azure-SSIS IR でサポートされていないリージョンにあり、グローバル VNet ピアリングの制限のために VNet ピアリングを使用しない Azure-SSIS IR が仮想ネットワーク内部にあるという特別なシナリオがあります。 このシナリオでは、**仮想ネットワーク内の Azure-SSIS IR** は、**パブリック エンドポイント経由** で SQL Managed Instance に接続します。 以下のネットワーク セキュリティ グループ (NSG) ルールを使用して、SQL Managed Instance と Azure-SSIS IR 間のトラフィックを許可します。
 
-            1. Azure-SSIS IR からの受信トラフィックを許可するための **SQL Managed Instance の受信要件** 。
+            1. Azure-SSIS IR からの受信トラフィックを許可するための **SQL Managed Instance の受信要件**。
 
                 | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 |Destination port range |
                 |---|---|---|---|---|
                 |TCP|Azure-SSIS IR の静的 IP アドレス <br> 詳細については、[Azure-SSIS IR への独自のパブリック IP の使用](join-azure-ssis-integration-runtime-virtual-network.md#publicIP)に関するページをご覧ください。|*|VirtualNetwork|3342|
 
-             1. SQL Managed Instance への送信トラフィックを許可するための **Azure-SSIS IR の送信要件** 。
+             1. SQL Managed Instance への送信トラフィックを許可するための **Azure-SSIS IR の送信要件**。
 
                 | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 |Destination port range |
                 |---|---|---|---|---|
@@ -80,12 +80,12 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
 
 ### <a name="configure-virtual-network"></a>仮想ネットワークを構成する
 
-1. **ユーザーのアクセス許可** : Azure-SSIS IR を作成するユーザーには、少なくとも Azure Data Factory リソースに対する[ロールを割り当てる](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope)必要があります。次のオプションがあります。
+1. **ユーザーのアクセス許可**: Azure-SSIS IR を作成するユーザーには、少なくとも Azure Data Factory リソースに対する[ロールを割り当てる](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope)必要があります。次のオプションがあります。
 
     - 組み込みのネットワーク共同作成者ロールを使用します。 このロールには、必要なスコープよりずっと大きなスコープを持つ _Microsoft.Network/\*_ アクセス許可が備わっています。
-    - 必要な _Microsoft.Network/virtualNetworks/\*/join/action_ アクセス許可のみを含むカスタム ロールを作成してください。 また、Azure-SSIS IR を Azure Resource Manager 仮想ネットワークに参加させるときに独自のパブリック IP アドレスを使用する場合は、 _Microsoft.Network/publicIPAddresses/*/join/action_ アクセス許可もロールに含めてください。
+    - 必要な _Microsoft.Network/virtualNetworks/\*/join/action_ アクセス許可のみを含むカスタム ロールを作成してください。 また、Azure-SSIS IR を Azure Resource Manager 仮想ネットワークに参加させるときに独自のパブリック IP アドレスを使用する場合は、_Microsoft.Network/publicIPAddresses/*/join/action_ アクセス許可もロールに含めてください。
 
-1. **Virtual network** 。
+1. **Virtual network**。
 
     1. 仮想ネットワークのリソース グループが特定の Azure ネットワーク リソースを作成および削除できることを確認します。
 
@@ -103,13 +103,13 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
         - Microsoft.Network/NetworkSecurityGroups
 
     1. ネットワーク セキュリティ グループ (NSG) ルールに基づいてトラフィックを許可して、SQL Managed Instance と Azure-SSIS IR 間のトラフィックと、Azure-SSIS IR が必要とするトラフィックを許可します。
-        1. Azure-SSIS IR からの受信トラフィックを許可するための **SQL Managed Instance の受信要件** 。
+        1. Azure-SSIS IR からの受信トラフィックを許可するための **SQL Managed Instance の受信要件**。
 
             | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 | Destination port range | 説明 |
             |---|---|---|---|---|---|
             |TCP|VirtualNetwork|*|VirtualNetwork|1433、11000 ～ 11999|SQL Database のサーバー接続ポリシーが **[リダイレクト]** ではなく **[プロキシ]** に設定されている場合、ポート 1433 のみが必要です。|
 
-        1. SQL Managed Instance への送信トラフィックと、Azure-SSIS IR で必要とされる他のトラフィックを許可するための **Azure-SSIS IR の送信要件** 。
+        1. SQL Managed Instance への送信トラフィックと、Azure-SSIS IR で必要とされる他のトラフィックを許可するための **Azure-SSIS IR の送信要件**。
 
         | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 | Destination port range | 説明 |
         |---|---|---|---|---|---|
@@ -119,7 +119,7 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
         | TCP | VirtualNetwork | * | ストレージ | 445 | (省略可能) この規則は、Azure Files に格納されている SSIS パッケージを実行する場合にのみ必要です。 |
         |||||||
 
-        1. Azure-SSIS IR に必要なトラフィックを許可するための、 **Azure-SSIS IR の受信要件** 。
+        1. Azure-SSIS IR に必要なトラフィックを許可するための、**Azure-SSIS IR の受信要件**。
 
         | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 | Destination port range | 説明 |
         |---|---|---|---|---|---|
@@ -163,7 +163,7 @@ Azure-SSIS IR を作成する方法の詳細については、「[Azure Data Fac
 
 ## <a name="clean-up-ssisdb-logs"></a>SSISDB ログのクリーンアップ
 
-SSISDB ログの保持ポリシーは [catalog.catalog_properties](/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database?view=sql-server-ver15) の以下のプロパティで定義されています。
+SSISDB ログの保持ポリシーは [catalog.catalog_properties](/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database) の以下のプロパティで定義されています。
 
 - OPERATION_CLEANUP_ENABLED
 

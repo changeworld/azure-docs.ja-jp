@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dd1c7c20441d12600e2101f738904caf6260509e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0305094d3883fa6fc3254a682f9aa6f3202c9e48
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496009"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555544"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure Data Factory .NET SDK を使用した Azure Data Factory の作成、監視、および管理
 > [!NOTE]
@@ -27,7 +27,7 @@ ms.locfileid: "96496009"
 Data Factory .NET SDK を使用して Azure Data Factory をプログラムによって作成、監視、管理できます。 この記事には、Data Factory の作成と監視を行うサンプルの .NET コンソール アプリケーションを作成できるチュートリアルが含まれています。 
 
 > [!NOTE]
-> この記事では、すべての Data Factory .NET API を取り上げているわけではありません。 Data Factory の .NET API に関する完全なドキュメントについては、[Data Factory .NET API リファレンス](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)を参照してください。 
+> この記事では、すべての Data Factory .NET API を取り上げているわけではありません。 Data Factory の .NET API に関する完全なドキュメントについては、[Data Factory .NET API リファレンス](/dotnet/api/overview/azure/data-factory)を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -93,7 +93,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 9. アプリケーション ID を取得します。
 
     ```powershell
-    $azureAdApplication 
+    $azureAdApplication    
     ```
     出力のアプリケーション ID (applicationID) をメモします。
 

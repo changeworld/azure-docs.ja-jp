@@ -1,5 +1,5 @@
 ---
-title: Azure Machine Learning データセットを作成してデータにアクセスする
+title: Azure Machine Learning データセットを作成する
 titleSuffix: Azure Machine Learning
 description: 機械学習の実験を実行するために Azure Machine Learning データセットを作成してデータにアクセスする方法について説明します。
 services: machine-learning
@@ -12,16 +12,14 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: fa6cdeaa47c7fdf9e90cdab96397473d8498afa0
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 8dac15f359d8ab6c7a84bbc30dba392322e84bb5
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108706"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538194"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
-
-
 
 この記事では、Azure Machine Learning Python SDK を使用して、Azure Machine Learning データセットを作成し、ローカルまたはリモートの実験のデータにアクセスする方法について説明します。 Azure Machine Learning のデータ アクセス ワークフロー全体におけるデータ セットの位置付けの詳細については、[データへの安全なアクセス](concept-data.md#data-workflow)に関するページを参照してください。
 
@@ -127,6 +125,7 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 > ローカル ディレクトリからファイルをアップロードし、パブリック プレビュー メソッドの [upload_directory()](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?preserve-view=true&view=azure-ml-py#upload-directory-src-dir--target--pattern-none--overwrite-false--show-progress-true-) を使用して 1 つのメソッドで FileDataset を作成します。 このメソッドは[試験段階](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental)のプレビュー機能であり、いつでも変更される可能性があります。 
 > 
 >  このメソッドでは基になるストレージにデータがアップロードされるため、ストレージ コストが発生します。 
+
 ### <a name="create-a-tabulardataset"></a>TabularDataset を作成する
 
 .csv 形式または .tsv 形式のファイルを読み取り、登録されていない TabularDataset を作成するには、`TabularDatasetFactory` クラスの [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) メソッドを使用します。 複数のファイルから読み取る場合、結果は 1 つの表形式に集計されます。 
@@ -176,7 +175,6 @@ titanic_ds.take(3).to_pandas_dataframe()
 2|3|True|3|Heikkinen, Miss. Laina|female|26.0|0|0|STON/O2. 3101282|7.9250||S
 
 ワークスペースの実験間でデータセットを再利用および共有するには、[データセットを登録](#register-datasets)します。
-
 
 ## <a name="explore-data"></a>データの探索
 

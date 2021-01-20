@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 7c3af0865282475ded0172d18aecad1dfb61721b
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 5219553fe300d607212af1ef6cedf72ce6506762
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814263"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250334"
 ---
 # <a name="troubleshooting-metrics-charts"></a>メトリック グラフのトラブルシューティング
 
@@ -48,7 +48,7 @@ Azure では、メトリックへのアクセスは、[Azure ロールベース�
 
 ### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>すべてのメトリック値がロックされた Y 軸の範囲外だった
 
-[グラフの Y 軸の境界をロックする](metrics-charts.md#lock-boundaries-of-chart-y-axis)ことにより、意図せずグラフの表示領域にグラフの線が表示されなくなっている可能性があります。 たとえば、Y 軸を 0% から 50% の範囲にロックした場合、メトリックの値が一定して 100% であると、線は常に表示領域の外側にレンダリングされ、グラフは空白に見えるようになります。
+[グラフの Y 軸の境界をロックする](metrics-charts.md#locking-the-range-of-the-y-axis)ことにより、意図せずグラフの表示領域にグラフの線が表示されなくなっている可能性があります。 たとえば、Y 軸を 0% から 50% の範囲にロックした場合、メトリックの値が一定して 100% であると、線は常に表示領域の外側にレンダリングされ、グラフは空白に見えるようになります。
 
 **解決方法:** グラフの Y 軸の境界が、メトリックの値の範囲外でロックされていないことを確認します。 Y 軸の境界がロックされている場合、一時的にそれをリセットして、メトリック値がグラフの範囲外になっていないことを確認できます。 **sum**、**min**、**max** の集計のグラフの場合、自動細分性では Y 軸範囲をロックしないことをお勧めします。ブラウザー ウィンドウのサイズを変更したり、画面の解像度を切り替えたりすると、値の細分性が変化するためです。 細分性が切り替わると、グラフの表示領域が空のままになる可能性があります。
 

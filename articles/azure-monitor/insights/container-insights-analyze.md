@@ -3,12 +3,12 @@ title: Azure Monitor for containers での Kubernetes の監視 | Microsoft Docs
 description: この記事では、Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを表示および分析する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: a1f661089b3a6357abb3eed584401e6a8ae2e2fb
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 68d0ac03ae0f6029e0f984e296a89048536f4eb7
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905708"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251286"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを監視する
 
@@ -130,7 +130,7 @@ Azure Monitor for containers では Azure Monitor の[メトリックス エク�
 | insights.container/pods | |
 | | PodCount | Kubernetes からのポッドの数。|
 
-メトリックを[分割](../platform/metrics-charts.md#apply-splitting-to-a-chart)してディメンションごとに表示したり、セグメント間の比較を視覚化したりできます。 ノードの場合は、"*ホスト*" ディメンションでグラフをセグメント化できます。 ポッドの場合は、次のディメンションでセグメント化できます。
+メトリックを[分割](../platform/metrics-charts.md#apply-splitting)してディメンションごとに表示したり、セグメント間の比較を視覚化したりできます。 ノードの場合は、"*ホスト*" ディメンションでグラフをセグメント化できます。 ポッドの場合は、次のディメンションでセグメント化できます。
 
 * コントローラー
 * Kubernetes 名前空間

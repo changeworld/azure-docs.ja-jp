@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: e6582443ddc56b315c1c666c81a596fa71b1d54f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 02757477ca4a07f4526df0339291122eda57c9b5
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753979"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567420"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評価のサポートマトリックス 
 
@@ -23,7 +23,7 @@ VMware VM を Azure に移行する場合は、[移行のサポート マトリ�
 
 ## <a name="limitations"></a>制限事項
 
-**サポート** | **詳細**
+**要件** | **詳細**
 --- | ---
 **プロジェクトの制限** | 1 つの Azure サブスクリプションで複数のプロジェクトを作成できます。<br/><br/> 1 つの[プロジェクト](migrate-support-matrix.md#azure-migrate-projects)で最大 35,000 台の VMware VM を検出および評価できます。 また 1 つのプロジェクトには、各物理サーバーおよび Hyper-V VM の評価の上限に達するまで含めることができます。
 **検出** | Azure Migrate アプライアンスで、vCenter Server 上の VMware VM を最大 10,000 台検出できます。
@@ -81,9 +81,9 @@ Azure Migrate では、[Azure Migrate アプライアンス](migrate-appliance.m
 
 ## <a name="dependency-analysis-requirements-agentless"></a>依存関係の分析の要件 (エージェントレス)
 
-[依存関係の分析](concepts-dependency-visualization.md)を使用すると、評価して Azure に移行するオンプレミスのマシン間の依存関係を特定できます。 この表は、エージェントレスの依存関係の分析を設定するための要件をまとめたものです。
+[依存関係の分析](concepts-dependency-visualization.md)を使用すると、評価して Azure に移行するオンプレミスのマシン間の依存関係を特定できます。 この表は、エージェントレスの依存関係の分析を設定するための要件をまとめたものです。 
 
-**要件** | **詳細**
+**サポート** | **詳細**
 --- | --- 
 **サポートされているマシン** | 現在、VMware VM のみでサポートされています。
 **Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-bit)。<br/>Microsoft Windows Server 2008 (32 ビット)。 

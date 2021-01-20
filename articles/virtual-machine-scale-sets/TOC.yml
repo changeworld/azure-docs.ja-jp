@@ -182,7 +182,7 @@
         - name: エフェメラル OS ディスク
           href: ../virtual-machines/ephemeral-os-disks.md
         - name: ディスクのスケーラビリティ ターゲット
-          href: ../virtual-machines/windows/disk-scalability-targets.md
+          href: ../virtual-machines/disks-scalability-targets.md
           maintainContext: true
         - name: ディスクのバックアップとディザスター リカバリー
           href: ../virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks.md
@@ -193,7 +193,7 @@
     - name: インフラストラクチャの自動化
       href: ../virtual-machines/infrastructure-automation.md
       maintainContext: true
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティとポリシー
           href: ../virtual-machines/security-policy.md

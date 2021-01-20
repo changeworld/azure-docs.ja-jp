@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: 98484655dec069c3a284dce0ea83477faf75d9a8
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 5f8b18375c517ab5b620b2d6d897f5133b14705d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637753"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556462"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Azure SQL Managed Instance エージェントを使用して SSIS パッケージを実行する
 
@@ -24,7 +24,7 @@ ms.locfileid: "92637753"
 
 ## <a name="prerequisites"></a>前提条件
 
-この機能を使用するには、最新の SQL Server Management Studio (SSMS) を[ダウンロード](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)してインストールします。 バージョンのサポートの詳細は、次のとおりです。
+この機能を使用するには、最新の SQL Server Management Studio (SSMS) を[ダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)してインストールします。 バージョンのサポートの詳細は、次のとおりです。
 
 - SSISDB またはファイル システム内のパッケージを実行するには、SSMS バージョン 18.5 以降をインストールします。
 - パッケージ ストア内のパッケージを実行するには、SSMS バージョン 18.6 以降をインストールします。
@@ -151,7 +151,7 @@ SQL Managed Instance エージェント ジョブからパッケージの実行�
    ```sql
    select * from '{table for job execution}' where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
    ```
-   SSIS パッケージが SSISDB に含まれている場合は、ジョブ実行のテーブルとして **ssisdb.internal.execution_parameter_values** を使用します。 SSIS パッケージがファイル システムに含まれている場合は、 **ssisdb.internal.execution_parameter_values_noncatalog** を使用します。
+   SSIS パッケージが SSISDB に含まれている場合は、ジョブ実行のテーブルとして **ssisdb.internal.execution_parameter_values** を使用します。 SSIS パッケージがファイル システムに含まれている場合は、**ssisdb.internal.execution_parameter_values_noncatalog** を使用します。
 1. SSISDB カタログを右クリックして、 **[アクティブな操作]** を選択します。
 
    ![SSISDB カタログのショートカット メニューにある [アクティブな操作]](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)

@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 12/21/2020
+ms.date: 01/15/2021
 ms.author: alkohli
-ms.openlocfilehash: f2443765ecc9116193cefbc729ced25fa5657e59
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 56fc24966fa60c3a5e91f92b57332ae2f6a525ff
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763432"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256274"
 ---
 Azure Stack Edge デバイスに VM を展開する前に、Azure PowerShell 経由で Azure Resource Manager を介してデバイスに接続するようにクライアントを構成する必要があります。 詳細な手順については、「[Azure Stack Edge デバイスで Azure Resource Manager に接続する](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md)」を参照してください。
 
@@ -38,11 +38,3 @@ Azure Stack Edge デバイスに VM を展開する前に、Azure PowerShell 経
     > GPU VM を作成する場合、インターネットに接続したネットワーク インターフェイスを選択します。 これにより、デバイスに GPU 拡張機能をインストールできます。
 
 
-1. Azure portal から VM ロールを有効にします。 この手順では、デバイスのローカル API を介して VM を作成するために使用されるデバイスの一意のサブスクリプションを作成します。 
-
-    1. VM ロールを有効にするには、Azure portal で、Azure Stack Edge デバイスの Azure Stack Edge リソースに移動します。 **[Edge コンピューティング] > [仮想マシン]** に移動します。
-
-        ![VM イメージの追加 1](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-1.png)
-
-    1. **[仮想マシン]** を選択して **[概要]** ページに移動します。 仮想マシンのクラウド管理を **有効** にします。
-        ![VM イメージの追加 2](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-2.png)

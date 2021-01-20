@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b5cb7d0e421657b84c365d8dca536191cafd4e72
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 2053632f24504f896d1045f99d581b9aa6050b55
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861968"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573141"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Azure Defender for IoT のネットワーク設定について
 
@@ -223,7 +223,7 @@ Defender for IoT アプライアンスは、レイヤー 1 と 2 (場合によ�
 
 以下に示すのは、複数のセンサーの配置に関する推奨事項です。
 
-| **数値 **| **メートル** | **依存関係** | **センサーの数** |
+| **Number** | **メートル** | **依存関係** | **センサーの数** |
 |--|--|--|--|
 | スイッチ間の最大距離 | 80 メートル | 準備したイーサネット ケーブル | 2 以上 |
 | OT ネットワークの数 | 2 以上 | 物理的な接続なし | 2 以上 |

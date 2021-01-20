@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 11/06/2020
-ms.openlocfilehash: 2fabf75f74ccf57f57e7b47720ceda8885420842
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 35134f3ee4946d294ba6c6f71bd3953823d6d138
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460907"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250030"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Azure IoT Hub の監視
 
@@ -87,7 +87,7 @@ Azure IoT Hub に関して収集されるプラットフォーム メトリッ�
 
 カウント単位で収集される IoT Hub のプラットフォーム メトリックについては、一部の集計が有効でない場合や使用できない場合があります。 詳細については、[「Monitoring Azure IoT Hub data reference (Azure IoT Hub 監視データのリファレンス)」の「サポートされる集計」](monitor-iot-hub-reference.md#supported-aggregations)を参照してください。
 
-[ルーティング メトリック](monitor-iot-hub-reference.md#routing-metrics)など、いくつかの IoT Hub メトリックは多次元です。 これらのメトリックについては、[フィルター](../azure-monitor/platform/metrics-charts.md#apply-filters-to-charts)を適用し、ディメンションに基づいてグラフに[分割](../azure-monitor/platform/metrics-charts.md#apply-splitting-to-a-chart)することができます。
+[ルーティング メトリック](monitor-iot-hub-reference.md#routing-metrics)など、いくつかの IoT Hub メトリックは多次元です。 これらのメトリックについては、[フィルター](../azure-monitor/platform/metrics-charts.md#filters)を適用し、ディメンションに基づいてグラフに[分割](../azure-monitor/platform/metrics-charts.md#apply-splitting)することができます。
 
 ## <a name="analyzing-logs"></a>ログの分析
 

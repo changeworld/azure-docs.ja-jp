@@ -5,92 +5,20 @@ ms.subservice: alerts
 ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
-ms.date: 04/12/2020
-ms.openlocfilehash: cea4503c4e3b9dd58cc475aaec355a2bb2e0bd29
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.date: 01/17/2021
+ms.openlocfilehash: aede7e3dec886d6a6213c64b386cacd725dd74f5
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065187"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562796"
 ---
-# <a name="troubleshooting-problems-in-itsm-connector"></a>ITSM Connector での問題のトラブルシューティング
-
-この記事では、ITSM Connector の一般的な問題とそのトラブルシューティングの方法について説明します。
-
-Azure Monitor のアラートは、監視データで重要な状態が見つかると事前に通知します。 管理者は、その通知を見て、システムのユーザーが問題に気付く前に問題を識別して対処できます。 アラートの詳細については、「Microsoft Azure のアラートの概要」を参照してください。
-お客様は、メール、SMS、Webhook を使用するか、ソリューションを自動化するかどうかにかかわらず、アラートを通知する方法を選択できます。 通知を受けるもう 1 つのオプションは、ITSM を使用するものです。
-ITSM には、ServiceNow などの外部のチケット発行システムにアラートを送信するオプションが用意されています。
-
-## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>インシデントと変更要求データを視覚化および分析する
-
-ITSMC では、接続を設定したときの構成に応じて、最大 120 日分のインシデントと変更要求データを同期できます。 このデータのログ レコードのスキーマについては、この記事の[追加情報のセクション](./itsmc-synced-data.md)をご覧ください。
-
-インシデントと変更要求データは、ITSMC ダッシュボードを使用して視覚化できます。
-
-![ITSMC ダッシュボードを示すスクリーンショット。](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
-
-ダッシュボードでは、コネクタの状態に関する情報も提供されます。これは、接続の問題を分析する際の開始点として利用できます。
-
-### <a name="error-investigation-using-the-dashboard"></a>ダッシュボードを使用したエラー調査
-
-ダッシュボードにエラーを表示するには、次の手順に従います。
-
-1. **[すべてのリソース]** で、**ServiceDesk( *<実際のワークスペース名>* )** を探します。
-
-   ![Azure portal の最新のリソースを示すスクリーンショット。](media/itsmc-definition/create-new-connection-from-resource.png)
-
-2. 左側のウィンドウの **[ワークスペースのデータ ソース]** で、 **[ITSM 接続]** を選択します。
-
-   ![[ITSM 接続] メニュー項目を示すスクリーンショット。](media/itsmc-overview/add-new-itsm-connection.png)
-
-3. 左側のボックス **[IT Service Management Connector]** の **[概要]** で **[概要の表示]** を選択します。
-
-    ![[概要の表示] を示すスクリーンショット。](media/itsmc-resync-servicenow/dashboard-view-summary.png)
-
-4. 左側のボックス **[IT Service Management Connector]** の **[概要]** でグラフをクリックします。
-
-    ![グラフのクリックを示すスクリーンショット。](media/itsmc-resync-servicenow/dashboard-graph-click.png)
-
-5. このダッシュボードを使用すると、コネクタの状態とエラーを確認できます。
-    ![コネクタの状態を示すスクリーンショット。](media/itsmc-resync-servicenow/connector-dashboard.png)
-
-### <a name="service-map"></a>Service Map
-
-Service Map で、影響を受けたコンピューターに対して同期されたインシデントを視覚化することもできます。
-
-サービス マップは、Windows と Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すると、重要なサービスを提供する相互接続されたシステムとしてサーバーを表示できます。 Service Map には、TCP 接続の任意のアーキテクチャ全体にわたるサーバー、プロセス、ポートの間の接続が表示されます。 エージェントのインストール以外に構成は必要ありません。 詳細については、[Service Map の使用](../insights/service-map.md)に関するページを参照してください。
-
-Service Map を使用している場合は、次に示すように、ITSM ソリューションで作成されたサービス デスク項目を表示できます。
-
-![Log Analytics の画面を示すスクリーンショット。](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
-
-## <a name="troubleshoot-itsm-connections"></a>ITSM 接続のトラブルシューティング
-
-- ITSM システムに接続できず、"**接続の保存中にエラーが発生しました**" というメッセージが表示される場合、次の手順を実行してください。
-   - ServiceNow、Cherwell、Provance の接続の場合:  
-     - 各接続のユーザー名、パスワード、クライアント ID、クライアント シークレットが正しく入力されていることを確認します。  
-     - 対応する ITSM 製品で、接続を作成するための十分な特権を持っていることを確認します。  
-   - Service Manager 接続の場合:  
-     - Web アプリが正常にデプロイされていること、およびハイブリッド接続が作成されていることを確認します。 オンプレミスの Service Manager コンピューターとの接続が正常に確立されていることを確認するには、[ハイブリッド接続](./itsmc-connections-scsm.md#configure-the-hybrid-connection)の作成に関するドキュメントで説明しているように Web アプリの URL に移動します。  
-
-- ServiceNow のデータが Log Analytics に同期されていない場合は、ServiceNow インスタンスがスリープ状態になっていことを確認します。 ServiceNow dev インスタンスは、長時間アイドル状態になっているとスリープ状態に移行することがあります。 それが起きているのでなければ、問題を報告してください。
-- Log Analytics アラートが発生しても ITSM 製品内に作業項目が作成されない場合、構成項目が作成されなかったり作業項目にリンクされなかったりする場合、その他の情報が必要な場合は、以下のリソースを参照してください。
-   -  ITSMC: このソリューションには、接続、作業項目、コンピューターなどの概要が表示されます。 **[コネクタの状態]** というラベルのタイルを選択します。 そうすると、適切なクエリを使用して **ログ検索** が行われます。 詳細については、`LogType_S` が `ERROR` になっているログ レコードを参照してください。
-   - **[ログ検索]** ページ:クエリ `*ServiceDeskLog_CL*` を使用して、エラーと関連情報を直接表示します。
-
-### <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager Web アプリのデプロイのトラブルシューティング
-
--   Web アプリのデプロイに関する問題がある場合は、サブスクリプションでリソースを作成/デプロイするためのアクセス許可があることを確認します。
--   [スクリプト](itsmc-service-manager-script.md)の実行時に "**オブジェクト参照がオブジェクトのインスタンスに設定されていません**" というエラーが発生する場合は、 **[ユーザー構成]** セクションに有効な値を入力したことを確認します。
--   Service Bus Relay 名前空間を作成できない場合は、必要なリソース プロバイダーがサブスクリプションに登録されていることを確認します。 登録されていない場合は、Azure portal で、Service Bus Relay 名前空間を手動で作成します。 これは、Azure portal で[ハイブリッド接続を作成する](./itsmc-connections-scsm.md#configure-the-hybrid-connection)ときに作成することもできます。
-
-### <a name="how-to-manually-fix-sync-problems"></a>同期に関する問題を手動で修正する方法
+# <a name="how-to-manually-fix-sync-problems"></a>同期に関する問題を手動で修正する方法
 
 Azure Monitor は、サードパーティの IT Service Management (ITSM) プロバイダーに接続できます。 ServiceNow は、これらのプロバイダーの 1 つです。
 
 セキュリティ上の理由から、ServiceNow による接続に使用する認証トークンの更新が必要になる場合があります。
 次の同期プロセスを使用して、接続を再アクティブ化し、トークンを更新します。
-
 
 1. 上部の検索バナーでソリューションを検索し、関連するソリューションを選択します
 

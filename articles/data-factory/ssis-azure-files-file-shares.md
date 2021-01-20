@@ -8,12 +8,12 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: a2b95e0de642dc17865643ec569e7220fe5581b2
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 97ed9b6f3f21b6d9e220c1f4e17d4ba6b0d8b485
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637498"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555510"
 ---
 # <a name="open-and-save-files-on-premises-and-in-azure-with-ssis-packages-deployed-in-azure"></a>Azure でデプロイされた SSIS パッケージを使用して、オンプレミスおよび Azure のファイルを開いて保存する
 
@@ -41,7 +41,7 @@ ms.locfileid: "92637498"
 
 ## <a name="use-azure-file-shares"></a>Azure Files 共有を使用する
 
-ローカル ファイル システムを使うパッケージを Azure の SSIS にリフト アンド シフトするときに、 **Azure Files** を使うには、次のようにします。
+ローカル ファイル システムを使うパッケージを Azure の SSIS にリフト アンド シフトするときに、**Azure Files** を使うには、次のようにします。
 
 1. ローカル ファイル システムから Azure Files にファイルを転送します。 詳しくは、「[Azure ファイル](https://azure.microsoft.com/services/storage/files/)」をご覧ください。
 
@@ -53,4 +53,4 @@ ms.locfileid: "92637498"
 
 - パッケージをデプロイします。 詳しくは、[SSMS を使用した Azure への SSIS プロジェクトのデプロイ](/sql/integration-services/ssis-quickstart-deploy-ssms)に関する記事をご覧ください。
 - パッケージを実行します。 詳しくは、[SSMS を使用した Azure での SSIS パッケージの実行](/sql/integration-services/ssis-quickstart-run-ssms)に関する記事をご覧ください。
-- パッケージをスケジュールします。 詳細については、「[Azure で SSIS パッケージのスケジュールを設定する](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)」を参照してください。
+- パッケージをスケジュールします。 詳細については、「[Azure で SSIS パッケージのスケジュールを設定する](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)」を参照してください。

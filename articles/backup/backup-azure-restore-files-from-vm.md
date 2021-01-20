@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンの復旧ポイントか�
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: b4bd64fb00c2f341e474ecb96738fab47d717474
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 9bd66c1e3c89c8974adc3970f8595e5100878088
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831671"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567137"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -188,7 +188,7 @@ Linux では、復旧ポイントのボリュームはスクリプトが実行�
 ファイル復元スクリプトを実行した後、ファイルの回復プロセスがハングする場合 (たとえば、ディスクがマウントされない、またはマウントされてもボリュームが表示されない場合)、次の手順を実行します。
 
 1. ファイル /etc/iscsi/iscsid.conf で、設定を次のように変更します。
-    - `node.conn[0].timeo.noop_out_timeout = 5`  から `node.conn[0].timeo.noop_out_timeout = 30`
+    - `node.conn[0].timeo.noop_out_timeout = 5`  から `node.conn[0].timeo.noop_out_timeout = 120`
 2. 上記の変更を行った後、スクリプトを再実行します。 一時的な障害が発生した場合は、要求が連続して何度も実行されることでターゲットの準備に影響しないようにするために、再実行の間隔が 20 分から 30 分あることを確認します。 この間隔で再実行すると、ターゲットはスクリプトからの接続に対して準備を行うことができます。
 3. ファイルの回復後、必ずポータルに戻り、ボリュームをマウントできなかった回復ポイントに対して **[ディスクのマウント解除]** を選択してください。 基本的には、この手順によって既存のプロセス/セッションがすべて消去され、回復の可能性が向上します。
 

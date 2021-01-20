@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/06/2020
-ms.openlocfilehash: bc5d2cad7b4fbf1871d2c02dc91db30daf55e855
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: b9dc88c5773d1329ad4fb4d1c45a0cbc88737423
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600729"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556581"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムのセットアップのカスタマイズ
 
@@ -345,7 +345,7 @@ Azure PowerShell を使用してカスタム セットアップで Azure-SSIS IR
 
       * *TLS 1.2* フォルダー。Azure-SSIS IR の各ノードで強力な暗号化およびセキュリティが強化されたネットワーク プロトコル (TLS 1.2) を使用するためのカスタム セットアップ スクリプト (*main.cmd*) が含まれています。 また、このスクリプトは古い SSL/TLS バージョンを無効にします。
 
-      * *ZULU OPENJDK* フォルダー。これには、ご利用の Azure SSIS IR の各ノード上に Zulu OpenJDK をインストールするためのカスタム セットアップ スクリプト (*main.cmd*) と PowerShell ファイル (*install_openjdk.ps1*) が格納されています。 このセットアップでは、Azure Data Lake Store または柔軟なファイル コネクタを使用して、ORC および Parquet ファイルを処理できます。 詳細については、[Integration Services 用の Azure Feature Pack](/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java) に関するページを参照してください。 
+      * *ZULU OPENJDK* フォルダー。これには、ご利用の Azure SSIS IR の各ノード上に Zulu OpenJDK をインストールするためのカスタム セットアップ スクリプト (*main.cmd*) と PowerShell ファイル (*install_openjdk.ps1*) が格納されています。 このセットアップでは、Azure Data Lake Store または柔軟なファイル コネクタを使用して、ORC および Parquet ファイルを処理できます。 詳細については、[Integration Services 用の Azure Feature Pack](/sql/integration-services/azure-feature-pack-for-integration-services-ssis#dependency-on-java) に関するページを参照してください。 
       
         まず、[最新の Zulu OpenJDK をダウンロード](https://www.azul.com/downloads/zulu/zulu-windows/)し (たとえば、*zulu8.33.0.1-jdk8.0.192-win_x64.zip*)、次にそれを、*main.cmd* および *install_openjdk.ps1* と共にご利用のコンテナーにアップロードします。
 

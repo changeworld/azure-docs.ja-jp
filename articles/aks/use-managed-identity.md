@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) でマネージド ID を使用す�
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: 948a189e1c6e03efca046b6d43dddcaf3d141957
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: fe11170b1cdf18aacf832f4c8171bfc082339395
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607288"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599604"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service でマネージド ID を使用する
 
@@ -131,7 +131,7 @@ az feature register --namespace Microsoft.ContainerService -n UserAssignedIdenti
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
 ```
 > [!NOTE]
-> システム割り当てまたはユーザー割り当ての ID がマネージド ID に更新されたら、ノードで `az nodepool upgrade --node-image-only` を実行し、マネージド ID への更新を完了します。
+> システム割り当てまたはユーザー割り当ての ID がマネージド ID に更新されたら、ノードで `az aks nodepool upgrade --node-image-only` を実行し、マネージド ID への更新を完了します。
 
 ## <a name="bring-your-own-control-plane-mi"></a>独自のコントロール プレーン MI を使用する
 カスタムのコントロール プレーン ID を使用すると、クラスターの作成前に、既存の ID にアクセス権を付与できます。 この機能により、カスタム VNET や outboundType UDR を、事前作成されたマネージド ID と一緒に使用するなどのシナリオが可能になります。

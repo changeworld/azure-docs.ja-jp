@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 53fd2332224d903c5a4b33563470cf3569f82b13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec605fd30252b9a0cfb80d0bc3ff145ed3b5a1d4
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526658"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573311"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Linux または Windows での Azure 仮想マシンのパフォーマンスのトラブルシューティング
 
@@ -208,7 +208,7 @@ IOPS の上限に達しているかどうかを確認するには、ストレー
 
 Standard ストレージの新しいディスク オファリングでは、IOPS とスループットの制限が異なる場合がありますが、Standard ストレージ アカウントの累積制限は 20000 IOPS です (Premium ストレージの制限は、アカウント レベルまたはディスク レベルで異なります)。 さまざまな Standard ストレージのディスク オファリングとディスクごとの制限については、以下を参照してください。
 
-* [Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](../windows/disk-scalability-targets.md)
+* [Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](../disks-scalability-targets.md)
 
 #### <a name="references"></a>References
 
@@ -224,7 +224,7 @@ VM に接続されている VHD のスループットの上限を確認します
 
 Standard ストレージの新しいディスク オファリングには、さまざまな IOPS とスループットの制限があります (IOPS は VHD ごとには公開されません)。 データを見て、ディスクの読み取りと書き込みを使用して VM レベルでの VHD の合計スループット (MB) の上限に達しているかどうかを確認し、VM ストレージ構成を最適化して、1 つの VHD 制限を超えてスケーリングします。 さまざまな Standard ストレージのディスク オファリングとディスクごとの制限については、以下を参照してください。
 
-* [Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](../windows/disk-scalability-targets.md)
+* [Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](../disks-scalability-targets.md)
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>ディスクの高使用率と待機時間の修復
 

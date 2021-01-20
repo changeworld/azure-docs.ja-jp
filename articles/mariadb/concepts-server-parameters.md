@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: 4432178d5908d4360cda05a62b62d05687be4235
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 7797ee9d20b33a25c1b51289036651c7ad9f22a1
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541132"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247500"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのサーバー パラメーター
 
@@ -159,7 +159,7 @@ MariaDB への新しいクライアント接続を作成するには時間がか
 
 このパラメーターの詳細については、[MariaDB のドキュメント](https://mariadb.com/kb/en/server-system-variables/#query_cache_size)を確認してください。
 
-|**価格レベル**|**仮想コア数**|**既定値 (バイト)**|**最小値 (バイト)**|**最大値 **|
+|**価格レベル**|**仮想コア数**|**既定値 (バイト)**|**最小値 (バイト)**|**最大値 (バイト)**|
 |---|---|---|---|---|
 |Basic|1|Basic レベルでは構成できません|該当なし|該当なし|
 |Basic|2|Basic レベルでは構成できません|該当なし|該当なし|

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e48b1357b8576baca0e8defca94f4c5248c6f74e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ff777f079116942eba32e49f359c7f7e0b99f65d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461275"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555782"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory 用の Azure セキュリティ ベースライン
 
@@ -335,9 +335,9 @@ Azure AD はユーザー アクセスを管理するために推奨される方�
 
 * [Privileged Identity Manager に関する情報](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 * [ローカル アカウントに関する情報](../active-directory/devices/assign-local-admin.md#manage-the-device-administrator-role)
 
@@ -408,7 +408,7 @@ Azure 仮想マシンで Integration Runtime を実行している場合、Azure
 
 **ガイダンス**: Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure リソースを構成します。
 
-* [特権アクセス ワークステーションについて](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -744,7 +744,7 @@ Security Center で脆弱性が識別されると、検出結果と推奨事項�
 
 * [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription)
 
 * [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -782,7 +782,7 @@ Security Center で脆弱性が識別されると、検出結果と推奨事項�
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4:承認された Azure リソースのインベントリを定義および管理する
 
-**ガイダンス**:コンピューティング リソース用に承認された Azure リソースと承認されたソフトウェアを定義します。
+**ガイダンス**: コンピューティング リソース用に承認された Azure リソースと承認されたソフトウェアを定義します。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -880,7 +880,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure Virtual Machine で Runtime Integration を実行している場合、スクリプトの種類に応じて、オペレーティング システム固有の構成またはサードパーティのリソースを使用して、ユーザーの Azure コンピューティング リソース内でスクリプトを実行する機能を制限できます。 また、Azure Security Center の適応型アプリケーション制御を利用して、Azure Virtual Machines 上で承認されたソフトウェアのみを実行し、すべての承認されていないソフトウェアが実行されないようにすることもできます。
 
-* [Windows 環境で PowerShell スクリプトの実行を制御する方法](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [Windows 環境で PowerShell スクリプトの実行を制御する方法](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 * [Azure Security Center の適応型アプリケーション制御を使用する方法](../security-center/security-center-adaptive-application.md)
 
@@ -918,7 +918,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure Policy を使用して、Azure Data Factory の標準的なセキュリティ構成を定義して実装します。 Azure Data Factory インスタンスの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.DataFactory" 名前空間で Azure Policy エイリアスを使用します。
 
-* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -964,7 +964,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 * [Azure Resource Manager テンプレートの作成に関する情報](../virtual-machines/windows/ps-template.md)
 
-* [カスタム VM VHD を Azure にアップロードする方法](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [カスタム VM VHD を Azure にアップロードする方法](/azure-stack/operator/azure-stack-add-vm-image)
 
 **Azure Security Center の監視**: はい
 
@@ -974,9 +974,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: カスタムの Azure Policy 定義を使用する場合は、Azure DevOps または Azure Repos を使用して、コードを安全に格納して管理します。
 
-* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
 
-* [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos のドキュメント](/azure/devops/repos/index)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1150,7 +1150,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 * [Azure VM バックアップの概要](../backup/backup-azure-vms-introduction.md)
 
-* [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure Security Center の監視**: はい
 
@@ -1164,7 +1164,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 * [Azure 仮想マシンのバックアップからファイルを復旧する方法](../backup/backup-azure-restore-files-from-vm.md)
 
-* [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1214,7 +1214,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
-**ガイダンス**:定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。
+**ガイダンス**: 定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。
 
 * [NIST の出版物「IT 計画と機能に関するテスト、トレーニング、演習プログラムのガイド」を参照してください。](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 

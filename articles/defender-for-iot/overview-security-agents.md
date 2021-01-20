@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/27/2019
 ms.author: shhazam
-ms.openlocfilehash: d3b50d909fb167ee123b548603628bae7d844c5b
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2b1cd131e578b1d16fabee99b8de536e4a48ece0
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97837326"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247303"
 ---
 # <a name="get-started-with-azure-defender-for-iot-device-security-agents"></a>Azure Defender for IoT デバイス セキュリティ エージェントの使用を開始する
 
@@ -31,7 +31,7 @@ Azure Defender for IoT セキュリティ エージェントでは、デバイ�
 次のワークフローを使用して、Defender for IoT セキュリティ エージェントをデプロイしてテストします。
 
 1. [IoT Hub で Defender for IoT サービスを有効にする](quickstart-onboard-iot-hub.md)
-1. IoT Hub に登録済みデバイスがない場合は、[新しいデバイスを登録](../iot-accelerators/quickstart-device-simulation-deploy.md)します。
+1. IoT Hub に登録済みデバイスがない場合は、[新しいデバイスを登録](../iot-accelerators/iot-accelerators-device-simulation-overview.md)します。
 1. デバイス用の [azureiotsecurity セキュリティ モジュール](quickstart-create-security-twin.md)を作成します。
 1. 実際のデバイスにインストールするのではなく、Azure シミュレート デバイスにエージェントをインストールするには、使用可能なゾーンで[新しい Azure Virtual Machine (VM ) を作成](../virtual-machines/linux/quick-create-portal.md)します。
 1. IoT デバイスまたは新しい VM 上に [Defender for IoT セキュリティ エージェントをデプロイ](how-to-deploy-linux-cs.md)します。

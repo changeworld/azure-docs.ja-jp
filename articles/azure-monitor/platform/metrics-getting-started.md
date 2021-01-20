@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 710de93a24037031784ca8d37a8ae0be76bff9e6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 2bf56379a32bf8035ea2d0d3fe797776ec6ba40d
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614595"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250402"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure メトリックス エクスプローラーの概要
 
@@ -38,7 +38,7 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
 
     > ![メトリックを選択する](./media/metrics-getting-started/metrics-dropdown.png)
 
-4. 必要に応じて、[メトリックの集計を変更する](metrics-charts.md#changing-aggregation)ことができます。 たとえば、メトリックの最小値、最大値、または平均値をグラフに表示したい場合があります。
+4. 必要に応じて、[メトリックの集計を変更する](metrics-charts.md#aggregation)ことができます。 たとえば、メトリックの最小値、最大値、または平均値をグラフに表示したい場合があります。
 
 > [!TIP]
 > 同じグラフに複数のメトリックをプロットして表示する場合は、 **[メトリックの追加]** ボタンを使用して上記の手順を繰り返します。 1 つのビューに複数のグラフを表示する場合は、上部にある **[グラフの追加]** ボタンをクリックします。
@@ -57,7 +57,7 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
 
 ## <a name="apply-dimension-filters-and-splitting"></a>ディメンションのフィルターと分割を適用する
 
-[フィルター処理](metrics-charts.md#apply-filters-to-charts)と[分割](metrics-charts.md#apply-splitting-to-a-chart)は、ディメンションを持つメトリックのための強力な診断ツールです。 これらの機能では、さまざまなメトリックのセグメント ("ディメンション値") が全体的なメトリック値にどのような影響を与えているかが示されます。これを基に、考えられる外れ値を特定することができます。
+[フィルター処理](metrics-charts.md#filters)と[分割](metrics-charts.md#apply-splitting)は、ディメンションを持つメトリックのための強力な診断ツールです。 これらの機能では、さまざまなメトリックのセグメント ("ディメンション値") が全体的なメトリック値にどのような影響を与えているかが示されます。これを基に、考えられる外れ値を特定することができます。
 
 - **フィルター処理** を使用すると、グラフに表示するディメンション値を選択できます。 たとえば、"*サーバー応答時間*" メトリックのグラフを作成する場合は、成功した要求を表示します。 その場合は、"*要求の成功*" ディメンションに対してフィルターを適用します。 
 

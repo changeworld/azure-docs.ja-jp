@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/23/2020
 ms.author: memildin
-ms.openlocfilehash: 3899b00038f3c12add4dbf49a7f05e07141d8606
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: c9d11f1ddc3e1dd2239bdfce9c41f58fe9e20497
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755856"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539960"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender for SQL servers on machines 
 
@@ -79,7 +79,7 @@ ms.locfileid: "97755856"
 
 
 1. 必要に応じて、セキュリティ アラートのメール通知を構成します。 
-    Security Center アラートの生成時にメール通知を受け取る受信者の一覧を設定できます。 メールには、Azure Security Center におけるアラートへの直接 sk と関連するすべての詳細が含まれます。 詳細については、[セキュリティ アラートの電子メール通知のセットアップ](security-center-provide-security-contact-details.md)に関する記事を参照してください。
+    Security Center アラートの生成時にメール通知を受け取る受信者の一覧を設定できます。 メールには、Azure Security Center におけるアラートの直接リンクと関連するすべての詳細が含まれます。 詳細については、[セキュリティ アラートの電子メール通知のセットアップ](security-center-provide-security-contact-details.md)に関する記事を参照してください。
 
 
 

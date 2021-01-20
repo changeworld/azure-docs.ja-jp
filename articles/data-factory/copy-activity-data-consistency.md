@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: 3591bfe046fa1c3e1e55aa49a0ae3ad698bc57b3
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 274250fecdf69b6a488c33ff25df3728a1c90af0
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593673"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556377"
 ---
 #  <a name="data-consistency-verification-in-copy-activity"></a>コピー アクティビティでのデータ整合性の検証
 
@@ -81,7 +81,7 @@ linkedServiceName | セッション ログ ファイルを格納するための�
 path | ログ ファイルのパス。 | ログ ファイルを格納するパスを指定します。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ
 
 >[!NOTE]
->- Azure Blob または Azure Data Lake Storage Gen2 との間でバイナリ ファイルをコピーするとき、ADF では、[Azure Blob API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) と [Azure Data Lake Storage Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) を活用し、ブロック レベル MD5 チェックサム検証が行われます。 ファイル上の ContentMD5 がデータ ソースとして Azure Blob または Azure Data Lake Storage Gen2 に存在する場合、ADF では、ファイルも読み取った後に、レベル MD5 チェックサム検証がファイリングされます。 データのコピー先として Azure Blob または Azure Data Lake Storage Gen2 にファイルをコピーした後、ADF では、Azure Blob または Azure Data Lake Storage Gen2 に ContentMD5 が書き込まれ、データの一貫性検証のために下流のアプリケーションでさらに利用できます。
+>- Azure Blob または Azure Data Lake Storage Gen2 との間でバイナリ ファイルをコピーするとき、ADF では、[Azure Blob API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy&preserve-view=true) と [Azure Data Lake Storage Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) を活用し、ブロック レベル MD5 チェックサム検証が行われます。 ファイル上の ContentMD5 がデータ ソースとして Azure Blob または Azure Data Lake Storage Gen2 に存在する場合、ADF では、ファイルも読み取った後に、レベル MD5 チェックサム検証がファイリングされます。 データのコピー先として Azure Blob または Azure Data Lake Storage Gen2 にファイルをコピーした後、ADF では、Azure Blob または Azure Data Lake Storage Gen2 に ContentMD5 が書き込まれ、データの一貫性検証のために下流のアプリケーションでさらに利用できます。
 >- ADF では、ストレージ ストア間でバイナリ ファイルをコピーするとき、ファイル サイズ検証が行われます。
 
 ## <a name="monitoring"></a>監視

@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: 244f8a446e33102e018881b3ec8f32ba9d8cbcc6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d624f2dd2c0c9b4c7e99d5628a1d47e4303da7f
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014147"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555595"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-or-azure-synapse-analytics-from-an-azure-stream-analytics-job-preview"></a>マネージド ID を使用して Azure Stream Analytics ジョブから Azure SQL Database または Azure Synapse Analytics にアクセスする (プレビュー)
 
@@ -123,7 +123,7 @@ Azure Stream Analytics は、Azure SQL Database および Azure Synapse Analytic
 
 前のセクションで説明したように、包含データベース ユーザーを作成し、ポータルで Azure サービスへのアクセス許可を付与すると、Stream Analytics ジョブには、マネージド ID を介して Azure Synapse データベース リソースに **接続する** ためのマネージド ID からのアクセス許可が付与されます。 SELECT、INSERT、および ADMINISTER DATABASE BULK OPERATIONS のアクセス許可を Stream Analytics ジョブにさらに付与することをお勧めします。これらは後で Stream Analytics ワークフローで必要になるためです。 **SELECT** のアクセス許可により、ジョブは Azure Synapse データベース内のテーブルへの接続をテストできます。 **INSERT** と **ADMINISTER DATABASE BULK OPERATIONS** のアクセス許可により、入力と Azure Synapse データベースの出力を構成した後に、エンドツーエンドの Stream Analytics クエリをテストできます。
 
-ADMINISTER DATABASE BULK OPERATIONS アクセス許可を付与するには、[[権限が含まれるデータベース権限]](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest#remarks) で **CONTROL** というラベルが付けられているすべてのアクセス許可を Stream Analytics ジョブに付与する必要があります。 Stream Analytics ジョブによって、[ADMINISTER DATABASE BULK OPERATIONS と INSERT](/sql/t-sql/statements/copy-into-transact-sql) を必要とする COPY ステートメントが実行されるため、このアクセス許可が必要になります。
+ADMINISTER DATABASE BULK OPERATIONS アクセス許可を付与するには、[[権限が含まれるデータベース権限]](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest&preserve-view=true#remarks) で **CONTROL** というラベルが付けられているすべてのアクセス許可を Stream Analytics ジョブに付与する必要があります。 Stream Analytics ジョブによって、[ADMINISTER DATABASE BULK OPERATIONS と INSERT](/sql/t-sql/statements/copy-into-transact-sql) を必要とする COPY ステートメントが実行されるため、このアクセス許可が必要になります。
 
 ---
 

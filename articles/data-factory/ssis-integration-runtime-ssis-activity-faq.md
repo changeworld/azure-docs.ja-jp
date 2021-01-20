@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: b4902e1fb7a2a181d3d5b2ce2ac6d1d458500fce
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9609c382161514611ddc41af040e8fb438431fdf
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844184"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556003"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>SSIS 統合ランタイムでのパッケージ実行のトラブルシューティング
 
@@ -28,7 +28,7 @@ ms.locfileid: "94844184"
 
 Azure Data Factory ポータルを使用して、SSIS パッケージの実行アクティビティの出力を確認します。 この出力には、実行結果、エラー メッセージ、および操作 ID が含まれています。 詳細については、「[パイプラインの監視](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline)」を参照してください。
 
-実行の詳細なログを確認するには、SSIS カタログ (SSISDB) を使用します。 詳細については、「[実行中のパッケージとその他の操作の監視](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017)」を参照してください。
+実行の詳細なログを確認するには、SSIS カタログ (SSISDB) を使用します。 詳細については、「[実行中のパッケージとその他の操作の監視](/sql/integration-services/performance/monitor-running-packages-and-other-operations)」を参照してください。
 
 ## <a name="common-errors-causes-and-solutions"></a>一般的なエラー、原因、解決策
 
@@ -91,7 +91,7 @@ Azure Data Factory ポータルを使用して、SSIS パッケージの実行�
 このエラーは、SSIS 統合ランタイムでパッケージの実行時にファイルがローカル ディスク内に見つからない場合に発生します。 次のアクションを試してください。
 * SSIS 統合ランタイムで実行されているパッケージでは絶対パスを使用しないでください。 代わりに、現在実行中の作業ディレクトリ (.) または一時フォルダー (%TEMP%) を使用してください。
 * SSIS 統合ランタイム ノード上にファイルを保持する必要がある場合は、[セットアップのカスタマイズ](how-to-configure-azure-ssis-ir-custom-setup.md)に関するページの説明に従ってファイルを準備します。 作業ディレクトリ内のすべてのファイルは、実行が完了した後にクリーンアップされます。
-* SSIS 統合ランタイム ノードにファイルを格納する代わりに、Azure Files を使用します。 詳細については、「[Azure Files 共有を使用する](/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares)」を参照してください。
+* SSIS 統合ランタイム ノードにファイルを格納する代わりに、Azure Files を使用します。 詳細については、「[Azure Files 共有を使用する](/sql/integration-services/lift-shift/ssis-azure-files-file-shares#use-azure-file-shares)」を参照してください。
 
 ### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>エラー メッセージ:"データベース 'SSISDB' のサイズ クォータに達しました"
 
@@ -154,7 +154,7 @@ Azure-SSIS 統合ランタイムがセルフホステッド統合ランタイム
 
 * 考えられる原因と推奨される操作:
   * 実行ログに "The component does not support using connection manager with ConnectByProxy value setting true (ConnectByProxy 値の設定が true の場合、コンポーネントは接続マネージャーの使用をサポートしていません)" という警告メッセージも表示される場合は、"ConnectByProxy" がまだサポートされていないコンポーネントで接続マネージャーが使用されていることを意味します。 サポート対象のコンポーネントについては、「[セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy)」を参照してください。
-  * 実行ログは、[SSMS レポート](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports)または SSIS パッケージ実行アクティビティで指定したログ フォルダー内にあります。
+  * 実行ログは、[SSMS レポート](/sql/integration-services/performance/monitor-running-packages-and-other-operations#reports)または SSIS パッケージ実行アクティビティで指定したログ フォルダー内にあります。
   * 別の方法として、vNet を使用してオンプレミスのデータにアクセスすることもできます。 詳細については、「[Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる](join-azure-ssis-integration-runtime-virtual-network.md)」を参照してください。
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>エラー メッセージ:"Staging task status:失敗。 Staging task error:エラー コード:2906, ErrorMessage:Package execution failed., Output: {"OperationErrorMessages":"SSIS Executor exit code: -1.\n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", "effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }} (ステージング タスクの状態: 失敗。ステージング タスクのエラー: ErrorCode: 2906、ErrorMessage: パッケージの実行が失敗しました。出力: {"OperationErrorMessages": "SSIS 実行プログラムの終了コード: -1.\n", "LogLocation": "...\SSISTelemetry\ExecutionLog\...", "effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }})"

@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/11/2020
-ms.openlocfilehash: a740ad62dacc9a29cab1cc144f1789e125ec2e89
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 31b96f03a8519b068eaa816443be0a0f374a4a8c
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368581"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247031"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB の自動スケーリングでプロビジョニングされたスループットについてよく寄せられる質問
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -48,7 +48,7 @@ Azure Cosmos DB で自動スケーリング プロビジョニング スルー�
 複数書き込みリージョンの予約容量は、自動スケーリングと Standard (手動) プロビジョニング スループットに対して同様に機能します。 [Azure Cosmos DB の予約容量](cosmos-db-reserved-capacity.md)に関するページを参照してください
 
 ### <a name="does-autoscale-work-with-free-tier"></a>自動スケーリングは Free レベルで機能しますか?
-はい。 Free レベルでは、コンテナーで自動スケーリング スループットを利用できます。 カスタム最大 RU/秒を使用した自動スケーリング Shared スループット データベースのサポートはまだ利用できません。 [Free レベルでの自動スケーリングの請求のしくみ](understand-your-bill.md#billing-examples-with-free-tier-accounts)に関するページを参照してください。
+はい。 Free レベルでは、コンテナーで自動スケーリング スループットを利用できます。 カスタム最大 RU/秒を使用した自動スケーリング Shared スループット データベースのサポートはまだ利用できません。 [Free レベルでの自動スケーリングの請求のしくみ](understand-your-bill.md#azure-free-tier)に関するページを参照してください。
 
 ### <a name="is-autoscale-supported-for-all-apis"></a>すべての API で自動スケーリングがサポートされていますか?
 はい。自動スケーリングは、すべての API でサポートされています: Core (SQL)、Gremlin、Table、Cassandra、および MongoDB 用 API。

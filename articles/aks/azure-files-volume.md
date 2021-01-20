@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) 上で複数の同時実行ポッド
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 89976211763f5d4729718c4e4c6503650f27f7cc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a6e28464df2ff9c9dcc7734a127cc00f887e08dd
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126275"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246963"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上で Azure ファイル共有を含むボリュームを手動で作成して使用する
 
@@ -26,7 +26,7 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
 
 ## <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
 
-Azure Files を Kubernetes ボリュームとして使用するには、あらかじめ Azure Storage アカウントとファイル共有を作成しておく必要があります。 以下のコマンドでは、 *myAKSShare* という名前のリソース グループ、ストレージ アカウント、 *aksshare* という名前のファイル共有を作成します。
+Azure Files を Kubernetes ボリュームとして使用するには、あらかじめ Azure Storage アカウントとファイル共有を作成しておく必要があります。 以下のコマンドでは、*myAKSShare* という名前のリソース グループ、ストレージ アカウント、*aksshare* という名前のファイル共有を作成します。
 
 ```azurecli-interactive
 # Change these four parameters as needed for your own environment
@@ -61,7 +61,7 @@ echo Storage account key: $STORAGE_KEY
 
 Kubernetes には、前の手順で作成されたファイル共有にアクセスするための資格情報が必要です。 これらの資格情報は [Kubernetes シークレット][kubernetes-secret]に格納され、Kubernetes ポッドを作成するときにそのシークレットが参照されます。
 
-`kubectl create secret` コマンドを使用して、シークレットを作成します。 次の例では、 *azure-secret* という名前の共有を作成し、前の手順の *azurestorageaccountname* と *azurestorageaccountkey* を設定します。 既存の Azure ストレージ アカウントを使用するには、アカウント名とキーを指定します。
+`kubectl create secret` コマンドを使用して、シークレットを作成します。 次の例では、*azure-secret* という名前の共有を作成し、前の手順の *azurestorageaccountname* と *azurestorageaccountkey* を設定します。 既存の Azure ストレージ アカウントを使用するには、アカウント名とキーを指定します。
 
 ```console
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
@@ -69,7 +69,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-the-file-share-as-a-volume"></a>ファイル共有をボリュームとしてマウントする
 
-Azure ファイル共有をポッドにマウントするには、コンテナーの指定でボリュームを構成します。次の内容で、`azure-files-pod.yaml` という名前の新しいファイルを作成します。 ファイル共有の名前またはシークレット名を変更した場合は、 *shareName* と *secretName* を更新します。 必要な場合は、`mountPath` を更新します。これはファイル共有がポッドにマウントされているパスです。 Windows Server コンテナーの場合、 *'D:'* などの Windows パス規則を使用して *mountPath* を指定します。
+Azure ファイル共有をポッドにマウントするには、コンテナーの指定でボリュームを構成します。次の内容で、`azure-files-pod.yaml` という名前の新しいファイルを作成します。 ファイル共有の名前またはシークレット名を変更した場合は、*shareName* と *secretName* を更新します。 必要な場合は、`mountPath` を更新します。これはファイル共有がポッドにマウントされているパスです。 Windows Server コンテナーの場合、 *'D:'* などの Windows パス規則を使用して *mountPath* を指定します。
 
 ```yaml
 apiVersion: v1
@@ -133,7 +133,7 @@ Volumes:
 
 ## <a name="mount-options"></a>マウント オプション
 
-Kubernetes バージョン 1.9.1 以降の場合、 *fileMode* と *dirMode* の既定値は *0755* です。 Kubernetes バージョン 1.8.5 以降のクラスターを使い、永続ボリューム オブジェクトを静的に作成する場合は、 *PersistentVolume* オブジェクトに対してマウント オプションを指定する必要があります。 次の例では、 *0777* が設定されます。
+Kubernetes バージョン 1.9.1 以降の場合、*fileMode* と *dirMode* の既定値は *0755* です。 Kubernetes バージョン 1.8.5 以降のクラスターを使い、永続ボリューム オブジェクトを静的に作成する場合は、*PersistentVolume* オブジェクトに対してマウント オプションを指定する必要があります。 次の例では、*0777* が設定されます。
 
 ```yaml
 apiVersion: v1
@@ -145,7 +145,6 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
   azureFile:
     secretName: azure-secret
     shareName: aksshare
@@ -159,9 +158,9 @@ spec:
   - nobrl
 ```
 
-バージョン 1.8.0 - 1.8.4 のクラスターを使用している場合は、 *runAsUser* の値を *0* に設定してセキュリティ コンテキストを指定できます。 ポッドのセキュリティ コンテキストについて詳しくは、[セキュリティ コンテキストの構成][kubernetes-security-context]に関するページを参照してください。
+バージョン 1.8.0 - 1.8.4 のクラスターを使用している場合は、*runAsUser* の値を *0* に設定してセキュリティ コンテキストを指定できます。 ポッドのセキュリティ コンテキストについて詳しくは、[セキュリティ コンテキストの構成][kubernetes-security-context]に関するページを参照してください。
 
-マウント オプションを更新するには、 *PersistentVolume* を使用して *azurefile-mount-options-pv.yaml* ファイルを作成します。 次に例を示します。
+マウント オプションを更新するには、*PersistentVolume* を使用して *azurefile-mount-options-pv.yaml* ファイルを作成します。 次に例を示します。
 
 ```yaml
 apiVersion: v1
@@ -173,7 +172,6 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
   azureFile:
     secretName: azure-secret
     shareName: aksshare
@@ -197,20 +195,20 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
+  storageClassName: ""
   resources:
     requests:
       storage: 5Gi
 ```
 
-`kubectl` コマンドを使用して、 *PersistentVolume* と *PersistentVolumeClaim* を作成します。
+`kubectl` コマンドを使用して、*PersistentVolume* と *PersistentVolumeClaim* を作成します。
 
 ```console
 kubectl apply -f azurefile-mount-options-pv.yaml
 kubectl apply -f azurefile-mount-options-pvc.yaml
 ```
 
-*PersistentVolumeClaim* が作成され、 *PersistentVolume* にバインドされていることを確認します。
+*PersistentVolumeClaim* が作成され、*PersistentVolume* にバインドされていることを確認します。
 
 ```console
 $ kubectl get pvc azurefile

@@ -9,22 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: ec7459a356221fb7b599cbbc02f1cb825920b5b3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: b6fcf39e05c4649503f0b7a80aadaaa16df24674
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890668"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599564"
 ---
 # <a name="show-traffic-on-the-map"></a>マップ上にトラフィックを表示する
 
 Azure Maps で使用できるトラフィック データには、次の 2 種類があります。
 
 - インシデント データ - 建設、道路の閉鎖、事故などのためのポイント データと行ベースのデータで構成されます。
-- フロー データ - 道路のトラフィックのフローに関するメトリックを提供します。 多くの場合、トラフィック フロー データは、道路の色を設定するために使用されます。 その色は、速度制限やその他のメトリックと相対的な、フロー速度が低下するトラフィック量に基づいています。 Azure Maps のトラフィック フロー データには、次の 3 種類の測定メトリックがあります。
-    - `relative` - 道路のフリーフロー速度に対して相対的です。
-    - `absolute` - 道路のすべての車両の絶対速度です。
-    - `relative-delay` - 予想される平均遅延時間よりも遅い地域が表示されます。
+- フロー データ - 道路のトラフィックのフローに関するメトリックを提供します。 多くの場合、トラフィック フロー データは、道路の色を設定するために使用されます。 その色は、速度制限やその他のメトリックと相対的な、フロー速度が低下するトラフィック量に基づいています。 マップの交通情報 `flow` オプションに渡すことができる値は 4 つあります。
+
+    |Flow 値 | 説明|
+    | :-- | :-- |
+    | `none` | マップに交通情報データを表示しません |
+    | `relative` | 道路の自由流速度を基準にして交通情報データを表示します |
+    | `relative-delay` | 予想されている平均的な遅れよりも遅い地域を表示します |
+    | `absolute` | 道路上の全車両の対地速度を表示します |
 
 次のコードは、トラフィック データをマップに表示する方法を示しています。
 

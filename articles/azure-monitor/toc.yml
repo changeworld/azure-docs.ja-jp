@@ -129,7 +129,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: 警告
+    - name: アラート
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -574,12 +574,12 @@
               items:
                 - name: 概要
                   href: platform/itsmc-troubleshoot-overview.md
-                - name: ITSM Connector を同期する
-                  href: platform/itsmc-resync-servicenow.md
                 - name: ダッシュボードでの調査
                   href: platform/itsmc-dashboard.md
                 - name: 一般的なエラー
                   href: platform/itsmc-dashboard-errors.md
+                - name: ITSM Connector を同期する
+                  href: platform/itsmc-resync-servicenow.md
             - name: Secure Export との統合
               items:
                 - name: 概要

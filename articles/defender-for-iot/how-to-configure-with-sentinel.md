@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/28/2020
 ms.author: shhazam
-ms.openlocfilehash: d4686f1d7192d1469e52e653185f1fc9389764de
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2d82aaadf158e45cb8faaeee0b9b4e0fc80a3420
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832320"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247337"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel"></a>Defender for IoT からのデータを Azure Sentinel に接続する 
 
@@ -65,5 +65,5 @@ SecurityAlert | where ProductName == "Azure Security Center for IoT"
 
 このドキュメントでは、Defender for IoT を Azure Sentinel に接続する方法について学習しました。 脅威の検出とセキュリティ データ アクセスの詳細については、次の記事を参照してください。
 
-- Azure Sentinel を使用して[データと潜在的な脅威を可視化する](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)方法を学習します。
+- Azure Sentinel を使用して[データと潜在的な脅威を可視化する](../sentinel/quickstart-get-visibility.md)方法を学習します。
 - [IoT セキュリティ データにアクセス](how-to-security-data-access.md)する方法を学習します。

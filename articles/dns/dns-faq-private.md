@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 10/05/2019
+ms.date: 01/15/2021
 ms.author: rohink
-ms.openlocfilehash: 24f2ca238288854b99160a25c3d4dcedf8ce3368
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3272f4fea4169fd5e91b1ba2b97ad72dfbb49080
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952388"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247388"
 ---
 # <a name="azure-private-dns-faq"></a>Azure プライベート DNS に関する FAQ
 
@@ -88,6 +88,10 @@ Azure DNS プライベート ゾーンの使用制限の詳細については、
 ## <a name="how-do-i-migrate-my-existing-private-dns-zones-to-the-new-model"></a>どのようにして既存のプライベート DNS ゾーンを新しいモデルに移行しますか。
 
 できるだけ早く新しいリソース モデルに移行することを強くお勧めします。 従来のリソース モデルは今後、サポートはされますが、追加機能開発のベースになることはありません。 新しいリソース モデルを優先するために、将来的には廃止される予定です。 既存のプライベート DNS ゾーンを新しいリソース モデルに移行する方法については、[Azure DNS プライベート ゾーンの移行ガイド](private-dns-migration-guide.md)に関する記事を参照してください。
+
+### <a name="does-azure-dns-private-zones-store-any-customer-content"></a>Azure DNS プライベート ゾーンには顧客のコンテンツが保存されますか。
+
+いいえ。Azure DNS プライベート ゾーンには顧客のコンテンツは保存されません。
 
 ## <a name="next-steps"></a>次のステップ
 
