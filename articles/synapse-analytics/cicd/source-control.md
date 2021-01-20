@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 2f1fe7c25327e8ecab9b450cab167391d8949b0a
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 1f1a74f3a26a079039e68eb8e59fac4c18ff0c32
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008166"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219744"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio でのソース管理
 
@@ -77,7 +77,7 @@ Git リポジトリに接続するときに、最初に Azure DevOps Git とし�
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>別の Azure Active Directory テナントを使用する
 
-別の Azure Active Directory テナントで Azure Repos Git リポジトリを作成できます。 別の Azure AD テナントを指定するには、使用している Azure サブスクリプションの管理者のアクセス許可が必要です。 詳細については、[サブスクリプション管理者の変更](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#assign-a-subscription-administrator)に関する記事を参照してください。
+別の Azure Active Directory テナントで Azure Repos Git リポジトリを作成できます。 別の Azure AD テナントを指定するには、使用している Azure サブスクリプションの管理者のアクセス許可が必要です。 詳細については、[サブスクリプション管理者の変更](../../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator)に関する記事を参照してください。
 
 > [!IMPORTANT]
 > 別の Azure Active Directory に接続するには、ログインしているユーザーがその Active Directory の一部である必要があります。 
@@ -86,7 +86,7 @@ Git リポジトリに接続するときに、最初に Azure DevOps Git とし�
 
 Git の統合に個人用の Microsoft アカウントを使用するには、Azure の個人用のリポジトリを組織の Active Directory にリンクできます。
 
-1. 個人用の Microsoft アカウントを組織の Active Directory にゲストとして追加します。 詳しくは、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](https://docs.microsoft.com/azure/active-directory/external-identities/add-users-administrator)」をご覧ください。
+1. 個人用の Microsoft アカウントを組織の Active Directory にゲストとして追加します。 詳しくは、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../../active-directory/external-identities/add-users-administrator.md)」をご覧ください。
 
 2. 個人用の Microsoft アカウントを使用して、Azure portal にログインします。 その後組織の Active Directory に切り替えます。
 

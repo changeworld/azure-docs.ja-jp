@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: allensu
-ms.openlocfilehash: 5cd050c88fbc954a211c3a75cdabcb557ae998c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d86d4248b449ad3961a7798fd36a320eb6a74009
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87073928"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217075"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>PowerShell を使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -26,7 +26,7 @@ ms.locfileid: "87073928"
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-この記事では、PowerShell を使用して Azure Resource Manager デプロイ モデルで仮想マシン (VM) を作成する方法を説明します。 クラシック デプロイ モデルで作成されたリソースには、複数の IP アドレスを割り当てることはできません。 Azure のデプロイ モデルの詳細については、[デプロイ モデルの概要](../resource-manager-deployment-model.md)に関する記事をご覧ください。
+この記事では、PowerShell を使用して Azure Resource Manager デプロイ モデルで仮想マシン (VM) を作成する方法を説明します。 クラシック デプロイ モデルで作成されたリソースには、複数の IP アドレスを割り当てることはできません。 Azure のデプロイ モデルの詳細については、[デプロイ モデルの概要](../azure-resource-manager/management/deployment-models.md)に関する記事をご覧ください。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 

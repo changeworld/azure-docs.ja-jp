@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: bfecae4775655f732df8fd6cffea613cd39fb828
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e5495b466bf9b16319b788ec32c7b3a03100f505
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782010"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218144"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure ポータルでのストレージ アカウントの監視
 
@@ -31,6 +31,8 @@ ms.locfileid: "92782010"
 >
 > Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「 [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
 >
+
+<a id="modify-retention-policy"></a>
 
 ## <a name="configure-monitoring-for-a-storage-account"></a>ストレージ アカウントの監視の設定
 
@@ -63,9 +65,9 @@ ms.locfileid: "92782010"
 
 メトリック グラフに表示するストレージ メトリックを選択するには、次の手順に従います。
 
-1. 最初に Azure Portal でストレージのメトリック グラフを表示します。 サービス (BLOB、キュー、テーブル、ファイル) ごとに、 **ストレージ アカウント ブレード** と **[メトリック]** ブレードにグラフがあります。
+1. 最初に Azure Portal でストレージのメトリック グラフを表示します。 サービス (BLOB、キュー、テーブル、ファイル) ごとに、**ストレージ アカウント ブレード** と **[メトリック]** ブレードにグラフがあります。
 
-   この例では、 **ストレージ アカウント ブレード** に表示される次のグラフを使用します。
+   この例では、**ストレージ アカウント ブレード** に表示される次のグラフを使用します。
 
    ![Azure Portal でのグラフの選択](./media/storage-monitor-storage-account/stg-customize-chart-00.png)
 
@@ -83,7 +85,7 @@ ms.locfileid: "92782010"
 
 ### <a name="metrics-availability-in-charts"></a>グラフのメトリックの可用性
 
-使用可能なメトリックの一覧は、ドロップダウン リストで選択したサービスと、編集しているグラフの単位の種類に基づいて変わります。 たとえば、 *PercentNetworkError* 、 *PercentThrottlingError* などの割合メトリックを選択できるのは、単位の割合が表示されているグラフを編集している場合だけです。
+使用可能なメトリックの一覧は、ドロップダウン リストで選択したサービスと、編集しているグラフの単位の種類に基づいて変わります。 たとえば、*PercentNetworkError*、*PercentThrottlingError* などの割合メトリックを選択できるのは、単位の割合が表示されているグラフを編集している場合だけです。
 
 ![Azure Portal の要求エラーの割合グラフ](./media/storage-monitor-storage-account/stg-customize-chart-04.png)
 
@@ -91,8 +93,8 @@ ms.locfileid: "92782010"
 
 **[診断]** で選択したメトリックによって、アカウントで利用可能なメトリックの解像度が決まります。
 
-* **集計** : 受信/送信、空き時間情報、遅延時間、成功のパーセンテージなどのメトリックを監視します。 このメトリックは、BLOB、テーブル、ファイル、およびキューのサービスごとに集計されます。
-* **API ごと** : さらに細かな解像度が、サービス レベル集計のほか、個別のストレージ操作で使用できるメトリックと共に示されます。
+* **集計**: 受信/送信、空き時間情報、遅延時間、成功のパーセンテージなどのメトリックを監視します。 このメトリックは、BLOB、テーブル、ファイル、およびキューのサービスごとに集計されます。
+* **API ごと**: さらに細かな解像度が、サービス レベル集計のほか、個別のストレージ操作で使用できるメトリックと共に示されます。
 
 ## <a name="configure-metrics-alerts"></a>メトリック アラートの構成
 
@@ -101,7 +103,7 @@ ms.locfileid: "92782010"
 1. **警告ルール ブレード** を開くには、下にスクロールして **メニュー ブレード** の **[監視]** セクションを表示し、 **[アラート (クラシック)]** を選択します。
 2. **[メトリック アラートの追加 (クラシック)]** を選択して、 **[アラート ルールの追加]** ブレードを開きます
 3. 新しい警告ルールの **名前** と **説明** を指定します。
-4. アラートを追加する **メトリック** を選択し、アラートの **条件** 、および **しきい値** を選択します。 しきい値の単位の種類は、選択したメトリックによって異なります。 たとえば、"回数" は *ContainerCount* の単位の種類ですが、 *PercentNetworkError* の単位は割合です。
+4. アラートを追加する **メトリック** を選択し、アラートの **条件**、および **しきい値** を選択します。 しきい値の単位の種類は、選択したメトリックによって異なります。 たとえば、"回数" は *ContainerCount* の単位の種類ですが、*PercentNetworkError* の単位は割合です。
 5. **期間** を選択します。 この期間内にメトリックがしきい値以上になると、アラートがトリガーされます。
 6. (省略可能) **電子メール** と **webhook** の通知を構成します。 webhook の詳細については、「[Azure メトリック アラートでの webhook の構成](../../azure-monitor/platform/alerts-webhooks.md)」を参照してください。 電子メールまたは webhook の通知を構成しない場合は、Azure Portal にのみアラートが表示されます。
 

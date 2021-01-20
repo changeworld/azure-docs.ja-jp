@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: allensu
-ms.openlocfilehash: 568934d6b5ecc2fbb3b6fc6588ecfd48c8306490
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a3bd4cab8123814fe360fe4ab724650c785e9f1
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73889467"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234114"
 ---
 # <a name="load-balance-multiple-websites"></a>複数の Web サイトの負荷分散
 
@@ -46,22 +46,22 @@ az group delete --name myResourceGroup --yes
 
 | コマンド | Notes |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | Azure 仮想ネットワークとサブネットを作成します。 |
-| [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) | 静的 IP アドレスおよび関連付けられる DNS 名を指定してパブリック IP アドレスを作成します。 |
-| [az network lb create](https://docs.microsoft.com/cli/azure/network/lb) | Azure ロード バランサーを作成します。 |
-| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe) | ロード バランサー プローブを作成します。 ロード バランサー プローブは、ロード バランサー セット内の各 VM を監視するために使用されます。 アクセス不能になった VM には、トラフィックがルーティングされなくなります。 |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) | ロード バランサー規則を作成します。 このサンプルでは、ポート 80 に対する規則を作成します。 HTTP トラフィックは、ロード バランサーに到着すると、ロード バランサー セット内のいずれかの VM のポート 80 にルーティングされます。 |
-| [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip) | ロード バランサーのフロントエンド IP アドレスを作成します。 |
-| [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool) | バックエンド アドレス プールを作成します。 |
-| [az network nic create](https://docs.microsoft.com/cli/azure/network/nic) | 仮想ネットワーク カードを作成し、作成したカードを仮想ネットワークとサブネットに接続します。 |
-| [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule) | 可用性セットを作成します。 可用性セットでは、障害が発生した場合でもセット全体に影響が及ばないように物理リソース全体に仮想マシンを分散させることで、アプリケーションの稼働時間を確保します。 |
-| [az network nic ip-config create](https://docs.microsoft.com/cli/azure/network/nic/ip-config) | IP 構成を作成します。 Microsoft.Network/AllowMultipleIpConfigurationsPerNic 機能がサブスクリプションに対して有効になっている必要があります。 --make-primary フラグを使用して、NIC ごとにプライマリ IP 構成として指定できるのは 1 つの構成のみです。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | 仮想マシンを作成し、作成したマシンをネットワーク カード、仮想ネットワーク、サブネット、およびNSG に接続します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az network vnet create](/cli/azure/network/vnet) | Azure 仮想ネットワークとサブネットを作成します。 |
+| [az network public-ip create](/cli/azure/network/public-ip) | 静的 IP アドレスおよび関連付けられる DNS 名を指定してパブリック IP アドレスを作成します。 |
+| [az network lb create](/cli/azure/network/lb) | Azure ロード バランサーを作成します。 |
+| [az network lb probe create](/cli/azure/network/lb/probe) | ロード バランサー プローブを作成します。 ロード バランサー プローブは、ロード バランサー セット内の各 VM を監視するために使用されます。 アクセス不能になった VM には、トラフィックがルーティングされなくなります。 |
+| [az network lb rule create](/cli/azure/network/lb/rule) | ロード バランサー規則を作成します。 このサンプルでは、ポート 80 に対する規則を作成します。 HTTP トラフィックは、ロード バランサーに到着すると、ロード バランサー セット内のいずれかの VM のポート 80 にルーティングされます。 |
+| [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) | ロード バランサーのフロントエンド IP アドレスを作成します。 |
+| [az network lb address-pool create](/cli/azure/network/lb/address-pool) | バックエンド アドレス プールを作成します。 |
+| [az network nic create](/cli/azure/network/nic) | 仮想ネットワーク カードを作成し、作成したカードを仮想ネットワークとサブネットに接続します。 |
+| [az vm availability-set create](/cli/azure/network/lb/rule) | 可用性セットを作成します。 可用性セットでは、障害が発生した場合でもセット全体に影響が及ばないように物理リソース全体に仮想マシンを分散させることで、アプリケーションの稼働時間を確保します。 |
+| [az network nic ip-config create](/cli/azure/network/nic/ip-config) | IP 構成を作成します。 Microsoft.Network/AllowMultipleIpConfigurationsPerNic 機能がサブスクリプションに対して有効になっている必要があります。 --make-primary フラグを使用して、NIC ごとにプライマリ IP 構成として指定できるのは 1 つの構成のみです。 |
+| [az vm create](/cli/azure/vm/availability-set) | 仮想マシンを作成し、作成したマシンをネットワーク カード、仮想ネットワーク、サブネット、およびNSG に接続します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
+| [az group delete](/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他のネットワーク CLI のサンプル スクリプトは、[Azure のネットワーク概要のドキュメント](../cli-samples.md?toc=%2fazure%2fnetworking%2ftoc.json)に関するページで確認できます。

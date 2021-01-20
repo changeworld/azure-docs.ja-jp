@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 13535a82f8aca741a1e25755e5a2d971ce45514e
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 9766379807e6d2708fd6935dd2ffbd7660f9988f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739299"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216650"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Azure Storage の仮想ネットワーク サービス エンドポイント ポリシー
 
@@ -32,7 +32,7 @@ Virtual Network (VNet) のサービス エンドポイント ポリシーを使�
 
 - __Azure Storage への仮想ネットワーク トラフィックのセキュリティ強化__
 
-  [ネットワーク セキュリティ グループ用の Azure サービス タグ](https://aka.ms/servicetags) を使用することで、特定の Azure Storage リージョンへの仮想ネットワーク送信トラフィックを制限できます。 ただし、これにより、選択した Azure Storage リージョン内の任意のアカウントにトラフィックが送信されます。
+  [ネットワーク セキュリティ グループ用の Azure サービス タグ](./network-security-groups-overview.md) を使用することで、特定の Azure Storage リージョンへの仮想ネットワーク送信トラフィックを制限できます。 ただし、これにより、選択した Azure Storage リージョン内の任意のアカウントにトラフィックが送信されます。
   
   エンドポイント ポリシーを使用すると、仮想ネットワークの送信アクセスを許可される Azure Storage アカウントを指定し、他のすべてのストレージ アカウントへのアクセスを制限することができます。 これにより、仮想ネットワークで流出したデータを保護するためのセキュリティ制御がさらに詳細になります。
 

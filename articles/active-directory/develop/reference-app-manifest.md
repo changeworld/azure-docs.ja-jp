@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: b29d8007ba7c6fb41209ad4f792069667416616b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d855e124c84dee8554073d05fa04fe078b92ddaa
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011545"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208891"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 
@@ -115,17 +115,6 @@ Azure portal で、あるいは [REST API](/graph/api/resources/application) ま
     "allowPublicClient": false,
 ```
 
-### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants 属性
-
-| Key | 値の型 |
-| :--- | :--- |
-| availableToOtherTenants | Boolean |
-
-アプリケーションが他のテナントと共有されている場合は true、それ以外の場合は false に設定します。
-
-> [!NOTE]
-> この属性は、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`signInAudience` に置き換えられます。
-
 ### <a name="appid-attribute"></a>appId 属性
 
 | Key | 値の型 |
@@ -165,17 +154,6 @@ Azure AD によってアプリに割り当てられた一意識別子を指定�
     ],
 ```
 
-### <a name="displayname-attribute"></a>displayName 属性
-
-| Key | 値の型 |
-| :--- | :--- |
-| displayName | String |
-
-アプリの表示名。
-
-> [!NOTE]
-> この属性は、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`name` に置き換えられます。
-
 ### <a name="errorurl-attribute"></a>errorUrl 属性
 
 | Key | 値の型 |
@@ -203,33 +181,6 @@ Azure AD によってアプリに割り当てられた一意識別子を指定�
     "groupMembershipClaims": "SecurityGroup",
 ```
 
-### <a name="homepage-attribute"></a>homepage 属性
-
-| Key | 値の型 |
-| :--- | :--- |
-| homepage |String |
-
-アプリケーションのホームページの URL です。
-
-> [!NOTE]
-> この属性は、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`signInUrl` に置き換えられます。
-
-### <a name="objectid-attribute"></a>objectId 属性
-
-| Key | 値の型 |
-| :--- | :--- |
-|objectId | String |
-
-ディレクトリ内のアプリの一意識別子。
-
-これは、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`id` に置き換えられます。
-
-例:
-
-```json
-    "objectId": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
-```
-
 ### <a name="optionalclaims-attribute"></a>optionalClaims 属性
 
 | Key | 値の型 |
@@ -245,7 +196,6 @@ Azure AD によってアプリに割り当てられた一意識別子を指定�
 ```json
     "optionalClaims": null,
 ```
-
 
 
 ### <a name="identifieruris-attribute"></a>identifierUris 属性
@@ -489,16 +439,6 @@ OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求では�
     ],
 ```
 
-### <a name="publicclient-attribute"></a>publicClient 属性
-
-| Key | 値の型 |
-| :--- | :--- |
-| publicClient | Boolean|
-
-このアプリケーションがパブリック クライアント (モバイル デバイス上で実行されているインストール済みのアプリケーションなど) であるかどうかを指定します。
-
-このプロパティは、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`allowPublicClient` に置き換えられます。
-
 ### <a name="publisherdomain-attribute"></a>publisherDomain 属性
 
 | Key | 値の型 |
@@ -511,17 +451,7 @@ OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求では�
 
 ```json
     "publisherDomain": "https://www.contoso.com",
-````
-
-### <a name="replyurls-attribute"></a>replyUrls 属性
-
-| Key | 値の型 |
-| :--- | :--- |
-| replyUrls | 文字列配列 |
-
-この複数値プロパティは、Azure AD がトークンを返すときに宛先として受け入れる登録された redirect_uri 値の一覧を保持します。
-
-このプロパティは、**アプリの登録 (レガシ)** エクスペリエンスでのみ使用できます。 [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでは、`replyUrlsWithType` に置き換えられます。
+```
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType 属性
 

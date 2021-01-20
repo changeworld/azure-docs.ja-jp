@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: a25d6d0d1990682287b5962a7bd93a0c525db133
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: a29454f09268406511730c63dcc3bc3063b909c6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882366"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218656"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>ネットワーク分離のために Azure サービスと仮想ネットワークを統合する
 
@@ -66,7 +66,7 @@ VNet サービス エンドポイントでは、Azure のバックボーン ネ�
 
 ## <a name="service-tags"></a>サービス タグ
 
-サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグを使用して、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)または [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) でのネットワーク アクセス制御を定義できます。 規則の適切なソース フィールドまたはターゲット フィールドにサービス タグ名 (たとえば AzureEventGrid) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。
+サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグを使用して、[ネットワーク セキュリティ グループ](./network-security-groups-overview.md#security-rules)または [Azure Firewall](../firewall/service-tags.md) でのネットワーク アクセス制御を定義できます。 規則の適切なソース フィールドまたはターゲット フィールドにサービス タグ名 (たとえば AzureEventGrid) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。
 
 ![サービス タグを使用したトラフィックの許可または拒否](./media/network-isolation/service-tags.png)
 
@@ -78,4 +78,4 @@ VNet サービス エンドポイントでは、Azure のバックボーン ネ�
 
 - [Azure ネットワークとアプリを統合する](../app-service/web-sites-integrate-with-vnet.md)方法について説明します。
 - [サービス タグを使用してリソースへのアクセスを制限する](tutorial-restrict-network-access-to-resources.md)方法について説明します。
-- [Azure Private Link を使用して Azure Cosmos アカウントに非公開で接続する](../private-link/create-private-endpoint-cosmosdb-portal.md)方法について説明します。
+- [Azure Private Link を使用して Azure Cosmos アカウントに非公開で接続する](../private-link/tutorial-private-endpoint-cosmosdb-portal.md)方法について説明します。

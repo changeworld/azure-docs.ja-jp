@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/09/2020
+ms.date: 01/15/2021
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: da38dd99d0f27d83d5810a664d0c05f979f47080
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: e463328df195b5a91db8ce272d138f980d000e79
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920064"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232065"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Data Factory のリンクされたサービスのパラメーター化
 
@@ -42,7 +42,8 @@ ms.locfileid: "96920064"
 - Azure Cosmos DB (SQL API)
 - Azure Database for MySQL
 - Azure Databricks
-- Azure SQL データベース
+- Azure Key Vault
+- Azure SQL Database
 - Azure SQL Managed Instance
 - Azure Synapse Analytics 
 - MySQL

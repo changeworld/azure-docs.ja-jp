@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: fb193637525722bf227241a614cd977fbf70c9ac
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: df4bd0ae0884feae8bd21e33f4d27b6ceb207337
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074184"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234003"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -65,7 +65,7 @@ Web アプリのサーバーのタイム ゾーンを設定するには、次の
     * Value = *目的のタイム ゾーン*
 3. **[保存]** を選択します。
 
-Windows で実行される App Service については、Windows `tzutil /L` コマンドからの出力を参照してください。 各エントリの 2 行目の値を使用します。 次に例を示します。"トンガ標準時"。 これらの値の一部は、「 [既定のタイムゾーン](/windows-hardware/manufacture/desktop/default-time-zones)」の **タイムゾーン** 列にも記載されています。
+Windows で実行される App Service については、Windows `tzutil /L` コマンドからの出力を参照してください。 各エントリの 2 行目の値を使用します。 次に例を示します。"トンガ標準時"。 これらの値の一部は、「[既定のタイムゾーン](/windows-hardware/manufacture/desktop/default-time-zones)」の **タイムゾーン** 列にも記載されています。
 
 Linux で実行される App Service については、[IANA TZ データベース](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)から値を設定します。 次に例を示します。"America/Adak"。
 
@@ -130,7 +130,7 @@ Web ジョブのログを確認するには、次の手順を実行します。
 1. **Kudu の Web サイト** (`https://*yourwebsitename*.scm.azurewebsites.net`) にサインインします。
 2. [Web ジョブ] を選択します。
 3. **[出力の切り替え]** ボタンを選択します。
-4. 出力ファイルをダウンロードするには、 **ダウンロード** リンクを選択します。
+4. 出力ファイルをダウンロードするには、**ダウンロード** リンクを選択します。
 5. 個別実行では、 **[個別呼び出し]** を選択します。
 6. **[出力の切り替え]** ボタンを選択します。
 7. ダウンロード リンクを選択します。
@@ -149,7 +149,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>URL 書き換え規則を追加する方法を教えてください。
 
-URL 書き換え規則を追加するには、関連する構成エントリを含む web.config ファイルを **wwwroot** 　フォルダーに作成します。 詳細については、「[Azure App Services: URL 書き換えについて](/archive/blogs/madhurabharadwaj/azure-app-services-understanding-url-re-write)」を参照してください。
+URL 書き換え規則を追加するには、関連する構成エントリを含む web.config ファイルを **wwwroot**　フォルダーに作成します。 詳細については、「[Azure App Services: URL 書き換えについて](/archive/blogs/madhurabharadwaj/azure-app-services-understanding-url-re-write)」を参照してください。
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>App Service への受信トラフィックを制御するにはどうすればいいですか?
 
@@ -180,7 +180,7 @@ F12 トレースをキャプチャする方法は 2 つあります。
 3. **[ネットワーク]** タブが選択されていることを確認し、緑色の **[再生]** ボタンをクリックします。
 4. 問題を再現する手順を実行します。
 5. 赤の **[停止]** ボタンをクリックします。
-6. **[保存]** ボタン (ディスク アイコン) をクリックし、HAR ファイルを保存します (Internet Explorer およびで Microsoft Edge)。" *または* "、HAR ファイルを右クリックし、 **[HAR 形式ですべて保存]** を選択します (Chrome)。
+6. **[保存]** ボタン (ディスク アイコン) をクリックし、HAR ファイルを保存します (Internet Explorer およびで Microsoft Edge)。"*または*"、HAR ファイルを右クリックし、 **[HAR 形式ですべて保存]** を選択します (Chrome)。
 
 ### <a name="f12-console-output"></a>F12 コンソール出力
 
@@ -317,3 +317,8 @@ Azure の自動スケールが期待どおりに Web アプリのインスタン
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>オンプレミス環境から App Serviceアプリ サービスへの移行方法を教えてください?
 
 サイトを Windows および Linux の Web サーバーから App Service に移行するには、Azure App Service Migration Assistant を使用できます。 移行ツールは、必要に応じて、Azure に Web アプリとデータベースを作成し、コンテンツを発行します。 詳細については、「[Azure App Service Migration Assistant](https://appmigration.microsoft.com/)」を参照してください。
+
+## <a name="why-is-my-certificate-issued-for-11-months-and-not-for-a-full-year"></a>証明書が 1 年間ではなく 11 か月で発行されているのはなぜですか?
+
+2020/9/1 より後に発行されたすべての証明書について、最長期間は 397 日になりました。 2020/9/1 より前に発行された証明書は、更新やキー更新を行うまで、最大 825 日間有効になります。2020/9/1 より後に更新された証明書はこの変更による影響を受けます。ユーザーは、更新された証明書の有効期限が短くなっていることに気付く場合があります。
+GoDaddy により、既存の顧客の証明書を優先すると同時に新しい要件を満たすサブスクリプション サービスが実装されています。 新しく発行された証明書の有効期限が切れる 30 日前に、このサービスによって、期間を元の有効期限まで延長する 2 番目の証明書が自動的に発行されます。 App Service では、GoDaddy と連携してこの変更に対処し、お客様が証明書の完全な期間を確実に利用できるようにします。

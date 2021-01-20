@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7777888bd27325e9094032458922969494a9a64e
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c1e4e223e7932f7fc8699c04a94b079b7f16e3d5
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984959"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198902"
 ---
 # <a name="know-the-terms"></a>用語の確認
 
@@ -36,7 +36,7 @@ ms.locfileid: "94984959"
 - **Azure 上の SAP HANA (L インスタンス):** さまざまな Azure リージョンの L インスタンス スタンプにデプロイされた SAP HANA TDI 認定ハードウェア上で HANA インスタンスを実行する、Azure におけるプランの正式名称。 関連用語の *HANA L インスタンス* は、*SAP HANA on Azure (L インスタンス)* の省略形であり、このテクニカル デプロイ ガイドで広く使用されています。
 - **クロスプレミス**:オンプレミスのデータ センターと Azure の間で、サイト間接続、マルチサイト接続、または Azure ExpressRoute 接続を利用する Azure サブスクリプションに VM をデプロイするシナリオを指します。 この種のデプロイは、共通の Azure ドキュメントでもクロスプレミス シナリオとして説明されています。 この接続の目的は、オンプレミスのドメイン、オンプレミスの Azure Active Directory/OpenLDAP、およびオンプレミスの DNS を Azure に拡張することです。 オンプレミスのランドスケープが、Azure サブスクリプションの Azure 資産に拡張されます。 この拡張により、VM をオンプレミス ドメインに含めることができます。 
 
-   オンプレミス ドメインのドメイン ユーザーは、サーバーにアクセスし、それらの VM 上でサービス (DBMS サービスなど) を実行できます。 オンプレミスにデプロイした VM と Azure にデプロイした VM 間での通信と名前解決が可能です。 このシナリオが、ほとんどの SAP 資産をデプロイする際の一般的な方法です。 詳しくは、[Azure VPN Gateway ](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事、および[Azure Portal を使用したサイト間接続の仮想ネットワークの作成](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
+   オンプレミス ドメインのドメイン ユーザーは、サーバーにアクセスし、それらの VM 上でサービス (DBMS サービスなど) を実行できます。 オンプレミスにデプロイした VM と Azure にデプロイした VM 間での通信と名前解決が可能です。 このシナリオが、ほとんどの SAP 資産をデプロイする際の一般的な方法です。 詳しくは、[Azure VPN Gateway ](../../../vpn-gateway/vpn-gateway-about-vpngateways.md)に関する記事、および[Azure Portal を使用したサイト間接続の仮想ネットワークの作成](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関する記事をご覧ください。
 - **Tenant**: HANA L インスタンス スタンプにデプロイされたお客様は、"*テナント*" に分離されます。 テナントは、ネットワーク、ストレージ、およびコンピューティング レイヤーで他のテナントから分離されます。 別のテナントに割り当てられているストレージ ユニットやコンピューティング ユニットは、HANA L インスタンス スタンプ レベルで相互に認識したり通信したりすることはできません。 同じお客様が別々のテナントにデプロイを置くこともありますが、 その場合でも HANA L インスタンス スタンプ レベルでテナント間が通信することはありません。
 - **SKU カテゴリ**:HANA L インスタンスの場合、次の 2 つの SKU のカテゴリが提供されます。
     - **Type I クラス**:S72、S72m、S96、S144、S144m、S192、S192m、S192xm、S224、および S224m
@@ -47,7 +47,7 @@ ms.locfileid: "94984959"
     - "リビジョン 4" (Rev 4): Azure VM と HANA L インスタンス ユニット間のネットワーク待機時間を短縮しながら、Azure 仮想マシンのホストにより近い場所を提供できる新しい設計です 
     - "リビジョン 4.2" (Rev 4.2): 既存のリビジョン 4 の DC では、リソースは BareMetal Infrastructure に再ブランディングされます。  お客様は、Azure portal から BareMetal インスタンスとしてリソースにアクセスできます。 
 
-クラウドに SAP ワークロードをデプロイする方法については、他のさまざまなリソースが用意されています。 Azure への SAP HANA のデプロイを計画する場合、Azure IaaS の原則と Azure IaaS での SAP ワークロードのデプロイに関する知識と経験が必要です。 作業を続行する前に、[Azure 仮想マシンでの SAP ソリューションの使用](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事で詳細を確認してください。 
+クラウドに SAP ワークロードをデプロイする方法については、他のさまざまなリソースが用意されています。 Azure への SAP HANA のデプロイを計画する場合、Azure IaaS の原則と Azure IaaS での SAP ワークロードのデプロイに関する知識と経験が必要です。 作業を続行する前に、[Azure 仮想マシンでの SAP ソリューションの使用](get-started.md)に関する記事で詳細を確認してください。 
 
 **次の手順**
 - [HLI 認定](hana-certification.md)を参照してください

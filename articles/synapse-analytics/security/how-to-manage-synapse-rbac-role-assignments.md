@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: f26b54a18ff137575cac208d70e4693c0b9914a8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c88371eb450d5b0e2e8b821cdec0e87190e291f8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572288"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218197"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>Synapse Studio で Synapse RBAC ロールの割り当てを管理する方法
 
@@ -65,7 +65,7 @@ Synapse RBAC は、ロールを使用してユーザー、グループ、その�
 
 ![ワークスペース項目ロールの割り当てを追加する - 項目の種類を選択する](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-item-type.png) 
 
-スコープとして使用される特定の **項目** を選択してから、割り当てられる **ロール** をドロップダウンから選択します。  このドロップダウンには、選択されている項目の種類で有効なロールのみが一覧表示されます。 [詳細については、こちらを参照してください](https://go.microsoft.com/fwlink/?linkid=2148306)。  
+スコープとして使用される特定の **項目** を選択してから、割り当てられる **ロール** をドロップダウンから選択します。  このドロップダウンには、選択されている項目の種類で有効なロールのみが一覧表示されます。 [詳細については、こちらを参照してください](./synapse-workspace-synapse-rbac.md)。  
 
 ![ワークスペース項目ロールの割り当てを追加する - ロールを選択する](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-role.png) 
  
@@ -81,4 +81,4 @@ Synapse RBAC アクセス権を取り消すには、該当するロールの割�
 
 ## <a name="next-steps"></a>次のステップ
 
-[一般的なタスクを実行するために必要な Synapse RBAC ロールを理解する](./synapse-workspace-understand-what-role-you-need.md) 
+[一般的なタスクを実行するために必要な Synapse RBAC ロールを理解する](./synapse-workspace-understand-what-role-you-need.md)

@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 57b2955f8cec059cd20d353eba31dc39ad992d50
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 3f9dd35959980eef4e1bec550bf7e9f583cf30d2
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506339"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98225654"
 ---
 リージョン VNet 統合を使用すると、アプリは次のものにアクセスできるようになります。
 
@@ -48,7 +48,6 @@ ms.locfileid: "97506339"
 * この機能には、Azure Resource Manager VNet 内に /28 以上の未使用のサブネットが必要です。
 * アプリと VNet は同じリージョンに存在する必要があります。
 * 統合アプリで VNet を削除することはできません。 VNet を削除する前に、統合を削除してください。
-* アプリと同じサブスクリプション内の VNet とのみ統合できます。
 * App Service プランごとに 1 リージョンの VNet 統合のみを持つことができます。 同じ App Service プラン内の複数のアプリが同じ VNet を使用できます。
 * リージョン VNet 統合を使用しているアプリがあるときに、アプリまたはプランのサブスクリプションを変更することはできません。
 * アプリでは、構成を変更せずに Azure DNS Private Zones のアドレスを解決することはできません

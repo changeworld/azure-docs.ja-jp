@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: bd35d3288591a01c14e306960601eef6dea7e761
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 02a6e934b517cdd118b6175d9cfef73bee4c996d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954143"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223008"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してパブリック IP アドレスを作成する
 
-この記事では、Azure portal を使用してパブリック IP アドレス リソースを作成する方法について説明します。 これを関連付けることができるリソース、Basic SKU と Standard SKU の違い、およびその他の関連情報については、「[パブリック IP アドレス](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses)」を参照してください。  この例では、IPv4 アドレスのみに焦点を当てます。IPv6 アドレスの詳細については、[Azure VNet の IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview) に関するページを参照してください。
+この記事では、Azure portal を使用してパブリック IP アドレス リソースを作成する方法について説明します。 これを関連付けることができるリソース、Basic SKU と Standard SKU の違い、およびその他の関連情報については、「[パブリック IP アドレス](./public-ip-addresses.md)」を参照してください。  この例では、IPv4 アドレスのみに焦点を当てます。IPv6 アドレスの詳細については、[Azure VNet の IPv6](./ipv6-overview.md) に関するページを参照してください。
 
 # <a name="standard-sku---using-zones"></a>[**Standard SKU - ゾーンの使用**](#tab/option-create-public-ip-standard-zones)
 
@@ -46,9 +46,9 @@ ms.locfileid: "97954143"
     | 場所                | **[米国東部 2]** を選択します      |
     | 可用性ゾーン       | **[ゾーン冗長]** を選択するか、特定のゾーンを選択します (下記の注を参照)。 |
 
-これらは、[Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) が利用できるリージョンでのみ有効な選択であることに注意してください。  (これらのリージョンでは特定のゾーンも選択できますが、ゾーン障害に対する回復性はありません。)
+これらは、[Availability Zones](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones) が利用できるリージョンでのみ有効な選択であることに注意してください。  (これらのリージョンでは特定のゾーンも選択できますが、ゾーン障害に対する回復性はありません。)
 
-\* = 層は、[リージョン間ロード バランサー](https://docs.microsoft.com/azure/load-balancer/cross-region-overview)機能 (現在はプレビュー) に関連しています。
+\* = 層は、[リージョン間ロード バランサー](../load-balancer/cross-region-overview.md)機能 (現在はプレビュー) に関連しています。
 
 # <a name="basic-sku"></a>[**Basic SKU**](#tab/option-create-public-ip-basic)
 
@@ -78,9 +78,9 @@ ms.locfileid: "97954143"
 
 ## <a name="additional-information"></a>関連情報 
 
-上に示した個々のフィールドの詳細については、「[パブリック IP アドレスの管理](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address)」を参照してください。
+上に示した個々のフィールドの詳細については、「[パブリック IP アドレスの管理](./virtual-network-public-ip-address.md#create-a-public-ip-address)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-- [仮想マシンにパブリック IP アドレス](https://docs.microsoft.com/azure/virtual-network/associate-public-ip-address-vm#azure-portal)を関連付ける
-- Azure の[パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)について詳しく学習する。
+- [仮想マシンにパブリック IP アドレス](./associate-public-ip-address-vm.md#azure-portal)を関連付ける
+- Azure の[パブリック IP アドレス](./public-ip-addresses.md#public-ip-addresses)について詳しく学習する。
 - すべての[パブリック IP アドレスの設定](virtual-network-public-ip-address.md#create-a-public-ip-address)について詳しく学習する。

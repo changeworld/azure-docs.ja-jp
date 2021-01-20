@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 993cd614f150866817e8d71dbd9dca9be606465f
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 5b38da5539cb80110b2a769a219213a5c74e1506
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035157"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198557"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure Functions 用の Azure セキュリティ ベースライン
 
@@ -425,7 +425,7 @@ Azure Functions には、関数を監視するための Azure Application Insigh
 
 **ガイダンス**: Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure リソースを構成します。
 
-- [特権アクセス ワークステーションについて](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 

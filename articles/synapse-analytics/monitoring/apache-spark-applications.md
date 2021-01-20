@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 16b37258d922db59f520d4e30c45773f6d1108cf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 2f9fa6e7ef9a7ee8ea7dd2a09622f26f6fd9739e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341072"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223127"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Synapse Studio を使用して Apache Spark アプリケーションを監視する
 
@@ -33,7 +33,7 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
 
 このチュートリアルを開始する前に、次の要件を満たしてください。
 
-- Synapse Studio ワークスペース。 手順については、[Synapse Studio ワークスペースの作成](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)に関する記事を参照してください。
+- Synapse Studio ワークスペース。 手順については、[Synapse Studio ワークスペースの作成](../../machine-learning/how-to-manage-workspace.md#create-a-workspace)に関する記事を参照してください。
 
 - Apache Spark プール。
 
@@ -47,7 +47,7 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
 
   ![完了したジョブを選択する](./media/how-to-monitor-spark-applications/select-completed-job.png)
 
-1. **完了したタスク** 、 **状態** 、および **合計実行時間** を確認します。
+1. **完了したタスク**、**状態**、および **合計実行時間** を確認します。
 
 2. ログ クエリを更新します。
 
@@ -96,7 +96,7 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
 
    ![実行中のジョブを選択する](./media/how-to-monitor-spark-applications/select-running-job.png)
 
-1. **完了したタスク** 、 **状態** 、および **合計実行時間** を確認します。
+1. **完了したタスク**、**状態**、および **合計実行時間** を確認します。
 
 2. Apache Spark アプリケーションを **[取り消し]** ます。
 
@@ -120,7 +120,7 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
 
  ![取り消されたジョブを選択する](./media/how-to-monitor-spark-applications/select-cancelled-job.png) 
 
-1. **完了したタスク** 、 **状態** 、および **合計実行時間** を確認します。
+1. **完了したタスク**、**状態**、および **合計実行時間** を確認します。
 
 2. ログ クエリを更新します。
 
@@ -130,7 +130,7 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
 
 5. **概要** 情報を確認します。
 
-6. **ログ** を確認します。 ドロップダウン リストからさまざまな種類のログを選択できます。また、[ログの **ダウンロード** ] をクリックすることでログ情報をダウンロードでき、さらに **[Filter errors and warnings]\(エラーと警告をフィルター処理する\)** のチェックボックスをオンにすると必要なエラーや警告をフィルタリングすることができます。
+6. **ログ** を確認します。 ドロップダウン リストからさまざまな種類のログを選択できます。また、[ログの **ダウンロード**] をクリックすることでログ情報をダウンロードでき、さらに **[Filter errors and warnings]\(エラーと警告をフィルター処理する\)** のチェックボックスをオンにすると必要なエラーや警告をフィルタリングすることができます。
 
 7. グラフの **[詳細の表示]** をクリックすると、ステージの詳細が表示されます。
 
@@ -142,7 +142,7 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
 
 ![失敗したジョブを選択する](./media/how-to-monitor-spark-applications/select-failed-job.png)
 
-1. **完了したタスク** 、 **状態** 、および **合計実行時間** を確認します。
+1. **完了したタスク**、**状態**、および **合計実行時間** を確認します。
 
 2. ログ クエリを更新します。
 
@@ -158,4 +158,4 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
 
 ## <a name="next-steps"></a>次のステップ
 
-パイプラインの実行の監視に関する詳細については、[Synapse Studio を使用したパイプラインの実行の監視](how-to-monitor-pipeline-runs.md)に関する記事を参照してください。  
+パイプラインの実行の監視に関する詳細については、[Synapse Studio を使用したパイプラインの実行の監視](how-to-monitor-pipeline-runs.md)に関する記事を参照してください。

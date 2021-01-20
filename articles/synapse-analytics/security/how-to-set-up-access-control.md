@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 62c30356017b5ea5d93351e6f22b8b7b0c22718c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7dbbe3afb2a5eb19b5c4893bd73eddbf11e788d4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109268"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218078"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Synapse ワークスペースのアクセス制御を設定する方法 
 
@@ -73,8 +73,8 @@ Synapse ワークスペースをセキュリティで保護するには、次の
 基本的なセットアップには、これらの 5 つのグループで十分です。 後でセキュリティ グループを追加して、より特殊化されたアクセスを必要とするユーザーを処理したり、特定のリソースへのアクセスのみをユーザーに許可したりすることができます。
 
 > [!NOTE]
->- セキュリティ グループを作成する方法については、[こちらの記事](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)を参照してください。
->- 別のセキュリティ グループからセキュリティ グループを追加する方法については、[こちらの記事](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal)を参照してください。
+>- セキュリティ グループを作成する方法については、[こちらの記事](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)を参照してください。
+>- 別のセキュリティ グループからセキュリティ グループを追加する方法については、[こちらの記事](../../active-directory/fundamentals/active-directory-groups-membership-azure-portal.md)を参照してください。
 
 >[!Tip]
 >個々の Synapse ユーザーは、Azure portal の Azure Active Directory を使用してグループ メンバーシップを表示し、付与されているロールを確認できます。

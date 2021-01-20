@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: eb94b67b026ed108f31f6cd802010577665ec0d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ece3e639e0ef3516696e2a0bad7deeb833433a6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87286089"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219200"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure VM 間の接続に関する問題のトラブルシューティング
 
@@ -49,7 +49,7 @@ Azure 仮想マシン (VM) 間の接続について問題が発生すること�
 
 ### <a name="step-1-check-whether-nic-is-misconfigured"></a>手順 1:NIC の構成が正しいかどうかを確認する
 
-「[Azure Windows VM のネットワーク インターフェイスをリセットする方法](../virtual-machines/windows/reset-network-interface.md)」の手順に従います。 
+「[Azure Windows VM のネットワーク インターフェイスをリセットする方法](../virtual-machines/troubleshooting/reset-network-interface.md)」の手順に従います。 
 
 ネットワーク インターフェイス (NIC) の変更後に問題が発生した場合は、次の手順を実行します。
 
@@ -62,8 +62,8 @@ Azure 仮想マシン (VM) 間の接続について問題が発生すること�
 
 **シングル NIC VM** 
 
-- [Windows VM の再デプロイ](../virtual-machines/windows/redeploy-to-new-node.md)
-- [Linux VM の再デプロイ](../virtual-machines/linux/redeploy-to-new-node.md)
+- [Windows VM の再デプロイ](../virtual-machines/troubleshooting/redeploy-to-new-node-windows.md)
+- [Linux VM の再デプロイ](../virtual-machines/troubleshooting/redeploy-to-new-node-linux.md)
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>手順 2:ネットワーク トラフィックが NSG または UDR によってブロックされているかどうかを確認する
 
@@ -103,7 +103,7 @@ netstat -l
 
 ### <a name="step-7-check-whether-the-endpoint-is-created-for-the-classic-vm"></a>手順 7:クラシック VM のエンドポイントが作成されているかどうかを確認する
 
-クラシック デプロイ モデルを使用して Azure で作成したすべての VM は、プライベート ネットワーク チャネルを介して、同じクラウド サービスまたは仮想ネットワーク内の他の仮想マシンと自動的に通信できます。 ただし、他の仮想ネットワーク上にあるコンピューターと通信するには、受信ネットワーク トラフィックを仮想マシンに転送するエンドポイントが必要になります。 詳細については、[エンドポイントの設定方法](../virtual-machines/windows/classic/setup-endpoints.md)に関するページを参照してください。
+クラシック デプロイ モデルを使用して Azure で作成したすべての VM は、プライベート ネットワーク チャネルを介して、同じクラウド サービスまたは仮想ネットワーク内の他の仮想マシンと自動的に通信できます。 ただし、他の仮想ネットワーク上にあるコンピューターと通信するには、受信ネットワーク トラフィックを仮想マシンに転送するエンドポイントが必要になります。 詳細については、[エンドポイントの設定方法](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints)に関するページを参照してください。
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>手順 8:VM ネットワーク共有への接続を試みる
 

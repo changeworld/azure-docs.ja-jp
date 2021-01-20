@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: 9f5b535a341956e5675ba96ba9570bd3f2ff3443
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad91eb94aedcdd0e4e715162e3ae064a1d2fb1ea
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710951"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220424"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>動的 DNS を使用して独自の DNS サーバーでホスト名を登録する
 
@@ -28,7 +28,7 @@ ms.locfileid: "84710951"
 カスタム DNS サーバーが Azure VM としてホストされていると、同じ仮想ネットワークのホスト名のクエリを Azure に転送して、ホスト名を解決できます。 このオプションを使用しない場合は、動的 DNS (DDNS) を使用して DNS サーバーに VM のホスト名を登録できます。 Azure には、DNS サーバーに直接レコードを作成するための資格情報がないため、多くの場合に代替の準備が必要になります。 一般的なシナリオと代替手段を次に示します。
 
 ## <a name="windows-clients"></a>Windows クライアント
-ドメインに参加していない Windows クライアントは、起動時や IP アドレスの変更時に、セキュリティ保護されていない DDNS の更新を試みます。 DNS 名は、ホスト名とプライマリ DNS サフィックスの組み合わせです。 Azure はプライマリ DNS サフィックスを空白のままにしますが、VM で[ユーザー インターフェイス](https://technet.microsoft.com/library/cc794784.aspx)または [PowerShell](/powershell/module/dnsclient/set-dnsclient) を使ってサフィックスを設定できます。
+ドメインに参加していない Windows クライアントは、起動時や IP アドレスの変更時に、セキュリティ保護されていない DDNS の更新を試みます。 DNS 名は、ホスト名とプライマリ DNS サフィックスの組み合わせです。 Azure はプライマリ DNS サフィックスを空白のままにしますが、VM で[ユーザー インターフェイス](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794784(v=ws.10))または [PowerShell](/powershell/module/dnsclient/set-dnsclient) を使ってサフィックスを設定できます。
 
 ドメインに参加している Windows クライアントは、セキュリティ保護された DDNS を使用し、その IP アドレスをドメイン コント ローラーに登録します。 ドメイン参加プロセスでは、クライアントにプライマリ DNS サフィックスを設定し、信頼関係を作成して管理します。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: d38c57a8c8504e1e03406f7cd8a0b61725cb0511
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 7a665bf05167a6bdf20c7325c66a5d0e439aa7f1
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008089"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223688"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse ワークスペースの継続的インテグレーションとデリバリー
 
@@ -21,7 +21,7 @@ ms.locfileid: "97008089"
 
 継続的インテグレーション (CI) は、チーム メンバーが変更をバージョン コントロールにコミットするたびに、コードのビルドとテストを自動化するプロセスです。 継続的配置 (CD) は、複数のテスト環境またはステージング環境から運用環境へのビルド、テスト、構成、およびデプロイを行うプロセスです。
 
-Azure Synapse ワークスペースでは、継続的インテグレーションとデリバリー (CI/CD) を使用して、すべてのエンティティをある環境 (開発、テスト、運用) から別の環境に移動します。 ワークスペースを別のワークスペースに昇格させるには、次の 2 つの部分があります。[Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)を使用して、ワークスペース リソース (プールとワークスペース) を作成または更新します。Azure DevOps の Synapse CI/CD ツールを使用して、アーティファクト (SQL スクリプト、ノートブック、Spark ジョブの定義、パイプライン、データセット、データフローなど) を移行します。 
+Azure Synapse ワークスペースでは、継続的インテグレーションとデリバリー (CI/CD) を使用して、すべてのエンティティをある環境 (開発、テスト、運用) から別の環境に移動します。 ワークスペースを別のワークスペースに昇格させるには、次の 2 つの部分があります。[Resource Manager テンプレート](../../azure-resource-manager/templates/overview.md)を使用して、ワークスペース リソース (プールとワークスペース) を作成または更新します。Azure DevOps の Synapse CI/CD ツールを使用して、アーティファクト (SQL スクリプト、ノートブック、Spark ジョブの定義、パイプライン、データセット、データフローなど) を移行します。 
 
 この記事では、Azure リリース パイプラインを使用して、複数の環境への Synapse ワークスペースのデプロイを自動化する方法について説明します。
 
@@ -46,7 +46,7 @@ Azure Synapse ワークスペースでは、継続的インテグレーション
 
 1.  **[ステージ名]** ボックスに、環境の名前を入力します。
 
-1.  **[成果物の追加]** を選択し、開発 Synapse Studio で構成した Git リポジトリを選択します。 プールとワークスペースの ARM テンプレートを管理するために使用した Git リポジトリを選択します。 ソースとして GitHub を使用する場合は、GitHub アカウントとプル リポジトリのサービス接続を作成する必要があります。 [サービス接続](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints)の詳細情報 
+1.  **[成果物の追加]** を選択し、開発 Synapse Studio で構成した Git リポジトリを選択します。 プールとワークスペースの ARM テンプレートを管理するために使用した Git リポジトリを選択します。 ソースとして GitHub を使用する場合は、GitHub アカウントとプル リポジトリのサービス接続を作成する必要があります。 [サービス接続](/azure/devops/pipelines/library/service-endpoints)の詳細情報 
 
     ![発行ブランチの追加](media/release-creation-github.png)
 
@@ -87,7 +87,7 @@ Azure Synapse ワークスペースでは、継続的インテグレーション
     ![アクセス許可の付与](media/release-creation-grant-permission.png)
 
  > [!WARNING]
-> 完全なデプロイ モードでは、リソース グループに存在していても、新しい Resource Manager テンプレート内で指定されていないリソースは、**削除** されます。 詳細については、「[Azure Resource Manager のデプロイ モード](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes)」を参照してください。
+> 完全なデプロイ モードでは、リソース グループに存在していても、新しい Resource Manager テンプレート内で指定されていないリソースは、**削除** されます。 詳細については、「[Azure Resource Manager のデプロイ モード](../../azure-resource-manager/templates/deployment-modes.md)」を参照してください。
 
 ## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>アーティファクトのデプロイのステージ タスクを設定する 
 
@@ -122,7 +122,7 @@ Azure Synapse ワークスペースでは、継続的インテグレーション
 
 ## <a name="create-release-for-deployment"></a>デプロイのリリースを作成する 
 
-すべての変更を保存したら、 **[リリースの作成]** を選択してリリースを手動で作成できます。 リリースの作成を自動化するには、[Azure DevOps のリリース トリガー](https://docs.microsoft.com/azure/devops/pipelines/release/triggers)に関するページを参照してください。
+すべての変更を保存したら、 **[リリースの作成]** を選択してリリースを手動で作成できます。 リリースの作成を自動化するには、[Azure DevOps のリリース トリガー](/azure/devops/pipelines/release/triggers)に関するページを参照してください。
 
    ![[Create release]\(リリースの作成\) の選択](media/release-creation-manually.png)
 
@@ -133,6 +133,4 @@ Synapse ワークスペースとの Git 統合を使用していて、変更を�
 -   **Git 統合**。 Git 統合で開発 Synapse ワークスペースのみを構成します。 テスト ワークスペースと運用ワークスペースへの変更は CI/CD を介してデプロイされるので、Git 統合は必要ありません。
 -   **アーティファクトの移行前にプールを準備します**。 SQL スクリプトまたはノートブックが開発ワークスペース内のプールにアタッチされている場合は、別の環境にも同じ名前のプールが必要です。 
 -   **コードとしてのインフラストラクチャ (IaC)** 。 記述型モデルでのインフラストラクチャ (ネットワーク、仮想マシン、ロード バランサー、接続トポロジ) の管理であり、DevOps チームがソース コードに使用するものと同じバージョン管理を使用します。 
--   **その他**。 [ADF アーティファクトのベスト プラクティス](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)に関するページを参照してください
-
-
+-   **その他**。 [ADF アーティファクトのベスト プラクティス](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd)に関するページを参照してください

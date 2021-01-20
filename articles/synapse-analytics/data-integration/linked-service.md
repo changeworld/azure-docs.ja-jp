@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: fb3c7dd7b3d7e8e42e230eedcd0d1b43af104327
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: af6afa2b0285fe741241183ed99712a132953a30
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452527"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220118"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Private Link を使用してリンクされたサービスをセキュリティで保護する
 
@@ -23,7 +23,7 @@ ms.locfileid: "96452527"
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
-* **Microsoft Azure Storage アカウント**:"*ソース*" データ ストアとして Azure Data Lake Gen 2 を使用します。 ストレージ アカウントがない場合の作成手順については、「[Azure Storage アカウントの作成](../../storage/blobs/data-lake-storage-quickstart-create-account.md)」を参照してください。 ストレージ アカウントにそれにアクセスするための Synapse Studio IP フィルタリングが用意されていること、**選択されたネットワーク** のみにストレージ アカウントへのアクセスを許可していることを確認します。 **[ファイアウォールと仮想ネットワーク]** ブレードでの設定は次の図のようになります。
+* **Microsoft Azure Storage アカウント**:"*ソース*" データ ストアとして Azure Data Lake Gen 2 を使用します。 ストレージ アカウントがない場合の作成手順については、「[Azure Storage アカウントの作成](../../storage/common/storage-account-create.md)」を参照してください。 ストレージ アカウントにそれにアクセスするための Synapse Studio IP フィルタリングが用意されていること、**選択されたネットワーク** のみにストレージ アカウントへのアクセスを許可していることを確認します。 **[ファイアウォールと仮想ネットワーク]** ブレードでの設定は次の図のようになります。
 
 ![セキュリティで保護されたストレージ アカウント](./media/secure-storage-account.png)
 

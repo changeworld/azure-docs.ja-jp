@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b45bd2e2b9ad971891cbcb944286f40b4f66883
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480135"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216956"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>仮想マシンのネットワーク インターフェイスの追加と削除
 
@@ -61,9 +61,9 @@ VM を作成する前に、[ネットワーク インターフェイス](virtual
 
 1. [Azure portal](https://portal.azure.com) に移動し、既存の仮想マシンを検索します。 **[仮想マシン]** を検索して選択します。
 
-2. 使用する VM の名前を選択します。 この VM は、追加するネットワーク インターフェイスの数をサポートしている必要があります。 各 VM サイズでサポートされているネットワーク インターフェイスの数については、[Linux VM](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Windows VM](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の Azure におけるサイズをご確認ください。
+2. 使用する VM の名前を選択します。 この VM は、追加するネットワーク インターフェイスの数をサポートしている必要があります。 各 VM サイズでサポートされているネットワーク インターフェイスの数については、[Linux VM](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Windows VM](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の Azure におけるサイズをご確認ください。
 
-3. VM のコマン ドバーで **[停止]** を選択し、確認のダイアログ ボックスで **[OK]** を選択します。 そして VM の**状態**が **[停止済み (割り当て解除)]** に変わるまで待ちます。
+3. VM のコマン ドバーで **[停止]** を選択し、確認のダイアログ ボックスで **[OK]** を選択します。 そして VM の **状態** が **[停止済み (割り当て解除)]** に変わるまで待ちます。
 
 4. VM のメニュー バーで、 **[ネットワーク]**  >  **[ネットワーク インターフェイスの接続]** を順に選択します。 次に、 **[Attach existing network interface]** \(既存のネットワーク インターフェイスの接続\) で、 **[OK]** を選択します。
 
@@ -113,7 +113,7 @@ VM にアタッチされているネットワーク インターフェイスを�
 
 3. VM ツールバーで、 **[停止]** を選択します。
 
-4. VM の**状態**が **[停止済み (割り当て解除)]** に変わるまで待ちます。
+4. VM の **状態** が **[停止済み (割り当て解除)]** に変わるまで待ちます。
 
 5. VM のメニュー バーで、 **[ネットワーク]**  >  **[ネットワーク インターフェイスの切断]** を順に選択します。
 
@@ -133,7 +133,7 @@ VM にアタッチされているネットワーク インターフェイスを�
 
 - VM には少なくとも 1 つのネットワーク インターフェイスが接続されている必要があります。
 
-- VM には、VM のサイズが対応できるだけの数のネットワーク インターフェイスしか接続できません。 各 VM サイズでサポートされているネットワーク インターフェイスの数の詳細については、[Linux VM](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Windows VM](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の Azure におけるサイズをご覧ください。 すべてのサイズが、少なくとも 2 つのネットワーク インターフェイスに対応します。
+- VM には、VM のサイズが対応できるだけの数のネットワーク インターフェイスしか接続できません。 各 VM サイズでサポートされているネットワーク インターフェイスの数の詳細については、[Linux VM](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Windows VM](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の Azure におけるサイズをご覧ください。 すべてのサイズが、少なくとも 2 つのネットワーク インターフェイスに対応します。
 
 - 現在 VM に接続しているネットワーク インターフェイスは、別の VM には追加できません。 ネットワーク インターフェイスの作成方法の詳細については、「[ネットワーク インターフェイスの作成](virtual-network-network-interface.md#create-a-network-interface)」を参照してください。
 
@@ -143,7 +143,7 @@ VM にアタッチされているネットワーク インターフェイスを�
 
 - どのネットワーク インターフェイスから送信トラフィックを送信するかを制御できます。 ただし、VM では既定で、プライマリ ネットワーク インターフェイスのプライマリ IP 構成に割り当てられた IP アドレスからすべての送信トラフィックを送信します。
 
-- 以前は、同じ可用性セット内のすべての VM は、アタッチされるネットワーク インターフェイスを 1 つまたは複数に統一する必要がありました。 現在は、VM のサイズでサポートされている最大数までのネットワーク インターフェイスがアタッチされた VM が同じ可用性セットに存在できます。 VM を可用性セットに追加できるのは、VM の作成時のみです。 可用性セットの詳細については、[Azure での VM の可用性の管理](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)に関するページをご覧ください。
+- 以前は、同じ可用性セット内のすべての VM は、アタッチされるネットワーク インターフェイスを 1 つまたは複数に統一する必要がありました。 現在は、VM のサイズでサポートされている最大数までのネットワーク インターフェイスがアタッチされた VM が同じ可用性セットに存在できます。 VM を可用性セットに追加できるのは、VM の作成時のみです。 可用性セットの詳細については、[Azure での VM の可用性の管理](../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)に関するページをご覧ください。
 
 - 同じ VM 内のネットワーク インターフェイスを、1 つの仮想ネットワーク内の別のサブネットに接続できます。 ただし、そのネットワーク インターフェイスはすべて同じ仮想ネットワークに接続されている必要があります。
 

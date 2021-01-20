@@ -7,18 +7,18 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 23fe515ddfdecb9ef168dd662e3fa2d91ece688f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b00fca8cf39bc44e0e53a112a332e6f6c5f0194e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711478"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218605"
 ---
 # <a name="move-azure-public-ip-configuration-to-another-region-using-the-azure-portal"></a>Azure portal を使用して Azure パブリック IP 構成を別のリージョンに移動する
 
 既存の Azure パブリック IP 構成を別のリージョンに移動することが必要になるさまざまなシナリオがあります。 たとえば、テスト用に同じ構成と SKU を使用してパブリック IP を作成することが必要な場合があります。 ディザスター リカバリー計画の一部として、パブリック IP 構成を別のリージョンに移動することが必要な場合もあります。
 
-**Azure パブリック IP はリージョン固有であり、あるリージョンから別のリージョンに移動することはできません。** ただし、Azure Resource Manager テンプレートを使用して、パブリック IP の既存の構成をエクスポートすることはできます。  その後、パブリック IP をテンプレートにエクスポートすることで別のリージョンにリソースをステージし、移動先リージョンに合わせてパラメーターを変更してから、新しいリージョンにテンプレートをデプロイできます。  Resource Manager とテンプレートの詳細については、「[クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)」を参照してください。
+**Azure パブリック IP はリージョン固有であり、あるリージョンから別のリージョンに移動することはできません。** ただし、Azure Resource Manager テンプレートを使用して、パブリック IP の既存の構成をエクスポートすることはできます。  その後、パブリック IP をテンプレートにエクスポートすることで別のリージョンにリソースをステージし、移動先リージョンに合わせてパラメーターを変更してから、新しいリージョンにテンプレートをデプロイできます。  Resource Manager とテンプレートの詳細については、「[クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)」を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -33,7 +33,7 @@ ms.locfileid: "84711478"
 
 - 自分の Azure サブスクリプションで、使用される移動先リージョンにパブリック IP を作成できることを確認します。 サポートに連絡して、必要なクォータを有効にしてください。
 
-- 使用するサブスクリプションに、このプロセスでのパブリック IP の追加をサポートするのに十分なリソースがあることを確認します。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)」をご覧ください。
+- 使用するサブスクリプションに、このプロセスでのパブリック IP の追加をサポートするのに十分なリソースがあることを確認します。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)」をご覧ください。
 
 
 ## <a name="prepare-and-move"></a>準備と移動
@@ -109,9 +109,9 @@ ms.locfileid: "84711478"
             },
         ```
 
-        Basic と Standard SKU のパブリック IP の違いについて詳しくは、「[パブリック IP アドレスの作成、変更、削除](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)」を参照してください。
+        Basic と Standard SKU のパブリック IP の違いについて詳しくは、「[パブリック IP アドレスの作成、変更、削除](./virtual-network-public-ip-address.md)」を参照してください。
 
-    * **パブリック IP の割り当て方法**と**アイドル タイムアウト** - **publicIPAllocationMethod** プロパティを **Dynamic** から**Static** または **Static** から **Dynamic** に変更することで、テンプレートのこれらのオプションの両方を変更できます。 アイドル タイムアウトは、**idleTimeoutInMinutes** プロパティを目的の量に変えることで変更できます。  既定値は **4** です。
+    * **パブリック IP の割り当て方法** と **アイドル タイムアウト** - **publicIPAllocationMethod** プロパティを **Dynamic** から **Static** または **Static** から **Dynamic** に変更することで、テンプレートのこれらのオプションの両方を変更できます。 アイドル タイムアウトは、**idleTimeoutInMinutes** プロパティを目的の量に変えることで変更できます。  既定値は **4** です。
 
         ```json
           "resources": [
@@ -135,7 +135,7 @@ ms.locfileid: "84711478"
 
         ```
 
-        割り当て方法とアイドル タイムアウト値の詳細については、「[パブリック IP アドレスの作成、変更、削除](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)」を参照してください。
+        割り当て方法とアイドル タイムアウト値の詳細については、「[パブリック IP アドレスの作成、変更、削除](./virtual-network-public-ip-address.md)」を参照してください。
 
 
 13. オンライン エディターで **[保存]** をクリックします。
@@ -165,5 +165,5 @@ ms.locfileid: "84711478"
 このチュートリアルでは、Azure パブリック IP をあるリージョンから別のリージョンに移動し、移動元リソースをクリーンアップしました。  リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
 
 
-- [リソースを新しいリソース グループまたはサブスクリプションに移動する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Azure VM を別のリージョンに移動する](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Azure VM を別のリージョンに移動する](../site-recovery/azure-to-azure-tutorial-migrate.md)

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: bccbfed96dd6cd87bdfe986baf4b52817a160ac0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5b91d6e58f4ae93bbf020f202991f878e7773114
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95533363"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222957"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Azure CLI で、高速ネットワークを使用する Linux 仮想マシンを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "95533363"
 
 ![比較](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
-高速ネットワークを使用しない場合は、VM に出入りするすべてのネットワーク トラフィックがホストと仮想スイッチをスキャンする必要があります。 仮想スイッチでは、ネットワーク セキュリティ グループ、アクセス制御リスト、分離、その他のネットワーク仮想化サービスなど、すべてのポリシーが適用されます。 仮想スイッチの詳細については、[Hyper-V ネットワーク仮想化と仮想スイッチ](https://technet.microsoft.com/library/jj945275.aspx)に関する記事を参照してください。
+高速ネットワークを使用しない場合は、VM に出入りするすべてのネットワーク トラフィックがホストと仮想スイッチをスキャンする必要があります。 仮想スイッチでは、ネットワーク セキュリティ グループ、アクセス制御リスト、分離、その他のネットワーク仮想化サービスなど、すべてのポリシーが適用されます。 仮想スイッチの詳細については、[Hyper-V ネットワーク仮想化と仮想スイッチ](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134230(v=ws.11))に関する記事を参照してください。
 
 高速ネットワークを使用した場合、ネットワーク トラフィックは、仮想マシンのネットワーク インターフェイス (NIC) に到達した後、VM に転送されます。 仮想スイッチによって適用されるすべてのネットワーク ポリシーはオフロードされ、ハードウェアで適用されるようになりました。 ハードウェアにポリシーを適用することによって、ホストに適用されるポリシーをすべて維持したまま、ホストや仮想スイッチをバイパスして、NIC からネットワーク トラフィックを直接 VM に転送できます。
 
@@ -60,7 +60,7 @@ Azure ギャラリーでは次のディストリビューションが既定で�
 
 ハイパースレッディングをサポートするインスタンスでは、4 以上の vCPU を持つ VM インスタンスで高速ネットワークがサポートされています。 サポートされている系列は、D/Dsv3、D/Dsv4、Dd/Ddv4、Da/Dasv4、E/Esv3、E/Esv4、Ed/Edsv4、Ea/Easv4、Fsv2、Lsv2、Ms/Mms、Ms/Mmsv2 です。
 
-VM インスタンスの詳細については、「[Linux 仮想マシンのサイズ](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+VM インスタンスの詳細については、「[Linux 仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 
 ### <a name="custom-images"></a>カスタム イメージ
 カスタム イメージを使用し、イメージで高速ネットワークがサポートされている場合は、必要なドライバーが Azure 上の Mellanox ConnectX-3 および ConnectX-4 Lx NIC と連携して動作していることを確認してください。
@@ -173,7 +173,7 @@ az vm create \
     --nics myNic
 ```
 
-すべての VM のサイズと特性の一覧は、[Linux VM のサイズ](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。
+すべての VM のサイズと特性の一覧は、[Linux VM のサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。
 
 VM が作成されると、次のサンプル出力のような出力が返されます。 **publicIpAddress** を書き留めておきます。 このアドレスは、後の手順で VM にアクセスするために使われます。
 
@@ -310,5 +310,4 @@ az vmss start \
 
 * VM を停止/割り当てを解除します。可用性セット/VMSS の場合は、セット/VMSS 内のすべての VM を停止/割り当てを解除します。
 * VM の NIC 上で、高速ネットワークを無効にする必要があります。可用性セット/VMSS の場合は、セット/VMSS 内のすべての VM において無効にします。
-* 高速ネットワークが無効になったら、高速ネットワークをサポートしていない新しいサイズに VM/可用性セット/VMSS を移動して、再起動します。  
-
+* 高速ネットワークが無効になったら、高速ネットワークをサポートしていない新しいサイズに VM/可用性セット/VMSS を移動して、再起動します。

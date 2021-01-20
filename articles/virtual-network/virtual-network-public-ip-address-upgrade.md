@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: 3e2905019244279129528c177a76291cb7d75e11
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: d6e8c4f4b6646254aeea12cf587f47047e661e3f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825765"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222872"
 ---
 # <a name="upgrade-public-ip-addresses"></a>パブリック IP アドレスのアップグレード
 
@@ -33,15 +33,15 @@ Azure パブリック IP アドレスは、SKU (Basic または Standard) を使
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>パブリック IP アドレスを Basic SKU から Standard SKU にアップグレードする
 
-パブリック IP をアップグレードする場合、その IP をリソースに関連付けることはできません (パブリック IP の関連付けを解除する方法の詳細については、[このページ](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address)をご覧ください)。
+パブリック IP をアップグレードする場合、その IP をリソースに関連付けることはできません (パブリック IP の関連付けを解除する方法の詳細については、[このページ](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address)をご覧ください)。
 
 >[!IMPORTANT]
->Basic から Standard にアップグレードされたパブリック IP は、引き続き[可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)を使用できません。  つまり、ゾーン冗長である Azure リソース、または事前に指定されたゾーンに関連付けられている Azure リソースに関連付けることはできません。
+>Basic から Standard にアップグレードされたパブリック IP は、引き続き[可用性ゾーン](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)を使用できません。  つまり、ゾーン冗長である Azure リソース、または事前に指定されたゾーンに関連付けられている Azure リソースに関連付けることはできません。
 
 ---
 # <a name="basic-to-standard---powershell"></a>[**Basic から Standard へ - PowerShell**](#tab/option-upgrade-powershell)
 
-次の例では、[このページ](https://docs.microsoft.com/azure/virtual-network/create-public-ip-powershell?tabs=option-create-public-ip-basic)で示した例 (**myResourceGroup** 内の Basic パブリック IP **myBasicPublicIP**) を使用して、Basic SKU パブリック IP が既に作成されていると仮定します。
+次の例では、[このページ](./create-public-ip-powershell.md?tabs=option-create-public-ip-basic)で示した例 (**myResourceGroup** 内の Basic パブリック IP **myBasicPublicIP**) を使用して、Basic SKU パブリック IP が既に作成されていると仮定します。
 
 IP をアップグレードするには、単純に PowerShell を使用して以下のコマンドを実行します。  IP アドレスが既に静的に割り当てられている場合、そのセクションはスキップできます。
 
@@ -63,7 +63,7 @@ Set-AzPublicIpAddress -PublicIpAddress $pubIP
 
 # <a name="basic-to-standard---cli"></a>[**Basic から Standard へ - CLI**](#tab/option-upgrade-cli)
 
-次の例では、[このページ](https://docs.microsoft.com/azure/virtual-network/create-public-ip-cli?tabs=option-create-public-ip-basic)で示した例 (**myResourceGroup** 内の Basic パブリック IP **myBasicPublicIP**) を使用して、Basic SKU パブリック IP が既に作成されていると仮定します。
+次の例では、[このページ](./create-public-ip-cli.md?tabs=option-create-public-ip-basic)で示した例 (**myResourceGroup** 内の Basic パブリック IP **myBasicPublicIP**) を使用して、Basic SKU パブリック IP が既に作成されていると仮定します。
 
 IP をアップグレードするには、単純に Azure CLI を使用して以下のコマンドを実行します。  IP アドレスが既に静的に割り当てられている場合、そのセクションはスキップできます。
 
@@ -95,7 +95,7 @@ Azure Resource Manager の新機能を活用するには、既存の静的パブ
 
 # <a name="reserved-to-basic---powershell"></a>[**予約済みから Basic へ - PowerShell**](#tab/option-migrate-powershell)
 
-次の例では、**myResourceGroup** 内の従来の Azure 予約済み IP **myReservedIP** が既に作成されていると仮定します。 移行のもう 1 つの前提条件は、Azure Resource Manager サブスクリプションが移行用に登録されていることを確認することです。 これについては、[このページ](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-ps)の手順 3 および 4 で詳しく説明します。
+次の例では、**myResourceGroup** 内の従来の Azure 予約済み IP **myReservedIP** が既に作成されていると仮定します。 移行のもう 1 つの前提条件は、Azure Resource Manager サブスクリプションが移行用に登録されていることを確認することです。 これについては、[このページ](../virtual-machines/migration-classic-resource-manager-ps.md)の手順 3 および 4 で詳しく説明します。
 
 予約済み IP を移行するには、PowerShell を使用して以下のコマンドを実行します。  IP アドレスがどのサービスにも関連付けられていない場合 (下の例では **myService** というサービスがあります)、この手順は省略できます。
 
@@ -119,7 +119,7 @@ Move-AzureReservedIP -ReservedIPName $name -Commit
 
 # <a name="reserved-to-basic---cli"></a>[**予約済みから Basic へ - CLI**](#tab/option-migrate-cli)
 
-次の例では、**myResourceGroup** 内の従来の Azure 予約済み IP **myReservedIP** が既に作成されていると仮定します。 移行のもう 1 つの前提条件は、Azure Resource Manager サブスクリプションが移行用に登録されていることを確認することです。 これについては、[このページ](https://docs.microsoft.com/azure/virtual-machines/linux/migration-classic-resource-manager-cli)の手順 3 および 4 で詳しく説明します。
+次の例では、**myResourceGroup** 内の従来の Azure 予約済み IP **myReservedIP** が既に作成されていると仮定します。 移行のもう 1 つの前提条件は、Azure Resource Manager サブスクリプションが移行用に登録されていることを確認することです。 これについては、[このページ](../virtual-machines/migration-classic-resource-manager-cli.md)の手順 3 および 4 で詳しく説明します。
 
 予約済み IP を移行するには、Azure CLI を使用して以下のコマンドを実行します。  IP アドレスがどのサービスにも関連付けられていない場合 (下の例では **myService** というサービスとデプロイ **myDeployment** があります)、この手順は省略できます。
 
@@ -145,12 +145,12 @@ azure network reserved-ip commit-migration $name
 
 ## <a name="limitations"></a>制限事項
 
-* Basic パブリック IP をアップグレードする場合、その IP を Azure リソースに関連付けることはできません。  パブリック IP の関連付けを解除する方法の詳細については、[このページ](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address)をご覧ください。  同様に、予約済み IP を移行する場合、その IP をクラウド サービスに関連付けることはできません。  予約済み IP の関連付けを解除する方法の詳細については、[このページ](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm)をご覧ください。  
-* Basic SKU から Standard SKU にアップグレードされたパブリック IP は、引き続き[可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)を使用できないため、ゾーン冗長またはゾーン ベースの Azure リソースに関連付けることはできません。  これは、可用性ゾーンを提供するリージョンにのみ適用されます。
+* Basic パブリック IP をアップグレードする場合、その IP を Azure リソースに関連付けることはできません。  パブリック IP の関連付けを解除する方法の詳細については、[このページ](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address)をご覧ください。  同様に、予約済み IP を移行する場合、その IP をクラウド サービスに関連付けることはできません。  予約済み IP の関連付けを解除する方法の詳細については、[このページ](./remove-public-ip-address-vm.md)をご覧ください。  
+* Basic SKU から Standard SKU にアップグレードされたパブリック IP は、引き続き[可用性ゾーン](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)を使用できないため、ゾーン冗長またはゾーン ベースの Azure リソースに関連付けることはできません。  これは、可用性ゾーンを提供するリージョンにのみ適用されます。
 * Standard から Basic にダウングレードすることはできません。
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure での[パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)の詳細 (SKU の種類の違いと[パブリック IP アドレスの設定](virtual-network-public-ip-address.md#create-a-public-ip-address)を含む) を確認する
-- [Azure Public Load Balancer を Basic SKU から Standard SKU にアップグレードする](https://docs.microsoft.com/azure/load-balancer/upgrade-basic-standard)方法を確認する
-- [従来の Azure 予約済み IP](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) と[従来のリソースの Azure Resource Manager への移行](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview)を理解する
+- Azure での[パブリック IP アドレス](./public-ip-addresses.md#public-ip-addresses)の詳細 (SKU の種類の違いと[パブリック IP アドレスの設定](virtual-network-public-ip-address.md#create-a-public-ip-address)を含む) を確認する
+- [Azure Public Load Balancer を Basic SKU から Standard SKU にアップグレードする](../load-balancer/upgrade-basic-standard.md)方法を確認する
+- [従来の Azure 予約済み IP](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) と[従来のリソースの Azure Resource Manager への移行](../virtual-machines/migration-classic-resource-manager-overview.md)を理解する

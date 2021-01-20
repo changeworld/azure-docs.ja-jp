@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 36e5bb33b7d555c3b457b63f94d9032ff390e6cb
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b7c683edd15ab05e9efc239ffe07759078754607
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342316"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222651"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes ネットワーク ポリシーの概要
 
@@ -38,7 +38,7 @@ Azure NPM 実装は、VNet 統合をコンテナーに提供する Azure CNI と
 次の方法で Azure NPM を使用して、ポッドにマイクロセグメンテーションを提供できます。
 
 ### <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
-NPM は AKS でネイティブに使用でき、クラスターの作成時に有効にすることができます。 詳細については、「[Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用して、ポッド間のトラフィックをセキュリティ保護する](https://docs.microsoft.com/azure/aks/use-network-policies)」を参照してください。
+NPM は AKS でネイティブに使用でき、クラスターの作成時に有効にすることができます。 詳細については、「[Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用して、ポッド間のトラフィックをセキュリティ保護する](../aks/use-network-policies.md)」を参照してください。
 
 ### <a name="aks-engine"></a>AKS エンジン
 AKS エンジンは、Azure での Kubernetes クラスター デプロイ用 Azure Resource Manager テンプレートを生成するツールです。 クラスターの構成は、テンプレートを生成するときにツールに渡される JSON ファイルで指定されます。 サポートされているクラスター設定とその説明の完全な一覧については、Microsoft Azure Container Service エンジン - クラスター定義に関するページをご覧ください。
@@ -92,7 +92,7 @@ ACS エンジンを使用してデプロイされたクラスターでポリシ�
 ### <a name="do-it-yourself-diy-kubernetes-clusters-in-azure"></a>Azure 内での自作 (DIY) Kubernetes クラスター
  DIY クラスターの場合は、最初に CNI プラグインをインストールし、クラスター内のすべての仮想マシンで有効にします。 詳細については、[自身でデプロイした Kubernetes クラスター用プラグインのデプロイ](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster)に関するページをご覧ください。
 
-クラスターがデプロイされたら、次の `kubectl` コマンドを実行して、Azure NPM の " *デーモン セット* " をダウンロードして、クラスターに適用します。
+クラスターがデプロイされたら、次の `kubectl` コマンドを実行して、Azure NPM の "*デーモン セット*" をダウンロードして、クラスターに適用します。
 
   ```
   kubectl apply -f https://raw.githubusercontent.com/Azure/acs-engine/master/parts/k8s/addons/kubernetesmasteraddons-azure-npm-daemonset.yaml
@@ -130,7 +130,7 @@ Azure NPM には、お客様の構成を監視して理解を深めることが�
 メトリックは、Azure Monitor for Containers または Prometheus 全体でスクレイピングできます。
 
 ### <a name="setup-for-azure-monitor"></a>Azure Monitor のセットアップ
-最初の手順は、Kubernetes クラスター用に Azure Monitor for containers を有効にします。 手順は「[Azure Monitor for containers の概要](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)」から見つけることができます。 Azure Monitor for containers を有効にしたら、[Azure Monitor for containers ConfigMap](https://aka.ms/container-azm-ms-agentconfig) を構成して、NPM 統合と Prometheus NPM メトリックの収集を有効にします。 Azure monitor for containers ConfigMap には、NPM メトリックを収集するための設定を含む ```integrations``` セクションがあります。 これらの設定は、ConfigMap では既定で無効になっています。 基本設定 ```collect_basic_metrics = true``` を有効にすると、基本的な NPM メトリックが収集されます。 詳細設定 ```collect_advanced_metrics = true``` を有効にすると、基本メトリックに加えて高度なメトリックが収集されます。 
+最初の手順は、Kubernetes クラスター用に Azure Monitor for containers を有効にします。 手順は「[Azure Monitor for containers の概要](../azure-monitor/insights/container-insights-overview.md)」から見つけることができます。 Azure Monitor for containers を有効にしたら、[Azure Monitor for containers ConfigMap](https://aka.ms/container-azm-ms-agentconfig) を構成して、NPM 統合と Prometheus NPM メトリックの収集を有効にします。 Azure monitor for containers ConfigMap には、NPM メトリックを収集するための設定を含む ```integrations``` セクションがあります。 これらの設定は、ConfigMap では既定で無効になっています。 基本設定 ```collect_basic_metrics = true``` を有効にすると、基本的な NPM メトリックが収集されます。 詳細設定 ```collect_advanced_metrics = true``` を有効にすると、基本メトリックに加えて高度なメトリックが収集されます。 
 
 ConfigMap を編集したら、ローカルに保存し、次のように ConfigMap をクラスターに適用します。
 
@@ -143,7 +143,7 @@ integrations: |-
 ```
 高度なメトリックはオプションであり、オンにすると自動的に基本メトリックの収集が有効になります。 現在のところ、高度なメトリックには `npm_ipset_counts` のみが含まれています
 
-[構成マップでの Azure monitor for containers のコレクション設定](https://aka.ms/azmon-containers-agent-collection-settings-doc)の詳細を参照してください。
+[構成マップでの Azure monitor for containers のコレクション設定](../azure-monitor/insights/container-insights-agent-config.md)の詳細を参照してください。
 
 ### <a name="visualization-options-for-azure-monitor"></a>Azure Monitor の視覚化オプション
 NPM メトリック コレクションを有効にすると、Azure portal で Container Insights を使用して、または Grafana 内でメトリックを表示できます。
@@ -154,7 +154,7 @@ Azure portal を開きます。 クラスターの [分析情報] で、[ブッ�
 ブック (下の図) を表示するだけでなく、[分析情報] セクションの [ログ] で Prometheus メトリックを直接照会することもできます。 たとえば、次のクエリでは、収集されるすべてのメトリックが返されます。
 | where TimeGenerated > ago(5h) | where Name contains "npm_"
 
-また、Log Analytics でメトリックを直接照会することもできます。 詳細については、[Log Analytics クエリの使用方法](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-log-search)に関する記事を参照してください。 
+また、Log Analytics でメトリックを直接照会することもできます。 詳細については、[Log Analytics クエリの使用方法](../azure-monitor/insights/container-insights-log-search.md)に関する記事を参照してください。 
 
 #### <a name="viewing-in-grafana-dashboard"></a>Grafana ダッシュボードでの表示
 [ここ](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource)に説明されているように、Grafana サーバーを設定し、Log Analytics データ ソースを構成します。 次に、[Log Analytics バックエンドを含む Grafana ダッシュボード](https://grafana.com/grafana/dashboards/10956)を Grafana Labs にインポートします。
@@ -266,4 +266,3 @@ Container Insights (CI) と Grafana の NPM メトリック用のサンプル �
 -  [コンテナー ネットワーク](container-networking-overview.md)について確認します。
 - Kubernetes クラスターまたは Docker コンテナー用の[プラグインをデプロイ](deploy-container-networking.md)します。
 
-    

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 99e79e4d094fe6e93510d139d2f4d08f260102df
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5b79a777ba8f7e615e4637f94311cba39e8a7f6c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010046"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223705"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用してパブリック IP アドレスを作成する
 
-この記事では、Azure PowerShell を使用してパブリック IP アドレス リソースを作成する方法について説明します。 これを関連付けることができるリソース、Basic SKU と Standard SKU の違い、およびその他の関連情報については、「[パブリック IP アドレス](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses)」を参照してください。  この例では、IPv4 アドレスのみに焦点を当てます。IPv6 アドレスの詳細については、[Azure VNet の IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview) に関するページを参照してください。
+この記事では、Azure PowerShell を使用してパブリック IP アドレス リソースを作成する方法について説明します。 これを関連付けることができるリソース、Basic SKU と Standard SKU の違い、およびその他の関連情報については、「[パブリック IP アドレス](./public-ip-addresses.md)」を参照してください。  この例では、IPv4 アドレスのみに焦点を当てます。IPv6 アドレスの詳細については、[Azure VNet の IPv6](./ipv6-overview.md) に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 # <a name="standard-sku---using-zones"></a>[**Standard SKU - ゾーンの使用**](#tab/option-create-public-ip-standard-zones)
 
 >[!NOTE]
->次のコマンドは、API バージョン 2020-08-01 以降で動作します。  現在使用されている API バージョンの詳細については、[リソース プロバイダーと種類](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)に関するページを参照してください。
+>次のコマンドは、API バージョン 2020-08-01 以降で動作します。  現在使用されている API バージョンの詳細については、[リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)に関するページを参照してください。
 
 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、**myResourceGroup** に **myStandardZRPublicIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
 
@@ -84,12 +84,12 @@ $zone = 2
 New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $alloc -SKU $sku -zone $zone
 ```
 
-上記のゾーンのオプションは、[Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) が利用できるリージョンでのみ有効な選択であることに注意してください。
+上記のゾーンのオプションは、[Availability Zones](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones) が利用できるリージョンでのみ有効な選択であることに注意してください。
 
 # <a name="standard-sku---no-zones"></a>[**Standard SKU - ゾーンなし**](#tab/option-create-public-ip-standard)
 
 >[!NOTE]
->次のコマンドは、API バージョン 2020-08-01 以降で動作します。  現在使用されている API バージョンの詳細については、[リソース プロバイダーと種類](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)に関するページを参照してください。
+>次のコマンドは、API バージョン 2020-08-01 以降で動作します。  現在使用されている API バージョンの詳細については、[リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)に関するページを参照してください。
 
 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、**myResourceGroup** に **myStandardPublicIP** という名前の Standard パブリック IP アドレスを非ゾーン リソースとして作成します。
 
@@ -104,7 +104,7 @@ $alloc = 'Static'
 New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $alloc -SKU $sku
 ```
 
-この選択はすべてのリージョンで有効であり、[Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) が利用できないリージョンでの Standard パブリック IP アドレスの既定の選択です。
+この選択はすべてのリージョンで有効であり、[Availability Zones](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones) が利用できないリージョンでの Standard パブリック IP アドレスの既定の選択です。
 
 # <a name="basic-sku"></a>[**Basic SKU**](#tab/option-create-public-ip-basic)
 
@@ -126,9 +126,9 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -Alloca
 
 ## <a name="additional-information"></a>関連情報 
 
-上に示した個々の変数の詳細については、[パブリック IP アドレスの管理](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address)に関するページを参照してください。
+上に示した個々の変数の詳細については、[パブリック IP アドレスの管理](./virtual-network-public-ip-address.md#create-a-public-ip-address)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-- [仮想マシンにパブリック IP アドレス](https://docs.microsoft.com/azure/virtual-network/associate-public-ip-address-vm#azure-portal)を関連付ける
-- Azure の[パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)について詳しく学習する。
+- [仮想マシンにパブリック IP アドレス](./associate-public-ip-address-vm.md#azure-portal)を関連付ける
+- Azure の[パブリック IP アドレス](./public-ip-addresses.md#public-ip-addresses)について詳しく学習する。
 - すべての[パブリック IP アドレスの設定](virtual-network-public-ip-address.md#create-a-public-ip-address)について詳しく学習する。

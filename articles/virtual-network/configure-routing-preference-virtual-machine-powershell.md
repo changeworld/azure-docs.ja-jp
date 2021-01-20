@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: mnayak
-ms.openlocfilehash: 65f5b27ecc7b526c4b3e4f5ed62ac90149df1ce1
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: cdd86984e5594d330f0080ee5f4cf0e9a8374652
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510609"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223545"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-powershell"></a>Azure PowerShell を使用して VM 用にルーティング優先設定を構成する
 
@@ -150,5 +150,5 @@ $nic = New-AzNetworkInterface `
 ## <a name="next-steps"></a>次のステップ
 
 * [パブリック IP アドレスでのルーティング優先設定](routing-preference-overview.md)について詳しく学習する。
-* Azure での[パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)について詳しく学習する。
+* Azure での[パブリック IP アドレス](./public-ip-addresses.md#public-ip-addresses)について詳しく学習する。
 * [パブリック IP アドレスの設定](virtual-network-public-ip-address.md#create-a-public-ip-address)について詳しく学習する。

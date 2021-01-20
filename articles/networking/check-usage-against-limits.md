@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
-ms.openlocfilehash: cffa5677c5531f3887639c049998523d7d07586a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c53eb65f31e32d3edebcbf31d48d166f5464a92
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79455564"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233357"
 ---
 # <a name="check-resource-usage-against-limits"></a>制限に照らしたリソース使用量の確認
 
@@ -32,7 +32,7 @@ ms.locfileid: "79455564"
 5. **[設定]** で、 **[使用量 + クォータ]** を選択します。
 6. 次のオプションを選択できます。
    - **リソースの種類**: すべてのリソースの種類を選択することも、表示する特定のリソースの種類を選択することもできます。
-   - **プロバイダー**: すべてのリソース プロバイダーを選択することも、**コンピューティング**、**ネットワーク**、または**ストレージ**を選択することもできます。
+   - **プロバイダー**: すべてのリソース プロバイダーを選択することも、**コンピューティング**、**ネットワーク**、または **ストレージ** を選択することもできます。
    - **場所**: すべての Azure の場所を選択することも、特定の場所を選択することもできます。
    - すべてのリソースを選択することも、少なくとも 1 つがデプロイされているリソースのみを表示することもできます。
 
@@ -48,7 +48,7 @@ ms.locfileid: "79455564"
 
 以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはコンピューターから PowerShell を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、Azure PowerShell モジュール、バージョン 1.0.0 以降が必要です。 コンピューターで `Get-Module -ListAvailable Az` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzAccount` を実行して Azure にログインする必要もあります。
 
-制限に照らして使用状況を確認するには、[Get-AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage) を使用します。 次の例では、米国東部の場所に少なくとも 1 つのリソースがデプロイされているリソースの使用量が取得されます。
+制限に照らして使用状況を確認するには、[Get-AzNetworkUsage](/powershell/module/az.network/get-aznetworkusage) を使用します。 次の例では、米国東部の場所に少なくとも 1 つのリソースがデプロイされているリソースの使用量が取得されます。
 
 ```azurepowershell-interactive
 Get-AzNetworkUsage `

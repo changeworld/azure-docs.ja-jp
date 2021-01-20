@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: f5d6d6255b48192a5943159599531fac18ebeb26
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: f3d1918eafe8d61d9c5a7db3f29b83b5412914c0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796994"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179561"
 ---
 # <a name="feature-coverage-for-machines"></a>マシンを対象とする機能
 
@@ -132,7 +132,7 @@ ms.locfileid: "97796994"
 |[Azure Defender for Resource Manager](defender-for-resource-manager-introduction.md)|-|-|
 |[Azure Defender for DNS](defender-for-dns-introduction.md)|-|-|
 |[Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md)|✔|✔|
-|[Azure Defender for container registries](defender-for-container-registries-introduction.md)|✔ (2)|-|
+|[Azure Defender for container registries](defender-for-container-registries-introduction.md)|✔ (2)|✔ (2)|
 |||
 
 (1) _ *Azure Defender for servers** が必要

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 62c1b323899f03a043904f4b10d5fe3bb551e0f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4ef8e6207d53a192b19f8343a60093e82368fa6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441762"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223382"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ゲートウェイ リソースを使用した仮想ネットワークの設計
 
@@ -60,7 +60,7 @@ Virtual Network:
 
 [プールベースの Load Balancer のアウトバウンド接続](../load-balancer/load-balancer-outbound-connections.md)にはっきりと依存している場合を除き、NAT は、ほとんどのワークロードで推奨されます。  
 
-Standard Load Balancer のシナリオ ([アウトバウンド規則](../load-balancer/load-balancer-outbound-rules-overview.md)を含む) から、NAT ゲートウェイに移行することができます。 移行するには、パブリック IP リソースとパブリック IP プレフィックス リソースをロード バランサーのフロントエンドから NAT ゲートウェイに移します。 NAT ゲートウェイのための新しい IP アドレスは必要ありません。 Standard のパブリック IP アドレス リソースとパブリック IP プレフィックス リソースは、IP アドレスの総数が 16 を超えない限り、再利用することができます。 移行を計画するにあたっては、切り替えの過程で生じるサービスの中断を考慮してください。  プロセスを自動化することによって、中断は最小化することができます。 まずステージング環境で移行をテストしてください。  インバウンド方向のフローに対しては、切り替え時の影響はありません。
+Standard Load Balancer のシナリオ ([アウトバウンド規則](../load-balancer/load-balancer-outbound-connections.md#outboundrules)を含む) から、NAT ゲートウェイに移行することができます。 移行するには、パブリック IP リソースとパブリック IP プレフィックス リソースをロード バランサーのフロントエンドから NAT ゲートウェイに移します。 NAT ゲートウェイのための新しい IP アドレスは必要ありません。 Standard のパブリック IP アドレス リソースとパブリック IP プレフィックス リソースは、IP アドレスの総数が 16 を超えない限り、再利用することができます。 移行を計画するにあたっては、切り替えの過程で生じるサービスの中断を考慮してください。  プロセスを自動化することによって、中断は最小化することができます。 まずステージング環境で移行をテストしてください。  インバウンド方向のフローに対しては、切り替え時の影響はありません。
 
 
 次の例は、Azure Resource Manager テンプレートのスニペットです。  このテンプレートでは、NAT ゲートウェイなど、いくつかのリソースをデプロイします。  この例では、テンプレートに次のパラメーターがあります。
@@ -200,8 +200,8 @@ NAT は回復性を備えており、可用性ゾーンがなくても、複数�
 
 | オプション | Pattern | 例 | 長所 | 短所 |
 |---|---|---|---|---|
-| (1) | インバウンド エンドポイントを、アウトバウンド用に作成するそれぞれの**ゾーン スタック**に合わせて**アラインメント**する。 | ゾーン フロントエンドを使用して Standard ロード バランサーを作成する。 | インバウンドとアウトバウンドとで正常性モデルと障害モードが同じ。 運用がよりシンプルになる。 | ゾーンごとに各 IP アドレスを共通の DNS 名でマスクする必要がある。 |
-| (2) | **クロスゾーン** インバウンド エンドポイントでゾーン スタックを**オーバーレイ**する。 | ゾーン冗長フロントエンドを使用して Standard ロード バランサーを作成する。 | インバウンド エンドポイントに使用される IP アドレスが 1 つ。 | インバウンドとアウトバウンドとで正常性モデルと障害モードが異なる。  運用がより複雑になる。 |
+| (1) | インバウンド エンドポイントを、アウトバウンド用に作成するそれぞれの **ゾーン スタック** に合わせて **アラインメント** する。 | ゾーン フロントエンドを使用して Standard ロード バランサーを作成する。 | インバウンドとアウトバウンドとで正常性モデルと障害モードが同じ。 運用がよりシンプルになる。 | ゾーンごとに各 IP アドレスを共通の DNS 名でマスクする必要がある。 |
+| (2) | **クロスゾーン** インバウンド エンドポイントでゾーン スタックを **オーバーレイ** する。 | ゾーン冗長フロントエンドを使用して Standard ロード バランサーを作成する。 | インバウンド エンドポイントに使用される IP アドレスが 1 つ。 | インバウンドとアウトバウンドとで正常性モデルと障害モードが異なる。  運用がより複雑になる。 |
 
 >[!NOTE]
 > ゾーン分離 NAT ゲートウェイでは、IP アドレスが NAT ゲートウェイのゾーンと一致している必要があります。 異なるゾーンの IP アドレスが割り当てられている NAT ゲートウェイ リソースや、ゾーンを持たない NAT ゲートウェイ リソースは許容されません。
@@ -230,7 +230,7 @@ a) 仮想マシン インスタンスのゾーンとゾーン NAT ゲートウ�
 
 各 NAT ゲートウェイ リソースは、最大 50 Gbps のスループットを提供できます。 デプロイを複数のサブネットに分割し、各サブネットまたはサブネットのグループを NAT ゲートウェイに割り当てて、スケールアウトすることができます。
 
-各 NAT ゲートウェイによって、割り当てられたアウトバウンド IP アドレスごとに、TCP および UDP に対して 64,000 フローがサポートされます。  詳細については、送信元ネットワーク アドレス変換 (SNAT) に関する次のセクションを参照してください。また、特定の問題解決のガイダンスについては、[トラブルシューティングに関する記事](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat)を参照してください。
+各 NAT ゲートウェイによって、割り当てられたアウトバウンド IP アドレスごとに、TCP および UDP に対して 64,000 フローがサポートされます。  詳細については、送信元ネットワーク アドレス変換 (SNAT) に関する次のセクションを参照してください。また、特定の問題解決のガイダンスについては、[トラブルシューティングに関する記事](./troubleshoot-nat.md)を参照してください。
 
 ## <a name="source-network-address-translation"></a>送信元ネットワーク アドレス変換
 
@@ -264,7 +264,7 @@ NAT ゲートウェイにより、状況に応じて送信元 (SNAT) ポート�
 |:---:|:---:|:---:|
 | 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
 
-NAT ゲートウェイによって、フロー 4 が他の送信先にも使用できるポートに変換される可能性が高いです。  IP アドレスのプロビジョニングの適切なサイズ設定の詳細については、「[スケーリング](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#scaling)」を参照してください。
+NAT ゲートウェイによって、フロー 4 が他の送信先にも使用できるポートに変換される可能性が高いです。  IP アドレスのプロビジョニングの適切なサイズ設定の詳細については、「[スケーリング](#scaling)」を参照してください。
 
 | Flow | 送信元のタプル | 送信元のタプル (SNAT 変換後) | 送信先のタプル | 
 |:---:|:---:|:---:|:---:|
@@ -307,7 +307,7 @@ NAT ゲートウェイ リソースにより、状況に応じて送信元 (SNAT
 
 異なる送信先への SNAT ポートは、可能な場合、再利用される可能性が最も高いです。 そして、SNAT ポートが枯渇状況に近づくと、フローが成功しないことがあります。  
 
-例については、[SNAT の基礎](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#source-network-address-translation)に関する記事を参照してください。
+例については、[SNAT の基礎](#source-network-address-translation)に関する記事を参照してください。
 
 
 ### <a name="protocols"></a>プロトコル
@@ -359,10 +359,10 @@ SNAT ポートは、同じ送信先 IP アドレスおよび同じ送信先ポ�
   - [ポータル](./quickstart-create-nat-gateway-portal.md)
   - [テンプレート](./quickstart-create-nat-gateway-template.md)
 * NAT ゲートウェイ リソース API について学習する
-  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
-  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway)
-  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
+  - [REST API](/rest/api/virtualnetwork/natgateways)
+  - [Azure CLI](/cli/azure/network/nat/gateway)
+  - [PowerShell](/powershell/module/az.network/new-aznatgateway)
 * [可用性ゾーン](../availability-zones/az-overview.md)について学習する。
-* [Standard Load Balancer ](../load-balancer/load-balancer-standard-overview.md) について学習する。
+* [Standard Load Balancer ](../load-balancer/load-balancer-overview.md) について学習する。
 * [可用性ゾーンと Standard Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md) について学習する。
 * [UserVoice で Virtual Network NAT の新機能の構築を提案する](https://aka.ms/natuservoice)。

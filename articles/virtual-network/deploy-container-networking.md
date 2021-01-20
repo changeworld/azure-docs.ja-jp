@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b95b3cfdf8fea6e31015d945566803569b4ba064
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289588"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222923"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Azure Virtual Network コンテナー ネットワーク インターフェイス プラグインのデプロイ
 
-Azure Virtual Network コンテナー ネットワーク インターフェイス (CNI) プラグインを Azure 仮想マシンにインストールして、Kubernetes ポッドと Docker コンテナーに仮想ネットワーク機能をもたらします。 プラグインの詳細については、「[Enable containers to use Azure Virtual Network capabilities](container-networking-overview.md)」 (コンテナーで Azure Virtual Network 機能を使用できるようにする) を参照してください。 さらに、Azure Kubernetes Service (AKS) コンテナーを仮想ネットワークに自動的に配置する [[高度なネットワーク]](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) オプションを選択することで、AKS でプラグインで使用することができます。
+Azure Virtual Network コンテナー ネットワーク インターフェイス (CNI) プラグインを Azure 仮想マシンにインストールして、Kubernetes ポッドと Docker コンテナーに仮想ネットワーク機能をもたらします。 プラグインの詳細については、「[Enable containers to use Azure Virtual Network capabilities](container-networking-overview.md)」 (コンテナーで Azure Virtual Network 機能を使用できるようにする) を参照してください。 さらに、Azure Kubernetes Service (AKS) コンテナーを仮想ネットワークに自動的に配置する [[高度なネットワーク]](../aks/configure-azure-cni.md?toc=%2fazure%2fvirtual-network%2ftoc.json) オプションを選択することで、AKS でプラグインで使用することができます。
 
 ## <a name="deploy-plug-in-for-acs-engine-kubernetes-cluster"></a>ACS エンジン Kubernetes クラスター用プラグインのデプロイ
 
@@ -95,10 +95,10 @@ Kubernetes クラスター内のすべての Azure 仮想マシンにプラグ�
 1. [プラグインをダウンロードしてインストールします](#download-and-install-the-plug-in)。
 2. ポッドへの IP アドレスの割り当て元となるすべての仮想マシンで、仮想ネットワークの IP アドレス プールを事前に割り当てます。 すべての Azure 仮想マシンには、ネットワーク インターフェイスごとにプライマリ仮想ネットワークのプライベート IP アドレスが付属しています。 ポッド用の IP アドレスのプールは、次のいずれかのオプションを使用して、仮想マシンのネットワーク インターフェイス上にセカンダリ アドレス (*ipconfigs*) として追加されます。
 
-   - **CLI**:  [Azure CLI を使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-cli.md)
-   - **PowerShell**:  [PowerShell を使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-powershell.md)
-   - **ポータル**:  [Azure portal を使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-portal.md)
-   - **Azure Resource Manager テンプレート**:  [テンプレートを使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-template.md)
+   - **CLI**: [Azure CLI を使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-cli.md)
+   - **PowerShell**: [PowerShell を使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-powershell.md)
+   - **ポータル**: [Azure portal を使用して複数の IP アドレスを割り当てる](virtual-network-multiple-ip-addresses-portal.md)
+   - **Azure Resource Manager テンプレート**: [テンプレートを使用して複数の IP アドレスを割り当てる](./template-samples.md)
 
    仮想マシンでの起動が想定されるすべてのポッドに十分な IP アドレスを確実に追加します。
 
@@ -106,7 +106,7 @@ Kubernetes クラスター内のすべての Azure 仮想マシンにプラグ�
 4. ポッドをインターネットにアクセスさせるには、ご使用の Linux 仮想マシン上の次の *iptables* 規則を source-NAT インターネット トラフィックに追加します。 次の例では、指定された IP 範囲は、10.0.0.0/8 です。
 
    ```bash
-   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
+   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
    addrtype ! --dst-type local ! -d 10.0.0.0/8 -j MASQUERADE
    ```
 
@@ -157,10 +157,10 @@ CNI ネットワーク構成ファイルは、JSON 形式で記述されてい�
 
 #### <a name="settings-explanation"></a>設定の説明
 
-- **cniVersion**: Azure Virtual Network CNI プラグインは、 [CNI 仕様](https://github.com/containernetworking/cni/blob/master/SPEC.md)のバージョン 0.3.0 および 0.3.1 をサポートしています。
+- **cniVersion**: Azure Virtual Network CNI プラグインは、[CNI 仕様](https://github.com/containernetworking/cni/blob/master/SPEC.md)のバージョン 0.3.0 および 0.3.1 をサポートしています。
 - **name**:ネットワークの名前。 このプロパティは、任意の一意の値に設定できます。
 - **type**: ネットワーク プラグインの名前。 *azure-vnet* に設定します。
-- **mode**: 操作モード。 このフィールドは省略可能です。 サポートされているモードは、"bridge" だけです。 詳細については、 [操作モード](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md)を参照してください。
+- **mode**: 操作モード。 このフィールドは省略可能です。 サポートされているモードは、"bridge" だけです。 詳細については、[操作モード](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md)を参照してください。
 - **bridge**: コンテナーを仮想ネットワークに接続するために使用されるブリッジの名前。 このフィールドは省略可能です。 省略した場合、マスター インターフェイスのインデックスに基づいて、一意の名前がプラグインによって自動的に選択されます。
 - **ipam type**: IPAM プラグインの名前。 常に *azure-vnet-ipam* に設定します。
 

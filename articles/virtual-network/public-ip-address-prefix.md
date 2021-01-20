@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2020
 ms.author: allensu
-ms.openlocfilehash: 53dd6d2dda762b3cbf53f4aaec6cd3692a9656e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d98107075c215c0a00bc2035325a6ad8bf5bfc5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87432572"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222430"
 ---
 # <a name="public-ip-address-prefix"></a>パブリック IP アドレス プレフィックス
 
 パブリック IP アドレス プレフィックスとは、Azure での IP アドレスの予約範囲です。 ユーザーが指定した数に基づいて、Azure によって連続した範囲のアドレスがサブスクリプションに指定されます。 
 
-パブリック アドレスについて詳しくは、「[パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)」をご覧ください。
+パブリック アドレスについて詳しくは、「[パブリック IP アドレス](./public-ip-addresses.md#public-ip-addresses)」をご覧ください。
 
 パブリック IP アドレスは、各 Azure リージョン内のアドレスのプールから割り当てられます。 Azure で各リージョンに使用される範囲の一覧を[ダウンロード](https://www.microsoft.com/download/details.aspx?id=56519)できます。 たとえば、40.121.0.0/16 は、米国東部リージョンで使用される 100 を超える範囲の 1 つです。 この範囲には、40.121.0.1 から 40.121.255.254 の使用可能なアドレスが含まれます。
 
@@ -68,9 +68,9 @@ Azure によって IP アドレスが割り当てられるまで、正確な IP 
 ## <a name="constraints"></a>制約
 
 - プレフィックスに対して IP アドレスを指定することはできません。 プレフィックスの IP アドレスは、ユーザーが指定したサイズに基づいて、Azure によって指定されます。
-- 既定では、最大 16 個の IP アドレスまたは /28 のプレフィックスを作成できます。 詳細については、[ネットワークの上限の引き上げ要求](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests)に関するページおよび [Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページを参照してください。
+- 既定では、最大 16 個の IP アドレスまたは /28 のプレフィックスを作成できます。 詳細については、[ネットワークの上限の引き上げ要求](../azure-portal/supportability/networking-quota-requests.md)に関するページおよび [Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページを参照してください。
 - プレフィックスを作成した後で、範囲を変更することはできません。
-- プレフィックスの範囲から割り当てることができるのは、Standard SKU で作成された静的パブリック IP アドレスのみです。 パブリック IP アドレスの SKU の詳細については、「[パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)」をご覧ください。
+- プレフィックスの範囲から割り当てることができるのは、Standard SKU で作成された静的パブリック IP アドレスのみです。 パブリック IP アドレスの SKU の詳細については、「[パブリック IP アドレス](./public-ip-addresses.md#public-ip-addresses)」をご覧ください。
 - 範囲のアドレスを割り当てることができるのは、Azure Resource Manager リソースのみです。 クラシック デプロイ モデルのリソースにアドレスを割り当てることはできません。
 - プレフィックスから作成されるすべてのパブリック IP アドレスは、プレフィックスと同じ Azure リージョンおよびサブスクリプションに存在する必要があります。 アドレスは、同じリージョンおよびサブスクリプション内のリソースに割り当てる必要があります。
 - 範囲内のいずれかのアドレスが、リソースに関連付けられているパブリック IP アドレス リソースに割り当てられている場合は、プレフィックスを削除できません。 最初に、プレフィックスの IP アドレスを割り当てられているすべてのパブリック IP アドレス リソースの関連付けを解除する必要があります。

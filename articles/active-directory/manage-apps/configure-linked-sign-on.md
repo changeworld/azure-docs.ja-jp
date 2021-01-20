@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 8fc26b00214106aa08e0e6e4c41f9f05aca9344d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b5d7cd303c8478f848ee89095d040030b702cde5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648040"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219812"
 ---
 # <a name="understand-linked-sign-on"></a>リンクされたサインオンの概要
 
@@ -40,7 +40,7 @@ ms.locfileid: "94648040"
 > [!IMPORTANT] 
 > 一部のシナリオでは、**エンタープライズ アプリケーション** 内のアプリケーションのナビゲーションに **シングル サインオン** オプションが表示されません。 
 >
-> アプリケーションが **アプリの登録** を使用して登録された場合、既定では、OIDC OAuth を使用するようにシングル サインオン機能が設定されます。 この場合、 **[シングル サインオン]** オプションは、 **[エンタープライズ アプリケーション]** の下のナビゲーションに表示されません。 **アプリの登録** を使用してカスタム アプリを追加する場合は、マニフェスト ファイルでオプションを構成します。 マニフェスト ファイルの詳細については、「[Azure Active Directory のアプリ マニフェスト](../develop/reference-app-manifest.md)」を参照してください。 SSO 標準の詳細については、「[Microsoft ID プラットフォームを使用した認証と承認](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-microsoft-identity-platform)」を参照してください。 
+> アプリケーションが **アプリの登録** を使用して登録された場合、既定では、OIDC OAuth を使用するようにシングル サインオン機能が設定されます。 この場合、 **[シングル サインオン]** オプションは、 **[エンタープライズ アプリケーション]** の下のナビゲーションに表示されません。 **アプリの登録** を使用してカスタム アプリを追加する場合は、マニフェスト ファイルでオプションを構成します。 マニフェスト ファイルの詳細については、「[Azure Active Directory のアプリ マニフェスト](../develop/reference-app-manifest.md)」を参照してください。 SSO 標準の詳細については、「[Microsoft ID プラットフォームを使用した認証と承認](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-the-microsoft-identity-platform)」を参照してください。 
 >
 > ナビゲーションに **[シングル サインオン]** が表示されないその他のシナリオには、アプリケーションが別のテナントでホストされている場合や、アカウントに必要なアクセス許可 (グローバル管理者、クラウド アプリケーション管理者、アプリケーション管理者、またはサービス プリンシパルの所有者) がない場合などがあります。 アクセス許可によっては、 **[シングル サインオン]** を開くことができるが、保存できないシナリオが発生する場合もあります。 Azure AD の管理者ロールの詳細については、(https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) を参照してください。
 

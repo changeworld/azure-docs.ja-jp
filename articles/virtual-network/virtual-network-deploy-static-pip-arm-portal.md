@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/12/2020
 ms.author: allensu
-ms.openlocfilehash: 1ae0b869b24c4e05c88b936eceb1b9b1db3a9405
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: d416af3d3a8eb8ab8057f13cc0d9a133adcb849a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506313"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221158"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Azure portal を使用して静的パブリック IP アドレスを持つ仮想マシンを作成する
 
@@ -68,7 +68,7 @@ ms.locfileid: "94506313"
     | 受信ポートの選択 | **[RDP (3389)]** を選択します |
 
     > [!WARNING]
-    > インターネットから Windows Server 仮想マシンへのリモート アクセスを有効にするために、ポータル 3389 が選択されています。 運用環境のワークロードを管理するために、インターネットに対してポート 3389 を開くことはお勧めしません。 </br> Azure 仮想マシンへのアクセスをセキュリティで保護する方法については、「 **[Azure Bastion とは](/azure/bastion/bastion-overview)** 」を参照してください。
+    > インターネットから Windows Server 仮想マシンへのリモート アクセスを有効にするために、ポータル 3389 が選択されています。 運用環境のワークロードを管理するために、インターネットに対してポート 3389 を開くことはお勧めしません。 </br> Azure 仮想マシンへのアクセスをセキュリティで保護する方法については、「 **[Azure Bastion とは](../bastion/bastion-overview.md)** 」を参照してください。
    
 5. **[Review + create]\(レビュー + 作成\)** を選択します。 
   
@@ -95,7 +95,7 @@ ms.locfileid: "94506313"
 
 Azure [Public](https://www.microsoft.com/download/details.aspx?id=56519)、[US Government](https://www.microsoft.com/download/details.aspx?id=57063)、[China](https://www.microsoft.com/download/details.aspx?id=57062)、および [Germany](https://www.microsoft.com/download/details.aspx?id=57064) クラウドの範囲 (プレフィックス) の一覧をダウンロードできます。
 
-- [静的パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#allocation-method)の詳細を参照してください。
-- Azure での[パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)について詳しく学習する。
+- [静的パブリック IP アドレス](./public-ip-addresses.md#allocation-method)の詳細を参照してください。
+- Azure での[パブリック IP アドレス](./public-ip-addresses.md#public-ip-addresses)について詳しく学習する。
 - すべての[パブリック IP アドレスの設定](virtual-network-public-ip-address.md#create-a-public-ip-address)について詳しく学習する。
-- [プライベート IP アドレス](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)と Azure 仮想マシンへの[静的プライベート IP アドレス](virtual-network-network-interface-addresses.md#add-ip-addresses)の割り当ての詳細を確認します。
+- [プライベート IP アドレス](./private-ip-addresses.md)と Azure 仮想マシンへの[静的プライベート IP アドレス](virtual-network-network-interface-addresses.md#add-ip-addresses)の割り当ての詳細を確認します。

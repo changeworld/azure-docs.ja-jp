@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 14c71d5888aefc11485c03935c5d8c7ff7d17045
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7462c78ecad718c30980a98ff7659a2a4d2ea020
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995881"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222158"
 ---
 # <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>クイック スタート:Azure Cosmos DB 用の Azure Synapse Link に接続する
 
@@ -24,8 +24,8 @@ ms.locfileid: "95995881"
 
 Azure Cosmos DB アカウントをワークスペースに接続する前に、必要なものがいくつかあります。
 
-* 既存の Azure Cosmos DB アカウント。または、こちらの[クイックスタート](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account)に従って新しいアカウントを作成します
-* 既存の Synapse ワークスペース。または、こちらの[クイックスタート](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)に従って新しいワークスペースを作成します 
+* 既存の Azure Cosmos DB アカウント。または、こちらの[クイックスタート](../cosmos-db/how-to-manage-database-account.md)に従って新しいアカウントを作成します
+* 既存の Synapse ワークスペース。または、こちらの[クイックスタート](./quickstart-create-workspace.md)に従って新しいワークスペースを作成します 
 
 ## <a name="enable-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアを有効にする
 

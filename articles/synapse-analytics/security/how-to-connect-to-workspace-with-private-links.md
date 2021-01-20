@@ -8,20 +8,20 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 699a7321646167b0a9fb20a77a40999ec33b14f0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9782cce4165487b612c0295dc893d120ed043225
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461337"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218265"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links"></a>プライベート リンクを使用して Azure Synapse ワークスペースに接続する
 
-この記事では、Azure Synapse ワークスペースへのプライベート エンドポイントを作成する方法について説明します。 詳細については、[プライベート リンクとプライベート エンドポイント](https://docs.microsoft.com/azure/private-link/)に関するページを参照してください。
+この記事では、Azure Synapse ワークスペースへのプライベート エンドポイントを作成する方法について説明します。 詳細については、[プライベート リンクとプライベート エンドポイント](../../private-link/index.yml)に関するページを参照してください。
 
 ## <a name="step-1-register-network-resource-provider"></a>手順 1:ネットワーク リソースプロバイダーを登録する
 
-まだ登録していない場合、ネットワーク リソース プロバイダーを登録します。 リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。 [登録](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)時、リソースプロバイダーの一覧から *Microsoft.Network* を選択します。 ネットワーク リソースプロバイダーが既に登録されている場合は、手順 2 に進みます。
+まだ登録していない場合、ネットワーク リソース プロバイダーを登録します。 リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。 [登録](../../azure-resource-manager/management/resource-providers-and-types.md)時、リソースプロバイダーの一覧から *Microsoft.Network* を選択します。 ネットワーク リソースプロバイダーが既に登録されている場合は、手順 2 に進みます。
 
 ## <a name="step-2-open-your-azure-synapse-workspace-in-azure-portal"></a>手順 2:Azure portal で Azure Synapse ワークスペースを開く
 

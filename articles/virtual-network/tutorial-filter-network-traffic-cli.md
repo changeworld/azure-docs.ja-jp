@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7589b13dc517a23e8d9d65907fb3342e4e2490a9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d2cabecfb2a70e6d325129335c066bb35aeb02ba
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000591"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221882"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>ネットワーク セキュリティ グループと Azure CLI を使用してネットワーク トラフィックをフィルター処理する
 
@@ -241,6 +241,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、ネットワーク セキュリティ グループを作成し、それを仮想ネットワーク サブネットに関連付けました。 ネットワーク セキュリティ グループについて詳しくは、[ネットワーク セキュリティ グループの概要](security-overview.md)と[ネットワーク セキュリティ グループの管理](manage-network-security-group.md)に関する記事を参照してください。
+この記事では、ネットワーク セキュリティ グループを作成し、それを仮想ネットワーク サブネットに関連付けました。 ネットワーク セキュリティ グループについて詳しくは、[ネットワーク セキュリティ グループの概要](./network-security-groups-overview.md)と[ネットワーク セキュリティ グループの管理](manage-network-security-group.md)に関する記事を参照してください。
 
 Azure の既定では、サブネット間でトラフィックがルーティングされます。 代わりに、たとえばファイアウォールとして機能する VM を介してサブネット間でトラフィックをルーティングすることもできます。 その方法については、[ルート テーブルの作成](tutorial-create-route-table-cli.md)に関する記事を参照してください。

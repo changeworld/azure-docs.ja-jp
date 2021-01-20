@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9a8b9e82f71be83254a263ae28598a43dd7c8b9f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 8921722fe36b1969c078c271011253d21f9a91c6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95994453"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221359"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell"></a>Basic Load Balancer を使用する IPv6 デュアル スタック アプリケーションをデプロイする - PowerShell
 
@@ -283,7 +283,7 @@ $vnet = New-AzVirtualNetwork `
 
 ### <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-次のように、[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して VM の管理者のユーザー名とパスワードを設定します。
+次のように、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) を使用して VM の管理者のユーザー名とパスワードを設定します。
 
 ```azurepowershell-interactive
 $cred = get-credential -Message "DUAL STACK VNET SAMPLE:  Please enter the Administrator credential to log into the VMs."

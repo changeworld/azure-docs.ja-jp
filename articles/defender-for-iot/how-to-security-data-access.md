@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: c4f65da4f9a4f7ade94d76e99d57439e62b3c808
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 495f9d568760421c7f42df3acf74217c15b01a05
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092059"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246341"
 ---
 # <a name="access-your-security-data"></a>セキュリティ データにアクセスする
 
@@ -37,7 +37,7 @@ Defender for IoT では、セキュリティ アラート、推奨事項、お�
 1. Defender for IoT でアラートまたは推奨事項を選択します。
 1. **[Further investigation]** \(さらに調査\) をクリックし、 **[To see which devices have this alert click here and view the DeviceId column]** \(このアラートがどのデバイスのものかを確認するには、ここをクリックして DeviceId 列を見てください\) をクリックします。
 
-Log Analytics からデータのクエリを実行する方法の詳細については、「[Log Analytics のクエリの概要](/azure/azure-monitor/log-query/get-started-queries)」を参照してください。
+Log Analytics からデータのクエリを実行する方法の詳細については、「[Log Analytics のクエリの概要](../azure-monitor/log-query/get-started-queries.md)」を参照してください。
 
 ## <a name="security-alerts"></a>セキュリティのアラート
 

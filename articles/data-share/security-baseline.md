@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 35b0ed8e8a7a8400388e7c31ef1a83a7ea6ece85
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 22654d49d02809460adc4013c2c92ac857805cf7
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533620"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199803"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azure Data Share 用の Azure セキュリティ ベースライン
 
@@ -130,7 +130,7 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 **ガイダンス**:高度な特権を必要とする管理タスクには、セキュリティで保護された Azure マネージド ワークステーション (特権アクセス ワークステーション (PAW) とも呼ばれます) を使用します。
 
-- [セキュリティで保護された Azure マネージド ワークステーションを理解する](../active-directory/devices/concept-azure-managed-workstation.md)
+- [セキュリティで保護された Azure マネージド ワークステーションを理解する](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
  
 
 - [Azure AD MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)

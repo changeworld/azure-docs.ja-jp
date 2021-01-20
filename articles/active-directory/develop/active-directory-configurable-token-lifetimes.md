@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 0b3c2f74edff661326e97da7b06860914468c43b
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: ec925ce165c1de98fe920381e1b51e3388c1e4ad
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059349"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232405"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft ID プラットフォームでの構成可能なトークンの有効期間 (プレビュー)
 
@@ -101,8 +101,7 @@ Confidential クライアントは、クライアント パスワード (シー�
 
 パブリック クライアントは、クライアントのパスワード (シークレット) を安全に格納できません。 たとえば、iOS や Android アプリは、リソース所有者のシークレットを難読化できないため、パブリック クライアントとみなされます。 リソースにポリシーを設定して、指定した期間よりも古いパブリック クライアントの更新トークンが、新しいアクセス トークンと更新トークン ペアを取得しないようにできます これを行うには、[Refresh Token Max Inactive Time プロパティ](#refresh-token-max-inactive-time) (`MaxInactiveTime`) を使用します。 それを超えると更新トークンを受け付けなくなる期間を設定するポリシーを使用することもできます これを行うには、[Single-Factor Refresh Token Max Age](#single-factor-session-token-max-age) または [Multi-Factor Session Token Max Age](#multi-factor-refresh-token-max-age) のいずれかのプロパティを使用します。 更新トークンの有効期間を調整して、パブリック クライアント アプリケーションの使用時に、ユーザーが自動的に再認証されるのではなく、資格情報を再入力する必要があるタイミングと頻度を制御できます。
 
-> [!NOTE]
-> Max Age プロパティは、1 つのトークンを使用できる期間です。 
+Max Age プロパティは、1 つのトークンを使用できる期間です。 
 
 ### <a name="single-sign-on-session-tokens"></a>シングル サインオン セッション トークン
 ユーザーが Microsoft ID プラットフォームで認証を行うと、ユーザーのブラウザーと Microsoft ID プラットフォームでシングル サインオン (SSO) セッションが確立されます。 SSO トークンは、Cookie の形式でこのセッションを表します。 SSO セッション トークンは特定のリソース/クライアント アプリケーションにバインドされていません。 SSO セッション トークンは失効させることができ、使用時に必ず有効性がチェックされます。

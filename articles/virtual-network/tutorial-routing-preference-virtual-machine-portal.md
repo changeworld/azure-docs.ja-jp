@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: 35e4b90e9bdd52a20bf892f0784b191384f271ac
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: beb670106690645a80aa12b930e3a005efb4282a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533708"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221648"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>Azure portal を使用して VM 用にルーティング優先設定を構成する
 
@@ -79,5 +79,5 @@ ms.locfileid: "96533708"
 
 ## <a name="next-steps"></a>次のステップ
 - [ルーティング優先設定が指定されたパブリック IP アドレス](routing-preference-overview.md)について詳しく学習する。
-- Azure での[パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)について詳しく学習する。
+- Azure での[パブリック IP アドレス](./public-ip-addresses.md#public-ip-addresses)について詳しく学習する。
 - すべての[パブリック IP アドレスの設定](virtual-network-public-ip-address.md#create-a-public-ip-address)について詳しく学習する。

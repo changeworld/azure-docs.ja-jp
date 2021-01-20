@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a18a36b8583f8534b2a2e643e5c155dc7a2d65e2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e2c632de3d602fe2d3e5bfa74f78e90f48412067
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444063"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208915"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Web API を呼び出すモバイル アプリを構成する
 
@@ -249,8 +249,8 @@ MSAL.NET は、URL を使用してブローカーを呼び出し、ブローカ�
 
    ここでは、`BundleId` によってデバイスが一意に識別されます。 たとえば、`BundleId` が `yourcompany.xforms` の場合、URL スキームは `msauth.com.yourcompany.xforms` になります。
 
-   > [!NOTE]
-   > この URL スキームは、ブローカーから応答を受け取るときにアプリを一意に識別するリダイレクト URI の一部になります。
+  
+      この URL スキームは、ブローカーから応答を受け取るときにアプリを一意に識別するリダイレクト URI の一部になります。
 
    ```XML
     <key>CFBundleURLTypes</key>
@@ -310,10 +310,9 @@ iOS および macOS 用の MSAL でブローカーが呼び出されると、ブ
     }
 ```
 
-> [!NOTE]
-> iOS 13 以降で `UISceneDelegate` を採用した場合は、代わりに `UISceneDelegate` の `scene:openURLContexts:` に MSAL のコールバックを配置します。 MSAL `handleMSALResponse:sourceApplication:` の呼び出しは URL ごとに 1 回のみにする必要があります。
->
-> 詳しくは、[Apple のドキュメント](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)をご覧ください。
+iOS 13 以降で `UISceneDelegate` を採用した場合は、代わりに `UISceneDelegate` の `scene:openURLContexts:` に MSAL のコールバックを配置します。 MSAL `handleMSALResponse:sourceApplication:` の呼び出しは URL ごとに 1 回のみにする必要があります。
+
+詳しくは、[Apple のドキュメント](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)をご覧ください。
 
 #### <a name="step-2-register-a-url-scheme"></a>手順 2:URL スキームを登録する
 
@@ -329,8 +328,7 @@ iOS および macOS 用の MSAL では、URL を使用してブローカーが�
 
    ここでは、`BundleId` によってデバイスが一意に識別されます。 たとえば、`BundleId` が `yourcompany.xforms` の場合、URL スキームは `msauth.com.yourcompany.xforms` になります。
 
-   > [!NOTE]
-   > この URL スキームは、ブローカーから応答を受け取るときにアプリを一意に識別するリダイレクト URI の一部になります。 [Azure portal](https://portal.azure.com) で、`msauth.(BundleId)://auth` 形式のリダイレクト URI がアプリケーションに対して登録されていることを確認してください。
+    この URL スキームは、ブローカーから応答を受け取るときにアプリを一意に識別するリダイレクト URI の一部になります。 [Azure portal](https://portal.azure.com) で、`msauth.(BundleId)://auth` 形式のリダイレクト URI がアプリケーションに対して登録されていることを確認してください。
 
    ```XML
    <key>CFBundleURLTypes</key>

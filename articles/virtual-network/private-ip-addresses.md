@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 13688b73c0cd73e13e407f1b75beb8dda61a754f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36db885cab734c037b0032c714de28b905595ef0
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84172257"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223263"
 ---
 # <a name="private-ip-addresses"></a>プライベート IP アドレス
 プライベート IP を使用すると、Azure 内のリソース間の通信が可能になります。 
@@ -62,7 +62,7 @@ Azure では、プライベート IP アドレスは、リソースの存在す�
     
 ## <a name="virtual-machines"></a>仮想マシン
 
-1 つ以上のプライベート IP アドレスが 1 つ以上の**ネットワーク インターフェイス**に割り当てられます。 ネットワーク インターフェイスは、[Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシンに割り当てられます。 それぞれのプライベート IP アドレスについて、動的または静的のどちらかの割り当て方法を指定できます。
+1 つ以上のプライベート IP アドレスが 1 つ以上の **ネットワーク インターフェイス** に割り当てられます。 ネットワーク インターフェイスは、[Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシンに割り当てられます。 それぞれのプライベート IP アドレスについて、動的または静的のどちらかの割り当て方法を指定できます。
 
 ### <a name="internal-dns-hostname-resolution-for-virtual-machines"></a>内部 DNS ホスト名の解決 (仮想マシンの場合)
 
@@ -80,10 +80,10 @@ Azure で管理される DNS を使用して構成された VM は、同じ仮�
 
 ## <a name="internal-load-balancers-ilb--application-gateways"></a>内部ロード バランサー (ILB) と Application Gateway
 
-次の**フロント エンド**構成には、プライベート IP アドレスを割り当てることができます。
+次の **フロント エンド** 構成には、プライベート IP アドレスを割り当てることができます。
 
-* [Azure 内部ロード バランサー](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (ILB)
-* [Azure Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+* [Azure 内部ロード バランサー](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (ILB)
+* [Azure Application Gateway](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 
 このプライベート IP アドレスは、内部エンドポイントとして機能します。 内部エンドポイントは、同じ仮想ネットワーク内のリソースおよびその仮想ネットワークに接続されたリモート ネットワークからのみアクセスできます。 動的または静的 IP を割り当てることができます。
 

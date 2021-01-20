@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 63b91194c9ffb10fd8f4c5f1341eaf74bc81f5e1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 88c287c4aa87b4df41bfe6bbc1992262b21d07aa
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694883"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232762"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>Azure Load Balancer を監視および構成するための分析情報の使用
 
@@ -68,7 +68,7 @@ Load Balancer の [分析情報] ブレードからは、より詳細なメト�
 ### <a name="flow-distribution"></a>フローの分布
 フローの分布に関するタブは、バックエンド インスタンスによって受信および生成されているフローの数を視覚化および管理するのに役立ちます。 受信トラフィックと送信トラフィックのフロー作成速度とフロー数、および各 VM と仮想マシン スケール セット インスタンスが受信しているネットワーク トラフィックが表示されます。 
 
-これらのビューを使用すると、お使いの Load Balancer の構成またはトラフィック パターンによってトラフィックがアンバランスになっているかどうかについてのフィードバックを得ることができます。 たとえば、セッション アフィニティが構成されていて、1 つのクライアントが過剰な数の要求を行っている場合などです。 また、マシンのサイズに対する [VM ごとのフロー制限](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations)に近づいているかどうかも確認できます。
+これらのビューを使用すると、お使いの Load Balancer の構成またはトラフィック パターンによってトラフィックがアンバランスになっているかどうかについてのフィードバックを得ることができます。 たとえば、セッション アフィニティが構成されていて、1 つのクライアントが過剰な数の要求を行っている場合などです。 また、マシンのサイズに対する [VM ごとのフロー制限](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-active-connections-recommendations)に近づいているかどうかも確認できます。
 
 ### <a name="connection-monitors"></a>接続モニター
 接続モニターに関するタブには、構成されているすべての[接続モニター](../network-watcher/connection-monitor.md)のグローバル マップでのラウンドトリップ待機時間が表示されます。 これらのビジュアルにより、厳密な待機時間が必要なサービスに役立つ情報が提供されます。 要件を満たすには、リージョンのデプロイを追加するか、[クロスリージョン負荷分散](./cross-region-overview.md)モデルに移行することが必要になる場合があります

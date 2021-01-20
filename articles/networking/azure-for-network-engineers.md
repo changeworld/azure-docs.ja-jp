@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
-ms.openlocfilehash: e13dc868512dba15c5b335c1774aaa540eef8157
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 9a22e58e4407897fb9418cae0ba9f32408cda8e1
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861409"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234207"
 ---
 # <a name="azure-for-network-engineers"></a>ネットワーク エンジニア向けの Azure
 従来のネットワーク エンジニアは、ルーター、スイッチ、ケーブル、ファイアウォールなどの物理的な資産を基盤とするインフラストラクチャの構築に取り組んできました。 論理層には、仮想 LAN (VLAN)、スパニング ツリー プロトコル (STP)、ルーティング プロトコル (RIP、OSPF、BGP) を構成していました。 ネットワークの管理には、管理ツールと CLI を使用していました。 クラウドでのネットワークは、ネットワーク エンドポイントが論理的であり、ルーティング プロトコルの使用が最小である場合とは異なります。 今後、Azure で資産を構成および管理するためには、Azure Resource Manager API、Azure CLI、および PowerShell を使用することになります。 Azure ネットワークの基本的なテナントを理解することで、クラウドでのネットワークの取り組みを開始します。 
@@ -88,7 +88,6 @@ NSG には受信と送信の 2 つのルール セットがあります。 ル�
 [ネットワーク セキュリティ グループ][network-security]について確認します。
 
 <!--Link References-->
-[VNet]: https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal
-[vnet-routing]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview
-[network-security]: https://docs.microsoft.com/azure/virtual-network/security-overview
-
+[VNet]: ../virtual-network/tutorial-connect-virtual-networks-portal.md
+[vnet-routing]: ../virtual-network/virtual-networks-udr-overview.md
+[network-security]: ../virtual-network/network-security-groups-overview.md

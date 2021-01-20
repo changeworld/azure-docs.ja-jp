@@ -4,12 +4,12 @@ description: Azure Monitor Application Insights の Java エージェントの�
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 54bf2440dff20fc757f37e3f31a53c57ebd59120
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 2876abd3749c9e56cef462e41b8268135f82cd12
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133193"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232218"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>トラブルシューティング ガイド:Azure Monitor Application Insights for Java
 
@@ -17,7 +17,7 @@ ms.locfileid: "98133193"
 
 ## <a name="check-the-self-diagnostic-log-file"></a>自己診断ログ ファイルを確認する
 
-既定では、Application Insights の Java 3.0 エージェントにより、`applicationinsights-agent-3.0.0.jar` ファイルが保持されているディレクトリに `applicationinsights.log` という名前のログ ファイルが生成されます。
+既定では、Application Insights の Java 3.0 エージェントにより、`applicationinsights-agent-3.0.1.jar` ファイルが保持されているディレクトリに `applicationinsights.log` という名前のログ ファイルが生成されます。
 
 このログ ファイルは、発生している問題に関するヒントを得るために最初に確認する場所です。
 

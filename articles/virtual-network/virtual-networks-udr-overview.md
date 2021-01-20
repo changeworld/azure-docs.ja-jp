@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: aldomel
-ms.openlocfilehash: ca6460497fa026feca503df741ad6811a95fb9e3
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 512694d75bace40f33e346d28289f62e2adb04b8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936932"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221016"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -80,12 +80,12 @@ Azure でカスタムまたはユーザー定義（静的）のルートを作�
 
 * **仮想アプライアンス**:仮想アプライアンスとは、一般にネットワーク アプリケーション (ファイアウォールなど) が実行されている仮想マシンです。 仮想ネットワークにデプロイできる事前構成された各種ネットワーク仮想アプライアンスについては、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) のページをご覧ください。 ホップの種類が **仮想アプライアンス** のルートを作成するときは、次ホップの IP アドレスも指定します。 IP アドレスには、次のアドレスを指定できます。
 
-    * 仮想マシンに接続されたネットワーク インターフェイスの[プライベート IP アドレス](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)。 自身のアドレス以外のアドレスにネットワーク トラフィックを転送する、仮想マシンに接続されたネットワーク インターフェイスでは、Azure の *[Enable IP forwarding]\(IP 転送を有効にする\)* オプションが有効になっている必要があります。 この設定により、Azure によるネットワーク インターフェイスの送信元と送信先のチェックが無効になります。 ネットワーク インターフェイスの IP 転送を有効にする方法の詳細については、[こちら](virtual-network-network-interface.md#enable-or-disable-ip-forwarding)をご覧ください。 *[Enable IP forwarding]\(IP 転送を有効にする\)* は Azure の設定ですが、Azure のネットワーク インターフェイスに割り当てられたプライベート IP アドレス間でアプライアンスがトラフィックを転送するために、仮想マシンのオペレーティング システム内でも IP 転送を有効にすることが必要な場合があります。 アプライアンスからパブリック IP アドレス宛てにトラフィックをルーティングする必要がある場合、トラフィックをプロキシするか、または送信元のプライベート IP アドレスを独自のプライベート IP アドレスに NAT 変換し、Azure でパブリック IP アドレスに NAT 変換してから、そのトラフィックをインターネットに送信する必要があります。 仮想マシン内で必要な設定を確認するには、オペレーティング システムまたはネットワーク アプリケーションのドキュメントをご覧ください。 Azure での送信接続については、[送信用接続の詳細](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。<br>
+    * 仮想マシンに接続されたネットワーク インターフェイスの[プライベート IP アドレス](./private-ip-addresses.md)。 自身のアドレス以外のアドレスにネットワーク トラフィックを転送する、仮想マシンに接続されたネットワーク インターフェイスでは、Azure の *[Enable IP forwarding]\(IP 転送を有効にする\)* オプションが有効になっている必要があります。 この設定により、Azure によるネットワーク インターフェイスの送信元と送信先のチェックが無効になります。 ネットワーク インターフェイスの IP 転送を有効にする方法の詳細については、[こちら](virtual-network-network-interface.md#enable-or-disable-ip-forwarding)をご覧ください。 *[Enable IP forwarding]\(IP 転送を有効にする\)* は Azure の設定ですが、Azure のネットワーク インターフェイスに割り当てられたプライベート IP アドレス間でアプライアンスがトラフィックを転送するために、仮想マシンのオペレーティング システム内でも IP 転送を有効にすることが必要な場合があります。 アプライアンスからパブリック IP アドレス宛てにトラフィックをルーティングする必要がある場合、トラフィックをプロキシするか、または送信元のプライベート IP アドレスを独自のプライベート IP アドレスに NAT 変換し、Azure でパブリック IP アドレスに NAT 変換してから、そのトラフィックをインターネットに送信する必要があります。 仮想マシン内で必要な設定を確認するには、オペレーティング システムまたはネットワーク アプリケーションのドキュメントをご覧ください。 Azure での送信接続については、[送信用接続の詳細](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。<br>
 
         > [!NOTE]
         > 仮想アプライアンスは、その仮想アプライアンスを介してルーティングするリソースがデプロイされているサブネットとは異なるサブネットにデプロイします。 仮想アプライアンスを同じサブネットにデプロイし、その仮想アプライアンスを介してトラフィックをルーティングするサブネットにルート テーブルを適用すると、トラフィックがサブネットから出ていくことのないルーティング ループが発生する可能性があります。
 
-    * Azure [内部ロード バランサー](../load-balancer/load-balancer-get-started-ilb-arm-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)のプライベート IP アドレス。 多くの場合、ロード バランサーは、[ネットワーク仮想アプライアンスの高可用性戦略](/azure/architecture/reference-architectures/dmz/nva-ha?toc=%2fazure%2fvirtual-network%2ftoc.json)の一環として使用されます。
+    * Azure [内部ロード バランサー](../load-balancer/quickstart-load-balancer-standard-internal-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)のプライベート IP アドレス。 多くの場合、ロード バランサーは、[ネットワーク仮想アプライアンスの高可用性戦略](/azure/architecture/reference-architectures/dmz/nva-ha?toc=%2fazure%2fvirtual-network%2ftoc.json)の一環として使用されます。
 
     アドレス プレフィックスが 0.0.0.0/0 で、ネクストホップの種類が仮想アプライアンスのルートを定義することによって、アプライアンスがトラフィックを検査し、トラフィックを転送するか破棄するかを判断できるようになります。 アドレス プレフィックス 0.0.0.0/0 を含むユーザー定義ルートを作成する場合は、まず「[アドレス プレフィックス 0.0.0.0/0](#default-route)」をお読みください。
 

@@ -3,17 +3,17 @@ title: Azure Relay のネットワーク セキュリティ
 description: この記事では、Azure Relay で IP ファイアウォール規則とプライベート エンドポイントを使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 608224f42fac8cd2d8ff06ab84989b1f675d418c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 735a0b7dc303ad63cb301151e3e14e4488c856b1
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134468"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217245"
 ---
 # <a name="network-security-for-azure-relay"></a>Azure Relay のネットワーク セキュリティ 
 この記事では、Azure Relay で次のセキュリティ機能を使用する方法について説明します。 
 
-- IP ファイアウォール規則 (プレビュー)
+- IP ファイアウォール規則
 - プライベート エンドポイント 
 
 > [!NOTE]
@@ -28,9 +28,6 @@ ms.locfileid: "98134468"
 IP ファイアウォール規則は、Relay 名前空間レベルで適用されます。 したがって、規則は、サポートされているプロトコルを使用するクライアントからのすべての接続に適用されます。 Relay 名前空間上の許可 IP 規則に一致しない IP アドレスからの接続試行は、未承認として拒否されます。 IP 規則に関する記述は応答に含まれません。 IP フィルター規則は順に適用され、IP アドレスと一致する最初の規則に基づいて許可アクションまたは拒否アクションが決定されます。
 
 詳細については、[Relay の名前空間の IP ファイアウォールを構成する方法](ip-firewall-virtual-networks.md)に関する記事を参照してください
-
-> [!NOTE]
-> 現在、この機能は **プレビュー段階** にあります。 
 
 ## <a name="private-endpoints"></a>プライベート エンドポイント
 

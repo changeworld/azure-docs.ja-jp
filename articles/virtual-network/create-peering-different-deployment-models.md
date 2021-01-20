@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2018
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 148d57da549e8364620c8417cbd61d975cea1498
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ff9fcbb693f7e606c07985f9bce9acd60c5591a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87046099"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222974"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>仮想ネットワーク ピアリングの作成 - 異なるデプロイメント モデル、同じサブスクリプション
 
@@ -35,7 +35,7 @@ ms.locfileid: "87046099"
 |[両方とも Resource Manager](create-peering-different-subscriptions.md) |異なる|
 |[一方が Resource Manager、もう一方がクラシック](create-peering-different-deployment-models-subscriptions.md) |異なる|
 
-クラシック デプロイ モデルでデプロイされた 2 つの仮想ネットワークの間に、仮想ネットワーク ピアリングを作成することはできません。 どちらもクラシック デプロイ モデルで作成された仮想ネットワークを接続する必要がある場合は、Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使ってそれらの仮想ネットワークを接続できます。
+クラシック デプロイ モデルでデプロイされた 2 つの仮想ネットワークの間に、仮想ネットワーク ピアリングを作成することはできません。 どちらもクラシック デプロイ モデルで作成された仮想ネットワークを接続する必要がある場合は、Azure [VPN Gateway](../vpn-gateway/tutorial-site-to-site-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使ってそれらの仮想ネットワークを接続できます。
 
 このチュートリアルでは同じリージョンで複数の仮想ネットワークをピアリングします。 異なる[サポート対象リージョン](virtual-network-manage-peering.md#cross-region)間での仮想ネットワーク ピアリングも可能です。 仮想ネットワークのピアリングの前に、[ピアリングの要件と制約](virtual-network-manage-peering.md#requirements-and-constraints)をよく理解しておくことをお勧めします。
 
@@ -82,7 +82,7 @@ ms.locfileid: "87046099"
 
 ## <a name="create-peering---azure-cli"></a><a name="cli"></a>ピアリングの作成 - Azure CLI
 
-Azure クラシック CLI と Azure CLI を使用して、次の手順を完了します。 次の手順のいずれかで **[試してみる]** ボタンを選択するだけで、または[クラシック CLI](/cli/azure/install-cli-version-1.0?toc=%2fazure%2fvirtual-network%2ftoc.json) と [CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) をインストールし、ローカル コンピューター上のコマンドを実行すると、Azure Cloud Shell からの手順を行うことができます。
+Azure クラシック CLI と Azure CLI を使用して、次の手順を完了します。 次の手順のいずれかで **[試してみる]** ボタンを選択するだけで、または [クラシック CLI](/cli/azure/install-cli-version-1.0?toc=%2fazure%2fvirtual-network%2ftoc.json) と [CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) をインストールし、ローカル コンピューター上のコマンドを実行すると、Azure Cloud Shell からの手順を行うことができます。
 
 1. Cloud Shell を使用する場合は、Cloud Shell が Azure に自動的にサインインするため、手順 2 に進みます。 コマンド セッションを開き、`azure login` コマンドを使用して Azure にサインインします。
 2. `azure config mode asm` コマンドを入力して、サービス管理モードで CLI を実行します。
@@ -148,7 +148,7 @@ Azure クラシック CLI と Azure CLI を使用して、次の手順を完了�
 1. PowerShell [Azure](https://www.powershellgallery.com/packages/Azure) および [Az](https://www.powershellgallery.com/packages/Az/) モジュールの最新バージョンをインストールします。 Azure PowerShell を初めてお使いの方は、[Azure PowerShell の概要](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。
 2. PowerShell セッションを開始します。
 3. PowerShell で、`Add-AzureAccount` コマンドを入力して Azure にサインインします。 サインインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#requirements-and-constraints)に関するページをご覧ください。
-4. PowerShell で仮想ネットワーク (クラシック) を作成するには、ネットワーク構成ファイルを新しく作成するか、既存のものを変更する必要があります。 [ネットワーク構成ファイルをエクスポート、更新、およびインポートする](virtual-networks-using-network-configuration-file.md)方法を確認してください。 ファイルには、このチュートリアルで使用されている仮想ネットワークの次の **VirtualNetworkSite** 要素を含める必要があります。
+4. PowerShell で仮想ネットワーク (クラシック) を作成するには、ネットワーク構成ファイルを新しく作成するか、既存のものを変更する必要があります。 [ネットワーク構成ファイルをエクスポート、更新、およびインポートする](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file)方法を確認してください。 ファイルには、このチュートリアルで使用されている仮想ネットワークの次の **VirtualNetworkSite** 要素を含める必要があります。
 
     ```xml
     <VirtualNetworkSite name="myVnet2" Location="East US">
@@ -240,7 +240,7 @@ Azure クラシック CLI と Azure CLI を使用して、次の手順を完了�
     Remove-AzResourceGroup -Name myResourceGroup -Force
     ```
 
-2. PowerShell で仮想ネットワーク (クラシック) を削除するには、既存のネットワーク構成ファイルを変更する必要があります。 [ネットワーク構成ファイルをエクスポート、更新、およびインポートする](virtual-networks-using-network-configuration-file.md)方法を確認してください。 このチュートリアルで使用されている仮想ネットワークの次の VirtualNetworkSite 要素を削除します。
+2. PowerShell で仮想ネットワーク (クラシック) を削除するには、既存のネットワーク構成ファイルを変更する必要があります。 [ネットワーク構成ファイルをエクスポート、更新、およびインポートする](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file)方法を確認してください。 このチュートリアルで使用されている仮想ネットワークの次の VirtualNetworkSite 要素を削除します。
 
     ```xml
     <VirtualNetworkSite name="myVnet2" Location="East US">

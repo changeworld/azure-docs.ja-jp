@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 36e41db6e1a3cff13f31f0abf2e83e872dfd7c49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a92c6789723dc42ac8f3a9c471e494079dc19328
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742334"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233442"
 ---
 # <a name="network-monitoring-solutions"></a>ネットワーク監視ソリューション 
 
@@ -52,10 +52,10 @@ Performance Monitor は NPM の一部であり、クラウド、ハイブリッ�
 詳しくは、次の記事をご覧ください。
 
 * [Azure Monitor ログで Network Performance Monitor ソリューションを構成する](../azure-monitor/insights/network-performance-monitor.md) 
-* [ユース ケース](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
+* [ユース ケース](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor)
 * 製品の更新:
-  * [2017 年 2 月](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
-  * [2017 年 8 月](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
+  * [2017 年 2 月](/archive/blogs/msoms/oms-network-performance-monitor-is-now-generally-available)
+  * [2017 年 8 月](/archive/blogs/msoms/improvements-to-oms-network-performance-monitor)
 
 ## <a name="expressroute-monitor"></a>ExpressRoute モニター
 
@@ -106,7 +106,7 @@ Traffic Analytics は、組織のネットワーク アクティビティを監�
 ![リージョン間のトラフィックを示すマップ 2](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
 関連リンク:
-* [ブログ記事](https://aka.ms/trafficanalytics)、[ドキュメント](https://aka.ms/trafficanalyticsdocs)、[FAQ](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
+* [ブログ記事](https://aka.ms/trafficanalytics)、[ドキュメント](../network-watcher/traffic-analytics.md)、[FAQ](../network-watcher/traffic-analytics-faq.md)
 
 ## <a name="dns-analytics"></a>DNS Analytics
 DNS 管理者用に開発されたこのソリューションは、DNS ログの収集、分析、および相互の関連付けを行って、セキュリティ、運用、およびパフォーマンスに関する分析情報を提供します。  いくつかの機能を次に示します。
@@ -120,8 +120,8 @@ DNS 管理者用に開発されたこのソリューションは、DNS ログの
 ![DNS Analytics ダッシュボード](./media/network-monitoring-overview/dns-analytics-overview.png) 
 
 関連リンク:
-* [ブログ記事](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/)、[ドキュメント](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
+* [ブログ記事](/archive/blogs/msoms/introducing-oms-dns-analytics)、[ドキュメント](../azure-monitor/insights/dns-analytics.md)
 
 ## <a name="miscellaneous"></a>その他
 
-* [新しい価格](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)
+* [新しい価格](../azure-monitor/insights/network-performance-monitor-pricing-faq.md)

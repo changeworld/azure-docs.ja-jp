@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 79062ae45f04b290f6e4120906b98590ce95dbe1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 654c883498e724d10104133f99ef1664f72fe09d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87833268"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223484"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション、および Azure Active Directory テナント
 
@@ -31,14 +31,14 @@ ms.locfileid: "87833268"
 |[一方が Resource Manager、もう一方がクラシック](create-peering-different-deployment-models.md) |同じ|
 |[一方が Resource Manager、もう一方がクラシック](create-peering-different-deployment-models-subscriptions.md) |異なる|
 
-クラシック デプロイ モデルでデプロイされた 2 つの仮想ネットワークの間に、仮想ネットワーク ピアリングを作成することはできません。 どちらもクラシック デプロイ モデルで作成された仮想ネットワークを接続する必要がある場合は、Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使ってそれらの仮想ネットワークを接続できます。
+クラシック デプロイ モデルでデプロイされた 2 つの仮想ネットワークの間に、仮想ネットワーク ピアリングを作成することはできません。 どちらもクラシック デプロイ モデルで作成された仮想ネットワークを接続する必要がある場合は、Azure [VPN Gateway](../vpn-gateway/tutorial-site-to-site-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使ってそれらの仮想ネットワークを接続できます。
 
 このチュートリアルでは同じリージョンで複数の仮想ネットワークをピアリングします。 異なる[サポート対象リージョン](virtual-network-manage-peering.md#cross-region)間での仮想ネットワーク ピアリングも可能です。 仮想ネットワークのピアリングの前に、[ピアリングの要件と制約](virtual-network-manage-peering.md#requirements-and-constraints)をよく理解しておくことをお勧めします。
 
 仮想ネットワーク ピアリングは、[Azure Portal](#portal)、Azure [コマンド ライン インターフェイス](#cli) (CLI)、Azure [PowerShell](#powershell)、[Azure Resource Manager テンプレート](#template)のいずれかを使って作成できます。 いずれかのリンクを選択すると、そのツールを使って仮想ネットワーク ピアリングを作成するための手順に直接移動します。
 
 仮想ネットワークが異なるサブスクリプションに含まれ、サブスクリプションが異なる Azure Active Directory テナントに関連付けられている場合は、続行する前に、次の手順を完了します。
-1. 各 Active Directory テナントのユーザーを、反対側の Azure Active Directory テナントに[ゲスト ユーザー](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory)として追加します。
+1. 各 Active Directory テナントのユーザーを、反対側の Azure Active Directory テナントに[ゲスト ユーザー](../active-directory/external-identities/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory)として追加します。
 1. 各ユーザーは、反対側の Azure Active Directory テナントからのゲスト ユーザーの招待を受け入れる必要があります。
 
 ## <a name="create-peering---azure-portal"></a><a name="portal"></a>ピアリングの作成 - Azure Portal
@@ -93,7 +93,7 @@ ms.locfileid: "87833268"
 24. myVnetB について、手順 17 ～ 21 を繰り返します。 手順 21 では、ピアリングに「*myVnetBToMyVnetA*」という名前を設定し、 **[仮想ネットワーク]** で *myVnetA* を選び、手順 10 の ID を **[リソース ID]** ボックスに入力します。
 25. **[OK]** をクリックして myVnetB のピアリングを作成してから数秒経つと、作成したばかりの **myVnetBToMyVnetA** ピアリングが **[接続済み]** として **[ピアリング状態]** 列に表示されます。
 26. UserB としてポータルからログアウトし、UserA としてログインします。
-27. 手順 17 ～ 19 を繰り返します。 **myVnetAToVNetB** ピアリングの **[ピアリング状態]** も**接続済み**になります。 ピアリングにおける両方の仮想ネットワークの **[ピアリング状態]** 列に**接続済み**と表示されれば、ピアリングは正常に確立されています。 2 つの仮想ネットワークに作成した Azure リソースが、その IP アドレスを使用して相互に通信できるようになりました。 仮想ネットワークに Azure の既定の名前解決を使用する場合、そのネットワーク内のリソースは、通信相手の仮想ネットワークに対して名前を解決することができません。 ピアリングされた仮想ネットワークの間で名前を解決する必要がある場合は、独自の DNS サーバーを作成する必要があります。 その方法については、「[独自 DNS サーバー使用の名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」を参照してください。
+27. 手順 17 ～ 19 を繰り返します。 **myVnetAToVNetB** ピアリングの **[ピアリング状態]** も **接続済み** になります。 ピアリングにおける両方の仮想ネットワークの **[ピアリング状態]** 列に **接続済み** と表示されれば、ピアリングは正常に確立されています。 2 つの仮想ネットワークに作成した Azure リソースが、その IP アドレスを使用して相互に通信できるようになりました。 仮想ネットワークに Azure の既定の名前解決を使用する場合、そのネットワーク内のリソースは、通信相手の仮想ネットワークに対して名前を解決することができません。 ピアリングされた仮想ネットワークの間で名前を解決する必要がある場合は、独自の DNS サーバーを作成する必要があります。 その方法については、「[独自 DNS サーバー使用の名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」を参照してください。
 28. **省略可能**:このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
 29. **省略可能**:このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-portal)」セクションの手順を実行してください。
 
@@ -161,14 +161,14 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
       --output table
     ```
 
-    状態は**開始済み**です。 myVnetB から myVnetA へのピアリングを作成すると、**接続済み**に変わります。
+    状態は **開始済み** です。 myVnetB から myVnetA へのピアリングを作成すると、**接続済み** に変わります。
 
 8. UserA として Azure をログアウトし、UserB として Azure にログインします。
 9. myVnetB から myVnetA へのピアリングを作成します。 PC で、手順 6 のスクリプトの内容をテキスト エディターにコピーします。 `<SubscriptionB-Id>` を SubscriptionA の ID に置き換え、すべての A を B に、すべての B を A に変更します。変更したスクリプトをコピーし、CLI セッションに貼り付けて、`Enter` キーを押します。
-10. myVnetB のピアリングの状態を表示します。 PC で、手順 7 のスクリプトの内容をテキスト エディターにコピーします。 リソース グループと仮想ネットワークの名前の A を B に変更したスクリプトをコピーし、CLI セッションに貼り付けて、`Enter` キーを押します。 ピアリングの状態は **接続済み**です。 myVnetB から myVnetA へのピアリングを作成した後、myVnetA のピアリングの状態は**接続済み**に変わります。 UserA を Azure に再びログインさせ、手順 7 を再度実行して、myVnetA のピアリング状態を確認します。 
+10. myVnetB のピアリングの状態を表示します。 PC で、手順 7 のスクリプトの内容をテキスト エディターにコピーします。 リソース グループと仮想ネットワークの名前の A を B に変更したスクリプトをコピーし、CLI セッションに貼り付けて、`Enter` キーを押します。 ピアリングの状態は **接続済み** です。 myVnetB から myVnetA へのピアリングを作成した後、myVnetA のピアリングの状態は **接続済み** に変わります。 UserA を Azure に再びログインさせ、手順 7 を再度実行して、myVnetA のピアリング状態を確認します。 
 
     > [!NOTE]
-    > 両方の仮想ネットワークでピアリングの状態が**接続済み**になるまで、ピアリングは確立されません。
+    > 両方の仮想ネットワークでピアリングの状態が **接続済み** になるまで、ピアリングは確立されません。
 
 11. **省略可能**:このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
 12. **省略可能**:このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-cli)」の手順を実行してください。
@@ -229,14 +229,14 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
       | Format-Table VirtualNetworkName, PeeringState
     ```
 
-    状態は**開始済み**です。 myVnetB から myVnetA へのピアリングの設定が完了した時点で、**接続済み**に変わります。
+    状態は **開始済み** です。 myVnetB から myVnetA へのピアリングの設定が完了した時点で、**接続済み** に変わります。
 
 10. Azure から UserA をログアウトし、UserB でログインします。
 11. myVnetB から myVnetA へのピアリングを作成します。 PC で、手順 8 のスクリプトの内容をテキスト エディターにコピーします。 `<SubscriptionB-Id>` をサブスクリプション A の ID に置き換え、すべての A を B に、すべての B を A に変更します。スクリプトを実行するには、変更後のスクリプトをコピーし、PowerShell に貼り付けて、`Enter` キーを押します。
-12. myVnetB のピアリングの状態を表示します。 PC で、手順 9 のスクリプトの内容をテキスト エディターにコピーします。 リソース グループと仮想ネットワークの名前の A を B に変更します。 スクリプトを実行するには、変更後のスクリプトを PowerShell に貼り付けて、`Enter` キーを押します。 状態は**接続済み**です。 **myVnetB** から **myVnetA** へのピアリングを作成した後、**myVnetA** のピアリングの状態は**接続済み**に変わります。 UserA を Azure に再びログインさせ、手順 9 を再度実行して、myVnetA のピアリング状態を確認します。
+12. myVnetB のピアリングの状態を表示します。 PC で、手順 9 のスクリプトの内容をテキスト エディターにコピーします。 リソース グループと仮想ネットワークの名前の A を B に変更します。 スクリプトを実行するには、変更後のスクリプトを PowerShell に貼り付けて、`Enter` キーを押します。 状態は **接続済み** です。 **myVnetB** から **myVnetA** へのピアリングを作成した後、**myVnetA** のピアリングの状態は **接続済み** に変わります。 UserA を Azure に再びログインさせ、手順 9 を再度実行して、myVnetA のピアリング状態を確認します。
 
     > [!NOTE]
-    > 両方の仮想ネットワークでピアリングの状態が**接続済み**になるまで、ピアリングは確立されません。
+    > 両方の仮想ネットワークでピアリングの状態が **接続済み** になるまで、ピアリングは確立されません。
 
     2 つの仮想ネットワークに作成した Azure リソースが、その IP アドレスを使用して相互に通信できるようになりました。 仮想ネットワークに Azure の既定の名前解決を使用する場合、そのネットワーク内のリソースは、通信相手の仮想ネットワークに対して名前を解決することができません。 ピアリングされた仮想ネットワークの間で名前を解決する必要がある場合は、独自の DNS サーバーを作成する必要があります。 その方法については、「[独自 DNS サーバー使用の名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」を参照してください。
 

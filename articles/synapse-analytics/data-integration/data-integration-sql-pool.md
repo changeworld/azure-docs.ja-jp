@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: afebb6a67b4c8a33e812c0e51ff225f16cd35356
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6156bd72e3f4965a74798a3f91496eb8a321444e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461468"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219525"
 ---
 # <a name="ingest-data-into-a-dedicated-sql-pool"></a>専用 SQL プールにデータを取り込む
 
@@ -23,7 +23,7 @@ ms.locfileid: "96461468"
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
-* **Azure ストレージ アカウント**: "*ソース*" データ ストアとして Azure Data Lake Storage Gen 2 を使用します。 ストレージ アカウントがない場合の作成手順については、「[Azure Storage アカウントの作成](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
+* **Azure ストレージ アカウント**: "*ソース*" データ ストアとして Azure Data Lake Storage Gen 2 を使用します。 ストレージ アカウントがない場合の作成手順については、「[Azure Storage アカウントの作成](../../storage/common/storage-account-create.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)」を参照してください。
 * **Azure Synapse Analytics**:専用 SQL プールを "*シンク*" データ ストアとして使用します。 Azure Synapse Analytics インスタンスをお持ちでない場合、[専用 SQL プールの作成](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページでその作成手順を参照してください。
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します

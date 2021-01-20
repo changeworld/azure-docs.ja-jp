@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 788c52490a97bb5d5aee0656bbdd09731d767d85
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d625cb8e0d0fa0f2fff55fbd41818057b7e9cb89
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842602"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217653"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azure パブリック IP の Azure セキュリティ ベースライン
 
@@ -30,7 +30,7 @@ Azure パブリック IP と Azure セキュリティ ベンチマークのマ�
 
 タグに基づいてリソースを検索するため、またはリソースに対してアクションを実行するために、Azure PowerShell または Azure CLI を使用できます。 
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags) 
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md) 
 
 - [Azure 仮想ネットワークの作成方法](quick-create-portal.md) 
 
@@ -64,7 +64,7 @@ Azure パブリック IP と Azure セキュリティ ベンチマークのマ�
 
 **ガイダンス**: Azure アクティビティ ログを使用して、構成を監視し、パブリック IP インスタンスに対する変更を検出します。 コントロール プレーン (Azure portal など) 以外では、パブリック IP 自体は監査ログを生成しません。 パブリック IP により、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツールが提供されます。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log-view)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 **Azure Security Center の監視**: はい
 
@@ -88,7 +88,7 @@ Azure アクティビティ ログを使用して、構成を監視し、パブ�
 
 コントロール プレーン (Azure portal など) 以外では、パブリック IP 自体はネットワーク トラフィックに関連するログを生成しません。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log-view)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -114,9 +114,9 @@ Azure アクティビティ ログを使用して、構成を監視し、パブ�
 
 特定のリソースに対して、Azure CLI、Azure PowerShell、Azure portal などのツールを使用してインベントリされた、あるいはクエリが事前定義された Azure 組み込みロールがあります。
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center の監視**: はい
 
@@ -128,7 +128,7 @@ Azure アクティビティ ログを使用して、構成を監視し、パブ�
 
 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) と Azure Resource Manager を使用して、Just-In-Time アクセスを有効にします。 
 
-- [Privileged Identity Management について](/azure/active-directory/privileged-identity-management)
+- [Privileged Identity Management について](../active-directory/privileged-identity-management/index.yml)
 
 **Azure Security Center の監視**: はい
 
@@ -148,11 +148,11 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) と Azure
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
 
-**ガイダンス**:Azure AD Multi-Factor Authentication (MFA) が有効な特権アクセス ワークステーション (PAW) を使用してログインし、Azure Sentinel 対応リソースを構成します。
+**ガイダンス**:Azure AD Multi-Factor Authentication (MFA) 対応の特権アクセス ワークステーション (PAW) を使用して、ログインし、Azure Sentinel 対応リソースを構成します。
 
-- [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations) (Privileged Access Workstation)
+- [Privileged Access Workstations](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) (Privileged Access Workstation)
 
-- [クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
+- [クラウドベースの Azure AD Multi-Factor Authentication のデプロイの計画](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -164,9 +164,9 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) と Azure
 
 Azure AD のリスク検出を使用して、危険なユーザーの行動に関するアラートとレポートを確認し、対処します。
 
-- [Privileged Identity Management (PIM) をデプロイする方法](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Azure AD のリスク検出の概要](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: はい
 
@@ -198,7 +198,7 @@ Azure AD のリスク検出を使用して、危険なユーザーの行動に�
 
 Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、ロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、承認された継続的なアクセス権をユーザーが持っていることを確認します。
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/)
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
 - [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
@@ -211,7 +211,7 @@ Azure ID アクセス レビューを使用して、グループ メンバーシ
 **ガイダンス**: Azure Active Directory (Azure AD) サインイン アクティビティ、監査、リスク イベント ログ ソースへのアクセスに基づいて、任意の SIEM または監視ツールとの統合を実施します。
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペース内で目的のアラートを構成します。 
 
-- [Azure アクティビティ ログを Azure Monitor と統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor と統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -220,7 +220,7 @@ Azure ID アクセス レビューを使用して、グループ メンバーシ
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: アカウント ログイン動作の偏差に関するアラートを生成する
 
 **ガイダンス**: Azure Active Directory (Azure AD) Identity Protection 機能を使用して、ユーザー ID に関連して検出された疑わしいアクションに対する自動応答を構成します。 必要に応じてさらに調査するために、ビジネス要件に基づいて Azure Sentinel にデータを取り込みます。
-- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
@@ -242,7 +242,7 @@ Azure ID アクセス レビューを使用して、グループ メンバーシ
 
 - [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -254,7 +254,7 @@ Azure ID アクセス レビューを使用して、グループ メンバーシ
 
 **ガイダンス**:メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -269,11 +269,11 @@ Azure ID アクセス レビューを使用して、グループ メンバーシ
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](/azure/governance/management-groups/create)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -302,7 +302,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -350,9 +350,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: カスタムの Azure Policy 定義を使用する場合は、Azure DevOps または Azure Repos を使用して、コードを安全に格納して管理します。
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -408,7 +408,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [Security alerts in Azure Security Center](../security-center/security-center-alerts-overview.md) 
 
-- [タグを使用した Azure リソースの整理](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: はい
 
@@ -474,5 +474,5 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

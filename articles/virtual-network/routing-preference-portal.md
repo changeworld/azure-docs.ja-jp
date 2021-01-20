@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: ef1e33a2e43f26dcaf794b2ed81f27d39639b52d
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 2c6295db96f951abd1fd069535b98639e723d93a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533980"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217568"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>Azure portal を使用してパブリック IP アドレスのルーティング優先設定を構成する
 
-この記事では、パブリック IP アドレスに対して ISP ネットワーク ( **[インターネット]** オプション) による [ルーティング優先設定](https://docs.microsoft.com/azure/virtual-network/routing-preference-overview)を構成する方法について示します。 パブリック IP アドレスを作成した後は、インターネットでの受信および送信トラフィック用に、次の Azure リソースと関連付けることができます。
+この記事では、パブリック IP アドレスに対して ISP ネットワーク ( **[インターネット]** オプション) による [ルーティング優先設定](./routing-preference-overview.md)を構成する方法について示します。 パブリック IP アドレスを作成した後は、インターネットでの受信および送信トラフィック用に、次の Azure リソースと関連付けることができます。
 
 * 仮想マシン
 * 仮想マシン スケール セット
@@ -56,5 +56,5 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 - [ルーティング優先設定が指定されたパブリック IP アドレス](routing-preference-overview.md)について詳しく学習する。
 - [VM 用にルーティング優先設定を構成する](tutorial-routing-preference-virtual-machine-portal.md)。
 - [PowerShell を使用してパブリック IP アドレスのルーティング優先設定を構成する](routing-preference-powershell.md)。
-- Azure の[パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)について詳しく学習する。
+- Azure の[パブリック IP アドレス](./public-ip-addresses.md#public-ip-addresses)について詳しく学習する。
 - すべての[パブリック IP アドレスの設定](virtual-network-public-ip-address.md#create-a-public-ip-address)について詳しく学習する。

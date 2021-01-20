@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 9685c1739a00788a974c200ddabb8cc975696b62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75b62eb00b1a1a534be01f9f118b4d5066e44a37
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83587733"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222889"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>仮想ネットワーク ピアリングの問題をトラブルシューティングする
 
@@ -36,8 +36,8 @@ ms.locfileid: "83587733"
 
 同じサブスクリプションにある仮想ネットワークの仮想ネットワーク ピアリングを構成するには、次の記事にある方法を使用します。
 
-* 仮想ネットワークが *同じリージョン* にある場合は、「[ピアリングの作成](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#create-a-peering)」を参照してください。
-* 仮想ネットワークが *異なるリージョン* にある場合は、「[仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)」を参照してください。 
+* 仮想ネットワークが *同じリージョン* にある場合は、「[ピアリングの作成](./virtual-network-manage-peering.md#create-a-peering)」を参照してください。
+* 仮想ネットワークが *異なるリージョン* にある場合は、「[仮想ネットワーク ピアリング](./virtual-network-peering-overview.md)」を参照してください。 
 
 > [!Note]
 > 次のリソースについては、グローバル仮想ネットワーク ピアリング経由での接続が機能しません。 
@@ -52,11 +52,11 @@ ms.locfileid: "83587733"
 > * Azure API Management (Basic ILB SKU を使用)
 > * Azure Active Directory Domain Service (Azure AD DS) (Basic ILB SKU を使用)
 
-詳細については、グローバル ピアリングの「[要件と制約](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints)」を参照してください。
+詳細については、グローバル ピアリングの「[要件と制約](./virtual-network-peering-overview.md#requirements-and-constraints)」を参照してください。
 
 ### <a name="the-virtual-networks-are-in-different-subscriptions-or-active-directory-tenants"></a>仮想ネットワークが異なるサブスクリプションまたは Active Directory テナントにある
 
-異なるサブスクリプションまたは Active Directory テナント内の仮想ネットワークの仮想ネットワーク ピアリングを構成するには、[Azure CLI の異なるサブスクリプションでのピアリングの作成](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)に関する記事を参照してください。
+異なるサブスクリプションまたは Active Directory テナント内の仮想ネットワークの仮想ネットワーク ピアリングを構成するには、[Azure CLI の異なるサブスクリプションでのピアリングの作成](./create-peering-different-subscriptions.md#cli)に関する記事を参照してください。
 
 > [!Note]
 > ネットワーク ピアリングを構成するには、両方のサブスクリプションで **ネットワーク共同作成者** のアクセス許可を持っている必要があります。 詳細については、[ピアリングのアクセス許可](virtual-network-manage-peering.md#permissions)に関するページを参照してください。
@@ -67,11 +67,11 @@ ms.locfileid: "83587733"
 
 ### <a name="for-a-site-to-site-connection-or-an-expressroute-connection"></a>サイト間接続または ExpressRoute 接続の場合
 
-次の手順に従います: [仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json)。
+次の手順に従います: [仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ### <a name="for-point-to-site-connections"></a>ポイント対サイト接続の場合
 
-1. 次の手順に従います: [仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json)。
+1. 次の手順に従います: [仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 2. 仮想ネットワーク ピアリングが確立または変更された後、ポイント対サイト クライアントでスポーク仮想ネットワークへの更新されたルートを取得できるように、ポイント対サイト パッケージをダウンロードして再びインストールします。
 
 ## <a name="configure-virtual-network-peering-with-hub-spoke-topology-virtual-network"></a>ハブスポーク トポロジ仮想ネットワークを使用して仮想ネットワーク ピアリングを構成する
@@ -84,12 +84,12 @@ ms.locfileid: "83587733"
 1. ハブ仮想ネットワークで、ネットワーク仮想アプライアンス (NVA) を構成します。
 1. スポーク仮想ネットワークで、ユーザー定義ルートに次ホップの種類 "ネットワーク仮想アプライアンス" を適用します。
 
-詳細については、「[サービス チェイニング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)」を参照してください。
+詳細については、「[サービス チェイニング](./virtual-network-peering-overview.md#service-chaining)」を参照してください。
 
 > [!Note]
 > NVA の設定に関するヘルプが必要な場合は、[NVA のベンダーにお問い合わせください](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
 
-NVA デバイスの設定とルーティングのトラブルシューティングに関するヘルプについては、「[Azure でのネットワーク仮想アプライアンスの問題](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)」を参照してください。
+NVA デバイスの設定とルーティングのトラブルシューティングに関するヘルプについては、「[Azure でのネットワーク仮想アプライアンスの問題](./virtual-network-troubleshoot-nva.md)」を参照してください。
 
 ### <a name="the-virtual-networks-are-in-different-regions"></a>仮想ネットワークが異なるリージョン内にある
 
@@ -105,7 +105,7 @@ NVA デバイスの設定とルーティングのトラブルシューティン�
 * API Management (Basic ILB SKU を使用)
 * Azure AD DS (Basic ILB SKU を使用)
 
-グローバル ピアリングの要件と制約の詳細については、「[仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints)」を参照してください。
+グローバル ピアリングの要件と制約の詳細については、「[仮想ネットワーク ピアリング](./virtual-network-peering-overview.md#requirements-and-constraints)」を参照してください。
 
 ## <a name="troubleshoot-a-connectivity-issue-between-two-peered-virtual-networks"></a>ピアリングした 2 つの仮想ネットワーク間の接続に関する問題のトラブルシューティング
 
@@ -117,11 +117,11 @@ NVA デバイスの設定とルーティングのトラブルシューティン�
 
 1. ネットワーク トラフィック フローを確認する:
 
-   [接続のトラブルシューティング](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-overview)と、ソース VM から宛先 VM への [IP フロー検証](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview)を使用して、トラフィック フローの干渉の原因となっている NSG または UDR があるかどうかを判断します。
+   [接続のトラブルシューティング](../network-watcher/network-watcher-connectivity-overview.md)と、ソース VM から宛先 VM への [IP フロー検証](../network-watcher/network-watcher-ip-flow-verify-overview.md)を使用して、トラフィック フローの干渉の原因となっている NSG または UDR があるかどうかを判断します。
 
    ファイアウォールまたは NVA を使用している場合: 
    1. この手順の完了後に復元できるように、UDR パラメーターをドキュメント化します。
-   2. 次ホップとして NVA を指すソース VM サブネットまたは NIC から UDR を削除します。 ソース VM から、NVA をバイパスしている宛先への直接の接続を確認します。 この手順がうまくいかない場合は、[NVA トラブルシューティング ツール](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)に関するページを参照してください。
+   2. 次ホップとして NVA を指すソース VM サブネットまたは NIC から UDR を削除します。 ソース VM から、NVA をバイパスしている宛先への直接の接続を確認します。 この手順がうまくいかない場合は、[NVA トラブルシューティング ツール](./virtual-network-troubleshoot-nva.md)に関するページを参照してください。
 
 2. ネットワーク トレースを取得する: 
    1. 宛先 VM でネットワーク トレースを開始します。 Windows の場合は、**Netsh** を使用できます。 Linux の場合は、**TCPDump** を使用します。
@@ -145,7 +145,7 @@ NVA デバイスの設定とルーティングのトラブルシューティン�
    > * API Management (Basic ILB SKU を使用)
    > * Azure AD DS (Basic ILB SKU を使用)
 
-詳細については、グローバル ピアリングの「[要件と制約](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints)」を参照してください。
+詳細については、グローバル ピアリングの「[要件と制約](./virtual-network-peering-overview.md#requirements-and-constraints)」を参照してください。
 
 ### <a name="the-peering-status-is-disconnected"></a>ピアリングの状態は [切断]
 
@@ -159,8 +159,8 @@ NVA デバイスの設定とルーティングのトラブルシューティン�
 
 サードパーティの NVA または VPN ゲートウェイに影響する接続問題のトラブルシューティングを行う場合は、次の記事を参照してください。
 
-* [NVA トラブルシューティング ツール](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)
-* [サービス チェーン](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)
+* [NVA トラブルシューティング ツール](./virtual-network-troubleshoot-nva.md)
+* [サービス チェーン](./virtual-network-peering-overview.md#service-chaining)
 
 ### <a name="my-network-does-not-use-a-third-party-nva-or-vpn-gateway"></a>自分のネットワークでサードパーティの NVA や VPN ゲートウェイが使用されていない
 
@@ -190,7 +190,7 @@ NVA デバイスの設定とルーティングのトラブルシューティン�
 
 ハブ ネットワークに NVA がある必要があります。 NVA が次ホップとして設定されているスポークで UDR を構成し、ハブ仮想ネットワークで **[転送されたトラフィックを許可する]** を有効にします。
 
-詳細については、「[サービス チェイニング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)」を参照し、選択した [NVA ベンダー](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)とこれらの要件について相談してください。
+詳細については、「[サービス チェイニング](./virtual-network-peering-overview.md#service-chaining)」を参照し、選択した [NVA ベンダー](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)とこれらの要件について相談してください。
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-different-regions"></a>異なるリージョンのスポーク仮想ネットワーク間のハブスポーク ネットワーク接続に関する問題のトラブルシューティング
 
@@ -206,7 +206,7 @@ NVA デバイスの設定とルーティングのトラブルシューティン�
 * API Management (Basic ILB SKU を使用)
 * Azure AD DS (Basic ILB SKU を使用)
 
-詳細については、グローバル ピアリングの「[要件と制約](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints)」、および[さまざまな VPN トポロジ](https://blogs.msdn.microsoft.com/igorpag/2016/02/11/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-v2/)に関するページを参照してください。
+詳細については、グローバル ピアリングの「[要件と制約](./virtual-network-peering-overview.md#requirements-and-constraints)」、および[さまざまな VPN トポロジ](/archive/blogs/igorpag/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-v2)に関するページを参照してください。
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-a-web-app-and-the-spoke-virtual-network"></a>Web アプリとスポーク仮想ネットワークの間のハブスポーク ネットワーク接続に関する問題のトラブルシューティング
 
@@ -218,14 +218,14 @@ NVA デバイスの設定とルーティングのトラブルシューティン�
 
 詳細については、次の記事を参照してください。
 
-* [アプリを Azure 仮想ネットワークに統合する](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
-* [ポイント対サイト VPN ルーティングについて](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing)
+* [アプリを Azure 仮想ネットワークに統合する](../app-service/web-sites-integrate-with-vnet.md)
+* [ポイント対サイト VPN ルーティングについて](../vpn-gateway/vpn-gateway-about-point-to-site-routing.md)
 
 ## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>仮想ネットワーク ピアリング構成エラー メッセージのトラブルシューティング 
 
 ### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>現在のテナント `<TENANT ID>` は、リンクされているサブスクリプションにアクセスする権限がありません
 
-この問題を解決するには、「[ピアリングの作成 - Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)」を参照してください。
+この問題を解決するには、「[ピアリングの作成 - Azure CLI](./create-peering-different-subscriptions.md#cli)」を参照してください。
 
 ### <a name="not-connected"></a>[未接続]
 
@@ -246,4 +246,4 @@ NVA デバイスの設定とルーティングのトラブルシューティン�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure VM 間の接続に関する問題のトラブルシューティング](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-connectivity-problem-between-vms)
+* [Azure VM 間の接続に関する問題のトラブルシューティング](./virtual-network-troubleshoot-connectivity-problem-between-vms.md)

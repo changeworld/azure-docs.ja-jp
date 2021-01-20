@@ -2,15 +2,15 @@
 title: Azure Monitor for Azure Cache for Redis | Microsoft Docs
 description: この記事では、キャッシュ所有者がパフォーマンスと使用状況の問題をすばやく把握できる Azure Monitor for Azure Redis Cache の機能について説明します。
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: e7b8a8e131cf7e0aae051f42043abf0640c927e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35f575410caa7a8a8ffbda35bdfa876418db8945
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90887004"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210377"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>Azure Monitor for Azure Cache for Redis を調べる
 
@@ -174,7 +174,7 @@ Azure Redis Cache の **[概要]** ブックには、複数のパフォーマン
 
 ![[カスタマイズ] が強調表示されたコマンド バー](./media/cosmosdb-insights-overview/customize.png)
 
-ブックは、 **[個人用レポート]** セクションまたは **[共有レポート]** セクションのリソース グループ内に保存されます。 **個人用レポート**は自分だけが使用できます。 **共有レポート**は、リソース グループにアクセスできるすべてのユーザーが使用できます。
+ブックは、 **[個人用レポート]** セクションまたは **[共有レポート]** セクションのリソース グループ内に保存されます。 **個人用レポート** は自分だけが使用できます。 **共有レポート** は、リソース グループにアクセスできるすべてのユーザーが使用できます。
 
 カスタム ブックを保存した後は、ブック ギャラリーに移動して開きます。
 

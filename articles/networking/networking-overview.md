@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: kumud
-ms.openlocfilehash: f49a340a004a4aef37bcae9e3ae1c2b02ae030b9
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: d02f85647d947c2f28527ba6f0397c2a98e73840
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913099"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234190"
 ---
 # <a name="azure-networking-services-overview"></a>Azure ネットワーク サービスの概要
 
@@ -33,10 +33,10 @@ Azure のネットワーク サービスにはさまざまなネットワーク�
 ### <a name="virtual-network"></a><a name="vnet"></a>Virtual Network
 
 Azure Virtual Network (VNet) は、Azure 内のプライベート ネットワークの基本的な構成要素です。 VNet の用途は次のとおりです。
-- **Azure リソース間の通信** :仮想ネットワークに、VM や他のいくつかの種類の Azure リソース (Azure App Service Environment、Azure Kubernetes Service (AKS)、Azure Virtual Machine Scale Sets など) をデプロイできます。 仮想ネットワークにデプロイできる Azure リソースの詳細な一覧については、[仮想ネットワーク サービスの統合](../virtual-network/virtual-network-for-azure-services.md)に関するページを参照してください。
-- **相互通信** :仮想ネットワークを相互に接続することで、任意の仮想ネットワークのリソースが仮想ネットワーク ピアリングを使用して相互に通信できるようになります。 接続する仮想ネットワークが属している Azure リージョンは、同じであっても異なっていてもかまいません。 詳細については、「[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)」をご覧ください。
-- **インターネットとの通信** :VNet 内のすべてのリソースにおいて、既定でインターネットへの送信方向の通信が可能です。 リソースへの受信通信は、リソースにパブリック IP アドレスまたはパブリック ロード バランサーを割り当てることによって可能になります。 [パブリック IP アドレス](../virtual-network/virtual-network-public-ip-address.md)やパブリック [ロード バランサー](../load-balancer/load-balancer-overview.md)を使用して送信接続を管理することもできます。
-- **オンプレミス ネットワークとの通信** :オンプレミスのコンピューターとネットワークを仮想ネットワークに接続するには、 [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoute](../expressroute/expressroute-introduction.md) を使用します。
+- **Azure リソース間の通信**:仮想ネットワークに、VM や他のいくつかの種類の Azure リソース (Azure App Service Environment、Azure Kubernetes Service (AKS)、Azure Virtual Machine Scale Sets など) をデプロイできます。 仮想ネットワークにデプロイできる Azure リソースの詳細な一覧については、[仮想ネットワーク サービスの統合](../virtual-network/virtual-network-for-azure-services.md)に関するページを参照してください。
+- **相互通信**:仮想ネットワークを相互に接続することで、任意の仮想ネットワークのリソースが仮想ネットワーク ピアリングを使用して相互に通信できるようになります。 接続する仮想ネットワークが属している Azure リージョンは、同じであっても異なっていてもかまいません。 詳細については、「[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)」をご覧ください。
+- **インターネットとの通信**:VNet 内のすべてのリソースにおいて、既定でインターネットへの送信方向の通信が可能です。 リソースへの受信通信は、リソースにパブリック IP アドレスまたはパブリック ロード バランサーを割り当てることによって可能になります。 [パブリック IP アドレス](../virtual-network/virtual-network-public-ip-address.md)やパブリック [ロード バランサー](../load-balancer/load-balancer-overview.md)を使用して送信接続を管理することもできます。
+- **オンプレミス ネットワークとの通信**:オンプレミスのコンピューターとネットワークを仮想ネットワークに接続するには、[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoute](../expressroute/expressroute-introduction.md) を使用します。
 
 詳細については、[Azure Virtual Network](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
@@ -89,7 +89,7 @@ Azure Orbital は、フル マネージドなクラウドベースのサービ�
 このセクションでは、ネットワーク リソースの保護に役立つ Azure のネットワーク サービスについて説明します。アプリケーションを保護するには、Azure の次のネットワーク サービスを単独で、または組み合わせて使用します - DDoS 保護、Private Link、ファイアウォール、Web Application Firewall、ネットワーク セキュリティ グループ、および仮想ネットワーク サービス エンドポイント。
 
 ### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDoS Protection 
-[Azure DDoS Protection](../virtual-network/manage-ddos-protection.md) は、きわめて巧妙な DDoS 攻撃への対抗策となります。 このサービスでは、仮想ネットワークにデプロイされたアプリケーションとリソースに対する DDoS 軽減機能が強化されています。 また、Azure DDoS Protection を利用するお客様は、能動的攻撃を受けたときに、DDoS Rapid Response サポートにアクセスして DDoS の専門家に問い合わせることができます。
+[Azure DDoS Protection](../ddos-protection/manage-ddos-protection.md) は、きわめて巧妙な DDoS 攻撃への対抗策となります。 このサービスでは、仮想ネットワークにデプロイされたアプリケーションとリソースに対する DDoS 軽減機能が強化されています。 また、Azure DDoS Protection を利用するお客様は、能動的攻撃を受けたときに、DDoS Rapid Response サポートにアクセスして DDoS の専門家に問い合わせることができます。
 
 :::image type="content" source="./media/networking-overview/ddos-protection.png" alt-text="DDoS Protection":::
 
@@ -109,7 +109,7 @@ Azure Firewall の詳細については、[Azure Firewall のドキュメント]
 ### <a name="web-application-firewall"></a><a name="waf"></a>Web Application Firewall
 [Azure Web Application Firewall](../web-application-firewall/overview.md) (WAF) は、SQL インジェクションやクロスサイト スクリプティングなどの一般的な Web エクスプロイトや脆弱性から Web アプリケーションを保護します。 Azure WAF は、管理されたルールによって OWASP Top 10 の脆弱性を標準で保護します。 また、お客様はカスタム ルールを構成することもできます。これは、ソース IP 範囲と要求の属性 (ヘッダー、Cookie、フォーム データ フィールド、クエリ文字列パラメーターなど) に基づいて保護を強化するためにお客様が管理するルールです。
 
-お客様は、[Application Gateway での Azure WAF](../application-gateway/waf-overview.md) をデプロイして、パブリックおよびプライベートのアドレス空間のエンティティをリージョン単位で保護することができます。 また、[Front Door での Azure WAF](../frontdoor/waf-overview.md) をデプロイして、パブリック エンドポイントをネットワーク エッジで保護することもできます。
+お客様は、[Application Gateway での Azure WAF](../web-application-firewall/ag/ag-overview.md) をデプロイして、パブリックおよびプライベートのアドレス空間のエンティティをリージョン単位で保護することができます。 また、[Front Door での Azure WAF](../web-application-firewall/afds/afds-overview.md) をデプロイして、パブリック エンドポイントをネットワーク エッジで保護することもできます。
 
 :::image type="content" source="./media/networking-overview/waf-overview.png" alt-text="Web アプリケーション ファイアウォール":::
 
@@ -166,7 +166,7 @@ Azure Application Gateway は、Web アプリケーションに対するトラ�
 Azure Network Watcher は、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツールを提供します。 詳細については、「[Azure Network Watcher とは](../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)」を参照してください。
 
 ### <a name="azure-monitor-for-networks-preview"></a>Azure Monitor for Networks プレビュー
-Azure Monitor for Networks を使用すると、デプロイされたすべてのネットワーク リソースの正常性とメトリックを構成なしで包括的に把握できます。 また、[接続モニター](../network-watcher/connection-monitor-preview.md)、[ネットワーク セキュリティ グループのフロー ログ](../network-watcher/network-watcher-nsg-flow-logging-overview.md)、および [Traffic Analytics](../network-watcher/traffic-analytics.md) などのネットワーク監視機能にアクセスすることもできます。 詳細については、「[Azure Monitor for Networks プレビュー](../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)」を参照してください。
+Azure Monitor for Networks を使用すると、デプロイされたすべてのネットワーク リソースの正常性とメトリックを構成なしで包括的に把握できます。 また、[接続モニター](../network-watcher/connection-monitor-overview.md)、[ネットワーク セキュリティ グループのフロー ログ](../network-watcher/network-watcher-nsg-flow-logging-overview.md)、および [Traffic Analytics](../network-watcher/traffic-analytics.md) などのネットワーク監視機能にアクセスすることもできます。 詳細については、「[Azure Monitor for Networks プレビュー](../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)」を参照してください。
 
 ### <a name="expressroute-monitor"></a><a name="expressroutemonitor"></a>ExpressRoute Monitor
 ExpressRoute 回線のメトリック、リソース ログ、アラートを表示する方法については、「[ExpressRoute の監視、メトリック、およびアラート](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json)」を参照してください。
@@ -185,4 +185,4 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
 
 - 「[最初の仮想ネットワークの作成](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)」の手順を実行して、最初の仮想ネットワークを作成し、そこにいくつかの VM を接続します。
 - [ポイント対サイト接続の構成](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事の手順を実行して、コンピューターを仮想ネットワークに接続します。
-- [インターネットに接続するロード バランサーの作成](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事の手順を実行して、インターネット トラフィックをパブリック サーバーに負荷分散します。
+- [インターネットに接続するロード バランサーの作成](../load-balancer/quickstart-load-balancer-standard-public-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事の手順を実行して、インターネット トラフィックをパブリック サーバーに負荷分散します。

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d8f69f94c53227dc86fbbf9e9936a2fc3c97ec55
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: af248b4ee3ccd079d41317fdb1db3de82ad0f835
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967875"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199038"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>HANA L インスタンスへの Azure VM の接続
 
@@ -41,7 +41,7 @@ Azure 仮想ネットワーク側をよく見ると、次のものが必要で�
 >[!Note]
 >HANA L インスタンス向けの Azure 仮想ネットワークは、Azure Resource Manager デプロイ モデルを使って作成する必要があります。 クラシック デプロイ モデルとして一般的に知られている以前の Azure デプロイ モデルは、HANA L インスタンス ソリューションではサポートされていません。
 
-仮想ネットワークは、Azure portal、PowerShell、Azure テンプレート、または Azure CLI を使用して作成することができます。 (詳細については、「[Azure portal を使用した仮想ネットワークの作成](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)」をご覧ください)。 次の例では、Azure portal を使用して作成された仮想ネットワークについて説明しています。
+仮想ネットワークは、Azure portal、PowerShell、Azure テンプレート、または Azure CLI を使用して作成することができます。 (詳細については、「[Azure portal を使用した仮想ネットワークの作成](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)」をご覧ください)。 次の例では、Azure portal を使用して作成された仮想ネットワークについて説明しています。
 
 このドキュメントでの **アドレス空間** は、Azure 仮想ネットワークが使用できるアドレス空間のことです。 仮想ネットワークが BGP ルートの伝播に使用するアドレス範囲でもあります。 この **アドレス空間** は、次の画面で確認できます。
 

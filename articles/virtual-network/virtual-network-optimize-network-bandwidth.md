@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: a9db2bcc0b44dfb6146517de8a139f34cd8584af
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: bb9235f4d1190bf7f71ddc007f09c9666c353234
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654457"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216803"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Azure 仮想マシンのネットワーク スループットの最適化
 
@@ -152,7 +152,7 @@ sudo ./install.sh #or upgrade.sh if prior LIS was previously installed
 Linux Integration Services Version 4.2 for Hyper-V の詳細については、[ダウンロード ページ](https://www.microsoft.com/download/details.aspx?id=55106)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-* [近接配置グループ](../virtual-machines/windows/co-location.md)を使用して VM を互いに近い場所にデプロイし、待ち時間を短縮する
+* [近接配置グループ](../virtual-machines/co-location.md)を使用して VM を互いに近い場所にデプロイし、待ち時間を短縮する
 * 自分のシナリオで [Azure VM をテストする帯域幅/スループット](virtual-network-bandwidth-testing.md)の最適化された結果を確認します。
 * [仮想マシンに帯域幅が割り当てられる方法](virtual-machine-network-throughput.md)に関するページを参照してください
 * 「[Azure Virtual Network についてよく寄せられる質問 (FAQ)](virtual-networks-faq.md)」を参照してください。

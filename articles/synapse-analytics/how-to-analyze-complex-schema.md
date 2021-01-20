@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 06/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43e4027c9d88b209ed0606e045dd5b4d47d3ff6e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: a35cdebe5ff4db562b19dc4ceed069a831af4305
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088518"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219999"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>Azure Synapse Analytics で複合データ型を分析する
 
@@ -28,7 +28,7 @@ ms.locfileid: "92088518"
 
 ## <a name="what-are-arrays-and-nested-structures"></a>配列と入れ子構造とは
 
-次のオブジェクトは、[Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) のものです。 このオブジェクトには、入れ子構造と、入れ子構造を含む配列があります。
+次のオブジェクトは、[Application Insights](../azure-monitor/app/app-insights-overview.md) のものです。 このオブジェクトには、入れ子構造と、入れ子構造を含む配列があります。
 
 ```json
 {
@@ -221,4 +221,4 @@ with ( ProfileType varchar(50) '$.customerInfo.ProfileType',
 ## <a name="next-steps"></a>次のステップ
 
 * [Spark を使って Synapse Link for Azure Cosmos DB に対してクエリを実行する方法を確認する](./synapse-link/how-to-query-analytical-store-spark.md)
-* [Parquet の入れ子にされた型に対してクエリを実行する](./sql/query-parquet-nested-types.md) 
+* [Parquet の入れ子にされた型に対してクエリを実行する](./sql/query-parquet-nested-types.md)

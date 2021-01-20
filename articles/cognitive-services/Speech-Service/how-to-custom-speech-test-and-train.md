@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: d24565522a75427be04cacfdc20347056a515847
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ed79d9fb3be192d300587eda5198d9b153109241
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070764"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209782"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -121,11 +121,14 @@ ms.locfileid: "98070764"
 
 単語の削除や置換のような問題に対処するには、認識を向上させるために大量のデータが必要です。 一般に、約 10 から 20 時間分のオーディオについて単語単位の文字起こしを提供することをお勧めします。 すべての WAV ファイルの文字起こしは、1 つのプレーン テキスト ファイルに格納されている必要があります。 文字起こしファイルの各行には、いずれかのオーディオ ファイルの名前に続けて、対応する文字起こしが含まれている必要があります。 ファイル名と文字起こしは、タブ (\t) で区切る必要があります。
 
-  次に例を示します。
-```
-  speech01.wav  speech recognition is awesome
-  speech02.wav  the quick brown fox jumped all over the place
-  speech03.wav  the lazy dog was not amused
+次に例を示します。
+
+<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
+
+```input
+speech01.wav    speech recognition is awesome
+speech02.wav    the quick brown fox jumped all over the place
+speech03.wav    the lazy dog was not amused
 ```
 
 > [!IMPORTANT]

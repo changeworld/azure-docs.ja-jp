@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 57df05918b590cedbf4af0464690ef2524f8ba79
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 6986f6f16cbd32d44223bba4f4be4577fa11258c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650512"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222906"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>Azure Portal を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "91650512"
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-後述するサンプルの手順では、単純な環境が既に作成されていると想定しています。 このドキュメントに表示されている手順を実行する場合は、まず、 [vnet の作成](virtual-networks-create-vnet-classic-pportal.md)に関する記事に示されているテスト環境を構築します。
+後述するサンプルの手順では、単純な環境が既に作成されていると想定しています。 このドキュメントに表示されている手順を実行する場合は、まず、 [vnet の作成](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal)に関する記事に示されているテスト環境を構築します。
 
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>VM 作成時に静的プライベート IP アドレスを指定する方法
 静的プライベート IP *192.168.1.101* を使用して、*TestVNet* という名前の VNet の *FrontEnd* サブネットで *DNS01* という名前の VM を作成するには、次の手順を実行します。
@@ -44,7 +44,7 @@ ms.locfileid: "91650512"
 2. **[新規]**  >  **[Compute]**  >  **[Windows Server 2012 R2 Datacenter]** の順に選択し、 **[デプロイ モデルの選択]** の一覧に既に **[クラシック]** と表示されているのを確認してから **[作成]** を選択します。
    
     ![Azure portal を示すスクリーンショット。[新規] > [計算する] > [Windows Server 2012 R2 Datacenter] タイルの順で強調表示されています。](./media/virtual-networks-static-ip-classic-pportal/figure01.png)
-3. **[VM の作成]** で、作成する VM の名前 (ここでは*DNS01* )、ローカル管理者のアカウント、およびパスワードを入力します。
+3. **[VM の作成]** で、作成する VM の名前 (ここでは *DNS01* )、ローカル管理者のアカウント、およびパスワードを入力します。
    
     ![VM、ローカル管理者のユーザー名、パスワードを入力して VM を作成する方法を示すスクリーンショット。](./media/virtual-networks-static-ip-classic-pportal/figure02.png)
 4. **[オプションの構成]**  >  **[ネットワーク]**  >  **[Virtual Network]** の順に選択し、 **[TestVNet]** を選択します。 **[TestVNet]** を使用できない場合は、場所として *[米国中部]* を使用しており、この記事の冒頭で説明されているテスト環境が作成済みであることを確認してください。
@@ -81,7 +81,6 @@ ms.locfileid: "91650512"
 VM のオペレーティング システム内で Azure 仮想マシンに割り当てられるプライベート IP は、必要でない限り静的に割り当てないことをお勧めします。 実際にオペレーティング システム内でプライベート IP アドレスを手動で設定する場合は、それが Azure VM に割り当てられているプライベート IP アドレスと同じアドレスであるようにしてください。そうしないと、仮想マシンへの接続が失われる可能性があります。 仮想マシンのオペレーティング システム内で Azure の仮想マシンに割り当てられているパブリック IP アドレスを手動で割り当てないでください。
 
 ## <a name="next-steps"></a>次のステップ
-* [予約済みパブリック IP](virtual-networks-reserved-public-ip.md) アドレスについて理解する。
-* [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスについて理解する。
-* [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)を確認する。
-
+* [予約済みパブリック IP](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) アドレスについて理解する。
+* [インスタンスレベル パブリック IP (ILPIP)](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) アドレスについて理解する。
+* [予約済み IP REST API](/previous-versions/azure/reference/dn722420(v=azure.100))を確認する。

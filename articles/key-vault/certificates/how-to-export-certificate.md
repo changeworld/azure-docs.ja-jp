@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: 0925b51ed960b8007d2df86115ea7e5cf627fe7e
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: b3c917c9652954783fcddd92b9a7370c358ab3cc
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826131"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233646"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Azure Key Vault から証明書をエクスポートする
 
-Azure Key Vault から証明書をエクスポートする方法について説明します。 Azure CLI、Azure PowerShell、または Azure portal を使用して証明書をエクスポートすることができます。 また、Azure portal を使用して Azure App Service 証明書をエクスポートすることもできます。
+Azure Key Vault から証明書をエクスポートする方法について説明します。 Azure CLI、Azure PowerShell、または Azure portal を使用して証明書をエクスポートすることができます。 
 
 ## <a name="about-azure-key-vault-certificates"></a>Azure Key Vault の証明書について
 
@@ -114,7 +114,7 @@ Azure portal の **[証明書]** ブレードで証明書を作成またはイ�
 
 **Azure App Service 証明書をエクスポートする**
 
-Azure App Service 証明書は、SSL 証明書を購入するための便利な方法です。 ポータル内から Azure アプリに割り当てることができます。 また、これらの証明書は、他の場所で使用するために、ポータルから PFX ファイルとしてエクスポートすることもできます。 インポートした App Service 証明書は、 **[シークレット]** の下に配置されます。
+Azure App Service 証明書は、SSL 証明書を購入するための便利な方法です。 ポータル内から Azure アプリに割り当てることができます。 インポートした App Service 証明書は、 **[シークレット]** の下に配置されます。
 
 詳細については、[Azure App Service 証明書をエクスポートする](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)手順を参照してください。
 

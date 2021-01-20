@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7304ffbb7718205ead48e27989d4a169375997
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c981bde4e0699c4da33ada7e287b16e54b899a58
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861988"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198919"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -255,7 +255,7 @@ Azure アクティビティ ログは、Azure でのサブスクリプション 
 * 偽装攻撃
 * キーボード操作のログ記録、Pass-the-Hash、Pass-The-Ticket などの資格情報の盗用攻撃
 
-特権アクセス ワークステーションを配置することで、管理者が強化されていないデスクトップ環境で資格情報を入力するリスクを軽減できます。 詳しくは、[Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations) に関するページをご覧ください。
+特権アクセス ワークステーションを配置することで、管理者が強化されていないデスクトップ環境で資格情報を入力するリスクを軽減できます。 詳しくは、[Privileged Access Workstations](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) に関するページをご覧ください。
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>インシデントの処理に関する米国国立標準技術研究所の推奨事項を確認する
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: a080c3953c48227301052a0bb151c8cba96e515a
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 9ce1e320a93a834a938ce95f3931d885d2214faa
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737372"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216871"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Azure CLI を使って仮想ネットワーク サービス エンドポイント ポリシーで Azure Storage アカウントへのデータの流出を管理する
 
@@ -114,7 +114,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-各ネットワーク セキュリティ グループには、さまざまな[既定のセキュリティ規則](security-overview.md#default-security-rules)が含まれています。 次の規則は、すべてのパブリック IP アドレスへの送信アクセスを許可する既定のセキュリティ規則をオーバーライドします。 `destination-address-prefix "Internet"` オプションは、すべてのパブリック IP アドレスへの送信アクセスを拒否します。 この規則は、優先度が高い前の規則によってオーバーライドされます。これにより、Azure Storage のパブリック IP アドレスへのアクセスが許可されます。
+各ネットワーク セキュリティ グループには、さまざまな[既定のセキュリティ規則](./network-security-groups-overview.md#default-security-rules)が含まれています。 次の規則は、すべてのパブリック IP アドレスへの送信アクセスを許可する既定のセキュリティ規則をオーバーライドします。 `destination-address-prefix "Internet"` オプションは、すべてのパブリック IP アドレスへの送信アクセスを拒否します。 この規則は、優先度が高い前の規則によってオーバーライドされます。これにより、Azure Storage のパブリック IP アドレスへのアクセスが許可されます。
 
 ```azurecli-interactive
 az network nsg rule create \

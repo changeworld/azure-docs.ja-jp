@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: 61617777efa8241c93b2b5ffe42fc1d914b6ebcf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004978"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216752"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -48,7 +48,7 @@ Azure では、次の種類のピアリングがサポートされています�
 ピアリングされた仮想ネットワーク内の仮想マシン間のトラフィックは、ゲートウェイやパブリック インターネット経由ではなく、Microsoft のバックボーン インフラストラクチャを通じて直接ルーティングされます。
 
 どちらかの仮想ネットワークにネットワーク セキュリティ グループを適用して、もう一方の仮想ネットワークやサブネットへのアクセスを適宜ブロックすることができます。
-仮想ネットワーク ピアリングを構成するときに、仮想ネットワーク間のネットワーク セキュリティ グループの規則を開く、または閉じます。 ピアリングされた仮想ネットワーク間で完全な接続を開く場合、ネットワーク セキュリティ グループを適用して、特定のアクセスをブロック (拒否) することができます。 既定のオプションは、完全な接続です。 ネットワーク セキュリティ グループの詳細については、[セキュリティ グループ](security-overview.md)に関するページをご覧ください。
+仮想ネットワーク ピアリングを構成するときに、仮想ネットワーク間のネットワーク セキュリティ グループの規則を開く、または閉じます。 ピアリングされた仮想ネットワーク間で完全な接続を開く場合、ネットワーク セキュリティ グループを適用して、特定のアクセスをブロック (拒否) することができます。 既定のオプションは、完全な接続です。 ネットワーク セキュリティ グループの詳細については、[セキュリティ グループ](./network-security-groups-overview.md)に関するページをご覧ください。
 
 ## <a name="service-chaining"></a>サービス チェイニング
 

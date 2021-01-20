@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 669b8427f13efcc55a69bc7c970b6658a6719cd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e798f81102017b4d34c4b1b219a9f23035b0359
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86134719"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222838"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>PowerShell を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "86134719"
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-以下のサンプル PowerShell コマンドでは、単純な環境が既に作成されていると想定します。 このドキュメントに表示されているコマンドを実行する場合は、まず、 [VNet の作成](virtual-networks-create-vnet-classic-netcfg-ps.md)に関する記事に示されているテスト環境を構築します。
+以下のサンプル PowerShell コマンドでは、単純な環境が既に作成されていると想定します。 このドキュメントに表示されているコマンドを実行する場合は、まず、 [VNet の作成](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-netcfg-ps)に関する記事に示されているテスト環境を構築します。
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>特定の IP アドレスが使用可能であるかを確認する方法
 IP アドレス *192.168.1.101* が *TestVnet* という VNet で使用可能かどうかを確認するには、次の PowerShell コマンドを実行して、*IsAvailable* の値を確認します。
@@ -78,7 +78,7 @@ New-AzureVM          3b99a86d-84f8-04e5-888e-b6fc3c73c4b9 Succeeded
 ```
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>VM 用の静的プライベート IP アドレス情報を取得する方法
-上記のスクリプトで作成した VM の静的プライベート IP アドレス情報を表示するには、次の PowerShell コマンドを実行し、 *IpAddress*の値を確認します。
+上記のスクリプトで作成した VM の静的プライベート IP アドレス情報を表示するには、次の PowerShell コマンドを実行し、 *IpAddress* の値を確認します。
 
 ```azurepowershell
 Get-AzureVM -Name DNS01 -ServiceName TestService
@@ -154,7 +154,6 @@ Update-AzureVM       77d8cae2-87e6-0ead-9738-7c7dae9810cb Succeeded
 VM のオペレーティング システム内で Azure 仮想マシンに割り当てられるプライベート IP は、必要でない限り静的に割り当てないことをお勧めします。 実際にオペレーティング システム内でプライベート IP アドレスを手動で設定する場合は、それが Azure VM に割り当てられているプライベート IP アドレスと同じアドレスであるようにしてください。そうしないと、仮想マシンへの接続が失われる可能性があります。 仮想マシンのオペレーティング システム内で Azure の仮想マシンに割り当てられているパブリック IP アドレスを手動で割り当てないでください。
 
 ## <a name="next-steps"></a>次のステップ
-* [予約済みパブリック IP](virtual-networks-reserved-public-ip.md) アドレスについて理解する。
-* [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスについて理解する。
-* [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)を確認する。
-
+* [予約済みパブリック IP](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) アドレスについて理解する。
+* [インスタンスレベル パブリック IP (ILPIP)](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) アドレスについて理解する。
+* [予約済み IP REST API](/previous-versions/azure/reference/dn722420(v=azure.100))を確認する。

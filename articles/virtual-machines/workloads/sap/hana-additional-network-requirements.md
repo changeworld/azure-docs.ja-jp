@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44e9712466734c0e42fd2bea05c5110cbff6924b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 308d30118349e020d3b407243f106d9ad8368118
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964798"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198987"
 ---
 # <a name="additional-network-requirements-for-large-instances"></a>L インスタンス向け追加のネットワーク要件
 
@@ -31,7 +31,7 @@ IP アドレスまたはサブネットを追加するには、Azure portal、Po
 
 この場合、集約した範囲を新たに作成するのではなく、新しい IP アドレス範囲を新しい範囲として仮想ネットワーク アドレス空間に追加します。 この変更を Microsoft に送信します。 これにより、ご利用のクライアントでその新しい IP アドレス範囲から、HANA L インスタンス ユニットに接続できます。 追加する新しい仮想ネットワーク アドレス空間を取得するために、Azure サポート要求を開くことができます。 確認通知を受信したら、次の手順を実行します。
 
-Azure portal から追加のサブネットを作成するには、[Azure portal を使用した仮想ネットワークの作成](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)に関する記事をご覧ください。 PowerShell からサブネットを作成するには、[PowerShell を使用した仮想ネットワークの作成](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)に関する記事をご覧ください。
+Azure portal から追加のサブネットを作成するには、[Azure portal を使用した仮想ネットワークの作成](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)に関する記事をご覧ください。 PowerShell からサブネットを作成するには、[PowerShell を使用した仮想ネットワークの作成](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)に関する記事をご覧ください。
 
 ## <a name="add-virtual-networks"></a>仮想ネットワークの追加
 
@@ -51,11 +51,11 @@ SAP HANA on Microsoft サービス管理にお問い合わせください。 Exp
 
 仮想ネットワーク サブネットを削除するには、Azure portal、PowerShell、または Azure CLI を使用できます。 Azure 仮想ネットワークの IP アドレス範囲またはアドレス空間の範囲が集約されている場合、Microsoft のフォローアップはありません (ただし、削除したサブネットを含む BGP ルート アドレス空間は依然として仮想ネットワークから伝播されていることに注意してください)。Azure 仮想ネットワークのアドレス範囲またはアドレス空間を複数の IP アドレス範囲として定義しており、そのいずれかが削除したサブネットに割り当てられていることがあります。 それを仮想ネットワーク アドレス空間から削除してください。 次に、SAP HANA on Microsoft サービス管理に、SAP HANA on Azure (L インスタンス) が通信を許可されている範囲から、それを削除するように通知します。
 
-詳細については、「[サブネットの削除](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet)」を参照してください。
+詳細については、「[サブネットの削除](../../../virtual-network/virtual-network-manage-subnet.md#delete-a-subnet)」を参照してください。
 
 ## <a name="delete-a-virtual-network"></a>仮想ネットワークの削除
 
-詳細については、「[仮想ネットワークの削除](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network)」を参照してください。
+詳細については、「[仮想ネットワークの削除](../../../virtual-network/manage-virtual-network.md#delete-a-virtual-network)」を参照してください。
 
 SAP HANA on Microsoft サービス管理により、SAP HANA on Azure (L インスタンス) の ExpressRoute 回線に対する既存の承認が削除されます。 さらに、HANA L インスタンスとの通信用の Azure 仮想ネットワーク IP アドレス範囲またはアドレス空間も削除されます。
 

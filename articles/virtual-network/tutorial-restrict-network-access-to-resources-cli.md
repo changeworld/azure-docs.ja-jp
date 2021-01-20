@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1a1eab081a7c1e83a57ef4735c6eb5248d92defc
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: b4f9dcf6fd43749cdf71098b3cd0da8a42020f6d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734125"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221767"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク サービス エンドポイントで PaaS リソースへのネットワーク アクセスを制限する
 
@@ -120,7 +120,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-各ネットワーク セキュリティ グループには、さまざまな[既定のセキュリティ規則](security-overview.md#default-security-rules)が含まれています。 次の規則は、すべてのパブリック IP アドレスへの送信アクセスを許可する既定のセキュリティ規則をオーバーライドします。 `destination-address-prefix "Internet"` オプションは、すべてのパブリック IP アドレスへの送信アクセスを拒否します。 この規則は、優先度が高い前の規則によってオーバーライドされます。これにより、Azure Storage のパブリック IP アドレスへのアクセスが許可されます。
+各ネットワーク セキュリティ グループには、さまざまな[既定のセキュリティ規則](./network-security-groups-overview.md#default-security-rules)が含まれています。 次の規則は、すべてのパブリック IP アドレスへの送信アクセスを許可する既定のセキュリティ規則をオーバーライドします。 `destination-address-prefix "Internet"` オプションは、すべてのパブリック IP アドレスへの送信アクセスを拒否します。 この規則は、優先度が高い前の規則によってオーバーライドされます。これにより、Azure Storage のパブリック IP アドレスへのアクセスが許可されます。
 
 ```azurecli-interactive
 az network nsg rule create \

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: fd50af98fe0d7f20273c45e2b86c18215a3626f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3728a2b67529bab0900d42b3e39140d9329bc83
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289618"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223637"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Azure PowerShell を使用して高速ネットワークが有効な Windows VM を作成する
 
@@ -65,7 +65,7 @@ Azure ギャラリーでは次のディストリビューションが直接サ�
 
 ハイパースレッディングをサポートするインスタンスでは、高速ネットワークは 4 つ以上の vCPU を持つ VM インスタンスでサポートされています。 サポートされている系列は、D/Dsv3、D/Dsv4、Da/Dasv4、E/Esv3、Ea/Easv4、Fsv2、Lsv2、Ms/Mms、および Ms/Mmsv2 です。
 
-VM インスタンスの詳細については、「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+VM インスタンスの詳細については、「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 
 ### <a name="custom-images"></a>カスタム イメージ
 
@@ -208,7 +208,7 @@ VM を作成した後で、高速ネットワークが有効になっている�
     $vmConfig = New-AzVMConfig -VMName "myVm" -VMSize "Standard_DS4_v2"
     ```
 
-    すべての VM のサイズと特性の一覧は、[Windows VM のサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。
+    すべての VM のサイズと特性の一覧は、[Windows VM のサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。
 
 3. [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) と [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) を使用して、残りの VM 構成を作成します。 次のコマンドでは、Windows Server 2016 の VM を作成します。
 
