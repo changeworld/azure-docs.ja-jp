@@ -3,14 +3,14 @@ title: クイック スタート:PowerShell を使用して AKS クラスター�
 description: Kubernetes クラスターの作成、アプリケーションのデプロイ、および Azure Kubernetes Service (AKS) でのパフォーマンスの監視を、PowerShell を使用して迅速に行う方法について説明します。
 services: container-service
 ms.topic: quickstart
-ms.date: 09/11/2020
+ms.date: 01/13/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e5abcf9bfbf661abf5212d94d849d27c25fe9a8d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 41412a4ec95bb9b89df5fded6962965594e823fc
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91461055"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98248515"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Kubernetes Service クラスターをデプロイする
 
@@ -40,7 +40,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 [Azure リソース グループ](../azure-resource-manager/management/overview.md)は、Azure リソースが展開され管理される論理グループです。 リソース グループを作成する際は、場所を指定するよう求められます。 この場所は、リソース グループのメタデータが格納される場所です。リソースの作成時に別のリージョンを指定しない場合は、Azure でリソースが実行される場所でもあります。 [New-AzResourceGroup][new-azresourcegroup] コマンドレットを使用してリソース グループを作成します。
 
-次の例では、**myResourceGroup** という名前のリソース グループを**米国東部**リージョンに作成します。
+次の例では、**myResourceGroup** という名前のリソース グループを **米国東部** リージョンに作成します。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location eastus
@@ -66,7 +66,7 @@ AKS クラスターを作成するには、[New-AzAks][new-azaks] コマンド�
 > AKS クラスターを作成すると、AKS リソースを保存するための 2 つ目のリソース グループが自動的に作成されます。 詳細については、「[AKS と一緒にリソース グループが 2 つ作成されるのはなぜでしょうか?](./faq.md#why-are-two-resource-groups-created-with-aks)」を参照してください。
 
 ```azurepowershell-interactive
-New-AzAks -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
 ```
 
 数分後、コマンドが完了し、クラスターに関する情報が返されます。

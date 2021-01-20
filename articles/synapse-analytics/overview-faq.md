@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0d833c32000eb91511782184ef4455bc1973a714
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: a7ee4e205851a751f7a50ac0ddadfb4e4c7eb81a
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97807911"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247405"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure Synapse Analytics についてよく寄せられる質問
 
@@ -138,11 +138,6 @@ A:"移動" や "移行" は不要です。 既存のプールで新しいワー�
 ### <a name="q-what-is-the-default-deployment-of-dedicated-sql-pools-now"></a>Q:現在、専用 SQL プールの既定のデプロイはどのようになりますか。 
 
 A:既定では、すべての新しい専用 SQL プールがワークスペースにデプロイされます。ただし、必要に応じて、スタンドアロンのフォーム ファクターで専用 SQL プール (以前の SQL DW) を作成することもできます。 
-
-
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pools"></a>Q:専用 SQL プールとサーバーレス SQL プールの機能にはどのような違いがありますか。
-
-A:違いの完全な一覧については、[Synapse SQL での T-SQL 機能の違い](./sql/overview-features.md)に関するページをご確認ください。
 
 ## <a name="next-steps"></a>次のステップ
 

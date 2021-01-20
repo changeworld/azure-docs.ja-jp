@@ -9,12 +9,12 @@ ms.subservice: business-intelligence
 ms.date: 10/27/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick
-ms.openlocfilehash: 996233e2526b8b69c13abd4340ead4c5e2175916
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9c63e5e24495f373f288d2789780a6c671a7cc24
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450681"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218401"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>クイック スタート:Power BI ワークスペースを Synapse ワークスペースにリンクする
 
@@ -25,7 +25,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 ## <a name="prerequisites"></a>前提条件
 
 - [Azure Synapse ワークスペースと、関連するストレージ アカウントを作成します](quickstart-create-workspace.md)
-- [Power BI Professional または Premium ワークスペース](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces)
+- [Power BI Professional または Premium ワークスペース](/power-bi/service-create-the-new-workspaces)
 
 ## <a name="link-power-bi-workspace-to-your-synapse-workspace"></a>Power BI ワークスペースを Synapse ワークスペースにリンクする
 

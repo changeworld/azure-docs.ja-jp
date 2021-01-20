@@ -3,16 +3,16 @@ title: クイック スタート:Azure Monitor Application Insights を使用し
 description: Azure Monitor Application Insights で監視する Node.js Web アプリを迅速にセットアップする手順を説明します
 ms.subservice: application-insights
 ms.topic: quickstart
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: 550097272f90a2f7fa06af7f06810fd3fa0ed94f
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e5fc7c71c1ced4542f00fe862699442c6b43bc69
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173884"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210360"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>クイック スタート:Azure Application Insights で Node.js Web アプリケーションの監視を開始する
 
@@ -60,7 +60,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
    npm install applicationinsights --save
    ```
 
-3. アプリの最初の *.js* ファイルを編集し、スクリプトの最上部の下に 2 つの行を追加します。 [Node.js のクイックスタート アプリ](../../app-service/quickstart-nodejs.md)を使用している場合は、 *index.js* ファイルを変更します。 `<instrumentation_key>` をアプリケーション分析情報のインストルメンテーション キーに置き換えます。 
+3. アプリの最初の *.js* ファイルを編集し、スクリプトの最上部の下に 2 つの行を追加します。 [Node.js のクイックスタート アプリ](../../app-service/quickstart-nodejs.md)を使用している場合は、*index.js* ファイルを変更します。 `<instrumentation_key>` をアプリケーション分析情報のインストルメンテーション キーに置き換えます。 
 
    ```JavaScript
    const appInsights = require('applicationinsights');
@@ -126,7 +126,7 @@ Node.js の監視に関する詳細については、[AppInsights Node.js の追
 > 既存のリソース グループを使用した場合、以下の手順ではうまくいきません。個々の Application Insights リソースを削除する必要があります。 リソース グループを削除すると、そのグループに属している内在するリソースがすべて削除されるので注意してください。
 
 1. Azure portal の左側のメニューで、 **[リソース グループ]** 、 **[myResourceGroup]** の順に選択します。
-2. リソース グループのページで **[削除]** を選択し、テキスト ボックスに「 **myResourceGroup** 」と入力してから **[削除]** を選択します。
+2. リソース グループのページで **[削除]** を選択し、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

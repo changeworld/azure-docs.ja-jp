@@ -7,12 +7,12 @@ ms.author: askaur
 ms.date: 12/08/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ea66e4295e8228aa382aa29a46fcca8147dcbc98
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1ad6b7241c7167c6da8952e7db2797fa275b7246
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97578052"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251925"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>クイックスタート: チャット アプリを Teams の会議に参加させる
 
@@ -29,11 +29,7 @@ Azure Communication Services の入門として、JavaScript クライアント 
 
 ゲスト ユーザーとして Teams に参加している Communication Services ユーザーは、Teams の会議通話に参加したときにのみ会議のチャットにアクセスできます。 Communication Services ユーザーを Teams の会議通話に追加する方法については、[Teams の相互運用性](../voice-video-calling/get-started-teams-interop.md)に関するドキュメントを参照してください。
 
-Teams の相互運用性機能は、現在プライベート プレビュー段階です。 ご利用の Communication Services リソースに関して、この機能を有効にする場合は、次の情報を添えて、メール (acsfeedback@microsoft.com) でご連絡ください。 
-1. Communication Services リソースがある Azure サブスクリプションのサブスクリプション ID。 
-2. Teams のテナント ID。 この情報を入手する方法としては、Teams へのリンクを取得して共有するのが最も簡単です。 
-
-この機能を使用するには、両方のエンティティの所有組織のメンバーである必要があります。 
+この機能を使用するには、両方のエンティティの所有組織のメンバーである必要があります。
 
 [!INCLUDE [Join Teams meetings](./includes/meeting-interop-javascript.md)]
 

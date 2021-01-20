@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: e75bab664bdd0d6a4ac898905226c9956f62b4ff
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ffa9e7b5685f9a200f6a403045687626f67f66f4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450498"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218299"
 ---
 # <a name="quickstart-use-serverless-sql-pool"></a>クイックスタート: サーバーレス SQL プールを使用する
 
@@ -26,7 +26,7 @@ Synapse サーバーレス SQL プールは、Azure Storage に配置された�
 
 クエリを発行する SQL クライアントを選択します。
 
-- [Azure Synapse Studio](quickstart-synapse-studio.md) は、ストレージ内のファイルを参照したり、SQL クエリを作成したりするために使用できる Web ツールです。
+- [Azure Synapse Studio](./get-started-create-workspace.md) は、ストレージ内のファイルを参照したり、SQL クエリを作成したりするために使用できる Web ツールです。
 - [Azure Data Studio](sql/get-started-azure-data-studio.md) は、オンデマンド データベースで SQL クエリとノートブックを実行できるクライアント ツールです。
 - [SQL Server Management Studio](sql/get-started-ssms.md) は、オンデマンド データベースで SQL クエリを実行できるクライアント ツールです。
 

@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: alehall
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 005e3a3b717d4b1b8e5eb02b77a1d228908f8707
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0537d2353d6b372ed19127101c488b872bbc5224
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210577"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218860"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>クイックスタート: Azure PowerShell を使用して Azure Synapse ワークスペースを作成する
 
@@ -30,9 +30,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - [Azure Data Lake Storage Gen2 ストレージ アカウント](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
     > [!IMPORTANT]
-    > Azure Synapse ワークスペースは、選択した ADLS Gen2 アカウントの読み取りと書き込みを行うことができる必要があります。 プライマリ ストレージ アカウントとしてリンクするストレージ アカウントについては、「 [ストレージ アカウントを作成する](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-powershell#create-a-storage-account)」の説明に従って、その作成時に **階層型名前空間** を有効にする必要があります。
+    > Azure Synapse ワークスペースは、選択した ADLS Gen2 アカウントの読み取りと書き込みを行うことができる必要があります。 プライマリ ストレージ アカウントとしてリンクするストレージ アカウントについては、「[ストレージ アカウントを作成する](../storage/common/storage-account-create.md?tabs=azure-powershell#create-a-storage-account)」の説明に従って、その作成時に **階層型名前空間** を有効にする必要があります。
 
-Cloud Shell の使用を選択した場合、詳細については「[Azure Cloud Shell の概要](https://docs.microsoft.com/azure/cloud-shell/overview)」を参照してください。
+Cloud Shell の使用を選択した場合、詳細については「[Azure Cloud Shell の概要](../cloud-shell/overview.md)」を参照してください。
 
 ### <a name="install-the-azure-powershell-module-locally"></a>Azure PowerShell モジュールをローカルにインストールする
 
@@ -141,7 +141,7 @@ Install-Module -Name Az.Synapse
 次の手順に従って、Azure Synapse ワークスペースを削除します。
 
 > [!WARNING]
-> Azure Synapse ワークスペースを削除すると、分析エンジンと、含まれている SQL プールとワークスペース メタデータのデータベースに格納されているデータが削除されます。 以後、SQL または Apache Spark のエンドポイントには接続できません。 すべてのコード成果物が削除されます (クエリ、ノートブック、ジョブ定義、およびパイプライン)。 ワークスペースを削除しても、そのワークスペースにリンクされている Data Lake Store Gen2 のデータには影響 **しません** 。
+> Azure Synapse ワークスペースを削除すると、分析エンジンと、含まれている SQL プールとワークスペース メタデータのデータベースに格納されているデータが削除されます。 以後、SQL または Apache Spark のエンドポイントには接続できません。 すべてのコード成果物が削除されます (クエリ、ノートブック、ジョブ定義、およびパイプライン)。 ワークスペースを削除しても、そのワークスペースにリンクされている Data Lake Store Gen2 のデータには影響 **しません**。
 
 この記事で作成した Azure Synapse ワークスペースが不要になった場合は、次の例を実行して削除できます。
 

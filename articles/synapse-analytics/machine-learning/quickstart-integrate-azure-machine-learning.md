@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: a5d84b936679cdd5ebd5bec4938d6db7fcb641e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 800cbf9b7a7fa415452f29b253347188c8917c52
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455502"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219455"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>クイック スタート:Synapse で Azure Machine Learning のリンクされたサービスを新規作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "96455502"
 
 たとえば、Azure Machine Learning ワークスペースにリンクすると、次のようなエクスペリエンスが可能になります。
 
-- Azure Machine Learning パイプラインを Synapse パイプラインのステップとして実行する。 詳細については、[Azure Machine Learning パイプラインの実行](/azure/data-factory/transform-data-machine-learning-service)に関する記事を参照してください。
+- Azure Machine Learning パイプラインを Synapse パイプラインのステップとして実行する。 詳細については、[Azure Machine Learning パイプラインの実行](../../data-factory/transform-data-machine-learning-service.md)に関する記事を参照してください。
 
 - Azure Machine Learning モデル レジストリから機械学習モデルをコピーすることで、予測によってデータを強化し、Synapse SQL プールでモデルにスコアを付けます。 詳細については、「[チュートリアル: Synapse SQL プール向けの機械学習モデル スコアリング ウィザード](tutorial-sql-pool-model-scoring-wizard.md)」を参照してください。
 
@@ -30,7 +30,7 @@ ms.locfileid: "96455502"
 
 - Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)。
 - ADLS Gen2 ストレージ アカウントが既定のストレージとして構成されている [Synapse Analytics ワークスペース](../get-started-create-workspace.md)。 使用する ADLS Gen2 ファイル システムの **ストレージ BLOB データ共同作成者** である必要があります。
-- [Azure Machine Learning ワークスペース](/azure/machine-learning/how-to-manage-workspace)。
+- [Azure Machine Learning ワークスペース](../../machine-learning/how-to-manage-workspace.md)。
 - リンクされたサービスの作成に使用できるサービス プリンシパルとシークレットを作成するには、アクセス許可 (またはアクセス許可を持つユーザーからの要求) が必要です。 このサービス プリンシパルには Azure Machine Learning ワークスペースの共同作成者ロールが割り当てられている必要があることに注意してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする

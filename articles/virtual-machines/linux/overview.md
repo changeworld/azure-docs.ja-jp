@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 54982189a5da584c7daf66855ffb655e403a455a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: a2145c217c19e80c2ca70880e0f9b01ae2ba140e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500514"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202574"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure の Linux 仮想マシン
 
@@ -50,7 +50,7 @@ Azure で作成されるすべてのリソースは、世界各地の複数の[�
 | Azure portal |VM を作成するときに一覧から場所を選択します。 |
 | Azure PowerShell |[Get-AzLocation](/powershell/module/az.resources/get-azlocation) コマンドを使用します。 |
 | REST API |[場所の一覧表示](/rest/api/resources/subscriptions)操作を使用します。 |
-| Azure CLI |[az account list-locations](/cli/azure/account?view=azure-cli-latest) 操作を使用します。 |
+| Azure CLI |[az account list-locations](/cli/azure/account) 操作を使用します。 |
 
 ### <a name="singapore-data-residency"></a>シンガポールのデータ所在地
 
@@ -60,7 +60,7 @@ Azure では、顧客データを 1 つのリージョンに格納できるよ�
 Azure は、単一インスタンス仮想マシン向けに、業界をリードする 99.9% というサービス レベル アグリーメントを発表しました。ただし、すべてのディスクに Premium Storage を使用した VM をデプロイすることが条件となります。  デプロイが、VM に適用される 99.95% という標準のサービス レベル アグリーメントの要件を満たすためには、可用性セット内でワークロードを実行する複数の VM をデプロイする必要があります。 可用性セットにより、Azure データ センターにある複数の障害ドメインに VM を分散すると共に、メンテナンス期間の異なるホストにデプロイすることができます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) では、全体としての Azure の可用性の確保について説明します。
 
 ## <a name="vm-size"></a>[VM サイズ]
-使用する VM の[サイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)は、実行するワークロードによって決まります。 さらに、選択したサイズによって、処理能力、メモリ、ストレージの容量などの要素が決まります。 Azure では、さまざまな種類の使用をサポートするために、さまざまなサイズを用意しています。
+使用する VM の[サイズ](../sizes.md)は、実行するワークロードによって決まります。 さらに、選択したサイズによって、処理能力、メモリ、ストレージの容量などの要素が決まります。 Azure では、さまざまな種類の使用をサポートするために、さまざまなサイズを用意しています。
 
 Azure では、VM のサイズおよびオペレーティング システムに基づいて[時間単位の料金](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)が請求されます。 時間単位を満たさない場合は、分単位でのみ請求されます。 ストレージは別料金で、別個に請求されます。
 

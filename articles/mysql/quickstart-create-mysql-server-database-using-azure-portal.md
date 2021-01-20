@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: f71bcc1fd3b92a32a3e6d9fa056bae7131a663bd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b8f3a8e06bb27051417205c4dc3141948960bb00
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492609"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567799"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>クイックスタート: Azure Portal を使用した Azure Database for MySQL サーバーの作成
 
@@ -45,7 +45,7 @@ Azure サブスクリプションが必要です。 Azure サブスクリプシ�
    サーバー名 | **mydemoserver** | 一意の名前を入力します。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 から 63 文字にする必要があります。
    データ ソース |**なし** | **[なし]** を選択し、最初から新しいサーバーを作成します 既存のサーバーの geo バックアップから復元している場合にのみ、 **[バックアップ]** を選択します。
    場所 |目的の場所 | 一覧から場所を選択します。
-   Version | 最新のメジャー バージョン| 最新のメジャー バージョンを使用します。 [サポートされているすべてのバージョン](../postgresql/concepts-supported-versions.md)に関するページを参照してください。
+   Version | 最新のメジャー バージョン| 最新のメジャー バージョンを使用します。 [サポートされているすべてのバージョン](concepts-supported-versions.md)に関するページを参照してください。
    コンピューティングとストレージ | 既定値を使用します| 既定の価格レベルは、**4 つの仮想コア** と **100 GB** のストレージを備えた **General Purpose** です。 バックアップの保有期間は、 **[7 日間]** に設定され、 **[地理冗長]** バックアップ オプションが指定されています。<br/>[価格](https://azure.microsoft.com/pricing/details/mysql/)に関するページを確認し、必要に応じて既定値を更新します。
    管理者ユーザー名 | **mydemoadmin** | サーバー管理者のユーザー名を入力します。 管理者のユーザー名として、**azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** を使用することはできません。
    Password | パスワード | サーバー管理者ユーザーの新しいパスワード。 パスワードは、英大文字または小文字、数字、英数字以外の文字 (!、$、#、% など) の組み合わせを含む、8 から 128 文字までの長さにする必要があります。

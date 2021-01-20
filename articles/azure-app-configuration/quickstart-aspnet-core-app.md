@@ -9,12 +9,12 @@ ms.custom: devx-track-csharp, contperf-fy21q1
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.author: alkemper
-ms.openlocfilehash: d1582cda4b083623daf7bb756d0bc8aa3e74eae8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d0e564b98ab6331677451afd32a0848e7f5594dd
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033648"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598740"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 
@@ -70,7 +70,7 @@ dotnet new mvc --no-https --output TestAppConfig
     ```
 
     > [!IMPORTANT]
-    > 一部のシェルでは、引用符で囲まれていない限り、接続文字列が切り捨てられます。 `dotnet user-secrets` コマンドの出力に接続文字列全体が表示されていることを確認します。 そうでない場合は、接続文字列を引用符で囲んでコマンドを再実行します。
+    > 一部のシェルでは、引用符で囲まれていない限り、接続文字列が切り捨てられます。 `dotnet user-secrets list` コマンドの出力に接続文字列全体が表示されていることを確認します。 そうでない場合は、接続文字列を引用符で囲んでコマンドを再実行します。
 
     シークレット マネージャーは、Web アプリをローカルにテストするためだけに使用されます。 [Azure App Service](https://azure.microsoft.com/services/app-service/web) にアプリをデプロイした場合、シークレット マネージャーの代わりに App Service の **[接続文字列]** アプリケーション設定を使用して、接続文字列を格納します。
 

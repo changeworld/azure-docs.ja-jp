@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: 11651b7a76ea0e61f78f3b2f305e39ed621df391
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e1efd02d60ba874178f24da2b441fc122e4a1912
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109319"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218536"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Virtual Network とは
 
@@ -31,7 +31,7 @@ Azure 仮想ネットワークにより、Azure リソースは、他の Azure �
 VNet 内のすべてのリソースにおいて、既定でインターネットへの送信方向の通信が可能です。 リソースへの受信通信は、リソースにパブリック IP アドレスまたはパブリック ロード バランサーを割り当てることによって可能になります。 パブリック IP またはパブリック ロード バランサーを使用して、送信接続を管理することもできます。  Azure での送信接続の詳細については、[送信接続](../load-balancer/load-balancer-outbound-connections.md)、[パブリック IP アドレス](virtual-network-public-ip-address.md)、[ロード バランサー](../load-balancer/load-balancer-overview.md)に関する各ページを参照してください。
 
 >[!NOTE]
->内部 [Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) のみを使用している場合、[送信接続](../load-balancer/load-balancer-outbound-connections.md)でインスタンスレベルの IP アドレスまたはパブリック ロード バランサーがどのように処理されるかを定義するまで、送信接続は使用できません。
+>内部 [Standard Load Balancer](../load-balancer/load-balancer-overview.md) のみを使用している場合、[送信接続](../load-balancer/load-balancer-outbound-connections.md)でインスタンスレベルの IP アドレスまたはパブリック ロード バランサーがどのように処理されるかを定義するまで、送信接続は使用できません。
 
 ### <a name="communicate-between-azure-resources"></a>Azure リソース間の通信
 
@@ -53,7 +53,7 @@ VNet 内のすべてのリソースにおいて、既定でインターネット
 
 次のオプションのいずれかまたは両方を使用して、サブネット間のネットワーク トラフィックをフィルター処理できます。
 
-- **ネットワーク セキュリティ グループ:** ネットワーク セキュリティ グループとアプリケーション セキュリティ グループには、受信と送信のセキュリティ規則を複数含めることができます。これらの規則を使用すると、送信元と送信先の IP アドレス、ポート、およびプロトコルに基づいて、リソースとの間で送受信されるトラフィックをフィルター処理できます。 詳しくは、「[ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)」または「[アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)」をご覧ください。
+- **ネットワーク セキュリティ グループ:** ネットワーク セキュリティ グループとアプリケーション セキュリティ グループには、受信と送信のセキュリティ規則を複数含めることができます。これらの規則を使用すると、送信元と送信先の IP アドレス、ポート、およびプロトコルに基づいて、リソースとの間で送受信されるトラフィックをフィルター処理できます。 詳しくは、「[ネットワーク セキュリティ グループ](./network-security-groups-overview.md#network-security-groups)」または「[アプリケーション セキュリティ グループ](./network-security-groups-overview.md#application-security-groups)」をご覧ください。
 - **ネットワーク仮想アプライアンス**:ネットワーク仮想アプライアンスとは、ファイアウォール、WAN 最適化などのネットワーク機能を実行する VM です。 仮想ネットワークにデプロイできる使用可能なネットワーク仮想アプライアンスの一覧については、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) で確認してください。
 
 ### <a name="route-network-traffic"></a>ネットワーク トラフィックのルーティング

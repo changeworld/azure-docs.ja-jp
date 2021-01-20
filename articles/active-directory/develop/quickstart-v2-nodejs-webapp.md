@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: c9aa73767fcb9d57ada11f5830fec00b10eee812
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: bd750a05f34a18a1260226fb979a82cc620dfbfb
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017342"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178281"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>クイック スタート:OpenID Connect を使用したサインインを Node.js Web アプリに追加する
 
@@ -42,7 +42,7 @@ ms.locfileid: "98017342"
 1. **[登録]** を選択して、アプリを作成します。
 1. アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を見つけ、後で使用するために記録します。 この値は、このプロジェクトで後からアプリケーションを構成するために必要になります。
 1. **[管理]** で、 **[認証]** を選択します。
-1. **[プラットフォームの追加]**  >  **[Web]** の順に選択します 
+1. **[プラットフォームの追加]**  >  **[Web]** の順に選択します。 
 1. **[リダイレクト URI]** セクションで、「`http://localhost:3000/auth/openid/return`」と入力します。
 1. **[ログアウト URL]** に「`https://localhost:3000`」と入力します。
 1. このサンプルでは、ユーザーをサインインさせるために [暗黙的な許可のフロー](./v2-oauth2-implicit-grant-flow.md)が有効になっている必要があるため、暗黙的な許可セクションで **[ID トークン]** をオンにします。

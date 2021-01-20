@@ -5,26 +5,18 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: c72083f205fae77de366125e666cee479fd46805
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: dbba87be839d7f172d42827698a8e485c2edddd8
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97691955"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256401"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 - 実用的な [Communication Services 通話アプリ](../getting-started-with-calling.md)。
 - [Teams のデプロイ](/deployoffice/teams-install)。
 
-## <a name="enable-teams-interoperability"></a>Teams の相互運用性を有効にする
-
-Teams の相互運用性機能は、現在プライベート プレビュー段階です。 ご利用の Communication Services リソースに関して、この機能を有効にする場合は、次の情報を添えて、メール ([acsfeedback@microsoft.com](mailto:acsfeedback@microsoft.com)) でご連絡ください。
-
-1. Communication Services リソースがある Azure サブスクリプションのサブスクリプション ID。
-2. Teams のテナント ID。 この情報を入手する方法としては、[チームへのリンクを取得して共有](https://support.microsoft.com/office/create-a-link-or-a-code-for-joining-a-team-11b0de3b-9288-4cb4-bc49-795e7028296f)するのが最も簡単です。
-
-この機能を使用するには、両方のエンティティの所有組織のメンバーである必要があります。
 
 ## <a name="add-the-teams-ui-controls"></a>Teams の UI コントロールを追加する
 

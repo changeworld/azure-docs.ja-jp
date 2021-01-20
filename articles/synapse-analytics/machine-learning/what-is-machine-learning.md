@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 906d3d28aabf8f6ecd6e04c38b4519937fa95c2b
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 68b113de63cfefde805c1c46e9303829c4eb33a7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092161"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222141"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Azure Synapse Analytics の機械学習機能
 
@@ -40,7 +40,7 @@ Azure Synapse Analytics では、さまざまな機械学習の機能を提供�
 
 #### <a name="data-source-and-pipelines"></a>データ ソースとパイプライン
 
-Azure Synapse のネイティブに統合されているパーツである [Azure Data Factory](/azure/data-factory/introduction) により、データ インジェストとデータ オーケストレーションのパイプラインに使用できる強力なツール セットが存在します。 これにより、データ パイプラインを簡単に作成して、データにアクセスしたり、機械学習に使用できる形式にデータを変換したりすることができます。 Synapse のデータ パイプラインについて詳しくは、[こちら](/azure/data-factory/concepts-pipelines-activities?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)をご覧ください。 
+Azure Synapse のネイティブに統合されているパーツである [Azure Data Factory](../../data-factory/introduction.md) により、データ インジェストとデータ オーケストレーションのパイプラインに使用できる強力なツール セットが存在します。 これにより、データ パイプラインを簡単に作成して、データにアクセスしたり、機械学習に使用できる形式にデータを変換したりすることができます。 Synapse のデータ パイプラインについて詳しくは、[こちら](../../data-factory/concepts-pipelines-activities.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)をご覧ください。 
 
 #### <a name="data-preparation-and-explorationvisualization"></a>データの準備と探索/視覚化
 
@@ -64,13 +64,13 @@ MLlib に加えて、[Scikit Learn](https://scikit-learn.org/stable/) などの�
 
 #### <a name="train-models-with-azure-machine-learning-automated-ml"></a>Azure Machine Learning の自動 ML を使用してモデルをトレーニングする
 
-機械学習の知識をあまり必要としない、機械学習モデルのもう 1 つのトレーニング方法は、自動 ML を使用することです。 [自動 ML](/azure/machine-learning/concept-automated-ml) は、一連の機械学習モデルを自動的にトレーニングし、ユーザーが特定のメトリックに基づいて最適なモデルを選択できるようにする機能です。 Azure Synapse Notebooks から Azure Machine Learning とシームレスに統合できるため、ユーザーは Azure Active Directory パススルー認証を使用して Synapse で自動 ML を簡単に利用できます。  つまり、Azure Machine Learning ワークスペースをポイントするだけでよく、資格情報を入力する必要はありません。 Synapse Spark プールで Azure Machine Learning の自動 ML を使用してモデルをトレーニングする方法については、[自動 ML のチュートリアル](../spark/apache-spark-azure-machine-learning-tutorial.md)をご覧ください。
+機械学習の知識をあまり必要としない、機械学習モデルのもう 1 つのトレーニング方法は、自動 ML を使用することです。 [自動 ML](../../machine-learning/concept-automated-ml.md) は、一連の機械学習モデルを自動的にトレーニングし、ユーザーが特定のメトリックに基づいて最適なモデルを選択できるようにする機能です。 Azure Synapse Notebooks から Azure Machine Learning とシームレスに統合できるため、ユーザーは Azure Active Directory パススルー認証を使用して Synapse で自動 ML を簡単に利用できます。  つまり、Azure Machine Learning ワークスペースをポイントするだけでよく、資格情報を入力する必要はありません。 Synapse Spark プールで Azure Machine Learning の自動 ML を使用してモデルをトレーニングする方法については、[自動 ML のチュートリアル](../spark/apache-spark-azure-machine-learning-tutorial.md)をご覧ください。
 
 ### <a name="model-deployment-and-scoring"></a>モデルのデプロイとスコアリング
 
 Azure Synapse または外部の Azure Synapse でトレーニングされたモデルは、バッチ スコアリングに簡単に使用できます。 現在、Synapse には、バッチ スコアリングを実行する方法が 2 つあります。
 
-* Synapse SQL プールで [TSQL PREDICT 関数](../sql-data-warehouse/sql-data-warehouse-predict.md)を使用して、データが存在する場所で直接予測を実行できます。 この強力でスケーラブルな関数を使用すると、データ ウェアハウスからデータを移動せずにデータを強化することができます。 [Synapse Studio での新しいガイド付き機械学習モデルのエクスペリエンス](https://aka.ms/synapse-ml-ui)が導入され、PREDICT を使用してバッチ スコアリングを行うために、Synapse SQL プールの Azure Machine Learning モデル レジストリから ONNX モデルをデプロイできるようになりました。
+* Synapse SQL プールで [TSQL PREDICT 関数](../sql-data-warehouse/sql-data-warehouse-predict.md)を使用して、データが存在する場所で直接予測を実行できます。 この強力でスケーラブルな関数を使用すると、データ ウェアハウスからデータを移動せずにデータを強化することができます。 [Synapse Studio での新しいガイド付き機械学習モデルのエクスペリエンス](./tutorial-sql-pool-model-scoring-wizard.md)が導入され、PREDICT を使用してバッチ スコアリングを行うために、Synapse SQL プールの Azure Machine Learning モデル レジストリから ONNX モデルをデプロイできるようになりました。
 
 * Azure Synapse で機械学習モデルのバッチ スコアリングを行うためのもう 1 つのオプションは、Azure Synapse の Apache Spark プールを活用することです。 モデルのトレーニングに使用するライブラリによっては、コード エクスペリエンスを使用してバッチ スコアリングを実行できます。
 

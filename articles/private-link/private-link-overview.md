@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 3c03a207e91ae969836e208f4e6bf4ea32086c7d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b3ca4f11b02f32e65cf80adc65ec12d25e6e7905
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121322"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573175"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Private Link とは 
 Azure Private Link を使用すると、お使いの仮想ネットワーク内の[プライベート エンドポイント](private-endpoint-overview.md)経由で Azure PaaS サービス (Azure Storage、SQL Database など) と Azure でホストされている顧客所有の、またはパートナー サービスにアクセスできます。
@@ -66,7 +66,7 @@ Azure Private Link には次のような利点があります。
 |Azure Event Grid| すべてのパブリック リージョン<br/> すべての Government リージョン       |  | GA   <br/> [Azure Event Grid のプライベート エンドポイントを作成する方法を確認します。](../event-grid/network-security.md) |
 |Azure Web Apps | すべてのパブリック リージョン      | PremiumV2、PremiumV3、または Function Premium プランでサポートされます  | GA   <br/> [Azure Web Apps のプライベート エンドポイントを作成する方法を確認します。](./tutorial-private-endpoint-webapp-portal.md)   |
 |Azure Machine Learning | すべてのパブリック リージョン    |  | GA   <br/> [Azure Machine Learning のプライベート エンドポイントを作成する方法を確認します。](../machine-learning/how-to-configure-private-link.md)   |
-| Azure Automation  | すべてのパブリック リージョン |  | プレビュー </br> [Azure Automation のプライベート エンドポイントを作成する方法を確認します。](../automation/how-to/private-link-security.md)| |
+| Azure Automation  | すべてのパブリック リージョン<br/> すべての Government リージョン |  | プレビュー </br> [Azure Automation のプライベート エンドポイントを作成する方法を確認します。](../automation/how-to/private-link-security.md)| |
 | Azure IoT Hub | すべてのパブリック リージョン    |  | GA   <br/> [Azure IoT Hub のプライベート エンドポイントを作成する方法を確認します。](../iot-hub/virtual-network-support.md) |
 | Azure SignalR | 米国東部、米国中南部、<br/>米国西部 2、すべての中国リージョン      |  | プレビュー   <br/> [Azure SignalR のプライベート エンドポイントを作成する方法を確認します。](../azure-signalr/howto-private-endpoints.md)   |
 | Azure Monitor <br/>(ログ分析と Application Insights) | すべてのパブリック リージョン      |  | GA   <br/> [Azure Monitor のプライベート エンドポイントを作成する方法を確認します。](../azure-monitor/platform/private-link-security.md)   | 
