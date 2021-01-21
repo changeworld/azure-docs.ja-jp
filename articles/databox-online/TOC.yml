@@ -397,6 +397,11 @@
   items:
     - name: セキュリティ ベースライン
       href: security-baseline.md
+- name: リファレンス
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure Stack Edge Pro C# モジュールのサンプル (.NET)
