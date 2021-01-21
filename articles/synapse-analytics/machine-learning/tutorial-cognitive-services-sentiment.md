@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 1b407cbee5218149f794ab125ac058e32b422558
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6a4833cf0d73939e01fd3e3e7263c6cba3c0a28a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465225"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222192"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services-preview"></a>チュートリアル:Cognitive Services を使用した感情分析 (プレビュー)
 
-このチュートリアルでは、[Cognitive Services](https://go.microsoft.com/fwlink/?linkid=2147492) を使用して Azure Synapse でデータを簡単に強化する方法について学習します。 感情分析を実行するにあたり、[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) の機能を使用します。 Azure Synapse のユーザーは、センチメントを使用して強化するテキスト列を含むテーブルを選択するだけで済みます。 これらのセンチメントは [positive]\(ポジティブ\)、[negative]\(ネガティブ\)、[mixed]\(混合\)、[neutral]\(ニュートラル\) のいずれかとな、確率も返されます。
+このチュートリアルでは、[Cognitive Services](../../cognitive-services/index.yml) を使用して Azure Synapse でデータを簡単に強化する方法について学習します。 感情分析を実行するにあたり、[Text Analytics](../../cognitive-services/text-analytics/index.yml) の機能を使用します。 Azure Synapse のユーザーは、センチメントを使用して強化するテキスト列を含むテーブルを選択するだけで済みます。 これらのセンチメントは [positive]\(ポジティブ\)、[negative]\(ネガティブ\)、[mixed]\(混合\)、[neutral]\(ニュートラル\) のいずれかとな、確率も返されます。
 
 このチュートリアルの内容:
 
@@ -98,7 +98,7 @@ Cognitive Services に対して認証するには、ご利用のキー コンテ
 
 指定した Azure Key Vault の詳細を使用すると、このエクスペリエンスからシークレットを安全に参照できます。シークレットが公開されることはありません。
 
-これで、セルを **すべて実行** し、センチメントを使用してデータを強化できます。 センチメントは [Positive]\(ポジティブ\)、[Negative]\(ネガティブ\)、[Neutral]\(ニュートラル\)、または [Mixed]\(混合\) として返され、センチメントごとの確率も取得されます。 [Cognitive Services - 感情分析](https://go.microsoft.com/fwlink/?linkid=2147792)の詳細を確認してください。
+これで、セルを **すべて実行** し、センチメントを使用してデータを強化できます。 センチメントは [Positive]\(ポジティブ\)、[Negative]\(ネガティブ\)、[Neutral]\(ニュートラル\)、または [Mixed]\(混合\) として返され、センチメントごとの確率も取得されます。 [Cognitive Services - 感情分析](../../cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md)の詳細を確認してください。
 
 ![感情分析を実行する](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00h.png)
 

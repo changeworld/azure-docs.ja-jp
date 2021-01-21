@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: d630a41f9b83a852605ffad2a85ad6dd14bbac73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e047f46e110e1f7b1d544545c80bd1097ae65167
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86079651"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221920"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
@@ -140,7 +140,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-route"></a>ルートの作成
 
-1. [Azure portal](https://portal.azure.com) に移動して、ルート テーブルを管理します。 **ルート テーブル**を検索して選択します。
+1. [Azure portal](https://portal.azure.com) に移動して、ルート テーブルを管理します。 **ルート テーブル** を検索して選択します。
 
 1. 目的のルート テーブルの名前 (**myRouteTablePublic**) を選択します。
 
@@ -161,7 +161,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>サブネットへのルート テーブルの関連付け
 
-1. [Azure portal](https://portal.azure.com) に移動して、仮想ネットワークを管理します。 **仮想ネットワーク**を検索して選択します。
+1. [Azure portal](https://portal.azure.com) に移動して、仮想ネットワークを管理します。 **仮想ネットワーク** を検索して選択します。
 
 1. 目的の仮想ネットワークの名前を選択します (**myVirtualNetwork**)。
 
@@ -343,7 +343,7 @@ Azure を使用して VM のネットワーク インターフェイスの [IP �
 
 リソース グループが不要になったら、*myResourceGroup* とそれに含まれるすべてのリソースを削除します。
 
-1. [Azure portal](https://portal.azure.com) に移動して、リソース グループを管理します。 **リソース グループ**を検索して選択します。
+1. [Azure portal](https://portal.azure.com) に移動して、リソース グループを管理します。 **リソース グループ** を検索して選択します。
 
 1. 目的のリソース グループの名前 (**myResourceGroup**) を選択します。
 
@@ -361,4 +361,4 @@ Azure を使用して VM のネットワーク インターフェイスの [IP �
 > [PaaS リソースへのネットワーク アクセスを制限する](tutorial-restrict-network-access-to-resources.md)
 
 > [!NOTE] 
-> Azure サービスは有料です。 Azure Cost Management を使用すると、予算を設定して、支出を制御するためのアラートを構成できます。 Cost Management で Azure のコストを分析、管理、最適化しましょう。 詳しくは、[コスト分析に関するクイックスタート](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を参照してください。
+> Azure サービスは有料です。 Azure Cost Management を使用すると、予算を設定して、支出を制御するためのアラートを構成できます。 Cost Management で Azure のコストを分析、管理、最適化しましょう。 詳しくは、[コスト分析に関するクイックスタート](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を参照してください。

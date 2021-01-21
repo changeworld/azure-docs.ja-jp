@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d047a45d678918541eb3c2d2c45e4519a34bdd57
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 42d1d66c67b554b4b98cd8267b5945049215f843
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608682"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556020"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>チュートリアル:コピー アクティビティがあるパイプラインを .NET API で作成する
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ ms.locfileid: "97608682"
 1 つのパイプラインには複数のアクティビティを含めることができます。 また、1 つのアクティビティの出力データセットを別のアクティビティの入力データセットとして指定することで、2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) ことができます。 詳細については、「[パイプライン内の複数アクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)」を参照してください。 
 
 > [!NOTE] 
-> Data Factory の .NET API に関する完全なドキュメントについては、[Data Factory .NET API リファレンス](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)を参照してください。
+> Data Factory の .NET API に関する完全なドキュメントについては、[Data Factory .NET API リファレンス](/dotnet/api/overview/azure/data-factory)を参照してください。
 > 
 > このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換するパイプラインを作成する方法のチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
 
@@ -519,7 +519,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 20. 指定したデータベースの **emp** テーブルに 2 つの従業員レコードが作成されることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
-Data Factory の .NET API に関する完全なドキュメントについては、[Data Factory .NET API リファレンス](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)を参照してください。
+Data Factory の .NET API に関する完全なドキュメントについては、[Data Factory .NET API リファレンス](/dotnet/api/overview/azure/data-factory)を参照してください。
 
 このチュートリアルでは、Azure Blob Storage をコピー操作のソース データ ストア、Azure SQL Database をターゲット データ ストアとして使用しました。 次の表は、コピー アクティビティによってソースおよびターゲットとしてサポートされているデータ ストアの一覧です。 
 

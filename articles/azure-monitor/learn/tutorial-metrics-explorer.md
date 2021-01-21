@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 5dcb86ff4af2a68ecf0bb361e6da4f788ea32b62
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 121de67ddb251e7431873c76e379eb223ceacd0d
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881295"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250674"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>チュートリアル:Azure Monitor でのメトリック グラフの作成
 メトリックス エクスプローラーは、Azure portal 内の Azure Monitor の 1 機能であり、メトリック値からグラフを作成したり、傾向を視覚的に関連付けたり、メトリック値の急上昇または急降下を調査したりすることができます。 メトリックス エクスプローラーを使用して、ご利用の Azure リソースの正常性と使用率を調べ、カスタム メトリックに基づいてグラフをプロットします。 
@@ -70,20 +70,20 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 ## <a name="apply-dimension-filters-and-splitting"></a>ディメンションのフィルターと分割を適用する
 メトリックに対して追加の分析を実行したり、データの潜在的な外れ値を特定したりできる高度な機能については、次のリファレンスを参照してください。
 
-- [フィルター処理](../platform/metrics-charts.md#apply-filters-to-charts)を使用すると、グラフに表示するディメンション値を選択できます。 たとえば、"*サーバー応答時間*" メトリックのグラフを作成する場合は、成功した要求を表示します。 
+- [フィルター処理](../platform/metrics-charts.md#filters)を使用すると、グラフに表示するディメンション値を選択できます。 たとえば、"*サーバー応答時間*" メトリックのグラフを作成する場合は、成功した要求を表示します。 
 
-- [分割](../platform/metrics-charts.md#apply-splitting-to-a-chart)を使用すると、グラフ内でディメンションの値ごとに個別のラインを表示するか、それとも値を集計して 1 本のラインとして表示するかを制御できます。 たとえば、すべてのサーバー インスタンスの応答時間を平均した 1 本のラインを表示することも、サーバーごとに個別のラインを表示することもできます。 
+- [分割](../platform/metrics-charts.md#apply-splitting)を使用すると、グラフ内でディメンションの値ごとに個別のラインを表示するか、それとも値を集計して 1 本のラインとして表示するかを制御できます。 たとえば、すべてのサーバー インスタンスの応答時間を平均した 1 本のラインを表示することも、サーバーごとに個別のラインを表示することもできます。 
 
 フィルター処理と分割が適用されたグラフの例については、[こちら](../platform/metric-chart-samples.md)を参照してください。
 
 ## <a name="advanced-chart-settings"></a>グラフの詳細設定
 
-グラフのスタイルおよびタイトルをカスタマイズして、グラフの詳細設定を変更することができます。 カスタマイズが完了したら、ダッシュボードにピン留めして作業内容を保存します。 メトリック アラートを構成することもできます。 Azure Monitor メトリックス エクスプローラーの上記のような高度な機能を学習するには、「[Azure メトリックス エクスプローラーの高度な機能](../platform/metrics-charts.md#lock-boundaries-of-chart-y-axis)」をご覧ください。
+グラフのスタイルおよびタイトルをカスタマイズして、グラフの詳細設定を変更することができます。 カスタマイズが完了したら、ダッシュボードにピン留めして作業内容を保存します。 メトリック アラートを構成することもできます。 Azure Monitor メトリックス エクスプローラーの上記のような高度な機能を学習するには、「[Azure メトリックス エクスプローラーの高度な機能](../platform/metrics-charts.md#locking the-range-of-the-y-axis)」をご覧ください。
 
 
 ## <a name="next-steps"></a>次のステップ
 これで、Azure Monitor でメトリックを使用する方法を学習できました。次は、メトリックを使用してプロアクティブなアラートを送信する方法について説明します。
 
 > [!div class="nextstepaction"]
-> [Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../platform/metrics-charts.md#create-alert-rules)
+> [Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../platform/metrics-charts.md#alert-rules)
 

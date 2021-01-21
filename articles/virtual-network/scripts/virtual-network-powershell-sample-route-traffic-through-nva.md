@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 19bebb5c1817882dcb641a284332926e51a8dd2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0bc7ddde7964ecdd003b951a8562a840b8b88e4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313996"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223212"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>ネットワーク仮想アプライアンス経由のトラフィックのルーティングのスクリプト サンプル
 
@@ -63,6 +63,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/)を参照してください。
+Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 他の仮想ネットワークの PowerShell スクリプト サンプルについては、[仮想ネットワークの PowerShell サンプル](../powershell-samples.md)に関するページを参照してください。

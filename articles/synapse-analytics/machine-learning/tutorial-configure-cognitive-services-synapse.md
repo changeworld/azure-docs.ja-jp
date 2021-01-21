@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: cf76a3d09da83693791873feb9e6ab03c432e47f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: eef65db05ab94b5b8de5ff82c2c51dba0730f170
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96464399"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222175"
 ---
 # <a name="tutorial-pre-requisites-for-using-cognitive-services-in-azure-synapse"></a>チュートリアル:Azure Synapse で Cognitive Services を使用するための前提条件
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 ## <a name="create-a-cognitive-services-resource"></a>Cognitive Services リソースを作成する
 
-[Azure Cognitive Services](https://go.microsoft.com/fwlink/?linkid=2147492) には、さまざまな種類のサービスが含まれています。 Synapse のチュートリアルで使用されている例を次に示します。
+[Azure Cognitive Services](../../cognitive-services/index.yml) には、さまざまな種類のサービスが含まれています。 Synapse のチュートリアルで使用されている例を次に示します。
 
 ### <a name="create-an-anomaly-detector-resource"></a>Anomaly Detector リソースを作成する
 Azure portal で [Anomaly Detector](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) を作成します。
@@ -53,7 +53,7 @@ Azure portal で [Text Analytics](https://ms.portal.azure.com/#create/Microsoft.
 ## <a name="create-key-vault-and-configure-secrets-and-access"></a>キー コンテナーを作成してシークレットとアクセスを構成する
 
 1. Azure portal で[キー コンテナー](https://ms.portal.azure.com/#create/Microsoft.KeyVault)を作成します。
-2. **[Key Vault]、[アクセス ポリシー]** の順に移動し、[Azure Synapse ワークスペースの MSI](https://docs.microsoft.com/azure/synapse-analytics/security/synapse-workspace-managed-identity) に、Azure Key Vault からシークレットを読み取るためのアクセス許可を付与します。
+2. **[Key Vault]、[アクセス ポリシー]** の順に移動し、[Azure Synapse ワークスペースの MSI](../security/synapse-workspace-managed-identity.md) に、Azure Key Vault からシークレットを読み取るためのアクセス許可を付与します。
 
 >ポリシーの変更を必ず保存します。 これは見逃されやすい手順です。
 

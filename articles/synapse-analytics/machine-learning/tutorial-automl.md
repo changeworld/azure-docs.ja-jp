@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: e219531a88787f19197a2e8c2a80040497c6dc1e
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: f3b0c5f1487951d05bc83973e5b4b9f3634a694b
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901421"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222260"
 ---
 # <a name="tutorial-train-a-machine-learning-model-without-code"></a>チュートリアル:コードなしで機械学習モデルをトレーニングする
 
-[自動機械学習](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml)を使用してトレーニングする新しい機械学習モデルによって、Spark テーブルのデータをエンリッチすることができます。 Azure Synapse Analytics では、機械学習モデルを構築するためのトレーニング データセットとして使用する Spark テーブルをワークスペースで選択できます。この作業にコーディングは必要ありません。
+[自動機械学習](../../machine-learning/concept-automated-ml.md)を使用してトレーニングする新しい機械学習モデルによって、Spark テーブルのデータをエンリッチすることができます。 Azure Synapse Analytics では、機械学習モデルを構築するためのトレーニング データセットとして使用する Spark テーブルをワークスペースで選択できます。この作業にコーディングは必要ありません。
 
 このチュートリアルでは、Azure Synapse Analytics Studio のコーディング不要なエクスペリエンスを使用して機械学習モデルをトレーニングする方法について説明します。 Azure Machine Learning の自動機械学習を使用し、手動でのコーディングは行いません。 トレーニングするモデルの種類は、解決しようとしている問題によって異なります。
 

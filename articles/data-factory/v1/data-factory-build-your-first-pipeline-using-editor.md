@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 360fbc3e1bfe7890f1f3b05899eb95ce7a3a72c2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4e19991de20b130b878a230313d87ca09d31a84e
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496622"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556445"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した初めてのデータ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "96496622"
 > この記事は、一般公開されている Azure Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Data Factory を使用してデータ ファクトリを作成する方法のクイック スタート](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。
 
 > [!WARNING]
-> ADF v1 パイプラインの作成とデプロイのための Azure portal の JSON エディターは、2019 年 7 月 31 日に無効になります。 2019 年 7 月 31 日以降は、引き続き [ADF v1 Powershell コマンドレット](/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)、[ADF v1 .Net SDK](/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)、[ADF v1 REST API](/rest/api/datafactory/) を使用して、ADF v1 パイプラインの作成とデプロイを行うことができます。
+> ADF v1 パイプラインの作成とデプロイのための Azure portal の JSON エディターは、2019 年 7 月 31 日に無効になります。 2019 年 7 月 31 日以降は、引き続き [ADF v1 Powershell コマンドレット](/powershell/module/az.datafactory/)、[ADF v1 .Net SDK](/dotnet/api/microsoft.azure.management.datafactories.models)、[ADF v1 REST API](/rest/api/datafactory/) を使用して、ADF v1 パイプラインの作成とデプロイを行うことができます。
 
 この記事では、[Azure Portal](https://portal.azure.com/) を使用して最初のデータ ファクトリを作成する方法について説明します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。 
 

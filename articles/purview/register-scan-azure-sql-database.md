@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 15708e35fa27bb4a1f72368df6f49ff747eb799b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 36781e7f975ee9d4a03cf899650701bf2d3940ac
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739792"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555952"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL Database の登録とスキャン
 
@@ -28,7 +28,7 @@ Azure SQL Database データ ソースでは、以下の機能がサポートさ
 
 ### <a name="known-limitations"></a>既知の制限事項
 
-Azure Purview では、Azure SQL Database の[ビュー](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15&preserve-view=true)のスキャンはサポートされていません。 
+Azure Purview では、Azure SQL Database の[ビュー](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true)のスキャンはサポートされていません。
 
 ## <a name="prerequisites"></a>必須コンポーネント
 
@@ -50,7 +50,7 @@ Azure SQL Database をスキャンするための認証。 新しい認証を作
 > [!Note]
 > サーバーレベル プリンシパルのログイン (準備プロセスで作成) または master データベースの `loginmanager` データベース ロールのメンバーだけが新しいログインを作成できます。 アクセス許可を付与した後、**15 分** ほどかかります。Purview アカウントには、リソースをスキャンできるようにするための適切なアクセス許可が必要です。
 
-Azure SQL Database のログインが使用可能になっていない場合は、「[CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)」の手順に従って、ログインを作成できます。 次の手順で、**ユーザー名** と **パスワード** が必要になります。
+Azure SQL Database のログインが使用可能になっていない場合は、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)」の手順に従って、ログインを作成できます。 次の手順で、**ユーザー名** と **パスワード** が必要になります。
 
 1. Azure portal で、キー コンテナーに移動します
 1. **[設定]、[シークレット]** の順に選択します
@@ -100,7 +100,7 @@ Purview でサービス プリンシパルまたは Purview の **マネージ�
     ```
 
     > [!Note]
-    > `Username` は、独自のサービス プリンシパルか、Purview のマネージド ID です。 [固定データベース ロールとその機能](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles)を確認してください。
+    > `Username` は、独自のサービス プリンシパルか、Purview のマネージド ID です。 [固定データベース ロールとその機能](/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles)を確認してください。
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>キー コンテナーおよび Purview の資格情報にサービス プリンシパルを追加する
 

@@ -14,12 +14,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 33f3f599eaf95852b52b5bd3301e44316d18cce5
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 98d18c1cd65ccd50d120f8a9edd693f79e87787e
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637022"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555845"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory に Azure-SSIS Integration Runtime をプロビジョニングする
 
@@ -30,7 +30,7 @@ ms.locfileid: "92637022"
 - Azure SQL Database サーバーまたは Managed Instance をホストとする SSIS カタログ (SSISDB) にデプロイされたパッケージを実行する (プロジェクト デプロイ モデル)
 - Azure SQL Managed Instance にホストされた SQL Server データベース (MSDB)、Azure Files、ファイル システムのいずれかにデプロイされたパッケージを実行する (パッケージ デプロイ モデル)
 
-Azure-SSIS IR のプロビジョニング後は、使い慣れたツールを使用して、Azure にパッケージをデプロイして実行することができます。 これらのツールは既に Azure に対応しています。たとえば、SQL Server Data Tools (SSDT) や SQL Server Management Studio (SSMS) のほか、[dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017)、[AzureDTExec](./how-to-invoke-ssis-package-azure-enabled-dtexec.md) などのコマンド ライン ユーティリティがあります。
+Azure-SSIS IR のプロビジョニング後は、使い慣れたツールを使用して、Azure にパッケージをデプロイして実行することができます。 これらのツールは既に Azure に対応しています。たとえば、SQL Server Data Tools (SSDT) や SQL Server Management Studio (SSMS) のほか、[dtutil](/sql/integration-services/dtutil-utility)、[AzureDTExec](./how-to-invoke-ssis-package-azure-enabled-dtexec.md) などのコマンド ライン ユーティリティがあります。
 
 Azure-SSIS IR の概念については、[Azure-SSIS 統合ランタイムの概要](concepts-integration-runtime.md#azure-ssis-integration-runtime)に関する記事を参照してください。
 
@@ -44,7 +44,7 @@ Azure-SSIS IR の概念については、[Azure-SSIS 統合ランタイムの概
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure サブスクリプション** 。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+- **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
 - **Azure SQL Database サーバー (省略可能)** 。 まだデータベース サーバーをお持ちでない場合は、あらかじめ Azure Portal でデータベース サーバーを作成しておいてください。 その後、Data Factory によって、このデータベース サーバーに SSISDB インスタンスが作成されます。 
 
@@ -165,7 +165,7 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
 **[Integration runtime setup]\(統合ランタイムのセットアップ\)** ペインの **[デプロイ設定]** ページで、MSDB、ファイル システム、または Azure Files (パッケージ デプロイ モデル) にデプロイされたパッケージを Azure-SSIS IR パッケージ ストアで管理したい場合は、 **[Create package stores to manage your packages that are deployed into file system/Azure Files/SQL Server database (MSDB) hosted by Azure SQL Managed Instance]\(パッケージ ストアを作成して、Azure SQL Managed Instance をホストとする SQL Server データベース (MSDB)、Azure Files、ファイル システムにデプロイされたパッケージを管理する\)** チェック ボックスをオンにします。
    
-Azure-SSIS IR パッケージ ストアを使用すると、パッケージのインポート、エクスポート、削除、実行のほか、実行中のパッケージの監視と停止を、[従来の SSIS パッケージ ストア](/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017)と同様、SSMS を介して行うことができます。 詳細については、[Azure-SSIS IR パッケージ ストアを使用した SSIS パッケージの管理](./azure-ssis-integration-runtime-package-store.md)に関するページを参照してください。
+Azure-SSIS IR パッケージ ストアを使用すると、パッケージのインポート、エクスポート、削除、実行のほか、実行中のパッケージの監視と停止を、[従来の SSIS パッケージ ストア](/sql/integration-services/service/package-management-ssis-service)と同様、SSMS を介して行うことができます。 詳細については、[Azure-SSIS IR パッケージ ストアを使用した SSIS パッケージの管理](./azure-ssis-integration-runtime-package-store.md)に関するページを参照してください。
    
 このチェック ボックスをオンにした場合、 **[新規]** を選択することで Azure-SSIS IR に複数のパッケージ ストアを追加できます。 逆に、1 つのパッケージ ストアを複数の Azure-SSIS IR で共有することもできます。
 
@@ -178,7 +178,7 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
    1. **[Package store linked service]\(パッケージ ストアのリンクされたサービス\)** で、パッケージのデプロイ先のファイル システム、Azure Files、Azure SQL Managed Instance へのアクセス情報を格納する既存のリンクされたサービスを選択するか、 **[New]\(新規\)** を選択して新たに作成します。 **[New Linked Service]\(新しいリンクされたサービス\)** ペインで、次の手順を実行します。 
 
       > [!NOTE]
-      > **Azure File Storage** か **File System** にリンクされているサービスを利用し、Azure Files にアクセスできます。 **Azure File Storage** にリンクされているサービスを使用する場合、Azure-SSIS IR パッケージ ストアでは現在のところ、( **アカウント キー** でも **SAS URI** でもなく) **基本** 認証方法のみがサポートされています。 **Azure File Storage** にリンクされているサービスで **基本** 認証を使用するには、お使いのブラウザーで ADF ポータル URL に `?feature.upgradeAzureFileStorage=false` を追加できます。 あるいは、 **File System** にリンクされているサービスを代わりに使用し、Azure Files にアクセスできます。 
+      > **Azure File Storage** か **File System** にリンクされているサービスを利用し、Azure Files にアクセスできます。 **Azure File Storage** にリンクされているサービスを使用する場合、Azure-SSIS IR パッケージ ストアでは現在のところ、(**アカウント キー** でも **SAS URI** でもなく) **基本** 認証方法のみがサポートされています。 **Azure File Storage** にリンクされているサービスで **基本** 認証を使用するには、お使いのブラウザーで ADF ポータル URL に `?feature.upgradeAzureFileStorage=false` を追加できます。 あるいは、**File System** にリンクされているサービスを代わりに使用し、Azure Files にアクセスできます。 
 
       ![リンクされたサービスのデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 
@@ -194,7 +194,7 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
 
          1. **[Account selection method]\(アカウントの選択方法\)** で、 **[From Azure subscription]\(Azure サブスクリプションから\)** または **[Enter manually]\(手動で入力\)** を選択します。
          
-         1. **[From Azure subscription]\(Azure サブスクリプションから\)** を選択した場合は、適切な **Azure サブスクリプション** 、 **ストレージ アカウント名** 、 **ファイル共有** を選択します。
+         1. **[From Azure subscription]\(Azure サブスクリプションから\)** を選択した場合は、適切な **Azure サブスクリプション**、**ストレージ アカウント名**、**ファイル共有** を選択します。
             
          1. **[Enter manually]\(手動で入力\)** を選択した場合は、 **[ホスト]** に「`\\<storage account name>.file.core.windows.net\<file share name>`」を、 **[ユーザー名]** に「`Azure\<storage account name>`」を、 **[パスワード]** に「`<storage account key>`」を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
 
@@ -267,9 +267,9 @@ SSISDB を使用する場合は、そこにパッケージをデプロイし、A
 - プライベート エンドポイントを備えたマネージド インスタンスの場合、サーバー エンドポイントの形式は `<server name>.<dns prefix>.database.windows.net` です。
 - パブリック エンドポイントを備えたマネージド インスタンスの場合、サーバー エンドポイントの形式は `<server name>.public.<dns prefix>.database.windows.net,3342` です。 
 
-SSISDB を使用しない場合は、Azure SQL Managed Instance にホストされた MSDB、ファイル システム、Azure Files のいずれかにパッケージをデプロイし、[dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) および [AzureDTExec](./how-to-invoke-ssis-package-azure-enabled-dtexec.md) コマンド ライン ユーティリティを使用してそれらのパッケージを Azure-SSIS IR 上で実行できます。 
+SSISDB を使用しない場合は、Azure SQL Managed Instance にホストされた MSDB、ファイル システム、Azure Files のいずれかにパッケージをデプロイし、[dtutil](/sql/integration-services/dtutil-utility) および [AzureDTExec](./how-to-invoke-ssis-package-azure-enabled-dtexec.md) コマンド ライン ユーティリティを使用してそれらのパッケージを Azure-SSIS IR 上で実行できます。 
 
-詳細については、[SSIS プロジェクトおよびパッケージのデプロイ](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-ver15)に関する記事を参照してください。
+詳細については、[SSIS プロジェクトおよびパッケージのデプロイ](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages)に関する記事を参照してください。
 
 どちらの場合も、Data Factory パイプラインの SSIS パッケージの実行アクティビティを使用して、デプロイしたパッケージを Azure-SSIS IR 上で実行することもできます。 詳細については、[ファーストクラスの Data Factory アクティビティとして SSIS パッケージの実行を呼び出す方法](./how-to-invoke-ssis-package-ssis-activity.md)に関するページを参照してください。
 

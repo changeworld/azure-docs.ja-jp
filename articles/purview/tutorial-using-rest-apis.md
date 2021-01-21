@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 06f738ea88093ea8de45efebea983fd7fa13216e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: fcc3e487d949a9450f792a6cc230b64e7dbe950a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387821"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202948"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>チュートリアル:REST API を使用する
 
@@ -142,7 +142,7 @@ Azure Purview が備えている高度な検索および候補 API の詳細に�
 
 
 
-1. [Node.js をインストール](https://github.com/Azure/autorest/blob/master/docs/installing-autorest.md)します。
+1. [Node.js をインストール](https://github.com/Azure/autorest/blob/v2/docs/installing-autorest.md)します。
 1. PowerShell を開き、次のコマンドを実行します。
 
    ```powershell
@@ -173,7 +173,7 @@ Azure Purview が備えている高度な検索および候補 API の詳細に�
 1. バージョンが 2.3.21 以上であることを確認し、 **[インストール]** を選択します。
 1. アプリケーションをビルドして実行します。
 
-サンプル コードは、カタログに含まれる typedef の数を返すもので、ロールの割り当てを処理する方法を示しています。 詳細については、サンプル コードの `DoRoleAssignmentOperations()` を参照してください。 プロジェクトの詳細については、「[プロジェクトの設定](https://github.com/Azure/autorest/blob/master/docs/client/proj-setup.md)」を参照してください。
+サンプル コードは、カタログに含まれる typedef の数を返すもので、ロールの割り当てを処理する方法を示しています。 詳細については、サンプル コードの `DoRoleAssignmentOperations()` を参照してください。 プロジェクトの詳細については、「[プロジェクトの設定](https://github.com/Azure/autorest/blob/v2/docs/client/proj-setup.md)」を参照してください。
 
 ### <a name="sample-code-for-the-console-application"></a>コンソール アプリケーションのサンプル コード
 

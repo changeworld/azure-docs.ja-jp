@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 6eb17537fd64b192f64c36b38bab57e11d751328
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 3513ba0cd1a894b55da604d54964affa79b6adf4
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400779"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555969"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の登録とスキャン
 
@@ -28,19 +28,19 @@ Azure SQL Database Managed Instance データ ソースでは、以下の機能�
 
 ### <a name="known-limitations"></a>既知の制限事項
 
-Azure Purview では、Azure SQL Managed Instance の[ビュー](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15)のスキャンはサポートされていません。
+Azure Purview では、Azure SQL Managed Instance の[ビュー](/sql/relational-databases/views/views?view=azuresqldb-mi-current&preserve-view=true)のスキャンはサポートされていません。
 
 ## <a name="prerequisites"></a>必須コンポーネント
 
 - Purview アカウントをまだお持ちでない場合は、新たに作成します。
 
-- [Azure SQL マネージド インスタンスのパブリック エンドポイントを構成する](https://docs.microsoft.com/azure/azure-sql/managed-instance/public-endpoint-configure)
+- [Azure SQL マネージド インスタンスのパブリック エンドポイントを構成する](/azure/azure-sql/managed-instance/public-endpoint-configure)
     > [!Note]
     > Purview では **プライベート エンドポイントはまだサポートされていない** ため、組織はパブリック エンドポイントを許可できる必要があります。 プライベート エンドポイントを使用する場合、スキャンは正常に実行されません。
 
 ### <a name="setting-up-authentication-for-a-scan"></a>スキャンの認証の設定
 
-Azure SQL Database Managed Instance をスキャンするための認証。 新しい認証を作成する必要がある場合は、[SQL Database Managed Instance へのデータベース アクセスを承認する](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)必要があります。 現在、Purview では、3 つの認証方法がサポートされています。
+Azure SQL Database Managed Instance をスキャンするための認証。 新しい認証を作成する必要がある場合は、[SQL Database Managed Instance へのデータベース アクセスを承認する](/azure/azure-sql/database/logins-create-manage)必要があります。 現在、Purview では、3 つの認証方法がサポートされています。
 
 - SQL 認証
 - サービス プリンシパル
@@ -51,7 +51,7 @@ Azure SQL Database Managed Instance をスキャンするための認証。 新�
 > [!Note]
 > サーバーレベル プリンシパルのログイン (準備プロセスで作成) または master データベースの `loginmanager` データベース ロールのメンバーだけが新しいログインを作成できます。 アクセス許可を付与した後、**15 分** ほどかかります。Purview アカウントには、リソースをスキャンできるようにするための適切なアクセス許可が必要です。
 
-Azure SQL Database Managed Instance のログインが使用可能になっていない場合は、「[CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)」の手順に従って、ログインを作成できます。 次の手順で、**ユーザー名** と **パスワード** が必要になります。
+Azure SQL Database Managed Instance のログインが使用可能になっていない場合は、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)」の手順に従って、ログインを作成できます。 次の手順で、**ユーザー名** と **パスワード** が必要になります。
 
 1. Azure portal で、キー コンテナーに移動します
 1. **[設定]、[シークレット]** の順に選択します
@@ -85,8 +85,8 @@ Purview でサービス プリンシパルを使用して Azure SQL Database Man
 ##### <a name="configure-azure-ad-authentication-in-the-database-account"></a>データベース アカウントで Azure AD 認証を構成する
 
 サービス プリンシパルまたはマネージド ID には、データベース、スキーマ、およびテーブルのメタデータを取得するためのアクセス許可が必要です。 また、分類用のサンプリングを行うために、テーブルに対してクエリを実行できる必要もあります。
-- [Azure SQL での Azure AD 認証を構成して管理する](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- 「[Azure AD ID にマップされる包含ユーザーを作成する](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities)」の前提条件とチュートリアルに従って、Azure SQL Database Managed Instance に Azure AD ユーザーを作成する
+- [Azure SQL での Azure AD 認証を構成して管理する](/azure/azure-sql/database/authentication-aad-configure)
+- 「[Azure AD ID にマップされる包含ユーザーを作成する](/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities)」の前提条件とチュートリアルに従って、Azure SQL Database Managed Instance に Azure AD ユーザーを作成する
 - `db_owner` (**推奨**) アクセス許可を ID に割り当てる
 
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>キー コンテナーおよび Purview の資格情報にサービス プリンシパルを追加する

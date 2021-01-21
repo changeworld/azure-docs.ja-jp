@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6cd6d61ba1404ca6b6de63a0151ec414b2df54e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 902d6643420ff6bdafcf52278f3a1c0df28647ae
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87492464"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217537"
 ---
 # <a name="peer-two-virtual-networks-with-an-azure-cli-script-sample"></a>Azure CLI のスクリプト サンプルを使用した 2 つの仮想ネットワークのピアリング
 
@@ -54,6 +54,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 他の仮想ネットワーク CLI スクリプトのサンプルについては、[仮想ネットワーク CLI のサンプル](../cli-samples.md)に関するページを参照してください。

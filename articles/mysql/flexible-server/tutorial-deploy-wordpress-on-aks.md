@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: mvc
-ms.openlocfilehash: a02cb30b0f00f732fa0c4ac9319a652ef5cb6fc1
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: b82bb9b7684d1119b6b62216b52210845d8f4c67
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657058"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "98199633"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>チュートリアル:Azure Database for MySQL - フレキシブル サーバーを使用して WordPress アプリを AKS にデプロイする
 
@@ -63,7 +63,7 @@ az group create --name wordpress-project --location eastus
 AKS クラスターを作成するには、[az aks create](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-create) コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 これは完了までに数分かかる場合があります。
 
 ```azurecli-interactive
-az aks create --resource-group wordpress-project --name wordpresscluster--node-count 1 --generate-ssh-keys
+az aks create --resource-group wordpress-project --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
 数分後、コマンドが完了し、クラスターに関する情報が JSON 形式で返されます。
@@ -82,7 +82,7 @@ az aks install-cli
 Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-get-credentials) コマンドを使用します。 このコマンドは、資格情報をダウンロードし、それを使用するように Kubernetes CLI を構成します。
 
 ```azurecli-interactive
-az aks get-credentials --resource-group wordpress-project --name wordpresscluster
+az aks get-credentials --resource-group wordpress-project --name myAKSCluster
 ```
 
 > [!NOTE]

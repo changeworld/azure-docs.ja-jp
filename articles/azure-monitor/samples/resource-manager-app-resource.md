@@ -3,15 +3,15 @@ title: Application Insights リソース用の Resource Manager テンプレー�
 description: Azure Monitor で Application Insights リソースをデプロイするためのサンプル Azure Resource Manager テンプレート。
 ms.subservice: application-insights
 ms.topic: sample
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 07/08/2020
-ms.openlocfilehash: 5818f1ffac9c89e24c1a12cf92fc5fbf1ddf2386
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 88c657aa89476f3be21226544e64512bd433776c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657228"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210275"
 ---
 # <a name="resource-manager-template-samples-for-creating-application-insights-resources"></a>Application Insights リソースを作成するための Resource Manager テンプレートのサンプル
 
