@@ -129,90 +129,92 @@
               href: troubleshoot-error-403.md
 - name: リファレンス
   items:
-    - name: Digital Twins サービスに関する制約
-      href: reference-service-limits.md
-    - name: Digital Twins の価格
-      href: 'https://azure.microsoft.com/pricing/details/digital-twins/'
-    - name: API と SDK
+    - name: REST API リファレンス
+      href: /rest/api/azure-digitaltwins/
+    - name: SDK
       items:
-        - name: REST API リファレンス
-          href: /rest/api/azure-digitaltwins/
         - name: コントロール プレーン
           items:
-            - name: Swagger
+            - name: .NET (C#) SDK
+              href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet
+            - name: Java SDK
+              href: /azure/developer/java/sdk/
+        - name: データ プレーン
+          items:
+            - name: .NET (C#) SDK
+              href: /dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet
+            - name: Java SDK
+              href: /java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable
+            - name: JavaScript SDK
+              href: /javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest
+            - name: Python SDK
+              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python
+    - name: Digital Twins CLI
+      href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
+- name: リソース
+  items:
+    - name: API と SDK
+      items:
+        - name: コントロール プレーン
+          items:
+            - name: コントロール プレーン Swagger
               href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable'
             - name: .NET (C#) SDK - NuGet
               href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/'
-            - name: .NET (C#) SDK - リファレンス
-              href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet
-            - name: .NET (C#) SDK - ソース
+            - name: .NET (C#) SDK - ソース コード
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins'
             - name: Java SDK - Maven
               href: 'https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar'
-            - name: Java SDK - リファレンス
-              href: /azure/developer/java/sdk/
-            - name: Java SDK - ソース
+            - name: Java SDK - ソース コード
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31'
-            - name: JavaScript SDK
+            - name: JavaScript SDK - NPM
               href: 'https://www.npmjs.com/package/@azure/arm-digitaltwins'
-            - name: JavaScript SDK - ソース
+            - name: JavaScript SDK - ソース コード
               href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins'
             - name: Python SDK - PyPi
               href: 'https://pypi.org/project/azure-mgmt-digitaltwins/'
-            - name: Python SDK - ソース
+            - name: Python SDK - ソース コード
               href: 'https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins'
             - name: Go SDK - GoDoc
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
-            - name: Go - ソース
+            - name: Go - ソース コード
               href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
         - name: データ プレーン
           items:
-            - name: Swagger
+            - name: データ プレーン Swagger
               href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins'
             - name: .NET (C#) SDK - NuGet
               href: 'https://www.nuget.org/packages/Azure.DigitalTwins.Core'
-            - name: .NET (C#) SDK - リファレンス
-              href: /dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet
-            - name: .NET (C#) SDK - ソース
+            - name: .NET (C#) SDK - ソース コード
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core'
             - name: Java SDK - Maven
               href: 'https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar'
-            - name: Java SDK - リファレンス
-              href: /java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable
-            - name: Java SDK - ソース
+            - name: Java SDK - ソース コード
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
-            - name: JavaScript SDK - npm
+            - name: JavaScript SDK - NPM
               href: 'https://www.npmjs.com/package/@azure/digital-twins-core'
-            - name: JavaScript SDK - リファレンス
-              href: /javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest
-            - name: JavaScript SDK - ソース
+            - name: JavaScript SDK - ソース コード
               href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core'
             - name: Python SDK - PyPi
               href: 'https://pypi.org/project/azure-digitaltwins-core/'
-            - name: Python SDK - リファレンス
-              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python
-            - name: Python SDK - ソース
+            - name: Python SDK - ソース コード
               href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
-    - name: Digital Twins CLI
-      items:
-        - name: Digital Twins CLI のリファレンス
-          href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
-        - name: CLI パッケージ
-          href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
+    - name: Digital Twins CLI パッケージ
+      href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
     - name: Digital Twins Azure PowerShell モジュール
       href: 'https://www.powershellgallery.com/packages/Az.DigitalTwins/'
-    - name: DTDL
+    - name: Terraform モジュール
       items:
-        - name: DTDL v2 の仕様
-          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
-        - name: VS Code 用の DTDL 拡張機能
-          href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
-        - name: DTDL パーサー ライブラリ - NuGet
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/'
-        - name: DTDL 検証ツール (サンプル)
-          href: /samples/azure-samples/dtdl-validator/dtdl-validator/
-        - name: DTMI の仕様
-          href: 'https://github.com/Azure/digital-twin-model-identifier'
+        - name: Digital Twins インスタンス リソース
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_instance'
+        - name: Digital Twins インスタンス データ ソース
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/digital_twins_instance'
+        - name: Event Hubs エンドポイント リソース
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_eventhub'
+        - name: Event Grid エンドポイント リソース
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_eventgrid'
+        - name: Service Bus エンドポイント リソース
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_servicebus'
     - name: ツールとサンプル プロジェクト
       items:
         - name: デバイス シミュレーター サービス
@@ -229,6 +231,34 @@
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
         - name: Logic Apps コネクタ用のカスタム Swagger
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+    - name: DTDL
+      items:
+        - name: DTDL v2 の仕様
+          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
+        - name: VS Code 用の DTDL 拡張機能
+          href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
+        - name: DTDL パーサー ライブラリ - NuGet
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/'
+        - name: DTDL 検証ツール (サンプル)
+          href: /samples/azure-samples/dtdl-validator/dtdl-validator/
+        - name: DTMI の仕様
+          href: 'https://github.com/Azure/digital-twin-model-identifier'
+        - name: 顧客データ要求
+      href: resources-customer-data-requests.md
+    - name: 価格と可用性
+      items:
+        - name: 価格
+          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
+        - name: SLA
+          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
+        - name: リージョンと可用性
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
+        - name: Digital Twins サービスに関する制約
+          href: reference-service-limits.md
+    - name: 顧客事例
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
+    - name: Channel 9 の動画
+      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
     - name: Azure ツール
       items:
         - name: Azure Cloud Shell
@@ -239,21 +269,5 @@
           href: 'https://portal.azure.com'
     - name: Azure RBAC のドキュメント
       href: ../role-based-access-control/overview.md
-- name: リソース
-  items:
     - name: サポート オプションとヘルプ オプション
       href: ../iot-fundamentals/iot-support-help.md
-    - name: 顧客事例
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
-    - name: Channel 9 の動画
-      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
-    - name: 顧客データ要求
-      href: resources-customer-data-requests.md
-    - name: 価格と可用性
-      items:
-        - name: 価格
-          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
-        - name: SLA
-          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
-        - name: リージョンと可用性
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'

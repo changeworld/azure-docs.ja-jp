@@ -21,6 +21,8 @@
       href: author-sign-policy.md
     - name: プライベート エンドポイントの作成 - PowerShell
       href: private-endpoint-powershell.md
+    - name: Azure 診断モニター
+      href: azure-diagnostic-monitoring.md
     - name: SGX 構成証明コード サンプル
       href: /samples/browse/?expanded=azure&terms=attestation
 - name: 例
@@ -43,7 +45,7 @@
       href: workflow.md
     - name: 監査ログの表示
       href: audit-logs.md
-- name: リファレンス
+- name: 関連項目
   items:
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'

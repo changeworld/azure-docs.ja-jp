@@ -35,6 +35,8 @@
       href: Face-API-How-to-Topics/specify-recognition-model.md
     - name: 顔検出モデルを指定する
       href: Face-API-How-to-Topics/specify-detection-model.md
+    - name: Face サービスを使用するときの待機時間を軽減する
+      href: Face-API-How-to-Topics/how-to-mitigate-latency.md
     - name: 大規模なフィーチャーを使用する
       href: Face-API-How-to-Topics/how-to-use-large-scale.md
     - name: リアルタイムでビデオを分析する

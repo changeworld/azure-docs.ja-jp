@@ -55,6 +55,8 @@
               href: ./database/security-controls-policy.md
             - name: セキュリティ ベースライン
               href: database/security-baseline.md
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
             - name: Azure Defender for SQL
               href: database/azure-defender-for-sql.md
             - name: 高度な脅威保護
@@ -255,6 +257,8 @@
               href: database/service-tier-hyperscale.md
             - name: ハイパースケールに関する FAQ
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
+        - name: コストの計画と管理
+          href: database/cost-management.md
     - name: クイックスタート
       href: database/quickstart-content-reference-guide.md
       items:
@@ -291,16 +295,18 @@
               href: database/geo-distributed-application-configure-tutorial.md
             - name: アクティブな地理的レプリケーション
               href: database/active-geo-replication-configure-portal.md
-        - name: セキュリティ
+        - name: Security
           items:
+            - name: セキュア エンクレーブを使用する Always Encrypted
+              href: database/always-encrypted-enclaves-getting-started.md
             - name: セキュリティを構成する
               href: database/secure-database-tutorial.md
+            - name: サービス プリンシパルを使用してユーザーを作成する
+              href: database/authentication-aad-service-principal-tutorial.md
             - name: TDE BYOK キーの回転
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: TDE 保護機能の削除
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
-            - name: サービス プリンシパルを使用してユーザーを作成する
-              href: database/authentication-aad-service-principal-tutorial.md
         - name: データの移動
           items:
             - name: DMS を使用した移行
@@ -369,8 +375,21 @@
               href: database/sql-data-sync-best-practices.md
             - name: データ同期のトラブルシューティング
               href: database/sql-data-sync-troubleshoot.md
-        - name: セキュリティ
+        - name: Security
           items:
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
+            - name: セキュア エンクレーブを使用する Always Encrypted
+              href: database/always-encrypted-with-secure-enclaves-landing.yml
+              items:
+                - name: セキュリティで保護されたエンクレーブが設定された Always Encrypted を構成して使用する
+                  href: /sql/relational-databases/security/encryption/configure-always-encrypted-enclaves
+                - name: Intel SGX エンクレーブと構成証明を計画する
+                  href: database/always-encrypted-enclaves-plan.md
+                - name: Intel SGX を有効にする
+                  href: database/always-encrypted-enclaves-enable-sgx.md
+                - name: Azure Attestation を構成する
+                  href: database/always-encrypted-enclaves-configure-attestation.md
             - name: Azure SQL 監査
               href: database/auditing-overview.md
             - name: 監査ログの形式
@@ -920,12 +939,14 @@
               href: /sql/database-engine/configure-windows/sql-server-service-broker?toc=%2fazure%2fazure-sql%2ftoc.json
             - name: データベース メール
               href: /sql/relational-databases/database-mail/database-mail?toc=%2fazure%2fazure-sql%2ftoc.json
-        - name: セキュリティ
+        - name: Security
           items:
-            - name: パブリック エンドポイントのセキュリティ保護
-              href: managed-instance/public-endpoint-overview.md
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
             - name: 監査
               href: managed-instance/auditing-configure.md
+            - name: パブリック エンドポイントのセキュリティ保護
+              href: managed-instance/public-endpoint-overview.md
             - name: サーバー信頼グループ
               href: managed-instance/server-trust-group-overview.md
     - name: 方法
