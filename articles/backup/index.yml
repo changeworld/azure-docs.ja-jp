@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: e2afc60f6fa67c1dc0582839e2d3f7480907facc
-  ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+  ms.openlocfilehash: ea54d6e4a08ff5baa2a46051a8ec342128175de3
+  ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/18/2021
-  ms.locfileid: "98556496"
+  ms.lasthandoff: 01/21/2021
+  ms.locfileid: "98624923"
 landingContent:
 - title: Azure Backup について
   linkLists:
@@ -40,8 +40,6 @@ landingContent:
       url: quick-backup-vm-cli.md
     - text: Resource Manager テンプレートを使用して VM をバックアップする
       url: quick-backup-vm-template.md
-- title: ステップバイステップのチュートリアルに従う
-  linkLists:
   - linkListType: tutorial
     links:
     - text: Azure VM のバックアップ
@@ -84,6 +82,20 @@ landingContent:
       url: backup-azure-vm-backup-faq.md
     - text: Azure VM のバックアップを管理する
       url: backup-azure-manage-vms.md
+- title: Azure Managed Disks のバックアップ (プレビュー)
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure ディスク バックアップの概要
+      url: disk-backup-overview.md
+    - text: Azure ディスク バックアップのサポート マトリックス
+      url: disk-backup-support-matrix.md
+    - text: Azure Managed Disks のバックアップ
+      url: backup-managed-disks.md
+    - text: FAQ - Azure Managed Disks
+      url: disk-backup-faq.md
+    - text: Azure Managed Disks のバックアップに関するトラブルシューティング
+      url: disk-backup-troubleshoot.md
 - title: Azure VM 上の SQL Server をバックアップする
   linkLists:
   - linkListType: concept

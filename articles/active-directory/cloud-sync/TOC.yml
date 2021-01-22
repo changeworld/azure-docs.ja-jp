@@ -1,0 +1,88 @@
+- name: クラウドの同期
+  href: index.yml
+- name: 概要
+  items:
+    - name: ID プロビジョニングとは
+      href: what-is-provisioning.md
+    - name: Azure AD Connect クラウド同期とは
+      href: what-is-cloud-sync.md
+      maintainContext: true
+- name: チュートリアル
+  expanded: true
+  items:
+    - name: 単一の AD フォレストを単一の Azure AD テナントに統合する
+      href: tutorial-single-forest.md
+    - name: 既存のフォレストと新しいフォレストを単一の Azure AD テナントに統合する
+      href: tutorial-existing-forest.md
+    - name: 同期済み AD フォレストに対するクラウド同期のパイロット
+      href: tutorial-pilot-aadc-aadccp.md
+- name: 概念
+  items:
+    - name: しくみ
+      href: concept-how-it-works.md
+    - name: パスワード ハッシュ同期とは
+      href: ../hybrid/whatis-phs.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
+    - name: Azure AD のスキーマ、属性、および式について
+      href: concept-attributes.md
+    - name: Azure Active Directory における属性マッピングの式の書き方
+      href: reference-expressions.md
+- name: 操作方法ガイド
+  items:
+    - name: インストールとアップグレード
+      items:
+        - name: インストールの前提条件
+          href: how-to-prerequisites.md
+        - name: Azure AD Connect クラウド プロビジョニング エージェントのインストール
+          href: how-to-install.md
+        - name: クラウド同期の構成
+          href: how-to-configure.md
+        - name: オンデマンド プロビジョニング
+          href: how-to-on-demand-provision.md
+        - name: 属性マッピング
+          href: how-to-attribute-mapping.md
+        - name: シングル サインオンの使用
+          href: how-to-sso.md
+    - name: 計画と設計
+      items:
+        - name: Azure AD Connect クラウド同期のトポロジとシナリオ
+          href: plan-cloud-sync-topologies.md
+    - name: 管理する
+      items:
+        - name: エージェントの自動アップグレード
+          href: how-to-automatic-upgrade.md
+        - name: 不注意による削除
+          href: how-to-accidental-deletes.md
+        - name: エージェントの登録オプション
+          href: how-to-manage-registry-options.md
+        - name: エージェントの gMSA PowerShell コマンドレット
+          href: how-to-gmsa-cmdlets.md
+        - name: PowerShell を使用してプロビジョニング エージェントをインストールする
+          href: how-to-install-pshell.md
+    - name: 開発
+      items:
+        - name: 変換
+          href: how-to-transformation.md
+        - name: MS Graph API を使用した受信同期
+          href: how-to-inbound-synch-ms-graph.md
+        - name: Azure AD の同期 API
+          href: /graph/api/resources/synchronization-overview
+    - name: トラブルシューティング
+      items:
+        - name: クラウド同期に関するトラブルシューティング
+          href: how-to-troubleshoot.md
+        - name: 重複する属性
+          href: ../hybrid/how-to-connect-syncservice-duplicate-attribute-resiliency.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+- name: 関連項目
+  items:
+    - name: Azure AD Connect クラウド プロビジョニング エージェントのバージョン履歴
+      href: reference-version-history.md
+    - name: Azure AD Connect クラウド同期の FAQ
+      href: reference-cloud-sync-faq.md
+    - name: AADCloudSyncTools PowerShell モジュール
+      href: reference-powershell.md
+    - name: 同期される属性
+      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+    - name: エラー コードと説明
+      href: reference-error-codes.md
+    - name: Active Directory と Azure AD の基本的な環境
+      href: tutorial-basic-ad-azure.md

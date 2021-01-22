@@ -73,8 +73,6 @@
           href: concept-baseline.md
         - name: イベントの集計
           href: event-aggregation.md
-        - name: 価格と関連コスト
-          href: concept-pricing.md
 - name: 操作方法ガイド
   items:
     - name: 組織向けのエージェントレス ソリューション
@@ -252,6 +250,6 @@
         - name: リージョン別の提供状況
           href: 'https://azure.microsoft.com/regions/services/'
         - name: 価格
-          href: 'https://azure.microsoft.com/pricing/details/security-center/'
+          href: 'https://azure.microsoft.com/pricing/details/azure-defender/'
         - name: ビデオ
           href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'

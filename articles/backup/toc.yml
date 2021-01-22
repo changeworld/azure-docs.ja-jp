@@ -210,6 +210,8 @@
           items:
             - name: Azure から Windows Server へのファイルの回復
               href: backup-azure-restore-windows-server.md
+            - name: ボリューム内のすべてのファイルの復元
+              href: restore-all-files-volume-mars.md
             - name: Windows Server のシステム状態の復元
               href: backup-azure-restore-system-state.md
         - name: 管理する
@@ -404,7 +406,7 @@
               href: backup-azure-arm-userestapi-managejobs.md
         - name: Resource Manager テンプレート
           href: backup-rm-template-samples.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: 概要
           href: security-overview.md

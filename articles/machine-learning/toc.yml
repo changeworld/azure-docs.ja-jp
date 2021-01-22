@@ -70,10 +70,6 @@
         - name: 画像データへのラベル付け
           displayName: 'tag, tagging, images'
           href: tutorial-labeling.md
-    - name: R SDK
-      items:
-        - name: 初めての ML 実験を作成する (R)
-          href: tutorial-1st-r-experiment.md
     - name: CLI
       items:
         - name: CLI を使用したトレーニングとデプロイ

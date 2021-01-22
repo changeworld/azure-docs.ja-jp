@@ -9,11 +9,11 @@
     - name: Windows VM エージェント
       href: agent-windows.md
 - name: クイックスタート
-  expanded: true
   items:
     - name: カスタム スクリプト拡張機能の使用
       href: ../windows/tutorial-automate-vm-deployment.md
       maintainContext: true
+  expanded: true
 - name: 概念
   items:
     - name: Linux
@@ -120,13 +120,6 @@
         - name: Symantec
           href: symantec.md
     - name: 非推奨の拡張機能
-      items:
-        - name: ログ コレクター
-          href: log-collector.md
-        - name: Trend Micro Deep Security
-          href: trend.md
-        - name: Linux - バージョン 1 (OSTC)
-          href: custom-script-linuxOstc.md
     - name: 拡張機能のインストールの制限
       items:
         - name: Linux

@@ -11,12 +11,12 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 02/14/2020
-  ms.openlocfilehash: 075704312bc29cf195a98c343f707ece91dd3387
-  ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+  ms.openlocfilehash: c9750ddc5c5fba9808c70ba6dbeac03b03ca5227
+  ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/20/2020
-  ms.locfileid: "94986047"
+  ms.lasthandoff: 01/22/2021
+  ms.locfileid: "98675949"
 highlightedContent:
   items:
   - title: Azure CLI を使用して Linux 仮想マシンを作成する
@@ -78,7 +78,7 @@ conceptualContent:
     - url: ../virtual-machine-scale-sets/quick-create-powershell.md
       itemType: how-to-guide
       text: PowerShell を使用してスケール セットを作成する
-    - url: ../virtual-machine-scale-sets/orchestration-modes.md
+    - url: /previous-versions/azure/virtual-machine-scale-sets/orchestration-modes
       itemType: concept
       text: オーケストレーション モード
     - url: ../virtual-machine-scale-sets/use-spot.md
