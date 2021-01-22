@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) は、包括的なサービスとしての ID 
 
 Web サービスを使用するように設定されていないユーザーはすべて、1 つ以上の Azure AD インスタンス内のユーザー アカウントとして定義されます。 これらのアカウントは、クラウド アプリケーション アクセスなど、無料の Azure AD 機能に対して設定できます。
 
-Azure AD 有料サービス (Enterprise Mobility + Security など) は、エンタープライズ規模の包括的な管理ソリューションとセキュリティ ソリューションによって、Microsoft 365 や Microsoft Azure などの他の Web サービスを補完します。
+Azure AD 有料サービス (Enterprise Mobility + セキュリティ など) は、エンタープライズ規模の包括的な管理ソリューションとセキュリティ ソリューションによって、Microsoft 365 や Microsoft Azure などの他の Web サービスを補完します。
 
 ---
 

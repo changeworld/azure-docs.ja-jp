@@ -29,7 +29,7 @@ ms.locfileid: "98218144"
 >
 > Premium パフォーマンス ブロック BLOB のストレージ アカウントでは、ストレージ分析メトリックをサポートしていませんが、ログ記録をサポートしています。 REST API またはクライアント ライブラリを使用してプログラムでログ記録を有効にすることができます。 Premium パフォーマンス ブロック BLOB のストレージ アカウントでメトリックを表示する場合は、[Azure Monitor の Azure Storage メトリック](../blobs/monitor-blob-storage.md)を使用することを検討してください。
 >
-> Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「 [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
+> Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
 >
 
 <a id="modify-retention-policy"></a>

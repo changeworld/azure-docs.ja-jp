@@ -27,7 +27,7 @@ Visual Studio Code のデバッグ機能をよく知らない場合は、[デバ
 この記事では、複数のアーキテクチャ用に複数の言語でモジュールを開発およびデバッグする手順について説明します。 現時点では、Visual Studio Code は、C#、C、Python、Node.js、および Java で記述されたモジュールをサポートしています。 サポートされているデバイス アーキテクチャは X64 と ARM32 です。 サポートされているオペレーティング システム、言語、およびアーキテクチャの詳細については、「[Language and architecture support (言語とアーキテクチャのサポート)](module-development.md#language-and-architecture-support)」を参照してください。
 
 >[!NOTE]
->Linux ARM64 デバイスの開発とデバッグのサポートは、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)にあります。 詳細については、「[Visual Studio Code で ARM64 IoT Edge モジュールを開発してデバッグする (プレビュー)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)」を参照してください。
+>Linux ARM64 デバイスの開発とデバッグのサポートは、[パブリック プレ表示](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)にあります。 詳細については、「[Visual Studio Code で ARM64 IoT Edge モジュールを開発してデバッグする (プレ表示)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -168,7 +168,7 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
      - `Program.cs` ファイルを開き、ブレークポイントを追加します。
 
-     - _*[ビュー] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。ドロップダウンからデバッグ構成として **[_ &lt;モジュール名&gt;_ ローカル デバッグ (.NET Core)] を選択します。
+     - _*[表示] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] 表示に移動します。ドロップダウンからデバッグ構成として **[_ &lt;モジュール名&gt;_ ローカル デバッグ (.NET Core)] を選択します。
 
         > [!NOTE]
         > .NET Core `TargetFramework` が `launch.json` 内のプログラム パスと一致しない場合は、Visual Studio Code がこのプログラムを正常に起動できるように .csproj ファイル内の `TargetFramework` に合わせて `launch.json` 内のプログラム パスを手動で更新する必要があります。
@@ -182,7 +182,7 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
      - `app.js` ファイルを開き、ブレークポイントを追加します。
 
-     - _*[ビュー] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。ドロップダウンからデバッグ構成として **[_ &lt;モジュール名&gt;_ のローカル デバッグ (Node.js)] を選択します。
+     - _*[表示] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] 表示に移動します。ドロップダウンからデバッグ構成として **[_ &lt;モジュール名&gt;_ のローカル デバッグ (Node.js)] を選択します。
    - **Java**
      - `App.java` ファイルを開き、ブレークポイントを追加します。
 

@@ -1,6 +1,6 @@
 ---
 title: GitHub Actions を使用した Azure Functions のコードの更新
-description: GitHub Actions を使用し、GitHub に Azure Functions プロジェクトをビルドおよびデプロイするワークフローを定義する方法について説明します。
+description: GitHub Actions を使用し、GitHub に Azure Functions プロジェクトをBuildおよびDeployワークフローを定義する方法について説明します。
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/07/2020
@@ -25,7 +25,7 @@ Azure Functions のワークフロー ファイルには、次の 3 つのセク
 
 | Section | タスク |
 | ------- | ----- |
-| **認証** | 発行プロファイルをダウンロードします。<br/>GitHub シークレットを作成します。|
+| **Authentication** | 発行プロファイルをダウンロードします。<br/>GitHub シークレットを作成します。|
 | **ビルド** | 環境を設定します。<br/>関数アプリを構築します。|
 | **デプロイする** | 関数アプリをデプロイします。|
 

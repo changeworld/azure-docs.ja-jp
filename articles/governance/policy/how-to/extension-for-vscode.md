@@ -30,7 +30,7 @@ Visual Studio Code 用の Azure Policy 拡張機能は Windows にインスト�
 前提条件を満たしたら、次の手順に従って、Visual Studio Code 用 Azure Policy 拡張機能をインストールできます。
 
 1. Visual Studio Code を開きます。
-1. メニュー バーから、 **[ビュー]**  >  **[拡張機能]** の順に移動します。
+1. メニュー バーから、 **[表示]**  >  **[拡張機能]** の順に移動します。
 1. 検索ボックスに「**Azure Policy**」と入力します。
 1. 検索結果から **Azure Policy** を選択し、 **[インストール]** を選択します。
 1. 必要に応じて **[再読み込み]** を選択します。
@@ -62,7 +62,7 @@ Visual Studio Code 用の Azure Policy 拡張機能は Windows にインスト�
 
    - コマンド パレット
 
-     メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign In**」と入力します。
+     メニュー バーから、 **[表示]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign In**」と入力します。
 
      :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="コマンド パレットからの Visual Studio Code 用の Azure クラウド サインイン オプションのスクリーンショット。" border="false":::
 
@@ -76,7 +76,7 @@ Visual Studio Code 用の Azure Policy 拡張機能は Windows にインスト�
 
    - コマンド パレット:
 
-     メニュー バーから、 **[ビュー]** > **[コマンド パレット]** の順に移動し、「**Azure: Select Subscriptions**」と入力します。
+     メニュー バーから、 **[表示]** > **[コマンド パレット]** の順に移動し、「**Azure: Select Subscriptions**」と入力します。
 
    - ウィンドウのフッター
 
@@ -105,7 +105,7 @@ Azure Policy 拡張機能では、 **[リソース]** ウィンドウに、選�
 
    - コマンド パレット:
 
-     メニュー バーから、 **[ビュー]** > **[コマンド パレット]** の順に移動し、「**Resources: Search Resources**」と入力します。
+     メニュー バーから、 **[表示]** > **[コマンド パレット]** の順に移動し、「**Resources: Search Resources**」と入力します。
 
 1. 表示するサブスクリプションが複数選択されている場合は、フィルターを使用して検索するサブスクリプションを選択します。
 
@@ -136,7 +136,7 @@ Azure Policy 拡張機能では、ポリシーの種類とポリシーの割り�
 
    - コマンド パレット:
 
-     メニュー バーから、 **[ビュー]** > **[コマンド パレット]** の順に移動し、「**Policies: Search Policies**」と入力します。
+     メニュー バーから、 **[表示]** > **[コマンド パレット]** の順に移動し、「**Policies: Search Policies**」と入力します。
 
 1. 表示するサブスクリプションが複数選択されている場合は、フィルターを使用して検索するサブスクリプションを選択します。
 
@@ -198,7 +198,7 @@ Azure Policy 拡張機能では、ポリシーの種類とポリシーの割り�
 
 ### <a name="sign-out"></a>サインアウトする
 
-メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign Out**」と入力します。
+メニュー バーから、 **[表示]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign Out**」と入力します。
 
 ## <a name="next-steps"></a>次のステップ
 

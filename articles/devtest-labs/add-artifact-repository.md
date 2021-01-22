@@ -84,7 +84,7 @@ Azure Resource Management (Azure Resource Manager) テンプレートは、作�
 - ラボ名。
 - DevTest Labs ユーザー インターフェイス (UI) でのアーティファクト リポジトリの表示名。 既定値は `Team Repository` です。
 - リポジトリへの URI (例: `https://github.com/<myteam>/<nameofrepo>.git` または `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`)。
-- アーティファクトを含むリポジトリ内の分岐。 既定値は `master` です。
+- アーティファクトを含むリポジトリ内のブランチ。 既定値は `master` です。
 - アーティファクトを含むフォルダーの名前。 既定値は `/Artifacts` です。
 - リポジトリの種類。 使用できる値は `VsoGit` または `GitHub` です。
 - リポジトリのアクセス トークン。
@@ -344,7 +344,7 @@ Set-AzContext -SubscriptionId <Your Azure subscription ID>
 | ArtifactRepositoryName | 新しいアーティファクト リポジトリの名前。 リポジトリの名前が指定されていない場合、このスクリプトではランダムな名前が作成されます。 |
 | ArtifactRepositoryDisplayName | アーティファクト リポジトリの表示名。 これは、ラボのすべてのアーティファクト リポジトリを表示したときに Azure Portal (https://portal.azure.com) ) に表示される名前です。 |
 | RepositoryUri | リポジトリへの URI。 例: `https://github.com/<myteam>/<nameofrepo>.git` または `"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`。|
-| RepositoryBranch | アーティファクト ファイルが見つかる分岐。 既定値は 'master' です。 |
+| RepositoryBranch | アーティファクト ファイルが見つかるブランチ。 既定値は 'master' です。 |
 | FolderPath | アーティファクトが見つかるフォルダー。 既定値は '/Artifacts' です。 |
 | PersonalAccessToken | GitHub または VSOGit リポジトリにアクセスするためのセキュリティ トークン。 個人用アクセス トークンを取得するための手順については、前提条件のセクションを参照してください。 |
 | SourceType | アーティファクトが VSOGit または GitHub リポジトリのどちらであるかを示します。 |

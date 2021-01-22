@@ -20,7 +20,7 @@ ms.locfileid: "97607366"
 &nbsp;&nbsp;&nbsp;&nbsp;•   アプリ全体を再デプロイせずに構成を更新する <br>
 &nbsp;&nbsp;&nbsp;&nbsp;•   Azure App Service や Functions などのサービスとの統合。 
 
-GitHub Actions の[ワークフロー](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions)は、GitHub リポジトリの自動化されたプロセスを定義します。 *Azure App Configuration Sync* アクションは、ソース リポジトリに変更が加えられたときに App Configuration インスタンスの更新をトリガーします。 リポジトリの `/.github/workflows/` パスにある YAML (.yml) ファイルを使用して、ステップとパラメーターを定義します。 アプリ コードと同様に、アプリ構成ファイルをプッシュ、レビュー、または分岐するときに構成の更新をトリガーできます。
+GitHub Actions の[ワークフロー](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions)は、GitHub リポジトリの自動化されたプロセスを定義します。 *Azure App Configuration Sync* アクションは、ソース リポジトリに変更が加えられたときに App Configuration インスタンスの更新をトリガーします。 リポジトリの `/.github/workflows/` パスにある YAML (.yml) ファイルを使用して、ステップとパラメーターを定義します。 アプリ コードと同様に、アプリ構成ファイルをプッシュ、レビュー、またはブランチするときに構成の更新をトリガーできます。
 
 GitHub の[ドキュメント](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions)では、GitHub ワークフローとアクションについて詳細に説明されています。 
 

@@ -75,15 +75,15 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
 
 1. GitHub で投票プロジェクトをホストするために使用できるリポジトリがない場合は、最初にリポジトリを作成します。 このチュートリアルでは、これ以降、このリポジトリを **dev_test** と呼びます。
 
-1. Jenkins ダッシュボード (``http://<HOST-IP>:8080``) で**新しい項目**を作成します。
+1. Jenkins ダッシュボード (``http://<HOST-IP>:8080``) で **新しい項目** を作成します。
 
-1. 項目の名前を入力します (例: **MyJob**)。 **フリースタイル プロジェクト**を選択し、 **[OK]** をクリックします。
+1. 項目の名前を入力します (例: **MyJob**)。 **フリースタイル プロジェクト** を選択し、 **[OK]** をクリックします。
 
 1. ジョブ ページに移動し、 **[Configure (構成)]** をクリックします。
 
    a. 全般セクションで **[GitHub project]\(GitHub プロジェクト\)** を選択し、GitHub プロジェクトの URL を指定します。 この URL では、Jenkins の継続的インテグレーション/継続的デプロイ (CI/CD) フローと統合する Service Fabric Java アプリケーションがホストされます (例: ``https://github.com/testaccount/dev_test``)。
 
-   b. **[Source Code Management (ソース コードの管理)]** セクションで **[Git]** を選択します。 Jenkins CI/CD フローと統合する Service Fabric Java アプリケーションをホストするリポジトリの URL を指定します (例: *`https://github.com/testaccount/dev_test.git`* )。 ここで、ビルドする分岐を指定することもできます (例: **/master**)。
+   b. **[Source Code Management (ソース コードの管理)]** セクションで **[Git]** を選択します。 Jenkins CI/CD フローと統合する Service Fabric Java アプリケーションをホストするリポジトリの URL を指定します (例: *`https://github.com/testaccount/dev_test.git`* )。 ここで、ビルドするブランチを指定することもできます (例: **/master**)。
 
 1. Jenkins と対話できるように (リポジトリをホストする) *GitHub* を構成します。 次の手順に従います。
 
