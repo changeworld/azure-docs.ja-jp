@@ -8,18 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 12/15/2020
+ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 98b8cca95b8815b32fb5de6567adcf4f150551eb
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 33987be39258adc74cf4f88dbb0544f7026f6086
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561972"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183355"
 ---
 # <a name="whats-new-in-computer-vision"></a>Computer Vision の新機能
 
 サービス内の新機能について説明します。 以下の項目には、リリース ノート、ビデオ、ブログの投稿、およびその他の種類の情報が含まれる可能性があります。 このページをブックマークして、常にサービスの最新情報を確認してください。
+
+## <a name="january-2021"></a>2021 年 1 月
+
+### <a name="spatial-analysis-container-update"></a>空間分析コンテナーの更新
+
+新しい機能セットが含まれる[空間分析コンテナー](spatial-analysis-container.md)の新しいバージョンがリリースされています。 この Docker コンテナーを使用すると、リアルタイム ストリーミング ビデオを分析して、物理環境における人物とその動きとの間の空間的な関係を把握できます。 
+
+* 人物がマスクなどの顔を保護するものを装着しているかどうかを検出するように[空間分析操作](spatial-analysis-operations.md)を構成できるようになりました。 
+    * マスク分類子は、`ENABLE_FACE_MASK_CLASSIFIER` パラメーターを構成することで、`personcount`、`personcrossingline`、および `personcrossingpolygon` 操作に対して有効にすることができます。
+    * ビデオ ストリームで検出された人物それぞれの信頼度スコアと共に、`face_mask` および `face_noMask` 属性がメタデータとして返されます
+
 
 ## <a name="october-2020"></a>2020 年 10 月
 

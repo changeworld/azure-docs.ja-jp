@@ -5,12 +5,12 @@ ms.subservice: custom-vision
 ms.topic: include
 ms.date: 07/17/2019
 ms.author: pafarley
-ms.openlocfilehash: ce67062f83ad10703dfb1f0ee1f3741e698fb450
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d07a5da3b9013700694f6c20102ef2e8c5066087
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018372"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98256562"
 ---
 最低でも、初期トレーニング セットで、タグごとに少なくとも 30 の画像を使用することをお勧めします。 トレーニングを行ったら、追加の画像をいくつか収集し、モデルをテストすることもお勧めします。
 
@@ -27,3 +27,6 @@ ms.locfileid: "96018372"
 * .jpg、.png、.bmp、または .gif 形式
 * サイズが 6 MB 未満 (予測用画像は 4 MB)
 * 最短の辺が 256 ピクセル以上。これより短い画像は Custom Vision Service によって自動的にスケール アップされます
+
+> [!NOTE]
+> Trove (Microsoft Garage プロジェクト) を使用すると、トレーニング目的で画像のセットを収集して購入することができます。 画像を収集したら、それらをダウンロードした後、通常の方法で Custom Vision プロジェクトにインポートできます。 詳細については、[Trove ページ](https://www.microsoft.com/en-us/ai/trove?activetab=pivot1:primaryr3)を参照してください。

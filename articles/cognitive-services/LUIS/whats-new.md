@@ -4,19 +4,23 @@ description: この記事では、Azure Cognitive Services Language Understandin
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/05/2021
-ms.openlocfilehash: 4591bc26c848032d1c0f8b96720c4ec66b9b064d
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/12/2021
+ms.openlocfilehash: 4bcd25e96aba1ca103737679540cb9ff67674914
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916356"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179131"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
 サービス内の新機能について説明します。 これらの項目には、リリース ノート、ビデオ、ブログ記事、およびその他の種類の情報が含まれています。 このページをブックマークして、常にサービスの最新情報を確認してください。
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="january-2021"></a>2021 年 1 月
+
+* V3 Prediction API で、[Bing Spellcheck API](luis-how-to-publish-app.md#spelling-correction) がサポートされるようになりました。
 
 ### <a name="december-2020"></a>2020 年 12 月
 

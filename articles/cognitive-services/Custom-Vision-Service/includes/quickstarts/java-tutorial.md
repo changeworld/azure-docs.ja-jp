@@ -4,12 +4,12 @@ ms.custom: devx-track-java
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/13/2020
-ms.openlocfilehash: 0a0ae0659e13035bfb29a0628330339ede349b8a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b5884a7b1f271a88653779e46c461c29a85ab2ed
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97582629"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98256375"
 ---
 Java 用の Custom Vision クライアント ライブラリを使用して画像分類モデルを構築してみましょう。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
 
@@ -153,6 +153,9 @@ T## 新しい Custom Vision プロジェクトを作成する
 ## <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
 最初に、このプロジェクト用のサンプル画像をダウンロードします。 [サンプル画像フォルダー](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images)の内容をお使いのローカル デバイスに保存します。
+
+> [!NOTE]
+> Trove (Microsoft Garage プロジェクト) を使用すると、トレーニング目的で画像のセットを収集して購入することができます。 画像を収集したら、それらをダウンロードした後、通常の方法で Custom Vision プロジェクトにインポートできます。 詳細については、[Trove ページ](https://www.microsoft.com/en-us/ai/trove?activetab=pivot1:primaryr3)を参照してください。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_upload)]
 
