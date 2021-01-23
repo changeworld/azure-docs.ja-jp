@@ -11,9 +11,10 @@
     - name: 無制限のアプリの登録の作成
       href: quickstart-app-registration-limits.md
 - name: チュートリアル
+  expanded: true
   items:
-    - name: 動的グループの作成
-      href: ../enterprise-users/users-revoke-access.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: 管理者ロールへのユーザーの割り当て
+      href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
 - name: 概念
   expanded: true
   items:
@@ -28,18 +29,6 @@
 - name: 攻略ガイド
   expanded: true
   items:
-    - name: ユーザーと役割
-      items:
-        - name: 管理者ロールへのユーザーの割り当て
-          href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: ユーザーのアクセスを取り消す
-          href: ../enterprise-users/users-revoke-access.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: ゲスト ユーザーにロールを割り当てる
-          href: ../external-identities/add-guest-to-role.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: ゲスト ユーザーのアクセスを制限する
-          href: ../enterprise-users/users-restrict-guest-permissions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: 動的グループとゲスト
-          href: ../external-identities/use-dynamic-groups.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
     - name: ロールとアクセス許可
       expanded: true
       items:
@@ -119,7 +108,7 @@
     - name: Microsoft 365 ロールのドキュメント
       href: m365-workload-docs.md
     - name: Graph API
-      href: /graph/api/resources/azure-ad-overview?view=graph-rest-1.0
+      href: /graph/api/resources/directoryrole?view=graph-rest-1.0
     - name: Azure AD CLI
       href: /cli/azure/ad
     - name: Azure AD PowerShell for Graph
