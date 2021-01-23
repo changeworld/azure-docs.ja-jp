@@ -12,12 +12,12 @@ metadata:
   title: Language Understanding (LUIS) のドキュメント
   titleSuffix: Azure Cognitive Services
   description: Language Understanding (LUIS) サービスを使用すると、アプリケーションが人の発言の意図を認識できるようになります。 LUIS には機械学習が使用されており、開発者は、自然言語でユーザー入力を受け取ってその意味を正確に抽出できるアプリケーションを構築できます。
-  ms.openlocfilehash: ff928f1879f8cfd356fa020ff6afaa68b72f63c5
-  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+  ms.openlocfilehash: ca9209295d8265eeac5545091e4d4c5c9678e994
+  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/21/2020
-  ms.locfileid: "95019383"
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98738069"
 landingContent:
 - title: Language Understanding (LUIS) について
   linkLists:
@@ -60,9 +60,9 @@ landingContent:
     - text: 'ポータル: 新しい LUIS アプリを作成する'
       url: get-started-portal-build-app.md
     - text: C# SDK の使用
-      url: azure-sdk-quickstart.md?pivots=programming-language-csharp
+      url: ./client-libraries-rest-api.md?pivots=rest-api
     - text: Python SDK の使用
-      url: azure-sdk-quickstart.md?pivots=programming-language-python
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: how-to-guide
     links:
     - text: 新しい LUIS アプリを作成する
@@ -82,13 +82,13 @@ landingContent:
     - text: 対話型テスト
       url: luis-concept-test.md
     - text: バッチ テスト
-      url: luis-concept-batch-test.md
+      url: ./luis-how-to-batch-test.md
   - linkListType: quickstart
     links:
     - text: 'ポータル: 予測エンドポイントにアプリをデプロイする'
       url: get-started-portal-deploy-app.md
     - text: SDK の使用
-      url: azure-sdk-quickstart.md
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: how-to-guide
     links:
     - text: アプリをバージョン管理する
@@ -106,7 +106,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: SDK の使用
-      url: azure-sdk-quickstart.md
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: quickstart
     links:
     - text: REST とともに C# を使用

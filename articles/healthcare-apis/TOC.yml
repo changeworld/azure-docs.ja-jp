@@ -21,8 +21,13 @@
         - name: ARM テンプレートの使用
           displayName: Resource Manager
           href: fhir-paas-arm-template-quickstart.md
-    - name: Azure IoT Connector for FHIR (プレビュー) をデプロイする - ポータル
-      href: iot-fhir-portal-quickstart.md
+    - name: Azure IoT Connector for FHIR (プレビュー) をデプロイする
+      expanded: false
+      items:
+        - name: ポータルの使用
+          href: iot-fhir-portal-quickstart.md
+        - name: ARM テンプレートの使用
+          href: iot-fhir-arm-template-quickstart.md
 - name: チュートリアル
   expanded: false
   items:
