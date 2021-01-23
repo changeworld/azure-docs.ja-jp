@@ -51,8 +51,6 @@
           href: non-gallery-apps.md
         - name: マイ アプリのデプロイの計画
           href: access-panel-deployment-plan.md
-        - name: 開発者向けのガイダンス
-          href: developer-guidance-for-integrating-applications.md
     - name: シングル サインオン
       items:
         - name: シングル サインオンのデプロイを計画する
