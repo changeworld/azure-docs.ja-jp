@@ -139,7 +139,7 @@
         - name: 画像処理アプリの探索
           href: Tutorials/CSharpTutorial.md
         - name: Computer Vision の他のサンプル
-          href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=computer-vision'
+          href: /samples/browse/?products=azure&terms=computer-vision
     - name: よく寄せられる質問
       href: FAQ.md
     - name: カテゴリの分類
