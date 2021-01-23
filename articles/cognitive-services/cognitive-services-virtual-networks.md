@@ -18,7 +18,7 @@ ms.locfileid: "97034022"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Cognitive Services 仮想ネットワークを構成する
 
-Azure Cognitive Services は、多層型のセキュリティ モデルを採用しています。 このモデルでは、ネットワークの特定のサブセットに、Cognitive Services アカウントを固定することができます。 ネットワーク ルールを構成すると、指定したネットワークのセットを経由してデータを要求しているアプリケーションのみが、アカウントにアクセスできます。 要求フィルターにより、リソースへのアクセスを制限することができます。 [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内の指定した IP アドレス、IP 範囲、またはサブネットのリストから発信された要求に制限します。
+Azure Cognitive Services は、多層型のセキュリティ モデルを採用しています。 このモデルでは、ネットワークの特定のサブセットに、Cognitive Services アカウントを固定することができます。 ネットワーク ルールを構成すると、指定したネットワークのセットを経由してデータを要求しているアプリケーションのみが、アカウントにアクセスできます。 要求フィルターにより、リソースへのアクセスを制限することができます。 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) 内の指定した IP アドレス、IP 範囲、またはサブネットのリストから発信された要求に制限します。
 
 ネットワーク ルールが有効なときに Cognitive Services リソースにアクセスするアプリケーションでは、認可が必要です。 承認は、[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) 資格情報、または有効な API キーで行うことができます。
 
@@ -95,7 +95,7 @@ Cognitive Services リソースの規定のネットワーク アクセス ル�
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. [Azure PowerShell](/powershell/azure/install-az-ps) をインストールして [サインイン](/powershell/azure/authenticate-azureps)するか、 **[試してみる]** を選択します。
+1. [Azure PowerShell](/powershell/azure/install-az-ps) をインストールして [サインイン](/powershell/azure/authenticate-azureps)するか、 **[使ってみる]** を選択します。
 
 1. Cognitive Services リソースの既定のルールの状態を表示します。
 
@@ -131,7 +131,7 @@ Cognitive Services リソースの規定のネットワーク アクセス ル�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. [Azure CLI](/cli/azure/install-azure-cli) をインストールして [サインイン](/cli/azure/authenticate-azure-cli)するか、 **[試してみる]** を選択します。
+1. [Azure CLI](/cli/azure/install-azure-cli) をインストールして [サインイン](/cli/azure/authenticate-azure-cli)するか、 **[使ってみる]** を選択します。
 
 1. Cognitive Services リソースの既定のルールの状態を表示します。
 
@@ -217,7 +217,7 @@ Cognitive Services リソースの 仮想ネットワーク規則は、Azure por
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. [Azure PowerShell](/powershell/azure/install-az-ps) をインストールして [サインイン](/powershell/azure/authenticate-azureps)するか、 **[試してみる]** を選択します。
+1. [Azure PowerShell](/powershell/azure/install-az-ps) をインストールして [サインイン](/powershell/azure/authenticate-azureps)するか、 **[使ってみる]** を選択します。
 
 1. 仮想ネットワーク規則を一覧表示します。
 
@@ -277,7 +277,7 @@ Cognitive Services リソースの 仮想ネットワーク規則は、Azure por
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. [Azure CLI](/cli/azure/install-azure-cli) をインストールして [サインイン](/cli/azure/authenticate-azure-cli)するか、 **[試してみる]** を選択します。
+1. [Azure CLI](/cli/azure/install-azure-cli) をインストールして [サインイン](/cli/azure/authenticate-azure-cli)するか、 **[使ってみる]** を選択します。
 
 1. 仮想ネットワーク規則を一覧表示します。
 
@@ -376,7 +376,7 @@ Cognitive Services リソースの IP ネットワーク ルールは、Azure po
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. [Azure PowerShell](/powershell/azure/install-az-ps) をインストールして [サインイン](/powershell/azure/authenticate-azureps)するか、 **[試してみる]** を選択します。
+1. [Azure PowerShell](/powershell/azure/install-az-ps) をインストールして [サインイン](/powershell/azure/authenticate-azureps)するか、 **[使ってみる]** を選択します。
 
 1. IP ネットワーク ルールを一覧表示します。
 
@@ -434,7 +434,7 @@ Cognitive Services リソースの IP ネットワーク ルールは、Azure po
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. [Azure CLI](/cli/azure/install-azure-cli) をインストールして [サインイン](/cli/azure/authenticate-azure-cli)するか、 **[試してみる]** を選択します。
+1. [Azure CLI](/cli/azure/install-azure-cli) をインストールして [サインイン](/cli/azure/authenticate-azure-cli)するか、 **[使ってみる]** を選択します。
 
 1. IP ネットワーク ルールを一覧表示します。
 
@@ -545,4 +545,4 @@ Cognitive Services リソースの所有者は、[Azure portal](https://portal.a
 ## <a name="next-steps"></a>次のステップ
 
 * さまざまな [AzureCognitive Services](./what-are-cognitive-services.md) をご覧ください
-* [Azure 仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)の詳細を確認する
+* [Azure Virtual Network サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)の詳細を確認する
