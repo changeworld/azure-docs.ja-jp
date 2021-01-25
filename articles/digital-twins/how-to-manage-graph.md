@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: dd5197f99f7187e21eb466bfa213f68a7638e24d
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 037e7fd13f55a0f5de939197f71324221392bd55
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045344"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601069"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>リレーションシップを使ってデジタル ツインのグラフを管理する
 
@@ -137,9 +137,12 @@ Azure Digital Twins には、特定のツインとのすべての **受信** リ
 このサンプルを実行する前に、以下を実行します。
 1. モデル ファイルをダウンロードしてプロジェクトに配置し、以下のコードの `<path-to>` プレースホルダーを置き換えて、プログラムに検索場所を指示します。
 2. プレースホルダー `<your-instance-hostname>` を Azure Digital Twins インスタンスのホスト名に置き換えます。
-3. Azure Digital Twins を操作するために必要な 2 つの依存関係をプロジェクトに追加します。 以下のリンクを使用すると、NuGet のパッケージに移動できます。そこでコンソール コマンド (.NET CLI を含む) を見つけて、それぞれの最新バージョンをプロジェクトに追加できます。
-    * [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core)。 これは、[.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) のパッケージです。
-    * [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity)。 このライブラリでは、Azure に対する認証を支援するツールが提供されます。
+3. Azure Digital Twins を操作するために必要な 2 つの依存関係をプロジェクトに追加します。 1 つ目は [.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 用のパッケージであり、2 つ目では Azure に対する認証に役立つツールが提供されます。
+
+      ```cmd/sh
+      dotnet add package Azure.DigitalTwins.Core
+      dotnet add package Azure.Identity
+      ```
 
 サンプルを直接実行する場合は、ローカルの資格情報も設定する必要があります。 次のセクションでは、これについて説明します。
 [!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
@@ -157,7 +160,7 @@ Azure Digital Twins には、特定のツインとのすべての **受信** リ
 > [!TIP]
 > ツイン グラフは、ツイン間にリレーションシップを作成する概念です。 ツイン グラフの視覚的表現を表示する場合は、この記事の "[*視覚化*](how-to-manage-graph.md#visualization)" に関するセクションを参照してください。 
 
-### <a name="create-a-twin-graph-from-a-csv-file"></a>CSV ファイルからツイン グラフを作成する
+## <a name="create-graph-from-a-csv-file"></a>CSV ファイルからグラフを作成する
 
 実際の使用例では、多くの場合、別のデータベース、または場合によってはスプレッドシートまたは CSV ファイルに格納されたデータからツイン階層が作成されます。 このセクションでは、CSV ファイルからデータを読み取り、そこからツイン グラフを作成する方法について説明します。
 

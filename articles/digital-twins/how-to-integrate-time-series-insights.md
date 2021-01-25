@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins から Azure Time Series Insights へのイベント ルートを設定する方法について説明します。
 author: alexkarcher-msft
 ms.author: alkarche
-ms.date: 7/14/2020
+ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f776482c684004c8d661f69d8158ba9597c923b2
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 24b4f56e5798acc4d9bd0962be7059a359958645
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127038"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573243"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure Digital Twins と Azure Time Series Insights を統合する
 
@@ -44,25 +44,22 @@ Time Series Insights との関係を設定できるためには、事前に **Az
 
 Azure Digital Twins の "[*チュートリアル: エンドツーエンドのソリューションの接続*](./tutorial-end-to-end.md)" に関するページでは、温度計を使用して部屋を表すデジタル ツインの温度属性を更新するシナリオの手順が説明されています。 このパターンは、IoT デバイスからのテレメトリの転送ではなく、ツインの更新に依存しています。これにより、Time Series Insights のロジックを更新する必要なしに、基になるデータ ソースを柔軟に変更できます。
 
-1. 最初に、Azure Digital Twins インスタンスからイベントを受信するイベント ハブ名前空間を作成します。 以下の Azure CLI の手順を使用するか、Azure portal を使用することができます: 「[*クイック スタート:Azure portal を使用したイベント ハブの作成*](../event-hubs/event-hubs-create.md)」。
+1. 最初に、Azure Digital Twins インスタンスからイベントを受信するイベント ハブ名前空間を作成します。 以下の Azure CLI の手順を使用するか、Azure portal を使用することができます: 「[*クイック スタート:Azure portal を使用したイベント ハブの作成*](../event-hubs/event-hubs-create.md)」。 Event Hubs がサポートされているリージョンを確認するには、"[*リージョン別の利用可能な Azure 製品*](https://azure.microsoft.com/global-infrastructure/services/?products=event-hubs)" に関するページを参照してください。
 
     ```azurecli-interactive
-    # Create an Event Hubs namespace. Specify a name for the Event Hubs namespace.
-    az eventhubs namespace create --name <name for your Event Hubs namespace> --resource-group <resource group name> -l <region, for example: East US>
+    az eventhubs namespace create --name <name for your Event Hubs namespace> --resource-group <resource group name> -l <region>
     ```
 
-2. 名前空間内にイベント ハブを作成します。
+2. ツインの変更イベントを受け取るためのイベント ハブを名前空間内に作成します。 イベント ハブの名前を指定します。
 
     ```azurecli-interactive
-    # Create an event hub to receive twin change events. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your Twins event hub> --resource-group <resource group name> --namespace-name <Event Hubs namespace from above>
     ```
 
-3. 送信および受信のアクセス許可を持つ[承認規則](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create)を作成します。
+3. 送信および受信のアクセス許可を持つ[承認規則](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create)を作成します。 規則の名前を指定します。
 
     ```azurecli-interactive
-    # Create an authorization rule. Specify a name for the rule.
-    az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
+        az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
     ```
 
 4. イベント ハブを Azure Digital Twins インスタンスにリンクする Azure Digital Twins [エンドポイント](concepts-route-events.md#create-an-endpoint)を作成します。
@@ -86,7 +83,7 @@ Azure Digital Twins の "[*チュートリアル: エンドツーエンドのソ
 
 ## <a name="create-a-function-in-azure"></a>Azure で関数を作成する
 
-次に、Azure Functions を使用して、関数アプリ内に Event Hubs によってトリガーされる関数を作成します。 エンドツーエンドのチュートリアルで作成した関数アプリを使用することも ("[*チュートリアル: エンドツーエンドのソリューションの接続*](./tutorial-end-to-end.md)")、自分で作成することもできます。 
+次に、Azure Functions を使用して、関数アプリ内に **Event Hubs によってトリガーされる関数** を作成します。 エンドツーエンドのチュートリアルで作成した関数アプリを使用することも ("[*チュートリアル: エンドツーエンドのソリューションの接続*](./tutorial-end-to-end.md)")、自分で作成することもできます。 
 
 この関数を使用して、それらのツイン更新イベントを、JSON Patch ドキュメントとしての元の形式から、ツインから更新および追加される値だけが含まれる JSON オブジェクトに変換します。
 
@@ -110,15 +107,15 @@ Azure Functions で Event Hubs を使用する方法の詳細については、"
 
 1. この記事の前半で説明したように、"*イベント ハブ名前空間*" と "*リソース グループ*" 名を準備します
 
-2. 新しいイベント ハブを作成します
+2. 新しいイベント ハブを作成します。 イベント ハブの名前を指定します。
+
     ```azurecli-interactive
-    # Create an event hub. Specify a name for the event hub. 
     az eventhubs eventhub create --name <name for your TSI event hub> --resource-group <resource group name from earlier> --namespace-name <Event Hubs namespace from earlier>
     ```
-3. 送信および受信のアクセス許可を持つ[承認規則](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create)を作成します
+3. 送信および受信のアクセス許可を持つ[承認規則](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create)を作成します。 規則の名前を指定します。
+
     ```azurecli-interactive
-    # Create an authorization rule. Specify a name for the rule.
-    az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
+        az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
     ```
 
 ## <a name="configure-your-function"></a>関数を構成する

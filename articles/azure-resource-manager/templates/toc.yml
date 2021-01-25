@@ -298,8 +298,6 @@
       href: template-best-practices.md
     - name: よく寄せられる質問
       href: frequently-asked-questions.md
-    - name: Template Specs
-      href: template-specs.md
     - name: クラウドの一貫性を実現するテンプレート
       href: templates-cloud-consistency.md
     - name: デプロイ モード
@@ -423,6 +421,12 @@
           href: test-toolkit.md
         - name: テスト ケース
           href: test-cases.md
+    - name: テンプレート スペック
+      items:
+        - name: テンプレート スペックの作成とデプロイ
+          href: template-specs.md
+        - name: ポータルのテンプレート ギャラリーを変換する
+          href: convert-to-template-spec.md
     - name: CI/CD
       items:
         - name: パイプラインを使用したリソース マネージャー テンプレート

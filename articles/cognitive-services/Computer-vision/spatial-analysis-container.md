@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/06/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: f41e513ee0f2755c446a9cb95465c1f636fe5a7a
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: bb40586a93a40c2aaa3f0f884a0e747f168c324b
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606268"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186089"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>空間分析コンテナー (プレビュー) をインストールして実行する
 
@@ -24,7 +24,7 @@ ms.locfileid: "97606268"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
-* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Computer Vision リソースを作成"  target="_blank">Computer Vision リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+* Azure サブスクリプションを入手したら、Azure portal で Standard S1 レベルの <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Computer Vision リソースを作成"  target="_blank">Computer Vision リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * 空間分析コンテナーを実行するには、作成したリソースのキーとエンドポイントが必要です。 後でキーとエンドポイントを使用します。
 
 
@@ -61,6 +61,9 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 * [Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1) と [NVIDIA-Docker2](https://github.com/NVIDIA/nvidia-docker) 
 * [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) ランタイム。
 
+#### <a name="azure-vm-with-gpu"></a>[GPU 搭載 Azure VM](#tab/virtual-machine)
+この例では、1 つの K80 GPU が搭載された [NC シリーズ VM](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) を使用します。
+
 ---
 
 | 要件 | 説明 |
@@ -85,7 +88,7 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 
 ## <a name="set-up-the-host-computer"></a>ホスト コンピューターを設定する
 
-ホスト コンピューターには Azure Stack Edge デバイスを使用することをお勧めします。 別のデバイスを構成する場合は、 **[Desktop Machine]\(デスクトップ コンピューター\)** をクリックします。
+ホスト コンピューターには Azure Stack Edge デバイスを使用することをお勧めします。 別のデバイスを構成している場合は **[デスクトップ マシン]** をクリックし、VM を使用している場合は **[仮想マシン]** をクリックします。
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge デバイス](#tab/azure-stack-edge)
 
@@ -252,13 +255,13 @@ Azure CLI を使用して Azure IoT Hub のインスタンスを作成します�
 
 ```bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-az login
-az account set --subscription <name or ID of Azure Subscription>
-az group create --name "test-resource-group" --location "WestUS"
+sudo az login
+sudo az account set --subscription <name or ID of Azure Subscription>
+sudo az group create --name "test-resource-group" --location "WestUS"
 
-az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
+sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
 
-az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
+sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
 ホスト コンピューターが Azure Stack Edge デバイスでない場合は、[Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) バージョン 1.0.9 をインストールする必要があります。 次の手順に従って、正しいバージョンをダウンロードします。
@@ -297,7 +300,7 @@ sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 IoT Edge デバイスを Azure IoT ハブに接続する必要があります。 先ほど作成した IoT Edge デバイスから接続文字列をコピーする必要があります。 または、Azure CLI で以下のコマンドを実行することもできます。
 
 ```bash
-az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 ホスト コンピューター上で `/etc/iotedge/config.yaml` を編集するために開きます。 `ADD DEVICE CONNECTION STRING HERE` を接続文字列に置き換えます。 ファイルを保存して閉じます。 次のコマンドを実行して、ホスト コンピューター上の IoT Edge サービスを再起動します。
@@ -306,15 +309,100 @@ az iot hub device-identity show-connection-string --device-id my-edge-device --h
 sudo systemctl restart iotedge
 ```
 
-[Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) または [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md) から、空間分析コンテナーを IoT モジュールとしてホスト コンピューターにデプロイします。 ポータルを使用している場合は、イメージの URI を Azure Container Registry の場所に設定します。 
+[Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) から、空間分析コンテナーを IoT モジュールとしてホスト コンピューターにデプロイします。 ポータルを使用している場合は、イメージの URI を Azure Container Registry の場所に設定します。 
 
 Azure CLI を使用して、以下の手順に従ってコンテナーをデプロイします。
+
+#### <a name="azure-vm-with-gpu"></a>[GPU 搭載 Azure VM](#tab/virtual-machine)
+
+GPU 搭載 Azure 仮想マシンを使用して、空間分析を実行することもできます。 次の例では、1 つの K80 GPU が搭載された [NC シリーズ](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) VM を使用します。
+
+#### <a name="create-the-vm"></a>VM を作成する
+
+Azure portal で、[[仮想マシンの作成]](https://ms.portal.azure.com/#create/Microsoft.VirtualMachine) ウィザードを開きます。
+
+VM に名前を付け、リージョンに [(米国) 米国西部 2] を選択します。 必ず `Availability Options` を [インフラストラクチャ冗長は必要ありません] に設定します。 次の図を参照して全体の構成を確認し、次の手順に従って適切な VM サイズを特定します。 
+
+:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.png" alt-text="仮想マシンの構成の詳細。" lightbox="media/spatial-analysis/virtual-machine-instance-details.png":::
+
+VM のサイズを特定するには、[See all sizes]\(すべてのサイズを表示\) を選択し、次に示す [Non-premium storage VM sizes]\(非 Premium ストレージ VM サイズ\) の一覧を表示します。
+
+:::image type="content" source="media/spatial-analysis/virtual-machine-sizes.png" alt-text="仮想マシン サイズ。" lightbox="media/spatial-analysis/virtual-machine-sizes.png":::
+
+次に、**NC6** または **NC6_Promo** を選択します。
+
+:::image type="content" source="media/spatial-analysis/promotional-selection.png" alt-text="プロモーションの選択" lightbox="media/spatial-analysis/promotional-selection.png":::
+
+次に、VM を作成します。 作成したら、Azure portal で VM リソースに移動し、左側のペインから `Extensions` を選択します。 拡張機能ウィンドウが表示され、使用可能なすべての拡張機能が表示されます。 `NVIDIA GPU Driver Extension` を選択し、[作成] をクリックして、ウィザードを完了します。
+
+拡張機能が正常に適用されたら、Azure portal の VM メイン ページに移動し、`Connect` をクリックします。 VM には、SSH または RDP のいずれかを介してアクセスできます。 ビジュアライザー ウィンドウ (後で説明します) の表示が有効になるので、RDP は役に立ちます。 [こちらの手順](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop)に従い、VM へのリモート デスクトップ接続を開いて、RDP アクセスを構成します。
+
+### <a name="verify-graphics-drivers-are-installed"></a>グラフィック ドライバーがインストールされていることを確認する
+
+次のコマンドを実行して、グラフィック ドライバーが正常にインストールされていることを確認します。 
+
+```bash
+nvidia-smi
+```
+
+次の出力が表示されます。
+
+![NVIDIA ドライバーの出力](media/spatial-analysis/nvidia-driver-output.png)
+
+### <a name="install-docker-ce-and-nvidia-docker2-on-the-vm"></a>Docker CE と nvidia-docker2 を VM にインストールする
+
+次のコマンドを一度に 1 つずつ実行して、Docker CE と nvidia-docker2 を VM にインストールします。
+
+ホスト コンピューターに Docker CE をインストールします。
+
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+```
+```bash
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
+```bash
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+```
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+```
+
+
+*nvidia-docker-2* ソフトウェア パッケージをインストールします。
+
+```bash
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+```
+```bash
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+```
+```bash
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+```
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y docker-ce nvidia-docker2
+```
+```bash
+sudo systemctl restart docker
+```
+
+VM の設定と構成が完了したので、次の手順に従って空間分析コンテナーをデプロイします。 
 
 ---
 
 ### <a name="iot-deployment-manifest"></a>IoT 配置マニフェスト
 
-複数のホスト コンピューターへのコンテナーの配置を効率化するために、配置マニフェスト ファイルを作成して、コンテナーの作成オプションと環境変数を指定できます。 GitHub に、[Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179) および[その他のデスクトップ コンピューター](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)用の配置マニフェストの例があります。
+複数のホスト コンピューターへのコンテナーの配置を効率化するために、配置マニフェスト ファイルを作成して、コンテナーの作成オプションと環境変数を指定できます。 GitHub には、[Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179)、[その他のデスクトップ マシン](https://go.microsoft.com/fwlink/?linkid=2152270)、および [GPU 搭載 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) 用の配置マニフェストの例が掲載されています。
 
 次の表は、IoT Edge モジュールで使用されるさまざまな環境変数を示しています。 また、`spatialanalysis` の `env` 属性を使用して、上のリンク先の配置マニフェストで設定することもできます。
 
@@ -326,21 +414,24 @@ Azure CLI を使用して、以下の手順に従ってコンテナーをデプ�
 | ARCHON_NODES_LOG_LEVEL | 情報。詳細 | ログ レベルで 2 つの値のいずれかを選択します|
 | OMP_WAIT_POLICY | PASSIVE | 変更しないでください|
 | QT_X11_NO_MITSHM | 1 | 変更しないでください|
-| API_KEY | API キー| この値は、Azure portal で Computer Vision リソースから収集します。 お使いのリソースの **[キーとエンドポイント]** セクションで見つけることができます。 |
-| BILLING_ENDPOINT | エンドポイント URI| この値は、Azure portal で Computer Vision リソースから収集します。 お使いのリソースの **[キーとエンドポイント]** セクションで見つけることができます。|
+| APIKEY | API キー| この値は、Azure portal で Computer Vision リソースから収集します。 お使いのリソースの **[キーとエンドポイント]** セクションで見つけることができます。 |
+| 課金 | エンドポイント URI| この値は、Azure portal で Computer Vision リソースから収集します。 お使いのリソースの **[キーとエンドポイント]** セクションで見つけることができます。|
 | EULA | accept | コンテナーを実行するには、この値を *accept* に設定する必要があります |
 | DISPLAY | :1 | この値は、ホスト コンピューター上の `echo $DISPLAY` の出力と同じである必要があります。 Azure Stack Edge デバイスにはディスプレイがありません。 この設定は適用されません|
-
+| ARCHON_GRAPH_READY_TIMEOUT | 600 | GPU が T4 または NVIDIA 2080 Ti **ではない** 場合は、この環境変数を追加します|
+| ORT_TENSORRT_ENGINE_CACHE_ENABLE | 0 | GPU が T4 または NVIDIA 2080 Ti **ではない** 場合は、この環境変数を追加します|
+| KEY_ENV | ASE 暗号化キー。 | Video_URL が難読化された文字列の場合は、この環境変数を追加します |
+| IV_ENV | 初期化ベクター | Video_URL が難読化された文字列の場合は、この環境変数を追加します|
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
 
-独自の設定と操作の選択によって [Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)または[デスクトップ コンピューター](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)用の配置マニフェストを更新したら、以下の [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md) コマンドを使用して、コンテナーを IoT Edge モジュールとしてホスト コンピューターにデプロイできます。
+独自の設定と操作の選択によって [Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)、[デスクトップ マシン](https://go.microsoft.com/fwlink/?linkid=2152270)、または [GPU 搭載 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) 用の配置マニフェストを更新したら、以下の [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) コマンドを使用して、コンテナーを IoT Edge モジュールとしてホスト コンピューターにデプロイできます。
 
 ```azurecli
-az login
-az extension add --name azure-iot
-az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
+sudo az login
+sudo az extension add --name azure-iot
+sudo az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
 ```
 
 |パラメーター  |説明  |
@@ -366,7 +457,7 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
 
 ## <a name="redeploy-or-delete-the-deployment"></a>再デプロイする、またはデプロイを削除する
 
-デプロイを更新する必要がある場合は、以前のデプロイが正常にデプロイされていることを確認することや、完了していない IoT Edge デバイスのデプロイを削除することが必要になります。 そうしないと、それらのデプロイが続行され、システムが正しくない状態のままになります。 Azure portal か、[Azure CLI](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment) を使用することができます。
+デプロイを更新する必要がある場合は、以前のデプロイが正常にデプロイされていることを確認することや、完了していない IoT Edge デバイスのデプロイを削除することが必要になります。 そうしないと、それらのデプロイが続行され、システムが正しくない状態のままになります。 Azure portal か、[Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) を使用することができます。
 
 ## <a name="use-the-output-generated-by-the-container"></a>コンテナーによって生成された出力を使用する
 
@@ -385,25 +476,25 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
 
 **[SAS トークンおよび URL を生成]** をクリックし、BLOB SAS の URL をコピーします。 先頭の `https` を `http` に置き換え、ビデオ再生をサポートするブラウザーで URL をテストします。
 
-すべてのグラフについて、[Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)または別の[デスクトップ コンピューター](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)用の配置マニフェスト内の `VIDEO_URL` を、作成した URL に置き換えます。 `VIDEO_IS_LIVE` を `false` に設定し、更新されたマニフェストを使用して空間分析コンテナーを再デプロイします。 次の例を見てください。
+すべてのグラフについて、[Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)、[デスクトップ マシン](https://go.microsoft.com/fwlink/?linkid=2152270)、または [GPU 搭載 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) 用の配置マニフェスト内の `VIDEO_URL` を、作成した URL に置き換えます。 `VIDEO_IS_LIVE` を `false` に設定し、更新されたマニフェストを使用して空間分析コンテナーを再デプロイします。 次の例を見てください。
 
 空間分析モジュールによるビデオ ファイルの使用が開始され、継続的に自動再生されます。
 
 
 ```json
 "zonecrossing": {
-  "operationId" : "cognitiveservices.vision.spatialanalysis-personcrossingpolygon",
-  "version": 1,
-  "enabled": true,
-  "parameters": {
-      "VIDEO_URL": "Replace http url here",
-      "VIDEO_SOURCE_ID": "personcountgraph",
-      "VIDEO_IS_LIVE": false,
-        "VIDEO_DECODE_GPU_INDEX": 0,
-      "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0 }",
-      "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"queue\",\"polygon\":[[0.3,0.3],[0.3,0.9],[0.6,0.9],[0.6,0.3],[0.3,0.3]], \"threshold\":35.0}]}"
+    "operationId" : "cognitiveservices.vision.spatialanalysis-personcrossingpolygon",
+    "version": 1,
+    "enabled": true,
+    "parameters": {
+        "VIDEO_URL": "Replace http url here",
+        "VIDEO_SOURCE_ID": "personcountgraph",
+        "VIDEO_IS_LIVE": false,
+      "VIDEO_DECODE_GPU_INDEX": 0,
+        "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0, \"do_calibration\": true }",
+        "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"queue\",\"polygon\":[[0.3,0.3],[0.3,0.9],[0.6,0.9],[0.6,0.3],[0.3,0.3]], \"events\": [{\"type\": \"zonecrossing\", \"config\": {\"threshold\": 16.0, \"focus\": \"footprint\"}}]}]}"
     }
-  },
+   },
 
 ```
 

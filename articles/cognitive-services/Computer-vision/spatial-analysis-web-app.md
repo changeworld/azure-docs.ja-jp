@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/06/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 9b9390b498f28fc8f9029f1c11805b970aaca73d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: de011fb0f827ea90efe33e237bbf1c5100dc76a7
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014562"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183474"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>方法:人数カウント Web アプリをデプロイする
 
@@ -63,12 +63,12 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 ### <a name="deploy-the-container-on-azure-iot-edge-on-the-host-computer"></a>ホスト コンピューター上の Azure IoT Edge にコンテナーをデプロイする
 
-Azure CLI を使用して、空間分析コンテナーを IoT モジュールとしてホスト コンピューターにデプロイします。 デプロイ プロセスには、デプロイに必要なコンテナー、変数、構成の概要を示す配置マニフェスト ファイルが必要です。 GitHub には、[Azure Stack Edge に固有の配置マニフェスト](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/)の例と [Azure Stack Edge 以外に固有の配置マニフェスト](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)の例があります。これらには、*spatial-analysis* コンテナーの基本的なデプロイ構成が含まれています。 
+Azure CLI を使用して、空間分析コンテナーを IoT モジュールとしてホスト コンピューターにデプロイします。 デプロイ プロセスには、デプロイに必要なコンテナー、変数、構成の概要を示す配置マニフェスト ファイルが必要です。 GitHub には、サンプルの [Azure Stack Edge 固有の配置マニフェスト](https://go.microsoft.com/fwlink/?linkid=2142179)、[非 Azure Stack Edge 固有の配置マニフェスト](https://go.microsoft.com/fwlink/?linkid=2152189)、および [GPU 搭載 Azure VM 固有の配置マニフェスト](https://go.microsoft.com/fwlink/?linkid=2152189)が掲載されています。これらには、*spatial-analysis* コンテナーの基本的なデプロイ構成が含まれています。 
 
 または、Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT Hub で操作を実行できます。 詳細については、「[Visual Studio Code から Azure IoT Edge モジュールをデプロイする](../../iot-edge/how-to-deploy-modules-vscode.md)」を参照してください。
 
 > [!NOTE] 
-> *spatial-analysis-telegraf* および *spatial-analysis-diagnostics* コンテナーはオプションです。 これらは、*DeploymentManifest.json* ファイルから削除することもできます。 詳細については、[テレメトリとトラブルシューティング](./spatial-analysis-logging.md)に関する記事をご覧ください。 GitHub には、[Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)用と別の [デスクトップ コンピューター](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)用の 2 つのサンプル *DeploymentManifest.json* ファイルがあります
+> *spatial-analysis-telegraf* および *spatial-analysis-diagnostics* コンテナーはオプションです。 これらは、*DeploymentManifest.json* ファイルから削除することもできます。 詳細については、[テレメトリとトラブルシューティング](./spatial-analysis-logging.md)に関する記事をご覧ください。 GitHub には、[Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)、[デスクトップ マシン](https://go.microsoft.com/fwlink/?linkid=2152189)、または [GPU 搭載 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) の 3 つのサンプル *DeploymentManifest.json* ファイルが掲載されています。
 
 ### <a name="set-environment-variables"></a>環境変数の設定
 
@@ -185,7 +185,7 @@ docker push [desired local image name]
 * `EventHubConsumerGroup` - Azure IoT Hub のコンシューマー グループの文字列名。IoT Hub に新しいコンシューマー グループを作成することも、既定のグループを使用することもできます。 
 * `IotHubConnectionString` - Azure IoT Hub への接続文字列。これは、Azure IoT Hub リソースの ![[パラメーターの構成]](./media/spatial-analysis/solution-app-config-page.png) のキー セクションから取得できます。
 
-この 2 つの設定を追加したら、 **[保存]** をクリックします。 次に、左側のナビゲーション メニューで **[認証/承認]** をクリックし、目的の認証レベルで更新します。 Azure Active Director (Azure AD) 簡易をお勧めします。 
+この 2 つの設定を追加したら、 **[保存]** をクリックします。 次に、左側のナビゲーション メニューで **[認証/承認]** をクリックし、目的の認証レベルで更新します。 Azure Active Directory (Azure AD) 簡易をお勧めします。 
 
 ### <a name="test-the-app"></a>アプリのテスト
 
@@ -194,7 +194,7 @@ Azure Web アプリに移動し、デプロイが成功したことと、Web ア
 ![展開をテスト](./media/spatial-analysis/solution-app-output.png)
 
 ## <a name="get-the-personcount-source-code"></a>PersonCount ソース コードを取得する
-このアプリケーションのソース コードを表示または変更する場合は、[Github](https://github.com/Azure-Samples/cognitive-services-spatial-analysis) を参照してください。
+このアプリケーションのソース コードを表示または変更する場合は、[GitHub](https://github.com/Azure-Samples/cognitive-services-spatial-analysis) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

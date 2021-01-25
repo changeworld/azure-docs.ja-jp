@@ -109,8 +109,8 @@
               href: tutorial-data-flow.md
             - name: マッピング データ フローのビデオ チュートリアル
               href: data-flow-tutorials.md
-        - name: ラングリング データ フローを使用してデータを準備する
-          href: wrangling-data-flow-tutorial.md
+        - name: ラングリングを使用してデータを準備する
+          href: wrangling-tutorial.md
         - name: 外部サービスの使用
           items:
             - name: HDInsight Spark
@@ -171,7 +171,7 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -197,12 +197,12 @@
               href: concepts-data-flow-expression-builder.md
             - name: 式言語
               href: data-flow-expression-functions.md
-        - name: ラングリング データ フローを使用してデータを準備する
+        - name: Power Query のデータ ラングリングを使用したデータの準備
           items:
-            - name: ラングリング データ フローの概要
-              href: wrangling-data-flow-overview.md
+            - name: データ ラングリングの概要
+              href: wrangling-overview.md
             - name: サポートされる関数
-              href: wrangling-data-flow-functions.md
+              href: wrangling-functions.md
     - name: ロールとアクセス許可
       href: concepts-roles-permissions.md
     - name: 名前付け規則
@@ -464,6 +464,8 @@
       items:
         - name: データ フローの実行アクティビティ
           href: control-flow-execute-data-flow-activity.md
+        - name: Power Query の実行アクティビティ
+          href: control-flow-power-query-activity.md
         - name: Azure 関数アクティビティ
           href: control-flow-azure-function-activity.md
         - name: カスタム アクティビティ
@@ -584,7 +586,7 @@
           href: control-flow-system-variables.md
         - name: マッピング データ フローをパラメーター化する
           href: parameters-data-flow.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: データ移動のセキュリティに関する考慮事項
           href: data-movement-security-considerations.md

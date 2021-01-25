@@ -366,6 +366,8 @@
           href: sql-data-warehouse-restore-deleted-dw.md
         - name: geo バックアップから復元します
           href: sql-data-warehouse-restore-from-geo-backup.md
+        - name: geo バックアップを無効にする
+          href: disable-geo-backup.md
     - name: 統合
       items:
         - name: 機械学習の使用

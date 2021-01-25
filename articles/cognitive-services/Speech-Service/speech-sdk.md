@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 9356cbb6eb210d6745d90e8ad001917e73592cd3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 597a7c3954912a3a86b5db9f92ba75e8aaee63f6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96021990"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601817"
 ---
 # <a name="about-the-speech-sdk"></a>Speech SDK について
 
@@ -58,7 +58,7 @@ Speech SDK は Speech サービスの機能が多数含まれていますが、�
 
 ### <a name="voice-assistants"></a>音声アシスタント
 
-Speech SDK を使用した[音声アシスタント](voice-assistants.md)により、開発者はアプリケーションやエクスペリエンス向けに自然で人間のような会話型インターフェイスを作成できます。 音声アシスタント サービスは、デバイスとアシスタントの間で高速かつ信頼性の高い対話機能を提供します。 実装では、Bot Framework の Direct Line Speech チャネルまたは統合カスタム コマンド (プレビュー) サービスを使用してタスクを完了します。 さらに、音声アシスタントでは、[Custom Voice Portal](https://aka.ms/customvoice) で作成したカスタム音声を使用して、固有の音声出力エクスペリエンスを追加できます。
+Speech SDK を使用した[音声アシスタント](voice-assistants.md)により、開発者はアプリケーションやエクスペリエンス向けに自然で人間のような会話型インターフェイスを作成できます。 音声アシスタント サービスは、デバイスとアシスタントの間で高速かつ信頼性の高い対話機能を提供します。 実装では、Bot Framework の Direct Line Speech チャネルまたは統合された Custom Commands サービスを使用してタスクを完了します。 さらに、音声アシスタントでは、[Custom Voice Portal](https://aka.ms/customvoice) で作成したカスタム音声を使用して、固有の音声出力エクスペリエンスを追加できます。
 
 **音声アシスタント** は、次のプラットフォームで使用できます。
 

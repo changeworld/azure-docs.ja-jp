@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: テキスト読み上げ
-ms.openlocfilehash: af0c9338cb9661402c3a76bab55f34b01304c7b6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 54db794d4e9cf0cd2a049a865f2e7bb52698a4bd
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024519"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599546"
 ---
 # <a name="what-is-text-to-speech"></a>テキスト読み上げの概要
 
@@ -39,7 +39,7 @@ ms.locfileid: "95024519"
 
 * ニューラル音声 - ディープ ニューラル ネットワークを使用して、話し言葉のアクセントとイントネーションに関する従来の音声合成の限界を克服します。 韻律予測と音声合成が同時に行われるため、より滑らかで自然な音声出力が得られます。 ニューラル音声を使用すると、チャットボットや音声アシスタントとの対話をより自然で魅力的なものにすることができます。また、電子書籍などのデジタル テキストをオーディオブックに変換したり、カーナビゲーション システムを強化したりすることもできます。 ニューラル音声では、人間のような自然な韻律と明瞭な発音により、ユーザーが AI システムとやりとりする際のリスニング疲労が大幅に軽減されます。 ニューラル音声の一覧については、[サポートされている言語](language-support.md#text-to-speech)に関する記事をご覧ください。
 
-* 音声合成マークアップ言語 (SSML) - 音声テキスト変換の出力をカスタマイズする際に使用される XML ベースのマークアップ言語です。 SSML を使用して、ピッチの調整、一時停止の追加、発音の改善、読み上げ速度の調整、音量の上げ下げ、単一のドキュメントへの複数の音声の割り当てを行うことができます。 [SSML](speech-synthesis-markup.md) に関する記事をご覧ください。
+* SSML で話し方を調整する - 音声合成マークアップ言語 (SSML) は、音声テキスト変換の出力をカスタマイズするために使用される XML ベースのマークアップ言語です。 SSML を使用して、ピッチの調整、一時停止の追加、発音の改善、読み上げ速度の調整、音量の上げ下げ、単一のドキュメントへの複数の音声の割り当てを行うことができます。 話し方の調整については、[方法](speech-synthesis-markup.md)に関するページを参照してください。
 
 ## <a name="get-started"></a>はじめに
 

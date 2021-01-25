@@ -28,7 +28,7 @@
           href: resource-network-topologies.md
         - name: カスタム ロール
           href: resource-custom-roles-sql-db-managed-instance.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -89,8 +89,10 @@
       items:
         - name: SQL Server から SQL Database
           href: howto-sql-server-to-azure-sql-powershell.md
-        - name: SQL Server から SQL Managed Instance
-          href: howto-sql-server-to-azure-sql-mi-powershell.md
+        - name: SQL Server から SQL MI (オンライン)
+          href: howto-sql-server-to-azure-sql-managed-instance-powershell-online.md
+        - name: SQL Server から SQL MI (オフライン)
+          href: howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md
     - name: SSIS パッケージの再デプロイ
       items:
         - name: Azure SQL データベース
@@ -137,17 +139,17 @@
               href: known-issues-dms-hybrid-mode.md
         - name: 移行に関する既知の問題
           items:
-            - name: SQL Database へ
+            - name: SQL Database
               href: known-issues-azure-sql-online.md
             - name: SQL Managed Instance
               href: known-issues-azure-sql-db-managed-instance-online.md
-            - name: Azure DB for MySQL へ
+            - name: Azure DB for MySQL
               href: known-issues-azure-mysql-online.md
-            - name: PostgreSQL から Azure DB for PostgreSQL へ
+            - name: PostgreSQL から Azure DB for PostgreSQL
               href: known-issues-azure-postgresql-online.md
-            - name: Oracle から Azure DB for PostgreSQL へ
+            - name: Oracle から Azure DB for PostgreSQL
               href: known-issues-oracle-azure-postgresql-online.md
-            - name: MongoDB から Azure Cosmos DB の MongoDB 用 API へ
+            - name: MongoDB から Azure Cosmos DB の MongoDB 用 API
               href: known-issues-mongo-cosmos-db.md
     - name: ビデオ
       items:

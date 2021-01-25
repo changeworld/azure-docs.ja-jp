@@ -50,6 +50,8 @@
           href: create-data-controller-using-azdata.md
         - name: Kubernetes のツール
           href: create-data-controller-using-kubernetes-native-tools.md
+        - name: SCC の適用 (OpenShift)
+          href: how-to-apply-security-context-constraint.md
     - name: Azure Arc 対応データ サービス全般に共通するエクスペリエンス
       items:
         - name: ダッシュボードの監視 (Azure Data Studio)
@@ -233,4 +235,4 @@
 - name: リソース
   items:
     - name: Azure Arc のジャンプスタート
-      href: 'https://github.com/microsoft/azure_arc'
+      href: 'https://azurearcjumpstart.io'

@@ -3,25 +3,27 @@ title: アプリの発行 - LUIS
 titleSuffix: Azure Cognitive Services
 description: アクティブな LUIS アプリの構築とテストが終了したら、それをエンドポイントに発行して、クライアント アプリケーションが使用できるようにします。
 services: cognitive-services
+author: aahill
 manager: nitinme
+ms.author: aahi
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/17/2020
-ms.openlocfilehash: b72f1fd64cca0fa77ebc486670a512c5228e1146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/12/2021
+ms.openlocfilehash: 8db0f5fa39c7f489db0e30e98ee2684c74eee7e8
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541477"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180032"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>アクティブでトレーニング済みのアプリをステージング エンドポイントまたは運用環境エンドポイントに発行する
 
 アクティブな LUIS アプリの構築、トレーニングおよびテストが終了したら、それをエンドポイントに発行して、クライアント アプリケーションが使用できるようにします。
 
 ## <a name="publishing"></a>発行
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の **サブスクリプション** と **作成リソース** を選択して、その作成リソースに割り当てられているアプリを表示します。
 1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
 1. エンドポイントを発行するには、右パネル上部の **[Publish]\(発行)** を選択します。
 
@@ -55,7 +57,7 @@ ms.locfileid: "91541477"
 スロットを選択したら、次のように発行の設定を構成します。
 
 * センチメント分析
-* [スペル修正](luis-tutorial-bing-spellcheck.md) - v2 予測エンドポイントのみ
+* [スペル修正](luis-tutorial-bing-spellcheck.md)
 * 音声認識の準備
 
 発行後、これらの設定は **[管理]** セクションの **[Publish settings]\(発行の設定\)** ページで確認できます。 発行ごとに設定を変更できます。 発行を取り消すと、発行中に加えた変更も取り消されます。
@@ -80,7 +82,32 @@ Text Analytics キーを指定する必要はなく、Azure アカウントに�
 
 ## <a name="spelling-correction"></a>スペル修正
 
-[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
+V3 Prediction API で、Bing Spellcheck API がサポートされるようになりました。 要求のヘッダーに Bing 検索リソースのキーを含めることで、アプリケーションにスペル チェックを追加できます。 既存の Bing リソースを既に所有している場合はそれを使用できます。または、[新規に作成](https://portal.azure.com/#create/Microsoft.BingSearch)してこのフィーチャーを使用できます。 
+
+|ヘッダー キー|ヘッダー値|
+|--|--|
+|`mkt-bing-spell-check-key`|リソースの **[Keys and Endpoint]\(キーとエンドポイント\)** ブレードにあるキー|
+
+スペルミスのあるクエリの予測出力の例:
+
+```json
+{
+  "query": "bouk me a fliht to kayro",
+  "prediction": {
+    "alteredQuery": "book me a flight to cairo",
+    "topIntent": "book a flight",
+    "intents": {
+      "book a flight": {
+        "score": 0.9480589
+      }
+      "None": {
+        "score": 0.0332136229
+      }
+    },
+    "entities": {}
+  }
+}
+```
 
 スペル修正は、LUIS ユーザーの発話予測の前に行われます。 応答では、元の発話 (スペルを含む) に対するすべての変更を確認できます。
 

@@ -38,7 +38,7 @@
           href: ../containers/index.yml
 - name: 概念
   items:
-    - name: Anomaly Detection API のベスト プラクティス
+    - name: Anomaly Detector API のベスト プラクティス
       href: concepts/anomaly-detection-best-practices.md
 - name: リファレンス
   items:

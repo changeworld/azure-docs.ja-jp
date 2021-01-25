@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a77083c721328a8df9facd2f4b320b863aa03c68
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6b9077fec13dd177ec4e07e7fbd7818ded2fd0a1
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352407"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164942"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>ナレッジ ベースでアクティブ ラーニングにより提案された質問を受け入れる
 
@@ -26,7 +26,7 @@ ms.locfileid: "96352407"
 
 ## <a name="view-suggested-questions"></a>提案された質問を表示する
 
-1. 提案された質問を表示するには、ナレッジ ベースの **[Edit]\(編集\)** ページで、 **[View Options]\(オプションの表示\)** 、 **[Show active learning suggestions]\(アクティブ ラーニングの提案を表示\)** の順に選択します。
+1. 提案された質問を表示するには、ナレッジ ベースの **[Edit]\(編集\)** ページで、 **[View Options]\(オプションの表示\)** 、 **[Show active learning suggestions]\(アクティブ ラーニングの提案を表示\)** の順に選択します。 質問と回答のペアのいずれにも提案がない場合、このオプションは無効になります。  
 
     [![アクティブ ラーニングの新しい代わりの質問を表示するためには、ポータルの[Edit]\(編集\) セクションで [Show Suggestions]\(提案の表示\) を選択します。](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 

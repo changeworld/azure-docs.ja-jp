@@ -59,8 +59,12 @@
   items:
     - name: C# ダイレクト メソッドのサンプル
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+    - name: C# SDK のサンプル
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp-sdk'
     - name: Python ダイレクト メソッドのサンプル
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python'
+    - name: Python SDK のサンプル
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python-sdk'
 - name: 概念
   items:
     - name: メディア グラフ

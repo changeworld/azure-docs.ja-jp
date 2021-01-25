@@ -5,9 +5,9 @@
   items:
     - name: Cognitive Search とは
       href: search-what-is-azure-search.md
-    - name: Cognitive Search の機能
+    - name: 機能の一覧
       href: search-features-list.md
-    - name: Cognitive Search の最新情報
+    - name: 検索の新機能
       href: whats-new.md
 - name: クイックスタート
   items:

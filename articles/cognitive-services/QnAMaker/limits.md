@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: b3dca3617e2fb7ccdff870041374e9158498c9d1
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 1e57ae537c271e61f0b2d37f5320cb177b04802b
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97708942"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164874"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 
@@ -99,6 +99,7 @@ URL ページから QnA を抽出するためにクロールできるディー�
 * 回答ごとの代替質問の推奨最大数:該当なし
 * URL の最大数: 10
 * ファイルの最大数: 10
+* 呼び出しごとに許可される QnA の最大数:1000
 
 ## <a name="update-knowledge-base-call-limits"></a>ナレッジ ベースの更新の呼び出しの制限
 これらは、更新操作 (つまり、 *[Save and train]\(保存してトレーニング\)* のクリック、または UpdateKnowledgeBase API の呼び出し) ごとの制限を表します。
@@ -106,6 +107,7 @@ URL ページから QnA を抽出するためにクロールできるディー�
 * 追加または削除される代替質問の推奨最大数:該当なし
 * 追加または削除されるメタデータ フィールドの最大数: 10
 * 更新可能な URL の最大数: 5
+* 呼び出しごとに許可される QnA の最大数:1000
 
 ## <a name="next-steps"></a>次のステップ
 

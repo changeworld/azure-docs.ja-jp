@@ -71,6 +71,8 @@
           href: spring-cloud-howto-launch-from-source.md
         - name: IntelliJ を使用してアプリを展開する
           href: spring-cloud-tutorial-intellij-deploy-apps.md
+        - name: VS Code を使用してアプリをデプロイする
+          href: 'https://code.visualstudio.com/docs/java/java-spring-cloud'
         - name: Azure PowerShell を使用して Azure Spring Cloud をテプロイする
           href: spring-cloud-howto-deploy-powershell.md
     - name: 構成

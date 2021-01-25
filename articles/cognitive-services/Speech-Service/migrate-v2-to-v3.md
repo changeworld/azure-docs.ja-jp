@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e9e5db87f983c5db59715eb8b6a9561acf5fad14
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 9c8016b566db8be1b7f5c5ddb8d92123d6673db5
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630617"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569846"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>REST API の v2.0 から v3.0 にコードを移行する
 
@@ -24,11 +24,51 @@ ms.locfileid: "97630617"
 
 ## <a name="forward-compatibility"></a>上位互換性
 
-v2 のすべてのエンティティは、同じ ID で v3 API にも存在します。 結果のスキーマが変更された場合 (文字起こしなど) は、v3 バージョンの API で GET を実行すると v3 スキーマが使用されます。 v2 バージョンの API で実行した GET の結果では、同じ v2 スキーマが使用されます。 v3 で新しく作成されたエンティティは、v2 API からの結果では使用でき **ません**。
+v2 のすべてのエンティティは、同じ ID で v3 API にも存在します。 結果のスキーマが変更された場合 (文字起こしなど) は、v3 バージョンの API で GET を実行すると v3 スキーマが使用されます。 v2 バージョンの API で実行した GET の結果では、同じ v2 スキーマが使用されます。 v3 で新しく作成されたエンティティは、v2 API からの応答では使用 **できません**。  
 
-## <a name="breaking-changes"></a>重大な変更
+## <a name="migration-steps"></a>移行の手順
 
-破壊的変更の一覧は、適合させるために必要な変更の大きさの順に並べられています。 呼び出しコードに大きな変更が必要な変更点は少ししかありません。 ほとんどの変更点では、項目名の変更が必要とされるにすぎません。
+これは、移行を準備するときに注意が必要な項目をまとめた一覧です。 詳細については、個々のリンクを参照してください。 現在使用している API によっては、ここに記載されているすべての手順が当てはまるとは限りません。 呼び出しコードに大きな変更が必要な変更点は少ししかありません。 ほとんどの変更点では、項目名の変更が必要とされるにすぎません。 
+
+一般的な変更: 
+
+1. [ホスト名を変更する](#host-name-changes)
+
+1. [クライアント コードのプロパティ ID の名前を self に変更する](#identity-of-an-entity) 
+
+1. [エンティティのコレクションを反復処理するようにコードを変更する](#working-with-collections-of-entities)
+
+1. [クライアント コードのプロパティの名前を displayName に変更する](#name-of-an-entity)
+
+1. [参照されるエンティティのメタデータの取得を調整する](#accessing-referenced-entities)
+
+1. バッチ文字起こしを使用する場合: 
+
+    * [バッチ文字起こしを作成するためにコードを調整する](#creating-transcriptions) 
+
+    * [新しい文字起こし結果スキーマに合わせてコードを調整する](#format-of-v3-transcription-results)
+
+    * [結果の取得方法に合わせてコードを調整する](#getting-the-content-of-entities-and-the-results)
+
+1. カスタム モデルのトレーニングまたはテスト API を使用する場合: 
+
+    * [カスタム モデル トレーニングに変更を適用する](#customizing-models)
+
+    * [基本モデルとカスタム モデルの取得方法を変更する](#retrieving-base-and-custom-models)
+
+    * [クライアント コードに含まれるパス セグメントの accuracytests の名前を evaluations に変更する](#accuracy-tests)
+
+1. エンドポイント API を使用する場合:
+
+    * [エンドポイント ログの取得方法を変更する](#retrieving-endpoint-logs)
+
+1. その他の軽微な変更: 
+
+    * [すべてのカスタム プロパティを POST 要求のプロパティではなく customProperties として渡す](#using-custom-properties)
+
+    * [Operation-Location ではなく応答ヘッダーの Location から場所を読み取る](#response-headers)
+
+## <a name="breaking-changes"></a>互換性に影響する変更
 
 ### <a name="host-name-changes"></a>ホスト名の変更
 

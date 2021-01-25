@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 8e951e6cb18596b19f49bf42179297f656e3fa5f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 849afe54125588cb7664ee221e4f229e83be8f96
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91304298"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185480"
 ---
 # <a name="camera-placement-guide"></a>カメラ配置ガイド
 
@@ -52,11 +52,11 @@ ms.locfileid: "91304298"
 
 ## <a name="camera-height"></a>カメラの高さ
 
-一般的に、カメラは地上から 12 ～ 14 フィートにマウントする必要があります。 この範囲でのカメラの取り付けを計画するときは、カメラの視野に影響を与える可能性のある障害物 (たとえば、棚、つるし照明、つるし看板、ディスプレイなど) を考慮し、必要に応じて高さを調整します。
+一般的に、カメラは地上から 12 ～ 14 フィートにマウントする必要があります。 フェイス マスクの検出には、カメラを地面から 8 から 12 フィートに位置に設置することをお勧めします。 この範囲でのカメラの取り付けを計画するときは、カメラの視野に影響を与える可能性のある障害物 (たとえば、棚、つるし照明、つるし看板、ディスプレイなど) を考慮し、必要に応じて高さを調整します。
 
 ## <a name="camera-to-focal-point-distance"></a>カメラと焦点間の距離
 
-_カメラと焦点間の距離_とは、地表で測定した、焦点 (またはカメラ画像の中心) からカメラまでの直線距離です。
+_カメラと焦点間の距離_ とは、地表で測定した、焦点 (またはカメラ画像の中心) からカメラまでの直線距離です。
 
 ![カメラと焦点間の距離](./media/spatial-analysis/camera-focal-point.png)
 
@@ -68,7 +68,7 @@ _カメラと焦点間の距離_とは、地表で測定した、焦点 (また�
 
 ![カメラと焦点間の距離を上から測定する方法](./media/spatial-analysis/camera-focal-point-above.png)
 
-次の表を使用して、特定のマウントの高さに基づいて、焦点からのカメラの距離を決定します。 これらの距離は、最適な配置を行うためのものです。 この表では、天井によって高さが制限されることがあるため、12'-14' の推奨事項の下に指示が示されています。
+次の表を使用して、特定のマウントの高さに基づいて、焦点からのカメラの距離を決定します。 これらの距離は、最適な配置を行うためのものです。 この表では、天井によって高さが制限されることがあるため、12'-14' の推奨事項の下に指示が示されています。 フェイス マスク検出の場合、推奨されるカメラから焦点までの距離 (最小または最大) は、カメラの高さが 8 フィートから 12 フィートの場合、4 フィートから 10 フィートです。
 
 | カメラの高さ | カメラと焦点間の距離 (最小/最大) |  
 | ------------- | ---------------------------------------- |  
@@ -91,7 +91,7 @@ _カメラと焦点間の距離_とは、地表で測定した、焦点 (また�
 
 ### <a name="line-configuration"></a>ライン構成
 
-次の表は、 **cognitiveservices.vision.spatialanalysis-personcrossingline** 操作に対して構成されたカメラの推奨事項を示しています。 
+次の表は、 **cognitiveservices.vision.spatialanalysis-personcrossingline** 操作に対して構成されたカメラの推奨事項を示しています。 フェイス マスク検出の場合、カメラの高さが 8 フィートから 12 フィートの場合、+/-30 度が最適なカメラ取り付け角度です。
 
 | カメラの高さ | カメラと焦点間の距離 | 最適なカメラのマウント角度 (最小/最大) |  
 | ------------- | ------------------------------ | ------------------------------------------ |  
@@ -163,7 +163,7 @@ _カメラと焦点間の距離_とは、地表で測定した、焦点 (また�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [人数カウント Web アプリケーションのデプロイ](spatial-analysis-web-app.md)
+* [人数カウント Web アプリをデプロイする](spatial-analysis-web-app.md)
 * [空間分析操作の構成](./spatial-analysis-operations.md)
 * [ロギングおよびトラブルシューティング](spatial-analysis-logging.md)
 * [ゾーンとラインの配置ガイド](spatial-analysis-zone-line-placement.md)

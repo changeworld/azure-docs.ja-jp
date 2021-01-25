@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/07/2020
 ms.topic: article
-ms.openlocfilehash: fc82d046caa3663cffcda585258642813ab3a7d8
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 76bb9d289e984dd8c229bdaaab09e679e11283fe
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207259"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246283"
 ---
 # <a name="camera"></a>カメラ
 
@@ -32,7 +32,7 @@ ms.locfileid: "92207259"
 
 **前方および後方面:**
 
-無効な範囲を設定できないようにするために、**NearPlane** と **FarPlane** の各プロパティは読み取り専用になっており、範囲の変更には別の関数 **SetNearAndFarPlane** が用意されています。 このデータは、フレームの終了時にサーバーに送信されます。
+無効な範囲を設定できないようにするために、**NearPlane** と **FarPlane** の各プロパティは読み取り専用になっており、範囲の変更には別の関数 **SetNearAndFarPlane** が用意されています。 このデータは、フレームの終了時にサーバーに送信されます。 これらの値を設定するときは、**NearPlane** を **FarPlane** よりも小さくする必要があります。 そうしないと、エラーが発生します。
 
 > [!IMPORTANT]
 > Unity では、これはメイン カメラの前方面と後方面の変更時に自動的に処理されます。
@@ -44,6 +44,21 @@ ms.locfileid: "92207259"
 > [!TIP]
 > Unity では、**EnableDepthComponent** と呼ばれるデバッグ コンポーネントが用意されており、これを使用してエディターの UI でこの機能を切り替えることができます。
 
+**InverseDepth**:
+
+> [!NOTE]
+> この設定は、`EnableDepth` が `true` に設定されている場合にのみ重要です。 それ以外の場合、この設定の影響は何もありません。
+
+通常、深度バッファーには [0;1] の浮動小数点の範囲で z 値が記録されます (この 0 は前方面の深さを示し、1 は後方面の深さを示します)。 この範囲を反転して、範囲 [1;0] の深度値を記録することもできます。つまり、前方面の深度が 1 になり、後方面の深度が 0 になります。 一般的に、後者の場合、非線形 z 範囲全体の浮動小数点精度の分布が向上します。
+
+> [!WARNING]
+> 一般的なアプローチでは、カメラ オブジェクトの前方面と後方面の値を反転します。 Azure Remote Rendering の場合、`CameraSettings` 上でこれを試行すると、エラーが発生して失敗します。
+
+Azure Remote Rendering API は、リモート深度をローカル深度バッファーに正しく構成するために、ローカル レンダラーの深度バッファー規則を認識している必要があります。 深度バッファーの範囲が [0;1] の場合、このフラグは `false` のままにします。 [1;0] の範囲の反転深度バッファーを使用する場合は、`InverseDepth` フラグを `true` に設定します。
+
+> [!NOTE]
+> Unity の場合、正しい設定は `RemoteManager` によって既に適用されているため、手動で介入する必要はありません。
+
 カメラの設定の変更は、次のように行うことができます。
 
 ```cs
@@ -53,6 +68,7 @@ void ChangeCameraSetting(AzureSession session)
 
     settings.SetNearAndFarPlane(0.1f, 20.0f);
     settings.EnableDepth = false;
+    settings.InverseDepth = false;
 }
 ```
 
@@ -63,6 +79,7 @@ void ChangeStageSpace(ApiHandle<AzureSession> session)
 
     settings->SetNearAndFarPlane(0.1f, 20.0f);
     settings->SetEnableDepth(false);
+    settings->SetInverseDepth(false);
 }
 ```
 

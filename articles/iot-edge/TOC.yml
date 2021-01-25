@@ -17,9 +17,9 @@
   items:
     - name: 開発環境をセットアップする
       items:
-        - name: Linux デバイス向けの開発
+        - name: Linux コンテナーを使用した開発
           href: tutorial-develop-for-linux.md
-        - name: Windows デバイス向けの開発
+        - name: Windows コンテナーを使用した開発
           href: tutorial-develop-for-windows.md
     - name: カスタム コード モジュールの開発
       items:
@@ -77,6 +77,8 @@
   items:
     - name: IoT Edge ランタイム
       href: iot-edge-runtime.md
+    - name: IoT Edge for Linux on Windows
+      href: iot-edge-for-linux-on-windows.md
     - name: IoT Edge のモジュール
       items:
         - name: Azure IoT Edge モジュールについて
@@ -119,23 +121,25 @@
   items:
     - name: IoT Edge デバイスを作成する
       items:
-        - name: ランタイムをインストールする
-          href: how-to-install-iot-edge.md
-        - name: デバイスの登録と認証
+        - name: IoT Hub にデバイスを登録する
+          href: how-to-register-device.md
+        - name: IoT Edge のインストールとプロビジョニング
           items:
-            - name: 対称キーの認証
-              href: how-to-manual-provision-symmetric-key.md
-            - name: X.509 証明書認証
-              href: how-to-manual-provision-x509.md
+            - name: IoT Edge for Linux をインストールする
+              href: how-to-install-iot-edge.md
+            - name: IoT Edge for Linux on Windows を実行する
+              href: how-to-install-iot-edge-on-windows.md
         - name: ランタイムの更新
           href: how-to-update-iot-edge.md
         - name: デバイス証明書の管理
           href: how-to-manage-device-certificates.md
-        - name: テスト証明書を作成する
-          href: how-to-create-test-certificates.md
-        - name: Kubernetes の IoT Edge
+    - name: 代替デバイスのシナリオ
+      items:
+        - name: Windows コンテナーを使用して IoT Edge を実行する
+          href: how-to-install-iot-edge-windows-on-windows.md
+        - name: Kubernetes で IoT Edge を実行する
           href: how-to-install-iot-edge-kubernetes.md
-        - name: Resource Manager テンプレートを使用した IoT Edge 仮想マシン
+        - name: ARM テンプレートを使用して IoT Edge VM をデプロイする
           href: how-to-install-iot-edge-ubuntuvm.md
     - name: DPS による自動プロビジョニング
       items:
@@ -243,6 +247,8 @@
           href: troubleshoot-common-errors.md
 - name: リファレンス
   items:
+    - name: テスト証明書を作成する
+      href: how-to-create-test-certificates.md
     - name: Windows デバイス管理スクリプト
       href: reference-windows-scripts.md
     - name: Azure CLI

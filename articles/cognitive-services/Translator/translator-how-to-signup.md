@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: a9050b85c974a3c04ca717e8fe3d5188c1bf7a40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6773c6b29ecfd8354c54a6214cfe0b4050edcd38
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88244314"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602649"
 ---
 # <a name="how-to-sign-up-for-translator"></a>Translator にサインアップする方法
 
@@ -41,7 +41,7 @@ ms.locfileid: "88244314"
 Translator にサインアップするとき、ご自身のサブスクリプションに対して一意の個人用に設定されたアクセス キーを取得します。 このキーは、Translator に対する呼び出しごとに必要です。
 
 1. 最初に適切なサブスクリプションを選択して、ご自身の認証キーを取得します。
-1. ご自身のサブスクリプション詳細の **[リソース管理]** セクションで **[キー]** を選択します。
+1. 自分のサブスクリプション詳細の **[リソース管理]** セクションで、 **[Keys and Endpoint]\(キーとエンドポイント\)** を選択します。
 1. ご自身のサブスクリプションに示されているキーのいずれかをコピーします。
 
 ## <a name="learn-test-and-get-support"></a>学習、テスト、サポート

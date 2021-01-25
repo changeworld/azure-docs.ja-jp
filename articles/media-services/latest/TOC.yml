@@ -258,8 +258,49 @@
               href: job-error-codes.md
         - name: アカウントの資格情報をリセットする
           href: cli-reset-account-credentials.md
-    - name: v2 から v3 への移行
+    - name: 移行ガイド
+      displayName: migration
       items:
+        - name: 移行ガイドの概要
+          href: migrate-v-2-v-3-migration-introduction.md
+          displayName: migration
+        - name: 手順 1 - 利点
+          href: migrate-v-2-v-3-migration-benefits.md
+          displayName: 'migration, benefits'
+        - name: 手順 2 - 相違点
+          items:
+            - name: API アクセス
+              href: migrate-v-2-v-3-differences-api-access.md
+              displayName: 'migration, api'
+            - name: 機能のギャップ
+              href: migrate-v-2-v-3-differences-feature-gaps.md
+              displayName: 'migration, features'
+            - name: 用語とエンティティの変更
+              href: migrate-v-2-v-3-differences-terminology.md
+              displayName: 'migration, entity, api'
+        - name: 手順 3 - SDK のセットアップ
+          href: migrate-v-2-v-3-migration-setup.md
+          displayName: 'migration, SDK`'
+        - name: 手順 4 - シナリオベースの移行ガイダンス
+          items:
+            - name: Encoding
+              href: migrate-v-2-v-3-migration-scenario-based-encoding.md
+              displayName: 'migration, encoding'
+            - name: ライブ ストリーミング
+              href: migrate-v-2-v-3-migration-scenario-based-live-streaming.md
+              displayName: 'migration, live streaming'
+            - name: パッケージと配信
+              href: migrate-v-2-v-3-migration-scenario-based-publishing.md
+              displayName: 'migration, packaging, delivery, publishing'
+            - name: コンテンツの保護
+              href: migrate-v-2-v-3-migration-scenario-based-content-protection.md
+              displayName: 'migration, content protection, DRM, digital rights management'
+            - name: メディア占有ユニット (MRU)
+              href: migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md
+              displayName: 'migration, media reserved units'
+        - name: サンプルの比較
+          href: migrate-v-2-v-3-migration-samples.md
+          displayName: 'migration, samples'
         - name: v2 と v3 の比較
           displayName: 'migrate, v2 to v3'
           href: media-services-v2-vs-v3.md

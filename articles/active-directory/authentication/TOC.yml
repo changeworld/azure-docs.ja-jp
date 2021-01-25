@@ -154,9 +154,9 @@
           href: howto-password-ban-bad-on-premises-faq.md
         - name: エージェントのバージョン履歴
           href: howto-password-ban-bad-on-premises-agent-versions.md
-    - name: SMS ベースの認証の使用 (プレビュー)
+    - name: SMS ベースの認証を使用する
       href: howto-authentication-sms-signin.md
-    - name: メール アドレスのサインインを使用する (プレビュー)
+    - name: メール アドレスのサインインを使用する
       href: howto-authentication-use-email-signin.md
     - name: Azure AD スマート ロックアウト
       href: howto-password-smart-lockout.md

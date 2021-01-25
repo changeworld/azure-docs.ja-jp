@@ -58,6 +58,8 @@
       href: fqdn-filtering-network-rules.md
     - name: セキュリティ ベースライン
       href: security-baseline.md
+    - name: アクティブ FTP のサポート
+      href: active-ftp-support.md
 - name: 操作方法ガイド
   items:
     - name: Azure PowerShell を使用したデプロイ

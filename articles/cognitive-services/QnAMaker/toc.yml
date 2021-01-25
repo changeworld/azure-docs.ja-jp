@@ -14,9 +14,7 @@
           href: Quickstarts/create-publish-knowledge-base.md
         - name: ナレッジ ベースにクエリを実行する
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - name: REST の使用
-      href: Quickstarts/quickstart-rest-curl.md
-    - name: SDK の使用
+    - name: クライアント ライブラリまたは REST API の使用
       href: Quickstarts/quickstart-sdk.md
 - name: チュートリアル
   items:

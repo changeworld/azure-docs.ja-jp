@@ -1,28 +1,28 @@
 ---
 title: Azure Speech CLI
 titleSuffix: Azure Cognitive Services
-description: Speech CLI は、コードを記述せずに Speech サービスを使用するためのコマンド ライン ツールです。 Speech CLI では最小限の設定が必要であり、ユース ケースを満たすことができるかどうかを確認するための、Speech サービスの主要な機能をすぐに簡単に試すことができます。
+description: Speech CLI は、コードを記述せずに Speech サービスを使用するためのコマンドライン ツールです。 Speech CLI では最小限の設定が必要であり、ユース ケースを満たすことができるかどうかを確認するための、Speech サービスの主要な機能をすぐに簡単に試すことができます。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 01/13/2021
 ms.author: trbye
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6b852186834fba858e8a049a8230b38f3d69164d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f1e5f38e97a1b51a2d919deebbdc452e9daf993
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88067428"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539778"
 ---
 # <a name="what-is-the-speech-cli"></a>Speech CLI とは
 
-Speech CLI は、コードを記述せずに Speech サービスを使用するためのコマンド ライン ツールです。 Speech CLI では最小限の設定が必要であり、ユース ケースを満たすことができるかどうかを確認するための、Speech サービスの主要な機能をすぐに簡単に試すことができます。 ファイルのディレクトリからのバッチ音声認識、ファイルからの文字列のコレクションのテキスト読み上げなどのシンプルなテスト ワークフローを数分以内に実行できます。 Speech CLI は、シンプルなワークフロー以外にも、実稼働で使用する準備ができており、自動化された `.bat` またはシェル スクリプトを使用して、より大きなプロセスを実行するようにスケールアップすることができます。
+Speech CLI は、コードを記述せずに Speech サービスを使用するためのコマンドライン ツールです。 Speech CLI では最小限の設定が必要であり、ユース ケースを満たすことができるかどうかを確認するための、Speech サービスの主要な機能をすぐに簡単に試すことができます。 ファイルのディレクトリからのバッチ音声認識、ファイルからの文字列のコレクションのテキスト読み上げなどのシンプルなテスト ワークフローを数分以内に実行できます。 Speech CLI は、シンプルなワークフロー以外にも、実稼働で使用する準備ができており、自動化された `.bat` またはシェル スクリプトを使用して、より大きなプロセスを実行するようにスケールアップすることができます。
 
-Speech SDK の主な機能の大部分は、Speech CLI で利用できます。また、Speech CLI では、一部の高度な機能とカスタマイズが簡略化されています。 Speech CLI または Speech SDK のどちらを使用するかを決定するには、次のガイダンスを考慮してください。
+Speech SDK の主な機能は、Speech CLI で利用できます。また、Speech CLI では、一部の高度な機能とカスタマイズが簡略化されています。 Speech CLI または Speech SDK のどちらを使用するかを決定するには、次のガイダンスを考慮してください。
 
 Speech CLI を使用する場合
 * 最小限の設定かつコードなしで Speech サービス機能を試す必要がある
@@ -44,9 +44,10 @@ Speech SDK を使用する場合
 
 ## <a name="get-started"></a>はじめに
 
-Speech CLI の使用を開始するには、[基本の記事](spx-basics.md)を参照してください。 この記事では、いくつかの基本的なコマンドを実行する方法について示します。また、音声テキスト変換やテキスト読み上げのバッチ操作を実行するための少し高度なコマンドも示します。 基本の記事を読み終えたら、いくつかのカスタム コマンドの記述を開始するか、シンプルな Speech サービス操作を自動化する構文について十分に理解しておく必要があります。
+Speech CLI の使用を開始するには、[クイックスタート](spx-basics.md)を参照してください。 この記事では、いくつかの基本的なコマンドを実行する方法について示します。また、音声テキスト変換やテキスト読み上げのバッチ操作を実行するための少し高度なコマンドも示します。 基本の記事を読み終えたら、いくつかのカスタム コマンドの記述を開始するか、シンプルな Speech サービス操作を自動化する構文について十分に理解しておく必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Speech CLI の基本](spx-basics.md)
-- ユース ケースがより複雑な場合は、[Speech SDK を入手してください](speech-sdk.md)
+- [Speech CLI のクイックスタート](spx-basics.md)を開始する
+- [データ ストアを構成する](./spx-data-store-configuration.md)
+- [Speech CLI を使用してバッチ操作を実行する](./spx-batch-operations.md)方法を確認する

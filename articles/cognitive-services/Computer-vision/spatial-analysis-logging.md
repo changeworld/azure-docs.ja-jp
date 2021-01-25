@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: dd1b6d216f6225a13d86aa2435b5b1c807547ec3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014579"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186024"
 ---
 # <a name="telemetry-and-troubleshooting"></a>テレメトリとトラブルシューティング
 
@@ -68,7 +68,7 @@ az iot hub list
 az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principal name>" --scopes="<resource ID of IoT Hub>"
 ```
 
-[Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)または他の [デスクトップ マシン](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)のデプロイ マニフェストで、*telegraf* モジュールを探し、次の値を前の手順のサービス プリンシパル情報に置き換え、再デプロイします。
+[Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)、[デスクトップ マシン](https://go.microsoft.com/fwlink/?linkid=2152270)、または [GPU 搭載 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) の配置マニフェストで、*telegraf* モジュールを探し、次の値を前の手順のサービス プリンシパル情報に置き換え、再デプロイします。
 
 ```json
 
@@ -129,7 +129,7 @@ telegraf モジュールがデプロイされると、報告されたメトリ�
 
 ## <a name="collect-log-files-with-the-diagnostics-container"></a>診断コンテナーでログ ファイルを収集
 
-空間分析では、ランタイムの問題を診断したり、サポート チケットに含めたりするために使用できる Docker デバッグ ログが生成されます。 Microsoft Container Registry では、空間分析診断モジュールを使用して、ダウンロードできます。 [Azure Stack Edge Device](https://go.microsoft.com/fwlink/?linkid=2142179) または他の [デスクトップ マシン](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)のマニフェスト デプロイ ファイルで、*diagnostics* モジュールを探します。
+空間分析では、ランタイムの問題を診断したり、サポート チケットに含めたりするために使用できる Docker デバッグ ログが生成されます。 Microsoft Container Registry では、空間分析診断モジュールを使用して、ダウンロードできます。 [Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)、[デスクトップ マシン](https://go.microsoft.com/fwlink/?linkid=2152270)、または [GPU 搭載 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) のマニフェスト配置ファイルで、*diagnostics* モジュールを探します。
 
 "Env" セクションで、次の構成を追加します。
 
@@ -188,13 +188,13 @@ Azure Blob Storage など、リモー トエンドポイントにアップロー
 > `diagnostics` モジュールは、ログの内容には影響しません。既存のログの収集、フィルター処理、およびアップロードにのみ役立ちます。
 > このモジュールを使用するには、Docker API バージョン 1.40 以降が必要です。
 
-[Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)またはその他の[デスクトップ マシン](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)のサンプル デプロイ マニフェスト ファイルには、ログを収集してアップロードする `diagnostics` という名前のモジュールが含まれています。 このモジュールは既定で無効になっているため、ログにアクセスする必要がある場合は IoT Edge モジュール構成を使用して有効にする必要があります。 
+[Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)、[デスクトップ マシン](https://go.microsoft.com/fwlink/?linkid=2152270)、または [GPU 搭載 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) のサンプル配置マニフェスト ファイルには、ログを収集してアップロードする `diagnostics` という名前のモジュールが含まれています。 このモジュールは既定で無効になっているため、ログにアクセスする必要がある場合は IoT Edge モジュール構成を使用して有効にする必要があります。 
 
 `diagnostics` コレクションはオンデマンドで、IoT Edge ダイレクト メソッドによって制御され、ログを Azure Blob Storage に送信できます。
 
 ### <a name="configure-diagnostics-upload-targets"></a>診断アップロード ターゲットの構成
 
-IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジュールを選択します。 [Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)または他の [デスクトップ マシン](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)のサンプル デプロイ マニフェスト ファイルで、`env` という名前の診断用の **Environment Variables** セクションを探し、次の情報を追加します。
+IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジュールを選択します。 [Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)、[デスクトップ マシン](https://go.microsoft.com/fwlink/?linkid=2152270)、[GPU 搭載 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) のサンプル配置マニフェスト ファイルで、`env` という名前の診断用の **[環境変数]** セクションを探し、次の情報を追加します。
 
 **Azure Blob Storage へのアップロードの構成**
 
