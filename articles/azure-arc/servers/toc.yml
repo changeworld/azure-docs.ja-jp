@@ -99,4 +99,4 @@
 - name: リソース
   items:
     - name: Azure Arc のジャンプスタート
-      href: 'https://github.com/microsoft/azure_arc'
+      href: 'https://azurearcjumpstart.io'
