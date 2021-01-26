@@ -27,7 +27,6 @@ Azure Cache for Redis には、キャッシュ サイズや機能の選択に柔
 [Azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) のデプロイにより、Azure Cache for Redis インスタンスのセキュリティと分離が強化されると共に、サブネット、アクセス制御ポリシー、アクセスをさらに制限する他の機能も提供されます。
 
 ## <a name="virtual-network-support"></a>Virtual Network のサポート
-
 仮想ネットワークのサポートは、キャッシュの作成中に **[New Azure Cache for Redis]\(新しい Azure Cache for Redis\)** ペインで構成します。
 
 1. Premium レベルのキャッシュを作成するには、[Azure portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。 キャッシュは、Azure portal だけでなく、Resource Manager テンプレート、PowerShell、または Azure CLI を使用して作成することもできます。 Azure Cache for Redis インスタンスを作成する方法の詳細については、「[キャッシュの作成](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)」を参照してください。

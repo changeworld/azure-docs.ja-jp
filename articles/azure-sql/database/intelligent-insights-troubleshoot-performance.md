@@ -32,7 +32,7 @@ ms.locfileid: "96488835"
 
 Intelligent Insights は、クエリ実行の待機時間、エラー、またはタイムアウトに基づいて、パフォーマンスの問題を自動的に検出します。 Intelligent Insights では、検出されたパフォーマンス パターンがリソース ログに出力されます。 検出可能なパフォーマンス パターンの概要を次の表に示します。
 
-| 検出可能なパフォーマンス パターン | Azure SQL データベース | Azure SQL Managed Instance |
+| 検出可能なパフォーマンス パターン | Azure SQL Database | Azure SQL Managed Instance |
 | :------------------- | ------------------- | ------------------- |
 | [リソースの上限に到達](intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | 監視対象サブスクリプションで使用可能なリソース (DTU)、データベース ワーカー スレッド、またはデータベース ログイン セッションの消費量がそのリソースの制限に達しました。 そのことがパフォーマンスに影響を及ぼしています。 | CPU リソースの消費量がその制限に達しそうです。 これは SQL データベースのパフォーマンスに影響しています。 |
 | [ワークロードの増加](intelligent-insights-troubleshoot-performance.md#workload-increase) | データベースでのワークロードの増加またはワークロードの継続的な蓄積が検出されました。 そのことがパフォーマンスに影響を及ぼしています。 | ワークロードの増加が検出されました。 これは SQL データベースのパフォーマンスに影響しています。 |

@@ -66,7 +66,7 @@ ms.locfileid: "94844712"
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-    [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) コマンドレットを使用して、自分がアクセスできるすべての登録アカウントを一覧表示します。 **[試してみる]** を選択して、[Azure Cloud Shell](https://shell.azure.com/) を開きます。 コードを貼り付けるには、シェル ウィンドウを右クリックして、 **[貼り付け]** を選択します。
+    [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) コマンドレットを使用して、自分がアクセスできるすべての登録アカウントを一覧表示します。 **[使ってみる]** を選択して、[Azure Cloud Shell](https://shell.azure.com/) を開きます。 コードを貼り付けるには、シェル ウィンドウを右クリックして、 **[貼り付け]** を選択します。
 
     ```azurepowershell-interactive
     Get-AzEnrollmentAccount

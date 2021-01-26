@@ -160,7 +160,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |ターゲット サブリソース |*[mysqlServer]* を選択します|
     |||
 7. **[Next:構成]** を選択します。
-8. **[Create a private endpoint - Configuration]/(プライベート エンドポイントの作成 - 構成/)** で次の情報を入力または選択します。
+8. **[Create a private endpoint - Configuration]\(プライベート エンドポイントの作成 - 構成\)** で次の情報を入力または選択します。
 
     | 設定 | 値 |
     | ------- | ----- |

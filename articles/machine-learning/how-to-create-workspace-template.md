@@ -75,6 +75,7 @@ ms.locfileid: "96445195"
 >
 > 新しいコンテナー レジストリまたはストレージ アカウントを作成するのではなく、Azure Resource Manager テンプレートで既存のものを参照することもできます。 ただし、使用するコンテナー レジストリでは、__管理者アカウント__ を有効にする必要があります。 管理者アカウントを有効にする方法の詳細については、「[管理者アカウント](../container-registry/container-registry-authentication.md#admin-account)」を参照してください。
 
+
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 テンプレートの詳細については、次の記事を参照してください。

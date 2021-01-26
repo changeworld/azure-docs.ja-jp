@@ -1,6 +1,6 @@
 ---
-title: DevOps デプロイを使用して関数アプリを作成する - Azure CLI
-description: 関数アプリを作成して Azure DevOps から関数コードをデプロイします
+title: DevOps デプロイを使用して Function App を作成する - Azure CLI
+description: Function App を作成して Azure DevOps から関数コードをデプロイします
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
@@ -17,7 +17,7 @@ ms.locfileid: "97934376"
 
 このトピックを完了するには、以下が必要です。
 
-* ユーザーの関数アプリ プロジェクトが含まれ、ユーザーが管理アクセス許可を持っている Azure DevOps リポジトリ。
+* ユーザーの Function App プロジェクトが含まれ、ユーザーが管理アクセス許可を持っている Azure DevOps リポジトリ。
 * Azure DevOps リポジトリにアクセスするための[個人用アクセス トークン (PAT)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "97934376"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-このサンプルでは、Azure 関数アプリを作成し、Azure DevOps から関数コードをデプロイします。
+このサンプルでは、Azure Function App を作成し、Azure DevOps から関数コードをデプロイします。
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/deploy-function-app-with-function-vsts/deploy-function-app-with-function-vsts.sh?highlight=3-4 "Azure Service")]
 
@@ -36,7 +36,7 @@ ms.locfileid: "97934376"
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトでは、次のコマンドを使用して、リソース グループ、ストレージ アカウント、関数アプリ、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
+このスクリプトでは、次のコマンドを使用して、リソース グループ、ストレージ アカウント、Function App、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
 | command | Notes |
 |---|---|

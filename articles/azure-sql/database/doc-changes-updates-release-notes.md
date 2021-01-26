@@ -41,7 +41,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 |**Azure SQL Managed Instance** | Azure SQL Database *マネージド インスタンス*| Azure SQL Managed Instance は、Azure SQL Database 内のデプロイ オプションではなく、Azure SQL ファミリ内の独自の製品です。 | 
 |**Azure SQL Database**|Azure SQL Database *単一データベース*| 明示的に指定しない限り、"Azure SQL Database" という製品名には、単一データベースと、エラスティック プールにデプロイされたデータベースの両方が含まれます。 |
 |**Azure SQL Database**|Azure SQL Database *エラスティック プール*| 明示的に指定しない限り、"Azure SQL Database" という製品名には、単一データベースと、エラスティック プールにデプロイされたデータベースの両方が含まれます。  |
-|**Azure SQL Database** |Azure SQL データベース | この用語は同じままですが、単一データベースとエラスティック プールのデプロイにのみ適用され、マネージド インスタンスは含まれません。 |
+|**Azure SQL Database** |Azure SQL Database | この用語は同じままですが、単一データベースとエラスティック プールのデプロイにのみ適用され、マネージド インスタンスは含まれません。 |
 | **Azure SQL**| 該当なし | これは、Azure で使用可能な SQL Server データベース エンジン製品のファミリを指します。Azure SQL Database、Azure SQL Managed Instance、および Azure VM 上の SQL Server。 | 
 
 ## <a name="features-in-public-preview"></a>パブリック プレビュー段階の機能

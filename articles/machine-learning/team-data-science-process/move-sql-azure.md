@@ -47,10 +47,10 @@ Machine Learning 用に SQL Server にデータを移動するためのオプシ
 フラット ファイル (CSV 形式または TSV 形式) のデータは、一括挿入 SQL クエリを使用して Azure SQL Database に移動できます。
 
 ### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a> 一括挿入 SQL クエリ
-一括挿入 SQL クエリを使用する手順は、フラット ファイル ソースから Azure VM 上の SQL Server にデータを移動する指示と似ています。 詳細については、「 [一括挿入 SQL クエリ](move-sql-server-virtual-machine.md#insert-tables-bulkquery)」をご覧ください。
+一括挿入 SQL クエリを使用する手順は、フラット ファイル ソースから Azure VM 上の SQL Server にデータを移動する指示と似ています。 詳細については、「[一括挿入 SQL クエリ](move-sql-server-virtual-machine.md#insert-tables-bulkquery)」をご覧ください。
 
-## <a name="moving-data-from-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a> SQL Server から Azure SQL データベースへのデータの移動
-ソース データが SQL Server に保存されている場合は、さまざまな方法で Azure SQL データベースにデータを移動できます。
+## <a name="moving-data-from-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a> SQL Server から Azure SQL Database へのデータの移動
+ソース データが SQL Server に保存されている場合は、さまざまな方法で Azure SQL Database にデータを移動できます。
 
 1. [フラット ファイルへのエクスポート](#export-flat-file)
 2. [SQL Database 移行ウィザード](#insert-tables-bcp)
@@ -69,6 +69,7 @@ SQL Database 移行ウィザードを使用する手順は、「[SQL Database �
 データベースのバックアップと復元を使用する手順は、「[データベースのバックアップと復元](move-sql-server-virtual-machine.md#sql-backup)」の一連の指示と似ています。
 
 ### <a name="azure-data-factory"></a><a name="adf"></a>Azure Data Factory
-Azure Data Factory (ADF) を使用して Azure SQL データベースにデータを移動する方法については、[Azure Data Factory を使用して SQL Server から SQL Azure にデータを移動する](move-sql-azure-adf.md)方法に関するトピックを参照してください。 このトピックでは、ADF を使用して SQL Server データベースから Azure Blob Storage 経由で Azure SQL データベースにデータを移動する方法が示されています。
+Azure Data Factory (ADF) を使用して Azure SQL Database にデータを移動する方法については、[Azure Data Factory を使用して SQL Server から SQL Azure にデータを移動する](move-sql-azure-adf.md)方法に関するトピックを参照してください。 このトピックでは、ADF を使用して SQL Server データベースから Azure Blob Storage 経由で Azure SQL Database に
+データを移動する方法が示されています。
 
 ハイブリッドのオンプレミスとクラウドのソースを使用してデータを継続的に移行する必要がある場合は、ADF の使用を検討してください。  ADF は、データの変換が必要な場合や、移行中に新しいビジネス ロジックが必要な場合にも役立ちます。 ADF では、定期的にデータの移動を管理するシンプルな JSON スクリプトを使用して、ジョブのスケジュールと監視ができます。 ADF には他にも、複雑な操作のサポートなどの機能があります。

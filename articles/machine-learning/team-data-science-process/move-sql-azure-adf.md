@@ -78,7 +78,7 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
 
 1. オンプレミスの SQL Server
 2. Azure Blob Storage
-3. Azure SQL データベース
+3. AAzure SQL Database
 
 リンクされたサービスを作成するための手順は、「[リンクされたサービスを作成する](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)」を参照してください。
 

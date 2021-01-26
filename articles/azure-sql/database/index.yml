@@ -19,7 +19,7 @@ metadata:
   ms.lasthandoff: 11/13/2020
   ms.locfileid: "94593622"
 landingContent:
-- title: Azure SQL データベース
+- title: Azure SQL Database
   linkLists:
   - linkListType: quickstart
     links:

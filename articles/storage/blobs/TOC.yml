@@ -853,7 +853,7 @@
               href: ../common/storage-explorer-blob-versioning.md
             - name: Storage Explorer のサポート ポリシーとライフサイクル
               href: ../common/storage-explorer-support-policy-lifecycle.md
-            - name: ストレージ エクスプローラーのアクセシビリティ
+            - name: Storage Explorer のアクセシビリティ
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Microsoft Q&A 質問ページ
           href: /answers/topics/azure-blob-storage.html

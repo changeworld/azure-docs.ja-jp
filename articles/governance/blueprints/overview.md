@@ -111,7 +111,7 @@ ARM テンプレートとブループリントのどちらかを選ぶ必要は�
 |Azure ロール | 説明 |
 |-|-|
 |[所有者](../../role-based-access-control/built-in-roles.md#owner) | 他のアクセス許可に加えて、すべての Azure Blueprint 関連のアクセス許可が含まれます。 |
-|[Contributor](../../role-based-access-control/built-in-roles.md#contributor) | 他のアクセス許可に加えて、ブループリント定義を作成および削除できますが、ブループリントの割り当てのアクセス許可は持っていません。 |
+|[共同作成者](../../role-based-access-control/built-in-roles.md#contributor) | 他のアクセス許可に加えて、ブループリント定義を作成および削除できますが、ブループリントの割り当てのアクセス許可は持っていません。 |
 |[ブループリント共同作成者](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | ブループリントの定義を管理できますが、それらを割り当てることはできません。 |
 |[ブループリント オペレーター](../../role-based-access-control/built-in-roles.md#blueprint-operator) | 既存の発行済みのブループリントを割り当てることはできますが、新しいブループリント定義は作成できません。 ブループリントの割り当ては、ユーザーによって割り当てられたマネージド ID を使用して割り当てが行われた場合にのみ機能します。 |
 

@@ -240,7 +240,6 @@ Azure の Function App に必要な設定をアップロードする最も簡単
 * [Azure CLI を使用する](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)
 
 ## <a name="monitoring-functions"></a>関数の監視
-
 関数の実行を監視するための推奨される方法は、Function App を Azure Application Insights と統合することです。 Azure Portal で Function App を作成する場合、この統合は、既定で自動的に行われます。 ただし、Visual Studio の発行中に Function App を作成する場合は、Azure で Function App の統合は実行されません。 Application Insights を関数アプリに接続する方法については、「[Application Insights との統合を有効にする](configure-monitoring.md#enable-application-insights-integration)」を参照してください。
 
 Application Insights を使用した監視の詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
